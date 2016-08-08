@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="02/07/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 # オフライン データ同期を Android Mobile Services アプリケーションに追加する
@@ -200,7 +200,7 @@ One thing which is important to point out: if there are pending changes in the l
 
 * [Cloud Cover: Azure Mobile Services でのオフライン同期]
 
-* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] \(注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
+* [Azure Friday: Azure Mobile Services のオフライン対応アプリケーション] (注: デモは Windows 向けですが、機能の説明はすべてのプラットフォームに適用されます)
 
 
 <!-- URLs. -->
@@ -224,4 +224,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [Mobile Services Quick Start tutorial (Mobile Services のクイック スタート チュートリアル)]: mobile-services-android-get-started.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

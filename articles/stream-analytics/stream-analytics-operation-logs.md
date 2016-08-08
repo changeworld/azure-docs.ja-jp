@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 # サービスと操作ログを使用した Stream Analytics ジョブのデバッグ
@@ -25,8 +25,8 @@
 
 操作ログには 2 つの方法でアクセスできます。
 
-- Stream Analytics ジョブのダッシュボード  
-- Azure クラシック ポータルの管理サービス  
+- Stream Analytics ジョブのダッシュボード
+- Azure クラシック ポータルの管理サービス
 
 ## Stream Analytics ジョブのダッシュボード
 
@@ -39,7 +39,7 @@ Stream Analytics ジョブの対応するログへのリンクが、ジョブの
 Azure クラシック ポータルで Stream Analytics および他のサービスの操作ログに手動で移動するには、次の手順に従います。
 
 1.	[Azure クラシック ポータル](https://manage.windowsazure.com)で **[管理サービス]** をクリックします。
-2.	**[種類]** で **[Stream Analytics]** を選択し、**[サービス名]** でジョブの名前を選択します。  
+2.	**[種類]** で **[Stream Analytics]** を選択し、**[サービス名]** でジョブの名前を選択します。
 
   ![Stream Analytics の選択](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
 
@@ -96,4 +96,4 @@ Azure ポータルで、メッセージのレベルでフィルタリングし�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/11/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Mobile Services での繰り返し発生するジョブのスケジュール
@@ -24,8 +24,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET backend](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
-- [Javascript backend](mobile-services-schedule-recurring-tasks.md)
+- [.NET バックエンド](mobile-services-dotnet-backend-schedule-recurring-tasks.md)
+- [JavaScript バックエンド](mobile-services-schedule-recurring-tasks.md)
 
 このトピックでは、Azure クラシック ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
@@ -171,4 +171,4 @@
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0727_2016-->

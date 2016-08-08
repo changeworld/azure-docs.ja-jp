@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -55,7 +55,7 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 ## Azure CLI を使用したレポートの作成
 Azure コマンド ライン インターフェイス (CLI) でアクセス変更履歴レポートを作成するには、次のコマンドを使用します。
 ```
-azure authorization changelog
+azure role assignment changelog list
 ```
 
 ## スプレッドシートへのエクスポート
@@ -67,4 +67,4 @@ azure authorization changelog
 - [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

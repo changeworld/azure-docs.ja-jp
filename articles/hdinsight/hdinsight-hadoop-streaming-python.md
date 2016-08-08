@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/13/2016"
+   ms.date="07/27/2016"
    ms.author="larryfr"/>
 
 #HDInsight 用 Python ストリーミング プログラムの開発
@@ -163,7 +163,7 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 
 2. MapReduce ジョブを開始するには次のコマンドを使用します。
 
-		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasbs:///example/data/gutenberg/davinci.txt -output wasbs:///example/wordcountout
 
 	このコマンドには次のようなものがあります。
 
@@ -212,4 +212,4 @@ Python では、STDIN からの読み取りに **sys** モジュールを、STDO
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

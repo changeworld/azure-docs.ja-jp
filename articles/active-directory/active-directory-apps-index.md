@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/03/2016"
+	ms.date="07/20/2016"
 	ms.author="markvi;liviodlc"/>
 
 #Azure Active Directory のアプリケーション構成の管理に関する記事の索引
@@ -114,7 +114,7 @@ Azure AD Connect は、[Azure Active Directory のすべてのエディション
 | :---: | --- |
 | Azure AD、Office365、Intune に提供されている条件付きアクセス機能の概要 | [条件付きアクセス ポリシーを使用したリスクの管理](active-directory-conditional-access.md) |
 | 次の種類のリソースで条件付きアクセスを有効にする方法 | [Azure Conditional Access Preview for SaaS Apps](active-directory-conditional-access-azuread-connected-apps.md)<br /><br />[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)<br /><br />[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)<br /><br />[条件付きアクセスの使用](active-directory-application-proxy-conditional-access.md) |
-| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 | [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)<br /> [Windows 8.1 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows8-1.md)<br /> [Windows 7 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
+| デバイス ベースの条件付きアクセス ポリシーを有効にするためにデバイスを Azure Active Directory に登録する方法 | [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)<br /><br />[ドメイン参加済み Windows デバイスの自動デバイス登録を有効にする方法](active-directory-conditional-access-automatic-device-registration.md)<br />— [Windows 8.1 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)<br />— [Windows 7 デバイス用の手順](active-directory-conditional-access-automatic-device-registration-windows7.md) |
 | 多要素認証に関するポリシーのために Azure Authenticator アプリの Android バージョンを使用する方法 | [Android 用の Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md) |
 
 条件付きアクセスは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
@@ -228,4 +228,4 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

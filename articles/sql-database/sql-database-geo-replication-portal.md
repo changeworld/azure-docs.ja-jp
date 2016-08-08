@@ -12,8 +12,8 @@
     ms.devlang="NA"
     ms.topic="article"
     ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
-    ms.date="06/14/2016"
+   ms.workload="NA"
+    ms.date="07/14/2016"
     ms.author="sstein"/>
 
 # Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
@@ -98,7 +98,8 @@ Azure ポータルを使用して geo レプリケーションを構成するに
 ## 次のステップ
 
 - アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity-scenarios.md)に関する記事を参照してください。
+- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+
 
 <!--Image references-->
 [1]: ./media/sql-database-geo-replication-portal/configure-geo-replication.png
@@ -112,4 +113,4 @@ Azure ポータルを使用して geo レプリケーションを構成するに
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

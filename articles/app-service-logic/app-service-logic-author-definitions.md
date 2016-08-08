@@ -1,48 +1,74 @@
 <properties 
 	pageTitle="ロジック アプリの定義の作成 | Microsoft Azure" 
 	description="ロジック アプリの JSON 定義を記述する方法について説明します。" 
-	authors="stepsic-microsoft-com" 
+	authors="jeffhollan" 
 	manager="erikre" 
 	editor="" 
 	services="app-service\logic" 
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/16/2016"
-	ms.author="stepsic"/>
+	ms.date="07/25/2016"
+	ms.author="jehollan"/>
 	
 # ロジック アプリの定義の作成
-このトピックでは、単純な宣言型の JSON 言語である、[App Service Logic Apps](app-service-logic-what-are-logic-apps.md) 定義の使用方法を示します。まだ使用したことがない場合は、まず[新しいロジック アプリの作成方法](app-service-logic-create-a-logic-app.md)に関するページを参照してください。また、[MSDN の定義言語の完全リファレンス マテリアル](https://msdn.microsoft.com/library/azure/mt643789.aspx)を参照することもできます。
+このトピックでは、単純な宣言型の JSON 言語である、[Azure Logic Apps](app-service-logic-what-are-logic-apps.md) 定義の使用方法を示します。まだ使用したことがない場合は、まず[新しいロジック アプリの作成方法](app-service-logic-create-a-logic-app.md)に関するページを参照してください。また、[MSDN の定義言語の完全リファレンス マテリアル](http://aka.ms/logicappsdocs)を参照することもできます。
 
 ## リストに対して繰り返す複数のステップ
 
-一般的なパターンとしては、最初のステップでアイテムのリストを取得した後、そのリストの各アイテムに対して必要な 2 つ以上の一連のアクションを実行します。
+最大 10,000 件の配列の要素を反復処理しながら、それぞれにアクションを実行する場合は、[foreach タイプ](app-service-logic-loops-and-scopes.md)を利用できます。
 
-![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists.png)
+## 問題が発生した場合のエラー処理ステップ
 
-![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists2.png)
-
-![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists3.png)
-
-![リストに対して繰り返す](./media/app-service-logic-author-definitions/newrepeatoverlists4.png)
-
- 
-この例には、次の 3 つのアクションがあります。
-
-1. 記事のリストを取得する。これにより、配列を含むオブジェクトが返されます。
-
-2. 各記事のリンク プロパティにアクセスするアクション。これにより、記事の実際の場所が返されます。
-
-3. 2 番目のアクションの結果すべてを反復処理して実際の記事をダウンロードするアクション。
+一般的に、*修復ステップ*を作成できるようにする必要があります。これは、1 つ以上の呼び出しが失敗した**場合に限り**実行されるいくつかのロジックです。この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。
 
 ```
 {
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+	},
+	"triggers": {
+		"manual": {
+			"type": "manual"
+		}
+	},
+	"actions": {
+		"readData": {
+			"type": "Http",
+			"inputs": {
+				"method": "GET",
+				"uri": "http://myurl"
+			}
+		},
+		"postToErrorMessageQueue": {
+			"type": "ApiConnection",
+			"inputs": "...",
+			"runAfter": {
+				"readData": ["Failed"]
+			}
+		}
+	},
+	"outputs": {}
+}
+```
+
+`readData` が **Failed** になった後でのみ `postToErrorMessageQueue` を実行するよう指定するには、`runAfter` プロパティを利用できます。ここには、想定される複数の値を指定することもできます。つまり、`runAfter` を `["Succeeded", "Failed"]` のように指定することもできます。
+
+最後に、エラーの処理が完了したので、実行は **"失敗"** としてマークされなくなります。ご覧のとおり、この実行は、1 つのステップは失敗しましたが、このエラーを処理するステップを記述したため、**"成功"** となっています。
+
+## 並列実行される 2 つ (以上) のステップ
+
+複数のアクションを並列実行するには、その `runAfter` プロパティが実行時に統一されている必要があります。
+
+```
+{
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {},
 	"triggers": {
@@ -51,40 +77,110 @@
 		}
 	},
 	"actions": {
-		"getArticles": {
+		"readData": {
 			"type": "Http",
 			"inputs": {
 				"method": "GET",
-				"uri": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://feeds.wired.com/wired/index"
+				"uri": "http://myurl"
 			}
 		},
-		"readLinks": {
+		"branch1": {
 			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "@item().link"
-			},
-			"forEach": "@body('getArticles').responseData.feed.entries"
+			"inputs": "...",
+			"runAfter": {
+				"readData": ["Succeeded"]
+			}
 		},
-		"downloadLinks": {
+		"branch2": {
 			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "@item().outputs.headers.location"
-			},
-			"conditions": [{
-				"expression": "@not(equals(actions('readLinks').status, 'Skipped'))"
-			}],
-			"forEach": "@actions('readLinks').outputs"
+			"inputs": "...",
+			"runAfter": {
+				"readData": ["Succeeded"]
+			}
 		}
 	},
 	"outputs": {}
 }
 ```
 
-[ロジック アプリの機能の使用](app-service-logic-use-logic-app-features.md)に関するページで説明されているように、2 番目のアクションの `forEach:` プロパティを使用して、最初に取得したリストを反復処理します。ただし、2 番目のアクションは各記事に対して実行されるため、3 番目のアクションでは、`@actions('readLinks').outputs` プロパティを選択する必要があります。
+上の例を見るとわかるように、`branch1` と `branch2` はどちらも、`readData` の後で実行するように設定されています。その結果、これらの分岐 (branch) の両方が並列実行されます。
 
-アクション内では、[`item()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#item) 関数を使用できます。この例では、`location` ヘッダーを取得する必要があったため、`@item().outputs.headers` で続行して 2 番目のアクションの実行結果の出力を取得する必要がありました。ここでは、それを反復処理しています。
+![並列](./media/app-service-logic-author-definitions/parallel.png)
+
+両方の分岐のタイムスタンプが一致していることを確認できます。
+
+## 2 つの並列分岐の結合
+
+並列実行するように設定された 2 つのアクションは、先ほどの例と同様、`runAfter` プロパティに項目を追加することで結合することができます。
+
+```
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-04-01-preview/workflowdefinition.json#",
+    "actions": {
+        "readData": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {},
+            "type": "Http"
+        },
+        "branch1": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {
+                "readData": [
+                    "Succeeded"
+                ]
+            },
+            "type": "Http"
+        },
+        "branch2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {
+                "readData": [
+                    "Succeeded"
+                ]
+            },
+            "type": "Http"
+        },
+        "join": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://myurl"
+            },
+            "runAfter": {
+                "branch1": [
+                    "Succeeded"
+                ],
+                "branch2": [
+                    "Succeeded"
+                ]
+            },
+            "type": "Http"
+        }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "parameters": {},
+    "triggers": {
+        "manual": {
+            "inputs": {
+                "schema": {}
+            },
+            "kind": "Http",
+            "type": "Request"
+        }
+    }
+}
+```
+
+![並列](./media/app-service-logic-author-definitions/join.png)
 
 ## リスト内のアイテムをいくつかの異なる構成にマップする
 
@@ -92,7 +188,7 @@
 
 ```
 {
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"specialCategories": {
@@ -143,344 +239,6 @@
 
 ここで注意する点が 2 つあります。1 つは、カテゴリが定義済みの既知のカテゴリの 1 つと一致するかどうかを確認するために [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数が使用されている点です。もう 1 つは、カテゴリを取得した後は、`parameters[...]` のように、角かっこを使用してマップのアイテムを取り出すことができる点です。
 
-## リストの繰り返し処理で Logic Apps を連結する/入れ子にする
-
-Logic Apps は、多くの場合、離散されているほど管理が簡単になります。これを実現するには、ロジックを複数の定義に組み込み、それらの定義を同じ親定義から呼び出します。この例では、注文を受け取る親ロジック アプリと、注文ごとにいくつかのステップを実行する子ロジック アプリが存在します。
-
-親ロジック アプリ内のコードは次のとおりです。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"orders": {
-			"defaultValue": [{
-				"quantity": 10,
-				"id": "myorder1"
-			}, {
-				"quantity": 200,
-				"id": "specialOrder"
-			}, {
-				"quantity": 5,
-				"id": "myOtherOrder"
-			}],
-			"type": "Array"
-		}
-	},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"iterateOverOrders": {
-			"type": "Workflow",
-			"inputs": {
-				"uri": "https://westus.logic.azure.com/subscriptions/xxxxxx-xxxxx-xxxxxx/resourceGroups/xxxxxx/providers/Microsoft.Logic/workflows/xxxxxxx",
-				"apiVersion": "2015-02-01-preview",
-				"trigger": {
-					"name": "submitOrder",
-					"outputs": {
-						"body": "@item()"
-					}
-				},
-				"authentication": {
-					"type": "Basic",
-					"username": "default",
-					"password": "xxxxxxxxxxxxxx"
-				}
-			},
-			"forEach": "@parameters('orders')"
-		},
-		"sendInvoices": {
-			"type": "Http",
-			"inputs": {
-				"uri": "http://www.example.com/?invoiceID=@{item().outputs.run.outputs.deliverTime.value}",
-				"method": "GET"
-			},
-			"forEach": "@outputs('iterateOverOrders')"
-		}
-	},
-	"outputs": {}
-}
-```
-
-次に、子ロジック アプリでは、子ワークフローに渡された値を取得するために [`triggerBody()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#triggerBody) 関数を使用します。その後、親フローに返すデータを出力に設定します。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"calulatePrice": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?action=calcPrice&id=@{triggerBody().id}&qty=@{triggerBody().quantity}"
-			}
-		},
-		"calculateDeliveryTime": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?action=calcTime&id=@{triggerBody().id}&qty=@{triggerBody().quantity}"
-			}
-		}
-	},
-	"outputs": {
-		"deliverTime": {
-			"type": "String",
-			"value": "@outputs('calculateDeliveryTime').headers.etag"
-		}
-	}
-}
-```
-
-MSDN の[ロジック アプリの種類のアクション](https://msdn.microsoft.com/library/azure/mt643939.aspx)に関するページを参照してください。
-
->[AZURE.NOTE]ロジック アプリ デザイナーでは、ロジック アプリの種類のアクションがサポートされていないため、定義を手動で編集する必要があります。
-
-
-## 問題が発生した場合のエラー処理ステップ
-
-一般的に、*修復ステップ*を作成できるようにする必要があります。これは、1 つ以上の呼び出しが失敗した**場合に限り**実行されるいくつかのロジックです。この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"dataFeeds": {
-			"defaultValue": ["https://www.microsoft.com/ja-JP/default.aspx", "https://gibberish.gibberish/"],
-			"type": "Array"
-		}
-	},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"readData": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "@item()"
-			},
-			"forEach": "@parameters('dataFeeds')"
-		},
-		"postToErrorMessageQueue": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?noteAnErrorFor=@{item().inputs.uri}"
-			},
-			"conditions": [{
-				"expression": "@equals(actions('readData').status, 'Failed')"
-			}, {
-				"expression": "@equals(item().status, 'Failed')"
-			}],
-			"forEach": "@actions('readData').outputs"
-		}
-	},
-	"outputs": {}
-}
-```
-
-2 つの条件を使用しているのは、最初のステップでリストの繰り返し処理を行っているためです。アクションが 1 つしかない場合、必要な条件は最初の 1 つだけになります。また、修復ステップでは、失敗したアクションに対して *inputs* を使用できる点にも注意してください。ここでは、エラーになった URL を 2 番目のステップに渡します。
-
-![修復](./media/app-service-logic-author-definitions/remediation.png)
-
-最後に、エラーの処理が完了したので、実行は **"失敗"** としてマークされなくなります。ご覧のとおり、この実行は、1 つのステップは失敗しましたが、このエラーを処理するステップを記述したため、**"成功"** となっています。
-
-## 並列実行される 2 つ (以上) のステップ
-
-複数のアクションを順番に実行するのではなく並列実行するには、2 つのアクションをリンクする `dependsOn` 条件を削除する必要があります。依存関係が削除されると、アクションは、互いのデータを必要とする場合を除いて、自動的に並列実行されます。
-
-![分岐](./media/app-service-logic-author-definitions/branches.png)
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"dataFeeds": {
-			"defaultValue": ["https://www.microsoft.com/ja-JP/default.aspx", "https://office.live.com/start/default.aspx"],
-			"type": "Array"
-		}
-	},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"readData": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "@item()"
-			},
-			"forEach": "@parameters('dataFeeds')"
-		},
-		"branch1": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?branch1Logic=@{item().inputs.uri}"
-			},
-			"forEach": "@actions('readData').outputs"
-		},
-		"branch2": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?branch2Logic=@{item().inputs.uri}"
-			},
-			"forEach": "@actions('readData').outputs"
-		}
-	},
-	"outputs": {}
-}
-```
-
-上の例からわかるように、branch1 と branch2 は readData の内容のみに依存しています。その結果、これらの分岐 (branch) の両方が並列実行されます。
-
-![並列](./media/app-service-logic-author-definitions/parallel.png)
-
-両方の分岐のタイムスタンプが一致していることを確認できます。
-
-## ロジックの 2 つの条件付き分岐の結合
-
-ロジックの 2 つの条件付きフローを (実行されているかどうかは関係なく) 結合するには、両方の分岐からデータを受け取る単一のアクションを用意します。
-
-このための方法は、処理しているのが 1 つのアイテムかアイテムのコレクションかによって異なります。1 つのアイテムの場合は、[`coalesce()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#coalesce) 関数を使用します。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"order": {
-			"defaultValue": {
-				"quantity": 10,
-				"id": "myorder1"
-			},
-			"type": "Object"
-		}
-	},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"handleNormalOrders": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://www.example.com/?orderNormally=@{parameters('order').id}"
-			},
-			"conditions": [{
-				"expression": "@lessOrEquals(parameters('order').quantity, 100)"
-			}]
-		},
-		"handleSpecialOrders": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://www.example.com/?orderSpecially=@{parameters('order').id}"
-			},
-			"conditions": [{
-				"expression": "@greater(parameters('order').quantity, 100)"
-			}]
-		},
-		"submitInvoice": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?invoice=@{coalesce(outputs('handleNormalOrders')?.headers?.etag,outputs('handleSpecialOrders')?.headers?.etag )}"
-			},
-			"conditions": [{
-				"expression": "@or(equals(actions('handleNormalOrders').status, 'Succeeded'), equals(actions('handleSpecialOrders').status, 'Succeeded'))"
-			}]
-		}
-	},
-	"outputs": {}
-}
-```
- 
-また、たとえば、最初の 2 つの分岐両方で注文のリストが処理される場合は、[`union()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#union) 関数を使用して両方の分岐のデータを結合します。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"orders": {
-			"defaultValue": [{
-				"quantity": 10,
-				"id": "myorder1"
-			}, {
-				"quantity": 200,
-				"id": "specialOrder"
-			}, {
-				"quantity": 5,
-				"id": "myOtherOrder"
-			}],
-			"type": "Array"
-		}
-	},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"handleNormalOrders": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://www.example.com/?orderNormally=@{item().id}"
-			},
-			"conditions": [{
-				"expression": "@lessOrEquals(item().quantity, 100)"
-			}],
-			"forEach": "@parameters('orders')"
-		},
-		"handleSpecialOrders": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://www.example.com/?orderSpecially=@{item().id}"
-			},
-			"conditions": [{
-				"expression": "@greater(item().quantity, 100)"
-			}],
-			"forEach": "@parameters('orders')"
-		},
-		"submitInvoice": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/?invoice=@{item().outputs.headers.etag}"
-			},
-			"conditions": [{
-				"expression": "@equals(item().status, 'Succeeded')"
-			}],
-			"forEach": "@union(actions('handleNormalOrders').outputs, actions('handleSpecialOrders').outputs)"
-		}
-	},
-	"outputs": {}
-}
-```
 ## 文字列の操作
 
 文字列の操作に使用できる関数には、さまざまな種類があります。ある文字列をシステムに渡す必要はあっても、文字エンコードが正しく処理されるかどうか確信を持てない例を考えてみます。1 つのオプションとして、この文字列に Base64 エンコードを使用します。ただし、URL 内のエスケープを回避するために、いくつかの文字を置き換えます。
@@ -489,7 +247,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 ```
 {
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"order": {
@@ -539,7 +297,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 ```
 {
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"order": {
@@ -564,14 +322,15 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 			}
 		},
 		"timingWarning": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://www.example.com/?recordLongOrderTime=@{parameters('order').id}&currentTime=@{utcNow('r')}"
-			},
-			"conditions": [{
-				"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))"
-			}]
+			"actions" {
+				"type": "Http",
+				"inputs": {
+					"method": "GET",
+					"uri": "http://www.example.com/?recordLongOrderTime=@{parameters('order').id}&currentTime=@{utcNow('r')}"
+				},
+				"runAfter": {}
+			}
+			"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))"
 		}
 	},
 	"outputs": {}
@@ -581,57 +340,6 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 この例では、前のステップの `startTime` を抽出しています。次に、現在の時刻を取得して、[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) で 1 秒引いています (`minutes` や `hours` のように他の時間単位も使用できます)。最後に、この 2 つの値を比較できます。最初の値が 2 番目の値より小さい場合は、最初に注文が実行されてから 2 秒以上経過していることを意味します。
 
 また、文字列フォーマッタを使用して日付の書式を設定できることにも注意してください。ここでは、RFC1123 を取得するためにクエリ文字列で [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) を使用しています。すべての日付の書式設定については、[MSDN のドキュメント](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)に記載されています。
-
-## 実行時に値を渡して動作を変更する
-
-たとえば、ロジック アプリの開始に使用するいくつかの値に基づいて、さまざまな動作を実行するとします。[`triggerOutputs()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#triggerOutputs) 関数を使用すると、渡した内容からこれらの値を取得できます。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"readData": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "@triggerOutputs().uriToGet"
-			}
-		},
-		"extraStep": {
-			"type": "Http",
-			"inputs": {
-				"method": "POST",
-				"uri": "http://www.example.com/extraStep"
-			},
-			"conditions": [{
-				"expression": "@triggerOutputs().doMoreLogic"
-			}]
-		}
-	},
-	"outputs": {}
-}
-```
-
-実際にこれを動作させるには、実行を開始するときに、必要なプロパティを渡す必要があります (上の例では `uriToGet` と `doMoreLogic`)。
-
-次のペイロードを使用します。ここで使用する値をロジック アプリに指定しています。
-
-```
-{
-    "outputs": {
-        "uriToGet" : "http://my.uri.I.want/",
-        "doMoreLogic" : true
-    }
-}
-``` 
-
-このロジック アプリを実行すると、渡した URI が呼び出され、さらに `true` を渡したことによって追加のステップが実行されます。*実行するたび*ではなく、デプロイ時にのみパラメーターを変更する場合は、次に説明するように、`parameters` を使用する必要があります。
 
 ## さまざまな環境でデプロイ時のパラメーターを使用する
 
@@ -643,10 +351,10 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 ```
 {
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
+	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-		"connection": {
+		"uri": {
 			"type": "string"
 		}
 	},
@@ -660,7 +368,7 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 			"type": "Http",
 			"inputs": {
 				"method": "GET",
-				"uri": "@parameters('connection')"
+				"uri": "@parameters('uri')"
 			}
 		}
 	},
@@ -668,17 +376,11 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 }
 ```
 
-その後、ロジック アプリの実際の `PUT` 要求で、`connection` パラメーターを指定できます。既定値はもう存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
+その後、ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。既定値はもう存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
 
 ```
 {
-    "properties": {
-        "sku": {
-            "name": "Premium",
-            "plan": {
-                "id": "/subscriptions/xxxxx/resourceGroups/xxxxxx/providers/Microsoft.Web/serverFarms/xxxxxx"
-            }
-        },
+    "properties": {},
         "definition": {
           // Use the definition from above here
         },
@@ -694,41 +396,6 @@ MSDN の[ロジック アプリの種類のアクション](https://msdn.microso
 
 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。
 
-## 条件が満たされるまでステップを実行する
-
-API を呼び出しているときに、特定の応答を待ってから処理を行う必要のある場合があります。たとえば、他のユーザーがファイルをディレクトリにアップロードするのを待ってからそのファイルの処理する場合を考えます。これは、次のように *do-until* を使用して実行できます。
-
-```
-{
-	"$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {},
-	"triggers": {
-		"manual": {
-			"type": "manual"
-		}
-	},
-	"actions": {
-		"http0": {
-			"type": "Http",
-			"inputs": {
-				"method": "GET",
-				"uri": "http://mydomain/listfiles"
-			},
-			"until": {
-				"limit": {
-					"timeout": "PT10M"
-				},
-				"conditions": [{
-					"expression": "@greater(length(action().outputs.body),0)"
-				}]
-			}
-		}
-	},
-	"outputs": {}
-}
-```
-
 ロジック アプリの作成と管理用に用意したすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="07/22/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
@@ -34,7 +34,7 @@
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、「[Azure SQL Database ファイアウォール][]」を参照してください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、[Azure SQL Database ファイアウォール][]に関するページ、「[sp\_set\_firewall\_rule][]」、および「[sp\_set\_database\_firewall\_rule][]」をご覧ください。
 
 SQL Data Warehouse への接続は、接続文字列で暗号化モードを設定することで暗号化できます。接続の暗号化を有効にする構文は、プロトコルによって異なります。接続文字列を設定するには、Azure ポータルでデータベースに移動します。[要点] で [データベース接続文字列の表示] をクリックします。
 
@@ -115,6 +115,8 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
+[sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
+[sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
 [データベース ロール]: https://msdn.microsoft.com/library/ms189121.aspx
 [Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/ee336235.aspx
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
@@ -125,4 +127,4 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

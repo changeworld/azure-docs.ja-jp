@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/14/2016"
+	ms.date="07/21/2016"
 	ms.author="wesmc"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -182,7 +182,7 @@
 ##認証を使用してクライアントをテストする
 
 1. Visual Studio で、クライアント アプリケーションを実行します。
-2. Azure Active Directory にログインするための画面が表示されます。  
+2. Azure Active Directory にログインするための画面が表示されます。
 3. アプリケーションが認証を実行し、Todo 項目を返します。
 
     ![][15]
@@ -215,4 +215,4 @@
 [モバイル サービスの使用]: mobile-services-dotnet-backend-windows-store-dotnet-get-started.md
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

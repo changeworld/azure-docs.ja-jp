@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center を使用したパートナー ソリューションの監視
 
 このドキュメントでは、Azure Security Center でパートナー ソリューションの正常性状態を監視する方法について説明します。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## パートナー ソリューションの監視
 
@@ -63,4 +63,4 @@
 [4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
 [5]: ./media/security-center-partner-solutions/link-applications.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

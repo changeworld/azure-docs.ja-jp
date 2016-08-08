@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -44,7 +44,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 データを Hive テーブルとして保存した後、次のセクションでは、Power BI や Tableau などの BI ツールを使用して Hive テーブルに接続します。
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -71,7 +71,7 @@ Azure HDInsight の Apache Spark を使用して以下のことを行う方法�
 
 
 		# Create an RDD from sample data
-		hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		# Create a schema for our data
 		Entry = Row('Date', 'Time', 'TargetTemp', 'ActualTemp', 'BuildingID')
@@ -152,7 +152,7 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 
 ##<a name="tableau"></a>Tableau Desktop を使用して Hive テーブル内のデータを分析する
 	
-1. Tableau Desktop を起動します。左側のウィンドウの接続先サーバー一覧で **[Spark SQL]** をクリックします。Spark SQL が既定で左側のウィンドウに表示されない場合は、**[その他のサーバー]**をクリックして検索できます。 
+1. Tableau Desktop を起動します。左側のウィンドウの接続先サーバー一覧で **[Spark SQL]** をクリックします。Spark SQL が既定で左側のウィンドウに表示されない場合は、**[その他のサーバー]**をクリックして検索できます。
 
 2. Spark SQL 接続ダイアログ ボックスで、次の値を指定して、**[OK]** をクリックします。
 
@@ -241,4 +241,4 @@ Hive テーブルとしてデータを保存した後は、Power BI を使用し
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

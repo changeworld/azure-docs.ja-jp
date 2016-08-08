@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/20/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok" />
 
 
@@ -36,7 +36,7 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 ## 前提条件
 
-- Microsoft ダウンロード センターから [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードすること 
+- Microsoft ダウンロード センターから [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードすること
 - 省略可能: [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TelcoGenerator) のイベント ジェネレーターのソース コード
 
 ## Azure Event Hubs 入力とコンシューマー グループの作成
@@ -45,7 +45,7 @@ Stream Analytics は、待機時間の短縮、高可用性、クラウド内の
 
 イベント ハブを作成するには:
 
-1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。名前、リージョン、および新規または既存の名前空間を入力し、新しい Event Hub を作成します。  
+1.	[Azure ポータル](https://manage.windowsazure.com/)で、**[新規]**、**[App Services]**、**[Service Bus]**、**[Event Hub]**、**[簡易作成]** の順にクリックします。名前、リージョン、および新規または既存の名前空間を入力し、新しい Event Hub を作成します。
 2.	各 Stream Analytics ジョブが単一の Event Hub コンシューマー グループから読み取るようにするのがベスト プラクティスです。以下にコンシューマー グループを作成するプロセスを段階的に説明します。コンシューマー グループの詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn836025.aspx)を参照してください。コンシューマー グループを作成するには、新たに作成された Event Hub に移動し、**[コンシューマー グループ]** タブをクリックし、ページ下部の **[作成]** をクリックして、コンシューマー グループの名前を指定します。
 3.	Event Hub へのアクセスを許可するには、共有アクセス ポリシーを作成する必要があります。Event Hub の **[構成]** タブをクリックします。
 4.	**[共有アクセス ポリシー]** で、**[管理]** アクセス許可を持つ新しいポリシーを作成します。
@@ -265,4 +265,4 @@ Blob Storage 用のコンテナーがまだない場合は、次の手順に従�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

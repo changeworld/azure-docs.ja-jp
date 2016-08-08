@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -43,7 +43,7 @@ Zeppelin は、スクリプト アクションを使用して Spark クラスタ
 
 ### Azure ポータルの使用
 
-Zeppelin をインストールするスクリプト アクションを実行するために HDInsight .NET SDK を使用する方法については、「[スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」を参照してください。その記事の手順は、いくつか変更する必要があります。
+Zeppelin をインストールするスクリプト アクションを実行するために Azure ポータルを使用する方法については、「[スクリプト アクションを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-from-the-azure-portal)」をご覧ください。その記事の手順は、いくつか変更する必要があります。
 
 * Zeppelin をインストールするには、スクリプトを使用する必要があります。HDInsight の Spark クラスターに Zeppelin をインストールするカスタム スクリプトは、次のリンクから入手できます。
 	* Spark 1.6.0 クラスターの場合 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
@@ -201,7 +201,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - **\*hn0*\** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン *hn0* を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -211,11 +211,11 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	![foxyproxy の選択モード](./media/hdinsight-apache-spark-use-zeppelin-notebook/selectmode.png)
 
-これらを完了すると、__internal.cloudapp.net__ という文字列を含む URL の要求のみが SSL トンネル経由で送信されます。
+これらを完了すると、__hn0__ という文字列を含む URL の要求のみが SSL トンネル経由で送信されます。
 
 ## Zeppelin Notebook へのアクセス
 
-SSH トンネリングをセットアップしたら、以下の手順で、Spark クラスター上の Zeppelin Notebook にアクセスできます。
+SSH トンネリングをセットアップしたら、以下の手順で、Spark クラスター上の Zeppelin Notebook にアクセスできます。このセクションでは、%sql および %hive の各ステートメントを実行する方法を説明します。
 
 1. Web ブラウザーから、次のエンドポイントを開きます。
 
@@ -235,12 +235,14 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 	![Zeppelin Notebook のステータス](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.newnote.connected.png "Zeppelin Notebook のステータス")
 
+### SQL ステートメントを実行する
+
 4. サンプル データを一時テーブルに読み込みます。HDInsight の Spark クラスターを作成すると、サンプル データ ファイル **hvac.csv** が、関連するストレージ アカウントの **\\HdiSamples\\SensorSampleData\\hvac** にコピーされます。
 
 	新しい Notebook に既定で作成される空の段落に、次のスニペットを貼り付けます。
 
 		// Create an RDD using the default Spark context, sc
-		val hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		val hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		// Define a schema
 		case class Hvac(date: String, time: String, targettemp: Integer, actualtemp: Integer, buildingID: String)
@@ -297,6 +299,41 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 
 	![Zeppelin インタープリターを再起動します](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "Zeppelin インタープリターを再起動します")
 
+### Hive ステートメントを実行する
+
+1. Zeppelin Notebook で **[Interpreter]** ボタンをクリックします。
+
+	![Hive インタープリターを更新します](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-1.png "Hive インタープリターを更新します")
+
+2. **Hive** インタープリターの場合、**[edit]** をクリックします。
+
+	![Hive インタープリターを更新します](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-2.png "Hive インタープリターを更新します")
+
+	次のプロパティを更新します。
+
+	* **[default.password]** を、HDInsight Spark クラスターの作成時に管理者ユーザーに指定したパスワードに設定します。
+	* **[default.url]** を `jdbc:hive2://<spark_cluster_name>.azurehdinsight.net:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2` に設定します。**<spark\_cluster\_name>** を Spark クラスターの名前で置き換えます。
+	* **[default.user]** を、クラスターの作成時に指定した管理者ユーザーの名前に設定します。たとえば、*admin* です。
+
+3. **[Save]** をクリックし、Hive インタープリターを再起動することを求めるメッセージが表示されたら、**[OK]** をクリックします。
+
+4. 新しい Notebook を作成し、次のステートメントを実行してクラスター上のすべての Hive テーブルを一覧表示します。
+
+		%hive
+		SHOW TABLES
+
+	既定では、HDInsight クラスターには **hivesampletable** という名前のサンプルのテーブルがあるため、次のような出力が表示されます。
+
+	![Hive の出力](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-3.png "Hive の出力")
+
+5. 次のステートメントを実行してテーブル内のレコードを一覧表示します。
+
+		%hive
+		SELECT * FROM hivesampletable LIMIT 5
+
+	出力は次のように表示されます。
+
+	![Hive の出力](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-4.png "Hive の出力")
 
 ## <a name="seealso"></a>関連項目
 
@@ -350,4 +387,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

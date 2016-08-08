@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center での Transparent Data Encryption の有効化
@@ -22,7 +22,7 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 
 この推奨事項は Azure SQL サービスにのみ適用されます。仮想マシンで実行されている SQL は含まれません。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -35,7 +35,7 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 
   ![暗号化の状態][4]
 
-## 次のステップ
+## 関連項目
 
 この記事では、"Transparent Data Encryption を有効にする" という Security Center の推奨事項を実装する方法について説明しました。 SQL TDE の詳細については、次の記事をご覧ください。
 
@@ -58,4 +58,4 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 [3]: ./media/security-center-enable-tde-on-sql-databases/turn-on-tde.png
 [4]: ./media/security-center-enable-tde-on-sql-databases/encrypted.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

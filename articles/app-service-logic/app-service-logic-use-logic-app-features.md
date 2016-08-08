@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -70,7 +70,7 @@ ForEach ループでは、アクションを繰り返す配列を指定します
 
 デザイナー以外でも、次のようにロジック アプリを定義するコードを直接編集することができます。
 
-1. コマンド バーの **[コード ビュー]** をクリックします。 
+1. コマンド バーの **[コード ビュー]** をクリックします。
 
 	全画面のエディターが開き、先ほど編集した定義が表示されます。
 
@@ -112,4 +112,4 @@ Logic App 定義の詳細については、[「Author Logic App definitions (Log
 <!-- Shared links -->
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0727_2016-->

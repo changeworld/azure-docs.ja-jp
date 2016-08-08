@@ -30,7 +30,7 @@
 
 次のいずれかの代替手段を実装します。
 
-- ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、[RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。ローカル ストレージ リソースの設定の詳細については、「[ローカル ストレージ リソースを構成する](cloud-services-configure-local-storage-resources.md)」を参照してください。
+- ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、[RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。
 
 - ローカル ストレージ リソースを構成し、TEMP と TMP ディレクトリがローカル ストレージ リソースのパスを指すように指定します。この変更は [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッド内で実行する必要があります。
 
@@ -73,8 +73,8 @@ namespace WorkerRole1
 
 ブログ「[How to increase the size of the Azure Web Role ASP.NET Temporary Folder (Azure Web ロール ASP.NET の一時フォルダーのサイズを増やす方法)](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)」の説明をご覧ください。
 
-クラウド サービスの他の[トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)を参照します。
+クラウド サービスの他の[トラブルシューティングに関する記事](/?tag=top-support-issue&product=cloud-services)を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

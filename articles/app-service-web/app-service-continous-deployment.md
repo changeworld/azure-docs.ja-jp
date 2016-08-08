@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="07/23/2016"
 	ms.author="dariagrigoriu"/>
     
 # Azure App Service への継続的なデプロイ
@@ -52,7 +52,7 @@ Visual Studio ソリューションを Azure App Service にプッシュする�
 
 Visual Studio ソリューションを App Service にプッシュする手順は、ソリューションとリポジトリを次のように構成するのであれば、[前のセクション](#overview)と同じです。
 
--	下図に示す Visual Studio のソース制御オプションを使用して `.gitignore` ファイルを生成するか、または [.gitignore サンプル](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)に類似したコンテンツを含む `.gitignore` ファイルを手動でリポジトリ ルートに追加します。 
+-	下図に示す Visual Studio のソース制御オプションを使用して `.gitignore` ファイルを生成するか、または [.gitignore サンプル](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)に類似したコンテンツを含む `.gitignore` ファイルを手動でリポジトリ ルートに追加します。
 
     ![](./media/app-service-continous-deployment/VS_source_control.png)
  
@@ -72,6 +72,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 ## その他のリソース
 
+* [継続的なデプロイに関する一般的な問題の調査方法](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
 * [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)]
 * [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]
 * [Git に関するドキュメント]
@@ -79,7 +80,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-[Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
+[Azure App Service]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-changes-existing-services/
 [Azure ポータル]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/ja-JP/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
@@ -92,4 +93,4 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 [Get started with VSTS (VSTS で作業を始める)]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

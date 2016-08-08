@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="07/25/2016"
 	ms.author="mahender"/>
 
 # 既存の .NET Azure Mobile Service を App Service にアップグレードする
 
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。詳細については、「[Mobile Apps とは]」を参照してください。
 
-このトピックでは、既存の .NET バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。
+このトピックでは、既存の .NET バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の Node.js Mobile Services のアップグレード](./app-service-mobile-node-backend-upgrading-from-mobile-services.md)に関するページを参照してください。
 
 Azure App Service にアップグレードされたモバイル バックエンドは、App Service のすべての機能にアクセスでき、Mobile Services の価格ではなく [App Service の価格]に従って課金されます。
 
@@ -277,4 +277,4 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [.NET サーバー SDK の概要]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

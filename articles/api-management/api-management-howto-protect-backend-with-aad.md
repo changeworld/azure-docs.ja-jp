@@ -143,8 +143,11 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
         public HttpResponseMessage GetDiv([FromUri]int a, [FromUri]int b)
         {
             string xml = string.Format("<result><value>{0}</value><broughtToYouBy>Azure API Management - http://azure.microsoft.com/apim/ </broughtToYouBy></result>", a / b);
-HttpResponseMessage response = Request.CreateResponse(); response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml"); return response; } }
-
+    	    HttpResponseMessage response = Request.CreateResponse();
+    	    response.Content = new StringContent(xml, System.Text.Encoding.UTF8, "application/xml");
+    	    return response;
+    	}
+    }
 
 **F6** キーを押して、ソリューションをビルドし、検証します。
 
@@ -237,7 +240,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-1]
 
-**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。この例では **https://contoso5.portal.azure-api.net/signin** を使用します。
+**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。この例では **https://contoso5.portal.azure-api.net/signin ** を使用します。
 
 **[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。この例では **https://contoso5.portal.azure-api.net/dp** を使用しますが、ここには任意の文字を入力できます。必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
 
@@ -413,4 +416,4 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
 [Azure API Management での最初の API の管理]: api-management-get-started.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

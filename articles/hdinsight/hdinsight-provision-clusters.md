@@ -82,7 +82,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
     
 - **リソース グループ名**
 
-	[Azure Resource Manager (ARM)](resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
+	[Azure Resource Manager (ARM)](../resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
 
 - **資格情報**
 
@@ -96,7 +96,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 
 	元の HDFS では、クラスターの多数のローカル ディスクを使用します。HDInsight では、データ ストレージとして Azure BLOB ストレージを使用します。Azure BLOB ストレージは、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。Hadoop 分散ファイル システム (HDFS) のインターフェイスを利用して、HDInsight のすべてのコンポーネントが BLOB ストレージの構造化データまたは非構造化データを直接操作できます。BLOB ストレージにデータを格納した場合、計算で使用する HDInsight クラスターを削除してもユーザー データは失われません。
 
-	構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部の作成プロセスには、事前に作成された Azure ストレージ アカウントと BLOB ストレージ コンテナーが必要です。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセス可能なその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。アクセスの制限の詳細については、「[Microsoft Azure ストレージ リソースへのアクセスの管理](storage-manage-access-to-resources.md)」をご覧ください。
+	構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部の作成プロセスには、事前に作成された Azure ストレージ アカウントと BLOB ストレージ コンテナーが必要です。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセス可能なその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。アクセスの制限の詳細については、「[Microsoft Azure ストレージ リソースへのアクセスの管理](../storage/storage-manage-access-to-resources.md)」をご覧ください。
 
 	![HDInsight ストレージ](./media/hdinsight-provision-clusters/HDInsight.storage.png)
 
@@ -110,7 +110,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
 
 	従属的な BLOB ストアの使用の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。
 
-    Azure BLOB ストレージに加えて、[Azure Data Lake Store](data-lake-store-overview.md) も HDInsight での HBase クラスターの既定のストレージ アカウントとして、また、4 つのすべての HDInsight クラスターの種類のリンクされたストレージとして使用できます。手順については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
+    Azure Blob Storage に加え、[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) も HDInsight での HBase クラスターの既定のストレージ アカウントとして、また、4 つのすべての HDInsight クラスターの種類のリンクされたストレージとして使用できます。手順については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」をご覧ください。
     
 - **場所 (リージョン)**
 
@@ -173,7 +173,7 @@ HDInsight クラスターを作成する際の基本的な構成オプション�
         |Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
         |Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500|    
  
-    これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-size-specs.md)に関するページをご覧ください。さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
+    これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-size.md)に関する記事をご覧ください。さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
     
 	> [AZURE.IMPORTANT] クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。クラスターが作成されると課金が開始され、クラスターが削除された場合にのみ停止します。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
 
@@ -258,4 +258,4 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 | [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [ARM テンプレート](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -34,17 +34,17 @@ HDInsight で Hadoop クラスターを作成するときに、Azure ストレ�
 2. **storage2** という名前の追加のストレージ アカウントを指定します。
 3. mycsv.csv ファイルを /share ディレクトリにコピーし、このファイルに対して分析を実行します。
 
-````
-hadoop fs –mkdir /share
-hadoop fs –copyFromLocal myscsv.scv /share  
-````
+    ````
+    hadoop fs –mkdir /share
+    hadoop fs –copyFromLocal myscsv.scv /share  
+    ````
 
 3.	R コードで、名前ノードを **default** に設定し、処理対象のディレクトリとファイルを設定します。
 
-````
-myNameNode <- "default"
-myPort <- 0
-````
+    ````
+    myNameNode <- "default"
+    myPort <- 0
+    ````
 
   データの場所:
 
@@ -66,13 +66,13 @@ myPort <- 0
 
     inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
 
-ディレクトリとファイルの参照はすべて、ストレージ アカウント wasb://container1@storage1.blob.core.windows.net を指しています。これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
+ディレクトリとファイルの参照はすべて、ストレージ アカウント wasbs://container1@storage1.blob.core.windows.net を指しています。これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
 
 ここで、**storage2** の **container2** の /private ディレクトリにある mySpecial.csv というファイルを処理するとします。
 
-R コードで、名前ノード参照が **storage2** ストレージ アカウントを参照するようにします。
+R コードで、名前ノード参照が **storage2** ストレージ アカウントを指すようにします。
 
-    myNameNode <- "wasb://container2@storage2.blob.core.windows.net"
+    myNameNode <- "wasbs://container2@storage2.blob.core.windows.net"
     myPort <- 0
 
   データの場所:
@@ -95,13 +95,13 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
 
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
 
-ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント wasb://container2@storage2.blob.core.windows.net を指しています。これは、先ほど指定した**名前ノード**です。
+ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント wasbs://container2@storage2.blob.core.windows.net を指しています。これは、先ほど指定した**名前ノード**です。
 
 次のように、**storage2** で /user/RevoShare/<SSH ユーザー名> ディレクトリを構成する必要があることに注意してください。
 
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare
-    hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare
+    hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user/RevoShare/<RDP username>
 
 ## Azure Data Lake Store の使用
 
@@ -125,7 +125,7 @@ Data Lake Store へのアクセスを後から追加するには、Azure ポー�
 ![Create Data Lake store Service Principle 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
 
 ## Data Lake Store と R Server の使用
-Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
+Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から adl://**** に変わることです。
 
 ````
 # Point to the ADL store (e.g. ADLtest)
@@ -190,4 +190,4 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
 - [HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

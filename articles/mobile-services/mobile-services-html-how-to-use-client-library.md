@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="01/26/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services 向け HTML/JavaScript クライアントを使用する方法
@@ -666,4 +666,4 @@ promise はいくつかの異なる方法で使用することができます。
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

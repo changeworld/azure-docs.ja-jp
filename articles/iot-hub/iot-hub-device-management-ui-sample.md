@@ -125,6 +125,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 - [開発者ガイド][lnk-devguide]
 - [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 - [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+- [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 [1]: media/iot-hub-device-management-ui-sample/image1.png
 [2]: media/iot-hub-device-management-ui-sample/image2.png
@@ -149,5 +150,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
+[lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

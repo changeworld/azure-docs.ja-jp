@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 #Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
@@ -51,7 +51,7 @@ Hadoop 関連技術の追加情報は、Java ベースの MapReduce プログラ
 
 ## <a name="hdinsight-sample-wordcount"></a>ワード カウント - Java 
 
-MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasb:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
+MapReduce プロジェクトを送信するには、まず、MapReduce ジョブ定義を作成します。ジョブ定義で、MapReduce プログラムの jar ファイル、その jar ファイルの場所 (**wasbs:///example/jars/hadoop-mapreduce-examples.jar**)、クラス名、および引数を指定します。ワード カウント MapReduce プログラムでは 2 つの引数 (ワードのカウントに使用されるソース ファイルと、出力の場所) を使用します。
 
 ソース コードは「[付録 A](#apendix-a---the-word-count-MapReduce-program-in-java)」にあります。
 
@@ -70,9 +70,9 @@ Java MapReduce プログラムの開発手順については、「[HDInsight で
 		
 		# Define the MapReduce job
 		$mrJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-									-JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
+									-JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
 									-ClassName "wordcount" `
-									-Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput1"
+									-Arguments "wasbs:///example/data/gutenberg/davinci.txt", "wasbs:///example/data/WordCountOutput1"
 		
 		# Submit the job and wait for job completion
 		$cred = Get-Credential -Message "Enter the HDInsight cluster HTTP user credential:" 
@@ -160,7 +160,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 - 「[ワード カウント - Java](#word-count-java)」の手順に従って、し、ジョブ定義を以下に置き換えます。
 
 		$mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
-									-JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
+									-JarFile "wasbs:///example/jars/hadoop-mapreduce-examples.jar" `
 									-ClassName "pi" `
 									-Arguments "16", "10000000"
 
@@ -1000,4 +1000,4 @@ wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブ
 [console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

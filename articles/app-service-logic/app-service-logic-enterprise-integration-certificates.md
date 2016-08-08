@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -73,4 +73,4 @@ Azure ポータルにログインした後に統合アカウントにプライ�
 - [B2B 機能を使用したロジック アプリの作成](./app-service-logic-enterprise-integration-b2b.md)
 - [key Vault についての詳細情報](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

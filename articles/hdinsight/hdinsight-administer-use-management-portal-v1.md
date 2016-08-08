@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 # Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理
@@ -102,9 +102,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 > [AZURE.NOTE] HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。同様に、クラスターに対するリモート デスクトップを無効にするには、**client.DisableRdp(clustername, location)** を使用します。これらのメソッドの詳細については、[HDInsight .NET SDK のリファレンス](http://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
 
-
-
-> [AZURE.NOTE] クラスターの RDP が有効になった後、クラスターに接続する前にページを更新する必要があります。
+> クラスターの RDP が有効になった後、クラスターに接続する前にページを更新する必要があります。
 
 **RDP を使用してクラスターに接続するには**
 
@@ -201,4 +199,4 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
 [image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,16 +14,16 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="06/16/2016"
+	ms.date="07/16/2016"
 	ms.author="carlrab" />
 
 # 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## 障害復旧の認証要件の概要
 
-このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。また、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。復旧オプションの詳細については、「[Azure SQL Database を障害から回復する](sql-database-disaster-recovery.md)」を参照してください。
+このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。また、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。復旧オプションの詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 
 ## 包含ユーザーによる障害復旧
 
@@ -95,4 +95,4 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 ## その他のリソース
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

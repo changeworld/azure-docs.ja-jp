@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure CLI を使用した完全な Linux 環境の作成 | Microsoft Azure"
-   description="Azure CLI を使用して、Linux VM、ストレージ、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
+   description="Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="iainfoulds"
@@ -17,118 +17,119 @@
    ms.date="06/10/2016"
    ms.author="iainfou"/>
 
-# Azure CLI を使用して、完全な Linux 環境を作成します。
+# Azure CLI を使用して、完全な Linux 環境を作成する
 
-ここでは、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。ここでは、インターネット上のどこからでも接続できる、セキュリティで保護された実用的な VM を構築するまで、各コマンドの説明を交えながら環境全体について説明します。この記事を理解すると、より複雑なネットワークや環境に進むことができます。
+この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。この記事を理解すると、より複雑なネットワークや環境に進むことができます。
 
-その過程で、Resource Manager デプロイ モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、より短時間でシステムを再構築することができます。環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
+その過程で、Resource Manager デプロイメント モデルによって提供される依存関係階層とその性能についても説明します。システムがどのように構築されているかをいったん理解すると、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md) を使用して、より短時間でシステムを再構築することができます。環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
 
-以下のような環境が含まれます。
+環境には以下を含みます。
 
 - 可用性セット内の 2 つの VM
 - ポート 80 の負荷分散規則が構成されたロード バランサー
-- 不要なトラフィックから、VM を保護するには、ネットワーク セキュリティ グループ ルール
+- 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
 ![基本的な環境の概要](./media/virtual-machines-linux-create-cli-complete/environment_overview.png)
 
-このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI](../xplat-cli-install.md) インストールする必要があります。JSON 解析ツール: この例では [jq](https://stedolan.github.io/jq/) を使用します。
+このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI](../xplat-cli-install.md) が必要です。JSON 解析ツールも必要です。この例では、[jq](https://stedolan.github.io/jq/) を使用します。
 
 ## クイック コマンド
-次のクイック コマンドは、カスタム環境の構築に使用されます。環境構築を行うと各コマンドがどのように機能するかをより深く理解するために、[詳細なチュートリアル](#detailed-walkthrough) を参照してください。
+次のクイック コマンドは、カスタム環境の構築に使用できます。環境構築を行うと各コマンドがどのように機能するかの詳細については、[詳細なチュートリアル](#detailed-walkthrough) を参照してください。
 
-リソース グループの作成
+リソース グループを作成します。
 
 ```bash
 azure group create TestRG -l westeurope
 ```
 
-JSON パーサーを使用した RG の確認
+JSON パーサーを使用して、リソース グループを確認します。
 
 ```bash
 azure group show TestRG --json | jq '.'
 ```
 
-ストレージ アカウントの作成
+ストレージ アカウントを作成します。
 
 ```bash
 azure storage account create -g TestRG -l westeurope --kind Storage --sku-name GRS computeteststore
 ```
 
-JSON パーサーを使用したストレージの確認
+JSON パーサーを使用して、ストレージ アカウントを確認します。
 
 ```bash
 azure storage account show -g TestRG computeteststore --json | jq '.'
 ```
 
-仮想ネットワークの作成
+仮想ネットワークを作成します。
 
 ```bash
 azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
 ```
 
-サブネットの作成
+サブネットを作成します。
 
 ```bash
 azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 ```
 
-JSON パーサーを使用した VNet およびサブネットの確認
+JSON パーサーを使用して、仮想ネットワークとサブネットを確認します。
+
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
 ```
 
-パブリック IP の作成
+パブリック IP を作成します。
 
 ```bash
 azure network public-ip create -g TestRG -n TestLBPIP -l westeurope -d testlb -a static -i 4
 ```
 
-ロード バランサーの作成
+ロード バランサーを作成します。
 
 ```bash
 azure network lb create -g TestRG -n TestLB -l westeurope
 ```
 
-ロード バランサーのフロント エンド IP プールを作成して、パブリック IP を関連付ける
+ロード バランサーのフロントエンド IP プールを作成して、パブリック IP を関連付けます。
 
 ```bash
 azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
 ```
 
-ロード バランサーのバック エンド IP プールの作成
+ロード バランサーのバックエンド IP プールを作成します。
 
 ```bash
 azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
 ```
 
-ロード バランサーの SSH 受信 NAT 規則の作成
+ロード バランサーの SSH 受信 NAT 規則を作成します。
 
 ```bash
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-ロード バランサーの Web 受信 NAT 規則の作成
+ロード バランサーの Web 受信 NAT 規則を作成します。
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
      -t TestFrontEndPool -o TestBackEndPool
 ```
 
-ロード バランサーの正常性プローブの作成
+ロード バランサーの正常性プローブを作成します。
 
 ```bash
 azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
 ```
 
-JSON パーサーを使用したロード バランサー、IP プール、および NAT 規則の確認
+JSON パーサーを使用したロード バランサー、IP プール、および NAT 規則を確認します。
 
 ```bash
 azure network lb show -g TestRG -n TestLB --json | jq '.'
 ```
 
-最初の NIC の作成
+最初のネットワーク インターフェイス カード (NIC) を作成します。
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -136,7 +137,7 @@ azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name T
     -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH"
 ```
 
-2 つ目の NIC の作成
+2 つ目の NIC を作成します。
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -144,20 +145,20 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
     -e "/subscriptions/########-####-####-####-############/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM2-SSH"
 ```
 
-JSON パーサーを使用した NIC の確認
+JSON パーサーを使用した NIC を確認します。
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
 azure network nic show TestRG LB-NIC2 --json | jq '.'
 ```
 
-NSG の作成
+NSG を作成します。
 
 ```bash
 azure network nsg create -g TestRG -n TestNSG -l westeurope
 ```
 
-NSG の受信規則の追加
+NSG の受信規則を追加します。
 
 ```bash
 azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
@@ -166,26 +167,26 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-JSON パーサーを使用した NSG および受信規則の確認
+JSON パーサーを使用した NSG および受信規則を確認します。
 
 ```bash
 azure network nsg show -g TestRG -n TestNSG --json | jq '.'
 ```
 
-NSG の NIC へのバインド
+NSG を NIC にバインドします。
 
 ```bash
 azure network nic set -g TestRG -n LB-NIC1 -o TestNSG
 azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
 ```
 
-可用性セットの作成
+可用性セットを作成します。
 
 ```bash
 azure availset create -g TestRG -n TestAvailSet -l westeurope
 ```
 
-最初の Linux VM の作成
+最初の Linux VM を作成します。
 
 ```bash
 azure vm create \
@@ -203,7 +204,7 @@ azure vm create \
     --admin-username ops
 ```
 
-2 つ目の Linux VM の作成
+2 つ目の Linux VM を作成します。
 
 ```bash
 azure vm create \
@@ -221,7 +222,7 @@ azure vm create \
     --admin-username ops
 ```
 
-JSON パーサーを使用して構築されたすべてのものの確認
+すべてが構築されたことを確認するのに JSON パーサーを使用します。
 
 ```bash
 azure vm show -g TestRG -n TestVM1 --json | jq '.'
@@ -235,17 +236,17 @@ azure resource export TestRG
 ```
 
 ## 詳細なチュートリアル
-環境構築を行うと各コマンドがどのように機能するかについての詳細を説明します。これにより、開発または実稼働ワークロードに対するカスタム環境を構築できます。
+次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
 ## リソース グループの作成とデプロイ先の選択
 
-Azure リソース グループは、リソース デプロイの論理的な管理を可能にする構成とその他のメタデータを含む論理的なデプロイ エンティティです。
+Azure リソース グループは、リソース デプロイの論理的な管理を可能にする構成情報とメタデータを含む論理的なデプロイ エンティティです。
 
 ```bash
 azure group create TestRG westeurope
 ```
 
-出力
+出力:
 
 ```bash                        
 info:    Executing command group create
@@ -263,7 +264,7 @@ info:    group create command OK
 
 ## ストレージ アカウントの作成
 
-数あるシナリオの中で特に、VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。つまり、リソース グループを作成したら、そのほぼ直後には必ずストレージ アカウントを作成します。
+VM ディスクと追加するその他のデータ ディスク用のストレージ アカウントが必要になります。リソース グループを作成したら、そのほぼ直後にストレージ アカウントを作成します。
 
 ここでは、`azure storage account create` コマンドを使用し、アカウントの場所、アカウントを制御するリソース グループ、必要なストレージ サポートの種類を渡します。
 
@@ -275,7 +276,7 @@ azure storage account create \
 computeteststore
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command storage account create
@@ -305,14 +306,14 @@ data:
 info:    group show command OK
 ```
 
-ここでは、`--json` Azure CLI オプションと共に [jq](https://stedolan.github.io/jq/) ツール (JSON の解析には **jsawk** やお好みの言語ライブラリを使用できます) を使用し、`azure group show` コマンドを使用してリソース グループを調べることができます。
+`--json` Azure CLI オプションと [jq](https://stedolan.github.io/jq/) ツールで、`azure group show` コマンドを使ってリソース グループを調べます。(JSON を解析する**jsawk** または任意の言語ライブラリを使用します。)
 
 ```bash
 azure group show TestRG --json | jq                                                                                      
 ```
 
 
-出力
+出力:
 
 ```bash
 {
@@ -344,7 +345,7 @@ azure group show TestRG --json | jq
 }
 ```
 
-CLI を使用してストレージ アカウントを調査するには、まず次のコマンドの一種を使用してアカウント名とキーを設定する必要があるため、この記事のストレージ アカウント名を自身のストレージ アカウント名に置き換えます。
+CLI を使用して、ストレージ アカウントを調査するためには、まず、次のコマンドのバリエーションでアカウント名とキーを設定する必要があります。次の例にあるストレージ アカウントの名前を選択したものに置き換えます。
 
 ```
 AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show computeteststore --resource-group testrg --json | jq -r '.string')"
@@ -356,7 +357,7 @@ AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show c
 azure storage container list
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command storage container list
@@ -369,13 +370,13 @@ info:    storage container list command OK
 
 ## 仮想ネットワークとサブネットの作成
 
-VM をインストールできるように、Azure Virtual Network とサブネットを作成する必要があります。
+次に、VM をインストールできるように、Azure で実行中の仮想ネットワークとサブネットを作成する必要があります。
 
 ```bash
 azure network vnet create -g TestRG -n TestVNet -a 192.168.0.0/16 -l westeurope
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network vnet create
@@ -398,7 +399,7 @@ info:    network vnet create command OK
 azure group show TestRG --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -437,13 +438,13 @@ azure group show TestRG --json | jq '.'
 }
 ```
 
-次に、VM のデプロイ先となるサブネットを `TestVnet` 仮想ネットワーク内に作成します。次に示すように、`azure network vnet subnet create` コマンドで既に作成済みのリソース (`TestRG` リソース グループ、`TestVNet` 仮想ネットワーク) を使用し、さらにサブネット名 `FrontEnd` とサブネット アドレス プレフィックス `192.168.1.0/24` を追加します。
+次に、VM のデプロイ先となるサブネットを `TestVnet` 仮想ネットワーク内に作成します。すでに作成したリソース ( `TestRG`リソース グループと `TestVNet` 仮想ネットワーク) と `azure network vnet subnet create` コマンドを使用します。以下の通り、サブネット名 `FrontEnd` とサブネットのアドレス プレフィックス `192.168.1.0/24` を追加します。
 
 ```bash
 azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network vnet subnet create
@@ -459,13 +460,13 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-サブネットは論理的に仮想ネットワーク内に存在するため、サブネットの情報を探すには、若干異なるコマンド `azure network vnet show` を使用します。ただし、**jq** を使用して JSON 出力を調査するやり方は同じです。
+サブネットは論理的に仮想ネットワーク内に存在するため、サブネットの情報を探すには、若干異なるコマンドを使用します。使用するコマンドは `azure network vnet show` ですが、**jq** で JSON 出力を確認し続けます。
 
 ```bash
 azure network vnet show TestRG TestVNet --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -498,13 +499,13 @@ azure network vnet show TestRG TestVNet --json | jq '.'
 
 ## パブリック IP アドレス (PIP) の作成
 
-ここでは、`azure network public-ip create` コマンドを使用して、ロード バランサーに割り当て、インターネットから VM に接続できるようにするためのパブリック IP アドレス (PIP) を作成します。既定値は動的アドレスであるため、`-d testsubdomain` オプションを使用して、**cloudapp.azure.com** ドメインに名前付き DNS エントリを作成します。
+パブリック IP アドレス (PIP) を作成して、ロード バランサーに割り当てます。`azure network public-ip create` コマンドを使用して、インターネットから VM に接続できます。既定のアドレスは動的であるため、`-d testsubdomain` オプションを使用して、**cloudapp.azure.com** ドメインに名前付き DNS エントリを作成します。
 
 ```bash
 azure network public-ip create -d testsubdomain TestRG TestPIP westeurope
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network public-ip create
@@ -529,7 +530,7 @@ info:    network public-ip create command OK
 azure group show TestRG --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -582,13 +583,13 @@ azure group show TestRG --json | jq '.'
 }
 ```
 
-また、通常どおり、より完全な `azure network public-ip show` コマンドを使用して、サブドメインの完全修飾ドメイン名 (FQDN) など、リソースの詳細を調査することができます。パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていないことに注意してください。そのため、ロード バランサーが必要になりますが、これはまだ作成されていません。
+より完全な `azure network public-ip show` コマンドを使用して、サブドメインの完全修飾ドメイン名 (FQDN) など、リソースの詳細を調査することができます。パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていないことに注意してください。そのため、ロード バランサーが必要になりますが、これはまだ作成されていません。
 
 ```bash
 azure network public-ip show TestRG TestPIP --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -608,7 +609,7 @@ azure network public-ip show TestRG TestPIP --json | jq '.'
 ```
 
 ## ロード バランサーと IP プールの作成
-ロード バランサーを作成すると、Web アプリケーションの実行時などに、複数の VM にトラフィックを分散することができます。メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。
+ロード バランサーを作成するときに複数の VM にトラフィックを分散できます。たとえば、Web アプリケーションを実行している場合に、これを行うことができます。メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。
 
 次によってロード バランサーを作成します。
 
@@ -620,7 +621,7 @@ azure network lb create -g TestRG -n TestLB -l westeurope
 azure network lb create -g TestRG -n TestLB -l westeurope
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb create
@@ -633,7 +634,7 @@ data:    Location                        : westeurope
 data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
-現在ロード バランサーは全く空であるため、いくつかの IP プールを作成しましょう。ロード バランサーには、フロント エンドに 1 つ、バックエンドに 1 つの 2 つの IP プールを作成します。フロント エンド IP プールは、公開するもので、以前に作成した PIP を割り当てます。バック エンド プールは、VM の接続先に使用し、トラフィックがロード バランサーを経由してそれらに流れるようにします。
+現在ロード バランサーは全く空であるため、いくつかの IP プールを作成しましょう。ロード バランサーには、フロントエンドに 1 つ、バックエンドに 1 つの 2 つの IP プールを作成します。フロントエンド IP プールは公開されます。以前に作成した PIP を割り当てる場所にもなります。接続する VM の保存先として、バックエンド プール を使用します。これにより、トラフィックは、VM にロード バランサーを経由できます。
 
 まず、フロント エンド IP プールを作成しましょう。
 
@@ -641,7 +642,7 @@ info:    network lb create command OK
 azure network lb frontend-ip create -g TestRG -l TestLB -n TestFrontEndPool -i TestLBPIP
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb frontend-ip create
@@ -663,7 +664,7 @@ info:    network lb frontend-ip create command OK
 azure network lb address-pool create -g TestRG -l TestLB -n TestBackEndPool
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb address-pool create
@@ -674,13 +675,13 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-`azure network lb show` によって JSON 出力を調べて、ロード バランサーの様子をチェックできます。
+`azure network lb show` によって JSON 出力を調べて、ロード バランサーの様子を確認できます。
 
 ```bash
 azure network lb show TestRG TestLB --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -720,13 +721,13 @@ azure network lb show TestRG TestLB --json | jq '.'
 ```
 
 ## ロード バランサーの NAT 規則の作成
-トラフィックが実際にロード バランサーを経由するようにするには、受信アクションまたは送信アクションを指定する NAT 規則を作成する必要があります。使用するプロトコルを指定して、必要に応じて、外部ポートを内部ポートにマップします。この環境では、SSH がロード バランサーを経由して VM に到達できるようにするいくつかの規則を作成しましょう。VM の TCP ポート 22 (これは後で作成します) に送信する TCP ポート 4222 と 4223 を設定します。
+トラフィックがロード バランサーを経由するようにするには、受信アクションまたは送信アクションを指定する NAT 規則を作成する必要があります。使用するプロトコルを指定して、必要に応じて、外部ポートを内部ポートにマップします。この環境では、SSH がロード バランサーを経由して VM に到達できるようにするいくつかの規則を作成しましょう。VM の TCP ポート 22 (これは後で作成します) に送信する TCP ポート 4222 と 4223 を設定します。
 
 ```bash
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM1-SSH -p tcp -f 4222 -b 22
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb inbound-nat-rule create
@@ -752,14 +753,14 @@ SSH に対する 2 つ目の NAT 規則について、手順を繰り返しま�
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-さらに、規則を IP プールに接続する TCP ポート 80 の NAT 規則の作成に進みましょう。規則を VM に個別に接続する代わりに、VM を IP プールに追加または削除するだけで、ロード バランサーに自動的にトラフィックのフローを調整させることができることを意味します。
+さらに、規則を IP プールに接続する TCP ポート 80 の NAT 規則の作成に進みましょう。これを行う場合、VM にルールを個別にフックする代わりに、IP プールから VM を単に追加または削除できます。ロード バランサーは、トラフィックのフローを自動的に調整します。
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
      -t TestFrontEndPool -o TestBackEndPool
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb rule create
@@ -783,13 +784,13 @@ info:    network lb rule create command OK
 
 ## ロード バランサーの正常性プローブの作成
 
-正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。正常性プローブの詳細については、「[Load Balancer プローブ](../load-balancer/load-balancer-custom-probe-overview.md)」を参照してください。
+正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。正常性プローブの詳細については、[Load Balancer のプローブ](../load-balancer/load-balancer-custom-probe-overview.md)に関するページをご覧ください。
 
 ```bash
 azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command network lb probe create
@@ -808,7 +809,13 @@ info:    network lb probe create command OK
 ここでは、正常性チェックに 15 秒の間隔を指定したため、最大 4 プローブ (1 分) 失敗すると、ロード バランサーによりホストが機能しなくなったと見なされます。
 
 ## ロード バランサーの確認
-これでロード バランサーの構成はすべて完了しました。ロード バランサーを作成し、フロント エンド IP プールを作成して、パブリック IP をそれに割り当て、VM に接続するバックエンド IP プールを作成しました。次に、管理用に VM への SSH 通信を許可する NAT 規則と Web アプリ用に TCP ポート 80 を許可する規則を作成しました。最後に、機能しなくなり、コンテンツを提供しなくなった VM にユーザーがアクセスを試みないようにするため、VM を定期的にチェックする正常性プローブを追加しました。
+ロード バランサーの構成を確認できました。実行する手順を次に示します。
+
+1. 最初に、ロード バランサーを作成します。
+2. フロントエンド IP プールを作成し、パブリック IP が割り当てられます。
+3. 次に、VM が接続できるバックエンド IP プールを作成します。
+4. その後、管理用に VM への SSH 通信を許可する NAT 規則と Web アプリ用に TCP ポート 80 を許可する規則を作成します。
+5. 最後に、VM を定期的にチェックする正常性プローブを追加します。これにより、機能しないまたはコンテンツを提供しない VM にユーザーがアクセスを試みなくてもよくなります。
 
 ロード バランサーがどのように見えるようになったか確認しましょう。
 
@@ -816,7 +823,7 @@ info:    network lb probe create command OK
 azure network lb show -g TestRG -n TestLB --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -935,7 +942,7 @@ azure network lb show -g TestRG -n TestLB --json | jq '.'
 
 ## Linux VM で使用する NIC の作成
 
-NIC はプログラムで使用できるほか、その使用に規則を適用したり、複数の NIC を使用したりすることができます。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けていることに注意してください。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
+ ルールを適用するため、NIC はプログラムで使用できます。複数でも可能になります。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けていることに注意してください。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -943,9 +950,9 @@ azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name T
      -e /subscriptions/<GUID>/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/inboundNatRules/VM1-SSH
 ```
 
-出力
+出力:
 
-```bash 
+```bash
 info:    Executing command network nic create
 + Looking up the subnet "FrontEnd"
 + Looking up the network interface "LB-NIC1"
@@ -970,13 +977,13 @@ data:
 info:    network nic create command OK
 ```
 
-詳細を確認するには、`azure network nic show` コマンドを使用して、直接リソースを調査します。
+詳細を確認するには、直接リソースを調査します。このような場合には、`azure network nic show` コマンドを使用します。
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
 ```
 
-出力
+出力:
 
 ```bash
 {
@@ -1018,7 +1025,7 @@ azure network nic show TestRG LB-NIC1 --json | jq '.'
 }
 ```
 
-再度バック エンド IP プールに接続する 2 つ目の NIC と今度は SSH トラフィックを許可する 2 つ目の NAT 規則を作成しましょう。
+次に、バックエンド IP プールにもう一度フックして、2 つ目の NIC を作成します。ここで 2 つ目の NAT 規則が SSH トラフィックを許可します。
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -1028,7 +1035,7 @@ azure network nic create -g TestRG -n LB-NIC2 -l westeurope --subnet-vnet-name T
 
 ## ネットワーク セキュリティ グループと規則の作成
 
-ここで、ネットワーク セキュリティ グループ (NSG) と、NIC へのアクセスを統制する受信規則を作成します。
+ここで、NSG と、NIC へのアクセスを統制する受信規則を作成します。
 
 ```bash
 azure network nsg create TestRG TestNSG westeurope
@@ -1046,7 +1053,7 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想ネットワーク インターフェイス カード (NIC) にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。これは、ポートを開くためのネットワーク接続に関する規則であり、クラシック デプロイにおけるエンドポイントではないため、通常は動的である**任意の**要求元ポートからの受信要求を受け入れるために `--source-port-range` を "*" (既定値) にしておく必要があります。
+> [AZURE.NOTE] 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。これは、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。これは、ポートを開くことを意味し、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れなければなりません。ポートは、通常動的です。
 
 ## NIC へのバインド
 
@@ -1061,7 +1068,7 @@ azure network nic set -g TestRG -n LB-NIC2 -o TestNSG
 ```
 
 ## 可用性セットの作成
-可用性セットにより、障害ドメインおよびアップグレード ドメインと呼ばれるドメインに VM を分散できます。VM の可用性セットを作成しましょう。
+可用性セットにより、障害ドメインおよびアップグレード ドメインに VM を分散できます。VM の可用性セットを作成しましょう。
 
 ```bash
 azure availset create -g TestRG -n TestAvailSet -l westeurope
@@ -1069,15 +1076,22 @@ azure availset create -g TestRG -n TestAvailSet -l westeurope
 
 障害ドメインは共通の電源とネットワーク スイッチを使用する仮想マシンのグループを定義します。既定で、可用性セット内に構成された仮想マシンは、最大 3 つの障害ドメイン間で分散されます。つまり、これらの障害ドメインのいずれかのハードウェアの問題が、アプリを実行している各 VM に影響しません。VM を可用性セットに配置すると、Azure は自動的に VM を障害ドメイン間で分散します。
 
-アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。計画済みメンテナンス中、アップグレード ドメインの再起動は順番に処理されない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。ここでも、VM を可用性セットに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
+アップグレード ドメインは、仮想マシンと、同時に再起動できる基礎となる物理ハードウェアのグループを示しています。計画済みメンテナンス中、アップグレード ドメインの再起動は順次ではない場合がありますが、一度に再起動されるアップグレードは 1 つのみです。また、VM を可用性サイトに配置すると、Azure は自動的に VM をアップグレード ドメイン間で分散します。
 
-詳細については、「[仮想マシンの可用性管理](./virtual-machines-linux-manage-availability.md)」を参照してください。
+詳細については、「[VMの可用性管理](./virtual-machines-linux-manage-availability.md)」を参照してください。
 
 ## Linux VM の作成
 
-これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードなしの SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md) に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。イメージは `azure vm image list westeurope canonical | grep LTS` コマンドを使用して選択しました。この場合は、`canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` を使用しますが、最後のフィールドでは `latest` を渡して、今後常に最新ビルドを入手できるようにします (使用する文字列は `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` となります)。
+これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md) に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。
 
-> [AZURE.NOTE] この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キー ペアがない場合は、次のいずれかの方法で作成できます。<br /> 1. `azure vm create --generate-ssh-keys` オプションを使用して自動的に作成する。2. [手順に従って自分で手動で作成する](virtual-machines-linux-ssh-from-linux.md)。<br /> また、`azure vm create --admin-username --admin-password` オプションを使用することもできます。この場合、VM が作成されると、一般的に安全性の低いユーザー名とパスワードを使用して SSH 接続が認証されます。
+コマンド `azure vm image list westeurope canonical | grep LTS` を使用してイメージを選択します。この例では、 `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` を使用します。最後のフィールドでは、今後常に直近に構築されたように `latest` を渡します。(使用する文字列は `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` です)。
+
+この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キーのペアがない場合、作成することができます。
+
+- 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
+- 手動では [自分で作成する手順](virtual-machines-linux-ssh-from-linux.md) を使用します。
+
+また、VM を作成した後、SSH 接続を認証するのに--管理パスワード方法を使用できます。この方法は通常安全性が低いです。
 
 `azure vm create` コマンドにすべてのリソースと情報を指定して、VM を作成します。
 
@@ -1097,7 +1111,7 @@ azure vm create \
     --admin-username ops
 ```
 
-出力
+出力:
 
 ```bash
 info:    Executing command vm create
@@ -1116,13 +1130,13 @@ info:    The storage URI 'https://computeteststore.blob.core.windows.net/' will 
 info:    vm create command OK
 ```
 
-すぐに既定の SSH キーを使用して VM に接続でき、ロード バランサーを通過しているため、適切なポートを指定していることを確認できます (この例の最初の VM の場合は、ポート 4222 から VM に送信する NAT 規則を設定しました)。
+すぐに、既定の SSH キーを使用して VM に接続できるようになります。ロード バランサー経由で渡されるため、適切なポートを指定することを確認します。(最初の VM では、ポート 4222 を VM に転送する NAT 規則を設定します。)
 
 ```bash
  ssh ops@testlb.westeurope.cloudapp.azure.com -p 4222
 ```
 
-出力
+出力:
 
 ```bash
 The authenticity of host '[testlb.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
@@ -1177,13 +1191,13 @@ azure vm create \
     --admin-username ops
 ```
 
-ここで、`azure vm show testrg testvm` コマンドを使用して、これまでに作成したものを確認できます。この時点では、Azure にはロード バランサーの背後に実行中の Ubuntu VM があります。この VM には、所有する SSH キー ペアのみを使用してログインできます。パスワードは無効になっています。nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
+ここで、`azure vm show testrg testvm` コマンドを使用して、これまでに作成したものを確認できます。この時点では、Azure のロード バランサーの背後で Ubuntu VM が実行中です。この VM には、所有する SSH キー ペアのみを使用してサインインできます (パスワードは無効になっているため)。nginx または httpd をインストールし、Web アプリをデプロイして、ロード バランサーを経由して両方の VM に到達するトラフィック フローを確認できます。
 
 ```bash
 azure vm show TestRG TestVM1
 ```
 
-Output
+出力:
 
 ```bash
 info:    Executing command vm show
@@ -1241,13 +1255,13 @@ info:    vm show command OK
 
 
 ## 環境をテンプレートとしてエクスポートします。
-これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する実稼働環境を作成する場合はどのようにすべきでしょうか。 Resource Manager は JSON テンプレートを使用して、環境内のすべてのパラメーターを定義します。それにより、 JSON テンプレートを参照して環境全体を構築できます。[JSON テンプレートを手動で構築](../resource-group-authoring-templates.md) できます。または単純にJSON テンプレートを作成する既存の環境をエクスポートすることもできます。
+これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。つまり、この JSON テンプレートを参照することで全体の環境を構築することができます。[JSON テンプレートを手動で構築](../resource-group-authoring-templates.md) できます。または単純にJSON テンプレートを作成する既存の環境をエクスポートすることもできます。
 
 ```bash
 azure group export TestRG
 ```
 
-現在の作業ディレクトリ内に`TestRG.json` ファイルが作成されます。このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、VM などリソース名が表示されます。上述のとおり、`-p` または `--includeParameterDefaultValue` の `azure group export` コマンドへの追加、リソース名を指定して JSON テンプレートの編集、またはリソース名だけを指定した [parameters.json ファイルの作成](../resource-group-authoring-templates.md#parameters) によりテンプレート ファイル にこれらの内容を設定できます。
+現在の作業ディレクトリ内に`TestRG.json` ファイルが作成されます。このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、VM などを含むリソース名が表示されます。前に示した `azure group export` コマンドに `-p` または `--includeParameterDefaultValue` を追加することでテンプレート ファイルにこれらを入力できます。リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../resource-group-authoring-templates.md#parameters) します。
 
 テンプレートから新しい環境の作成
 
@@ -1255,10 +1269,10 @@ azure group export TestRG
 azure group deployment create -f TestRG.json -g NewRGFromTemplate
 ```
 
-段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法など、[テンプレートからのデプロイについての詳細](../resource-group-template-deploy-cli.md) を確認できます。
+[テンプレートからデプロイする方法に関する詳細](../resource-group-template-deploy-cli.md) をご確認ください。段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
 ## 次のステップ
 
-これで、複数のネットワーク コンポーネントと VM を操作する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
+これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

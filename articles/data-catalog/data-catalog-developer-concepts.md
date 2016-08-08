@@ -4,7 +4,7 @@
    services="data-catalog"
    documentationCenter=""
    authors="spelluru"
-   manager=""
+   manager="paulettm"
    editor=""
    tags=""/>
 <tags 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/10/2016"
-   ms.author="spelluru"/>
+   ms.date="07/25/2016"
+   ms.author="derrickv"/>
 
 # Azure Data Catalog 開発者の概念
 
@@ -117,7 +117,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。ルート型ごとに定義されているビューがあり、ビューに含まれる資産と注釈が説明されています。ビュー名は、REST API を使用して資産を発行するときに、対応する {view\_name} url セグメントで使用する必要があります。
 
-<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
+<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>Preview<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。これには、SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなどがあります。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
 <tr><td>Report ("reports")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container ("containers")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。</td></tr></table>
 
 ### 注釈の型
@@ -165,6 +165,10 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 <tr><td>ColumnsDataProfile ("columnsDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>列のデータ プロファイルの配列。</td></tr>
+
+<tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
+<tr><td></td><td>columnName</td><td>String</td><td>この分類が参照する列の名前。</td></tr>
+<tr><td></td><td>分類</td><td>String</td><td>この列のデータの分類。</td></tr>
 
 <tr><td>Documentation ("documentation")</td><td></td><td></td><td>特定の資産には 1 つのドキュメントしか関連付けることができません。</td></tr>
 <tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
@@ -278,10 +282,10 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。項目がすべてのユーザーによって更新される必要がある場合、**共同作成者**は、項目が最初に公開されたときに **roles** プロパティで特別なセキュリティ プリンシパル <Everyone> に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定に対してサポートされている唯一の値は、<Everyone> です。つまり、**共同作成者**には、項目または <Everyone> を作成したユーザーのみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。すべてのユーザーが項目を更新できるようにする必要がある場合は、項目を最初に公開するときに、**roles** プロパティで**共同作成者**を <Everyone> (特別なセキュリティ プリンシパル) に設定する必要があります (次の例を参照)。**共同作成者**は変更することができず、項目の有効期間中同じままになります (つまり、**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。**共同作成者**の明示的な設定でサポートされている唯一の値は <Everyone> です。つまり、**共同作成者**には、項目を作成したユーザーまたは <Everyone> のみを指定できます。
 
 ###例
-**項目を公開する場合は、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は「00000000-0000-0000-0000-000000000201」です。**POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
+**項目を公開するときに、共同作成者を <Everyone> に設定します。** 特別なセキュリティ プリンシパル <Everyone> の objectId は、"00000000-0000-0000-0000-000000000201" です。**POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
   > [AZURE.NOTE] HTTP クライアント実装の中には、サーバーからの 302 に対する応答として要求を自動的に再発行するものもありますが、通常は要求から Authorization ヘッダーが削除されます。Authorization ヘッダーは ADC への要求に必要であるため、ADC で指定されたリダイレクト場所に要求を再発行する際は、Authorization ヘッダーが引き続き提供されるようにする必要があります。以下のサンプル コードは、.NET HttpWebRequest オブジェクトを使用してこれを実現する方法を示しています。
 
@@ -300,11 +304,53 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 		]
 	}
 
-  **所有者を割り当て、既存のルート項目の可視性を制限します** **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30 { "roles": [ { "role": "Owner", "members": [ { "objectId": "c4159539-846a-45af-bdfb-58efd3772b43", "upn": "user1@contoso.com" }, { "objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f", "upn": "user2@contoso.com" } ] } ], "permissions": [ { "principal": { "objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a", "upn": "user3@contoso.com" }, "rights": [ { "right": "Read" } ] }, { "principal": { "objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31", "upn": "user4@contoso.com" }, "rights": [ { "right": "Read" } ] } ] }
+  **所有者を割り当て、既存のルート項目に対する可視性を制限します。** **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+
+	{
+		"roles": [
+			{
+				"role": "Owner",
+				"members": [
+					{
+						"objectId": "c4159539-846a-45af-bdfb-58efd3772b43",
+						"upn": "user1@contoso.com"
+					},
+					{
+						"objectId": "fdabd95b-7c56-47d6-a6ba-a7c5f264533f",
+						"upn": "user2@contoso.com"
+					}
+				]
+			}
+		],
+		"permissions": [
+			{
+				"principal": {
+					"objectId": "27b9a0eb-bb71-4297-9f1f-c462dab7192a",
+					"upn": "user3@contoso.com"
+				},
+				"rights": [
+					{
+						"right": "Read"
+					}
+				]
+			},
+			{
+				"principal": {
+					"objectId": "4c8bc8ce-225c-4fcf-b09a-047030baab31",
+					"upn": "user4@contoso.com"
+				},
+				"rights": [
+					{
+						"right": "Read"
+					}
+				]
+			}
+		]
+	}
 
 > [AZURE.NOTE] PUT では、本文に項目のペイロードを指定する必要はありません。 PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
 
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

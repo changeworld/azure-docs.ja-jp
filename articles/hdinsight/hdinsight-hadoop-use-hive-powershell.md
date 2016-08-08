@@ -76,7 +76,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
         #      Linux-based HDInsight
         $queryString = "set hive.execution.engine=tez;" +
                     "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasb:///example/data/';" +
+                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
                     "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
 
         #Create an HDInsight Hive job definition
@@ -135,7 +135,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
         -ResourceGroupName $resourceGroup)[0].Value
         $queryString = "set hive.execution.engine=tez;" +
                     "DROP TABLE log4jLogs;" +
-                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasb:///example/data/';" +
+                    "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';" +
                     "SELECT * FROM log4jLogs WHERE t4 = '[ERROR]';"
         Invoke-AzureRmHDInsightHiveJob `
             -StatusFolder "statusout" `
@@ -150,9 +150,9 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 		2012-02-03	18:55:54	SampleClass1	[ERROR]	incorrect	id
 		2012-02-03	19:25:27	SampleClass4	[ERROR]	incorrect	id
 
-	> [AZURE.NOTE] より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。次のスニペットでは、**Invoke-Hive** コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。HiveQL スクリプト ファイルは、WASB にアップロードする必要があります。
+	> [AZURE.NOTE] より長い HiveQL クエリの場合は、Azure PowerShell の **Here-Strings** コマンドレットや HiveQL スクリプト ファイルを使用できます。次のスニペットでは、**Invoke-Hive** コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。HiveQL スクリプト ファイルは、wasbs:// にアップロードする必要があります。
 	>
-	> `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
+	> `Invoke-AzureRmHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
 	>
 	> **Here-Strings** の詳細については、「<a href="http://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>」をご覧ください。
 
@@ -188,4 +188,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

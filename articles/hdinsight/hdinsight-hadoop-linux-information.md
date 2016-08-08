@@ -82,7 +82,7 @@ Hadoop 関連ファイルは、`/usr/hdp` のクラスター ノードにあり�
 * __2.2.4.9-1__: このディレクトリは HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられるため、クラスター上の番号がここに記載されたものと異なる場合があります。
 * __current__: このディレクトリには、__2.2.4.9-1__ ディレクトリ下のディレクトリへのリンクが含まれており、(変わる可能性がある) バージョン番号を、ファイルにアクセスするたびに入力する手間を省くために存在します。
 
-サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システム (HDFS) または Azure BLOB ストレージの '/example' または 'wasb:///example' にあります。
+サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システム (HDFS) または Azure BLOB ストレージの '/example' または 'wasbs:///example' にあります。
 
 ## HDFS、Azure BLOB ストレージ、ストレージのベスト プラクティス
 
@@ -98,11 +98,11 @@ HDInsight の既定の保管場所であるため、通常は何もしなくて�
 
 	hadoop fs -ls /example/data
 
-一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **WASB://** を付けることができます。
+一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **wasb://**、または wasbs://**** を付けることができます。
 
-HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**WASB://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
+HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**wasbs://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
-	hadoop fs -ls wasb://mycontainer@mystorage.blob.core.windows.net/example/data
+	hadoop fs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
 
 ### クラスターで使用している BLOB ストレージ
 
@@ -116,7 +116,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
     このコードは、次のような値を返します。ここで、__CONTAINER__ は既定のコンテナー、__ACCOUNTNAME__ は Azure ストレージ アカウント名です。
 
-        wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+        wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
 1. ストレージ アカウントのリソース グループを取得し、[Azure CLI](../xplat-cli-install.md) を使用します。次のコマンドで、__ACCOUNTNAME__ を、Ambari から取得したストレージ アカウント名に置き換えます。
 
@@ -150,7 +150,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 クラスターから Hadoop コマンドを使用する以外にも、BLOB にアクセスするさまざまな方法があります。
 
-* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md): Azure を使用するためのコマンドライン インターフェイス コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` を参照してください。
+* [Mac、Linux、Windows 用の Azure CLI](../xplat-cli-install.md): Azure を使用するためのコマンドライン インターフェイス コマンド。インストール後、ストレージの使用方法については `azure storage`、BLOB 特有のコマンドについては `azure blob` をご覧ください。
 
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Azure Storage で BLOB を使用するための Python スクリプト。
 
@@ -206,7 +206,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
 
 	* __Storm UI__: 次の手順により、Storm UI を使用してトポロジを再調整します。
 
-		1. Web ブラウザーで \_\___https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
+		1. Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net/stormui__ に移動します。CLUSTERNAME は実際の Storm クラスターの名前に置き換えます。メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
 
 		3. 再調整するトポロジを選択し、__[再調整]__ ボタンをクリックします。再調整の操作が実行されるまでの待ち時間を入力します。
 
@@ -230,7 +230,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [R](hdinsight-hadoop-r-scripts-linux.md)
 * [Solr](hdinsight-hadoop-solr-install-linux.md)
 
-独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight でのスクリプト アクションの開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
+独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 
 ###Jar ファイル
 
@@ -257,4 +257,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="アプリケーション用の Web フロントエンドの作成 | Microsoft Azure"
+   pageTitle="ASP.NET Core を使用したアプリケーション用の Web フロントエンドの作成 | Microsoft Azure"
    description="ASP.NET Core Web API プロジェクト、および ServiceProxy を介したサービス間通信を使用して、Web に Service Fabric アプリケーションを公開します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,11 +13,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
+   ms.date="07/22/2016"
    ms.author="seanmck"/>
 
 
-# アプリケーション用の Web サービス フロントエンドの構築
+# ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築
 
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
 
@@ -27,7 +27,7 @@
 
 ASP.NET Core は軽量のクロスプラットフォーム Web 開発フレームワークであり、これを使用すると、最新の Web UI と Web API を作成できます。ASP.NET Web API プロジェクトを既存のアプリケーションに追加してみましょう。
 
->[AZURE.NOTE] このチュートリアルを実行するには、[.NET Core RC2 をインストール][dotnetcore-install]する必要があります。
+>[AZURE.NOTE] このチュートリアルを実行するには、[.NET Core 1.0 をインストール][dotnetcore-install]する必要があります。
 
 1. ソリューション エクスプローラーで、アプリケーション プロジェクトの **[サービス]** を右クリックし、**[追加]、[Service Fabric サービスの新規作成]** の順に選択します。
 
@@ -205,11 +205,14 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     定期的にブラウザーを更新して、カウンターの値が更新されるのを確認します。
 
 
+>[AZURE.WARNING] テンプレートで提供される Kestrel という ASP.NET Core Web サーバーは、[現在、インターネットに直接接続するトラフィックを処理することはできません](https://docs.asp.net/en/latest/fundamentals/servers.html#kestrel)。運用環境のシナリオでは、[API Management][api-management-landing-page] の背後にある ASP.NET Core エンドポイントまたは他のインターネット接続ゲートウェイをホストすることを検討してください。IIS 内でのデプロイメントでは、Service Fabric がサポートされていないことに注意してください。
+
+
 ## アクターについて
 
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。ただし、非常によく似たモデルに従ってアクターと対話することもできます。実際にはもう少し簡単です。
 
-アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に指定されます。そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要はありません。
+アクター プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。通信チャネルは自動的に指定されます。そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要がありません。
 
 ## ローカル クラスター上の Web サービスのしくみ
 
@@ -240,5 +243,6 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
+[api-management-landing-page]: https://azure.microsoft.com/ja-JP/services/api-management/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

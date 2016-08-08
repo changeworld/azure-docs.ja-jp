@@ -99,9 +99,9 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
     	yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
 
-    このジョブの入力は **wasb:///example/data/gutenberg/davinci.txt** にあります。
+    このジョブの入力は **wasbs:///example/data/gutenberg/davinci.txt** にあります。
 
-    この例の出力は **wasb:///example/data/davinciwordcount** にあります。
+    この例の出力は **wasbs:///example/data/davinciwordcount** にあります。
 
     > [AZURE.NOTE] wordcount サンプルのヘルプで説明したように、複数の入力ファイルを指定することもできます。たとえば、`hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` は davinci.txt と ulysses.txt の両方の単語をカウントします。
 
@@ -196,11 +196,11 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 
 次の手順を使用してデータを生成、ソートし、出力を検証します。
 
-1. 10 GB のデータを生成します。データは、HDInsight クラスターの既定の記憶域 **wasb:///example/data/10GB-sort-input** に格納されます。
+1. 10 GB のデータを生成します。データは、HDInsight クラスターの既定の記憶域 **wasbs:///example/data/10GB-sort-input** に格納されます。
 
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
 
-	`-Dmapred.map.tasks` は、このジョブに使用する map タスクの数を Hadoop に伝えます。最後の 2 つのパラメーターは、10 GB 分のデータを作成し、それを **wasb:///example/data/10GB-sort-input** に格納するようにジョブに指示します。
+	`-Dmapred.map.tasks` は、このジョブに使用する map タスクの数を Hadoop に伝えます。最後の 2 つのパラメーターは、10 GB 分のデータを作成し、それを **wasbs:///example/data/10GB-sort-input** に格納するようにジョブに指示します。
 
 2. 次のコマンドを使用して、データをソートします。
 
@@ -236,4 +236,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

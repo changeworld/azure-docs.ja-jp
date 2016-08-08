@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/25/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して OData ソースからデータを移動する
@@ -122,7 +122,7 @@
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%M"
+	                        "format": "MM"
 	                    }
 	                },
 	                {
@@ -130,7 +130,7 @@
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%d"
+	                        "format": "dd"
 	                    }
 	                },
 	                {
@@ -138,7 +138,7 @@
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%H"
+	                        "format": "HH"
 	                    }
 	                }
 	            ]
@@ -290,4 +290,4 @@ OData データ ストアからデータを移動するとき、OData データ�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

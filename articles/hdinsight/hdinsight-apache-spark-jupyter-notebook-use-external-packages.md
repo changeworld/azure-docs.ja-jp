@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -35,7 +35,7 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
 
 ## Jupyter Notebook で外部のパッケージを使用する 
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -76,7 +76,7 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
 		val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
         option("inferSchema", "true").
-        load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+        load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 7. 前の手順で作成したデータフレームからのデータは、以下のスニペットで表示できます。
 
@@ -110,7 +110,7 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
@@ -126,4 +126,4 @@ HDInsight (Linux) 上の Apache Spark クラスターに標準では搭載され
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

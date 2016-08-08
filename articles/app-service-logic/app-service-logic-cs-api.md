@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -52,7 +52,7 @@ var d = new DateTime.Now; return (d.Minute > 15) && (d.Minute < 30);
 同様に、実行するアクションを指定できます。
 
 アクションへの入力は次のとおりです。
-- **C# の式** - 評価される式。任意のコンテンツを取得するために、`return` ステートメントを含める必要があります。 
+- **C# の式** - 評価される式。任意のコンテンツを取得するために、`return` ステートメントを含める必要があります。
 - **コンテキスト オブジェクト** - トリガーに渡すことができる省略可能なコンテキスト オブジェクト。必要な数だけプロパティを定義できますが、JObject `{ ... }` をベースにする必要があり、キー名を使用してスクリプト内でオブジェクトを参照できます (値は名前に対応する JToken として渡されます)。
 - **ライブラリ** - スクリプトをコンパイルするときに含める .dll ファイルの省略可能な配列。この配列は次の構造を使用し、出力として .dll を使用して Blob Storage コネクタの次に最適に機能します。
 
@@ -112,4 +112,4 @@ return YammerAttachments;
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

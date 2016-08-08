@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/23/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"/>
 
 # 分析ツールとデータ ストレージ オプションをターゲットにした Stream Analytics データ変換出力
@@ -173,7 +173,7 @@ Stream Analytics ジョブの出力として [Power BI](https://powerbi.microsof
 
 ### Power BI アカウントを承認する
 
-1.	Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1.	Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。
 
     ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
 
@@ -318,4 +318,4 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

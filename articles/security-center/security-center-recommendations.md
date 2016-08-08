@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="07/26/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -66,13 +66,13 @@
 |推奨|説明|
 |-----|-----|
 |[サブスクリプションのデータ収集の有効化](security-center-enable-data-collection.md)|各サブスクリプションおよびサブスクリプションのすべての仮想マシン (VM) に対して、セキュリティ ポリシーでデータ収集を有効にすることをお勧めします。|
-|[OS の脆弱性の修復](security-center-resolve-mismatch-baseline-rules.md)|OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。|
+|[OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md)|OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。|
 |[システムの更新の適用](security-center-apply-system-updates.md)|システムの不足しているセキュリティ更新プログラムおよび重要な更新プログラムを VM にデプロイすることをお勧めします。|
 |[システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates)|VM を再起動してシステムの更新プログラムの適用プロセスを完了するよう推奨します。|
 |[Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)|Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。|
 |[アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)|WAF の構成を完了するには、WAF アプライアンスにトラフィックを再ルーティングする必要があります。この推奨事項に従うと、必要なセットアップの変更が完了します。|
 |[次世代ファイアウォールの追加](security-center-add-next-generation-firewall.md)|セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。|
-|[NGFW 経由に限定したトラフィックのルーティング](security-center-route-traffic-through-ngfw-only.md)|VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。|
+|[NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)|VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。|
 |[Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)|マルウェア対策プログラムを VM (Windows VM のみ) にプロビジョニングすることをお勧めします。|
 |[Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md)|Endpoint Protection のエラーを解決することをお勧めします。|
 |[サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](security-center-enable-network-security-groups.md)|サブネットまたは VM で NSG を有効にすることをお勧めします。|
@@ -115,4 +115,4 @@
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

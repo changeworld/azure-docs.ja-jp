@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -72,4 +72,4 @@ Logic Apps の[ワークフロー定義言語](http://aka.ms/logicappsdocs)に�
 
 このドキュメントには、今後も引き続き例とシナリオを追加します。ご希望の例やシナリオがありましたら、以下のコメント セクションを使用してお知らせください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

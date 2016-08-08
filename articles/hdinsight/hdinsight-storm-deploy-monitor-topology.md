@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/10/2016"
+   ms.date="07/26/2016"
    ms.author="larryfr"/>
 
 #Windows ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -181,4 +181,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 [storm-dashboard-submit]: ./media/hdinsight-storm-deploy-monitor-topology/submit.png
 [storm-dashboard-ui]: ./media/hdinsight-storm-deploy-monitor-topology/storm-ui-summary.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

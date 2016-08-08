@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -41,7 +41,7 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 
 
 ## ロジック アプリの作成
-ここでは、電子メールを受信したときに起動する簡単なロジック アプリを作成します (受信先は、sales@contoso.com) などの営業用の問い合わせ電子メール ID とします)。また、このロジック アプリでは、イベントの作成、差出人の詳細を含めた連絡先の追加、個人用アカウントへの電子メールの送信を行い、最後に、受信を確認したことを知らせる返信を送信します。
+ここでは、電子メールを受信したときに起動する簡単なロジック アプリを作成します (受信先は、sales@contoso.com などの営業用の問い合わせ電子メール ID とします)。また、このロジック アプリでは、イベントの作成、差出人の詳細を含めた連絡先の追加、個人用アカウントへの電子メールの送信を行い、最後に、受信を確認したことを知らせる返信を送信します。
 
 1.	Azure ポータルにサインインし、[新規作成]、[Web とモバイル]、[ロジック アプリ] の順にクリックします。![][1]
 
@@ -131,4 +131,4 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0727_2016-->

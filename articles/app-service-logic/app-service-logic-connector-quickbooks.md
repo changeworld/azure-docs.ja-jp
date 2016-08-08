@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -144,4 +144,4 @@ QuickBooks にアカウントを作成し、同じアカウントの [カテゴ�
 [12]: ./media/app-service-logic-connector-quickbooks/12_Update_Account_Address.png
 [13]: ./media/app-service-logic-connector-quickbooks/13_Create_new_quickbooks_connector.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

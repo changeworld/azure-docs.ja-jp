@@ -319,7 +319,7 @@ ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 
 ### ユーザーの Azure AD でのアプリケーション サービス プリンシパルの ObjectId を取得する
 
-次に、アプリケーション専用のアクセス トークンを使用して、[Azure AD Graph Service Principals](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ServicePrincipalEntity) API に問い合わせを行い、ディレクトリに登録されているアプリケーションのサービス プリンシパルのオブジェクト ID を特定します。
+次に、アプリケーション専用のアクセス トークンを使用して、[Azure AD Graph Service Principals](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) API に問い合わせを行い、ディレクトリに登録されているアプリケーションのサービス プリンシパルのオブジェクト ID を特定します。
 
 ASP.net MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganiation](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L66) メソッドは、この呼び出しを実装しています。
 
@@ -444,4 +444,4 @@ ASP.net MVC サンプル アプリケーションの [RevokeRoleFromServicePrinc
 
 これで完了です。ユーザーは、Azure サブスクリプションをアプリケーションに簡単に接続して管理できるようになりました。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/25/2016"
 	ms.author="nitinme"/>
 
 
@@ -100,12 +100,12 @@ IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for Inte
 			    val conf = new SparkConf().setAppName("MyClusterApp")
 			    val sc = new SparkContext(conf)
 
-			    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+			    val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
 			    //find the rows which have only one digit in the 7th column in the CSV
 				val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
 
-			    rdd1.saveAsTextFile("wasb:///HVACOut")
+			    rdd1.saveAsTextFile("wasbs:///HVACOut")
 			  }
 
 			}
@@ -134,7 +134,7 @@ IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for Inte
 
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。\[Spark Submission] \(Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
@@ -316,4 +316,4 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

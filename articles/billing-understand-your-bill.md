@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/28/2016"
-   ms.author="erihur"/>
+   ms.date="07/21/2016"
+   ms.author="erihur;genli"/>
 
 
 # Microsoft Azure の課金内容の確認
@@ -217,7 +217,7 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 いくつかの新しいフィールドと、csv Version 2 への名前の変更に加え、以下のフィールドのデータに対して、標準化された書式設定があります。
 
-- **インスタンス ID**: [インスタンス ID] フィールドは、プロビジョニングされたサービスのユーザー指定の識別子を示します。現在、インスタンス ID を表現する書式は 2 つあり、リソース名、または完全修飾リソース ID です。Microsoft Azure サービスは、標準化された完全修飾リソース ID でインスタンス ID を表すように移行しています _**(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**_。サービスが新しい書式に移行すると、[インスタンス ID] データ フィールドはリソース名からリソース ID に変わります。リソース ID は、[Azure リソース マネージャー API](https://msdn.microsoft.com/library/azure/dn790567.aspx) がサブスクリプション内のリソースを識別するために使用する書式です。
+- **インスタンス ID**: [インスタンス ID] フィールドは、プロビジョニングされたサービスのユーザー指定の識別子を示します。現在、インスタンス ID を表現する書式は 2 つあり、リソース名、または完全修飾リソース ID です。Microsoft Azure サービスは、標準化された完全修飾リソース ID 形式でインスタンス ID を表すように移行しています _**(/subscriptions/<サブスクリプション ID>/resourcegroups/<リソース グループ名>/providers/<プロバイダー名>/<リソース名>)**_。サービスが新しい書式に移行すると、[インスタンス ID] データ フィールドはリソース名からリソース ID に変わります。リソース ID は、[Azure リソース マネージャー API](https://msdn.microsoft.com/library/azure/dn790567.aspx) がサブスクリプション内のリソースを識別するために使用する書式です。
 
 ![instanceid](./media/billing-understand-your-bill/instanceid.png)
 
@@ -225,7 +225,7 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
-- **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。  
+- **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。
     - 仮想マシン
     - 記憶域
     - [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
@@ -253,4 +253,4 @@ OLD MSDN Articles
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

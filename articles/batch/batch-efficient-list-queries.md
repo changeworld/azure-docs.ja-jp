@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Batch での効率的なリスト クエリ | Microsoft Azure"
-	description="Azure Batch のプール、ジョブ、タスク、コンピューティング ノードなどのエンティティを問い合わせた場合に返されるデータ量を減らすことで、パフォーマンスを向上させます。"
+	description="Batch のエンティティ (プール、ジョブ、タスク、コンピューティング ノードなど) に関する情報を要求する際のクエリにフィルターを適用することでパフォーマンスを高めます。"
 	services="batch"
 	documentationCenter=".net"
 	authors="mmacy"
@@ -13,42 +13,47 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="04/21/2016"
+	ms.date="07/25/2016"
 	ms.author="marsma" />
 
 # 効率的な Azure Batch サービスのクエリ
 
-ここでは、[Batch .NET][api_net] ライブラリを使用する Batch サービスをクエリしたときに返されるデータの量を減らすことによって、Azure Batch アプリケーションのパフォーマンスを強化する方法を説明します。
+ここでは、Azure Batch アプリケーションから [Batch .NET][api_net] ライブラリを使ってジョブやタスク、コンピューティング ノードを照会するときにサービスから返されるデータの量を減らすことでパフォーマンスを強化する方法について説明しています。
 
-Azure Batch は大規模なコンピューティングの機能を提供します。運用環境では、ジョブ、タスク、コンピューティング ノードのようなエンティティは数千単位になることがあります。そのため、そのような項目に関する情報の取得では、サービスからアプリケーションに転送する必要がある大量のデータがクエリごとに生成される可能性があります。クエリごとに返される情報の項目数と種類を制限することで、クエリの時間を短縮し、それによってアプリケーションのパフォーマンスを向上させることができます。
+ほぼすべての Batch アプリケーションでは、Batch サービスに対して問い合わせを行う操作 (各種の監視など) が定期的に、それもかなりの頻度で必要となります。たとえば、ジョブのキューにタスクが残っているかどうかを調べるためには、ジョブ内のすべてのタスクに関するデータを取得する必要があります。プール内のノードの状態を調べるためには、そのプールに存在するすべてのノードのデータを取得する必要があります。この記事では、この種のクエリを最も効率的な方法で実行する方法について説明します。
 
-Azure Batch を使用するほぼすべてのアプリケーションは、Batch サービスをクエリする何らかの種類の監視やその他の操作を、多くの場合定期的な間隔で実行します。たとえば、容量とプールの状態を確認するには、プール内のすべてのノードをクエリする必要があります。ジョブのタスクがまだキューにあるかどうかを確認するには、ジョブ内のすべてのタスクをクエリする必要があります。この記事では、この種のクエリを最も効率的な方法で実行する方法について説明します。
+## DetailLevel での条件指定
 
-次の [Batch .NET][api_net] API コード スニペットは、ジョブに関連付けられているすべてのタスクを、タスクの*すべての*プロパティと共に取得します。
+運用環境の Batch アプリケーションでは、ジョブ、タスク、コンピューティング ノードのようなエンティティは数千単位になることがあります。そのようなエンティティの情報を取得しようとすると、サービスからアプリケーションに転送する必要のある大量のデータがクエリごとに生成される可能性があります。クエリによって返される情報の項目数と種類を制限することで、クエリの時間を短縮し、それによってアプリケーションのパフォーマンスを向上させることができます。
+
+次の [Batch .NET][api_net] API コード スニペットは、ジョブに関連付けられている "*すべて*" のタスクとその "*すべて*" のプロパティを取得します。
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
-IPagedEnumerable<CloudTask> allTasks = batchClient.JobOperations.ListTasks("job-001");
+IPagedEnumerable<CloudTask> allTasks =
+	batchClient.JobOperations.ListTasks("job-001");
 ```
 
-ただし、はるかに効率的なリスト クエリを実行できます。これは、[ODATADetailLevel][odata] オブジェクトを [JobOperations.ListTasks][net_list_tasks] メソッドに指定します。次のスニペットでは、完了したタスクの ID、コマンド ライン、コンピューティング ノード情報のプロパティだけが返されます。
+ただしリスト クエリは、"詳細レベル" を適用した方が、はるかに効率的に実行できます。具体的には、[ODATADetailLevel][odata] オブジェクトを [JobOperations.ListTasks][net_list_tasks] メソッドに指定します。次のスニペットでは、完了したタスクの ID、コマンド ライン、コンピューティング ノード情報のプロパティだけが返されます。
 
 ```csharp
-// Configure an ODATADetailLevel specifying a subset of tasks and their properties to return
+// Configure an ODATADetailLevel specifying a subset of tasks and
+// their properties to return
 ODATADetailLevel detailLevel = new ODATADetailLevel();
 detailLevel.FilterClause = "state eq 'completed'";
 detailLevel.SelectClause = "id,commandLine,nodeInfo";
 
 // Supply the ODATADetailLevel to the ListTasks method
-IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks("job-001", detailLevel);
+IPagedEnumerable<CloudTask> completedTasks =
+	batchClient.JobOperations.ListTasks("job-001", detailLevel);
 ```
 
 上記の例のシナリオでジョブに何千ものタスクがある場合、通常は 2 つ目のクエリの結果は最初のものより速く返されます。Batch .NET API を使って項目をリストするときの ODATADetailLevel の使い方については、[以下](#efficient-querying-in-batch-net)で詳しく説明しています。
 
 > [AZURE.IMPORTANT]
-アプリケーションの最大限の効率とパフォーマンスを確保するために、.NET API リスト呼び出しには*常に* ODATADetailLevel オブジェクトを指定することを強くお勧めします。詳細レベルを指定することによって、Batch サービスの応答時間の短縮、ネットワーク使用率の改善、クライアント アプリケーションによるメモリ使用量の最小化といった効果が期待できます。
+アプリケーションの最大限の効率とパフォーマンスを確保するために、.NET API リスト呼び出しには "*常に*" ODATADetailLevel オブジェクトを指定することを強くお勧めします。詳細レベルを指定することによって、Batch サービスの応答時間の短縮、ネットワーク使用率の改善、クライアント アプリケーションによるメモリ使用量の最小化といった効果が期待できます。
 
-## 効率的なクエリのためのツール
+## filter、select、expand
 
 [Batch .NET][api_net] および [Batch REST][api_rest] API には、リストとして返される項目の数と、クエリごとに返される情報の量を減らす機能が用意されています。これを行うには、リスト クエリの実行時に **filter**、**select**、**expand** 文字列を指定します。
 
@@ -75,11 +80,12 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 
 > [AZURE.NOTE] 3 種類のクエリ文字列 (filter、select、expand) のいずれかを組み立てる際に、プロパティ名および大文字と小文字が REST API 要素と一致することを確認する必要があります。たとえば、.NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) クラスを使用する場合は、.NET プロパティが [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state) であっても、**State** の代わりに **state** を指定する必要があります。.NET と REST API 間のプロパティ マッピングについては、以下の表を参照してください。
 
-### filter、select、および expand 文字列の仕様
+### filter、select、expand 文字列の規則
 
-- filter、select、および expand 文字列に指定されるプロパティは、[Batch REST][api_rest] API に表示される場合のプロパティ名に相当します。これは、[Batch .NET][api_net] ライブラリを使用する場合も同様です。
+- filter、select、expand 文字列に指定されるプロパティ名は、[Batch REST][api_rest] API に表示される場合のプロパティ名に相当します。これは、[Batch .NET][api_net] ライブラリを使用する場合も同様です。
 - すべてのプロパティ名は大文字と小文字が区別されますが、プロパティの値は大文字と小文字を区別しません。
 - 日付/時刻文字列は、次の 2 つの形式のいずれかを使用でき、前に `DateTime` を付ける必要があります。
+
   - W3C-DTF 形式の例: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
   - RFC 1123 形式の例: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 - ブール文字列は、`true` または `false` のいずれかです。
@@ -96,26 +102,29 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 次のコード スニペットでは Batch .NET API を使用して、特定のプール セットの統計値を Batch サービスに効率的に問い合わせます。このシナリオでは、Batch ユーザーにはテスト プールと運用プールの両方が与えられています。テスト プールの ID 接頭辞は "test" であり、運用プールの ID 接頭辞は "prod" です。このスニペットで、*myBatchClient* は [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) クラスの適切に初期化されたインスタンスです。
 
 ```csharp
-// First we need an ODATADetailLevel instance on which to set the expand, filter, and select
-// clause strings
+// First we need an ODATADetailLevel instance on which to set the filter, select,
+// and expand clause strings
 ODATADetailLevel detailLevel = new ODATADetailLevel();
 
-// We want to pull only the "test" pools, so we limit the number of items returned by using a
-// FilterClause and specifying that the pool IDs must start with "test"
+// We want to pull only the "test" pools, so we limit the number of items returned
+// by using a FilterClause and specifying that the pool IDs must start with "test"
 detailLevel.FilterClause = "startswith(id, 'test')";
 
-// To further limit the data that crosses the wire, configure the SelectClause to limit the
-// properties that are returned on each CloudPool object to only CloudPool.Id and CloudPool.Statistics
+// To further limit the data that crosses the wire, configure the SelectClause to
+// limit the properties that are returned on each CloudPool object to only
+// CloudPool.Id and CloudPool.Statistics
 detailLevel.SelectClause = "id, stats";
 
-// Specify the ExpandClause so that the .NET API pulls the statistics for the CloudPools in a single
-// underlying REST API call. Note that we use the pool's REST API element name "stats" here as opposed
-// to "Statistics" as it appears in the .NET API (CloudPool.Statistics)
+// Specify the ExpandClause so that the .NET API pulls the statistics for the
+// CloudPools in a single underlying REST API call. Note that we use the pool's
+// REST API element name "stats" here as opposed to "Statistics" as it appears in
+// the .NET API (CloudPool.Statistics)
 detailLevel.ExpandClause = "stats";
 
-// Now get our collection of pools, minimizing the amount of data that is returned by specifying the
-// detail level that we configured above
-List<CloudPool> testPools = await myBatchClient.PoolOperations.ListPools(detailLevel).ToListAsync();
+// Now get our collection of pools, minimizing the amount of data that is returned
+// by specifying the detail level that we configured above
+List<CloudPool> testPools =
+	await myBatchClient.PoolOperations.ListPools(detailLevel).ToListAsync();
 ```
 
 > [AZURE.TIP] Select 句と Expand 句で構成される [ODATADetailLevel][odata] のインスタンスも、返されるデータの量を制限するために、[PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx) などの適切な Get メソッドに渡すことができます。
@@ -126,7 +135,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ### filter 文字列のマッピング
 
-- **.NET リスト メソッド**: この列の .NET API メソッドは、[ODATADetailLevel][odata] オブジェクトをパラメーターとして受け入れます。
+- **.NET リスト メソッド**: この列の .NET API メソッドは、[ODATADetailLevel][odata] オブジェクトをパラメーターとして受け付けます。
 - **REST リスト要求**: この列のリンク先となる REST API ページには、*filter* 文字列で許可されるプロパティと操作を指定する表が含まれています。[ODATADetailLevel.FilterClause][odata_filter] 文字列を組み立てる際には、これらのプロパティ名と操作を使用します。
 
 | .NET リスト メソッド | REST リスト要求 |
@@ -144,8 +153,8 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 ### select 文字列のマッピング
 
-- **Batch .NET タイプ**: Batch .NET API の種類です。
-- **REST API エンティティ**: この列の各ページには、各種類の REST API のプロパティ名をリストする 1 つ以上の表が含まれます。*select* 文字列を組み立てる際に、これらのプロパティ名が使用されます。[ODATADetailLevel.SelectClause][odata_select] 文字列を組み立てる際には、これらと同じプロパティ名を使用します。
+- **Batch .NET の型**: Batch .NET API の型です。
+- **REST API のエンティティ**: この列に示した各ページには、その型の REST API プロパティ名を列挙した表が記載されています。*select* 文字列を構築する際に、これらのプロパティ名が使用されます。[ODATADetailLevel.SelectClause][odata_select] 文字列を構築する際には、これらの同じプロパティ名を使用します。
 
 | Batch .NET の種類 | REST API のエンティティ |
 |---|---|
@@ -156,9 +165,9 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 | [CloudPool][net_pool] | [プールに関する情報を取得する][rest_get_pool] |
 | [CloudTask][net_task] | [タスクに関する情報を取得する][rest_get_task] |
 
-### 例: filter 文字列の構築
+## 例: filter 文字列の構築
 
-[ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を組み立てる場合は、「filter 文字列のマッピング」に示した表を参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
+[ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を構築する場合は、「filter 文字列のマッピング」に示した表を参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
 
 | プロパティ | 許可される操作 | 型 |
 | :--- | :--- | :--- |
@@ -168,7 +177,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
-### 例: select 文字列の構築
+## 例: select 文字列の構築
 
 [ODATADetailLevel.SelectClause][odata_select] を構築する場合は、「select 文字列のマッピング」に示した表を参照し、一覧表示するエンティティの種類に対応する REST API ページに移動します。そのページの最初の複数行の表に、選択可能なプロパティとサポートされている演算子が表示されます。たとえば、リストの各タスクの ID とコマンド ラインのみを取得する場合は、「[タスクに関する情報を取得する][rest_get_task]」の該当する表でこれらの行を見つけます。
 
@@ -181,25 +190,56 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 
 `id, commandLine`
 
-## 次のステップ
+## コード サンプル
 
 ### 効率的なリスト クエリ コードのサンプル
 
 GitHub の [EfficientListQueries][efficient_query_sample] サンプル プロジェクトで、効率的なリスト クエリがアプリケーションのパフォーマンスに及ぼす影響を確認します。この C# コンソール アプリケーションは、大量のタスクを作成してジョブに追加します。その後、[JobOperations.ListTasks][net_list_tasks] メソッドを何度か呼び出します。その際に渡す [ODATADetailLevel][odata] オブジェクトの各種プロパティの値を設定で変更することによって、取得するデータ量を変化させています。次のような出力が表示されます。
 
-		Adding 5000 tasks to job jobEffQuery...
-		5000 tasks added in 00:00:47.3467587, hit ENTER to query tasks...
+```
+Adding 5000 tasks to job jobEffQuery...
+5000 tasks added in 00:00:47.3467587, hit ENTER to query tasks...
 
-		4943 tasks retrieved in 00:00:04.3408081 (ExpandClause:  | FilterClause: state eq 'active' | SelectClause: id,state)
-		0 tasks retrieved in 00:00:00.2662920 (ExpandClause:  | FilterClause: state eq 'running' | SelectClause: id,state)
-		59 tasks retrieved in 00:00:00.3337760 (ExpandClause:  | FilterClause: state eq 'completed' | SelectClause: id,state)
-		5000 tasks retrieved in 00:00:04.1429881 (ExpandClause:  | FilterClause:  | SelectClause: id,state)
-		5000 tasks retrieved in 00:00:15.1016127 (ExpandClause:  | FilterClause:  | SelectClause: id,state,environmentSettings)
-		5000 tasks retrieved in 00:00:17.0548145 (ExpandClause: stats | FilterClause:  | SelectClause: )
+4943 tasks retrieved in 00:00:04.3408081 (ExpandClause:  | FilterClause: state eq 'active' | SelectClause: id,state)
+0 tasks retrieved in 00:00:00.2662920 (ExpandClause:  | FilterClause: state eq 'running' | SelectClause: id,state)
+59 tasks retrieved in 00:00:00.3337760 (ExpandClause:  | FilterClause: state eq 'completed' | SelectClause: id,state)
+5000 tasks retrieved in 00:00:04.1429881 (ExpandClause:  | FilterClause:  | SelectClause: id,state)
+5000 tasks retrieved in 00:00:15.1016127 (ExpandClause:  | FilterClause:  | SelectClause: id,state,environmentSettings)
+5000 tasks retrieved in 00:00:17.0548145 (ExpandClause: stats | FilterClause:  | SelectClause: )
 
-		Sample complete, hit ENTER to continue...
+Sample complete, hit ENTER to continue...
+```
 
-経過時間情報に示すように、プロパティと返される項目の数を制限することで、クエリの応答時間を大幅に短縮できます。このサンプル プロジェクトと他のサンプル プロジェクトは、GitHub の [azure-batch-samples][github_samples] リポジトリにあります。
+経過時間を見るとわかるように、プロパティと返される項目の数を制限することで、クエリの応答時間を大幅に短縮できます。このサンプル プロジェクトと他のサンプル プロジェクトは、GitHub の [azure-batch-samples][github_samples] リポジトリにあります。
+
+### BatchMetrics ライブラリとコード サンプル
+
+前出の EfficientListQueries コード サンプルに加えて、[azure-batch-samples][github_samples] GitHub リポジトリには [BatchMetrics][batch_metrics] というプロジェクトが存在します。BatchMetrics サンプル プロジェクトには、Batch API を使って Azure Batch ジョブの進行状況を効率的に監視する方法が紹介されています。
+
+[BatchMetrics][batch_metrics] サンプルには、独自のプロジェクトに組み込むことのできる .NET クラス ライブラリ プロジェクトのほか、ライブラリの使い方を実践的に紹介する簡単なコマンド ライン プログラムが含まれています。
+
+プロジェクト内のサンプル アプリケーションでは、次の操作が示されています。
+
+1. 必要なプロパティだけをダウンロードするために特定の属性を選択します。
+2. 前回のクエリ以降に行われた変更のみをダウンロードするために状態遷移の時刻を条件としてフィルタリングします。
+
+たとえば BatchMetrics ライブラリには、以下のメソッドが存在します。このメソッドは、照会したエンティティの `id` プロパティと `state` プロパティのみを取得するよう指定する ODATADetailLevel を返します。この ODATADetailLevel には、パラメーターに指定された `DateTime` 以降に状態が変化したエンティティのみを取得するための指定も含まれています。
+
+```csharp
+internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
+{
+    return new ODATADetailLevel(
+        selectClause: "id, state",
+        filterClause: string.Format("stateTransitionTime gt DateTime'{0:o}'", time)
+    );
+}
+```
+
+## 次のステップ
+
+### 並列ノード タスク
+
+Batch アプリケーションのパフォーマンスに関連したもう一つの記事として、「[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md)」があります。ワークロードの種類によっては、並列タスクの実行環境となるコンピューティング ノードの規模を大きくしてノード数を減らすことによってパフォーマンス上のメリットが得られる場合があります。同記事の「[サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario)」で、そのようなシナリオについて詳しく説明されています。
 
 ### Batch フォーラム
 
@@ -209,6 +249,7 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [forum]: https://social.msdn.microsoft.com/forums/azure/ja-JP/home?forum=azurebatch
 [github_samples]: https://github.com/Azure/azure-batch-samples
@@ -254,4 +295,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0727_2016-->

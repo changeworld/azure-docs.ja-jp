@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -63,7 +63,7 @@
     ```
     Get-AzureAccount
     ```
-4.	次の using ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。 
+4.	次の using ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
     ```
         using System;
@@ -180,4 +180,4 @@ Azure Portal から、または次のコードを使用してプログラムに�
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@ ms.workload="big-data"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="06/29/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
@@ -436,7 +436,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
         $storage = GetStorage -clusterName $clusterName
         
         # The JAR
-        $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
+        $jarFile = "wasbs:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
         
         # The job definition
         $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -646,4 +646,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

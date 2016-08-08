@@ -1,5 +1,5 @@
 <properties
- pageTitle="HPC クラスターのコンピューティング リソースの自動拡大縮小 | Microsoft Azure"
+ pageTitle="HPC Pack クラスター ノードの自動スケール | Microsoft Azure"
  description="Azure で HPC Pack クラスターコンピューティング ノードの数を自動的に拡大縮小する "
  services="virtual-machines-windows"
  documentationCenter=""
@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="04/14/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する
@@ -21,9 +21,9 @@ ms.service="virtual-machines-windows"
 
 
 
-HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターの現在のワークロードに合わせて、コアなどの Azure コンピューティング リソースの数を自動的に増減できれば便利です。そうすれば、Azure リソースをさらに効率的に利用し、そのコストを制御できます。これを行うには、HPC Pack クラスター プロパティ **AutoGrowShrink** を設定します。または、HPC Pack でインストールされる **AzureAutoGrowShrink.ps1** HPC PowerShell スクリプトを実行します。
+HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターの現在のワークロードに合わせて、ノードやコアなどの Azure コンピューティング リソースの数を自動的に増減できれば便利です。そうすれば、Azure リソースをさらに効率的に利用し、そのコストを制御できます。これを行うには、HPC Pack クラスター プロパティ **AutoGrowShrink** を設定します。または、HPC Pack でインストールされる **AzureAutoGrowShrink.ps1** HPC PowerShell スクリプトを実行します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].ただし、現在自動的に拡大縮小できるのは、Windows Server オペレーティング システムを実行している HPC Pack コンピューティング ノードのみです。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] ただし、現在自動的に拡大縮小できるのは、Windows Server オペレーティング システムを実行している HPC Pack コンピューティング ノードのみです。
 
 ## AutoGrowShrink クラスター プロパティを設定する
 
@@ -34,7 +34,7 @@ HPC Pack クラスターで Azure の "バースト" ノードをデプロイす
 
 * **Azure にヘッド ノードがあるクラスターの場合** - HPC Pack IaaS デプロイ スクリプトを使用してクラスターを作成する場合は、クラスター構成ファイルで AutoGrowShrink オプションを設定して、**AutoGrowShrink** クラスター プロパティを有効にします。詳細については、[スクリプトのダウンロード](https://www.microsoft.com/download/details.aspx?id=44949)に付属のドキュメントを参照してください。
 
-    または、次のセクションに記載されている HPC PowerShell コマンドを使用して、クラスターをデプロイした後に **AutoGrowShrink** クラスター プロパティを設定します。HPC PowerShell を使用してこの設定を行うには、まず次の手順を実行します。
+    または、クラスターをデプロイした後に、次のセクションで説明する HPC PowerShell コマンドを使用して、**AutoGrowShrink** クラスター プロパティを有効にします。準備のために、まず次の手順を実行します。
     1. ヘッド ノードおよび Azure サブスクリプションで Azure 管理証明書を構成します。テスト デプロイでは、HPC Pack でヘッド ノードにインストールされる既定の Microsoft HPC Azure 自己署名証明書を使用し、Azure サブスクリプションにその証明書をアップロードするだけで済みます。オプションと手順については、[TechNet ライブラリのガイダンス](https://technet.microsoft.com/library/gg481759.aspx)を参照してください。
     2. ヘッド ノードで **regedit** を実行し、HKLM\\SOFTWARE\\Micorsoft\\HPC\\IaasInfo に移動して、新しい文字列値を追加します。値の名前は "ThumbPrint" に、値のデータは手順 1 の証明書の拇印に設定します。
 
@@ -130,7 +130,7 @@ AzureAutoGrowShrink.ps1
 
  * **NodeTemplates** - ノードを拡大縮小するための範囲を定義するノード テンプレートの名前。指定されていない場合 (既定値は @() です)、**NodeType** の値が AzureNodes のとき、**AzureNodes** ノード グループのすべてのノードが範囲内となり、**NodeType** の値が ComputeNodes のとき、**ComputeNodes** ノード グループのすべてのノードが範囲内になります。
 
- * **JobTemplates** - ノードを拡大するための範囲を定義するジョブ テンプレートの名前。
+ * **JobTemplates** - ノードを拡大する範囲を定義するジョブ テンプレートの名前。
 
  * **NodeType** - 拡大縮小するノードの型。サポートされる値は次のとおりです。
 
@@ -144,7 +144,7 @@ AzureAutoGrowShrink.ps1
 
 * **NumOfActiveQueuedTasksPerNodeToGrow** - 1 つのノードを拡大するために必要で、キューに登録されたアクティブなタスクの数。**NumOfQueuedJobsPerNodeToGrow** に 0 より大きい値が指定されている場合、このパラメーターは無視されます。
 
-* **NumOfActiveQueuedTasksToGrowThreshold** - 拡大プロセスを始めるためにキューに登録されたアクティブなタスクのしきい値数。
+* **NumOfActiveQueuedTasksToGrowThreshold** - 拡大プロセスの開始を決定する、キューに登録されたアクティブなタスク数のしきい値。
 
 * **NumOfInitialNodesToGrow** - 範囲内の全ノードが「**未デプロイ**」または「**停止 (割り当て解除)**」の場合、拡大するノードの初回最小数。
 
@@ -179,4 +179,4 @@ AzureAutoGrowShrink.ps1
 .\AzureAutoGrowShrink.ps1 -NodeTemplates 'Default ComputeNode Template' -JobTemplates 'Default' -NodeType ComputeNodes -NumOfActiveQueuedTasksPerNodeToGrow 10 -NumOfActiveQueuedTasksToGrowThreshold 15 -NumOfInitialNodesToGrow 5 -GrowCheckIntervalMins 1 -ShrinkCheckIntervalMins 1 -ShrinkCheckIdleTimes 10 -ArgFile 'IaaSVMComputeNodes_Arg.xml' -LogFilePrefix 'IaaSVMComputeNodes_log'
 ```
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

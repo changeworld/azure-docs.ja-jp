@@ -19,6 +19,7 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]https://analytics.applicationinsights.io/demo (まだアプリから Application Insights にデータを送信していない場合)。
 
 ## Index
 
@@ -62,7 +63,7 @@
        (interval:timespan) { requests | where timestamp > ago(interval) };
     Recent(3h) | count
 
-    let us_date = (t:datetime){strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
+    let us_date = (t:datetime) { strcat(getmonth(t),'/',dayofmonth(t),'/',getyear(t)) }; 
     requests | summarize count() by bin(timestamp, 1d) | project count_, day=us_date(timestamp)
 
 let 句は、[名前](#names)を表形式の結果、スカラー値、または関数にバインドします。この句はクエリのプレフィックスであり、バインドのスコープはそのクエリです(let では、セッションの後の方で使用するものに名前を付けることはできません)。
@@ -82,7 +83,7 @@ let 句は、[名前](#names)を表形式の結果、スカラー値、または
 
 **例**
 
-    let rows(n:long) = range steps from 1 to n step 1;
+    let rows = (n:long) { range steps from 1 to n step 1 };
     rows(10) | ...
 
 
@@ -217,7 +218,7 @@ AutoCluster は、通常はパターンの小さなセットを返します。�
  * `minimal` - 元のクエリとすべての行が同一である列も除外します。
 
 
-* `min_percent=`*double* (既定値: 1)
+* `min_percent=` *double* (既定値: 1)
 
     生成される行をカバーする最小の割合。
 
@@ -1683,17 +1684,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 || |
 |---|-------------|
 | + | [追加] のいずれかを |
-| - | 減算 | 
-| * | 乗算 | 
-| / | 除算 | 
-| % | 剰余 | 
-|| 
-|`<` |小さい 
-|`<=`|小さいか等しい 
-|`>` |大きい 
-|`>=`|大きいか等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
 ### abs
@@ -1724,7 +1715,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 **引数**
 
-* *value:* 数値、日付、または期間。 
+* *value:* 数値、日付、または期間。
 * *roundTo:* "bin のサイズ"。*value* を分割する数値、日付、または期間です。
 
 **戻り値**
@@ -1796,7 +1787,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 **戻り値**
 
 * `sqrt(x) * sqrt(x) == x` のような正の数値。
-* 引数が負であるか、`real` 値に変換できない場合は `null`。 
+* 引数が負であるか、`real` 値に変換できない場合は `null`。
 
 
 
@@ -2161,7 +2152,7 @@ h"hello"
 
 * *text:* 文字列。
 * *search:* *text* 内で照合するプレーン文字列または正規表現。
-* *kind:* `"normal"|"regex"`。既定では `normal`。 
+* *kind:* `"normal"|"regex"`。既定では `normal`。
 
 **戻り値**
 
@@ -2721,4 +2712,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

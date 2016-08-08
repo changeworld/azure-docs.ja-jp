@@ -9,7 +9,7 @@
 	tags="connectors"/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -85,4 +85,4 @@
 
 ここで、プラットフォームと、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)を試してみましょう。[API の一覧](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタが見つかります。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure エンドポイント テストから Application Insights 可用性テストへの移行" 
-	description="従来の Azure エンドポイント監視テストを、Application Insights 可用性テストに移行しました。2016 年 4 月 4 日に新旧テストを切り替える予定です。"
+	description="従来の Azure エンドポイント監視テストは、Application Insights 可用性テストに移行されます。切り替えは、2016 年 8 月 22 日の週に実施される予定です。"
 	services="application-insights" 
     documentationCenter=""
 	authors="soubhagyadash" 
@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/10/2016" 
+	ms.date="07/25/2016" 
 	ms.author="awills"/>
  
 # Azure エンドポイント監視から Application Insights 可用性テストへの移行
 
-Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.microsoft.com/mast/2013/03/03/windows-azure-portal-update-configure-web-endpoint-status-monitoring-preview/)をご利用の皆様にお知らせです。 2016 年 4 月 4 日より、エンドポイント監視に代わって、より強力な新機能である[可用性テスト](app-insights-monitor-web-app-availability.md)を導入します。この新しいテストは既に作成されていますが、4 月 4 日までは無効になっています。
+Azure アプリに対する[エンドポイント監視](https://blogs.msdn.microsoft.com/mast/2013/03/03/windows-azure-portal-update-configure-web-endpoint-status-monitoring-preview/)をご利用の皆様にお知らせです。 2016 年 8 月 22 日の週に、エンドポイント監視に代わって、より強力な新機能である[可用性テスト](app-insights-monitor-web-app-availability.md)を導入します。この新しいテストのいくつかは既に作成されていますが、2016 年 8 月 22 日までは無効になっています。
 
 新しいテストはユーザーによる編集が可能で、必要に応じて切り替えることができます。[Azure ポータル](https://portal.azure.com)の Default-ApplicationInsights-CentralUS リソース グループに配置されています。
 
@@ -28,10 +28,10 @@ Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.
 
 [従来の Azure ポータル](https://manage.windowsazure.com)では、これらのテストがエンドポイント監視と呼ばれていました。しかし、そのスコープは限定的でした。新しい可用性テストは、次のように性能が大幅に向上しています。
 
-* Application Insights リソースごとに最大 10 個の Visual Studio Web テストまたは ping テスト。 
-* 世界中で最大 16 の場所から、対象の Web アプリに対してテスト要求を送信。テスト成功基準の制御機能が向上。 
+* Application Insights リソースごとに最大 10 個の Visual Studio Web テストまたは ping テスト。
+* 世界中で最大 16 の場所から、対象の Web アプリに対してテスト要求を送信。テスト成功基準の制御機能が向上。
 * Azure Web アプリだけでなく、あらゆる Web サイトまたはサービスのテストを実行可能。
-* テスト再試行: 一過性のネットワーク障害による誤検知のアラートを低減。 
+* テスト再試行: 一過性のネットワーク障害による誤検知のアラートを低減。
 * Webhook でアラート用 HTTP POST 通知を受信可能。
 
 ![](./media/app-insights-migrate-azure-endpoint-tests/16-1test.png)
@@ -44,7 +44,7 @@ Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.
 
 ## これまでのエンドポイント テストに対する影響
 
-* お客様が今までに作成されたエンドポイント監視テストは、新しい Application Insights 可用性テストに複製しました。この複製は 2016 年 3 月 4 日に実施しましたので、それ以降にお客様が作成されたエンドポイント テストは複製していません。
+* お客様が今までに作成されたエンドポイント監視テストは、新しい Application Insights 可用性テストに複製しました。
 * 新しい可用性テストはまだ有効になっておらず、現在も古いエンドポイント テストが実行されています。
 * アラート生成規則は移行して*いません*。新しいテストには最初から、次のような既定の規則が設定されています。
  * 5 分以内に複数の場所でレポートのエラーが発生した場合にトリガーする。
@@ -54,29 +54,29 @@ Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.
 
 ## 何をする必要がありますか?
 
-* 2016 年 3 月 4 日以降に従来形式のテストを作成した場合 (または何らかの理由でお客様のテストが移行されていない場合) は、新しい可用性テストを[簡単に設定](app-insights-monitor-web-app-availability.md)できます。
+* 何らかの理由でお客様のテストが移行されていない場合は、新しい可用性テストを[簡単に設定](app-insights-monitor-web-app-availability.md)できます。
 
 ### オプション A: 何もしない。Microsoft に任せる。
 
-**4 月 4 日に** Microsoft は以下を実施します。
+**2016 年 8 月 22 日の週**に、次の作業を予定しています。
 
 * 古いエンドポイント テストを無効にする。
 * 移行済みの可用性テストを有効にする。
 
 ### オプション B: お客様が新しいテストの管理や有効化を行う。
 
-* 新しい [Azure ポータル](https://portal.azure.com)で、新機能の可用性テストを確認し、編集します。 
+* 新しい [Azure ポータル](https://portal.azure.com)で、新機能の可用性テストを確認し、編集します。
  * トリガー条件を確認
  * 電子メール受信者を確認
 * 新しいテストを有効にします。
-* [クラシック ポータルで](https://manage.windowsazure.com)古いエンドポイント テストを削除します。アラートの重複を避け、Web サイトに対するテスト トラフィックの負荷を軽くするために、この手順の実行をお勧めします。お客様が実行しない場合は、2016 年 4 月 4 日に Microsoft が削除します。
+* [クラシック ポータルで](https://manage.windowsazure.com)古いエンドポイント テストを削除します。アラートの重複を避け、Web サイトに対するテスト トラフィックの負荷を軽くするために、この手順の実行をお勧めします。お客様が実行しない場合は、2016 年 8 月 22 日に Microsoft が削除します。
 
 
 ### オプション C: 利用の停止
 
 可用性テストの利用を希望しない場合は、[Azure ポータル](https://portal.azure.com)で削除できます。通知メールの下部にも登録解除リンクがあります。
 
-いずれにせよ、従来のエンドポイント テストは 4 月 4 日に削除されます。
+いずれにせよ、従来のエンドポイント テストは 2016 年 8 月 22 日に削除されます。
 
 ## 新しいテストの編集方法
 
@@ -116,12 +116,12 @@ Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.
 * テストされるエンドポイント URL。
 * 要求の送信元となる地域。
 * テスト間隔は 5 分のまま。
-* テストのタイムアウトは 30 秒のまま。 
+* テストのタイムアウトは 30 秒のまま。
 
 移行対象外の要素を以下に示します。
 
 * アラートのトリガー規則。1 つの場所でレポートが 5 分間停止するとトリガーする規則を設定しました。
-* アラートの受信者。通知メールは、サブスクリプションの所有者と共同所有者に送信されます。 
+* アラートの受信者。通知メールは、サブスクリプションの所有者と共同所有者に送信されます。
 
 ## 新しいテストを見つける方法
 
@@ -137,4 +137,4 @@ Azure Web アプリに対する[エンドポイント監視](https://blogs.msdn.
 
 お客様からのご意見をお待ちしております。[こちらまでメールを](mailto:vsai@microsoft.com)お寄せください。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Logic Apps での HTTP リスナーとコネクタの使用 | Microsoft Azure App Service"
+   pageTitle="Logic Apps での HTTP リスナーとコネクタの使用 | Microsoft Azure App Service "
    description="HTTP リスナーと HTTP アクションのコネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
    services="app-service\logic"
    documentationCenter=".net,nodejs,java"
@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -89,4 +89,4 @@ HTTP アクションの出力は、ヘッダーと本文です。これらは、
 [9]: ./media/app-service-logic-connector-http/9.png
 [10]: ./media/app-service-logic-connector-http/10.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

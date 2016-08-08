@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="12/07/2015"
+	ms.date="07/21/2016"
 	ms.author="wesmc"/>
 
 # JavaScript および Azure Active Directory を使用した Mobile Services でのロール ベースのアクセス制御
@@ -32,7 +32,7 @@
 このチュートリアルでは、ロール ベースのアクセス制御について示しながら、Azure Active Directory (AAD) で定義された Sales グループに対する各ユーザーのメンバーシップを確認します。アクセスの確認は、.NET Mobile Service バックエンドで Azure Active Directory 用の [Graph REST API] を使って行います。Sales グループに属するユーザーのみが、データの照会を許可されます。
 
 
->[AZURE.NOTE]このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、「[アプリへの認証の追加]」チュートリアルを完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
+>[AZURE.NOTE] このチュートリアルは、認証方法を含めた認証の知識を深めることを目的としています。事前に、Azure Active Directory 認証プロバイダーを使用して、「[アプリへの認証の追加]」チュートリアルを完了しておく必要があります。このチュートリアルでは、「[アプリへの認証の追加]」で使用した TodoItem アプリケーションを引き続き更新します。
 
 ##前提条件
 
@@ -179,12 +179,12 @@
 
 9. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `GetAADToken` メソッドを更新します。このメソッドは、Mobile Service に格納されているアプリの設定を使用して、ADAL から AAD へのアクセス トークンを取得します。
 
-    >[AZURE.NOTE]ADAL for .NET には、Active Directory に対する余分なネットワーク トラフィックを軽減するために、既定でメモリ内トークン キャッシュが含まれます。ただし、独自のキャッシュ実装を作成したり、完全にキャッシュを無効にしたりできます。詳細については、[Azure AD Authentication Library for .NET]」を参照してください。
+    >[AZURE.NOTE] ADAL for .NET には、Active Directory に対する余分なネットワーク トラフィックを軽減するために、既定でメモリ内トークン キャッシュが含まれます。ただし、独自のキャッシュ実装を作成したり、完全にキャッシュを無効にしたりできます。詳細については、[Azure AD Authentication Library for .NET]」を参照してください。
 
         // Use ADAL and the authentication app settings from the Mobile Service to get an AAD access token
         private async Task<string> GetAADToken()
         {
-            // Try to get the required AAD authentication app settings from the mobile service.  
+            // Try to get the required AAD authentication app settings from the mobile service.
             if (!(services.Settings.TryGetValue("AAD_CLIENT_ID", out clientid) &
                   services.Settings.TryGetValue("AAD_CLIENT_KEY", out clientkey) &
                   services.Settings.TryGetValue("AAD_TENANT_DOMAIN", out tenantdomain)))
@@ -245,7 +245,7 @@
 
 11. AuthorizeAadRole.cs で、`AuthorizeAadRole` クラスの `OnAuthorization` メソッドを次のコードで更新します。このコードは、Mobiile Service を呼び出しているユーザーが AAD で認証済みであることを予期します。その後、ユーザーの AAD オブジェクト ID を取得し、ロールに対応する Active Directory グループとのメンバーシップを確認します。
 
-    >[AZURE.NOTE]Active Directory グループは名前で検索できます。ただし、多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名の方が変更されることが多く、ID は同じままであるためです。
+    >[AZURE.NOTE] Active Directory グループは名前で検索できます。ただし、多くの場合には、モバイル サービス アプリケーションの設定としてグループ ID を格納する方が適切です。これは、グループ名の方が変更されることが多く、ID は同じままであるためです。
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
@@ -394,4 +394,4 @@
 [IsMemberOf]: http://msdn.microsoft.com/library/azure/dn151601.aspx
 [Azure AD Authentication Library for .NET]: https://msdn.microsoft.com/library/azure/jj573266.aspx
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0727_2016-->

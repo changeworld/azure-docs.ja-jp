@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center での VM エージェントの有効化
 
-パッチのスキャン、基準のスキャン、マルウェア対策プログラムをプロビジョニングするには、仮想マシン (VM) に VM エージェントをインストールする必要があります。Azure Security Center では、VM エージェントを必要とする VM を確認することができ、それらの VM で VM エージェントを有効にするよう推奨されます。
+VM エージェントは、[データ収集を有効にする](security-center-enable-data-collection.md)ために、仮想マシン (VM) にインストールする必要があります。Azure Security Center では、VM エージェントを必要とする VM を確認することができ、それらの VM で VM エージェントを有効にするよう推奨されます。
 
 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。
 
@@ -47,4 +47,4 @@
 [1]: ./media/security-center-enable-vm-agent/enable-vm-agent.png
 [2]: ./media/security-center-enable-vm-agent/vm-agent-is-missing.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

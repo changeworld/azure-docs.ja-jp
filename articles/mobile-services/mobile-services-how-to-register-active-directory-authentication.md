@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
@@ -70,4 +70,4 @@
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0727_2016-->

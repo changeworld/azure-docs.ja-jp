@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="07/25/2016"
    ms.author="dkershaw;bryanla"/>
 
 # Azure Active Directory のアプリケーション マニフェストについて
@@ -52,11 +52,11 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
     ![Select the Azure AD tenant][SELECT-AZURE-AD-TENANT]
 
-3. ディレクトリ ページが表示されたら、ページの上部にある [アプリケーション] \(1) をクリックして、テナントに登録されているアプリケーションの一覧を表示します。次に、更新するアプリケーションを一覧内で見つけてクリックします (2)。
+3. ディレクトリ ページが表示されたら、ページの上部にある [アプリケーション] (1) をクリックして、テナントに登録されているアプリケーションの一覧を表示します。次に、更新するアプリケーションを一覧内で見つけてクリックします (2)。
 
     ![Select the Azure AD tenant][SELECT-AZURE-AD-APP]
 
-4. これで、アプリケーションのメイン ページが選択されました。ここで、ページの下部にある [マニフェストの管理] 機能 (1) に注目してください。このリンクをクリックすると、JSON マニフェスト ファイルをアップロードまたはダウンロードするように求められます。[マニフェストのダウンロード] \(2) をクリックするとダウンロードの確認ページが表示され、[マニフェストのダウンロード] \(3) をクリックして確認するよう求められます。その後、ファイルを開くかローカルに保存するよう求められます (4)。
+4. これで、アプリケーションのメイン ページが選択されました。ここで、ページの下部にある [マニフェストの管理] 機能 (1) に注目してください。このリンクをクリックすると、JSON マニフェスト ファイルをアップロードまたはダウンロードするように求められます。[マニフェストのダウンロード] (2) をクリックするとダウンロードの確認ページが表示され、[マニフェストのダウンロード] (3) をクリックして確認するよう求められます。その後、ファイルを開くかローカルに保存するよう求められます (4)。
 
     ![Manage the manifest, download option][MANAGE-MANIFEST-DOWNLOAD]
 
@@ -93,7 +93,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 
     エントリは一意である必要があるため、`"id"` プロパティ用に新しいグローバル一意識別子 (GUID) を生成する必要があります。この場合、`"type": "User"` を指定したので、このアクセス許可は、リソース/API アプリケーションが登録されている Azure AD テナントによって認証された任意のアカウントで同意することができ、アカウントの代わりにアクセスする許可がクライアント アプリケーションに付与されます。同意するときと Azure クラシック ポータルでの表示には、説明および表示名の文字列が使用されます。
 
-6. マニフェストの更新が終わったら、Azure クラシック ポータルの Azure AD アプリケーション ページに戻ります。もう一度 [マニフェストの管理] \(1) をクリックし、次に [マニフェストのアップロード] \(2) を選択します。ダウンロードの場合と同様に、2 つ目のダイアログ ボックスが表示され、JSON ファイルの場所を指定するよう求められます。[ファイルの参照] \(3) をクリックします。次に、[アップロードするファイルの選択] ダイアログ ボックスで JSON ファイル (4) を選択し、[開く] を押します。ダイアログ ボックスが閉じたら、"OK" のチェック マーク (5) を選択します。これで、マニフェストがアップロードされます。
+6. マニフェストの更新が終わったら、Azure クラシック ポータルの Azure AD アプリケーション ページに戻ります。もう一度 [マニフェストの管理] (1) をクリックし、次に [マニフェストのアップロード] (2) を選択します。ダウンロードの場合と同様に、2 つ目のダイアログ ボックスが表示され、JSON ファイルの場所を指定するよう求められます。[ファイルの参照] (3) をクリックします。次に、[アップロードするファイルの選択] ダイアログ ボックスで JSON ファイル (4) を選択し、[開く] を押します。ダイアログ ボックスが閉じたら、"OK" のチェック マーク (5) を選択します。これで、マニフェストがアップロードされます。
 
     ![Manage the manifest, upload option][MANAGE-MANIFEST-UPLOAD]
 
@@ -104,7 +104,7 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 これでマニフェストが保存されたので、登録されているクライアント アプリケーションに、上で追加した新しいアクセス許可へのアクセスを許可することができますが、今度はクライアント アプリケーションのマニフェストを編集する代わりに、Azure クラシック ポータルの Web UI を使用することができます。
 
 1. まず、新しい API へのアクセスを追加するクライアント アプリケーションの [構成] ページに移動し、[アプリケーションの追加] ボタンをクリックします。
-2. テナントの登録済みのリソース アプリケーション (API) の一覧が表示されます。リソース アプリケーションの名前の横にあるプラス (+) 記号をクリックして選択します。  
+2. テナントの登録済みのリソース アプリケーション (API) の一覧が表示されます。リソース アプリケーションの名前の横にあるプラス (+) 記号をクリックして選択します。
 3. 次に、右下にあるチェック マークをクリックします。
 4. クライアントの構成ページの [アプリケーションの追加] セクションに戻ると、一覧に新しいリソース アプリケーションが表示されます。その行の右側の [委任されたアクセス許可] セクションにポインターを置くと、ドロップダウン リストが表示されます。一覧をクリックし、クライアントの要求されているアクセス許可の一覧に追加するために、新しいアクセス許可を選択します。注: この新しいアクセス許可は、クライアント アプリケーションの ID 構成の "requiredResourceAccess" コレクション プロパティに格納されます。
 
@@ -135,9 +135,9 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 <!--article references -->
 [AAD-GROUPS-FOR-AUTHORIZATION]: http://www.dushyantgill.com/blog/2014/12/10/authorization-cloud-applications-using-ad-groups/
 [ADD-UPD-RMV-APP]: active-directory-integrating-applications.md
-[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#ApplicationEntity
-[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType
-[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType
+[APPLICATION-ENTITY]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
+[APPLICATION-ENTITY-APP-ROLE]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type
+[APPLICATION-ENTITY-OAUTH2-PERMISSION]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type
 [AZURE-CLASSIC-PORTAL]: https://manage.windowsazure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
 [GRAPH-API]: active-directory-graph-api.md
@@ -147,4 +147,4 @@ Azure Active Directory (AD) と統合するアプリケーションは、Azure A
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

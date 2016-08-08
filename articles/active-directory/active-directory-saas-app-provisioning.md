@@ -20,7 +20,7 @@
 
 ##SaaS アプリへのユーザー プロビジョニングの自動化とは
 
-Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド (SaaS) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。
+Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。
 
 **以下に、この機能を使用して行うことができる例をいくつか示します。**
 
@@ -116,4 +116,4 @@ Azure AD とSaaS アプリ間で属性がマップされる方法の詳細につ
 - [アカウント プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0727_2016-->

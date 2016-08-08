@@ -1,22 +1,20 @@
-#### Prerequisites
-- An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-- An [Office 365](https://office365.com) account  
+#### 前提条件
+- Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+- [Office 365](https://office365.com) アカウント
 
-Before using your Office 365 account in a logic app, authorize the logic app to connect to your Office 365 account. You can do this easily within your logic app on the Azure portal.  
+ロジック アプリで Office 365 アカウントを使用するには、Office 365 アカウントに接続するロジック アプリを承認してください。これは、Azure ポータルのロジック アプリ内で簡単に実行できます。
 
-Authorize your logic app to connect to your Office 365 account using the following steps:
+次の手順に従って、Office 365 アカウントに接続するロジック アプリを承認します。
 
-1. Create a logic app. In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "office 365" in the search box. Select one of the triggers or actions:  
-	![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-sendemail.png)  
+1. ロジック アプリを作成します。Logic Apps デザイナーで、ドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「Office 365」と入力します。トリガーまたはアクションのいずれかを選択します。![Office 365 の接続の作成手順](./media/connectors-create-api-office365-outlook/office365-sendemail.png)
 
-2. If you haven't previously created any connections to Office 365, you are prompted to sign in using your Office 365 credentials:  
-	![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-signin.png)  
+2. これまでに Office 365 への接続を作成したことがない場合は、Office 365 の資格情報を使用してサインインするよう求められます。![Office 365 の接続の作成手順](./media/connectors-create-api-office365-outlook/office365-signin.png)
 
-3. Select **Sign in**, and enter your user name and password. Select **Sign in**:  
-	![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
+3. **[サインイン]** を選択し、ユーザー名とパスワードを入力します。**[サインイン]** をクリックします。![Office 365 の接続の作成手順](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
 
-	These credentials are used to authorize your logic app to connect to, and access your Office 365 account. 
+	これらの資格情報を使用して、接続するロジック アプリの承認と、Office 365 アカウントへのアクセスが行われます。
 
-4. Notice the connection has been created. Now, proceed with the other steps in your logic app:   
-	![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
+4. 接続が作成されたことを確認します。これで、ロジック アプリで他の手順に進むことができます。![Office 365 の接続の作成手順](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)
   
+
+<!---HONumber=AcomDC_0727_2016-->

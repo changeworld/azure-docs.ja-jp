@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/07/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # 既存のアプリケーションへの Mobile Services の追加
@@ -96,14 +96,11 @@
 
 このチュートリアルでは、ユニバーサル Windows アプリ プロジェクトでモバイル サービスのデータを操作できるようにするための基本について説明しました。次に、以下のその他のトピックのいずれかを読むことを検討してください。
 
-* [認証の使用]
-  <br/>アプリケーションのユーザーを認証する方法について説明します。
+* [認証の使用] <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [プッシュ通知の使用] <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Mobile Services C# の使用方法の概念リファレンス](mobile-services-windows-dotnet-how-to-use-client-library.md)
-  <br/>.NET で Mobile Services を使用する方法について説明します。
+* [Mobile Services C# の使用方法の概念リファレンス](mobile-services-dotnet-how-to-use-client-library.md) <br/>.NET で Mobile Services を使用する方法について説明します。
 
 
 <!-- Images. -->
@@ -118,12 +115,10 @@
 [プッシュ通知の使用]: ../mobile-services-dotnet-backend-windows-store-dotnet-get-started-push.md
 
 [Get started with offline data sync]: mobile-services-windows-store-dotnet-get-started-offline-data.md
-[「オフライン データ同期の使用」]: mobile-services-windows-store-dotnet-get-started-offline-data.md
 
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkID=510826
-[デベロッパー サンプル コード集のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
 
-<!----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

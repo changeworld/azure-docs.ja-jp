@@ -123,7 +123,7 @@ find | 置き換え
 
 ```json
     {
-      "apiVersion": "2014-04-01",
+      "apiVersion": "2014-06-01",
       "name": "Microsoft.ApplicationInsights.AzureWebSites",
       "type": "siteextensions",
       "dependsOn": [
@@ -321,4 +321,4 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 * [Azure 診断を Application Insights に送信する](app-insights-powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

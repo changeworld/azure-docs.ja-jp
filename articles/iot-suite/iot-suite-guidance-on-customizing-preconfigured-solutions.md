@@ -154,7 +154,15 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 
 ## 次のステップ
 
-IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](https://azure.microsoft.com/develop/iot/)でリンクとドキュメントを検索してください。
+構成済みのソリューションをカスタマイズするためのオプションの詳細については、次のリンク先をご覧ください。
+
+- [ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する][lnk-logicapp]
+- [事前構成済みのリモート監視ソリューションによる動的テレメトリの使用][lnk-dynamic]
+- [リモート監視構成済みソリューションのデバイス情報メタデータ][lnk-devinfo]
+
+[lnk-logicapp]: iot-suite-logic-apps-tutorial.md
+[lnk-dynamic]: iot-suite-dynamic-telemetry.md
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [IoT デバイス SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-permissions]: iot-suite-permissions.md
@@ -164,4 +172,4 @@ IoT デバイスの詳細については、[Azure IoT 開発者向けサイト](
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

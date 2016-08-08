@@ -161,12 +161,16 @@ _リモート監視構成済みソリューションのプロビジョニング�
 
 ## 次のステップ
 
-これで Logic App を使用して構成済みソリューションをビジネス プロセスに接続しました。次は、[構成済みソリューションのカスタマイズ][lnk-customize]または[ソリューションへの物理デバイスの追加方法][lnk-connect]について、さらに理解を深めます。
+これで Logic Apps を使用して構成済みソリューションをビジネス プロセスに接続しました。次を参照することで、構成済みソリューションのカスタマイズのオプションについて、さらに理解を深めることができます。
+
+- [事前構成済みのリモート監視ソリューションによる動的テレメトリの使用][lnk-dynamic]
+- [リモート監視構成済みソリューションのデバイス情報メタデータ][lnk-devinfo]
+
+[lnk-dynamic]: iot-suite-dynamic-telemetry.md
+[lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
 [lnk-internetofthings]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-getstarted]: iot-suite-getstarted-preconfigured-solutions.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-connect]: iot-suite-connecting-devices.md
 [lnk-azureportal]: https://portal.azure.com
 [lnk-logic-apps-actions]: ../connectors/apis-list.md
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
@@ -174,4 +178,4 @@ _リモート監視構成済みソリューションのプロビジョニング�
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

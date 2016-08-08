@@ -139,7 +139,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 
 6. Hive クエリには、次のコマンドを使用します。
 
-		add file wasb:///HiveCSharp.exe;
+		add file wasbs:///HiveCSharp.exe;
 
 		SELECT TRANSFORM (clientid, devicemake, devicemodel)
 		USING 'HiveCSharp.exe' AS
@@ -147,7 +147,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 		FROM hivesampletable
 		ORDER BY clientid LIMIT 50;
 
-    これは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` フィールドを選択し、HiveCSharp.exe アプリケーションにそのフィールドを渡します。クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。また、このクエリは既定のストレージ コンテナー (`add file wasb:///HiveCSharp.exe`) のルートで HiveCSharp.exe を見つけることを想定しています。
+    これは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` フィールドを選択し、HiveCSharp.exe アプリケーションにそのフィールドを渡します。クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。また、このクエリは既定のストレージ コンテナー (`add file wasbs:///HiveCSharp.exe`) のルートで HiveCSharp.exe を見つけることを想定しています。
 
 5. **[送信]** をクリックして、HDInsight クラスターにジョブを送信します。**[Hive ジョブの概要]** ウィンドウが開きます。
 
@@ -212,7 +212,7 @@ Hive と Pig は実行時にアプリケーションを起動する必要があ�
 3. .NET Framework アプリケーションを使用して単純な Pig ジョブを実行するには、次のコマンドを入力します。
 
 		DEFINE streamer `pigudf.exe` SHIP('pigudf.exe');
-		LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
+		LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
 		LOG = FILTER LOGS by LINE is not null;
 		DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
 		DUMP DETAILS;
@@ -241,4 +241,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

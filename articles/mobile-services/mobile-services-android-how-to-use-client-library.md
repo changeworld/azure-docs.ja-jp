@@ -4,7 +4,7 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -938,4 +938,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Mobile Services を使い始める]: mobile-services-android-get-started.md
 [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

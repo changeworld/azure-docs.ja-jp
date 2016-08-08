@@ -68,4 +68,4 @@ Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org
 
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

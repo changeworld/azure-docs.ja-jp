@@ -9,17 +9,19 @@
     tags="connectors"/>
 
 <tags
-   ms.service="multiple"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="07/18/2016"
+   ms.date="07/25/2016"
    ms.author="mandia"/>
 
 
 # Azure SQL Database コネクタの概要
-Azure SQL Database コネクタを使用して、テーブル内のデータを管理する組織のワークフローを作成します。また、
+Azure SQL Database コネクタを使用して、テーブル内のデータを管理する組織のワークフローを作成します。
+
+SQL Database では次のことを行います。
 
 - 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
 - データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Azure SQL Database に行を挿入します (アクション)。
@@ -28,36 +30,15 @@ Azure SQL Database コネクタを使用して、テーブル内のデータを�
 
 >[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
-Logic Apps の詳細については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
-
->[AZURE.INCLUDE [はじめにやるべきこと](../../includes/connectors-create-api-sqlazure.md)]
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## Azure SQL Database に接続する
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、SQL Database に接続するには、最初に SQL Database "*接続*" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、SQL Database の場合は、SQL Database の資格情報を入力して接続を作成します。
-
-このコネクタをロジック アプリに追加する場合は、SQL Database への接続を作成します。初めてこのコネクタを追加するときには、接続情報が求められます。
-
-![](./media/connectors-create-api-sqlazure/connection-details.png)
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、SQL Database に接続するには、まず SQL Database "接続" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、SQL Database の場合は、SQL Database の資格情報を入力して接続を作成します。
 
 #### 接続の作成
 
-1. SQL Database の詳細を入力します。アスタリスクが付いているプロパティは必須です。
-
-	| プロパティ | 詳細 |
-|---|---|
-| Connect via Gateway (ゲートウェイ経由で接続) | オフのままにしておきます。このプロパティは、オンプレミスの SQL Server に接続する場合に使用します。 |
-| 接続名 * | 接続の任意の名前を入力します。 | 
-| SQL Server Name (SQL Server 名) * | サーバー名 (*servername.database.windows.net* など) を入力します。サーバー名は、Azure ポータルの SQL Database のプロパティに表示されます。また、接続文字列にも表示されます。 | 
-| SQL Database Name (SQL Database 名) * | SQL Database に付けた名前を入力します。これは、SQL Database のプロパティの接続文字列に表示されます (Initial Catalog=*yoursqldbname*)。 | 
-| ユーザー名 * | SQL Database の作成時に作成したユーザー名を入力します。これは、Azure ポータルの SQL Database のプロパティに表示されます。 | 
-| パスワード * | SQL Database の作成時に作成したパスワードを入力します。 | 
-
-	これらの資格情報を使用して、接続するロジック アプリの承認と、SQL データへのアクセスが行われます。入力が完了すると、接続の詳細は次のようになります。
-
-	![SQL Azure の接続の作成手順](./media/connectors-create-api-sqlazure/sample-connection.png)
-
-2. **[作成]** を選択します。
+>[AZURE.INCLUDE [Azure SQL への接続を作成する](../../includes/connectors-create-api-sqlazure.md)]
 
 ## トリガーを使用する
 
@@ -65,13 +46,13 @@ Logic Apps の詳細については、[ロジック アプリの作成](../app-s
 
 ## アクションを使用する
 	
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
 
-1. プラス記号を選択します。**[Add an action (アクションの追加)]**、**[Add a condition (条件の追加)]**、**[More (その他)]** の 1 つのオプションという複数の選択肢があります。
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** オプションのいずれかという複数の選択肢があります。
 
 	![](./media/connectors-create-api-sqlazure/add-action.png)
 
-2. **[Add an action (アクションの追加)]** を選択します。
+2. **[アクションの追加]** を選択します。
 
 3. テキスト ボックスに「sql」と入力して、使用可能なすべてのアクションの一覧を取得します。
 
@@ -81,7 +62,7 @@ Logic Apps の詳細については、[ロジック アプリの作成](../app-s
 
 	![](./media/connectors-create-api-sqlazure/sample-table.png)
 
-	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」を参照してください。
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」をご覧ください。
 
 	> [AZURE.NOTE] この例では、テーブルから 1 行が返されます。この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。
 
@@ -90,7 +71,7 @@ Logic Apps の詳細については、[ロジック アプリの作成](../app-s
 
 ## 技術的な詳細
 
-## アクション
+## SQL Database アクション
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。SQL Database コネクタには、次のアクションがあります。
 
 |アクション|説明|
@@ -111,7 +92,7 @@ Logic Apps の詳細については、[ロジック アプリの作成](../app-s
 #### ストアド プロシージャの実行
 SQL でストアド プロシージャを実行します。
 
-| プロパティ名| 表示名 |説明|
+| プロパティ名| Displayname Settings |説明|
 | ---|---|---|
 |procedure * | プロシージャ名 | 実行するストアド プロシージャの名前 |
 |parameters * | 入力パラメーター | パラメーターは動的で、選択したストアド プロシージャに基づいています。<br/><br/> たとえば、Adventure Works サンプル データベースを使用している場合は、*ufnGetCustomerInformation* ストアド プロシージャを選択します。**Customer ID** 入力パラメーターが表示されます。「6」または他の顧客 ID の 1 つを入力します。 |
@@ -131,7 +112,7 @@ ProcedureResult: ストアド プロシージャの実行結果を示します�
 #### 行を取得する 
 SQL テーブルから 1 行を取得します。
 
-| プロパティ名| 表示名 |説明|
+| プロパティ名| Displayname Settings |説明|
 | ---|---|---|
 |table * | テーブル名 |SQL テーブルの名前|
 |id * | 行 ID |取得する行の一意識別子|
@@ -149,7 +130,7 @@ SQL テーブルから 1 行を取得します。
 #### 行を取得する 
 SQL テーブルから複数の行を取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |table*|テーブル名|SQL テーブルの名前|
 |$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
@@ -170,7 +151,7 @@ ItemsList
 #### 行を挿入する 
 SQL テーブルに新しい行を挿入します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |table*|テーブル名|SQL テーブルの名前|
 |item*|行|SQL の指定されたテーブルに挿入する行|
@@ -188,7 +169,7 @@ SQL テーブルに新しい行を挿入します。
 #### 行を削除する 
 SQL テーブルから行を削除します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |table*|テーブル名|SQL テーブルの名前|
 |id*|行 ID|削除する行の一意識別子|
@@ -213,7 +194,7 @@ TablesList
 #### 行を更新する 
 SQL テーブルの既存の行を更新します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |table*|テーブル名|SQL テーブルの名前|
 |id*|行 ID|更新する行の一意識別子|
@@ -247,6 +228,6 @@ SQL テーブルの既存の行を更新します。
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。[API リスト](apis-list.md)で、Logic Apps で使用可能な他のコネクタを確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

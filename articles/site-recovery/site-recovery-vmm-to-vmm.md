@@ -21,10 +21,11 @@
 > [AZURE.SELECTOR]
 - [Azure ポータル](site-recovery-vmm-to-vmm.md)
 - [クラシック ポータル](site-recovery-vmm-to-vmm-classic.md)
+- [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 
 Azure Site Recovery へようこそ。 この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されているオンプレミスの Hyper-V 仮想マシンをセカンダリ サイトにレプリケートする方法について説明します。この記事では、Azure ポータルで Azure Site Recovery を使用してレプリケーションを設定する方法について説明します。
 
-> [AZURE.NOTE] Azure には、リソースの作成と操作に関して、Azure Resource Manager (ARM) とクラシックの 2 種類の[デプロイメント モデル](../resource-manager-deployment-model.md)があります。また、Azure にも 2 つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。
+> [AZURE.NOTE] Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの 2 種類の[デプロイメント モデル](../resource-manager-deployment-model.md)があります。また、Azure にも 2 つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。
 
 
 Azure ポータルの Azure Site Recovery には、次のような数多くの新機能が搭載されています。
@@ -40,7 +41,7 @@ Azure ポータルの Azure Site Recovery には、次のような数多くの�
 
 組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
 
-Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。詳細については、「[Site Recovery とは](site-recovery-overview.md)」を参照してください。
+Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。詳細については、[Site Recovery](site-recovery-overview.md) に関するページをご覧ください。
 
 この記事には、VMM クラウドにあるオンプレミスの Hyper-V VM をセカンダリ VMM サイトにレプリケートするために必要となる情報がすべて記載されています。この情報には、アーキテクチャの概要、計画の詳細、およびオンプレミス サーバー、レプリケーション設定、キャパシティ プランニングを構成するためのデプロイメント手順が含まれます。インフラストラクチャをセットアップした後で、保護するマシンでレプリケーションを有効にし、フェールオーバーが機能することを確認します。
 
@@ -57,7 +58,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 - **プライマリ サイト**: プライマリ サイトには、レプリケートするソース VM を実行する Hyper-V ホスト サーバーが 1 つ以上あります。これらのプライマリ ホスト サーバーは VMM プライベート クラウドにあります。
 - **セカンダリ サイト**: セカンダリ サイトには、プライマリ VM をレプリケートするターゲット VM を実行する Hyper-V ホスト サーバーが 1 つ以上あります。これらのホスト サーバーは VMM プライベート クラウドにあります。このクラウドは、プライマリ サーバー (VMM サーバーが 1 つしかない場合) またはセカンダリ VMM サーバーに配置できます。
-- **プロバイダー**: Site Recovery をデプロイする際に、VMM サーバーに Azure Site Recovery プロバイダーをインストールし、Recovery Services コンテナーにこれらのサーバーを登録します。VMM サーバーで実行されるプロバイダーは、HTTPS 443 経由で Site Recovery と通信し、オーケストレーションをレプリケートします。データのレプリケーションは、プライマリとセカンダリの Hyper-V ホスト サーバー間で実行されます。レプリケートされたデータは、オンプレミスのサイトとネットワークにとどまり、Azure には送信されません。詳細については、[プライバシー](#privacy-information-for-site-recovery)に関するセクションを参照してください。
+- **プロバイダー**: Site Recovery をデプロイするときに、VMM サーバーに Azure Site Recovery プロバイダーをインストールし、Recovery Services コンテナーにこれらのサーバーを登録します。VMM サーバーで実行されるプロバイダーは、HTTPS 443 経由で Site Recovery と通信し、オーケストレーションをレプリケートします。データのレプリケーションは、プライマリとセカンダリの Hyper-V ホスト サーバー間で実行されます。レプリケートされたデータは、オンプレミスのサイトとネットワークにとどまり、Azure には送信されません。詳細については、[プライバシー](#privacy-information-for-site-recovery)に関するセクションをご覧ください。
 
 ![E2E トポロジ](./media/site-recovery-vmm-to-vmm/architecture.png)
 
@@ -89,8 +90,8 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **前提条件** | **詳細** 
 --- | ---
-**VMM** | プライマリ サイトとセカンダリ サイトに VMM サーバーを 1 つずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-single-vmm.md)こともできます。これを行うには、VMM サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。<br/><br/>クラウドには 1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関する記事、および「[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM (チュートリアル: System Center 2012 SP1 VMM でのプライベート クラウドの作成)](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)」を参照してください。<br/><br/> VMM サーバーは、インターネットにアクセスできる必要があります。 
-**Hyper-V** | Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 R2 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに 1 つ以上の VM が含まれている必要があります。<br/><br/> Hyper-V ホスト サーバーがプライマリおよびセカンダリの VMM クラウドにデプロイされている必要があります。<br/><br/> Hyper-V を Windows Server 2012 R2 上のクラスターで実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Hyper-V を Windows Server 2012 上のクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
+**VMM** | プライマリ サイトとセカンダリ サイトに VMM サーバーを 1 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-single-vmm.md)こともできます。これを行うには、VMM サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。<br/><br/>クラウドには 1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーは、インターネットにアクセスできる必要があります。 
+**Hyper-V** | Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーには 1 台以上の VM が含まれている必要があります。<br/><br/> Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Hyper-V を Windows Server 2012 R2 上のクラスターで実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Hyper-V を Windows Server 2012 上のクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的には作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。
 **プロバイダー** | Site Recovery をデプロイする際に Azure Site Recovery プロバイダーを VMM サーバーにインストールします。プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> VMM サーバー上で実行されるプロバイダーでは、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可する必要があります。<br/><br/> また、VMM サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。
 
 ## デプロイの準備をする
@@ -123,7 +124,7 @@ VMM サーバーが[前提条件](#on-premises-prerequisites)に準拠してい�
 
 VMM サーバーが 1 つしかない場合は、VMM クラウド内の Hyper-V ホストにある VM を [Azure](site-recovery-vmm-to-azure.md) またはセカンダリ VMM クラウドにレプリケートできます。クラウド間のレプリケートはシームレスではないため、1 つ目の選択肢をお勧めしますが、これを実行するには次のことを行う必要があります。
 
-1. **Hyper-V VM に VMM をセットアップします**。この操作を行うときは、VMM によって使用される SQL Server インスタンスを同じ VM 上に配置することをお勧めします。1 つの VM を作成するだけでよいので時間節約になります。リモート インスタンスを使用したときに障害が発生した場合は、VMM を回復する前にインスタンスを回復する必要があります。
+1. **Hyper-V VM で VMM をセットアップします**。この操作を行うときは、VMM によって使用される SQL Server インスタンスを同じ VM 上に配置することをお勧めします。1 つの VM を作成するだけでよいので時間節約になります。リモート インスタンスを使用したときに障害が発生した場合は、VMM を回復する前にインスタンスを回復する必要があります。
 2. **VMM サーバーに少なくとも 2 つのクラウドが構成されていることを確認します**。一方のクラウドにはレプリケートを行う VM が含まれ、もう一方のクラウドはセカンダリのロケーションとして機能します。保護する VM が含まれているクラウドは、[前提条件](#on-premises-prerequisites)を満たしている必要があります。
 3. この記事で説明されているとおりに、Site Recovery をセットアップします。VMM サーバーを作成してコンテナーに登録し、レプリケーション ポリシーを設定して、レプリケーションを有効にします。初期レプリケーションがネットワーク経由で行われるように指定する必要があります。
 4. ネットワーク マッピングをセットアップする場合は、プライマリ クラウドの VM ネットワークをセカンダリ クラウドの VM ネットワークにマップします。
@@ -144,7 +145,7 @@ VMM サーバーが 1 つしかない場合は、VMM クラウド内の Hyper-V 
 
 	![新しいコンテナー](./media/site-recovery-vmm-to-vmm/new-vault3.png)
 
-3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。複数のサブスクリプションがある場合は、いずれかを選択します。
+3. **[名前]** で、コンテナーを識別するフレンドリ名を指定します。複数のサブスクリプションがある場合は、いずれかを選択します。
 4. [新しいリソース グループを作成](../resource-group-template-deploy-portal.md)するか、既存のリソース グループを選択し、Azure リージョンを指定します。マシンは、このリージョンにレプリケートされます。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
 4. ダッシュボードからコンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]**、**[コンテナーの作成]** の順にクリックします。
 
@@ -168,8 +169,8 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 レプリケートの対象とレプリケート先を選択します。
 
 1. **[Recovery Services コンテナー]** ブレードでコンテナーを選択し、**[設定]** をクリックします。
-2. **[設定]** の **[作業の開始]** で、**[Site Recovery]**、**[Step 1: Prepare Infrastructure (ステップ 1: インフラストラクチャを準備する)]**、**[Protection goal (保護の目標)]** の順にクリックします。
-3. **[Protection goal (保護の目標)]** で、**[To recovery site (復旧サイトへ)]** を選択し、**[Yes, with Hyper-V (はい、Hyper-V を使用する)]** を選択します。
+2. **[設定]** の **[作業の開始]** で、**[Site Recovery]**、**[手順 1: インフラストラクチャを準備する]**、**[保護の目標]** の順にクリックします。
+3. **[保護の目標]** で、**[復旧サイトへ]** を選択し、**[Yes, with Hyper-V (はい、Hyper-V を使用します)]** を選択します。
 4. Hyper-V ホストの管理に VMM を使用していることを示すために**[はい]** を選択します。また、セカンダリ VMM サーバーがある場合は **[はい]** を選択します。単一の VMM サーバー上にあるクラウド間にレプリケーションをデプロイする場合は、**[いいえ]** をクリックします。次に、 **[OK]** をクリックします
 
 	![Choose goals](./media/site-recovery-vmm-to-vmm/choose-goals.png)
@@ -179,11 +180,11 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 
 Azure Site Recovery プロバイダーを VMM サーバーにインストールし、サーバーをコンテナーに登録します。
 
-1. **[Step 2: Prepare Infrastructure (ステップ 2: インフラストラクチャを準備する)]**、**[ソース]** の順にクリックします。
+1. **[Step 2: Prepare Infrastructure (手順 2: インフラストラクチャを準備する)]**、**[ソース]** の順にクリックします。
 
 	![Set up source](./media/site-recovery-vmm-to-vmm/goals-source.png)
 
-2. **[Prepare source (ソースの準備)]** で、**[+ VMM]** をクリックして、VMM サーバーを追加します。
+2. **[ソースの準備]** で、**[+ VMM]** をクリックして、VMM サーバーを追加します。
 
 	![Set up source](./media/site-recovery-vmm-to-vmm/set-source1.png)
 
@@ -229,13 +230,13 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 
 5. **[登録]** の **[証明書を保存する場所]** で、**[次へ]** をクリックします。暗号化の証明書は、このシナリオには関係ありません。暗号化の証明書は Azure Storage にレプリケートする場合のみ使用されます。
 
-8. **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。クラスター構成で、VMM クラスターのロール名を指定します。
+8. **[サーバー名]** で、コンテナーで VMM サーバーを識別するフレンドリ名を指定します。クラスター構成で、VMM クラスターのロール名を指定します。
 9. VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期する場合は、**[Sync cloud metadata (クラウド メタデータの同期)]** を有効にします。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。**[次へ]** をクリックしてプロセスを完了します。
 
 	![サーバー登録](./media/site-recovery-vmm-to-vmm/provider-sync.png)
 
 10. 登録が開始されます。登録が完了すると、コンテナーの **[設定]** の **[サーバー]** ブレードに、VMM サーバーが表示されます。
-11. Site Recovery コンソールでサーバーが利用できるようになったら、**[ソース]** の **[Prepare source (ソースを準備する)]** で、VMM サーバーを選択し、Hyper-V ホストが配置されているクラウドを選択します。次に、 **[OK]** をクリックします
+11. Site Recovery コンソールでサーバーが利用できるようになったら、**[ソース]** の **[ソースの準備]** で、VMM サーバーを選択し、Hyper-V ホストが配置されているクラウドを選択します。次に、 **[OK]** をクリックします
 
 #### コマンド ラインを使用したインストール
 
@@ -261,7 +262,7 @@ Azure Site Recovery プロバイダーは、コマンド ラインからイン�
 
  - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。
  - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
- - **/EncryptionEnabled** : VMM から Azure にレプリケートする場合にのみ使用する省略可能なパラメーターです。
+ - **/EncryptionEnabled**: 省略可能。VMM から Azure にレプリケートする場合にのみ使用します。
  - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
  - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
  - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します (認証が必要なプロキシの場合)。
@@ -271,18 +272,18 @@ Azure Site Recovery プロバイダーは、コマンド ラインからイン�
 
 ターゲット VMM サーバーとクラウドを選択します。
 
-1. **[Prepare infrastructure (インフラストラクチャを準備する)]**、**[ターゲット]** の順にクリックし、使用するターゲット VMM サーバーを選択します。
+1. **[インフラストラクチャの準備]**、**[ターゲット]** の順にクリックし、使用するターゲット VMM サーバーを選択します。
 2.	Site Recovery と同期しているサーバー上のクラウドが表示されます。ターゲット クラウドを選択します。
 
 	![ターゲット](./media/site-recovery-vmm-to-vmm/target-vmm.png)
 
 ## ステップ 4: レプリケーション設定をセットアップする
 
-1. 新しいレプリケーション ポリシーを作成するには、**[Prepare infrastructure (インフラストラクチャを準備する)]**、**[レプリケーション設定]**、**[+Create and associate (+ 作成と関連付け)]** の順にクリックします。
+1. 新しいレプリケーション ポリシーを作成するには、**[インフラストラクチャの準備]**、**[レプリケーション設定]**、**[+ 作成と関連付け]** の順にクリックします。
 
 	![ネットワーク](./media/site-recovery-vmm-to-vmm/gs-replication.png)
 
-2. **[Create and associate policy (ポリシーの作成と関連付け)]** で、ポリシー名を指定します。ソースとターゲットの種類は **Hyper-V** にする必要があります。
+2. **[ポリシーの作成と関連付け]** で、ポリシー名を指定します。ソースとターゲットの種類は **Hyper-V** にする必要があります。
 3. **[Hyper-V ホストのバージョン]** で、ホストで実行されているオペレーティング システムを選択します。
 
 	> [AZURE.NOTE] VMM クラウドには、Windows Server の複数の (サポートされている) バージョンを実行している Hyper-V ホストを含めることができますが、レプリケーション ポリシーは、同じオペレーティング システムを実行しているホストに適用されます。複数のバージョンのオペレーティング システムを実行しているホストがある場合は、それぞれにレプリケーション ポリシーを作成します。
@@ -297,7 +298,7 @@ Azure Site Recovery プロバイダーは、コマンド ラインからイン�
 
 	![Replication policy](./media/site-recovery-vmm-to-vmm/gs-replication2.png)
 
-6. 新しいポリシーを作成すると、自動的に VMM クラウドに関連付けられます。**[レプリケーション ポリシー]** で **[OK]** をクリックします。**[設定]**、**[レプリケーション]**、ポリシー名を順にクリックし、**[Associate VMM Cloud (VMM クラウドを関連付ける)]** で、このレプリケーション ポリシーに追加の VMM クラウド (およびその内部にある VM) を関連付けることができます。
+6. 新しいポリシーを作成すると、自動的に VMM クラウドに関連付けられます。**[レプリケーション ポリシー]** で **[OK]** をクリックします。追加の VMM クラウド (およびその内部にある VM) を、このレプリケーション ポリシーに関連付けるには、**[設定]**、**[レプリケーション]**、ポリシー名、**[Associate VMM Cloud (VMM クラウドを関連付ける)]** の順に選択します。
 
 	![Replication policy](./media/site-recovery-vmm-to-vmm/policy-associate.png)
 
@@ -323,12 +324,12 @@ Azure Site Recovery プロバイダーは、コマンド ラインからイン�
 
 ソース ネットワークとターゲット ネットワークの間にネットワーク マッピングをセットアップします。
 
-- ネットワーク マッピングの概要については、[こちら](#prepare-for-network-mapping)を参照してください。また、詳細な説明については、[こちら](site-recovery-network-mapping.md)をご覧ください。
+- ネットワーク マッピングの概要については、[こちら](#prepare-for-network-mapping)をご覧ください。また、詳細な説明については、[こちら](site-recovery-network-mapping.md)をお読みください。
 - VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認します。
 
 マッピングは次のように構成します。
 
-1. **[設定]**、**[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**、**[ネットワーク マッピング]**、**[ネットワーク マッピング]**、**[+ ネットワーク マッピング]** の順にクリックします。
+1. **[設定]**、**[Site Recovery インフラストラクチャ]**、**[ネットワーク マッピング]**、**[ネットワーク マッピング]**、**[+ ネットワーク マッピング]** の順にクリックします。
 
 	![ネットワーク マッピング](./media/site-recovery-vmm-to-azure/network-mapping1.png)
 
@@ -373,14 +374,14 @@ Capacity Planner の Hyper-V レプリカを使用してリアルタイムの差
 
 
 - [Hyper-V レプリカ トラフィックのスロットル](http://www.thomasmaurer.ch/2013/12/throttling-hyper-v-replica-traffic/)に関する Thomas Maurer のブログ
-- [New-NetQosPolicy コマンドレット](https://technet.microsoft.com/library/hh967468.aspx)に関する詳細な情報
+- [New-NetQosPolicy コマンドレット](https://technet.microsoft.com/library/hh967468.aspx)に関する詳細な情報。
 
 
 ## ステップ 6: レプリケーションを有効にする 
 
 レプリケーションを有効にするには、次の手順に従います。
 
-1. **[Step 2: Replicate application (ステップ 2: アプリケーションをレプリケートする)]**、**[ソース]** の順にクリックします。レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
+1. **[手順 2: アプリケーションをレプリケートする]**、**[ソース]** の順にクリックします。レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
 
 	![Enable replication](./media/site-recovery-vmm-to-vmm/enable-replication1.png)
 
@@ -393,7 +394,7 @@ Capacity Planner の Hyper-V レプリカを使用してリアルタイムの差
 
 	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-vmm/enable-replication5.png)
 
-[設定]、**[ジョブ]**、**[Site Recovery jobs (Site Recovery ジョブ)]** の順にクリックして、**保護の有効化**アクションの進行状況を追跡できます。**保護の最終処理**のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。
+**保護の有効化**アクションの進行状況を追跡するには、[設定]、**[ジョブ]**、**[Site Recovery ジョブ]** の順にクリックします。**保護の最終処理**ジョブが実行されると、仮想マシンはフェールオーバーできる状態になります。
 
 
 >[AZURE.NOTE] VMM コンソールでも仮想マシンの保護を有効にできます。仮想マシンのプロパティの **[Azure Site Recovery]** タブで、ツール バーにある **[保護を有効にする]** をクリックします。
@@ -436,7 +437,7 @@ Hyper-V レプリカを使用してレプリケートされる VMM 内に既存�
 
 	![テスト フェールオーバー](./media/site-recovery-vmm-to-vmm/test-failover1.png)
 
-3. **[OK]** をクリックすると、フェールオーバーが開始されます。進行状況を追跡するには、VM をクリックしてプロパティを開くか、**[設定]**、**[ジョブ]**、**[Site Recovery jobs (Site Recovery ジョブ)]** の **[テスト フェールオーバー]** ジョブをクリックします。
+3. **[OK]** をクリックすると、フェールオーバーが開始されます。進行状況を追跡するには、VM をクリックしてプロパティを開くか、**[設定]**、**[ジョブ]**、**[Site Recovery ジョブ]** の **[テスト フェールオーバー]** ジョブをクリックします。
 4. フェールオーバー ジョブが **[テストの完了]** フェーズに達したら、次の手順に従います。
 
 	-  セカンダリ VMM クラウドにレプリカ VM を表示します。
@@ -481,6 +482,6 @@ Hyper-V レプリカを使用してレプリケートされる VMM 内に既存�
 
 ## 次のステップ
 
-デプロイをセットアップし、実行状態にできたら、フェールオーバーのさまざまな種類について、[こちら](site-recovery-failover.md)を参照してください。
+デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

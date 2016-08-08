@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="02/23/2016" 
+	ms.date="07/21/2016" 
 	ms.author="donnam;ricksal"/>
 
 # Azure SQL Database に支えられたモバイル サービスのスケーリング
@@ -76,8 +76,8 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 
     - *データ IO の割合* (Basic/Standard/Premium 階層でのみ使用できます)
     - *ログ IO の割合* (Basic/Standard/Premium 階層でのみ使用できます)
-    - *ストレージ* 
-7. サービスに問題が発生していた期間のメトリックを調べます。 
+    - *ストレージ*
+7. サービスに問題が発生していた期間のメトリックを調べます。
 
     ![Azure クラシック ポータル - SQL Database 指標][PortalSqlMetrics]
 
@@ -192,7 +192,7 @@ Entity Framework でインデックスを定義するには、インデックス
 - **ページングを実装する。** データベースを照会すると、大量のレコードがクライアントに返されることがあります。操作のサイズと待機時間を最小限に抑えるには、ページングを実装することを検討します。
 
     - 既定では、モバイル サービスにより、すべての受信クエリのページ サイズが 50 に制限されるため、手動で要求できるレコードは最大 1,000 件になります。詳細については、[Windows ストア](mobile-services-windows-dotnet-how-to-use-client-library.md#paging)、[iOS](mobile-services-ios-how-to-use-client-library.md#paging)、[Android](mobile-services-android-how-to-use-client-library.md#paging)、[HTML/JavaScript](mobile-services-html-how-to-use-client-library#paging)、および [Xamarin](partner-xamarin-mobile-services-how-to-use-client-library.md#paging) の「ページにデータを返す」を参照してください。
-    - モバイル サービス コードから実行するクエリには、既定のページ サイズがありません。アプリケーションにページングを実装していない場合だけでなく、防衛手段としても、クエリに既定の制限を適用することを検討してください。JavaScript バックエンドでは、**クエリ オブジェクト**の [take](http://msdn.microsoft.com/library/azure/jj613353.aspx) 演算子を使用します。.NET バックエンドを使用する場合は、LINQ クエリの一部として [Take メソッド]を使用することを検討してください。  
+    - モバイル サービス コードから実行するクエリには、既定のページ サイズがありません。アプリケーションにページングを実装していない場合だけでなく、防衛手段としても、クエリに既定の制限を適用することを検討してください。JavaScript バックエンドでは、**クエリ オブジェクト**の [take](http://msdn.microsoft.com/library/azure/jj613353.aspx) 演算子を使用します。.NET バックエンドを使用する場合は、LINQ クエリの一部として [Take メソッド]を使用することを検討してください。
 
 
 クエリ プランを分析する方法など、クエリの設計の改善の詳細については、このドキュメントの下部にある「[高度なクエリの設計](#AdvancedQuery)」を参照してください。
@@ -281,7 +281,8 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     WHERE database_name = 'todoitem_db'
     ORDER BY start_time DESC
 
-> [AZURE.NOTE]このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
+> [AZURE.NOTE]
+このクエリは、サーバー上の **master** データベースで実行してください。**sys.resource\_stats** ビューは、master データベースにのみ存在します。
 
 結果には、CPU (階層の制限の割合 (%))、ストレージ (MB)、物理データの読み取り (階層の制限の割合 (%))、ログの書き込み (階層の制限の割合 (%))、メモリ (階層の制限の割合 (%))、worker 数、セッション数などの有用なメトリックが含まれます。
 
@@ -294,7 +295,8 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
     and event_type like 'throttling%'
     order by start_time desc
 
-> [AZURE.NOTE]このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
+> [AZURE.NOTE]
+このクエリは、サーバー上の **master** データベースで実行してください。**sys.event\_log** ビューは、master データベースにのみ存在します。
 
 <a name="AdvancedIndexing" ></a>
 ### 高度なインデックス作成
@@ -307,7 +309,8 @@ Basic、Standard、および Premium 階層を使用している場合は、管�
 
 現実の世界にたとえるには、本や技術マニュアルを考えてみてください。各ページの内容がレコード、ページ番号がクラスター化インデックス、本の末尾の索引が非クラスター化インデックスです。索引の各エントリはページ番号 (クラスター化インデックス) を指しています。
 
-> [AZURE.NOTE]既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
+> [AZURE.NOTE]
+既定では、Azure Mobile Services の JavaScript バックエンドは、**\_createdAt** をクラスター化インデックスとして設定します。この列を削除する場合や、別のクラスター化インデックスが必要な場合は、以下の[クラスター化インデックスの設計ガイドライン](#ClusteredIndexes)に必ず従ってください。.NET バックエンドでは、`EntityData` クラスにより、`[Index(IsClustered = true)]` 注釈を使用して `CreatedAt` がクラスター化インデックスとして定義されます。
 
 <a name="ClusteredIndexes"></a>
 #### クラスター化インデックスの設計ガイドライン
@@ -490,4 +493,4 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
 <!-- BLOG LINKS -->
 [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

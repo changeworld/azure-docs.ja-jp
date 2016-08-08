@@ -9,17 +9,19 @@
 	tags="connectors"/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="07/19/2016"
+   ms.date="07/26/2016"
    ms.author="mandia"/>
 
 # OneDrive コネクタの使用
 
-OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。OneDrive では、次の操作を実行できます。
+OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。
+
+OneDrive では、次の操作を実行できます。
 
 - OneDrive にファイルを保存してワークフローを構築するか、OneDrive 内の既存ファイルを更新できます。
 - OneDrive 内でファイルが作成または更新されたときに、トリガーを使用してワークフローを開始できます。
@@ -28,6 +30,8 @@ OneDrive に接続して、ファイルのアップロード、取得、削除�
 このトピックでは、ロジック アプリ内で OneDrive コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
 >[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
+
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
 ## OneDrive に接続する
 
@@ -39,44 +43,48 @@ OneDrive に接続して、ファイルのアップロード、取得、削除�
 
 ## トリガーを使用する
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
 1. ロジック アプリで「onedrive」と入力して、トリガーの一覧を取得します。
 
 	![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
-2. **[When a file is modified (ファイルの変更時)]** を選択します。接続が既に存在する場合は、**[...]** (表示ピッカー) ボタンを選択してフォルダーを選択します。
+2. **[When a file is modified (ファイルの変更時)]** を選択します。接続が既に存在する場合は、[ピッカーの表示] ボタンを選択してフォルダーを選択します。
 
 	![](./media/connectors-create-api-onedrive/sample-folder.png)
 
-	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。
+	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」をご覧ください。
 
 	> [AZURE.NOTE] この例では、選択したフォルダー内のファイルが更新されたときに、ロジック アプリが実行されます。このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。たとえば、Office 365 Outlook の "*電子メールを送信する*" アクションを追加します。これにより、ファイルが更新されると電子メールが送信されます。
 
-3. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。
+
+	![](./media/connectors-create-api-onedrive/trigger-properties.png)
+
+4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
 
 ## アクションを使用する
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-1. プラス記号を選択します。**[Add an action (アクションの追加)]**、**[Add a condition (条件の追加)]**、**[More (その他)]** の 1 つのオプションという複数の選択肢があります。
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
 
 	![](./media/connectors-create-api-onedrive/add-action.png)
 
-2. **[Add an action (アクションの追加)]** を選択します。
+2. **[アクションの追加]** を選択します。
 
 3. テキスト ボックスに「onedrive」と入力して、使用可能なすべてのアクションの一覧を取得します。
 
 	![](./media/connectors-create-api-onedrive/onedrive-actions.png)
 
-4. この例では、**[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。接続が既に存在する場合は、**[フォルダー パス]** で、ファイルを配置する場所を選択し、**[ファイル名]** に入力して、**[ファイルのコンテンツ]** を選択します。
+4. この例では、**[OneDrive - Create file (OneDrive - ファイルを作成する)]** を選択します。接続が既に存在する場合は、**[フォルダー パス]** で、ファイルを配置する場所を選択し、**[ファイル名]** に入力して、目的の**ファイルのコンテンツ**を選択します。
 
 	![](./media/connectors-create-api-onedrive/sample-action.png)
 
-	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」をご覧ください。
 
-	> [AZURE.NOTE] この例では、OneDrive フォルダーに新しいファイルを作成します。別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが着信したとき)*" トリガーを追加します。次に、OneDrive の "*Create file (ファイルの作成)*" アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。
+	> [AZURE.NOTE] この例では、OneDrive フォルダーに新しいファイルを作成します。別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが届いたとき)*" トリガーを追加します。次に、OneDrive の "*Create file (ファイルを作成する)*" アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。
 	> 
 	> ![](./media/connectors-create-api-onedrive/foreach-action.png)
 
@@ -117,7 +125,7 @@ OneDrive に接続して、ファイルのアップロード、取得、削除�
 #### ファイルのメタデータを取得する
 この操作では、ファイルのメタデータを取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 
@@ -143,7 +151,7 @@ BlobMetadata
 #### ファイルを更新する
 この操作では、ファイルを更新します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 |body*|ファイルのコンテンツ|ファイルの内容|
@@ -170,7 +178,7 @@ BlobMetadata
 #### ファイルを削除する
 この操作では、ファイルを削除します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 
@@ -182,7 +190,7 @@ BlobMetadata
 #### パスを使用してファイルのメタデータを取得する
 この操作では、パスを使用してファイルのメタデータを取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |path*|ファイル パス|ファイルを選択する|
 
@@ -208,7 +216,7 @@ BlobMetadata
 #### パスを使用してファイルの内容を取得する
 この操作では、パスを使用してファイルの内容を取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |path*|ファイル パス|ファイルを選択する|
 
@@ -221,7 +229,7 @@ BlobMetadata
 #### ファイルの内容を取得する
 この操作では、ファイルの内容を取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 
@@ -261,7 +269,7 @@ BlobMetadata
 #### ファイルをコピーする
 この操作では、ファイルを OneDrive にコピーします。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |source*|Source url (コピー元 URL)|ソース ファイルの URL|
 |destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パス|
@@ -289,7 +297,7 @@ BlobMetadata
 #### ファイルの作成時
 この操作では、フォルダーに新しいファイルが作成されたときにフローをトリガーします。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |folderId*|フォルダー|フォルダーを選択する|
 
@@ -301,7 +309,7 @@ BlobMetadata
 #### ファイルの変更時
 この操作では、フォルダー内のファイルが変更されたときにフローをトリガーします。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |folderId*|フォルダー|フォルダーを選択する|
 
@@ -313,7 +321,7 @@ BlobMetadata
 #### フォルダー内のファイルを一覧表示する
 この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|フォルダー|フォルダーを選択する|
 
@@ -361,7 +369,7 @@ BlobMetadata
 #### アーカイブをフォルダーに抽出する
 この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
 |destination*|Destination folder path (抽出先フォルダー パス)|アーカイブの内容を抽出するパス|
@@ -406,4 +414,4 @@ BlobMetadata
 
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

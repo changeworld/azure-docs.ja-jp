@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -36,8 +36,8 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 
 4. [[Twitter]](http://apps.twitter.com)、**[新しいアプリの作成]** の順に移動します。**[コールバック URL]** プロパティで、Twitter コネクタからコピーした **[リダイレクト URI]** の値を貼り付けます。![][4]
 5. 独自の Twitter アプリを作成する場合は、**[キーとアクセス トークン]** を選択します。これらの値をコピーします。
-6. Twitter コネクタの認証設定で、**[クライアント ID]** と **[クライアント シークレット]** プロパティにこれらの値を貼り付けます。![][5]  
-7. コネクタの設定を保存します。  
+6. Twitter コネクタの認証設定で、**[クライアント ID]** と **[クライアント シークレット]** プロパティにこれらの値を貼り付けます。![][5]
+7. コネクタの設定を保存します。
 
 これで、Logic Apps からコネクタを使用できるようになります。Logic Apps からこのコネクタを使用する場合、既定のアプリケーションではなく、独自のアプリケーションを使用します。
 
@@ -51,4 +51,4 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

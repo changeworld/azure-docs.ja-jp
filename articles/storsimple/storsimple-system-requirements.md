@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="07/26/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -37,7 +37,7 @@ Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デ
 | --------------------------- | ---------------- | ------------- |
 | Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple iSCSI ボリュームは、次の Windows ディスク タイプで使用する場合にのみサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のミラー化されたシンプル ボリューム</li></ul>Windows Server 2012 の仮想プロビジョニング機能および ODX 機能は、StorSimple iSCSI ボリュームを使用する場合にサポートされます。<br><br>StorSimple で作成できるのは、仮想プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームです。部分的にプロビジョニングされたボリュームについては作成できません。<br><br>仮想プロビジョニングされたボリュームを再フォーマットと時間がかかる場合があります。再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。ただし、ボリュームの再フォーマットを行いたい場合は、次の操作を行ってください。<ul><li>領域の回復の遅延を避けるために、再フォーマットする前に次のコマンドを実行します。<br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の回復を再度有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) で説明されている Windows Server 2012 修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。|
 | VMWare ESX | 5\.5 および 6.0 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。
-| Linux RHEL/CentOS | 5 および 6 | Open-iSCSI イニシエーター バージョン 5 および 6 での Linux iSCSI クライアントのサポート。 |
+| Linux RHEL/CentOS | 5、6 および 7 | Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
 | Linux | SUSE Linux 11 | |
  > [AZURE.NOTE] 現在、IBM AIX は StorSimple ではサポートされていません。
 
@@ -127,12 +127,7 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 
 	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
@@ -242,8 +237,7 @@ StorSimple デバイスには、ミラー化されたスペースを使用して
 
 - SSD または HDD の障害または交換が必要な場合、交換が必要な SSD または HDD のみを取り外すようにします。
 
-- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。
-特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 
 - 交換中は、SSD と HDD のドライブの **[メンテナンス]** ページで **[ハードウェア状態]** を監視します。緑のチェック状態は、ディスクが正常または OK であると示しています。一方、赤の感嘆符は障害中の SSD または HDD を示しています。
 
@@ -281,4 +275,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

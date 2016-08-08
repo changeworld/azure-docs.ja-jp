@@ -24,7 +24,7 @@
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
-> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成する際は、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」をご覧ください。
+> [AZURE.IMPORTANT] このドキュメントの手順では、Azure クラシック ポータルを使用します。新しいサービスを作成するときは、クラシック ポータルを使用しないことをお勧めします。Azure ポータルの利点の詳細については、「[Microsoft Azure ポータル](https://azure.microsoft.com/features/azure-portal/)」をご覧ください。
 >
 > このドキュメントでは、HDInsight .NET SDK の使用方法についても説明します。ここで示すスニペットは、Azure サービス管理 (ASM) を使用して HDInsight で機能するコマンドに基づいていますが、これらのコマンドは__推奨されていません__。これらのコマンドは、2017 年 1 月 1 日までに削除される予定です。
 >
@@ -112,7 +112,7 @@ Azure HDInsight にアプリケーションを認証するには、自己署名�
 					var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
 		
 		            // The Pig Latin statements to run
-		            string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
+		            string queryString = "LOGS = LOAD 'wasbs:///example/data/sample.log';" +
 		                "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
 		                "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
 		                "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
@@ -162,4 +162,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

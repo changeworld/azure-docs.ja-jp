@@ -22,9 +22,9 @@
 
 ## ビデオ 2: 初心者向けデータ サイエンス シリーズ
 
-データを評価してデータ サイエンスの基本的な条件を満たしていることを確認する方法について説明します。
+データを評価して、データ サイエンスに備えるための基本的な条件を満たしていることを確認する方法について説明します。
 
-このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
+このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
 > [AZURE.VIDEO data-science-for-beginners-series-is-your-data-ready-for-data-science]
 
@@ -40,7 +40,7 @@
 
 ## トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
 
-*"初心者向けデータ サイエンス"* シリーズの 2 番目のビデオである「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
+"初心者向けデータ サイエンス" シリーズの 2 番目のビデオである「データ サイエンス用のデータの準備はお済みですか?」へようこそ。
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。
 
@@ -71,7 +71,7 @@
 
 次の材料は、連続しているデータです。
 
-![連続しているデータと連続していないデータの比較 - データの条件](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
+![連続しているデータと連続していないデータの比較 - データの条件、データの準備](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/machine-learning-data-science-connected-vs-disconnected-data.png)
 
 ここにハンバーガーの品質に関連するデータとして、グリルの温度、パテの重さ、地元の食品雑誌での評価があります。ただし左側の表内の空白に注目してください。
 
@@ -119,4 +119,4 @@ Microsoft Azure Machine Learning の *"初心者向けデータ サイエンス"
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

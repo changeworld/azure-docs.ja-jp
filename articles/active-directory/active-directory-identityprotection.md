@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -33,9 +33,10 @@ Azure Active Directory Identity Protection は、リスク イベントや組織
 
 Azure Active Directory Identity Protection のプレビューには、フェデレーション ドメインとの関係について次の制限があります。
 
-- セキュリティ ポリシーはフェデレーション ドメインに対しては動作しません
+- フェデレーション ドメインに対してはサインイン リスク セキュリティ ポリシーのみが機能します。現時点では、ユーザー リスク セキュリティ ポリシーはフェデレーション ドメインに対して機能しません。
 
 - リスク イベントは、Azure Active Directory とフェデレーションを行っているアプリに対してのみ検出されます。
+
 
 ##Getting Started (概要)
 
@@ -51,7 +52,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 
 **リスク イベントとリスクの高いアカウントの検出:**
 
-- 機械学習とヒューリスティック規則を使用して、6 種類のリスク イベントを検出します 
+- 機械学習とヒューリスティック規則を使用して、6 種類のリスク イベントを検出します
 
 - ユーザーのリスク レベルを計算します
 
@@ -97,8 +98,7 @@ Azure Active Directory Identity Protection のプレビューには、フェデ�
 | 感染しているデバイスからのサインイン | 感染している可能性があるデバイスからのサインイン |
 | 匿名の IP アドレスからのサインイン | 不明なソースからのサインイン |
 | 不審なアクティビティのある IP アドレスからのサインイン |	不審なアクティビティのある IP アドレスからのサインイン |
-| 未知の場所からのサインイン | - | 
-| ロックアウト イベント (パブリック プレビューには含まれません) | - |
+| 未知の場所からのサインイン | - | | ロックアウト イベント (パブリック プレビューには含まれません) | - |
 
 以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。これらのレポートは Microsoft Azure 管理ポータルではまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
@@ -153,8 +153,8 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 ユーザー リスク レベルは、次の入力を使用して計算されます。
 
 - ユーザーに影響を与えるアクティブなリスク イベント
-- それらのイベントのリスク レベル 
-- すべての修復アクションが実施されたかどうか 
+- それらのイベントのリスク レベル
+- すべての修復アクションが実施されたかどうか
 
 <br> ![ユーザーのリスク](./media/active-directory-identityprotection/86.png "ユーザーのリスク") <br>
 
@@ -194,7 +194,7 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 次の方法でユーザー リスク イベントを修復できます。
 
-- セキュリティ保護されたパスワードのリセットを実行し、ユーザー リスク イベントを手動で修復します。 
+- セキュリティ保護されたパスワードのリセットを実行し、ユーザー リスク イベントを手動で修復します。
 
 - ユーザーのリスク セキュリティ ポリシーを構成し、ユーザー リスク イベントを自動的に緩和または修復します。
 
@@ -258,7 +258,7 @@ Azure AD Identity Protection では、リスクのフラグ付きユーザーの
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 
-- [侵害されたアカウントの復旧フロー](active-directory-identityprotection-flows.md#compromised-account-recovery)。  
+- [侵害されたアカウントの復旧フロー](active-directory-identityprotection-flows.md#compromised-account-recovery)。
 
 - [ブロック済みの侵害されたアカウントのフロー](active-directory-identityprotection-flows.md#compromised-account-blocked)。
 
@@ -337,11 +337,11 @@ Azure AD Identity Protection では、リスクの高いサインインの軽減
 Identity Protection コンソールの **[リスク イベント]** ページには、以下に該当するすべてのイベントが一覧表示されます。
 
 - そのポリシーが適用されたイベント
-- アクティビティを確認して、アクションが適切だったかどうかを判断できるイベント 
+- アクティビティを確認して、アクションが適切だったかどうかを判断できるイベント
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 
-- [リスクの高いサインインの復旧](active-directory-identityprotection-flows.md#risky-sign-in-recovery) 
+- [リスクの高いサインインの復旧](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
 
 - [ブロックされたリスクの高いサインイン](active-directory-identityprotection-flows.md#risky-sign-in-blocked)
 
@@ -383,7 +383,7 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 
-- [多要素認証登録のフロー](active-directory-identityprotection-flows.md#multi-factor-authentication-registration)。  
+- [多要素認証登録のフロー](active-directory-identityprotection-flows.md#multi-factor-authentication-registration)。
 
 - [リスクの高いサインインの間の多要素認証の登録](active-directory-identityprotection-flows.md#multi-factor-authentication-registration-during-a-risky-sign-in)。
 
@@ -411,4 +411,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
  - [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

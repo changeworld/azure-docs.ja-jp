@@ -1,11 +1,22 @@
 <properties pageTitle=".NET での Azure Media Services テレメトリ | Microsoft Azure" 
 	description="この記事では、Azure Media Services テレメトリを使用する方法について説明します。" 
-	services="" 
-	documentationCenter=""
-	authors="juliako" />
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="erikre" 
+	editor=""/>
+
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="07/23/2016"   
+	ms.author="juliako"/>
 
 # .NET での Azure Media Services テレメトリ
-
+ 
 ## 概要
 
 Media Services テレメトリ/監視により、Media Services の顧客が、そのサービスのメトリック データにアクセスできます。現在のバージョンでは、"Channel" エンティティと "StreamingEndpoint" エンティティのテレメトリ データがサポートされています。テレメトリはコンポーネント レベルの粒度で構成でき、"Normal" と "Verbose" の 2 つの詳細レベルがあります。現在のバージョンでは "Normal" のみがサポートされます。
@@ -21,7 +32,7 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 テレメトリを有効にするには、次の手順を実行する必要があります。
 
 - Media Services アカウントに接続されたストレージ アカウントの資格情報を取得します。
-- 通知エンドポイントを作成します。**EndPointType** は **AzureTable** に設定し、endPontAddress はストレージ テーブルを指すように指定します。
+- 通知エンドポイントを作成します。**EndPointType** は **AzureTable** に設定し、endPointAddress はストレージ テーブルを指すように指定します。
 
 	    INotificationEndPoint notificationEndPoint = 
 	                  _context.NotificationEndPoints.Create("monitoring", 
@@ -37,55 +48,52 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
                 new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
             });
 
+## テレメトリ情報の使用
 
-## StreamingEndpoint ログ
+テレメトリは、Media Services アカウントのテレメトリを構成するときに指定したストレージ アカウントの Azure Storage テーブルに書き込まれます。テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。たとえば、"TelemetryMetrics20160321" の "20160321" はテーブルが作成された日付です。つまり、日ごとに個別のテーブルが存在することになります。
 
-###使用可能なメトリック
+次のメトリック情報について、テーブルにクエリを実行できます。
+
+### StreamingEndpoint ログ
 
 次の StreamingEndPoint のメトリックに対してクエリを実行できます。
 
-- **PartitionKey** は、レコードのパーティション キーを取得します。
-- **RowKey** は、レコードの行キーを取得します。
-- **AccountId** は、Media Services アカウント ID を取得します。
-- **AccountId** は、Media Services ストリーミング エンドポイント ID を取得します。
-- **ObservedTime** は、メトリックの監視時間を取得します。
-- **HostName** は、ストリーミング エンドポイントのホスト名を取得します。
-- **StatusCode** は、状態コードを取得します。
-- **ResultCode** は、結果コードを取得します。
-- **RequestCount** は、要求数を取得します。
-- **BytesSent** は、送信バイト数を取得します。
-- **ServerLatency** は、サーバーの待機時間を取得します。
-- **EndToEndLatency** は、エンド ツー エンドの要求時間を取得します。
-
-###ストリーミング エンドポイントのクエリ結果の例
-
-![ストリーミング エンドポイント クエリ](media/media-services-telemetry/media-services-telemetry01.png)
+プロパティ|説明|値の例
+---|---|---
+**PartitionKey**|レコードのパーティション キーを取得します。|60b71b0f6a0e4d869eb0645c16d708e1\_6efed125eef44fb5b61916edc80e6e23
+**RowKey**|レコードの行キーを取得します。|00959\_00000
+**AccountId**|Media Services アカウント ID を取得します。|6efed125-eef4-4fb5-b619-16edc80e6e23
+**StreamingEndpointId**|Media Services ストリーミング エンドポイント ID を取得します。|d17ec9e4-a5d4-033d-0c36-def70229f06f
+**ObservedTime**|メトリックの監視時間を取得します。|1/20/16 23:44:01
+**HostName**|ストリーミング エンドポイントのホスト名を取得します。|builddemoserver.origin.mediaservices.windows.net
+**StatusCode**|状態コードを取得します。|200
+**ResultCode**|結果コードを取得します。|S\_OK
+**RequestCount**|要求数を取得します。|3
+**BytesSent**|送信バイト数を取得します。|2987358
+**ServerLatency**|サーバーの待機時間 (ストレージを含む) を取得します。|129
+**EndToEndLatency**|エンド ツー エンドの要求時間を取得します。|250
 
 
-## ライブ チャネル ハートビート
-
-###使用可能なメトリック
+### ライブ チャネル ハートビート
 
 次のライブ チャネル メトリックに対してクエリを実行できます。
 
-- **PartitionKey** は、レコードのパーティション キーを取得します。
-- **RowKey** は、レコードの行キーを取得します。
-- **AccountId** は、Media Services アカウント ID を取得します。
-- **ChannelId** は、Media Services チャネル ID を取得します。
-- **ObservedTime** は、メトリックの監視時間を取得します。
-- **CustomAttributes** は、カスタム属性を取得します。
-- **TrackType** は、トラックの種類を取得します。
-- **TrackName** は、トラック名を取得します。
-- **Bitrate** は、ビットレートを取得します。
-- **IncomingBitrate** は、受信ビットレートを取得します。
-- **OverlapCount** は、重複数を取得します。
-- **DiscontinuityCount** は、不連続性の数を取得します。
-- **LastTimestamp** は、最後のタイムスタンプを取得します。
+プロパティ|説明|値の例
+---|---|---
+**PartitionKey**|レコードのパーティション キーを取得します。|60b71b0f6a0e4d869eb0645c16d708e1\_0625cc45918e4f98acfc9a33e8066628
+**RowKey**|レコードの行キーを取得します。|13872\_00005
+**AccountId**|Media Services アカウント ID を取得します。|6efed125-eef4-4fb5-b619-16edc80e6e23
+**ChannelId**|Media Services チャネル ID を取得します。|
+**ObservedTime**|メトリックの監視時間を取得します。|1/21/2016 20:08:49
+**CustomAttributes**|カスタム属性を取得します。|
+**TrackType**|トラックの種類を取得します。|video
+**TrackName**|トラック名を取得します。|video
+**Bitrate**|ビットレートを取得します。|785000
+**IncomingBitrate**|受信ビットレートを取得します。|784548
+**OverlapCount**|重複数を取得します。|0
+**DiscontinuityCount**|不連続性の数を取得します。|0
+**LastTimestamp**|最後のタイムスタンプを取得します。|1800488800
  
-###ライブ チャネルのクエリ結果の例
-
-![ストリーミング エンドポイント クエリ](media/media-services-telemetry/media-services-telemetry01.png)
-
 ## StreamingEndpoint メトリックの例
 		
 	using System;
@@ -125,8 +133,7 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 	            // Used the cached credentials to create CloudMediaContext.
 	            _context = new CloudMediaContext(_cachedCredentials);
 	
-	            INotificationEndPoint notificationEndPoint = 
-	                          _context.NotificationEndPoints.Create("monitoring", NotificationEndPointType.AzureTable, GetTableEndPoint());
+
 	
 	            var monitoringConfigurations = _context.MonitoringConfigurations;
 	            IMonitoringConfiguration monitoringConfiguration = null;
@@ -138,6 +145,10 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 	            }
 	            else
 	            {
+		            INotificationEndPoint notificationEndPoint = 
+		                          _context.NotificationEndPoints.Create("monitoring", 
+								  NotificationEndPointType.AzureTable, GetTableEndPoint());
+
 	                monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
 	                    new List<ComponentMonitoringSetting>()
 	                    {
@@ -235,4 +246,4 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -22,7 +22,7 @@
 
 Script Action を使用して Windows ベースの HDInsight クラスターを Giraph でカスタマイズする方法と、Giraph を使用して大規模なグラフを処理する方法について説明します。Linux ベースのクラスターでの Giraph の操作については、「[HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
  
-*Script Action* を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Giraph をインストールできます。HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
+*スクリプト アクション*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Giraph をインストールできます。HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 **関連記事:**
 
@@ -45,7 +45,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Script Action を使ってクラスターをカスタマイズする")
+	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -89,14 +89,14 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 		$clusterName = "clustername"
 		# Giraph examples jar
-		$jarFile = "wasb:///example/jars/giraph-examples.jar"
+		$jarFile = "wasbs:///example/jars/giraph-examples.jar"
 		# Arguments for this job
 		$jobArguments = "org.apache.giraph.examples.SimpleShortestPathsComputation",
 		                "-ca", "mapred.job.tracker=headnodehost:9010",
 		                "-vif", "org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat",
-		                "-vip", "wasb:///example/data/tiny_graph.txt",
+		                "-vip", "wasbs:///example/data/tiny_graph.txt",
 		                "-vof", "org.apache.giraph.io.formats.IdWithValueTextOutputFormat",
-		                "-op",  "wasb:///example/output/shortestpaths",
+		                "-op",  "wasbs:///example/output/shortestpaths",
 		                "-w", "2"
 		# Create the definition
 		$jobDefinition = New-AzureHDInsightMapReduceJobDefinition
@@ -115,7 +115,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
 	この例では、**clustername** を、Giraph をインストールした HDInsight クラスターの名前で置き換えます。
 
-5. 結果を表示します。ジョブが完了すると、結果が \_\___wasb:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001__ と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
+5. 結果を表示します。ジョブが完了すると、結果が __wasbs:///example/out/shotestpaths__ フォルダーの 2 つの出力ファイルに格納されます。この 2 つのファイルは __part-m-00001 と __part-m-00002__ という名前です。出力をダウンロードして表示するには、次の手順を実行します。
 
 		$subscriptionName = "<SubscriptionName>"       # Azure subscription name
 		$storageAccountName = "<StorageAccountName>"   # Azure Storage account name
@@ -183,4 +183,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

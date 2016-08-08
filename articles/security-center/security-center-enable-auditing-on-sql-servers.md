@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center での SQL Server の監査の有効化
@@ -24,7 +24,7 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 
 この推奨事項は Azure SQL サービスにのみ適用されます。Azure Infrastructure Services (Azure IaaS) の仮想マシンで実行されている SQL Server は含まれません。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -37,7 +37,7 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 
 5. 「[SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection-get-started.md)」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
 
-## 次のステップ
+## 関連項目
 
 この記事では、"SQL Server の監査の有効化" という Security Center の推奨事項を実装する方法について説明しました。 SQL Database のセキュリティ保護の詳細については、次の記事をご覧ください。
 
@@ -58,4 +58,4 @@ Azure Security Center では、監査をまだ有効にしていない場合に�
 [2]: ./media/security-center-enable-auditing-on-sql-server/enable-auditing.png
 [3]: ./media/security-center-enable-auditing-on-sql-server/auditing-settings-blade.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

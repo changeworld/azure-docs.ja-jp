@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -25,6 +25,6 @@ Logic Apps バージョン 2014-12-01-preview を対象とするコンテンツ�
 ## 次のステップ    
 
 - [この新しいコネクタに関する詳細情報](../connectors/connectors-create-api-twitter.md)
-- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で動作するすべてのコネクタが列挙された[リスト](../connectors/apis-list.md)をご確認ください。  
+- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で動作するすべてのコネクタが列挙された[リスト](../connectors/apis-list.md)をご確認ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0727_2016-->

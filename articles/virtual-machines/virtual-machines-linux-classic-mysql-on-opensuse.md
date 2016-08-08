@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Microsoft Azure の OpenSUSE Linux VM に MySQL をインストールする"
-	description="Azure の仮想マシンに MySQL をインストールする方法について説明します。"
+	pageTitle="OpenSUSE VM への MySQL のインストール | Microsoft Azure"
+	description="Azure 上の OpenSUSE Linux 仮想マシンに MySQL をインストールする方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="cynthn"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
+	ms.date="07/19/2016"
 	ms.author="cynthn"/>
 
 # Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
@@ -41,4 +41,4 @@ MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参�
 [MySQLDocs]: http://dev.mysql.com/doc/index-topic.html
 [MySQL]: http://www.mysql.com
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

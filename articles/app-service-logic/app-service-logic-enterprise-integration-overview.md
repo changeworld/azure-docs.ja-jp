@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -61,4 +61,4 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

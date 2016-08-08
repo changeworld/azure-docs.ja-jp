@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB のパフォーマンス レベル | Microsoft Azure" 
 	description="DocumentDB のパフォーマンス レベルを使用して、コレクションごとにスループットを予約できるようにする方法について説明します。" 
 	services="documentdb" 
-	authors="johnfmacintyre" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
-	ms.author="johnmac"/>
+	ms.date="07/27/2016" 
+	ms.author="mimig"/>
 
 # DocumentDB のパフォーマンス レベル
 
@@ -95,11 +95,11 @@ DocumentDB のコレクションを使用すると、クエリ パターンと�
 
 保存容量やスループットの大きさが求められている場合を除いて、アプリケーションで使用するコレクションは少数にとどめておくことをお勧めします。新しいコレクションの作成に対するアプリケーションのパターンを十分に理解しておいてください。コレクションの作成を、アプリケーション外部で処理する管理アクションにしておくこともできます。同様に、コレクションのパフォーマンス レベルを調整すると、コレクションの時間あたりの課金レートが変更されます。アプリケーションでこれらを動的に調整する場合は、コレクションのパフォーマンス レベルを監視する必要があります。
 
-## Azure ポータルを使用するパフォーマンス レベルの変更
+## <a href="changing-performance-levels-using-the-azure-portal"></a>S1、S2、S3 からユーザー定義のパフォーマンスに変更する
 
-Azure ポータルは、コレクションのパフォーマンス レベルを管理する場合に使用できる方法の 1 つです。Azure ポータルで次の手順に従って、使用するパフォーマンス レベルを事前定義のものからユーザー定義のものに変更します。ユーザー定義のスループット レベルを使用すると、ニーズに合わせてスループットを調整できます。S1 アカウントを引き続き使用する場合は、数回クリックするだけで既定のスループットを 250 RU/秒から 400 RU/秒に引き上げることができます。
+Azure ポータルで次の手順に従って、使用するパフォーマンス レベルを事前定義のものからユーザー定義のものに変更します。ユーザー定義のスループット レベルを使用すると、ニーズに合わせてスループットを調整できます。S1 アカウントを引き続き使用する場合は、数回クリックするだけで既定のスループットを 250 RU/秒から 400 RU/秒に引き上げることができます。
 
-ユーザー定義のスループットと事前定義されたスループットに関連した価格変更の詳細については、ブログ記事「[DocumentDB: Everything you need to know about using the new pricing options (DocumentDB: 新しい価格オプションの使用に関して知っておく必要があるすべてのこと)](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)」を参照してください。
+ユーザー定義のスループットと事前定義されたスループットに関連した価格変更の詳細については、ブログ記事「[DocumentDB: Everything you need to know about using the new pricing options (DocumentDB: 新しい価格オプションの使用に関して知っておく必要があるすべてのこと)](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)」をご覧ください。
 
 > [AZURE.VIDEO changedocumentdbcollectionperformance]
 
@@ -162,6 +162,20 @@ Azure ポータルは、コレクションのパフォーマンス レベルを�
 - [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
 - [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
 
+## <a href="change-throughput"></a>コレクションのスループットの変更
+
+ユーザー定義のパフォーマンスを既に使用している場合は、次の手順に従うことでコレクションのスループットを変更できます。パフォーマンス レベル S1、S2、S3 (事前定義のパフォーマンス) からユーザー定義のパフォーマンスに変更する必要がある場合は、「[S1、S2、S3 からユーザー定義のパフォーマンスに変更する](#changing-performance-levels-using-the-azure-portal)」をご覧ください。
+
+1. ブラウザーで、[**Azure ポータル**](https://portal.azure.com)に移動します。
+2. **[参照]**、**[DocumentDB アカウント]** の順にクリックし、変更する DocumentDB アカウントを選択します。
+3. **DocumentDB アカウント** ブレードの **[データベース]** レンズで変更するデータベースを選択し、**[データベース]** ブレードで変更するコレクションを選択します。
+4. **[コレクション]** ブレードで、上部のバーにある **[設定]** をクリックします。
+5. **[設定]** ブレードで、**[スループット (RU/秒)]** ボックスの値を増やし、**[OK]** をクリックして変更を保存します。ブレードの下部にある **[料金の概要]** が更新されて、単一のリージョンにおけるこのコレクションの新しい月額料金の見積もりが表示されます。
+
+    ![[スループット] ボックスと [価格の概要] が強調表示されている [設定] ブレードのスクリーンショット](./media/documentdb-performance-levels/documentdb-change-throughput.png)
+ 
+スループットを増やす量を検討中の場合は、「[スループットのニーズの推定](documentdb-request-units.md#estimating-throughput-needs)」と[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)に関するページをご覧ください。
+
 ## 次のステップ
 
 Azure DocumentDB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
@@ -174,9 +188,9 @@ Azure DocumentDB の価格設定とデータ管理の詳細については、以
 
 DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
-DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
+DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」をご覧ください。
 
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

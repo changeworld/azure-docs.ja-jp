@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/19/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
@@ -79,7 +79,7 @@ Hadoop HDFS コマンドを使用し、以下の手順で既存の運用環境�
 
 6. SSH セッションで次のコマンドを使用して、リンクされたストレージ アカウントから新しい既定のストレージ アカウントにファイルをコピーします。CONTAINER と ACCOUNT を、手順 1. で PowerShell スクリプトによって返されたコンテナーとアカウントの情報に置き換えます。データへのパスをデータ ファイルへのパスに置き換えます。
 
-        hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
+        hdfs dfs -cp wasbs://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
 
     [AZURE.NOTE] テスト環境にデータを格納するディレクトリ構造が存在しない場合は、次のコマンドを使用して作成できます。
 
@@ -240,9 +240,9 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   **クラスターで使用されているストレージに既に存在するスクリプトの場合**、Linux ベースのクラスターに対して SSH セッションで以下のコマンドを使用して、スクリプトを変更します。
 
-        hdfs dfs -get wasb:///path/to/script.py oldscript.py
+        hdfs dfs -get wasbs:///path/to/script.py oldscript.py
         tr -d '\r' < oldscript.py > script.py
-        hdfs dfs -put -f script.py wasb:///path/to/script.py
+        hdfs dfs -put -f script.py wasbs:///path/to/script.py
 
 ##次のステップ
 
@@ -254,4 +254,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

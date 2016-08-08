@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/21/2016"
+	ms.date="07/26/2016"
 	ms.author="micurd"/>
 
 # Xamarin から BLOB ストレージを使用する方法 (プレビュー)
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概要
 
@@ -179,4 +179,4 @@ BLOB、テーブル、キューの詳細は次のリンクで確認できます�
 - [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
 - [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->
