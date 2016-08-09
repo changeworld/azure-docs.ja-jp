@@ -61,7 +61,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 
 ## クラウド サービスに Python をインストールする
 
->[AZURE.WARNING] (この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
+>[AZURE.WARNING] \(この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
 
 セットアップ スクリプトの一番の問題は、Python がインストールされないことです。最初に、2 つの[スタートアップ タスク](cloud-services-startup-tasks.md)を [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイルに定義します。最初のタスク (**PrepPython.ps1**) は、Python ランタイムをダウンロードしてインストールします。2 番目のタスク (**PipInstaller.ps1**) は、pip を実行して、すべての依存関係をインストールします。
 
