@@ -110,7 +110,7 @@
 
 1. プロジェクト ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
 2. **models** ディレクトリ内に、**taskDao.js** という名前の新しいファイルを作成します。このファイルには、アプリケーションで作成されるタスクのモデルが格納されます。
-3. 同じ **models** ディレクトリ内に、**docdbUtils.js** という名前の別の新しいファイルを作成します。このファイルには、アプリケーション全体で使用する、いくつかの便利で再利用可能なコードが含まれます。 
+3. 同じ **models** ディレクトリ内に、**docdbUtils.js** という名前の別の新しいファイルを作成します。このファイルには、アプリケーション全体で使用する、いくつかの便利で再利用可能なコードが含まれます。
 4. 次のコードを **docdbUtils.js** 内にコピーします。
 
 		var DocumentDBClient = require('documentdb').DocumentClient;
@@ -305,7 +305,7 @@
 
 ### コントローラーの作成
 
-1. プロジェクトの **routes** ディレクトリ内に、**tasklist.js** という名前の新しいファイルを作成します。 
+1. プロジェクトの **routes** ディレクトリ内に、**tasklist.js** という名前の新しいファイルを作成します。
 2. 次のコードを **tasklist.js** に追加します。これによって、**tasklist.js** で使用される　DocumentDBClient および async モジュールが読み込まれます。また、これで **TaskList** 関数が定義されました。先ほど定義した **Task** オブジェクトのインスタンスがこの関数に渡されます。
 
 		var DocumentDBClient = require('documentdb').DocumentClient;
@@ -439,7 +439,7 @@
 
 次に、ユーザーがアプリケーションとやり取りするためのユーザー インターフェイスを作成します。作成した Express アプリケーションでは、ビュー エンジンとして **Jade** を使用しています。Jade の詳細については、[http://jade-lang.com/](http://jade-lang.com/) を参照してください。
 
-1. **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。 
+1. **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 2. **views** フォルダーにある **layout.jade** ファイルを開き、その内容を次のコードで置き換えます。
 	
 		doctype html
@@ -545,7 +545,7 @@
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この方法の手順については、「[Azure App Service での GIT による継続的なデプロイ](../app-service-web/web-sites-publish-source-control.md)」を参照してください。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この手順については、「[Azure App Service へのローカル Git デプロイ](../app-service-web/app-service-deploy-local-git.md)」のトピックを参照してください。
 
 2. Git リモートとして Azure Web サイトを追加します。
 
@@ -570,4 +570,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0803_2016-->

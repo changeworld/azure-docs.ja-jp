@@ -129,7 +129,7 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 
 - [カスタム ドメイン名を購入し、構成する](custom-dns-web-site-buydomains-web-app.md) - Web アプリ用に、*.azurewebsites.net ドメインの代わりに魅力的なドメインを購入します。または、既存のドメインを使用します。
 - [ステージング環境を設定する](web-sites-staged-publishing.md) - 運用環境に配置する前に、ステージング URL にアプリをデプロイします。ライブ Web アプリを、動作確認してから更新できます。複数のデプロイ スロットで複雑な DevOps ソリューションを設定します。
-- [継続的なデプロイを設定する](web-sites-publish-source-control.md) - アプリのデプロイをソース管理システムに統合します。コミットするたびに、Azure にデプロイします。
+- [継続的なデプロイを設定する](app-service-continuous-deployment.md) - アプリのデプロイをソース管理システムに統合します。コミットするたびに、Azure にデプロイします。
 - [オンプレミス リソースにアクセスする](web-sites-hybrid-connection-get-started.md) - 既存のオンプレミス データベースまたは CRM システムにアクセスします。
 - [アプリをバックアップする](web-sites-backup.md) - Web アプリのバックアップと復元を設定します。予期しない障害と、それからの復旧を準備します。
 - [診断ログを有効にする](web-sites-enable-diagnostic-log.md) - Azure またはアプリケーションのトレースからの IIS ログを読みます。ストリームで読んだり、ダウンロードしたり、ターンキー分析のために [Application Insights](../application-insights/app-insights-overview.md) に取り込んだりします。
@@ -137,4 +137,4 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 - [バックグラウンド ジョブを実行する](../azure-functions/functions-overview.md) - データ処理、レポート作成などのジョブを実行します。
 - [App Service の特長](../app-service/app-service-how-works-readme.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

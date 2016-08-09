@@ -1,7 +1,7 @@
 <properties
 	pageTitle="使用可能なコネクタと API Apps の一覧 | Microsoft Azure App Service"
 	description="Azure App Service のコネクタと API Apps に関するページを参照してください。"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MandiOhlinger"
 	manager="erikre"
@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/11/2016"
+	ms.date="07/28/2016"
 	ms.author="mandia"/>
 
 
 # Logic Apps で使用するコネクタと API Apps の一覧
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。2015-08-01-preview スキーマ バージョンについては、[新しいコネクタの一覧](../connectors/apis-list.md)をご覧ください。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。Logic Apps の一般公開 (GA) バージョンについては、[新しいコネクタの一覧](../connectors/apis-list.md)をご覧ください。
 
 このトピックでは、マイクロソフトによって作成された、Logic Apps 内で使用できるすべてのコネクタと API Apps を示します。
 
 料金情報および各サービス レベルに含まれる新機能の一覧については、「[Azure App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 
-> [AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appservice=logic)」にアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> [AZURE.NOTE] Azure アカウントにサインアップせずに Logic Apps を体験するには、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## コアのコネクタ
 次の表に、コアのコネクタとして使用できる、マイクロソフトによって作成された使用可能なすべてのコネクタと API Apps を示します。
@@ -80,4 +80,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

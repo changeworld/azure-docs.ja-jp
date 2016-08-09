@@ -3,7 +3,7 @@
    description="データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -127,4 +127,4 @@ SQL Server データベースを移行するには、[SQL Server データベー
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

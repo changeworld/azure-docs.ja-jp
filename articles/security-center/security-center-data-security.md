@@ -36,9 +36,9 @@ Azure Security Center は、以下のソースのデータを分析します。
 ## データ保護
 **データの分離:** データはサービス全体を通じて、各コンポーネントに論理的に分割されて保存されます。すべてのデータは組織ごとにタグ付けされます。このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。さらに、仮想マシンから収集されたデータは、ストレージ アカウントに格納されます。
 
-**データ アクセス**: セキュリティの推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Microsoft 担当者は Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイルなど) にアクセスする場合があります。クラッシュ ダンプ ファイルとプロセス作成イベントには、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。Microsoft は、[Microsoft オンライン サービスの使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)と[プライバシーに関する声明](https://www.microsoft.com/privacystatement/ja-JP/OnlineServices/Default.aspx)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。顧客データに対するすべての権限は、お客様が保持します。
+**データ アクセス**: セキュリティの推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Microsoft 担当者は Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイルなど) にアクセスする場合があります。クラッシュ ダンプ ファイルとプロセス作成イベントには、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。Microsoft は、[Microsoft オンライン サービスの使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)と[プライバシーに関する声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。顧客データに対するすべての権限は、お客様が保持します。
 
-**データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/ja-JP/OnlineServices/Default.aspx)で説明されている誓約に従います。
+**データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)で説明されている誓約に従います。
 
 **データの場所**: ストレージ アカウントは、仮想マシンが実行されているリージョンごとに指定されます。そうすることで、データの収集元となる仮想マシンと同じリージョンにデータを格納することができます。このデータは、クラッシュ ダンプ ファイルを含んでおり、ストレージ アカウントに永続的に格納されます。サービスは、現在米国にある Azure Security Center ストレージのセキュリティ警告 (統合されたパートナー ソリューションからの警告も含む)、推奨事項、およびセキュリティの正常性状態に関する情報も格納します。
 
@@ -57,11 +57,11 @@ Azure Monitoring Agent は、クラッシュ ダンプ ファイルもストレ�
 
 この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明しました。Azure Security Center の詳細については、以下の記事を参照してください。
 
-- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティのアラートの管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および対応について
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 - パートナー ソリューションの正常性状態を監視する方法についての説明
-- 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
-- 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
+- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

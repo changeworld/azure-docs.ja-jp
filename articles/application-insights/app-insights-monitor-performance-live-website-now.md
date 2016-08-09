@@ -12,45 +12,47 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/09/2016"
+	ms.date="07/28/2016"
 	ms.author="awills"/>
 
 
-# Application Insights Status Monitor をインストールして Web サイトのパフォーマンスを監視する
+# Application Insights を使用した実行時の Web アプリのインストルメント化
 
 *Application Insights はプレビュー段階です。*
 
-Visual Studio Application Insights の Status Monitor により、ASP.NET アプリケーションの例外やパフォーマンスの問題を診断できます。
+Visual Studio Application Insights を使用すれば、ライブ Web アプリをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。オンプレミスの IIS サーバーにアプリがホストされている場合は、Status Monitor をインストールします。アプリが Azure Web アプリであったり、Azure VM で実行されていたりする場合は、Application Insights 拡張機能をインストールできます (ライブ [J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化については、個別の記事もあります)。
 
 ![サンプルのグラフ](./media/app-insights-monitor-performance-live-website-now/10-intro.png)
 
-> [AZURE.TIP] [ライブ J2EE Web アプリ](app-insights-java-live.md)と [Azure Cloud Services](app-insights-cloudservices.md) のインストルメント化に関する個別の記事があります。
+Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
+
+* **ビルド時:** Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。
+* **実行時:** 後述するように、コードのリビルドと再デプロイを行うことなく、サーバー上の Web アプリをインストルメント化します。
+* **両方:** SDK を Web アプリ コードの中にビルドします。また、実行時の拡張機能を適用します。両方のオプションの長所を活かせます。
+
+各方法の特徴について概要を次に示します。
+
+||ビルド時|実行時|
+|---|---|---|
+|要求と例外|はい|はい|
+|[より詳細な例外](app-insights-asp-net-exceptions.md)||はい|
+|[依存関係の診断](app-insights-asp-net-dependencies.md)|はい (.NET 4.6 以降)|はい|
+|[システム パフォーマンス カウンター](app-insights-web-monitor-performance.md#system-performance-counters)||IIS または Azure Cloud Services (Azure Web アプリは除く)|
+|[カスタム テレメトリの API][api]|はい||
+|[トレース ログ統合](app-insights-asp-net-trace-logs.md)|はい||
+|[ページ ビューとユーザー データ](app-insights-javascript.md)|はい||
+|コードのリビルドは不要|いいえ||
 
 
-Application Insights を IIS Web アプリケーションに適用するには、次の 3 つの方法があります。
-
-* **ビルド時:** Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。次の機能が使用可能になります。
- * さまざまな標準診断と使用状況のテレメトリ。
- * [Application Insights API][api] を使用すると、独自のテレメトリを作成して、詳しい使用状況を追跡したり、問題を診断したりできます。
-* **実行時:** Status Monitor を使用して、サーバー上の Web アプリをインストルメント化します。
- * 既に実行されている Web アプリの監視。リビルドや再パブリッシュの必要はありません。
- * さまざまな標準診断と使用状況のテレメトリ。
- * 依存関係の診断 &#151; アプリが、データベース、REST API、その他のサービスなどの他のコンポーネントを使用して発生している障害やパフォーマンスが低下している箇所を特定します。
- * テレメトリに関する問題のトラブルシューティング。
-* **両方:** SDK を Web アプリ コードにコンパイルし、Web サーバー上で Status Monitor を実行します。両方の長所を活用できます。
- * 標準診断と使用状況のテレメトリ。
- * 依存関係の診断。
- * API を使用してカスタム テレメトリを作成できます。
- * SDK とテレメトリに関する問題のトラブルシューティング。
 
 
-## Application Insights Status Monitor のインストール
+## 実行時の Web アプリのインストルメント化
 
 [Microsoft Azure](http://azure.com) サブスクリプションが必要です。
 
-### アプリが IIS サーバーで実行されている場合
+### アプリが IIS サーバーでホストされている場合
 
-1. IIS Web サーバーで、管理者の資格情報を使用してログインします。
+1. IIS Web サーバーで、管理者の資格情報を使用してサインインします。
 2. [Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 4. インストール ウィザードで、Microsoft Azure にサインインします。
 
@@ -87,14 +89,20 @@ Application Insights を IIS Web アプリケーションに適用するには�
 
 ### アプリが Azure Web アプリとして実行されている場合
 
-Azure の Web アプリのコントロール パネルで、Application Insights 拡張機能を追加します。
+1. [Azure ポータル](https://portal.azure.com)で、種類が ASP.NET である Application Insights リソースを作成します。このリソースが、アプリケーションのテレメトリが格納、分析、表示される場所になります。
 
-![Web アプリで、[設定]、[拡張機能]、[追加]、[Application Insights] の順に選択する](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
+    ![Add, Application Insights.Select ASP.NET type.](./media/app-insights-monitor-performance-live-website-now/01-new.png)
+     
+2. 次に、対象の Azure Web アプリの制御ブレードを開き、**[ツール]、[パフォーマンス監視]** の順に開いて Application Insights 拡張機能を追加します。　
+
+    ![In your web app, Tools, Extensions, Add, Application Insights](./media/app-insights-monitor-performance-live-website-now/05-extend.png)
+
+    先ほど作成した Application Insights リソースを選択します。
 
 
 ### Azure Cloud Services プロジェクトの場合
 
-[スクリプトを Web ロールとworker ロールに追加](app-insights-cloudservices.md)します。
+[スクリプトを Web ロールと worker ロールに追加](app-insights-cloudservices.md)します。
 
 
 ## パフォーマンス テレメトリの表示
@@ -107,26 +115,28 @@ Azure の Web アプリのコントロール パネルで、Application Insights
 
 ![パフォーマンス](./media/app-insights-monitor-performance-live-website-now/21-perf.png)
 
-クリックして表示内容の詳細を調整するか、新しいグラフを追加します。
+グラフをクリックすると、より詳細なビューが開きます。
 
-
-![](./media/app-insights-monitor-performance-live-website-now/appinsights-038-dependencies.png)
+[編集、再配置、保存](app-insights-metrics-explorer.md)が行えるほか、グラフまたはブレード全体を[ダッシュボード](app-insights-dashboards.md)にピン留めできます。
 
 ## 依存関係
 
 依存関係の期間のグラフには、アプリからの外部コンポーネント (データベース、REST API、Azure BLOB ストレージなど) の呼び出しに要した時間が示されます。
 
-さまざまな依存関係の呼び出しでグラフをセグメント化するには、グラフを選択し、[グループ化] を有効にして、[依存関係]、[依存関係の種類]、または [依存関係のパフォーマンス] を選択します。
+さまざまな依存関係の呼び出しでグラフをセグメント化するには、グラフを編集し、[グループ化] を有効にして、[依存関係]、[依存関係の種類]、または [依存関係パフォーマンス] でグループ化します。
 
-グラフをフィルターして、特定の依存関係、種類、またはパフォーマンスのバケットを確認することもできます。[フィルター] をクリックします。
+![依存関係](./media/app-insights-monitor-performance-live-website-now/23-dep.png)
 
-## パフォーマンス カウンター
+## パフォーマンス カウンター 
 
 (Azure Web Apps 用ではありません。) 概要ブレードで [サーバー] をクリックすると、CPU 占有率やメモリ使用量などのサーバー パフォーマンス カウンターのグラフが表示されます。
 
-新しいグラフを追加するか、任意のグラフをクリックして表示内容を変更します。
+サーバー インスタンスが複数ある場合、グラフを編集してロール インスタンスでグループ化します。
+
+![サーバー](./media/app-insights-monitor-performance-live-website-now/22-servers.png)
 
 [SDK によって報告されるパフォーマンス カウンターのセットを変更](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)することもできます。
+
 
 ## 例外
 
@@ -290,4 +300,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

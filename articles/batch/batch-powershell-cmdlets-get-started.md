@@ -13,20 +13,20 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="powershell"
    ms.workload="big-compute"
-   ms.date="04/21/2016"
+   ms.date="07/28/2016"
    ms.author="danlep"/>
 
 # Azure Batch PowerShell コマンドレットの使用
-この記事では、Batch アカウントの管理、およびプール、ジョブ、タスクなどの Batch リソースの操作に使用できる Azure PowerShell コマンドレットについて説明します。Batch API、Azure ポータル、Azure コマンド ライン インターフェイス (CLI) で実行するタスクの多くは、Batch コマンドレットでも実行できます。この記事は、Azure PowerShell Version 1.3.2 以降のコマンドレットを基にしています。
+Batch API、Azure ポータル、Azure コマンド ライン インターフェイス (CLI) を使用して実行するタスクの多くは、Azure Batch PowerShell コマンドレットで実行したりスクリプト化したりすることができます。この記事では、Batch アカウントを管理したり、プール、ジョブ、タスクといった Batch リソースを操作したりするときに使用できるコマンドレットについて説明します。この記事は、Azure PowerShell Version 1.6.0 のコマンドレットを基にしています。
 
 すべての Batch コマンドレットの一覧およびコマンドレットの詳細な構文については、[Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
 
 
 ## 前提条件
 
-* **Azure PowerShell** - Azure PowerShell をダウンロードしてインストールする手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。 
+* **Azure PowerShell** - Azure PowerShell をダウンロードしてインストールする手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
    
-    * Azure Batch コマンドレットは Azure Resource Manager モジュールに付属しているので、**Login-AzureRmAccount** コマンドレットを使用してサブスクリプションに接続する必要があります。 
+    * Azure Batch コマンドレットは Azure Resource Manager モジュールに付属しているので、**Login-AzureRmAccount** コマンドレットを使用してサブスクリプションに接続する必要があります。
     
     * 最新のサービスや機能強化を活かすためにも、Azure PowerShell は定期的に更新することをお勧めします。
     
@@ -45,7 +45,7 @@
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-次に、リソース グループに新しい Batch アカウントを作成し、<*account\_name*> にアカウント名と、Batch サービスが使用可能な場所を指定します。アカウントの作成は完了までに数分かかる場合があります。次に例を示します。
+次に、新しい Batch アカウントをリソース グループに作成します。<*account\_name*> にアカウントの名前を指定したうえで、リソース グループの場所と名前を指定します。Batch アカウントの作成は、完了までにしばらく時間がかかる場合があります。次に例を示します。
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -94,14 +94,20 @@ BatchAccountContext オブジェクトは、**BatchContext** パラメーター�
 ## Batch リソースを作成および変更する
 Batch アカウントでリソースを作成するには、**New-AzureBatchPool**、**New-AzureBatchJob**、**New-AzureBatchTask** などのコマンドレットを使用します。既存のリソースのプロパティを更新するための対応する **Get-** コマンドレットと **Set-** コマンドレットがあり、Batch アカウントのリソースを削除するための **Remove-** コマンドレットがあります。
 
+以下の例を見るとわかるように、これらのコマンドレットの多くは、その使用時に、BatchContext オブジェクトを渡すことに加え、リソースの詳細な設定を含んだオブジェクトを作成するか、引数として渡す必要があります。その他の例については、各コマンドレットの詳細なヘルプを参照してください。
+
 ### Create a Batch pool
 
-たとえば、次のコマンドレットは、ファミリ 3 (Windows Server 2012) の最新のオペレーティング システム バージョンと、自動スケール式によって決定される目標のコンピューティング ノード数でイメージを作成された Small サイズの仮想マシンを使用するように構成された新しい Batch プールを作成します。この例では、式は **$TargetDedicated=3** という簡単なものであり、プールのコンピューティング ノードの数が最大 3 であることを示します。**BatchContext** パラメーターは、BatchAccountContext オブジェクトとして先に定義した変数 *$context* を指定します。
+Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します ([Batch 機能の概要](batch-api-basics.md#pool)を参照)。そのどちらを選択したかによって、コンピューティング ノードのイメージ化に、[Azure ゲスト OS のリリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)の 1 つを使用するか、Azure Marketplace でサポートされている Linux や Windows の VM イメージの 1 つを使用するかが決まります。
+
+オペレーティング システムの設定は、**New-AzureBatchPool** を実行するときに、PSCloudServiceConfiguration オブジェクトまたは PSVirtualMachineConfiguration オブジェクトで渡します。たとえば以下のコマンドレットは、Small サイズのコンピューティング ノードで新しい Batch プールを作成しています。オペレーティング システムにはクラウド サービス構成を選び、最新バージョンであるファミリー 3 (Windows Server 2012) のイメージを使用しています。ここでは、**CloudServiceConfiguration** パラメーターに PSCloudServiceConfiguration オブジェクトとして *$configuration* 変数を指定しています。**BatchContext** パラメーターには、先ほど定義した *$context* 変数を BatchAccountContext オブジェクトとして指定しています。
 
 
-    New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "3" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=3;' -BatchContext $Context
+    $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
+    
+    New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
->[AZURE.NOTE]現在、Batch PowerShell コマンドレットでサポートされるのは、計算ノードに対するクラウド サービスの構成だけです。たとえば、計算ノードで実行する Windows Server オペレーティング システムとして、Azure ゲスト OS の中からいずれかのリリースを選択できます。Batch プールの計算ノードに対するその他の構成オプションについては、Batch SDK または Azure CLI をご利用ください。
+新しいプール内のコンピューティング ノードの目標数は、自動スケールの式によって求められます。この例では、式は **$TargetDedicated=4** という簡単なものであり、プールのコンピューティング ノードの数が最大 4 であることを示します。
 
 ## プール、ジョブ、タスク、およびその他の詳細のクエリ
 
@@ -159,6 +165,6 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 ## 次のステップ
 * コマンドレットの詳しい構文と例については、[Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
 
-* Batch に対するクエリから返される情報の項目数と種類を制限する方法について詳しくは、「[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)」を参照してください。
+* Batch に対してクエリから返される情報の項目数と種類を制限する方法の詳細については、[効率的な Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルで Azure Data Lake Store の使用を開始する
@@ -136,5 +136,6 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

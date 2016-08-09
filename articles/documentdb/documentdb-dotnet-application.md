@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="05/18/2016" 
+	ms.date="08/01/2016" 
 	ms.author="andrl"/>
 
 #<a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
@@ -24,7 +24,7 @@
 - [.NET](documentdb-dotnet-application.md)
 - [Node.JS](documentdb-nodejs-application.md)
 - [Java](documentdb-java-application.md)
-- [Python](documentdb-python-application.md) 
+- [Python](documentdb-python-application.md)
 
 この記事では、Azure DocumentDB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を説明します。ToDo アプリを Azure DocumentDB を使って構築するエンド ツー エンドの手順を説明します。対象となるタスクは、JSON ドキュメントとして Azure DocumentDB に保存するものとします。
 
@@ -39,7 +39,7 @@
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 - アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-- [Visual Studio 2013](http://www.visualstudio.com/) Update 4 以降。
+- [Visual Studio 2015](http://www.visualstudio.com/) または Visual Studio 2013 Update 4 以降。Visual Studio 2013 を使用している場合は、[Microsoft.Net.Compilers NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Net.Compilers/)をインストールして、C# 6.0 のサポートを追加する必要があります。
 - Azure SDK for .NET Version 2.5.1 以降 ([Microsoft Web Platform Installer][] にて提供)。
 
 この記事に掲載されているすべてのスクリーン ショットは、Visual Studio 2013 Update 4 および Azure SDK for .NET Version 2.5.1 で撮影しました。ご利用のシステムにインストールされているバージョンと異なる場合、画面やオプション設定が一部異なる可能性もありますが、上記の前提条件を満たしていれば、アプリケーションの動作に支障はありません。
@@ -208,7 +208,7 @@
 	- **[ビュー名]** ボックスに、「***Index***」と入力します。
 	- **[テンプレート]** ボックスで、***[一覧]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
-	- **[データ コンテキスト クラス]** ボックスは空のままにします。 
+	- **[データ コンテキスト クラス]** ボックスは空のままにします。
 	- レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
 	
 	![[ビューの追加] ダイアログ ボックスのスクリーン ショット](./media/documentdb-dotnet-application/image18.png)
@@ -239,7 +239,7 @@
 	- **[ビュー名]** ボックスに、「***Edit***」と入力します。
 	- **[テンプレート]** ボックスで、***[編集]*** を選択します。
 	- **[モデル クラス]** ボックスで、***[Item (todo.Models)]*** を選択します。
-	- **[データ コンテキスト クラス]** ボックスは空のままにします。 
+	- **[データ コンテキスト クラス]** ボックスは空のままにします。
 	- レイアウト ページ ボックスに、「***~/Views/Shared/\_Layout.cshtml***」と入力します。
 	- **[追加]** をクリックします。
 
@@ -333,7 +333,7 @@ MVC の標準的な構成要素を準備できたので、次に DocumentDB 用�
 			}
 		}
 
-		> [AZURE.TIP] 新しい DocumentCollection を作成するときに、OfferType の省略可能なパラメーター RequestOptions を指定して、新しいコレクションのパフォーマンス レベルを指定できます。このパラメーターを指定しないと、既定のプランの種類が使用されます。DocumentDB のプランの種類の詳細については、「[DocumentDB Performance Levels (DocumentDB パフォーマンス レベル)](documentdb-performance-levels.md)」を参照してください。
+	> [AZURE.TIP] 新しい DocumentCollection を作成するときに、OfferType の省略可能なパラメーター RequestOptions を指定して、新しいコレクションのパフォーマンス レベルを指定できます。このパラメーターを指定しないと、既定のプランの種類が使用されます。DocumentDB のプランの種類の詳細については、「[DocumentDB Performance Levels (DocumentDB パフォーマンス レベル)](documentdb-performance-levels.md)」を参照してください。
 
 3. 構成からいくつかの値を読み取るので、アプリケーションの **Web.config** ファイルを開き、以下の行を `<AppSettings>` セクションの下に追加します。
 	
@@ -545,7 +545,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 	![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-dotnet-application/image24.png)
 
-	この段階でエラーが発生する場合は、自分のコードと [GitHub][] のサンプル プロジェクトを比較してください。
+	Visual Studio 2013 を使用しており、"catch 句の本体で待機することはできません。" というエラーが発生する場合は、[Microsoft.Net.Compilers NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Net.Compilers/)をインストールする必要があります。また、コードを [GitHub][] にあるサンプル プロジェクトと比較することもできます。
 
 2. **[Create New]** リンクをクリックし、**[Name]** フィールドと **[Description]** フィールドに値を追加します。**[Completed]** チェック ボックスはオフのままとします。オンにした場合、新しい **Item** が完了済みの状態で追加されるため、最初のリストに表示されません。
 
@@ -563,7 +563,7 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 4. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。これで、アプリケーションをデプロイする準備が整いました。
 
-##<a name="_Toc395637774"></a>手順 7: Azure Websites にアプリケーションをデプロイする
+## <a name="_Toc395637774"></a>手順 7: Azure Websites にアプリケーションをデプロイする
 
 以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、この Web アプリケーションを Azure Websites にデプロイします。空の ASP.NET MVC プロジェクトを作成するときに **[クラウドでホストする]** を選択した場合、デプロイはごく簡単です。必要な作業の大半は自動的に行われます。
 
@@ -577,11 +577,11 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 
 数秒すると、Web アプリケーションの発行が完了し、ブラウザーが起動されます。作成したアプリケーションが Azure で実行されているようすが確認できます。
 
-##<a name="_Toc395637775"></a>次のステップ
+## <a name="_Toc395637775"></a>次のステップ
 
 ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用した ASP.NET MVC Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。このチュートリアルに含まれていない詳細や削除の機能など、完全なアプリケーションのソース コードは、[GitHub][] からダウンロードまたは複製できます。これらの機能を自分のアプリケーションに追加する場合は、該当するコードを入手してアプリケーションに追加してください。
 
-アプリケーションに機能を追加する場合は、[DocumentDB .NET ライブラリ](https://msdn.microsoft.com/library/azure/dn948556.aspx)から入手できる API を参考にしてください。[GitHub][] の DocumentDB .NET ライブラリにも気軽に投稿してください。
+アプリケーションに機能を追加する場合は、[DocumentDB .NET ライブラリ](https://msdn.microsoft.com/library/azure/dn948556.aspx)から入手できる API を参考にしてください。また、[GitHub][] の DocumentDB .NET ライブラリにも気軽に投稿してください。
 
 
 [*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
@@ -591,4 +591,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

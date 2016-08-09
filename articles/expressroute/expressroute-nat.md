@@ -23,7 +23,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 
 ## Azure パブリック ピアリングの NAT 要件
 
-Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。たとえは、[ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるすべてのサービスや Microsoft Azure で ISV によりホストされているサービスです。パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。パブリック ピアリングで Microsoft Azure に向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。下の図は、上記の要件を満たすように NAT をセットアップするしくみを上のレベルで示しています。
+Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。たとえば、[ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。パブリック ピアリングでの Microsoft Azure への接続は常にネットワークから Microsoft ネットワークに対して開始されます。パブリック ピアリングで Microsoft Azure に向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。下の図は、上記の要件を満たすように NAT をセットアップするしくみを上のレベルで示しています。
 
 ![](./media/expressroute-nat/expressroute-nat-azure-public.png)
 
@@ -66,4 +66,4 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

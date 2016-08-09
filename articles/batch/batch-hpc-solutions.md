@@ -1,6 +1,6 @@
 <properties
    pageTitle="クラウドでの Batch ソリューションと HPC ソリューション |Microsoft Azure"
-   description="Azure での Batch およびハイ パフォーマンス コンピューティング (HPC およびビッグ コンピューティング) のシナリオおよびソリューションのオプションについて説明します。"
+   description="Azure での Batch とハイ パフォーマンス コンピューティング (HPC およびビッグ コンピューティング) のシナリオとソリューションのオプションについて説明します。"
    services="batch, virtual-machines, cloud-services"
    documentationCenter=""
    authors="dlepow"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="04/21/2016"
+   ms.date="07/27/2016"
    ms.author="danlep"/>
 
 # Azure クラウドでの Batch ソリューションと HPC ソリューション
@@ -62,7 +62,7 @@ Web アプリケーションや多くの基幹業務アプリケーションと�
 
 ビッグ コンピューティング アプリケーションとビッグ データ アプリケーションの境界線は明確ではないことがあり、一部のアプリケーションは両方の特徴を併せ持つことがあります。どちらにも、通常はコンピューターのクラスターで行われる大規模な計算の実行が含まれます。ただし、ソリューションのアプローチとサポート ツールは異なる可能性があります。
 
-• **ビッグ コンピューティング**は、CPU パワーとメモリに依存するアプリケーションが関連する傾向があります (エンジニアリング シミュレーション、財務リスク モデリング、デジタル レンダリングなど)。ビッグ コンピューティング ソリューションに適したクラスターには、生データの計算を実行するための専用のマルチコア プロセッサを備えたコンピューターや、コンピューターを接続するための特殊な高速ネットワーク ハードウェアが含まれることがあります。
+• **ビッグ コンピューティング**は、CPU パワーとメモリに依存するアプリケーションが関連する傾向があります (エンジニアリング シミュレーション、財務リスク モデリング、デジタル レンダリングなど)。ビッグ コンピューティング ソリューションのインフラストラクチャには、生データの計算を実行するための専用のマルチコア プロセッサを備えたコンピューターや、コンピューターを接続するための特殊な高速ネットワーク ハードウェアが含まれることがあります。
 
 • **ビッグ データ**は、単一のコンピューターやデータベース管理システムでは管理できない大量のデータが関係するデータ分析の問題を解決します (大量の Web ログやその他のビジネス インテリジェンス データなど)。ビッグ データは CPU パワーよりディスク容量と I/O パフォーマンスに大きく依存する傾向があり、Apache Hadoop などの特殊なツールを使用してクラスターを管理し、データを分割する場合があります (Azure HDInsight およびその他の Azure Hadoop ソリューションについては、「[Hadoop](https://azure.microsoft.com/solutions/hadoop/)」をご覧ください)。
 
@@ -74,7 +74,7 @@ Web アプリケーションや多くの基幹業務アプリケーションと�
 
 * **ジョブ スケジューラ** - アプリケーションで必要なリソース (プロセッサ、メモリなど)、およびアプリケーションが実行する条件を指定します。ジョブ スケジューラは、ジョブのキューを保持し、割り当てられた優先度またはその他の特性に基づいてジョブにリソースを割り当てます。
 
-Windows ベースおよび Linux ベースのクラスター用のクラスタリングおよびジョブ スケジューリング ツールは、Azure に問題なく移行できます。たとえば、Windows と Linux の HPC ワークロード用の Microsoft の無料のコンピューティング クラスター ソリューションである [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) には、Azure で実行するためのさまざまなオプションがあります。Linux クラスターは、Torque や SLURM などのオープン ソース ツールを実行するか、[TIBCO DataSynapse GridServer](http://www.tibco.com/products/automation/application-development/grid-computing/gridserver) や [Univa Grid Engine](http://www.univa.com/products/grid-engine) などの市販のツールを実行して構築することもできます。
+Windows ベースおよび Linux ベースのクラスター用のクラスタリングおよびジョブ スケジューリング ツールは、Azure に問題なく移行できます。たとえば、Windows と Linux の HPC ワークロード用の Microsoft の無料のコンピューティング クラスター ソリューションである [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) には、Azure で実行するためのさまざまなオプションがあります。Linux クラスターは、Torque や SLURM などのオープン ソース ツールを実行するか、[TIBCO DataSynapse GridServer](http://www.tibco.com/company/news/releases/2016/tibco-to-accelerate-cloud-adoption-of-banking-and-capital-markets-customers-via-microsoft-collaboration) や [IBM Platform Symphony](http://www-01.ibm.com/support/docview.wss?uid=isg3T1023592)、[Univa Grid Engine](http://www.univa.com/products/grid-engine) などの市販のツールを実行して構築することもできます。
 
 次のセクションに示すように、Azure サービスを活用して、従来のクラスター管理ツールなしで (またはそれらに加えて) コンピューティング リソースの管理とジョブのスケジュールを実行できます。
 
@@ -85,34 +85,34 @@ Windows ベースおよび Linux ベースのクラスター用のクラスタ�
 
  | シナリオ | これを選択する理由
 ------------- | ----------- | ---------------
-**HPC クラスターの Azure へのバースト**<br/><br/>[![クラスターのバースト][burst_cluster]](./media/batch-hpc-solutions/burst_cluster.png) <br/><br/> 詳細:<br/>• [Microsoft HPC Pack を使用して Azure にバーストする](https://technet.microsoft.com/library/gg481749.aspx)<br/><br/>• [Microsoft HPC Pack を使用してハイブリッド コンピューティング クラスターをセットアップする](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)<br/><br/>|• ハイブリッド ソリューションで [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) などのオンプレミス クラスターを他の Azure リソースと結合させる。<br/><br/>• ビッグ コンピューティング ワークロードを拡張して、サービスとしてのプラットフォーム (PaaS) 仮想マシン インスタンスで実行する (現時点では Windows Server のみ)。<br/><br/>• オプションの Azure 仮想ネットワークを使用して、オンプレミスのライセンス サーバーまたはデータ ストアにアクセスする。|• 既存の HPC クラスターがあり、さらにリソースが必要である<br/><br/>• HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある
-**Azure 内での HPC クラスター全体の作成**<br/><br/>[![IaaS でのクラスター][iaas_cluster]](./media/batch-hpc-solutions/iaas_cluster.png)<br/><br/>詳細:<br/>• [Azure 内の HPC クラスター ソリューション](./big-compute-resources.md)<br/><br/>|• アプリケーションとクラスター ツールを Windows または Linux の標準またはカスタムのサービスとしてのインフラストラクチャ (IaaS) 仮想マシンに迅速かつ一貫性を持ってデプロイする。<br/><br/>• さまざまなビッグ コンピューティング ワークロードを、選択したスケジューリング ソリューションを使用して実行する。<br/><br/>• ネットワークやストレージを含む Azure サービスを追加利用して、完全なクラウド ベースのソリューションを作成する。 |• Linux または Windows HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある<br/><br/>• 一時的に追加のクラスターが必要だが、コンピューターとそれをデプロイするためのスペースに投資したくない<br/><br/>• コンピューティング集約型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい
-**並列アプリケーションの Azure へのスケール アウト**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>詳細:<br/>• [Azure Batch の基礎](./batch-technical-overview.md)<br/><br/>• [.NET 向け Azure Batch ライブラリの概要](./batch-dotnet-get-started.md)|• [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) API を使用して、さまざまなビッグ コンピューティング ワークロードを Windows 仮想マシンまたは Linux 仮想マシンのプールで実行するようにスケールアウトする。<br/><br/>• 別の HPC クラスターまたはジョブ スケジューラを必要とせずに、Azure サービスを使用して、仮想マシンのデプロイと自動スケール、ジョブのスケーリング、障害復旧、データの移動、依存関係の管理、およびアプリケーションのデプロイを実行する。|• コンピューティング リソースまたはジョブ スケジューラを管理したくない。アプリケーションの実行にフォーカスしたい<br/><br/>• コンピューティング集約型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい<br/><br/>• コンピューティング ワークロードと一致するようにコンピューティング リソースを自動的にスケーリングしたい
+**HPC クラスターの Azure へのバースト**<br/><br/>[![クラスターのバースト][burst_cluster]](./media/batch-hpc-solutions/burst_cluster.png) <br/><br/> 詳細:<br/>• [HPC Pack を使用した Azure ワーカー インスタンスへのバースト](https://technet.microsoft.com/library/gg481749.aspx)<br/><br/>• [HPC Pack を使用したハイブリッド コンピューティング クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)<br/><br/>• [HPC Pack を使用した Azure Batch へのバースト](https://technet.microsoft.com/library/mt612877.aspx)<br/><br/>|• ハイブリッド ソリューションで [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) などのオンプレミス クラスターを他の Azure リソースと結合させる。<br/><br/>• ビッグ コンピューティング ワークロードを拡張して、サービスとしてのプラットフォーム (PaaS) 仮想マシン インスタンスで実行する (現時点では Windows Server のみ)。<br/><br/>• オプションの Azure 仮想ネットワークを使用して、オンプレミスのライセンス サーバーまたはデータ ストアにアクセスする。|• 既存の HPC クラスターがあり、さらにリソースが必要である<br/><br/>• HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある
+**Azure 内での HPC クラスター全体の作成**<br/><br/>[![IaaS でのクラスター][iaas_cluster]](./media/batch-hpc-solutions/iaas_cluster.png)<br/><br/>詳細:<br/>• [Azure 内の HPC クラスター ソリューション](./big-compute-resources.md)<br/><br/>|• アプリケーションとクラスター ツールを Windows または Linux の標準またはカスタムのサービスとしてのインフラストラクチャ (IaaS) 仮想マシンに迅速かつ一貫性を持ってデプロイする。<br/><br/>• さまざまなビッグ コンピューティング ワークロードを、選択したジョブ スケジューリング ソリューションを使用して実行する。<br/><br/>• ネットワークやストレージを含む Azure サービスを追加利用して、完全なクラウド ベースのソリューションを作成する。 |• Linux または Windows HPC クラスター インフラストラクチャを追加購入して管理したくない<br/><br/>• 一時的なピーク需要期間または特別なプロジェクトがある<br/><br/>• 一時的に追加のクラスターが必要だが、コンピューターとそれをデプロイするためのスペースに投資したくない<br/><br/>• コンピューティング集中型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい
+**並列アプリケーションの Azure へのスケールアウト**<br/><br/>[![Azure Batch][batch_proc]](./media/batch-hpc-solutions/batch_proc.png)<br/><br/>詳細:<br/>• [Azure Batch の基礎](./batch-technical-overview.md)<br/><br/>• [.NET 向け Azure Batch ライブラリの概要](./batch-dotnet-get-started.md)|• [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) を使用して、さまざまなビッグ コンピューティング ワークロードを Windows 仮想マシンまたは Linux 仮想マシンのプールで実行するようにスケールアウトする。<br/><br/>• 別の HPC クラスターまたはジョブ スケジューラを必要とせずに、Azure サービスを使用して、仮想マシンのデプロイと自動スケール、ジョブのスケーリング、障害復旧、データの移動、依存関係の管理、およびアプリケーションのデプロイを実行する。|• コンピューティング リソースまたはジョブ スケジューラを管理したくない。アプリケーションの実行にフォーカスしたい<br/><br/>• コンピューティング集中型アプリケーションをオフロードして、クラウド内で完全にサービスとして実行されるようにしたい<br/><br/>• コンピューティング ワークロードと一致するようにコンピューティング リソースを自動的にスケーリングしたい
 
 
 ## ビッグ コンピューティング用の Azure サービス
 
 ここでは、ビッグ コンピューティング ソリューションとワークフローのために組み合わせることができるさまざまなコンピューティング、データ、ネットワーク、および関連のサービスについて詳しく説明します。Azure サービスの詳細なガイドについては、Azure サービスの[ドキュメント](https://azure.microsoft.com/documentation/)を参照してください。この記事の前半で挙げた[シナリオ](#scenarios)は、これらのサービスを使用する方法のほんの一部を示しています。
 
->[AZURE.NOTE] Azure には、シナリオで役立つ可能性がある新しいサービスが定期的に導入されています。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/ja-JP/search?keyword=azure)または電子メール **bigcompute@microsoft.com* を利用してお問い合わせください。
+>[AZURE.NOTE] Azure には、シナリオで役立つ可能性がある新しいサービスが定期的に導入されています。質問がある場合は、[Azure パートナー](https://pinpoint.microsoft.com/en-US/search?keyword=azure)に問い合わせるか、*bigcompute@microsoft.com* 宛てにメールをお送りください。
 
 ### Compute Services
 
 Azure Compute Services はビッグ コンピューティング ソリューションの中核であり、さまざまなコンピューティング サービスによって多様なシナリオに利点を提供します。基本的なレベルでは、これらのサービスは、Windows Server Hyper-V テクノロジを使用して Azure が提供する仮想マシン ベースのコンピューティング インスタンスでアプリケーションが実行するためのさまざまなモードを提供します。これらのインスタンスは、さまざまな標準およびカスタムの Linux および Windows オペレーティング システムとツールを実行できます。Azure では、CPU コア、メモリ、ディスク容量などの特性の構成が異なる[さまざまなインスタンス サイズ](../virtual-machines/virtual-machines-windows-sizes.md)から選択できます。ニーズに応じて何千ものコアまでインスタンスを拡大し、必要なリソースが減ったらスケールダウンできます。
 
->[AZURE.NOTE] 低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどの HPC ワークロードのパフォーマンスを向上させるには、A8 ～ A11 インスタンスを利用してください。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。
+>[AZURE.NOTE] Azure のコンピューティング集中型インスタンスを利用して、一部の HPC ワークロードのパフォーマンスを向上させることができます。たとえば、低待機時間と高スループットのアプリケーション ネットワークを必要とする並列 MPI アプリケーションなどです。「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。
 
 サービス | 説明
 ------------- | -----------
+**[Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• Microsoft Hyper-V テクノロジを使用してコンピューティングのサービスとしてのインフラストラクチャ (IaaS) を提供します<br/><br/>• 標準の Windows Server イメージや標準の Linux イメージ、[Azure Marketplace](https://azure.microsoft.com/marketplace/)、またはユーザー提供のイメージとデータ ディスクから、永続的なクラウド コンピューターを柔軟にプロビジョニングして管理できます<br/><br/>• [VM スケール セット](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)としてデプロイして管理することで、まったく同じ仮想マシンから大規模なサービスを構築し、自動スケールによって容量を自動的に増減できます<br/><br/>• オンプレミスのコンピューティング クラスター ツールおよびアプリケーションを完全にクラウドで実行します<br/><br/>
 **[Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)**<br/><br/> |• worker ロール インスタンスでビッグ コンピューティング アプリケーションを実行できます。このインスタンスは、あるバージョンの Windows Server を実行する仮想マシンであり、Azure によって完全に管理されます<br/><br/>• 管理オーバーヘッドが少なく、Platform as a Service (PaaS) モデルで実行する、拡張性と信頼性の高いアプリケーションを可能にします<br/><br/>• オンプレミスの HPC クラスター ソリューションと統合するには、追加のツールまたは開発が必要な場合があります
-**[Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)**<br/><br/> |• Microsoft Hyper-V テクノロジを使用してコンピューティングの Infrastructure as a Service (IaaS) を提供します<br/><br/>• 標準の Windows Server または Linux イメージから、またはユーザー提供または [Azure Marketplace](https://azure.microsoft.com/marketplace/) のイメージとデータ ディスクから、永続的なクラウド コンピューターを柔軟にプロビジョニングして管理できます<br/><br/>• [VM スケール セット](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)としてデプロイして管理することで、まったく同じ仮想マシンから大規模なサービスを構築し、自動スケールによって容量を自動的に増減できます<br/><br/>• オンプレミスのコンピューティング クラスター ツールおよびアプリケーションを完全にクラウドで実行します<br/><br/>
 **[Batch](https://azure.microsoft.com/documentation/services/batch/)**<br/><br/> |• 大規模な並列および Batch ワークロードを、完全に管理されたサービスで実行します<br/><br/>• 仮想マシンの管理されたプールのジョブ スケジューリングと自動スケールを提供します<br/><br/>• 開発者は、サービスとしてのアプリケーションまたはクラウド対応の既存アプリケーションを構築して実行できます<br/>
 
 ### ストレージ サービス
 
 ビッグ コンピューティング ソリューションは、通常、一連の入力データを処理して、結果のデータを生成します。ビッグ コンピューティング ソリューションで使用される Azure ストレージ サービスには次のようなものがあります。
 
-* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。たとえば、アプリケーションが処理する大きな技術的データ セット、入力イメージ、メディア ファイルには BLOB ストレージを使用する場合があります。ソリューションでの非同期通信にはキューを使用する場合があります。「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
+* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。たとえば、大きな技術的データ セットや、アプリケーションが処理する入力イメージまたはメディア ファイルには BLOB ストレージを使用する場合があります。ソリューションでの非同期通信にはキューを使用する場合があります。「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
 
 * [Azure File Storage](https://azure.microsoft.com/services/storage/files/) - 一部の HPC クラスター ソリューションに必要な標準の SMB プロトコルを使用して Azure 内の一般的なファイルとデータを共有します。
 
@@ -134,7 +134,7 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 
 ビッグ コンピューティング ソリューションでは、オンプレミスまたは他の環境のリソースに接続するために、他の Azure サービスが必要になる場合があります。たとえば、次のようになります。
 
-* [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) - Azure 内に論理的に分離されたセクションを作成し、IPSec を使用して Azure リソースをオンプレミスのデータ センターや単一のクライアント コンピューターに接続します。ビッグ コンピューティング アプリケーションは、オンプレミスのデータ、Active Directory のサービス、ライセンス サーバーにアクセスできます。
+* [Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) - Azure 内に論理的に分離されたセクションを作成し、Azure リソースどうしを相互に接続したり、Azure リソースをオンプレミスのデータ センターに接続したりします。ビッグ コンピューティング アプリケーションは、オンプレミスのデータ、Active Directory のサービス、ライセンス サーバーにアクセスできます。
 
 * [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) - マイクロソフトのデータ センターとオンプレミスまたはコロケーション環境のインフラストラクチャの間に、インターネット経由の標準接続よりセキュリティ、信頼性、速度が高く、待機時間が少ない、プライベート接続を作成します。
 
@@ -142,11 +142,11 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 
 ## 次のステップ
 
-* ソリューションを構築するためのテクニカル ガイダンスについては、「[Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](big-compute-resources.md)」をご覧ください。
+* ソリューションを構築するためのテクニカル ガイダンスについては、[Batch とハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース](big-compute-resources.md)に関する記事を参照してください。
 
 * Cycle Computing や UberCloud などのパートナーと Azure のオプションを検討します。
 
-* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)、[Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)、および [d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) の Azure ビッグ コンピューティング ソリューションに関する記事を読みます。
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)、[Altair](https://azure.microsoft.com/blog/availability-of-altair-radioss-rdma-on-microsoft-azure/)、[ANSYS](https://azure.microsoft.com/blog/ansys-cfd-and-microsoft-azure-perform-the-best-hpc-scalability-in-the-cloud/)、[d3VIEW](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088) の Azure ビッグ コンピューティング ソリューションに関する記事を読みます。
 
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 
@@ -157,4 +157,4 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0803_2016-->

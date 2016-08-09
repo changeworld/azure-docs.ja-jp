@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Azure CDN の概要"
+	pageTitle="Azure CDN の概要 | Microsoft Azure"
 	description="Azure Content Delivery Network (CDN) の概要と、CDN を使用して BLOB と静的コンテンツをキャッシュして高帯域幅コンテンツを配信する方法について説明します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/05/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -82,4 +82,4 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->
