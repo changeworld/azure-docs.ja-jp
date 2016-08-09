@@ -419,4 +419,4 @@
 - Data Management Gateway の詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 - コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する一般的な方法については、[Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->

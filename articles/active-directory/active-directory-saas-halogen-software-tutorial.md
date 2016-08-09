@@ -324,4 +324,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->
