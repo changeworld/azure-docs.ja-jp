@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -24,7 +24,7 @@
 
 メトリックが指定した条件に達したときにアラートをトリガーするルールを設定できます。
 
-例: "過去 15 分間の出力イベントが 100 未満の場合は電子メール ID: xyz@company.com” に電子メール通知を送信する"。
+例: "過去 15 分間の出力イベントが 100 未満の場合は電子メール ID: xyz@company.com に電子メール通知を送信する"。
 
 ルールは、ポータルでメトリックに対して設定することも、操作ログのデータに対して[プログラムによって](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)構成することもできます。
 
@@ -32,12 +32,12 @@
 
 Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つあります。
 
-1.	Stream Analytics ジョブの **[監視]** タブ  
-2.	Management Services の操作ログ  
+1.	Stream Analytics ジョブの **[監視]** タブ
+2.	Management Services の操作ログ
 
 ## ポータルでジョブの [監視] タブを使用してアラートを設定する
 
-1.	[監視] タブでメトリックを選択し、ダッシュボードの下部にある **[ルールの追加]** をクリックし、ルールを設定します。  
+1.	[監視] タブでメトリックを選択し、ダッシュボードの下部にある **[ルールの追加]** をクリックし、ルールを設定します。
 
     ![ダッシュボード](./media/stream-analytics-set-up-alerts/01-stream-analytics-set-up-alerts.png)
 
@@ -51,8 +51,8 @@ Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つ�
 
 ## 操作ログを使用してアラートを設定する
 
-1.	[Azure クラシック ポータル](https://manage.windowsazure.com)で、Management Services の **[アラート]** タブに移動します。  
-2.	**[ルールの追加]** をクリックします。  
+1.	[Azure クラシック ポータル](https://manage.windowsazure.com)で、Management Services の **[アラート]** タブに移動します。
+2.	**[ルールの追加]** をクリックします。
 
     ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)
 
@@ -85,4 +85,4 @@ Azure ポータルでのアラートの構成の詳細については、「[ア�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

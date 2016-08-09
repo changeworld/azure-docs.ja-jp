@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -57,7 +57,7 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 	**注:** Power Query では、**[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
 
-3. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。[既定のストレージ アカウント](hdinsight-administer-use-management-portal.md#find-the-default-storage-account)またはリンクされたストレージ アカウントを指定できます。書式は *https://<StorageAccountName>.blob.core.windows.net/* です。
+3. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。[既定のストレージ アカウント](hdinsight-administer-use-management-portal.md#find-the-default-storage-account)またはリンクされたストレージ アカウントを指定できます。形式は *https://<ストレージ アカウント名>.blob.core.windows.net/* です。
 
 4. **アカウント キー**に BLOB ストレージ アカウントのキーを入力し、**[保存]** をクリックします。(この操作が必要となるのは、このストアに最初にアクセスするときだけです)。
 
@@ -75,7 +75,7 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 この記事では、Power Query を使用して HDInsight から Excel にデータを取得する方法を学習しました。同様に、Azure SQL Database に HDInsight からデータを取得することもできます。また、HDInsight にデータをアップロードすることもできます。詳細については、次の記事を参照してください。
 
-* [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続](../../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)
+* [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-ODBC]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -88,4 +88,4 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
 [powerquery-download]: http://go.microsoft.com/fwlink/?LinkID=286689
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/06/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 
@@ -40,4 +40,4 @@ Mobile Services クライアント ライブラリを使用し、アプリでカ
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

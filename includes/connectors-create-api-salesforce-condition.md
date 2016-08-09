@@ -1,18 +1,12 @@
-This condition will evaluate the email address field of each new Salesforce lead. If the email address contains *amazon.com*, the condition result will be *True*.
+この条件は、それぞれの新しい Salesforce の潜在顧客の電子メール アドレス フィールドを評価します。電子メール アドレスに「*amazon.com*」が含まれている場合、条件の結果は「*True*」になります。
 
-1. Select **+ New step**.  
-![Salesforce condition image 1](./media/connectors-create-api-salesforce/condition-1.png)   
-- Select **Add a condition**.    
-![Salesforce condition image 2](./media/connectors-create-api-salesforce/condition-2.png)  
-- Select **Choose a value**.    
-![Salesforce condition image 3](./media/connectors-create-api-salesforce/condition-3.png)  
-- Select the *Email* token from the lead of the trigger.    
-![Salesforce condition image 4](./media/connectors-create-api-salesforce/condition-4.png)  
-- Select *Contains*.      
-![Salesforce condition image 5](./media/connectors-create-api-salesforce/condition-5.png)  
-- Select **Choose a value** at the bottom of the control.     
-![Salesforce condition image 6](./media/connectors-create-api-salesforce/condition-6.png)  
-- Enter *amazon.com* as the value you would like to evaluate the email address of the new lead for. If the email address contains *amazon.com*, the condition will evaluate to *True* and the other steps in your logic app can proceed.    
-![Salesforce condition image 7](./media/connectors-create-api-salesforce/condition-7.png)  
-- Save your logic apps.  
+1. **[+ New step (+ 新しいステップ)]** を選択します。![Salesforce 条件イメージ 1](./media/connectors-create-api-salesforce/condition-1.png)
+- **[条件の追加]** を選択します。![Salesforce 条件イメージ 2](./media/connectors-create-api-salesforce/condition-2.png)
+- **[値の選択]** を選択します。![Salesforce 条件イメージ 3](./media/connectors-create-api-salesforce/condition-3.png)
+- トリガーの潜在顧客から *[電子メール]* トークンを選択します。![Salesforce 条件イメージ 4](./media/connectors-create-api-salesforce/condition-4.png)
+- *[を含む]* を選択します。![Salesforce 条件イメージ 5](./media/connectors-create-api-salesforce/condition-5.png)
+- コントロールの下部にある **[値の選択]** を選択します。![Salesforce 条件イメージ 6](./media/connectors-create-api-salesforce/condition-6.png)
+- 潜在顧客の新しい電子メール アドレスを評価する値として、「*amazon.com*」を入力します。電子メール アドレスに「*amazon.com*」が含まれている場合、条件は *「True」* と評価し、ロジック アプリで他の手順に進むことができます。![Salesforce 条件イメージ 7](./media/connectors-create-api-salesforce/condition-7.png)
+- ロジック アプリを保存する。
 
+<!---HONumber=AcomDC_0727_2016-->

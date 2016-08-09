@@ -40,7 +40,7 @@ Web Apps に適用されるいくつかの App Service の主要機能を次に�
 
 - **複数の言語とフレームワーク** - App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。また、App Service VM では、[PowerShell などのスクリプトや実行可能ファイル](../app-service-web/web-sites-create-web-jobs.md)を実行することもできます。
 
-- **DevOps の最適化** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continous-deployment.md)を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。[テスト環境やステージング環境](../app-service-web/web-sites-staged-publishing.md)を介して更新を反映できます。また、[A/B テスト](../app-service-web/app-service-web-test-in-production-get-start.md)を実行できます。App Service でのアプリの管理には、[Azure PowerShell](../powershell-install-configure.md) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
+- **DevOps の最適化** - [継続的インテグレーションとデプロイ](../app-service-web/app-service-continuous-deployment.md)を、Visual Studio Team Services、GitHub、または BitBucket でセットアップできます。[テスト環境やステージング環境](../app-service-web/web-sites-staged-publishing.md)を介して更新を反映できます。また、[A/B テスト](../app-service-web/app-service-web-test-in-production-get-start.md)を実行できます。App Service でのアプリの管理には、[Azure PowerShell](../powershell-install-configure.md) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](../xplat-cli-install.md) を使用します。
  
 - **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](../app-service-web/web-sites-scale.md)または[スケールアウト](../azure-portal/insights-how-to-scale.md)を実行できます。Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 
@@ -62,4 +62,4 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 
 Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

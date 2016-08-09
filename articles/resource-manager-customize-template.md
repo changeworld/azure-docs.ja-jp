@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/10/2016"
+	ms.date="08/01/2016"
 	ms.author="tomfitz"/>
 
 # エクスポートした Azure Resource Manager テンプレートのカスタマイズ
@@ -233,4 +233,4 @@ parameters.json ファイルの内容を次のように置き換えます。
 - Azure CLI を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 - テンプレートの構造について学習するには、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

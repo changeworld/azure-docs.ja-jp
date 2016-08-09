@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="04/29/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # REST API で Azure Data Lake Store の使用を開始する
@@ -43,7 +43,7 @@
 	* **非対話型の認証**を使用する場合: Azure Active Directory で **[Web アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
 		- アプリケーションの**クライアント ID**、**クライアント シークレット**、**リダイレクト URI** を取得します。
 		- 委任されたアクセス許可を設定する
-		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。手順については、「[アプリケーションをロールに割り当てる](../resource-group-create-service-principal-portal.md#assign-application-to-role)」を参照してください。 
+		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。手順については、「[アプリケーションをロールに割り当てる](../resource-group-create-service-principal-portal.md#assign-application-to-role)」を参照してください。
 
 	これらの値を取得したりアクセス許可を設定したりロールを割り当てたりする手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
 
@@ -79,7 +79,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F code=<AUTHORIZATION-CODE>
 
 
-	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。
+	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。  
 
 
 3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
@@ -280,4 +280,4 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
 - [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

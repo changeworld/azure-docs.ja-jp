@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
-   ms.date="07/01/2016"
+   ms.date="07/26/2016"
    ms.author="owend"/>
 
 # Power BI Embedded での認証と承認
@@ -36,7 +36,7 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 
 | 要求 | 説明 |
 |--------------|------------|
-| **ver** | アプリケーション トークンのバージョン。現在のバージョンは 1.0.0 です。 |
+| **ver** | アプリケーション トークンのバージョン。0.2.0 が現行バージョンです。 |
 | **aud** | トークンの対象となる受信者。Power BI Embedded では、"https://analysis.windows.net/powerbi/api" を使用します。 |
 | **iss** | トークンを発行したアプリケーションを示す文字列。 |
 | **type** | 作成されるアプリケーション トークンの種類。現在サポートされている種類は **embed** だけです。 |
@@ -93,4 +93,4 @@ REST 呼び出しでキーを使用するには、次の Authorization ヘッダ
 - [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

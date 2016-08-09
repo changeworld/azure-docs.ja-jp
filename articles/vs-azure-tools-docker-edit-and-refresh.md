@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/08/2016"
+   ms.date="07/22/2016"
    ms.author="allclark" />
 
 # ローカルの Docker コンテナーでアプリをデバッグする
@@ -107,6 +107,7 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 - [Visual Studio Code 用 Docker ツール](http://aka.ms/dockertoolsforvscode) - Docker ファイルを編集するための言語サービス (e2e シナリオは増加予定)
 - [Windows コンテナー情報](http://aka.ms/containers) - Windows Server および Nano Server の情報
 - [Azure コンテナー サービス](https://azure.microsoft.com/services/container-service/) - [Azure コンテナー サービスの内容](http://aka.ms/AzureContainerService)
+-    Docker を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Working with Docker (Docker を使用した作業)](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
 
 ## さまざまな Docker ツール
 
@@ -124,4 +125,4 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

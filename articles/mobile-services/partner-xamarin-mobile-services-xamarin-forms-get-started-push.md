@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.workload="mobile"
-	ms.date="03/18/2016"
+	ms.date="07/21/2016"
 	ms.author="wesmc"/>
 
 # Xamarin.Forms アプリにプッシュ通知を追加する
@@ -857,4 +857,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Xamarin.Forms Azure Push Notification Starter Sample (Xamarin.Forms の Azure プッシュ通知スタート サンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/TodoListXamarinForms
 [Completed Xamarin.Forms Azure Push Notification Sample (Xamarin.Forms の Azure プッシュ通知の完全なサンプル)]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="integration" 
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
@@ -58,4 +58,4 @@ Azure ポータルで次の手順を実行します。
 - [契約についての詳細情報](./app-service-logic-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")
 - [変換の詳細](./app-service-logic-enterprise-integration-transform.md "エンタープライズ統合変換について説明します。")
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

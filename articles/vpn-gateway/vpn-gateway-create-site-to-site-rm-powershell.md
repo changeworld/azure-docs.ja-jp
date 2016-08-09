@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/13/2016"
+   ms.date="08/02/2016"
    ms.author="cherylmc"/>
 
 # PowerShell と Azure Resource Manager を使用してサイト間 VPN 接続で仮想ネットワークを作成する
@@ -117,7 +117,7 @@ PowerShell コンソールを開き、アカウントに接続します。接続
 
 PowerShell の例を使用する場合は、以下の点に注意してください。
 	
-- *GatewayIPAddress* は、オンプレミス VPN デバイスの IP アドレスです。VPN デバイスを NAT の内側に配置することはできません。 
+- *GatewayIPAddress* は、オンプレミス VPN デバイスの IP アドレスです。VPN デバイスを NAT の内側に配置することはできません。
 - *AddressPrefix* は、オンプレミスのアドレス空間です。
 
 1 つのアドレス プレフィックスを含むローカル ネットワーク ゲートウェイを追加するには
@@ -157,10 +157,10 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 次の値を使用します。
 
-- サイト間構成の *-GatewayType* は、*Vpn* です。ゲートウェイの種類は常に、実装する構成に対応するものとなります。たとえば、他のゲートウェイ構成では、-GatewayType に ExpressRoute を必要とする場合があります。 
+- サイト間構成の *-GatewayType* は、*Vpn* です。ゲートウェイの種類は常に、実装する構成に対応するものとなります。たとえば、他のゲートウェイ構成では、-GatewayType に ExpressRoute を必要とする場合があります。
 
 - *-VpnType* には、*RouteBased* (ドキュメントによっては動的ゲートウェイと呼ばれます) または *PolicyBased* (ドキュメントによっては静的ゲートウェイと呼ばれます) を指定できます。VPN ゲートウェイの種類については、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#vpntype)」を参照してください。
-- *-GatewaySku* には、*Basic*、*Standard*、*HighPerformance* のいずれかを指定できます。 	
+- *-GatewaySku* には、*Basic*、*Standard*、*HighPerformance* のいずれかを指定できます。
 
 		New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
 
@@ -198,8 +198,8 @@ VPN 接続を検証する方法はいくつかあります。以下で、Azure �
 
 ## 次のステップ
 
-- 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
+- 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

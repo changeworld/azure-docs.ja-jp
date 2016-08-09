@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
    <tags
@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="05/03/2016"
+      ms.date="07/20/2016"
       ms.author="markvi"/>
 
 # Azure Active Directory でのアプリケーションの管理
@@ -28,11 +28,11 @@
 
 コンピューティングの用語では次のように説明できます。
 
-- *だれ*は、*ID* と呼ばれ、具体的にはユーザーとグループの管理です。
+- "*だれ*" は、*ID* と呼ばれ、具体的にはユーザーとグループの管理です。
 
-- *何*は、*アクセス管理*と呼ばれ、具体的には保護対象のリソースへのアクセス管理です。
+- "*何*" は、"*アクセス管理*" と呼ばれ、具体的には保護対象のリソースへのアクセス管理です。
 
-両方の構成要素をまとめて *ID およびアクセス管理 (IAM)* と呼んでいます。これは、[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) グループによって、"*適切なユーザーが適切な理由で適切なタイミングに適切なリソースにアクセスできるようにするセキュリティの規律*" として定義されています。
+両方の構成要素をまとめて "*ID およびアクセス管理 (IAM)*" と呼んでいます。これは、[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) グループによって、"*適切なユーザーが適切な理由で適切なタイミングに適切なリソースにアクセスできるようにするセキュリティの規律*" として定義されています。
 
 では、何が問題になるでしょうか。 IAM が統合ソリューションを使用して 1 か所で*管理されていない*場合
 
@@ -54,7 +54,7 @@
 
 Azure Active Directory は、マイクロソフトの包括的なサービスとしての ID (IDaaS) ソリューションであり、次のような特色があります。
 
-- クラウド サービスとして IAM を有効化 
+- クラウド サービスとして IAM を有効化
 
 - 一元的なアクセス管理、シングル サインオン (SSO)、およびレポート機能を提供
 
@@ -135,4 +135,4 @@ Azure AD では、事前に統合された MFA ときめ細かいアクセス �
 
 [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

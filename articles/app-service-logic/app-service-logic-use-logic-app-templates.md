@@ -8,7 +8,7 @@
  documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -46,4 +46,4 @@ Twitter、Yammer、電子メールなどのソーシャルメディア サービ
 いずれかのテンプレートを選択したら、自分のロジック アプリを作成したときと同様にデプロイを完了します。詳細な手順については、「[ロジック アプリを作成する](app-service-logic-create-a-logic-app.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

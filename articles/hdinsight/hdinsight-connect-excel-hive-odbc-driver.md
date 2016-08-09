@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="04/28/2016"
+   ms.date="07/25/2016"
    ms.author="jgao"/>
 
 #Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続
@@ -58,7 +58,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
     プロパティ|説明
     ---|---
     データ ソース名|データ ソースに名前を付けます。
-    ホスト|<HDInsightClusterName>.azurehdinsight.net を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。
+    ホスト|「<HDInsight クラスター名>.azurehdinsight.net」を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。
     ポート|<strong>443</strong> を使用します。(このポートは 563 から 443 に変更されました)。
     データベース|<strong>既定値</strong>を使用します。
     Hive サーバーの種類|<strong>Hive Server 2</strong> を選択します。
@@ -105,7 +105,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 	![接続のプロパティ][img-hdi-simbahiveodbc-excel-connectionproperties]
 
 11. **[OK]** をクリックして [接続プロパティ] ダイアログを閉じます。
-12. **[OK]** をクリックして **[データのインポート]** ダイアログを閉じます。  
+12. **[OK]** をクリックして **[データのインポート]** ダイアログを閉じます。
 13. パスワードを再入力して **[OK]** をクリックします。データが Excel にインポートされるまでに、数秒かかります。
 
 ##次のステップ
@@ -131,4 +131,4 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -25,20 +25,16 @@ Data Factory は、Data Management Gateway を使用したオンプレミスの 
 
 Data Factory は、他のデータ ストアから DB2 へのデータの移動ではなく、DB2 から他のデータ ストアへのデータの移動のみをサポートします。
 
-> [AZURE.NOTE] この DB2 コネクタは、現在 LUW (Linux、UNIX、Windows) の DB2 をサポートしています。DB2 for z/OS または DB2 for AS/400 のデータをコピーするには、汎用 ODBC コネクタを使用して対応する ODBC ドライバーをゲートウェイ コンピューターにインストールすることを検討してください。たとえば、DB2 for AS/400 からのデータを取り込むには、iSeries Access ODBC Driver を使用し、[オンプレミスまたは Azure IaaS の ODBC データ ソース](data-factory-odbc-connector.md)に関するページに従ってコピー アクティビティを設定してください。
-
 ## インストール 
 
-Data Management Gateway で DB2 データベースに接続するには、[IBM DB2 Data Server Driver](http://go.microsoft.com/fwlink/p/?LinkID=274911) を Data Management Gateway と同じシステムにインストールする必要があります。
+Data Management Gateway が DB2 データベースに接続するために、ゲートウェイのバージョン 2.1 以降では、DB2 for LUW (Linux、Unix、Windows)、DB2 for z/OS、DB2 for i (別名: AS/400) などの DB2 をサポートする組み込みドライバー (SQLAM 9/10/11) が Azure Data Factory に用意されています。そのため、DB2 からデータをコピーするときに、ドライバーを手動でインストールする必要はなくなりました。
 
-Windows 8 への IBM DB2 Data Server Driver のインストールに関しては、IBM から既知の問題が報告されています。追加のインストール手順が必要になります。Windows 8 での IBM DB2 Data Server Driver の詳細については、[http://www-01.ibm.com/support/docview.wss?uid=swg21618434](http://www-01.ibm.com/support/docview.wss?uid=swg21618434) を参照してください。
-
-> [AZURE.NOTE] 接続およびゲートウェイに関する問題をトラブルシューティングするためのヒントについては、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションを参照してください。
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションをご覧ください。
 
 
 ## サンプル: DB2 から Azure BLOB にデータをコピーする
 
-このサンプルは、オンプレミスの DB2 データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[ここ](data-factory-data-movement-activities.md#supported-data-stores)に示したいずれかのシンクにデータを**直接**コピーすることができます。
+このサンプルは、オンプレミスの DB2 データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーできます。
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -141,7 +137,7 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%M"
+	                        "format": "MM"
 	                    }
 	                },
 	                {
@@ -149,7 +145,7 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%d"
+	                        "format": "dd"
 	                    }
 	                },
 	                {
@@ -157,7 +153,7 @@ Windows 8 への IBM DB2 Data Server Driver のインストールに関しては
 	                    "value": {
 	                        "type": "DateTime",
 	                        "date": "SliceStart",
-	                        "format": "%H"
+	                        "format": "HH"
 	                    }
 	                }
 	            ]
@@ -324,6 +320,6 @@ Char | String
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

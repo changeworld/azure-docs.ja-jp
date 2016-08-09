@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -36,7 +36,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 ## カーネルの使い方 
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -70,7 +70,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 	代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 	
-2. **セル マジック**。PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)を参照してください。
+2. **セル マジック**。PySpark カーネルには、"マジック"、つまり、`%%` (`%%MAGIC` <args> など) で呼び出すことができる特別なコマンドがいくつか事前定義されています。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
 
 	次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
@@ -78,7 +78,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 	|-----------|---------------------------------|--------------|
 	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
 	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
-	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧については、[Livy の「POST /sessions」の「Request Body (要求本文)」](https://github.com/cloudera/livy#request-body)を参照してください。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
+	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧については、[Livy の「POST /sessions」の「Request Body (要求本文)」](https://github.com/cloudera/livy#request-body)をご覧ください。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
 	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して Hive クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
 	| local | `%%local`<br>`a=1` | 後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。 |
 	| ログ | `%%logs` | 現在の Livy セッションのログを出力します。 |
@@ -128,7 +128,7 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ## Notebook の格納場所
 
-Jupyter Notebook は、クラスターに関連付けられたストレージ アカウントの **/HdiNotebooks** フォルダーに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasb:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からもその Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Jupyter Notebook は、クラスターに関連付けられたストレージ アカウントの **/HdiNotebooks** フォルダーに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からもその Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。そのため、クラスターに SSH で接続すると、次のようなファイル管理コマンドを使用できます。
 
@@ -188,4 +188,4 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

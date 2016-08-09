@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure App Service のカスタム ドメイン名の構成"
-	description="Azure App Service の Web アプリでカスタム ドメイン名を使用する方法について説明します。"
+	pageTitle="Azure アプリへのカスタム ドメイン名のマッピング"
+	description="Azure App Service でカスタム ドメイン名 (バニティ ドメイン) をアプリにマップする方法について説明します。"
 	services="app-service"
 	documentationCenter=""
 	authors="cephalin"
@@ -14,122 +14,185 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/16/2016"
+	ms.date="07/26/2016"
 	ms.author="cephalin"/>
 
-# Azure App Service のカスタム ドメイン名の構成
+# Azure アプリへのカスタム ドメイン名のマッピング
 
-> [AZURE.SELECTOR]
-- [Web Apps のドメインを購入する](custom-dns-web-site-buydomains-web-app.md)
-- [外部ドメインを使用する Web Apps](web-sites-custom-domain-name.md)
-- [Traffic Manager 付きの Web アプリ](web-sites-traffic-manager-custom-domain-name.md)
-- [GoDaddy](web-sites-godaddy-custom-domain-name.md)
+[AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
-Web アプリを作成するときに、Azure は azurewebsites.net のサブドメインにそのアプリを割り当てます。たとえば、Web アプリの名前が **contoso** の場合、URL は **contoso.azurewebsites.net** になります。また Azure によって仮想 IP アドレスも割り当てられます。
+この記事では、[Azure App Service](../app-service/app-service-value-prop-what-is.md) でカスタム ドメイン名を Web アプリ、モバイル アプリ バックエンド、または API アプリに手動でマップする方法について説明します。
 
-運用 Web アプリでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、[App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) を使用してカスタム ドメインを構成する方法について説明します
+アプリには、azurewebsites.net という固有のサブドメインが既に設定されています。たとえば、アプリの名前が **contoso** の場合、ドメイン名は **contoso.azurewebsites.net** になります。ただし、カスタム ドメイン名をアプリにマップして、URL に `www.contoso.com` のようにブランドが反映されるように設定できます。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
+>[AZURE.NOTE] [Azure フォーラム](https://azure.microsoft.com/support/forums/)では、Azure の専門家からアドバイスを得ることができます。より高いレベルのサポートを得るには、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)で **[サポートの要求]** をクリックします。
 
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
-## 概要
+## Azure ポータルで新しいカスタム ドメインを購入する
 
-外部ドメイン名をまだ登録していない (つまり、*.azurewebsites.net ではない) 場合、カスタム ドメインを設定する最も簡単な方法としては [Azure ポータル](https://portal.azure.com)で直接購入します。このプロセスでは、Web アプリのドメイン名を GoDaddy などのサードパーティ サイトにアクセスして管理する代わりに、ポータルで直接管理できます。同様に、Web アプリで [Azure Traffic Manager](web-sites-traffic-manager-custom-domain-name.md) を使用しているかどうかにかかわらず、Web アプリでのドメイン名の構成が大幅に簡略化されます。詳細については、[Azure App Service でのカスタム ドメイン名の購入と構成](custom-dns-web-site-buydomains-web-app.md)に関するページを参照してください。
+カスタム ドメイン名をまだ購入していない場合は、[Azure ポータル](https://portal.azure.com)のアプリの設定でカスタム ドメイン名を購入し、直接管理することができます。この方法なら、アプリで [Azure Traffic Manager](web-sites-traffic-manager-custom-domain-name.md) を使用するかどうかに関係なく、カスタム ドメインをアプリに簡単にマップできます。
 
-既にドメイン名を持っている場合や、他のドメイン レジストラーからドメインを予約する場合、ここに示す手順は、Web アプリにカスタム ドメイン名を設定する一般的な手順です ([GoDaddy.com の特定の手順](web-sites-godaddy-custom-domain-name.md)を参照)。
+手順については、[App Service でカスタム ドメイン名を購入する方法](custom-dns-web-site-buydomains-web-app.md)に関するページを参照してください。
 
-1. ドメイン名を予約します。使用できるレジストラーの種類は数多く存在するため、ここでは、この手順については説明しません。サインアップすると、サイトによってプロセスが順に表示されます。
-1. ドメインを Azure Web アプリにマップする DNS レコードを作成します。
-1. [Azure ポータル](https://portal.azure.com)内でドメイン名を追加します。
+## 外部で購入したカスタム ドメインをマップする
 
-基本的な手順は以上ですが、特に注意が必要な場合があります。
+既に [Azure DNS](https://azure.microsoft.com/services/dns/) またはサード パーティ プロバイダーからカスタム ドメインを購入している場合に、カスタム ドメインをアプリにマップするには、3 つの主要な手順を実行します。
 
-- ルート ドメインのマッピング。ルート ドメインとは、ドメイン レジストラーで予約したドメインです。たとえば、**contoso.com** などのドメインです。
-- サブドメインのマッピング。たとえば、**blogs.contoso.com** はサブドメインです。複数のサブドメインをそれぞれ異なる Web アプリにマップできます。
-- ワイルドカードのマッピング。たとえば、***.contoso.com** などです。ワイルドカードのエントリは、ドメインのすべてのサブドメインに適用されます。
+1. "[*(A レコードのみ)*" アプリの IP アドレスを取得します](#vip)。
+1. [Azure アプリのカスタム ドメイン名を有効にします](#enable)。
+    - **場所**: [Azure ポータル](https://portal.azure.com)。
+    - **理由**: カスタム ドメイン名に対する要求にアプリが応答するように設定する。
+2. [ドメインをアプリにマップする DNS レコードを作成します](#dns)。
+    - **場所**: ドメイン レジストラーの独自の管理ツール (例: Azure DNS、www.godaddy.com など)。
+    - **理由**: ドメイン レジストラーによって目的のカスタム ドメインが Azure アプリに解決されるように設定する。
+3. [DNS への反映を確認します](#verify)。
 
-[AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-modes.md)]
+### マップできるドメインの種類
 
+Azure App Service では、次のカテゴリのカスタム ドメインをアプリにマップできます。
 
-## DNS レコードの種類
+- **ルート ドメイン** - ドメイン レジストラーに予約したドメイン名 (通常、`@` ホスト レコードによって表されます)。たとえば、**contoso.com** などのドメインです。
+- **サブドメイン** - ルート ドメインの下にある任意のドメイン。たとえば、**www.contoso.com** (`www` ホスト レコードによって表されます)。同じルート ドメインの異なるサブドメインを Azure の異なるアプリにマップできます。
+- **ワイルドカード ドメイン** - [左端の DNS ラベルが `*`](https://en.wikipedia.org/wiki/Wildcard_DNS_record) の任意のサブドメイン (たとえば、ホスト レコード `*`、`*.blogs`)。たとえば、***.contoso.com** などです。
 
-ドメイン ネーム システム (DNS) では、データ レコードを使用してドメイン名が IP アドレスにマップされます。DNS レコードには、複数の種類があります。Web アプリの場合、*A* レコードまたは *CNAME* レコードを作成します。
+### 使用できる DNS レコードの種類
 
-- A **(Address)** レコードは、ドメイン名を IP アドレスにマップします。
-- **CNAME (Canonical Name)** レコードは、ドメイン名を別のドメイン名にマップします。DNS は、2 番目の名前を使用してアドレスを検索します。その場合も、ユーザーのブラウザーには 1 番目のドメイン名が表示されます。たとえば、contoso.com を *&lt;yourwebapp&gt;*.azurewebsites.net にマップすることができます。
+必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。
 
-IP アドレスが変更された場合、CNAME エントリはそのまま有効ですが、A レコードは更新する必要があります。ただし、ドメイン レジストラーによっては、ルート ドメインやワイルドカード ドメインに CNAME レコードを使用できない場合があります。その場合は A レコードを使用する必要があります。
+- [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。
+- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**& lt;*appname*>.azurewebsites.net**) にマップします。
 
-> [AZURE.NOTE] IP アドレスは、Web アプリを削除または再作成する場合や Web アプリを無料モードに戻すように変更する場合に変更されることがあります。
+CNAME の利点は、IP アドレスが変更されても維持されることです。アプリを削除して作成し直したり、より上位の価格レベルから **Shared** レベルに移行したりすると、アプリの仮想 IP アドレスが変更される可能性があります。そのような変更があった場合、A レコードは更新する必要がありますが、CNAME レコードは有効なままです。
 
+このチュートリアルでは、A レコードを使用するための手順と CNAME レコードを使用するための手順を示します。
 
-## 仮想 IP アドレスの検索
+<a name="vip"></a>
+## 手順 1."*(A レコードのみ)*" アプリの IP アドレスを取得する
+A レコードを使用してカスタム ドメイン名にマップするには、Azure アプリの IP アドレスが必要です。A レコードではなく CNAME レコードを使用してマップする場合は、この手順をスキップして次のセクションに移動してください。
 
-CNAME レコードを作成している場合は、この手順をスキップしてください。A レコードを作成するには、Web アプリの仮想 IP アドレスを見つける必要があります。IP アドレスを見つけるには:
+1.	[Azure ポータル](https://portal.azure.com)にログインします。
+2.	左側のメニューの **[App Services]** をクリックします。
+4.	アプリをクリックし、**[設定]**、**[カスタム ドメインおよび SSL]**、**[外部ドメインの使用]** の順にクリックします。
+5.	**[ドメイン名]** に、カスタム ドメイン名を入力します。
+6.  後で使用するため、IP アドレスを書き留めます。
+7.  このポータルのブレードは開いたままにしておきます。DNS レコードを作成した後でこのブレードに戻ります。
 
-1.	ブラウザーで、[Azure ポータル](https://portal.azure.com)を開きます。
-2.	ページの左側にある **[参照]** オプションをクリックします。
-3.	**[Web Apps]** ブレードをクリックします。
-4.	Web アプリの名前をクリックします。
-5.	**[Essentials]** ページで、**[すべての設定]** をクリックします。
-6.	**[カスタム ドメインと SSL]** をクリックします。
-7.	**[カスタム ドメインと SSL]** ブレードで **[外部ドメインの使用]** をクリックします。IP アドレスは、この部分の下部にあります。
+<a name="dns"></a>
+## 手順 2.DNS レコードを作成する
 
-## DNS レコードの作成
-
-ドメイン レジストラーにログインし、ツールを使用して A レコードまたは CNAME レコードを追加します。レジストラーの Web アプリはすべて少しずつ異なりますが、一般的なガイドラインは次のとおりです。
+ドメイン レジストラーにログインし、ツールを使用して A レコードまたは CNAME レコードを追加します。レジストラーの UI はレジストラーによって多少異なるため、プロバイダーのマニュアルを参照してください。ここでは、一般的なガイドラインを示します。
 
 1.	DNS レコードの管理ページを探します。**[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。多く場合、リンクが見つかったら、アカウント情報を表示し、**[My domains]** などのリンクを探します。
-2.	管理ページが見つかったら、DNS レコードを追加または編集できるリンクを探します。これは、**[Zone file]**、**[DNS Records]**、**[Advanced]** などの構成リンクとして表示されている場合があります。
+2.	DNS レコードを追加または編集するためのリンクを探します。これは、**[Zone file (ゾーン ファイル)]**、**[DNS Records (DNS レコード)]**、**[Advanced (詳細)]** などの構成リンクとして表示されている場合があります。
+3.  レコードを作成し、変更内容を保存します。
+    - [A レコード向けの手順については、こちらを参照してください](#a)。
+    - [CNAME レコード向けの手順については、こちらを参照してください](#cname)。
 
-このページには、A レコードと CNAME レコードが別々に表示されたり、レコードの種類を選択するためのドロップダウンが表示されたりする場合があります。あるいは、レコードの種類の名前として、A レコードの代わりに **IP アドレス レコード**、CNAME レコードの代わりに**エイリアス レコード**と表示されることもあります。通常、レジストラーではレコードが自動的に作成されるため、**www** などのルート ドメインや共通サブドメインのレコードが既に存在する場合があります。
+<a name="a"></a>
+### A レコードを作成する
 
-レコードを作成または編集すると、フィールドでドメイン名を IP アドレス (A レコードの場合) または別のドメイン (CNAME レコードの場合) に割り当てられるようになります。CNAME レコードの場合、カスタム ドメインから azurewebsites.net サブドメインにマップします。
+A レコードを使用して Azure アプリの IP アドレスにマップする場合、実際には A レコードと CNAME レコードの両方を作成する必要があります。A レコードは DNS 解決自体のために使用され、CNAME レコードはカスタム ドメイン名を所有していることを Azure が確認するために使用されます。
 
-多くのレジストラー ツールでは、ドメイン名すべてではなく、ドメインのサブドメイン部分のみを入力します。また多くのツールでは、ルート ドメインを "@" で表します。次に例を示します。
-
+A レコードは次のように構成する必要があります (@ は通常、ルート ドメインを表します)。
+ 
 <table cellspacing="0" border="1">
   <tr>
-    <th>ホスト</th>
-    <th>レコードの種類</th>
-    <th>IP アドレスまたは URL</th>
+    <th>FQDN の例</th>
+    <th>Host/Name/Hostname</th>
+    <th>値</th>
   </tr>
   <tr>
+    <td>contoso.com (ルート)</td>
     <td>@</td>
-    <td>A (アドレス)</td>
-    <td>168.62.48.183</td>
+    <td>[手順 1.]() で取得した IP アドレス</td>
   </tr>
   <tr>
+    <td>www.contoso.com (サブ)</td>
     <td>www</td>
-    <td>CNAME (エイリアス)</td>
-    <td>contoso.azurewebsites.net</td>
+    <td>[手順 1.]() で取得した IP アドレス</td>
+  </tr>
+  <tr>
+    <td>*.contoso.com (ワイルドカード)</td>
+    <td>*</td>
+    <td>[手順 1.]() で取得した IP アドレス</td>
   </tr>
 </table>
 
-ここでカスタム ドメイン名を "contoso.com" とすると、次のレコードが作成されます。
+追加の CNAME レコードでは、awverify.&lt;*subdomain*>.&lt;*rootdomain*> を awverify.&lt;*subdomain*>.azurewebsites.net にマップする規則が適用されます。次の例を参照してください。
 
-- 168\.62.48.183 にマップされた **contoso.com**
-- **contoso.azurewebsites.net** にマップされた **www.contoso.com**
+<table cellspacing="0" border="1">
+  <tr>
+    <th>FQDN の例</th>
+    <th>Host/Name/Hostname</th>
+    <th>値</th>
+  </tr>
+  <tr>
+    <td>contoso.com (ルート)</td>
+    <td>awverify</td>
+    <td>awverify.&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+  <tr>
+    <td>www.contoso.com (サブ)</td>
+    <td>awverify.www</td>
+    <td>awverify.www.&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+  <tr>
+    <td>*.contoso.com (ワイルドカード)</td>
+    <td>awverify</td>
+    <td>awverify.&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+</table>
+
+<a name="cname"></a>
+### CNAME レコードを作成する
+
+CNAME レコードを使用して Azure アプリの既定のドメイン名にマップする場合は、A レコードの場合と異なり、追加の CNAME レコードは不要です。
+
+CNAME レコードは次のように構成する必要があります (@ は通常、ルート ドメインを表します)。
+
+<table cellspacing="0" border="1">
+  <tr>
+    <th>FQDN の例</th>
+    <th>Host/Name/Hostname</th>
+    <th>値</th>
+  </tr>
+  <tr>
+    <td>contoso.com (ルート)</td>
+    <td>@</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+  <tr>
+    <td>www.contoso.com (サブ)</td>
+    <td>www</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+  <tr>
+    <td>*.contoso.com (ワイルドカード)</td>
+    <td>*</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+  </tr>
+</table>
+
 
 >[AZURE.NOTE] Azure DNS を使用すると、Web アプリに必要なドメイン レコードをホストできます。Azure DNS でカスタム ドメインを構成し、レコードを作成するには、「[Web アプリのカスタム DNS レコードの作成](../dns/dns-web-sites-custom-domain.md)」をご覧ください。
 
-<a name="awverify" />
-## awverify レコードの作成 (A レコードのみ)
+<a name="enable"></a>
+## 手順 3.アプリのカスタム ドメイン名を有効にする
 
-A レコードを作成する場合、使用しようとするドメインを自分が所有していることを確認するための特別な CNAME レコードも Web アプリに作成する必要があります。この CNAME レコードの形式は次のとおりです。
+Azure ポータルの **[外部ドメインの使用]** ブレードに戻り ([手順 1.](#vip) を参照)、カスタム ドメインの完全修飾ドメイン名 (FQDN) を一覧に追加する必要があります。
 
-- *A レコードがルート ドメインまたはワイルドカード ドメインをマップする場合:* **awverify.&lt;yourdomain&gt;** から **awverify.&lt;yourwebappname&gt;.azurewebsites.net** にマップする CNAME レコードを作成します。たとえば、A レコードが **contoso.com** をマップする場合は、**awverify.contoso.com** をマップする CNAME レコードを作成します。
-- *A レコードが特定のサブドメインをマップする場合:* **awverify.&lt;subdomain&gt;** から **awverify.&lt;yourwebappname&gt;.azurewebsites.net** にマップする CNAME レコードを作成します。たとえば、A レコードが **blogs.contoso.com** をマップする場合は、**awverify.blogs.contoso.com** をマップする CNAME レコードを作成します。
+1.	Azure ポータルの **[外部ドメインの使用]** ブレードに戻ります。
 
-awverify サブドメインは、Web　アプリの訪問者に対して表示されることはなく、Azure がドメインの所有者を確認するためだけに使用されます。
+2.	カスタム ドメインの FQDN を一覧に追加します (**www.contoso.com**)。
 
-## Web アプリケーションでのドメイン名の有効化
+    >[AZURE.NOTE] Azure により、ここで使用したドメイン名が確認されます。このドメイン名には、[手順 2.](#dns) で DNS レコードを作成したのと同じドメイン名を必ず使用してください。
 
-[AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-web-site.md)]
+6.  **[保存]** をクリックします。
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+7.  新しいカスタム ドメイン名が正常に構成されたら、ブラウザーでカスタム ドメイン名に移動します。アプリが実行され、カスタム ドメイン名が正常に動作していることがわかります。
 
+<a name="verify"></a>
 ## DNS への反映を確認する
 
 構成手順が終了した後、DNS プロバイダーによっては、変更が反映されるまでしばらく時間がかかることがあります。[http://digwebinterface.com/](http://digwebinterface.com/) を使用して、DNS への反映が想定どおりに行われていることを確認できます。サイトを参照してから、テキストボックスにホスト名を指定し、**[Dig]** をクリックします。結果を確認して、最新の変更が有効になっているかどうかを確認します。
@@ -142,8 +205,8 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 
 詳細については、「[Azure DNS の概要](../dns/dns-getstarted-create-dnszone.md)」と「[Azure DNS へのドメインの委任](../dns/dns-domain-delegation.md)」をご覧ください。
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+
 
 <!-- Anchors. -->
 [Overview]: #overview
@@ -155,4 +218,4 @@ awverify サブドメインは、Web　アプリの訪問者に対して表示�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -92,11 +92,11 @@ SQL Database では、リソースの需要に対処するデータベースの�
 
 ### ポイントインタイム リストア
 
-ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。[ユーザー エラーからの Azure SQL Database の復旧](sql-database-user-error-recovery.md)に関するページをご覧ください
+ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」を参照してください
 
 ### 地理リストア
 
-Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。[障害からの Azure SQL Database の復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
+Geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。「[Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)」を参照してください
 
 ### アクティブ geo レプリケーションを選択するとき
 
@@ -106,4 +106,4 @@ geo リストアよりもアグレッシブな復旧要件があるアプリケ�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

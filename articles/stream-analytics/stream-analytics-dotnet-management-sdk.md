@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"/>
 
 
@@ -32,7 +32,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 - Visual Studio 2012 または 2013 のインストール。
 - [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール。
-- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。  
+- サブスクリプションに Azure リソース グループを作成する。次に、サンプルの Azure PowerShell スクリプトを示します。Azure PowerShell については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」を参照してください。
 
 
 		# Log in to your Azure account
@@ -366,4 +366,4 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

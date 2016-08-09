@@ -22,7 +22,8 @@ Azure Active Directory は、Microsoft 以外のソリューションを必要�
 Microsoft 以外のフェデレーション ソリューションに投資している組織のために、このトピックでは、次の "Azure Active Directory フェデレーション互換性リスト" に記載されている Microsoft 以外の ID プロバイダーを使用して、Microsoft オンライン サービスを使用する Windows Server Active Directory ユーザーのシングル サインオンを構成する場合のガイダンスを示しています。
 
 
-![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)サードパーティの [Oxford Computer Group](http://oxfordcomputergroup.com/) は Microsoft に代わり、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対して以下のシングル サインオン エクスペリエンスをテストしました。
+![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
+サードパーティの [Oxford Computer Group](http://oxfordcomputergroup.com/) は Microsoft に代わり、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対して以下のシングル サインオン エクスペリエンスをテストしました。
 
 以下のリストにあるサードパーティ ID プロバイダーの入手方法については、[idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) から Oxford Computer Group に問い合わせてください。
 
@@ -338,4 +339,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->

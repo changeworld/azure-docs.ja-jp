@@ -162,7 +162,7 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
     - ダウンロードした証明書
     - シングル サインオン サービス URL
  
-    電子メールに応じて、Optimizely では、[サインオン URL] (SP によって開始された SSO) と [識別子] \(サービス プロバイダーのエンティティ ID) の値が提供されます。
+    電子メールに応じて、Optimizely では、[サインオン URL]\(SP によって開始された SSO) と [識別子] \(サービス プロバイダーのエンティティ ID) の値が提供されます。
 
 9. **[アプリケーション設定の構成]** ダイアログ ページに戻り、次の手順を実行します。
 
@@ -332,4 +332,4 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 [204]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_205.png
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->

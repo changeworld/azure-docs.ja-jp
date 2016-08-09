@@ -28,9 +28,9 @@
 
 - プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」をご覧ください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
-	![scaleout\_1][image-hdi-optimize-hive-scaleout_1]
+	![scaleout\_1][image-hdi-optimize-hive-scaleout\_1]
 
-- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。これは次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout_2]
+- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout\_2]
 
 HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -38,7 +38,7 @@ HDInsight によってサポートされている異なる仮想マシンの詳�
 
 [Apache Tez](http://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。
 
-![tez\_1][image-hdi-optimize-hive-tez_1]
+![tez\_1][image-hdi-optimize-hive-tez\_1]
 
 
 Tez はより高速です。それは次の理由によります。
@@ -89,9 +89,9 @@ Windows ベースの HDInsight クラスターの場合は、プロビジョニ�
 
 I/O 操作は、Hive クエリを実行するための主なパフォーマンスのボトルネックです。読み取る必要があるデータの量を削減することで、パフォーマンスを向上することができます。既定では、Hive クエリは、全 Hive テーブルをスキャンします。これはテーブルのスキャンのようなクエリでは有効な方法ですが、少量のデータのみのスキャンが必要なクエリ (例えば、フィルターを使用するクエリ) では、不要なオーバーヘッドが生じてしまいます。Hive パーティション分割では、Hive クエリは Hive テーブルの必要な量のデータだけにアクセスします。
 
-Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その際、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。年ごとに新しいディレクトリが作成されます。
+Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その場合は、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。年ごとに新しいディレクトリが作成されます。
 
-![パーティション分割][image-hdi-optimize-hive-partitioning_1]
+![partitioning][image-hdi-optimize-hive-partitioning\_1]
 
 パーティション分割に関するいくつかの考慮事項:
 
@@ -123,7 +123,7 @@ Hive パーティション分割は、生データを新しいディレクトリ
 	    WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
 
 	    ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-	    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+	    LOCATION ‘wasbs://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
 
 - **動的パーティション分割**では、Hive に自動的にパーティションを作成させます。ステージング テーブルからパーティショニング テーブルが作成されているので、後は、次のようにパーティション テーブルにデータを挿入するだけです。
 
@@ -216,9 +216,6 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 - [Web サイトのログを分析するための HDInsight での Hive の使用](hdinsight-hive-analyze-website-log.md)
 
 
-[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
-[image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
-[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
-[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
+[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

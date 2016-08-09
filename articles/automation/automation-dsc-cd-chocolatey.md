@@ -26,8 +26,8 @@ DevOps 領域には、継続的な統合パイプラインのさまざまなポ�
 
 ここにはかなり多くのことが示されていますが、幸いにも次の 2 つのメイン プロセスに分けることができます。
 
-  - コードを記述し、テストしてから、メジャーおよびマイナー バージョンのシステム用にインストール パッケージを作成して発行する。 
-  - パッケージ内のコードをインストールおよび実行する VM を作成および管理する。  
+  - コードを記述し、テストしてから、メジャーおよびマイナー バージョンのシステム用にインストール パッケージを作成して発行する。
+  - パッケージ内のコードをインストールおよび実行する VM を作成および管理する。
 
 これらのコア プロセスの両方が実施されていれば、新しいバージョンの作成およびデプロイ時に、特定の VM で実行されているパッケージを短い手順で自動的に更新できるようになります。
 
@@ -63,7 +63,7 @@ ARM テンプレートを使用しなくてもかまいません。プル サー
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
 
-Automation アカウントは、東日本、米国東部 2、西ヨーロッパ、東南アジア、米国中南部のいずれかのリージョン (場所ともいう) に配置できます。
+Automation アカウントは、米国東部 2、米国中南部、米国政府バージニア、西ヨーロッパ、東南アジア、東日本、インド中部、オーストラリア南東部のいずれかのリージョン (場所) に配置できます。
 
 ## 手順 2: VM 拡張機能を使用して ARM テンプレートに応じて微調整する
 
@@ -79,10 +79,10 @@ PowerShell ギャラリーは、Azure Automation アカウントに DSC リソ�
 
 -   次のように、ワークステーションに必要なモジュールをインストールします。
     -   [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします (Windows 10 では不要)。
-    -   `Install-Module –Name MODULE-NAME` (PowerShell ギャラリーからモジュールを取得します)。 
--   `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。 
--   メイン フォルダーからサンプルとドキュメントを削除します。 
--   メイン フォルダーを zip 圧縮します。zip ファイルにはフォルダーとまったく同じ名前を付けます。 
+    -   `Install-Module –Name MODULE-NAME` (PowerShell ギャラリーからモジュールを取得します)。
+-   `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。
+-   メイン フォルダーからサンプルとドキュメントを削除します。
+-   メイン フォルダーを zip 圧縮します。zip ファイルにはフォルダーとまったく同じ名前を付けます。
 -   Azure ストレージ アカウントの Blob Storage など、アクセス可能な HTTP の場所に zip ファイルを配置します。
 -   以下の PowerShell を実行します。
 
@@ -185,4 +185,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

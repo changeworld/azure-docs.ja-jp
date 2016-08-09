@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Conditional Access Preview for SaaS Apps | Microsoft Azure"
+	pageTitle="SaaS アプリ向けの Azure の条件付きアクセス | Microsoft Azure"
 	description="Azure AD の条件付きアクセスを使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。"
 	services="active-directory"
 	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
+	authors="markusvi"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="femila"/>
+	ms.date="07/26/2016"
+	ms.author="markvi"/>
 
 # Azure AD への条件付きアクセスの基本  
 
-SaaS アプリや Azure AD 接続アプリ向けの Azure Active Directory Conditional Access がパブリック プレビュー版として公開されました。今後はグループや場所、アプリケーションの秘密度に基づく条件付きアクセスを構成することができます。
+[SaaS](https://azure.microsoft.com/overview/what-is-saas/) アプリや Azure AD 接続アプリ向けの Azure Active Directory の条件付きアクセスを使用すると、グループや場所、アプリケーションの機密性に基づいて条件付きアクセスを構成できます。
 
 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。アプリケーションの秘密度に基づく条件付きアクセスを使用すれば、Multi-Factor Authentication (MFA) アクセス規則をアプリケーションごとに設定し、信頼されたネットワーク上に存在しないユーザーのアクセスをブロックすることが可能です。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
@@ -30,9 +30,6 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 * フェデレーションまたは管理対象 Azure Active Directory テナント
 
 * フェデレーション テナントでは、Multi-Factor Authentication を有効にする必要があります。
-
-## このプレビュー リリースの既知の問題
-このプレビューは、事前に統合されたフェデレーション SaaS アプリケーション、パスワード シングル サインオンを使用するアプリケーション、登録済みの開発された基幹業務アプリケーション、および Azure AD アプリケーション プロキシに適用されます。他のアプリケーションがまだ有効になっています。
 
 ## アプリケーションごとのアクセス規則の構成
 
@@ -50,7 +47,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 ##アクセス規則について
 
-ここでは、Azure Conditional Application Access プレビューでサポートされているアクセス規則について詳細に説明します。
+ここでは、Azure の条件付きアプリケーション アクセスでサポートされているアクセス規則について詳細に説明します。
 
 ### アクセス規則を適用するユーザーの指定
 
@@ -58,13 +55,13 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 [除外] をオンにして、1 つまたは複数のグループを指定することで、セキュリティ グループをポリシーから明示的に除外することもできます。除外リストのグループ メンバーであるユーザーは、アクセス規則が適用されるグループのメンバーである場合でも、Multi-Factor Authentication の要件が適用されません。以下に示すアクセス規則では、マネージャー グループのすべてのユーザーが、アプリケーションにアクセスするときに Multi-Factor Authentication を使用する必要があります。
 
-![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access/conditionalaccess-saas-apps.png)
+![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access-azuread-connected-apps/conditionalaccess-saas-apps.png)
 
 ## MFA による条件付きアクセス規則
 ユーザーごとの Multi-Factor Authentication 機能を使用してユーザーが構成されている場合は、そのユーザーのこの設定がアプリの Multi-Factor Authentication 規則と組み合わされます。これは、たとえ、それらのユーザーがアプリケーションの Multi-Factor Authentication 規則から除外されていたとしても、Multi-Factor Authentication を実行するには、ユーザーごとの Multi-Factor Authentication で構成されたユーザーが必要になることを意味します。Multi-Factor Authentication とユーザーごとの設定に関する詳細を参照してください。
 
 ### アクセス規則のオプション
-現在のプレビューでは、次のオプションがサポートされています。
+次のオプションがサポートされています。
 
 * **多要素認証が必要です**: このオプションを使用した場合、アクセス規則が適用されるユーザーは、ポリシーが適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
 
@@ -94,4 +91,4 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

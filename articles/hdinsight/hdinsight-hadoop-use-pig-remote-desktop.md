@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/12/2016"
+   ms.date="07/25/2016"
    ms.author="larryfr"/>
 
 #リモート デスクトップ接続から Pig ジョブを実行する
@@ -49,7 +49,7 @@
 
 3. 次のステートメントを入力します。
 
-		LOGS = LOAD 'wasb:///example/data/sample.log';
+		LOGS = LOAD 'wasbs:///example/data/sample.log';
 
 	このコマンドは、sample.log ファイルの内容をログ ファイルに読み込みます。ファイルの内容を表示するには、次のコマンドを使用します。
 
@@ -83,7 +83,7 @@
 
 6. 変換の結果は `STORE` ステートメントで保存することもできます。たとえば、次のコマンドでは `RESULT` がクラスターの既定のストレージ コンテナーの **/example/data/pigout** ディレクトリに保存されます。
 
-		STORE RESULT into 'wasb:///example/data/pigout'
+		STORE RESULT into 'wasbs:///example/data/pigout'
 
 	> [AZURE.NOTE] データは、**part-nnnnn** という名前のファイルの指定したディレクトリに保存されます。ディレクトリが既に存在する場合は、エラー メッセージが表示します。
 
@@ -99,7 +99,7 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 4. 次の行を **pigbatch.pig** ファイルに入力するか貼り付けて、保存します。
 
-		LOGS = LOAD 'wasb:///example/data/sample.log';
+		LOGS = LOAD 'wasbs:///example/data/sample.log';
 		LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 		FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
 		GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
@@ -136,4 +136,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

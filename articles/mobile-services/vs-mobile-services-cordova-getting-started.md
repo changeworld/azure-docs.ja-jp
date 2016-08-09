@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="01/05/2016"
+	ms.date="07/21/2016"
 	ms.author="mlearned"/>
 
 # Mobile Services の使用 (Cordova プロジェクト)
@@ -69,7 +69,7 @@ where メソッドを使用してクエリを変更できます。次の例で�
             items = results.slice();
         });
 
-使用できる他のクエリ例については、「[query オブジェクト](http://msdn.microsoft.com/library/azure/jj613353.aspx)」を参照してください。
+使用できる他のクエリ例については、「[query オブジェクト](https://msdn.microsoft.com/library/azure/jj613353.aspx)」を参照してください。
 
 ##テーブル項目を更新する
 
@@ -88,6 +88,4 @@ where メソッドを使用してクエリを変更できます。次の例で�
         items.splice(items.indexOf(todoItem), 1);
     });
 
-[モバイル サービスの詳細を確認する](https://azure.microsoft.com/documentation/services/mobile-services/)
-
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0727_2016-->

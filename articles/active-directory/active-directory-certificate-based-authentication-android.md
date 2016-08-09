@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/13/2016" 
+    ms.date="07/22/2016" 
     ms.author="markvi" />
 
 
@@ -44,7 +44,7 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 
 - 証明機関にアクセスし、クライアント証明書を発行します。
 
-- 証明機関は、Azure Active Directory で構成する必要があります。「使用の開始」セクションで構成を完了する方法の詳細な手順を確認できます。
+- 証明機関は、Azure Active Directory で構成する必要があります。「[使用の開始](#getting-started)」セクションで構成を完了する方法の詳細な手順を確認できます。
 
 - ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。
 
@@ -61,17 +61,19 @@ CBA では、Exchange online アカウントを次に接続する場合、Azure 
 
 | アプリケーション | サポート |
 | ---                       | ---          |
-| OneDrive | はい |
-| Outlook | はい |
-| Word/Excel/PowerPoint | はい |
-| Skype for Business | はい |
+| Word/Excel/PowerPoint | ![○][1] |
+| OneNote | 近日対応予定 |
+| OneDrive | ![○][1] |
+| Outlook | ![○][1] |
+| Yammer | ![○][1] |
+| Skype for Business | ![○][1] |
 
 
 ### 必要条件  
 
-デバイスの OS バージョンは、 Android 5.0 (Lollipop) 以降である必要があります。
+デバイスの OS バージョンは、Android 5.0 (Lollipop) 以降である必要があります。
 
-フェデレーション サーバーは、Office モバイル アプリケーションで CBA を実行するように構成する必要があります。
+フェデレーション サーバーを構成する必要があります。
 
 
 Azure Active Directory でクライアント証明書を失効させるには、ADFS トークンに次の要求が必要です。
@@ -140,7 +142,7 @@ Android 5.0 (Lollipop) 以降の特定の Exchange ActiveSync アプリケーシ
 
 2. Azure AD モジュールをインストールします。バージョン [1\.1.143.0](http://www.powershellgallery.com/packages/AzureADPreview/1.1.143.0) 以降をインストールする必要があります。
 
-        Install-Module -Name AzureAD –RequiredVersion 1.1.143.0 
+        Install-Module -Name AzureADPreview –RequiredVersion 1.1.143.0 
 
 3. ターゲット テナントに接続します。
 
@@ -267,4 +269,8 @@ Android 5.0 (Lollipop) 以降のアプリケーションで証明書認証をテ
 
 設定する日付は、現在より後の日付にする必要があります。日付を現在より後の日付にしないと、**StsRefreshTokensValidFrom** プロパティは設定されません。日付を現在より後の日付にすると、**StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-<!---HONumber=AcomDC_0720_2016-->
+
+<!--Image references-->
+[1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png
+
+<!---HONumber=AcomDC_0727_2016-->

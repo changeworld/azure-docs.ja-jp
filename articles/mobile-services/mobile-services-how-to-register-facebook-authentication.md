@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="02/28/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # Mobile Services での Facebook 認証用のアプリケーションの登録
 
-[AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-register-identity-provider](../../includes/mobile-services-selector-register-identity-provider.md)] &nbsp;
 
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
@@ -74,4 +74,4 @@
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure Mobile Services]: http://azure.microsoft.com/services/mobile-services/
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0727_2016-->

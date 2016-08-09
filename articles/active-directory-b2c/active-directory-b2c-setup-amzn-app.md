@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C プレビュー: Amazon の構成 | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Amazon の構成 | Microsoft Azure"
 	description="Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Amazon アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
 	services="active-directory-b2c"
 	documentationCenter=""
@@ -12,33 +12,31 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/27/2016"
+    ms.topic="article"
+    ms.date="07/24/2016"
 	ms.author="swkrish"/>
 
-# Azure Active Directory B2C プレビュー: Amazon アカウントでコンシューマーにサインアップおよびサインインを提供する
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
+# Azure Active Directory B2C: Amazon アカウントでコンシューマーにサインアップおよびサインインを提供する
 
 ## Amazon アプリケーションを作成する
 
 Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon を使用するには、Amazon アプリケーションを作成し、適切なパラメーターを提供する必要があります。そのためには Amazon アカウントが必要です。ない場合は、[http://www.amazon.com/](http://www.amazon.com/) で取得できます。
 
 1. [Amazon Developer Center](https://login.amazon.com/) に移動し、Amazon アカウントの資格情報でサインインします。
-2. まだ行っていない場合は、**[Sign Up]** をクリックして、開発者登録手順に従い、ポリシーを受け入れます。
+2. まだ行っていない場合は、**[Sign Up (サインアップ)]** をクリックして、開発者登録手順に従い、ポリシーを受け入れます。
 3. **[Register new application]** をクリックします。
 
     ![Amazon Web サイトで新しいアプリケーションを登録する](./media/active-directory-b2c-setup-amzn-app/amzn-new-app.png)
 
-4. アプリケーションの情報 (**[Name]**、**[Description]**、**[Privacy Notice URL]**) を提供し、**[Save]** をクリックします。
+4. アプリケーションの情報 (**[Name (名前)]**、**[Description (説明)]**、**[Privacy Notice URL (プライバシー規約 URL)]**) を提供し、**[Save (保存)]** をクリックします。
 
     ![Amazon で新しいアプリケーションを登録するためのアプリケーション情報を提供する](./media/active-directory-b2c-setup-amzn-app/amzn-register-app.png)
 
-5. **[Web Settings]** セクションで、**[Client ID]** および **[Client Secret]** の値をコピーします(これを表示するには **[Show Secret]** ボタンをクリックする必要があります)。 テナントで ID プロバイダーとして Amazon を構成するには、両方の値が必要です。セクションの下部にある **[Edit]** をクリックします。**[Client Secret]** は、重要なセキュリティ資格情報です。
+5. **[Web Settings (Web 設定)]** セクションで、**[Client ID (クライアント ID)]** および **[Client Secret (クライアント シークレット)]** の値をコピーします (これを表示するには **[Show Secret (シークレットの表示)]** ボタンをクリックする必要があります)。 テナントで ID プロバイダーとして Amazon を構成するには、両方の値が必要です。セクションの下部にある **[Edit]** をクリックします。**[Client Secret]** は、重要なセキュリティ資格情報です。
 
 	![Amazon で新しいアプリケーションのクライアント ID とクライアント シークレットを提供する](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
 
-6. **[Allowed JavaScript Origins]** フィールドに「`https://login.microsoftonline.com`」と入力し、**[Allowed Return URLs]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[保存]** をクリックします。**{tenant}** の値は大文字小文字が区別されます。
+6. **[Allowed JavaScript Origins (許可された JavaScript オリジン)]** フィールドに「`https://login.microsoftonline.com`」と入力し、**[Allowed Return URLs (許可された 戻り先 URL)]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[保存]** をクリックします。**{tenant}** の値は大文字小文字が区別されます。
 
     ![Amazon で新しいアプリケーションの JavaScript 生成元と戻り先 URL を提供する](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
 
@@ -52,4 +50,4 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した Amazon アプリケーションのクライアント ID とクライアント シークレットを入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Amazon の構成を保存します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

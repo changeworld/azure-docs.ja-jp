@@ -6,7 +6,7 @@
 	documentationCenter="android"
 	authors="RickSaling"
 	writer="ricksal"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="01/20/2016"
+	ms.date="07/21/2016"
 	ms.author="ricksal"/>
 
 
@@ -161,4 +161,4 @@ Mobile Services と Notification Hubs については次のトピックを参照
 [Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
 [Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

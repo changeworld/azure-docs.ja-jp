@@ -89,7 +89,7 @@ Bottle、Flask、Django の各 Web フレームワークと、Azure Table Storag
 
 1.  [Azure ポータル]にログインします。
 
-1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**[SQL database]** の順にクリックします。
+1.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックし、**[データ + ストレージ]**、**\[SQL database]** の順にクリックします。
 
 1.  新しいリソース グループを作成することで、新しい SQL Database を構成し、適切な場所を選択します。
 
@@ -205,4 +205,4 @@ Python Tools for Visual Studio、Django および SQL Database の詳細につ�
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL Database]: /documentation/services/sql-database/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Azure"
-	description="一般的な Azure Stream Analytics クエリのパターン"
+	description="一般的な Azure Stream Analytics クエリのパターン "
 	keywords="クエリ例"
 	services="stream-analytics"
 	documentationCenter=""
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="06/13/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"/>
 
 
@@ -514,4 +514,4 @@ Azure Stream Analytics でのクエリは、SQL に似たクエリ言語で表�
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

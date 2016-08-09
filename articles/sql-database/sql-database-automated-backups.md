@@ -1,6 +1,6 @@
 <properties
    pageTitle="クラウドのビジネス継続性 - 組み込みバックアップ - SQL Database | Microsoft Azure"
-   description="SQL Database 組み込みバックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点にロールバックしたり、データベースを地理的リージョン内の新しいデータベースにコピーしたりすることができます (最大 35 日)。"
+   description="SQL Database 組み込みバックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点にロールバックしたり、データベースを地理的リージョン内の新しいデータベースにコピーしたりできます (最大 35 日)。"
    services="sql-database"
    documentationCenter=""
    authors="carlrabeler"
@@ -12,7 +12,7 @@
    ms.devlang="NA"
    ms.topic="article"
    ms.tgt_pltfrm="NA"
-   ms.workload="sqldb-bcdr"
+   ms.workload="NA"
    ms.date="06/16/2016"
    ms.author="carlrab"/>
 
@@ -32,19 +32,19 @@ Basic、Standard、Premium のすべてのデータベースは、自動バッ�
 
 ## geo 冗長
 
-バックアップ ファイルは、障害復旧時に可用性を確保するために、読み取りアクセス権 (RA-GRS) を持つ geo 冗長ストレージ アカウントで格納されます。次に示すのは、障害復旧時に可用性を確保するために、読み取りアクセス権 (RA-GRS) を持つ geo 冗長ストレージ アカウントで格納される、週ごとおよび毎日のバックアップの geo レプリケーションです。
+バックアップ ファイルは、障害復旧時に可用性を確保するために、読み取りアクセス権 (RA-GRS) を持つ geo 冗長ストレージ アカウントで格納されます。これにより、バックアップファイルが[ペアのデータ センター](../best-practices-availability-paired-regions.md)に確実にレプリケートされます。次に示すのは、障害復旧時に可用性を確保するために、読み取りアクセス権 (RA-GRS) を持つ geo 冗長ストレージ アカウントで格納される、週ごとおよび毎日のバックアップの geo レプリケーションです。
 
 ![geo リストア](./media/sql-database-geo-restore/geo-restore-1.png)
 
 ## 自動バックアップの使用
 
-サービス主導のバックアップから、[保有期間](sql-database-service-tiers.md)内に次の場所に[データベースを復元](sql-database-recovery-using-backups.md)できます。
+[リテンション期間](sql-database-service-tiers.md)内に、[データベースを自動バックアップから復元](sql-database-recovery-using-backups.md)できます。復元先は次のとおりです。
 
 - 保有期間内の特定の時点に復旧された、同じ論理サーバー上の新しいデータベース。
 - 削除済みデータベースの削除時に復旧された、同じ論理サーバー上のデータベース。
 - geo レプリケートされている BLOB ストレージ (RA-GRS) の最新の日次バックアップに復旧された、任意のリージョンの論理サーバー上の新しいデータベース。
 
-また、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、現在の SQL Database とトランザクション上の一貫性がある、任意のリージョンの論理サーバー上に[データベースのコピー](sql-database-copy.md)を作成することもできます。データベースのコピー、および [BACPAC ファイルへのエクスポート](sql-database-export.md)を使用して、トランザクション上の一貫性があるデータベースのコピーを保有期間を超えた長期間のストレージ用にアーカイブしたり、データベースのコピーをオンプレミスまたは SQL Server の Azure VM インスタンスに転送できます。
+また、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、現在の SQL Database とのトランザクション整合性が確保された任意のリージョンの論理サーバー上に、[データベースのコピー](sql-database-copy.md)を作成することもできます。データベースのコピー、および [BACPAC ファイルへのエクスポート](sql-database-export.md)を使用して、トランザクション整合性が確保されたデータベースのコピーを、リテンション期間を超えた長期間のストレージ用にアーカイブしたり、データベースのコピーをオンプレミスまたは SQL Server の Azure VM インスタンスに転送できます。
 
 ## サービス レベルをダウングレード/アップグレードする場合、復元ポイントの保有期間はどうなるのでしょうか。
 
@@ -57,9 +57,9 @@ Basic、Standard、Premium のすべてのデータベースは、自動バッ�
 
 ## 次のステップ
 
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
-- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
+- より迅速な回復オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関するページをご覧ください
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

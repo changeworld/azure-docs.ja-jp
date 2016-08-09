@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store の概要
@@ -65,12 +65,12 @@ Azure Data Lake Store では、Azure Active Directory を使用し、認証お�
 | 機能 | 説明 |
 |-----------------------------------------|------------------------------------------|
 | 認証 | Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 |
-| Access control | Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。現在のリリースでは、アクセス許可は Data Lake のレベルで指定され、Data Lake 内のすべてのファイルおよびフォルダーに適用されます。今後の更新では、個々のファイルおよびフォルダーに対してアクセス許可を指定できるようにすることで、詳細なアクセス制御を可能にします。|
+| Access control | Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。現在のリリースでは、個々のファイルだけでなく、ルート フォルダー、サブフォルダーでも ACL を有効にすることができます。ルート フォルダーに適用した ACL は、そのフォルダーのすべての子フォルダーやファイルにも適用されます。|
 
 Data Lake Store に格納されているデータのセキュリティ保護の詳細については、以下のページを参照してください。
 
 * Data Lake Store 内のデータをセキュリティで保護する方法については、「[Azure Data Lake Store 内のデータをセキュリティで保護する](data-lake-store-secure-data.md)」を参照してください。
-* または、Data Lake Store に格納されているデータのセキュリティ保護の方法について紹介した [こちらのビデオ](https://mix.office.com/watch/1q2mgzh9nn5lx)をご覧ください。
+* ビデオの方がよいですか? Data Lake Store に格納されているデータのセキュリティ保護の方法については、[こちらのビデオ](https://mix.office.com/watch/1q2mgzh9nn5lx)をご覧ください。
 
 ## Azure Data Lake Store と互換性のあるアプリケーション
 
@@ -80,7 +80,7 @@ Azure Data Lake Store は、Hadoop のエコシステムを構成するほとん
 * Data Lake Store と他の Azure サービスを組み合わせて広範なシナリオを有効にする方法を理解するには、「[他の Azure サービスとの統合](data-lake-store-integrate-with-other-services.md)」を参照してください。
 * データの取り込み、データの処理、データのダウンロード、データの視覚化などの各種シナリオにおける Data Lake Store の使い方については、「[Azure Data Lake Store に関するデータ シナリオ](data-lake-store-data-scenarios.md)」を参照してください。
 
-## Azure Data Lake Store ファイル システムとは何か (adl://)?
+## Azure Data Lake Store ファイル システム (adl://) とは
 
 Hadoop 環境 (HDInsight クラスターで使用可能) では、新しいファイル システムである AzureDataLakeFilesystem (adl://) 経由で Data Lake Store にアクセスできます。adl:// を使用するアプリケーションとサービスでは、WebHDFS で現在まだサポートされていない、より有効なパフォーマンスの最適化を利用できるようになります。結果として、Data Lake Store では、adl:// を使用する推奨オプションで最適なパフォーマンスを利用することも、引き続き WebHDFS API を直接使用することにより既存のコードを維持することもできるという柔軟性が得られます。Azure HDInsight は、AzureDataLakeFilesystem をフルに活用して Data Lake Store で最適なパフォーマンスを実現します。
 
@@ -110,4 +110,4 @@ Data Lake Store の一連の機能について紹介するビデオをご覧く�
 * [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

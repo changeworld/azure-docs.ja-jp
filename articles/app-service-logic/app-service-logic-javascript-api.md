@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -53,7 +53,7 @@ var d = new Date(); return (d.getMinutes() > 15) && (d.getMinutes() < 30);
 同様に、実行するアクションを指定できます。
 
 アクションへの入力は次のとおりです。
-- **JavaScript の式** - 評価される式。任意のコンテンツを取得するために、`return` ステートメントを含める必要があります。 
+- **JavaScript の式** - 評価される式。任意のコンテンツを取得するために、`return` ステートメントを含める必要があります。
 - **コンテキスト オブジェクト** - トリガーに渡すことができる省略可能なオブジェクト。必要な数だけプロパティを定義できますが、最上位のエンティティをオブジェクトにする必要があります (`{ "bar" : 0}` など)。
 
 たとえば、Office 365 使用している場合は、**新しい電子メール**をトリガーします。返されるオブジェクトは次のとおりです。
@@ -99,4 +99,4 @@ return Attachments.map(function(obj){var a = obj.Content; a.FileName = obj.Name;
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

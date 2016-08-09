@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="01/21/2016"
+	ms.date="07/21/2016"
 	ms.author="donnam"/>
 
 # Mobile Services でのオフライン データの同期の使用
@@ -46,7 +46,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-* Visual Studio と Xamarin。手順については、「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。 
+* Visual Studio と Xamarin。手順については、「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」をご覧ください。
 * Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。「[セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx)」および「[Mac ユーザー向けのセットアップ、インストール、および検証](https://msdn.microsoft.com/library/mt488770.aspx)」(MSDN) をご覧ください。
 * チュートリアル「[Mobile Services の使用]」を完了していること。
 
@@ -184,4 +184,4 @@
 [論理的な削除]: mobile-services-using-soft-delete.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0727_2016-->

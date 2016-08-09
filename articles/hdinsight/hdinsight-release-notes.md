@@ -14,11 +14,31 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="07/21/2016"
 	ms.author="nitinme"/>
 
 
 # Azure HDInsight の Hadoop コンポーネントのリリース ノート
+
+## HDInsight の 2016 年 7 月 14 日リリース ノート
+
+今回のリリースがデプロイされている Linux ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+|HDI |HDI クラスター バージョン |HDP |HDP ビルド |Ambari ビルド |
+|----|----------------------|----|------------|-------------|
+|3\.2 |3\.2.1000.0.7932505 |2\.2 |2\.2.9.1-11 |2\.2.1.12-2 |
+|3\.3 |3\.3.1000.0.7932505 |2\.3 |2\.3.3.1-18 |2\.2.1.12-2 |
+|3\.4 |3\.4.1000.0.7933003 |2\.4 |2\.4.2.0 |2\.2.1.12-2 |
+
+今回のリリースがデプロイされている Windows ベースの HDInsight クラスターのバージョン番号は、以下のとおりです。
+
+|HDI |HDI クラスター バージョン |HDP |HDP ビルド |
+|----|----------------------|----|--------------|
+|2\.1 |2\.1.10.989.2441725 |1\.3 |1\.3.12.0-01795|
+|3\.0 |3\.0.6.989.2441725 |2\.0 |2\.0.13.0-2117 |
+|3\.1 |3\.1.4.989.2441725 |2\.1 |2\.1.16.0-2374 |
+|3\.2 |3\.2.7.989.2441725 |2\.2 |2\.2.9.1-11 |
+|3\.3 |3\.3.0.989.2441725 |2\.3 |2\.3.3.1-21 |
 
 ## HDInsight の 2016 年 7 月 7 日リリース ノート
 
@@ -66,7 +86,7 @@
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Spark、Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
 | Spark on HDInsight is generally available (HDInsight の Spark が一般公開) | このリリースでは、HDInsight でのオープン ソース Apache Spark の可用性、スケーラビリティ、生産性が向上しました。<ul><li>可用性の SLA は 99.9% と業界トップレベルで負荷の高いエンタープライズ ワークロードに最適。</li><li>Azure Data Lake Store を使用する、スケーラブルなストレージ レイヤー。</li><li>データの探索と開発のあらゆる段階に対応する生産性ツール。カスタマイズされた Spark カーネルを使用する Jupyter Notebook により対話型のデータ探索が実現します。Power BI、Tableau、Qlik などの BI ダッシュボードとの統合はデータのすばやい共有と継続的なレポート作成に適しており、IntelliJ プラグインは長期的なコード アーティファクト開発およびデバッグ向けに高い信頼性を誇ります。</li></ul>| サービス | Spark| 該当なし|
-| HDInsight Tools for IntelliJ (IntelliJ 用 HDInsight ツール) | HDInsight の Spark クラスター用の IntelliJ IDEA プラグインです。次の機能が有効になります。<ul><li>IntelliSense、オート フォーマット、エラー チェックなどの優れたサポートにより、Scala や Java で Spark アプリケーションを簡単に作成および記述する。</li><li>Spark アプリケーションのテストをローカルで実施する。</li><li>ジョブを HDInsight Spark クラスターに送信して結果を取得する。</li><li>Azure にログインして、Azure サブスクリプションに関連付けられたすべての Spark クラスターにアクセスする。</li><li>HDInsight の Spark クラスターのすべての関連するストレージ リソースに移動する。</li><li>HDInsight の Spark クラスターのすべてのジョブ履歴とジョブ情報に移動する。</li><li>デスクトップ コンピューター からリモートで Spark ジョブをデバッグする。</li></ul>| ツール | Spark| 該当なし
+| HDInsight Tools for IntelliJ (IntelliJ 用 HDInsight ツール) | HDInsight の Spark クラスター用の IntelliJ IDEA プラグインです。次の機能が有効になります。<ul><li>IntelliSense、オート フォーマット、エラー チェックなどの優れたサポートにより、Scala や Java で Spark アプリケーションを簡単に作成および記述する。</li><li>Spark アプリケーションのテストをローカルで実施する。</li><li>ジョブを HDInsight Spark クラスターに送信して結果を取得する。</li><li>Azure にログインして、Azure サブスクリプションに関連付けられたすべての Spark クラスターにアクセスする。</li><li>HDInsight の Spark クラスターのすべての関連するストレージ リソースに移動する。</li><li>HDInsight の Spark クラスターのすべてのジョブ履歴とジョブ情報に移動する。</li><li>デスクトップ コンピューターからリモートで Spark ジョブをデバッグする。</li></ul>| ツール | Spark| 該当なし
 
 ## HDInsight の 2016 年 5月 13 日リリース ノート
 
@@ -129,7 +149,7 @@
 
 | タイトル | 説明 | 影響を受ける領域 (例: サービス、コンポーネント、SDK) | クラスターの種類 (例: Hadoop、HBase、Storm) | JIRA (該当する場合) |
 |-------------------------------------------------|------------------------------------------------------|---------------------------------------------------------|-----------------------------------------------------|----------------------|
-| すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)を参照してください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)を参照してください。| サービス | すべての Linux クラスター| 該当なし
+| すべての HDInsight クラスターに HDInsight 3.4 バージョンが追加され、HDP バージョンが更新されました | このリリースでは、HDInsight v3.4 (HDP 2.4 に基づく) が追加され、他の HDP バージョンも更新されました。HDP 2.4 リリース ノートについては、[こちら](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)をご覧ください。また、HDInsight バージョンの詳細については、[こちら](hdinsight-component-versioning.md)をご覧ください。| サービス | すべての Linux クラスター| 該当なし
 | HDInsight Premium | HDInsight は、Standard と Premium の 2 つのカテゴリで利用できるようになりました。HDInsight Premium は現在プレビューの段階で、Linux 上の Hadoop および Spark クラスターでのみ利用できます。詳細については、[こちら](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)をご覧ください。| サービス | Linux 上の Hadoop および Spark| 該当なし
 | Microsoft R Server | HDInsight Premium は、Linux 上の Hadoop クラスターや Spark クラスターに含めることのできる Microsoft R Server を提供します。詳しくは、[HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)に関するページをご覧ください。| サービス | Linux 上の Hadoop および Spark| 該当なし
 | Spark 1.6.0 | HDInsight 3.4 クラスターに Spark 1.6.0 が導入されました| サービス | Linux 上の Spark クラスター| 該当なし
@@ -1358,7 +1378,7 @@ HDInsight で使用される Hortonworks Data Platform で YARN および MapRed
 
 Azure PowerShell と HDInsight SDK のエラー メッセージ: "*クラスターが HTTP サービスのアクセス用に構成されていません*" について
 
-* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ *"クラスター <クラスター名> が HTTP サービスのアクセス用に構成されていません"* が表示されて、これらの操作が失敗することがあります。 または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
+* このエラーは既知の[互換性の問題](https://social.msdn.microsoft.com/Forums/azure/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight)であり、HDInsight SDK または Azure PowerShell のバージョンとクラスターのバージョンが異なることが原因で起こることがあります。8 月 15 日以降に作成されたクラスターは、仮想ネットワークへの新しいプロビジョニング機能をサポートします。ただし、HDInsight SDK または Azure PowerShell の以前のバージョンでは、この機能が正しく解釈されません。一部のジョブ送信の操作で失敗する結果になります。HDInsight SDK API または Azure PowerShell コマンドレット (**Use-AzureRmHDInsightCluster** または **Invoke-AzureRmHDInsightHiveJob**) を使用してジョブを送信する場合、エラー メッセージ "クラスター <クラスター名> が HTTP サービスのアクセス用に構成されていません" が表示されて、これらの操作が失敗することがあります。 または操作によっては、"*クラスターに接続できません*" などのその他のエラー メッセージが表示され、これらの操作が失敗する可能性があります。
 
 * これらの互換性の問題は、HDInsight SDK および Azure PowerShell の最新バージョンで解決されます。HDInsight SDK をバージョン 1.3.1.6 以降に、Azure PowerShell ツールをバージョン 0.8.8 以降に更新することをお勧めします。[](http://nuget.codeplex.com/wikipage?title=Getting%20Started) から最新の HDInsight SDK にアクセスし、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」から Azure PowerShell ツールにアクセスできます。
 
@@ -1460,7 +1480,7 @@ Oozie メタストアは特定のクラスターに接続されるものであ�
 
 ###重大な変更
 
-**プレフィックスの構文**: HDInsight 3.1 と 3.0 クラスターでは、"wasb://" 構文のみがサポートされます。旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.1 クラスターまたは 3.0 クラスターではサポートされません。つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。代わりに、"wasb://" 構文を使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、"wasb://" 構文を使用してリソースをアドレス指定するように再作成する必要があります。
+**プレフィックスの構文**: HDInsight 3.1 と 3.0 クラスターでは、"wasbs://" 構文のみがサポートされます。旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.1 クラスターまたは 3.0 クラスターではサポートされません。つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。代わりに、"wasbs://" 構文を使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、"wasbs://" 構文を使用してリソースをアドレス指定するように再作成する必要があります。
 
 
 **ポート**: HDInsight サービスで使用されるポートが変更されました。これまで使用されてきたポート番号は、Windows オペレーティング システムの一時的なポート範囲内の番号です。ポートは、短期間のインターネット プロトコル ベースの通信に対して一時的に事前定義される範囲から自動的に割り当てられます。今回 Hortonworks Data Platform (HDP) サービスに許可された新しいポート番号のセットは、この範囲の外部にあり、ヘッドノードで実行するサービスが使用するポート番号の競合の可能性が回避されます。新しいポート番号によって重大な変更が発生することはありません。使用される番号は以下のとおりです。
@@ -1632,4 +1652,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="05/03/2016"
+	ms.date="07/27/2016"
 	ms.author="jeffstok"
 />
 
@@ -31,7 +31,7 @@ Stream Analytics の Machine Learning 関数は、Stream Analytics クエリ言�
 
 Stream Analytics ジョブの Machine Learning 関数を構成するときに検討が必要なパラメーターが 2 つあります。Machine Learning 関数呼び出しのバッチ サイズと、Stream Analytics ジョブのためにプロビジョニングされたストリーミング ユニット (SU) です。これらのパラメーターの適切な値を決定するには、最初に、待機時間とスループット、つまり、Stream Analytics ジョブの待機時間と各 SU のスループットを決定する必要があります。完全にパーティション分割された Stream Analytics クエリのスループットを向上させるために、いつでもジョブに SU を追加できますが、SU を追加すると、ジョブの実行コストが増加します。
 
-そのため、Stream Analytics ジョブの実行の待機時間の*許容範囲*を決定することが重要です。Azure Machine Learning サービス要求を実行することによる追加の待機時間は、当然のことながらバッチ サイズに応じて増加します。それにより、Stream Analytics ジョブの待機時間が長くなります。一方、バッチ サイズを増やすと、Stream Analytics ジョブは*同じ数*の Machine Learning Web サービス要求で*より多くのイベントを処理できます。多くの場合、Machine Learning Web サービスの待機時間はバッチ サイズの増加にほぼ比例して増加します。そのため、特定の状況で最もコスト効率が高い Machine Learning Web サービスのバッチ サイズを考えることが重要です。Web サービス要求の既定のバッチ サイズは 1,000 です。変更するには、[Stream Analytics REST API](https://msdn.microsoft.com/library/mt653706.aspx "Stream Analytics REST API") または [Stream Analytics 用の PowerShell クライアント](stream-analytics-monitor-and-manage-jobs-use-powershell.md "Stream Analytics 用の PowerShell クライアント")を使用します。
+そのため、Stream Analytics ジョブの実行の待機時間の*許容範囲*を決定することが重要です。Azure Machine Learning サービス要求を実行することによる追加の待機時間は、当然のことながらバッチ サイズに応じて増加します。それにより、Stream Analytics ジョブの待機時間が長くなります。一方、バッチ サイズを増やすと、Stream Analytics ジョブは同じ数の Machine Learning Web サービス要求で**より多くのイベント*を処理できます。多くの場合、Machine Learning Web サービスの待機時間はバッチ サイズの増加にほぼ比例して増加します。そのため、特定の状況で最もコスト効率が高い Machine Learning Web サービスのバッチ サイズを考えることが重要です。Web サービス要求の既定のバッチ サイズは 1,000 です。変更するには、[Stream Analytics REST API](https://msdn.microsoft.com/library/mt653706.aspx "Stream Analytics REST API") または [Stream Analytics 用の PowerShell クライアント](stream-analytics-monitor-and-manage-jobs-use-powershell.md "Stream Analytics 用の PowerShell クライアント")を使用します。
 
 バッチ サイズを決定したら、関数が 1 秒あたりに処理する必要があるイベントの数に基づいてストリーミング ユニット (SU) の量を決定できます。ストリーミング ユニットの詳細については、「[ストリーミング ユニットの構成](stream-analytics-scale-jobs.md#configuring-streaming-units)」を参照してください。
 
@@ -76,7 +76,7 @@ Stream Analytics ジョブの Machine Learning 関数を構成するときに検
 センチメント分析 Machine Learning Web サービスの待機時間は、1,000 イベント バッチ以下の場合は 200 ミリ秒、5,000 イベント バッチの場合は 250 ミリ秒、10,000 イベント バッチの場合は 300 ミリ秒、25,000 イベント バッチの場合は 500 ミリ秒と仮定しています。
 
 1. 最初のオプションを使用する場合は、(より多くの SU をプロビジョニング**しない**で) バッチ サイズを **25,000** に増やすことができます。そうすると、Machine Learning Web サービスへの 20 個の同時接続で 1,000,000 イベントを処理できます (待機時間は 1 回の呼び出しあたり 500 ミリ秒)。そのため、Machine Learning Web サービス要求に対するセンチメント関数要求により、Stream Analytics ジョブの追加の待機時間は **200 ミリ秒**から **500 ミリ秒**に増加します。ただし、バッチ サイズを無限に増やすことは**できない**ことに注意してください。Machine Learning Web サービスでは要求のペイロード サイズが 4 MB である必要があり、それより小さい Web サービス要求は操作が 100 秒を超えるとタイムアウトするためです。
-2. 2 番目のオプションを使用して、バッチ サイズを 1,000 のままにし、Web サービスの待機時間が 200 ミリ秒、Web サービスへの同時接続が各 20 個の場合、1,000 x 20 x 5 イベントで 1 秒あたり 100,000 イベントを処理できます。そのため、1 秒あたり 1,000,000 イベントを処理するには、60 SU が必要です。最初のオプションよりも Web サービス バッチ要求の数が多くなるため、コストが増加します。
+2. 2 番目のオプションを使用して、バッチ サイズを 1,000 のままにし、Web サービスの待機時間が 200 ミリ秒、Web サービスへの同時接続が各 20 個の場合、1,000 x *20* x 5 イベントで 1 秒あたり 100,000 イベントを処理できます。そのため、1 秒あたり 1,000,000 イベントを処理するには、60 SU が必要です。最初のオプションよりも Web サービス バッチ要求の数が多くなるため、コストが増加します。
 
 異なる SU とバッチ サイズでの Stream Analytics ジョブのスループット (1 秒あたりのイベント数) を以下の表に示します。
 
@@ -130,4 +130,4 @@ Stream Analytics の詳細については、以下を参照してください。
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="singhkay"
+	authors="rothja"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>

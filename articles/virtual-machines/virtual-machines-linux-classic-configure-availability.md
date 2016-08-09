@@ -19,7 +19,7 @@
 
 # クラシック デプロイメント モデルに Linux 仮想マシンの可用性セットを構成する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)].Resource Manager デプロイで[可用性セットを構成](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)することもできます。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Resource Manager デプロイで[可用性セットを構成](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
@@ -28,4 +28,4 @@
 
 クラシック デプロイに関するその他の記事については、「[Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!----HONumber=AcomDC_0713_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="07/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -55,7 +55,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 ## Spark MLlib を使用して Machine Learning アプリケーション作成を開始する
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
 2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
@@ -85,7 +85,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 `sqlContext` を使用すると、構造化データに対して変換を実行できます。最初のタスクは、サンプル データ ((**Food\_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。
 
-1. 生のデータが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。 
+1. 生のデータが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。
 
 
 		def csvParse(s):
@@ -96,7 +96,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		    sio.close()
 		    return value
 		
-		inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+		inspections = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
 		                .map(csvParse)
 
 
@@ -222,11 +222,11 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 4. 検査には、5 つの個別の結果があることを確認できます。
 	
-	* 事業体が存在しない 
+	* 事業体が存在しない
 	* 不合格
 	* 合格
 	* 条件付きで合格
-	* 廃業 
+	* 廃業
 
 	違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。「Pass w/ Conditions」は Pass であるため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。その他の結果のデータ (「Business Not Located」、「Out of Business」) は使用できないため、トレーニング セットから削除します。いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
 
@@ -283,7 +283,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。このスニペットでは、データフレームに基づいた一時テーブル **Predictions** も作成します。
 
 
-		testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+		testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
 	             .map(csvParse) \
 	             .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
 		testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -341,7 +341,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 このテスト結果の理解に役立つ最終的なグラフを作成します。
 
-1. まず、先ほど作成した一時テーブル **Predictions** からさまざまな予測や結果を抽出します。次のクエリでは、出力を *true\_positive*、*false\_positive*、*true\_negative*、*false\_negative* に分けています。このクエリでは、`-q` を使用して視覚化を無効にし、`%%local` マジックで使用できるデータフレームとして出力を保存 (`-o` を使用) します。 
+1. まず、先ほど作成した一時テーブル **Predictions** からさまざまな予測や結果を抽出します。次のクエリでは、出力を *true\_positive*、*false\_positive*、*true\_negative*、*false\_negative* に分けています。このクエリでは、`-q` を使用して視覚化を無効にし、`%%local` マジックで使用できるデータフレームとして出力を保存 (`-o` を使用) します。
 
 		%%sql -q -o true_positive
 		SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
@@ -420,4 +420,4 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -30,7 +30,7 @@ articles/sql-database/sql-database-get-started-tutorial.md
  - データベース名
  - サブスクリプション (複数のサブスクリプションがある場合のみ)
  - リソース グループ (始めたばかりの場合は、論理サーバーのリソース グループを使用します)
- - ソースを選択します (空のデータベース、サンプル データ、またはデータベースのバックアップを選択できます)
+ - ソースの選択 (空のデータベース、サンプル データ、Azure データベースのバックアップのいずれかを選択できます。BCP を使用してデータを読み込んだりオンプレミスの SQL Server データベースを移行したりする方法については、この記事の最後にあるリンクを参照してください)
  - サーバー (新規または既存の論理サーバー)
  - サーバー管理者のパスワード
  - パスワード
@@ -47,4 +47,4 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
      ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0803_2016-->

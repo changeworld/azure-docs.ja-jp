@@ -110,7 +110,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
 
 このコードは、次のような値を返します。ここで、__CONTAINER__ は既定のコンテナー、__ACCOUNTNAME__ は Azure ストレージ アカウント名です。
 
-    wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net
+    wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net
 
 この情報を [Azure CLI](../xplat-cli-install.md) で使用して、コンテナーとの間でデータのアップロードまたはダウンロードを行うことができます。
 
@@ -136,7 +136,7 @@ HDInsight クラスターを作成する場合は、Azure ストレージ アカ
         
     __ACCOUNTNAME__ を、ストレージ アカウント名に置き換えてください。__ACCOUNTKEY__ を、以前に取得したキーに置き換えてください。__FILEPATH__ は、アップロードするファイルへのパスです。__BLOBPATH__ は、コンテナー内のパスです。
 
-    たとえば、wasb://example/data/filename.txt のように HDInsight にファイルが表示されるようにするには、__BLOBPATH__ に `example/data/filename.txt` を指定します。
+    たとえば、wasbs://example/data/filename.txt のように HDInsight にファイルが表示されるようにするには、__BLOBPATH__ に `example/data/filename.txt` を指定します。
 
 ##例: Ambari 構成の更新
 
@@ -255,4 +255,4 @@ REST API の完全なリファレンスについては、「[Ambari API リフ�
 
 > [AZURE.NOTE] HDInsight クラウド サービスが管理しているため、一部の Ambari 機能が無効になっています (クラスターに対するホストの追加や削除、新規サービスの追加など)。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

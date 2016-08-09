@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -191,7 +191,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	<table border = "1">
 	<tr><th>ワークフローの変数</th><th>説明</th></tr>
 	<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター バージョン 3.0 および 2.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-	<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの wasb:// アドレス (たとえば、<i>wasb://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
+	<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの wasbs:// アドレス (たとえば、<i>wasbs://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
 	<tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>default</strong> を使用します。</td></tr>
 	</table>
 
@@ -211,7 +211,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 	</table>
 
-	Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+	Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\workflow.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
 
@@ -243,15 +243,15 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 Azure PowerShell スクリプトを実行して、以下を実行します。
 
-- HiveQL スクリプト (useoozie.hql) を Azure BLOB ストレージ (wasb:///tutorials/useoozie/useoozie.hql) にコピーします。
-- workflow.xml を wasb:///tutorials/useoozie/workflow.xml にコピーします。
-- coordinator.xml を wasb:///tutorials/useoozie/coordinator.xml にコピーします。
-- データ ファイル (/example/data/sample.log) を wasb:///tutorials/useoozie/data/sample.log にコピーします。
+- HiveQL スクリプト (useoozie.hql) を Azure BLOB ストレージ (wasbs:///tutorials/useoozie/useoozie.hql) にコピーします。
+- workflow.xml を wasbs:///tutorials/useoozie/workflow.xml にコピーします。
+- coordinator.xml を wasbs:///tutorials/useoozie/coordinator.xml にコピーします。
+- データ ファイル (/example/data/sample.log) を wasbs:///tutorials/useoozie/data/sample.log にコピーします。
 - Sqoop エクスポート データを格納するための Azure SQL データベース テーブルを作成します。テーブル名は *log4jLogCount* です。
 
 **HDInsight ストレージについて**
 
-HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。wasb:// は、Hadoop 分散ファイル システム (HDFS) を Azure Blob ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
+HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。wasbs:// は、Hadoop 分散ファイル システム (HDFS) を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 HDInsight クラスターをプロビジョニングするときに、HDFS と同じように、Azure BLOB ストレージ アカウントと、そのアカウントの特定のコンテナーを既定のファイル システムとして指定します。プロビジョニング プロセス中に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。ストレージ アカウントをさらに追加する手順については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルで使用する Azure PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/useoozie* にある既定のファイル システム コンテナーに格納されています。既定では、このコンテナーの名前は HDInsight クラスター名と同じです。の構文は次のとおりです。
 
@@ -263,8 +263,8 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
 既定のファイル システム コンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として workflow.xml を使用しています)。
 
-	wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
-	wasb:///tutorials/useoozie/workflow.xml
+	wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
+	wasbs:///tutorials/useoozie/workflow.xml
 	/tutorials/useoozie/workflow.xml
 
 ストレージ アカウントから直接ファイルにアクセスする場合、ファイルの BLOB 名は次のようになります。
@@ -378,7 +378,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 ##Oozie プロジェクトを実行する
 
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 **Oozie ジョブを送信するには**
 
@@ -394,7 +394,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 		#Azure Blob storage (WASB) variables
 		$storageAccountName = "<StorageAccountName>"
 		$storageContainerName = "<BlobContainerName>"
-		$storageUri="wasb://$storageContainerName@$storageAccountName.blob.core.windows.net"
+		$storageUri="wasbs://$storageContainerName@$storageAccountName.blob.core.windows.net"
 
 		#Azure SQL database variables
 		$sqlDatabaseServer = "<SQLDatabaseServerName>"
@@ -740,4 +740,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

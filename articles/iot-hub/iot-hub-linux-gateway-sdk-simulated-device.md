@@ -133,6 +133,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 - [開発者ガイド][lnk-devguide]
 - [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
 - [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+- [IoT ソリューションの徹底的なセキュリティ保護][lnk-securing]
 
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
@@ -148,5 +149,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
+[lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

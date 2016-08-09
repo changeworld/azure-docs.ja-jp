@@ -107,7 +107,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -115,7 +115,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -123,7 +123,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%H"
+	            "format": "HH"
 	          }
 	        }
 	      ]
@@ -168,7 +168,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -176,7 +176,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -184,7 +184,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%HH"
+	            "format": "HH"
 	          }
 	        }
 	      ],
@@ -345,7 +345,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%M"
+	            "format": "MM"
 	          }
 	        },
 	        {
@@ -353,7 +353,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%d"
+	            "format": "dd"
 	          }
 	        },
 	        {
@@ -361,7 +361,7 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 	          "value": {
 	            "type": "DateTime",
 	            "date": "SliceStart",
-	            "format": "%HH"
+	            "format": "HH"
 	          }
 	        }
 	      ]
@@ -575,4 +575,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

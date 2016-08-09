@@ -136,7 +136,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
 2. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のように入力して、UDF を Hive に追加し、関数として公開します。
 
-        ADD JAR wasb:///example/jar/ExampleUDF-1.0-SNAPSHOT.jar;
+        ADD JAR wasbs:///example/jar/ExampleUDF-1.0-SNAPSHOT.jar;
         CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
@@ -166,4 +166,4 @@ Hive の他の使用方法について [HDInsight での Hive の使用](hdinsig
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)のセクションを参照します。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

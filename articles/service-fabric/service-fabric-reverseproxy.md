@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="required"
-   ms.date="07/15/2016"
+   ms.date="07/26/2016"
    ms.author="vturecek"/>
 
 # Service Fabric リバース プロキシ
@@ -141,7 +141,7 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     },
     ```
-2. **Cluster** [Resource type セクション](../resource-group-authoring-templates.md)でそのポートを指定します。
+2. **[クラスター]** の [[リソースの種類]](../resource-group-authoring-templates.md) セクションで、nodetype オブジェクトごとにポートを指定します
 
     ```json
     {
@@ -150,9 +150,14 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         ...
+       "nodeTypes": [
+          {
+           ...
+           "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
+           ...
+          },
         ...
-        "httpApplicationGatewayEndpointPort": "[parameters('SFReverseProxyPort')]",
-        ...
+        ],
         ...
     }
     ```
@@ -236,4 +241,4 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

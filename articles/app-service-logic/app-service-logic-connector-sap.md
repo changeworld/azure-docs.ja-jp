@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -54,7 +54,7 @@
 
 ## 作成した SAP コネクタ API アプリを構成する ##
 
-[参照]、[API アプリ]、[<Name of the API App just created>] の順に選択して、作成した API アプリを参照します。次の動作が表示されます。この段階でハイブリッド接続がまだ確立されていないため、セットアップは完了していません。![][2]
+[参照]、[API アプリ]、[<作成した API アプリの名前>] の順に選択して、作成した API アプリを参照します。次の動作が表示されます。この段階でハイブリッド接続がまだ確立されていないため、セットアップは完了していません。![][2]
 
 SAP コネクタでは、*任意の* SAP エンドポイントに接続するためのハイブリッド接続が必要になります。ハイブリッド接続を確立するには、次の操作を行います。
 
@@ -99,4 +99,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

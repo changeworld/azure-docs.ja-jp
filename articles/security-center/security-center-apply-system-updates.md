@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/12/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center でシステムの更新プログラムを適用する
 
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) の監視が毎日行われています。Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。また、Linux システムにおける最新の更新プログラムについても確認します。VM でシステムの更新プログラムが不足している場合は、それらを適用するよう Security Center による推奨が行われます。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -40,7 +40,7 @@ Azure Security Center では、オペレーティング システムに不足し
 
 Azure から VM を再起動して、プロセスを完了します。
 
-## 次のステップ
+## 関連項目
 
 セキュリティ センターの詳細については、次を参照してください。
 
@@ -60,4 +60,4 @@ Azure から VM を再起動して、プロセスを完了します。
 [5]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
 [6]: ./media/security-center-apply-system-updates/restart-pending.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

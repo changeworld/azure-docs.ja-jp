@@ -3,7 +3,7 @@
 	description="増分スナップショットを使用して Azure 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。"
 	services="storage"
 	documentationCenter="na"
-	authors="ms-prkhad"
+	authors="aungoo-msft"
 	manager=""
 	editor="tysonn"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
-	ms.author="tamram;prkhad"/>
+	ms.date="07/25/2016"
+	ms.author="tamram;aungoo-msft"/>
 
 
 # Azure 仮想マシン ディスクを増分スナップショットでバックアップする
@@ -128,4 +128,4 @@ Azure VM のバックアップについて詳しくは、[Azure での VM バッ
 - [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 - [VM のバックアップ インフラストラクチャの計画](../backup/backup-azure-vms-introduction.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0727_2016-->

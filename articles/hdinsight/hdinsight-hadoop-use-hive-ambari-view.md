@@ -62,7 +62,7 @@ Azure ポータルから Ambari ビューを表示するには、HDInsight ク�
 		DROP TABLE log4jLogs;
 		CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-		STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
+		STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
 		SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
 
 	これらのステートメントは次のアクションを実行します。
@@ -169,13 +169,13 @@ Hive ビューに UDF を追加すると、__[Insert udfs]__ ボタンが__ク�
 たとえば、次のプロパティを持つ UDF を定義したとします。
 
 * リソース名: myudfs
-* リソース パス: wasb:///myudfs.jar
+* リソース パス: wasbs:///myudfs.jar
 * UDF 名: myawesomeudf
 * UDF のクラス名: com.myudfs.Awesome
 
 __[Insert udfs]__ ボタンを使用すると、__myudfs__ という名前のエントリと、そのリソースに対して定義されている UDF ごとにドロップダウン リストが表示されます。ここでは、__myawesomeudf__ が表示されます。このエントリを選択すると、クエリの先頭に次の内容が追加されます。
 
-    add jar wasb:///myudfs.jar;
+    add jar wasbs:///myudfs.jar;
 
     create temporary function myawesomeudf as 'com.myudfs.Awesome';
 
@@ -199,4 +199,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

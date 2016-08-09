@@ -171,7 +171,7 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
     d.**[変更を保存]** をクリックします。
 
 
-6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation]\(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
 	![Azure AD のシングル サインオン][10]
 
@@ -386,4 +386,4 @@ Litmos で Azure AD のシングル サインオンを構成してテストす�
 [401]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_401.png
 [402]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_402.png
 
-<!----HONumber=AcomDC_0713_2016-->
+<!-----HONumber=AcomDC_0713_2016-->

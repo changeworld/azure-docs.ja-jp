@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory B2C プレビュー: Android アプリケーションから Web API を呼び出す | Microsoft Azure"
+	pageTitle="Azure Active Directory B2C: Android アプリケーションから Web API を呼び出す | Microsoft Azure"
 	description="この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す Android の ";To-Do List"; アプリを作成する方法について説明します。Android アプリと Web API は、どちらも Azure Active Directory B2C を使用してユーザー ID を管理し、ユーザーを認証します。"
 	services="active-directory-b2c"
 	documentationCenter="android"
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="07/22/2016"
 	ms.author="brandwe"/>
 
-# Azure AD B2C プレビュー: Android アプリケーションからの Web API の呼び出し
+# Azure AD B2C: Android アプリケーションから Web API を呼び出す
+
+> [AZURE.WARNING] このチュートリアルには、重要な更新をいくつか加える必要があり、特に B2C 用の ADAL Android の使用についての記述は削除する必要があります。Android アプリで Azure AD B2C を使用する方法について、最新版の手順の公開を来週に予定しているため、それまでお待ちいただくことをお勧めします。ただし、単にいろいろな方法を試したいという場合でしたら、このまま以下の記事にお進みください。
+
+
 
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順で Android アプリや Web API に追加できます。この記事では、OAuth 2.0 ベアラー トークンを使用して Node.js Web API を呼び出す Android の "To-Do List" アプリを作成する方法を示します。Android アプリと Web API は、どちらも Azure AD B2C を使用してユーザー ID を管理し、ユーザーを認証します。
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 このクイック スタートを正しく利用するには、Azure AD と B2C によって保護されている Web API を事前に用意する必要があります。すぐに使用できる .NET と Node.js 用の Web API が既にビルドされています。このチュートリアルでは、Node.js Web API のサンプルが構成済みであることを前提としています。詳細については、[Node.js 用の Azure AD B2C Web API](active-directory-b2c-devquickstarts-api-node.md) のチュートリアルを参照してください。
 
@@ -34,13 +36,13 @@ Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサ
 
 ## Azure AD B2C ディレクトリの取得
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、[B2C ディレクトリを作成](active-directory-b2c-get-started.md)してから先に進んでください。
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md)してください。
 
 ## アプリケーションの作成
 
 次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。ここでは、アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。次を行ってください。
 
-- アプリケーションに **Web アプリケーションまたは Web API** を含めます。
+- アプリケーションに **Web アプリ**または **Web API** を含めます。
 - **[応答 URL]** に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。これはこのサンプル コードで使用する既定の URL です。
 - アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。この情報は後で必要になります。この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape)する必要があることに注意してください。
 - アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
@@ -975,4 +977,4 @@ CookieSyncManager.getInstance().sync();
 ```
 [Cookie の詳細については、こちらを参照してください](http://developer.android.com/reference/android/webkit/CookieSyncManager.html)。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

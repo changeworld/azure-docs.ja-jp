@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/28/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 # HDInsight 用の Script Action スクリプトの開発
@@ -96,7 +96,7 @@ HDInsight は、HDInsight クラスターで追加のコンポーネントをイ
 
 Script Action は、Azure ポータル、Azure PowerShell から、または HDInsight .NET SDK を使用してデプロイできます。詳細については、「[Script Action を使用した HDInsight のカスタマイズ][hdinsight-cluster-customize]」に関するページをご覧ください。
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](../hdinsight-component-versioning/)」をご覧ください。
+> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター Version 3.1 以降でのみ機能します。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
 
 
 
@@ -174,7 +174,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 	HDInsight は、高可用性を確保するために、アクティブ / パッシブ アーキテクチャを備えています。1 つのヘッドノードはアクティブ モード (HDInsight サービスが実行されている) であり、その他のヘッドノードはスタンバイ モード (HDInsight サービスが実行されていない) です。HDInsight サービスが中断されると、ノードはアクティブ モードおよびパッシブ モードを切り替えます。高可用性を確保する目的で Script Action を使用して両方のヘッド ノードにサービスをインストールする場合、HDInsight のフェールオーバー メカニズムが、このようなユーザーがインストールしたサービスを自動的にフェールオーバーできなくなるため、注意してください。そのため、高可用性が期待される HDInsight ヘッド ノードにユーザーがインストールしたサービスは、アクティブ/パッシブ モードの場合に独自のフェールオーバーのメカニズムを持つか、アクティブ　 / アクティブ モードになる必要があります。
 
-	HDInsight Script Action コマンドは、*ClusterRoleCollection* パラメーターでヘッドノードのロールが値として指定される場合、両方のヘッドノードで実行します (以下の [Script Action の実行方法](#runScriptAction)に記載)。そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。また、再イメージ化の際にデータが失われるので、Script Action を通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることをに注意してください。
+	*ClusterRoleCollection* パラメーターに値としてヘッドノードの役割を指定すると、両方のヘッドノードで HDInsight のスクリプト アクション コマンドが実行されます。そのため、カスタム スクリプトの設計時には、スクリプトがこの設定を認識するようにしてください。両方のヘッドノードで同じサービスがインストールし、開始され、互いに競合するという問題を回避する必要があります。また、再イメージ化の際にデータが失われるので、Script Action を通じてインストールされるソフトウェアはそうした事象に対して回復可能である必要があります。多数のノードに分散された高可用性のデータを操作するアプリケーションを設計する必要があります。同時に再イメージ化できる、クラスター内のノードは最大で 1/5 であることをに注意してください。
 
 
 - Azure BLOB ストレージを使用するカスタム コンポーネントの構成
@@ -206,7 +206,7 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 複数のパラメーターを Add-AzureRmHDInsightScriptAction コマンドレットに渡すには、スクリプトのすべてのパラメーターを格納する文字列値の書式を設定する必要があります。次に例を示します。
 
-	"-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
+	"-CertifcateUri wasbs:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
  
 または
 
@@ -245,39 +245,6 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 4. $env:TEMP などの一時ファイル フォルダーを使用して、スクリプトで使用するダウンロード済みファイルを維持し、スクリプトの実行後にそれらをクリーンアップします。
 5. カスタム ソフトウェアは D:\\ または C:\\apps のみにインストールします。C: ドライブのその他の場所は予約されているため使用しないでください。C:\\apps フォルダー以外の C: ドライブにファイルをインストールすると、ノードの再イメージ化の際にセットアップが失敗する可能性があります。
 6. OS レベル設定や Hadoop サービス構成ファイルが変更された場合、スクリプトに設定された環境変数などの OS レベル設定を有効にするために、HDInsight サービスを再起動することをお勧めします。
-
-
-
-## HDInsight Emulator を使用してカスタム スクリプトをテストする
-
-カスタム スクリプトを HDInsight のスクリプト アクション コマンドで使用する前にテストする簡単でわかりやすい方法は、HDInsight Emulator で実行することです。HDInsight Emulator をローカルにインストールするか、Azure IaaS (サービスとしてのインフラストラクチャ) Windows Server 2012 R2 VM やローカル コンピューターにインストールして、スクリプトが正しく動作することを確認できます。Windows Server 2012 R2 VM は、HDInsight がそのノード向けに使用するものと同じ VM であることに注意してください。
-
-このセクションでは、テストの目的でローカルで HDInsight Emulator を使用するための手順を説明しますが、VM を使用する手順と同様です。
-
-**HDInsight Emulator のインストール**: Script Actions をローカルで実行するには、HDInsight Emulator をインストールしておく必要があります。インストールする方法の手順については、「[HDInsight Emulator の概要](../hdinsight-get-started-emulator/)」をご覧ください。
-
-**Azure PowerShell の実行ポリシーの設定**: Azure PowerShell を開き、(管理者として) 次のコマンドを実行して実行ポリシーを *LocalMachine* と *Unrestricted* に設定します。
-
-	Set-ExecutionPolicy Unrestricted –Scope LocalMachine
-
-スクリプトが署名されていないため、このポリシーを無制限にする必要があります。
-
-ローカルのコピー先で実行する**スクリプト アクションをダウンロード**します。次のサンプル スクリプトは、次の場所からダウンロードできます。
-
-* **Spark**https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv02/spark-installer-v02.ps1
-* **R**https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1
-* **Solr**https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1
-* **Giraph**https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1
-
-**スクリプト アクションの実行**: 管理者モードで新しい Azure PowerShell ウィンドウを開き、保存されているローカルの場所から Spark や R のインストール スクリプトを実行します。
-
-**使用例**: Spark や R のクラスターを使用している場合、必要なデータ ファイルが HDInsight Emulator に表示されないことがあります。その場合、HDFS のパスへのデータを含む関連する .txt ファイルをアップロードし、そのパスを使ってデータにアクセスする必要があります。次に例を示します。
-
-	val file = sc.textFile("/example/data/gutenberg/davinci.txt")
-
-
-場合によっては、カスタム スクリプトは、特定の Hadoop サービスが実行中かどうかの検出などを HDInsight のコンポーネントに依存することが実際にあるので注意してください。この場合、カスタム スクリプトを実際の HDInsight クラスターに配置してテストする必要があります。
-
 
 ## カスタム スクリプトをデバッグする
 
@@ -344,13 +311,13 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
 - [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
 
-[hdinsight-provision]: ../hdinsight-provision-clusters/
-[hdinsight-cluster-customize]: ../hdinsight-hadoop-customize-cluster
-[hdinsight-install-spark]: ../hdinsight-hadoop-spark-install/
-[hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
-[powershell-install-configure]: ../install-configure-powershell/
+[hdinsight-provision]: hdinsight-provision-clusters.md
+[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
+[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
+[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
+[powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->
 [1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,257 +1,422 @@
 <properties
-    pageTitle="ロジック アプリに SFTP コネクタを追加する | Microsoft Azure"
-    description="SFTP コネクタと REST API パラメーターの概要"
-    services=""
-    documentationCenter="" 
-    authors="MandiOhlinger"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+pageTitle="ロジック アプリで SFTP コネクタを使用する方法 | Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。SFTP API に接続してファイルを送受信します。ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。"
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
+editor=""
+tags="connectors" />
 
 <tags
-   ms.service="multiple"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="05/18/2016"
-   ms.author="mandia"/>
+ms.service="logic-apps"
+ms.devlang="multiple"
+ms.topic="article"
+ms.tgt_pltfrm="na"
+ms.workload="integration"
+ms.date="07/20/2016"
+ms.author="deonhe"/>
 
-# SFTP コネクタの使用 
-SFTP サーバーに接続して、ファイルを管理します。SFTP サーバーでは、ファイルのアップロード、ファイルの削除など、さまざまなタスクを実行できます。SFTP コネクタは、次のツールから使用できます。
+# SFTP コネクタの使用
 
-- Logic Apps
+SFTP コネクタを使用すると、SFTP アカウントにアクセスしてファイルを送受信できます。ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-SFTP では、次の操作を実行できます。
+## SFTP への接続
 
-- SFTP から取得したデータに基づいてビジネス フローを構築できます。 
-- ファイルが更新されたときに、トリガーを使用できます。
-- ファイルの作成、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ファイルの内容を取得し、SQL Database をアップロードすることができます。 
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
-
-
-## トリガーとアクション
-SFTP コネクタでは、次のトリガーとアクションを使用できます。
-
-トリガー | アクション
---- | ---
-<ul><li>ファイルの作成時または変更時</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>フォルダーを抽出する</li><li>ファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li><li>ファイルの作成時または変更時</li></ul>
-
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
-
-
-## SFTP への接続を作成する
-このコネクタをロジック アプリに追加するときに、次の値を入力します。
-
-|プロパティ| 必須|説明|
-| ---|---|---|
-|ホスト サーバー アドレス| あり | 完全修飾ドメイン (FQDN) または SFTP サーバーの IP アドレスを入力します。|
-|ユーザー名| あり | ユーザー名を入力して、SFTP サーバーに接続します。|
-|パスワード | あり | ユーザー名のパスワードを入力します。|
-|SSH サーバー ホスト キーのフィンガー プリント | あり | SSH サーバーのパブリック ホスト キーのフィンガープリントを入力します。<br/><br/>通常、サーバー管理者からこのキーを付与できます。```WinSCP``` または ```ssh-keygen-g3 -F``` ツールを使用して、キーのフィンガー プリントを取得することもできます。 | 
-
-接続を作成する具体的な手順は、次のとおりです。
+### SFTP への接続を作成する
 
 >[AZURE.INCLUDE [SFTP への接続を作成する手順](../../includes/connectors-create-api-sftp.md)]
 
-接続を作成したら、フォルダー パスやファイルなど、SFTP のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+## SFTP トリガーの使用
 
->[AZURE.TIP] 他のロジック アプリでも、この同じ SFTP 接続を使用できます。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
 
+この例では、**[SFTP - When a file is added or modified (SFTP - ファイルの追加または変更時)]** トリガーを使用して、SFTP サーバー上でファイルが追加または変更されたときにロジック アプリ ワークフローを開始する方法について説明します。また、新しいファイルまたは変更されたファイルの内容をチェックする際の条件を追加し、ファイルの内容が、内容を使用する前にファイルを抽出する必要があることを示している場合にファイルの抽出を決定する方法についても説明します。最後に、ファイルの内容を抽出し、抽出した内容を SFTP サーバー上のフォルダーに配置するアクションを追加する方法を説明します。
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+企業での使用例として、このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。その後、**Get file content (ファイルの内容を取得する)** などの SFTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
 
-### ファイルを作成する
-SFTP のファイルをアップロードします。```POST: /datasets/default/files```
+>[AZURE.INCLUDE [SFTP トリガーを作成する手順](../../includes/connectors-create-api-sftp-trigger.md)]
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|folderPath|string|○|query|なし |SFTP のフォルダーの一意のパス|
-|name|string|○|query| なし|ファイルの名前|
-|body|string (binary) |○|body|なし |SFTP に作成するファイルの内容|
+## Add a condition
 
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
+>[AZURE.INCLUDE [条件を追加する手順](../../includes/connectors-create-api-sftp-condition.md)]
 
-### ファイルをコピーする
-ファイルを SFTP にコピーします。```POST: /datasets/default/copyFile```
+## SFTP アクションの使用
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|source|string|○|query| なし|ソース ファイルのパス|
-|destination|string|○|query|なし |ファイル名を含む、宛先ファイルのパス|
-|overwrite|ブール値|×|query|なし|’true’ に設定すると、宛先ファイルが上書きされます|
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
 
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### ファイルを削除する 
-SFTP のファイルを削除します。```DELETE: /datasets/default/files/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし |SFTP 内のファイルの一意識別子|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### フォルダーを抽出する
-SFTP を使用して、フォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/extractFolderV2```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|source|string|○|query|なし |アーカイブ ファイルのパス|
-|destination|string|○|query|なし |宛先フォルダーのパス|
-|overwrite|ブール値|×|query|なし|’true’ に設定すると、宛先ファイルが上書きされます|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### ファイルの内容を取得する
-ID を使用して SFTP からファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし |SFTP 内のファイルの一意識別子|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
+>[AZURE.INCLUDE [SFTP アクションを作成する手順](../../includes/connectors-create-api-sftp-action.md)]
 
 
-### パスを使用してファイルの内容を取得する
-パスを使用して SFTP からファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
+## 技術的な詳細
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|path|string|○|query| なし|SFTP 内のファイルの一意のパス|
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
+## SFTP トリガー
 
+SFTP には次のトリガーがあります。
 
-### ファイルのメタデータを取得する 
-ファイル ID を使用して、SFTP からファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path| なし|SFTP 内のファイルの一意識別子|
-
-#### Response
-| 名前 | 説明 |
-| --- | --- |
-| 200 | OK | 
-| default | 操作に失敗しました。
+|トリガー | 説明|
+|--- | ---|
+|[When a file is added or modified (ファイルの追加または変更時)](connectors-create-api-sftp.md#when-a-file-is-added-or-modified)|この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。|
 
 
-### パスを使用してファイルのメタデータを取得する
-パスを使用して、SFTP からファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
+## SFTP アクション
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|path|string|○|query|なし |SFTP 内のファイルの一意のパス|
+SFTP には次のアクションがあります。
 
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
+
+|アクション|説明|
+|--- | ---|
+|[ファイルのメタデータを取得する](connectors-create-api-sftp.md#get-file-metadata)|この操作では、ファイル ID を使用してファイルのメタデータを取得します。|
+|[ファイルを更新する](connectors-create-api-sftp.md#update-file)|この操作では、ファイルの内容を更新します。|
+|[ファイルを削除する](connectors-create-api-sftp.md#delete-file)|この操作では、ファイルを削除します。|
+|[パスを使用してファイルのメタデータを取得する](connectors-create-api-sftp.md#get-file-metadata-using-path)|この操作では、ファイル パスを使用してファイルのメタデータを取得します。|
+|[パスを使用してファイルの内容を取得する](connectors-create-api-sftp.md#get-file-content-using-path)|この操作では、ファイル パスを使用してファイルの内容を取得します。|
+|[ファイルの内容を取得する](connectors-create-api-sftp.md#get-file-content)|この操作では、ファイル ID を使用してファイルの内容を取得します。|
+|[ファイルを作成する](connectors-create-api-sftp.md#create-file)|この操作では、SFTP サーバーにファイルをアップロードします。|
+|[ファイルをコピーする](connectors-create-api-sftp.md#copy-file)|この操作では、SFTP サーバーにファイルをコピーします。|
+|[フォルダー内のファイルを一覧表示する](connectors-create-api-sftp.md#list-files-in-folder)|この操作では、フォルダーに含まれているファイルを取得します。|
+|[ルート フォルダー内のファイルを一覧表示する](connectors-create-api-sftp.md#list-files-in-root-folder)|この操作では、ルート フォルダー内のファイルを取得します。|
+|[フォルダーを抽出する](connectors-create-api-sftp.md#extract-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
+### アクションの詳細
+
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
+
+
+
+### ファイルのメタデータを取得する
+この操作では、ファイル ID を使用してファイルのメタデータを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを指定します|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
 
 
 ### ファイルを更新する
-SFTP を使用してファイルの内容を更新します。```PUT: /datasets/default/files/{id}```
+この操作では、ファイルの内容を更新します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|id|string|○|path|なし |SFTP 内のファイルの一意識別子|
-|body|string (binary) |○|body| なし|SFTP 内の更新するファイルの内容|
 
-#### Response
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを指定します|
+|body*|ファイルのコンテンツ|更新するファイルの内容|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### ファイルを削除する
+この操作では、ファイルを削除します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを指定します|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### パスを使用してファイルのメタデータを取得する
+この操作では、ファイル パスを使用してファイルのメタデータを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルの一意のパス|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### パスを使用してファイルの内容を取得する
+この操作では、ファイル パスを使用してファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルの一意のパス|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルの内容を取得する
+この操作では、ファイル ID を使用してファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを指定します|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルを作成する
+この操作では、SFTP サーバーにファイルをアップロードします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderPath*|フォルダー パス|フォルダーの一意のパス|
+|name*|ファイル名|ファイルの名前|
+|body*|ファイルのコンテンツ|作成するファイルの内容|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+|| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### ファイルをコピーする
+この操作では、SFTP サーバーにファイルをコピーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|source*|Source file path (コピー元ファイル パス)|ソース ファイルのパス|
+|destination*|Destination file path (コピー先ファイル パス)|ファイル名を含む、宛先ファイルのパス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### When a file is added or modified (ファイルの追加または変更時)
+この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderId*|フォルダー|フォルダーを指定します|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### フォルダー内のファイルを一覧表示する
+この操作では、フォルダーに含まれているファイルを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|フォルダー|フォルダーを指定します|
+
+* は、必須のプロパティを示します。
+
+
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### ルート フォルダー内のファイルを一覧表示する
+この操作では、ルート フォルダー内のファイルを取得します。
+
+
+この呼び出しには、パラメーターはありません
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### フォルダーを抽出する
+この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
+|destination*|Destination folder path (抽出先フォルダー パス)|宛先フォルダーのパス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+
+* は、必須のプロパティを示します。
+
+
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+## HTTP 応答
+
+上記のアクションとトリガーは、次の HTTP ステータス コードを 1 つ以上返す場合があります。
+
 |名前|説明|
 |---|---|
 |200|OK|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
 |default|操作に失敗しました。|
 
 
-### ファイルの作成時または変更時 
-SFTP のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|folderId|string|○|query|なし |フォルダーの一意識別子|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
 
 
-## オブジェクト定義
 
-#### DataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
-
-#### TabularDataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
-
-#### BlobDataSetsMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-
-#### BlobMetadata
-
-| 名前 | データ型 | 必須|
-|---|---|---|
-|ID|string|×|
-|名前|string|×|
-|DisplayName|string|×|
-|パス|string|×|
-|LastModified|string|×|
-|サイズ|integer|×|
-|MediaType|string|×|
-|IsFolder|ブール値|×|
-|ETag|string|×|
-|FileLocator|string|×|
 
 
 ## 次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

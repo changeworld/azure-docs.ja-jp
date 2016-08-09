@@ -667,4 +667,4 @@ HealthEvents          :
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

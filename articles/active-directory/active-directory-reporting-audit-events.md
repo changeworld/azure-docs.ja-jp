@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="07/25/2016"
    ms.author="dhanyahk"/>
 
 # Azure Active Directory 監査レポートのイベント
@@ -48,9 +48,9 @@ Azure Active Directory 監査レポートを利用すると、Azure Active Direc
 サービス プリンシパルの削除 | ディレクトリからサービス プリンシパルが削除されました。
 サービス プリンシパルの資格情報の追加 | サービス プリンシパルに資格情報が追加されました。
 サービス プリンシパルの資格情報の削除 | サービス プリンシパルから資格情報が削除されました。
-委任エントリの追加 | ディレクトリに [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が作成されました。
-委任エントリの設定 | ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が更新されました。
-委任エントリの削除 | ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionGrantEntity) が削除されました。
+委任エントリの追加 | ディレクトリに [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が作成されました。
+委任エントリの設定 | ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が更新されました。
+委任エントリの削除 | ディレクトリの [OAuth2PermissionGrant](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity) が削除されました。
 **ロール イベント** |
 ロールへのロール メンバーの追加 | ディレクトリのロールにユーザーが追加されました。
 ロールからのロール メンバーの削除 | ディレクトリのロールからユーザーが削除されました。
@@ -122,4 +122,4 @@ TelephoneNumber | ユーザーの電話番号です。
 
 監査レコードは、多くの法令遵守に必要な管理です。Azure Active Directory 監査レポートを使用してコンプライアンス規制に対応するお客様の場合、お客様がエクスポートした監査レポートのコピーにこのヘルプ トピックのコピーを添えて提出し、レポートの詳細な説明に役立てることをお勧めします。Azure が現在を満たしているコンプライアンス規制についての情報を監査担当者が必要としている場合は、監査担当者に Microsoft Azure セキュリティ センターの[コンプライアンス ページ](https://azure.microsoft.com/support/trust-center/compliance/)を紹介してください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -37,7 +37,7 @@
 | パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 | [設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | ユーザーのパスワード リセット通知を有効にする方法 | [設定: パスワードがリセットされたときにユーザーに通知する](#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | 管理者のパスワード リセット通知を有効にする方法 | [設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](#notify-admins-when-other-admins-reset-their-own-passwords) |
-| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ](#password-managment-look-and-feel) |
+| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ](#password-management-look-and-feel) |
 
 
 ## Password Managment の外観
@@ -875,4 +875,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Active Directory B2C プレビュー | Microsoft Azure"
-	description="Azure Active Directory B2C プレビューによってサポートされるプロトコルを直接使用してアプリを作成する方法。"
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
+	description="Azure Active Directory B2C によってサポートされるプロトコルを直接使用してアプリを作成する方法。"
 	services="active-directory-b2c"
 	documentationCenter=""
 	authors="dstrockis"
@@ -13,23 +13,21 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="07/22/2016"
 	ms.author="dastrock"/>
 
-# Azure AD B2C プレビュー: 認証プロトコル
+# Azure AD B2C: 認証プロトコル
 
 Azure Active Directory (Azure AD) B2C では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。ここでは、オープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理する場合に役立つ情報を紹介します。特定のプロトコルの詳細を学習する前に、このページを読むことをお勧めします。ただし、Azure AD B2C について既に詳しい場合は、[プロトコル リファレンス ガイド](#protocols)にすぐに進んでもかまいません。
 
 <!-- TODO: Need link to libraries above -->
-
-[AZURE.INCLUDE [active-directory-b2c-preview-note](../../includes/active-directory-b2c-preview-note.md)]
 
 ## 基本
 Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com)で B2C ディレクトリに登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 - アプリを一意に識別する**アプリケーション ID**。
 - **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
-- その他シナリオに応じた値。詳細については、[アプリケーションを登録する方法](active-directory-b2c-app-registration.md)を学習してください。
+- その他シナリオに応じた値。詳細については、[アプリケーションを登録する方法](active-directory-b2c-app-registration.md)に関する記事を参照してください。
 
 アプリを登録した後は、v2.0 エンドポイントに要求を送ることによって、Azure AD と通信を行います。
 
@@ -48,7 +46,7 @@ OAuth と OpenID Connect におけるフローはほぼすべて、情報のや�
 - **リソース サーバー**は、リソースまたはデータが存在する場所です。承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。また、ベアラー アクセス トークンを使用して、リソースへのアクセス許可を確実に付与します。
 
 ## ポリシー
-おそらく、Azure AD B2C のポリシーは、サービスの最も重要な機能です。Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。ポリシーには、サインアップ、サインイン、プロファイル編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。ポリシーは、管理 UI で定義できます。ポリシーは、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。詳細については、「[Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies.md)」を参照してください。
+おそらく、Azure AD B2C のポリシーは、サービスの最も重要な機能です。Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。ポリシーには、サインアップ、サインイン、プロファイル編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。ポリシーは、管理 UI で定義できます。ポリシーは、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。詳細については、[Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies.md)を参照してください。
 
 ## トークン
 Azure AD B2C での OAuth 2.0 および OpenID Connect の実装では、ベアラー トークンが広範囲に使われています (JSON Web トークン (JWT) として表現されたベアラー トークンなど)。ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。ベアラーは、トークンを提示できる任意の利用者を表します。Azure AD は、ベアラー トークンを受信するには、最初に利用者を認証する必要があります。ただし、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。
@@ -65,9 +63,5 @@ Azure AD B2C で使われている各種トークンの詳細については、[
 
 - [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-b2c-reference-oauth-code.md)
 - [OpenID Connect を使用して Web アプリを構築する](active-directory-b2c-reference-oidc.md)
-- OAuth 2.0 暗黙的フローを使用して単一ページのアプリを作成する (近日公開予定)
-- OAuth 2.0 クライアント資格情報フローを使用してデーモンおよびサーバー側プロセスを作成する (近日公開予定)
-- ユーザー名とパスワードを使用して OAuth 2.0 リソース所有者パスワード資格情報フローでトークンを取得する (近日公開予定)
-- OAuth 2.0 On-Behalf-Of フローを使用して Web API でトークンを取得する (近日公開予定)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

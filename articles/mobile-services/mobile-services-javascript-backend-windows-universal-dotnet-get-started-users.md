@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/05/2016" 
+	ms.date="07/21/2016" 
 	ms.author="glenga"/>
 
 # ユニバーサル Windows 8.1 アプリへの認証の追加
@@ -61,7 +61,7 @@
 
 ##関連項目
 
-+ [強化されたユーザー機能](http://go.microsoft.com/fwlink/p/?LinkId=506605)<br/> サーバー スクリプトの中で **user.getIdentities()** 関数を呼び出すことによって、モバイル サービス内で ID プロバイダーが管理する追加のユーザー データを取得できます、 
++ [強化されたユーザー機能](http://go.microsoft.com/fwlink/p/?LinkId=506605)<br/> サーバー スクリプトの中で **user.getIdentities()** 関数を呼び出すことによって、モバイル サービス内で ID プロバイダーが管理する追加のユーザー データを取得できます、
 
 + [Mobile Servicesでの .NET の使用方法に関する概念リファレンス]<br/>Mobile Services で .NET クライアントを使用する方法について説明します。
 
@@ -89,4 +89,4 @@
 [Register your Windows Store app package for Microsoft authentication]: ../mobile-services-how-to-register-store-app-package-microsoft-authentication.md
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0727_2016-->

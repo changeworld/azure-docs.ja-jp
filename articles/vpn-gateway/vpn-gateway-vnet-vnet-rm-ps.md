@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/15/2016"
+   ms.date="07/29/2016"
    ms.author="cherylmc"/>
 
 # Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成
@@ -24,6 +24,8 @@
 - [PowerShell - Azure リソース マネージャー](vpn-gateway-vnet-vnet-rm-ps.md)
 
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して仮想ネットワーク間の接続を作成する手順について説明します。仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。
+
+[AZURE.INCLUDE [vpn-gateway-peering](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
 
 **Azure のデプロイ モデルについて**
@@ -83,7 +85,7 @@
 
 ### 開始する前に
 
-- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+- Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
 - Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
@@ -120,7 +122,7 @@
 - TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
 - FrontEnd: 10.41.0.0/24
 - BackEnd: 10.42.0.0/24
-- GatewaySubnet: 10.42.255.0.0/27
+- GatewaySubnet: 10.42.255.0/27
 - リソース グループ: TestRG4
 - 場所: 米国西部
 - DNS サーバー: 8.8.8.8
@@ -509,6 +511,6 @@ Azure ポータルで VPN 接続を確認するには、**[仮想ネットワー
 ## 次のステップ
 
 - 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
-- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
+- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

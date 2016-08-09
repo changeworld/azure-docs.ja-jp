@@ -19,7 +19,9 @@
 #チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 >[AZURE.TIP]フィードバックを送るには、[ここ](http://go.microsoft.com/fwlink/?LinkId=521878)をクリックしてください。
   
-このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
+このチュートリアルでは、Azure と Salesforce Sandbox の統合について説明します。  
+Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。  
+詳細については、「[サンドボックスの概要](https://help.salesforce.com/HTViewHelpDoc?id=create_test_instance.htm&language=en_US)」をご覧ください。
   
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
@@ -114,9 +116,9 @@
     
     b.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
     
-    c.  これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** ボックスに「 **https://test.salesforce.com** 」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[エンティティ ID]** に次の形式の**サインオン URL** を入力します。`http://company.my.salesforce.com`
+    c.これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[Entity Id (エンティティ ID)]** ボックスに「**https://test.salesforce.com**」と入力します。Salesforce Sandbox のインスタンスを既に追加している場合は、**[Entity Id (エンティティ ID)] に次の形式のサインオン URL** を**入力します**。`http://company.my.salesforce.com`
     
-    d.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
+    d.**[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     
     e.**[SAML ID の種類]** では、**[アサーションには、ユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     
@@ -124,7 +126,7 @@
     
     g.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーし、**[ID プロバイダーのログイン URL]** ボックスに貼り付けます。
     
-    h.Azure クラシック ポータルの **[Salesforce Sandbox でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーし、**[ID プロバイダーのログアウト URL]** ボックスに貼り付けます。
+    h.SFDC は SAML ログアウトをサポートしていません。回避策として、**[Identity Provider Logout URL (ID プロバイダー ログアウト URL)]** ボックスに「https://login.windows.net/common/wsfederation?wa=wsignout1.0」を貼り付けます。
     
     i.**[サービス プロバイダーが開始した要求のバインド]** では、**[HTTP POST]** を選択します。
     
@@ -171,7 +173,7 @@
 
     ![新しいトークン](./media/active-directory-saas-salesforce-sandbox-tutorial/IC698776.png "新しいトークン")
 
-5.  メールの受信トレイに Salesforce.com から “**salesforce.com.com security confirmation**” という件名のメールが届いていることを確認します。
+5.  メールの受信トレイに Salesforce.com から "**salesforce.com.com security confirmation**" という件名のメールが届いていることを確認します。
 
 6.  そのメールを確認し、セキュリティ トークンの値をコピーします。
 
@@ -214,4 +216,4 @@
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

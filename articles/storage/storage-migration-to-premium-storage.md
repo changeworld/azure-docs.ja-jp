@@ -3,7 +3,7 @@
     description="既存の仮想マシンを Azure Premium Storage に移行します。Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
     services="storage"
     documentationCenter="na"
-    authors="ms-prkhad"
+    authors="aungoo-msft"
     manager=""
     editor="tysonn"/>
 
@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/28/2016"
-    ms.author="prkhad"/>
+    ms.date="07/25/2016"
+    ms.author="aungoo-msft"/>
 
 
 # Azure Premium Storage への移行
@@ -415,7 +415,7 @@ OS イメージまたは OS ディスクが登録されたら、DS シリーズ�
 
     # whether or not to copy the os disk, the default is only copy data disks
     [Parameter(Mandatory = $false)]
-    [String] $DataDiskOnly = $true,
+    [Bool] $DataDiskOnly = $true,
 
     # how frequently to report the copy status in sceconds
     [Parameter(Mandatory = $false)]
@@ -680,4 +680,4 @@ OS イメージまたは OS ディスクが登録されたら、DS シリーズ�
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0727_2016-->

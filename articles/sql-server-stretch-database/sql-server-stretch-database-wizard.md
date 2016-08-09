@@ -32,6 +32,7 @@ Stretch Database の詳細については、「[Stretch Database](sql-server-str
 ウィザードの目的と前提条件を確認します。
 
 重要な前提条件を以下に示します。
+
 -   データベースの設定を変更するため、管理者である必要があります。
 -   Microsoft Azure サブスクリプションを持っている必要があります。
 -   SQL Server がリモート Azure サーバーと通信できる必要があります。
@@ -190,4 +191,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

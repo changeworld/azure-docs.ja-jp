@@ -4,7 +4,7 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="markusvi" 
-	manager="stevenpo"  
+	manager="femila"  
 	editor=""/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="07/20/2016" 
 	ms.author="markvi"/>
 
 # 既知のネットワーク
@@ -25,7 +25,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 
 これは、たとえば次の場合に起こります。
 
-- ボストン支社のユーザーがサンフランシスコのデータ センターにリモートでサインインすると、"複数の地域からのサインイン" レポートがトリガーされます。 
+- ボストン支社のユーザーがサンフランシスコのデータ センターにリモートでサインインすると、"複数の地域からのサインイン" レポートがトリガーされます。
 
 - 組織のユーザーが間違ったパスワードで複数回サインインしようとすると、"疑わしいアクティビティを示す IP アドレスからのサインイン" レポートがトリガーされます。
 
@@ -56,4 +56,4 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 * [不審なアクティビティのある IP アドレスからのサインイン](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
 * [複数の地域からのサインイン](active-directory-reporting-sign-ins-from-multiple-geographies.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

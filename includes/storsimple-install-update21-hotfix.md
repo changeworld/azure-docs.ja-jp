@@ -8,9 +8,9 @@
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、[**インストール**] をクリックします。 ![カタログのインストール](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**3162954** など) を入力して、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**3179904** など) を入力して、**[検索]** をクリックします。
 
-    "**Cumulative Software Bundle Update 2.1 for StorSimple 8000 Series**" のような修正プログラムの一覧が表示されます。
+    "**Cumulative Software Bundle Update 2.2 for StorSimple 8000 Series**" のような修正プログラムの一覧が表示されます。
 
     ![カタログの検索](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
@@ -60,6 +60,8 @@
 
 6. 修正プログラムのインストールの確認を求められたら、「**Y**」と入力します。
 
+> [AZURE.IMPORTANT] Update 2.2 をインストールする場合は、'all-hcsmdssoftwareudpate' で始まるバイナリ ファイルのみをインストールします。all-cismdsagentupdatebundle で始まる Cis と MDS のエージェントの更新プログラムはインストールしないでください。間違ってインストールすると、エラーが発生します。
+
 7. `Get-HcsUpdateStatus` コマンドレットを使用して、更新プログラムを監視します。更新プログラムはまずパッシブ コントローラーで完了します。パッシブ コントローラーが更新されると、フェイル オーバーが発生し、もう一方のコントローラーに更新プログラムが適用されます。更新プログラムは両方のコントローラーが更新されると完了します。
 
     次のサンプル出力は、インストール中の更新プログラムを示しています。更新が進行中の場合、`RunInprogress` は `True` になります。
@@ -95,9 +97,9 @@
 
     次のバージョンが表示されます。
 
-    - `HcsSoftwareVersion: 6.3.9600.17705`
+    - `HcsSoftwareVersion: 6.3.9600.17708`
     - `CisAgentVersion: 1.0.9299.0`
-    - `MdsAgentVersion: 30.0.4698.16` 
+    - `MdsAgentVersion: 30.0.4698.16`
 
 	更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。そのような場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)に連絡して、さらに支援を受けてください。
 
@@ -239,4 +241,4 @@ KB3121899 を使用して、ディスク ファームウェアの更新プログ
 
 1. メンテナンス モードを終了すると、コントローラーが再起動します。ディスク ファームウェアの更新プログラムが正常に適用され、デバイスがメンテナンス モードを終了したら、Azure クラシック ポータルに戻ります。メンテナンス モードの更新プログラムがインストールされたことがポータルに 24 時間表示されない可能性があることに注意してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

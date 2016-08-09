@@ -104,7 +104,7 @@ Visual Studio は、[Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=
 
 3. 次の行を `system.web` 要素に追加します。
 
-	`<customErrors mode="off"></customErrors>`
+	`<customErrors mode="Off"></customErrors>`
 
 	![Web.config の編集](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 
@@ -728,4 +728,4 @@ Web サーバーのログの分析の詳細については、次のリソース�
 [GetStartedWJ]: websites-dotnet-webjobs-sdk.md
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

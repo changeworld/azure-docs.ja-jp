@@ -8,7 +8,7 @@
 	editor="jimbe"/>
 
 <tags 
-	ms.service="app-service-logic" 
+	ms.service="logic-apps" 
 	ms.workload="na" 
 	ms.tgt_pltfrm="dotnet" 
 	ms.devlang="na" 
@@ -342,4 +342,4 @@ API の定義で **x-ms-scheduler-recommendation** および **x-ms-visibility**
     }
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

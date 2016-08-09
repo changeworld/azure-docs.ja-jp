@@ -182,13 +182,13 @@ cloudDataMovementUnits プロパティで**使用できる値**は、1 (既定�
 
 ![Staged copy - cloud scenario](media/data-factory-copy-activity-performance/staged-copy-cloud-scenario.png)
 
-一方、**ハイブリッド コピーのシナリオ**では、ソースはオンプレミスにあり、シンクはクラウドにあります。ソース データ ストアからステージング データ ストアへのデータ移動は **Data Management Gateway** によって実行され、ステージング データ ストアからシンク データ ストアへのデータ移動は **Azure Data Factory サービス**によって実行されます。
+一方、**ハイブリッド コピーのシナリオ**では、ソースはオンプレミスにあり、シンクはクラウドにあります。ソース データ ストアからステージング データ ストアへのデータ移動は **Data Management Gateway** によって実行され、ステージング データ ストアからシンク データ ストアへのデータ移動は **Azure Data Factory サービス**によって実行されます。ステージングによるクラウド データ ストアからオンプレミス データ ストアへのデータのコピーも逆のフローでサポートされています。
 
 ![Staged copy - hybrid scenario](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
 
 ステージング ストアを使用したデータ移動を有効にすると、ソース データ ストアから中間/ステージング データ ストアにデータを移動する前にデータを圧縮し、中間/ステージング データ ストアからシンク データ ストアにデータを移動する前にそのデータを展開するかどうかを指定できます。
 
-クラウド データ ストアからオンプレミス データ ストアへのデータのコピー、またはステージング ストアを利用した 2 つのオンプレミス データ ストア間でのデータのコピーは、現在サポートされていません。これらについては近日中に対応する予定です。
+現在、ステージング ストアを使用した 2 つのオンプレミス データ ストア間でのデータのコピーはサポートされていませんが、間もなく可能になる予定です。
 
 ### 構成
 コピー アクティビティの **enableStaging** 設定を構成して、目的のデータ ストアに読み込む前にデータを Azure Blob Storage にステージングするかどうかを指定できます。enableStaging を true に設定すると、次の表に記載されている追加のプロパティを指定する必要があります。また、ステージング用の Azure Storage または Azure Storage SAS のリンクされたサービスをまだお持ちでない場合は、作成する必要があります。
@@ -392,4 +392,4 @@ Microsoft データ ストアの場合は、データ ストアに限定した[�
 - オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 - オンプレミスのファイル サーバー: [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -9,16 +9,18 @@
     tags="connectors"/>
 
 <tags
-   ms.service="multiple"
+   ms.service="logic-apps"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="na" 
-   ms.date="07/18/2016"
+   ms.workload="integration" 
+   ms.date="07/25/2016"
    ms.author="mandia"/>
 
 # Azure Blob Storage コネクタの概要
 Azure Blob Storage は、大量の非構造化データを格納するためのサービスです。Azure Blob Storage での BLOB のアップロード、更新、取得、削除など、多様なアクションを 実行できます。
+
+Azure Blob Storage では、次の操作を実行できます。
 
 - 新しいプロジェクトをアップロードするか、最近更新されたファイルを取得して、ワークフローを構築します。
 - ファイルのメタデータの取得、ファイルの削除、ファイルのコピーなどのアクションを使用します。たとえば、Azure Web サイトでツールが更新されると (トリガー)、Blob Storage でファイルを更新します (アクション)。
@@ -27,36 +29,15 @@ Azure Blob Storage は、大量の非構造化データを格納するための�
 
 >[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
-最初に、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
-
->[AZURE.INCLUDE [はじめにやるべきこと](../../includes/connectors-create-api-azureblobstorage.md)]
-
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
 ## Azure Blob Storage に接続する
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Dropbox に接続するには、最初に Dropbox "*接続*" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。たとえば、Dropbox の場合は、Dropbox の資格情報を入力して Dropbox への接続を作成します。
-
-このコネクタをロジック アプリに追加する場合は、BLOB ストレージ アカウントへの接続を作成します。初めてこのコネクタを追加するときには、接続情報が求められます。
-
-![](./media/connectors-create-api-azureblobstorage/connection-details.png)
-
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、ストレージ アカウントに接続するには、最初に Blob Storage の "*接続*" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Azure Storage の場合は、ストレージ アカウントの資格情報を入力して接続を作成します。
 
 #### 接続の作成
 
-1. ストレージ アカウントの詳細を入力します。アスタリスクが付いているプロパティは必須です。
-
-	| プロパティ | 詳細 |
-|---|---|
-| 接続名 * | 接続の任意の名前を入力します。 |
-| Azure ストレージ アカウント名 * | ストレージ アカウント名を入力します。ストレージ アカウント名は、Azure ポータルのストレージのプロパティに表示されます。 |
-| Azure Storage Account Access Key (Azure ストレージ アカウント アクセス キー) * | ストレージ アカウント キーを入力します。アクセス キーは、Azure ポータルのストレージのプロパティに表示されます。 |
-
-	これらの資格情報を使用して、接続するロジック アプリの承認と、データへのアクセスが行われます。入力が完了すると、接続の詳細は次のようになります。
-
-	![Azure blob connection creation step](./media/connectors-create-api-azureblobstorage/sample-connection.png)
-
-2. **[作成]** を選択します。
-
+>[AZURE.INCLUDE [Azure Blob Storage への接続を作成する](../../includes/connectors-create-api-azureblobstorage.md)]
  
 ## トリガーを使用する
 
@@ -66,11 +47,11 @@ Azure Blob Storage は、大量の非構造化データを格納するための�
 	
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。
 
-1. プラス記号を選択します。**[Add an action (アクションの追加)]**、**[Add a condition (条件の追加)]**、**[More (その他)]** の 1 つのオプションという複数の選択肢があります。
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
 
 	![](./media/connectors-create-api-azureblobstorage/add-action.png)
 
-2. **[Add an action (アクションの追加)]** を選択します。
+2. **[アクションの追加]** を選択します。
 
 3. テキスト ボックスに「blob」と入力して、使用可能なすべてのアクションの一覧を取得します。
 
@@ -80,17 +61,17 @@ Azure Blob Storage は、大量の非構造化データを格納するための�
 
 	![](./media/connectors-create-api-azureblobstorage/sample-file.png)
 
-	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-azureblobstorage.md#create-the-connection)」を参照してください。
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-azureblobstorage.md#create-the-connection)」をご覧ください。
 
 	> [AZURE.NOTE] この例では、ファイルのメタデータを取得します。メタデータを表示するには、別のコネクタを使用して新しいファイルを作成する別のアクションを追加します。たとえば、メタデータに基づいて新しい "test" ファイルを作成する OneDrive アクションを追加します。
 
 5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
-> [AZURE.TIP] [Storage Explorer](http://storageexplorer.com/)は、複数のストレージ アカウントを管理するための優れたツールです。
+> [AZURE.TIP] [Storage Explorer](http://storageexplorer.com/) は、複数のストレージ アカウントを管理するための優れたツールです。
 
 ## 技術的な詳細
 
-## アクション
+## ストレージ BLOB アクション
 
 |アクション|説明|
 |--- | ---|
@@ -111,7 +92,7 @@ Azure Blob Storage は、大量の非構造化データを格納するための�
 #### ファイルのメタデータを取得する
 この操作では、ファイル ID を使用してファイルのメタデータを取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 
@@ -137,7 +118,7 @@ BlobMetadata
 #### ファイルを更新する
 この操作では、ファイルを更新します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 |body*|ファイルのコンテンツ|更新するファイルの内容|
@@ -164,7 +145,7 @@ BlobMetadata
 #### ファイルを削除する
 この操作では、ファイルを削除します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |id*|ファイル|ファイルを選択する|
 
@@ -177,7 +158,7 @@ BlobMetadata
 #### パスを使用してファイルのメタデータを取得する
 この操作では、パスを使用してファイルのメタデータを取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |path*|ファイル パス|ファイルを選択する|
 
@@ -197,13 +178,13 @@ BlobMetadata
 |MediaType|string|
 |IsFolder|ブール値|
 |ETag|string|
-|FileLocator|string|
+|FileLocator|文字列|
 
 
 #### パスを使用してファイルの内容を取得する
 この操作では、パスを使用してファイルの内容を取得します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |path*|ファイル パス|ファイルを選択する|
 
@@ -229,7 +210,7 @@ BlobMetadata
 #### ファイルを作成する
 この操作では、ファイルをアップロードします。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |folderPath*|フォルダー パス|フォルダーを選択する|
 |name*|ファイル名|アップロードするファイルの名前|
@@ -257,11 +238,11 @@ BlobMetadata
 #### ファイルをコピーする
 この操作では、ファイルを Azure Blob Storage にコピーします。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |source*|Source url (コピー元 URL)|コピー元ファイルの URL を指定する|
 |destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パスを指定する|
-|overwrite|Overwrite? (上書きを許可)|既存のコピー先ファイルを上書きするかどうかを指定する (true/false) |
+|overwrite|Overwrite? (上書きを許可)|既存の抽出先ファイルを上書きするかどうかを指定する (true/false) |
 
 アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
@@ -279,12 +260,12 @@ BlobMetadata
 |MediaType|string|
 |IsFolder|ブール値|
 |ETag|string|
-|FileLocator|文字列|
+|FileLocator|string|
 
 #### アーカイブをフォルダーに抽出する
 この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
 
-|プロパティ名| 表示名|説明|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルを選択する|
 |destination*|Destination folder path (抽出先フォルダー パス)|抽出する内容を選択する|
@@ -306,7 +287,7 @@ BlobMetadata
 |MediaType|string|
 |IsFolder|ブール値|
 |ETag|string|
-|FileLocator|string|
+|FileLocator|文字列|
 
 
 ## HTTP 応答
@@ -328,4 +309,4 @@ BlobMetadata
 
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -122,7 +122,7 @@ id\_token は、RSA 256 などの業界標準の非対称暗号アルゴリズ�
 
 アプリで実行する必要のある要求の検証の完全な一覧については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)を参照してください。
 
-これらの要求に対して予期される値の詳細については、前記の [id\_token セクション](#id_tokens)を参照してください。
+これらの要求に対して予期される値の詳細については、前記の [id\_token セクション](#id-tokens)を参照してください。
 
 ## トークンのサンプル
 
@@ -275,4 +275,4 @@ id\_token は、RSA 256 などの業界標準の非対称暗号アルゴリズ�
      acr: "1"
     }.
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->
