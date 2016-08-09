@@ -4,7 +4,7 @@
 	services="sql-database, virtual-machines"
 	keywords="SQL Server クラウド、クラウド内の SQL Server、PaaS データベース、クラウド SQL Server、DBaaS"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="cjgronlund"/>
 
@@ -21,7 +21,7 @@
 
 Azure には、Microsoft Azure で SQL Server ワークロードをホストするためのオプションが 2 つあります。
 
-* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): クラウドにネイティブに対応した SQL データベースで、サービスとしてのプラットフォーム (PaaS) データベースまたはサービスとしてのデータベース (DBaaS) とも呼ばれます。サービスとしてのソフトウェア (SaaS) アプリの開発用に最適化されています。SQL Server の機能の大部分と互換性があります。PaaS の詳細については、「[PaaS とは](https://azure.microsoft.com/overview/what-is-paas/)」を参照してください。
+* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/): クラウドにネイティブに対応した SQL データベースで、サービスとしてのプラットフォーム (PaaS) データベースまたはサービスとしてのデータベース (DBaaS) とも呼ばれます。サービスとしてのソフトウェア (SaaS) アプリの開発用に最適化されています。SQL Server の機能の大部分と互換性があります。PaaS の詳細については、「[PaaS とは](https://azure.microsoft.com/overview/what-is-paas/)」を参照してください。また、ビデオについては、「[SAIIK: PaaS vs IaaS - Navigating the Decision Tree: Azure SQL DB vs SQL Server in a VM (SAIIK: PaaS と IaaS - デシジョン ツリーのナビゲート - Azure SQL DB を使うか VM 上の SQL Server を使うか)](https://channel9.msdn.com/Series/SAIIK-SQL-Server-on-Azure-IaaS-Implementation-Kit/SAIIK-PaaS-vs-IaaS)」をご覧ください。
 * [Azure Virtual Machines 上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/): Azure で実行される Windows Server 仮想マシン (VM) にインストールされてホストされているクラウド上の SQL Server で、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。
 
 この記事では、各オプションがマイクロソフトのデータ プラットフォームにどのように組み込まれているかを説明します。お客様のビジネス要件に適したオプションを判断するのにお役立てください。この記事を参照することで、コスト削減と管理の最小化のいずれを優先するかに関係なく、最大の関心事項であるビジネス要件に適したアプローチを判断できます。
@@ -156,4 +156,4 @@ SQL Database と Azure VM 上の SQL Server で実行されるアプリケーシ
 - Azure VM での SQL Server の基本的な使い方については、[Azure での SQL Server 仮想マシンのプロビジョニング](../virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)に関する記事を参照してください。
 - 「[Azure Virtual Machine における SQL Server: ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,11 +1,11 @@
-<properties 
-    pageTitle="PowerShell を使用した新しい SQL Database の設定 | Microsoft Azure" 
-    description="PowerShell で新しい SQL Database を作成する方法について説明します。PowerShell コマンドレットを使用して、一般的なデータベース設定タスクを管理できます。" 
+<properties
+    pageTitle="PowerShell を使用した新しい SQL Database の設定 | Microsoft Azure"
+    description="PowerShell で新しい SQL Database を作成する方法について説明します。PowerShell コマンドレットを使用して、一般的なデータベース設定タスクを管理できます。"
     keywords="新しい SQL Database の作成、データベースの設定"
-	services="sql-database" 
-    documentationCenter="" 
-    authors="stevestein" 
-    manager="jhubbard" 
+	services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -13,11 +13,11 @@
     ms.devlang="NA"
     ms.topic="hero-article"
     ms.tgt_pltfrm="powershell"
-    ms.workload="data-management" 
+    ms.workload="data-management"
     ms.date="05/09/2016"
     ms.author="sstein"/>
 
-# 新しい SQL Database を作成し、PowerShell コマンドレットで一般的なデータベース設定タスクを実行します。 
+# 新しい SQL Database を作成し、PowerShell コマンドレットで一般的なデータベース設定タスクを実行します。
 
 
 > [AZURE.SELECTOR]
@@ -40,16 +40,16 @@ PowerShell のコマンドレットを使用して新しい SQL データベー�
 
 	New-AzureRmResourceGroup -Name "resourcegroupsqlgsps" -Location "West US"
 
-新しいリソース グループの作成に成功したら、画面に **ProvisioningState : Succeeded** と表示されます。
+新しいリソース グループの作成に成功すると、"**ProvisioningState : Succeeded**" と表示されます。
 
 
-### サーバーの作成 
+### サーバーの作成
 
-SQL Database は Azure SQL Database サーバーの内部で作成されます。**New-AzureRmSqlServer** を実行して新しいサーバーを作成します。ServerName をご利用のサーバー名に置き換えます。サーバー名が既に使われている場合はエラーが発生する可能性があるため、すべての Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。コマンドを編集して有効なロケーションを選択して使用できますが、前の手順でのリソース グループ作成時に使用したロケーションと同じものでなければなりません。
+SQL データベースは Azure SQL Database サーバーの内部で作成されます。**New-AzureRmSqlServer** を実行して新しいサーバーを作成します。*ServerName* をご利用のサーバー名に置き換えます。この名前は、すべての Azure SQL Database サーバーに対して一意であることが必要です。既存のサーバー名を使用すると、エラーが発生します。このコマンドは完了するまでに数分かかる場合があることに注意してください。コマンドを編集して有効な場所を選択して使用できますが、前の手順でのリソース グループ作成時に使用した場所と同じでなければなりません。
 
 	New-AzureRmSqlServer -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -Location "West US" -ServerVersion "12.0"
 
-コマンドを実行すると、**[ユーザー名]** と **[パスワード]** の入力を求めるウィンドウが表示されます。ここで入力するユーザー名とパスワードは Azure の資格情報ではなく、新しいサーバーの管理者の資格情報となります
+このコマンドを実行すると、ユーザー名とパスワードの入力を求められます。Azure の資格情報は入力しないでください。ここで入力するユーザー名とパスワードは、新しいサーバーに作成する管理者資格情報です。
 
 サーバーが正常に作成されると、サーバーの詳細が表示されます。
 
@@ -70,7 +70,7 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 これでリソース グループ、サーバー、ファイアウォール規則が構成され、サーバーにアクセスできるようになりました。
 
-次のコマンドは、S1 パフォーマンス レベル、Standard (標準) サービス階層で新しい (空の) SQL データベースを作成します。
+次のコマンドは、S1 パフォーマンス レベル、Standard サービス階層で新しい (空の) SQL データベースを作成します。
 
 
 	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroupsqlgsps" -ServerName "server1" -DatabaseName "database1" -Edition "Standard" -RequestedServiceObjectiveName "S1"
@@ -80,44 +80,46 @@ SQL Database は Azure SQL Database サーバーの内部で作成されます�
 
 ## 新しい SQL Database PowerShell スクリプトを作成する
 
+次に、新しい SQL Database PowerShell スクリプトを示します。
+
     $SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
     $ResourceGroupName = "resourcegroupname"
     $Location = "Japan West"
-    
+
     $ServerName = "uniqueservername"
-    
+
     $FirewallRuleName = "rule1"
     $FirewallStartIP = "192.168.0.0"
     $FirewallEndIp = "192.168.0.0"
-    
+
     $DatabaseName = "database1"
     $DatabaseEdition = "Standard"
     $DatabasePerfomanceLevel = "S1"
-    
-    
+
+
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId $SubscriptionId
-    
+
     $ResourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
-    
+
     $Server = New-AzureRmSqlServer -ResourceGroupName $ResourceGroupName -ServerName $ServerName -Location $Location -ServerVersion "12.0"
-    
+
     $FirewallRule = New-AzureRmSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $ServerName -FirewallRuleName $FirewallRuleName -StartIpAddress $FirewallStartIP -EndIpAddress $FirewallEndIp
-    
+
     $SqlDatabase = New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -Edition $DatabaseEdition -RequestedServiceObjectiveName $DatabasePerfomanceLevel
-    
+
     $SqlDatabase
-    
+
 
 
 ## 次のステップ
 新しい SQL Database を作成し、基本的なデータベース設定タスクを実行したら、次の手順を実行します。
 
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)。
 
 
 ## その他のリソース
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

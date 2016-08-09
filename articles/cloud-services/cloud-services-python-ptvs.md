@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="hero-article"
-	ms.date="07/20/2016"
+	ms.date="08/03/2016"
 	ms.author="adegeo"/>
 
 
@@ -61,7 +61,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 
 ## クラウド サービスに Python をインストールする
 
->[AZURE.WARNING] \(この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
+>[AZURE.WARNING] (この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
 
 セットアップ スクリプトの一番の問題は、Python がインストールされないことです。最初に、2 つの[スタートアップ タスク](cloud-services-startup-tasks.md)を [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイルに定義します。最初のタスク (**PrepPython.ps1**) は、Python ランタイムをダウンロードしてインストールします。2 番目のタスク (**PipInstaller.ps1**) は、pip を実行して、すべての依存関係をインストールします。
 
@@ -248,18 +248,33 @@ $is_emulated = $env:EMULATED -eq "true"
 $is_python2 = $env:PYTHON2 -eq "on"
 $nl = [Environment]::NewLine
 
-if (-not $is_emulated){
+if (-not $is_emulated)
+{
 	Write-Host "Running worker.py$nl"
 
 	if ($is_python2) {
-        cd..
+		cd..
 		iex "$env:PYPATH\python.exe worker.py"
 	}
 	else {
 		cd..
 		iex "py worker.py"
 	}
-	
+}
+else
+{
+	Write-Host "Running (EMULATED) worker.py$nl"
+
+	# Customize to your local dev environment
+
+	if ($is_python2) {
+		cd..
+		iex "$env:PYPATH\python.exe worker.py"
+	}
+	else {
+		cd..
+		iex "py worker.py"
+	}
 }
 ```
 
@@ -348,4 +363,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Python 2.7 (32 ビット)]: https://www.python.org/downloads/
 [Python 3.5 (32 ビット)]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

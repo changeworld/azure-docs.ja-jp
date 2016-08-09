@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Automation のセキュリティ"
+   pageTitle="Azure Automation のセキュリティ | Microsoft Azure"
    description="この記事では、Azure Automation の Automation アカウントで使用できる Automation のセキュリティとさまざまな認証方法の概要を説明します。"
    services="automation"
    documentationCenter=""
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/06/2016"
+   ms.date="07/29/2016"
    ms.author="magoedte" />
 
 # Azure Automation のセキュリティ
@@ -26,11 +26,14 @@ Azure Automation を初めて開始するときに、少なくとも 1 つの Au
 
 >[AZURE.NOTE]Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
 
-Azure Automation で Azure Resource Manager (ARM) と Azure コマンドレットを使用してリソースに対して実行するすべてのタスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。Azure サービス管理 (ASM) モードではもともと証明書ベースの認証方法が使用されていましたが、セットアップが複雑でした。Azure AD による Azure の認証は 2014 年に導入されましたが、これは、認証アカウントの構成処理を簡単にするだけでなく、ASM と ARM モードの両方で使用できる単一のユーザー アカウントによる Azure の非対話形式の認証機能をサポートするためでもありました。
+Azure Automation で Azure Resource Manager と Azure コマンドレットを使用してリソースに対して実行するすべてのタスクは、Azure Active Directory の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。Azure サービス管理モードではもともと証明書ベースの認証方法が使用されていましたが、セットアップが複雑でした。Azure AD による Azure の認証は 2014 年に導入されましたが、これは、認証アカウントの構成処理を簡単にするだけでなく、Azure Resource Manager リソースまたはクラシック リソースの両方で使用できる単一のユーザー アカウントによる Azure の非対話形式の認証機能をサポートするためでもありました。
 
-最近リリースされた別の更新により、Automation アカウントを作成するときに Azure AD サービス プリンシパル オブジェクトを自動的に作成できるようになりました。これは Azure 実行アカウントと呼ばれ、Azure Resource Manager での Runbook 自動化の既定の認証方法です。
+現在、Azure ポータルで新しい Automation アカウントを作成すると、次のものが自動的に作成されます。
 
-ロール ベースのアクセス制御は、Azure AD ユーザー アカウントおよびサービス プリンシパルに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、ARM モードで使用できます。Automation アクセス許可を管理するためのモデルの開発に関する詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
+-  Azure Active Directory の新しいサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の Contributor ロールを割り当てる実行アカウント。この Contributor ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。
+-  クラシック実行アカウント。Azure サービス管理リソースまたはクラシック リソースを Runbook で管理する際に使用する管理証明書をアップロードすることで作成されます。
+
+ロール ベースのアクセス制御は、Azure AD ユーザー アカウントおよび実行アカウントに対して許可されたアクションを付与し、そのサービス プリンシパルを認証するために、Azure Resource Manager で使用できます。Automation アクセス許可を管理するためのモデルの開発に役立つ詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 
 データセンター内の Hybrid Runbook Worker で、または AWS のコンピューティング サービスに対して実行されている Runbook は、Runbook が Azure のリソースを認証するために通常使用される方法と同じものを使用することはできません。これは、これらのリソースは Azure の外部で実行しており、そのため、ローカルにアクセスするリソースに対する認証を行うには Automation で定義されている個別のセキュリティ資格情報を必要とするためです。
 
@@ -41,8 +44,9 @@ Azure Automation で Azure Resource Manager (ARM) と Azure コマンドレッ�
 メソッド | 環境 | 記事
 ----------|----------|----------
 Azure AD ユーザー アカウント | Azure リソース マネージャーと Azure サービス管理 | [Authenticate Runbooks with Azure AD User account (Azure AD ユーザー アカウントでの Runbook の認証)](../automation/automation-sec-configure-aduser-account.md)
-Azure AD サービス プリンシパル オブジェクト | Azure リソース マネージャー | [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
+Azure 実行アカウント | Azure リソース マネージャー | [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
+Azure クラシック実行アカウント | Azure サービス管理 | [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 Windows 認証 | オンプレミスのデータセンター | [Azure Automation の Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md)
 AWS 資格情報 | Amazon Web Services | [Authenticate Runbooks with Amazon Web Services (AWS) (Amazon Web Services (AWS) での Runbook の認証)](../automation/automation-sec-configure-aws-account.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

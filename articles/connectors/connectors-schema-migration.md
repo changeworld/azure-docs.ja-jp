@@ -1,7 +1,7 @@
 <properties
 	pageTitle="ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法 | Microsoft Azure App Service"
 	description="ロジック アプリは、簡単な手順で最新のスキーマ バージョンに移行できます。必要な作業は、これらの手順に従うだけです。"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MSFTMAN"
 	manager="erikre"
@@ -42,4 +42,4 @@
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

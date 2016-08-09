@@ -3,7 +3,7 @@
    description="Visual Studio Code を設定し、Azure Resource Manager テンプレートを作成する方法について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
-   authors="tfitzmac"
+   authors="cmatskas"
    manager="timlt"
    editor="tysonn"/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="06/29/2016"
-   ms.author="tomfitz"/>
+   ms.author="chmatsk;tomfitz"/>
 
 # Visual Studio Code で Azure Resource Manager テンプレートを操作する
 
@@ -134,5 +134,6 @@ Resource Manager スニペットの使用を開始するために必要な作業
 
 - テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレート関数の詳細については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
+- Visual Studio Code を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)で紹介された「[Build cloud apps with Visual Studio Code (Visual Studio Code を使用したクラウド アプリの構築)](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
 
-<!-----HONumber=AcomDC_0706_2016--->
+<!---HONumber=AcomDC_0803_2016-->

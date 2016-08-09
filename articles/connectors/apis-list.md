@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Microsoft Azure ロジック アプリで使用できる Microsoft が管理するコネクタの一覧 | Microsoft Azure App Service | Microsoft Azure"
 	description="Azure App Service でロジック アプリを構築する場合に使用できる、Microsoft が管理するコネクタの完全な一覧を提供します"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MSFTMAN"
 	manager="erikre"
@@ -183,4 +183,4 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

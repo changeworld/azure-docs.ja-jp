@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/16/2016"
+	ms.date="08/01/2016"
 	ms.author="spelluru"/>
 
 # Azure PowerShell を使用した初めての Azure Data Factory の作成
@@ -383,4 +383,4 @@ Azure PowerShell の**バージョン 1.0 より前のバージョン**を使用
 | [Azure ポータルのブレードを使用したパイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関するページ | この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、およびデバッグする方法について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事 | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

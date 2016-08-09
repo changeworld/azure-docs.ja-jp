@@ -4,7 +4,7 @@
 	keywords=""
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor=""/>
 
@@ -50,4 +50,4 @@
 ## 次のステップ
 この SQL Database チュートリアルを完了して、ユーザー アカウントを作成し、ユーザー アカウントに dbo アクセス許可を付与した後は、[SQL Database のセキュリティ](sql-database-manage-logins.md)についてさらに詳しく学習できます。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->
