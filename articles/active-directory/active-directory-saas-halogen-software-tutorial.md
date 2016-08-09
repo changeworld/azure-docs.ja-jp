@@ -119,7 +119,7 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 	![Configure App Settings][10]
  
-     a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: *https://global.hgncloud.com/fabrikam/welcome.jsp*。
+     a. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Halogen Software アプリケーションへのサインオンに使用する URL を入力します: *https://global.hgncloud.com/fabrikam/welcome.jsp* 。
 
      b.**[次へ]** をクリックします。
  
@@ -324,4 +324,4 @@ Halogen Software で Azure AD のシングル サインオンを構成し、テ�
 [300]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_300.png
 [301]: ./media/active-directory-saas-halogen-software-tutorial/tutorial_halogen_301.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!----HONumber=AcomDC_0720_2016-->
