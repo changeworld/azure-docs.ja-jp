@@ -71,6 +71,6 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 
-[IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-eclipse-tool-plugin.md
+[IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

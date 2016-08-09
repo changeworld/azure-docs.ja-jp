@@ -35,7 +35,7 @@
 
 Azure ポータルには、データベースのブレードの上部からアクセスできる、一般的なデータベース操作が用意されています。データベースは、以前の状態に復元したり、Visual Studio で開いたり、新しいサーバーにコピーしたり、Azure ストレージ アカウントにエクスポートしたりできます。
 
-- [SQL Database を復元する](sql-database-user-error-recovery.md)
+- [SQL Database を復元する](sql-database-recovery-using-backups.md)
 - [Visual Studio で SQL Database を開く](sql-database-connect-query.md)
 - [SQL Database をエクスポートする](sql-database-export.md)
 
@@ -74,4 +74,4 @@ Azure SQL Database は、コミットされたトランザクションをセカ�
 
 - [SQL Database](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/15/2016"
+	ms.date="07/25/2016"
 	ms.author="cynthn"/>
 
 
@@ -126,4 +126,4 @@ Azure 仮想マシンで実行する MySQL Server サービスへのリモート
 
 MySQL の実行の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

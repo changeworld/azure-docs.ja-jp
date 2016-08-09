@@ -249,7 +249,6 @@ CSPack.exe (windows 上) は、SDK にインストール済みの **Microsoft Az
 
 クラウド サービス パッケージを作成しているのですが...
 
-* [ローカル ストレージ リソースを構成する](cloud-services-configure-local-storage-resources.md)
 * [クラウド サービスのインスタンスのリモート デスクトップのセットアップ][remotedesktop]
 * [クラウド サービス プロジェクトのデプロイ][deploy]
 
@@ -267,4 +266,4 @@ Visual Studio を使用しているのですが...
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0727_2016-->

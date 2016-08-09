@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="07/25/2016"
 	ms.author="larryfr"/>
 
 
@@ -64,7 +64,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ##作業ディレクトリの作成
 
-Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、**wasb:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
+Oozie では、ジョブに必要なリソースを同じディレクトリに保存する必要があります。この例では、**wasbs:///tutorials/useoozie** を使用します。次のコマンドを使用して、このディレクトリと、このワークフローで作成される新しい Hive テーブルを保持する data ディレクトリを作成します。
 
 	hdfs dfs -mkdir -p /tutorials/useoozie/data
 
@@ -114,7 +114,7 @@ Oozie では、ジョブに必要なリソースを同じディレクトリに�
 
 2. Ctrl + X キーを押してエディターを終了します。メッセージが表示されたら、**Y** を選択してファイルを保存し、**Enter** キーを押して、ファイル名として **useooziewf.hql** を使用します。
 
-3. 次のコマンドを使用して、**useooziewf.hql** を **wasb:///tutorials/useoozie/useooziewf.hql** にコピーします。
+3. 次のコマンドを使用して、**useooziewf.hql** を **wasbs:///tutorials/useoozie/useooziewf.hql** にコピーします。
 
 		hdfs dfs -copyFromLocal useooziewf.hql /tutorials/useoozie/useooziewf.hql
 
@@ -187,7 +187,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 	- **RunSqoopExport**: Sqoop を使用して、作成されたデータを Hive スクリプトから SQL Database にエクスポートします。このアクションは、**RunHiveScript** アクションが正常に実行された場合にのみ実行されます。
 
-		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight バージョン 2.1 の場合) を参照してください。
+		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
 
 	このワークフローには、このドキュメントで後述するジョブ定義で使用する値に置き換えられる複数のエントリ (`${jobTracker}` など) が含まれています。
 
@@ -195,7 +195,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 2. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
-3. 次のコマンドを使用して、**workflow.xml** ファイルを **wasb:///tutorials/useoozie/workflow.xml** にコピーします。
+3. 次のコマンドを使用して、**workflow.xml** ファイルを **wasbs:///tutorials/useoozie/workflow.xml** にコピーします。
 
 		hdfs dfs -copyFromLocal workflow.xml /tutorials/useoozie/workflow.xml
 
@@ -257,9 +257,9 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	次のような情報が返されます。
 
 		<name>fs.defaultFS</name>
-		<value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+		<value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
 
-	次の手順で **wasb://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
+	次の手順で **wasbs://mycontainer@mystorageaccount.blob.core.windows.net** 値を使用するので、この値を保存します。
 
 2. 次のコマンドを使用して、クラスターのヘッド ノードの FQDN を取得します。これは、クラスターの JobTracker アドレスに使用されます。これは構成ファイルですぐに使用されます。
 
@@ -282,7 +282,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 		  <property>
 		    <name>nameNode</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net</value>
 		  </property>
 
 		  <property>
@@ -302,7 +302,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 		  <property>
 		    <name>hiveScript</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/useooziewf.hql</value>
 		  </property>
 
 		  <property>
@@ -312,7 +312,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 		  <property>
 		    <name>hiveDataFolder</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/data</value>
 		  </property>
 
 		  <property>
@@ -332,13 +332,13 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 		  <property>
 		    <name>oozie.wf.application.path</name>
-		    <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+		    <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
 		  </property>
 		</configuration>
 
-	* **wasb://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
+	* **wasbs://mycontainer@mystorageaccount.blob.core.windows.net** のすべてのインスタンスを、前に返された値に置き換えます。
 
-	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasb:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
+	> [AZURE.WARNING] パスの一部としてコンテナーとストレージ アカウントが含まれた完全な WASB パスを使用する必要があります。短い形式 (wasbs:///) を使用すると、ジョブを開始したときに RunHiveScript アクションが失敗します。
 
 	* **JOBTRACKERADDRESS** を、前に返された JobTracker/ResourceManager のアドレスに置き換えます。
 
@@ -392,7 +392,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 		Job ID : 0000005-150622124850154-oozie-oozi-W
 		------------------------------------------------------------------------------------------------------------------------------------
 		Workflow Name : useooziewf
-		App Path      : wasb:///tutorials/useoozie
+		App Path      : wasbs:///tutorials/useoozie
 		Status        : PREP
 		Run           : 0
 		User          : USERNAME
@@ -530,7 +530,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 		    <property>
 		      <name>workflowPath</name>
-		      <value>wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
+		      <value>wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie</value>
 		    </property>
 
 		**mycontainer** と **mystorageaccount** の値を、job.xml ファイルの他のエントリで使用される値に置き換えます。
@@ -599,7 +599,7 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 	JA009: Cannot initialize Cluster. Please check your configuration for map
 
-**原因**: **job.xml** ファイルで使用される WASB アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。WASB アドレスの形式は、`wasb://containername@storageaccountname.blob.core.windows.net` である必要があります。
+**原因**: **job.xml** ファイルで使用される WASB アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。WASB アドレスの形式は、`wasbs://containername@storageaccountname.blob.core.windows.net` である必要があります。
 
 **解決方法**: ジョブで使用する WASB アドレスを変更します。
 
@@ -695,4 +695,4 @@ Oozie UI では、Oozie ログと、Hive クエリなどの MapReduce タスク�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

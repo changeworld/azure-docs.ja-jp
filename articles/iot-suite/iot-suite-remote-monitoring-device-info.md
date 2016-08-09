@@ -260,9 +260,13 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 
 ## 次のステップ
 
-カスタム デバイスからのデバイス情報メッセージの送信について詳しくは、[リモート監視構成済みソリューションへのデバイスの接続][lnk-connect-custom]に関するページを参照してください。
+構成済みのソリューションをカスタマイズする方法を学習し終えたので、次のリンク先で IoT Suite の構成済みのソリューションのその他の機能のいくつかについて調べることができます。
 
-構成済みソリューションのカスタマイズ方法について詳しくは、「[構成済みソリューションのカスタマイズ][lnk-customize]」を参照してください。
+- [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
+- [IoT スイートに関してよく寄せられる質問][lnk-faq]
+- [IoT の徹底的なセキュリティ][lnk-security-groundup]
+
+
 
 <!-- Images and links -->
 [img-device-list]: media/iot-suite-remote-monitoring-device-info/image1.png
@@ -273,10 +277,12 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 [lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
 [lnk-docdb]: https://azure.microsoft.com/documentation/services/documentdb/
 [lnk-ref-arch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-connect-custom]: iot-suite-connecting-devices.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-dm-preview]: ../iot-hub/iot-hub-device-management-overview.md
 [lnk-dynamic-telemetry]: iot-suite-dynamic-telemetry.md
 
-<!---HONumber=AcomDC_0720_2016-->
+[lnk-predictive-overview]: iot-suite-predictive-overview.md
+[lnk-faq]: iot-suite-faq.md
+[lnk-security-groundup]: securing-iot-ground-up.md
+
+<!---HONumber=AcomDC_0727_2016-->

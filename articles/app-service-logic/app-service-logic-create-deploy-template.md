@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -18,7 +18,7 @@
 
 # ロジック アプリのデプロイ テンプレートの作成
 
-ロジック アプリが作成された後は、このロジック アプリを Azure Resource Manager のテンプレートとして作成することができます。これにより、任意の環境またはリソース グループにロジック アプリを簡単に展開できます。Resource Manager テンプレートの概要は、「[Authoring Azure Resource Manager template (Azure Resource Manager テンプレートを作成する)](../resource-group-authoring-templates.md)」と「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」で確認できます。
+ロジック アプリが作成された後は、このロジック アプリを Azure Resource Manager のテンプレートとして作成することができます。これにより、任意の環境またはリソース グループにロジック アプリを簡単にデプロイできます。Resource Manager テンプレートの概要は、「[Authoring Azure Resource Manager template (Azure Resource Manager テンプレートを作成する)](../resource-group-authoring-templates.md)」と「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」で確認できます。
 
 ## ロジック アプリ デプロイ テンプレート
 
@@ -34,7 +34,7 @@
 
 ## ロジック アプリのデプロイ テンプレートの作成
 
-ロジック アプリのデプロイ テンプレートの作成に役立つツールが提供されています。必要に応じて、上述のリソースを使用して、手動でパラメータを作成できます。また、[Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) という PowerShell モジュールを利用することもできます。このオープン ソース モジュールは、最初にロジック アプリとそれが利用している接続を評価し、デプロイに必要なパラメーターと共にテンプレート リソースを生成します。たとえば、ロジック アプリが Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータを追加した場合、このツールはすべてのオーケストレーション ロジックを保存し、デプロイ時に設定できるように、SQL と Service Bus 接続文字列をパラメーター化します。
+ロジック アプリのデプロイ テンプレートの作成に役立つツールが提供されています。テンプレートは手書きで作成できます。つまり、上述のリソースを使用して、必要に応じてパラメータを作成できます。また、[Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) という PowerShell モジュールを利用することもできます。このオープン ソース モジュールは、最初にロジック アプリとそれが利用している接続を評価し、デプロイに必要なパラメーターと共にテンプレート リソースを生成します。たとえば、ロジック アプリが Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータを追加した場合、このツールはすべてのオーケストレーション ロジックを保存し、デプロイ時に設定できるように、SQL と Service Bus 接続文字列をパラメーター化します。
 
 >[AZURE.NOTE] 接続はロジック アプリと同じリソース グループ内に置く必要があります。
 
@@ -44,7 +44,7 @@
 
 PowerShell モジュールを手動でインストールすることもできます。
 
-1. [ロジック アプリのテンプレート作成機能](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)の最新リリースをダウンロードします。  
+1. [ロジック アプリのテンプレート作成機能](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)の最新リリースをダウンロードします。
 1. PowerShell モジュール フォルダー (通常は `%UserProfile%\Documents\WindowsPowerShell\Modules`) にフォルダーを解凍します。
 
 モジュールがあらゆるテナントやサブスクリプション アクセス トークンで機能するように、[ARMClient](https://github.com/projectkudu/ARMClient) コマンド ライン ツールの使用をお勧めします。この[ブログの投稿](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)では、ARMClient についてさらに詳しく説明しています。
@@ -63,17 +63,17 @@ PowerShell をインストールした後は、次のコマンドを使用して
 
 ## ロジック アプリ テンプレートをデプロイする
 
-PowerShell、REST API、Visual Studio、リソース管理、Azure ポータル テンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。詳細については、「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」を参照してください。パラメーターの値を保存する[パラメーター ファイル](../resource-group-template-deploy.md#parameter-file)の作成も推奨されます。
+PowerShell、REST API、Visual Studio Release Management、Azure ポータル テンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。詳細については、「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」を参照してください。パラメーターの値を保存する[パラメーター ファイル](../resource-group-template-deploy.md#parameter-file)の作成も推奨されます。
 
 ### OAuth 接続を作成する
 
 デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。ただし、有効なアクセス トークンを生成するには、OAuth 接続を承認する必要があります。デザイナーでロジック アプリを開き、接続を承認することにより、これを行うことができます。または、自動化する場合は、各 OAuth 接続に対して同意するスクリプトを使用することができます。例として、[LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
 
-## Visual Studio リリース管理
+## Visual Studio Release Management
 
-環境をデプロイし、管理する一般的なシナリオは、Visual Studio リリース管理のようなツールを ロジック アプリ デプロイ テンプレートと共に使用することです。Visual Studio Team Services に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース定義を生成できます。
+環境をデプロイし、管理する一般的なシナリオは、Visual Studio Release Management のようなツールを ロジック アプリ デプロイ テンプレートと共に使用することです。Visual Studio Team Services に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース定義を生成できます。
 
-1. リリース管理で、新しい定義を作成するには、**空**を選択して空の定義を開始します。
+1. Release Management で、新しい定義を作成するには、**空**を選択して空の定義を開始します。
 
     ![新しい空の定義を作成します。][1]
 
@@ -85,4 +85,4 @@ PowerShell、REST API、Visual Studio、リソース管理、Azure ポータル 
 <!-- Image References -->
 [1]: ./media/app-service-logic-create-deploy-template/emptyReleaseDefinition.PNG
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

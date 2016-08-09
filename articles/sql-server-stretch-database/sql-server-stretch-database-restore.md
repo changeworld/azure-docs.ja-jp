@@ -28,6 +28,7 @@
 ハードウェアの障害または破損から復元するには、 Stretch 対応の SQL Server データベースをバックアップから復元します。現在お使いの SQL Server 復元方法を引き続き使用することもできます。詳細については、[復旧と復元の概要](https://msdn.microsoft.com/library/ms191253.aspx)に関する記事を参照してください。
 
 SQL Server データベースを復元したら、ストアド プロシージャの **sys.sp\_rda\_reauthorize\_db** を実行し、Stretch 対応 SQL Server データベースと Azure リモート データベース間の接続を再確立する必要があります。詳細については、「[Restore the connection between the SQL Server database and the remote Azure database](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database)」(SQL Server データベースと Azure リモート データベース間の接続を復元する)を参照してください。
+<!-- Fix Comment: The structure and the reference seeem to be incorrect. Could you check if they are okay? -->
 
 ## Azure リモート データを復元する
 
@@ -83,4 +84,4 @@ Azure ポータルを使用して、削除済みの Azure データベースを�
 
 [SQL Server データベースのバックアップと復元](https://msdn.microsoft.com/library/ms187048.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

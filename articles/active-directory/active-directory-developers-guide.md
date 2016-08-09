@@ -103,7 +103,13 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Azure AD の署名キーのロールオーバー](active-directory-signing-key-rollover.md): Azure AD の署名キーのロールオーバーの周期と、最も一般的なアプリケーション シナリオでのキーの更新方法について説明します。
 
+- [OAuth 2.0 プロトコルでの承認コード付与の使用](active-directory-protocols-oauth-code.md): OAuth 2.0 プロトコルの承認コード付与を使用して、Azure Active Directory テナントの Web アプリケーションと Web API へのアクセスを承認できます。
+
 - [OAuth 2.0 プロトコルでの暗黙的な許可に関する解説](active-directory-dev-understanding-oauth2-implicit-grant.md): 暗黙的な許可についての概要と、この許可の方法に適したアプリケーションの種類について解説しています。
+
+- [OAuth 2.0 プロトコルでの、クライアント資格情報を使用したサービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md): OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (機密性の高いクライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することが許可されます。このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
+
+- [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。クライアント アプリケーションでは、id\_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id\_token と承認コードの両方を受信することもできます。
 
 - [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
@@ -139,4 +145,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

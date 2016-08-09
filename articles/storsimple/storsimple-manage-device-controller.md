@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/26/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
@@ -140,6 +140,8 @@ StorSimple デバイスの単一のコントローラーを Azure クラシッ�
 
 ## デバイスを出荷時の設定にリセットする
 
+> [AZURE.IMPORTANT] デバイスを出荷時の設定にリセットする必要がある場合は、Microsoft サポートにお問い合わせください。次に示す手順は、Microsoft サポートと共に実行する場合にのみ使用してください。
+
 ここでは、StorSimple 用 Windows PowerShell を使用して、Microsoft Azure StorSimple デバイスを出荷時の既定の設定にリセットする方法について説明します。デバイスをリセットすると、既定でクラスター全体からすべてのデータと設定が削除されます。
 
 Microsoft Azure StorSimple デバイスを出荷時の設定にリセットするには、次の手順に従います。
@@ -213,4 +215,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

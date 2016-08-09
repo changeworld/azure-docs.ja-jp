@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/18/2016"
+   ms.date="07/25/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)
@@ -390,7 +390,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
 7. __[クエリ コンソール]__ の __[Hive エディター]__ を選択し、既定の `select * from hivesampletable`を次の値で置き換えます。
 
-        create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasb:///devicedata/';
+        create external table devicedata (deviceid string, devicevalue int) row format delimited fields terminated by ',' stored as textfile location 'wasbs:///devicedata/';
         select * from devicedata limit 10;
 
     __[選択]__ をクリックしてクエリを実行します。EventHubReader から Azure Storage (WASB) に出力されたデータから、10 行が返されます。クエリが完了すると、次のようなデータが表示されます。
@@ -453,4 +453,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,12 +13,12 @@
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="03/24/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して OpenFoam を実行する
 
-この記事では、Azure で OpenFoam 実行する一例を紹介します。Microsoft HPC Pack クラスターを Azure にデプロイし、Azure リモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された複数の Linux 計算ノードで Intel MPI を使用して、[OpenFoam](http://openfoam.com/) ジョブを実行します。Azure で OpenFoam を実行するその他のオプションとして、完全に構成済みの商用のイメージを Marketplace で入手できます。
+この記事では、Azure 仮想マシンで OpenFoam を実行する一例を紹介します。Microsoft HPC Pack クラスターを Azure にデプロイし、Azure リモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された複数の Linux 計算ノードで Intel MPI を使用して、[OpenFoam](http://openfoam.com/) ジョブを実行します。Azure で OpenFoam を実行するその他のオプションとして、 Marketplace で入手できる、完全に構成済みの商用のイメージ (UberCloud の [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/) など) を [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) で実行するというものがあります。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -26,25 +26,25 @@ OpenFOAM (Open Field Operation And Manipulation) は、無償提供されてい�
 
 Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で各種の大規模な HPC および並列アプリケーション (MPI アプリケーションなど) を実行する機能を備えています。HPC Pack では、HPC Pack クラスターにデプロイされた Linux コンピューティング ノード VM で Linux HPC アプリケーションを実行する機能もサポートしています。HPC Pack での Linux コンピューティング ノードの使用の概要については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードを使用開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
 
->[AZURE.NOTE] この記事は、Linux のシステム管理について、また Linux HPC クラスターでの MPI ワークロードの実行について、ある程度の知識がある読者を対象としています。
+>[AZURE.NOTE] この記事では、HPC Pack を使用して Linux MPI ワークロードを実行する方法について説明します。この記事は、Linux のシステム管理について、また Linux クラスターでの MPI ワークロードの実行について、ある程度の知識がある読者を対象としています。この記事に示すものとは異なるバージョンの MPI および OpenFOAM を使用する場合は、インストールおよび構成の手順を一部変更する必要が生じることがあります。
 
 ## 前提条件
 
-*   **A8 または A9 サイズの Linux コンピューティング ノードでの HPC Pack クラスター** - Azure 上の A8 または A9 サイズの Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。Powershell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成を確認して、サイズ A8 の Windows Server 2012 R2 ヘッド ノードと 2 つのサイズ A8 の SUSE Linux Enterprise Server 12 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。該当する値は、実際のサブスクリプションとサービス名に置き換えてください。 
+*   **A8 または A9 サイズの Linux コンピューティング ノードでの HPC Pack クラスター** - Azure 上の A8 または A9 サイズの Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。どちらのオプションについても、前提条件および手順について詳しくは、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。Powershell スクリプトによるデプロイ オプションを選択した場合は、この記事の末尾にあるサンプル ファイル内のサンプル構成を確認して、サイズ A8 の Windows Server 2012 R2 ヘッド ノードと 2 つのサイズ A8 の SUSE Linux Enterprise Server 12 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターをデプロイします。該当する値は、実際のサブスクリプションとサービス名に置き換えてください。
 
     **その他の注意事項**
 
-    *   現在、Azure の Linux RDMA ネットワークは、SUSE Linux Enterprise Server 12 から作成されたサイズ A8 または A9 の VM 上でのみサポートされています。これは Azure Marketplace のハイパフォーマンス コンピューティング イメージに最適化されています。付加的な考慮事項については、[A8、A9、A10、A11 コンピューティング集中型インスタンス](virtual-machines-windows-a8-a9-a10-a11-specs.md)に関するページを参照してください。
+    *   現時点では、Azure での Linux RDMA ネットワークは、Azure Marketplace イメージからデプロイした、SUSE Linux Enterprise Server (SLES) 12 for HPC、SLES 12 for HPC (Premium)、CentOS ベースの 7.1 HPC、または CentOS ベースの 6.5 HPC ディストリビューションを実行する、A8 または A9 サイズの VM でのみサポートされます。付加的な考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」を参照してください。
 
     *   Powershell スクリプトによるデプロイ オプションを使用した場合は、すべての Linux 計算ノードを 1 つのクラウド サービスにデプロイし、RDMA ネットワーク接続を使用します。
 
     *   Linux ノードのデプロイ後、特別な管理タスクを実行する目的で、SSH 接続を使用する必要がある場合、Linux VM ごとの SSH 接続の情報を Azure ポータルから探します。
         
-*   **Intel MPI** - Azure の Linux 計算ノード上で OpenFOAM を実行するには、[Intel.com サイト](https://software.intel.com/ja-JP/intel-mpi-library/)から Intel MPI Library 5 ランタイムが必要となります (登録が必要)。その後、Linux 計算ノードに Intel MPI をインストールすることになります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
+*   **Intel MPI** - Azure の SLES 12 HPC 計算ノード上で OpenFOAM を実行するには、[Intel.com サイト](https://software.intel.com/ja-JP/intel-mpi-library/)から Intel MPI Library 5 ランタイムをインストールする必要があります。(CentOS ベースの HPC イメージでは、Intel MPI 5 は既にプレインストール済みです。) その後、必要に応じて Linux 計算ノードに Intel MPI をインストールすることになります。この準備をするために、Intel に登録した後、確認の電子メールに含まれる関連 Web ページへのリンクをクリックし、適切なバージョンの Intel MPI (.tgz ファイル) のダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 
-*   **OpenFOAM Source Pack** - [OpenFOAM Foundation のサイト](http://www.openfoam.org/download/source.php)から Linux 用の OpenFOAM Source Pack ソフトウェアをダウンロードします。この記事は、OpenFOAM-2.3.1.tgz としてダウンロードできる Source Pack Version 2.3.1 に基づいて説明しています。Linux 計算ノードに対する OpenFOAM のアンパックとコンパイルについては、この記事で後述する手順に従ってください。
+*   **OpenFOAM Source Pack** - [OpenFOAM Foundation のサイト](http://openfoam.org/download/2-3-1-source/)から Linux 用の OpenFOAM Source Pack ソフトウェアをダウンロードします。この記事は、OpenFOAM-2.3.1.tgz としてダウンロードできる Source Pack Version 2.3.1 に基づいて説明しています。Linux 計算ノードに対する OpenFOAM のアンパックとコンパイルについては、この記事で後述する手順に従ってください。
 
-*   **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、HPC Pack クラスターのヘッド ノードに、可視化分析プログラムである [EnSight](https://www.ceisoftware.com/download/) の Windows 版をダウンロードしてインストールする必要があります。ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
+*   **EnSight** (省略可) - OpenFOAM シミュレーションの結果を確認するには、可視化分析プログラムである [EnSight](https://www.ceisoftware.com/download/) をダウンロードしてインストールします。ライセンスとダウンロードの詳細については、EnSight のサイトを参照してください。
 
 
 ## コンピューティング ノードの相互の信頼関係をセットアップする
@@ -108,7 +108,7 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
     ```
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
 
-    clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>’`,dir_mode=0777`,file_mode=0777
+    clusrun /nodegroup:LinuxNodes mount -t cifs //SUSE12RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
     ```
 
 最初のコマンドで「/openfoam」という名前のフォルダーが LinuxNodes グループのすべてのノードで作成されます。2 つ目のコマンドにより、dir\_mode ビットと file\_mode ビットが「777」に設定された共有フォルダー //SUSE12RDMA-HN/OpenFOAM が Linux ノードにマウントされます。コマンドの *username* と *password* は、ヘッド ノード上のユーザーの資格情報とする必要があります。
@@ -119,9 +119,9 @@ Microsoft HPC Pack は、Microsoft Azure 仮想マシンのクラスター上で
 
 RDMA ネットワークで OpenFOAM を MPI ジョブとして実行するには、Intel MPI ライブラリを使って OpenFOAM をコンパイルする必要があります。
 
-最初にいくつかの **clusrun** コマンドを実行して、すべての Linux ノードに Intel MPI ライブラリと OpenFOAM をインストールします。先ほど構成したヘッド ノードの共有場所を使用して、Linux ノード間でインストール ファイルを共有します。
+最初にいくつかの **clusrun** コマンドを実行して、すべての Linux ノードに Intel MPI ライブラリ (まだインストールしていない場合) と OpenFOAM をインストールします。先ほど構成したヘッド ノードの共有場所を使用して、Linux ノード間でインストール ファイルを共有します。
 
->[AZURE.IMPORTANT]ここで説明したインストールとコンパイルの手順はサンプルです。必須となるコンパイラやライブラリを正しくインストールするためには、ある程度、Linux のシステム管理に関する知識が必要となります。ご使用のバージョンの Intel MPI および OpenFOAM の特定の環境変数や設定を変更しなければならない場合があります。詳細については、[Intel MPI Library for Linux のインストール ガイド](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html)と [OpenFOAM Source Pack のインストール](http://www.openfoam.org/download/source.php)に関するページを参照してください。
+>[AZURE.IMPORTANT]ここで説明したインストールとコンパイルの手順はサンプルです。必須となるコンパイラやライブラリを正しくインストールするためには、ある程度、Linux のシステム管理に関する知識が必要となります。ご使用のバージョンの Intel MPI および OpenFOAM の特定の環境変数や設定を変更しなければならない場合があります。詳細については、[Intel MPI Library for Linux のインストール ガイド](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)と [OpenFOAM Source Pack のインストール](http://openfoam.org/download/2-3-1-source/)に関するページを、使用環境に応じて参照してください。
 
 
 ### Intel MPI のインストール
@@ -138,7 +138,7 @@ RDMA ネットワークで OpenFOAM を MPI ジョブとして実行するには
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/intel/l_mpi_p_5.0.3.048.tgz -C /opt/intel/
     ```
 
-2.  Intel MPI Library をサイレント インストールするには、silent.cfg ファイルを使用します。例については、この記事の最後にあるサンプル ファイルを参照してください。このファイルを共有フォルダー /openfoam に格納します。silent.cfg ファイルの詳細については、[Intel MPI Library for Linux インストール ガイドのサイレント インストール](http://scc.ustc.edu.cn/zlsc/tc4600/intel/impi/INSTALL.html#silentinstall)に関するページを参照してください。
+2.  Intel MPI Library をサイレント インストールするには、silent.cfg ファイルを使用します。例については、この記事の最後にあるサンプル ファイルを参照してください。このファイルを共有フォルダー /openfoam に格納します。silent.cfg ファイルの詳細については、[Intel MPI Library for Linux インストール ガイドのサイレント インストール](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html#silentinstall)に関するページを参照してください。
 
     >[AZURE.TIP]silent.cfg ファイルは必ず、Linux の改行コード (CR LF ではなく LF のみ) でテキスト ファイルとして保存してください。これにより、スクリプトは Linux ノード上で適切に動作します。
 
@@ -152,10 +152,10 @@ RDMA ネットワークで OpenFOAM を MPI ジョブとして実行するには
 
 テストを行うため、各 Linux ノード上の /etc/security/limits.conf に以下の行を追加してください。
 
-```
-*               hard    memlock         unlimited
-*               soft    memlock         unlimited
-```
+
+    clusrun /nodegroup:LinuxNodes echo "*               hard    memlock         unlimited" `>`> /etc/security/limits.conf
+    clusrun /nodegroup:LinuxNodes echo "*               soft    memlock         unlimited" `>`> /etc/security/limits.conf
+
 
 limits.conf ファイルを更新した後で Linux ノードを再起動します。たとえば、次の **clusrun** コマンドを使用します。
 
@@ -167,7 +167,7 @@ clusrun /nodegroup:LinuxNodes systemctl reboot
 
 ### OpenFOAM のコンパイルとインストール
 
-ダウンロードした OpenFOAM Source Pack のインストール パッケージ (この例では OpenFOAM-2.3.1.tgz) をヘッド ノード上の C:\\OpenFoam に保存し、Linux ノードが /openfoam からこのファイルにアクセスできるようにします。そのうえで **clusrun** を実行し、すべての Linux ノードで OpenFOAM をコンパイルします。
+ダウンロードした OpenFOAM Source Pack のインストール パッケージ (この例では OpenFOAM-2.3.1.tgz) をヘッド ノード上の C:\\OpenFoam に保存し、Linux ノードが /openfoam からこのファイルにアクセスできるようにします。そのうえで **clusrun** コマンドを実行し、すべての Linux ノードで OpenFOAM をコンパイルします。
 
 
 1.  すべての Linux ノードに /opt/OpenFOAM フォルダーを作成し、そのフォルダーにソース パッケージをコピーして抽出します。
@@ -176,7 +176,7 @@ clusrun /nodegroup:LinuxNodes systemctl reboot
     clusrun /nodegroup:LinuxNodes mkdir -p /opt/OpenFOAM
 
     clusrun /nodegroup:LinuxNodes cp /openfoam/OpenFOAM-2.3.1.tgz /opt/OpenFOAM/
-
+    
     clusrun /nodegroup:LinuxNodes tar -xzf /opt/OpenFOAM/OpenFOAM-2.3.1.tgz -C /opt/OpenFOAM/
     ```
 
@@ -190,7 +190,7 @@ clusrun /nodegroup:LinuxNodes systemctl reboot
     clusrun /nodegroup:LinuxNodes zypper -n --gpg-auto-import-keys install --repo opensuse --force-resolution -t pattern devel_C_C++
     ```
     
-    必要な場合は、個々の Linux ノードに ssh で接続し、コマンドが正しく動作することを確認します。
+    必要な場合は、個々の Linux ノードに SSH で接続し、コマンドが正しく動作することを確認します。
 
 4.  以下のコマンドを実行して、OpenFOAM をコンパイルします。コンパイル処理は完了までに少し時間がかかります。また、大量のログ情報が標準出力に生成されるので、**/interleaved** オプションを使用して、少しずつ出力が表示されるようにしてください。
 
@@ -236,7 +236,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
     ![Modify step variables][step_variables]
 
-5.  system/decomposeParDict ファイル内の変数に適切な値を指定します。この例では、それぞれ 8 つのコアを持った 2 つの Linux ノードを使用しているため、numberOfSubdomains は 16 に、hierarchicalCoeffs の n は (1 1 16) に設定することになります。つまり、16 のプロセスで OpenFOAM を並列実行するという意味です。詳細については、[OpenFOAM ユーザー ガイドの第 3.4 項でアプリケーションの並列実行](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)に関するページを参照してください。
+5.  system/decomposeParDict ファイル内の変数に適切な値を指定します。この例では、それぞれ 8 つのコアを持った 2 つの Linux ノードを使用しているため、numberOfSubdomains は 16 に、hierarchicalCoeffs の n は (1 1 16) に設定することになります。つまり、16 のプロセスで OpenFOAM を並列実行するという意味です。詳細については、「[OpenFOAM User Guide: 3.4 Running applications in parallel (OpenFOAM ユーザー ガイド: 3.4 アプリケーションの並列実行)](http://cfd.direct/openfoam/user-guide/running-applications-parallel/#x12-820003.4)」を参照してください。
 
     ![Decompose processes][decompose]
 
@@ -293,11 +293,11 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
         各値の説明:
 
-        * `<Number of nodes>`: このジョブに割り当てるノードの数。  
+        * `<Number of nodes>` - このジョブに割り当てるノードの数。
         
-        * `<Name of node_n_...>`: このジョブに割り当てる各ノードの名前。
+        * `<Name of node_n_...>` - このジョブに割り当てる各ノードの名前。
         
-        * `<Cores of node_n_...>`: このジョブに割り当てるノードのコア数。
+        * `<Cores of node_n_...>` - このジョブに割り当てるノードのコア数。
 
         たとえば、ジョブを実行するために 2 つのノードが必要である場合、$CCP\_NODES\_CORES は次のようになります。
         
@@ -330,7 +330,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 
     ![ジョブ リソース][job_resources]
 
-6. 左側のナビゲーションで **[タスクの編集]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。4 つのタスクをジョブに追加します。以下のコマンド ラインと設定を使用します。
+6. 左側のナビゲーションで **[Edit Tasks (タスクの編集)]** をクリックしてから、**[追加]** をクリックしてタスクをジョブに追加します。4 つのタスクをジョブに追加します。以下のコマンド ラインと設定を使用します。
 
     >[AZURE.NOTE]OpenFOAM と MPI のランタイム環境は、`source /openfoam/settings.sh` を実行することによってセットアップされます。そのため、以下に示したすべてのタスクで、OpenFOAM コマンドの前にこのコマンドが呼び出されています。
 
@@ -558,6 +558,7 @@ ENVIRONMENT_REG_MPI_ENV=no
 # Select yes to update ld.so.conf, valid values are: {yes, no}
 ENVIRONMENT_LD_SO_CONF=no
 
+
 ```
 
 ### サンプル settings.sh スクリプト
@@ -654,4 +655,4 @@ exit ${RTNSTS}
 [isosurface_color]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/isosurface_color.png
 [linux_processes]: ./media/virtual-machines-linux-classic-hpcpack-cluster-openfoam/linux_processes.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

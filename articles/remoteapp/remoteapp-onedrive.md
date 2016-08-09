@@ -13,13 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/15/2016"
+   ms.date="08/02/2016"
    ms.author="elizapo"/>
 
 # OneDrive for Business と Azure RemoteApp
 
-Azure RemoteApp では OneDrive for Business はサポートされていません。
+Azure RemoteApp では OneDrive for Business 同期エージェントがサポートされません。
 
-この記事では、以前、Azure RemoteApp で OneDrive for Business を使用するためのさまざまな実装オプションについて解説しました。現在では、そのような実装オプションはサポートされておりませんので、注意してください。
+Office 365 で使用するためのコレクションに OneDrive for Business を含めることはできます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,12 +1,11 @@
-In this example, I will show you how to use the **Service Bus - When a message is received in a queue** trigger to initiate a logic app workflow when a new item is to a Service Bus queue.  
+この例では、新しい項目が Service Bus キューに対するものである場合、ロジック アプリ ワークフローを開始するために、**[Service Bus - When a message is received in a queue (Service Bus - メッセージをキューで受信する場合)]** トリガーがどのように使用されるのかを示します。
 
->[AZURE.NOTE]You will get prompted to sign with your Service Bus connection string if you have not already created a *connection* to Service Bus.  
+>[AZURE.NOTE]まだ Service Bus に *"接続"* を作成していない場合は、Service Bus 接続文字列で署名するよう求められます。
 
-1. Enter *service bus* in the search box on the logic apps designer then select the **Service Bus - When a message is received in a queue**  trigger.  
-![Service Bus trigger image 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-- The **When a message is received in a queue** control is displayed.  
-![Service Bus trigger image 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-- Enter the name of the Service Bus queue you would like the trigger to monitor.   
-![Service Bus trigger image 3](./media/connectors-create-api-servicebus/trigger-3.png)   
+1. Logic Apps デザイナーの検索ボックスに「*service bus*」と入力し、**[Service Bus - When a message is received in a queue (Service Bus - メッセージをキューで受信する場合)]** トリガーを選択します。 ![Service Bus トリガー イメージ 1](./media/connectors-create-api-servicebus/trigger-1.png)
+- **[When a message is received in a queue (メッセージをキューで受信する場合)]** コントロールが表示されます。 ![Service Bus トリガー イメージ 2](./media/connectors-create-api-servicebus/trigger-2.png)
+- 監視するトリガーのService Bus キューの名前を入力します。 ![Service Bus トリガー イメージ 3](./media/connectors-create-api-servicebus/trigger-3.png)
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a new item is  received in the queue you selected.    
+これで、選択したキューで新しい項目を受信するときに、ワークフローでその他のトリガーとアクションの実行を開始するトリガーのあるロジック アプリが構成されました。
+
+<!---HONumber=AcomDC_0727_2016-->

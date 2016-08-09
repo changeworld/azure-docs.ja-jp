@@ -106,7 +106,7 @@ Azure AD Premium または Basic 料金の詳細については、「[Active Dir
 | パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 | [設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password) |
 | ユーザーのパスワード リセット通知を有効にする方法 | [設定: パスワードがリセットされたときにユーザーに通知する](active-directory-passwords-customize.md#notify-users-and-admins-when-their-own-password-has-been-reset) |
 | 管理者のパスワード リセット通知を有効にする方法 | [設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](active-directory-passwords-customize.md#notify-admins-when-other-admins-reset-their-own-passwords) |
-| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ](active-directory-passwords-customize.md#password-managment-look-and-feel) |
+| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ](active-directory-passwords-customize.md#password-management-look-and-feel) |
 
 
 ##パスワードのリセットを使用できるようにするためのユーザーの構成
@@ -252,4 +252,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
 * [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -2,7 +2,7 @@
 	pageTitle="Azure Mobile App (Android) のオフライン同期の有効化"
 	description="App Service Mobile Apps を使用して、Android アプリケーションのオフライン データをキャッシュおよび同期する方法について説明します。"
 	documentationCenter="android"
-	authors="lindydonna"
+	authors="RickSaling"
 	manager="erikre"
 	services="app-service\mobile"/>
 
@@ -12,8 +12,8 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="donnam;ricksal"/>
+	ms.date="07/21/2016"
+	ms.author="ricksal"/>
 
 # Android モバイル アプリのオフライン同期の有効化
 
@@ -116,4 +116,4 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「[C
 [Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

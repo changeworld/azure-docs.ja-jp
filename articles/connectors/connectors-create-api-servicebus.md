@@ -1,148 +1,174 @@
 <properties
-pageTitle="ロジック アプリでの Azure Service Bus コネクタの使用 | Microsoft Azure"
-description="Microsoft Azure App Service Logic Apps で Azure Service Bus コネクタの使用を開始する"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
+pageTitle="ロジック アプリでの Azure Service Bus コネクタの使用方法 | Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。"
+services="app-servicelogic"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
-tags="connectors"/>
+tags="connectors" />
 
 <tags
-ms.service="multiple"
-ms.devlang="na"
+ms.service="logic-apps"
+ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/23/2016"
+ms.workload="integration"
+ms.date="07/27/2016"
 ms.author="deonhe"/>
 
-# Azure Service Bus コネクタの使用 
+# Azure Service Bus コネクタの使用
 
 Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-Azure Service Bus では、次の操作を実行できます。
+## Azure Service Bus への接続
 
-* ロジック アプリの構築  
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
 
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
+### Azure Service Bus への接続を作成する
 
-## トリガーとアクション
+>[AZURE.INCLUDE [Azure Service Bus への接続を作成する手順](../../includes/connectors-create-api-servicebus.md)]
 
-Azure Service Bus コネクタは、アクションとして使用できます。これにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
+## Azure Service Bus トリガーを使用する
 
- Azure Service Bus コネクタでは、次のアクションやトリガーを使用できます。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-### Azure Service Bus アクション
-実行できるアクションは以下のとおりです。
+>[AZURE.INCLUDE [Service Bus トリガーを作成する手順](../../includes/connectors-create-api-servicebus-trigger.md)]
 
-|アクション|説明|
-|--- | ---|
-|SendMessage|メッセージを Azure Service Bus キューまたはトピックに送信します。|
-### Azure Service Bus トリガー
-次のイベントをリッスンできます。
+## Azure Service Bus アクションを使用する
+
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+
+[AZURE.INCLUDE [Service Bus アクションを作成する手順](../../includes/connectors-create-api-servicebus-action.md)]
+
+## 技術的な詳細
+
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+
+## Azure Service Bus トリガー
+
+Azure Service Bus には、次のトリガーがあります。
 
 |トリガー | 説明|
 |--- | ---|
-|GetMessageFromQueue|Azure Service Bus キューから新しいメッセージを取得します。|
-|GetMessageFromTopic|Azure Service Bus トピック サブスクリプションから新しいメッセージを取得します。|
+|[When a message is received in a queue (キューでメッセージを受け取ったとき)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue)|この操作では、キューでメッセージを受け取ったときにフローをトリガーします。|
+|[When a message is received in a topic subscription (トピック サブスクリプションでメッセージを受け取ったとき)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription)|この操作では、トピック サブスクリプションでメッセージを受け取ったときにフローをトリガーします。|
 
 
-## Azure Service Bus への接続を作成する
-Azure Service Bus コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+## Azure Service Bus アクション
 
->[AZURE.INCLUDE [ServiceBus への接続を作成する手順](../../includes/connectors-create-api-servicebus.md)]
-
->[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
-
-## Azure Service Bus REST API リファレンス
-#### このドキュメントはバージョン 1.0 を対象としています。
+Azure Service Bus には、次のアクションがあります。
 
 
-### メッセージを Azure Service Bus キューまたはトピックに送信します。
-**```POST: /{entityName}/messages```**
+|アクション|説明|
+|--- | ---|
+|[メッセージを送信する](connectors-create-api-servicebus.md#send-message)|この操作では、キューまたはトピックにメッセージを送信します。|
+### アクションの詳細
+
+ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
 
 
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|message| |○|body|なし|Service Bus メッセージ|
-|entityName|string|○|path|なし|キューまたはトピックの名前|
+### メッセージを送信する
+この操作では、キューまたはトピックにメッセージを送信します。
 
 
-### 考えられる応答は以下のとおりです。
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|message*|メッセージ|送信するメッセージ|
+|entityName*|キュー/トピック名|キューまたはトピックの名前|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### When a message is received in a queue (キューでメッセージを受け取ったとき)
+この操作では、キューでメッセージを受け取ったときにフローをトリガーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|queueName*|キュー名|キューの名前|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+ServiceBusMessage: このオブジェクトには、Service Bus メッセージのコンテンツとプロパティが含まれます。
+
+
+| プロパティ名 | データ型 | 説明 |
+|---|---|---|
+|ContentData|string|メッセージのコンテンツ|
+|ContentType|string|メッセージのコンテンツの種類|
+|ContentTransferEncoding|string|メッセージ コンテンツのコンテンツ転送エンコード。("none"|"base64")|
+|プロパティ|オブジェクト|各仲介型プロパティのキーと値のペア|
+|MessageId|string|これは、有効になっている場合に重複するメッセージを識別するために Service Bus が使用できる、ユーザー定義の値です。|
+|To|string|送信先アドレス|
+|ReplyTo|string|返信するキューのアドレス|
+|ReplyToSessionId|string|返信するセッションの識別子|
+|ラベル|string|アプリケーション固有のラベル|
+|ScheduledEnqueueTimeUtc|string|メッセージがキューに追加される日付と時刻 (UTC)|
+|SessionId|string|セッションの識別子|
+|CorrelationId|string|関連付けの識別子|
+|TimeToLive|string|これは、メッセージが有効な期間です (ティック単位)。期間は、メッセージが Service Bus に送信されたときから開始します。|
+
+
+
+
+### When a message is received in a topic subscription (トピック サブスクリプションでメッセージを受け取ったとき)
+この操作では、トピック サブスクリプションでメッセージを受け取ったときにフローをトリガーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|topicName*|トピック名|トピックの名前|
+|subscriptionName*|Topic subscription name (トピック サブスクリプション名)|トピック サブスクリプションの名前|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+ServiceBusMessage: このオブジェクトには、Service Bus メッセージのコンテンツとプロパティが含まれます。
+
+
+| プロパティ名 | データ型 | 説明 |
+|---|---|---|
+|ContentData|string|メッセージのコンテンツ|
+|ContentType|string|メッセージのコンテンツの種類|
+|ContentTransferEncoding|string|メッセージ コンテンツのコンテンツ転送エンコード。("none"|"base64")|
+|プロパティ|オブジェクト|各仲介型プロパティのキーと値のペア|
+|MessageId|string|これは、有効になっている場合に重複するメッセージを識別するために Service Bus が使用できる、ユーザー定義の値です。|
+|To|string|送信先アドレス|
+|ReplyTo|string|返信するキューのアドレス|
+|ReplyToSessionId|string|返信するセッションの識別子|
+|ラベル|string|アプリケーション固有のラベル|
+|ScheduledEnqueueTimeUtc|string|メッセージがキューに追加される日付と時刻 (UTC)|
+|SessionId|string|セッションの識別子|
+|CorrelationId|string|関連付けの識別子|
+|TimeToLive|string|これは、メッセージが有効な期間です (ティック単位)。期間は、メッセージが Service Bus に送信されたときから開始します。|
+
+
+
+## HTTP 応答
+
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
 |名前|説明|
 |---|---|
 |200|OK|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
 |default|操作に失敗しました。|
-------
-
-
-
-### Azure Service Bus キューから新しいメッセージを取得します。
-**```GET: /{queueName}/messages/head```**
-
-
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|queueName|string|○|path|なし|キューの名前。|
-
-
-### 考えられる応答は以下のとおりです。
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-------
-
-
-
-### Azure Service Bus トピック サブスクリプションから新しいメッセージを取得します。
-**```GET: /{topicName}/subscriptions/{subscriptionName}/messages/head```**
-
-
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|topicName|string|○|path|なし|トピックの名前。|
-|subscriptionName|string|○|path|なし|トピック サブスクリプションの名前。|
-
-
-### 考えられる応答は以下のとおりです。
-
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-------
-
-
-
-## オブジェクト定義: 
-
- **ServiceBusMessage**: メッセージはコンテンツとプロパティで構成されます
-
-ServiceBusMessage の必須プロパティ:
-
-ContentTransferEncoding
-
-**すべてのプロパティ**:
-
-
-| 名前 | データ型 |
-|---|---|
-|ContentData|string|
-|ContentType|string|
-|ContentTransferEncoding|string|
-|プロパティ|オブジェクト|
-
 
 ## 次のステップ
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

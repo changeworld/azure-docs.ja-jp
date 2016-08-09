@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="07/25/2016"
 	ms.author="nitinme"/>
 
 
@@ -106,7 +106,7 @@
 	* **[JRE]** ボックスで、**[Use an execution environment JRE (実行環境 JRE を使用する)]** が **[JavaSE-1.7]** に設定されていることを確認します。
 	* Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。ダウンロード場所へのリンクは、このトピックで前述した「[前提条件](#prerequisites)」にあります。上の図に示すように、このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。
 
-4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7] \(JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
+4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7] (JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
 
 	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
 
@@ -165,12 +165,12 @@
 		    val conf = new SparkConf().setAppName("MyClusterApp")
 		    val sc = new SparkContext(conf)
 		
-		    val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		    val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		    //find the rows which have only one digit in the 7th column in the CSV
 		    val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
 		
-		    rdd1.saveAsTextFile("wasb:///HVACOut")
+		    rdd1.saveAsTextFile("wasbs:///HVACOut")
 		  }		
 		}
 
@@ -306,4 +306,4 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

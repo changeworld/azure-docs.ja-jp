@@ -1,6 +1,6 @@
 この記事では、スケーラビリティ、可用性、管理容易性、およびセキュリティに注目しながら、Azure で Windows 仮想マシン (VM) を実行するための実績のある一連の手法について説明します。
 
-> [AZURE.NOTE] Azure には、[Resource Manager][resource-manager-overview] とクラシックという 2 種類のデプロイ モデルがあります。この記事では、新しいデプロイ用に Microsoft から推奨されている Resource Manager を使います。
+> [AZURE.NOTE] Azure には、[Azure Resource Manager][resource-manager-overview] とクラシックという 2 種類のデプロイ モデルがあります。この記事では、新しいデプロイ用に Microsoft から推奨されている Resource Manager を使います。
 
 Azure 上の単一の VM にはアップタイムの SLA がないため、実稼働ワークロードで単一の VM を使用することは推奨しません。SLA を取得するには、複数の VM を可用性セットにデプロイする必要があります。詳細については、「[Running multiple Windows VMs on Azure (Azure で複数の Windows VM を実行する)][multi-vm]」を参照してください。
 
@@ -10,13 +10,13 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 ![[0]][0]
 
-- **リソース グループ。** [リソース グループ][resource-manager-overview]は、関連リソースを保持するコンテナーです。この VM のリソースを保持するリソース グループを作成します。
+- **リソース グループ。** [_リソース グループ_][resource-manager-overview]は、関連リソースを保持するコンテナーです。この VM のリソースを保持するリソース グループを作成します。
 
-- **VM**。VM は、発行されたイメージのリスト、または Azure Blob Storage にアップロードした VHD ファイルからプロビジョニングできます。
+- **VM。**VM は、発行されたイメージのリスト、または Azure Blob Storage にアップロードした VHD ファイルからプロビジョニングできます。
 
 - **OS ディスク。** OS ディスクは、[Azure Storage][azure-storage] に格納されている VHD です。これは、ホスト コンピューターがダウンした場合でも VM が保持されることを意味します。
 
-- **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。このディスクは、Azure Storage には保存されないため、再起動中や他の VM ライフサイクル イベント時に失われる可能性があります。ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
+- **一時ディスク。** VM は一時ディスク (Windows の `D:` ドライブ) を使用して作成されます。このディスクは、ホスト コンピューターの物理ドライブ上に格納されます。このディスクは、Azure Storage には保存_されない_ため、再起動中やその他の VM ライフサイクル イベント時に失われる可能性があります。ページ ファイルやスワップ ファイルなどの一時的なデータにのみ、このディスクを使用してください。
 
 - **データ ディスク。** [データ ディスク][data-disk]は、アプリケーション データに使用される永続的な VHD です。データ ディスクは、OS ディスクと同様に、Azure Storage に格納されます。
 
@@ -34,7 +34,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 ### VM の推奨事項
 
-- ハイ パフォーマンス コンピューティングなどの特殊なワークロードがない限り、DS と GS のシリーズをお勧めします。詳細については、「[仮想マシンのサイズ][virtual-machine-sizes]」をご覧ください。既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。次に、CPU、メモリ、およびディスク IOPS について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。また、複数の NIC が必要な場合は、各サイズの NIC の制限に注意してください。
+- ハイ パフォーマンス コンピューティングなどの特殊なワークロードがない限り、DS と GS のシリーズをお勧めします。詳細については、[仮想マシンのサイズ][virtual-machine-sizes] に関する記事をご覧ください。既存のワークロードを Azure に移動する場合は、オンプレミスのサーバーに最も適合性が高い VM サイズから開始します。次に、CPU、メモリ、およびディスク IOPS について、実際のワークロードのパフォーマンスを測定し、必要に応じてサイズを調整します。また、複数の NIC が必要な場合は、各サイズの NIC の制限に注意してください。
 
 - VM および他のリソースをプロビジョニングする際は、場所を指定する必要があります。一般的に、内部ユーザーや顧客に最も近い場所を選択します。ただし、すべての場所ですべての VM サイズを利用できるとは限りません。詳細については、「[リージョン別のサービス][services-by-region]」をご覧ください。指定した場所で利用できる VM サイズを一覧表示するには、次の Azure CLI コマンドを実行します。
 
@@ -104,7 +104,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
     azure vm deallocate <resource-group> <vm-name>
     ```
 
-    Azure ポータルの **[停止]** ボタンを使用した場合も VM の割り当てが解除されます。ただし、ログイン中に OS からシャットダウンした場合、VM は停止しますが、割り当て解除されないため、引き続き課金されます。
+    Azure ポータルの **[停止]** ボタンを使用した場合も VM の割り当てが解除されます。ただし、ログイン中に OS からシャットダウンした場合、VM は停止しますが、割り当て解除 _"されない"_ ため、引き続き課金されます。
 
 - **VM の削除。** VM を削除しても VHD は削除されません。つまり、データを失うことなく安全に VM を削除できます。ただし、Storage に対して引き続き課金されます。VHD を削除するには、[BLOB ストレージ][blob-storage]からファイルを削除します。
 
@@ -115,13 +115,14 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 - [Azure Security Center][security-center] を使用すると、Azure リソースのセキュリティの状態を一元的に表示して把握できます。セキュリティ センターは、潜在的なセキュリティ上の問題 (システムの更新プログラム、マルウェア対策など) を監視し、デプロイのセキュリティの正常性を包括的に示します。
 
     - セキュリティ センターは、Azure サブスクリプションごとに構成されます。[セキュリティ センターの使用]に関する記事の説明に従って、セキュリティ データの収集を有効にします。
+
     - データ収集を有効にすると、セキュリティ センターは、そのサブスクリプションに作成されているすべての VM を自動的にスキャンします。
 
 - **更新プログラムの管理。** 有効な場合、セキュリティ センターは、セキュリティと重要な更新プログラムが不足しているかどうかを確認します。VM で[グループ ポリシー設定][group-policy]を使用して、システムの自動更新を有効にします。
 
 - **マルウェア対策。** 有効な場合、セキュリティ センターは、マルウェア対策ソフトウェアがインストールされているかどうかを確認します。セキュリティ センターを使用して、Azure ポータル内からマルウェア対策ソフトウェアをインストールすることもできます。
 
-- [ロールベースのアクセス制御][rbac] (RBAC) を使用して、デプロイする Azure リソースへのアクセスを制御します。RBAC を使用すると、DevOps チームのメンバーに承認の役割を割り当てることができます。たとえば、閲覧者の役割では、Azure リソースを表示することはできますが、作成、削除、または管理することはできません。一部の役割は、特定の Azure リソースの種類に固有です。たとえば、仮想マシン作成協力者ロールでは、VM の再起動または割り当て解除、管理者パスワードのリセット、新しい VM の作成などができます。このリファレンス アーキテクチャで役立つ他の[組み込みの RBAC の役割][rbac-roles]として、[DevTest ラボ ユーザー][rbac-devtest]や[ネットワーク作成協力者][rbac-network]などがあります。ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
+- [ロールベースのアクセス制御][rbac] (RBAC) を使用して、デプロイする Azure リソースへのアクセスを制御します。RBAC を使用すると、DevOps チームのメンバーに承認の役割を割り当てることができます。たとえば、閲覧者の役割では、Azure リソースを表示することはできますが、作成、削除、または管理することはできません。一部の役割は、特定の Azure リソースの種類に固有です。たとえば、仮想マシンの共同作業者の役割では、VM の再起動または割り当て解除、管理者パスワードのリセット、新しい VM の作成などができます。この参照アーキテクチャで役立つ可能性があるその他の[組み込みの RBAC の役割][rbac-roles]は、[DevTest ラボ ユーザー][rbac-devtest]および[ネットワークの共同作業者][rbac-network]に含まれています。ユーザーを複数の役割に割り当てることができ、よりきめ細かいアクセス許可のカスタム ロールを作成することができます。
 
     > [AZURE.NOTE] RBAC では、VM にログインしているユーザーが実行できる操作は制限されません。これらのアクセス許可は、ゲスト OS のアカウントの種類によって決まります。
 
@@ -137,128 +138,209 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 ## ソリューションのコンポーネント
 
-次の Windows バッチ スクリプトは、[Azure CLI][azure-cli] コマンドを実行し、前の図に示すように、単一の VM インスタンスとそれに関連するネットワーク リソースやストレージ リソースをデプロイします。
+ソリューションのサンプル スクリプト ([Deploy-ReferenceArchitecture.ps1][solution-script]) が用意されています。このスクリプトを使用すると、この記事で説明されている推奨事項に従ったアーキテクチャを実装できます。このスクリプトは、[Resource Manager][ARM-Templates] のテンプレートを使用します。テンプレートは、特定のアクション (VNet の作成や NSG の構成など) を実行する基本的な構成要素のセットとして利用できます。スクリプトの目的は、テンプレート デプロイを調整することです。
 
-このスクリプトでは、「[Recommended Naming Conventions for Azure Resources (Azure リソースの推奨される名前付け規則)][naming conventions]」で説明されている名前付け規則を使用します。
+別の JSON ファイル内で保持されているパラメーターを使用して、テンプレートがパラメーター化されます。これらのファイルにあるパラメーターを変更して、独自の要件を満たすようにデプロイを構成できます。テンプレート自体を変更する必要はありません。パラメーター ファイル内のオブジェクトのスキーマを変更してはならないことに注意してください。
 
-```bat
-ECHO OFF
-SETLOCAL
+テンプレートを編集する場合は、「[Recommended Naming Conventions for Azure Resources (Azure リソースの推奨される名前付け規則)][naming conventions]」で説明されている名前付け規則に従って、オブジェクトを作成します。
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Set up variables for deploying resources to Azure.
-:: Change these variables for your own deployment.
+スクリプトでは、以下のパラメーター ファイルを参照して VM および関連するインフラストラクチャを構築します。
 
-:: The APP_NAME variable must not exceed 4 characters in size.
-:: If it does the 15 character size limitation of the VM name may be exceeded.
+- **[virtualNetwork.parameters.json][vnet-parameters]**: このファイルは、名前、アドレス空間、サブネット、および必要となるすべての DNS サーバーのアドレスなど、VNet 設定を定義します。サブネット アドレスは VNet のアドレス空間に含まれている必要があることに注意してください。
 
-SET APP_NAME=app1
-SET LOCATION=eastus2
-SET ENVIRONMENT=dev
-SET USERNAME=testuser
+	```json
+	"parameters": {
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet",
+          "addressPrefixes": [
+            "172.17.0.0/16"
+          ],
+          "subnets": [
+            {
+              "name": "app1-subnet",
+              "addressPrefix": "172.17.0.0/24"
+            }
+          ],
+          "dnsServers": [ ]
+        }
+      }
+	}
+	```
 
+- **[networkSecurityGroup.parameters.json][nsg-parameters]**: このファイルには、NSG と NSG 規則の定義が含まれています。`virtualNetworkSettings` ブロック内の `name` パラメーターは、NSG が接続される VNet を指定します。`networkSecurityGroupSettings` ブロック内の `subnets` パラメーターは、VNet で NSG 規則を適用するすべてのサブネットを指定します。これらは、**virtualNetwork.parameters.json** ファイルで定義された項目である必要があります。
 
-:: For Windows, use the following command to get the list of URNs:
-:: azure vm image list %LOCATION% MicrosoftWindowsServer WindowsServer 2012-R2-Datacenter
-SET WINDOWS_BASE_IMAGE=MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20160126
+	次の例に示す既定のセキュリティ規則では、ユーザーはリモート デスクトップ (RDP) 接続を介して VM に接続できます。`securityRules` 配列に項目をさらに追加することで、追加のポートを開くことができます (または特定のポート経由のアクセスを拒否できます)。
 
-:: For a list of VM sizes see:
-::   https://azure.microsoft.com/documentation/articles/virtual-machines-size-specs/
-:: To see the VM sizes available in a region:
-:: 	azure vm sizes --location <location>
-SET VM_SIZE=Standard_DS1
+	```json
+	"parameters": {
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet"
+        },
+        "metadata": {
+          "description": "Infrastructure Settings"
+        }
+      },
+      "networkSecurityGroupSettings": {
+        "value": {
+          "name": "app1-nsg",
+          "subnets": [
+            "app1-subnet"
+          ],
+          "securityRules": [
+            {
+              "name": "RDPAllow",
+              "direction": "Inbound",
+              "priority": 100,
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "access": "Allow",
+              "protocol": "Tcp"
+            }
+          ]
+        }
+      }
+	}
+	```
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+- **[virtualMachineParameters.json][vm-parameters]**: このファイルでは、VM の名前とサイズ、管理者ユーザーのセキュリティ資格情報、作成するディスク、作成したディスクを保持するストレージ アカウントなど、VM 自体の設定を定義します。
 
-IF "%2"=="" (
-    ECHO Usage: %0 subscription-id admin-password
-    EXIT /B
-    )
+	`imageReference` セクションでイメージを定義する必要があります。以下の値では、Windows Server 2012 R2 Datacenter の最新のビルドを使用して VM を作成します。次の Azure CLI コマンドを使用すると、リージョン (この例では米国西部リージョン) 内のすべての利用可能な Windows イメージの一覧を取得できます。
 
-:: Explicitly set the subscription to avoid confusion as to which subscription
-:: is active/default
-SET SUBSCRIPTION=%1
-SET PASSWORD=%2
+	```powershell
+	azure vm image list westus MicrosoftWindowsServer WindowsServer
+	```
 
-:: Set up the names of things using recommended conventions
-SET RESOURCE_GROUP=%APP_NAME%-%ENVIRONMENT%-rg
-SET VM_NAME=%APP_NAME%-vm0
+	`nics` セクション内の `subnetName` パラメーターは、VM のサブネットを指定します。同様に、`virtualNetworkSettings` 内の `name` パラメーターは、使用するVNet を指定します。これらは、**virtualNetwork.parameters.json** ファイルで定義されたサブネットと VNet の名前である必要があります。
 
-SET IP_NAME=%APP_NAME%-pip
-SET NIC_NAME=%VM_NAME%-0nic
-SET NSG_NAME=%APP_NAME%-nsg
-SET SUBNET_NAME=%APP_NAME%-subnet
-SET VNET_NAME=%APP_NAME%-vnet
-SET VHD_STORAGE=%VM_NAME:-=%st0
-SET DIAGNOSTICS_STORAGE=%VM_NAME:-=%diag
+	`buildingBlockSettings` セクションで設定を変更することにより、1 つのストレージ アカウントを共有するかまたはそれぞれ独自のストレージ アカウントを持つ複数の VM を作成することができます。複数の VM を作成する場合、`availabilitySet` セクションで、使用または作成する可用性セットの名前も指定する必要があります。
 
-:: Set up the postfix variables attached to most CLI commands
-SET POSTFIX=--resource-group %RESOURCE_GROUP% --subscription %SUBSCRIPTION%
+	```json
+	"parameters": {
+      "virtualMachinesSettings": {
+        "value": {
+          "namePrefix": "app1",
+          "computerNamePrefix": "",
+          "size": "Standard_DS1",
+          "osType": "windows",
+          "adminUsername": "testuser",
+          "adminPassword": "AweS0me@PW",
+          "osAuthenticationType": "password",
+          "nics": [
+            {
+              "isPublic": "true",
+              "subnetName": "app1-subnet",
+              "privateIPAllocationMethod": "dynamic",
+              "publicIPAllocationMethod": "dynamic",
+              "isPrimary": "true"
+            }
+          ],
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2012-R2-Datacenter",
+            "version": "latest"
+          },
+          "dataDisks": {
+            "count": 2,
+            "properties": {
+              "diskSizeGB": 128,
+              "caching": "None",
+              "createOption": "Empty"
+            }
+          },
+          "osDisk": {
+            "caching": "ReadWrite"
+          },
+          "availabilitySet": {
+            "useExistingAvailabilitySet": "No",
+            "name": ""
+          }
+        },
+        "metadata": {
+          "description": "Settings for Virtual Machines"
+        }
+      },
+      "virtualNetworkSettings": {
+        "value": {
+          "name": "app1-vnet",
+          "resourceGroup": "app1-dev-rg"
+        },
+        "metadata": {
+          "description": "Infrastructure Settings"
+        }
+      },
+      "buildingBlockSettings": {
+        "value": {
+          "storageAccountsCount": 1,
+          "vmCount": 1,
+          "vmStartIndex": 0
+        },
+        "metadata": {
+          "description": "Settings specific to the building block"
+        }
+      }
+	}
+	```
 
-CALL azure config mode arm
+## デプロイ
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Create resources
+ソリューションは、次の条件を前提とします。
 
-:: Create the enclosing resource group
-CALL azure group create --name %RESOURCE_GROUP% --location %LOCATION% ^
-  --subscription %SUBSCRIPTION%
+- リソース グループを作成できる既存の Azure サブスクリプションがある。
 
-:: Create the VNet
-CALL azure network vnet create --address-prefixes 172.17.0.0/16 ^
-  --name %VNET_NAME% --location %LOCATION% %POSTFIX%
+- Azure Powershell の最新のビルドをダウンロードしてインストールしている。手順については、[こちら][azure-powershell-download]を参照してください。
 
-:: Create the network security group
-CALL azure network nsg create --name %NSG_NAME% --location %LOCATION% %POSTFIX%
+ソリューションを展開するスクリプトを実行するには、次の手順を実行します。
 
-:: Create the subnet
-CALL azure network vnet subnet create --vnet-name %VNET_NAME% --address-prefix ^
-  172.17.0.0/24 --name %SUBNET_NAME% --network-security-group-name %NSG_NAME% ^
-  %POSTFIX%
+1. ローカル コンピューター上の適切なフォルダーに移動し、次の 2 つのサブフォルダーを作成します。
 
-:: Create the public IP address (dynamic)
-CALL azure network public-ip create --name %IP_NAME% --location %LOCATION% %POSTFIX%
+	- スクリプト
 
-:: Create the NIC
-CALL azure network nic create --public-ip-name %IP_NAME% --subnet-name ^
-  %SUBNET_NAME% --subnet-vnet-name %VNET_NAME%  --name %NIC_NAME% --location ^
-  %LOCATION% %POSTFIX%
+	- テンプレート
 
-:: Create the storage account for the OS VHD
-CALL azure storage account create --type PLRS --location %LOCATION% %POSTFIX% ^
-  %VHD_STORAGE%
+2. Templates フォルダーで、Windows という名前のサブフォルダーを作成します。
 
-:: Create the storage account for diagnostics logs
-CALL azure storage account create --type LRS --location %LOCATION% %POSTFIX% ^
-  %DIAGNOSTICS_STORAGE%
+3. [Deploy-ReferenceArchitecture.ps1][solution-script] ファイルを Scripts フォルダーにダウンロードします。
 
-:: Create the VM
-CALL azure vm create --name %VM_NAME% --os-type Windows --image-urn ^
-  %WINDOWS_BASE_IMAGE% --vm-size %VM_SIZE%   --vnet-subnet-name %SUBNET_NAME% ^
-  --vnet-name %VNET_NAME% --nic-name %NIC_NAME% --storage-account-name ^
-  %VHD_STORAGE% --os-disk-vhd "%VM_NAME%-osdisk.vhd" --admin-username ^
-  "%USERNAME%" --admin-password "%PASSWORD%" --boot-diagnostics-storage-uri ^
-  "https://%DIAGNOSTICS_STORAGE%.blob.core.windows.net/" --location %LOCATION% ^
-  %POSTFIX%
+4. Templates/Windows フォルダーに、次のファイルをダウンロードします。
 
-:: Attach a data disk
-CALL azure vm disk attach-new --vm-name %VM_NAME% --size-in-gb 128 --vhd-name ^
-  data1.vhd --storage-account-name %VHD_STORAGE% %POSTFIX%
+	- [virtualNetwork.parameters.json][vnet-parameters]
 
-:: Allow RDP
-CALL azure network nsg rule create --nsg-name %NSG_NAME% --direction Inbound ^
-  --protocol Tcp --destination-port-range 3389 --source-port-range * ^
-  --priority 100 --access Allow RDPAllow %POSTFIX%
-```
+	- [networkSecurityGroup.parameters.json][nsg-parameters]
 
+	- [virtualMachineParameters.json][vm-parameters]
+
+5. Scripts フォルダーの Deploy-ReferenceArchitecture.ps1 ファイルを編集して次の行を変更し、スクリプトによって作成される VM とリソースを保持するために作成または使用するリソース グループを指定します。
+
+	```powershell
+	$resourceGroupName = "app1-dev-rg"
+	```
+6. 「ソリューションのコンポーネント」セクションの説明に従って、Templates/Windows フォルダー内の仮想ネットワーク、NSG、VM の各パラメーターを設定する json ファイルをそれぞれ編集します。
+
+	>[AZURE.NOTE] virtualMachineParameters.json ファイルの `virtualNetworkSettings` セクションの `resourceGroup` パラメーターは、Deploy-ReferenceArchitecture.ps1 スクリプト ファイルで指定したのと同じものに設定してください。
+
+7. Azure PowerShell ウィンドウを開き、Scripts フォルダーに移動して、次のコマンドを実行します。
+
+	```powershell
+	.\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> Windows
+	```
+
+	`<subscription id>` は、Azure サブスクリプション ID に置き換えてください。
+
+	`<location>` には、`eastus` や `westus` などの Azure リージョンを指定します。
+
+8. スクリプトの実行が完了したら、Azure ポータルを使用してネットワーク、NSG、VM が正常に作成されたことを確認ます。
 
 ## 次のステップ
 
-[仮想マシンの SLA][vm-sla] を適用するには、可用性セットに 2 つ以上のインスタンスをデプロイする必要があります。詳細については、[Azure での複数の Windows VM の実行][multi-vm]に関する記事をご覧ください。
+[Virtual Machines の SLA][vm-sla] を適用するには、可用性セットに 2 つ以上のインスタンスをデプロイする必要があります。詳細については、「[Running multiple VMs on Azure (Azure で複数の VM を実行する)][multi-vm]」を参照してください。
 
 <!-- links -->
 
-[arm-templates]: ../articles/virtual-machines/virtual-machines-windows-cli-deploy-templates.md
 [audit-logs]: https://azure.microsoft.com/ja-JP/blog/analyze-azure-audit-logs-in-powerbi-more/
 [azure-cli]: ../articles/virtual-machines-command-line-tools.md
 [azure-storage]: ../articles/storage/storage-introduction.md
@@ -299,6 +381,12 @@ CALL azure network nsg rule create --nsg-name %NSG_NAME% --direction Inbound ^
 [vm-disk-limits]: ../articles/azure-subscription-service-limits.md#virtual-machine-disk-limits
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
 [vm-sla]: https://azure.microsoft.com/ja-JP/support/legal/sla/virtual-machines/v1_0/
-[0]: ./media/guidance-blueprints/compute-single-vm.png "Azure VM の全般的なアーキテクチャ"
+[ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
+[solution-script]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Scripts/Deploy-ReferenceArchitecture.ps1
+[vnet-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/virtualNetwork.parameters.json
+[nsg-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/networkSecurityGroup.parameters.json
+[vm-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/virtualMachine.parameters.json
+[azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[0]: ./media/guidance-blueprints/compute-single-vm.png "Azure での単一の Windows VM アーキテクチャ"
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

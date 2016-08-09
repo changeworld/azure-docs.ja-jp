@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で OS バージョンを更新する
 
 Azure Security Center では、クラウド サービス内の仮想マシン (VM) で使用しているオペレーティング システム (OS) の最新バージョンが提供されている場合、そのバージョンに更新するよう推奨されます。監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -28,7 +28,7 @@ Azure Security Center では、クラウド サービス内の仮想マシン (V
 
 2. これにより、**[Update OS version (OS バージョンの更新)]** ブレードが開きます。このブレードの手順に従い、OS バージョンを更新します。
 
-## 次のステップ
+## 関連項目
 
 この記事では、"OS バージョンの更新" という Security Center の推奨事項を実装する方法について説明しました。 クラウド サービス、およびクラウド サービスの OS バージョンの更新について詳しくは、以下の記事を参照してください。
 
@@ -49,4 +49,4 @@ Azure Security Center では、クラウド サービス内の仮想マシン (V
 <!--Image references-->
 [1]: ./media/security-center-update-os-version/update-os-version.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

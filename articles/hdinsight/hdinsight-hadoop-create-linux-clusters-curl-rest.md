@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="05/16/2016"
+   	ms.date="07/27/2016"
    	ms.author="larryfr"/>
 
 #cURL と Azure REST API を使用して HDInsight に Linux ベースのクラスターを作成する
@@ -362,7 +362,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
 * __SubscriptionID__ をサービス プリンシパルの作成時に受信するサブスクリプション ID に置き換えます。
 * __AccessToken__ を前の手順で受け取ったアクセス トークンに置き換えます。
-* __DataCenterLocation__ をリソース グループやリソースを作成するデータ センターに置き換えます。たとえば、"South Central US" のようになります。 
+* __DataCenterLocation__ をリソース グループやリソースを作成するデータ センターに置き換えます。たとえば、"South Central US" のようになります。
 * __ResourceGroupName__ をこのグループに使用する名前に置き換えます。
 
 ```
@@ -380,7 +380,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 以下を使用して、クラスター構成 (テンプレートとパラメーター値) をリソース グループにデプロイします。
 
-* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。 
+* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。
 * __ResourceGroupName__ を前のセクションで作成したリソース グループの名前に置き換えます。
 * __DeploymentName__ を、このデプロイに使用する名前に置き換えます。
 
@@ -403,7 +403,7 @@ curl -X "PUT" "https://management.azure.com/subscriptions/SubscriptionID/resourc
 
 デプロイの状態を確認するには、次のコマンドを使用します。
 
-* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。 
+* __SubscriptionID__ と __AccessToken__ を前に使用した値に置き換えます。
 * __ResourceGroupName__ を前のセクションで作成したリソース グループの名前に置き換えます。
 
 ```
@@ -435,4 +435,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

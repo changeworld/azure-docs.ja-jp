@@ -161,7 +161,7 @@ Hadoop コマンドを使用するためには、まず、次の方法のいず�
 
 HDInsight の既定のファイル システムは Azure BLOB ストレージにあるため、/example/data.txt は実際は Azure BLOB ストレージ上にあります。このファイルは次のように表すこともできます。
 
-	wasb:///example/data/data.txt
+	wasbs:///example/data/data.txt
 
 または
 
@@ -188,7 +188,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 
 Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。この情報を取得する方法については、「[ストレージ アカウントの作成、管理、削除][azure-create-storage-account]」の「方法:ストレージ アクセス キーを表示、コピー、再生成する」をご覧ください。
 
-1. Azure Storage エクスプローラーを実行します。Storage エクスプローラーを初めて実行した場合は、___ストレージ アカウント名__と__ストレージ アカウント キー__の入力を求められます。Storage エクスプローラーを以前に実行したことがある場合は、__[追加]__ ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
+1. Azure Storage エクスプローラーを実行します。ストレージ エクスプローラーを初めて実行した場合は、__ストレージ アカウント名__ とストレージ アカウント キーの入力を求められます。ストレージ エクスプローラーを以前に実行したことがある場合は、[追加] ボタンをクリックして、新しいストレージ アカウント名とストレージ アカウント キーを追加します。
 
     HDinsight クラスターで使用されるストレージ アカウントの名前とキーを入力し、__[保存/開く]__ をクリックします。
 
@@ -282,4 +282,4 @@ Azure SDK のインストールの詳細については、[Azure のダウンロ
 [image-ase-addaccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="05/03/2016" 
+	ms.date="07/27/2016" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics でクエリを記述する方法
@@ -34,7 +34,7 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 2.	作業を始めやすいように、新しいジョブにはクエリ テンプレートが付いています。クエリ テンプレートは、入力イベントのすべてのフィールドを出力に反映させる「パススルー」クエリを実行します。
 
     - ジョブに少なくとも 1 つの入力と出力が定義されている場合、プレースホルダーの "[YourOutputAlias]" および "[YourInputAlias]" フィールドを最初に使用する入力および出力のエイリアスに置き換えることができます。さらに、ジョブで入力と出力を定義していなくても、Azure クラシック ポータルでクエリを作成してテストできます。
-    - 単純なパススルーでは対応できない処理を実行する必要がある場合は、クエリの定義を編集できます。クエリの作成を始めるに際は、よく使用されるクエリのパターンを[こちら](stream-analytics-stream-analytics-query-patterns.md)で確認してください。  
+    - 単純なパススルーでは対応できない処理を実行する必要がある場合は、クエリの定義を編集できます。クエリの作成を始めるに際は、よく使用されるクエリのパターンを[こちら](stream-analytics-stream-analytics-query-patterns.md)で確認してください。
   
     ![クエリ データ ウィンドウ](./media/stream-analytics-write-queries/2-stream-analytics-write-queries.png)
 
@@ -44,7 +44,7 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 
 > [AZURE.NOTE] 現在、Azure ポータルでは、ブラウザー内クエリ テストはサポートされていません。
 
-1.	クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。  
+1.	クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。
 
     ![クエリ データ テスト](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)
 
@@ -71,4 +71,4 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0727_2016-->

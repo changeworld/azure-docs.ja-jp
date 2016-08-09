@@ -13,12 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/25/2016"
    ms.author="kipandya"/>
    
 # 複数リージョンの DocumentDB アカウントを使用した開発
 
-[グローバル分散](documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションは、ドキュメントの操作の実行に使用されるリージョンの順序付き優先リストを指定できます。これは、接続ポリシーを設定して行います。Azure DocumentDB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
+> [AZURE.NOTE] DocumentDB データベースのグローバル配布は、広く利用可能な機能であり、新しく作成した DocumentDB アカウントで自動的に有効になります。弊社は既存のすべてのアカウントでグローバル配布が有効になるように取り組んでいます。ただし当面は、ご使用のアカウントでグローバル配布の有効化を希望される場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)いただければすぐに有効にいたします。
+
+[グローバル配布](documentdb-distribute-data-globally.md)を活用するために、クライアント アプリケーションでは、ドキュメントの操作の実行に使用するリージョンの順序付き優先リストを指定できます。これは、接続ポリシーを設定して行います。Azure DocumentDB アカウント構成、現在のリージョンの可用性、指定された優先リストに基づいて、書き込み操作と読み取り操作を実行する SDK によって最適なエンドポイントが選択されます。
 
 この優先リストは、DocumentDB クライアント SDK を使用して接続を初期化する際に指定されます。SDK は、Azure リージョンの順序付きリストである省略可能なパラメーター "PreferredLocations" を受け取ります。
 
@@ -36,7 +38,7 @@ PreferredLocations プロパティが設定されていない場合、すべて�
 ## .NET SDK
 SDK はコードに変更を加えることなく使用できます。この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。文字列値は、「[Azure のリージョン][regions]」ページのリージョン名の列ごとに書式設定されます。先頭と末尾の文字の前後にはスペースはありません。
+.NET SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations という名前のプロパティがあります。このプロパティは、コレクション型 `<string>` であり、リージョン名のリストを含んでいる必要があります。文字列値は、[[Azure のリージョン]][regions] ページのリージョン名の列ごとに書式設定されます。先頭と末尾の文字のそれぞれ前後にはスペースはありません。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.WriteEndpoint と DocumentClient.ReadEndpoint で使用できます。
 
@@ -64,7 +66,7 @@ SDK はコードに変更を加えることなく使用できます。この場�
 ## NodeJS SDK、JavaScript SDK、Python SDK
 SDK はコードに変更を加えることなく使用できます。この場合、SDK は読み取りと書き込みの両方を現在の書き込みリージョンに自動的に転送します。
 
-各 SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに DocumentClient.ConnectionPolicy.PreferredLocations という名前の新しいプロパティがあります。このパラメーターは、リージョン名のリストを受け取る文字列の配列です。この名前は「[Azure のリージョン][regions]」ページのリージョン名の列ごとに書式設定されます。便利なオブジェクト AzureDocuments.Regions で事前定義された定数を使用することもできます。
+各 SDK のバージョン 1.8 以降では、DocumentClient コンストラクターの ConnectionPolicy パラメーターに DocumentClient.ConnectionPolicy.PreferredLocations という名前の新しいプロパティがあります。このパラメーターは、リージョン名のリストを受け取る文字列の配列です。この名前は [[Azure のリージョン]][regions] ページのリージョン名の列ごとに書式設定されます。便利なオブジェクト AzureDocuments.Regions で事前定義された定数を使用することもできます。
 
 現在の書き込みエンドポイントと読み取りエンドポイントはそれぞれ、DocumentClient.getWriteEndpoint と DocumentClient.getReadEndpoint で使用できます。
 
@@ -143,4 +145,4 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

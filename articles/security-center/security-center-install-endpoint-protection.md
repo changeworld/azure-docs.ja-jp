@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/15/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Endpoint Protection をインストールする
 
 マルウェア対策を有効にしていない場合、Azure Security Center では、マルウェア対策プログラムを Azure 仮想マシン (VM) にプロビジョニングするよう推奨されます。この推奨事項は、Windows VM にのみ適用されます。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -36,7 +36,7 @@
 
 これで、[Microsoft マルウェア対策](../azure-security-antimalware.md)が、選択した VM でアクティブになりました。
 
-## 次のステップ
+## 関連項目
 
 この記事では、"Endpoint Protection をインストールします" という Security Center の推奨事項を実装する方法について説明しました。 Azure でのマルウェア対策プログラムの有効化について詳しくは、以下を参照してください。
 
@@ -58,4 +58,4 @@
 [3]: ./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]: ./media/security-center-install-endpoint-protection/create-antimalware-solution.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

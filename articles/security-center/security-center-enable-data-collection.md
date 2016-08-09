@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Security Center のデータ収集を有効にする | Microsoft Azure"
-   description="Azure Security Center のデータ収集を有効にする方法について説明します。"
+   description=" Azure Security Center のデータ収集を有効にする方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center のデータ収集を有効にする
 
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログなど、Azure 仮想マシンに関するさまざまなデータを収集、処理しています。最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。データ収集は有効にしておくことをお勧めしますが、Security Center のポリシーでデータ収集をオフにして、オプトアウトすることもできます ([データ収集の無効化](#disabling-data-collection)を参照)。データ収集を無効にすると、そのサブスクリプションのセキュリティ ポリシーでデータ収集を有効にするよう Security Center から提案されます。
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -60,7 +60,7 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 
 5.	上部のリボンにある **[エージェントを削除]** を選択し、既存の仮想マシンからエージェントを削除します。
 
-## 次のステップ
+## 関連項目
 
 この記事では、"データ収集の有効化" という Security Center の推奨事項を実践する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
@@ -80,4 +80,4 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 [5]: ./media/security-center-enable-data-collection/policy.png
 [6]: ./media/security-center-enable-data-collection/disable-data-collection.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

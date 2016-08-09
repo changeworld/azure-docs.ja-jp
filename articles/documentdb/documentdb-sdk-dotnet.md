@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/20/2016" 
+	ms.date="07/25/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -24,7 +24,7 @@
 - [Java SDK](documentdb-sdk-java.md)
 - [Python SDK](documentdb-sdk-python.md)
 
-##DocumentDB .NET SDK
+## DocumentDB .NET SDK
 
 <table>
 <tr><td>**ダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
@@ -36,22 +36,19 @@
 
 ## リリース ノート
 
-### <a name="1.9.1"/>[1\.9.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.1)
-  - 並列クエリの SELECT VALUE、クロスパーティションのTOP クエリ、およびクロスパーティションの ORDER BY クエリのサポートを追加しました。
-  - クロスパーティションの TOP および ORDER BY クエリのパフォーマンスが改善されました。
-  - エラー メッセージを更新し、パーティション分割コレクションに対してクエリを実行しているときに、System.NotSupportedException のハンドルされていない例外が発生した場合は、エラー回避のために [ビルド] タブの [プロジェクト プロパティ] ウィンドウで "32 ビットの優先" オプションをオフにすることを明確にしました。
+### <a name="1.9.2"/>[1\.9.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.2)
+> [AZURE.IMPORTANT] パーティション分割コレクションに対してクエリを実行すると、System.NotSupportedException が表示される場合があります。このエラーを回避するには、[ビルド] タブのプロジェクトのプロパティ ウィンドウで [32 ビットを優先] オプションをオフにします。
+
+  - パーティション分割コレクションの並列クエリのサポートを追加しました。
+  - パーティション分割コレクションのクロス パーティションの ORDER BY および TOP クエリに対するサポートを追加しました。
   - DocumentDB NuGet パッケージについての参照で、 DocumentDB プロジェクトを参照するときに必要なDocumentDB.Spatial.Sql.dll と Microsoft.Azure.Documents.ServiceInterop.dll への参照の不足を修正しました。
   - LINQ でのユーザー定義関数の使用時に各種パラメーターを使用する機能を修正しました。
-
-
-### <a name="1.9.0"/>[1\.9.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.0)
-  - .NET クライアントの既定の接続モードを ConnectionMode.Direct に変更し、TCP 直接接続の使用によりパフォーマンスが改善されました。ConnectionPolicy.ConnectionProtocol プロパティを非推奨にし、ConnectionMode 列挙体に DirectHttps 値を追加しました。
   - Upsert コールが書き込み専用ロケーションではなく、読み取り専用ロケーションにダイレクトされる、グローバルにレプリケートされたアカウントのバグを修正しました。
-  - IDocumentClient インターフェースに、不足していた次のメソッドを追加しました。 mediaStream とオプションをパラメーターとして受け取るUpsertAttachmentAsync メソッド、 オプションをパラメーターとして受け取る CreateAttachmentAsync メソッド、および querySpec をパラメーターとして受け取る CreateOfferQuery メソッド。
+  - IDocumentClient インターフェイスに、不足していた次のメソッドを追加しました。
+      - mediaStream とオプションをパラメーターとして受け取る UpsertAttachmentAsync メソッド
+      - オプションをパラメーターとして受け取る CreateAttachmentAsync メソッド
+      - querySpec をパラメーターとして受け取る CreateOfferQuery メソッド
   - IDocumentClient インターフェースで公開されているパブリック クラスのシールを解除しました。
-  - パーティション分割コレクションの並列クエリのサポートを追加しました。
-  - パーティション分割コレクションのクロス パーティション Order By のサポートを追加しました。
-  
 
 ### <a name="1.8.0"/>[1\.8.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.8.0)
   - 複数リージョンのデータベース アカウントのサポートを追加しました。
@@ -138,8 +135,7 @@
 - GA SDK
 
 > [AZURE.NOTE]
-プレビューと GA の間で NuGet パッケージ名の変更がありました。**Microsoft.Azure.Documents.Client** が **Microsoft.Azure.DocumentDB** になりました。
-<br/>
+プレビューと GA の間で NuGet パッケージ名の変更がありました。**Microsoft.Azure.Documents.Client** が **Microsoft.Azure.DocumentDB** になりました。 <br/>
 
 
 ### <a name="0.9.x-preview"/>[0\.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
@@ -153,33 +149,34 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 提供終了の SDK で DocumentDB に要求した場合、サービスにより却下されます。
 
 > [AZURE.WARNING]
-バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for .NET は **2016 年 2 月 29 日**で提供が終了します。 
+バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for .NET は **2016 年 2 月 29 日**で提供が終了します。
  
 <br/>
  
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1.9.1](#1.9.1) | 2016 年 7 月 20 日 |---
-| [1.9.0](#1.9.0) | 2016 年 7 月 9 日 |---
-| [1.8.0](#1.8.0) | 2016 年 6 月 14 日|---
-| [1.7.1](#1.7.1) | 2016 年 5 月 6 日 |---
-| [1.7.0](#1.7.0) | 2016 年 4 月 26 日 |---
-| [1.6.3](#1.6.3) | 2016 年 4 月 8 日 |---
-| [1.6.2](#1.6.2) | 2016 年 3 月 29 日 |---
-| [1.5.3](#1.5.3) | 2016 年 2 月 19 日 |---
-| [1.5.2](#1.5.2) | 2015 年 12 月 14 日 |---
-| [1.5.1](#1.5.1) | 2015 年 11 月 23 日 |---
-| [1.5.0](#1.5.0) | 2015 年 10 月 5 日 |---
-| [1.4.1](#1.4.1) | 2015 年 8 月 25 日 |---
-| [1.4.0](#1.4.0) | 2015 年 8 月 13 日|---
-| [1.3.0](#1.3.0) | 2015 年 8 月 5 日 |---
-| [1.2.0](#1.2.0) | 2015 年 7 月 6 日|---
-| [1.1.0](#1.1.0) | 2015 年 4 月 30 日 |---
-| [1.0.0](#1.0.0) | 2015 年 4 月 8 日|---
-| [0.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日
-| [0.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 15 日 | 2016 年 2 月 29 日
-| [.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日| 2016 年 2 月 29 日
-| [0.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日| 2016 年 2 月 29 日
+| [1\.9.2](#1.9.2) | 2016 年 7 月 23 日 |--- 
+| 1.9.1 | 不使用 |--- 
+| 1.9.0 | 不使用 |--- 
+| [1\.8.0](#1.8.0) | 2016 年 6 月 14 日 |--- 
+| [1\.7.1](#1.7.1) | 2016 年 5 月 06 日 |--- 
+| [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |--- 
+| [1\.6.3](#1.6.3) | 2016 年 4 月 08 日 |--- 
+| [1\.6.2](#1.6.2) | 2016 年 3 月 29 日 |--- 
+| [1\.5.3](#1.5.3) | 2016 年 2 月 19 日 |--- 
+| [1\.5.2](#1.5.2) | 2015 年 12 月 14 日 |--- 
+| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |--- 
+| [1\.5.0](#1.5.0) | 2015 年 10 月 05 日 |--- 
+| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |--- 
+| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |--- 
+| [1\.3.0](#1.3.0) | 2015 年 8 月 05 日 |--- 
+| [1\.2.0](#1.2.0) | 2015 年 7 月 06 日 |--- 
+| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |--- 
+| [1\.0.0](#1.0.0) | 2015 年 4 月 08 日 |--- 
+| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 | 2016 年 2 月 29 日 
+| [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 | 2016 年 2 月 29 日 
+| [0\.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 | 2016 年 2 月 29 日 
+| [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 | 2016 年 2 月 29 日
 
 ## FAQ
 [AZURE.INCLUDE [documentdb-sdk-faq](../../includes/documentdb-sdk-faq.md)]
@@ -188,4 +185,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!-------HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

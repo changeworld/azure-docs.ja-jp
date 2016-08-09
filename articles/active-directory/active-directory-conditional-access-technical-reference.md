@@ -1,11 +1,11 @@
 
 <properties
-	pageTitle="テクニカル リファレンス: Azure AD アプリへの条件付きアクセス | Microsoft Azure"
+	pageTitle="Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス | Microsoft Azure"
 	description="条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
     services="active-directory"
 	documentationCenter=""
-	authors="femila"
-	manager="swadhwa"
+	authors="markusvi"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,10 +14,10 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="07/26/2016"
+	ms.author="markvi"/>
 
-# テクニカル リファレンス: Azure AD アプリへの条件付きアクセス
+# Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
 ## 条件付きアクセスで有効になっているサービス
 条件付きアクセス規則は、さまざまな Azure AD アプリケーションの種類でサポートされています。たとえば、次のような種類です。
@@ -82,4 +82,4 @@
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

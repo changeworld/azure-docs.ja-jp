@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center でネットワーク セキュリティ グループを有効にする
@@ -23,7 +23,7 @@ Azure Security Center では、ネットワーク セキュリティ グルー�
 NSG を有効にしていない場合、Security Center によって "サブネット上のネットワーク セキュリティ グループを有効にする" と "仮想マシン上でネットワーク セキュリティ グループを有効にする" という 2 つの推奨事項が提示されます。サブネットと VM のどちらのレベルに NSG を適用するか選択してください。
 
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
 ## 推奨事項の実装
 
@@ -40,7 +40,7 @@ NSG を有効にしていない場合、Security Center によって "サブネ�
 
 新しい NSG を作成する場合は、「[Azure ポータルを使用して NSG を管理する方法](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)」の手順に従い、NSG を作成してセキュリティ規則を設定してください。
 
-## 次のステップ
+## 関連項目
 
 この記事では、Security Center の推奨事項である、サブネットまたは仮想マシンの "ネットワーク セキュリティ グループを有効にする" を実装する方法について説明しました。NSG の有効化の詳細については、以下の記事を参照してください。
 
@@ -63,4 +63,4 @@ NSG を有効にしていない場合、Security Center によって "サブネ�
 [3]: ./media/security-center-enable-nsg/configure-nsg-for-vm.png
 [4]: ./media/security-center-enable-nsg/choose-nsg.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0727_2016-->

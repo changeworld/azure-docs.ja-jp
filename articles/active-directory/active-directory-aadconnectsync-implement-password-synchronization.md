@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 <tags
 	ms.service="active-directory"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="07/20/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -31,14 +31,14 @@
 
 パスワード同期によって、覚えておく必要があるパスワードの数を減らして 1 つだけにすると、次のような利点があります。
 
-- ユーザーの生産性向上 
-- ヘルプデスク関連コストの削減  
+- ユーザーの生産性向上
+- ヘルプデスク関連コストの削減
 
 また、[**AD FS とのフェデレーション**](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)の使用を選択する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、パスワード同期を有効にすることができます。
 
 パスワード同期は、Azure AD Connect Sync によって実装されるディレクトリ同期の拡張機能です。環境でパスワード同期を使用するには、以下のことを行う必要があります。
 
-- Azure AD Connect のインストール  
+- Azure AD Connect のインストール
 
 - オンプレミス AD と Azure Active Directory 間のディレクトリ同期の構成
 
@@ -129,8 +129,8 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 
 1. **%programfiles%\\Azure AD Sync\\Bin** に移動します。
 2. **miiserver.exe.config** を開きます。
-2. **configuration/runtime** ノード (ファイル末尾) に移動します。 
-3. 次のノードを追加します: **<enforceFIPSPolicy enabled="false"/>** 
+2. **configuration/runtime** ノード (ファイル末尾) に移動します。
+3. 次のノードを追加します: **<enforceFIPSPolicy enabled="false"/>**
 4. 変更を保存します。
 
 セキュリティと FIPS の詳細については、[AAD パスワード同期、暗号化、FIPS コンプライアンス](http://blogs.technet.com/b/ad/archive/2014/06/28/aad-password-sync-encryption-and-and-fips-compliance.aspx)に関するページを参照してください。
@@ -201,4 +201,4 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0727_2016-->

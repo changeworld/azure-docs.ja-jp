@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-multiple"
  ms.workload="big-compute"
- ms.date="04/18/2016"
+ ms.date="07/22/2016"
  ms.author="danlep"/>
 
 # Azure の HPC Pack クラスターのコンピューティング ノードの数と可用性を管理する
@@ -179,4 +179,4 @@ Stop-HPCIaaSNode.ps1 –Name HPCNodeCN-* -Force
 
 * クラスターのジョブやタスクの現在のワークロードに合わせて、クラスター ノードを自動的に拡大縮小する方法については、「[クラスターのワークロードに合わせ、Azure で HPC Pack クラスター リソースを自動的に拡大縮小する](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -2,7 +2,7 @@
 - Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 - [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) アカウント。
 
-ロジック アプリで OneDrive アカウントを使用するには、OneDrive アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
+ロジック アプリで OneDrive アカウントを使用するには、OneDrive アカウントに接続するロジック アプリを承認してください。これは、Azure ポータルのロジック アプリ内で簡単に実行できます。
 
 次の手順に従って、OneDrive アカウントに接続するロジック アプリを承認します。
 
@@ -14,4 +14,4 @@
 4. **[はい]** を選択して、OneDrive アカウントを使用するロジック アプリを承認します。![](./media/connectors-create-api-onedrive/onedrive-4.png)
 5. 接続が作成されたことを確認します。これで、ロジック アプリで他の手順に進むことができます。![](./media/connectors-create-api-onedrive/onedrive-5.png)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

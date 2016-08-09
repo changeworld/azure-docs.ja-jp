@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/14/2016"
+	ms.date="07/22/2016"
 	ms.author="kgremban"/>
 
 # Azure コマンド ライン インターフェイスを使用したロールベースのアクセス制御の管理
@@ -39,6 +39,10 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 
 次の例では、*使用可能なすべてのロール*のリストを表示しています。
 
+```
+azure role list --json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
+```
+
 ![RBAC Azure コマンド ライン - azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
 
 ###	ロールのアクションの表示
@@ -47,6 +51,12 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
     azure role show "<role name>"
 
 次の例では、*共同作業者*ロールと*仮想マシンの共同作業者*ロールのアクションを表示しています。
+
+```
+azure role show "contributor" --json | jq '.[] | {"Actions":.properties.permissions[0].actions,"NotActions":properties.permissions[0].notActions}'
+
+azure role show "virtual machine contributor" --json | jq '.[] | .properties.permissions[0].actions'
+```
 
 ![RBAC Azure コマンド ライン - azure ロールの表示 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-show.png)
 
@@ -57,6 +67,10 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
     azure role assignment list --resource-group <resource group name>
 
 次の例は、*pharma-sales-projecforcast* グループのロールの割り当てを示しています。
+
+```
+azure role assignment list --resource-group pharma-sales-projecforcast --json | jq '.[] | {"DisplayName":.properties.aADObject.displayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+```
 
 ![RBAC Azure コマンド ライン - グループ別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
@@ -70,6 +84,12 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 	azure role assignment list --expandPrincipalGroups --signInName <user email>
 
 次の例は、ユーザー *sameert@aaddemo.com* に付与されたロールの割り当てを示しています。これには、ユーザーに直接割り当てられたロールだけでなく、グループから継承されたロールも含まれます。
+
+```
+azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+
+azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+```
 
 ![RBAC Azure コマンド ライン - ユーザー別の azure ロール割り当て一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
@@ -85,6 +105,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 
 次の例では、*サブスクリプション*のスコープで *Christine Koch のチーム*に*閲覧者*ロールを割り当てています。
 
+
 ![RBAC Azure コマンド ライン - グループ別の azure ロール割り当ての作成 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
 ###	サブスクリプションのスコープでのアプリケーションへのロールの割り当て
@@ -99,7 +120,7 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ###	リソース グループのスコープでのユーザーへのロールの割り当て
 リソース グループのスコープでユーザーにロールを割り当てるには、次のコマンドを使用します。
 
-	azure role assignment create --signInName  <user's email address> --subscription <subscription> --roleName <name of role in quotes> --resourceGroup <resource group name>
+	azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
 次の例では、*Pharma-Sales-ProjectForcast* リソース グループのスコープで、ユーザー *samert@aaddemo.com* に "*仮想マシンの共同作業者*" ロールを付与しています。
 
@@ -160,9 +181,17 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 
 次の例では、選択したサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
 
+```
+azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+```
+
 ![RBAC Azure コマンド ライン - azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
 
 次の例では、*Virtual Machine Operator* カスタム ロールは *Production4* サブスクリプションでは利用できません。そのサブスクリプションはロールの **AssignableScopes** にないためです。
+
+```
+azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+```
 
 ![RBAC Azure コマンド ライン - カスタム ロールの azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
 
@@ -173,4 +202,4 @@ Azure CLI を使用して RBAC を管理するには、事前に以下を用意�
 ## RBAC のトピック
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

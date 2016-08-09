@@ -1,5 +1,5 @@
 <properties
-	 pageTitle="Azure CDN の使用"
+	 pageTitle="Azure CDN の使用 | Microsoft Azure"
 	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。このチュートリアルでは、新しい CDN プロファイルとエンドポイントの作成手順について説明します。"
 	 services="cdn"
 	 documentationCenter=""
@@ -12,7 +12,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="05/24/2016" 
+	 ms.date="07/28/2016" 
 	 ms.author="casoper"/>
 
 # Azure CDN の使用  
@@ -67,7 +67,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 	
 	> [AZURE.NOTE] **[配信元ポート]** は、エンドポイントが配信元から情報を取得するときに使用されるポートにのみ影響します。エンドポイントそのものは、**配信元ポート**に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。
 	>
-	> **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。許可されない配信元ポートの一覧については、「[Azure CDN from Akamai behavior details (Azure CDN from Akamai の動作の詳細)](cdn-akamai-behavior-details.md)」を参照してください。
+	> **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。使用できない配信元ポートの一覧については、「[Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。
 	>
 	> HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
 	> 
@@ -97,4 +97,4 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,22 +1,20 @@
 
 
-In order to connect to **SharePoint Online**, you need to provide your identity (username and password, smart card credentials, etc.) to SharePoint Online. Once you've been authenticated, you can proceed to use the SharePoint Online connector  in your logic app. 
+**SharePoint Online** に接続するには、SharePoint Online で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力する必要があります。認証されたら、ロジック アプリで SharePoint Online コネクタを使用できるようになります。
 
-While on the designer of your logic app, follow these steps to sign into SharePoint to create the **connection** for use in your logic app:
+Logic Apps デザイナーで、次の手順に従って SharePoint にサインインし、ロジック アプリで使用する「**接続**」を作成します。
 
-1. Enter SharePoint in the search box and wait for the search to return all triggers and actions related to SharePoint Online:   
-![Configure SharePoint][1]  
-2. Select the **SharePoint Online - When a file is created** trigger  
-3. Select **Sign in to SharePoint Online**:   
-![Configure SharePoint][2]    
-4. Provide your SharePoint credentials to sign in to authenticate with SharePoint   
-![Configure SharePoint][3]     
-5. After the authentication completes you'll be redirected to your logic app. That's it, the connection has been created. Notice the message at the bottom that indicates that you are now connected to SharePoint.  
-![Configure SharePoint][4]  
-6. You can then add other triggers and actions that you need to complete your logic app.   
+1. 検索ボックスに「SharePoint」と入力し、SharePoint Online に関連するすべてのトリガーとアクションが返されるまで待ちます。![SharePoint の構成][1]
+2. **[SharePoint Online - When a file is created (SharePoint Online - ファイルの作成時)]** トリガーを選択します。
+3. **[Sign in to SharePoint Online (SharePoint Online にサインイン)]** をクリックします。![SharePoint の構成][2]
+4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。![SharePoint の構成][3]
+5. 認証が完了した後、ロジック アプリにリダイレクトされます。これで接続が作成されました。SharePoint に接続していることを示す下部のメッセージに注意してください。 ![SharePoint の構成][4]
+6. ロジック アプリを完成させるために必要な他のトリガーやアクションを追加できます。
 
 [1]: ./media/connectors-create-api-sharepointonline/connectionconfig1.png
-[2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png 
+[2]: ./media/connectors-create-api-sharepointonline/connectionconfig2.png
 [3]: ./media/connectors-create-api-sharepointonline/connectionconfig3.png
 [4]: ./media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ./media/connectors-create-api-sharepointonline/connectionconfig5.png
+
+<!---HONumber=AcomDC_0727_2016-->

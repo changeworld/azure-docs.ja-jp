@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="07/25/2016"
 	ms.author="jgao"/>
 
 
@@ -56,7 +56,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **Azure PowerShell を実行できるワークステーション**。 
+- **Azure PowerShell を実行できるワークステーション**。
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
     
@@ -128,7 +128,7 @@ RunHiveScript には、変数がいくつかあります。その値は、Azure 
 <table border = "1">
 <tr><th>ワークフローの変数</th><th>説明</th></tr>
 <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システム アドレス (たとえば、<i>wasb://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
+<tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システム アドレス (たとえば、<i>wasbs://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
 <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>既定値</strong>を使用します。</td></tr>
 </table>
 
@@ -190,9 +190,9 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 	どちらのファイルも、パブリック BLOB コンテナーに格納されます。
 	
-	- HiveQL スクリプト (useoozie.hql) を Azure Storage (wasb:///tutorials/useoozie/useoozie.hql)) にコピーします。
-	- workflow.xml を wasb:///tutorials/useoozie/workflow.xml にコピーします。
-	- データ ファイル (/example/data/sample.log) を wasb:///tutorials/useoozie/data/sample.log にコピーします。
+	- HiveQL スクリプト (useoozie.hql) を Azure Storage (wasbs:///tutorials/useoozie/useoozie.hql) にコピーします。
+	- workflow.xml を wasbs:///tutorials/useoozie/workflow.xml にコピーします。
+	- データ ファイル (/example/data/sample.log) を wasbs:///tutorials/useoozie/data/sample.log にコピーします。
 	 
 6. Oozie ジョブを送信します。
 
@@ -448,7 +448,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 	
 	#region - submit Oozie job
 	
-	$storageUri="wasb://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
+	$storageUri="wasbs://$defaultBlobContainerName@$defaultStorageAccountName.blob.core.windows.net"
 	
 	$oozieJobName = $namePrefix + "OozieJob"
 	
@@ -680,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0727_2016-->

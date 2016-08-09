@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/05/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
 #Azure Storage の Shared Access Signature を使用して HDInsight でデータへのアクセスを制限する
@@ -226,25 +226,25 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 1. プロンプトから次のように入力します。__SASCONTAINER__ を SAS ストレージ アカウントに対して作成されたコンテナーの名前に置き換えます。__SASACCOUNTNAME__ を SAS に使用するストレージ アカウントの名前に置き換えます。
 
-        hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
+        hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     
     これでコンテナーと SAS の作成時にアップロードされたファイルを含む、コンテナーの内容を一覧表示します。
     
 2. 次を使用して、ファイルの内容を読み取ることができることを確認します。前の手順のとおりに、__SASCONTAINER__ と __SASACCOUNTNAME__ を置き換えます。__FILENAME__ を前のコマンドで表示されたファイルの名前に置き換えます。
 
-        hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
+        hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
         
     これで、ファイルの内容が一覧表示されます。
     
 3. 次を使用して、ローカル ファイル システムにファイルをダウンロードします。
 
-        hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
+        hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
     
     ここでは、ファイルは __testfile.txt__ という名前のローカル ファイルにダウンロードされます。
 
 4. 次を使用して、ローカル ファイルを SAS ストレージ上の __testupload.txt__ という名前の新しいファイルにアップロードします。
 
-        hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
+        hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
     
     次のようなメッセージが返されます。
     
@@ -252,7 +252,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
         
     このエラーは、ストレージの場所が読み取りと一覧表示のみであるために発生します。次を使用して、書き込み可能なクラスターの既定のストレージ上にデータを置きます。
     
-        hdfs dfs -put testfile.txt wasb:///testupload.txt
+        hdfs dfs -put testfile.txt wasbs:///testupload.txt
         
     このとき、操作が正常に完了する必要があります。
     
@@ -290,4 +290,4 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 
 [powershell]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0727_2016-->

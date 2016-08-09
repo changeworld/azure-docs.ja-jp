@@ -109,15 +109,9 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 
     Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest .OperationStatusLink
 
+
 ## 次のステップ
 
-- [Azure SQL Database のインポート](sql-database-import-powershell.md)
+- Powershell を使用して Azure SQL データベースをインポートする方法については、[PowerShell を使用した BACPAC のインポート](sql-database-import-powershell.md)に関するページをご覧ください
 
-
-## その他のリソース
-
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [災害復旧訓練](sql-database-disaster-recovery-drills.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
-
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0727_2016-->

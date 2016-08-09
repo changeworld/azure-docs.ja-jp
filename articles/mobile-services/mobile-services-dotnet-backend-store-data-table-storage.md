@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/05/2016"
+	ms.date="07/21/2016"
 	ms.author="glenga"/>
 
 # テーブル ストレージを使用する .NET バックエンド モバイル サービスの作成
@@ -103,7 +103,7 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
             return DomainManager.QueryAsync(options);
         }
 
-	SQL Database とは異なり、このバージョンは IQueryable <TEntity> を返しません。そのため、 結果はバインドすることができますが、クエリ内で使用することはできません。
+	SQL Database とは異なり、このバージョンは IQueryable<TEntity> を返しません。そのため、結果はバインドすることができますが、クエリ内で使用することはできません。
 
 ## クライアント アプリの更新
 
@@ -156,4 +156,4 @@ TodoList のクイック スタート プロジェクトは、Entity Framework �
 [What is the Table Service]: ../storage-dotnet-how-to-use-tables.md#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0727_2016-->

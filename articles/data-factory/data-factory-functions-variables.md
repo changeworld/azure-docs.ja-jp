@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/25/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - 関数およびシステム変数
@@ -37,7 +37,7 @@ SliceEnd | 生成されている現在のデータ スライスの時間間隔�
 
 1.	データ選択クエリを指定する ([データ移動アクティビティ](data-factory-data-movement-activities.md)の記事で参照されているコネクタの記事を参照してください。
 
-	データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$<function>** です。  
+	データ選択クエリと、アクティビティおよびデータセットの他のプロパティの場合、Data Factory 関数を呼び出す構文は **$$<関数>** です。
 2. アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する (上記のサンプルを参照してください)。
 
 	入力の依存関係式を指定する場合、$$ は不要です。
@@ -62,7 +62,7 @@ Date | AddDays(X,Y) | X: DateTime<br/><br/>Y: int | X に Y 日を追加しま�
 Date | AddMonths(X,Y) | X: DateTime<br/><br/>Y: int | X に Y か月を追加します。<br/><br/>例: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM 
 Date | AddQuarters(X,Y) | X: DateTime <br/><br/>Y: int | X に Y * 3 か月を追加します。<br/><br/>例: 9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM
 Date | AddWeeks(X,Y) | X: DateTime<br/><br/>Y: int | X に Y * 7 日を追加します。<br/><br/>例: 9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM
-Date | AddYears(X,Y) | X: DateTime<br/><br/>Y: int | X に Y * 3 年を追加します。<br/><br/>例: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM
+Date | AddYears(X,Y) | X: DateTime<br/><br/>Y: int | X に Y 年を追加します。<br/><br/>例: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM
 Date | Day(X) | X: DateTime | X の日付コンポーネントを取得します。<br/><br/>例: 9/15/2013 12:00:00 PM の日付は 9 です。 
 Date | DayOfWeek(X) | X: DateTime | X の曜日コンポーネントを取得します。<br/><br/>例: 9/15/2013 12:00:00 PM の DayOfWeek は Sunday です。
 Date | DayOfYear(X) | X: DateTime | X の年コンポーネントで表される、その年の日付を取得します。<br/><br/>例:<br/>12/1/2015: 2015 年の 335 日目<br/>12/31/2015: 2015 年の 365 日目<br/>12/31/2016: 2016 年の 366 日目 (うるう年)
@@ -83,9 +83,9 @@ Text | Format(X) | X: String 変数 | テキストの書式を設定します。
 	    "Hour" : "$$Text.Format('{0:hh}',WindowStart)"
 	}
 
-使用できるさまざまな書式設定のオプション (例: yyyy と yy) については、「[カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)」のトピックを参照してください。
+使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「[カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx)」をご覧ください。
 
 > [AZURE.NOTE] 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。例: $$Text.Format('PartitionKey eq \\'my\_pkey\_filter\_value\\' and RowKey ge \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)).この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。
   
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

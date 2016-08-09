@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/17/2016"
+   ms.date="07/28/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -52,6 +52,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 
 ## 接続プロバイダーの場所
+
+> [AZURE.SELECTOR]
+[Locations By Provider](expressroute-locations.md#connectivity-provider-locations)
+[Providers By Location](expressroute-locations-providers.md#connectivity-provider-locations)
 
 ### 運用 Azure
 
@@ -102,7 +106,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | シカゴ、ワシントン DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
-| **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
+| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
 
 #### 中国
@@ -140,9 +144,11 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**接続プロバイダー**|**Exchange**|**場所**|
 |---|---|---|
-|**Alaska Communications**|Equinix|シアトル|
-|**[XO Communications](http://www.xo.com/)**|Equinix|シリコン バレー|
 |**[1CLOUDSTAR](http://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)**|Equinix|シンガポール|
+|**Alaska Communications**|Equinix|シアトル|
+|**[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)**|Equinix|ニューヨーク、ワシントン DC|
+|**[XO Communications](http://www.xo.com/)**|Equinix|シリコン バレー|
+
 
 ## ExpressRoute システム インテグレーター
 
@@ -165,4 +171,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

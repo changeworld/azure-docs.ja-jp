@@ -19,9 +19,9 @@
 
 # Azure Automation DSC の使用
 
-このトピックでは、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。Azure Automation DSC の概要については、「[Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。DSC のドキュメントについては、「[Windows PowerShell Desired State Configuration Overview (Windows PowerShell Desired State Configuration の概要)](Windows PowerShell Desired State Configuration Overview)」を参照してください。
+このトピックでは、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。Azure Automation DSC の概要については、「[Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。DSC のドキュメントについては、「[Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
 
-このトピックでは、Azure Automation DSC を使用するための詳しい手順を示しています。このトピックで説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup にある ARM テンプレートを使用できます。このテンプレートを使用すると、Azure Automation DSC で管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
+このトピックでは、Azure Automation DSC を使用するための詳しい手順を示しています。このトピックで説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、[次の ARM テンプレート](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)を使用できます。このテンプレートを使用すると、Azure Automation DSC で管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
  
 ## 前提条件
 
@@ -96,7 +96,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、[TestConfig]\(前の手順でインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前の手順でインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードで、**[構成ソースの表示]** をクリックします。
 
@@ -114,7 +114,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、[TestConfig]\(前にインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前にインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードで **[コンパイル]** をクリックし、**[はい]** をクリックします。これにより、コンパイル ジョブが開始されます。
     
@@ -132,7 +132,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、[TestConfig]\(前にインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前にインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードの **[コンパイル ジョブ]** タイルで、表示されているジョブのいずれかをクリックします。コンパイル ジョブの開始日付のラベルが付いた **[コンパイル ジョブ]** ブレードが開きます。
 
@@ -253,7 +253,7 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 
 3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
 
-4. **[DSC ノード]** ブレードで、再割り当てするノードの名前をクリックします。
+4. **[DSC ノード]** ブレードで、登録解除するノードの名前をクリックします。
 
 5. そのノードのブレードで、**[登録解除]** をクリックします。
 
@@ -266,4 +266,4 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

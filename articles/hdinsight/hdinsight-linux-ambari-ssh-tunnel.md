@@ -13,10 +13,10 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/28/2016"
+ms.date="07/22/2016"
 ms.author="larryfr"/>
 
-#SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
+#SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
 
 Linux ベースの HDInsight クラスターは、インターネット経由で Ambari Web UI にアクセスできますが、UI の一部の機能にはアクセスできません。たとえば、Ambari 経由で表示されるその他のサービスの Web UI などです。Ambari Web UI の全機能を使用するには、クラスター ヘッドに対して SSH トンネルを使用する必要があります。
 
@@ -26,7 +26,6 @@ Ambari の一部のメニューは、SSH トンネルなしでは完全に表示
 
 次のサービスは Ambari Web UI が使用しているサービスですが、SSH トンネルなしではアクセスできません。
 
-* ResourceManager、
 * JobHistory、
 * NameNode、
 * スレッド スタック、
@@ -149,6 +148,13 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	![foxyproxy のパターン](./media/hdinsight-linux-ambari-ssh-tunnel/foxypattern.png)
 
+    設定に次の情報を使用して、もう 1 つのパターンを追加します。
+
+    * __[パターン名]__ - headnode
+    * __[URL パターン]__ - *headnodehost*
+
+    [OK] を選択してこのパターンを保存します。
+
 4. **[OK]** をクリックしてプロキシを追加し、**[プロキシの設定]** を閉じます。
 
 5. FoxyProxy ダイアログの上部で、**[モードの選択]** を **[定義済みのパターンと優先順位に基づいてプロキシを使用]** に変更し、**[閉じる]** を選択します。
@@ -165,13 +171,13 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
     
     > [AZURE.NOTE] http://headnodehost:8080 アドレスを使用してクラスターに接続すると、HTTP を使用して、Ambari が実行されているヘッド ノードにトンネル経由で直接接続され、通信は SSH トンネルを使用して保護されます。トンネルを使用せずにインターネット経由で接続すると、通信は HTTPS を使用して保護されます。HTTPS を使用してインターネット経由で接続するには、https://CLUSTERNAME.azurehdinsight.net を使用します。__CLUSTERNAME__ はクラスターの名前です。
 
-2. Ambari Web UI でページの左側にある一覧から [YARN] を選択します。
+2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 
-	![YARN が選択された画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnservice.png)
+	![HDFS が選択された画像](./media/hdinsight-linux-ambari-ssh-tunnel/hdfsservice.png)
 
-3. YARN サービスの情報が表示されたら、__[Quick Links]__ を選択します。クラスターのヘッド ノードの一覧が表示されます。ヘッド ノードのいずれかを選択し、__[ResourceManager UI]__ を選択します。
+3. HDFS サービスの情報が表示されたら、__[Quick Links]__ を選択します。クラスターのヘッド ノードの一覧が表示されます。ヘッド ノードのいずれかを選択し、__[NameNode UI]__ を選択します。
 
-	![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnquicklinks.png)
+	![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
 	> [AZURE.NOTE] インターネット接続が低速な場合、またはヘッド ノードの負荷が高い場合は、__[Quick Links]__ を選択したときにメニューではなく待機インジケーターが表示されることがあります。その場合は、サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
     >
@@ -179,7 +185,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 4. 次のようなページが表示されます。
 
-	![YARN ResourceManager の UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/yarnresourcemanager.png)
+	![NameNode UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
 	> [AZURE.NOTE] このページの URL は、\_\_http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster__ のようになります。この URL は、ノードの内部の完全修飾ドメイン名 (FQDN) を使用しているので、アクセスするには SSH トンネルを使用する必要があります。
 
@@ -195,4 +201,4 @@ HDInsight での SSH の使用方法の詳細については、以下の記事�
 
 * [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

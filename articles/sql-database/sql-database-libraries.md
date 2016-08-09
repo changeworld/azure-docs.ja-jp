@@ -24,10 +24,10 @@
 | 言語 | プラットフォーム | その他のリソース | ダウンロード |
 | :-- | :-- | :-- | :-- |
 | ADO.NET | Windows、Linux、Mac | [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md) | [ダウンロード](https://msdn.microsoft.com/vstudio/aa496123.aspx) |
-| Java | Windows | [Windows 上で JDBC を含む Java を使用して、SQL Database に接続する](sql-database-develop-java-simple-windows.md) | [ダウンロード](http://go.microsoft.com/fwlink/?LinkId=245496) |
+| Java | Windows、Linux、Mac | [Windows 上で JDBC を含む Java を使用して、SQL Database に接続する](sql-database-develop-java-simple-windows.md) | [ダウンロード](http://go.microsoft.com/fwlink/?LinkId=245496) |
 | PHP | Windows | [Windows 上で PHP を使用して SQL Database に接続する](sql-database-develop-php-simple-windows.md) | [ダウンロード](https://www.microsoft.com/download/details.aspx?id=20098) |
 | Node.js | Windows、Linux、Mac | [Node.js を使用して SQL Database に接続する](sql-database-develop-nodejs-simple.md) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |
 | Python | Windows、Linux、Mac | [Python を使用して SQL Database に接続する](sql-database-develop-python-simple.md) | [インストール](https://msdn.microsoft.com/library/mt694094.aspx) |
 | Ruby | Windows、Linux、Mac | [Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple.md) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) |
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0727_2016-->

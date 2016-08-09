@@ -4,7 +4,7 @@
 	keywords="データベース オプション, データベース パフォーマンス"
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor=""/>
 
@@ -58,6 +58,30 @@ DTU について理解を深めるためには、このトピックの[「DTU」
 
 [AZURE.INCLUDE [SQL DB DTU の説明](../../includes/sql-database-understanding-dtus.md)]
 
+## サービス階層の選択
+
+サービス階層を決めるにはまず、データベースをスタンドアロン データベースにするか、エラスティック プールに追加するかを決定します。
+
+### スタンドアロン データベースのサービス階層の選択
+
+スタンドアロン データベースのサービス階層を決めるにあたって最初に行うことは、SQL Database のエディションを選ぶために、必要なデータベース機能を特定することです。
+
+- データベース サイズ (Basic では最大 5 GB、Standard では最大 250 GB、Premium では最大 500 GB ～ 1 TB、パフォーマンス レベルによって異なる)
+- データベース バックアップの保有期間 (Basic では 7 日間、Standard では 35 日間、Premium では 35 日間)
+
+SQL Database のエディションを選んだら、データベースのパフォーマンス レベル (DTU 数) を決めます。見当をつけたうえで実際の使用感に基づいて[動的にスケールアップしたりスケールダウンしたり](sql-database-scale-up.md)することができます。[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して、必要な DTU 数を見積もることもできます。
+
+### エラスティック データベース プールのサービス階層の選択
+
+エラスティック データベース プールのサービス階層を決めるにあたって最初に行うことは、プールのサービス階層を選ぶために、必要なデータベース機能を特定することです。
+
+- データベース サイズ (Basic では 2 GB、Standard では 250 GB、Premium では 500 GB)
+- データベース バックアップの保有期間 (Basic では 7 日間、Standard では 35 日間、Premium では 35 日間)
+- プールあたりのデータベース数 (Basic では 400 個、Standard では 400 個、Premium では 50 個)
+- プールあたりの最大ストレージ (Basic では 117 GB、Standard では 1,200 GB、Premium では 750 GB)
+
+プールのサービス階層を選んだら、プールのパフォーマンス レベル (eDTU) を決めます。見当をつけたうえで実際の使用感に基づいて[動的にスケールアップしたりスケールダウンしたり](sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool)することができます。[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して、プール内の各データベースに必要な DTU 数を見積もり、それを参考にしてプールの上限を求めることもできます。
+
 ## 次のステップ
 - これらの階層の価格の詳細については、「[SQL Database 価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
 - [エラスティック データベース プール](sql-database-elastic-pool-guidance.md)と、[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)の詳細を確認してください。
@@ -66,6 +90,6 @@ DTU について理解を深めるためには、このトピックの[「DTU」
 
 ## その他のリソース
 
-マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
-<!----HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

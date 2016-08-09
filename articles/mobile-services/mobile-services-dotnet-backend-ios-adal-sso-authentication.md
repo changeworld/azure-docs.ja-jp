@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/15/2015"
+	ms.date="07/21/2016"
 	ms.author="mahender"/>
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
@@ -32,7 +32,7 @@
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) にアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、モバイル サービスを登録し、モバイル サービスに対するアクセス許可を公開する必要があります。次に、iOS アプリケーションを登録してこれらのアクセス許可へのアクセス権を付与する必要があります。
 
 
->[AZURE.NOTE]このチュートリアルの目的は、iOS アプリケーションのシングル サインオン Azure Active Directory 認証をできるようにするための Mobile Services のしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[モバイル サービスの使用]」を完了することをお勧めします。
+>[AZURE.NOTE] このチュートリアルの目的は、iOS アプリケーションのシングル サインオン Azure Active Directory 認証をできるようにするための Mobile Services のしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[モバイル サービスの使用]」を完了することをお勧めします。
 
 
 ##前提条件
@@ -98,7 +98,7 @@
 
 6. 前の `loginAndGetData` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は、https://login.windows.net/tenant-name.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-7. 前の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。トピック「[Azure Active Directory 認証用の登録]」に従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad と同様になる必要があります。
+7. 前の `loginAndGetData` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。[Azure Active Directory に登録する方法]に関するトピックに従った場合は、アプリケーション ID URI が https://todolist.azure-mobile.net/login/aad のようになります。
 
 8. 前の `loginAndGetData` メソッドのコードで、**INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 
@@ -112,7 +112,7 @@
 ##認証を使用してクライアントをテストする
 
 1. [Product] メニューの [Run] をクリックして、アプリケーションを開始します。
-2. Azure Active Directory にログインするための画面が表示されます。  
+2. Azure Active Directory にログインするための画面が表示されます。
 3. アプリケーションが認証を実行し、Todo 項目を返します。
 
    ![](./media/mobile-services-dotnet-backend-ios-adal-sso-authentication/mobile-services-app-run.png)
@@ -123,8 +123,8 @@
 [Mobile Services の使用]: mobile-services-dotnet-backend-ios-get-started.md
 [モバイル サービスの使用]: mobile-services-dotnet-backend-ios-get-started.md
 [アプリケーションを登録して Azure Active Directory アカウント ログインを使用する]: mobile-services-how-to-register-active-directory-authentication.md
-[Azure Active Directory 認証用の登録]: mobile-services-how-to-register-active-directory-authentication.md
+[Azure Active Directory に登録する方法]: mobile-services-how-to-register-active-directory-authentication.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0727_2016-->

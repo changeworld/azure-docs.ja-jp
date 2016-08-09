@@ -8,7 +8,7 @@
 	editor="cgronlun"/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -121,9 +121,9 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/>
-[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/>
-[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/>
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> 
+[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/> 
+[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/> 
 [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
 
 
@@ -137,4 +137,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -8,7 +8,7 @@
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="integration"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -49,7 +49,7 @@
 4. Marketplace ブレードで、**[API Apps]** を選択し、検索バーで SAP を検索します。![SAP コネクタの API アプリ][2]
 5. マイクロソフト発行の **SAP コネクタ**を選択します。
 6. SAP コネクタのブレードで、**[作成]** を選択します。
-7. 表示された新しいブレードで、次のように入力します。  
+7. 表示された新しいブレードで、次のように入力します。
 	1. **[場所]** - コネクタをデプロイする地理的な場所を選択します。
 	2. **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
 	3. **[リソース グループ]** - コネクタを格納するリソース グループを選択するか、作成します。
@@ -124,4 +124,4 @@
 [8]: ./media/app-service-logic-integrate-with-an-on-premise-SAP-server/SAPConnector.HybridConnection.Connected.PNG
 [9]: http://www.microsoft.com/download/details.aspx?id=35552
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/30/2016" 
+	ms.date="07/25/2016" 
 	ms.author="juliako"/>
 
 
@@ -25,19 +25,19 @@
 
 ##Azure SDK for .NET 2.9 リリース ノート
 
-[Azure SDK for .NET 2.9 リリース ノート](azure-sdk-dotnet-release-notes-2_9.md)
+[Azure SDK for .NET 2.9 リリース ノート](azure-sdk-dotnet-release-notes-2-9.md)
 
 ##Azure SDK for .NET 2.8 リリース ノート
 
-[Azure SDK for .NET 2.8 リリース ノート](azure-sdk-dotnet-release-notes-2_8.md)
+[Azure SDK for .NET 2.8 リリース ノート](azure-sdk-dotnet-release-notes-2-8.md)
 
 ##Azure SDK for .NET 2.7 リリース ノート
 
-[Azure SDK for .NET 2.7 リリース ノート](azure-sdk-dotnet-release-notes-2_7.md)
+[Azure SDK for .NET 2.7 リリース ノート](azure-sdk-dotnet-release-notes-2-7.md)
 
 ##Azure SDK for .NET 2.6 リリース ノート
 
-[Azure SDK for .NET 2.6 リリース ノート](azure-sdk-dotnet-release-notes-2_6.md)
+[Azure SDK for .NET 2.6 リリース ノート](azure-sdk-dotnet-release-notes-2-6.md)
 
 ##Azure SDK for .NET 2.5.1 リリース ノート
 
@@ -74,4 +74,4 @@
 [MSDN の Azure SDK リリース ノート](https://msdn.microsoft.com/library/azure/dn627519.aspx)
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0727_2016-->

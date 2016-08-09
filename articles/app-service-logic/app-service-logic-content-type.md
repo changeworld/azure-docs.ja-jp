@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -93,4 +93,4 @@ CustomerName=Frank&Address=123+Avenue
 
 このときの `$content` は、すべてのデータを保持するために Base64 文字列としてエンコードされたペイロードです。　現時点ではフォーム データ用のネイティブ関数は存在しないので、`@string(body('formdataAction'))` のような関数を使用して手動でデータにアクセスすれば、このデータをワークフロー内で使用できます。送信要求に `application/x-www-url-formencoded` という Content-Type ヘッダーも加えたい場合は、単にアクション本体に追加すれば済みます。`@body('formdataAction')` のようなキャストは必要ありません。ただし、これが有効なのは、本体が `body` 入力内で唯一のパラメーターであるときのみです。`application/json` 要求内で `@body('formdataAction')` を実行しようとすると、エンコードされた本体が送信され、ランタイム エラーが発生します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0727_2016-->

@@ -108,7 +108,7 @@ Microsoft では次の 5 つの SQL 製品を提供しています。
 - [Azure SQL Data Warehouse (プレビュー)](https://azure.microsoft.com/services/sql-data-warehouse/)
 - [Analytics Platform System (オンプレミスのアプライアンス)](https://www.microsoft.com/ja-JP/server-cloud/products/analytics-platform-system/)
 
-仮想マシンまたは SQL Database 上の SQL Server に関心がある場合は、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)」を参照してください。2 つの違いが詳しく説明されています。
+仮想マシン上の SQL Serverまたは SQL Database に関心がある場合は、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。2 つの違いが詳しく説明されています。
 
 SQL が最善のオプションである場合は、「[SQL Server](https://www.microsoft.com/server-cloud/products/)」を参照してください。Microsoft SQL 製品およびサービスで提供する必要がある内容について詳しく説明されています。
 
@@ -130,4 +130,4 @@ SQL が最善のオプションである場合は、「[SQL Server](https://www.
     - [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
     - [Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0727_2016-->

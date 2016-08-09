@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="app-service-logic"
+   ms.service="logic-apps"
    ms.devlang="multiple"
    ms.topic="article"
    ms.tgt_pltfrm="na"
@@ -65,7 +65,7 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 5.	これで、フローで POP3 コネクタを使用できるようになりました。[Get Email (メールの取得)] トリガーを選択し、頻度と間隔を構成します。今後は、POP3 トリガーを使って取得したメールを、フローの他のアクションで使用できます。
 		 
 
-	![][5] 
+	![][5]
 	![][6]
 
 ## コネクタでできること
@@ -86,4 +86,4 @@ API アプリが作成されたら、Logic App のトリガーとして POP3 コ
 [5]: ./media/app-service-logic-connector-pop3/img5.PNG
 [6]: ./media/app-service-logic-connector-pop3/img6.PNG
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0727_2016-->
