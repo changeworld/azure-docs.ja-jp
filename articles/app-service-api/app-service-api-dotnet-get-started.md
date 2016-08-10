@@ -76,7 +76,7 @@
 
 2. ソリューションをビルドし、NuGet パッケージを復元します。
 
-	デプロイ前にアプリケーションの動作を確認する場合は、ローカルで実行することができます。3 つのプロジェクトすべてがスタートアップ プロジェクトになっていることを確認してください。`http://localhost` URL へのクロス オリジンの JavaScript 呼び出しが可能なブラウザーとして、Internet Explorer または Edge を使用する必要があります。
+	デプロイ前にアプリケーションの動作を確認する場合は、ローカルで実行することができます。3 つのプロジェクトすべてがスタートアップ プロジェクトになっていることを確認してください。`http://localhost` URL へのクロス オリジンの JavaScript 呼び出しが可能なブラウザーとして、Internet Explorer または Microsoft Edge を使用する必要があります。
 
 ## Swagger の API メタデータと UI の使用
 
@@ -100,7 +100,7 @@ Swagger のメタデータは、ASP.NET Web API プロジェクトで [Swashbuck
 
 	![Download JSON metadata in IE](./media/app-service-api-dotnet-get-started/iev1json.png)
 
-	Chrome、Firefox、または Edge を使用している場合、ブラウザーのウィンドウで JSON が表示されます。ブラウザーによって JSON の処理方法はさまざまであるため、お使いのブラウザー ウィンドウの表示は例示したものと少し異なる場合があります。
+	Chrome、Firefox、または Microsoft Edge を使用している場合、ブラウザーのウィンドウで JSON が表示されます。ブラウザーによって JSON の処理方法はさまざまであるため、お使いのブラウザー ウィンドウの表示は例示したものと少し異なる場合があります。
 
 	![JSON metadata in Chrome](./media/app-service-api-dotnet-get-started/chromev1json.png)
 

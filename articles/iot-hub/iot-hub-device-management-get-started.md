@@ -168,7 +168,7 @@ IoT Hub のプロビジョニングが完了し、複数のシミュレートさ
 	npm run start
 	```
 
-8. コマンド プロンプトに "Services have started" と表示されたら、Web ブラウザー (現時点では Edge/IE 11 以降/Safari/Chrome がサポートされています) を開き、次の URL にあるデバイス管理アプリに移動して、シミュレートされたデバイスを確認します: <http://127.0.0.1:3003>。
+8. コマンド プロンプトに "Services have started" と表示されたら、Web ブラウザー (現時点では Microsoft Edge/IE 11 以降/Safari/Chrome がサポートされています) を開き、次の URL にあるデバイス管理アプリに移動して、シミュレートされたデバイスを確認します: <http://127.0.0.1:3003>。
 
 	![][img-dm-ui]
 
