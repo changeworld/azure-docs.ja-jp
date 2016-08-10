@@ -38,7 +38,7 @@ Android、iOS、または Windows 10 デバイスをお持ちの場合、MyDrivi
 
 2.  [HockeyApp](https://rink.hockeyapp.net) でサインアップするか、HockeyApp にサインインして、ベータ テスト チームに参加します。HockeyApp を使用すると、簡単にアプリの最新リリースがテスト ユーザーに配布されます。
 
-    Windows 10 をお使いの場合は、Edge ブラウザーをご使用ください。
+    Windows 10をお使いの場合は、Microsoft Edgeブラウザーをご使用ください。
 
     Build 2016 参加者の場合は、いずれかの Microsoft ボタンを押して、カンファレンスに登録したものと同じ Microsoft アカウント電子メールでサインインします。HockeyApp でサインアップ済みです。
 
