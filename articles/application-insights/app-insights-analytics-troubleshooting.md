@@ -26,7 +26,7 @@
 ## 制限
 
 * 現時点では、クエリの結果は過去 1 週間のデータだけに制限されます。
-* テストを実施したブラウザーは、Chrome、Edge、および Internet Explorer の最新のエディションです。
+* テストを実施したブラウザーは、Chrome、Microsoft Edge、および Internet Explorer の最新のエディションです。
 
 
 ## 既知の互換性のないブラウザーの拡張機能
@@ -67,7 +67,7 @@
 
 2. 別の (通常の) ブラウザー ウィンドウを開いて [Azure](https://portal.azure.com) に移動します。サインアウトします。次に、リンクを開き、適切な資格情報を使用してサインインします。
 
-2. Edge および Internet Explorer のユーザーも、信頼済みゾーンの設定がサポートされていないと、このエラーが表示される場合があります。
+2. Microsoft Edge および Internet Explorerのユーザーも、信頼済みゾーンの設定がサポートされていないと、このエラーが表示される場合があります。
 
 	[Analytics ポータル](https://analytics.applicationinsights.io)と [Azure Active Directory ポータル](https://portal.azure.com)の両方が同じセキュリティ ゾーン内にあることを確認します。
 
