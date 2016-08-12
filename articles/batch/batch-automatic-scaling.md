@@ -207,7 +207,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 | string *<演算子>* string | <、<=、==、>=、>、!= | double |
 | timestamp *<演算子>* timestamp | <、<=、==、>=、>、!= | double |
 | timeinterval *<演算子>* timeinterval | <、<=、==、>=、>、!= | double |
-| double *<演算子>* double | &&、|| | double |
+| double *<演算子>* double | &&、 &#124;&#124; | double |
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** となります。
 
