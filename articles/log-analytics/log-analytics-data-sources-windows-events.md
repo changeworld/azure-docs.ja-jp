@@ -66,8 +66,8 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 |:--|:--|
 | Type=Event | すべての Windows イベント。 |
 | Type=Event EventLevelName=error | 重大度が「エラー」のすべての Windows イベント。 |
-| Type=Event | Measure count() by Source | ソース別の Windows イベントの数。 |
-| Type=Event EventLevelName=error | Measure count() by Source | ソース別の Windows エラー イベントの数。 |
+| Type=Event &#124; Measure count() by Source | ソース別の Windows イベントの数。 |
+| Type=Event EventLevelName=error &#124; Measure count() by Source | ソース別の Windows エラー イベントの数。 |
 
 ## 次のステップ
 

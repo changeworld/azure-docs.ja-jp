@@ -71,9 +71,9 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 |:--|:--|
 | Type=IISLog | IIS ログのすべてのレコード。 |
 | Type=IISLog EventLevelName=error | 重大度が「エラー」のすべての Windows イベント。 |
-| Type=W3CIISLog | Measure count() by cIP | クライアントの IP アドレス別の IIS ログ エントリの数。 |
-| Type=W3CIISLog csHost="www.contoso.com" | Measure count() by csUriStem | ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
-| Type=W3CIISLog | Measure Sum(csBytes) by Computer | top 500000| 各 IIS コンピューターによって受信された合計バイト数。 |
+| Type=W3CIISLog &#124; Measure count() by cIP | クライアントの IP アドレス別の IIS ログ エントリの数。 |
+| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem | ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
+| Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000| 各 IIS コンピューターによって受信された合計バイト数。 |
 
 ## 次のステップ
 
