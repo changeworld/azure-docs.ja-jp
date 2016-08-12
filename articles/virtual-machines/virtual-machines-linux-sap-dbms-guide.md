@@ -537,7 +537,9 @@ Microsoft Azure 可用性セットは、VM とその他のサービスがクラ�
 DBMS デプロイメントの高可用性構成 (使用する個別の DBMS HA 機能とは別) を作成する場合、DBMS VM は次のことを行う必要があります。
 
 * VM を同じ Azure Virtual Network に追加します (<https://azure.microsoft.com/documentation/services/virtual-network/>)。
-* HA 構成の VM も同じサブネットにある必要があります。クラウドのみのデプロイでは、異なるサブネット間で名前解決できません。IP 解決のみが機能します。クロスプレミス デプロイメントのサイト間または ExpressRoute 接続を使用して、少なくとも 1 つのサブネットを持つネットワークが既に確立されています。名前解決は、オンプレミス AD ポリシーおよびネットワーク インフラストラクチャに従って行われます。[コメント]: <> (ARM でも真かどうか MSSedusch TODO テスト)
+* HA 構成の VM も同じサブネットにある必要があります。クラウドのみのデプロイでは、異なるサブネット間で名前解決できません。IP 解決のみが機能します。クロスプレミス デプロイメントのサイト間または ExpressRoute 接続を使用して、少なくとも 1 つのサブネットを持つネットワークが既に確立されています。名前解決は、オンプレミス AD ポリシーおよびネットワーク インフラストラクチャに従って行われます。
+
+[comment]: <> (ARM でも真かどうか MSSedusch TODO テスト)
 
 #### IP アドレス
 回復力のある方法で HA 構成の VM をセットアップすることを強くお勧めします。静的 IP アドレスを使用しないかぎり、Azure では、HA 構成内の HA パートナーに対応する IP アドレスに依存することは信頼性がありません。Azure には、次の 2 つの「シャット ダウン」の概念があります。
@@ -617,7 +619,7 @@ SQL Server 2014 では、Azure Blob ストアの周囲に VHD の「ラッパー
 * 使用するストレージ アカウントは、SQL Server が実行されている VM をデプロイするために使用したストレージ アカウントと同じ Azure リージョン内にある必要があります。
 * 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
 
-[コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)。
+[comment]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)
 
 このタイプのデプロイメントに関する詳細は、こちら (<https://msdn.microsoft.com/library/dn385720.aspx>) に記載されています。
  
@@ -758,7 +760,9 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 
 * 可用性グループ リスナーの使用は、Windows Server 2012 または Windows Server 2012 R2 を VM のゲスト OS として使用する場合にのみ可能です。Windows Server 2012 の場合、この更新プログラム (<https://support.microsoft.com/kb/2854082>) が適用されていることを確認する必要があります。
 * Windows Server 2008 R2 の場合、この更新プログラムは存在せず、AlwaysOn は、接続文字列にフェールオーバー パートナーを指定するというデータベース ミラーリングと同じ方法で使用する必要があります (SAP default.pfl パラメーター dbs/mss/server によって実行 – SAP Note[965908] 参照)。
-* 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。クラウドのみのデプロイで名前解決するためには、SAP システムのすべての VM (アプリケーション サーバー、DBMS サーバー、(A)SCS サーバー) が同じ仮想ネットワーク内にあるか、または、解決済みの SQL Server VM の VM 名を取得するために SAP アプリケーション レイヤーから etc\\host ファイルをメンテナンスする必要があります。両方の VM が意図せずシャット ダウンされた場合に、Azure に新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成 の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義は [この][virtual-networks-reserved-private-ip]記事に記載) [コメント]: <> (古いブログ) [コメント]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>、<https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
+* 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。クラウドのみのデプロイで名前解決するためには、SAP システムのすべての VM (アプリケーション サーバー、DBMS サーバー、(A)SCS サーバー) が同じ仮想ネットワーク内にあるか、または、解決済みの SQL Server VM の VM 名を取得するために SAP アプリケーション レイヤーから etc\\host ファイルをメンテナンスする必要があります。両方の VM が意図せずシャット ダウンされた場合に、Azure に新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成 の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義は [この][virtual-networks-reserved-private-ip]記事に記載)
+[comment]: <> (古いブログ)
+[comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>、<https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
 * Azure の現在の機能では、クラスター名にクラスターが作成されたノードと同じ IP アドレスを割り当てるため、WSFC クラスター構成を構築してそのクラスターに特定の IP アドレスを割り当てる必要がある場合、特別な手順が必要です。つまり、クラスターに別の IP アドレスを割り当てるためには手動の手順を実行する必要があります。
 * Azure で、可用性グループのプライマリ レプリカとセカンダリ レプリカを実行している VM に割り当てられている TCP/IP エンドポイントを使って可用性グループ リスナーを作成しようとしています。
 * これらのエンドポイントと ACL をセキュリティで保護する必要があります。
@@ -1136,7 +1140,8 @@ Azure VHD を使用して Azure ページ BLOB ストレージの章では、こ
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと Hyper-V と同様にサポートされています。ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 #### 高可用性
-[コメント]: <> (リンクは ASM を参照) 高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
+[コメント]: <> (リンクは ASM を参照)
+高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
 
 #### その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイメントについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
@@ -1357,3 +1362,4 @@ Azure ストアの Geo レプリケーションを使用しないでください
 「[Azure での 一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章を参照してください。
 
 <!---HONumber=AcomDC_0727_2016-->
+
