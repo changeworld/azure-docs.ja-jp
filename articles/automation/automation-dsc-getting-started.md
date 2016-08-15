@@ -96,7 +96,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前の手順でインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードで、**[構成ソースの表示]** をクリックします。
 
@@ -114,7 +114,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前にインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードで **[コンパイル]** をクリックし、**[はい]** をクリックします。これにより、コンパイル ジョブが開始されます。
     
@@ -132,7 +132,7 @@
 
 3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
 
-4. **[DSC 構成]** ブレードで、**[TestConfig]** \(前にインポートした構成の名前) をクリックします。
+4. **[DSC 構成]** ブレードで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
 
 5. **[TestConfig の構成]** ブレードの **[コンパイル ジョブ]** タイルで、表示されているジョブのいずれかをクリックします。コンパイル ジョブの開始日付のラベルが付いた **[コンパイル ジョブ]** ブレードが開きます。
 
@@ -211,6 +211,7 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
     ![Screenshot of the Report blade](./media/automation-dsc-getting-started/NodeReport.png)
 
 各レポートのブレードでは、対応する整合性チェックについて次の状態情報を表示できます。
+
 - レポートの状態。ノードが "準拠" かどうか、構成が "失敗" かどうか、ノードが "非準拠" (ノードが **applyandmonitor** モードでも、マシンが望ましい状態でない場合) かどうか。
 - 整合性チェックの開始時刻。
 - 整合性チェックの合計実行時間。
@@ -266,4 +267,4 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

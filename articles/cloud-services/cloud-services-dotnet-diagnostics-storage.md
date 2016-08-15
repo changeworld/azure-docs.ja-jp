@@ -1,19 +1,19 @@
 <properties
-  pageTitle="Azure Storage への診断データの保存と表示 | Microsoft Azure"
-  description="Azure Storage に Azure 診断データを保存し、それを表示する"
-  services="cloud-services"
-  documentationCenter=".net"
-  authors="rboucher"
-  manager="jwhit"
-  editor="tysonn" />
+	pageTitle="Azure Storage への診断データの保存と表示 | Microsoft Azure"
+	description="Azure Storage に Azure 診断データを保存し、それを表示する"
+	services="cloud-services"
+	documentationCenter=".net"
+	authors="rboucher"
+	manager="jwhit"
+	editor="tysonn" />
 <tags
-  ms.service="cloud-services"
-  ms.devlang="na"
-  ms.topic="article"
-  ms.tgt_pltfrm="na"
-  ms.workload="na"
-  ms.date="02/20/2016"
-  ms.author="robb" />
+	ms.service="cloud-services"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/01/2016"
+	ms.author="robb" />
 
 # Azure Storage への診断データの保存と表示
 
@@ -85,7 +85,7 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 - Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md)」をご覧ください。
 
-- [Azure Stotage エクスプローラー (Neudesic)](http://azurestorageexplorer.codeplex.com/) は、Azure Stprage プロジェクト内のデータ (Azure アプリケーションのログを含む) の調査や変更に使用できる実用的な GUI ツールです。
+- [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
 - [Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
@@ -94,4 +94,4 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 [Azure 診断で Cloud Services アプリケーションのフローをトレースする](cloud-services-dotnet-diagnostics-trace-flow.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

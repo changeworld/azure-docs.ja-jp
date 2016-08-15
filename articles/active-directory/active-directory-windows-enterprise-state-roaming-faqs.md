@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="07/21/2016"
 	ms.author="femila"/>
 
 # 設定とデータのローミングに関する FAQ
@@ -74,12 +74,13 @@ Nov 2015 以降のリリースの Windows 10 では、Enterprise State Roaming �
 ローミングが利用できるのは、ユニバーサル Windows アプリに限られます。既存の Windows デスクトップ アプリケーションでローミングを利用する方法としては、次の 2 つの選択肢があります。
 
 - [Desktop Bridge](http://aka.ms/desktopbridge) を使用する。既存の Windows デスクトップ アプリを簡単にユニバーサル Windows プラットフォームに移行できます。そこから、ごくわずかな変更をコードに加えることで、Azure AD のアプリ データ ローミングを利用できるようになります。既存のデスクトップ アプリは、そのデータのローミングに必要なアプリ ID を Desktop Bridge から得ることができます。
-- [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) を使用する。Win32 アプリについては、UE-V を使用して既存の Windows デスクトップ アプリ用のカスタム設定テンプレートを作成し、ローミングを有効にできます。この方法を選んだ場合、アプリの開発者がそのコードを変更する必要はありません。UE-V は、オンプレミスの Active Directory ローミングに限られ、Microsoft Desktop Optimization Package を購入済みであることが必要となります。 
+- [User Experience Virtualization (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) を使用する。Win32 アプリについては、UE-V を使用して既存の Windows デスクトップ アプリ用のカスタム設定テンプレートを作成し、ローミングを有効にできます。この方法を選んだ場合、アプリの開発者がそのコードを変更する必要はありません。UE-V は、オンプレミスの Active Directory ローミングに限られ、Microsoft Desktop Optimization Package を購入済みであることが必要となります。
 
 UEV の設定を行う管理者は、[UE-V グループ ポリシー](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)を使って Windows OS の設定やユニバーサル アプリ データのローミングを無効にすることで、Windows デスクトップ アプリのデータのみをローミングすることができます。
 
 - "Roam Windows settings (Windows 設定のローミング)" グループ ポリシーを無効にする。
 - "Do not synchronize Windows Apps (Windows アプリを同期しない)" グループ ポリシーを有効にする。
+- アプリケーション セクションで "IE" ローミングを無効にする。
 
 将来的にはマイクロソフトが、さらに深いレベルで UE-V を Windows に統合し、Azure AD クラウドを使って設定をローミングできるように UE-V を拡張する方法を模索する可能性はあります。
 
@@ -103,8 +104,8 @@ Windows 10 の MDM やグループ ポリシーには、個々のアプリケー
 
 Enterprise State Roaming と UE-V を併用するときは、次の規則が当てはまります。
 
-- Enterprise State Roaming がデバイス上の主要なローミング エージェントになります。UE-V は、"Win32 とのギャップ" を補うために使用されます。 
-- Windows の設定と最近の UWP アプリのデータについては、Enterprise State Roaming で処理される範囲に含まれているため、UE-V グループ ポリシーを使用して UE-V ローミングを無効にする必要があります。 
+- Enterprise State Roaming がデバイス上の主要なローミング エージェントになります。UE-V は、"Win32 とのギャップ" を補うために使用されます。
+- Windows の設定と最近の UWP アプリのデータについては、Enterprise State Roaming で処理される範囲に含まれているため、UE-V グループ ポリシーを使用して UE-V ローミングを無効にする必要があります。
 
 ##仮想デスクトップ インフラストラクチャ (VDI) に対する Enterprise State Roaming の対応について教えてください
 Enterprise State Roaming がサポートされるのは Windows 10 クライアント SKU のみで、サーバー SKU ではサポートされません。ハイパーバイザー コンピューターでクライアント VM がホストされ、その仮想マシンにエンド ユーザーがリモートからログインしている場合、そのユーザーのデータはローミングされます。複数のユーザーが同じ OS を共有しており、ユーザーがリモートからサーバーにログインしてデスクトップとまったく同じようにその環境を利用している場合、ローミングは正常に機能しない場合があります。後者のセッション ベースのシナリオは公式対応していません。
@@ -116,11 +117,12 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 ## 既知の問題
 
 - スマート カードまたは仮想スマート カードで Windows にログインすると、設定の同期が機能しなくなります。スマート カードまたは仮想スマート カードを使ってデバイスにログインしようとすると、同期機能が停止します。この問題は今後、Windows 10 の更新プログラムで解決される可能性があります。
-- IE のお気に入りの同期は、以前のバージョンの Windows 10 ビルドでは正しく機能しません。IE のお気に入りの同期機能を使用するためには、May Cumulative Update for Windows 10 (ビルド 10.0.10586.318 以降) が必要となります。
-- Multi-Factor Authentication (MFA) が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 
-    - Azure AD ポータルで [Azure MFA](multi-factor-authentication.md) を必須とするようにユーザーが構成されている場合、そのユーザーがパスワードを使って Windows 10 デバイスにログインしているときは、設定を同期できません。このタイプの MFA 構成は、Azure 管理者アカウントの保護を意図したものです。管理者ユーザーは、[Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用するか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにログインすることによって同期を実行できる場合があります。 
+- IE のお気に入りの同期は、以前のバージョンの Windows 10 ビルドでは正しく機能しません。IE のお気に入りの同期機能を使用するためには、July Cumulative Update for Windows 10 (ビルド 10586.494 以降) が必要となります。
+- Multi-Factor Authentication (MFA) が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。
+    - Azure AD ポータルで [Azure MFA](multi-factor-authentication.md) を必須とするようにユーザーが構成されている場合、そのユーザーがパスワードを使って Windows 10 デバイスにログインしているときは、設定を同期できません。このタイプの MFA 構成は、Azure 管理者アカウントの保護を意図したものです。管理者ユーザーは、[Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用するか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにログインすることによって同期を実行できる場合があります。
     - AD FS MFA 条件付きアクセス ポリシーが管理者によって構成されているとき、デバイス上のアクセス トークンの有効期限が切れている場合、同期に失敗する場合があります。一度ログオフしてから [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用してログインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
-
+   
+- コンピューターが Azure AD デバイスへの自動登録によってドメインに参加している場合、コンピューターが長期にわたって接続されず、かつドメイン認証が完了できないと同期に失敗します。この問題を解決するには、コンピューターを企業ネットワークに接続します。これで同期を再開することができます。
 
 
 ## 関連トピック
@@ -129,4 +131,4 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 - [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

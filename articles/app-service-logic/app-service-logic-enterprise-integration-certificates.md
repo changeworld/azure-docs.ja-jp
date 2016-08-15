@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration Pack での証明書の使用 |Microsoft Azure App Service" 
 	description="Enterprise Integration Pack と Logic Apps を使用して証明書を使用する方法について説明します" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -73,4 +73,4 @@ Azure ポータルにログインした後に統合アカウントにプライ�
 - [B2B 機能を使用したロジック アプリの作成](./app-service-logic-enterprise-integration-b2b.md)
 - [key Vault についての詳細情報](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

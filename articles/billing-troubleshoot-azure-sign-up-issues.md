@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Azure サインアップに関する問題のトラブルシューティング | Microsoft Azure"
 	description="Azure にサインアップする際に発生の可能性のある問題の一般的な原因を探る"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
 	editor=""
-	tags="top-support-issue"/>
+	tags="billing,top-support-issue"/>
 
 <tags
 	ms.service="billing"
@@ -81,4 +81,4 @@
 ご提案:
 - 過去に Azure サブスクリプションをアクティブ化しているために無料試用版をアクティブ化できない場合は、従量課金サブスクリプションの購入をご検討ください。特典を受ける資格をお持ちの可能性があります。Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)を参照してください。福利厚生制度には特定の前提条件が必要となりますので注意してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

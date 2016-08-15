@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリのデプロイ テンプレートを作成する | Microsoft Azure"
    description="ロジック アプリのデプロイ テンプレートを作成し、リリース管理で使用する方法について説明します。"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -85,4 +85,4 @@ PowerShell、REST API、Visual Studio Release Management、Azure ポータル �
 <!-- Image References -->
 [1]: ./media/app-service-logic-create-deploy-template/emptyReleaseDefinition.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

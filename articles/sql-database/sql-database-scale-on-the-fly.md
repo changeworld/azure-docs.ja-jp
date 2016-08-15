@@ -4,7 +4,7 @@
    keywords=""
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -54,4 +54,4 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

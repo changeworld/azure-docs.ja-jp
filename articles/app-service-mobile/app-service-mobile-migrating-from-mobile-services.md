@@ -117,7 +117,7 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 この作業は任意ですが、管理しやすくなります。
 
-> [AZURE.TIP] Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.TIP]  Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 
@@ -166,7 +166,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 複数のアプリ設定を同時に更新できます。
 
-> [AZURE.TIP] 同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> [AZURE.TIP]  同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
 
 ### <a name="authentication"></a>認証
 
@@ -248,7 +248,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > **\[Notification Hubs]** の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -287,17 +287,17 @@ _azure モバイル_ コマンドを利用して Azure Mobile Services サイト
 | mobile show _name_ | site show _name_ |
 | mobile restart _name_ | site restart _name_ |
 | mobile redeploy _name_ | site deployment redeploy _commitId_ _name_ |
-| mobile key set _name_ _type_ _value_ | site appsetting delete _key_ _name_ <br/> site appsetting add _key_=\_value\_ _name_ |
+| mobile key set _name_ _type_ _value_ | site appsetting delete _key_ _name_ <br/> site appsetting add _key_=_value_ _name_ |
 | mobile config list _name_ | site appsetting list _name_ |
 | mobile config get _name_ _key_ | site appsetting show _key_ _name_ |
-| mobile config set _name_ _key_ | site appsetting delete _key_ _name_ <br/> site appsetting add _key_=\_value\_ _name_ |
+| mobile config set _name_ _key_ | site appsetting delete _key_ _name_ <br/> site appsetting add _key_=_value_ _name_ |
 | mobile domain list _name_ | site domain list _name_ |
 | mobile domain add _name_ _domain_ | site domain add _domain_ _name_ |
 | mobile domain delete _name_ | site domain delete _domain_ _name_ |
 | mobile scale show _name_ | site show _name_ |
 | mobile scale change _name_ | site scale mode _mode_ _name_ <br /> site scale instances _instances_ _name_ |
 | mobile appsetting list _name_ | site appsetting list _name_ |
-| mobile appsetting add _name_ _key_ _value_ | site appsetting add _key_=\_value\_ _name_ |
+| mobile appsetting add _name_ _key_ _value_ | site appsetting add _key_=_value_ _name_ |
 | mobile appsetting delete _name_ _key_ | site appsetting delete _key_ _name_ |
 | mobile appsetting show _name_ _key_ | site appsetting delete _key_ _name_ |
 
@@ -381,17 +381,17 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/regions/
+[Azure リージョン]: https://azure.microsoft.com/ja-JP/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
-[連続的にデプロイ]: ../app-service-web/web-sites-publish-source-control.md
-[Mixed 名前空間を変換する]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[連続的にデプロイ]: ../app-service-web/app-service-continuous-deployment.md
+[Mixed 名前空間を変換する]: https://azure.microsoft.com/ja-JP/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler
@@ -409,4 +409,4 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -18,7 +18,7 @@
     
 # Azure App Service への継続的なデプロイ
 
-このチュートリアルでは、 [Azure App Service] アプリ向けに継続的なデプロイ ワークフローを構成する方法について説明します。App Service と BitBucket、GitHub、Visual Studio Team Services (VSTS) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
+このチュートリアルでは、[Azure App Service] アプリ向けに継続的なデプロイ ワークフローを構成する方法について説明します。App Service と BitBucket、GitHub、Visual Studio Team Services (VSTS) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
 
 ## <a name="overview"></a>継続的なデプロイの有効化
 
@@ -28,7 +28,7 @@
 
 2. [Azure ポータル]の対象アプリのブレードで、**[設定]、[デプロイ ソース]** の順にクリックします。**[ソースの選択]** をクリックし、(たとえば) **[GitHub]** をクリックします。
 
-	![](./media/app-service-continous-deployment/cd_options.png)
+	![](./media/app-service-continuous-deployment/cd_options.png)
 	
     > [AZURE.NOTE] App Service の VSTS アカウントを構成するには、[チュートリアル](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)を参照してください。
     
@@ -36,7 +36,7 @@
 
 4. **[デプロイ ソース]** ブレードで、デプロイ元としてプロジェクトと分岐を選択します。完了したら **[OK]** をクリックします。
   
-	![](./media/app-service-continous-deployment/github_option.png)
+	![](./media/app-service-continuous-deployment/github_option.png)
 
 	> [AZURE.NOTE] GitHub または Bitbucket を使用して継続的なデプロイメントを有効にする場合、パブリック プロジェクトとプライベート プロジェクトの両方が表示されます。
 
@@ -54,7 +54,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 -	下図に示す Visual Studio のソース制御オプションを使用して `.gitignore` ファイルを生成するか、または [.gitignore サンプル](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)に類似したコンテンツを含む `.gitignore` ファイルを手動でリポジトリ ルートに追加します。
 
-    ![](./media/app-service-continous-deployment/VS_source_control.png)
+    ![](./media/app-service-continuous-deployment/VS_source_control.png)
  
 -	.sln ファイルをリポジトリ ルートに入れて、ソリューションのディレクトリ ツリー全体をリポジトリに追加します。
 
@@ -66,7 +66,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 1. [Azure ポータル]の対象アプリのブレードで、**[設定]、[デプロイ ソース]** の順にクリックします。**[デプロイ]** ブレードの **[切断]** をクリックします。
 
-    ![](./media/app-service-continous-deployment/cd_disconnect.png)
+    ![](./media/app-service-continuous-deployment/cd_disconnect.png)
 
 2. 別のソースからの発行を設定する場合、確認メッセージで **[はい]** を選択した後、アプリのブレードに戻り、**[設定]、[デプロイ ソース]** の順にクリックします。
 
@@ -93,4 +93,4 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 [Get started with VSTS (VSTS で作業を始める)]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: ../articles/cloud-services/cloud-services-continuous-delivery-use-vso.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

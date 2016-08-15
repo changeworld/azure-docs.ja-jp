@@ -3,7 +3,7 @@
 	description="このトピックでは、データベースの復元またはフェールオーバー後にセキュリティを管理する際のセキュリティに関する考慮事項について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -19,7 +19,7 @@
 
 # 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## 障害復旧の認証要件の概要
 
@@ -95,4 +95,4 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 ## その他のリソース
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

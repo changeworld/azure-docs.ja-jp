@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/22/2016" 
+    ms.date="08/02/2016" 
     ms.author="markvi" />
 
 
@@ -98,7 +98,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 ### Exchange ActiveSync クライアントのサポート 
 
 
-iOS 9 以降の特定の Exchange ActiveSync アプリケーションがサポートされています。電子メール アプリケーションがこの機能をサポートするかどうかを確認するには、アプリケーション開発者にお問い合わせください。
+iOS 9 以降では、ネイティブの iOS メール クライアントがサポートされます。その他の Exchange ActiveSync アプリケーションについては、この機能のサポート状況をアプリケーションの開発者にお問い合わせください。
 
 
 
@@ -278,4 +278,4 @@ iOS 9 以降のネイティブ メール アプリケーションで証明書認
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

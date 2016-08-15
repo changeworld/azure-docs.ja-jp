@@ -4,29 +4,29 @@
 	authors="kevinlam1" 
 	manager="dwrede" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
-	ms.service="app-service-logic"
+	ms.service="logic-apps"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/25/2016"
+	ms.date="07/27/2016"
 	ms.author="klam"/>
 
 # Logic Apps の料金モデル
 
-Logic Apps を使用すると、クラウドにおける統合ワークフローをスケーリングして実行することができます。以下、Azure Logic Apps の課金と料金プランについて詳しく取り上げます。
+Azure Logic Apps を使用すると、クラウドにおける統合ワークフローをスケーリングして実行することができます。以下、Logic Apps の課金と料金プランについて詳しく取り上げます。
 
 ## 従量課金
 
-新しく作成された Logic Apps には、従量制の料金プランが使用されます。Logic Apps の従量課金モデルでは、お客様が使用した分のみが課金の対象となります。従量制の料金プランを使用している Logic Apps はスロットルされません。ロジック アプリのインスタンスの実行中に行われたすべてのアクションの実行が課金の対象となります。
+新しく作成された Logic Apps には、従量制の料金プランが使用されます。Logic Apps の従量課金モデルでは、お客様が使用した分のみが課金の対象となります。従量制の料金プランを使用している Logic Apps はスロットルされません。ロジック アプリのインスタンス実行中に行われたすべてのアクションが課金の対象となります。
 
 ### アクションの実行とは
 
-ロジック アプリの定義に含まれる個々のステップがアクションです。たとえばトリガーや制御フローのステップ (条件、スコープ、for each ループ、do until ループなど)、コネクタの呼び出し、ネイティブ アクションの呼び出しが該当します。トリガーは、特定のイベントを受け取ったときにロジック アプリの新しいインスタンスを作成する特殊なアクションと考えることができます。トリガーにはさまざまな動作が存在し、それによってロジック アプリの課金方法が変わる場合があります。
+ロジック アプリの定義に含まれる個々のステップがアクションです。たとえばトリガーや制御フローのステップ (条件、スコープ、for each ループ、do until ループなど)、コネクタの呼び出し、ネイティブ アクションの呼び出しが該当します。トリガーは、特定のイベントが発生したときにロジック アプリの新しいインスタンスを作成する特殊なアクションと考えることができます。トリガーにはさまざまな動作が存在し、それによってロジック アプリの課金方法が変わる場合があります。
 
 -	**ポーリング トリガー** – ロジック アプリの新しいインスタンスを作成するうえでの基準を満たしたメッセージを受け取るまで絶えずエンドポイントをポーリングするトリガーです。ポーリング間隔は、Logic Apps デザイナーでトリガーの設定を変えることで調整できます。ロジック アプリの新しいインスタンスが作成されたかどうかに関係なく、個々のポーリング要求がアクションの実行としてカウントされます。
 
@@ -44,7 +44,7 @@ Logic Apps を使用すると、クラウドにおける統合ワークフロー
 
 ## App Service プラン
 
-ロジック アプリを作成するうえで App Service プランは不要になりました。過去に App Service プランで作成したロジック アプリは、引き続き以前と同様に動作します。選択したプランによっては、1 日あたりの実行数が超過した時点でスロットルされます。この場合、アクションの実行数に基づく課金は適用されません。
+ロジック アプリを作成するうえで App Service プランは不要になりました。既存のロジック アプリで App Service プランを参照することもできます。過去に App Service プランで作成したロジック アプリは、引き続き以前と同様に動作します。選択したプランによっては、1 日あたりの実行数が超過した時点でスロットルされます。この場合、アクションの実行数に基づく課金は適用されません。
 
 App Service プランと 1 日に許可されているアクションの実行数:
 
@@ -52,7 +52,41 @@ App Service プランと 1 日に許可されているアクションの実行�
 |---|---|---|---|
 |1 日あたりのアクションの実行数| 200|10,000|50,000|
 
-App Service プランが関連付けられているロジック アプリを従量制の課金モデルに変更するには、ロジック アプリの定義から App Service プランの参照を削除します。これは単純な PowerShell コマンドレットで実行できます。次のコマンドレットを呼び出してください。
+### 従量課金から App Service プランへの変換
+
+従量課金の Logic Apps の App Service プランを参照するには、[以下の PowerShell スクリプト](https://github.com/logicappsio/ConsumptionToAppServicePlan)を実行します。最初に [Azure PowerShell ツール](https://github.com/Azure/azure-powershell)がインストールされていることを確認します。
+
+``` powershell
+Param(
+    [string] $AppService_RG = '<app-service-resource-group>',
+	[string] $AppService_Name = '<app-service-name>',
+    [string] $LogicApp_RG = '<logic-app-resource-group>',
+    [string] $LogicApp_Name = '<logic-app-name>',
+    [string] $subscriptionId = '<azure-subscription-id>'
+)
+
+Login-AzureRmAccount 
+$subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
+$appserviceplan = Get-AzureRmResource -ResourceType "Microsoft.Web/serverFarms" -ResourceGroupName $AppService_RG -ResourceName $AppService_Name
+$logicapp = Get-AzureRmResource -ResourceType "Microsoft.Logic/workflows" -ResourceGroupName $LogicApp_RG -ResourceName $LogicApp_Name
+
+$sku = @{
+    "name" = $appservicePlan.Name;
+    "plan" = @{
+      "id" = $appserviceplan.ResourceId;
+      "type" = "Microsoft.Web/ServerFarms";
+      "name" = $appserviceplan.Name  
+    }
+}
+
+$updatedProperties = $logicapp.Properties | Add-Member @{sku = $sku;} -PassThru
+
+$updatedLA = Set-AzureRmResource -ResourceId $logicapp.ResourceId -Properties $updatedProperties -ApiVersion 2015-08-01-preview
+```
+
+### App Service プランから従量課金への変換
+
+App Service プランが関連付けられているロジック アプリを従量制の課金モデルに変更するには、ロジック アプリの定義から App Service プランの参照を削除します。これは PowerShell コマンドレットで実行できます。次のコマンドレットを呼び出してください。
 
 `Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
 
@@ -69,4 +103,4 @@ App Service プランが関連付けられているロジック アプリを従�
 [whatis]: app-service-logic-what-are-logic-apps.md
 [create]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

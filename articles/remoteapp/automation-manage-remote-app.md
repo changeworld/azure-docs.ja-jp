@@ -3,8 +3,8 @@
 	description="Azure Automation サービスを使用して Azure RemoteApp を管理する方法について説明します。"
 	services="automation"
 	documentationCenter=""
-	authors="csand-msft"
-	manager="eamono"
+	authors="mgoedtel"
+	manager="jwhit"
 	editor=""/>
 
 <tags
@@ -13,10 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/07/2016"
-	ms.author="csand"/>
-
-
+	ms.date="07/29/2016"
+	ms.author="magoedte;csand"/>
 
 #Azure Automation を使用した Azure RemoteApp の管理
 
@@ -24,7 +22,7 @@
 
 ## Azure Automation とは
 
-[Azure Automation](https://azure.microsoft.com/services/automation/) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して手動タスク、頻繁に繰り返されるタスク、実行時間の長いタスク、エラーが発生しやすいタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮できます。
+[Azure Automation](../automation/automation-intro.md) は、プロセスの自動化によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して手動タスク、頻繁に繰り返されるタスク、実行時間の長いタスク、エラーが発生しやすいタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮できます。
 
 Azure Automation は、ニーズに対応可能な信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
 
@@ -42,4 +40,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 * [Azure Automation の使用](../automation/automation-first-runbook-graphical.md) (Azure Automation の作業開始のチュートリアル)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

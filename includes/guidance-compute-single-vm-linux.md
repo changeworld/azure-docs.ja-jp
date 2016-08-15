@@ -48,6 +48,8 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 - 最適なディスク I/O パフォーマンスを得るには、[Premium Storage][premium-storage] をお勧めします。Premium Storage では、データがソリッド ステート ドライブ (SSD) に格納されます。コストは、プロビジョニングされたディスクのサイズに基づいて決まります。また、IOPS とスループット (つまり、データ転送速度) もディスク サイズによって異なるため、ディスクをプロビジョニングする場合は、3 つの要素 (容量、IOPS、スループット) すべてを考慮してください。
 
+- 1 つのストレージ アカウントで、1 ～ 20 の VM をサポートできます。
+
 - 1 つ以上のデータ ディスクを追加します。新しく作成した VHD は、フォーマットされていません。その VM にログインしてディスクをフォーマットしてください。データ ディスクは、`/dev/sdc`、`/dev/sdd` などのように表示されます。`lsblk` を実行すると、ディスクなどのブロック デバイスの一覧を表示できます。データ ディスクを使用するには、新しいパーティションとファイル システムを作成し、ディスクをマウントします。次に例を示します。
 
     ```bat
@@ -152,23 +154,24 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 - **[virtualNetwork.parameters.json][vnet-parameters]**.このファイルは、名前、アドレス空間、サブネット、および必要となるすべての DNS サーバーのアドレスなど、VNet 設定を定義します。サブネット アドレスは VNet のアドレス空間に含まれている必要があることに注意してください。
 
 	```json
-	"parameters": {
-      "virtualNetworkSettings": {
-        "value": {
-          "name": "app1-vnet",
-          "addressPrefixes": [
-            "172.17.0.0/16"
-          ],
-          "subnets": [
-            {
-              "name": "app1-subnet",
-              "addressPrefix": "172.17.0.0/24"
-            }
-          ],
-          "dnsServers": [ ]
-        }
+  "parameters": {
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "app1-vnet",
+        "resourceGroup": "app1-dev-rg",
+        "addressPrefixes": [
+          "172.17.0.0/16"
+        ],
+        "subnets": [
+          {
+            "name": "app1-subnet",
+            "addressPrefix": "172.17.0.0/24"
+          }
+        ],
+        "dnsServers": [ ]
       }
-	}
+    }
+  }
 	```
 
 - **[networkSecurityGroup.parameters.json][nsg-parameters]**.このファイルには、NSG と NSG 規則の定義が含まれています。`virtualNetworkSettings` ブロック内の `name` パラメーターは、NSG が接続される VNet を指定します。`networkSecurityGroupSettings` ブロック内の `subnets` パラメーターは、VNet で NSG 規則を適用するすべてのサブネットを指定します。これらは、**virtualNetwork.parameters.json** ファイルで定義された項目である必要があります。
@@ -176,17 +179,19 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 	この例に示すようにセキュリティ ルールには、SSH 接続を介してユーザーが VM に接続できます。`securityRules` 配列に項目をさらに追加することで、追加のポートを開くことができます (または特定のポート経由のアクセスを拒否できます)。
 
 	```json
-	"parameters": {
-      "virtualNetworkSettings": {
-        "value": {
-          "name": "app1-vnet"
-        },
-        "metadata": {
-          "description": "Infrastructure Settings"
-        }
+  "parameters": {
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "app1-vnet",
+        "resourceGroup": "app1-dev-rg"
       },
-      "networkSecurityGroupSettings": {
-        "value": {
+      "metadata": {
+        "description": "Infrastructure Settings"
+      }
+    },
+    "networkSecurityGroupSettings": {
+      "value": [
+        {
           "name": "app1-nsg",
           "subnets": [
             "app1-subnet"
@@ -205,8 +210,9 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
             }
           ]
         }
-      }
-	}
+      ]
+    }
+  }
 	```
 
 - **[virtualMachineParameters.json][vm-parameters]**.このファイルでは、VM の名前とサイズ、管理者ユーザーのセキュリティ資格情報、作成するディスク、作成したディスクを保持するストレージ アカウントなど、VM 自体の設定を定義します。
@@ -222,71 +228,71 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 	`buildingBlockSettings` セクションで設定を変更することにより、1 つのストレージ アカウントを共有するかまたはそれぞれ独自のストレージ アカウントを持つ複数の VM を作成することができます。複数の VM を作成する場合、`availabilitySet` セクションで、使用または作成する可用性セットの名前も指定する必要があります。
 
 	```json
-	"parameters": {
-      "virtualMachinesSettings": {
-        "value": {
-          "namePrefix": "app1",
-          "computerNamePrefix": "",
-          "size": "Standard_DS1",
-          "osType": "linux",
-          "adminUsername": "testuser",
-          "adminPassword": "AweS0me@PW",
-          "osAuthenticationType": "password",
-          "nics": [
-            {
-              "isPublic": "true",
-              "subnetName": "app1-subnet",
-              "privateIPAllocationMethod": "dynamic",
-              "publicIPAllocationMethod": "dynamic",
-              "isPrimary": "true"
-            }
-          ],
-          "imageReference": {
-            "publisher": "RedHat",
-            "offer": "RHEL",
-            "sku": "7.2",
-            "version": "latest"
-          },
-          "dataDisks": {
-            "count": 2,
-            "properties": {
-              "diskSizeGB": 128,
-              "caching": "None",
-              "createOption": "Empty"
-            }
-          },
-          "osDisk": {
-            "caching": "ReadWrite"
-          },
-          "availabilitySet": {
-            "useExistingAvailabilitySet": "No",
-            "name": ""
+  "parameters": {
+    "virtualMachinesSettings": {
+      "value": {
+        "namePrefix": "app1",
+        "computerNamePrefix": "cn",
+        "size": "Standard_DS1",
+        "osType": "linux",
+        "adminUsername": "testuser",
+        "adminPassword": "AweS0me@PW",
+        "osAuthenticationType": "password",
+        "nics": [
+          {
+            "isPublic": "true",
+            "subnetName": "app1-subnet",
+            "privateIPAllocationMethod": "dynamic",
+            "publicIPAllocationMethod": "dynamic",
+            "isPrimary": "true"
+          }
+        ],
+        "imageReference": {
+          "publisher": "RedHat",
+          "offer": "RHEL",
+          "sku": "7.2",
+          "version": "latest"
+        },
+        "dataDisks": {
+          "count": 2,
+          "properties": {
+            "diskSizeGB": 128,
+            "caching": "None",
+            "createOption": "Empty"
           }
         },
-        "metadata": {
-          "description": "Settings for Virtual Machines"
+        "osDisk": {
+          "caching": "ReadWrite"
+        },
+        "availabilitySet": {
+          "useExistingAvailabilitySet": "No",
+          "name": ""
         }
       },
-      "virtualNetworkSettings": {
-        "value": {
-          "name": "app1-vnet",
-          "resourceGroup": "app1-dev-rg"
-        },
-        "metadata": {
-          "description": "Infrastructure Settings"
-        }
-      },
-      "buildingBlockSettings": {
-        "value": {
-          "storageAccountsCount": 1,
-          "vmCount": 1,
-          "vmStartIndex": 0
-        },
-        "metadata": {
-          "description": "Settings specific to the building block"
-        }
+      "metadata": {
+        "description": "Settings for Virtual Machines"
       }
-	}
+    },
+    "virtualNetworkSettings": {
+      "value": {
+        "name": "app1-vnet",
+        "resourceGroup": "app1-dev-rg"
+      },
+      "metadata": {
+        "description": "Infrastructure Settings"
+      }
+    },
+    "buildingBlockSettings": {
+      "value": {
+        "storageAccountsCount": 1,
+        "vmCount": 1,
+        "vmStartIndex": 0
+      },
+      "metadata": {
+        "description": "Settings specific to the building block"
+      }
+    }
+  }
 	```
 
 ## デプロイ
@@ -340,7 +346,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 ## 次のステップ
 
-[Virtual Machines の SLA][vm-sla] を適用するには、可用性セットに 2 つ以上のインスタンスをデプロイする必要があります。詳細については、[Azure での複数の VM の実行][multi-vm] に関する記事をご覧ください。
+[Virtual Machines の SLA][vm-sla] を適用するには、可用性セットに 2 つ以上のインスタンスをデプロイする必要があります。詳細については、「[Running multiple VMs on Azure (Azure で複数の VM を実行する)][multi-vm]」を参照してください。
 
 <!-- links -->
 
@@ -391,4 +397,4 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 [azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure における単一の Linux VM アーキテクチャ"
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

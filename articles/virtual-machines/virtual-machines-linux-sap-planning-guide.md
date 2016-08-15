@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="sedusch"/>
 
 # Azure Virtual Machines (VMs) への SAP NetWeaver の導入 – 計画/導入ガイド
@@ -641,7 +641,7 @@ Azure での名前解決と IP 解決の構成については、さまざまな�
 
 Azure Virtual Network を作成することで、Azure の DHCP 機能によって割り当てられたプライベート IP アドレスのアドレス範囲を定義できます。クロスプレミス シナリオでは、定義されている IP アドレス範囲が Azure によって DHCP を使用して割り当てられます。ただし、ドメイン名解決は (VM がオンプレミス ドメインの一部であると想定して) オンプレミスで実行されるため、複数の Azure Cloud Services にまたがってアドレスを解決できます。
 
-[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/> を参照してください。)
+[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/> を参照してください。
 
 Azure 内のすべての仮想マシンは、Virtual Network に接続される必要があります。
 
@@ -686,8 +686,7 @@ Azure 仮想マシンには、複数の仮想ネットワーク インターフ�
 #### マルチサイト VPN
 Azure では最近、1 つの Azure サブスクリプションでマルチサイト VPN 接続を作成できる機能も提供されています。以前、単一サブスクリプションは 1 つのサイト間 VPN 接続に制限されていました。単一サブスクリプション用のマルチサイト VPN 接続によって、この制限はなくなりました。これにより、クロスプレミス構成を通じて、特定のサブスクリプション用に複数の Azure リージョンを使用できるようになりました。
 
-詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。
-[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
+詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
 
 #### VNet 間接続
 マルチサイト VPN を使用して、各リージョンに個別の Azure Virtual Network を構成する必要があります。ただし多くの場合は、異なるリージョン内のソフトウェア コンポーネント間で相互通信が必要になります。この通信では、Azure リージョンからオンプレミスにルーティングし、そこから別の Azure リージョンにルーティングするという経路は望ましくありません。経路を短縮するために、Azure では、1 つのリージョンにある 1 つの Azure Virtual Network を、別のリージョンでホストされているもう 1 つの Azure Virtual Network に接続するよう構成できます。この機能は、VNet 間接続と呼ばれます。この機能の詳細については、次のリンクから確認できます。<https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>
@@ -781,11 +780,9 @@ Azure PowerShell コマンドレットをローカルのデスクトップ/ラ�
 
 VM をデプロイしたり、VM のデプロイメント内でカスタム ステップを作成するための強力なツールとして、PowerShell (PS) はお客様から高く評価されています。Azure で SAP インスタンスを実行しているすべてのお客様が、PS コマンドレットを使用して Azure ポータルの管理機能を補完したり、Azure 内のデプロイメントを管理するための専用ツールとして PS コマンドレットを使用しています。Azure 用のコマンドレットでは、2,000 を超える Windows 関連コマンドレットと同じ命名規則が使用されているので、これらのコマンドレットを使用している Windows 管理者であれば、どなたでも簡単に Azure 用のコマンドレットを使用できます。
 
-次の例を参照してください:
- <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+次の例を参照してください: <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO 新しい CLI コマンドについてテスト時に説明してください) 
-Azure Monitoring Extension for SAP のデプロイメント (このドキュメントの「[Azure Monitoring Solution for SAP][planning-guide-9.1]」の章を参照してください) は、PowerShell または CLI を通じてのみ実行可能です。したがって、Azure で SAP NetWeaver システムをデプロイまたは管理する場合には、PowerShell または CLI を設定し、構成することが必須となります。
+[comment]: <> (MShermannd TODO 新しい CLI コマンドについてテスト時に説明してください) Azure Monitoring Extension for SAP のデプロイメント (このドキュメントの「[Azure Monitoring Solution for SAP][planning-guide-9.1]」の章を参照してください) は、PowerShell または CLI を通じてのみ実行可能です。したがって、Azure で SAP NetWeaver システムをデプロイまたは管理する場合には、PowerShell または CLI を設定し、構成することが必須となります。
 
 Azure の機能が増えるのに応じて、新しい PS コマンドレットが追加され、コマンドレットの更新が必要になります。そのため、少なくとも月に 1 回は、Azure のダウンロード サイト (<https://azure.microsoft.com/downloads/>) で新しいバージョンのコマンドレットを確認するようお勧めします。新バージョンは、以前のバージョンの上にインストールされます。
 
@@ -819,11 +816,7 @@ ___
 
 > ![Windows][Logo_Windows] Windows
 >
-> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。
-[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) 
-[comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) 
-[comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) 
-[comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
+> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) [comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) [comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) [comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -844,8 +837,7 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 
 独自の Azure VM ディスクを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
-[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * 管理者特権を持つ別のローカル アカウントを追加します。VM がデプロイされ、より適切なユーザーが使用可能になるまで、このアカウントをマイクロソフトのサポートが使用したり、サービスやアプリケーションの実行コンテキストとして割り当てることができるようにします。
@@ -870,8 +862,7 @@ ___
 
 独自の Azure VM イメージを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
-[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM でユーザーとして登録されているすべてのドメイン ユーザーは、クラウドのみのシナリオでは存在しなくなるので、(このドキュメントの「[クラウド専用の仮想マシンのデプロイを Azure にお客様のオンプレミスのネットワーク上の依存関係のない][planning-guide-2.1]」の章を参照してください)、このようなドメイン アカウントを使用したサービスは、イメージが Azure にデプロイされた後には機能しないことがあります。これは特に、DBMS や SAP アプリケーションなどのサービスの実行に使用されるアカウントでよく起こります。したがって、このようなドメイン アカウントは VM ローカル アカウントに置き換えて、VM のオンプレミス ドメイン アカウントを削除する必要があります。このドキュメントの「[クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ][planning-guide-2.2]」の章で説明しているように、VM がクロスプレミス シナリオでデプロイされた場合には、オンプレミス ドメイン ユーザーを VM イメージ内に保持しても問題ない場合があります。
@@ -1932,5 +1923,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。
 
-<!---HONumber=AcomDC_0727_2016-->
-
+<!---HONumber=AcomDC_0803_2016-->

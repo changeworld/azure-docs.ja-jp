@@ -4,7 +4,7 @@
 	authors="anuragdalmia" 
 	manager="erikre" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -117,4 +117,4 @@ API Apps の概要ページから、SQL、SAP、SharePoint などのコネクタ
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Logic Apps での BizTalk 取引先管理コネクタの使用 | Microsoft Azure App Service" 
    description="BizTalk 取引先管理コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajeshramabathiran" 
    manager="erikre" 
@@ -43,4 +43,4 @@ TPM API アプリは、AS2 コネクタ、X12 API アプリ、または EDIFACT 
 <!--References-->
 [1]: app-service-logic-create-a-trading-partner-agreement.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

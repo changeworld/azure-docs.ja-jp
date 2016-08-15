@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/31/2016"
    ms.author="sonyama;barbkess;jrj"/>
 
 # SQL Data Warehouse の容量制限
@@ -29,6 +29,7 @@
 | データベース接続 | 同時に開かれるセッション数 | 1024<br/><br/>最大 1024 個のアクティブな接続をサポートします。各接続が SQL Data Warehouse データベースに対して同時に要求を送信できます。実際に同時実行できるクエリ数には制限があるので注意してください。同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。|
 | データベース接続 | 準備されたステートメントに対する最大メモリ容量 | 20 MB |
 | [ワークロード管理][] | 同時クエリの最大数 | 32<br/><br/>既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが上位リソース クラスに割り当てられている場合、同時実行レベルは低くなる可能性があります。DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。|
+| [Tempdb][] | Tempdb の最大サイズ | DW100 あたり 399 GB です。そのため DWU1000 で Tempdb は 3.99 TB に設定されます |
 
 
 ## データベース オブジェクト
@@ -71,8 +72,9 @@
 | クエリ | システム ビューに対する同時クエリ数 | 100 |
 | クエリ | システム ビューに対する、キューに置かれるクエリ数 | 1,000 |
 | クエリ | パラメーターの最大個数 | 2098 |
-| Batch | 最大サイズ | 65,536*4096 |
-| SELECT の結果セット | 行あたりの列数 | 4096<br/><br/>SELECT の結果セットで、許容される行あたりの列数の上限は 4096 個です。　常に 4096 個が保証されるわけではありません。　クエリ プランで一時テーブルが必要な場合、テーブルあたりの列数の最大値として 1024 が適用される可能性があります。|
+| Batch  
+ | 最大サイズ | 65,536*4096 |
+| SELECT の結果セット | 行あたりの列数 | 4096<br/><br/>SELECT の結果セットで、許容される行あたりの列数の上限は 4096 個です。常に 4096 個が保証されるわけではありません。　クエリ プランで一時テーブルが必要な場合、テーブルあたりの列数の最大値として 1024 が適用される可能性があります。|
 | SELECT | 入れ子になったサブクエリの数 | 32<br/><br/>SELECT ステートメントで許容される入れ子になったサブクエリの数は 32 個までです。常に 32 個が保証されるわけではありません。たとえば、JOIN によって、クエリ プランにサブクエリが導入されることがあります。サブクエリの数はまた、使用できるメモリによって制限される場合があります。|
 | SELECT | JOIN あたりの列数 | 1,024 列<br/><br/>JOIN で許容される列数は 1,024 個までです。常に 1024 列が保証されるわけではありません。JOIN プランで、列数が JOIN の結果を上回る一時テーブルが必要な場合、一時テーブルには 1024 の制限が適用されます。 |
 | SELECT | GROUP BY の列あたりのバイト数 | 8,060<br/><br/>GROUP BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。|
@@ -104,10 +106,11 @@
 [Data Warehouse ユニット (DWU)]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [SQL Data Warehouse のリファレンス概要]: ./sql-data-warehouse-overview-reference.md
 [ワークロード管理]: ./sql-data-warehouse-develop-concurrency.md
+[Tempdb]: ./sql-data-warehouse-tables-temporary.md
 
 <!--MSDN references-->
 [8 KB を超える場合の行オーバーフロー データ]: https://msdn.microsoft.com/library/ms186981.aspx
 [CREATE TABLE (Azure SQL Data Warehouse)]: https://msdn.microsoft.com/library/mt203953.aspx
 [内部エラー: Expression Service の制限に達しました]: https://support.microsoft.com/kb/913050
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,8 +3,8 @@
 	description="Azure Backup サービスを使用した SQL Server データベースのバックアップの概要"
 	services="backup"
 	documentationCenter=""
-	authors="giridharreddy"
-	manager="shreeshd"
+	authors="adigan"
+	manager="Nkolli1"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/01/2016"
-	ms.author="giridham; jimpark;"/>
+	ms.author="giridham; jimpark;markgal;trinadhk"/>
 
 
 # DPM を使用した SQL Server ワークロード用 Azure Backup
@@ -62,7 +62,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
 
-    >[AZURE.NOTE] \(画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。このプロセスは、**高速完全バックアップ**と呼ばれます。トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分にデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この例では午後 8 時) からログを再生することでポイントが作成されます。
+    >[AZURE.NOTE] (画面の入力に従って) 毎日午後 8 時 00 分に、前日午後 8 時 00 分のバックアップ ポイントから変更されているデータを転送することにより、バックアップ ポイントが作成されます。このプロセスは、**高速完全バックアップ**と呼ばれます。トランザクション ログは 15 分ごとに同期されますが、午後 9 時 00 分にデータベースを回復する必要がある場合は、最新の高速完全バックアップ ポイント (この例では午後 8 時) からログを再生することでポイントが作成されます。
 
 8. **[次へ]** をクリックします。
 
@@ -174,4 +174,4 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

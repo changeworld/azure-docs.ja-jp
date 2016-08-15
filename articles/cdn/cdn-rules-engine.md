@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - 規則エンジンを使用した既定の HTTP 動作のオーバーライド"
-	description="規則エンジンでは、HTTP 要求の処理方法 (特定種類のコンテンツの配信のブロックなど) のカスタマイズのほか、キャッシュ ポリシーの定義、HTTP ヘッダーの変更などを行えます。"
+	pageTitle="Azure CDN の既定の HTTP 動作を規則エンジンを使用してオーバーライドする | Microsoft Azure"
+	description="規則エンジンでは、Azure CDN における HTTP 要求の処理方法 (特定種類のコンテンツの配信のブロックなど) のカスタマイズのほか、キャッシュ ポリシーの定義、HTTP ヘッダーの変更などを行えます。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # 規則エンジンを使用して既定の HTTP 動作をオーバーライドする
@@ -28,7 +28,7 @@
 
 1. [CDN プロファイル] ブレードで、**[管理]** をクリックします。
 
-	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-rules-engine/cdn-rules-manage-btn.png)
+	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-rules-engine/cdn-manage-btn.png)
 
 	CDN 管理ポータルが開きます。
 
@@ -48,7 +48,7 @@
 
 	>[AZURE.TIP] ドロップダウンには多くの種類の一致条件が用意されています。一致条件の左側の青い情報アイコンをクリックすると、現在選択している状態の詳細が表示されます。
 	>
-	>一致条件の詳しい完全な一覧については、「[CDN ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md#match-conditions)」を参照してください。
+	>一致条件の詳しい完全な一覧については、「[CDN ルール エンジンの一致条件と機能詳細](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_0)」を参照してください。
 
 5.  **[機能]** の横にある **[+]** をクリックして、新しい機能を追加します。左側のドロップダウンで、**[内部の最長期間を強制する]** を選択します。表示されるテキスト ボックスに、「**300**」と入力します。他の既定値はそのまま使用します。
 
@@ -56,7 +56,7 @@
 
 	>[AZURE.NOTE] 一致条件と同様に、新しい機能の左側にある青い情報アイコンをクリックすると、その機能に関する詳細が表示されます。**[内部の最長期間を強制する]** では、**Cache-Control** および **Expires** ヘッダーをオーバーライドして、CDN エッジ ノードが配信元からの資産を更新するタイミングを制御します。今回の 300 秒のサンプルでは、その配信元から資産を更新する前に、CDN エッジ ノードは 5 分間、資産をキャッシュします。
 	>
-	>機能の詳しい完全な一覧については、「[CDN ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md#features)」を参照してください。
+	>機能の詳しい完全な一覧については、「[CDN ルール エンジンの一致条件と機能詳細](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1)」を参照してください。
 
 6.  **[追加]** をクリックして、新しい規則を保存します。次に、新しい規則は承認を待機します。承認されると、ステータスが**保留中の XML** から**アクティブな XML** に変わります。
 
@@ -64,6 +64,6 @@
 
 ## 関連項目
 * [Azure Friday: Azure CDN に新しく追加された強力な Premium 機能](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (ビデオ)
-* [ルール エンジンの一致条件と機能詳細](cdn-rules-engine-details.md)
+* [ルール エンジンの一致条件と機能詳細](https://msdn.microsoft.com/library/mt757336.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

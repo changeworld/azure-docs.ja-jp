@@ -3,7 +3,7 @@
    description="ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="shivaniguptamsft"
+   authors="kevinvngo"
    manager="barbkess"
    editor=""/>
 
@@ -138,8 +138,8 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse integration overview (SQL Data Warehouse の統合の概要)]: ./sql-data-warehouse-overview-integration.md
-[実験作成チュートリアル]: https://azure.microsoft.com/documentation/articles/machine-learning-create-experiment/
-[Azure の Machine Learning の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[実験作成チュートリアル]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-create-experiment/
+[Azure の Machine Learning の概要]: https://azure.microsoft.com/ja-JP/documentation/articles/machine-learning-what-is-machine-learning/
 [Azure Machine Learning Studio]: https://studio.azureml.net/Home
 [Azure ポータル]: https://portal.azure.com/
 
@@ -149,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

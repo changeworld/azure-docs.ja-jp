@@ -1,7 +1,7 @@
 <properties
 pageTitle="ロジック アプリで SharePoint Online コネクタを使用する方法 | Microsoft Azure"
 description="SharePoint Online コネクタを使用するロジック アプリを作成して、SharePoint でリストを管理します。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -270,9 +270,9 @@ BlobMetadata
 |プロパティ名| Displayname Settings|説明|
 | ---|---|---|
 |dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|source*|Source file path (コピー元ファイル パス)|ソース ファイルのパス|
+|source*|Source file path (抽出元ファイル パス)|ソース ファイルのパス|
 |destination*|Destination file path (コピー先ファイル パス)|宛先ファイルのパス|
-|overwrite|Overwrite flag (上書きフラグ)|コピー先ファイルが存在する場合にファイルを上書きするかどうか|
+|overwrite|Overwrite flag (上書きフラグ)|抽出先ファイルが存在する場合にファイルを上書きするかどうか|
 
 * は、必須のプロパティを示します。
 
@@ -638,7 +638,7 @@ TablesList
 
 ## HTTP 応答
 
-上記のアクションとトリガーは、次の HTTP ステータス コードを 1 つ以上返す場合があります。
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
 |名前|説明|
 |---|---|
@@ -668,4 +668,4 @@ TablesList
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

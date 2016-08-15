@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/20/2016"
+   ms.date="07/29/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center での Endpoint Protection の正常性アラートの解決
@@ -48,4 +48,4 @@ Azure Security Center では、検出されたEndpoint Protection の正常性�
 [3]: ./media/security-center-resolve-endpoint-protection/failure-list.png
 [4]: ./media/security-center-resolve-endpoint-protection/failure-event.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

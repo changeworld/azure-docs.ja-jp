@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Azure App Service で Azure リソース マネージャー テンプレートを使用してロジック アプリを作成する |Microsoft Azure" 
 	description="Azure リソース マネージャー テンプレートを使用し、ワークフローを定義するための空のロジック アプリをデプロイします。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter="" 
 	authors="MSFTMan" 
 	manager="erikre" 
@@ -116,4 +116,4 @@ Azure リソース マネージャー テンプレートを使用して、ワー
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

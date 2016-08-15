@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration Pack の AS2 契約の作成についての詳細情報" 
 	description="Enterprise Integration Pack の AS2 契約の作成についての詳細情報| Microsoft Azure App Service" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -97,4 +97,4 @@
 あともう少しで終了です。
 9. [Integration Accounts (統合アカウント)] ブレード上の**[Agreements (契約)]** タイルを選択すると、新しく追加された契約が表示されます。![](./media/app-service-logic-enterprise-integration-agreements/agreement-6.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリ での Oracle Database コネクタの使用 | Microsoft Azure App Service"
    description="Oracle Database コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
    manager="erikre"
@@ -120,4 +120,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-oracle/LogicApp7.png
 [12]: ./media/app-service-logic-connector-oracle/LogicApp8.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

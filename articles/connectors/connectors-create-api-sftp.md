@@ -1,7 +1,7 @@
 <properties
 pageTitle="ロジック アプリで SFTP コネクタを使用する方法 | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。SFTP API に接続してファイルを送受信します。ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -397,7 +397,7 @@ BlobMetadata
 
 ## HTTP 応答
 
-上記のアクションとトリガーは、次の HTTP ステータス コードを 1 つ以上返す場合があります。
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
 |名前|説明|
 |---|---|
@@ -419,4 +419,4 @@ BlobMetadata
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

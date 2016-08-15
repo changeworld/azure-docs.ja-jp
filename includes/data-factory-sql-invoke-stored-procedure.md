@@ -55,9 +55,9 @@
 
 	CREATE TYPE [dbo].[MarketingType] AS TABLE(
 	    [ProfileID] [varchar](256) NOT NULL,
-	    [State] [varchar](256) NOT NULL,
+	    [State] [varchar](256) NOT NULL
 	)
 
 ストアド プロシージャ機能は[テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0803_2016-->

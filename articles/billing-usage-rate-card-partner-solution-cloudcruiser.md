@@ -1,11 +1,13 @@
 <properties
    pageTitle="Cloud Cruiser と Microsoft Azure Billing API の統合 | Microsoft Azure"
    description="Microsoft Azure 課金パートナーの Cloud Cruiser が Azure Billing API を製品に統合した独自の事例について説明します。この記事は、Microsoft Azure Pack の使用/試用に関心を持っている Azure と Cloud Cruiser のユーザーには特に役立ちます。"
-   services="billing"
+   services=""
    documentationCenter=""
    authors="BryanLa"
    manager="mbaldwin"
-   editor=""/>
+   editor=""
+   tags="billing"
+   />
 
 <tags
    ms.service="billing"
@@ -235,4 +237,4 @@ _UsageAPI_ シートで Usage API から情報を抽出して処理し、_Publis
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

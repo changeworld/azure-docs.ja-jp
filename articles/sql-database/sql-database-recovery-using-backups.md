@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/09/2016"
+   ms.date="08/01/2016"
    ms.author="sstein"/>
 
 # データベースの自動バックアップを使用した Azure SQL Database の復旧
@@ -65,7 +65,7 @@ SQL Database は、[SQL Database 自動バックアップ](sql-database-automate
 
 > [AZURE.IMPORTANT] Azure SQL Database サーバー インスタンスを削除すると、そのデータベースもすべて削除されます。これを回復することはできません。現時点では、削除されたサーバーを復元するためのサポートはありません。
 
-復元されたデータベースには、同じ名前または新しいデータベース名を使用できます。[Azure ポータル](sql-database-restore-deleted-database-portal.md)、[PowerShell](sql-database-restore-deleted-database-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
+復元されたデータベースには、同じ名前または新しいデータベース名を使用できます。[Azure ポータル](sql-database-restore-deleted-database-portal.md)、[PowerShell](sql-database-restore-deleted-database-powershell.md)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
 
 > [AZURE.SELECTOR]
 - [削除されたデータベースの復元: Azure ポータル](sql-database-restore-deleted-database-portal.md)
@@ -73,7 +73,7 @@ SQL Database は、[SQL Database 自動バックアップ](sql-database-automate
 
 ## 地理リストア
 
-geo リストアでは、geo レプリケートされた最新の[毎日の自動バックアップ](sql-database-automated-backups.md)から任意の Azure リージョン内の任意のサーバーで SQL データベースを復元することができます。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。[Azure ポータル](sql-database-geo-restore-portal.md)、[PowerShell](sql-database-geo-restore-powershell.md)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
+geo リストアでは、geo レプリケートされた最新の[毎日の自動バックアップ](sql-database-automated-backups.md)から任意の Azure リージョン内の任意のサーバーで SQL データベースを復元することができます。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。[Azure ポータル](sql-database-geo-restore-portal.md)、[PowerShell](sql-database-geo-restore-powershell.md)、または [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
 
 > [AZURE.SELECTOR]
 - [geo リストア: Azure ポータル](sql-database-geo-restore-portal.md)
@@ -105,7 +105,7 @@ geo リストアを使用して障害から復旧する方法の詳細につい�
 
 |API|説明|
 |---|-----------|
-|[REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|データベースを復元します|
+|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|データベースを復元します|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|復元操作中にステータスを返します|
 ||||
 
@@ -122,4 +122,4 @@ geo リストアを使用して障害から復旧する方法の詳細につい�
 - より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

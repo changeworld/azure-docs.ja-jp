@@ -1,7 +1,7 @@
 <properties
 pageTitle="Dropbox | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。Dropbox に接続してファイルを管理します。Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -92,7 +92,7 @@ Dropbox コネクタには、次のアクションがあります。
 
 ### アクションの詳細
 
-ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
 
 
 ### ファイルのメタデータを取得する
@@ -433,4 +433,4 @@ BlobMetadata
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,7 +3,7 @@
 	description="このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -73,4 +73,4 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

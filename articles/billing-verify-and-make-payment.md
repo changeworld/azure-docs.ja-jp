@@ -1,11 +1,12 @@
 <properties
 	pageTitle="支払い方法を確認し、Azure サブスクリプションの料金を支払う方法 | Microsoft Azure"
 	description="支払い方法を確認し、Azure サブスクリプションの料金を支払う方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
+	tags="billing"
 	/>
 
 <tags
@@ -44,4 +45,4 @@
 
 請求書モードの支払いを利用している場合、請求書の下部に記載されている場所に支払いを送付します。サポートが必要な場合、[Microsoft サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

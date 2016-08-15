@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="イベントと監査ログの表示" 
-	description="Azure サブスクリプションで発生するすべてのイベントを表示する方法について説明します。" 
-	authors="HaniKN-MSFT" 
-	manager="kamrani" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="イベントと監査ログの表示"
+	description="Azure サブスクリプションで発生するすべてのイベントを表示する方法について説明します。"
+	authors="HaniKN-MSFT"
+	manager="kamrani"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/28/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/28/2015"
 	ms.author="hanikn"/>
 
 # イベントと監査ログの表示
@@ -26,17 +26,17 @@
 2. **[参照]** クリックして **[監査ログ]** を選択します。![ハブの参照](./media/insights-debugging-with-events/Insights_Browse.png)
 3. これによってブレードが開き、過去 7 日間にサブスクリプションに影響を与えたイベントがすべて表示されます。上部には、レベル別にデータを示すグラフが表示され、その下には、すべてのログの一覧が表示されます。![All events](./media/insights-debugging-with-events/Insights_AllEvents.png)
 
->[AZURE.NOTE]Azure ポータルでは、特定のサブスクリプションについて表示できるイベントは最新の 500 件のみです。
+>[AZURE.NOTE] Azure ポータルでは、特定のサブスクリプションについて表示できるイベントは最新の 500 件のみです。
 
 4. 任意のログ エントリをクリックして、そのエントリを構成するイベントを表示できます。たとえば、リソース グループに何かをデプロイすると、さまざまなリソースが作成または変更される可能性があります。各エントリでは、次の内容が表示されます。
-    * イベントの**レベル**: たとえば、追跡するだけでよいこと (**情報**) もあれば、把握する必要がある問題が発生すること (**エラー**) もあります。 
+    * イベントの**レベル**: たとえば、追跡するだけでよいこと (**情報**) もあれば、把握する必要がある問題が発生すること (**エラー**) もあります。
     * **状態**: 一般的に、最終的な状態は **"成功"** や **"失敗"** になりますが、実行時間の長い操作の場合は、**"承諾済み"** になることもあります。
     * イベントが発生した*日時*。
     * 操作を実行した*ユーザー* (いる場合)。すべての操作がユーザーによって実行されるとは限りません。場合によっては、バックエンド サービスで実行されるため、**呼び出し元**がない操作もあります。
     * イベントの**関連付け ID**: この操作のセットを示す一意の識別子。
 
 5. そこから詳細ブレードに移動すると、イベントの詳細を確認できます。
-   
+
     ![リソース グループ](./media/insights-debugging-with-events/Insights_EventDetails.png)
 
     **[失敗]** イベントに関しては、このページで通常、デバッグの目的で役立つ詳細を示す**[サブステータス]** および **[プロパティ]** というセクションが表示されます。
@@ -70,6 +70,6 @@
 
 * イベントが発生するたびに[アラート通知を受信](insights-receive-alert-notifications.md)します。
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
-* [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。  
+* [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0803_2016-->

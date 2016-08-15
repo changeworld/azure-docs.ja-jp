@@ -53,7 +53,7 @@
 
 Azure ストレージ アカウントを作成します。アプリでは、このアカウントを使用して To Do リストの項目を保存します。
 
-1.  [Azure ポータル](https://portal.azure.com)にログインします。
+1.  [Azure ポータル](https://portal.azure.com/)にログインします。
 
 2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソース グループ](../resource-group-overview.md)を作成します
 
@@ -72,7 +72,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 ### express のインストールとスキャフォールディングの生成
 
-1. コマンド ラインで、**tasklist** という名前の新しいディレクトリを作成し、そのディレクトリに移動します。  
+1. コマンド ラインで、**tasklist** という名前の新しいディレクトリを作成し、そのディレクトリに移動します。
 
 2. 次のコマンドを入力して、Express モジュールをインストールします。
 
@@ -547,7 +547,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 **<storage account name>** を以前に作成したストレージ アカウントの名前に置き換え、**<storage access key>** をストレージ アカウントのプライマリ アクセス キーに置き換えます。(以前に作成した config.json ファイルと同じ値を使用します)。
 
-環境変数は、[Azure ポータル](https://portal.azure.com)で設定することもできます。
+環境変数は、[Azure ポータル](https://portal.azure.com/)で設定することもできます。
 
 1.  **[参照]**、**[Web Apps]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
 
@@ -601,7 +601,6 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 <!-- URLs -->
 
 [Azure App Service での Node.js Web アプリの構築とデプロイ]: web-sites-nodejs-develop-deploy-mac.md
-[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [Azure Developer Center]: /develop/nodejs/
 
 [node]: http://nodejs.org
@@ -614,7 +613,6 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [MongoDB を使用する Node.js Web アプリ]: web-sites-nodejs-store-data-mongodb.md
 [Azure CLI]: ../xplat-cli-install.md
 
-[Continuous deployment using GIT in Azure App Service]: web-sites-publish-source-control.md
 [azure]: https://github.com/Azure/azure-sdk-for-node
 [node-uuid]: https://www.npmjs.com/package/node-uuid
 [nconf]: https://www.npmjs.com/package/nconf
@@ -638,4 +636,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

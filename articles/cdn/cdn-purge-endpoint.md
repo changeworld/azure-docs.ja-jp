@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Azure CDN エンドポイントの消去"
+	pageTitle="Azure CDN エンドポイントの消去 | Microsoft Azure"
 	description="CDN エンドポイントからキャッシュされたすべてのコンテンツを消去する方法について説明します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Azure CDN エンドポイントの消去
@@ -62,4 +62,4 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 - [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
 - [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

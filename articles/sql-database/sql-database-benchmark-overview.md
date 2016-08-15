@@ -3,7 +3,7 @@
 	description="このトピックでは、Azure SQL Database のパフォーマンス測定で使用される Azure SQL Database ベンチマークについて説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -130,4 +130,4 @@ Azure SQL Database ベンチマークは、利用可能なサービス階層と�
 
 [Azure SQL Database performance guidance for single databases (データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス)](sql-database-performance-guidance.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

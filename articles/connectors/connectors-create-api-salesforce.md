@@ -1,7 +1,7 @@
 <properties
 pageTitle="Logic Apps での Salesforce コネクタの使用方法 | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。Salesforce コネクタは、Salesforce オブジェクトを操作するための API を提供します。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -281,4 +281,4 @@ TablesList
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

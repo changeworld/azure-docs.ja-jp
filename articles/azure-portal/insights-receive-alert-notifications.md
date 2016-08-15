@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="アラート通知の受信" 
-	description="アラート ルールの条件を満たすと通知されます。" 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Azure サービスのアラート通知を受け取る |Microsoft Azure"
+	description="アラート ルールの条件を満たすと通知されます。"
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # アラート通知の受信
@@ -36,13 +36,9 @@
 
 4. アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
 
-5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。
-    ![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
+5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
-6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。 
-    ![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
-    
->[AZURE.NOTE] 現時点では、[イベント] は Web Apps でのみサポートされています。 
+6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
 
 7. 最後に、担当の管理者にメール通知を送信できます。
 
@@ -66,6 +62,5 @@
 * コードがクラウドで実行する方法を正確に理解する場合は、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
- 
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0803_2016-->

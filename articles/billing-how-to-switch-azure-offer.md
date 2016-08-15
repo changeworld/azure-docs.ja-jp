@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="n/a"
+	editor=""
 	tags="billing,top-support-issue"/>
 
 <tags
@@ -77,4 +77,4 @@
 
 その他のプランの変更については、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?LinkID=619338)ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

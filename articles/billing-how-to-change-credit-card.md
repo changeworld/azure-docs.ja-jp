@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法 | Microsoft Azure"
 	description="Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -51,4 +51,4 @@
 3. ページの右側にある **[支払方法の変更]** を選択します。
 4. **[支払方法の選択]** ページで、クレジット カードの横にあるドロップダウン矢印を選択し、使用するクレジット カードを選択します。次に、![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) を選択してウィンドウを閉じます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

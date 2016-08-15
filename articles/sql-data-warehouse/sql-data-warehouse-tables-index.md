@@ -86,11 +86,14 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-テーブルに非クラスター化インデックスを追加するには、単純に WITH 句で CLUSTERED INDEX を指定します。
+テーブルに非クラスター化インデックスを追加するには、次の構文を使用します。
 
 ```SQL
 CREATE INDEX zipCodeIndex ON t1 (zipCode);
 ```
+
+> [AZURE.NOTE] 非クラスター化インデックスは、既定では、CREATE INDEX を使用したときに作成されます。さらに、非クラスター化インデックスは行のストレージ テーブル (HEAP または CLUSTERED INDEX) でのみ許可されます。現時点では、CLUSTERED COLUMNSTORE INDEX での非クラスター化インデックスは許可されていません。
+
 
 ## クラスター化列ストア インデックスの最適化
 
@@ -209,11 +212,11 @@ WHERE	COMPRESSED_rowgroup_rows_AVG < 100000
 
 SQL Data Warehouse にフローする小規模な読み込みは、少量の読み込みとも呼ばれます。通常、これらの読み込みは、システムによってインジェストされるほぼ一定のデータ ストリームを表します。ただし、このストリームはほぼ連続的であるため、行の量はあまり多くありません。多くの場合、データは、列ストア形式への直接読み込みに必要なしきい値を大幅に下回ります。
 
-こうした状況では、多くの場合、データを最初に Azure BLOB ストレージに配置し、読み込む前に蓄積する方が適切です。この手法は、多くの場合に "マイクロ バッチ処理" と呼ばれます。
+こうした状況では、多くの場合、データを最初に Azure BLOB ストレージに配置し、読み込む前に蓄積する方が適切です。この手法は、多くの場合に *"マイクロ バッチ処理"* と呼ばれます。
 
 ### 多すぎるパーティション
 
-考慮する必要があるもう 1 つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。パーティション分割する前に、SQL Data Warehouse では、データが 60 個のデータベースに分割されます。パーティション分割で、データはさらに分割されます。データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、**各**パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション x 100 個のパーティション x 100 万行)。100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
+考慮する必要があるもう 1 つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。パーティション分割する前に、SQL Data Warehouse では、データが 60 個のデータベースに分割されます。パーティション分割で、データはさらに分割されます。データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、**各**パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション x *"100 個のパーティション"* x 100 万行)。100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
 
 テーブルが一部のデータと共に読み込まれたら、以下の手順に従って、最適化されていないクラスター化列ストア インデックスを持つテーブルを特定して再構築します。
 
@@ -254,7 +257,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。インデックスの再構築の詳細については、「[Columnstore Indexes Defragmentation (列ストア インデックスの最適化)][]」の「ALTER INDEX REBUILD」セクション、および構文トピック「[ALTER INDEX][]」を参照してください。
+SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。インデックスの再構築の詳細については、「[列ストア インデックスの最適化][]」の ALTER INDEX REBUILD のセクション、および構文トピック「[ALTER INDEX][]」を参照してください。
  
 ### 手順 3. クラスター化列ストア セグメントの品質改善を確認する
 セグメントの品質が低いテーブルを特定するクエリを再実行し、セグメントの品質が改善したことを確認します。セグメントの品質が改善されていない場合は、テーブル内の行の幅が余分である可能性があります。インデックスを再構築するときに、より高いリソース クラスまたは DWU の使用を検討してください。より多くのメモリが必要な場合、
@@ -306,7 +309,7 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 ## 次のステップ
 
-詳細について、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事を参照します。ベスト プラクティスの詳細について、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照します。
+詳細について、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事を参照します。ベスト プラクティスの詳細について、「[SQL Data Warehouse のベスト プラクティス][]」を参照します。
 
 <!--Image references-->
 
@@ -333,9 +336,9 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 [ヒープ]: https://msdn.microsoft.com/library/hh213609.aspx
 [クラスター化インデックスおよび非クラスター化インデックス]: https://msdn.microsoft.com/library/ms190457.aspx
 [CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
-[Columnstore Indexes Defragmentation (列ストア インデックスの最適化)]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
+[列ストア インデックスの最適化]: https://msdn.microsoft.com/library/dn935013.aspx#Anchor_1
 [クラスター化列ストア インデックス]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

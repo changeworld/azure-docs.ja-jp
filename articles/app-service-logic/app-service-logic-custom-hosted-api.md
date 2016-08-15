@@ -4,7 +4,7 @@
 	authors="stepsic-microsoft-com"
 	manager="dwrede"
 	editor=""
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""/>
 
 <tags
@@ -169,4 +169,4 @@ Web アプリが既にデプロイされている場合、ポータルでその�
 
 ただし、ロジック アプリのアプリケーション ID を作成して API の呼び出しに使用する場合は、このページの手順に従う必要があります。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

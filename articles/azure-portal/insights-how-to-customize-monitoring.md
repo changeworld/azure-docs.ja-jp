@@ -1,14 +1,14 @@
 <properties
-	pageTitle="サービス メトリックの監視"
+	pageTitle="Microsoft Azure でのサービス メトリックの監視 | Microsoft Azure"
 	description="Azure でグラフの監視をカスタマイズする方法について説明します。"
 	authors="stepsic-microsoft-com"
 	manager="ronmart"
 	editor=""
-	services="azure-portal"
-documentationCenter=""/>
+	services="monitoring"
+    documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -72,4 +72,4 @@ documentationCenter=""/>
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

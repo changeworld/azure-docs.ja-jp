@@ -1,11 +1,12 @@
 <properties
 	pageTitle="Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン | Microsoft Azure"
 	description="Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティを使用する際のガイドラインについて説明します。"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="v-jesits"
+	editor=""
+	tags="billing"
 	/>
 
 <tags
@@ -63,4 +64,4 @@
 | | | | | | | .zix |
 | | | | | | | .zzz |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps のループ、スコープ、分割処理 | Microsoft Azure"
    description="Logic Apps のループ、スコープ、分割処理の概念"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -141,4 +141,4 @@ SplitOn は、次の例に示すように、コード ビューで指定でき�
 }
 ```
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

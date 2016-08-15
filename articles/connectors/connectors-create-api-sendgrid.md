@@ -1,7 +1,7 @@
 <properties
 pageTitle="SendGrid | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。SendGrid 接続プロバイダーを使用して、電子メールを送信し、受信者リストを管理できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -192,4 +192,4 @@ SendGrid を使用してロジック アプリを作成するには、まず**�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

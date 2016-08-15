@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="EDIFACT でのエンタープライズ統合 | Microsoft Azure" 
 	description="EDIFACT 契約を使用してロジック アプリを作成する方法について説明しています。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="jeffhollan" 
 	manager="erikre" 
@@ -178,4 +178,4 @@ EDIFACT メッセージの交換を始める前に、EDIFACT 契約を作成し�
 ## 詳細情報
 - [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

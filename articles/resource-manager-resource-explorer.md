@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/16/2016"
+   ms.date="08/01/2016"
    ms.author="stuartle;tomfitz"/>
 
 # Azure リソース エクスプローラーを使用してリソースを表示および変更する
@@ -34,7 +34,7 @@
 
 そこから、リソース インスタンスへのドリル ダウンを開始できます。次のスクリーン ショットでは、ツリービューに `sltest` という SQL Server インスタンスが表示されているのを確認できます。右側には、そのリソースで使用できる REST API 要求に関する情報が表示されています。リソースのノードに移動すると、リソース エクスプローラーによって、そのリソースに関する情報を取得するための GET 要求が自動的に発行されます。URL の下の広いテキスト領域には、API からの応答が表示されます。
 
-ARM テンプレートに精通するにしたがい、本文のコンテンツは理解しやすくなります。 応答の **properties** セクションは、テンプレートの **properties** テンプレートに指定できる値に相当します。
+Resource Manager テンプレートに精通するに従って、本文の内容を理解しやすくなります。 応答の **properties** セクションは、テンプレートの **properties** テンプレートに指定できる値に相当します。
 
 ![SQL Server](./media/resource-manager-resource-explorer/are-03-sqlserver-with-response.png)
 
@@ -70,8 +70,8 @@ ARM テンプレートに精通するにしたがい、本文のコンテンツ�
 Azure PowerShell コマンドレットの詳細については、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
 
 ## 概要
-ARM を使用する場合は、リソース エクスプローラーを使用すると非常に便利です。PowerShell を使用してどのようにクエリを実行し変更を行うかを考える場合に有効です。REST API を使用する場合は、コードの記述を開始する前に、起動して API 呼び出しを迅速にテストすることができます。ARM テンプレートを作成する場合は、リソースの階層を把握し、構成を配置する場所を特定するのに便利です。ポータルで変更を加え、リソース エクスプローラーで対応するエントリを見つけることができます。
+Resource Manager を使用する場合は、リソース エクスプローラーを使用すると非常に便利です。PowerShell を使用してどのようにクエリを実行し変更を行うかを考える場合に有効です。REST API を使用する場合は、コードの記述を開始する前に、起動して API 呼び出しを迅速にテストすることができます。テンプレートを作成する場合は、リソースの階層を把握し、構成を配置する場所を特定するのに便利です。ポータルで変更を加え、リソース エクスプローラーで対応するエントリを見つけることができます。
 
 詳細については、「[Channel 9 video with Scott Hanselman and David Ebbo (Scott Hanselman と David Ebbo によるチャネル 9 ビデオ)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

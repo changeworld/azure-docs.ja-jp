@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="07/29/2016" 
 	ms.author="mimig"/>
 
 # Microsoft Azure での NoSQL について
@@ -35,4 +35,4 @@ Azure で利用できる一連の NoSQL テクノロジに関心があるもの�
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

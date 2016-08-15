@@ -189,8 +189,8 @@
 | --: | :-- | :-- |
 | 90 | [SQL Database 自動バックアップ](sql-database-automated-backups.md) | SQL Database 組み込みバックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点にロールバックしたり、データベースを地理的リージョン内の新しいデータベースにコピーしたりすることができます (最大 35 日)。 |
 | 91 | [Azure SQL Database によるビジネス継続性](sql-database-business-continuity.md) | Azure SQL Database がどのようにクラウド ビジネス継続性とデータベース復旧をサポートし、ミッション クリティカルなクラウド アプリケーションの実行を維持できるようにするかについて説明します。 |
-| 92 | [ダウンタイムのないアプリケーションのアップグレード](sql-database-business-continuity-application-upgrade.md) | このセクションでは、アプリケーションのアップグレード中にダウンタイムを防ぐためのガイダンスを説明します。 |
-| 93 | [Azure SQL Database のビジネス継続性のシナリオ](sql-database-business-continuity-scenarios.md) | Azure SQL Database のビジネス継続性のシナリオ |
+| 92 | [ダウンタイムのないアプリケーションのアップグレード](sql-database-manage-application-rolling-upgrade.md) | この記事では、アプリケーションのアップグレード中にダウンタイムを防ぐためのガイダンスを説明します。 |
+| 93 | [Azure SQL Database のビジネス継続性のシナリオ](sql-database-business-continuity.md) | Azure SQL Database のビジネス継続性のシナリオ |
 | 94 | [Azure SQL Database のバックアップから 1 つのテーブルを復元する方法](sql-database-cloud-migrate-restore-single-table-azure-backup.md) | Azure SQL Database のバックアップから 1 つのテーブルを復元する方法を説明します。 |
 | 95 | [SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md) | アプリ データのバックアップに Azure SQL Database と geo レプリケーションを使用して、ビジネス継続性計画を目的としたクラウド障害復旧ソリューションを設計する方法について説明します。 |
 | 96 | [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md) | Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。 |
@@ -205,7 +205,7 @@
 | 105 | [Azure ポータルを使用した、削除済み Azure SQL データベースの復元](sql-database-restore-deleted-database-portal.md) | 削除された Azure SQL データベースの復元 (Azure ポータル)。 |
 | 106 | [PowerShell を使用した、削除済み Azure SQL Database の復元](sql-database-restore-deleted-database-powershell.md) | 削除された Azure SQL Database の復元 (PowerShell) |
 | 107 | [過去のある時点へのデータベースの復元、削除したデータベースの復元、またはデータ センターの障害からの回復](sql-database-troubleshoot-backup-and-restore.md) | Azure SQL Database のバックアップおよびレプリカを使用した、クラウド データベースのエラーおよび障害からの回復方法について説明します。 |
-| 108 | [Azure SQL Database をエラーから回復する](sql-database-user-error-recovery.md) | Azure SQL Database の特定時点に復元 (PITR) 機能を使用して、ユーザー エラー、偶発的なデータの破損、または削除済みデータベースを復旧する方法について説明します。 |
+| 108 | [Azure SQL Database をエラーから回復する](sql-database-business-continuity.md) | Azure SQL Database の特定時点に復元 (PITR) 機能を使用して、ユーザー エラー、偶発的なデータの破損、または削除済みデータベースを復旧する方法について説明します。 |
 | 109 | [Azure Storage を使用した SQL Server のバックアップと復元](storage-use-storage-sql-server-backup-restore.md) | SQL Server を Azure Storage に バックアップする方法について説明します。SQL データベースを Azure Storage にバックアップする利点について説明します。 |
 
 
@@ -396,4 +396,4 @@ This bullet link is improperly disallowed by publishing automation due to presen
 - [Search SQL Database documentation, with filters](http://azure.microsoft.com/docuXXmentation/arXXticles/?service=sql-database)
 -->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

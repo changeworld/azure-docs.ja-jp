@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/27/2016"
+   ms.date="08/01/2016"
    ms.author="larryfr"/>
 
 #HDInsight で Apache Storm と Maven を使用する基本的なワード カウント アプリケーションの Java ベースのトポロジの開発
@@ -169,13 +169,13 @@ Java ベースの Storm トポロジは、作成か依存関係として参照�
 
 ###スパウトを作成する
 
-外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。これは、(<a href="https://github.com/apache/storm/blob/master/examples/storm-starter/" target="_blank">Storm-Starter のサンプル</a>) で提供されているスパウトを変更したバージョンです。
+外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。これは、([Storm-Starter のサンプル](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)) で提供されているスパウトを変更したバージョンです。
 
 > [AZURE.NOTE] 外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
 >
-> * <a href="https://github.com/apache/storm/blob/master/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java" target="_blank">TwitterSampleSpout</a>: Twitter から読み取りを行うスパウトの例
+> * [TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Twitter から読み取りを行うスパウトの例
 >
-> * <a href="https://github.com/apache/storm/tree/master/external/storm-kafka" target="_blank">Storm Kafka</a>: Kafka から読み取りを行うスパウトの例
+> * [Storm Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Kafka から読み取りを行うスパウトの例
 
 スパウトでは、**src\\main\\java\\com\\microsoft\\example** ディレクトリに **RandomSentenceSpout.java** という名前のファイルを作成し、次の内容をコンテンツとして使用します。
 
@@ -526,4 +526,4 @@ Trident アプリケーションの例については、「[HDInsight での Apa
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」をご確認ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

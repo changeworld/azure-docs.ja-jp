@@ -434,7 +434,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 * ジョブのタイムアウト: Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
 * 初期再試行間隔: 最初の再試行前に待機する間隔。
 * 最大再試行間隔: 使用する再試行間隔の上限。
-* 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。(初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
+* 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。(初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。
 * 最大試行回数: 1 つのジョブ内で実行する最大再試行回数。
 
 既定の実行ポリシーでは、次の値を使用します。
@@ -521,7 +521,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 特定のカスタム コレクションにデータベースを追加するには、[**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.comlibrary/mt346064.aspx) コマンドレットを使用します。
 
-	$serverName = "{Database Server Name}"
+	$databaseServerName = "{Database Server Name}"
 	$databaseName = "{Database Name}"
 	$customCollectionName = "{Custom Database Collection Name}"
 	Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
@@ -680,4 +680,4 @@ DACPAC の作成については、[データ層アプリケーション](https:/
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

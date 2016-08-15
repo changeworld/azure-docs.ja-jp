@@ -24,7 +24,7 @@
 
 このチュートリアルを完了するには、次のものが必要です。
 
-- Gitインストール バイナリを[こちら](http://www.git-scm.com/downloads)でダウンロードできます。  
+- Gitインストール バイナリを[こちら](http://www.git-scm.com/downloads)でダウンロードできます。
 - Git の基本的な知識。
 - Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](https://azure.microsoft.com/pricing/free-trial)か [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)にしてください。
 
@@ -46,7 +46,7 @@
 
 App Service では、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。
 
-1. リポジトリに既にコンテンツが含まれている場合は、このポイントをスキップし、以下のポイント 2 に進みます。リポジトリにまだコンテンツが含まれていない場合は、静的 .html ファイルにより値を次のように設定します。 
+1. リポジトリに既にコンテンツが含まれている場合は、このポイントをスキップし、以下のポイント 2 に進みます。リポジトリにまだコンテンツが含まれていない場合は、静的 .html ファイルにより値を次のように設定します。
 
     - テキスト エディターを使用して、Git リポジトリのルートに **index.html** という名前の新しいファイルを作成します。
     - index.html ファイルの内容として次のテキストを追加し、ファイルを保存します: *Hello Git!*。
@@ -166,7 +166,7 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 * [Git に関するドキュメント](http://git-scm.com/documentation)
 * [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
-* [Azure App Service への継続的なデプロイ](app-service-continous-deployment.md)
+* [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)
 * [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)](../powershell-install-configure.md)
 * [Azure コマンド ライン インターフェイスの使用方法](../xplat-cli-install.md)
 
@@ -175,9 +175,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 [Azure ポータル]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Azure コマンド ライン インターフェイス]: https://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/
+[Azure コマンド ライン インターフェイス]: https://azure.microsoft.com/ja-JP/documentation/articles/xplat-cli-azure-resource-manager/
 
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

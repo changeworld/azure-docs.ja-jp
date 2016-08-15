@@ -3,7 +3,7 @@
    description="Azure SQL Database のテンポラル テーブルの使い方について基本的な事柄を説明します。"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -40,7 +40,7 @@
 
 ###新しいテーブルの作成
 
-SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] \(Ctrl + Shift + M) を使用してテンプレートに値を入力します。
+SSMS オブジェクト エクスプローラーの "システム バージョン管理テーブルの新規作成" というコンテキスト メニュー項目を使用して、クエリ エディターを開き、テンポラル テーブル テンプレート スクリプトを表示した後、[テンプレート パラメーターの値の指定] (Ctrl + Shift + M) を使用してテンプレートに値を入力します。
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
@@ -199,4 +199,4 @@ ALTER TABLE dbo.WebsiteUserInfo
 
 テンポラル テーブルの詳細については、[MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

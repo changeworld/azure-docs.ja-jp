@@ -3,8 +3,8 @@
 	description="Visual Studio で Azure リソース グループのデプロイメント プロジェクトを使用して、Visual Studio Team Services での継続的インテグレーションを設定する方法を説明します。"
 	services="visual-studio-online"
 	documentationCenter="na"
-	authors="tfitzmac"
-	manager="timlt"
+	authors="mlearned"
+	manager="erickson-doug"
 	editor="" />
 
  <tags
@@ -13,8 +13,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="04/19/2016"
-	ms.author="tomfitz" />
+	ms.date="08/01/2016"
+	ms.author="mlearned" />
 
 # Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
 
@@ -160,4 +160,4 @@ Azure リソース マネージャーと Azure リソース グループの詳�
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

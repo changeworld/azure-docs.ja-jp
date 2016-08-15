@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="07/30/2016"
 	ms.author="tarcher"/>
 
 # Azure での Cloud Services の継続的な配信
@@ -58,7 +58,7 @@ MSBuild を使用して Azure パッケージを作成するには、ビルド �
 
     必要に応じて、プロジェクト名を MSBuild のパラメーターとして指定できます。このパラメーターを指定しない場合は、現在のディレクトリが使用されます。MSBuild のコマンド ライン オプションの詳細については、「[MSBuild コマンド ライン リファレンス](1)」を参照してください。
 
-4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+4.  出力を見つけます。既定では、プロジェクトのルート フォルダーに対してディレクトリが作成されます (たとえば、*ProjectDir*\\bin\*Configuration*\\app.publish\\)。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -83,7 +83,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \\ キー、Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開するか、**[ビルド]** ページを選択し、**[ビルド定義の新規作成]** を選択します。
 
-    ![][0]
+    ![New Build Definition option][0]
 
 2.  **[トリガー]** タブを選択し、パッケージのビルドを実行する条件を指定します。たとえば、ソース管理でチェックインが実行されるたびにパッケージをビルドするには、**[継続的インテグレーション]** を指定します。
 
@@ -95,7 +95,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 6.  **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。たとえば、パッケージをビルドしてパッケージ ファイルを \\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\myserver\\drops\**」と入力します。
 
-    ![][2]
+    ![MSBuild arguments][2]
 
     **注:** ファイルをパブリック共有にコピーしておくと、開発コンピューターからパッケージを手動でデプロイする場合に便利です。
 
@@ -105,7 +105,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 このセクションでは、オプション パラメーターを使用して、クラウド アプリケーション パッケージ出力を Azure に発行する Windows PowerShell スクリプトを作成する方法について説明します。このスクリプトは、カスタム ビルド自動化のビルド手順の後に呼び出すことができます。このスクリプトは、Visual Studio TFS チーム ビルドのプロセス テンプレート ワークフロー アクティビティから呼び出すこともできます。
 
-1.  [Azure PowerShell コマンドレット][] \(v0.6.1 以降) をインストールします。コマンドレット セットアップ フェーズで、スナップインとしてインストールすることを選択します。従来 CodePlex で提供されていたバージョンは 2.x.x でしたが、これはそれに代わる 公式にサポートされたバージョンです。
+1.  [Azure PowerShell コマンドレット][] (v0.6.1 以降) をインストールします。コマンドレット セットアップ フェーズで、スナップインとしてインストールすることを選択します。従来 CodePlex で提供されていたバージョンは 2.x.x でしたが、これはそれに代わる 公式にサポートされたバージョンです。
 
 2.  [スタート] メニューまたは [スタート] ページを使用して Azure PowerShell を起動します。この方法で起動すると、Azure PowerShell コマンドレットが読み込まれます。
 
@@ -123,7 +123,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     サブスクリプションに関する情報が表示されます。すべての情報が正しいことを確認します。
 
-4.  この記事の末尾に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\\**PublishCloudService.ps1** として保存します。
+4.  この記事の末尾に示されているスクリプト テンプレートをスクリプト フォルダーに c:\\scripts\\WindowsAzure\**PublishCloudService.ps1** として保存します。
 
 5.  スクリプトのパラメーター セクションを見直します。既定値を追加または変更します。これらの値は、明示的なパラメーター値を渡すことでオーバーライドできます。
 
@@ -204,7 +204,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
         PublishScriptLocation
         ServiceName
 
-    ![][3]
+    ![List of arguments][3]
 
     対応する XAML は次のようになります。
 
@@ -256,7 +256,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         -   PublishScriptFilePath、[文字列] 型
 
-            ![][4]
+            ![New variables][4]
 
     4.  TFS 2012 以前を使用している場合は、新しいシーケンスの先頭に ConvertWorkspaceItem アクティビティを追加します。TFS 2013 以降を使用している場合は、新しいシーケンスの先頭に GetLocalPath アクティビティを追加します。ConvertWorkspaceItem に対してプロパティを設定します (Direction=ServerToLocal、DisplayName='Convert publish script filename'、Input=' PublishScriptLocation'、Result='PublishScriptFilePath'、Workspace='Workspace')。GetLocalPath アクティビティに対して、IncomingPath プロパティを 'PublishScriptLocation' に設定し、Result プロパティを 'PublishScriptFilePath' に設定します。このアクティビティは、TFS サーバーの場所 (該当する場合) からの発行スクリプトへのパスを標準ローカル ディスク パスに変換します。
 
@@ -284,7 +284,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     ワークフローの発行アクティビティの最終的な結果は、デザイナーで次のように表示されます。
 
-    ![][5]
+    ![Workflow activities][5]
 
     ワークフローの発行アクティビティの最終的な結果は、XAML で次のように表示されます。
 
@@ -343,7 +343,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
     8.  SubscriptionName = 'default'
 
-    ![][6]
+    ![Parameter property values][6]
 
 10. 変更内容をビルド定義に保存します。
 
@@ -573,4 +573,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

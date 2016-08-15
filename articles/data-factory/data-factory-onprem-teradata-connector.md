@@ -30,7 +30,7 @@ Data Factory は、他のデータ ストアから Teradata へのデータの�
 
 Data Management Gateway で Teradata データベースに接続するには、[Teradata の .NET データ プロバイダー](http://go.microsoft.com/fwlink/?LinkId=278886)を Data Management Gateway と同じシステムにインストールする必要があります。
 
-> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 ### サンプル: Teradata から Azure BLOB にデータをコピーする
 
@@ -311,4 +311,4 @@ Xml | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

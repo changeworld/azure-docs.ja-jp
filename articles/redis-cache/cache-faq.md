@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="07/29/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -28,6 +28,40 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 -	この FAQ の最後に掲載されている[Disqus スレッド](#comments)に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーと この記事についてやり取りすることができます。
 -	さらに多くの人と情報交換する場合は、[Azure Cache MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache)に質問を投稿すれば、Azure Cache チームや他のコミュニティ メンバーとやり取りすることができます。
 -	また、[Azure Cache 外部フィードバック](mailto:azurecache@microsoft.com)にメールをお送りいただくこともできます。
+
+## Azure Redis Cache の基本
+
+このセクションの FAQ では、Azure Redis Cache の基本について説明します。
+
+-    [Azure Redis Cache とは](#what-is-azure-redis-cache)
+-    [Azure Redis Cache を開始するにはどうすればよいですか。](#how-can-i-get-started-with-azure-redis-cache)
+
+次の FAQ は、Azure Redis Cache に関する基本的な概念と質問で、回答は他の FAQ セクションに示されています。
+
+-	[Redis Cache のサービス内容と適切なサイズの選択](#what-redis-cache-offering-and-size-should-i-use)
+-	[どのような Redis キャッシュ クライアントを使用できますか。](#what-redis-cache-clients-can-i-use)
+-	[Azure Redis Cache のローカル エミュレーターがない場合](#is-there-a-local-emulator-for-azure-redis-cache)
+-	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+
+
+### Azure Redis Cache とは
+
+Azure Redis Cache は広く普及しているオープン ソース [Redis Cache](http://redis.io) を基盤にしています。これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Redis Cache に Azure 内の任意のアプリケーションからアクセスできます。詳細については、azure.com の [Azure Redis Cache](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
+
+
+### Azure Redis Cache を開始するにはどうすればよいですか。
+
+Azure Redis Cache を開始する方法はいくつかあります。
+
+-    [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md)、[Python](cache-python-get-started.md) で使用可能なチュートリアルのいずれかを確認できます。
+-    [Microsoft Azure Redis Cache を使用して高パフォーマンス アプリケーションを構築する方法](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)のビデオを見ることができます。
+-    プロジェクトの開発言語と一致するクライアントのドキュメントで、Redis を使用する方法を確認できます。Azure Redis Cache で使用できる Redis クライアントは多数あります。Redis クライアントの一覧については、[http://redis.io/clients](http://redis.io/clients) を参照してください。
+
+
+Azure アカウントをお持ちでない場合は、次の操作を行います。
+
+-    [無料で Azure アカウントを開きます](/pricing/free-trial/?WT.mc_id=redis_cache_hero)。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
+-    [Visual Studio サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
 ## 計画に関する FAQ
 
@@ -135,7 +169,7 @@ ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。| 下記の
 
 ### どのような Redis キャッシュ クライアントを使用できますか。
 
-Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。現在のクライアントの一覧については、[Radis クライアント](http://redis.io/clients)に関するページをご覧ください。さまざまな言語とクライアントのチュートリアルについては、記事「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
+Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。現在のクライアントの一覧については、[Radis クライアント](http://redis.io/clients)に関するページをご覧ください。さまざまな言語とクライアントのチュートリアルについては、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -183,7 +217,7 @@ Azure Redis Cache のローカル エミュレーターがなくても、ロー�
 
 Microsoft Azure Redis Cache は、広く普及しているオープン ソースの Redis Cache をベースにしており、多くのプログラミングで使用可能なさまざまな [Redis クライアント](http://redis.io/clients)がアクセスできます。各クライアントは、[Redis コマンド](http://redis.io/commands)を使用して Redis キャッシュ インスタンスを呼び出す独自の API を持ちます。
 
-クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Redis Cache を使用する方法について説明します。こうしたチュートリアルにアクセスするには、記事「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
+クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Redis Cache を使用する方法について説明します。こうしたチュートリアルにアクセスするには、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
 
 
 ## セキュリティに関する FAQ
@@ -266,7 +300,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 -	ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定][]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。ただし、これは global.asax.cs の Application\_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、*コアごとの*設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
+> **重要な注意事項:** この構成要素で指定される値は、"コアごと" の設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
 
 -	ASP.NET の外部では、[ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
 
@@ -285,7 +319,7 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 
 ## 監視とトラブルシューティングに関する FAQ
 
-このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」をご覧ください。
+このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」を参照してください。
 
 -	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 -	[キャッシュ診断ストレージ アカウントの設定を変更した場合](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
@@ -302,14 +336,14 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 
 -	**[トラブルシューティング]** では、一般的な問題と、その問題を解決するための戦略に関する情報を確認できます。
 -	**[監査ログ]** では、キャッシュで実行される操作に関する情報を確認できます。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。
--	**[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」をご覧ください。
+-	**[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
 -	**[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
 
-これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。詳細については、「[サポートおよびトラブルシューティング設定](cache-configure.md#support-amp-troubleshooting-settings)」をご覧ください。
+これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。詳細については、「[サポートおよびトラブルシューティング設定](cache-configure.md#support-amp-troubleshooting-settings)」を参照してください。
 
 ### キャッシュ診断ストレージ アカウントの設定を変更した場合
 
-同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。確認する 1 つの方法として、`Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
+同じリージョンやサブスクリプションにあるキャッシュは同じ診断ストレージ設定を共有するため、構成が変更される (診断が有効/無効に設定される、またはストレージ アカウントが変更される) と、その変更がそのリージョンにあるサブスクリプションのすべてのキャッシュに適用されます。キャッシュの診断設定が変更された場合は、同じサブスクリプションおよびリージョンの、別のキャッシュの診断設定が変更されたかどうかを確認します。確認する 1 つの方法として、`Write DiagnosticSettings` イベントのキャッシュの監査ログを表示します。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
 ### 新しいキャッシュの診断を有効にして、それ以外は有効にしない理由
 
@@ -319,7 +353,7 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 <a name="cache-timeouts"></a>
 ### タイムアウトが発生する理由
 
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトに関する問題のトラブルシューティングの詳細については、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」と [StackExchange.Redis のタイムアウトの例外] (クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) をご覧ください。
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトに関する問題のトラブルシューティングの詳細については、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」と [StackExchange.Redis のタイムアウトの例外] (クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) を参照してください。
 
 '<-- Loc コメント: リンク切れ: [StackExchange.Redis のタイムアウトの例外](クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)。 "(クライアント側のトラブルシューティング]" を削除してください。 -->'
 
@@ -376,4 +410,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

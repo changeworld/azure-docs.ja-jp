@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Logic Apps での待機コネクタの使用 | Microsoft Azure App Service" 
    description="待機コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajeshramabathiran" 
    manager="erikre" 
@@ -56,4 +56,4 @@
 [2]: ./media/app-service-logic-wait/DelayInput.PNG
 [3]: ./media/app-service-logic-wait/ActionConfigured.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

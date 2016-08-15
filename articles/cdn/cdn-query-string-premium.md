@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - クエリ文字列による要求のキャッシュ動作の制御 - Premium"
-	description="CDN クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。"
+	pageTitle="クエリ文字列による要求の Azure CDN Premium from Verizon キャッシュ動作の制御 | Microsoft Azure"
+	description="Azure CDN クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 #クエリ文字列による CDN 要求のキャッシュ動作の制御 - Premium
@@ -53,4 +53,4 @@
 
 > [AZURE.IMPORTANT] 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

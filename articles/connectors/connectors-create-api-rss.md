@@ -1,7 +1,7 @@
 <properties
 pageTitle="RSS | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。RSS コネクタを使用して、フィード アイテムを発行および取得できます。また、新しいアイテムがフィードに公開されたときに操作をトリガーすることもできます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -132,4 +132,4 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

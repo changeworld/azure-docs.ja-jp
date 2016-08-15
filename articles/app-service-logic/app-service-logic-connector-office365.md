@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps での Office 365 コネクタの使用 | Microsoft Azure App Service"
    description="Office 365 コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="anuragdalmia"
    manager="erikre"
@@ -131,4 +131,4 @@ Office 365 アカウントに接続して、電子メールの送受信、およ
 [20]: ./media/app-service-logic-connector-office365/20_Office365_Send_Configured.png
 [21]: ./media/app-service-logic-connector-office365/21-create-new-o365-api-app.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

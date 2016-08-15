@@ -29,7 +29,7 @@ Data Factory のサービスでは、Data Management Gateway を使用したオ�
 
 Data Management Gateway とは別に、ゲートウェイ マシン上にデータ ストア用の ODBC ドライバーもインストールする必要があります。
 
-> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 ## サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
 
@@ -368,4 +368,4 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

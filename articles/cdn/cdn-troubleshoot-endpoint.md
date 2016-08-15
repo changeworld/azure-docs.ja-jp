@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - 404 状態を返す CDN エンドポイントのトラブルシューティング"
-	description="CDN エンドポイントでの 404 応答コードのトラブルシューティングを行います。"
+	pageTitle="404 状態を返す Azure CDN エンドポイントのトラブルシューティング | Microsoft Azure"
+	description="Azure CDN エンドポイントでの 404 応答コードのトラブルシューティングを行います。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # 404 状態を返す CDN エンドポイントのトラブルシューティング
@@ -67,7 +67,7 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 
 ただし、前の手順でテストした元のファイルの URL は `http://www.contoso.com:8080/file.txt` です。ホスト名セグメントの末尾が `:8080` であることに注意してください。これにより、`www.contoso.com` の Web サーバーに接続する場合にポート `8080` を使用するようにブラウザーに指示されるため、**[HTTP ポート]** フィールドには 8080 を入力する必要があります。これらのポート設定が影響するのは、配信元から情報を取得するためにエンドポイントが使用するポートのみであることに注意してください。
 
-> [AZURE.NOTE] **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。許可されない配信元ポートの一覧については、「[Azure CDN from Akamai の動作の詳細](cdn-akamai-behavior-details.md)」を参照してください。
+> [AZURE.NOTE] **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。使用できない配信元ポートの一覧については、「[Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。
   
 ### エンドポイント設定を確認する
 
@@ -97,4 +97,4 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 
 しかし、配信元の各パスで CDN を使用しない場合もあります。 つまり、`publicblob` パスを使用する場合に、**[配信元のパス]** フィールドに「*/publicblob*」と入力すると、配信元へのすべての要求の前にエンドポイントが */publicblob* を挿入します。これは、`https://cdndocdemo.azureedge.net/publicblob/lorem.txt` の要求では実際に URL の要求部分である `/publicblob/lorem.txt` を使用し、先頭に `/publicblob` が付加されるようになることを意味します。そのため、配信元からの `/publicblob/publicblob/lorem.txt` が要求されます。そのパスが実際のファイルに解決されない場合、配信元は 404 状態を返します。この例の lorem.txt を取得するための正しい URL は、実際には `https://cdndocdemo.azureedge.net/lorem.txt` になります。URL の要求部分は `/lorem.txt` であるため、*/publicblob* パスを一切指定していなくても、エンドポイントによって `/publicblob` が付加されることで、配信元に渡される要求が `/publicblob/lorem.txt` になることに注意してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

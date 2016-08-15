@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/01/2016"
 	ms.author="georgem;tomfitz"/>
 
 
@@ -35,7 +35,7 @@ Azure Virtual Machines、Azure リソース マネージャー、および Azure
       - キーをデプロイするためのテンプレート
       - キーを参照して VM をデプロイするためのテンプレート
       - Vault 内の実際のキー マテリアル。テンプレート (およびアクション) は、職務を完全に分離するため、担当の RBAC ロールをそれぞれ別にすることができます。
-- デプロイ時の VM へのシークレットの読み込みは、Microsoft データセンターの範囲内での Azure ファブリックと Key Vault 間の直接チャネルを介して行われます。キーが Key Vault に格納されたら、データセンター外の信頼されていないチャネルを経由してキーを見ることはできません。  
+- デプロイ時の VM へのシークレットの読み込みは、Microsoft データセンターの範囲内での Azure ファブリックと Key Vault 間の直接チャネルを介して行われます。キーが Key Vault に格納されたら、データセンター外の信頼されていないチャネルを経由してキーを見ることはできません。
 - Key Vault は常に局所的であるため、シークレットは常に VM と同じローカリティ (および主権) を持ちます。グローバルの Key Vault はありません。
 
 ### デプロイからのキーの分離
@@ -339,4 +339,4 @@ Azure では、IP トラフィックを各パケットの宛先に基づいて�
 - ルーティングと IP 転送を構成する方法については、「[テンプレートを使用して Resource Manager でユーザー定義ルート (UDR) を作成する](./virtual-network/virtual-network-create-udr-arm-template.md)」をご覧ください。
 - ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

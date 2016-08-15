@@ -4,7 +4,7 @@
 	authors="jeffhollan" 
 	manager="dwrede" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -91,4 +91,4 @@ Webhook トリガー (ロジック アプリ全体または Webhook トリガー
 
 [こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)の GitHub で、Webhook トリガーのサンプルを確認できます。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

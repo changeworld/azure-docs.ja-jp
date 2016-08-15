@@ -21,14 +21,14 @@
 # Azure 仮想マシンのバックアップ
 
 > [AZURE.SELECTOR]
-- [Azure への ARM VM のバックアップ](backup-azure-arm-vms.md)
-- [Azure virtual machines のバックアップ](backup-azure-vms.md)
+- [Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)
+- [バックアップ コンテナーへの VM のバックアップ](backup-azure-vms.md)
 
-この記事では、Azure の仮想マシン (VM) をバックアップする手順について説明します。
-
-まず、Azure 仮想マシンをバックアップする前にいくつかのことに注意する必要があります。まだそれを行っていない場合は、[前提条件](backup-azure-vms-prepare.md)を満たして、VM をバックアップできるように環境を準備します。
+この記事では、クラシック デプロイの Azure Virtual Machines (VM) をバックアップ コンテナーにバックアップする手順を説明しています。Azure 仮想マシンをバックアップする前にいくつかの作業を行う必要があります。まだそれを行っていない場合は、[前提条件](backup-azure-vms-prepare.md)を満たして、VM をバックアップできるように環境を準備します。
 
 詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」と[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) に関するページを参照してください。
+
+>[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。バックアップ コンテナーで保護できるのは、クラシック モデルでデプロイされた VM だけです。Resource Manager モデルでデプロイされた VM をバックアップ コンテナーで保護することはできません。Recovery Services コンテナーの操作について詳しくは、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください。
 
 Azure 仮想マシンのバックアップには、次の 3 つの主要な手順が含まれます。
 
@@ -59,8 +59,7 @@ Azure 仮想マシンのバックアップには、次の 3 つの主要な手�
 
     ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
 
-6. ページの下部にある **[検出]** をクリックします。
-    ![Discover button](./media/backup-azure-vms/discover-button-only.png)
+6. ページの下部にある **[検出]** をクリックします。![Discover button](./media/backup-azure-vms/discover-button-only.png)
 
     仮想マシンが集計されるまで、この検出プロセスに数分かかる場合があります。プロセスが実行中であることを知らせる通知が画面の下部に表示されます。
 
@@ -81,8 +80,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. ページの下部にある **[登録]** をクリックします。
-    ![Register button](./media/backup-azure-vms/register-button-only.png)
+3. ページの下部にある **[登録]** をクリックします。![Register button](./media/backup-azure-vms/register-button-only.png)
 
 4. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
 
@@ -98,7 +96,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 
     ![登録状態 1](./media/backup-azure-vms/register-status01.png)
 
-    操作が完了すると、ステータスは*登録済み*の状態を反映するものに変わります。
+    操作が完了すると、状態が変更され、"*登録済み*" 状態が反映されます。
 
     ![登録状態 2](./media/backup-azure-vms/register-status02.png)
 
@@ -152,7 +150,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
     ![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## 初回バックアップ
-ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが *初回バックアップ* となります。
+ポリシーを使用して保護した仮想マシンは、**[保護された項目]** タブに表示され、保護の状態は *[保護済み (初回バックアップは完了していません)]* と表示されます。既定では、スケジュールされた最初のバックアップが*初回バックアップ*となります。
 
 保護を構成した直後に初回バックアップをトリガーするには:
 
@@ -171,7 +169,7 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 ![復旧ポイントを作成した後の仮想マシンのバックアップ](./media/backup-azure-vms/protect-backedupvm.png)
 
 ## バックアップの状態と詳細の表示
-仮想マシンが保護されると、**[ダッシュボード]** ページの概要に示される仮想マシンの数が増加します。**[ダッシュボード]** ページには、過去 24 時間の間に*成功したジョブ*、*失敗したジョブ*、*現在進行中のジョブ*の数も表示されます。**[ジョブ]** ページで、**[状態]**、**[操作]**、または **[開始]** と **[終了]** の各メニューを使用して、ジョブをフィルター処理します。
+仮想マシンが保護されると、**[ダッシュボード]** ページの概要に示される仮想マシンの数が増加します。**[ダッシュボード]** ページには、過去 24 時間の間に "*成功したジョブ*"、"*失敗したジョブ*"、"*現在進行中のジョブ*" の数も表示されます。**[ジョブ]** ページで、**[状態]**、**[操作]**、または **[開始]** と **[終了]** の各メニューを使用して、ジョブをフィルター処理します。
 
 ![[ダッシュボード] ページのバックアップの状態](./media/backup-azure-vms/dashboard-protectedvms.png)
 
@@ -185,4 +183,4 @@ Azure Backup サービスに関連付けるために、Azure 仮想マシンを�
 - [仮想マシンの管理と監視](backup-azure-manage-vms.md)
 - [仮想マシンの復元](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

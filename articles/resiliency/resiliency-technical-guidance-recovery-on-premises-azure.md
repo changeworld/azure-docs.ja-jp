@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス - オンプレミスから Azure への復旧
 
@@ -105,4 +105,4 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[データの破損または偶発的な削除からの復旧](./resiliency-technical-guidance-recovery-data-corruption.md)について説明します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

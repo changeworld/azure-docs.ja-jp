@@ -430,7 +430,7 @@ Azure Backup は、Windows Server が実行されているオンプレミスの�
 
 キューは単純な概念で、あるアプリケーションがキューにメッセージを配置すると、そのメッセージがいずれ別のアプリケーションによって読み取られるというものです。アプリケーションにこのように単純なサービスが必要な場合は、Azure キューが最も適しているでしょう。
 
-Azure は時間の経過と共に拡大するため、Azure Storage キューおよび Service Bus キューは類似のキュー サービスを提供しています。一方を他方より優先して使用する理由は、技術的な資料である「[<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure キューと Service Bus キューの比較")」で説明されています。多くのシナリオでは、どちらも機能します。
+Azure は時間の経過と共に拡大するため、Azure Storage キューおよび Service Bus キューは類似のキュー サービスを提供しています。一方を他方より優先して使用する理由は、かなり技術的な資料である「[Azure キューと Service Bus キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」で説明されています。多くのシナリオでは、どちらも機能します。
 
 **キューのシナリオ**
 
@@ -606,4 +606,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

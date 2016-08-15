@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/20/2016"
-   ms.author="hanuk;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性
 
@@ -131,4 +131,4 @@ Azure はさまざまな障害を検出し、処理しますが、アプリケ�
 
 この記事は、Azure アプリケーションの障害復旧と高可用性に関する一連の記事に属しています。このシリーズの次の記事は、「[Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

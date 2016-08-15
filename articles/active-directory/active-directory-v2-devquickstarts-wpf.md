@@ -1,39 +1,38 @@
 <properties
-	pageTitle="Azure AD v2.0 .NET ネイティブ アプリ | Microsoft Azure"
-	description="サインインに個人の Microsoft アカウントと職場/学校アカウントの両方を使用する .NET ネイティブ アプリを構築する方法を説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+pageTitle="Azure Active Directory v2.0 .NET ネイティブ アプリ | Microsoft Azure"
+description="サインインに個人の Microsoft アカウントと職場/学校アカウントの両方を使用する .NET ネイティブ アプリを構築する方法を説明します。"
+services="active-directory"
+documentationCenter=""
+authors="dstrockis"
+manager="mbaldwin"
+editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-  ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="05/31/2016"
-	ms.author="dastrock"/>
+ms.service="active-directory"
+ms.workload="identity"
+ms.tgt_pltfrm="na"
+ms.devlang="dotnet"
+ms.topic="article"
+ms.date="07/30/2016"
+ms.author="dastrock; vittorib"/>
 
 # サインインを Windows デスクトップ アプリに追加する
 
 v2.0 エンドポイントを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応したデスクトップ アプリに認証をすばやく追加できます。また、アプリとバックエンド Web API や [Microsoft Graph](https://graph.microsoft.io) と一部の [Office 365 Unified APIs](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) との安全な通信を可能にします。
 
-> [AZURE.NOTE]
-	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> [AZURE.NOTE] Azure Active Directory (AD) のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 [デバイスで実行する .NET ネイティブ アプリ](active-directory-v2-flows.md#mobile-and-native-apps)に対しては、Azure AD により、Microsoft ID 認証ライブラリ (MSAL) が提供されます。MSAL の唯一の目的は、アプリが Web サービスを呼び出すためのトークンを容易に取得できるようにすることです。どれほど簡単かを示すために、ここで、次のような、.NET WPF To-Do List アプリを構築します。
 
--	ユーザーのサインイン処理を行い、[OAuth 2.0 認証プロトコル](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を使用してアクセス トークンを取得します。
--	バックエンド To-Do List Web サービスを安全に呼び出します。これは、OAuth 2.0 でも保護されます。
--	ユーザーのサインアウト処理を行います。
+- ユーザーのサインイン処理を行い、[OAuth 2.0 認証プロトコル](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を使用してアクセス トークンを取得します。
+- バックエンド To-Do List Web サービスを安全に呼び出します。これは、OAuth 2.0 でも保護されます。
+- ユーザーをサインアウトさせます。
 
 ## サンプル コードのダウンロード
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
+    git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
 
 完成したアプリは、このチュートリアルの終わりにも示しています。
 
@@ -247,9 +246,10 @@ MSAL では、個人用アカウントと職場アカウントの両方を使用
 
 これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
-- [ v2.0 エンドポイントでの TodoListService Web API の保護 >>](active-directory-v2-devquickstarts-dotnet-api.md)
+- [ v2.0 エンドポイントでの TodoListService Web API の保護](active-directory-v2-devquickstarts-dotnet-api.md)
 
 その他のリソースについては、以下を参照してください。
+
 - [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "msal" タグ >>](http://stackoverflow.com/questions/tagged/msal)
 
@@ -257,4 +257,4 @@ MSAL では、個人用アカウントと職場アカウントの両方を使用
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

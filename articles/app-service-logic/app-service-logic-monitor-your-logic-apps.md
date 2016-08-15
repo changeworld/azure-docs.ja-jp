@@ -4,7 +4,7 @@
 	authors="jeffhollan" 
 	manager="erikre" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -138,4 +138,4 @@ REST API で必要となる実行の**関連付け ID** など、さらに詳し
 - [ロジック アプリ デプロイ テンプレートの作成](app-service-logic-create-deploy-template.md)
 - [エンタープライズ統合機能](app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

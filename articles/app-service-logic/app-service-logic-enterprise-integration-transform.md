@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -74,4 +74,4 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を�
 - [マップについての詳細情報](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

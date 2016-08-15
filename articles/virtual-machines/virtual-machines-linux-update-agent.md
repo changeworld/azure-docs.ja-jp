@@ -27,6 +27,7 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
+<br>
 
 > [AZURE.NOTE] Windows コンピューターでこのタスクを実行する場合は、PuTTY を使用して Linux マシンに SSH 接続できます。詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)」を参照してください。
 
@@ -40,9 +41,11 @@ Ubuntu の場合は、次のように入力するだけでかまいません。
 
     #sudo yum install waagent
 
-Oracle Linux の場合、`Addons` リポジトリが有効になっていることを確認します。`/etc/yum.repo.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repo.d/public-yum-ol7.repo` ファイル (Oracle Linux) を選択して編集し、このファイルの **[ol6\_addons]** または **[ol7\_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
+
+Oracle Linux の場合、`Addons` リポジトリが有効になっていることを確認します。`/etc/yum.repos.d/public-yum-ol6.repo` ファイル (Oracle Linux 6) または `/etc/yum.repos.d/public-yum-ol7.repo` ファイル (Oracle Linux) を選択して編集し、このファイルの **[ol6\_addons]** または **[ol7\_addons]** の下の行 `enabled=0` を `enabled=1` に変更します。
 
 次に、最新バージョンの Azure Linux エージェントをインストールし、次のように入力します。
+
 
     #sudo yum install WALinuxAgent
 
@@ -50,11 +53,21 @@ Oracle Linux の場合、`Addons` リポジトリが有効になっているこ�
 
 Oracle Linux 6 仮想マシンの場合:
 
-  [ol6\_addons] name=Add-Ons for Oracle Linux $releasever ($basearch) baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL6/addons/x86\_64 gpgkey=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6 gpgcheck=1 enabled=1
+    [ol6_addons]
+    name=Add-Ons for Oracle Linux $releasever ($basearch)
+    baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL6/addons/x86_64
+    gpgkey=http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6
+    gpgcheck=1
+    enabled=1
 
 Oracle Linux 7 仮想マシンの場合:
 
-  [ol7\_addons] name=Oracle Linux $releasever Add ons ($basearch) baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL7/addons/$basearch/ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle gpgcheck=1 enabled=0
+    [ol7_addons]
+    name=Oracle Linux $releasever Add ons ($basearch)
+    baseurl=http://public-yum.oracle.com/repo/OracleLinux/OL7/addons/$basearch/
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+    gpgcheck=1
+    enabled=0
 
 次を入力します。
 
@@ -146,4 +159,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0803_2016-->

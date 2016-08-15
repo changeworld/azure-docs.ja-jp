@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="PowerShell を使用した Azure SQL Database の管理" 
-	description="PowerShell による Azure SQL Database 管理。" 
-	services="sql-database" 
-	documentationCenter="" 
-	authors="stevestein" 
-	manager="jhubbard" 
+<properties
+	pageTitle="PowerShell を使用した Azure SQL Database の管理 | Microsoft Azure"
+	description="PowerShell による Azure SQL Database 管理。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
 	editor="monicar"/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.workload="data-management" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2016" 
+<tags
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/07/2016"
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database の管理
@@ -33,27 +33,27 @@
 
 サーバーを含むリソース グループを作成します。任意の有効な場所を使用するには、次のコマンドを編集します。
 
-有効な Azure SQL Database サーバーの場所一覧については、次のコマンドレットを実行します。
+有効な SQL Database サーバーの場所一覧については、次のコマンドレットを実行します。
 
 	$AzureSQLLocations = (Get-AzureRmResourceProvider -ListAvailable | Where-Object {$_.ProviderNamespace -eq 'Microsoft.Sql'}).Locations
 
-既にリソース グループがある場合、サーバーの作成に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
+既にリソース グループがある場合、次のセクション (「サーバーの作成」) に進みます。次のコマンドを実行して新しいリソース グループを作ることもできます。
 
 	New-AzureRmResourceGroup -Name "resourcegroupJapanWest" -Location "Japan West"
 
-## サーバーの作成 
+## サーバーの作成
 
-新しい V12 サーバーを作成するには、[New-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを使用します。server12 をご利用のサーバー名に置き換えます。サーバー名が既に使われている場合はエラーが発生する可能性があるため、Azure SQL Server で一意のサーバー名を使用する必要があります。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集すると、任意の有効な場所を使用できます。
+新しい V12 サーバーを作成するには、[New-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを使用します。*server12* をご利用のサーバー名に置き換えます。既存のサーバー名を使用すると、エラー メッセージが表示されます。このコマンドは完了するまでに数分かかる場合があることに注意してください。サーバーが正常に作成されると、サーバーの詳細と PowerShell のプロンプトが表示されます。コマンドを編集すると、任意の有効な場所を使用できます。
 
 	New-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -Location "Japan West" -ServerVersion "12.0"
 
-コマンドを実行すると、**[ユーザー名]** と **[パスワード]** の入力を求めるウィンドウが表示されます。ここで入力するユーザー名とパスワードは Azure の資格情報ではなく、新しいサーバーの管理者の資格情報となります
+このコマンドを実行すると、ユーザー名とパスワードの入力を求められます。Azure の資格情報は入力しないでください。ここで入力するユーザー名とパスワードは、新しいサーバーに作成する管理者の資格情報です。
 
 ## サーバー ファイアウォール規則の作成
 
-サーバーにアクセスするためのファイアウォール規則を作成するには、[New-AzureRMSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) コマンドを使用します。ご利用のクライアントで有効な開始 IP アドレスと終了 IP アドレスに置き換え、次のコマンドを実行します。
+サーバーにアクセスするためのファイアウォール規則を作成するには、[New-AzureRMSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) コマンドを使用します。次のコマンドを、開始 IP アドレスと終了 IP アドレスをご利用のクライアントの有効な値に置き換えて実行します。
 
-サーバーで別の Azure サービスへのアクセス許可が必要な場合は、**- AllowAllAzureIPs** スイッチを追加して特別なファイアウォール規則を追加し、サーバーへのすべての Azure トラフィック アクセスを許可します。
+サーバーで他の Azure サービスへのアクセスを許可する必要がある場合は、**- AllowAllAzureIPs** スイッチを追加します。これにより、特別なファイアウォール規則が追加され、サーバーへのすべての Azure トラフィック アクセスが許可されます。
 
 	New-AzureRmSqlServerFirewallRule -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12" -FirewallRuleName "clientFirewallRule1" -StartIpAddress "192.168.0.198" -EndIpAddress "192.168.0.199"
 
@@ -84,7 +84,7 @@
 サーバーは、[Remove-AzureRMSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) コマンドを使用して削除することもできます。次の例では server12 という名前のサーバーを削除します。
 
 
->[AZURE.NOTE]  削除操作は非同期であり、時間がかかる場合があるため、サーバーが完全に削除されたことを前提とする追加の操作 (たとえば、同じ名前の新しいサーバーの作成) を実行する前に、操作が完了したことを確認してください。
+>[AZURE.NOTE]  削除操作は非同期であるため、時間のかかる場合があります。サーバーが完全に削除されたことを前提とする追加の操作 (同じ名前の新しいサーバーの作成など) を実行する前に、操作が完了したことを確認してください。
 
 
 	Remove-AzureRmSqlServer -ResourceGroupName "resourcegroupJapanWest" -ServerName "server12"
@@ -94,7 +94,7 @@
 
 ## 次のステップ
 
-コマンドを結合し、自動化します。たとえば、サーバー、ファイアウォール規則、およびデータベースを作成するために、< および > 文字を含む引用符内のすべてのものを置換します。
+コマンドを結合し、自動化します。たとえば、サーバー、ファイアウォール規則、およびデータベースを作成する場合は、次の < および > 文字を含む引用符内のすべての文字列を環境に合った値で置換します。
 
 
     New-AzureRmResourceGroup -Name "<resourceGroupName>" -Location "<Location>"
@@ -106,4 +106,4 @@
 
 - [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

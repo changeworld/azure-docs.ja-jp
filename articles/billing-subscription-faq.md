@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="n/a"
+	editor=""
 	tags="billing"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/11/2016"
+	ms.date="07/27/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
@@ -25,7 +25,7 @@
 
 - [新しい Azure ポータルではどのようにして管理者アカウントを管理するのですか。](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
 - [通知は、マイ アカウントに関連付けられたアカウント所有者のメール アドレス以外のメール アドレスに送信できますか。](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
-- [サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか。](#why-cannot-i-edit-or-add-details-to-my-subscription)
+- [サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか](#why-cant-i-edit-or-add-details-to-my-subscription)
 - [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
 
 ## 課金
@@ -36,9 +36,10 @@
 ## 無料試用版
 
 - [Azure の試用は無料ですか。課金される可能性はありませんか。](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
-- [試用版サブスクリプションとは何ですか。有効期間は?](#what-is-a-trial-subscription-and-how-long-does-it-last)
-- [試用アカウントで利用できるリソースを教えてください。](#what-resources-are-available-whja-JPing-a-trial-account)
+- [無料試用版サブスクリプションとは何ですか。有効期間は?](#what-is-a-free-trial-subscription-and-how-long-does-it-last)
+- [無料試用版で利用できるリソースを教えてください。](#what-resources-are-available-whja-JPing-a-free-trial)
 - [無料試用版の使用制限を削除するとどうなりますか。](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
+- [無料試用版サブスクリプションでクォータの引き上げは可能でしょうか。](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
 - [無料試用版についての詳しい情報はどこで確認できますか。](#where-can-i-get-more-details-on-free-trial)
 
 ## Azure の購入方法
@@ -89,15 +90,19 @@
 - [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
 - [自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。](#how-do-i-transfer-ownership-of-my-subscriptions)
 
+## サブスクリプション サービス制限 (クォータ)
+
+- [無料試用版サブスクリプションでクォータの引き上げは可能でしょうか。](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
+
 ### Azure の購入には、どのような支払い方法がありますか。
 
 Azure の購入には、クレジット カードかデビット カード、または請求書払いをご利用いただけます。
 
-**注:**
+> [AZURE.NOTE]
 
-- いったん請求書払いのオプションを選択すると、クレジット カード払いには変更できなくなります。請求書払いを申し込む方法については、「[Azure の請求処理](https://azure.microsoft.com/pricing/invoicing/)」を参照してください。
-- プリペイド カードおよびバーチャル クレジット カードでのお支払いは受け付けておりません。
-- お客様は、クレジット カードの利息および発生する可能性のある他のクレジット カードの請求について全責任を負います。
+> - いったん請求書払いのオプションを選択すると、クレジット カード払いには変更できなくなります。請求書払いを申し込む方法については、「[Azure の請求処理](https://azure.microsoft.com/pricing/invoicing/)」を参照してください。
+> - プリペイド カードおよびバーチャル クレジット カードでのお支払いは受け付けておりません。
+> - お客様は、クレジット カードの利息および発生する可能性のある他のクレジット カードの請求について全責任を負います。
 
 ### 請求書による支払いをリクエストするにはどうすればよいですか。
 
@@ -123,11 +128,15 @@ Azure アカウント管理者の場合、Azure アカウント センターで�
 
 可用性に関するマイクロソフトのサービス レベル アグリーメントは、2 つ以上のロール インスタンスを使用しているアプリケーションに適用されます。単一のインスタンスに対する SLA はありません。詳細については、お客様の [SLA のページ](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-**計画的なメンテナンス (クラシック ポータル)**: 単一インスタンス構成とマルチインスタンス構成のどちらの場合でも、Azure では計画的なメンテナンスが近づいていることを注意喚起するために電子メールを事前に送信します (単一インスタンスについては 1 週間前、マルチインスタンスについては 48 時間前に)。この電子メールは、サブスクリプションに設定されているアカウント管理者、サービス管理者、および共同管理者の電子メール アカウントに送信されます。
+#### 計画的なメンテナンス (クラシック ポータル)
 
-**注:** Virtual Machines 固有の詳細については、「[Azure での Linux 仮想マシンに対する計画的なメンテナンス](virtual-machines/virtual-machines-linux-planned-maintenance.md)」を参照してください。
+単一インスタンス構成とマルチインスタンス構成のどちらの場合でも、Azure では計画的なメンテナンスが近づいていることを注意喚起するために電子メールを事前に送信します (単一インスタンスについては 1 週間前、マルチインスタンスについては 48 時間前に)。この電子メールは、サブスクリプションに設定されているアカウント管理者、サービス管理者、および共同管理者の電子メール アカウントに送信されます。
 
-**計画外のメンテナンス:** Azure プラットフォームにおいて予定外のサービス中断が発生した場合は、[[サービス ダッシュボード]](http://status.azure.com/) の状態が更新され、[Azure クラシック ポータル](https://manage.windowsazure.com/)にお客様への通知が表示されます。
+>[AZURE.NOTE] Virtual Machines 固有の詳細については、[Azure 仮想マシンの計画的なメンテナンス](virtual-machines/virtual-machines-linux-planned-maintenance.md)に関するページを参照してください。
+
+#### 計画外のメンテナンス 
+
+Azure プラットフォームにおいて予定外のサービス中断が発生した場合は、[[サービス ダッシュボード]](http://status.azure.com/) の状態が更新され、[Azure クラシック ポータル](https://manage.windowsazure.com/)にお客様への通知が表示されます。
 
 ### 稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。
 
@@ -144,19 +153,21 @@ Azure サービス レベル アグリーメントは、オンプレミスのマ
 ### 前回の請求期間の請求書が表示されません。なぜですか?
 
 これにはいくつかの理由が考えられます。
+
 - Azure にサブスクライブした日から 30 日以上経過していない。
+
 - サブスクリプションの種類が無料試用版であるか、メンバー プラン (MSDN/Open/BizSpark/DreamSpark) のいずれかである (クレジット カードまたはクレジット カードに関連付けられた他の支払い方法が使用されていない)。
+
 - まだ請求書の生成日になっていない。
 
 ### Azure ポータルにログインできません
 
-次の記事は、ログインの問題のよくあるいくつかの原因のトラブルシューティングに役立ちます。
+「[Azure サブスクリプションにログインして管理することができない](billing-cannot-login-subscription.md)」を参照してください。
 
-[Azure サブスクリプションにログインして管理することができない](billing-cannot-login-subscription.md)
-
-**注:** 適切な管理者としてログインしていることを確認してください。アカウント管理者は[アカウント センター](https://account.windowsazure.com/)だけにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com/)または [Azure クラシック ポータル](https://manage.windowsazure.com/)だけです。
+>[AZURE.NOTE] 適切な管理者としてログインしていることを確認してください。アカウント管理者は[アカウント センター](https://account.windowsazure.com/)だけにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com/)または [Azure クラシック ポータル](https://manage.windowsazure.com/)だけです。
 
 ### Azure サポートの購入方法は?
+
 Azure サポート プランは、オンラインで、またはエンタープライズ契約を介してご購入いただけます。オンラインでは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)のページから Developer、Standard、Professional Direct の各サポート プランを購入できます。サポート プランを購入するには、Microsoft Azure アカウントの所有者である必要があります。
 
 エンタープライズ契約 (EA) を通じて Microsoft Azure を購入した場合は、ラージ アカウント リセラー (LAR) に連絡すれば、エンタープライズ契約に Standard サポート プランまたは Professional Direct サポート プランを追加できます。Developer サポートは、エンタープライズ契約を通じてはご利用いただけません。
@@ -171,7 +182,7 @@ Microsoft Azure のアカウントには、[Azure アカウント センター](
 
 ### Azure サポート プランを上位プランにアップグレードするには?
 
-上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、[サブスクリプション管理] を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
+上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、**[サブスクリプション管理]** を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
 
 ### Azure サポートはいつ課金されますか?
 
@@ -185,9 +196,9 @@ Azure サポート プランをオンラインで購入すると、直ちに、�
 
 ### Azure サポート プランを解約するにはどうすればよいですか?
 
-アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、[アカウント センター]、[サブスクリプション] の順に選択することにより、Azure サポート プランを解約できます。サブスクリプションを所有している場合、サブスクリプションの一覧が表示されます。解約を希望するサブスクリプションを選択します。画面の右側にサブスクリプションの詳細がオプションの一覧と一緒に表示されます。[キャンセル] を選択して次に進みます。サブスクリプションを所有していない場合は、"使用できるサブスクリプションがありません" というメッセージが表示されます。
+アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、**[サブスクリプション]** を選択することにより、Azure サポート プランを解約できます。サブスクリプションを所有している場合、サブスクリプションの一覧が表示されます。解約を希望するサブスクリプションを選択します。画面の右側にサブスクリプションの詳細がオプションの一覧と一緒に表示されます。**[キャンセル]** を選択して次に進みます。サブスクリプションを所有していない場合は、"使用できるサブスクリプションがありません" というメッセージが表示されます。
 
-ただし、Azure サポート プランの期間は 6 か月単位であり、Microsoft では、その期間全体について引き続き料金のコミットメントを必須としております。期間の満了前に解約した場合でも、残りの期間についてのコミットメントが免除されることはなく、既にお支払いいただいた料金の払い戻しもありません。詳細については、「[Azure サブスクリプションをキャンセルする方法](billing-how-to-cancel-azure-subscription.md)」を参照してください。
+>[AZURE.NOTE] Azure サポート プランの期間は 6 か月単位であり、Microsoft では、その期間全体について継続的な料金のコミットメントを必須としております。期間の満了前に解約した場合でも、残りの期間についてのコミットメントが免除されることはなく、既にお支払いいただいた料金の払い戻しもありません。詳細については、「[Azure サブスクリプションをキャンセルする方法](billing-how-to-cancel-azure-subscription.md)」を参照してください。
 
 ### Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。
 
@@ -228,14 +239,14 @@ Azure アカウント情報を表示して編集するには、Azure アカウ�
 2.	[サブスクリプション] ページで、支払い方法を更新するサブスクリプションをクリックします。
 3.	**サブスクリプション**の概要ページで、[支払方法の変更] をクリックします。**[支払方法の変更]** ツールが別のウィンドウに表示されます。
 
-**注:** Microsoft Azure クラシック ポータルからアカウント センターにアクセスすることもできます。その場合は、自分のアカウント名をクリックし、[明細の表示] をクリックします。
+	**注:** Microsoft Azure クラシック ポータルからアカウント センターにアクセスすることもできます。その場合は、自分のアカウント名をクリックし、[明細の表示] をクリックします。
 4.	**[支払方法の選択]** ページで、ドロップダウン リストをクリックし、更新する支払い方法を選択して、**[編集]** をクリックします。
 5.	[詳細] ページで、正しいクレジット カードの種類と番号が選択されていることを確認します。
 6.	修正が必要な場合はカードの詳細に変更を加え、**[次へ]** をクリックします。
 
 詳細については、「[Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](billing-how-to-change-credit-card.md)」を参照してください。
 
-**注**: 現時点では、[支払い方法の変更] ツールでは支払い方法として設定されている既存のクレジット カードを削除できません。クレジット カードの削除方法の詳細については、FAQ 内の「Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。」を参照してください。
+>[AZURE.NOTE] 現時点では、[支払い方法の変更] ツールでは支払い方法として設定されている既存のクレジット カードを削除できません。クレジット カードの削除方法の詳細については、「[Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)」を参照してください。
 
 ### サブスクリプションの編集や詳細の追加ができないのはなぜでしょうか
 
@@ -247,7 +258,9 @@ Azure は、クラウド規模のアプリケーションとサービスを構�
 
 ### Azure の試用は無料ですか。課金される可能性はありませんか。
 
-はい。[使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。Azure にサインアップする方法の詳細については、[Azure サブスクリプションのサインアップ、購入、アップグレード、または有効化する方法](billing-buy-sign-up-azure-subscription.md)に関する記事を参照してください。
+はい。[使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。これらのプランにサインアップした新しいお客様はすべて、価格が $0 として使用制限が有効になります。
+
+Azure にサインアップする方法の詳細については、[Azure サブスクリプションのサインアップ、購入、アップグレード、または有効化する方法](billing-buy-sign-up-azure-subscription.md)に関する記事を参照してください。
 
 ### 使用制限を無効にした場合、再度有効にすることはできますか。
 
@@ -255,7 +268,7 @@ Azure は、クラウド規模のアプリケーションとサービスを構�
 
 ### 使用制限の量は調整できますか。
 
-この機能の初回リリースでは、使用制限は $0 に設定されており、調整はできません。この機能は、無料試用版、MSDN、MPN、または BizSpark プランのお客様が、課金されないという完全な保証付きで Azure を利用できるように設計されています。詳細については、「Azure 使用制限の変更」(https://azure.microsoft.com/pricing/spending-limits/) を参照してください。
+この機能の初回リリースでは、使用制限は $0 に設定されており、調整はできません。この機能は、無料試用版、MSDN、MPN、または BizSpark プランのお客様が、課金されないという完全な保証付きで Azure を利用できるように設計されています。詳細については、「[Azure 使用制限](https://azure.microsoft.com/pricing/spending-limits/)」を参照してください。
 
 ### Microsoft Azure が販売されている国と地域および Azure の購入に使用できる通貨
 
@@ -269,21 +282,32 @@ Azure は、世界の 140 を超える国で購入でき、課金は多数の通
 
 現在、Azure または SQL Database を SPLA で提供する計画はありません。
 
-### 試用版サブスクリプションとは何ですか。有効期間は?
+### 無料試用版サブスクリプションとは何ですか。有効期間は?
 
-Azure 試用版サブスクリプションは、必要な Microsoft のサービスを 30 日間使用する権利を一定金額分、お客様に提供するものです。無料試用版クレジットの対象となるサービスと対象外のサービスについては、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+Azure 無料試用版サブスクリプションは、新規ユーザーを対象とした 1 か月間無料の試用版で、$200 (米ドル) の Azure クレジットを無料で提供しています。無料試用版クレジットの対象となるサービスと対象外のサービスについては、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+
+試用版サブスクリプションには、[こちら](http://azure.microsoft.com/pricing/free-trial/)からサインアップできます。詳細な手順については、[こちらのガイド](billing-buy-sign-up-azure-subscription.md#sign-up-for-an-azure-free-trial-subscription)を参照してください。
+
+### 無料試用版で利用できるリソースを教えてください。
+
+無料試用版では、30 日間使用できる $200 (米ドル) の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
 
 試用版サブスクリプションには、[こちら](http://azure.microsoft.com/pricing/free-trial/)からサインアップできます。
 
-### 試用アカウントで利用できるリソースを教えてください。
-
-無料試用版では、$200 の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
+[無料試用版の FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) も参照してください。
 
 ### 無料試用版の使用制限を削除するとどうなりますか。
 
 使用制限を削除すると、無料試用版のクレジットを超えた部分について、リソースの使用に応じた課金が開始されます。いったん削除した使用制限をリセットすることはできません。
 
+### 無料試用版サブスクリプションでクォータの引き上げは可能でしょうか。
+
+無料試用版サブスクリプションは、クォータ引き上げの適用対象外です。無料試用版をお持ちの場合、[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)のサブスクリプションにアップグレードしてください。アップグレードの詳しい方法については、「[Azure 無料試用版を従量課金制にアップグレード](billing-buy-sign-up-azure-subscription.md#UpgradeFreeToPYG)」をご覧ください。
+
+>[AZURE.NOTE] DreamSpark サブスクリプションも、クォータ引き上げの適用対象外となります。
+
 ### 無料試用版についての詳しい情報はどこで確認できますか。
+
 [無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)と[無料試用版に関する公式 FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -26,7 +26,7 @@
 
 - サイト全域にデプロイする前に、更新後の機能的なバグを発見したり、パフォーマンスのボトルネックを特定したりする。
 - ベータ版アプリに関するユーザビリティのメトリックを評価することによって、変更に対する "Controlled Test Flight (制御された環境で行われるテスト フライト)" を実行する。
-- 徐々に最新版に引き上げ、エラーが発生した場合は、支障をきたさないように現行バージョンに引き下げる。 
+- 徐々に最新版に引き上げ、エラーが発生した場合は、支障をきたさないように現行バージョンに引き下げる。
 - 複数のデプロイ スロットで [A/B テスト](https://en.wikipedia.org/wiki/A/B_testing)または[多変量テスト](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing)を実行することにより、ビジネス上のアプリの成果を最適化する。
 
 ### Web アプリでトラフィック ルーティングを使用するための要件
@@ -39,7 +39,7 @@
 
 基本的に運用環境でのテストはどれも、あらかじめ決めた割合のライブ トラフィックを非運用環境のデプロイ スロットにルーティングすることになります。これを行うには、次の手順に従います。
 
->[AZURE.NOTE] ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-publish-source-control.md)されていることを前提としています。
+>[AZURE.NOTE] ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-deploy.md)されていることを前提としています。
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. Web アプリのブレードで、**[設定]**、**[トラフィック ルーティング]** の順にクリックします。![](./media/app-service-web-test-in-production/01-traffic-routing.png)
@@ -86,4 +86,4 @@ App Service は自動トラフィック ルーティングだけでなく、特�
 -   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 -	[Web アプリに対して DevOps 環境を効果的に使用する](app-service-web-staged-publishing-realworld-scenarios.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,7 +3,7 @@
    description="ユーザーのイベント ドリブン ワークロードのニーズに合わせて Azure Functions が拡張する方法を説明します。"
    services="functions"
    documentationCenter="na"
-   authors="eduardolaureano"
+   authors="dariagrigoriu"
    manager="erikre"
    editor=""
    tags=""
@@ -15,8 +15,8 @@
    ms.topic="reference"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/09/2016"
-   ms.author="edlaure"/>
+   ms.date="08/03/2016"
+   ms.author="dariagrigoriu"/>
 
 # Azure Functions のスケーリング方法
 
@@ -47,4 +47,4 @@ App Service プランでは、既存の VM 上の関数をホストします。�
 
 [AZURE.INCLUDE [動的サービス プラン](../../includes/functions-dynamic-service-plan.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -152,7 +152,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 
 	`Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2`
 
-4. PowerShell DSC のメタ構成をリモートで適用できない場合は、手順 2 の出力フォルダーをオンボードする各マシンにコピーします。次に、オンボードする各マシンで **Set-DscLocalConfigurationManager** をローカルで呼び出します。
+4. PowerShell DSC のメタ構成をリモートで適用できない場合は、手順 2. のメタ構成フォルダーを、オンボードする各マシンにコピーします。次に、オンボードする各マシンで **Set-DscLocalConfigurationManager** をローカルで呼び出します。
 5. Azure ポータルまたはコマンドレットを使用して、オンボードするマシンがこの時点で Azure Automation アカウントに登録されている DSC ノードとして示されていることを確認します。
 
 ## オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
@@ -261,7 +261,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
                     RefreshFrequencyMins = $RefreshFrequencyMins 
                     RefreshMode = $RefreshMode 
                     ConfigurationMode = $ConfigurationMode 
-                    AllowModuleOverwrite  = $AllowModuleOverwrite 
+                    AllowModuleOverwrite = $AllowModuleOverwrite 
                     RebootNodeIfNeeded = $RebootNodeIfNeeded 
                     ActionAfterReboot = $ActionAfterReboot 
                     ConfigurationModeFrequencyMins = $ConfigurationModeFrequencyMins 
@@ -379,4 +379,4 @@ Azure Automation DSC に DSC ノードとしてマシンを登録した後も、
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 * [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

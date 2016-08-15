@@ -1,5 +1,5 @@
 <properties
-	pageTitle="スケールアウトされた Azure SQL Database の作成と管理 | Micosoft Azure"
+	pageTitle="エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー) | Micosoft Azure"
 	description="エラスティック データベースのジョブの作成と管理について説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="07/27/2016"
 	ms.author="ddove"/>
 
-# スケールアウトされた Azure SQL Database の作成と管理 (プレビュー)
+# エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-database-elastic-jobs-create-and-manage.md)
@@ -115,4 +115,4 @@
 
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

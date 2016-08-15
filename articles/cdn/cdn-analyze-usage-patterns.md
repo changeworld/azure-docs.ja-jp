@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN の使用パターンを分析する"
+	pageTitle="Azure CDN の使用パターンを分析する | Microsoft Azure"
 	description="次のレポートを使用して、CDN の使用パターンを表示できます: 帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
-# CDN の使用パターンを分析する
+# Azure CDN の使用パターンを分析する
 
 [AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
@@ -28,6 +28,19 @@
 - キャッシュの状態
 - キャッシュ ヒット率
 - 転送された IPV4/IPV6 データ
+
+## 詳細な HTTP レポートへのアクセス
+
+1. CDN プロファイル ブレードで、**[管理]** をクリックします。
+
+	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-reports/cdn-manage-btn.png)
+
+	CDN 管理ポータルが開きます。
+
+2. **[分析]** タブにマウス ポインターを合わせ、次に **[Core Reports (コア レポート)]** フライアウトにポインターを合わせます。メニューで目的のレポートをクリックします。
+
+	![CDN management portal - Core Reports menu](./media/cdn-reports/cdn-core-reports.png)
+
 
 ## 帯域幅
 
@@ -122,7 +135,7 @@
 - キャッシュできないことがヘッダーで示された資産の要求。たとえば、Cache-Control: private、Cache-Control: no-cache、または Pragma: no-cache ヘッダーでは資産をキャッシュできません。
 - 部分的にキャッシュされた内容のバイト範囲要求。
 
-数式は次のとおりです: (TCP\_ HIT/(TCP\_ HIT+TCP\_MISS))*100
+数式は次のとおりです: (TCP_ HIT/(TCP_ HIT+TCP\_MISS))*100
 
 - [日付範囲] を選択して今日/今週/今月などのデータを表示するか、カスタム日付を入力し、[実行] をクリックして選択内容を更新します。
 - データをエクスポート、ダウンロードするには、[実行] の横にある Excel シートのアイコンをクリックします。
@@ -144,4 +157,4 @@
 
 レポートは過去 18 か月分のみ生成できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

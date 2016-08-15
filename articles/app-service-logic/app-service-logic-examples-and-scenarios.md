@@ -1,9 +1,9 @@
 <properties
    pageTitle="Logic Apps の例とシナリオ | Microsoft Azure"
    description="ロジック アプリの一般的な例のほか、一般的なシナリオを実装する方法について説明します。"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
-   authors="msftman"
+   authors="jeffhollan"
    manager="erikre"
    editor=""/>
 
@@ -13,35 +13,40 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="04/25/2016"
-   ms.author="deonhe"/>
+   ms.date="08/01/2016"
+   ms.author="jehollan"/>
 
 # Logic Apps の例と一般的なシナリオ
 
 このドキュメントでは、ロジック アプリを使用してビジネス プロセスを自動化する方法を理解するのに役立つ一般的なシナリオと例について詳しく説明します。
 
-## Logic Apps のトリガー
+## トリガーとアクション
 
 別のアプリケーションからロジック アプリをトリガーする方法は複数あります。その方法をいくつか次に示します。
 
-- [HTTP 要求 (POST)](app-service-logic-http-endpoint.md)
-- [webhook を受信](app-service-logic-create-api-app.md)
-- [エンドポイントにポーリング](app-service-logic-create-api-app.md)
+- [カスタム トリガーまたはカスタム アクションの作成](app-service-logic-create-api-app.md)
+- [実行時間の長いアクション](app-service-logic-create-api-app.md)
+- [HTTP 要求トリガー (POST)](app-service-logic-http-endpoint.md)
+- [Webhook のトリガーとアクション](app-service-logic-create-api-app.md)
+- [ポーリング トリガー](app-service-logic-create-api-app.md)
 
 ### シナリオ
 
-- [ロジック アプリの要求への同期応答](app-service-logic-http-endpoint.md)
+- [要求への同期応答](app-service-logic-http-endpoint.md)
 
-## 実行時間の長いカスタム アクション
+## エラー処理とログ記録
 
-- [カスタム アクションの作成](app-service-logic-create-api-app.md)
+- [Azure アラートと Azure 診断の構成](app-service-logic-monitor-your-logic-apps.md)
 
-## Logic Apps のデプロイおよび管理
+### シナリオ
 
-- [Logic Apps デプロイ テンプレートの作成](app-service-logic-create-deploy-template.md)
-- [Logic Apps を使用した問題の診断](app-service-logic-diagnosing-failures.md)
-- [Visual Studio からの Logic Apps のデプロイ](app-service-logic-deploy-from-vs.md)
-- [Logic Apps の監視](app-service-logic-monitor-your-logic-apps.md)
+- [使用例: エラーと例外の処理](app-service-logic-scenario-error-and-exception-handling.md)
+
+## デプロイと管理
+
+- [自動化されたデプロイの作成](app-service-logic-create-deploy-template.md)
+- [Visual Studio でのロジック アプリのビルドとデプロイ](app-service-logic-deploy-from-vs.md)
+- [ロジック アプリの監視](app-service-logic-monitor-your-logic-apps.md)
 
 ## コンテンツ タイプ、変換
 
@@ -72,4 +77,4 @@ Logic Apps の[ワークフロー定義言語](http://aka.ms/logicappsdocs)に�
 
 このドキュメントには、今後も引き続き例とシナリオを追加します。ご希望の例やシナリオがありましたら、以下のコメント セクションを使用してお知らせください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->
