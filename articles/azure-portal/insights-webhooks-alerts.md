@@ -1,14 +1,14 @@
 <properties
-	pageTitle="他のシステムに送信するように Azure アラートを構成する方法"
+	pageTitle="他のシステムに送信するように Azure アラートを構成する方法 | Microsoft Azure"
 	description="他の Azure 以外のシステムに Azure アラートを再ルーティングします。"
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -33,8 +33,8 @@ Webhook URI は有効な HTTP または HPPTS エンドポイントである必�
 
 認証には次の 2 種類があります。
 
-1. **トークン ベースの認証** - この場合、**https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue* などのトークン ID を持つ Webhook URI を保存します。
-2.	**基本認証** - userid および password を使用: この場合は、**https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar* などの Webhook URI を保存します。
+1. **トークン ベースの認証** - この場合、*https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue* などのトークン ID を持つ Webhook URI を保存します。
+2.	**基本認証** - userid および password を使用: この場合は、*https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar* などの Webhook URI を保存します。
 
 ## ペイロード スキーマ
 
@@ -100,7 +100,7 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
 |resourceId |Y | |当該リソースを一意に識別するリソース ID URI|
 |resourceRegion |Y | |影響を受けるリソースのリージョン/場所|
 |portalLink |Y | |リソースの概要ページへの Azure ポータルの直接のリンク|
-|プロパティ |N |省略可能 |イベントの詳細を含む<Key  Value>ペア (つまり、ディクショナリ<String  String>) のセット。properties フィールドは省略可能です。カスタム UI またはロジック アプリ ベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキーと値を入力できます。Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを Webhook に戻すこともできます。|
+|プロパティ |N |省略可能 |イベントの詳細を含む <キー, 値> ペアのセット (つまり、ディクショナリ <文字列, 文字列>)。properties フィールドは省略可能です。カスタム UI またはロジック アプリ ベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキーと値を入力できます。Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを Webhook に戻すこともできます。|
 
 
 >[AZURE.NOTE] ポータルで properties フィールドを使用することはできません。Insights SDK の今後のリリースでは、アラート API を使用して properties を設定できます。
@@ -123,4 +123,4 @@ Azure アラートを使用して、メッセージを他のサービスに送�
 
 [Azure キューにメッセージを送信するロジック アプリを使用する場合](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0803_2016-->

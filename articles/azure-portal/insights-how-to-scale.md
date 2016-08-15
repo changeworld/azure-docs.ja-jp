@@ -1,14 +1,14 @@
 <properties
-	pageTitle="手動または自動によるインスタンス数のスケール変更"
+	pageTitle="手動または自動によるインスタンス数のスケール変更 | Microsoft Azure"
 	description="Azure のサービスのスケールを変更する方法について説明します。"
 	authors="stepsic-microsoft-com"
 	manager="ronmart"
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -136,4 +136,4 @@
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

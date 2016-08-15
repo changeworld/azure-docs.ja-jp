@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Web アプリのパフォーマンスの監視"
+	pageTitle="Azure Web アプリのパフォーマンスの監視 | Microsoft Azure"
 	description="チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。"
 	services="azure-portal"
     documentationCenter="na"
@@ -12,20 +12,48 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/23/2015"
+	ms.date="07/28/2016"
 	ms.author="awills"/>
 
 # Azure Web アプリのパフォーマンスの監視
 
 [Azure ポータル](https://portal.azure.com)を使用すると、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または [Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
 
-Azure は、*拡張機能*を活用してアプリケーション パフォーマンス監視 (*APM*) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
+Azure は、拡張機能を活用してアプリケーション パフォーマンス監視 (APM) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
 
-Application Insights と New Relic は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。それらを使用するには、実行時にエージェントをインストールします。Application Insights には、SDK を使用してコードをビルドするためのオプションもあります。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
+**Application Insights** と **New Relic** は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。それらを使用するには、実行時にエージェントをインストールします。Application Insights には、SDK を使用してコードをビルドするためのオプションもあります。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
+
+## アプリケーション インサイト
+
+### (オプション) SDK を使用してアプリをリビルドする
+
+Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。
+
+Visual Studio (2013 Update 2 以降) で、Application Insights SDK をプロジェクトに追加します。
+
+![Web プロジェクトを右クリックし、[Application Insights の追加] を選択する](./media/insights-perf-analytics/03-add.png)
+
+サインインが要求されたら、Azure アカウントの資格情報を使用します。
+
+この操作には、次の 2 つの効果があります。
+
+1. Azure に Application Insights リソースが作成されます。このリソースでテレメトリが格納、分析、表示されます。
+2. Application Insights NuGet パッケージがコードに追加され、テレメトリを Azure リソースに送信するように構成されます。
+
+テレメトリをテストするには、開発用コンピューターでアプリを実行する (F5 キーを押す) か、単純にアプリを再発行します。
+
+SDK には[カスタム テレメトリを記述して](../application-insights/app-insights-api-custom-events-metrics.md)利用状況を追跡する API があります。
+
+### リソースを手動でセットアップする
+
+Visual Studio で SDK を追加しなかった場合は、テレメトリが格納、分析、表示される Application Insights リソースを Azure でセットアップする必要があります。
+
+![Click Add, Developer Services, Application Insights.Choose ASP.NET app type.](./media/insights-perf-analytics/01-new.png)
+
 
 ## 拡張機能を有効にする
 
-1. **[参照]** をクリックし、インストルメント化する Web アプリまたは仮想マシンを選択します。
+1. インストルメント化する Web アプリまたは仮想マシンの制御ブレードを参照します。
 
 2. Application Insights または New Relic の拡張機能を追加します。
 
@@ -37,42 +65,35 @@ Application Insights と New Relic は、利用できるパフォーマンス監
 
 ![分析タイルをクリックする](./media/insights-perf-analytics/10-vm1.png)
 
-### Application Insights 用のオプション: SDK を使用してリビルドする
 
-Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。
-
-Application Insights SDK を Visual Studio のプロジェクトに追加します。
-
-![Web プロジェクトを右クリックし、[Application Insights の追加] を選択する](./media/insights-perf-analytics/03-add.png)
-
-ログインが要求されたら、Azure アカウントの資格情報を使用します。
-
-テレメトリをテストするには、開発用コンピューターでアプリを実行するか、単純に再発行します。
-
-SDK には[カスタム テレメトリを記述して](../application-insights/app-insights-api-custom-events-metrics.md)利用状況を追跡する API があります。
 
 ## データを検索する
 
-しばらくの間、アプリケーションを使用していくつかのテレメトリを生成します。
+1. Application Insights リソースを開きます ([参照] から直接開くか、Web アプリのパフォーマンス管理ツールから開きます)。
 
-1. 次に、Web アプリまたは仮想マシンのブレードから、インストールされている拡張機能を確認します。
-2. アプリケーションを示す行をクリックし、そのプロバイダーに移動します。![[最新の情報に更新] をクリックする](./media/insights-perf-analytics/06-overview.png)
+2. 任意のグラフをクリックすると、より詳細な情報が表示されます。
 
-**[参照]** を使用して、使用した Application Insights コンポーネントまたは New Relic アカウントに直接移動することもできます。
+    ![On the Application Insights overview blade, click a chart](./media/insights-perf-analytics/07-dependency.png)
 
-ブレード (Application Insights など) が表示されたら、次の操作を実行できます。
-- [パフォーマンス] を開きます。
+    [メトリック ブレードをカスタマイズする](../application-insights/app-insights-metrics-explorer.md)ことができます。
 
-![Application Insights の概要ブレードで、[パフォーマンス] タイルをクリックする](./media/insights-perf-analytics/07-dependency.png)
+3. 個々のイベントとそのプロパティを表示するには、さらにクリックします。
 
-- ドリル スルーし、個別の要求を表示します。
+    ![Click an event type to open a search filtered on that type](./media/insights-perf-analytics/08-requests.png)
 
-![グリッドの依存関係をクリックし、関連する要求を参照します。](./media/insights-perf-analytics/08-requests.png)
+    "..." というリンクを使用すると、すべてのプロパティが開かれます。
 
-- この例は、SQL 呼び出しの数と、平均期間や標準偏差などの関連する統計情報を含む、SQL 依存関係に費やされた時間を示しています。
+    [検索をカスタマイズ](../application-insights/app-insights-diagnostic-search.md)できます。
 
-![](./media/insights-perf-analytics/01-example.png)
+テレメトリに対するより強力な検索については、[Analytics クエリ言語](../application-insights/app-insights-analytics-tour.md)を使用してください。
 
+
+## Q & A
+
+別の Application Insights リソースにデータを送信するように変更するには、どうすればよいですか。
+
+* "*Visual Studio で Application Insights をコードに追加した場合:*" プロジェクトを右クリックし、**[Application Insights]、[構成]** の順に選択して、目的のリソースを選択します。新しいリソースを作成するオプションが表示されます。リビルドして再デプロイします。
+* "*それ以外の場合:*" Azure で Web アプリの制御ブレードを開き、**[ツール]、[拡張機能]** の順に開きます。Application Insights 拡張機能を削除します。次に、**[ツール]、[パフォーマンス]** の順に開き、[ここをクリック] をクリックして、[Application Insights] を選択し、目的のリソースを選択します (新しい Application Insights リソースを作成する場合は、先に作成します)。
 
 
 ## 次のステップ
@@ -80,7 +101,7 @@ SDK には[カスタム テレメトリを記述して](../application-insights/
 * [サービスの正常性のメトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](insights-receive-alert-notifications.md)ます。
-* [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
-* Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
+* [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
+* [可用性 Web テストを設定](../application-insights/app-insights-monitor-web-app-availability.md)して、サイトがダウンした場合にアラートを送信するようにします。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

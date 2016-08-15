@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="04/29/2016"
+      ms.date="07/27/2016"
       ms.author="hascipio; v-divte" />
 
 # Azure Marketplace 向けソリューション テンプレートの作成ガイド
@@ -32,6 +32,7 @@
 
 ### 3\.最初にトポロジを作成する
 ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。次の手順に従ってプランを定義します。
+
 - トポロジの作成: 通常、"トポロジ識別子" はソリューション テンプレートのトポロジ名です。トポロジ識別子は、次に示すように URL で使用されます。
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
@@ -42,24 +43,20 @@
 
 ### 4\.トポロジのバージョンの認定を受ける
 トポロジの特定バージョンをプロビジョニングするために必要な、すべてのファイルを含む zip ファイルをアップロードします。この zip ファイルには、次のファイルを含める必要があります。
+
 - ルート ディレクトリの *mainTemplate.json* および *createUiDefinition.json* ファイル。
 - リンクされたテンプレートと必要なすべてのスクリプト。
-
-zip ファイルをアップロードしたら、**[証明書の要求]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
   > [AZURE.TIP] 開発者がソリューション テンプレートのトポロジを作成して認定を取得する間、会社のビジネス、マーケティング、法務の部門はマーケティングおよび法的なコンテンツの作業を進めることができます。
 
 ## 次のステップ
-ソリューション テンプレートを作成し、認定に必要なファイルを含む zip ファイルを送信したら、プランをステージング環境でテストする準備をする前に、[Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md)の指示に従います。または、Marketplace の発行に関する記事をすべて表示する場合は、「[概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)」を参照します。
+ソリューション テンプレートを作成し、zip ファイルをアップロードしたら、プランをステージングにプッシュする前に、[Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md)の指示に従います。Marketplace の発行に関する記事をすべて表示する場合は、[Azure Marketplace へのプランの発行方法の概要](marketplace-publishing-getting-started.md)に関するページをご覧ください。
 
 必要に応じて次の関連する記事も参照してください。
 
 - VM イメージ: [Azure の仮想マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-
 - VM 拡張機能: [VM エージェントと VM 拡張機能の概要](https://msdn.microsoft.com/library/azure/dn832621.aspx)および[Azure VM 拡張機能とその機能](https://msdn.microsoft.com/library/azure/dn606311.aspx)
-
 - Azure リソースマネージャー: [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)および[単純な ARM テンプレートの例](https://github.com/rjmax/ArmExamples)
-
 - ストレージ アカウントのスロットル: [ストレージ アカウントのスロットルの監視方法](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx)および[Premium Storage](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)
 
 [img-pubportal-menu-sol-templ]: media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
@@ -67,4 +64,4 @@ zip ファイルをアップロードしたら、**[証明書の要求]** をク
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

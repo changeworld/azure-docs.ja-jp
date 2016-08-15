@@ -3,8 +3,8 @@
    description="Windows Server または Windows クライアントからの復元方法について説明します。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="saurabhsensharma"
+   manager="shivamg"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="05/09/2016"
+	 ms.date="08/02/2016"
 	 ms.author="trinadhk; jimpark; markgal;"/>
 
 # クラシック デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
@@ -123,4 +123,4 @@
 - [Azure 仮想マシンのバックアップ](backup-azure-vms-introduction.md)
 - [Microsoft ワークロードのバックアップ ](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

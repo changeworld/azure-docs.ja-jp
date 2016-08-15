@@ -19,7 +19,7 @@
 
 # Windows 仮想マシンでのカスタムのスクリプト拡張機能
 
-この記事では、Azure PowerShell コマンドレットを使って Windows VM でカスタムのスクリプト拡張機能を使用する概要について説明します。
+この記事では、Azure Service Management API を使用した Azure PowerShell コマンドレットを使って Windows VM でカスタムのスクリプト拡張機能を使用する概要について説明します。
 
 Microsoft や信頼された第三者の発行元によってビルドされた仮想マシン (VM) の拡張機能を使って、VM の機能を拡張します。VM 拡張機能の概要については、「[Azure VM 拡張機能と機能](virtual-machines-windows-extensions-features.md)
 」をご覧ください。
@@ -88,9 +88,9 @@ Windows のカスタム スクリプト拡張機能を使うと、リモート�
 
 ### テンプレートとカスタム スクリプト拡張機能の併用
 
-Azure リソース マネージャー テンプレートでカスタム スクリプト拡張機能を使用する方法については、[こちら](virtual-machines-windows-classic-extensions-customscript.md)のドキュメントを参照してください。
+Azure リソース マネージャー テンプレートでカスタム スクリプト拡張機能を使用する方法については、[こちら](virtual-machines-windows-extensions-customscript.md)のドキュメントを参照してください。
 
 <!--Image references-->
 [5]: ./media/virtual-machines-windows-classic-extensions-customscript/addcse.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

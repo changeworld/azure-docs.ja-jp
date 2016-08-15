@@ -70,7 +70,7 @@ azure vm reset-access -g <resource group> <vm name> -u <username> -p <new passwo
 SSH キー認証を使用する場合は、特定のユーザーの SSH キーをリセットすることができます。
 
 ```bash
-azure vm reset-access -g <resource group> -n <vm name> -u <usernamer> -M <~/.ssh/azure_id_rsa.pub>
+azure vm reset-access -g <resource group> -n <vm name> -u <username> -M <~/.ssh/azure_id_rsa.pub>
 ```
 
 #### VM アクセス拡張機能
@@ -134,4 +134,4 @@ Azure 内で VM を別のノードに再デプロイすると、基になるネ�
 
 - クラシック デプロイ モデルを使用して作成された仮想マシンのトラブルシューティングの詳細については、[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](virtual-machines-linux-classic-reset-access.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

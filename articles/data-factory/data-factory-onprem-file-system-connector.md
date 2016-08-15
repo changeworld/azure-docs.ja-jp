@@ -25,7 +25,7 @@
 > [AZURE.NOTE] 
 Data Management Gateway 以外に、オンプレミスのファイル システムとの間で通信するために他のバイナリをインストールする必要はありません。
 > 
-> 接続およびゲートウェイに関する問題をトラブルシューティングするためのヒントについては、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションを参照してください。
+> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 ## Linux ファイル共有 
 
@@ -436,7 +436,8 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | はい 
-host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。 | はい
+host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。  
+ | はい
 userid | サーバーにアクセスするユーザーの ID を指定します | いいえ (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
 encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureRmDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
@@ -574,4 +575,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

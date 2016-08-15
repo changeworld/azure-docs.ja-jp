@@ -3,6 +3,14 @@
 
 この記事では、クラシック デプロイ モデルで作成された Azure Virtual Machines についてユーザーからよく寄せられる質問に回答します。
 
+## クラシック デプロイメント モデルで作成した VM を新しい Resource Manager モデルに移行できますか。
+
+はい。移行手順については、以下を参照してください。
+
+- [Azure PowerShell を使用するクラシックから Azure Resource Manager への移行に関するページ](../articles/virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)。
+
+- [Azure CLI を使用するクラシックから Azure Resource Manager への移行に関するページ](../articles/virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)。
+
 ## Azure VM では何を実行できますか。
 
 すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。最近のバージョンの Windows Server だけでなく、さまざまな Linux ディストリビューションを実行できます。サポートの詳細については、次の項目を参照してください。
@@ -53,7 +61,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 
 Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対するリモート デスクトップ接続を使用してリモート接続を確立し、仮想マシンにログオンする必要があります。手順については、次の項目を参照してください。
 
-- [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
+- [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。
 - [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
 
@@ -138,6 +146,8 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。Azure では、この構成について一定レベルの VM 可用性を保証しています。詳細については、「[仮想マシンの可用性管理](../articles/virtual-machines/virtual-machines-windows-manage-availability.md)」を参照してください。
 
+
+
 ## その他のリソース
 
 [Azure の Virtual Machines について](../articles/virtual-machines/virtual-machines-linux-about.md)
@@ -145,3 +155,5 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 [Linux 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-linux-creation-choices.md)
 
 [Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
+
+<!---HONumber=AcomDC_0803_2016-->

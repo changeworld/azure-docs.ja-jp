@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Powershell を使用した Windows Server イメージの作成とアップロード | Microsoft Azure"
+	pageTitle="Powershell を使用した VM イメージの作成とアップロード | Microsoft Azure"
 	description="従来のデプロイ モデルと Azure Powershell を使用し、一般化された Windows Server イメージ (VHD) を作成してアップロードする方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
@@ -104,4 +104,4 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md) できるようになりました。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -22,8 +22,8 @@
 
 このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](http://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。
 
-- **二項分類**タスクでは、乗車でチップが支払われるかどうかを予測します。 
-- **回帰**タスクでは、チップの他の特徴に基づいてチップの金額を予測します。 
+- **二項分類**タスクでは、乗車でチップが支払われるかどうかを予測します。
+- **回帰**タスクでは、チップの他の特徴に基づいてチップの金額を予測します。
 
 また、モデリング手順には、各種モデルをトレーニング、評価し、保存する方法を示すコードも含まれています。このトピックでは、「[Spark を使用したデータ探索とモデリング](machine-learning-data-science-spark-data-exploration-modeling.md)」と同じ領域の一部を取り上げますが、正確な分類と回帰のモデルを最適にトレーニングするために、クロス検証とハイパーパラメーター スイープの組み合わせも使用するため、タイトルに "高度な" が付けられています。
 
@@ -35,7 +35,7 @@
 
 使用するモデルは、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーです。
 
-- [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
+- [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。
 - [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
 - [ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)は、複数のデシジョン ツリーをまとめたものです。オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。ランダム フォレストは、分類と回帰に使用される最も成功している機械学習モデルの 1 つです。
 - [勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。GBT は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。また、多クラス分類設定でも使用できます。
@@ -108,16 +108,16 @@ datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
 Jupyter Notebook で提供される PySpark カーネルは、コンテキストがあらかじめ設定されており、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
 
-- sc: Spark 用 
+- sc: Spark 用
 - sqlContext: Hive 用
 
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
 - **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。
-- **%%sql -o <variable name>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
+- **%%sql -o <変数名>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
  
 
-Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前定義済みの "マジック" (%%local など) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。
+Jupyter Notebook のカーネルと、%% で呼び出される定義済みの "マジック" (例: %%local) の詳細については、[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事をご覧ください。
 
 
 ## パブリック BLOB からのデータの取り込み: 
@@ -205,7 +205,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 このコードおよび後続のスニペットでは、SQL マジックを使用してサンプルを照会し、ローカル マジックを使用してデータをプロットしています。
 
 - **SQL マジック (`%%sql`)** HDInsight PySpark カーネルは、sqlContext に対する簡単なインライン HiveQL クエリをサポートしています。引数 (-o VARIABLE\_NAME) を指定すると、SQL クエリの出力結果が Pandas データフレームとして Jupyter サーバー上に永続化されます。つまり、出力結果をローカルから使用できるようになります。
-- **`%%local` マジック**は、Jupyter サーバー (HDInsight クラスターのヘッドノード) 上のローカルでコードを実行するときに使用します。通常、`%%local` マジックは、`%%sql` マジック (-o パラメーター) と組み合わせて使用します。SQL クエリの出力結果を -o パラメーターでローカルに永続化したうえで、%%local マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+- **`%%local` マジック**は、Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルで実行するときに使用します。通常、`%%local` マジックは、-o パラメーターを指定した `%%sql` マジックと組み合わせて使用します。SQL クエリの出力結果を -o パラメーターでローカルに永続化したうえで、%%local マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
 その出力結果は、コードの実行後、自動的に視覚化されます。
 
@@ -250,7 +250,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 
 ![Frequency of trips by passenger count](./media/machine-learning-data-science-spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、ノートブックの **[Type]** (タイプ) メニュー ボタンで選択できます。ここに示したのは棒グラフによるプロットです。
+視覚化にはいくつかの種類 (表、円グラフ、折れ線グラフ、面グラフ、棒グラフ) があり、Notebook の **[Type (タイプ)]** メニュー ボタンで選択できます。ここに示したのは棒グラフによるプロットです。
 
 
 ### チップの金額と、乗客数別および料金別のチップ金額の変化のヒストグラムをプロットする
@@ -578,7 +578,7 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 
 このセクションでは、タクシーの乗車でチップが支払われるかどうかを予測する二項分類タスクで 3 つのモデルを使用する方法を示します。使用するモデルは次のとおりです。
 
-- ロジスティック回帰 
+- ロジスティック回帰
 - ランダム フォレスト
 - 勾配ブースティング ツリー
 
@@ -590,8 +590,8 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 
 パラメーター スイープによるクロス検証 (CV) を実行する方法が 2 つあります。
 
-1. MLlib の任意のアルゴリズムとアルゴリズム内の任意のパラメーター セットに適用できる**汎用の**カスタム コードを使用する。 
-1. **pySpark CrossValidator パイプライン関数**を使用する。CrossValidator は便利ですが、経験から、Spark 1.5.0 にはいくつかの制限事項があることがわかっています。 
+1. MLlib の任意のアルゴリズムとアルゴリズム内の任意のパラメーター セットに適用できる**汎用の**カスタム コードを使用する。
+1. **pySpark CrossValidator パイプライン関数**を使用する。CrossValidator は便利ですが、経験から、Spark 1.5.0 にはいくつかの制限事項があることがわかっています。
 
 	- 将来の使用に備えてパイプライン モデルを保存/保持することはできません。
 	- モデル内の個々のパラメーターに対して使用することはできません。
@@ -1037,7 +1037,7 @@ ROC 下面積 = 0.985336538462
 
 1. 1 つのパラメーター セットを使用する**モデルのトレーニング** データ
 2. メトリックを含むテスト データ セットでの**モデルの評価**
-3. 今後使用できるようにするための BLOB への**モデルの保存**   
+3. 今後使用できるようにするための BLOB への**モデルの保存**
 
 
 >AZURE NOTE: クロス検証は、このセクションの 3 つの回帰モデルでは使用されません。この点については、ロジスティック回帰モデルで詳しく取り上げます。線形回帰に対して Elastic Net を使用して CV を実行する方法を示す例が、このトピックの「付録」に記載されています。
@@ -1164,7 +1164,7 @@ R-sqr = 0.733445485802
 
 このセクションのコードでは、NYC タクシー乗車データでチップの金額を予測する勾配ブースティング ツリー モデルをトレーニング、評価し、保存する方法を示します。
 
-****トレーニングと評価**
+**トレーニングと評価**
 
 	#PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1464,7 +1464,7 @@ R-sqr = 0.740751197012
 PythonRDD[122] at RDD at PythonRDD.scala:43
 
 
-****consumption notebook で使用するモデル ファイルへのパスを出力します。** 独立したデータセットの取り込みとスコア付けを行うには、これらのファイル名をコピーして "Consumption notebook" に貼り付ける必要があります。
+**consumption notebook で使用するモデル ファイルのパスを出力します。**独立したデータセットの取り込みとスコア付けを行うには、これらのファイル名をコピーして "Consumption notebook" に貼り付ける必要があります。
 
 
 	# PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
@@ -1478,17 +1478,17 @@ PythonRDD[122] at RDD at PythonRDD.scala:43
 
 **出力**
 
-logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS\_2016-05-0316\_47\_30.096528"
+logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47\_30.096528"
 
-linearRegFileLoc = modelDir + "LinearRegressionWithSGD\_2016-05-0316\_51\_28.433670"
+linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-05-0316_51\_28.433670"
 
-randomForestClassificationFileLoc = modelDir + "RandomForestClassification\_2016-05-0316\_50\_17.454440"
+randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-05-0316_50\_17.454440"
 
-randomForestRegFileLoc = modelDir + "RandomForestRegression\_2016-05-0316\_51\_57.331730"
+randomForestRegFileLoc = modelDir + "RandomForestRegression_2016-05-0316_51\_57.331730"
 
-BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification\_2016-05-0316\_50\_40.138809"
+BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassification_2016-05-0316_50\_40.138809"
 
-BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression\_2016-05-0316\_52\_18.827237"
+BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52\_18.827237"
 
 ## 次の手順
 
@@ -1496,4 +1496,4 @@ Spark MlLib を使用して回帰モデルと分類モデルを作成しまし�
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
 
@@ -106,7 +106,7 @@ Azure SQL Database には、geo リストアとアクティブ geo レプリケ�
 
 ####アクティブ geo レプリケーションを選択するとき
 
-[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md)は、すべてのデータベース レベルで使用できます。アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。いずれかのセカンダリへのフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページ、および[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。アプリケーションを設計して実装する方法、およびダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[ダウンタイムのないアプリケーションのアップグレード](../sql-database/sql-database-business-continuity-application-upgrade.md)」をご覧ください。
+[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md)は、すべてのデータベース レベルで使用できます。アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。いずれかのセカンダリへのフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページ、および[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。アプリケーションを設計して実装する方法、およびダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[ダウンタイムのないアプリケーションのアップグレード](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
 
 ###Virtual Machines 上の SQL Server
 
@@ -214,4 +214,4 @@ Azure Media Services には、エンコードとストリーミングのため�
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[オンプレミスのデータセンターから Azure への復旧](./resiliency-technical-guidance-recovery-on-premises-azure.md)について重点的に説明します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

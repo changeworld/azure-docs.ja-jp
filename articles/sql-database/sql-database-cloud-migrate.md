@@ -4,7 +4,7 @@
    keywords="データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -23,9 +23,9 @@
 
 移行手順を以下に示します。
 
-- **互換性をテストする**: 最初に、データベースと [SQL Database V12](sql-database-v12-whats-new.md) との互換性を検証する必要があります。 
-- **互換性の問題がある場合は修正する**: 検証に失敗した場合は、検証エラーを修正する必要があります。  
-- **移行を実行する**: データベースに互換性がある場合は、1 つ以上の方法を使用して移行を実行できます。 
+- **互換性をテストする**: 最初に、データベースと [SQL Database V12](sql-database-v12-whats-new.md) との互換性を検証する必要があります。
+- **互換性の問題がある場合は修正する**: 検証に失敗した場合は、検証エラーを修正する必要があります。
+- **移行を実行する**: データベースに互換性がある場合は、1 つ以上の方法を使用して移行を実行できます。
 
 SQL Server では、これらの各タスクを実行するための方法がいくつか提供されます。この記事では、各タスクで使用可能な方法の概要を示します。次の図に手順と方法を示します。
 
@@ -44,11 +44,11 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 - [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
 - [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 
-- [Visual Studio 用の SQL Server Data Tools ("SSDT")](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md): SSDT では最新の互換性規則を使用して、SQL Database V12 の非互換性を検出します。非互換性が検出された場合は、このツールで直接検出された問題を修正できます。これが、SQL Database V12 の互換性をテストして、問題を修正するための現時点で推奨される方法です。 
-- [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md): SqlPackage は、互換性をテストするためのコマンド プロンプト ユーティリティの一種です。互換性の問題が検出された場合には、問題を含むレポートが生成されます。このツールを使用する場合は、必ず、最新バージョンで最新の互換性規則を使用してください。エラーが検出された場合は、別のツール (SSDT を推奨) を使用して、検出された互換性の問題を修正する必要があります。  
+- [Visual Studio 用の SQL Server Data Tools ("SSDT")](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md): SSDT では最新の互換性規則を使用して、SQL Database V12 の非互換性を検出します。非互換性が検出された場合は、このツールで直接検出された問題を修正できます。これが、SQL Database V12 の互換性をテストして、問題を修正するための現時点で推奨される方法です。
+- [SqlPackage](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md): SqlPackage は、互換性をテストするためのコマンド プロンプト ユーティリティの一種です。互換性の問題が検出された場合には、問題を含むレポートが生成されます。このツールを使用する場合は、必ず、最新バージョンで最新の互換性規則を使用してください。エラーが検出された場合は、別のツール (SSDT を推奨) を使用して、検出された互換性の問題を修正する必要があります。
 - [SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザード](sql-database-cloud-migrate-determine-compatibility-ssms.md): このウィザードではエラーが検出され、画面にレポートが表示されます。エラーが検出されない場合は、SQL Database への移行を続行して完了することができます。エラーが検出された場合は、別のツール (SSDT を推奨) を使用して、検出された互換性の問題を修正する必要があります。
-- [Microsoft SQL Server 2016 Upgrade Advisor プレビュー](http://www.microsoft.com/download/details.aspx?id=48119): 現在プレビュー段階のこのスタンドアロン ツールでは、SQL Database V12 の非互換性を検出し、レポートを生成します。このツールの最新の互換性規則はまだありません。エラーが検出されない場合は、SQL Database への移行を続行して完了することができます。エラーが検出された場合は、別のツール (SSDT を推奨) を使用して、検出された互換性の問題を修正する必要があります。 
-- [SQL Azure 移行ウィザード ("SAMW")](sql-database-cloud-migrate-fix-compatibility-issues.md): SAMW は CodePlex ツールです。Azure SQL Database V11 の互換性規則を使用して、Azure SQL Database V12 の非互換性を検出します。非互換性が検出された場合、問題のいくつかをこのツールで直接修正できます。このツールでは、修正する必要がない非互換性が検出される場合があります。ただし、それは最初の利用可能な Azure SQL Database 移行支援ツールの場合であり、SQL Server コミュニティからこれに関する多くのサポートが得られます。また、このツールでは、ツール自体内から移行を実行することができます。 
+- [Microsoft SQL Server 2016 Upgrade Advisor プレビュー](http://www.microsoft.com/download/details.aspx?id=48119): 現在プレビュー段階のこのスタンドアロン ツールでは、SQL Database V12 の非互換性を検出し、レポートを生成します。このツールの最新の互換性規則はまだありません。エラーが検出されない場合は、SQL Database への移行を続行して完了することができます。エラーが検出された場合は、別のツール (SSDT を推奨) を使用して、検出された互換性の問題を修正する必要があります。
+- [SQL Azure 移行ウィザード ("SAMW")](sql-database-cloud-migrate-fix-compatibility-issues.md): SAMW は CodePlex ツールです。Azure SQL Database V11 の互換性規則を使用して、Azure SQL Database V12 の非互換性を検出します。非互換性が検出された場合、問題のいくつかをこのツールで直接修正できます。このツールでは、修正する必要がない非互換性が検出される場合があります。ただし、それは最初の利用可能な Azure SQL Database 移行支援ツールの場合であり、SQL Server コミュニティからこれに関する多くのサポートが得られます。また、このツールでは、ツール自体内から移行を実行することができます。
 
 ## データベース移行に関する互換性の問題の修正
 
@@ -71,7 +71,7 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 - [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 
 - [Visual Studio 用の SQL Server Data Tools ("SSDT")](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) を使用する: SSDT を使用するには、Visual Studio 用の SQL Server Data Tools ("SSDT") にデータベース スキーマをインポートし、SQL Database V12 デプロイ用のプロジェクトを構築して、SSDT で検出されたすべての互換性の問題を修正してから、ソース データベース (またはソース データベースのコピー) に変更をもう一度同期します。これが、SQL Database V12 の互換性をテストして、問題を修正するための現時点で推奨される方法です。[SSDT の使用に関するチュートリアル](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)のリンクをクリックしてください。
-- [SQL Server Management Studio ("SSMS")](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) を使用する: SSMS を使用するには、Transact-SQL コマンドを実行し、検出されたエラーを別のツールを使用して修正します。この方法は、主にソース データベースで直接データベース スキーマを変更する上級ユーザー向けです。 
+- [SQL Server Management Studio ("SSMS")](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) を使用する: SSMS を使用するには、Transact-SQL コマンドを実行し、検出されたエラーを別のツールを使用して修正します。この方法は、主にソース データベースで直接データベース スキーマを変更する上級ユーザー向けです。
 - [SQL Azure 移行ウィザード ("SAMW")](sql-database-cloud-migrate-fix-compatibility-issues.md) を使用する: SAMW を使用するには、ソース データベースから Transact-SQL スクリプトを生成します。このスクリプトはウィザードで変換され、可能な限り、スキーマに SQL Database V12 との互換性を持たせます。完了すると、SAMW は SQL Database V12 に接続してスクリプトを実行することができます。このツールは、トレース ファイルを分析して互換性の問題の特定も行います。スキーマのみを含むスクリプトを生成することも、BCP 形式のデータを含むスクリプトを生成することもできます。
 
 ## 互換性のある SQL Server データベースの SQL Database への移行
@@ -108,4 +108,4 @@ SQL Database の互換性の問題があるかどうかを確認するには、�
 - [SQL Database V12](sql-database-v12-whats-new.md) [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

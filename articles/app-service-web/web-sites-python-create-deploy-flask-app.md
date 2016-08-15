@@ -34,7 +34,7 @@ Flask Web フレームワークを使用してアプリケーションを作成�
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools for Visual Studio][] (PTVS) - 注: これはオプションです
+- [Python Tools for Visual Studio][] \(PTVS) - 注: これはオプションです
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
@@ -55,12 +55,12 @@ Python と Git は既にインストールされていると思いますが、Py
 
 アプリを作成する最初の手順では、[Azure ポータル](https://portal.azure.com)で Web アプリを作成します。
 
-1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。 
+1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。
 2. **[Web + モバイル]** をクリックします。
 3. 検索ボックスに、「python」と入力します。
 4. 検索結果で **[Flask]** を選択し、**[作成]** をクリックします。
 5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Flask アプリを構成します。**[作成]** をクリックします。
-6. 「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。
+6. 「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。
 
 
 ## アプリケーションの概要
@@ -134,7 +134,7 @@ Python 仮想環境。互換性のある仮想環境がまだアプリ上にな�
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用して、リポジトリを複製します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
+最初に、Azure ポータルで提供される URL を使用して、リポジトリを複製します。詳細については、「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
 リポジトリのルートにあるソリューション ファイル (.sln) を開きます。
 
@@ -201,7 +201,7 @@ Azure URL を参照して、変更内容を表示します。
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
+最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
     git clone <repo-url>
     cd <repo-folder>
@@ -280,7 +280,7 @@ Azure URL を参照して、変更内容を表示します。
 
 ### リポジトリの複製
 
-最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service での GIT を使用した継続的なデプロイ](web-sites-publish-source-control.md)」を参照してください。
+最初に、Azure ポータルで提供される URL を使用してリポジトリを複製し、Azure リポジトリにリモートとして追加します。詳細については、「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」を参照してください。
 
     git clone <repo-url>
     cd <repo-folder>
@@ -401,4 +401,4 @@ Azure テーブル ストレージと MongoDB の使用方法については、�
 [Flask のドキュメント]: http://flask.pocoo.org/
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0803_2016-->

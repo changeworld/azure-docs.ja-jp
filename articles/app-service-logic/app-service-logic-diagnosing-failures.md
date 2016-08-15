@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリ障害の診断 | Microsoft Azure"
    description="ロジック アプリのエラー発生箇所を理解するための一般的な手法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -84,4 +84,4 @@ Azure ポータルには、各段階で各ロジック アプリを診断する�
 [3]: ./media/app-service-logic-diagnosing-failures/triggerOutputsLink.PNG
 [4]: ./media/app-service-logic-diagnosing-failures/ActionOutputs.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

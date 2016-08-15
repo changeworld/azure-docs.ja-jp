@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/11/2016"
+   ms.date="07/31/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse のトランザクション
@@ -56,19 +56,21 @@ SQL Data Warehouse では、ACID トランザクションを実装していま�
 ## トランザクションの状態
 SQL Data Warehouse では、XACT\_STATE() 関数の値 -2 を使用して、失敗したトランザクションを報告します。これは、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
 
-> [AZURE.NOTE] 失敗したトランザクションを示すために XACT\_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。たとえば、SELECT 1/0 はエラーになりますが、トランザクションを強制的にコミット不可状態にすることはありません。また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。しかし、SQLDW ではこれは許可されません。SELECT 1/0 のエラーも含め、SQLDW トランザクション内でエラーが発生すると、自動的に -2 状態になります。そのため、アプリケーション コードを調べて、XACT\_STATE() を使用しているかどうかを確認することが重要です。
+> [AZURE.NOTE] 失敗したトランザクションを示すために XACT\_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。ただし、SQL Data Warehouse では、これを行うことはできません。SQL Data Warehouse のトランザクションの内部でエラーが発生した場合、自動的に -2 状態が入力されます。このため、ステートメントがロールバックされるまで、SELECT ステートメントをそれ以上実行することができなくなります。したがって、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT\_STATE() を使用しているかどうかを確認することが重要です。
 
-SQL Server では、次のようなコード フラグメントを目にすることがあります。
+たとえば、SQL Server では、次のようなトランザクションを目にすることがあります。
 
 ```sql
+SET NOCOUNT ON;
+DECLARE @xact_state smallint = 0;
+
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
-        SET     @i = CONVERT(int,'ABC');
+        SET     @i = CONVERT(INT,'ABC');
     END TRY
     BEGIN CATCH
-
-        DECLARE @xact smallint = XACT_STATE();
+        SET @xact_state = XACT_STATE();
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
         ,       ERROR_SEVERITY()  AS ErrSeverity
@@ -76,27 +78,49 @@ BEGIN TRAN
         ,       ERROR_PROCEDURE() AS ErrProcedure
         ,       ERROR_MESSAGE()   AS ErrMessage
         ;
-
-        ROLLBACK TRAN;
+        
+        IF @@TRANCOUNT > 0
+        BEGIN
+            PRINT 'ROLLBACK';
+            ROLLBACK TRAN;
+        END
 
     END CATCH;
+
+IF @@TRANCOUNT >0
+BEGIN
+    PRINT 'COMMIT';
+    COMMIT TRAN;
+END
+
+SELECT @xact_state AS TransactionState;
 ```
 
-`ROLLBACK` ステートメントの前に `SELECT` ステートメントがあることに注意してください。また、`@xact` 変数の設定で、`SELECT` ではなく DECLARE が使用されています。
+コードを上記の状態のままにしておくと、次のエラー メッセージが表示されます。
 
-SQL Data Warehouse では、このコードは次のように記述する必要があります。
+メッセージ 111233、レベル 16、状態 1、ライン 1 111233; 111233; 現在のトランザクションは中止され、保留中の変更はすべてロールバックされています。原因: rollback-only 状態のトランザクションが、DDL、DML、または SELECT ステートメントの前に明示的にロールバックされませんでした。
+
+ERROR\_* 関数の出力も得られません。
+
+SQL Data Warehouse では、コードを少し変更する必要があります。
 
 ```sql
+SET NOCOUNT ON;
+DECLARE @xact_state smallint = 0;
+
 BEGIN TRAN
     BEGIN TRY
         DECLARE @i INT;
-        SET     @i = CONVERT(int,'ABC');
+        SET     @i = CONVERT(INT,'ABC');
     END TRY
     BEGIN CATCH
-
-        ROLLBACK TRAN;
-
-        DECLARE @xact smallint = XACT_STATE();
+        SET @xact_state = XACT_STATE();
+        
+        IF @@TRANCOUNT > 0
+        BEGIN
+            PRINT 'ROLLBACK';
+            ROLLBACK TRAN;
+        END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber
         ,       ERROR_SEVERITY()  AS ErrSeverity
@@ -106,10 +130,18 @@ BEGIN TRAN
         ;
     END CATCH;
 
-SELECT @xact;
+IF @@TRANCOUNT >0
+BEGIN
+    PRINT 'COMMIT';
+    COMMIT TRAN;
+END
+
+SELECT @xact_state AS TransactionState;
 ```
 
-`CATCH` ブロック内のエラー情報を読み取る前に、トランザクションのロールバックが発生しなければなりません。
+想定される動作が見られるようになりました。トランザクションのエラーが管理され、ERROR\_* 関数が予想通りの値を示します。
+
+変更点をまとめると、`CATCH` ブロック内でエラー情報の読み取り前にトランザクションの `ROLLBACK` が発生するようになりました。
 
 ## Error\_Line() 関数
 SQL Data Warehouse では、ERROR\_LINE() 関数を実装およびサポートしていないことにも注意してください。この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。この機能の詳細については、[ラベル][]に関する記事を参照してください。
@@ -129,10 +161,12 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 - 分散トランザクションは使用できません。
 - 入れ子になったトランザクションは使用できません。
 - セーブ ポイントは使用できません。
-- ユーザー定義されたトランザクション内の `CREATE TABLE` のような DDL はサポートされません。
+- トランザクションに名前を付けることはできません。
+- トランザクションにマークを付けることはできません。
+- ユーザー定義トランザクション内では `CREATE TABLE` のような DDL はサポートされません。
 
 ## 次のステップ
-トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][]に関するページを参照してください。SQL Data Warehouse のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照してください。
+トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][]に関するページを参照してください。SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照してください。
 
 <!--Image references-->
 
@@ -147,4 +181,4 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

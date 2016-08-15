@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/13/2016"
+   ms.date="08/02/2016"
    ms.author="rickbyh"/>
 
 # Azure SQL Database のセキュリティのガイドラインと制限事項
@@ -50,7 +50,7 @@ SQL Database への継続したアクティブな接続では、少なくとも 
 SQL Database でのログインとユーザーの管理には、制限があります。
 
 
-- ``CREATE/ALTER/DROP DATABASE`` ステートメントを実行する場合は、**master** データベースに接続する必要があります。サーバーレベル プリンシパル ログインに対応する master データベースのデータベース ユーザーは、変更または削除できません。 
+- ``CREATE/ALTER/DROP DATABASE`` ステートメントを実行する場合は、**master** データベースに接続する必要があります。サーバーレベル プリンシパル ログインに対応する master データベースのデータベース ユーザーは、変更または削除できません。
 - サーバーレベル プリンシパル ログインの既定の言語は英語 (米国) です。
 - **master** データベースにアクセスするには、各ログインは **master** データベースのユーザー アカウントにマップされている必要があります。**master** データベースは、包含データベース ユーザーをサポートしていません。
 - サーバーレベル プリンシパル ログインと、**master** データベースの **dbmanager** データベース ロールのメンバーにのみ、``CREATE DATABASE`` と ``DROP DATABASE`` ステートメントを実行する権限があります。
@@ -71,7 +71,7 @@ GO
 - ``CREATE USER`` ステートメントを ``FOR/FROM LOGIN`` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - ``ALTER USER`` ステートメントを ``WITH LOGIN`` オプションと共に実行する場合、これが Transact-SQL バッチ内の唯一のステートメントである必要があります。
 - ユーザーに対して ``CREATE/ALTER/DROP`` を実行するには、データベースに対する ``ALTER ANY USER`` 権限が必要です。
-- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、「**User or role 'Name' does not exist in this database.**」というエラーが発生する場合があります。 このエラーは、所有者からはユーザーが見えないために発生します。この問題を解決するには、そのユーザーに対する ``VIEW DEFINITION`` 権限をロールの所有者に許可します。 
+- データベース ロールの所有者が、そのデータベース ロールに対して他のデータベース ユーザーの追加または削除を行おうとすると、「**User or role 'Name' does not exist in this database.**」というエラーが発生する場合があります。 このエラーは、所有者からはユーザーが見えないために発生します。この問題を解決するには、そのユーザーに対する ``VIEW DEFINITION`` 権限をロールの所有者に許可します。
 
 ログインとユーザーの詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」をご覧ください。
 
@@ -86,4 +86,4 @@ GO
 
 [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

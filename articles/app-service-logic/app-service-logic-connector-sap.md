@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリ での SAP コネクタの使用 | Microsoft Azure App Service"
    description="SAP コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="harishkragarwal"
    manager="erikre"
@@ -99,4 +99,4 @@ SAP コネクタは、ロジック アプリ内でアクションまたはステ
 [6]: ./media/app-service-logic-connector-sap/LogicApp2.jpg
 [7]: ./media/app-service-logic-connector-sap/LogicApp3.jpg
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

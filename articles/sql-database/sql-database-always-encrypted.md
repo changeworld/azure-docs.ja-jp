@@ -537,7 +537,7 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - 別のコンピューターからこのサンプルを実行する。別のコンピューターからは暗号化キーにアクセスできず、プレーンテキスト データにもアクセスできないので、サンプルは正常に実行されません。
 - [キーのローテーションとクリーンアップを行う](https://msdn.microsoft.com/library/mt607048.aspx)。
 - [Always Encrypted で既に暗号化されているデータを移行する。](https://msdn.microsoft.com/library/mt621539.aspx)
-- 他のクライアント コンピューターに Always Encrypted 証明書をデプロイする。
+- [他のクライアント コンピューターにAlways Encrypted 証明書をデプロイする](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (「*Making Certificates Available to Applications and Users (アプリケーションおよびユーザーが証明書を使用可能にする)*」セクションを参照してください)。
 
 
 ## 関連情報
@@ -548,4 +548,4 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 - [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted に関するブログ](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

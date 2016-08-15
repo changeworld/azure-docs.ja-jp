@@ -3,8 +3,8 @@
 	description="この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します"
 	services="backup"
 	documentationCenter=""
-	authors="nkolli1"
-	manager="shreeshd"
+	authors="adigan"
+	manager="Nkolli1"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/04/2016"
-	ms.author="giridham;jimpark"/>
+	ms.author="giridham;jimpark;trinadhk;markgal"/>
 
 
 # SharePoint ファームの Azure へのバックアップ
@@ -233,4 +233,4 @@ Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、Shar
 - 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
 - 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/02/2016"
 	ms.author="tarcher"/>
 
 # 月間推定コスト傾向
@@ -48,7 +48,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
  
 コストの金額の端数は切り上げられることに注意してください。次に例を示します。
 
-- 5\.01 は切り上げて 6 になります。 
+- 5\.01 は切り上げて 6 になります。
 - 5\.50 は切り上げて 6 になります。
 - 5\.99 は切り上げて 6 になります。
 
@@ -60,13 +60,18 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 - 割引
 - 請求通貨。現時点では、ラボのコストは USD 通貨でのみ表示されます。
 
+## 関連するブログ記事
+
+- [Two more things to keep your cost on track in DevTest Labs (DevTest Labs でコストを正常に保つためのさらに 2 つのこと)](https://blogs.msdn.microsoft.com/devtestlab/2016/06/21/keep-your-cost-on-track/)
+- [Why Cost Thresholds? (なぜコストのしきい値か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/11/why-cost-thresholds/)
+
 ## 次のステップ
 
 次に試す操作をいくつか以下に示します。
 
-- [ラボ ポリシーを定義する](./devtest-lab-set-lab-policy.md) - ラボとその VM の使用方法を制御するために使用されるさまざまなポリシーの設定方法を確認します。 
+- [ラボ ポリシーを定義する](./devtest-lab-set-lab-policy.md) - ラボとその VM の使用方法を制御するために使用されるさまざまなポリシーの設定方法を確認します。
 - [カスタム イメージを作成する](./devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
-- [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest ラボでは、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
+- [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest Labs では、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 - [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - ベース イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

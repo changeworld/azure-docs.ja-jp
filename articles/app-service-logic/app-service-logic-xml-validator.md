@@ -1,7 +1,7 @@
 <properties
    pageTitle="Azure App Service のロジック アプリでの BizTalk XML Validator の使用 | Microsoft Azure"
    description="ロジック アプリ内で BizTalk XML Validator を使用してスキーマを検証します"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="rajram"
    manager="erikre"
@@ -64,4 +64,4 @@ XML 検証アクションは、特定の XML の入力を、構成済みのス�
 [4]: ./media/app-service-logic-xml-validator/XmlValidator.ListOfActions.PNG
 [5]: ./media/app-service-logic-xml-validator/XmlValidator.ValidateXml.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

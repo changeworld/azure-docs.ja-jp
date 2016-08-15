@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="08/01/2016"
 	ms.author="spelluru"/>
 
 # Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -672,7 +672,10 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
 ## パイプラインのデバッグ
 デバッグには、いくつかの基本的な技術があります。
 
-1.	入力スライスが **[準備完了]** に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに **file.txt** が存在することを確認します。
+1.	以下のエラー メッセージが表示された場合は、CS ファイル内のクラスの名前が、パイプラインの JSON の EntryPoint プロパティに指定した名前と一致していることを確認してください。前出のチュートリアルにおけるクラスの名前は MyDotNetActivity で、EntryPoint は MyDotNetActivityNS.**MyDotNetActivity** として指定されています。
+
+			MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly  
+2.	入力スライスが **[準備完了]** に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに **file.txt** が存在することを確認します。
 2.	問題の解決に役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。ログに記録されたメッセージがユーザー ログ ファイル (user-0.log、user-1.log、user-2.log というぐあいに名前が付けられた 1 つ以上のファイル) に表示されます。
 
 	**[OutputDataset]** ブレードで、スライスをクリックすると、そのスライスの **[データ スライス]** ブレードが表示されます。そのスライスの**アクティビティの実行**が表示されます。このスライスには 1 回のアクティビティの実行が表示されます。コマンド バーの [実行] をクリックする場合、同じスライスの別のアクティビティの実行を開始できます。
@@ -687,9 +690,9 @@ Data Factory サービスによって、Azure Batch に **adf-poolname:job-xxx**
 4.	カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない**最上位レベル**に置く必要があります。
 5.	**assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip)、**packageLinkedService** (zip ファイルを含む Azure Blob Storage を示す必要があります) が正しい値に設定されていることを確認します。
 6.	エラーを修正し、スライスを再処理する場合は、**[OutputDataset]** ブレードのスライスを右クリックし、**[実行]** をクリックします。
-7.	このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのためこの構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時に正しく機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に格納し、証明書ベースのサービス プリンシパルを使用してその **Key Vault** を保護したうえで、Azure Batch プールに証明書を配布することをお勧めします。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
+7.	このカスタム アクティビティでは、パッケージ内の **app.config** ファイルは使用されません。そのため、この構成ファイルから接続文字列を読み取るようにコードを記述した場合、実行時にそのコードは機能しません。Azure Batch を使用するときは、すべてのシークレットを **Azure KeyVault** に格納し、証明書ベースのサービス プリンシパルを使用してその **Key Vault** を保護したうえで、Azure Batch プールに証明書を配布することをお勧めします。こうすることで .NET カスタム アクティビティが実行時に KeyVault 内のシークレットにアクセスすることができます。これは一般的な手法であり、接続文字列に限らず、あらゆる種類のシークレットに応用できます。
 
-	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。**Azure SQL のリンクされたサービス**を接続文字列の設定で新しく作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとしてチェーンする方法です。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
+	最善の方法ではありませんが、同じことをもっと簡単に行うこともできます。接続文字列設定を使用して **Azure SQL のリンクされたサービス**を新しく作成し、そのリンクされたサービスを使用するデータセットを作成して、カスタム .NET アクティビティにダミーの入力データセットとして連結します。リンクされたサービスの接続文字列にカスタム アクティビティのコード内からアクセスすれば、実行時に適切に機能します。
 
 
 
@@ -747,9 +750,9 @@ Azure Data Factory ランチャーによって使用されるアセンブリの�
 	pendingTaskSampleVector=$PendingTasks.GetSample(600 * TimeInterval_Second);
 	$TargetDedicated = (max(pendingTaskSampleVector)>0)?1:0;
 
-詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」を参照してください。
+詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md)」をご覧ください。
 
-プールが既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
+プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 ## Azure HDInsight のリンクされたサービスの使用
 このチュートリアルでは、Azure Batch コンピューティングを使用して、カスタム アクティビティを実行しました。独自の HDInsight クラスターを使用するか、Data Factory によってオンデマンド HDInsight クラスターを作成してから、HDInsight クラスターでカスタム アクティビティを実行することもできます。ここでは、HDInsight クラスターを使用するための手順の概要を示します。
@@ -891,4 +894,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

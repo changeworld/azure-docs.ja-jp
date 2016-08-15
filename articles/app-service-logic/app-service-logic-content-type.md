@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps のコンテンツ タイプの処理 | Microsoft Azure"
    description="設計時と実行時に Logic Apps によってコンテンツ タイプが処理される方法について説明します。"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -93,4 +93,4 @@ CustomerName=Frank&Address=123+Avenue
 
 このときの `$content` は、すべてのデータを保持するために Base64 文字列としてエンコードされたペイロードです。　現時点ではフォーム データ用のネイティブ関数は存在しないので、`@string(body('formdataAction'))` のような関数を使用して手動でデータにアクセスすれば、このデータをワークフロー内で使用できます。送信要求に `application/x-www-url-formencoded` という Content-Type ヘッダーも加えたい場合は、単にアクション本体に追加すれば済みます。`@body('formdataAction')` のようなキャストは必要ありません。ただし、これが有効なのは、本体が `body` 入力内で唯一のパラメーターであるときのみです。`application/json` 要求内で `@body('formdataAction')` を実行しようとすると、エンコードされた本体が送信され、ランタイム エラーが発生します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

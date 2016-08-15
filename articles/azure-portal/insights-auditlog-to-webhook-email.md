@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -102,7 +102,7 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 |timestamp|	イベントに対応する要求を処理した Azure サービスによって、イベントが生成されたときのタイムスタンプ|
 |resourceId |リソースを一意に識別するリソース ID の URI|
 |resourceGroupName|影響を受けるリソースのリソース グループ名|
-|properties |イベントの詳細を含む<Key  Value>ペア (つまり、ディクショナリ)<String  String> のセット。|
+|properties |イベントの詳細を含む <キー, 値> ペアのセット (つまり、ディクショナリ <文字列, 文字列>)|
 |event|イベントに関するメタデータを含む要素|
 |authorization|イベントの RBAC プロパティをキャプチャします。通常、“action”、“role”、“scope” が含まれます。|
 |カテゴリ | イベントのカテゴリ。サポートされる値: Administrative、Alert、Security、ServiceHealth、Recommendation|
@@ -119,4 +119,4 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 |status|操作の状態を説明する文字列。一般的な値: Started、In Progress、Succeeded、Failed、Active、Resolved|
 |subStatus|	通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。また、subStatus を説明する他の文字列を含めることもできます。一般的な subStatus の値: OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code:503)、Gateway Timeout (HTTP Status Code: 504)|
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0803_2016-->

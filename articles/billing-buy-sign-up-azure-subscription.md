@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure サブスクリプションのサインアップ、購入、アップグレード、またはアクティブ化の方法 | Microsoft Azure"
 	description="Azure サブスクリプションを購入またはサインアップする方法について説明します。"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing,top-support-issue"
 	/>
 
@@ -119,4 +119,4 @@ Azure 無料試用版のサブスクリプションにサインアップする�
 
 3. プロダクト キーを入力し、契約オプションを確認します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/01/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
@@ -50,7 +50,7 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 - リージョン間のバックアップと復元はサポートされません。
 - Azure のすべてのパブリック リージョンに仮想マシンをバックアップすることができます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照してください)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - 次のように特定のオペレーティング システムのバージョンについてのみ仮想マシンをバックアップすることができます。
-  - **Linux**: [Azure で動作保証済みのディストリビューションの一覧](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
+  - **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をサポートしています (Core OS Linux を除く)。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 - マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
 - 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。復元操作の完了後、UI の復元ワークフローを使用して作成された VM には、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
@@ -321,4 +321,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps のオンプレミス データ ゲートウェイ接続 | Microsoft Azure"
    description="ロジック アプリからオンプレミス データ ゲートウェイへの接続の作成に関する情報。"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -70,4 +70,4 @@ Azure サブスクリプションをオンプレミス データ ゲートウェ
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

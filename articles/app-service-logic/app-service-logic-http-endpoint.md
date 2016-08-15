@@ -1,7 +1,7 @@
 <properties
    pageTitle="呼び出し可能なエンドポイントとしてのロジック アプリ"
    description="トリガー エンドポイントを作成および構成し、Azure App Service の Logic App で使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -151,4 +151,4 @@ Logic Apps には直接アクセス エンドポイントのサポートが組�
 [2]: ./media/app-service-logic-http-endpoint/manualtrigger.png
 [3]: ./media/app-service-logic-http-endpoint/response.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

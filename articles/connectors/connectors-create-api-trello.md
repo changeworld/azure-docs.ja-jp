@@ -1,7 +1,7 @@
 <properties
 pageTitle="Trello | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。Trello に接続してボード、一覧、およびカードを管理する"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -610,4 +610,4 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

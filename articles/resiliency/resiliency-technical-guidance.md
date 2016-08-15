@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Azure の回復性技術ガイダンス
 
@@ -61,4 +61,4 @@
 
 この記事は、Azure の回復性の技術ガイダンスについて重点的に説明したシリーズの一部です。このシリーズの他の記事に関心がある場合は、[ローカル障害からの復旧](resiliency-technical-guidance-recovery-local-failures.md)に関する記事からお読みください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,7 +1,7 @@
 <properties
 pageTitle="SMTP | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。SMTP に接続して電子メールを送信します。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -110,7 +110,7 @@ SMTP には次のアクションがあります。
 
 ## HTTP 応答
 
-上記のアクションとトリガーは、次の HTTP ステータス コードを 1 つ以上返す場合があります。
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
 |名前|説明|
 |---|---|
@@ -126,4 +126,4 @@ SMTP には次のアクションがあります。
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

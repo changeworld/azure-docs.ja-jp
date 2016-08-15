@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure App Service でコネクタと API Apps の管理と監視を行う | Microsoft Azure"
-	description="Azure App Service のコネクタと API Apps のパフォーマンスを表示する: マイクロサービス アーキテクチャ"
+	description="Logic Apps のコネクタと API Apps のパフォーマンスを表示する: マイクロサービス アーキテクチャ"
 	services="app-service\logic"
 	documentationCenter=".net,nodejs,java"
 	authors="MandiOhlinger"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="07/28/2016"
 	ms.author="mandia"/>
 
 # 組み込み API Apps とコネクタの管理と監視を実行する
@@ -110,20 +110,20 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 - 特定の API アプリのために自動的に作成された Swagger ファイルを開くには、選択**[API 定義]** を選択します。
 - API アプリによって要求されているファイルを表示するには、**[依存関係]** を選択します。たとえば、SAP コネクタを使用している場合は、オンプレミスの Hybrid Connection Manager に追加ファイルがいくつかインストールされます。これらの依存関係は、[API アプリ] ブレードに表示されます。
 
-> [AZURE.IMPORTANT] API アプリのプロパティを開き、**[基本要素]** を見ると、新しいブレードを開く **[ホスト]** リンクと **[ゲートウェイ]** リンクがあります。
+>[AZURE.IMPORTANT] API アプリのプロパティを開き、**[基本要素]** を見ると、新しいブレードを開く **[ホスト]** リンクと **[ゲートウェイ]** リンクがあります。
 >
 > ![][host]
 >
-> これらのプロパティは、API アプリをホストする Web サイトに固有です。組み込み API アプリまたはコネクタを使用するとき、これらのプロパティの大半は実際には適用されないため、これらのプロパティを更新しないことをお勧めします。Visual Studio で独自の API アプリを作成し、Azure サブスクリプションにデプロイした場合は、[ホスト] ブレードと [ゲートウェイ] ブレードを使用できます。
+>これらのプロパティは、API アプリをホストする Web サイトに固有です。組み込み API アプリまたはコネクタを使用するとき、これらのプロパティの大半は実際には適用されないため、これらのプロパティを更新しないことをお勧めします。Visual Studio で独自の API アプリを作成し、Azure サブスクリプションにデプロイした場合は、[ホスト] ブレードと [ゲートウェイ] ブレードを使用できます。<br/><br/>
 
 
->[AZURE.NOTE] Azure アカウントにはサインアップせずに Azure Logic Apps を体験することもできます。[Logic App の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリを作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] Azure アカウントにサインアップせずに Logic Apps を体験するには、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。短時間有効な簡易版のロジック アプリを作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 ## 詳細
 
-[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/> 
-[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/> 
-[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/> 
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/>
+[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/>
+[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/>
 [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
 
 
@@ -137,4 +137,4 @@ API アプリへのユーザーの追加と特定のロールの割り当ては�
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

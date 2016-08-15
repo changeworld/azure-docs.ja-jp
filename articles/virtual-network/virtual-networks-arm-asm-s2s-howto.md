@@ -40,7 +40,7 @@ Azure には現在、Azure サービス マネージャー (従来型と呼ば�
 1. https://manage.windowsazure.comで従来のポータルを開き、必要に応じて資格情報を入力します。
 2. 画面の左下で、**[新規] **ボタン、**[ネットワーク サービス]**、**[仮想ネットワーク]**、**[ローカル ネットワークの追加] **の順にクリックします。
 3. **[ローカル ネットワークの詳細を指定する] **ウィンドウで、接続先の ARM VNet の名前を入力してから、ウィンドウの右下にある矢印ボタンをクリックします。
-3. アドレス空間の **[開始 IP]** テキスト ボックスに、接続先となる ARM VNet のネットワーク プレフィックスを入力します。 
+3. アドレス空間の **[開始 IP]** テキスト ボックスに、接続先となる ARM VNet のネットワーク プレフィックスを入力します。
 4. **[CIDR (アドレス数)] **ドロップダウン ボックスの一覧から、接続先の ARM VNet で使用される CIDR ブロックのネットワーク部分に使用するビット数を選択します。
 5. **[VPN デバイス IP アドレス (オプション)] **で、任意の有効なパブリック IP アドレスを入力します。この IP アドレスは後で変更します。次に、画面の右下にあるチェック マーク ボタンをクリックします。次の図は、このページの設定例です。
 
@@ -64,7 +64,7 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 
 3. 次のコマンドを実行して、ゲートウェイのパブリック IP アドレスを作成します。
 
-		$ipaddress = New-AzureRmPublicIpAddress -Name gatewaypubIP`
+		$ipaddress = New-AzureRmPublicIpAddress -Name gatewaypubIP `
 			-ResourceGroupName RG1 -Location "East US" `
 			-AllocationMethod Dynamic
 
@@ -77,16 +77,17 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 
 5. 次のコマンドを実行して、ゲートウェイの IP 構成オブジェクトを作成します。ゲートウェイ サブネットの ID が使用されていることに注意してください。そのサブネットは、VNet に存在している必要があります。。
 
+
 		$ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
-			-Name ipconfig -PrivateIpAddress 10.1.2.4 `
-			-SubnetId $subnet.id -PublicIpAddressId $ipaddress.id
+		-Name ipconfig -SubnetId $subnet.id `
+		-PublicIpAddressId $ipaddress.id
 
 	>[AZURE.IMPORTANT] *SubnetId* パラメーターと *PublicIpAddressId* パラメーターはそれぞれ、サブネットの id プロパティと IP アドレス オブジェクトの id プロパティを渡さなければなりません。単純な文字列を使用することはできません。
 	
 5. 次のコマンドを実行して、ARM VNet ゲートウェイを作成します。
 
 		New-AzureRmVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1 `
-			-Location "East US" -GatewayType Vpn -IpConfigurations $ipconfig `
+			-Location "East US" -GatewaySKU Standard -GatewayType Vpn -IpConfigurations $ipconfig `
 			-EnableBgp $false -VpnType RouteBased
 
 6. VPN ゲートウェイが作成されたら、次のコマンドを実行してパブリック IP アドレスを取得します。IP アドレスをコピーしてください。従来の VNet 用のローカル ネットワークを構成するときに必要になります。
@@ -118,4 +119,4 @@ ARM VNet 用の VPN ゲートウェイを作成するには、以下の手順に
 - [ネットワーク リソース プロバイダー](resource-groups-networking.md)についてさらに学習できます。
 - [end-to-end solution connecting a classic VNet to an ARM VNet by using a S2S VPN (S2S VPN を使用して従来の VNet と ARM VNet を接続するエンド ツーン エンド ソリューション)](virtual-networks-arm-asm-s2s.md) を作成します。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -100,7 +100,7 @@ Checking import state... Succeeded
 
 **Microsoft Power BI Embedded** のサンプル コードは以下のように区切られています。サンプル内のコードを簡単に見つけることができるように、各セクションには PowerBI-embedded.sln ソリューションのファイル名が含まれます。
 
-> [AZURE.NOTE] このセクションは、コードの作成方法を説明するサンプル コードの概要です。このサンプルの説明は一般公開 (GA) への移行後に拡大されます。完全なサンプルを表示するには、Visual Studio で PowerBI-embedded.sln ソリューションを読み込んでください。
+> [AZURE.NOTE] このセクションは、コードの作成方法を説明するサンプル コードの概要です。完全なサンプルを表示するには、Visual Studio で PowerBI-embedded.sln ソリューションを読み込んでください。
 
 ### モデル
 サンプルには、**ReportsViewModel** と **ReportViewModel** があります。
@@ -120,6 +120,15 @@ Checking import state... Succeeded
 
         public string AccessToken { get; set; }
     }
+
+### 接続文字列
+接続文字列は次の形式にする必要があります。
+
+```
+Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
+```
+
+一般的なサーバーとデータベースの属性を使用すると失敗します。たとえば、Server=tcp:MyServer.database.windows.net,1433;Database=MyDatabase を使用した場合です。
 
 ### 表示
 **ビュー**では、複数の Power BI **レポート** と 1 つの Power BI **レポート**の表示を管理します。
@@ -236,4 +245,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 - [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 - [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

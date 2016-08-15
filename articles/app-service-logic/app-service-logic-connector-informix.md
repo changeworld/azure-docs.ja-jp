@@ -1,7 +1,7 @@
 <properties
    pageTitle="Microsoft Azure App Service での Informix コネクタの使用 | Microsoft Azure"
    description="Informix コネクタでロジック アプリのトリガーとアクションを使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
    manager="erikre"
@@ -274,4 +274,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [13]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_TriggersActions.png
 [14]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Outputs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

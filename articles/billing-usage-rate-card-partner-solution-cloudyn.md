@@ -1,11 +1,12 @@
 <properties
    pageTitle="Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供 | Microsoft Azure"
    description="Microsoft Azure 課金パートナーの Cloudyn が Azure Billing API を製品に統合した独自の事例について説明します。この事例は、Cloudyn for Azure サービスの使用または試用に関心を持っている Azure と Cloudyn のユーザーに特に役立ちます。"
-   services="billing"
+   services=""
    documentationCenter=""
    authors="BryanLa"
    manager="mbaldwin"
-   editor=""/>
+   editor=""
+   tags="billing"/>
 
 <tags
    ms.service="billing"
@@ -48,7 +49,7 @@ Usage API と RateCard API で可能になる一般的な Cloudyn ITFM の使用
 
 ![コスト配分 360度グラフ][4]
 
-+ **コスト効率が高いサイズ設定** - あまり使用されていない仮想マシンの適切なサイズ設定の推奨がわかるので、サイズやプロビジョニングが過剰なコンピューターにかかる費用を削減できます。サイズ設定には、仮想マシンの CPU と RAM のメトリック (Performance API 経由)、実行時間 (Usage API 経由)、およびコスト (RateCard API 経由) を確認します。Cloudyn は、あまり使用されていない CPU または RAM リソース (Performance) に基づいて適切なサイズ設定の推奨を提供し、VM 間の料金の差分 (RateCard) に、あまり使用されていないコンピューターの実際の利用時間 (Usage) をかけて節約の見積額を計算します。 
++ **コスト効率が高いサイズ設定** - あまり使用されていない仮想マシンの適切なサイズ設定の推奨がわかるので、サイズやプロビジョニングが過剰なコンピューターにかかる費用を削減できます。サイズ設定には、仮想マシンの CPU と RAM のメトリック (Performance API 経由)、実行時間 (Usage API 経由)、およびコスト (RateCard API 経由) を確認します。Cloudyn は、あまり使用されていない CPU または RAM リソース (Performance) に基づいて適切なサイズ設定の推奨を提供し、VM 間の料金の差分 (RateCard) に、あまり使用されていないコンピューターの実際の利用時間 (Usage) をかけて節約の見積額を計算します。
 
 ![コスト効率の高いサイズ設定][5]
 
@@ -72,7 +73,7 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 ## 次のステップ
 
 + 無料の [Cloudyn for Azure](https://www.cloudyn.com/microsoft-azure/) 試用版を利用し、Microsoft Azure クラウド デプロイ用にカスタマイズしたレポートと分析を使用してコストを透明化する方法について説明します。
-+ Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。 
++ Azure Resource Usage API と RateCard API の概要については、「[Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md)」を参照してください。
 + 両方の API の詳細については、「[Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。
 + サンプル コードをすぐに確認するには、「[Azure コード サンプル](https://azure.microsoft.com/documentation/samples/?term=billing)」の「Microsoft Azure Billing API コード サンプル」を参照してください。
 
@@ -90,4 +91,4 @@ Azure ユーザーが Cloudyn for Azure と Azure Billing API を使用して Az
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

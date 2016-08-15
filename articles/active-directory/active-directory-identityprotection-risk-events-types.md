@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/02/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection で検出されるリスク イベントの種類 
@@ -78,4 +78,4 @@ Azure Active Directory Identity Protection のリスク イベントとは、次
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

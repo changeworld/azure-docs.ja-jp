@@ -4,16 +4,16 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="08/02/2016"
 	ms.author="ashwink"/>
 
 # Azure Insights の自動スケールの一般的なメトリック
@@ -54,30 +54,30 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 |\\Processor(\_Total)\\% Processor Time |Percent|
 |\\Processor(\_Total)\\% Privileged Time |Percent|
 |\\Processor(\_Total)\\% User Time |Percent|
-|\\Processor Information(\_Total)\\Processor Frequency |Count|
-|\\System\\Processes| Count|
-|\\Process(\_Total)\\Thread Count| Count|
-|\\Process(\_Total)\\Handle Count |Count|
+|\\Processor Information(\_Total)\\Processor Frequency |カウント|
+|\\System\\Processes|	カウント|
+|\\Process(\_Total)\\Thread Count|	カウント|
+|\\Process(\_Total)\\Handle Count |カウント|
 |\\Memory\\% Committed Bytes In Use |Percent|
-|\\Memory\\Available Bytes| Bytes|
-|\\Memory\\Committed Bytes |Bytes|
-|\\Memory\\Commit Limit| Bytes|
-|\\Memory\\Pool Paged Bytes| Bytes|
-|\\Memory\\Pool Nonpaged Bytes| Bytes|
-|\\PhysicalDisk(\_Total)\\% Disk Time| Percent|
-|\\PhysicalDisk(\_Total)\\% Disk Read Time| Percent|
-|\\PhysicalDisk(\_Total)\\% Disk Write Time| Percent|
+|\\Memory\\Available Bytes|	バイト|
+|\\Memory\\Committed Bytes |バイト|
+|\\Memory\\Commit Limit|	バイト|
+|\\Memory\\Pool Paged Bytes|	バイト|
+|\\Memory\\Pool Nonpaged Bytes|	バイト|
+|\\PhysicalDisk(\_Total)\\% Disk Time|	Percent|
+|\\PhysicalDisk(\_Total)\\% Disk Read Time|	Percent|
+|\\PhysicalDisk(\_Total)\\% Disk Write Time|	Percent|
 |\\PhysicalDisk(\_Total)\\Disk Transfers/sec |CountPerSecond|
 |\\PhysicalDisk(\_Total)\\Disk Reads/sec |CountPerSecond|
 |\\PhysicalDisk(\_Total)\\Disk Writes/sec |CountPerSecond|
 |\\PhysicalDisk(\_Total)\\Disk Bytes/sec |BytesPerSecond|
-|\\PhysicalDisk(\_Total)\\Disk Read Bytes/sec| BytesPerSecond|
+|\\PhysicalDisk(\_Total)\\Disk Read Bytes/sec|	BytesPerSecond|
 |\\PhysicalDisk(\_Total)\\Disk Write Bytes/sec |BytesPerSecond|
-|\\PhysicalDisk(\_Total)\\Avg.Disk Queue Length| Count|
-|\\PhysicalDisk(\_Total)\\Avg.Disk Read Queue Length| Count|
-|\\PhysicalDisk(\_Total)\\Avg.Disk Write Queue Length |Count|
-|\\LogicalDisk(\_Total)\\% Free Space| Percent|
-|\\LogicalDisk(\_Total)\\Free Megabytes| Count|
+|\\PhysicalDisk(\_Total)\\Avg.ディスク キューの長さ|	カウント|
+|\\PhysicalDisk(\_Total)\\Avg.Disk Read Queue Length|	カウント|
+|\\PhysicalDisk(\_Total)\\Avg.Disk Write Queue Length |カウント|
+|\\LogicalDisk(\_Total)\\% Free Space|	Percent|
+|\\LogicalDisk(\_Total)\\Free Megabytes|	カウント|
 
 
 
@@ -164,20 +164,20 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ## 一般的に使用される Storage のメトリック
 Storage キューの長さ (Storage キュー内のメッセージ数) に応じてスケールすることができます。Storage キューの長さは特殊なメトリックであり、適用されるしきい値は、1 インスタンスあたりのメッセージ数です。つまり、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケールされます。たとえば、1 インスタンスあたり 100 メッセージです。
 
-この値は、Azure ポータルの **[設定]** ブレードで構成できます。VM スケール セットの場合、ARM テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* として Storage キューの ID を渡すことができます。
+この値は、Azure ポータルの **[設定]** ブレードで構成できます。VM スケール セットの場合、ARM テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
 
 
 ```
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
-```
+ ```
 
 ## 一般的に使用される Service Bus のメトリック
 
 Service Bus キューの長さ (Service Bus キュー内のメッセージ数) に応じてスケールすることができます。Service Bus キューの長さは特殊なメトリックであり、指定されるしきい値は、1 インスタンスあたりのメッセージ数です。つまり、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケールされます。たとえば、1 インスタンスあたり 100 メッセージです。
 
-VM スケール セットの場合、ARM テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* として Storage キューの ID を渡すことができます。
+VM スケール セットの場合、ARM テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
 
 ```
 "metricName": "MessageCount",
@@ -187,4 +187,4 @@ VM スケール セットの場合、ARM テンプレートの [自動スケー�
 
 >[AZURE.NOTE] Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0803_2016-->

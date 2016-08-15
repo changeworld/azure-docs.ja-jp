@@ -1,7 +1,7 @@
 <properties
    pageTitle="Microsoft Azure App Service での DB2 コネクタの使用 | Microsoft Azure"
    description="DB2 コネクタでロジック アプリのトリガーとアクションを使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
    manager="erikre"
@@ -271,4 +271,4 @@ REST API を使用した API Apps を作成します。[コネクタと API Apps
 [13]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_TriggersActions.png
 [14]: ./media/app-service-logic-connector-db2/LogicApp_RemoveOrdersDb2_Outputs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

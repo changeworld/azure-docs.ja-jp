@@ -183,5 +183,6 @@ Azure Data Lake Store ファイル システムからセキュリティ グル�
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [PowerShell で Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)
 - [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
+- [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

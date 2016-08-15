@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing"/>
 
 <tags
@@ -114,4 +114,4 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory の管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

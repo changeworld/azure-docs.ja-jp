@@ -48,7 +48,7 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 ## 既存の Azure VM をコピーまたは複製できますか。
 
-はい。詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-specialized-image.md)」を参照してください。
+はい。詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-copy-vm.md)」を参照してください。
 
 ## Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
 
@@ -58,4 +58,4 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 いいえ。現時点では、この操作は作成時にのみ実行できます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

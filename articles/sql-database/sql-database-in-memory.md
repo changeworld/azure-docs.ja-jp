@@ -107,7 +107,7 @@
 
 2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) を使用して、データベースに接続します。
 
-3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_oltp_sample.sql)をクリップボードにコピーします。
+3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql)をクリップボードにコピーします。
  - この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
 4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。
@@ -348,7 +348,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、ク
  - 正確な名前を使用します。
  - 任意の Premium サービス階層を選択します。
 
-2. [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_analytics_sample.sql) をクリップボードにコピーします。
+2. [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) をクリップボードにコピーします。
  - この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
  - このスクリプトでは、Dimension テーブルと 2 つの fact テーブルを作成します。fact テーブルには、それぞれ 350 万行のデータが設定されています。
  - スクリプトが完了するには約 15 分かかります。
@@ -371,7 +371,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、ク
 #### 列ストア インデックスを比較する重要なクエリ
 
 
-パフォーマンスの改善を確認できるいくつかの T-SQL クエリの種類については、[こちら](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/clustered_columnstore_sample_queries.sql)を参照してください。T-SQL スクリプトの手順 2 には、直接関係がある 1 組のクエリがあります。2 つのクエリの違いは、次の 1 行のみです。
+パフォーマンスの改善を確認できるいくつかの T-SQL クエリの種類については、[こちら](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql)を参照してください。T-SQL スクリプトの手順 2 には、直接関係がある 1 組のクエリがあります。2 つのクエリの違いは、次の 1 行のみです。
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
@@ -537,4 +537,4 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

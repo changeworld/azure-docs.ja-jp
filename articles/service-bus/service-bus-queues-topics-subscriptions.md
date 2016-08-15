@@ -174,4 +174,4 @@ Service Bus の仲介型メッセージング エンティティの使用の詳�
 - [トピック フィルターのサンプル](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters)
 - [「Brokered Messaging: Advanced Filters sample (ブローカー メッセージング: 高度なフィルター)」のサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="08/02/2016"
 	ms.author="trinadhk; jimpark;"/>
 
 
@@ -62,12 +62,12 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
 1. **[Select restore instance]** 画面で、仮想マシンを復元する場所の詳細を指定します。
 
-  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の VM の上書きはサポートされていません。 
+  - 仮想マシン名を指定する: 特定のクラウド サービスでは、仮想マシンの名前を一意にする必要があります。既存の VM の上書きはサポートされていません。
   - 仮想マシンのクラウド サービスを選択する: これは仮想マシンを作成するために必須です。既存のクラウド サービスを使用するか、新しいクラウド サービスを作成するかを選択できます。
 
-        クラウド サービス名はどのようなものであれグローバルに一意である必要があります。クラウド サービス名は通常、[cloudservice].cloudapp.net の形式で公開される URL に紐付けられます。Azure では、名前がすでに使用されている場合は新しいクラウド サービスを作成できません。新しいクラウド サービスの選択でクラウド サービスを作成する場合、仮想マシンと同じ名前になります。ここで選択された VM 名は関連するクラウド サービスに使うことができる、一意のものである必要があります。
+        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
 
-        復元インスタンス詳細のアフィニティ グループに関連しないクラウド サービスや仮想ネットワークのみが表示されます。[詳細について](https://msdn.microsoft.com/ja-jp/library/azure/jj156085.aspx)。
+        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 2. 仮想マシンのストレージ アカウントを選択する: これは仮想マシンを作成するために必須です。Azure Backup 資格情報コンテナーと同じリージョン内の既存のストレージ アカウントから選択できます。ゾーン冗長または Premium Storage タイプのストレージ アカウントはサポートされません。
 
@@ -101,6 +101,9 @@ Azure Backup コンテナーに格納されているバックアップから新�
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
 仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの[エンドポイントを変更する](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)必要がある場合があります。
+
+## 復元後の手順
+Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。復元した VM は、VMAccess 拡張機能を使用して[パスワードをリセット](../virtual-machines/virtual-machines-linux-classic-reset-access.md)してください。これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
 
 ## 復元された VM のバックアップ
 最初にバックアップされた VM と同じ名前で同じクラウド サービスに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。別のクラウド サービスに VM を復元した場合、または復元された VM に別の名前を指定した場合、この VM は新しい VM として扱われるので、復元された VM に対してバックアップをセットアップする必要があります。
@@ -155,4 +158,4 @@ PowerShell には仮想マシンを作成する機能はなく、バックアッ
 - [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
 - [仮想マシンの管理](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

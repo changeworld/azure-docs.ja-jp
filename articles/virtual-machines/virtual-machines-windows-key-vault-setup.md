@@ -3,7 +3,7 @@
 	description="Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -19,11 +19,15 @@
 
 # Azure Resource Manager の仮想マシンの Key Vault を設定する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル
 
 Azure Resource Manager スタックでは、Key Vault のリソース プロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。Key Vault の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」をご覧ください。
 
-Key Vault を Azure Resource Manager 仮想マシンと共に使用するには、Key Vault の *EnabledForDeployment* プロパティを True に設定する必要があります。この設定は、さまざまなクライアントで実行できます。
+>[AZURE.NOTE] 
+>
+>1. Key Vault を Azure Resource Manager 仮想マシンと共に使用するには、Key Vault の **EnabledForDeployment** プロパティを True に設定する必要があります。この設定は、さまざまなクライアントで実行できます。
+>
+>2. Key Vault は、仮想マシンと同じサブスクリプションと場所に作成する必要があります。
 
 ## PowerShell を使用して Key Vault を設定する
 PowerShell を使用して Key Vault を作成するには、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md#vault)」を参照してください。
@@ -37,7 +41,7 @@ PowerShell を使用して Key Vault を作成するには、「[Azure Key Vault
 	Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## CLI を使用して Key Vault を設定する
-コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成する方法については、「[CLI を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)」を参照してください。
+コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「[CLI を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)」を参照してください。
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。この処理には、次のコマンドを使用できます。
 
@@ -58,6 +62,6 @@ CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault �
       }
     }
 
-テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「[Create a key vault (Key Vault の作成)](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。
+テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「[Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

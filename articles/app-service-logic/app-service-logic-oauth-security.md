@@ -1,7 +1,7 @@
 <properties
 	pageTitle="SaaS コネクタと API Apps での OAUTH セキュリティ | Azure"
 	description="Azure App Service のコネクタと API Apps における OAUTH セキュリティのほか、マイクロサービス アーキテクチャ、SaaS について説明します。"
-	services="app-service\logic"
+	services="logic-apps"
 	documentationCenter=""
 	authors="MandiOhlinger"
 	manager="dwrede"
@@ -51,4 +51,4 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

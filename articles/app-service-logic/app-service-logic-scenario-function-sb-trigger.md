@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリのシナリオ: Azure Functions Service Bus トリガーの作成 | Microsoft Azure"
    description="Azure Functions を使用してロジック アプリの Service Bus トリガーを作成する"
-   services="app-service\logic,functions"
+   services="logic-apps,functions"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="dwrede"
@@ -66,4 +66,4 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 [1]: ./media/app-service-logic-scenario-function-sb-trigger/manualTrigger.PNG
 [2]: ./media/app-service-logic-scenario-function-sb-trigger/newQueueTriggerFunction.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

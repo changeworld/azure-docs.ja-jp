@@ -3,7 +3,7 @@
 	description="このトピックでは、データベースの復元またはフェールオーバー後にセキュリティを管理する際のセキュリティに関する考慮事項について説明します。"
 	services="sql-database"
 	documentationCenter="na"
-	authors="carlrabeler"
+	authors="CarlRabeler"
 	manager="jhubbard"
 	editor="monicar" />
 
@@ -95,4 +95,4 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 
 ## その他のリソース
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

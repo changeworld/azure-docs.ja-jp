@@ -21,12 +21,20 @@
 
 
 ## 手順の概要
-1. プライベート ネットワークのオンプレミス リソースのホスト名または IP アドレスを入力してハイブリッド接続を作成する。
+1. プライベート ネットワークのオンプレミス リソースの**ホスト名**または **FQDN** を入力してハイブリッド接続を作成する。
 2. ハイブリッド接続に Azure Web Apps または Azure Mobile Apps を関連付ける。
 3. オンプレミス リソースに Hybrid Connection Manager をインストールし、特定のハイブリッド接続に接続する。Azure ポータルでは 1 回のクリックでインストールと接続を実行できます。
 4. ハイブリッド接続を管理し、その接続キーを管理します。
 
 このトピックでは次の手順を示します。
+
+> [AZURE.IMPORTANT] ハイブリッド接続のエンドポイントを IP アドレスに設定することができます。IP アドレスを使用する場合、クライアントに応じて、オンプレミス リソースにアクセスできる場合とできない場合があります。ハイブリッド接続は、DNS 参照を行うクライアントに依存します。ほとんどの場合、__クライアント__はアプリケーション コードです。クライアントが DNS 参照を実行しない場合 (IP アドレスをドメイン名 (x.x.x.x) であるかのように解決しようとしない場合)、トラフィックはハイブリッド接続を介して送信されません。
+>
+> たとえば (擬似コードの場合)、オンプレミス ホストとして **10.4.5.6** を定義します。
+> 
+> **のシナリオは動作します。** `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> 
+> **のシナリオは動作しません。** `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
 
 
 ## <a name="CreateHybridConnection"></a>ハイブリッド接続の作成
@@ -47,8 +55,8 @@
 
 	プロパティ | 説明
 --- | ---
-名前 | ハイブリッド接続名は一意である必要があり、BizTalk サービスと同じ名前にすることはできません。任意の名前を入力できますが、目的を具体的に示した名前にしてください。例:<br/><br/>Payroll*SQLServer*<br/>SupplyList*SharepointServer*<br/>Customers*OracleServer*
-ホスト名 | オンプレミス リソースの完全修飾ホスト名、ホスト名のみ、または、IPv4 アドレスを入力します。例:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10
+名前 | ハイブリッド接続名は一意である必要があり、BizTalk サービスと同じ名前にすることはできません。任意の名前を入力できますが、目的を具体的に示した名前にしてください。例を次に示します。<br/><br/>Payroll*SQLServer*<br/>SupplyList*SharepointServer*<br/>Customers*OracleServer*
+ホスト名 | オンプレミス リソースの完全修飾ホスト名、ホスト名のみ、または、IPv4 アドレスを入力します。例を次に示します。<br/><br/>mySQLServer<br/>*mySQLServer*.*Domain*.corp.*yourCompany*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*yourCompany*.com<br/>10.100.10.10<br/><br/>IPv4 アドレスを使用する場合は、クライアントまたはアプリケーション コードが IP アドレスを解決できない可能性があることに注意してください。このトピックの上部にある重要な注意事項を参照してください。
 ポート | オンプレミス リソースのポート番号を入力します。たとえば、Web Appsを使用している場合、ポート 80 またはポート 443 を入力します。SQL Server を使用している場合、ポート 1433 を入力します。
 
 5. チェック マークをオンにしてセットアップを完了します。
@@ -152,4 +160,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

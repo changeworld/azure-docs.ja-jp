@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="sedusch"/>
 
 # Azure Virtual Machines (VMs) への SAP NetWeaver の導入 – 計画/導入ガイド
@@ -641,7 +641,7 @@ Azure での名前解決と IP 解決の構成については、さまざまな�
 
 Azure Virtual Network を作成することで、Azure の DHCP 機能によって割り当てられたプライベート IP アドレスのアドレス範囲を定義できます。クロスプレミス シナリオでは、定義されている IP アドレス範囲が Azure によって DHCP を使用して割り当てられます。ただし、ドメイン名解決は (VM がオンプレミス ドメインの一部であると想定して) オンプレミスで実行されるため、複数の Azure Cloud Services にまたがってアドレスを解決できます。
 
-[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/> を参照してください。)
+[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/> を参照してください。
 
 Azure 内のすべての仮想マシンは、Virtual Network に接続される必要があります。
 
@@ -781,8 +781,8 @@ Azure PowerShell コマンドレットをローカルのデスクトップ/ラ�
 
 VM をデプロイしたり、VM のデプロイメント内でカスタム ステップを作成するための強力なツールとして、PowerShell (PS) はお客様から高く評価されています。Azure で SAP インスタンスを実行しているすべてのお客様が、PS コマンドレットを使用して Azure ポータルの管理機能を補完したり、Azure 内のデプロイメントを管理するための専用ツールとして PS コマンドレットを使用しています。Azure 用のコマンドレットでは、2,000 を超える Windows 関連コマンドレットと同じ命名規則が使用されているので、これらのコマンドレットを使用している Windows 管理者であれば、どなたでも簡単に Azure 用のコマンドレットを使用できます。
 
-次の例を参照してください:
- <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+次の例を参照してください: 
+<http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 [comment]: <> (MShermannd TODO 新しい CLI コマンドについてテスト時に説明してください) 
 Azure Monitoring Extension for SAP のデプロイメント (このドキュメントの「[Azure Monitoring Solution for SAP][planning-guide-9.1]」の章を参照してください) は、PowerShell または CLI を通じてのみ実行可能です。したがって、Azure で SAP NetWeaver システムをデプロイまたは管理する場合には、PowerShell または CLI を設定し、構成することが必須となります。
@@ -1160,7 +1160,7 @@ ___
 
 OS と、推奨する SAP のバイナリおよびデータベース (基本 VM) とを含む VHD は、上限が 127 GB ではなくなったことに留意してください。現在は 1 TB が最大サイズです。SAP バッチ ジョブのログを含め、必要なすべてのファイルを保持するのに十分な領域があります。
 
-その他のヒントと詳細情報については (特に DBMS VM について)、[DBMS Deployment Guid][dbms-guide] (DBMS デプロイメント ガイド) を参照してください。
+その他のヒントと詳細情報については (特に DBMS VM について)、[DBMS Deployment Guid][dbms-guide] \(DBMS デプロイメント ガイド) を参照してください。
 
 
 #### ディスクの扱い
@@ -1602,8 +1602,8 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 方法:
 
-* シナリオでは、オンプレミスの QAS システムを CTS ドメイン コントローラーとして使用します。トランザクション STMS を呼び出します。[TMS] ダイアログ ボックスが表示されます。[Configure Transport Domain] (移送ドメインの構成) ダイアログ ボックスが表示されます。(このダイアログ ボックスは、移送ドメインをまだ構成していない場合にのみ表示されます。)
-* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] (ABAP 接続) -> [TMSADM@E61.DOMAIN\_E61] -> [Details] (詳細) -> [Utilities(M)] (ユーティリティ(M)) -> [Authorization Test] (承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
+* シナリオでは、オンプレミスの QAS システムを CTS ドメイン コントローラーとして使用します。トランザクション STMS を呼び出します。[TMS] ダイアログ ボックスが表示されます。[Configure Transport Domain] \(移送ドメインの構成) ダイアログ ボックスが表示されます。(このダイアログ ボックスは、移送ドメインをまだ構成していない場合にのみ表示されます。)
+* 自動作成されたユーザー TMSADM が承認されていることを確認します ([SM59] -> [ABAP Connection] \(ABAP 接続) -> [TMSADM@E61.DOMAIN\_E61] -> [Details] \(詳細) -> [Utilities(M)] \(ユーティリティ(M)) -> [Authorization Test] \(承認テスト))。トランザクション STMS の初期画面に、次に示すように、この SAP システムが現在移送ドメインのコントローラーとして機能していることが示されます。
  
 ![Initial screen of transaction STMS on the domain controller (ドメイン コントローラー上のトランザクション STMS の初期画面)][planning-guide-figure-2300]
 
@@ -1611,8 +1611,8 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 移送ドメインに SAP システムを含めるシーケンスは次のようになります。
 
-* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] (その他の構成) を選択し、[Include System in Domain] (ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
-* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] (システムの概要) と [Approve] (承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
+* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。ダイアログ ボックスから [Other Configuration] \(その他の構成) を選択し、[Include System in Domain] \(ドメインにシステムを含める) で続行します。ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](http://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。移送ドメインに含められるのをシステムが待機します。
+* 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。待機中のシステムの [System Overview] \(システムの概要) と [Approve] \(承認) を選択します。次に、プロンプトを確認すると、構成が配布されます。
 
 これで、SAP システムに、移送ドメイン内の他のすべての SAP システムに関する必要な情報が含まれました。同時に、新しい SAP システムのアドレス データが他のすべての SAP システムに送信され、SAP システムが、移送コントロール プログラムの移送プロファイルに入力されました。RFC と、ドメインの移送ディレクトリへのアクセスが起動するかどうかを確認します。
 
@@ -1622,7 +1622,7 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 * オンプレミスの STMS が正しく構成されていることを確認します。
 * 移送ドメイン コントローラーのホスト名を Azure 上の仮想マシンで解決できること、またその逆で解決できることを確認します。
-* トランザクション STMS -> [Other Configuration] (その他の構成) -> [Include System in Domain] (ドメインにシステムを含める) を呼び出します。
+* トランザクション STMS -> [Other Configuration] \(その他の構成) -> [Include System in Domain] \(ドメインにシステムを含める) を呼び出します。
 * オンプレミスの TMS システムの接続を確認します。
 * 通常どおり、移送ルート、グループ、階層を構成します。
 
@@ -1932,5 +1932,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。
 
-<!---HONumber=AcomDC_0727_2016-->
-
+<!---HONumber=AcomDC_0803_2016-->

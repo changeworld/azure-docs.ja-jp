@@ -67,7 +67,6 @@ Azure クラシック ポータルを使用すると、Machine Learning ワー�
 [構成] タブで次の操作を実行できます。
 
 - [拒否] をクリックして、Machine Learning ワークスペースへのアクセスを中断します。ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。アクセスを復元するには、[許可] をクリックします。
-- 他の Microsoft アカウントを指定して、ワークスペースの所有者を変更します。
 
 Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、[**ダッシュ ボード**] タブで [**ML Studio にサインイン**] をクリックします ([**ML Studio にサインイン**] については、上記注を参照してください)。Machine Learning Studio でワークスペースが開きます。ここで、**[設定]** タブの **[ユーザー]** をクリックします。**[INVITE MORE USERS]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
 
@@ -97,4 +96,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 [consume]: machine-learning-consume-web-services.md
 [marketplace]: machine-learning-publish-web-service-to-azure-marketplace.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

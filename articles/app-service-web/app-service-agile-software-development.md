@@ -21,7 +21,7 @@
 
 このチュートリアルでは、[アジャイル ソフトウェア開発](https://en.wikipedia.org/wiki/Agile_software_development)をサポートする方法で [Azure App Service](/services/app-service/) を使用して拡張性の高い複雑なアプリケーションを開発する方法について説明します。ここでは、[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)方法を理解していることを前提とします。
 
-技術的な処理の限界によって、アジャイル手法を用いた実装の成功が妨げられることはよくあることです。Azure App Service は[継続的パブリッシング](web-sites-publish-source-control.md)、[ステージング環境](web-sites-staged-publishing.md) (スロット)、[監視](web-sites-monitor.md)などの機能を持っており、これらの機能を [Azure リソース マネージャー](../resource-group-overview.md)のデプロイと連携させて賢く統合管理すると、アジャイル ソフトウェア開発に携わる開発者にとって非常に優れたソリューションの一部になることができます。
+技術的な処理の限界によって、アジャイル手法を用いた実装の成功が妨げられることはよくあることです。Azure App Service は[継続的パブリッシング](app-service-continuous-deployment.md)、[ステージング環境](web-sites-staged-publishing.md) (スロット)、[監視](web-sites-monitor.md)などの機能を持っており、これらの機能を [Azure リソース マネージャー](../resource-group-overview.md)のデプロイと連携させて賢く統合管理すると、アジャイル ソフトウェア開発に携わる開発者にとって非常に優れたソリューションの一部になることができます。
 
 次の表に、アジャイル開発に関連するいくつかの要件と、Azure サービスが各要件にどのように対応できるかを示します。
 
@@ -77,7 +77,7 @@
 
 >[AZURE.NOTE] このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](web-sites-publish-source-control.md#Step7)します。この操作を行うのは 1 回だけです。
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。この操作を行うのは 1 回だけです。
 
 一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオには、開発、テスト、および運用環境にデプロイするために使用するテンプレートがあります。このセクションで、それを設定します。
 
@@ -282,4 +282,4 @@ Git Shell で、次のコマンドを実行します。
 -	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
 -	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

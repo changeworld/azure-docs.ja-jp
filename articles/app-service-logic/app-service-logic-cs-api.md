@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリでの C# API アプリの C# 式の実行 | Microsoft Azure"
    description="C# API アプリまたはコネクタ"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net"
    authors="jeffhollan"
    manager="dwrede"
@@ -112,4 +112,4 @@ return YammerAttachments;
 <!--Links -->
 [Creating a Logic App]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/18/2016" 
+	ms.date="07/21/2016" 
 	ms.author="arramac"/>
 
 # Azure DocumentDB のパフォーマンスとスケールのテスト
@@ -25,27 +25,15 @@ DocumentDB のワークロードに対するパフォーマンス テストを�
 この記事を読むと、次の質問に回答できるようになります。
 
 - Azure DocumentDB のパフォーマンス テストに使用するサンプル .NET クライアント アプリケーションはどこから入手すればよいか。
-- Azure DocumentDB に対する要求のエンド ツー エンドのパフォーマンスを大きく左右する要因は何か。
 - 開発中のクライアント アプリケーションで Azure DocumentDB から高水準のスループットを引き出すにはどうすればよいか。
 
 最初に、[DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードしてコードを入手してください。
 
 > [AZURE.NOTE] このアプリケーションの目的は、クライアント マシンの数が少ない場合に DocumentDB のパフォーマンスを高めるためのベスト プラクティスを示すことです。サービスのピーク時容量を示すためのものではありません。ピーク キャパシティについては、無制限に拡張することが可能です。
 
-## クライアントの重要な構成オプション
-DocumentDB は、高速で柔軟性に優れた分散データベースです。シームレスな拡張性を備えると共に、必要なレイテンシとスループットを確実に満たすことができます。DocumentDB によってデータベース層を拡張するうえで、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。スケールアップとスケールダウンは、API や SDK のメソッドを 1 回呼び出すだけで行うことができます。ただし大規模にテストを行うときは、DocumentDB をネットワーク越しに呼び出すことになるので注意が必要です。DocumentDB のパフォーマンス テスト用にスタンドアロンのクライアント アプリケーションを作成する場合は、パフォーマンスの測定値から適宜ネットワーク待ち時間を差し引くように構成する必要があります。
+DocumentDB のパフォーマンスを向上させるためのクライアント側の構成オプションについては、[DocumentDB のパフォーマンスに関するヒント](documentdb-performance-tips.md)に関する記事を参照してください。
 
-DocumentDB から最高のパフォーマンスをエンド ツー エンドで引き出すためには、次のクライアント構成オプションを検討してください。
-
-- **スレッド/タスクの数を増やす**: DocumentDB の呼び出しはネットワーク越しに行われるため、クライアント アプリケーションにおける要求間の待ち時間をできるだけ小さくするために、要求の並列処理の次数を変える必要がある場合があります。たとえば .NET の[タスク並列ライブラリ](https://msdn.microsoft.com//library/dd460717.aspx)を使用している場合、DocumentDB との間で行う読み取りタスクまたは書き込みタスクを 100 件単位で作成してください。
-- **同じ Azure リージョン内でテストする**: 可能であればテストは、同じ Azure リージョンにデプロイされている仮想マシンまたは App Service から行います。大ざっぱな比較ですが、DocumentDB の呼び出しは、同じリージョン内であれば 1 ～ 2 ミリ秒以内で完了するのに対し、米国西部と米国東部との間では待ち時間が 50 ミリ秒を超えます。
-- **ホストあたりの System.Net MaxConnections を増やす**: DocumentDB の要求は、特に指定しない限り HTTPS/REST を介して行われるため、ホスト名または IP アドレスごとの既定の接続数の上限がボトルネックになります。場合によっては、DocumentDB に対する複数の同時接続をクライアント ライブラリが活かすためには、この値を 100 ～ 1000 に増やす必要があります。.NET の場合、[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) がこの設定に該当します。
-- **サーバー側 GC を有効にする**: 状況によってはガベージ コレクションの頻度を減らした方がよい場合もあります。.NET の場合、[gcServer](https://msdn.microsoft.com/library/ms229357.aspx) を true に設定してください。
-- **直接接続を使用する**: パフォーマンスを最適化するために[直接接続](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx)を使用します。
-- **RetryAfter 間隔にバックオフを適用する**: パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。スロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。これにより、再試行までの待ち時間を最小限に抑えることができます。[RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページをご覧ください。
-- **クライアントワークロードをスケールアウトする**: 高スループット レベル (毎秒要求ユニット数 50,000 件超) でテストを行っている場合、コンピューターの CPU 使用率またはネットワーク使用率が上限に達してクライアント アプリケーションがボトルネックになる可能性があります。この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ DocumentDB アカウントで対応できます。
-
-## 作業開始
+## パフォーマンス テスト アプリケーションの実行
 まずは以下の手順に従って、.NET サンプルをコンパイルして実行してみましょう。ソース コードに目を通して、同様の構成を独自のクライアント アプリケーションに実装することもできます。
 
 **手順 1:** [DocumentDB Performance Testing サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)からプロジェクトをダウンロードするか、Github リポジトリをフォークします。
@@ -104,14 +92,15 @@ DocumentDB から最高のパフォーマンスをエンド ツー エンドで�
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](documentdb-indexing-policies.md)と[一貫性レベル](documentdb-consistency-levels.md)を試しながら、スループットや待機時間への影響を把握することができます。ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
-## 概要
-この記事では、.NET のコンソール アプリを使用して DocumentDB のパフォーマンスとスケールをテストする方法を紹介すると共に、Azure DocumentDB のパフォーマンスを最大限に引き出すための重要な構成オプションを見てきました。DocumentDB の操作について詳しくは、以下のリンクを参照してください。
+## 次のステップ
+この記事では、.NET コンソール アプリを使用して DocumentDB でパフォーマンスとスケールのテストを実行する方法を説明しました。DocumentDB の操作について詳しくは、以下のリンクを参照してください。
 
 * [DocumentDB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [DocumentDB のパフォーマンスを向上させるクライアント構成オプション](documentdb-performance-tips.md)
 * [DocumentDB でのサーバー側のパーティション分割](documentdb-partition-data.md)
 * [DocumentDB のコレクションとパフォーマンス レベル](documentdb-performance-levels.md)
 * [MSDN の DocumentDB .NET SDK に関するドキュメント](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET のサンプル](https://github.com/Azure/azure-documentdb-net)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

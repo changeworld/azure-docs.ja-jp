@@ -1,6 +1,6 @@
 <properties
-	pageTitle="CDN - ファイルの圧縮のトラブルシューティング"
-	description="CDN ファイルの圧縮に関する問題のトラブルシューティングを行います。"
+	pageTitle="Azure CDN におけるファイル圧縮のトラブルシューティング | Microsoft Azure"
+	description="Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。"
 	services="cdn"
 	documentationCenter=""
 	authors="camsoper"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # CDN ファイルの圧縮のトラブルシューティング
@@ -99,4 +99,4 @@
 - **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](https://msdn.microsoft.com/library/ms525390.aspx)
 - **IIS 7 以降**: [**サーバーの構成で noCompressionForHttp10** と **noCompressionForProxies** をどちらも False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

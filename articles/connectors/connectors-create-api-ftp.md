@@ -1,7 +1,7 @@
 <properties
 pageTitle="ロジック アプリで FTP コネクタを使用する方法 | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。FTP サーバーに接続して、ファイルを管理します。FTP サーバーのファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -104,7 +104,7 @@ FTP には、次のアクションがあります。
 |[フォルダーを抽出する](connectors-create-api-ftp.md#extract-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
 ### アクションの詳細
 
-ここでは、このコネクタのアクションとトリガー、および応答について詳しく説明します。
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
 
 
 
@@ -307,7 +307,7 @@ BlobMetadata
 
 
 
-### [When a file is added or modified (ファイルが追加または変更されたとき)]
+### When a file is added or modified (ファイルの追加または変更時)
 この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。
 
 
@@ -438,4 +438,4 @@ BlobMetadata
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

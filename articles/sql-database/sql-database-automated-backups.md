@@ -3,7 +3,7 @@
    description="SQL Database 組み込みバックアップについて説明します。この機能を使用すると、Azure SQL Database を以前の時点にロールバックしたり、データベースを地理的リージョン内の新しいデータベースにコピーしたりできます (最大 35 日)。"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor="monicar"/>
 
@@ -62,4 +62,4 @@ Basic、Standard、Premium のすべてのデータベースは、自動バッ�
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関するページをご覧ください
 - ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

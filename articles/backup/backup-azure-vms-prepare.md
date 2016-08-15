@@ -43,7 +43,7 @@ Azure 仮想マシン (VM) をバックアップするには、事前に 3 つ�
 - リージョン間のバックアップと復元はサポートされません。
 - Azure Backup サービスを使用した仮想マシンのバックアップは、Azure のすべてのパブリック リージョンでサポートされます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 - オペレーティング システムのバージョンの選択でサポートされるのは、Azure Backup サービスを使用した仮想マシンのバックアップのみです。
-  - **Linux**: [Azure で動作保証済みのディストリビューションの一覧](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をご確認ください。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作する限り使用できます。
+  - **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をサポートしています (Core OS Linux を除く)。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
   - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
 - マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
 - 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。UI の復元ワークフローを使用して作成する VM には、復元操作の完了後、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
@@ -131,7 +131,7 @@ HTTP プロキシを使用してパブリック インターネットとの通�
      ```
      psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
      ```
-    Internet Explorer のウィンドウが開きます。
+     Internet Explorer のウィンドウが開きます。
 3. [ツール]、[インターネット オプション]、[接続]、[LAN の設定] の順に進みます。
 4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。
 5. Internet Explorer を閉じます。
@@ -238,4 +238,4 @@ VM が実行されている場合、バックアップ拡張機能がインス�
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

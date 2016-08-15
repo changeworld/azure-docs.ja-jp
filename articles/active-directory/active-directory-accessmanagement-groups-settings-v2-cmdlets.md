@@ -219,10 +219,8 @@ Azure Ad PowerShell コマンドレットは OData クエリの標準を実装�
 
 Azure Active Directory PowerShell のその他のドキュメントについては、[Azure Active Directory コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=808260)を参照してください。
 
-「[Rob's Groups Blog (Rob のグループ ブログ)](http://robsgroupsblog.com/blog/configuring-settings-for-office-365-groups-in-azure-ad)」では、マイクロソフトのプログラム マネージャーである Rob de Jong がさらに詳しく説明しています。
-
-* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
+* [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->
