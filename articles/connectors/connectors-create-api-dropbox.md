@@ -39,7 +39,7 @@ Dropbox に接続してファイルを管理します。Dropbox のファイル�
 
 1. Logic Apps デザイナーの検索ボックスに「*dropbox*」と入力し、**[Dropbox - When a file is created (Dropbox - ファイルの作成時)]** トリガーを選択します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)
   
-2. ファイルの作成をトラッキングするフォルダーを選択します。[...] (赤で囲まれている部分) を選択し、トリガーの入力用に選択するフォルダーを参照します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
+2. ファイルの作成をトラッキングするフォルダーを選択します。[...] \(赤で囲まれている部分) を選択し、トリガーの入力用に選択するフォルダーを参照します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
 
 ## Dropbox アクションを使用する
 

@@ -19,7 +19,7 @@
 
 # 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] [Active Geo-Replication]すべてのサービス階層のデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
+>[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 ## 障害復旧の認証要件の概要
 

@@ -169,7 +169,7 @@ AWS DSC Toolkit を使用して Azure Automation DSC による構成管理のた
 
 	*    Automation アカウントの登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
 
-	PowerShell DSC Local Configuration Manager の既定値がユース ケースに**適して****いない**、または Azure Automation DSC にのみデータを送信するマシンをオンボードするものの、Azure Automation DSC から構成および PowerShell のモジュールを取得しない場合は、手順 3 ～ 6 に従います。それ以外の場合は、手順 6 に直接進みます。
+	PowerShell DSC Local Configuration Manager の既定値がユース ケースに**適して** **いない**、または Azure Automation DSC にのみデータを送信するマシンをオンボードするものの、Azure Automation DSC から構成および PowerShell のモジュールを取得しない場合は、手順 3 ～ 6 に従います。それ以外の場合は、手順 6 に直接進みます。
 
 3.	以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」セクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
 4.  以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。

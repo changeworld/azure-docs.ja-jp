@@ -80,7 +80,7 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-[Azure App Service]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-changes-existing-services/
+[Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
 [Azure ポータル]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/ja-JP/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

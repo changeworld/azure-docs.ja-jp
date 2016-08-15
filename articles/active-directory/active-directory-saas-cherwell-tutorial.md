@@ -106,7 +106,8 @@
 
 ##ユーザー プロビジョニングの構成
 
-Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。Cherwell の場合、Cherwell サポート チームがユーザー アカウントを作成する必要があります。
+Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。  
+Cherwell の場合、Cherwell サポート チームがユーザー アカウントを作成する必要があります。
 
 >[AZURE.NOTE] Cherwell から提供されている他の Cherwell ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 

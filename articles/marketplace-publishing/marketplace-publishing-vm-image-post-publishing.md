@@ -24,13 +24,13 @@
 
 - **プラン識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [VM イメージ] タブ -> [Offer Identifier (プラン識別子)]
 - **SKU 識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [SKUs (SKU)] タブ -> [Add a SKU (SKU を追加)]
-- **Publisher Namespace:** [発行ポータル] -> [Virtual Machines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 会社を登録する」にあります) -> [Publisher Namespace] -> [名前空間]
+- **Publisher Namespace:** [発行ポータル] -> [Virtual Machines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] \(「手順 2 会社を登録する」にあります) -> [Publisher Namespace] -> [名前空間]
 
 一度 [Azure Marketplace](http://azure.microsoft.com/marketplace) にプラン/SKU が表示されたら、以下のフィールドは変更できません。
 
 - **プラン識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [VM イメージ] タブ -> [Offer Identifier (プラン識別子)]
 - **SKU 識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [SKUs (SKU)] タブ -> [Add a SKU (SKU を追加)]
-- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
+- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] \(「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
 - **ポート:** [発行ポータル] -> [Virtual Mashines] -> [プランの選択] -> [VM イメージ] タブ -> [ポートを開く]
 - **表示されている SKU の価格の変更**
 - **表示されている SKU の課金モデルの変更**

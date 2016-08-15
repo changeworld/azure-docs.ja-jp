@@ -34,7 +34,7 @@ Bottle Web フレームワークを使用して Web アプリを作成します 
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools 2.2 for Visual Studio][] (PTVS) - 注: これはオプションです
+- [Python Tools 2.2 for Visual Studio][] \(PTVS) - 注: これはオプションです
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
