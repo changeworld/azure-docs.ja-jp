@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server の概要
@@ -68,7 +68,7 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 
 
-Azure Multi-Factor Authentication Server の要件|説明|
+Azure Multi-Factor Authentication Server の要件|Description|
 :------------- | :------------- | 
 ハードウェア|<li>ハード ディスク空き容量 200 MB</li><li>x32 または x64 対応のプロセッサ</li><li>RAM 1 GB 以上</li>
 ソフトウェア|<li>ホストがサーバー OS の場合は Windows Server 2008 以降</li><li>ホストがクライアント OS の場合は Windows 7 以降</li><li>Microsoft .NET 4.0 Framework</li><li>ユーザー ポータルまたは Web サービス SDK をインストールしている場合は IIS 7.0 以降</li>
@@ -159,10 +159,10 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 - 電子メール アドレス - (省略可能)
 - 電話番号 - 音声通話または SMS 認証を行う場合
 - デバイス トークン - モバイル アプリ認証を行う場合
-- 認証モード 
-- 認証の結果 
-- MFA サーバー名 
-- MFA サーバー IP 
+- 認証モード
+- 認証の結果
+- MFA サーバー名
+- MFA サーバー IP
 - クライアント IP - 使用可能な場合
 
 
@@ -173,7 +173,7 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 ## Azure Multi-Factor Authentication Server の高度な構成
 高度な設定や構成に関する追加情報は、次の表に記載されています。
 
-メソッド|説明
+メソッド|Description
 :------------- | :------------- | 
 [ユーザー ポータル](multi-factor-authentication-get-started-portal.md)| デプロイメントやユーザーのセルフサービスなど、ユーザー ポータルのセットアップと構成に関する情報です。
 [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)|AD FS による Azure Multi-Factor Authentication の設定に関する情報です。
@@ -185,4 +185,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

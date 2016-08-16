@@ -58,7 +58,7 @@ Python と Git は既にインストールされていると思いますが、Py
 
 1. Azure ポータルの画面左下にある **[新規]** ボタンをクリックします。
 3. 検索ボックスに、「python」と入力します。
-4. 検索結果で **[Django]** を選択し、**[作成]** をクリックします。
+4. 検索結果で (PTVS によって発行された) **[Django]** を選択し、**[作成]** をクリックします。
 5. 新しい App Service プランやそのリソース グループ名の作成など、新しい Django アプリを構成します。**[作成]** をクリックします。
 6. 「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。
 
@@ -516,4 +516,4 @@ SQL Database と MySQL の詳細については、次のリンクをご覧くだ
 [Python Tools for Visual Studio のドキュメント]: http://aka.ms/ptvsdocs
 [Django のドキュメント]: https://www.djangoproject.com/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

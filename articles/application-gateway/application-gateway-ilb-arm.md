@@ -3,7 +3,7 @@
    description="このページでは、Azure リソース マネージャーで内部ロード バランサー (ILB) を使用して、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.author="gwallace"/>
 
 
 # Azure リソース マネージャーを使用した内部ロード バランサー (ILB) での Application Gateway の作成
@@ -51,16 +51,16 @@ Azure クラシックと Azure リソース マネージャーの使用方法の
 Application Gateway を作成するために必要な手順を次に示します。
 
 1. リソース マネージャーのリソース グループの作成
-2. Application Gateway の仮想ネットワークとサブネットの作成
+2. アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 3. Application Gateway 構成オブジェクトの作成
-4. Application Gateway リソースの作成
+4. アプリケーション ゲートウェイのリソースの作成
 
 
 ## リソース マネージャーのリソース グループの作成
 
 Azure リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
-### 手順 1.
+### 手順 1
 
 		Login-AzureRmAccount
 
@@ -90,11 +90,11 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 上記の例では、"appgw-rg" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
-## Application Gateway の仮想ネットワークとサブネットの作成
+## アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
 次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。
 
-### 手順 1.
+### 手順 1
 
 	$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
@@ -114,14 +114,14 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ## Application Gateway 構成オブジェクトの作成
 
-### 手順 1.
+### 手順 1
 
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 "gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
 
 
-### 手順 2
+### 手順 2.
 
 	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
@@ -167,7 +167,7 @@ Application Gateway のインスタンスのサイズを構成します。
 
 ## New-AzureApplicationGateway を使用した Application Gateway の作成
 
-前の手順の構成項目をすべて使用して、Application Gateway を作成します。この例では、Application Gateway は "appgwtest" という名前です。
+前の手順の構成項目をすべて使用して、Application Gateway を作成します。この例では、アプリケーション ゲートウェイは "appgwtest" という名前です。
 
 
 	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
@@ -184,7 +184,7 @@ Application Gateway を削除するには、次の手順を順番に実行する
 3. **Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイが削除されたことを確認します。
 
 
-### 手順 1.
+### 手順 1
 
 Application Gateway オブジェクトを取得し、変数 "$getgw" に関連付けます。
 
@@ -237,4 +237,4 @@ ILB と共に使用するようにアプリケーション ゲートウェイを
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

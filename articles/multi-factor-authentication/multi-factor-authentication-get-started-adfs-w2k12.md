@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 
@@ -85,4 +85,4 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 
 アダプターを登録するために、\\Program Files\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを PowerShell で実行します。アダプターが WindowsAzureMultiFactorAuthentication として登録されます。登録を有効にするには、AD FS サービスを再起動する必要があります。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

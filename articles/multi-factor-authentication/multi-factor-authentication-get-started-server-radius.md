@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -43,21 +43,21 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 9. RADIUS クライアントを追加する場合は、手順 4. ～ 8. を繰り返します。
 10. [ターゲット] タブをクリックします。
 11. Azure Multi-Factor Authentication Server を Active Directory 環境のドメインに参加しているサーバーにインストールする場合は、[Windows ドメイン] を選択します。
-12. ユーザーを LDAP ディレクトリに対して認証する必要がある場合は、[LDAP バインド] を選択します。LDAP バインドを使用する場合は、[ディレクトリの統合] アイコンをクリックし、[設定] タブで LDAP 構成を編集して、Server を指定のディレクトリにバインドする必要があります。LDAP を構成する手順については、LDAP プロキシの構成ガイドに記載されています。 
+12. ユーザーを LDAP ディレクトリに対して認証する必要がある場合は、[LDAP バインド] を選択します。LDAP バインドを使用する場合は、[ディレクトリの統合] アイコンをクリックし、[設定] タブで LDAP 構成を編集して、Server を指定のディレクトリにバインドする必要があります。LDAP を構成する手順については、LDAP プロキシの構成ガイドに記載されています。
 13. 別の RADIUS サーバーに対してユーザーを認証する必要がある場合は、[RADIUS サーバー] を選択します。
 14. [追加...] ボタンをクリックして、Server が RADIUS 要求を送信するサーバーを構成します。
 15. [RADIUS サーバーの追加] ダイアログ ボックスで、RADIUS サーバーの IP アドレスと共有シークレットを入力します。共有シークレットは、Azure Multi-Factor Authentication Server と RADIUS サーバーの両方で同じである必要があります。RADIUS サーバーで異なるポートが使用されている場合は、認証ポートとアカウンティング ポートを変更します。
-16. [OK] ボタンをクリックします。 
+16. [OK] ボタンをクリックします。
 17. Azure Multi-Factor Authentication Server から受け取ったアクセス要求を処理できるように、Azure Multi-Factor Authentication Server を RADIUS クライアントとしてその他の RADIUS サーバーに追加する必要があります。Azure Multi-Factor Authentication Server で構成されている同じ共有シークレットを使用する必要があります。
-18. この手順を繰り返して RADIUS サーバーを追加し、[上へ移動] と [下へ移動] ボタンを使用して Server が呼び出すサーバーの順序を構成できます。これで Azure Multi-Factor Authentication Server の構成は完了です。Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。   
+18. この手順を繰り返して RADIUS サーバーを追加し、[上へ移動] と [下へ移動] ボタンを使用して Server が呼び出すサーバーの順序を構成できます。これで Azure Multi-Factor Authentication Server の構成は完了です。Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。
 
 
 ## RADIUS クライアントの構成
 
 RADIUS クライアントを構成するには、ガイドラインに従います。
 
-- RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。 
-- 前に構成した同じ共有シークレットを使用します。 
+- RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。
+- 前に構成した同じ共有シークレットを使用します。
 - RADIUS のタイムアウトを 30 ～ 60 秒に設定し、ユーザーの資格情報を検証する、多要素認証を実行する、応答を受信する、および RADIUS アクセス要求に対して応答する時間を確保します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

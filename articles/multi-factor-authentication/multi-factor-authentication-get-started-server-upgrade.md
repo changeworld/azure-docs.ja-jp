@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
@@ -69,4 +69,4 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

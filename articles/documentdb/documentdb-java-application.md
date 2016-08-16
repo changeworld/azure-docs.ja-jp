@@ -4,7 +4,7 @@
 	keywords="アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, documentdb, azure, Microsoft azure"
 	services="documentdb"
 	documentationCenter="java"
-	authors="aliuy"
+	authors="AndrewHoh"
 	manager="jhubbard"
 	editor="mimig"/>
 
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-services"
 	ms.date="03/10/2016"
-	ms.author="andrl"/>
+	ms.author="anhoh"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
 
@@ -784,4 +784,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0810_2016-->

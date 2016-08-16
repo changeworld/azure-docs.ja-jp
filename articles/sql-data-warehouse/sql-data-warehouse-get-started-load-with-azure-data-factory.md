@@ -13,10 +13,10 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/29/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
-# Azure Data Factory を使用してデータを読み込む
+# Azure Data Factory を使用してデータを読み込む 
 
 > [AZURE.SELECTOR]
 - [Data Factory][]
@@ -240,4 +240,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Azure ポータル]: https://portal.azure.com
 [サンプル データをダウンロードします]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

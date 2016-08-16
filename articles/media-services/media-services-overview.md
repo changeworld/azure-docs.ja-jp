@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="hero-article" 
-	ms.date="06/22/2016"
+	ms.date="08/07/2016"
 	ms.author="juliako;anilmur"/>
 
 #Azure Media Services の概要と一般的なシナリオ
@@ -60,7 +60,7 @@ Azure Media Services を使用するには、次が必要です。
 
 Azure Media Services の概念については、「[概念](media-services-concepts.md)」を参照してください。
 
-Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、[Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AME タスクについて説明しています。AMSE ツールは Windows ツールです。このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
+Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、[Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AMS タスクについて説明しています。AMSE ツールは Windows ツールです。このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
 
 ##<a id="vod_scenarios"></a>Azure Media Services によるメディアのオンデマンド配信: 共通のシナリオとタスク
 
@@ -220,4 +220,4 @@ Media Services では、Azure CDN との統合をサポートしています。A
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

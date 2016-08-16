@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/15/2016"
+   ms.date="06/16/2016"
    ms.author="ryanwi"/>
 
 # 開発環境を準備する
@@ -28,7 +28,7 @@
 - Windows Server 2012 R2
 - Windows 10
 
->[AZURE.NOTE] Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。Service Fabric PowerShell コマンドレットを使うには、PowerShell 3.0 以降をインストールする必要があります。Microsoft Download Center から [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
+>[AZURE.NOTE] Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。Service Fabric PowerShell のコマンドレットには PowerShell 3.0 以降が必要です。Microsoft Download Center から [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
 
 ## ランタイム、SDK、およびツールのインストール
 
@@ -48,7 +48,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
 ## 次のステップ
-開発環境の設定が完了しました。これで、アプリのビルドと実行を開始できます。
+開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
 - [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
 - [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
@@ -64,4 +64,4 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "Core SDK WebPI link"
 [powershell5-download]: https://www.microsoft.com/ja-JP/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="ARM テンプレートを使用した仮想ネットワークの作成方法の説明 | リソース マネージャー"
    services="virtual-network"
    documentationCenter=""
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"/>
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos"/>
+   ms.author="jdial"/>
 
 # ARM テンプレートを使用した仮想ネットワークの作成
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]このドキュメントでは、リソース マネージャーのデプロイ モデルを使用して VNet を作成する方法を説明します。[クラシック デプロイメント モデルで仮想ネットワークを作成](virtual-networks-create-vnet-classic-pportal.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] このドキュメントでは、リソース マネージャーのデプロイ モデルを使用して VNet を作成する方法を説明します。[クラシック デプロイメント モデルで仮想ネットワークを作成](virtual-networks-create-vnet-classic-pportal.md)することもできます。
 
 GitHub から既存の ARM テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、および Azure CLI からデプロイする方法を説明します。
 
@@ -39,4 +39,4 @@ GitHub から直接 ARM テンプレートをデプロイするだけで、変�
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-template-click-include](../../includes/virtual-networks-create-vnet-arm-template-click-include.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

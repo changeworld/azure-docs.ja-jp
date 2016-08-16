@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="07/05/2016"
+	ms.date="08/10/2016"
 	ms.author="carlrab"/>
 
 # SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します
@@ -92,4 +92,4 @@ SQL Database のエディションを選んだら、データベースのパフ�
 
 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

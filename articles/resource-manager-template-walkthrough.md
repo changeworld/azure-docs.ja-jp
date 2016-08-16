@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="08/04/2016"
    ms.author="navale;tomfitz"/>
    
 # Resource Manager テンプレートのチュートリアル
@@ -579,4 +579,4 @@ variables セクションでは、テンプレート内の複数の場所で使�
 - テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 - テンプレートをデプロイする方法の詳細については、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -105,7 +105,7 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 電卓 API を構成するには、次の手順を実行します。
 
-1. **[URL から]** をクリックし、**[仕様ドキュメント URL]** テキスト ボックスに「**http://calcapi.cloudapp.net/calcapi.json**」と入力し、**[Swagger]** ラジオ ボタンをクリックします。
+1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json****」と入力し、[Swagger] ラジオ ボタンをクリックします。
 2. **[Web API URL サフィックス]** テキスト ボックスに「**calc**」と入力します。
 3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
 4. **[保存]** をクリックして、API をインポートします。
@@ -116,7 +116,7 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
-![API summary][api-management-imported-api-summary]
+![API の概要][api-management-imported-api-summary]
 
 API セクションにはいくつかのタブがあります。**[概要]** タブには、API に関する基本的なメトリックと情報が表示されます。[[設定]](api-management-howto-create-apis.md#configure-api-settings) タブは、API の構成を表示および編集するために使用します。[[操作]](api-management-howto-add-operations.md) タブは、API の操作を管理するために使用します。**[セキュリティ]** タブは、基本認証または[相互証明書認証](api-management-howto-mutual-certificates.md)を使用してバックエンド サーバーのゲートウェイ認証を構成するため、および [OAuth 2.0 を使用したユーザーの承認](api-management-howto-oauth2.md)を構成するために使用できます。**[問題]** タブは、API を使用している開発者によって報告された問題を表示するために使用します。**[成果物]** タブは、この API が含まれている成果物を構成するために使用します。
 
@@ -151,7 +151,7 @@ API および操作とともにサンプルの説明とパラメーターがイ�
 
 操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
-![Response][api-management-invoke-get-response]
+![応答][api-management-invoke-get-response]
 
 ## <a name="view-analytics"> </a>分析結果の表示
 
@@ -171,11 +171,11 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 ![分析][api-management-mouse-over]
 
-![概要][api-management-api-summary-metrics]
+![まとめ][api-management-api-summary-metrics]
 
 詳細なメトリックとレポートについては、左側の **[API Management]** メニューの **[分析]** をクリックします。
 
-![概要][api-management-analytics-overview]
+![Overview][api-management-analytics-overview]
 
 **[分析]** セクションには、次の 4 つのタブがあります。
 
@@ -245,4 +245,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

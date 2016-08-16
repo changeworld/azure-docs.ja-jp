@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="mblythe"
+	manager="paulettm"
 	editor=""
     tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
-	ms.date="04/14/2016"
+	ms.date="08/08/2016"
 	ms.author="heidist"/>
 
 # Azure Search のインデクサー
@@ -32,17 +32,48 @@ Azure Search の**インデクサー**は、検索可能なデータとメタデ
 
 インデクサーは、オンデマンドで実行することも、または 15 分ごとに実行される定期的なデータ更新スケジュールで実行することもできます。より頻繁に更新するには、Azure Search と外部データ ソースの両方のデータを同時に更新するプッシュ モデルが必要です。
 
+## インデクサーの作成と管理の方法
+
+Azure SQL や DocumentDB のように広く提供されているインデクサーでは、次の方法でインデクサーを作成したり管理したりすることができます。
+
+- [ポータルのデータのインポート ウィザード ](search-get-started-portal.md)
+- [サービス REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
+- [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
+
+Azure Blob Storage、Azure Table Storage といったプレビュー版のインデクサーでは、コードとプレビュー版の API ([インデクサー用の Azure Search Preview REST API](search-api-indexers-2015-02-28-preview.md) など) が必要となります。ポータルのツールは通常、プレビュー版の機能では利用できません。
+
+## 基本的な構成手順
+
+インデクサーで実行できる機能は、データ ソースごとに異なります。そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。以降、すべてのインデクサーに共通の手順について取り上げます。
+
+### 手順 1. インデックスを作成する
+
+インデクサーは、データの取り込みに関連したいくつかのタスクを自動化しますが、そこにはインデックスの作成は含まれていません。前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。インデックス構築の詳細については、「[Create an Index (Azure Search REST API) (インデックスの作成 (Azure Search REST API))](https://msdn.microsoft.com/library/azure/dn798941.aspx)」を参照してください。
+
+### 手順 2. データ ソースを作成する
+
 インデクサーは、接続文字列などの情報を保持している**データ ソース**からデータをプルします。現在、次のデータ ソースがサポートされています。
 
-- [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) (または Azure 仮想マシン内の SQL Server)
+- [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (現時点ではプレビュー段階です。PDF、Office ドキュメント、HTML、XML からテキストを抽出します。)
-- [Azure Table Storage](search-howto-indexing-azure-tables.md) (現時点ではプレビュー段階)
+- [Azure Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)。PDF や Office ドキュメント、HTML、XML からテキストを抽出するために使用されます。
+- [Azure Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
 
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
-[.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx) と [サービスの REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) は、インデクサーとデータ ソースの管理をサポートします。
+### 手順 3. インデクサーを作成してスケジュールを設定する
 
-または、**データのインポート** ウィザードを使用する場合は、ポータルでインデクサーを構成することもできます。サンプル データや DocumentDB インデクサーを使用して、ウィザードを使ってインデックスを作成し、読み込む方法のクイック チュートリアルについては、「[ポータルから Azure Search を使用する](search-get-started-portal)」を参照してください。
+インデクサーの定義とは、インデックスやデータ ソース、スケジュールを指定する構文です。インデクサーは、データ ソースが同じサブスクリプションに属していれば、他のサービスのデータ ソースであっても参照できます。インデクサー構築の詳細については、「[Create Indexer (Azure Search REST API) (インデクサーの作成 (Azure Search REST API))](https://msdn.microsoft.com/library/azure/dn946899.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+## 次のステップ
+
+基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
+
+- [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [DocumentDB](../documentdb/documentdb-search-indexer.md)
+- [Azure Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)。PDF や Office ドキュメント、HTML、XML からテキストを抽出するために使用されます。
+- [Azure Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
+- [Azure Search BLOB インデクサー (プレビュー) を使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
+- [Azure Search BLOB インデクサー (プレビュー) を使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
+
+<!---HONumber=AcomDC_0810_2016-->
