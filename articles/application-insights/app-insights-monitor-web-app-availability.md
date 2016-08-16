@@ -39,8 +39,7 @@ Web テストには次の 2 種類があります。
 
 [Microsoft Azure](http://azure.com) にサインアップして、[Azure ポータル](https://portal.azure.com)に移動し、Application Insights のリソースを作成します。
 
-![[新規] > [Application Insights]  
-](./media/app-insights-monitor-web-app-availability/11-new-app.png)
+![[新規] > [Application Insights]](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で **[参照]** をクリックすると、いつでもここを見ることができます。
 
@@ -48,8 +47,7 @@ Web テストには次の 2 種類があります。
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力  
-](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 - **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
