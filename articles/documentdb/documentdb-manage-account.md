@@ -144,4 +144,4 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 [azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
 [offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!----HONumber=AcomDC_0727_2016-->
