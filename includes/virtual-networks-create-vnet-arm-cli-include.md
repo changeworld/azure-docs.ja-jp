@@ -11,7 +11,7 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 
 		info:    New mode is arm
 
-3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示されるリストは、使用されたパラメーターについての説明です。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/virtual-network/resource-group-overview.md/#resource-groups)」を参照してください。
+3. 必要に応じて、次のように **azure group create** で新しいリソース グループを作成します。コマンドの出力が表示されます。出力の後に表示される一覧では、使用されたパラメーターについて説明されています。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/virtual-network/resource-group-overview.md#resource-groups)」を参照してください。
 
 		azure group create -n TestRG -l centralus
 
@@ -106,4 +106,4 @@ Azure CLI を使用すると、Windows、Linux、または OSX を実行して�
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

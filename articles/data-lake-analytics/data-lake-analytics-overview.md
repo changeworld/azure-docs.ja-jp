@@ -25,7 +25,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
 
 ## 主な機能
 
-- **動的スケーリング** 
+- **動的スケーリング**
 
     Data Lake Analytics は、クラウドのスケールとパフォーマンスのために一から構築されました。リソースを動的にプロビジョニングするので、テラバイト規模のデータや、エクサバイト規模のデータも分析できます。ジョブが完了するとリソースが自動的に縮小され、使用した処理能力の分だけのお支払いで済みます。保存するデータのサイズや使用するコンピューティングの量を増やしたり減らしたりする際に、コードを書き直す必要はありません。そのため、大規模なデータセットの処理や保存の仕方に悩むことなく、ビジネス ロジックに集中できます。
 
@@ -67,6 +67,7 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
     - [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
     - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
     - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+    - [Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)
 
 - エンド ツー エンド チュートリアル
     - [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
@@ -77,4 +78,4 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
     - [機能要求の送信](http://aka.ms/adlafeedback)
     - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

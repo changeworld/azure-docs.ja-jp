@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
-	ms.author="curtand;viviali"/>
+	ms.date="08/02/2016"
+	ms.author="curtand"/>
 
 # Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
 
-ディレクトリに格納するユーザーを追加します。この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
+この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
 ## ユーザーの追加
 
@@ -84,4 +84,4 @@
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -63,7 +63,7 @@ npm install applicationinsights
 
 ```javascript
 
-import appInsights = require("applicationinsights");
+var appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>").start();
 ```
 
@@ -82,7 +82,7 @@ appInsights.setup("<instrumentation_key>").start();
 [Azure ポータル](https://portal.azure.com)に戻り、Application Insights のリソースを参照します。
 
 
-[概要] ページでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
+[概要] ページでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。For example:
 
 ![クリックしてより多くのデータを表示する](./media/app-insights-asp-net-manual/12-first-perf.png)
 
@@ -224,4 +224,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

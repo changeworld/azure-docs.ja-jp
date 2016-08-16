@@ -3,8 +3,8 @@
 	description="Azure Backup と Recovery Services を利用すれば、Windows Server、Windows クライアント コンピューター、System Center DPM サーバー、Azure Virtual Machines のデータとアプリケーションをバックアップして、復元できます。"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor="tysonn"
 	keywords="バックアップと復元, 復元サービス, バックアップ ソリューション"/>
 
@@ -69,14 +69,13 @@ Backup はハイブリッド バックアップ ソリューションなので�
 | Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
 | Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | 
-| Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) | | Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
 
 ## ARM と Linux のサポート
 
 | コンポーネント | ARM サポート | Linux (Azure での動作保証済み) サポート |
 | --- | --- | --- |
-| Azure Backup (MARS) エージェント | あり | なし (Windows ベースのエージェントのみ) |
+| Azure Backup (MARS) エージェント | はい | なし (Windows ベースのエージェントのみ) |
 | System Center Data Protection Manager | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 |
 | Azure Backup Server (MABS) | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 (DPM と同じ) |
 | Azure IaaS VM のバックアップ | はい | はい |
@@ -107,11 +106,11 @@ Premium Storage VM は、Premium Storage と通常のストレージのどちら
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| Azure Backup コンテナー | ![Yes][green] | ![はい][green] | ![はい][green] | ![はい][green] |
+| Azure Backup コンテナー | ![はい][green] | ![はい][green] | ![はい][green] | ![はい][green] |
 | ディスク ストレージ | | ![はい][green] | ![はい][green] | |
 | テープ ストレージ | | ![はい][green] | | |
 | 圧縮 (バックアップ コンテナー) | ![はい][green] | ![はい][green]| ![はい][green] | |
-| 増分バックアップ | ![はい][green] | ![はい][green] | ![はい][green] | ![Yes][green] |
+| 増分バックアップ | ![はい][green] | ![はい][green] | ![はい][green] | ![はい][green] |
 | ディスクの重複除去 | | ![部分的][yellow] | ![部分的][yellow]| | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
@@ -133,8 +132,8 @@ System Center DPM と Backup Server では、[Hyper-V 仮想マシンにデプ�
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク セキュリティ (対 Azure) | ![あり][green] |![はい][green] | ![Yes][green] | ![部分的][yellow]|
-| ネットワーク セキュリティ (Azure 内) | ![Yes][green] |![はい][green] | ![Yes][green] | ![部分的][yellow]|
+| ネットワーク セキュリティ (対 Azure) | ![はい][green] |![はい][green] | ![はい][green] | ![部分的][yellow]|
+| ネットワーク セキュリティ (Azure 内) | ![Yes][green] |![はい][green] | ![はい][green] | ![部分的][yellow]|
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -148,7 +147,7 @@ Azure VM のバックアップの場合は、仮想マシン "*内*" で暗号�
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| Windows Server コンピューター -- ファイルとフォルダー | ![あり][green] | ![はい][green] | ![はい][green] | |
+| Windows Server コンピューター -- ファイルとフォルダー | ![はい][green] | ![はい][green] | ![はい][green] | |
 | Windows クライアント コンピューター -- ファイルとフォルダー | ![はい][green] | ![はい][green] | ![はい][green] | |
 | Hyper-V 仮想マシン (Windows) | | ![はい][green] | ![はい][green] | |
 | Hyper-V 仮想マシン (Linux) | | ![はい][green] | ![はい][green] | |
@@ -156,7 +155,7 @@ Azure VM のバックアップの場合は、仮想マシン "*内*" で暗号�
 | Microsoft SharePoint | | ![はい][green] | ![はい][green] | |
 | Microsoft Exchange | | ![はい][green] | ![はい][green] | |
 | Azure 仮想マシン (Windows) | | | | ![はい][green] |
-| Azure 仮想マシン (Linux) | | | | ![あり][green] |
+| Azure 仮想マシン (Linux) | | | | ![はい][green] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key-2.png)
 
@@ -164,8 +163,8 @@ Azure VM のバックアップの場合は、仮想マシン "*内*" で暗号�
 
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク圧縮 (対バックアップ サーバー) | | ![あり][green] | ![はい][green] | |
-| ネットワーク圧縮 (対バックアップ コンテナー) | ![はい][green] | ![はい][green] | ![あり][green] | |
+| ネットワーク圧縮 (対バックアップ サーバー) | | ![はい][green] | ![はい][green] | |
+| ネットワーク圧縮 (対バックアップ コンテナー) | ![はい][green] | ![はい][green] | ![はい][green] | |
 | ネットワーク プロトコル (対バックアップ サーバー) | | TCP | TCP | |
 | ネットワーク プロトコル (対バックアップ コンテナー) | HTTPS | HTTPS | HTTPS | HTTPS |
 
@@ -228,4 +227,4 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

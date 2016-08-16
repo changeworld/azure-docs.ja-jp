@@ -3,7 +3,7 @@
    description="このページでは、Azure リソース マネージャーを使用して、SSL オフロード用の Application Gateway を作成する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -12,14 +12,15 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/03/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 # Azure リソース マネージャーを使用した SSL オフロード用の Application Gateway の構成
 
 > [AZURE.SELECTOR]
--[Azure Classic PowerShell](application-gateway-ssl.md)
+-[Azure Portal](application-gateway-ssl-portal.md)
 -[Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
+-[Azure Classic PowerShell](application-gateway-ssl.md)
 
  Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
@@ -27,8 +28,8 @@
 ## 開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+2. アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内にエンドポイントが作成されているか、割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
 
@@ -36,21 +37,21 @@
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、これらの設定は大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
 **構成に関する追加の注意**
 
-SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCertificate** 要素は、SSL 証明書用に構成された変数値を設定して、**HttpListener** に追加する必要があります。フロントエンド ポートは 443 に更新する必要があります。
+SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCertificate** 要素は、SSL 証明書用に構成された変数値を設定して、**HttpListener** に追加します。フロントエンド ポートは 443 に更新する必要があります。
 
 **Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるように Application Gateway を構成できます。これはセッション Cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
 
 
-## 新しい Application Gateway の作成
+## アプリケーション ゲートウェイの作成
 
-Azure クラシック デプロイメント モデルと Azure リソース マネージャーの使用方法の違いは、設定が必要な Application Gateway と項目を作成する順番にあります。
+Azure クラシック デプロイメント モデルと Azure Resource Manager の使用方法の違いは、設定が必要なアプリケーション ゲートウェイと項目を作成する順番にあります。
 
-リソース マネージャーを使用すると、Application Gateway を作成するすべての項目は個別に構成され、その後結合されて Application Gateway のリソースを作成します。
+Resource Manager を使用すると、アプリケーション ゲートウェイを作成するすべての項目は個別に構成され、その後結合されてアプリケーション ゲートウェイのリソースが作成されます。
 
 
 ここでは、Application Gateway を作成するために必要な手順を示します。
@@ -58,16 +59,16 @@ Azure クラシック デプロイメント モデルと Azure リソース マ�
 1. リソース マネージャーのリソース グループの作成
 2. Application Gateway の仮想ネットワーク、サブネット、パブリック IP の作成
 3. Application Gateway 構成オブジェクトの作成
-4. Application Gateway リソースの作成
+4. アプリケーション ゲートウェイのリソースの作成
 
 
 ## リソース マネージャーのリソース グループの作成
 
 Azure リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
-### 手順 1.
+### 手順 1
 
-		PS C:\> Login-AzureRmAccount
+	Login-AzureRmAccount
 
 
 
@@ -75,9 +76,9 @@ Azure リソース マネージャー コマンドレットを使用するよう
 
 アカウントのサブスクリプションを確認します。
 
-		PS C:\> get-AzureRmSubscription
+	Get-AzureRmSubscription
 
-資格情報を使用して認証を行うよう求められます。<BR>
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
 ### 手順 3.
 
@@ -89,19 +90,19 @@ Azure リソース マネージャー コマンドレットを使用するよう
 
 ### 手順 4.
 
-新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
+リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。Application Gateway を作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
+Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。この設定は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
-上記の例では、"appgw-RG" という名前のリソース グループと "米国西部" という名前の場所を作成しました。
+上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
 ## Application Gateway の仮想ネットワークとサブネットの作成
 
 次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。
 
-### 手順 1.
+### 手順 1
 
 	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
@@ -127,17 +128,17 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ## Application Gateway 構成オブジェクトの作成
 
-### 手順 1.
+### 手順 1
 
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
-"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
+"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
 ### 手順 2.
 
 	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。 これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。上記の例の IP アドレスを Web アプリケーション エンドポイントの IP アドレスに置き換えます。
+IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。 これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。上記の例の IP アドレスを Web アプリケーション エンドポイントの IP アドレスに置き換えます。
 
 ### 手順 3.
 
@@ -199,4 +200,4 @@ Application Gateway のインスタンスのサイズを構成します。
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0810_2016-->

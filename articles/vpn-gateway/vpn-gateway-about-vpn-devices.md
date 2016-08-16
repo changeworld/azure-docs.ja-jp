@@ -13,26 +13,26 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/28/2016"
+   ms.date="08/10/2016"
    ms.author="cherylmc" />
 
 # サイト間 VPN Gateway 接続の VPN デバイスについて
 
 サイト間 (S2S) VPN 接続を構成するには、VPN デバイスが必要です。サイト間接続は、ハイブリッド ソリューションを作成するときに、またはオンプレミスのネットワークと仮想ネットワークの間にセキュリティで保護された接続が必要な場合にいつでも使用することができます。この記事では、互換性のある VPN デバイス、および構成パラメーターについて説明します。サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要であることに注意してください。
 
-検証済みの VPN デバイスの表にデバイスが見つからない場合は、この記事の「未検証の VPN デバイス」セクションを参照してください。デバイスは引き続き Azure で動作する可能性があります。VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
+「[検証済みの VPN デバイス](#devicetable)」の表にデバイスが見つからない場合は、この記事の「[未検証の VPN デバイス](#additionaldevices)」セクションを参照してください。デバイスは引き続き Azure で動作する可能性があります。VPN デバイスのサポートは、デバイスの製造元に問い合わせてください。
 
 **表を確認するときの注意事項:**
 
 - 静的および動的ルーティングの用語に変更がありました。おそらく、両方の用語が見つかるでしょう。機能上の変更はありませんが、名前のみが変更されています。
 	- 静的ルーティング = ポリシー ベース
 	- 動的ルーティング = ルート ベース
-- 高性能 VPN ゲートウェイとルート ベース VPN ゲートウェイの仕様は、特に記載がない限り同じです。たとえば、ルート ベース VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、新しい Azure 高性能 VPN ゲートウェイとも互換性があります。
+- 高性能 VPN ゲートウェイとルート ベース VPN ゲートウェイの仕様は、特に記載がない限り同じです。たとえば、ルート ベース VPN ゲートウェイと互換性がある検証済みの VPN デバイスは、Azure 高性能 VPN ゲートウェイとも互換性があります。
 
 
-## 検証済みの VPN デバイス 
+## <a name="devicetable"></a>検証済みの VPN デバイス 
 
-Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。「[VPN ゲートウェイ](vpn-gateway-about-vpngateways.md)」の記事を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
+Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、Azure VPN ゲートウェイで動作します。「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照して、構成するソリューションで作成する必要があるゲートウェイの種類を確認してください。
 
 VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。
 
@@ -48,7 +48,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Cisco | ASA | 8\.3 | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 互換性なし |
 | Cisco | ASR | IOS 15.1 (ポリシー ベース)、IOS 15.2 (ルート ベース) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco | ISR | IOS 15.0 (ポリシー ベース)、IOS 15.1 (ルート ベース*) | [Cisco のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco のサンプル*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
-| Citrix | CloudBridge MPX アプライアンス、または VPX 仮想アプライアンス | 該当なし | [統合の手順](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 互換性なし |
+| Citrix | NetScaler MPX、SDX、VPX |10\.1 以上 | [統合の手順](https://docs.citrix.com/ja-JP/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) | 互換性なし |
 | Dell SonicWALL | TZ シリーズ、NSA シリーズ、SuperMassive シリーズ、E-class NSA シリーズ | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [指示 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [指示 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP シリーズ | 該当なし | [構成の手順](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 互換性なし |
 | Fortinet | FortiGate | FortiOS 5.2.7 | [構成の手順](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) | [構成の手順](http://docs.fortinet.com/d/fortigate-configuring-ipsec-vpn-between-a-fortigate-and-microsoft-azure) |
@@ -65,7 +65,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 (*) ISR 7200 シリーズのルーターは、ポリシー ベースの VPN だけをサポートしています。
 
-## 未検証の VPN デバイス
+## <a name="additionaldevices"></a>未検証の VPN デバイス
 
 検証済みの VPN デバイスの表 (上記) にデバイスが見つからない場合は、引き続きサイト間接続で動作する可能性があります。お使いの VPN デバイスが、「[VPN ゲートウェイについて](vpn-gateway-about-vpngateways.md#gateway-requirements)」の記事の「ゲートウェイの要件」セクションに記載されている最小要件を満たしていることを確認してください。最小要件を満たしていれば、そのデバイスは VPN ゲートウェイでも正常に動作します。詳細なサポートおよび構成手順については、デバイスの製造元にお問い合わせください。
 
@@ -97,7 +97,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 
 ## IPsec パラメーター
 
->[AZURE.NOTE] 以下の値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。また、MSS は 1350 で固定する必要があります。
+>[AZURE.NOTE] 以下の表に記載した値は Azure VPN Gateway でサポートされていますが、現在、Azure VPN Gateway から特定の組み合わせを指定または選択する方法はありません。すべての制約は、オンプレミスの VPN デバイスから指定する必要があります。また、MSS は 1350 で固定する必要があります。
 
 ### IKE フェーズ 1 セットアップ
 
@@ -118,14 +118,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | IKE のバージョン | IKEv1 | IKEv2 |
 | ハッシュ アルゴリズム | SHA1(SHA128) | SHA1(SHA128) |
 | フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (時間) | 3,600 秒 | 3,600 秒 |
-| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) | 102,400,000 KB | - | 
-| IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.該当なし | *ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン* (下記) を参照 | 
-| Perfect Forward Secrecy (PFS) | なし | あり (DH Group1、2、5、14、24) | 
-| Dead Peer Detection | サポートなし | サポートあり |
+| フェーズ 2 のセキュリティ アソシエーション (SA) の有効期間 (スループット) | 102,400,000 KB | - | | IPsec SA 暗号化および認証のプラン (優先度順) | 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.該当なし | 「*ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン*」(下記) を参照 | | Perfect Forward Secrecy (PFS) | なし | あり (DH Group1、2、5、14、24) | | Dead Peer Detection | サポートなし | サポートあり |
 
 ### ルート ベース ゲートウェイ IPsec セキュリティ アソシエーション (SA) のプラン
 
-次の表は、IPsec SA 暗号化および認証のプランを一覧表示しています。プランは提示される、または受け入れられる優先度順に表示されています。
+以下の表に、IPsec SA 暗号化および認証のプランを示します。プランは提示される、または受け入れられる優先度順に表示されています。
 
 | **IPsec SA 暗号化および認証のプラン** | **発信側としての Azure ゲートウェイ** | **応答側としての Azure ゲートウェイ** |
 |---------------------------------------------------|--------------------------------------------------------------|--------------------------------------------------------------|
@@ -145,12 +142,11 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | 14 | AH MD5 (ESP DES null HMAC)、有効期間の提示なし | AH MD5 (ESP DES MD5)、有効期間なし |
 | 15 | AH SHA1 ( ESP DES SHA1)、有効期間なし | ESP SHA、有効期間なし |
 | 16 | AH MD5 (ESP DES MD5)、有効期間なし | ESP MD5、有効期間なし |
-| 17 | - | AH SHA、有効期間なし | 
-| 18 | - | AH MD5、有効期間なし |
+| 17 | - | AH SHA、有効期間なし | | 18 | - | AH MD5、有効期間なし |
 
 
-- ルート ベースおよび高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。クライアントは、VNet 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
+- ルート ベースおよび高性能 VPN ゲートウェイで IPsec ESP NULL 暗号化を指定することができます。Null ベースの暗号化では、転送中のデータ保護は提供されません。そのため、最大のスループットおよび最小の待機時間が必要な場合にのみ使用する必要があります。クライアントは、VNET 間の通信シナリオ、または暗号化がソリューションの他の場所に適用されている場合に、この暗号化の使用を選択することができます。
 
 - インターネット経由のクロスプレミス接続では、重要な通信のセキュリティを確保するため、上記の表にある暗号化およびハッシュ アルゴリズムによる既定の Azure VPN Gateway 設定を使用してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

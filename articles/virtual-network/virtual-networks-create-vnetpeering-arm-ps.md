@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/15/2016"
-   ms.author="telmos"/>
+   ms.date="08/02/2016"
+   ms.author="narayanannamalai"/>
 
 # Powershell コマンドレットを使用した VNet ピアリングの作成
 
@@ -29,19 +29,18 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-注: VNet ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
+        Note: PowerShell cmdlet for managing VNet peering is shipped with [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0)
 
 2. 仮想ネットワーク オブジェクトを読み取ります。
 
         $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
         $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet2
-
 	
-3. VNet ピアリングを確立するには、2 つのリンク (各方向につき 1 つ) を作成する必要があります。まず、VNet1 から VNet2 への VNet ピアリング リンクを次の手順で作成します。
+3. VNET ピアリングを確立するには、2 つのリンク (各方向につき 1 つ) を作成する必要があります。まず、VNet1 から VNet2 への VNET ピアリング リンクを次の手順で作成します。
 
         Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id 
 
-このコマンドの出力結果を次に示します。
+        Output shows:
 
         Name			: LinkToVNet2
         Id: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -59,11 +58,11 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         RemoteGateways		: null
         RemoteVirtualNetworkAddressSpace : null
 
-4. VNet2 から VNet1 への VNet ピアリング リンクを作成します。
+4. VNet2 から VNet1 への VNET ピアリング リンクを作成します。
 
         Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id 
 
-このコマンドの出力結果を次に示します。
+        Output shows:
 
         Name			: LinkToVNet1
         Id				: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2/virtualNetworkPeerings/LinkToVNet1
@@ -81,45 +80,44 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         RemoteGateways		: null
         RemoteVirtualNetworkAddressSpace : null
 
-5. この VNet ピアリング リンクが作成されると、リンクの状態は次のように表示されます。
+5. この VNET ピアリング リンクが作成されると、リンクの状態が次のように表示されます。
 
         Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name linktovnet2
 
-このコマンドの出力結果を次に示します。
+        Output shows:
 
-        Name			: LinkToVNet2
-        Id				: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
-        Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        ResourceGroupName	: vnet101
-        VirtualNetworkName	: vnet1
-        ProvisioningState		: Succeeded
-        RemoteVirtualNetwork	: {
-                                            "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
-                                        }
-        AllowVirtualNetworkAccess	: True
-        AllowForwardedTraffic            : False
-        AllowGatewayTransit              : False
-        UseRemoteGateways                : False
-        RemoteGateways                   : null
-        RemoteVirtualNetworkAddressSpace : null
+		Name			: LinkToVNet2
+		Id				: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
+		Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+		ResourceGroupName	: vnet101
+		VirtualNetworkName	: vnet1
+		ProvisioningState		: Succeeded
+		RemoteVirtualNetwork	: {
+		                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
+		                                }
+		AllowVirtualNetworkAccess	: True
+		AllowForwardedTraffic            : False
+		AllowGatewayTransit              : False
+		UseRemoteGateways                : False
+		RemoteGateways                   : null
+		RemoteVirtualNetworkAddressSpace : null
 
+	VNet ピアリングには、構成可能なプロパティがいくつかあります。
 
-VNet ピアリングには、構成可能なプロパティがいくつかあります。
+	|オプション|Description|既定値|
+	|:-----|:----------|:------|
+	|AllowVirtualNetworkAccess|ピア VNet のアドレス空間を Virtual\_network タグの一部として含めるかどうかを選択します。|はい|
+	|AllowForwardedTraffic|ピアリングされた VNet 以外の送信元のトラフィックを許可するか破棄するかを選択します。|いいえ|
+	|AllowGatewayTransit|VNet ゲートウェイの使用をピア VNet に許可するかどうかを選択します。|いいえ|
+	|UseRemoteGateways|ピアの VNet ゲートウェイを使用します。ピア VNet でゲートウェイが構成され、かつ AllowGatewayTransit が選択されている必要があります。ゲートウェイをローカルで構成した場合、このオプションは使用できません。|いいえ|
 
-|オプション|説明|既定値|
-|:-----|:----------|:------|
-|AllowVirtualNetworkAccess|ピア VNet のアドレス空間を Virtual\_network タグの一部として含めるかどうかを選択します。|はい|
-|AllowForwardedTraffic|ピアリングされた VNet 以外の送信元のトラフィックを許可するか破棄するかを選択します。|いいえ|
-|AllowGatewayTransit|VNet ゲートウェイの使用をピア VNet に許可するかどうかを選択します。|いいえ|
-|UseRemoteGateways|ピアの VNet ゲートウェイを使用します。ピア VNet でゲートウェイが構成され、かつ AllowGatewayTransit が選択されている必要があります。ゲートウェイをローカルで構成した場合、このオプションは使用できません。|いいえ|
-
-上記の一連のプロパティは、VNet ピアリングの各リンクに存在します。たとえば、AllowVirtualNetworkAccess は、VNet1 から VNet2 への VNet ピアリング リンクの場合は True に、逆方向の VNet ピアリング リンクの場合は False に設定します。
+	上記の一連のプロパティは、VNET ピアリングの各リンクに存在します。たとえば、AllowVirtualNetworkAccess は、VNet1 から VNet2 への VNET ピアリング リンクの場合は True に、逆方向の VNET ピアリング リンクの場合は False に設定します。
 
         $LinktoVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name LinkToVNet2
         $LinktoVNet2.AllowForwardedTraffic = $true
         Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinktoVNet2
 
-変更後、Get-AzureRmVirtualNetworkPeering を実行してプロパティの値をもう一度確認できます。上記のコマンドレットを実行した後、AllowForwardedTraffic が True に変更されていることが出力結果から確認できます。
+        You can run Get-AzureRmVirtualNetworkPeering to double check the property value after the change.  From the output, you can see AllowForwardedTraffic changes set to True after running the above cmdlets. 
 
         Name			: LinkToVNet2
         Id			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -137,30 +135,29 @@ VNet ピアリングには、構成可能なプロパティがいくつかあり
         RemoteGateways		: null
         RemoteVirtualNetworkAddressSpace : null
 
-このシナリオでピアリングが確立された後は、双方の VNet の任意の仮想マシンから任意の仮想マシンへの接続を開始することができます。既定では AllowVirtualNetworkAccess が True に設定されているため、VNet 間の通信を許可する適切な ACL が VNet ピアリングによってプロビジョニングされます。ただし、NSG ルールを適用して接続をブロックすることはできます。たとえば特定のサブネット間や仮想マシン間の接続をブロックすることで、2 つの仮想ネットワーク間のアクセスを細かく制御することが可能です。NSG ルールの作成の詳細については、こちらの[記事](virtual-networks-create-nsg-arm-ps.md)を参照してください。
+	このシナリオでピアリングが確立された後は、双方の VNet の任意の仮想マシンから任意の仮想マシンへの接続を開始することができます。既定では AllowVirtualNetworkAccess が True に設定されているため、VNET 間の通信を許可する適切な ACL が VNET ピアリングによってプロビジョニングされます。ただし、ネットワーク セキュリティ グループ (NSG) ルールを適用して接続をブロックすることはできます。特定のサブネット間や仮想マシン間の接続をブロックすることで、2 つの仮想ネットワーク間のアクセスを細かく制御することができます。NSG ルールの作成の詳細については、こちらの[記事](virtual-networks-create-nsg-arm-ps.md)を参照してください。
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
-サブスクリプション間の VNet ピアリングを PowerShell で作成するには、次の手順に従います。
+サブスクリプション間の VNET ピアリングを PowerShell で作成するには、次の手順に従います。
 
-1. サブスクリプション A の特権 User-A で Azure にサインインし、次のコマンドレットを実行します。
+1. サブスクリプション A の特権 User-A アカウントで Azure にサインインし、次のコマンドレットを実行します。
 
         New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
 
-これは必須ではありません。ユーザーが個々の VNet に対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。相手側 VNet の特権ユーザーをローカル VNet のユーザーとして追加すると、セットアップがやりやすくなります。
+        This is not a requirement, peering can be established even if users individually raise peering requests for thier respective Vnets as long as the requests match. Adding a privileged user of the other VNet as a user in the local VNet makes it easier to do the setup. 
 
-2. サブスクリプション B の特権 User-B で Azure にサインインし、次のコマンドレットを実行します。
+2. サブスクリプション B の特権 User-B アカウントで Azure にサインインし、次のコマンドレットを実行します。
 
         New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
 
-3. 次に、UserA のログイン セッションで次のコマンドレットを実行します。
+3. User-A のログイン セッションで次のコマンドレットを実行します。
 
         $vnet3 = Get-AzureRmVirtualNetwork -ResourceGroupName hr-vnets -Name vnet3
 
         Add-AzureRmVirtualNetworkPeering -name LinkToVNet5 -VirtualNetwork $vnet3 -RemoteVirtualNetworkId "/subscriptions/<Subscriptoin-B-Id>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/VNet5" -BlockVirtualNetworkAccess
 
-
-4. 次に、UserB のログイン セッションで次のコマンドレットを実行します。
+4. User-B のログイン セッションで次のコマンドレットを実行します。
 
         $vnet5 = Get-AzureRmVirtualNetwork -ResourceGroupName vendor-vnets -Name vnet5
 
@@ -170,7 +167,7 @@ VNet ピアリングには、構成可能なプロパティがいくつかあり
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
-1. このシナリオでは、以下の PowerShell コマンドレットを実行することによって、VNet ピアリングを確立できます。特に必要なのは、VNET1 から HubVnet へのリンクに関して、AllowForwardedTraffic プロパティを True に設定することです。これにより、ピアリング VNet のアドレス空間外からの受信トラフィックが許可されます。
+1. このシナリオでは、以下の PowerShell コマンドレットを実行することによって、VNET ピアリングを確立できます。VNET1 から HubVnet 方向のリンクに関して、AllowForwardedTraffic プロパティを True に設定する必要があります。こうすることで、ピアリング VNET のアドレス空間外からの受信トラフィックが許可されます。
 
         $hubVNet = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name HubVNet
         $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
@@ -179,7 +176,7 @@ VNet ピアリングには、構成可能なプロパティがいくつかあり
 
         Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $HubVNet -RemoteVirtualNetworkId $vnet1.id
 
-2. ピアリングが確立されたら、こちらの[記事](virtual-network-create-udr-arm-ps.md)を参照してください。VNet1 トラフィックを仮想アプライアンス経由でリダイレクトするようにユーザー定義ルート (UDR) を設定することで、その機能を利用することができます。ルートの次ホップ アドレスを指定するときは、ピア VNet (HubVNet) に存在する仮想アプライアンスの IP アドレスを設定します。以下に例を示します。
+2. ピアリングが確立されたら、こちらの[記事](virtual-network-create-udr-arm-ps.md)を参照してください。VNet1 トラフィックを仮想アプライアンス経由でリダイレクトするようにユーザー定義ルート (UDR) を設定することで、その機能を利用することができます。ルートの次ホップ アドレスを指定するときは、ピア VNET (HubVNet) に存在する仮想アプライアンスの IP アドレスを設定します。以下に例を示します。
 
         $route = New-AzureRmRouteConfig -Name TestNVA -AddressPrefix 10.3.0.0/16 -NextHopType VirtualAppliance -NextHopIpAddress 192.0.1.5
 
@@ -191,20 +188,17 @@ VNet ピアリングには、構成可能なプロパティがいくつかあり
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet1
 
-
 ## VNet ピアリングの削除
 
-1.	VNet ピアリングを削除するには、コマンドレットを実行する必要があります。
+1.	VNET ピアリングを削除するには、次のコマンドレットを実行する必要があります。
 
         Remove-AzureRmVirtualNetworkPeering  
     
-    両方のリンクを削除するには、次のようにします。
+        remove both links, as shown below:
 
         Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
         Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
 
-3. VNet ピアリングのいずれかのリンクを削除すると、ピアのリンク状態が "切断" に変わります。
-  
-4. この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNet ピアリングを作成し直すことをお勧めします。
+2. VNET ピアリングのいずれかのリンクを削除すると、ピアのリンク状態が "切断" に変わります。この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNET ピアリングを作成し直すことをお勧めします。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -29,12 +29,12 @@
 
 ## 前提条件
 
-開始するには、以下のものが必要です。
+開始するには、以下が必要です。
 
 - **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][]に関するページまたは [MSDN Azure クレジット][]に関するページにアクセスしてください。
 - **Azure SQL サーバー**: 詳細については、[Azure ポータルでの Azure SQL Database 論理サーバーの作成][]に関するセクションを参照してください。
 
-> [AZURE.NOTE] 新しい SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。料金の詳細については、「[SQL Data Warehouse の価格][]」を参照してください。
+> [AZURE.NOTE] SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。詳細については、「[SQL Data Warehouse の価格][]」を参照してください。
 
 ## SQL Data Warehouse の作成
 
@@ -48,7 +48,7 @@
 
     ![データベースを作成する](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-	- **[サーバー]**: まず、サーバーを選択することをお勧めします。既存のサーバーを選択するか、[新しく作成](./sql-data-warehouse-get-started-new-server.md)することができます。
+	- **[サーバー]**: まず、サーバーを選択することをお勧めします。
 
 	- **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。サーバーに対して一意にする必要があります。
 	
@@ -58,13 +58,13 @@
 
     - **[リソース グループ]**: [リソース グループ][Resource group]は、Azure リソースのコレクション管理のサポートを目的としたコンテナーです。[リソース グループ](../resource-group-overview.md)に関する詳細情報を参照してください。
 
-    - **[ソースの選択]**: **[ソースの選択]**、**[サンプル]** の順にクリックします。この時点で使用できるサンプル データベースは 1 つだけなので、[サンプル] を選択すると、**[サンプルの選択]** に AdventureWorksDW が自動的に設定されます。
+    - **[ソースの選択]**: **[ソースの選択]**、**[サンプル]** の順にクリックします。**[サンプルの選択]** オプションが自動的に AdventureWorksDW に設定されます。
 
 4. **[作成]** をクリックして SQL Data Warehouse を作成します。
 
-5. 数分すると SQL Data Warehouse の準備が整います。完了すると、[Azure ポータル](https://portal.azure.com)に戻ります。SQL Data Warehouse は、ダッシュボード上で、SQL データベースの一覧か、作成に使用したリソース グループ内に表示されます。
+5. 数分間待ちます。データ ウェアハウスの準備が完了すると、再び [Azure ポータル](https://portal.azure.com)が表示されます。SQL Data Warehouse は、ダッシュボード上で、SQL データベースの一覧か、作成に使用したリソース グループ内に表示されます。
 
-    ![ポータルの表示](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
+    ![portal view](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
 [AZURE.INCLUDE [SQL DataBase create server](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
@@ -84,8 +84,8 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [Azure ポータルでの Azure SQL Database 論理サーバーの作成]: ../sql-database/sql-database-get-started.md#create-an-azure-sql-database-logical-server
 [Create an Azure SQL Database logical server with PowerShell]: ../sql-database/sql-database-get-started-powershell.md#database-setup-create-a-resource-group-server-and-firewall-rule
 [resource groups]: ../resource-group-template-deploy-portal.md
-[ベスト プラクティス]: ./sql-data-warehouse-best-practices.md
-[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
+[ベスト プラクティス]: sql-data-warehouse-best-practices.md
+[DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [サブスクリプション]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 
@@ -99,4 +99,4 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

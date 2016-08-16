@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/25/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 # Azure IoT Suite の構成済みソリューションとは
@@ -34,8 +34,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 
 | 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - | 
-| [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - | | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
 
 - *データの取り込み*: クラウドへの大規模なデータの取り込み。
 - *デバイス ID*: すべての接続されたデバイスの一意の ID を管理します。
@@ -131,4 +130,4 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->
