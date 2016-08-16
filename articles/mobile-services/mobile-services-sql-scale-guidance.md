@@ -105,7 +105,7 @@ Azure Mobile Services を使用すると、SQL データベースにデータを
 
 4. アラートの名前と説明を指定します。
 
-![Azure 管理ポータル - SQL Alert Name and Description][PortalSqlAddAlert2]
+	![Azure 管理ポータル - SQL Alert Name and Description][PortalSqlAddAlert2]
 
 5. アラートのしきい値として使用する値を指定します。対応時間を確保するために、**80%** を使用することを検討してください。また、積極的に監視する電子メール アドレスを必ず指定します。
  
