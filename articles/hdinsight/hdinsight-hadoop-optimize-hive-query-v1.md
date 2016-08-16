@@ -33,8 +33,8 @@
 
 - プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
-	![scaleout\_1][image-hdi-optimize-hive-scaleout\_1]
-- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。次のように表示されます。![scaleout\_1][image-hdi-optimize-hive-scaleout\_2]
+	![scaleout_1][image-hdi-optimize-hive-scaleout_1]
+- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。次のように表示されます。![scaleout_1][image-hdi-optimize-hive-scaleout_2]
 
 HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -42,7 +42,7 @@ HDInsight によってサポートされている異なる仮想マシンの詳�
 
 [Apache Tez](http://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。
 
-![tez\_1][image-hdi-optimize-hive-tez\_1]
+![tez_1][image-hdi-optimize-hive-tez_1]
 
 
 Tez はより高速です。それは次の理由によります。
@@ -90,7 +90,7 @@ I/O 操作は、Hive クエリを実行するための主なパフォーマン�
 
 Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その場合は、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。年ごとに新しいディレクトリが作成されます。
 
-![partitioning][image-hdi-optimize-hive-partitioning\_1]
+![partitioning][image-hdi-optimize-hive-partitioning_1]
 
 パーティション分割に関するいくつかの考慮事項:
 
@@ -215,6 +215,9 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 - [Web サイトのログを分析するための HDInsight での Hive の使用](hdinsight-hive-analyze-website-log.md)
 
 
-[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_1.png [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_2.png [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
+[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_1.png 
+[image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query-v1/scaleout_2.png 
+[image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/tez_1.png 
+[image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query-v1/partitioning_1.png
 
 <!---HONumber=AcomDC_0727_2016-->

@@ -56,7 +56,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
  - **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。HTTPS トラフィックが発生した場合、リバース プロキシで SSL 終了が発生します。リバース プロキシによってクラスター内のサービスに転送される要求は http 経由になります。
- - **ゲートウェイの FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
+ - **Cluster FQDN | internal IP:** 外部クライアントの場合、リバース プロキシは、クラスターのドメイン (mycluster.eastus.cloudapp.azure.com など) を介してアクセスするように構成できます。既定では、すべてのノードでリバース プロキシが実行されるので、内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (10.0.0.1 など) でアクセスできます。。
  - **Port:** リバース プロキシに指定されているポート (例: 19008)。
  - **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているサービスのデプロイ済みの完全修飾サービス インスタンス名です。たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
  - **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
