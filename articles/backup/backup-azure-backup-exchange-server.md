@@ -3,8 +3,8 @@
 	description="System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する"
 	services="backup"
 	documentationCenter=""
-	authors="AnuragMehrotra"
-	manager="shivamg"
+	authors="MaanasSaran"
+	manager="NKolli1"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/19/2016"
-	ms.author="anuragm;jimpark;delhan"/>
+	ms.author="anuragm;jimpark;delhan;trinadhk;markgal"/>
 
 
 # System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
@@ -132,4 +132,4 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

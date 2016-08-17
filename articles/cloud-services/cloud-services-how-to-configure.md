@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2016"
+	ms.date="07/27/2016"
 	ms.author="adegeo"/>
 
 
@@ -33,7 +33,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
 ## クラウド サービスの変更
 
-1. [Azure ポータル](http://manage.windowsazure.com/)で **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
+1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で **[Cloud Services]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
 
     ![[構成] ページ](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage1.png)
     
@@ -86,4 +86,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [Enable Remote Desktop Connection for a Role in Azure Cloud Services (Azure Cloud Services でのロールに対するリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/21/2016" 
+	ms.date="08/09/2016" 
 	ms.author="daviste"/>
 
 
@@ -58,7 +58,7 @@ Visual Studio で新しいプロジェクトを作成するときに、Applicati
 
 F5 キーを使用してアプリケーションを実行して、試します。さまざまなページが開き、いくつかのテレメトリが生成されます。
 
-Visual Studio で、ログに記録されたイベント数が表示されます。
+Visual Studio で、ログに記録されたイベントの数が表示されます。
 
 ![Visual Studio では、Application Insights ボタンはデバッグ時に表示されます。](./media/app-insights-asp-net/54.png)
 
@@ -88,10 +88,22 @@ Visual Studio で、ログに記録されたイベント数が表示されます
 
 ポータルを開くと、アプリのテレメトリが表示されます。 ![](./media/app-insights-asp-net/66.png)
 
-* 個々のイベントは **[検索]** (1) に表示されます。データはまずここ (および[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)内) に表示されます。イベントをクリックすると、そのプロパティが表示されます。
+* [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)に最初のテレメトリが表示されます。
+* **[検索]** (1) に個々のイベントが表示されます。データが表示されるまでに数分かかることがあります。イベントのプロパティを表示するには、イベントをクリックします。
 * メトリックの集計値はグラフ (2) に表示されます。データがここに表示されるまで、1 ～ 2 分かかる場合があります。グラフをクリックすると、詳細を含むブレードが開きます。
 
 [Azure ポータルでの Application Insights の使用方法の詳細については、こちらを参照してください](app-insights-dashboards.md)。
+
+## 4\.アプリケーションの発行
+
+IIS サーバーまたは Azure にアプリを発行します。[ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream)を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
+
+Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](app-insights-dashboards.md)を設定したりすることができます。強力な [Analytics クエリ言語](app-insights-analytics.md)を使って使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
+
+[Visual Studio](app-insights-visual-studio.md) から各種ツール (診断検索、[傾向](app-insights-visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
+
+> [AZURE.NOTE] アプリから送信されたテレメトリの量が[スロットル制限](app-insights-pricing.md#limits-summary)に近づくと、自動[サンプリング](app-insights-sampling.md)がオンに変わります。アプリから送信されるテレメトリの量をサンプリングによって抑えながら、診断に利用できる相関性のあるデータを維持することができます。
+
 
 ##<a name="land"></a> [Application Insights の追加] の実行結果
 
@@ -107,7 +119,7 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 
 必要な場合は、[ASP.NET 4](app-insights-asp-net-manual.md) または [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) 向けにこれらの手順を手動で実行することもできます。
 
-## 新しいバージョンの SDK にアップグレードするには
+### 新しいバージョンの SDK にアップグレードするには
 
 [SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
 
@@ -120,7 +132,7 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 | | 
 |---|---
 |**[Visual Studio で Application Insights を使用する](app-insights-visual-studio.md)**<br/>テレメトリを使用したデバッグ、診断検索、コードのドリル スルー。|![Visual studio](./media/app-insights-asp-net/61.png)
-|**[Application Insights ポータルを使用する](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
-|**[さらにデータを追加する](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外を監視します。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
+|**[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
+|**[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

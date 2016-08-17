@@ -14,7 +14,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016"
+	ms.date="08/04/2016"
 	ms.author="jeffstok"
 />
 
@@ -29,7 +29,7 @@
 
 ## シナリオ
 
-Contoso は工業オートメーション スペースの製造会社で、自社の製造工程を完全に自動化しています。この工場の機械には、リアルタイムでデータのストリームを生成するセンサーがあります。このシナリオにおいて、生産現場マネージャーは、センサー データからリアルタイムの詳細情報を取得し、パターンを見つけて、それらに対処したいと考えています。センサー データに対して Stream Analytics クエリ言語 (SAQL) を使用し、データの受信ストリームの興味深いパターンを検出します。
+Contoso は工業オートメーション スペースの会社で、自社の製造工程を完全に自動化しています。この工場の機械には、リアルタイムでデータのストリームを生成することのできるセンサーがあります。このシナリオにおいて、生産現場マネージャーは、センサー データからリアルタイムの詳細情報を取得し、パターンを見つけて、それらに対処したいと考えています。センサー データに対して Stream Analytics クエリ言語 (SAQL) を使用し、データの受信ストリームの興味深いパターンを検出します。
 
 ここに示すデータは、Texas Instrument Sensor Tag デバイスから生成されています。
 
@@ -45,15 +45,15 @@ Contoso は工業オートメーション スペースの製造会社で、自�
 	    "hmdt": 34  
 	}  
     
-実際のシナリオでは、何百ものこのようなセンサーがストリームとしてイベントを生成することになります。理想的には、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にプッシュするいくつかのコードを実行するゲートウェイ デバイスを設置することがあります。Stream Analytics ジョブは Event Hubs からのこれらのイベントを使用し、クエリとして表されるリアルタイムの分析を実行し、必要な出力に結果を送信します。
+実際のシナリオでは、何百ものこのようなセンサーがストリームとしてイベントを生成することになります。何らかのコードを実行して [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) または [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) にこれらのイベントをプッシュするゲートウェイ デバイスがあれば理想的です。Stream Analytics ジョブでそれらのイベントを Event Hubs から取り込み、そのストリームに対してリアルタイム分析クエリを実行することになると思われます。そうすれば、その結果をいずれかの[サポートされている出力](stream-analytics-define-outputs.md)に送信することができます。
 
-この概要ガイドでは、さまざまなクエリを実行し、それらの結果を表示できる実際の SensorTag デバイスからキャプチャされたサンプル データ ファイルを用意しています。以降のチュートリアルでは、各自のジョブを入力と出力に関連付け、それらを Azure サービスにデプロイする方法を学習します。
+この概要ガイドでは、さまざまなクエリを実行し、それらの結果を表示できる実際の SensorTag デバイスからキャプチャされたサンプル データ ファイルを便宜的に用意しています。以降のチュートリアルでは、各自のジョブを入力と出力に関連付け、それらを Azure サービスにデプロイする方法を学習します。
 
 ## Stream Analytics ジョブの作成
 
-[Azure ポータル](http://manage.windowsazure.com)で Stream Analytics を開き、ページの左下隅にある **[新規]** をクリックして、新しい分析ジョブを作成します。
+[Azure ポータル](http://manage.windowsazure.com)で Stream Analytics を選択し、ページの左下隅にある **[新規]** ボタンをクリックして、新しい分析ジョブを作成します。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
+![Create a new Stream Analytics job](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 **[簡易作成]** をクリックします。
 
@@ -63,60 +63,60 @@ Contoso は工業オートメーション スペースの製造会社で、自�
 
 ページ下部の **[Stream Analytics ジョブの作成]** をクリックします。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
+![Storage account configuration](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.jpg)
 
 ## Azure Stream Analytics クエリ
 
-[クエリ] タブをクリックし、クエリ エディターに移動します。[クエリ] タブには、入力データに対して変換を実行する SQL クエリが表示されます。
+[クエリ] タブをクリックし、クエリ エディターに移動します。[クエリ] タブには、入力イベント データに対して変換を実行する T-SQL クエリが表示されます。
 
 ## 生データのアーカイブ
 
 クエリの最も単純な形式は、すべての入力データを指定された出力にアーカイブするパススルーです。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Archive job query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 ここで、[GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) からサンプル データ ファイルをコンピューター内の場所にダウンロードします。**PassThrough.txt** ファイルからクエリをコピーして貼り付けます。下の [テスト] ボタンをクリックし、ダウンロードした場所から **HelloWorldASA InputStream.json** という名前のデータ ファイルを選択します。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Test button in Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+![Test input stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 
-次のブラウザーでクエリの結果を確認できます。
+次のようにブラウザーでクエリの結果を確認できます。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Test results](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
-## 条件に基づいたデータのクレンジング
+## 条件に基づいたデータのフィルター処理
 
 条件に基づいて結果をフィルター処理しましょう。"SensorA" から取得されるイベントの結果のみを表示したいと考えます。クエリは **Filtering.txt** ファイルにあります。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
+![filtering a data stream](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-ここでは文字列値を比較し、その大文字と小文字が区別されることに注意してください。**[再実行]**ボタンをクリックして、クエリを実行します。クエリは、1860 イベントのうち 389 行だけを返すはずです。
+ここでは文字列値を比較し、その大文字と小文字が区別されることに注意してください。**[再実行]** ボタンをクリックして、クエリを実行します。クエリは、1860 イベントのうち 389 行だけを返すはずです。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
+![Second output results from query test](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
 ## ビジネス ワークフローをトリガーするアラート
 
-ここでクエリにもう少し工夫を加えてみましょう。すべてのセンサーの種類で、30 秒間隔で平均温度を監視し、平均温度が 100 度を超える場合にのみ結果を表示する場合、次のクエリを記述し、[再実行] をクリックして、結果を確認します。このクエリは **ThresholdAlerting.txt** ファイルにあります。
+それではクエリについて、もう少し詳しく説明します。すべてのセンサーの種類で、30 秒間隔で平均温度を監視し、平均温度が 100 度を超える場合にのみ結果を表示する場合、次のクエリを記述し、**[再実行]** をクリックして、結果を確認します。このクエリは **ThresholdAlerting.txt** ファイルにあります。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
+![30 second filter query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-ご覧のように、結果には平均温度が 100 度を超えるセンサーの 245 行のみが含まれます。このクエリでは、センサー名である dspl 別に、30 秒の**タンブリング ウィンドウ**でイベントをグループ化しています。このような一時的なクエリを実行する場合、時間の進め方を示すことが必要です。**TIMESTAMP BY** 句を使用して、すべての一時的な計算に、時間を進める方法として、"time" 列を指定しました。詳細については、MSDN の[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[ウィンドウ](https://msdn.microsoft.com/library/azure/dn835019.aspx)に関するトピックを参照してください。
+ご覧のように、結果に含まれるのは 245 行のみで、平均温度が 100 度を超えるセンサーが一覧表示されます。このクエリでは、センサー名である **dspl** 別に、30 秒の**タンブリング ウィンドウ**でイベントをグループ化しています。このような一時的なクエリを実行する場合、時間の進め方を示すことが必要です。**TIMESTAMP BY** 句を使用して、すべての一時的な計算に、時間を進める方法として、"time" 列を指定しました。詳細については、MSDN の[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[ウィンドウ関数](https://msdn.microsoft.com/library/azure/dn835019.aspx)に関するトピックを参照してください。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
+![Temp over 100](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-## パターンの欠落の検出
+## イベントがないことを検出する
 
-パターンの欠落を見つけるクエリはどのように記述すればよいでしょうか。 たとえば、センサーが最後にデータを送信し、次の 1 分間イベントを送信しなかったタイミングを見つけましょう。このクエリは **AbsenseOfEvent.txt** ファイルにあります。
+入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 こうしたクエリの記述はごく簡単です。センサーが最後にデータを送信してから 1 分間イベントを送信しなかったタイミングを見つけましょう。このクエリは **AbsenseOfEvent.txt** ファイルにあります。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
+![Detect absence of events](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-12.png)
 
 ここでは、同じデータ ストリームに対して **LEFT OUTER JOIN** を使用しています (自己結合)。内部結合では、一致が見つかった場合にのみ結果が返されます。ただし、**LEFT OUTER** 結合では、結合の左側からのイベントが一致していない場合、右の行のすべての列に対して NULL を含む行が返されます。この手法は、イベントの欠落を見つけるためにきわめて便利です。[JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) の詳細については MSDN ドキュメントを参照してください。
 
-![](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
+![join results](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-13.png)
 
 ## まとめ
 
-このチュートリアルでは、基本的にさまざまな SAQL クエリの作成を開始し、ブラウザーで、データのさまざまなパターンの結果を確認します。ただし、これはほんの導入部に過ぎません。Stream Analytics でできることはたくさんあります。次に学ぶことは、Stream Analytics ジョブを入力と出力に関連付け、それを Azure にデプロイすることです。[学習マップ](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/) ガイドを使用して、Stream Analytics の詳細を探究することができます。クエリの作成の詳細については、[一般的なクエリ パターン](./stream-analytics-stream-analytics-query-patterns.md#query-example-detect-the-absence-of-events)に関する記事をご覧ください。
+このチュートリアルの目的は、Stream Analytics クエリ言語を使ったさまざまなクエリを記述し、その結果をブラウザーで確認する方法を紹介することです。ただし、これはほんの導入部に過ぎません。Stream Analytics でできることはたくさんあります。Stream Analytics は多様な入出力に対応していることに加え、Azure Machine Learning の関数も利用できることから、データ ストリームを分析するうえで強力な手段となっています。[学習マップ](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)を使用して、Stream Analytics の詳細を探究することができます。クエリの作成の詳細については、[一般的なクエリ パターン](./stream-analytics-stream-analytics-query-patterns.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

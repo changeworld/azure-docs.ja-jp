@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="yurid"/>
 
 # Azure セキュリティの MVP プログラム
@@ -28,4 +28,4 @@ Microsoft Azure では、Azure セキュリティに関する特別な専門知�
 
 Azure セキュリティの専門家ですか? 専門家をご存知ですか? [自分自身または他のユーザーを指名して](https://mvp.microsoft.com/Nomination/nominate-an-mvp)、今すぐ Azure セキュリティ MVP になりましょう。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -44,7 +44,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 
 ## Git 発行
 
-「[Azure App Service での GIT を使用した継続的なデプロイメント](web-sites-publish-source-control.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
+「[Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
 
 Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
 
@@ -385,4 +385,4 @@ Python 3.4 用の`web.config` の例:
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0803_2016-->

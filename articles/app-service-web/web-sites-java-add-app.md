@@ -25,7 +25,7 @@
 - Azure Marketplace を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\bin\\application\_server\\webapps** という形式になります (**application\_server** は、Web アプリのインスタンスで有効になっているアプリケーション サーバーの名前です)。
 - Azure の構成 UI を使用して Web アプリを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\webapps** という形式になります。
 
-継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web アプリにソース管理を使用する手順は、「[Azure App Service の GIT を使用する継続的な展開](web-sites-publish-source-control.md)」で参照できます。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
+[継続的な統合シナリオ](app-service-continuous-deployment.md)などで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
 
 WAR ファイルを **webapps** フォルダーにアップロードすると、Tomcat アプリケーション サーバーで WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Tomcat Java Web アプリの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。
 
@@ -40,4 +40,4 @@ WAR ファイルを **webapps** フォルダーにアップロードすると、
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -103,7 +103,7 @@ Web コンテンツを Web サーバーに手動でコピーすることに慣�
 ###<a name="vsts"></a>クラウド ベースのソース管理サービスから継続的にデプロイする方法
 [Azure ポータル](https://portal.azure.com)では、GitHub、Bitbucket、および Visual Studio Team Services からの継続的なデプロイを構成できます。
 
-* [Azure App Service への継続的なデプロイ](app-service-continous-deployment.md)。
+* [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)。
 
 ## <a name="localgitdeployment"></a>ローカル Git からのデプロイ
 開発チームで Git に基づくオンプレミスのローカル ソース コード管理 (SCM) サービスを使用している場合は、App Service へのデプロイ ソースとしてこれを構成できます。
@@ -234,4 +234,4 @@ Azure のロールベースのアクセス許可を使用して、App Service �
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

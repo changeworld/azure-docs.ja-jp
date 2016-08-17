@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/02/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -657,7 +657,13 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `String PCase(string)`
 
+**解説:**
+
+- 現在この関数では、頭字語などの大文字のみで構成された単語を変換する際に、大文字と小文字を正しく区別することができません。
+
 **例:** `PCase("TEsT")` "Test" を返します。
+
+`PCase(LCase("TEST"))` "Test" を返します。
 
 ----------
 ### RandomNum
@@ -738,7 +744,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列
 - NumChars: 文字列の右端から数えて返される文字数を指定する数値
 
-**解説:** 文字列の last 位置から数えて numChars 文字分の文字が返されます。
+**解説:** 文字列の末尾から数えて numChars 文字分の文字が返されます。
 
 文字列内の最後の numChars 文字分の文字を含む文字列。
 
@@ -859,4 +865,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

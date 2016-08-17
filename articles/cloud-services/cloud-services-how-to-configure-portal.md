@@ -13,11 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/22/2016"
+	ms.date="07/27/2016"
 	ms.author="adegeo"/>
-
-
-
 
 # Cloud Services の構成方法
 
@@ -56,7 +53,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 - ディスクの書き込み
 - ネットワーク受信
 - ネットワーク送信
-- CPU の割合 
+- CPU の割合
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
@@ -113,4 +110,4 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

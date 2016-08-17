@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/16/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ
@@ -30,12 +30,12 @@
 
 Azure Multi-factor Authentication Server と同じサーバーにユーザー ポータルをインストールするには、次の前提条件が必要です。
 
-- asp.net および IIS 6 メタ ベース互換性を含め、IIS をインストールする必要があります(IIS 7 以降の場合)。 
+- asp.net および IIS 6 メタ ベース互換性を含め、IIS をインストールする必要があります(IIS 7 以降の場合)。
 - ログインしているユーザーに、コンピューターとドメイン (該当する場合) に対する管理者権限が必要です。このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要だからです。
 
 ### Azure Multi-Factor Authentication Server のユーザー ポータルをデプロイするには
 
-1. Azure Multi-Factor Authentication Server 内で: 左側のメニューの [ユーザー ポータル] アイコンをクリックし、[ユーザー ポータルのインストール] ボタンをクリックします。 
+1. Azure Multi-Factor Authentication Server 内で: 左側のメニューの [ユーザー ポータル] アイコンをクリックし、[ユーザー ポータルのインストール] ボタンをクリックします。
 1. [次へ] をクリックします。
 1. [次へ] をクリックします。
 1. コンピューターがドメインに参加しており、ユーザー ポータルと Azure Multi-Factor Authentication サービスの間の通信をセキュア保護するための Active Directory 構成が完了していない場合、Active Directory の手順が表示されます。[次へ] ボタンをクリックし、この構成を自動的に完了します。
@@ -80,7 +80,7 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 別のサーバーにユーザー ポータルをインストールする前に、以下の点に留意してください。
 
 - インターネットに接続された Web サーバーで Web ブラウザーを開き、web.config ファイルに入力された Web サービス SDK の URL に移動することをお勧めします。ブラウザーが Web サービスを正常に取得できる場合、資格情報が求められます。web.config ファイルに入力したユーザー名とパスワードを、ファイルに表示されているとおりに入力します。証明書の警告およびエラーが表示されないことを確認してください。
-- リバース プロキシまたはファイアウォールがユーザー ポータル Web サーバーの前面に配置され SSL オフロードを実行している場合、ユーザー ポータルの web.config ファイルを編集し、以下のキーを <appSettings> セクションに追加することで、ユーザー ポータルで https ではなく http を使用できるようにします。<add key="SSL_REQUIRED" value="false"/>
+- リバース プロキシまたはファイアウォールがユーザー ポータル Web サーバーの前面に配置され SSL オフロードを実行している場合、ユーザー ポータルの web.config ファイルを編集し、<add key="SSL\_REQUIRED" value="false"/> キーを <appSettings> セクションに追加することで、ユーザー ポータルで https ではなく http を使用できるようにします。
 
 #### ユーザー ポータルをインストールするには
 
@@ -89,7 +89,7 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 3. MultiFactorAuthenticationUserPortalSetup64 のインストール ファイルを実行し、必要に応じて、サイトと仮想ディレクトリの名前を変更します。
 4. ユーザー ポータルのインストールを完了したら、C:\\inetpub\\wwwroot\\MultiFactorAuth (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。
 5. USE\_WEB\_SERVICE\_SDK キーを見つけて、値を false から true に変更します。WEB\_SERVICE\_SDK\_AUTHENTICATION\_USERNAME および WEB\_SERVICE\_SDK\_AUTHENTICATION\_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのメンバーであるサービス アカウントのユーザー名およびパスワードに値を設定します (上記の「要件」セクションを参照)。行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。修飾されたユーザー名 (domain\\username や machine\\username など) を使用することをお勧めします。
-6. pfup\_pfwssdk\_PfWsSdk 設定を見つけ、値を "http://localhost:4898/PfWsSdk.asmx" から Azure Multi-Factor Authentication Server で実行されている Web Service SDK の URL に変更します (例: https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx))。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。
+6. pfup\_pfwssdk\_PfWsSdk 設定を見つけ、値を "http://localhost:4898/PfWsSdk.asmx" から Azure Multi-Factor Authentication Server で実行されている Web Service SDK の URL に変更します (例: https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx)。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。
 7. 既定の Web サイトの直下などにユーザー ポータルがインストールされた Web サイトがまだ公的署名証明書にバインドされていない場合、証明書がまだインストールされていないならサーバーにインストールし、IIS マネージャーを開き証明書を Web サイトにバインドします。
 8. 任意のコンピューターから Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://www.publicwebsite.com/MultiFactorAuth)。証明書の警告およびエラーが表示されないことを確認してください。
 
@@ -100,7 +100,7 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 Azure Multi-Factor Authentication Server にはユーザー ポータル用のさまざまなオプションがあります。次の表に、これらのオプションとそれぞれの使用目的を示します。
 
-ユーザー ポータル設定|説明|
+ユーザー ポータル設定|Description|
 :------------- | :------------- | 
 ユーザー ポータル URL| ポータルがホストされる場所の URL を入力できます。
 プライマリ認証| ポータルにサインインするときに使用する認証の種類を指定できます。Windows 認証、Radius 認証または LDAP 認証のいずれかです。
@@ -189,4 +189,4 @@ SAML を使用する ID プロバイダーからの要求を受け入れるよ�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -540,7 +540,7 @@ POD:
 	    NSString *clientId = @"INSERT-CLIENT-ID-HERE";
 	    NSURL *redirectUri = [[NSURL alloc]initWithString:@"INSERT-REDIRECT-URI-HERE"];
 	    ADAuthenticationError *error;
-	    ADAuthenticationContext authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
+	    ADAuthenticationContext *authContext = [ADAuthenticationContext authenticationContextWithAuthority:authority error:&error];
 	    authContext.parentController = parent;
 	    [ADAuthenticationSettings sharedInstance].enableFullScreen = YES;
 	    [authContext acquireTokenWithResource:resourceId
@@ -792,4 +792,4 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

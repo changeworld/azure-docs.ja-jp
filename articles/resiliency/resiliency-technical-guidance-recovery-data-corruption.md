@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Azure の回復性技術ガイダンス - データの破損または偶発的な削除からの復旧
 
@@ -91,4 +91,4 @@ Azure のバックアップと復元の機能の詳細については、「[ス�
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明した一連の記事の一部です。回復性、障害復旧、高可用性に関するその他のリソースを探している場合は、Azure の回復性技術ガイダンスの「[その他のリソース](./resiliency-technical-guidance.md#additional-resources)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

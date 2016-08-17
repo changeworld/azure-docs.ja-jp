@@ -1,40 +1,40 @@
-## How to create VNet Peering in Azure portal
+## Azure ポータルで VNet ピアリングを作成する方法
 
-To create a VNet peering based on the scenario above by using the Azure portal, follow the steps below.
+上記のシナリオに基づいた VNet ピアリングを Azure ポータルから作成するには、次の手順に従います。
 
-1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
-2. To establish VNET peering, you need to create two links, one for each direction, between two VNets. You can create VNET peering link for VNET1 to VNET2 first. On the portal, 
-Click **Browse** > **choose Virtual Networks** 
+1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+2. VNET ピアリングを確立するには、2 つの VNet 間で 2 つのリンク (各方向につき 1 つ) を作成する必要があります。まず、VNET1 から VNET2 への VNET ピアリング リンクを作成しましょう。ポータルで **[参照]** をクリックし、**[仮想ネットワーク]** を選択します。
 
-	![Create VNet peering in Azure portal](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure01.png)
+	![Azure ポータルで VNet ピアリングを作成する](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure01.png)
 
-3. In Virtual Networks blade, choose VNET1, click Peerings, then click Add
+3. [仮想ネットワーク] ブレードで [VNET1] を選択し、[ピアリング]、[追加] の順にクリックします。
 
-	![Choose peering](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure02.png)
+	![ピアリングの選択](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure02.png)
 
-4. In the Add Peering blade, give a peering link name LinkToVnet2, choose the subscription and the peer Virtual Network VNET2, click OK.
+4. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet2」という名前を付け、サブスクリプションとピア仮想ネットワーク (VNET2) を選択して [OK] をクリックします。
 
-	![Link to VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure03.png)
+	![VNet へのリンク](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure03.png)
 
-5. Once this VNET peering link is created. You can see the link state as following:
+5. この VNET ピアリング リンクが作成されると、リンクの状態が次のように表示されます。
 
-	![Link State](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure04.png)
+	![リンクの状態](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure04.png)
 
-6. Next create the VNET peering link for VNET2 to VNET1. In Virtual Networks blade, choose VNET2, click Peerings, then click Add 
+6. 次に VNET2 から VNET1 への VNWT ピアリング リンクを作成します。[仮想ネットワーク] ブレードで [VNET2] を選択し、[ピアリング]、[追加] の順にクリックします。
 
-	![Peer from other VNet](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure05.png)
+	![他の VNet からのピア](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure05.png)
 
-7. In the Add Peering blade, give a peering link name LinkToVnet1, choose the subscription and the peer Virtual Network, Click OK.
+7. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet1」という名前を付け、サブスクリプションとピア仮想ネットワークを選択して [OK] をクリックします。
 
-	![Creating virtual network tile](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure06.png)
+	![仮想ネットワーク タイルの作成](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure06.png)
 
-8. Once this VNET peering link is created. You can see the link state as following:
+8. この VNET ピアリング リンクが作成されると、リンクの状態が次のように表示されます。
 
-	![Final link state](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure07.png)
+	![最終的なリンクの状態](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure07.png)
 
-9. Check the state for LinkToVnet2 and it now changes to Connected as well.  
+9. LinkToVnet2 の状態を確認すると、こちらも "接続済み" に変わっています。
 
-	![Final link state 2](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure08.png)
+	![最終的なリンクの状態 2](./media/virtual-networks-create-vnetpeering-arm-pportal-include/figure08.png)
 
-10. NOTE: VNET peering is only established if both links are connected. 
+10. 注: VNET ピアリングは両方のリンクが接続されている場合にのみ確立されます。
 
+<!---HONumber=AcomDC_0803_2016-->

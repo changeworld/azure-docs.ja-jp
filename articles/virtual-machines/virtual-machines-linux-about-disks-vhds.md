@@ -25,10 +25,13 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 [AZURE.INCLUDE [virtual-machines-common-about-disks-vhds](../../includes/virtual-machines-common-about-disks-vhds.md)]
 
+## トラブルシューティング
+[AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
+
 ## 次のステップ
 
 -  [ディスクのアタッチ](virtual-machines-linux-attach-disk-portal.md)による VM 用のストレージの追加。
 -  冗長性を持たせるための[ソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)。
 -  追加の VM を短時間でデプロイできるようにするための [Linux 仮想マシンのキャプチャ](virtual-machines-linux-classic-capture-image.md)。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -4,7 +4,7 @@
    keywords=""
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -53,7 +53,7 @@ Azure のクエリ ストアは、制限されたリソース (CPU、メモリ�
 
 Azure SQL Database は、収集されたデータを使用して、次の操作を行います。
 
-- ***多数のデータベースの使用パターンを学習して、機能の信頼性と品質を向上させる:*** クエリ ストアは、Azure SQL Database が更新されるたびに機能が向上します。 
+- ***多数のデータベースの使用パターンを学習して、機能の信頼性と品質を向上させる:*** クエリ ストアは、Azure SQL Database が更新されるたびに機能が向上します。
 - ***クエリ ストアによって発生している問題を解決するか軽減する:*** Azure SQL Database は、ユーザーのワークロードに大きな影響を与えている問題を、短時間 (1 時間未満) で検出して軽減できます。ほとんどの場合、問題は、クエリ ストアを一時的に ***OFF*** にすることで処理されます。
 
 クエリ ストアの更新によって、内部構成に適用される既定値が変更される場合があります (ユーザー向けの外部構成でも同じことが起こることがありますが、それはめったに発生しません)。その結果、Azure プラットフォームで実行される自動操作によって、Azure SQL Database でのクエリ ストアのカスタマー エクスペリエンスがオンプレミス環境とは違ってくる可能性があります。
@@ -93,7 +93,7 @@ Azure SQL Database は、収集されたデータを使用して、次の操作�
 
 詳細については、次の記事を参照してください。
 
-- [データベースのためのフライト データ レコーダー](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
+- [データベースのためのフライト データ レコーダー](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
 
 - [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
 
@@ -101,4 +101,4 @@ Azure SQL Database は、収集されたデータを使用して、次の操作�
 
 - [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

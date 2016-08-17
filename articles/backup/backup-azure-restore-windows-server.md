@@ -3,8 +3,8 @@
    description="Windows Server または Windows クライアントからの復元方法について説明します。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="saurabhsensharma"
+   manager="shivamg"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="05/10/2016"
+	 ms.date="08/02/2016"
 	 ms.author="trinadhk; jimpark; markgal;"/>
 
 # Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
@@ -29,7 +29,7 @@
 
 いずれの場合も、データは Azure Recovery Services コンテナーから取得されます。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
 
 ## 同じコンピューターへのデータの回復
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
@@ -117,4 +117,4 @@
 ## 次のステップ
 - ファイルとフォルダーを回復したので、[バックアップを管理](backup-azure-manage-windows-server.md)できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

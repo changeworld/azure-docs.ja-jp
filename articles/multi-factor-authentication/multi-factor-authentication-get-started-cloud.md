@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # クラウドでの Azure Multi-Factor Authentication Server の概要
@@ -90,4 +90,4 @@
 ## 次のステップ
 クラウド側の多要素認証を設定したら、デプロイ側の構成とセットアップを行います。「Azure Multi-Factor Authentication の構成」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,8 +3,8 @@
    description="Azure でのデータのバックアップと復元を可能にするテープのようなセマンティクスを Azure Backup が提供する方法について説明します。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="trinadhk"
+   manager="vijayts"
    editor=""/>
 <tags
    ms.service="backup"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
    ms.date="06/08/2016"
-   ms.author="jimpark;"/>
+   ms.author="jimpark;trinadhk;markgal"/>
 
 # Azure Backup を使用してテープのインフラストラクチャを置換する
 Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。
@@ -71,4 +71,4 @@ Azure Backup について詳しくは、以下をご覧ください。
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

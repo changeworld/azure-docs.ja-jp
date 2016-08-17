@@ -3,8 +3,8 @@
 	description="Azure Backup サービスを使用した SQL Server データベースのバックアップの概要"
 	services="backup"
 	documentationCenter=""
-	authors="giridharreddy"
-	manager="shreeshd"
+	authors="adigan"
+	manager="Nkolli1"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="07/01/2016"
-	ms.author="giridham; jimpark;"/>
+	ms.author="giridham; jimpark;markgal;trinadhk"/>
 
 
 # DPM を使用した SQL Server ワークロード用 Azure Backup
@@ -174,4 +174,4 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 • [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

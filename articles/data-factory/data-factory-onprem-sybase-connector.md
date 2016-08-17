@@ -30,7 +30,7 @@ Data Factory は、他のデータ ストアから Sybase へのデータの移�
 
 Data Management Gateway で Sybase データベースに接続するには、[Sybase のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)を Data Management Gateway と同じシステムにインストールする必要があります。
 
-> [AZURE.NOTE] 接続/ゲートウェイに関する問題をトラブルシューティングするためのヒントについては、「[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)」を参照してください。
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 ## サンプル: Sybase から Azure BLOB にデータをコピーする
 このサンプルは、Sybase データベースから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
@@ -270,4 +270,4 @@ Sybase では、T-SQL と T-SQL 型をサポートします。sql 型から .NET
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、そのパフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

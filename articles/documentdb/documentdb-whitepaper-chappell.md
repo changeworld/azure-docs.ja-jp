@@ -13,10 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/28/2016" 
+	ms.date="07/29/2016" 
 	ms.author="mimig"/>
 
 # Introducing DocumentDB - A NoSQL Database for Microsoft Azure 
+
+> [AZURE.NOTE] このホワイト ペーパーが最後に更新されたのは 2015 年であり、[データのグローバル配布](documentdb-distribute-data-globally.md)や[パーティション分割コレクション](documentdb-partition-data.md)などの DocumentDB の更新はまだ反映されていません。DocumentDB の最新の概要については、「[DocumentDB の概要: NoSQL JSON Database](documentdb-introduction.md)」をご覧ください。
 
 お使いのアプリケーションやデータに DocumentDB が最適かどうか確信が持てませんか。 それとも、JSON データを Azure DocumentDB に格納しアクセスする方法について学習したいとお考えですか。 そのような場合は、David Chappell 氏の入門ホワイト ペーパーから始めることをお勧めします。このホワイトペーパーでは、スキーマにとらわれない柔軟な JSON データを活用する方法 (データ構造を容易に変更できるようになります) が説明されています。
 
@@ -31,4 +33,4 @@
 **PDF ダウンロード**: [DocumentDB の概要 - Microsoft Azure の NoSQL データベースに関するドキュメント](http://go.microsoft.com/fwlink/?LinkId=511318)
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -4,7 +4,7 @@
 	authors="stepsic-microsoft-com" 
 	manager="dwrede" 
 	editor="" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=""/>
 
 <tags
@@ -464,4 +464,4 @@ API アプリを事前にデプロイしてある場合、**HTTP** アクショ�
 ## 近日提供予定: Enterprise Integration API
 現時点では、まだ Enterprise Integration API の管理されたバージョン (AS2 など) は用意できていません。[ロードマップ](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/)に記載されているとおり、この API は近日提供予定です。それまでは、前述の「既にデプロイ済みの API アプリを 2015-08-01-preview で使用する」で説明したように、HTTP アクションを通じてデプロイ済みの BizTalk API を使用してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

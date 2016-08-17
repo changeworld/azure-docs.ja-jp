@@ -3,7 +3,7 @@
    description="このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -12,16 +12,17 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 # Application Gateway の作成、起動、または削除
 
 Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロードなどのアプリケーション配信機能を備えています。
 
 > [AZURE.SELECTOR]
-- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
+- [Azure ポータル](application-gateway-create-gateway-portal.md)
 - [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 
 
@@ -40,15 +41,15 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 ## Application Gateway の作成に必要な構成
 
 
-**New-AzureApplicationGateway** コマンドを使用して Application Gateway を作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成する必要があります。
+**New-AzureApplicationGateway** コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成する必要があります。
 
 
 値は次のとおりです。
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 
@@ -60,7 +61,7 @@ Application Gateway を作成するには:
 2. 構成 XML ファイルまたは構成オブジェクトを作成します。
 3. 新しく作成した Application Gateway のリソースに構成をコミットします。
 
->[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する](application-gateway-create-probe-classic-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
+>[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-classic-ps.md)に関するページを参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
 
 
 ### Application Gateway リソースの作成
@@ -111,7 +112,7 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 次の例では、XML ファイルを使用して、すべての Application Gateway 設定を構成し、Application Gateway のリソースにコミットします。
 
-### 手順 1.  
+### 手順 1  
 
 次のテキストをメモ帳にコピーします。
 
@@ -223,11 +224,11 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 ## 構成オブジェクトを使用して Application Gateway を構成する
 
-次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。すべての構成項目は個別に構成した後に、Application Gateway の構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、**Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成した Application Gateway のリソースに構成をコミットします。
+次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。すべての構成項目は個別に構成した後に、Application Gateway の構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、**Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
 
 >[AZURE.NOTE] 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
 
-### 手順 1.
+### 手順 1
 
 すべての個別の構成項目を作成します。
 
@@ -322,7 +323,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 ### 手順 3.
 
-**Set-AzureApplicationGatewayConfig** を使用して、構成オブジェクトを Application Gateway リソースにコミットします。
+**Set-AzureApplicationGatewayConfig** を使用して、アプリケーション ゲートウェイのリソースに構成オブジェクトをコミットします。
 
 	Set-AzureApplicationGatewayConfig -Name AppGwTest -Config $appgwconfig
 
@@ -347,7 +348,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 **Get-AzureApplicationGateway** コマンドレットを使用して、ゲートウェイの状態を確認します。前の手順で **Start-AzureApplicationGateway** が成功した場合、*State* は Running になり、*Vip* と *DnsName* に有効な値が入ります。
 
-次の例では、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 方向のトラフィックを受け入れる準備が完了している Application Gateway を示します。
+次の例では、起動に成功し、実行中で、`http://<generated-dns-name>.cloudapp.net` 方向のトラフィックを受け入れる準備が完了しているアプリケーション ゲートウェイを示します。
 
 	Get-AzureApplicationGateway AppGwTest
 
@@ -382,7 +383,7 @@ Application Gateway を削除するには:
 	----       ----------------     ------------                             ----
 	Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 
-Application Gateway が停止状態になったら、**Remove-AzureApplicationGateway** コマンドレットを使用してサービスを削除します。
+アプリケーション ゲートウェイが停止状態になったら、**Remove-AzureApplicationGateway** コマンドレットを使用してサービスを削除します。
 
 
 	Remove-AzureApplicationGateway AppGwTest
@@ -405,13 +406,13 @@ Application Gateway が停止状態になったら、**Remove-AzureApplicationGa
 
 ## 次のステップ
 
-SSL オフロードを構成する場合は、「[クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
+SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 
-内部ロード バランサーと共に使用するように Application Gateway を構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

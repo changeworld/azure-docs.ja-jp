@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/19/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Azure CDN 開発の概要
@@ -337,4 +337,4 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 Azure CDN Management Library for .NET に関連するドキュメントについては、[MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

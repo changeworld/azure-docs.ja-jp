@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/02/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Azure Mobile Engagement Android SDK の詳細な構成
@@ -118,4 +118,4 @@ Engagement では、この設定を管理するために設定ファイル内で
 	  android:summaryOn="Engagement is enabled."
 	  android:summaryOff="Engagement is disabled." />
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

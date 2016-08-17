@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="larryfr"/>
 
 # HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
@@ -115,7 +115,7 @@ Event Hubs は、この例のデータ ソースです。新しい Event Hub を
 
     ![Cloud Explorer](./media/hdinsight-storm-develop-csharp-event-hub-topology/createtablestorage.png)
 
-5. ストレージ アカウントの __[テーブル]__ を右クリックしてして、__[テーブルの作成]__ をクリックします。求められたら、テーブルの名前として「**events**」と入力します。後の手順で必要になるので、名前を保存します。
+5. ストレージ アカウントの __[テーブル]__ を右クリックしてして、__[テーブルの作成]__ をクリックします。入力を求められたら、テーブルの名前として「**events**」と入力します。後の手順で必要になるので、名前を保存します。
 
 ## EventHubWriter の作成
 
@@ -572,4 +572,4 @@ EventHubSpout は Zookeeper ノードに対する状態へのチェックポイ�
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

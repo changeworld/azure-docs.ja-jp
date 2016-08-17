@@ -119,11 +119,11 @@ OMS ワークスペースにアラート管理ソリューションを追加す�
 |:--|:--|
 | Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR | 過去 24 時間以内に発生した重大なアラート |
 | Type=Alert AlertSeverity=warning TimeRaised>NOW-24HOUR | 過去 24 時間以内に発生した警告アラート |
-| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR | measure count() as Count by SourceDisplayName | 過去 24 時間以内に発生したアクティブなアラートが存在するソース |
+| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR &#124; measure count() as Count by SourceDisplayName | 過去 24 時間以内に発生したアクティブなアラートが存在するソース |
 | Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed | 過去 24 時間以内に発生し、まだ解決されていない重大なアラート |
 | Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed | 過去 24 時間以内に発生したものの、既に解決されている重大なアラート |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY | measure count() as Count by AlertSeverity | 過去 1 日以内に発生したアラートを重大度に基づいてグループ化 |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY | sort RepeatCount desc | 過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
+| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; measure count() as Count by AlertSeverity | 過去 1 日以内に発生したアラートを重大度に基づいてグループ化 |
+| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; sort RepeatCount desc | 過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
 
 ## 次のステップ
 

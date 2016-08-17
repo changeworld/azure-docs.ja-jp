@@ -3,8 +3,8 @@
    description="このページでは、ExpressRoute 回線のルーティングを構成および管理するための詳細な要件について説明します。"
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="ganesr"
+   manager="rossort"
    editor=""/>
 <tags
    ms.service="expressroute"
@@ -12,8 +12,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/01/2016"
-   ms.author="cherylmc"/>
+   ms.date="08/10/2016"
+   ms.author="ganesr"/>
 
 
 # ExpressRoute のルーティングの要件  
@@ -35,10 +35,10 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
  - ルーティング インターフェイス用に、1 つの /29 サブネットまたは 2 つの /30 サブネットを予約する必要があります。
  - ルーティングに使用するサブネットには、プライベート IP アドレスまたはパブリック IP アドレスを指定できます。
  - サブネットと、Microsoft クラウドで使用するために顧客によって予約された範囲とが競合しないようにする必要があります。
- - /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
+ - /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。
 	 - 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
 	 - それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
-	 - [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。  
+	 - [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 
 #### プライベート ピアリング用の例
 
@@ -55,8 +55,8 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 
 ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。
 
-- ユーザーは、一意の /29 サブネットまたは 2 つの /30 サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。 
-- /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。 
+- ユーザーは、一意の /29 サブネットまたは 2 つの /30 サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。
+- /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。
 	- 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
 	- それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
 	- [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
@@ -124,6 +124,8 @@ Microsoft は、パブリック ピアリングと Microsoft ピアリングを�
 | | 米国東部 | 12076:51004 |
 | | 米国東部 2 | 12076:51005 |
 | | 米国西部 | 12076:51006 |
+| | 米国西部 2 | 12076:51022 |
+| | 米国中西部 | 12076:51023 |
 | | 米国中北部 | 12076:51007 |
 | | 米国中南部 | 12076:51008 |
 | | 米国中央部 | 12076:51009 |
@@ -171,6 +173,6 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 
 	- [クラシック デプロイメント モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
 	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
-	- [クラシック VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNet を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
+	- [クラシック VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジックアプリでの Azure リソース コネクタの使用 | Microsoft Azure App Service"
    description="Azure リソース コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="stepsic-microsoft-com"
    manager="erikre"
@@ -98,4 +98,4 @@ Get metrics | リソース ID のメトリックを取得します。
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

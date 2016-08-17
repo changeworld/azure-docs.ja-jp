@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="powershell"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="07/29/2016"
    ms.author="cawa"/>
 
 # Azure PowerShell コマンドを使用して空のクラウド サービス コンテナーを作成する
@@ -48,4 +48,4 @@ Get-help New-AzureService
 
  * Azure にクラウド サービス プロジェクトを発行する方法については、「[Azure でのクラウド サービスの継続的な配信](cloud-services-dotnet-continuous-delivery.md)」の **PublishCloudService.ps1** コード サンプルを参照してください。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

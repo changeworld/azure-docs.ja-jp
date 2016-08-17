@@ -14,30 +14,29 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/06/2016"
+	ms.date="08/02/2016"
 	ms.author="cynthn"/>
 
 # Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする
 
 
-この記事では、Windows オペレーティング システムの仮想ハード ディスク (VHD) をアップロードして、Azure Resource Manager デプロイメント モデルを使用して新しい Windows Virtual Machines (VM) を作成する方法について説明します。Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
-
+この記事では、VM をすばやく作成できるように、Windows の仮想ハード ディスク (VHD) イメージを作成してアップロードする方法を示します。Azure でのディスクと VHD の詳細については、「[仮想マシン用のディスクと VHD について](virtual-machines-linux-about-disks-vhds.md)」を参照してください。
 
 
 ## 前提条件
 
 この記事では、以下のことを前提としています。
 
-- **Azure サブスクリプション** - まだお持ちでない場合は、[無料で Azure アカウントを開いて](/pricing/free-trial/?WT.mc_id=A261C142F)、[MSDN サブスクライバ―の特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+- **Azure サブスクリプション** - まだお持ちでない場合は、[無料で Azure アカウントを開く](/pricing/free-trial/?WT.mc_id=A261C142F)か、[MSDN サブスクライバ―の特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 
 - **Azure PowerShell バージョン 1.4 以降** - インストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-- **Windows を実行する仮想マシン** - オンプレミスの仮想マシンを作成するための多くのツールがあります。たとえば、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。Azure でサポートされている Windows オペレーティング システムの詳細については、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
+- **Windows を実行する仮想マシン** - オンプレミスの仮想マシンを作成するための多くのツールがあります。たとえば、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。Azure でサポートされている Windows オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
 
 
-## VM が適切なファイル形式になっていることを確認します。
+## VM が適切なファイル形式になっていることを確認する
 
-Azure では、VHD ファイル形式で保存された[第 1 世代の仮想マシン](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx)のイメージのみが受け入れられます。VHD のサイズは、固定およびメガバイトの整数にする必要があります (例: 8 で割り切ることのできる数)。VHD のサイズの上限は、1,023 GB です。
+Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx)のみを使用できます。VHD は、固定サイズで、メガバイトの整数 (つまり、8 で割り切ることのできる数) にする必要があります。VHD のサイズの上限は、1,023 GB です。
 
 - VHDX 形式の Windows VM イメージがある場合は、次のいずれかを使用して VHD に変換します。
 
@@ -50,7 +49,7 @@ Azure では、VHD ファイル形式で保存された[第 1 世代の仮想マ
 
 ## VHD のアップロードを準備する
 
-このセクションでは、Windows 仮想マシンを一般化する方法を説明します。特に重要なのは、すべての個人アカウント情報を削除することです。通常、この VM イメージを使用して似た仮想マシンを迅速にデプロイする場合は、これを行う必要があります。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンを一般化する方法を説明します。特に重要なこととして、Sysprep は、すべての個人アカウント情報を削除します。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 1. Windows 仮想マシンへのサインイン
 
@@ -66,104 +65,80 @@ Azure では、VHD ファイル形式で保存された[第 1 世代の仮想マ
 
 	![Sysprep の開始](./media/virtual-machines-windows-upload-image/sysprepgeneral.png)
 
-</br> <a id="createstorage"></a>
-## Azure Storage アカウントの作成または検索
-
-VM イメージをアップロードするには、Azure にストレージ アカウントが必要です。既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。これには、Azure ポータルまたは PowerShell のいずれかを使用します。
-
-### Azure ポータルを使用して、Azure ストレージ アカウントを作成するには
-
-1. [ポータル](https://portal.azure.com)にサインインします。
-
-2. **[参照]**、**[ストレージ アカウント]** の順にクリックします。
-
-3. このイメージのアップロードに使用するストレージ アカウントがあるかどうかを確認します。ストレージ アカウントの名前をメモしておきます。既存のストレージ アカウントを使用する場合は、「[VM イメージのアップロード](#uploadvm)」セクションに進みます。
-
-4. 新しいストレージ アカウントを作成する場合は、**[追加]** をクリックして次の情報を入力します。
-
-	1. ストレージ アカウントの**名前**を入力します。3 ～ 24 文字で小文字と数字のみを含めることができます。この名前は、ストレージ アカウントの BLOB、ファイル、その他のリソースにアクセスするときに使用する URL の一部になります。
-	
-	2. **デプロイメント モデル**として *[Resource Manager]* を選択します。
-
-	3. 適切な **[アカウントの種類]**、**[パフォーマンス]**、および **[レプリケーション]** の値を選択します。情報アイコンをポイントすると、これらの値の詳細を確認することができます。
-
-	4. **リソース グループ**で *[+ 新規]* を選択するか、既存のリソース グループを選択します。新しいリソース グループを作成する場合、その名前を入力します。
-
-	5. ストレージ アカウントの**場所**を選択して、**[作成]** をクリックします。作成したアカウントが **[ストレージ アカウント]** パネルに表示されます。
-
-		![ストレージ アカウントの詳細の入力](./media/virtual-machines-windows-upload-image/portal_create_storage_account.png)
-
-	6. このステップと次のステップでは、このストレージ アカウントに BLOB コンテナーを作成する方法を説明します。イメージをアップロードして、イメージ用に新しい BLOB コンテナーを作成するには、PowerShell コマンドを使用することもできるため、このステップは省略可能です。BLOB コンテナーを自分で作成しない場合は、「[VM イメージのアップロード](#uploadvm)」セクションに進んでください。作成する場合は、**[サービス]** タイルの **[BLOB]** をクリックします。
-
-		![BLOB サービス](./media/virtual-machines-windows-upload-image/portal_create_blob.png)
-
-	7. BLOB のパネルが表示されたら、**[+ コンテナー]** をクリックして、新しい BLOB ストレージ コンテナーを作成します。コンテナーの名前と、アクセスの種類を入力します。
-
-		![新しい BLOB の作成](./media/virtual-machines-windows-upload-image/portal_create_container.png)
-
-  		> [AZURE.NOTE] 既定では、コンテナーはプライベートであり、アカウント所有者のみがアクセスできます。コンテナー内の BLOB にはパブリック読み取りアクセスを許可し、コンテナーのプロパティやメタデータにはアクセスを許可しない場合は、**[BLOB]** オプションを使用します。コンテナーと BLOB に完全パブリック読み取りアクセスを許可するには、**[コンテナー]** オプションを使用します。
-
-	8. **[BLOB サービス]** パネルに、新しい BLOB コンテナーが表示されます。このコンテナーの URL をメモしておいてください。PowerShell コマンドでイメージをアップロードするときに必要になります。URL の長さと画面の解像度によって、URL の一部が表示されない場合があります。このような場合は、右上隅の **[最大化]** アイコンをクリックして、パネルを最大化します。
+</br>
 
 
-### PowerShell を使用して、Azure ストレージ アカウントを作成するには
+## Azure へのログイン
 
 1. Azure PowerShell を開き、Azure アカウントにサインインします。
 
 		Login-AzureRmAccount
 
-	このコマンドではポップアップ ウィンドウが開くので、Azure の資格情報を入力します。
+	Azure アカウント資格情報を入力するためのポップアップ ウィンドウが開きます。
 
-2. 既定で選択されているサブスクリプション ID が作業するものと異なる場合は、次のいずれかのコマンドを使用して、適切なサブスクリプションを設定します。
+2. 使用可能なサブスクリプションのサブスクリプション ID を取得します。
 
-		Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+		Get-AzureRmSubscription
 
-	または
+3. このサブスクリプション ID を使用して、適切なサブスクリプションを設定します。
 
-		Select-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+		Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
 
-	Azure アカウントのサブスクリプションを検索するには、`Get-AzureRmSubscription` コマンドを使用します。
+	
+## ストレージ アカウントを取得する
 
-3. このサブスクリプションで使用可能なストレージ アカウントを検索します。
+アップロードした VM イメージを格納するには、Azure にストレージ アカウントが必要です。既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。
+
+使用できるストレージ アカウントを表示します。
 
 		Get-AzureRmStorageAccount
 
-	既存のストレージ アカウントを使用する場合は、「[VM イメージのアップロード](#uploadvm)」セクションに進みます。
+既存のストレージ アカウントを使用する場合は、「[VM イメージのアップロード](#upload-the-vm-image-to-your-storage-account)」セクションに進みます。
 
-4. このイメージを保持する新しいストレージ アカウントを作成する場合は、次の手順に従います。
+ストレージ アカウントを作成する場合は、次の手順に従います。
 
-	1. このストレージ アカウントのリソース グループがあることを確認します。サブスクリプションのすべてのリソース グループを検索するには、次のコマンドを使用します。
+1. このストレージ アカウントのリソース グループがあることを確認します。サブスクリプションのすべてのリソース グループを検索するには、次のコマンドを使用します。
 
-			Get-AzureRmResourceGroup
+		Get-AzureRmResourceGroup
 
-	2. 新しいリソース グループを作成する場合は、次のコマンドを使用します。
+2. リソース グループを作成するには、次のコマンドを使用します。
 
-			New-AzureRmResourceGroup -Name YourResourceGroup -Location "West US"
+		New-AzureRmResourceGroup -Name <resourceGroupName> -Location "West US"
 
-	3. このリソース グループに新しいストレージ アカウントを作成するには、次のコマンドを使用します。
+3. [New-AzureStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、このリソース グループのストレージ アカウントを作成します。
 
-			New-AzureRmStorageAccount -ResourceGroupName YourResourceGroup -Name YourStorageAccountName -Location "West US" -SkuName "Standard_GRS" -Kind "Storage"
+		New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Location "<location>" -SkuName "<skuName>" -Kind "Storage"
+			
+-SkuName の値が次のとおりであることを確認します。
+
+- **Standard\_LRS** - ローカル冗長ストレージ。
+- **Standard\_ZRS** - ゾーン冗長ストレージ。
+- **Standard\_GRS** - geo 冗長ストレージ。
+- **Standard\_RAGRS** - 読み取りアクセス geo 冗長ストレージ。
+- **Premium\_LRS** - Premium ローカル冗長ストレージ。
 
 
-</br> <a id="uploadvm"></a>
 
 ## ストレージ アカウントに VM イメージをアップロードする
 
-Azure PowerShell で次の手順を行って、ストレージ アカウントに VM イメージをアップロードします。イメージは、このアカウントの BLOB ストレージ コンテナーにアップロードされます。既存のコンテナーを使用することも、新しいコンテナーを作成することもできます。
+[Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) コマンドレットを使用して、ストレージ アカウント内のコンテナーにイメージをアップロードします。
 
-1. `Login-AzureRmAccount` を使用して、Azure PowerShell 1.0.x にサインインします。前のセクションで説明したように、`Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"` を使用して、適切なサブスクリプションを使用していることを確認します。
+		$rgName = "<resourceGroupName>"
+		$urlOfUploadedImageVhd = "<storageAccount>/<blobContainer>/<targetVHDName>.vhd"
+		Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd -LocalFilePath <localPathOfVHDFile>
 
-2. 次のように [Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) コマンドレットを使用して、ストレージ アカウントに汎用 Azure VHD を追加します。
+各値の説明:
 
-		Add-AzureRmVhd -ResourceGroupName YourResourceGroup -Destination "<StorageAccountURL>/<BlobContainer>/<TargetVHDName>.vhd" -LocalFilePath <LocalPathOfVHDFile>
+- **storageAccount** は、イメージのストレージ アカウントの名前です。
 
-	各値の説明:
-	- **StorageAccountURL** は、ストレージ アカウントの URL です。通常、`https://YourStorageAccountName.blob.core.windows.net` のような形式になります。*YourStorageAccountName* は、使用するストレージ アカウントの名前に置き換えてください。
-	- **BlobContainer** は、イメージを格納する BLOB コンテナーです。指定された名前の BLOB コンテナーが見つからなかった場合、コマンドレットによって新しいコンテナーが作成されます。
-	- **TargetVHDName** は、保存するイメージの名前です。
-	- **LocalPathOfVHDFile** は、ローカル コンピューター上の .vhd ファイルの完全なパスと名前です。
+- **blobContainer** は、イメージを格納する BLOB コンテナーです。この名前の既存の BLOB コンテナーが見つからない場合は、作成されます。
 
-	`Add-AzureRmVhd` の実行に成功すると、次のようになります。
+- **targetVHDName** は、アップロードした VHD ファイルに使用する名前です。
+
+- **localPathOfVHDFile** は、ローカル コンピューター上の .vhd ファイルの完全なパスと名前です。
+
+
+成功した場合、次のような応答を取得します。
 
 		C:\> Add-AzureRmVhd -ResourceGroupName testUpldRG -Destination https://testupldstore2.blob.core.windows.net/testblobs/WinServer12.vhd -LocalFilePath "C:\temp\WinServer12.vhd"
 		MD5 hash is being calculated for the file C:\temp\WinServer12.vhd.
@@ -176,40 +151,79 @@ Azure PowerShell で次の手順を行って、ストレージ アカウント�
 		-------------           --------------
 		C:\temp\WinServer12.vhd https://testupldstore2.blob.core.windows.net/testblobs/WinServer12.vhd
 
-	このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかります。
+このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかることがあります。
+
+
+
+
+## 仮想ネットワークの作成
+
+[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)の vNet とサブネットを作成します。
+
+1. 変数の値を実際の情報に置き換えます。CIDR 形式でサブネットのアドレス プレフィックスを指定します。変数とサブネットを作成します。
+
+    	$rgName = "<resourceGroup>"
+		$location = "<location>"
+        $subnetName = "<subNetName>"
+        $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix <0.0.0.0/0>
+        
+2. **$vnetName** の値を、仮想ネットワークの名前に置き換えます。CIDR 形式で仮想ネットワークのアドレス プレフィックスを指定します。サブネットで変数と仮想ネットワークを作成します。
+
+        $vnetName = "<vnetName>"
+        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix <0.0.0.0/0> -Subnet $singleSubnet
+        
+            
+## パブリック IP アドレスとネットワーク インターフェイスの作成
+
+仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)とネットワーク インターフェイスが必要です。
+
+1. **$ipName** の値を、パブリック IP アドレスの名前に置き換えます。変数とパブリック IP アドレスを作成します。
+
+        $ipName = "<ipName>"
+        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+        
+2. **$nicName** の値を、ネットワーク インターフェイスの名前に置き換えます。変数とネットワーク インターフェイスを作成します。
+
+        $nicName = "<nicName>"
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+
+		
+
+## VM の作成
+
+次の PowerShell スクリプトでは、仮想マシンの構成を設定し、アップロードした VM イメージを新しいインストールのソースとして使用する方法を示します。
+
+>[AZURE.NOTE] VM は、アップロードした VHD ファイルと同じストレージ アカウント内にある必要があります。
 
 </br>
-## アップロードしたイメージから新しい VM をデプロイする
 
-アップロードしたイメージを使用して、新しい Windows VM を作成できます。次の手順では、Azure PowerShell と上の手順でアップロードした VM イメージを使用して、新しい Virtual Network に VM を作成する方法を示します。
-
->[AZURE.NOTE] VM イメージは、作成される実際の仮想マシンと同じストレージ アカウント内に存在する必要があります。
-
-### ネットワーク リソースを作成する
-
-次のサンプル PowerShell スクリプトを使用して、新しい VM 用に仮想ネットワークと NIC を設定します。**$** 記号によって表される変数には、実際のアプリケーションに適した値を使用します。
-
-	$pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
-
-	$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix $vnetSubnetAddressPrefix
-
-	$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnetconfig
-
-	$nic = New-AzureRmNetworkInterface -Name $nicname -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-
-### 新しい仮想マシンを作成する
-
-次の PowerShell スクリプトでは、仮想マシンの構成を設定し、アップロードした VM イメージを新しいインストールのソースとして使用する方法を示します。</br>
-
-	#Enter a new user name and password in the pop-up window for the following
+	
+	
+	#Create variables
+	# Enter a new user name and password to use as the local administrator account for the remotely accessing the VM
 	$cred = Get-Credential
+	
+	# Name of the storage account where the VHD file is and where the OS disk will be created
+	$storageAccName = "<storageAccountName>"
+	
+	# Name of the virtual machine
+	$vmName = "<vmName>"
+	
+	# Size of the virtual machine. See the VM sizes documentation for more information: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/
+	$vmSize = "<vmSize>"
+	
+	# Computer name for the VM
+	$computerName = "<computerName>"
+	
+	# Name of the disk that holds the OS
+	$osDiskName = "<osDiskName>"
 
 	#Get the storage account where the uploaded image is stored
 	$storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $rgName -AccountName $storageAccName
 
 	#Set the VM name and size
 	#Use "Get-Help New-AzureRmVMConfig" to know the available options for -VMsize
-	$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A4"
+	$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
 	#Set the Windows operating system configuration and add the NIC
 	$vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
@@ -217,41 +231,18 @@ Azure PowerShell で次の手順を行って、ストレージ アカウント�
 	$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
 	#Create the OS disk URI
-	$osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
+	$osDiskUri = '{0}vhds/{1}-{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
 
 	#Configure the OS disk to be created from the image (-CreateOption fromImage), and give the URL of the uploaded image VHD for the -SourceImageUri parameter
-	#You can find this URL in the result of the Add-AzureRmVhd cmdlet above
+	#You set this variable when you uploaded the VHD
 	$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
 
 	#Create the new VM
 	New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 
-たとえば、ワークフローは次のようになります。
 
-		C:\> $pipName = "testpip6"
-		C:\> $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
-		C:\> $subnet1Name = "testsub6"
-		C:\> $nicname = "testnic6"
-		C:\> $vnetName = "testvnet6"
-		C:\> $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix $vnetSubnetAddressPrefix
-		C:\> $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnetconfig
-		C:\> $nic = New-AzureRmNetworkInterface -Name $nicname -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
-		C:\> $vmName = "testupldvm6"
-		C:\> $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A4"
-		C:\> $computerName = "testupldcomp6"
-		C:\> $vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
-		C:\> $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-		C:\> $osDiskName = "testupos6"
-		C:\> $osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
-		C:\> $urlOfUploadedImageVhd = "https://testupldstore2.blob.core.windows.net/testblobs/WinServer12.vhd"
-		C:\> $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption fromImage -SourceImageUri $urlOfUploadedImageVhd -Windows
-		C:\> $result = New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
-		C:\> $result
-		RequestId IsSuccessStatusCode StatusCode ReasonPhrase
-		--------- ------------------- ---------- ------------
-		                         True         OK OK
 
-新しく作成された VM は、[Azure ポータル](https://portal.azure.com)の **[参照]** の **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
+完了したときに、新しく作成された VM を、[Azure ポータル](https://portal.azure.com)の **[参照]** の **[仮想マシン]**、または次の PowerShell コマンドを使用して確認します。
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -261,4 +252,4 @@ Azure PowerShell で次の手順を行って、ストレージ アカウント�
 
 Azure PowerShell を使用して新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

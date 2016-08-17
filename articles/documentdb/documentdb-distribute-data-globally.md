@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/25/2016"
+   ms.date="08/03/2016"
    ms.author="kipandya"/>
    
    
@@ -54,9 +54,7 @@ DocumentDB では、読み取りについては 10 ミリ秒未満、書き込�
 
 ## グローバル分散の有効化 
 
-DocumentDB データベース アカウントに関連付ける Azure リージョンを 1 つにするか複数にするかによって、データをローカルに分散するかグローバルに分散するかを決定できます。任意のタイミングでデータベース アカウントに対してリージョンの追加または削除を行って、データをグローバルに分散するか単一のリージョンに制限するかを決定できます。複数リージョンの割り当てがサポートされる DocumentDB データベース アカウントは、[DocumentDB - 複数リージョンのデータベース アカウント] を選択して、Azure Marketplace を通じて作成できます。
-
-
+DocumentDB データベース アカウントに関連付ける Azure リージョンを 1 つにするか複数にするかによって、データをローカルに分散するかグローバルに分散するかを決定できます。データベース アカウントに対するリージョンの追加や削除は、いつでも行うことができます。
 
 ## 次のステップ
 
@@ -81,12 +79,12 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 [manageaccount-consistency]: https://azure.microsoft.com/documentation/articles/documentdb-manage-account/#consistency
 [manageaccount-addregion]: https://azure.microsoft.com/documentation/articles/documentdb-manage-account/#addregion
 [throughputandstorage]: https://azure.microsoft.com/documentation/articles/documentdb-manage/
-[arm]: https://azure.microsoft.com/ja-JP/documentation/articles/documentdb-automation-resource-manager-cli/
+[arm]: https://azure.microsoft.com/documentation/articles/documentdb-automation-resource-manager-cli/
 [regions]: https://azure.microsoft.com/regions/
-[serviceregions]: https://azure.microsoft.com/ja-JP/regions/#services
+[serviceregions]: https://azure.microsoft.com/regions/#services
 [pricing]: https://azure.microsoft.com/pricing/details/documentdb/
 [sla]: https://azure.microsoft.com/support/legal/sla/documentdb/
 [vldb]: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
 [sqlqueries]: https://azure.microsoft.com/documentation/articles/documentdb-sql-query/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

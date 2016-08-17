@@ -3,7 +3,7 @@
    description="クラウド データベースと Azure SQL Database、Microsoft のリレーショナル データベース管理システム (RDBMS)、およびクラウド内のサービスとしてのデータベースのよくある質問に対する回答です。" 
    services="sql-database" 
    documentationCenter="" 
-   authors="carlrabeler" 
+   authors="CarlRabeler" 
    manager="jhubbard" 
    editor=""/>
 
@@ -89,4 +89,4 @@ geo セカンダリは非同期レプリカであり、プライマリとの完�
 ## プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するために、どのツールを使用できますか。
 DMV を使ってプライマリ データベースと geo セカンダリの間のリアルタイムのレプリケーションの遅延を公開しています。詳細については、[sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx) に関するページを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

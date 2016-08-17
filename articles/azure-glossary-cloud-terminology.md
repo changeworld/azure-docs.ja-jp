@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="04/04/2016"
+    ms.date="08/03/2016"
     ms.author="monicar"/>
 
 
@@ -146,8 +146,8 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 
 ###**関連項目**  
 - [Azure を使ってみる](https://azure.microsoft.com/get-started/)
-- [クラウド リソース センター](https://azure.microsoft.com/resources/)  
+- [クラウド リソース センター](https://azure.microsoft.com/resources/)
 - [ビジネス アプリケーションを Azure で](https://azure.microsoft.com/overview/business-apps-on-azure/)
-- [データセンターに Azure を](https://azure.microsoft.com/overview/business-apps-on-azure/) 
+- [データセンターに Azure を](https://azure.microsoft.com/overview/business-apps-on-azure/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

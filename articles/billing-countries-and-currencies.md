@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing"/>
 
 <tags
@@ -78,7 +78,7 @@ Microsoft Azure は世界の 140 を超える国で購入でき、さまざま�
 | ギリシャ | EUR |
 | グアテマラ | USD |
 | ホンジュラス | USD |
-| 香港 | HKD |
+| 香港特別行政区 | HKD |
 | 香港特別行政区 | USD |
 | ハンガリー | EUR |
 | アイスランド | EUR |
@@ -171,4 +171,4 @@ Microsoft Azure は世界の 140 を超える国で購入でき、さまざま�
 | ザンビア | USD |
 | ジンバブエ | USD |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

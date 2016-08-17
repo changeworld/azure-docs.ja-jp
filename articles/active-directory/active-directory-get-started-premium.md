@@ -23,7 +23,7 @@ Active Directory Premium にはいくつかの方法でサインアップでき�
 
 **Azure または Office 365** - Azure または Office 365 のサブスクライバーである場合、Active Directory Premium をオンラインで購入できます。詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
 
-**Enterprise Mobility Suite** - Enterprise Mobility Suite は、Active Directory Premium、Azure Rights Management、および Microsoft Intune のサービスを 1 つのライセンス プランでまとめて使用できる、組織にとってコスト効果の高い方法です。詳細については、[Enterprise Mobility Suite](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。30 日間の無料試用を開始するには、[こちら](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)をクリックしてください。
+**Enterprise Mobility + Security** - Enterprise Mobility + Security (以前の Enterprise Mobility Suite) は、Active Directory Premium、Azure Rights Management、および Microsoft Intune のサービスを 1 つのライセンス プランでまとめて使用できる、組織にとってコスト効果の高い方法です。詳細については、[Enterprise Mobility + Security](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。30 日間の無料試用を開始するには、[こちら](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)をクリックしてください。
 
 
 **マイクロソフト ボリューム ライセンス** - Azure Active Directory Premium は、[Microsoft エンタープライズ契約](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/ja-JP/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムで購入できます。
@@ -32,7 +32,7 @@ Active Directory Premium にはいくつかの方法でサインアップでき�
 このトピックでは、ボリューム ライセンス プログラムで購入した Azure Active Directory Premium の使用を開始する方法について説明します。Azure Active Directory のエディションの違いについてまだよくご存知でない方は、「[Azure Active Directory のエディション](active-directory-editions.md)」を参照してください。
 
 > [AZURE.NOTE]
-Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
+中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 
 
@@ -91,7 +91,7 @@ Microsoft から Enterprise Volume Licensing プログラムを通じてライ�
 
 **Azure Active Directory へのアクセスをアクティブ化するには、次の手順を行います。**
 
-1. **ウェルカム メール**の **[サインイン]** をクリックします。 
+1. **ウェルカム メール**の **[サインイン]** をクリックします。
     
     ![Welcome email][4]
 
@@ -160,4 +160,4 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

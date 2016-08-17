@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="統合アカウントと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="統合アカウント、Enterprise Integration Pack と Logic Apps についての詳細情報" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -73,4 +73,4 @@
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

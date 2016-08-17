@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由 | Microsoft Azure"
 	description="Azure サブスクリプションに支払期限を過ぎた未払い額がある場合の支払い方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -45,4 +45,4 @@ Azure の支払い方法を変更する手順については、[Azure サブス�
 
 > [AZURE.NOTE] Azure サブスクリプションが無効になった場合、「[Azure サブスクリプションが取り消された場合にどうすればよいか](billing-subscription-become-disable.md)」の記事の手順に従って再び有効にできます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

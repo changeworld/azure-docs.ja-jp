@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration の機能を使用することにより、Logic Apps を使ってビジネス プロセスと統合シナリオを実現できます。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -61,4 +61,4 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

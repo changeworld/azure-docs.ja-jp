@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Azure App Service のロジック アプリで B2B メッセージを追跡する | Microsoft Azure" 
    description="このトピックでは、B2B 処理の追跡について説明します。" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
    manager="erikre" 
@@ -47,4 +47,4 @@ X12 API アプリのインスタンスを作成したら、このインスタン
 [1]: ./media/app-service-logic-track-b2b-messages/AS2Tracking.png
 [2]: ./media/app-service-logic-track-b2b-messages/EDIFACTTracking.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

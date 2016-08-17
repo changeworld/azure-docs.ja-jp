@@ -47,7 +47,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 - ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用して、インストール ファイルをダウンロードし、手動で実行します。インストールが成功すると、[データ管理ゲートウェイの構成] ダイアログ ボックスが表示されます。ポータル画面の**キー**をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。
 
 ### 問題: オンプレミス SQL Server に接続できない 
-ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。詳細については、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するトピックを参照してください。
+ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
  
 
 ### 問題: 入力スライスの状態が Waiting のままになっている
@@ -85,7 +85,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 このエラーを解決するには、入力テーブルの JSON 定義に **external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
 ### 問題: ハイブリッド コピー操作に失敗する
-Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションを参照してください。
+Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションを参照してください。
 
 ### 問題: オンデマンドの HDInsight プロビジョニングが失敗する
 種類が HDInsightOnDemand のリンクされたサービスを使用する場合、Azure Blob Storage を指す linkedServiceName を指定する必要があります。Data Factory サービスは、このストレージを使用して、オンデマンド HDInsight クラスターのログとサポート ファイルを格納します。たまに、オンデマンド HDInsight クラスターのプロビジョニングが失敗し、次のエラー メッセージが表示されることがあります。
@@ -143,4 +143,4 @@ Data Management Gateway を使用したオンプレミス データ ストアへ
 [image-data-factory-troubleshoot-activity-run-details]: ./media/data-factory-troubleshoot/Walkthrough2ActivityRunDetails.png
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

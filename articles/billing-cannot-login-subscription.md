@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure サブスクリプションにログインして管理することができない | Microsoft Azure"
 	description="Azure サブスクリプションのログインに関するよくあるいくつかの問題のトラブルシューティング情報を掲載しています。"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="msmbaldwin"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -54,4 +54,4 @@ Microsoft アカウントとはお使いの電子メール アドレスとその
 
 IE InPrivate ブラウズ モードを使用したキャッシュ/Cookie の削除や、他のブラウザーの使用を試してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

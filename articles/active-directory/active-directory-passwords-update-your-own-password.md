@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/02/2016"
 	ms.author="asteen"/>
 
 # 自分のパスワードを更新する方法
@@ -27,6 +27,10 @@
 * [**一般的な問題とその解決方法**](#common-problems-and-their-solutions)
 
 ## パスワードのリセット登録を行う
+
+> [AZURE.IMPORTANT]
+**このページが表示される理由**: リンクをたどってこのページにアクセスした場合、管理者によってパスワードのリセット登録が要求されている可能性があります。アプリにアクセスするためには、パスワードのリセット登録を行う必要があります。電話または電子メールの情報を求められたり、セキュリティの質問を設定するよう求められたりすることがあります。その情報がスパム目的に使用されることはないのでご安心ください。いただいた情報は、お客様のアカウントのセキュリティを強化する目的でのみ使用されます。必要な作業は、ここに記載した手順に従って実行できます。
+
 パスワードのリセット登録を最速で行うには、http://aka.ms/ssprsetup に進んでください。
 
  1. http://aka.ms/ssprsetup に移動します。
@@ -253,4 +257,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
 [015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

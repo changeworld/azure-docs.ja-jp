@@ -30,8 +30,9 @@
 - クラシック VM
 - Standard Storage VM
 - Premium Storage VM
+- Azure Disk Encryption を使って BEK と KEK で暗号化された VM (Powershell を使ってサポート)
 
-Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)のセクションを参照してください。
+Premium Storage VM の保護の詳細については、「[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)」を参照してください。
 
 >[AZURE.NOTE] このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事は、Resource Manager と Resource Manager でデプロイされた VM を使用するためのものです。
 
@@ -64,7 +65,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![Create Recovery Services Vault step 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
 
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
+    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するように求められます。
 
     ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
@@ -72,7 +73,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
 
-6. **[リソース グループ]** をクリックして、使用可能なリソース グループを表示するか、**[新規]** をクリックして、新しいリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+6. **[リソース グループ]** をクリックして使用可能なリソース グループの一覧を表示するか、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。コンテナーは、保護する仮想マシンと同じリージョンにある**必要があります**。
 
@@ -86,13 +87,13 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 ### ストレージ レプリケーションの設定
 
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細について、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
 
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
 1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。**[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
 
-2. **[設定]** ブレードで、**[Backup Infrastructure]** (バックアップ インフラストラクチャ)、**[Backup Configuration]** (バックアップ構成) の順にクリックして、**[Backup Configuration]** (バックアップ構成) ブレードを開きます。**[Backup Configuration]** (バックアップ構成) ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]**、**[バックアップ構成]** の順にクリックして、**[バックアップ構成]** ブレードを開きます。**[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
 
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -104,7 +105,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。Recovery Services コンテナーが開かれていなくても、Azure ポータルが表示されている場合は、ハブ メニューの **[参照]** をクリックします。
 
-  - リソースの一覧で「**Recovery Services**」と入力します。
+  - リソース ボックスに「**Recovery Services**」と入力します。
   - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
@@ -116,7 +117,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
 
-2. コンテナーのダッシュボード メニューの **[Backup]** をクリックして、[Backup] ブレードを開きます。
+2. コンテナーのダッシュボード メニューの **[バックアップ]** をクリックして、[バックアップ] ブレードを開きます。
 
     ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
@@ -124,11 +125,11 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックして、[Backup Goal] \(バックアップの目標) ブレードを開きます。
+3. [バックアップ] ブレードで、**[バックアップの目標]** をクリックして、[バックアップの目標] ブレードを開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [Backup Goal] \(バックアップの目標) ブレードで、**[Where is your workload running]** (ワークロードの実行場所) を [Azure] に、**[What do you want to backup]** (バックアップ対象) を [仮想マシン] に設定し、**[OK]** をクリックします。
+4. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
 
     [Backup Goal] \(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
@@ -148,14 +149,14 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
 
-7. コンテナーの設定をすべて定義したところで、[Backup] ブレードで、ページの下部にある **[Enable Backup]** (バックアップの有効化) をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
+7. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
 
     ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
 
 ## 手順 3. 初回バックアップを実行する
 
-バックアップ ポリシーが仮想マシンにデプロイされても、データがバックアップされたわけではありません。既定では、(バックアップ ポリシーで定義されたように) スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[Backup Jobs]** (バックアップ ジョブ) ブレードの [前回のバックアップの状態] には、**[Warning(initial backup pending)]** (警告 (初回のバックアップが保留中)) と表示されます。
+バックアップ ポリシーが仮想マシンにデプロイされても、データがバックアップされたわけではありません。既定では、(バックアップ ポリシーで定義されたように) スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[バックアップ ジョブ]** ブレードの [前回のバックアップの状態] には、**[警告 (初回のバックアップが保留中)]** と表示されます。
 
 ![Backup pending](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
@@ -163,7 +164,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 **[今すぐバックアップ]** を実行するには、次の手順に従います。
 
-1. コンテナー ダッシュボードの **[Backup]** タイルで、**[Azure Virtual Machines]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. コンテナー ダッシュボードの **[バックアップ]** タイルで、**[Azure Virtual Machines]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
     **[バックアップ項目]** ブレードが開きます。
 
@@ -175,7 +176,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[Backup Jobs]** (バックアップ ジョブ) タイルで **[Azure Virtual Machines]** をクリックします。
+3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
@@ -202,7 +203,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | VM エージェントのインストール | <li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 | <li>GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従ってください。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従います。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 | <li>Azure VM で *C:\\WindowsAzure\\Packages* フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | 該当なし |
 
 
@@ -210,7 +211,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに自動実行します。
 
-バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。Azure Backup サービスは、VM がオフになっている場合でも VM のバックアップを続行しますが、拡張機能はインストールされない可能性があります。これはオフライン VM と呼ばれます。この場合、復旧ポイントは、*クラッシュ整合性*復旧ポイントになります。
+バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。Azure Backup サービスは、VM がオフになっている場合でも VM のバックアップを続行しますが、拡張機能はインストールされない可能性があります。これはオフライン VM と呼ばれます。この場合、復旧ポイントは、"*クラッシュ整合性*" 復旧ポイントになります。
 
 ## トラブルシューティング情報
 この記事のタスクを行っていて問題が発生した場合は、[トラブルシューティング ガイダンス](backup-azure-vms-troubleshoot.md)を参照してください。
@@ -219,4 +220,4 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

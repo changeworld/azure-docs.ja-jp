@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Hybrid Connection Manager の使用 | Microsoft Azure App Service" 
-	description="Hybrid Connection Manager をインストールして構成し、Azure App Service 内のオンプレミス コネクターに接続する" 
+	pageTitle="Hybrid Connection Manager の使用 | Microsoft Azure" 
+	description="Hybrid Connection Manager をインストールして構成し、Logic Apps 内のオンプレミス コネクターに接続します。" 
 	services="app-service\logic" 
 	documentationCenter=".net,nodejs,java"
 	authors="MandiOhlinger" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/10/2016" 
+	ms.date="07/28/2016" 
 	ms.author="mandia"/>
 
-# Hybrid Connection Manager を使用して Azure App Service 内のオンプレミス コネクターに接続する
+# Hybrid Connection Manager を使用してオンプレミス コネクターに接続する
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。一般公開 (GA) 版の Logic Apps では、オンプレミス接続にゲートウェイが使用されています。新しい[ゲートウェイ](app-service-logic-gateway-connection.md)と [Logic Apps GA](https://azure.microsoft.com/documentation/services/logic-apps/) に関するページをご覧ください。
 
-オンプレミス システムを使用するため、Azure App Service は Hybrid Connection Manager を使用します。一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。
+オンプレミス システムを使用するため、Logic Apps は Hybrid Connection Manager を使用します。一部のコネクタは、SQL Server、SAP、SharePoint などのオンプレミス システムに接続できます。
 
 Hybrid Connection Manager (HCM) は、ワンクリック インストーラーであり、ネットワーク内のファイアウオールの背後にある IIS サーバーにインストールされます。HCM は、Azure Service Bus リレーを使用して、Azure 内にコネクタを持つオンプレミス システムを認証します。
 
@@ -87,7 +87,7 @@ TCP ポート | 理由
  - IIS Manager (inetmgr) に、MicrosoftAzureBizTalkHybridListener Web サイトが表示され、実行中である必要があります。
  - この Web サイトは、NetworkService ローカル組み込みユーザー アカウントとして実行される HybridListenerAppPool を使用します。この AppPool も開始されている必要があります。
 3. IIS サーバーで、コネクタがインストールされ、実行されていることを確認します。
- - App Service コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector\_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。
+ - コネクタ用の Web サイトが作成されます。たとえば、SQL コネクタを作成した場合は、MicrosoftSqlConnector\_nnn Web サイトが存在します。IIS マネージャー (inetmgr) で、この web サイトが表示され、開始されていることを確認します。
  - この Web サイトは、HybridAppPoolnnn という名前の専用の IIS アプリケーション プールを使用します。この AppPool は、NetworkService ローカル組み込みユーザー アカウントとして実行されます。この Web サイトと AppPool の両方が開始されている必要があります。
  - ローカル コネクタを参照します。たとえば、コネクタ Web サイトがポート 6569 を使用する場合は、http://localhost:6569を参照します。既定のドキュメントが構成されていないため、`HTTP Error 403.14 - Forbidden error` が予期されます。
 4. ファイアウォールで、このトピックに示されている TCP ポートが開いていることを確認します。
@@ -140,4 +140,4 @@ Azure App Service コネクタにも、Hybrid Connection Manager があります
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

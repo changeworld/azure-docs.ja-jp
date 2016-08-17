@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="11/25/2015" 
+	ms.date="03/31/2016" 
 	ms.author="awills"/>
  
 # Visual Studio Application Insights
@@ -25,7 +25,7 @@ Application Insights は、実行中のアプリケーションを監視する�
 
 Application Insights は、開発チームを支援することを目的としています。Application Insights では、次のことを行えます。
 
-* [使用パターンの分析][knowUsers]。ユーザーを深く理解し、アプリを継続的に向上させます。 
+* [使用パターンの分析][knowUsers]。ユーザーを深く理解し、アプリを継続的に向上させます。
  * ページ ビューのカウント、新規ユーザーと再訪問ユーザー、位置情報、プラットフォーム、その他の主要な使用状況分析
  * 使用状況のパスをトレースして、各機能の使用方法を評価します。
 * ほとんどのユーザーが気付く前にパフォーマンスの問題を[検出し、優先順位を付け、診断し][detect]、解決します。
@@ -112,7 +112,7 @@ Visual Studio を使用しない場合、またはプロジェクトでこれら
 * バグ:
  * [マイクロソフトに報告する](https://connect.microsoft.com/VisualStudio/Feedback/LoadSubmitFeedbackForm?FormID=6076)
 * ご提案:
- * [ユーザーの声](http://visualstudio.uservoice.com/forums/121579-visual-studio/category/77108-application-insights)
+ * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 
 
 ## ビデオ
@@ -144,4 +144,4 @@ Visual Studio を使用しない場合、またはプロジェクトでこれら
 
  
 
-<!---HONumber=AcomDC_1203_2015-->
+<!---HONumber=AcomDC_0810_2016-->

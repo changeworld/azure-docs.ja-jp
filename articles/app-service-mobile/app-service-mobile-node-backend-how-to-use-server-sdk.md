@@ -132,7 +132,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)](http://git-scm.com/book/en/Getting-Started-Installing-Git)」を参照してください。
 
-2. 「[Web アプリのリポジトリの有効化](../app-service-web/web-sites-publish-source-control.md#Step4)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイメント用のユーザー名とパスワードをメモしておきます。
+2. 「[App Service アプリのリポジトリの有効化](../app-service-web/web-sites-deploy-local-git.md#Step3)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
 
 3. モバイル アプリ バックエンドのブレードで、**[Git クローン URL]** の設定をメモしておきます。
 
@@ -917,4 +917,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

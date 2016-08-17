@@ -183,7 +183,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 しばらくすると、接続が確立されます。
 
-## 9\.VPN 接続の検証
+## <a name="toverify"></a>VPN 接続を検証するには
 
 VPN 接続を検証する方法はいくつかあります。以下で、Azure ポータルと PowerShell を使用して基本的な検証を行う方法を紹介します。
 
@@ -191,15 +191,18 @@ VPN 接続を検証する方法はいくつかあります。以下で、Azure �
 
 ## <a name="modify"></a>ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更するには
 
-ローカル ネットワーク ゲートウェイのプレフィックスを変更する必要がある場合は、以下の手順を使用します。2 種類の手順があります。どちらの手順を選択するかは、既に VPN ゲートウェイ接続を作成しているかどうかによって異なります。
+ローカル ネットワーク ゲートウェイのプレフィックスを変更する必要がある場合は、以下の手順を使用します。2 種類の手順があります。どちらの手順を選択するかは、既にゲートウェイ接続を作成しているかどうかによって異なります。
 
 [AZURE.INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
+## <a name="modifygwipaddress"></a>ローカル ネットワーク ゲートウェイの IP アドレスを変更するには
+
+[AZURE.INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
 ## 次のステップ
 
 - 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
+- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

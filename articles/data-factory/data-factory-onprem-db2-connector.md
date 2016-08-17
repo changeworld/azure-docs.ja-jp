@@ -29,7 +29,7 @@ Data Factory は、他のデータ ストアから DB2 へのデータの移動�
 
 Data Management Gateway が DB2 データベースに接続するために、ゲートウェイのバージョン 2.1 以降では、DB2 for LUW (Linux、Unix、Windows)、DB2 for z/OS、DB2 for i (別名: AS/400) などの DB2 をサポートする組み込みドライバー (SQLAM 9/10/11) が Azure Data Factory に用意されています。そのため、DB2 からデータをコピーするときに、ドライバーを手動でインストールする必要はなくなりました。
 
-> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイのトラブルシューティング](data-factory-move-data-between-onprem-and-cloud.md#gateway-troubleshooting)に関するセクションをご覧ください。
+> [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 
 ## サンプル: DB2 から Azure BLOB にデータをコピーする
@@ -322,4 +322,4 @@ Char | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

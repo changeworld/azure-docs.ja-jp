@@ -1,7 +1,7 @@
 <properties
    pageTitle="ロジック アプリでの Azure Machine Learning コネクタの使用 | Microsoft Azure App Service"
    description="Azure Machine Learning コネクタを作成、構成し、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -88,4 +88,4 @@ Web サービス出力を含めなかった場合は、これを使用できな�
 [6]: ./media/app-service-logic-connector-azureml/img6.png
 [7]: ./media/app-service-logic-connector-azureml/img7.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

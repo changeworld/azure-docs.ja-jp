@@ -32,7 +32,7 @@
 名前 | 説明
 --- | ---
 [Azure の Service Bus](app-service-logic-connector-azureservicebus.md) | Service Bus キューとトピックからメッセージを送信したり、Service Bus キューとサブスクリプションからメッセージを受信したりできます。
-[Bing 翻訳ツール](https://azure.microsoft.com/marketplace/partners/microsoft_com/bingtranslator) | Bing を使用して、テキストを別の言語に翻訳します。
+[Bing 翻訳ツール](https://azure.microsoft.com/marketplace/partners/bing/microsofttranslator/) | Bing を使用して、テキストを別の言語に翻訳します。
 [HTTP](app-service-logic-connector-http.md) | HTTP リスナーは、HTTP サーバーとして機能するエンドポイントを開き、着信 HTTP または HTTPS 要求をリッスンします。HTTP アクションに API アプリは必要ありません。HTTP アクションは Logic Apps 内でネイティブにサポートされます。
 [Microsoft Office 365](app-service-logic-connector-office365.md) | Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。
 [QuickBooks](app-service-logic-connector-quickbooks.md) | このコネクタを使用すると、Intuit QuickBooks のさまざまなエンティティ (顧客、項目、請求書など) の作成、更新、クエリなどの操作を実行できます。
@@ -80,4 +80,4 @@ MQ | Windows オペレーティング システムを実行している Azure �
 ## コネクタと API Apps の詳細
 [コネクタと BizTalk API Apps とは](app-service-logic-what-are-biztalk-api-apps.md) [Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md) [組み込み API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/17/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Azure Data Catalog に Data Lake Store のデータを登録する
@@ -94,4 +94,4 @@
 * [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Store と他の Azure サービスを統合する](data-lake-store-integrate-with-other-services.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

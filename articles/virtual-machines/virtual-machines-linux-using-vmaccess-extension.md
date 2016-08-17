@@ -97,7 +97,7 @@ VMAccess を使用して、Linux VM 下のディスクに対して、fsck を実
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path disk_check_repair.json
 ```
@@ -120,7 +120,7 @@ root パスワードをリセットするには、この VMAccess スクリプ�
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_root_password.json
 ```
@@ -139,7 +139,7 @@ root 以外のユーザーの SSH キーをリセットするには、この VMA
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_ssh_key.json
 ```
@@ -163,7 +163,7 @@ VMAccess は、ログインしたり、sudo や root アカウントを使用し
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path create_new_user.json
 ```
@@ -181,7 +181,7 @@ VMAccessForLinux Microsoft.OSTCExtensions * \
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path remove_user.json
 ```
@@ -203,9 +203,9 @@ SSHD 構成をリセットするには、この VMAccess スクリプトを使�
 次を使用して VMAccess スクリプトを実行します。
 
 ```bash
-azure vm extension set exampleResourceGruop exampleVM \
+azure vm extension set exampleResourceGroup exampleVM \
 VMAccessForLinux Microsoft.OSTCExtensions * \
 --private-config-path reset_sshd.json
 ```
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

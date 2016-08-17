@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration Pack での XML 検証の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack と Logic Apps での検証のしくみについて説明します。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -40,4 +40,4 @@ B2B のシナリオでは多くの場合、契約の対象となるパートナ�
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

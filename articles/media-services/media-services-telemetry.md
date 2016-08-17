@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/23/2016"   
+	ms.date="07/27/2016"   
 	ms.author="juliako"/>
 
 # .NET での Azure Media Services テレメトリ
@@ -21,11 +21,17 @@
 
 Media Services テレメトリ/監視により、Media Services の顧客が、そのサービスのメトリック データにアクセスできます。現在のバージョンでは、"Channel" エンティティと "StreamingEndpoint" エンティティのテレメトリ データがサポートされています。テレメトリはコンポーネント レベルの粒度で構成でき、"Normal" と "Verbose" の 2 つの詳細レベルがあります。現在のバージョンでは "Normal" のみがサポートされます。
 
-テレメトリが書き込まれるのは、顧客によって提供される Azure Storage アカウントです (ストレージ アカウントは Media Services アカウントに接続されている必要があります)。指定されたストレージ アカウントの Azure Storage テーブルにテレメトリが書き込まれます。テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。たとえば、"TelemetryMetrics20160321" の "20160321" はテーブルが作成された日付です。つまり、日ごとに個別のテーブルが存在することになります。
+テレメトリが書き込まれるのは、顧客によって提供される Azure ストレージ アカウントのストレージ テーブルです (ストレージ アカウントは Media Services アカウントに接続されている必要があります)。テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。たとえば、"TelemetryMetrics20160321" の "20160321" はテーブルが作成された日付です。つまり、日ごとに個別のテーブルが存在することになります。
 
-テレメトリ システムには、データ保持も、古いレコードの自動削除も用意されていません。そのため、古いレコードを管理および削除する必要があります。日ごとに個別のテーブルがあると、古いレコードを簡単に削除できます。古いテーブルをただ削除するだけです。
+テレメトリ システムではデータのリテンション期間を管理していないことに注意してください。古いテレメトリ データを削除するには、ストレージ テーブルを削除します。
 
-このトピックでは、指定された AMS サービスのテレメトリを有効にする方法と、.NET を使用してメトリックに対してクエリを実行する方法について説明します。
+テレメトリ データは、次のいずれかの方法で使用できます。
+
+- Azure Table Storage から直接データを読み取ります (Storage SDK の使用など)。テレメトリのストレージ テーブルの説明については、[こちら](https://msdn.microsoft.com/library/mt742089.aspx)のトピックの「**Consuming telemetry information (テレメトリ情報の使用)**」を参照してください。
+
+または
+
+- Media Services .NET SDK のサポートを利用してストレージ データを読み取ります。このトピックでは、指定した AMS アカウントのテレメトリを有効にする方法と、Azure Media Services .NET SDK を使用してメトリックにクエリを実行する方法を説明します。
 
 ## Media Services アカウントのテレメトリの構成
 
@@ -52,7 +58,7 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 
 テレメトリは、Media Services アカウントのテレメトリを構成するときに指定したストレージ アカウントの Azure Storage テーブルに書き込まれます。テレメトリ システムでは、00:00 UTC に基づいて日が変わるごとに個別のテーブルが作成されます。たとえば、"TelemetryMetrics20160321" の "20160321" はテーブルが作成された日付です。つまり、日ごとに個別のテーブルが存在することになります。
 
-次のメトリック情報について、テーブルにクエリを実行できます。
+次のメトリック情報について、テレメトリ テーブルにクエリを実行できます。このトピックで後ほど紹介する例では、Media Services .NET SDK を使用してメトリックにクエリを実行する方法を説明します。
 
 ### StreamingEndpoint ログ
 
@@ -94,8 +100,10 @@ Media Services テレメトリ/監視により、Media Services の顧客が、�
 **DiscontinuityCount**|不連続性の数を取得します。|0
 **LastTimestamp**|最後のタイムスタンプを取得します。|1800488800
  
-## StreamingEndpoint メトリックの例
-		
+## 例  
+	
+次の例では、指定した AMS アカウントのテレメトリを有効にする方法と、Azure Media Services .NET SDK を使用してメトリックにクエリを実行する方法を説明します。
+
 	using System;
 	using System.Collections.Generic;
 	using System.Configuration;
@@ -246,4 +254,4 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

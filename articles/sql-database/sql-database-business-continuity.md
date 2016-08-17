@@ -4,7 +4,7 @@
    keywords="ビジネス継続性, クラウド ビジネス継続性, データベースの障害復旧, データベース復旧"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -135,4 +135,4 @@ Geo 冗長ストレージ レプリケーションによる自動バックアッ
 
 スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

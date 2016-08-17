@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Enterprise Integration Pack での XML の処理の概要 |Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack と Logic Apps を使用して XML メッセージを処理および検証する方法について説明します" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -30,4 +30,4 @@ Enterprise Integration Pack により、ビジネス パートナーと交換す
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

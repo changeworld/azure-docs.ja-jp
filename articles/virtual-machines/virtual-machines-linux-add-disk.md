@@ -240,6 +240,8 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 		# sudo yum install util-linux
 		# sudo fstrim /datadrive
 
+## トラブルシューティング
+[AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
 
 ## 次のステップ
 
@@ -247,4 +249,4 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 - [Linux マシンのパフォーマンスの最適化](virtual-machines-linux-optimization.md)に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 - ディスクを追加してストレージ容量を拡張し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/02/2016"
    ms.author="lodipalm;barbkess;sonyama;jrj"/>
 
 # SQL Data Warehouse への SQL コードの移行
@@ -80,7 +80,7 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 
 再帰 CTE は、SQL Data Warehouse ではサポートされていません。再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。[group by 句と rollup / cube / grouping sets オプション][]に関する記事でも `GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
-## システム関数
+## サポートされていないシステム関数
 
 また、サポートされていないシステム関数もいくつかあります。データ ウェアハウジングで一般的に使用されている主なものを次に示します。
 
@@ -91,21 +91,29 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 - ROWCOUNT\_BIG
 - ERROR\_LINE()
 
-これらの問題の大部分も回避できます。
+これらの問題の一部は回避できます。
 
-たとえば、次のコードは、@@ROWCOUNT 情報を取得するための代替ソリューションです。
+## @@ROWCOUNT の回避策
+
+@@ROWCOUNT がサポートされていない問題を回避するには、sys.dm\_pdw\_request\_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
 
 ```sql
-SELECT  SUM(row_count) AS row_count
-FROM    sys.dm_pdw_sql_requests
-WHERE   row_count <> -1
-AND     request_id IN
-                    (   SELECT TOP 1    request_id
-                        FROM            sys.dm_pdw_exec_requests
-                        WHERE           session_id = SESSION_ID()
-                        AND             resource_class IS NOT NULL
-                        ORDER BY end_time DESC
-                    )
+CREATE PROCEDURE LastRowCount AS
+WITH LastRequest as 
+(   SELECT TOP 1    request_id
+    FROM            sys.dm_pdw_exec_requests
+    WHERE           session_id = SESSION_ID()
+    AND             resource_class IS NOT NULL
+    ORDER BY end_time DESC
+),
+LastRequestRowCounts as
+(
+    SELECT  step_index, row_count
+    FROM    sys.dm_pdw_request_steps
+    WHERE   row_count >= 0
+    AND     request_id IN (SELECT request_id from LastRequest)
+)
+SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ;
 ```
 
@@ -134,4 +142,4 @@ AND     request_id IN
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

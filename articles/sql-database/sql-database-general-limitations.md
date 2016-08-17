@@ -3,7 +3,7 @@
    description="このページでは、Azure SQL Database の一般的な制限事項および相互運用性とサポートの領域について説明します。"
    services="sql-database"
    documentationCenter="na"
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor="monicar" />
 <tags
@@ -63,4 +63,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

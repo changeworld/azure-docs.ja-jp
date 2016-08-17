@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="パートナーと Enterprise Integration Pack の概要 |Microsoft Azure App Service" 
 	description="Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -65,4 +65,4 @@
 ## 次のステップ
 - [AS2 契約の作成](./app-service-logic-enterprise-integration-as2.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

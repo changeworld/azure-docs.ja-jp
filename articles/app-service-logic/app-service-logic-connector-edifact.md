@@ -1,7 +1,7 @@
 <properties 
    pageTitle="Logic Apps での BizTalk Edifact コネクタの使用 | Microsoft Azure App Service" 
    description="BizTalk Edifact コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法" 
-   services="app-service\logic" 
+   services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajeshramabathiran" 
    manager="erikre" 
@@ -44,18 +44,19 @@ Edifact コネクタを使用するにはまず、AS2 コネクタ API アプリ
 - Azure Logic Apps フロー デザイナーを起動します。
 - 右側のウィンドウの [Edifact コネクタ] をクリックします。  
 ![トリガー設定][3]
-- [->] \(右矢印) をクリックします。  
+- -> (右矢印) をクリックします。  
 ![トリガー オプション][4]
 - Edifact コネクタでは 1 つのトリガーが表示されます。*[リリース バッチ]* を選択します。  
 ![バッチ入力のリリース][5]
-- このトリガーには、入力がありません。[->] \(右矢印) をクリックします。  
+- このトリガーには、入力がありません。-> (右矢印) をクリックします。
 ![リリース バッチの構成][6]
 - 出力の一部として、コネクタは、メッセージがバッチ処理されているかどうかの情報だけでなく Edifact ペイロードと契約 ID も返します。
 
 ### アクション
-- 右側のウィンドウの [Edifact コネクタ] をクリックします。  
+- 右側のウィンドウの  
+[Edifact コネクタ] をクリックします。  
 ![アクションの設定][7]
-- [->] \(右矢印) をクリックします。  
+- -> (右矢印) をクリックします。  
 ![アクションの一覧][8]
 - Edifact コネクタは、多くのアクションをサポートしています。*[エンコード]* を選択します。  
 ![入力のエンコード][9]
@@ -100,4 +101,4 @@ Segment Terminator Suffix|文字列|セグメント終端記号のサフィッ�
 [9]: ./media/app-service-logic-connector-edifact/EncodeInput.PNG
 [10]: ./media/app-service-logic-connector-edifact/EncodeConfigured.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

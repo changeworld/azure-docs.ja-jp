@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/10/2016"
+   ms.date="08/01/2016"
    ms.author="aglick"/>
 
 # Microsoft Azure サービスの回復性ガイダンス
@@ -38,4 +38,4 @@ Microsoft Azure は、必要なときに必要なリソースを提供できる�
 ##次のステップ
 システムとソリューションをより包括的に取り上げたガイダンスが必要であれば、「[Disaster recovery and high availability for applications built on Microsoft Azure (Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性)](https://aka.ms/drtechguide)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0803_2016-->

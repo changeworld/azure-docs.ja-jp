@@ -3,7 +3,7 @@
 	description="PowerShell を使用して Microsoft Azure Backup をデプロイおよび管理する手順の説明"
 	services="backup"
 	documentationCenter=""
-	authors="nkolli1"
+	authors="saurabhsensharma"
 	manager="shivamg"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/23/2016"
-	ms.author="markgal;jimpark;nkolli"/>
+	ms.author="markgal;jimpark;nkolli;trinadhk"/>
 
 
 # PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
@@ -116,8 +116,8 @@ PS C:\> MARSAgentInstaller.exe /?
 | オプション | 詳細 | 既定値 |
 | ---- | ----- | ----- |
 | /q | サイレント インストール | - |
-| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent |
-| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /p:"location" | Microsoft Azure Backup エージェントのインストール フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent |
+| /s:"location" | Microsoft Azure Backup エージェントのキャッシュ フォルダーへのパス | C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m | Microsoft Update のオプトイン | - |
 | /nu | インストールの完了後に更新プログラムを確認しない | - |
 | /d | Microsoft Azure Recovery Services エージェントをアンインストールする | - |
@@ -627,4 +627,4 @@ Azure Backup for Windows Server/Client の詳細については、以下を参�
 - [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 - [Windows Server のバックアップ](backup-configure-vault.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0803_2016-->

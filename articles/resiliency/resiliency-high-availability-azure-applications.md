@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/18/2016"
-   ms.author="hanuk;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Microsoft Azure 上に構築されたアプリケーションの高可用性
 
@@ -143,4 +143,4 @@ web ロールはインフラストラクチャの残りの部分から自立し�
 
 この記事は、[Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](./resiliency-disaster-recovery-high-availability-azure-applications.md)に関する一連の記事に属しています。このシリーズの次の記事は、「[Microsoft Azure 上で構築されたアプリケーションの障害復旧](./resiliency-disaster-recovery-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

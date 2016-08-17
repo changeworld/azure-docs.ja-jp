@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/17/2016" 
+    ms.date="07/27/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Cherwell の統合
@@ -62,6 +62,8 @@
 7.  結果ウィンドウで **[Cherwell]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 ##シングル サインオンの構成
 
+	![Cherwell](./media/active-directory-saas-cherwell-tutorial/IC798996.png "Cherwell")
+
 このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Cherwell に対する認証を行えるようにする方法を説明します。
 
 ###シングル サインオンを構成するには、次の手順に従います。
@@ -78,26 +80,30 @@
 
     ![Configure App URL](./media/active-directory-saas-cherwell-tutorial/IC798992.png "アプリケーション URL の構成")
 
-    1.  **[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインオンに使用する URL を入力します (例: *https://pictdev.cherwellondemand.com/cherwellclient*)。
-    2.  **[次へ]** をクリックします。
+    a.**[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインインに使用する URL を入力します (例: *https://\<会社名>.cherwellondemand.com/cherwellclient*)。
+
+    b.**[次へ]** をクリックします。
 
 4.  **[Cherwell でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798993.png "Configure Single Sign-On")
 
-    1.  **[証明書のダウンロード]** をクリックし、コンピューターで証明書をローカルに保存します。
-    2.  **[ID プロバイダー URL]** をコピーします。
-    3.  **[シングル サインオン サービス URL]** をコピーします。
-    4.  **[次へ]** をクリックします。
+    a.**[証明書のダウンロード]** をクリックし、コンピューターで証明書をローカルに保存します。
+
+    b.**[ID プロバイダー URL]** をコピーします。
+
+    c.**[シングル サインオン サービス URL]** をコピーします。
+
+    d.**[次へ]** をクリックします。
 
 5.  ダウンロードした証明書、**ID プロバイダー URL**、**シングル サインオン サービス URL** を、Cherwell サポート チームに送信します。
 
-    >[AZURE.NOTE] Cherwell サポート チームが、実際に SSO を構成する必要があります。
-    ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Cherwell サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
 
 6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798994.png "Configure Single Sign-On")
+
 ##ユーザー プロビジョニングの構成
 
 Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。  
@@ -123,4 +129,4 @@ Cherwell の場合、Cherwell サポート チームがユーザー アカウン
 
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

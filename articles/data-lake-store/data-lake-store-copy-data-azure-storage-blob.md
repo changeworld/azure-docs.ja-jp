@@ -18,6 +18,10 @@
 
 # Azure Storage BLOB から Data Lake Store へのデータのコピー
 
+> [AZURE.SELECTOR]
+- [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
+- [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
+
 Azure Data Lake Store には、[AdlCopy](http://aka.ms/downloadadlcopy) というコマンド ライン ツールがあります。このツールを使用すると、次のソースからデータをコピーできます。
 
 * Azure Storage BLOB から Data Lake Store へのデータのコピー。AdlCopy を使用して Data Lake Store のデータを Azure Storage BLOB にコピーすることはできません。
@@ -169,4 +173,4 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

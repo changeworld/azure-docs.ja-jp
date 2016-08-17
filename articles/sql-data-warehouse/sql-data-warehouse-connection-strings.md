@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
+   ms.date="08/01/2016"
    ms.author="sonyama;barbkess"/>
 
 
@@ -25,14 +25,7 @@
 - [ドライバー](sql-data-warehouse-connection-strings.md)
 
 
-次のアプリケーション プロトコルのいずれかを使用すると、SQL Data Warehouse に接続できます。
-
-- [ADO.NET][]
-- [ODBC][]
-- [PHP][]
-- [JDBC][]
-
-各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用して設定することもできます。Azure ポータルでデータベースに移動します。[要点] で [データベース接続文字列の表示] をクリックします。
+[ADO.NET][]、[ODBC][]、[PHP][]、[JDBC][] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用してビルドすることもできます。Azure ポータルを使用して接続文字列をビルドするには、データベースのブレードに移動して、*[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
 
 ## ADO.NET 接続文字列の例
 
@@ -58,6 +51,8 @@ Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database
 jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user={your_user_name};password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 ```
 
+> [AZURE.NOTE] 断続的に切断された場合でも接続を保持できるように、接続のタイムアウトを 300 秒に設定することを検討してください。
+
 ## 次のステップ
 
 Visual Studio またはその他のアプリケーションを使用してデータ ウェアハウスに対するクエリを開始するには、[Visual Studio を使用したクエリ][]に関するページをご覧ください。
@@ -75,4 +70,4 @@ Visual Studio またはその他のアプリケーションを使用してデー
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

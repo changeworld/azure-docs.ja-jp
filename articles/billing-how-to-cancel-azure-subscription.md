@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure サブスクリプションをキャンセルする方法 | Microsoft Azure"
 	description="Azure サブスクリプションをキャンセルする方法を説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -30,4 +30,4 @@
 4. **[はい、サブスクリプションをキャンセルします。]** を選択します。</br> ![cancelbox](.\media\billing-how-to-cancel-azure-subscription\cancelbox.png)
 5. ![checkbutton](.\media\billing-how-to-cancel-azure-subscription\checkbutton.png) をクリックしてダイアログ ウィンドウを閉じます。サブスクリプション ページに戻ります。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0803_2016-->

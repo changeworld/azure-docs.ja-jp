@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="スキーマと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="Enterprise Integration Pack と Logic Apps でスキーマを使用する方法について説明します" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2016" 
+	ms.date="07/29/2016" 
 	ms.author="deonhe"/>
 
 # スキーマと Enterprise Integration Pack についての詳細情報  
@@ -30,7 +30,7 @@ Azure ポータルで次の手順を実行します。
 5. 開いた [Schemas (スキーマ)] ブレードの **[追加]** ボタンを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-2.png)
 6. スキーマの**名前**を入力し、**[スキーマ]** ボックスの右側にあるフォルダー アイコンを選択して、スキーマ ファイルをアップロードします。アップロード プロセスが完了したら、**[OK]** ボタンを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-3.png)
 7. *ベル*通知アイコンを選択して、スキーマ アップロード プロセスの進捗状況を確認します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-4.png)
-8. **[Schemas (スキーマ)]** タイルを選択します。これにより、タイルが更新されます。新しいスキーマが正しく追加されたことが反映されており、スキーマの増加後の数が表示されます。**[Schemas (スキーマ)]** タイルを選択すると、右側の [Schemas (スキーマ)] ブレードにも、新しく追加されたスキーマが表示されます。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-5.png)
+8. **[Schemas (スキーマ)]** タイルを選択します。これにより、タイルが更新されます。新しいスキーマが正しく追加されたことが反映されており、スキーマの増加後の数が表示されます。**[スキーマ]** タイルを選択すると、右側の [スキーマ] ブレードにも、新しく追加されたスキーマが表示されます。![](./media/app-service-logic-enterprise-integration-schemas/schema-5.png)
 
 
 ## スキーマを使用する方法
@@ -57,4 +57,4 @@ Azure ポータルで次の手順を実行します。
 
       
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

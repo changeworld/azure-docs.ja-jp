@@ -13,12 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/11/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Distcp を使用して Azure Storage BLOB と Data Lake Store の間でデータをコピーする
 
-Data Lake Store アカウントにアクセスする HDInsight クラスターを作成した後、Distcp などの Hadoop エコシステムツールを使用し、HDInsight クラスターストレージ (WASB) と Data Lake Store アカウントの**間** でデータをコピーできます。この記事では、これを実現する方法について説明します。
+> [AZURE.SELECTOR]
+- [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
+- [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
+
+
+Data Lake Store アカウントにアクセスする HDInsight クラスターを作成した後、Distcp などの Hadoop エコシステム ツールを使用し、HDInsight クラスター ストレージ (WASB) と Data Lake Store アカウントの**間**でデータをコピーできます。この記事では、これを実現する方法について説明します。
 
 ##前提条件
 
@@ -62,7 +67,7 @@ HDInsight クラスターには Distcp ユーティリティが付属してい�
 
 		hadoop distcp adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-	これにより、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダー にコピーされます。
+	これにより、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
 
 ## 関連項目
 
@@ -71,4 +76,4 @@ HDInsight クラスターには Distcp ユーティリティが付属してい�
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

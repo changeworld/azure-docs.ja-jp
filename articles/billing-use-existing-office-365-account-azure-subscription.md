@@ -1,12 +1,12 @@
 <properties
 	pageTitle="Office 365 と Azure サブスクリプション全体で 1 つの Azure AD テナントを共有する | Microsoft Azure"
 	description="Office 365 Azure AD テナントとそのユーザーを Azure サブスクリプションと共有する方法、またはその逆の方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="mbaldwin"
 	editor=""
-	tags="top-support-issue"/>
+	tags="billing,top-support-issue"/>
 
 <tags
 	ms.service="billing"
@@ -147,4 +147,4 @@ Office 365 と Azure は、ユーザーとサブスクリプションの管理�
 ##次のステップ
 関連したシナリオが紹介されています。過去に別々に購入した Azure サブスクリプションと Office 365 サブスクリプションがあるとき、Azure サブスクリプションから Office 365 テナントにアクセスできるようにするにはどうすればよいのでしょうか。具体的な方法については、「[Office 365 テナントの Azure サブスクリプションへの関連付け](billing-add-office-365-tenant-to-azure-subscription.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

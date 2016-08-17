@@ -4,7 +4,7 @@
 	keywords="アプリケーション開発, データベース チュートリアル, python flask, python web アプリケーション, python web 開発, documentdb, azure, Microsoft azure"
     services="documentdb"
     documentationCenter="python"
-    authors="aliuy"
+    authors="AndrewHoh"
     manager="jhubbard"
     editor="cgronlun"/>
 
@@ -15,7 +15,7 @@
     ms.devlang="python"
     ms.topic="hero-article"
     ms.date="04/18/2016"
-    ms.author="andrl"/>
+    ms.author="anhoh"/>
 
 # DocumentDB による Python Flask Web アプリケーション開発
 
@@ -44,10 +44,10 @@
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
 - アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
-- [Visual Studio 2013](http://www.visualstudio.com/) 以降、またはその無償版の [Visual Studio Express]()。このチュートリアルの手順は、Visual Studio 2015 を想定して作成されています。 
-- Python Tools for Visual Studio ([GitHub](http://microsoft.github.io/PTVS/) から入手できます)。このチュートリアルでは、Python Tools for VS 2015 を使用します。 
+- [Visual Studio 2013](http://www.visualstudio.com/) 以降、またはその無償版の [Visual Studio Express]()。このチュートリアルの手順は、Visual Studio 2015 を想定して作成されています。
+- Python Tools for Visual Studio ([GitHub](http://microsoft.github.io/PTVS/) から入手できます)。このチュートリアルでは、Python Tools for VS 2015 を使用します。
 - Azure Python SDK for Visual Studio Version 2.4 以降 ([azure.com](https://azure.microsoft.com/downloads/) から入手できます)。ここでは、Microsoft Azure SDK for Python 2.7 を使用しました。
-- Python 2.7 ([python.org][2] から入手できます)。ここでは、Python 2.7.11 を使用しました。 
+- Python 2.7 ([python.org][2] から入手できます)。ここでは、Python 2.7.11 を使用しました。
 
 > [AZURE.IMPORTANT] 初めて Python 2.7 をインストールする場合は、[Customize Python 2.7.11] 画面で必ず **[Add python.exe to Path]** を選択してください。
 > 
@@ -133,7 +133,7 @@
 
 これで、新しいファイルを追加し、既存のファイルを更新して、投票アプリケーションを作成できます。
 
-1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**[Empty Python File]** を選択し、ファイルに **forms.py** という名前を付けます。  
+1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**[Empty Python File]** を選択し、ファイルに **forms.py** という名前を付けます。
 2. forms.py ファイルに次のコードを追加し、ファイルを保存します。
 
 ```python
@@ -150,7 +150,7 @@ class VoteForm(Form):
 
 ### views.py への必要な import ステートメントの追加
 
-1. ソリューション エクスプローラーで、**tutorial** フォルダーを展開し、**views.py** ファイルを開きます。 
+1. ソリューション エクスプローラーで、**tutorial** フォルダーを展開し、**views.py** ファイルを開きます。
 2. 次の import ステートメントを **views.py** ファイルの先頭に追加し、ファイルを保存します。これらのステートメントにより、DocumentDB の PythonSDK および Flask パッケージがインポートされます。
 
 	```python
@@ -256,8 +256,8 @@ def vote():
 
 ### HTML ファイルの作成
 
-1. ソリューション エクスプローラーで、**tutorial** フォルダー内の **templates** フォルダーを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。 
-2. **[HTML ページ]** を選択し、[名前] ボックスに「**create.html**」と入力します。 
+1. ソリューション エクスプローラーで、**tutorial** フォルダー内の **templates** フォルダーを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。
+2. **[HTML ページ]** を選択し、[名前] ボックスに「**create.html**」と入力します。
 3. 手順 1. と 2. を繰り返して、results.html と vote.html という 2 つの追加の HTML ファイルを作成します。
 4. 次のコードを **create.html** の `<body>` 要素に追加します。このコードは、新しいデータベース、コレクション、およびドキュメントを作成したことを示すメッセージを表示します。
 
@@ -342,7 +342,7 @@ def vote():
 
 3. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックして、**[キー]** ブレードに移動します。使用するアカウントの名前をダブルクリックし、**[Essentials]** 領域で **[キー]** ボタンをクリックします。**[キー]** ブレードで、**[URI]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_HOST** プロパティの値として貼り付けます。
 4. Azure ポータルに戻り、**[キー]** ブレードで、**[プライマリ キー]** または **[セカンダリ キー]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_KEY** プロパティの値として貼り付けます。
-5. **\_\_init\_\_.py** ファイルに次の行を追加します。 
+5. **\_\_init\_\_.py** ファイルに次の行を追加します。
 
         app.config.from_object('config')
 
@@ -385,7 +385,7 @@ def vote():
 
 以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、このアプリケーションを Azure Websites にデプロイします。
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし (ローカル実行したままになっていないことを確認してください)、**[発行]** を選択します。  
+1. ソリューション エクスプローラーでプロジェクトを右クリックし (ローカル実行したままになっていないことを確認してください)、**[発行]** を選択します。
 
  	![tutorial が選択されたソリューション エクスプローラーのスクリーンショット。[発行] オプションが強調表示されている](./media/documentdb-python-application/image20.png)
 
@@ -433,4 +433,4 @@ Python Flask の追加のチュートリアルについては、[Flask メガ �
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0810_2016-->

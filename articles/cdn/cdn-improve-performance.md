@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - ファイル圧縮によるパフォーマンスの向上"
-	description="ファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させることができます。"
+	pageTitle="Azure CDN でのファイル圧縮によるパフォーマンスの向上 | Microsoft Azure"
+	description="Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # ファイル圧縮によるパフォーマンスの向上
@@ -126,4 +126,4 @@ Media Services CDN 対応ストリーミング エンドポイントについて
 ## 関連項目
 - [CDN ファイルの圧縮のトラブルシューティング](cdn-troubleshoot-compression.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->
