@@ -34,7 +34,8 @@
 - プロビジョニング時に、Azure ポータル、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。詳細については、「[HDInsight クラスターのプロビジョニング](hdinsight-provision-clusters.md)」を参照してください。次の画面は、Azure ポータル上に表示されたワーカー ノード構成を示しています。
 
 	![scaleout_1][image-hdi-optimize-hive-scaleout_1]
-- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。次のように表示されます。![scaleout_1][image-hdi-optimize-hive-scaleout_2]
+- 実行時に、クラスターを再作成せずにスケールアウトすることもできます。次のように表示されます。
+	![scaleout_1][image-hdi-optimize-hive-scaleout_2]
 
 HDInsight によってサポートされている異なる仮想マシンの詳細については、「[HDInsight の料金詳細](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
