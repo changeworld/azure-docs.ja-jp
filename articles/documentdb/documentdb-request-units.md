@@ -189,7 +189,7 @@ ID で食品を選択|～2.5 RU|1
 
 この例では、平均スループット要件を 1,275 RU/s と想定しています。100 の位で丸めて、このアプリケーションのコレクションに 1,300 RU/s をプロビジョニングすることになります。
 
-##予約されたスループット上限の超過
+##<a id="RequestRateTooLarge"></a>予約されたスループット上限の超過
 要求ユニットの消費は、1 秒あたりのレートとして評価されることを思い出してください。コレクションに対してプロビジョニングされた要求単位レートをアプリケーションが超過した場合、そのレートが予約されたレベルを下回るまで、コレクションに対する要求は制限されます。スロットルが発生すると、サーバーはいち早く RequestRateTooLargeException (HTTP 状態コード 429) で要求を終了させ、x-ms-retry-after-ms ヘッダーを返して、ユーザーが要求の試行を再開できるまでに待機しなければならない時間をミリ秒で示します。
 
 	HTTP Status 429
@@ -211,7 +211,7 @@ Azure DocumentDB データベースの予約済みスループットの詳細に
 
 DocumentDB の詳細については、Azure DocumentDB に関する[ドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
-DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
+DocumentDB に関するスケールとパフォーマンスのテストを始めるには、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」をご覧ください。
 
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
@@ -220,4 +220,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

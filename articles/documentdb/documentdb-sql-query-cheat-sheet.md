@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2016" 
+	ms.date="07/29/2016" 
 	ms.author="mimig"/>
 
-# DocumentDB SQL チート シート PDF
+# DocumentDB SQL クエリのチート シート PDF
 
 **DocumentDB SQL クエリのチート シート**は印刷が簡単な PDF リファレンス シートで共通のデータベース クエリ、キーワード、組み込み関数、演算子を表示します。これを利用すれば、DocumentDB データのクエリを簡単に記述できます。
 
@@ -31,7 +31,7 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 
 ![DocumentDB SQL クエリ チート シート: DocumentDB によってサポートされる SQL 構文のクイック リファレンス PDF - SQL チート シート、SQL チート シート PDF、SQL クイック リファレンス][cheat-sheet]
 
-[cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v2.png
+[cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
 ## SQL クエリの記述に関するその他のヘルプ
@@ -39,4 +39,8 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 - DocumentDB で利用できるクエリ オプションのチュートリアルについては、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
 - 関連リファレンス ドキュメントについては、「[DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+## リリース ノート
+
+TOP を含めるために 2016 年 7 月 29 日に更新されました。
+
+<!---HONumber=AcomDC_0803_2016-->

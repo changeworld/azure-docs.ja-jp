@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="監視と診断の有効化" 
-	description="Azure でリソースの診断を設定する方法について説明します。" 
-	authors="stepsic-microsoft-com" 
-	manager="ronmart" 
-	editor="" 
-	services="azure-portal" 
-	documentationCenter="na"/>
+<properties
+	pageTitle="Microsoft Azure での監視と診断の有効化 |Microsoft Azure "
+	description="Azure でリソースの診断を設定する方法について説明します。"
+	authors="stepsic-microsoft-com"
+	manager="ronmart"
+	editor=""
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
-<tags 
-	ms.service="azure-portal" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/08/2015" 
+<tags
+	ms.service="monitoring"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2015"
 	ms.author="stepsic"/>
 
 # 監視と診断の有効化
@@ -26,7 +26,7 @@ Azure の診断、監視、およびメトリック データは、選択した�
 
 ほとんどのサービスでは、[Azure ポータル](https://portal.azure.com)でサービスを最初に作成するときに診断を有効にすることができます。
 
-1. **[新規]** に移動し、興味のあるリソースを選択します。 
+1. **[新規]** に移動し、興味のあるリソースを選択します。
 
 2. **[オプションの構成]** を選択します。![Diagnostics blade](./media/insights-how-to-use-diagnostics/Insights_CreateTime.png)
 
@@ -49,12 +49,12 @@ Azure の診断、監視、およびメトリック データは、選択した�
 ### 仮想マシンのデータ収集のカテゴリ
 仮想マシンでは、メトリックとログがすべて 1 分間隔で記録されるので、ご使用のマシンに関する情報はいつでも最新のものとなります。
 
-- **基本メトリック**: プロセッサやメモリなどの仮想マシンについての正常性のメトリック 
+- **基本メトリック**: プロセッサやメモリなどの仮想マシンについての正常性のメトリック
 - **ネットワークおよび Web メトリック**: ネットワーク接続と Web サービスに関するメトリック
 - **.NET メトリック**: 仮想マシン上で実行されている .NET アプリケーションおよび ASP.NET アプリケーションについてのメトリック
 - **SQL メトリック**: Microsoft SQL Service を実行している場合はそのパフォーマンス メトリック
 - **Windows イベント アプリケーション ログ**: アプリケーション チャネルに送信される Windows イベント
-- **Windows イベント システム ログ**: システム チャネルに送信される Windows イベントこれには、[Microsoft マルウェア対策](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409)からのすべてのイベントも含まれます。 
+- **Windows イベント システム ログ**: システム チャネルに送信される Windows イベントこれには、[Microsoft マルウェア対策](http://go.microsoft.com/fwlink/?LinkID=404171&clcid=0x409)からのすべてのイベントも含まれます。
 - **Windows イベント セキュリティ ログ**: セキュリティ チャネルに送信される Windows イベント
 - **診断インフラストラクチャ ログ**: 診断コレクション インフラストラクチャについてのログ
 - **IIS ログ**: IIS サーバーについてのログ
@@ -68,7 +68,6 @@ Azure の診断、監視、およびメトリック データは、選択した�
 * [インスタンス数を自動的にスケール変更](insights-how-to-scale.md)して、必要に応じてサービスのスケールが変更されるようにします。
 * コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
-* [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。 
- 
+* [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0803_2016-->

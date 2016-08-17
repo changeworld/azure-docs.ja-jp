@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/14/2016"
+	ms.date="08/05/2016"
 	ms.author="vakarand"/>
 
 
@@ -24,7 +24,7 @@
 ## 	必要条件
 次の表に、Azure AD Connect Health を使用するための要件の一覧を示します。
 
-| 要件 | 説明|
+| 要件 | Description|
 | ----------- | ---------- |
 |Azure AD Premium| Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。</br></br>詳細については、「[Azure Active Directory Premium の概要](active-directory-get-started-premium.md)」を参照してください。</br>30 日間の無料試用版を開始するには、「[Azure Active Directory Premium が 1 か月間無料](https://azure.microsoft.com/trial/get-started-active-directory/)」を参照してください。|
 |Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること|既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。<br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。詳細については、[Azure AD Connect Health のロール ベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)に関するページを参照してください。 </br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。Microsoft アカウントを使用することはできません。詳細については、「[Azure への組織としてのサインアップ](sign-up-organization.md)」を参照してください。
@@ -168,12 +168,11 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install3.png)
 
-
 サインイン後も、PowerShell は続行されます。完了したら PowerShell を閉じます。これで構成は完了です。
 
 この時点でサービスが自動的に開始され、エージェントによる監視とデータの収集が実行されます。次のスクリーンショットは出力の例です。前のセクションで挙げた前提条件が満たされていない場合、PowerShell ウィンドウに警告が表示されます。[こちら](active-directory-aadconnect-health-agent-install.md#requirements)に記した要件が満たされていることを必ず確認したうえでエージェントをインストールしてください。
 
-![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install4.png)
+![Verify Azure AD Connect Health for AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install4.png)
 
 エージェントがインストール済みであることを確認するには、[サービス] を開いて次のサービスを探します。
 
@@ -183,6 +182,11 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 この 2 つのサービスは、構成が完了するまで開始されません。
 
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
+
+## Server Core への Azure AD Connect Health エージェント for AD DS のインストール 
+.exe ファイルをインストールした後で、次の PowerShell コマンドを使用して、登録プロセスを完了できます。
+
+`Register-AzureADConnectHealthADDSAgent -Credentials $cred
 
 ## HTTP プロキシを使用するための Azure AD Connect Health エージェントの構成
 HTTP プロキシを使用するように Azure AD Connect Health エージェントを構成できます。
@@ -262,4 +266,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

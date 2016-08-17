@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="07/29/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のベスト プラクティス
@@ -80,7 +80,7 @@ DDL を定義するときに、データをサポートする最小のデータ�
 
 列ストア テーブルに対してクエリを実行する場合は、必要な列のみを選択すると、クエリの実行速度が向上します。
 
-[テーブル インデックス][]と[列ストア インデックス][]に関するページもご覧ください
+[テーブル インデックス][]、[列ストア インデックス][]、[列ストア インデックスの再構築][]に関するページもご覧ください
 
 ## 大きなリソース クラスを使用して、クエリのパフォーマンスを向上させる
 SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。既定では、ディストリビューションごとに 100 MB のメモリが与えられる小規模リソース クラスにすべてのユーザーが割り当てられます。常に 60 個のディストリビューションが存在し、各ディストリビューションに最低 100 MB が割り当てられるため、システム全体のメモリの割り当ての合計は 6,000 MB (6 GB 弱) です。大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。純粋なスキャンなどのクエリでは、効果はありません。一方で、より大きなリソース クラスを利用すると、同時実行に影響します。そのため、すべてのユーザーをより大きなリソース クラスに移行する前に、その点を考慮する必要があります。
@@ -115,6 +115,7 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [テーブル分散]: ./sql-data-warehouse-tables-distribute.md
 [テーブル インデックス]: ./sql-data-warehouse-tables-index.md
 [Causes of poor columnstore index quality (列ストア インデックスの品質低下の原因)]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[列ストア インデックスの再構築]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [テーブル パーティション]: ./sql-data-warehouse-tables-partition.md
 [テーブル統計の管理]: ./sql-data-warehouse-tables-statistics.md
 [一時テーブル]: ./sql-data-warehouse-tables-temporary.md
@@ -159,4 +160,4 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [Azure SQL Data Warehouse Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/01/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボ VM のカスタム アーティファクトの作成
 
-> [AZURE.NOTE] この記事の付属の[カスタム アーティファクトの作成方法](/documentation/videos/how-to-author-custom-artifacts)に関するビデオをご覧ください
+> [AZURE.VIDEO how-to-author-custom-artifacts] 
 
 ## 概要
 **アーティファクト**は、VM のプロビジョニング後にアプリケーションをデプロイして構成するために使用します。アーティファクトは、Git リポジトリ内のフォルダーに格納されているアーティファクト定義ファイルとその他のスクリプト ファイルで構成されます。アーティファクト定義ファイルは、VM にインストールするものを指定するのに使用できる JSON と式で構成されます。たとえば、アーティファクトの名前、実行するコマンド、コマンド実行時に使用可能なパラメーターを定義できます。アーティファクト定義ファイル内では、他のスクリプト ファイルを名前で参照できます。
@@ -121,8 +121,12 @@
 
 1. ラボへのアーティファクト リポジトリの追加 - 「[ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
 
+## 関連するブログ記事
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+
 ## 次のステップ
 
 - [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0803_2016-->

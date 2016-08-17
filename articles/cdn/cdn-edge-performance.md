@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - エッジ パフォーマンスの分析"
+	pageTitle="Azure CDN でのエッジ パフォーマンスの分析 | Microsoft Azure"
 	description="Microsoft Azure CDN でエッジ ノード パフォーマンスを分析します。エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
@@ -192,4 +192,4 @@ HTTP 応答コード | エッジ サーバーによって HTTP クライアン�
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

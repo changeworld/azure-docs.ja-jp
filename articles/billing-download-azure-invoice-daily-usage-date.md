@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure の請求書と毎日の使用状況データをダウンロードする方法 | Microsoft Azure"
 	description="Azure の請求書と毎日の使用状況データをダウンロードする方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="meerak"
+	editor=""
 	tags="billing"
 	/>
 
@@ -33,4 +33,4 @@ Azure アカウント管理者の場合、Azure アカウント センターで�
 6. 最新の請求書のコピーを確認するには、**[請求書のダウンロード]** を選択します。</br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
 7. CSV ファイル形式で毎日の使用状況データをダウンロードするには、**[使用量のダウンロード]** を選択します。</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

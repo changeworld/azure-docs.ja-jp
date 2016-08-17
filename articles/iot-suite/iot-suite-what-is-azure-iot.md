@@ -14,14 +14,14 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/25/2016"
+ ms.date="08/09/2016"
  ms.author="dobett"/>
 
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Azure IoT Suite
 
-Microsoft Azure IoT Suite は、[リモート監視][lnk-preconfigured-solutions]や[予測的メンテナンス][lnk-predictive-maintenance]など、一般的な IoT シナリオに対処する拡張可能な一連の事前構成済みソリューションによってすばやく開始できるエンタープライズ レベルのソリューションです。これらのソリューションは、前述のように、IoT ソリューションのアーキテクチャの実装です。
+Microsoft Azure IoT Suite は、[リモート監視][lnk-preconfigured-solutions]や[予測的メンテナンス][lnk-predictive-maintenance]など、一般的な IoT シナリオに対処する拡張可能な一連の事前構成済みソリューションによってすばやく開始できるエンタープライズ レベルのソリューションです。これらのソリューションは、この記事で概説しているように、IoT ソリューションのアーキテクチャの実装です。
 
 事前構成済みソリューションは、開始できるようにシミュレーションされたデバイス、[Azure IoT Hub][]、[Azure Event Hubs][]、[Azure Stream Analytics][]、[Azure Machine Learning][]、[Azure Storage][] などの事前構成された Azure サービス、およびソリューション固有の管理コンソールを含む、機能する完全なエンド ツー エンド ソリューションです。事前構成済みソリューションには、独自の IoT シナリオを実装するためにカスタマイズおよび拡張できる、実績のある、実稼働可能なコードが含まれています。
 
@@ -45,4 +45,4 @@ IoT Suite と構成済みのソリューションについて引き続き学習�
 [Azure storage]: https://azure.microsoft.com/documentation/services/storage/
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

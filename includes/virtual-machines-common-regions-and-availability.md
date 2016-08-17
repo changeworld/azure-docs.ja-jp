@@ -1,102 +1,104 @@
-# Regions and availability overview
-Azure operates in multiple datacenters around the world. These datacenters are grouped in to geographic regions, giving you flexibility in choosing where to build your applications. You can also build high availability in to your apps by leveraging the redundancy and availability features within the Azure platform such as storage replication and availability sets.
+# リージョンと可用性の概要
+Azure は、世界中の複数のデータセンターで動作しています。これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。ストレージのレプリケーションや可用性セットなど、Azure プラットフォームの冗長性と可用性の機能を活用することで、アプリケーションに高可用性を実現するビルドもできます。
 
-## What are Azure regions?
-Azure allows you to create resources, such as VMs, in defined geographic regions like 'West US', 'North Europe', or 'Southeast Asia'. There are currently 26 Azure regions around the world. You can review the [list of regions and their locations](https://azure.microsoft.com/regions/). Within each region, multiple datacenters exist in order to provide for redundancy and availability. This gives you flexibility when building your applications to create virtual machines (VMs) closest to your users and to meet any legal, compliance, or tax purposes.
+## Azure リージョンとは?
+Azure では、'米国西部'、'北ヨーロッパ'、'東南アジア' のように定義された地理的リージョンで、VM などのリソースを作成することができます。現在、世界中で 26 の Azure リージョンがあります。[リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。各リージョンには、冗長性と可用性を提供するために複数のデータ センターが存在します。こうすることで、アプリケーションを構築する際の柔軟性が提供され、ユーザーに最も近い仮想マシン (VM) を作成して、法律、コンプライアンス、税金などの各種の目的に合致させることができます。
 
-## Special Azure regions
-There are some special Azure regions for compliance or legal purposes which you may wish to use when building out your applications.
+## 特殊な Azure リージョン
+コンプライアンスまたは法的な目的を果たすための特殊な Azure リージョンがいくつかあり、アプリケーションを構築するときに利用することができます。
 
-Existing special regions include:
+既存の特殊なリージョンは次のとおりです。
 
-- **US Gov Virginia** and **US Gov Iowa**
-    - A physical and logical network-isolated instance of Azure for US government agencies and partners, operated by screened US persons. Includes additional compliance certifications such as [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) and [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Read more about [Azure Government](https://azure.microsoft.com/features/gov/).
-- **Australia East** and **Australia Southeast**
-    - These regions are available to customers with a business presence in Australia or New Zealand.
-- **Central India**, **South India**, and **West India**
-    - These regions are currently available to volume licensing customers and partners with a local enrollment in India and access will open to direct online subscriptions throughout 2016.
-- **China East** and **China North**
-    - These regions are available through a unique partnership between Microsoft and 21Vianet, whereby Microsoft does not directly maintain the datacenters. See more about [Microsoft Azure in China](http://www.windowsazure.cn/).
+- **米国政府バージニア**および**米国政府アイオワ**
+    - 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。[FedRAMP](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。詳細については「[Azure Government](https://azure.microsoft.com/features/gov/)」をご覧ください。
+- **オーストラリア東部**および**オーストラリア南東部**
+    - これらのリージョンをご利用いただけるのは、オーストラリアまたはニュージーランドに事業の活動場所を持つお客様のみです。
+- **インド中部**、**インド南部**、および**インド西部**
+    - これらのリージョンは現在、ボリューム ライセンス契約をされているお客様と、インドでローカル登録しているパートナーがご利用可能です。2016 年中には、ダイレクト オンライン サブスクリプションにアクセスがオープンされる予定です。
+- **中国東部**および**中国北部**
+    - これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。詳細については、[中国での Microsoft Azure のページ](http://www.windowsazure.cn/)をご覧ください。
 
-Announced special regions include:
+発表済みの特殊なリージョンは次のとおりです。
 
-- **Germany Central** and **Germany Northeast**
-    - Azure will be available via a new data trustee model whereby customer data remains in Germany under control of T-Systems, a Deutsche Telekom company, acting as the German data trustee.
+- **ドイツ中部**および**ドイツ北東部**
+    - 新しいデータ トラスティ モデルを通して、Azure をご利用いただけます。お客様のデータは、ドイツのデータ トラスティを務める Deutsche Telekom 傘下の T-Systems の管理の下、ドイツ国内で保管されます。
 
-## Region pairs
-Each Azure region is paired with another region within the same geography (such as US, Europe, or Asia). This allows for the replication of resources, such as VM storage, across a geography that should reduce the likelihood of natural disasters, civil unrest, power outages, or physical network outages affecting both regions at once. Additional advantages of region pairs include:
+## リージョンのペア
+各 Azure リージョンは、同じ Geo 内 (米国、ヨーロッパ、アジアなど) の別のリージョンと組み合わせて使用します。こうすることで、1 つの Geo のリソース (VM ストレージなど) のレプリケーションを考慮し、自然災害、暴動、停電、または両方のリージョンに同時に影響を与える物理的なネットワーク障害が発生する可能性を小さくします。リージョンのペアには他にも次の利点があります。
 
-- In the event of a wider Azure outage, one region is prioritized out of every pair to help reduce the time to restore for applications. 
-- Planned Azure updates are rolled out to paired regions one at a time to minimize downtime and risk of application outage.
-- Data will continue to reside within the same geography as its pair (with the exception of Brazil South) for tax and law enforcement jurisdiction purposes.
+- Azure の障害の規模が大きい場合に、各ペアの一方のリージョンを優先することで、アプリケーションの復元時間短縮を図ることができます。
+- 計画的な Azure の更新をペアになっているリージョンの 1 つずつにロールアウトすることで、ダウンタイムとアプリケーション停止のリスクを最小限に抑えことができます。
+- 税および法の執行を目的として、同じ Geo に常にペアとしてデータが存在します (ブラジル南部を除く)。
 
-Examples of region pairs include:
+リージョンのペアの例は次のとおりです。
 
-| Primary        | Secondary   |
+| プライマリ | セカンダリ |
 |:---------------|:------------|
-| West US        | East US     |
-| North Europe   | West Europe |
-| Southeast Asia | East Asia   |
+| 米国西部 | 米国東部 |
+| 北ヨーロッパ | 西ヨーロッパ |
+| 東南アジア | 東アジア |
 
-You can see the full [list of regional pairs here](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
+リージョンのペアの完全な一覧は[こちら](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)で確認できます。
 
-## Feature availability
-Some services or VM features are only available in certain regions, such as specific VM sizes or storage types. There are also some global Azure services that do not require you to select a particular region, such as [Azure Active Directory](../articles/active-directory/active-directory-whatis.md), [Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md), or [Azure DNS](../articles/dns/dns-overview.md). To assist you in designing your application environment, you can check the [availability of Azure services across each region](https://azure.microsoft.com/regions/#services). 
+## 使用可能な機能
+特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。[Azure Active Directory](../articles/active-directory/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。アプリケーション環境の設計をスムーズにするために、[各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。
 
 
-## Storage availability
-Understanding Azure regions and geographies becomes important when you consider the available Azure Storage replication options. When you create a storage account, you must select one of the following replication options:
+## ストレージの可用性
+Azure のリージョンと Geo を理解することは、使用可能な Azure Storage のレプリケーション オプションを検討する際に重要になります。ストレージ アカウントを作成するときは、次のレプリケーション オプションのいずれかを選択する必要があります。
 
-- Locally redundant storage (LRS)
-    - Replicates your data three times within the region in which you created your storage account.
-- Zone redundant storage (ZRS)
-    - Replicates your data three times across two to three facilities, either within a single region or across two regions.
-- Geo-redundant storage (GRS)
-    - Replicates your data to a secondary region that is hundreds of miles away from the primary region.
-- Read-access geo-redundant storage (RA-GRS)
-    - Replicates your data to a secondary region, as with GRS, but also then provides read-only access to the data in the secondary location.
+- ローカル冗長ストレージ (LRS)
+    - ストレージ アカウントが作成されたリージョン内のデータを 3 回レプリケートします。
+- ゾーン冗長ストレージ (ZRS)
+    - 1 つのリージョン内または 2 つのリージョンまたがって、2 ～ 3 つの施設でデータを 3 回レプリケートします。
+- geo 冗長ストレージ (GRS)
+    - プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータをレプリケートします。
+- 読み取りアクセス geo 冗長ストレージ (RA-GRS)
+    - GRS と同様にセカンダリ リージョンにデータをレプリケートしますが、2 次拠点のデータに対する読み取り専用アクセスも提供します。
 
-The following table provides a quick overview of the differences between the storage replication types:
+次の表に、ストレージ レプリケーションの種類の違いの簡単な概要を示します。
 
-| Replication strategy                                                               | LRS | ZRS | GRS | RA-GRS |
+| レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:-----------------------------------------------------------------------------------|:----|:----|:----|:-------|
-| Data is replicated across multiple facilities.                                     | No  | Yes | Yes | Yes    |
-| Data can be read from the secondary location as well as from the primary location. | No  | No  | No  | Yes    |
-| Number of copies of data maintained on separate nodes.                             | 3   | 3   | 6   | 6      |
+| 複数施設にわたってのデータのレプリケート | いいえ | はい | はい | はい |
+| 1 次拠点に加えて 2 次拠点からもデータの読み取り可能 | いいえ | いいえ | いいえ | はい |
+| 個別のノードで保持されるデータ コピーの数 | 3 | 3 | 6 | 6 |
 
-You can read more about [Azure Storage replication options here](../articles/storage/storage-redundancy.md).
+詳細については、[Azure ストレージのレプリケーション オプションのページ](../articles/storage/storage-redundancy.md)を参照してください。
 
-### Storage costs
-Prices vary depending on the storage type and availability that you select. 
+### ストレージ コスト
+価格は、ストレージの種類と選択した可用性によって異なります。
 
-- Standard storage is backed by regular spinning disks and is charged based on the in-use capacity and desired storage availability.
-    - For RA-GRS, there is an additional Geo-Replication Data Transfer charge for the bandwidth of replicating that data to another Azure region.
-- Premium storage is backed by Solid State Drives (SSDs) and is charged based on the capacity of the disk.
+- Standard ストレージは通常のスピニング ディスクにバックアップされ、使用中の容量と希望するストレージの可用性に基づいて課金されます。
+    - RA-GRS では、別の Azure リージョンへのデータのレプリケーションにかかる帯域幅に対して、Geo レプリケーション データ転送料金がかかります。
+- Premium ストレージはソリッド ステート ドライブ (SSD) にバックアップされ、ディスクの容量に基づいて課金されます。
 
-See [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) for pricing information on the different storage types and availability options.
-
-
-## Azure images
-In Azure, VMs are created from an image. Typically this will be an image created from the [Azure Marketplace](https://azure.microsoft.com/marketplace/) where partners can provide pre-configured complete OS or application images.
-
-When you create a VM from an image in the Azure Marketplace, you are actually working with templates. Azure Resource Manager templates are declarative JavaScript Object Notation (JSON) files that can be used to create complex application environments comprising VMs, storage, virtual networking, etc. You can read more about using [Azure Resource Manager templates](../articles/resource-group-overview.md), including how to [build your own templates](../articles/resource-group-authoring-templates.md).
-
-You can also create your own custom images and upload them using [Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) or [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) to quickly create custom VMs to your specific build requirements. When using custom images, VMs need to be stored in the same storage account as the image itself. You cannot upload an image to a single region and then create VMs from it across other Azure regions.
+さまざまなストレージの種類と可用性オプションの料金情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
 
-## Availability sets
-An availability set is a logical grouping of VMs that allows Azure to understand how your application is built in order to provide for redundancy and availability. It is recommended that two or more VMs are created within an availability set in order to provide for a highly-available application and to meet the [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/). The availability set is compromised of two additional groupings that protect against hardware failures and allow updates to safely be applied - fault domains (FDs) and update domains (UDs).
+## Azure のイメージ
+Azure では、イメージから VM を作成します。通常は、これは、パートナーが構成済みの完全な OS またはアプリケーションのイメージを提供することができる [Azure Marketplace](https://azure.microsoft.com/marketplace/) から作成されたイメージになります。
 
-![Conceptual drawing of the update domain and fault domain configuration](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
+Azure Marketplace のイメージから VM を作成するときは、実際にはテンプレートを使用します。Azure Resource Manager のテンプレートは、宣言型の JavaScript Object Notation (JSON) ファイルで、VM、ストレージ、仮想ネットワークなどで構成される複雑なアプリケーション環境を作成するために使用できます。[独自のテンプレートを作成する](../articles/resource-group-authoring-templates.md)方法など、[Azure Resource Manager のテンプレート](../articles/resource-group-overview.md)を使用する方法については、詳細をお読みください。
 
-You can read more about how to manage the availability of [Linux VMs](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) or [Windows VMs](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
-
-### Fault domains
-A fault domain is a logical group of underlying hardware that share a common power source and network switch, similar to a rack within an on-premises datacenter. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these fault domains to limit the impact of potential physical hardware failures, network outages, or power interruptions.
-
-### Update domains
-An update domain is a logical group of underlying hardware that can undergo maintenance or be rebooted at the same time. As you create VMs within an availability set, the Azure platform automatically distributes your VMs across these update domains to ensure that at least one instance of your application always remains running as the Azure platform undergoes periodic maintenance. Note that the order of update domains being rebooted may not proceed sequentially during planned maintenance, but only one update domain will be reboot at a time.
+独自のカスタム イメージを作成し、[Azure CLI](../articles/virtual-machines/virtual-machines-linux-upload-vhd.md) または [Azure PowerShell](../articles/virtual-machines/virtual-machines-windows-upload-image.md) を使用してアップロードし、特定のビルド要件を満たすカスタム VM をすばやく作成することもできます。カスタム イメージを使用する場合、VM は、イメージ自体と同じストレージ アカウントに格納されている必要があります。1 つのリージョンにイメージをアップロードし、そこから他の Azure リージョンにまたがって VM を作成することはできません。
 
 
-## Next steps
-You can read more specific details about [Azure availability best practices](../articles/best-practices-availability-checklist.md).
+## 可用性セット
+可用性セットは VM の論理グループで、これによって Azure は、冗長性と可用性を提供するために、アプリケーションが構築された方法を理解することができます。高可用性アプリケーションを提供し、[99\.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループによって機能します。
+
+![更新ドメインと障害ドメインの構成の概念図](./media/virtual-machines-common-regions-and-availability/ud-fd-configuration.png)
+
+[Linux VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) または [Windows VM](../articles/virtual-machines/virtual-machines-linux-manage-availability.md) の可用性を管理する方法については、詳細をお読みください。
+
+### 障害ドメイン
+障害ドメインは、オンプレミスのデータ センター内のラックのように、共通の電源やネットワーク スイッチを共有する基盤となるハードウェアの論理グループです。可用性セット内に VM を作成すると、Azure プラットフォームは、潜在的な物理ハードウェア障害やネットワーク障害、電源中断の影響を限定的なものにするために、障害ドメインに VM を自動的に分散します。
+
+### 更新ドメイン
+更新ドメインは、メンテナンスや再起動が同時に行われる可能性のある、基盤となるハードウェアの論理グループです。可用性セット内に VM を作成すると、Azure プラットフォームは、Azure プラットフォームの定期的なメンテナンス実施時にも、アプリケーションのインスタンスが少なくとも 1 つは常に実行され続けるように、更新ドメインに VM を自動的に分散します。計画済みメンテナンス中、更新ドメインの再起動順は連続では処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみであることに、ご注意ください。
+
+
+## 次のステップ
+[Azure の可用性のベスト プラクティス](../articles/best-practices-availability-checklist.md)については、詳細をお読みください。
+
+<!---HONumber=AcomDC_0803_2016-->

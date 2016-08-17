@@ -101,6 +101,8 @@ Windows ベースのコンピューターで使用する ImageFamily 値の例�
 
 D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
 
+>[AZURE.NOTE] ソフトウェア アシュアランス付きのマイクロソフト エンタープライズ契約をしていて、Windows Server [Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) を利用する予定の場合、一般的なユース ケースでは、**- LicenseType** パラメーターを **New-AzureVMConfig** コマンドレットに追加することで、値 **Windows\_Server** を渡します。アップロードしたイメージを使用していることを確認します。ギャラリーの標準イメージと Hybrid Use Benefit は併用できません。
+
 スタンドアロンの Windows コンピューターの場合は、必要に応じて、ローカル管理者のアカウントとパスワードを指定します。
 
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
@@ -175,7 +177,7 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 この仮想マシンまたは同様のマシンを再び作成する場合は、次のことができます。
 
 - このコマンド セットを PowerShell スクリプト ファイル (*.ps1) として保存する。
-- Azure クラシック ポータルの **[オートメーション]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
+- Azure クラシック ポータルの **[Automation]** セクションで、このコマンド セットを Azure Automation Runbook として保存する。
 
 ## <a id="examples"></a>例
 
@@ -258,6 +260,6 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 ## 次のステップ
 
-127 GB より大きい OS ディスクが必要な場合は、[OS ドライブを拡張](virtual-machines-windows-expand-os-disk.md)できます。
+127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

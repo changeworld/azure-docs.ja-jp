@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps での SharePoint コネクタの使用 | Microsoft Azure App Service"
    description="SharePoint コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="msftman"
    manager="erikre"
@@ -26,4 +26,4 @@ Logic Apps バージョン 2014-12-01-preview を対象とするコンテンツ�
 - [この新しいコネクタに関する詳細情報](../connectors/connectors-create-api-sharepointserver.md)
 - 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で動作するすべてのコネクタが列挙された[リスト](../connectors/apis-list.md)をご確認ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

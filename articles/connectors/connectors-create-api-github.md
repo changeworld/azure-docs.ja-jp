@@ -1,7 +1,7 @@
 <properties
 pageTitle="GitHub | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。GitHub は、 web ベースの Git リポジトリホスティングサービスです。独自の機能を追加するだけでなく、Git の分散リビジョン コントロール機能とソース コード管理 (SCM) 機能をすべて提供します。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -179,4 +179,4 @@ GitHub を使用してロジック アプリを作成するには、まず**接�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,7 +3,7 @@
    description="Microsoft Azure SQL Database、データベースの移行、SQL Database の互換性、SqlPackage"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -32,17 +32,17 @@
 1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。[最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードして、最新バージョンの SqlPackage ユーティリティを取得します。
 2. 次の SqlPackage コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Export /ssn:< server_name > /sdn:< database_name > /tf:< target_file > /p:TableData=< schema_name.table_name > > < output_file > 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:<server\_name> /sdn:<database\_name> /tf:<target\_file> /p:TableData=<schema\_name.table\_name> > <output\_file> 2>&1'
 
 	| 引数 | 説明 |
 	|---|---|
-	| < server_name > | ソース サーバー名 |
-	| < database_name > | 移行元データベースの名前 |
-	| < target_file > | BACPAC ファイルのファイル名と場所 |
-	| < schema_name.table_name > | ターゲット ファイルに出力するデータのテーブル |
-	| < output_file > | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
+	| <server\_name> | ソース サーバー名 |
+	| <database\_name> | 移行元データベースの名前 |
+	| <target\_file> | BACPAC ファイルのファイル名と場所 |
+	| <schema\_name.table\_name> | ターゲット ファイルに出力するデータのテーブル |
+	| <output\_file> | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
 
-	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数ではテーブルを抽出しないように指定することはできないので、小さいテーブルを 1 つ指定する必要があります。< output_file > には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
+	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数ではテーブルを抽出しないように指定することはできないので、小さいテーブルを 1 つ指定する必要があります。<output\_file> には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
 
@@ -62,4 +62,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -3,7 +3,7 @@
    description="Microsoft Azure SQL Database、データベースの移行、データベースのエクスポート、BACPAC ファイルのエクスポート、sqlpackage"
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -27,13 +27,13 @@
 1. コマンド プロンプトを開き、sqlpackage.exe コマンド ライン ユーティリティのあるディレクトリに移動します。このユーティリティは、Visual Studio および SQL Server に付属します。コンピュータの検索機能を使用してご利用の環境のパスを検索します。
 2. 次の sqlpackage.exe コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Export /ssn:< server_name > /sdn:< database_name > /tf:< target_file >
+	'sqlpackage.exe /Action:Export /ssn:< server\_name > /sdn:< database\_name > /tf:< target\_file >
 
 	| 引数 | 説明 |
 	|---|---|
-	| < server_name > | ソース サーバー名 |
-	| < database_name > | 移行元データベースの名前 |
-	| < target_file > | BACPAC ファイルのファイル名と場所 |
+	| < server\_name > | ソース サーバー名 |
+	| < database\_name > | 移行元データベースの名前 |
+	| < target\_file > | BACPAC ファイルのファイル名と場所 |
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01b.png)
 
@@ -52,4 +52,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0803_2016-->

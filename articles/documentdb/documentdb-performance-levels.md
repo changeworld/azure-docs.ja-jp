@@ -95,7 +95,7 @@ DocumentDB のコレクションを使用すると、クエリ パターンと�
 
 保存容量やスループットの大きさが求められている場合を除いて、アプリケーションで使用するコレクションは少数にとどめておくことをお勧めします。新しいコレクションの作成に対するアプリケーションのパターンを十分に理解しておいてください。コレクションの作成を、アプリケーション外部で処理する管理アクションにしておくこともできます。同様に、コレクションのパフォーマンス レベルを調整すると、コレクションの時間あたりの課金レートが変更されます。アプリケーションでこれらを動的に調整する場合は、コレクションのパフォーマンス レベルを監視する必要があります。
 
-## <a href="changing-performance-levels-using-the-azure-portal"></a>S1、S2、S3 からユーザー定義のパフォーマンスに変更する
+## <a id="changing-performance-levels-using-the-azure-portal"></a>S1、S2、S3 からユーザー定義のパフォーマンスに変更する
 
 Azure ポータルで次の手順に従って、使用するパフォーマンス レベルを事前定義のものからユーザー定義のものに変更します。ユーザー定義のスループット レベルを使用すると、ニーズに合わせてスループットを調整できます。S1 アカウントを引き続き使用する場合は、数回クリックするだけで既定のスループットを 250 RU/秒から 400 RU/秒に引き上げることができます。
 
@@ -162,7 +162,7 @@ Azure ポータルで次の手順に従って、使用するパフォーマン�
 - [**ReplaceOfferAsync**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx)
 - [**CreateOfferQuery**](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx)
 
-## <a href="change-throughput"></a>コレクションのスループットの変更
+## <a id="change-throughput"></a>コレクションのスループットの変更
 
 ユーザー定義のパフォーマンスを既に使用している場合は、次の手順に従うことでコレクションのスループットを変更できます。パフォーマンス レベル S1、S2、S3 (事前定義のパフォーマンス) からユーザー定義のパフォーマンスに変更する必要がある場合は、「[S1、S2、S3 からユーザー定義のパフォーマンスに変更する](#changing-performance-levels-using-the-azure-portal)」をご覧ください。
 
@@ -193,4 +193,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -20,7 +20,7 @@
 
 # Azure Active Directory グループによるリソースへのアクセス管理
 
-Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。この記事では概要を説明しています。Azure AD グループをすぐに使いい始めたい場合は、「[Azure AD のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)」の手順に従ってください。
+Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。この記事では概要を説明しています。Azure AD グループをすぐに使いい始めたい場合は、「[Azure AD のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)」の手順に従ってください。Azure Active ディレクトリ内のグループを PowerShell で管理する方法について詳しくは、「[グループ管理用の Azure Active Directory プレビューのコマンドレット](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)」をご覧ください。
 
 
 > [AZURE.NOTE] Azure Active Directory を使用するには、Azure のアカウントが必要です。アカウントを持っていない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)できます。
@@ -91,4 +91,4 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 
 * [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0803_2016-->

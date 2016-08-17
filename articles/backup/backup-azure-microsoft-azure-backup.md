@@ -3,8 +3,8 @@
   description="Azure Backup Server を使用して、ワークロードをバックアップする環境を適切に準備します"
   services="backup"
   documentationCenter=""
-  authors="trinadhk"
-  manager="shreeshd"
+  authors="PVRK"
+  manager="shivamg"
   editor=""
   keywords="Azure Backup Server, バックアップ コンテナー"/>
 
@@ -277,4 +277,4 @@ Microsoft Azure Backup サーバーがセットアップ段階 (またはバッ�
 - [SharePoint サーバーのバックアップ](backup-azure-backup-sharepoint.md)
 - [代替サーバーのバックアップ](backup-azure-alternate-dpm-server.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

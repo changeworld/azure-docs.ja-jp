@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法 | Microsoft Azure"
 	description="Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法を説明する"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="mbaldwin"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -44,4 +44,4 @@
 
  >[AZURE.NOTE]アカウント センターへのアクセス権があるのは Azure アカウント管理者だけです。サブスクリプションのアカウント管理者を確認する方法の詳細については、[よく寄せられる質問](billing-subscription-transfer.md#faq)を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

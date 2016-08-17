@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -149,12 +149,12 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 |ResourceGroup|	montest|
 |TargetResourceId|	/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig|
 |作成されたアラートの MetricName|	\\PhysicalDisk(\_Total)\\Disk Writes/sec。正確なメトリック名を取得する方法については、後述の `Get-MetricDefinitions` コマンドレットをご覧ください。|
-|演算子| GreaterThan|
-|しきい値 (このメトリックの場合、数/秒)| 1|
-|WindowSize (hh:mm:ss 形式)| 00:05:00|
-|アグリゲーター (メトリックの統計。この例では Average を使用)| Average|
+|operator|	GreaterThan|
+|しきい値 (このメトリックの場合、数/秒)|	1|
+|WindowSize (hh:mm:ss 形式)|	00:05:00|
+|アグリゲーター (メトリックの統計。この例では Average を使用)|	平均|
 |カスタム電子メール (文字列配列)|'foo@example.com','bar@example.com'|
-|所有者、共同作成者、閲覧者への電子メールの送信| -SendToServiceOwners|
+|所有者、共同作成者、および閲覧者への電子メールの送信|	-SendToServiceOwners|
 
 Email アクションを作成する
 
@@ -212,7 +212,7 @@ Add-AzureRmLogAlertRule -Name superalert1 -Location "East US" -ResourceGroup myr
 Get-AzureRmAlertRule -Name superalert1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-`Add-AlertRule` コマンドレットでは、他にもさまざまなパラメーターを使用できます。詳細については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」をご覧ください。
+`Add-AlertRule` コマンドレットでは、他にもさまざまなパラメーターを使用できます。詳細については、「[Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx)」を参照してください。
 
 ## アラートで使用可能なメトリックのリストの取得
 `Get-AzureRmMetricDefinition` コマンドレットを使用して、特定のリソースのすべてのメトリックのリストを表示できます。
@@ -227,11 +227,11 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id>
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-`Get-AzureRmMetricDefinition` で使用できるオプションの完全な一覧については、「[Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」をご覧ください。
+`Get-AzureRmMetricDefinition` で使用できるオプションの詳細な一覧については、「[Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
 
 
 ## 自動スケール設定の作成と管理
-Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。ただし、各自動スケール設定では複数のプロファイルを使用できます。たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。各プロファイルには、複数のルールを構成できます。自動スケールの詳細については、「[アプリケーションの自動スケールを実行する方法](../cloud-services/cloud-services-how-to-scale.md)」をご覧ください。
+Web Apps、VM、Cloud Services、VM Scale Set などのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。ただし、各自動スケール設定では複数のプロファイルを使用できます。たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。各プロファイルには、複数のルールを構成できます。自動スケールの詳細については、[アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。
 
 ここでは、次の手順を使用します。
 
@@ -278,7 +278,7 @@ $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-自動スケール設定の管理の詳細については、「[Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)」をご覧ください。
+自動スケール設定の管理の詳細については、「[Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)」を参照してください。
 
 ## 自動スケールの履歴
 次の例は、最近の自動スケール イベントとアラート イベントを表示する方法を示しています。監査ログの検索を使用して、自動スケールの履歴を表示します。
@@ -293,7 +293,7 @@ Get-AzureRmLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -S
 Get-AzureRmAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-詳細については、「[Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)」をご覧ください。
+詳細については、「[Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)」を参照してください。
 
 ### 自動スケール設定の詳細の表示
 `Get-Autoscalesetting` コマンドレットを使用して、自動スケール設定の詳細を取得できます。
@@ -319,7 +319,7 @@ Remove-AzureRmAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 
 ## 監査ログのログ プロファイルの管理
 
-*ログ プロファイル*を作成し、監査ログのデータをストレージ アカウントにエクスポートできます。また、ストレージ アカウントのデータ リテンション期間を構成できます。必要に応じて、データをイベント ハブにストリーミングすることもできます。この機能は現在プレビュー段階にあり、サブスクリプションごとに作成できるログ プロファイルは 1 つに限られます。現在のサブスクリプションで以下のコマンドレットを使用して、ログ プロファイルを作成し、管理できます。また、特定のサブスクリプションを選択することもできます。PowerShell では現在のサブスクリプションが既定で使用されますが、`Set-AzureRmContext` を使用してサブスクリプションをいつでも変更できます。そのサブスクリプション内の任意のストレージ アカウントまたはイベント ハブにデータをルーティングするように監査ログを構成できます。データは、JSON 形式で BLOB ファイルとして書き込まれます。
+*ログ プロファイル*を作成し、監査ログのデータをストレージ アカウントにエクスポートできます。また、ストレージ アカウントのデータ保持期間を構成できます。必要に応じて、データをイベント ハブにストリーミングすることもできます。この機能は現在プレビュー段階にあり、サブスクリプションごとに作成できるログ プロファイルは 1 つに限られます。現在のサブスクリプションで以下のコマンドレットを使用して、ログ プロファイルを作成し、管理できます。また、特定のサブスクリプションを選択することもできます。PowerShell では現在のサブスクリプションが既定で使用されますが、`Set-AzureRmContext` を使用してサブスクリプションをいつでも変更できます。そのサブスクリプション内の任意のストレージ アカウントまたはイベント ハブにデータをルーティングするように監査ログを構成できます。データは、JSON 形式で BLOB ファイルとして書き込まれます。
 
 ### ログ プロファイルの取得
 既存のログ プロファイルを取得するには、`Get-AzureRmLogProfile` コマンドレットを使用します。
@@ -384,4 +384,4 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0803_2016-->

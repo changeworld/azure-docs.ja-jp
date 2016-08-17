@@ -1,7 +1,7 @@
 <properties
    pageTitle="Logic Apps での Azure Service Bus コネクタの使用 | Microsoft Azure App Service"
    description="Azure Service Bus コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="rajeshramabathiran"
    manager="erikre"
@@ -95,4 +95,4 @@ Azure Service Bus の "Send Message" アクションを使用することもで�
 [7]: ./media/app-service-logic-connector-azureservicebus/img7.PNG
 [8]: ./media/app-service-logic-connector-azureservicebus/img8.PNG
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

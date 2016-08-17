@@ -1,7 +1,7 @@
 <properties
 pageTitle="Outlook.com |Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。Outlook.com コネクタでは、メール、予定表、連絡先を管理できます。メールを送信する、会議のスケジュールを設定する、連絡先を追加するなど、さまざまなアクションを実行できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -914,4 +914,4 @@ Outlook.com を使用してロジック アプリを作成するには、まず*
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

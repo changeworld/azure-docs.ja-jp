@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CORS を利用した Azure CDN の使用"
+	pageTitle="CORS を利用した Azure CDN の使用 | Microsoft Azure"
 	description="クロス オリジン リソース共有 (CORS) を利用して Azure Content Delivery Network (CDN) を使用する方法について説明します。"
 	services="cdn"
-	documentationCenter=".net"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
     
 # CORS を利用した Azure CDN の使用     
@@ -23,7 +23,7 @@
 CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには[同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。これにより、Web ページは他のドメイン内の API を呼び出すことができません。CORS を使用すれば、あるドメイン (オリジン ドメイン) から他のドメイン内の API を安全に呼び出すことができます。
  
 ## 動作のしくみ
-1.	ブラウザーが **Origin** HTTP ヘッダーを含んだ OPTIONS 要求を送信します。このヘッダーの値は、親ページを提供したドメインです。https://www.contoso.com のページが fabrikam.com ドメイン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。 
+1.	ブラウザーが **Origin** HTTP ヘッダーを含んだ OPTIONS 要求を送信します。このヘッダーの値は、親ページを提供したドメインです。https://www.contoso.com のページが fabrikam.com ドメイン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
     
     `Origin: https://www.contoso.com`
  
@@ -81,4 +81,4 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 
 Azure CDN Standard プロファイルでは、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用する必要があります。これを行うと、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0803_2016-->

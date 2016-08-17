@@ -66,7 +66,7 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 
 ##基本パラメーター##
 
-DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。Runbook のパラメーターの詳細については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
+DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。Runbook のパラメーターの詳細については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」を参照してください。
 
 次の例では、コンパイル時に生成される、**ParametersExample.sample** ノード構成のプロパティの値を指定するために、**FeatureName** と **IsPresent** という 2 つのパラメーターを使用します。
 
@@ -228,4 +228,4 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用�
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

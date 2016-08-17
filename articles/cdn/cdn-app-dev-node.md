@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/19/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Azure CDN 開発の概要
@@ -367,4 +367,4 @@ Azure CDN SDK for Node.js のリファレンスは、[こちら](http://azure.gi
 
 Azure SDK for Node.js に関するその他のドキュメントについては、[詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

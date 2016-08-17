@@ -13,23 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="12/06/2015"
+   ms.date="07/27/2016"
    ms.author="hascipio" />
 
 
 # 必要なポータル
 プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。以下に、デベロッパー センター、Azure 発行ポータル、および Azure ポータルの概要を、やり取りする順番で示します。
 ## デベロッパー センター
-[http://dev.windows.com](http://dev.windows.com/registration?accountprogram=azure)
+[http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 ### 説明
 Microsoft デベロッパー センター アカウントの作成は、1 回限りのタスクです。作成する前に、デベロッパー センター アカウントを会社が既に所有していないことを確認してください。このプロセスでは、銀行口座の情報、税情報、および会社の住所情報が収集されます。
 
-> [AZURE.NOTE]無料のプランのみを発行する場合 (またはライセンス持ち込みの場合)、税情報と銀行情報は必要ありません。
+> [AZURE.NOTE] 無料のプランのみを発行する場合 (またはライセンス持ち込みの場合)、税情報と銀行情報は必要ありません。
 
 ### 使用する ID とアカウント
-配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com) など)。配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する**必要があります**。
+配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com など)。配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する**必要があります**。
 
-> [AZURE.TIP]個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。
+> [AZURE.TIP] 個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。
 
 ## 発行ポータル
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
@@ -50,4 +50,4 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_1210_2015-->
+<!---HONumber=AcomDC_0803_2016-->

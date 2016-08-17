@@ -1,7 +1,7 @@
 <properties
    pageTitle="オンプレミス データ ゲートウェイへの Logic Apps のインストール | Microsoft Azure"
    description="ロジック アプリで使用するためにオンプレミス データ ゲートウェイをインストールする方法"
-   services="app-service\logic"
+   services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
    manager="erikre"
@@ -221,4 +221,4 @@ TcpTestSucceeded       : True
 - [エンタープライズ統合機能](app-service-logic-enterprise-integration-overview.md)
 - [Logic Apps コネクタ](../connectors/apis-list.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

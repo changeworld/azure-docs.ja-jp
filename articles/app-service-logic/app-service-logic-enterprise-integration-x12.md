@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="X12 と Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
 	description="X12 契約を使用してロジック アプリを作成する方法について説明しています。" 
-	services="app-service\logic" 
+	services="logic-apps" 
 	documentationCenter=".net,nodejs,java"
 	authors="msftman" 
 	manager="erikre" 
@@ -189,4 +189,4 @@ X12 メッセージの交換を始める前に、X12 契約を作成し、統合
 ## 詳細情報
 - [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

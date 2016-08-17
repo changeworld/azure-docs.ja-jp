@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="06/27/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # [Stretch Database を有効にする] ウィザードを実行する方法の概要
@@ -21,6 +21,8 @@
 Stretch Database のデータベースを設定するには、[Stretch Database を有効にする] ウィザードを実行します。このトピックでは、ウィザードで入力し、選択する情報について説明します。
 
 Stretch Database の詳細については、「[Stretch Database](sql-server-stretch-database-overview.md)」を参照してください。
+
+ >   [AZURE.NOTE] 後で Strech Database を無効にする場合、テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されないことに注意してください。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを手動で削除するまで、Azure のコストが引き続き発生します。
 
 ## ウィザードを起動する
 
@@ -56,21 +58,21 @@ Stretch を有効にするテーブルを選択します。
 |**行**|テーブルの行数を指定します。|
 |**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
 
-## <a name="Filter"></a>必要に応じて、行フィルターを指定する
+## <a name="Filter"></a>必要に応じて行フィルターを指定する
 
 フィルター関数を指定して移行する行を選択する場合は、**[テーブルの選択]** ページで次のようにします。
 
-1.  **[Select the tables you want to stretch (ストレッチするテーブルの選択)]** ボックスの一覧で、テーブルの行の **[テーブル全体]** をクリックします。**[Select rows to stretch (ストレッチする行の選択)]** ダイアログ ボックスが表示されます。
+1.  **[拡張するテーブルを選択します]** ボックスの一覧で、テーブルの行の **[テーブル全体]** をクリックします。**[拡張する行の選択]** ダイアログ ボックスが表示されます。
 
     ![Define a filter function][StretchWizardImage2a]
 
-2.  **[Select rows to stretch (ストレッチする行の選択)]** ダイアログ ボックスで、**[Choose Rows (行の選択)]** を選択します。
+2.  **[拡張する行の選択]** ダイアログ ボックスで、**[行の選択]** を選択します。
 
 3.  **[名前]** フィールドに、フィルター関数の名前を入力します。
 
-4.  **[Where]** 句で、テーブルの列を選択し、演算子を選択して、値を指定します。
+4.  **Where** 句で、テーブルの列を選択し、演算子を選択して値を指定します。
 
-5. **[確認]** をクリックして関数をテストします。関数がテーブルから結果を返す場合、つまり条件を満たす移行する行がある場合は、テストで **[成功]** と表示されます。
+5. **[確認]** をクリックして関数をテストします。関数がテーブルから結果を返す場合、つまり条件を満たす移行される行がある場合は、テストで **[成功]** と表示されます。
 
     >   [AZURE.NOTE] フィルター クエリを表示するテキスト ボックスは、読み取り専用です。テキスト ボックスのクエリを編集することはできません。
 
@@ -84,7 +86,7 @@ Stretch を有効にするテーブルを選択します。
 
 -   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、フィルター関数を指定します。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」を参照してください。
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、[ウィザードの実行後におけるフィルター関数の追加](sql-server-stretch-database-predicate-function.md#addafterwiz)に関するページを参照してください。
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、「[ウィザードの実行後にフィルター関数を追加する](sql-server-stretch-database-predicate-function.md#addafterwiz)」を参照してください。
 
 ## <a name="Configure"></a>Azure デプロイを構成する
 
@@ -96,7 +98,7 @@ Stretch を有効にするテーブルを選択します。
 
 3.  Azure リージョンを選択します。
     -   新しいサーバーを作成すると、このリージョンにサーバーが作成されます。
-    -   選択したリージョンに既存のサーバーが存在する場合は、**[Existing server (既存のサーバー)]** を選択すると、ウィザードに一覧表示されます。
+    -   選択したリージョンに既存のサーバーが存在する場合は、**[既存のサーバー]** を選択すると、ウィザードに一覧表示されます。
 
     待機時間を最小限に抑えるために、SQL Server が配置されている Azure リージョンを選択してください。リージョンの詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
 
@@ -157,7 +159,7 @@ Stretch Database がリモート データベースの接続に使用する資�
 ![Results page of the Stretch Database wizard][StretchWizardImage9]
 
 ## <a name="KnownIssues"></a>ウィザードのトラブルシューティングを行う
-**Stretch Database ウィザードが失敗しました。** Stretch Database がサーバー レベルで有効になっていないとき、システム管理者の許可なしでウィザードを実行し、有効にしようとすると、ウィザードは失敗します。ローカル サーバー インスタンスで Stretch Database を有効にするようにシステム管理者に依頼し、その後、ウィザードをもう一度実行します。詳細については、「[Prerequisite: Permission to enable Stretch Database on the server (前提条件: サーバーで Stretch Database を有効にするためのアクセス許可)](sql-server-stretch-database-enable-database.md#EnableTSQLServer)」を参照してください。
+**Stretch Database ウィザードが失敗しました。** Stretch Database がサーバー レベルで有効になっていないとき、システム管理者の許可なしでウィザードを実行し、有効にしようとすると、ウィザードは失敗します。ローカル サーバー インスタンスで Stretch Database を有効にするようにシステム管理者に依頼し、その後、ウィザードをもう一度実行します。詳細については、[前提条件である、サーバーで Stretch Database を有効にするためのアクセス許可](sql-server-stretch-database-enable-database.md#EnableTSQLServer)に関するセクションを参照してください。
 
 ## 次のステップ
 Stretch Database の追加テーブルを有効にします。データ移行を監視し、Stretch 対応のデータベースとテーブルを管理します。
@@ -191,4 +193,4 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

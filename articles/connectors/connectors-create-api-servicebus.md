@@ -1,7 +1,7 @@
 <properties
 pageTitle="ロジック アプリでの Azure Service Bus コネクタの使用方法 | Microsoft Azure"
 description="Azure App Service を使用してロジック アプリを作成します。Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。"
-services="app-servicelogic"	
+services="logic-apps"	
 documentationCenter=".net,nodejs,java" 	
 authors="msftman"	
 manager="erikre"	
@@ -14,7 +14,7 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="07/27/2016"
+ms.date="08/02/2016"
 ms.author="deonhe"/>
 
 # Azure Service Bus コネクタの使用
@@ -75,10 +75,28 @@ Azure Service Bus には、次のアクションがあります。
 この操作では、キューまたはトピックにメッセージを送信します。
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| 表示名|説明|
 | ---|---|---|
-|message*|メッセージ|送信するメッセージ|
+|ContentData*|コンテンツ|メッセージのコンテンツ|
+|ContentType|コンテンツの種類|メッセージのコンテンツの種類|
+|プロパティ|プロパティ|各仲介型プロパティのキーと値のペア|
 |entityName*|キュー/トピック名|キューまたはトピックの名前|
+
+他にも次の詳細パラメーターが用意されています。
+
+|プロパティ名| 表示名|説明|
+| ---|---|---|
+|MessageId|メッセージ ID|これは、有効になっている場合に重複するメッセージを識別するために Service Bus が使用できる、ユーザー定義の値です。|
+|To|To|送信先アドレス|
+|ReplyTo|返信|返信するキューのアドレス|
+|ReplyToSessionId|返信セッション ID|返信するセッションの識別子|
+|ラベル|ラベル|アプリケーション固有のラベル|
+|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|メッセージがキューに追加される日付と時刻 (UTC)|
+|SessionId|セッション ID|セッションの識別子|
+|CorrelationId|関連付け ID|関連付けの識別子|
+|TimeToLive|有効期限|これは、メッセージが有効な期間です (ティック単位)。期間は、メッセージが Service Bus に送信されたときから開始します。|
+
+
 
 * は、必須のプロパティを示します。
 
@@ -89,9 +107,10 @@ Azure Service Bus には、次のアクションがあります。
 この操作では、キューでメッセージを受け取ったときにフローをトリガーします。
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| 表示名|説明|
 | ---|---|---|
 |queueName*|キュー名|キューの名前|
+
 
 * は、必須のプロパティを示します。
 
@@ -104,7 +123,6 @@ ServiceBusMessage: このオブジェクトには、Service Bus メッセージ�
 |---|---|---|
 |ContentData|string|メッセージのコンテンツ|
 |ContentType|string|メッセージのコンテンツの種類|
-|ContentTransferEncoding|string|メッセージ コンテンツのコンテンツ転送エンコード。("none"|"base64")|
 |プロパティ|オブジェクト|各仲介型プロパティのキーと値のペア|
 |MessageId|string|これは、有効になっている場合に重複するメッセージを識別するために Service Bus が使用できる、ユーザー定義の値です。|
 |To|string|送信先アドレス|
@@ -123,10 +141,11 @@ ServiceBusMessage: このオブジェクトには、Service Bus メッセージ�
 この操作では、トピック サブスクリプションでメッセージを受け取ったときにフローをトリガーします。
 
 
-|プロパティ名| Displayname Settings|説明|
+|プロパティ名| 表示名|説明|
 | ---|---|---|
 |topicName*|トピック名|トピックの名前|
 |subscriptionName*|Topic subscription name (トピック サブスクリプション名)|トピック サブスクリプションの名前|
+
 
 * は、必須のプロパティを示します。
 
@@ -139,7 +158,6 @@ ServiceBusMessage: このオブジェクトには、Service Bus メッセージ�
 |---|---|---|
 |ContentData|string|メッセージのコンテンツ|
 |ContentType|string|メッセージのコンテンツの種類|
-|ContentTransferEncoding|string|メッセージ コンテンツのコンテンツ転送エンコード。("none"|"base64")|
 |プロパティ|オブジェクト|各仲介型プロパティのキーと値のペア|
 |MessageId|string|これは、有効になっている場合に重複するメッセージを識別するために Service Bus が使用できる、ユーザー定義の値です。|
 |To|string|送信先アドレス|
@@ -171,4 +189,4 @@ ServiceBusMessage: このオブジェクトには、Service Bus メッセージ�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

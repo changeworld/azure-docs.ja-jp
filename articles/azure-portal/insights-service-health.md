@@ -1,14 +1,14 @@
 <properties
-	pageTitle="サービス正常性を追跡する"
+	pageTitle="Azure Insights を使用してサービスの正常性状態を追跡する | Microsoft Azure"
 	description="Azure でパフォーマンスの低下やサービスの中断がいつ発生したかを検出します。"
 	authors="stepsic-microsoft-com"
 	manager="kamrani"
 	editor=""
-	services="azure-portal"
-	documentationCenter="na"/>
+	services="monitoring"
+	documentationCenter="monitoring"/>
 
 <tags
-	ms.service="azure-portal"
+	ms.service="monitoring"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -52,4 +52,4 @@ Azure は、サービスの中断やパフォーマンスの低下があるた�
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0803_2016-->

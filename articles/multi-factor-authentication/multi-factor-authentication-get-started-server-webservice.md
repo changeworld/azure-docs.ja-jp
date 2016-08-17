@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # MFA Server モバイル アプリ Web サービスの概要
@@ -51,9 +51,9 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 ## モバイル アプリ Web サービスのインストール
 モバイル アプリ Web サービスをインストールする前に、次の点に留意してください。
 
-- Azure Multi-Factor Authentication ユーザー ポータルが、インターネットに接続されたサーバー上に既にインストールされている場合、Web サービス SDK のユーザー名、パスワード、および URL は、ユーザー ポータルの web.config ファイルからコピーできます。 
+- Azure Multi-Factor Authentication ユーザー ポータルが、インターネットに接続されたサーバー上に既にインストールされている場合、Web サービス SDK のユーザー名、パスワード、および URL は、ユーザー ポータルの web.config ファイルからコピーできます。
 - インターネットに接続された Web サーバーで Web ブラウザーを開き、web.config ファイルに入力された Web サービス SDK の URL に移動することをお勧めします。ブラウザーが Web サービスを正常に取得できる場合、資格情報が求められます。web.config ファイルに入力したユーザー名とパスワードを、ファイルに表示されているとおりに入力します。証明書の警告およびエラーが表示されないことを確認してください。
-- リバース プロキシまたはファイアウォールがモバイル アプリ Web サービス Web サーバーの前に配置され、SSL オフロードを実行している場合、モバイル アプリ Web サービスの web.config ファイルを編集し、以下のキーを <appSettings> セクションに追加することで、モバイル アプリ Web サービスで https ではなく http を使用できるようにします。とはいえ、モバイル アプリからファイアウォール/リバース プロキシへの SSL も必要です。<add key="SSL_REQUIRED" value="false"/> 
+- リバース プロキシまたはファイアウォールがモバイル アプリ Web サービス Web サーバーの前に配置され、SSL オフロードを実行している場合、モバイル アプリ Web サービスの web.config ファイルを編集し、<add key="SSL\_REQUIRED" value="false"/> キーを <appSettings> セクションに追加することで、モバイル アプリ Web サービスで https ではなく http を使用できるようにします。とはいえ、モバイル アプリからファイアウォール/リバース プロキシへの SSL も必要です。
 
 ### モバイル アプリ Web サービスをインストールするには
 
@@ -83,11 +83,11 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 2. [ユーザーにモバイル アプリのアクティブ化を許可する] ボックスを確認します。
 3. [ユーザー登録を許可する] ボックスを確認します。
 4. [モバイル アプリ] アイコンをクリックします。
-5. Azure Multi-Factor AuthenticationMobileAppWebServiceSetup をインストールするときに作成された仮想ディレクトリで使用される URL を入力します。所定の場所にアカウント名を入力することがあります。この会社名はモバイル アプリケーションに表示されます。空欄のままにすると、Azure 管理ポータルで作成された Multi-Factor Auth Provider の名前が表示されます。 
+5. Azure Multi-Factor AuthenticationMobileAppWebServiceSetup をインストールするときに作成された仮想ディレクトリで使用される URL を入力します。所定の場所にアカウント名を入力することがあります。この会社名はモバイル アプリケーションに表示されます。空欄のままにすると、Azure 管理ポータルで作成された Multi-Factor Auth Provider の名前が表示されます。
 
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

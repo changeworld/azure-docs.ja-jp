@@ -1,8 +1,8 @@
 <properties
-	pageTitle="CDN - 詳細な HTTP レポート"
+	pageTitle="Azure CDN の詳細な HTTP レポート | Microsoft Azure"
 	description="Microsoft Azure CDN の詳細な HTTP レポートです。これらのレポートでは、CDN アクティビティの詳細情報が提供されます。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Microsoft Azure CDN の詳細な HTTP レポート
@@ -28,11 +28,13 @@
 
 1. CDN プロファイル ブレードで、**[管理]** をクリックします。
 
-	![CDN profile blade manage button](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
 
 	CDN 管理ポータルが開きます。
 
 2. **[分析]** タブにマウス ポインターを合わせ、次に **[詳細な HTTP レポート]** フライアウトにポインターを合わせます。**[HTTP ラージ プラットフォーム]** をクリックします。
+
+	![CDN management portal - Advanced Reports menu](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
 
 	レポートのオプションが表示されます。
 
@@ -196,4 +198,4 @@
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
 * [Edge のパフォーマンスの分析](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

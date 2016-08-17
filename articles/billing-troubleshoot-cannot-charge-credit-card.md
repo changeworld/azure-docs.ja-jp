@@ -1,11 +1,11 @@
 <properties
 	pageTitle="サービスが中断される可能性があるという電子メールを受け取りました | Microsoft Azure"
 	description="クレジット カードにサブスクリプション料金を請求できない問題を解決する方法について説明します"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
 	manager="jarrettr"
-	editor="na"
+	editor=""
 	tags="billing"
 	/>
 
@@ -30,4 +30,4 @@
 
 サポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0803_2016-->

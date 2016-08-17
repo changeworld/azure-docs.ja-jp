@@ -1,7 +1,7 @@
 <properties
 	pageTitle="ロジック アプリに OneDrive コネクタを追加する | Microsoft Azure"
 	description="OneDrive コネクタと REST API パラメーターの概要"
-	services="app-servicelogic"    
+	services="logic-apps"    
 	documentationCenter=""     
 	authors="MandiOhlinger"    
 	manager="erikre"    
@@ -414,4 +414,4 @@ BlobMetadata
 
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

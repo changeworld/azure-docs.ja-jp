@@ -226,7 +226,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 シーケンス処理 | "簡易"、"バックグラウンド"、"フォアグラウンド" | サービスを開始する前に、スタートアップ タスクの実行が成功する必要があります。
 
 ### Cloud Services
-Cloud Services のスタートアップ エントリ ポイントは、ServiceDefintion.csdef でロールごとに構成されています。
+Cloud Services のスタートアップ エントリ ポイントは、ServiceDefinition.csdef でロールごとに構成されています。
 
 ```xml
 
@@ -277,4 +277,4 @@ Service Fabric の全機能を活用できるように、Service Fabric の Reli
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0803_2016-->

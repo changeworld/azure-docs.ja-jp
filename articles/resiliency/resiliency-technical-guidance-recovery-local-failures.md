@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/05/2016"
-   ms.author="patw;jroth;aglick"/>
+   ms.date="08/01/2016"
+   ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス - Azure でのローカル障害からの復旧
 
@@ -223,4 +223,4 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[リージョン全体のサービス中断からの復旧](./resiliency-technical-guidance-recovery-loss-azure-region.md)について説明します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

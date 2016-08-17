@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/18/2016"
+   ms.date="08/02/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Store のセキュリティ
@@ -68,7 +68,7 @@ Azure Data Lake Store にアクセスするために、ユーザーが AAD に�
 
 ### ACL を使用したファイル システムでの操作
 
-Azure Data Lake Store は HDFS のような階層型ファイル システムであり、[POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) をサポートしています。POSIX ACL を使用すると、グループや他のユーザー/グループを所有する所有者に、リソースに対する読み取り (r)、書き込み (w)、実行 (x) アクセス権限を付与することができます。Data Lake Store パブリック プレビュー (現在のリリース) では、ACL はルート フォルダーでのみ有効化されるので、ルート フォルダーに適用した ACL はすべての子フォルダー/ファイルにも適用されます。今後のリリースでは、任意のファイルやフォルダーで ACL を設定できるようになります。
+Azure Data Lake Store は HDFS のような階層型ファイル システムであり、[POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists) をサポートしています。POSIX ACL を使用すると、グループや他のユーザー/グループを所有する所有者に、リソースに対する読み取り (r)、書き込み (w)、実行 (x) アクセス権限を付与することができます。Data Lake Store パブリック プレビュー (現在のリリース) では、個々のファイルだけでなく、ルート フォルダー、サブフォルダーでも ACL を有効にすることができます。ルート フォルダーに適用した ACL は、そのフォルダーのすべての子フォルダーやファイルにも適用されます。
 
 多数のユーザーの ACL を定義する場合は、[セキュリティ グループ](../active-directory/active-directory-accessmanagement-manage-groups.md)を使用することをお勧めします。ユーザーをセキュリティ グループにグループ化し、ファイルとフォルダーの ACL をそのセキュリティ グループに割り当てます。これは、カスタム アクセスを提供する場合に役立ちます。カスタム アクセスの一部として追加できるエントリは最大 9 個に制限されているためです。AAD セキュリティ グループを使用して、Data Lake Store に保存されているデータをセキュリティで保護する方法の詳細については、「[ユーザーまたはセキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](data-lake-store-secure-data.md#filepermissions)」をご覧ください。
 
@@ -109,6 +109,8 @@ Azure ポータルからデータ アクセスの監査証跡を有効にし (**
 
 診断設定を有効にしたら、**[診断ログ]** タブでログを確認できます。
 
+Azure Data Lake Store の診断ログの利用について詳しくは、「[Azure Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」を参照してください。
+
 ## 概要
 
 企業顧客は、セキュリティで保護された使いやすいデータ分析クラウド プラットフォームを求めています。Azure Data Lake Store は、Azure Active Directory の統合による ID 管理と認証、ACL ベースの承認、ネットワークの分離、転送中のデータの暗号化と保存データの暗号化 (将来提供)、および監査によって、これらの要件に対処するように設計されています。
@@ -121,4 +123,4 @@ Data Lake Store の新機能を確認する場合は、[UserVoice フォーラ�
 - [Data Lake Store の使用](data-lake-store-get-started-portal.md)
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

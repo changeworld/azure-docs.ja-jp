@@ -3,7 +3,7 @@
    description="Azure 仮想ネットワーク (VNet) について"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Virtual Network の概要
 
@@ -27,7 +27,7 @@ VNet をより詳しく説明するために、次の図に簡略化されたオ
 
 次の図のように、同じネットワークを Azure でホストできます。
 
-![Azure 仮想ネットワーク](./media/virtual-networks-overview/figure02.png)
+![Azure Virtual Network](./media/virtual-networks-overview/figure02.png)
 
 Azure インフラストラクチャが VNet からパブリック インターネットへのアクセスを有効にするルーターのロールを担っていることがわかります。構成を行う必要はありません。ファイアウォールは、個々のサブネットに適用されたネットワーク セキュリティ グループ (NSG) に置き換えることができます。すべての物理ロード バランサーは Azure でインターネットに接続する内部ロード バランサーに置き換えられます。
 
@@ -95,4 +95,4 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 - [NSG](virtual-networks-nsg.md) について。
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

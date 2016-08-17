@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="hero-article"
- ms.date="06/30/2016"
+ ms.date="08/10/2016"
  ms.author="krisragh"/>
 
 # Azure ポータルの Azure Scheduler の概要
@@ -25,7 +25,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 2.  **[+新規]** をクリックし、検索ボックスに「_Scheduler_」と入力し、結果の **[Scheduler]**、**[作成]** の順にクリックします。
 
-   ![][marketplace-create]
+     ![][marketplace-create]
 
 3.  ここでは、http://www.microsoft.com/ への GET 要求を送信するのみのジョブを作成します。**[スケジューラ ジョブ]** 画面に次の情報を入力します。
 
@@ -43,7 +43,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
     3.  **[URL]:** ` http://www.microsoft.com`
 
-   ![][action-settings]
+      ![][action-settings]
 
 5.  最後に、スケジュールを定義してみましょう。ジョブは 1 回限りのジョブとして定義することができますが、ここでは定期的なスケジュールを選択しましょう。
 
@@ -55,7 +55,7 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
     4. **[終了期限]**: 今日の日付から 2 日間
 
-   ![][recurrence-schedule]
+      ![][recurrence-schedule]
 
 6.  **[作成]** をクリックします。
 
@@ -71,9 +71,9 @@ Azure Scheduler では、スケジュールされたジョブを簡単に作成�
 
 4.  履歴
 
-5.  ユーザー
+5.  Users
 
-   ![][job-overview]
+    ![][job-overview]
 
 ### プロパティ
 
@@ -129,9 +129,9 @@ HTTP および HTTPS のジョブのアクションの種類では、方法を�
 
    ![][job-history-details]
 
-### ユーザー
+### Users
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler のアクセス権を詳細に管理できます。[ユーザー] タブの使用方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
+Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler のアクセス権を詳細に管理できます。[ユーザー] タブの使用方法については、[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページを参照してください。
 
 
 ## 関連項目
@@ -182,4 +182,4 @@ Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

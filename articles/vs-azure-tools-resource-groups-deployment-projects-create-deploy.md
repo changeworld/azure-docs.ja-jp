@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/17/2016"
+   ms.date="08/03/2016"
    ms.author="tomfitz" />
 
 # Visual Studio での Azure リソース グループの作成とデプロイ
@@ -21,9 +21,9 @@ Visual Studio および [Azure SDK](https://azure.microsoft.com/downloads/) で�
 
 Azure リソース グループ プロジェクトには、Azure にデプロイされるリソースを定義する Azure Resource Manager JSON テンプレートが含まれています。リソース マネージャーのテンプレートの要素の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。Visual Studio では、これらのテンプレートを編集することができ、テンプレートの操作を容易にするツールがサポートされています。
 
-このトピックでは、Web アプリと SQL Database をデプロイします。ただし、デプロイの手順は、どの種類のリソースでもほとんど同じです。仮想マシンおよびこれに関連するリソースも同じように簡単にデプロイできます。Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。
+このトピックでは、Web アプリと SQL Database をデプロイします。ただし手順は、リソースの種類に関係なくほぼ同じです。仮想マシンおよびそれに関連するリソースも同じように簡単にデプロイできます。Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。
 
-この記事では、Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9 を使用しています。Visual Studio 2013 と Azure SDK 2.9 を使用しても、手順はほとんど同じです。Azure SDK 2.6 以降のバージョンを使用できますが、この記事で説明している手順と異なる場合があります。手順を開始する前に、[Azure SDK](https://azure.microsoft.com/downloads/) の最新バージョンをインストールすることを強くお勧めします。
+この記事では、Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9 を使用しています。Visual Studio 2013 と Azure SDK 2.9 を使用しても、手順はほとんど同じです。Azure SDK 2.6 以降のバージョンを使用できますが、この記事で説明しているユーザー インターフェイスとは操作が異なる場合があります。手順を開始する前に、[Azure SDK](https://azure.microsoft.com/downloads/) の最新バージョンをインストールすることを強くお勧めします。
 
 ## Azure リソース グループ プロジェクトを作成する
 
@@ -39,31 +39,31 @@ Azure リソース グループ プロジェクトには、Azure にデプロイ
 
     選択したテンプレートは出発点にすぎません。リソースを追加したり削除したりしてシナリオの要件を満たすことができます。
 
-    >[AZURE.NOTE] 使用可能なテンプレートの一覧はオンラインで取得されるため、変更される可能性があります。
+    >[AZURE.NOTE] 使用できる一連のテンプレートが Visual Studio によってオンラインで取得されます。その内容は変わる場合があります。
 
     Visual Studio では、Web アプリと SQL データベース用のリソース グループ デプロイ プロジェクトが作成されます。
 
-1. デプロイ プロジェクト内のノードを展開して、作成された内容を確認します。
+1. 作成された内容を確認するには、デプロイ プロジェクト内のノードを展開します。
 
     ![ノードの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
 
     この例では [Web アプリ + SQL] テンプレートを選択したため、次のファイルが表示されます。
 
-    |ファイル名|説明|
+    |ファイル名|Description|
     |---|---|
-    |Deploy-AzureResourceGroup.ps1|Azure リソース マネージャーにデプロイするための PowerShell コマンドを呼び出す PowerShell スクリプト。<br />**注** この PowerShell スクリプトは、テンプレートをデプロイするために Visual Studio によって使用されます。このスクリプトに変更を加えると Visual Studio でのデプロイにも影響するため、注意が必要です。|
-    |WebSiteSQLDatabase.json|Azure にデプロイするインフラストラクチャと、デプロイ中に指定できるパラメーターを定義したリソース マネージャーのテンプレートです。正しい順序でデプロイされるようにリソース間の依存性も定義できます。|
-    |WebSiteSQLDatabase.parameters.json|テンプレートで必要な値を含むパラメーター ファイルです。これらは、各デプロイをカスタマイズするために渡す値です。|
+    |Deploy-AzureResourceGroup.ps1|Azure Resource Manager にデプロイするための PowerShell コマンドを呼び出す PowerShell スクリプト。<br />**注** この PowerShell スクリプトは、テンプレートをデプロイするために Visual Studio によって使用されます。このスクリプトに変更を加えると Visual Studio でのデプロイに影響するため、注意が必要です。|
+    |WebSiteSQLDatabase.json|Azure にデプロイするインフラストラクチャと、デプロイ中に指定できるパラメーターを定義した Resource Manager テンプレートです。Resource Manager によってリソースが正しい順序でデプロイされるように、リソース間の依存性も定義されます。|
+    |WebSiteSQLDatabase.parameters.json|テンプレートで必要な値を含むパラメーター ファイルです。パラメーターの値を渡すことによって各デプロイをカスタマイズします。|
 
     すべてのリソース グループ デプロイ プロジェクトに、上記の基本的なファイルが含まれます。他のプロジェクトには、他の機能をサポートするために追加のファイルが含まれることがあります。
 
 ## リソース マネージャーのテンプレートをカスタマイズする
 
-デプロイするリソースが記述されている JSON テンプレートを変更すると、デプロイ プロジェクトをカスタマイズできます。JSON とは JavaScript Object Notation の略であり、操作が簡単なシリアル化されたデータ形式です。JSON ファイルでは、各ファイルの上部で参照されているスキーマが使用されます。スキーマをより深く理解する場合は、スキーマをダウンロードして分析できます。スキーマでは、許可される要素、フィールドの種類と形式、列挙値に使用できる値などが定義されています。リソース マネージャーのテンプレートの要素の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+デプロイするリソースが記述されている JSON テンプレートを変更すると、デプロイ プロジェクトをカスタマイズできます。JSON とは JavaScript Object Notation の略であり、操作が簡単なシリアル化されたデータ形式です。JSON ファイルでは、各ファイルの上部で参照されているスキーマが使用されます。スキーマに関する理解を深めるには、スキーマをダウンロードして分析してください。スキーマでは、有効な要素、フィールドの種類と形式、列挙値に使用できる値などが定義されています。Resource Manager テンプレートの要素の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
 テンプレートで作業するには、**WebSiteSQLDatabase.json** を開きます。
 
-Visual Studio エディターでは、リソース マネージャーのテンプレートの編集に役立つツールを提供しています。**[JSON のアウトライン]** ウィンドウを使用すると、テンプレートで定義されている要素を簡単に確認できます。
+Visual Studio エディターでは、Resource Manager テンプレートの編集に役立つツールを提供しています。**[JSON アウトライン]** ウィンドウを使用すると、テンプレートで定義されている要素を簡単に確認できます。
 
 ![JSON アウトラインの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
 
@@ -71,7 +71,7 @@ Visual Studio エディターでは、リソース マネージャーのテン�
 
 ![JSON の移動](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/navigate-json.png)
 
-テンプレートには新しいリソースを追加することができます。それには、[JSON のアウトライン] ウィンドウの上部にある **[リソースの追加]** ボタンを選択するか、または **[リソース]** を右クリックし **[新しいリソースの追加]** を選択します。
+リソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** ボタンを選択するか、または **[リソース]** を右クリックし **[新しいリソースの追加]** を選択します。
 
 ![リソースの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
@@ -83,7 +83,7 @@ Visual Studio エディターでは、リソース マネージャーのテン�
 
 ![アウトラインの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
 
-**storageType** パラメーターでは、許可する種類と既定の種類があらかじめ定義されています。これらの値は、そのまま使用することも、シナリオに合わせて編集することもできます。このテンプレートを使用して **Premium\_LRS** ストレージ アカウントをデプロイするのを任意のユーザーに許可したくない場合は、許可する種類からそれを削除します。
+**storageType** パラメーターでは、許可する種類と既定の種類があらかじめ定義されています。これらの値は、そのまま使用することも、シナリオに合わせて編集することもできます。このテンプレートを使用して **Premium\_LRS** ストレージ アカウントをデプロイするのをだれにも許可したくない場合は、許可する種類からそれを削除します。
 
     "storageType": {
       "type": "string",
@@ -96,7 +96,7 @@ Visual Studio エディターでは、リソース マネージャーのテン�
       ]
     }
 
-Visual Studio では、テンプレートの編集時にどんなプロパティが使用できるのかを容易に理解できるように intellisense を提供しています。たとえば、App Service プランのプロパティを編集するには、**HostingPlan** リソースに移動し、**properties** の新しい値を追加します。Intellisense では、使用できる値を示し、その値に関する説明を提供します。
+Visual Studio では、テンプレートの編集時にどんなプロパティが使用できるのかを容易に理解できるように intellisense を提供しています。たとえば、App Service プランのプロパティを編集するには、**HostingPlan** リソースに移動し、**properties** の値を追加します。Intellisense では、使用できる値を示し、その値に関する説明を提供します。
 
 ![IntelliSense の表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
@@ -109,7 +109,7 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
 ## リソース グループ プロジェクトを Azure にデプロイする
 
-これでプロジェクトをデプロイする準備が整いました。Azure リソース グループ プロジェクトをデプロイする場合は、Azure のリソース (Web アプリやデータベースなど) の単なる論理グループである Azure リソース グループにプロジェクトをデプロイします。
+これでプロジェクトをデプロイする準備が整いました。Azure リソース グループ プロジェクトをデプロイするとき、そのデプロイ先は Azure リソース グループとなります。リソース グループとは、共通のライフサイクルを持ったリソースの論理上のまとまりです。
 
 1. デプロイ プロジェクト ノードのショートカット メニューで、**[デプロイ]**、**[新しい配置]** の順に選択します。
 
@@ -123,19 +123,19 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
     ![[リソース グループに配置する] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-new-group.png)
 
-    **[リソース グループの作成]** ダイアログ ボックスが表示されます。グループの名前と場所を指定し、**[作成]** をクリックします。
+    **[リソース グループの作成]** ダイアログ ボックスが表示されます。グループの名前と場所を指定し、**[作成]** ボタンを選択します。
 
     ![[リソース グループの作成] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-resource-group.png)
    
-1. **[パラメーターの編集]** をクリックすると、デプロイ用のパラメーターを編集できます。パラメーターの値を指定し、**[保存]** をクリックします。
+1. **[パラメーターの編集]** ボタンを選択すると、デプロイ用のパラメーターを編集できます。パラメーターの値を指定し、**[保存]** ボタンを選択します。
 
     ![[パラメーターの編集] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
     
-    **[パスワードをプレーン テキストとしてパラメーター ファイルに保存する]** オプションは安全ではありません。
+    **[パスワードをプレーンテキストとしてパラメーター ファイルに保存する]** オプションは安全ではありません。
 
 1. **[デプロイ]** をクリックして、プロジェクトを Azure にデプロイします。デプロイの進行状況は、**出力**ウィンドウで確認できます。デプロイは、構成に応じて、完了までに数分かかる場合があります。PowerShell コンソールでデータベース管理者のパスワードの入力を求められた場合は、入力します。デプロイの進行が停止した場合は、プロセスが PowerShell コンソールでパスワードの入力を待機している可能性があります。
 
-    >[AZURE.NOTE] Azure PowerShell コマンドレットのインストールを求められる場合があります。これらのコマンドレットは、Azure リソース グループをデプロイするために必要であるため、インストールする必要があります。
+    >[AZURE.NOTE] Azure PowerShell コマンドレットのインストールを求められる場合があります。リソース グループを正しくデプロイするには、Azure PowerShell のコマンドレットが必要です。メッセージが表示されたら、それらをインストールしてください。
     
 1. デプロイが完了すると、**[出力]** ウィンドウに次のようなメッセージが表示されます。
 
@@ -154,7 +154,7 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
     ![リソースの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
 
-1. 変更を加え、プロジェクトを再デプロイする場合は、Azure リソース グループ プロジェクトのショートカット メニューから直接既存のリソース グループを選択できます。ショートカット メニューの **[デプロイ]** を選択してから、デプロイ先のリソース グループを選択します。
+1. 変更を加えたうえでプロジェクトを再デプロイする場合は、Azure リソース グループ プロジェクトのショートカット メニューから既存のリソース グループを選択します。ショートカット メニューの **[デプロイ]** を選択してから、デプロイしたリソース グループを選択します。
 
     ![デプロイされた Azure リソース グループ](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
@@ -162,11 +162,11 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 
 この時点で、アプリ用のインフラストラクチャはデプロイ済みですが、実際のコードはプロジェクトでデプロイされていません。このトピックでは、デプロイ時に Web アプリと SQL Database テーブルをデプロイする方法を示します。Web アプリではなく仮想マシンをデプロイする場合は、デプロイの一環としてマシン上で何らかのコードを実行します。Web アプリのコードをデプロイするプロセスまたは仮想マシンを設定するプロセスは、ほぼ同じです。
 
-1. Visual Studio ソリューションで、**ASP.NET Web アプリケーション**を追加します。 
+1. Visual Studio ソリューションで、**ASP.NET Web Application** を追加します。
 
     ![Web アプリの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
     
-1. **[MVC]** を選択し、**[クラウドにホストする]** チェック ボックスをオフにします。リソース グループ プロジェクトで、そのタスクは実行されないためです。
+1. **[MVC]** を選択し、**[クラウドにホストする]** チェック ボックスをオフにします。そのタスクはリソース グループ プロジェクトで実行されるためです。
 
     ![MVC の選択](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
     
@@ -176,15 +176,15 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
     
     参照を追加することで、リソース グループ プロジェクトに Web アプリ プロジェクトをリンクし、3 つのキー プロパティを自動的に設定します。
     
-    - **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。 
-    - **[Include File Path]** (ファイル パスを含める) にはパッケージを作成するパスが含まれます。**[Include Targets]** (ターゲットを含める) にはデプロイで実行するコマンドが含まれます。 
-    - 既定値の **Build;Package** を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。  
+    - **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。
+    - **[Include File Path (ファイル パスを含める)]** にはパッケージを作成するパスが含まれます。**[Include Targets (ターゲットを含める)]** にはデプロイで実行するコマンドが含まれます。
+    - **Build;Package** の既定値を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。
     
     パッケージを作成するのに必要な情報はプロパティから取得するので、デプロイで発行プロファイルは必要ありません。
     
       ![参照の表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
       
-1. テンプレートに新しいリソースを追加します。今回は **[Web App の Web 配置]** を選択します。
+1. テンプレートにリソースを追加します。今回は **[Web App の Web 配置]** を選択します。
 
     ![Web デプロイの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
     
@@ -194,7 +194,7 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
     
     **[成果物のストレージ アカウント]** には、このリソース グループでデプロイしたものを使用できます。
     
-デプロイの完了後、サイトを参照すると、既定の ASP.NET アプリがデプロイされていることがわかります。
+デプロイの完了後、サイトを参照すると、既定の ASP.NET アプリが正しくデプロイされていることがわかります。
 
 ![デプロイされたアプリの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
@@ -203,4 +203,4 @@ Visual Studio では、テンプレートの編集時にどんなプロパティ
 - ポータルを使用したリソース管理の詳細については、[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)に関するページを参照してください。
 - テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

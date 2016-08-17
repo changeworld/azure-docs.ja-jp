@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/25/2016"
+	ms.date="08/09/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management でレート制限を使用して API を保護する
@@ -74,7 +74,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 成果物を構成するには、左側の **[API Management]** メニューにある **[成果物]** をクリックし、**[無料試用版]** をクリックします。
 
-![製品の構成][api-management-configure-product]
+![成果物の構成][api-management-configure-product]
 
 **[成果物への API の追加]** をクリックします。
 
@@ -102,7 +102,7 @@ API Management の成果物は、保護することも開くこともできま�
 
 ![ポリシー ステートメント][api-management-limit-policies]
 
-**inbound** ポリシー要素にカーソルを置いたら、**\[サブスクリプション別の呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
+**inbound** ポリシー要素にカーソルを置いたら、**[サブスクリプション別の呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	<api name="name" calls="number">
@@ -110,7 +110,7 @@ API Management の成果物は、保護することも開くこともできま�
 	</api>
 	</rate-limit>
 
-**\[サブスクリプション別の呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
+**[サブスクリプション別の呼び出しレート制限]** は、成果物レベルのほか、API レベルや個々の操作名レベルで使用することもできます。このチュートリアルで使用するのは、成果物レベルのポリシーだけです。そのため、**api** 要素と **operation** 要素は **rate-limit** 要素から削除してください。次の例に示すとおり、外部の **rate-limit** 要素だけが残ります。
 
 	<rate-limit calls="number" renewal-period="seconds">
 	</rate-limit>
@@ -120,7 +120,7 @@ API Management の成果物は、保護することも開くこともできま�
 	<rate-limit calls="10" renewal-period="60">
 	</rate-limit>
 
-**\[サブスクリプション別の使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**\[サブスクリプション別の使用量クォータの設定]** の左側の矢印をクリックします。
+**[サブスクリプション別の使用量クォータの設定]** ポリシーを構成するには、**inbound** 要素内に新しく追加した **rate-limit** 要素のすぐ下にカーソルを置き、**[サブスクリプション別の使用量クォータの設定]** の左側の矢印をクリックします。
 
 	<quota calls="number" bandwidth="kilobytes" renewal-period="seconds">
 	<api name="name" calls="number" bandwidth="kilobytes">
@@ -143,7 +143,7 @@ API Management の成果物は、保護することも開くこともできま�
 	<quota calls="200" renewal-period="604800">
 	</quota>
 
->ポリシーの間隔は秒単位で指定します。1 週間の秒数は、日数 (7) に 1 日の時間数 (24)、1 時間 (60) の分数、1 分間の秒数 (60) を掛けて求めることができます (7 * 24 * 60 * 60 = 604800)。
+>ポリシーの間隔は秒単位で指定します。1 週間の秒数は、日数 (7) に 1 日の時間数 (24)、1 時間の分数 (60)、1 分間の秒数 (60) を掛けて求めることができます (7 * 24 * 60 * 60 = 604800)。
 
 完成したポリシーは、次のようになります。
 
@@ -213,7 +213,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 ![開発者ポータル][api-management-developer-portal-api-menu]
 
-**[GET リソース]** をクリックし、**[試用版]** をクリックします。
+**[GET Resource (GET リソース)]** をクリックし、**[Try it (試用版)]** をクリックします。
 
 ![コンソールを開く][api-management-open-console]
 
@@ -231,7 +231,7 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 ![操作の結果][api-management-http-get-429]
 
-**[応答コンテンツ]** は、再試行が成功するまでの残り時間を示します。
+**[Response content (応答コンテンツ)]** は、再試行が成功するまでの残り時間を示します。
 
 1 分間に 10 回という呼び出しレート制限ポリシーが有効な場合、レート制限超過となった連続 10 回の呼び出しの 1 回目から 60 秒が経過するまで、その成果物に対する以降の呼び出しはエラーになります。この例の場合、残り時間は 54 秒です。
 
@@ -293,4 +293,4 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/20/2016" 
+	ms.date="07/28/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
@@ -24,7 +24,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 ## 前提条件
 
-- Visual Studio 2012 または 2013
+- Visual Studio 2012 または 2013 または 2015
 - [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
 - Azure Data Factory の NuGet パッケージをダウンロードしてインストールします。手順はこのチュートリアルにあります。
 
@@ -43,19 +43,23 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b>
 
 		Install-Package Microsoft.Azure.Management.DataFactories
-		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
 6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
 
-	**SubscriptionId** および **ActiveDirectoryTenantId** の値を Azure サブスクリプションとテナント ID に置き換えます。これらの値は、Azure PowerShell から **Get-AzureAccount** を実行して取得できます (最初に Add-AzureAccount を使用してログインすることが必要になる場合があります)。
+	**AdfClientId**、**RedirectUri**、**SubscriptionId**、**ActiveDirectoryTenantId** は、実際の値で置き換えてください。
+
+	サブスクリプション ID とテナント ID の値は、Azure PowerShell (最初に Add-AzureAccount でログインすることが必要になる場合もあります) から Login-AzureRmAccount でログインした後、**Get-AzureAccount -Format-List** を実行することによって取得できます。
+
+	AD アプリケーションの CLIENT ID とリダイレクト URI は、Azure ポータルから取得できます。
  
 		<appSettings>
-		    <!--CSM Prod related values-->
 		    <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
 		    <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
 		    <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
-		    <add key="AdfClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
-		    <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
-		    <!--Make sure to write your own tenenat id and subscription ID here-->
+
+		    <!-- Replace the following values with your own -->
+		    <add key="AdfClientId" value="Your AD application ID" />
+		    <add key="RedirectUri" value="Your AD application's redirect URI" />
 		    <add key="SubscriptionId" value="your subscription ID" />
     		<add key="ActiveDirectoryTenantId" value="your tenant ID" />
 		</appSettings>
@@ -380,9 +384,52 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
 
+## ポップアップ ダイアログ ボックスなしでのログイン 
+上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
 
-> [AZURE.NOTE] 上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
+### 例
 
+次に示すように、GetAuthorizationHeaderNoPopup メソッドを作成します。
+
+    public static string GetAuthorizationHeaderNoPopup()
+    {
+        var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings["ActiveDirectoryTenantId"]);
+        var context = new AuthenticationContext(authority.AbsoluteUri);
+        var credential = new ClientCredential(ConfigurationManager.AppSettings["AdfClientId"], ConfigurationManager.AppSettings["AdfClientSecret"]);
+        AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings["WindowsManagementUri"], credential).Result;
+        if (result != null)
+            return result.AccessToken;
+
+        throw new InvalidOperationException("Failed to acquire token");
+    }
+
+**Main** 関数の **GetAuthorizationHeader** の呼び出しを **GetAuthorizationHeaderNoPopup** の呼び出しに置き換えます。
+
+        TokenCloudCredentials aadTokenCredentials =
+            new TokenCloudCredentials(
+            ConfigurationManager.AppSettings["SubscriptionId"],
+            GetAuthorizationHeaderNoPopup());
+
+次に、Active Directory アプリケーションとサービス プリンシパルを作成した後、それを Data Factory 共同作成者ロールに割り当てる方法を示します。
+
+1. AD アプリケーションを作成します。
+
+		$azureAdApplication = New-AzureRmADApplication -DisplayName "MyADAppForADF" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.myadappforadf.org/example" -Password "Pass@word1"
+
+2. AD サービス プリンシパルを作成します。
+
+		New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+
+3. Data Factory 共同作成者ロールにサービス プリンシパルを追加します。
+
+		New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+
+4. アプリケーション ID を取得します。
+
+		$azureAdApplication
+
+
+アプリケーション ID とパスワード (クライアント シークレット) を書き留めて、前出のコードで使用します。
 
 [data-factory-introduction]: data-factory-introduction.md
 [adf-getstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
@@ -393,4 +440,4 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 [azure-developer-center]: http://azure.microsoft.com/downloads/
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -20,18 +20,18 @@
 
 Docker は一般的なコンテナー管理およびイメージング プラットフォームで、Linux (および Windows) 上のコンテナーを簡単に操作できます。Azure を使用すると、ニーズに合ったいくつかの方法で Docker を柔軟にデプロイできます。
 
-- アプリのプロトタイプを迅速に作成する場合、または Docker マシンの知識があり、既に使用している場合は、[Docker マシンと Azure ドライバーを使用](./virtual-machines-linux-docker-machine.md)して、Azure 内で Docker ホストをデプロイできます。
-- テンプレート ベースのデプロイでは、Azure 仮想マシンの Docker VM 拡張機能を使用できます。この方法では、Azure Resource Manager テンプレートのデプロイと統合することができ、ロール ベースのアクセス、診断、デプロイ後の構成など、関連するあらゆるメリットが得られます。
-- Docker VM 拡張機能は Docker Compose もサポートしています。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。
-- Swarm が提供する追加のスケジュール設定および管理ツールを活用する実稼働レベルのスケーラブルなデプロイを実行するために、[Azure コンテナー サービスに完全な Docker Swarm クラスターをデプロイ](../container-service/container-service-deployment.md)することもできます。
+- アプリのプロトタイプを迅速に作成する場合、[Docker マシン Azure ドライバーを使用](./virtual-machines-linux-docker-machine.md)して、Azure 内で Docker ホストをデプロイできます。
+- テンプレート ベースのデプロイでは、Azure 仮想マシンの Docker VM 拡張機能を使用します。この方法では、Azure Resource Manager テンプレートのデプロイと統合することができ、ロール ベースのアクセス、診断、デプロイ後の構成など、関連するあらゆるメリットが得られます。
+- Docker VM 拡張機能では、Docker Compose もサポートしています。Docker Compose は、宣言型 YAML ファイルを使用して、開発者が構築したアプリケーションを環境全体で有効にして、一貫性のあるデプロイを生成します。
+- Swarm が提供する追加のスケジュール設定および管理ツールを使用する実稼働レベルのスケーラブルなデプロイを実行するために、[Azure コンテナー サービスに完全な Docker Swarm クラスターをデプロイ](../container-service/container-service-deployment.md)することもできます。
 
 この記事では、Resource Manager テンプレートを使用して、実稼働レベルの定義されたカスタム環境で Docker VM 拡張機能をデプロイする方法を説明します。
 
 ## テンプレートのデプロイ用 Azure Docker VM 拡張機能
 
-Azure Docker VM 拡張機能では、Linux 仮想マシンで Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。この拡張機能を使用すると、Docker Compose を使用してコンテナー アプリケーションを定義し、デプロイすることもできます。Resource Manager テンプレートを使用することで、環境を一貫した方法で再デプロイできます。Docker マシンを使用するか、Docker ホストを自分で作成するだけで制御を強化できるので、Azure Docker VM 拡張機能の使用は堅牢性に優れた開発者環境や運用環境に最適です。
+Azure Docker VM 拡張機能では、Linux 仮想マシンで Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。この拡張機能は、Docker Compose を使用してコンテナー アプリケーションを定義し、デプロイするためにも使用します。Docker マシンの使用や Docker ホストの自作について制御を強化することができるので、堅牢性に優れた開発者環境や運用環境に適しています。
 
-Azure Resource Manager を使用すると、環境の構造全体 (Docker ホスト、ストレージ、ロールベースのアクセス制御 (RBAC)、診断など) を定義するテンプレートを作成し、デプロイできます。そのメリットについて詳しくは、[Resource Manager](../resource-group-overview.md) およびテンプレートに関する記事をご覧ください。Docker マシンだけでなく Resource Manager テンプレートも使用するメリットは、追加の Docker ホスト、ストレージ、アクセス制御などを定義でき、また、将来的な必要性に応じてデプロイメントを再現できることです。
+Azure Resource Manager を使用すると、環境の全体構造を定義するテンプレートを作成してデプロイすることができます。テンプレートを使用すると、Docker ホスト、ストレージ、ロール ベースのアクセス制御 (RBAC)、診断などを定義できます。そのメリットについて詳しくは、[Resource Manager](../resource-group-overview.md) およびテンプレートに関する記事をご覧ください。Resource Manager のテンプレートを使用すると、将来必要に応じて、デプロイを再現することもできます。
 
 ## Docker VM 拡張機能を使用したテンプレートのデプロイ:
 
@@ -70,8 +70,7 @@ info:    group create command OK
 ```
 
 ## 最初の nginx コンテナーのデプロイ
-
-デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。Docker ツールが既にインストールされているので、nginx コンテナーを実行してみましょう。
+デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。nginx コンテナーを実行してみましょう。
 
 ```
 sudo docker run -d -p 80:80 nginx
@@ -98,15 +97,15 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp   adoring_payne
 ```
 
-Web ブラウザーを開き、デプロイ時に指定した DNS 名を入力してコンテナーの動作を確認します。
+動作中のコンテナーを確認するには、Web ブラウザーを開き、デプロイ時に指定した DNS 名を入力します。
 
 ![実行中の ngnix コンテナー](./media/virtual-machines-linux-dockerextension/nginxrunning.png)
 
-Docker デーモンの TCP ポートの構成、セキュリティの構成、Docker Compose を使用したコンテナーのデプロイなど、Docker VM 拡張機能の詳細については、[Docker 用 Azure 仮想マシン拡張機能 GitHub プロジェクト](https://github.com/Azure/azure-docker-extension/)をご覧ください。
+Docker デーモン TCP ポートやセキュリティを構成したり、Docker Compose を使ってコンテナーをデプロイすることができます。詳細については、「[Azure Virtual Machine Extension for Docker GitHub project (Docker GitHub プロジェクト用の Azure 仮想マシン拡張機能)](https://github.com/Azure/azure-docker-extension/)」を参照してください。
 
 ## Docker VM 拡張機能の JSON テンプレート リファレンス
 
-この例では、クイック スタート テンプレートを使用しました。独自の既存の Resource Manager テンプレートを使用して、Docker VM 拡張機能を、テンプレート内で定義された VM にインストールすることもできます。そのためには、以下を JSON 定義ファイルに追加します。
+この例では、クイック スタート テンプレートを使用しました。独自の Resource Manager テンプレートと Azure Docker VM 拡張機能をデプロイするには、次のように追加します。
 
 ```
 {
@@ -139,4 +138,4 @@ Resource Manager テンプレートの使用方法の詳細については、「
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
 3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0803_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/04/2016" 
+	ms.date="08/02/2016" 
 	ms.author="stbaro"/>
 
 # Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
@@ -73,7 +73,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 7.  デプロイメントが完了したら、リソース グループ ブレードが開きます。 ![リソース グループ ブレードのスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-8.  アプリケーションを使用するには、単純にその Web アプリの URL にアクセスします (上の例では URL は http://mydemodocdbwebapp.azurewebsites.net))。次のような Web アプリケーションが表示されます。
+8.  アプリケーションを使用するには、単純にその Web アプリの URL にアクセスします (上の例では URL は http://mydemodocdbwebapp.azurewebsites.net)。次のような Web アプリケーションが表示されます。
 
 	![Todo アプリケーションのサンプル](./media/documentdb-create-documentdb-website/image2.png)
 
@@ -92,7 +92,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 > [AZURE.TIP] このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. [Azure ポータル](https://portal.azure.com)で、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
+1. [Azure ポータル](https://portal.azure.com)で、[新規] をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
 2. [テンプレートのデプロイ] を選択し、**[作成]** をクリックします。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
@@ -112,9 +112,9 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 5. 既存のリソース グループを選択するか、名前を指定して新しいリソース グループを作成し、リソース グループの場所を選択します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment5.png)
   
-6.  **[Review legal terms]** (法的条項の確認)、**[購入]**、**[作成]** の順にクリックして、デプロイメントを開始します。**[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイメントが見つけやすくなります。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
+6.  **[法律条項を確認してください]**、**[購入]**、**[作成]** の順にクリックして、デプロイを開始します。**[ダッシュボードにピン留めする]** を選択すると、Azure ポータルのホーム ページで生成されたデプロイが見つけやすくなります。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment6.png)
 
-7.  デプロイメントが完了したら、リソース グループ ブレードが開きます。 ![リソース グループ ブレードのスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
+7.  デプロイが完了したら、リソース グループ ブレードが開きます。 ![リソース グループ ブレードのスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
 8. リソースの一覧で Web アプリのリソースをクリックし、**[アプリケーション設定]** をクリックします。 ![リソース グループのスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment9.png)
 
@@ -141,4 +141,4 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0803_2016-->

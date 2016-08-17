@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="01/14/2016" 
+    ms.date="04/06/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: 受信同期のための Workday の構成
@@ -19,18 +19,18 @@
 
 このチュートリアルでは、Workday から Microsoft Azure AD にユーザーをインポートするために、Workday と Microsoft Azure AD で実行する必要のある手順について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   有効な Azure サブスクリプション  
--   Workday のテナント  
+-   有効な Azure サブスクリプション
+-   Workday のテナント
 
 このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Workday のアプリケーション統合の有効化  
-2.  統合システム ユーザーの作成  
-3.  セキュリティ グループの作成  
-4.  セキュリティ グループへの統合システム ユーザーの割り当て  
-5.  セキュリティ グループ オプションの構成  
-6.  セキュリティ ポリシーの変更のアクティブ化  
-7.  Microsoft Azure AD でのユーザー インポートの構成  
+1.  Workday のアプリケーション統合の有効化
+2.  統合システム ユーザーの作成
+3.  セキュリティ グループの作成
+4.  セキュリティ グループへの統合システム ユーザーの割り当て
+5.  セキュリティ グループ オプションの構成
+6.  セキュリティ ポリシーの変更のアクティブ化
+7.  Microsoft Azure AD でのユーザー インポートの構成
 
 ##Workday のアプリケーション統合の有効化
 
@@ -38,7 +38,7 @@
 
 ###Workday のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。    
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory](./media/active-directory-saas-inbound-synchronization-tutorial/IC700993.png "Active Directory")
 
@@ -62,7 +62,7 @@
 
 ##統合システム ユーザーの作成
 
-1.  **Workday Workbench** で、検索ボックスに「**ユーザーの作成**」と入力し、**[統合システム ユーザーの作成]** リンクをクリックします。     
+1.  **Workday Workbench** で、検索ボックスに「**ユーザーの作成**」と入力し、**[統合システム ユーザーの作成]** リンクをクリックします。
 
 	![create user](./media/active-directory-saas-inbound-synchronization-tutorial/IC750979.png "create user")
 
@@ -74,7 +74,7 @@
 
 このチュートリアルで概説したシナリオの場合、制約のない統合システム セキュリティ グループを作成し、それにユーザーを割り当てる必要があります。
 
-1.  検索ボックスに「セキュリティ グループの作成」と入力し、[セキュリティ グループの作成] リンクをクリックします。     
+1.  検索ボックスに「セキュリティ グループの作成」と入力し、[セキュリティ グループの作成] リンクをクリックします。
 
 	![CreateSecurity グループ](./media/active-directory-saas-inbound-synchronization-tutorial/IC750981.png "CreateSecurity グループ")
 
@@ -84,7 +84,7 @@
 
 ##セキュリティ グループへの統合システム ユーザーの割り当て
 
-1.  検索ボックスに「セキュリティ グループの編集」と入力し、**[セキュリティ グループの編集]** リンクをクリックします。     
+1.  検索ボックスに「セキュリティ グループの編集」と入力し、**[セキュリティ グループの編集]** リンクをクリックします。
 
 	![セキュリティ グループの編集](./media/active-directory-saas-inbound-synchronization-tutorial/IC750983.png "セキュリティ グループの編集")
 
@@ -100,15 +100,15 @@
 
 この手順では、新しいセキュリティ グループに対して、次のドメイン セキュリティ ポリシーによってセキュリティ保護されるオブジェクトへの Get および Put 操作の権限を付与します。
 
--   外部アカウントのプロビジョニング  
--   Worker Data: Public Worker Reports  
--   Worker Data: All Positions  
--   Worker Data: Current Staffing Information  
--   Worker Data: Business Title on Worker Profile  
+-   外部アカウントのプロビジョニング
+-   Worker Data: Public Worker Reports
+-   Worker Data: All Positions
+-   Worker Data: Current Staffing Information
+-   Worker Data: Business Title on Worker Profile
 
 &nbsp;
 
-1.  検索ボックスにドメインのセキュリティ ポリシーを入力し、[機能領域のドメイン セキュリティ ポリシー] リンクをクリックします。     
+1.  検索ボックスにドメインのセキュリティ ポリシーを入力し、[機能領域のドメイン セキュリティ ポリシー] リンクをクリックします。
 
 	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-inbound-synchronization-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")
 
@@ -130,16 +130,16 @@
 
 6.  スタッフ機能領域のセキュリティ ポリシーの一覧で、[ Worker Data: Staffing] を展開し、残りの各セキュリティ ポリシーに対して上記の手順 4. を繰り返します。
 
-	-   Worker Data: Public Worker Reports  
-    -   Worker Data: All Positions  
-    -   Worker Data: Current Staffing Information  
-    -   Worker Data: Business Title on Worker Profile    
+	-   Worker Data: Public Worker Reports
+    -   Worker Data: All Positions
+    -   Worker Data: Current Staffing Information
+    -   Worker Data: Business Title on Worker Profile
 
 	![ドメイン セキュリティ ポリシー](./media/active-directory-saas-inbound-synchronization-tutorial/IC750991.png "ドメイン セキュリティ ポリシー")
 
 ##セキュリティ ポリシーの変更のアクティブ化
 
-1.  検索ボックスに「アクティブ化」と入力し、[保留中のセキュリティ ポリシーの変更をアクティブ化] をクリックします。    
+1.  検索ボックスに「アクティブ化」と入力し、[保留中のセキュリティ ポリシーの変更をアクティブ化] をクリックします。
 
 	![アクティブ化](./media/active-directory-saas-inbound-synchronization-tutorial/IC750992.png "アクティブ化")
 
@@ -157,15 +157,15 @@
 
 ###Microsoft Azure AD でユーザーのインポートを構成するには、次の手順を実行します。
 
-1.  **Workday** アプリケーション統合ページで、**[ユーザー インポートの構成]** をクリックして、**[プロビジョニングの構成]** ダイアログを開きます。    
+1.  **Workday** アプリケーション統合ページで、**[ユーザー インポートの構成]** をクリックして、**[プロビジョニングの構成]** ダイアログを開きます。
 
 2.  **[設定と管理者資格情報]** ページで次の手順を実行し、[次へ] をクリックします。
 
 	![設定と管理者の資格情報](./media/active-directory-saas-inbound-synchronization-tutorial/IC750995.png "設定と管理者の資格情報")
 
-	1.  **[WORKDAY 管理ユーザー名]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。    
-    2.  **[WORKDAY 管理パスワード]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーのパスワードを入力します。    
-    3.  **[WORKDAY テナント URL]** テキストボックスに、URL または Workday テナントを入力します。    
+	1.  **[WORKDAY 管理ユーザー名]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーの名前を入力します。
+    2.  **[WORKDAY 管理パスワード]** テキストボックスに、「[統合システム ユーザーの作成](https://msdn.microsoft.com/library/azure/Dn762434.aspx#BKMK_CreateUser)」セクションで作成したユーザーのパスワードを入力します。
+    3.  **[WORKDAY テナント URL]** テキストボックスに、URL または Workday テナントを入力します。
 
 3.  **[接続テスト]** ページで、**[テスト開始]** をクリックして接続を確認し、**[次へ]** をクリックします。
 
@@ -181,4 +181,4 @@
 
 これで、**[ユーザー]** セクションに移動して、Workday ユーザーがインポートされたかどうかを確認できます。
 
-<!---HONumber=AcomDC_0121_2016-->
+<!---HONumber=AcomDC_0810_2016-->

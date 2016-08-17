@@ -4,7 +4,7 @@
    keywords=""
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
@@ -49,4 +49,4 @@ SQL Database を使い始めるために、まったく新しい一連のツー�
 * [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0803_2016-->

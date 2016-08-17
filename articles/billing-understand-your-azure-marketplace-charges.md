@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure Marketplace の料金について | Microsoft Azure"
 	description="Marketplace 注文に関連した料金を確認する方法について説明します。"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="jiangchen79"
 	manager="felixwu"
@@ -29,11 +29,11 @@
 1. 組織 ID を使用して Azure アカウント ポータルにサインインします。
 2. **[Marketplace]** をクリックします。表示される一覧には、Azure アカウントで行われた Marketplace でのすべての注文が含まれます。注文は親の Azure サブスクリプションの名前と ID でグループ化されていることがわかります。
 
-	![Marketplace orders](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
+    ![Marketplace orders](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
 
 3. 表示された注文のいずれかをクリックすると、その注文の現在の請求サイクルの概要が表示されます。さまざまな価格モデルの説明については、「[Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)」をご覧ください。
 
-	![Order summary](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+    ![Order summary](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
 
 概要ビューには、各注文に関する次の情報が含まれています。
 - 料金
@@ -59,11 +59,11 @@
 
 1. **[支払い方法の変更]** をクリックします。
 
-	![サブスクリプション](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
+    ![サブスクリプション](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
 
 2. 変更後の支払い方法を選択します。**[Pay with]** (支払い方法) オプションを使用すると、クレジット カードを選択できます。**[支払い方法を追加する]** オプションを使用すると、新しいクレジット カードを追加できます。
 
-	![Change payment method](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
+    ![Change payment method](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
 
 ## 注文管理
 概要ページには、**[注文の管理]** リンクが表示されます。このリンクをクリックすると、ポータルが表示されます。ここでは、Marketplace でのすべての注文の表示、サービス正常性の確認、サポートの要求を行うことができます。
@@ -92,10 +92,10 @@
 
     課金およびアカウント管理ポータルで未処理の利用状況データにアクセスする場合は、ページの下部にあるサポート リンクをクリックしてサポートに問い合わせる必要があることに注意してください。
 
-	![Order history](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
+    ![Order history](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
 
 2. 確認する注文を特定して **[詳細]** をクリックし、料金の内訳を表示します。この内訳には、小計、税、合計料金が含まれます。
 
-	![Order details](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
+    ![Order details](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0803_2016-->

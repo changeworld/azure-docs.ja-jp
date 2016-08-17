@@ -1,8 +1,8 @@
 <properties
-	pageTitle="Azure CDN エンドポイント上の資産を事前に読み込む"
+	pageTitle="Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Azure"
 	description="CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。"
 	services="cdn"
-	documentationCenter=".NET"
+	documentationCenter=""
 	authors="camsoper"
 	manager="erikre"
 	editor=""/>
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/11/2016"
+	ms.date="07/28/2016"
 	ms.author="casoper"/>
 
 # Azure CDN エンドポイント上の資産を事前に読み込む
@@ -60,4 +60,4 @@
 - [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 - [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](https://msdn.microsoft.com/library/mt634451.aspx)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0803_2016-->

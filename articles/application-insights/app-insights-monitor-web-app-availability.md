@@ -12,15 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
+	ms.date="08/10/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
 
-
-[AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
-
-Web アプリケーションをデプロイした後、Web テストを設定して Web アプリケーションの可用性と応答性を監視できます。Application Insights は、世界各地の複数のポイントから定期的に Web 要求を送信します。アプリケーションの応答が遅くなったりアプリケーションがまったく応答しなくなったりした場合は、Application Insights からその旨が通知されます。
+ホストに Web アプリケーションをデプロイした後、Web テストを設定して Web アプリケーションの可用性と応答性を監視できます。[Visual Studio Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的に Web 要求を送信します。アプリケーションの応答が遅くなったりアプリケーションがまったく応答しなくなったりした場合は、Application Insights からその旨が通知されます。
 
 ![Web テストの例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
@@ -40,9 +37,9 @@ Web テストには次の 2 種類があります。
 
 このアプリケーションに対する [Application Insights リソースの設定][start]が既に終わっていて、同じ場所で可用性データを表示する場合は、この手順をスキップします。
 
-[Microsoft Azure](http://azure.com) にサインアップして、[Azure ポータル](https://portal.azure.com)に移動し、新しい Application Insights のリソースを作成します。
+[Microsoft Azure](http://azure.com) にサインアップして、[Azure ポータル](https://portal.azure.com)に移動し、Application Insights のリソースを作成します。
 
-![New > Application Insights](./media/app-insights-monitor-web-app-availability/11-new-app.png)
+![[新規] > [Application Insights]](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で **[参照]** をクリックすると、いつでもここを見ることができます。
 
@@ -60,11 +57,11 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 - **成功の基準**:
 
-    **[テストのタイムアウト]**: これを引き下げると、応答が遅い場合に警告されます。テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。**[依存する要求の解析]** をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。
+    **[テストのタイムアウト]**: この値を引き下げると、応答が遅い場合に警告されます。テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。**[従属要求の解析]** をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。
 
     **[HTTP 応答]**: 成功としてカウントされる、返される状態コード。200 は、通常の Web ページが返されたことを示すコードです。
 
-    **コンテンツの一致**。"ようこそ!" のような、文字列。 すべての返信に表示されるかどうかをテストします。文字列は、(ワイルドカードを含まない) プレーン文字列である必要があります。ページ コンテンツが変更された場合は、この文字列も更新する必要がある可能性があることに注意してください。
+    **コンテンツの一致**。"ようこそ!" のような、文字列。 すべての応答に表示されるかどうかをテストします。文字列は、(ワイルドカードを含まない) プレーン文字列である必要があります。ページ コンテンツが変更された場合は、この文字列も更新する必要がある可能性があることに注意してください。
 
 
 - **アラート** は、既定では、エラーが 3 つの場所で 5 分を超えて存在する場合に送信されます。エラーが 1 つの場所で発生している場合は、サイトでの問題ではなく、ネットワークの問題である可能性が高くなります。ただし、しきい値は上げ下げでき、電子メールの送信先を変更することもできます。
@@ -80,15 +77,16 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果  
+](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
-その期間のより詳しいビューを表示するには、上部の概要グラフの棒をクリックします。
+その期間のより詳しいビューを表示するには、概要グラフの棒をクリックします。
 
 これらのグラフでは、このアプリケーションのすべての Web テストの結果が結合されます。
 
 #### Web ページのコンポーネント
 
-Web ページのイメージ、スタイル シート、スクリプトとその他の静的なコンポーネントは、テストの一部として要求されます。
+Web ページの画像、スタイル シート、スクリプトとその他の静的なコンポーネントは、テストの一部として要求されます。
 
 記録される応答時間は、すべてのコンポーネントの読み込みが完了するまでの所要時間です。
 
@@ -104,7 +102,7 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/15-webTestList.png)
 
-ここに、そのテストの結果が表示されています。
+テストの結果が表示されます。
 
 ![Click a specific webtest](./media/app-insights-monitor-web-app-availability/16-1test.png)
 
@@ -117,7 +115,8 @@ Web ページのイメージ、スタイル シート、スクリプトとその
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果  
+](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -141,7 +140,7 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
 
 1. Web パフォーマンス テストのプロジェクトを作成します。
 
-    ![Visual Studio で、Web パフォーマンス テンプレートとロード テスト テンプレートから新しいプロジェクトを作成します。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
+    ![Visual Studio で、Web パフォーマンス テンプレートとロード テスト テンプレートからプロジェクトを作成します。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
 2. .webtest ファイルを開き、記録を開始します。
 
@@ -166,7 +165,7 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
     ![Visual Studio で .webtest ファイルを開き、[実行] をクリックします。](./media/app-insights-monitor-web-app-availability/appinsights-71webtest-multi-vs-run.png)
 
 
-#### 2\.Web テストを Application Insights にアップロードする
+#### 手順 2.Web テストを Application Insights にアップロードする
 
 1. Application Insights ポータルで、新しい Web テストを作成します。
 
@@ -182,7 +181,7 @@ Web セッションを記録するには、Visual Studio Enterprise または Ul
 
 失敗の一般的な理由は、テストの実行時間が長すぎることです。テストの実行は、2 分未満にする必要があります。
 
-テストが正常に完了するには、スクリプト、スタイル シート、イメージなど、ページのすべてのリソースが正しく読み込まれる必要があることに注意してください。
+テストが正常に完了するには、スクリプト、スタイル シート、画像など、ページのすべてのリソースが正しく読み込まれる必要があることに注意してください。
 
 Web テスト全体が .webtest ファイルに含まれる必要があります。コード化された機能をテストで使用することはできません。
 
@@ -195,7 +194,7 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 テストを実行するときに、EndTime を現在の時刻に、StartTime を 15 分前に常に設定する必要があるとします。
 
-そのためには、Web テスト プラグインを使用します。
+時刻をパラメーター化するためには、Web テスト プラグインを使用します。
 
 1. 目的の各変数のパラメーター値に対して Web テスト プラグインを追加します。Web テスト ツールバーで、**[Web テスト プラグインを追加]** を選択します。
 
@@ -215,13 +214,13 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 ## サインインの処理
 
-ユーザーがアプリにサインインする場合、サインインの背後にあるページをテストできるように、サインインをシミュレートするための多数のオプションがあります。使用する方法は、アプリで提供されるセキュリティの種類によって異なります。
+ユーザーがアプリにサインインする場合、サインインの背後にあるページをテストできるように、サインインをシミュレートするためのさまざまなオプションがあります。使用する方法は、アプリで提供されるセキュリティの種類によって異なります。
 
 どの場合も、テスト目的のみのアカウントを作成する必要があります。可能であれば、読み取り専用になるように、アクセス許可を制限します。
 
 * 簡単なユーザー名とパスワード: 通常の方法で Web テストを記録します。まず Cookie を削除します。
-* SAML 認証:この場合、Web テストに使用できる SAML プラグインを使用できます。
-* クライアント シークレット: アプリにクライアント シークレットを含むサイン イン ルートがある場合は、それを使用します。Azure Active Directory はこれを提供します。
+* SAML 認証:Web テストに使用できる SAML プラグインを使用します。
+* クライアント シークレット: アプリにクライアント シークレットを含むサインイン ルートがある場合は、それを使用します。Azure Active Directory では、クライアント シークレット サインインが使用されています。
 * オープン認証: たとえば、Microsoft または Google アカウントを使用してサインインします。OAuth を使用する多くのアプリケーションがクライアント シークレットに代わる機能を提供しているため、それを調査することが最初の 1 つの方法です。テストで OAuth を使用してサインインする必要がある場合に、一般的な方法を次に示します。
  * Fiddler などのツールを使用して、Web ブラウザー、認証サイト、アプリケーション間のトラフィックを調べます。
  * 異なるコンピューターやブラウザーを使用するか、または長い間隔 (トークンを期限切れにさせる) で複数のサインインを実行します。
@@ -234,7 +233,8 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化  
+](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -242,7 +242,7 @@ Web テスト全体が .webtest ファイルに含まれる必要があります
 
 Web サイトに対してロード テストを実行できます。可用性テストと同じように、世界各地の複数のポイントから単純な要求または複数手順の要求を送信できます。可用性テストとは異なり、複数の同時ユーザーをシミュレートするために、多数の要求が送信されます。
 
-[概要] ブレードで、**[設定]**、**[Performance Tests (パフォーマンス テスト)]** の順に開きます。テストを作成するときに、Visual Studio Team Services アカウントへの接続を求められるか、Visual Studio Team Services アカウントを作成します。
+[概要] ブレードで、**[設定]**、**[パフォーマンス テスト]** の順に開きます。テストを作成するときに、Visual Studio Team Services アカウントへの接続を求められるか、Visual Studio Team Services アカウントを作成します。
 
 テストが完了すると、応答時間と成功率が表示されます。
 
@@ -260,7 +260,7 @@ Web サイトに対してロード テストを実行できます。可用性テ
 
 * *HTTPS はサポートされていますか。*
 
-    現時点では、SSL 3.0 と TLS 1.0 がサポートされています。
+    TLS 1.1 と TLS 1.2 がサポートされています。
 
 * *"Web テスト" と "可用性テスト" に違いはありますか。*
 
@@ -312,4 +312,4 @@ Web サイトに対してロード テストを実行できます。可用性テ
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

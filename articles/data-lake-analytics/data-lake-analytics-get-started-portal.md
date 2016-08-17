@@ -49,8 +49,8 @@ Azure ポータルを使用して Azure Data Lake Analytics アカウントを�
 	- **名前**: Analytics アカウントに名前を付けます。
 	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
-	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。
 7. **[スタート画面にピン留めする]** を選択します。このチュートリアルに従う場合はこれが必要です。
 8. **[作成]** をクリックします。ポータルのスタート画面が表示されます。新しいタイルがスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
@@ -61,7 +61,7 @@ Data Lake Analytics アカウントが作成されたら、Data Lake Store ア�
 
 ##ソース データの準備
 
-このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure BLOB ストレージに格納できます。
+このチュートリアルでは、いくつかの検索ログを処理します。検索ログは、Data Lake Store または Azure Blob Storage に格納できます。
 
 Azure ポータルには、検索ログ ファイルを含むサンプル データ ファイルを既定の Data Lake アカウントにコピーするためのユーザー インターフェイスが用意されています。
 
@@ -72,7 +72,7 @@ Azure ポータルには、検索ログ ファイルを含むサンプル デー
 3. **[要点]** ペインを展開してから、**[サンプル ジョブの検索]** をクリックします。**[サンプル ジョブ]** という別のブレードが開きます。
 4. **[サンプル データのコピー]** をクリックしてから **[OK]** をクリックして確定します。
 5. **[通知]** (ベルの形のアイコン) をクリックします。**サンプル データの更新が完了した**ことを示すログが表示されます。通知ペインの外側の任意の場所をクリックして閉じます。
-7. Data Lake Analytics アカウント ブレードで、上部の **[データ エクスプ ローラー]** をクリックします。 
+7. Data Lake Analytics アカウント ブレードで、上部の **[データ エクスプ ローラー]** をクリックします。
 
 	![Azure Data Lake Analytics データ エクスプローラーのボタン](./media/data-lake-analytics-get-started-portal/data-lake-analytics-data-explorer-button.png)
 
@@ -95,7 +95,7 @@ Azure ポータルには、検索ログ ファイルを含むサンプル デー
 
 **ジョブを送信するには**
 
-1. ポータルの Data Lake Analytics アカウント ブレードで、**[新しいジョブ]** をクリックします。 
+1. ポータルの Data Lake Analytics アカウント ブレードで、**[新しいジョブ]** をクリックします。
 
 	![Azure Data Lake Analytics の新しいジョブ ボタン](./media/data-lake-analytics-get-started-portal/data-lake-analytics-new-job-button.png)
 
@@ -154,5 +154,6 @@ Azure ポータルには、検索ログ ファイルを含むサンプル デー
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」をご覧ください。
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
+- 診断情報のログについては、「[Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->
