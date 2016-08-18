@@ -37,9 +37,11 @@ Dropbox に接続してファイルを管理します。Dropbox のファイル�
 
 この例では、**[When a file is created (ファイルの作成時)]** トリガーを使用します。このトリガーが発生したら、**[Get file content using path (パスを使用してファイルの内容を取得する)]** Dropbox アクションを呼び出します。
 
-1. Logic Apps デザイナーの検索ボックスに「*dropbox*」と入力し、**[Dropbox - When a file is created (Dropbox - ファイルの作成時)]** トリガーを選択します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)
+1. Logic Apps デザイナーの検索ボックスに「*dropbox*」と入力し、**[Dropbox - When a file is created (Dropbox - ファイルの作成時)]** トリガーを選択します。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)
   
-2. ファイルの作成をトラッキングするフォルダーを選択します。[...] \(赤で囲まれている部分) を選択し、トリガーの入力用に選択するフォルダーを参照します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
+2. ファイルの作成をトラッキングするフォルダーを選択します。[...] \(赤で囲まれている部分) を選択し、トリガーの入力用に選択するフォルダーを参照します。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
 
 ## Dropbox アクションを使用する
 
@@ -47,15 +49,21 @@ Dropbox に接続してファイルを管理します。Dropbox のファイル�
 
 トリガーを追加した後は、次の手順に従って、新しいファイルの内容を取得するアクションを追加します。
 
-1. **[+ 新しいステップ]** を選択し、新しいファイルの作成時に実行するアクションを追加します。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
+1. **[+ 新しいステップ]** を選択し、新しいファイルの作成時に実行するアクションを追加します。  
+ 
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
 
-2. **[アクションの追加]** を選択します。これにより検索ボックスが開き、実行するアクションを検索できます。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
+2. **[アクションの追加]** を選択します。これにより検索ボックスが開き、実行するアクションを検索できます。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
 
 3. 「*dropbox*」と入力して、Dropbox に関連するアクションを検索します。
 
-4. 選択した Dropbox フォルダーに新しいファイルが作成されたときに実行するアクションとして、**[Dropbox - Get file content using path (Dropbox - パスを使用してファイルの内容を取得する)]** を選択します。アクションの制御ブロックが表示されます。ロジック アプリによる Dropbox アカウントへのアクセスをまだ承認していない場合は、承認を求められます。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)
+4. 選択した Dropbox フォルダーに新しいファイルが作成されたときに実行するアクションとして、**[Dropbox - Get file content using path (Dropbox - パスを使用してファイルの内容を取得する)]** を選択します。アクションの制御ブロックが表示されます。ロジック アプリによる Dropbox アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  
 
-5. (**[ファイル パス]** コントロールの右側にある) [...] を選択し、使用するファイル パスを参照します。または、**ファイル パス** トークンを使用してロジック アプリをすばやく作成することもできます。![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
+
+5. (**[ファイル パス]** コントロールの右側にある) [...] を選択し、使用するファイル パスを参照します。または、**ファイル パス** トークンを使用してロジック アプリをすばやく作成することもできます。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 
 6. 作業内容を保存し、Dropbox に新しいファイルを作成してワークフローをアクティブ化します。
 

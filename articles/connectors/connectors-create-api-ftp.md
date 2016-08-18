@@ -39,9 +39,14 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 
 この例では、FTP サーバー上でファイルが追加または変更されたときに、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーによりロジック アプリ ワークフローを開始する方法について説明します。エンタープライズの例では、このトリガーを使用して、FTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。次に、**[Get file content (ファイルの内容を取得する)]** などの FTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
 
-1. Logic Apps デザイナーの検索ボックスに「*ftp*」と入力し、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーを選択します。![FTP trigger image 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)**[When a file is added or modified (ファイルが追加または変更されたとき)]** コントロールが開きます。![FTP trigger image 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)
-- コントロールの右側にある **[...]** を選択します。これによりフォルダー ピッカー コントロールが開きます。![FTP trigger image 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)
-- **[>]** (右矢印) を選択し、新しいファイルや変更されたファイルを監視するフォルダーを参照します。そのフォルダーを選択します。フォルダーが **[フォルダー]** コントロールに表示されます。![FTP trigger image 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)
+1. Logic Apps デザイナーの検索ボックスに「*ftp*」と入力し、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーを選択します。  
+![FTP trigger image 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
+**[When a file is added or modified (ファイルが追加または変更されたとき)]** コントロールが開きます。  
+![FTP trigger image 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
+- コントロールの右側にある **[...]** を選択します。これによりフォルダー ピッカー コントロールが開きます。  
+![FTP trigger image 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
+- **[>]** (右矢印) を選択し、新しいファイルや変更されたファイルを監視するフォルダーを参照します。そのフォルダーを選択します。フォルダーが **[フォルダー]** コントロールに表示されます。
+![FTP trigger image 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)  
 
 
 これで、特定の FTP フォルダーでファイルが変更または作成されたときにワークフローの他のトリガーおよびアクションの実行を開始するトリガーがロジック アプリに構成されました。
@@ -57,12 +62,18 @@ FTP コネクタを使用して、FTP サーバー上のファイルを監視、
 トリガーを追加した後は、次の手順に従って、トリガーによって検出された新しいファイルまたは変更されたファイルの内容を取得するアクションを追加します。
 
 1. **[+ 新しいステップ]** を選択して、FTP サーバー上のファイルの内容を取得するアクションを追加します。
-- **[アクションの追加]** のリンクを選択します。![FTP action image 1](./media/connectors-create-api-ftp/ftp-action-1.png)
+- **[アクションの追加]** のリンクを選択します。  
+![FTP action image 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
 - 「*FTP*」と入力して、FTP に関連するすべてのアクションを検索します。
-- FTP フォルダーで新しいファイルまたは変更されたファイルが検出されたときに実行するアクションとして **[FTP - Get file content (FTP - ファイルの内容を取得する)]** を選択します。![FTP action image 2](./media/connectors-create-api-ftp/ftp-action-2.png)**[Get file content (ファイルの内容を取得する)]** コントロールが開きます。**注**: ロジック アプリによる FTP サーバー アカウントへのアクセスをまだ承認していない場合は、承認を求められます。![FTP action image 3](./media/connectors-create-api-ftp/ftp-action-3.png)
+- FTP フォルダーで新しいファイルまたは変更されたファイルが検出されたときに実行するアクションとして **[FTP - Get file content (FTP - ファイルの内容を取得する)]** を選択します。  
+![FTP action image 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
+**[Get file content (ファイルの内容を取得する)]** コントロールが開きます。**注**: ロジック アプリによる FTP サーバー アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  
+![FTP action image 3](./media/connectors-create-api-ftp/ftp-action-3.png)  
 - **[ファイル]** コントロール (**[ファイル]*** の下にある空白) を選択します。ここでは、FTP サーバーで検出された新しいファイルまたは変更されたファイルの各種プロパティを使用することができます。
-- **[File content (ファイルの内容)]** オプションを選択します。![FTP action image 4](./media/connectors-create-api-ftp/ftp-action-4.png)
--  コントロールが更新され、FTP サーバー上の新しいファイルまたは変更されたファイルについて、**[FTP - Get file content (FTP - ファイルの内容を取得する)]** アクションによって "*ファイルの内容*" が取得されることが示されます。![FTP action image 5](./media/connectors-create-api-ftp/ftp-action-5.png)
+- **[File content (ファイルの内容)]** オプションを選択します。  
+![FTP action image 4](./media/connectors-create-api-ftp/ftp-action-4.png)  
+-  コントロールが更新され、FTP サーバー上の新しいファイルまたは変更されたファイルについて、**[FTP - Get file content (FTP - ファイルの内容を取得する)]** アクションによって "*ファイルの内容*" が取得されることが示されます。  
+![FTP action image 5](./media/connectors-create-api-ftp/ftp-action-5.png)       
 - 作業内容を保存し、ファイルを FTP フォルダーに追加して、ワークフローをテストします。
 
 これで、FTP サーバー上のフォルダーを監視し、FTP フォルダーで新しいファイルまたは変更されたファイルを検出したときにワークフローを開始するトリガーがロジック アプリに構成されました。
