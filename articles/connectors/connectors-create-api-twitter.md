@@ -42,8 +42,10 @@ Twitter コネクタでは、次のことが可能です。
 
 この例では、**When a new tweet is posted (新しいツイートの投稿時)** トリガーを使用して #Seattle を検索し、#Seattle が見つかった場合に、Dropbox のファイルをツイートのテキストで更新する方法について説明します。企業での使用例として、自社の名前を検索し、SQL データベースをツイートのテキストで更新できます。
 
-1. Logic Apps デザイナーの検索ボックスに「twitter」と入力し、**[Twitter - When a new tweet is posted (Twitter - 新しいツイートの投稿時)]** トリガーを選択します。![Twitter トリガーの画像 1](./media/connectors-create-api-twitter/trigger-1.png)
-- **[Search Text (検索テキスト)]** コントロールに「#Seattle」と入力します。![Twitter トリガーの画像 2](./media/connectors-create-api-twitter/trigger-2.png)
+1. Logic Apps デザイナーの検索ボックスに「twitter」と入力し、**[Twitter - When a new tweet is posted (Twitter - 新しいツイートの投稿時)]** トリガーを選択します。  
+![Twitter トリガーの画像 1](./media/connectors-create-api-twitter/trigger-1.png)  
+- **[Search Text (検索テキスト)]** コントロールに「#Seattle」と入力します。  
+![Twitter トリガーの画像 2](./media/connectors-create-api-twitter/trigger-2.png)  
 
 これで、ワークフローで他のトリガーとアクションの実行を開始するトリガーでロジック アプリが構成されました。
 
@@ -52,14 +54,24 @@ Twitter コネクタでは、次のことが可能です。
 ## Add a condition
 ここでは、50 人以上のユーザーを持つユーザーのツイートだけを対象とするので、まずフォロワー数を確認する条件をロジック アプリに追加する必要があります。
 
-1. **[+ 新しいステップ]** をクリックして、新しいツイートで #Seattle が見つかったときに実行するアクションを追加します。![Twitter アクションの画像 1](../../includes/media/connectors-create-api-twitter/action-1.png)
-- **[条件の追加]** リンクをクリックします。![Twitter 条件の画像 1](../../includes/media/connectors-create-api-twitter/condition-1.png)**[条件]** コントロールが開きます。ここで、[is equal to (次の値に等しい)]、[is less than (次の値より小さい)]、[is greater than (次の値より大きい)]、[contains (次の値を含む)] などの条件を確認できます。![Twitter 条件の画像 2](../../includes/media/connectors-create-api-twitter/condition-2.png)
-- **[値の選択]** コントロールを選択します。このコントロールでは、条件が true または false に評価される値として、以前のアクションまたはトリガーの 1 つ以上のプロパティを選択できます。![Twitter 条件の画像 3](../../includes/media/connectors-create-api-twitter/condition-3.png)
-- 使用可能なすべてのプロパティを確認できるように、**[...]** をクリックしてプロパティの一覧を展開します。![Twitter 条件の画像 4](../../includes/media/connectors-create-api-twitter/condition-4.png)
-- **[Followers count (フォロワー数)]** プロパティを選択します。![Twitter 条件の画像 5](../../includes/media/connectors-create-api-twitter/condition-5.png)
-- 値コントロールに [Followers count (フォロワー数)] プロパティが表示されていることを確認します。![Twitter 条件の画像 6](../../includes/media/connectors-create-api-twitter/condition-6.png)
-- 演算子の一覧から **[is greater than (次の値より大きい)]** を選択します。![Twitter 条件の画像 7](../../includes/media/connectors-create-api-twitter/condition-7.png)
-- "is greater than (次の値より大きい)" 演算子のオペランドとして「50」と入力します。これで条件が追加されました。上部のメニューの **[保存]** リンクをクリックして作業内容を保存します。![Twitter 条件の画像 8](../../includes/media/connectors-create-api-twitter/condition-8.png)
+1. **[+ 新しいステップ]** をクリックして、新しいツイートで #Seattle が見つかったときに実行するアクションを追加します。  
+![Twitter アクションの画像 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
+- **[条件の追加]** リンクをクリックします。  
+![Twitter 条件の画像 1](../../includes/media/connectors-create-api-twitter/condition-1.png)  
+**[条件]** コントロールが開きます。ここで、[is equal to (次の値に等しい)]、[is less than (次の値より小さい)]、[is greater than (次の値より大きい)]、[contains (次の値を含む)] などの条件を確認できます。  
+![Twitter 条件の画像 2](../../includes/media/connectors-create-api-twitter/condition-2.png)  
+- **[値の選択]** コントロールを選択します。このコントロールでは、条件が true または false に評価される値として、以前のアクションまたはトリガーの 1 つ以上のプロパティを選択できます。  
+![Twitter 条件の画像 3](../../includes/media/connectors-create-api-twitter/condition-3.png)  
+- 使用可能なすべてのプロパティを確認できるように、**[...]** をクリックしてプロパティの一覧を展開します。  
+![Twitter 条件の画像 4](../../includes/media/connectors-create-api-twitter/condition-4.png)  
+- **[Followers count (フォロワー数)]** プロパティを選択します。  
+![Twitter 条件の画像 5](../../includes/media/connectors-create-api-twitter/condition-5.png)  
+- 値コントロールに [Followers count (フォロワー数)] プロパティが表示されていることを確認します。  
+![Twitter 条件の画像 6](../../includes/media/connectors-create-api-twitter/condition-6.png)  
+- 演算子の一覧から **[is greater than (次の値より大きい)]** を選択します。  
+![Twitter 条件の画像 7](../../includes/media/connectors-create-api-twitter/condition-7.png)  
+- "is greater than (次の値より大きい)" 演算子のオペランドとして「50」と入力します。これで条件が追加されました。上部のメニューの **[保存]** リンクをクリックして作業内容を保存します。  
+![Twitter 条件の画像 8](../../includes/media/connectors-create-api-twitter/condition-8.png)  
 
 ## Twitter アクションの使用
 
@@ -69,12 +81,16 @@ Twitter コネクタでは、次のことが可能です。
 
 次の手順では、50 人以上のフォロワーを持つユーザーが投稿した各ツイートの一部のプロパティを使用してツイートを投稿する Twitter アクションを追加します。
 
-1. **[アクションの追加]** を選択します。他のアクションやトリガーを検索できる検索コントロールが開きます。![Twitter 条件の画像 9](../../includes/media/connectors-create-api-twitter/condition-9.png)
-- 検索ボックスに「twitter」と入力し、**[Twitter - Post a tweet (Twitter - ツイートの投稿)]** アクションを選択します。**[Post a tweet (ツイートの投稿)]** コントロールが開きます。ここで、投稿するツイートの詳細をすべて入力します。![Twitter アクションの画像 1 ～ 5](../../includes/media/connectors-create-api-twitter/action-1-5.png)
-- **[Tweet text (ツイート テキスト)]** を選択します。ロジック アプリでの以前のアクションとトリガーのすべての出力が表示されます。これらのいずれかを選択し、新しいツイートのツイート テキストの一部として使用できます。![Twitter アクションの画像 2](../../includes/media/connectors-create-api-twitter/action-2.png)
+1. **[アクションの追加]** を選択します。他のアクションやトリガーを検索できる検索コントロールが開きます。  
+![Twitter 条件の画像 9](../../includes/media/connectors-create-api-twitter/condition-9.png)  
+- 検索ボックスに「twitter」と入力し、**[Twitter - Post a tweet (Twitter - ツイートの投稿)]** アクションを選択します。**[Post a tweet (ツイートの投稿)]** コントロールが開きます。ここで、投稿するツイートの詳細をすべて入力します。  
+![Twitter アクションの画像 1 ～ 5](../../includes/media/connectors-create-api-twitter/action-1-5.png)  
+- **[Tweet text (ツイート テキスト)]** を選択します。ロジック アプリでの以前のアクションとトリガーのすべての出力が表示されます。これらのいずれかを選択し、新しいツイートのツイート テキストの一部として使用できます。  
+![Twitter アクションの画像 2](../../includes/media/connectors-create-api-twitter/action-2.png)  
 - **[ユーザー名]** を選択します。
 - [Tweet text (ツイート テキスト)] コントロールで、「のコメント:」と入力します。これはユーザー名の直後に入力します。
-- *[Tweet text (ツイート テキスト)]* を選択します。![Twitter アクションの画像 3](../../includes/media/connectors-create-api-twitter/action-3.png)
+- *[Tweet text (ツイート テキスト)]* を選択します。  
+![Twitter アクションの画像 3](../../includes/media/connectors-create-api-twitter/action-3.png)  
 - 作業内容を保存し、#Seattle というハッシュタグを含めたツイートを送信してワークフローをアクティブにします。
 
 ## 技術的な詳細
