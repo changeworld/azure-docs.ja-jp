@@ -32,7 +32,7 @@
 1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。[最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードして、最新バージョンの SqlPackage ユーティリティを取得します。
 2. 次の SqlPackage コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Export /ssn:<server\_name> /sdn:<database\_name> /tf:<target\_file> /p:TableData=<schema\_name.table\_name> > <output\_file> 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:< server\_name > /sdn:< database\_name > /tf:< target\_file > /p:TableData=< schema\_name.table\_name > > < output\_file > 2>&1'
 
 	| 引数 | 説明 |
 	|---|---|
