@@ -41,11 +41,11 @@
 
 	| 引数 | 説明 |
 	|---|---|
-	| <server\_name> | ターゲット サーバー名 |
-	| <database\_name> | ターゲット データベース名 |
-	| <user\_name> | ターゲット サーバーのユーザー名 |
-	| <password> | ユーザーのパスワード |
-	| <source\_file> | インポートする BACPAC ファイルのファイル名と場所 |
+	| < server\_name > | ターゲット サーバー名 |
+	| < database\_name > | ターゲット データベース名 |
+	| < user\_name > | ターゲット サーバーのユーザー名 |
+	| < password > | ユーザーのパスワード |
+	| < source\_file > | インポートする BACPAC ファイルのファイル名と場所 |
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
