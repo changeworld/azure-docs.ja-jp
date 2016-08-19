@@ -37,15 +37,15 @@
 1. コマンド プロンプトを開き、sqlpackage.exe コマンド ライン ユーティリティのあるディレクトリに移動します。このユーティリティは、Visual Studio および SQL Server に付属します。
 2. 次の sqlpackage.exe コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Import /tsn:<server\_name> /tdn:<database\_name> /tu:<user\_name> /tp:<password> /sf:<source\_file>
+	'sqlpackage.exe /Action:Import /tsn:< server\_name > /tdn:< database\_name > /tu:< user\_name > /tp:< password > /sf:< source\_file >
 
 	| 引数 | 説明 |
 	|---|---|
-	| <server\_name> | ターゲット サーバー名 |
-	| <database\_name> | ターゲット データベース名 |
-	| <user\_name> | ターゲット サーバーのユーザー名 |
-	| <password> | ユーザーのパスワード |
-	| <source\_file> | インポートする BACPAC ファイルのファイル名と場所 |
+	| < server\_name > | ターゲット サーバー名 |
+	| < database\_name > | ターゲット データベース名 |
+	| < user\_name > | ターゲット サーバーのユーザー名 |
+	| < password > | ユーザーのパスワード |
+	| < source\_file > | インポートする BACPAC ファイルのファイル名と場所 |
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
