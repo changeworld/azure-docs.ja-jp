@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure 入門 | Microsoft Azure"
+	pageTitle="Microsoft Azure 入門 | Microsoft Azure"
 	description="Microsoft Azure を使うのは初めてですか。 提供されるサービスの基本的な概要を、便利な使用例を使って説明します。"
 	services=" "
 	documentationCenter=".net"
-	authors="Rboucher"
-	manager="jwhit"
+	authors="rboucher"
+	manager=""
 	editor=""/>
 
 <tags
@@ -18,7 +18,7 @@
 
 # Microsoft Azure の概要
 
-Microsoft Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。この記事を読めば、[クラウド コンピューティング](https://azure.microsoft.com/overview/what-is-cloud-computing/)に関する知識がまったくなくても、Azure の基礎を理解することができます。
+Microsoft Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。この記事を読めば、クラウド コンピューティングに関する知識がまったくなくても、Azure の基礎を理解することができます。
 
 **この記事を読む方法**
 
@@ -55,7 +55,7 @@ Azure には、管理者が Azure の機能の大半にアクセスして管理�
 
 ![Azure Virtual Machines ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_VirtualMachinesIntroNew_12345.png) *図: Azure Virtual Machines によってクラウド内の仮想マシン インスタンスをきめ細かく制御できる。*
 
-標準イメージと独自のイメージのどちらからでも、必要に応じて仮想マシンを作成できる機能は非常に便利です。一般的にサービスとしてのインフラストラクチャ ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) と呼ばれるこのアプローチは、Azure の Virtual Machines が提供する機能です。図 2 は、Virtual Machine (VM) の稼働方法と、VHD から仮想マシンを作成する方法を示しています。
+標準イメージと独自のイメージのどちらからでも、必要に応じて仮想マシンを作成できる機能は非常に便利です。一般的にサービスとしてのインフラストラクチャ (IaaS) と呼ばれるこのアプローチは、Azure の Virtual Machines が提供する機能です。図 2 は、仮想マシン (VM) の稼働方法と、VHD から仮想マシンを作成する方法を示しています。
 
 VM を作成するには、使用する VHD と VM のサイズを指定します。そして、VM を実行する料金を時間に応じてお支払いいただきます。VHD を使用可能な状態に保持するための最小限のストレージ料金はかかりますが、分単位で実行した時間に対してだけ支払います。Azure には、起動可能なオペレーティング システムを含むストック VHD ("イメージ" と呼ばれる) のギャラリーが用意されています。これには、Windows Server と Linux、SQL Server、Oracle などマイクロソフトとパートナーが提供する多数のオプションが含まれます。自由に VHD やイメージを作成した後、自分でそれらをアップロードできます。データのみを含む VHD をアップロードすることも可能で、その後、実行中の VM からそれらにアクセスできます。
 
@@ -202,7 +202,7 @@ Azure は、現在、世界中で広く展開され多数のデータセンタ�
 ### 仮想ネットワーク
 ![VirtualNetwork](./media/fundamentals-introduction-to-azure/VirtualNetworkIntroNew.png)
 
-*図: Virtual Network は、さまざまなサービスが相互通信したり、クロスプレミス接続に VPN 接続を設定している場合はオンプレミスのリソースへアクセスしたりできるように、クラウド内でプライベート ネットワークを提供する。*
+*図: Virtual Networks は、さまざまなサービスが相互通信したり、クロスプレミス接続に VPN を設定している場合はオンプレミスのリソースへアクセスしたりできるように、クラウド内でプライベート ネットワークを提供する。*
 
 
 パブリック クラウドの便利な使用方法として、自社のデータセンターの延長として扱う方法があります。
@@ -430,7 +430,7 @@ Azure Backup は、Windows Server が実行されているオンプレミスの�
 
 キューは単純な概念で、あるアプリケーションがキューにメッセージを配置すると、そのメッセージがいずれ別のアプリケーションによって読み取られるというものです。アプリケーションにこのように単純なサービスが必要な場合は、Azure キューが最も適しているでしょう。
 
-Azure は時間の経過と共に拡大するため、Azure Storage キューおよび Service Bus キューは類似のキュー サービスを提供しています。一方を他方より優先して使用する理由は、かなり技術的な資料である「[Azure キューと Service Bus キューの比較](http://msdn.microsoft.com/library/azure/hh767287.aspx)」で説明されています。多くのシナリオでは、どちらも機能します。
+Azure は時間の経過と共に拡大するため、Azure Storage キューおよび Service Bus キューは類似のキュー サービスを提供しています。一方を他方より優先して使用する理由は、技術的な資料である「[<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure キューと Service Bus キューの比較")」で説明されています。多くのシナリオでは、どちらも機能します。
 
 **キューのシナリオ**
 
@@ -468,11 +468,11 @@ Service Bus は、トピックおよびサブスクリプションと呼ばれ�
 
 **Service Bus トピックとサブスクリプションのシナリオ**
 
-すべてが重要な多数のメッセージが存在する場所を設定しているが、各ダウンストリーム システムはそれらの通信のうちそれぞれ異なるサブセットしかリッスンする必要がないような場合は、Service Bus トピックおよびサブスクリプションが適したオプションです。
+すべてが重要な多数のメッセージが存在する場所を設定しているが、各ダウンストリーム システムはそれらの通信のうちそれぞれ異なるサブセットしかリッスンする必要がないような場合は、Service Bus トピックとサブスクリプションが適したオプションです。
 
 
 ### BizTalk Services
-![BizTalk Services](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png)*図: BizTalk Services は、クラウド内で XML メッセージ形式を変換する機能を提供する。*
+![BizTalk Services](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png) *図: BizTalk Services は、クラウド内で XML メッセージ形式を変換する機能を提供する。*
 
 場合によっては、異なるメッセージング形式を使用して通信するシステムを接続する必要があります。共通の基準が使用可能な場合でも、一般に、企業によってデータベース スキーマや XML メッセージング形式は異なっています。多数のカスタム コードを記述するのではなく、オンプレミスの BizTalk Server を使用してさまざまなシステムを統合できます。Azure BizTalk Services は、同じタイプのサービスをクラウド内で提供します。使用量に応じて支払うことができ、オンプレミスのように規模について心配する必要はありません。
 
@@ -528,7 +528,7 @@ Azure には、時間の経過と共に変化してきた多種多様なキャ�
 たとえば、製品カタログを繰り返し読み取るアプリケーションでは、必要なデータをすばやく取得できるため、このようなキャッシュの使用が有効です。このテクノロジは、ロックもサポートしているため、読み取り/書き込みデータにも読み取り専用データにも使用できます。さらに、ASP.NET アプリケーションでは、構成を変更するだけで、サービスを使用してセッション データを格納できます。
 
 ### Content Delivery Network
-![Azure CDN](./media/fundamentals-introduction-to-azure/CDNIntroNew.png)**図: BLOB のコピーを世界中のサイトでキャッシュできる。**
+![Azure CDN](./media/fundamentals-introduction-to-azure/CDNIntroNew.png) **図: BLOB のコピーを世界中のサイトでキャッシュできる。**
 
 世界各地のユーザーがアクセスする BLOB データを格納する必要があるとします。例としては、ワールド カップの最新の試合のビデオ、ドライバーの更新プログラム、一般的な電子ブックなどがあります。このために、複数の Azure データセンターにデータのコピーを格納することができますが、ユーザーが多い場合は、十分でない可能性があります。より優れたパフォーマンスを得るには、Azure CDN を使用します。
 
@@ -543,7 +543,7 @@ CDN は、世界中にビデオを配信するために、Media Services と併�
 ## ビッグ データおよび大規模なコンピューティング
 
 ### HDInsight (Hadoop)
-![HDInsight](./media/fundamentals-introduction-to-azure/HDInsightIntroNew.png)**図: HDInsight は、大量のデータを一括処理する際に役立つ。**
+![HDInsight](./media/fundamentals-introduction-to-azure/HDInsightIntroNew.png)**図: HDInsight は、大量のデータを一括処理するときに役立つ。**
 
 長年にわたって、データ分析のほとんどは、リレーショナル DBMS で構築されたデータ ウェアハウスに格納されたリレーショナル データに対して行われてきました。このようなビジネス分析は現在も重要であり、それは今後も変わらないでしょう。しかし、リレーショナル データベースで対応できないような大量のデータを分析する場合や、 データがリレーショナルでない場合はどうでしょうか。 たとえば、データセンターのサーバー ログや、センサーからの履歴イベント データなどです。このような場合には、ビッグ データ問題と呼ばれる問題に直面するため、別のアプローチが必要です。
 
@@ -596,7 +596,7 @@ Media Services の詳細に関するビジュアルな表示については、[A
 
 **コマースのシナリオ**
 
-SendGrid は、電子メールを送信できる Azure ストア内のアプリケーションです。信頼できる配信や統計などの追加機能を提供しています。このアプリケーションと関連するサービスを購入し、自身でインフラストラクチャの構築などを試行できます。
+SendGrid は、電子メールを送信できる Azure ストア内のアプリケーションです。信頼できる配信や統計などの追加機能を提供しています。このようなインフラストラクチャを自身で構築する代わりに、このアプリケーションと関連サービスを購入できます。
 
 
 ## Getting Started (概要)
@@ -606,4 +606,4 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

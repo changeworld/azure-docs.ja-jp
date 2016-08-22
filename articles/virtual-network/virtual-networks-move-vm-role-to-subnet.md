@@ -3,7 +3,7 @@
    description="別のサブネットに VM とロール インスタンスを移動する方法を学習します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/22/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # VM またはロール インスタンスを別のサブネットに移動する方法
 
@@ -53,4 +53,4 @@ VM に対して静的内部プライベート IP が指定されている場合�
 	    </AddressAssignments>
 	</NetworkConfiguration> 
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

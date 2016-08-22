@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/17/2016"
-   ms.author="shigu;barbkess;sonyama"/>
+   ms.date="08/08/2016"
+   ms.author="kevin;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Machine Learning の使用
 
@@ -30,7 +30,7 @@ Azure Machine Learning は、完全に管理された予測分析サービスで
 
 AdventureWorksDW データベースの Product テーブルからデータを読み取ります。
 
-### 手順 1.
+### 手順 1
 
 Machine Learning Studio ウィンドウの下部にある [+新規] をクリックして新しい実験を開始し、[実験] を選択してから「空の実験」を選択します。キャンバスの上部にある既定の実験名を選択し、自動車価格の予測など、わかりやすい名前に変更します。
 
@@ -90,7 +90,7 @@ FROM dbo.DimProduct;
 
 AdventureWorksDW データベースの ProductPriceForecast テーブルに結果セットを書き込みます。
 
-### 手順 1.
+### 手順 1
 
 実験キャンバスの左側にあるデータセットとモジュールのパレットで、ライター モジュールを探します。モジュールを実験キャンバスにドラッグします。
 
@@ -149,4 +149,4 @@ AdventureWorksDW データベースの ProductPriceForecast テーブルに結�
 
 [Azure Machine Learning documentation]: http://azure.microsoft.com/documentation/services/machine-learning/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

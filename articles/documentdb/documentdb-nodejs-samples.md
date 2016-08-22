@@ -3,7 +3,7 @@
 	description="NoSQL データベースでの JSON ドキュメントに対する CRUD 操作など、DocumentDB の一般的なタスクの Node.js サンプルを github で検索します。" 
 	keywords="node.js のサンプル"
 	services="documentdb" 
-	authors="aliuy" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter="nodejs"/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="04/18/2016" 
-	ms.author="andrl"/>
+	ms.author="anhoh"/>
 
 
 # DocumentDB Node.js のサンプル
@@ -28,7 +28,7 @@
 
 Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実行するサンプル ソリューションは、[azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub リポジトリに含まれています。この記事では、次の内容について説明します。
 
-- 各 Node.js サンプル プロジェクト ファイルのタスクへのリンク。 
+- 各 Node.js サンプル プロジェクト ファイルのタスクへのリンク。
 - 関連する API リファレンス コンテンツへのリンク。
 
 **前提条件**
@@ -36,7 +36,7 @@ Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実
 1. これらの Node.js サンプルを使用するには Azure アカウントが必要です。
     - [無料で Azure アカウントを開く](https://azure.microsoft.com/pricing/free-trial/)ことができます。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。明示的に設定を変更して課金を求めない限り、クレジット カードに課金されることはありません。
    - [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
-2. [Node.js SDK](documentdb-sdk-node.md) も必要です。 
+2. [Node.js SDK](documentdb-sdk-node.md) も必要です。
 
     > [AZURE.NOTE] 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。そのため、サンプルでは [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) の複数の呼び出しを発行します。これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。
 
@@ -120,4 +120,4 @@ Azure DocumentDB のリソースで CRUD 操作などの一般的な操作を実
 
 DocumentDB でのデータのパーティション分割の詳細については、「[DocumentDB のデータのパーティション分割と拡大縮小](documentdb-partition-data.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

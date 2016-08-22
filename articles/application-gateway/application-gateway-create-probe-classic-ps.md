@@ -3,7 +3,7 @@
    description="クラシック デプロイ モデルで PowerShell を使用して、Application Gateway のカスタム プローブを作成する方法の説明"
    services="application-gateway"
    documentationCenter="na"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -14,20 +14,26 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
-   ms.author="joaoma" />
+   ms.date="08/09/2016"
+   ms.author="gwallace" />
 
 # PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 
+> [AZURE.SELECTOR]
+- [Azure ポータル](application-gateway-create-probe-portal.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
+
+<BR>
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法について説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法を確認してください。
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 
-## 新しいアプリケーション ゲートウェイの作成
+## アプリケーション ゲートウェイの作成
 
 Application Gateway を作成するには:
 
@@ -39,7 +45,7 @@ Application Gateway を作成するには:
 
 ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
+次の例では、"testvnet1" という仮想ネットワークと "subnet-1" というサブネットを使用してアプリケーション ゲートウェイを作成します。
 
 
 	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -79,9 +85,9 @@ Application Gateway を作成するには:
 
 ## XML を使用してアプリケーション ゲートウェイを構成する
 
-次の例では、XML ファイルを使用して、すべてのアプリケーション ゲートウェイの設定を構成し、アプリケーション ゲートウェイのリソースにコミットします。
+次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。
 
-### 手順 1.  
+### 手順 1  
 
 次のテキストをメモ帳にコピーします。
 
@@ -162,10 +168,10 @@ Application Gateway を作成するには:
 
 - **Name** - カスタム プローブの参照名。
 - **Protocol** - 使用されるプロトコル (有効な値は HTTP または HTTPS です)。
-- **Host** と **Path** - インスタンスの状態を判断するために Application Gateway により呼び出される完全な URL パス。たとえば、"http://contoso.com/" という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
+- **Host** と **Path** - インスタンスの状態を判断するためにアプリケーション ゲートウェイにより呼び出される完全な URL パス。たとえば、http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
 - **Interval** - プローブのチェック間隔を秒単位で指定します。
 - **Timeout** - プローブの HTTP 応答チェックのタイムアウト期間を定義します。
-- **UnhealthyThreshold** - バックエンド インスタンスを*異常*とフラグするために必要な HTTP 応答の失敗数。
+- **UnhealthyThreshold** - バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。
 
 プローブの名前は、どのバックエンド プールがカスタム プローブ設定を使用するかを割り当てる <BackendHttpSettings> 構成で参照されます。
 
@@ -173,9 +179,9 @@ Application Gateway を作成するには:
 
 アプリケーション ゲートウェイの現在の構成を変更するには、現在の XML 構成ファイルの取得、カスタム プローブを追加するための変更、新しい XML 設定を使用したアプリケーション ゲートウェイの構成という 3 つの手順を行う必要があります。
 
-### 手順 1.
+### 手順 1
 
-get-AzureApplicationGatewayConfig を使用して XML ファイルを取得します。この操作により、プローブ設定の追加をするために変更する XML 構成ファイルがエクスポートされます。
+get-AzureApplicationGatewayConfig を使用して XML ファイルを取得します。この操作により、プローブ設定を追加するために変更される XML 構成ファイルがエクスポートされます。
 
 	get-AzureApplicationGatewayConfig -Name <application gateway name> -Exporttofile "<path to file>"
 
@@ -195,7 +201,7 @@ get-AzureApplicationGatewayConfig を使用して XML ファイルを取得し�
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
 
-XML の [backendHttpSettings] セクションで、次の例に示すようにプローブを追加します。
+XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
 
         <BackendHttpSettings>
             <Name>setting1</Name>
@@ -218,8 +224,8 @@ XML ファイルを保存します。
 
 ## 次のステップ
 
-Secure Sockets Layer (SSL) オフロードを構成する場合は、「[SSL オフロードのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)」を参照してください。
+Secure Sockets Layer (SSL) オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
 
-内部ロード バランサーとともに使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

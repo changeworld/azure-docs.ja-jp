@@ -19,9 +19,11 @@
 # Azure Data Factory を使用して OData ソースからデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、OData ソースと他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
+> [AZURE.NOTE] この OData コネクタは、クラウド OData とオンプレミス OData のどちらのソースからのデータ コピーもサポートしています。後者の場合は、Data Management Gateway のインストールが必要になります。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
+
 ## サンプル: OData ソースから Azure Blob にデータをコピーする
 
-このサンプルは、OData ソースから Azure Blob Storage にデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+このサンプルは、OData ソースから Azure Blob Storage にデータをコピーする方法を示します。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーすることもできます。
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -33,7 +35,7 @@
 
 サンプルでは、1 時間ごとに OData ソースに対するクエリの結果のデータを Azure Blob にコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-**OData のリンクされたサービス** 次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、「[OData のリンクされたサービス](#odata-linked-service-properties)」セクションを参照してください。
+**OData のリンクされたサービス** 次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、[ODBC のリンクされたサービス](#odata-linked-service-properties)に関するセクションをご覧ください。
 
     {
 		"name": "ODataLinkedService",
@@ -209,17 +211,18 @@
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **OData** に設定する必要があります。 | あり |
-| url| OData サービスの URL です。 | あり |
-| authenticationType | OData ソースへの接続に使用される認証の種類です。Anonymous と Basic のいずれかの値になります。 | はい | 
+| type | type プロパティを **OData** に設定する必要があります。 | はい |
+| url| OData サービスの URL です。 | はい |
+| authenticationType | OData ソースへの接続に使用される認証の種類です。<br/><br/> クラウド OData の場合、指定できる値は Anonymous と Basic です。オンプレミスの OData の場合、指定できる値は Anonymous、Basic、および Windows です。 | はい | 
 | username | 基本認証を使用している場合は、ユーザー名を指定します。 | はい (基本認証を使用している場合のみ) | 
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | はい (基本認証を使用している場合のみ) | 
+| gatewayName | Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 | いいえ |
 
 ### 基本認証を使用する
 
     {
         "name": "inputLinkedService",
-       "properties": 
+        "properties": 
         {
             "type": "OData",
            	"typeProperties": 
@@ -239,10 +242,28 @@
        	"properties": 
         {
             "type": "OData",
-           "typeProperties": 
+            "typeProperties": 
             {
                "url": "http://services.odata.org/OData/OData.svc",
                "authenticationType": "Anonymous"
+           }
+       }
+    }
+
+### オンプレミス OData ソースにアクセスする際に Windows 認証を使用する
+
+    {
+        "name": "inputLinkedService",
+        "properties": 
+        {
+            "type": "OData",
+           	"typeProperties": 
+            {
+               "url": "<endpoint of on-premises OData source e.g. Dynamics CRM>",
+               "authenticationType": "Windows",
+                "username": "domain\\user",
+               "password": "password",
+               "gatewayName": "mygateway"
            }
        }
     }
@@ -267,7 +288,7 @@
 
 コピー アクティビティで、source の種類が **RelationalSource** (OData を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 例 | 必須 |
+| プロパティ | Description | 例 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | query | カスタム クエリを使用してデータを読み取ります。 | "?$select=Name, Description&$top=5" | いいえ | 
 
@@ -288,6 +309,6 @@ OData データ ストアからデータを移動するとき、OData データ�
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

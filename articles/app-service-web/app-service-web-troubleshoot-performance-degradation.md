@@ -1,4 +1,13 @@
-<properties pageTitle="App Service での Web アプリのパフォーマンス低下 | Microsoft Azure" description="この記事は、Azure App Service で発生している Web アプリのパフォーマンス低下に関する問題のトラブルシューティングを行うために役立ちます。" services="app-service\\web" documentationCenter="" authors="cephalin" manager="wpickett" editor="" tags="top-support-issue keywords="Web アプリのパフォーマンス, 低パフォーマンス アプリ, アプリ パフォーマンス低下"/>
+<properties
+	pageTitle="App Service での Web アプリのパフォーマンスの低下 | Microsoft Azure"
+	description="この記事は、Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""
+	tags="top-support-issue"
+	keywords="Web アプリのパフォーマンス、低速なアプリ、アプリが低速"/>
 
 <tags
 	ms.service="app-service-web"
@@ -11,7 +20,7 @@
 
 # Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 
-この記事は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングを行うために役立ちます。
+この記事は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
@@ -88,7 +97,7 @@ Application Insights の使用については、「[Web アプリケーション
 New Relic の使用については、「[Azure の New Relic によるアプリケーション パフォーマンス管理](../store-new-relic-cloud-services-dotnet-application-performance-management.md)」を参照してください。
 
 <a name="collect" />
-### 2\.データを収集する
+### 手順 2.データを収集する
 
 ####	Web アプリに対して診断ログを有効にする
 
@@ -178,4 +187,4 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

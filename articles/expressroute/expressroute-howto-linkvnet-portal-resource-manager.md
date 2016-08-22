@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/19/2016"
+   ms.date="08/08/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute 回線への仮想ネットワークのリンク
@@ -44,7 +44,7 @@
 
 	- 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。[VPN ゲートウェイ](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)を作成する手順 (手順 1. ～ 5. のみ) に従ってください。
 
-最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。ExpressRoute 回線はすべて同じ地理的リージョンにある必要があります。ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線に多数の仮想ネットワークをリンクできます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
+最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
 
 ## 同じサブスクリプション内の仮想ネットワークを回線に接続する
 
@@ -80,4 +80,4 @@
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

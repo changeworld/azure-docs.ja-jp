@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="07/18/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 #Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
@@ -45,4 +45,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

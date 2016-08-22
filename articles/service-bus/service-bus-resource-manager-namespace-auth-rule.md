@@ -24,7 +24,7 @@
 
 完全なテンプレートについては、GitHub の [Service Bus 承認規則テンプレート][]を参照してください。
 
->[AZURE.NOTE] 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
+>[AZURE.NOTE] 次の Azure Resource Manager テンプレートを、ダウンロードしてデプロイすることができます。
 >
 >-    [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
 >-    [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
@@ -177,4 +177,4 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus 承認規則テンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/301-servicebus-create-authrule-namespace-and-queue/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

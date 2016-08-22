@@ -1,20 +1,20 @@
 <properties
 	pageTitle="Microsoft Azure での監視と診断の有効化 |Microsoft Azure "
 	description="Azure でリソースの診断を設定する方法について説明します。"
-	authors="stepsic-microsoft-com"
-	manager="ronmart"
+	authors="rboucher"
+	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/08/2015"
-	ms.author="stepsic"/>
+	ms.author="robb"/>
 
 # 監視と診断の有効化
 
@@ -70,4 +70,4 @@ Azure の診断、監視、およびメトリック データは、選択した�
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

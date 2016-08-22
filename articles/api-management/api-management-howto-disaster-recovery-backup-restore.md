@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
@@ -56,7 +56,7 @@ Azure リソース マネージャーを使用してリソースに実行する�
 
 新たに追加された **Windows** **Azure Service Management API** アプリケーションの横にある **[デリゲートされたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにして、**[保存]** をクリックします。
 
-![アクセス許可を追加する][api-management-aad-delegated-permissions]
+![Add permissions][api-management-aad-delegated-permissions]
 
 サービス インスタンスをバックアップおよび復元する API を呼び出す前に、トークンを取得する必要があります。次の例では、[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet パッケージを使用して、トークンを取得します。
 
@@ -131,8 +131,8 @@ API Management サービスをバックアップするには、次の HTTP 要�
 **メモ**:
 
 - 要求の本文に指定された**コンテナー**は、**存在する必要があります**。
-* バックアップの進行中には、SKU のアップグレードやダウングレード、ドメイン名の変更、その他の操作などの、**サービス管理操作は試行しないでください**。 
-* バックアップの復元は、作成されたときから **7 日間だけ保証されます**。 
+* バックアップの進行中には、SKU のアップグレードやダウングレード、ドメイン名の変更、その他の操作などの、**サービス管理操作は試行しないでください**。
+* バックアップの復元は、作成されたときから **7 日間だけ保証されます**。
 * 分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。[Azure API Management REST API][] を使用して、分析レポートを保管用に定期的に取り出します。
 * サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して重要な変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 * バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**バックアップに含まれないので失われる可能性があります**。
@@ -169,7 +169,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 ## 次のステップ
 バックアップ/復元プロセスに関する 2 つのチュートリアルを、次の Microsoft ブログで参照してください。
 
--	[Azure API Management アカウントのレプリケート](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/) 
+-	[Azure API Management アカウントのレプリケート](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 	-	Gisela さんによって投稿された記事です。
 -	[Azure API Management: 構成のバックアップと復元](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
 	-	Stuart さんによる詳細なアプローチで、公式のガイダンスに沿ったものではありませんが、非常に興味深い記事です。
@@ -191,4 +191,4 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

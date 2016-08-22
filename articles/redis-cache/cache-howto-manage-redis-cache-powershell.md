@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/13/2016" 
+	ms.date="08/10/2016" 
 	ms.author="sdanie"/>
 
 # Azure PowerShell を使用した Azure Redis Cache の管理
@@ -34,7 +34,7 @@ Azure PowerShell をインストール済みである場合、Azure PowerShell V
 
 [AZURE.INCLUDE [powershell-preview](../../includes/powershell-preview-inline-include.md)]
 
-まず、次のコマンドで Azure にログオンする必要があります。
+まず、次のコマンドで Azure にログインする必要があります。
 
 	Login-AzureRmAccount
 
@@ -50,7 +50,7 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 Azure リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
-- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」をご覧ください。
+- Windows PowerShell バージョン 3.0 または 4.0。Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。互換バージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)」を参照してください。
 
 このチュートリアルに表示されているコマンドレットの詳しいヘルプを確認には、Get-Help コマンドレットを使用します。
 
@@ -104,14 +104,14 @@ Azure China Cloud の詳細については、[中国の 21Vianet が運営して
 
 次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
-| パラメーター | 説明 | 既定値 |
+| パラメーター | Description | 既定値 |
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| 名前 | キャッシュの名前 | |
-| Location (場所) | キャッシュの場所 | |
+| Name | キャッシュの名前 | |
+| 場所 | キャッシュの場所 | |
 | ResourceGroupName | キャッシュを作成するリソース グループの名前 | |
 | サイズ | キャッシュのサイズ。有効な値: P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250 MB、1 GB、2.5 GB、6 GB、13 GB、26 GB、53 GB | 1GB |
 | ShardCount | クラスタリングが有効になっている Premium キャッシュを作成するときに作成するシャードの数。有効な値: 1、2、3、4、5、6、7、8、9、10 | |
-| SKU | キャッシュの SKU を指定します。有効な値: Basic、Standard、Premium | Standard |
+| SKU | キャッシュの SKU を指定します。有効な値: Basic、Standard、Premium | 標準 |
 | RedisConfiguration | Redis 構成の設定を指定します。各設定の詳細については、次の「[RedisConfiguration プロパティ](#redisconfiguration-properties)」の表をご覧ください。 | |
 | EnableNonSslPort | 非 SSL ポートが有効になっているかどうかを示します。 | False |
 | MaxMemoryPolicy | このパラメーターは廃止されました。代わりに、RedisConfiguration を使用します。 | |
@@ -123,7 +123,7 @@ Azure China Cloud の詳細については、[中国の 21Vianet が運営して
 
 ### RedisConfiguration プロパティ
 
-| プロパティ | 説明 | 価格レベル |
+| プロパティ | Description | 価格レベル |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------|---------------------|
 | rdb-backup-enabled | [Redis データ永続化](cache-how-to-premium-persistence.md)が有効かどうか。 | Premium のみ |
 | rdb-storage-connection-string | [Redis データ永続化](cache-how-to-premium-persistence.md)のストレージ アカウントに対する接続文字列 | Premium のみ |
@@ -301,7 +301,7 @@ Azure Redis Cache インスタンスを更新するには、[Set-AzureRmRedisCac
 	        OutBuffer, PipelineVariable, and OutVariable. For more information, see
 	        about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-`Set-AzureRmRedisCache` を使用して、`Size`、`Sku`、`EnableNonSslPort`、`RedisConfiguration` の値などのプロパティを更新できます。
+`Set-AzureRmRedisCache` コマンドレットを使用して、`Size`、`Sku`、`EnableNonSslPort`、`RedisConfiguration` の値などのプロパティを更新できます。
 
 次のコマンドを実行すると、myCache という名前の Redis Cache の maxmemory-policy が更新されます。
 
@@ -757,55 +757,6 @@ Azure Redis Cache インスタンスを再起動するには、`Reset-AzureRmRed
 	    -Force
 	
 
-
-<a name="classic"></a>
-### PowerShell クラシック デプロイメント モデルを使用した Azure Redis Cache インスタンスの管理
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行](cache-howto-manage-redis-cache-powershell.md)する方法については、この記事で最初に説明しました。
-
-次のスクリプトは、クラシック デプロイメント モデルを使用して Azure Redis Cache を作成、更新、および削除する方法を示しています。
-		
-		$VerbosePreference = "Continue"
-
-    	# Create a new cache with date string to make name unique.
-		$cacheName = "MovieCache" + $(Get-Date -Format ('ddhhmm'))
-		$location = "West US"
-		$resourceGroupName = "Default-Web-WestUS"
-		
-		$movieCache = New-AzureRedisCache -Location $location -Name $cacheName  -ResourceGroupName $resourceGroupName -Size 250MB -Sku Basic
-		
-		# Wait until the Cache service is provisioned.
-		
-		for ($i = 0; $i -le 60; $i++)
-		{
-		    Start-Sleep -s 30
-		    $cacheGet = Get-AzureRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
-		    if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
-		    {
-		        break
-		    }
-		    If($i -eq 60)
-		    {
-		        exit
-		    }
-		}
-		
-		# Update the access keys.
-		
-		Write-Verbose "PrimaryKey: $($movieCache.PrimaryKey)"
-		New-AzureRedisCacheKey -KeyType "Primary" -Name $cacheName  -ResourceGroupName $resourceGroupName -Force
-		$cacheKeys = Get-AzureRedisCacheKey -ResourceGroupName $resourceGroupName  -Name $cacheName
-		Write-Verbose "PrimaryKey: $($cacheKeys.PrimaryKey)"
-		
-		# Use Set-AzureRedisCache to set Redis cache updatable parameters.
-		# Set the memory policy to Least Recently Used.
-		
-		Set-AzureRedisCache -Name $cacheName -ResourceGroupName $resourceGroupName -RedisConfiguration @{"maxmemory-policy" = "AllKeys-LRU"}
-		
-		# Delete the cache.
-		
-		Remove-AzureRedisCache -Name $movieCache.Name -ResourceGroupName $movieCache.ResourceGroupName  -Force
-
 ## 次のステップ
 
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
@@ -817,5 +768,4 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 - [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 - ["Hey, Scripting Guy!" ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 
-<!-----HONumber=AcomDC_0720_2016-->
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -48,7 +48,7 @@ Azure Logic Apps を使用すると、クラウドにおける統合ワークフ
 
 App Service プランと 1 日に許可されているアクションの実行数:
 
-| |Free/Shared/Basic|Standard|プレミアム|
+| |Free/Shared/Basic|標準|プレミアム|
 |---|---|---|---|
 |1 日あたりのアクションの実行数| 200|10,000|50,000|
 
@@ -71,7 +71,7 @@ $appserviceplan = Get-AzureRmResource -ResourceType "Microsoft.Web/serverFarms" 
 $logicapp = Get-AzureRmResource -ResourceType "Microsoft.Logic/workflows" -ResourceGroupName $LogicApp_RG -ResourceName $LogicApp_Name
 
 $sku = @{
-    "name" = $appservicePlan.Name;
+    "name" = $appservicePlan.Sku.tier;
     "plan" = @{
       "id" = $appserviceplan.ResourceId;
       "type" = "Microsoft.Web/ServerFarms";
@@ -103,4 +103,4 @@ App Service プランが関連付けられているロジック アプリを従�
 [whatis]: app-service-logic-what-are-logic-apps.md
 [create]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

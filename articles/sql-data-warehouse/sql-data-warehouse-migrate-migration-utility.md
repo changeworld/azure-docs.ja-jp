@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="04/20/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
@@ -22,9 +22,9 @@
 > [AZURE.SELECTOR]
 - [移行ユーティリティのダウンロード][]
 
-Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Database から Azure SQL Data Warehouse にスキーマとデータを移行するように設計されたツールです。スキーマの移行中、このツールによって、対応するスキーマが移行元から移行先へ自動的にマップされます。スキーマの移行が完了すると、自動生成されたスクリプトを使用してデータを移動するオプションも表示されます。
+Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Database から Azure SQL Data Warehouse にスキーマとデータを移行するように設計されたツールです。スキーマの移行中、このツールによって、対応するスキーマが移行元から移行先へ自動的にマップされます。スキーマの移行後、自動的に生成されたスクリプトによってデータを移動するオプションが用意されています。
 
-このツールを使用すると、ユーザーは、スキーマとデータの移行だけでなく、互換性レポートを生成することもできます。このレポートでは、合理化された移行を妨げる、移行元インスタンスと移行先インスタンスの間の非互換性がまとめられています。
+このツールを使用すると、スキーマとデータの移行だけでなく、互換性レポートを生成することもできます。このレポートでは、合理化された移行の妨げとなる移行元インスタンスと移行先インスタンス間の非互換性がまとめられています。
 
 ## 作業開始
 インストールの前提条件として、移行用のスクリプトを実行するための BCP コマンド ライン ユーティリティと、互換性レポートを表示するための Office が必要です。ダウンロードした実行可能ファイルを起動すると、ツールをインストールする前に、標準的な使用許諾契約書への同意が求められます。
@@ -65,4 +65,4 @@ Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Databas
 <!--Other Web references--> 
 [移行ユーティリティのダウンロード]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

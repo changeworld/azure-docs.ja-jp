@@ -20,13 +20,15 @@
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## 概要
+## まとめ
 
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、Apache Cordova で todolist クイック スタート プロジェクトに認証を追加します。最初に、このチュートリアルの基になっている [Mobile Apps の使用]チュートリアルを完了しておく必要があります。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
+
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
 ##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
@@ -55,7 +57,7 @@
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
 			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
-    `https://login.windows.net` を上の表の OAuth ホストで置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
+    `https://login.windows.net` を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
 
     一部の認証プロバイダーについては、適切なモバイル デバイスで使用する場合、Content-Security-Policy を変更する必要がありません。たとえば、Android デバイスで Google 認証を使用する場合は、Content-Security-Policy を変更する必要はありません。
 
@@ -109,4 +111,4 @@ SDK の使用方法を確認してください。
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

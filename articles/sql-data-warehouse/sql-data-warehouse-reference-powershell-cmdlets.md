@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
+   ms.date="08/08/2016"
    ms.author="sonyama;barbkess;mausher"/>
 
 # SQL Data Warehouse の PowerShell コマンドレットと REST API
 
 SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。適切な REST の例については、[REST を使用したのスケーラビリティの管理][]に関する記事をご覧ください。
 
-> [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell Version 1.0.3 以降をインストールする必要があります。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
+> [AZURE.NOTE]  SQL Data Warehouse で Azure PowerShell を使用するには、Azure PowerShell バージョン 1.0.3 以降が必要です。**Get-Module -ListAvailable -Name Azure** を実行することで、バージョンを確認できます。最新バージョンは、[Microsoft Web プラットフォーム インストーラー][]からインストールできます。最新バージョンのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法][]」をご覧ください。
 
 ## Azure PowerShell コマンドレットの使用開始
 
-1. Windows PowerShell を開きます。 
+1. Windows PowerShell を開きます。
 2. PowerShell プロンプトで、次のコマンドを実行して Azure Resource Manager にサインインし、サブスクリプションを選択します。
 
     ```PowerShell
@@ -74,7 +74,7 @@ Azure SQL Data Warehouse でよく使用される PowerShell コマンドレッ�
 - [Get-AzureRmSqlDatabaseRestorePoints][]
 - [New-AzureRmSqlDatabase][]
 - [Remove-AzureRmSqlDatabase][]
-- [Restore-AzureRmSqlDatabase][] 
+- [Restore-AzureRmSqlDatabase][]
 - [Resume-AzureRmSqlDatabase][]
 - [Select-AzureRmSubscription][]
 - [Set-AzureRmSqlDatabase][]
@@ -115,4 +115,4 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 <!--Other Web references-->
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="静的プライベート IP (DIP) とそれらを CLI を使用してクラシック モードで管理する方法を理解します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-service-management"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Azure CLI での静的プライベート IP アドレス (クラシック) の設定方法
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-arm-cli.md)こともできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-arm-cli.md)こともできます。
 
 次のサンプル Azure CLI コマンドでは、単純な環境が既に作成されていると想定します。このドキュメントに表示されているコマンドを実行する場合は、まず、[vnet の作成](virtual-networks-create-vnet-classic-cli.md)に関する記事に示されているテスト環境を構築します。
 
@@ -63,12 +63,12 @@
 
 	- **-l (または --location)**。VM が作成される Azure リージョンです。ここでは、*centralus* です。
 	- **-n (または --vm-name)**。作成する VM の名前です。
-	- **-w (または --virtual-network-name)**。VM の作成先となる VNet の名前です。 
+	- **-w (または --virtual-network-name)**。VM の作成先となる VNet の名前です。
 	- **-S (または --static-ip)**。VM の静的プライベート IP アドレスです。
 	- **TestService**。VM の作成先となるクラウド サービスの名前です。
 	- **bd507d3a70934695bc2128e3e5a255ba\_\_RightImage-Windows-2012R2-x64-v14.2**。VM の作成に使用されるイメージです。
 	- **adminuser**。Windows VM のローカル管理者です。
-	- ****AdminP@ssw0rd**。Windows VM のローカル管理者のパスワードです。
+	- **AdminP@ssw0rd**.Windows VM のローカル管理者のパスワードです。
 
 ## VM 用の静的プライベート IP アドレス情報を取得する方法
 上記のスクリプトで作成された VM の静的プライベート IP アドレス情報を表示するには、次の Azure CLI コマンドを実行し、*Network StaticIP* の値を確認します。
@@ -115,4 +115,4 @@
 - [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

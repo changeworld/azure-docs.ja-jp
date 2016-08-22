@@ -3,7 +3,7 @@
 	description="定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。"
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 
 # ハイブリッド ID ソリューションのデータ保護戦略の定義
@@ -155,4 +155,4 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

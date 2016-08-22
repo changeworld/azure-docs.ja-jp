@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
 
 
-## 概要
+## Overview
 このガイドでは、1 つ以上の Azure Active Directory 内のすべてのユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。また、Azure Active Directory のユーザーが含まれた外部グループを追加することで Azure Active Directory ユーザーのグループを管理する方法についても説明します。
 
 >このガイドの手順を実行するには、アプリケーションの作成先となる Azure Active Directory が事前に必要です。
@@ -110,7 +110,7 @@ Azure Active Directory の構成に戻り、**[キー]** セクションの **[�
 
 必要な構成を指定したら、**[保存]** をクリックします。
 
-![保存][api-management-client-allowed-tenants-save]
+![Save][api-management-client-allowed-tenants-save]
 
 変更が保存さたら、指定された Azure Active Directory 内のユーザーは、「[Azure Active Directory アカウントを使用して開発者ポータルにログインする方法][]」の手順に従って開発者ポータルにログインできます。
 
@@ -228,4 +228,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 
 [Azure Active Directory アカウントを使用して開発者ポータルにログインする方法]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/09/2016"
 	ms.author="juliako"/>
 
 
@@ -22,98 +22,486 @@
 > [AZURE.SELECTOR]
 - [ポータル](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
-
+- [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
 > [AZURE.NOTE] Azure Media Services アカウントを作成するには、Azure アカウントが必要です。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
 
-##概要 
+##Overview 
 
-この記事では PowerShell コマンドレットを使用して Azure Media Services アカウントを管理する方法を示します。
+この記事では、Azure Resource Manager フレームワークにある Azure Media Services (AMS) 用の Azure PowerShell コマンドレットについて説明します。コマンドレットは、**Microsoft.Azure.Commands.Media** 名前空間にあります。
+
+## バージョン
+
+**ApiVersion**: "2015-10-01"
+               
+
+## New-AzureRmMediaService
+
+メディア サービスを作成します。
+
+### 構文
+
+パラメーター セット: StorageAccountIdParamSet
+
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
+
+パラメーター セット: StorageAccountsParamSet
+
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 | なし
+---|---
+必須 | true
+位置 | 0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |Name
+---|---
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
+
+**-Location &lt;String&gt;**
+
+メディア サービスのリソースの場所を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-StorageAccountId &lt;String&gt;**
+
+メディア サービスに関連付けられているプライマリ ストレージ アカウントを指定します。
+
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
+
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
+
+別名 |なし
+---|---
+必須 |true
+位置 |3
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountIdParamSet
+ワイルドカード文字を許可する|false
+
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
+
+メディア サービスに関連付けられたストレージ アカウントを指定します。
+
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
+
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
+
+- プライマリとして指定できるストレージ アカウントは 1 つだけです。
+
+別名 |なし
+---|---
+必須 |true
+位置 |3
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountsParamSet
+ワイルドカード文字を許可する |false
+
+**-Tags &lt;Hashtable&gt;**
+
+メディア サービスに関連付けられているタグのハッシュ テーブルを指定します。
+
+- 例: @{"tag1"="value1";"tag2"=:value2"}
+
+別名 |なし
+---|---
+必須 |false
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
 
 
->[AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-##Microsoft Azure PowerShell コマンドレットをインストールします。
+## Set-AzureRmMediaService
 
-最新の Azure PowerShell コマンドレットをインストールするには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
+メディア サービスを更新します。
 
-##Azure サブスクリプションの選択
+### 構文
 
-PowerShell コマンドレットをインストールして構成した後、作業するサブスクリプションを指定する必要があります。
+	Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
 
-利用可能なサブスクリプションの一覧を取得するには、次のコマンドレットを実行します。
+### パラメーター
 
-	PS C:\> Get-AzureSubscription
+**-ResourceGroupName &lt;String&gt;**
 
-次に、以下を実行していずれか 1 つを選択します。
+このメディア サービスが属するリソース グループの名前を指定します。
 
-	PS C:\> Select-AzureSubscription "TestSubscription"
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
- 
-##ストレージ アカウント名の取得
+**-AccountName &lt;String&gt;**
 
-Azure Media Services は、メディア コンテンツの格納に Azure ストレージを使用します。新しい Media Services アカウントを作成するときに、ストレージ アカウントに関連付ける必要があります。ストレージ アカウントは、Media Services アカウントで使用するサブスクリプションと同じものに属する必要があります。
+メディア サービスの名前を指定します。
 
-この例では、既存のストレージ アカウントが使用されます。[Get-AzureStorageAccount](https://msdn.microsoft.com/library/azure/dn495134.aspx) コマンドレットは、現在のサブスクリプションのストレージ アカウントを取得します。メディア アカウントに関連付けるストレージ アカウントの名前 (StorageAccountName) を取得します。
+別名 |Name
+---|---
+必須 |True
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |False
 
-	StorageAccountDescription : 
-	AffinityGroup             :
-	Location                  : East US
-	GeoReplicationEnabled     : True
-	GeoPrimaryLocation        : East US
-	GeoSecondaryLocation      : West US
-	Label                     : storagetest001
-	StorageAccountStatus      : Created
-	StatusOfPrimary           : Available
-	StatusOfSecondary         : Available
-	Endpoints                 : {https://storagetest001.blob.core.windows.net/,
-	                            https://storagetest001.queue.core.windows.net/,
-	                            https://storagetest001.table.core.windows.net/}
-	AccountType               : Standard_GRS
-	StorageAccountName        : storatetest001
-	OperationDescription      : Get-AzureStorageAccount
-	OperationId               : e919dd56-7691-96db-8b3c-2ceee891ae5d
-	OperationStatus           : Succeeded
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
 
-##Media Services アカウントの作成
+メディア サービスに関連付けられたストレージ アカウントを指定します。
 
-新しい Azure Media Services アカウントを作成するには、[New-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx) コマンドレットを使用します。これにより、Media Services アカウント名、アカウントが作成されるデータ センターの場所、ストレージ アカウント名が提供されます。
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
 
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
 
-	PS C:\> New-AzureMediaServicesAccount -Name "amstestaccount001" -StorageAccountName "storagetest001" -Location "East US"
+- プライマリとして指定できるストレージ アカウントは 1 つだけです。
 
-##Media Services アカウントの取得
+別名 |なし
+---|---
+必須 |false
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountsParamSet
+ワイルドカード文字を許可する |false
 
-1 つ以上の Media Services アカウントを作成すると、[Get-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495286.aspx) を使用して情報の一覧を表示できます。
+**-Tags &lt;Hashtable&gt;**
 
-	
-	PS C:\> Get-AzureMediaServicesAccount
-	
-	AccountId		Name				State
-	---------       ----       			 -----
-	xxxxxxxxxx      amstestaccount001   Active
+このメディア サービスに関連付けられているタグのハッシュ テーブルを指定します。
 
-Name パラメーターを提供することによってアカウント キーなどのより詳細な情報が表示されます。
+- メディア サービスに関連付けられているタグは、お客様が指定した値に置き換えられます。
 
-	PS C:\> Get-AzureMediaServicesAccount -Name amstestaccount001
+別名 |なし
+---|---
+必須 |False
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
-##Media Services アクセス キーの再生成
+**&lt;CommandParameters&gt;**
 
-Media Services のプライマリまたはセカンダリ アクセス キーを更新する場合は、[New-AzureMediaServicesKey](https://msdn.microsoft.com/library/azure/dn495215.aspx) を使用します。アカウント名を指定して再生成するキー (プライマリまたはセカンダリ) を指定する必要があります。
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-PowerShell で確認の質問を表示させないようにするには、-Force スイッチを指定します。
+### 入力
 
-	PS C:\> New-AzureMediaServicesKey -Name "amstestaccount001" -KeyType "Primary" -Force
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-##Media Services アカウントの削除
-
-Azure Media Services を削除する準備ができたら、[Remove-AzureMediaServicesAccount](https://msdn.microsoft.com/library/azure/dn495220.aspx) を使用します。
-
-	PS C:\> Remove-AzureMediaServicesAccount -Name "amstestaccount001" -Force
+### 出力  
 
 
-##Media Services のラーニング パス
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## Remove-AzureRmMediaService
+
+メディア サービスを削除します。
+
+### 構文
+
+	Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |False
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
+
+
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## Get-AzureRmMediaService
+
+リソース グループ内のすべてのメディア サービス、または指定された名前を持つメディア サービスを取得します。
+
+### 構文
+
+ParameterSet: ResourceGroupParameterSet
+
+	Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>]	
+
+ParameterSet: AccountNameParameterSet
+
+	Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |ResourceGroupParameterSet、AccountNameParameterSet
+ワイルドカード文字を許可する false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |AccountNameParameterSet
+ワイルドカード文字を許可する |false
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
+
+
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## Get-AzureRmMediaServiceKeys
+
+メディア サービスのキーを取得します。
+
+### 構文
+
+	Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
+
+
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## Set-AzureRmMediaServiceKey
+
+メディア サービスのプライマリまたはセカンダリ キーを再生成します。
+
+### 構文
+
+	Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-KeyType &lt;KeyType&gt;**
+
+メディア サービスのキーの種類を指定します。
+
+- Primary または Secondary
+
+別名 |なし
+---|---
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
+
+
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## Sync-AzureRmMediaServiceStorageKeys
+
+メディア サービスに関連付けられたストレージ アカウントのストレージ アカウント キーを同期します。
+
+### 構文
+
+	Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountName] <string>  [<CommonParameters>]
+
+### パラメーター
+
+**-ResourceGroupName &lt;String&gt;**
+
+このメディア サービスが属するリソース グループの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-AccountName &lt;String&gt;**
+
+メディア サービスの名前を指定します。
+
+別名 |なし
+---|---
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**-StorageAccountId &lt;String&gt;**
+
+メディア サービスに関連付けられたストレージ アカウントを指定します。
+
+別名 |ID
+---|---
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する | true(ByPropertyName)
+ワイルドカード文字を許可する |false
+
+**&lt;CommandParameters&gt;**
+
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
+
+### 入力
+
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
+
+### 出力  
+
+
+出力の型は、コマンドレットが出力するオブジェクトの型です。
+
+## 次のステップ 
+
+Media Services のラーニング パスをご覧ください。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -123,4 +511,4 @@ Azure Media Services を削除する準備ができたら、[Remove-AzureMediaSe
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

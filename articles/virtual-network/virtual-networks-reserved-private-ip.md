@@ -3,7 +3,7 @@
    description="静的内部 IP (DIP) とそれらを管理する方法を理解します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/22/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # 静的内部プライベート IP アドレスの設定方法
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。
@@ -99,4 +99,4 @@ IP アドレス *10.0.0.7* が *TestVnet* という VNet で使用可能かど�
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

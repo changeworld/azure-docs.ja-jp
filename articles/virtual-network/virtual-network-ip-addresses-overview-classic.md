@@ -3,7 +3,7 @@
    description="Azure でのパブリックおよびプライベート IP アドレス指定について説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-service-management" />
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/11/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Azure の IP アドレス (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -76,10 +76,10 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 
 |リソース|動的|静的|複数の IP アドレス|
 |---|---|---|---|
-|クラウド サービス|あり|はい|あり|
-|IaaS VM または PaaS ロール インスタンス|あり|なし|なし|
-|VPN Gateway|あり|なし|なし|
-|Application Gateway|あり|なし|なし|
+|クラウド サービス|はい|はい|はい|
+|IaaS VM または PaaS ロール インスタンス|はい|なし|いいえ|
+|VPN Gateway|はい|なし|いいえ|
+|Application Gateway|はい|なし|いいえ|
 
 ## プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、クラウド サービス内の他のリソース、[仮想ネットワーク](virtual-networks-overview.md) (VNet)、あるいはオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線経由) と通信することができます。
@@ -126,11 +126,11 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 |リソース|動的|静的|複数の IP アドレス|
 |---|---|---|---|
-|VM (*スタンドアロン* クラウド サービス内)|あり|はい|あり|
-|PaaS ロール インスタンス (*スタンドアロン* クラウド サービス内)|あり|なし|あり|
-|VM または PaaS ロール インスタンス (VNet 内)|あり|はい|あり|
-|内部ロード バランサーのフロント エンド|あり|はい|あり|
-|Application Gateway のフロント エンド|あり|はい|あり|
+|VM (*スタンドアロン* クラウド サービス内)|はい|はい|はい|
+|PaaS ロール インスタンス (*スタンドアロン* クラウド サービス内)|はい|いいえ|はい|
+|VM または PaaS ロール インスタンス (VNet 内)|はい|はい|はい|
+|内部ロード バランサーのフロント エンド|はい|はい|はい|
+|Application Gateway のフロント エンド|はい|はい|はい|
 
 ## 制限
 
@@ -166,4 +166,4 @@ Azure における[ネットワークの制限](azure-subscription-service-limit
 ## 次のステップ
 - クラシック ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

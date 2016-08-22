@@ -3,7 +3,7 @@
    description="クラシック デプロイメント モデルで Azure CLI を使用して複数の NIC の VM をデプロイする方法を説明します"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 #Azure CLI を使用した複数の NIC VM (クラシック) のデプロイ
 
@@ -174,4 +174,4 @@
 		info:    Adding Data-Disk
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

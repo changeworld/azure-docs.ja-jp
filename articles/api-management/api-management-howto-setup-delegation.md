@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="antonba"/>
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
@@ -36,7 +36,7 @@
 
 ![[委任] ページ][api-management-delegation-signin-up]
 
-* 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。 
+* 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。
 
 * **[委任の認証キー]** フィールドに、要求が本当に Azure API Management から送信されたものかをどうかを確かめるための署名のコンピューティングに使用するシークレットを入力します。**[生成]** ボタンをクリックすると、API Management によってランダムにキーを生成できます。
 
@@ -178,4 +178,4 @@
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

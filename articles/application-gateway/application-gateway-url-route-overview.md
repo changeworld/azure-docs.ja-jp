@@ -3,7 +3,7 @@
    description="このページでは、Application Gateway URL ベースのコンテンツ ルーティング、UrlPathMap 構成、および PathBasedRouting ルールの概要を説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor="tysonn"/>
 <tags
@@ -12,8 +12,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="01/21/2016"
-   ms.author="joaoma"/>
+   ms.date="04/05/2016"
+   ms.author="gwallace"/>
 
 # URL パス ベースのルーティングの概要
 
@@ -86,4 +86,4 @@ UrlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
 URL ベースのコンテンツ ルーティングについて理解したら、[URL ベースのルーティングを使用した Application Gateway の作成](application-gateway-create-url-route-arm-ps.md)に関するセクションに移動して、URL ルーティング ルールを使ってアプリケーション ゲートウェイを作成します。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0810_2016-->

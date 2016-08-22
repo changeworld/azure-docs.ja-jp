@@ -11,7 +11,7 @@
 
 	![アドレス空間のブレード](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
 
-4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新しいリソース グループを作成する**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。リソース グループの詳細については、[Azure リソース マネージャーの概要](../articles/virtual-network/resource-group-overview.md/#resource-groups)を参照してください。
+4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新しいリソース グループを作成する**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/virtual-network/resource-group-overview.md#resource-groups)」を参照してください。
 
 	![リソース グループ ブレードの作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 
@@ -21,7 +21,7 @@
 
 7. [**作成**] をクリックすると、次の図に示すような [**仮想ネットワークの作成**] という名前のタイルが表示されます。
 
-	![ポータルで VNet を作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure4.png)
+	![ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure4.png)
 
 8. VNet が作成されるのを待ち、以下のタイルが表示されたら、クリックしてサブネットを追加します。
 
@@ -33,6 +33,6 @@
 
 10. [**サブネット**] > [**追加**] の順にクリックしてからサブネットの [**名前**] を入力し、[**アドレス範囲 (CIDR ブロック)**] を指定して [**OK**] をクリックします。次の図は、このシナリオの設定を示しています。
 
-	![Azure ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
+	![Create VNet in Azure portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

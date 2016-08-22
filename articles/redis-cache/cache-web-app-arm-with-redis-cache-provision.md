@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/24/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # テンプレートを使用し、Web アプリと Redis Cache を作成する
@@ -31,9 +31,9 @@
 - Azure Web アプリ
 - Azure Redis Cache。
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure への展開](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
 ## 指定するパラメーター
 
@@ -132,4 +132,4 @@ Redis Cache との連動を可能にするアプリ設定プロパティで Web 
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

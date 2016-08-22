@@ -3,7 +3,7 @@
    description="Azure CLI を使用してクラシック モードで NSG を作成してデプロイする方法について"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-service-management"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Azure CLI で NSG (クラシック) を作成する方法
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで NSG を作成](virtual-networks-create-nsg-arm-cli.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで NSG を作成](virtual-networks-create-nsg-arm-cli.md)することもできます。
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -32,7 +32,7 @@
 ## フロントエンドのサブネットの NSG を作成する方法
 上記のシナリオに基づいて **NSG-FrontEnd** という名前の NSG を作成するには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**`azure config mode`** コマンドを実行してクラシック モードに切り替えます。
 
@@ -239,4 +239,4 @@
 		info:    Creating a network security group "NSG-BackEndX"
 		info:    network nsg subnet add command OK
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

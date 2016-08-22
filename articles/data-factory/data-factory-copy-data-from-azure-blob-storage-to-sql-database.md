@@ -27,7 +27,7 @@
 
 このチュートリアルでは、Blob Storage から SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
-コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.NOTE] Data Factory サービスの詳細については、記事「[Azure Data Factory サービスの概要][data-factory-introduction]」を参照してください。
 
@@ -45,9 +45,9 @@
 1. [Azure ポータル][azure-portal]にログインします。
 2. 左側にある **[参照]** ハブをクリックし、**[ストレージ アカウント]** を選択します。
 3. **[ストレージ アカウント]** ブレードで、このチュートリアルで使用する **Azure ストレージ アカウント**を選択します。
-4. **[ストレージ]** ブレードで **[キー]** タイルをクリックします。
-5. **[キーの管理]** ブレードで、**[ストレージ アカウント名]** テキスト ボックスの隣にある (イメージの) **[コピー]** ボタンをクリックし、任意の場所 (たとえばテキスト ファイル) に貼り付けて保存します。
-6. **プライマリ アクセス キー**についても、前のコピー手順を繰り返すか、またはメモしておきます。
+4. **[設定]** にある **[アクセス キー]** リンクを選択します。
+5.  **[ストレージ アカウント名]** テキスト ボックスの隣にある (イメージの) **[コピー]** ボタンをクリックし、任意の場所 (たとえばテキスト ファイル) に貼り付けて保存します。
+6. **key1** についても、前のコピー手順を繰り返すか、メモしておきます。
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## SQL サーバー、データベース、ユーザーの名前を収集する
@@ -104,7 +104,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)」というリンクをクリックします。
 
 ## アクティビティ
-Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
 
 
 <!--Link references-->
@@ -116,4 +116,4 @@ Azure Data Factory のコピー アクティビティの詳細については、
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

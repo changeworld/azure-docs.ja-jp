@@ -90,6 +90,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 | 指定値を含む | "contains" : "&lt;value&gt;"|
 | [ | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
 | ContainsKey | "containsKey" : "&lt;keyName&gt;" |
+| Exists | "exists" : "&lt;bool&gt;" |
 
 ### フィールド
 
@@ -129,7 +130,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
 現在サポートされているエイリアスは次のとおりです。
 
-| エイリアス名 | 説明 |
+| エイリアス名 | Description |
 | ---------- | ----------- |
 | {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br /> Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
 | {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
@@ -468,4 +469,4 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
     
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

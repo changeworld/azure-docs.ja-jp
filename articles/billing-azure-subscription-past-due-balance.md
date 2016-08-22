@@ -43,6 +43,6 @@ Azure の支払い方法を変更する手順については、[Azure サブス�
 
 **シナリオ 3**: アカウント管理者が会社を辞めたり、役職が変わったりしたために、支払いに関する通知が届かなかった場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に問い合わせて問題を解決してください。
 
-> [AZURE.NOTE] Azure サブスクリプションが無効になった場合、「[Azure サブスクリプションが取り消された場合にどうすればよいか](billing-subscription-become-disable.md)」の記事の手順に従って再び有効にできます。
+> [AZURE.NOTE] Azure サブスクリプションが無効になった場合、「[Azure サブスクリプションが無効になった場合にどうすればよいか](billing-subscription-become-disable.md)」の記事の手順に従って再び有効にできます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

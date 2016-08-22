@@ -32,7 +32,7 @@ azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>
 
 ## ディスクの接続
 
-新しいディスクには簡単に接続できます。「`azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>`」と入力するだけで、VM に新しい GB のディスクが作成され、接続されます。ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。これは、次のようになります。
+新しいディスクには簡単に接続できます。「`azure vm disk attach-new <myuniquegroupname> <myuniquevmname> <size-in-GB>`」と入力して、VM 用に新しい GB ディスクを作成し、接続します。ストレージ アカウントを明示的に特定しない場合、作成するディスクは、OS ディスクと同じストレージ アカウントに配置されます。次のようになります。
 
 ```bash
 azure vm disk attach-new myuniquegroupname myuniquevmname 5
@@ -50,7 +50,7 @@ info:    vm disk attach-new command OK
 
 ## Linux VM を接続して新しいディスクをマウントする
 
-> [AZURE.NOTE] このトピックでは、ユーザー名とパスワードを使用して VM に接続します。公開キーおよび秘密キーのペアを使用して VM と通信するには、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。`azure vm quick-create` コマンドを使って作成された VM の **SSH** 接続を `azure vm reset-access` コマンドを使って **SSH** アクセスを完全にリセットしたり、ユーザーを追加または削除したりできます。また、アクセスをセキュリティで保護するための公開キー ファイルを追加することもできます。
+> [AZURE.NOTE] このトピックでは、ユーザー名とパスワードを使用して VM に接続します。公開キーおよび秘密キーのペアを使用して VM と通信する方法については、[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)に関するページをご覧ください。`azure vm quick-create` コマンドを使って作成された VM の **SSH** 接続を `azure vm reset-access` コマンドを使って **SSH** アクセスを完全にリセットしたり、ユーザーを追加または削除したりできます。また、アクセスをセキュリティで保護するための公開キー ファイルを追加することもできます。
 
 Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で Azure VM に接続する必要があります。**ssh** を使用した接続に慣れていない場合は、`ssh <username>@<FQDNofAzureVM> -p <the ssh port>` 形式のコマンドを使用します。コマンドは次のようになります。
 
@@ -216,19 +216,47 @@ bin   datadrive  etc   initrd.img  lib64       media  opt   root  sbin  sys  usr
 boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
 ```
 
-> [AZURE.NOTE] 識別用の SSH キーを使用して Linux 仮想マシンに接続することもできます。詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。
+再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (`/dev/sdc1` など) だけでなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。新しいドライブの UUID を確認するには、**blkid** ユーティリティを使用します。
+
+```bash
+sudo -i blkid
+```
+
+出力は、次のようになります。
+
+```bash
+/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+```
+
+>[AZURE.NOTE] **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+
+次に、テキスト エディターで **/etc/fstab** ファイルを開きます。
+
+```bash
+sudo vi /etc/fstab
+```
+
+この例では、前の手順で作成した新しい **/dev/sdc1** デバイスに対して UUID 値を使用し、マウント ポイントとして **/datadrive** を使用します。次の行を **/etc/fstab** ファイルの末尾に追加します。
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
+```
+
+>[AZURE.NOTE] この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。ディストリビューションのほとんどに `nofail` または `nobootwait` fstab オプションが用意されています。これにより起動時にディスクのマウントが失敗しても、システムを起動できます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
 
 ### Azure における Linux の TRIM/UNMAP サポート
-一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作をサポートします。これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
 
-Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常と同様に、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
 - 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
 
 		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
 
-- または、コマンドラインから手動で `fstrim` コマンドを実行するか、crontab に追加して定期的に実行することができます。
+- または、`fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
 
 	**Ubuntu**
 
@@ -245,8 +273,8 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 ## 次のステップ
 
-- 通常、新しいディスクは、[fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
+- 新しいディスクは、[fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
 - [Linux マシンのパフォーマンスの最適化](virtual-machines-linux-optimization.md)に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 - ディスクを追加してストレージ容量を拡張し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

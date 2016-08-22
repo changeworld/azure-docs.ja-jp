@@ -3,7 +3,7 @@
    description="パブリック IP アドレスが使用されるように仮想ネットワークを構成する方法を学習します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/27/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Virtual Network (VNet) でのパブリック IP アドレス空間
 
@@ -45,6 +45,6 @@
 
 ## 次のステップ
 
-[VNet で使用される DNS サーバーを管理する方法](../virtual-networks-manage-dns-in-vnet)
+[VNet で使用される DNS サーバーを管理する方法](virtual-networks-manage-dns-in-vnet.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

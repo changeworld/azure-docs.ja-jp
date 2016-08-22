@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -89,7 +89,7 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 }
 ```
 
-|要素名|	説明|
+|要素名|	Description|
 |---|---|
 |status |常に "activated" に設定します。|
 |context|イベントのコンテキスト|
@@ -115,8 +115,8 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 |level|次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose”|
 |operationId|通常、単一の操作に対応する複数のイベントで共有される GUID|
 |operationName|操作の名前|
-|properties |event 要素内の要素には、イベントのプロパティが含まれています。|
+|プロパティ |event 要素内の要素には、イベントのプロパティが含まれています。|
 |status|操作の状態を説明する文字列。一般的な値: Started、In Progress、Succeeded、Failed、Active、Resolved|
 |subStatus|	通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。また、subStatus を説明する他の文字列を含めることもできます。一般的な subStatus の値: OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code:503)、Gateway Timeout (HTTP Status Code: 504)|
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

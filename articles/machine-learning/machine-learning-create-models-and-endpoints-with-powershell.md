@@ -26,7 +26,7 @@ ms.author="garye;haining"/>
 
 ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning で作成するのは非現実的です。個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
-幸いこの処理には、[Azure Machine Learning の再トレーニング API](machine-learning-retrain-models-programmatically.md) を使用できます。[Azure Machine Learning PowerShell](https://blogs.technet.microsoft.com/machinelearning/2016/05/04/announcing-the-powershell-module-for-azure-ml/) でタスクを自動化することが可能です。
+幸いこの処理には、[Azure Machine Learning の再トレーニング API](machine-learning-retrain-models-programmatically.md) を使用できます。[Azure Machine Learning PowerShell](machine-learning-powershell-module.md) でタスクを自動化することが可能です。
 
 > [AZURE.NOTE] ここではサンプルの実行時間を短くするために、拠点数を 1,000 から 10 に減らすことにします。しかし拠点が 1,000 か所あっても原理と手順は同じです。唯一の違いは、1,000 件のデータセットをトレーニングする場合、以下の PowerShell スクリプトを並列実行するかどうかが検討事項になってくるということです。その方法はこの記事で取り上げる範囲を超えていますが、PowerShell のマルチスレッド化の例は、インターネットを検索すれば見つかります。
 
@@ -161,4 +161,4 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 	    Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
 	}
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

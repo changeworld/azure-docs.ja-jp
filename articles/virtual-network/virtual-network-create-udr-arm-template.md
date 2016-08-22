@@ -3,7 +3,7 @@
    description="Azure リソース マネージャーでテンプレートを使用してルーティングを制御し、仮想アプライアンスを使用する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/23/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 #テンプレートを使用してリソース マネージャーでユーザー定義のルート (UDR) を作成する
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、リソース マネージャーのデプロイ モデルについて説明します。
 
 [AZURE.INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]
 
@@ -183,7 +183,7 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 		info:    New mode is arm
 
-3. ブラウザーから ****https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして、コンピューター内の新しいファイルに貼り付けます。このシナリオでは、次の値を **c:\\udr\\azuredeploy.parameters.json** という名前のファイルにコピーします。
+3. ブラウザーから **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json** に移動し、json ファイルの内容をコピーして、コンピューター内の新しいファイルに貼り付けます。このシナリオでは、次の値を **c:\\udr\\azuredeploy.parameters.json** という名前のファイルにコピーします。
 
 		{
 		  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -396,4 +396,4 @@ Azure CLI を使用して ARM テンプレートをデプロイするには、�
 
 >[AZURE.TIP] すべてのリソースが表示されない場合は、`azure group deployment show` コマンドを実行して、デプロイのプロビジョニング状態が *Succeded* になっていることを確認します。
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0810_2016-->

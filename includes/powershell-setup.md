@@ -7,7 +7,7 @@
    ms.tgt_pltfrm=""
    ms.workload="infrastructure"
    ms.date="05/12/2015"
-   ms.author="josephd" />
+   ms.author="rasquill" />
 
 ## PowerShell のセットアップ
 
@@ -71,11 +71,11 @@ Azure サブスクリプションが複数ある場合は、次のコマンド�
 	CurrentStorageAccountName : 
 	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
 	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
 	Select-AzureSubscription -SubscriptionName $subscr -Current	
 
 Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0810_2016-->

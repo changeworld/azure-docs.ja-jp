@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/26/2016"
+	ms.date="08/10/2016"
 	ms.author="adegeo"/>
 
 
@@ -164,4 +164,4 @@ Azure でクラウド サービスに詳細監視が構成されている場合�
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0810_2016-->

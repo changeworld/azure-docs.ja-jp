@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB Python SDK | Microsoft Azure" 
-	description="リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python SDK に関するあらゆる詳細を提供します。" 
+	pageTitle="DocumentDB Python API と SDK | Microsoft Azure" 
+	description="リリース日、提供終了日、DocumentDB Python SDK の各バージョン間の変更など、Python API と SDK に関するあらゆる詳細を提供します。" 
 	services="documentdb" 
 	documentationCenter="python" 
-	authors="aliuy" 
+	authors="rnagpal" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,24 +13,27 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="07/07/2016" 
+	ms.date="08/09/2016" 
 	ms.author="rnagpal"/>
 
-# DocumentDB SDK
+# DocumentDB API と SDK
 
 > [AZURE.SELECTOR]
-- [.NET SDK](documentdb-sdk-dotnet.md)
-- [Node.js SDK](documentdb-sdk-node.md)
-- [Java SDK](documentdb-sdk-java.md)
-- [Python SDK](documentdb-sdk-python.md)
+- [.NET](documentdb-sdk-dotnet.md)
+- [Node.JS](documentdb-sdk-node.md)
+- [Java](documentdb-sdk-java.md)
+- [Python](documentdb-sdk-python.md)
+- [REST ()](https://go.microsoft.com/fwlink/?LinkId=402413)
+- [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 
-##DocumentDB Python SDK
+## DocumentDB Python API と SDK
 
 <table>
-<tr><td>**ダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
-<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
-<tr><td>**ドキュメント**</td><td>[Python SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-python/)</td></tr>
-<tr><td>**概要**</td><td>[Python SDK の概要](documentdb-python-application.md)</td></tr>
+<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Python API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.html)</td></tr>
+<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](http://azure.github.io/azure-documentdb-python/)</td></tr>
+<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**はじめに**</td><td>[Python SDK の概要](documentdb-python-application.md)</td></tr>
 <tr><td>**現在サポートされているプラットフォーム**</td><td>[Python 2.7](https://www.python.org/download/releases/2.7/)</td></tr>
 </table></br>
 
@@ -115,4 +118,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

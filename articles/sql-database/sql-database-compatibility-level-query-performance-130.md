@@ -13,7 +13,7 @@
 	ms.devlang="NA"
 	ms.tgt_pltfrm="NA"
 	ms.topic="article"
-	ms.date="05/20/2016"
+	ms.date="08/08/2016"
 	ms.author="alainl"/>
 
 
@@ -526,4 +526,4 @@ sql-database-compatibility-level-query-performance-130.md
 genemi = MightyPen , 2016-05-20  Friday  17:00pm
 -->
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

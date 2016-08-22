@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="05/20/2016"
+ms.date="08/09/2016"
 ms.author="larryfr"/>
 
 #HDInsight クラスターを削除する方法
@@ -48,4 +48,4 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
     
 __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

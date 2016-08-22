@@ -3,7 +3,7 @@
 	description="ハイブリッド ID ソリューションを計画する場合、ビジネスのデータ保護要件と、その要件に最適な選択肢を特定します。"
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 #強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる
 
@@ -69,7 +69,7 @@ IT が各段階でデータ自体を保護できるようにする技術制御�
 規制、法律、法令遵守の要件は、企業が属している業界によって変わります。規制が厳しい業界の企業は、コンプライアンスの課題に関連する ID 管理の問題に対応する必要があります。Sarbanes-Oxley (SOX: サーベンス オクスリー法)、Health Insurance Portability and Accountability Act (HIPAA: 医療保険の携行性と責任に関する法律)、Gramm-Leach-Bliley Act (GLBA: グラム リーチ ブライリー法)、Payment Card Industry Data Security Standard (PCI DSS: クレジットカード業界のセキュリティ基準) などの規制は、ID とアクセスについて非常に厳格です。会社が採用するハイブリッド ID ソリューションには、これらの規制の 1 つ以上の要件を満たす中心的な機能が必要です。この領域に関する次のチェック項目に回答してください。
 
 - ハイブリッド ID ソリューションは、会社の規制要件に準拠していますか。
-- ハイブリッド ID ソリューションには、会社が規制要件に準拠できるようにする機能が組み込まれていますか。 
+- ハイブリッド ID ソリューションには、会社が規制要件に準拠できるようにする機能が組み込まれていますか。
  
 >[AZURE.NOTE]
 回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
@@ -81,4 +81,4 @@ IT が各段階でデータ自体を保護できるようにする技術制御�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

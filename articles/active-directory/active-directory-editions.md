@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/08/2016"
+	ms.date="08/10/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory のエディション
@@ -51,13 +51,6 @@ Office 365 サブスクリプションには、下の比較表に記載されて
 ##一般公開機能の比較
 
 > [AZURE.NOTE] このデータの異なるビューについては、「[マイクロソフト クラウド プラットフォームの全体像](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx)」を参照してください。
-
-| | Azure AD Free | Azure AD Basic | Azure AD Premium |
-| ---                      | :-:           | :-:            | :-:              |
-| 共通機能 | ![○][12] | ![○][12] | ![○][12] |
-| Basic の機能 | | ![○][12] | ![○][12] |
-| Premium の機能 | | | ![○][12] |
-
 
 
 
@@ -497,4 +490,4 @@ Azure AD には、Free、Basic、Premium エディションの一般提供され
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

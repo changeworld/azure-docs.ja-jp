@@ -3,7 +3,7 @@
    description="このページでは、URL ルーティング ルールを使用して Azure Application Gateway を作成し、構成する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
+   authors="georgewallace"
    manager="jdial"
    editor="tysonn"/>
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/10/2016"
-   ms.author="joaoma"/>
+   ms.author="gwallace"/>
 
 
 # URL ベースのルーティングを使用して Application Gateway を作成する 
@@ -44,8 +44,8 @@ http://contoso.com/image* に対する要求はイメージ サーバー プー�
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (SSL オフロードを構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 ## 新しいアプリケーション ゲートウェイの作成
@@ -64,9 +64,9 @@ Application Gateway を作成するために必要な手順を次に示します
 
 ## リソース マネージャーのリソース グループの作成
 
-Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、「[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
+Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 
-### 手順 1.
+### 手順 1
 Azure Login-AzureRmAccount へのログイン
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
@@ -94,13 +94,13 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
->[AZURE.NOTE] Application Gateway のカスタム プローブを構成する必要がある場合は、「[PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する](application-gateway-create-probe-ps.md)」を参照してください。詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」を参照してください。
+>[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
 
-## Application Gateway の仮想ネットワークとサブネットの作成
+## アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
 次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。
 
-### 手順 1.
+### 手順 1
 アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。
 
 	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -126,9 +126,9 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 ## Application Gateway 構成の作成
 
-アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
+Application Gateway を作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
-### 手順 1.
+### 手順 1
 "gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
 
 
@@ -196,4 +196,4 @@ Application Gateway のインスタンス数とサイズを構成します。
 ## Application Gateway の取得
 	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

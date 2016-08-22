@@ -11,7 +11,7 @@
 <tags
   ms.service="iot-suite"
   ms.devlang="na"
-  ms.topic="get-started-article"
+  ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
   ms.date="05/16/2016"
@@ -154,4 +154,4 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 [lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

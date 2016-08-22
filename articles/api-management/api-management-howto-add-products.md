@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で成果物を作成して発行する方法
@@ -26,7 +26,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 ![パブリッシャー ポータル][api-management-management-console]
 
->まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」をご覧ください。
+>まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
 
 左側のメニューの **[成果物]** をクリックして **[成果物]** ページを表示し、**[成果物の追加]** をクリックします。
 
@@ -60,7 +60,7 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 
 **[成果物]** ページには、**[概要]**、**[設定]**、**[可視性]**、**[サブスクライバー]** の 4 つの構成用リンクが用意されています。**[概要]** タブでは、API を追加したり、成果物の発行や発行の取り消しをしたりできます。
 
-![概要][api-management-new-product-summary]
+![まとめ][api-management-new-product-summary]
 
 成果物を発行するには、事前に 1 つまたは複数の API を追加する必要があります。そのためには、**[成果物への API の追加]** をクリックします。
 
@@ -148,4 +148,4 @@ API Management の成果物は、**[開く]** ことや **[保護]** するこ�
 [Azure API Management でグループを作成および使用して開発者アカウントを管理する方法]: api-management-howto-create-groups.md
 [Azure API Management で成果物を作成して詳細設定を行う方法]: api-management-howto-product-with-rules.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -4,7 +4,7 @@
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""/>
 
 <tags
@@ -13,27 +13,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/08/2016"
 	ms.author="markgal;trinadhk;jimpark" />
 
 
 # PowerShell を使用した Azure VM のバックアップのデプロイおよび管理
 
 > [AZURE.SELECTOR]
-- [ARM](backup-azure-vms-automation.md)
+- [リソース マネージャー](backup-azure-vms-automation.md)
 - [クラシック](backup-azure-vms-classic-automation.md)
 
-この記事では、Azure の IaaS の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。
+この記事では、Azure の VM をバックアップおよび回復するために Azure PowerShell を使用する方法を示します。Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、クラシック デプロイ モデルの使用方法について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## 概念
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Azure Backup のドキュメント「[Azure の IaaS の VM のバックアップの概要](backup-azure-vms-introduction.md)」を参照してください。
+この記事では、仮想マシンのバックアップに使用する PowerShell コマンドレットに特有の情報を提供します。Azure VM の保護に関する概要については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」を参照してください。
 
-> [AZURE.WARNING] 開始する前に、Azure Backup を使用するのに必要な[前提条件](backup-azure-vms-prepare.md)について重要な点、および現在の VM バックアップ ソリューションの [制限事項](backup-azure-vms-prepare.md#limitations)を網羅していることを確認します。
+> [AZURE.NOTE] 開始する前に、Azure Backup を使用するうえで必要な[前提条件](backup-azure-vms-prepare.md)を確認し、現在の VM バックアップ ソリューションの[制限事項](backup-azure-vms-prepare.md#limitations)を把握してください。
 
-PowerShell を効果的に使用するには、オブジェクトの階層および開始地点を理解しておく必要があります。
+PowerShell を効果的に使用できるように、オブジェクトの階層と開始地点を理解しておいてください。
 
 ![オブジェクト階層](./media/backup-azure-vms-classic-automation/object-hierarchy.png)
 
@@ -80,10 +79,10 @@ Cmdlet          Wait-AzureRmBackupJob                              1.0.1      Az
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- バックアップ コンテナーを作成していること
+- バックアップ資格情報コンテナーの作成
 - Microsoft Azure Backup サービスを使用した VM の登録
 
-### バックアップ コンテナーを作成していること
+### バックアップ資格情報コンテナーの作成
 
 > [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
 
@@ -100,7 +99,7 @@ PS C:\> $backupvault = New-AzureRmBackupVault –ResourceGroupName “test-rg”
 
 
 ### VM の登録
-Azure Backup のバックアップを構成するには、まず Azure Backup コンテナーにコンピューターまたは VM を登録します。**Register-AzureRmBackupContainer** コマンドレットは、Azure IaaS 仮想マシンの入力情報を受け取り、指定のコンテナーに登録を行います。登録操作は、Azure virtual machine とバックアップ コンテナーを関連付け、VM をバックアップのライフサイクルを通じて追跡します。
+Azure Backup のバックアップを構成するには、まず Azure Backup コンテナーにコンピューターまたは VM を登録します。**Register-AzureRmBackupContainer** コマンドレットは、Azure IaaS 仮想マシンの入力情報を受け取り、指定のコンテナーへの登録を行います。登録操作は、Azure virtual machine とバックアップ コンテナーを関連付け、VM をバックアップのライフサイクルを通じて追跡します。
 
 Azure Backup サービスを VM に登録する場合、最上位のコンテナー オブジェクトが作成されます。通常コンテナーには、バックアップ可能な項目が複数ありますが、VM の場合、コンテナーのバックアップ項目は 1 つのみとなります。
 
@@ -144,7 +143,7 @@ PS C:\> Get-AzureRmBackupContainer -Type AzureVM -Status Registered -Vault $back
 ```
 
 ### 初回バックアップ
-バックアップのスケジュールによって、アイテムの完全な初回コピーと以降のバックアップの増分コピーが行われます。ただし、初回バックアップを強制的に特定の時刻またはすぐに行う場合は、**Backup-AzureRmBackupItem** コマンドレットを使用します。
+バックアップのスケジュールによって、アイテムの完全な初回コピーと以降のバックアップの増分コピーが行われます。ただし、初回バックアップが特定の時刻に行われるか、すぐに行われるようにする場合は、**Backup-AzureRmBackupItem** コマンドレットを使用します。
 
 ```
 PS C:\> $container = Get-AzureRmBackupContainer -Vault $backupvault -Type AzureVM -Name "testvm"
@@ -193,7 +192,7 @@ PS C:\> $backupitem = Get-AzureRmBackupContainer -Vault $backupvault -Type Azure
 
 ### 復元ポイントの選択
 
-これで **Get-AzureRmBackupRecoveryPoint** コマンドレットを使用して、バックアップ アイテムのすべての復元ポイントを一覧表示して、復元する復元ポイントを選択できます。通常、ユーザーはこのリスト内の最新の *AppConsistent* ポイントを選択します。
+これで **Get-AzureRmBackupRecoveryPoint** コマンドレットを使用して、バックアップ アイテムのすべての復元ポイントを一覧表示し、復元する復元ポイントを選択できます。通常、ユーザーはこのリスト内の最新の *AppConsistent* ポイントを選択します。
 
 ```
 PS C:\> $rp =  Get-AzureRmBackupRecoveryPoint -Item $backupitem
@@ -295,7 +294,7 @@ Take Snapshot                                               Completed
 Transfer data to Backup vault                               InProgress
 ```
 
-### 2\.バックアップ ジョブの日次/週次レポートの作成
+### 手順 2.バックアップ ジョブの日次/週次レポートの作成
 
 通常、管理者は過去 24 時間に実行されたバックアップ ジョブと、それらのバックアップ ジョブの状態を知りたいと考えています。また、転送されたデータの量によって、管理者は毎月のデータ使用量を推定できます。次のスクリプトは、Azure Backup サービスから生データを取得し、PowerShell コンソールに情報を表示します。
 
@@ -344,6 +343,6 @@ $DAILYBACKUPSTATS | Out-GridView
 
 ## 次のステップ
 
-PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイおよび管理](./backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックップの管理について確認することもできます。両方の記事で、Resource Manager デプロイメントとクラシック デプロイメントの両方のモデルについて説明しています。
+PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](./backup-client-automation-classic.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation-classic.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイメントとクラシック デプロイメントの両方のモデルについて説明しています。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="08/02/2016"
 	ms.author="adrianhall"/>
 
 # Azure Mobile Apps Node.js SDK の使用方法
@@ -125,6 +125,17 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
     ファイルを保存します。
 
 10. アプリケーションをローカルで実行するか (API は http://localhost:3000 で動作します)、Azure に発行します。
+
+### <a name="create-node-backend-portal"></a>方法: Azure ポータルを使用して Node.js バックエンドを作成する
+
+[Azure ポータル]で新しいモバイル アプリ バックエンドを作成できます。
+
+以下の手順を実行するか、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順でクライアントとサーバーをまとめて新規作成することもできます。このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
+
+**[テーブル API の作成]** の _[はじめに]_ ブレードに戻り、**[バックエンド言語]** として **[Node.js]** を選択します。**[これにより、すべてのサイト コンテンツが上書きされることを確認しました。]** というボックスをオンにし、**[TodoItem テーブルを作成する]** をクリックします。
+
 
 ### <a name="download-quickstart"></a>方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする
 
@@ -619,7 +630,7 @@ Azure App Service Mobile Apps には、組み込みの [Swagger] のサポート
 
     var mobile = azureMobileApps({ swagger: true });
 
-開発エディションでのみ Swagger サポートを有効にするには、`NODE_ENV` アプリの設定を利用します。
+開発エディションでのみ Swagger サポートを有効にするには、`NODE_ENV` アプリの設定を利用することで行えます。
 
     var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 
@@ -680,7 +691,7 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 
 認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。
 
-## <a name="CustomAPI"></a>カスタム API
+## <a name="CustomAPI"></a> カスタム API
 
 ###  <a name="howto-customapi-basic"></a>方法: 単純なカスタム API を定義する
 
@@ -818,9 +829,9 @@ Azure Mobile Apps SDK では、要求オブジェクトを通じてコンテキ�
     api.get.access = 'authenticated';
     module.exports = api;
 
-## <a name="Debugging"></a>デバッグ、テーブルの簡単操作、API の簡単操作
+## <a name="Debugging"></a>デバッグ、Easy Tables、Easy API
 
-### <a name="howto-diagnostic-logs"></a>方法: Azure Mobile アプリをデバッグ、診断、およびトラブルシューティングする
+### <a name="howto-diagnostic-logs"></a>方法: Azure Mobile Apps をデバッグ、診断、およびトラブルシューティングする
 
 Azure App Service では、Node.js アプリケーションに関するいくつかのデバッグとトラブルシューティングの手法が提供されます。Node.js モバイル バックエンドのトラブルシューティングを開始する場合は、次の記事を参照してください。
 
@@ -830,7 +841,7 @@ Azure App Service では、Node.js アプリケーションに関するいくつ
 
 Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。Azure Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。これを自動的に有効にするには、デバッグ モードを有効にするか、[Azure ポータル]で **MS\_DebugMode** アプリ設定を true に設定します。生成されたログは、[Azure ポータル]の [診断ログ] に表示されます。
 
-### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>方法: Azure ポータルで [テーブルの簡単操作] を使用する
+### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>方法: Azure ポータルで Easy Tables を使用する
 
 ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。App Service Editor を使用してテーブルの操作を編集することもできます。
 
@@ -917,4 +928,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

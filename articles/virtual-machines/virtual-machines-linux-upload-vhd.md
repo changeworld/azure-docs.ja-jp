@@ -201,7 +201,7 @@ Azure Resource Manager のテンプレートは、ビルドする環境を定義
           }
 ```
 
-[この既存のテンプレート使用してカスタム イメージから VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)か、[独自の Azure Resource Manager テンプレートの作成](../resource-group-authoring templates.md) に関するページを参照することができます。
+[この既存のテンプレート使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)に関するページを確認できます。
 
 テンプレートを構成したら、`azure group deployment create` コマンドを使用して VM を作成します。`--template-uri` パラメーターを使用して JSON テンプレートの URI を指定します。
 
@@ -221,4 +221,4 @@ azure group deployment create --resource-group TestTemplateRG
 ## 次のステップ
 カスタム仮想ディスクを準備してアップロードしたら、[リソース マネージャーとテンプレートの使用](../resource-group-overview.md)について学習しましょう。必要であれば、新しい VM に[データ ディスクを追加](virtual-machines-linux-add-disk.md)することもできます。VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず[ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md)を開放してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

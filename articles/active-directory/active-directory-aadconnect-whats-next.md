@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # 次のステップと Azure AD Connect の管理方法
@@ -65,7 +65,7 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ![参加ルール](./media/active-directory-aadconnect-whats-next/addtasks.png)
 
 
-その他のタスク | 説明
+その他のタスク | Description
 ------------- | ------------- |
 選択したシナリオを表示する |現在の Azure AD Connect のソリューションを表示できます。これには、全般設定、同期されたディレクトリ、同期設定などが含まれます。
 同期オプションをカスタマイズする | 構成への Active Directory フォレストの追加、ユーザー、グループ、デバイス、パスワード ライトバックなどの同期オプションの有効化など、現在の構成を変更できます。
@@ -74,4 +74,4 @@ Azure AD Connect の初回インストール後は、Azure AD Connect のスタ�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

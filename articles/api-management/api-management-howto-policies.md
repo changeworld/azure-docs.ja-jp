@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 
@@ -38,7 +38,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 
 ポリシーの構成を開始するには、ポリシーを適用するスコープを最初に選択する必要があります。次のスクリーンショットでは、**[スターター]** 成果物が選択されています。ポリシー名の横の四角形は、既にポリシーがこのレベルで適用されていることを示します。
 
-![スコープ][policies-scope]
+![Scope][policies-scope]
 
 ポリシーが既に適用されているため、定義ビューに構成が表示されます。
 
@@ -73,7 +73,7 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 		<address>1.2.3.4</address>
 	</ip-filter>
 
-![保存][policies-save]
+![Save][policies-save]
 
 ポリシーのステートメントを構成したら、**[保存]** をクリックします。変更は、API Management ゲートウェイに即座に反映されます。
 
@@ -151,4 +151,4 @@ Azure API Management のポリシーは、発行者がその構成を通じて A
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png
 [policies-save]: ./media/api-management-howto-policies/api-management-policies-save.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

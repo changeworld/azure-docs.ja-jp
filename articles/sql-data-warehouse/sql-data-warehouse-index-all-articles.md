@@ -24,7 +24,7 @@
 
 
 
-## 概要
+## Overview
 
 | &nbsp; | Url-Id | タイトル | 説明 |
 | --: | :-- | :-- | :-- |
@@ -35,7 +35,7 @@
 
 ## 作業の開始
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 3 | authentication | [Azure SQL Data Warehouse への認証](sql-data-warehouse-authentication.md) | Azure SQL Data Warehouse への Azure Active Directory (AAD) および SQL Server 認証。 |
 | 4 | best-practices | [Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md) | Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。これらは、成功に役立ちます。 |
@@ -47,7 +47,6 @@
 | 10 | get-started-create-support-ticket | [SQL Data Warehouse のサポート チケットを作成する方法](sql-data-warehouse-get-started-create-support-ticket.md) | Azure SQL Data Warehouse でサポート チケットを作成する方法。 |
 | 11 | get-started-load-with-azure-data-factory | [Azure Data Factory を使用してデータを読み込む](sql-data-warehouse-get-started-load-with-azure-data-factory.md) | Azure Data Factory を使用してデータを読み込む方法 |
 | 12 | get-started-load-with-polybase | [SQL Data Warehouse で PolyBase によってデータを読み込む](sql-data-warehouse-get-started-load-with-polybase.md) | データ ウェアハウジングのシナリオに沿って、PolyBase の概要と、その使用方法を学習します。 |
-| 13 | get-started-new-server | [新しい論理サーバーの作成](sql-data-warehouse-get-started-new-server.md) | Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。 |
 | 14 | get-started-provision | [Azure SQL Data Warehouse の作成](sql-data-warehouse-get-started-provision.md) | Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。 |
 | 15 | get-started-provision-powershell | [Powershell を使用して SQL Data Warehouse を作成する](sql-data-warehouse-get-started-provision-powershell.md) | Powershell を使用して SQL Data Warehouse を作成します |
 | 16 | get-started-visualize-with-power-bi | [Power BI でデータを視覚化する](sql-data-warehouse-get-started-visualize-with-power-bi.md) | SQL Data Warehouse のデータを Power BI で視覚化します。 |
@@ -57,7 +56,7 @@
 
 ## 開発
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 18 | develop-best-practices-transactions | [SQL Data Warehouse のトランザクションの最適化](sql-data-warehouse-develop-best-practices-transactions.md) | Azure SQL Data Warehouse で効率的なトランザクションの更新を記述するためのベスト プラクティス ガイダンス |
 | 19 | develop-concurrency | [SQL Data Warehouse での同時実行とワークロード管理](sql-data-warehouse-develop-concurrency.md) | ソリューション開発のための Azure SQL Data Warehouse での同時実行とワークロード管理を理解します。 |
@@ -96,7 +95,7 @@
 
 ## テーブルとインデックス
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 43 | tables-data-types | [SQL Data Warehouse のテーブルのデータ型](sql-data-warehouse-tables-data-types.md) | Azure SQL Data Warehouse のテーブルのデータ型の概要です。 |
 | 44 | tables-distribute | [SQL Data Warehouse のテーブルの分散](sql-data-warehouse-tables-distribute.md) | Azure SQL Data Warehouse のテーブルの分散の概要です。 |
@@ -110,7 +109,7 @@
 
 ## 統合
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 50 | integrate-azure-data-factory | [SQL Data Warehouse での Azure Data Factory の使用](sql-data-warehouse-integrate-azure-data-factory.md) | ソリューション開発のための、Azure SQL Data Warehouse での Azure Data Factory (ADF) の使用に関するヒント。 |
 | 51 | integrate-azure-machine-learning | [SQL Data Warehouse での Azure Machine Learning の使用](sql-data-warehouse-integrate-azure-machine-learning.md) | ソリューション開発のための、Azure SQL Data Warehouse での Azure Machine Learning の使用に関するヒント。 |
@@ -120,9 +119,9 @@
 
 
 
-## 読み込み
+## Load
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 55 | load-from-azure-blob-storage-with-data-factory | [Azure Blob Storage から Azure SQL Data Warehouse へのデータの読み込み (Azure Data Factory)](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md) | Azure Data Factory を使用してデータを読み込む方法 |
 | 56 | load-from-azure-blob-storage-with-polybase | [Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) | PolyBase を使用して、Azure Blob Storage から SQL Data Warehouse にデータを読み込む方法について説明します。パブリック データから Contoso Retail Data Warehouse スキーマにテーブルをいくつか読み込みます。 |
@@ -139,7 +138,7 @@
 
 ## 移行
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 65 | migrate-code | [SQL Data Warehouse への SQL コードの移行](sql-data-warehouse-migrate-code.md) | ソリューション開発のための Azure SQL Data Warehouse への SQL コードの移行に関するヒント |
 | 66 | migrate-data | [データの移行](sql-data-warehouse-migrate-data.md) | ソリューション開発のための Azure SQL Data Warehouse へのデータの移行に関するヒント |
@@ -151,7 +150,7 @@
 
 ## パートナー
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 70 | partner-business-intelligence | [SQL Data Warehouse ビジネス インテリジェンス パートナー](sql-data-warehouse-partner-business-intelligence.md) | SQL Data Warehouse と連携するソリューションを提供するサードパーティのパートナーの一覧 |
 | 71 | partner-data-integration | [SQL Data Warehouse データ統合パートナー](sql-data-warehouse-partner-data-integration.md) | SQL Data Warehouse と連携するソリューションを提供するサードパーティのパートナーの一覧 |
@@ -161,7 +160,7 @@
 
 ## リファレンス
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 73 | overview-reference | [SQL Data Warehouse の参照トピック](sql-data-warehouse-overview-reference.md) | SQL Data Warehouse の参照コンテンツ リンク。 |
 | 74 | reference-powershell-cmdlets | [SQL Data Warehouse の PowerShell コマンドレットと REST API](sql-data-warehouse-reference-powershell-cmdlets.md) | データベースの一時停止と再開など、Azure SQL Data Warehouse でよく使用される PowerShell コマンドレットを紹介します。 |
@@ -173,7 +172,7 @@
 
 ## セキュリティ
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 78 | auditing-downlevel-clients | [SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート](sql-data-warehouse-auditing-downlevel-clients.md) | データ監査のための SQL Data Warehouse のダウンレベル クライアントのサポートについて説明します |
 | 79 | auditing-overview | [Azure SQL Data Warehouse での監査](sql-data-warehouse-auditing-overview.md) | Azure SQL Data Warehouse での監査の概要 |
@@ -185,7 +184,7 @@
 
 ## その他
 
-| &nbsp; | Url-Id | タイトル | 説明 |
+| &nbsp; | Url-Id | タイトル | Description |
 | --: | :-- | :-- | :-- |
 | 83 | install-visual-studio | [SQL Data Warehouse 用に Visual Studio 2015 と SSDT をインストールする](sql-data-warehouse-install-visual-studio.md) | Azure SQL Data Warehouse 用に Visual Studio と SQL Server Development Tools (SSDT) をインストールします |
 | 84 | migrate-to-premium-storage | [Premium Storage への移行の詳細](sql-data-warehouse-migrate-to-premium-storage.md) | Premium Storage へ既存の SQL Data Warehouse を移行する手順 |
@@ -193,4 +192,4 @@
 | 86 | service-capacity-limits | [SQL Data Warehouse の容量制限](sql-data-warehouse-service-capacity-limits.md) | SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。 |
 | 87 | troubleshoot | [Azure SQL Data Warehouse のトラブルシューティング](sql-data-warehouse-troubleshoot.md) | Azure SQL Data Warehouse のトラブルシューティングを行います。 |
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,10 +1,10 @@
 <properties
    pageTitle="モノのインターネットのセキュリティの概要 | Microsoft Azure"
-   description="Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。この記事では、Azure の IoT ソリューションをセキュリティで保護する方法について説明します。"
+   description=" Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。この記事では、Azure の IoT ソリューションをセキュリティで保護する方法について説明します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/22/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # モノのインターネットのセキュリティの概要
@@ -68,4 +68,4 @@ IoT インフラストラクチャを保護するには、緻密なセキュリ�
 - [IoT ソリューションのデプロイ担当者](../iot-suite/iot-security-best-practices.md#iot-solution-deployer)
 - [IoT ソリューションのオペレーター](../iot-suite/iot-security-best-practices.md#iot-solution-operator)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

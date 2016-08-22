@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/09/2016"
+   ms.date="08/08/2016"
    ms.author="ganesr" />
 
 # ExpressRoute 回線への仮想ネットワークのリンク
@@ -40,7 +40,9 @@
 	- Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
 	- 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。[VPN ゲートウェイ](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)を作成する手順に従いますが、必ず `-GatewayType ExpressRoute` を使用してください。
 
-最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。仮想ネットワークはすべて同じ地理的リージョンにある必要があります。ExpressRoute Premium アドオンを有効にした場合は、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたり、他の地理的リージョンにある仮想ネットワークをリンクしたりできます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
+最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。
+
+ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
 
 ## 同じサブスクリプション内の仮想ネットワークを回線に接続する
 
@@ -138,4 +140,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -18,7 +18,7 @@
 
 # Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
-この記事では、Azure Resource Manager テンプレートを使用して、トピックとサブスクリプションを含んだ Service Bus の名前空間を作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用して、トピックとサブスクリプションを含んだ Service Bus の名前空間を作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
@@ -27,9 +27,9 @@
 >[AZURE.NOTE] 次の Azure Resource Manager テンプレートを、ダウンロードしてデプロイすることができます。
 >
 >-    [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
->-    [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
 >-    [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 >-    [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
+>-    [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
 >
 >最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
@@ -39,7 +39,7 @@
 
 [Service Bus のトピックとサブスクリプション](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)は、*発行とサブスクライブ*のパターンで一対多の形式の通信を実現します。
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
 
@@ -160,4 +160,4 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus の名前空間にトピックとサブスクリプションを追加する]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-and-subscription/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

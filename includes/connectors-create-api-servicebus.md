@@ -1,7 +1,6 @@
 ### 前提条件
 
-- [ServiceBus](https://azure.microsoft.com/services/service-bus/) アカウント
-
+[Service Bus](https://azure.microsoft.com/services/service-bus/) アカウントが必要です。
 
 ロジック アプリで Azure Service Bus アカウントを使用するには、Service Bus アカウントに接続するロジック アプリを承認する必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
@@ -19,4 +18,4 @@ Service Bus アカウントに接続するロジック アプリを承認する�
 3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
     ![Service Bus の接続イメージ 3](./media/connectors-create-api-servicebus/servicebus-3.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="08/03/2016" 
 	ms.author="robinsh"/>
 
 # ストレージ メトリックの有効化とメトリック データの表示
 
 [AZURE.INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
-## 概要
+## Overview
 
 既定では、Storage サービスに対してストレージ メトリックは有効になっていません。[Azure クラシック ポータル](https://manage.windowsazure.com)または Windows PowerShell を使用して監視を有効にできます。また、ストレージ API を使用したプログラムで監視を有効にすることもできます。
 
@@ -47,7 +47,7 @@ Azure クラシック ポータルでは、現在のところ、ストレージ 
 
 - MetricsType 指定可能な値は Hour と Minute です。
 
-- ServiceType 指定可能な値は Blob、Queue、Table です。
+- ServiceType: 指定可能な値は、Blob、Queue、Table です。
 
 - MetricsLevel: 指定可能な値は None (Azure クラシック ポータルの [オフ] と同じ)、Service (Azure クラシック ポータルの [最小] と同じ)、ServiceAndApi (Azure クラシック ポータルの [詳細] と同じ) です。
 
@@ -126,7 +126,7 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 
 これらのテーブルのスキーマの全詳細については、「[Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。下のサンプル行は、一部の利用できる列のみを示していますが、ストレージ メトリックがこれらのメトリックを保存するしくみについて、重要な特徴をいくつか説明しています。
 
-| PartitionKey | RowKey | タイムスタンプ | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | 可用性 | AverageE2ELatency | AverageServerLatency | PercentSuccess |
+| PartitionKey | RowKey | Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | 可用性 | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 |---------------|:------------------:|-----------------------------:|---------------|-----------------------|--------------|-------------|--------------|-------------------|----------------------|----------------|
 | 20140522T1100 | user;All | 2014-05-22T11:01:16.7650250Z | 7 | 7 | 4003 | 46801 | 100 | 104\.4286 | 6\.857143 | 100 |
 | 20140522T1100 | user;QueryEntities | 2014-05-22T11:01:16.7640250Z | 5 | 5 | 2694 | 45951 | 100 | 143\.8 | 7\.8 | 100 |
@@ -212,4 +212,4 @@ Azure サブスクリプションを処理するように Azure PowerShell コ�
 [Storage Analytics ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/dn782840.aspx)
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

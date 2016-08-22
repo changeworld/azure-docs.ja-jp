@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure のアプリケーション アーキテクチャ | Microsoft Azure"
-   description="この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。"
+   description=" この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Azure のアプリケーション アーキテクチャ
@@ -56,4 +56,4 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 - [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)をダウンロードする
 - 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](../architecture-overview.md#drawing-symbol-and-icon-sets)をダウンロードする
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

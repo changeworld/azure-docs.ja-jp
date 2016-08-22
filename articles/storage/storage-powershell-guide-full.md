@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage での Azure PowerShell の使用
 
-## 概要
+## Overview
 
 Azure PowerShell は、Windows PowerShell から Azure を管理するコマンドレットを提供するモジュールです。タスクベースのコマンドライン シェルとスクリプト言語であり、システム管理に特化して設計されています。PowerShell を使用すると、Azure サービスやアプリケーションの管理を容易に制御して自動化できます。たとえば、このコマンドレットを使用して、[Azure ポータル](https://portal.azure.com)で実行できるタスクと同じタスクを実行できます。
 
@@ -224,7 +224,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
     	$sasToken = New-AzureStorageContainerSASToken -Container abc -Permission rl
     	$Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -SasToken $sasToken
 
-	詳細については、「[New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx)」と[共有アクセス署名 (SAS) モデル (パート 1)](storage-dotnet-shared-access-signature-part-1.md) に関するページを参照してください。
+	詳細については、「[New-AzureStorageContainerSASToken](http://msdn.microsoft.com/library/azure/dn806416.aspx)」および「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
 - 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。これは、BLOB サービスでストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
 
@@ -752,4 +752,4 @@ AzureChinaCloud で Azure Storage を使用するには、AzureChinaCloud に関
 [How to use Azure Storage for U.S. government and Azure China]: #gov
 [Next Steps]: #next
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

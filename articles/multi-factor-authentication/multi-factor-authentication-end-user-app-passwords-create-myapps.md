@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを myapps 365 ポータルで作成する
@@ -42,4 +42,4 @@ Office 365 で多要素認証を使用しておらず、Azure サブスクリプ
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

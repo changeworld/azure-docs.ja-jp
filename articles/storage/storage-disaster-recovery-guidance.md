@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 
@@ -71,7 +71,7 @@ Azure サービスの状態は、[Azure サービス正常性ダッシュボー�
 
 ##データ保護のベスト プラクティス
 
-ストレージ データを定期的にバックアップするための推奨アプローチはいくつかあります。
+ストレージ データを定期的にバックアップするための推奨アプローチがいくつかあります。
 
 -   VM ディスク - [Azure Backup サービス](https://azure.microsoft.com/services/backup/)を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。
 
@@ -81,4 +81,4 @@ Azure サービスの状態は、[Azure サービス正常性ダッシュボー�
 
 -   ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

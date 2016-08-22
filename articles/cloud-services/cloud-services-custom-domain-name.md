@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="08/10/2016"
 	ms.author="adegeo"/>
 
 # Azure クラウド サービスのカスタム ドメイン名の構成
@@ -30,7 +30,7 @@
 CNAME レコードと A レコードについて既に理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
 > [AZURE.NOTE]
-より速く進める --新しい Azure の使用[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)! Azure Cloud Services または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+作業を手早く進めましょう。 Azure の[チュートリアル ガイド](http://support.microsoft.com/kb/2990804)をご利用ください。Azure Cloud Services または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
 
 <p/>
 
@@ -139,7 +139,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 
 
-この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「\_\_*\_\_」と入力します。
+この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして「__*__」と入力します。
 
 >[AZURE.WARNING]
 Azure の IP アドレスは、既定では動的です。自分の IP アドレスが変更されないようにするために、[予約済み IP アドレス](../virtual-network/virtual-networks-reserved-public-ip.md)を使用すると便利です。
@@ -166,4 +166,4 @@ Azure の IP アドレスは、既定では動的です。自分の IP アドレ
 [csurl]: ./media/cloud-services-custom-domain-name/csurl.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

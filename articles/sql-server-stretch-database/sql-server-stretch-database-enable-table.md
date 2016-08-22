@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # テーブルの Stretch Database を有効にする
@@ -28,7 +28,9 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 **アクセス許可**。データベースまたはテーブルで Stretch Database を有効にするには、db\_owner アクセス許可が必要です。テーブルで Stretch Database を有効にするには、テーブルの ALTER アクセス許可も必要です。
 
-## <a name="EnableWizardTable"></a>ウィザードを使用し、テーブルで Stretch Database を有効にする
+ >   [AZURE.NOTE] 後で Strech Database を無効にする場合、テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されないことに注意してください。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを手動で削除するまで、Azure のコストが引き続き発生します。
+ 
+## <a name="EnableWizardTable"></a>ウィザードを使用してテーブルで Stretch Database を有効にする
 **ウィザードを起動する**
 
 1.  SQL Server Management Studio のオブジェクト エクスプローラーで、Stretch を有効にするテーブルを選択します。
@@ -45,9 +47,9 @@ Stretch Database のテーブルを設定するには、SQL Server Management St
 
 テーブル全体を移行することも、ウィザードで単純なフィルター関数を指定することもできます。別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
 
--   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、フィルター関数を指定します。
+-   ウィザードを終了して ALTER TABLE ステートメントを実行し、テーブルの Stretch を有効にしてフィルター関数を指定する。
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、[ウィザードの実行後におけるフィルター関数の追加](sql-server-stretch-database-predicate-function.md#addafterwiz)に関するページを参照してください。
+-   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、「[ウィザードの実行後にフィルター関数を追加する](sql-server-stretch-database-predicate-function.md#addafterwiz)」をご覧ください。
 
 ALTER TABLE 構文については、このトピックの後の方で説明しています。
 
@@ -59,17 +61,17 @@ ALTER TABLE 構文については、このトピックの後の方で説明し�
 
 結果を確認します。
 
-## <a name="EnableTSQLTable"></a>Transact-SQL を使用し、テーブルで Stretch Database を有効にする
+## <a name="EnableTSQLTable"></a>Transact-SQL を使用してテーブルで Stretch Database を有効にする
 Transact-SQL を利用し、既存のテーブルで Stretch Database を有効にしたり、新しいテーブルを作成して Stretch Database を有効にしたりできます。
 
 ### オプション
 CREATE TABLE または ALTER TABLE を実行し、テーブルで Stretch Database を有効にするとき、次のオプションを利用します。
 
--   テーブルにホット データとコールド データの両方が含まれている場合、`FILTER_PREDICATE = <function>` 句を使用し、移行する行を選択する関数を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページをご覧ください。フィルター関数を指定しない場合、テーブル全体が移行されます。
+-   テーブルにホット データとコールド データの両方が含まれている場合、`FILTER_PREDICATE = <function>` 句を使用して、移行する行を選択する関数を指定することもできます。述語では、インライン テーブル値関数を呼び出す必要があります。詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。フィルター関数を指定しない場合、テーブル全体が移行されます。
 
     >   [AZURE.NOTE] 指定したフィルター関数のパフォーマンスが悪いと、データ移行のパフォーマンスも悪くなります。Stretch Database は CROSS APPLY 演算子を利用し、テーブルにフィルター関数を適用します。
 
--   データの移行をすぐに開始する場合は `MIGRATION_STATE = OUTBOUND` を指定し、データの移行の開始を先送りする場合は `MIGRATION_STATE = PAUSED` を指定します。
+-   データ移行をすぐに開始する場合は `MIGRATION_STATE = OUTBOUND` を指定し、データ移行の開始を先送りする場合は `MIGRATION_STATE = PAUSED` を指定します。
 
 ### 既存テーブルの Stretch Database を有効にする
 既存テーブルを Stretch Database 用に設定するには、ALTER TABLE コマンドを実行します。
@@ -83,7 +85,7 @@ ALTER TABLE <table name>
     SET ( REMOTE_DATA_ARCHIVE = ON ( MIGRATION_STATE = OUTBOUND ) ) ;  
 GO
 ```
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定された行のみを移行し、データ移行を先送りする例を次に示します。フィルター関数の詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -111,7 +113,7 @@ CREATE TABLE <table name>
 GO
 ```
 
-`dbo.fn_stretchpredicate` インライン テーブル値関数で特定される行のみを移行し、データ移行を先送りする例は次のようになります。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。
+`dbo.fn_stretchpredicate` インライン テーブル値関数で特定された行のみを移行し、データ移行を先送りする例を次に示します。フィルター関数の詳細については、[フィルター関数を使用した移行する行の選択](sql-server-stretch-database-predicate-function.md)に関する記事をご覧ください。
 
 ```tsql
 USE <Stretch-enabled database name>;
@@ -133,4 +135,4 @@ GO
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms174979.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

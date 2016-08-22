@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -39,7 +39,7 @@
 
 以下のいずれかのトピックを選択して開始してください。
 
-トピック|説明
+トピック|Description
 :------------- | :------------- | 
 [セットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md)| 初めて多要素認証をセットアップする際のプロセスについて説明します。
 [サインイン エクスペリエンス](multi-factor-authentication-end-user-signin.md)|電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。
@@ -49,4 +49,4 @@
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

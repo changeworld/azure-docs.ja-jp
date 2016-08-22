@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # カスタム アプリに Multi-Factor Authentication を構築する (SDK)
@@ -193,4 +193,4 @@ SDK 内には、次の項目があります。
 	    }
 	}
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->
