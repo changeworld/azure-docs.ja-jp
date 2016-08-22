@@ -22,7 +22,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 - **パブリック IP アドレス**: Azure の公開されたサービスを含め、インターネットとの通信に使用します。
 - **プライベート IP アドレス**: VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミスのネットワーク内での通信に使用します。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)。
 
 クラシック デプロイ モデルの知識がある場合は、[クラシック デプロイとリソース マネージャーでの IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)に関するページを確認してください。
 

@@ -54,7 +54,7 @@ Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/j
 - [Done] をクリックします。
 
 
-## 手動でのアカウントの追加
+<h2 id="compte">手動でのアカウントの追加</h2>
 アカウントを手動で追加する場合は、アカウントの手動入力ボタンを選択します。
 
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount.png)

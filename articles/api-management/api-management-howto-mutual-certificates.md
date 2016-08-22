@@ -129,7 +129,7 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
 [Azure API Management REST API 証明書エンティティ]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Azure WebSites での証明書認証の構成についてはこの記事を参照してください]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[Azure WebSites での証明書認証の構成についてはこの記事を参照してください]: https://azure.microsoft.com/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1

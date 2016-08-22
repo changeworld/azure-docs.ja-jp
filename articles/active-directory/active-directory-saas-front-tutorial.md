@@ -145,7 +145,7 @@ Front で Azure AD のシングル サインオンを構成してテストする
 
 6. Front テナントに管理者としてサインオンします。
 
-7. **[設定] (左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** と移動します。
+7. **[設定] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** と移動します。
 
 	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 

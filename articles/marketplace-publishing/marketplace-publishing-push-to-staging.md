@@ -91,13 +91,13 @@
 
 - **プラン識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [VM イメージ] タブ -> [Offer Identifier (プラン識別子)]
 - **SKU 識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [SKUs (SKU)] タブ -> [Add a SKU (SKU を追加)]
-- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 会社を登録する」にあります) -> [Publisher Namespace] -> [名前空間]
+- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] \(「手順 2 会社を登録する」にあります) -> [Publisher Namespace] -> [名前空間]
 
 Virtual Machine プランについては、一度 Azure Marketplace にプラン/SKU が表示されたら、以下のフィールドは変更できません。
 
 - **プラン識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [VM イメージ] -> [Offer Identifier (プラン識別子)]
 - **SKU 識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [SKUs (SKU)] タブ -> [Add a SKU (SKU を追加)]
-- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
+- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] \(「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
 - **ポート:** [発行ポータル] -> [Virtual Mashines] -> [プランの選択] -> [VM イメージ] タブ -> [ポートを開く]
 - **表示されている SKU の価格の変更**
 - **表示されている SKU の課金モデルの変更**
@@ -142,7 +142,7 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 - **表示されている SKU のデータ ディスク数の変更**
 - **プラン識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [VM イメージ] -> [Offer Identifier (プラン識別子)]
 - **SKU 識別子:** [発行ポータル] -> [Virtual Machines] -> [プランの選択] -> [SKUs (SKU)] タブ -> [Add a SKU (SKU を追加)]
-- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] (「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
+- **Publisher Namespace:** [発行ポータル] -> [Virtual Mashines] -> [チュートリアル] タブ -> [Tell Us About Your Company (会社情報を入力)] \(「手順 2 登録する」にあります) -> [Publisher Namespace] -> [名前空間]
 - **ポート:** [発行ポータル] -> [Virtual Mashines] -> [プランの選択] -> [VM イメージ] タブ -> [ポートを開く]
 
 ### SKU の "販売先" の国
@@ -223,9 +223,9 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 ## 手順 3.: サポート情報を入力する
 連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある** [サポート] **に移動します。
-2.	**[エンジニアリング連絡先] **に情報を入力します。
-3.	**[カスタマー サポート] **に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある **[サポート]** に移動します。
+2.	**[エンジニアリング連絡先]** に情報を入力します。
+3.	**[カスタマー サポート]** に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
@@ -263,6 +263,7 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 
 - [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)
 - [ステージングでのソリューション テンプレート プランのテスト](marketplace-publishing-solution-template-test-in-staging.md)
+| **手順 3.プランをステージングにプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | 開発者サービスのプランをステージングでテストする | [データ サービスのプランをステージングでテストする](marketplace-publishing-data-service-test-in-staging.md) | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
 
 ## 関連項目
 

@@ -31,7 +31,7 @@ Microsoft Azure には、アプリケーションとサービスの接続要件�
 - ログの記録
 - 名前解決
 - DMZ アーキテクチャ
-- [Azure Security Center] (Azure Security Center)
+- [Azure Security Center] \(Azure Security Center)
 
 ## Azure のネットワーク
 
@@ -252,7 +252,7 @@ DMZ の設計と DMZ をデプロイする決定には多数のバリエーシ�
 
 - [Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)
 
-## [Azure Security Center] (Azure Security Center)
+## [Azure Security Center] \(Azure Security Center)
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 Azure Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。
