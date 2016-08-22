@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="05/17/2016" 
+ms.date="08/10/2016" 
 ms.author="adegeo"/>
 
 # XPath で環境変数としてロール構成設定を公開する
@@ -189,4 +189,4 @@ ms.author="adegeo"/>
 
 ロールの[リモート デスクトップ](cloud-services-role-enable-remote-desktop.md)を有効にします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

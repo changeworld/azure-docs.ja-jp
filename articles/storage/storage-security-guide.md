@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage セキュリティ ガイド
 
-##概要
+##Overview
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。アプリケーションと Azure の間で送信されるデータを、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../azure-security-disk-encryption.md) を使用して暗号化されるように設定できます。Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、[Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を使用して付与できます。
 
@@ -196,7 +196,7 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 
 ##データ プレーンのセキュリティ
 
-データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトに対してアクセス権を付与するにはどうすればよいでしょうか。
+データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトへのアクセスを許可するにはどうすればよいのでしょうか。
 
 データ オブジェクト自体に対するアクセスを制御するには、基本的に 2 つの方法があります。1 つ目は、ストレージ アカウント キーに対するアクセスを制御する方法です。2 つ目は、Shared Access Signature を使用して、一定期間、特定のデータ オブジェクトに対するアクセス権を付与する方法です。
 
@@ -496,7 +496,7 @@ Azure Storage に対するすべての要求がログに記録されます。次
 
 ####各フィールドの役割
 
-以下のリソースに記載されている記事は、多数あるログのフィールド一覧と、その役割を示しています。フィールドを一覧の順に説明します。
+以下のリソースに記載されている記事には、ログの多数のフィールドとその役割の一覧が含まれています。フィールドを一覧の順に説明します。
 
 ![ログ ファイル内のフィールドのスナップショット](./media/storage-security-guide/image3.png)
 
@@ -538,7 +538,7 @@ Microsoft Message Analyzer を使用してログを表示し、分析するこ�
 
 -   [Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング](storage-e2e-troubleshooting.md)
 
-	この記事では、Storage Analytics の使用に関するトラブルシューティングと、Microsoft Message Analyzer を使用する方法について説明します。
+	この記事では、Storage Analytics の使用に関するトラブルシューティングと、Microsoft Message Analyzer の使用方法について説明しています。
 
 -   [Microsoft Message Analyzer の操作ガイド](https://technet.microsoft.com/library/jj649776.aspx)
 
@@ -580,13 +580,13 @@ Azure Storage では、CORS (クロス オリジン リソース共有) を有�
 
 -   **AllowedOrigins** 一致しないドメインのうち、Storage サービスに対して要求を実行し、データを受け取ることができるドメインを指示します。たとえば、contoso.com と fabrikam.com の両方が、特定のストレージ アカウントに対して Blob Storage のデータを要求できます。また、これをワイルドカード (*) に設定して、すべてのドメインが要求にアクセスできるようにすることもできます。
 
--   **AllowedMethods** 要求を実行するときに使用できるメソッド (HTTP 要求の動詞) の一覧です。この例では、PUT と GET のみを使用できます。これをワイルドカード (*) に設定して、すべてのメソッドを使用できるようにすることができます。
+-   **AllowedMethods** 要求を実行するときに使用できるメソッド (HTTP 要求の動詞) のリストです。この例では、PUT と GET のみを使用できます。これをワイルドカード (*) に設定して、すべてのメソッドを使用できるようにすることができます。
 
--   **AllowedHeaders** 元のドメインが要求の実行時に指定できる要求のヘッダーです。この例では、x-ms-meta-data、x-ms-meta-target、x-ms-meta-abc で始まるすべてのメタデータ ヘッダーが許可されます。ワイルドカード文字 (*) は、指定したプレフィックスで始まるすべてのヘッダーが許可されることを示しています。
+-   **AllowedHeaders** 元のドメインが要求の実行時に指定できる要求ヘッダーです。この例では、x-ms-meta-data、x-ms-meta-target、x-ms-meta-abc で始まるすべてのメタデータ ヘッダーが許可されます。ワイルドカード文字 (*) は、指定したプレフィックスで始まるすべてのヘッダーが許可されることを示しています。
 
--   **ExposedHeaders** ブラウザーから要求の発行元に対して公開する必要がある応答のヘッダーを指示します。この例では、"x-ms-meta-" から始まるすべてのヘッダーが公開されます。
+-   **ExposedHeaders** ブラウザーから要求の発行元に対して公開する必要がある応答ヘッダーを指示します。この例では、"x-ms-meta-" から始まるすべてのヘッダーが公開されます。
 
--   **MaxAgeInSeconds** ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間(プレフライト要求の詳細については、以下の最初の記事を参照してください)。
+-   **MaxAgeInSeconds** ブラウザーがプレフライト OPTIONS 要求をキャッシュする最大時間です (プレフライト要求の詳細については、以下の最初の記事を参照してください)。
 
 ####リソース
 
@@ -612,7 +612,7 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。
 	
-	詳細については、「[Azure Blob MD5 Overview (Azure BLOB MD5 の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)」を参照してください。
+	詳細については、[Azure BLOB MD5 の概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
 
 2.  **米国政府の FIPS 準拠はどうなっていますか**
 
@@ -634,4 +634,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

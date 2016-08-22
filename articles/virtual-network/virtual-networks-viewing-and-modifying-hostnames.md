@@ -3,7 +3,7 @@
    description="名前解決のため、Azure Virtual Machines のホスト名、および Web ロールと Worker ロールを表示、変更する方法"
    services="virtual-network"
    documentationCenter="na"
-   authors="joaoma"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/27/2016"
-   ms.author="joaoma" />
+   ms.author="jdial" />
 
 # ホスト名の表示と変更
 
@@ -25,7 +25,7 @@
 
 ### Azure ポータル
 
-[Azure ポータル](http://portal.azure.com) を使用して、仮想マシンの概要ブレードに仮想マシンのホスト名を表示できます。ブレードには、**[名前]** と **[ホスト名]** の値が表示されることに注意してください。これらは最初は同じですが、ホスト名を変更しても、仮想マシンまたはロール インスタンスの名前は変わりません。
+[Azure ポータル](http://portal.azure.com)を使用して、仮想マシンの概要ブレードに仮想マシンのホスト名を表示できます。ブレードには、**[名前]** と **[ホスト名]** の値が表示されることに注意してください。これらは最初は同じですが、ホスト名を変更しても、仮想マシンまたはロール インスタンスの名前は変わりません。
 
 ロール インスタンスは Azure ポータルでも表示できますが、クラウド サービスでインスタンスの一覧を表示しても、ホスト名は表示されません。各インスタンスの名前は表示されますが、その名前はホスト名ではありません。
 
@@ -47,7 +47,7 @@ Azure ポータルのサービスの **[構成]** ブレードから、デプロ
 
 REST クライアントから次の手順を実行します。
 
-1. Azure ポータルに接続するためのクライアント証明書があることを確認します。クライアント証明書を取得するには、「[How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)](https://msdn.microsoft.com/library/dn385850.aspx)」の手順に従ってください。 
+1. Azure ポータルに接続するためのクライアント証明書があることを確認します。クライアント証明書を取得するには、「[How to: Download and Import Publish Settings and Subscription Information (方法: 発行の設定とサブスクリプション情報をダウンロードしてインポートする)](https://msdn.microsoft.com/library/dn385850.aspx)」の手順に従ってください。
 
 1. x-ms-version という名前のヘッダー エントリの値を 2013-11-01 に設定します。
 
@@ -71,4 +71,4 @@ REST クライアントから次の手順を実行します。
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,52 +14,50 @@
 	ms.tgt_pltfrm="vm-windows" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016" 
+	ms.date="08/08/2016" 
 	ms.author="josephd"/>
 
 # テスト用のハイブリッド クラウドでの Web ベース LOB アプリケーションの設定
 
-このトピックでは、Microsoft Azure でホストされる Web ベースの基幹業務 (LOB) アプリケーションをテストするためにハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
+このトピックでは、Microsoft Azure でホストされる Web ベースの基幹業務 (LOB) アプリケーションをテストするためにシミュレートされたハイブリッド クラウド環境を作成する手順について説明します。完成すると次のような構成になります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
 
-Azure でホストされる運用 LOB アプリケーションの例については、「[アーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)」で**基幹業務アプリケーション**のアーキテクチャ ブループリントをご覧ください。
+構成は次のとおりです。
 
-この構成では、インターネット上の自分の場所から Azure 運用環境の LOB アプリケーションをシミュレートします。構成は次のとおりです。
-
-- 簡略化されたオンプレミス ネットワーク (Corpnet サブネット)。
+- Azure でホストされているシミュレートされたオンプレミスのネットワーク (TestLab VNet)。
 - Azure でホストされているクロスプレミス仮想ネットワーク (TestVNET)。
-- サイト間 VPN 接続
-- TestVNET 仮想ネットワーク内に基幹業務サーバー、SQL Server、セカンダリ ドメイン コントローラー
+- VNet 間 VPN 接続。
+- TestVNET 仮想ネットワーク内の Web ベース LOB サーバー、SQL Server、セカンダリ ドメイン コントローラー。
 
 この構成を基盤や共通の出発点にして以下を実行できます。
 
 - Azure の SQL Server 2014 データベース バックエンドを使用してインターネット インフォメーション サービス (IIS) でホストされている LOB アプリケーションを開発し、テストする。
-- このハイブリッド クラウドをベースとした IT ワークロードのテストを実行する。
+- このシミュレートされたハイブリッド クラウドをベースとした IT ワークロードのテストを実行する。
 
 このハイブリッド クラウド テスト環境を設定する手順は、大きく次の 3 つのフェーズに分かれています。
 
-1.	テスト用のハイブリッド クラウド環境を設定する。
+1.	シミュレートされたハイブリッド クラウド環境を設定する。
 2.	SQL Server コンピューター (SQL1) を構成する。
 3.	LOB サーバー (LOB1) を構成する。
 
-このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。
+このワークロードには、Azure サブスクリプションが必要です。MSDN または Visual Studio サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。
 
-## フェーズ 1: ハイブリッド クラウド環境を設定する
+Azure でホストされる運用 LOB アプリケーションの例については、「[アーキテクチャ ブループリント](http://msdn.microsoft.com/dn630664)」で**基幹業務アプリケーション**のアーキテクチャ ブループリントをご覧ください。
 
-「[テスト用のハイブリッド クラウド環境の設定](virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)」の指示に従います。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンしてかまいません。
+## フェーズ 1: シミュレートされたハイブリッド クラウド環境を設定する
+
+[シミュレートされたハイブリッド クラウド テスト環境](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)を作成します。このテスト環境では Corpnet サブネット上に APP1 サーバーを配置する必要がないため、シャットダウンできます。
 
 現在の構成は次のようになります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph1.png)
-
-> [AZURE.NOTE] フェーズ 1 では、[シミュレートされたハイブリッド クラウド テスト環境](virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)を設定することもできます。
  
 ## フェーズ 2: SQL Server コンピューター (SQL1) を構成する
 
 DC2 コンピューターが起動されていない場合は、Azure ポータルから起動します。
 
-続いて、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、SQL1 用に Azure 仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
+続いて、ローカル コンピューターで Azure PowerShell コマンド プロンプトから次のコマンドを実行して、SQL1 用に仮想マシンを作成します。これらのコマンドを実行する前に、変数の値を入力し、< と > の文字を削除します。
 
 	$rgName="<your resource group name>"
 	$locName="<the Azure location of your resource group>"
@@ -83,18 +81,9 @@ DC2 コンピューターが起動されていない場合は、Azure ポータ�
 	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-Azure ポータルを使用して、ローカル管理者アカウントで SQL1 に接続します。
+Azure ポータルを使用して、SQL1 のローカル管理者アカウントで SQL1 に接続します。
 
-1.	Microsoft Azure 管理ポータルの左側のウィンドウで **[Virtual Machines]** をクリックし、SQL1 の [状態] 列で **[実行中]** をクリックします。
-2.	タスク バーで、**[接続]** をクリックします。
-3.	SQL1.rdp を開くよう求められたら、**[開く]** をクリックします。
-4.	リモート デスクトップ接続のメッセージ ボックスが表示されたら、**[接続]** をクリックします。
-5.	資格情報の入力を求められたら、次の情報を使用します。
-	- 名前: **SQL1\**[ローカル管理者アカウントの名前]
-	- パスワード: [ローカル管理者アカウントのパスワード]
-6.	証明書に関するリモート デスクトップ接続のメッセージ ボックスが表示されたら、**[はい]** をクリックします。
-
-続いて、基本的な接続テストと SQL Server のトラフィックを許可するように Windows ファイアウォールの規則を構成します。SQL1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
+続いて、基本的な接続テストと SQL Server トラフィックを許可するように Windows ファイアウォールの規則を構成します。SQL1 で管理者レベルの Windows PowerShell コマンド プロンプトから次のコマンドを実行します。
 
 	New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433,1434,5022 -Action allow 
 	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
@@ -102,7 +91,7 @@ Azure ポータルを使用して、ローカル管理者アカウントで SQL1
 
 ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功する必要があります。
 
-次に、余っているデータ ディスクを新しいボリュームとして追加し、ドライブ文字 F: を割り当てます。
+次に、SQL1 で余っているデータ ディスクを新しいボリュームとして追加し、ドライブ文字 F: を割り当てます。
 
 1.	サーバー マネージャーの左側のウィンドウで、**[ファイル サービスと記憶域サービス]** をクリックし、**[ディスク]** をクリックします。
 2.	コンテンツ ウィンドウの **[ディスク]** グループで、(**[パーティション]** が **[不明]** に設定されている) **[ディスク 2]** をクリックします。
@@ -121,14 +110,14 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 	md f:\Log
 	md f:\Backup
 
-次に、Windows PowerShell プロンプトでこれらのコマンドを使用して、CORP Active Directory ドメインに SQL1 を参加させます。
+次に、SQL1 で Windows PowerShell プロンプトでこれらのコマンドを使用して、CORP Windows Server Active Directory ドメインに SQL1 を参加させます。
 
 	Add-Computer -DomainName corp.contoso.com
 	Restart-Computer
 
 **Add-Computer** コマンドでドメイン アカウントの資格情報を入力するよう求められたら、CORP\\User1 アカウントを使用します。
 
-再起動したら、Azure ポータルで*ローカル管理者アカウント*を使用して SQL1 に接続します。
+再起動したら、Azure ポータルで "SQL1 のローカル管理者アカウント" を使用して SQL1 に接続します。
 
 次に、新しいデータベースとユーザー アカウント アクセス許可に F: ドライブを使用するように SQL Server 2014 を構成します。
 
@@ -154,7 +143,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
  
 ## フェーズ 3: LOB サーバー (LOB1) を構成する
 
-まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、LOB1 用に Azure 仮想マシンを作成します。
+まず、ローカル コンピューターの Azure PowerShell コマンド プロンプトで次のコマンドを使用して、LOB1 用に仮想マシンを作成します。
 
 	$rgName="<your resource group name>"
 	$locName="<your Azure location, such as West US>"
@@ -174,7 +163,7 @@ SQL1 の Windows PowerShell コマンド プロンプトで、次のコマンド
 	$vm=Set-AzureRMVMOSDisk -VM $vm -Name LOB1-TestVNET-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-次に、Azure ポータルでローカル管理者アカウントの資格情報を使用して LOB1 に接続します。
+次に、Azure ポータルで LOB1 のローカル管理者アカウントの資格情報を使用して、LOB1 に接続します。
 
 続いて、基本的な接続テストを行うためのトラフィックを許可するよう Windows ファイアウォール規則を構成します。LOB1 で管理者レベルの Windows PowerShell コマンド プロンプトから、次のコマンドを実行します。
 
@@ -188,34 +177,34 @@ ping コマンドで IP アドレス 192.168.0.4 からの応答が 4 回成功�
 	Add-Computer -DomainName corp.contoso.com
 	Restart-Computer
 
-**Add-Computer コマンド**でドメイン アカウントの資格情報を入力するよう求められたら、CORP\\User1 アカウントを使用します。
+**Add-Computer** コマンドでドメイン アカウントの資格情報を入力するよう求められたら、CORP\\User1 アカウントを使用します。
 
 再起動したら、Azure ポータルで CORP\\User1 アカウントとパスワードを使って LOB1 に接続します。
 
 次に、IIS 用に LOB1 を構成し、CLIENT1 からアクセスをテストします。
 
-1.	サーバー マネージャーを実行し、**[役割と機能の追加]** をクリックします。
-2.	[開始する前に] ページで **[次へ]** をクリックします。
-3.	[インストールの種類の選択] ページで **[次へ]** をクリックします。
-4.	[対象サーバーの選択] ページで **[次へ]** をクリックします。
-5.	[サーバーの役割] ページの **[役割]** の一覧で、**[Web サーバー (IIS)]** をクリックします。
+1.	サーバー マネージャーで、**[役割と機能の追加]** をクリックします。
+2.	**[開始する前に]** ページで **[次へ]** をクリックします。
+3.	**[インストールの種類の選択]** ページで **[次へ]** をクリックします。
+4.	**[対象サーバーの選択]** ページで **[次へ]** をクリックします。
+5.	**[サーバーの役割]** ページの **[役割]** の一覧で、**[Web サーバー (IIS)]** をクリックします。
 6.	メッセージが表示されたら、**[機能の追加]** をクリックし、**[次へ]** をクリックします。
-7.	[機能の選択] ページで **[次へ]** をクリックします。
-8.	[Web サーバー (IIS)] ページで **[次へ]** をクリックします。
-9.	[役割サービスの選択] ページで、LOB アプリケーションをテストするための必要に応じて、サービスのチェック ボックスをオンまたはオフにし、**[次へ]** をクリックします。
-10.	[インストール オプションの確認] ページで、**[インストール]** をクリックします。
+7.	**[機能の選択]** ページで **[次へ]** をクリックします。
+8.	**[Web サーバー (IIS)]** ページで **[次へ]** をクリックします。
+9.	**[役割サービスの選択]** ページで、LOB アプリケーションをテストするための必要に応じて、サービスのチェック ボックスをオンまたはオフにし、**[次へ]** をクリックします。
+10.	**[インストール オプションの確認]** ページで、**[インストール]** をクリックします。
 11.	コンポーネントのインストールが完了するまで待ってから、**[閉じる]** をクリックします。
-12.	CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターにログオンし、Internet Explorer を起動します。
+12.	Azure ポータルで、CORP\\User1 アカウントの資格情報を使用して CLIENT1 コンピューターに接続し、Internet Explorer を起動します。
 13.	アドレス バーに「**http://lob1/**」と入力し、Enter キーを押します。既定の IIS 8 Web ページが表示されます。
 
 現在の構成は次のようになります。
 
 ![](./media/virtual-machines-windows-ps-hybrid-cloud-test-env-lob/virtual-machines-windows-ps-hybrid-cloud-test-env-lob-ph3.png)
  
-この環境で、Web ベース アプリケーションを LOB1 にデプロイし、Corpnet サブネットから機能とパフォーマンスをテストできます。
+この環境で、Web ベース アプリケーションを LOB1 にデプロイし、Corpnet サブネットの CLIENT1 から機能をテストできます。
 
 ## 次のステップ
 
-- この環境にその他の[ワークロード](virtual-machines-windows-ps-hybrid-cloud-test-envs.md)をデプロイします。
+- [Azure ポータル](virtual-machines-windows-hero-tutorial.md)を使用して新しい仮想マシンを追加します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

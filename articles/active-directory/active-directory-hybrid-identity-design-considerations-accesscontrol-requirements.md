@@ -4,7 +4,7 @@
 	description="ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。"
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。データは、次に示す ID の 4 本の柱全体にかかっています。
@@ -74,4 +74,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

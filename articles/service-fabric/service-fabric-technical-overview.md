@@ -90,4 +90,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

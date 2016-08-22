@@ -1,10 +1,10 @@
 
 <properties
-	pageTitle="Azure Active Directory ハイブリッド ID の設計上の考慮事項 - インシデント対応要件の決定 | Microsoft Azure 要件"
+	pageTitle="Azure Active Directory ハイブリッド ID の設計上の考慮事項 - インシデント対応要件の決定 | Microsoft Azure 要件 "
 	description="潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できるハイブリッド ID ソリューションの監視と報告の機能を決定します"
 	documentationCenter=""
 	services="active-directory"
-	authors="yuridio"
+	authors="billmath"
 	manager="stevenpo"
 	editor=""/>
 
@@ -14,8 +14,8 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="04/28/2016"
-	ms.author="yuridio"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
 # ハイブリッド ID ソリューションのインシデント対応要件の決定
 
@@ -52,7 +52,7 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 
 - 必要に応じてユーザーのネットワークアクセスをブロックするポリシーを企業は配置していますか。
  - 配置している場合、現在のソリューションはこれから導入するハイブリッド ID 管理システムと統合されますか。
-- 隔離されているユーザーには条件付きのアクセスを会社は適用する必要がありますか。 
+- 隔離されているユーザーには条件付きのアクセスを会社は適用する必要がありますか。
  
 >[AZURE.NOTE]
 回答をメモし、その背後にある論理的根拠を理解してください。[データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)では、利用できる選択肢と各選択肢の長所/短所について説明します。チェック項目に答えることで、ビジネス ニーズに最適な選択肢が見つかります。
@@ -63,4 +63,4 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

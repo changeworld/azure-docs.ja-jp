@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 
@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
 
-## 概要
+## Overview
 
 [.NET Nuget パッケージ用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage)は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
@@ -60,13 +60,13 @@ Java によるクライアント側の暗号化については、「[Java によ
 
 ### BLOB
 
-現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。具体的には、**UploadFrom*** メソッドや **OpenWrite** メソッドを使用する場合に暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
+現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。具体的には、**UploadFrom** メソッドや *OpenWrite** メソッドを使用するときに暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。
 
 暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
 
-> [AZURE.WARNING] BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
+> [AZURE.WARNING] BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、その他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
 
-暗号化された BLOB のダウンロードには、便利なメソッド **DownloadTo***/**BlobReadStream** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
+暗号化された BLOB のダウンロードには、**DownloadTo***/**BlobReadStream** 簡易メソッドを使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
 
 暗号化された BLOB での任意の範囲 (**DownloadRange*** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
 
@@ -105,7 +105,7 @@ Java によるクライアント側の暗号化については、「[Java によ
 
 ### クエリ
 
-クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 および \_ClientEncryptionMetadata2) を選択した列に追加します。
+クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。クエリでサーバー側のプロジェクションを実行する場合、クライアント ライブラリは選択した列に特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 と \_ClientEncryptionMetadata2) を既定で追加します。
 
 ## Azure Key Vault
 
@@ -248,7 +248,7 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 
 - [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)
 - [Azure Storage Client Library for .NET NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage)をダウンロードする
-- Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする  
-- [Azure Key Vault ドキュメント](../key-vault/key-vault-whatis.md)を参照する
+- Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする
+- [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)を参照する
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

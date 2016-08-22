@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/22/2016"
+   ms.date="08/05/2016"
    ms.author="seanmck"/>
 
 
@@ -167,9 +167,17 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 1. ASP.NET プロジェクトで、`ICounter` インターフェイスを含むクラス ライブラリへの参照を追加します。
 
-2. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。これにより、`ServiceProxy` クラスが提供されます。
+2. **[ビルド]** メニューの **[構成マネージャー]** を開きます。次のような結果が表示されます。
 
-3. **Controllers** フォルダーで `ValuesController` クラスを開きます。現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。この実装を次のコードに置き換えます。
+    ![任意の CPU としてクラス ライブラリを示す構成マネージャー][vs-configuration-manager]
+
+    クラス ライブラリ プロジェクト **MyStatefulService.Interface** は、任意の CPU を構築するために構成されます。Service Fabric を正常に機能させるには、明示的に x64 を対象にする必要があります。プラットフォームのドロップダウンをクリックし、**[新規]** を選択して、x64 プラットフォーム構成を作成します。
+
+    ![クラス ライブラリの新しいプラットフォームを作成する][vs-create-platform]
+
+3. 前にクラス ライブラリ プロジェクトで行ったのと同様に、ASP.NET プロジェクトに Microsoft.ServiceFabric.Services パッケージを追加します。これにより、`ServiceProxy` クラスが提供されます。
+
+4. **Controllers** フォルダーで `ValuesController` クラスを開きます。現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。この実装を次のコードに置き換えます。
 
     ```c#
     using MyStatefulService.Interfaces;
@@ -198,7 +206,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
     プロキシを作成した後は、`GetCountAsync` メソッドを呼び出して結果を返すだけです。
 
-4. もう一度 F5 キーを押して、変更したアプリケーションを実行します。前と同じように、Visual Studio はブラウザーを自動的に起動して Web プロジェクトのルートを表示します。"api/values" パスを追加すると、現在のカウンター値が返されることがわかります。
+5. もう一度 F5 キーを押して、変更したアプリケーションを実行します。前と同じように、Visual Studio はブラウザーを自動的に起動して Web プロジェクトのルートを表示します。"api/values" パスを追加すると、現在のカウンター値が返されることがわかります。
 
     ![ブラウザーに表示されたステートフル カウンター値][browser-aspnet-counter-value]
 
@@ -240,9 +248,12 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-add-class-library-reference]: ./media/service-fabric-add-a-web-frontend/vs-add-class-library-reference.png
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
+[vs-configuration-manager]: ./media/service-fabric-add-a-web-frontend/vs-configuration-manager.png
+[vs-create-platform]: ./media/service-fabric-add-a-web-frontend/vs-create-platform.png
+
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
 [api-management-landing-page]: https://azure.microsoft.com/ja-JP/services/api-management/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

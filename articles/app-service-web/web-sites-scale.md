@@ -20,7 +20,7 @@
 
 この記事では、Azure App Service でアプリのスケールを変更する方法について説明します。スケーリングには、スケールアップとスケールアウトという 2 つのワークフローがあり、この記事ではスケールアップ ワークフローについて説明します。
 
-- [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): CPU、メモリ、ディスク領域を増やしたり、専用の仮想マシン (VM)、カスタム ドメインと証明書、ステージング スロット、自動スケールのような拡張機能を追加したりします。スケールアウトするには、アプリが属している App Service プランの価格レベルを変更します。
+- [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): CPU、メモリ、ディスク領域を増やしたり、専用の仮想マシン (VM)、カスタム ドメインと証明書、ステージング スロット、自動スケールのような拡張機能を追加したりします。スケールアップするには、アプリが属している App Service プランの価格レベルを変更します。
 - [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): アプリを実行する VM インスタンスの数を増やします。価格レベルに応じて、20 個までのインスタンスにスケールアウトすることができます。**Premium** レベルの [App Service Environment](../app-service/app-service-app-service-environments-readme.md) では、スケールアウト カウントが 50 インスタンスに増えます。スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください。あらかじめ定義されている規則とスケジュールに基づいてインスタンス数を自動的に変更する自動スケールの使い方が説明されています。
 
 スケール設定は適用に数秒を要するのみで、[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に含まれるすべてのアプリに反映されます。コードを変更したりアプリケーションを再デプロイしたりする必要はありません。
@@ -137,4 +137,4 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 [ScaleDatabase]: ./media/web-sites-scale/scale11SQLScale.png
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

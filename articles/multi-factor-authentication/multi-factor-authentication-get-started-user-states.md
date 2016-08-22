@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication におけるユーザーの状態
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-状態 | 説明 |非ブラウザー アプリに影響があるか| メモ 
+状態 | Description |非ブラウザー アプリに影響があるか| メモ 
 :-------------: | :-------------: |:-------------: |:-------------: |
 無効 | 新しいユーザーの既定の状態は、多要素認証に登録されていません。|いいえ|ユーザーは多要素認証を使用していません。
 有効 |ユーザーは多要素認証に登録されています。|いいえ。これらは登録プロセスが完了するまで機能し続けます。|ユーザーは有効ですが、登録プロセスが完了していません。次回サインインするときにプロセスを完了するよう求められます。
@@ -63,4 +63,4 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 8.  この操作を確認するように求められます。**[はい]** をクリックします。 ![Disable user](./media/multi-factor-authentication-get-started-user-states/userstate3.png)
 9.  操作に成功したことが確認できます。**[閉じる]** をクリックします。![Disable user](./media/multi-factor-authentication-get-started-user-states/userstate4.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

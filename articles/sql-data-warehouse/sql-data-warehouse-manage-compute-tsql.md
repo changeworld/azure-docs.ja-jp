@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/06/2016"
+   ms.date="08/08/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (T-SQL)
@@ -45,7 +45,7 @@
 
 1. Visual Studio 2015 で SQL Server オブジェクト エクスプローラーを開きます。
 2. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. sys.database\_service\_objectives 動的管理ビューから選択します。たとえば次のようになります。 
+2. sys.database\_service\_objectives 動的管理ビューから選択します。たとえば次のようになります。
 
 ```
 SELECT
@@ -67,7 +67,7 @@ DWU を変更するには、次の手順に従います。
 
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. [ALTER DATABASE][] TSQL ステートメントを使用します。次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
+2. [ALTER DATABASE][] TSQL ステートメントを使用します。次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -97,4 +97,4 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

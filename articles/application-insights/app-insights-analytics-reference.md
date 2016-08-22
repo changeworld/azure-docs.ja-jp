@@ -12,14 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/07/2016" 
+	ms.date="08/09/2016" 
 	ms.author="awills"/>
 
 # Analytics のリファレンス
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-> [AZURE.NOTE] [シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo) (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]https://analytics.applicationinsights.io/demo (まだアプリから Application Insights にデータを送信していない場合)。
 
 ## Index
 
@@ -105,7 +105,7 @@ set 句はクエリの持続時間に関するオプションを設定します�
     set OptionName [= OptionValue] ; query
 
 
-|名前 | true に設定した場合の効果
+|Name | true に設定した場合の効果
 |---|---
 |querytrace| クエリによって生成されるデバッグ トレースのレベルを引き上げます。 
 |noexecute| クエリの実際の実行を無効にします (クエリの計画フェーズだけが実行されます)。 
@@ -845,7 +845,7 @@ range timestamp from ago(4h) to now() step 1m
 
 たとえば、`reduce by city` の結果には次のものが含まれます。
 
-|パターン | カウント |
+|パターン | Count |
 |---|---|
 | San * | 5182 |
 | Saint * | 2846 |
@@ -862,7 +862,7 @@ render では、テーブルの表示方法をプレゼンテーション層に�
 
 ### restrict 句 
 
-以下に示す演算子で使用可能なテーブル名のセットを指定します。次に例を示します。
+以下に示す演算子で使用可能なテーブル名のセットを指定します。For example:
 
     let e1 = requests | project name, client_City;
     let e2 =  requests | project name, success;
@@ -1683,18 +1683,8 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 || |
 |---|-------------|
-| + | [追加] のいずれかを |
-| - | 減算 |
-| * | 乗算 |
-| / | 除算 |
-| % | 剰余 |
-||
-|`<` |小さい 
-|`<=`|小さいか等しい 
-|`>` |大きい 
-|`>=`|大きいか等しい 
-|`<>`|等しくない 
-|`!=`|等しくない
+| + | Add |
+| - | 減算 | | * | 乗算 | | / | 除算 | | % | 剰余 | || |`<` |小さい |`<=`|小さいか等しい |`>` |大きい |`>=`|大きいか等しい |`<>`|等しくない |`!=`|等しくない
 
 
 ### abs
@@ -2085,7 +2075,7 @@ T | where ... | extend Elapsed=now() - timestamp
 整数の結果は、ISO 8601 標準での週数を表します。週の最初の曜日は日曜日で、年の最初の週はその年の最初の木曜日を含む週です(したがって、年の最後の数日に次の年の第 1 週の数日が含まれるか、年の最初の数日に前の年の第 52 週と第 53 週の数日が含まれる可能性があります)。
 
 
-## String
+## 文字列
 
 [countof](#countof) | [extract](#extract) | [extractjson](#extractjson) | [isempty](#isempty) | [isnotempty](#isnotempty) | [notempty](#notempty) | [replace](#replace) | [split](#split) | [strcat](#strcat) | [strlen](#strlen) | [substring](#substring) | [tolower](#tolower) | [tostring](#tostring) | [toupper](#toupper)
 
@@ -2116,25 +2106,27 @@ h"hello"
 
 ### 文字列の比較
 
-演算子|説明|大文字と小文字の区別|実際の例
+演算子|Description|大文字と小文字の区別|実際の例
 ---|---|---|---
-`==`|等しい |あり| `"aBc" == "aBc"`
-`<>` `!=`|等しくない|あり| `"abc" <> "ABC"`
+`==`|等しい |はい| `"aBc" == "aBc"`
+`<>` `!=`|等しくない|はい| `"abc" <> "ABC"`
 `=~`|等しい |いいえ| `"abc" =~ "ABC"`
 `!~`|等しくない |いいえ| `"aBc" !~ "xyz"`
 `has`|右辺 (RHS) が左辺 (LHS) に 1 つの単語として含まれる|いいえ| `"North America" has "america"`
-`!has`|RHS が LHS に完全な単語として含まれない|なし|`"North America" !has "amer"` 
-`hasprefix`|RHS は LHS の用語のプレフィックス|いいえ|`"North America" hasprefix "ame"`
-`!hasprefix`|RHS は LHS の用語のプレフィックスでない|いいえ|`"North America" !hasprefix "mer"`
-`contains` | RHS が LHS のサブシーケンスとして出現する|いいえ| `"FabriKam" contains "BRik"`
+`!has`|RHS が LHS に完全な単語として含まれない|いいえ|`"North America" !has "amer"` 
+`hasprefix`|RHS が LHS に単語のプレフィックスとして含まれる|いいえ|`"North America" hasprefix "ame"`
+`!hasprefix`|RHS が LHS にどの単語のプレフィックスとしても含まれない|いいえ|`"North America" !hasprefix "mer"`
+`hassuffix`|RHS が LHS に単語のサフィックスとして含まれる|いいえ|`"North America" hassuffix "rth"`
+`!hassuffix`|RHS が LHS にどの単語のサフィックスとしても含まれない|いいえ|`"North America" !hassuffix "mer"`
+`contains` | RHS が LHS の部分文字列として出現する|いいえ| `"FabriKam" contains "BRik"`
 `!contains`| RHS が LHS 内に出現しない|いいえ| `"Fabrikam" !contains "xyz"`
-`containscs` | RHS が LHS のサブシーケンスとして出現する|あり| `"FabriKam" contains "Kam"`
-`!containscs`| RHS が LHS 内に出現しない|あり| `"Fabrikam" !contains "Kam"`
-`startswith`|RHS が LHS の先頭のサブシーケンスである|いいえ|`"Fabrikam" startswith "fab"`
-`!startswith`|RHS が LHS の先頭のサブシーケンスではない。|いいえ|`"Fabrikam" !startswith "abr"`
-`endswith`|RHS が LHS の末尾のサブシーケンスである。|いいえ|`"Fabrikam" endswith "kam"`
-`!endswith`|RHS が LHS の末尾のサブシーケンスではない。|いいえ|`"Fabrikam" !endswith "ka"`
-`matches regex`|LHS には RHS との一致が含まれている|あり| `"Fabrikam" matches regex "b.*k"`
+`containscs` | RHS が LHS の部分文字列として出現する|はい| `"FabriKam" contains "Kam"`
+`!containscs`| RHS が LHS 内に出現しない|はい| `"Fabrikam" !contains "Kam"`
+`startswith`|RHS が LHS の先頭の部分文字列である|いいえ|`"Fabrikam" startswith "fab"`
+`!startswith`|RHS が LHS の先頭の部分文字列ではない|いいえ|`"Fabrikam" !startswith "abr"`
+`endswith`|RHS が LHS の末尾の部分文字列である|いいえ|`"Fabrikam" endswith "kam"`
+`!endswith`|RHS が LHS の末尾の部分文字列ではない|いいえ|`"Fabrikam" !endswith "ka"`
+`matches regex`|LHS には RHS との一致が含まれている|はい| `"Fabrikam" matches regex "b.*k"`
 `in`|要素のいずれかに等しい|はい|`"abc" in ("123", "345", "abc")`
 `!in`|要素のいずれとも等しくない|はい|`"bc" !in ("123", "345", "abc")`
 
@@ -2409,7 +2401,7 @@ Application Insights の例外に対するクエリの結果を次に示しま�
         line = details[0].parsedStack[0].line,
         stackdepth = arraylength(details[0].parsedStack)
 
-* ただし、`arraylength` やその他の Analytics 関数を使用してください (".length" でなく)。
+* ただし、`arraylength` やその他の Analytics 関数 (".length" 以外) を使用してください。
 
 **キャスト:** 場合によっては、オブジェクトから抽出する要素をキャストする必要があります。これは、オブジェクトの型が一様ではないためです。たとえば、`summarize...to` には次のように特定の型が必要です。
 
@@ -2722,4 +2714,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

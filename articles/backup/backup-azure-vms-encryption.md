@@ -17,7 +17,13 @@
 
 # VM のバックアップ中の暗号化されているディスクの処理
 
-Azure で VM データの暗号化を検討している企業のソリューションは Windows では Bitlocker、Linux マシンでは dmcrypt です。どちらもボリューム レベルの暗号化ソリューションです。この記事では、上述の Azure VM のバックアップの設定の詳細、および暗号化されたデータが復元のワークフローへ与える影響について説明します。
+Azure での VM データの暗号化を検討している企業の場合、Windows では [Azure Disk Encryption](../azure-security-disk-encryption.md) または Bitlocker、Linux マシンでは dmcrypt を利用してください。
+
+> [AZURE.NOTE]  Azure Backup では、Azure Disk Encryption (ADE) を使用して暗号化された VM のバックアップと復元がサポートされています。<br>
+1. VM が BEK と KEK を使用して暗号化されている場合は、PowerShell を使用してバックアップと復元を行うことができます。<br>
+2. VM が BEK のみを使用して暗号化されている場合、バックアップと復元はサポートされません。<br> ADE を使用して暗号化された VM のバックアップと復元を行うには、Azure Backup の [PowerShell ドキュメント](backup-azure-vms-automation.md)を参照してください。
+
+この記事では、CloudLink を使用して暗号化された VM を取り上げます。
 
 ## バックアップのしくみ
 
@@ -36,20 +42,20 @@ Azure で VM データの暗号化を検討している企業のソリューシ�
 
 | 関数 | 使用されるソフトウェア | その他のメモ |
 | -------- | ------------- | ------- |
-| 暗号化 | Bitlocker または dmcrypt | Azure Backup と比較した場合、暗号化は*異なる*層で実行されるため、どの暗号化ソフトウェアが使用されるかは問題になりません。ただし、このエクスペリエンスについては、CloudLink でのみ Bitlocker と dmcrypt を使用して検証されています。<br><br> データを暗号化するには、キーが必要になります。また、データへの承認されたアクセスを確保するためにも安全にキーを保持する必要があります。 |
+| Encryption | Bitlocker または dmcrypt | Azure Backup と比較した場合、暗号化は*異なる*層で実行されるため、どの暗号化ソフトウェアが使用されるかは問題になりません。ただし、このエクスペリエンスについては、CloudLink でのみ Bitlocker と dmcrypt を使用して検証されています。<br><br> データを暗号化するには、キーが必要になります。また、データへの承認されたアクセスを確保するためにも安全にキーを保持する必要があります。 |
 | キー管理 | CloudLink SecureVM | データを暗号化または復号化するためにキーは不可欠です。適切なキーがない場合、データは取得できません。このことは、次の場合に*非常に*重要になります。<br><li>キーのロールオーバー<li>長期的な保持<br><br>たとえば、7 年前にデータのバックアップで使用されたキーは、現在使用されているものと同じではない可能性があります。7 年前のキーがない場合、当時のバックアップから復元されるデータは使用できなくなるということです。|
 | データのバックアップ | Azure Backup | Azure Backup で [Microsoft Azure 管理ポータル](http://manage.windowsazure.com) または PowerShell を使用して Azure IaaS VM をバックアップする |
 | データの復元 | Azure Backup | Azure Backup を使用して、復旧ポイントからディスクまたは VM 全体を復元します。Azure Backup では、データは復元操作の一環として復号化されません。|
 | 復号化 | Bitlocker または dmcrypt | 復元されたデータ ディスクまたは復元された VM からデータを読み取るためには、キー管理ソフトウェアからのキーがソフトウェアで必要になります。適切なキーがない場合、データは複合化できません。 |
 
-> [AZURE.IMPORTANT] \(キーのロールオーバーを含む) キー管理は、Azure Backup の一部ではありません。この側面については独立して管理する必要がありますが、全体的なバックアップ/復元操作において非常に重要です。
+> [AZURE.IMPORTANT]  (キーのロールオーバーを含む) キー管理は、Azure Backup の一部ではありません。この側面については独立して管理する必要がありますが、全体的なバックアップ/復元操作において非常に重要です。
 
 ### サポートされるシナリオ
 
 
 | &nbsp; | バックアップ コンテナー | Recovery Services コンテナー |
 | :-- | :-- | :-- |
-| Azure IaaS V1 VM | あり | いいえ |
+| Azure IaaS V1 VM | はい | いいえ |
 | Azure IaaS V2 VM | 該当なし | いいえ |
 
 
@@ -71,4 +77,4 @@ Azure で VM データの暗号化を検討している企業のソリューシ�
 - [デプロイ ガイド - PDF](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [SecureVM のデプロイと使用 - ビデオ](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

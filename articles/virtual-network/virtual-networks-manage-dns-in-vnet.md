@@ -3,7 +3,7 @@
    description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # 仮想ネットワーク (VNet) で使用される DNS サーバーの管理
 
@@ -57,12 +57,4 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 1. 仮想ネットワークにある仮想マシンを再起動して、新しい DNS の設定を取得できるようにします。
 
-## 次のステップ
-
-[仮想ネットワーク (VNet) のプロパティの管理方法](../virtual-networks-settings)
-
-[仮想ネットワークでのパブリック IP アドレスの使用方法](../virtual-networks-public-ip-within-vnet)
-
-[仮想ネットワーク (VNet) の削除方法](../virtual-networks-delete-vnet)
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

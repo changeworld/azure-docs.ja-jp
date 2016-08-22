@@ -192,7 +192,7 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 -   [帯域外操作が仮想マシンで発生し、フェールオーバーのコミットに失敗した](http://social.technet.microsoft.com/wiki/contents/articles/25507.the-virtual-machine-isn-t-ready-for-planned-failover.aspx)
 -   テスト フェールオーバー
     -   [テスト フェールオーバーが進行中であるため、フェールオーバーを開始できない](http://social.technet.microsoft.com/wiki/contents/articles/31111.failover-could-not-be-initiated-since-test-failover-is-in-progress.aspx)
--   <span style="color:green;">新規</span> 仮想マシンまたはその仮想マシンが属しているサブネットに関連付けられたネットワーク セキュリティ グループの構成設定により、"PreFailoverWorkflow タスクの WaitForScriptExecutionTask がタイムアウトしました" でフェールオーバーがタイムアウトしました。詳細については、["PreFailoverWorkflow タスクの WaitForScriptExecutionTask がタイムアウトしました"](https://aka.ms/troubleshoot-nsg-issue-azure-site-recovery) に関するページを参照してください。
+-   <span style="color:green;">新規</span> 仮想マシンまたはその仮想マシンが属しているサブネットに関連付けられたネットワーク セキュリティ グループの構成設定により、"PreFailoverWorkflow タスクの WaitForScriptExecutionTaskTimeout がタイムアウトしました" でフェールオーバーがタイムアウトしました。詳細については、["PreFailoverWorkflow タスクの WaitForScriptExecutionTaskTimeout がタイムアウトしました"](https://aka.ms/troubleshoot-nsg-issue-azure-site-recovery) に関するページを参照してください。
 
 
 ### 構成サーバー、プロセス サーバー、マスター ターゲット
@@ -202,4 +202,4 @@ ASR のサポート チケットを発行するには、Azure サポートにア
 ### リモート デスクトップのフェールオーバー後のトラブルシューティング
 -   多くのお客様が、Azure でフェールオーバー後の VM への接続について、問題に直面しています。[VM への RDP 接続におけるトラブルシューティングに関するドキュメントを使用してください。](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

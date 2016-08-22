@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API に操作を追加する方法
@@ -57,7 +57,7 @@ API Management 内の API を使用するためには、操作を追加する必
 
 **[表示名]** と **[説明]** には、操作の説明を指定します。これらの値は、開発者ポータルでこの API を使用する開発者向けのドキュメントを提供するために使用されます。
 
-![説明][api-management-description]
+![Description][api-management-description]
 
 **[説明]** ボックスには、プレーンテキストまたは HTML 形式で操作の説明を指定できます。
 
@@ -67,7 +67,7 @@ API Management 内の API を使用するためには、操作を追加する必
 
 操作のキャッシュをすばやく簡単に有効にするには、**[キャッシュ]** タブを選択し、**[有効]** チェック ボックスをオンにします。
 
-![キャッシュ][api-management-caching-tab]
+![Caching (キャッシュ)][api-management-caching-tab]
 
 **[期間]** は、操作の応答をキャッシュに保持する期間を指定します。既定値は、3,600 秒 (1 時間) です。
 
@@ -86,9 +86,9 @@ API Management 内の API を使用するためには、操作を追加する必
 -	**[説明]** - パラメーターの簡単な説明 (オプション)。
 -	**[型]** - パラメーターの型。ボックスの一覧から選択します。
 -	**[値]** - このパラメーターに割り当てることができる値。値の 1 つを既定値としてマークすることができます (オプション)。
--	**[必須]** - このパラメーターを必須にするには、このチェック ボックスをオンにします。 
+-	**[必須]** - このパラメーターを必須にするには、このチェック ボックスをオンにします。
 
-![要求パラメーター][api-management-request-parameters]
+![Request parameters][api-management-request-parameters]
 
 ## <a name="request-body"> </a>要求本文
 
@@ -168,4 +168,4 @@ API Management 内の API を使用するためには、操作を追加する必
 [成果物を作成して発行する方法]: api-management-howto-add-products.md
 [Azure API Management で操作の結果をキャッシュする方法]: api-management-howto-cache.md
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

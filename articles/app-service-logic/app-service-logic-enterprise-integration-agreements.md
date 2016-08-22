@@ -19,7 +19,7 @@
 
 # 契約と Enterprise Integration Pack についての詳細情報
 
-## 概要
+## Overview
 契約は企業間 (B2B) 通信に必要不可欠であり、これによりビジネス エンティティは業界標準のプロトコルを使用してシームレスに通信することができます。
 
 ## 契約とは
@@ -30,7 +30,7 @@
 
 - [AS2](./app-service-logic-enterprise-integration-as2.md)
 - [X12](./app-service-logic-enterprise-integration-x12.md)
-- [EDIFACT](./app-service-logic-enterprise-integration-edifact.md) (近日対応予定)
+- [EDIFACT](./app-service-logic-enterprise-integration-edifact.md)
 
 ## 契約を使用する理由
 契約を使用する一般的な利点をいくつか次に示します。
@@ -65,4 +65,4 @@
 ## 次のステップ
 - [AS2 契約の作成](./app-service-logic-enterprise-integration-as2.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

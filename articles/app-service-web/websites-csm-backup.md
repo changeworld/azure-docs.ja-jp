@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/10/2016"
 	ms.author="nicking"/>
 # REST を使用して App Service アプリのバックアップと復元を実行する
 
@@ -23,7 +23,7 @@
 
 [App Service アプリ](https://azure.microsoft.com/services/app-service/web/)は Azure Storage に BLOB としてバックアップできます。バックアップには、アプリのデータベースを含めることもできます。アプリが誤って削除された場合、あるいは以前のバージョンに戻す必要がある場合、前のバックアップから復元できます。バックアップは必要に応じていつでも実行できます。あるいは、適切な間隔でバックアップのスケジュールを作成できます。
 
-この記事では、RESTful API 要求を使用してアプリのバックアップおよび復元を実行する方法について説明します。Azure ポータルでアプリのバックアップを視覚的に作成し、管理する場合は、「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
+この記事では、RESTful API 要求を使用してアプリのバックアップと復元を実行する方法について説明します。Azure ポータルでアプリのバックアップを視覚的に作成し、管理する場合は、「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
 
 <a name="gettingstarted"></a>
 ## Getting Started (概要)
@@ -33,7 +33,7 @@ REST 要求を送信するには、アプリの**名前**、**リソース グ�
 
 <a name="backup-restore-rest-api"></a>
 ## REST API のバックアップと復元
-REST API を利用してアプリをバックアップし、復元する方法の例をこれからいくつか取り上げます。それぞれの例に、URL と HTTP の要求本文が含まれます。サンプル URL には、{subscription-id} のように、中かっこで閉じられたプレースホルダーが含まれます。このプレースホルダーをアプリの情報に置き換えます。参照のために、サンプル URL の各プレースホルダーの説明を記載します。
+REST API を利用してアプリをバックアップし、復元する方法の例をこれからいくつか取り上げます。それぞれの例に、URL と HTTP の要求本文が含まれます。サンプル URL には、{subscription-id} のように、中かっこで閉じられたプレースホルダーが含まれます。このプレースホルダーをアプリの対応する情報に置き換えます。参照のために、サンプル URL の各プレースホルダーの説明を記載します。
 
 * subscription-id – アプリを含む Azure サブスクリプションの ID
 * resource-group-name – アプリを含むリソース グループの名前
@@ -48,7 +48,7 @@ HTTP 要求に追加できる任意のパラメーターを含む、API の完�
 
 Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
 
-バックアップの保存に使用するストレージ アカウントを指定するには、要求の本文に JSON オブジェクトを指定する必要があります。JSON オブジェクトには、「**storageAccountUrl**」という名前のプロパティを含める必要があります。このプロパティには [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) があり、バックアップ BLOB を保持する Azure Storage コンテナーに書き込み許可を与えます。データベースをバックアップする場合、バックアップするデータベースの名前、種類、接続文字列を含む一覧を提供する必要もあります。
+バックアップの保存に使用するストレージ アカウントを指定するには、要求の本文で JSON オブジェクトを指定します。JSON オブジェクトには、"**storageAccountUrl**" という名前のプロパティを含める必要があります。このプロパティには [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) があり、バックアップ BLOB を保持する Azure Storage コンテナーに書き込み許可を与えます。データベースをバックアップする場合、バックアップするデータベースの名前、種類、接続文字列を含む一覧を提供する必要もあります。
 
 ```
 {
@@ -66,7 +66,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-要求が受信されると、すぐにアプリのバックアップが開始されます。バックアップ プロセスの完了には時間がかかる場合があります。HTTP 応答には ID が含まれます。この ID を別の要求で利用し、バックアップの状態を確認できます。次に、バックアップ要求に対する HTTP 応答の本文の例を示します。
+要求が受信されると、すぐにアプリのバックアップが開始されます。バックアップ プロセスの完了には時間がかかる場合があります。HTTP 応答には ID が含まれます。この ID を別の要求で利用して、バックアップの状態を確認できます。次に、バックアップ要求に対する HTTP 応答の本文の例を示します。
 
 ```
 {
@@ -107,7 +107,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 
 Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup**
 
-要求本文には、バックアップ構成を指定する JSON オブジェクトを含める必要があります。次の例にはすべての必須パラメーターが含まれています。
+要求本文には、バックアップ構成を指定する JSON オブジェクトを含める必要があります。すべての必須パラメーターが含まれている例を次に示します。
 
 ```
 {
@@ -127,7 +127,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-この例では、7 日ごとに自動的にバックアップするようにアプリが設定されます。パラメーターの **frequencyInterval** と **frequencyUnit** の両方によりバックアップの頻度が決定されます。**frequencyUnit** の有効な値は **hour** と **day** です。たとえば、12 時間ごとにアプリをバックアップするには、frequencyInterval を「12」に設定し、frequencyUnit を「hour」に設定します。
+この例では、7 日ごとに自動的にバックアップするようにアプリを設定します。パラメーターの **frequencyInterval** と **frequencyUnit** の両方によりバックアップの頻度が決定されます。**frequencyUnit** の有効な値は **hour** と **day** です。たとえば、12 時間ごとにアプリをバックアップするには、frequencyInterval を「12」に設定し、frequencyUnit を「hour」に設定します。
 
 古いバックアップはストレージ アカウントから自動的に削除されます。**retentionPeriodInDays** パラメーターでバックアップの保存期間を指定できます。保存期間に関係なく、常に少なくとも 1 つのバックアップを保存する場合、**keepAtLeastOneBackup** を「true」に設定します。
 
@@ -229,9 +229,9 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE] セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信し、空の JSON オブジェクトを要求本文に追加します。サーバーからの応答に、SAS URL を含む、そのバックアップのすべての情報が含まれます。
+>[AZURE.NOTE] セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信します。空の JSON オブジェクトを要求本文に追加します。サーバーからの応答には、SAS URL を含む、そのバックアップのすべての情報が含まれます。
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/03/2016"
 	ms.author="asteen"/>
 
 # Password Management を組織のニーズに合わせてカスタマイズする
@@ -851,7 +851,7 @@
                   <li class="unordered">
 												[はい] を設定した場合、ユーザーまたは管理者は、自分のパスワードをリセットするたびに、パスワードがリセットされたことを示す通知を受信します。<br><br></li>
                   <li class="unordered">
-												この通知は、パスワードをリセットしたユーザーのプライマリと連絡用 (または認証用) のメール アドレスにメールで送信されます。<br><br></li>
+												この通知は、パスワードをリセットしたユーザーのユーザー プリンシパル名と連絡用 (または認証用) のメール アドレスにメールで送信されます。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -875,4 +875,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

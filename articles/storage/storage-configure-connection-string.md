@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/08/2016"
+	ms.date="08/03/2016"
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
 
-## 概要
+## Overview
 
 アプリケーションから実行時に Azure ストレージ アカウント内のデータにアクセスするために必要な認証情報は、接続文字列に指定します。接続文字列は、次の目的に構成できます。
 
@@ -163,4 +163,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 - [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 - [Azure ストレージ エクスプローラー](storage-explorers.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

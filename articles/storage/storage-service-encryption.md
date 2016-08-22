@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 # Azure Storage Service Encryption for Data at Rest (プレビュー)
@@ -229,4 +229,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

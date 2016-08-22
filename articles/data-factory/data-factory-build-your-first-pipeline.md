@@ -66,7 +66,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 1.	**Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。無料試用版アカウントの取得方法については、「[無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
-2.	**Azure Storage** – このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+2.	**Azure Storage** – このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
 ## チュートリアル用に Azure Storage にファイルをアップロードする
 チュートリアルを開始する前に、チュートリアルに必要なファイルで Azure Storage を準備する必要があります。
@@ -227,4 +227,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

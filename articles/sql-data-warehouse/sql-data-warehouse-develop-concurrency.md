@@ -291,7 +291,7 @@ Removed as these two are not confirmed / supported under SQLDW
 	GRANT CONTROL ON DATABASE::MySQLDW to newperson;
 	```
 
-4. **リソース クラスのサイズを大きくする:** 増加ワークロード管理ロールにユーザーを追加するには、次のクエリを使用します。
+4. **リソース クラスのサイズを大きくする:** ワークロードの高い管理ロールにユーザーを追加するには、次のクエリを使用します。
 
 	```sql
 	EXEC sp_addrolemember 'largerc', 'newperson'
@@ -428,4 +428,4 @@ FROM	sys.dm_pdw_wait_stats w;
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

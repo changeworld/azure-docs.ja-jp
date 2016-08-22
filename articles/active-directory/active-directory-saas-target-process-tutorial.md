@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="prasannas"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/05/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 TargetProcess と Azure AD の統合には、次の利点があります。
 
-- TargetProcess にアクセスするユーザーを Azure AD で管理できます。 
+- TargetProcess にアクセスするユーザーを Azure AD で管理できます。
 - ユーザーが各自の Azure AD アカウントで TargetProcess に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
@@ -43,7 +43,7 @@ Azure AD と TargetProcess の統合を構成するには、次のものが必�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
@@ -51,7 +51,7 @@ Azure AD と TargetProcess の統合を構成するには、次のものが必�
 
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーから TargetProcess を追加する 
+1. ギャラリーから TargetProcess を追加する
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -60,7 +60,7 @@ Azure AD への TargetProcess の統合を構成するには、ギャラリー�
 
 **ギャラリーから TargetProcess を追加するには、次の手順を実行します。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -124,7 +124,7 @@ TargetProcess のシングル サインオンを構成するには、登録済�
 	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_03.png)
 
 
-    a.**[サインオン URL]** ボックスに、ユーザーが TargetProcess アプリケーションへのサインオンに使用する URL を入力します (例: **https://fabrikam.TargetProcess.com/*))。
+    a.**[サインオン URL]** ボックスに、ユーザーが TargetProcess アプリケーションへのサインオンに使用する URL を入力します (例: *https://fabrikam.TargetProcess.com/*)。
 
     b.**[次へ]** をクリックします。
  
@@ -238,7 +238,7 @@ TargetProcess のシングル サインオンを構成するには、登録済�
 
 このセクションの目的は、TargetProcess で Britta Simon というユーザーを作成することです。TargetProcess では、Just-In-Time プロビジョニングがサポートされています。この機能は、「[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」で既に有効にしています。
 
-このセクションでは必要な操作はありません。
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
 
@@ -302,4 +302,4 @@ TargetProcess のシングル サインオンを構成するには、登録済�
 [204]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/05/2016"
 	ms.author="jeedes"/>
 
 
@@ -23,7 +23,7 @@
 
 Namely と Azure AD の統合には、次の利点があります。
 
-- Namely にアクセスするユーザーを Azure AD で管理できます。 
+- Namely にアクセスするユーザーを Azure AD で管理できます。
 - ユーザーが各自の Azure AD アカウントで Namely に自動的にサインオン (シングル サインオン) するように、設定が可能です。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -43,7 +43,7 @@ Azure AD と Namely の統合を構成するには、次のものが必要です
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
@@ -51,7 +51,7 @@ Azure AD と Namely の統合を構成するには、次のものが必要です
 
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーから Namely を追加する 
+1. ギャラリーから Namely を追加する
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -60,7 +60,7 @@ Azure AD への Namely の統合を構成するには、ギャラリーから管
 
 **ギャラリーから Namely を追加するには、次の手順を実行します。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -122,7 +122,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 	![Configure Single Sign-On](./media/active-directory-saas-namely-tutorial/tutorial_namely_04.png)
 
-    a.**[サインオン URL]** ボックスに、ユーザーが Namely アプリケーションへのサインオンに使用する URL (例: **https://fabrikam.Namely.com/*)) を入力します。
+    a.**[サインオン URL]** ボックスに、ユーザーが Namely アプリケーションへのサインオンに使用する URL (例: *https://fabrikam.Namely.com/*) を入力します。
 
     b.**[次へ]** をクリックします。
  
@@ -248,7 +248,7 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[ディレクトリ]** タブをクリックします。
 
-![シングル サインオンの構成](./media/active-directory-saas-namely-tutorial/tutorial_namely_11.png)
+![Configure Single Sign-On](./media/active-directory-saas-namely-tutorial/tutorial_namely_11.png)
 
 1. **[Add New Person]** をクリックします。
 
@@ -327,4 +327,4 @@ Namely で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-namely-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-namely-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

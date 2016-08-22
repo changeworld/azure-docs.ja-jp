@@ -3,8 +3,8 @@
 	description="バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor=""
 	keywords="バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"/>
 
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="08/10/2016"
 	ms.author="jimpark; trinadhk; markgal"/>
 
-# Resource Manager デプロイメント モデルで Azure Backup を使用して Windows Server または Windows クライアントを Azure にバックアップする
+# Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](backup-configure-vault.md)
@@ -25,9 +25,10 @@
 
 この記事では、Resource Manager デプロイメント モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
 
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+
 ![バックアップ プロセスの手順](./media/backup-configure-vault/initial-backup-process.png)
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
 
 ## 開始する前に
 サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
@@ -225,4 +226,4 @@ VM や他のワークロードのバックアップの詳細については、�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

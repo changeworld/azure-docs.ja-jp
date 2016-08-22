@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
@@ -185,4 +185,4 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 これを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

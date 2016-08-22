@@ -3,8 +3,8 @@
 	description="バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
-	manager="jwhit"
+	authors="markgalioto"
+	manager="cfreeman"
 	editor=""
 	keywords="バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/08/2016"
 	ms.author="jimpark; trinadhk; markgal"/>
 
 
@@ -28,7 +28,7 @@
 
 ![コンテナーの作成](./media/backup-configure-vault-classic/initial-backup-process.png)
 
->[AZURE.IMPORTANT] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、クラシック デプロイ モデルの使用方法について説明します。最新のデプロイでは、Resource Manager モデルを使用することをお勧めします。
+>[AZURE.IMPORTANT] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、クラシック デプロイ モデルの使用方法について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## 開始する前に
 サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
@@ -195,7 +195,7 @@ Backup エージェントは、ネットワーク調整を提供します。調�
 
 2. **[スロットル]** タブで、**[バックアップ操作用のインターネット使用帯域幅のスロットルを有効にする]** チェック ボックスをオンにします。
 
-    ![Network throttling](./media/backup-configure-vault-classic/throttling-dialog.png)
+    ![ネットワークのスロットル](./media/backup-configure-vault-classic/throttling-dialog.png)
 
 3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
 
@@ -226,4 +226,4 @@ VM や他のワークロードのバックアップの詳細については、�
 - [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
 - [DPM を使用して Azure へのワークロードをバックアップするための準備](backup-azure-dpm-introduction.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

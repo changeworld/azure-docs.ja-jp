@@ -1,3 +1,4 @@
+
 <properties
    pageTitle="Azure CLI を使用した完全な Linux 環境の作成 | Microsoft Azure"
    description="Azure CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。"
@@ -1275,4 +1276,4 @@ azure group deployment create -f TestRG.json -g NewRGFromTemplate
 
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

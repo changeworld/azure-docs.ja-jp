@@ -27,9 +27,9 @@
 >[AZURE.NOTE] 次の Azure Resource Manager テンプレートを、ダウンロードしてデプロイすることができます。
 >
 >-    [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
->-    [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
 >-    [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 >-    [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
+>-    [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
 >
 >最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
@@ -39,7 +39,7 @@
 
 [Service Bus キュー](service-bus-queues-topics-subscriptions.md#queues)では、コンシューマーが競合している場合のメッセージ配信に先入先出法 (FIFO) を使用します。
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
@@ -145,4 +145,4 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

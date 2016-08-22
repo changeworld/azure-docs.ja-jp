@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 
 # Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 
-##概要
+##Overview
 
 Azure Active Directory (Azure AD) と Active Directory Federation Services (AD FS) とのフェデレーションが正常に機能するためには、AD FS が Azure AD に提示するセキュリティ トークンに署名するときに使う証明書が、Azure AD 側の構成内容と一致している必要があります。完全に一致していないと、信頼関係が失われる可能性があります。証明書の情報は、AD FS と (エクストラネット アクセスに使用される) Web アプリケーション プロキシをデプロイするときに Azure AD によって同期されます。
 
@@ -84,9 +84,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 | AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクション |
 |:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|:-----------------------:|
-| はい | はい | はい | - | 対処不要。「[トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。|
-| はい | いいえ | - | 15 日未満 | 直ちに更新する。「[トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。|
-| いいえ | - | - | 30 日未満 | 直ちに更新する。「[トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。|
+| はい | はい | はい | - | 対処不要。「[トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。| | はい | いいえ | - | 15 日未満 | 直ちに更新する。「[トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。| | いいえ | - | - | 30 日未満 | 直ちに更新する。「[トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。|
 
 [-] 該当せず
 
@@ -163,4 +161,4 @@ Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成�
 
 詳細については、「[信頼の修復](./active-directory-aadconnect-federation-management.md#repairing-the-trust)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

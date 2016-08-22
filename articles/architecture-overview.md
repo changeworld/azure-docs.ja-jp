@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft Azure のアプリケーションのアーキテクチャ" 
+	pageTitle="Microsoft Azure のアプリケーション アーキテクチャ | Microsoft Azure" 
 	description="一般的な設計パターンを対象とするアーキテクチャの概要" 
 	services="" 
 	documentationCenter="" 
@@ -38,9 +38,9 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 
 各ブループリントには、以下が含まれています。
 
-- ダウンロードして変更できるフラットな **2D の Visio** 2003 ベースのファイル 
+- ダウンロードして変更できるフラットな **2D の Visio** 2003 ベースのファイル
 - あまり技術に詳しくないユーザーに対してブループリントを紹介する、色鮮やかな **奥行のある 3D PDF** ファイル
-- 3D バージョンを紹介する**ビデオ** 
+- 3D バージョンを紹介する**ビデオ**
 
 ブループリントには、[クラウドおよびエンタープライズ用シンボル セット](#symbol-and-icon-sets)が使用されています。
 
@@ -54,9 +54,9 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 
 テンプレートは、このコース以外でも利用もできます。
 
-- 最初に機能を確認するために、[トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo)する   
+- 最初に機能を確認するために、[トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo)する
 - [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)をダウンロードする
-- 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](#drawing-symbol-and-icon-sets)をダウンロードする 
+- 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](#drawing-symbol-and-icon-sets)をダウンロードする
 
 トレーニング資料で解決できない具体的な質問や、フィードバックの提供については、[CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com) まで電子メールでご連絡ください。使いやすさは、テンプレートの主な目標の 1 つです。よかった点や問題点についてお知らせください。
 
@@ -85,4 +85,4 @@ Microsoft は、ポスター/インフォグラフィックに関連するいく
 
 ![Azure Architecture Infographics](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

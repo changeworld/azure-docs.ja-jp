@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/05/2016"
 	ms.author="jeedes"/>
 
 
 # チュートリアル: Azure Active Directory と Condeco の統合
 
-このチュートリアルの目的は、Condeco と Azure Active Directory (Azure AD) を統合する方法を示すことです。<br>Condeco と Azure AD の統合には、次の利点があります。
+このチュートリアルの目的は、Condeco と Azure Active Directory (Azure AD) を統合する方法を説明することです。Condeco と Azure AD の統合には、次の利点があります。
 
 - Condeco にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Condeco にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。 
+- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
 - 
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -46,7 +46,7 @@ Condeco と Azure AD の統合を構成するには、次のものが必要で�
 
 
 ## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。<br>このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Condeco の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -57,21 +57,37 @@ Azure AD への Condeco の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Condeco を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。<br><br>![Active Directory][1]<br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br><br> ![アプリケーション][2]<br>
-4. ページの下部にある **[追加]** をクリックします。<br><br> ![アプリケーション][3]<br>
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。<br><br> ![アプリケーション][4]<br>
-6. 検索ボックスに、「**Condeco**」と入力します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_01.png)<br>
-7. 結果ウィンドウで **[Condeco]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_02.png)<br>
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
+
+6. 検索ボックスに、「**Condeco**」と入力します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_01.png)
+
+7. 結果ウィンドウで **[Condeco]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_02.png)
 
 
 ##  Azure AD シングル サインオンの構成とテスト
 このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Condeco で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Condeco ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Condeco の関連ユーザーの間で、リンク関係が確立されている必要があります。<br> このリンク関係は、Azure AD の **[ユーザー名]** の値を、Condeco の **[Username]** の値として割り当てることで確立されます。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Condeco ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Condeco の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Condeco の **[Username]** の値として割り当てることで確立されます。
 
 Condeco で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -89,11 +105,17 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
 **Condeco で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **Condeco** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。<br><br> ![Configure Single Sign-On][6] <br>
+1. Azure クラシック ポータルの **Condeco** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-2. **[ユーザーの Condeco へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。<br><br>![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_03.png)<br>
+	![Configure Single Sign-On][6]
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。<br><br>![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_04.png) <br>
+2. **[ユーザーの Condeco へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+ 
+	![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_03.png)
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+
+	![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_04.png)
 
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Condeco アプリケーションへのサインオンに使用する URL を入力します。**“https://companyname.condecosoftware.com”**
@@ -101,7 +123,9 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
     b.**[次へ]** をクリックします。
 
 
-4. **[Condeco でのシングル サインオンの構成]** ページで、次の手順を実行します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_05.png)<br>
+4. **[Condeco でのシングル サインオンの構成]** ページで、次の手順を実行します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_05.png)
 
     a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -111,27 +135,41 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、Condesco のサポート チーム (supportna@condecosoftware.com) に問い合わせます。
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。 <br><br>![Azure AD Single Sign-On][10]<br>
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。<br><br>![Azure AD Single Sign-On][11]
+	![Azure AD Single Sign-On][10]
+
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+  
+	![Azure AD Single Sign-On][11]
 
 
 
 
 ### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。<br> ユーザーの一覧で **[Britta Simon]** を選択します。<br><br>![Azure AD ユーザーの作成][20]<br>
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][20]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 <br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_09.png) <br>
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_09.png)
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_03.png) <br>
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_04.png) <br>
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_03.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_05.png) <br>
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_04.png)
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_05.png)
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
@@ -139,7 +177,9 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_06.png) <br>
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_06.png)
 
     a.**[名]** ボックスに「**Britta**」と入力します。
 
@@ -151,9 +191,13 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
     e.**[次へ]** をクリックします。
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。<br><br> ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_07.png) <br>
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。<br><br>![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_08.png) <br>
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_07.png)
+
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-condeco-tutorial/create_aaduser_08.png)
 
     a.**[新しいパスワード]** の値を書き留めます。
 
@@ -172,25 +216,35 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 
 ### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Condeco へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。<br><br>![ユーザーの割り当て][200] <br>
+このセクションの目的は、Britta Simon に Condeco へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+![ユーザーの割り当て][200]
 
 **Condeco に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。<br> <br>![ユーザーの割り当て][201]<br>
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-2. アプリケーションの一覧で **[Condeco]** を選択します。<br><br>![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_50.png)<br>
+	![ユーザーの割り当て][201]
 
-1. 上部のメニューで **[ユーザー]** をクリックします。<br><br>![ユーザーの割り当て][203] <br>
+2. アプリケーションの一覧で **[Condeco]** を選択します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-condeco-tutorial/tutorial_condeco_50.png)
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. 下部にあるツール バーで **[割り当て]** をクリックします。<br><br>![ユーザーの割り当て][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
 
 
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。<br> アクセス パネルで [Condeco] タイルをクリックすると、自動的に Condeco アプリケーションにサインオンします。
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [Condeco] タイルをクリックすると、自動的に Condeco アプリケーションにサインオンします。
 
 
 ## その他のリソース
@@ -217,4 +271,4 @@ Condeco で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-condeco-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-condeco-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

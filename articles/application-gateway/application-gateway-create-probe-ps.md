@@ -3,7 +3,7 @@
    description="リソース マネージャーで PowerShell を使用して、Application Gateway のカスタム プローブを作成する方法の説明"
    services="application-gateway"
    documentationCenter="na"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -14,10 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/07/2016"
-   ms.author="joaoma" />
+   ms.date="08/09/2016"
+   ms.author="gwallace" />
 
 # Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
+
+> [AZURE.SELECTOR]
+- [Azure ポータル](application-gateway-create-probe-portal.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
+
+<BR>
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
@@ -28,7 +35,7 @@
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 
-### 手順 1.
+### 手順 1
 
 Login-AzureRmAccount を使用して認証を行います。
 
@@ -40,7 +47,7 @@ Login-AzureRmAccount を使用して認証を行います。
 
 		get-AzureRmSubscription
 
-資格情報を使用して認証を行うよう求められます。<BR>
+資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
 
 ### 手順 3.
 
@@ -56,15 +63,15 @@ Login-AzureRmAccount を使用して認証を行います。
 
     New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。Application Gateway を作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
+Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
-上記の例では、"appgw-RG" という名前のリソース グループと "米国西部" という名前の場所を作成しました。
+上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
 ## アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
 次の手順では、アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
-### 手順 1.
+### 手順 1
 
 
 アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。
@@ -97,9 +104,9 @@ Application Gateway を作成する次の手順のために、サブネット変
 アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
 
-### 手順 1.
+### 手順 1
 
-"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスは、1 つの IP アドレスを取得することに注意してください。
+"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
@@ -107,7 +114,7 @@ Application Gateway を作成する次の手順のために、サブネット変
 ### 手順 2.
 
 
-この手順は、IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスとなります。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
+この手順は、IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用して、"pool01" という名前のバックエンド IP アドレス プールを構成します。これらは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
 
 	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
@@ -121,8 +128,8 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 - **-Interval** - プローブのチェック間隔を秒単位で指定します。
 - **-Timeout** - プローブの HTTP 応答チェックのタイムアウト期間を定義します。
-- **-Hostname と -path** - インスタンスの状態を判断するために Application Gateway により呼び出される完全な URL パス。たとえば、"http://contoso.com/" という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
-- **-UnhealthyThreshold** - バックエンド インスタンスを*異常*とフラグするために必要な HTTP 応答の失敗数。
+- **-Hostname と -path** - インスタンスの状態を判断するために Application Gateway により呼び出される完全な URL パス。たとえば、http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするためには、カスタム プローブを "http://contoso.com/path/custompath.htm" に対して構成します。
+- **UnhealthyThreshold** - バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。
 
 <BR>
 
@@ -180,7 +187,7 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 既存のアプリケーション ゲートウェイにカスタム プローブを追加するには、次の 4 つの手順を実行します。
 
-### 手順 1.
+### 手順 1
 
 **Get-AzureRmApplicationGateway** を使用して、PowerShell 変数にアプリケーション ゲートウェイのリソースを読み込みます。
 
@@ -197,7 +204,7 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 ### 手順 3.
 
-**-Set-AzureRmApplicationGatewayBackendHttpSettings** を使用して、バックエンド プール設定の構成とタイムアウトにプローブを追加します。
+**-Set-AzureRmApplicationGatewayBackendHttpSettings** を使用して、バックエンド プール設定の構成にプローブとタイムアウトを追加します。
 
 
 	 $getgw = Set-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw -Name $getgw.BackendHttpSettingsCollection.name -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 120
@@ -212,7 +219,7 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 既存のアプリケーション ゲートウェイからカスタム プローブを削除する手順を次に示します。
 
-### 手順 1.
+### 手順 1
 
 **Get-AzureRmApplicationGateway** を使用して、PowerShell 変数にアプリケーション ゲートウェイのリソースを読み込みます。
 
@@ -238,4 +245,4 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 	Set-AzureRmApplicationGateway -ApplicationGateway $getgw -verbose
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

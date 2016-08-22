@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/22/2016"
+	ms.date="08/09/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C: FAQ
@@ -58,7 +58,22 @@ Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機�
 
 ### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
 
-検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用します。"From:" フィールドは、サポートを通じて変更できます。
+検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用します。具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
+
+- **バナー ロゴ**: 右下に表示されます。
+- **背景色**: 上部に表示されます。
+
+	![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+
+電子メールの署名には、最初に B2C テナントを作成したときに指定した B2C テナントの名前が含まれます。名前は次の手順を使用して変更できます。
+
+- サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+- B2C テナントに移動します。
+- **[構成]** タブをクリックします。
+- **[ディレクトリのプロパティ]** セクションの **[名前]** フィールドを変更します。
+- ページの下部にある **[保存]** をクリックします。
+
+現在、電子メールの送信元フィールドを変更する方法はありません。この機能や検証電子メールの本文全体をカスタマイズすることに興味がある場合は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) でその機能に投票してください。
 
 ### 既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
@@ -78,7 +93,7 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 ### Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
 
-現時点では変更できません。Azure AD B2C では、ポータルおよび E コマース アプリケーションがオンプレミスの SharePoint のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。
+現時点では連携しません。Azure AD B2C では、ポータルおよび E コマース アプリケーションがオンプレミスの SharePoint のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。
 
 ### 外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
 
@@ -94,7 +109,7 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 
 ### Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
 
-現時点では変更できません。この機能は検討中です。また、Azure クラシック ポータルからテナントの **[ドメイン]** タブでドメインを検証しても、変更は行われません。
+現時点では連携しません。この機能は検討中です。また、Azure クラシック ポータルからテナントの **[ドメイン]** タブでドメインを検証しても、変更は行われません。
 
 ### Azure AD B2C テナントを削除する方法はありますか。
 
@@ -108,7 +123,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 - 各ユーザーを順に選択します。ただし、現在サインインに使用しているユーザー (つまりサブスクリプション管理者) は除きます。ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
 - **[アプリケーション]** タブをクリックします。
 - **[表示]** ドロップダウン フィールドで **[自分の会社が所有するアプリケーション]** を選択し、チェック マークをクリックします。
-- 以下に示すように **b2c-extensions-app** というアプリケーションが表示されます。ページ下部の **[削除]** をクリックし、確認プロンプトで **[はい]** をクリックします。
+- 以下に示すように **b2c-extensions-app** というアプリケーションが表示されます。ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
 - Active Directory 拡張機能にもう一度移動し、B2C テナントをクリックします。
 - ページの下部にある **[削除]** をクリックします。画面に表示される指示に従って、処理を完了します。
 
@@ -124,4 +139,4 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 
 現在の[サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

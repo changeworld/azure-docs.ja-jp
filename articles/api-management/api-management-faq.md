@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management の FAQ
@@ -150,4 +150,4 @@ API Management では[パフォーマンス トラフィック ルーティン�
 
 GIT Credential Manager を使用しているか、Visual Studio でリポジトリを複製しようとしている場合、Windows の資格情報ダイアログで、パスワードの文字数が 127 文字に制限され、生成したパスワードが切り詰められるという既知の問題が発生する場合があります。現在、パスワードの短縮を進めています。現時点では、複製には GIT Bash をお使いください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

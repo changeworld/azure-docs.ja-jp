@@ -115,8 +115,7 @@ App Service では、次の情報をバックアップできます。
 
 今後まったく変更されることがない過去のログ ファイルや静止画像を含むアプリがあるとします。古い画像を含むアプリの完全バックアップは既に存在します。今後、アプリのバックアップを毎日実行しますが、変更されることがないログ ファイルや静止イメージ ファイルはバックアップしないようにするとします。
 
-![Logs フォルダー][LogsFolder]
-![images フォルダー][ImagesFolder]
+![Logs フォルダー][LogsFolder] ![images フォルダー][ImagesFolder]
 	
 次の手順は、これらのファイルをバックアップから除外する方法を示しています。
 
@@ -177,4 +176,4 @@ App Service では、次の情報をバックアップできます。
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

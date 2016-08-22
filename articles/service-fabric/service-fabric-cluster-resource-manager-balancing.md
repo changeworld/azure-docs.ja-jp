@@ -82,6 +82,8 @@ ClusterManifest.xml
     </Section>
 ```
 
+分散しきい値とアクティビティしきい値はメトリックに関連付けられています。分散処理は、分散とアクティビティしきい値の両方が同じメトリックを超えた場合にのみトリガーされることに注意してください。分散しきい値がメモリーしきい値を超え、アクティビティしきい値が CPU しきい値を超えても、残りのしきい値 (CPU しきい値に対する分散しきい値およびメモリーしきい値に対するアクティビティしきい値) が超過しない限り、分散処理はトリガーされません。
+
 ## 同時にサービスの均衡をとる
 クラスターが不均衡かどうかということは、クラスター全体で判断しますが、それを修正するには、個々のサービス レプリカとインスタンスを移動させる必要があるというを念頭に置く必要があります。ご理解いただけましたでしょうか。 メモリーが 1 つのノードに集中している場合、複数のレプリカやインスタンスが原因である可能性があるため、影響している均衡を崩しているメトリックを使用するすべてのレプリカまたはインスタンスを移動する必要がある場合があります。
 
@@ -109,4 +111,4 @@ ClusterManifest.xml
 [Image4]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
 [Image5]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

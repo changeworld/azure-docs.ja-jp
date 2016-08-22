@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	ms.author="robinsh"/>
 
 
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [storage-selector-portal-e2e-troubleshooting](../../includes/storage-selector-portal-e2e-troubleshooting.md)]
 
-## 概要
+## Overview
 
 診断とトラブルシューティングは、Microsoft Azure Storage を使用してクライアント アプリケーションを構築し、サポートするうえでの重要なスキルです。Azure アプリケーションの分散型の性質により、エラーやパフォーマンスの問題に対する診断とトラブルシューティングは、従来の環境で実施するよりも複雑になる場合があります。
 
@@ -145,14 +145,14 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 1. [Fiddler](http://www.telerik.com/download/fiddler) をインストールします。
 2. Fiddler を起動します。
-2. **[Tools]、[Fiddler Options]** の順に選択します。
+2. **[ツール] を選択します。| Fiddler Options**.
 3. Options ダイアログで、以下に示すように **[Capture HTTPS CONNECTs]** と **[Decrypt HTTPS Traffic]** が両方とも選択されている状態にします。
 
 ![Fiddler オプションの構成](./media/storage-e2e-troubleshooting/fiddler-options-1.png)
 
 このチュートリアルでは、まず Message Analyzer でネットワーク トレースを収集して保存し、次に分析セッションを作成してトレースとログを分析します。Message Analyzer でネットワーク トレースを収集するには:
 
-1. Message Analyzer で、**[File]、[Quick Trace]、[Unencrypted HTTPS]** の順に選択します。
+1. Message Analyzer で **[ファイル] を選択します。| Quick Trace | Unencrypted HTTPS**.
 2. すぐにトレースが開始します。**[Stop]** を選択してトレースを停止します。これで、ストレージ トラフィックのみをトレースするように構成することができます。
 3. **[Edit]** を選択してトレース セッションを編集します。
 4. **Microsoft-Pef-WebProxy** ETW プロバイダーの右側にある **[Configure]** リンクを選択します。
@@ -187,7 +187,7 @@ AzCopy コマンドライン ツールを使用して、これらのサーバー
 
 	AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
 
-AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
+AzCopy は、[Azure ダウンロード](https://azure.microsoft.com/downloads/)のページからダウンロードできます。AzCopy の使用方法の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 
 サーバー側のログのダウンロードの詳細については、「[ストレージ ログのログ データのダウンロード](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」をご覧ください。
 
@@ -340,9 +340,9 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 |------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
 | キューのメッセージ配信での予期しない遅延 | AzureStorageClientDotNetV4.Description に "失敗した操作の再試行" が含まれている。 | クライアント |
-| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 &#124;&#124; HTTP.Response.StatusCode == 503 | ネットワーク |
+| HTTP の PercentThrottlingError の増加 | HTTP.Response.StatusCode == 500 || HTTP.Response.StatusCode == 503 | ネットワーク |
 | PercentTimeoutError の増加 | HTTP.Response.StatusCode == 500 | ネットワーク |
-| PercentTimeoutError の増加 (すべて) |    **StatusCode == 500 | すべて |
+| PercentTimeoutError の増加 (すべて) | *StatusCode == 500 | すべて |
 | PercentNetworkError の増加 | AzureStorageClientDotNetV4.EventLogEntry.Level < 2 | クライアント |
 | HTTP 403 (Forbidden) メッセージ | HTTP.Response.StatusCode == 403 | ネットワーク |
 | HTTP 404 (Not found) メッセージ | HTTP.Response.StatusCode == 404 | ネットワーク |
@@ -350,10 +350,11 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 | Shared Access Signature (SAS) 認証の問題 | AzureStorageLog.RequestStatus == "SASAuthorizationError" | ネットワーク |
 | HTTP 409 (Conflict) メッセージ | HTTP.Response.StatusCode == 409 | ネットワーク |
 | 409 (すべて) | *StatusCode == 409 | すべて |
-| PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
+| PercentSuccess が低いか、分析ログ エントリにトランザクションの状態が ClientOtherErrors の操作がある | AzureStorageLog.RequestStatus == "ClientOtherError" | サーバー |
 | Nagle 警告 | ((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) and (AzureStorageLog.RequestPacketSize <1460) and (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) | サーバー |
-| サーバーとネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
+| サーバーおよびネットワーク ログの時間範囲 | #Timestamp >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 | サーバー、ネットワーク |
 | サーバー ログの時間範囲 | AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 and AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 | サーバー |
+
 
 ## 次のステップ
 
@@ -365,4 +366,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

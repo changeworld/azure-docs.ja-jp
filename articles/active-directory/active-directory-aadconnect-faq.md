@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Azure AD Connect の FAQ
@@ -25,6 +25,10 @@
 
 **Q: ドメインに接続できないフォレストがあります。Azure AD Connect をインストールにはどうすればよいですか。** 2016 年 2 月以降のビルドでは、これがサポートされています。
 
+**Q: AD DS の正常性エージェントはサーバー コアで稼働しますか。** はい。エージェントをインストールした後、次の PowerShell コマンドレットを使用して登録プロセスを実行できます。
+
+`Register-AzureADConnectHealthADDSAgent -Credentials $cred`
+
 ## ネットワーク
 **Q: ファイアウォールやネットワーク デバイスなど、ネットワーク上で接続を開ける最大時間を制限するものがあります。Azure AD Connect を使用する場合、クライアント側のタイムアウトしきい値はどのくらいにすればいいでしょうか。** すべてのネットワーク ソフトウェアや物理デバイスなど、接続を開ける最大時間を制限するものは、Azure AD Connect クライアントがインストールされているサーバーと Azure Active Directory 間の接続に対して少なくとも 5 分 (300 秒) のしきい値を使用する必要があります。これは、以前リリースされたすべての Microsoft Identity 同期ツールにも適用されます。
 
@@ -33,9 +37,9 @@
 **Q: 「ドット形式」の NetBios 名はサポートされていますか。** いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
 
 ## フェデレーション
-**Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**「[Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md)」に記載されているガイダンスに従って、証明書を更新してください。
+**Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。** [証明書の更新](active-directory-aadconnect-o365-certs.md)に関する記事に記載されているガイダンスに従って、証明書を更新してください。
 
-**Q: O365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。** 「[Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md)」に記載されているガイダンスに従ってください。
+**Q: O365 証明書利用者の "証明書利用者の自動更新" を設定しました。トークン署名証明書が自動的にロールオーバーされるときに、何か必要な操作はありますか。** [証明書の更新](active-directory-aadconnect-o365-certs.md)に関する記事に記載されているガイダンスに従ってください。
 
 ## 環境
 **Q: Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。** いいえ。サーバー名を変更すると、同期エンジンが SQL データベースに接続できなくなり、サービスを開始できなくなります。
@@ -46,7 +50,7 @@
 - [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない ](https://support.microsoft.com/ja-JP/kb/2523192)
 - [オンプレミス ユーザー アカウントの UPN を SSO が有効な異なるドメイン サフィックスに更新した後、Azure Active Directory に変更が同期されない](https://support.microsoft.com/ja-JP/kb/2669550)
 
-また、「[Azure AD Connect sync service features (Azure AD Connect 同期サービス機能)](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
+また、「[Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
 
 ## カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。** このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
@@ -68,4 +72,4 @@
 
 - このリンクを使用して、Azure ポータルからサポートを受けることができます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

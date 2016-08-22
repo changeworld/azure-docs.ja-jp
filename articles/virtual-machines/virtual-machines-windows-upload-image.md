@@ -103,7 +103,7 @@ Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://
 
 2. リソース グループを作成するには、次のコマンドを使用します。
 
-		New-AzureRmResourceGroup -Name <resourceGroupName> -Location "West US"
+		New-AzureRmResourceGroup -Name <resourceGroupName> -Location <location>
 
 3. [New-AzureStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) コマンドレットを使用して、このリソース グループのストレージ アカウントを作成します。
 
@@ -170,7 +170,7 @@ Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://
 2. **$vnetName** の値を、仮想ネットワークの名前に置き換えます。CIDR 形式で仮想ネットワークのアドレス プレフィックスを指定します。サブネットで変数と仮想ネットワークを作成します。
 
         $vnetName = "<vnetName>"
-        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix <0.0.0.0/0> -Subnet $singleSubnet
+        $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix <0.0.0.0/0> -Subnet $singleSubnet
         
             
 ## パブリック IP アドレスとネットワーク インターフェイスの作成
@@ -180,12 +180,12 @@ Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://
 1. **$ipName** の値を、パブリック IP アドレスの名前に置き換えます。変数とパブリック IP アドレスを作成します。
 
         $ipName = "<ipName>"
-        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
+        $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location -AllocationMethod Dynamic
         
 2. **$nicName** の値を、ネットワーク インターフェイスの名前に置き換えます。変数とネットワーク インターフェイスを作成します。
 
         $nicName = "<nicName>"
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 
 		
 
@@ -252,4 +252,4 @@ Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://
 
 Azure PowerShell を使用して新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

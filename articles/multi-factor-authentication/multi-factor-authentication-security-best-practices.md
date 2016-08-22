@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティのベスト プラクティス
@@ -23,7 +23,7 @@
 ## クラウドの Azure Multi-Factor Authentication のベスト プラクティス
 すべてのユーザーに多要素認証を提供し、Azure Multi-Factor Authentication に用意された拡張機能を利用するために、すべてのユーザーに対して Azure Multi-Factor Authentication を有効にする必要があります。これを行うには、次のいずれかを使用します。
 
-- Azure AD Premium または Enterprise Mobility Suite 
+- Azure AD Premium または Enterprise Mobility Suite
 - 多要素認証プロバイダー
 
 ### Azure AD Premium/Enterprise Mobility Suite
@@ -38,13 +38,13 @@ Multi-Factor Authentication を設定する場合は、次の点を考慮して�
 - Azure AD Connect は、オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期している場合にのみ必要です。オンプレミスの Active Directory インスタンスと同期されない Azure AD ディレクトリのみを使用する場合、Azure AD Connect は必要ありません。
 
 
-### 多要素認証プロバイダー
+### Multi-Factor Auth Provider
 
 ![Multi-Factor Auth Provider](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
 Azure AD Premium またはEnterprise Mobility Suite がない場合、クラウドに Azure MFA を導入するには、まず、MFA 認証プロバイダーを作成することをお勧めします。MFA は、Azure Active Directory を使用しているグローバル管理者が既定で使用できますが、組織に MFA をデプロイする際に、多要素認証機能をすべてのユーザーに展開する必要があります。これを行うには、多要素認証プロバイダーが必要です。認証プロバイダーを選択する場合は、ディレクトリを選択して次の点を考慮する必要があります。
 
-- Multi-Factor Auth Provider の作成に、Azure AD ディレクトリは必要ありません。 
+- Multi-Factor Auth Provider の作成に、Azure AD ディレクトリは必要ありません。
 - 多要素認証をすべてのユーザーに展開する場合や、グローバル管理者が管理ポータル、カスタムの案内応答、レポートなどの機能を利用できるようにする場合は、多要素認証プロバイダーを Azure AD ディレクトリに関連付ける必要があります。
 - DirSync または AAD Sync は、オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期している場合にのみ必要です。Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリのみを使用する場合、DirSync または AAD Sync は必要ありません。
 - Azure AD Premium または Enterprise Mobility Suite がある場合、Multi-Factor Auth Provider を作成する必要はありません。必要なのは、ユーザーにライセンスを割り当てることだけです。その後、ユーザーの MFA の有効化を開始できます。
@@ -62,14 +62,14 @@ Azure AD Premium またはEnterprise Mobility Suite がない場合、クラウ�
 
 ユーザーの大半は、パスワードのみを使用した認証に慣れているため、企業はこのプロセスに関してすべてのユーザーに認識してもらうことが重要です。このような認識により、ユーザーが MFA 関連の重要でない問題についてヘルプ デスクに問い合わせる可能性は低くなります。ただし、一部のシナリオでは MFA を一時的に無効にすることが必要になる場合があります。これらのシナリオへの対処方法を理解するには、次のガイドラインに従ってください。
 
-- モバイル アプリや携帯電話が通知や電話呼び出しを受信せず、これが理由でユーザーがサインインできないシナリオに対処するためのトレーニングをテクニカル サポート担当者が受講済みであることを確認します。テクニカル サポート担当者は、ワンタイム バイパス オプションを有効にし、多要素認証を "バイパス" することによってユーザーを 1 回だけ認証できるようにすることができます。バイパスは一時的なものであり、指定された秒数が経過すると無効になります。 
+- モバイル アプリや携帯電話が通知や電話呼び出しを受信せず、これが理由でユーザーがサインインできないシナリオに対処するためのトレーニングをテクニカル サポート担当者が受講済みであることを確認します。テクニカル サポート担当者は、ワンタイム バイパス オプションを有効にし、多要素認証を "バイパス" することによってユーザーを 1 回だけ認証できるようにすることができます。バイパスは一時的なものであり、指定された秒数が経過すると無効になります。
 - 必要に応じて、Azure MFA で信頼できる IP 機能を利用できます。この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、会社のローカル イントラネットからサインインするユーザーの多要素認証をバイパスできます。この機能は、Azure AD Premium、Enterprise Mobility Suite、または Azure Multi-Factor Authentication ライセンスを持っている Azure AD テナントで使用できます。
 
 
 ## オンプレミスの Azure Multi-Factor Authentication のベスト プラクティス
 企業が独自のインフラストラクチャを利用して MFA を有効にすることを決定した場合は、Azure Multi-Factor Authentication Server をオンプレミスでデプロイする必要があります。MFA Server のコンポーネントを次の図に示します。
 
-![Multi-Factor Auth Provider](./media/multi-factor-authentication-security-best-practices/server.png) *既定ではインストールされていません。**既定ではインストールされていますが、有効になっていません。
+![Multi-Factor Auth Provider](./media/multi-factor-authentication-security-best-practices/server.png) *既定ではインストールされていません**既定ではインストールされていますが、有効になっていません。
 
 
 Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウントがアクセスするクラウドのリソースとオンプレミスのリソースをセキュリティで保護することができます。ただし、これを実行できるのは、フェデレーションを使用した場合のみです。つまり、AD FS を用意し、それを Azure AD テナントとフェデレーションしておく必要があります。Multi-Factor Authentication Server を設定する場合は、次の点を考慮してください。
@@ -94,14 +94,14 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 - フェデレーション (SSO) ユーザーの場合、パスワードは組織 ID の中に保存されます。ユーザーが退職した場合、その情報は、DirSync を使用してリアルタイムで 組織 ID に送信される必要があります。アカウントの無効化/削除を同期させるには最大 3 時間かかる可能性があり、Azure AD 内のアプリ パスワードの無効化/削除が遅れることがあります。
 - オンプレミスのクライアント アクセス制御設定は、アプリ パスワードには適用されません。
 - アプリ パスワードに対するオンプレミス以外の認証ログ/監査機能はありません。
-- Microsoft Lync 2013 クライアントには、より多くのエンドユーザー教育が必要です。 
+- Microsoft Lync 2013 クライアントには、より多くのエンドユーザー教育が必要です。
 - ある種の高度なアーキテクチャ設計では、多要素認証をクライアントで使用するときに、認証場所によっては、組織のユーザー名とパスワードをアプリ パスワードと組み合わせて使用する必要があります。オンプレミスのインフラストラクチャに対して認証するクライアントの場合は、組織のユーザー名とパスワードを使用します。Azure AD に対して認証するクライアントはアプリケーション パスワードを使用します。
 - 既定では、ユーザーがアプリ パスワードを作成することはできません。企業がそれを要求する場合、またはシナリオによってアプリ パスワードの作成をユーザーに許可する必要がある場合は、[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する] オプションが選択されていることを確認します。
 
 ## 追加の考慮事項
 オンプレミスでデプロイされる各コンポーネントの追加の考慮事項とベスト プラクティスについては、次の一覧を参照してください。
 
-メソッド|説明
+メソッド|Description
 :------------- | :------------- | 
 [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)|AD FS による Azure Multi-Factor Authentication の設定に関する情報です。
 [RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)| RADUIS による Azure MFA Server のセットアップと構成に関する情報です。
@@ -121,4 +121,4 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 - [Azure Multi-Factor Authentication のセットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md)
 - [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

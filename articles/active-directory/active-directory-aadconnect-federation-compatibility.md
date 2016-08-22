@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Azure AD のフェデレーション互換性リスト
@@ -22,8 +22,7 @@ Azure Active Directory は、Microsoft 以外のソリューションを必要�
 Microsoft 以外のフェデレーション ソリューションに投資している組織のために、このトピックでは、次の "Azure Active Directory フェデレーション互換性リスト" に記載されている Microsoft 以外の ID プロバイダーを使用して、Microsoft オンライン サービスを使用する Windows Server Active Directory ユーザーのシングル サインオンを構成する場合のガイダンスを示しています。
 
 
-![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
-サードパーティの [Oxford Computer Group](http://oxfordcomputergroup.com/) は Microsoft に代わり、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対して以下のシングル サインオン エクスペリエンスをテストしました。
+![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)サードパーティの [Oxford Computer Group](http://oxfordcomputergroup.com/) は Microsoft に代わり、Microsoft 以外の ID プロバイダーを使用して、Azure Active Directory でよく見られる一連のユース ケースに対して以下のシングル サインオン エクスペリエンスをテストしました。
 
 以下のリストにあるサードパーティ ID プロバイダーの入手方法については、[idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) から Oxford Computer Group に問い合わせてください。
 
@@ -37,7 +36,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 - [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services)
 - [PingFederate 6.11](#pingfederate-611)
 - [PingFederate 7.2](#pingfederate-72)
-- [PingFederate 8.x](#pingfederate-8.x)
+- [PingFederate 8.x](#pingfederate-8x)
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
@@ -339,4 +338,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

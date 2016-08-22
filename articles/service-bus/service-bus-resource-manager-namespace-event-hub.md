@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する | Microsoft Azure"
-    description="Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する"
+    pageTitle="イベント ハブとコンシューマー グループを含んだイベント ハブ名前空間を Azure Resource Manager テンプレートで作成する | Microsoft Azure"
+    description="イベント ハブとコンシューマー グループを含んだイベント ハブ名前空間を Azure Resource Manager テンプレートで作成する"
     services="service-bus"
     documentationCenter=".net"
     authors="sethmanheim"
@@ -16,9 +16,9 @@
     ms.date="07/11/2016"
     ms.author="sethm;shvija"/>
 
-# Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を Azure Resource Manager テンプレートで作成する
+# イベント ハブとコンシューマー グループを含んだイベント ハブ名前空間を Azure Resource Manager テンプレートで作成する
 
-この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループを含んだ Service Bus 名前空間を作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブとコンシューマー グループを含んだイベント ハブ名前空間を作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
@@ -35,11 +35,11 @@
 
 ## デプロイの対象
 
-このテンプレートでデプロイされるのは、イベント ハブとコンシューマー グループを含んだ Service Bus 名前空間です。
+このテンプレートでデプロイされるのは、イベント ハブとコンシューマー グループを含んだイベント ハブ名前空間です。
 
 [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。
 
-展開を自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-eventhub-and-consumergroup%2Fazuredeploy.json)
 
@@ -49,32 +49,32 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 このテンプレートでは、次のパラメーターを定義します。
 
-### serviceBusNamespaceName
+### eventHubNamespaceName
 
-作成する Service Bus 名前空間の名前。
+作成するイベント ハブ名前空間の名前。
 
 ```
-"serviceBusNamespaceName": {
+"eventHubNamespaceName": {
 "type": "string"
 }
 ```
 
-### serviceBusEventHubName
+### eventHubName
 
-Service Bus 名前空間に作成するイベント ハブの名前。
+イベント ハブ名前空間に作成するイベント ハブの名前。
 
 ```
-"serviceBusEventHubName": {
+"eventHubName": {
 "type": "string"
 }
 ```
 
-### serviceBusConsumerGroupName
+### eventHubConsumerGroupName
 
 Service Bus 名前空間のイベント ハブに対して作成するコンシューマー グループの名前。
 
 ```
-"serviceBusConsumerGroupName": {
+"eventHubConsumerGroupName": {
 "type": "string"
 }
 ```
@@ -97,8 +97,8 @@ Service Bus 名前空間のイベント ハブに対して作成するコンシ�
 "resources": [
         {
             "apiVersion": "[variables('ehVersion')]",
-            "name": "[parameters('serviceBusNamespaceName')]",
-            "type": "Microsoft.ServiceBus/Namespaces",
+            "name": "[parameters('eventHubNamespaceName')]",
+            "type": "Microsoft.EventHub/Namespaces",
             "location": "[variables('location')]",
             "kind": "EventHub",
             "sku": {
@@ -108,21 +108,21 @@ Service Bus 名前空間のイベント ハブに対して作成するコンシ�
             "resources": [
                 {
                     "apiVersion": "[variables('ehVersion')]",
-                    "name": "[parameters('serviceBusEventHubName')]",
+                    "name": "[parameters('eventHubName')]",
                     "type": "EventHubs",
                     "dependsOn": [
-                        "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
+                        "[concat('Microsoft.EventHub/namespaces/', parameters('eventHubNamespaceName'))]"
                     ],
                     "properties": {
-                        "path": "[parameters('serviceBusEventHubName')]"
+                        "path": "[parameters('eventHubName')]"
                     },
                     "resources": [
                         {
                             "apiVersion": "[variables('ehVersion')]",
-                            "name": "[parameters('serviceBusConsumerGroupName')]",
+                            "name": "[parameters('eventHubConsumerGroupName')]",
                             "type": "ConsumerGroups",
                             "dependsOn": [
-                                "[parameters('serviceBusEventHubName')]"
+                                "[parameters('eventHubName')]"
                             ],
                             "properties": {
                             }
@@ -166,4 +166,4 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Service Bus のイベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-eventhub-and-consumergroup/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="NGS に関するカウンター、イベント、操作のログ記録を有効にする方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="07/14/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 #ネットワーク セキュリティ グループ (NSG) のためのログ分析
 
@@ -118,4 +118,4 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 - [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
 - [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

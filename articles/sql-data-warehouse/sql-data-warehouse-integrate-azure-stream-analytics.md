@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/18/2016"
-   ms.author="shigu;barbkess;sonyama"/>
+   ms.date="08/08/2016"
+   ms.author="kevin;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Stream Analytics の使用
 
@@ -35,7 +35,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 ## ジョブの出力の指定: Azure SQL Data Warehouse データベース
 
-### 手順 1.
+### 手順 1
 
 Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[出力の追加]** をクリックします。
 
@@ -96,4 +96,4 @@ SQL Database を選択し、[次へ] をクリックします。
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: http://azure.microsoft.com/documentation/services/stream-analytics/
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

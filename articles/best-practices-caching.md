@@ -115,7 +115,7 @@ Shared Caching を使用する方法の主な欠点が 2 つあります。
 
 データが長期間にわたって保持できるように設定されていると、キャッシュがいっぱいになる可能性もあります。この場合、キャッシュに新規項目を追加する要求により、削除と呼ばれるプロセスで、一部の項目が強制的に削除される可能性があります。キャッシュ サービスは、通常、最低使用頻度法 (LRU) に基づいてデータを削除しますが、一般にはこのポリシーを上書きして項目が削除されないようにすることができます。ただし、この方法を採用すると、キャッシュの利用できるメモリ上限を超える危険性があります。この場合、アプリケーションからキャッシュに項目を追加しようとすると、例外で失敗します。
 
-キャッシュの実装方法によっては、追加の削除ポリシーを使用できます。削除ポリシーにはいくつの種類があります。次に例を示します。
+キャッシュの実装方法によっては、追加の削除ポリシーを使用できます。削除ポリシーにはいくつの種類があります。チェックの内容は次のとおりです
 - 最近使用されたデータから削除される後入れ先出しポリシー (データが再利用されないと想定される場合に使用されます)。
 - 先入れ先出しポリシー (最も古いデータから削除されます)。
 - トリガーされたイベント (データの変更など) に基づく明示的な削除ポリシー。
@@ -897,11 +897,12 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - 複数のサブスクライバーが同じチャネルにサブスクライブでき、すべてのサブスクライバーがそのチャネルに発行されたメッセージを受信します。
 - サブスクライバーは、サブスクライブした後に発行されたメッセージのみを受信します。チャネルはバッファリングされません。メッセージが発行されると、Redis インフラストラクチャは各サブスクライバーにメッセージをプッシュし、メッセージを削除します。
 - 既定では、サブスクライバーは、送信された順序でメッセージを受信します。メッセージの数が多く、サブスクライバーとパブリッシャーの数も多い稼働率の高いシステムでは、メッセージの順次配信を保証すると、システムのパフォーマンスが低下する可能性があります。各メッセージが独立していて順序が重要ではない場合は、Redis システムによる同時処理を有効にして、応答性を高めることができます。StackExchange クライアントでこれを実現するには、サブスクライバーで使用する接続の PreserveAsyncOrder を false に設定します。
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  redisHostConnection.PreserveAsyncOrder = false;
-  ISubscriber subscriber = redisHostConnection.GetSubscriber();
-  ```
+
+```csharp
+ConnectionMultiplexer redisHostConnection = ...;
+redisHostConnection.PreserveAsyncOrder = false;
+ISubscriber subscriber = redisHostConnection.GetSubscriber();
+```
 
 ## 関連のあるパターンとガイダンス
 
@@ -910,7 +911,7 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - [キャッシュアサイド パターン](http://msdn.microsoft.com/library/dn589799.aspx): このパターンでは、データ ストアからキャッシュにデータをオンデマンドで読み込む方法について説明します。このパターンは、キャッシュに保持されているデータと、元のデータ ストア内のデータの一貫性の維持にも役立ちます。
 - [シャーディング パターン](http://msdn.microsoft.com/library/dn589797.aspx): このパターンは、水平方向のパーティション分割に関する情報を提供し、大量のデータを格納したりそれらのデータにアクセスしたりするときのスケーラビリティを向上させます。
 
-## 詳細
+## 詳細情報
 
 - Microsoft Web サイトの「[MemoryCache クラス](http://msdn.microsoft.com/library/system.runtime.caching.memorycache.aspx)」ページ
 - Microsoft Web サイトの [Azure Redis Cache のドキュメント](https://azure.microsoft.com/documentation/services/cache/)に関するページ
@@ -934,4 +935,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Redis のトランザクション)」のページ
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (データのパーティション分割のガイダンス)」
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

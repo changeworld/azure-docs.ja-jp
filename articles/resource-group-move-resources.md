@@ -55,12 +55,13 @@
 - DocumentDB
 - HDInsight クラスター
 - Key Vault
+- Media Services
 - Mobile Engagement
 - Notification Hubs
 - Operational Insights
 - Redis Cache
 - Scheduler
-- 検索
+- Search
 - Storage
 - Storage (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
 - SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。SQL Server を移動すると、そのデータベースもすべて移動されます。
@@ -102,7 +103,7 @@ App Service アプリを使用している場合、App Service プランのみ�
 
 これ以外のすべての組み合わせでは、移動できないリソースの種類 (Application Insights) の移動、または App Service プランの移動時に残しておくことができないリソースの種類 (すべての種類の App Service リソース) の保持のどちらかが行われます。
 
-Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。次に例を示します。
+Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。For example:
 
 - **web-group** に存在する **web-a**
 - **plan-group** に存在する **plan-a**
@@ -268,9 +269,9 @@ Web アプリがその App Service プランとは異なるリソース グル�
 
 
 ## 次のステップ
-- サブスクリプションを管理するための PowerShell コマンドレットについては、[Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)に関するページを参照してください。
-- サブスクリプションを管理するための Azure CLI コマンドについては、[Resource Manager での Azure CLI の使用](xplat-cli-azure-resource-manager.md)に関するページを参照してください。
-- サブスクリプションを管理するためのポータル機能については、[Azure ポータルを使用したリソース管理](./azure-portal/resource-group-portal.md)に関するページを参照してください。
-- リソースを論理的に整理する方法については、[タグを使用したリソースの整理](resource-group-using-tags.md)に関するページを参照してください。
+- サブスクリプションを管理するための PowerShell コマンドレットについては、「[Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
+- サブスクリプションを管理するための Azure CLI コマンドについては、「[リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
+- サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用したリソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
+- リソースを論理的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

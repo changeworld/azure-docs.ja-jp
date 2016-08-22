@@ -12,7 +12,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="tbd"
- ms.date="05/25/2016"
+ ms.date="08/10/2016"
  ms.author="adegeo"/>
 
 # Cloud Services のサイズ
@@ -27,7 +27,7 @@ Cloud Services は、Azure が提供する数種類のコンピューティン�
 
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
-* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。  
+* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
 
 * オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
@@ -156,4 +156,4 @@ Web ロール インスタンスのロール サイズを [Standard\_D2](#genera
 </WebRole>
 ```
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

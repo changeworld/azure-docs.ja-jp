@@ -3,7 +3,7 @@
    description="Azure の仮想ネットワーク (VNet) に関する FAQ"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Virtual Network FAQ
 
@@ -23,4 +23,4 @@
 
 仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md) を参照してください。
 
-<!----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

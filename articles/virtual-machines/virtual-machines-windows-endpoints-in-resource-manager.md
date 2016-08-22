@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="05/26/2016"
+   ms.date="08/09/2016"
    ms.author="iainfou"/>
 
 # Resource Manager での従来のエンドポイント
@@ -22,10 +22,10 @@
 ## 次のステップ
 次の記事で、ネットワーク セキュリティ グループを使用するためのクイック スタート ガイドと共に、この記事で取り上げるテクノロジに関する詳細情報を参照することができます。
 
-- [クイック スタート - Azure ポータルを使用してネットワーク セキュリティ グループと ACL ルールを作成する](virtual-machines-windows-nsg-quickstart-portal.md)  
-- [クイック スタート - Azure PowerShell を使用してネットワーク セキュリティ グループと ACL ルールを作成する](virtual-machines-windows-nsg-quickstart-powershell.md)  
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)  
-- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)  
-- [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md) 
+- [クイック スタート - Azure ポータルを使用してネットワーク セキュリティ グループと ACL 規則を作成する](virtual-machines-windows-nsg-quickstart-portal.md)
+- [クイック スタート - Azure PowerShell を使用してネットワーク セキュリティ グループと ACL ルールを作成する](virtual-machines-windows-nsg-quickstart-powershell.md)
+- [Azure リソース マネージャーの概要](../resource-group-overview.md)
+- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+- [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

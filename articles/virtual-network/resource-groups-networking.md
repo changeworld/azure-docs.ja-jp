@@ -3,7 +3,7 @@
    description="Azure リソース マネージャーのネットワーク リソース プロバイダーについて説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # ネットワーク リソース プロバイダー
 今日のビジネスの成功を支えるニーズとは、大規模なネットワーク対応アプリケーションを俊敏、柔軟、安全、かつ反復可能な方法でビルドおよび管理する能力です。Azure リソース マネージャー (ARM) では、リソース グループ内の 1 つのリソース コレクションとして、このようなアプリケーションを作成することができます。このようなリソースは、ARM の下でさまざまなリソース プロバイダーを介して管理されています。
@@ -46,7 +46,7 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 
 すべてのリソースには、共通のプロパティのセットとその個々のプロパティがあります。共通のプロパティは次のとおりです。
 
-|プロパティ|説明|値の例|
+|プロパティ|Description|サンプルの値|
 |---|---|---|
 |**name**|リソースの一意の名前。リソースの種類ごとに、独自の名前付け制限がある。|PIP01、VM01、NIC01|
 |**location**|リソースが存在する Azure リージョン|westus、eastus|
@@ -264,4 +264,4 @@ ARM テンプレート言語の詳細については、「[Azure リソース �
 
 [Azure リソース マネージャーの概要](../resource-group-overview.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

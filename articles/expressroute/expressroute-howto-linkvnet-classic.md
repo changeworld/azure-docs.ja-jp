@@ -41,7 +41,7 @@
 	- Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
     - 仮想ネットワークと仮想ネットワーク ゲートウェイを作成して完全にプロビジョニングする必要があります。指示に従い、[ExpressRoute 用の仮想ネットワークを構成](expressroute-howto-vnet-portal-classic.md)します。
 
-最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。ExpressRoute 回線はすべて同じ地理的リージョンにある必要があります。ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線に多数の仮想ネットワークをリンクできます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
+最大 10 個の仮想ネットワークを ExpressRoute 回線に接続できます。仮想ネットワークはすべて同じ地理的リージョンにある必要があります。ExpressRoute Premium アドオンを有効にした場合は、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたり、他の地理的リージョンにある仮想ネットワークをリンクしたりできます。Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を確認してください。
 
 ## 同じサブスクリプション内の仮想ネットワークを回線に接続する
 
@@ -157,4 +157,4 @@
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

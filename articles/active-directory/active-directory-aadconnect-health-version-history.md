@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/14/2016" 
+	ms.date="08/08/2016" 
 	ms.author="billmath"/>
 
 # Azure AD Connect Health: バージョンのリリース履歴
@@ -93,4 +93,4 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 ## 次のステップ
 「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

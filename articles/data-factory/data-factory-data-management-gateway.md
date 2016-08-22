@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2016" 
+	ms.date="08/05/2016" 
 	ms.author="spelluru"/>
 
 # Data Management Gateway
@@ -21,7 +21,9 @@ Data Management Gateway は、クライアントと、[コピー アクティビ
 
 この記事の内容は、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」の記事を補完します。その記事では、ゲートウェイを使ってオンプレミスの SQL Server データベースから Azure BLOB にデータを移動する Data Factory パイプラインの作成に関するチュートリアルが示されています。この記事では、Data Management Gateway について詳しく取り上げます。
 
-## Data Management Gateway の機能
+## Overview
+
+### Data Management Gateway の機能
 Data Management Gateway には次の機能があります。
 
 - 同じ Data Factory 内にオンプレミスのデータ ソースとクラウドのデータ ソースをモデル化して、データを移動します。
@@ -31,7 +33,7 @@ Data Management Gateway には次の機能があります。
 	- 証明書でオンプレミスのデータ ストアの資格情報を暗号化します。
 - データを効率的に移動します。データは並列に転送されます。自動再試行ロジックにより、断続的なネットワークの問題にも対応できます。
 
-## ゲートウェイを使用する場合のデータ フロー
+### コマンド フローとデータ フロー
 データ パイプラインでコピー アクティビティを使用してオンプレミスのデータを処理のためにクラウドに取り込むとき、またはクラウドの結果データをオンプレミスのデータ ストアにエクスポートして戻すときは、コピー アクティビティは内部的にゲートウェイを使用してオンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
 
 データ ゲートウェイでのコピーのデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
@@ -43,7 +45,7 @@ Data Management Gateway には次の機能があります。
 5.	ゲートウェイは、同じ証明書で資格情報を復号化し、適切な認証の種類と資格情報を使用してオンプレミスのデータ ストアに接続します。
 6.	ゲートウェイは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミスのストアからクラウドのストレージに、またはクラウドのストレージからオンプレミスのデータ ストアに、データをコピーします。注: この手順では、ゲートウェイは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (例: Azure BLOB、Azure SQL など) と直接通信します。
 
-## ゲートウェイの使用に関する注意点
+### ゲートウェイの使用に関する注意点
 - Data Management Gateway の 1 つのインスタンスを複数のオンプレミス データ ソースに使用できますが、**1 つの Gateway インスタンスはただ 1 つの Azure Data Factory に関連付けられており**、別の Data Factory と共有することはできないことに注意してください。
 - 1 台のコンピューターには、**Data Management Gateway のインスタンスを 1 つだけ**インストールできます。例えば、オンプレミスのデータ ソースにアクセスする必要があるデータ ファクトリが 2 つあるとすると、オンプレミスのコンピューター 2 台にゲートウェイをインストールし、各ゲートウェイを別々のデータ ファクトリに結び付ける必要があります。
 - **ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが**、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
@@ -53,9 +55,9 @@ Data Management Gateway には次の機能があります。
 - **ExpressRoute** を使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを取り扱い、**Gateway を使用して**サービスとデータ ソースの間の接続を確立する必要があります。
 - データ ストアがクラウドの **Azure IaaS VM** に存在する場合でも、**ゲートウェイを使用する**必要があります。
 
-## Data Management Gateway のインストール
+## インストール
 
-### ゲートウェイのインストール - 前提条件
+### 前提条件
 - サポートされている**オペレーティング システム**のバージョンは、Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 です。ドメイン コントローラーへの Data Management Gateway のインストールは現在サポートされていません。
 - ゲートウェイ コンピューターの推奨される最小限の**構成**は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
 - ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答できません。そのため、ゲートウェイをインストールする前に、コンピューターの適切な**電源プラン**を構成します。コンピューターが休止状態に構成されている場合、ゲートウェイのインストール時にメッセージが表示されます。
@@ -63,12 +65,11 @@ Data Management Gateway には次の機能があります。
 
 コピー アクティビティは特定の頻度で実行するので、コンピューターのリソース (CPU、メモリ) の使用も同じピークとアイドルのパターンに従います。リソース使用率はまた、移動されるデータの量に大きく依存します。複数のコピー ジョブが進行中のとき、ピーク時にはリソース使用率が上昇するのがわかります。上記は最小限の構成ですが、データ移動の特定の負荷に応じて、最小構成より多くのリソースを構成することを常にお勧めします。
 
-### インストール
+### インストール オプション
 Data Management Gateway は、次の方法でインストールすることができます。
 
 - [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から MSI セットアップ パッケージをダウンロードします。MSI は、すべての設定を保持しながら、既存の Data Management Gateway を最新のバージョンにアップグレードするためにも使用できます。
 - 手動セットアップで **[データ ゲートウェイのダウンロードとインストール]** のリンクをクリックするか、高速セットアップで **[このコンピューターに直接インストールします]** をクリックします。高速セットアップを使う場合の詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。手動セットアップでは、ダウンロード センターに移動します。ダウンロード センターからゲートウェイをダウンロードしてインストールする方法については次のセクションを参照してください。
-
 
 ### インストールのベスト プラクティス:
 1.	コンピューターが休止状態にならないように、ゲートウェイ用のホスト コンピューターの電源プランを構成します。ホスト コンピューターが休止状態の場合、ゲートウェイはデータ要求に応答できません。
@@ -86,7 +87,7 @@ Data Management Gateway は、次の方法でインストールすることが�
 9. Azure ポータルでキーを取得します。手順の詳細については、次のセクションを参照してください。
 10. コンピューターで実行している **Data Management Gateway 構成マネージャー**の **[ゲートウェイの登録]** ページで、テキストにキーを貼り付けます。オプションとして、キー文字列を表示する場合は **[ゲートウェイのキーを表示する]** チェック ボックスをオンにし、**[登録]** をクリックします。
 
-### キーを取得する
+### キーを使用してゲートウェイを登録する
 
 #### ポータルに論理ゲートウェイをまだ作成していない場合
 [オンプレミスとクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事に示されているチュートリアルの手順に従って、ポータルに新しいゲートウェイを作成し、**[構成]** ブレードからキーを取得します。
@@ -108,7 +109,112 @@ Data Management Gateway は、次の方法でインストールすることが�
 	
 	![キーのコピー](media/data-factory-data-management-gateway/copy-gateway-key.png)
 
-## Data Management Gateway 構成マネージャー 
+### システム トレイ アイコン/通知
+次の図は、表示されるトレイ アイコンの一部を示します。
+
+![システム トレイのアイコン](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+
+システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、ゲートウェイ/更新操作の状態に関する詳細がポップアップ ウィンドウに表示されます。
+
+### ポートとファイアウォール
+考慮する必要がある 2 つのファイアウォールがあります。組織の中央ルーターで実行している**企業ファイアウォール**と、ゲートウェイがインストールされているローカル コンピューター上のデーモンとして構成されている **Windows ファイアウォール**です。
+
+![ファイアウォール](./media/data-factory-data-management-gateway/firewalls.png)
+
+企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
+
+| ドメイン名 | ポート | 説明 |
+| ------ | --------- | ------------ |
+| *.servicebus.windows.net | 443、80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
+| *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由でのオプションの Service Bus Relay | 
+| *.core.windows.net | 443 | HTTPS | 
+| *.clouddatahub.net | 443 | HTTPS | 
+| graph.windows.net | 443 | HTTPS |
+| login.windows.net | 443 | HTTPS | 
+
+Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
+
+#### ソース データ ストアからシンク データ ストアにデータをコピーするには
+
+ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールがゲートウェイ コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認する必要があります。これにより、ゲートウェイはソースとシンクの両方に正常に接続されます。コピー操作に関連するデータ ストアごとにルールを有効にする必要があります。
+
+たとえば、**Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするために、送信 **TCP** 通信を Windows ファイアウォールと企業ファイアウォールの両方に対してポート **1433** 上で許可する必要があり、許可された IP アドレスの一覧にゲートウェイ コンピューターの IP アドレスを追加するために、Azure SQL サーバーのファイアウォール設定を構成する必要があります。
+
+
+### プロキシ サーバーの設定
+既定では、Data Management Gateway は、Internet Explorer からプロキシ設定を利用し、アクセスするために既定の資格情報を使用します。このケースに合わない場合は、ゲートウェイが Azure Data Factory に接続できるように、次に示すように**プロキシ サーバー設定**を構成できます。
+
+1.	ファイル エクスプ ローラーで、Data Management Gateway をインストールした後に、"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config" の安全なコピーを作成し、元のファイルをバックアップします。
+2.	管理者として Notepad.exe を起動し、テキスト ファイル "C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config" を開きます。次のように system.net に対して既定のタグが表示されます。
+
+			<system.net>
+				<defaultProxy useDefaultCredentials="true" />
+			</system.net>	
+
+	その後、プロキシ サーバーの詳細 (例: その親タグ内のプロキシ アドレス) を追加できます。例:
+
+			<system.net>
+			      <defaultProxy enabled="true">
+			            <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
+			      </defaultProxy>
+			</system.net>
+
+	追加のプロパティは、プロキシ タグ内で scriptLocation のように必要な設定を指定することが許可されます。構文については、「[proxy 要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx)」を参照してください。
+
+			<proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
+
+3. 構成ファイルを元の場所に保存し、 Data Management Gateway サービスを再起動し、変更を取得します。これを行うには、**[スタート]** の **[Services.msc]** から、または **[Data Management Gateway 構成マネージャー]**、**[サービスの停止]** ボタンの順にクリックしてから、**[サービスの開始]** をクリックします。サービスが開始しない場合は、不正確な XML タグ構文が編集済みのアプリケーション構成ファイルに追加されている可能性があります。
+
+上記の点に加えて、Microsoft Azure が会社のホワイトリストにあることを確認する必要もあります。有効な Microsoft Azure の IP アドレスの一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=41653)からダウンロードできます。
+
+#### ファイアウォールとプロキシ サーバー関連の問題で発生する可能性がある症状:
+次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成により、Data Management Gateway が自身を認証するための Azure Data Factory への接続からブロックされる可能性があります。ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションを参照してください。
+
+1.	ゲートウェイを登録しようとすると次のエラーが発生します。「ゲートウェイのキーを登録できませんでした。ゲートウェイ キーの登録を再試行する前に、Data Management Gateway が接続状態で、Data Management Gateway Host Service が起動していることを確認してください。」
+2.	構成マネージャーを開くと、ステータスは「切断」または「接続」と表示されます。[イベント ビューアー]、[アプリケーションとサービス ログ]、[Data Management Gateway] で Windows イベント ログを表示すると、「リモート サーバーに接続できません」や「Data Management Gateway のコンポーネントが応答しなくなり、自動的に再起動されます。コンポーネント名: Gateway」といったエラー メッセージが表示されます。
+
+### 資格情報の暗号化のためにポート 8050 を開く 
+Azure ポータルにオンプレミスでリンクされたサービスをセットアップする場合、ゲートウェイに資格情報をリレーするために、**[資格情報の設定]** アプリケーションが受信ポート **8050** を使用します (記事の後半で説明します)。既定では、ゲートウェイのセットアップ中に、Data Management Gateway のインストールによってこのポートがゲートウェイ コンピューターで開きます。
+ 
+サードパーティ製のファイアウォールを使用する場合は、ポート 8050 を手動で開くことができます。ゲートウェイのセットアップ中にファイアウォールの問題が発生した場合は、次のコマンドを使用して、ファイアウォールを構成せずにゲートウェイをインストールすることができます。
+
+	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+
+ゲートウェイ コンピューター上でポート 8050 を開かず、オンプレミスでリンクされたサービスをセットアップする場合は、**[資格情報の設定]** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、[資格情報とセキュリティの設定](#set-credentials-and-securityy)に関するセクションを参照してください。
+
+## 更新 
+既定では、Data Management Gateway の新しいバージョンが利用可能になると、自動的に更新されます。ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
+
+更新時刻のスケジュールは、ポータルの [ゲートウェイ プロパティ] ブレード、Data Management Gateway 構成マネージャーのホーム ページ、およびシステム トレイ通知メッセージに表示されます。
+
+Data Management Gateway 構成マネージャーの [ホーム] タブには、更新スケジュールと、ゲートウェイが最後にインストール/更新された時刻が表示されます。
+
+![更新のスケジュール](media/data-factory-data-management-gateway/UpdateSection.png)
+
+今すぐ更新をインストールするオプションと、スケジュールされた時刻にゲートウェイが自動的に更新されるまで待つオプションがあります。たとえば、次のスクリーンショットは Data Management Gateway 構成マネージャーに表示される通知メッセージと、すぐに更新をインストールする場合にクリックする [更新] ボタンを示しています。
+
+![DMG 構成マネージャーの更新](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+
+システム トレイの通知メッセージは、次のようになります。
+
+![システム トレイのメッセージ](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+
+システム トレイに更新操作 (手動または自動) の状態が表示されます。次に Data Management Gateway 構成マネージャーを開くと、通知バーにゲートウェイが更新されたことを示すメッセージと、[最新情報のトピック](data-factory-gateway-release-notes.md)へのリンクが表示されます。
+
+### 自動更新機能を無効/有効にするには
+次の手順で、自動更新機能を無効/有効にすることができます。
+
+1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
+2. C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript フォルダーに切り替えます。
+3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
+
+		.\GatewayAutoUpdateToggle.ps1  -off
+
+4. オンに戻すには、次のコマンドを実行します。
+	
+		.\GatewayAutoUpdateToggle.ps1  -on  
+
+## 構成マネージャー 
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 - **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
@@ -144,114 +250,7 @@ Data Management Gateway は、次の方法でインストールすることが�
 - バージョン番号
 - オンライン ヘルプ、プライバシーに関する声明、使用許諾契約書へのリンク。
 
-## システム トレイ アイコン/通知
-次の図は、表示されるトレイ アイコンの一部を示します。
-
-![システム トレイのアイコン](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
-
-システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、ゲートウェイ/更新操作の状態に関する詳細がポップアップ ウィンドウに表示されます。
-
-## Data Management Gateway の更新
-既定では、Data Management Gateway の新しいバージョンが利用可能になると、自動的に更新されます。ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
-
-更新時刻のスケジュールは、ポータルの [ゲートウェイ プロパティ] ブレード、Data Management Gateway 構成マネージャーのホーム ページ、およびシステム トレイ通知メッセージに表示されます。
-
-Data Management Gateway 構成マネージャーの [ホーム] タブには、更新スケジュールと、ゲートウェイが最後にインストール/更新された時刻が表示されます。
-
-![更新のスケジュール](media/data-factory-data-management-gateway/UpdateSection.png)
-
-今すぐ更新をインストールするオプションと、スケジュールされた時刻にゲートウェイが自動的に更新されるまで待つオプションがあります。たとえば、次のスクリーンショットは Data Management Gateway 構成マネージャーに表示される通知メッセージと、すぐに更新をインストールする場合にクリックする [更新] ボタンを示しています。
-
-![DMG 構成マネージャーの更新](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
-
-システム トレイの通知メッセージは、次のようになります。
-
-![システム トレイのメッセージ](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
-
-システム トレイに更新操作 (手動または自動) の状態が表示されます。次に Data Management Gateway 構成マネージャーを開くと、通知バーにゲートウェイが更新されたことを示すメッセージと、[最新情報のトピック](data-factory-gateway-release-notes.md)へのリンクが表示されます。
-
-### 自動更新機能を無効/有効にするには
-次の手順で、自動更新機能を無効/有効にすることができます。
-
-1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript フォルダーに切り替えます。
-3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
-
-		.\GatewayAutoUpdateToggle.ps1  -off
-
-4. オンに戻すには、次のコマンドを実行します。
-	
-		.\GatewayAutoUpdateToggle.ps1  -on  
-
-## ポートとセキュリティに関する考慮事項
-考慮する必要がある 2 つのファイアウォールがあります。組織の中央ルーターで実行している**企業ファイアウォール**と、ゲートウェイがインストールされているローカル コンピューター上のデーモンとして構成されている **Windows ファイアウォール**です。
-
-![ファイアウォール](./media/data-factory-data-management-gateway/firewalls.png)
-
-## クラウド サービスとゲートウェイの接続
-Azure Data Factory とその他のクラウド サービスとのゲートウェイの接続を維持するには、**TCP** ポート **80** と **443** の送信規則が構成されていることを確認する必要があります。任意でポート **9350** から **9354** を有効にします。これらのポートは Microsoft Azure Service Bus が Azure Data Factory と Data Management Gateway の間の接続を確立し、その間の通信のパフォーマンスを向上させるために使用することができます。
-
-企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
-
-| ドメイン名 | ポート | 説明 |
-| ------ | --------- | ------------ |
-| *.servicebus.windows.net | 443、80 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
-| *.servicebus.windows.net | 9350-9354, 5671 | TCP 経由でのオプションの Service Bus Relay | 
-| *.core.windows.net | 443 | HTTPS | 
-| *.clouddatahub.net | 443 | HTTPS | 
-| graph.windows.net | 443 | HTTPS |
-| login.windows.net | 443 | HTTPS | 
-
-Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。
-
-## ゲートウェイの資格情報の設定
-Azure ポータルにオンプレミスでリンクされたサービスをセットアップする場合、ゲートウェイに資格情報をリレーするために、**[資格情報の設定]** アプリケーションが受信ポート **8050** を使用します (記事の後半で説明します)。既定では、ゲートウェイのセットアップ中に、Data Management Gateway のインストールによってこのポートがゲートウェイ コンピューターで開きます。
- 
-サードパーティ製のファイアウォールを使用する場合は、ポート 8050 を手動で開くことができます。ゲートウェイのセットアップ中にファイアウォールの問題が発生した場合は、次のコマンドを使用して、ファイアウォールを構成せずにゲートウェイをインストールすることができます。
-
-	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
-
-ゲートウェイ コンピューター上でポート 8050 を開かず、オンプレミスでリンクされたサービスをセットアップする場合は、**[資格情報の設定]** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、「[資格情報とセキュリティの設定](#set-credentials-and-securityy)」セクションを参照してください。
-
-**ソース データ ストアからシンク データ ストアにデータをコピーするには:**
-
-ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールがゲートウェイ コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認する必要があります。これにより、ゲートウェイはソースとシンクの両方に正常に接続されます。コピー操作に関連するデータ ストアごとにルールを有効にする必要があります。
-
-たとえば、**Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするために、送信 **TCP** 通信を Windows ファイアウォールと企業ファイアウォールの両方に対してポート **1433** 上で許可する必要があり、許可された IP アドレスの一覧にゲートウェイ コンピューターの IP アドレスを追加するために、Azure SQL サーバーのファイアウォール設定を構成する必要があります。
-
-### プロキシ サーバーに関する考慮事項
-既定では、Data Management Gateway は、Internet Explorer からプロキシ設定を利用し、アクセスするために既定の資格情報を使用します。このケースに合わない場合は、ゲートウェイが Azure Data Factory に接続できることを確認するために、次に示すように**プロキシ サーバー設定**をさらに構成できます。
-
-1.	ファイル エクスプ ローラーで、Data Management Gateway をインストールした後に、"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config" の安全なコピーを作成し、元のファイルをバックアップします。
-2.	管理者として Notepad.exe を起動し、テキスト ファイル "C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config" を開きます。次のように system.net に対して既定のタグが表示されます。
-
-			<system.net>
-				<defaultProxy useDefaultCredentials="true" />
-			</system.net>	
-
-	その後、プロキシ サーバーの詳細 (例: その親タグ内のプロキシ アドレス) を追加できます。例:
-
-			<system.net>
-			      <defaultProxy enabled="true">
-			            <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
-			      </defaultProxy>
-			</system.net>
-
-	追加のプロパティは、プロキシ タグ内で scriptLocation のように必要な設定を指定することが許可されます。構文の「[proxy 要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx)」を参照してください。
-
-			<proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
-
-3. 構成ファイルを元の場所に保存し、 Data Management Gateway サービスを再起動し、変更を取得します。これを行うには、**[スタート]**、**[Services.msc]** から、または **[Data Management Gateway 構成マネージャー]**、**[サービスの停止]** ボタンの順にクリックしてから、**[サービスの開始]** をクリックします。サービスが開始しない場合は、不正確な XML タグ構文が編集済みのアプリケーション構成ファイルに追加されている可能性があります。
-
-上記の点に加えて、Microsoft Azure が会社のホワイトリストにあることを確認する必要もあります。有効な Microsoft Azure の IP アドレスの一覧は、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=41653)からダウンロードできます。
-
-### ファイアウォールとプロキシ サーバー関連の問題で発生する可能性がある症状:
-次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成により、Data Management Gateway が自身を認証するための Azure Data Factory への接続からブロックされる可能性があります。ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションを参照してください。
-
-1.	ゲートウェイを登録しようとすると次のエラーが発生します。「ゲートウェイのキーを登録できませんでした。ゲートウェイ キーの登録を再試行する前に、Data Management Gateway が接続状態で、Data Management Gateway Host Service が起動していることを確認してください。」
-2.	構成マネージャーを開くと、ステータスは「切断」または「接続」と表示されます。[イベント ビューアー]、[アプリケーションとサービス ログ]、[Data Management Gateway] で Windows イベント ログを表示すると、「リモート サーバーに接続できません」や「Data Management Gateway のコンポーネントが応答しなくなり、自動的に再起動されます。コンポーネント名: Gateway」といったエラー メッセージが表示されます。
-
-## ゲートウェイに関する問題のトラブルシューティング
+## トラブルシューティング
 
 - 詳細な情報は、Windows イベント ログのゲートウェイ ログで確認できます。Windows の **[イベント ビューアー]**、**[アプリケーションとサービス ログ]**、**[Data Management Gateway]** を使用してログを確認できます。ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べてください。
 - **証明書を変更**した後にゲートウェイが動作しなくなった場合は、Microsoft Data Management Gateway 構成マネージャー ツールまたはコントロール パネルの [サービス] アプレットを使って、**Data Management Gateway Service** を再起動 (停止して開始) します。エラーが表示された場合は、Data Management Gateway サービスのユーザーが証明書マネージャー (certmgr.msc) で証明書にアクセスするための明示的なアクセス許可を付与する必要がある場合があります。サービスの既定のユーザー アカウントは **NT Service\\DIAHostService** です。
@@ -330,7 +329,7 @@ Azure ポータルにオンプレミスでリンクされたサービスをセ�
 	古いゲートウェイから証明書をエクスポートするには、次の手順に従います。古いコンピューターで Data Management Gateway Configuration Manager を起動し、**[証明書]** タブに切り替え、**[エクスポート]** をクリックし、指示に従います。
 10. ゲートウェイの登録が成功したら、Gateway Configuration Manager のホーム ページで、**[登録]** が **[登録済み]** に、**[状態]** が **[開始]** に設定されていることを確認する必要があります。
 
-## 資格情報とセキュリティの設定
+## 資格情報の暗号化 
 Data Factory エディターで資格情報を暗号化するには、次の操作を行います。
 
 1. **ゲートウェイ コンピューター**上で Web ブラウザーを起動し、[Azure ポータル](http://portal.azure.com)に移動します。必要に応じてデータ ファクトリを検索して **[Data Factory]** ブレードで開き、**[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
@@ -343,7 +342,7 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
 	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
 	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
-	4.	**[OK]** をクリックして、資格情報を暗号化し、ダイアログ ボックスを閉じます。
+	4.	**[OK]** をクリックすると、資格情報が暗号化され、ダイアログ ボックスが閉じます。
 5.	これで、**connectionString** 内に **encryptedCredential** プロパティが表示されます。
 		
 			{
@@ -424,6 +423,6 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 
 
 ## 次のステップ
-- ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」の記事をご覧ください。
+- ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

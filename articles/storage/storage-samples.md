@@ -12,12 +12,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage"
-	ms.date="06/01/2016"
+	ms.date="08/03/2016"
 	ms.author="tamram" />
 
 # Azure Storage のサンプル
 
-## 概要
+## Overview
 実用的な Azure Storage のサンプルを表示してダウンロードするには、以下のリンクを使用します。
 
 ## Azure のコード サンプル ライブラリ
@@ -90,4 +90,4 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 - [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="アフィニティ グループから、リージョン VNet に移行する方法を学習します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法
 
@@ -41,9 +41,9 @@
 	
 	ネットワーク構成ファイルの次の行を編集して、値を置き換えます。
 
-	**古い値 :** \<VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」\>
+	**古い値 :** <VirtualNetworkSitename=」VNetUSWest」 AffinityGroup=」VNetDemoAG」>
 
-	**新しい値 :** \<VirtualNetworkSitename=」VNetUSWest」 Location=」West US」\>
+	**新しい値 :** <VirtualNetworkSitename=」VNetUSWest」 Location=」West US」>
 
 1. 変更を保存し、ネットワーク構成を Azure に[インポート](virtual-networks-using-network-configuration-file.md)します。
 
@@ -66,4 +66,4 @@
 VM をデプロイすると、単一のスケール ユニットにデプロイされます。アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。このため、アフィニティ グループから VM を削除しても影響はありません。
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->
