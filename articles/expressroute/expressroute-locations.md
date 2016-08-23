@@ -65,7 +65,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 |**CenturyLink** | 近日対応予定 | 近日対応予定| シリコン バレー |
-|**China Telecom Global** | サポートされています | サポートされていません | 香港 |
+|**China Telecom Global** | サポートされています | サポートされていません | 香港特別行政区 |
 |**[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** | サポートされています | 近日対応予定 | モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン、東京 |
 | **Comcast** | サポートされています | サポートされています | シカゴ、シリコン バレー、ワシントン DC |
@@ -79,12 +79,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **Interxion** | サポートされています | サポートされています | アムステルダム、ロンドン、パリ |
 | **Jisc** | 近日対応予定 | 近日対応予定 | ロンドン+ | 
 | **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ラスベガス+、ロンドン、シアトル、シリコン バレー、ワシントン DC |
-| **Megaport** | サポートされています | サポートされています | ダラス、香港、ラスベガス+、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、ワシントン DC |
+| **Megaport** | サポートされています | サポートされています | ダラス、香港、ラスベガス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、ワシントン DC |
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
-| **NTT Communications** | サポートされています | サポートされています | ロンドン、大阪、東京 |
+| **NTT Communications** | サポートされています | サポートされています | ロンドン、ロサンゼルス、大阪、東京 |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
-| **PCCW Global Limited** | サポートされています | サポートされています | 香港 |
+| **PCCW Global Limited** | サポートされています | サポートされています | 香港特別行政区 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされています | シンガポール |
 | **ソフトバンク** | サポートされています | サポートされています | 大阪、東京 | 
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | サポートされています | アムステルダム、チェンナイ、香港、ロンドン、ムンバイ、シリコン バレー、シンガポール、ワシントン DC |
@@ -106,7 +106,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |-----------------------|--------------------|----------------|---------------|
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | サポートされています | サポートされています | シカゴ、ワシントン DC |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
-| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | 近日対応予定 | シカゴ、ニューヨーク+、ワシントン DC |
+| **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | シカゴ、ニューヨーク+、ワシントン DC |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | サポートされています | サポートされています | シカゴ、ダラス+、ニューヨーク、ワシントン DC |
 
 #### 中国
@@ -158,10 +158,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|
 |**[Avanade Inc.](http://www.avanade.com/)**| アジア、ヨーロッパ、米国 |
 |**[Dotnet Solutions](http://www.dotnetsolutions.co.uk/)**| ヨーロッパ |
-|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|米国|
+|**[Equinix Professional Services](http://www.equinix.com/services/consulting/)**|US|
 |**[OneAs1a](http://www.oneas1a.com/express-connect-any-cloud-ecac)** | アジア |
-|**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 米国 |
-|**[Project Leadership](http://www.projectleadership.net/azure)** | 米国 |
+|**[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | US |
+|**[Project Leadership](http://www.projectleadership.net/azure)** | US |
 
 ## 次のステップ
 
@@ -171,4 +171,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

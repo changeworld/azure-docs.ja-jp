@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Mobile Engagement の使用"
+	pageTitle="Android アプリの Azure Mobile Engagement の使用"
 	description="Azure Mobile Engagement を使用して、Android アプリの分析やプッシュ通知を送信する方法について説明します。"
 	services="mobile-engagement"
 	documentationCenter="android"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="hero-article"
-	ms.date="05/12/2016"
+	ms.date="08/10/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Android アプリ用 Azure Mobile Engagement の使用
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を理解し、Android アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。このシナリオでは、基本的なデータを収集する空の Android アプリを作成し、Google Cloud Messaging (GCM) を使ってプッシュ通知を受信します。
+このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、Android アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。このシナリオでは、基本的なデータを収集する空の Android アプリを作成し、Google Cloud Messaging (GCM) を使ってプッシュ通知を受信します。
 
 ## 前提条件
 
@@ -28,7 +28,7 @@
 
 また、[Mobile Engagement Android SDK](https://aka.ms/vq9mfn) も必要です。
 
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)を参照してください。
+> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要になります。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started)を参照してください。
 
 ## Android アプリ用の Mobile Engagement の設定
 
@@ -36,17 +36,17 @@
 
 ## アプリを Mobile Engagement のバックエンドに接続する
 
-このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合に関する完全なドキュメントについては、「[Mobile Engagement Android SDK の統合](mobile-engagement-android-sdk-overview.md)」を参照してください。
+このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。統合の実例を示すために、Android Studio で基本的なアプリを作成します。
 
-統合の例を示すために、Android Studio で基本的なアプリを作成します。
+統合に関する完全なドキュメントについては、[Mobile Engagement Android SDK の統合](mobile-engagement-android-sdk-overview.md)に関するページを参照してください。
 
-### 新しい Android プロジェクトを作成する
+### Android プロジェクトの作成
 
 1. **Android Studio** を開始し、ポップアップ画面で **[Start a new Android Studio project]** を選択します。
 
     ![][1]
 
-2. アプリ名と会社のドメインを入力します。後で使用するために入力内容をメモします。**[次へ]** をクリックします。
+2. アプリ名と会社のドメインを入力します。後で必要になるため、入力内容をメモします。**[次へ]** をクリックします。
 
     ![][2]
 
@@ -56,7 +56,7 @@
 
     ![][3]
 
-4. ここでこのアプリの唯一の画面である **[Blank Activity]** を選択し、**[Next]** をクリックします。
+4. ここでこのアプリの唯一の画面である **[Blank Activity (空のアクティビティ)]** を選択し、**[Next (次へ)]** をクリックします。
 
     ![][4]
 
@@ -68,7 +68,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 ### SDK ライブラリをプロジェクトに含める
 
-1. [Mobile Engagement Android SDK] をダウンロードします。
+1. [Mobile Engagement Android SDK](https://aka.ms/vq9mfn) をダウンロードします。
 2. アーカイブ ファイルをコンピューターのフォルダーに抽出します。
 3. SDK の現在のバージョン用の .jar ライブラリを探し、クリップボードにコピーします。
 
@@ -78,7 +78,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 	  ![][7]
 
-5. ライブラリを読み込んでプロジェクトを最新にします。
+5. ライブラリを読み込むには、プロジェクトを同期します。
 
 	  ![][8]
 
@@ -99,7 +99,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 	  ![][9]
 
-4. 次の例に示すように、`setConnectionString` パラメーターに貼り付けて設定を置き換えます。
+4. それを `setConnectionString` パラメーターにコピーし、次のコードに示されている文字列全体を置き換えます。
 
 		engagementConfiguration.setConnectionString("Endpoint=my-company-name.device.mobileengagement.windows.net;SdkKey=********************;AppId=*********");
 
@@ -114,7 +114,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 		<uses-permission android:name="android.permission.VIBRATE" />
 		<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
 
-2. 次の設定を `<application>`タグと`</application>` タグの間に追加して、エージェント サービスを宣言します。
+2. エージェント サービスを宣言するには、次のコードを `<application>` タグと `</application>` タグの間に追加します。
 
 		<service
  			android:name="com.microsoft.azure.engagement.service.EngagementService"
@@ -122,7 +122,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
  			android:label="<Your application name>"
  			android:process=":Engagement"/>
 
-3. 貼り付けたばかりのコードの label 内の `"<Your application name>"` をアプリケーション名に置き換えます。この内容は **[設定]** メニューに表示されます。デバイスで実行されているサービスをユーザーはここで確認できます。たとえば、このラベルに「サービス」という語句を追加できます。
+3. 貼り付けたコードで、ラベルの `"<Your application name>"` を置き換えます。これは、デバイスで実行中のサービスを確認できる **[設定]** メニューに表示されます。たとえば、このラベルに「サービス」という語句を追加できます。
 
 ### 画面を Mobile Engagement に送信する
 
@@ -135,11 +135,11 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 > [AZURE.NOTE] 基底クラスが *Activity* ではない場合、別のクラスからの継承方法について、[高度な Android レポート](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes)に関するページを参照してください。
 
 
-この簡単なサンプル シナリオでは、次の行をコメント アウト (除外) する必要があります。
+この簡単なサンプル シナリオでは、次の行をコメント アウトします。
 
     // setSupportActionBar(toolbar);
 
-これを残しておきたい場合は、[高度な Android レポート](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes)に関するページを確認してください。
+アプリで `ActionBar` を維持する場合は、[高度な Android のレポート](mobile-engagement-android-advanced-reporting.md#modifying-your-codeactivitycode-classes)に関するページを参照してください。
 
 ## リアルタイム監視を使用してアプリを接続する
 
@@ -147,7 +147,7 @@ Mobile Engagement を統合するデモ アプリが Android Studio によって
 
 ## プッシュ通知とアプリ内メッセージングを有効にする
 
-Mobile Engagement を導入すると、プッシュ通知とアプリ内メッセージングを利用して、ユーザーにキャンペーン情報を提供できます。このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するようにアプリをセットアップします。
+キャンペーンの際に Mobile Engagement を利用すると、プッシュ通知とアプリ内メッセージングを利用して、ユーザーにキャンペーン情報を提供できます。このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。次のセクションでは、それらを受信するようにアプリをセットアップします。
 
 ### SDK リソースをプロジェクトにコピーする
 
@@ -182,4 +182,4 @@ Mobile Engagement を導入すると、プッシュ通知とアプリ内メッ�
 [10]: ./media/mobile-engagement-android-get-started/copy-resources.png
 [11]: ./media/mobile-engagement-android-get-started/paste-resources.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

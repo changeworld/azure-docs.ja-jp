@@ -14,8 +14,8 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/24/2016"
- ms.author="stevehob"/>
+ ms.date="08/17/2016"
+ ms.author="araguila"/>
 
 # 予測的なメンテナンスの構成済みソリューションの概要
 
@@ -40,7 +40,7 @@ Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を�
 
 IoT Suite サービスを通じて収集されたデバイスのテレメトリを使用するこれらの機能を示すために、ソリューションでは、テンプレートとして利用可能な既存の Azure Machine Learning モデルを使用しています。マイクロソフトは、航空機エンジンの[回帰モデル][lnk_regression_model]を作成し、テンプレートの一式、データ<sup>[1]</sup>、およびモデルの使用方法に関するステップ バイ ステップ ガイダンスを公開しています。
 
-Azure IoT の予測的なメンテナンスの構成済みのソリューションでは、このテンプレートから作成された回帰モデルを使用しています。このモデルは、Azure サブスクリプションにデプロイされ、自動生成された API を介して公開されます。ソリューションには、トレーニング済みのモデルから正確な結果を提供する、4 つのエンジン (合計 100) および 4 つのセンサー (合計 21) のデータ ストリームを示すテスト データのサブセットが含まれます。
+Azure IoT の予測的なメンテナンスの構成済みのソリューションでは、このテンプレートから作成された回帰モデルを使用しています。このモデルは Azure サブスクリプションにデプロイされ、自動生成された API を介して公開されます。ソリューションには、トレーニング済みのモデルから正確な結果を提供する、4 つのエンジン (合計 100) および 4 つのセンサー (合計 21) のデータ ストリームを示すテスト データのサブセットが含まれます。
 
 *[1] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
@@ -66,4 +66,4 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

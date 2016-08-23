@@ -13,11 +13,11 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/09/2016"
+   ms.date="06/10/2016"
    ms.author="ryanwi"/>
 
 # ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
-Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイし、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
+Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイして、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
 
 > [AZURE.NOTE] この記事では、既に [ 開発環境がセットアップ](service-fabric-get-started.md)されていると仮定します。
 
@@ -26,7 +26,7 @@ Service Fabric クラスターとは、アプリケーションをデプロイ�
 
 Service Fabric ローカル クラスターがエミュレーターでもシミュレーターでもないことを理解しておくことは重要です。これは、複数のコンピューターから成るクラスターで検出されるのと同じプラットフォーム コードを実行します。唯一の違いは、通常 5 台のコンピューターに分散して実行されるプラットフォーム プロセスを 1 台のコンピューター上で実行するということです。
 
-SDK では、2 つの方法でローカル クラスターをセットアップすることができます。1 つは Windows PowerShell スクリプトを使用する方法、もう 1 つはローカル クラスター マネージャーのシステム トレイ アプリを使用する方法です。このチュートリアルでは、PowerShell スクリプトを使用します。
+SDK では、2 つの方法でローカル クラスターをセットアップすることができます。1 つは Windows PowerShell スクリプトを使用する方法、もう 1 つはローカル クラスター マネージャーのシステム トレイ アプリを使用する方法です。このチュートリアルでは PowerShell スクリプトを使用します。
 
 > [AZURE.NOTE] Visual Studio からアプリケーションをデプロイするという方法でローカル クラスターを既に作成している場合は、このセクションを省略できます。
 
@@ -39,7 +39,7 @@ SDK では、2 つの方法でローカル クラスターをセットアップ�
 	& "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
 	```
 
-    クラスターのセットアップには数分かかります。セットアップが完了すると、次のような出力が表示されます。
+    クラスターのセットアップには、しばらく時間がかかります。セットアップが完了すると、次のような出力が表示されます。
 
     ![クラスターのセットアップに関する出力][cluster-setup-success]
 
@@ -59,14 +59,14 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
     ```
 
-3. C:\\ServiceFabric のようなディレクトリを作成し、そこにダウンロードおよびデプロイするアプリケーションを格納します。
+3. C:\\ServiceFabric のようなディレクトリを作成し、そこにダウンロードしてデプロイするアプリケーションを格納します。
 
     ```powershell
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
 
-4. 作成した場所に、[WordCount アプリケーションをダウンロード](http://aka.ms/servicefabric-wordcountapp)します。注: Microsoft Edge ブラウザーでは、ファイルが *.zip* 拡張子付きで保存されます。ファイル拡張子を *.sfpkg* に変更する必要があります。
+4. 作成した場所に、[WordCount アプリケーションをダウンロード](http://aka.ms/servicefabric-wordcountapp)します。注: Microsoft Edge ブラウザーでは、ファイルが *.zip* 拡張子付きで保存されます。ファイル拡張子を *.sfpkg* に変更します。
 
 5. 次のように、ローカル クラスターに接続します。
 
@@ -74,7 +74,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     Connect-ServiceFabricCluster localhost:19000
     ```
 
-6. SDK のデプロイメント コマンドを呼び出し、新しいアプリケーションを作成します。その場合、名前とアプリケーション パッケージへのパスを指定します。
+6. SDK のデプロイ コマンドを使って、名前とアプリケーション パッケージのパスを指定し、新しいアプリケーションを作成します。
 
     ```powershell  
   Publish-NewServiceFabricApplication -ApplicationPackagePath c:\ServiceFabric\WordCountV1.sfpkg -ApplicationName "fabric:/WordCount"
@@ -101,7 +101,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     Get-ServiceFabricApplication
     ```
 
-    WordCount アプリケーションのみがデプロイされていると仮定すると、次のような結果が表示されます。
+    WordCount アプリケーションのみがデプロイされているとすると、次のような結果が表示されます。
 
     ![PowerShell で、デプロイされたすべてのアプリケーションのクエリを実行する][ps-getsfapp]
 
@@ -113,7 +113,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
     ![PowerShell でアプリケーションのサービスを一覧表示する][ps-getsfsvc]
 
-    アプリケーションは 2 つのサービス (Web フロント エンドと、単語を管理するステートフル サービス) から構成されていることに注意してください。
+    アプリケーションは 2 つのサービス (Web フロント エンドと、単語を管理するステートフル サービス) から構成されています。
 
 3. 最後に、WordCountService のパーティションの一覧を見てみましょう。
 
@@ -123,7 +123,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
 
     ![PowerShell でサービスのパーティションを表示する][ps-getsfpartitions]
 
-    先ほど使用した一連のコマンドは、すべての Service Fabric PowerShell コマンドと同様に、ローカルまたはリモートで接続する可能性のあるどのクラスターでも利用できます。
+    使用した一連のコマンドは、すべての Service Fabric PowerShell コマンドと同様に、ローカルまたはリモートで接続する可能性のあるどのクラスターでも利用できます。
 
     より視覚的な方法でクラスターと対話するには、Web ベースの Service Fabric Explorer ツールを使用します。そのためには、ブラウザーで [http://localhost:19080/Explorer](http://localhost:19080/Explorer) に移動してください。
 
@@ -154,7 +154,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
     各ドメインでのアップグレードが進行すると、正常性チェックが行われ、アプリケーションが正常に動作していることが確認されます。
 
-4. fabric:/WordCount アプリケーションに含まれるサービス セットに対する以前のクエリを再実行した場合、WordCountService のバージョンは変化しているが、WordCountWebService のバージョンは変化していないことがわかります。
+4. fabric:/WordCount アプリケーションのサービス セットに対する以前のクエリを再実行すると、WordCountService のバージョンが変化している一方、WordCountWebService のバージョンは変化していないことがわかります。
 
     ```powershell
     Get-ServiceFabricService -ApplicationName 'fabric:/WordCount'
@@ -170,19 +170,19 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
 ## クリーンアップしています
 
-まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。アプリケーションは、削除するまで、バックグラウンドで実行を継続します。アプリの性質によっては、実行中のアプリがコンピューター上の大量のリソースを占有する場合があります。この問題は、いくつかのオプションで管理することができます。
+まとめに入る前に、ローカル クラスターが現実のものであることを思い出してください。アプリケーションは削除されるまで、バックグラウンドで実行され続けます。アプリの性質によっては、実行中のアプリがコンピューター上の大量のリソースを占有する場合があります。アプリケーションとクラスターは、いくつかの方法で管理できます。
 
-1. 個々のアプリケーションとそのすべてのデータを削除するには、次の手順を実行します。
+1. 個々のアプリケーションとそのデータすべてを削除するには、次の手順を実行します。
 
     ```powershell
     Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
     ```
 
-    または、Service Fabric Explorer で **[アプリケーションの削除]** アクションを実行します。これは、**[アクション]** メニューから実行するか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューから実行します。
+    または、Service Fabric Explorer の **[アクション]** メニューか、左側のウィンドウにあるアプリケーション リスト ビューのコンテキスト メニューからアプリケーションを削除します。
 
     ![Delete an application is Service Fabric Explorer][sfe-delete-application]
 
-2. クラスターからアプリケーションを削除すると、WordCount アプリケーションの種類のバージョン 1.0.0 と 2.0.0 の登録を解除できます。これにより、コードと構成を含むアプリケーション パッケージがクラスターのイメージ ストアから削除されます。
+2. クラスターからアプリケーションを削除すると、WordCount アプリケーションの種類のバージョン 1.0.0 と 2.0.0 の登録を解除できます。削除を実行すると、コードと構成を含むアプリケーション パッケージがクラスターのイメージ ストアから削除されます。
 
     ```powershell
     Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
@@ -193,12 +193,12 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
 3. クラスターをシャットダウンしても、アプリケーションのデータとトレースは保持するという場合は、システム トレイ アプリで **[Stop Local Cluster (ローカル クラスターの停止)]** をクリックします。
 
-4. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらくの間、ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合にのみこれを使用してください。
+4. クラスターを完全に削除するには、システム トレイ アプリで **[Remove Local Cluster (ローカル クラスターの削除)]** をクリックします。このオプションを使用すると、次回 Visual Studio で F5 キーを押したときに、デプロイメントがさらに遅くなることに注意してください。しばらく使用しない場合や、リソースを解放する必要がある場合にのみ、ローカル クラスターを削除してください。
 
 ## 次のステップ
 - いくつかのビルド済みのアプリケーションをデプロイし、アップグレードしたので、今度は [Visual Studio で自身のアプリケーションをビルドしてみます](service-fabric-create-your-first-application-in-visual-studio.md)。
 - この記事の中でローカル クラスターに対して実行したアクションはすべて、[Azure クラスター](service-fabric-cluster-creation-via-portal.md)に対しても実行することができます。
-- この記事で実行したアップグレードは、非常に基本的なものです。Service Fabric アップグレードの機能と柔軟性の詳細については、「[アップグレードに関するドキュメント](service-fabric-application-upgrade.md)」を参照してください。
+- この記事で実行したアップグレードは基本的なものでした。Service Fabric アップグレードの機能と柔軟性の詳細については、「[アップグレードに関するドキュメント](service-fabric-application-upgrade.md)」を参照してください。
 
 <!-- Images -->
 
@@ -218,4 +218,4 @@ Service Fabric では、クラスター全体にロールアウトされると�
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 [sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

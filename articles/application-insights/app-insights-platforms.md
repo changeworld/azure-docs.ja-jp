@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="03/02/2016"
+	ms.date="08/15/2016"
 	ms.author="awills"/>
 
-# Application Insights: 言語、プラットフォーム、統合
+# 開発者分析: 言語、プラットフォーム、統合
 
-以下は、これまでに把握している実装です (サード パーティによるものも含む)。
+以下は、これまでに把握している [Application Insights](app-insights-overview.md) の実装です (サード パーティによるものも含む)。
 
 ## 言語
 
@@ -38,23 +38,22 @@
 + [ASP.NET](app-insights-asp-net.md)
 + [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-five.md)
-+ [Android](https://github.com/Microsoft/ApplicationInsights-Android)
++ [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
 + [Azure Web アプリと VM](../azure-portal/insights-perf-analytics.md)
 + [Azure Cloud Services](app-insights-cloudservices.md) &#151; Web ロールと worker ロールの両方を含む
 + [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
 + [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
-+ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS)
++ [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (HockeyApp)
 + [J2EE](app-insights-java-get-started.md)
 + [J2EE - 既にライブとなっているアプリ用](app-insights-java-live.md)
 + [Node.JS](https://www.npmjs.com/package/applicationinsights)
 + [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 + [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 + [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
-+ [Windows ストア C#|VB](app-insights-windows-get-started.md)
-+ [Windows ストア C++](app-insights-windows-cpp.md)
++ [Windows ストア C#|VB](app-insights-windows-get-started.md) (HockeyApp)
++ [Windows ストア C++](app-insights-windows-cpp.md) (HockeyApp)
 + [Windows デスクトップのアプリケーションとサービス、および worker ロール](app-insights-windows-desktop.md)
-+ [Xamarin](https://github.com/Microsoft/ApplicationInsights-Xamarin)
 + [その他](#projects)
 
 
@@ -71,7 +70,7 @@
 + [Concrete](https://github.com/fidmor89/appInsights-Concrete)
 + [Drupal](https://github.com/fidmor89/AppInsights-Drupal)
 + [Joomla](https://github.com/fidmor89/AppInsights-Joomla)
-+ [Orchard](https://orchardazureappinsights.codeplex.com) 
++ [Orchard](https://orchardazureappinsights.codeplex.com)
 + [SharePoint](app-insights-sharepoint.md)
 + [WordPress](https://wordpress.org/plugins/application-insights/)
 
@@ -85,4 +84,4 @@
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0817_2016-->

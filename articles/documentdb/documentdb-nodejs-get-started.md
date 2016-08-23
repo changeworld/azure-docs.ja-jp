@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="na"
   ms.devlang="node"
   ms.topic="hero-article"
-  ms.date="04/26/2016"
+  ms.date="08/11/2016"
   ms.author="anhoh"/>
 
 # NoSQL Node.js チュートリアル: DocumentDB Node.js コンソール アプリケーション  
@@ -56,7 +56,7 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-##<a id="SetupNode"></a> 手順 2: Node.js アプリケーションをセットアップする
+## <a id="SetupNode"></a>手順 2: Node.js アプリケーションをセットアップする
 
 1. お使いのターミナルを開きます。
 2. Node.js アプリケーションを保存するフォルダーまたはディレクトリを見つけます。
@@ -70,9 +70,9 @@ DocumentDB アカウントを作成しましょう。使用するアカウント
 4. npm で documentdb モジュールをインストールします。次のコマンドを使用します。
     * ```npm install documentdb --save```
 
-以上です。 これでセットアップは終了です。いくつかのコードの記述を開始しましょう。
+そこで、 これでセットアップは終了です。いくつかのコードの記述を開始しましょう。
 
-##<a id="Config"></a> 手順 3: アプリの構成を設定する
+## <a id="Config"></a>手順 3: アプリの構成を設定する
 
 普段使用しているテキスト エディターで ```config.js``` を開きます。
 
@@ -598,7 +598,7 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 ご利用ありがとうございます。 以上で Node.js チュートリアルが完了し、初めての DocumentDB コンソール アプリケーションが完成しました。
 
-##<a id="GetSolution"></a> 完全な Node.js チュートリアル ソリューションを入手する
+## <a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する
 この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
 
 -   [DocumentDB アカウント][documentdb-create-account]。
@@ -621,4 +621,4 @@ npm で **documentdb** モジュールをインストールします。次のコ
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

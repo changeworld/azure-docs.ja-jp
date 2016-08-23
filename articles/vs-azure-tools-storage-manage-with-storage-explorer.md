@@ -1,7 +1,7 @@
 <properties
 	pageTitle="ストレージ エクスプローラー (プレビュー) の概要 | Microsoft Azure"
 	description="ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
-	services="visual-studio-online"
+	services="storage"
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
@@ -13,14 +13,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/30/2016"
+	ms.date="08/17/2016"
 	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) の概要
 
-## 概要 
+## Overview 
 
-Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
+Microsoft Azure ストレージ エクスプローラー (プレビュー) は、Windows、OS X、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。この記事では、Azure ストレージ アカウントへの接続と管理に関するさまざまな方法を紹介します。
 
 ![Microsoft Azure ストレージ エクスプローラー (プレビュー)][15]
 
@@ -168,7 +168,7 @@ Azure サブスクリプションの管理者は、[SAS (Shared Access Signature
 
 ## SAS を使ってサービスをアタッチする
 
-セクション「[SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas)」では、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法が示されています。同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。
+「[SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas)」セクションでは、Azure サブスクリプションの管理者がストレージ アカウントの SAS を生成 (および共有) してストレージ アカウントへの一時的なアクセスを許可する方法を示しています。同様に、SAS は、ストレージ アカウント内の特定のサービス (BLOB コンテナー、キュー、またはテーブル) に対して生成できます。
 
 ### 共有するサービスの SAS を生成する
 
@@ -229,4 +229,4 @@ Azure サブスクリプションの管理者は、[SAS (Shared Access Signature
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

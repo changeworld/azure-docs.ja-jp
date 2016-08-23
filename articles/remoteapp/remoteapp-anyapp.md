@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="07/02/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp を使用すると、Windows アプリケーションを、どこでどんなデバイスを使っていても、今すぐ実行できるようなります。10 年も昔に作成したカスタム アプリケーションであっても、Office アプリであっても、ユーザーは、それらの少数のアプリケーションのために特定のオペレーティング システム (Windows XP など) を使い続ける必要はもうありません。
 
@@ -35,7 +38,7 @@ Access はデータベースです。せっかくのデータベースが役立�
 
 ## RemoteApp コレクションの作成
 
-コレクションの作成から始めましょう。コレクションは、アプリとユーザーのコンテナーとして機能します。各コレクションは、1 つのイメージに基づいており、独自に作成するか、サブスクリプションで提供されるものを使用することができます。このチュートリアルでは、共有しようとしているアプリを含む、Office 2013 試用版のイメージを使用します。
+コレクションの作成から始めましょう。コレクションは、アプリとユーザーのコンテナーとして機能します。各コレクションは 1 つのイメージに基づいており、独自に作成するか、サブスクリプションで提供されるものを使用することができます。このチュートリアルでは、共有しようとしているアプリを含む、Office 2013 試用版のイメージを使用します。
 
 1. Azure ポータルの左側のナビゲーション ツリーで、RemoteApp が表示されるまで下へスクロールします。そのページを開きます。
 2. **[RemoteApp コレクションを作成する]** をクリックします。
@@ -80,7 +83,7 @@ Access はデータベースです。せっかくのデータベースが役立�
 管理者として行う最初の部分です。次に、ユーザーが行ういくつかの手順があります。
 
 1. まず、コマンド ライン インターフェイス (cmd.exe) を発行します。 **[発行]** タブで **[cmd]** を選択し、次に **[発行 > パスを使用してプログラムを発行]** をクリックします。
-2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\windows\explorer.exe」を使用します。
+2. アプリの名前、およびパスを入力します。ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\\windows\\explorer.exe」を使用します。
 ![cmd.exe のファイルの発行](./media/remoteapp-anyapp/ra-publishcmd.png)
 3. ここで、Azure [ストレージ アカウント](../storage/storage-create-storage-account.md)を作成する必要があります。サンプルには「accessstorage」という名前が付いています。わかりやすい名前を 1 つ選んでください (「accessstorage」という名前は 1 つしか使えないため)。
 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
@@ -121,4 +124,4 @@ Access はデータベースです。せっかくのデータベースが役立�
 <!--Image references-->
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -137,7 +137,7 @@ VM をバックアップする手順は、主に次の 5 つです。
 
 ## 手順 3. 仮想マシンへの VM エージェントのインストール
 
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に VM に存在します。[VM の保護](backup-azure-vms-first-look.md#step-4---protect-azure-virtual-machines)に進むことができます。
+バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に VM に存在します。[VM の保護](backup-azure-vms-first-look.md#step-4-protect-azure-virtual-machines)に進むことができます。
 
 オンプレミス データセンターから VM を移行した場合、VM にはおそらく VM エージェントがインストールされていません。VM の保護に進む前に、仮想マシンに VM エージェントをインストールする必要があります。VM エージェントをインストールする詳しい手順については、[VM のバックアップに関する記事の VM エージェントのセクション](backup-azure-vms-prepare.md#vm-agent)をご覧ください。
 
@@ -213,4 +213,4 @@ VM をバックアップする手順は、主に次の 5 つです。
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

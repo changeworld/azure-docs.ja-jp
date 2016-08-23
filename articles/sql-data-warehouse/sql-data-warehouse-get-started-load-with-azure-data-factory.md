@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # Azure Data Factory を使用してデータを読み込む 
@@ -209,11 +209,10 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 - [Azure SQL Data Warehouse コネクタ][]。これは、Azure Data Factory と Azure SQL Data Warehouse を組み合わせて使用するための主要な参照トピックとなります。
 
 
-以下のトピックでは、Azure Data Factory に関する詳細情報を提供します。Azure SQL Database または HDinsight について説明しますが、この情報は Azure SQL Data Warehouse にも該当します。
+これらのトピックでは、Azure Data Factory に関する詳細情報を提供します。Azure SQL Database または HDinsight について説明しますが、この情報は Azure SQL Data Warehouse にも該当します。
 
 - [チュートリアル: 初めての Data Factory の作成][]。これは、Azure Data Factory を使用してデータを処理するための主要なチュートリアルです。このチュートリアルでは、HDInsight を使用して Web ログの変換および分析を毎月行う初めてのパイプラインを作成します。なお、このチュートリアルには、コピー アクティビティはありません。
-- [チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする][]。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
-- [実際のシナリオのチュートリアル][]。これは、Azure Data Factory の使用に関する詳細なチュートリアルです。
+- [チュートリアル: Azure Storage BLOB から Azure SQL Database へのデータのコピー][]。このチュートリアルでは、Azure Data Factory でパイプラインを作成し、データを Azure Storage BLOB から Azure SQL Database にコピーします。
 
 <!--Image references-->
 
@@ -229,8 +228,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Load sample data into SQL Data Warehouse]: sql-data-warehouse-load-sample-databases.md
 [Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
 [PolyBase]: sql-data-warehouse-get-started-load-with-polybase.md
-[実際のシナリオのチュートリアル]: ../data-factory/data-factory-tutorial.md
-[チュートリアル: Azure BLOB Storage から Azure SQL Database にデータをコピーする]: ../data-factory/data-factory-get-started
+[チュートリアル: Azure Storage BLOB から Azure SQL Database へのデータのコピー]: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [チュートリアル: 初めての Data Factory の作成]: ../data-factory/data-factory-build-your-first-pipeline.md
 
 <!--MSDN references-->
@@ -240,4 +238,4 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
 [Azure ポータル]: https://portal.azure.com
 [サンプル データをダウンロードします]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

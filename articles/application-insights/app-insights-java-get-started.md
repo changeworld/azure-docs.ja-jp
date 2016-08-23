@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/12/2016"
+	ms.date="08/17/2016"
 	ms.author="awills"/>
 
 # Java Web プロジェクトで Application Insights を使う
@@ -27,7 +27,7 @@
 
 Application Insights は、Linux、Unix、Windows で動作する Java アプリをサポートします。
 
-必要なものは次のとおりです。
+必要なもの:
 
 * Oracle JRE 1.6 以降、または Zulu JRE 1.6 以降
 * [Microsoft Azure](https://azure.microsoft.com/) のサブスクリプション([無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使って作業を開始できます)。
@@ -38,10 +38,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 ## 1\.Application Insights のインストルメンテーション キーを取得する
 
 1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
-2. 新しい Application Insights リソースを作成します。
-
-    ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-get-started/01-create.png)
-3. アプリケーションの種類を [Java Web アプリケーション] に設定します。
+2. Application Insights リソースを作成します。アプリケーションの種類を [Java Web アプリケーション] に設定します。
 
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-get-started/02-create.png)
 4. 新しいリソースのインストルメンテーション キーを見つけます。このキーは、後でコード プロジェクトに貼り付けます。
@@ -106,18 +103,18 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 
 SDK を手動で追加する:
 
-1. [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html) をダウンロードします。
+1. [Application Insights SDK for Java](https://aka.ms/aijavasdk) をダウンロードします。
 2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
 
 ### 疑問がある場合...
 
 * *zip 内の `-core` コンポーネントと `-web` コンポーネントの関係について*
 
- * `applicationinsights-core` は最小限の API を提供します。これは常に必要です。
- * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。このテレメトリを自動的に収集しない場合、これは省略できます。たとえば、独自に記述する場合です。
+ * `applicationinsights-core` は最小限の API を提供します。このコンポーネントは常に必要です。
+ * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。このテレメトリを自動的に収集しない場合、このコンポーネントは省略できます。たとえば、独自に記述する場合です。
 
 * *変更が発行されたときに SDK を更新するには*
- * 最新の [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.zip) をダウンロードして、古いものと置き換えます。
+ * 最新の [Application Insights SDK for Java](https://aka.ms/qqkaq6) をダウンロードして、古いものと置き換えます。
  * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
 
@@ -162,7 +159,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
-* Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey) として動的に渡されることがあります。定義されたプロパティがない場合、Azure Appsetting で環境変数 (APPLICATION\_INSIGHTS\_IKEY) がチェックされます。プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。これは、異なる環境のさまざまな InstrumentationKey を動的に管理するのに役立ちます。
+* Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION\_INSIGHTS\_IKEY=your\_ikey) として動的に渡されることがあります。定義されたプロパティがない場合、Azure App Settings で環境変数 (APPLICATION\_INSIGHTS\_IKEY) がチェックされます。プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。このシーケンスは、さまざまな環境のさまざまな InstrumentationKeys を動的に管理するのに役立ちます。
 
 ### インストルメンテーション キーの他の設定方法
 
@@ -196,7 +193,7 @@ Application Insights SDK は、次の順序でキーを探します。
        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-#### MVC 3.1 以降を使用している場合
+#### Spring Web MVC 3.1 以降を使用している場合
 
 Application Insights パッケージを含めるように次の要素を編集します。
 
@@ -241,7 +238,7 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
 ![](./media/app-insights-java-get-started/6-barchart.png)
 
-> Application Insights では、MVC アプリケーションの HTTP 要求の形式として、`VERB controller/action` が想定されます。たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。これにより、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
+> Application Insights では、MVC アプリケーションの HTTP 要求の形式として、`VERB controller/action` が想定されます。たとえば、`GET Home/Product/f9anuh81`、`GET Home/Product/2dffwrf5`、`GET Home/Product/sdf96vws` は、`GET Home/Product` にグループ化されます。このグループ化により、要求数や要求の平均実行時間など、要求の意味のある集計を行うことができます。
 
 
 ### インスタンス データ 
@@ -276,13 +273,13 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
  * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
 
-    (これにより、パフォーマンス カウンターが有効になります。)
+    (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 
 ## 例外と要求エラー
 
 未処理の例外は、自動的に収集されます。
 
-![Scroll down and click the Failures tile](./media/app-insights-java-get-started/21-exceptions.png)
+![Open Settings, Failures](./media/app-insights-java-get-started/21-exceptions.png)
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
@@ -297,7 +294,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 ## パフォーマンス カウンター
 
-**[サーバー]** タイルをクリックすると、一連のパフォーマンス カウンターが表示されます。
+**[設定]**、**[サーバー]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
 
 
 ![](./media/app-insights-java-get-started/11-perf-counters.png)
@@ -379,17 +376,15 @@ SDK をインストールすると、API を使用して独自のテレメトリ
 
 ## 可用性 Web テスト
 
-Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、下へスクロールして [可用性] をクリックします。
+Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。[設定するには][availability]、[Web テスト] をクリックします。
 
-![Scroll down, click Availability, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
+![Click Web tests, then Add Web test](./media/app-insights-java-get-started/31-config-web-test.png)
 
 応答時間のグラフが表示されます。また、サイトがダウンしている場合はメールによる通知を受け取ります。
 
 ![Web テストの例](./media/app-insights-java-get-started/appinsights-10webtestresult.png)
 
 [可用性 Web テストの詳細についてはこちら。][availability]
-
-
 
 
 
@@ -413,4 +408,4 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

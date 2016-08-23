@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs"
 	ms.topic="hero-article"
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
@@ -93,7 +93,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 ### Azure 発行設定のダウンロード
 
-アプリケーションを Azure にデプロイするには、まず Azure サブスクリプションの発行設定をダウンロードする必要があります。
+アプリケーションを Azure に展開するには、まず Azure サブスクリプションの発行設定をダウンロードする必要があります。
 
 1.  次の Azure PowerShell コマンドレットを実行します。
 
@@ -149,7 +149,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 ## アプリケーションの停止と削除
 
-アプリケーションをデプロイした後、余分なコストを回避するためにアプリケーションを無効にすることができます。Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションをデプロイした直後からサーバー時間が消費されます。
+アプリケーションをデプロイした後、余分なコストを回避するためにアプリケーションを無効にすることができます。Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションを展開した直後からサーバー時間が消費されます。
 
 1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスのデプロイを停止します。
 
@@ -169,7 +169,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 	![Remove-AzureService コマンドの状態][The status of the Remove-AzureService command]
 
-	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[Azure サブスクリプションからストレージ アカウントを削除する方法]」を参照してください。
+	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[How to Delete a Storage Account from an Azure Subscription (Azure サブスクリプションからストレージ アカウントを削除する方法)]」を参照してください。
 
 ## 次のステップ
 
@@ -183,7 +183,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/ja-JP/download/details.aspx?id=48178
 [PowerShell を接続します]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
 [nodejs.org]: http://nodejs.org/
-[Azure サブスクリプションからストレージ アカウントを削除する方法]: ../storage/how-to-manage-a-storage-account.md
+[How to Delete a Storage Account from an Azure Subscription (Azure サブスクリプションからストレージ アカウントを削除する方法)]: ../storage/how-to-manage-a-storage-account.md
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
 
@@ -198,4 +198,4 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

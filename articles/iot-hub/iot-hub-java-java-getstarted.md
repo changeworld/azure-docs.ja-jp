@@ -13,7 +13,7 @@
      ms.topic="hero-article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/23/2016"
+     ms.date="08/11/2016"
      ms.author="dobett"/>
 
 # Azure IoT Hub for Java の使用
@@ -28,7 +28,7 @@
 
 > [AZURE.NOTE] デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの作成に利用できる各種 SDK に関する情報は、「[IoT Hub SDK][lnk-hub-sdks]」の記事で取り上げています。
 
-このチュートリアルで行う作業には次のものが必要となります。
+このチュートリアルを完了するには、以下が必要です。
 
 + Java SE 8。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Java をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
@@ -38,17 +38,17 @@
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-最後の手順として、**[主キー]** の値をメモしたうえで、[IoT Hub] ブレードの **[設定]** をクリックし、**[設定]** ブレードの **[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**Event Hub と互換性のある名前**と **Event Hub と互換性のあるエンドポイント**をメモします。これらの値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
+最後に、**主キー**の値をメモして、**[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント**をメモします。これらの値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
 
 ![][6]
 
-これで IoT Hub が作成され、このチュートリアルの残りを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hubs と互換性のある名前、Event Hubs と互換性のあるエンドポイントが入手できました。
+これで IoT ハブが作成され、このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hubs と互換性のある名前、Event Hubs と互換性のあるエンドポイントが入手できました。
 
 ## デバイス ID の作成
 
 このセクションでは、IoT ハブの ID レジストリに新しいデバイス ID を作成する Java コンソール アプリケーションを作成します。IoT Hub に接続するデバイスは、あらかじめデバイス ID レジストリに登録されている必要があります。詳細については、「[IoT Hub 開発者ガイド][lnk-devguide-identity]」の「**デバイス ID レジストリ**」を参照してください。このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
-1. 「iot-java-get-started」という名前の空のフォルダーを新規作成します。コマンド プロンプトで次のコマンドを実行し、iot-java-get-started フォルダーに **create-device-identity** という名前の Maven プロジェクトを新しく作成します。これは 1 つの長いコマンドです。
+1. 「iot-java-get-started」という名前の空のフォルダーを新規作成します。コマンド プロンプトで次のコマンドを実行し、iot-java-get-started フォルダーに **create-device-identity** という名前の Maven プロジェクトを新しく作成します。これは、1 つの長いコマンドであることに注意してください。
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -95,7 +95,7 @@
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
     
-9. **main** メソッドの本文として次のコードを追加します。このコードにより、*javadevice* という名前のデバイスが IoT Hub ID レジストリにない場合は作成されます。その後、デバイス ID とキーが表示されますが、これは後で必要になります。
+9. **main** メソッドの本文として次のコードを追加します。このコードにより、*javadevice* という名前のデバイスが IoT ハブの ID レジストリにない場合は作成されます。その後、デバイス ID とキーが表示されますが、これは後で必要になります。
 
     ```
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -134,11 +134,11 @@
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Java コンソール アプリケーションを作成します。IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを規模を拡大して処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに適用されます。
+このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み取る Java コンソール アプリケーションを作成します。IoT ハブは、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hubs と互換性のあるエンドポイントに適用されます。
 
 > [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
 
-1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **read-d2c-messages** という名前の Maven プロジェクトを新しく作成します。これは 1 つの長いコマンドです。
+1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **read-d2c-messages** という名前の Maven プロジェクトを新しく作成します。これは、1 つの長いコマンドであることに注意してください。
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -240,9 +240,9 @@
     }
     ```
 
-    > [AZURE.NOTE] 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。現在の一連のメッセージを確認できるので、テスト環境ではこれは便利ですが、運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
+    > [AZURE.NOTE] 受信側が実行開始後、IoT Hub に送信されたメッセージのみを読み込むように、このメソッドは受信側の構築時にフィルターを称します。現在のメッセージのセットを表示できるので、テスト環境で便利です。運用環境の場合、コードですべてのメッセージが処理されることを確認する必要があります。詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
-9. **main** メソッドのシグネチャを、以下の例外を含むように変更します。
+9. **main** メソッドのシグネチャを変更し、下の例外を追加します。
 
     ```
     public static void main( String[] args ) throws IOException
@@ -281,7 +281,7 @@
 
 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Java コンソール アプリを作成します。
 
-1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを新しく作成します。これは 1 つの長いコマンドです。
+1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを新しく作成します。これは、1 つの長いコマンドであることに注意してください。
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -325,7 +325,7 @@
     import java.util.concurrent.ExecutorService;
     ```
 
-7. 次のクラスレベルの変数を **App** クラスに追加し、**{youriothubname}** を IoT Hub 名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+7. 次のクラスレベルの変数を **App** クラスに追加し、**{youriothubname}** を IoT ハブ名に、**{yourdevicekey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
 
     ```
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -336,7 +336,7 @@
 
     このサンプル アプリケーションでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。HTTPS プロトコルと AMQPS プロトコルのいずれかを利用して IoT Hub と通信できます。
 
-8. 次の入れ子になった **TelemetryDataPoint** クラスを **App** クラス内に追加し、デバイスから IoT Hub に送信するテレメトリ データを指定します。
+8. 次の入れ子になった **TelemetryDataPoint** クラスを **App** クラス内に追加し、デバイスから IoT ハブに送信するテレメトリ データを指定します。
 
     ```
     private static class TelemetryDataPoint {
@@ -350,7 +350,7 @@
     }
     ```
 
-9. 次の入れ子になった **EventCallback** クラスを **App** クラス内に追加し、シミュレートされたデバイスからのメッセージを処理するときに IoT Hub が返す受信確認ステータスを表示します。このメソッドにより、メッセージが処理されたときのアプリケーションのメイン スレッドも通知されます。
+9. 次の入れ子になった **EventCallback** クラスを **App** クラス内に追加し、シミュレートされたデバイスからのメッセージを処理するときに IoT ハブが返す受信確認ステータスを表示します。このメソッドにより、メッセージが処理されたときのアプリケーションのメイン スレッドも通知されます。
 
     ```
     private static class EventCallback implements IotHubEventCallback
@@ -367,7 +367,7 @@
     }
     ```
 
-10. 次の入れ子になった **MessageSender** クラスを **App** クラス内に追加します。このクラスの **run** メソッドは、IoT Hub に送信するサンプルのテレメトリ データを生成し、受信確認を待ってから次のメッセージを送信します。
+10. 次の入れ子になった **MessageSender** クラスを **App** クラス内に追加します。このクラスの **run** メソッドは、IoT ハブに送信するサンプルのテレメトリ データを生成し、受信確認を待ってから次のメッセージを送信します。
 
     ```
     private static class MessageSender implements Runnable {
@@ -406,7 +406,7 @@
 
     このメソッドは、IoT Hub が前のメッセージを確認してから 1 秒後に新しい「デバイスからクラウドへの」メッセージを送信します。このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって風速センサーがシミュレートされます。
 
-11. **main** メソッドを次のコードに置き換えます。このコードでは、デバイスからクラウドへのメッセージを IoT Hub に送信するスレッドを作成します。
+11. **main** メソッドを次のコードに置き換えます。このコードでは、デバイスからクラウドへのメッセージを IoT ハブに送信するスレッドを作成します。
 
     ```
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -455,7 +455,7 @@
 
     ![][8]
 
-3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、Hub に送信されたメッセージ数が表示されます。
+3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
 
     ![][43]
 
@@ -469,7 +469,7 @@
 - [デバイス管理の概要][lnk-device-management]
 - [Gateway SDK の概要][lnk-gateway-SDK]
 
-既存の IoT ソリューションを拡張し、大規模な環境でデバイスからクラウドへのメッセージを処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
+既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
 <!-- Images. -->
 [6]: ./media/iot-hub-java-java-getstarted/create-iot-hub6.png
@@ -495,4 +495,4 @@
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->
