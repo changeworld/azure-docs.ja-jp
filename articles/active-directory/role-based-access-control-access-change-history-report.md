@@ -13,23 +13,19 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="04/28/2016"
+	ms.date="08/03/2016"
 	ms.author="kgremban"/>
 
 # アクセス変更履歴レポートの作成
 
-Azure サブスクリプション、またはそこに含まれているリソースやリソース グループの所有者が他にもいる場合は、アクセス権の変更をすべて追跡できるようにしておく必要があります。サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
+サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
 
 ## Azure PowerShell を使用したレポートの作成
-PowerShell でアクセス変更履歴レポートを作成するには、次のコマンドを使用します。
+PowerShell でアクセス変更履歴レポートを作成するには、`Get-AzureRMAuthorizationChangeLog` コマンドを使用します。このコマンドレットの詳細は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1)で確認できます。
 
-```
-Get-AzureRMAuthorizationChangeLog
-```
+このコマンドを呼び出すには、表示する割り当てのプロパティを指定します。プロパティの例を次に示します。
 
-表示する割り当てのプロパティを指定できます。プロパティの例を次に示します。
-
-| プロパティ | 説明 |
+| プロパティ | Description |
 | -------- | ----------- |
 | **アクション** | アクセス権が付与されているか取り消されているか |
 | **Caller** | アクセス権の変更を担当する所有者 |
@@ -53,10 +49,7 @@ Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::From
 ![PowerShell Get-AzureRMAuthorizationChangeLog - スクリーンショット](./media/role-based-access-control-configure/access-change-history.png)
 
 ## Azure CLI を使用したレポートの作成
-Azure コマンド ライン インターフェイス (CLI) でアクセス変更履歴レポートを作成するには、次のコマンドを使用します。
-```
-azure role assignment changelog list
-```
+Azure コマンド ライン インターフェイス (CLI) でアクセス変更履歴レポートを作成するには、`azure role assignment changelog list` コマンドを使用します。
 
 ## スプレッドシートへのエクスポート
 レポートを保存したりデータを操作したりするには、アクセス変更を .csv ファイルにエクスポートします。このレポートをスプレッドシートで表示して確認することができます。
@@ -67,4 +60,4 @@ azure role assignment changelog list
 - [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

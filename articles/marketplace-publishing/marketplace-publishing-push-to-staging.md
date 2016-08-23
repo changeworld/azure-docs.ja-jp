@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="Azure"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/08/2016"
    ms.author="hascipio"/>
 
 # マーケティング コンテンツを使用したプラン作成の実行
@@ -122,8 +122,7 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 | | 基本のみ | 消費量のみ | 基本 + 消費量 |
 |---|---|---|---|
 | 仮想マシン イメージ | いいえ | あり | いいえ|
-| 開発者サービス | あり | はい | あり |
-| データ サービス | あり | なし | なし |
+| 開発者サービス | あり | はい | はい |
 
 ### 2\.1.VM 料金を設定する
 仮想マシンについては、現在、次の **3 つの課金モデル**を利用できます。
@@ -224,9 +223,9 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 ## 手順 3.: サポート情報を入力する
 連絡先の詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。サポートURL は、エンド ユーザーに提供されます。
 
-1.	発行ポータルの左側にある** [サポート] **に移動します。
-2.	**[エンジニアリング連絡先] **に情報を入力します。
-3.	**[カスタマー サポート] **に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
+1.	発行ポータルの左側にある **[サポート]** に移動します。
+2.	**[エンジニアリング連絡先]** に情報を入力します。
+3.	**[カスタマー サポート]** に情報を入力します。電子メール サポートのみを指定する場合は、ダミーの電話番号を入力すると、指定した電子メールが代わりに使用されます。
 4.	サポート URL を入力します。
 
 ## 手順 4.: Azure Marketplace カテゴリを選択する
@@ -264,6 +263,7 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 
 - [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)
 - [ステージングでのソリューション テンプレート プランのテスト](marketplace-publishing-solution-template-test-in-staging.md)
+| **手順 3.プランをステージングにプッシュする** | [VM のプランをステージングでテストする](marketplace-publishing-vm-image-test-in-staging.md) | 開発者サービスのプランをステージングでテストする | [データ サービスのプランをステージングでテストする](marketplace-publishing-data-service-test-in-staging.md) | [ソリューション テンプレートをステージングでテストする](marketplace-publishing-solution-template-test-in-staging.md) |
 
 ## 関連項目
 
@@ -278,4 +278,4 @@ Marketplace コンテンツが読み込まれたので、プランのステー�
 [link-pubportal]: https://publish.windowsazure.com
 [link-push-to-production]: marketplace-publishing-push-to-production.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
  description="Azure IoT Hub デバイス管理 (DM) クライアント ライブラリ"
  services="iot-hub"
  documentationCenter=""
- authors="CarlosAlayo"
+ authors="juanjperez"
  manager="timlt"
  editor=""/>
 
@@ -14,11 +14,11 @@
  ms.tgt_pltfrm="na"
  ms.workload="na"
  ms.date="04/29/2016"
- ms.author="carlosa"/>
+ ms.author="juanpere"/>
 
 # Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要
 
-## 概要
+## Overview
 
 Azure IoT Hub デバイス管理クライアント ライブラリを使用すると、Azure IoT Hub で IoT デバイスを管理できます。"管理" には、再起動、出荷時の設定へのリセット、ファームウェアの更新などのアクションが含まれます。現在は、プラットフォームに依存しない C ライブラリを提供していますが、近日中に他の言語のサポートも追加する予定です。[Azure IoT Hub デバイス管理の概要][lnk-dm-overview]で説明したとおり、IoT Hub デバイス管理には次の 3 つの主要な概念があります。
 
@@ -158,19 +158,19 @@ LWM2M データ モデルには、オブジェクトとリソースの概念が�
 
 ### デバイス オブジェクト
 
-| リソース名 | リソースに対して許可されているリモート操作 | 型 | 範囲と単位 | 説明 |
+| リソース名 | リソースに対して許可されているリモート操作 | 型 | 範囲と単位 | Description |
 |-----------------|--------------------------------------|---------|-----------------|-------------|
-| Manufacturer | 読み取り | String | | 製造元の名前。 |
-| ModelNumber | 読み取り | String | | モデル識別子 (製造元が指定した文字列)。 |
-| DeviceType | 読み取り | String | | デバイスの種類 (製造元が指定した文字列)。<br/>注: これは、サーバー側の API **SystemPropertyNames.DeviceDescription** にマップされます。 |
-| SerialNumber | 読み取り | String | | デバイスのシリアル番号。 |
-| FirmwareVersion | 読み取り | String | | デバイスの現在のファームウェア バージョン。 |
-| HardwareVersion | 読み取り | String | | デバイスの現在のハードウェア バージョン。 |
+| Manufacturer | 読み取り | 文字列 | | 製造元の名前。 |
+| ModelNumber | 読み取り | 文字列 | | モデル識別子 (製造元が指定した文字列)。 |
+| DeviceType | 読み取り | 文字列 | | デバイスの種類 (製造元が指定した文字列)。<br/>注: これは、サーバー側の API **SystemPropertyNames.DeviceDescription** にマップされます。 |
+| SerialNumber | 読み取り | 文字列 | | デバイスのシリアル番号。 |
+| FirmwareVersion | 読み取り | 文字列 | | デバイスの現在のファームウェア バージョン。 |
+| HardwareVersion | 読み取り | 文字列 | | デバイスの現在のハードウェア バージョン。 |
 | Reboot | Execute | | | デバイスを再起動します。 |
 | FactoryReset | Execute | | | デバイスの出荷時の設定へのリセットを実行し、デバイスの構成を初めてデプロイしたときと同じにします。 |
 | CurrentTime | 読み取り<br/>書き込み | Time | | デバイスの現在の UNIX 時間。クライアントは、1 秒経過するたびにこの時刻値を大きくする必要があります。<br/>DM サーバーは、クライアントがサーバーの時刻と同期されるように、このリソースに書き込むことができます。 |
-| UTCOffset | 読み取り<br/>書き込み | String | | 有効な UTC オフセット。 |
-| タイム ゾーン | 読み取り<br/>書き込み | String | | デバイスが位置するタイム ゾーンを示します。 |
+| UTCOffset | 読み取り<br/>書き込み | 文字列 | | 有効な UTC オフセット。 |
+| タイム ゾーン | 読み取り<br/>書き込み | 文字列 | | デバイスが位置するタイム ゾーンを示します。 |
 | MemoryFree | 読み取り | Integer | KB | デバイスでデータやソフトウェアを格納できる記憶域スペースの推定される現在使用可能なメモリ。 |
 | MemoryTotal | 読み取り | Integer | KB | デバイスでデータやソフトウェアを格納できる記憶域スペースの総量。 |
 | BatteryLevel | 読み取り | Integer | 0 ～ 100% | 現在のバッテリ レベルの割合 (0 ～ 100) |
@@ -178,30 +178,30 @@ LWM2M データ モデルには、オブジェクトとリソースの概念が�
 
 ### ファームウェアの更新オブジェクト
 
-| リソース名 | 操作 | 型 | 範囲と単位 | 説明 |
+| リソース名 | 操作 | 型 | 範囲と単位 | Description |
 |----------------|-----------|---------|-----------------|-------------|
 | パッケージ | 書き込み | 非透過的 | | バイナリ形式のファームウェア パッケージ。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackage** |
-| PackageURI | 書き込み | String | 0 ～ 255 バイト | デバイスがファームウェア パッケージをダウンロードできる URI。<br/>マップ先のサービス API: **SystemPropertyNames.FirmwarePackageUri** |
+| PackageURI | 書き込み | 文字列 | 0 ～ 255 バイト | デバイスがファームウェア パッケージをダウンロードできる URI。<br/>マップ先のサービス API: **SystemPropertyNames.FirmwarePackageUri** |
 | 更新 | Execute | | | パッケージに格納されているファームウェア パッケージを使用するか、パッケージ URI からダウンロードされたファームウェアを使用して、ファームウェアを更新します。<br/>マップ先のサービス API:<br/>**ScheduleFirmwareUpdateAsync** |
-| State | 読み取り | Integer | 1 ～ 3 | ファームウェア更新処理の状態:<br/>**1**: アイドル状態。ファームウェア パッケージをダウンロードする前か、ファームウェア パッケージを適用した後にこの状態である場合があります。<br/>**2**: ファームウェア パッケージのダウンロード中。<br/>**3**: ファームウェア パッケージがダウンロードされました。<br/> マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateState** |
+| 状態 | 読み取り | Integer | 1 ～ 3 | ファームウェア更新処理の状態:<br/>**1**: アイドル状態。ファームウェア パッケージをダウンロードする前か、ファームウェア パッケージを適用した後にこの状態である場合があります。<br/>**2**: ファームウェア パッケージのダウンロード中。<br/>**3**: ファームウェア パッケージがダウンロードされました。<br/> マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateState** |
 | UpdateResult | 読み取り | Integer | 0 ～ 6 | ファームウェアのダウンロードまたは更新の結果<br/>**0**: 既定値。<br/>**1**: ファームウェアの更新に成功しました。<br/>**2**: 新しいファームウェア パッケージ用に十分な記憶域がありません。<br/>**3**: ファームウェア パッケージのダウンロード中にメモリ不足が発生しました。<br/>**4**: ファームウェア パッケージのダウンロード中に接続が切断されました。<br/>**5**: 新しくダウンロードされたパッケージの CRC チェックが失敗しました。<br/>**6**: ファームウェア パッケージの種類がサポートされていません。<br/>**7**: URI が無効です。マップ先のサービス API: **SystemPropertyNames.FirmwareUpdateResult** |
-| PkgName | 読み取り | String | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのわかりやすい名前。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageName** |
-| PackageVersion | 読み取り | String | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのバージョン。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageVersion** |
+| PkgName | 読み取り | 文字列 | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのわかりやすい名前。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageName** |
+| PackageVersion | 読み取り | 文字列 | 0 ～ 255 バイト | **Package** リソースによって参照されるファームウェア パッケージのバージョン。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.FirmwarePackageVersion** |
 
 ### LWM2M サーバー オブジェクト
 
-| リソース名 | 操作 | 型 | 範囲と単位 | 説明 |
+| リソース名 | 操作 | 型 | 範囲と単位 | Description |
 |------------------------|------------|---------|-----------------|---------------|
-| 既定の最短期間 | 読み取り/書き込み | Integer | 秒 | デバイスが監視対象のプロパティの更新の送信を遅延させる期間。たとえば、**DefaultMinPeriod** が 5 分であるとした場合、値がさらに短い間隔で変更されても、デバイスが監視対象のプロパティの更新を送信するのは、せいぜい 5 分おきです。マップ先のサービス API: **SystemPropertyNames.DefaultMinPeriod** |
-| 既定の最大期間 | 読み取り/書き込み | Integer | 秒 | 監視対象のプロパティが変更されるかどうかに関係なく、デバイスがそのプロパティの値の更新を送信する期間 (秒)。たとえば、**DefaultMaxPeriod** が 6 時間であるとした場合、リソースの変更に関係なく、少なくとも 6 時間おきに、監視対象のプロパティの値の更新が送信されます。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.DefaultMaxPeriod** |
+| 既定の最短期間 | 読み取り/書き込み | Integer | Seconds | デバイスが監視対象のプロパティの更新の送信を遅延させる期間。たとえば、**DefaultMinPeriod** が 5 分であるとした場合、値がさらに短い間隔で変更されても、デバイスが監視対象のプロパティの更新を送信するのは、せいぜい 5 分おきです。マップ先のサービス API: **SystemPropertyNames.DefaultMinPeriod** |
+| 既定の最大期間 | 読み取り/書き込み | Integer | Seconds | 監視対象のプロパティが変更されるかどうかに関係なく、デバイスがそのプロパティの値の更新を送信する期間 (秒)。たとえば、**DefaultMaxPeriod** が 6 時間であるとした場合、リソースの変更に関係なく、少なくとも 6 時間おきに、監視対象のプロパティの値の更新が送信されます。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.DefaultMaxPeriod** |
 | 有効期間 | 読み取り/書き込み | Integer | 秒 | デバイスの登録の有効期間。新しい登録または更新の要求は、この有効期間内にデバイスから受け取る必要があります。そうしないと、デバイスは、サービスから登録解除されます。<br/>マップ先のサービス API:<br/>**SystemPropertyNames.RegistrationLifetime** |
 
 ### 構成オブジェクト
 
-| リソース名 | 操作 | 型 | 範囲と単位 | 説明 |
+| リソース名 | 操作 | 型 | 範囲と単位 | Description |
 |---------------|------------|--------|-----------------|-------------|
-| 名前 | 読み取り/書き込み | String | | 読み取りまたは更新を行うデバイス構成の名前を一意に識別します。 |
-| 値 | 読み取り/書き込み | String | | 読み取りまたは更新を行う構成値を一意に識別します。 |
+| Name | 読み取り/書き込み | 文字列 | | 読み取りまたは更新を行うデバイス構成の名前を一意に識別します。 |
+| 値 | 読み取り/書き込み | 文字列 | | 読み取りまたは更新を行う構成値を一意に識別します。 |
 | 適用 | Execute | | | デバイスに構成の変更を適用します。 |
 
 ## 次のステップ
@@ -235,4 +235,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

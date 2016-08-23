@@ -1,6 +1,7 @@
 <properties
 	pageTitle="Azure Stream Analytics の使用を開始して IoT デバイスからのデータを処理する | Stream Analytics"
 	description="IoT センサー タグと、Stream Analytics によるデータ ストリームとリアルタイムのデータ処理"
+    keywords="IoT ソリューション, IoT の概要"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -14,7 +15,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/04/2016"
+	ms.date="08/11/2016"
 	ms.author="jeffstok"
 />
 
@@ -25,7 +26,7 @@
 ## 前提条件
 
 -   [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
--   [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) からダウンロード可能なサンプル クエリとデータ ファイル
+-   [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) からダウンロード可能なサンプル クエリとデータ ファイル
 
 ## シナリオ
 
@@ -75,7 +76,7 @@ Contoso は工業オートメーション スペースの会社で、自社の�
 
 ![Archive job query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-ここで、[GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted) からサンプル データ ファイルをコンピューター内の場所にダウンロードします。**PassThrough.txt** ファイルからクエリをコピーして貼り付けます。下の [テスト] ボタンをクリックし、ダウンロードした場所から **HelloWorldASA InputStream.json** という名前のデータ ファイルを選択します。
+ここで、[GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) からサンプル データ ファイルをコンピューター内の場所にダウンロードします。**PassThrough.txt** ファイルからクエリをコピーして貼り付けます。下の [テスト] ボタンをクリックし、ダウンロードした場所から **HelloWorldASA InputStream.json** という名前のデータ ファイルを選択します。
 
 ![Test button in Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -119,4 +120,4 @@ Contoso は工業オートメーション スペースの会社で、自社の�
 
 このチュートリアルの目的は、Stream Analytics クエリ言語を使ったさまざまなクエリを記述し、その結果をブラウザーで確認する方法を紹介することです。ただし、これはほんの導入部に過ぎません。Stream Analytics でできることはたくさんあります。Stream Analytics は多様な入出力に対応していることに加え、Azure Machine Learning の関数も利用できることから、データ ストリームを分析するうえで強力な手段となっています。[学習マップ](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)を使用して、Stream Analytics の詳細を探究することができます。クエリの作成の詳細については、[一般的なクエリ パターン](./stream-analytics-stream-analytics-query-patterns.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/02/2016"
+   ms.date="08/08/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse でのユーザー クエリの監視
@@ -22,7 +22,7 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 
 
 
-| カテゴリ | タスクまたは考慮事項 | 説明 |
+| カテゴリ | タスクまたは考慮事項 | Description |
 | :-----------------------| :---------------------------------------------- | :----------- |
 | 低パフォーマンス | 実行時間の長いユーザー クエリを検索する | [実行時間の長いクエリの検索][] |
 | 同時実行 | 同時実行リソースをユーザー クエリに割り当てる | [同時実行とワークロード管理][] |
@@ -39,13 +39,13 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 <!--Image references-->
 
 <!--Article references-->
-[実行時間の長いクエリの検索]: ./sql-data-warehouse-manage-monitor.md
-[同時実行とワークロード管理]: ./sql-data-warehouse-develop-concurrency.md
-[管理の概要]: ./sql-data-warehouse-overview-manage.md
+[実行時間の長いクエリの検索]: sql-data-warehouse-manage-monitor.md
+[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md
+[管理の概要]: sql-data-warehouse-overview-manage.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

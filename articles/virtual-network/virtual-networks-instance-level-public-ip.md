@@ -3,7 +3,7 @@
    description="ILPIP (PIP) とその管理方法について説明します"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/10/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # インスタンス レベル パブリック IP の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM またはロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることのできるパブリック IP アドレスです。これは、クラウド サービスに割り当てられる VIP (仮想 IP) の代わりにはなりません。むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。
@@ -129,4 +129,4 @@ VM またはロール インスタンスに直接割り当てた IP アドレス
 - [予約済み IP](virtual-networks-reserved-public-ip.md) について学習します。
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

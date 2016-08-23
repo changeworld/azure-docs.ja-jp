@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/13/2016"
+   ms.date="08/04/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -184,21 +184,10 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
  - Office 365 サービスおよび CRM Online への接続。
 
 ### ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
-ExpressRoute 回線に接続できる VNET 数の上限の増加分は、次の表のとおりです。既定の上限は 10 です。
+次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNet の数を示しています。
 
-**回線の制限**
 
-| **回線のサイズ** | **既定で設定される VNET リンクの数** | **ExpressRoute Premium の VNET リンクの数** |
-|--------------|----------------------------------------|-----------------------------------------------|
-| 50 Mbps | 10 | 10 |
-| 100 Mbps | 10 | 20 |
-| 200 Mbps | 10 | 25 |
-| 500 Mbps | 10 | 40 |
-| 1 Gbps | 10 | 50 |
-| 2 Gbps | 10 | 60 |
-| 5 Gbps | 10 | 75 |
-| 10 Gbps | 10 | 100 |
-
+[AZURE.INCLUDE [expressroute-limits](../../includes/expressroute-limits.md)]
 
 
 ### ExpressRoute Premium はどのようにして有効にしますか。
@@ -251,4 +240,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### ExpressRoute 接続経由で Dynamics AX にオンラインでアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

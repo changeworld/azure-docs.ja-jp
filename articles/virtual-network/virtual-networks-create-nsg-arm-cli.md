@@ -3,7 +3,7 @@
    description="Azure CLI を使用して ARM で NSG を作成してデプロイする方法について"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Azure CLI で NSG を作成する方法
 
@@ -269,4 +269,4 @@
 		data:    
 		info:    network vnet subnet set command OK
 
-<!-----HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -12,7 +12,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
     ms.workload="tbd"
-    ms.date="04/15/2016"
+    ms.date="08/16/2016"
     ms.author="sethm" />
 
 # Event Hubs のプログラミング ガイド
@@ -23,7 +23,7 @@
 
 イベントは、HTTP POST か AMQP 1.0 接続のいずれかを利用して Event Hub に送信されます。何をいつ利用するかは、解決対象の具体的なシナリオによります。AMQP 1.0 接続は Service Bus の仲介型接続として課金され、頻繁にメッセージ量が多くなり、低遅延の要件があるシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成され、管理されます。.NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) は、イベントが Event Hub に送信されるときに使われる AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
+Event Hubs は [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスで作成し、管理します。.NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) クラスと [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスになります。[EventHubClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx) は、イベントが Event Hub に送信されるときに使われる AMQP 通信チャンネルを提供します。[EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) クラスはイベントを表し、Event Hub にメッセージを発行するために使用されます。このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。その他のプロパティは [EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.aspx) オブジェクトに追加され、Event Hub に渡されます。
 
 ## 作業開始
 
@@ -60,7 +60,7 @@ Event Hubs とやり取りするための主要クラスは [Microsoft.ServiceBu
 var client = EventHubClient.Create(description.Path);
 ```
 
-このメソッドは App.config ファイルの `appSettings` セクションにある、Service Bus の接続情報を使用します。Service Bus 接続情報を格納するために使用される `appSettings` XML の例については、[Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドの文書を参照してください。
+このメソッドは App.config ファイルの `appSettings` セクションにある、 Service Bus の接続情報を使用します。Service Bus 接続情報を格納するために使用される `appSettings` XML の例については、[Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.create.aspx) メソッドの文書を参照してください。
 
 接続文字列からクライアントを作成することもできます。この選択肢は Azure worker ロールを使用する場合に効果があります。worker の設定プロパティに文字列を格納できるためです。次に例を示します。
 
@@ -168,7 +168,7 @@ while(receive)
 
 時間と共に、均衡が確立されます。この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケールがコンシューマーに適用されます。Event Hubs にはメッセージ カウントの直接的概念がないため、平均的な CPU 利用率が、多くの場合、バックエンドまたはコンシューマー スケールを測定する最良のメカニズムとなります。発行元がコンシューマーが処理できる数を超えたイベントを発行し始めた場合、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
 
-[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスは、Azure ストレージ ベースのチェックポイント処理メカニズムも実装します。このメカニズムはパーティションごとにオフセットを保存します。そのため、各コンシューマーは前回のコンシューマーが保存した内容から、最後のチェックポイントを判断できます。パーティションがリースによってノード間を移動するにつれて、負荷移動を円滑にする同期メカニズムとなります。
+[EventProcessorHost](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx) クラスは Azure ストレージ ベースのチェックポイント処理メカニズムも実装します。このメカニズムはパーティションごとにオフセットを保存します。そのため、各コンシューマーは前回のコンシューマーが保存した内容から、最後のチェックポイントを判断できます。パーティションがリースによってノード間を移動するにつれて、負荷移動を円滑にする同期メカニズムとなります。
 
 ## 発行元失効
 
@@ -185,4 +185,4 @@ Event Hubs シナリオに関する詳細については、次のリンク先を
 - [Event Hubs コード サンプル](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [イベント プロセッサ ホスト API リファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!-----HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

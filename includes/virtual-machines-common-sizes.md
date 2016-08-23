@@ -127,7 +127,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500| 高 |
 |Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500| 高 |
 |Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500| 極めて高 |
-|Standard\_D15\_v2 |20|140 GB|10|一時的 (SSD) = 1 TB |40|40 x 500| 極めて高 |
+|Standard\_D15\_v2 |20|140 GB|8|一時的 (SSD) = 1 TB |40|40 x 500| 極めて高 |
 
 
 ## DS シリーズ*
@@ -159,7 +159,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_DS12\_v2 |4|28|4|ローカル SSD ディスク = 56 GB |8|144| 毎秒 12,800 192 MB | 高 |
 |Standard\_DS13\_v2 |8|56|8|ローカル SSD ディスク = 112 GB |16|288| 毎秒 25,600 384 MB | 高 |
 |Standard\_DS14\_v2 |16|112|8|ローカル SSD ディスク = 224 GB |32|576| 毎秒 51,200 768 MB | 極めて高 |
-|Standard\_DS15\_v2 |20|140 GB|10|ローカル SSD ディスク = 280 GB |40| 720|毎秒 64,000 960 MB | 極めて高 |
+|Standard\_DS15\_v2 |20|140 GB|8|ローカル SSD ディスク = 280 GB |40| 720|毎秒 64,000 960 MB | 極めて高 |
 
 
 *DS シリーズ VM で可能な 1 秒あたりの入力/出力操作 (IOPS) とスループット (帯域幅) の最大値は、ディスクのサイズによる影響を受けます。詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」を参照してください。
@@ -219,7 +219,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 |Standard\_GS4|16|224|8|ローカル SSD ディスク = 448 GB |32|2112| 40,000 1,000 MB/秒 | 極めて高 |
 |Standard\_GS5|32|448|8|ローカル SSD ディスク = 896 GB |64|4224| 80,000 2,000 MB/秒 | 極めて高 |
 
-## N シリーズ
+## N シリーズ (プレビュー)
 
 NC と NV サイズは、GPU 対応インスタンスとも呼ばれます。これらは、NVIDIA の GPU カードを含む特殊な仮想マシンで、さまざまなシナリオとユース ケース用に最適化されています。NV サイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化されています。NC サイズは、CUDA や OpenCL ベースのアプリケーションやシミュレーションなどの、コンピューティング集中型およびネットワーク集中型のアプリケーション、アルゴリズム用にさらに最適化されています。
 
@@ -230,9 +230,9 @@ NV インスタンスは、NVIDIA の Tesla M60 GPU およびデスクトップ 
 
 | サイズ | コア | GPU | メモリ | ディスク |
 |------|-------|----------------|--------|-------------|
-| NV6 | 6 | NVIDIA M60 x 1 | 56 GB | 380 GB SSD |
-| NV12 | 12 | NVIDIA M60 x 2 | 112 GB | 680 GB SSD |
-| NV24 | 24 | NVIDIA M60 x 4 | 224 GB | 1440 GB SSD | 
+| Standard\_NV6 | 6 | NVIDIA M60 x 1 | 56 GB | 380 GB SSD |
+| Standard\_NV12 | 12 | NVIDIA M60 x 2 | 112 GB | 680 GB SSD |
+| Standard\_NV24 | 24 | NVIDIA M60 x 4 | 224 GB | 1440 GB SSD | 
 
 
 
@@ -243,9 +243,9 @@ NC インスタンスは NVIDIA の Tesla K80 を備えています。エネル�
 
 | サイズ | コア | GPU | メモリ | ディスク |
 |------|-------|----------------|--------|-------------|
-| NC6 | 6 | NVIDIA K80 x 1 | 56 GB | 380 GB SSD |
-| NC12 | 12 | NVIDIA K80 x 2 | 112 GB | 680 GB SSD |
-| NC24 | 24 | NVIDIA K80 x 4 | 224 GB | 1440 GB SSD |
+| Standard\_NC6 | 6 | NVIDIA K80 x 1 | 56 GB | 380 GB SSD |
+| Standard\_NC12 | 12 | NVIDIA K80 x 2 | 112 GB | 680 GB SSD |
+| Standard\_NC24 | 24 | NVIDIA K80 x 4 | 224 GB | 1440 GB SSD |
 
 ## 注意: Standard A0 ～ A4 は CLI および PowerShell を使用します 
 
@@ -264,4 +264,4 @@ NC インスタンスは NVIDIA の Tesla K80 を備えています。エネル�
 - [Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)について学習してください。
 - 高性能コンピューティング (HPC) などのワークロードに対する [A8、A9、A10、A11 コンピューティング集中型インスタンス](../articles/virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)について学習してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

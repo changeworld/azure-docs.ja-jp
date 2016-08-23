@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/29/2016"
+   ms.date="08/04/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse への認証
@@ -63,7 +63,6 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 - Azure Active Directory 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - Azure Active Directory では、SQL Data Warehouse に接続するアプリケーション向けにトークンベース認証をサポートしています。
 
-> [AZURE.IMPORTANT] Azure Active Directory 認証はプレビュー機能で、ライセンス契約 (例: Enterprise Agreement、Microsoft Azure 契約、マイクロソフト オンライン サブスクリプション契約) に定められたプレビューの規定に従うものとします。また、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用される場合があります。
 
 ### 構成の手順
 
@@ -91,4 +90,4 @@ Visual Studio またはその他のアプリケーションを使用してデー
 [Visual Studio を使用したクエリ]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

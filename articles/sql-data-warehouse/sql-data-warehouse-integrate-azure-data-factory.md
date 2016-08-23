@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/02/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # SQL Data Warehouse での Azure Data Factory の使用
@@ -26,7 +26,7 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 
 + Azure BLOB ストレージ
 + Azure SQL データベース
-+ 内部設置型 SQL Server
++ オンプレミスの SQL Server
 + IaaS 上の SQL Server
 
 データのコピー アクティビティの設定方法については、[Azure Data Factory でのデータのコピー][]に関するページをご覧ください。
@@ -50,4 +50,4 @@ Azure Data Factory により、オンプレミス ソースとさまざまな Az
 <!--Other Web references-->
 [Azure Data Factory のドキュメント]: https://azure.microsoft.com/documentation/services/data-factory/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

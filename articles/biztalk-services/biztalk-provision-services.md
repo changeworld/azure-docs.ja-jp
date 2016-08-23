@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/16/2016"
+	ms.date="08/15/2016"
 	ms.author="mandia"/>
 
 
@@ -151,7 +151,7 @@ Access Control の値は、どのアプリケーションでも使用できま�
 
 Access Control サービス ID は、アプリケーションまたはクライアントが Access Control で直接認証してトークンを受け取るための一連の資格情報です。
 
-> [AZURE.IMPORTANT] BizTalk サービスでは、既定のサービス ID の**所有者**と**パスワード**値が使用されます。パスワード値の代わりに対称キー値を使用した場合、次のエラーが発生する可能性があります。<br/><br/>*指定された資格情報を使用して Access Control 管理サービス アカウントに接続できませんでした*
+> [AZURE.IMPORTANT] BizTalk サービスでは、既定のサービス ID の**所有者**と**パスワード**値が使用されます。パスワード値の代わりに対称キー値を使用した場合、次のエラーが発生する可能性があります。<br/><br/>"*指定された資格情報を使用して Access Control 管理サービス アカウントに接続できませんでした*"
 
 ガイドラインと推奨事項については、[ACS 名前空間の管理](https://msdn.microsoft.com/library/azure/hh674478.aspx)に関するページを参照してください。
 
@@ -169,11 +169,11 @@ Access Control サービス ID は、アプリケーションまたはクライ�
 <br/><br/>
 1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com) にこのサブスクリプションへのアクセスを許可するとします。このシナリオでは、BizTalk 管理者は、Azure ポータルにサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
 <br/><br/>
-「<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Azure のロールベースのアクセス制御</a>」に、詳しい説明があります。
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Azure ポータルでのサブスクリプションとストレージ アカウントの管理</a>に関するページに、詳しい説明があります。
 </td>
 </tr>
 <tr>
-<td>Azure SQL Database</td>
+<td>Azure SQL データベース</td>
 <td>BizTalk サービスで使用されるテーブル、ビュー、およびストアド プロシージャが格納されます。これには、追跡データも含まれます。
 <br/><br/>
 BizTalk サービスを作成するときは、既存の Azure SQL Server や Azure SQL Database を使用するか、新しいサーバーやデータベースを自動的に作成することができます。
@@ -252,12 +252,12 @@ Azure BizTalk サービスを作成するときに、**[ハイブリッド接続
 
 ## 次のステップ
 
-BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)のページでこれらのタブについての理解を深めてください。BizTalk サービスをアプリケーションで使用する準備ができました。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)のページでこれらのタブについての理解を深めてください。BizTalk サービスをアプリケーションで使用する準備ができました。アプリケーションの作成を開始するには、[Azure BizTalk Services ](http://go.microsoft.com/fwlink/p/?LinkID=235197) に関するページを参照してください。
 
 ## 関連項目
 - [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)<br/>
 - [BizTalk サービス: サービスの状態のチャート](biztalk-service-state-chart.md)<br/>
-- [BizTalk サービス: バックアップと復元](biztalk-backup-restore.md)<br/>
+- [BizTalk Services: バックアップと復元](biztalk-backup-restore.md)<br/>
 - [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
 - [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
@@ -271,4 +271,4 @@ BizTalk サービスが作成されたので、[BizTalk サービス: [ダッシ
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

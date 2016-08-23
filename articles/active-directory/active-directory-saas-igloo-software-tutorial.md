@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/16/2016" 
+    ms.date="08/05/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Igloo Software の統合
@@ -68,21 +68,21 @@
 
 ###シングル サインオンを構成するには、次の手順を実行します。
 
-1.  Azure クラシック ポータルの **[Igloo Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、[**シングル サインオンの構成**] ダイアログを開きます。
+1.  Azure クラシック ポータルの **[Igloo Software]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-igloo-software-tutorial/IC783964.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-igloo-software-tutorial/IC783964.png "Configure Single Sign-On")
 
 2.  **[ユーザーの Igloo Software へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-igloo-software-tutorial/IC783965.png "Microsoft Azure AD シングル サインオン")
 
-3.  **[アプリケーション URL の構成]** ページの **[Igloo Software サインイン URL]** ボックスに、"**https://company.igloocommunities.com/?signin*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Igloo Software サインイン URL]** ボックスに、"*https://company.igloocommunities.com/?signin*"" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-igloo-software-tutorial/IC773625.png "アプリケーション URL の構成")
 
 4.  **[Igloo Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-igloo-software-tutorial/IC783966.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-igloo-software-tutorial/IC783966.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザーのウィンドウで、管理者として Igloo Software 企業サイトにログインします。
 
@@ -128,11 +128,11 @@
 
     1.  **[サインインでユーザー作成]** で **[サインイン時に新しいユーザーをサイトに作成]** を選択します。
     2.  **[サインインの設定]** で、**[[サインイン] 画面で SAML ボタンを使用する]** を選択します。
-    3.  **[保存]** をクリックします。
+    3.  [**Save**] をクリックします。
 
 12. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-igloo-software-tutorial/IC783973.png "Configure Single Sign-On")
+    ![Configure Single Sign-On](./media/active-directory-saas-igloo-software-tutorial/IC783973.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
 Igloo Software へのユーザー プロビジョニングを構成するときに必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Igloo Software にログインしようとすると、そのユーザーが存在するかどうかが Igloo Software によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Igloo Software によって自動的に作成されます。
@@ -154,4 +154,4 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

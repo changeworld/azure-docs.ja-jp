@@ -14,18 +14,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
-   ms.date="04/20/2016"
+   ms.date="08/05/2016"
    ms.author="danlep"/>
 
 # クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事
 
 
-ここでは、クラシック デプロイメント モデルで Windows ベースの仮想マシンを作成および管理するのに必要なすべてのドキュメントを紹介します。
+ここでは、クラシック デプロイメント モデルで Windows ベースの Azure 仮想マシンを作成および管理するのに必要なすべてのドキュメントを紹介します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
-## 概要
+## Overview
 
 [仮想マシンについて](virtual-machines-windows-about.md)
 
@@ -89,8 +89,6 @@
 ## 管理
 
 [Azure PowerShell を使用した仮想マシンの管理](virtual-machines-windows-classic-manage-psh.md)
-
-[Azure コマンドライン インターフェイスで VM タスクに使用するリソース マネージャーとサービス管理の同等のコマンド](virtual-machines-windows-cli-manage.md)
 	
 [従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)
 	
@@ -103,6 +101,8 @@
 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)
 
 [Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)
+
+[プラットフォームでサポートされているクラシックから Azure Resource Manager への移行](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
 
 
@@ -170,6 +170,7 @@
 
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md)
 
+
 ## リファレンス
 [サービス管理モードでの Azure CLI コマンド](../virtual-machines-command-line-tools.md)
 
@@ -178,7 +179,6 @@
 [サービス管理 .NET API](https://msdn.microsoft.com/library/azure/mt420161.aspx)
 
 [Azure サービス管理 PowerShell コマンドレットのリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn708504.aspx)
-
 
 ## トラブルシューティング
 
@@ -192,4 +192,4 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

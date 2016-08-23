@@ -1,5 +1,5 @@
 <properties
- pageTitle="A8 ～ A11 インスタンスと Windows について | Microsoft Azure"
+ pageTitle="A8、A9、A10、A11 VM サイズと Windows について | Microsoft Azure"
  description="Windows VM とクラウド サービスに Azure A8、A9、A10、A11 という多くのコンピューティング処理を要するサイズを使用する場合の背景情報と考慮事項について説明します。"
  services="virtual-machines-windows, cloud-services"
  documentationCenter=""
@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="infrastructure-services"
- ms.date="04/26/2016"
+ ms.date="08/04/2016"
  ms.author="danlep"/>
 
 # A8、A9、A10、A11 コンピューティング集中型インスタンスについて
@@ -28,7 +28,7 @@ ms.service="virtual-machines-windows"
 
 単一のクラウド サービス、可用性セット、または Azure Batch プール内では、A8 および A9 インスタンスは、Azure の RDMA ネットワークにアクセスし、Microsoft Network Direct インターフェイスを使用してインスタンス間の通信を行う Windows MPI アプリケーションを実行できます。
 
-MPI アプリケーションが、Windows 仮想マシン、クラウド サービス、A8 または A9 インスタンスの Azure Batch プールで RDMA ネットワークにアクセスするための前提条件を次の表に示します。一般的なデプロイ シナリオについては、「[HPC Pack と A8 および A9 インスタンスを使用して Windows RDMA クラスターを設定して MPI アプリケーションを実行する](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」および「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
+MPI アプリケーションが、Windows 仮想マシン、クラウド サービス、A8 または A9 インスタンスの Azure Batch プールで RDMA ネットワークにアクセスするための前提条件を次に示します。一般的なデプロイ シナリオについては、「[HPC Pack と A8 および A9 インスタンスを使用して Windows RDMA クラスターを設定して MPI アプリケーションを実行する](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)」および「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
 
 
 前提条件 | 仮想マシン | クラウド サービスまたは Batch プール 
@@ -58,4 +58,4 @@ Windows Server で HPC Pack を使って、多くのコンピューティング�
 
 * A8 および A9 インスタンスを使用して Azure Batch で MPI アプリケーションを実行する方法については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../batch/batch-mpi.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0810_2016-->

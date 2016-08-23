@@ -13,16 +13,19 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/18/2016" 
+	ms.date="08/15/2016" 
 	ms.author="elizapo"/>
 
 # Azure RemoteApp とは
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp は、Azure をサポートするリモート デスクトップ サービスによってオンプレミスの Microsoft の RemoteApp プログラムの機能を提供します。Azure RemoteApp は、多くのさまざまなユーザーのデバイスのアプリケーションにセキュリティで保護されたリモート アクセスを提供します。Azure RemoteApp では基本的に、非永続的なターミナル サーバー セッションがクラウドでホストされ、それらを使用したり、他のユーザーと共有したりできます。
 
 Azure RemoteApp では、ほぼすべてのデバイスでアプリとリソースを共有できます。アプリはクラウドでホストされます。つまり、管理者は、ユーザーの需要を満たすためにハードウェアとスケーリングに対処する必要はありません。管理者が実行する必要があるのは共有するアプリのアップロードだけであり、後はユーザーにそれらのアプリを使用してもらうだけです。[ユーザーはデバイスを持ち続け](remoteapp-clients.md)、管理者が Azure ポータルを通してすべてを管理します。さらに、会社の資格情報を使用することを選択して、アプリとデータのセキュリティを確保することもできます。
 
-Azure RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試しになれます](https://azure.microsoft.com/services/remoteapp/)。
+Azure RemoteApp の詳細については、以下を参照してください。既に説明にご納得いただいた場合は、[今すぐお試しになれます](https://azure.microsoft.com/services/remoteapp/)。
 
 Azure の RemoteApp について質問はありますか。 「[FAQ (よく寄せられる質問)](remoteapp-faq.md)」を参照してください。
 
@@ -78,6 +81,6 @@ Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアン
  
 
 ### サポートのお願い 
-記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** または **[編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
+記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上へスクロールし、**[Edit on GitHub (GitHub で編集)]** または **[編集]** をクリックすると、変更を行えます。これらの変更は Microsoft が受け取り、確認します。その後、Microsoft による承認が済んだら、変更と改善をここで確認できます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

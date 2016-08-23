@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="01/20/2016"
+   ms.date="08/10/2016"
    ms.author="aprameyr"/>
 
 # サービスの状態
@@ -40,4 +40,4 @@ Service Fabric の概念の詳細については、次を参照してくださ�
 
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 
-<!---HONumber=AcomDC_0128_2016-->
+<!---HONumber=AcomDC_0810_2016-->

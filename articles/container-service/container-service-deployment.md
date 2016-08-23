@@ -82,7 +82,7 @@ Azure ポータルにサインインし、**[新規]** を選択して、Azure M
 
 ## Azure CLI を使用してサービスを作成する
 
-コマンド ラインを使用して Azure コンテナー サービスのインスタンスを作成するには、Azure サブスクリプションが必要です。サブスクリプションがない場合でも、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。また、Azure CLI をインストールし、構成する必要があります。
+コマンド ラインを使用して Azure コンテナー サービスのインスタンスを作成するには、Azure サブスクリプションが必要です。サブスクリプションがない場合でも、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。また、Azure CLI を[インストール](../xplat-cli-install.md)し、[構成](../xplat-cli-connect.md)する必要があります。
 
 DC/OS または Docker Swarm クラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
 
@@ -122,7 +122,7 @@ azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri 
 
 ### テンプレート パラメーターを指定する
 
-このバージョンのコマンドでは、パラメーターを対話で定義する必要があります。JSON で書式設定された文字列としてパラメーターを指定する場合、`-p` スイッチでそれを実行できます。次に例を示します。
+このバージョンのコマンドでは、パラメーターを対話で定義する必要があります。JSON で書式設定された文字列などのパラメーターを指定する場合、`-p` スイッチでそれを実行できます。次に例を示します。
 
  ```bash
  # sample deployment
@@ -130,7 +130,7 @@ azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri 
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
  ```
 
-または、`-e` スイッチを利用し、JSON で書式設定されたパラメーターを指定できます。
+または、`-e` スイッチを利用し、JSON で書式設定されたパラメーター ファイルを指定することもできます。
 
  ```bash
  # sample deployment
@@ -195,4 +195,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 - [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 - [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

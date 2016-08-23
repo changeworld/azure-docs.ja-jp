@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="06/16/2016"
+	ms.date="08/04/2016"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication とは
@@ -80,7 +80,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 ## Multi-Factor Authentication で使用可能な方法
 ユーザーがサインインしようとすると、追加の確認がユーザーに対して行われます。この 2 番目の確認のために使用できる方法の一覧を次に示します。
 
-確認方法 | 説明
+確認方法 | Description
 ------------- | ------------- |
 電話 | ユーザーのスマートフォンが呼び出され、# 記号を押してサインインを確認するよう求めるメッセージが再生されます。これによって確認プロセスが完了します。このオプションは構成可能であり、指定するコードを変更することができます。
 テキスト メッセージ | 6 桁のコードを含むテキスト メッセージがユーザーのスマートフォンに送信されます。確認プロセスを完了するには、このコードを入力します。
@@ -91,7 +91,7 @@ Azure Multi-Factor Authentication を使えば、シンプルなサインイン 
 ## Azure Multi-Factor Authentication の使用可能なバージョン
 Azure Multi-Factor Authentication は、次の 3 種類のバージョンが使用可能です。下の表では各バージョンについて詳細に説明しています。
 
-バージョン | 説明
+バージョン | Description
 ------------- | ------------- |
 Office 365 の多要素認証 | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
 Azure 管理者用の多要素認証 | すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
@@ -209,4 +209,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

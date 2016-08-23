@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
@@ -47,7 +47,7 @@
  
 ![関連付け ID](./media/multi-factor-authentication-end-user-manage/correlation.png)
 
- - **ユーザー ID** – エラーが表示されたユーザーの ID は何でしたか (例: user@contoso.com)?
+ - **ユーザー ID** – エラーが表示されたユーザーの ID は何でしたか (例: user@contoso.com)。
  - **ユーザーに関する情報** – そのユーザーはフェデレーション ユーザー、パスワード ハッシュ同期されたユーザー、クラウド ユーザーでしたか。 そのユーザーには、Azure AD Premium、Enterprise Mobility、または Azure AD Basic のライセンスが割り当てられていましたか。 そのユーザーが Office 365 を使用しているかどうかなど。
 
 この情報を含めることで、迅速に問題を解決するのに役立ちます。
@@ -73,7 +73,7 @@
 ## 電話番号を変更する必要がある場合
 多要素認証の使用方法に応じて、電話番号などの設定を変更できる場所がいくつかあります。下の表からご使用の状況に最も近いものを選択します。
 
-多要素認証の使用方法|説明
+多要素認証の使用方法|Description
 :------------- | :------------- | 
 [Office 365 で使用する](#changing-your-settings-with-office-365)| この場合には、Office 365 ポータルを使用して設定を変更します。
 [わからない](#changing-your-settings-with-the-myapps-portal)|この場合には、[http://myapps.microsoft.com](http://myapps.microsoft.com) にサインインし、設定を変更します。
@@ -101,7 +101,7 @@ Office 365 で多要素認証を使用する場合は、Office 365 ポータル�
 
 #### Myapps ポータルで設定を変更するには
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。	
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 2. 上部にある [プロファイル] を選択します。
 3. 追加のセキュリティ確認を選択します。![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. 設定を変更できるページに移動します。
@@ -145,7 +145,7 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 - 電話の呼び出しを携帯電話で受けるように選択している場合、呼び出し信号が適切であることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。
 - 確認コードをテキスト メッセージで携帯電話に送信するように選択している場合は、ご利用のサービス プランと、デバイスがテキスト メッセージの配信をサポートしていることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。また、これらのコードの受信を試みているときに、十分な電波が届いていることを確認します。
-- モバイル アプリを使って確認コードを受信するように選択している場合は、電波状態が良いことを確認します。配信の速度や利用可能性は、場所とサービス プロバイダーによって異なる場合があることも忘れないでください。 
+- モバイル アプリを使って確認コードを受信するように選択している場合は、電波状態が良いことを確認します。配信の速度や利用可能性は、場所とサービス プロバイダーによって異なる場合があることも忘れないでください。
 
 スマートフォンをお持ちの場合は、[Azure Authenticator アプリ](multi-factor-authentication-azure-authenticator.md)を使用することをお勧めします。
 
@@ -172,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

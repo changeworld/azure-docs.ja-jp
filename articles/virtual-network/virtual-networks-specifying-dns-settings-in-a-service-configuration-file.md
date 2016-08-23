@@ -3,7 +3,7 @@
    description="仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する"
    services="virtual-network"
    documentationCenter="na"
-   authors="joaoma"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/24/2016"
-   ms.author="joaoma" />
+   ms.author="jdial" />
 
 # サービス構成ファイルでの DNS 設定の指定
 
@@ -41,4 +41,4 @@
 
 [管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0810_2016-->

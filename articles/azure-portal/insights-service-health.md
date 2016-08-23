@@ -1,20 +1,20 @@
 <properties
 	pageTitle="Azure Insights を使用してサービスの正常性状態を追跡する | Microsoft Azure"
 	description="Azure でパフォーマンスの低下やサービスの中断がいつ発生したかを検出します。"
-	authors="stepsic-microsoft-com"
-	manager="kamrani"
+	authors="rboucher"
+	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/08/2015"
-	ms.author="stepsic"/>
+	ms.author="robb"/>
 
 # サービス正常性を追跡する
 
@@ -32,7 +32,7 @@ Azure は、サービスの中断やパフォーマンスの低下があるた�
 
 ## サービス正常性の完全なログを参照する
 
-2. **[参照]** クリックして **[監査ログ]** を選択します。![ハブの参照](./media/insights-service-health/Insights_Browse.png)
+2. **[参照]** クリックして **[監査ログ]** を選択します。![参照ハブ](./media/insights-service-health/Insights_Browse.png)
 
 3. これによってブレードが開き、過去 7 日間にサブスクリプションに影響を与えたイベントがすべて表示されます。一覧にサービス正常性のエントリが表示されますが、大量にあり一覧で見つけにくい場合があります。
 
@@ -52,4 +52,4 @@ Azure は、サービスの中断やパフォーマンスの低下があるた�
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

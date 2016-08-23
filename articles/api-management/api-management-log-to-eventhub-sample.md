@@ -13,8 +13,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="05/25/2016"
-    ms.author="v-darmi"/>
+    ms.date="08/09/2016"
+    ms.author="darrmi"/>
 
 # Azure API Management、Event Hubs、Runscope を使用した API の監視
 
@@ -254,7 +254,7 @@ EventData オブジェクトのリストがメソッドに渡されます。こ�
 
 ![Demonstration of request being forwarded to Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## 概要
+## まとめ
 Azure API Management サービスでは、API を経由して送受信される HTTP トラフィックをキャプチャするための理想的な場所が用意されています。Azure Event Hubs は、そのトラフィックをキャプチャして、ログ記録、監視、その他の高度な分析用のセカンダリ処理システムに供給するための、非常にスケーラブルで低コストのソリューションです。数十行のコードを書くだけで、Runscope のようなサード パーティ製のトラフィック監視システムに簡単に接続できます。
 
 ## 次のステップ
@@ -268,4 +268,4 @@ Azure API Management サービスでは、API を経由して送受信される 
 	-	[log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
 	
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

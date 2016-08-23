@@ -3,8 +3,8 @@
    description="この記事では、Azure のクラシック デプロイ モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します。"
    documentationCenter="na"
    services="application-gateway"
-   authors="joaoma"
-   manager="jdial"
+   authors="georgewallace"
+   manager="carmonm"
    editor="tysonn"/>
 <tags
    ms.service="application-gateway"
@@ -12,14 +12,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/02/2016"
-   ms.author="joaoma"/>
+   ms.date="08/09/2016"
+   ms.author="gwallace"/>
 
 # クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する
 
 > [AZURE.SELECTOR]
--[Azure Classic PowerShell](application-gateway-ssl.md)
+-[Azure portal](application-gateway-ssl-portal.md)
 -[Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
+-[Azure Classic PowerShell](application-gateway-ssl.md)
 
 Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
@@ -28,7 +29,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 2. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内にエンドポイントが作成されているか、割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 アプリケーション ゲートウェイで SSL オフロードを構成するには、次の手順を順番に実行します。
 
@@ -40,7 +41,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 6. [ゲートウェイの状態の確認](#verify-the-gateway-status)
 
 
-## 新しいアプリケーション ゲートウェイの作成
+## アプリケーション ゲートウェイの作成
 
 ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
@@ -104,6 +105,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 	ThumbprintAlgo : sha1RSA
 	State..........: Provisioned
 
+>[AZURE.NOTE] 証明書のパスワードは、4 ～ 12 文字のアルファベットまたは数字で指定する必要があります。特殊文字は使用できません。
 
 ## ゲートウェイの構成
 
@@ -112,16 +114,16 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 値は次のとおりです。
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
-- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、および SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
 **構成に関する追加の注意**
 
-SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCert** 要素は、前述の SSL 証明書のアップロードで使用したものと同じ名前を値に設定して **HttpListener** に追加する必要があります。フロントエンド ポートは 443 に更新する必要があります。
+SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCert** 要素は、前述の SSL 証明書のアップロードで使用したものと同じ名前を値に設定して **HttpListener** に追加されます。フロントエンド ポートは 443 に更新する必要があります。
 
-**cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるようにアプリケーション ゲートウェイを構成できます。これはセッション cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
+**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるように Application Gateway を構成できます。これはセッション Cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
 
 
 
@@ -233,4 +235,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0810_2016-->

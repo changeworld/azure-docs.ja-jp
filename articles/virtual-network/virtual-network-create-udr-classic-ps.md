@@ -3,7 +3,7 @@
    description="クラシック デプロイメント モデルで PowerShell を使用して VNet でのルーティングを制御する方法を使用する"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 #PowerShell を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
@@ -110,4 +110,4 @@ FW1 VM で IP 転送を有効にするには、次の手順に従います。
 		Get-AzureVM -Name FW1 -ServiceName TestRGFW `
 			| Set-AzureIPForwarding -Enable
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

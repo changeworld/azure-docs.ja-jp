@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/20/2016"
+	ms.date="08/16/2016"
 	ms.author="markusvi"/>
 
 # Azure Active Directory に関する FAQ
@@ -127,7 +127,7 @@ Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソ
 
 **A:** Azure AD には、Microsoft、アプリケーション サービス プロバイダー、パートナーが開発した、2,600 個を超える事前統合されたアプリケーションがあります。すべての事前統合されたアプリケーションで SSO がサポートされています。SSO を使用すると、対象のアプリへのアクセスに、所属する組織の資格情報を使うことができます。また、一部のアプリケーションでは、プロビジョニングとプロビジョニング解除の自動化がサポートされています。
 
-事前統合されたアプリケーションの完全な一覧については、「[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)」をご覧ください。
+事前統合されたアプリケーションの完全な一覧については、「[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)」を参照してください。
 
 
 ---
@@ -139,7 +139,7 @@ Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソ
 詳細については、次のリンクを参照してください。
 
 - [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
-- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md) 
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
 
 
 ---
@@ -202,4 +202,4 @@ Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソ
 
 ---
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

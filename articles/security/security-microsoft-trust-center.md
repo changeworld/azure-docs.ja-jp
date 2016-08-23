@@ -4,7 +4,7 @@
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,18 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/23/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Microsoft セキュリティ センター
 
-Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供するように努めていますが、Microsoft セキュリティ センターでは、サービスを実行している Azure プラットフォームが安全であると確信できるために必要な情報を提供しています。
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
 Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
 そうした疑問には、答えることができます。データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
 
-Microsoft セキュリティ センターでは、以下のような情報を提供しています。
+Microsoft セキュリティ センターでは、次のような情報を提供しています。
 
 - [セキュリティ](https://aka.ms/tcsecurity) – すべての Microsoft クラウド サービスがどのようにセキュリティで保護されているかについて説明しています。
 - [プライバシー](https://aka.ms/tcprivacy) – Microsoft が Microsoft クラウドでお客様のデータのプライバシーを確保している方法について説明しています。
@@ -37,4 +37,4 @@ Microsoft セキュリティ センターでは、以下のような情報を提
 
 [Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter)には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

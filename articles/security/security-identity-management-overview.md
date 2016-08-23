@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure ID 管理のセキュリティの概要 | Microsoft Azure"
-   description="Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。"
+   description=" Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/22/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Azure ID 管理のセキュリティの概要
@@ -157,4 +157,4 @@ Microsoft の ID 管理はオンプレミスとクラウドにまたがり、場
 - [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 - [Active Directory チームのブログ](https://blogs.technet.microsoft.com/ad/)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

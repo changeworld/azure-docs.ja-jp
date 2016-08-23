@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のトラブルシューティング方法
@@ -47,7 +47,7 @@
 
 #### 測定 
 
-1.	コンピューターでのメモリ使用量を監視して、使用可能なメモリを超過しないようにします。 
+1.	コンピューターでのメモリ使用量を監視して、使用可能なメモリを超過しないようにします。
 2.	`Page Faults/Sec` パフォーマンス カウンターを監視します。ほとんどのシステムは通常の操作時でもページ フォールトが発生する場合があるため、タイムアウトに対応するこのページ フォールト パフォーマンス カウンターが急激に増えていないかを監視してください。
 
 #### 解決策
@@ -164,8 +164,8 @@ Azure Redis Cache インスタンスにあるはずの特定のデータがな�
 
 サーバー側のメモリ不足により、要求処理を遅らせる可能性があるあらゆる種類のパフォーマンス問題が発生します。メモリ不足が発生すると、通常、システムはディスク上の仮想メモリに物理メモリのデータをページングする必要があります。この*ページ フォールト*により、システムの処理速度が大幅に低下します。このメモリ不足の原因として考えられるものをいくつか以下に示します。
 
-1.	キャッシュがデータでいっぱいになった。 
-2.	Redis でメモリの断片化が多く発生している。この原因は、ほとんどの場合、大きいオブジェクトを格納したことによるものです (Redis は小さいオブジェクト用に最適化されています。詳細については、「[What is the ideal value size range for redis? Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)」 (Redis に最適な値のサイズ範囲は何ですか? 100 KB では大きすぎますか?) という投稿を参照してください)。 
+1.	キャッシュがデータでいっぱいになった。
+2.	Redis でメモリの断片化が多く発生している。この原因は、ほとんどの場合、大きいオブジェクトを格納したことによるものです (Redis は小さいオブジェクト用に最適化されています。詳細については、「[What is the ideal value size range for redis? Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)」 (Redis に最適な値のサイズ範囲は何ですか? 100 KB では大きすぎますか?) という投稿を参照してください)。
 
 #### 測定
 
@@ -264,7 +264,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 4. サーバーまたはクライアントに帯域幅制限を適用している場合、要求が完了するまで時間がかかるため、タイムアウトになります。タイムアウトの原因がサーバーのネットワーク帯域幅によるものかどうかを確認する場合は、「[サーバー側の帯域幅の超過](#server-side-bandwidth-exceeded)」を参照してください。タイムアウトの原因がクライアントのネットワーク帯域幅によるものかどうかを確認する場合は、「[クライアント側の帯域幅の超過](#client-side-bandwidth-exceeded)」を参照してください。
 
 6. サーバーまたはクライアントに CPU 制約を適用していますか?
-	-	クライアントに CPU 制約を適用しているかどうかを確認します。制約している場合、`synctimeout` 間隔内で要求が処理されないために、タイムアウトになることがあります。クライアント サイズを大きくするか、負荷を分散すると、これを制御するのに役立ちます。 
+	-	クライアントに CPU 制約を適用しているかどうかを確認します。制約している場合、`synctimeout` 間隔内で要求が処理されないために、タイムアウトになることがあります。クライアント サイズを大きくするか、負荷を分散すると、これを制御するのに役立ちます。
 	-	`CPU` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視して、サーバーに CPU 制約を適用しているかどうかを確認します。Redis に CPU 制約が適用されている場合、送信された要求はタイムアウトになることがあります。これに対処するために、Premium キャッシュの複数のシャードに負荷を分散させるか、より大きいサイズまたは価格レベルにアップグレードすることができます。詳細については、「[サーバー側の帯域幅の超過](#server-side-bandwidth-exceeded)」を参照してください。
 
 7. サーバー上での処理に時間がかかるコマンドはありますか? Redis サーバーの処理に長い時間がかかるコマンドの実行時間が長いと、タイムアウトが発生する場合があります。実行時間の長いコマンドの例として、キーの数が多い `mget`、`keys *`、適切に記述されていない lua スクリプトなどがあります。redis-cli クライアントを使用して Azure Redis Cache インスタンスに接続するか、[Redis コンソール](cache-configure.md#redis-console)を使用して [SlowLog](http://redis.io/commands/slowlog) コマンドを実行し、予想より時間がかかっている要求がないかを確認できます。Redis サーバーと StackExchange.Redis は、少数の大きい要求ではなく、多数の小さい要求用に最適化されています。データをより小さいチャンクに分割することで、この状態が改善される場合があります。
@@ -280,18 +280,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 11. `RedisSessionStateprovider` を使用している場合は、再試行タイムアウトが正しく設定されていることを確認してください。`retrytimeoutInMilliseconds` は `operationTimeoutinMilliseonds` より大きくする必要があります。そうしないと、再試行されません。次の例では、`retrytimeoutInMilliseconds` は 3000 に設定されています。詳細については、「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」と「[How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)」 (セッション状態プロバイダーと出力キャッシュ プロバイダーの構成パラメーターの使用方法) を参照してください。
 
 
-	<add
-	  name="AFRedisCacheSessionStateProvider"
-	  type="Microsoft.Web.Redis.RedisSessionStateProvider"
-	  host="enbwcache.redis.cache.windows.net"
-	  port="6380"
-	  accessKey="…"
-	  ssl="true"
-	  databaseId="0"
-	  applicationName="AFRedisCacheSessionState"
-	  connectionTimeoutInMilliseconds = "5000"
-	  operationTimeoutInMilliseconds = "1000"
-	  retryTimeoutInMilliseconds="3000" />
+	<add name="AFRedisCacheSessionStateProvider" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="enbwcache.redis.cache.windows.net" port="6380" accessKey="…" ssl="true" databaseId="0" applicationName="AFRedisCacheSessionState" connectionTimeoutInMilliseconds = "5000" operationTimeoutInMilliseconds = "1000" retryTimeoutInMilliseconds="3000" />
 
 
 12. `Used Memory RSS` と `Used Memory` を[監視](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)して、Azure Redis Cache サーバーのメモリ使用量を確認します。削除ポリシーが適用されている場合、Redis は、`Used_Memory` がキャッシュ サイズに達したときにキーの削除を開始します。`Used Memory RSS` が `Used memory` よりわずかに上回っているのが理想的です。この差が大きい場合、(内部または外部で) メモリの断片化が発生していることを意味します。`Used Memory RSS` が `Used Memory` より小さい場合、キャッシュ メモリの一部がオペレーティング システムにスワップされていることを意味します。このような場合、大幅に遅延することがあります。Redis では割り当てがメモリ ページにマップされる方法が制御されないため、`Used Memory RSS` が高いと、多くの場合、メモリ使用量が急激に増加します。Redis がメモリを解放すると、メモリはアロケーターに戻されますが、アロケーターがシステムにメモリを戻すとは限りません。`Used Memory` 値と、オペレーティング システムによってレポートされるメモリの消費量は異なる場合があります。ファクト メモリは Redis で使用された後、解放されても、システムに戻されていないことが原因である可能性があります。メモリの問題を軽減するために、次の手順を実行できます。
@@ -308,4 +297,4 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 -	[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
 -	[Azure Redis Cache の監視方法](cache-how-to-monitor.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

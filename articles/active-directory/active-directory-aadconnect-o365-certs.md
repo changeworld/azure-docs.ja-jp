@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 
 # Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 
-##概要
+##Overview
 
 Azure Active Directory (Azure AD) と Active Directory Federation Services (AD FS) とのフェデレーションが正常に機能するためには、AD FS が Azure AD に提示するセキュリティ トークンに署名するときに使う証明書が、Azure AD 側の構成内容と一致している必要があります。完全に一致していないと、信頼関係が失われる可能性があります。証明書の情報は、AD FS と (エクストラネット アクセスに使用される) Web アプリケーション プロキシをデプロイするときに Azure AD によって同期されます。
 
@@ -163,4 +163,4 @@ Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成�
 
 詳細については、「[信頼の修復](./active-directory-aadconnect-federation-management.md#repairing-the-trust)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

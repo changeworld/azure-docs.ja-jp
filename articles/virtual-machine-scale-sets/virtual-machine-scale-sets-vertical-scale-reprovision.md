@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/14/2016"
+	ms.date="08/03/2016"
 	ms.author="guybo"/>
 
 # 仮想マシン スケール セットの使用を開始する
@@ -37,27 +37,20 @@ _スケール アップ_および_スケール ダウン_とも呼ばれる垂�
 3. Webhook を Runbook に追加します。
 4. Webhook 通知を使用して、VM スケール セットにアラートを追加します。
 
-> [AZURE.NOTE] 垂直方向の自動スケールは、特定の VM のサイズ範囲内でのみ実行できます。次のようなサイズのペアの間でスケールの設定を選択できます。
+> [AZURE.NOTE] 垂直方向の自動スケールは、特定の VM のサイズ範囲内でのみ実行できます。スケールを決める前に各サイズの仕様を比較してください (大きな数値が必ずしも大きな VM サイズを示すとは限りません)。次のようなサイズのペアの間でスケールの設定を選択できます。
 
 >| VM サイズのスケーリングのペア | |
 |---|---|
-| Basic\_A0 | Basic\_A4 |
-| Standard\_A0 | Standard\_A4 |
-| Standard\_A5 | Standard\_A7 |
-| Standard\_A8 | Standard\_A9 |
-| Standard\_A10 | Standard\_A11 |
-| Standard\_D1 | Standard\_D4 |
-| Standard\_D11 | Standard\_D14 |
-| Standard\_DS1 | Standard\_DS4 |
-| Standard\_DS11 | Standard\_DS14 |
-| Standard\_D1v2 | Standard\_D5v2 |
-| Standard\_D11v2 | Standard\_D14v2 |
+| Standard\_A0 | Standard\_A11 |
+| Standard\_D1 | Standard\_D14 |
+| Standard\_DS1 | Standard\_DS14 |
+| Standard\_D1v2 | Standard\_D15v2 |
 | Standard\_G1 | Standard\_G5 |
 | Standard\_GS1 | Standard\_GS5 |
 
 ## 実行機能を持つ Azure Automation アカウントを作成する
 
-最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。最近、[Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能を導入しました。詳しくは、次の記事を参照してください。
+最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。最近、[Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。詳しくは、次の記事を参照してください。
 
 * [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -120,11 +113,11 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 * [Azure Insights の PowerShell クイック スタート サンプル](../azure-portal/insights-powershell-samples.md)
 * [Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../azure-portal/insights-cli-samples.md)
 
-## 概要
+## まとめ
 
 この記事では、簡単な垂直スケーリングの例を示しました。これらの構成要素 (Automation アカウント、Runbook、Webhook、アラート) を使用して、さまざまなイベントを、カスタマイズされた一連のアクションで接続できます。
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png
 [gallery]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks-gallery.png
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0810_2016-->

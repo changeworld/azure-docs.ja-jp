@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Azure App Service での Java Web アプリの作成
@@ -44,7 +44,7 @@
 	
 	* お使いの Java アプリケーションに必要な Tomcat または Jetty のバージョンが App Service によって直接サポートされていないか、ギャラリーで提供されていない。
 	* お使いの Java アプリケーションが HTTP 要求を受け取り、WAR として既存の Web コンテナーにデプロイされない。
-	* 最初から自分で Web コンテナーを構成したい。 
+	* 最初から自分で Web コンテナーを構成したい。
 	* App Service でサポートされていないバージョンの Java を使用して自分でアップロードしたい。
 
 	これらの場合は、Azure ポータルを使ってアプリを作成して、適切なランタイム ファイルを手動で指定できます。このとき、ファイルは App Service プランのストレージ領域クォータに対してカウントされます。詳細については、[Azure へのカスタム Java Web アプリのアップロード]に関するページを参照してください。
@@ -91,7 +91,7 @@
 
 	![Web Container Versions][versions]
 
-13. **[保存]** をクリックします。
+13. [**Save**] をクリックします。
 
 	お使いの Web アプリはすぐに Java ベースになり、選んだ Web コンテナーを使用するように構成されます。
 
@@ -121,11 +121,11 @@
 
 	![Web Mobile Jetty][webmobilejetty]
 
-6. 最初の **[Apache Tomcat]** ブレードまたは **\[Jetty]** ブレードで、**[作成]** をクリックします。
+6. 最初の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[作成]** をクリックします。
 
 	![Jetty Portal Blade][jettyblade]
 
-7. 次の **[Apache Tomcat]** ブレードまたは **\[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
+7. 次の **[Apache Tomcat]** ブレードまたは **[Jetty]** ブレードで、**[Web アプリ]** ボックスに Web アプリの名前を入力します。
 
 	Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
@@ -192,4 +192,4 @@ Azure での Java アプリケーションの開発の詳細については、[J
 [tomcat]: ./media/web-sites-java-get-started/tomcat.png
 [jetty]: ./media/web-sites-java-get-started/jetty.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

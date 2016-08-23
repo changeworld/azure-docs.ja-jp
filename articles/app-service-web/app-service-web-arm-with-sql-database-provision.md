@@ -18,7 +18,7 @@
 
 # Web アプリと SQL Database をプロビジョニングする
 
-このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
@@ -183,7 +183,7 @@
             "[variables('sqlserverName')]"
           ],
           "location": "[resourceGroup().location]",
-          "name": "AllowAllWindowsAzureIps",
+          "name": "AllowAllAzureIps",
           "properties": {
             "endIpAddress": "0.0.0.0",
             "startIpAddress": "0.0.0.0"
@@ -475,4 +475,4 @@
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

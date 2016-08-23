@@ -29,7 +29,7 @@
 
 サーバー SDK のリファレンス ドキュメントについては、「[Azure Mobile Apps .NET リファレンス](https://msdn.microsoft.com/library/azure/dn961176.aspx)」を参照してください。
 
-## <a name="create-app"></a>方法: モバイル アプリケーション用の .NET バックエンドを作成する
+## <a name="create-app"></a>方法: .NET モバイル アプリ バックエンドを作成する
 
 新しいプロジェクトを開始する場合は、[Azure ポータル]または Visual Studio を使用して、App Service アプリケーションを作成できます。このセクションでは、このいずれかを使用して、シンプルな To Do List API をホストするモバイル アプリケーション バックエンドを新規作成する方法を紹介します。これをローカルで実行することも、プロジェクトをクラウド ベースの App Service モバイル アプリに発行することもできます。
 
@@ -37,9 +37,11 @@
 
 ### Azure ポータルで .NET バックエンドを作成する
 
-[Azure ポータル]でモバイル アプリケーションを新規作成できます。以下の手順を実行するか、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順でクライアントとサーバーをまとめて新規作成することもできます。
+[Azure ポータル]で新しいモバイル アプリ バックエンドを作成できます。
 
-[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
+以下の手順を実行するか、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順でクライアントとサーバーをまとめて新規作成することもできます。このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。チュートリアルでは Node.js バックエンドのみを作成します。
+
+[AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
 **[テーブル API の作成]** の _[はじめに]_ ブレードに戻り、**[バックエンド言語]** として **[C#]** を選択します。**[ダウンロード]** をクリックし、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出して、Visual Studio でソリューションを開きます。
 
@@ -402,7 +404,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 	    }
 	});
 
-インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプルに関するページで、「[Client-added push notification tags (クライアントが追加したプッシュ通知タグ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」をご覧ください。
+インストールを作成するときは、プッシュ通知の登録時にクライアントから提供されたタグはすべてバックエンドでは無視されることに注意してください。クライアントがインストールにタグを追加できるようにするには、上記のパターンを使用してタグを追加する新しいカスタム API を作成する必要があります。クライアントがインストールにタグを追加できるようにするカスタム API コントローラーの例については、.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプルに関するページで、「[Client-added push notification tags](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags)」 (クライアントが追加したプッシュ通知タグ) を参照してください。
 
 ##<a name="push-user"></a>方法: 認証されたユーザーにプッシュ通知を送信する
 
@@ -419,7 +421,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル)」の「[Push to users (ユーザーへのプッシュ)](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users)」をご覧ください。
+認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend」 (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル) の「[Push to users](https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users)」 (ユーザーへのプッシュ) をご覧ください。
 
 ## 方法: .NET サーバー SDK のデバッグとトラブルシューティングを実行する
 
@@ -479,4 +481,4 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

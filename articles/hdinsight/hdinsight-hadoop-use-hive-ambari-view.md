@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/20/2016"
+   ms.date="08/09/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Hive View と Hadoop の使用
 
-[AZURE.INCLUDE [Hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
 Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。これを __Hive ビュー__と呼びます。これは、HDInsight クラスターに付属する Ambari のビューの一部です。
 
@@ -199,4 +199,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

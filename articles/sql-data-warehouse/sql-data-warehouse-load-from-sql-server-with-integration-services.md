@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/08/2016"
+   ms.date="08/08/2016"
    ms.author="lodipalm;sonyama;barbkess"/>
 
 # SQL Server から Azure SQL Data Warehouse へのデータの読み込み (SSIS)
@@ -61,8 +61,8 @@ SQL Server Integration Services (SSIS) は、SQL Data Warehouse に接続し、�
 ## 手順 1: 新しい Integration Services プロジェクトを作成する
 
 1. Visual Studio 2015 を起動します。
-2. **[ファイル]** メニューの **[新規作成]、[プロジェクト]** の順にクリックします。
-3. **[インストール済み]、[テンプレート]、[ビジネス インテリジェンス]、[Integration Services]** プロジェクトの種類の順に移動します。
+2. **[ファイル]** メニューの **[新規作成] をクリックします。| Project**.
+3. ** [インストール済み] に移動します。| Templates | Business Intelligence | Integration Services** project types.
 4. **[Integration Services プロジェクト]** を選択します。**[名前]** と **[場所]** に値を指定し、**[OK]** をクリックします。
 
 Visual Studio で、新しい Integration Services (SSIS) プロジェクトが作成され、開きます。プロジェクト内の 1 つの新しい SSIS パッケージ (Package.dtsx) のデザイナーが開きます。次の画面領域が表示されます。
@@ -224,4 +224,4 @@ Visual Studio で、新しい Integration Services (SSIS) プロジェクトが�
 [Visual Studio Community]: https://www.visualstudio.com/ja-JP/products/visual-studio-community-vs.aspx
 [AdventureWorks 2014 Sample Databases (AdventureWorks 2014 サンプル データベース)]: https://msftdbprodsamples.codeplex.com/releases/view/125550
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

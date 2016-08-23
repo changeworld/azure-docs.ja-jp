@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 # Azure Multi-Factor Authentication のセットアップ エクスペリエンス
 
@@ -28,7 +28,7 @@
 
 登録プロセスを使用する場合、確認に使用する好きなメソッドを指定できます。以下の表のいずれかを指定できます。チュートリアルを含む追加情報については、いずれかのメソッドをクリックしてください。
 
-メソッド|説明
+メソッド|Description
 :------------- | :------------- | 
 [携帯電話呼び出し](multi-factor-authentication-end-user-first-time-mobile-phone.md)| 認証電話に自動音声通話を行います。ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。この電話番号は、オンプレミスの Active Directory には同期されません。
 [携帯電話のテキスト メッセージ](multi-factor-authentication-end-user-first-time-mobile-phone.md)|ユーザーに確認コードを含むテキスト メッセージが送信されます。ユーザーには、確認コードを使用してテキスト メッセージに返信するか、確認コードをサインイン インターフェイスに入力するよう求めるプロンプトが表示されます。
@@ -37,4 +37,4 @@
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="command-line-interface"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/05/2016"
 	ms.author="danlep"/>
 
 # Resource Manager モードでの Azure CLI コマンド
 
-この記事では、Azure Resource Manager のデプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
+この記事では、Azure Resource Manager のデプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
 開始するには、まず、[Azure CLI をインストール](../xplat-cli-install.md)し、職場/学校のアカウント、または Microsoft アカウント ID を使用して [Azure サブスクリプションに接続](../xplat-cli-connect.md)します。
 
@@ -27,7 +27,7 @@
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が未加工の json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が raw json 形式で出力されます。
 
 ## リソース マネージャー モードの設定
 
@@ -36,12 +36,6 @@
 	azure config mode arm
 
 >[AZURE.NOTE] Azure リソース マネージャー モードと Azure サービス管理モードは互いに排他的です。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
-
-## 命令型のアプローチと宣言型のアプローチ
-
-[Azure サービス管理モード](../virtual-machines-command-line-tools.md)の場合と同様に、リソース マネージャー モードの Azure CLI では、コマンド ラインで強制的にリソースを作成するコマンドを使用できます。たとえば、「`azure group create <groupname> <location>`」と入力すると、Azure はリソース グループを作成する要求を受け、「`azure group deployment create <resourcegroup> <deploymentname>`」と入力すると、Azure は任意の数のアイテムのデプロイメントを作成しグループに配置する指示を受けます。リソースの種類ごとに命令型のコマンドがあるため、これらを連携させることで非常に複雑なデプロイメントを作成できます。
-
-ただし、リソース グループを説明するリソース グループ _テンプレート_を使用する宣言型のアプローチは、これよりはるかに強力で、(ほとんど) どんな目的であれ、また (ほとんど) 任意の数のリソースの複雑なデプロイメントを自動化することができます。テンプレートを使用する場合、命令型のコマンドはデプロイの指示のみです。テンプレート、リソース、およびリソース グループの一般的な概要については、「[Azure リソース グループの概要](../resource-group-overview.md)」を参照してください。
 
 
 ## Azure アカウント: アカウント情報の管理
@@ -1056,7 +1050,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
  	-l, --lb-name <lb-name>                the name of the load balancer
  	-s, --subscription <subscription>      the subscription identifier
 
-<BR> network lb address-pool delete [options] <resource-group> <lb-name> <name>
+<BR> network lb address-pool delete [オプション] <resource-group> <lb-name> <name>
 
 ロード バランサーからバックエンド IP プールの範囲のリソースを削除します。
 
@@ -1440,7 +1434,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	--json                                 use json output
 	-g, --resource-group <resource-group>  the name of the resource group
 	-s, --subscription <subscription>      the subscription identifier
-<BR> network public-ip show [オプション] <resource-group> <name> リソース グループ内のパブリック IP リソースのパブリック IP プロパティが表示されます。
+<BR> network public-ip show [オプション] <resource-group> <name> リソース グループ内のパブリック IP リソースのパブリック IP プロパティを表示します。
 
 	azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1590,7 +1584,7 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 
 ## Azure プロバイダー: リソース プロバイダーの登録を管理するコマンド
 
-**ARM で現在登録されているプロバイダーを一覧表示します**
+**Resource Manager で現在登録されているプロバイダーを一覧表示します**
 
 	provider list [options]
 
@@ -1872,4 +1866,4 @@ Azure のサブスクリプション情報は、ツールがアカウントに�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

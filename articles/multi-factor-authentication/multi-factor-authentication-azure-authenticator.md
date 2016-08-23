@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -77,7 +77,7 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- バーコードをスキャンします。 
+- バーコードをスキャンします。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/scan.png)
 
@@ -147,7 +147,7 @@ Microsoft アカウントなど、Azure 以外のアカウントを手動で追�
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/msaccount.png)
 
-- アカウントの下にあるコード (この場合は 875 756) を入力し、シークレット キーを受け取ったページのボックスにこのコードを入力するとこのプロセスは完了するため、[次へ] をクリックします。  
+- アカウントの下にあるコード (この場合は 875 756) を入力し、シークレット キーを受け取ったページのボックスにこのコードを入力するとこのプロセスは完了するため、[次へ] をクリックします。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/verify.png)
 
@@ -168,4 +168,4 @@ Azure Authenticator アプリから個々のアカウントを削除するには
 
 ![Remove account](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

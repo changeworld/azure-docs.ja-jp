@@ -15,7 +15,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="05/25/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # HDInsight Tools for Visual Studio を使用して Hive クエリを実行する
@@ -64,7 +64,7 @@ HDInsight Tools for Visual Studio を使用して、HDInsight クラスターへ
 2.	**[ビュー]** メニューで、**[サーバー エクスプローラー]** をクリックして、サーバー エクスプローラー ウィンドウを開きます。
 3.	**[Azure]** を展開して、**[HDInsight]** を展開します。
 
-	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧ウィンドウ]** をクリックします。  
+	>[AZURE.NOTE]**[HDInsight タスク一覧]** ウィンドウが開きます。ウィンドウが表示されない場合は、**[ビュー]** メニューで **[その他のウィンドウ]** をクリックし、次に **[HDInsight タスク一覧ウィンドウ]** をクリックします。
 4.	Azure サブスクリプションの資格情報を入力し、**[サインイン]** をクリックします。この操作は、このワークステーションで、まだ一度も Visual Studio から Azure サブスクリプションに接続していない場合にのみ必要です。
 5.	サーバー エクスプローラーに、既存の HDInsight クラスターの一覧が表示されます。クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用してプロビジョニングできます。詳細については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。
 
@@ -86,6 +86,11 @@ Azure サブスクリプションに接続した後で、次を実行できま�
 サーバー エクスプローラーで、既定のストレージ アカウント、すべてのリンクされたストレージ アカウントを確認できます。既定のストレージ アカウントを展開すると、そのストレージ アカウントのコンテナーを表示できます。既定のストレージ アカウントと既定のコンテナーがマークされます。コンテナーのいずれかの右クリックしてコンテンツを表示できます。
 
 ![HDInsight Tools for Visual Studio サーバー エクスプローラー クラスターの一覧][2]
+
+コンテナーを開くと、次のボタンを使用して、BLOB をアップロード、削除、およびダウンロードすることができます。
+
+![HDInsight Tools for Visual Studio server explorer blob operations](./media/hdinsight-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png)
+
 
 ## Hive クエリを実行する
 [Apache Hive][apache.hive] は Hadoop に構築されるデータ ウェアハウス基盤であり、データを集約、照会、分析できます。HDInsight Tools for Visual Studio は Visual Studio からの Hive クエリの実行をサポートします。Hive の詳細については、「[HDInsight での Hive の使用][hdinsight.hive]」を参照してください。
@@ -277,4 +282,4 @@ HDInsight Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

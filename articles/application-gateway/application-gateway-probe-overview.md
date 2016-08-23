@@ -5,7 +5,7 @@
    description="Azure Application Gateway の監視機能の概要"
    services="application-gateway"
    documentationCenter="na"
-   authors="joaoma"
+   authors="georgewallace"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -17,7 +17,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/03/2016"
-   ms.author="joaoma" />
+   ms.author="gwallace" />
 
 # Application Gateway による正常性監視の概要
 
@@ -38,7 +38,7 @@
 
 ### 既定の正常性プローブの設定
 
-|プローブのプロパティ | 値 | 説明|
+|プローブのプロパティ | 値 | Description|
 |---|---|---|
 | プローブの URL| http://127.0.0.1/ | URL パス |
 | 間隔 | 30 | プローブの間隔 (秒) |
@@ -53,18 +53,18 @@
 
 ### カスタムの正常性プローブの設定
 
-|プローブのプロパティ| 説明|
+|プローブのプロパティ| Description|
 |---|---|
-| 名前 | プローブの名前。この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| Name | プローブの名前。この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | プロトコル | プローブを送信するために使用するプロトコル。唯一の有効なプロトコルは HTTP です。 |
-| ホスト | プローブを送信するホスト名。 |
-| パス | プローブの相対パス。パスは、先頭が '/' である必要があります。プローブは、<protocol>://<host>:<port><path> に送信されます。 |
+| Host | プローブを送信するホスト名。 |
+| パス | プローブの相対パス。パスは、先頭が '/' である必要があります。プローブの送信先は <protocol>://<host>:<port><path> になります。 |
 | 間隔 | プローブの間隔 (秒)。2 つの連続するプローブの時間間隔。|
 | タイムアウト | プローブのタイムアウト (秒)。プローブは、このタイムアウト期間内に正常な応答を受信しない場合に「失敗」とマークされます。 |
 | 異常のしきい値 | プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 ## 次のステップ
 
-Application Gateway による正常性監視について学習した後は、Azure リソース マネージャーの[カスタム正常性プローブ](application-gateway-create-probe-ps.md)や Azure クラシック デプロイ モデルの[カスタム正常性プローブ](application-gateway-create-probe-classic-ps.md)を構成できます。
+Application Gateway による正常性監視について学習した後は、Azure Resource Manager の[カスタム正常性プローブ](application-gateway-create-probe-ps.md)や Azure クラシック デプロイメント モデルの[カスタム正常性プローブ](application-gateway-create-probe-classic-ps.md)を構成できます。
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0810_2016-->

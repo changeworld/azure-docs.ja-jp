@@ -18,7 +18,7 @@
 
 # App Service 環境の概要
 
-## 概要 ##
+## Overview ##
 App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、[Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps] が含まれています。
 
 App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
@@ -108,4 +108,4 @@ ExpressRoute での App Service 環境の使用方法の詳細については、
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

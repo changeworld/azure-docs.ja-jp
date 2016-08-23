@@ -20,8 +20,8 @@
 #Azure App Service の SSL 証明書を購入して構成する
 
 > [AZURE.SELECTOR]
-- [Web Apps の SSL 証明書を購入する](web-sites-purchase-ssl-web-site.md)
-- [カスタム ドメインに対して SSL を有効にする](web-sites-configure-ssl-certificate.md)
+- [Azure での SSL 証明書の購入](web-sites-purchase-ssl-web-site.md)
+- [別の場所からの SSL 証明書の使用](web-sites-configure-ssl-certificate.md)
 
 **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Web アプリに対して、HTTPS が既定で既に有効になっています。カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。ただし、*[他のワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。Azure App Service では、ポータルを離れることなく Azure ポータルから SSL 証明書を購入して管理する簡単な方法が提供されるようになっています。この記事では、3 つの簡単な手順で **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** 用の SSL 証明書を購入して構成する方法を説明します。
 
@@ -113,7 +113,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
     * **ドメイン検証**
 
-        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md) **場合にのみ**、最も便利な方法です。
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)** **場合にのみ**、最も便利な方法です。
         
         * **[検証]** ボタンをクリックして、この手順を実行します。
         
@@ -208,4 +208,4 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

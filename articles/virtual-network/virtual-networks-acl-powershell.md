@@ -3,7 +3,7 @@
    description="PowerShell を使用して ACL を管理する方法を説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/15/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # PowerShell を使用してアクセス制御リスト (ACL) のエンドポイントを管理する方法
 
@@ -95,4 +95,4 @@ ACL PowerShell コマンドレットの完全な一覧を取得するには、�
 
 [ネットワーク アクセス制御リスト (ACL) とは](virtual-networks-acl.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="複数の NIC を使用する VM を作成して構成する方法について説明します"
    services="virtual-network, virtual-machines"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-service-management,azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # 複数 NIC を持つ VM の作成
 
@@ -25,7 +25,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 上の図は、3 つの NIC を持つ VM を示しており、各 NIC は異なるサブネットに接続されています。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
 
 - インターネットに接続された VIP (従来のデプロイ) は、"既定" の NIC でのみサポートされています。既定の NIC の IP アドレスに対して VIP は 1 つしかありません。
 - 現時点では、複数 NIC の VM のインスタンスレベル パブリック IP (LPIP) アドレス (従来のデプロイ) はサポートされていません。
@@ -120,7 +120,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 - Azure サブスクリプション。
 - 構成済みの仮想ネットワーク。Vnet の詳細については、「[仮想ネットワークの概要](virtual-networks-overview.md)」を参照してください。
-- Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。「[Azure PowerShell のインストールと構成の方法](../install-configure-powershell)」を参照してください。
+- Azure PowerShell の最新バージョンをダウンロードしてインストールしていること。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 複数の NIC を使用する VM を作成するには、次の手順に従います。
 
@@ -265,4 +265,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 - [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md) をデプロイします。
 - [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md) をデプロイします。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

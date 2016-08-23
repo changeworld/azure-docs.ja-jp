@@ -1,10 +1,10 @@
 <properties
    pageTitle="Azure 仮想マシンのセキュリティの概要 | Microsoft Azure"
-   description="Azure 仮想マシンは、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。"
+   description=" Azure 仮想マシンは、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Azure 仮想マシンのセキュリティの概要
@@ -45,7 +45,7 @@ Azure によって、セキュリティが強化され、コンプライアン�
 
 ## マルウェア対策
 
-Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などの主要なセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
+Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。パートナー ソリューションに関する記事については、後述の「詳細情報:」を参照してください。
 
 Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
 
@@ -59,12 +59,12 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 - シグネチャの更新 - 最新の保護シグネチャ (ウイルスの定義) を自動的にインストールし、事前に定義された頻度で保護を最新の状態に更新します。
 - マルウェア対策エンジンの更新 - Microsoft マルウェア対策エンジンを自動的に更新します。
 - マルウェア対策プラットフォームの更新 - Microsoft マルウェア対策プラットフォームを自動的に更新します。
-- アクティブ保護 - 検出された脅威および疑わしいリソースに関するテレメトリ メタデータを Azure に報告して発生中の脅威に迅速に対応すると共に、Microsoft Active Protection System (MAPS) を使用して同期されたシグネチャをリアルタイムで配信できるようにします。
+- アクティブ保護 - 検出された脅威および疑わしいリソースに関するテレメトリ メタデータを Azure に報告して迅速に対応し、Microsoft Active Protection System (MAPS) を使用して同期されたシグネチャをリアルタイムで配信できるようにします。
 - サンプルのレポート - Microsoft マルウェア対策サービスにサンプルを提供および報告し、サービスの調整およびトラブルシューティングを可能にします。
 - 除外 – パフォーマンスやその他の理由で、アプリケーションおよびサービスの管理者が特定のファイル、プロセス、ドライブを保護から除外できるようにします。
 - マルウェア対策イベントの収集 - マルウェア対策サービスの状態、疑わしいアクティビティ、および実行された修復アクションをオペレーティング システムのイベント ログに記録し、顧客の Azure ストレージ アカウントにそれらを収集します。
 
-詳細情報: 仮想マシンを保護するマルウェア対策ソフトウェアである Microsoft マルウェア対策、および Symantec や Trend Micro など、他の主要なセキュリティ ベンダーによるマルウェア対策ソフトウェアについて詳しくは、以下を参照してください。
+詳細情報: 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
 - [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../azure-security-antimalware.md)
 - [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
@@ -75,7 +75,7 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 
 ## ハードウェア セキュリティ モジュール
 
-暗号化と認証は、キー自体が保護されない限り、セキュリティを向上しません。大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
+暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
 
 詳細情報:
 
@@ -85,7 +85,7 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 
 ## 仮想マシン ディスクの暗号化
 
-Azure Disk Encryption は、Windows および Linux Azure 仮想マシン ディスクを暗号化できる新機能です。Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
+Azure Disk Encryption は、Windows および Linux Azure 仮想マシン ディスクを暗号化できる新機能です。Azure Disk Encryption では、Windows の業界標準である [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
 
 ソリューションは Azure Key Vault と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、Azure ストレージで保存中の仮想マシン ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 
@@ -107,15 +107,15 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 
 ## Azure Site Recovery
 
-組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整して、1 次拠点がダウンした場合に 2 次拠点からワークロードとアプリを利用できるようにすることで、その方法の実現に役立ちます。
+組織の BCDR 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。Azure Site Recovery は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を調整するため、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
 Site Recovery:
 
 - **BCDR 戦略の簡素化** - Site Recovery では、1 か所から複数のビジネス ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を簡単に処理できます。Site recovery はレプリケーションとフェールオーバーを調整しますが、アプリケーション データをインターセプトすることや、そのデータに関する情報を持つことはありません。
 - **柔軟なレプリケーション機能の提供** - Site Recovery を使用すると、Hyper-V 仮想マシン、VMware 仮想マシン、および Windows または Linux の物理サーバーで実行されているワークロードをレプリケートできます。
 - **簡単なフェールオーバーと復旧** - Site Recovery では、実稼働環境に影響を与えずに障害復旧の演習をサポートするテスト フェールオーバーを実行できます。また、予期された停止の場合はデータ損失ゼロの計画されたフェールオーバーを実行し、予期しない停止の場合は (レプリケーションの頻度に応じた) 最小限のデータ損失で計画外のフェールオーバーを実行することもできます。フェールオーバー後は、プライマリ サイトにフェールバックできます。Site Recovery に用意されている復旧計画には、多層アプリケーションのフェールオーバーと復旧をカスタマイズできるように、スクリプトや Azure Automation ブックが含まれています。
-- **セカンダリ データセンターの排除** - オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。障害復旧のためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減され、レプリケートされたデータは元の復元性を十分に備えた状態で Azure Storage に格納されます。
-- **既存の BCDR テクノロジとの統合** - Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護でき、SQL Server AlwaysOn による可用性グループのフェールオーバーの管理のネイティブ サポートが提供されます。
+- **セカンダリ データセンターの排除** - オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。障害復旧のためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減されます。レプリケートされたデータは Azure Storage に格納されます。
+- **既存の BCDR テクノロジとの統合** - Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護できます。これには、SQL Server AlwaysOn による可用性グループのフェールオーバーの管理のネイティブ サポートが含まれます。
 
 詳細情報:
 
@@ -125,7 +125,7 @@ Site Recovery:
 
 ## 仮想ネットワーク
 
-仮想マシンには、ネットワーク接続が必要です。その要件をサポートするため、Azure では、仮想マシンが Azure Virtual Network に接続することが必要になります。Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。これは、自分のデプロイ内のネットワーク トラフィックに他の Microsoft Azure ユーザーがアクセスすることを防ぐ上で役立ちます。
+仮想マシンには、ネットワーク接続が必要です。その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。この分離は、他の Microsoft Azure ユーザーによるデプロイ内のネットワーク トラフィックへのアクセスを防ぐ上で役立ちます。
 
 詳細情報:
 
@@ -150,11 +150,11 @@ Azure Security Center は、仮想マシンのセキュリティの最適化と�
 
 ## コンプライアンス
 
-Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、その他の主要なコンプライアンス プログラムの認定を受けているので、Azure アプリケーションをコンプライアンス要件に準拠させ、広範に及ぶ国内および国際的な規制の要件にビジネスを対応させることが容易になります。
+Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、その他の主要なコンプライアンス プログラムの認定を受けています。この認定により、Azure アプリケーションをコンプライアンス要件に準拠させ、広範に及ぶ国内および国際的な規制の要件にビジネスを対応させることが容易になります。
 
 詳細情報:
 
 - [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 - [信頼されるクラウド: Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -3,7 +3,7 @@
    description="静的プライベート IP アドレスとそれを PowerShell を利用して Azure リソース マネージャーで管理する方法について"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/23/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # PowerShell を利用し、リソース マネージャーで静的プライベート IP アドレスを設定する方法
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-ps.md)こともできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、リソース マネージャーのデプロイ モデルについて説明します。[クラシック デプロイ モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-classic-ps.md)こともできます。
 
 [AZURE.INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
@@ -188,8 +188,8 @@
 
 ## 次のステップ
 
-- [予約済みパブリック IP](../virtual-networks-reserved-public-ip) アドレスについて理解する。
-- [インスタンスレベル パブリック IP (ILPIP)](../virtual-networks-instance-level-public-ip) アドレスについて理解する。
+- [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
+- [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
 - [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="05/09/2016"
+   ms.date="08/08/2016"
    ms.author="sstein" />
 
 # Web および Business Edition の終了に関する FAQ
@@ -55,7 +55,7 @@ Azure SQL Database には、お客様からのフィードバックに基づい�
 
 ## Basic、Standard、および Premium での課金処理に改善はありますか
 
-Basic、Standard、Premium の Azure SQL Database は時間単位で課金され、各データベースは 24 時間に 4 回スケールアップまたはスケールダウンすることができます。1 時間ごとに選択する最上位のサービス階層とパフォーマンス レベルに基づいて固定率で課金されます。また、請求書には、1 か月の (Basic、S1、P2 などの) パフォーマンス レベルごとのデータベース日数および時間の内訳が記載され、簡単に確認できるようになっています。Web および Business データベースは引き続き、データベース サイズに基づくデータベース ユニットを使用して課金されます。価格および新しいサービス階層間の違いの詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
+Basic、Standard、Premium の Azure SQL Database は時間単位で課金されます。各データベースは、スケールアップまたはスケールダウンすることができます。1 時間ごとに選択する最上位のサービス階層とパフォーマンス レベルに基づいて固定率で課金されます。また、請求書には、1 か月の (Basic、S1、P2 などの) パフォーマンス レベルごとのデータベース日数および時間の内訳が記載され、簡単に確認できるようになっています。Web および Business データベースは引き続き、データベース サイズに基づくデータベース ユニットを使用して課金されます。価格および新しいサービス階層間の違いの詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 
 
 ## 関連項目
@@ -68,4 +68,4 @@ Basic、Standard、Premium の Azure SQL Database は時間単位で課金され
 
 [Azure SQL Database V12 へのアップグレード](sql-database-upgrade-server-portal.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

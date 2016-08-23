@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -141,4 +141,4 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

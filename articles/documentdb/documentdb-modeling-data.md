@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/05/2016" 
 	ms.author="stbaro"/>
 
 #DocumentDB のデータのモデル化#
@@ -25,7 +25,7 @@ Azure DocumentDB のようなスキーマのないデータベースでは、デ
 この記事を読むと、次の質問に回答できるようになります。
 
 - ドキュメント データベース内のドキュメントについてどのように考えるか。
-- データのモデル化とは何か、なぜ考慮する必要があるか。 
+- データのモデル化とは何か、なぜ考慮する必要があるか。
 - データのモデル化は、ドキュメント データベースとリレーショナル データベースでどのように異なるか。
 - 非リレーショナル データベース内のデータのリレーションシップをどのように表現するか。
 - いつデータを埋め込み、いつデータにリンクするか。
@@ -122,7 +122,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 		
 	Post document:
 	{
-		"id": 1,
+		"id": "1",
 		"name": "What's new in the coolest Cloud",
 		"summary": "A blog post by someone real famous",
 		"recentComments": [
@@ -134,7 +134,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 
 	Comment documents:
 	{
-		"postId": 1
+		"postId": "1"
 		"comments": [
 			{"id": 4, "author": "anon", "comment": "more goodness"},
 			{"id": 5, "author": "bob", "comment": "tails from the field"},
@@ -143,7 +143,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 		]
 	},
 	{
-		"postId": 1
+		"postId": "1"
 		"comments": [
 			{"id": 100, "author": "anon", "comment": "yet more"},
 			...
@@ -198,7 +198,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 	
     Stock documents:
     {
-        "id": 1,
+        "id": "1",
         "symbol": "zaza",
         "open": 1,
         "high": 2,
@@ -208,7 +208,7 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
         "pe": 5.89
     },
     {
-        "id": 2,
+        "id": "2",
         "symbol": "xcxc",
         "open": 89,
         "high": 93.24,
@@ -249,13 +249,13 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 	}
 
 	Book documents:
-	{"id": 1, "name": "DocumentDB 101" }
-	{"id": 2, "name": "DocumentDB for RDBMS Users" }
-	{"id": 3, "name": "Taking over the world one JSON doc at a time" }
+	{"id": "1", "name": "DocumentDB 101" }
+	{"id": "2", "name": "DocumentDB for RDBMS Users" }
+	{"id": "3", "name": "Taking over the world one JSON doc at a time" }
 	...
-	{"id": 100, "name": "Learn about Azure DocumentDB" }
+	{"id": "100", "name": "Learn about Azure DocumentDB" }
 	...
-	{"id": 1000, "name": "Deep Dive in to DocumentDB" }
+	{"id": "1000", "name": "Deep Dive in to DocumentDB" }
 
 発行元あたりの書籍数が少なく、増加率が限定的な場合は、書籍の参照を発行元ドキュメント内に格納することが有効な場合もあります。ただし、発行元あたりの書籍数に制限がない場合は、このデータ モデルは上の発行元ドキュメントに示すような、拡大し続ける可変配列になります。
 
@@ -268,13 +268,13 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 	}
 	
 	Book documents: 
-	{"id": 1,"name": "DocumentDB 101", "pub-id": "mspress"}
-	{"id": 2,"name": "DocumentDB for RDBMS Users", "pub-id": "mspress"}
-	{"id": 3,"name": "Taking over the world one JSON doc at a time"}
+	{"id": "1","name": "DocumentDB 101", "pub-id": "mspress"}
+	{"id": "2","name": "DocumentDB for RDBMS Users", "pub-id": "mspress"}
+	{"id": "3","name": "Taking over the world one JSON doc at a time"}
 	...
-	{"id": 100,"name": "Learn about Azure DocumentDB", "pub-id": "mspress"}
+	{"id": "100","name": "Learn about Azure DocumentDB", "pub-id": "mspress"}
 	...
-	{"id": 1000,"name": "Deep Dive in to DocumentDB", "pub-id": "mspress"}
+	{"id": "1000","name": "Deep Dive in to DocumentDB", "pub-id": "mspress"}
 
 上の例では、発行元ドキュメントで無制限のコレクションを使用していません。代わりに、各書籍ドキュメントに発行元への参照が含まれているだけです。
 
@@ -286,35 +286,35 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 ドキュメントを使用して同じ内容を複製し、次の例のようなデータ モデルを作成したくなるかもしれません。
 
 	Author documents: 
-	{"id": 1, "name": "Thomas Andersen" }
-	{"id": 2, "name": "William Wakefield" }
+	{"id": "a1", "name": "Thomas Andersen" }
+	{"id": "a2", "name": "William Wakefield" }
 	
 	Book documents:
-	{"id": 1, "name": "DocumentDB 101" }
-	{"id": 2, "name": "DocumentDB for RDBMS Users" }
-	{"id": 3, "name": "Taking over the world one JSON doc at a time" }
-	{"id": 4, "name": "Learn about Azure DocumentDB" }
-	{"id": 5, "name": "Deep Dive in to DocumentDB" }
+	{"id": "b1", "name": "DocumentDB 101" }
+	{"id": "b2", "name": "DocumentDB for RDBMS Users" }
+	{"id": "b3", "name": "Taking over the world one JSON doc at a time" }
+	{"id": "b4", "name": "Learn about Azure DocumentDB" }
+	{"id": "b5", "name": "Deep Dive in to DocumentDB" }
 	
 	Joining documents: 
-	{"authorId": 1, "bookId": 1 }
-	{"authorId": 2, "bookId": 1 }
-	{"authorId": 1, "bookId": 2 }
-	{"authorId": 1, "bookId": 3 }
+	{"authorId": "a1", "bookId": "b1" }
+	{"authorId": "a2", "bookId": "b1" }
+	{"authorId": "a1", "bookId": "b2" }
+	{"authorId": "a1", "bookId": "b3" }
 
 これは、機能はします。ただし、作者とその著作、または書籍とその作者の読み込みでは、常に、データベースに対して少なくとも 2 つの追加のクエリが必要になります。1 つは結合するドキュメントに対するクエリ、もう 1 つは結合される実際のドキュメントを取得するクエリです。
 
 この結合テーブルで行われる処理が 2 つのデータ要素の結合だけであれば、これを削除してはどうでしょうか。 次の例を検討してみてください。
 
 	Author documents:
-	{"id": 1, "name": "Thomas Andersen", "books": [1, 2, 3]}
-	{"id": 2, "name": "William Wakefield", "books": [1, 4]}
+	{"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
+	{"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 	
 	Book documents: 
-	{"id": 1, "name": "DocumentDB 101", "authors": [1, 2]}
-	{"id": 2, "name": "DocumentDB for RDBMS Users", "authors": [1]}
-	{"id": 3, "name": "Learn about Azure DocumentDB", "authors": [1]}
-	{"id": 4, "name": "Deep Dive in to DocumentDB", "authors": [2]}
+	{"id": "b1", "name": "DocumentDB 101", "authors": ["a1", "a2"]}
+	{"id": "b2", "name": "DocumentDB for RDBMS Users", "authors": ["a1"]}
+	{"id": "b3", "name": "Learn about Azure DocumentDB", "authors": ["a1"]}
+	{"id": "b4", "name": "Deep Dive in to DocumentDB", "authors": ["a2"]}
 
 ここで、作者がわかっていれば、その著作はすぐにわかり、逆に書籍ドキュメントを読み込んでいれば、作者の ID がわかります。これにより、結合テーブルに対する中間クエリは省略され、アプリケーションで行う必要があるサーバー ラウンド トリップの数が減少します。
 
@@ -329,11 +329,11 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 
 	Author documents: 
 	{
-	    "id": 1,
+	    "id": "a1",
 	    "firstName": "Thomas",
 	    "lastName": "Andersen",		
 	    "countOfBooks": 3,
-	 	"books": [1, 2, 3],
+	 	"books": ["b1", "b2", "b3"],
 		"images": [
 			{"thumbnail": "http://....png"}
 			{"profile": "http://....png"}
@@ -341,11 +341,11 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 		]
 	},
 	{
-	    "id": 2,
+	    "id": "a2",
 	    "firstName": "William",
 	    "lastName": "Wakefield",
 	    "countOfBooks": 1,
-		"books": [1, 4, 5],
+		"books": ["b1", "b4", "b5"],
 		"images": [
 			{"thumbnail": "http://....png"}
 		]
@@ -353,18 +353,18 @@ DocumentDB などのドキュメント ストア内のデータのモデル化�
 	
 	Book documents:
 	{
-		"id": 1,
+		"id": "b1",
 		"name": "DocumentDB 101",
 		"authors": [
-			{"id": 1, "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
-			{"id": 2, "name": "William Wakefield", "thumbnailUrl": "http://....png"}
+			{"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
+			{"id": "a2", "name": "William Wakefield", "thumbnailUrl": "http://....png"}
 		]
 	},
 	{
-		"id": 2,
+		"id": "b2",
 		"name": "DocumentDB for RDBMS Users",
 		"authors": [
-			{"id": 1, "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
+			{"id": "a1", "name": "Thomas Andersen", "thumbnailUrl": "http://....png"},
 		]
 	}
 
@@ -393,4 +393,4 @@ Azure DocumentDB でのインデックスのチューニングの詳細につい
 最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、[Azure DocumentDB でのマルチテナント アプリケーションの拡張](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)に関するページを参照してください。
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

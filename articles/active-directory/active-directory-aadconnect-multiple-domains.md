@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # Azure AD とのフェデレーションに使用する複数ドメインのサポート
@@ -90,10 +90,10 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 
 以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
 
-2.  AD FS フェデレーション サーバーで、**AD FS 管理**を開きます。 
+2.  AD FS フェデレーション サーバーで、**AD FS 管理**を開きます。
 2.  左側で、**[信頼関係]**、**[証明書利用者信頼]** の順に展開します。
 3.  右側で、**[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。![Remove Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
-1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。
 2.  フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
 2.  PowerShell で、`Connect-MsolService -Credential $cred` を実行します。
 4.  PowerShell で、`Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` を実行します。これは元のドメインに対するコマンドです。上記のドメインを使用するので、次のようになります: `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`。
@@ -101,7 +101,7 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 
 次の手順で、PowerShell を使用して新しいトップレベル ドメインを追加します。
 
-1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+1.  [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。
 2.  フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
 2.  PowerShell で、`Connect-MsolService -Credential $cred` を実行します。
 3.  PowerShell で、`New-MsolFederatedDomain –SupportMultipleDomain –DomainName` を実行します。
@@ -141,7 +141,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 
 1.	AD FS 管理を開きます。
 2.	[Microsoft Online RP 信頼] を右クリックして、[要求規則の編集] を選択します。
-3.	3 番目の要求規則を選択し、置き換えます。![Edit claim](./media/active-directory-multiple-domains/sub1.png)
+3.	3 番目の要求規則を選択し、![Edit claim](./media/active-directory-multiple-domains/sub1.png) を置き換えます。
 4.	現在の要求:
     
 	    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
@@ -153,4 +153,4 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 5.	[OK] をクリックします。[適用] をクリックします。[OK] をクリックします。AD FS 管理を閉じます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

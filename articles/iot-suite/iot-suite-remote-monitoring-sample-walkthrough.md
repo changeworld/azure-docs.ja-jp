@@ -14,7 +14,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="07/18/2016"
+ ms.date="08/17/2016"
  ms.author="dobett"/>
 
 # リモート監視の事前構成済みソリューションのチュートリアル
@@ -23,7 +23,11 @@
 
 IoT Suite リモート監視の[事前構成済みソリューション][lnk-preconfigured-solutions]は、遠隔地で実行されている複数のコンピューターを対象としたエンド ツー エンドの監視ソリューションの実装です。このソリューションは、主要な Azure サービスを組み合わせることで、汎用的なビジネス シナリオの実装環境を実現したものです。これを独自の実装の出発点として利用することができます。ソリューションを[カスタマイズ][lnk-customize]することで、独自のビジネス要件を満たすことができます。
 
-この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素をいくつか取り上げて説明します。その知識は、ソリューションに関する問題のトラブルシューティングや、独自の要件に合わせたソリューションのカスタマイズ計画、Azure サービスを使用する独自の IoT ソリューションの計画に役立てることができます。
+この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素をいくつか取り上げて説明します。この知識は以下の作業に役立ちます。
+
+- ソリューションの問題のトラブルシューティングを行う。
+- 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
+- Azure サービスを利用する独自の IoT ソリューションを設計する。
 
 ## 論理アーキテクチャ
 
@@ -38,11 +42,11 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 シミュレーション デバイスはそれぞれ、次の種類のメッセージを IoT Hub に送信することができます。
 
-| メッセージ | 説明 |
+| メッセージ | Description |
 |----------|-------------|
-| Startup | デバイスは起動時に、デバイス ID、デバイス メタデータ、サポートするコマンドの一覧、現在の構成など、デバイス自体に関する情報を含む **device-info** メッセージを送信します。 |
+| Startup | デバイスは、起動すると、デバイス自体に関する情報が含まれる **device-info** メッセージをバックエンドに送信します。このデータには、デバイス ID、デバイス メタデータ、デバイスでサポートされているコマンドの一覧、デバイスの現在の構成が含まれます。 |
 | プレゼンス | デバイスは定期的に **presence** メッセージを送信して、センサーの存在を感知できるかどうかを報告します。 |
-| テレメトリ | デバイスは定期的に **telemetry** メッセージを送信して、シミュレーション デバイスに接続されているシミュレーション センサーから収集した温度と湿度のシミュレーション値を報告します。 |
+| テレメトリ | デバイスは定期的に **telemetry** メッセージを送信して、デバイスのシミュレーション センサーから収集した温度と湿度のシミュレーション値を報告します。 |
 
 
 シミュレーション デバイスから送信される **device-info** メッセージには、次のデバイス プロパティが格納されています。
@@ -63,12 +67,12 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 | Latitude | 緯度で表したデバイスの位置 |
 | Longitude | 経度で表したデバイスの位置 |
 
-シミュレーターは、シミュレートされたデバイスのこれらのプロパティをサンプル値と共に送信します。シミュレーターがシミュレートされたデバイスを初期化するたびに、デバイスは事前定義されたメタデータを IoT Hub に投稿します。これにより、デバイス ポータルで行われたすべてのメタデータの更新が上書きされることに注意してください。
+シミュレーターは、シミュレートされたデバイスのこれらのプロパティをサンプル値と共に送信します。シミュレーターがシミュレートされたデバイスを初期化するたびに、デバイスは事前定義されたメタデータを IoT Hub に投稿します。これによりデバイス ポータルで行われたすべてのメタデータの更新がどのように上書きされるか、注目してください。
 
 
 シミュレーション デバイスは、ソリューション ダッシュボードから IoT Hub を介して送信された次のコマンドを処理することができます。
 
-| コマンド | 説明 |
+| コマンド | Description |
 |------------------------|-----------------------------------------------------|
 | PingDevice | デバイスに _ping_ を送信して、デバイスが起動しているかどうかを確認します。 |
 | StartTelemetry | デバイスのテレメトリ送信を開始します。 |
@@ -85,9 +89,9 @@ IoT Suite リモート監視の[事前構成済みソリューション][lnk-pre
 
 ## Azure Stream Analytics
 
-リモート監視ソリューションでは、IoT Hub がデバイスから受け取ったメッセージは、[Azure Stream Analytics][lnk-asa] (ASA) によって他のバックエンド コンポーネントにディスパッチされて処理されるか、保存されます。メッセージの内容に基づく特定の機能が、各 ASA ジョブによって実行されます。
+リモート監視ソリューションでは、IoT Hub が受け取ったデバイス メッセージは、[Azure Stream Analytics][lnk-asa] \(ASA) によって他のバックエンド コンポーネントにディスパッチされて処理されるか、保存されます。メッセージの内容に基づく特定の機能が、各 ASA ジョブによって実行されます。
 
-**ジョブ 1: デバイス情報**は、受信するメッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用して **device-info** メッセージを識別します。
+**ジョブ 1: デバイス情報**は、受信メッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用して **device-info** メッセージを識別します。
 
 ```
 SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
@@ -95,34 +99,34 @@ SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'Dev
 
 このジョブの出力は、後続の処理のためにイベント ハブに出力されます。
 
-**ジョブ 2: 規則**は、デバイスごとのしきい値に対する温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューション ダッシュボードから利用できる規則エディターで設定します。デバイスと値の各ペアは、**参照データ**として Stream Analytics に読み込まれる BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、アラームのトリガーとなるテレメトリ メッセージを次のクエリ定義によって識別します。
+**ジョブ 2: 規則**は、デバイスごとのしきい値に対して、温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューション ダッシュボードから利用できる規則エディターで設定します。デバイスと値の各ペアは、**参照データ**として Stream Analytics が読み取る BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、アラームのトリガーとなるテレメトリ メッセージを次のクエリ定義によって識別します。
 
 ```
 WITH AlarmsData AS 
 (
 SELECT
-     Stream.DeviceID,
+     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
      'Temperature' as ReadingType,
      Stream.Temperature as Reading,
      Ref.Temperature as Threshold,
      Ref.TemperatureRuleOutput as RuleOutput,
      Stream.EventEnqueuedUtcTime AS [Time]
 FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
 WHERE
      Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
 
 UNION ALL
 
 SELECT
-     Stream.DeviceID,
+     Stream.IoTHub.ConnectionDeviceId AS DeviceId,
      'Humidity' as ReadingType,
      Stream.Humidity as Reading,
      Ref.Humidity as Threshold,
      Ref.HumidityRuleOutput as RuleOutput,
      Stream.EventEnqueuedUtcTime AS [Time]
 FROM IoTTelemetryStream Stream
-JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+JOIN DeviceRulesBlob Ref ON Stream.IoTHub.ConnectionDeviceId = Ref.DeviceID
 WHERE
      Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
 )
@@ -138,7 +142,7 @@ FROM AlarmsData
 
 このジョブの出力は、後続の処理のためにイベント ハブに送信され、各アラートの詳細は Blob Storage に保存されます。ソリューション ダッシュボードは、ここからアラート情報を読み取ることができます。
 
-**ジョブ 3: テレメトリ**は、2 つの方法で、受信するデバイス テレメトリ ストリームに対して動作します。1 つ目の方法では、デバイスから送信されたすべてのテレメトリ メッセージを長期保管を目的とした永続的な Blob Storage に送信します。2 つ目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算し、そのデータを Blob Storage に送信します。ソリューション ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。このジョブは、次のクエリ定義を使用します。
+**ジョブ 3: テレメトリ**は、2 とおりの方法で、受信デバイス テレメトリ ストリームに対して動作します。1 つ目の方法では、デバイスから送信されたすべてのテレメトリ メッセージを長期保管を目的とした永続的な Blob Storage に送信します。2 つ目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算し、そのデータを Blob Storage に送信します。ソリューション ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。このジョブは、次のクエリ定義を使用します。
 
 ```
 WITH 
@@ -146,43 +150,48 @@ WITH
 AS (
     SELECT
         *
-    FROM 
-      [IoTHubStream] 
+    FROM [IoTHubStream]
     WHERE
         [ObjectType] IS NULL -- Filter out device info and command responses
 ) 
 
 SELECT
-    *
+    IoTHub.ConnectionDeviceId AS DeviceId,
+    Temperature,
+    Humidity,
+    ExternalTemperature,
+    EventProcessedUtcTime,
+    PartitionId,
+    EventEnqueuedUtcTime,
+    * 
 INTO
     [Telemetry]
 FROM
     [StreamData]
 
 SELECT
-    DeviceId,
-    AVG (Humidity) AS [AverageHumidity], 
-    MIN(Humidity) AS [MinimumHumidity], 
-    MAX(Humidity) AS [MaxHumidity], 
+    IoTHub.ConnectionDeviceId AS DeviceId,
+    AVG (Humidity) AS [AverageHumidity],
+    MIN(Humidity) AS [MinimumHumidity],
+    MAX(Humidity) AS [MaxHumidity],
     5.0 AS TimeframeMinutes 
 INTO
     [TelemetrySummary]
-FROM
-    [StreamData]
+FROM [StreamData]
 WHERE
     [Humidity] IS NOT NULL
 GROUP BY
-    DeviceId, 
+    IoTHub.ConnectionDeviceId,
     SlidingWindow (mi, 5)
 ```
 
 ## Event Hubs
 
-ASA ジョブである "**デバイス情報**" と "**規則**" は、そのデータを Event Hubs に出力し、WebJob で実行されている**イベント プロセッサ**へと確実に転送します。
+ASA ジョブである**デバイス情報**と**規則**は、そのデータを Event Hubs に出力し、WebJob で実行されている**イベント プロセッサ**へと確実に転送します。
 
 ## Azure Storage
 
-このソリューションは、対象となるデバイスから未加工のまま集約されたすべてのテレメトリ データを Azure Blob Storage に永続化します。ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。ダッシュボードにアラートを表示する際は、しきい値の設定をテレメトリ値がいつ上回ったのかを記録した Blob Storage からデータが読み取られます。また、ユーザーがダッシュボードで設定したしきい値を記録するときにも Blob Storage が使用されます。
+このソリューションは、対象となるデバイスから未加工のまま集約されたすべてのテレメトリ データを Azure Blob Storage に永続化します。ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。ダッシュボードにアラートを表示する際は、しきい値の設定をテレメトリ値がいつ上回ったのかを記録した Blob Storage からデータが読み取られます。また、ダッシュボードで設定したしきい値を記録するときにも Blob Storage が使用されます。
 
 ## Web ジョブ
 
@@ -193,20 +202,20 @@ ASA ジョブである "**デバイス情報**" と "**規則**" は、そのデ
 
 ## DocumentDB
 
-このソリューションに接続されたデバイスの情報 (ダッシュボードからデバイスに送信されたコマンドの履歴やデバイスのメタデータなど) は、DocumentDB データベースに格納されます。
+このソリューションでは、ソリューションに接続されているデバイスに関する情報を格納するために DocumentDB データベースを使用します。この情報には、デバイス メタデータのほか、ダッシュボードからデバイスに送信されたコマンドの履歴が含まれています。
 
 ## Web Apps
 
 ### リモート監視ダッシュボード
-Web アプリでは、デバイスから送信されたテレメトリ データを、PowerBI JavaScript コントロール ([PowerBI-visuals リポジトリ](https://www.github.com/Microsoft/PowerBI-visuals)を参照) で視覚化して、このページに表示します。このソリューションは、ASA テレメトリ ジョブを使用して Blob Storage にテレメトリ データを書き込みます。
+Web アプリケーションのこのページでは、デバイスから送信されたテレメトリ データを、PowerBI JavaScript コントロール ([PowerBI-visuals リポジトリ](https://www.github.com/Microsoft/PowerBI-visuals)を参照) で視覚化します。このソリューションは、ASA テレメトリ ジョブを使用して Blob Storage にテレメトリ データを書き込みます。
 
 
 ### デバイス管理ポータル
 
 この Web アプリを使用すると、次のことができます。
 
-- 新しいデバイスをプロビジョニングする。これによって一意のデバイス ID が設定され、認証キーが生成されます。デバイスに関する情報は、IoT Hub の ID レジストリとソリューション固有の DocumentDB データベースの両方に書き込まれます。
-- デバイスのプロパティを管理する。たとえば既存のプロパティを表示したり、新しいプロパティで更新したりすることができます。
+- 新しいデバイスをプロビジョニングする。このアクションによって一意のデバイス ID が設定され、認証キーが生成されます。デバイスに関する情報は、IoT Hub の ID レジストリとソリューション固有の DocumentDB データベースの両方に書き込まれます。
+- デバイスのプロパティを管理する。このアクションでは、既存のプロパティを表示したり、新しいプロパティで更新したりすることができます。
 - デバイスにコマンドを送信する
 - デバイスのコマンド履歴を表示する
 - デバイスの有効と無効を切り替える。
@@ -231,4 +240,4 @@ Web アプリでは、デバイスから送信されたテレメトリ データ
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/14/2016"
+   ms.date="08/08/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse へのスキーマの移行#
@@ -23,19 +23,19 @@
 ### テーブルの機能
 SQL Data Warehouse では、次の機能は使用またはサポートされません。
 
-- 主キー  
-- 外部キー  
-- CHECK 制約  
-- UNIQUE 制約  
-- 一意のインデックス  
-- 計算列  
-- スパース列  
-- ユーザー定義型  
-- インデックス付きビュー  
-- ID  
-- シーケンス  
-- トリガー  
-- シノニム  
+- 主キー
+- 外部キー
+- CHECK 制約
+- UNIQUE 制約
+- 一意のインデックス
+- 計算列
+- スパース列
+- ユーザー定義型
+- インデックス付きビュー
+- ID
+- シーケンス
+- トリガー
+- シノニム
 
 
 ### データ型の相違
@@ -142,4 +142,4 @@ SQLDW にデータベース スキーマを正常に移行した後、次の記�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

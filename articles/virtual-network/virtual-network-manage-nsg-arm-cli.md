@@ -3,7 +3,7 @@
    description="リソース マネージャーで Azure CLI を使用して既存の NSG を管理する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/14/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # Azure CLI を使用して NSG を管理する
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
@@ -322,7 +322,7 @@ NSG をサブネットと NIC に関連付けることができます。また�
 NSG に関連付けられているリソースがない場合にのみ、NSG を削除できます。NSG を削除するには、次の手順を実行します。
 
 1. NSG に関連付けられているリソースを確認するには、「[NSG の関連付けを表示する](#View-NSGs-associations)」を参照し、`azure network nsg show` を実行します。
-2. NSG に関連付けられている NIC がある場合は、「[NSG と NIC の関連付けを解除する](#Dissociate-an-NSG-from-a-NIC)」を参照し、各 NIC について `azure network nic set` を実行します。 
+2. NSG に関連付けられている NIC がある場合は、「[NSG と NIC の関連付けを解除する](#Dissociate-an-NSG-from-a-NIC)」を参照し、各 NIC について `azure network nic set` を実行します。
 3. NSG に関連付けられているサブネットがある場合は、「[NSG とサブネットの関連付けを解除する](#Dissociate-an-NSG-from-a-subnet)」を参照し、各サブネットについて `azure network vnet subnet set` を実行します。
 4. NSG を削除するには、次のように `azure network nsg delete` コマンドを実行します。
 
@@ -339,4 +339,4 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
 - NSG の[ログを有効にします](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0810_2016-->

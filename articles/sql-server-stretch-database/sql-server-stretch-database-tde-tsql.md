@@ -19,7 +19,7 @@
 # Azure (Transact-SQL) での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [AZURE.SELECTOR]
 - [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
-- [TSQL](sql-server-stretch-database-encryption-tde-tsql.md)
+- [TSQL](sql-server-stretch-database-tde-tsql.md)
 
 Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
@@ -73,4 +73,4 @@ FROM
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

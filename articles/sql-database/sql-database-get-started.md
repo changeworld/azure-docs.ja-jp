@@ -27,15 +27,17 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-このチュートリアルでは、Azure ポータルの使用方法について説明します。
+このチュートリアルでは、Azure ポータルを使用して次のことを行う方法を説明します。
 
-- SQL Database をホストする SQL Database 論理サーバーを作成する
+- SQL データベースをホストするために、SQL Database 論理サーバーを作成する。
 - データのソースを選んで SQL データベースを作成する (データなし、サンプル データ使用、SQL データベース バックアップ データ使用)。
 - 単一の IP アドレスまたは IP アドレスの範囲に対してサービスレベルのファイアウォール規則を作成します。
 
 同じタスクを [C#](sql-database-get-started-csharp.md) または [PowerShell](sql-database-get-started-powershell.md) を使用して実行するには、次のリンク先を参照してください。
 
 [AZURE.INCLUDE [ログイン](../../includes/azure-getting-started-portal-login.md)]
+
+<a name="create-logical-server-bk"></a>
 
 [AZURE.INCLUDE [SQL Database 論理サーバーを作成する](../../includes/sql-database-create-new-server-portal.md)]
 
@@ -61,4 +63,4 @@
 
 [SQL Database とは](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

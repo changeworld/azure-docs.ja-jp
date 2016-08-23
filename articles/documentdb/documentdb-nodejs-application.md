@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="04/18/2016" 
+	ms.date="08/15/2016" 
 	ms.author="anhoh"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -165,11 +165,7 @@
 		                        id: collectionId
 		                    };
 							
-				 			var requestOptions = {
-								offerType: 'S1'
-							};
-							
-		                    client.createCollection(databaseLink, collectionSpec, requestOptions, function (err, created) {
+		                    client.createCollection(databaseLink, collectionSpec, function (err, created) {
 		                        callback(null, created);
 		                    });
 		
@@ -183,7 +179,9 @@
 				
 		module.exports = DocDBUtils;
 
-> [AZURE.TIP] createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+    > [AZURE.TIP] createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。
+    >
+    > DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 		
 3. **docdbUtils.js** ファイルを保存して閉じます。
 
@@ -545,7 +543,7 @@
 
 ## <a name="_Toc395783182"></a>手順 7: Azure Websites へのアプリケーション開発プロジェクトのデプロイ
 
-1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この手順については、「[Azure App Service へのローカル Git デプロイ](../app-service-web/app-service-deploy-local-git.md)」のトピックを参照してください。
+1. まだデプロイを実施していない場合、Azure Web サイトの Git リポジトリを有効にします。この手順については、「[Azure App Service へのローカル Git デプロイ](../app-service-web/app-service-deploy-local-git.md)」を参照してください。
 
 2. Git リモートとして Azure Web サイトを追加します。
 
@@ -570,4 +568,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

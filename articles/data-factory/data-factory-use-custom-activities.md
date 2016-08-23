@@ -620,7 +620,7 @@ adftutorial\\output フォルダーには、1 行または複数行 (入力フ�
 	- **PackageLinkedService** は **AzureStorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに別の Azure Storage アカウントを使用している場合、Azure Storage のリンクされたサービスを別に作成する必要があります。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 	- **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は containerforthezip/nameofthezip.zip です。
 	- カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
-	- カスタム アクティビティの linkedServiceName プロパティは **HDInsightLinkedService** を示します。これによって、Azure HDInsight クラスターでカスタム アクティビティが実行する必要がある Azure Data Factory がわかります。
+	- カスタム アクティビティの linkedServiceName プロパティは、**AzureBatchLinkedService** を示します。これによって、Azure Batch VM でカスタム アクティビティが実行する必要がある Azure Data Factory がわかります。
 	- **isPaused** プロパティは、既定で **false** に設定されています。この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。このプロパティを true に設定すると、パイプラインを一時停止できます。また false に設定し直すと再開されます。
 	- **start** 時刻と **end** 時刻は **5** 時間離れており、スライスは毎時生成されるので、パイプラインによって 5 個のスライスが生成されます。
 
@@ -894,4 +894,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

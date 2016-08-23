@@ -3,7 +3,7 @@
    description="クラシック デプロイ モデルで仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor="tysonn" 
    tags="azure-service-management" />
@@ -14,14 +14,14 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/23/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 
 # 仮想ネットワーク構成ファイルでの DNS 設定の指定
 
 ネットワーク構成ファイルの 2 つの要素を使用して、ドメイン ネーム システム (DNS) の設定 **DnsServers** と **DnsServerRef** を指定することができます。**DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。その後、**DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。
 
 ネットワーク構成ファイルは、次の要素を含むことができます。各要素のタイトルは、要素値の設定に関する追加情報を提供するページにリンクされています。
 
@@ -55,4 +55,4 @@
 - [Azure サービスの構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
 - [ネットワーク構成ファイルを使用して仮想ネットワークを構成](virtual-networks-using-network-configuration-file.md)します。
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0810_2016-->

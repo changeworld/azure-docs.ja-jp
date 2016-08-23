@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/23/2016"
+   ms.date="08/09/2016"
    ms.author="yurid"/>
 
 # サイバーセキュリティの Microsoft サービス
@@ -37,4 +37,4 @@ Microsoft サービスで提供されるサービスについては、次をご�
 
 Microsoft サービス セキュリティ コンサルティング サービスについては、[こちら](https://aka.ms/cyberserv)をご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

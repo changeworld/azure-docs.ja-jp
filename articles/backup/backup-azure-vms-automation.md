@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
-   ms.date="06/03/2016"
+   ms.date="08/03/2016"
    ms.author="markgal; trinadhk"/>
 
 # Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する
@@ -179,9 +179,17 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 
 保護を有効にするには、アイテムとポリシーの 2 つのオブジェクトが必要です。資格情報コンテナーでの保護を有効にするには両方のオブジェクトが必要です。ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
 
-保護ポリシーを有効にするには、以下のコマンドレットを実行します。
+暗号化されていない ARM VM で保護を有効にする場合
 
 ```
+PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
+```
+
+暗号化された VM (BEK と KEK を使用して暗号化) で保護を有効にするには、Azure Backup サービスに許可を付与し、キーとシークレットをキー コンテナーから読み取る必要があります。
+
+```
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'KeyVaultName' -ResourceGroupName 'RGNameOfKeyVault' -PermissionsToKeys backup,get,list -PermissionsToSecrets get,list -ServicePrincipalName 262044b1-e2ce-469f-a196-69ab7ada62d3
 PS C:\> $pol=Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 PS C:\> Enable-AzureRmRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"
 ```
@@ -346,14 +354,25 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 
 4. OS ディスクとデータ ディスクを接続します。
 
-    ```
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri
-    PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType foreach($dd in $obj.StorageProfile.DataDisks)
-    {
-    $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
-    }
-    ```
+      暗号化されていない VM の場合
 
+       ```
+       PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -CreateOption “Attach”
+       PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType foreach($dd in $obj.StorageProfile.DataDisks)
+       {
+       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+       }
+       ```
+      暗号化されている VM の場合は、ディスクをアタッチする前に[キー コンテナーの情報](https://msdn.microsoft.com/library/dn868052.aspx)を指定する必要があります。
+      
+      ```
+      PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.StorageProfile.OSDisk.VirtualHardDisk.Uri -DiskEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007" -DiskEncryptionKeyVaultId "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -KeyEncryptionKeyUrl "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007" -KeyEncryptionKeyVaultId "subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault" -CreateOption "Attach" -Windows
+      PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.StorageProfile.OSDisk.OperatingSystemType foreach($dd in $obj.StorageProfile.DataDisks)
+       {
+       $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.VirtualHardDisk.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption Attach
+       }
+      ```
+      
 5. ネットワーク設定を設定します。
 
     ```
@@ -373,6 +392,6 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 
 ## 次のステップ
 
-PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載している、[Windows Server のバックアップのデプロイおよび管理](./backup-client-automation.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。
+PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](./backup-client-automation.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

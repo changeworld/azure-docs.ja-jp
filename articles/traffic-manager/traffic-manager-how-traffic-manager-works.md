@@ -111,7 +111,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 
 ### "ネイキッド" (www のない) ドメイン名で Traffic Manager を使用することはできますか。
 
-現時点では変更できません。
+現時点では連携しません。
 
 DNS 名どうしのマッピング作成には、レコードの種類として DNS CNAME が使用されます。「[Traffic Manager の例](#traffic-manager-example)」の説明にあるとおり、Traffic Manager では、バニティ DNS 名 (例: www.contoso.com) を Traffic Manager プロファイルの DNS 名 (例: contoso.trafficmanager.net) にマッピングするために DNS CNAME レコードが必要です。また、Traffic Manager プロファイル自体も、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
 
@@ -131,4 +131,4 @@ Traffic Manager の[トラフィック ルーティング方法](traffic-manager
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0810_2016-->

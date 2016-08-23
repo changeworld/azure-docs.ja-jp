@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での連絡方法として会社電話を使用する
@@ -44,4 +44,4 @@
 <center>![Setup](./media/multi-factor-authentication-end-user-first-time-office-phone/app.png)</center>
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

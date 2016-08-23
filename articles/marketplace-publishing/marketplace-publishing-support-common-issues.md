@@ -13,7 +13,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="05/03/2016"
+      ms.date="08/03/2016"
       ms.author="v-jeana; hascipio; v-dabosl"/>
 
 # Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
@@ -72,7 +72,7 @@
 
 ![inprivate][4]
 
-**2.職場または学校のアカウント** (つまり AzureStore@yourcompany.com)) を使用してサインインします。
+**2.職場または学校のアカウント** (つまり AzureStore@yourcompany.com) を使用してサインインします。
 
 ![signin][5]
 
@@ -120,4 +120,4 @@
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0810_2016-->

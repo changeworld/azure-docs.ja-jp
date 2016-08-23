@@ -15,10 +15,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="hero-article" 
-	ms.date="08/01/2016" 
+	ms.date="08/11/2016" 
 	ms.author="anhoh"/>
 
-#<a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
+# <a name="_Toc395809351"></a>ASP.NET MVC のチュートリアル: DocumentDB を使用した Web アプリケーションの開発
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
@@ -591,4 +591,4 @@ DocumentDBRepository および ItemController にコードを追加して、Docu
 [ASP.NET MVC での基本的な CRUD 操作]: http://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/documentdb-net-todo-app
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

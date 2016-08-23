@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/22/2016"   
+	ms.date="08/11/2016"   
 	ms.author="robmcm"/>
 
 #方法: Java で Media Services を使用する
@@ -22,7 +22,7 @@
 
 ##Media Services 用の Azure アカウントの設定
 
-Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
+Media Services アカウントを設定するには、Azure クラシック ポータルを使用します。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。Azure クラシック ポータルでアカウントを作成すると、Media Services 開発用にコンピューターをセットアップできるようになります。
 
 ##Media Services 開発のための設定
 
@@ -30,7 +30,7 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 
 ###前提条件
 
--   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
 -   Azure Libraries for Java。これは [Azure Java デベロッパー センター][]からインストールできます。
 
 ##方法: Java で Media Services を使用する
@@ -276,4 +276,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

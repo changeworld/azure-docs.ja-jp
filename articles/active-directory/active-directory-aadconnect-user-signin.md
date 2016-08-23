@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 
@@ -107,7 +107,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 ###### 簡単設定とパスワード同期
 | 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:-------------:|:----------------------------------------|
-| 追加されていません | この場合、Azure AD ディレクトリに contoso.com のカスタム ドメインは追加されていません。オンプレミスでサフィックス @contoso.com の UPN を持つユーザーは、オンプレミス UPN を使用して Azure にサインインすることはできません。その代わりに、Azure AD によって提供される新しい UPN を使用する必要があります。そのためには、既定の Azure AD ディレクトリのサフィックスを追加します。たとえば、ユーザーを Azure AD ディレクトリ azurecontoso.onmicrosoft.com に同期する場合、オンプレミス ユーザー user@contoso.com には UPN として user@azurecontoso.onmicrosoft.com| が与えられます。
+| 追加されていません | この場合、Azure AD ディレクトリに contoso.com のカスタム ドメインは追加されていません。オンプレミスでサフィックス @contoso.com の UPN を持つユーザーは、オンプレミス UPN を使用して Azure にサインインすることはできません。その代わりに、Azure AD によって提供される新しい UPN を使用する必要があります。そのためには、既定の Azure AD ディレクトリのサフィックスを追加します。たとえば、ユーザーを Azure AD ディレクトリ azurecontoso.onmicrosoft.com に同期する場合、オンプレミス ユーザー user@contoso.com には UPN として user@azurecontoso.onmicrosoft.com が与えられます。|
 | 未確認 | この場合、カスタム ドメイン contoso.com を Azure AD ディレクトリに追加しましたが、そのドメインはまだ確認されていません。ドメインを確認しないままユーザーの同期を進めると、"追加されていません" のシナリオの場合と同様に、Azure AD によってユーザーに新しい UPN が割り当てられます。|
 | Verified | この場合、カスタム ドメインとして contoso.com を追加し、UPN サフィックスを Azure AD で既に確認済みです。ユーザーは Azure AD に同期された後、オンプレミスのユーザー プリンシパル名 (例: user@contoso.com) を使用して Azure にサインインできます。|
 
@@ -118,7 +118,7 @@ Azure AD の既定の .onmicrosoft.com ドメイン、または確認されて�
 
 | 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:-------------:|:----------------------------------------|
-| 追加されていません | この場合、Azure AD Connect は UPN サフィックス contoso.com と一致するカスタム ドメインを Azure AD ディレクトリで見つけることができませんでした。ユーザーが AD FS を使用して、user@contoso.com.| のようなオンプレミス UPN でサインインするように設定する場合は、カスタム ドメイン contoso.com を追加する必要があります
+| 追加されていません | この場合、Azure AD Connect は UPN サフィックス contoso.com と一致するカスタム ドメインを Azure AD ディレクトリで見つけることができませんでした。ユーザーが AD FS を使用して、user@contoso.com. のようなオンプレミス UPN でサインインするように設定する場合は、カスタム ドメイン contoso.com を追加する必要があります|
 | 未確認 | この場合、Azure AD Connect の確認メッセージに、後の段階でドメインを確認する方法について適切な詳細情報が示されます|
 | Verified | この場合、他のアクションを実行することなく、構成を続行できます|  
 
@@ -136,11 +136,11 @@ Azure AD の既定の .onmicrosoft.com ドメイン、または確認されて�
 
 ![Azure への接続](./media/active-directory-aadconnect-user-signin/changeusersignin3.png)
 
->[AZURE.NOTE] 一時的にパスワード同期に切り替えるだけの場合は、**[ユーザー アカウントを変換しない]** をオンにします。このオプションをオンにしないと、各ユーザーがフェデレーション ディレクトリに変換されることになり、時間がかかることがあります。
+>[AZURE.NOTE] 一時的にパスワード同期に切り替えるだけの場合は、**[ユーザー アカウントを変換しない]** をオンにします。このオプションをオンにしないと、各ユーザーがフェデレーション ディレクトリに変換されることになり、数時間かかることがあります。
   
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 「[Azure AD Connect: 設計概念](active-directory-aadconnect-design-concepts.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

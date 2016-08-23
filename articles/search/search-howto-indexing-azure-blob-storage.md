@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="07/12/2016"
+ms.date="08/08/2016"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
@@ -21,23 +21,41 @@ ms.author="eugenesh" />
 
 > [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
+## サポートされるドキュメントの形式
+
+BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
+
+- PDF
+- Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)
+- HTML
+- XML
+- ZIP
+- EML
+- プレーン テキスト ファイル (.txt)
+- JSON (詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
+- CSV (詳細については、[CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)に関する記事を参照)
+
 ## BLOB インデックスの設定
 
 Azure Blob Storage のインデクサーの設定と構成は、[こちらの記事](https://msdn.microsoft.com/library/azure/dn946891.aspx)の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。今後は、Azure Search .NET SDK と Azure ポータルに BLOB インデックスの作成機能が追加される予定です。
 
-データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
+インデクサーをセットアップするには、データ ソースの作成、インデックスの作成、インデクサーの構成の 3 つの手順を実行します。
 
-インデクサーは、データ ソースと検索対象のインデックスをつなげるリソースです。
+### 手順 1: データ ソースを作成する
 
-BLOB インデックス作成を設定するには、次の手順に従います。
+データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。データ ソースは、同じサブスクリプション内の複数のインデクサーで使用できます。
 
-1. Azure ストレージ アカウント内のコンテナー (と必要に応じてそのコンテナー内のフォルダー) を参照する `azureblob` タイプのデータ ソースを作成します。
-	- ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして渡します。接続文字列は、Azure ポータルから取得できます。目的のストレージ アカウント ブレードに移動して [キー] を選択し、"プライマリ接続文字列" または "セカンダリ接続文字列" の値を使用します。
-	- コンテナー名を指定します。必要に応じて `query` パラメーターを使用し、フォルダーを対象にすることもできます。
-2. 検索可能な `content` フィールドを持つ検索インデックスを作成します。
-3. データ ソースをターゲット インデックスに接続することによって、インデクサーを作成します。
+BLOB インデックス作成の場合は、次の必須プロパティがデータ ソースに必要です。
 
-### データ ソースの作成
+- **name** は、検索サービス内のデータ ソースの一意の名前です。
+
+- **type** は `azureblob` である必要があります。
+
+- **credentials** は、ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして提供します。接続文字列は、Azure ポータルから取得できます。これを行うには、目的のストレージ アカウント ブレードの **[設定]** > **[キー]** に移動して、"プライマリ接続文字列" または "セカンダリ接続文字列" の値を使用します。接続文字列はストレージ アカウントにバインドされているため、接続文字列を指定することは、データを提供するストレージ アカウントを暗黙的に識別することになります。
+
+- **container** は、ストレージ アカウントにあるコンテナーを指定します。既定では、コンテナー内のすべての BLOB を取得できます。特定の仮想ディレクトリにある BLOB についてのみインデックスを作成する場合は、オプションの **query** パラメーターを使用してそのディレクトリを指定できます。
+
+以下にデータ ソース定義の例を示します。
 
 	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -47,12 +65,16 @@ BLOB インデックス作成を設定するには、次の手順に従います
 	    "name" : "blob-datasource",
 	    "type" : "azureblob",
 	    "credentials" : { "connectionString" : "<my storage connection string>" },
-	    "container" : { "name" : "my-container", "query" : "my-folder" }
+	    "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 	}   
 
-データ ソース作成 API の詳細については、「[Create Datasource](search-api-indexers-2015-02-28-preview.md#create-data-source)」を参照してください。
+データ ソース作成 API の詳細については、「[データ ソースの作成](search-api-indexers-2015-02-28-preview.md#create-data-source)」をご覧ください。
 
-### インデックスの作成 
+### 手順 2: インデックスを作成する 
+
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
+
+BLOB のインデックス作成の場合は、BLOB を格納するための検索可能な `content` フィールドを持つインデックスであることを確認してください。
 
 	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
 	Content-Type: application/json
@@ -66,11 +88,11 @@ BLOB インデックス作成を設定するには、次の手順に従います
   		]
 	}
 
-インデックス作成 API の詳細については、「[Create Index](https://msdn.microsoft.com/library/dn798941.aspx)」を参照してください。
+インデックス作成 API の詳細については、「[Create Index (インデックスの作成)](https://msdn.microsoft.com/library/dn798941.aspx)」をご覧ください。
 
-### インデクサーの作成 
+### 手順 3: インデクサーを作成する 
 
-最後に、データ ソースとターゲット インデックスとを参照するインデクサーを作成します。次に例を示します。
+インデクサーは、データ ソースをターゲットの検索インデックスに接続し、データ更新を自動化できるようにスケジュール情報を提供します。インデックスとデータ ソースを作成すると、データ ソースとターゲットのインデックスを参照するインデクサーを作成することは比較的簡単です。For example:
 
 	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
 	Content-Type: application/json
@@ -87,19 +109,6 @@ BLOB インデックス作成を設定するには、次の手順に従います
 
 インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」をご覧ください。
 
-
-## サポートされるドキュメントの形式
-
-BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
-
-- PDF
-- Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)
-- HTML
-- XML
-- ZIP
-- EML
-- プレーン テキスト ファイル (.txt)
-- JSON (詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
 
 ## ドキュメント抽出プロセス
 
@@ -294,4 +303,4 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

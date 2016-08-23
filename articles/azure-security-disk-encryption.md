@@ -195,7 +195,7 @@ Azure Disk Encryption は、Windows クライアント SKU (Windows 8 クライ�
 
 **注:** セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、接続する必要がある上記 URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
 
-- Azure PowerShell SDK の最新バージョンを使用して、Azure Disk Encryption を構成します。[Azure PowerShell Version 1.3.0](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) 以降の最新バージョンをダウンロードしてください。
+- Azure ディスク暗号化 PowerShell コマンドレットのいずれかを実行するには、次のように、最初に [Azure PowerShell バージョン 1.0.1](https://github.com/Azure/azure-powershell/releases/tag/v1.0.2-December2015) をインストールする必要があります。
 
 **注:** Azure Disk Encryption は、[Azure PowerShell SDK Version 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) ではサポートされていません。Azure PowerShell 1.1.0 の使用に関連するエラーが発生する場合、「[Azure Disk Encryption Error Related to Azure PowerShell 1.1.0 (Azure PowerShell 1.1.0 に関連する Azure Disk Encryption エラー)](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx)」を参照してください。
 
@@ -845,4 +845,4 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 [Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

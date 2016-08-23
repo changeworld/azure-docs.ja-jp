@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
@@ -111,4 +111,4 @@ API Management には、次に示すシステム グループが用意されて�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [関連付けられている Azure Active Directory テナントの外部グループを活用する]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

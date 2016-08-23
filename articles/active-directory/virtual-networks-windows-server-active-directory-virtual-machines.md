@@ -34,7 +34,7 @@
 
 - [Azure Virtual Network での Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
 - [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](../active-directory/active-directory-install-replica-active-directory-domain-controller.md)
-- [テスト用のハイブリッド クラウド環境の設定](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-base.md)
+- [テスト用のハイブリッド クラウド環境の設定](../virtual-machines/virtual-machines-windows-ps-hybrid-cloud-test-env-sim.md)
 
 
 ## その他のリソース
@@ -42,4 +42,4 @@
 - [Azure への組織としてのサインアップ](sign-up-organization.md)
 - [Azure ID](fundamentals-identity.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

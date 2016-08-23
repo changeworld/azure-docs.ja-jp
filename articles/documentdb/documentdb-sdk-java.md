@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB Java SDK | Microsoft Azure" 
-	description="リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java SDK に関するあらゆる詳細を提供します。" 
+	pageTitle="DocumentDB Java API と SDK | Microsoft Azure" 
+	description="リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。" 
 	services="documentdb" 
 	documentationCenter="java" 
-	authors="aliuy" 
+	authors="rnagpal" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,24 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="java" 
 	ms.topic="article" 
-	ms.date="06/30/2016" 
-	ms.author="andrl"/>
+	ms.date="08/09/2016" 
+	ms.author="rnagpal"/>
 
-# DocumentDB SDK
+# DocumentDB API と SDK
 
 > [AZURE.SELECTOR]
-- [.NET SDK](documentdb-sdk-dotnet.md)
-- [Node.js SDK](documentdb-sdk-node.md)
-- [Java SDK](documentdb-sdk-java.md)
-- [Python SDK](documentdb-sdk-python.md)
+- [.NET](documentdb-sdk-dotnet.md)
+- [Node.JS](documentdb-sdk-node.md)
+- [Java](documentdb-sdk-java.md)
+- [Python](documentdb-sdk-python.md)
+- [REST ()](https://go.microsoft.com/fwlink/?LinkId=402413)
+- [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 
-##DocumentDB Java SDK
+## DocumentDB Java API と SDK
 
 <table>
-<tr><td>**ダウンロード**</td><td>[Maven](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)</td></tr>
-<tr><td>**投稿**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-<tr><td>**ドキュメント**</td><td>[Java SDK リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr>
-<tr><td>**概要**</td><td>[Java SDK の概要](documentdb-java-application.md)</td></tr>
+<tr><td>**SDK のダウンロード**</td><td>[Maven](http://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](http://azure.github.io/azure-documentdb-java/)</td></tr>
+<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
+<tr><td>**はじめに**</td><td>[Java SDK の概要](documentdb-java-application.md)</td></tr>
 <tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
 
@@ -92,7 +94,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 
 | ---	  | ---	         | ---
-| [1\.8.1](#1.8.1) | 2016 年 6 月 30 日|--- 
 | [1\.8.0](#1.8.0) | 2016 年 6 月 14 日|--- 
 | [1\.7.1](#1.7.1) | 2016 年 4 月 30 日 |--- 
 | [1\.7.0](#1.7.0) | 2016 年 4 月 27 日 |--- 
@@ -119,4 +120,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 DocumentDB に関する詳細は、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) サービス ページを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

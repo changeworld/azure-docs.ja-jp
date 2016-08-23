@@ -22,7 +22,7 @@
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 - [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
 このチュートリアルでは、Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
 
@@ -79,7 +79,7 @@ FROM [dbo].[vTargetMail]
 3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。![不要な列を削除する][5]
 
 
-## 3\.モデルを構築する
+## 手順 3.モデルを構築する
 データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
@@ -132,7 +132,7 @@ FROM [dbo].[vTargetMail]
 <!--Article references-->
 [Azure Machine Learning studio]: https://studio.azureml.net/
 [Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[サンプル データを手動で読み込む]: sql-data-warehouse-get-started-load-sample-databases.md
+[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
 [SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -240,7 +240,7 @@ Azure リソース マネージャー テンプレートを使用すると、Azu
                   "protocol": "tcp",
                   "frontendPortRangeStart": 50000,
                   "frontendPortRangeEnd": 50500,
-                  "backendPort": 3389
+                  "backendPort": 22
                 }
               }
             ]
@@ -557,4 +557,4 @@ Azure で使用されるリソースに対して課金されるため、不要�
 - 通知機能について「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-autoscale-to-webhook-email.md)」と「[Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-auditlog-to-webhook-email.md)」を参照します。
 - 仮想マシン スケール セットの自動スケール機能を使うための LAMP スタックをセットアップする [Ubuntu/Apache/PHP アプリを実行する VM スケール セットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートを確認します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0810_2016-->

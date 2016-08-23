@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016" 
+	ms.date="08/08/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - サンプル
@@ -21,7 +21,7 @@
 ## GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory)には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。Samples\\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
 
-| サンプル | 説明 |
+| サンプル | Description |
 | :----- | :---------- | 
 | [ADF チュートリアル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) | このサンプルでは、Azure Data Factory を使用したログ ファイルの処理によってログ ファイルのデータから知見を得る方法をエンド ツー エンドでわかりやすく解説します。<br/><br/>このチュートリアルでは、Data Factory パイプラインでサンプル ログを収集、処理します。ログから得たデータを参照データで補強し、そのデータを変換することによって、最近開始されたマーケティング キャンペーンの有効性を評価します。 |
 | [JSON のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) | 一般的なシナリオにおける JSON の使用例を紹介したサンプルです。 | 
@@ -63,7 +63,7 @@
 6. サンプルのタイルに**デプロイに成功した**ことを示すメッセージが表示されたら、**[パイプラインのサンプル]** ブレードを閉じます。
 5. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認できます。
 
-	![[データ ファクトリ] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
+	![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
    
 ## Visual Studio のサンプル
 
@@ -118,4 +118,4 @@
 
 Visual Studio を使用して Data Factory エンティティを作成し、Azure に発行する方法の詳細については、「[Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

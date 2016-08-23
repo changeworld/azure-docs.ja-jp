@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 
@@ -152,7 +152,7 @@ REST API を使用してこの操作を実行する方法については、「[D
 
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| 項目 | 説明 |
+| 項目 | Description |
 |-------------------------   |--------------------------------------------------------------------------------------------|
 | api-management ルート フォルダー | サービス インスタンスの最上位の構成が含まれています |
 | apis フォルダー | サービス インスタンス内の API の構成が含まれています |
@@ -175,7 +175,7 @@ REST API を使用してこの操作を実行する方法については、「[D
 
 >[AZURE.NOTE] 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
 >
->-    ユーザー
+>-    Users
 >-    サブスクリプション
 >-    プロパティ
 >-    スタイル以外の開発者ポータルのエンティティ
@@ -297,4 +297,4 @@ REST API を使用してこの操作を実行する方法については、「[D
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

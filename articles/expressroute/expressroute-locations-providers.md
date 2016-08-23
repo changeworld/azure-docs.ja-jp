@@ -68,8 +68,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ダブリン** | Colt |
 | **香港** | British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ロンドン** | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc+、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
-| **ラスベガス** | Level 3 Communications+、Megaport+
-| **ロサンゼルス** | CoreSite、Equinix、Megaport、Zayo Group |
+| **ラスベガス** | Level 3 Communications+、Megaport
+| **ロサンゼルス** | CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** | Equinix、Megaport、NEXTDC、Telstra Corporation |
 | **ニューヨーク** | Equinix、Megaport、Zayo Group |
 | **モントリオール** | Cologix+ |
@@ -156,4 +156,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

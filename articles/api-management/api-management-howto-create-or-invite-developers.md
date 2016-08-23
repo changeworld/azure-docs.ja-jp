@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/25/2016" 
+	ms.date="08/09/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でユーザー アカウントを管理する方法
@@ -95,7 +95,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 [api-management-pending-verification]: ./media/api-management-howto-create-or-invite-developers/api-management-pending-verification.png
 [api-management-view-developer]: ./media/api-management-howto-create-or-invite-developers/api-management-view-developer.png
 [api-management-reset-password]: ./media/api-management-howto-create-or-invite-developers/api-management-reset-password.png
-[]: ./media/api-management-howto-create-or-invite-developers/.png
+: ./media/api-management-howto-create-or-invite-developers/.png
 
 
 
@@ -110,4 +110,4 @@ API Management では、開発者は、API Management を使用して公開さ�
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 [電子メール テンプレートの構成]: api-management-howto-configure-notifications.md#email-templates
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

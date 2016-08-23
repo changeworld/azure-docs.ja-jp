@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # ハイブリッド ID で必要なポートとプロトコル
 
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関する情報を提供するテクニカルリファレンスです。次の図を使用して、対応する表を参照してください。
 
-![What is Azure AD Connect](./media/active-directory-aadconnect-ports/required1.png)
+![Azure AD Connect とは](./media/active-directory-aadconnect-ports/required1.png)
 
 
 ## 表 1 - Azure AD Connect とオンプレミスの AD
 この表は、Azure AD Connect サーバーとオンプレミスの AD 間の通信に必要なポートとプロトコルについて説明しています。
 
-プロトコル | ポート | 説明
+プロトコル | ポート | Description
 --------- | --------- |---------
 DNS|53 (TCP/UDP)| 送信先フォレストでの DNS 参照です。
 Kerberos|88 (TCP/UDP)| AD フォレストに対する Kerberos 認証です。
@@ -38,7 +38,7 @@ RPC |1024-65353 (ランダム ハイ RPC ポート)(TCP/UDP)|Azure AD Connect �
 ## 表 2 - Azure AD Connect と Azure AD
 この表は、Azure AD Connect サーバーと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
-プロトコル |ポート |説明
+プロトコル |ポート |Description
 --------- | --------- |---------
 HTTP|80 (TCP/UDP)|SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。
 HTTPS|443 (TCP/UDP)|Azure AD と同期するために使用されます。
@@ -48,7 +48,7 @@ Office 365 のポートと IP アドレスの一覧については、「[Office 
 ## 表 3 - Azure AD Connect とフェデレーション サーバー/WAP
 この表は、Azure AD Connect サーバーとフェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
-プロトコル |ポート |説明
+プロトコル |ポート |Description
 --------- | --------- |---------
 HTTP|80 (TCP/UDP)|SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。
 HTTPS|443 (TCP/UDP)|Azure AD と同期するために使用されます。
@@ -57,14 +57,14 @@ WinRM|5985| WinRM リスナー
 ## 表 4 - WAP とフェデレーション サーバー
 この表は、フェデレーション サーバーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
-プロトコル |ポート |説明
+プロトコル |ポート |Description
 --------- | --------- |---------
 HTTPS|443 (TCP/UDP)|認証で使用されます。
 
 ## 表 5 - WAP とユーザー
 この表は、ユーザーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
-プロトコル |ポート |説明
+プロトコル |ポート |Description
 --------- | --------- |--------- |
 HTTPS|443 (TCP/UDP)|デバイスの認証で使用されます。
 TCP|49443 (TCP)|証明書の認証で使用されます。
@@ -76,7 +76,7 @@ TCP|49443 (TCP)|証明書の認証で使用されます。
 ### 表 6a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
 この表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要な以下の送信ポートとプロトコルについて説明しています。
 
-プロトコル |ポート |説明
+プロトコル |ポート |Description
 --------- | --------- |--------- |
 HTTPS|443 (TCP/UDP)| 送信
 Azure Service Bus|5671 (TCP/UDP)| 送信
@@ -84,4 +84,4 @@ Azure Service Bus|5671 (TCP/UDP)| 送信
 ### 表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、[Azure AD Connect Health エージェントの「必要条件」のセクション](active-directory-aadconnect-health.md#requirements)を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -32,17 +32,17 @@
 1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。[最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードして、最新バージョンの SqlPackage ユーティリティを取得します。
 2. 次の SqlPackage コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Export /ssn:<server\_name> /sdn:<database\_name> /tf:<target\_file> /p:TableData=<schema\_name.table\_name> > <output\_file> 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:< server\_name > /sdn:< database\_name > /tf:< target\_file > /p:TableData=< schema\_name.table\_name > > < output\_file > 2>&1'
 
 	| 引数 | 説明 |
 	|---|---|
-	| <server\_name> | ソース サーバー名 |
-	| <database\_name> | 移行元データベースの名前 |
-	| <target\_file> | BACPAC ファイルのファイル名と場所 |
-	| <schema\_name.table\_name> | ターゲット ファイルに出力するデータのテーブル |
-	| <output\_file> | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
+	| < server\_name > | ソース サーバー名 |
+	| < database\_name > | 移行元データベースの名前 |
+	| < target\_file > | BACPAC ファイルのファイル名と場所 |
+	| < schema\_name.table\_name > | ターゲット ファイルに出力するデータのテーブル |
+	| < output\_file > | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
 
-	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数ではテーブルを抽出しないように指定することはできないので、小さいテーブルを 1 つ指定する必要があります。<output\_file> には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
+	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数ではテーブルを抽出しないように指定することはできないので、小さいテーブルを 1 つ指定する必要があります。< output\_file > には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
 

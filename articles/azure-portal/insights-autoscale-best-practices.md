@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="monitoring"
-	documentationCenter="monitoring"/>
+	services="monitoring-and-diagnostics"
+	documentationCenter="monitoring-and-diagnostics"/>
 
 <tags
-	ms.service="monitoring"
+	ms.service="monitoring-and-diagnostics"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -126,4 +126,4 @@ Cloud Services と App Services (Web Apps) の場合、Azure ポータル (porta
 - 自動スケール サービスがスケールを決定する際にメトリックを使用できない場合。
 - スケールを決定する際にメトリックを再び使用できるようになった (回復した) 場合。上記の状況に加え、スケール操作が正常に完了した場合に通知されるように、電子メールまたは Webhook の通知を構成できます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

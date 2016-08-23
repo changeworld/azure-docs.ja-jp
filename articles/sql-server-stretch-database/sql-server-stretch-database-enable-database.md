@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # データベースの Stretch Database を有効にする
@@ -24,9 +24,11 @@ Stretch Database の既存のデータベースを設定するには、SQL Serve
 
 データベースまたはテーブルで Stretch Database を有効にするには、db\_owner アクセス許可が必要です。データベースで Stretch Database を有効にするには、CONTROL DATABASE アクセス許可も必要です。
 
+ >   [AZURE.NOTE] 後で Strech Database を無効にする場合、テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されないことに注意してください。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを手動で削除するまで、Azure のコストが引き続き発生します。
+
 ## 開始する前に
 
--   Stretch のデータベースを設定する前に、Stretch Database Advisor を実行し、Stretch の対象となるデータベースとテーブルを特定することが推奨されます。Stretch Database Advisor はブロック問題も特定します。詳細については、「[Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)」を参照してください。
+-   Stretch のデータベースを設定する前に、Stretch Database Advisor を実行し、Stretch の対象となるデータベースとテーブルを特定することが推奨されます。Stretch Database Advisor はブロック問題も特定します。詳細については、[Stretch Database のデータベースとテーブルの特定](sql-server-stretch-database-identify-databases.md)に関する記事をご覧ください。
 
 -   「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を確認します。
 
@@ -37,11 +39,11 @@ Stretch Database の既存のデータベースを設定するには、SQL Serve
 ## <a name="EnableTSQLServer"></a>前提条件: サーバーで Stretch Database を有効にする
 データベースまたはテーブルで Stretch Database を有効にする前に、ローカル サーバーでそれを有効にする必要があります。この操作にはアクセス許可として sysadmin または serveradmin が必要になります。
 
--   必要な管理アクセス許可がある場合、**[Stretch Database を有効にする]** ウィザードにより Stretch のサーバーが設定されます。
+-   必要な管理アクセス許可がある場合は、**データベースのストレッチの有効化**ウィザードでサーバーが Stretch 用に構成されます。
 
--   必要なアクセス許可がない場合、ウィザードを自分で実行するか、管理者が実行する前に、管理者が **sp\_configure** を実行し、オプションを手動で有効にする必要があります。
+-   必要なアクセス許可がない場合は、ウィザードを実行する前に、管理者が **sp\_configure** を実行してオプションを手動で有効にするか、管理者がウィザードを実行する必要があります。
 
-サーバーで手動で Stretch Database を有効にするには、**sp\_configure** を実行し、**remote data archive** オプションをオンにします。次の例では、値が 1 に設定され、**remote data archive** オプションが有効になります。
+サーバーで Stretch Database を手動で有効にするには、**sp\_configure** を実行し、**remote data archive** オプションを有効にします。次の例では、値を 1 に設定することで、**remote data archive** オプションを有効にしています。
 
 ```
 EXEC sp_configure 'remote data archive' , '1';
@@ -50,12 +52,12 @@ GO
 RECONFIGURE;
 GO
 ```
-詳細については、「[Configure the remote data archive Server Configuration Option (サーバー設定オプションの remote data archive を設定する)](https://msdn.microsoft.com/library/mt143175.aspx)」と「[sp\_configure (Transact-SQL)](https://msdn.microsoft.com/library/ms188787.aspx)」を参照してください。
+詳細については、「[Configure the remote data archive Server Configuration Option (サーバー構成オプションの remote data archive を構成する)](https://msdn.microsoft.com/library/mt143175.aspx)」および「[sp\_configure (Transact-SQL)](https://msdn.microsoft.com/library/ms188787.aspx)」をご覧ください。
 
-## <a name="Wizard"></a>ウィザードを使用し、データベースで Stretch Database を有効にする
-入力する情報と選択肢を含む、[Stretch Database を有効にする] ウィザードの詳細については、「[[Enable Database for Stretch (Stretch Database を有効にする)] ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」をご覧ください。
+## <a name="Wizard"></a>ウィザードを使用してデータベースで Stretch Database を有効にする
+入力する必要がある情報や必要な選択など、データベースのストレッチの有効化ウィザードの詳細については、「[データベースのストレッチの有効化ウィザードを実行する方法の概要](sql-server-stretch-database-wizard.md)」をご覧ください。
 
-## <a name="EnableTSQLDatabase"></a>Transact-SQL を使用し、データベースで Stretch Database を有効にする
+## <a name="EnableTSQLDatabase"></a>Transact-SQL を使用してデータベースで Stretch Database を有効にする
 個々のテーブルで Stretch Database を有効にする前に、データベースでそれを有効にする必要があります。
 
 データベースまたはテーブルで Stretch Database を有効にするには、db\_owner アクセス許可が必要です。データベースで Stretch Database を有効にするには、CONTROL DATABASE アクセス許可も必要です。
@@ -78,7 +80,7 @@ GO
 	GO
     ```
 
-    データベース マスター キーの詳細については、「[CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx)」と「[データベース マスター キーの作成](https://msdn.microsoft.com/library/aa337551.aspx)」を参照してください。
+    データベース マスター キーの詳細については、「[CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx)」および「[データベース マスター キーの作成](https://msdn.microsoft.com/library/aa337551.aspx)」をご覧ください。
 
 4.  Stretch Database のデータベースを設定するとき、オンプレミス SQL Server とリモート Azure サーバーの間で通信するための Stretch Database の資格情報を入力する必要があります。2 つのオプションがあります。
 
@@ -96,7 +98,7 @@ GO
         GO
         ```
 
-		資格情報の詳細については、「[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx)」を参照してください。資格情報を作成するには、ALTER ANY CREDENTIAL というアクセス許可が必要です。
+		資格情報の詳細については、「[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx)」をご覧ください。資格情報を作成するには、ALTER ANY CREDENTIAL というアクセス許可が必要です。
 
     -   SQL Server のフェデレーション サービス アカウントを使用すれば、次の条件に該当するとき、リモート Azure サーバーと通信できます。
 
@@ -125,7 +127,7 @@ GO
     ```
 
 ## 次のステップ
--   [テーブルの Stretch Database を有効](sql-server-stretch-database-enable-table.md)にして追加テーブルを有効にします。
+-   [テーブルの Stretch Database を有効にして](sql-server-stretch-database-enable-table.md)追加テーブルを有効にします。
 
 -   [Stretch Database を監視](sql-server-stretch-database-monitor.md)してデータ移行の状態を確認します。
 
@@ -133,7 +135,7 @@ GO
 
 -   [Stretch Database を管理し、問題を解決します。](sql-server-stretch-database-manage.md)
 
--   [Stretch 対応データベースをバックアップします。](sql-server-stretch-database-backup.md)
+-   [Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md)
 
 ## 関連項目
 
@@ -143,4 +145,4 @@ GO
 
 [FirewallRule]: ./media/sql-server-stretch-database-enable-database/firewall.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0810_2016-->

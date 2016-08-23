@@ -13,24 +13,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/05/2016"
 	ms.author="douglasl"/>
 
 # Stretch Database を無効にしてリモート データを戻す
 
 テーブルの Stretch Database を無効にするには、SQL Server Management Studio でテーブルに **[Stretch]** を選択します。次のいずれかを選択します。
 
--   **無効にする | Azure からデータを戻す**。Azure から SQL Server にテーブルのリモート データをコピーし、テーブルの Stretch Database を無効にします。この操作にはデータ転送コストが発生し、キャンセルできません。
+-   **無効化| Bring data back from Azure**. Copy the remote data for the table from Azure back to SQL Server, then disable Stretch Database for the table. This operation incurs data transfer costs, and it can't be canceled.
 
--   **無効にする | Azure にデータを残す**。テーブルの Stretch Database を無効にします。Azure のテーブルのリモート データを破棄します。
+-   **無効化| Leave data in Azure**. Disable Stretch Database for the table.  Abandon the remote data for the table in Azure.
 
 Transact-SQL を利用し、テーブルまたはデータベースの Stretch Database を無効にすることもできます。
 
 テーブルの Stretch Database を無効にすると、データ移行が停止し、クエリ結果にリモート テーブルからの結果が含まれなくなります。
 
-データ移行を一時停止する場合、「[Pause and resume Stretch Database (Stretch Database を一時停止し、再開する)](sql-server-stretch-database-pause.md)」を参照してください。
+データ移行を一時停止する場合は、[Stretch Database の一時停止と再開](sql-server-stretch-database-pause.md)に関する記事をご覧ください。
 
->   [AZURE.NOTE] テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されません。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを削除するまで、Azure Storage のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
+>   [AZURE.NOTE] テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されません。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
 ## テーブルの Stretch Database を無効にする
 
@@ -40,15 +40,15 @@ Transact-SQL を利用し、テーブルまたはデータベースの Stretch D
 
 2.  右クリックして **[Stretch]** を選択し、次のいずれかを選択します。
 
-    -   **無効にする | Azure からデータを戻す**。Azure から SQL Server にテーブルのリモート データをコピーし、テーブルの Stretch Database を無効にします。このコマンドはキャンセルできません。
+    -   **無効化| Bring data back from Azure**. Copy the remote data for the table from Azure back to SQL Server, then disable Stretch Database for the table. This command can't be canceled.
 
-        >   [AZURE.NOTE] Azure から SQL Server にテーブルのリモート データをコピーすると、データ転送コストが発生します。詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」をご覧ください。
+        >   [AZURE.NOTE] Copying the remote data for the table from Azure back to SQL Server incurs data transfer costs. For more info, see [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/).
 
-        Azure から SQL Server にすべてのリモート データがコピーされると、テーブルの Stretch が無効になります。
+        After all the remote data has been copied from Azure back to SQL Server, Stretch is disabled for the table.
 
-    -   **無効にする | Azure にデータを残す**。テーブルの Stretch Database を無効にします。Azure のテーブルのリモート データを破棄します。
+    -   **無効化| Leave data in Azure**. Disable Stretch Database for the table.  Abandon the remote data for the table in Azure.
 
-    >   [AZURE.NOTE] テーブルの Stretch Database を無効にしても、リモート データおよびリモート テーブルは削除されません。リモート テーブルを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート テーブルを削除するまで、Azure Storage のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
+    >   [AZURE.NOTE] テーブルの Stretch Database を無効にしても、リモート データおよびリモート テーブルは削除されません。リモート テーブルを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート テーブルを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
 ### Transact-SQL を利用し、テーブルの Stretch Database を無効にする
 
@@ -72,7 +72,7 @@ Transact-SQL を利用し、テーブルまたはデータベースの Stretch D
        SET ( REMOTE_DATA_ARCHIVE = OFF_WITHOUT_DATA_RECOVERY ( MIGRATION_STATE = PAUSED ) ) ;
     ```
 
->   [AZURE.NOTE] テーブルの Stretch Database を無効にしても、リモート データおよびリモート テーブルは削除されません。リモート テーブルを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート テーブルを削除するまで、Azure Storage のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
+>   [AZURE.NOTE] テーブルの Stretch Database を無効にしても、リモート データおよびリモート テーブルは削除されません。リモート テーブルを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート テーブルを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
 ## データベースの Stretch Database を無効にする
 データベースの Stretch Database を無効にする前に、データベースの個々の Stretch 対応テーブルで Stretch Database を無効にする必要があります。
@@ -83,7 +83,7 @@ Transact-SQL を利用し、テーブルまたはデータベースの Stretch D
 
 2.  右クリックして **[タスク]** を選択します。次に、**[Stretch]** を選択し、**[無効化]** を選択します。
 
->   [AZURE.NOTE] データベースの Stretch Database を無効にしても、リモート データベースは削除されません。リモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート データベースを削除するまで、Azure Storage のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
+>   [AZURE.NOTE] データベースの Stretch Database を無効にしても、リモート データベースは削除されません。リモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート データベースを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
 ### Transact-SQL を利用し、データベースの Stretch Database を無効にする
 次のコマンドを実行します。
@@ -93,7 +93,7 @@ ALTER DATABASE <database name>
     SET REMOTE_DATA_ARCHIVE = OFF ;
 ```
 
->   [AZURE.NOTE] データベースの Stretch Database を無効にしても、リモート データベースは削除されません。リモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート データベースを削除するまで、Azure Storage のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
+>   [AZURE.NOTE] データベースの Stretch Database を無効にしても、リモート データベースは削除されません。リモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート データベースを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
 ## 関連項目
 
@@ -101,4 +101,4 @@ ALTER DATABASE <database name>
 
 [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0810_2016-->

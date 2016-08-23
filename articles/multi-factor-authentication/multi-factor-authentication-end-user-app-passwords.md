@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	ms.author="billmath"/>
 
 
@@ -42,7 +42,7 @@
 ## アプリ パスワードの作成と削除
 最初のサインイン時に、使用可能なアプリ パスワードが提供されます。さらに、後でアプリ パスワードを作成したり、削除したりすることもできます。そうする方法は、多要素認証を使用する方法によって異なります。最も適切な方法を選択します。
 
-多要素認証の使用方法|説明
+多要素認証の使用方法|Description
 :------------- | :------------- | 
 <a href="#で使用する">Office 365 で使用する</a>| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
 <a href="#で使用する">わからない</a>|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
@@ -129,4 +129,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 5. **[はい]** をクリックし、削除を確定します。
 6. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

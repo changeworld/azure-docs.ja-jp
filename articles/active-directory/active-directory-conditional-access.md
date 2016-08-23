@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="07/26/2016"
+	ms.date="08/08/2016"
 	ms.author="markvi"/>
 
 
@@ -61,7 +61,7 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 
 - **ブロック**: ユーザーの場所のような条件に基づいてアクセス権を適用できます。たとえば、ユーザーが信頼されたネットワーク上にいない場合にアクセスをブロックできます。
 
-- **登録済み/準拠デバイス**: デバイス レベルでは、モバイル デバイス管理 (MDM) に登録された準拠デバイスだけがアクセスを許可されるように強制するポリシーを設定できます。Microsoft Intune を使用して、デバイスが登録されていて準拠していることが検証されます。デバイス レベルの条件付きアクセスにより、MDM ポリシーに準拠しているデバイスだけがアクセスを許可されます。
+- **準拠デバイス**: デバイス レベルでは、ドメインに参加しているコンピューター、またはモバイル デバイス管理 (MDM) に登録されているモバイル デバイスで、コンプライアンスを満たしている場合にのみアクセスを許可するポリシーを設定できます。Microsoft Intune は、アプリケーションのアクセス中に適用するために、デバイスのコンプライアンスを確認し、Azure Active Directory にその報告を返します。
  
 
 ## アプリケーション
@@ -69,20 +69,49 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 - これらのポリシーを使用して設定できるアクセスのレベルは、クラウドまたはオンプレミスのアプリケーションとサービスに適用できます。ポリシーは、Web サイトまたはサービスに直接適用されます。ポリシーは、ブラウザー アクセスだけでなく、サービスにアクセスするアプリケーションに対しても適用されます。ポリシーを適用できるサービスの一覧を示します。
 
 
+## デバイス ベースの条件付きアクセス
+
+Azure AD に登録されていて、特定の条件を満たすデバイスからのアプリケーションのアクセスを制限することもできます。これは、次のデバイスからこれらのリソースにアクセスする有効なユーザーから組織のリソースを保護するのに便利です。
+
+- 不明なデバイスや管理されていないデバイス
+- 組織で定義されているセキュリティ ポリシーを満たしていないデバイス
+
+ポリシーは、次の要件に基づいて設定できます。
+
+- **ドメイン参加デバイス** - オンプレミスの Active Directory ドメインに参加しており、Azure AD に登録されているデバイスのアクセスを制限するポリシーを設定できます。このポリシーは、Azure AD に登録されており、オンプレミスの Active Directory ドメインに属している Windows のデスクトップ、ラップトップ、またはエンタープライズ タブレットに適用されます。Azure AD へのドメイン参加デバイスの自動登録をセットアップする方法の詳細については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
+
+- **準拠デバイス** - 管理システムによってディレクトリで**準拠**とマークされているデバイスのアクセスを制限するポリシーを設定できます。このポリシーにより、デバイスにファイルの暗号化を強制するなど、セキュリティ ポリシーを満たすデバイスのみアクセスが許可されます。このポリシーは、次のデバイスからのアクセスを制限するために使用できます。
+
+    - ハイブリッド構成でデプロイされた System Center Configuration Manager 2016 によって管理されている **Windows ドメイン参加デバイス**。
+
+    - Microsoft Intune またはサポート対象のサード パーティのモバイル デバイス管理 (MDM) システムによって管理されている**業務用または個人用の Windows 10 Mobile デバイス**。
+
+    - Microsoft Intune で管理されている **iOS および Android のデバイス**。
+
+
+デバイス ベースの条件付きアクセス ポリシーによって保護されたアプリケーションにアクセスするユーザーは、このポリシーを満たすデバイスからこれを実行する必要があります。このポリシーを満たしていないデバイスからこれを実行すると、アクセスが拒否されます。
+
+Azure AD でデバイス ベースの条件付きアクセス ポリシーを構成する方法については、[Azure Active Directory に接続されたアプリケーションのアクセスを制御するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)に関する記事を参照してください。
+
+## Azure Active Directory の条件付きアクセスの記事インデックス
   
-## 条件付きアクセスのコンテンツ マップ  
 以下のコンテンツ マップは、現在のデプロイで条件付きアクセスを有効にする方法を詳しく学習する場合に参照する必要があるドキュメントの一覧です。
 
 
 ### MFA と場所のポリシー
 
 - [グループ、場所、MFA ポリシーに基づく Azure AD 接続アプリへの条件付きアクセスの基本](active-directory-conditional-access-azuread-connected-apps.md)
+
 - [サポートされるアプリケーションの種類](active-directory-conditional-access-supported-apps.md)
 
 
 ### デバイスのポリシー
 
-[Microsoft Intune を使用してデータを保護する](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
+- [Azure Active Directory に接続されたアプリケーションのアクセスを制御するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)
+
+- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+- [Microsoft Intune を使用してデータを保護する](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
 
 
 ### サインイン リスクに基づいてリソースを保護する
@@ -94,4 +123,4 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 - [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 - [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->

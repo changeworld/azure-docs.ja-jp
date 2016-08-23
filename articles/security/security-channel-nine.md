@@ -4,7 +4,7 @@
    services="security"
    documentationCenter="na"
    authors="TomShinder"
-   manager="StevenPo"
+   manager="MBaldwin"
    editor="TomSh"/>
 
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/19/2016"
+   ms.date="08/09/2016"
    ms.author="terrylan"/>
 
 # Channel 9 で配信中の Azure セキュリティに関するビデオ
 
-[Channel 9](https://channel9.msdn.com/) は、コミュニティです。製品の背後にいる人たちを前面に引き出して、ユーザーと結び付けます。
+[Channel 9](https://channel9.msdn.com/) は製品を提供する側とお客様を結び付けるコミュニティです。
 
 彼らはソフトウェアにすばらしい未来があると考え、それを楽しみにしています。Channel 9 は、継続的な対話に参加するためのコミュニティです。
 
@@ -56,16 +56,24 @@ Azure 仮想マシン インスタンス上の SQL Server データベースを�
 
 [Managing Secrets for Azure Apps (Azure アプリの機密情報の管理)](https://channel9.msdn.com/events/Build/2016/P456)
 
-Azure にデプロイする重要なアプリはすべて、接続文字列、証明書、キーなどの機密情報を持ちます。これらの管理方法を誤ると、漏えい、障害、コンプライアンス違反などの重大な結果につながります。最近の複数の調査で指摘されているように、不注意な間違いによるデータ侵害は、敵対者による侵害の 4 倍以上にのぼっています。このセッションでは、重要なアプリ シークレットを管理するためのベスト プラクティスをいくつか紹介します。常識だと思われるかもしれませんが、こうしたプラクティスを無視している開発者がまだ多数存在しています。また、これらのベスト プラクティスを実装するために Azure Key Vault を利用する方法も紹介します。これらのプラクティスに従うと、SOC などの標準の遵守をデモンストレーションできるという利点もあります。セッションの最初の 10 分はレベル 100 で、どのプラットフォームで開発されるどのクラウド アプリにも適用できます。残りの部分はレベル 200 ～ 300 で、Azure プラットフォーム上に構築されるアプリに焦点を当てています。
+Azure にデプロイする重要なアプリはすべて、接続文字列、証明書、キーなどの機密情報を持ちます。これらの機密情報の管理方法を誤ると、漏えい、障害、コンプライアンス違反などの重大な結果につながります。最近の複数の調査で指摘されているように、不注意な間違いによるデータ侵害は、敵対者による侵害の 4 倍にのぼっています。このセッションでは、重要なアプリ シークレットを管理するためのベスト プラクティスをいくつか紹介します。常識だと思われるかもしれませんが、こうしたベスト プラクティスを無視している開発者がまだ多数存在しています。また、これらのベスト プラクティスを実装するために Azure Key Vault を利用する方法も紹介します。これらのプラクティスに従うと、SOC などの標準の遵守をデモンストレーションできるという利点もあります。セッションの最初の 10 分はレベル 100 で、どのプラットフォームで開発されるどのクラウド アプリにも適用できます。残りの部分はレベル 200 ～ 300 で、Azure プラットフォーム上に構築されるアプリに焦点を当てています。
 
 [Securing your Azure Virtual Network using Network Security Groups with Narayan Annamalai (Narayan Annamalai による、ネットワーク セキュリティ グループを使用した Azure 仮想ネットワークのセキュリティ保護)](https://channel9.msdn.com/Shows/Azure-Friday/Sucruing-your-Azure-Virtual-Network-using-Network-ACLs-with-Narayan-Annamalai)
 
 Azure 仮想ネットワークでのネットワーク セキュリティ グループの使用方法を、シニア プログラム マネージャーの Narayan Annamalai が Scott に説明します。サブネットとネットワークによって、Azure 内のオブジェクトへのアクセス制御を作成することができます。 PowerShell を使用して、アクセスを制御し、Azure 内にグループを作成する方法を説明します。
 
-[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews (Azure AD Privileged Identity Management: セキュリティ ウィザード、アラート、レビュー)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews) Azure Active Directory (AD) Privileged Identity Management は、権限のある ID やそのリソースへのアクセスを検出、制限、監視できるほか、必要に応じて、オンデマンドで適切なタイミングによる管理アクセスを強制することもできる、価値の高い機能です。学習内容: Office 365 のワークロード固有の管理ロールに対する保護の管理。特権ロールのアクティブ化用の Azure Multi-Factor Authentication(MFA) の構成。テナント セキュリティ体制の測定と強化。セキュリティの問題の監視と修正。定期的な再認定ワークフローで特権ロールに留まる必要があるユーザーの確認。
+[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews (Azure AD Privileged Identity Management: セキュリティ ウィザード、アラート、レビュー)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
+
+Azure Active Directory (AD) の Privileged Identity Management は、特権 ID と、特権 ID によるリソースへのアクセスを検出、制限、および監視することができるプレミアム機能です。必要に応じて、オンデマンドのジャスト イン タイム管理アクセスも適用されます。内容は次のとおりです。
+
+- Office 365 のワークロード固有の管理ロールに対する保護の管理
+- 特権ロールのアクティブ化用の Azure Multi-Factor Authentication(MFA) の構成
+- テナント セキュリティ体制の測定と強化
+- セキュリティの問題の監視と修正
+- 定期的な再認定ワークフローのための、特権ロールに留まる必要があるユーザーの確認
 
 [Azure Key Vault with Amit Bapat (Amit Bapat による Azure Key Vault)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Key-Vault-with-Amit-Bapat)
 
 Azure Key Vault について、Amit Bapat が Scott に紹介します。Azure Key Vault を使用すると、キーや (パスワードなどの) 小規模の秘密情報を、ハードウェア セキュリティ モジュール (HSM) に格納されたキーで暗号化できます。これは、クラウド ベースでハードウェア ベースの、Microsoft Azure 用の機密情報管理です。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0810_2016-->

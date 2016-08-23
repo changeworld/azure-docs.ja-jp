@@ -13,7 +13,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	ms.author="billmath"/>
 
 # ディレクトリ同期要件の決定
@@ -34,7 +34,7 @@
   - 「はい」の場合、ユーザーに仮想ディレクトリ/ID の統合はありますか。
 - オンプレミスに同期したい他のディレクトリはありますか (LDAP ディレクトリ、HR データベースなど)。
   - GALSync を実行する予定はありますか。
-  - 組織内の UPN は、現在どのような状態ですか。 
+  - 組織内の UPN は、現在どのような状態ですか。
   - ユーザーを認証するディレクトリは他にもありますか。
   - 会社は Microsoft Exchange を使用していますか。
     - ハイブリッド Exchange デプロイを利用する予定はありますか。
@@ -68,4 +68,4 @@
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0810_2016-->

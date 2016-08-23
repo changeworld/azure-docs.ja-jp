@@ -3,7 +3,7 @@
    description="リソース マネージャーでテンプレートを使用して、複数の NIC を持つ VM をデプロイする方法を学習します。"
    services="virtual-network"
    documentationCenter="na"
-   authors="telmosampaio"
+   authors="jimdial"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/02/2016"
-   ms.author="telmos" />
+   ms.author="jdial" />
 
 # テンプレートを使用した複数の NIC VM のデプロイ
 
@@ -292,4 +292,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 		data:
 		info:    group create command OK
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0810_2016-->

@@ -19,7 +19,7 @@
 # Enterprise Integration Pack の概要
 
 ## Enterprise Integration Pack とは
-Enterprise Integration Pack は、企業間 (B2B) の通信をシームレスに実現するクラウドベースの Microsoft ソリューションです。このパックでは、ビジネス パートナー間でのメッセージの交換に、[AS2](./app-service-logic-enterprise-integration-as2.md)、[X12](./app-service-logic-enterprise-integration-x12.md)、EDIFACT (近日対応予定) などの業界標準のプロトコルを使用します。メッセージは、暗号化とデジタル署名の両方を使用して、必要に応じてセキュリティ保護できます。
+Enterprise Integration Pack は、企業間 (B2B) の通信をシームレスに実現するクラウドベースの Microsoft ソリューションです。このパックでは、ビジネス パートナー間でのメッセージの交換に、[AS2](./app-service-logic-enterprise-integration-as2.md)、[X12](./app-service-logic-enterprise-integration-x12.md)、[EDIFACT](./app-service-logic-enterprise-integration-edifact.md) などの業界標準のプロトコルを使用します。メッセージは、暗号化とデジタル署名の両方を使用して、必要に応じてセキュリティ保護できます。
 
 このパックを使用すれば、互いに異なるプロトコルと形式が使用されている組織の間で、メッセージを電子的に交換できます。これは、異なる形式を、どちらの組織のシステムでも解釈してアクションを実行できる形式に変換することによって行います。
 
@@ -50,7 +50,7 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
 ## 各項目の詳細情報
-- [アグリーメント](./app-service-logic-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")
+- [アグリーメント](./app-service-logic-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")
 - [企業間 (B2B) シナリオ](./app-service-logic-enterprise-integration-b2b.md "B2B 機能を使用したロジック アプリの作成方法についての詳細情報")
 - [証明書](./app-service-logic-enterprise-integration-certificates.md "Enterprise Integration の証明書についての詳細情報")
 - [フラット ファイル エンコード/デコード](./app-service-logic-enterprise-integration-flatfile.md "フラット ファイル コンテンツをエンコードおよびデコードする方法についての詳細情報")
@@ -61,4 +61,4 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0810_2016-->

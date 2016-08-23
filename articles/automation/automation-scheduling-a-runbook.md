@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Automation の Runbook をスケジュール設定する"
+   pageTitle="Azure Automation の Runbook をスケジュール設定する | Microsoft Azure"
    description="特定の時刻または定期的なスケジュールで自動的に Runbook を開始できるように Azure Automation でスケジュールを作成する方法について説明します。"
    services="automation"
    documentationCenter=""
@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/12/2016"
+   ms.date="08/05/2016"
    ms.author="bwren" />
 
 # Azure Automation の Runbook をスケジュール設定する
@@ -32,7 +32,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 1. **[資産]** タブを選択します。
 1. ウィンドウの下部にある **[設定の追加]** をクリックします。
 1. **[スケジュールの追加]** をクリックします。
-1. 新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。スケジュールは、**[1 回限り]**、**[時間単位]**、または **[日単位]** で実行できます。
+1. 新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。スケジュールは、**1 回限り**、**時間単位**、**日単位**、**週単位**、**月単位**で実行できます。
 1. **[開始時刻]** やその他のオプションを、選択したスケジュールの種類に応じて指定します。
 
 ### Azure ポータルで新しいスケジュールを作成するには
@@ -82,7 +82,7 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 1. Azure ポータルで、Automation アカウントから **[Runbook]** タイルをクリックして、**[Runbook]** ブレードを開きます。
 2. Runbook の名前をクリックして、スケジュールを設定します。
 3. 現在、Runbook がスケジュールにリンクされていない場合は、新しいスケジュールの作成、または既存のスケジュールへのリンクというオプションが表示されます。
-4. Runbook にパラメーターがある場合は、オプション **[実行設定を変更する (既定: Azure)]** を選択すると **[パラメーター]** ブレードが表示されるので、必要に応じて情報を入力することができます。
+4. Runbook にパラメーターがある場合は、**[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ブレードが表示されるので、必要に応じて情報を入力することができます。
 
 ### Windows PowerShell で Runbook にスケジュールをリンクするには
 
@@ -151,4 +151,4 @@ Azure クラシック ポータルで、スケジュール用の [スケジュ�
 - スケジュールの操作に関する詳細については、「[Azure Automation のスケジュール資産](http://msdn.microsoft.com/library/azure/dn940016.aspx)」を参照してください。
 - Azure Automation の Runbook の使用を開始するには、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0810_2016-->

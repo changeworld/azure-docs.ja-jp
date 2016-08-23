@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/27/2016"
+   ms.date="08/04/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect 同期: スケジューラ
@@ -21,7 +21,7 @@
 
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
 
-## 概要
+## Overview
 Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。スケジューラが行う処理は 2 つあり、1 つはパスワードの同期で、もう 1 つはオブジェクト/属性の同期と、メンテナンス タスクです。このトピックでは、後者について説明します。
 
 以前のリリースでは、オブジェクトと属性のスケジューラは同期エンジンの外部にあり、同期プロセスをトリガーするために Windows タスク スケジューラまたは別の Windows サービスが使用されました。スケジューラは、1.1 リリースで同期エンジンに組み込まれ、いくつかのカスタマイズが可能になりました。新しい既定の同期頻度は、30 分です。
@@ -59,6 +59,13 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 - MaintenanceEnabled
 
 スケジューラの構成は Azure AD に保存されます。ステージング サーバーがある場合、プライマリ サーバーでの変更 (IsStagingModeEnabled を除く) はステージング サーバーにも影響します。
+
+### CustomizedSyncCycleInterval
+構文: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss` d - 日数、HH - 時間数、mm - 分数、ss - 秒数
+
+例: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00` スケジューラが 3 時間ごとに実行されるように変更されます。
+
+例: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0` スケジューラが毎日実行されるように変更されます。
 
 ## スケジューラの開始
 スケジューラは、既定では 30 分ごとに実行されます。場合によっては、スケジュールされたサイクル間に同期サイクルを実行したり、別の種類を実行する必要があったりします。
@@ -144,4 +151,4 @@ Get-ADSyncConnectorRunStatus
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0810_2016-->

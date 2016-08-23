@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## 概要
+## Overview
 
 このチュートリアルでは、[Apache Cordova クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [Apache Cordova クイック スタート] チュートリアルを完了しておく必要があります。ASP.NET バックエンドがあり、ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)]」を参照してください。
 
@@ -43,6 +43,8 @@
 ##<a name="create-hub"></a>通知ハブを作成する
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
+
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-3-Create-azure-notification-hub)
 
 ##プッシュ通知を送信するようにサーバー プロジェクトを更新する
 
@@ -124,7 +126,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 		      ios: { alert: 'true', badge: 'true', sound: 'true' },
 		      wns: {}
 		  });
-		
+
 		// Handle the registration event.
 		pushRegistration.on('registration', function (data) {
 		  // Get the native platform of the device.
@@ -151,11 +153,11 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 		      });
 		  }
 		});
-		
+
 		pushRegistration.on('notification', function (data, d2) {
 		  alert('Push Received: ' + data.message);
 		});
-		
+
 		pushRegistration.on('error', handleError);
 		}
 
@@ -171,13 +173,15 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 [AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-4-Set-up-gcm-for-push)
+
 ####<a name="configure-backend"></a>GCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ####Android 用に Cordova アプリを構成する
 
-Cordova アプリで config.xml を開き、`Your_Project_ID` を、[Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
+Cordova アプリで config.xml を開き、`Your_Project_ID` を [Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
 		<plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
 			<variable name="SENDER_ID" value="Your_Project_ID" />
@@ -260,6 +264,8 @@ iOS 用アプリのビルドが可能であることを確認します。Visual 
 
 [AZURE.INCLUDE [Notification Hubs Xamarin で Apple プッシュ通知を有効にする](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
+
 ####プッシュ通知を送信するように Azure を構成する
 
 1. [Azure ポータル](https://portal.azure.com/)にログインします。**[参照]**、**[Mobile Apps]**、作成したモバイル アプリ、**[設定]**、**[プッシュ]**、**[Apple (APNS)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
@@ -304,13 +310,15 @@ Visual Studio でストアのオプションを使用するには、ソリュー
 
 [AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-6-Set-up-wns-for-push)
+
 ####WNS 用に通知ハブを構成する
 
 [AZURE.INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 ####Cordova アプリを構成して Windows プッシュ通知をサポートする
 
-構成デザイナーを開き (config.xml を右クリックして **[ビュー デザイナー]** を選択)、**[Windows]** タブを選択し、**[Windows 対象バージョン]** の **[Windows 10]** を選択します。
+構成デザイナーを開き (config.xml を右クリックして **[ビュー デザイナー]** を選択)、**[Windows]** タブを選択し、**[Windows 対象バージョン]** で **[Windows 10]** を選択します。
 
 	>[AZURE.NOTE] If you are using a Cordova version prior to Cordova 5.1.1 (6.1.1 recommended), you must also set the Toast Capable flag to true in config.xml.
 
@@ -375,4 +383,4 @@ SDK の使用方法を確認してください。
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0810_2016-->

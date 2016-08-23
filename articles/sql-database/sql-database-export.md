@@ -23,17 +23,17 @@
 - [Azure ポータル](sql-database-export.md)
 - [PowerShell](sql-database-export-powershell.md)
 
-この記事では [Azure ポータル](https://portal.azure.com)を使用して Azure Blob Storage に格納されている BACPAC ファイルに Azure SQL Database をアーカイブする方法について説明します。
+この記事では、[Azure ポータル](https://portal.azure.com)を使用して、Azure BLOB ストレージに格納されている BACPAC ファイルに Azure SQL Database をアーカイブする方法について説明します。
 
 Azure SQL Database のアーカイブを作成する必要がある場合は、BACPAC ファイルにデータベース スキーマとデータをエクスポートできます。BACPAC ファイルは、単に BACPAC の拡張子を持つ ZIP ファイルです。BACPAC ファイルは、後で Azure Blob Storage またはオンプレミスの場所にあるローカル ストレージに格納することや、後で Azure SQL Database またはオンプレミス SQL Server インストールに戻ってインポートすることができます。
 
 ***考慮事項***
 
 - アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に発生していないことを確認するか、または Azure SQL Database の[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります。
-- Azure Blob Storage にアーカイブされた BACPAC ファイルの最大サイズは 200 GB です。[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、より大きな BACPAC ファイルをローカル ストレージにアーカイブします。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。SQL Server Data Tools の最新版を[ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)し、このユーティリティを入手することもできます。
+- Azure BLOB ストレージにアーカイブできる BACPAC ファイルの最大サイズは 200 GB です。[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、より大きな BACPAC ファイルをローカル ストレージにアーカイブします。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。SQL Server Data Tools の最新版を[ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)し、このユーティリティを入手することもできます。
 - BACPAC ファイルを使用する Azure Premium Storage へのアーカイブはサポートされていません。
 - エクスポート操作が 20 時間以上を超える場合は取り消されることがあります。エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
- - サービス レベルを一時的に向上させる
+ - サービス レベルを一時的に上げる
  - エクスポート中のすべての読み取りと書き込みアクティビティを中止する
  - すべての大きなテーブルにクラスター化インデックスを使用する。クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。
 
@@ -99,4 +99,4 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0810_2016-->
