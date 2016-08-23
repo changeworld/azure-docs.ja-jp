@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="04/25/2016"
+	ms.date="08/17/2016"
 	ms.author="annemill"/>
 
 
@@ -40,7 +40,7 @@ Visual Studio を使用して SQL Database に接続するには、以下のも�
  - [デモ データベースの作成](sql-database-get-started.md)は数分で完了します。
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
  - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
@@ -64,7 +64,7 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 
 1. [Azure ポータル](https://portal.azure.com/) (http://portal.azure.com/) からログインします。
 
-2. **[すべて参照]**、**[SQL データベース]** の順にクリックします。データベースを検索するためのブレードが開きます。
+2. *[すべて参照]*、**[SQL データベース]** の順にクリックします。データベースを検索するためのブレードが開きます。
 
 3. ブレード上部付近にあるフィルターのテキスト ボックスに **AdventureWorksLT** データベースの名前を入力します。
 
@@ -82,7 +82,7 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 
 9. Visual Studio のインストール後に、**[Visual Studio で開く]** ブレードで **[Visual Studio で開く]** をクリックします。Visual Studio が開きます。
 
-10. Visual Studio では、**[SQL Server オブジェクト エクスプローラー]** ペインで使用するために、ダイアログの接続文字列フィールドに接続文字列を入力するよう求められます。
+10. Visual Studio から、ダイアログの接続文字列フィールドに入力するよう求められます。
  - **[Windows 認証]** ではなく **[SQL Server 認証]** を選択します。
  - **AdventureWorksLT** データベースの指定も忘れずに行ってください (ダイアログ ボックスで **[オプション]**、**[接続プロパティ]** の順にクリック)。
 
@@ -93,7 +93,7 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 
 論理サーバーに接続すると、データベースに接続し、サンプル クエリを実行できます。
 
-1. **オブジェクト エクスプローラー**で、サーバー上のアクセス許可を持っているデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
+1. **オブジェクト エクスプローラー**で、アクセス許可を持っているサーバー上のデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
 2. データベースを右クリックし、**[新しいクエリ]** を選択します。
 
 	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
@@ -121,4 +121,4 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 
 [20-OpenInVisualStudioButton]: ./media/sql-database-connect-query/connqry-free-vs-e.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

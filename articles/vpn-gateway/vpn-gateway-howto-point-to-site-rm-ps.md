@@ -10,10 +10,10 @@
 <tags 
    ms.service="vpn-gateway"
    ms.devlang="na"
-   ms.topic="article"
+   ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/03/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc" />
 
 # PowerShell を利用し、仮想ネットワークへのポイント対サイト接続を構成する
@@ -22,11 +22,11 @@
 - [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
 - [ポータル - クラシック](vpn-gateway-point-to-site-create.md)
 
-ポイント対サイト構成では、クライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を個別に作成することができます。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイトは、自宅や会議室など、リモートの場所から VNet に接続する場合、または仮想ネットワークに接続する必要があるクライアントの数が少ない場合などに適しています。
+ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。P2S 接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。
 
-ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と「[仮想ネットワークのセキュリティで保護されたクロスプレミス接続について](vpn-gateway-cross-premises-options.md)」を参照してください。
+ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と[計画と設計](vpn-gateway-plan-design.md)に関するページを参照してください。
 
-この記事は、**Azure Resource Manager デプロイ モデル** (サービス管理) を使用して作成された仮想ネットワークへのポイント対サイト VPN Gateway 接続を対象としています。
+この記事は、Resource Manager デプロイメント モデルを使用して作成された仮想ネットワークへのポイント対サイト接続を対象としています。この記事の手順では、PowerShell を使用します。
 
 **Azure のデプロイ モデルについて**
 
@@ -41,11 +41,11 @@
 
 ## この構成について
 
-このシナリオでは、ポイント対サイト接続で仮想ネットワークを作成します。ポイント対サイト接続は、ゲートウェイのある VNet、アップロードしたルート証明書 .cer ファイル、クライアント証明書、クライアント側の VPN 構成で構成されます。
+このシナリオでは、ポイント対サイト接続で仮想ネットワークを作成します。P2S 接続は、ゲートウェイのある VNet、ルート証明書 .cer ファイル、クライアント証明書、クライアント側の VPN 構成で構成されます。
 
-この演習では、次の値を使用します。
+この構成では、次の値を使用します。
 
-- 名前: **TestVNet**。アドレス空間として **192.168.0.0/16** と **10.254.0.0/16** を使用します。1 つの VNet に複数のアドレス空間を使用できます。
+- 名前: **VNet1**。アドレス空間として **192.168.0.0/16** と **10.254.0.0/16** を使用します。1 つの VNet に複数のアドレス空間を使用できます。
 - サブネット名: **FrontEnd**。**192.168.1.0/24** を使用します。
 - サブネット名: **BackEnd**。**10.254.1.0/24** を使用します。
 - サブネット名: **GatewaySubnet**。**192.168.200.0/24** を使用します。ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。
@@ -63,7 +63,7 @@
 
 - Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure リソース マネージャー PowerShell コマンドレット (1.0.2 以降) をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- Azure Resource Manager PowerShell コマンドレット (1.0.2 以降) をインストールします。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## Azure のポイント対サイト接続を構成する
 
@@ -81,7 +81,7 @@
 
 4. この構成では、使用する値で次の PowerShell 変数を宣言します。サンプル スクリプトでは、宣言済みの値が使用されます。使用する値を宣言します。次のサンプルを使用し、必要に応じて独自の値で置き換えます。
 
-		$VNetName  = "TestVNet"
+		$VNetName  = "VNet1"
 		$FESubName = "FrontEnd"
 		$BESubName = "Backend"
 		$GWSubName = "GatewaySubnet"
@@ -109,8 +109,8 @@
 		$besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
 		$gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
 
-7. 仮想ネットワークを作成する。指定された DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーにする必要があります。この例ではパブリック IP アドレスを使用しましたが、独自の値をここに指定できます。
-
+7. 仮想ネットワークを作成する。指定された DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーである必要があります。この例では、パブリック IP アドレスを使用しましたが、実際には独自の値を使用してください。
+	
 		New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer $DNS
 
 8. 作成した仮想ネットワークの変数を指定します。
@@ -142,14 +142,14 @@
 
 ## クライアントの構成
 
-各クライアントがポイント対サイトを利用して Azure に接続するには、VPN クライアントを接続するように構成し、クライアントにクライアント証明書をインストールする必要があります。Windows クライアントの場合、VPN クライアント構成パッケージが利用できます。詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」をご覧ください。
+各クライアントがポイント対サイトを利用して Azure に接続するには、VPN クライアントを接続するように構成し、クライアントにクライアント証明書をインストールする必要があります。Windows クライアントの場合、VPN クライアント構成パッケージが利用できます。詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」を参照してください。
 
 1. VPN クライアント構成パッケージをダウンロードします。この手順では、次のサンプルを利用し、クライアント構成パッケージをダウンロードします。
 
 		Get-AzureRmVpnClientPackage -ResourceGroupName $RG `
 		-VirtualNetworkGatewayName $GWName -ProcessorArchitecture Amd64
 
-	PowerShell コマンドレットは URL リンクを返します。Web ブラウザーに返されたリンクをコピーして貼り付け、コンピューターにパッケージをダウンロードします。下は返された URL の例です。
+	PowerShell コマンドレットは URL リンクを返します。Web ブラウザーに返されたリンクをコピーして貼り付け、コンピューターにパッケージをダウンロードします。次に示すのは、返された URL の例です。
 
     	"https://mdsbrketwprodsn1prod.blob.core.windows.net/cmakexe/4a431aa7-b5c2-45d9-97a0-859940069d3f/amd64/4a431aa7-b5c2-45d9-97a0-859940069d3f.exe?sv=2014-02-14&sr=b&sig=jSNCNQ9aUKkCiEokdo%2BqvfjAfyhSXGnRG0vYAv4efg0%3D&st=2016-01-08T07%3A10%3A08Z&se=2016-01-08T08%3A10%3A08Z&sp=r&fileExtension=.exe"
 	
@@ -159,7 +159,7 @@
 
 4. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。**[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、**[OK]** をクリックします。
 
-5. これで接続が確立されたはずです。以下の手順で接続を確認できます。
+5. これで接続が確立されたはずです。次の手順で接続を確認できます。
 
 ## 接続を確認する
 
@@ -167,9 +167,9 @@
 
 2. 結果を表示します。受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。結果は、次のようになります。
     
-		PPP adapter VNetEast:
+		PPP adapter VNet1:
 			Connection-specific DNS Suffix .:
-			Description.....................: VNetEast
+			Description.....................: VNet1
 			Physical Address................:
 			DHCP Enabled....................: No
 			Autoconfiguration Enabled.......: Yes
@@ -184,14 +184,14 @@
 
 ### 信頼されたルート証明書を追加する
 
-最大 20 個の信頼されたルート証明書を Azure に追加できます。ルート証明書を追加するには、次の手順に従います。
+信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。ルート証明書を追加するには、次の手順に従います。
 
-1. 新しいルート証明書を作成し、Azure に追加する準備をします。
+1. Azure に追加する新しいルート証明書を作成して準備します。
 
 		$P2SRootCertName2 = "ARMP2SRootCert2.cer"
 		$MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
 
-2. 新しいルート証明書を追加します。一度に追加できる証明書は 1 つに限られます。
+2. 新しいルート証明書を追加します。一度に追加できる証明書は 1 つだけです。
 
 		Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName2 -VirtualNetworkGatewayname $GWName -ResourceGroupName $RG -PublicCertData $MyP2SCertPubKeyBase64_2
 
@@ -202,7 +202,7 @@
 
 ### 信頼されたルート証明書を削除する
 
-信頼されたルート証明書を Azure から削除できます。信頼された証明書を削除すると、その証明書から生成されたクライアント証明書は、Azure で信頼されている証明書から生成されたクライアント証明書をインストールするまで、ポイント対サイトを使用して Azure に接続できなくなります。
+信頼されたルート証明書を Azure から削除できます。信頼された証明書を削除すると、そのルート証明書から生成されたクライアント証明書は、ポイント対サイトを介して Azure に接続することができなくなります。クライアントが接続できるようにするには、Azure で信頼されている証明書から生成された新しいクライアント証明書をインストールする必要があります。
 
 1. 信頼されたルート証明書を削除するには、次のサンプルを変更します。
 
@@ -215,7 +215,7 @@
 
 ## 失効したクライアント証明書のリストの管理
 
-クライアント証明書は失効させることができます。証明書失効リストを使用すると、個々のクライアント証明書に基づくポイント対サイト接続を選択して拒否することができます。Azure からルート証明書を削除すると、失効したルート証明書によって生成/署名されたすべてのクライアント証明書のアクセスが取り消されますが、クライアント証明書を失効させると、特定の証明書のアクセスを削除できます。一般的な方法としては、ルート証明書を使用してチームまたは組織レベルでアクセスを管理し、失効したクライアント証明書を使用して、個々のユーザーの細かいアクセス制御を構成します。
+クライアント証明書は失効させることができます。証明書失効リストを使用すると、個々のクライアント証明書に基づくポイント対サイト接続を選択して拒否することができます。ルート証明書 .cer を Azure から削除すると、失効したルート証明書によって生成または署名されたすべてのクライアント証明書のアクセス権は取り消されます。ルート証明書ではなく、特定のクライアント証明書を失効させることもできます。この場合、ルート証明書から生成された他の証明書は有効なままです。一般的な方法としては、ルート証明書を使用してチームまたは組織レベルでアクセスを管理し、失効したクライアント証明書を使用して、個々のユーザーの細かいアクセス制御を構成します。
 
 ### クライアント証明書の失効
 
@@ -250,4 +250,4 @@
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

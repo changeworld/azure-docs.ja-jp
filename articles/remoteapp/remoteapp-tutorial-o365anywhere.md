@@ -13,11 +13,14 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/27/2016"
+   ms.date="08/15/2016"
    ms.author="guscatal;elizapo"/>
 
 
 # Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 この記事では、会社内の任意のデバイスで Office 365 をデプロイする方法を説明します。ユーザーには、Android、Apple、Windows のいずれからでも、同じ機能と UI 操作が提供されます。
 
@@ -27,7 +30,7 @@
 
 まず、Azure アカウントを作成してから、左側にあるリンクをクリックして **RemoteApp** に移動します。![Azure ポータルでの Azure RemoteApp の表示](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
-次に、下部にある **[新規]** をクリックし、コレクションを "簡易作成" します。名前、リージョン、サブスクリプション、プラン、および提供されている「Office Proffesional 2013」イメージを指定します。 ![[作成] ダイアログ](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
+次に、下部にある **[新規]** をクリックし、コレクションを "簡易作成" します。名前、リージョン、サブスクリプション、プラン、提供されている "Office Proffesional 2013" イメージを指定します。 ![[作成] ダイアログ](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
 フォームを完了すると、コレクションの作成プロセスが開始されます。これには 1 時間ほどかかる場合があります。
 
@@ -63,4 +66,4 @@
 
 ![PowerPoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

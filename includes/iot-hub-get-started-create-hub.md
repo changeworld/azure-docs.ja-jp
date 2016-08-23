@@ -21,7 +21,7 @@
 
     ![New IoT hub status][3]
 
-5. IoT Hub が正常に作成されたら、ポータルで IoT Hub の新しいタイルをクリックし、新しい IoT Hub のブレードを開きます。**ホスト名**をメモして、**キー** アイコンをクリックします。
+5. IoT Hub が正常に作成されたら、ポータルで IoT Hub の新しいタイルをクリックし、新しい IoT Hub のブレードを開きます。**[ホスト名]** をメモして、**[共有アクセス ポリシー]** をクリックします。
 
     ![New IoT hub blade][4]
 
@@ -43,4 +43,4 @@
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide.md#accesscontrol
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

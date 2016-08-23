@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-##概要
+##Overview
 
 このチュートリアルでは、Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。
 
@@ -102,7 +102,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="6">
 <li><p><b>[Notification Services]</b> オプションと <b>[Windows (WNS)]</b> オプションを選択します。次に、<b>アプリケーション シークレット</b> パスワードを <b>[セキュリティ キー]</b> ボックスに入力します。前のセクションで WNS から取得した<b>パッケージ SID</b> 値を入力し、<b>[保存]</b> をクリックします。</p>
 </li>
 </ol>
@@ -200,7 +200,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
    	![][13]
 
-	これにより、新しい Visual C# コンソール アプリケーションがソリューションに追加されます。個別のソリューションでこの操作を行うこともできます。
+	これにより、Visual C# の新しいコンソール アプリケーションがソリューションに追加されます。個別のソリューションでこの操作を行うこともできます。
 
 2. Visual Studio で、**[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
@@ -244,7 +244,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
 	登録したすべてのデバイスでトースト通知を受信します。トースト バナーをクリックまたはタップすると、アプリケーションが読み込まれます。
 
-MSDN の [トースト カタログ]、[タイル カタログ]、[バッジの概要]トピックに、サポートされるすべてのペイロードが記載されています。
+MSDN の[トースト カタログ]、[タイル カタログ]、[バッジの概要]のトピックに、サポートされるすべてのペイロードが記載されています。
 
 ##次のステップ
 
@@ -274,4 +274,4 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

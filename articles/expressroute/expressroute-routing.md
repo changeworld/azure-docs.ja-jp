@@ -124,8 +124,8 @@ Microsoft は、パブリック ピアリングと Microsoft ピアリングを�
 | | 米国東部 | 12076:51004 |
 | | 米国東部 2 | 12076:51005 |
 | | 米国西部 | 12076:51006 |
-| | 米国西部 2 | 12076:51022 |
-| | 米国中西部 | 12076:51023 |
+| | 米国西部 2 | 12076:51026 |
+| | 米国中西部 | 12076:51027 |
 | | 米国中北部 | 12076:51007 |
 | | 米国中南部 | 12076:51008 |
 | | 米国中央部 | 12076:51009 |
@@ -175,4 +175,4 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

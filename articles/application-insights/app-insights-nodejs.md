@@ -54,7 +54,7 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 ## <a name="sdk"></a>アプリケーションに SDK をインストールする
 
 ```
-npm install applicationinsights
+npm install applicationinsights --save
 ```
 
 ## 使用法
@@ -224,4 +224,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

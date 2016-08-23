@@ -4,7 +4,7 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="stevenpo" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
+	ms.date="08/15/2016" 
 	ms.author="billmath"/>
 
 # クラウドでの Azure Multi-Factor Authentication Server の概要
@@ -29,7 +29,7 @@
 
 
 
-- [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/pricing/free-trial/) - Azure サブスクリプションをまだ取得していない場合は、サインアップが必要です。Azure MFA を開始して使ってみるだけの場合、評価版のサブスクリプションを使用できます。
+- [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/pricing/free-trial/) - Azure サブスクリプションをまだ取得していない場合は、サインアップが必要です。Azure MFA を開始して使ってみるだけの場合、試用版のサブスクリプションを使用できます。
 2. [Multi-Factor Auth プロバイダーを作成](multi-factor-authentication-get-started-auth-provider.md)して自分のディレクトリに割り当てるか、[ライセンスをユーザーに割り当てる](multi-factor-authentication-get-started-assign-licenses.md)
 
 > [AZURE.NOTE]  ライセンスの使用は、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite (EMS) を所有するユーザーが対象となります。MFA は Azure AD Premium と EMS に含まれています。ライセンスが足りている場合は、認証プロバイダーの作成は不要です。
@@ -46,7 +46,7 @@
 2.  左側の **[Active Directory]** をクリックします。
 3.  **[ディレクトリ]** の下で、有効にするユーザーのディレクトリをクリックします。![Click Directory](./media/multi-factor-authentication-get-started-cloud/directory1.png)
 4.  上部の **[ユーザー]** をクリックします。
-5.  ページ下部の **[Multi-Factor Auth の管理]** をクリックします。![Click Directory](./media/multi-factor-authentication-get-started-cloud/manage1.png)
+5.  ページ下部の **[Multi-Factor Authentication の管理]** をクリックします。 ![Click Directory](./media/multi-factor-authentication-get-started-cloud/manage1.png)
 6.  これにより、ブラウザーの新しいタブが開きます。多要素認証を有効にするユーザーを検索します。上部でビューを変更することが必要になる場合があります。状態が**無効**になっていることを確認します。![Enable user](./media/multi-factor-authentication-get-started-cloud/enable1.png)
 7.  ユーザーの名前の横にあるチェック ボックスを**オン**にします。
 7.  右側の **[有効化]** をクリックします。![Enable user](./media/multi-factor-authentication-get-started-cloud/user1.png)
@@ -90,4 +90,4 @@
 ## 次のステップ
 クラウド側の多要素認証を設定したら、デプロイ側の構成とセットアップを行います。「Azure Multi-Factor Authentication の構成」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

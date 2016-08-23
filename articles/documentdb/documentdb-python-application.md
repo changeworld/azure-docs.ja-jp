@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="python"
     ms.topic="hero-article"
-    ms.date="04/18/2016"
+    ms.date="08/11/2016"
     ms.author="anhoh"/>
 
 # DocumentDB による Python Flask Web アプリケーション開発
@@ -433,4 +433,4 @@ Python Flask の追加のチュートリアルについては、[Flask メガ �
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

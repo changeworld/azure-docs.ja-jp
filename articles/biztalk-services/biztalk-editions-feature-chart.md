@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/16/2016"
+	ms.date="08/15/2016"
 	ms.author="mandia"/>
 
 
@@ -53,8 +53,8 @@ Standard エディションのすべての機能が含まれており、ハイ�
         <th></th>
         <th>Free (プレビュー)</th>
         <th>Developer</th>
-        <th>Basic</th>
-        <th>Standard</th>
+        <th>基本</th>
+        <th>標準</th>
         <th>Premium</th>
 </tr>
 
@@ -259,4 +259,4 @@ Azure BizTalk Services を Azure ポータルで作成するには、[BizTalk Se
 - [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
 - [BizTalk Services SDK 使用開始](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

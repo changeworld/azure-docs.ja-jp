@@ -13,23 +13,21 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
-	ms.author="piyushjo" />
+	ms.date="08/12/2016"
+	ms.author="piyushjo;ricksal" />
 
 # Windows ユニバーサル アプリの Azure Mobile Engagement の概要
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-このトピックでは、アプリの使用状況を理解して、プッシュ通知を Windows ユニバーサル アプリケーションのセグメント化されたユーザーに送信するために、Azure Mobile Engagement の使用方法を説明します。このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。基本的なアプリ使用データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。
+このトピックでは、アプリの使用状況を理解して、プッシュ通知を Windows ユニバーサル アプリケーションのセグメント化されたユーザーに送信するために、Azure モバイル エンゲージメントの使用方法を説明します。このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。基本的なアプリ使用状況データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。
 
-このチュートリアルには、次のものが必要です。
+## 前提条件
 
-+ Visual Studio 2013
-+ [MicrosoftAzure.MobileEngagement] Nuget パッケージ
+[AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-store-dotnet-get-started)を参照してください。
 
-##<a id="setup-azme"></a>Windows ユニバーサル アプリの Mobile Engagement を設定する
+## Windows ユニバーサル アプリの Mobile Engagement の設定
 
 [AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal.md)]
 
@@ -37,23 +35,23 @@
 
 このチュートリアルでは、データを収集してプッシュ通知を送信するために必要な最小限のセットである「基本的な統合」について説明します。完全な統合のドキュメントについては、「[Mobile Engagement Windows ユニバーサル SDK の統合](mobile-engagement-windows-store-sdk-overview.md)」を参照してください。
 
-統合のデモンストレーションを行うために、Visual Studio で基本的なアプリを作成します。
+統合の実例を示すために、Visual Studio で基本的なアプリを作成します。
 
-###新しい Windows ユニバーサル アプリ プロジェクトを作成する
+###Windows ユニバーサル アプリ プロジェクトを作成する
 
 次の手順では、以前のバージョンの Visual Studio と類似した手順で、Visual Studio 2015 を使用します。
 
 1. Visual Studio を起動し、**ホーム**画面で **[新しいプロジェクト]** を選択します。
 
-2. ポップアップ ウィンドウで **[Windows 8]**、**[ユニバーサル]**、**[空のアプリケーション (ユニバーサル Windows 8.1)]** を選択します。アプリの **[名前]** と **[ソリューション名]** を入力し、**[OK]** をクリックします。
+2. ポップアップ ウィンドウで **[Windows]**、**[ユニバーサル]**、**[空のアプリ (ユニバーサル Windows)]** の順に選択します。アプリの **[名前]** と **[ソリューション名]** を入力し、**[OK]** をクリックします。
 
     ![][1]
 
-これで、Azure Mobile Engagement SDK を統合する新しい Windows ユニバーサル アプリ プロジェクトが作成されました。
+これで、後で Azure Mobile Engagement SDK を統合する Windows ユニバーサル アプリ プロジェクトが作成されました。
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. プロジェクトに [MicrosoftAzure.MobileEngagement] Nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。Windows 8.x および Windows Phone 8.1 の場合は、同じ Nuget パッケージが各プロジェクトに適切なプラットフォーム固有のバイナリを配置します。
+1. プロジェクトに [MicrosoftAzure.MobileEngagement] Nuget パッケージをインストールします。Windows と Windows Phone の両方のプラットフォームを対象としている場合、両方のプロジェクトにこれを行う必要があります。Windows 8.x および Windows Phone 8.1 の場合は、同じ Nuget パッケージによって各プロジェクトに適切なプラットフォーム固有のバイナリが配置されます。
 
 2. **Package.appxmanifest** を開き、そこに次の機能を追加します。
 
@@ -65,7 +63,7 @@
 
 	![][3]
 
-	>[AZURE.TIP] アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、サポートされているプラットフォームごとに 1 つ、2 つの Mobile Engagement アプリケーションを作成する必要があります。そうすることで、対象ユーザーを適切にセグメント化し、プラットフォームに合わせた通知を送信できます。
+	>[AZURE.TIP] アプリの対象プラットフォームを Windows と Windows Phone の両方にする場合、2 つの Mobile Engagement アプリケーションを作成する必要があります (サポートされているプラットフォームごとに 1 つずつ)。2 つのアプリがあれば、対象ユーザーを適切に分け、各プラットフォームに合わせた通知を送信できます。
 
 4. `App.xaml.cs` ファイルで次の操作を行います。
 
@@ -73,7 +71,7 @@
 
 			using Microsoft.Azure.Engagement;
 
-	b.エンゲージメントの初期化および設定に専用のメソッドを追加します。
+	b.Engagement を初期化するメソッドを追加します。
 
            private void InitEngagement(IActivatedEventArgs e)
            {
@@ -100,7 +98,7 @@
 			  //... rest of the code
 			}
 
-##<a id="monitor"></a>リアルタイム監視の有効化
+##<a id="monitor"></a>リアルタイム監視を有効にする
 
 データを送信してユーザーがアクティブであることを確認するには、少なくとも 1 つの画面 (アクティビティ) を Mobile Engagement のバックエンドに送信する必要があります。
 
@@ -108,7 +106,7 @@
 
 		using Microsoft.Azure.Engagement.Overlay;
 
-2. **MainPage** の基本クラスの **Page** を **EngagementPageOverlay** に置き換えます。
+2. **MainPage** の基本クラスを **Page** から **EngagementPageOverlay** に変更します。
 
 		class MainPage : EngagementPageOverlay
 
@@ -119,7 +117,7 @@
 		xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 
 	b.XML タグ名の **Page** を **engagement:EngagementPageOverlay** に置き換えます。
-	
+
 > [AZURE.IMPORTANT] ページが `OnNavigatedTo` メソッドをオーバーライドする場合は、必ず `base.OnNavigatedTo(e)` を呼び出します。そうしないと、アクティビティが報告されません (`EngagementPage` は、`OnNavigatedTo` メソッド内で `StartActivity` を呼び出します)。これは既定のテンプレートに `OnNavigatedTo` メソッドがある Windows Phone プロジェクトで特に重要です。
 
 ##<a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
@@ -146,12 +144,12 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 		   EngagementReach.Instance.Init(e);
 		}
 
-これでトーストを送信する準備ができました。それでは、この基本的な統合が正しく設定されているかどうかを検証してみましょう。
+トーストを送信する準備ができました。それでは、この基本的な統合が正しく設定されているかどうかを検証してみましょう。
 
 ###通知を送信するために Mobile Engagement へのアクセスを許可する
 
-1. Web ブラウザーで [Windows ストア デベロッパー センター]を開き、必要に応じてログインし、アカウントを作成します。
-2. 右上隅の **[ダッシュボード]** をクリックし、左側のパネル メニューで **[新しいアプリの作成]** をクリックします。 
+1. Web ブラウザーで [Windows ストア デベロッパー センター]を開き、ログインします。必要に応じてアカウントを作成してください。
+2. 右上隅の **[ダッシュボード]** をクリックし、左側のパネル メニューで **[新しいアプリの作成]** をクリックします。
 
 	![][9]
 
@@ -175,15 +173,13 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 
 	![][6]
 
-8. 最後に、アプリ ストアに作成されたこのアプリに Visual Studio アプリケーションが関連付けます。これを行うには、Visual Studio で **[アプリケーションをストアと関連付ける]** をクリックする必要があります。
-
-	![][7]
+8. 最後に、アプリ ストアに作成されたこのアプリに Visual Studio アプリケーションが関連付けます。Visual Studio で **[アプリケーションをストアと関連付ける]** をクリックします。![][7]
 
 ##<a id="send"></a>アプリへ通知を送信する
 
 [AZURE.INCLUDE [Windows Push キャンペーンを作成する](../../includes/mobile-engagement-windows-push-campaign.md)]
 
-アプリが実行中の場合は、アプリ内通知が表示されます。アプリが閉じている場合は、トースト通知が表示されます。トースト通知ではなくアプリ内通知が表示され、Visual Studio のデバッグ モードでアプリを実行している場合、ツールバーの **[ライフサイクル イベント] -> [中断]** を選択し、アプリが実際に中断していることを確認します。Visual Studio でアプリケーションをデバッグ中に [ホーム] ボタンをクリックしただけでは中断されず、アプリ内通知は表示されても、トースト通知は表示されないことがあります。
+アプリが実行中の場合は、アプリ内通知が表示されます。アプリが閉じている場合は、トースト通知が表示されます。トースト通知ではなくアプリ内通知が表示され、Visual Studio のデバッグ モードでアプリを実行している場合は、ツールバーの **[ライフサイクル イベント]、[中断]** の順に選択し、アプリが中断していることを確認します。Visual Studio でアプリケーションをデバッグしているときに [ホーム] ボタンをクリックしただけではアプリケーションは中断されず、アプリ内通知は表示されても、トースト通知は表示されないことがあります。
 
 ![][8]
 
@@ -207,4 +203,4 @@ Mobile Engagement を導入すると、キャンペーンとの関連でプッ�
 [12]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_1.png
 [13]: ./media/mobile-engagement-windows-store-dotnet-get-started/dashboard_services_push_creds.png
 
-<!-----HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

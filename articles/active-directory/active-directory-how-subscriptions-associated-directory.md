@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/26/2016"
+	ms.date="08/15/2016"
 	ms.author="curtand"/>
 
 # Azure サブスクリプションを Azure Active Directory に関連付ける方法
@@ -35,7 +35,7 @@ ID が作成されて Microsoft アカウント システムに格納されま�
 たとえば、Microsoft アカウントを使用するユーザーは Azure クラシック ポータルにサインインします。
 
 > [AZURE.NOTE]
-Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者のいずれかである必要があります。
+Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者である必要があります。
 
 ![][1]
 
@@ -51,7 +51,7 @@ Azure クラシック ポータルにサインインするには、msmith@hotmai
 
 すべてのユーザーにはそのユーザーを認証する 1 つのホーム ディレクトリがありますが、ユーザーは他のディレクトリのゲストになることもできます。Azure AD 拡張機能では、ユーザー アカウントがメンバーであるすべてのディレクトリが表示されます。アカウントがメンバーではないディレクトリは表示されません。ディレクトリは、Azure AD の職場または学校アカウントに対して、または Microsoft アカウント ユーザーに対して (Azure AD は Microsoft アカウント システムとフェデレーションされているため)、トークンを発行できます。
 
-次の図では、Contoso の会社アカウントを使用してサインアップした後の Michael Smith のサブスクリプションを示します。
+次の図では、Contoso の職場アカウントを使用してサインアップした後の Michael Smith のサブスクリプションを示します。
 
 ![][2]
 
@@ -70,7 +70,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 ## 現在のユーザー アカウントでディレクトリを管理できない理由
 
-ユーザーが Azure サブスクリプションにサインアップする前に職場または学校アカウントを使用して Azure クラシック ポータルにサインインしようとする場合があります。そのような場合、ユーザーはそのアカウントにはサブスクリプションがないというメッセージを受け取ります。メッセージには、無料試用版サブスクリプションを開始するためのリンクが含まれます。
+ユーザーが Azure サブスクリプションにサインアップする前に職場または学校アカウントを使用して Azure クラシック ポータルにサインインしようとする場合があります。そのような場合、ユーザーはそのアカウントにはサブスクリプションがないというメッセージを受け取ります。メッセージには、無料評価版サブスクリプションを開始するためのリンクが含まれます。
 
 無料試用版にサインアップした後は、ユーザーは Azure クラシック ポータルで組織のディレクトリを見ることはできますが、ディレクトリ グローバル管理者ではないため、ディレクトリを管理することはできません (つまり、ユーザーの追加、既存ユーザーのプロパティの編集はできません)。サブスクリプションにより、ユーザーは Azure クラシック ポータルを使用して Azure Active Directory 拡張機能を表示することはできますが、ディレクトリを管理するにはグローバル管理者の追加権限が必要です。
 
@@ -80,7 +80,7 @@ Azure AD には、ディレクトリおよび ID 関連の機能を管理する�
 
 職場または学校アカウントは、Microsoft アカウントよりも多くの方法で管理することもできます。たとえば、管理者は職場または学校アカウントのパスワードをリセットでき、多要素認証を要求できます。
 
-場合によっては、組織のユーザーがコンシューマー Microsoft アカウントの Azure サブスクリプションに関連付けられているリソースを管理できます。サブスクリプションまたはディレクトリの管理を異なるアカウントに移行する方法の詳細については、「[Manage the directory for your Office 365 subscription in Azure (Azure で Office 365 サブスクリプションのディレクトリを管理する)](#manage-the-directory-for-your-office-365-subscription-in-azure)」を参照してください。
+場合によっては、組織のユーザーがコンシューマー Microsoft アカウントの Azure サブスクリプションに関連付けられているリソースを管理できます。サブスクリプションまたはディレクトリの管理を異なるアカウントに移行する方法の詳細については、「[Azure での Office 365 サブスクリプションのディレクトリの管理](#manage-the-directory-for-your-office-365-subscription-in-azure)」を参照してください。
 
 
 ## Microsoft アカウントに会社の電子メールを使用していた場合のサインイン
@@ -139,4 +139,4 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0817_2016-->

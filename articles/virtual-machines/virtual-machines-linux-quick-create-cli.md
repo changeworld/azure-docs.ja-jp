@@ -19,7 +19,9 @@
 
 # CLI を使用した Azure での Linux VM の作成
 
-この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます (これは、Linux bash シェルを使う最も簡単な方法です)。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化(`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+
+この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます (これは、Linux bash シェルを使う最も簡単な方法です)。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化 (`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
 
 ## クイック コマンドの概要
 
@@ -49,7 +51,7 @@ Azure CLI `quick-create` コマンドには、最も一般的な OS ディスト
 
 
 
-**ImageURN** オプション (`-Q`) には `RHEL` を使用して RedHat Enterprise Linux 7.2 VM をデプロイします(これら 7 つのオプションは、Azure で利用できる OS のごく一部です。マーケットプレースで他の[イメージを探す](virtual-machines-linux-cli-ps-findimage.md)ことも、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。
+**ImageURN** オプション (`-Q`) には `RHEL` を使用して RedHat Enterprise Linux 7.2 VM をデプロイします (この 7 つのエイリアスは、Azure で利用できる OS のごく一部です。Marketplace で他の[イメージを探す](virtual-machines-linux-cli-ps-findimage.md)ことも、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。
 
 以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。ここでは、"サンプル" の値を使用します。
 
@@ -163,7 +165,7 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 
 ## 次のステップ
 
-`azure vm quick-create` を使用すると、VM を短時間でデプロイして、bash シェルにログインして作業できます。`vm quick-create` を使用しても、複雑な環境が備えているようなメリットは得られません。インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
+`azure vm quick-create` は、bash シェルにログインして作業できるように VM を短時間でデプロイする方法です。`vm quick-create` を使用しても、複雑な環境が備えているようなメリットは得られません。インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
 - [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md)
 - [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md)
@@ -171,4 +173,4 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

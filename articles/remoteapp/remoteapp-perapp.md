@@ -13,10 +13,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="05/31/2016"
+   ms.date="08/15/2016"
    ms.author="piotrci"/>
 
 # Azure RemoteApp コレクション (プレビュー) で個々のユーザーにアプリケーションを発行する
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 この記事では、Azure RemoteApp コレクションで個々のユーザーにアプリケーションを発行する方法について説明します。これは Azure RemoteApp の新機能で、現時点では "プライベート プレビュー" 段階のため、選ばれた早期採用者のみが評価の目的で使用できます。
 
@@ -97,9 +100,9 @@ AclLevel プロパティには、次の値が表示されます。
 		Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
 ## フィードバックの提供
-このプレビュー機能に関連したご意見やご提案をお待ちしています。[アンケート](http://www.instant.ly/s/FDdrb)に入力して感想をお聞かせください。
+このプレビュー機能に関連したご意見やご提案をお待ちしています。[アンケート](http://www.instant.ly/s/FDdrb)に答えて感想をお聞かせください。
 
 ## プレビュー機能を試す機会がなかった場合
 プレビューにまだ参加していない方は、こちらの[アンケート](http://www.instant.ly/s/AY83p)を使って利用を申し込んでください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

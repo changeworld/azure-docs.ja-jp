@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="06/16/2016"
+	ms.date="08/15/2016"
 	ms.author="marsma"/>
 
 # .NET 向け Azure Batch ライブラリの概要
@@ -48,6 +48,10 @@
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
+### (省略可能) Azure Batch Explorer
+
+[Azure Batch Explorer][github_batchexplorer] は、GitHub の [azure-batch-samples][github_samples] リポジトリにある無料ユーティリティです。このチュートリアルには必要ありませんが、Batch ソリューションの開発とデバッグに有効活用してください。
+
 ## DotNetTutorial サンプル プロジェクトの概要
 
 *DotNetTutorial* コード サンプルは、**DotNetTutorial** と **TaskApplication** という 2 つのプロジェクトから構成される Visual Studio 2015 ソリューションです。
@@ -62,7 +66,7 @@
 
 [**手順 1.**](#step-1-create-storage-containers) Azure Blob Storage で**コンテナー**を作成します。<br/> [**手順 2.**](#step-2-upload-task-application-and-data-files) タスク アプリケーション ファイルと入力ファイルをコンテナーにアップロードします。<br/> [**手順 3.**](#step-3-create-batch-pool) Batch **プール**を作成します。<br/> &nbsp;&nbsp;&nbsp;&nbsp;**3a.** プールに参加するときに、プールの **StartTask** でタスク バイナリ ファイル (TaskApplication) をノードにダウンロードします。<br/> [**手順 4.**](#step-4-create-batch-job) Batch **ジョブ**を作成します。<br/> [**手順 5.**](#step-5-add-tasks-to-job) **タスク**をジョブに追加します。<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5a.** タスクはノード上で実行されるようにスケジュールされています。<br/> &nbsp;&nbsp;&nbsp;&nbsp;**5b.** 各タスクは Azure Storage から入力データをダウンロードし、実行を開始します。<br/> [**手順 6.**](#step-6-monitor-tasks) タスクを監視します。<br/> &nbsp;&nbsp;&nbsp;&nbsp;**6a.** タスクの完了後に、出力データを Azure Storage にアップロードします。<br/> [**手順 7.**](#step-7-download-task-output) Storage からタスク出力をダウンロードします。
 
-前述のように、このとおりの実行手順ではない Batch ソリューションもあり、他の手順が含まれる場合もありますが、*DotNetTutorial* サンプル アプリケーションでは、Batch ソリューションの一般的なプロセスを実行します。
+既に述べたように、このとおりの実行手順ではない Batch ソリューションもあり、他の手順が含まれる場合もありますが、*DotNetTutorial* サンプル アプリケーションでは、Batch ソリューションの一般的なプロセスを実行します。
 
 ## *DotNetTutorial* サンプル プロジェクトのビルド
 
@@ -111,7 +115,7 @@ Batch には、Azure Storage とやり取りするための組み込みのサポ
 
 ストレージ アカウントを操作してコンテナーを作成するには、[.NET 用 Azure Storage クライアント ライブラリ][net_api_storage]を使用します。[CloudStorageAccount][net_cloudstorageaccount] でアカウントへの参照を作成し、それを基にして [CloudBlobClient][net_cloudblobclient] を作成します。
 
-```
+```csharp
 // Construct the Storage account connection string
 string storageConnectionString = String.Format(
     "DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
@@ -119,15 +123,17 @@ string storageConnectionString = String.Format(
     StorageAccountKey);
 
 // Retrieve the storage account
-CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+CloudStorageAccount storageAccount =
+    CloudStorageAccount.Parse(storageConnectionString);
 
-// Create the blob client, for use in obtaining references to blob storage containers
+// Create the blob client, for use in obtaining references to
+// blob storage containers
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-ここでは、アプリケーション全体で `blobClient` 参照を使用し、複数のメソッドにパラメーターとして渡します。この例は、上記のすぐ下のコード ブロックにあります。ここで `CreateContainerIfNotExistAsync` を呼び出して実際にコンテナーを作成します。
+ここでは、アプリケーション全体で `blobClient` 参照を使用し、いくつかのメソッドにパラメーターとして渡します。この例は、上記のすぐ下のコード ブロックにあります。ここで `CreateContainerIfNotExistAsync` を呼び出して実際にコンテナーを作成します。
 
-```
+```csharp
 // Use the blob client to create the containers in Azure Storage if they don't
 // yet exist
 const string appContainerName    = "application";
@@ -138,12 +144,13 @@ await CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 await CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
-```
+```csharp
 private static async Task CreateContainerIfNotExistAsync(
     CloudBlobClient blobClient,
     string containerName)
 {
-		CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+		CloudBlobContainer container =
+            blobClient.GetContainerReference(containerName);
 
 		if (await container.CreateIfNotExistsAsync())
 		{
@@ -253,7 +260,7 @@ DotNetTutorial サンプル アプリケーションには JobPreparationTask �
 
 Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage のコンテナーと BLOB への安全なアクセスを提供することができる文字列です。DotNetTutorial アプリケーションは、BLOB とコンテナー両方の Shared Access Signature URL を使用し、Storage サービスからこれらの Shared Access Signature 文字列を取得する方法を示します。
 
-- **BLOB Shared Access Signature**: DotNetTutorial 内のプールの StartTask は、Storage からアプリケーション バイナリと入力データ ファイルをダウンロードするときに BLOB の Shared Access Signature を使用します (以下の手順 3 を参照してください)。DotNetTutorial の `Program.cs` 内の `UploadFileToContainerAsync` メソッドには、各 BLOB の Shared Access Signature を取得するコードが含まれます。この処理を実行するために、[CloudBlob.GetSharedAccessSignature][net_sas_blob] を呼び出します。
+- **BLOB Shared Access Signature**: DotNetTutorial 内のプールの StartTask は、Storage からアプリケーション バイナリと入力データ ファイルをダウンロードするときに BLOB の Shared Access Signature を使用します (以下の手順 3. を参照してください)。DotNetTutorial の `Program.cs` 内の `UploadFileToContainerAsync` メソッドには、各 BLOB の Shared Access Signature を取得するコードが含まれます。この処理を実行するために、[CloudBlob.GetSharedAccessSignature][net_sas_blob] を呼び出します。
 
 - **コンテナー Shared Access Signature**: 各タスクでコンピューティング ノードでの処理が完了すると、出力ファイルは Azure Storage の *output* コンテナーにアップロードされます。この処理を実行するために、TaskApplication では、ファイルをアップロードするときに、パスの一部としてコンテナーへの書き込みアクセス権を提供するコンテナー Shared Access Signature を使用します。コンテナー Shared Access Signature の取得は、BLOB Shared Access Signature を取得するときと同様の方法で行います。DotNetTutorial では、`GetContainerSasUrl` ヘルパー メソッドがこれを行う [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] を呼び出します。TaskApplication でコンテナー Shared Access Signature を使用する方法の詳細については、「手順 6: タスクを監視する」を参照してください。
 
@@ -263,9 +270,11 @@ Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage
 
 ![Create a Batch pool][3] <br/>
 
+Batch **プール**は複数のコンピューティング ノード (仮想マシン) をまとめたものです。Batch は、このプールでジョブのタスクを実行することになります。
+
 アプリケーションとデータ ファイルを Storage アカウントにアップロードすると、*DotNetTutorial* は Batch .NET ライブラリを使用して Batch サービスとのやり取りを開始します。その処理のために、まず [BatchClient][net_batchclient] が作成されます。
 
-```
+```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(
     BatchAccountUrl,
     BatchAccountName,
@@ -278,7 +287,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 次に、`CreatePoolAsync` を呼び出してコンピューティング ノードのプールが Batch アカウントに作成されます。`CreatePoolAsync` は [BatchClient.PoolOperations.CreatePool][net_pool_create] メソッドを使用して、Batch サービス内に実際にプールを作成します。
 
-```
+```csharp
 private static async Task CreatePoolAsync(
     BatchClient batchClient,
     string poolId,
@@ -319,17 +328,17 @@ private static async Task CreatePoolAsync(
 }
 ```
 
-[CreatePool][net_pool_create] を使用してプールを作成する場合は、コンピューティング ノードの数、[ノードのサイズ](../cloud-services/cloud-services-sizes-specs.md)、ノードのオペレーティング システムなど、複数のパラメーターを指定します。*DotNetTutorial* では、[CloudServiceConfiguration][net_cloudserviceconfiguration] を使用して、[Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) から Windows Server 2012 R2 を指定します。ただし、代わりに [VirtualMachineConfiguration][net_virtualmachineconfiguration] を指定することにより、Marketplace イメージから作成されたノードのプールを作成できます。これには、Windows と Linux 両方のイメージが含まれます。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
+[CreatePool][net_pool_create] を使用してプールを作成する場合は、コンピューティング ノードの数、[ノードのサイズ](../cloud-services/cloud-services-sizes-specs.md)、ノードのオペレーティング システムなど、いくつかのパラメーターを指定します。*DotNetTutorial* では、[CloudServiceConfiguration][net_cloudserviceconfiguration] を使用して、[Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) から Windows Server 2012 R2 を指定します。ただし、代わりに [VirtualMachineConfiguration][net_virtualmachineconfiguration] を指定することにより、Marketplace イメージから作成されたノードのプールを作成できます。これには、Windows と Linux 両方のイメージが含まれます。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
 > [AZURE.IMPORTANT] Batch のコンピューティング リソースには料金がかかります。コストを最小限に抑えるために、サンプルを実行する前に `targetDedicated` を 1 に引き下げることもできます。
 
-このような物理ノード プロパティだけでなく、プールの [StartTask][net_pool_starttask] を指定することもできます。各ノードがプールに参加するときだけでなく、ノードを再起動するたびに、各ノードで StartTask が実行されます。StartTask は、タスクの実行前に、コンピューティング ノードにアプリケーションをインストールする場合に特に便利です。たとえば、Python スクリプトを使用してタスクでデータを処理する場合、StartTask を使用してコンピューティング ノードに Python をインストールすることができます。
+このような物理ノード プロパティだけでなく、プールの [StartTask][net_pool_starttask] を指定することもできます。各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。StartTask は、タスクの実行前に、コンピューティング ノードにアプリケーションをインストールする場合に特に便利です。たとえば、Python スクリプトを使用してタスクでデータを処理する場合、StartTask を使用してコンピューティング ノードに Python をインストールすることができます。
 
-このサンプル アプリケーションでは、StartTask が、StartTask 作業ディレクトリの Storage からダウンロードするファイル ([StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] プロパティを使用して指定します) を、ノードで実行される*すべて*のタスクからアクセスできる共有ディレクトリにコピーします。基本的に、これはノードがプールに参加するときに各ノードの共有ディレクトリに `TaskApplication.exe` およびその依存関係をコピーし、ノードで実行するすべてのタスクがアクセスできるようにします。
+このサンプル アプリケーションでは、StartTask が、StartTask 作業ディレクトリの Storage からダウンロードするファイル ([StartTask][net_starttask].[ResourceFiles][net_starttask_resourcefiles] プロパティを使用して指定します) を、ノードで実行される "*すべて*" のタスクからアクセスできる共有ディレクトリにコピーします。基本的に、これはノードがプールに参加するときに各ノードの共有ディレクトリに `TaskApplication.exe` およびその依存関係をコピーし、ノードで実行するすべてのタスクがアクセスできるようにします。
 
 > [AZURE.TIP] Azure Batch の**アプリケーション パッケージ**機能では、プール内のコンピューティング ノードにアプリケーションをデプロイするもう 1 つの方法が提供されています。詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
 
-また、上記のコード スニペットでは、StartTask の *CommandLine* プロパティで `%AZ_BATCH_TASK_WORKING_DIR%` と `%AZ_BATCH_NODE_SHARED_DIR%` という 2 つの環境変数を使用している点についても注目してください。Batch プールの各コンピューティング ノードには、Batch に固有の複数の環境変数が自動的に構成されます。また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
+また、上記のコード スニペットでは、StartTask の *CommandLine* プロパティで `%AZ_BATCH_TASK_WORKING_DIR%` と `%AZ_BATCH_NODE_SHARED_DIR%` という 2 つの環境変数を使用している点についても注目してください。Batch プールの各コンピューティング ノードには、Batch に固有の環境変数がいくつか自動的に構成されます。また、タスクによって実行されるプロセスは、これらの環境変数に対するアクセス権を持ちます。
 
 > [AZURE.TIP] Batch プールのコンピューティング ノードで使用できる環境変数と、タスクの作業ディレクトリの詳細については、「[開発者向け Batch 機能の概要](batch-api-basics.md)」の「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」と「[ファイルとディレクトリ](batch-api-basics.md#files-and-directories)」のセクションを参照してください。
 
@@ -337,11 +346,13 @@ private static async Task CreatePoolAsync(
 
 ![Batch ジョブを作成する][4]<br/>
 
-基本的に、Batch ジョブは、コンピューティング ノードのプールに関連付けられているタスクのコレクションです。このジョブを使うと、関連するワークロードのタスクを整理し、追跡するだけでなく、ジョブ (さらにはタスク) の最長実行時間をはじめとする一定の制限や、Batch アカウントの他のジョブと関連するジョブの優先度を設けることができます。ただし、この例では、ジョブは手順 3 で作成したプールにのみ関連付けられています。他のプロパティは構成されていません。
+基本的に、Batch **ジョブ**はタスクのコレクションであり、コンピューティング ノードのプールに関連付けられます。ジョブに含まれる一連のタスクは、関連付けられているプールのコンピューティング ノードで実行されます。
+
+ジョブを使うと、関連するワークロードのタスクを整理し、追跡するだけでなく、ジョブ (さらにはタスク) の最長実行時間をはじめとする一定の制限や、Batch アカウントの他のジョブと関連するジョブの優先度を設けることができます。ただし、この例では、ジョブは手順 3 で作成したプールにのみ関連付けられています。他のプロパティは構成されていません。
 
 すべての Batch ジョブは、特定のプールに関連付けられています。この関連付けはジョブのタスクがどのノードで実行されるかを示します。これを指定するには、以下のコード スニペットに示すとおり、[CloudJob.PoolInformation][net_job_poolinfo] プロパティを使用します。
 
-```
+```csharp
 private static async Task CreateJobAsync(
     BatchClient batchClient,
     string jobId,
@@ -363,9 +374,11 @@ private static async Task CreateJobAsync(
 
 ![ジョブにタスクを追加する][5]<br/> *(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] \(プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+Batch の**タスク**は、コンピューティング ノードで実行される独立した作業単位です。タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-```
+実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][net_task_resourcefiles] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][net_task] を構成します。*DotNetTutorial* サンプル プロジェクトでは、各タスクで処理されるファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+
+```csharp
 private static async Task<List<CloudTask>> AddTasksAsync(
     BatchClient batchClient,
     string jobId,
@@ -412,7 +425,7 @@ private static async Task<List<CloudTask>> AddTasksAsync(
 
 3. **3 つ目の引数**は、Azure Storage の **output** コンテナーに対する書き込みアクセス権を提供する Shared Access Signature (SAS) です。*TaskApplication.exe* は、出力ファイルを Azure Storage にアップロードするときにこの Shared Access Signature URL を使用します。そのコードは TaskApplication プロジェクトの `Program.cs` ファイル内の `UploadFileToContainer` メソッドにあります。
 
-```
+```csharp
 // NOTE: From project TaskApplication Program.cs
 
 private static void UploadFileToContainer(string filePath, string containerSas)
@@ -459,11 +472,11 @@ DotNetTutorial の `Program.cs` 内の `MonitorTasks` メソッド内には、Ba
 
 2. **TaskStateMonitor**: [TaskStateMonitor][net_taskstatemonitor] は、Batch .NET アプリケーションにタスクの状態を監視するためのヘルパー ユーティリティを提供します。`MonitorTasks` で、*DotNetTutorial* はすべてのタスクが制限時間内に [TaskState.Completed][net_taskstate] に達するまで待ちます。その後でジョブを終了します。
 
-3. **TerminateJobAsync**: [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] を使用してジョブを出力すると (または JobOperations.TerminateJob をブロックすると)、ジョブに完了とマークが付けられます。この処理は、Batch ソリューションで [JobReleaseTask][net_jobreltask] を使用する場合に必要です。これは、[ジョブの準備タスクと完了タスク](batch-job-prep-release.md)に関するページで説明されている特殊なタスクです。
+3. **TerminateJobAsync**: [JobOperations.TerminateJobAsync][net_joboperations_terminatejob] を使用してジョブを終了すると (または JobOperations.TerminateJob をブロックすると)、ジョブに完了とマークが付けられます。この処理は、Batch ソリューションで [JobReleaseTask][net_jobreltask] を使用する場合に必要です。これは、[ジョブの準備タスクと完了タスク](batch-job-prep-release.md)に関するページで説明されている特殊なタスクです。
 
 *DotNetTutorial* の `Program.cs` 内の `MonitorTasks` メソッドは次のとおりです。
 
-```
+```csharp
 private static async Task<bool> MonitorTasks(
     BatchClient batchClient,
     string jobId,
@@ -474,75 +487,72 @@ private static async Task<bool> MonitorTasks(
     const string failureMessage = "One or more tasks failed to reach the Completed state within the timeout period.";
 
     // Obtain the collection of tasks currently managed by the job. Note that we use
-    // a detail level to specify that only the "id" property of each task should be
+    // a detail level to  specify that only the "id" property of each task should be
     // populated. Using a detail level for all list operations helps to lower
     // response time from the Batch service.
     ODATADetailLevel detail = new ODATADetailLevel(selectClause: "id");
     List<CloudTask> tasks =
         await batchClient.JobOperations.ListTasks(JobId, detail).ToListAsync();
 
-    Console.WriteLine("Awaiting task completion, timeout in {0}...", timeout.ToString());
+    Console.WriteLine("Awaiting task completion, timeout in {0}...",
+        timeout.ToString());
 
     // We use a TaskStateMonitor to monitor the state of our tasks. In this case, we
     // will wait for all tasks to reach the Completed state.
-    TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();
-    bool timedOut = await taskStateMonitor.WaitAllAsync(
-        tasks,
-        TaskState.Completed,
-        timeout);
+    TaskStateMonitor taskStateMonitor
+        = batchClient.Utilities.CreateTaskStateMonitor();
 
-    if (timedOut)
+    try
     {
-        allTasksSuccessful = false;
-
-        await batchClient.JobOperations.TerminateJobAsync(jobId, failureMessage);
-
-        Console.WriteLine(failureMessage);
+        await taskStateMonitor.WhenAll(tasks, TaskState.Completed, timeout);
     }
-    else
+    catch (TimeoutException)
     {
-        await batchClient.JobOperations.TerminateJobAsync(jobId, successMessage);
+        await batchClient.JobOperations.TerminateJobAsync(jobId, failureMessage);
+        Console.WriteLine(failureMessage);
+        return false;
+    }
 
-        // All tasks have reached the "Completed" state. However, this does not
-        // guarantee that all tasks were completed successfully. Here we further
-        // check each task's ExecutionInfo property to ensure that it did not
-        // encounter a scheduling error or return a non-zero exit code.
+    await batchClient.JobOperations.TerminateJobAsync(jobId, successMessage);
 
-        // Update the detail level to populate only the task id and executionInfo
-        // properties. We refresh the tasks below, and need only this information
-        // for each task.
-        detail.SelectClause = "id, executionInfo";
+    // All tasks have reached the "Completed" state, however, this does not
+    // guarantee all tasks completed successfully. Here we further check each task's
+    // ExecutionInfo property to ensure that it did not encounter a scheduling error
+    // or return a non-zero exit code.
 
-        foreach (CloudTask task in tasks)
+    // Update the detail level to populate only the task id and executionInfo
+    // properties. We refresh the tasks below, and need only this information for
+    // each task.
+    detail.SelectClause = "id, executionInfo";
+
+    foreach (CloudTask task in tasks)
+    {
+        // Populate the task's properties with the latest info from the
+        // Batch service
+        await task.RefreshAsync(detail);
+
+        if (task.ExecutionInformation.SchedulingError != null)
         {
-            // Populate the task's properties with the latest info from the Batch service
-            await task.RefreshAsync(detail);
+            // A scheduling error indicates a problem starting the task on the node.
+            // It is important to note that the task's state can be "Completed," yet
+            // still have encountered a scheduling error.
 
-            if (task.ExecutionInformation.SchedulingError != null)
-            {
-                // A scheduling error indicates a problem starting the task on the
-                // node. It is important to note that the task's state can be
-                // "Completed," yet the task still might have encountered a
-                // scheduling error.
+            allTasksSuccessful = false;
 
-                allTasksSuccessful = false;
+            Console.WriteLine("WARNING: Task [{0}] encountered a scheduling error: {1}",
+                task.Id,
+                task.ExecutionInformation.SchedulingError.Message);
+        }
+        else if (task.ExecutionInformation.ExitCode != 0)
+        {
+            // A non-zero exit code may indicate that the application executed by
+            // the task encountered an error during execution. As not every
+            // application returns non-zero on failure by default (e.g. robocopy),
+            // your implementation of error checking may differ from this example.
 
-                Console.WriteLine(
-                    "WARNING: Task [{0}] encountered a scheduling error: {1}",
-                    task.Id,
-                    task.ExecutionInformation.SchedulingError.Message);
-            }
-            else if (task.ExecutionInformation.ExitCode != 0)
-            {
-                // A non-zero exit code may indicate that the application executed by
-                // the task encountered an error during execution. As not every
-                // application returns non-zero on failure by default (e.g. robocopy),
-                // your implementation of error checking may differ from this example.
+            allTasksSuccessful = false;
 
-                allTasksSuccessful = false;
-
-                Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
-            }
+            Console.WriteLine("WARNING: Task [{0}] returned a non-zero exit code - this may indicate task execution or completion failure.", task.Id);
         }
     }
 
@@ -561,7 +571,7 @@ private static async Task<bool> MonitorTasks(
 
 これでジョブが完了したので、タスクの出力を Azure Storage からダウンロードできます。ダウンロードするには、*DotNetTutorial* の `Program.cs` 内の `DownloadBlobsFromContainerAsync` を呼び出します。
 
-```
+```csharp
 private static async Task DownloadBlobsFromContainerAsync(
     CloudBlobClient blobClient,
     string containerName,
@@ -595,7 +605,7 @@ private static async Task DownloadBlobsFromContainerAsync(
 
 Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。DotNetTutorial の `Program.cs` では、ヘルパー メソッド `DeleteContainerAsync` の 3 回の呼び出しで削除を実行します。
 
-```
+```csharp
 // Clean up Storage resources
 await DeleteContainerAsync(blobClient, appContainerName);
 await DeleteContainerAsync(blobClient, inputContainerName);
@@ -604,7 +614,7 @@ await DeleteContainerAsync(blobClient, outputContainerName);
 
 このメソッドでは、コンテナーの参照のみを取得するので、[CloudBlobContainer.DeleteIfExistsAsync][net_container_delete] を呼び出します。
 
-```
+```csharp
 private static async Task DeleteContainerAsync(
     CloudBlobClient blobClient,
     string containerName)
@@ -625,11 +635,11 @@ private static async Task DeleteContainerAsync(
 
 ## 手順 9: ジョブとプールを削除する
 
-最後の手順では、DotNetTutorial アプリケーションで作成されたジョブとプールを削除するようにユーザーに示します。ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは*課金対象*です。そのため、必要な場合にのみノードを割り当てることをお勧めします。使用されていないプールは、メンテナンス プロセスの一環として削除できます。
+最後の手順では、DotNetTutorial アプリケーションで作成されたジョブとプールを削除するようにユーザーに示します。ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは "*課金対象*" です。そのため、必要な場合にのみノードを割り当てることをお勧めします。使用されていないプールは、メンテナンス プロセスの一環として削除できます。
 
 BatchClient の [JobOperations][net_joboperations] と [PoolOperations][net_pooloperations] には、いずれも対応する削除メソッドがあります。このメソッドは、ユーザーが削除を確定すると呼び出されます。
 
-```
+```csharp
 // Clean up the resources we've created in the Batch account if the user so chooses
 Console.WriteLine();
 Console.WriteLine("Delete job? [yes] no");
@@ -700,6 +710,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [azure_free_account]: https://azure.microsoft.com/free/
 [azure_portal]: https://portal.azure.com
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
+[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [github_dotnettutorial]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/DotNetTutorial
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_common]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/Common
@@ -754,4 +765,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-dotnet-get-started/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-dotnet-get-started/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

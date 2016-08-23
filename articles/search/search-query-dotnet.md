@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/23/2016"
+    ms.date="08/15/2016"
     ms.author="brjohnst"/>
 
 # .NET SDK を使用した Azure Search インデックスの照会
@@ -162,4 +162,4 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 上記のサンプル コードでは、コンソールを使って検索結果を出力します。同様に、独自のアプリケーションに検索結果を表示する場合もあります。ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、[GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample)を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

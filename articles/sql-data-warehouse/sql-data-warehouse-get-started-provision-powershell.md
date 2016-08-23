@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/20/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # PowerShell を使用して SQL Data Warehouse を作成する
@@ -80,7 +80,7 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [移行]: ./sql-data-warehouse-overview-migrate.md
 [開発]: ./sql-data-warehouse-overview-develop.md
 [読み込み]: ./sql-data-warehouse-load-with-bcp.md
-[サンプル データを読み込んだり]: ./sql-data-warehouse-get-started-load-sample-databases.md
+[サンプル データを読み込んだり]: ./sql-data-warehouse-load-sample-databases.md
 [PowerShell コマンドレットと REST API]: ./sql-data-warehouse-reference-powershell-cmdlets.md
 [firewall rules]: ../sql-database-configure-firewall-settings.md
 
@@ -101,4 +101,4 @@ SQL Data Warehouse のプロビジョニングが完了すると、[サンプル
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

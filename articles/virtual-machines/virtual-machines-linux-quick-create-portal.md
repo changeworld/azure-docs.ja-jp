@@ -21,7 +21,9 @@
 
 # ポータルを使用して Azure に Linux VM を作成する
 
-この記事では、[Azure ポータル](https://portal.azure.com/)を使用して Linux 仮想マシンを簡単に作成する方法を示します。唯一の要件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)および [SSH 公開キーと秘密キーのファイル](virtual-machines-linux-mac-create-ssh-keys.md)です。
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+
+この記事では、[Azure ポータル](https://portal.azure.com/)を使用して Linux 仮想マシンを簡単に作成する方法について説明します。唯一の要件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)および [SSH 公開キーと秘密キーのファイル](virtual-machines-linux-mac-create-ssh-keys.md)です。
 
 > [AZURE.NOTE] VM へのアクセスをセキュリティで保護するためにパスワードを使用する場合、パスワードは 13 文字以上にし、1 つ以上の大文字、1 つ以上の小文字、1 つ以上の特殊文字、および 1 つ以上の数字を含める必要があります。
 
@@ -30,7 +32,7 @@
 
     ![screen1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. **[Marketplace]** で **[Virtual Machines]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 14.04 LTS]** をクリックします。下部でデプロイ モデルとして `Resource Manager` が選択されていることを確認してから、**[作成]** をクリックします。
+2. **[Marketplace]** で **[Virtual Machines]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 14.04 LTS]** をクリックします。下部でデプロイメント モデルとして `Resource Manager` が選択されていることを確認してから、**[作成]** をクリックします。
 
     ![screen2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
@@ -45,7 +47,7 @@
 
     ![screen3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
-4. **[DS1]** サイズを選び (Premium SSD に Ubuntu をインストールする場合)、**[選択]** をクリックして設定を構成します。
+4. **DS1** サイズを選び (Premium SSD に Ubuntu をインストールする場合)、**[選択]** をクリックして設定を構成します。
 
     ![screen4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
@@ -81,4 +83,4 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 
 これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

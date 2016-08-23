@@ -64,7 +64,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 | [高速消去](cdn-purge-endpoint.md) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [資産の事前読み込み](cdn-preload-endpoint.md) | | **&#x2713;** | **&#x2713;** |
 | [コア分析](cdn-analyze-usage-patterns.md) | | **&#x2713;** | **&#x2713;** |
-| [REST API を介した管理](https://msdn.microsoft.com/library/mt634456.aspx) | **&#x2713;** | **&#x2713;** | **&#x2713;** |
+| [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](./cdn-app-dev-net.md)、[Node.js](./cdn-app-dev-node.md)、[PowerShell](./cdn-manage-powershell.md) を介した管理 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md) | | | **&#x2713;** |
 | [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | | **&#x2713;** |
 | [リアルタイム統計](cdn-real-time-stats.md) | | | **&#x2713;** |
@@ -75,7 +75,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 
 CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoint.md)」を参照してください。
 
-既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から CDN エンドポイントを管理できるようになりました。
+既存の CDN 顧客は、[Microsoft Azure ポータル](https://portal.azure.com)から、または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理できるようになりました。
 
 実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
 
@@ -83,4 +83,4 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

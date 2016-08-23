@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="05/31/2016"
+	ms.date="08/16/2016"
 	ms.author="sdanie"/>
 
 # Node.js で Azure Redis Cache を使用する方法
@@ -36,7 +36,7 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
     npm install redis
 
-このチュートリアルでは [node\_redis](https://github.com/mranney/node_redis) を使用しますが、[http://redis.io/clients](http://redis.io/clients) に記載されている任意の Node.js クライアントを使用できます。
+このチュートリアルでは、[node\_redis](https://github.com/mranney/node_redis) を使用します。他の Node.js クライアントを使用する例については、[Node.js Redis クライアント](http://redis.io/clients#nodejs)に関するセクションに記載されている Node.js クライアントの個々のドキュメントを参照してください。
 
 ## Azure で Redis Cache を作成する
 
@@ -46,17 +46,21 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
+## SSL を使用してキャッシュに安全に接続する
 
-## 非 SSL エンドポイントを有効にする
+[node\_redis](https://github.com/mranney/node_redis) の最新のビルドでは、SSL を使用した Azure Redis Cache への接続をサポートしています。次の例では、SSL エンドポイント 6380 を使用して Azure Redis Cache に接続する方法を示しています。`<name>` をキャッシュの名前に、`<key>` を前の「[ホスト名とアクセス キーを取得する](#retrieve-the-host-name-and-access-keys)」セクションで説明したプライマリまたはセカンダリ キーに置き換えます。
 
-一部の Redis クライアントは SSL をサポートしていないため、既定では、[新しい Azure Redis Cache インスタンスに対して非 SSL ポートは無効になっています](cache-configure.md#access-ports)。この記事の執筆時には、[node\_redis](https://github.com/mranney/node_redis) クライアントが SSL をサポートしていません。
-
-[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
+	 var redis = require("redis");
+	
+	  // Add your cache name and access key.
+	var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
 
 
 ## キャッシュに何か追加し、取得する
 
-	  var redis = require("redis");
+次の例では、Azure Redis Cache インスタンスに接続し、キャッシュから項目を格納および取得する方法を示しています。Redis と [node\_redis](https://github.com/mranney/node_redis) クライアントを使用する他の例については、[http://redis.js.org/](http://redis.js.org/) を参照してください。
+
+	 var redis = require("redis");
 	
 	  // Add your cache name and access key.
 	var client = redis.createClient(6380,'<name>.redis.cache.windows.net', {auth_pass: '<key>', tls: {servername: '<name>.redis.cache.windows.net'}});
@@ -80,4 +84,4 @@ Azure Redis Cache を使用すると、Microsoft が管理している、セキ�
 - [キャッシュ診断の有効化](cache-how-to-monitor.md#enable-cache-diagnostics)によってキャッシュの正常性を[監視](cache-how-to-monitor.md)できるようにします。
 - 公式の [Redis ドキュメント](http://redis.io/documentation)を読みます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->
