@@ -79,8 +79,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
 
-![ホーム ブレード上の概要結果  
-](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、概要グラフの棒をクリックします。
 
@@ -117,8 +116,7 @@ Web ページの画像、スタイル シート、スクリプトとその他の
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果  
-](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。
@@ -259,8 +257,7 @@ Web テストが実際のクライアントであること、つまり、独自�
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化  
-](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 

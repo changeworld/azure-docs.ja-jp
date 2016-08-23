@@ -43,8 +43,7 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
@@ -302,7 +301,8 @@
 ## パイプラインを監視する
 
 6. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[参照]** をクリックし、**[Data Factory]** を選択します。 ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
+	1. **[参照]** をクリックし、**[Data Factory]** を選択します。
+		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
 	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   
