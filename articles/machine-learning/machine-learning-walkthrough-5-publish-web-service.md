@@ -93,7 +93,7 @@
 
 ## Web サービスをデプロイする
 
-Azure Resource Manager に基づいて、従来の Web サービスか新しい Web サービスのどちらかとして実験をデプロイできます。
+Azure Resource Managerに基づく新しいWebサービスか、従来のWebサービスのどちらかとして実験をデプロイできます。
 
 ### 従来の Web サービスとしてデプロイする ###
 
