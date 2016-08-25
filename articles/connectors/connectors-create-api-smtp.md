@@ -37,13 +37,17 @@ SMTP に接続して電子メールを送信します。
 
 SMTP には独自のトリガーがないため、この例では **[Salesforce - When an object is created (Salesforce - オブジェクトの作成時)]** トリガーを使用します。このトリガーは、Salesforce で新しいオブジェクトが作成されるとアクティブになります。この例では、Salesforce で新しい潜在顧客が作成されるたびに、新しい潜在顧客の作成を通知する "電子メールの送信" アクションが SMTP コネクタ経由で実行されるようにトリガーを設定します。
 
-1. Logic Apps デザイナーの検索ボックスに「salesforce」と入力し、**[Salesforce - When an object is created (Salesforce - オブジェクトの作成時)]** トリガーを選択します。![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)
+1. Logic Apps デザイナーの検索ボックスに「salesforce」と入力し、**[Salesforce - When an object is created (Salesforce - オブジェクトの作成時)]** トリガーを選択します。  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 
-2. **[When an object is created (オブジェクトの作成時)]** コントロールが表示されます。![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)
+2. **[When an object is created (オブジェクトの作成時)]** コントロールが表示されます。  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
 
-3. **[オブジェクトの種類]** を選択し、オブジェクトの一覧から *[潜在顧客]* を選択します。この手順では、Salesforce で新しい潜在顧客が作成されるたびにロジック アプリに通知するトリガーを作成していることを示しています。![](../../includes/media/connectors-create-api-salesforce/trigger3.png)
+3. **[オブジェクトの種類]** を選択し、オブジェクトの一覧から *[潜在顧客]* を選択します。この手順では、Salesforce で新しい潜在顧客が作成されるたびにロジック アプリに通知するトリガーを作成していることを示しています。  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 
-4. トリガーが作成されました。![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)
+4. トリガーが作成されました。  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
 ## SMTP アクションの使用
 
@@ -51,15 +55,19 @@ SMTP には独自のトリガーがないため、この例では **[Salesforce 
 
 トリガーが追加されたら、次の手順に従って、Salesforce で新しい潜在顧客が作成されたときに実行される SMTP アクションを追加します。
 
-1. **[+ 新しいステップ]** をクリックして、新しい潜在顧客が作成されたときに実行するアクションを追加します。![](../../includes/media/connectors-create-api-salesforce/trigger4.png)
+1. **[+ 新しいステップ]** をクリックして、新しい潜在顧客が作成されたときに実行するアクションを追加します。  
+ ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
 
-2. **[アクションの追加]** を選択します。実行するアクションを検索できる検索ボックスが開きます。![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)
+2. **[アクションの追加]** を選択します。実行するアクションを検索できる検索ボックスが開きます。  
+ ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
 
 3. 「smtp」と入力して、SMTP に関連するアクションを検索します。
 
-4. 新しい潜在顧客が作成されたときに実行するアクションとして、**[SMTP - Send Email (SMTP - 電子メールの送信)]** を選択します。アクションの制御ブロックが表示されます。これまで SMTP 接続を確立したことがない場合は、このデザイナー ブロックで接続を確立する必要があります。![](../../includes/media/connectors-create-api-smtp/smtp-2.png)
+4. 新しい潜在顧客が作成されたときに実行するアクションとして、**[SMTP - Send Email (SMTP - 電子メールの送信)]** を選択します。アクションの制御ブロックが表示されます。これまで SMTP 接続を確立したことがない場合は、このデザイナー ブロックで接続を確立する必要があります。  
+ ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)  
 
-5. **[SMTP - Send Email (SMTP - 電子メールの送信)]** ブロックで、必要な電子メール情報を入力します。![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)
+5. **[SMTP - Send Email (SMTP - 電子メールの送信)]** ブロックで、必要な電子メール情報を入力します。  
+ ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
 
 6. ワークフローをアクティブにするために、作業内容を保存します。
 
@@ -126,4 +134,4 @@ SMTP には次のアクションがあります。
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!----HONumber=AcomDC_0803_2016-->
