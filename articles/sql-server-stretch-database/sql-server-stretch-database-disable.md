@@ -20,9 +20,9 @@
 
 テーブルの Stretch Database を無効にするには、SQL Server Management Studio でテーブルに **[Stretch]** を選択します。次のいずれかを選択します。
 
--   **無効化| Bring data back from Azure**. Copy the remote data for the table from Azure back to SQL Server, then disable Stretch Database for the table. This operation incurs data transfer costs, and it can't be canceled.
+-   **無効化| Bring data back from Azure**. Azure から SQL Server にテーブルのリモート データをコピーし、テーブルの Stretch Database を無効にします。 この操作にはデータ転送コストが発生し、キャンセルできません。
 
--   **無効化| Leave data in Azure**. Disable Stretch Database for the table.  Abandon the remote data for the table in Azure.
+-   **無効化| Leave data in Azure**. テーブルの Stretch Database を無効にします。  Azure のテーブルのリモート データを破棄します。
 
 Transact-SQL を利用し、テーブルまたはデータベースの Stretch Database を無効にすることもできます。
 
@@ -40,13 +40,13 @@ Transact-SQL を利用し、テーブルまたはデータベースの Stretch D
 
 2.  右クリックして **[Stretch]** を選択し、次のいずれかを選択します。
 
-    -   **無効化| Bring data back from Azure**. Copy the remote data for the table from Azure back to SQL Server, then disable Stretch Database for the table. This command can't be canceled.
+    -   **無効化| Bring data back from Azure**. Azure から SQL Server にテーブルのリモート データをコピーし、テーブルの Stretch Database を無効にします。 このコマンドはキャンセルできません。
 
-        >   [AZURE.NOTE] Copying the remote data for the table from Azure back to SQL Server incurs data transfer costs. For more info, see [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/).
+        >   [AZURE.NOTE] Azure から SQL Server にテーブルのリモート データをコピーすると、データ転送コストが発生します。 詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」をご覧ください。
 
-        After all the remote data has been copied from Azure back to SQL Server, Stretch is disabled for the table.
+        Azure から SQL Server にすべてのリモート データがコピーされると、テーブルの Stretch が無効になります。
 
-    -   **無効化| Leave data in Azure**. Disable Stretch Database for the table.  Abandon the remote data for the table in Azure.
+    -   **無効化| Leave data in Azure**. テーブルの Stretch Database を無効にします。  Azure のテーブルのリモート データを破棄します。
 
     >   [AZURE.NOTE] テーブルの Stretch Database を無効にしても、リモート データおよびリモート テーブルは削除されません。リモート テーブルを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート テーブルを削除するまで、Azure のコストが引き続き発生します。詳細については、「[SQL Server Stretch Database の価格](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)」をご覧ください。
 
