@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Azure アプリケーションでの Node.js のバージョンの指定
@@ -102,4 +102,4 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
 [Node.js Web サイトを構築、展開する方法]: web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

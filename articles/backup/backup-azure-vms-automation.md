@@ -339,10 +339,9 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 2. Azure Storage コンテキストを設定し、JSON 構成ファイルを復元します。
 
     ```
-    Set -AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName testvault
+    PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName testvault
     PS C:\> $destination_path = "C:\vmconfig.json"
-    Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination
-    PS C:\> $destination_path -Context $storageContext
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -394,4 +393,4 @@ PS C:\> $details = Get-AzureRmRecoveryServicesBackupJobDetails
 
 PowerShell を使用して Azure リソースを操作する場合は、Windows Server の保護について記載されている、[Windows Server のバックアップのデプロイと管理](./backup-client-automation.md)に関する PowerShell の記事をご覧ください。[DPM のバックアップのデプロイと管理](./backup-dpm-automation.md)に関する PowerShell の記事で、DPM バックアップの管理について確認することもできます。両方の記事で、Resource Manager デプロイとクラシック デプロイの両方のモデルについて説明しています。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

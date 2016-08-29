@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Azure クラウド サービスおよび仮想マシン用の診断の構成
@@ -305,7 +305,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
 ## Azure クラウド サービスの問題のトラブルシューティング
 
-ロールが "ビジー" 状態のままになる、リサイクルを繰り返す、内部サーバー エラーをスローするなど、クラウド サービス プロジェクトで問題が発生した場合、各種のツールと手法をその診断および修正に役立てることができます。一般的な問題とソリューションの具体例や、そのようなエラーの診断と修正に使用する概念とツールの概要については、[Azure PaaS コンピューティング診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するページを参照してください。
+ロールが "ビジー" 状態のままになる、リサイクルを繰り返す、内部サーバー エラーをスローするなど、クラウド サービス プロジェクトで問題が発生した場合、各種のツールと手法をその診断および修正に役立てることができます。一般的な問題とソリューションの具体例や、そのようなエラーの診断と修正に使用する概念とツールの概要については、[Azure PaaS 計算診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するページを参照してください。
 
 ## Q & A
 
@@ -357,4 +357,4 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 
 Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

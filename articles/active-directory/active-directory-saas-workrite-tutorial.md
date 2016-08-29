@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/12/2016"
 	ms.author="jeedes"/>
 
 
@@ -22,7 +22,7 @@
 このチュートリアルの目的は、Workrite と Azure Active Directory (Azure AD) を統合する方法を説明することです。Workrite と Azure AD の統合には、次の利点があります。
 
 
-- Workrite にアクセスする Azure AD ユーザーを制御できます。 
+- Workrite にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Workrite にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -42,13 +42,13 @@ Azure AD と Workrite の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Workrite の追加 
+1. ギャラリーからの Workrite の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -57,7 +57,7 @@ Azure AD への Workrite の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Workrite を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
  
 	![Active Directory][1]
 
@@ -113,9 +113,9 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 	
-	![Azure AD のシングル サインオン][8]
+	![Azure AD Single Sign-On][8]
  
-     a.**[サインオン URL]** ボックスに、ユーザーが Workrite サイトへのサインオンに使用する URL を入力します (例: **https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=1a82b5aa-4dd6-4472-9721-7d0193f59e22*))。
+     a.**[サインオン URL]** ボックスに、ユーザーが Workrite サイトへのサインオンに使用する URL を入力します (例: *https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=1a82b5aa-4dd6-4472-9721-7d0193f59e22*)。
 
      > [AZURE.NOTE] サインオン URL の値がわからない場合は、Workrite サポート チーム ([support@workrite.co.uk](mailto:support@workrite.co.uk)) に問い合わせてください。
 
@@ -123,7 +123,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
  
 4. **[Workrite でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-	![Azure AD のシングル サインオン][9]
+	![Azure AD Single Sign-On][9]
 
     a.[証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
 
@@ -134,7 +134,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-	![Azure AD のシングル サインオン][10]
+	![Azure AD Single Sign-On][10]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
  
@@ -164,7 +164,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workrite-tutorial/create_aaduser_05.png)
 
@@ -245,7 +245,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 1. 上部のメニューで **[ユーザー]** をクリックします。
 
-	![ユーザーの割り当て][203] 
+	![ユーザーの割り当て][203]
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。
@@ -294,4 +294,4 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 [401]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_401.png
 [402]: ./media/active-directory-saas-workrite-tutorial/tutorial_workrite_402.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

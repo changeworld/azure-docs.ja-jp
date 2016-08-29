@@ -103,7 +103,7 @@ HDInsight クラスターの作成に使用する基本的な構成オプショ�
 
 次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
 
-- Linux 上の HDInsight (Ubuntu 12.04 LTS for Linux)。HDInsight には、Azure で Linux クラスターを構成するためのオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
+- Linux での HDInsightHDInsight には、Azure で Linux クラスターを構成するためのオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 - Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)。
 
 ### HDInsight のバージョン###
@@ -297,4 +297,4 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
 | [Azure Resource Manager のテンプレート](hdinsight-hadoop-create-linux-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

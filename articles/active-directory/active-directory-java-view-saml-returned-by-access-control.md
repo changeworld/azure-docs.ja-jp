@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm" />
 
 # How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
 
-このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。このガイドでは、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法][]」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。完成したアプリケーションは次のようになります。
+このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法][]」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。完成したアプリケーションは次のようになります。
 
 ![SAML の出力例][saml_output]
 
@@ -31,7 +31,7 @@ Azure Access Control Services Filter は Community Technology Preview 版です�
 
 このガイド内のタスクを完了するには、「[Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法][]」のサンプル コードを完成させて、このチュートリアルでの出発点として使用します。
 
-## ビルド パスとデプロイ アセンブリへの JspWriter ライブラリの追加
+## ビルド パスとデプロイ アセンブリに JspWriter ライブラリを追加する
 
 **javax.servlet.jsp.JspWriter** クラスを格納するライブラリをビルド パスとデプロイ アセンブリに追加します。Tomcat を使用している場合、ライブラリは Apache の **lib** フォルダー内の **jsp-api.jar** です。
 
@@ -192,8 +192,9 @@ Azure Access Control Services Filter は Community Technology Preview 版です�
 [Run the application]: #run_application
 [Next steps]: #next_steps
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
+[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

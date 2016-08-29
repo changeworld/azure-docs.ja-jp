@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-multiple"
    ms.workload="infrastructure"
-   ms.date="06/13/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Azure CLI でのデプロイ操作の表示
@@ -41,7 +41,7 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
         azure group log show ExampleGroup --last-deployment
 
-2. **azure group log show** コマンドを使用すると、多数の情報が返される可能性があります。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと [jq](https://stedolan.github.io/jq/) JSON ユーティリティを使用して、デプロイ エラーのログを検索します。
+2. **azure group log show** コマンドを使用すると、多くの情報が返されます。通常、トラブルシューティングを行う場合は、失敗した操作に重点的に取り組みます。次のスクリプトは **--json** オプションと [jq](https://stedolan.github.io/jq/) JSON ユーティリティを使用して、デプロイ エラーのログを検索します。
 
         azure group log show ExampleGroup --json | jq '.[] | select(.status.value == "Failed")'
         
@@ -121,6 +121,6 @@ Azure にリソースをデプロイするときにエラーが発生した場�
 
 - 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 - 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+- デプロイを実行する前に検証するには、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

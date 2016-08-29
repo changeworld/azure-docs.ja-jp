@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
-#Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
+# Azure App Service で PHP-MySQL Web アプリを作成して Git でデプロイする
 
 このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、Git を使用してそれを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
 
@@ -31,12 +31,12 @@
 
 ![Azure の PHP Web サイト][running-app]
 
-##開発環境を設定する
+## 開発環境を設定する
 
 このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、および [Git][install-git] がインストールされていることを前提としています。
 
-
-##<a id="create-web-site-and-set-up-git"></a>Web アプリの作成と Git 発行の設定
+<a id="create-web-site-and-set-up-git"></a>
+## Web アプリの作成と Git 発行の設定
 
 Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
@@ -75,7 +75,7 @@ Web アプリと MySQL データベースを作成するには、次のステッ
 	![発行資格情報の作成][credentials]
 
 
-##MySQL のリモート接続情報の取得
+## MySQL のリモート接続情報の取得
 
 Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
@@ -91,7 +91,7 @@ Web Apps で実行されている MySQL データベースに接続するには�
 
     ![プロパティへの注記][note-properties]
 
-##アプリケーションの作成とローカル テスト
+## アプリケーションの作成とローカル テスト
 
 Web アプリを作成したので、アプリケーションをローカルで作成し、それをテストした後にデプロイすることができます。
 
@@ -209,12 +209,12 @@ Registration アプリケーションは、名前と電子メール アドレス
 これで、**http://localhost:8000/** に移動してアプリケーションをテストできるようになりました。
 
 
-##アプリケーションの発行
+## アプリケーションの発行
 
 アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Web Apps に発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
-
-> [AZURE.NOTE]これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
+> [AZURE.NOTE]
+これらは、上の「Web アプリの作成と Git 発行の設定」セクションの最後で Azure ポータルに示された手順と同じです。
 
 1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、Azure ポータルの Web アプリ プロパティに移動します。
 
@@ -236,7 +236,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
-##アプリケーションへの変更の発行
+## アプリケーションへの変更の発行
 
 アプリケーションへの変更を発行するには、次のステップに従います。
 
@@ -319,4 +319,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [composer-extension-view]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-view.png
 [composer-extension-success]: ./media/web-sites-php-mysql-deploy-use-git/composer-extension-success.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

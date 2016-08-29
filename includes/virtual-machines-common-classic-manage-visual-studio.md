@@ -44,7 +44,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
     >[AZURE.NOTE] 選択する仮想マシンのサイズが大きいほど、適用される料金も大きくなります。詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)のページを参照してください。
 
-1. Visual Studio で作成した仮想マシンの場合、クラウド サービスが必要です。**[クラウド サービス設定]** ページで、仮想マシン用のクラウド サービスを選択します。まだクラウド サービスを持っていないか、新規作成する場合は、ドロップダウン リストの **[<新規作成>]** をクリックします。また、ストレージ アカウントも必要になるため、**[ストレージ アカウント]** ボックスの一覧からストレージ アカウントを選択します (または新しいストレージ アカウントを作成します)。詳細については、「[Microsoft Azure Storage の概要](../articles/storage/storage-introduction/)」をご覧ください。
+1. Visual Studio で作成した仮想マシンの場合、クラウド サービスが必要です。**[クラウド サービス設定]** ページで、仮想マシン用のクラウド サービスを選択します。まだクラウド サービスを持っていないか、新規作成する場合は、ドロップダウン リストの **[<新規作成>]** をクリックします。また、ストレージ アカウントも必要になるため、**[ストレージ アカウント]** ボックスの一覧からストレージ アカウントを選択します (または新しいストレージ アカウントを作成します)。詳細については、「[Microsoft Azure Storage の概要](../articles/storage/storage-introduction.md)」をご覧ください。
 
 1. 仮想ネットワーク (省略可能) を指定する場合、[Virtual Network] ボックスと [サブネット] ボックスの一覧から選択します。
 
@@ -157,3 +157,5 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 ## 次のステップ
 
 仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md)」をご覧ください。
+
+<!---HONumber=AcomDC_0817_2016-->

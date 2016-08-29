@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Azure アプリケーションの公開ウィザード
 
-## 概要
+## Overview
 
 Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスにより簡単に発行できます。最初のセクションではウィザードの使用にあたって行う必要のある手順について説明し、残りのセクションではウィザードの機能について説明します。
 
@@ -43,7 +43,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 ### サブスクリプションを選択するには
 
-1. ウィザードを初めて使用する際は、サインインする必要があります。**[サインイン]** リンクをクリックします。Azure ポータルにサインインするように求められたらサインインして、Azure のユーザー名とパスワードを入力します。 
+1. ウィザードを初めて使用する際は、サインインする必要があります。**[サインイン]** リンクをクリックします。Azure ポータルにサインインするように求められたらサインインして、Azure のユーザー名とパスワードを入力します。
 
     ![This is one of the publishing wizard screens](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
 
@@ -57,7 +57,7 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
     >[AZURE.NOTE] A subscription file can contain more than one subscription.
 
-1. **[次へ]** をクリックして続行します。 
+1. **[次へ]** をクリックして続行します。
 
     サブスクリプションにクラウド サービスがない場合は、プロジェクトをホストするクラウド サービスを Azure で作成する必要があります。**[クラウド サービスとストレージ アカウントの作成]** ダイアログ ボックスが表示されます。
 
@@ -139,4 +139,4 @@ Azure に Web アプリケーションを発行する前に、Microsoft アカ�
 
 [クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

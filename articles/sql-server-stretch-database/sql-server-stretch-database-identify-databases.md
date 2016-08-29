@@ -64,4 +64,6 @@ Stretch Database を有効にします。
 
 [テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+[Azure SQL Server Stretch Database サービスに関するすべてのトピック](sql-server-stretch-database-index-all-articles.md)
+
+<!---HONumber=AcomDC_0817_2016-->

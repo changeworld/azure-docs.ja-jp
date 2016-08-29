@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ
 
-##概要
+##Overview
 
 IntelliTrace を使用すると、ロール インスタンスを Azure で実行する際に広範なデバッグ情報を記録できます。問題の原因を調べる必要がある場合は、IntelliTrace ログを使用して、コードが Azure で実行されているかのように Visual Studio から調査することができます。実際には、IntelliTrace は Azure アプリケーションが Azure のクラウド サービスとして実行されている際にキー コードの実行および環境データを記録し、その記録されたデータを Visual Studio で再生できるようにします。代わりに、リモート デバッグを使用して、Azure で実行されているクラウド サービスに直接接続することができます。「[クラウド サービスのデバッグ](http://go.microsoft.com/fwlink/p/?LinkId=623041)」を参照してください。
 
@@ -67,4 +67,4 @@ IntelliTrace ログのダウンロード中も、Visual Studio での作業を�
 
 [クラウド サービスのデバッグ](https://msdn.microsoft.com/library/ee405479.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

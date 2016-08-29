@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Ambari API を使用した HDInsight の Hadoop クラスターの監視 | Microsoft Azure"
-	description="Apache Ambari API は、Hadoop クラスターのプロビジョニング、管理、および監視を目的として使用します。直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
+	description="Apache Ambari API は、Hadoop クラスターの作成、管理、および監視を目的として使用します。直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/18/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
 
-Ambari API を使用して HDInsight クラスター バージョン 3.1 および 2.1 を監視する方法について説明します。
+Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
 
 > [AZURE.NOTE] この記事の情報は、Ambari REST API の読み取り専用バージョンを提供する Windows ベースの HDInsight クラスターを主に対象としたものです。Linux ベースのクラスターについては、[Ambari を使用した Hadoop クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 
@@ -27,9 +27,7 @@ Ambari API を使用して HDInsight クラスター バージョン 3.1 およ�
 
 [Apache Ambari][ambari-home] は、Apache Hadoop クラスターのプロビジョニング、管理、監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
 
-
 HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API 1.0 は HDInsight バージョン 3.0 と 2.1 のクラスターによってサポートされています。この記事では、HDInsight バージョン 3.1 と 2.1 のクラスターでの Ambari API へのアクセスを取り上げます。この 2 つの重要な相違点は、新しい機能 (ジョブ履歴サーバーなど) の導入により、一部のコンポーネントに変更が加えられた点です。
-
 
 **前提条件**
 
@@ -45,10 +43,10 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 - **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」をご覧ください。このチュートリアルを読み進めるには、次のデータが必要です。
 
-    クラスター プロパティ|Azure PowerShell 変数名|値|説明
+    クラスター プロパティ|Azure PowerShell 変数名|値|Description
     ---|---|---|---
     HDInsight クラスター名|$clusterName||HDInsight クラスターの名前です。
-    クラスター ユーザー名|$clusterUsername||プロビジョニングで指定されたクラスター ユーザー名です。
+    クラスター ユーザー名|$clusterUsername||クラスターのユーザー名は、クラスターの作成時に指定されています。
     クラスター パスワード|$clusterPassword||クラスター ユーザー パスワードです。
 
     >[AZURE.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -126,7 +124,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 
 以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、「[Ambari API リファレンス][ambari-api-reference]」をご覧ください。
 
-API 呼び出しの監視|URI|説明
+API 呼び出しの監視|URI|Description
 ---|---|---
 クラスターの取得|`/api/v1/clusters`|
 クラスター情報の取得|`/api/v1/clusters/<ClusterName>.azurehdinsight.net`|クラスター、サービス、ホスト
@@ -174,4 +172,4 @@ API 呼び出しの監視|URI|説明
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

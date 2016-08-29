@@ -13,12 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="compute"
-   ms.date="06/27/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 
 
 # Azure RemoteApp での Windows PowerShell コマンドレットの使用
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
  Azure RemoteApp PowerShell コマンドレットを使用して、コレクションを管理、保守できます。次の情報を使用して、作業を開始しましょう。
 
@@ -111,4 +114,4 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

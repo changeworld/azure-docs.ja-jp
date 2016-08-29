@@ -13,10 +13,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 # Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 この記事では、管理者が、エンド ユーザーから始まりセキュリティで保護されたリソース (SQL Database や他のアプリケーション バックエンドなど) で終わる、Azure RemoteApp 経由のセキュリティで保護されたアクセス チャネルをセットアップする方法の概要を示します。その目的は、必要な条件を満たす許可ユーザーのみがリモート アプリケーションにアクセスできるようにすることと、セキュリティで保護されたバックエンドに制御された Azure RemoteApp 環境からのみアクセスできるようにし、他の場所からはアクセスできないようにすることです。
 
@@ -84,7 +87,7 @@ Azure Active Directory チームは、条件付きアクセスの新機能に取
  
 5.	アプリケーションをクリックして、Azure RemoteApp にアクセスしているユーザーに関する情報を表示します。 ![Azure RemoteApp のユーザー アクセスの統計](./media/remoteapp-secureaccess/ra-userstats.png)
  
-### 概要
+### まとめ
 Azure Active Directory Premium では、Azure RemoteApp (および Azure AD を介して使用可能な他のサービスとしてのソフトウェア アプリケーション) に対するアクセス規則を設定できます。現時点では、規則はネットワークの場所ベースのポリシーに制限されていますが、将来的には、エンタープライズ管理の他の部分に拡張されます。
 
 また、Azure AD Premium では、管理者による Azure RemoteApp 環境に対する制御範囲をさらに拡大するレポートと監視機能も提供されます。
@@ -110,4 +113,4 @@ Azure RemoteApp では、最初に VNet を構成してから、コレクショ�
 ## 完全なソリューション
 以下の図は、エンド ユーザーからバックエンド リソースへの Azure RemoteApp (ARA) 経由のセキュリティで保護されたアクセス チャネルが構築された完全なソリューションを示しています。![セキュリティで保護された Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ステージ 1 では、ユーザーを選択し、ARA へのアクセス方法を制御するアクセス規則を作成しました。この例では、企業ネットワークから作業を行っているユーザーに対してのみアクセスを許可しています。非準拠ユーザーは、ARA 環境にはまったくアクセスすることはできません。"ステージ 2" では、制御下の VNet/VPN 構成でのみバックエンド リソースを公開しました。Azure RemoteApp は同じ VNet 内に配置されています。最終的に、リソースは ARA 環境を介してのみアクセスできます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

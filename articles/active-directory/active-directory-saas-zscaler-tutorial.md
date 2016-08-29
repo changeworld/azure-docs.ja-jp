@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/25/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Zscaler の統合
@@ -71,11 +71,11 @@
 
 1.  Azure クラシック ポータルの **Zscaler** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-zscaler-tutorial/IC769229.png "シングル サインオンの有効化")
+    ![シングル サインオンの有効化](./media/active-directory-saas-zscaler-tutorial/IC769229.png "Enable single sign-on")
 
 2.  **[ユーザーの Zscaler へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zscaler-tutorial/IC769230.png "シングル サインオンの構成")
+    ![シングル サインオンの有効化](./media/active-directory-saas-zscaler-tutorial/IC769230.png "シングル サインオンの構成")
 
 3.  **[アプリの URL の構成]** ページの **[Zscaler サインイン URL]** ボックスに、Zscaler のテナント サインイン URL を入力し、**[次へ]** をクリックします。
 
@@ -94,7 +94,7 @@
 
 6.  上部のメニューで **[管理]** をクリックします。
 
-    ![Administration](./media/active-directory-saas-zscaler-tutorial/IC769486.png "管理")
+    ![管理](./media/active-directory-saas-zscaler-tutorial/IC769486.png "管理")
 
 7.  **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。
 
@@ -111,21 +111,21 @@
 
     ![証明書のアップロード](./media/active-directory-saas-zscaler-tutorial/IC769489.png "証明書のアップロード")
 
-    1.  **[認証のためにユーザーに表示される SAML ポータルの URL]** ボックスに、Azure クラシック ポータルの **[認証要求 URL]** フィールドの値を貼り付けます。
+    1.  **[URL of the SAML Portal to which users are sent for authentication (認証のためにユーザーに表示される SAML ポータルの URL)]** ボックスに、Azure クラシック ポータルの **[認証要求 URL]** フィールドの値を貼り付けます。
     2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。
-    3.  **[SSL パブリック証明書のアップロード]** フィールドで、Azure クラシック ポータルからダウンロードした証明書をアップロードします。
+    3.  **[Upload SSL Public Certificate (SSL パブリック証明書のアップロード)]** フィールドで、Azure クラシック ポータルからダウンロードした証明書をアップロードします。
     4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
 10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
     ![ユーザー認証の構成](./media/active-directory-saas-zscaler-tutorial/IC769490.png "ユーザー認証の構成")
 
-    1.  **[保存]** をクリックします。
+    1.  [**Save**] をクリックします。
     2.  **[今すぐ認証する]** をクリックします。
 
 11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-zscaler-tutorial/IC769491.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-zscaler-tutorial/IC769491.png "Configure single sign-on")
 
 ##プロキシ設定の構成
 
@@ -173,14 +173,14 @@ Azure AD ユーザーが Zscaler にログインできるようにするには�
 
 4.  **[ユーザー]** タブで、**[追加]**.をクリックします。
 
-    ![[追加] のいずれかを](./media/active-directory-saas-zscaler-tutorial/IC781037.png "[追加] のいずれかを")
+    ![Add](./media/active-directory-saas-zscaler-tutorial/IC781037.png "[追加] のいずれかを")
 
 5.  [ユーザーの追加] セクションで、次の手順を実行します。
 
     ![ユーザーの追加](./media/active-directory-saas-zscaler-tutorial/IC781038.png "ユーザーの追加")
 
     1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
-    2.  **[保存]** をクリックします。
+    2.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] Zscaler から提供されている他の Zscaler ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -198,8 +198,8 @@ Azure AD ユーザーが Zscaler にログインできるようにするには�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-zscaler-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

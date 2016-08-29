@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="08/16/2016"
    ms.author="terrylan"/>
 
 # Azure 仮想マシンのセキュリティの概要
@@ -66,7 +66,7 @@ Microsoft マルウェア対策をデプロイして有効にすると、次の�
 
 詳細情報: 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
-- [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../azure-security-antimalware.md)
+- [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/azure-security-antimalware.md)
 - [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 - [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
 - [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
@@ -157,4 +157,4 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 - [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 - [信頼されるクラウド: Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

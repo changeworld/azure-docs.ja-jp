@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # 方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
@@ -21,7 +21,7 @@ Azure のホスティング サービスとスケーラビリティを利用す�
 
 >[AZURE.NOTE] このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、「[Azure App Service での Web アプリのデプロイ](./app-service-web/web-sites-deploy.md)」を参照してください。
 
-Visual C# と Visual Basic の両方でサポートされているテンプレートの一覧については、このトピックで後述する「**サポートされているプロジェクト テンプレート**」を参照してください。
+Visual C# と Visual Basic の両方でサポートされているテンプレートの一覧については、このトピックで後述する「**サポートされているプロジェクト テンプレート**」をご覧ください。
 
 まず、Visual Studio から Web アプリケーションを Azure で有効にする必要があります。次の図は、デプロイメントに使用する Azure プロジェクトを追加して既存の Web アプリケーションを発行する際の主な手順を示しています。このプロセスでは、必要な Web ロールを含む Azure プロジェクトをソリューションに追加します。Web プロジェクトの種類に基づいて、デプロイメントのためにサービス パッケージに他のアセンブリが必要な場合は、アセンブリのプロジェクト プロパティも更新されます。
 
@@ -208,4 +208,4 @@ Azure に Web アプリケーションを発行するには、次の表に記載
 ## 次のステップ
 発行の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。また、「[名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="05/23/2016"
+   ms.date="08/16/2016"
    ms.author="brjohnst"/>
 
 # Azure Search の API バージョン
@@ -31,6 +31,7 @@ Azure Search とのすべてのプログラミング インターフェイスの
 インターフェイス|最新のメジャー バージョン|状態
 ----------|-------------------------|------
 [.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)|1\.1|一般公開、2016年 2 月にリリース済み
+[.NET SDK のプレビュー](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)|2\.0-preview|2016 年 8 月にリリースのプレビュー
 [サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)|2015-02-28|一般公開
 [サービス REST API プレビュー](search-api-2015-02-28-preview.md)|2015-02-28-Preview|Preview
 [管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)|2015-08-19|一般公開
@@ -51,15 +52,15 @@ REST API の場合は、各呼び出しに対して `api-version` を含める�
 
 .NET SDK は現在一般に公開されており、次のバージョンに向けた作業が進行中です。下表では、次に登場するものを把握できるように、SDK の今後のバージョンに目を向けます。
 
-.NET SDK バージョン|REST API バージョン|特徴|ETA
+.NET SDK バージョン|REST API バージョン|Features (機能)|ETA
 ----------------|----------------|--------|---
 1\.1|2015-02-28|Lucene クエリ構文|2016 年 2 月
-2\.x-preview|2015-02-28-Preview|カスタム アナライザー、Azure BLOB インデクサー、フィールド マッピング、ETag|機能の配布は、2016 年の第 1 四半期に開始します
-2\.x|新しい GA API バージョン|2\.x-preview と同じ|2\.x-preview の直後に完了
+2\.0-preview|2015-02-28-Preview|カスタム アナライザー、Azure BLOB および Table インデクサー、フィールド マッピング、ETag|2016 年 8 月
+2\.x|新しい GA API バージョン|2\.0-preview と同じ|2016 年第 4 四半期初旬
 
 ##プレビュー バージョンと一般公開バージョンについて
 
-Azure Search の場合は常に、まず REST API によって、次に .NET SDK のプレリリース版によって実験機能を事前に公開します。プレビュー機能の一覧については、「[Azure Search 関連の最新の更新履歴情報](search-latest-updates.md)」を参照してください。
+Azure Search の場合は常に、まず REST API によって、次に .NET SDK のプレリリース版によって実験機能を事前に公開します。
 
 プレビュー機能は必ずしも GA リリースに移行されるとは限りません。GA バージョンの機能は安定しており、小規模の下位互換性のある修正プログラムと機能強化以外は変更される可能性は少ないですが、プレビュー機能は機能の設計や実装についてのフィードバックを収集する目的で、テストや実験的な目的に使用できます。
 
@@ -69,4 +70,4 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。SLA については、[Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

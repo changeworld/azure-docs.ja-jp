@@ -51,7 +51,7 @@ Service Bus は、メッセージごとのチェックポイントと期間ベ�
 
 + Microsoft Visual Studio 2015
 
-+ アクティブな Azure アカウント<br/>Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
++ アクティブな Azure アカウント。<br/>Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
@@ -336,7 +336,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 2. ソリューション エクスプローラーで、**ProcessD2CInteractiveMessages** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[NuGet パッケージ マネージャー]** ウィンドウが表示されます。
 
-3. **WindowsAzure.Service Bus** を検索し、**[インストール]** をクリックして、使用条件に同意します。これによって、[Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+3. **WindowsAzure.ServiceBus** を検索し、**[インストール]** をクリックして、使用条件に同意します。これによって、[Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 4. **Program.cs** ファイルの先頭に、次の **using** ステートメントを追加します。
 
@@ -448,4 +448,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

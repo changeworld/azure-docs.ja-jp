@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
@@ -22,7 +22,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
-Azure では、仮想マシンを使用してサーバー機能を実現することができます。たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成することができます。このガイドを完了すると、Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
+Azure では、仮想マシンを使用してサーバー機能を実現することができます。たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成できます。このガイドを完了すると、Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
 
 学習内容:
 
@@ -114,7 +114,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 9. **[プロファイル]** 画面で、**[ドメイン]**、**[プライベート]**、および **[パブリック]** の各チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。![新しい受信の規則のプロファイル][NewRuleProfile]
 10. **[名前]** 画面で、**HttpIn** などの規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。![新しい受信の規則の名前][NewRuleName]
 
-これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、**http://*your\_DNS\_name*.cloudapp.net** (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を使用します。
+これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、**htttp://*your\_DNS\_name*.cloudapp.net**(***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を使用します。
 
 ## アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、**webapps** フォルダーに追加することもできます。たとえば、Java Service Page (JSP) で基本的な動的 Web プロジェクトを作成して WAR ファイルとしてエクスポートし、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーして、ブラウザーで実行することができます。
@@ -146,4 +146,4 @@ Java アプリケーションに含めることができる他のサービス (A
 [NewRuleName]: ./media/virtual-machines-windows-classic-java-run-tomcat-app-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-windows-classic-java-run-tomcat-app-server/NewRuleProfile.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

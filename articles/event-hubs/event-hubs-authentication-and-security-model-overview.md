@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/03/2016"
+    ms.date="08/16/2016"
     ms.author="sethm;clemensv" />
 
 # Event Hubs の認証とセキュリティ モデルの概要
@@ -37,7 +37,7 @@ Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](
 
 ### SAS キーを作成する
 
-Service Bus は、名前空間を作成するときに、**RootManageSharedAccessKey** という名前の 256 ビットの SAS キーを生成します。このキーは、名前空間に対する送信、リッスン、および管理権限を与えます。追加のキーを作成できます。特定の Event Hub に送信アクセス許可を与えるキーを生成することをお勧めします。これ以降、このトピックでは、このキーは `EventHubSendKey` という名前であることを前提とします。
+Azure Event Hubs は、Event Hubs 名前空間を作成するときに、**RootManageSharedAccessKey** という名前の 256 ビットの SAS キーを生成します。このキーは、名前空間に対する送信、リッスン、および管理権限を与えます。追加のキーを作成できます。特定の Event Hub に送信アクセス許可を与えるキーを生成することをお勧めします。これ以降、このトピックでは、このキーは `EventHubSendKey` という名前であることを前提とします。
 
 次の例では、Event Hub を作成するときに送信専用のキーを作成します。
 
@@ -105,7 +105,7 @@ Service Bus の現在のバージョンは、個々のサブスクリプショ�
 
 ACS では、いくつかの方法で、サービス ID、証明書利用者、およびルールを作成できますが、最も簡単な方法は [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93) を使用することです。次に例を示します。
 
-1. **EventHubSender** のサービス ID を作成します。これは、作成されたサービス ID の名前とそのキーを返します。
+1. **EventHubSender** のサービス ID を作成します。この操作は、作成されたサービス ID の名前とそのキーを返します。
 
 	```
 	sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
@@ -154,4 +154,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

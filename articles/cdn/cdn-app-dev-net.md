@@ -337,4 +337,6 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 Azure CDN Management Library for .NET に関連するドキュメントについては、[MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+[PowerShell](./cdn-manage-powershell.md) で CDN リソースを管理します。
+
+<!---HONumber=AcomDC_0817_2016-->

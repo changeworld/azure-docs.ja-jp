@@ -3,7 +3,7 @@
 	description="Azure Automation で監視アラートに応じて Linux 仮想マシンを垂直方向にスケーリングする方法"
 	services="virtual-machines-linux"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -19,7 +19,7 @@
 
 # Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする
 
-垂直方向のスケーリングは、ワークロードへの応答時にコンピューターのリソースを増減するプロセスです。Azure では、仮想マシンのサイズを変更することで実行できます。これは、次のようなシナリオで役立ちます。
+垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。Azure では、仮想マシンのサイズを変更することで実行できます。これは、次のようなシナリオで役立ちます。
 
 - 仮想マシンが頻繁に使用されていない場合、より小さなサイズに変更して、毎月のコストを削減することができます
 - 仮想マシンでピーク時の負荷が表れている場合、より大きなサイズに変更して、容量を増やすことができます
@@ -88,4 +88,4 @@ Webhook のダイアログを閉じる前に、Webhook をコピーしてくだ�
 
 ![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

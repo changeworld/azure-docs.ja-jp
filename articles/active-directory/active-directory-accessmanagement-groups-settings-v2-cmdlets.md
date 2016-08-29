@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/11/2016"
+	ms.date="08/10/2016"
 	ms.author="curtand"/>
 
 # グループ管理用の Azure Active Directory プレビューのコマンドレット
@@ -223,4 +223,4 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

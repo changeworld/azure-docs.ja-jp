@@ -3,7 +3,7 @@
 	description="この記事では、PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを 1 つ複製する方法を紹介します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -50,7 +50,7 @@ git clone git@github.com:Azure/classic-iaas-resourcemanager-migration.git
 Import-Module .\asm2arm.psd1
 ```
 
-## クラシック デプロイメント モデルと Azure Resource Manager サブスクリプションで認証します
+## クラシック デプロイメント モデルと Azure Resource Manager サブスクリプションでの認証
 
 クラシック仮想マシンを複製する前に、クラシック デプロイメント モデルと Azure Resource Manager スタックの両方で PowerShell セッションを認証する必要があります。これは次のコマンドレットで実行できます
 
@@ -112,7 +112,7 @@ Add-AzureSMVmToRM -ServiceName acloudservice -Name atestvm -ResourceGroupName ar
 4.  `<ServiceName>-<VMName>-setextensions<optional timestamp>.json`: 仮想マシンのエージェント拡張機能を設定するために実行する一連の PowerShell コマンドレット。
 4.  `<ServiceName>-<VMName>-copydisks<optional timestamp>.json`: CopyDisks オプションが指定されている場合、ディスク BLOB を複製するために実行する一連の PowerShell コマンドレット。
 
--Deploy フラグが設定されている場合、ファイルの生成後、コマンドレットは <ServiceName>-<VMName>-setup.json テンプレートをデプロイし、DiskAction パラメーターが CopyDisks に設定されている場合、ソースの仮想マシン ディスク BLOB を複製し、パラメーターの <ServiceName>-<VMName>-parameters.json ファイルを使用し、<ServiceName>-<VMName>-deploy.json テンプレートをデプロイします。仮想マシンのデプロイが完了したとき、(仮想マシンのエージェント拡張機能の) 命令型スクリプトやディスク複製のスクリプトが存在する場合、それらが実行されます。
+-Deploy フラグが設定されている場合、ファイルの生成後、コマンドレットは <ServiceName>-<VMName>-setup.json テンプレートをデプロイし、DiskAction パラメーターが CopyDisks に設定されている場合、ソースの仮想マシン ディスク BLOB を複製し、パラメーターの <ServiceName>-<VMName>-parameters.json ファイルを使用して、<ServiceName>-<VMName>-deploy.json テンプレートをデプロイします。仮想マシンのデプロイが完了したとき、(仮想マシンのエージェント拡張機能の) 命令型スクリプトやディスク複製のスクリプトが存在する場合、それらが実行されます。
 
 ### ネットワークの詳細
 コマンドレットの意図は、クラシック ネットワークの設定をリソース マネージャーに複製することではありません。仮想マシン自体の複製に最も便利な方法でネットワーキング機能を活用します。条件による動作の違いは次のようになります。
@@ -150,7 +150,7 @@ Add-AzureSMVmToRM -ServiceName acloudservice -Name atestvm -ResourceGroupName ar
 
 **次は複製スクリプトの範囲外です**
 
- 1. 実行中の仮想マシンの停止 
+ 1. 実行中の仮想マシンの停止
  2. データ/ディスクの変更
  3. 実行中の VM の複製
  4. 複雑なシナリオで自動的に複数の VM を複製する
@@ -160,9 +160,9 @@ Add-AzureSMVmToRM -ServiceName acloudservice -Name atestvm -ResourceGroupName ar
  
 ## 試験済みの構成
 
-_Add-AzureSMVmToRM_ は次のテスト ケースを使用して検証されました。
+_Add-AzureSMVmToRM_ コマンドレットは次のテスト ケースを使用して検証されました。
 
-| # | 説明 |
+| # | Description |
 |:---|:---|
 | 1 | Windows 仮想マシンと既存の OS ディスク |
 | 2 | Linux 仮想マシンと既存の OS ディスク |
@@ -185,4 +185,4 @@ _Add-AzureSMVmToRM_ は次のテスト ケースを使用して検証されま�
 ## メモ
 1. 複数の VM を短い間隔で複製する場合、DNS キャッシュ更新時間に起因し、パブリック IP アドレスに DNS 名前競合が発生する可能性があります。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

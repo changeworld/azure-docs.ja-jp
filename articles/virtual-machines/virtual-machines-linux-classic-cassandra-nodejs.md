@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="hanuk;robmcm"/>
 
 # Azure 上の Linux で Cassandra を実行して Node.js からアクセス 
@@ -33,7 +33,7 @@ Microsoft Azure のネットワークでは、ネットワークのセキュリ�
 
 - 外部システムは、Azure の内部からも外部からも Cassandra データベースにアクセスできない
 - Cassandra クラスターは Thrift トラフィックのロード バランサーの内側に配置する必要がある
-- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする 
+- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする
 - アプリケーション サーバー ファームのみがデータベースに直接アクセスできるように、クラスターをロック ダウンする
 - パブリック ネットワーク エンドポイントを SSH のみにする
 - 各 Cassandra ノードには、固定の内部 IP アドレスが必要である
@@ -103,7 +103,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 | ----------------- | ----- | ------- |
 | ノード の数 (N) | 8 + 8 | クラスター内のノードの合計数 |
 | レプリケーション係数 (RF) | 3 | 行のレプリカの数 |
-| 一貫性レベル (書き込み) | LOCAL\_QUORUM \[(sum(RF)/2) +1) = 4] (数式の結果の小数点以下の値は、切り捨てられます) | 2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
+| 一貫性レベル (書き込み) | LOCAL\_QUORUM [(sum(RF)/2) +1) = 4] \(数式の結果の小数点以下の値は、切り捨てられます) | 2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 |
 | 一貫性レベル (読み取り) | LOCAL\_QUORUM ((RF/2) +1) = 2 数式の結果の小数点以下の値は、切り捨てられます。 | 1 つのリージョンのみで、読み取り要求に対応します。応答がクライアントに送信される前に、2 つのノードが読み取られます。 |
 | レプリケーションの方法 | NetworkTopologyStrategy (詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください) | デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。 |
 | スニッチ | GossipingPropertyFileSnitch (詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)」を参照してください) | NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 | 
@@ -120,7 +120,7 @@ Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は
 <tr><td>Ubuntu	</td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-JRE のダウンロードには、Oracle のライセンスの手動での承認が必要です。そのため、デプロイを簡略化するには、クラスターのデプロイの前段階として作成する Ubuntu テンプレート イメージに後でアップロードするために、必要なすべてのソフトウェアをあらかじめデスクトップにダウンロードしておく必要があります。
+JRE のダウンロードには、Oracle のライセンスの手動での承認が必要です。そのため、デプロイメントを簡略化するには、クラスターのデプロイメントの前段階として作成する Ubuntu テンプレート イメージに後でアップロードするために、必要なすべてのソフトウェアをあらかじめデスクトップにダウンロードしておく必要があります。
 
 上記のソフトウェアは、ローカル コンピューター上の既知のダウンロード ディレクトリ (Windows の %TEMP%/downloads や大部分の Linux ディストリビューションや Mac の ~/Downloads など) にダウンロードします。
 
@@ -303,7 +303,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 
 <table>
 <tr><th>VM の属性名</th><th>値</th><th>解説</th></tr>
-<tr><td>名前</td><td>vnet-cass-west-us</td><td></td></tr>	
+<tr><td>Name</td><td>vnet-cass-west-us</td><td></td></tr>	
 <tr><td>リージョン</td><td>米国西部</td><td></td></tr>	
 <tr><td>DNS サーバー	</td><td>なし</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
 <tr><td>ポイント対サイト VPN の構成</td><td>なし</td><td> 無視します。</td></tr>
@@ -328,13 +328,13 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 <table>
 <tr><th>コンピューター名    </th><th>サブネット	</th><th>IP アドレス	</th><th>可用性セット</th><th>DC/ラック</th><th>シード?</th></tr>
 <tr><td>hk-c1-west-us	</td><td>data	</td><td>10.1.2.4	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack1 </td><td>はい</td></tr>
-<tr><td>hk-c2-west-us	</td><td>data	</td><td>10.1.2.5	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack1	</td><td>いいえ </td></tr>
+<tr><td>hk-c2-west-us	</td><td>data	</td><td>10.1.2.5	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack1	</td><td>なし </td></tr>
 <tr><td>hk-c3-west-us	</td><td>data	</td><td>10.1.2.6	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack2	</td><td>はい</td></tr>
-<tr><td>hk-c4-west-us	</td><td>data	</td><td>10.1.2.7	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack2	</td><td>いいえ </td></tr>
+<tr><td>hk-c4-west-us	</td><td>data	</td><td>10.1.2.7	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack2	</td><td>なし </td></tr>
 <tr><td>hk-c5-west-us	</td><td>data	</td><td>10.1.2.8	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack3	</td><td>はい</td></tr>
-<tr><td>hk-c6-west-us	</td><td>data	</td><td>10.1.2.9	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack3	</td><td>いいえ </td></tr>
+<tr><td>hk-c6-west-us	</td><td>data	</td><td>10.1.2.9	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack3	</td><td>なし </td></tr>
 <tr><td>hk-c7-west-us	</td><td>data	</td><td>10.1.2.10	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>はい</td></tr>
-<tr><td>hk-c8-west-us	</td><td>data	</td><td>10.1.2.11	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>いいえ </td></tr>
+<tr><td>hk-c8-west-us	</td><td>data	</td><td>10.1.2.11	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>なし </td></tr>
 <tr><td>hk-w1-west-us	</td><td>web	</td><td>10.1.1.4	</td><td>hk-w-aset-1	</td><td>                       </td><td>該当なし</td></tr>
 <tr><td>hk-w2-west-us	</td><td>web	</td><td>10.1.1.5	</td><td>hk-w-aset-1	</td><td>                       </td><td>該当なし</td></tr>
 </table>
@@ -424,7 +424,7 @@ VM にログインし、次の処理を行います。
 8 ノードのクラスターについて、以下のような情報が画面に表示されます。
 
 <table>
-<tr><th>状態</th></th>Address	</th><th>読み込み	</th><th>トークン	</th><th>所有 </th><th>ホスト ID	</th><th>ラック</th></tr>
+<tr><th>状態</th></th>Address	</th><th>Load	</th><th>トークン	</th><th>所有 </th><th>ホスト ID	</th><th>ラック</th></tr>
 <tr><th>UN	</td><td>10.1.2.4 	</td><td>87.81 KB	</td><td>256	</td><td>38.0%	</td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN	</td><td>10.1.2.5 	</td><td>41.08 KB	</td><td>256	</td><td>68.9%	</td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN	</td><td>10.1.2.6 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack2</td></tr>
@@ -502,7 +502,7 @@ Azure の仮想ネットワークのローカル ネットワークは、プラ�
 Azure クラシック ポータルから、各 VNET を選択し、[構成] をクリックして、[ローカル ネットワークに接続する] をチェックして、次の情報にしたがってローカル ネットワークを選択します。
 
 
-| Virtual Network | ローカル ネットワーク |
+| 仮想ネットワーク | ローカル ネットワーク |
 | --------------- | ------------- |
 | hk-vnet-west-us | hk-lnet-map-to-east-us |
 | hk-vnet-east-us | hk-lnet-map-to-west-us |
@@ -533,12 +533,12 @@ Azure クラシック ポータルで、両方の仮想ネットワークの [�
 | コンピューター名 | サブネット | IP アドレス | 可用性セット | DC/ラック | シード? |
 | ------------ | ------ | ---------- | ---------------- | ------- | ----- |
 | hk-c1-east-us | data | 10\.2.2.4 | hk-c-aset-1 | dc =EASTUS rack =rack1 | はい |
-| hk-c2-east-us | data | 10\.2.2.5 | hk-c-aset-1 | dc =EASTUS rack =rack1 | いいえ |
+| hk-c2-east-us | data | 10\.2.2.5 | hk-c-aset-1 | dc =EASTUS rack =rack1 | なし |
 | hk-c3-east-us | data | 10\.2.2.6 | hk-c-aset-1 | dc =EASTUS rack =rack2 | はい |
 | hk-c5-east-us | data | 10\.2.2.8 | hk-c-aset-2 | dc =EASTUS rack =rack3 | はい |
-| hk-c6-east-us | data | 10\.2.2.9 | hk-c-aset-2 | dc =EASTUS rack =rack3 | いいえ |
+| hk-c6-east-us | data | 10\.2.2.9 | hk-c-aset-2 | dc =EASTUS rack =rack3 | なし |
 | hk-c7-east-us | data | 10\.2.2.10 | hk-c-aset-2 | dc =EASTUS rack =rack4 | はい |
-| hk-c8-east-us | data | 10\.2.2.11 | hk-c-aset-2 | dc =EASTUS rack =rack4 | いいえ |
+| hk-c8-east-us | data | 10\.2.2.11 | hk-c-aset-2 | dc =EASTUS rack =rack4 | なし |
 | hk-w1-east-us | web | 10\.2.1.4 | hk-w-aset-1 | 該当なし | 該当なし |
 | hk-w2-east-us | web | 10\.2.1.5 | hk-w-aset-1 | 該当なし | 該当なし |
 
@@ -559,12 +559,12 @@ VM にログインし、次の処理を行います。
 
 ###手順 1. PowerShell を使用して両方のリージョンの内部ロード バランサーの IP アドレスを取得
 - Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
-- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
+- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"
 
     表示される IP アドレスに注意してください (例: 西部 - 10.1.2.101、東部 - 10.2.2.101)。
 
 ###手順 2. hk-w1-west-us にログイン後に、西部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
+1.    $CASS\_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。
 2.	次の CQL コマンドを実行します。
 
 		CREATE KEYSPACE customers_ks
@@ -584,7 +584,7 @@ VM にログインし、次の処理を行います。
 
 
 ###手順 3. hk-w1-east-us にログイン後に、東部リージョンで次の処理を実行
-1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。 
+1.    $CASS\_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。
 2.	次の CQL コマンドを実行します。
 
 		USE customers_ks;
@@ -611,7 +611,7 @@ VM にログインし、次の処理を行います。
 
 1. Node.js と npm をインストールします。
 2. npm を使用して、ノード パッケージ "cassandra-client" をインストールします。
-3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。 
+3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。
 
 		var pooledCon = require('cassandra-client').PooledConnection;
 		var ksName = "custsupport_ks";
@@ -702,7 +702,7 @@ Microsoft Azure は、この演習でもわかるように、オープン ソー
 
 ##参照##
 - [http://cassandra.apache.org](http://cassandra.apache.org)
-- [http://www.datastax.com](http://www.datastax.com) 
-- [http://www.nodejs.org](http://www.nodejs.org) 
+- [http://www.datastax.com](http://www.datastax.com)
+- [http://www.nodejs.org](http://www.nodejs.org)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/16/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse の設計上の決定と コーディング技法
@@ -52,7 +52,7 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 
 <!--Article references-->
 [同時実行]: ./sql-data-warehouse-develop-concurrency.md
-[接続]: ./sql-data-warehouse-develop-connections.md
+[接続]: ./sql-data-warehouse-connect-overview.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [動的 SQL]: ./sql-data-warehouse-develop-dynamic-sql.md
 [オプションでのグループ化]: ./sql-data-warehouse-develop-group-by-options.md
@@ -75,4 +75,4 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="08/16/2016"
    ms.author="yurid"/>
 
 # セキュリティ アーキテクチャの概要
@@ -26,4 +26,4 @@ Azure のソリューション デプロイをセキュリティで保護する�
 - [Microsoft Azure のアプリケーションのアーキテクチャ](security-application-architecture-on-azure.md)
 - [Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

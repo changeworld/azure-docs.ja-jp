@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
 
-## 概要
+## Overview
 
 クラウド サービス プロジェクトを発行可能にするには、次のサービスを設定する必要があります。
 
@@ -153,4 +153,4 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 
 Visural Studio からの Azure へのアプリ発行の詳細については、「[Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

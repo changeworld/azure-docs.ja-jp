@@ -134,6 +134,32 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 エージェントがインストールされ、コンピューターがコンテナーに登録されました。バックアップを構成してスケジュールする準備ができました。
 
+### インストールの構成
+
+エージェントが適切にインストールおよび登録されていることを確認するには、管理ポータルの **[実稼働サーバー]** セクションでバックアップした項目をチェックします。これを行うには、次の手順を実行します。
+
+1. Azure サブスクリプションを使用して、[Azure ポータル](https://portal.azure.com/)にサインインします。
+
+2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+
+    ![Create Recovery Services Vault step 1](./media/backup-configure-vault/browse-to-rs-vaults.png) <br/>
+
+    Recovery Services コンテナーの一覧が表示されます。
+
+2. 作成したコンテナーの名前を選択します。
+
+    Recovery Services コンテナーのダッシュボード ブレードが開きます。
+
+    ![Recovery Services コンテナーのダッシュボード](./media/backup-configure-vault/rs-vault-dashboard.png) <br/>
+
+3. ページの上部にある **[設定]** ボタンをクリックします。
+
+4. **[バックアップ インフラストラクチャ]、[実稼働サーバー]** の順にクリックします。
+
+    ![実稼働サーバー](./media/backup-configure-vault/production-server-verification.png)
+
+サーバーが一覧に示されている場合は、エージェントは正しくインストールおよび登録されています。
+
 ## 手順 4: 初回バックアップを完了する
 
 初回バックアップには、次の 2 つの主要なタスクが含まれています。
@@ -193,7 +219,7 @@ Backup エージェントは、ネットワーク スロットルを提供しま
 
     ![Change properties](./media/backup-configure-vault/change-properties.png)
 
-2. **[調整]** タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** チェック ボックスをオンにします。
+2. **[スロットル]** タブで、**[バックアップ操作用のインターネット使用帯域幅のスロットルを有効にする]** チェック ボックスをオンにします。
 
     ![ネットワークのスロットル](./media/backup-configure-vault/throttling-dialog.png)
 
@@ -226,4 +252,4 @@ VM や他のワークロードのバックアップの詳細については、�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!----HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

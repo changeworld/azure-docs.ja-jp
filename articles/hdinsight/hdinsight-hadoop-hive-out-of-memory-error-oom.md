@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
 	ms.date="05/18/2016"
-	ms.author="rashimg;cgronlun"/>
+	ms.author="rashimg;jgao"/>
 
 # Azure HDInsight の Hadoop の Hive メモリ設定を使用してメモリ不足 (OOM) エラーを修正する
 
@@ -122,4 +122,4 @@ D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,24
 
 OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

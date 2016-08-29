@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
+   ms.date="08/16/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のトラブルシューティング
@@ -98,7 +98,7 @@
 [クエリを監視する方法]: ./sql-data-warehouse-manage-monitor.md
 [プロビジョニング手順]: ./sql-data-warehouse-get-started-provision.md
 [クライアント IP 用のサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
-[Visual Studio 2013 または 2015]: ./sql-data-warehouse-get-started-connect.md
+[Visual Studio 2013 または 2015]: ./sql-data-warehouse-query-visual-studio.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 [テーブルのサイズ]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
@@ -130,9 +130,9 @@
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT チームのブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureSQLDataWarehouse
+[MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
 [Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

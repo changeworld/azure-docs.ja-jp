@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 #SQL Data Warehouse へのサンプル データのロード
@@ -45,7 +45,7 @@
 
 ##サンプル データのクエリ
 
-SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリをすぐに実行できます。クエリを実行するには、Azure SQL DW に新しく作成した Adventure Works データベースに Visual Studio と SSDT を使用して接続します ([接続][]ドキュメント参照)。
+SQL Data Warehouse にサンプル データをロードしたら、いくつかのクエリをすぐに実行できます。クエリを実行するには、Azure SQL DW に新しく作成した Adventure Works データベースに Visual Studio と SSDT を使用して接続します (詳しくは、[Visual Studio を使用したクエリ][]に関するドキュメントを参照)。
 
 従業員のすべての情報を取得する簡単な SELECT ステートメントの例:
 
@@ -80,15 +80,15 @@ SQL Data Warehouse は、SQL Server がサポートするほぼすべての T-SQ
 <!--Image references-->
 
 <!--Article references-->
-[移行]: ./sql-data-warehouse-overview-migrate.md
-[開発]: ./sql-data-warehouse-overview-develop.md
-[ロード]: ./sql-data-warehouse-overview-load.md
-[接続]: ./sql-data-warehouse-get-started-connect.md
-[コードの移行]: ./sql-data-warehouse-migrate-code.md
-[bcp をインストール]: ./sql-data-warehouse-load-with-bcp.md
-[sqlcmd をインストール]: ./sql-data-warehouse-get-started-connect-sqlcmd.md
+[移行]: sql-data-warehouse-overview-migrate.md
+[開発]: sql-data-warehouse-overview-develop.md
+[ロード]: sql-data-warehouse-overview-load.md
+[Visual Studio を使用したクエリ]: sql-data-warehouse-query-visual-studio.md
+[コードの移行]: sql-data-warehouse-migrate-code.md
+[bcp をインストール]: sql-data-warehouse-load-with-bcp.md
+[sqlcmd をインストール]: sql-data-warehouse-get-started-connect-sqlcmd.md
 
 <!--Other Web references-->
 [SQL Data Warehouse の Adventure Works サンプル スクリプト]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

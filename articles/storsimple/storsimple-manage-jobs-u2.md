@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
-## 概要
+## Overview
 
 **[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、取り消されたジョブ、失敗したジョブを表示できます。結果は表形式で表示されます。
 
@@ -93,4 +93,4 @@
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

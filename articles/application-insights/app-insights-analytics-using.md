@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/15/2016" 
+	ms.date="07/26/2016" 
 	ms.author="danha"/>
 
 
@@ -26,7 +26,9 @@
 
 ## Analytics を開く
 
-Application Insights のアプリのホーム リソースで、[分析] をクリックします。![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-using/001.png)
+Application Insights のアプリのホーム リソースで、[Analytics] をクリックします。
+
+![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics-using/001.png)
 
 インラインのチュートリアルでは、実行可能な操作が説明されています。
 
@@ -36,11 +38,11 @@ Application Insights のアプリのホーム リソースで、[分析] をク�
 
 ### クエリを記述します
 
-![](./media/app-insights-analytics-using/150.png)
+![スキーマの表示](./media/app-insights-analytics-using/150.png)
 
 左側の一覧に表示されるテーブルのいずれかの名前 (または [range](app-insights-analytics-reference.md#range-operator) や [union](app-insights-analytics-reference.md#union-operator) 演算子) から始めます。`|` を使用して、[演算子](app-insights-analytics-reference.md#queries-and-operators)のパイプラインを作成します。IntelliSense によって、使用できる演算子と、式のいくつかの要素が示されます。
 
-[Analytics 言語の概要](app-insights-analytics-tour.md)と[言語リファレンス](app-insights-analytics-reference.md)のページを参照してください。
+[Analytics 言語の概要](app-insights-analytics-tour.md)と[言語のリファレンス](app-insights-analytics-reference.md)に関するページを参照してください。
 
 ### クエリを実行する
 
@@ -115,21 +117,52 @@ Application Insights のアプリのホーム リソースで、[分析] をク�
 
 必要なダイアグラムの種類を選択します。
 
-![](./media/app-insights-analytics-using/230.png)
+![ダイアグラムの種類の選択](./media/app-insights-analytics-using/230.png)
 
 種類が適切な複数の列がある場合は、x 軸と y 軸を選択して、結果を分割するディメンションの列を選択できます。
 
-既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。ただし、クエリの末尾に[レンダー ディレクティブ](app-insights-analytics-reference.md#render-directive)を使用して、ダイアグラムを選択できます。
+既定では、結果は最初にテーブルとして表示されるので、ダイアグラムを手動で選択します。ただし、クエリの末尾に [render ディレクティブ](app-insights-analytics-reference.md#render-directive)を使用して、ダイアグラムを選択できます。
 
-ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムを固定することができます (有料価格レベルのアプリでのみ利用可能)。
+## ダッシュボードにピン留めする
+
+ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムを固定することができます (この機能を有効にするには、[アプリの料金パッケージのアップグレード](app-insights-pricing.md)が必要になる場合があります)。
+
+![ピンのクリック](./media/app-insights-analytics-using/pin-01.png)
+
+つまり、Web サービスのパフォーマンスや使用状況の監視に利用するダッシュボードを構成するときに、複雑な分析を他のメトリックに一緒に組み込むことができます。
+
+#### ダッシュボードの更新
+
+ダッシュボードにピン留めされているグラフは、約 30 分おきにクエリが再実行されるときに自動的に更新されます。
+
+#### 自動簡略化
+
+グラフをダッシュボードにピン留めすると、特定の簡略化が適用されることがあります。
+
+多数の不連続ビン (通常は横棒グラフ) が表示されているグラフをピン留めすると、割合の低いビンは "その他" のビンに自動的にグループ化されます。次のクエリを例にします。
+
+    requests | summarize count_search = count() by client_CountryOrRegion
+
+上のクエリは、Analytics では次のようになります。
+
+
+![底部が長いグラフ](./media/app-insights-analytics-using/pin-07.png)
+
+ところが、ダッシュボードにピン留めすると次のようになります。
+
+
+![ビンが制限されたグラフ](./media/app-insights-analytics-using/pin-08.png)
+
+
+
 
 ## Excel へのエクスポート
 
-クエリを実行したら、.csv ファイルをダウンロードできます。**[Excel にエクスポート]** をクリックします。
+クエリを実行したら、.csv ファイルをダウンロードできます。**[エクスポート]** をクリックしてから Excel を選択します。
 
 ## Power BI へのエクスポート
 
-1. クエリにカーソルを置いて、**[Power BI にエクスポート]** を選択します。
+1. クエリにカーソルを置いて、**[エクスポート]** を選択してから Power BI を選択します。
 
     ![](./media/app-insights-analytics-using/240.png)
 
@@ -137,7 +170,7 @@ Application Insights のアプリのホーム リソースで、[分析] をク�
 
 3. M 言語スクリプトを Power BI Desktop 詳細クエリ エディターにコピーします。
  * エクスポートされたファイルを開きます。
- * Power BI Desktop で、**[データの取得]、[空のクエリ]、[詳細エディター]** を選択し、M 言語のスクリプトを貼り付けます。
+ * Power BI Desktop で、**[データを取得]、[空のクエリ]、[詳細エディター]** を選択し、M 言語のスクリプトを貼り付けます。
 
     ![](./media/app-insights-analytics-using/250.png)
 
@@ -150,4 +183,4 @@ Application Insights のアプリのホーム リソースで、[分析] をク�
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

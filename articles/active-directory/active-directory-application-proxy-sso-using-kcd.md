@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/19/2016"
+	ms.date="08/10/2016"
 	ms.author="kgremban"/>
 
 
@@ -23,7 +23,7 @@
 
 1. ユーザーがクラウドにサインインします。
 2. クラウドですべてのセキュリティ検証 (事前認証) が実施されます。
-3. オンプレミス アプリケーションに要求が送信されると、アプリケーション プロキシ コネクタがユーザーの代理となります。バックエンド アプリケーションは、これをドメイン参加デバイスからサインインした正規ユーザーであると認識します。
+3. オンプレミスのアプリケーションに要求が送信されると、アプリケーション プロキシ コネクタが見かけ上ユーザーとして振る舞います。バックエンド アプリケーションは、これをドメイン参加デバイスからの正規ユーザーであると認識します。
 
 ![アプリケーション プロキシ経由のエンド ユーザーから企業ネットワークへのアクセス図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
 
@@ -57,7 +57,7 @@ Azure AD アプリケーション プロキシによって、ユーザーにシ�
 
 - 対象となるすべてのアプリにサービス プリンシパル名があること。
 
-- Connector を実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインに属していること。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
+- コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していること。ドメインへの参加の詳細については、「[コンピューターをドメインに参加させる](https://technet.microsoft.com/library/dd807102.aspx)」を参照してください。
 
 - Connector を実行しているサーバーに、ユーザーの TokenGroupsGlobalAndUniversal を読み取るためのアクセス権があること。既定ではそのように設定されていますが、環境のセキュリティを強化する過程で変更されている可能性があります。この点について詳しくは、[KB2009157](https://support.microsoft.com/ja-JP/kb/2009157) をご覧ください。
 
@@ -106,7 +106,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 
 
 ## Windows 以外のアプリの SSO
-Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。このような要求を送信する方法を定義するプロトコルはたくさんあります。ほとんどの Windows 以外のサーバーは Negotiate/SPNego を予期しています。これは Azure AD アプリケーション プロキシでサポートされるようになっています。
+Azure AD Application Proxy での Kerberos 委任フローは、Azure AD がクラウドでユーザーを認証するときから始まります。要求がオンプレミスに到着すると、Azure AD アプリケーション プロキシ コネクタは、ローカルの Active Directory と交信することで、ユーザーに代わって Kerberos チケットを発行します。このプロセスは Kerberos の制約付き委任 (KCD) と呼ばれます。次のフェーズで、要求がこの Kerberos チケットを使用してバックエンド アプリケーションに送信されます。このような要求を送信する方法を定義するプロトコルはいくつかあります。ほとんどの Windows 以外のサーバーは Negotiate/SPNego を予期しています。これは Azure AD アプリケーション プロキシでサポートされるようになっています。
 
 ![Windows 以外の SSO の図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_nonwindows_diagram.png)
 
@@ -169,4 +169,4 @@ SSO プロセスにエラーがある場合は、「[トラブルシューティ
 [1]: ./media/active-directory-application-proxy-sso-using-kcd/AuthDiagram.png
 [2]: ./media/active-directory-application-proxy-sso-using-kcd/Properties.jpg
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

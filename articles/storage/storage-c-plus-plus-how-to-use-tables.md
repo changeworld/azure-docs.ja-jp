@@ -1,6 +1,6 @@
 <properties
     pageTitle="Table ストレージを使用する方法 (C++) | Microsoft Azure"
-	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
+	description="NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
     services="storage"
     documentationCenter=".net"
     authors="tamram"
@@ -18,9 +18,9 @@
 
 # C++ から Table ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
-## 概要  
+## Overview  
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
 
 >[AZURE.NOTE] このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
@@ -71,7 +71,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	// Create the table client.
 	azure::storage::cloud_table_client table_client = storage_account.create_cloud_table_client();
 
-## テーブルの作成
+## テーブルを作成する
 **cloud\_table\_client** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**cloud\_table\_client** オブジェクトを作成し、これを使用して新しいテーブルを作成します。
 
 	// Retrieve the storage account from the connection string.
@@ -241,7 +241,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	}  
 
 ## 単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**table\_operation::retrive\_entity** を使用して、"Jeff Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみであり、**table\_result** の戻り値です。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**table\_operation::retrive\_entity** を使用して、"Jeff Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみであり、**table\_result** の戻り値です。クエリでパーティション キーと行キーの両方を指定することが、Table サービスから単一のエンティティを取得するための最速の方法です。
 
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
@@ -292,7 +292,7 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 	// Submit the operation to the Table service.
 	azure::storage::table_result replace_result = table.execute(replace_operation);
 
-## エンティティの挿入または置換を行う
+## エンティティを挿入または置換する
 **table\_operation::replace\_entity** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**table\_operation::replace\_entity** が成功するためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切であるため、すべての値を上書きする必要がある場合もあります。これを実現するには、**table\_operation::insert\_or\_replace\_entity** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Jeff Smith のユーザー エンティティを取得していますが、今度は **table\_operation::insert\_or\_replace\_entity** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
 
 	// Retrieve the storage account from the connection string.
@@ -414,4 +414,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/29/2016"
+	ms.date="08/15/2016"
 	ms.author="magoedte;csand"/>
 
 #Azure Automation を使用した Azure RemoteApp の管理
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure RemoteApp の管理を簡略化する方法について紹介します。
 
@@ -40,4 +43,4 @@ Azure Automation によってクラウド管理タスクを自動的に実行す
 
 * [Azure Automation の使用](../automation/automation-first-runbook-graphical.md) (Azure Automation の作業開始のチュートリアル)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

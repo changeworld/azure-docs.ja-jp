@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
@@ -310,7 +310,7 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 **AzureWebAppPublishModule**
 
-|関数名|説明|
+|関数名|Description|
 |---|---|
 |Add-AzureSQLDatabase|新しい Azure SQL データベースを作成します。|
 |Add-AzureSQLDatabases|Visual Studio によって生成される JSON 構成ファイルの値から Azure SQL データベースを作成します。|
@@ -339,7 +339,7 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 **Publish-WebApplication**
 
-|関数名|説明|
+|関数名|Description|
 |---|---|
 |New-AzureWebApplicationEnvironment|Web サイトや仮想マシンなどの Azure リソースを作成します。|
 |New-WebDeployPackage|この関数は実装されていません。この関数にコマンドを追加すると、プロジェクトをビルドできます。|
@@ -351,4 +351,4 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

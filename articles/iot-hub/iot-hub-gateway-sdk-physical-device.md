@@ -458,4 +458,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="05/13/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+
 Office 365 サブスクリプションがある場合、Office 365 サービスへのアクセスに使用されているユーザー名とパスワードが格納された Azure Active Directory もあります。たとえば、ユーザーが Office 365 ProPlus をアクティブ化した場合、Azure AD に対して認証してライセンスを確認します。ほとんどのユーザーは、Azure RemoteApp と同じディレクトリを使用したいと考えます。
 
 Azure RemoteApp をデプロイするとき、多くの場合、別の Azure AD と関連付けられた Azure サブスクリプションを使用しています。Office 365 ディレクトリを使用するには、Azure サブスクリプションをそのディレクトリに移動する必要があります。
@@ -45,4 +49,4 @@ Azure サブスクリプションを、現在のディレクトリから、フ�
 
 この時点で、Azure RemoteApp サブスクリプションは Office 365 Azure AD に関連付けられているので、Azure RemoteApp に既存の Office 365 ユーザー アカウントを使用できます。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

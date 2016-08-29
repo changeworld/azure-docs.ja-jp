@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/19/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用してボリュームを複製する
 
 [AZURE.INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
-## 概要
+## Overview
 
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
-![[バックアップ カタログ] ページ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
+  ![[バックアップ カタログ] ページ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
 
 このチュートリアルでは、バックアップ セットを使用して個々のボリュームを複製する方法について説明します。また、*一時的な*複製と*永続的な*複製の違いについても説明します。
 
@@ -97,4 +97,4 @@ StorSimple の複製機能と復元機能を使用して、削除されたファ
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

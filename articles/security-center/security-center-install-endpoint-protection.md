@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/29/2016"
+   ms.date="08/16/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center で Endpoint Protection をインストールする
@@ -32,7 +32,7 @@
 
 4. マルウェア対策ソリューションに関する追加情報が表示されます。**[作成]** を選択します。![マルウェア対策ソリューションの作成][4]
 
-5. **[拡張機能の追加]** ブレードで必要な構成設定を入力し、**[OK]** を選択します。構成設定の詳細については、「[マルウェア対策の既定の構成とカスタム構成](../azure-security-antimalware.md#default-and-custom-antimalware-configuration)」を参照してください。
+5. **[拡張機能の追加]** ブレードで必要な構成設定を入力し、**[OK]** を選択します。構成設定の詳細については、「[マルウェア対策の既定の構成とカスタム構成](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration)」を参照してください。
 
 これで、[Microsoft マルウェア対策](../azure-security-antimalware.md)が、選択した VM でアクティブになりました。
 
@@ -58,4 +58,4 @@
 [3]: ./media/security-center-install-endpoint-protection/select-endpoint-protection.png
 [4]: ./media/security-center-install-endpoint-protection/create-antimalware-solution.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp イメージの要件
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+
 Azure RemoteApp では Windows Server 2012 R2 イメージを使用して、ユーザーと共有するすべてのプログラムをホストします。カスタム イメージを作成するには、既存のイメージを使用することも、[新しいイメージを作成する](remoteapp-create-custom-image.md)こともできます。
 
 > [AZURE.TIP] Azure RemoteApp サブスクリプションを利用すれば、Azure VM ギャラリーにある Windows Server 2012 R2 イメージにアクセスし、独自のテンプレート イメージを作成できることをご存じでしたか。 [ご覧ください](remoteapp-image-on-azurevm.md)。
@@ -32,7 +36,7 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 - イメージのサイズは MB の倍数にする必要があります。正確な倍数ではないイメージをアップロードしようとすると、アップロードは失敗します。
 - イメージのサイズは 127 GB 未満でなければなりません。
 - VHD ファイルになければなりません (VHDX ファイルは現在サポートされていません)。
-- VHD を第 2 世代仮想マシンにしないでください。
+- VHD は、第 2 世代仮想マシンであってはなりません。
 - VHD は固定サイズにすることも、動的に拡大する容量可変にすることも可能です。固定サイズの VHD より Azure へのアップロードの所要時間が短いことから、容量可変の VHD が推奨されます。
 - ディスクはマスター ブート レコード (MBR) パーティション分割のスタイルを使用して初期化しなければなりません。GUID パーティション テーブル (GPT) パーティション分割のスタイルはサポートされていません。
 - VHD には Windows Server 2012 R2 の単一インストールが含まれていなければなりません。複数のボリュームを含むことはできますが、Windows がインストールされるのは 1 ボリュームのみです。
@@ -44,4 +48,4 @@ Azure RemoteApp で使用するためにアップロードできるイメージ�
 
 Azure RemoteApp のイメージ作成の詳細については、「[Azure RemoteApp イメージの作成](remoteapp-imageoptions.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

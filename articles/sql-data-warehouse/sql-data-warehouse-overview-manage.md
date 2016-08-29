@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/13/2016"
+   ms.date="08/16/2016"
    ms.author="barbkess;sonyama;"/>
 
 # Azure SQL Data Warehouse でのデータベースの管理
@@ -42,11 +42,11 @@ SQL Data Warehouse では、さまざまなツールを使用してデータベ�
 Azure ポータルの使用については、[SQL Data Warehouse の作成 (Azure ポータル)][] に関する記事をご覧ください。
 
 ### Visual Studio での SQL Server Data Tools
-Visual Studio の [SQL Server Data Tools][] (SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
+Visual Studio の [SQL Server Data Tools][] \(SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
 SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
 
-Visual Studio の SSDT を使用する手順については、「[Visual Studio で SQL Data Warehouse に接続する][]」をご覧ください。
+Visual Studio の SSDT を使用する手順については、「[Azure SQL Data Warehouse に対するクエリ (Visual Studio)][]」をご覧ください。
 
 ### コマンド ライン ツール
 コマンド ライン ツールは、ワークロードの自動化に最適なツールです。PowerShell と sqlcmd は、プロセスの自動化に最適です。多数の論理サーバーを管理したり、運用環境でリソースの変更をデプロイしたりする場合は、タスクをスクリプト化した後、自動化する必要があるため、これらのツールを使用することをお勧めします。
@@ -100,7 +100,7 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 [SQL Data Warehouse の作成 (Azure ポータル)]: sql-data-warehouse-get-started-provision.md
 [Create a database (PowerShell) (データベースの作成 (PowerShell))]: sql-data-warehouse-get-started-provision-powershell
 [connection]: sql-data-warehouse-develop-connections.md
-[Visual Studio で SQL Data Warehouse に接続する]: sql-data-warehouse-get-started-connect.md
+[Azure SQL Data Warehouse に対するクエリ (Visual Studio)]: sql-data-warehouse-query-visual-studio.md
 [SQLCMD を使用した接続とクエリ]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [開発の概要]: sql-data-warehouse-overview-develop.md
 [DMV を利用してワークロードを監視する]: sql-data-warehouse-manage-monitor.md
@@ -118,4 +118,4 @@ Data Warehouse ユニット (DWU) のスケーリングの詳細については�
 <!--Other web references-->
 [Azure ポータル]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

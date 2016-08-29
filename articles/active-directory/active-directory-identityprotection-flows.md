@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/16/2016"
 	ms.author="markvi"/>
 
 # Azure AD Identity Protection を使用したサインイン エクスペリエンス
@@ -59,17 +59,17 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 管理者は次のことをできます。
 
-- 追加のセキュリティ検証用にアカウントを設定するようユーザーに要求するポリシーを設定します。 
+- 追加のセキュリティ検証用にアカウントを設定するようユーザーに要求するポリシーを設定します。
 - 登録前に猶予期間をユーザーに与える場合、最大で 30 日間、多要素認証の登録のスキップを許可します。
 
 **多要素認証の登録には 3 つのステップがあります。**
 
-1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。<br><br> ![修復](./media/active-directory-identityprotection-flows/140.png "Remediation") <br>
+1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。<br><br> ![修復](./media/active-directory-identityprotection-flows/140.png "修復") <br>
 
 
-2. 多要素認証を設定するには、システムに自分への連絡方法を設定する必要があります。<br><br> ![Remediation](./media/active-directory-identityprotection-flows/141.png "Remediation") <br>
+2. 多要素認証を設定するには、システムに自分への連絡方法を設定する必要があります。<br><br> ![修復](./media/active-directory-identityprotection-flows/141.png "修復") <br>
  
-3. システムがチャレンジを送信するので、対応します。<br><br> ![Remediation](./media/active-directory-identityprotection-flows/142.png "Remediation") <br>
+3. システムがチャレンジを送信するので、対応します。<br><br> ![修復](./media/active-directory-identityprotection-flows/142.png "修復") <br>
 
  
 
@@ -81,15 +81,15 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 **高リスク サインインのフローには 2 つのステップがあります。**
 
-1. ユーザーは、新しい場所、デバイス、アプリからのサインインなど、サインインに関して異常が検出されたことの通知を受け取ります。 <br> <br> ![Remediation](./media/active-directory-identityprotection-flows/120.png "Remediation") <br>
+1. ユーザーは、新しい場所、デバイス、アプリからのサインインなど、サインインに関して異常が検出されたことの通知を受け取ります。 <br> <br> ![修復](./media/active-directory-identityprotection-flows/120.png "修復") <br>
 
-2. ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。多要素認証に登録しているユーザーは、電話番号にセキュリティ コードを折り返す必要があります。これは単にリスクの高いサインインであり、侵害されたアカウントではないので、このフローではユーザーがパスワードを変更する必要はありません。 <br> <br> ![Remediation](./media/active-directory-identityprotection-flows/121.png "Remediation") <br>
+2. ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。多要素認証に登録しているユーザーは、電話番号にセキュリティ コードを折り返す必要があります。これは単にリスクの高いサインインであり、侵害されたアカウントではないので、このフローではユーザーがパスワードを変更する必要はありません。 <br> <br> ![修復](./media/active-directory-identityprotection-flows/121.png "修復") <br>
 
 
 
  
 ## ブロックされたリスクの高いサインイン
-管理者は、サインイン リスク ポリシーを設定し、リスク レベルに応じてサインイン時にユーザーをブロックすることもできます。ブロックを解除するには、エンドユーザーは管理者またはヘルプ デスクに連絡する必要があります。または、既知の場所またはデバイスからサインインを試みることもできます。この場合、多要素認証を解決することによる自己復旧は利用できません。<br><br>![Remediation](./media/active-directory-identityprotection-flows/200.png "Remediation")<br>
+管理者は、サインイン リスク ポリシーを設定し、リスク レベルに応じてサインイン時にユーザーをブロックすることもできます。ブロックを解除するには、エンドユーザーは管理者またはヘルプ デスクに連絡する必要があります。または、既知の場所またはデバイスからサインインを試みることもできます。この場合、多要素認証を解決することによる自己復旧は利用できません。<br><br>![修復](./media/active-directory-identityprotection-flows/200.png "修復")<br>
 
 
 
@@ -101,9 +101,9 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 **リスクの高いサインインの間の多要素認証の登録には、2 つのステップがあります。**
 
-1. ユーザーに、アカウントが危険にさらされていることが通知されます。 <br><br> ![Remediation](./media/active-directory-identityprotection-flows/150.png "Remediation") <br>
+1. ユーザーに、アカウントが危険にさらされていることが通知されます。 <br><br> ![修復](./media/active-directory-identityprotection-flows/150.png "修復") <br>
 
-2. 多要素認証の登録プロセスが開始されます。 <br><br> ![Remediation](./media/active-directory-identityprotection-flows/151.png "Remediation") <br>
+2. 多要素認証の登録プロセスが開始されます。 <br><br> ![修復](./media/active-directory-identityprotection-flows/151.png "修復") <br>
 
 次の手順については、「[多要素認証の登録](#multi-factor-authentication-registration)」を参照してください。
 
@@ -118,16 +118,16 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 1. 不審なアクティビティまたは漏洩した資格情報のためにアカウントのセキュリティにリスクがあることが、ユーザーに通知されます。
 
-<br> ![Remediation](./media/active-directory-identityprotection-flows/101.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-flows/101.png "修復") <br>
 
-2.	ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。ユーザーが多要素認証に登録されている場合、ユーザーは侵害状態から自力で復旧できます。ユーザーは、セキュリティ コードを電話番号に折り返させる必要があります。 
+2.	ユーザーは、セキュリティ チャレンジを解くことによって自分の ID を証明するように要求されます。ユーザーが多要素認証に登録されている場合、ユーザーは侵害状態から自力で復旧できます。ユーザーは、セキュリティ コードを電話番号に折り返させる必要があります。
 
-<br> ![Remediation](./media/active-directory-identityprotection-flows/110.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-flows/110.png "修復") <br>
 
 
 3.	最後に、誰かがアカウントにアクセスした可能性があるため、ユーザーはパスワードの変更を強制されます。このエクスペリエンスのスクリーンショットは次のとおりです。
  
-<br> ![Remediation](./media/active-directory-identityprotection-flows/111.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-flows/111.png "修復") <br>
 
 
 
@@ -135,7 +135,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 ユーザーのリスク セキュリティ ポリシーによってブロックされたユーザーをブロック解除するには、ユーザーが管理者またはヘルプ デスクに連絡する必要があります。この場合、多要素認証を解決することによる自己復旧は利用できません。
 
-<br> ![Remediation](./media/active-directory-identityprotection-flows/104.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-flows/104.png "修復") <br>
 
 
 
@@ -144,7 +144,7 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 侵害されたユーザーがサインインからブロックされている場合、管理者はそのユーザー用に一時的なパスワードを生成できます。ユーザーは、次にサインインするときにパスワードを変更する必要があります。
 
-<br> ![Remediation](./media/active-directory-identityprotection-flows/160.png "Remediation") <br>
+<br> ![修復](./media/active-directory-identityprotection-flows/160.png "修復") <br>
 
 
  
@@ -156,6 +156,6 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 ## 関連項目
 
-- [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

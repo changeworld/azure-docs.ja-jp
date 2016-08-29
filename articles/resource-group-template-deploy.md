@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
@@ -41,7 +41,7 @@
 
 ## 簡単なデプロイ手順
 
-この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、通常必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
+この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、多くの場合、必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
 
     New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
     New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile <PathToParameterFile>
@@ -62,13 +62,13 @@
         Account     : someone@example.com
         ...
 
-2. 複数のサブスクリプションがある場合、**Set-AzureRmContext** コマンドでデプロイに使用するサブスクリプション ID を指定します。
+2. 複数のサブスクリプションがある場合、**Set-AzureRmContext** コマンドで、デプロイに使用するサブスクリプション ID を指定します。
 
         Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
-3. 通常、新しいテンプレートをデプロイする場合は、リソースを格納するため新しいリソース グループを作成します。デプロイする既存のリソース グループがある場合は、この手順をスキップしてそのリソース グループを使用することができます。
+3. 通常、新しいテンプレートをデプロイする場合は、リソースを格納するためのリソース グループを作成します。デプロイする既存のリソース グループがある場合は、この手順をスキップしてそのリソース グループを使用することができます。
 
-     新しいリソース グループを作成するには、リソース グループの名前と場所を指定します。
+     リソース グループを作成するには、リソース グループの名前と場所を指定します。
 
         New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
    
@@ -88,7 +88,7 @@
 
         Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate>
 
-5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。**Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
+5. リソース グループにリソースをデプロイするには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターには、デプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。**Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
 
      ローカル テンプレートをデプロイするには、**TemplateFile** パラメーターを使用します。
 
@@ -117,6 +117,8 @@
 
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri <LinkToTemplate> -TemplateParameterUri <LinkToParameterFile>
 
+        外部パラメーター ファイルを使用する場合、他の値をインラインまたはローカル ファイルから渡すことはできません。詳細については、「[パラメーターの優先順位](#parameter-precendence)」を参照してください。
+
      リソースがデプロイされると、デプロイの概要が表示されます。
 
         DeploymentName    : ExampleDeployment
@@ -126,13 +128,13 @@
         Mode              : Incremental
         ...
 
-     テンプレートに、テンプレートをデプロイするコマンドに、パラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+     テンプレートに、テンプレートをデプロイするための PowerShell コマンドのパラメーターのいずれかと同じ名前のパラメーターが含まれている場合、接尾辞 **FromTemplate** が付いたそのパラメーターに値を指定するように求められます。たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと競合します。**ResourceGroupNameFromTemplate** に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
-6. デプロイ エラーをトラブルシューティングするために役立つ可能性がある追加情報を記録する場合は、**DeploymentDebugLogLevel** パラメーターを使用します。デプロイ操作と共に要求の内容、応答の内容、またはその両方を記録するように指定できます。
+6. デプロイ エラーのトラブルシューティングに役立つ可能性がある追加情報を記録する場合は、**DeploymentDebugLogLevel** パラメーターを使用します。デプロイ操作と共に要求の内容、応答の内容、またはその両方を記録するように指定できます。
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
         
-     このデバッグの内容を使用したデプロイのトラブルシューティングの詳細については、[Azure PowerShell でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)に関するページをご覧ください。
+     このデバッグの内容を使用したデプロイのトラブルシューティングの詳細については、[Azure PowerShell によるリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)に関するページを参照してください。
 
 ## SAS トークンを使用してストレージからテンプレートをデプロイする
 
@@ -144,11 +146,11 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 
 次の手順で、テンプレートのストレージ アカウントをセットアップします。
 
-1. 新しいリソース グループを作成します。
+1. リソース グループを作成します。
 
         New-AzureRmResourceGroup -Name ManageGroup -Location "West US"
 
-2. 新しいストレージ アカウントを作成します。ストレージ アカウント名は、 Azure 内で一意である必要があるため、独自の名前を入力してください。
+2. ストレージ アカウントを作成します。ストレージ アカウント名は、 Azure 内で一意である必要があるため、独自の名前を入力してください。
 
         New-AzureRmStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates -Type Standard_LRS -Location "West US"
 
@@ -156,7 +158,7 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 
         Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 
-4. 新しいコンテナーを作成します。アクセス許可は **Off** に設定します。これは所有者だけがコンテナーにアクセスできることを表します。
+4. コンテナーを作成します。アクセス許可は **Off** に設定します。これは所有者だけがコンテナーにアクセスできることを表します。
 
         New-AzureStorageContainer -Name templates -Permission Off
         
@@ -184,10 +186,17 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 
 [AZURE.INCLUDE [resource-manager-parameter-file](../includes/resource-manager-parameter-file.md)]
 
+## パラメーターの優先順位
+
+同じデプロイ操作で、インライン パラメーターとローカル パラメーター ファイルを使用することができます。たとえば、一部の値をローカル パラメーター ファイルで指定し、その他の値をデプロイ中にインラインで追加します。ローカル パラメーター ファイルとインラインの両方でパラメーターの値を指定すると、インラインの値が優先されます。
+
+ただし、インライン パラメーターを外部パラメーター ファイルと共に使用することはできません。**TemplateParameterUri** パラメーターでパラメーター ファイルを指定すると、すべてのインライン パラメーターが無視されます。すべてのパラメーター値を外部ファイル内で指定する必要があります。パラメーター ファイルに含めることができない機密性の高い値がテンプレートに含まれている場合は、その値をキー コンテナーに追加して外部パラメーター ファイルでそのキー コンテナーを参照するか、すべてのパラメーター値をインラインで動的に指定してください。
+
+セキュリティで保護された値を渡すために KeyVault 参照を使用する方法の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
+
 ## 次のステップ
 - .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
 - テンプレートのパラメーターの定義については、[テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
-- セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

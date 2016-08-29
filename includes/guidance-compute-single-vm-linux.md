@@ -10,7 +10,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 ![[0]][0]
 
-- **リソース グループ。** "[リソース グループ][resource-manager-overview]" は、関連リソースを保持するコンテナーです。この VM のリソースを保持するリソース グループを作成します。
+- **リソース グループ。** [_リソース グループ_][resource-manager-overview] は、関連リソースを保持するコンテナーです。この VM のリソースを保持するリソース グループを作成します。
 
 - **VM**。VM は、発行されたイメージのリスト、または Azure BLOB ストレージにアップロードした仮想ハード ディスク (VHD) ファイルからプロビジョニングできます。
 
@@ -81,7 +81,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
     - IP アドレスの完全修飾ドメイン名 (FQDN) を作成することもできます。これにより、その FQDN を参照する DNS で [CNAME レコード][cname-record]を登録できます。詳細については、「[Azure ポータルでの完全修飾ドメイン名の作成][fqdn]」を参照してください。
 
-- すべての NSG に[既定の規則][nsg-default-rules] (すべての受信インターネット トラフィックをブロックする規則など) のセットが含まれています。既定のルールを削除することはできませんが、他の規則でオーバーライドすることはできます。インターネット トラフィックを有効にするには、特定のポート (HTTP のポート 80 など) への着信トラフィックを許可するルールを作成します。
+- すべての NSG に[既定の規則][nsg-default-rules] \(すべての受信インターネット トラフィックをブロックする規則など) のセットが含まれています。既定のルールを削除することはできませんが、他の規則でオーバーライドすることはできます。インターネット トラフィックを有効にするには、特定のポート (HTTP のポート 80 など) への着信トラフィックを許可するルールを作成します。
 
 - SSH を有効にするには、TCP ポート 22 への着信トラフィックを許可する規則を NSG に追加します。
 
@@ -356,7 +356,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
 [cname-record]: https://en.wikipedia.org/wiki/CNAME_record
 [data-disk]: ../articles/virtual-machines/virtual-machines-linux-about-disks-vhds.md
-[disk-encryption]: ../articles/azure-security-disk-encryption.md
+[disk-encryption]: ../articles/security/azure-security-disk-encryption.md
 [enable-monitoring]: ../articles/azure-portal/insights-how-to-use-diagnostics.md
 [fqdn]: ../articles/virtual-machines/virtual-machines-linux-portal-create-fqdn.md
 [iostat]: https://en.wikipedia.org/wiki/Iostat
@@ -394,4 +394,4 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 [azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure における単一の Linux VM アーキテクチャ"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

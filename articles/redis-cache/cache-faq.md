@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/29/2016" 
+	ms.date="08/12/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -96,7 +96,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 この表からは次のような結論が得られます。
 
--	同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。たとえば、6 GB のキャッシュの場合、P1 のスループットが 140 K RPS であるのに対し、C3 では 49 K になります。
+-	キャッシュのサイズが同じ場合のスループットは、Standard レベルより Premium レベルの方が高くなります。たとえば、6 GB のキャッシュの場合、P1 のスループットが 140 K RPS であるのに対し、C3 では 49 K になります。
 -	Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。たとえば、10 シャードの P4 クラスターを作成した場合、使用可能なスループットは 250 万 (250 K * 10) RPS となります。
 -	キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
@@ -145,8 +145,8 @@ StackExchange.Redis には多くのオプションが用意されています。
 構成オプション|説明|推奨
 ---|---|---
 AbortOnConnectFail|true の場合、ネットワーク障害の後に再接続が行われません。|StackExchange.Redis が自動的に再接続するように、false に設定します。
-ConnectRetry|初期接続中に接続試行を繰り返す回数。| 下記のガイダンスをご覧ください。 |
-ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。| 下記のガイダンスをご覧ください。 |
+ConnectRetry|初期接続中に接続試行を繰り返す回数。| 次の注意事項を参考にしてください。 |
+ConnectTimeout|接続操作のタイムアウト (ミリ秒単位)。| 次の注意事項を参考にしてください。 |
 
 ほとんどの場合は、クライアントの既定値で十分です。ワークロードに基づいてオプションを微調整できます。
 
@@ -237,17 +237,47 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 
 ## 運用に関する FAQ
 
+-	[いくつかの運用上のベスト プラクティスについて](#what-are-some-production-best-practices)
 -	[一般的な Redis コマンドの使用に関するいくつかの考慮事項](#what-are-some-of-the-considerations-whja-JPing-common-redis-commands)
 -	[キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 -	[ThreadPool 拡大の重要な詳細情報](#important-details-about-threadpool-growth)
 -	[StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる](#enable-server-gc-to-get-more-throughput-on-the-client-whja-JPing-stackexchangeredis)
 
+### いくつかの運用上のベスト プラクティスについて
+
+-	[StackExchange.Redis のベスト プラクティス](#stackexchangeredis-best-practices)
+-	[構成と概念](#configuration-and-concepts)
+-	[パフォーマンス テスト](#performance-testing)
+
+#### StackExchange.Redis のベスト プラクティス
+
+-	`AbortConnect` を "false" に設定してから、ConnectionMultiplexer による自動再接続を待ってください。[詳細についてはこちらをご覧ください](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
+-	ConnectionMultiplexer は再利用し、要求ごとに新しく作成しないようにしてください。[こちらに記載されている](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) `Lazy<ConnectionMultiplexer>` パターンを強くお勧めします。
+-	値が小さいほど Redis のパフォーマンスは向上するため、大きなデータは複数のキーに分割することを検討してください。[こちらの Redis に関する議論](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)では、100kb が "大きい" とみなされています。値が大きい場合に生じる可能性のある問題の例については、[こちらの記事](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)を参照してください。
+-	タイムアウトが起こらないように [ThreadPool の設定](#important-details-about-threadpool-growth)を構成してください。
+-	connectTimeout については既定の 5 秒以上を使用してください。こうすることで、ネットワーク ブリップが発生した場合に、StackExchange.Redis で接続を再び確立するのに十分な時間を確保できます。
+-	実行中のさまざまな操作に関連するパフォーマンス コストを把握してください。たとえば、`KEYS` コマンドは O(n) 操作であるため、使用しないでください。[redis.io のサイト](http://redis.io/commands/)に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。各コマンドをクリックして、操作ごとの時間計算量を確認してください。
+
+#### 構成と概念
+
+-	実稼働システムでは Standard レベルまたは Premium レベルを使用する。Basic レベルは単一ノード システムであり、データ レプリケーション機能や SLA がありません。また、C1 以上のキャッシュを使用してください。C0 キャッシュは、単純な開発/テストシナリオ専用です。
+-	Redis は**インメモリ** データ ストアであることに注意してください。[こちらの記事](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)を参照し、データが失われる可能性のあるシナリオについて把握してください。
+-	[修正プログラムの適用やフェールオーバーによる](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)接続の中断に対応できるようなシステムを開発する。
+
+#### パフォーマンス テスト
+
+-	独自のパフォーマンス テストを作成する前に、`redis-benchmark.exe` を使用して実現可能なスループットを確認してください。Redis のベンチマークでは SSL はサポートされていないため、テストを行うには、[Azure ポータルで非 SSL ポートを有効にする](cache-configure.md#access-ports)必要があります。例については、「[キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)」を参照してください。
+-	テストに使用するクライアント VM のリージョンは、Redis Cache インスタンスと同じものにする必要があります。
+-	Dv2 VM シリーズはハードウェアが強力であり、最良の結果が得られるため、クライアントにはこれらのシリーズを使用することをお勧めします。
+-	クライアント VM については、コンピューティング能力と帯域幅がテスト対象のキャッシュと同等以上であるものを選択してください。
+-	Windows を使用している場合は、クライアント コンピューターで VRSS を有効にしてください。[詳細についてはこちらをご覧ください](https://technet.microsoft.com/library/dn383582.aspx)。
+-	Premium レベルでは、Redis インスタンスは CPU およびネットワークの両方が優れたハードウェアで実行されるため、ネットワーク待ち時間およびスループットが改善します。
 
 <a name="cache-redis-commands"></a>
 ### 一般的な Redis コマンドの使用に関するいくつかの考慮事項
 
 -	処理に時間がかかる特定の Redis コマンドについては、その影響を理解せずに実行することは避けてください。
--	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。
+	-	たとえば、[KEYS](http://redis.io/commands/keys) コマンドは実稼働環境で実行しないでください。キーの数によっては、結果が返されるまでに長い時間がかかる場合があります。Redis はシングル スレッド サーバーであり、一度に 1 つずつコマンドを処理します。KEYS の後に他のコマンドが発行されている場合、それらのコマンドは Redis によって KEYS コマンドが処理されるまで処理されません。[redis.io のサイト](http://redis.io/commands/)に、Redis でサポートされる各操作の時間計算量の詳細が記載されています。各コマンドをクリックして、操作ごとの時間計算量を確認してください。
 -	キー サイズ - 小さなキー/値と大きなキー/値のどちらを使用するか。 一般に、それはシナリオしだいです。サイズの大きなキーが必要となるシナリオでは、ConnectionTimeout 値、再試行回数、再試行ロジックを調整できます。Redis サーバーの観点からは、小さな値を設定した方がパフォーマンスが高くなります。
 -	これは、サイズの大きな値を Redis に格納できないという意味ではありません。次の点に考慮する必要があります。待機時間は長くなります。サイズの大きなデータ セットとサイズの小さなデータ セットがある場合は、前の「[StackExchange.Redis 構成オプションについて](#cache-configuration)」に説明したように、それぞれ異なるタイムアウト値と再試行回数が構成された複数の ConnectionMultiplexer インスタンスを使用できます。
 
@@ -263,6 +293,15 @@ Redis ツールのダウンロードの詳細については、「[Redis コマ�
 -	負荷が高いことが原因でメモリの断片化が発生している場合は、キャッシュのサイズをスケールアップする必要があります。
 -	Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
 
+redis-benchmark.exe の使用例を次に示します。正確な結果を得るために、以下のコマンドはキャッシュと同じリージョンにある VM で実行してください。
+
+-	1 k ペイロードを使用してパイプライン SET 要求をテストする
+
+    redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50
+	
+-	1 k ペイロードを使用してパイプライン GET 要求をテストする。注: まず上記の SET テストを実行してキャッシュを設定してください。
+	
+    redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50
 
 <a name="threadpool"></a>
 ### ThreadPool 拡大の重要な詳細情報
@@ -300,7 +339,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 -	ASP.NET で、web.config の `<processModel>` 構成要素の下にある ["minIoThreads" 構成設定][]を使用します。Azure WebSites の内部で実行している場合、この設定は構成オプションを介して公開されません。ただし、これは global.asax.cs の Application\_Start メソッドからプログラムで設定できるはずです (下記を参照)。
 
-> **重要な注意事項:** この構成要素で指定される値は、"コアごと" の設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
+> **重要な注意事項:** この構成要素で指定される値は、*"コアごと"* の設定となります。たとえば、4 コア マシンがあり、実行時の minIOThreads を 200 に設定する場合は、`<processModel minIoThreads="50"/>` を使用します。
 
 -	ASP.NET の外部では、[ThreadPool.SetMinThreads(…)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API を使用します。
 
@@ -353,9 +392,8 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 <a name="cache-timeouts"></a>
 ### タイムアウトが発生する理由
 
-タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトに関する問題のトラブルシューティングの詳細については、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」と [StackExchange.Redis のタイムアウトの例外](クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions) を参照してください。
+タイムアウトは、Redis との対話に使用されているクライアントで発生します。ほとんどの場合、Redis サーバーでタイムアウトが発生することはありません。Redis サーバーに送信されたコマンドは、キューに格納されます。コマンドは、最終的に Redis サーバーによって取得され、実行されます。ただし、この処理中にクライアントがタイムアウトすることがあり、その場合は呼び出し元では例外が発生します。タイムアウトの問題のトラブルシューティングについては、「[クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#client-side-troubleshooting)」および「[StackExchange.Redis のタイムアウトの例外](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)」を参照してください。
 
-'<-- Loc コメント: リンク切れ: [StackExchange.Redis のタイムアウトの例外](クライアント側のトラブルシューティング](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions)。 "(クライアント側のトラブルシューティング]" を削除してください。 -->'
 
 <a name="cache-disconnect"></a>
 ### クライアントがキャッシュから切断される理由
@@ -410,4 +448,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

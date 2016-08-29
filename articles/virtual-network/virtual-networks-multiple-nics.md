@@ -25,7 +25,7 @@ Azure に仮想マシン (VM) を作成し、複数のネットワーク イン�
 
 上の図は、3 つの NIC を持つ VM を示しており、各 NIC は異なるサブネットに接続されています。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)]
 
 - インターネットに接続された VIP (従来のデプロイ) は、"既定" の NIC でのみサポートされています。既定の NIC の IP アドレスに対して VIP は 1 つしかありません。
 - 現時点では、複数 NIC の VM のインスタンスレベル パブリック IP (LPIP) アドレス (従来のデプロイ) はサポートされていません。
@@ -265,4 +265,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 - [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md) をデプロイします。
 - [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md) をデプロイします。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

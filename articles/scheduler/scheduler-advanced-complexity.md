@@ -17,11 +17,11 @@
 
 # Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法  
 
-## 概要
+## Overview
 
-Azure Scheduler ジョブの中核となるのが *スケジュール* です。スケジュールは、Scheduler でジョブを実行するタイミングと方法を決定します。
+Azure Scheduler ジョブの中核となるのが*スケジュール*です。スケジュールは、Scheduler でジョブを実行するタイミングと方法を決定します。
 
-Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジュールと、定期的なスケジュールを指定できます。 *1 回限り* のスケジュールは、指定された時間に起動します。実質的には、これらも 1 回だけ実行される *定期的な* スケジュールです。定期的なスケジュールは、事前に定義された頻度で起動します。
+Azure Scheduler では、ジョブに対して 1 回限りの別々のスケジュールと、定期的なスケジュールを指定できます。*1 回限り*のスケジュールは、指定された時間に起動します。実質的には、これらも 1 回だけ実行される*定期的な*スケジュールです。定期的なスケジュールは、事前に定義された頻度で起動します。
 
 この柔軟性により、Azure Scheduler では、次のようなさまざまなビジネス シナリオをサポートできます。
 
@@ -92,13 +92,13 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、[ISO 8601 仕�
 
 |**JSON での名前**|**値の型**|**必須**|**既定値**|**有効な値**|**例**|
 |:---|:---|:---|:---|:---|:---|
-|**_startTime_**|String|いいえ|なし|ISO-8601 の日付/時刻|<code>"startTime" : "2013-01-09T09:30:00-08:00"</code>|
-|**_recurrence_**|オブジェクト|いいえ|なし|recurrence オブジェクト|<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code>|
-|**_frequency_**|String|あり|なし|"minute"、"hour"、"day"、"week"、"month"|<code>"frequency" : "hour"</code> |
-|**_interval_**|Number|いいえ|1|1 ～ 1000。|<code>"interval":10</code>|
-|**_endTime_**|String|いいえ|なし|将来の時刻を表す日付/時刻の値|<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
-|**_count_**|Number|いいえ|なし|>= 1|<code>"count": 5</code>|
-|**_schedule_**|オブジェクト|いいえ|なし|schedule オブジェクト|<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code>|
+|**_startTime_**|String|なし|なし|ISO-8601 の日付/時刻|<code>"startTime" : "2013-01-09T09:30:00-08:00"</code>|
+|**_recurrence_**|オブジェクト|なし|なし|recurrence オブジェクト|<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code>|
+|**_frequency_**|String|はい|なし|"minute"、"hour"、"day"、"week"、"month"|<code>"frequency" : "hour"</code> |
+|**_interval_**|Number|なし|1|1 ～ 1000。|<code>"interval":10</code>|
+|**_endTime_**|String|なし|なし|将来の時刻を表す日付/時刻の値|<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+|**_count_**|Number|なし|なし|>= 1|<code>"count": 5</code>|
+|**_schedule_**|オブジェクト|なし|なし|schedule オブジェクト|<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code>|
 
 ## 詳細: _startTime_
 
@@ -145,36 +145,36 @@ _schedule_ の要素を次の表に示します。
 |**例**|**説明**|
 |:---|:---|
 |<code>{"hours":[5]}</code>|毎日午前 5 時に実行。Azure Scheduler は "hours" の値を、"minutes" の値と 1 つずつ突き合わせ、ジョブを実行するすべての時刻の一覧を作成します。|
-|<code>{"minutes":[15],"hours":[5]}</code>|毎日午前 5 時 15 分に実行|
-|<code>{"minutes":[15],"hours":[5,17]}</code>|毎日午前 5 時 15 分と 午後 5 時 15 分に実行|
-|<code>{"minutes":[15,45],"hours":[5,17]}</code>|毎日午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
+|<code>{"minutes":[15], "hours":[5]}</code>|毎日午前 5 時 15 分に実行|
+|<code>{"minutes":[15], "hours":[5,17]}</code>|毎日午前 5 時 15 分と 午後 5 時 15 分に実行|
+|<code>{"minutes":[15,45], "hours":[5,17]}</code>|毎日午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
 |<code>{"minutes":[0,15,30,45]}</code>|15 分ごとに実行|
-|<code>{hours":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]}</code>|1 時間ごとに実行。このジョブは、1 時間ごとに実行されます。分は、指定されている場合は、_startTime_ によって制御されます。指定されていない場合は、作成時間によって制御されます。たとえば、開始時刻または作成時刻が午後 12 時 25 分である場合 (どちらが適用される場合でも)、ジョブは 0 時 25 分、1 時 25 分、2 時 25 分...23 時 25 分に実行されます。このスケジュールは、_frequency_ に "hour"、_interval_ に 1 を指定して、_schedule_ を指定しないジョブと同等です。両者の違いは、このスケジュールは、_frequency_ と _interval_ を変えることで、他のジョブの作成に使用できる点にあります。たとえば、_frequency_ が "month" の場合には、月 1 回だけ実行されます。_frequency_ が "day" の場合には、スケジュールは毎日実行されます。|
+|<code>{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}</code>|1 時間ごとに実行。このジョブは、1 時間ごとに実行されます。分は、指定されている場合は、_startTime_ によって制御されます。指定されていない場合は、作成時間によって制御されます。たとえば、開始時刻または作成時刻が午後 12 時 25 分である場合 (どちらが適用される場合でも)、ジョブは 0 時 25 分、1 時 25 分、2 時 25 分...23 時 25 分に実行されます。このスケジュールは、_frequency_ に "hour"、_interval_ に 1 を指定して、_schedule_ を指定しないジョブと同等です。両者の違いは、このスケジュールは、_frequency_ と _interval_ を変えることで、他のジョブの作成に使用できる点にあります。たとえば、_frequency_ が "month" の場合には、月 1 回だけ実行されます。_frequency_ が "day" の場合には、スケジュールは毎日実行されます。|
 |<code>{minutes:[0]}</code>|毎正時に実行。このジョブも 1 時間ごとに実行されますが、正時に実行されます。(例、午前 12 時、午前 1 時、午前 2 時)。 これは、frequency に "hour"、startTime に 0 分を設定し、さらに頻度が "day" であれば、schedule を設定しなかったジョブと同等です。ただし、頻度が "week" または "month" の場合は、このスケジュールは、それぞれ週 に 1 日だけ、または月に 1 日だけ実行します。|
 |<code>{"minutes":[15]}</code>|正時から 15 分経過後に実行。1 時間ごとに実行。午前 0 時 15 分から開始し、午前 1 時 15 分、午前 2 時 15 分...午後 10 時 15 分と続き、最後に午後 11 時 15 分に実行します。|
-|<code>{"hours":[17],"weekDays":["saturday"]}</code>|毎週土曜日の午後 5 時に実行|
-|<code>{hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|毎週月曜日、水曜日、および金曜日の午後 5 時に実行|
-|<code>{"minutes":[15,45],"hours":[17],"weekDays":["monday","wednesday","friday"]}</code>|毎週月曜日、水曜日、および金曜日の午後 5 時 15 分と午後 5 時 45 分に実行|
-|<code>{"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|毎週月曜日、水曜日、および金曜日の午前 5 時 と午後 5 時に実行|
-|<code>{"minutes":[15,45],"hours":[5,17],"weekDays":["monday","wednesday","friday"]}</code>|毎週月曜日、水曜日、および金曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
-|<code>{"minutes":[0,15,30,45], "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|平日に 15 分ごとに実行|
-|<code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday","tuesday","wednesday","thursday","friday"]}</code>|平日の午前 9 時と午後 4 時 45 分の間、15 分ごとに実行|
+|<code>{"hours":[17], "weekDays":["saturday"]}</code>|毎週土曜日の午後 5 時に実行|
+|<code>{hours":[17], "weekDays":["monday", "wednesday", "friday"]}</code>|毎週月曜日、水曜日、および金曜日の午後 5 時に実行|
+|<code>{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}</code>|毎週月曜日、水曜日、および金曜日の午後 5 時 15 分と午後 5 時 45 分に実行|
+|<code>{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}</code>|毎週月曜日、水曜日、および金曜日の午前 5 時 と午後 5 時に実行|
+|<code>{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}</code>|毎週月曜日、水曜日、および金曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
+|<code>{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}</code>|平日に 15 分ごとに実行|
+|<code>{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}</code>|平日の午前 9 時と午後 4 時 45 分の間、15 分ごとに実行|
 |<code>{"weekDays":["sunday"]}</code>|日曜日の開始時刻に実行|
 |<code>{"weekDays":["tuesday", "thursday"]}</code>|火曜日と木曜日の開始時刻に実行|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[28]}</code>|毎月 28 日の午前 6 時に実行 (頻度を月と仮定した場合)|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[-1]}</code>|月の最終日の午前 6 時に実行。月の最終日にジョブを実行する場合は、28、29、30、または 31 という日にちではなく -1 を使用します。|
-|<code>{"minutes":[0],"hours":[6],"monthDays":[1,-1]}</code>|毎月の最初と最後の日の午前 6 時に実行|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[28]}</code>|毎月 28 日の午前 6 時に実行 (頻度を月と仮定した場合)|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[-1]}</code>|月の最終日の午前 6 時に実行。月の最終日にジョブを実行する場合は、28、29、30、または 31 という日にちではなく -1 を使用します。|
+|<code>{"minutes":[0], "hours":[6], "monthDays":[1,-1]}</code>|毎月の最初と最後の日の午前 6 時に実行|
 |<code>{monthDays":[1,-1]}</code>|毎月の最初と最後の日の開始時刻に実行|
 |<code>{monthDays":[1,14]}</code>|毎月 1 日と 14 日の開始時刻に実行|
 |<code>{monthDays":[2]}</code>|月の 2 日の開始時刻に実行|
-|<code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|毎月の最初の金曜日の午前 5 時に実行|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1}]}</code>|毎月の最初の金曜日の開始時刻に実行|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":-3}]}</code>|毎月、月の最後から 3 番目の金曜日の開始時刻に実行|
-|<code>{"minutes":[15],"hours":[5],"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|毎月の最初と最後の金曜日の午前 5 時 15 分に実行|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":1},{"day":"friday","occurrence":-1}]}</code>|毎月の最初と最後の金曜日の開始時刻に実行|
-|<code>{"monthlyOccurrences":[{"day":"friday","occurrence":5}]}</code>|毎月の第 5 金曜日の開始時刻に実行第 5 金曜日にのみ実行するスケジュールとなっているため、月に第 5 金曜日がない場合は、これは実行されません。月の最終金曜日にジョブを実行する場合は、occurrence に対して 5 ではなく -1 を使用することを検討してください。|
-|<code>{"minutes":[0,15,30,45],"monthlyOccurrences":[{"day":"friday","occurrence":-1}]}</code>|月の最終金曜日に 15 分ごとに実行|
-|<code>{"minutes":[15,45],"hours":[5,17],"monthlyOccurrences":[{"day":"wednesday","occurrence":3}]}</code>|毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
+|<code>{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code>|毎月の最初の金曜日の午前 5 時に実行|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}</code>|毎月の最初の金曜日の開始時刻に実行|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}</code>|毎月、月の最後から 3 番目の金曜日の開始時刻に実行|
+|<code>{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code>|毎月の最初と最後の金曜日の午前 5 時 15 分に実行|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}</code>|毎月の最初と最後の金曜日の開始時刻に実行|
+|<code>{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}</code>|毎月の第 5 金曜日の開始時刻に実行第 5 金曜日にのみ実行するスケジュールとなっているため、月に第 5 金曜日がない場合は、これは実行されません。月の最終金曜日にジョブを実行する場合は、occurrence に対して 5 ではなく -1 を使用することを検討してください。|
+|<code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code>|月の最終金曜日に 15 分ごとに実行|
+|<code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code>|毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、および午後 5 時 45 分に実行|
 
 ## 関連項目
 
@@ -197,4 +197,4 @@ _schedule_ の要素を次の表に示します。
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

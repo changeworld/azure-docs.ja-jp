@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/16/2016"
+   ms.date="07/11/2016"
    ms.author="v-sharos" />
 
 # SharePoint 用 StorSimple アダプターをインストールして構成する
 
-## 概要
+## Overview
 
 SharePoint 用 StorSimple アダプターは、SharePoint サーバー ファームに Microsoft Azure StorSimple の柔軟なストレージとデータ保護を提供できるコンポーネントです。このアダプターを使用して、バイナリ ラージ オブジェクト (BLOB) コンテンツを SQL Server コンテンツ データベースから Microsoft Azure StorSimple ハイブリッド クラウド ストレージ デバイスに移動できます。
 
@@ -39,7 +39,7 @@ RBS を使用する場合、SharePoint 用 StorSimple アダプターなどの R
 
 RBS の Microsoft Azure StorSimple 実装には、次の利点があります。
 
-- BLOB コンテンツを別のサーバーに移動すると、SQL Server にかかるクエリの負荷が軽減され、SQL Server の応答性が改善されます。 
+- BLOB コンテンツを別のサーバーに移動すると、SQL Server にかかるクエリの負荷が軽減され、SQL Server の応答性が改善されます。
 
 - Azure StorSimple は、重複除去と圧縮を使用してデータ サイズを削減します。
 
@@ -59,7 +59,7 @@ SharePoint ソリューションで RBS を使用することを検討する前�
 
 RBS を構成する前に、次の点を確認してください。
 
-- コンテンツの合計サイズ (コンテンツ データベースのサイズと、関連する外部化された BLOB のサイズの合計) が、SharePoint でサポートされている RBS サイズの上限を超えていないことを確認します。上限は 200 GB です。 
+- コンテンツの合計サイズ (コンテンツ データベースのサイズと、関連する外部化された BLOB のサイズの合計) が、SharePoint でサポートされている RBS サイズの上限を超えていないことを確認します。上限は 200 GB です。
 
     **コンテンツ データベースと BLOB のサイズを測定するには**
 
@@ -85,7 +85,7 @@ RBS を構成する前に、次の点を確認してください。
 
     コンテンツ データベースを StorSimple デバイスに移動するには、従来の SQL Server の移行に関するベスト プラクティスを利用してください。必ず、データベースのすべての BLOB コンテンツが RBS 経由でファイル共有に移動してから、データベースを移動してください。コンテンツ データベースを StorSimple デバイスに移動する場合は、デバイスのコンテンツ データベース ストレージをプライマリ ボリュームとして構成することをお勧めします。
 
-- StorSimple デバイスのローカルに保存されているコンテンツが Microsoft Azure クラウド ストレージに移動されないようにする方法は、Microsoft Azure StorSimple にはありません。コンテンツ データベースが StorSimple デバイスに残り、Microsoft Azure に移動されないようにするために (移動されると、SharePoint トランザクションの応答時間に悪影響があります)、StorSimple デバイスの他のワークロードを理解し、管理することが重要です。デバイスが SharePoint コンテンツ データベースのワークロードと SharePoint ファイル共有のワークロードを既にホストしている場合、データの書き込みレートが高いワークロードをホストするように StorSimple デバイスを構成しないことをお勧めします。
+- 階層化ボリュームを使用している場合、StorSimple デバイスのローカルに保存されているコンテンツが Microsoft Azure クラウド ストレージに移動されないようにする方法は、Microsoft Azure StorSimple にはありません。そのため、StorSimple ローカル固定ボリュームを SharePoint RBS と組み合わせて使用することをお勧めします。これにより、すべての BLOB コンテンツが StorSimple デバイスのローカルに残されるようになります (Microsoft Azure には移動されません)。
 
 - StorSimple デバイスでコンテンツ データベースを保存していない場合、RBS をサポートする、SQL Server の高可用性に関する従来のベスト プラクティスを利用します。SQL Server クラスタリングでは RBS がサポートされますが、SQL Server ミラーリングではサポートされません。
 
@@ -103,7 +103,7 @@ SharePoint 用 StorSimple アダプターをインストールする前に、Sto
 
 SharePoint 用 StorSimple アダプターは、次のハードウェアとソフトウェアで動作します。
 
-- サポート対象のオペレーティング システム – Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2 
+- サポート対象のオペレーティング システム – Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2
 
 - サポート対象の SharePoint のバージョン – SharePoint Server 2010、SharePoint Server 2013
 
@@ -141,7 +141,7 @@ StorSimple Snapshot Manager を使用して BLOB とデータベース データ
 
 SharePoint サーバー ファームが次のように正しく構成されていることを確認してください。
 
-- SharePoint サーバー ファームが正常な状態であることを確認し、次の点を確認します。 
+- SharePoint サーバー ファームが正常な状態であることを確認し、次の点を確認します。
 
 - ファームに登録されているすべての SharePoint WFE とアプリケーション サーバーが実行されており、SharePoint 用 StorSimple アダプターをインストールするサーバーから PING で検出できる。
 
@@ -308,4 +308,4 @@ BLOB を SQL Server コンテンツ データベースに戻したら、次の�
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
 [8]: https://technet.microsoft.com/ja-JP/library/ff943565.aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

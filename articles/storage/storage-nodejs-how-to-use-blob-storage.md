@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-    ms.date="06/24/2016"
+    ms.date="08/11/2016"
 	ms.author="micurd"/>
 
 
 
 # Node.js から BLOB ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-## 概要
+## Overview
 
 この記事では、BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Node.js API を使用して記述されています。紹介するシナリオには、アップロード、一覧表示、ダウンロード、および blob を削除する方法が含まれます。
 
@@ -119,7 +119,7 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 ### フィルター
 
-オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
+オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
 	function handle (requestOptions, next)
 
@@ -136,7 +136,7 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 ## コンテナーに BLOB をアップロードする
 
-BLOB には、ブロック BLOB、ページ BLOB、追加 BLOB の 3 種類があります。ブロック BLOB を使用すると、大規模なデータをより効率的にアップロードできます。追加 BLOB は、追加操作用に最適化されています。ページ BLOB は、読み取りと書き込み操作用に最適化されています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+BLOB には、ブロック BLOB、ページ BLOB、追加 BLOB の 3 種類があります。ブロック BLOB を使用すると、大規模なデータをより効率的にアップロードできます。追加 BLOB は、追加操作用に最適化されています。ページ BLOB は、読み取りと書き込み操作用に最適化されています。詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 ### ブロック blob
 
@@ -415,4 +415,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

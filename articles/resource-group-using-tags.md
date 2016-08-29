@@ -4,8 +4,8 @@
 	services="azure-resource-manager"
 	documentationCenter=""
 	authors="tfitzmac"
-	manager="wpickett"
-	editor=""/>
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="AzurePortal"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2016"
+	ms.date="08/16/2016"
 	ms.author="tomfitz"/>
 
 
@@ -88,104 +88,7 @@
 
 ## PowerShell
 
-タグはリソースやリソース グループ上に直接存在します。既存のタグを表示するには、**Get AzureRmResource** または **Get AzureRmResourceGroup** でリソースまたはリソース グループを取得します。それでは、リソース グループから始めましょう。
-
-    Get-AzureRmResourceGroup -Name tag-demo-group
-
-このコマンドレットは、リソース グループに関して、適用されているタグを含むいくつかのメタデータを返します。
-
-    ResourceGroupName : tag-demo-group
-    Location          : westus
-    ProvisioningState : Succeeded
-    Tags              :
-                    Name         Value
-                    ===========  ==========
-                    Dept         Finance
-                    Environment  Production
-
-リソースのメタデータを取得する際、タグは直接的には表示されません。
-
-    Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group
-
-結果にタグは Hashtable オブジェクトとしてのみ表示されます。
-
-    Name              : tfsqlserver
-    ResourceId        : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
-    ResourceName      : tfsqlserver
-    ResourceType      : Microsoft.Sql/servers
-    Kind              : v12.0
-    ResourceGroupName : tag-demo-group
-    Location          : westus
-    SubscriptionId    : {guid}
-    Tags              : {System.Collections.Hashtable}
-
-実際のタグを表示するには、**Tags** プロパティを取得します。
-
-    (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group).Tags | %{ $_.Name + ": " + $_.Value }
-   
-これにより、書式設定された結果が返されます。
-    
-    Dept: Finance
-    Environment: Production
-
-通常は、特定のリソース グループまたはリソースのタグを表示する代わりに、特定のタグと値を持つリソースまたはリソース グループをすべて取得します。特定のタグが付けられたリソース グループを取得するには、**Find-AzureRmResourceGroup** コマンドレットに **-Tag** パラメーターを指定して使用します。
-
-    Find-AzureRmResourceGroup -Tag @{ Name="Dept"; Value="Finance" } | %{ $_.Name }
-    
-これにより、そのタグの値が指定されたリソース グループの名前が返されます。
-   
-    tag-demo-group
-    web-demo-group
-
-特定のタグと値を持つすべてのリソースを取得するには、**Find-AzureRmResource** コマンドレットを使用します。
-
-    Find-AzureRmResource -TagName Dept -TagValue Finance | %{ $_.ResourceName }
-    
-これにより、そのタグの値が指定されたリソースの名前が返されます。
-    
-    tfsqlserver
-    tfsqldatabase
-
-既存のタグがないリソース グループにタグを追加するには、**Set-AzureRmResourceGroup** コマンドを使用し、タグ オブジェクトを指定します。
-
-    Set-AzureRmResourceGroup -Name test-group -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} )
-
-これにより、新しいタグの値が指定されたリソース グループが返されます。
-
-    ResourceGroupName : test-group
-    Location          : southcentralus
-    ProvisioningState : Succeeded
-    Tags              :
-                    Name          Value
-                    =======       =====
-                    Dept          IT
-                    Environment   Test
-                    
-既存のタグがないリソースにタグを追加するには、**Set-AzureRmResource** コマンドを使用します。
-
-    Set-AzureRmResource -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} ) -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
-
-タグは全体として更新されます。別のタグを持つリソースにタグを 1 つ追加するには、残しておきたいすべてのタグが含まれる配列を使用します。まず、既存のタグを選択してそのセットに 1 つ追加し、すべてのタグを再度適用します。
-
-    $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
-    $tags += @{Name="status";Value="approved"}
-    Set-AzureRmResourceGroup -Name test-group -Tag $tags
-
-特定のタグを 1 つ以上削除するには、削除するタグが含まれない配列を保存します。
-
-プロセスはリソースの場合も同じですが、**Get-AzureRmResource** および **Set-AzureRmResource** コマンドレットを使用する点のみ異なります。
-
-PowerShell を使用してサブスクリプション内のすべてのタグの一覧を取得するには、**Get-AzureRmTag** コマンドレットを使用します。
-
-    Get-AzureRmTag
-    Name                      Count
-    ----                      ------
-    env                       8
-    project                   1
-
-"hidden-" や "link:" で始まるタグが表示される場合があります。これらは内部タグであるため、変更せずに無視してください。
-
-分類に新しいタグを追加するには、**New-AzureRmTag** コマンドレットを使用します。これらのタグは、リソースまたはリソース グループにまだ適用されていない場合でもオートコンプリートに含められます。タグ名/値を削除するには、タグが使用されている任意のリソースからタグを削除した後、**Remove-AzureRmTag** コマンドレットを使用して分類から削除します。
+[AZURE.INCLUDE [resource-manager-tag-resources](../includes/resource-manager-tag-resources-powershell.md)]
 
 ## Azure CLI
 
@@ -281,4 +184,4 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 - リソースのデプロイ時に Azure CLI を使用する方法の概要については、「[Azure リソース管理での Mac、Linux、および Windows 用 Azure CLI の使用](./xplat-cli-azure-resource-manager.md)」をご覧ください。
 - ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp の課金を停止する方法
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp コレクションがある限り、ユーザーを割り当てていなくても、RemoteApp に対して課金されます。この課金を停止するには、すべてのコレクションを削除します。
 
@@ -30,4 +33,4 @@ Azure RemoteApp コレクションがある限り、ユーザーを割り当て�
 
 各コレクションを削除するのに数分かかる場合があります。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

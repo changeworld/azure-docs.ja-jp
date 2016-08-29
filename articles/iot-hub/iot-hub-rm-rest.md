@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/31/2016"
+     ms.date="08/16/2016"
      ms.author="dobett"/>
 
 # チュートリアル: C# プログラムと REST API を使って IoT Hub を作成する
@@ -26,17 +26,17 @@
 
 > [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 
-このチュートリアルを完了するには、以下が必要になります。
+このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Visual Studio 2015
-- アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
+- アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 - [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降
 
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## Visual Studio プロジェクトの準備
 
-1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# Windows のプロジェクトを作成します。プロジェクトに **CreateIoTHubREST** という名前を付けます。
+1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# Windows のプロジェクトを作成します。プロジェクトに **CreateIoTHubREST** という名前を付けます。
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -58,14 +58,13 @@
     using Microsoft.Rest;
     using System.Linq;
     using System.Threading;
-    using Newtonsoft.Json;
     ```
     
 7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**IoT Hub 名**は、**MyIoTHub** など、作成する IoT Hub の名前です (この名前はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます)。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
-    static string subscriptionId = "{Your SubscriptionId";
+    static string subscriptionId = "{Your SubscriptionId}";
     static string tenantId = "{Your TenantId}";
     static string password = "{Your application Password}";
     
@@ -77,7 +76,7 @@
 
 ## REST API を使用して IoT Hub を作成する
 
-[IoT Hub REST API][lnk-rest-api] を使用して、リソース グループで新しい IoT Hub を作成します。また、REST API を使用して、既存の IoT Hub に変更を加えることもできます。
+[IoT Hub REST API][lnk-rest-api] を使用して、リソース グループで IoT Hub を作成します。また、REST API を使用して、既存の IoT Hub に変更を加えることもできます。
 
 1. 次のメソッドを Program.cs に追加します。
     
@@ -138,7 +137,7 @@
       Thread.Sleep(10000);
       HttpResponseMessage deploymentstatus = client.GetAsync(asyncStatusUri).Result;
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
-    } while (body == "{"Status":"Running"}");
+    } while (body == "{"status":"Running"}");
     ```
 
 6. 次のコードを **CreateIoTHub** メソッドの最後に追加します。作成した IoT Hub のキーを取得し、それをコンソールに出力するものです。
@@ -167,7 +166,7 @@
 
 4. アプリケーションで新しい IoT Hub が追加されたことを確認するには、[ポータル][lnk-azure-portal]にアクセスし、リソースの一覧を表示するか、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
 
-> [AZURE.NOTE] このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。IoT Hub を削除するには、[ポータル][lnk-azure-portal]を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
+> [AZURE.NOTE] このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。完了したら、IoT Hub を削除するには、[ポータル][lnk-azure-portal]を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
 
 ## 次のステップ
 
@@ -203,4 +202,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

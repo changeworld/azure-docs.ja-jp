@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="07/19/2016"
+   ms.date="08/17/2016"
    ms.author="jeffstok"
 />
 
@@ -131,7 +131,7 @@ HDInsight の Premium レベル サービスには、HDInsight (プレビュー)
 
     | 作成中 | 作成の完了時 |
     | ------------------ | --------------------- |
-    | ![Creating indicator on startboard](./media/hdinsight-getting-started-with-r/provisioning.png) | ![Created cluster tile](./media/hdinsight-getting-started-with-r/provisioned.png) |
+    | ![スタート画面の作成中インジケーター](./media/hdinsight-getting-started-with-r/provisioning.png) | ![Created cluster tile](./media/hdinsight-getting-started-with-r/provisioned.png) |
 
     > [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
 
@@ -374,17 +374,18 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
 
 3. __[スクリプト アクションの送信]__ ブレードで、次の情報を指定します。
 
-    * __名前__: このスクリプトを識別するための表示名
-    * __Bash スクリプト URI__: http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh
-    * __ヘッド__: __オフ__に設定します
-    * __ワーカー__: __オン__に設定します
-    * __Zookeeper__: __オフ__に設定します
-    * __パラメーター__: インストールする R パッケージ。たとえば、`bitops stringr arules` のように指定します。
-    * __このスクリプト操作は保持され…__: __オン__に設定します
+* __名前__: このスクリプトを識別するための表示名
+* __Bash スクリプト URI__: `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`
+* __ヘッド__: __オフ__に設定します
+* __ワーカー__: __オン__に設定します
+* __Zookeeper__: __オフ__に設定します
+* __パラメーター__: インストールする R パッケージ。たとえば、`bitops stringr arules` のように指定します。
     
-    > [AZURE.IMPORTANT] インストールする R パッケージでシステム ライブラリを追加する必要がある場合、ここで使用する基本スクリプトをダウンロードし、システム ライブラリをインストールする手順を追加します。その後、変更後のスクリプトを Azure ストレージ内のパブリック BLOB コンテナーにアップロードし、変更後のスクリプトを使用してパッケージをインストールする必要があります。
-    >
-    >スクリプト アクションを開発する方法の詳細については、[スクリプト アクション開発](hdinsight-hadoop-script-actions-linux.md)に関するページをご覧ください。
+    > [AZURE.NOTE] 既定では、R パッケージはすべて、インストールされている R Server のバージョンと一貫性のある Microsoft MRAN リポジトリのスナップショットからインストールされます。パッケージの新しいバージョンをインストールする場合、非互換性の問題が発生するリスクがありますが、これはパッケージ一覧の最初の要素として `useCRAN` を指定すること (例: `useCRAN bitops, stringr, arules`) によって行うことができます。
+    
+* __このスクリプトの保持…__: __オン__に設定します
+    
+    > [AZURE.IMPORTANT] 一部の R パッケージには、Linux システムの他のライブラリが必要です。便宜上、上位 100 の最も一般的な R パッケージで必要な依存関係が事前インストールされています。ただし、インストールする R パッケージでこれら以外のライブラリが必要な場合、ここで使用する基本スクリプトをダウンロードし、システム ライブラリをインストールする手順を追加します。その後、変更後のスクリプトを Azure ストレージ内のパブリック BLOB コンテナーにアップロードし、変更後のスクリプトを使用してパッケージをインストールする必要があります。スクリプト アクションを開発する方法の詳細については、[スクリプト アクション開発](hdinsight-hadoop-script-actions-linux.md)に関するページを参照してください。
     
     ![スクリプト アクションの追加](./media/hdinsight-getting-started-with-r/scriptaction.png)
 
@@ -396,7 +397,7 @@ Spark や MapReduce のコンテキストを使用している場合は、コー
 
 - [Add RStudio Server to HDInsight premium (HDInsight Premium への RStudio Server の追加)](hdinsight-hadoop-r-server-install-r-studio.md)
 
-- [Compute context options for R Server on HDInsight Premium (HDInsight Premium での R Server のコンピューティング コンテキストのオプション)](hdinsight-hadoop-r-server-compute-contexts.md)
+- [Compute context options for R Server on HDInsight Premium (HDInsight Premium での R Server の計算コンテキストのオプション)](hdinsight-hadoop-r-server-compute-contexts.md)
 
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
@@ -411,4 +412,4 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 Azure Resource Manager テンプレートの使用に関する全般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

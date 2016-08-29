@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-getting-started" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/01/2016" 
+	ms.date="08/15/2016" 
 	ms.author="tarcher"/>
 
 # 認証の検出時のエラー
@@ -49,9 +49,9 @@ MVC プロジェクトの場合、ウィザードは、以前にウィザード�
 
 最後に、ウィザードは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。ウィザードは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-* Windows 認証 
-* 個々のユーザー アカウント 
-* 組織アカウント 
+* Windows 認証
+* 個々のユーザー アカウント
+* 組織アカウント
  
 
 MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで `authentication` 要素を探します。
@@ -96,4 +96,4 @@ Web API プロジェクトで Windows 認証を検出するために、ウィザ
 
 詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

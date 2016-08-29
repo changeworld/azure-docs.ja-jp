@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Azure ロールでのリモート デスクトップの使用
@@ -75,4 +75,4 @@ Azure にクラウド サービスを発行したら、サーバー エクスプ
 
 1. 以前作成したユーザー名とパスワードを入力します。これでリモート セッションにログインした状態になります。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

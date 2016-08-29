@@ -34,7 +34,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Azure AD と Tableau Online の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- **Tableau Online** のシングル サインオンが有効なサブスクリプション
+- **Tableau Online** でのシングル サインオンが有効なサブスクリプション
 
 
 > [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -241,8 +241,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
 **Tableau Online に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. クラシック ポータルでアプリケーション ビューを開くために、
-2. ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
 	![ユーザーの割り当て][201]
 
@@ -295,4 +294,4 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 [204]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

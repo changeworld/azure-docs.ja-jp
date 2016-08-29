@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 # Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp に必要な[全体的なネットワーク帯域幅](remoteapp-bandwidth.md)を調べる場合は、以下の点を念頭に置いてください。これらはすべて動的なシステムの一部であり、全体的なユーザー エクスペリエンスに影響します。
 
@@ -35,4 +38,4 @@ Azure RemoteApp に必要な[全体的なネットワーク帯域幅](remoteapp-
 
 - [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own) (Azure RemoteApp のネットワーク帯域幅に関する一般的なガイドライン (自分でテストできない場合))](remoteapp-bandwidthguidelines.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

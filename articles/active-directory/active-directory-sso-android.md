@@ -33,6 +33,7 @@ Microsoft Identity プラットフォームと Microsoft Identity SDK を利用�
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
+* Azure Active Directory の条件付きアクセス
 
 以下の説明では、[従来のポータルで Azure Active Directory 用にアプリケーションをプロビジョニングする](active-directory-how-to-integrate.md)方法と、アプリケーションを [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) と統合する方法についての知識があることを前提としています。
 
@@ -58,7 +59,7 @@ Microsoft は、すべてのモバイル プラットフォーム用に、異な
 このログインには、次のような利点があります。
 
 -  ユーザー エクスペリエンス全体が、アプリケーション内に存在します。
--  資格情報は、同じ証明書によって署名されているアプリケーション間で共有することができ、アプリケーションのスイートにシングル サインオン エクスペリエンスを提供します。 
+-  資格情報は、同じ証明書によって署名されているアプリケーション間で共有することができ、アプリケーションのスイートにシングル サインオン エクスペリエンスを提供します。
 -  ログインのエクスペリエンスに関する制御は、サインインの前後にアプリケーションに提供されます。
 
 このログインには、次のような欠点があります。
@@ -155,7 +156,7 @@ Android と Windows では、アカウント セレクターがアプリケー�
 
 所有している複数のアプリケーション間で SSO を有効にするには、以下の操作をする必要があります。
 
-1. すべてのアプリケーションが同じクライアント ID またはアプリケーション ID を使用していることを確認します。 
+1. すべてのアプリケーションが同じクライアント ID またはアプリケーション ID を使用していることを確認します。
 * すべてのアプリケーションが同じ SharedUserID セットを持っていることを確認します。
 * ストレージを共有できるように、すべてのアプリケーションが Google Play ストアの同じ署名証明書を共有していることを確認します。
 
@@ -240,7 +241,7 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 `msauth://packagename/Base64UrlencodedSignature`
 
-例: **msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
+例: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
 このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」をご覧ください。
 
@@ -261,4 +262,4 @@ MANAGE_ACCOUNTS
 
 これで、Microsoft Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

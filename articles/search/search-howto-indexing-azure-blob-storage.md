@@ -12,7 +12,7 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="08/08/2016"
+ms.date="08/16/2016"
 ms.author="eugenesh" />
 
 # Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
@@ -37,7 +37,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 
 ## BLOB インデックスの設定
 
-Azure Blob Storage のインデクサーの設定と構成は、[こちらの記事](https://msdn.microsoft.com/library/azure/dn946891.aspx)の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。今後は、Azure Search .NET SDK と Azure ポータルに BLOB インデックスの作成機能が追加される予定です。
+Azure Blob Storage のインデクサーの設定と構成は、[こちらの記事](https://msdn.microsoft.com/library/azure/dn946891.aspx)の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。[バージョン 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) の .NET SDK を使用することもできます。今後、Azure ポータルに BLOB インデックス作成機能が追加される予定です。
 
 インデクサーをセットアップするには、データ ソースの作成、インデックスの作成、インデクサーの構成の 3 つの手順を実行します。
 
@@ -303,4 +303,4 @@ AzureSearch\_SkipContent | "true" | メタデータのインデックス作成�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

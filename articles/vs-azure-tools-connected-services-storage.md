@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Visual Studio 接続済みサービスを使用した Azure ストレージの追加
 
-## 概要
+## Overview
 
 Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアログを使用して、Azure Storage に C# クラウド サービス、.NET バックエンド モバイル サービス、ASP.NET Web サイトまたはサービス、ASP.NET 5 サービス、あるいは Azure Web ジョブ サービスを接続できます。接続済みサービス機能は、必要なすべての参照と接続コードを追加し、構成ファイルを適切に変更します。また、ダイアログでは、次の手順が BLOB ストレージ、キュー、およびテーブルの開始であることを知らせるドキュメントが示されます。
 
@@ -94,4 +94,4 @@ Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアロ
 
      - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

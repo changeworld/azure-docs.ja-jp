@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Azure へのカスタム Java Web アプリのアップロード
 
-このトピックでは、カスタム Java Web Apps を [Azure App Service] Web Apps にアップロードする方法について説明します。Java Web サイトまたは Web アプリに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
+このトピックでは、カスタム Java Web アプリを [Azure App Service] Web Apps にアップロードする方法について説明します。Java Web サイトまたは Web アプリに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
 
 Azure には、Azure ポータルの構成 UI や Azure Marketplace を使用して Java Web アプリを作成するための手段が用意されています。詳細については、「[Azure App Service での Java Web アプリの作成](web-sites-java-get-started.md)」を参照してください。このチュートリアルは、Azure ポータルの構成 UI や Azure Marketplace を使用しないシナリオを対象にしています。
 
@@ -257,4 +257,4 @@ Java の詳細については、[Java デベロッパー センター](/develop/
 <!-- External Links -->
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

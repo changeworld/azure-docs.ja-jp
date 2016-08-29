@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 
@@ -28,7 +28,7 @@ Azure HDInsight は、ビッグ データのクラウド サービスを **Stand
 
 >[AZURE.NOTE] HDInsight Premium は現在プレビューの段階で、Linux クラスターでのみ利用できます。
 
-| HDInsight Premium の機能 | 説明 |
+| HDInsight Premium の機能 | Description |
 |--------------|---------------|
 | Microsoft R Server (プレビュー) | Microsoft R Server は、スケーラブルな R 向けの最も広く利用されている企業向け分析プラットフォームです。R 言語は、さまざまなビッグ データ統計、予測モデリング、および機械学習機能をサポートしています。HDInsight Premium では、大規模なデータセットとモデルを使用できる R Server を使用して HDInsight クラスターを作成できるようになりました。この新機能により、データ サイエンティストや統計学の専門家は、クラスターのセットアップやメンテナンスに労力をかけることなく、HDInsight を通じてオンデマンドで拡張できる、使いやすい R インターフェイスを利用できます。<br> <br>詳細については、[HDInsight での R Server の使用に関するページ](hdinsight-hadoop-r-server-get-started.md)をご覧ください。
 
@@ -41,7 +41,7 @@ Azure HDInsight は、ビッグ データのクラウド サービスを **Stand
 | Hadoop は、 | あり | あり |
 | Spark | あり | あり |
 | HBase | あり | いいえ |
-| Storm | あり | いいえ |
+| Storm | あり | なし |
 
 HDInsight Premium でサポートされるクラスターの種類が追加されたら、それに応じてこの表も更新されます。
 
@@ -87,15 +87,15 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 * ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1 以降では既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
 * 特定のバージョンのサポート期限が切れると、Azure ポータルから利用できなくなる可能性があります。次の表に、Azure クラシック ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
-HDInsight のバージョン|HDP のバージョン|高可用性|リリース日|Azure ポータルでの利用|サポート有効期限|非推奨となる日
----|---|---|---|---|---|---
-HDI 3.4|HDP 2.4|あり|2016 年 3 月 29 日|あり||
-HDI 3.3|HDP 2.3|あり|2015 年 12 月 2 日|あり||
-HDI 3.2|HDP 2.2|あり|2015 年 2 月 18 日|あり||
-HDI 3.1|HDP 2.1|あり|2014 年 6 月 24 日|あり||
-HDI 3.0|HDP 2.0|あり|02/11/2014|あり|09/17/2014|06/30/2015
-HDI 2.1|HDP 1.3|あり|10/28/2013|あり|05/12/2014|05/31/2015
-HDI 1.6|HDP 1.1|いいえ|10/28/2013|あり|04/26/2014|05/31/2015
+HDInsight のバージョン|HDP のバージョン|VM の OS|高可用性|リリース日|Azure ポータルでの利用|サポート有効期限|非推奨となる日
+---|---|---|---|---|---|---|---
+HDI 3.4|HDP 2.4|Ubuntu 14.0.4 LTS|はい|2016 年 3 月 29 日|はい||
+HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS または Windows Server 2012R2|はい|2015 年 12 月 2 日|はい||
+HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS または Windows Server 2012R2|はい|2015 年 2 月 18 日|はい||
+HDI 3.1|HDP 2.1|Windows Server 2012R2|はい|2014 年 6 月 24 日|はい||
+HDI 3.0|HDP 2.0|Windows Server 2012R2|はい|02/11/2014|はい|09/17/2014|06/30/2015
+HDI 2.1|HDP 1.3|Windows Server 2012R2|はい|10/28/2013|はい|05/12/2014|05/31/2015
+HDI 1.6|HDP 1.1||なし|10/28/2013|はい|04/26/2014|05/31/2015
 
 **既定以外のクラスターのデプロイメント**
 
@@ -156,4 +156,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

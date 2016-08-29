@@ -6,14 +6,14 @@
 	 authors="ganganarayanan"
 	 manager="scotthit"
 	 editor=""/>
-	 
+
 <tags
 	 ms.service="azure-supportability"
 	 ms.workload="na"
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="article"
-	 ms.date="03/24/2016"
+	 ms.date="07/25/2016"
 	 ms.author="gangan"/>
 
 # Azure サポート要求を作成する方法
@@ -85,4 +85,4 @@ Azure ユーザーは Azure ポータル、[https://portal.azure.com](https://po
 ## 詳細情報
 [Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0817_2016-->

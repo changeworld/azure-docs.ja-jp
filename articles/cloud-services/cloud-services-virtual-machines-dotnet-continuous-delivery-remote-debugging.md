@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="04/19/2016"
+	ms.date="08/15/2016"
 	ms.author="tarcher"/>
 
 # 継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
@@ -40,7 +40,7 @@
 2. [Azure クラシック ポータル ページ](http://go.microsoft.com/fwlink/p/?LinkID=269851)で、仮想マシンのダッシュボードを表示し、仮想マシンの **RDP 証明書の拇印**を確認します。この値は、拡張機能構成の `ServerThumbprint` の値に使用されます。
 3. 「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」の説明に従って、クライアント証明書を作成します (.pfx および RDP 証明書の拇印を保持)。
 4. 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の説明に従って、Azure PowerShell (バージョン 0.7.4 以降) をインストールします。
-5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。パスおよび個人用データを自分自身のサブスクリプション名、サービス名、サムプリントなどで置き換えます。
+5. 次のスクリプトを実行して RemoteDebug 拡張機能を有効にします。パスおよび個人用データを自分自身のサブスクリプション名、サービス名、拇印などで置き換えます。
 
 	>[AZURE.NOTE] このスクリプトは Visual Studio 2015 用に構成されています。Visual Studio 2013 を使用している場合は、`RemoteDebugVS2013` (`RemoteDebugVS2015` ではなく) を使用するように次の `$referenceName` および `$extensionName` 割り当てを変更します。
 
@@ -83,12 +83,12 @@
 	{
 	$extension.ResourceExtensionParameterValues[0].Key = 'config.txt'
 	break
-	{
-	{
+	}
+	}
 	
 	$vm | Update-AzureVM
 	</pre>
 
 6. Visual Studio と Azure SDK for .NET がインストールされているマシンに証明書 (.pfx) をインポートします。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 
@@ -32,7 +32,7 @@
 
 ## 最新バージョンの PowerShell を使用していることを確認する
 
-Azure Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+Azure Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## レコード セットとレコードの作成
 
@@ -145,4 +145,4 @@ nslookup ツールや他の DNS ツールを使用して、新しいレコード
 
 [.NET SDK を使用した Azure の操作の自動化](dns-sdk.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->
