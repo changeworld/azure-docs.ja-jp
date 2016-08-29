@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="04/19/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Azure コードの最適化
@@ -29,7 +29,7 @@ Azure コード分析ツールでは、パフォーマンスに影響する既�
 
 AP0000
 
-### 説明
+### Description
 
 クラウド アプリケーションの既定 (インプロセス) のセッション状態モードを使用すると、セッション状態が失われる可能性があります。
 
@@ -51,7 +51,7 @@ ASP.NET セッション状態では、セッション状態データのさまざ
 
 AP1000
 
-### 説明
+### Description
 
 非同期メソッド ([await](https://msdn.microsoft.com/library/hh156528.aspx) など) を [Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドの外に作成し、[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) から非同期メソッドを呼び出します。[[Run()](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx)](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドを非同期として宣言すると、worker ロールが再起動ループに入ります。
 
@@ -101,7 +101,7 @@ public async Task RunAsync()
 
 AP2000
 
-### 説明
+### Description
 
 認証に Shared Access Signature (SAS) を使用します。Service Bus の認証に、Access Control Service (ACS) は使用されなくなります。
 
@@ -135,7 +135,7 @@ BrokeredMessage receivedMessage = sc.Receive();
 
 AP2002
 
-### 説明
+### Description
 
 "受信ループ" に入らないようにするには、メッセージを受信するために **Receive** メソッドを呼び出すよりも、**OnMessage** メソッドを呼び出す方がソリューションとして優れています。ただし、**Receive** メソッドを使用する必要があり、既定値以外のサーバー待機時間を指定した場合は、サーバー待機時間が 1 分を超えていることを確認します。
 
@@ -243,7 +243,7 @@ while (true)
 
 AP2003
 
-### 説明
+### Description
 
 仲介型メッセージングでパフォーマンスを向上させるには、Service Bus の非同期メソッドを使用します。
 
@@ -265,7 +265,7 @@ Azure メッセージング インフラストラクチャのパフォーマン�
 
 AP2004
 
-### 説明
+### Description
 
 Service Bus メッセージングでパフォーマンスを向上させるには、Service Bus のキューとトピックをパーティション分割します。
 
@@ -287,7 +287,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-詳細については、「[Partitioned Service Bus Queues and Topics (Service Bus のパーティション分割されたキューとトピック)](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/)」(Microsoft Azure のブログ) をご覧ください。また、「[Service Bus Partitioned Queue (Service Bus のパーティション分割されたキュー)](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f)」のサンプルもご覧ください。
+詳細については、「[Partitioned Service Bus Queues and Topics (Service Bus のパーティション分割されたキューとトピック)](https://azure.microsoft.com/blog/2013/10/29/partitioned-service-bus-queues-and-topics/)」(Microsoft Azure のブログ) をご覧ください。また、[Microsoft Azure Service Bus のパーティション分割されたキュー](https://code.msdn.microsoft.com/windowsazure/Service-Bus-Partitioned-7dfd3f1f)のサンプルもご覧ください。
 
 ## SharedAccessStartTime を設定しない
 
@@ -295,7 +295,7 @@ ns.CreateTopic(td);
 
 AP3001
 
-### 説明
+### Description
 
 共有アクセス ポリシーを即座に開始するために、現在の時刻に設定された SharedAccessStartTime を使用しないようにします。このプロパティを設定する必要があるのは、共有アクセス ポリシーを後で開始する場合だけです。
 
@@ -332,7 +332,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 
 AP3002
 
-### 説明
+### Description
 
 "時刻のずれ" と呼ばれる状態により、さまざまな場所にあるデータセンター間でクロックの時間差が 5 分になる場合があります。 SAS ポリシー トークンが予定よりも早く期限切れになるのを防ぐには、5 分より長い有効期限を設定します。
 
@@ -387,7 +387,7 @@ blobPermissions.SharedAccessPolicies.Add("mypolicy", new SharedAccessBlobPolicy(
 
 AP4000
 
-### 説明
+### Description
 
 Azure Web サイトや Azure Mobile Services などのプロジェクトで [ConfigurationManager] (https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) クラスを使用すると、実行時の問題が発生しなくなります。ただし、すべての Azure クラウド アプリケーションの構成管理の統一された方法として、Cloud[ConfigurationManager] (https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) を使用することをお勧めします。
 
@@ -403,7 +403,7 @@ CloudConfigurationManager は、アプリケーション環境に適した構成
 
 [CloudConfigurationManager クラス](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.cloudconfigurationmanager.aspx)を使用するようにコードをリファクターします。この問題のコード修正は、Azure コード分析ツールによって提供されます。
 
-次のコード スニペットは、この問題のコード修正を示しています。*Views\\\Home\\\AllDates.cshtml*
+次のコード スニペットは、この問題のコード修正を示しています。Replace
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
@@ -429,7 +429,7 @@ App.config ファイルまたは Web.config ファイルに構成設定を保存
 
 AP4001
 
-### 説明
+### Description
 
 ハードコーディングされた接続文字列を使用しており、それらを後で更新する必要がある場合、ソース コードを変更し、アプリケーションを再コンパイルする必要があります。ただし、構成ファイルに接続文字列を保存すると、構成ファイルを更新するだけで、接続文字列を後で変更できます。
 
@@ -457,7 +457,7 @@ web.config や app.config などの構成ファイルの使用方法について
 
 AP5000
 
-### 説明
+### Description
 
 Microsoft.WindowsAzure.Diagnostics プログラミング API を使用するなどして、コードで診断設定を構成するのではなく、diagnostics.wadcfg ファイル (Azure SDK 2.5 を使用する場合は diagnostics.wadcfgx) で診断設定を構成します。これにより、コードを再コンパイルしなくても診断設定を変更できます。
 
@@ -490,7 +490,7 @@ WAD 1.3 (Azure SDK 2.5 に付属) 以降では、コードを使用して診断�
 
 AP6000
 
-### 説明
+### Description
 
 メモリを節約するために、DBContext オブジェクトを静的として宣言しないようにします。
 
@@ -532,4 +532,4 @@ public class BlogsController : Controller
 
 Azure アプリケーションの最適化とトラブルシューティングの詳細については、「[Visual Studio を使用した Azure App Service のトラブルシューティング](./app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

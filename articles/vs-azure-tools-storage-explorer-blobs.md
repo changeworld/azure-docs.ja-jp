@@ -1,7 +1,7 @@
 <properties
 	pageTitle="ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理 | Microsoft Azure"
 	description="ストレージ エクスプローラー (プレビュー) を使用して Azure BLOB コンテナーと BLOB を管理します"
-	services="visual-studio-online"
+	services="storage"
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="na"
-	ms.date="07/14/2016"
+	ms.date="08/17/2016"
 	ms.author="tarcher" />
 
 # ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理
 
-## 概要
+## Overview
 
 [Azure Blob Storage](./storage/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。この記事では、ストレージ エクスプローラー (プレビュー) を使用して BLOB コンテナーおよび BLOB を操作する方法について説明します。
 
@@ -277,4 +277,4 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

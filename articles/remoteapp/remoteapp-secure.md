@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp でのアプリとリソースの保護
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp には、一元管理された Windows アプリにユーザーがアクセスするための機能が用意されており、ユーザーが実行できることと、実行できないことを制御できます。これは、管理されていないデバイス (個人の Macbook など) からユーザーが接続しているときに、そのユーザーのアクセスまたは操作を制御する必要がある場合に特に便利です。
 
@@ -46,4 +49,4 @@ Azure RemoteApp には、一元管理された Windows アプリにユーザー�
 - [Windows Server 2012 R2 ポリシー](https://technet.microsoft.com/library/hh831791.aspx)。
 - [Office 2013 のポリシー](https://technet.microsoft.com/library/cc178969.aspx) ([Office ツールバーのカスタマイズ方法](https://technet.microsoft.com/library/cc179143.aspx)を含む)。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

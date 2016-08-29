@@ -29,6 +29,8 @@
 
 - Azure PowerShell Version 1.0.x 以降がインストールされている必要があります。PowerShell がインストールされていない場合、インストール手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
+- コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
+
 ## ソース VM の準備 
 
 このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。
@@ -93,7 +95,7 @@
 
 1. 次のコマンドを使用して、仮想マシンのイメージをコピー先ストレージ コンテナーにコピーします。イメージは、元の仮想マシンと同じストレージ アカウントに作成されます。`-Path` 変数により、JSON テンプレートのコピーがローカルに保存されます。`-DestinationContainerName` 変数は、イメージを格納するコンテナーの名前です。コンテナーが存在しない場合、コンテナーは自動的に作成されます。
 
-		Save-AzureRmVMImage -ResourceGroupName YourResourceGroup -VMName YourWindowsVM -DestinationContainerName YourImagesContainer -VHDNamePrefix YourTemplatePrefix -Path Yourlocalfilepath\Filename.json
+		Save-AzureRmVMImage -ResourceGroupName YourResourceGroup -Name YourWindowsVM -DestinationContainerName YourImagesContainer -VHDNamePrefix YourTemplatePrefix -Path Yourlocalfilepath\Filename.json
 
 	イメージの URL は、JSON ファイル テンプレートから取得できます。イメージの完全なパスは、**resources** > **storageProfile** > **osDisk** > **image** > **uri** セクションにあります。イメージの URL は `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。
 	
@@ -208,4 +210,4 @@
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

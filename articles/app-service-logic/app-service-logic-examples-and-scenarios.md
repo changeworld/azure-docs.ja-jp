@@ -13,16 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="08/01/2016"
+   ms.date="08/11/2016"
    ms.author="jehollan"/>
 
 # Logic Apps の例と一般的なシナリオ
 
 このドキュメントでは、ロジック アプリを使用してビジネス プロセスを自動化する方法を理解するのに役立つ一般的なシナリオと例について詳しく説明します。
 
-## トリガーとアクション
+## カスタムのトリガーとアクション
 
-別のアプリケーションからロジック アプリをトリガーする方法は複数あります。その方法をいくつか次に示します。
+別のアプリケーションからロジック アプリをトリガーする方法は複数あります。いくつかの一般的な例を次に示します。
 
 - [カスタム トリガーまたはカスタム アクションの作成](app-service-logic-create-api-app.md)
 - [実行時間の長いアクション](app-service-logic-create-api-app.md)
@@ -33,9 +33,11 @@
 ### シナリオ
 
 - [要求への同期応答](app-service-logic-http-endpoint.md)
+- [SMS での要求 - 応答](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## エラー処理とログ記録
 
+- [例外とエラー処理](app-service-logic-exception-handling.md)
 - [Azure アラートと Azure 診断の構成](app-service-logic-monitor-your-logic-apps.md)
 
 ### シナリオ
@@ -77,4 +79,4 @@ Logic Apps の[ワークフロー定義言語](http://aka.ms/logicappsdocs)に�
 
 このドキュメントには、今後も引き続き例とシナリオを追加します。ご希望の例やシナリオがありましたら、以下のコメント セクションを使用してお知らせください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

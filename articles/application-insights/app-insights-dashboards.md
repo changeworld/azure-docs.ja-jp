@@ -77,6 +77,10 @@
 
 グラフはタイルにグループ化されます。1 つのタイルに複数のグラフを含めることができます。タイル全体をダッシュボードにピン留めします。
 
+### Analytics のグラフ
+
+[共有](#share-dashboards-with-your-team)ダッシュボードに[Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。
+
 ## ダッシュボード上のタイルの調整
 
 タイルをダッシュボード上に追加すると、タイルを調整することができます。
@@ -111,7 +115,6 @@
 
 ダッシュボードを作成すると、他のユーザーとそのダッシュボードを共有できます。
 
-
 ![ダッシュボードのヘッダーで [共有] をクリックします](./media/app-insights-dashboards/41.png)
 
 詳細については、[ロールとアクセス制御](app-insights-resources-roles-access-control.md)に関するページをご覧ください。
@@ -128,9 +131,9 @@
 * **パフォーマンス** - 応答時間および依存関係の応答時間です。[編集可能なメトリック ブレード](app-insights-metrics-explorer.md)です。
 * [サーバー](app-insights-web-monitor-performance.md) - パフォーマンス カウンターです。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)している場合に使用できます。
 * **ブラウザー** - ページ ビューと AJAX パフォーマンスです。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
-* **使用状況** - ページ ビュー、ユーザーおよびセッションの数です。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
+* **使用状況** - ページ ビュー、ユーザー、およびセッションの数です。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
 * **作業の開始** - インライン チュートリアルです。
-* **プロパティ** - インストルメンテーション キー、サブスクリプションおよびリソース ID です。
+* **プロパティ** - インストルメンテーション キー、サブスクリプション、およびリソース ID です。
 * [状態](app-insights-monitor-web-app-availability.md) - Web テストの構成と結果です。
 * [アラート](app-insights-alerts.md) - メトリック アラートの構成です。
 * [連続エクスポート](app-insights-export-telemetry.md) - Azure ストレージへのテレメトリのエクスポートを構成します。
@@ -152,4 +155,4 @@
 |[診断検索](app-insights-diagnostic-search.md)<br/>イベントや関連イベントを検索して確認し、バグを作成 |![検索例](./media/app-insights-dashboards/61.png)
 |[Analytics](app-insights-analytics.md)<br/>強力なクエリ言語| ![検索例](./media/app-insights-dashboards/63.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

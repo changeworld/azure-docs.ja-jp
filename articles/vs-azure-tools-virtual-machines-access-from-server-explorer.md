@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # サーバー エクスプローラーから Azure Virtual Machines へのアクセス
@@ -29,7 +29,7 @@ Azure でホストされている仮想マシンには、サーバー エクス�
 
     次の表に示したのは、アクセスできるプロパティの一覧です。ただし、これらはすべて読み取り専用です。これらのプロパティを変更するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。
 
-  	|プロパティ|説明|
+  	|プロパティ|Description|
   	|---|---|
   	|DNS 名|仮想マシンのインターネット アドレスを含む URL。|
   	|環境|仮想マシンの場合、このプロパティの値は常に [運用] です。|
@@ -53,4 +53,4 @@ Azure でホストされている仮想マシンには、サーバー エクス�
 
 Visual Studio での Azure ロールの使用方法の詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Visual Studio での Azure プライベート クラウドへのアクセス
 
-##概要
+##Overview
 
 既定では、Visual Studio は Azure パブリック クラウドの REST エンドポイントをサポートします。ただし、このことは、Visual Studio を Azure プライベート クラウドと共に使用している場合に問題となる場合があります。証明書を使用すると、Azure プライベート クラウドの REST エンドポイントにアクセスするように Visual Studio を構成できます。この証明書は、Azure 発行設定ファイルを使用して入手できます。
 
@@ -43,4 +43,4 @@
 
 [方法: 発行設定とサブスクリプション情報のダウンロードとインポート](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

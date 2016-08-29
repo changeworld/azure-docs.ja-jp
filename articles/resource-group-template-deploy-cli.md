@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
 # Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
@@ -40,7 +40,7 @@
 
 ## 簡単なデプロイ手順
 
-この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、通常必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
+この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、多くの場合、必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
 
     azure group create -n ExampleResourceGroup -l "West US"
     azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
@@ -60,7 +60,7 @@
         ...
         info:    login command OK
 
-2. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
+2. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
 
         azure account set <YourSubscriptionNameOrId>
 
@@ -70,7 +70,7 @@
    
         info:     New mode is arm
 
-4. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
+4. 既存のリソース グループがない場合は、リソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
 
         azure group create -n ExampleResourceGroup -l "West US"
    
@@ -90,7 +90,7 @@
 
         azure group template validate -f <PathToTemplate> -p "{"ParameterName":{"value":"ParameterValue"}}" -g ExampleResourceGroup
 
-5. リソース グループに新しいデプロイを作成するには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターにはデプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
+5. リソース グループにリソースをデプロイするには、次のコマンドを実行して必要なパラメーターを指定します。パラメーターには、デプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。
    
      次の 3 つのオプションを使用してパラメーターの値を提供できます。
 
@@ -132,11 +132,11 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 
 次の手順で、テンプレートのストレージ アカウントをセットアップします。
 
-1. 新しいリソース グループを作成します。
+1. リソース グループを作成します。
 
         azure group create -n "ManageGroup" -l "westus"
 
-2. 新しいストレージ アカウントを作成します。ストレージ アカウント名は、 Azure 内で一意である必要があるため、独自の名前を入力してください。
+2. ストレージ アカウントを作成します。ストレージ アカウント名は、 Azure 内で一意である必要があるため、独自の名前を入力してください。
 
         azure storage account create -g ManageGroup -l "westus" --sku-name LRS --kind Storage storagecontosotemplates
 
@@ -145,7 +145,7 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
         export AZURE_STORAGE_ACCOUNT=storagecontosotemplates
         export AZURE_STORAGE_ACCESS_KEY={storage_account_key}
 
-4. 新しいコンテナーを作成します。アクセス許可は **Off** に設定します。これは所有者だけがコンテナーにアクセスできることを表します。
+4. コンテナーを作成します。アクセス許可は **Off** に設定します。これは所有者だけがコンテナーにアクセスできることを表します。
 
         azure storage container create --container templates -p Off 
         
@@ -176,4 +176,4 @@ SAS トークンを使用したデプロイの際に、テンプレートをス�
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
 - セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

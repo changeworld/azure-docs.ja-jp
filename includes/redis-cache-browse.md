@@ -11,3 +11,5 @@
 **[設定]** または **[すべての設定]** をクリックしてキャッシュを表示し、構成します。
 
 ![Redis Cache のすべての設定](media/redis-cache-browse/redis-cache-blade.png)
+
+<!---HONumber=AcomDC_0817_2016-->

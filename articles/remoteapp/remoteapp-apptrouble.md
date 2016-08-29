@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/12/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 #Azure RemoteApp のトラブルシューティング - アプリケーションの起動と接続に関するエラー 
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp でホストされるアプリケーションは、さまざまな理由により起動に失敗することがあります。この記事では、アプリケーションの起動に失敗する理由と、ユーザーに表示される可能性のあるエラー メッセージについて説明します。また、接続のエラーについても説明します (ただし、Azure RemoteApp クライアントへのサインイン時の問題については扱っていません)。
 
@@ -51,4 +54,4 @@ Azure RemoteApp でホストされるアプリケーションは、さまざま�
 
 ![Azure RemoteApp の一般的なエラー メッセージ](./media/remoteapp-apptrouble/ra-apptrouble4.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

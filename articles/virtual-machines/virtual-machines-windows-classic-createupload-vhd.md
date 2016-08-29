@@ -28,11 +28,11 @@
 
 この記事では、以下のことを前提としています。
 
-1. **Azure サブスクリプション** - サブスクリプションがない場合は、[Azure アカウントを無料で作成](/pricing/free-trial/?WT.mc_id=A261C142F)できます。
+- **Azure サブスクリプション** - サブスクリプションがない場合は、[Azure アカウントを無料で作成](/pricing/free-trial/?WT.mc_id=A261C142F)できます。
 
-2. **[Microsoft Azure PowerShell](../powershell-install-configure.md)** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。
+- **[Microsoft Azure PowerShell](../powershell-install-configure.md)** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。
 
-3. **.vhd ファイル** - .vhd ファイルに格納され、仮想マシンに接続された、Windows オペレーティング システムでサポートされている。
+- **.vhd ファイル** - .vhd ファイルに格納され、仮想マシンに接続された、Windows オペレーティング システムでサポートされている。また、VHD で実行されるサーバー ロールが sysprep でサポートされていることを確認する必要があります。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 > [AZURE.IMPORTANT] VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
@@ -102,6 +102,6 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 ## 次のステップ
 
-アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md) できるようになりました。
+アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md)できるようになりました。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

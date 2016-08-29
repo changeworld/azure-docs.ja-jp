@@ -35,7 +35,7 @@ Azure Resource Manager を使用すると、環境の全体構造を定義する
 
 ## Docker VM 拡張機能を使用したテンプレートのデプロイ:
 
-それでは、既存のクイック スタート テンプレートを使用して、Docker VM 拡張機能がインストールされた Ubuntu VM をデプロイしてみましょう。テンプレートは以下より確認できます: [Simple deployment of an Ubuntu VM with Docker (Docker を使用した Ubuntu VM の簡単なデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
+それでは、既存のクイック スタート テンプレートを使用して、Docker VM 拡張機能がインストールされた Ubuntu VM をデプロイしてみましょう。テンプレートは以下より確認できます: [Simple deployment of an Ubuntu VM with Docker (Docker を使用した Ubuntu VM の簡単なデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)また、[最新の Azure CLI](../xplat-cli-install.md) をResource Manager モードにする必要があります (`azure config mode arm`)。
 
 新しいリソース グループ (ここでは `myDockerResourceGroup`) の名前とテンプレート URI を指定して、Azure CLI を使ってテンプレートをデプロイします。
 
@@ -138,4 +138,4 @@ Resource Manager テンプレートの使用方法の詳細については、「
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
 3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

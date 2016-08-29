@@ -32,6 +32,7 @@ Azure では、イメージは **[マイ イメージ]** に格納されます�
 
 - [イメージから仮想マシンを作成](virtual-machines-windows-classic-createportal.md)
 - [データ ディスクを仮想マシンに接続する方法](virtual-machines-windows-classic-attach-disk.md)
+- サーバー ロールが Sysprep でサポートされていることを確認してください。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 > [AZURE.WARNING] キャプチャされた後に、このプロセスは元の仮想マシンを削除します。
 
@@ -90,4 +91,4 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

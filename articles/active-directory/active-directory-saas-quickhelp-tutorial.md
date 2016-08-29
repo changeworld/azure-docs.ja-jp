@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,7 +21,7 @@
 
 このチュートリアルの目的は、QuickHelp と Azure Active Directory (Azure AD) を統合する方法を説明することです。QuickHelp と Azure AD の統合には、次の利点があります。
 
-- QuickHelp にアクセスする Azure AD ユーザーを制御できます。 
+- QuickHelp にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に QuickHelp にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -41,13 +41,13 @@ QuickHelp と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの QuickHelp の追加 
+1. ギャラリーからの QuickHelp の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -56,7 +56,7 @@ Azure AD への QuickHelp の統合を構成するには、ギャラリーから
 
 **ギャラリーから QuickHelp を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -114,7 +114,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 	![Configure App Settings][8]
  
-     a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*))。
+     a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*)。
 
      > [AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
@@ -131,7 +131,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 2. 上部のメニューで **[管理者]** をクリックします。
 
-	![シングル サインオンの構成][21]
+	![Configure Single Sign-On][21]
 
 
 1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。
@@ -142,7 +142,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[認証設定]** ページで、次の手順を実行します。
 
-	![シングル サインオンの構成][23]
+	![Configure Single Sign-On][23]
 
     a.**SSO 型** として **WSFederation** を選びます。
 
@@ -164,11 +164,11 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-	![Azure AD Connect の概要][10]
+	![Azure AD Connect とは][10]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-	![What is Azure AD Connect][11]
+	![Azure AD Connect とは][11]
 
 
 
@@ -194,7 +194,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_05.png)
 
@@ -220,7 +220,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png)
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png)
   
@@ -316,4 +316,4 @@ QuickHelp では、ジャストインタイム プロビジョニングがサポ
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

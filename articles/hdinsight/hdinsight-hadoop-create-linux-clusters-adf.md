@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/18/2016"
+   ms.date="08/10/2016"
    ms.author="jgao"/>
 
 # Azure Data Factory を使用した HDInsight でのオンデマンドの Linux ベースの Hadoop クラスターの作成
@@ -97,7 +97,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
     azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/inputdata/input.log" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted" 
     azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted" 
 
-コンテナー名は *adfgetstarted* です。この名前はそのままにしておいてください。そうしないと、ARM テンプレートの更新が必要になります。
+コンテナー名は *adfgetstarted* です。この名前はそのままにしておいてください。そうしないと、Resource Manager テンプレートの更新が必要になります。
 
 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
 
@@ -189,9 +189,9 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
  
 ## データ ファクトリの作成
 
-ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。データ ファクトリを作成する方法はいくつかあります。このチュートリアルでは、Azure ポータルを使用してカスタム ARM テンプレートを呼び出します。ARM テンプレートは、[Azure CLI](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) や [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) から呼び出すこともできます。他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
+ストレージ アカウント、入力データ、および HiveQL スクリプトの準備ができたら、いつでも Azure データ ファクトリを作成できます。データ ファクトリを作成する方法はいくつかあります。このチュートリアルでは、Azure ポータルを使用してカスタム Resource Manager テンプレートを呼び出します。Resource Manager テンプレートは、[Azure CLI](../resource-group-template-deploy.md#deploy-with-azure-cli-for-mac-linux-and-windows) や [Azure PowerShell](../resource-group-template-deploy.md#deploy-with-powershell) から呼び出すこともできます。他のデータ ファクトリの作成方法については、「[Azure Data Factory を使ってみる](../data-factory/data-factory-build-your-first-pipeline.md)」を参照してください。
 
-最上位レベルの ARM テンプレートの内容を次に示します。
+トップ レベルの Resource Manager テンプレートには、次のものが含まれます。
 
     {
         "contentVersion": "1.0.0.0",
@@ -320,9 +320,9 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
     
 **データ ファクトリを作成するには**
 
-1. 次の画像をクリックして Azure にサインインし、Azure ポータルで ARM テンプレートを開きます。テンプレートは、https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json にあります。
+1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。テンプレートは、https://hditutorialdata.blob.core.windows.net/adfhiveactivity/data-factory-hdinsight-on-demand.json にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fadfhiveactivity%2Fdata-factory-hdinsight-on-demand.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. 前のセクションで作成したアカウントの **DATAFACTORYNAME**、**STORAGEACCOUNTNAME**、**STORAGEACCOUNTKEY** を入力し、**[OK]** をクリックします。データ ファクトリ名は、グローバルに一意である必要があります。
 3. **[リソース グループ]** で、前のセクションで使用したのと同じリソース グループを選択します。
@@ -334,7 +334,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
     ![Azure Data Factory HDInsight on demand hive activity pipeline diagram](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-adf-pipeline-diagram.png)
     
-    名前は、ARM テンプレートで定義されています。
+    名前は Resource Manager テンプレートで定義されます。
 9. **[AzureBlobOutput]** をダブルクリックします。
 10. **[最近更新されたスライス]** に、1 つのスライスが表示されます。状態が **[処理中]** の場合は、**[準備完了]** に変わるまで待ちます。
 
@@ -345,7 +345,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
     - adfhdinsight-hive-on-demand-hdinsightondemandlinked-xxxxxxxxxxxxx: これは、HDInsight クラスターの既定のコンテナーです。既定のコンテナー名は、"adf<データ ファクトリ名>-<リンクされたサービス名>-<日時スタンプ>" というパターンになります。
     - adfjobs: これは、ADF ジョブ ログのコンテナーです。
     
-    データ ファクトリの出力は、ARM テンプレートに構成されている afgetstarted に格納されます。
+    データ ファクトリの出力は、Resource Manager テンプレートに構成されている afgetstarted に格納されます。
 2. **[adfgetstarted]** をクリックします。
 3. **[partitioneddata]** をダブルクリックします。**year=2014** フォルダーが表示されます。これは、すべての Web ログの日付が 2014 年のものであるためです。
 
@@ -372,7 +372,7 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 
 リソース グループを削除するときにストレージ アカウントを削除したくない場合は、ビジネス データを既定のストレージ アカウントから切り離した、次のアーキテクチャの設計を検討してください。この場合、ビジネス データを含むストレージ アカウント用のリソース グループのほかに、既定のストレージ アカウントとデータ ファクトリ用のリソース グループを用意することになります。2 番目のリソース グループを削除しても、ビジネス データのストレージ アカウントには影響しません。そのためには、次の手順を実行します。
 
-- ARM テンプレートの最上位レベルのリソース グループに Microsoft.DataFactory/datafactories リソースと共に次の内容を追加します。これにより、新しいストレージ アカウントが作成されます。
+- Resource Manager テンプレートの最上位レベルのリソース グループに Microsoft.DataFactory/datafactories リソースと共に次の内容を追加します。これにより、新しいストレージ アカウントが作成されます。
 
         {
             "name": "[parameters('defaultStorageAccountName')]",
@@ -438,4 +438,4 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 - [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [データ ファクトリのドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

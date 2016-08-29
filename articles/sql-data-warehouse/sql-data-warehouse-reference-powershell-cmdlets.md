@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/16/2016"
    ms.author="sonyama;barbkess;mausher"/>
 
 # SQL Data Warehouse の PowerShell コマンドレットと REST API
@@ -93,7 +93,7 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 <!--Article references-->
 [Azure PowerShell のインストールおよび構成方法]: ./powershell-install-configure.md
 [PowerShell を使用して SQL Data Warehouse を作成する]: ./sql-data-warehouse-get-started-provision-powershell.md
-[データベースの復元]: ./sql-data-warehouse-manage-database-restore-powershell.md
+[データベースの復元]: ./sql-data-warehouse-restore-database-powershell.md
 [REST を使用したのスケーラビリティの管理]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
@@ -115,4 +115,4 @@ PowerShell で自動化できるタスクの一覧については、「[Azure SQ
 <!--Other Web references-->
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

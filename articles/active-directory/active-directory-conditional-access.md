@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/08/2016"
+	ms.date="08/17/2016"
 	ms.author="markvi"/>
 
 
@@ -105,11 +105,13 @@ Azure AD でデバイス ベースの条件付きアクセス ポリシーを構
 - [サポートされるアプリケーションの種類](active-directory-conditional-access-supported-apps.md)
 
 
-### デバイスのポリシー
+### デバイス ベースの条件付きアクセス
 
 - [Azure Active Directory に接続されたアプリケーションのアクセスを制御するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)
 
 - [Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+- [Azure AD デバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスする際のユーザーによる修復](active-directory-conditional-access-device-remediation.md)
 
 - [Microsoft Intune を使用してデータを保護する](https://docs.microsoft.com/intune/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)
 
@@ -123,4 +125,4 @@ Azure AD でデバイス ベースの条件付きアクセス ポリシーを構
 - [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 - [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

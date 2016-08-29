@@ -5,7 +5,7 @@
 	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー, 用語集"
 	documentationCenter=""
 	authors="markusvi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/16/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory Identity Protection 用語集 
@@ -90,7 +90,7 @@ Azure Active Directory に 1 つ以上のリソースへの永続的または一
 ### 修復済み (リスク イベント) 	
 Identity Protection から自動的に設定されるリスク イベントの状態です。この種類のリスク イベントに対する標準的な修復アクションを使用して、リスク イベントが修復されたことを示します。たとえば、ユーザーのパスワードがリセットされると、以前のパスワードが侵害されたことを示す多くのリスク イベントは自動的に修復されます。
 
-### Remediation 	
+### 修復 	
 以前に侵害の疑いがある、または侵害を検知した ID またはデバイスをセキュリティで保護するアクションです。修復アクションでは、ID またはデバイスを安全な状態に復元し、ID またはデバイスに関連付けられた以前のリスク イベントを解決します。
 
 ### 解決 (リスク イベント) 	
@@ -164,4 +164,4 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

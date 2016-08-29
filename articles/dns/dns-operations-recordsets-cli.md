@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/06/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # CLI を使用した DNS レコードとレコード セットの管理
@@ -38,7 +38,7 @@ Azure DNS は、Azure リソース マネージャー専用のサービスです
 
 ## 新しいレコード セットとレコードを作成する
 
-Azure ポータルで新しいレコード セットを作成する方法については、 [レコード セットとレコードの作成に関するページ](dns-getstarted-create-recordset-cli.md) を参照してください。
+Azure ポータルで新しいレコード セットを作成する方法については、[レコード セットとレコードの作成に関するページ](dns-getstarted-create-recordset-cli.md)を参照してください。
 
 
 ## レコード セットを取得する
@@ -178,4 +178,4 @@ Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)�
 
 逆引き DNS レコードを使用する場合、「[Azure CLI を使用してサービスの逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-cli.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

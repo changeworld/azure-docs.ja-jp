@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/15/2016"
 	ms.author="mandia"/>
 
 
@@ -78,7 +78,7 @@ BizTalk Server の EDI では、パイプラインはメッセージ処理エン
 
 取引先アグリーメントがメッセージを受信する前、またはアグリーメントがメッセージを処理して Service Bus エンドポイントにルーティングした後に、カスタム コードを含むパブリッシュ/サブスクライブ フローおよび Service Bus のメッセージング キューとトピックの使用を、挿入できます。
 
-メッセージ フローのパターンについては、このトピックの「**シナリオ/メッセージ フロー**」をご覧ください。
+メッセージ フローのパターンについては、このトピックの「**シナリオ/メッセージ フロー**」を参照してください。
 
 ## アグリーメント
 
@@ -112,7 +112,7 @@ Microsoft Azure BizTalk Services では、BizTalk Server マップを BizTalk Se
 
 BizTalk Server のオーケストレーション処理を Microsoft Azure に移行する必要がある場合は、Microsoft Azure は BizTalk Server のオーケストレーションの実行をサポートしていないため、オーケストレーションを書き直す必要があります。オーケストレーションの機能は、Windows Workflow Foundation 4.0 (WF4) サービスで書き直すことができます。現時点では BizTalk Server オーケストレーションから WF4 への移行がないため、これは完全な書き直しになります。Windows Workflow に関するリソースを次に示します。
 
-- 「[*WCF ワークフロー サービスを Service Bus のキューおよびトピックに統合する方法*](https://msdn.microsoft.com/library/azure/hh709041.aspx)」 (Paolo Salvatori)。 
+- "[*WCF ワークフロー サービスを Service Bus のキューおよびトピックに統合する方法*](https://msdn.microsoft.com/library/azure/hh709041.aspx)" に関するページ (Paolo Salvatori)。
 
 - 「[*Building apps with Windows Workflow Foundation and Azure (Windows Workflow Foundation と Azure でのアプリの構築)*](http://go.microsoft.com/fwlink/p/?LinkId=237314)」 (Build 2011 カンファレンスのセッション)。
 
@@ -126,7 +126,7 @@ BizTalk Server のオーケストレーション処理を Microsoft Azure に移
 
 ### フォールバック アグリーメント
 
-BizTalk Server の EDI 処理には、「フォールバック アグリーメント」の概念があります。現時点では、BizTalk Services にはフォールバック アグリーメントの概念は**ありません**。BizTalk Server でのフォールバック アグリーメントの使用方法については、BizTalk ドキュメントのトピック「[EDI 処理におけるアグリーメントのロール](http://go.microsoft.com/fwlink/p/?LinkId=237317)」および「[グローバルまたはフォールバック アグリーメントのプロパティの構成](https://msdn.microsoft.com/library/bb245981.aspx)」をご覧ください。
+BizTalk Server の EDI 処理には、「フォールバック アグリーメント」の概念があります。現時点では、BizTalk Services にはフォールバック アグリーメントの概念は**ありません**。BizTalk Server でのフォールバック アグリーメントの使用方法については、BizTalk ドキュメントのトピック「[EDI 処理におけるアグリーメントのロール](http://go.microsoft.com/fwlink/p/?LinkId=237317)」および「[グローバルまたはフォールバック アグリーメントのプロパティの構成](https://msdn.microsoft.com/library/bb245981.aspx)」を参照してください。
 
 ### 複数の送信先へのルーティング
 
@@ -142,4 +142,4 @@ Microsoft Azure BizTalk Services は定期的なマイルストーンで更新�
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

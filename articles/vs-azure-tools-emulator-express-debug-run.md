@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="04/19/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 
@@ -54,4 +54,4 @@ Emulator Express を使用する前に、いくつかの制限事項に注意す
 
 [Cloud Services のデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

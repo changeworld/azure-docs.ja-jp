@@ -1,34 +1,45 @@
-<properties 
-	pageTitle="Windows ユニバーサル SDK の概要" 
-	description="Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要" 									
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
+<properties
+	pageTitle="Windows ユニバーサル SDK 統合"
+	description="Azure Mobile Engagement 向け SDK の Windows ユニバーサル統合" 									
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="dwrede"
 	editor="" />
 
-<tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="05/03/2016" 
-	ms.author="piyushjo" />
+<tags
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-store"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="08/12/2016"
+	ms.author="piyushjo;ricksal" />
 
-#Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要
+#Azure Mobile Engagement 向け Windows ユニバーサル SDK 統合
 
-ここから Azure Mobile Engagement を Windows ユニバーサル アプリに統合する方法についての説明を開始します。まず試してみる場合は、[15 分間チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を完了してください。
+このドキュメントでは、Azure Mobile Engagement Windows ユニバーサル SDK で使用できる統合と構成のすべてのオプションについて説明します。
 
-[SDK コンテンツ](mobile-engagement-windows-store-sdk-content.md)について表示するにはここをクリックします。
+## 前提条件
 
-##統合手順
+このチュートリアルを開始する前に、[15 分間チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を完了する必要があります。
 
-1. ここから開始: [Windows ユニバーサル アプリに Mobile Engagement を統合する方法](mobile-engagement-windows-store-integrate-engagement.md)
+## 高度な機能
 
-2. 通知: [リーチ (通知) を Windows ユニバーサル アプリに統合する方法](mobile-engagement-windows-store-integrate-engagement-reach.md)
+### レポート機能
+次の機能を追加できます。
 
-3. タグ付けプランの実装: [Windows ユニバーサル アプリで高度な Mobile Engagement タグ付け API を使用する方法](mobile-engagement-windows-store-use-engagement-api.md)
+1. [詳細なレポート オプション](mobile-engagement-windows-store-advanced-reporting.md)
+
+2. [高度な構成オプション](mobile-engagement-windows-store-advanced-configuration.md)
+
+### 通知
+
+[Windows ユニバーサル アプリでリーチ (通知) を統合する方法](mobile-engagement-windows-store-integrate-engagement-reach.md)
+
+### タグ付けプランの実装:
+
+[How to use the advanced Mobile Engagement tagging API in your Windows Universal app (Windows ユニバーサル アプリで高度なモバイル エンゲージメント タグ付け API を使用する方法)](mobile-engagement-windows-store-use-engagement-api.md)
 
 ##リリース ノート
 
@@ -38,13 +49,13 @@
 -   SDK によって出力されるコンソール ログを有効化/無効化/フィルター処理するために "TestLogLevel" API を追加しました。
 -   最初のアクティビティを対象としたアクティビティ内通知がアプリ起動時に表示されない問題を修正しました。
 
-以前のバージョンについては、「[完全リリース ノート](mobile-engagement-windows-store-release-notes.md)」をご覧ください。
+以前のバージョンについては、[完全なリリース ノート](mobile-engagement-windows-store-release-notes.md)をご覧ください。
 
 ##アップグレードの手順
 
-既にアプリケーションに以前のバージョンのモバイル エンゲージメントを統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
+既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
-SDK のいくつかのバージョンがない場合は、次の手順に従う必要があります。完全な[アップグレードの手順](mobile-engagement-windows-store-upgrade-procedure.md)をご覧ください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。完全な[アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md)を参照してください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
 
 ###3\.3.0 から 3.4.0 に移行
 
@@ -55,14 +66,14 @@ SDK によって生成されるコンソール ログを有効化/無効化/フ�
 			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
 			EngagementAgent.Instance.Init();
 
-####Resources
+####リソース
 
 Reach オーバーレイの機能を強化しました。これは SDK NuGet パッケージのリソースの一部です。
 
 新しいバージョンの SDK にアップグレードする際、リソースのオーバーレイ フォルダーにある既存ファイルを保持するかどうかを選択できます。
 
-* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。 
-* 新しいオーバーレイに更新する場合、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources から新しいオーバーレイ フォルダーを取得できます)。
+* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。
+* 新しいオーバーレイに更新するには、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources から新しいオーバーレイ フォルダーを取得できます)。
 
 > [AZURE.WARNING] 新しいオーバーレイを使用すると、以前のバージョンに対して行ったすべてのカスタマイズが上書きされます。
 
@@ -70,4 +81,4 @@ Reach オーバーレイの機能を強化しました。これは SDK NuGet パ
 
 [アップグレード手順](mobile-engagement-windows-store-upgrade-procedure.md)をご覧ください
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

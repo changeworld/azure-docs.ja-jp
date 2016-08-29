@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/09/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Azure ポータルで DNS ゾーンを作成する
@@ -78,7 +78,7 @@ DNS ゾーンを作成すると、次のレコードも作成されます。
 
 Azure ポータルからレコードを表示することができます。
 
-1. **[DNS ゾーン]** ブレードで、**[すべての設定]** をクリックして DNS ゾーンの **[設定] ブレード**を開きます。 
+1. **[DNS ゾーン]** ブレードで、**[すべての設定]** をクリックして DNS ゾーンの **[設定] ブレード**を開きます。
 
 	![ゾーン](./media/dns-getstarted-create-dnszone-portal/viewzonens500.png)
 
@@ -126,4 +126,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-portal.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

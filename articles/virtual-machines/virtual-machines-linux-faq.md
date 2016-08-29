@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/16/2016"
 	ms.author="cynthn"/>
 
 # Linux 仮想マシンについてのよく寄せられる質問 
 
 
-この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてユーザーからよく寄せられる質問に回答します。このトピックの Windows バージョンについては、「[Frequently asked question about Windows Virtual Machines (Windows 仮想マシンについてのよく寄せられる質問)](virtual-machines-windows-faq.md)」を参照してください。
+この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。このトピックの Windows バージョンについては、「[Frequently asked question about Windows Virtual Machines (Windows 仮想マシンについてのよく寄せられる質問)](virtual-machines-windows-faq.md)」を参照してください。
 
 ## Azure VM では何を実行できますか。
 
@@ -44,7 +44,7 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 ## データの格納時に一時ディスク (/dev/sdb2) を使用できますか。
 
-データの格納時に一時ディスク (開発/sdb1) を使用しないでください。一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。
+データの格納に一時ディスク (/dev/sdb1) を使用しないでください。一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。
 
 ## 既存の Azure VM をコピーまたは複製できますか。
 
@@ -56,6 +56,6 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 ## VM の作成後、NIC を VM に追加できますか。
 
-いいえ。現時点では、この操作は作成時にのみ実行できます。
+いいえ。NIC を追加できるのは VM の作成時のみです。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

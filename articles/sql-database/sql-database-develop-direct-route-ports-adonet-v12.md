@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/25/2016" 
+	ms.date="08/17/2016"
 	ms.author="annemill"/>
 
 
@@ -120,4 +120,4 @@ Azure クラウド境界内でクライアントを実行している場合、�
 
 - [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -42,7 +42,7 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
 
 考えられる値を次に示します。
 
-| 値 | 説明 |
+| 値 | Description |
 | ----- | ----------- |
 | {signature} | HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。**重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
 | {resourceURI} | IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。たとえば、`myHub.azure-devices.net/devices/device1` のように指定します。 |
@@ -78,12 +78,31 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
         // console.log("signature:" + token);
         return token;
     };
+ 
+ なお、上記に対応する Python のコードは次のとおりです。
+ 
+    from base64 import b64encode, b64decode
+    from hashlib import sha256
+    from hmac import HMAC
+    from urllib import urlencode
+    
+    def generate_sas_token(uri, key, policy_name='device', expiry=3600):
+        ttl = time() + expiry
+        sign_key = "%s\n%d" % (uri, int(ttl))
+        signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+     
+        return 'SharedAccessSignature ' + urlencode({
+            'sr' :  uri,
+            'sig': signature,
+            'se' : str(int(ttl)),
+            'skn': policy_name
+        })
 
 > [AZURE.NOTE] トークンの有効期間は IoT Hub コンピューターで検証されるため、重要なのは、トークンを生成するコンピューターのクロックのずれが最小限であることです。
 
 ## デバイスとして SAS トークンを使用する
 
-セキュリティ トークンを使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス ポリシー キーを使用する方法の 2 とおりがあります。
+セキュリティ トークンを使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス ポリシー キーを使用する方法の 2 通りがあります。
 
 さらに、デバイスからアクセスできるすべての機能は、仕様により、`/devices/{deviceId}` というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
@@ -127,7 +146,7 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
 共有アクセス ポリシーを使用してデバイスの機能にアクセスするための 2 つの主なシナリオは次のとおりです。
 
 * [クラウド プロトコル ゲートウェイ][lnk-azure-protocol-gateway]
-* [トークン サービス][lnk-devguide-security] \(カスタム認証スキームの実装に使用)
+* [トークン サービス][lnk-devguide-security] (カスタム認証スキームの実装に使用)
 
 共有アクセス ポリシーは任意のデバイスとして接続するためのアクセス権を付与する可能性があるため、セキュリティ トークンの作成時に適切なリソース URI を使用することが重要です。これは、トークン サービスに特に重要です。このサービスでは、リソース URI を使用して、トークンのスコープを特定のデバイスに限定する必要があります。これは、プロトコル ゲートウェイにはあまり関連がありません。このようなゲートウェイは、すべてのデバイスのトラフィックを既に仲介しているためです。
 
@@ -194,7 +213,7 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
 
 ## デバイスの X.509 クライアント証明書を登録する
 
-[C# 用 Azure IoT サービス SDK][lnk-service-sdk] \(バージョン 1.0.8+) では、認証の際に X.509 クライアント証明書を使用するデバイスの登録をサポートします。デバイスのインポート/エクスポートなどの他の API でも X.509 クライアント証明書をサポートします。
+[C# 用 Azure IoT サービス SDK][lnk-service-sdk] (バージョン 1.0.8+) では、認証の際に X.509 クライアント証明書を使用するデバイスの登録をサポートします。デバイスのインポート/エクスポートなどの他の API でも X.509 クライアント証明書をサポートします。
 
 ### C# のサポート
 
@@ -221,7 +240,7 @@ await registryManager.AddDeviceAsync(device);
 
 ## ランタイム操作中に X.509 クライアント証明書を使用する
 
-[.NET 用 Azure IoT device SDK][lnk-client-sdk] \(バージョン 1.0.11+) では、X.509 クライアント証明書の使用をサポートします。
+[.NET 用 Azure IoT device SDK][lnk-client-sdk] (バージョン 1.0.11+) では、X.509 クライアント証明書の使用をサポートします。
 
 ### C# のサポート
 
@@ -246,4 +265,4 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

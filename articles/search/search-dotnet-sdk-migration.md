@@ -13,36 +13,83 @@
    ms.workload="search"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.date="05/18/2016"
+   ms.date="08/15/2016"
    ms.author="brjohnst"/>
 
-# Azure Search .NET SDK バージョン 1.1 へのアップグレード
+# Azure Search .NET SDK バージョン 2.0-preview へのアップグレード
 
-バージョン 1.0.2-preview 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用している場合、この記事を参考にして、最初の一般公開バージョンである 1.1 を使用するようにアプリケーションをアップグレードできます。
+バージョン 1.1 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用している場合は、この記事を参考にして、次のメジャー バージョンである 2.0-preview を使用するようにアプリケーションをアップグレードできます。
 
 例を含む SDK の一般的なチュートリアルについては、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-Azure Search .NET SDK のバージョン 1.1 には、1.0.0-preview より前のバージョン (バージョン 0.13.0-preview 以前も含まれます) からの複数の重大な変更が含まれています。ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。新しいバージョンの SDK を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
+Azure Search .NET SDK のバージョン 2.0-preview には、以前のバージョンからの変更がいくつか含まれています。ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。新しいバージョンの SDK を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
+
+> [AZURE.NOTE] 0.13-preview 以前のバージョンを使用している場合は、バージョン 1.1 にアップグレードした後、2.0-preview にアップグレードする必要があります。手順については、「[付録: バージョン 1.1 にアップグレードするための手順](#UpgradeStepsV1)」を参照してください。
 
 <a name="WhatsNew"></a>
-## バージョン 1.1 の新機能
+## バージョン 2.0-preview の新機能
 
-バージョン 1.1 の対象となる REST API のバージョンは古いバージョンの Azure Search .NET SDK (2015-02-28) と同じであるため、このリリースでの新しいサービス機能はありません。ただし、クライアント側のシリアル化の新機能があります。
+バージョン 2.0-preview は、Azure Search REST API のプレビュー バージョン (具体的には 2015-02-28-Preview) をターゲットとする Azure Search .NET SDK の最初のバージョンです。これにより、以下のような Azure Search の多数のプレビュー機能を .NET アプリケーションから使用することが可能になります。
 
-SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。新しいバージョンの SDK は、`JsonConverter` と `IContractResolver` によるカスタム シリアル化をサポートします (詳細については [JSON.NET のドキュメント](http://www.newtonsoft.com/json/help/html/Introduction.htm)を参照)。この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。たとえば、カスタム シリアル化を使用すると次のことが可能です。
-
- - ドキュメント フィールドとして格納されるものに、モデル クラスの特定のプロパティを含める、または除外する。
- - コードのプロパティ名とインデックスのフィールド名をマップする。
- - ドキュメント フィールドへのプロパティのマッピングおよび対応するインデックス定義の作成の両方に使用できるカスタム属性を作成する。
-
-Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)が適しています。カスタム シリアル化のテストに使用されるクラスが含まれます。
-
-カスタム シリアル化に加え、新しい SDK は `SearchContinuationToken` オブジェクトのシリアル化もサポートします。これは、Azure Search を Web アプリケーションから呼び出して、検索結果をページングしながら継続トークンをブラウザーまたはモバイル クライアントと交換する必要がある場合に役立ちます。
+- [カスタム アナライザー](https://aka.ms/customanalyzers)
+- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) と [Azure Table Storage](search-howto-indexing-azure-tables.md) のインデクサーのサポート
+- [フィールド マッピング](search-indexer-field-mappings.md)によるインデクサーのカスタマイズ
+- インデックスの定義、インデクサー、およびデータ ソースの安全な同時更新を有効にする Etag のサポート
+- .NET Core と .NET Portable Profile 111 のサポート
 
 <a name="UpgradeSteps"></a>
 ## アップグレードの手順
 
-最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することにより、`Microsoft.Azure.Search` の NuGet 参照を更新します。
+最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、`Microsoft.Azure.Search` の NuGet 参照を更新します。Visual Studio で NuGet の [パッケージの管理] ウィンドウで [プレリリースを含める] を選択するか、NuGet パッケージ マネージャー コンソールを使用している場合は `-IncludePrerelease` スイッチを使用して、プレリリース パッケージを有効にします。
+
+NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。コードの構成方法に応じて、正常にリビルドされます。リビルドされれば、準備は完了です。
+
+ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
+
+    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+
+次の手順として、このビルド エラーを修正します。エラーの原因と修正方法については、「[バージョン 2.0-preview における重大な変更](#ListOfChanges)」を参照してください。
+
+古いメソッドまたはプロパティに関連するビルド警告が表示される場合があります。それらの警告には、非推奨の機能の代わりに何を使用するかについての指示が含まれます。たとえば、アプリケーションで `SearchRequestOptions.RequestId` プロパティ使用している場合は、「`"This property is deprecated. Please use ClientRequestId instead."`」という警告が表示されます。
+
+すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。SDK の新機能の詳細については、「[バージョン 2.0-preview の新機能](#WhatsNew)」を参照してください。
+
+<a name="ListOfChanges"></a>
+## バージョン 2.0-preview における重大な変更
+
+アプリケーションのリビルドの他に、コードを変更する必要があるバージョン 2.0-preview の大幅な変更は 1 つしかありません。
+
+### Indexes.GetClient の戻り型
+
+`Indexes.GetClient` メソッドには新しい戻り型があります。前に返されていたのは `SearchIndexClient` ですが、バージョン 2.0-preview では、これが `ISearchIndexClient` に変更されています。これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
+
+#### 例
+
+次のようなコードがあるものとします。
+
+```csharp
+SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+```
+
+この場合、次のように変更することでビルド エラーを解決できます。
+
+```csharp
+ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
+```
+
+## まとめ
+Azure Search .NET SDK の使用方法の詳細については、最近更新された[方法](search-howto-dotnet-sdk.md)に関する記事を参照してください。
+
+SDK についてのご意見をお待ちしております。問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuresearch)でご質問ください。バグを発見した場合は、[Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。問題のタイトルの前に、必ず "Search SDK: " を付けてください。
+
+Azure Search をお使いいただきありがとうございます。
+
+<a name="UpgradeStepsV1"></a>
+## 付録: バージョン 1.1 にアップグレードするための手順 
+
+> [AZURE.NOTE] このセクションは、Azure Search .NET SDK バージョン 0.13-preview 以前を使用しているユーザーにのみ適用されます。
+
+最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、`Microsoft.Azure.Search` の NuGet 参照を更新します。
 
 NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。
 
@@ -55,24 +102,24 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-次のステップとして、ビルド エラーを 1 つずつ修正します。ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。このような名前変更の一覧については、「[バージョン 1.1 における重大な変更の一覧](#ListOfChanges)」を参照してください。
+次のステップとして、ビルド エラーを 1 つずつ修正します。ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。このような名前変更の一覧については、「[バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1)」を参照してください。
 
-カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.1 バージョンの SDK で行われたバグ修正について認識しておく必要があります。詳細については、「[バージョン 1.1 でのバグ修正](#BugFixes)」を参照してください。
+カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.1 バージョンの SDK で行われたバグ修正について認識しておく必要があります。詳細については、「[バージョン 1.1 でのバグ修正](#BugFixesV1)」を参照してください。
 
-最後に、ビルド エラーを修正した後は、必要に応じて、新しい機能を利用するようにアプリケーションを変更できます。新しい SDK のカスタム シリアル化機能の詳細については、「[バージョン 1.1 の新機能](#WhatsNew)」を参照してください。
+最後に、ビルド エラーを修正した後は、必要に応じて、新しい機能を利用するようにアプリケーションを変更できます。
 
-<a name="ListOfChanges"></a>
-## バージョン 1.1 における重大な変更の一覧
+<a name="ListOfChangesV1"></a>
+### バージョン 1.1 における重大な変更の一覧
 
 以下の一覧は、変更によってアプリケーション コードが影響を受ける可能性の高い順になっています。
 
-### IndexBatch と IndexAction の変更
+#### IndexBatch と IndexAction の変更
 
-`IndexBatch.Create` は名前が `IndexBatch.New` に変更されて、`params` 引数はなくなりました。`IndexBatch.New` は、異なる種類のアクション (マージ、削除など) が混在するバッチに使用できます。さらに、すべてのアクションが同じバッチを作成するための新しい静的メソッドがあります。`Delete`、`Merge`、`MergeOrUpload`、および `Upload` です。
+`IndexBatch.Create` は名前が `IndexBatch.New` に変更され、`params` 引数はなくなりました。`IndexBatch.New` は、異なる種類のアクション (マージ、削除など) が混在するバッチに使用できます。さらに、すべてのアクションが同じバッチを作成するための新しい静的メソッドがあります。`Delete`、`Merge`、`MergeOrUpload`、および `Upload` です。
 
 `IndexAction` はパブリック コンストラクターを持たなくなり、そのプロパティは変更可能になっています。さまざまな目的のアクションの作成には、新しい静的メソッドである `Delete`、`Merge`、`MergeOrUpload`、および `Upload` を使用する必要があります。`IndexAction.Create` は削除されました。ドキュメントだけを受け取るオーバーロードを使用していた場合は、代わりに `Upload` を使用してください。
 
-#### 例
+##### 例
 
 次のようなコードがあるものとします。
 
@@ -89,11 +136,11 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-### IndexBatchException の変更
+#### IndexBatchException の変更
 
 `IndexBatchException.IndexResponse` プロパティは名前が `IndexingResults` に変更され、型は `IList<IndexingResult>` になりました。
 
-#### 例
+##### 例
 
 次のようなコードがあるものとします。
 
@@ -114,7 +161,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     }
 
 <a name="OperationMethodChanges"></a>
-### 操作メソッドの変更
+#### 操作メソッドの変更
 
 Azure Search .NET SDK の各操作は、同期および非同期の呼び出し元に対するメソッドのオーバーロードのセットとして公開されます。これらのメソッド オーバーロードのシグネチャと要素分解は、バージョン 1.1 で変更されました。
 
@@ -171,11 +218,11 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
  - 拡張メソッドで、HTTP の重要ではない細部の多くが呼び出し元に開示しないようになっています。たとえば、以前のバージョンの SDK では、HTTP 状態コードで応答オブジェクトが返されましたが、操作メソッドはエラーを示す状態コードに対して `CloudException` をスローするため、応答オブジェクトをチェックする必要はほとんどありませんでした。新しい拡張メソッドはモデル オブジェクトだけを返すので、コードでラップを解除する必要がある問題が減ります。
  - 逆に、コア インターフェイスでは、必要がある場合に HTTP レベルでの詳細な制御を提供するメソッドが公開されるようになっています。要求に含めるカスタム HTTP ヘッダーを渡すことができ、`AzureOperationResponse<T>` 型の戻り値を使用すると操作の `HttpRequestMessage` および `HttpResponseMessage` に直接アクセスできます。`AzureOperationResponse` は `Microsoft.Rest.Azure` 名前空間で定義されており、`Hyak.Common.OperationResponse` に代わるものです。
 
-### ScoringParameters の変更
+#### ScoringParameters の変更
 
 最新の SDK に `ScoringParameter` という新しいクラスが追加され、検索クエリでスコアリング プロファイルにパラメーターを簡単に指定できるようになりました。これまで、`SearchParameters` クラスの `ScoringProfiles` プロパティは `IList<string>` と型指定されていました。このプロパティが `IList<ScoringParameter>` と型指定されるようになりました。
 
-#### 例
+##### 例
 
 次のようなコードがあるものとします。
 
@@ -194,7 +241,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-### モデル クラスの変更
+#### モデル クラスの変更
 
 「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、またはクラスが削除されました。次に例を示します。
 
@@ -207,7 +254,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 まとめると、モデル オブジェクトをラップするためだけに存在していた `OperationResponse` 派生クラスが削除されました。残りのクラスについては、サフィックスが `Response` から `Result` に変更されました。
 
-#### 例
+##### 例
 
 次のようなコードがあるものとします。
 
@@ -241,7 +288,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
     IndexerExecutionResult lastResult = status.LastResult;
 
-#### 応答クラスと IEnumerable
+##### 応答クラスと IEnumerable
 
 コードに影響する可能性のあるその他の変更として、コレクションを保持する応答クラスが `IEnumerable<T>` を実装しなくなりました。代わりに、コレクション プロパティに直接アクセスすることができます。たとえば、次のようなコードがあるものとします。
 
@@ -259,7 +306,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         Console.WriteLine(result.Document);
     }
 
-#### Web アプリケーションに関する重要な注意事項
+##### Web アプリケーションに関する重要な注意事項
 
 `DocumentSearchResponse` を直接シリアル化して検索結果をブラウザーに送信する Web アプリケーションがある場合、コードを変更する必要があります。変更しないと、結果が正しくシリアル化されません。たとえば、次のようなコードがあるものとします。
 
@@ -293,11 +340,11 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 開発者自身がコード内でこのようなケースを探す必要があります。`JsonResult.Data` は `object` 型であるため、**コンパイラは警告を生成しません**。
 
-### CloudException の変更
+#### CloudException の変更
 
 `CloudException` クラスは、`Hyak.Common` 名前空間から `Microsoft.Rest.Azure` 名前空間に移動されました。また、その `Error` プロパティの名前が `Body` に変更されています。
 
-### SearchServiceClient と SearchIndexClient の変更
+#### SearchServiceClient と SearchIndexClient の変更
 
 `Credentials` プロパティの型が、`SearchCredentials` からその基本クラス `ServiceClientCredentials` に変更されました。`SearchIndexClient` または `SearchServiceClient` の `SearchCredentials` にアクセスする必要がある場合は、新しい `SearchCredentials` プロパティを使用してください。
 
@@ -317,11 +364,11 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-また、資格情報パラメーターの型が `ServiceClientCredentials` に変更されたことにも注意してください。`SearchCredentials` は `ServiceClientCredentials` から派生されているので、コードへの影響はないものと思われます。
+また、資格情報パラメーターの型が `ServiceClientCredentials` に変更されたことにも注意してください。`SearchCredentials` は `ServiceClientCredentials` から派生しているので、コードへの影響はないものと思われます。
 
-### 要求 ID の受け渡し
+#### 要求 ID の受け渡し
 
-古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれました。これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドは削除されました。代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
+古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれていました。これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドは削除されました。代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
 
 > [AZURE.NOTE] SDK の今後のリリースでは、他の Azure SDK で使用されている方法と整合性があるように、クライアント オブジェクトでグローバルに要求 ID を設定する新しいメカニズムが追加されます。
 
@@ -337,7 +384,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-### インターフェイス名の変更
+#### インターフェイス名の変更
 
 操作グループのインターフェイス名が、対応するプロパティ名と一致するようにすべて変更されています。
 
@@ -348,12 +395,12 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 テスト目的でこれらのインターフェイスのモックを作成した場合を除き、この変更がコードに影響する可能性はありません。
 
-<a name="BugFixes"></a>
-## バージョン 1.1 でのバグ修正
+<a name="BugFixesV1"></a>
+### バージョン 1.1 でのバグ修正
 
 古いバージョンの Azure Search .NET SDK には、カスタム モデル クラスのシリアル化に関するバグがありました。このバグは、null 非許容値型のプロパティを使用してカスタム モデル クラスを作成した場合に発生する可能性がありました。
 
-### 再現手順
+#### 再現手順
 
 null 非許容値型のプロパティを使用してカスタム モデル クラスを作成します。たとえば、`int?` ではなく `int` 型のパブリック `UnitCount` プロパティを追加します。
 
@@ -361,7 +408,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 また、意図した値ではなく null がインデックスに書き込まれるため、フィルターは期待どおりに機能しません。
 
-### 修正の詳細
+#### 修正の詳細
 
 この問題は、SDK のバージョン 1.1 で解決されました。次のようなモデル クラスがあるものとします。
 
@@ -376,7 +423,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
-これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると次のような `JsonSerializationException` が発生します。
+これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
@@ -384,11 +431,4 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 このバグの詳細と修正については、[GitHub でのこの問題の解説](https://github.com/Azure/azure-sdk-for-net/issues/1063)を参照してください。
 
-## まとめ
-Azure Search .NET SDK の使用方法の詳細については、最近更新された[方法](search-howto-dotnet-sdk.md)に関する記事を参照してください。
-
-SDK についてのご意見をお待ちしております。問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuresearch)で自由に質問してください。バグを発見した場合は、[Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。問題のタイトルの前に、必ず "Search SDK: " を付けてください。
-
-Azure Search をお使いいただきありがとうございます。
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

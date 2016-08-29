@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="terrylan"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/09/2016"
+	ms.date="08/15/2016"
 	ms.author="asmalser-msft"/>
 
 #Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
@@ -172,7 +172,7 @@ Azure AD では、カスタマイズ可能ないくつかの方法で組織内�
 
 ![][3]
 
-アクセス パネルは Azure 管理ポータルから独立していて、ユーザーが Azure サブスクリプションまたは Office 365 サブスクリプションを持っている必要はありません。
+アクセス パネルは Azure 管理ポータルから独立しているため、ユーザーが Azure サブスクリプションまたは Office 365 サブスクリプションを持っている必要はありません。
 
 Azure AD アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
@@ -227,4 +227,4 @@ Azure AD では、パスワードベースのシングル サインオン、既�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0817_2016-->

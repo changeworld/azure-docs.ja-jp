@@ -47,10 +47,10 @@ SanSan と Azure AD の統合を構成するには、次のものが必要です
 
 
 ## シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Microsoft Azure AD のシングル サインオンをテストします。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの SanSan の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Microsoft Azure AD シングル サインオンの構成とテスト
 
 
 ## ギャラリーからの SanSan の追加
@@ -84,25 +84,25 @@ Azure AD への SanSan の統合を構成するには、ギャラリーから管
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_06.png)
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SanSan で Azure AD のシングル サインオンを構成し、テストします。
+##  Microsoft Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SanSan で Microsoft Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する SanSan ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと SanSan の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を SanSan の **[Username (ユーザー名)]** の値として割り当てます。
 
-SanSan で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+SanSan で Microsoft Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Microsoft Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD テスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Microsoft Azure AD シングル サインオンをテストします。
 4. **[SanSan のテスト ユーザーの作成](#creating-an-sansan-test-user)** - SanSan で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Microsoft Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### Azure AD シングル サインオンの構成
+### Microsoft Azure AD のシングル サインオンの構成
 
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、SanSan アプリケーションでシングル サインオンを構成します。
+このセクションでは、クラシック ポータルで Microsoft Azure AD のシングル サインオンを有効にして、SanSan アプリケーションでシングル サインオンを構成します。
 
 
-**SanSan で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**SanSan で Microsoft Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 
 1. Azure クラシック ポータルの **SanSan** アプリケーション統合ページで [シングル サインオンの構成] をクリックし、[シングル サインオンの構成] ダイアログを開きます。
@@ -266,7 +266,7 @@ SanSan で Azure AD のシングル サインオンを構成してテストす�
 
 ### シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。アクセス パネルで [SanSan] タイルをクリックすると、SanSan アプリケーションに自動的にサインオンします。
+このセクションでは、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストします。アクセス パネルで [SanSan] タイルをクリックすると、SanSan アプリケーションに自動的にサインオンします。
 
 
 ## その他のリソース
@@ -294,4 +294,4 @@ SanSan で Azure AD のシングル サインオンを構成してテストす�
 [204]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sansan-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

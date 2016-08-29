@@ -13,22 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/16/2016"
+   ms.date="08/09/2016"
    ms.author="karolz@microsoft.com"/>
 
 # Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する
 ## はじめに
-この記事では、[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ストレージ、インデックス作成、および検索に **Elasticsearch** と **Kibana** を使用する方法について説明します。[Elasticsearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンで、このタスクに適しています。Microsoft Azure で実行されている Windows および Linux 仮想マシンにインストールできます。Elasticsearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された*構造化*トレースを高い効率で処理できます。
+この記事では、[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/) アプリケーションがアプリケーション トレース ストレージ、インデックス作成、および検索に **Elasticsearch** と **Kibana** を使用する方法について説明します。[Elasticsearch](https://www.elastic.co/guide/index.html) は、オープンソースの分散型でスケーラブルなリアルタイム検索および分析エンジンで、このタスクに適しています。Microsoft Azure で実行されている Windows および Linux 仮想マシンにインストールできます。Elasticsearch は、**Event Tracing for Windows (ETW)** などのテクノロジを使用して生成された*構造化*トレースを効率的に処理できます。
 
-ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションに対しても、診断情報をソースにする場合に推奨される方法です。この方法ではランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーション トレースの一般的な概要については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
+ETW は、Service Fabric ランタイムが診断情報 (トレース) をソースにするために使用します。Service Fabric アプリケーションに対しても、診断情報をソースにする場合に推奨される方法です。同じ方法でランタイムで提供されたトレースとアプリケーションから提供されたトレースを関連付けることができるので、トラブルシューティングが簡単になります。Visual Studio の Service Fabric プロジェクト テンプレートには、(.NET **EventSource** クラスに基づいて) 既定で ETW トレースを出力するロギング API が含まれています。ETW を使用した Service Fabric アプリケーション トレースの一般的な概要については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 
 Elasticsearch に出現するトレースの場合、リアルタイムで (アプリケーションの実行中に) Service Fabric クラスター ノードでキャプチャし、Elasticsearch エンドポイントに送信する必要があります。トレースのキャプチャには、主に 2 つのオプションがあります。
 
-+ **プロセス内のトレース キャプチャ** 
-アプリケーション (より正確にはサービス プロセス) が、診断データをトレース ストア (Elasticsearch) に送信する役割を担います。
++ **プロセス内のトレース キャプチャ** アプリケーション (より正確にはサービス プロセス) が、診断データをトレース ストア (Elasticsearch) に送信する役割を担います。
 
-+ **プロセス外のトレース キャプチャ**  
-別のエージェントが 1 つ以上のサービス プロセスからトレースをキャプチャし、トレース ストアに送信します。
++ **プロセス外のトレース キャプチャ** 別のエージェントが 1 つ以上のサービス プロセスからトレースをキャプチャし、トレース ストアに送信します。
 
 以下では、Azure で Elasticsearch を設定する方法、2 つのキャプチャ オプションの長所と短所、Elasticsearch にデータを送信する Service Fabric サービスを構成する方法について説明します。
 
@@ -41,7 +39,7 @@ Azure で Elasticsearch サービスを設定するには、[**Azure リソー�
 ### コンピューターで ElasticSearch のインストール スクリプトを実行するための準備をする
 ES-MultiNode テンプレートを使用するには、提供されている `CreateElasticSearchCluster` という Azure PowerShell スクリプトを使用するのが最も簡単な方法です。このスクリプトを使用するには、PowerShell モジュールと、**openssl** というツールをインストールする必要があります。openssl は、Elasticsearch クラスターのリモート管理に使用できる SSH キーを作成するために必要です。
 
-`CreateElasticSearchCluster` スクリプトは、Windows コンピューターから ES-MultiNode テンプレートを簡単に使用できるように設計されていることに注意してください。Windows 以外のコンピューターでもこのテンプレートを使用できますが、そのシナリオについては、この記事では説明しません。
+`CreateElasticSearchCluster` スクリプトは、Windows コンピューターから ES-MultiNode テンプレートを簡単に使用できるように設計されています。Windows 以外のコンピューターでもこのテンプレートを使用できますが、そのシナリオについては、この記事では説明しません。
 
 1. まだインストールしていない場合は、[**Azure PowerShell モジュール**](http://aka.ms/webpi-azps)をインストールします。メッセージが表示されたら、**[実行]**、**[インストール]** の順にクリックします。Azure PowerShell 1.3 以降が必要です。
 
@@ -63,7 +61,7 @@ ES-MultiNode テンプレートを使用するには、提供されている `Cr
 ### CreateElasticSearchCluster スクリプトを実行する
 スクリプトを実行する前に、`azuredeploy-parameters.json` ファイルを開き、スクリプト パラメーターの値を確認するか指定します。次のパラメーターがあります。
 
-|パラメーター名 |説明|
+|パラメーター名 |Description|
 |-----------------------  |--------------------------|
 |dnsNameForLoadBalancerIP |Elastic Search クラスターのパブリックに参照できる DNS 名を作成するために使用される名前です (指定した名前に Azure リージョン ドメインを付加して作成します)。たとえば、このパラメーター値が "myBigCluster" で選択した Azure リージョンが米国西部の場合、クラスターの結果の DNS 名は、myBigCluster.westus.cloudapp.azure.com になります。<br /><br />この名前は、Elastic Search クラスターに関連付けられた多数のアーティファクトの名前のルートとしても使用されます (データ ノード名など)。|
 |adminUsername |Elastic Search クラスターを管理する管理者アカウントの名前です (対応する SSH キーは自動的に生成されます)。|
@@ -81,25 +79,25 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-reg
 
 各値の説明:
 
-|スクリプト パラメーター名 |説明|
+|スクリプト パラメーター名 |Description|
 |-----------------------  |--------------------------|
-|`<es-group-name>` |すべての Elastic Search クラスター リソースが含まれる Azure リソース グループの名前|
-|`<azure-region>` |Elastic Search クラスターが作成される Azure リージョンの名前|         
-|`<es-password>` |Elastic Search ユーザーのパスワード|
+|`<es-group-name>` |すべての Elastic Search クラスター リソースが含まれる Azure リソース グループの名前。|
+|`<azure-region>` |Elastic Search クラスターが作成される Azure リージョンの名前。|         
+|`<es-password>` |Elastic Search ユーザーのパスワード。|
 
 >[AZURE.NOTE] Test-AzureResourceGroup コマンドレットで NullReferenceException が発生する場合、Azure にログオン (`Add-AzureRmAccount`) し忘れていることを示します。
 
 スクリプトを実行してエラーが発生し、エラーの原因が誤ったテンプレート パラメーター値であると判断した場合は、パラメーター ファイルを修正し、別のリソース グループ名でスクリプトを再実行します。`-RemoveExistingResourceGroup` パラメーターをスクリプトの呼び出しに追加すると、同じリソース グループ名を再利用して、古いリソース グループ名を消去することもできます。
 
 ### CreateElasticSearchCluster スクリプトの実行結果
-`CreateElasticSearchCluster` スクリプトを実行すると、次のメイン アーティファクトが作成されます。わかりやすくするために、`dnsNameForLoadBalancerIP` パラメーターの値に "myBigCluster" を使用し、クラスターを作成したリージョンが米国西部だとします。
+`CreateElasticSearchCluster` スクリプトを実行すると、次のメイン アーティファクトが作成されます。この例では、`dnsNameForLoadBalancerIP` パラメーターの値として "myBigCluster" を使用し、クラスターを作成したリージョンが米国西部であることを前提としています。
 
 |アーティファクト|名前、場所、備考|
 |----------------------------------|----------------------------------|
-|リモート管理用の SSH キー |myBigCluster.key ファイル (CreateElasticSearchCluster が実行されたディレクトリ内)。<br /><br />管理ノードと (管理ノード経由で) クラスター内のデータ ノードに接続するために使用できるキーです。|
+|リモート管理用の SSH キー |myBigCluster.key ファイル (CreateElasticSearchCluster が実行されたディレクトリ内)。<br /><br />このキー ファイルを使用して、管理ノードと (管理ノード経由で) クラスター内のデータ ノードに接続できます。|
 |管理者ノード |myBigCluster-admin.westus.cloudapp.azure.com <br /><br />Elasticsearch クラスターのリモート管理専用の VM です。外部 SSH 接続が可能な唯一の VM です。すべての Elasticsearch クラスター ノードと同じ仮想ネットワークで実行されますが、Elasticsearch サービスは実行されません。|
 |データ ノード |myBigCluster1 … myBigCluster*N* <br /><br />Elasticsearch サービスと Kibana サービスを実行しているデータ ノードです。SSH で各ノードに接続できますが、管理者ノードを経由する必要があります。|
-|Elasticsearch クラスター |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />上記の URL は、Elasticsearch クラスターのプライマリ エンドポイントです (/es サフィックスに注意してください)。基本 HTTP 認証で保護されます (資格情報は、ES-MultiNode テンプレートの esUserName/esPassword パラメーターで指定されました)。また、基本的なクラスター管理のために、head プラグイン (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head) もインストールされています。|
+|Elasticsearch クラスター |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />Elasticsearch クラスターのプライマリ エンドポイントです (/es サフィックスに注意してください)。基本 HTTP 認証で保護されます (資格情報は、ES-MultiNode テンプレートの esUserName/esPassword パラメーターで指定されました)。また、基本的なクラスター管理のために、head プラグイン (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head) もインストールされています。|
 |Kibana サービス |http://myBigCluster.westus.cloudapp.azure.com <br /><br />Kibana サービスは、作成された Elasticsearch クラスターのデータを表示するために設定されています。クラスター自体と同じ認証資格情報によって保護されます。|
 
 ## プロセス内とプロセス外のトレース キャプチャ
@@ -127,7 +125,7 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-reg
 
     * アプリケーション/サービス プロセス内で実行される診断サブシステムは、コンテキスト情報を使用してトレースを簡単に強化できます。
 
-    * プロセス外のアプローチでは、Event Tracing for Windows などのなんらかのプロセス内通信メカニズムを使用してデータをエージェントに送信する必要があります。その結果、制限が増える可能性があります。
+    * プロセス外のアプローチでは、Event Tracing for Windows などのなんらかのプロセス内通信メカニズムを使用してデータをエージェントに送信する必要があります。このしくみの結果、制限が増える可能性があります。
 
 **プロセス外のトレース キャプチャ**の長所は次のとおりです。
 
@@ -139,9 +137,9 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-reg
 
     * プラットフォーム ベンダーが開発したエージェント (Microsoft Azure 診断エージェントなど) は厳格なテストを受け、実際の環境で鍛えられています。
 
-    * プロセス内のトレース キャプチャでは、アプリケーション プロセスから診断データを送信する処理がアプリケーションのメイン タスクを邪魔したり、タイミングやパフォーマンスの問題を起こしたりしないように気を付ける必要があります。独立して実行されるエージェントは、このような問題を起こす可能性が低いので、通常は特にシステムへの影響を軽減するために設計されます。
+    * プロセス内のトレース キャプチャでは、アプリケーション プロセスから診断データを送信する処理がアプリケーションのメイン タスクを邪魔したり、タイミングやパフォーマンスの問題を起こしたりしないように気を付ける必要があります。独立して実行されるエージェントは、このような問題を起こす可能性が低いので、特にシステムへの影響を軽減するために設計されます。
 
-当然ながら、両方のアプローチを組み合わせて活用することもできます。実際、それが多くのアプリケーションに最適なソリューションです。
+両方のアプローチを組み合わせて活用することもできます。実際、それが多くのアプリケーションに最適なソリューションです。
 
 ここでは、**Microsoft.Diagnostic.Listeners ライブラリ**とプロセス内のトレース キャプチャを使用して、Service Fabric アプリケーションから Elasticsearch クラスターにデータを送信します。
 
@@ -158,12 +156,12 @@ Microsoft.Diagnostic.Listeners ライブラリは、PartyCluster サンプル Se
 
     ![Project references to Microsoft.Diagnostics.EventListeners and Microsoft.Diagnostics.EventListeners.Fabric libraries][1]
 
-### Service Fabric の一般公開リリースと Microsoft.Diagnostics.Tracing NuGet パッケージ
-Service Fabric の一般公開リリース (2.0.135、リリース日 2016 年 3 月 31 日) で構築されたアプリケーションは **.NET Framework 4.5.2** をターゲットとします。これは、GA リリースの時点で Azure がサポートする最新バージョンの .NET Framework です。残念ながら、このバージョンの .NET Framework には、Microsoft.Diagnostics.Listeners ライブラリに必要な EventListener API の一部が含まれていません。EventSource (Fabric アプリケーションのロギング API の基盤となるコンポーネント) と EventListener は密接に関連しているため、Microsoft.Diagnostics.Listeners ライブラリを使用するすべてのプロジェクトは、EventSource の代替の実装を使用する必要があります。この実装は、Microsoft が作成した **Microsoft.Diagnostics.Tracing NuGet パッケージ**に用意されています。このパッケージは、この .NET Framework に含まれている EventSource と完全に下位互換性があります。そのため、参照される名前空間を変更する以外に、コードの変更は必要ありません。
+### Service Fabric の一般公開リリースと Microsoft.Diagnostics.Tracing Nuget パッケージ
+Service Fabric の一般公開リリース (2.0.135、リリース日 2016 年 3 月 31 日) で構築されたアプリケーションは **.NET Framework 4.5.2** をターゲットとします。このバージョンは、GA リリースの時点で Azure がサポートする最新バージョンの .NET Framework です。残念ながら、このバージョンの .NET Framework には、Microsoft.Diagnostics.Listeners ライブラリに必要な EventListener API の一部が含まれていません。EventSource (Fabric アプリケーションのロギング API の基盤となるコンポーネント) と EventListener は密接に関連しているため、Microsoft.Diagnostics.Listeners ライブラリを使用するすべてのプロジェクトは、EventSource の代替の実装を使用する必要があります。この実装は、Microsoft が作成した **Microsoft.Diagnostics.Tracing Nuget パッケージ**に用意されています。このパッケージは、この .NET Framework に含まれている EventSource と完全に下位互換性があります。そのため、参照される名前空間を変更する以外に、コードの変更は必要ありません。
 
 EventSource クラスの Microsoft.Diagnostics.Tracing 実装を使用する場合、データを Elasticsearch に送信する必要があるサービス プロジェクトごとに、次の手順を実行します。
 
-1. サービス プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. サービス プロジェクトを右クリックし、**[Nuget パッケージの管理]** を選択します。
 
 2. まだ選択していない場合は nuget.org パッケージ ソースに切り替え、"**Microsoft.Diagnostics.Tracing**" を検索します。
 
@@ -233,7 +231,7 @@ namespace Stateless1
 }
 ```
 
-Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot\\Config\\Settings.xml**) の別のセクションで指定する必要があります。セクション名は、`FabricConfigurationProvider` コンストラクターに渡される値に対応する必要があります。次に例を示します。
+Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot\\Config\\Settings.xml**) の別のセクションに指定する必要があります。セクション名は、`FabricConfigurationProvider` コンストラクターに渡される値に対応する必要があります。次に例を示します。
 
 ```xml
 <Section Name="ElasticSearchEventListener">
@@ -243,10 +241,10 @@ Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot
   <Parameter Name="indexNamePrefix" Value="myapp" />
 </Section>
 ```
-`serviceUri`、`userName`、`password` の値はそれぞれ、Elasticsearch クラスター エンドポイント アドレス、Elasticsearch ユーザー名、パスワードに対応します。`indexNamePrefix` は、Elasticsearch インデックスのプレフィックスです。Microsoft.Diagnostics.Listeners ライブラリは、1 日に 1 回、データの新しいインデックスを作成します。
+`serviceUri`、`userName`、`password` の値はそれぞれ、Elasticsearch クラスター エンドポイント アドレス、Elasticsearch ユーザー名、パスワードに対応します。`indexNamePrefix` は、Elasticsearch インデックスのプレフィックスです。Microsoft.Diagnostics.Listeners ライブラリは、データの新しいインデックスを毎日作成します。
 
 ### 確認
-これで完了です。 これで、サービスを実行するたびに、構成に指定した Elasticsearch サービスにトレースが送信されるようになります。対象の Elasticsearch インスタンス (この例では、ページ アドレスは http://myBigCluster.westus.cloudapp.azure.com/) に関連付けられた Kibana UI を開き、`ElasticSearchListener` 用に選択した名前のプレフィックスが指定されたインデックスが実際に作成され、データが設定されていることを確認します。
+これで完了です。 これで、サービスを実行するたびに、構成に指定した Elasticsearch サービスにトレースが送信されるようになります。ターゲット Elasticsearch インスタンスに関連付けられている Kibana UI を開くことによってこれを確認できます。この例では、ページ アドレスは http://myBigCluster.westus.cloudapp.azure.com/ です。`ElasticSearchListener` インスタンス用に選択した名前のプレフィックスを持つインデックスが作成され、データが設定されたことを確認します。
 
 ![PartyCluster アプリケーション イベントを表示する Kibana][2]
 
@@ -257,4 +255,4 @@ Elasticsearch 接続データは、サービス構成ファイル (**PackageRoot
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/12/2016"
 	ms.author="raynew"/>
 
 # Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする
@@ -62,6 +62,20 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - オンプレミス インフラストラクチャから Azure へのフェールオーバーと、Azure からオンプレミス サイトの VMware VM サーバーへのフェールオーバー (復元) を簡単に実行できます。
 - 複数のマシンに階層化されているアプリケーション ワークロードをグループ化する回復計画を構成できます。また、その回復計画をフェールオーバーできます。Site Recovery には複数 VM の整合性機能があるので、同じワークロードを実行しているマシンを整合性データ ポイントにまとめて復元できます。
 
+
+## サポートされているオペレーティング システム
+
+### Windows (64 ビットのみ)
+- Windows Server 2008 R2 SP1+
+- Windows Server 2012
+- Windows Server 2012 R2
+
+### Linux (64 ビットのみ)
+- Red Hat Enterprise Linux 6.7、7.1、7.2
+- CentOS 6.5、6.6、6.7、7.0、7.1、7.2
+- Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5
+- SUSE Linux Enterprise Server 11 SP3
+
 ## シナリオのアーキテクチャ
 
 シナリオのコンポーネント:
@@ -87,7 +101,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 
 - **ソース環境** - キャパシティ プランニングや、VMware インフラストラクチャとソース マシンの要件。
 - **管理サーバー** - Site Recovery コンポーネントを実行するオンプレミス管理サーバーの計画。
-- **ソースからターゲットまでのネットワーク帯域幅** - ソースと Azure の間のレプリケーションに必要なネットワーク帯域幅の計画
+- **ソースからターゲットまでのネットワーク帯域幅** - ソースと Azure の間のレプリケーションに必要なネットワーク帯域幅の計画。
 
 ### ソース環境の考慮事項
 
@@ -118,7 +132,7 @@ Azure Site Recovery サービスは、仮想マシンと物理サーバーのレ
 - キャッシュ ディスクの測定には、RAID 10 で 10,000 RPM の SAS ドライブが 8 個というベンチマーク用ストレージを使用しました。
 
 ### ソースからターゲットへのネットワーク帯域幅
-[Capacity Planner ツール](site-recovery-capacity-planner.md)を使用して、初期レプリケーションと差分レプリケーションに必要な帯域幅を必ず計算します
+[容量計画ツール](site-recovery-capacity-planner.md)を使用して、初期レプリケーションと差分レプリケーションに必要な帯域幅を必ず計算します。
 
 #### レプリケーションに使用される帯域幅のスロットル
 
@@ -147,7 +161,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
  "プロビジョニング超過" 状態のネットワークの場合、このレジストリ キーを既定値から変更する必要があります。サポートされる最大値は 32 です。
 
 
-詳細なキャパシティ プランニングについては、[こちら](site-recovery-capacity-planner.md)をご覧ください。
+詳細な容量計画については、[こちら](site-recovery-capacity-planner.md)をご覧ください。
 
 ### 追加のプロセス サーバー
 
@@ -188,7 +202,7 @@ Azure Site Recovery でレプリケーションに使用される帯域幅を増
 **前提条件** | **詳細**
 --- | ---
 **Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
-**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium ストレージ アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントを、リソース グループ間で移動することはできません。Azure ストレージについては、[こちら](../storage/storage-introduction.md)をご覧ください。<br/><br/>
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。アカウントは Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Premium torage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントを、リソース グループ間で移動することはできません。Azure ストレージについては、[こちら](../storage/storage-introduction.md)をご覧ください。<br/><br/>
 **Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure 仮想ネットワークは、Site Recovery コンテナーと同じリージョンに存在する必要があります。<br/><br/>Azure へのフェールオーバー後にフェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) を設定する必要があります。
 
 
@@ -262,7 +276,7 @@ VMware 仮想マシンをレプリケートする場合、次の VMware コン�
 3.	**[開始する前に]** の **[構成サーバーとプロセス サーバーをインストールする]** を選択します。
 
 	![開始する前に](./media/site-recovery-vmware-to-azure-classic/combined-wiz1.png)
-4. **[Third-Party Software License (サードパーティ製ソフトウェア ライセンス)]**で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
+4. **[Third-Party Software License (サードパーティ製ソフトウェア ライセンス)]** で、**[同意する]** をクリックして MySQL をダウンロードし、インストールします。
 
 	![サード パーティ製ソフトウェア](./media/site-recovery-vmware-to-azure-classic/combined-wiz105.PNG)
 
@@ -497,7 +511,7 @@ Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure-classic/mobility3.png)
 
-3. **[Configuration Server Details (構成サーバーの詳細)]** で、管理サーバーの IP アドレスと、管理サーバーのコンポーネントをインストールしたときに生成されたパスフレーズを指定します。パスフレーズを取得するには、管理サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行します。
+3. **[構成サーバーの詳細]** で、管理サーバーの IP アドレスと、管理サーバーのコンポーネントをインストールしたときに生成されたパスフレーズを指定します。パスフレーズを取得するには、管理サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行します。
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure-classic/mobility6.png)
 
@@ -534,7 +548,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 4. 「*`sudo ./install -t both -a host -R Agent -d /usr/local/ASR -i <IP address> -p <port> -s y -c https -P passphrase.txt`*」と入力して、モビリティ サービスをインストールします。
 5. 管理サーバーの内部 IP アドレスを指定し、ポート 443 を選択します。
 
-**次のようにコマンド ラインからインストールすることもできます。**
+**次のようにコマンド ラインからインストールすることもできます**。
 
 1. 管理サーバーの C:\\Program Files (x86)\\InMage Systems\\private\\connection のパスフレーズをコピーし、管理サーバーに "passphrase.txt" というファイル名で保存します。次のコマンドを実行します。この例で、管理サーバーの IP アドレスは 104.40.75.37、HTTPS ポートは 443 です。
 
@@ -651,7 +665,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 - フェールオーバー後に Azure のレプリカ仮想マシンに接続する場合、フェールオーバーの実行前にソース マシンでリモート デスクトップ接続を有効にして、ファイアウォール経由の RDP 接続を許可します。また、フェールオーバー後に、Azure 仮想マシンのパブリック エンドポイントで RDP を許可する必要があります。フェールオーバー後に RDP が動作するように、この[ベスト プラクティス](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)に従ってください。
 
->[AZURE.NOTE] Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールしておきます。これは、ブートの速度を上げ、問題が発生した場合の診断にも役立ちます。Linux エージェントは[ここ](https://github.com/Azure/WALinuxAgent)から、Windows エージェントは[ここ](http://go.microsoft.com/fwlink/?LinkID=394789)から入手できます
+>[AZURE.NOTE] Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールしておきます。これは、ブートの速度を上げ、問題が発生した場合の診断にも役立ちます。Linux エージェントは[こちら](https://github.com/Azure/WALinuxAgent)から、Windows エージェントは[こちら](http://go.microsoft.com/fwlink/?LinkID=394789)から入手できます。
 
 ### テスト フェールオーバーの実行
 
@@ -733,7 +747,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 3. 1 つ目の管理サーバーを[セットアップ](#step-5-install-the-management-server)したのと同じ方法でウィザードを完了します。
 
-4. **[Configuration Server Details (構成サーバーの詳細)]** で、構成サーバーをインストールした 1 つ目の管理サーバーの IP アドレスと、パスフレーズを指定します。1 つ目の管理サーバーで、**<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行してパスフレーズを取得します。
+4. **[構成サーバーの詳細]** で、構成サーバーをインストールした 1 つ目の管理サーバーの IP アドレスと、パスフレーズを指定します。1 つ目の管理サーバーで、**<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行してパスフレーズを取得します。
 
 	![プロセス サーバーの追加](./media/site-recovery-vmware-to-azure-classic/add-ps2.png)
 
@@ -782,4 +796,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行されているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細を確認](site-recovery-failback-azure-to-vmware-classic.md)します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

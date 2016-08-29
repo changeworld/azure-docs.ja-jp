@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
 # BizTalk サービス: バックアップと復元に関するページ
 
-Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。このトピックでは、Azure クラシック ポータルを使用して BizTalk サービスをバックアップおよび復元する方法について説明しています。
+Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。このトピックでは、Azure クラシック ポータルを使用して BizTalk Services をバックアップおよび復元する方法について説明しています。
 
 BizTalk サービスのバックアップは、[BizTalk サービスの REST API](http://go.microsoft.com/fwlink/p/?LinkID=325584) を使用して行うこともできます。
 
@@ -65,7 +65,7 @@ BizTalk サービスのバックアップは、[BizTalk サービスの REST API
 #### <a name="backupschedule"></a>バックアップのスケジュール
 
 1. Azure クラシック ポータルで、**[BizTalk サービス]** を選択し、バックアップのスケジュールを設定する BizTalk サービスを選択した後、**[構成]** タブを選択します。
-2. [**バックアップ ステータス**] を [**自動**] に設定します。 
+2. [**バックアップ ステータス**] を [**自動**] に設定します。
 3. [**ストレージ アカウント**] で、どのアカウントにバックアップを保存するかを選択し、[**頻度**] にバックアップ作成の間隔を入力し、バックアップを保持する期間の長さを [**保持日数**] に入力します。
 
 	![][AutomaticBU]
@@ -235,4 +235,4 @@ Azure BizTalk Services を Azure クラシック ポータルで作成するに�
 [RestoreBizTalkService]: ./media/biztalk-backup-restore/RestoreBizTalkServiceWindow.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

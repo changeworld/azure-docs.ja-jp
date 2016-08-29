@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/18/2016"
+   ms.date="08/17/2016"
    ms.author="magoedte" />
 
 # Hybrid Runbook Worker: Runbook ジョブが中断状態で終了する
@@ -33,7 +33,7 @@ Runbook の実行が失敗し、返されるエラーは "プロセスが異常�
 このエラーには以下のような複数の原因が考えられます。
 
   1. Hybrid Worker がプロキシまたはファイアウォールの内側にある
-  2. Hybrid Worker を実行しているコンピューターが、ハードウェアの最小[要件](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements)を満たしていない 
+  2. Hybrid Worker を実行しているコンピューターが、ハードウェアの最小[要件](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-requirements)を満たしていない
   3. Runbook がローカル リソースで認証できない
 
 
@@ -57,9 +57,9 @@ Hybrid Runbook Worker を実行するコンピューターは、この機能を�
 
 ### 解決策
 
-**Microsoft-SMA** のイベント ログで "*Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。「[Runbook のアクセス許可](automation-hybrid-runbook-worker#runbook-permissions)」を参照して、Runbook の認証を正しく構成してあることを確認します。
+**Microsoft-SMA** のイベント ログで "*Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。「[Runbook のアクセス許可](automation-hybrid-runbook-worker.md#runbook-permissions)」を参照して、Runbook の認証を正しく構成してあることを確認します。
 
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

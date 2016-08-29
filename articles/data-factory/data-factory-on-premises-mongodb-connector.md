@@ -36,7 +36,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 ## データのコピー ウィザード
 MongoDB データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
+次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
 
 ## サンプル: MongoDB から Azure BLOB にデータをコピーする
 このサンプルは、オンプレミスの MongoDB データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーすることもできます。
@@ -347,4 +347,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 ## 次のステップ
 オンプレミスのデータ ストアから Azure データ ストアにデータを移動するデータ パイプラインを作成するための詳しい手順については、[オンプレミスとクラウドの間でデータを移動する方法](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

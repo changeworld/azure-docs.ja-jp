@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
     
 # Azure RemoteApp ネットワークで使用される帯域幅 - 一般的なガイドライン (自分でテストできない場合)
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp の[ネットワーク帯域幅テスト](remoteapp-bandwidthtests.md)を実施する余裕がない場合は、下記の汎用的なガイドラインを参考に、ユーザーごとのネットワーク帯域幅を見積もることができます。
 
@@ -37,10 +40,10 @@ Azure RemoteApp のパフォーマンスは、100 MB の LAN で最も高くな�
 こちらは低い帯域幅での使用を想定しています。256 KB/秒で、LAN と同等の感覚で快適に使用できます。
 
 ## 詳細情報
-- [Azure RemoteApp で使用されるネットワーク帯域幅を推定する](remoteapp-bandwidth.md)
+- [Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)
 
 - [Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか](remoteapp-bandwidthexperience.md)
 
 - [Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする](remoteapp-bandwidthtests.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

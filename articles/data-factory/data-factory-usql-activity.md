@@ -49,11 +49,11 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | あり
-accountName | Azure Data Lake Analytics アカウント名。 | あり
-dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | いいえ 
-authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | あり 
-subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合は Data Factory のサブスクリプションが使用されます)。 
+型 | type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 | はい
+accountName | Azure Data Lake Analytics アカウント名。 | はい
+dataLakeAnalyticsUri | Azure Data Lake Analytics URI。 | なし 
+authorization | Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 | はい 
+subscriptionId | Azure サブスクリプション ID | いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 
 resourceGroupName | Azure リソース グループ名 | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。
 sessionId | OAuth 承認セッションのセッション ID です。各セッション ID は一意であり、1 回のみ使用できます。セッション ID は、Data Factory Editor で自動生成されます。 | はい
 
@@ -93,7 +93,7 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
         }
     }
 
-コードで使用する Data Factory クラスに関する詳細は、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」のトピックを参照してください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
+コードで使用する Data Factory クラスの詳細については、「[AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)」、「[AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)」、および「[AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)」をご覧ください。WindowsFormsWebAuthenticationDialog クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加する必要があります。
  
  
 ## Data Lake Analytics U-SQL アクティビティ 
@@ -155,19 +155,19 @@ sessionId | OAuth 承認セッションのセッション ID です。各セッ�
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | あり
+type | type プロパティは、**DataLakeAnalyticsU-SQL** に設定する必要があります。 | はい
 scriptPath | U-SQL スクリプトを含むフォルダーのパス。ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)
 scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)
 script (スクリプト) | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。例: "script" : "CREATE DATABASE test". | いいえ (scriptPath と scriptLinkedService を使用する場合)
-degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ
-priority | キューされているすべてのジョブのうち、先に実行するジョブを決定します。数値が小さいほど、優先度は高くなります。 | いいえ 
-parameters | U-SQL スクリプトのパラメーター | いいえ 
+degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | なし
+priority | キューされているすべてのジョブのうち、先に実行するジョブを決定します。数値が小さいほど、優先度は高くなります。 | なし 
+parameters | U-SQL スクリプトのパラメーター | なし 
 
 スクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#script-definition)をご覧ください。
 
-### 入力データセットと出力データセットの例
+## 入力データセットと出力データセットの例
 
-#### 入力データセット
+### 入力データセット
 この例では、入力データは Azure Data Lake Store 内 (datalake/input フォルダーの SearchLog.tsv ファイル) にあります。
 
 	{
@@ -191,7 +191,7 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
     	}
 	}	
 
-#### 出力データセット
+### 出力データセット
 この例では、U-SQL スクリプトで生成された出力データは、Azure Data Lake Store (datalake/output フォルダー) に格納されます。
 
 	{
@@ -209,7 +209,7 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 	    }
 	}
 
-#### Azure Data Lake Store リンク サービスの例
+### Data Lake Store のリンクされたサービスのサンプル
 上記の入力/出力データセットで使用される Azure Data Lake Store リンク サービスの定義例を次に示します。
 
 	{
@@ -226,7 +226,7 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 上記の Azure Data Lake Store リンク サービスとデータ セット JSON スニペットの JSON プロパティについては、[Azure Data Lake Store のデータの入出力](data-factory-azure-datalake-connector.md)に関するページを参照してください。
 
-### スクリプト定義
+## U-SQL スクリプトのサンプル 
 
 	@searchlog =
 	    EXTRACT UserId          int,
@@ -257,4 +257,21 @@ parameters | U-SQL スクリプトのパラメーター | いいえ
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism や優先度など) も指定できます。
 
-<!---HONumber=AcomDC_0629_2016-->
+## 動的パラメーター
+前述のパイプライン定義のサンプルでは、in パラメーターと out パラメーターにハード コーディングされた値が割り当てられています。
+
+    "parameters": {
+        "in": "/datalake/input/SearchLog.tsv",
+        "out": "/datalake/output/Result.tsv"
+    }
+
+代わりに、動的パラメーターを使用することもできます。次に例を示します。
+
+    "parameters": {
+        "in": "$$Text.Format('/datalake/input/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)",
+        "out": "$$Text.Format('/datalake/output/{0:yyyy-MM-dd HH:mm:ss}.tsv', SliceStart)"
+    }
+
+この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されますが、ファイル名はスライス開始時刻に基づいて動的に指定されます。
+
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/03/2016"
+   ms.date="08/15/2016"
    ms.author="kipandya"/>
    
    
@@ -26,7 +26,7 @@ Azure DocumentDB は、グローバルに分散された数百万のデバイス
   
 ## 複数リージョンのアカウントの構成
 
-Azure ポータルを使えば、1 分足らずで DocumentDB アカウントを構成して世界規模のスケールを行えます。必要なのは、サポートされている複数の明確に定義された一貫性レベルから適切な一貫性レベルを選択し、対象のデータベース アカウントに任意の数の Azure リージョンを関連付けることだけです。DocumentDB の一貫性レベルでは、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフが提供されます。
+[Azure ポータル](documentdb-portal-global-replication.md)を使えば、1 分足らずで DocumentDB アカウントを構成して世界規模にスケールすることができます。必要なのは、サポートされている複数の明確に定義された一貫性レベルから適切な一貫性レベルを選択し、対象のデータベース アカウントに任意の数の Azure リージョンを関連付けることだけです。DocumentDB の一貫性レベルでは、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフが提供されます。
 
 ![DocumentDB offers multiple, well defined (relaxed) consistency models to choose from][1]
 
@@ -37,11 +37,11 @@ DocumentDB には明確に定義された (緩やかな) 一貫性モデルが�
 
 ## 複数リージョンのフェールオーバーの使用 
 
-Azure DocumentDB には複数の Azure リージョン間でデータベース アカウントを透過的にフェールオーバーする機能があります。新しい[マルチホーム API][developingwithmultipleregions] によって、アプリが継続して論理エンドポイントを使用でき、フェールオーバーによって中断されないことが保証されます。フェールオーバーの制御は自身で行います。アプリケーション、インフラストラクチャ、サービス、またはリージョンの (実際またはシミュレーション上の) 障害など、考えられるさまざまな障害状態のいずれかが発生した場合にデータベース アカウントを変更できる柔軟性が確保されています。DocumentDB でリージョンの障害が発生した場合、サービスによってデータベース アカウントが透過的にフェールオーバーされ、アプリケーションは可用性を損なわれることなく引き続きデータにアクセスします。DocumentDB は[ 99\.99% の可用性 SLA][sla] を提供しますが、[プログラム][arm]と Azure ポータルの両方で、リージョンの障害をシミュレートしてアプリケーションのエンド ツー エンドの可用性プロパティをテストできます。
+Azure DocumentDB には複数の Azure リージョン間でデータベース アカウントを透過的にフェールオーバーする機能があります。新しい[マルチホーム API][developingwithmultipleregions] によって、アプリが継続して論理エンドポイントを使用でき、フェールオーバーによって中断されないことが保証されます。フェールオーバーの制御は自身で行います。アプリケーション、インフラストラクチャ、サービス、またはリージョンの (実際またはシミュレーション上の) 障害など、考えられるさまざまな障害状態のいずれかが発生した場合にデータベース アカウントを変更できる柔軟性が確保されています。DocumentDB でリージョンの障害が発生した場合、サービスによってデータベース アカウントが透過的にフェールオーバーされ、アプリケーションは可用性を損なわれることなく引き続きデータにアクセスします。DocumentDB は [99\.99% の可用性 SLA][sla] を提供しますが、[プログラム][arm]と Azure ポータルの両方で、リージョンの障害をシミュレートしてアプリケーションのエンド ツー エンドの可用性プロパティをテストできます。
 
 
 ## 世界規模のスケーリング
-DocumentDB を利用すると、対象のデータベース アカウントに関連付けられているすべてのリージョン間でグローバルに、あらゆる規模で DocumentDB コレクションごとに独立してスループットをプロビジョニングし、ストレージを使用できます。DocumentDB コレクションは自動的にグローバルに分散され、データベース アカウントに関連付けられたすべてのリージョン間で管理されます。データベース アカウント内のコレクションは、[DocumentDB サービスが利用できる][serviceregions]任意の Azure リージョン間で配布できます。
+DocumentDB を利用すると、対象のデータベース アカウントに関連付けられているすべてのリージョン間でグローバルに、あらゆる規模で DocumentDB コレクションごとに独立してスループットをプロビジョニングし、ストレージを使用できます。DocumentDB コレクションは自動的にグローバルに分散され、データベース アカウントに関連付けられたすべてのリージョン間で管理されます。データベース アカウント内のコレクションは、[DocumentDB サービスが利用できる][serviceregions]任意の Azure リージョン間で分散できます。
 
 各 DocumentDB コレクションの購入済みスループットと使用済みストレージは、自動的にすべてのリージョン間で等しくプロビジョニングされます。これにより、[支払いの対象を各時間内で使用されるスループットとストレージのみに抑えながら][pricing]、アプリケーションを世界規模でシームレスにスケールできます。たとえば、ある DocumentDB コレクションについて 200 万 RU をプロビジョニングした場合、データベース アカウントに関連付けられているリージョンはそれぞれ、このコレクションに関して 200 万 RU を受け取ります。その例を次に示します。
 
@@ -54,7 +54,7 @@ DocumentDB では、読み取りについては 10 ミリ秒未満、書き込�
 
 ## グローバル分散の有効化 
 
-DocumentDB データベース アカウントに関連付ける Azure リージョンを 1 つにするか複数にするかによって、データをローカルに分散するかグローバルに分散するかを決定できます。データベース アカウントに対するリージョンの追加や削除は、いつでも行うことができます。
+DocumentDB データベース アカウントに関連付ける Azure リージョンを 1 つにするか複数にするかによって、データをローカルに分散するかグローバルに分散するかを決定できます。データベース アカウントに対するリージョンの追加や削除は、いつでも行うことができます。ポータルを使用してグローバル分散を有効にするには、「[How to perform DocumentDB global database replication using the Azure portal (Azure ポータルを使用して DocumentDB グローバル データベース レプリケーションを実行する方法)](documentdb-portal-global-replication.md)」を参照してください。プログラムを使用してグローバル分散を有効にするには、「[複数リージョンの DocumentDB アカウントを使用した開発](documentdb-developing-with-multiple-regions.md)」を参照してください。
 
 ## 次のステップ
 
@@ -70,21 +70,20 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 [2]: ./media/documentdb-distribute-data-globally/collection-regions.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[pcolls]: https://azure.microsoft.com/documentation/articles/documentdb-partition-data/
-[consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
+[pcolls]: documentdb-partition-data.md
+[consistency]: documentdb-consistency-levels.md
 [consistencytradeooffs]: ./documentdb-consistency-levels/#consistency-levels-and-tradeoffs
-[developingwithmultipleregions]: https://azure.microsoft.com/documentation/articles/documentdb-developing-with-multiple-regions/
-[createaccount]: https://azure.microsoft.com/documentation/articles/documentdb-create-account/
-[manageaccount]: https://azure.microsoft.com/documentation/articles/documentdb-manage-account/
-[manageaccount-consistency]: https://azure.microsoft.com/documentation/articles/documentdb-manage-account/#consistency
-[manageaccount-addregion]: https://azure.microsoft.com/documentation/articles/documentdb-manage-account/#addregion
-[throughputandstorage]: https://azure.microsoft.com/documentation/articles/documentdb-manage/
-[arm]: https://azure.microsoft.com/documentation/articles/documentdb-automation-resource-manager-cli/
+[developingwithmultipleregions]: documentdb-developing-with-multiple-regions.md
+[createaccount]: documentdb-create-account.md
+[manageaccount]: documentdb-manage-account.md
+[manageaccount-consistency]: documentdb-manage-account.md#consistency
+[throughputandstorage]: documentdb-manage.md
+[arm]: documentdb-automation-resource-manager-cli.md
 [regions]: https://azure.microsoft.com/regions/
-[serviceregions]: https://azure.microsoft.com/regions/#services
+[serviceregions]: https://azure.microsoft.com/ja-JP/regions/#services
 [pricing]: https://azure.microsoft.com/pricing/details/documentdb/
 [sla]: https://azure.microsoft.com/support/legal/sla/documentdb/
 [vldb]: http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf
-[sqlqueries]: https://azure.microsoft.com/documentation/articles/documentdb-sql-query/
+[sqlqueries]: documentdb-sql-query.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

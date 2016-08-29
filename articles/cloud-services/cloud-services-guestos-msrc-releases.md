@@ -13,12 +13,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="07/19/2016"
-   ms.author="yuemlu"/>
+   ms.date="08/17/2016"
+   ms.author="raiye"/>
 
 # Azure ゲスト OS 
 
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## 8 月のゲスト OS 
+
+| セキュリティ情報 ID | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| ----------- | ------------------- | --------------------------------------------------------------------------- | ---------------- | --------------------- |
+| MS16-095 | [3177356] | Internet Explorer 用の累積的なセキュリティ更新プログラム | 4\.35、3.42、2.54 | 2016 年 8 月 9日 |
+| MS16-097 | [3177393] | Microsoft グラフィックス コンポーネント用のセキュリティ更新プログラム | 4\.35、3.42、2.54 | 2016 年 8 月 9日 |
+| MS16-098 | [3178466] | Windows カーネル モード ドライバー用のセキュリティ更新プログラム | 4\.35、3.42、2.54 | 2016 年 8 月 9日 |
+| MS16-100 | [3179577] | セキュア ブート用のセキュリティ更新プログラム | 4\.35、3.42 | 2016 年 8 月 9日 |
+| MS16-101 | [3178465] | Windows 認証方法のセキュリティ更新プログラム | 4\.35、3.42、2.54 | 2016 年 8 月 9日 |
+| MS16-102 | [3182248] | Microsoft Windows PDF ライブラリ用のセキュリティ更新プログラム | 4\.35、3.42 | 2016 年 8 月 9日 |
+| MS16-077 再リリース | [3165191] | Web プロキシ自動検出 (WPAD) 用のセキュリティ更新プログラム | 4\.35、3.42、2.54 | 2016 年 8 月 9日 |
+| | [3172605] | Windows 7 SP1 および Windows Server 2008 R2 SP1 用の 2016 年 7 月付更新プログラムのロールアップ | 2\.54 | 2016 年 8 月 9日 |
+| | [3172615] | Windows Server 2012 用の 2016年 7 月の更新プログラム ロールアップ | 3\.42 | 2016 年 8 月 9日 |
+| | [3172614] | Windows RT 8.1、Windows 8.1、および Windows Server 2012 R2 用の 2016 年 7 月の更新プログラム ロールアップ | 4\.35 | 2016 年 8 月 9日 |
 
 ## 7 月のゲスト OS 
 
@@ -335,6 +350,17 @@
 | 該当なし | [2896881][2896881] | Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い | 4\.15、3.22、2.34 | 2015 年 1 月 13 日 |
 
 
+[3177356]: http://support.microsoft.com/kb/3177356
+[3177393]: http://support.microsoft.com/kb/3177393
+[3178466]: http://support.microsoft.com/kb/3178466
+[3179577]: http://support.microsoft.com/kb/3179577
+[3178465]: http://support.microsoft.com/kb/3178465
+[3182248]: http://support.microsoft.com/kb/3182248
+[3165191]: http://support.microsoft.com/kb/3165191
+[3172605]: http://support.microsoft.com/kb/3172605
+[3172614]: http://support.microsoft.com/kb/3172614
+[3172615]: http://support.microsoft.com/kb/3172615
+
 [3169991]: http://support.microsoft.com/kb/3169991
 [3170005]: http://support.microsoft.com/kb/3170005
 [3170050]: http://support.microsoft.com/kb/3170050
@@ -576,4 +602,4 @@
 [family-explain]: cloud-services-guestos-update-matrix.md#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

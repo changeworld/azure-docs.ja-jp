@@ -14,23 +14,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="02/19/2016"
+   ms.date="08/16/2016"
    ms.author="mobandyo;bryanla"/>
 
-# Microsoft Azure リソースの消費を把握する 
+# Microsoft Azure リソースの消費を把握する
 
 ユーザーとパートナーには、Azure のコストを正確に予測し、管理する機能が必要です。資本支出モデルから運営コスト モデルに移行する場合、特に大規模なクラウド デプロイの場合には、ショーバックとチャージバックを分析する機能だけでなく、見積と課金に関するモードの忠実度も提供する必要があります。
 
 このようなニーズに対して、この記事で説明する Azure Resource Usage API と Rate Card API を利用すると、Azure リソースの消費を新しい方法で把握できるようになります。
 
-## Azure Resource Usage API と RateCard API 
+## Azure Resource Usage API と RateCard API
 
 Azure Resource Usage API と RateCard API は、Azure リソース マネージャーが公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。
 
 ### Azure Resource Usage API (プレビュー)
 ユーザーとパートナーは、Azure Resource Usage API を使用して推定 Azure 消費データを取得できます。機能は、次のとおりです。
-	
-- **Azure ロールベースの Access Control** - ユーザーはパートナーは、[Azure プレビュー ポータル](https://portal.azure.com)または [Azure PowerShell コマンドレット](powershell-install-configure.md)を使用してアクセス ポリシーを構成して、サブスクリプションの使用状況データにアクセスできるユーザーまたはアプリケーションを指定できます。呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、または共同作成者のロールに呼び出し元を追加する必要があります。
+
+- **Azure ロールベースのアクセス制御** - ユーザーとパートナーは、[Azure ポータル](https://portal.azure.com)または [Azure PowerShell コマンドレット](powershell-install-configure.md)を使用してアクセス ポリシーを構成して、サブスクリプションの使用状況データにアクセスできるユーザーまたはアプリケーションを指定できます。呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、または共同作成者のロールに呼び出し元を追加する必要があります。
 
 - **時間単位または日単位の集計** - 呼び出し元は、時間単位のバケットまたは日単位のバケットのどちらで Azure 使用状況データを取得するかを指定できます。既定値は日単位です。
 
@@ -43,9 +43,9 @@ Azure Resource Usage API と RateCard API は、Azure リソース マネージ�
 ### Azure Resource RateCard API (プレビュー)
 ユーザーとパートナーは、Azure Resource RateCard API を使用して、使用できる Azure リソースの一覧と、それぞれの推定料金情報を取得できます。機能は、次のとおりです。
 
-- **Azure ロールベースの Access Control** - ユーザーはパートナーは、[Azure プレビュー ポータル](https://portal.azure.com)または [Azure PowerShell コマンドレット](powershell-install-configure.md)を使用してアクセス ポリシーを構成して、RateCard データにアクセスできるユーザーまたはアプリケーションを指定できます。呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、または共同作成者のロールに呼び出し元を追加する必要があります。
-	
-- **従量課金制、MSDN、料金コミットメント、料金クレジット プランのサポート (EA はサポートされていません)** - この API は、Azure のプラン レベルの料金情報と、サブスクリプション レベルを提供しています。この API の呼び出し元は、プラン情報を渡してリソースの詳細と料金を取得する必要があります。EA プランには登録ごとにカスタマイズされた料金があるので、現在は EA 料金を提供できません。
+- **Azure ロールベースのアクセス制御** - ユーザーとパートナーは、[Azure ポータル](https://portal.azure.com)または [Azure PowerShell コマンドレット](powershell-install-configure.md)を使用してアクセス ポリシーを構成し、RateCard データにアクセスできるユーザーまたはアプリケーションを指定できます。呼び出し元は、認証に Azure Active Directory トークンを使用する必要があります。また、呼び出し元が特定の Azure サブスクリプションの使用状況データにアクセスするには、リーダー、所有者、または共同作成者のロールに呼び出し元を追加する必要があります。
+
+- **従量課金制、MSDN、料金コミットメント、料金クレジット プランのサポート (EA はサポートされていません)** - この API は、Azure のプラン レベルとサブスクリプション レベルの料金情報を提供しています。この API の呼び出し元は、プラン情報を渡してリソースの詳細と料金を取得する必要があります。EA プランには登録ごとにカスタマイズされた料金があるので、現在は EA 料金を提供できません。
 
 ## シナリオ
 
@@ -79,4 +79,4 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 + Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 + クラウドの使用量を把握するために必要なその他のツール群については、Gartner の記事「[IT 財務管理 (ITFM) ツールの市場ガイド](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

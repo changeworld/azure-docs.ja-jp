@@ -28,7 +28,12 @@ Data Management Gateway の詳細およびゲートウェイの設定手順に�
 
 SQL Server と同じオンプレミス コンピューターまたはクラウド VM インスタンスにゲートウェイをインストールできますが、パフォーマンスのためには、別のコンピューターまたはクラウド VM にインストールしてリソースの競合を回避することをお勧めします。
 
-次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+
+
+## データのコピー ウィザード
+SQL Server データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+
+次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。次のサンプルは、SQL Server と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 ## サンプル: SQL Server から Azure BLOB にデータをコピーする
 
@@ -451,7 +456,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 ## SQL Server のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 > [AZURE.NOTE] コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
@@ -496,19 +501,19 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、SQ
 
 	![リモート接続を有効にする](.\media\data-factory-sqlserver-connector\AllowRemoteConnections.png)
 
-	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」を参照してください。
+	詳細な手順については、「[remote access サーバー構成オプションの構成](https://msdn.microsoft.com/library/ms191464.aspx)」をご覧ください。
 2. **SQL Server 構成マネージャー**を起動します。目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、**[MSSQLSERVER のプロトコル]** を選択します。右側のウィンドウにプロトコルが表示されます。**[TCP/IP]** を右クリックし、**[有効化]** をクリックして TCP/IP を有効にします。
 
 	![TCP/IP を有効にする](.\media\data-factory-sqlserver-connector\EnableTCPProptocol.png)
 
-	詳細について、また TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
+	詳細および TCP/IP プロトコルを有効にする別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](https://msdn.microsoft.com/library/ms191294.aspx)」をご覧ください。
 3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP のプロパティ]** ウィンドウを起動します。
-4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。**[TCP ポート]** の値をメモしておきます (既定は **1433**)。
+4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。**[TCP ポート]** の値をメモしておきます (既定値は **1433** です)。
 5. コンピューターに **Windows Firewall のルール**を作成し、このポート経由の受信トラフィックを許可します。
 6. **接続の確認**: 別のコンピューターから SQL Server Management Studio を使用して、完全修飾名を使って SQL Server に接続します。例: <コンピューター>.< ドメイン >.corp.<会社> .com,1433。
 
 	> [AZURE.IMPORTANT]
-	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」を参照してください。
+	詳細については、「[ポートとセキュリティに関する考慮事項](data-factory-move-data-between-onprem-and-cloud.md#port-and-security-considerations)」をご覧ください。
 	>   
 	> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
@@ -644,6 +649,6 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

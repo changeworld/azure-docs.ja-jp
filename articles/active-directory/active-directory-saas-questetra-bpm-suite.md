@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="08/12/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,7 +21,7 @@
 
 このチュートリアルの目的は、Questetra BPM Suite と Azure Active Directory (Azure AD) を統合する方法を説明することです。Questetra BPM Suite と Azure AD の統合には、次の利点があります。
 
-- Questetra BPM Suite にアクセスする Azure AD ユーザーを制御できます。 
+- Questetra BPM Suite にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Questetra BPM Suite にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -41,13 +41,13 @@ Questetra BPM Suite と Azure AD の統合を構成するには、次のもの�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Questetra BPM Suite の追加 
+1. ギャラリーからの Questetra BPM Suite の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -56,7 +56,7 @@ Azure AD への Questetra BPM Suite の統合を構成するには、ギャラ�
 
 **ギャラリーから Questetra BPM Suite を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -114,7 +114,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 4. 上部のメニューで **[システム設定]** をクリックします。
 
-	![Azure AD のシングル サインオン][10]
+	![Azure AD Single Sign-On][10]
 
 5. **[シングルサインオン (SAML)]** ページを開くには、**[SSO (SAML)]** をクリックします。
 
@@ -141,7 +141,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 8. **Questetra BPM Suite** 企業サイトで、次の手順を実行します。
 
-	![シングル サインオンの構成][15]
+	![Configure Single Sign-On][15]
 
     a.**[シングル サインオンを有効にする]** を選択します。
      
@@ -160,17 +160,17 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     g.base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーし、**[検証証明書]** ボックスに貼り付けます。
 
-    h.**[保存]** をクリックします。
+    h.[**Save**] をクリックします。
 
 
 9. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-	![Azure AD Connect の概要][17]
+	![Azure AD Connect とは][17]
 
 
 10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-	![What is Azure AD Connect][18]
+	![Azure AD Connect とは][18]
 
 
 
@@ -194,7 +194,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 	![Azure AD のテスト ユーザーの作成][102]
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成][103]
  
@@ -238,8 +238,8 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 **Questetra BPM Suite で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
 1.	Questetra BPM Suite 企業サイトに管理者としてサインオンします。
-2.	**[システム設定]、[ユーザー一覧]、[新規ユーザー]** の順に移動します。 
-3.	[新規ユーザー] ダイアログで、次の手順を実行します。 
+2.	**[システム設定]、[ユーザー一覧]、[新規ユーザー]** の順に移動します。
+3.	[新規ユーザー] ダイアログで、次の手順を実行します。
 
 	![テスト ユーザーの作成][300]
 
@@ -257,29 +257,29 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 このセクションの目的は、Britta Simon に Questetra BPM Suite へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-![What is Azure AD Connect][200]
+![Azure AD Connect とは][200]
 
 **Questetra BPM Suite に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-	![What is Azure AD Connect][201]
+	![Azure AD Connect とは][201]
 
 2. アプリケーションの一覧で **[Questetra BPM Suite]** を選択します。
 
-	![What is Azure AD Connect][205]
+	![Azure AD Connect とは][205]
 
 1. 上部のメニューで **[ユーザー]** をクリックします。
 
-	![What is Azure AD Connect][202]
+	![Azure AD Connect とは][202]
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-	![What is Azure AD Connect][203]
+	![Azure AD Connect とは][203]
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-	![What is Azure AD Connect][204]
+	![Azure AD Connect とは][204]
 
 
 
@@ -332,4 +332,4 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
 [300]: ./media/active-directory-saas-questetra-bpm-suite/questera_bpm_suite_11.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

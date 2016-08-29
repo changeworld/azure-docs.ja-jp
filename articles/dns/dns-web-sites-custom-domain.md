@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Web アプリのカスタム DNS レコードの作成 | Microsoft Azure" 
+   pageTitle="Web アプリのカスタム DNS レコードの作成 | Microsoft Azure " 
    description="Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成する方法。" 
    services="dns" 
    documentationCenter="na" 
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/11/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # カスタム ドメインにおける Web アプリの DNS レコードの作成
@@ -31,8 +31,8 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 開始する前に、最初に Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任する必要があります。
  
-1. DNS ゾーンを作成するには、「[DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。 
-2. DNS を Azure DNS に委任するには、「[DNS ドメインの委任](dns-domain-delegation.md)」の手順に従います。 
+1. DNS ゾーンを作成するには、「[DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。
+2. DNS を Azure DNS に委任するには、「[DNS ドメインの委任](dns-domain-delegation.md)」の手順に従います。
 
 ゾーンを作成し、それを Azure DNS に委任したら、カスタム ドメインのレコードを作成できます。
 
@@ -41,7 +41,7 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 A レコードは、名前をその IP アドレスに対応付けるために使用されます。次の例では、A レコードとして @ を IPv4 アドレスに割り当てます。
 
-### 手順 1.
+### 手順 1
  
 A レコードを作成して $rs 変数に割り当てます。
 	
@@ -61,11 +61,11 @@ Web アプリの IP アドレスを確認するには、「[Azure App Service �
 
 	Set-AzureRMDnsRecordSet -RecordSet $rs
 
-## 2\.カスタム ドメインの CNAME レコードの作成
+## 手順 2.カスタム ドメインの CNAME レコードの作成
 
 ドメインが既に Azure DNS で管理されている場合 ([DNS ドメインの委任](dns-domain-delegation.md)に関するページを参照)、次の例を使用して contoso.azurewebsites.net の CNAME レコードを作成できます。
 
-### 手順 1.
+### 手順 1
 
 PowerShell を開き、新しい CNAME レコード セットを作成して $rs 変数に割り当てます。この例では、"Time To Live" が 600 秒で、CNAME という種類のレコード セットが "contoso.com" という名前の DNS ゾーンに作成されます。
 
@@ -127,7 +127,7 @@ CNAME レコード セットが作成されたら、Web アプリを指すエイ
 Web アプリの A レコードを使用する場合は、カスタム ドメインを所有していることを確認できるように、確認プロセスを実行する必要があります。この確認手順は、"awverify" という名前の特別な CNAME レコードを作成することで実行されます。このセクションは A レコードのみに適用されます。
 
 
-### 手順 1.
+### 手順 1
 
 "awverify" レコードを作成します。下の例では、カスタム ドメインの所有権を確認するために、contoso.com の "awverify" レコードが作成されます。
 
@@ -179,4 +179,4 @@ Web アプリの A レコードを使用する場合は、カスタム ドメイ
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

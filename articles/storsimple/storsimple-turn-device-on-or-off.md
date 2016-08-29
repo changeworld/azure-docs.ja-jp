@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/21/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのオンとオフ 
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple デバイスを通常のシステム運用の一環としてシャットダウンする必要はありません。ただし、やむを得ずシャットダウンしたデバイスや新しいデバイスの電源をオンにしなければならないケースはあります。一般にシャットダウンは、故障したハードウェアを交換するときや、物理的に装置を移動するとき、デバイスを廃棄するときに必要となります。このチュートリアルでは、さまざまな状況で StorSimple デバイスの電源をオンにしたりシャットダウンしたりするために必要な手順を説明します。
 
@@ -241,4 +241,4 @@ Windows PowerShell for StorSimple には、デバイスのシリアル コンソ
 
 StorSimple デバイスの電源を入れるときまたはシャットダウンするときに問題が発生した場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

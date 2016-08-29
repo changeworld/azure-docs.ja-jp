@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="08/12/2016"
 	ms.author="asteen"/>
 
 # パスワード管理のトラブルシューティングの方法
@@ -456,7 +456,21 @@
               <p>ADSync サービスの再起動時に、ライトバックが構成された場合は、WCF エンドポイントが起動します。ただし、エンドポイントの起動に失敗した場合は、単にイベント ログ 6800 を記録し、同期サービスを起動します。このイベントの存在は、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。このイベント (6800) のイベント ログ詳細とPasswordResetService コンポーネントで生成されたイベント ログ エントリは、エンドポイントが起動できなかった理由を示します。パスワード ライトバックが機能していない場合は、これらのイベント ログのエラーを確認し、Azure AD Connect の再起動を試みてください。問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてください。</p>
             </td>
           </tr>
-          <tr>
+					<tr>
+            <td>
+              <p>パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。また、Azure AD Connect のイベント ログを見ると、ロック解除操作の後に "Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long (同期エンジンから hr=800700CE エラーと、ファイル名または拡張子が長すぎるというメッセージが返されました)" というイベントが記録されています。
+							</p>
+            </td>
+            <td>
+              <p>これは、以前のバージョンの Azure AD Connect または DirSync からアップグレードした場合に発生します。以前のバージョンの Azure AD Connect では、Azure AD 管理エージェント アカウントに対して 254 文字のパスワードが設定されます (新しいバージョンで設定されるパスワードの長さは 127 文字)。そのような長いパスワードは、AD Connector のインポート操作とエクスポート操作では正しく機能しますが、ロック解除操作ではサポートされません。
+							</p>
+            </td>
+            <td>
+              <p>Azure AD Connect の [Active Directory アカウントを検索](active-directory-aadconnect-accounts-permissions.md#active-directory-account)し、127 文字以下となるようにパスワードをリセットしてください。[スタート] メニューから **[同期サービス]** を開きます。**[コネクタ]** に移動し、**[Active Directory Connector]** を探します。それを選択し、**[プロパティ]** をクリックします。**[資格情報]** ページに移動して新しいパスワードを入力します。**[OK]** を選択してページを閉じます。
+							</p>
+            </td>
+          </tr>
+					<tr>
             <td>
               <p>Azure AD Connect インストール中のライトバックの構成エラーです。</p>
             </td>
@@ -1501,4 +1515,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

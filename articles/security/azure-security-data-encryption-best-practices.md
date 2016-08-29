@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/16/2016"
    ms.author="yuridio"/>
 
 #Azure のデータ セキュリティと暗号化のベスト プラクティス
@@ -163,4 +163,4 @@ Azure RMS の導入を計画するときは、次の準備を行うことをお�
 
 Azure RMS の詳細については、「[Azure Rights Management の概要](https://technet.microsoft.com/library/jj585016.aspx)」をご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

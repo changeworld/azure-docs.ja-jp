@@ -13,10 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で Office を使用する
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp で Office アプリケーションをホストする場合、Office 365 ProPlus と Office 2013 Professional Plus 試用版の 2 つの選択肢があります。
 
@@ -49,4 +52,4 @@ RemoteApp の 30 日間の無償試用期間中は、Office 2013 Professional Pl
 
 試用期間の終了後に実稼働モードに切り替えないと、RemoteApp コレクションは無効になります。データは保存されます - 設定とユーザーのデータはあと 90 日間保存されますので、サービスをアクティブ化してデータを失うことなく、実稼働モードに切り替えることができます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

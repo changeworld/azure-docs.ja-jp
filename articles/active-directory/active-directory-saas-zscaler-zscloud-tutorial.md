@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/25/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 
@@ -94,7 +94,7 @@
 
 6.  上部のメニューで **[管理]** をクリックします。
 
-    ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800206.png "管理")
+    ![管理](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800206.png "管理")
 
 7.  **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。
 
@@ -111,7 +111,7 @@
 
     ![シングル サインオン](./media/active-directory-saas-zscaler-zscloud-tutorial/IC800209.png "シングル サインオン")
 
-    1.  Azure クラシック ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[認証のためにユーザーに表示される SAML ポータルの URL]** ボックスに貼り付けます。
+    1.  Azure クラシック ポータルの **[ZScaler ZSCloud でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[URL of the SAML Portal to which users are sent for authentication (認証のためにユーザーに表示される SAML ポータルの URL)]** ボックスに貼り付けます。
     2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。
     3.  ダウンロードした証明書をアップロードするには、**[Zscaler pem]** をクリックします。
     4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
@@ -169,18 +169,18 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
 
 3.  **[ユーザー管理]** をクリックします。
 
-    ![[追加] のいずれかを](./media/active-directory-saas-zscaler-zscloud-tutorial/IC781037.png "[追加] のいずれかを")
+    ![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/IC781037.png "Add")
 
 4.  **[ユーザー]** タブで、**[追加]**.をクリックします。
 
-    ![[追加] のいずれかを](./media/active-directory-saas-zscaler-zscloud-tutorial/IC781037.png "[追加] のいずれかを")
+    ![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/IC781037.png "[追加] のいずれかを")
 
 5.  [ユーザーの追加] セクションで、次の手順を実行します。
 
     ![ユーザーの追加](./media/active-directory-saas-zscaler-zscloud-tutorial/IC781038.png "ユーザーの追加")
 
     1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
-    2.  **[保存]** をクリックします。
+    2.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] ZScaler ZSCloud から提供されている他の ZScaler ZSCloud ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -200,6 +200,6 @@ Azure AD ユーザーが ZScaler ZSCloud にログインできるようにする
 
     ![Yes](./media/active-directory-saas-zscaler-zscloud-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

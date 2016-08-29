@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690946.aspx -->
@@ -38,7 +38,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 1. **[Available Software]** ダイアログで、**[Work with]** ボックスに「**http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。
 
-1. **[Name]** ウィンドウで、**\[Azure Toolkit for Eclipse]** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。画面は次のようになります。
+1. **[Name]** ウィンドウで、**[Azure Toolkit for Eclipse]** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。画面は次のようになります。
 
     ![Azure Toolkit for Eclipse のインストール][02]
 
@@ -109,4 +109,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [05]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-05.png
 [06]: ./media/azure-toolkit-for-eclipse-installation/eclipse-installation-06.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

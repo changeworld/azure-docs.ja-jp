@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/17/2016"
 	ms.author="stefsch"/>
 
 # App Service Environment のカスタム構成設定
 
-## 概要 ##
+## Overview ##
 App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
 App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
@@ -85,7 +85,7 @@ TLS 1.0 は、次の **clusterSettings** エントリで無効にすることが
             }
         ],
 
-> [AZURE.WARNING]  SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。この場合は、**clusterSettings** から *FrontEndSSLCipherSuiteOrder* エントリを削除し、更新された ARM テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。この機能は慎重に使用してください。
+> [AZURE.WARNING]  SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。この場合は、**clusterSettings** から *FrontEndSSLCipherSuiteOrder* エントリを削除し、更新された Resource Manager テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。この機能は慎重に使用してください。
 
 ## 作業開始
 Azure クイック スタート Resource Manager テンプレートのサイトには、[App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
@@ -95,4 +95,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

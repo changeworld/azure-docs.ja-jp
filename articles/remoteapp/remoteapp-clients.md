@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp でのアプリへのアクセス
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもアプリにアクセスできることです。さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
 
@@ -207,4 +210,4 @@ Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ �
 	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

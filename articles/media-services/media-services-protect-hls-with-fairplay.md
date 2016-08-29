@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/15/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする 
@@ -23,10 +23,6 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 - **AES-128 エンベロープ クリア キー** - **AES-128 CBC** モードを使用してチャンク全体を暗号化します。ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。詳細については、[こちらの記事](media-services-protect-with-aes128.md)を参照してください。
 
 - **Apple FairPlay** - **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。**FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
-
-	>[AZURE.NOTE]
-	AMS を使用して FairPlay で暗号化された HLS を配信する機能は、現在プレビュー段階です。
-
 
 次のイメージは、"FairPlay 動的暗号化" ワークフローを示しています。
 
@@ -53,7 +49,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 		次の手順では、FairPlay 用の pfx 証明書を生成する方法について説明します。
 		
-		1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします
+		1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
 		
 			Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
 		
@@ -74,7 +70,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 - FPS のクライアント側で、次の設定が必要です。
  	- **App Cert (AC)** - OS が一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。AMS で把握しておく必要がある理由は、プレーヤーで必要になるからです。復号化は、キー配信サービスが対応する秘密キーを使用して行います。
 
-- FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。そのプロセスで、次の 3 つの部分が作成されます。
+- FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。そのプロセスにより、3 つすべてのパートが作成されます。
 
 	-  .der
 	-  .pfx
@@ -94,7 +90,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	- 配信方法 (ここでは FairPlay)
 	- FairPlay ポリシー オプションの構成FairPlay を構成する方法の詳細については、以下のサンプルの ConfigureFairPlayPolicyOptions() メソッドをご覧ください。
 	
-		>[AZURE.NOTE] ほとんどの場合、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
+		>[AZURE.NOTE] 通常、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
 	- 制限 (オープンまたはトークン)
 	- キーをクライアントに配信する方法を定義する、キー配信タイプに固有の情報
 	
@@ -109,11 +105,11 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	>- 1 つは、DASH with CENC (PlayReady + WideVine) と Smooth with PlayReady を構成するための IAssetDeliveryPolicy
 	>- もう 1 つは、HLS 向けに FairPlay を構成するための IAssetDeliveryPolicy
 
-1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
+1. ストリーミング URL を取得するために、OnDemand ロケーターを作成します。
 
 ##プレーヤー アプリまたはクライアント アプリによる FairPlay キー配信の使用
 
-プレーヤー アプリは、iOS SDK を使用して開発できます。FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。ライセンス交換プロトコルは、Apple によって指定されません。キー配信要求の送信方法はアプリごとに異なります。AMS FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。
+プレーヤー アプリは、iOS SDK を使用して開発できます。FairPlay コンテンツを再生できるようにするには、ライセンス交換プロトコルを実装する必要があります。ライセンス交換プロトコルは、Apple によって指定されていません。キー配信の要求を送信する方法は、各アプリに従います。AMS FairPlay キー配信サービスでは、SPC が www-form-url でエンコードされた投稿メッセージとなることが想定されます。これは次のような形式になります。
 
 	spc=<Base64 encoded SPC>
 
@@ -128,7 +124,7 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 	PM> Install-Package windowsazure.mediaservices -Version 3.6.0
 
 
-1. 新しいコンソール プロジェクトを作成します。
+1. コンソール プロジェクトを作成します。
 1. NuGet を使用して、Azure Media Services .NET SDK をインストールして追加します。
 2. その他の参照 System.Configuration を追加します。
 2. アカウント名とキー情報が含まれた構成ファイルを追加します。
@@ -554,4 +550,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

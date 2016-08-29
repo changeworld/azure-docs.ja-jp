@@ -1,11 +1,11 @@
 
 <properties
-	pageTitle="SaaS アプリケーションへのアクセスをグループで管理する| Microsoft Azure"
+	pageTitle="SaaS アプリケーションへのアクセスをグループで管理する | Microsoft Azure"
 	description="Azure Active Directory と連携する SaaS アプリケーションへのアクセス権を、Azure Active Directory Premium または Basic でグループを使用して割り当てる方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/10/2016"
 	ms.author="curtand"/>
 
 
@@ -56,4 +56,4 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは 
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

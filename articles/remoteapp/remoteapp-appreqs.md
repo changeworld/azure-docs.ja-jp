@@ -13,12 +13,16 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # アプリの要件
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+
 Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまたは 64 ビットの Windows ベース アプリケーションのストリーミングをサポートします。既存の 32 ビットまたは 64 ビットの Windows ベース アプリケーションのほとんどは、Azure RemoteApp (リモート デスクトップ サービス、以前のターミナル サービス) 環境で "そのまま" 動作します。ただし、"動作すること" と "うまく動作すること" は異なります。アプリケーションの中には正常に問題なく機能するものもあれば、そうでないものもあります。以下の情報は、リモート デスクトップ サービス環境でのアプリケーション開発、および互換性を保証するためのテストのガイダンスを示したものです。
 
 ヒント: Microsoft では、アプリケーションの実行例の作成に取り組んでいます。RemoteApp での Microsoft Access、QuickBooks、App-V の使用に関する新しいトピックを掲載する予定です。
@@ -28,7 +32,7 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 
 1.	[Windows デスクトップ アプリ認定要件](https://msdn.microsoft.com/library/windows/desktop/hh749939.aspx)のすべてを満たし、[リモート デスクトップ サービスのプログラミング ガイドライン](https://msdn.microsoft.com/library/aa383490.aspx)に準拠しているアプリケーションは、RemoteApp との互換性があります。
 2.	アプリケーションで、失われる可能性があるイメージ上または RemoteApp インスタンス上にローカルにデータを格納しないでください。RemoteApp コレクションを作成した後、インスタンスは複製されてステートレスとなり、アプリケーションのみを含む必要があります。外部ソース、またはユーザーのプロファイル内にデータを格納します。
-3.	カスタム イメージには、失われる可能性があるデータを含めないでください。  
+3.	カスタム イメージには、失われる可能性があるデータを含めないでください。
 
 ## アプリケーションのテスト
 次の手順を使用して、アプリケーションをテストします。
@@ -55,4 +59,4 @@ Azure RemoteApp は、Windows Server 2012 R2 イメージの 32 ビットまた�
 - マルチユーザー、マルチプロセッサ環境向けに、アプリケーションの[スレッド使用状況](https://msdn.microsoft.com/library/aa383520.aspx)を調整する必要があります。
 - パフォーマンスを最適化するために、クライアント セッションで動作しているかどうかをアプリケーションで[検出する](https://msdn.microsoft.com/library/aa380798.aspx)ことをお勧めします。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

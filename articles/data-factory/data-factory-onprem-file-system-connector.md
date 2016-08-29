@@ -34,9 +34,15 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 - Linux サーバーに [Samba](https://www.samba.org/) をインストールします。
 - Windows サーバーに Data Management Gateway をインストールして構成します。Linux サーバーへのゲートウェイのインストールはサポートされていません。
  
+## データのコピー ウィザード
+オンプレミスのファイル システムとの間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+
+以下の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、オンプレミスのファイル システムと Azure BLOB ストレージの間でデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+
+
 ## サンプル: オンプレミスのファイル システムから Azure BLOB へのデータのコピー
 
-このサンプルは、オンプレミスのファイル システムから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、[ここ](data-factory-data-movement-activities.md#supported-data-stores)に示したいずれかのシンクにデータを**直接**コピーすることができます。
+このサンプルは、オンプレミスのファイル システムから Azure BLOB ストレージにデータをコピーする方法を示します。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーすることもできます。
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -436,10 +442,10 @@ Data Management Gateway 以外に、オンプレミスのファイル システ�
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 type | type プロパティは、**OnPremisesFileServer** に設定されます。 | はい 
-host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。 | はい
-userid | サーバーにアクセスするユーザーの ID を指定します | いいえ (encryptedCredential を選択する場合)
+host | コピーするフォルダーのルート パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」ご覧ください。 | はい
+userid | サーバーにアクセスするユーザーの ID を指定します | No (encryptedCredential を選択する場合)
 パスワード | ユーザー (userid) のパスワードを指定します | いいえ (encryptedCredential を選択する場合) 
-encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureRmDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以上の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
+encryptedCredential | New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。<br/><br/>**注:** type パラメーターを OnPremisesFileSystemLinkedService に設定した New-AzureRmDataFactoryEncryptValue などのコマンドレットを使用する場合は、バージョン 0.8.14 以降の Azure PowerShell を使用する必要があります。 | いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合)
 gatewayName | Data Factory サービスが、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前 | はい
 
 オンプレミスのファイル システム データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
@@ -447,12 +453,12 @@ gatewayName | Data Factory サービスが、オンプレミスのファイル �
 ### サンプルのリンクされたサービスとデータセットの定義 
 シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath
 -------- | --------------------------------- | --------------------- |
-Data Management Gateway のコンピューター上のローカル フォルダー: <br/><br/>例: D:\\* または D:\\folder\\subfolder\\* | D:\\\ (バージョン 2.0 以降のゲートウェイ) <br/><br/> localhost (バージョン 2.0 未満のゲートウェイ) | .\\\ または folder\\\subfolder (バージョン 2.0 以降のゲートウェイ) <br/><br/>D:\\\ または D:\\\folder\\\subfolder (バージョン 2.0 未満のゲートウェイ)
+Data Management Gateway コンピューター上のローカル フォルダー: <br/><br/>例: D:\\* または D:\\folder\\subfolder\\* | D:\\\ (バージョン 2.0 以降のゲートウェイ) <br/><br/> localhost (バージョン 2.0 より前のゲートウェイ) | .\\\ または folder\\\subfolder (バージョン 2.0 以降のゲートウェイ) <br/><br/>D:\\\ または D:\\\folder\\\subfolder (バージョン 2.0 より前のゲートウェイ)
 リモート共有フォルダー: <br/><br/>例：\\\myserver\\share\\* または \\\myserver\\share\\folder\\subfolder\\* | \\\\\\myserver\\\share | .\\\ または folder\\\subfolder
 
-インストールされたゲートウェイの **バージョン**を確認するには、コンピューターの[Data Management Gateway 構成マネージャー](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager)を起動し、**[ヘルプ]** タブに切り替えます。
+インストールされたゲートウェイの **バージョン**を確認するには、コンピューターで [Data Management Gateway 構成マネージャー](data-factory-data-management-gateway.md#data-management-gateway-configuration-manager)を起動し、**[ヘルプ]** タブに切り替えます。
 
-> [AZURE.NOTE] ローカル フォルダーのシナリオでは、"ホスト" プロパティを "localhost" として指定することで、ゲートウェイのいずれのバージョンでもコピー アクティビティを実行できますが、コピー ウィザードを使用したコピーの設定はできません。[ゲートウェイをバージョン 2.0 以降にアップグレードする](data-factory-data-management-gateway.md#update-data-management-gateway)ことをお勧めします。そうすれば、新しい構成を使用して、JSON とコピー ウィザードの両方を通じてシナリオがうまくいくようにすることができます。
+> [AZURE.NOTE] ローカル フォルダーのシナリオでは、"ホスト" プロパティを "localhost" として指定することで、ゲートウェイのいずれのバージョンでもコピー アクティビティを実行できますが、コピー ウィザードを使用したコピーの設定はできません。[ゲートウェイをバージョン 2.0 以降にアップグレードする](data-factory-data-management-gateway.md#update-data-management-gateway)ことをお勧めします。そうすれば、JSON とコピー ウィザードの両方で新しい構成を使用してシナリオを機能させることができます。
 
 **例: プレーン テキストでのユーザー名とパスワードの使用**
 	
@@ -491,12 +497,12 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-folderPath | フォルダーへのサブ パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」を参照してください。 <br/><br/>これを**partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを持つことができます。 | はい
-fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを指定します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイル名は次の形式になります: <br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) | いいえ
+folderPath | フォルダーへのサブ パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」をご覧ください。<br/><br/>これを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 | はい
+fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。<br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) | いいえ
 partitionedBy | partitionedBy を利用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | いいえ
-形式 | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 | いいえ
-fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: * (複数の文字) および ? (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2014-1-?.txt"<br/><br/>**注**: fileFilter は入力の FileShare データセットに適用できます | いいえ
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点で、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+形式 | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定する必要があります。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」をご覧ください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 | いいえ
+fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: * (複数の文字) および ? (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2014-1-?.txt"<br/><br/>**注**: fileFilter は FileShare 入力データセットに適用されます。 | いいえ
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていないことに注意してください。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
 
 > [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
 
@@ -565,7 +571,7 @@ false | mergeFiles | ソース フォルダー Folder1 が次のような構造�
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
 
 
@@ -574,4 +580,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

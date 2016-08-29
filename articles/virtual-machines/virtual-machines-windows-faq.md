@@ -14,19 +14,19 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/16/2016"
 	ms.author="cynthn"/>
 
 # Windows Virtual Machines についてのよく寄せられる質問 
 
 
-この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Windows 仮想マシンについてユーザーからよく寄せられる質問に回答します。このトピックの Linux バージョンについては、「[Linux Virtual Machines についてのよく寄せられる質問](virtual-machines-linux-faq.md)」を参照してください。
+この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Windows 仮想マシンについてよく寄せられる質問に回答します。このトピックの Linux バージョンについては、「[Linux Virtual Machines についてのよく寄せられる質問](virtual-machines-linux-faq.md)」を参照してください。
 
 ## Azure VM では何を実行できますか。
 
 すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。Microsoft サーバー ソフトウェアを Azure で実行するためのサポートポリシーの詳細については、「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
 
-Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
+MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。詳細については、「[Windows Client images for MSDN subscribers](http://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
 
 
 ## 仮想マシンではどれくらいのストレージ容量を使用できますか。
@@ -53,7 +53,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 ## 一時ディスクのドライブ文字を変更する方法について教えてください。
 
-Windows 仮想マシンでは、ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。手順については、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」を参照してください。
+ページ ファイルを移動してドライブ文字を再割り当てすることでドライブ文字を変更することができますが、正しい順序で手順を実行するよう注意する必要があります。手順については、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」を参照してください。
 
 ## 既存の VM を可用性セットに追加できますか。
 
@@ -81,6 +81,6 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 
 ## VM の作成後、NIC を VM に追加できますか。
 
-いいえ。現時点では、この操作は作成時にのみ実行できます。
+いいえ。NIC を追加できるのは VM の作成時のみです。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

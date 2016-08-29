@@ -33,6 +33,7 @@ Microsoft Identity プラットフォームと Microsoft Identity SDK を利用�
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
+* Azure Active Directory の条件付きアクセス
 
 
 以下の説明では、[従来のポータルで Azure Active Directory 用にアプリケーションをプロビジョニングする](active-directory-how-to-integrate.md)方法と、アプリケーションを [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) と統合する方法についての知識があることを前提としています。
@@ -59,7 +60,7 @@ Microsoft は、すべてのモバイル プラットフォーム用に、異な
 このログインには、次のような利点があります。
 
 -  ユーザー エクスペリエンス全体が、アプリケーション内に存在します。
--  資格情報は、同じ証明書によって署名されているアプリケーション間で共有することができ、アプリケーションのスイートにシングル サインオン エクスペリエンスを提供します。 
+-  資格情報は、同じ証明書によって署名されているアプリケーション間で共有することができ、アプリケーションのスイートにシングル サインオン エクスペリエンスを提供します。
 -  ログインのエクスペリエンスに関する制御は、サインインの前後にアプリケーションに提供されます。
 
 このログインには、次のような欠点があります。
@@ -154,7 +155,7 @@ Android と Windows では、アカウント セレクターがアプリケー�
 
 所有している複数のアプリケーション間で SSO を有効にするには、以下の操作をする必要があります。
 
-1. すべてのアプリケーションが同じクライアント ID またはアプリケーション ID を使用していることを確認します。 
+1. すべてのアプリケーションが同じクライアント ID またはアプリケーション ID を使用していることを確認します。
 * キーチェーンを共有できるように、すべてのアプリケーションが Apple の同じ署名証明書を共有していることを確認します。
 * 各アプリケーション用に同じキーチェーン エンタイトルメントを要求します。
 * Microsoft Identity SDK に、使用することを希望する共有されたキーチェーンについて知らせます。
@@ -289,7 +290,7 @@ Microsoft Identity プラットフォームは、URL を使用してブローカ
 
 例: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」を参照してください。
+このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」をご覧ください。
 
 
 ##### 手順 3a: 証明書ベースの認証をサポートするために、アプリと開発者ポータルでリダイレクト URI を追加する
@@ -298,7 +299,7 @@ Microsoft Identity プラットフォームは、URL を使用してブローカ
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-例: **msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+例: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 
 #### 手順 4: iOS9: アプリに構成パラメーターを追加する
@@ -311,4 +312,4 @@ ADAL は、ブローカーがデバイスにインストールされているか
 
 これで、Microsoft Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->
