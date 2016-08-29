@@ -38,7 +38,7 @@
 
 このアーキテクチャは、プロセス サーバーが Azure 上にあり、VPN または ExpressRoute 接続のいずれかがある場合に使用します。
 
-![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 ポートの一覧とフェールバック アーキテクチャ ダイアグラムについては、次の図をご覧ください。
 
@@ -96,7 +96,7 @@ Azure の VM がデータをオンプレミスのマスター ターゲット �
 
 マシンをクラシック リソースとして保護した場合 (Azure に復旧された VM がクラシック VM の場合)、Azure にクラシック プロセス サーバーが必要です。デプロイメントの種類として Resource Manager を指定してマシンを復旧した場合、デプロイメントの種類が Resource Manager であるプロセス サーバーが必要になります。この種類は、プロセス サーバーのデプロイ先の Azure 仮想ネットワークによって選択されます。
 
-1.  [コンテナー]、[設定]、[Site Recovery インフラストラクチャ] ([管理] 見出しの下)、**[構成サーバー]** ("VMware マシンと物理マシン" 見出しの下) の順にクリックし、構成サーバーを選択します。下のサンプル スクリーンショットに黄色で強調表示されている [+ プロセスサーバー] をクリックします。
+1.  [コンテナー]、[設定]、[Site Recovery インフラストラクチャ] \([管理] 見出しの下)、**[構成サーバー]** ("VMware マシンと物理マシン" 見出しの下) の順にクリックし、構成サーバーを選択します。下のサンプル スクリーンショットに黄色で強調表示されている [+ プロセスサーバー] をクリックします。
 
 	![](./media/site-recovery-failback-azure-to-vmware-classic/add-processserver.png)
 
@@ -252,4 +252,4 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 - ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 - データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0817_2016--->

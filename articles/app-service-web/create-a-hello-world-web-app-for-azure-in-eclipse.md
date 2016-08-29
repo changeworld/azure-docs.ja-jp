@@ -29,7 +29,7 @@
 * A Java Developer Kit (JDK) v 1.7 以降。
 * Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for Eclipse。詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 
 ## Hello World アプリケーションを作成するには
@@ -137,7 +137,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
         * **[Instance Size (インスタンス サイズ)]** ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。テスト目的の場合は、**[Small]** を選択できます。
 
-    1. これらの手順をすべて完了すると、[New Web App Container] (新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
+    1. これらの手順をすべて完了すると、[New Web App Container] \(新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
 
         ![][10]
 

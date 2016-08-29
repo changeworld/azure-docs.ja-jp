@@ -62,7 +62,9 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 4. **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを生成することを確認します。![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-keys.png)
 
 5. (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
-6. セカンダリ アクセス キーを再生成します。![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-secondary-key.png)
+6. セカンダリ アクセス キーを再生成します。
+
+![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-secondary-key.png)
 
 
 > [AZURE.NOTE] 新しく生成されたキーを使用して DocumentDB アカウントにアクセスできるようになるまで、数分かかることがあります。
@@ -98,7 +100,7 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
-[offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/regions/#services
+[offers]: https://azure.microsoft.com/pricing/details/documentdb/
 
 <!---HONumber=AcomDC_0817_2016-->

@@ -254,6 +254,6 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 <!-- external links -->
 [dotnetcore-install]: https://www.microsoft.com/net/core#windows
-[api-management-landing-page]: https://azure.microsoft.com/ja-JP/services/api-management/
+[api-management-landing-page]: https://azure.microsoft.com/services/api-management/
 
 <!---HONumber=AcomDC_0817_2016-->

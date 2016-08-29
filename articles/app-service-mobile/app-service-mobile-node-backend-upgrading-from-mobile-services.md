@@ -172,7 +172,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md

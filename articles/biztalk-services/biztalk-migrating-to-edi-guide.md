@@ -118,7 +118,7 @@ BizTalk Server のオーケストレーション処理を Microsoft Azure に移
 
 - [*Windows Workflow Foundation デベロッパー センター*](http://go.microsoft.com/fwlink/p/?LinkId=237315) (MSDN)。
 
-- [*Windows Workflow Foundation 4 (WF4) のドキュメント*](https://msdn.microsoft.com/library/dd489441.aspx) (MSDN)。
+- [*Windows Workflow Foundation 4 (WF4) のドキュメント*](https://msdn.microsoft.com/library/dd489441.aspx) \(MSDN)。
 
 ## その他の考慮事項
 

@@ -42,7 +42,7 @@ SQL Data Warehouse では、さまざまなツールを使用してデータベ�
 Azure ポータルの使用については、[SQL Data Warehouse の作成 (Azure ポータル)][] に関する記事をご覧ください。
 
 ### Visual Studio での SQL Server Data Tools
-Visual Studio の [SQL Server Data Tools][] (SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
+Visual Studio の [SQL Server Data Tools][] \(SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
 SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [**Visual Studio で開く**] ボタンをクリックするだけです。
 

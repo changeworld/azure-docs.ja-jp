@@ -19,7 +19,7 @@
 
 # Azure Table サービスを使用する Node.js Web アプリ
 
-## Overview
+## 概要
 
 このチュートリアルでは、Azure データ管理で提供される Table サービスを使用して、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps でホストされる[ノード] アプリケーションのデータを格納し、データにアクセスする方法を説明します。このチュートリアルは、ノードおよび [Git] を使用した経験があることを前提としています。
 

@@ -96,7 +96,8 @@
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが EmpCenter にログインできるようにするには、そのユーザーを EmpCenter にプロビジョニングする必要があります。EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート チームが作成する必要があります。
+Azure AD ユーザーが EmpCenter にログインできるようにするには、そのユーザーを EmpCenter にプロビジョニングする必要があります。  
+EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート チームが作成する必要があります。
 
 >[AZURE.NOTE] EmpCenter から提供されている他の EmpCenter ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
