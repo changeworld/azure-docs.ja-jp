@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-unity-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Unity Android デプロイでの Azure Mobile Engagement の使用
@@ -38,9 +38,9 @@
 
 ###Unity パッケージのインポート
 
-1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)をダウンロードし、ローカル コンピューターに保存します。 
+1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)をダウンロードし、ローカル コンピューターに保存します。
 
-2. **[Assets] \(アセット)、[Import Package] \(パッケージのインポート)、[Custom Package] \(カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
+2. **[Assets] (アセット)、[Import Package] (パッケージのインポート)、[Custom Package] (カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
 
 	![][70]
 
@@ -54,13 +54,13 @@
 
 ###EngagementConfiguration の更新
 
-1. SDK フォルダーの **EngagementConfiguration** スクリプト ファイルを開き、先ほど Azure ポータルで取得した接続文字列を使って **ANDROID\_CONNECTION\_STRING** を更新します。  
+1. SDK フォルダーの **EngagementConfiguration** スクリプト ファイルを開き、先ほど Azure ポータルで取得した接続文字列を使って **ANDROID\_CONNECTION\_STRING** を更新します。
 
 	![][73]
 
 2. ファイルを保存します。
 
-3. **[File] \(ファイル)、[Engagement] \(エンゲージメント)、[Generate Android Manifest] \(Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
+3. **[File] (ファイル)、[Engagement] (エンゲージメント)、[Generate Android Manifest] (Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
 
 	![][74]
 
@@ -68,7 +68,7 @@
 
 ###基本的な追跡を行うためのアプリの構成
 
-1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。 
+1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。
 
 2. 次の using ステートメントを追加します。
 
@@ -82,9 +82,9 @@
 ###アプリのデプロイと実行
 この Unity アプリをデバイスにデプロイする前に、Android SDK がコンピューターにインストールされていることを確認してください。
 
-1. Android デバイスをコンピューターに接続します。 
+1. Android デバイスをコンピューターに接続します。
 
-2. **[File] \(ファイル)、[Build Settings] \(設定をビルド)** の順に開きます。
+2. **[File] (ファイル)、[Build Settings] (設定をビルド)** の順に開きます。
 
 	![][40]
 
@@ -116,19 +116,19 @@
 
 ###EngagementConfiguration の更新
 
-1. SDK フォルダーから **EngagementConfiguration** スクリプト ファイルを開き、先ほど Google クラウド開発者ポータルで取得した **Google プロジェクト番号**を使って **ANDROID\_GOOGLE\_NUMBER** を更新します。これは文字列値のため、二重引用符で囲む必要があります。 
+1. SDK フォルダーから **EngagementConfiguration** スクリプト ファイルを開き、先ほど Google クラウド開発者ポータルで取得した **Google プロジェクト番号**を使って **ANDROID\_GOOGLE\_NUMBER** を更新します。これは文字列値のため、二重引用符で囲む必要があります。
 
 	![][75]
 
 2. ファイルを保存します。
 
-3. **[File] \(ファイル)、[Engagement] \(エンゲージメント)、[Generate Android Manifest] \(Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
+3. **[File] (ファイル)、[Engagement] (エンゲージメント)、[Generate Android Manifest] (Android Manifest の生成)** の順にクリックして実行します。これは Mobile Engagement SDK によって追加されたプラグインで、クリックすると、プロジェクトの設定が自動的に更新されます。
 
 	![][74]
 
 ###通知を受け取るためのアプリの構成
 
-1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。 
+1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。
 
 2. 次の行を `Start()` メソッドに追加します。
 
@@ -151,4 +151,4 @@
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
-<!-----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -3,7 +3,7 @@
    description="この記事では、Azure Traffic Manager プロファイルを作成、無効化、有効化、削除する方法、およびプロファイルの履歴を表示する方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure Traffic Manager プロファイルの管理
 
@@ -32,7 +32,7 @@ Azure クラシック ポータルで簡易作成を使用して、Traffic Manag
 4. **サブスクリプションを選択します。** 適切な Azure サブスクリプションを選択します。各プロファイルは、単一のサブスクリプションに関連付けられています。サブスクリプションが 1 つのみの場合、このオプションは表示されません。
 5. **トラフィック ルーティング方法を選びます。** **[traffic routing Policy]** でトラフィック ルーティング方法を選びます。トラフィック ルーティング方法の詳細については、「[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
 6. **新しいプロファイルを作成するには、[作成] をクリックします。**プロファイルの構成が完了したら、Azure クラシック ポータルの [Traffic Manager] ウィンドウでプロファイルを検索できます。
-7. **Azure クラシック ポータルで、エンドポイント、監視、およびその他の設定を構成します。** 簡易作成で構成できるのは基本的な設定のみであるため、必要な構成を完了するには、エンドポイントの一覧や、エンドポイントのフェールオーバー順序などの他の設定を構成する必要があります。 
+7. **Azure クラシック ポータルで、エンドポイント、監視、およびその他の設定を構成します。** 簡易作成で構成できるのは基本的な設定のみであるため、必要な構成を完了するには、エンドポイントの一覧や、エンドポイントのフェールオーバー順序などの他の設定を構成する必要があります。
 
 
 ## プロファイルの無効化、有効化、または削除
@@ -85,4 +85,4 @@ Azure クラシック ポータルの [管理サービス] では、Traffic Mana
 
 [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

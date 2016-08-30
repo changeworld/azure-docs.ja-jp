@@ -97,4 +97,8 @@ Marathon UI では、コンテナーのインスタンス数をスケールす�
 
 - [DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+Mesos と共に Azure Container Service を使用する方法の詳細
+
+> [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
+
+<!---HONumber=AcomDC_0824_2016-->

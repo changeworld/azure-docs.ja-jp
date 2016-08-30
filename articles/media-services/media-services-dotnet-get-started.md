@@ -1,5 +1,5 @@
 <properties
-	pageTitle=".NET SDK を使用したオンデマンド コンテンツ配信の概要"
+	pageTitle=".NET を使用したオンデマンド コンテンツ配信の概要 | Azure"
 	description="このチュートリアルでは、Azure Media Services と .NET を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
- 	ms.date="07/18/2016"
+ 	ms.date="08/17/2016"
 	ms.author="juliako"/>
 
 
@@ -26,7 +26,7 @@
 >[AZURE.NOTE]
 このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](/pricing/free-trial/?WT.mc_id=A261C142F)を参照してください。
  
-##概要 
+##Overview 
 
 このチュートリアルでは、Azure Media Services (AMS) SDK for .NET を使用したビデオ オン デマンド (VoD) コンテンツ配信アプリケーションの実装手順について説明します。
 
@@ -43,7 +43,7 @@
 5.  Media Services アカウントに接続します。
 6.  新しい資産を作成し、ビデオ ファイルをアップロードします。
 7.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。  
+8.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得します。
 9.  コンテンツを再生することでテストします。
 
 ## 前提条件
@@ -101,7 +101,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
-ストリーミング予約ユニットの数を変更するには、以下の手順を実行します。
+ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
 1. [ポータル](https://manage.windowsazure.com/)で、**[Media Services]** をクリックします。次に、メディア サービスの名前をクリックします。
 
@@ -443,7 +443,7 @@ MPEG DASH
 
 ### 他の情報をお探しですか。
 
-このトピックに必要な情報が含まれていないか、不足しているか、あるいはニーズを満たしていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
+このトピックに必要な情報が含まれておらず、情報が不足している場合、またはニーズが満たされていない場合は、以下の Disqus スレッドを使用してフィードバックをお送りください。
 
 
 <!-- Anchors. -->
@@ -453,4 +453,4 @@ MPEG DASH
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

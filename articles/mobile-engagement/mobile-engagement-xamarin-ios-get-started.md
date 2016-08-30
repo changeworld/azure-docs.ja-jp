@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Xamarin.iOS アプリ用 Azure Mobile Engagement の使用
@@ -24,7 +24,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ [Xamarin Studio](http://xamarin.com/studio)。Visual Studio with Xamarin を使用することもできますが、このチュートリアルでは Xamarin Studio を使用します。インストールの手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。 
++ [Xamarin Studio](http://xamarin.com/studio)。Visual Studio with Xamarin を使用することもできますが、このチュートリアルでは Xamarin Studio を使用します。インストールの手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 + [Mobile Engagement Xamarin SDK](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started)を参照してください。
@@ -41,7 +41,7 @@
 
 ###新しい Xamarin.iOS プロジェクトを作成する
 
-1. Xamarin Studio を起動します。**[File]** (ファイル)、**[New]** (新規)、**[Solution]** (ソリューション) の順に移動します。 
+1. Xamarin Studio を起動します。**[File]** (ファイル)、**[New]** (新規)、**[Solution]** (ソリューション) の順に移動します。
 
     ![][1]
 
@@ -63,7 +63,7 @@ Xamarin Studio で、Mobile Engagement の統合先のデモ アプリが作成�
 
 ###アプリを Mobile Engagement のバックエンドに接続する
 
-1. [Solution] \(ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
+1. [Solution] (ソリューション) ウィンドウの **Packages** フォルダーを右クリックし、**[Add Packages]** (パッケージの追加) を選択します。
 
     ![][5]
 
@@ -168,4 +168,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [7]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-confirm-bundle.png
 [8]: ./media/mobile-engagement-xamarin-ios-get-started/info-plist-configure-push.png
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0824_2016-->

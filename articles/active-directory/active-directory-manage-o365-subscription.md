@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure での Office 365 サブスクリプションのディレクトリの管理 | Microsoft Azure"
-   description="Azure Active Directory と Azure クラシック ポータルを使用して Office 365 サブスクリプションのディレクトリを管理する方法"
+   description="Azure Active Directory と Azure クラシック ポータルを使用して Office 365 サブスクリプションのディレクトリを管理する方法について説明します。"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
@@ -13,18 +13,18 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/03/2016"
+   ms.date="08/23/2016"
    ms.author="curtand"/>
 
 # Azure での Office 365 サブスクリプションのディレクトリの管理
 
-この記事では、Office 365 サブスクリプションに対して作成されたディレクトリを Azure クラシック ポータルを使用して管理する方法について説明します。Azure クラシック ポータルにサインインするには、Azure サブスクリプションのサービス管理者または共同管理者であることが必要です。Azure サブスクリプションをお持ちでない場合、[30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分程度でデプロイできます。Office 365 へのサインインに使用している職場または学校アカウントを使用してください。
+この記事では、Office 365 サブスクリプションに対して作成されたディレクトリを Azure クラシック ポータルを使用して管理する方法について説明します。Azure クラシック ポータルにサインインするには、Azure サブスクリプションのサービス管理者または共同管理者であることが必要です。Azure サブスクリプションをお持ちでない場合、[30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分以内にデプロイできます。Office 365 へのサインインに使用している職場または学校アカウントを使用してください。
 
 Azure サブスクリプションの手続きが完了したら、Azure クラシック ポータルにサインインして、Azure のサービスにアクセスできます。Office 365 ユーザーを認証するディレクトリと同じディレクトリを管理するには、Active Directory 拡張機能をクリックします。
 
 Azure サブスクリプションを既に持っている場合、追加のディレクトリを管理するプロセスも単純です。たとえば、Michael Smith は Contoso.com の Office 365 サブスクリプションを持っています。また、自分の Microsoft アカウント msmith@hotmail.com を使ってサインアップした Azure サブスクリプションを持っています。この場合、彼は 2 つのディレクトリを管理します。
 
- [サブスクリプション] | Office 365 | Azure
+ サブスクリプション | Office 365 | Azure
   -------------- | ------------- | -------------------------------
  表示名 | Contoso | 既定の Azure Active Directory (Azure AD) ディレクトリ
  ドメイン名 | contoso.com | msmithhotmail.onmicrosoft.com
@@ -52,7 +52,7 @@ Michael Smith が msmith@hotmail.com で Azure にサインインしていると
 これらの手順を完了すると、msmith@hotmail.com は Contoso ディレクトリのグローバル管理者になります。
 
 ## グローバル管理者としてリソースを管理するには
-今度は、Jane Doe が msmith@hotmail.com の Azure サブスクリプションに関連付けられている管理者用 Web サイトとデータベース リソースを必要としていると仮定しましょう。彼女がこれを行うには、Michael Smith が以下の追加手順を実行する必要があります。
+今度は、Jane Doe が msmith@hotmail.com の Azure サブスクリプションに関連付けられている管理者用 Web サイトとデータベース リソースを必要としているとします。彼女がこれを行うには、Michael Smith が以下の追加手順を実行する必要があります。
 
 1.	Azure サブスクリプションのサービス管理者アカウント (この例では msmith@hotmail.com) を使って [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 2.	サブスクリプションを Contoso ディレクトリに移行します。**[設定]**、**[サブスクリプション]** の順にクリックし、サブスクリプションを選択します。**[ディレクトリの編集]** をクリックし、**[Contoso (Contoso.com)]** を選択します。移行の一環として、サブスクリプションの共同管理者である職場または学校アカウントはすべて削除されます。
@@ -61,4 +61,4 @@ Michael Smith が msmith@hotmail.com で Azure にサインインしていると
 ## 次のステップ
 サブスクリプションとディレクトリの関係の詳細については、[サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

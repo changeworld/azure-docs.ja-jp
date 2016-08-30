@@ -14,7 +14,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="NA"
 	ms.workload="data-services"
-	ms.date="08/11/2016"
+	ms.date="08/18/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB を使用した Java Web アプリケーションの作成
@@ -216,13 +216,9 @@ DocumentDB Java SDK とその依存関係をインストールするには、[Ap
 		                    DocumentCollection collectionDefinition = new DocumentCollection();
 		                    collectionDefinition.setId(COLLECTION_ID);
 
-		                    // Configure the new collection performance tier to S1.
-		                    RequestOptions requestOptions = new RequestOptions();
-		                    requestOptions.setOfferType("S1");
-
 		                    collectionCache = documentClient.createCollection(
 		                            getTodoDatabase().getSelfLink(),
-		                            collectionDefinition, requestOptions).getResource();
+		                            collectionDefinition, null).getResource();
 		                } catch (DocumentClientException e) {
 		                    // TODO: Something has gone terribly wrong - the app wasn't
 		                    // able to query or create the collection.
@@ -784,4 +780,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

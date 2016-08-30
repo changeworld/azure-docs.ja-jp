@@ -13,7 +13,7 @@
     ms.topic="get-started-article"
     ms.tgt_pltfrm="dotnet"
     ms.workload="na"
-    ms.date="06/07/2016"
+    ms.date="08/23/2016"
     ms.author="jotaub;sethm"/>
 
 # Service Bus キューの使用
@@ -52,7 +52,7 @@ Service Bus キューを既に作成している場合は、「[キューへの�
 
 [AZURE.INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## 3\.キューへのメッセージの送信
+## 手順 3.キューへのメッセージの送信
 
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを記述します。
 
@@ -111,13 +111,13 @@ Service Bus キューを既に作成している場合は、「[キューへの�
     }
     ```
   
-3. プログラムを実行し、Azure クラシック ポータルを確認します。**[キューの長さ]** の値が 1 になっていることに注目してください。
+3. プログラムを実行し、Azure ポータルを確認します。名前空間の **[概要]** ブレードでキューの名前をクリックします。**[アクティブなメッセージ数]** の値が 1 になっていることに注目してください。
     
-      ![Queue length][queue-length-send]
+      ![Message count][queue-message]
     
 ## 4\.キューからメッセージを受け取る
 
-1. 新しいコンソール アプリケーションを作成し、上記の送信元アプリケーションと同じように Service Bus NuGet パッケージへの参照を追加します。
+1. 前の手順で説明した送信アプリケーションと同じように、新しいコンソール アプリケーションを作成し、Service Bus NuGet パッケージへの参照を追加します。
 
 2. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
   
@@ -173,9 +173,9 @@ Service Bus キューを既に作成している場合は、「[キューへの�
   
 4. プログラムを実行し、ポータルを確認します。**[キューの長さ]** の値が 0 になっていることに注目してください。
 
-    ![Queue length][queue-length-receive]
+    ![Queue length][queue-message-receive]
   
-ご利用ありがとうございます。 これで、キューを作成し、メッセージを送信して、メッセージを受信しました。
+お疲れさまでした。 これで、キューを作成し、メッセージを送信して、メッセージを受信しました。
 
 ## 次のステップ
 
@@ -184,12 +184,12 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 <!--Image references-->
 
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-length-send]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-send.png
-[queue-length-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-receive.png
+[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
+[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
 
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-unity-ios"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Unity iOS デプロイでの Azure Mobile Engagement の使用
@@ -38,9 +38,9 @@
 
 ###Unity パッケージのインポート
 
-1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)をダウンロードし、ローカル コンピューターに保存します。 
+1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)をダウンロードし、ローカル コンピューターに保存します。
 
-2. **[Assets] \(アセット)、[Import Package] \(パッケージのインポート)、[Custom Package] \(カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
+2. **[Assets] (アセット)、[Import Package] (パッケージのインポート)、[Custom Package] (カスタム パッケージ)** の順に移動し、前の手順でダウンロードしたパッケージを選択します。
 
 	![][70]
 
@@ -54,7 +54,7 @@
 
 ###EngagementConfiguration の更新
 
-1. SDK フォルダーの **EngagementConfiguration** スクリプト ファイルを開き、先ほど Azure ポータルで取得した接続文字列を使って **IOS\_CONNECTION\_STRING** を更新します。  
+1. SDK フォルダーの **EngagementConfiguration** スクリプト ファイルを開き、先ほど Azure ポータルで取得した接続文字列を使って **IOS\_CONNECTION\_STRING** を更新します。
 
 	![][73]
 
@@ -62,7 +62,7 @@
 
 ###基本的な追跡を行うためのアプリの構成
 
-1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。 
+1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。
 
 2. 次の using ステートメントを追加します。
 
@@ -75,9 +75,9 @@
 
 ###アプリのデプロイと実行
 
-1. iOS デバイスをコンピューターに接続します。 
+1. iOS デバイスをコンピューターに接続します。
 
-2. **[File] \(ファイル)、[Build Settings] \(設定をビルド)** の順に開きます。
+2. **[File] (ファイル)、[Build Settings] (設定をビルド)** の順に開きます。
 
 	![][40]
 
@@ -131,4 +131,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [74]: ./media/mobile-engagement-unity-ios-get-started/74.png
 [75]: ./media/mobile-engagement-unity-ios-get-started/75.png
 
-<!----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

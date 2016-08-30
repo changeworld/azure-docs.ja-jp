@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/15/2016"
+	ms.date="08/23/2016"
 	ms.author="deonhe"/>
 
 # コネクタの一覧
 
-アイコンをクリックすると、これらのコネクタを活用して、対象のサービスを呼び出すワークフローを簡単に構築する方法について確認できます。
+コネクタを選択すると、ワークフローを迅速に構築する方法を確認できます。
 
 ## Standard コネクタ
 
@@ -46,8 +46,9 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
  
 |EIP コネクタ ||||
 |-----------|-----------|-----------|-----------|
-|[![API アイコン][as2icon]<br/>**AS2</br>エンコード/デコード**][as2doc]|[![API アイコン][x12icon]<br/>**X12</br>エンコード/デコード**][x12Doc]|[![API アイコン][xmlvalidateicon]<br/>**XML<br/>検証**][xmlvalidatedoc]|[![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc]|
-|[![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc]|[![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc]|||
+|[![API アイコン][xmlvalidateicon]<br/>**XML<br/>検証**][xmlvalidatedoc]|[![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc]|[![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc]|[![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc]|
+|[![API アイコン][as2icon]<br/>**AS2</br>デコード**][as2decode]|[![API アイコン][as2icon]<br/>**AS2</br>エンコード**][as2encode]|[![API アイコン][x12icon]<br/>**X12</br>デコード**][x12decode]|[![API アイコン][x12icon]<br/>**X12</br>エンコード**][x12encode]|
+|[![API アイコン][x12icon]<br/>**EDIFACT</br>デコード**][EDIFACTdecode]|[![API アイコン][x12icon]<br/>**EDIFACT</br>エンコード**][EDIFACTencode]||||
 
 <!-- TODO: Add Functions, App Service, and Nested Workflow Icons -->
 ### トリガーとして使用できるコネクタ
@@ -55,8 +56,8 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 
 2 種類のトリガーがあります。
 
-* ポーリング トリガー: このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。新しいデータを利用できる場合、そのデータを入力値としてアプリの新しいインスタンスが実行されます。同じデータが複数回使用されることを防ぐために、アプリで読み取られて渡されるデータのクリーンアップをトリガーで実行される場合があります。
-* プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンします。その後、アプリの新しいインスタンスをトリガーします。一例として Twitter コネクタが挙げられます。
+* ポーリング トリガー: このトリガーは、指定された頻度でサービスをポーリングして、新しいデータをチェックします。新しいデータを利用できる場合、そのデータを入力値としてアプリの新しいインスタンスが実行されます。同じデータが複数回使用されることを防ぐために、アプリで読み取られて渡されるデータのクリーンアップがトリガーで実行される場合があります。
+* プッシュ トリガー: このトリガーは、エンドポイント上のデータまたは発生するイベントをリッスンして、アプリの新しいインスタンスをトリガーします。一例として Twitter コネクタが挙げられます。
 
 ### アクションとして使用できるコネクタ
 コネクタは、アプリ内でアクションとして使用することもできます。アクションは、アプリの実行時に使用できるデータの検索に役立ちます。たとえば、注文を処理するときに、SQL データベースから顧客データを検索することが必要になる場合があります。または、変換先テーブルでデータの書き込み、更新、または削除が必要になる場合があります。これらを実行するために、コネクタによって提供されるアクションを使用できます。アクションは、Swagger メタデータで定義された操作にマップされます。
@@ -105,6 +106,12 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [flatfiledecodedoc]: ../app-service-logic/app-service-logic-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します。"
 [xmlvalidatedoc]: ../app-service-logic/app-service-logic-enterprise-integration-xml-validation.md "エンタープライズ統合 XML 検証について説明します。"
 [xmltransformdoc]: ../app-service-logic/app-service-logic-enterprise-integration-transform.md "エンタープライズ統合変換について説明します。"
+[as2decode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-decode.md "エンタープライズ統合 AS2 デコードについて説明します。"
+[as2encode]: ..//app-service-logic/app-service-logic-enterprise-integration-as2-encode.md "エンタープライズ統合 AS2 エンコードについて説明します。"
+[X12decode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-decode.md "エンタープライズ統合 X12 デコードについて説明します。"
+[X12encode]: ..//app-service-logic/app-service-logic-enterprise-integration-X12-encode.md "エンタープライズ統合 X12 エンコードについて説明します。"
+[EDIFACTdecode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-decode.md "エンタープライズ統合 EDIFACT デコードについて説明します。"
+[EDIFACTencode]: ..//app-service-logic/app-service-logic-enterprise-integration-EDIFACT-encode.md "エンタープライズ統合 EDIFACT エンコードについて説明します。"
 [httpdoc]: ./connectors-native-http.md "HTTP 呼び出しを実行する HTTP コネクタです。"
 [http~requestdoc]: ./connectors-native-reqres.md "要求アクションと応答アクションです。"
 [http~responsedoc]: ./connectors-native-reqres.md "要求アクションと応答アクションです。"
@@ -183,4 +190,4 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
 	services="sql-database"
 	keywords="C# データベース クエリ, C# クエリ, データベースへの接続, SQL C#"
 	documentationCenter=""
-	authors="MightyPen"
+	authors="stevestein"
 	manager="jhubbard"
 	editor=""/>
 
@@ -15,7 +15,8 @@
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
 	ms.date="08/17/2016"
-	ms.author="annemill"/>
+	ms.author="stevestein"/>
+
 
 
 # Visual Studio で SQL Database に接続する
@@ -25,78 +26,62 @@
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-Visual Studio で Azure SQL Database に接続する方法について説明します。
+Visual Studio で Azure SQL データベースに接続する方法について説明します。
 
 ## 前提条件
 
 
-Visual Studio を使用して SQL Database に接続するには、以下のものが必要です。
+Visual Studio を使用して SQL データベースに接続するには、以下のものが必要です。
 
 
-- Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+- 接続先の SQL データベース。この記事では、**AdventureWorks** サンプル データベースを使用します。AdventureWorks サンプル データベースを入手するには、[デモ データベースの作成](sql-database-get-started.md)に関するページを参照してください。
 
 
-- Azure SQL Database サービス上の **AdventureWorksLT** デモンストレーション データベース。
- - [デモ データベースの作成](sql-database-get-started.md)は数分で完了します。
-
-
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - または、このトピックで後述する[手順](#InstallVSForFree)に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用して Visual Studio をインストールすることができます。
 
 
-<a name="InstallVSForFree" id="InstallVSForFree"></a>
-
-&nbsp;
-
-## 手順 1. 無料版の Visual Studio Community をインストールする
 
 
-Visual Studio のインストールが必要な場合、以下の方法でインストールできます。
-
-- 無料ダウンロードやその他の選択肢が提供されている Visual Studio 製品ページにブラウザーでアクセスして、無料版の Visual Studio Community をインストールする。または
-- 次の説明に従い、[Azure ポータル](https://portal.azure.com/)のガイドを利用してダウンロード ページにアクセスする。
+## Azure ポータルから Visual Studio を開く
 
 
-### Azure ポータルから Visual Studio へ
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
+
+2. **[More Services (その他のサービス)]**、**[SQL データベース]** の順にクリックします。
+3. *AdventureWorks* データベースを見つけてクリックして、**AdventureWorks** データベース ブレードを開きます。
+
+6. データベース ブレードの上部にある **[ツール]** ボタンをクリックします。
+
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/tools.png)
+
+7. **[Visual Studio で開く]** をクリックします (Visual Studio が必要な場合は、ダウンロード リンクをクリックしてください)。
+
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/open-in-vs.png)
 
 
-1. [Azure ポータル](https://portal.azure.com/) (http://portal.azure.com/) からログインします。
-
-2. *[すべて参照]*、**[SQL データベース]** の順にクリックします。データベースを検索するためのブレードが開きます。
-
-3. ブレード上部付近にあるフィルターのテキスト ボックスに **AdventureWorksLT** データベースの名前を入力します。
-
-4. お使いのサーバー上のデータベースに関する行が表示されたら、その行をクリックします。データベースに関するブレードが開きます。
-
-5. 操作がしやすいように、1 つ前までの各ブレードで最小化のコントロールをクリックします。
-
-6. データベース ブレードの上部付近にある **[Visual Studio で開く]** をクリックします。Visual Studio のインストール場所へのリンクを備えた、Visual Studio に関する新しいブレードが開きます。
-
-	![[Visual Studio で開く] ボタン][20-OpenInVisualStudioButton]
-
-7. **[Community (無料)]** リンク、またはそれに類似したリンクをクリックします。新しい Web ページが追加されます。
-
-8. 新しい Web ページ上のリンクを使用して Visual Studio をインストールします。
-
-9. Visual Studio のインストール後に、**[Visual Studio で開く]** ブレードで **[Visual Studio で開く]** をクリックします。Visual Studio が開きます。
-
-10. Visual Studio から、ダイアログの接続文字列フィールドに入力するよう求められます。
- - **[Windows 認証]** ではなく **[SQL Server 認証]** を選択します。
- - **AdventureWorksLT** データベースの指定も忘れずに行ってください (ダイアログ ボックスで **[オプション]**、**[接続プロパティ]** の順にクリック)。
-
-11. **SQL Server オブジェクト エクスプローラー**で、データベースのノードを展開します。
+8. Visual Studio が開かれます。**[サーバーへの接続]** ウィンドウは既に、ポータルで選択したサーバーとデータベースに接続するように設定されています(**[オプション]** をクリックし、接続が正しいデータベースに設定されていることを確認します)。 サーバー管理者パスワードを入力し、**[接続]** をクリックします。
 
 
-## 手順 2. サンプル クエリを実行する
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/connect.png)
 
-論理サーバーに接続すると、データベースに接続し、サンプル クエリを実行できます。
 
-1. **オブジェクト エクスプローラー**で、アクセス許可を持っているサーバー上のデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
+8. 自分のコンピューターの IP アドレス用にファイアウォール規則をセットアップしていない場合は、ここで "*接続できません*" というメッセージが表示されます。ファイアウォール規則を作成するには、「[Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」を参照してください。
+
+
+9. 正常に接続すると、データベースに接続した状態で、**[SQL Server オブジェクト エクスプローラー]** ウィンドウが開かれます。
+
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
+
+
+## サンプル クエリの実行
+
+これでデータベースに接続できたので、次の手順では単純なクエリを実行する方法を示します。
+
 2. データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/new-query.png)
 
 3. クエリ ウィンドウに、次のコードをコピーして貼り付けます。
 
@@ -108,17 +93,13 @@ Visual Studio のインストールが必要な場合、以下の方法でイン
 		,CompanyName
 		FROM SalesLT.Customer;
 
-4. **[実行]** ボタンをクリックします。次のスクリーン ショットに、成功したクエリを示します。
+4. クエリを実行するには、**[実行]** ボタンをクリックします。
 
-	![成功。Connect to SQL Database server: SVisual Studio](./media/sql-database-connect-query-ssms/5-success.png)
+	![成功。Connect to SQL Database server: SVisual Studio](./media/sql-database-connect-query/run-query.png)
 
 ## 次のステップ
 
-[.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md)
+- Visual Studio で SQL データベースを開くには、SQL Server Data Tools を使用します。詳細については、「[SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx)」を参照してください。
+- コードを使用して SQL データベースに接続するには、「[.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md)」を参照してください。
 
-
-<!-- Image references. -->
-
-[20-OpenInVisualStudioButton]: ./media/sql-database-connect-query/connqry-free-vs-e.png
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

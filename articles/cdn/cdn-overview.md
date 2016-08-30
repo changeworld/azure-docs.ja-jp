@@ -68,6 +68,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 | [カスタマイズ可能なルール ベースのコンテンツ配信エンジン](cdn-rules-engine.md) | | | **&#x2713;** |
 | [詳細な HTTP レポート](cdn-advanced-http-reports.md) | | | **&#x2713;** |
 | [リアルタイム統計](cdn-real-time-stats.md) | | | **&#x2713;** |
+| [リアルタイム アラート](cdn-real-time-alerts.md) | | | **&#x2713;** |
 
 >[AZURE.TIP] Azure CDN に搭載してほしい機能がありましたら、 [ぜひご意見をお聞かせください](https://feedback.azure.com/forums/169397-cdn)。
 
@@ -83,4 +84,4 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

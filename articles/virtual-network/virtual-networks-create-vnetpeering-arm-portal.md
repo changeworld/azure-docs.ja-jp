@@ -3,7 +3,7 @@
    description="Resource Manager で Azure ポータルを使用して仮想ネットワークを作成する方法を説明します。"
    services="virtual-network"
    documentationCenter=""
-   authors="narayanannamalai"
+   authors="NarayanAnnamalai"
    manager="jefco"
    editor=""
    tags="azure-resource-manager"/>
@@ -36,7 +36,7 @@
 
 	![ピアリングの選択](./media/virtual-networks-create-vnetpeering-arm-portal/figure02.png)
 
-4. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet2」という名前を付け、サブスクリプションとピア仮想ネットワーク (VNET2) を選択して [OK] をクリックします。
+4. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet2」という名前を付け、サブスクリプションとピア仮想ネットワーク (VNET2) を選択して、[OK] をクリックします。
 
 	![VNet へのリンク](./media/virtual-networks-create-vnetpeering-arm-portal/figure03.png)
 
@@ -48,7 +48,7 @@
 
 	![他の VNet からのピア](./media/virtual-networks-create-vnetpeering-arm-portal/figure05.png)
 
-7. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet1」という名前を付け、サブスクリプションとピア仮想ネットワークを選択して [OK] をクリックします。
+7. [ピアリングの追加] ブレードで、ピアリング リンクに「LinkToVnet1」という名前を付け、サブスクリプションとピア仮想ネットワークを選択して、[OK] をクリックします。
 
 	![仮想ネットワーク タイルの作成](./media/virtual-networks-create-vnetpeering-arm-portal/figure06.png)
 
@@ -130,4 +130,4 @@
 
 4. この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNet ピアリングを作成し直すことをお勧めします。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->
