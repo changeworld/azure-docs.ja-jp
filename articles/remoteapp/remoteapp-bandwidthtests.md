@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/27/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
     
 # Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする
 
-「 [Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)」で説明したとおり、Azure RemoteApp がネットワークに及ぼす影響を算定する最善の方法は、使用量のテストを実行することです。特定の期間に対してこれらのテストを実行し、各シナリオに必要な帯域幅を測定します。可能であれば、特定の環境で生じるネットワークのパターンを理解するために、ネットワーク パケットの損失やネットワークのジッターを測定することもできます。
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+
+「[Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)」で説明したとおり、Azure RemoteApp がネットワークに及ぼす影響を算定する最善の方法は、使用量のテストを実行することです。特定の期間に対してこれらのテストを実行し、各シナリオに必要な帯域幅を測定します。可能であれば、特定の環境で生じるネットワークのパターンを理解するために、ネットワーク パケットの損失やネットワークのジッターを測定することもできます。
 
     
 使用帯域幅を評価するときには、社内のユーザーごとに使用量が異なることにご注意ください。たとえば、テキスト リーダーとテキスト ライターが通常使用する帯域幅は、ビデオを利用するユーザーよりも少なくなります。最善の結果を得るためには、ご自分のユーザーのニーズを調査し、社内のユーザーを最もよく表す次のシナリオの組み合わせをご作成ください。[使用帯域幅とユーザー エクスペリエンスに影響する要因の確認](remoteapp-bandwidthexperience.md)を忘れずに行ってください。これは理想的なテストを特定するのに役立ちます。
@@ -97,4 +100,4 @@
 
 - [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own) (Azure RemoteApp のネットワーク帯域幅に関する一般的なガイドライン (自分でテストできない場合))](remoteapp-bandwidthguidelines.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

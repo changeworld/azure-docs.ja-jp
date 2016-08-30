@@ -85,7 +85,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Azure クラシック ポータルまたは Azure リソース マネージャー API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。このトピックの詳細については、「[Azure ポータルでのロール ベースのアクセス制御][]」を参照してください。
 
-## 暗号化
+## Encryption
 
 Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することでデータを保護できます。TDE を有効にするには、管理者か、master データベース内の dbmanager ロールのメンバーである必要があります。データベースを暗号化するには、サーバーの master データベースに接続して以下を実行します。
 
@@ -103,15 +103,15 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
 
 ## 次のステップ
-さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、[SQL Data Warehouse への接続][]に関するページをご覧ください。
+さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、「[Azure SQL Data Warehouse への接続][]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse への接続]: ./sql-data-warehouse-develop-connections.md
-[SQL Database 監査の使用]: ./sql-data-warehouse-overview-auditing.md
+[Azure SQL Data Warehouse への接続]: ./sql-data-warehouse-connect-overview.md
+[SQL Database 監査の使用]: ./sql-data-warehouse-auditing-overview.md
 [Transparent Data Encryption (TDE) の概要]: ./sql-data-warehouse-encryption-tde.md
-[Azure Active Directory 認証を使用した SQL Data Warehouse への接続]: ./sql-data-warehouse-get-started-connect-aad-authentication.md
+[Azure Active Directory 認証を使用した SQL Data Warehouse への接続]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
 [Azure SQL Database ファイアウォール]: https://msdn.microsoft.com/library/ee621782.aspx
@@ -127,4 +127,4 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

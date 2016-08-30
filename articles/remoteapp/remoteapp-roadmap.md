@@ -12,23 +12,26 @@
     ms.tgt_pltfrm="NA"
     ms.devlang="NA"
     ms.topic="article"
-    ms.date="05/20/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp で予定される新機能
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 マイクロソフトは、お客様からのフィードバックに基づいて Azure RemoteApp の改善に常に取り組んでいます。今後、新機能が使用可能になるおおよその時期は次のとおりです。
 
 |機能|2016 年 4 月 - 6 月|2016 年 7 月 - 9 月|
 |-----------|-------|-------|
-|[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](https://portal.azure.com) - プライベート プレビューの両方で Azure Remote App が利用可能|○ | |
-|個々のアプリケーションを特定のユーザーに発行する機能 - プライベート プレビュー ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|○ | |
-|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) - プライベート プレビュー| ○| |
-|Azure リソース マネージャー (ARM) のサポート||○|
-|Azure v2 リソースのサポート| |○|
-|Cloud Solution Provider (CSP)||○|
-|インド リージョンでの可用性||○|
-|英国リージョンでの可用性||○|
+|[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](https://portal.azure.com) - プライベート プレビューの両方で Azure Remote App が利用可能| | |
+|個々のアプリケーションを特定のユーザーに発行する機能 - プライベート プレビュー ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))| | |
+|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) - プライベート プレビュー| | |
+|Azure リソース マネージャー (ARM) のサポート|||
+|Azure v2 リソースのサポート| ||
+|Cloud Solution Provider (CSP)|||
+|インド リージョンでの可用性|||
+|英国リージョンでの可用性|||
 
 
 今年、これまでに追加されたその他の機能強化
@@ -47,4 +50,4 @@
 - オーストラリア データ センターでの可用性
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

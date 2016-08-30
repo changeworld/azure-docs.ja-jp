@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="02/26/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement の概念
@@ -85,4 +85,4 @@ extras は JSON オブジェクトと同様に構造化されます。キー/値
 - [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
 - [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

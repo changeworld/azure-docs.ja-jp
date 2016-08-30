@@ -124,4 +124,4 @@
 [1]: ./media/mobile-engagement-web-app-get-started/visual-studio-solution-js.png
 [2]: ./media/mobile-engagement-web-app-get-started/session.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!-----HONumber=AcomDC_0615_2016-->

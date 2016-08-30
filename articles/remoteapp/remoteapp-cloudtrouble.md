@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/27/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # RemoteApp クラウド コレクション作成のトラブルシューティング
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 クラウド コレクションを作成できない場合、次の情報を確認してください。
 
@@ -42,4 +45,4 @@ Azure がコレクションにプロビジョニングするのを待ってい�
 
 このエラーが表示される場合、通常は、次のようなことを意味します。有料アカウントにアップグレード済みであるのに、サービスの試用版モードでのみ有効な Microsoft 提供のイメージを使用している。この場合は、適切なイメージを指定して、クラウド コレクションを再度作成してみてください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

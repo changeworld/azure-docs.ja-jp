@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="storage-backup-recovery"
-   ms.date="07/01/2016"
+   ms.date="08/16/2016"
    ms.author="markgal; jimpark; trinadhk"/>
 
 # VM のバックアップ中の暗号化されているディスクの処理
 
-Azure での VM データの暗号化を検討している企業の場合、Windows では [Azure Disk Encryption](../azure-security-disk-encryption.md) または Bitlocker、Linux マシンでは dmcrypt を利用してください。
+Azure での VM データの暗号化を検討している企業の場合、Windows では [Azure Disk Encryption](../security/azure-security-disk-encryption.md) または Bitlocker、Linux マシンでは dmcrypt を利用してください。
 
 > [AZURE.NOTE]  Azure Backup では、Azure Disk Encryption (ADE) を使用して暗号化された VM のバックアップと復元がサポートされています。<br>
 1. VM が BEK と KEK を使用して暗号化されている場合は、PowerShell を使用してバックアップと復元を行うことができます。<br>
@@ -77,4 +77,4 @@ Azure での VM データの暗号化を検討している企業の場合、Wind
 - [デプロイ ガイド - PDF](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [SecureVM のデプロイと使用 - ビデオ](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/15/2016"
 	ms.author="curtand"/>
 
 
@@ -168,7 +168,7 @@ Azure クラシック ポータルを使用すると、高度なルールを作�
 
 (user.extensionAttribute15 -eq "Marketing")
 
-カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、形式は "user.extension\_[GUID]\_\_[Attribute]" です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。カスタム属性を使用するルールの例を次に示します
+カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。カスタム属性を使用するルールの例を次に示します
 
 user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
@@ -183,17 +183,34 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
 2. **[グループ]** タブを選択し、編集するグループを開きます。
 
-3. **[構成]** タブをクリックして、**[高度なルール]** を選択します。
+3. **[構成]** タブを選択し、**[高度なルール]** を選択します。
 
 4. 次の構文を使用してルールを入力します。
 
-	Direct Reports for *Direct Reports for {obectID\_of\_manager}*。直属の部下の有効なルールの例を示します。
+	直属の部下用の場合は、*Direct Reports for {obectID\_of\_manager}* です。直属の部下の有効なルールの例を示します。
 
 					Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
 	ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ**で確認できます。
 
 3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。最初は、グループを設定するのに数分かかることがあります。
+
+
+## 属性を使用したデバイス オブジェクトのルールの作成
+
+グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。次のデバイス属性を使用できます。
+
+| プロパティ | 使用できる値 | 使用法 |
+|----------------------|---------------------------------|------------------------------------------------------|
+| displayName | 任意の文字列値 | (device.displayName -eq "Rob Iphone”) |
+| deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "IOS") |
+| deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1") |
+| isDirSynced | true false null | (device.isDirSynced -eq "true") |
+| isManaged | true false null | (device.isManaged -eq "false") |
+| isCompliant | true false null | (device.isCompliant -eq "true") |
+
+> [AZURE.NOTE]
+Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
 
 
 ## 追加情報
@@ -209,4 +226,4 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

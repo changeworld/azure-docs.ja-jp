@@ -12,7 +12,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/26/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Citrix GoToMeeting の統合  
@@ -75,20 +75,20 @@
 
 1.  Azure AD ポータルの **Citrix GoToMeeting** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768997.png "Enable single sign-on")
+    ![Enable single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768997.png "Enable single sign-on")
 
 2.  **[ユーザーの Citrix GoToMeeting へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択します。
 
-    ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768998.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768998.png "Configure single sign-on")
 
 
 3. **[アプリ設定の構成]** ページで、**[次へ]** をクリックします。
 
-	![シングル サインオンの有効化](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "Enable single sign-on")
+	![Enable single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC7689981.png "Enable single sign-on")
 
 4.  **[Citrix GoToMeeting でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768999.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC768999.png "Configure single sign-on")
 
 5.  別のブラウザーのウィンドウで、Citrix Organization Center ([https://account.citrixonline.com/organization/administration/](https://account.citrixonline.com/organization/administration/)) にログインします。
 
@@ -115,7 +115,7 @@
 
 6.  Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769000.png "Configure single sign-on")
 
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
@@ -134,11 +134,11 @@
 
 1.  Azure クラシック ポータルの **Citrix GoToMeeting** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
 
-    ![Configure user provisioning](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769001.png "Configure user provisioning")
+    ![ユーザー プロビジョニングの構成](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769001.png "ユーザー プロビジョニングの構成")
 
 2.  **[設定と管理者資格情報]** ページで、次の手順を実行します。
 
-    ![Configure user provisioning](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769002.png "Configure user provisioning")
+    ![ユーザー プロビジョニングの構成](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC769002.png "ユーザー プロビジョニングの構成")
 
 	a.**[Citrix GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
 
@@ -167,7 +167,7 @@
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-citrix-gotomeeting-tutorial/IC767830.png "はい")
 
 10 分間待機し、アカウントが Dropbox for Business に同期されていることを確認します。
 
@@ -183,4 +183,4 @@
 
 アクセス パネルの詳細については、「[アクセス パネルの概要](https://msdn.microsoft.com/library/dn308586)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

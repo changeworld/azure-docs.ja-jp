@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Azure でのリモート デスクトップの有効化
@@ -95,7 +95,7 @@
 
 ## その他のリソース
 
-- [Azure のロール インスタンスへのリモート アクセス] 
+- [Azure のロール インスタンスへのリモート アクセス]
 - [Azure ロールでのリモート デスクトップの使用]
 - [Node.js デベロッパー センター](/develop/nodejs/)
 
@@ -115,4 +115,4 @@
 [Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/library/windowsazure/gg443832.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016--->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する" 
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する | Microsoft Azure" 
 	description="このチュートリアルでは、REST API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -23,11 +23,12 @@
 - [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、REST API を使用して Azure Data Factory を作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
-コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.NOTE] 
 この記事では、すべての Data Factory REST API を取り上げているわけではありません。Data Factory REST API に関する包括的なドキュメントについては、[Data Factory REST API リファレンス](https://msdn.microsoft.com/library/azure/dn906738.aspx)を参照してください。
@@ -142,7 +143,7 @@ JSON 定義では **AzureBlobInput** という名前のデータセットを定�
 - **folderPath** は **adftutorial** コンテナーに設定され、**fileName** は **emp.txt** に設定されています。
 - format の **type** が **TextFormat** に設定されています。
 - テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。
-- **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
+- **availability** が **hourly** に設定されています (frequency は hour、interval は 1 に設定されています)。そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
 
 入力データセット用に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
 
@@ -196,7 +197,7 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 - dataset の **type** が **AzureSQLTable** に設定されています。
 - **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
 - **tablename** は **emp** に設定されています。
-- データベース内の emp テーブルに 3 つの列 (**ID**、**FirstName**、**LastName**) がありますが、ID は識別子の列であるため、ここでは **FirstName** と **LastName** のみを指定する必要があります。
+- データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 - **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 ### pipeline.json
@@ -238,8 +239,8 @@ JSON 定義では **AzureSqlOutput** という名前のデータセットを定�
 	        }
 	      }
 	    ],
-	    "start": "2016-07-12T00:00:00Z",
-	    "end": "2016-07-13T00:00:00Z"
+	    "start": "2016-08-12T00:00:00Z",
+	    "end": "2016-08-13T00:00:00Z"
 	  }
 	}
 
@@ -256,7 +257,7 @@ start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/w
 
 **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティとして指定します。
 
-上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
+この例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
 > [AZURE.NOTE] 上の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
 
@@ -285,7 +286,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 ## データ ファクトリの作成
 
-この手順では、**ADFCopyTutorialDF** という名前の Azure データ ファクトリを作成します。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。以下のコマンドを実行して、データ ファクトリを作成します。
+この手順では、**ADFCopyTutorialDF** という名前の Azure データ ファクトリを作成します。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元データ ストアからコピー先データ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。以下のコマンドを実行して、データ ファクトリを作成します。
 
 1. コマンドを **cmd** という名前の変数に割り当てます。
 
@@ -320,7 +321,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 			Get-AzureRmResourceProvider
 	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。この操作によって、プロバイダーが自動的に登録されます。
 
-パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。最初に、ソース データ ストアや保存先データ ストアを自分のデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義した後、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
+パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。最初に、ソース データ ストアや保存先データ ストアを自分のデータ ストアにリンクするリンクされたサービスを作成します。次に、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。最後に、これらのデータセットを使用するアクティビティを含むパイプラインを作成します。
 
 ## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
@@ -357,7 +358,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 前の手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure ストレージ アカウントと Azure SQL データベースを **ADFCopyTutorialDF** というデータ ファクトリにリンクしました。この手順では、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すデータセットを作成します。
 
-このチュートリアルの入力データセットは AzureStorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照し、出力データセットは AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。
+このチュートリアルの入力データセットは、AzureStorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照します。出力データセットは、AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。
 
 ### Azure Blob Storage と Azure SQL Database をチュートリアル用に準備する
 このチュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備するには、次の手順を実行します。
@@ -390,7 +391,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 	SQL Server 2014 がコンピューターにインストールされている場合は、記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。
 
-	Visual Studio 2013 がコンピューターにインストールされている場合: Azure ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
+	クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)を参照してください。
 		
 ### 入力データセットの作成 
 この手順では、リンクされたサービス **AzureStorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **AzureBlobInput** という名前のデータセットを作成します。この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
@@ -406,7 +407,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results
 
 ### 出力データセットの作成
-手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (**emp**) をポイントする **AzureSqlOutput** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
+この手順では、**AzureSqlOutput** という名前の出力テーブルを作成します。このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブル (**emp**) をポイントします。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
 
 1. コマンドを **cmd** という名前の変数に割り当てます。
  
@@ -492,4 +493,4 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

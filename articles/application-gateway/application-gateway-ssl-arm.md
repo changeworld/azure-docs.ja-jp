@@ -85,14 +85,14 @@ Azure リソース マネージャー コマンドレットを使用するよう
 使用する Azure サブスクリプションを選択します。<BR>
 
 
-		PS C:\> Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+	Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 
 ### 手順 4.
 
 リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    New-AzureRmResourceGroup -Name appgw-rg -location "West US"
+    New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。この設定は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
@@ -115,7 +115,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 ### 手順 3.
 
-	$subnet=$vnet.Subnets[0]
+	$subnet = $vnet.Subnets[0]
 
 変数 $subnet にサブネット オブジェクトを割り当てます。
 
@@ -200,4 +200,4 @@ Application Gateway のインスタンスのサイズを構成します。
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

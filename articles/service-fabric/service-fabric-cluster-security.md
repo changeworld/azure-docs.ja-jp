@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/08/2016"
+   ms.date="08/10/2016"
    ms.author="chackdan"/>
 
 # Service Fabric クラスターのセキュリティに関するシナリオ
@@ -52,9 +52,9 @@ Azure で実行するクラスターまたは Windows で実行するスタン�
 ### クライアントとノードの間の証明書セキュリティ
  クライアントとノードの間の証明書セキュリティを構成するには、Azure ポータル、Resource Manager テンプレート、またはスタンドアロン JSON テンプレートでクラスターを作成するときに、管理用クライアント証明書やユーザー クライアント証明書を指定します。指定する管理用クライアント証明書とユーザー クライアント証明書は、[ノード間のセキュリティ](#node-to-node-security)に指定するプライマリ証明書とセカンダリ証明書とは異なります。
 
-管理用証明書を使用してクラスターに接続するクライアントには、管理機能へのフル アクセス権があります。読み取り専用ユーザー クライアント証明書を使用してクラスターに接続するクライアントには、管理機能に対する読み取りアクセス権しかありません。つまり、これらの証明書は、後で説明するロールベースのアクセス制御 (RBAC) に使用されます。
+管理用証明書を使用してクラスターに接続するクライアントには、管理機能へのフル アクセス権があります。読み取り専用ユーザー クライアント証明書を使用してクラスターに接続するクライアントには、管理機能に対する読み取りアクセス権しかありません。つまり、これらの証明書は、この記事の中で後で説明するロールベースのアクセス制御 (RBAC) に使用されます。
 
-Azure のクラスターで証明書セキュリティを構成する方法については、「[証明書を使用し、Azure で Service Fabric クラスターをセキュリティで保護する](service-fabric-secure-azure-cluster-with-certs.md)」または [Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
+Azure クラスターで証明書のセキュリティを構成する方法については、「[証明書を使用し、Azure で Service Fabric クラスターをセキュリティで保護する](service-fabric-secure-azure-cluster-with-certs.md)」または「[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする](service-fabric-cluster-creation-via-arm.md)」を参照してください。
 
 スタンドアロン Windows Server の場合は、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
@@ -64,7 +64,7 @@ Azure で実行されているクラスターは、Azure Active Directory (AAD) 
 ## セキュリティに関する推奨事項
 Azure クラスターについては、クライアントの認証に AAD セキュリティ、ノード間のセキュリティに証明書を使用することをお勧めします。
 
-スタンドアロン Windows Server クラスターについては、Windows Server 2012 R2 と Active Directory を使用している場合、グループ管理アカウント (gMA) で Windows セキュリティを使用することをお勧めします。それ以外の場合は、引き続き Windows アカウントで Windows セキュリティを使用してください。
+スタンドアロン Windows Server クラスターについては、Windows Server 2012 R2 と Active Directory を使用している場合、グループ管理アカウント (GMA) で Windows セキュリティを使用することをお勧めします。それ以外の場合は、引き続き Windows アカウントで Windows セキュリティを使用してください。
 
 ## ロールベースのアクセス制御 (RBAC)
 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。クラスターに接続するクライアント用に、2 種類の異なるアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。
@@ -103,9 +103,15 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 
 
 ## 次のステップ
+
+セキュリティで保護されたクラスターを設定する方法についてはこちらを参照してください。
+
+- [Azure クラスターを証明書を使用して保護する](service-fabric-secure-azure-cluster-with-certs.md)
+
 クラスターの設定を行った後は、クラスターのアップグレードについてこちらを参照してください。
 
 - [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
+- [ロール オーバーまたは新しい証明書の追加](service-fabric-cluster-security-update-certs-azure.md)
 
 アプリケーションのセキュリティの詳細についてはこちらを参照してください。
 
@@ -117,4 +123,4 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -122,4 +122,4 @@ HTTP エンドポイント資格情報は、HDInsight クラスター向けに�
 - [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
 - [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!-----HONumber=AcomDC_0706_2016-->

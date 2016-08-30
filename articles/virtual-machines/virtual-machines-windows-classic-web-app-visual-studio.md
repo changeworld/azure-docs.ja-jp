@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/15/2016"
 	ms.author="tarcher"/>
 
 # Visual Studio での Web アプリケーション用仮想マシンの作成
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-web-app-visual-studio](../../includes/virtual-machines-common-classic-web-app-visual-studio.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

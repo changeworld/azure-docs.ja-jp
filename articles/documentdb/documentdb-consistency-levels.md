@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="08/11/2016"
 	ms.author="mimig"/>
 
 # DocumentDB の一貫性レベル
@@ -74,11 +74,11 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 
 | 保証 | Strong | Bounded Staleness | Session | Eventual |
 |----------------------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------------------|--------------------------------------------------|--------------------------------------------------|
-| **トータルなグローバル順序** | あり | はい ("staleness 期間" 外) | いいえ (部分的な "セッションの" 順序) | いいえ |
-| **一貫性のあるプレフィックスの保証** | はい | はい | はい | あり |
-| **モノトニックな読み取り** | はい | はい (リージョン間は staleness 期間外のみ、リージョン内は常時) | いいえ (特定のセッションの間) | いいえ |
-| **モノトニックな書き込み** | あり | はい | はい | あり |
-| **自身の書き込みの読み取り** | あり | はい | はい (書き込みリージョン内) | いいえ |
+| **トータルなグローバル順序** | はい | はい ("staleness 期間" 外) | いいえ (部分的な "セッションの" 順序) | なし |
+| **一貫性のあるプレフィックスの保証** | はい | はい | はい | はい |
+| **モノトニックな読み取り** | はい | はい (リージョン間は staleness 期間外のみ、リージョン内は常時) | いいえ (特定のセッションの間) | なし |
+| **モノトニックな書き込み** | はい | はい | はい | はい |
+| **自身の書き込みの読み取り** | はい | はい | はい (書き込みリージョン内) | なし |
 
 
 ## 既定の一貫性レベルの構成
@@ -87,15 +87,12 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 
 2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
 
-3. アカウント ブレードで、**[すべての設定]** ブレードをまだ開いていない場合は、上部のコマンド バーの **[設定]** アイコンをクリックします。
+3. アカウントのブレードで、**[既定の整合性]** をクリックします。
 
-4. **[すべての設定]** ブレードで、**[機能]** の **[既定の整合性]** エントリをクリックします。
+
+4. **[既定の整合性]** ブレードで、新しい整合性レベルを選択し、**[OK]** をクリックします。
 
 	![[設定] アイコンと [既定の整合性] エントリが強調表示されたスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level-1.png)
-
-5. **[既定の整合性]** ブレードで、新しい一貫性レベルを選択し、**[OK]** をクリックします。
-
-	![Screen shot highlighting the Consistency level and the OK button](./media/documentdb-consistency-levels/database-consistency-level-2.png)
 
 ## クエリの一貫性レベル
 
@@ -106,13 +103,13 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 一貫性 (既定)|	Strong、Bounded Staleness、Session、Eventual の中から選択|	Strong、Bounded Staleness、Session、Eventual の中から選択|
 遅延|	Strong、Bounded Staleness、Session、Eventual の中から選択|	Eventual  
 
-読み取り要求と同様に、[x-ms-consistency-level](https://msdn.microsoft.com/library/azure/mt632096.aspx) という要求ヘッダーを指定することによって、特定のクエリ要求の一貫性レベルを引き下げることができます。
+読み取り要求と同様に、[x-ms-consistency-level](https://msdn.microsoft.com/library/azure/mt632096.aspx) という要求ヘッダーを指定することによって、特定のクエリ要求の整合性レベルを引き下げることができます。
 
 ## 次のステップ
 
 一貫性レベルとトレードオフの詳細については、以下の資料を参照してください。
 
--	Doug Terry 著:Replicated Data Consistency explained through baseball (レプリケート データの一貫性を野球にたとえると) (ビデオ) [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
+-	Doug Terry 著:Replicated Data Consistency explained through baseball (レプリケート データの整合性を野球にたとえると) (ビデオ) [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
 -	Doug Terry 著:Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
 -	Doug Terry 著:Session Guarantees for Weakly Consistent Replicated Data (弱一貫性レプリケート データのためのセッション保証) [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
 -	Daniel Abadi 著:Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is only part of the story (先進的な分散データベース システム設計における一貫性のトレードオフ: CAP 以外の考慮事項について) [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
@@ -122,4 +119,4 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -20,7 +20,7 @@
 
 ##Overview
 
-Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。アプリケーションと Azure の間で送信されるデータを、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../azure-security-disk-encryption.md) を使用して暗号化されるように設定できます。Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、[Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を使用して付与できます。
+Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。ストレージ アカウント自体は、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。アプリケーションと Azure の間で送信されるデータを、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。仮想マシンに使用する OS とデータ ディスクは、[Azure Disk Encryption](../security/azure-security-disk-encryption.md) を使用して暗号化されるように設定できます。Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権は、[Shared Access Signature](storage-dotnet-shared-access-signature-part-1.md) を使用して付与できます。
 
 この記事では、Azure Storage で使用できる各セキュリティ機能の概要について説明します。また、各トピックの詳細を簡単に調べられるように、各機能の詳細を説明した記事のリンクも紹介します。
 
@@ -634,4 +634,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

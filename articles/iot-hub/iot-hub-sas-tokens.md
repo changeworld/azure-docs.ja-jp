@@ -42,7 +42,7 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
 
 考えられる値を次に示します。
 
-| 値 | 説明 |
+| 値 | Description |
 | ----- | ----------- |
 | {signature} | HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。**重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
 | {resourceURI} | IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。たとえば、`myHub.azure-devices.net/devices/device1` のように指定します。 |
@@ -78,12 +78,31 @@ IoT Hub では、X.509 証明書を使用して IoT Hub でデバイスの認証
         // console.log("signature:" + token);
         return token;
     };
+ 
+ なお、上記に対応する Python のコードは次のとおりです。
+ 
+    from base64 import b64encode, b64decode
+    from hashlib import sha256
+    from hmac import HMAC
+    from urllib import urlencode
+    
+    def generate_sas_token(uri, key, policy_name='device', expiry=3600):
+        ttl = time() + expiry
+        sign_key = "%s\n%d" % (uri, int(ttl))
+        signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+     
+        return 'SharedAccessSignature ' + urlencode({
+            'sr' :  uri,
+            'sig': signature,
+            'se' : str(int(ttl)),
+            'skn': policy_name
+        })
 
 > [AZURE.NOTE] トークンの有効期間は IoT Hub コンピューターで検証されるため、重要なのは、トークンを生成するコンピューターのクロックのずれが最小限であることです。
 
 ## デバイスとして SAS トークンを使用する
 
-セキュリティ トークンを使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス ポリシー キーを使用する方法の 2 とおりがあります。
+セキュリティ トークンを使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス ポリシー キーを使用する方法の 2 通りがあります。
 
 さらに、デバイスからアクセスできるすべての機能は、仕様により、`/devices/{deviceId}` というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
@@ -246,4 +265,4 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -38,7 +38,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 	
 	npm init
 	
-プロジェクトを初期化するための一連の指定項目が表示されます。このチュートリアルでは、**entry point** に *app.js* を使用します。その他の項目については、以下のスクリーンショットを参照してください。
+プロジェクトを初期化するための一連の指定項目が表示されます。このチュートリアルでは、**entry point** に *app.js* を使用します。その他の項目については、次のスクリーンショットを参照してください。
 
 ![NPM init output](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -103,7 +103,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 	
 	個別ユーザー認証を使用する場合は、この 2 行のコードが多少異なります。
 
-	>[AZURE.IMPORTANT] このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。個々のユーザーの資格情報は厳重に保護し、第三者に知られないようにしてください。
+	>[AZURE.IMPORTANT] このコード サンプルは、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。個々のユーザーの資格情報は気を付けて保護し、第三者に知られないようにしてください。
 
 	``` javascript
 	var credentials = new msRestAzure.UserTokenCredentials(clientId, 
@@ -117,7 +117,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 4.  Node.js コンソール アプリケーションには、いくつかのコマンド ライン パラメーターがあります。少なくとも 1 つのパラメーターが渡されたことを検証しましょう。
 
 	```javascript
-	//Collect command line parameters
+	//Collect command-line parameters
 	var parms = process.argv.slice(2);
 
 	//Do we have parameters?
@@ -213,7 +213,7 @@ CDN プロファイルとエンドポイントの作成と管理は、[Azure CDN
 
 ## CDN プロファイルとエンドポイントのリストの取得
 
-最初に、既存のプロファイルとエンドポイントをリストするコードを作成します。パラメーターの流れが把握しやすいようコード コメントに正しい構文を示します。
+最初に、既存のプロファイルとエンドポイントをリストするコードを作成します。コード コメントは、各パラメーターの流れを把握しやすいように正しい構文を示しています。
 
 ```javascript
 // list profiles
@@ -367,4 +367,6 @@ Azure CDN SDK for Node.js のリファレンスは、[こちら](http://azure.gi
 
 Azure SDK for Node.js に関するその他のドキュメントについては、[詳しいリファレンス](http://azure.github.io/azure-sdk-for-node/)を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+[PowerShell](./cdn-manage-powershell.md) で CDN リソースを管理します。
+
+<!---HONumber=AcomDC_0817_2016-->

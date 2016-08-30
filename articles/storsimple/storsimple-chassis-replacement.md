@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/22/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのシャーシを交換する
 
-## 概要
+## Overview
 
 このチュートリアルでは、StorSimple 8000 シリーズ デバイスのシャーシを取り外して交換する方法について説明します。StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルでは、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシと EBOD エンクロージャのシャーシです。
 
@@ -63,4 +63,4 @@
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

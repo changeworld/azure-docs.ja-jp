@@ -33,6 +33,8 @@
 
 - **Windows を実行する仮想マシン** - オンプレミスの仮想マシンを作成するための多くのツールがあります。たとえば、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。Azure でサポートされている Windows オペレーティング システムの詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
 
+- VM で実行されるサーバー ロールが sysprep をサポートしていることを確認します。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
+
 
 ## VM が適切なファイル形式になっていることを確認する
 
@@ -252,4 +254,4 @@ Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://
 
 Azure PowerShell を使用して新しい仮想マシンを管理する方法については、「[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

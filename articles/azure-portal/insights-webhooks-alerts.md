@@ -64,7 +64,7 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
             "resourceType": "microsoft.foo/sites",
             "resourceId": "/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1",
             "resourceRegion": "centralus",
-            "portalLink": “https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1”                                
+            "portalLink": "https://portal.azure.com/#resource/subscriptions/s1/resourceGroups/useast/providers/microsoft.foo/sites/mysite1"
 },
 "properties": {
               "key1": "value1",
@@ -72,8 +72,6 @@ POST 操作には、すべてのメトリック ベース アラートの以下�
               }
 }
 ```
-
->[AZURE.NOTE] 次の更新で、イベント ("conditionType": "Event") に対するアラートのサポートを追加します。
 
 
 | フィールド | 必須 | 値の固定セット | メモ |
@@ -123,4 +121,4 @@ Azure アラートを使用して、メッセージを他のサービスに送�
 
 [Azure キューにメッセージを送信するロジック アプリを使用する場合](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

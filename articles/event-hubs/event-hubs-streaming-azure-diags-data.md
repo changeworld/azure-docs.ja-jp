@@ -57,7 +57,7 @@ Azure 診断では常に、ログとメトリックが既定で Azure Storage �
 </SinksConfig>
 ```
 
-この例では、イベント ハブの URL はイベント ハブの完全修飾名前空間に設定されています (ServiceBus 名前空間 + “/” + イベント ハブ名)。
+この例では、Event Hub の URL は Event Hub の完全修飾名前空間に設定されています (Event Hubs 名前空間 + "/" + Event Hub 名)。
 
 イベント ハブの URL は [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)の Event Hubs ダッシュボードに表示されます。
 
@@ -74,7 +74,7 @@ Event Hubs シンクは、*.wadcfgx* 構成ファイルの **PrivateConfig** セ
 </PrivateConfig>
 ```
 
-`SharedAccessKeyName` 値は、**ServiceBus/EventHub** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。[Azure ポータル](https://manage.windowsazure.com)の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、*"送信"* のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。**StorageAccount** は **PrivateConfig** でも宣言されています。正常に動作している場合、ここでは値を変更する必要はありません。この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。
+`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。[Azure ポータル](https://manage.windowsazure.com)の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、*"送信"* のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。**StorageAccount** は **PrivateConfig** でも宣言されています。正常に動作している場合、ここでは値を変更する必要はありません。この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。
 
 > [AZURE.WARNING] Event Hubs の SAS キーは、*.wadcfgx* ファイルにプレーン テキストで保存されます。多くの場合、このキーは、ソース コード管理にチェックインされるか、ビルド サーバーの資産として利用されるため、適切に保護する必要があります。ここでは、悪意のあるユーザーがイベント ハブに書き込むことはできても、リッスンしたり操作したりすることはできないように、*"送信のみ"* のアクセス許可を持つ SAS キーを使用することが推奨されます。
 
@@ -319,4 +319,4 @@ namespace EventHubListener
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

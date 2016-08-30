@@ -20,8 +20,10 @@
 
 この記事では、Azure Data Factory のコピー アクティビティを使用し、Azure テーブルと別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
-次のサンプルは、Azure テーブル ストレージと Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
+## データのコピー ウィザード
+Azure Table Storage との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
+以下の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、Azure Table Storage と Azure BLOB Database の間でデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 ## サンプル: Azure テーブルから Azure BLOB にデータをコピーする
 
@@ -46,7 +48,7 @@
 	  }
 	}
 
-Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」をご覧ください。
 
 **Azure テーブルの入力データセット:**
 
@@ -208,7 +210,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 	  }
 	}
 
-Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」セクションを参照してください。
+Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2 種類の Azure Storage のリンクされたサービスをサポートしています。前者ではアカウント キーを含む接続文字列を指定し、後者では Shared Access Signature (SAS) の URI を指定します。詳細については、「[リンクされたサービス](#linked-services)」をご覧ください。
 
 **Azure BLOB の入力データセット:**
 
@@ -372,7 +374,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 ## Azure テーブルのコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
@@ -381,7 +383,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | Azure テーブルのクエリ文字列。下記の例をご覧ください。 | いいえ。azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。  
-azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | いいえ |
+azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | なし |
 
 ### azureTableSourceQuery の例
 
@@ -399,10 +401,10 @@ Azure テーブルの列が datetime 型の場合:
 
 プロパティ | 説明 | 使用できる値 | 必須  
 -------- | ----------- | -------------- | -------- 
-azureTableDefaultPartitionKeyValue | シンクで使用できる既定のパーティション キー値です。 | 文字列の値。 | いいえ 
-azureTablePartitionKeyName | ユーザーが指定した列名です。列の値がパーティション キーとして使用されます。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | いいえ |
-azureTableRowKeyName | ユーザーが指定した列名です。列の値が行キーとして使用されます。指定しない場合、各行に GUID を使用します。 | 列の名前。 | いいえ  
-azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行が、値を置換またはマージさせるかどうかを制御します。<br/><br/>これらの設定 (マージと置換) のしくみについては、「[エンティティの挿入または統合](https://msdn.microsoft.com/library/azure/hh452241.aspx)」と「[エンティティの挿入または置換](https://msdn.microsoft.com/library/azure/hh452242.aspx)」を参照してください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されることに注意してください。どちらのオプションも、出力テーブル内の、入力内に存在しない行を削除しません。 | merge (既定)<br/>replace | いいえ 
+azureTableDefaultPartitionKeyValue | シンクで使用できる既定のパーティション キー値です。 | 文字列の値。 | なし 
+azureTablePartitionKeyName | ユーザーが指定した列名です。列の値がパーティション キーとして使用されます。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | なし |
+azureTableRowKeyName | ユーザーが指定した列名です。列の値が行キーとして使用されます。指定しない場合、各行に GUID を使用します。 | 列の名前。 | なし  
+azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。<br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されることに注意してください。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 | merge (既定値)<br/>replace | なし 
 writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | 整数 (行数)| いいえ (既定値: 10000) 
 writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | timespan<br/><br/>例: "00:20:00" (20 分) | No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒)
 
@@ -527,6 +529,6 @@ lastlogindate | Edm.DateTime
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

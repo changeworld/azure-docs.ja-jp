@@ -2,6 +2,7 @@
 	pageTitle="Azure Government 開発者向けガイド" 
 	description="Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。" 
 	services="" 
+	cloud="gov"
 	documentationCenter="" 
 	authors="Joharve2" 
 	manager="Chrisnie" 
@@ -91,10 +92,10 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 管理ポータル|manage.windowsazure.com|manage.windowsazure.us
 全般|*.windows.net|*.usgovcloudapi.net
 コア|*.core.windows.net|*.core.usgovcloudapi.net
-コンピューティング|*.cloudapp.net|*.usgovcloudapp.net
-BLOB ストレージ|*.blob.core.windows.net| *.blob.core.usgovcloudapi.net
-Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
-テーブル ストレージ|*.table.core.windows.net|*.table.core.usgovcloudapi.net
+計算|*.cloudapp.net|*.usgovcloudapp.net
+BLOB ストレージ|*.blob.core.windows.net|	*.blob.core.usgovcloudapi.net
+キュー ストレージ|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+Table Storage|*.table.core.windows.net|*.table.core.usgovcloudapi.net
 サービス管理|management.core.windows.net|management.core.usgovcloudapi.net
 SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
 ARM の負荷分散されたエンドポイント|https://management.windows.net|https://management.usgovcloudapi.net  
@@ -129,4 +130,4 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0817_2016-->

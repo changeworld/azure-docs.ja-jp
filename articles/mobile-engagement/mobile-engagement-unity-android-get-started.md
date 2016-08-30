@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-unity-android"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Unity Android デプロイでの Azure Mobile Engagement の使用
@@ -151,4 +151,4 @@
 [53]: ./media/mobile-engagement-unity-android-get-started/53.png
 [54]: ./media/mobile-engagement-unity-android-get-started/54.png
 
-<!-----HONumber=AcomDC_0330_2016-->
+<!---HONumber=AcomDC_0824_2016-->

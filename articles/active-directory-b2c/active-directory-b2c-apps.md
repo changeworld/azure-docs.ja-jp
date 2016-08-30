@@ -128,4 +128,4 @@ Azure AD B2C では、現時点で以下の種類のアプリはサポートし�
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!-----HONumber=AcomDC_0727_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Azure"
+	pageTitle="MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Azure "
 	description="Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。"
 	services="active-directory"
 	documentationCenter="na"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/15/2016"
 	ms.author="tarcher"/>
 
 # MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
@@ -171,4 +171,4 @@ Azure Active Directory アプリが更新され、*ディレクトリ データ�
 
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

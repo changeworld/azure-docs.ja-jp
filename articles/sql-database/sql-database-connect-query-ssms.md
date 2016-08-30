@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/09/2016"
+	ms.date="08/17/2016"
 	ms.author="sstein;carlrab" />
 
 # SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する
@@ -25,21 +25,18 @@
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-この記事では、SQL Server Management Studio (SSMS) の最新バージョンを使用して Azure SQL Database に接続し、TRANSACT-SQL (T-SQL) ステートメントを使用して簡単なクエリを実行する方法を示します。
-
-[AZURE.INCLUDE [サインイン](../../includes/azure-getting-started-portal-login.md)]
+この記事では、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースに接続する方法について説明します。正常に接続した後、単純な Transact-SQL (T-SQL) クエリを実行して、データベースとの通信を確認します。
 
 [AZURE.INCLUDE [SSMS のインストール](../../includes/sql-server-management-studio-install.md)]
 
 [AZURE.INCLUDE [SSMS 接続](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
-ファイアウォール規則の詳細については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 ## サンプル クエリの実行
 
-論理サーバーに接続すると、データベースに接続し、サンプル クエリを実行できます。
+サーバーへの接続後、データベースに接続し、サンプル クエリを実行できます。クエリの作成に慣れていない場合は、[Transact-SQL ステートメントの記述](https://msdn.microsoft.com/library/ms365303.aspx)に関するページを参照してください。
 
-1. **オブジェクト エクスプローラー**で、サーバー上のアクセス許可を持っているデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
+1. **オブジェクト エクスプローラー**で、サーバー上のデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
 2. データベースを右クリックし、**[新しいクエリ]** を選択します。
 
 	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
@@ -54,7 +51,7 @@
 		,CompanyName
 		FROM SalesLT.Customer;
 
-4. **[実行]** ボタンをクリックします。次のスクリーン ショットに、成功したクエリを示します。
+4. **[実行]** ボタンをクリックします。
 
 	![成功。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
 
@@ -64,6 +61,8 @@ SQL Server で可能な方法とほぼ同じように、T-SQL ステートメン
 
 T-SQL を初めて使用する場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
-データベース ユーザーおよびデータベース ユーザー管理者の作成の概要については、「[Get Started with Azure SQL Database security (Azure SQL Database セキュリティの概要)](sql-database-get-started-security.md)」を参照してください。
+データベース ユーザーおよびデータベース ユーザー管理者の作成の概要については、[Azure SQL Database セキュリティの概要](sql-database-get-started-security.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+SSMS の詳細については、「[SQL Server Management Studio の使用](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
+
+<!---HONumber=AcomDC_0824_2016-->

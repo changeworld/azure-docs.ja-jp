@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Java から Queue ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## 概要
+## Overview
 
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ](#Next-Steps)」のセクションを参照してください。
 
@@ -391,4 +391,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage Services REST API (Azure Storage サービスの REST API)]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

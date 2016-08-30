@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="powershell" 
-	ms.date="05/23/2016" 
+	ms.date="08/15/2016" 
 	ms.author="seasa"/>
 
 # PowerShell を使用して Azure Search サービスを管理する
@@ -139,4 +139,4 @@ Azure サブスクリプションが複数ある場合は、使用する Azure �
 
 - [Azure Search トラフィックを分析する](search-traffic-analytics.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

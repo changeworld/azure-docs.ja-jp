@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="dotnet"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/27/2016"
+	ms.date="08/27/2016"
 	ms.author="rachelap"/>
 
 # CORS を使用して JavaScript から API アプリを使用する
@@ -48,7 +48,7 @@ CORS は、Azure ポータル、または [Azure Resource Manager](../resource-g
 	たとえば、todolistangular という名前の Web アプリに JavaScript アプリケーションをデプロイした場合、「https://todolistangular.azurewebsites.net」と入力します。代わりに、元のドメインをすべて受け入れることを指定するアスタリスク (*) を入力することができます。
 
 
-13. **[保存]** をクリックします。
+13. [**Save**] をクリックします。
 
 	![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
@@ -133,7 +133,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 	|---|---|---|
 	|toDoListAPIURL|https://{your middle tier API app name}.azurewebsites.net|https://todolistapi0121.azurewebsites.net|
 
-4. **[保存]** をクリックします。
+4. [**Save**] をクリックします。
 
 	Azure でコードを実行すると、*Web.config* ファイルにある localhost の URL がこの値で上書きされます。
 
@@ -201,7 +201,7 @@ API アプリの Node.js または Java の入門シリーズを読んでいる�
 
 	代わりに、元のドメインをすべて受け入れることを指定するアスタリスク (*) を入力することができます。
 
-13. **[保存]** をクリックします。
+13. [**Save**] をクリックします。
 
 	![[保存] をクリックします。](./media/app-service-api-cors-consume-javascript/corsinportal.png)
 
@@ -284,4 +284,4 @@ API アプリで Azure API Management を使用する場合は、API アプリ�
 
 この記事では、クライアントの JavaScript コードが、別のドメイン内の API を呼び出すための App Service の CORS サポートを有効にする方法を説明しました。API アプリの詳細については、[App Service での認証についての概要](../app-service/app-service-authentication-overview.md)を確認してから、[API アプリのユーザー認証](app-service-api-dotnet-user-principal-auth.md)のチュートリアルに進んでください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,14 +13,14 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="mobile-baidu"
 	ms.workload="mobile"
-	ms.date="05/05/2016"
+	ms.date="08/19/2016"
 	ms.author="wesmc"/>
 
 # Baidu での Notification Hubs の使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-##概要
+##Overview
 
 Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。このサービスは、さまざまなアプリケーション ストアやプッシュ サービスの存在に加え、GCM (Google Cloud Messaging) に接続されていることが少ない Android デバイスの可用性にも差があるために Android へのプッシュ通知の送信方法が複雑な中国では特に便利です。
 
@@ -503,4 +503,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Baidu ポータル]: http://www.baidu.com/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

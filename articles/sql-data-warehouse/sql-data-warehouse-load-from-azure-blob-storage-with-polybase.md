@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="08/16/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -35,7 +35,7 @@ PolyBase コマンドと T-SQL コマンドを使用して、Azure Blob Storage 
 
 
 ## 開始する前に
-このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。アカウントがない場合は、[SQL Data Warehouse の作成][]に関するページをご覧ください。
+このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。アカウントがない場合は、「[SQL Data Warehouse の作成][]」をご覧ください。
 
 ## 1\.データ ソースの構成
 
@@ -232,7 +232,7 @@ GO
 
 ### 4\.2.データを新しいテーブルに読み込む
 
-Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT][] \(CTAS) T-SQL ステートメントを使用します。CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを利用します。データを新しいテーブルに読み込むには、テーブルごとに 1 つの [CTAS][] ステートメントを使用します。
+Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][] ステートメントを使用します。CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを利用します。データを新しいテーブルに読み込むには、テーブルごとに 1 つの [CTAS][] ステートメントを使用します。
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -351,17 +351,18 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse の作成]: ./sql-data-warehouse-get-started-provision.md
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse の開発の概要]: ./sql-data-warehouse-overview-develop.md
-[列ストア インデックスの管理]: ./sql-data-warehouse-tables-index.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[label]: ./sql-data-warehouse-develop-label.md
+[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
+[Load data into SQL Data Warehouse]: sql-data-warehouse-overview-load.md
+[SQL Data Warehouse の開発の概要]: sql-data-warehouse-overview-develop.md
+[列ストア インデックスの管理]: sql-data-warehouse-tables-index.md
+[統計]: sql-data-warehouse-tables-statistics.md
+[CTAS]: sql-data-warehouse-develop-ctas.md
+[label]: sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 [CREATE EXTERNAL DATA SOURCE]: https://msdn.microsoft.com/ja-JP/library/dn935022.aspx
 [CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/ja-JP/library/dn935026.aspx
+[CREATE TABLE AS SELECT (Transact-SQL)]: https://msdn.microsoft.com/library/mt204041.aspx
 [sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
 [REBUILD]: https://msdn.microsoft.com/library/ms188388.aspx
 
@@ -369,4 +370,4 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [完全な Contoso Retail Data Warehouse を読み込む]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

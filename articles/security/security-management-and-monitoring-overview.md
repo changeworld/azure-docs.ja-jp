@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure セキュリティの管理と監視の概要 | Microsoft Azure"
-   description="Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。"
+   description=" Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/16/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティの管理と監視の概要
@@ -63,7 +63,7 @@ Symantec End Point Protection (SEP) も、Azure でサポートされていま�
 詳細情報:
 
 - [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-- [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../azure-security-antimalware.md)
+- [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/azure-security-antimalware.md)
 - [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
 - [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
 - [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
@@ -134,4 +134,4 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

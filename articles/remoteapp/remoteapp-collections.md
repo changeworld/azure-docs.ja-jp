@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="07/20/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp にはどのような種類のコレクションが必要ですか。
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp では、任意のデバイスでユーザーとアプリおよびリソースを共有することができます。これを行うには、アプリおよびリソースを保持するためのコレクションを作成して、そのコレクションを他のユーザーと共有します。ネットワークと認証のオプションが異なる 2 種類のコレクション オプションがあります。どちらが適しているでしょうか。
 
@@ -28,10 +31,10 @@ Azure RemoteApp のコレクションを最大限に活用するために必要�
 
 | | クラウド | ハイブリッド |
 |-----------|-------|--------|
-|既存の VNET の使用| あり| あり|
-|AD に接続しているアカウント (DirSync) が必要| いいえ| あり|
-|ドメインへの参加が必要| いいえ| あり|
-|ドメイン コント ローラーが VNET にアクセスできる必要| いいえ| あり|
+|既存の VNET の使用| はい| はい|
+|AD に接続しているアカウント (DirSync) が必要| なし| はい|
+|ドメインへの参加が必要| なし| はい|
+|ドメイン コント ローラーが VNET にアクセスできる必要| なし| はい|
 
 ## クラウドのコレクション
 - 作成が迅速 - コレクションが迅速にプロビジョニングされれば、アプリがユーザーに早く届くことになります。
@@ -58,14 +61,14 @@ Azure RemoteApp は、Microsoft アカウントと Azure Active Directory アカ
 
 | アカウントの種類 | | クラウド | クラウド + VNET | ハイブリッド |
 |-----------------------------------|-------------------------------------------------------------|-------|--------------|--------|
-| Microsoft アカウント | | あり | はい | いいえ |
+| Microsoft アカウント | | はい | はい | なし |
 | Azure Active Directory (Azure AD) | | | | |
-| | Azure AD のみ | あり | はい | いいえ |
-| | パスワード同期がある AD Connect | あり | はい | あり |
-| | パスワード同期がない AD Connect | あり | はい | いいえ |
-| | AD FS がある AD Connect | あり | はい | あり |
-| | サード パーティの Azure サポート ID プロバイダー (Ping など) | あり | はい | あり |
-| Multi-Factor Authentication | | あり | はい | あり |
+| | Azure AD のみ | はい | はい | なし |
+| | パスワード同期がある AD Connect | はい | はい | はい |
+| | パスワード同期がない AD Connect | はい | はい | なし |
+| | AD FS がある AD Connect | はい | はい | はい |
+| | サード パーティの Azure サポート ID プロバイダー (Ping など) | はい | はい | はい |
+| Multi-Factor Authentication | | はい | はい | はい |
 
 
 
@@ -91,4 +94,4 @@ Azure AD および Active Directory の構成に必要な手順については�
 
 「[クラウドのコレクションを作成する](remoteapp-create-cloud-deployment.md)」または「[ハイブリッドのコレクションを作成する](remoteapp-create-hybrid-deployment.md)」で作成してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

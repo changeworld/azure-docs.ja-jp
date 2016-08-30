@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
@@ -175,8 +175,7 @@ RestoreFailed<br/></b></td>
         <th> </th>
         <th>スケール</th>
         <th>構成の更新</th>
-        <th>Backup
-</th>
+        <th>バックアップ</th>
 </tr>
 <tr>
 <td bgcolor="FAF9F9"><b>Active</b></td>
@@ -268,4 +267,4 @@ RestoreFailed<br/></b></td>
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

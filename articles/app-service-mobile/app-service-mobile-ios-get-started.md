@@ -13,24 +13,19 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="06/30/2016"
+	ms.date="08/17/2016"
 	ms.author="krisragh"/>
 
 #iOS アプリの作成
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## 概要
+## Overview
 
 このチュートリアルでは、[Azure Mobile Apps](app-service-mobile-value-prop.md) (クラウドのバックエンド サービス) を iOS アプリに追加する方法について説明します。まず、新しいモバイル バックエンドを作成します。その後 _Todo list_ という単純な iOS アプリを使用して Azure にデータを格納します。
 
-## 前提条件
+このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)が必要です。
 
-このチュートリアルを完了するには、以下が必要です。
-
-* [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-* [Visual Studio Community 2013] 以降がインストールされている PC
-* Xcode 7.3 以降がインストールされている Mac
 
 ## 手順 I: 新しい Azure Mobile App バックエンドの作成
 
@@ -52,4 +47,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

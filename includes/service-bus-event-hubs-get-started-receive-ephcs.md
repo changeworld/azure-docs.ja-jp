@@ -1,6 +1,6 @@
 ## EventProcessorHost を使用したメッセージの受信
 
-[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost][] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost][] を使用する方法を示します。[イベント処理のスケールアウトのサンプル][]は、受信側が複数の場合に [EventProcessorHost][] を使用する方法を示します。
+[EventProcessorHost][] は、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列してそれらの Event Hubs から受信する .NET クラスです。[EventProcessorHost][] を使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割することができます。この例では、受信側が単一の場合に [EventProcessorHost][] を使用する方法を示します。[[イベント処理のスケールアウトのサンプル]][]は、受信側が複数の場合に [EventProcessorHost][] を使用する方法を示します。
 
 [EventProcessorHost][] を使用するには [Azure ストレージ アカウント][]が必要です。
 
@@ -26,7 +26,7 @@
 
     ![][13]
 
-	これによって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
+	Visual Studio によって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[追加]** をクリックしてクラスを作成します。
 
@@ -122,7 +122,7 @@
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
 [イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
+[Azure ストレージ アカウント]: ../storage/storage-create-storage-account-classic-portal.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 
@@ -134,3 +134,4 @@
 [14]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp1.png
 [15]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp2.png
 
+<!---HONumber=AcomDC_0824_2016-->

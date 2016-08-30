@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="04/20/2016"
+	ms.date="08/23/2016"
 	ms.author="deonhe"/>
 
 # ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法
@@ -23,7 +23,11 @@
 1. Azure ポータルでロジック アプリを開きます。
 2. [スキーマの更新] をクリックします。
 
- ![API アイコン][step1] [スキーマの更新] ページが開き、新しいスキーマの改良点について詳しく書かれたドキュメントへのリンクが表示されます。 ![API アイコン][step2]
+![API アイコン][step1]
+
+[スキーマの更新] ページが開き、新しいスキーマの改良点について詳しく書かれたドキュメントへのリンクが表示されます。
+
+![API アイコン][step2]
 
 >[AZURE.NOTE] **[スキーマの更新]** を選択すると、自動的に移行ステップが実行され、必要な出力コードが提供されます。このコードを使って既存の定義を更新できます。ただし、以下の「**ベスト プラクティス**」セクションで取り上げる適切なコーディング手法に確実に従ってください。
 
@@ -42,4 +46,4 @@
 [step1]: ./media/connectors-schema-migration/migrateschema1.png
 [step2]: ./media/connectors-schema-migration/migrateschema2.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!-----HONumber=AcomDC_0824_2016-->

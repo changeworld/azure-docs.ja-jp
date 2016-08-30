@@ -22,14 +22,17 @@
 
 Azure SQL Data Warehouse にデータを読み込むときに PolyBase を使用するかどうかを指定できます。Azure SQL Data Warehouse へのデータの読み込みで最高のパフォーマンスを実現できるよう、PolyBase の使用をお勧めします。「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)」セクションに詳細が記載されています。
 
-次のサンプルは、Azure SQL Data Warehouse と Azure BLOB ストレージとの間でデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して、「[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)」で説明されているシンクのいずれかに、任意のソースからデータを**直接**コピーすることができます。
 
+## データのコピー ウィザード
+Azure SQL Data Warehouse との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+
+以下の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、SQL Data Warehouse と Azure BLOB ストレージの間でデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているいずれかのシンクに、任意のソースからデータを**直接**コピーすることができます。
 
 
 > [AZURE.NOTE] 
-Azure Data Factory の概要については、「[Azure Data Factory サービスの概要](data-factory-introduction.md)」を参照してください。
+Azure Data Factory サービスの概要については、[Azure Data Factory の概要](data-factory-introduction.md)に関する記事をご覧ください。
 > 
-> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、[Azure BLOB から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)方法に関するチュートリアルを参照してください。
+> この記事では、JSON の例を紹介しますが、データ ファクトリを作成するための詳細な手順を説明していません。Azure Data Factory のコピー アクティビティを使用するための手順を含む簡単なチュートリアルについては、[Azure BLOB から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)方法に関するチュートリアルをご覧ください。
 
 
 ## サンプル: Azure SQL Data Warehouse から Azure BLOB にデータをコピーする
@@ -391,8 +394,8 @@ Azure Data Factory の概要については、「[Azure Data Factory サービ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-type | type プロパティを **AzureSqlDW** に設定する必要があります。 | あり
-**connectionString** | connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 | あり
+type | type プロパティを **AzureSqlDW** に設定する必要があります。 | はい
+**connectionString** | connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 | はい
 
 注: [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成する必要があります。[サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ようにデータベース サーバーを構成する必要があります。また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Data Warehouse にデータをコピーする場合、Azure SQL Data Warehouse にデータを送信するマシンに適切な IP アドレス範囲を設定する必要があります。
 
@@ -404,7 +407,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| tableName | リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルの名前です。 | あり |
+| tableName | リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルの名前です。 | はい |
 
 ## Azure SQL Data Warehouse のコピー アクティビティの type プロパティ
 
@@ -420,9 +423,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| sqlReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | いいえ |
+| sqlReaderQuery | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: Select * from MyTable。 | なし |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
-| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
+| storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | なし |
 
 SqlDWSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Data Warehouse ソースに対してこのクエリを実行します。
 
@@ -465,14 +468,14 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
 | writeBatchSize | バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 | 整数 (行数) | いいえ (既定値: 10000) |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ | 
-| sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | いいえ |
-| allowPolyBase | Azure SQL Data Warehouse へのデータの読み込みに BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。<br/><br/>現時点でサポートされているのは、ソース データセットとして **format** が **TextFormat** に設定されている **Azure BLOB** データセットのみで、その他のソースの種類は間もなくサポートされる予定です。<br/><br/>制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」セクションを参照してください。 | True <br/>False (既定値) | いいえ |  
-| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | &nbsp; | いいえ |  
-| rejectValue | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否のオプションの詳細については、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「**Arguments (引数)**」セクションを参照してください。 | 0 (既定値)、1、2、… | いいえ |  
-| rejectType | rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 | Value (既定値)、Percentage | いいえ |   
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | なし | 
+| sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。詳細については、下にある繰り返し性のセクションを参照してください。 | クエリ ステートメント。 | なし |
+| allowPolyBase | Azure SQL Data Warehouse へのデータの読み込みに BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。<br/><br/>現時点でサポートされているのは、ソース データセットとして **format** が **TextFormat** に設定されている **Azure BLOB** データセットのみであり、その他のソースの種類は間もなくサポートされる予定です。<br/><br/>制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」をご覧ください。 | True <br/>False (既定値) | なし |  
+| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | &nbsp; | なし |  
+| rejectValue | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションの詳細については、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「**Arguments (引数)**」をご覧ください。 | 0 (既定値)、1、2、… | なし |  
+| rejectType | rejectValue オプションをリテラル値と割合のどちらで指定するかを指定します。 | Value (既定値)、Percentage | なし |   
 | rejectSampleValue | 拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 | 1、2、… | はい (**rejectType** が **percentage** の場合) |  
-| useTypeDefault | PolyBase がテキスト ファイルからデータを取得する場合に区切りテキスト ファイルに存在しない値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、「[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)」の「Arguments (引数)」セクションを参照してください。 | True、False (既定値) | いいえ | 
+| useTypeDefault | PolyBase がテキスト ファイルからデータを取得する場合に区切りテキスト ファイルに存在しない値を処理する方法を指定します。<br/><br/>このプロパティの詳細については、「[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx)」の「Arguments (引数)」をご覧ください。 | True、False (既定値) | なし | 
 
 
 #### SqlDWSink の例
@@ -485,9 +488,9 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
     }
 
 ## PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む
-**PolyBase** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを読み込むことができます。既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。
+**PolyBase** を使用すると、高いスループットで Azure SQL Data Warehouse に大量のデータを効率的に読み込むことができます。既定の BULKINSERT メカニズムではなく PolyBase を使用することで、スループットが大幅に向上することがわかります。
 
-次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、**allowPolyBase** プロパティを **true** に設定します。allowPolyBase を true に設定すると、**polyBaseSettings** プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。polyBaseSettings で使用できるプロパティの詳細については、前の「[SqlDWSink](#SqlDWSink)」セクションを参照してください。
+次の例に示すように、Azure Data Factory で PolyBase を使用して Azure SQL Data Warehouse にデータをコピーするために、**allowPolyBase** プロパティを **true** に設定します。allowPolyBase を true に設定すると、**polyBaseSettings** プロパティ グループを使用して PolyBase 固有のプロパティを指定できます。polyBaseSettings で使用できるプロパティの詳細については、前述の「[SqlDWSink](#SqlDWSink)」をご覧ください。
 
 
     "sink": {
@@ -508,7 +511,7 @@ SqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 Azure Data Factory が設定を確認し、要件が満たされない場合は、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ることに注意してください。
 
-1.	**ソースのリンクされたサービス**の種類が **Azure Storage** で、SAS (Shared Access Signature) 認証を使用するように構成されていないこと。詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」を参照してください。
+1.	**ソースのリンクされたサービス**の種類が **Azure Storage** で、SAS (Shared Access Signature) 認証を使用するように構成されていないこと。詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。
 2. **入力データセット**の種類が **Azure BLOB** で、type プロパティの形式の種類が次の構成の **OrcFormat** または **TextFormat** であること。
 	1. **rowDelimiter** が **\\n** である。
 	2. **nullValue** が**空の文字列** ("") に設定されている。
@@ -532,14 +535,14 @@ Azure Data Factory が設定を確認し、要件が満たされない場合は�
 			},
 3.	パイプラインのコピー アクティビティでは、**BlobSource** の下に **skipHeaderLineCount** 設定がないこと。
 4.	パイプラインのコピー アクティビティでは、**SqlDWSink** の下に **sliceIdentifierColumnName** 設定がないこと。(PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。**再現性**を実現するには、**sqlWriterCleanupScript** を使用します。
-5.	関連付けられたコピー アクティビティでは、**columnMapping** が使用されていないこと。
+5.	関連付けられたコピー アクティビティで **columnMapping** が使用されていないこと。
 
 ### PolyBase を使用してステージング コピーする
-ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
+ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure BLOB ストレージ経由でデータのコピーを有効にすることができます。その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」をご覧ください。
 
 > [AZURE.IMPORTANT] オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合は、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE 8 (Java ランタイム環境) をインストールする必要があります。64 ビットのゲートウェイでは 64 ビットの JRE が必要になり、32 ビットのゲートウェイでは 32 ビットの JRE が必要になります。[Java のダウンロード ページ](http://go.microsoft.com/fwlink/?LinkId=808605)から適切なバージョンをダウンロードしてください。
 
-この機能を使用するには、中間 Blob Storage がある Azure Storage アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次に示すように、コピー アクティビティの **enableStaging** および **stagingSettings** プロパティを指定します。
+この機能を使用するには、中間 BLOB ストレージがある Azure Storage アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次に示すように、コピー アクティビティの **enableStaging** および **stagingSettings** プロパティを指定します。
 
 	"activities":[  
 	{
@@ -652,6 +655,6 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

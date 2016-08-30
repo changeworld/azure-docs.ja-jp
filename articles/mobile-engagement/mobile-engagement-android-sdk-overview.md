@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="08/10/2016"
+	ms.date="08/12/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Azure Mobile Engagement の Android SDK の統合
@@ -63,4 +63,4 @@
 
 SDK の旧バージョンをアプリケーションに既に統合している場合、[アップグレード手順](mobile-engagement-android-upgrade-procedure.md)を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

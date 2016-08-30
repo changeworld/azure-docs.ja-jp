@@ -12,18 +12,18 @@ ms.service="search"
 ms.devlang="rest-api"
 ms.workload="search" ms.topic="article"  
 ms.tgt_pltfrm="na"
-ms.date="05/28/2016"
+ms.date="08/16/2016"
 ms.author="eugenesh" />
 
 # Azure Table Storage のインデックスを Azure Search で作成する
 
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを使用する方法を示します。Azure Search の新しいテーブル インデクサーを使用すると、迅速かつシームレスに作成できます。
 
-> [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+> [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** とバージョン 2.0-preview の .NET SDK を使用する REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
 ## Azure テーブルのインデックス作成の設定
 
-Azure テーブルのインデクサーの設定と構成は、「[インデクサーの操作](https://msdn.microsoft.com/library/azure/dn946891.aspx)」の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。今後は、Azure Search .NET SDK と Azure ポータルにテーブル インデックスの作成機能が追加される予定です。
+Azure テーブルのインデクサーの設定と構成は、「[インデクサーの操作](https://msdn.microsoft.com/library/azure/dn946891.aspx)」の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。[バージョン 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) の .NET SDK を使用することもできます。今後、Azure ポータルにテーブル インデックス作成機能が追加される予定です。
 
 データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。
 
@@ -36,7 +36,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 	- ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして指定します。
 	- `container.name` パラメーターを使用して、テーブル名を指定します。
 	- 必要に応じて `container.query` パラメーターを使用して、クエリを指定します。可能な場合は、PartitionKey でフィルターを使用して、パフォーマンスを最大限に高めます。他のクエリを実行すると、フル テーブル スキャンが発生し、大きなテーブルの場合はパフォーマンスが低下する可能性があります。
-2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。 
+2. インデックスを作成するテーブルの列に対応するスキーマを使用して検索インデックスを作成します。
 3. データ ソースを検索インデックスに接続することによって、インデクサーを作成します。
 
 ### データ ソースの作成
@@ -52,7 +52,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 	    "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
 	}   
 
-データ ソース作成 API の詳細については、「[データ ソースの作成](search-api-indexers-2015-02-28-preview.md#create-data-source)」を参照してください。
+データ ソース作成 API の詳細については、「[データ ソースの作成](search-api-indexers-2015-02-28-preview.md#create-data-source)」をご覧ください。
 
 ### インデックスの作成 
 
@@ -68,7 +68,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
   		]
 	}
 
-インデックス作成 API の詳細については、「[Create Index (インデックスの作成)](https://msdn.microsoft.com/library/dn798941.aspx)」を参照してください。
+インデックス作成 API の詳細については、「[Create Index (インデックスの作成)](https://msdn.microsoft.com/library/dn798941.aspx)」をご覧ください。
 
 ### インデクサーの作成 
 
@@ -85,7 +85,7 @@ Azure テーブルのインデクサーの設定と構成は、「[インデク�
 	  "schedule" : { "interval" : "PT2H" }
 	}
 
-インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」を参照してください。
+インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」をご覧ください。
 
 これですべて完了です。是非お試しください。
 
@@ -124,4 +124,4 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Java からファイル ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-files.md)]
 
-## 概要
+## Overview
 
 このガイドでは、Microsoft Azure ファイル ストレージ サービスで基本的な操作を実行する方法を紹介します。Java で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。Microsoft Azure のファイル ストレージ サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で非常に役立ちます。
 
@@ -216,4 +216,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -4,7 +4,7 @@
 	services=""
 	documentationCenter=""
 	authors="genlin"
-	manager="jarrettr"
+	manager="mbaldwin"
 	editor=""
 	tags="billing"
 	/>
@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/11/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法
@@ -24,15 +24,17 @@
 
 クレジット カード番号が変更されない更新の場合は、有効期限など、既存のクレジット カードの詳細情報を更新するだけです。
 
-クレジット カードの紛失、盗難、期限切れなどによりクレジット カード番号が変更されたときは、新しいクレジット カードをアカウントに追加する必要があります。これは、クレジット カード番号が変更されると、カード上の CVV セキュリティ コードが変わるためです。
+クレジット カードの紛失、盗難、期限切れなどによりクレジット カード番号が変更された場合は、新しいクレジット カードをアカウントに追加する必要があります。これは、クレジット カード番号が変更されると、カード上の CVV セキュリティ コードが変わるためです。
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## 既存のクレジット カードの支払い情報を編集する
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。[Azure ポータル](https://portal.azure.com) でアカウント センターにアクセスするには、**[サブスクリプション]**、*[サブスクリプション名]*、**[管理]** の順に選択します。
+1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。[Azure ポータル](https://portal.azure.com) でアカウント センターにアクセスするには、**[サブスクリプション]**、"*サブスクリプション名*"、**[管理]** の順に選択します。
 
 	**注** アカウント センターへのアクセス権があるのはアカウント管理者だけです。アカウント管理者の詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
 2. **[詳細および使用量を表示するにはサブスクリプションをクリックします]** で、クレジット カードにリンクされているサブスクリプションを選択します。</br> ![selectsub](./media/billing-how-to-change-credit-card/selectsub.png)
-3. ページの右側にある **[支払方法の変更]** を選択します。</br>![changesub](./media/billing-how-to-change-credit-card/changesub.png)
+3. ページの右側にある **[支払方法の変更]** を選択します。</br> ![changesub](./media/billing-how-to-change-credit-card/changesub.png)
 4. **[支払方法の選択]** ページで、クレジット カード番号の横の **[編集]** を選択します。</br> ![changesub](./media/billing-how-to-change-credit-card/editcard.png)
 5. **[編集]** ページで、正しいクレジット カードの種類とカード番号を選択していることを確認します。
 6. 必要に応じてカードの詳細を変更し、**[次へ]** を選択して **[支払方法の選択]** ページに移動します。
@@ -47,8 +49,10 @@
 
 ## Azure の請求書の支払いに使用するクレジット カードを変更する
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。
-2. **[詳細および使用量を表示するにはサブスクリプションをクリックします]** で、支払方法を変更するサブスクリプションを選択します。
+2. **[詳細および使用量を表示するにはサブスクリプションをクリックします]** で、支払方法を更新するサブスクリプションを選択します。
 3. ページの右側にある **[支払方法の変更]** を選択します。
 4. **[支払方法の選択]** ページで、クレジット カードの横にあるドロップダウン矢印を選択し、使用するクレジット カードを選択します。次に、![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) を選択してウィンドウを閉じます。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] Azure の支払方法として使用しなくなったクレジット カードを削除するには、サポート チケットを送信してサポートを要求する必要があります。クレジット カードを削除するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
+
+<!---HONumber=AcomDC_0817_2016-->

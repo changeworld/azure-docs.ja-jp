@@ -4,14 +4,14 @@
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-    manager="stevenpo"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="05/25/2016" 
+    ms.date="08/16/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Zscaler One の統合
@@ -19,7 +19,7 @@
 このチュートリアルでは、Azure と ZScaler One の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
--   ZScaler One でのシングル サインオンが有効なサブスクリプション  
+-   ZScaler One でのシングル サインオンが有効なサブスクリプション
 
 このチュートリアルを完了すると、ZScaler One に割り当てた Azure AD ユーザーは、ZScaler One 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
 
@@ -29,7 +29,7 @@
 2.  シングル サインオンの構成
 3.  プロキシ設定の構成
 4.  ユーザー プロビジョニングの構成
-5.  ユーザーの割り当て  
+5.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-zscaler-one-tutorial/IC800214.png "シナリオ")
 
@@ -39,7 +39,7 @@
 
 ###ZScaler One のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。  
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory](./media/active-directory-saas-zscaler-one-tutorial/IC700993.png "Active Directory")
 
@@ -93,7 +93,7 @@
 
 6.  上部のメニューで **[管理]** をクリックします。
 
-	![Administration](./media/active-directory-saas-zscaler-one-tutorial/IC800206.png "管理")
+	![管理](./media/active-directory-saas-zscaler-one-tutorial/IC800206.png "管理")
 
 7.  **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。
 
@@ -103,24 +103,24 @@
 
 	![認証](./media/active-directory-saas-zscaler-one-tutorial/IC800208.png "認証")
 
-	1.  **[SAML シングル サインオンを使用した認証]** を選択します。  
-	2.  **[SAML シングル サインオン パラメーターの構成]** をクリックします。  
+	1.  **[SAML シングル サインオンを使用した認証]** を選択します。
+	2.  **[SAML シングル サインオン パラメーターの構成]** をクリックします。
 
 9.  **[SAML シングル サインオン パラメーターの構成]** ダイアログ ページで、次の手順に従い、**[完了]** をクリックします。
 
 	![シングル サインオン](./media/active-directory-saas-zscaler-one-tutorial/IC800209.png "シングル サインオン")
 
-	1.  Azure クラシック ポータルの **[ZScaler One でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[認証のためにユーザーに表示される SAML ポータルの URL]** ボックスに貼り付けます。  
-	2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。  
-	3.  ダウンロードした証明書をアップロードするには、**[Zscaler pem]** をクリックします。  
-	4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。  
+	1.  Azure クラシック ポータルの **[ZScaler One でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[URL of the SAML Portal to which users are sent for authentication (認証のためにユーザーに表示される SAML ポータルの URL)]** ボックスに貼り付けます。
+	2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。
+	3.  ダウンロードした証明書をアップロードするには、**[Zscaler pem]** をクリックします。
+	4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
 10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
 	![管理](./media/active-directory-saas-zscaler-one-tutorial/IC800210.png "管理")
 
-	1.  **[保存]** をクリックします。  
-	2.  **[今すぐ認証する]** をクリックします。  
+	1.  **[保存]** をクリックします。
+	2.  **[今すぐ認証する]** をクリックします。
 
 11. Azure クラシック ポータルの **[ZScaler One でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
 
@@ -130,7 +130,7 @@
 
 ###Internet Explorer でプロキシ設定を構成するには
 
-1.  **Internet Explorer** を開始します。  
+1.  **Internet Explorer** を開始します。
 
 2.  **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログを開きます。
 
@@ -146,11 +146,11 @@
 
 	![プロキシ サーバー](./media/active-directory-saas-zscaler-one-tutorial/IC769494.png "プロキシ サーバー")
 
-	1.  [LAN にプロキシ サーバーを使用する] をオンにします。  
-	2.  [アドレス] ボックスに「**gateway.zscalerone.net**」と入力します。  
-	3.  [ポート] ボックスに「**80**」と入力します。  
-	4.  **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。  
-	5.  **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。  
+	1.  [LAN にプロキシ サーバーを使用する] をオンにします。
+	2.  [アドレス] ボックスに「**gateway.zscalerone.net**」と入力します。
+	3.  [ポート] ボックスに「**80**」と入力します。
+	4.  **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+	5.  **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
 6.  **[OK]** をクリックして **[インターネット オプション]** ダイアログを閉じます。
 
@@ -160,7 +160,7 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  **Zscaler One** テナントにログインします。  
+1.  **Zscaler One** テナントにログインします。
 
 2.  **[管理]** をクリックします。
 
@@ -168,18 +168,18 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 
 3.  **[ユーザー管理]** をクリックします。
 
-	![[追加] のいずれかを](./media/active-directory-saas-zscaler-one-tutorial/IC781037.png "[追加] のいずれかを")
+	![Add](./media/active-directory-saas-zscaler-one-tutorial/IC781037.png "Add")
 
 4.  **[ユーザー]** タブで、**[追加]**.をクリックします。
 
-	![[追加] のいずれかを](./media/active-directory-saas-zscaler-one-tutorial/IC781037.png "[追加] のいずれかを")
+	![Add](./media/active-directory-saas-zscaler-one-tutorial/IC781037.png "[追加] のいずれかを")
 
 5.  [ユーザーの追加] セクションで、次の手順を実行します。
 
 	![ユーザーの追加](./media/active-directory-saas-zscaler-one-tutorial/IC781038.png "ユーザーの追加")
 
-	1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。  
-	2.  **[保存]** をクリックします。  
+	1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
+	2.  [**Save**] をクリックします。
 
 >[AZURE.NOTE]ZScaler One から提供されている他の ZScaler One ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -189,7 +189,7 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 
 ###ユーザーを ZScaler One に割り当てるには、次の手順を実行します。
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。  
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
 2.  **ZScaler One** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
@@ -199,6 +199,6 @@ Azure AD ユーザーが ZScaler One にログインできるようにするに�
 
 	![Yes](./media/active-directory-saas-zscaler-one-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -52,6 +52,7 @@
 curl.exe があるフォルダーに、以下の JSON ファイルを作成します。
 
 ### datafactory.json 
+> [AZURE.IMPORTANT] 名前はグローバルに一意である必要があります。一意の名前にするために、ADFCopyTutorialDF にプレフィックス/サフィックスを付けることができます。
 
 	{  
 	    "name": "FirstDataFactoryREST",  
@@ -100,9 +101,9 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 - Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 - オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
-- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。この動作は仕様です。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
+- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。この動作は仕様です。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスを処理する必要があるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
-	処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。これらのコンテナーの名前は、"adf**<データ ファクトリ名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンに従います。Azure BLOB ストレージ内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
+	処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。これらのコンテナーの名前は、"adf**<データ ファクトリ名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンに従います。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
 
 詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
 
@@ -253,6 +254,8 @@ Azure PowerShell で、値を独自の値に置き換えて、以下のコマン
 
 1. コマンドを **cmd** という名前の変数に割り当てます。
 
+	ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、**datafactory.json** で指定した名前と一致することを確認します。
+
 		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
 2. **Invoke-Command** を使用して、コマンドを実行します。
 
@@ -263,7 +266,10 @@ Azure PowerShell で、値を独自の値に置き換えて、以下のコマン
 
 以下の点に注意してください。
  
-- Azure Data Factory の名前はグローバルに一意にする必要があります。results に "**データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、JSON ファイルと上記のコマンドで名前を変更します (たとえば yournameFirstDataFactoryREST)。このチュートリアルの手順の実行中に、この名前を **FirstDataFactoryREST** の代わりに使用します。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
+- Azure Data Factory の名前はグローバルに一意にする必要があります。results に "**データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の操作を行います。
+	1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
+	2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
+	3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
 - Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 - データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
@@ -380,7 +386,7 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 
 1.	Azure **データ ファクトリ**を作成しました。
 2.	次の 2 つの**リンクされたサービス**を作成しました。
-	1.	入出力ファイルを保持する Azure BLOB ストレージをデータ ファクトリにリンクするための **Azure Storage** のリンクされたサービス。
+	1.	入出力ファイルを保持する Azure Blob Storage をデータ ファクトリにリンクするための **Azure Storage** のリンクされたサービス。
 	2.	オンデマンド HDInsight Hadoop クラスターをデータ ファクトリにリンクするための **Azure HDInsight** オンデマンドのリンクされたサービス。Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
 3.	パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの**データセット**を作成しました。
 4.	**HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
@@ -399,4 +405,4 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 | [Azure ポータルのブレードを使用したパイプラインの監視と管理に関するページ](data-factory-monitor-manage-pipelines.md) | この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

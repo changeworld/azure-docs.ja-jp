@@ -23,24 +23,25 @@
 - [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
-このチュートリアルでは、Blob Storage から SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
+このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
 コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
-> [AZURE.NOTE] Data Factory サービスの詳細については、記事「[Azure Data Factory サービスの概要][data-factory-introduction]」を参照してください。
+> [AZURE.NOTE] Data Factory サービスの詳細については、[Azure Data Factory サービスの概要][data-factory-introduction]に関する記事をご覧ください。
 
 ##このチュートリアルの前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[無料試用版][azure-free-trial]のページを参照してください。
-- **Azure ストレージ アカウント**。このチュートリアルでは、BLOB ストレージを**ソース** データ ストアとして使用します。Azure ストレージ アカウントがない場合の作成手順については、[ストレージ アカウントの作成][data-factory-create-storage]に関する記事を参照してください。
-- **Azure SQL データベース**。このチュートリアルでは、Azure SQL Database を**ターゲット** データ ストアとして使用します。このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「[Azure SQL Database を作成して構成する方法][data-factory-create-sql-database]」を参照してください。
-- **SQL Server 2012/2014 または Visual Studio 2013**。サンプル データベースを作成して、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。
+- **Azure ストレージ アカウント**。このチュートリアルでは、BLOB ストレージを**ソース** データ ストアとして使用します。Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成][data-factory-create-storage]」をご覧ください。
+- **Azure SQL データベース**。このチュートリアルでは、Azure SQL Database を**コピー先**データ ストアとして使用します。このチュートリアルで使用できる Azure SQL Database がない場合の作成方法については、「[Azure SQL Database を作成して構成する方法][data-factory-create-sql-database]」を参照してください。
+- **SQL Server 2012/2014 または Visual Studio 2013**。サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。
 
 ## BLOB ストレージ アカウントの名前とキーを収集する 
-このチュートリアルの内容を実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。以下の手順に従って、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
+このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。以下の手順に従って、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
 
 1. [Azure ポータル][azure-portal]にログインします。
 2. 左側にある **[参照]** ハブをクリックし、**[ストレージ アカウント]** を選択します。
@@ -51,9 +52,9 @@
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## SQL サーバー、データベース、ユーザーの名前を収集する
-このチュートリアルの内容を実行するには、Azure SQL のサーバー名、データベース名、ユーザー名が必要です。次の手順に従って、Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
+このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。次の手順に従って、Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
-1. **Azure ポータル**の左側にある **[参照]** をクリックし、**[SQL データベース]** を選択します。
+1. **Azure ポータル**で、左側にある **[参照]** をクリックし、**[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。**データベース名**をメモしておきます。
 3. **[SQL Database]** ブレードで **[プロパティ]** タイルをクリックします。
 4. **[サーバー名]** と **[サーバー管理ログイン]** の値をメモしておきます。
@@ -92,14 +93,14 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 
 		CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
-	**SQL Server 2012/2014 がコンピューターにインストールされている場合**: 記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。この記事では、[この Azure ポータル](https://portal.azure.com)ではなく、[この Azure ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成することに注意してください。
+	**SQL Server 2012/2014 がコンピューターにインストールされている場合**: 記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。この記事では、[Azure ポータル](https://portal.azure.com)ではなく、[この Azure ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
 
-	**Visual Studio 2013 がコンピューターにインストールされている場合:** [Azure ポータル](https://portal.azure.com)の左側にある **[参照]** ハブ、**[SQL サーバー]** の順にクリックしてデータベースを選択し、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL Server のファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
+	**Visual Studio 2013 がコンピューターにインストールされている場合:** [Azure ポータル](https://portal.azure.com)で、左側にある **[参照]** ハブ、**[SQL サーバー]** の順にクリックしてデータベースを選択します。ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
 
 
 以下の手順を実行します。
 
-- Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある「[Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)」というリンクをクリックします。
+- Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある "[Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)" リンクをクリックします。
 - Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)」というリンクをクリックします。
 - Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)」というリンクをクリックします。
 
@@ -116,4 +117,4 @@ Azure Data Factory のコピー アクティビティの詳細については、
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

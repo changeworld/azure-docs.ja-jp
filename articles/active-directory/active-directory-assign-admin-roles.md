@@ -34,14 +34,14 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 - **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
-	> [AZURE.NOTE]
+	> [AZURE.NOTE] 
 	> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
 - **ユーザー管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
 
-- **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Monitor Office 365 Service Health、および Office 365 Protection Center の数多くのセキュリティ機能に対する読み取り専用アクセス権を持ちます。
+- **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/ コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
 
-- **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Monitor Office 365 Service Health、Office 365 Protection Center) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、詳細な管理権限を数多く持ちます。
+- **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 セキュリティ/コンプライアンス センター) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、さまざまな管理権限を持ちます。
 
 ## 管理者の権限
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 ------------- | -------------
 Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<ul><li>スパム対策<li>暗号化<li>データ損失防止<li>マルウェア対策<li>Advanced Threat Protection<li>フィッシング詐欺対策<li>メールフロー ルール
 Privileged Identity Management | <p>Azure AD PIM に表示される、Azure AD ロール割り当てに関するポリシーとレポート、セキュリティ レビューのすべての情報に対する読み取り専用アクセス権を持ちます。また、将来的には、Azure AD ロール割り当て以外のシナリオのポリシー データとレポートに対する読み取りアクセス権も付与される予定です。<p>Azure AD PIM へのサインアップおよび Azure AD PIM の変更を行うことは**できません**。このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格を持っている場合、PIM のポータルまたは PowerShell からそのロールを有効化することができます。
-<p>Monitor Office 365 Service Health</p><p>Office 365 Protection Center</p> | <ul><li>アラートの閲覧および管理<li>セキュリティ ポリシーの閲覧<li>検索調査における脅威インテリジェンス情報、Cloud App Discovery、および検査の閲覧<li>全レポートの閲覧
+<p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター</p> | <ul><li>アラートの閲覧および管理<li>セキュリティ ポリシーの閲覧<li>検索調査における脅威インテリジェンス情報、Cloud App Discovery、および検査の閲覧<li>全レポートの閲覧
 
 ### セキュリティ管理者
 
@@ -89,7 +89,7 @@ Privileged Identity Management | <p>Azure AD PIM に表示される、Azure AD �
 ------------- | -------------
 Identity Protection Center | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>さらに、パスワードのリセットを除く IPC のすべての操作を行うことができます。
 Privileged Identity Management | <ul><li>セキュリティ リーダーのすべての権限を持ちます。<li>Azure AD ロールのメンバーシップまたは設定を管理することは**できません**。
-<p>Monitor Office 365 Service Health</p><p>Office 365 Protection | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。
+<p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。
 
 ## グローバル管理者ロールの詳細
 
@@ -113,7 +113,7 @@ Privileged Identity Management | <ul><li>セキュリティ リーダーのす�
 
 ## 次のステップ
 
-- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください
+- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
 - Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
 
@@ -125,4 +125,4 @@ Privileged Identity Management | <ul><li>セキュリティ リーダーのす�
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0817_2016-->

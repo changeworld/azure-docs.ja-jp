@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/26/2016"
+   ms.date="08/16/2016"
    ms.author="yurid"/>
 
 # Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
@@ -134,4 +134,4 @@ SaaS アプリの認証シナリオの詳細については、「[Azure AD の�
 
 ID システムを能動的に監視しないと、ユーザーの資格情報が侵害されるリスクがあります。侵害された資格情報を用いた疑わしい活動が行われていることを把握しないと、この種の脅威を緩和することはできません。Azure Identity Protection の詳細については、「[Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -3,7 +3,7 @@
    description="シャード マップ マネージャーを作成することで、エラスティック データベース ツールを使用するようにシャード化されたデータベースを変換します"
    services="sql-database"
    documentationCenter=""
-   authors="SilviaDoomra"
+   authors="ddove"
    manager="jhubbard"
    editor=""/>
 
@@ -14,18 +14,18 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
    ms.date="04/26/2016"
-   ms.author="SilviaDoomra"/>
+   ms.author="ddove"/>
 
 # 既存のデータベースを移行してスケールアウト
 
 Azure SQL Database のデータベース ツール ([Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。最初に、[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換する必要があります。
 
-## 概要
+## Overview
 既存のシャード化されたデータベースを移行するには:
 
 1. [シャード マップ マネージャー データベース](sql-database-elastic-scale-shard-map-management.md)を準備します。
 2. シャード マップを作成します。
-3. 個々のシャードを準備します。  
+3. 個々のシャードを準備します。
 2. シャード マップにマッピングを追加します。
 
 これらの方法は、[.NET Framework クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)または「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」の PowerShell スクリプトを使用して実装できます。この例では、PowerShell スクリプトを使用します。
@@ -62,7 +62,7 @@ ShardMapManager の詳細については、「[シャード マップの管理](
 
 作成するシャード マップの種類を選択する必要があります。何を選択するかはデータベースのアーキテクチャによって異なります。
 
-1. データベースごとに 1 つのテナント (用語については「[用語集](sql-database-elastic-scale-glossary.md)」を参照) 
+1. データベースごとに 1 つのテナント (用語については「[用語集](sql-database-elastic-scale-glossary.md)」を参照)
 2. データベースごとに複数のテナント (2 種類):
 	3. リスト マッピング
 	4. 範囲マッピング
@@ -160,7 +160,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 	Get-Shards -ShardMap $ShardMap 
 	Get-Mappings -ShardMap $ShardMap 
 
-## まとめ
+## 概要
 
 セットアップが完了すると、Elastic Database クライアント ライブラリの使用を開始できます。[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)を使用することもできます。
 
@@ -187,4 +187,4 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 [3]: ./media/sql-database-elastic-convert-to-use-elastic-tools/multipleonsingledb.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0817_2016-->

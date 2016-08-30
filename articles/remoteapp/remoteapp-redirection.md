@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp でリダイレクトを使用する
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 デバイス リダイレクトを使用すると、ユーザーはローカルのコンピューター、電話、タブレットに接続されているデバイスを利用し、リモート アプリと対話できます。たとえば、Azure RemoteApp で Skype を指定した場合、ユーザーが Skype を操作するには PC にカメラを取り付ける必要があります。これはプリンター、スピーカー、モニター、各種 USB 接続周辺機器についても当てはまります。
 
@@ -102,6 +105,6 @@ RemoteApp に接続するコンピューターで USB リダイレクトを使�
 5. **Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Remote Desktop Services\\Remote Desktop Connection Client\\RemoteFX USB Device Redirection** を開きます。
 6. **[このコンピューターからサポートされている他の RemoteFX USB デバイスの RDP リダイレクトを許可する]** をダブルクリックします。
 7. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
-8. **[OK]** をクリックします。  
+8. **[OK]** をクリックします。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="08/16/2016"
 	ms.author="garye;bradsev;ahgyger"/>
 
 
@@ -76,13 +76,13 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 
 | アクション | Azure サブスクリプション管理者 | ワークスペースの所有者 |
 | --------------			|:------------------------:| :----------------:|
-| [Microsoft Azure クラシック ポータル]にアクセスする| あり | なし |
-| 新しいワークスペースを作成する | あり | なし |
-| ワークスペースを削除する | あり | なし |
-| Web サービスにエンドポイントを追加する | あり | なし |
+| [Microsoft Azure クラシック ポータル]にアクセスする| はい | なし |
+| 新しいワークスペースを作成する | はい | なし |
+| ワークスペースを削除する | はい | なし |
+| Web サービスにエンドポイントを追加する | はい | なし |
 | Web サービスからエンドポイントを削除する | はい | なし |
-| Web サービスの同時実行を変更する | あり | なし |
-| [Machine Learning Studio] にアクセスする | なし * | あり |
+| Web サービスの同時実行を変更する | はい | なし |
+| [Machine Learning Studio] にアクセスする | なし * | はい |
 
 
 > [AZURE.NOTE] * Azure サブスクリプション管理者は、自分がワークスペース所有者として作成するワークスペースに自動的に追加されます。ただし、単に Azure サブスクリプション管理者であるというだけでは、そのサブスクリプションのワークスペースへのアクセスは許可されません。
@@ -105,4 +105,4 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 [Machine Learning Studio]: https://studio.azureml.net/
 [Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

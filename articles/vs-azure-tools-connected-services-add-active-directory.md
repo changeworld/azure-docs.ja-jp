@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する 
 
-##概要
+##Overview
 Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケーションまたは Web API サービスの AD 認証のためのシングル サインオン (SSO) をサポートできます。Azure AD 認証を利用すれば、Azure AD のアカウントで Web アプリケーションに接続できます。Web API で Azure AD 認証を利用する利点には、Web アプリケーションから API を公開するときにデータのセキュリティが強化されることが含まれます。Azure AD では、独自のアカウントとユーザー管理で別個の認証システムを管理する必要がありません。
 
 ## サポートされているプロジェクトの種類
@@ -79,4 +79,4 @@ Azure Active Directory (Azure AD) を使用し、ASP.NET MVC Web アプリケー
 
  - [ブログの投稿: Azure AD の概要](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

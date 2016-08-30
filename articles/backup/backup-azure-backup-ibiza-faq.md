@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Backup のパブリック プレビュー リリースの FAQ | Microsoft Azure"
+   pageTitle="Recovery Services コンテナーに関する FAQ | Microsoft Azure"
    description="このバージョンの FAQ は、Azure Backup サービスのパブリック プレビュー リリースをサポートしています。バックアップ エージェント、バックアップと保持、復元、セキュリティと Azure Backup ソリューションに関する一般的な質問に対する回答。"
    services="backup"
    documentationCenter=""
@@ -14,33 +14,33 @@
 	 ms.tgt_pltfrm="na"
 	 ms.devlang="na"
 	 ms.topic="get-started-article"
-	 ms.date="07/01/2016"
+	 ms.date="08/21/2016"
 	 ms.author="trinadhk; markgal; jimpark;"/>
 
-# Azure Backup サービスのパブリック プレビュー リリース - FAQ
+# Recovery Services コンテナー - FAQ
 
 > [AZURE.SELECTOR]
 - [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
-- [ARM モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
+- [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
 
-この記事では、Azure Backup サービスのパブリック プレビュー リリースに固有の情報を提供します。この記事は、[Azure Backup FAQ](backup-azure-backup-faq) を補完するものであり、新しい FAQ が到着すると更新されます。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
+この記事では、Recovery Services コンテナーに固有の情報を提供すると共に、[Azure Backup に関する FAQ](backup-azure-backup-faq) を補足します。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
 
 この記事や関連の記事の「DISQUS」セクションでも Azure Backup について質問できます。また、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
-## パブリック プレビュー リリースの内容
-パブリック プレビュー リリースでは、Recovery Services コンテナーと、Azure VM を保護する場合の ARM サポートを導入しています。Recovery Services コンテナーは、次世代のコンテナーです。Azure Backup サービスおよび Azure Site Recovery (ASR) サービスによって使用されます。これは v.2 のコンテナーとして考えてください。
+## Recovery Services コンテナーは Resource Manager ベースですが、Backup コンテナー (クラシック モード) は引き続きサポートされますか。<br/>
+はい。Backup コンテナーは引き続きサポートされます。Backup コンテナーは[クラシック ポータル](https://manage.windowsazure.com)で作成しますが、Recovery Services コンテナーは [Azure ポータル](https://portal.azure.com)で作成します。ただし、Recovery Services コンテナーを作成することを強くお勧めします。今後強化される機能は Recovery Services コンテナーでしか利用できないためです。
 
-## Recovery Services コンテナーと Backup コンテナー
+## Backup コンテナーを Recovery Services コンテナーに移行することはできますか。<br/>
+残念ながら、現時点では、Backup コンテナーの内容を Recovery Services コンテナーに移行できません。この機能の追加に取り組んでいますが、パブリック プレビューの一部としては使用できません。
 
-**Q1.Recovery Services コンテナーは v.2 ですが、Backup コンテナー (v.1) もまだサポートされていますか。** <br/> A1.はい。Backup コンテナーは引き続きサポートされます。Backup コンテナーは、クラシック ポータルで作成しますが、Recovery Services コンテナーは、Azure ポータルで作成します。
+## Recovery Services コンテナーでサポートされるのはクラシック VM と Resource Manager ベースの VM のどちらですか。<br/>
+Recovery Services コンテナーでは両方のモデルがサポートされています。クラシック ポータルで作成された VM (クラシック モード VM) も、Azure ポータルで作成された VM (Resource Manager ベースのもの) も、Recovery Services コンテナーにバックアップできます。
 
-**Q2.Backup コンテナーを Recovery Services コンテナーに移行できますか。** <br/> A2.残念ながら、現時点では、Backup コンテナーの内容を Recovery Services コンテナーに移行できません。この機能の追加に取り組んでいますが、パブリック プレビューの一部としては使用できません。
+## 私はクラシック VM を Backup コンテナーにバックアップしてあります。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。
+Backup コンテナー内のクラシック VM のバックアップは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的には移行されません。VM のバックアップを移行するには、次の手順に従ってください。
 
-**Q3.Recovery Services コンテナーは、v.1 または v.2 の VM をサポートしていますか。** <br/> A3.Recovery Services コンテナーは、v.1 と v.2 の VM をサポートしています。クラシック ポータルで作成された VM (つまり V.1) または Azure ポータルで作成された VM (つまり V.2) を Recovery Services コンテナーにバックアップすることができます。
+1. Backup コンテナーで、**[保護された項目]** タブに移動し、VM を選択します。[[保護の停止]](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) をクリックします。*[関連付けられたバックアップ データを削除します]* オプションは**オフ**のままにしておきます。
+2. 仮想マシンをクラシック モードから Resource Manager モードに移行します。仮想マシンに対応するストレージとネットワークも Resource Manager モードに移行されることを確認してください。
+3. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。[Recovery Services コンテナーでバックアップを有効にする](backup-azure-vms-first-look-arm.md)方法について、さらに詳しくご確認ください。
 
-
-## Azure VM に対する ARM サポート
-
-**Q1.Azure VM に対する ARM サポートに制限はありますか。** <br/> A1.ARM 用の PowerShell コマンドレットは、現在、使用できません。Azure ポータル UI を使用して、リソース グループにリソースを追加する必要があります。
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

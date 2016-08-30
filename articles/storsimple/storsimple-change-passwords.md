@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="03/24/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli"/>
 
 # StorSimple Manager サービスを使用した StorSimple のパスワードの変更
 
-## 概要 
+## Overview 
 
 Azure クラシック ポータルの **[構成]** ページには、StorSimple Manager サービスの管理対象の StorSimple デバイスで再構成することができるすべてのデバイス パラメーターが含まれます。このチュートリアルでは、**[構成]** ページを使用して、デバイス管理者のパスワードまたは StorSimple Snapshot Manager のパスワードを変更する方法について説明します。
 
@@ -69,4 +69,4 @@ StorSimple Snapshot Manager のパスワードが更新されました。
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0817_2016-->

@@ -2,6 +2,7 @@
    pageTitle="Azure Government イメージ ギャラリー | Microsoft Azure"
    description="この記事では、Azure Government イメージ ギャラリーと、含まれるイメージの概要について説明します。"
    services="Azure-Government"
+   cloud="gov"
    documentationCenter=""
    authors="joharve2"
    manager="chrisnie"
@@ -26,7 +27,7 @@
 
 ## Azure Government イメージ ギャラリー
 
-発行元|イメージ名|説明|OS|ディスク サイズ
+発行元|イメージ名|Description|OS|ディスク サイズ
 ---|---|---|---|---
 Barracuda Networks, Inc.|Barracuda NextGen Firewall F シリーズ 6.2.1-057|注: このアプライアンスはクライアント アプリケーションで管理され、TCP/807 で転送される必要があります。詳細については、デプロイの README https://techlib.barracuda.com/NG61/DeployAzure...|Linux|80 を参照してください。GB
 Barracuda Networks, Inc.|Barracuda Web Application Firewall 8.0.1.008-20160405|注: このアプライアンスは Web UI で管理され、TCP/8000 で転送される必要があります。詳細については、デプロイ README https://techlib.barracuda.com/WAF/Azure を参照してください。Barracuda Web...|Linux|50 GB
@@ -141,4 +142,4 @@ Visual Studio|Visual Studio Enterprise 2015 Update 2 with Azure SDK 2.9 on Windo
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="Stream Analytics を使って IOT ソリューションを構築する | Microsoft Azure" 
 	description="料金所ブースを例に Stream Analytics を使った基本的な IOT ソリューションを紹介します。"
-	keywords=""
+	keywords="IOT ソリューション, ウィンドウ関数"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="08/11/2016" 
 	ms.author="jeffstok"
 />
 
@@ -42,7 +42,7 @@
 -   [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 -   コンピューターの管理特権
 -   Microsoft Download Center から [TollApp.zip](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) をダウンロードします。
--   省略可能: [GitHub](https://github.com/streamanalytics/samples/tree/master/TollApp) の TollApp イベント ジェネレーターのソース コード
+-   省略可能: [GitHub](https://aka.ms/azure-stream-analytics-toll-source) の TollApp イベント ジェネレーターのソース コード
 
 ## シナリオの説明 - "料金所"
 
@@ -58,9 +58,9 @@
 ### 入口データ ストリーム
 
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。
-  
-  
-| TollID | EntryTime | LicensePlate | State | 保存する | モデル | Vehicle Type | Vehicle Weight | Toll | タグ |
+
+
+| TollID | EntryTime | LicensePlate | 状態 | 保存する | モデル | Vehicle Type | Vehicle Weight | Toll | タグ |
 |---------|-------------------------|--------------|-------|--------|---------|--------------|----------------|------|-----------|
 | 1 | 2014-09-10 12:01:00.000 | JNB 7001 | NY | Honda | CRV | 1 | 0 | 7 | |
 | 1 | 2014-09-10 12:02:00.000 | YXZ 1001 | NY | Toyota | Camry | 1 | 0 | 4 | 123456789 |
@@ -68,16 +68,16 @@
 | 2 | 2014-09-10 12:03:00.000 | XYZ 1003 | CT | Toyota | Corolla | 1 | 0 | 4 | |
 | 1 | 2014-09-10 12:03:00.000 | BNJ 1007 | NY | Honda | CRV | 1 | 0 | 5 | 789123456 |
 | 2 | 2014-09-10 12:05:00.000 | CDE 1007 | NJ | Toyota | 4x4 | 1 | 0 | 6 | 321987654 |
-  
+
 
 次に、それぞれの列について簡単に説明します。
-  
-  
+
+
 | TollID | 料金所ブースを一意に識別する ID |
 |--------------|----------------------------------------------------------------|
 | EntryTime | 車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate | 車両のナンバー プレートの番号 |
-| State | 米国の州 |
+| 状態 | 米国の州 |
 | 保存する | 自動車の製造元 |
 | モデル | 自動車の型式 |
 | VehicleType | 乗用車の場合は 1、商用車の場合は 2 |
@@ -89,8 +89,8 @@
 ### 出口データ ストリーム
 
 出口データ ストリームは、料金所から出る車両の情報を含んでいます。
-  
-  
+
+
 | **TollId** | **ExitTime** | **LicensePlate** |
 |------------|------------------------------|------------------|
 | 1 | 2014-09-10T12:03:00.0000000Z | JNB 7001 |
@@ -101,9 +101,9 @@
 | 2 | 2014-09-10T12:07:00.0000000Z | CDE 1007 |
 
 次に、それぞれの列について簡単に説明します。
-  
-  
-| 分割 | 説明 |
+
+
+| 分割 | Description |
 |--------------|-----------------------------------------------------------------|
 | TollID | 料金所ブースを一意に識別する ID |
 | ExitTime | 車両が料金所ブースから出た日時 (UTC) |
@@ -112,8 +112,8 @@
 ### 商用車の登録データ
 
 商用車登録データベースを使用します。特定の時点の静的なデータであり変化しません。
-  
-  
+
+
 | LicensePlate | RegistrationId | 有効期限切れ |
 |--------------|----------------|---------|
 | SVT 6023 | 285429838 | 1 |
@@ -121,12 +121,12 @@
 | BAC 1005 | 876133137 | 1 |
 | RIV 8632 | 992711956 | 0 |
 | SNY 7188 | 592133890 | 0 |
-| ELH 9896 | 678427724 | 1 |                      
+| ELH 9896 | 678427724 | 1 |
 
 次に、それぞれの列について簡単に説明します。
-  
-  
-| 分割 | 説明 |
+
+
+| 分割 | Description |
 |--------------|-----------------------------------------------------------------|
 | LicensePlate | 車両のナンバー プレートの番号 |
 | RegistrationId | RegistrationId |
@@ -213,7 +213,7 @@ Azure 管理ポータルの左側にある [Storage] メニュー項目をクリ
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image13.png)
 
-### Azure SQL Database
+### Azure SQL データベース
 
 Azure 管理ポータルの左側にある [SQL データベース] メニュー項目をクリックすると、ラボで使用する Azure SQL Database が表示されます。
 
@@ -246,22 +246,22 @@ Azure 管理ポータルの左側にある [SQL データベース] メニュー
 6) データベースとして TollDataDB を選択します。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
-    
+
 7) [OK] をクリックします。
 
 8) サーバー エクスプローラーを開きます。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-  
+
 9) TollDataDB データベースに作成された 4 つのテーブルが表示されます。
-  
+
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
-  
+
 ## イベント ジェネレーター - TollApp サンプル プロジェクト
 
 PowerShell スクリプトは、TollApp というサンプル アプリケーション プログラムを使用して、イベントの送信を自動的に開始します。別途処理を実行する必要はありません。
 
-ただし、詳しい実装内容に関心がある方は、GitHub の [samples/TollApp](https://github.com/streamanalytics/samples/tree/master/TollApp) で、TollApp アプリケーションのソース コードをご覧いただけます。
+ただし、詳しい実装内容に関心がある方は、GitHub の [samples/TollApp](https://aka.ms/azure-stream-analytics-toll-source) で、TollApp アプリケーションのソース コードをご覧いただけます。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
@@ -376,9 +376,7 @@ Azure ポータルで Stream Analytics を開き、ページの左下隅にあ�
 
 以下に示したのは、それを実現する Azure Stream Analytics クエリです。
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime
-    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count FROM EntryStream TIMESTAMP BY EntryTime GROUP BY TUMBLINGWINDOW(minute, 3), TollId
 
 ご覧のとおり、Azure Stream Analytics では SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定できるように、いくつかの拡張機能が追加されています。
 
@@ -418,11 +416,7 @@ Azure 管理ポータルを開き、先ほど作成した Azure Stream Analytics
 
 そのためには、EntryTime を含んだストリームと ExitTime を含んだストリームを結合する必要があります。ストリームの結合条件には、TollId 列と LicencePlate 列を指定することにします。結合したイベントどうしの間隔として許容される時間差を JOIN 演算子で指定する必要があります。DATEDIFF 関数を使用し、発生間隔が 15 分以内のイベントに限定する条件を指定します。また、通行料金の徴収に費やされた実際の時間を計算するために、ExitTime と EntryTime にも DATEDIFF 関数を適用します。DATEDIFF を SELECT ステートメントで使用する場合と JOIN 条件で使用する場合の使い方の違いに注目してください。
 
-    SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN ExitStream TIMESTAMP BY ExitTime
-    ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
-    AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
+SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes FROM EntryStream TIMESTAMP BY EntryTime JOIN ExitStream TIMESTAMP BY ExitTime ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate) AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 このクエリをテストするには、ジョブの [クエリ] タブでクエリを更新します。
 
@@ -442,11 +436,7 @@ Azure Stream Analytics では、特定の時点の静的データを使用して
 
 料金徴収会社に登録されている商用車は、検査のために停車しなくても料金所ブースを通過することができます。商用車登録参照テーブルを使用して、登録期限切れとなっているすべての商用車を特定することにしましょう。
 
-    SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN Registration
-    ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = '1'
+SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId FROM EntryStream TIMESTAMP BY EntryTime JOIN Registration ON EntryStream.LicensePlate = Registration.LicensePlate WHERE Registration.Expired = '1'
 
 参照データを使ってクエリをテストするためには、その参照データの入力ソースが定義されている必要があります (手順 5. で行った作業です)。
 
@@ -485,9 +475,7 @@ Visual Studio のサーバー エクスプローラーを開いて TollDataRefJo
 
 Azure Stream Analytics は、エラスティックな拡張と高い負荷のデータ処理に対応するように設計されています。Azure Stream Analytics クエリで **PARTITION BY** 句を使用すると、そのステップをスケールアウトして処理するようシステムに命令することができます。PartitionId は、システムによって追加される特殊な列で、入力 (イベント ハブ) のパーティション ID と一致します。
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
-    GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId    
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 現在のジョブを停止し、[クエリ] タブでクエリを更新して、[スケール] タブを開きます。
 
@@ -501,7 +489,7 @@ Azure Stream Analytics は、エラスティックな拡張と高い負荷のデ
 
 これでジョブを開始すると、より多くのコンピューティング リソースに処理が分散され、スループットが向上します。TollApp アプリケーションから送信されるイベントも TollId でパーティション分割されることに注目してください。
 
-## Monitoring
+## 監視
 
 [監視] タブには、実行中のジョブに関する統計情報が表示されます。
 
@@ -535,4 +523,4 @@ PowerShell ウィンドウで「.\\Cleanup.ps1」と入力します。これに�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

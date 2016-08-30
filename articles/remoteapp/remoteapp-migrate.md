@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp を移行先または移行元とするデータの移行方法
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 多様なツールおよび方法を使用して、[ユーザー データ](remoteapp-upd.md)を Azure RemoteApp へ、または Azure RemoteApp から転送できます。次に方法をいくつか示します。
 
@@ -34,7 +37,7 @@ OneDrive for Business やコンシューマー同期エージェントを有効�
 
 クリップボードを使用したコピー/貼り付けは、RemoteApp のデプロイで[既定](remoteapp-redirection.md)で有効になります。そのため、ユーザーはローカル PC と RemoteApp のアプリとの間でファイルをコピーできます。多くの場合、RemoteApp でアプリを使用する標準的な過程では、ユーザーは UPD にファイルを保存します。RemoteApp からデータを移動するのは簡単です。
 
-1. RemoteApp コレクションで[エクスプローラーをアプリとして公開発行します](remoteapp-publish.md) (これは管理タスクであることに注意してください)。
+1. RemoteApp コレクションで[エクスプローラーをアプリとして公開発行します](remoteapp-publish.md)(これは管理タスクであることに注意してください)。
 2. 公開したエクスプローラーのアプリを起動し、これを使用してファイルを UPD との間でコピー/貼り付けを行うようにユーザーに指示します。
 
 ## 標準のネットワーク ファイルのコピーを使用して、ファイルとデータをファイル サーバーにアップロードする
@@ -55,4 +58,4 @@ RemoteApp で OneDrive for Business 同期エージェントを有効にする�
 
 [ドライブ リダイレクト](remoteapp-redirection.md)を有効にしている場合、ユーザー用にマップされたドライブが既に作成されています。この場合、ユーザーはリダイレクトされたドライブ上でファイルを zip 圧縮してから、ローカル PC に保存できます。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

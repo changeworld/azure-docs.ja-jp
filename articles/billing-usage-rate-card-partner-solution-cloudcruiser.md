@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="billing"
-   ms.date="02/19/2016"
+   ms.date="08/16/2016"
    ms.author="mobandyo;sirishap;bryanla"/>
 
 # Cloud Cruiser と Microsoft Azure Billing API の統合
@@ -54,7 +54,7 @@ Cloud Cruiser は、RateCard API をさまざまな方法で利用できます�
 
 Cloud Cruiser のブックには、RateCard API の情報の収集と処理を自動化する機能があります。ETL (抽出-変換-読み込み) ブックを使用して、データのコレクション、変換、および Cloud Cruiser データベースへの発行を構成できます。
 
-各ブックには、1 つ以上のコレクションを含めることができます。そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。次の 2 つのスクリーンショットでは、既存のブックに新しい*コレクション*を作成する方法と、RateCard API から情報を*コレクション*にインポートする方法を示しています。
+各ブックには、1 つ以上のコレクションを含めることができます。そのため、複数のソースの情報を関連付けて、使用状況データの補完と拡大を行うことができます。次の 2 つのスクリーンショットは、既存のブックに新しい "*コレクション*" を作成する方法と、RateCard API から情報を "*コレクション*" にインポートする方法を示しています。
 
 ![図 1 - 新しいコレクションの作成][1]
 
@@ -148,7 +148,7 @@ Azure Usage API を介して使用できるデータには、消費量の情報�
 
 以下の Azure ポータルのスクリーン ショットに、関連付けたタグを使用するサンプル リソース グループを示します。
 
-![図 11 - Azure ポータルで、関連付けられたタグを設定したリソース グループ][11]
+![Figure 11 - Resource Group with associated tags on Azure portal][11]
 
 次の手順では、Usage API から Cloud Cruiser に情報を取得します。現在、Usage API は、JSON 形式で応答を提供します。取得されるデータのサンプルを次に示します。
 
@@ -232,9 +232,9 @@ _UsageAPI_ シートで Usage API から情報を抽出して処理し、_Publis
 [8]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workbook-Scheduling.png "図 8 - ブックのスケジュール設定"
 [9]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Workload-Cost-Simulation-Report.png "図 9 - ワークロードのコスト比較シナリオのサンプル レポート"
 [10]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/1_ReportWithTags.png "図 10 - タグを使用した分析結果のレポート"
-[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "図 11 - Azure ポータルで、関連付けられたタグを設定したリソース グループ"
+[11]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/2_ResourceGroupsWithTags.png "Figure 11 - Resource Group with associated tags on Azure portal"
 [12]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/3_ImportIntoUsageAPISheet.png "図 12 - UsageAPI シートにインポートする Usage API データ"
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "図 13 - タグ情報に対する新しいフィールドの作成"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "図 14 - 参照からの情報を使用したアカウント構造の設定"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

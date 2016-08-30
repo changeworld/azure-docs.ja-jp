@@ -13,25 +13,28 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/10/2016"
 	ms.author="piyushjo;ricksal" />
 
-# Android での Engagement によるレポート オプション
+# Android での Engagement による詳細なレポート
 
 > [AZURE.SELECTOR]
+- [ユニバーサル Windows](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
 - [Android](mobile-engagement-android-advanced-reporting.md)
 
-このトピックでは、Android アプリケーションでの他のレポート シナリオについて説明します。これらのオプションを選択して、[作業開始](mobile-engagement-android-get-started.md)チュートリアルで作成されたアプリに適用できます。
+このトピックでは、Android アプリケーションでの他のレポート シナリオについて説明します。これらのオプションを、[作業開始](mobile-engagement-android-get-started.md)チュートリアルで作成されたアプリに適用できます。
 
 ## 前提条件
 
 [AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-android-prereqs.md)]
 
-完了したチュートリアルは意図的に直接的かつシンプルになっていましたが、選択できるオプションがいくつかあります。
+完了したチュートリアルは意図的に直接的かつシンプルになっていましたが、選択できる詳細オプションがあります。
 
 ## `Activity` クラスの変更
 
-[作業開始のチュートリアル](mobile-engagement-android-get-started.md)で必要だったのは、`*Activity` サブクラスが、対応する `Engagement*Activity` クラスから継承されるようにすることだけでした (たとえば、レガシー アクティビティが `ListActivity` を拡張した場合は、`EngagementListActivity` も拡張されるようにします)。
+[作業開始のチュートリアル](mobile-engagement-android-get-started.md)で必要だったのは、`*Activity` サブクラスが、対応する `Engagement*Activity` クラスから継承されるようにすることだけでした。(たとえば、レガシー アクティビティが `ListActivity` を拡張した場合は、`EngagementListActivity` も拡張されるようにします)。
 
 > [AZURE.IMPORTANT] `EngagementListActivity` または `EngagementExpandableListActivity` を使う場合は、`requestWindowFeature(...);` に対するすべての呼び出しが `super.onCreate(...);` に対する呼び出しの前に行われることを確認します。それ以外の場合、クラッシュが発生します。
 
@@ -41,7 +44,7 @@
 
 `Activity` クラスをオーバーロードできないか、そうしたくない場合は、代わりに `EngagementAgent` のメソッドを直接呼び出すことによって、アクティビティの開始と終了を実行できます。
 
-> [AZURE.IMPORTANT] Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションは実際には閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
+> [AZURE.IMPORTANT] Android SDK は、アプリケーションが閉じられる場合でも `endActivity()` メソッドを呼び出すことはありません (Android では、アプリケーションが閉じられることはありません)。このため、*すべて*のアクティビティの `onResume` コールバック内で `startActivity()` メソッドを呼び出し、*すべて*のアクティビティの `onPause()` コールバック内で `endActivity()` メソッドを呼び出すことを*強く*お勧めします。これは、セッションがリークしないことを保証する唯一の方法です。セッションがリークした場合、(セッションが保留中である限り、サービスが接続されたままになるため)、Engagement サービスが Engagement バックエンドから切断されることはありません。
 
 たとえば次のようになります。
 
@@ -63,7 +66,7 @@
 	  }
 	}
 
-この例は、`EngagementActivity` クラスとそのバリアントによく似ています。ソース コードは `src` フォルダーに提供されています。
+この例は、`EngagementActivity` クラスとそのバリアントに似ています。ソース コードは `src` フォルダーに提供されています。
 
 ## Application.onCreate() の使用
 
@@ -98,4 +101,4 @@ AndroidManifest.xml ファイルのサービス タグでは、`android:label` �
 	<methods>;
  	}
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

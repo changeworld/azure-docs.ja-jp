@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Java からテーブル ストレージを使用する方法 | Microsoft Azure"
-	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
+	description="NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 
 # Java からテーブル ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
-## 概要
+## Overview
 
 このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。テーブルの詳細については、「[次のステップ](#Next-Steps)」のセクションを参照してください。
 
@@ -563,4 +563,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートおよびクエリ プロジェクションの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

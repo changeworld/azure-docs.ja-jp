@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 # Azure Table サービスを使用する Node.js Web アプリ
@@ -122,7 +122,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 	**tasklist** ディレクトリに、複数の新しいディレクトリとファイルが作成されています。
 
-### 追加モジュールのインストール
+### 追加モジュールをインストールする
 
 **express** によって作成されるファイルの 1 つに **package.json** があります。このファイルには、モジュールの依存関係のリストが含まれます。後でアプリケーションを App Service Web Apps にデプロイするときに、このファイルによって Azure にインストールする必要があるモジュールが特定されます。
 
@@ -506,7 +506,7 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 
 	そのためには、前の手順でダウンロードした発行設定ファイルのパスとファイル名を指定します。
 
-3. 設定をインポートしたら、不要になった発行設定ファイルを削除してください。このファイルには、Azure サブスクリプションに関する機密情報が含まれているためです。
+3. 設定をインポートしたら、不要になった発行設定ファイルを削除してください。このファイルはもう不要であり、Azure サブスクリプションに関する機密情報が含まれているためです。
 
 ### App Service Web アプリの作成
 
@@ -636,4 +636,4 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

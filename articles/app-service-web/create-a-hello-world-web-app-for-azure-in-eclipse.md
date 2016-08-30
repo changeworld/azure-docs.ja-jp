@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Eclipse で Azure 用の Hello World Web アプリを作成する
@@ -29,7 +29,7 @@
 * A Java Developer Kit (JDK) v 1.7 以降。
 * Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for Eclipse。詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 
 ## Hello World アプリケーションを作成するには
@@ -75,7 +75,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
     ![][04]
    
     注: 複数の Azure アカウントがある場合、サインイン プロセス中に同じようなプロンプトが複数回表示されることがあります。このような状況の場合、次のサインイン手順を続行します。
-1. Azure アカウントに正常にサインインすると、**[Manage Subscriptions]** (サブスクリプションの管理) ダイアログ ボックスに、資格情報に関連付けられたサブスクリプションの一覧が表示されます。複数のサブスクリプションが表示され、その一部のみを使用する場合、使用するサブスクリプションをオフにすることができます。サブスクリプションを選択したら、**[Close]** (閉じる) をクリックします。
+1. Azure アカウントに正常にサインインすると、**[サブスクリプションの管理]** ダイアログ ボックスに、資格情報に関連付けられたサブスクリプションの一覧が表示されます。複数のサブスクリプションが表示された場合、その一部のみを使用するには、使用しないサブスクリプションのチェックボックスを必要に応じてオフにします。サブスクリプションを選択したら、**[閉じる]** をクリックします。
 
     ![][05]
    
@@ -97,7 +97,7 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 
         現在、Tomcat 8、Tomcat 7 または Jetty 9 から選択することができます。選択したソフトウェアの最新の配信が Azure で提供されます。また、これは Oracle によって作成され、Azure で提供された JDK 8 の最新の配信で実行されます。
 
-    1. **[Subscription (サブスクリプション)]** ドロップダウン メニューで、このデプロイに使用するサブスクリプションを選択します。
+    1. **[サブスクリプション]** ドロップダウン メニューで、このデプロイに使用するサブスクリプションを選択します。
 
     1. **[Resource Group (リソース グループ)]** ドロップダウン メニューで、Web アプリに関連付けるリソース グループを選択します。
 
@@ -226,4 +226,4 @@ Java Web アプリケーションを Azure にデプロイする方法はいく�
 [13]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/13-Azure-Explorer-Web-App.png
 [14]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/publishDropdownButton.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

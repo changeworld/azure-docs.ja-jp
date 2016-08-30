@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="PHP"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 
 # PHP から Table ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
-## 概要
+## Overview
 
 このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure Table サービスの詳細については、「[次のステップ](#next-steps)」を参照してください。
 
@@ -85,9 +85,9 @@ Azure Table サービス クライアントをインスタンス化するには�
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 
 
-## テーブルの作成
+## テーブルを作成する
 
-**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、Table サービスのタイムアウトを設定できます(Table サービスのタイムアウトの詳細については、「[Table サービス操作のタイムアウトの設定][table-service-timeouts]」を参照)。
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、Table サービスのタイムアウトを設定できます (Table サービスのタイムアウトの詳細については、「[Table サービス操作のタイムアウトの設定][table-service-timeouts]」を参照)。
 
 	require_once 'vendor\autoload.php';
 
@@ -478,4 +478,4 @@ Azure Table サービス クライアントをインスタンス化するには�
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

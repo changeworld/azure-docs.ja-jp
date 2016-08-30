@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="05/10/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 
@@ -25,9 +25,9 @@ DNS ゾーン、レコードセット、レコードを作成、削除、更新�
 
 DNS クライアントを使用するには、**Azure DNS 管理ライブラリ** NuGet パッケージをインストールし、DNS 管理用の名前空間をプロジェクトに追加する必要があります。
  
-1. **Visual Studio** で、プロジェクトを開くか、新規作成します。 
+1. **Visual Studio** で、プロジェクトを開くか、新規作成します。
 
-2. **[ツール]****、****[NuGet パッケージ マネージャー]****、****[パッケージ マネージャー コンソール]** の順に進みます。
+2. **[ツール]** **、** **[NuGet パッケージ マネージャー]** **、** **[パッケージ マネージャー コンソール]** の順に進みます。
 
 3. Azure DNS 管理ライブラリをダウンロードします。
 
@@ -113,4 +113,4 @@ DNS レコードはレコード セットとして管理されます。レコー
 
 [Visual Studio SDK のサンプル プロジェクト](http://download.microsoft.com/download/2/A/C/2AC64449-1747-49E9-B875-C71827890126/AzureDnsSDKExample_2015_05_05.zip)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

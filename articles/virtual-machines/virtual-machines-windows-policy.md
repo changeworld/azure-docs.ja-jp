@@ -3,7 +3,7 @@
 	description="Azure Resource Manager Windows 仮想マシンにポリシーを適用する方法"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="singhkay"
+	authors="singhkays"
 	manager="drewm"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -86,7 +86,7 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 * [フィールドおよびソース](../resource-manager-policy.md#fields-and-sources)
 
 
-| フィールド名 | 説明 |
+| フィールド名 | Description |
 |----------------|----------------------------------------------------|
 | imagePublisher | イメージの発行元を指定します |
 | imageOffer | 選択したイメージの発行元に対するオファーを指定します |
@@ -102,8 +102,8 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 
 ## ポリシーの適用
 
-ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。スコープとして、サブスクリプション、リソース グループ、またはリソースを指定できます。ポリシーの適用については、以下の記事を参照してください。
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。ポリシーの適用については、以下の記事を参照してください。
 
 * [ポリシーの作成](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

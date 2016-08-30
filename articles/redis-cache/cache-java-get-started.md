@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="05/31/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Java で Azure Redis Cache を使用する方法
@@ -79,4 +79,4 @@ Azure Redis Cache を使用すると、Microsoft が管理している専用の 
 - [キャッシュ診断の有効化](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)によってキャッシュの正常性を[監視](https://msdn.microsoft.com/library/azure/dn763945.aspx)できるようにします。
 - 公式の [Redis ドキュメント](http://redis.io/documentation)を読みます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

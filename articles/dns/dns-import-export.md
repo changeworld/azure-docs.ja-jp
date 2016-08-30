@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/11/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート
@@ -107,7 +107,7 @@ DNS ゾーンをインポートする Azure CLI コマンドの形式は次の�
 
 		azure config mode arm
 
-4. Azure DNS サービスを使用する前に、Microsoft.Network リソース プロバイダーを使用するサブスクリプションを登録する必要があります。(この操作は、各サブスクリプションで 1 回だけ行うことができます)。
+4. Azure DNS サービスを使用する前に、Microsoft.Network リソース プロバイダーを使用するようにご使用のサブスクリプションを登録する必要があります (この操作は、各サブスクリプションで 1 回だけ行うことができます)。
 
 		azure provider register Microsoft.Network
 
@@ -172,7 +172,7 @@ DNS ゾーンをインポートする Azure CLI コマンドの形式は次の�
 - `<zone name>`: ゾーンの名前です。
 - `<zone file name>`: エクスポートするゾーン ファイルのパス/名前です。
 
-ゾーンをインポートする場合、まずサインインし、サブスクリプションを選択し、リソース マネージャー モードを使用するために Azure CLI を構成します。
+ゾーンのインポートと同様に、まずサインインし、サブスクリプションを選択して、Resource Manager モードを使用するように Azure CLI を構成します。
 
 ### ゾーン ファイルをエクスポートするには
 
@@ -193,4 +193,4 @@ DNS ゾーンをインポートする Azure CLI コマンドの形式は次の�
 
 		azure network dns zone export myresourcegroup contoso.com contoso.com.txt
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

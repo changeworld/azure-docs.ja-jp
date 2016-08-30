@@ -13,15 +13,15 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="05/03/2016"
+   ms.date="08/18/2016"
    ms.author="v-livech"/>
 
 
 # CLI を使用した Azure での Linux VM の作成
 
-> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの品質向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
 
-この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます (これは、Linux bash シェルを使う最も簡単な方法です)。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化 (`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
+この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) のほか、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化 (`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
 
 ## クイック コマンドの概要
 
@@ -33,7 +33,7 @@ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
 
 ## Linux VM のデプロイ
 
-以下では、上記のコマンドを使用して、各プロンプトと予想される出力を示します。ただし、RedHat Enteprise Linux 7.2 VM の作成には RHEL のエイリアスを使用しています。
+ここでは、コマンドについて簡単に解説し、RedHat Enterprise Linux 7.2 を使用する各手順について説明します。
 
 ## ImageURN エイリアスの使用
 
@@ -46,14 +46,13 @@ Azure CLI `quick-create` コマンドには、最も一般的な OS ディスト
 | Debian | credativ | Debian | 8 | 最新 |
 | openSUSE | SUSE | openSUSE | 13\.2 | 最新 |
 | RHEL | Redhat | RHEL | 7\.2 | 最新 |
-| SLES | SLES | SLES | 12-SP1 | 最新 |
 | UbuntuLTS | Canonical | UbuntuServer | 14\.04.4-LTS | 最新 |
 
 
 
-**ImageURN** オプション (`-Q`) には `RHEL` を使用して RedHat Enterprise Linux 7.2 VM をデプロイします (この 7 つのエイリアスは、Azure で利用できる OS のごく一部です。Marketplace で他の[イメージを探す](virtual-machines-linux-cli-ps-findimage.md)ことも、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。
+**ImageURN** オプション (`-Q`) には `RHEL` を使用して RedHat Enterprise Linux 7.2 VM をデプロイします。これらの `quick-create` エイリアスは、Azure で利用可能な OS のごく一部を表しています。Marketplace で[イメージを検索](virtual-machines-linux-cli-ps-findimage.md)して他のイメージを見つけることも、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます。
 
-以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。ここでは、"サンプル" の値を使用します。
+以下のコマンド チュートリアルでは、プロンプトを実際の環境の値に置き換えてください。
 
 画面の指示に従って、独自の名前を入力してください。
 
@@ -147,7 +146,7 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-既定の SSH ポート 22 と、上記の出力に示されている完全修飾ドメイン名 (FQDN) を使用して、VM に SSH 接続できます(列挙されている IP アドレスを使用することもできます)。
+ポート 22 で、出力に示されているパブリック IP アドレスを使用して、VM に SSH 接続できます(一覧に含まれている FQDN を使用することもできます)。
 
 ```bash
 ssh ops@rhel-westu-1630678171-pip.westus.cloudapp.azure.com
@@ -169,8 +168,6 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 
 - [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md)
 - [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md)
-- [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
-これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

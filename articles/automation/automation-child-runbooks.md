@@ -12,11 +12,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation での子 Runbook
-
 
 Azure Automation では、他の Runbook でも使用できる個別の関数で再利用可能なモジュールの Runbook を作成することをお勧めします。親 Runbook は多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook を呼び出します。子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、さまざまな状況でどちらが適しているかを判断できるようになります。
 
@@ -94,4 +93,4 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 - [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 - [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->
