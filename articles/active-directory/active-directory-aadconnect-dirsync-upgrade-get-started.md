@@ -164,8 +164,8 @@ Azure AD Connect で DirSync からの引き継ぎの準備ができているこ
 
 ### DirSync (古いサーバー) をアンインストールする
 
-- **[プログラムと機能]** で **[Windows Azure Active Directory 同期ツール]** を見つけます。
-- **Windows Azure Active Directory 同期ツール**をアンインストールします。
+- **[プログラムと機能]** で **[Microsoft Azure Active Directory 同期ツール]** を見つけます。
+- **Microsoft Azure Active Directory 同期ツール**をアンインストールします。
 - アンインストールが完了するまで最大で 15 分かかる場合があります。
 
 後で DirSync をアンインストールする場合は、一時的にサーバーをシャットダウンするか、サービスを無効にしておくこともできます。問題が生じた場合は、この方法で再び有効にすることができます。ただし、次の手順は失敗しないものと思われますので、必ずしも必要になるとは限りません。

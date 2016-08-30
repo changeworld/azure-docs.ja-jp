@@ -37,7 +37,7 @@ Visual Studio を使用して SQL データベースに接続するには、以�
 - 接続先の SQL データベース。この記事では、**AdventureWorks** サンプル データベースを使用します。AdventureWorks サンプル データベースを入手するには、[デモ データベースの作成](sql-database-get-started.md)に関するページを参照してください。
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を*無料*で提供しています。
+- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
  - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
 
