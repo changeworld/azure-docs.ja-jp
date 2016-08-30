@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/19/2016"
+   ms.date="08/18/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーの概要
@@ -105,11 +105,11 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 
 ## Access control
 
-リソース マネージャーを使用すると、組織に対する特定アクションにアクセスできるユーザーを制御できます。Azure リソース マネージャーでは、OAuth およびロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブに統合されているため、そのアクセス制御がリソース グループ内のすべてのサービスに適用されます。ユーザーを事前定義されたプラットフォームおよびリソース固有のロールに追加し、これらのロールをサブスクリプション、リソース グループ、またはリソースに適用することで、アクセスを制限できます。たとえば、ユーザーにデータベース管理は許可するが、データベース サーバーやセキュリティ ポリシーの管理は許可しない SQL DB 共同作業者と呼ばれる事前定義済みのロールを利用するとします。このようなアクセスを必要とする組織内ユーザーを、SQL DB 共同作業者ロールに追加して、このロールをサブスクリプション、リソース グループ、またはリソースに適用します。
+リソース マネージャーを使用すると、組織に対する特定アクションにアクセスできるユーザーを制御できます。Azure リソース マネージャーでは、OAuth およびロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブに統合されているため、そのアクセス制御がリソース グループ内のすべてのサービスに適用されます。事前定義されたプラットフォームとリソース固有のロールにユーザーを追加し、これらのロールをサブスクリプション、リソース グループ、またはリソースに適用することで、アクセスを制限できます。たとえば、ユーザーにデータベース管理は許可するが、データベース サーバーやセキュリティ ポリシーの管理は許可しない SQL DB 共同作業者と呼ばれる事前定義済みのロールを利用するとします。このようなアクセスを必要とする組織内ユーザーを SQL DB 共同作業者ロールに追加し、このロールをサブスクリプション、リソース グループ、またはリソースに適用します。
 
 リソース マネージャーでは、監査のために、自動的にユーザー操作が記録されます。監査ログの使用については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 
-ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」トピックには、組み込みのロールと許可されているアクションの一覧が含まれています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、仮想マシンの共同作業者、仮想ネットワークの共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
+ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」トピックには、組み込みのロールと許可されているアクションの一覧が記載されています。組み込みのロールには、所有者、閲覧者、共同作業者などの一般的なロールに加え、仮想マシンの共同作業者、仮想ネットワークの共同作業者、SQL セキュリティ管理者など、サービス固有のロールがあります (使用可能なロールの数例にすぎません)。
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。詳細については、「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
 
@@ -133,31 +133,50 @@ REST API の詳細については、[Azure リソース マネージャー REST 
 
 Azure リソース マネージャーでは、クロス オリジン リソース共有 (CORS) がサポートされています。CORS を使用すると、別のドメインに存在する Web アプリケーションからリソース マネージャー REST API または Azure サービス REST API を呼び出すことができます。CORS がサポートされていない場合は、Web ブラウザーによって、あるドメイン内のアプリは別のドメイン内のリソースにアクセスできないようになっています。リソース マネージャーを使用すると、有効な認証の資格情報を持つすべての要求で CORS が有効になります。
 
-## SDK とサンプル
+## SDK
 
 Azure の SDK は、複数の言語とプラットフォームで利用できます。これらの言語実装はそれぞれ、エコシステム パッケージ マネージャーと GitHub を介して入手できます。
 
 これらの SDK のコードはそれぞれ、Azure REST ベースの API 仕様から生成されます。これらの仕様はオープン ソースであり、Swagger 2.0 仕様に基づいています。SDK コードは、AutoRest と呼ばれるオープン ソース プロジェクトを使用して生成されています。AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
 
-**サンプル**: 各種言語のサンプルをお選びください。
+Microsoft のオープン ソース SDK リポジトリを次に示します。フィードバック、問題、プル要求をお待ちしております。
 
-- [.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet)
-- [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java)
-- [Node.JS](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs)
-- [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python)
-- [PHP](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=php) *近日対応予定*
-- [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
-
-**Open Source SDK リポジトリ**: フィードバックや問題、プル要求をお待ちしております。
-
-- [.NET](https://github.com/Azure/azure-sdk-for-net)
-- [Java](https://github.com/Azure/azure-sdk-for-java)
-- [Node.JS](https://github.com/Azure/azure-sdk-for-node)
-- [PHP](https://github.com/Azure/azure-sdk-for-php)
-- [Python](https://github.com/Azure/azure-sdk-for-python)
-- [Ruby](https://github.com/Azure/azure-sdk-ruby)
+[.NET](https://github.com/Azure/azure-sdk-for-net) | [Java](https://github.com/Azure/azure-sdk-for-java) | [Node.js](https://github.com/Azure/azure-sdk-for-node) | [PHP](https://github.com/Azure/azure-sdk-for-php) | [Python](https://github.com/Azure/azure-sdk-for-python) | [Ruby](https://github.com/Azure/azure-sdk-ruby)
 
 > [AZURE.NOTE] 必要な機能が SDK に備わっていない場合は、[Azure REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) を直接呼び出すこともできます。
+
+## サンプル
+
+### .NET
+
+- [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
+- [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+
+### Java
+
+- [Azure のリソースを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/)
+- [Azure のリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
+- [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+
+### Node.js
+
+- [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+
+### Python
+
+- [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+
+### Ruby
+
+- [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
+
+
+これらのサンプルだけでなく、ギャラリー サンプルを検索することもできます。
+
+[.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) | [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) | [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs) | [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python) | [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
 ## 次のステップ
 
@@ -171,4 +190,4 @@ Azure の SDK は、複数の言語とプラットフォームで利用できま
 
 [AZURE.VIDEO azure-resource-manager-overview]
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

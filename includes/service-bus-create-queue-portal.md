@@ -1,33 +1,28 @@
 [こちら][namespace-how-to]の説明に従って、Service Bus 名前空間を既に作成していることを確認してください。
 
-1. [Azure クラシック ポータル][classic-portal]にログオンします。
+1. [Azure ポータル][azure-portal]にログオンします。
 
 2. ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3. キューを作成する名前空間を選択します。この例では "mytestns1" です。
+3. キューを作成する名前空間を選択します。この例では、**nstest1** です。
 
-    ![Selecting a namespace][select-namespace]
+    ![キューを作成する][createqueue1]
 
-4. **[キュー]** を選択します。
+4. **[Service Bus 名前空間]** ブレードで、**[キュー]**、**[キューの追加]** の順にクリックします。
 
-    ![Select Queues][select-queue]
+    ![Select Queues][createqueue2]
 
-5. 左下隅にある **[新規]** を選択し、**[簡易作成]** を選択します。
+5. **[キュー名]** に入力し、他の値は既定値のままにします。
 
-    ![Select New][select-new]
+    ![Select New][createqueue3]
 
-6. **キュー名**を入力し、適切な名前空間が選択されていることを確認します。
+7. ブレードの下部にある **[作成]** をクリックします。
 
-7. **[新しいキューを作成する]** を選択します。
-
-    ![キューを作成する][create-queue]
-
-[select-namespace]: ./media/service-bus-create-queue-portal/select-namespace.png
-[select-queue]: ./media/service-bus-create-queue-portal/select-queue.png
-[select-new]: ./media/service-bus-create-queue-portal/select-new.png
-[create-queue]: ./media/service-bus-create-queue-portal/create-queue.png
+[createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
+[createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
+[createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
 
 [namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
-[classic-portal]: https://manage.windowsazure.com
+[azure-portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

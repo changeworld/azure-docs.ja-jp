@@ -47,6 +47,10 @@ DNS サーバーには次の 2 種類があります。
 - _権限のある_ DNS サーバーは、DNS ゾーンをホストします。このサーバーは、これらのゾーン内のレコードに対する DNS クエリのみに応答します。
 - _再帰_ DNS サーバーは、DNS ゾーンをホストしません。このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
 
+>[AZURE.NOTE] Azure DNS は、権限のある DNS サービスを提供します。再帰 DNS サービスは提供しません。
+
+> Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)に関するページを参照してください。
+
 PC やモバイル デバイスの DNS クライアントは、通常、クライアント アプリケーションが必要とする DNS クエリを実行するために、再帰 DNS サーバーを呼び出します。
 
 再帰 DNS サーバーは、"www.contoso.com" などの DNS レコードに対するクエリを受け取ると、まず、"contoso.com" ドメインのゾーンをホストするネーム サーバーを検索する必要があります。そのためには、ルート名サーバーから開始し、そこから、"com" ゾーンをホストするネーム サーバーを見つけます。次に、"com" ネーム サーバーを照会し、"contoso.com" ゾーンをホストするネーム サーバーを見つけます。最後に、"www.contoso.com" についてこれらのネーム サーバーを照会できます。
@@ -201,4 +205,4 @@ Azure DNS ネーム サーバーの IP アドレスは後で変更される可�
 
 [DNS レコードの管理](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

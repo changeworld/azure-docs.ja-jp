@@ -34,10 +34,9 @@
 
 Web Platform Installer には、Service Fabric 開発用に 3 つの構成が用意されています。
 
-- [Visual Studio 2015 Update 2 用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
+- [Visual Studio 2015 Update 2 以降のための Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-vs2015]
 - [Visual Studio "15" プレビュー用の Service Fabric ランタイム、SDK、ツールをインストールする][full-bundle-dev15]
 - [Service Fabric ランタイムと SDK のみをインストールする (Visual Studio Tools はインストールしない)][core-sdk]
-
 
 ## PowerShell スクリプトの実行の有効化
 
@@ -64,4 +63,4 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "Core SDK WebPI link"
 [powershell5-download]: https://www.microsoft.com/ja-JP/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
 
 	![][8]
 
-	これによりパッケージのダウンロードとインストールが実行され、<a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure Service Bus ライブラリ NuGet パッケージ</a>への参照が追加されます。
+	Visual Studio によりパッケージのダウンロードとインストールが実行され、[Azure Service Bus ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照が追加されます。
 
 4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
@@ -54,7 +54,7 @@
 	}
 	```
 
-	このメソッドは、200 ミリ秒の遅延時間で Event Hub にイベントを継続的に送信します。
+	このメソッドは、200 ミリ秒の遅延時間でイベント ハブにイベントを継続的に送信します。
 
 7. 最後に、**Main** メソッドに次の行を追加します。
 
@@ -69,3 +69,5 @@
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
+
+<!---HONumber=AcomDC_0824_2016-->

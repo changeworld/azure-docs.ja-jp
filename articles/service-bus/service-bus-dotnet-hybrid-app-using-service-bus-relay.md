@@ -67,43 +67,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 Azure で Service Bus 機能を使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-1.  [Azure クラシック ポータル][]にサインインします。
-
-2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
-
-3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
-
-    ![][5]
-
-4.  **[新しい名前空間を追加する]** ダイアログ ボックスで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。![][6]
-
-5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
-
-    > [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
-
-6.	ダイアログ ボックスの他のフィールドは既定値のままにして、[OK] チェック マークをクリックします。システムによって名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-作成した名前空間はポータルに表示されます。アクティブになるまで少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
-
-## 名前空間の既定の管理資格情報の取得
-
-メッセージング エンティティの作成など、新しい名前空間の管理操作を実行するには、その名前空間の資格情報を取得する必要があります。
-
-1.  メイン ウィンドウで、前の手順で作成した名前空間をクリックします。
-
-2.  ページの下部にある **[接続情報]** をクリックします。
-
-3.  **[接続情報へのアクセス]** ウィンドウで、SAS キーとキー名を含む接続文字列を見つけます。
-
-	![][45]
-
-4.  この接続文字列をコピーし、どこかに貼り付けておいてください。このチュートリアルで後ほど使用します。
-
-5. 同じポータル ページ内で、ページの上部にある **[構成]** タブをクリックします。
-
-6. **RootManageSharedAccessKey** ポリシーのプライマリ キーをクリップボードにコピーするか、メモ帳に貼り付けます。この値は、このチュートリアルの後半で使用します。
-
-	![][46]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## オンプレミスのサーバーを作成する
 
@@ -127,7 +91,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 7.  ソリューション エクスプローラーで **ProductsServer** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-8.  **参照** タブをクリックし、`Microsoft Azure Service Bus` を検索します。**[インストール]** をクリックし、使用条件に同意します。
+8.  **NuGet** ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
 
     ![][13]
 
@@ -252,7 +216,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
       </behaviors>
     </system.serviceModel>
     ```
-14. 引き続き App.config 内で、**&lt;appSettings&gt;** 要素内の接続文字列の値を、前の手順でポータルから取得した接続文字列に置き換えます。 
+14. 引き続き App.config 内で、**&lt;appSettings&gt;** 要素内の接続文字列の値を、前の手順でポータルから取得した接続文字列に置き換えます。
 
 	```
 	<appSettings>
@@ -288,7 +252,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 	![][18]
 
-6. 	**[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスの **[Microsoft Azure]** セクションで、**[Host in the cloud (クラウドにホストする)]** がオンになっていることと、ドロップダウン リストで **[App Service]** が選択されていることを確認します。
+6. 	**[新しい ASP.NET プロジェクト]** ダイアログ ボックスの **[Microsoft Azure]** セクションで、**[Host in the cloud (クラウドにホストする)]** が選択されていることと、ドロップダウン リストで **[App Service]** が選択されていることを確認します。
 
 	![][19]
 
@@ -466,7 +430,7 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
       ![][25]
 
-11. 引き続き **[プロパティ]** ダイアログ ボックスで、左側の **[Project Dependencies (プロジェクトの依存関係)]** をクリックします。
+11. 引き続き **[プロパティ]** ダイアログ ボックスで、左側の **[プロジェクトの依存関係]** をクリックします。
 
 12. **[プロジェクト]** リストで **[ProductsServer]** をクリックします。**[ProductsPortal]** は選択されて**いない**ことを確認してください。
 
@@ -513,11 +477,11 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 ## アプリケーションの実行
 
-2.  F5 キーを押して、アプリケーションをビルドして実行します。次のスクリーンショットのように、まず、オンプレミスのサーバー (**ProductsServer** コンソール アプリケーション) を起動し、次に **ProductsPortal** アプリケーションをブラウザー ウィンドウで起動する必要があります。オンプレミスのシステムの商品サービスから取得された商品在庫一覧データが Web アプリ上に表示されることに、再度注目してください。URL を確認し、**ProductsPortal** が Azure Web アプリとしてクラウドで実行されていることを確かめます。 
+2.  F5 キーを押して、アプリケーションをビルドして実行します。次のスクリーンショットのように、まず、オンプレミスのサーバー (**ProductsServer** コンソール アプリケーション) を起動し、次に **ProductsPortal** アプリケーションをブラウザー ウィンドウで起動する必要があります。オンプレミスのシステムの商品サービスから取得された商品在庫一覧データが Web アプリ上に表示されることに、再度注目してください。URL を確認し、**ProductsPortal** が Azure Web アプリとしてクラウドで実行されていることを確かめます。
 
     ![][1]
 
-	> [AZURE.IMPORTANT] **ProductsServer** コンソール アプリケーションが実行されており、**ProductsPortal** アプリケーションにデータを提供できる状態になっている必要があります。ブラウザーにエラーが表示された場合は、**ProductsServer** が次のメッセージを読み込んで表示するまで数秒待ってください。　その後で、ブラウザーで **[最新の情報に更新]** をクリックします。
+	> [AZURE.IMPORTANT] **ProductsServer** コンソール アプリケーションが実行されており、**ProductsPortal** アプリケーションにデータを提供できる状態になっている必要があります。ブラウザーにエラーが表示された場合は、**ProductsServer** が次のメッセージを読み込んで表示するまで数秒待ってください。その後で、ブラウザーで **[最新の情報に更新]** をクリックします。
 
 	![][37]
 
@@ -529,8 +493,8 @@ Azure で Service Bus 機能を使用するには、最初にサービス名前�
 
 Service Bus の詳細については、次のリソースを参照してください。
 
-* [Azure の Service Bus][sbwacom]  
-* [Service Bus キューの使用方法][sbwacomqhowto]  
+* [Azure の Service Bus][sbwacom]
+* [Service Bus キューの使用方法][sbwacomqhowto]
 
 
   [0]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
@@ -538,11 +502,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [Gツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   
-  [Azure クラシック ポータル]: http://manage.windowsazure.com
-  [5]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-03.png
-  [6]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/sb-queues-04.png
-
-
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [13]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-13.png
   [15]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-2.png
@@ -564,10 +523,9 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [38]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-service2.png
   [41]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
   [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-  [45]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-45.png
-  [46]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/service-bus-policies.png
+
 
   [sbwacom]: /documentation/services/service-bus/
   [sbwacomqhowto]: service-bus-dotnet-get-started-with-queues.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

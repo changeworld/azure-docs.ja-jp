@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="mobile-phonegap"
 	ms.devlang="js"
 	ms.topic="hero-article" 
-	ms.date="04/04/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Cordova/Phonegap 用 Azure Mobile Engagement の使用
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-このトピックでは、Azure Mobile Engagement を使用して、アプリの使用状況を把握する方法、および Cordova を使用して開発されたモバイル アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
+このトピックでは、Azure Mobile Engagement を使用して、アプリの使用状況を把握する方法と、Cordova を使用して開発されたモバイル アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
 
 このチュートリアルでは、Mac を使用して空の Cordova アプリを作成してから、Mobile Engagement SDK と統合します。このアプリは、基本的な分析データを収集し、iOS では Apple Push Notification System (APNS)、Android では Google Cloud Messaging (GCM) を使用してプッシュ通知を受信します。このアプリを、テスト用に iOS デバイスまたは Android デバイスにデプロイします。
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)を参照してください。
+> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)を参照してください。
 
 このチュートリアルには、次のものが必要です。
 
@@ -48,7 +48,7 @@
 
 ###新しい Cordova プロジェクトを作成します。
 
-1. Mac コンピューターで *[Terminal]* ウィンドウを起動して次を入力し、既定のテンプレートから新しい Cordova プロジェクトを作成する次のコードを入力します。iOS アプリのデプロイに最終的に使用する発行プロファイルが、App ID として「com.mycompany.myapp」を使用していることを確認します。 
+1. Mac コンピューターで *[Terminal]* ウィンドウを起動して次を入力し、既定のテンプレートから新しい Cordova プロジェクトを作成する次のコードを入力します。iOS アプリのデプロイに最終的に使用する発行プロファイルが、App ID として「com.mycompany.myapp」を使用していることを確認します。
 
 		$ cordova create azme-cordova com.mycompany.myapp
 		$ cd azme-cordova
@@ -167,7 +167,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 **(iOS)**
 
-1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\\platforms\\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。 
+1. iOS では実在するデバイスへのプッシュ通知だけが許可されているため、XCode を使用してアプリをビルドし、デバイスにデプロイして、プッシュ通知をテストします。Cordova プロジェクトを作成した場所の **...\\platforms\\ios** に移動します。XCode でネイティブ .xcodeproj ファイルを開きます。
 	
 2. 先ほど Mobile Engagement ポータルにアップロードした証明書と、Cordova アプリの作成中に指定した App Id を含むプロビジョニング プロファイルが設定されたアカウントを使用して、Cordova アプリをビルドして iOS デバイスにデプロイします。XCode で **Resources*-info.plist** ファイルの *Bundle ID* をチェックアウトして、照合することができます。
 
@@ -191,20 +191,20 @@ GCM 通知は Android エミュレーターでサポートされているため�
 
 3. 情報を入力してキャンペーン **[Android]** を作成します。
 	
-	- キャンペーンの**名前**を指定します。 
+	- キャンペーンの**名前**を指定します。
 	- **[配信タイプ]** として *[システム通知]* - *[シンプル]* を選択します。
 	- **[配信時刻]** として *[任意の時刻]* を選択します。
 	- プッシュ通知の 1 行目になる **[タイトル]** を指定します。
-	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。 
+	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。
 
 	![][11]
 
 4. 入力情報を指定してキャンペーンを作成します。**[iOS]**
 
-	- キャンペーンの**名前**を指定します。 
+	- キャンペーンの**名前**を指定します。
 	- **[配信時刻]** として *[アプリ外のみ]* を選択します。
 	- プッシュ通知の 1 行目になる **[タイトル]** を指定します。
-	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。 
+	- **[メッセージ]** に、通知のメッセージ本文となるテキストを入力します。
  
 	![][12]
 
@@ -212,7 +212,7 @@ GCM 通知は Android エミュレーターでサポートされているため�
 
 	![][8]
 
-6. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME\_REDIRECT\_URL** 変数の構成時に指定した URL スキームを必ず使用します (例: **myapp://test*)。
+6. (オプション) アクション URL を指定することもできます。この URL では、プラグインの **AZME\_REDIRECT\_URL** 変数の構成時に指定した URL スキームを必ず使用します (例: *myapp://test*)。
 
 7. 最も基本的なキャンペーンの設定が完了しました。もう一度下にスクロールし、**[作成]** ボタンをクリックしてキャンペーンを保存します。
 
@@ -237,4 +237,4 @@ GCM 通知は Android エミュレーターでサポートされているため�
 [11]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-android.png
 [12]: ./media/mobile-engagement-cordova-get-started/campaign-first-params-ios.png
 
-<!-------HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

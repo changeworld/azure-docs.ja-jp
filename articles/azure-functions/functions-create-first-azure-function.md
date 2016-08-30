@@ -7,7 +7,7 @@
    manager="erikre"
    editor=""
    tags=""
-   />
+/>
 
 <tags
    ms.service="functions"
@@ -15,12 +15,12 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/05/2016"
+   ms.date="08/22/2016"
    ms.author="glenga"/>
 
-# 初めての Azure 関数の作成
+#初めての Azure 関数の作成
 
-##概要
+##Overview
 Azure Functions は、イベント駆動型のオンデマンドのコンピューティング エクスペリエンスを提供します。これは、他の Azure サービス、SaaS 製品、オンプレミス システムで発生するイベントによってトリガーされるコードを実装する機能により、既存の Azure アプリケーション プラットフォームを拡張するものです。Azure Functions を利用すれば、アプリケーションを必要に応じてスケールでき、消費したリソースに対して料金を支払うだけで済みます。Azure Functions では、スケジュールやトリガーが設定されたコード ユニットを、さまざまなプログラミング言語で作成して実装できます。Azure Functions の詳細については、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
 このトピックでは、Azure Functions ポータルで Azure Functions のクイック スタートを使用し、HTTP トリガーによって呼び出される簡単な "hello world" Node.js 関数を作成する方法について説明します。また、ポータルでこれらの手順を実行する方法についての短いビデオも視聴できます。
@@ -59,9 +59,9 @@ Azure Functions クイック スタートには機能コードが含まれてい
 
 + [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 + [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。 
-+ [Azure App Service とは](../app-service/app-service-value-prop-what-is.md) Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。 
++ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
++ [Azure App Service とは](../app-service/app-service-value-prop-what-is.md) Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

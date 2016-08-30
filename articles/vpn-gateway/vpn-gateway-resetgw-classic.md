@@ -14,13 +14,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/13/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用して Azure VPN Gateway をリセットする
 
 
-この記事では、PowerShell のコマンドレットを使用して、Azure VPN Gateway をリセットする方法を紹介します。次の手順は、従来のデプロイ モデルに適用されます。リソース マネージャー デプロイ モデルを使用して作成された仮想ネットワークについては今のところ、VPN Gateway をリセットするためのコマンドレットや REST API がありません。それらの機能については現在作業中です。VPN Gateway の作成に従来のデプロイ モデルが使用されているかどうかは、ご利用の仮想ネットワークを Azure ポータルで見ると確認できます。従来のデプロイ モデルを使用して作成された仮想ネットワークは、Azure ポータルの "仮想ネットワーク (クラシック)" という領域に表示されます。
+この記事では、PowerShell のコマンドレットを使用して、Azure VPN Gateway をリセットする方法を紹介します。次の手順は、従来のデプロイ モデルに適用されます。現時点では、Resource Manager デプロイメント モデルで作成された仮想ネットワーク ゲートウェイは、リセットできません。
 
 サイト間 VPN トンネルのクロスプレミス VPN 接続が失われた場合、Azure VPN Gateway をリセットすることによって解決できる場合があります。この状況では、オンプレミスの VPN デバイスがすべて正しく機能していても、Azure VPN Gateway との間で IPsec トンネルを確立することができません。*Reset-AzureVNetGateway* コマンドレットを使用すると、ゲートウェイが再起動してクロスプレミス構成が再適用されます。ゲートウェイに割り当てられているパブリック IP アドレスはそのまま維持されます。つまり、VPN ルーターの構成を Azure VPN Gateway の新しいパブリック IP アドレスで更新する必要がありません。
 
@@ -58,4 +58,4 @@ Azure VPN Gateway をリセットするための PowerShell コマンドレッ�
 	
 このコマンドレットの詳細については、[PowerShell リファレンス](https://msdn.microsoft.com/library/azure/mt270366.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

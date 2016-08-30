@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.date="06/16/2016"
-	ms.author="jtaubensee"/>
+	ms.author="jotaub"/>
 
 # Event Hubs の使用
 
@@ -26,7 +26,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 
 このチュートリアルでは、Azure クラシック ポータルを使用してイベント ハブを作成する方法を説明します。また、C# に記述されるコンソール アプリケーションを使用して Event Hub にメッセージを収集し、Java のイベント プロセッサ ホスト ライブラリを使用して並列で取得する方法を学習します。
 
-このチュートリアルを完了するには、以下が必要になります。
+このチュートリアルを完了するには、次のものが必要です。
 
 + [Microsoft Visual Studio](http://visualstudio.com)
 
@@ -71,4 +71,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->
