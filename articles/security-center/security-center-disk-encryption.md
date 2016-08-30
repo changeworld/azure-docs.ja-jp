@@ -172,4 +172,4 @@ PowerShell ISE に戻ります。スクリプトが完了すると、次の図�
 - 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
 - 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
 
-<!---HONumber=AcomDC_0601_2016-->
+<!-----HONumber=AcomDC_0601_2016-->
