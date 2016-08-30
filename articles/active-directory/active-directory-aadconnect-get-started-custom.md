@@ -258,4 +258,4 @@ Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory �
 DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!-----HONumber=AcomDC_0629_2016-->

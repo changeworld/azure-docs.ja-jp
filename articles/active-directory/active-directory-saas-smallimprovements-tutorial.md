@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/12/2016"
 	ms.author="jeedes"/>
 
 
@@ -56,7 +56,7 @@ Azure AD への Small Improvements の統合を構成するには、ギャラリ
 
 **ギャラリーから Small Improvements を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -153,7 +153,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
   
 	d.**[SAML プロンプト]** ボックスに、SSO ログイン ボタンの名前として適切な値を入力します。
 
-	e.**[保存]** をクリックします。
+	e.[**Save**] をクリックします。
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
@@ -188,7 +188,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-smallimprovements-tutorial/create_aaduser_05.png)
 
@@ -305,4 +305,4 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 [204]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

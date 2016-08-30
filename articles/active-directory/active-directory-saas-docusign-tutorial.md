@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -93,89 +93,99 @@
 
 3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
-	![シングル サインオンの構成][9]
+	![シングル サインオンの構成][61]
 
-	a.**[サインオン URL]** ボックスに、次のパターンを使用して DocuSign テナントの URL を入力します。運用環境の場合、URL のパターンは **"https://account.docusign.com/organizations/<ORGANIZATIONID>/saml2/login/sp/<IDPID>"** となります。デモ環境の場合、URL のパターンは **"https://account-d.docusign.com/organizations/<ORGANIZATIONID>/saml2/login/sp/<IDPID>"** となります。
+	a.**[サインオン URL]** ボックスに、「`https://account.docusign.com/*`」と入力します。
 
-	b.**[識別子]** ボックスに、次のパターンを使用して DocuSign 発行者の URL を入力します。運用環境の場合、URL のパターンは **"https://account.docusign.com/organizations/<ORGANIZATIONID>/saml2"** となります。デモ環境の場合、このURL のパターンは **"https://account-d.docusign.com/organizations/<ORGANIZATIONID>/saml2"** となります。
-
+	b.**[識別子]** ボックスに、「`https://account.docusign.com/*`」と入力します。
+   
 	c.**[次へ]** をクリックします。
 
 
-    > [AZURE.TIP] テナントのアプリ URL がわからない場合は、DocuSign ([SSOSetup@Docusign.com](emailTo:SSOSetup@Docusign.com)) に問い合わせて、テナントの SP によって開始される SSO URL を取得してください。
+    > [AZURE.TIP] [サインオン URL] と [識別子] の値は、単なるプレースホルダーです。実際の環境の値を取得する方法については、このトピックの後半で説明します。
  
 
-4. **[DocuSign でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
+4. **[DocuSign でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターにローカルで保存します。
 
 	![シングル サインオンの構成][10]
 
 
-5. 別の Web ブラウザー ウィンドウで、**DocuSign 管理ポータル**に管理者としてログインします。
+5. 別の Web ブラウザー ウィンドウで、**DocuSign 管理者ポータル**に管理者としてログインします。
 
 
 6. 左側のナビゲーション メニューの **[Domains (ドメイン)]** をクリックします。
 
 	![シングル サインオンの構成][51]
 
-7. 次に、右側のウィンドウで **[CLAIM DOMAIN (ドメインの要求)]** ボタンをクリックします。
+7. 右側のウィンドウで、**[Claim Domain (ドメインを要求する)]** をクリックします。
 
 	![シングル サインオンの構成][52]
 
-8. ポップアップ ウィンドウで、会社のドメイン名を入力し、[claim (要求)] をクリックします。ドメインを確認し、状態がアクティブであることを確認してください。
+8. **[Claim a domain (ドメインの要求)]** ダイアログの **[Domain Name (ドメイン名)]** ボックスに、所属する会社のドメインを入力してから、**[Claim (要求)]** をクリックします。ドメインを確認し、状態がアクティブであることを確かめてください。
 
 	![シングル サインオンの構成][53]
 
-9. 左側のナビゲーション メニューの **[Identity Providers (ID プロバイダー)]** をクリックします。
+9. 左側のメニューで、**[Identity Providers (ID プロバイダー)]** をクリックします。
 
 	![シングル サインオンの構成][54]
 
-10. 右側のウィンドウで、[ADD IDENTITY PROVIDER (ID プロバイダーの追加)] ボタンをクリックします。SSO 設定ページが開きます。
+10. 右側のウィンドウで、**[Add Identity Provider (ID プロバイダーの追加)]** をクリックします。
 	
 	![シングル サインオンの構成][55]
 
-11. [Identity Provider Settings (ID プロバイダーの設定)] ページでは、次の操作を実行します。
-
-	a.構成に一意の名前を付けます。単語の間に空白を使用しないでください。
-
-	b.**[Identity Provider Issuer (ID プロバイダー発行者)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[発行者の URL]** の値を入力します。
-
-	c.**[Identity Provider Login URL (ID プロバイダーのログイン URL)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[リモート ログイン URL]** の値を入力します。
-
-	d.**[Identity PRovider Logout URL (ID プロバイダーのログアウト URL)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[リモート ログアウト URL]** の値を入力します。
-
-	e.**[Sign AuthN Request (認証要求に署名する)]** チェック ボックスをオンにします。
-
-	f.**[Send AuthN request by (認証要求の送信方法)]** オプションが **[POST]** に設定されていることを確認します。
-
-	g.**[Send logout request by (ログアウト要求の送信方法)]** オプションが **[POST]** に設定されていることを確認します。
+11. **[Identity Provider Settings (ID プロバイダーの設定)]** ページで、次の手順を実行します。
 
 	![シングル サインオンの構成][56]
 
-12. **[Custom Attribute Mapping (カスタム属性マッピング)]** セクションで、Azure AD の要求とマッピングするフィールドを選択します。たとえばここでは、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** という値とマッピングされた **[emailaddress]** 要求を使用しました。これは、Azure AD の電子メール要求の既定の要求名です。
 
-	> [AZURE.NOTE] Azure AD のユーザーを DocuSign のユーザー マッピングにマップする際は、適切なユーザー識別子を使用してください。適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
+	a.**[Name (名前)]** ボックスに、構成の一意の名前を入力します。スペースは使用しないようにしてください。
+
+	b.Azure クラシック ポータルで [発行者の URL] の値をコピーし、**[Identity Provider Issuer (ID プロバイダーの発行元)]** ボックスに貼り付けます。
+
+	c.Azure クラシック ポータルで **[リモート ログイン URL]** の値をコピーし、**[Identity Provider Login URL (ID プロバイダーのログイン URL)]** ボックスに貼り付けます。
+
+	d.Azure クラシック ポータルで **[リモート ログアウト URL]** の値をコピーし、**[Identity Provider Logout URL (ID プロバイダーのログアウト URL)]** ボックスに貼り付けます。
+
+	e.**[Sign AuthN Request (認証要求に署名する)]** を選択します。
+
+	f.**[Send AuthN request by (認証要求の送信方法)]** として、**[POST]** を選択します。
+
+	g.**[Send logout request by (ログアウト要求の送信方法)]** として、**[POST]** を選択します。
+
+
+12. **[Custom Attribute Mapping (カスタム属性マッピング)]** セクションで、Azure AD の要求とマッピングするフィールドを選択します。この例では、**emailaddress** 要求が **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** という値とマッピングされます。これは、Azure AD の電子メール要求の既定の要求名です。
+
+	> [AZURE.NOTE] Azure AD のユーザーを DocuSign のユーザー マッピングにマッピングする際は、適切な**ユーザー識別子**を使用してください。適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
 
 	![シングル サインオンの構成][57]
 
-13. **[Identity Provider Certificate (ID プロバイダー証明書)]** セクションで、**[ADD CERTIFICATE (証明書の追加)]** ボタンをクリックし、Azure AD アプリケーションの構成ウィザードからダウンロードした証明書をアップロードします。
+13. **[Identity Provider Certificate (ID プロバイダー証明書)]** セクションで **[Add Certificate (証明書の追加)]** をクリックし、Azure AD クラシック ポータルからダウンロードした証明書をアップロードします。
 
 	![シングル サインオンの構成][58]
 
-14. **[Save (保存)]** ボタンをクリックして、すべての設定を保存します。
+14. [**Save**] をクリックします。
 
-15. **[Identity Providers (ID プロバイダー)]** セクションで、**[Actions (アクション)]** ボタンをクリックし、**[Endpoints (エンドポイント)]** をクリックします。
+15. **[Identity Providers (ID プロバイダー)]** セクションで、**[Actions (アクション)]** をクリックし、**[Endpoints (エンドポイント)]** をクリックします。
 
 	![シングル サインオンの構成][59]
 
-16. **[View SAML 2.0 Endpoints (SAML 2.0 エンドポイントの表示)]** セクションで、次の手順に従います。
 
-	a.**[Service Provider Issuer URL (サービス プロバイダーの発行者 URL)]** をコピーし、Azure AD 構成ウィザードの **[識別子]** ボックスに貼り付けます。
 
-	b.**[Service Provider Login URL (サービス プロバイダーのログイン URL)]** をコピーし、Azure AD 構成ウィザードの **[サインオン URL]** ボックスに貼り付けます。
+10. Azure クラシック ポータルの **[アプリケーション設定の構成]** ページに戻ります。
+
+16. **DocuSign 管理者ポータル**の **[View SAML 2.0 Endpoints (SAML 2.0 エンドポイントの表示)]** セクションで、次の手順を実行します。
 
 	![シングル サインオンの構成][60]
 
+	a.**[Service Provider Issuer URL (サービス プロバイダーの発行者 URL)]** の値をコピーし、Azure クラシック ポータルの **[識別子]** ボックスに貼り付けます。
+
+	b.**[Service Provider Login URL (サービス プロバイダーのログイン URL)]** の値をコピーし、Azure クラシック ポータルの **[サインオン URL]** ボックスに貼り付けます。
+
 	c.**[Close (閉じる)]** をクリックします。
+
+
+10. Azure クラシック ポータルで **[次へ]** をクリックします。
+
 
 15. Azure クラシック ポータルで、**シングル サインオンの構成確認**を選択し、**[次へ]** をクリックします。
 
@@ -196,11 +206,11 @@
 
 	![アカウント プロビジョニングの構成][30]
 
-2. **[設定と管理者資格情報]** ページで自動ユーザー プロビジョニングを有効にするには、十分な権限のある DocuSign アカウントの資格情報を入力してから **[次へ]** をクリックします。
+2. **[設定と管理者資格情報]** ページで自動ユーザー プロビジョニングを有効にするには、十分な権限が付与されている DocuSign アカウントの資格情報を入力してから **[次へ]** をクリックします。
 
 	![アカウント プロビジョニングの構成][31]
 
-3. **[Test connection (接続テスト)]** ダイアログで、**[テスト開始]** をクリックし、テストが正常に行われた場合は **[次へ]** をクリックします。
+3. **[テスト接続]** ダイアログで、**[テスト開始]** をクリックし、テストが正常に行われた場合は **[次へ]** をクリックします。
 
 	![アカウント プロビジョニングの構成][32]
 
@@ -287,5 +297,6 @@
 [58]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_26.png
 [59]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_27.png
 [60]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_28.png
+[61]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_29.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

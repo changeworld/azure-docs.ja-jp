@@ -15,20 +15,18 @@
     ms.tgt_pltfrm="vm-linux"
     ms.devlang="na"
     ms.topic="hero-article"
-    ms.date="04/29/2016"
+    ms.date="08/18/2016"
     ms.author="v-livech"
 />
 
 # ポータルを使用して Azure に Linux VM を作成する
 
-> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの品質向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
 
 この記事では、[Azure ポータル](https://portal.azure.com/)を使用して Linux 仮想マシンを簡単に作成する方法について説明します。唯一の要件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)および [SSH 公開キーと秘密キーのファイル](virtual-machines-linux-mac-create-ssh-keys.md)です。
 
-> [AZURE.NOTE] VM へのアクセスをセキュリティで保護するためにパスワードを使用する場合、パスワードは 13 文字以上にし、1 つ以上の大文字、1 つ以上の小文字、1 つ以上の特殊文字、および 1 つ以上の数字を含める必要があります。
 
-
-1. Azure アカウント ID で Azure ポータルにサインインし、左上隅にある **[+ 新規]** をクリックします。
+1. Azure アカウント ID で Azure ポータルにサインインしたうえで、左上隅にある **[+ 新規]** をクリックします。
 
     ![screen1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
@@ -40,8 +38,8 @@
     - VM の名前
     - 管理者ユーザーのユーザー名
     - 認証の種類 (**[SSH 公開キー]** に設定)
-    - 文字列で表された SSH 公開キー (既定では、`~/.ssh/` ディレクトリから取得)
-    - リソース グループ名 (新しいデプロイ グループを作成する場合)。または既存のグループを選択して、
+    - 文字列で表された SSH 公開キー (`~/.ssh/` ディレクトリから取得)
+    - リソース グループ名 (または既存のグループを選択)
 
     **[OK]** をクリックして続行し、VM サイズを選択すると、以下のように表示されます。
 
@@ -78,9 +76,7 @@ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 テストまたはデモンストレーション用の Linux VM を迅速に作成しました。インフラストラクチャに合わせてカスタマイズした Linux VM を作成する方法については、次の記事を参照してください。
 
 - [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md)
-- [Azure テンプレートを使用して安全な Linux VM を作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 - [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
 
-これらの記事を読むと、Azure インフラストラクチャの構築を始めることができ、独自またはオープン ソースのインフラストラクチャ デプロイ、構成、オーケストレーション ツールを使用できます。
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,12 +12,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp イメージの作成
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp は、イメージを使用してユーザーと共有しているアプリを保持します。(Azure はユーザーのイメージを取得し、それを使用して VM を作成します。ユーザーは、Azure RemoteApp にサインインするとそのイメージにアクセスします。) クラウド型かハイブリッド型かに関係なく、選択したアプリケーションの Azure RemoteApp コレクションを作成するには、まず、これらのアプリケーションがインストールされた状態のイメージを作成します。次に、そのイメージを使用するコレクションを作成し、コレクションにユーザーを割り当てて、それらのユーザーにアプリを発行します。
 
@@ -31,4 +34,4 @@ Azure RemoteApp は、イメージを使用してユーザーと共有してい�
 
 イメージの取得および作成方法に関わりなく、[アプリ要件](remoteapp-appreqs.md)を正しく理解し、アプリが RemoteApp で正常に動作することを確認してください。次の手順は、[クラウド](remoteapp-create-cloud-deployment.md) コレクションまたは[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションの作成です。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

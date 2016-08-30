@@ -33,20 +33,21 @@ Azure Data Factory サービスをオンプレミスの Cassandra データベ�
 ## データのコピー ウィザード
 Cassandra データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 
-次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
+次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、Cassandra データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
+
 
 ## サンプル: Cassandra から BLOB へのデータのコピー
-このサンプルでは、1 時間おきに Cassandra データベースから Azure BLOB にデータがコピーされます。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。Azure Data Factory のコピー アクティビティを使用して、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)に関するトピックで説明されているシンクのいずれかにデータを直接コピーすることができます。
+このサンプルでは、1 時間おきに Cassandra データベースから Azure BLOB にデータがコピーされます。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。Azure Data Factory のコピー アクティビティを使用して、[データ移動アクティビティ](data-factory-data-movement-activities.md#supported-data-stores)に関する記事に記載されているシンクのいずれかにデータを直接コピーすることができます。
 
 - [OnPremisesCassandra](#onpremisescassandra-linked-service-properties) 型のリンクされたサービス。
 - [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス。
 - [CassandraTable](#cassandratable-properties) 型の入力[データセット](data-factory-create-datasets.md)。
 - [AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-- [CassandraSource](#cassandrasource-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties)を使用するコピー アクティビティを含む [パイプライン](data-factory-create-pipelines.md)。
+- [CassandraSource](#cassandrasource-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 **Cassandra のリンクされたサービス**
 
-この例では、**Cassandra** のリンクされたサービスを使用します。このリンクされたサービスでサポートされているプロパティについては、[Cassandra のリンクされたサービス](#onpremisescassandra-linked-service-properties) に関するセクションを参照してください。
+この例では、**Cassandra** のリンクされたサービスを使用します。このリンクされたサービスでサポートされているプロパティについては、[Cassandra のリンクされたサービス](#onpremisescassandra-linked-service-properties)に関するセクションをご覧ください。
 
 	{
     	"name": "CassandraLinkedService",
@@ -104,7 +105,7 @@ Cassandra データベースから、サポートされているシンク デー
 		}
 	}
 
-**external** を **true** に設定すると、データセットがData Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+**external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 **Azure BLOB の出力データセット**
 
@@ -131,9 +132,9 @@ Cassandra データベースから、サポートされているシンク デー
 
 **コピー アクティビティのあるパイプライン**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **CassandraSource** に設定され、**sink** 型が **BlobSink** に設定されています。
+上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** の型が **CassandraSource** に設定され、**sink** の型が **BlobSink** に設定されています。
 
-RelationalSource でサポートされるプロパティの一覧については、「[RelationalSource type プロパティ](#cassandrasource-type-properties)」を参照してください。
+RelationalSource でサポートされるプロパティの一覧については、「[RelationalSource type プロパティ](#cassandrasource-type-properties)」をご覧ください。
 	
 	{  
 		"name":"SamplePipeline",
@@ -186,7 +187,7 @@ RelationalSource でサポートされるプロパティの一覧については
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **OnPremisesCassandra** に設定する必要があります | はい |
+| type | type プロパティを **OnPremisesCassandra** に設定する必要があります。 | はい |
 | host | Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 | はい | 
 | ポート | Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 | いいえ、既定値: 9042 |
 | authenticationType | Basic、または匿名 | はい |
@@ -203,21 +204,21 @@ RelationalSource でサポートされるプロパティの一覧については
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| keyspace | Cassandra データベースのkeyspace またはスキーマの名前。 | はい (**CassandraSource**の**クエリ**が定義されていない場合 )。 |
-| tableName | Cassandra データベースのテーブル名。 | はい (**CassandraSource**の**クエリ**が定義されていない場合 )。 |
+| keyspace | Cassandra データベースのkeyspace またはスキーマの名前。 | はい (**CassandraSource** の**クエリ**が定義されていない場合)。 |
+| tableName | Cassandra データベースのテーブル名。 | はい (**CassandraSource** の**クエリ**が定義されていない場合)。 |
 
 
 ## CassandraSource type プロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
-コピー アクティビティで、source の種類が **CassandraSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、source が **CassandraSource** 型の場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL-92 クエリまたはCQL クエリ。「[CQL reference (CQL 参考資料) ](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」を参照してください。<br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す**keyspace name.table name** を指定します。 | いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
-| consistencyLevel | 一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 | ONE、TWO、THREE、QUORUM、ALL、 LOCAL\_QUORUM、EACH\_QUORUM、 LOCAL\_ONE。詳細については「[Configuring data consistency (データ一貫性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)」 を参照してください。 | いいえ。既定値は ONE です。 |  
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL-92 クエリまたはCQL クエリ。「[CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。<br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 | いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
+| consistencyLevel | 一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 | ONE、TWO、THREE、QUORUM、ALL、 LOCAL\_QUORUM、EACH\_QUORUM、 LOCAL\_ONE。詳細については、「[Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)」をご覧ください。 | いいえ。既定値は ONE です。 |  
 
 
 ### Cassandra の型マッピング
@@ -240,7 +241,7 @@ VARCHAR | String
 VARINT | Decimal
 
 > [AZURE.NOTE]  
-コレクションの種類 (マップ、セット、リストなど) についての詳細は、[仮想テーブルを使用した Cassandra コレクションの種類の取り扱い](#work-with-collections-using-virtual-table) に関するセクションを参照してください。
+コレクションの種類 (マップ、セット、リストなど) については、[仮想テーブルを使用した Cassandra コレクションの種類の取り扱い](#work-with-collections-using-virtual-table)に関するセクションをご覧ください。
 > 
 > ユーザー定義型はサポートされていません。
 > 
@@ -250,11 +251,11 @@ VARINT | Decimal
 Azure Data Factory では、ビルトインの ODBC ドライバーを使用して Cassandra データベースへの接続や、Cassandra データベースからのデータのコピーを行います。マップ、セット、およびリストを含むコレクションの種類については、ODBC ドライバーが、対応する仮想テーブルへのデータの再正規化を行います。具体的には、テーブルにコレクション列が含まれている場合に、ドライバーが次の仮想テーブルを生成します。
 
 -	実テーブルと同じデータ (コレクション列を除く) を含む **ベース テーブル**。ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
--	入れ子になったデータを展開する、各コレクション列の**仮想テーブル**。コレクションを表す仮想テーブルは、実テーブルの名前、区切り文字の "_vt_"、および列の名前を使用して名付けられます。
+-	入れ子になったデータを展開する、各コレクション列の**仮想テーブル**。コレクションを表す仮想テーブルには、実テーブルの名前、区切り文字の "_vt_"、および列の名前を使用して名前が付けられます。
 
 仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、次の「例」を参照してください。仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
 
-[コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard) を利用して、仮想テーブルを含む Cassandra データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
+[コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard)を利用して、仮想テーブルを含む Cassandra データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
 ### 例
 たとえば、次の "ExampleTable" は、整数の主キー列 ("pk\_int" という名前)、テキスト列 (値という名前)、リスト列、 マップ列、 およびセット列 ("StringSet" という名前) で構成された、Cassandra データベース テーブルです。
@@ -310,6 +311,6 @@ pk\_int | StringSet\_value
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

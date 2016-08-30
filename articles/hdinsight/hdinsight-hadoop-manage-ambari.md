@@ -25,8 +25,6 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
-> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight クラスターにのみ適用されます。Windows ベースの HDInsight クラスターでは、Ambari REST API を使用した監視のみを利用できます。「[Ambari API を使用した HDInsight の Windows ベースの Hadoop の監視](hdinsight-monitor-use-ambari-api.md)」をご覧ください。
-
 ##<a id="whatis"></a>Ambari とは
 
 <a href="http://ambari.apache.org" target="_blank">Apache Ambari</a> は、Hadoop クラスターのプロビジョニング、管理、監視に使用する Web UI を簡単に使用できる方法を提供することで Hadoop の管理を簡略化します。開発者は、<a href="https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md" target="_blank">Ambari REST API</a> を使用して、これらの機能をアプリケーションに統合することができます。
@@ -73,7 +71,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ##監視
 
-###アラート
+###Alerts
 
 Ambari には多数のアラートがあり、そのステータスは次のいずれかになります。
 
@@ -99,7 +97,7 @@ Ambari には多数のアラートがあり、そのステータスは次のい�
 
 ![Create alert ダイアログ](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-###プロビジョニング
+###クラスター
 
 ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。**[CPU Usage]** などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
 
@@ -224,4 +222,4 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 * Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。Hive ビューの使用法の詳細については、[HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 * Tez ビュー: このビューでは、Tez ジョブの実行方法や、ジョブで使用するリソース関する情報を表示することで、ジョブをより良く理解、最適化できます。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/26/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイス コントローラーを管理する
 
-## 概要
+## Overview
 
 このチュートリアルでは、StorSimple デバイス コントローラーに対して実行できる各種の操作について説明します。StorSimple デバイスでは、ピア コントローラーがアクティブ/パッシブ構成で冗長化されています。特定の時点でアクティブなコントローラーは 1 台だけで、そのコントローラーがすべてのディスク操作とネットワーク操作を処理します。その他のコントローラーはパッシブ モードになります。アクティブなコントローラーに障害が発生すると、パッシブ コントローラーが自動的にアクティブになります。
 
@@ -215,4 +215,4 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 - StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

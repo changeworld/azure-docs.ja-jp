@@ -51,7 +51,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 
 	次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターをプロビジョニングすることができます。
 	- **Windows (Windows Server 2012 R2 Datacenter) 上の HDInsight**:
-	- **Linux (Ubuntu 12.04 LTS for Linux) 上の HDInsight**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
+	- **Linux 上の HDInsight**: HDInsight には、Azure で Linux クラスターを構成するオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 
 
 - **HDInsight のバージョン**
@@ -67,7 +67,7 @@ HDInsight クラスターのプロビジョニングを計画する方法につ�
 	- Storm クラスター: リアルタイム イベント処理ワークロード用
 	- Spark クラスター: メモリ内処理、対話型クエリ、ストリーム、機械学習の各ワークロード用
 
-	![HDInsight clusters](./media/hdinsight-provision-clusters-v1/hdinsight.clusters.png)
+	![HDInsight クラスター](./media/hdinsight-provision-clusters-v1/hdinsight.clusters.png)
  
 	> [AZURE.NOTE] "Azure HDInsight クラスター" は、"HDInsight の Hadoop クラスター"、または "HDInsight クラスター" とも呼ばれます。また、"Hadoop クラスター" と同じ意味で使用される場合もあります。これらはすべて、Microsoft Azure 環境でホストされている Hadoop クラスターを指します。
 
@@ -304,7 +304,7 @@ Azure PowerShell は、Azure のワークロードのデプロイと管理を制
 
 Azure PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
-- Azure のストレージ アカウントの作成
+- Azure Storage アカウントの作成
 - Azure BLOB コンテナーの作成
 - HDInsight クラスターの作成
 
@@ -562,7 +562,7 @@ Azure CLI を使用する前に、ワークステーションと Azure の間の
 
 Azure CLI を使用して HDInsight クラスターをプロビジョニングするには、以下の手順を実行する必要があります。
 
-- Azure のストレージ アカウントの作成
+- Azure Storage アカウントの作成
 - クラスターのプロビジョニング
 
 **Azure ストレージ アカウントを作成するには**
@@ -688,7 +688,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 	|プロパティ|値|
 	|--------|-----|
 	|テンプレート|テンプレート/Visual C#/Windows/コンソール アプリケーション|
-	|名前|CreateHDICluster|
+	|Name|CreateHDICluster|
 
 4. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -815,4 +815,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/library/dn479185.aspx
 [azure-management-portal]: https://manage.windowsazure.com
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

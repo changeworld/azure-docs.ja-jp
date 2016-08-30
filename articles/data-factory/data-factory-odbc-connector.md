@@ -31,9 +31,15 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
+## データのコピー ウィザード
+ODBC ソースとの間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+
+以下の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、ODBC ソースから Azure BLOB ストレージにデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
+
+
 ## サンプル: ODBC データ ストアから Azure BLOB にデータをコピーする
 
-このサンプルは、ODBC データ ストアから Azure BLOB ストレージにデータをコピーする方法を示します。ただし、Azure Data Factory のコピー アクティビティを使用して[ここ](data-factory-data-movement-activities.md#supported-data-stores)から開始したいずれかのシンクに、データを**直接**コピーすることができます。
+このサンプルは、ODBC データ ストアから Azure BLOB ストレージにデータをコピーする方法を示します。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーすることもできます。
  
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -47,7 +53,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定してください。
 
-**ODBC のリンクされたサービス** 次のサンプルは基本認証を使用しています。使用可能なさまざまな種類の認証については、「[ODBC のリンクされたサービス](#odbc-linked-service-properties)」セクションを参照してください。
+**ODBC のリンクされたサービス**: この例では基本認証を使用しています。使用できるさまざまな種類の認証については、[ODBC のリンクされたサービス](#odbc-linked-service-properties)に関するセクションをご覧ください。
 
 	{
 	    "name": "OnPremOdbcLinkedService",
@@ -223,7 +229,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **OnPremisesOdbc** に設定する必要があります | はい |
+| type | type プロパティを **OnPremisesOdbc** に設定する必要があります。 | はい |
 | connectionString | 接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。下記の例をご覧ください。 | はい
 | 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。例: "Uid=<ユーザー ID>;Pwd=<パスワード>;RefreshToken=<シークレット更新トークン >;" | いいえ
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。Anonymous と Basic のいずれかの値になります。 | はい | 
@@ -232,7 +238,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | gatewayName | Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 | はい |
 
 
-オンプレミスの ODBC データ ストアの資格情報の設定の詳細については、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」を参照してください。
+オンプレミスの ODBC データ ストアの資格情報の設定について詳しくは、[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)に関する記事をご覧ください。
 
 ### 基本認証を使用する
 
@@ -301,11 +307,11 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 
 ## ODBC のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
 一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
 
-コピー アクティビティで、source の種類が **RelationalSource** (ODBC を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、source が **RelationalSource** 型 (ODBC を含む) の場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -320,7 +326,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-「[ODBC データ型のマッピング](https://msdn.microsoft.com/library/cc668763.aspx)」のトピックで説明したように、ODBC データ ストアからデータを移動する際に、ODBC データ型は .NET 型にマップされます。
+「[ODBC データ型のマッピング](https://msdn.microsoft.com/library/cc668763.aspx)」で説明するように、ODBC データ ストアからデータを移動する際に、ODBC データ型は .NET 型にマップされます。
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
@@ -328,7 +334,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 [AZURE.INCLUDE [data-factory-type-repeatability-for-relational-sources](../../includes/data-factory-type-repeatability-for-relational-sources.md)]
 
 ## GE Historian ストア
-次の例で示すように、[GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
+次の例に示すように、[GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
 
 	{
 	    "name": "HistorianLinkedService",
@@ -346,7 +352,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 	    }
 	}
 
-オンプレミス コンピューターに Data Management Gateway をインストールし、ゲートウェイをポータルに登録する必要があります。オンプレミス コンピューターにインストールされているゲートウェイは、GE Historian データ ストアに接続するために GE Historian 用の ODBC ドライバーを使用します。そのため、ゲートウェイ コンピューターにまだドライバーがインストールされていない場合は、インストールしてください。詳細については、「[接続を有効にする](#enabling-connectivity)」セクションを参照してください。
+オンプレミス コンピューターに Data Management Gateway をインストールし、ゲートウェイをポータルに登録する必要があります。オンプレミス コンピューターにインストールされているゲートウェイは、GE Historian データ ストアに接続するために GE Historian 用の ODBC ドライバーを使用します。そのため、ゲートウェイ コンピューターにまだドライバーがインストールされていない場合は、インストールしてください。詳細については、「[接続を有効にする](#enabling-connectivity)」をご覧ください。
 
 Data Factory ソリューションで GE Historian ストアを使用する前に、ゲートウェイが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
 
@@ -355,7 +361,7 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 ## 接続の問題のトラブルシューティング
 接続の問題をトラブルシューティングするには、**Data Management Gateway 構成マネージャー**の **[診断]** タブを使用します。
 
-1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図で示されているように、**Gateway** を検索し、**Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
+1. **Data Management Gateway 構成マネージャー**を起動します。"C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\ConfigManager.exe" を直接実行することも、次の図に示すように、**Gateway** を検索して **Microsoft Data Management Gateway** アプリケーションへのリンクを見つけることもできます。
 
 	![Search gateway](./media/data-factory-odbc-connector/search-gateway.png)
 2. **[診断]** タブに切り替えます。
@@ -363,9 +369,9 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 	![Gateway diagnostics](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
 3. データ ストアの**種類** (リンクされたサービス) を選択します。
 4. **認証**方法を指定し、**資格情報**を入力します。または、**接続文字列**を入力して、データ ストアに接続します。
-5. **[Test connection (接続のテスト)]** をクリックして、データ ストアへの接続をテストします。
+5. **[テスト接続]** をクリックして、データ ストアへの接続をテストします。
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

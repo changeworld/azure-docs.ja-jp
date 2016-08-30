@@ -40,7 +40,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 
 ## 2\.SDK のダウンロード
 
-1. [Application Insights SDK for Java](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html) をダウンロードします。 
+1. [Application Insights SDK for Java](https://aka.ms/aijavasdk) をダウンロードします。
 2. サーバーで、プロジェクトのバイナリの読み込み元のディレクトリに SDK の内容を展開します。Tomcat を使用している場合、この場所は通常 `webapps<your_app_name>\WEB-INF\lib` になります。
 
 
@@ -139,4 +139,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0817_2016-->

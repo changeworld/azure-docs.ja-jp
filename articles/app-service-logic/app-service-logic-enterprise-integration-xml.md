@@ -26,8 +26,12 @@ Enterprise Integration Pack により、ビジネス パートナーと交換す
 - [フラット ファイルのエンコードとデコード](./app-service-logic-enterprise-integration-flatfile.md "フラット ファイルのエンコードとデコードについて") - フラット ファイルをエンコードまたはデコードできます。
 - [XPath](https://msdn.microsoft.com/library/mt643789.aspx) -メッセージを強化し、メッセージから特定のプロパティを抽出できます。抽出されたプロパティは、宛先または中継のエンドポイントにメッセージをルーティングするために使用できます。
 
+## 試してみる
+
+実際に試してみましょう。Logic Apps の XML 機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline)をクリックしてください。
+
 ## 詳細情報
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

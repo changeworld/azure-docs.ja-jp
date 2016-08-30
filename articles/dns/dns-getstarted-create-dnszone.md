@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/09/2016"
+   ms.date="08/16/2016"
    ms.author="cherylmc"/>
 
 # PowerShell を使用した DNS ゾーンの作成
@@ -59,7 +59,7 @@ Azure DNS PowerShell では、ゾーンとレコード セットの両方でタ�
 	
 - Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+- Azure Resource Manager PowerShell コマンドレット (1.0 以降) の最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 ## 手順 1 - サインインする
 
@@ -143,7 +143,7 @@ DNS ゾーンを作成すると、次の DNS レコードも作成されます�
 	Tags              : {}
 
 
-DNS ゾーンのルート (または*頂点*) にあるレコード セットは、レコード セット名として **@** を使用します。
+DNS ゾーンのルート (または "*頂点*") にあるレコード セットは、レコード セット名として **@** を使用します。
 
 
 ## テスト
@@ -174,4 +174,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

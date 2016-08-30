@@ -1,5 +1,5 @@
 <properties
-	pageTitle="WebApi プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Azure"
+	pageTitle="WebApi プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点 | Microsoft Azure "
 	description="Visual Studio を使用して Azure AD に接続するときに WebApi プロジェクトで何が起こるかについて説明します。"
   services="active-directory"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vs-what-happened"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/15/2016"
 	ms.author="tarcher"/>
 
 # Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
@@ -117,4 +117,4 @@ Azure Active Directory アプリが更新され、*[ディレクトリ データ
 
 [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

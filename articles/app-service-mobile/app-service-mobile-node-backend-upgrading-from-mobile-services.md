@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/11/2016"
 	ms.author="adrianha"/>
 
 # App Service への既存の Node.js Azure Mobile Service のアップグレード
@@ -172,7 +172,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service の価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
+[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md
@@ -191,4 +191,4 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

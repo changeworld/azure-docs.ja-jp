@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/12/2016"
+    ms.date="08/15/2016"
     ms.author="ericor" />
 
 
 
 # Azure RemoteApp のカスタム イメージをアップロードする
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 カスタム テンプレート イメージの作成、または変更と更新ができたら、そのイメージを Azure RemoteApp イメージ ライブラリにアップロードする必要があります。次の手順を使用します。
 
@@ -51,4 +54,4 @@
 - スクリプトを変更しないでください。スクリプトには検証が含まれています。
 - アップロード中に vhd ファイルがロックアウトされる場合は、ファイルを新しい場所にコピーまたは移動して、再度アップロードを実行してください。一部の Windows プロセスがアップロードを阻んでいる可能性があります。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

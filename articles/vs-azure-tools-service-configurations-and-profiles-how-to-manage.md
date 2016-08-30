@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # サービス構成とプロファイルを管理する方法
 
-## 概要
+## Overview
 
 クラウド サービスを発行すると、Visual Studio は、サービス構成とプロファイルという 2 種類の構成ファイルに構成情報を保存します。サービス構成 (.cscfg ファイル) には、Azure クラウド サービスのデプロイ環境の設定が保存されます。Azure は、クラウド サービスを管理するときに、これらの構成ファイルを使用します。その一方で、プロファイル (.azurePubxml ファイル) には、クラウド サービスの発行設定が保存されます。この設定は、発行ウィザードで選択された内容の記録であり、Visual Studio によってローカルで使用されます。ここでは、両方の種類の構成ファイルを使用する方法について説明します。
 
@@ -131,4 +131,4 @@
 
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、[Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

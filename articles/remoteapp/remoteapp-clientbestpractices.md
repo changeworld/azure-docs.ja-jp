@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/13/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp クライアントのベストプラクティス
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp クライアントを使用するうえで役立つ情報を次に示します。
 
@@ -26,4 +29,4 @@ Azure RemoteApp クライアントを使用するうえで役立つ情報を次�
 
 - RemoteApp はユーザーが一定の時間、非アクティブな状態になるとユーザーを自動的にログオフします。データの損失を防ぐためには、サービスの使用を終了する際には、アプリケーションを閉じることをお勧めします。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

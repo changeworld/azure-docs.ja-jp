@@ -87,9 +87,9 @@
 
 ロガー | ダウンロード | ライブラリ
 ----|----|----
-Logback|[Logback アペンダーを含む SDK](https://azuredownloads.blob.core.windows.net/applicationinsights/logbackAppender.zip)|applicationinsights-logging-logback
-Log4J v2.0|[Log4J v2 アペンダーを含む SDK](https://azuredownloads.blob.core.windows.net/applicationinsights/log4j2Appender.zip)|applicationinsights-logging-log4j2 
-Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](https://azuredownloads.blob.core.windows.net/applicationinsights/log4j1_2Appender.zip)|applicationinsights-logging-log4j1\_2 
+Logback|[Logback アペンダーを含む SDK](https://aka.ms/xt62a4)|applicationinsights-logging-logback
+Log4J v2.0|[Log4J v2 アペンダーを含む SDK](https://aka.ms/qypznq)|applicationinsights-logging-log4j2 
+Log4j v1.2|[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo)|applicationinsights-logging-log4j1\_2 
 
 
 
@@ -151,4 +151,4 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

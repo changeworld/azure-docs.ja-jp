@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="12/10/2015"
+	ms.date="08/16/2015"
 	ms.author="naziml"/>
 
 # Azure App Service のセキュリティ
@@ -22,6 +22,6 @@ Azure App Service は、セキュリティ保護されたプラットフォー�
 
 [AZURE.INCLUDE [app-service-blueprint-security](../../includes/app-service-blueprint-security.md)]
 
-Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。詳細については、[マルウェア対策についてのドキュメント](../azure-security-antimalware.md)を参照してください。
+Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。詳細については、[マルウェア対策についてのドキュメント](../security/azure-security-antimalware.md)を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

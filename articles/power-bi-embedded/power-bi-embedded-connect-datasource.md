@@ -25,6 +25,7 @@
 |インポート | DirectQuery
 |---|---
 |テーブル、列、*およびデータ*がレポートのデータセットにインポートまたはコピーされます。基になるデータに加えられた変更を表示するには、更新する (現在の完全なデータセットをもう一度インポートする) 必要があります。|*テーブルと列*のみがレポートのデータセットにインポートまたはコピーされます。常に最新のデータが表示されます。
+Power BI Embedded を使用して、クラウドのデータ ソースで DirectQuery を使用することができますが、現時点ではオンプレミスのデータ ソースを使用することはできません。
 
 ## DirectQuery を使用する利点
 
@@ -41,7 +42,7 @@
    -	クエリが複雑すぎると、エラーが発生します。エラーを解決するために、クエリをリファクタリングして複雑さを減らす必要があります。複雑なクエリを使用する必要がある場合は、**DirectQuery** を使用する代わりにデータをインポートする必要があります。
    -	リレーションシップのフィルター処理は、双方向ではなく、単一の方向に制限されます。
    -	列のデータ型を変更することはできません。
-   -	既定では、メジャーで許可される DAX 式に制限が課されます。「[DirectQuery とメジャー](#measures)」をご覧ください。
+   -	既定では、メジャーで許可される DAX 式に制限が課されます。「[DirectQuery とメジャー](#measures)」を参照してください。
 
 <a name="measures"/>
 ## DirectQuery とメジャー
@@ -52,4 +53,4 @@
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

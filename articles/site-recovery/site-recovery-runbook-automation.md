@@ -51,7 +51,7 @@ Azure にアプリケーションを復旧するには、復旧計画を作成�
 
 ![](media/site-recovery-runbook-automation/12.png)
 
-復旧計画の詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn788799.aspx "ここ")にあるドキュメントを参照してください。
+復旧計画の詳細については、[ここ](https://msdn.microsoft.com/library/azure/dn788799.aspx "こちら")にあるドキュメントを参照してください。
 
 次に、Azure Automation で必要なアーティファクトを作成します。
 
@@ -103,7 +103,7 @@ Azure Automation は Azure PowerShell を使用して、サブスクリプショ
 
 ![](media/site-recovery-runbook-automation/11.png)
 
-Powershell を使用してサブスクリプションに接続する方法の詳細については、[ここ](../powershell-install-configure.md)を参照してください。
+PowerShell を使用してサブスクリプションに接続する方法の詳細については、[ここ](../powershell-install-configure.md)を参照してください。
 
 次に Azure Automation で、フェールオーバー後にフロントエンドの仮想マシンのエンドポイントを追加できる Runbook を作成します。
 
@@ -278,7 +278,7 @@ CloudServiceName | 仮想マシンが作成される Azure Cloud Service の名�
 
 ## プライマリ側スクリプト
 
-Azure へのフェールオーバーを実行するときに、プライマリ側スクリプトを実行することもできます。これらのスクリプトは、フェールオーバー中に、VMM サーバーで実行されます。プライマリ側スクリプトはプレシャットダウンおよびシャットダウン後のステージでのみ使用可能です。これは、プライマリ サイトが、障害の発生時には通常使用できなくなると思われるためです。計画外のフェールオーバー中に、プライマリ サイトの操作で選択した場合にのみ、プライマリ側スクリプトを実行を試みます。到達できないか、またはタイムアウトが発生した場合、フェールオーバーは仮想マシンの復旧を続行します。プライマリ側スクリプトは、Azure へのフェールオーバー中に、Azure の VMM 保護がない VMware/物理/Hyper-V の各サイトで使用できなくなります。ただし、Azure からオンプロミスにフェールバックすると、VMware を除くすべてのターゲットでプライマリ側スクリプト (Runbook) を 使用することができます。
+Azure へのフェールオーバーを実行するときに、プライマリ側スクリプトを実行することもできます。これらのスクリプトは、フェールオーバー中に、VMM サーバーで実行されます。プライマリ側スクリプトはプレシャットダウンおよびシャットダウン後のステージでのみ使用可能です。これは、プライマリ サイトが、障害の発生時には通常使用できなくなると思われるためです。計画外のフェールオーバー中に、プライマリ サイトの操作で選択した場合にのみ、プライマリ側スクリプトを実行を試みます。到達できないか、またはタイムアウトが発生した場合、フェールオーバーは仮想マシンの復旧を続行します。プライマリ側スクリプトは、Azure へのフェールオーバー中に、Azure の VMM 保護がない VMware/物理/Hyper-V の各サイトで使用できなくなります。ただし、Azure からオンプレミスにフェールバックすると、VMware を除くすべてのターゲットでプライマリ側スクリプト (Runbook) を使用することができます。
 
 ## 復旧計画のテスト
 
@@ -308,4 +308,4 @@ Runbook を計画に追加したら、テスト フェールオーバーを開�
 
 [Sample Azure Automation Scripts (サンプルの Azure Automation スクリプト)](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=User&f[0].Value=SC%20Automation%20Product%20Team&f[0].Text=SC%20Automation%20Product%20Team "サンプルの Azure Automation スクリプト")
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0817_2016-->

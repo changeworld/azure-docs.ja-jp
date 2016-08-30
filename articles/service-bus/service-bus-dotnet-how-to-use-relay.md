@@ -39,39 +39,7 @@ Azure で Service Bus Relay を使用するには、最初に名前空間を作�
 
 サービス名前空間を作成するには:
 
-1.  [Azure クラシック ポータル][]にログオンします。
-
-2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
-
-3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
-
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-4.  **[新しい名前空間を追加する]** ダイアログ ボックスで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
-
-	![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png)
-
-5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
-
-	> [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと*同じ国/リージョン*を選択してください。そうすることで、パフォーマンスが最高になります。
-
-6.	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[Standard]** レベル) のままにして、チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png)
-
-	作成した名前空間がポータルに表示され、アクティブになります。これには少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
-
-## 名前空間の既定の管理資格情報の取得
-
-新規作成した名前空間に対してリレー接続の作成などの管理操作を実行するには、名前空間の Shared Access Signature (SAS) の承認規則を構成する必要があります。SAS の詳細については、「[Service Bus での Shared Access Signature 認証][]」を参照してください。
-
-1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png)
-
-2.  表示される一覧から先ほど作成した名前空間の名前をダブルクリックします。![](./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png)
-
-3.  ページの上部にある **[構成]** タブをクリックします。
-
-4.  Service Bus 名前空間がプロビジョニングされると、**RootManageSharedAccessKey** に設定された **SharedAccessAuthorizationRule** と **KeyName** が既定で作成されます。このページには、そのキーと、既定のルールのプライマリ キーとセカンダリ キーが表示されます。
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Service Bus NuGet パッケージの取得
 
@@ -267,9 +235,8 @@ using (var ch = cf.CreateChannel())
 - [Azure Service Bus アーキテクチャの概要](service-bus-fundamentals-hybrid-solutions.md)
 - Service Bus のサンプルを [Azure のサンプル][]からダウンロードするか、[Service Bus サンプルの概要][]を参照してください。
 
-  [Azure クラシック ポータル]: http://manage.windowsazure.com
-  [Service Bus での Shared Access Signature 認証]: service-bus-shared-access-signature-authentication.md
+  [Shared Access Signature Authentication with Service Bus]: service-bus-shared-access-signature-authentication.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/01/2016"
+   ms.date="08/17/2016"
    ms.author="jeffstok"/>
 
 
@@ -63,9 +63,10 @@ HDInsight でスコア付けを行うには、モデルを呼び出して、ス�
 
 ### Azure Machine Learning でのスコア付け
 
-Azure Machine Learning Web サービスを使用してスコア付けを行うには、[オープン ソースの Azure Machine Learning R パッケージ](http://www.inside-r.org/blogs/2015/11/18/enhancements-azureml-package-connect-r-azureml-studio)を使用して、[モデルを Azure Web サービスとして発行](http://www.r-bloggers.com/deploying-a-car-price-model-using-r-and-azureml/)します。次に、Machine Learning の機能を使用して Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
+Azure Machine Learning Web サービスを使用してスコア付けを行うには、[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使用して、モデルを Azure Web サービスとして発行します。便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。次に、Machine Learning の機能を使用して Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
 
 この方法を選択した場合、ScaleR モデル オブジェクトを、Web サービスで使用する同等のオープン ソース モデル オブジェクトに変換する必要があります。この変換は、ScaleR 強制型変換関数 (アンサンブルベースのモデルの `as.randomForest()` など) を使用して実行できます。
+
 
 ### オンプレミスのスコア付け
 
@@ -119,8 +120,8 @@ HDInsight クラスターで R Server を使用する方法の詳細について
 
 - [HDInsight Premium への RStudio Server の追加に関する記事](hdinsight-hadoop-r-server-install-r-studio.md)
 
-- [HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
+- [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

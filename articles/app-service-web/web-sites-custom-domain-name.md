@@ -61,7 +61,7 @@ Azure App Service では、次のカテゴリのカスタム ドメインをア�
 必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。
 
 - [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。
-- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**& lt;*appname*>.azurewebsites.net**) にマップします。
+- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**&lt;*appname*>.azurewebsites.net**) にマップします。
 
 CNAME の利点は、IP アドレスが変更されても維持されることです。アプリを削除して作成し直したり、より上位の価格レベルから **Shared** レベルに移行したりすると、アプリの仮想 IP アドレスが変更される可能性があります。そのような変更があった場合、A レコードは更新する必要がありますが、CNAME レコードは有効なままです。
 
@@ -197,7 +197,7 @@ Azure ポータルの **[外部ドメインの使用]** ブレードに戻り ([
 
 6.  **[保存]** をクリックします。
 
-7.  Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。アプリが実行され、カスタム ドメイン名が正常に動作していることがわかります。
+7.  Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。ブラウザーに Azure アプリが表示されます。これは、カスタム ドメイン名が正しく構成されていることを意味します。
 
 <a name="verify"></a>
 ## DNS への反映を確認する
@@ -219,4 +219,4 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

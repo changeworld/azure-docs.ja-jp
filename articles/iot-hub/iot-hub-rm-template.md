@@ -13,23 +13,23 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/31/2016"
+     ms.date="08/16/2016"
      ms.author="dobett"/>
 
-# ARM テンプレートと C# プログラムを使用した IoT Hub の作成
+# Resource Manager テンプレートで C# プログラムを使用した IoT Hub の作成
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## はじめに
 
-Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプログラムから作成、管理できます。このチュートリアルでは、リソース マネージャー テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
+Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。このチュートリアルでは、Resource Manager テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
 > [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 
-このチュートリアルを完了するには、以下が必要になります。
+このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Visual Studio 2015
-- アクティブな Azure アカウント<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
+- アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
 - テンプレート ファイルの保存先となる [Azure ストレージ アカウント][lnk-storage-account]。
 - [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降
 
@@ -37,7 +37,7 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
 
 ## Visual Studio プロジェクトの準備
 
-1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# Windows のプロジェクトを作成します。プロジェクトに **CreateIoTHub** という名前を付けます。
+1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# Windows のプロジェクトを作成します。プロジェクトに **CreateIoTHub** という名前を付けます。
 
 2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -45,9 +45,7 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
 
 4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
-5. NuGet パッケージ マネージャーで、**Microsoft.Azure.Common** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
-
-6. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
+5. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
 
     ```
     using System;
@@ -57,7 +55,7 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
     using Microsoft.Rest;
     ```
     
-7. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**Your storage account name** には、実際のテンプレート ファイルの保存先となる Azure ストレージ アカウントの名前を指定します。**リソース グループ名**は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
+6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**Your storage account name** には、実際のテンプレート ファイルの保存先となる Azure ストレージ アカウントの名前を指定します。**Resource group name** は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -73,11 +71,11 @@ Azure リソース マネージャー (ARM) を使って、Azure IoT Hub をプ�
 
 ## テンプレートを送信して IoT Hub を作成する
 
-JSON テンプレートとパラメーター ファイルを使用して、リソース グループに新しい IoT Hub を作成します。また、テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
+JSON テンプレートとパラメーター ファイルを使用して、リソース グループに IoT Hub を作成します。また、テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
 
-1. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**template.json** という新しい JSON ファイルをプロジェクトに追加します。
+1. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**template.json** という JSON ファイルをプロジェクトに追加します。
 
-2. **template.json** の内容を次のリソース定義に置き換えて、新しい Standard IoT Hub を **[米国東部]** リージョンに追加します。
+2. **template.json** の内容を次のリソース定義に置き換えて、Standard IoT Hub を **[米国東部]** リージョンに追加します。
 
     ```
     {
@@ -113,9 +111,9 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
     }
     ```
 
-3. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**parameters.json** という新しい JSON ファイルをプロジェクトに追加します。
+3. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**parameters.json** という JSON ファイルをプロジェクトに追加します。
 
-4. **parameters.json** の内容を、新しい IoT Hub の名前 (**{your initials}mynewiothub** など) を設定する次のパラメーター情報に置き換えます (この名前はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます)。
+4. **parameters.json** の内容を次のパラメーター情報 (新しい IoT Hub の名前を **{自分のイニシャル}mynewiothub** に設定) などで置き換えます。IoT Hub 名はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます。
 
     ```
     {
@@ -127,13 +125,13 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
     }
     ```
 
-5. **サーバー エクスプローラー**から Azure サブスクリプションに接続し、自分のストレージ アカウントに、**templates** という新しいコンテナーを作成します。**[プロパティ]** パネルで、**[templates]** コンテナーの **[パブリック読み取りアクセス]** 権限を **[BLOB]** に設定します。
+5. **サーバー エクスプローラー**から Azure サブスクリプションに接続し、自分のストレージ アカウントに、**templates** というコンテナーを作成します。**[プロパティ]** ウィンドウで、**[templates]** コンテナーの **[パブリック読み取りアクセス]** 権限を **[BLOB]** に設定します。
 
 6. **サーバー エクスプローラー**で **[templates]** コンテナーを右クリックし、**[BLOB コンテナーの表示]** をクリックします。**[BLOB のアップロード]** ボタンをクリックして **parameters.json** と **templates.json** の 2 つのファイルを選択し、**[開く]** をクリックして、**[templates]** コンテナーに JSON ファイルをアップロードします。JSON データを含んだ BLOB の URL は次のとおりです。
 
     ```
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
-    https://{Your storage account name}.windows.net/templates/template.json
+    https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
 
 7. 次のメソッドを Program.cs に追加します。
@@ -145,7 +143,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
     }
     ```
 
-5. テンプレート ファイルとパラメーター ファイルを Azure リソース マネージャーに送信するために、次のコードを **CreateIoTHub** メソッドに追加します。
+5. テンプレート ファイルとパラメーター ファイルを Azure Resource Manager に送信するために、次のコードを **CreateIoTHub** メソッドに追加します。
 
     ```
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -202,7 +200,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 
 ## 次のステップ
 
-ここでは、C# プログラムと ARM テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
+ここでは、C# プログラムと Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 
 - [IoT Hub Resource Provider REST API][lnk-rest-api] の機能の詳細をご確認ください。
 - Azure リソース マネージャーの機能の詳細については、「[Azure リソース マネージャーの概要][lnk-azure-rm-overview]」を参照してください。
@@ -235,4 +233,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0817_2016-->

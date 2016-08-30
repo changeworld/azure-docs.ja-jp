@@ -23,8 +23,10 @@ description="Windows コンピューターで SSH キーを生成して使用し
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
 - [Linux と Mac](virtual-machines-linux-ssh-from-linux.md)
 
+
 このトピックでは、**ssh** コマンドを使用して Azure 上の Linux VM に接続するために使用できる、**ssh-rsa** 形式と **.pem** 形式の公開キー ファイルおよび秘密キー ファイルを Windows 上で作成して使用する方法について説明します。**.pem** フィルが既に作成されている場合は、これらのファイルを使用して、**ssh** を使って接続できる Linux VM を作成することができます。他のいくつかのコマンドでは、**SSH** プロトコルおよびキー ファイルを使用して、作業を安全に実行することができます。特に **scp** ([Secure Copy](https://en.wikipedia.org/wiki/Secure_copy)) では、**SSH** 接続をサポートするコンピューターとの間でファイルを安全にコピーできます。
 
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
 
 ## 必要な SSH およびキー作成プログラム
 
@@ -166,4 +168,4 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

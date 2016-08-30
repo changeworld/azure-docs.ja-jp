@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/02/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 # Azure App Service での Web アプリの構成 #
 
-このトピックでは、[Azure ポータル]で Web アプリを構成する方法について説明します。
+このトピックでは、[Azure ポータル]を使用して Web アプリを構成する方法について説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -188,4 +188,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -40,12 +40,12 @@
 Unix サーバー コンピューターで、次の操作を行います。
 
 1. [collectd](http://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html)をダウンロードします。バージョン番号をメモしておきます。
+2. [Application Insights collectd ライター プラグイン](https://aka.ms/aijavasdk)をダウンロードします。バージョン番号をメモしておきます。
 3. プラグイン JAR を `/usr/share/collectd/java` にコピーします。
 3. `/etc/collectd/collectd.conf` を編集します:
  * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java)が有効になっていることを確認します。
  * java.class.path の JVMArg を次の JAR を含むように更新します。バージョン番号を、ダウンロードしたものと一致するように更新します。
-  * `/usr/share/collectd/java/applicationinsights-collectd-0.9.4.jar`
+  * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
  * リソースからのインストルメンテーション キーを使用して、次のスニペットを追加します。
 
 ```
@@ -71,7 +71,7 @@ Unix サーバー コンピューターで、次の操作を行います。
     # Configure Java Plugin
     <Plugin "java">
       JVMArg "-verbose:jni"
-      JVMArg "-Djava.class.path=/usr/share/collectd/java/applicationinsights-collectd-0.9.4.jar:/usr/share/collectd/java/collectd-api.jar"
+      JVMArg "-Djava.class.path=/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar:/usr/share/collectd/java/collectd-api.jar"
 
       # Enabling Application Insights plugin
       LoadPlugin "com.microsoft.applicationinsights.collectd.ApplicationInsightsWriter"
@@ -105,7 +105,7 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
 特定のプラグインまたはデータ ソースからのデータを除外するには:
 
-* 構成ファイルを編集します。 
+* 構成ファイルを編集します。
 * `<Plugin ApplicationInsightsWriter>` に次のようなディレクティブ行を追加します。
 
 ディレクティブ | 効果
@@ -143,4 +143,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0817_2016-->

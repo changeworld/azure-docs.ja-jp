@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Traffic Manager エンドポイントの種類 | Microsoft Azure"
    description="この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します"
    services="traffic-manager"
@@ -6,7 +6,7 @@
    authors="jtuliani"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="traffic-manager"
    ms.devlang="na"
    ms.topic="article"
@@ -41,7 +41,7 @@ Azure エンドポイントは、Traffic Manager で Azure ベースのサービ
 
 - "従来の" IaaS VM と PaaS クラウド サービス。
 - Web Apps
-- PublicIPAddress リソース (直接、または Azure Load Balancer を介して VM に接続可能)
+- PublicIPAddress リソース (直接、または Azure Load Balancer を介して VM に接続可能)publicIpAddress には、Traffic Manager で使用するために DNS 名を割り当てておく必要があることに注意してください。
 
 PublicIPAddress リソースは Azure Resource Manager のリソースです。Azure Service Management API には存在しません。つまり、Traffic Manager の Azure Resource Manager エクスペリエンスでのみサポートされます。その他のエンドポイントの種類については、Traffic Manager の Resource Manager とサービス管理の両方のエクスペリエンスによってサポートされます。
 
@@ -130,7 +130,7 @@ Traffic Manager の正常性チェックを適切に動作させるために、�
 Web アプリの場合、Traffic Manager Azure エンドポイントでは、同じ Azure リージョンの複数の Web アプリ エンドポイントを、同じ Traffic Manager プロファイルに追加することはできません。次の手順により、この制約を回避することができます。
 
 1.	同じリージョン内の Web アプリが、別の Web アプリ "スケール ユニット" にあること、つまり、別の Web アプリ サービス インスタンスであることを確認します。これを行うには、DNS エントリである <...>.azurewebsites.net の DNS パスを確認します。スケール ユニットは、"waws-prod-xyz-123.vip.azurewebsites.net" のようになります。特定のドメイン名を、特定のスケール ユニットの 1 つのサイトにマップする必要があります。この理由から、同じスケール ユニット内の 2 つの Web アプリが、Traffic Manager プロファイルを共有することはできません。
-2.	各 Web アプリが別のスケール ユニットにあるものと想定し、バニティ ドメイン名をカスタム ホスト名として各 Web アプリに追加します。これには、すべての Web アプリが、同じサブスクリプションに属している必要があります。
+2.	各 Web アプリが別のスケール ユニットにあるものと想定し、バニティ ドメイン名をカスタム ホスト名として各 Web アプリに追加します。これには、すべての Web Apps が、同じサブスクリプションに属している必要があります。
 3.	Traffic Manager プロファイルに対して通常行うように、Web アプリ エンドポイントを Azure エンドポイントとして 1 つだけ追加します。
 4.	追加の各 Web アプリ エンドポイントを、外部エンドポイントとして Traffic Manager プロファイルに追加します。これを行うには、サービス管理エクスペリエンスではなく、Traffic Manager の Resource Manager エクスペリエンスを使用する必要があります。
 5.	バニティ ドメイン (上記の手順 2. で使用) から Traffic Manager プロファイルの DNS 名 (<…>.trafficmanager.net) への、DNS CNAME レコードを作成します。
@@ -144,4 +144,4 @@ Web アプリの場合、Traffic Manager Azure エンドポイントでは、同
 
 - Traffic Manager の[トラフィック ルーティング方法](traffic-manager-routing-methods.md)を確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

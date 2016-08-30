@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="08/17/2016"
 	ms.author="annemill"/>
 
 # SQL Database の開発: 概要
@@ -42,7 +42,7 @@ Azure SQL Database には、SQL Database に対するアクセスの制限、デ
 * 詳細: [SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)
 
 ## 回復性
-SQL Database への接続中に一時エラーが発生した場合は、コードで呼び出しを再試行する必要があります。再試行ロジックでは、複数のクライアントが同時に再試行することによって SQL Database に不必要な負荷がかかることがないようにするために、バックオフ ロジックを使用することをお勧めします。
+SQL Database への接続中に一時エラーが発生した場合は、コードで呼び出しを再試行する必要があります。再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。
 
 * コード サンプル: 再試行ロジックを示すコード サンプルについては、次の記事で好みの言語用のサンプルを参照してください: [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 * 詳細: [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
@@ -67,4 +67,4 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 
 [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0817_2016-->

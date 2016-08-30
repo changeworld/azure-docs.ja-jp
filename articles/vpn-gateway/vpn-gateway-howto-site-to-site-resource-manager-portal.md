@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Resource Manager と Azure ポータルを使用してサイト間 VPN 接続を持つ仮想ネットワークを作成する | Microsoft Azure"
-   description="この記事では、リソース マネージャ モデルを使用して VNet を作成し、S2S VPN ゲートウェイ接続を使用してローカルのオンプレミス ネットワークにこれを接続する方法を説明します。"
+   description="Resource Manager モデルを使用して VNet を作成し、S2S VPN ゲートウェイ接続を使用してローカルのオンプレミス ネットワークにこれを接続する方法について説明します。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -14,7 +14,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/13/2016"
+   ms.date="08/22/2016"
    ms.author="cherylmc"/>
 
 # Azure ポータルと Azure Resource Manager を使用してサイト間 VPN 接続を持つ VNet を作成する
@@ -25,23 +25,19 @@
 - [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
 
 
-この記事では、Azure Resource Manager デプロイ モデルと Azure ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。以下の手順では、VNet を作成し、ゲートウェイ サブネット、ゲートウェイ、ローカル サイト、および接続を追加します。さらに、VPN デバイスの構成も必要になります。
+この記事では、Azure Resource Manager デプロイメント モデルと Azure ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。
+
+![ダイアグラム](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
 
 
 
-**Azure のデプロイ モデルについて**
+### サイト間接続のデプロイ モデルとデプロイ ツール
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## 接続図
-
-![サイト間](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site2site.png)
-
-**サイト間接続のデプロイ モデルとデプロイ ツール**
-
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。別の種類の接続構成をお探しの場合は、「[Azure VPN Gateway 接続トポロジ](vpn-gateway-topology.md)」の記事を参照してください。
+VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。
 
 ## 開始する前に
 
@@ -60,7 +56,7 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 
 - VNet の名前: TestVNet1
 - アドレス空間: 10.11.0.0/16 および 10.12.0.0/16
-- サブネット: 
+- サブネット:
 	- FrontEnd: 10.11.0.0/24
 	- BackEnd: 10.12.0.0/24
 	- GatewaySubnet: 10.12.255.0/27
@@ -79,13 +75,13 @@ VNet どうしは接続しても、オンプレミスへの接続は作成しな
 
 ## 1\.仮想ネットワークの作成 
 
-既に仮想ネットワークを作成済みの場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。特に、他のネットワークと重複している可能性のあるサブネットに注意してください。サブネットの重複があると適切に接続できません。VNet が正しい設定で構成されていることを確認したうえで、「[DNS サーバーの指定](#dns)」セクションの手順に進んでください。
+既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。特に、他のネットワークと重複している可能性のあるサブネットに注意してください。サブネットの重複があると、接続が適切に動作しません。VNet が正しい設定で構成されていたら、「[DNS サーバーの指定](#dns)」セクションの手順に進んでください。
 
 ### 仮想ネットワークを作成するには
 
 [AZURE.INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## 2\.アドレス空間とサブネットの追加
+## 手順 2.アドレス空間とサブネットの追加
 
 VNet が作成されたら、アドレス空間とサブネットをさらに追加できます。
 
@@ -103,7 +99,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。作成するゲートウェイ サブネットには、*GatewaySubnet* という名前を付ける必要があります。そうしないと、正しく動作しません。
 
-一部の構成のゲートウェイ サブネット プレフィックスには、プールに必要な IP アドレスの数に合わせて /28 以上のサブネットが必要です。つまり、ゲートウェイ サブネット プレフィックスは、/28、/27、/26 などである必要があります。今後構成が追加される可能性に対応するため、ここでは大き目のサブネットを作成できます。
+一部の構成のゲートウェイ サブネット プレフィックスには、プールに必要な IP アドレスの数に合わせて /28 以上のサブネットが必要です。つまり、ゲートウェイ サブネット プレフィックスは、/28、/27、/26 などである必要があります。今後構成が追加される可能性に対応するために、ここでは大き目のサブネットを作成できます。
 
 練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の[値](#values)を参照してください。
 
@@ -137,7 +133,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 ## 8\.サイト間 VPN 接続の作成
 
-次に、仮想ネットワーク ゲートウェイと VPN デバイス間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。
+仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。
 
 このセクションを開始する前に、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイの作成が完了していることを確認してください。練習としてこの構成を作成する場合は、接続の作成時に、上記の[値](#values)を参照してください。
 
@@ -156,6 +152,6 @@ VPN 接続の確認はポータルで行えるほか、PowerShell を使って�
 
 - 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、仮想マシンの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines)を参照してください。
 
-- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関するページと [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関するページを参照してください。
+- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

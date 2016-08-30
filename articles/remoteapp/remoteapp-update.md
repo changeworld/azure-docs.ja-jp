@@ -13,10 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="compute"
-   ms.date="06/05/2016"
+   ms.date="08/15/2016"
    ms.author="elizapo"/>
 
 # Azure RemoteApp コレクションの更新
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 将来、必ず Azure RemoteApp コレクション内のアプリやイメージの更新が必要になる時期が来ます。クラウド コレクションまたはハイブリッド コレクションで、Azure RemoteApp サブスクリプションに含まれるイメージの 1 つを使用している場合は、すべての更新が Azure RemoteApp 自体によって処理されるので、安心できます。
 
@@ -34,4 +37,4 @@
 
 1. チェック マークをクリックして、更新を開始します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

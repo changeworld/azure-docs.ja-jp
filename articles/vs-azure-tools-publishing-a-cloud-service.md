@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # Azure Tools を使用したクラウド サービスの発行
@@ -173,4 +173,4 @@ Web Deploy を使用して、Web ロールを更新するための要件を次�
 
 Visual Studio から Azure への発行の詳細については、「[Azure アプリケーションの発行ウィザード](vs-azure-tools-publish-azure-application-wizard.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

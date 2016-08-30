@@ -25,4 +25,6 @@
 [3]: ./media/event-hubs-create-event-hub/create-event-hub3.png
 [4]: ./media/event-hubs-create-event-hub/create-conn-str1.png
 
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
 
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,271 +1,278 @@
 <properties
-pageTitle="PowerApps Enterprise またはロジック アプリに Dynamic CRM Online コネクタを追加する | Microsoft Azure"
-description="CRM Online コネクタと REST API パラメーターの概要"
-services=""    
-documentationCenter=""     
-authors="msftman"    
-manager="erikre"    
-editor="" tags="connectors" />
+	pageTitle="Dynamics CRM Online コネクタを Logic Apps に追加する | Microsoft Azure"
+	description="Azure App Service を使用してロジック アプリを作成します。Dynamics CRM Online 接続プロバイダーは、Dynamics CRM Online でエンティティを操作するための API を提供します。"
+	services="logic-apps"    
+	documentationCenter=""     
+	authors="MandiOhlinger"    
+	manager="erikre"    
+	editor="" 
+	tags="connectors" />
 
 <tags
-ms.service="multiple"
+ms.service="logic-apps"
 ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/18/2016"
-ms.author="deonhe"/>
+ms.date="08/15/2016"
+ms.author="mandia"/>
 
-# CRM コネクタの使用
-Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online コネクタは、次のツールから使用できます。
+# Dynamics CRM Online コネクタの概要
+Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online では、次の操作を実行できます。
 
-- Logic Apps
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-crmonline.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-crmonline.md)
-
-CRM Online では、次の操作を実行できます。
-
-- CRM Online から取得したデータに基づいてビジネス フローを構築できます。 
+- CRM Online から取得したデータに基づいてビジネス フローを構築できます。
 - レコードの削除、エンティティの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、CRM で項目を更新するときに、Office 365 を使用して電子メールを送信できます。
 
+このトピックでは、ロジック アプリ内で Dynamics CRM Online コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
+>[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
-ロジック アプリに操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリを作成します。](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
-## トリガーとアクション
-CRM コネクタには、次のアクションがあります。トリガーはありません。
+## Dynamics CRM Online に接続する
 
-| トリガー | アクション|
-| --- | --- |
-|なし| <ul><li>新しいレコードを作成する</li><li>レコードを取得する</li><li>レコードを削除する</li><li>レコードを取得する</li><li>エンティティを取得する</li><li>項目を更新する</li></ul>
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Dynamics に接続するには、まず Dynamics CRM Online への "*接続*" が必要になります。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Dynamics の場合は、Dynamics CRM Online アカウントの資格情報を入力して接続を作成します。
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## CRM Online への接続を作成する
+### 接続の作成
 
-このコネクタをロジック アプリに追加する場合、Dynamics CRM Online にサインインする必要があります。次の手順に従って、CRM Online にサインインし、ロジック アプリの**接続**の構成を完了します。
+>[AZURE.INCLUDE [Dynamics CRM Online 接続プロバイダーへの接続を作成する手順](../../includes/connectors-create-api-crmonline.md)]
 
-1. ロジック アプリで、**[アクションの追加]**を選択します。 ![CRM Online の構成][13]
-4. 検索ボックスに CRM を入力し、名前に CRM を含むすべてのエントリが戻されるまで検索を待機します。
-5. **[Dynamics CRM Online - 新しいレコードの作成]** を選択します。
-6. **[Dynamics CRM Online へのサインイン]**を選択します。![CRM Online の構成][14]
-7. CRM Online の資格情報を入力し、アプリケーションを承認するためにサインインします。 ![CRM Online の構成][15]  
-8. サインインした後、その他のトリガーと必要なアクションを追加することによって完了するロジック アプリに戻ります。
-9. メニュー バー上の **[保存]** を選択して、作業内容を保存します。
+## トリガーを使用する
 
-接続を作成したら、テーブルやデータセットなど、CRM Online のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
->[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
+1. ロジック アプリで「dynamics」と入力して、トリガーの一覧を取得します。
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+	![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
 
-### 新しいレコードを作成する 
-エンティティに新しいレコードを作成します。```POST: /datasets/{dataset}/tables/{table}/items```
+2. **[Dynamics CRM Online - When a record is created (Dynamics CRM Online - レコードが作成されたとき)]** を選択します。接続が既に存在する場合は、ドロップダウン リストから組織とエンティティを選択します。
 
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-|テーブル|string|○|path|なし|エンティティの名前|
-|item| |○|body|なし|作成するレコード|
+	![](./media/connectors-create-api-crmonline/select-organization.png)
 
-#### Response
-|名前|説明|
+	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
+
+	> [AZURE.NOTE] この例では、レコードが作成されたときにロジック アプリが実行されます。このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。たとえば、Office 365 の "*電子メールを送信する*" アクションを追加します。これにより、新しいレコードが追加されると電子メールが送信されます。
+
+3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。
+
+	![](./media/connectors-create-api-crmonline/edit-properties.png)
+
+4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+
+
+## アクションを使用する
+
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
+
+	![](./media/connectors-create-api-crmonline/add-action.png)
+
+2. **[アクションの追加]** を選択します。
+
+3. テキスト ボックスに「dynamics」と入力して、使用可能なすべてのアクションの一覧を取得します。
+
+	![](./media/connectors-create-api-crmonline/dynamics-actions.png)
+
+4. この例では、**[Dynamics CRM Online - Update a record (Dynamics CRM Online - レコードを更新する)]** を選択します。接続が既に存在する場合は、**[組織名]**、**[エンティティ名]**、およびその他のプロパティを指定します。
+
+	![](./media/connectors-create-api-crmonline/sample-action.png)
+
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
+
+	> [AZURE.NOTE] この例では、CRM Online の既存のレコードを更新します。別のトリガーからの出力を使用して、レコードを更新できます。たとえば、SharePoint の "*既存の項目が変更されたとき*" トリガーを追加します。次に、CRM Online の "*レコードを更新する*" アクションを追加します。このアクションは、SharePoint フィールドを使用して CRM Online 内の既存のレコードを更新します。
+
+5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+
+
+## 技術的な詳細
+
+## トリガー
+
+|トリガー | Description|
+|--- | ---|
+|[レコードが作成されたとき](connectors-create-api-crmonline.md#when-a-record-is-created)|CRM のオブジェクトが作成されたときにフローをトリガーします。|
+|[レコードが更新されたとき](connectors-create-api-crmonline.md#when-a-record-is-updated)|CRM のオブジェクトが変更されたときにフローをトリガーします。|
+|[レコードが削除されたとき](connectors-create-api-crmonline.md#when-a-record-is-deleted)|CRM のオブジェクトが削除されたときにフローをトリガーします。|
+
+
+## アクション
+
+|アクション|Description|
+|--- | ---|
+|[レコードを一覧表示する](connectors-create-api-crmonline.md#list-records)|この操作では、エンティティのレコードを取得します。|
+|[新しいレコードを作成する](connectors-create-api-crmonline.md#create-a-new-record)|この操作では、エンティティの新しいレコードを作成します。|
+|[レコードを取得する](connectors-create-api-crmonline.md#get-record)|この操作では、エンティティの指定されたレコードを取得します。|
+|[レコードを削除する](connectors-create-api-crmonline.md#delete-a-record)|この操作では、エンティティのコレクションからレコードを削除します。|
+|[レコードを更新する](connectors-create-api-crmonline.md#update-a-record)|この操作では、エンティティの既存のレコードを更新します。|
+
+### トリガーとアクションの詳細
+
+このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
+
+#### レコードが作成されたとき
+CRM のオブジェクトが作成されたときにフローをトリガーします。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ItemsList
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+#### レコードが更新されたとき
+CRM のオブジェクトが変更されたときにフローをトリガーします。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ItemsList
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+#### レコードが削除されたとき
+CRM のオブジェクトが削除されたときにフローをトリガーします。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ItemsList
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+#### レコードを一覧表示する
+この操作では、エンティティのレコードを取得します。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ItemsList
+
+| プロパティ名 | データ型 |
+|---|---|
+|値|array|
+
+
+#### 新しいレコードを作成する
+この操作では、エンティティの新しいレコードを作成します。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+なし。
+
+
+#### レコードを取得する
+この操作では、エンティティの指定されたレコードを取得します。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|id*|項目識別子|レコードの識別子を指定します。|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+なし。
+
+
+#### レコードを削除する
+この操作では、エンティティのコレクションからレコードを削除します。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|id*|項目識別子|レコードの識別子を指定します。|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+
+#### レコードを更新する
+この操作では、エンティティの既存のレコードを更新します。
+
+|プロパティ名| 表示名|Description|
+| ---|---|---|
+|dataset*|組織名|Contoso などの CRM 組織の名前|
+|table*|エンティティ名|エンティティの名前|
+|id*|レコード識別子|レコードの識別子を指定します。|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+なし。
+
+
+## HTTP 応答
+
+アクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+
+|Name|説明|
 |---|---|
 |200|OK|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
 |default|操作に失敗しました。|
-
-
-### レコードを取得する 
- エンティティのレコードを取得します。```GET: /datasets/{dataset}/tables/{table}/items```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-|テーブル|string|○|path|なし|エンティティの名前|
-|$skip|integer|×|query|なし|スキップするエントリの数。既定値は 0 です。|
-|$top|integer|×|query|なし|取得するエントリの最大数。既定値は 100 です。|
-|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ。|
-|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ。|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-
-### データ セットを返す 
- データ セットを返します。```GET: /datasets```
-
-この呼び出しには、パラメーターはありません。
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### テーブル項目を取得する 
-CRM エンティティに存在する特定のレコードを取得するために使用されます。```GET: /datasets/{dataset}/tables/{table}/items/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-|テーブル|string|○|path|なし|エンティティの名前|
-|id|string|○|path|なし|レコードの識別子|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### 一覧から項目を削除する 
-一覧から項目を削除します。```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-|テーブル|string|○|path|なし|エンティティの名前|
-|id|string|○|path|なし|レコードの識別子|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-
-### 既存のテーブル項目を修正する 
-CRM エンティティの既存のレコードの一部を更新するために使用されます。```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-|テーブル|string|○|path|なし|エンティティの名前|
-|id|string|○|path|なし|レコードの識別子|
-|item| |○|body|なし|更新するレコード|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-### エンティティを取得する 
-CRM インスタンスに存在するエンティティの一覧を取得するために使用されます。```GET: /datasets/{dataset}/tables```
-
-| 名前| データ型|必須|場所|既定値|説明|
-| ---|---|---|---|---|---|
-|dataset|string|○|path|なし|CRM 組織 contoso.crm の一意の名前|
-
-#### Response
-|名前|説明|
-|---|---|
-|200|OK|
-|default|操作に失敗しました。|
-
-
-## オブジェクト定義
-
-#### DataSetsMetadata
-
-|プロパティ名 | データ型 | 必須|
-|---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
-
-#### TabularDataSetsMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
-
-#### BlobDataSetsMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-
-
-#### TableMetadata
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|name|string|×|
-|title|string|×|
-|x-ms-permission|string|×|
-|schema|未定義|×|
-
-#### DataSetsList
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|値|array|×|
-
-#### DataSet
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
-
-
-#### テーブル
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
-
-#### 項目
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|ItemInternalId|string|×|
-
-#### ItemsList
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|値|array|×|
-
-
-#### TablesList
-
-|プロパティ名 | データ型 |必須|
-|---|---|---|
-|値|array|×|
 
 
 ## 次のステップ
 
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-[API リスト](apis-list.md)に戻ります。
-
-
-[9]: ./media/connectors-create-api-crmonline/aad-tenant-applications-add-appinfo.png
-[10]: ./media/connectors-create-api-crmonline/aad-tenant-applications-add-app-properties.png
-[12]: ./media/connectors-create-api-crmonline/contoso-aad-app-configure.png
-[13]: ./media/connectors-create-api-crmonline/crmconfig1.png
-[14]: ./media/connectors-create-api-crmonline/crmconfig2.png
-[15]: ./media/connectors-create-api-crmonline/crmconfig3.png
-
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0817_2016-->

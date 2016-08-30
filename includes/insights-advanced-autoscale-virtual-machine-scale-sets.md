@@ -1,50 +1,48 @@
-# Advanced Autoscale configuration using Resource Manager templates for VM Scale Sets
+# VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成
 
-You can scale out and in Virtual Machine Scale Sets based on performance metric thresholds, by a recurring schedule, or by a particular date. You can also configure email and webhook notifications for scale actions. This walkthrough shows an example of configuring all the above using a Resource Manager template on a VM Scale Set.
+仮想マシン スケール セットを使用すると、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールアウトすることができます。また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。このチュートリアルでは、上記のすべてを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
 
->[AZURE.NOTE] While this walkthrough explains the steps for VM Scale Sets, you can apply the same for autoscaling Cloud Services and Web Apps.
-For a simple scale in/out setting on a VM Scale Set based on a simple performance metric such as CPU, refer to the [Linux](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) and [Windows](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) documents
-
+>[AZURE.NOTE] このチュートリアルでは VM スケール セットの手順について説明しますが、Cloud Services や Web Apps の自動スケールを設定する場合にも同じ手順を使用できます。CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) や [Windows](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) のドキュメントを参照してください。
 
 
-## Walkthrough
-In this walkthrough, we use [Azure Resource Explorer](https://resources.azure.com/) to configure and update the autoscale setting for a scale set. Azure Resource Explorer is an easy way to manage Azure resources via Resource Manager templates. If you are new to Azure Resource Explorer tool, read [this introduction](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/).
 
-1. Deploy a new scale set with a basic autoscale setting. This article uses the one from the Azure QuickStart Gallery, which has a Windows scale set with a basic autoscale template. Linux scale sets work the same way.
+## チュートリアル
+このチュートリアルでは、スケール セットの自動スケール設定の構成と更新に [Azure リソース エクスプローラー](https://resources.azure.com/)を使用します。Azure リソース エクスプローラーを使用すると、Resource Manager テンプレートを使用した Azure リソースの管理を容易に行うことができます。Azure リソース エクスプローラー ツールを初めて使用する場合は、[こちらの概要](https://azure.microsoft.com/blog/azure-resource-explorer-a-new-tool-to-discover-the-azure-api/)をご覧ください。
 
-2. After the scale set is created, navigate to the scale set resource from Azure Resource Explorer. You see the following under Microsoft.Insights node.
+1. 基本的な自動スケール設定を指定して新しいスケール セットをデプロイします。この記事では、Azure クイック スタート ギャラリーのスケール セットを使用します。ギャラリーには、基本的な自動スケール テンプレートが付随する Windows スケール セットが用意されています。Linux スケール セットも同じように動作します。
 
-	![Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+2. スケール セットを作成したら、Azure リソース エクスプローラーからスケール セット リソースに移動します。Microsoft.Insights ノードの下に次の要素が表示されます。
 
-	The template execution has created a default autoscale setting with the name **'autoscalewad'**. On the right-hand side, you can view the full definition of this autoscale setting. In this case, the default autoscale setting comes with a CPU% based scale-out and scale-in rule.
+	![Azure 用エクスプローラー](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
 
-3. You can now add more profiles and rules based on the schedule or specific requirements. We create an autoscale setting with three profiles. To understand profiles and rules in autoscale, review [Autoscale Best Practices](../articles/azure-portal/insights-autoscale-best-practices.md). 
+	テンプレートを実行すると、**autoscalewad** という名前の既定の自動スケール設定が作成されます。右側に、この自動スケール設定の定義がすべて表示されます。この例では、既定の自動スケール設定に、CPU 使用率に基づくスケールアウトとスケールインのルールが付属しています。
 
-    | Profiles & Rules | Description |
+3. また、スケジュールや特定の要件に基づいてプロファイルとルールを追加することもできます。ここでは、3 つのプロファイルを使用して自動スケール設定を作成します。自動スケールのプロファイルとルールの詳細については、「[Azure Insights の自動スケールのベスト プラクティス](../articles/azure-portal/insights-autoscale-best-practices.md)」を参照してください。
+
+    | プロファイルとルール | Description |
 	|---------|-------------------------------------|
-	| **Profile** | **Performance/metric based**    |
-	| Rule    | Service Bus Queue Message Count > x |
-	| Rule    | Service Bus Queue Message Count < y |
-	| Rule    | CPU%,< n                            |
-	| Rule    | CPU% < p                            |
-	| **Profile** | **Weekday morning hours (no rules)**    |
-	| **Profile** | **Product Launch day (no rules)**       |
+	| **プロファイル** | **パフォーマンスまたはメトリック ベース** |
+	| ルール | Service Bus キューのメッセージ数が x 以上 |
+	| ルール | Service Bus キューのメッセージ数が y 以下 |
+	| ルール | CPU 使用率が n 以下 |
+	| ルール | CPU 使用率が p 以下 |
+	| **プロファイル** | **平日の午前中 (ルールなし)** |
+	| **プロファイル** | **製品の発売日 (ルールなし)** |
 
-4. Here is a hypothetical scaling scenario that we use for this walkthrough.
-	- _**Load based** - I'd like to scale out or in based on the load on my application hosted on my scale set._
-	- _**Message Queue size** - I use a Service Bus Queue for the incoming messages to my application. I use the queue's message count and CPU% and configure a default profile to trigger a scale action if either of message count or CPU hits the threshold._
-	- _**Time of week and day** - I want a weekly recurring 'time of the day' based profile called 'Weekday Morning Hours'. Based on historical data, I know it is better to have certain number of VM instances to handle my application's load during this time._
-	- _**Special Dates** - I added a 'Product Launch Day' profile. I plan ahead for specific dates so my application is ready to handle the load due marketing announcements and when we put a new product in the application._
-	- _The last two profiles can also have other performance metric based rules within them. In this case, I decided not to have one and instead to rely on the default performance metric based rules. Rules are optional for the recurring and date-based profiles._
+4. 以下は、このチュートリアルで使用する架空のスケーリング シナリオです。
+	- _**負荷ベース** - スケール セットにホストされているアプリケーションの負荷に基づいてスケールアウトまたはスケールインを行います。_
+	- _**メッセージ キュー サイズ** - アプリケーションへの受信メッセージ用の Service Bus キューを使用します。キューのメッセージ数と CPU 使用率を使用して、メッセージ数または CPU 使用率のいずれかがしきい値に達したときにスケール アクションをトリガーするように既定のプロファイルを構成します。_
+	- _**週と日の時間帯** - "平日の午前中" という名前の、毎週特定の時間帯に実行されるプロファイルを使用します。履歴データから、この時間帯に一定数の VM インスタンスでアプリケーションの負荷を処理すると効率が良くなることがわかっています。_
+	- _**特別な日** - "製品の発売日" プロファイルを追加しました。前もって特定の日の計画立てておくことで、市場への発表やアプリケーションへの新製品の設定による負荷にアプリケーションを備えさせることができます。_
+	- _最後の 2 つのプロファイルには、その他のパフォーマンス メトリックに基づくルールも含まれる可能性があります。そのような場合は、該当するルールではなく、既定のパフォーマンス メトリックに基づくルールを使用することに決めました。定期的なプロファイルと日付ベースのプロファイルでは、ルールの使用は任意です。_
 
-	Autoscale engine's prioritization of the profiles and rules is also captured in the [autoscaling best practices](../articles/azure-portal/insights-autoscale-best-practices.md) article.
-	For a list of common metrics for autoscale, refer [Common metrics for Autoscale](../articles/azure-portal/insights-autoscale-common-metrics.md)
+	自動スケール エンジンにおけるプロファイルとルールの優先順位付けは、[自動スケールのベスト プラクティス](../articles/azure-portal/insights-autoscale-best-practices.md)に関する記事にも記載されています。自動スケールの一般的なメトリックの一覧については、「[Azure Insights の自動スケールの一般的なメトリック](../articles/azure-portal/insights-autoscale-common-metrics.md)」をご覧ください。
 
-5. Make sure you are on the **Read/Write** mode in Resource Explorer
+5. リソース エクスプローラーが**読み取り/書き込み**モードになっていることを確認します。
 
 	![Autoscalewad, default autoscale setting](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
 
-6. Click Edit. **Replace** the 'profiles' element in autoscale setting with the following:
+6. [編集] をクリックします。自動スケール設定の "profiles" 要素を次の内容に**置き換え**ます。
 
 	![profiles](./media/insights-advanced-autoscale-vmss/profiles.png)
 
@@ -178,19 +176,19 @@ In this walkthrough, we use [Azure Resource Explorer](https://resources.azure.co
 	        }
 	      }
 	```
-	For supported fields and their values, see [Autoscale REST API documentation](https://msdn.microsoft.com/en-us/library/azure/dn931928.aspx).
+	サポートされているフィールドとその値については、[自動スケールの REST API に関するドキュメント](https://msdn.microsoft.com/ja-JP/library/azure/dn931928.aspx)をご覧ください。
 
-	Now your autoscale setting contains the three profiles explained previously.
+	これで、自動スケール設定に、前述の 3 つのプロファイルを含めることができました。
 
-7. 	Finally let's look at the Autoscale **notification** section. Autoscale notifications allow you to do three things when a scale-out or in action is successfully triggered.
+7. 	最後に、自動スケールの**通知**セクションを見てみましょう。自動スケールの通知を使用すると、スケールアウトまたはスケールインのアクションが正常にトリガーされたときに、3 つのことを実行できます。
 
-	1. Notify the admin and co-admins of your subscription
+	1. サブスクリプションの管理者と共同管理者に通知する。
 
-	2. Email a set of users
+	2. ユーザーのグループに電子メールを送信する。
 
-	3. Trigger a webhook call. When fired, this webhook sends metadata about the autoscaling condition and the scale set resource. To learn more about the payload of autoscale webhook, see [Configure Webhook & Email Notifications for Autoscale](../articles/azure-portal/insights-autoscale-to-webhook-email.md).
+	3. webhook 呼び出しをトリガーする。この webhook を呼び出すと、自動スケールの条件とスケール セット リソースに関するメタデータが送信されます。自動スケール webhook のペイロードの詳細については、[自動スケールに関する webhook と電子メールの通知を構成する方法](../articles/azure-portal/insights-autoscale-to-webhook-email.md)に関する記事をご覧ください。
 
-	Add the following to the Autoscale setting replacing your **notification** element whose value is null
+	次のコードを自動スケール設定に追加します。具体的には、値が null である **notification** 要素を置き換えます。
 
 	```
 	"notifications": [
@@ -218,20 +216,22 @@ In this walkthrough, we use [Azure Resource Explorer](https://resources.azure.co
 
 	```
 
-	Hit **Put** button in Resource Explorer to update the autoscale setting.
+	リソース エクスプローラーの **[配置]** ボタンをクリックすると、自動スケール設定が更新されます。
 
-You have updated an autoscale setting on a VM Scale set to include multiple scale profiles and scale notifications.
+これで、VM スケール セットの自動スケール設定が更新され、複数のスケール プロファイルとスケール通知が追加されました。
 
-## Next Steps
+## 次のステップ
 
-Use these links to learn more about autoscaling.
+次のリンク先を使用して、自動スケールの詳細をご確認ください。
 
-[Common Metrics for Autoscale](../articles/azure-portal/insights-autoscale-common-metrics.md)
+[自動スケールの一般的なメトリック](../articles/azure-portal/insights-autoscale-common-metrics.md)
 
-[Best Practices for Azure Autoscale](../articles/azure-portal/insights-autoscale-best-practices.md)
+[Azure の自動スケールのベスト プラクティス](../articles/azure-portal/insights-autoscale-best-practices.md)
 
-[Manage Autoscale using PowerShell](../articles/azure-portal/insights-powershell-samples.md#create-and-manage-autoscale-settings)
+[PowerShell を使用した自動スケールの管理](../articles/azure-portal/insights-powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Manage Autoscale using CLI](../articles/azure-portal/insights-cli-samples.md#autoscale)
+[CLI を使用した自動スケールの管理](../articles/azure-portal/insights-cli-samples.md#autoscale)
 
-[Configure Webhook & Email Notifications for Autoscale](../articles/azure-portal/insights-autoscale-to-webhook-email.md)
+[自動スケールに関する webhook と電子メールの通知の構成](../articles/azure-portal/insights-autoscale-to-webhook-email.md)
+
+<!---HONumber=AcomDC_0817_2016-->

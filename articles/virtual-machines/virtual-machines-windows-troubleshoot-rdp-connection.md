@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure VM へのリモート デスクトップ接続のトラブルシューティング |Microsoft Azure"
-	description="Windows VM に対するリモート デスクトップ接続のエラーをトラブルシューティングします。簡単な軽減手順、エラー メッセージごとのヘルプ、および詳細なネットワーク トラブルシューティングを説明します。"
-	keywords="リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング, Azure VM に接続できない, Azure VM に RDP 接続できない"
+	description="Azure VM にアクセスできない場合の、簡単な RDP トラブルシューティング手順、エラー メッセージごとのヘルプ、および詳細なネットワーク トラブルシューティング手順を説明します。"
+	keywords="リモート デスクトップ エラー,リモート デスクトップ接続エラー,VM に接続できない,リモート デスクトップのトラブルシューティング"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -20,7 +20,7 @@
 
 # Windows を実行する Azure Virtual Machines への Remote Desktop 接続に関するトラブルシューティング
 
-Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。発生している問題がまだ掲載されていない場合、または、RDP 経由で VM に接続できない場合は、[RDP トラブルシューティングの考え方と手順](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
+Windows ベースの Azure 仮想マシン (VM) に対するリモート デスクトップ プロトコル (RDP) 接続は、さまざまな理由で失敗する可能性があり、VM にアクセスできない場合があります。VM 上のリモート デスクトップ サービス、ネットワーク接続、またはホスト コンピューター上のリモート デスクトップ クライアントに問題がある可能性があります。この記事では、RDP の接続問題を解決する、最も一般的な方法について説明します。発生している問題がまだ掲載されていない場合、または、RDP 経由で VM に接続できない場合は、[RDP トラブルシューティングの考え方と手順](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関する記事をご覧ください。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
@@ -45,7 +45,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 
 トラブルシューティングの各手順を実行した後、VM に再接続してみてください。
 
-> [AZURE.TIP] ポータルの [接続] ボタンが淡色表示され、[Express Route](../expressroute/expressroute-introduction.md) や[サイト間 VPN 接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。[Azure におけるパブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
+> [AZURE.TIP] ポータルの [接続] ボタンが淡色表示され、[Express Route](../expressroute/expressroute-introduction.md) や[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 接続で Azure に接続されていない場合は、VM を作成してパブリック IP アドレスを割り当ててから RDP を使用する必要があります。[Azure におけるパブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)に関するページをご覧ください。
 
 1. Powershell を使用してリモート アクセスをリセットします。
 	- まだインストールしていない場合は、[最新の Azure PowerShell をインストールして構成します](../powershell-install-configure.md)。
@@ -191,7 +191,7 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 すべての Windows コンピューターには、リモート デスクトップ ユーザーのローカル グループがあり、このグループには、リモートでサインインできるアカウントとグループが含まれます。ローカルの Administrators グループのメンバーもアクセスできますが、これらのアカウントは、リモート デスクトップユーザーのローカル グループのメンバーとしてリストされません。ドメインに参加しているマシンの場合、ローカルの Administrators グループにはドメインのドメイン管理者も含まれます。
 
-接続するために使用しているアカウントに、リモート デスクトップ サインイン権限があることを確認してください。回避策として、ドメインまたはローカル管理者アカウントを使用して、リモート デスクトップで接続します。その後、Microsoft 管理コンソール スナップイン (**[システム ツール]、[ローカル ユーザーとグループ]、[グループ]、[リモート デスクトップ ユーザー]**) を使用して、目的のアカウントをリモート デスクトップ ユーザーのローカル グループに追加します。
+接続するために使用しているアカウントに、リモート デスクトップ サインイン権限があることを確認してください。回避策として、ドメインまたはローカル管理者アカウントを使用して、リモート デスクトップで接続します。目的のアカウントをリモート デスクトップ ユーザーのローカル グループに追加するには、Microsoft 管理コンソール スナップイン (**[システム ツール]、[ローカル ユーザーとグループ]、[グループ]、[リモート デスクトップ ユーザー] の順に選択します**) を使用します。
 
 ## 一般的なリモート デスクトップ エラーのトラブルシューティング
 
@@ -210,4 +210,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

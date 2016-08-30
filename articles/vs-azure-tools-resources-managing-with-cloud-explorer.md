@@ -12,16 +12,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # クラウド エクスプローラーを使用した Azure リソースの管理
 
-##概要
+##Overview
 
 クラウド エクスプローラーは、Visual Studio IDE 内で Azure リソースをより簡単かつ迅速に参照および管理できるように設計されています。たとえば、クラウド エクスプローラーを使用して、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)またはブラウザーで Web アプリを開いたり、デバッガーをアタッチしたりできます。また、BLOB コンテナーのプロパティを表示し、BLOB コンテナー エディターで開くことができます。
 
-クラウド エクスプローラーは、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)と同様に、Azure Resource Manager スタックを基盤としています。これは、リソース (Azure リソース グループなど) および Azure サービス (Logic Apps や API Apps など) を認識し、[ロールベースのアクセス制御](../role-based-access-control-configure/) (RBAC) をサポートします。追加または変更された Azure リソースを表示するには、クラウド エクスプローラーのツール バーの **[更新]** を選択します。
+クラウド エクスプローラーは、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)と同様に、Azure Resource Manager スタックを基盤としています。これは、リソース (Azure リソース グループなど) および Azure サービス (Logic Apps や API Apps など) を認識し、[ロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md) (RBAC) をサポートします。追加または変更された Azure リソースを表示するには、クラウド エクスプローラーのツール バーの **[更新]** を選択します。
 
 クラウド エクスプローラーは、Visual Studio Tools for Azure SDK 2.7 の一部としてインストールされます。
 
@@ -95,4 +95,4 @@ Azure アカウントのサブスクリプションで特定の名前のリソ�
 
 検索ボックスに文字を入力すると、その文字に一致するリソースのみがリソース ツリーに表示されます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

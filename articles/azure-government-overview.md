@@ -1,7 +1,8 @@
 <properties 
    pageTitle="Azure Government の概要 | Microsoft Azure" 
    description="この記事では、Azure Government のクラウド機能の概要と、連邦、州、地方の各統治機関や関連組織に対して適用されるコンプライアンスをサポートする安定した設計やセキュリティの概要について説明します。" 
-   services="Azure-Government" 
+   services="Azure-Government"
+   cloud="gov" 
    documentationCenter="" 
    authors="joharve2" 
    manager="chrisnie" 
@@ -117,4 +118,4 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

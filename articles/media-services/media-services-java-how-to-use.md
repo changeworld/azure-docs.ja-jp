@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Java で Azure Media Services を使用する方法" 
+	pageTitle="Java を使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure" 
 	description="Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="java" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="08/11/2016"   
+	ms.date="08/17/2016"   
 	ms.author="robmcm"/>
 
-#方法: Java で Media Services を使用する
+# Java を使用したオンデマンド コンテンツ配信の概要
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
@@ -37,9 +37,9 @@ Media Services アカウントを設定するには、Azure クラシック ポ�
 
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 
-このコードを使用する前に、メディア サービス アカウントを設定する必要があります。アカウントの設定方法については、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
+このコードを使用する前に、Media Services アカウントを設定する必要があります。アカウントの設定方法については、「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
 
-変数 `clientId` と `clientSecret` は、実際の値に置き換えてください。また、このコードは、ローカル保存されているファイルに依存しています。実際に使用するファイルを用意する必要があります。
+変数 "clientId" と "clientSecret" は、実際の値に置き換えてください。また、このコードは、ローカル保存されているファイルに依存しています。実際に使用するファイルを用意する必要があります。
 	
 	import java.io.*;
 	import java.security.NoSuchAlgorithmException;
@@ -276,4 +276,4 @@ Media Services に関する Javadoc ドキュメントについては、[Azure L
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

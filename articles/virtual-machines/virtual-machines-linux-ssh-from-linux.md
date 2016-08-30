@@ -23,9 +23,14 @@
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
 - [Linux/Mac](virtual-machines-linux-ssh-from-linux.md)
 
+
 このトピックでは、**ssh-keygen** と **openssl** を Linux や Mac で使用し、**ssh-rsa** 形式または **.pem** 形式のファイルを作成して使用し、Linux を基盤とする Azure VM と安全に通信する方法について紹介します。リソース マネージャーのデプロイメント モデルによる Linux ベースの Azure Virtual Machines の作成は新しいデプロイメントの場合に推奨され、*ssh-rsa* タイプの公開鍵ファイルや文字列が使われます (デプロイメント クライアントにもよります)。[Azure ポータル](https://portal.azure.com)では現在のところ、従来のデプロイメントでも Resource Manager デプロイメントでも、**ssh-rsa** 形式の文字列のみを受け取ります。
 
-> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]Windows コンピューターが Azure で Linux VM と安全に通信するためにこのような種類のファイルを作成する方法については、「[Windows で SSH 鍵を使用する](virtual-machines-linux-ssh-from-windows.md)」を参照してください。
+
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+
+
+> [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] Windows コンピューターが Azure で Linux VM と安全に通信するためにこのような種類のファイルを作成する方法については、「[Windows で SSH 鍵を使用する](virtual-machines-linux-ssh-from-windows.md)」を参照してください。
 
 ## 必要なファイル
 
@@ -33,8 +38,8 @@ Azure の基本的 ssh 設定には **ssh-rsa** の 2048 ビットの公開/秘�
 
 次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** 鍵は、デプロイ モデルに関係なく、[Azure ポータル](https://portal.azure.com)を利用したあらゆるデプロイメントで必須です。
-2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](../xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。 
+1. **ssh-rsa** キーは、デプロイメント モデルに関係なく、[Azure ポータル](https://portal.azure.com)を使用したどのデプロイでも必須です。
+2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](../xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。
 
 ## SSH で使用する鍵の作成
 
@@ -42,7 +47,7 @@ SSH キーが既にある場合は、Azure VM の作成時に公開キー ファ
 
 ファイルを作成する必要がある場合:
 
-1. **ssh-keygen** と **openssl** の実装が最新のものであることを確認してください。これはプラットフォームによって異なります。 
+1. **ssh-keygen** と **openssl** の実装が最新のものであることを確認してください。これはプラットフォームによって異なります。
 
 	- Mac の場合、[Apple の製品セキュリティ Web サイト](https://support.apple.com/HT201222)にアクセスし、必要に応じて適切な更新プログラムを選択してください。
 	- Ubuntu、Debian、Mint など、Debian 基盤の Linux 製品の場合:
@@ -293,4 +298,4 @@ VM の作成時に既定の SSH ポート 22 を使用しなかった場合、�
  
 これで VM に接続できたので、選択したディストリビューションを必ず更新してから使用を続けます。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

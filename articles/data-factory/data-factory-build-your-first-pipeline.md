@@ -24,24 +24,25 @@
 - [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST API の使用](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 このチュートリアルでは、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行してデータを処理するデータ パイプラインを備えた最初の Azure データ ファクトリを構築します。
 
-この記事では、チュートリアルの**概要**と、チュートリアルの**前提条件**を満たすための手順について説明します。あらかじめ必要な手順を完了したら、Azure ポータルの Data Factory エディター、Visual Studio、Azure PowerShell、ARM テンプレートのいずれかを使用してチュートリアルを実行します。
+この記事では、チュートリアルの**概要**と、チュートリアルの**前提条件**を満たすための手順について説明します。あらかじめ必要な手順を完了したら、Azure ポータルの Data Factory エディター、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレートのいずれかを使用してチュートリアルを実行します。
 
 この記事は、Azure Data Factory の概念の概要を説明するものではないことに注意してください。このサービスの概念の概要については、[Azure Data Factory の概要](data-factory-introduction.md)に関する記事をご覧ください。
 
 ## このチュートリアルの内容	
 **Azure Data Factory** では、データ駆動型ワークフロー (データ パイプラインとも呼ばれます) として、データ**移動**タスクやデータ**処理**タスクを構成できます。Azure HDInsight クラスターを使用して Web ログを変換および分析するデータ処理 (またはデータ変換) タスクを含む最初のデータ パイプラインを作成し、このパイプラインを毎月実行するようにスケジュールする方法について説明します。
 
-このチュートリアルでは、以下の手順を実施します。
+このチュートリアルでは、以下の手順を実行します。
 
 1.	**データ ファクトリ**を作成する。データ ファクトリには、データを移動および処理するデータ パイプラインを 1 つ以上含めることができます。
 2.	**リンクされたサービス**を作成する。データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。データを処理または変換する、Azure HDInsight などのコンピューティング サービス。
 3.	入力**データセット**と出力データセットを作成する。入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
 3.	**パイプライン**を作成する。パイプラインには、コピー元からコピー先にデータをコピーするコピー アクティビティや、Hive スクリプトを使って入力データを変換して出力データを生成する HDInsight Hive アクティビティなどのアクティビティを 1 つ以上含めることができます。このサンプルでは、Hive スクリプトを実行する HDInsight Hive アクティビティを使用します。このスクリプトでは、まず Azure Blob Storage に格納されている未加工の Web ログ データを参照する外部テーブルを作成し、その後、年月別に未加工データを分割します。
 
-最初のパイプライン (**MyFirstPipeline**) は、Hive アクティビティを使用して、Azure Blob Storage 内の **adfgetstarted** コンテナーの **inputdata** フォルダー (adfgetstarted/inputdata) にアップロードする Web ログを変換して分析します。
+最初のパイプライン (**MyFirstPipeline**) は、Hive アクティビティを使用して、Azure BLOB ストレージ内の **adfgetstarted** コンテナーの **inputdata** フォルダー (adfgetstarted/inputdata) にアップロードする Web ログを変換して分析します。
  
 ![Diagram view in Data Factory tutorial](./media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
@@ -66,12 +67,12 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 1.	**Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。無料試用版アカウントの取得方法については、「[無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
-2.	**Azure Storage** – このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
+2.	**Azure Storage** – このチュートリアルのデータは、Azure ストレージ アカウントを使用して格納します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
 ## チュートリアル用に Azure Storage にファイルをアップロードする
 チュートリアルを開始する前に、チュートリアルに必要なファイルで Azure Storage を準備する必要があります。
 
-このセクションでは、次のタスクを実行します。
+このセクションでは、以下の手順を実行します。
 
 2. **adfgetstarted** コンテナーの **script** フォルダーに Hive クエリ ファイル (HQL) をアップロードします。
 3. **adfgetstarted** コンテナーの **inputdata** フォルダーに入力ファイルをアップロードします。
@@ -227,4 +228,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

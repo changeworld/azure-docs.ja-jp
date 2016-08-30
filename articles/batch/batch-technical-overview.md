@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/15/2016"
+	ms.date="08/22/2016"
 	ms.author="marsma"/>
 
 # Azure Batch の基礎
@@ -71,8 +71,8 @@ Batch ソリューションを開発するとき、Microsoft Azure で次のア�
 | **Batch REST** | [MSDN][batch_rest] | 該当なし | [MSDN][batch_rest] |
 | **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
 | **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
-| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - |
-| **Batch Java** (プレビュー) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
+| **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - | 
+| **Batch Java** (プレビュー) | [github.io][api_java] | [Maven スナップショット リポジトリ][api_java_jar] | - |
 
 ### Batch リソース管理
 
@@ -126,7 +126,7 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 
 これで Batch サービスの概要を確認できました。次は、深く掘り下げ、コンピューティング リソースが大量に使われる並列ワークロードをサービスで処理する方法を学習してください。
 
-- 「[開発者向け Batch 機能の概要](batch-api-basics.md)」をお読みください。ワークロードを処理するための Batch の API 機能について詳しく説明しています。Batch の使用を準備している方はぜひご確認ください。
+- Batch を使用するための準備を担当する方は、「[開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 
 - 「[.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。この記事は、Batch サービスの使用方法を学習するときに最初に参考していただきたい記事の 1 つです。また、[Python 向け](batch-python-tutorial.md)のチュートリアルも用意されています。
 
@@ -161,4 +161,4 @@ Batch API を利用し、Batch サービスとやりとりする一般的なソ�
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

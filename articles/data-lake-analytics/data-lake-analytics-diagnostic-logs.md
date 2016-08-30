@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/10/2016"
+   ms.date="08/11/2016"
    ms.author="larryfr"/>
 
 # Azure Data Lake Analytics の診断ログへのアクセス
@@ -32,7 +32,7 @@
 - Data Lake Analytics のパブリック プレビューに対して、**Azure サブスクリプションを有効にします**。[手順](data-lake-analytics-get-started-portal.md#signup)を参照してください。
 - **Azure Data Lake Analytics アカウント**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の手順に従ってください。
 
-## Data Lake Analytics アカウントの診断ログを有効にする
+## ログの有効化
 
 1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
@@ -52,7 +52,7 @@
 
 診断設定を有効にしたら、**[診断ログ]** タブでログを確認できます。
 
-## Data Lake Analytics アカウントの診断ログを表示する
+## ログを表示する。
 
 Data Lake Analytics アカウントのログ データを確認する方法は 2 つあります。
 
@@ -108,7 +108,7 @@ Data Lake Analytics アカウントのログ データを確認する方法は 2
     
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
-## ログ データの構造について
+## ログの構造
 
 監査ログと要求ログは JSON 形式で作成されます。このセクションでは、要求ログと監査ログの JSON 構造を確認します。
 
@@ -225,13 +225,13 @@ JSON 形式の監査ログのエントリの例を次に示します。各 BLOB 
 
 > [AZURE.NOTE] __SubmitTime__、__StartTime__、__EndTime__、__Parallelism__ の 4 つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。たとえば、__SubmitTime__ であれば、__operationName__ が __JobSubmitted__ になった後に値が入ります。
 
-## ログ データ処理のサンプル
+## ログ データの処理
 
 Azure Data Lake Analytics では、ログ データの処理と分析方法に関するサンプルを提供しています。サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) をご覧ください。
 
 
-## 関連項目
+## 次のステップ
 
 - [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -55,10 +55,10 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
 5. 次の値を入力または選択します。
 
-    プロパティ|説明
+    プロパティ|Description
     ---|---
     データ ソース名|データ ソースに名前を付けます。
-    ホスト|「<HDInsight クラスター名>.azurehdinsight.net」を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。
+    Host|& lt;HDInsightClusterName >. >.azurehdinsight.net を入力します。たとえば、「myHDICluster.azurehdinsight.net」と入力します。
     ポート|<strong>443</strong> を使用します。(このポートは 563 から 443 に変更されました)。
     データベース|<strong>既定値</strong>を使用します。
     Hive サーバーの種類|<strong>Hive Server 2</strong> を選択します。
@@ -70,7 +70,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 
     **[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
 
-    パラメーター|説明
+    パラメーター|Description
     ---|---
     ネイティブ クエリの使用|これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。SQL Server または Azure SQL Database に接続している場合は、オフのままにします。
     ブロック単位でフェッチされた行|大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。
@@ -131,4 +131,4 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 [img-hdi-simbahiveodbc-excel-connectionproperties]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveODBC.Excel.ConnectionProperties1.png
 [img-hdi-simbahiveodbc.excel.dataconnection]: ./media/hdinsight-connect-excel-hive-ODBC-driver/HDI.SimbaHiveOdbc.Excel.DataConnection1.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

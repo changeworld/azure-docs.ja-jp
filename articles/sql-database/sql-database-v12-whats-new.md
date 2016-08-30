@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/19/2016"
+	ms.date="08/15/2016"
 	ms.author="genemi"/>
 
 
@@ -61,7 +61,7 @@ SQL Database でまだサポートされていない一部の機能について�
 
 > [AZURE.IMPORTANT] **2016 年 6 月**以降、Azure SQL Database V12 で*新しく*作成されるデータベースでは、その互換性レベルが 130 で始まります。これは Microsoft SQL Server 2016 GA と一致します。
 > 
-> もちろん、必要に応じて `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` を使用することもできます。
+> 必要に応じて `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` を使用することもできます。
 > 
 > この既定の設定の変更によって、2016 年 6 月より前に作成されたデータベースの互換性レベルが変更されることはありません。V11 から V12 へのアップグレードによってデータベースのレベルが変更されることもありません。
 
@@ -99,7 +99,7 @@ SQL Database V12 のポートの詳細については、[こちら](sql-database
 ## クラウド SaaS ベンダーのサポートの充実
 
 
-V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[エラスティック データベース プール](sql-database-elastic-pool.md)のパブリック プレビューをリリースしました。これは、クラウド SaaS ベンダー向けに設計されたソリューションです。エラスティック データベース プールには次のメリットがあります。
+V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[エラスティック データベース プール](sql-database-elastic-pool.md)のパブリック プレビューをリリースしました。エラスティック データベース プールは、クラウド SaaS ベンダー向けに設計されたソリューションです。エラスティック データベース プールには次のメリットがあります。
 
 
 - DTU をデータベース間で共有して、多数のデータベースのコストを削減できます。
@@ -125,7 +125,7 @@ V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[
 ## 復旧が必要なときのビジネス継続性の向上
 
 
-V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が大幅に向上しています。
+V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が向上しています。
 
 
 | ビジネス継続性に関係する機能 | 以前のバージョン | V12 |
@@ -183,4 +183,4 @@ V12 の論理サーバーでのみ、V12 データベースをホストできま
 
 [Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

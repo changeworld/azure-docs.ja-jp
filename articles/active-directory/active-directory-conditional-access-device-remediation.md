@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD デバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスする際のユーザーによる修復 | Microsoft Azure"
+	pageTitle="トラブルシューティング: 目的の場所にアクセスできない | Microsoft Azure"
 	description="このトピックは、目的のアプリケーションにアクセスするために、実行できる修復手順があるかどうかを判断するのに役立ちます。"
 	services="active-directory"
 	keywords="デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/15/2016"
+	ms.date="08/23/2016"
 	ms.author="markvi"/>
 
 
-# Azure AD デバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスする際のユーザーによる修復
+# トラブルシューティング: 目的の場所にアクセスできない
 
 Office 365 SharePoint Online などのアプリケーションにアクセスする際にアクセス拒否ページが表示された場合は、どうすればよいのでしょうか。
 
@@ -172,4 +172,4 @@ Android フォンまたはタブレットの手順については、後日この
 
 [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

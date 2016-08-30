@@ -141,8 +141,8 @@ DocumentDB を使用したデータのグローバル分散の詳細について
 - [DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)
 - [一貫性レベル](documentdb-consistency-levels.md)
 - [スループットと処理される複数のリージョンの関係](documentdb-manage.md#how-throughput-works-with-multiple-regions)
-- [Azure ポータルを使用したリージョンの追加](documentdb-manage-account.md#addregion)
+- [Azure ポータルを使用したリージョンの追加](documentdb-portal-global-replication.md)
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

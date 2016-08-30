@@ -73,45 +73,11 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 6.  インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。Visual Studio がインストールされていない場合、無料の Visual Studio Express もインストールされます。
 
-## Service Bus 名前空間の作成
+## 名前空間の作成
 
-次の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。サービス名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+次の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
-### Azure クラシック ポータルを使用してサービス名前空間を設定する
-
-1.  [Azure クラシック ポータル][]にサインインします。
-
-2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
-
-3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
-
-    ![][6]
-
-4.  **[新しい名前空間を追加する]** ページで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
-
-    ![][7]
-
-5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。名前空間の **[Type]** フィールドで **[Messaging]** を、**[Messaging Tier]** フィールドで **[Standard]** を必ず選択するようにしてください。
-
-    > [AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
-
-6.  OK チェック マークをクリックします。これで、システムによってサービス名前空間が 作成および有効化されます。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-7.  メイン ウィンドウで、使用するサービス名前空間の名前をクリックします。
-
-8. **[接続情報]** をクリックします。
-
-9.  **[接続情報へのアクセス]** ウィンドウで、SAS キーとキー名を含む接続文字列を見つけます。
-
-    ![][35]
-
-10.  これらの資格情報を書き留めておくか、クリップボードにコピーします。
-
-11. 同じポータル ページ内で、ページの上部にある **[構成]** タブをクリックします。
-
-12. **RootManageSharedAccessKey** ポリシーのプライマリ キーをクリップボードにコピーするか、メモ帳に貼り付けます。この値は、このチュートリアルの後半で使用します。
-
-	![][36]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## Web ロールを作成する
 
@@ -147,7 +113,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 6.  **ソリューション エクスプローラー**で **FrontendWebRole** プロジェクトの **[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-7.  **[参照]** タブをクリックし、`Microsoft Azure Service Bus` を検索します。**[インストール]** をクリックし、使用条件に同意します。
+7.  **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。**[インストール]** をクリックし、使用条件に同意します。
 
     ![][13]
 
@@ -271,7 +237,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 2.  クラスに **QueueConnector.cs** という名前を付けます。**[追加]** をクリックしてクラスを作成します。
 
-3.  接続情報をカプセル化して、Service Bus のキューへの接続を初期化するコードを追加します。QueueConnector.cs の内容全体を次のコードに置き換え、`your Service Bus namespace` の値 (名前空間の名前) と `yourKey` の値 (前に「Service Bus 名前空間の作成」セクションの手順 12. で [Azure クラシック ポータル][]から取得した**プライマリ キー**) を入力します。
+3.  接続情報をカプセル化して、Service Bus のキューへの接続を初期化するコードを追加します。QueueConnector.cs の内容全体を次のコードに置き換え、`your Service Bus namespace` の値 (名前空間の名前) と `yourKey` の値 (Azure ポータルから取得した**プライマリ キー**) を入力します。
 
 	```
 	using System;
@@ -393,7 +359,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 2.  Visual Studio の**ソリューション エクスプローラー**で、**MultiTierApp** プロジェクト内の **Roles** フォルダーを右クリックします。
 
-3.  **[追加]** をクリックし、**[新しいワーカー ロール プロジェクト]** をクリックします。**[新しいロール プロジェクトの追加]** ダイアログ ボックスが表示されます。
+3.  **[追加]** をクリックし、**[新しい worker ロール プロジェクト]** をクリックします。**[新しいロール プロジェクトの追加]** ダイアログ ボックスが表示されます。
 
 	![][26]
 
@@ -411,7 +377,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 	![][25]
 
-9.  キューからの注文を処理するときの注文を表す **OnlineOrder** クラスを作成します。作成済みのクラスを再利用することができます。**ソリューション エクスプローラー**で、**OrderProcessingRole** クラスを右クリックします (ロールではなく、クラスを右クリック)。**[追加]**、**[既存の項目]** の順にクリックします。
+9.  キューからの注文を処理するときの注文を表す **OnlineOrder** クラスを作成します。作成済みのクラスを再利用できます。**ソリューション エクスプローラー**で、**OrderProcessingRole** クラスを右クリックします (ロールではなく、クラスを右クリック)。**[追加]**、**[既存の項目]** の順にクリックします。
 
 10. **FrontendWebRole\\Models** のサブフォルダーに移動し、**OnlineOrder.cs** をダブルクリックしてこのプロジェクトに追加します。
 
@@ -448,13 +414,13 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 
 Service Bus の詳細については、次のリソースを参照してください。
 
-* [Azure の Service Bus][sbmsdn]  
-* [Service Bus サービス ページ][sbwacom]  
-* [Service Bus キューの使用方法][sbwacomqhowto]  
+* [Azure の Service Bus][sbmsdn]
+* [Service Bus サービス ページ][sbwacom]
+* [Service Bus キューの使用方法][sbwacomqhowto]
 
 多層のシナリオの詳細については、次のページを参照してください。
 
-* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション)][mutitierstorage]  
+* [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs (ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーション)][mutitierstorage]
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
@@ -472,9 +438,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 
   [EventHubClient]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
-  [Azure クラシック ポータル]: http://manage.windowsazure.com
-  [6]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
-  [7]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
   [9]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png
   [10]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-11.png
   [11]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-02.png
@@ -492,8 +455,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [25]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBWorkerRoleProperties.png
   [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
   [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
-  [35]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
-  [36]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/service-bus-policies.png
 
   [sbmsdn]: http://msdn.microsoft.com/library/azure/ee732537.aspx
   [sbwacom]: /documentation/services/service-bus/
@@ -501,4 +462,4 @@ Service Bus の詳細については、次のリソースを参照してくだ�
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

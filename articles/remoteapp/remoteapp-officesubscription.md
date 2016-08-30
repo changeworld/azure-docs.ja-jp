@@ -13,12 +13,15 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="06/13/2016" 
+    ms.date="08/15/2016" 
     ms.author="elizapo" />
 
 
 
 # Azure RemoteApp で Office 365 サブスクリプションを使用する方法
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 既存の Office 365 サブスクリプションを Azure RemoteApp で使用して、Office アプリをクラウドから共有できます。 ここでは Office 365 + Azure RemoteApp のオプションについて説明し、サブスクリプションを活用するのに役立つ Office 365 についての記事へのリンクを示します。
 
@@ -97,7 +100,7 @@ Office 365 ProPlus を含むコレクションのカスタム イメージを作
 
 コレクション内のイメージを更新する多くの理由があります。次に、いくつか示します。
 
-- Windows の最新の更新プログラムを取得する 
+- Windows の最新の更新プログラムを取得する
 - Office 365 ProPlus アプリケーションの最新の更新プログラムを取得する
 - カスタム アプリを更新する
 - イメージ自体の他の構成設定を変更する
@@ -123,4 +126,4 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 - [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 - [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0817_2016-->

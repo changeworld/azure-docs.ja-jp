@@ -114,4 +114,4 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!-----HONumber=AcomDC_0720_2016-->

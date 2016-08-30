@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/04/2016"
+   ms.date="08/15/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse への認証
@@ -24,7 +24,7 @@
 - [認証](sql-data-warehouse-authentication.md)
 - [ドライバー](sql-data-warehouse-connection-strings.md)
 
-SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されているのがわかります。
+SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。
 
 セキュリティの詳細、および SQL Data Warehouse への接続を有効にする方法の詳細については、「[SQL Data Warehouse でのデータベース保護][]」をご覧ください。
 
@@ -39,8 +39,8 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 
 既定では、ユーザー データベースではなく、マスター データベースに接続されます。ユーザー データベースに接続するには、次の 2 つの操作のいずれかを選択します。
 
-1. SQL Server オブジェクト エクスプ ローラーで、SSDT、 SSMS または アプリケーションの接続文字列を使用してサーバーを登録する際に、 既定のデータベースを指定する。たとえば、ODBC 接続に InitialCatalog パラメーターを含めます。
-2. SSDT でセッションを作成する前に、まずユーザー データベースを強調表示する。
+- SQL Server オブジェクト エクスプ ローラーで、SSDT、 SSMS または アプリケーションの接続文字列を使用してサーバーを登録する際に、 既定のデータベースを指定する。たとえば、ODBC 接続に InitialCatalog パラメーターを含めます。
+- SSDT でセッションを作成する前に、まずユーザー データベースを強調表示する。
 
 > [AZURE.NOTE] SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、[Visual Studio を使用したクエリ][]に関する記事をご覧ください。
 
@@ -62,6 +62,7 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 - 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 - Azure Active Directory 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - Azure Active Directory では、SQL Data Warehouse に接続するアプリケーション向けにトークンベース認証をサポートしています。
+- Azure Active Directory 認証が構成されている場合、SQL Server Management Studio は、Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。Multi-Factor Authentication の説明については、「[SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
 
 
 ### 構成の手順
@@ -90,4 +91,4 @@ Visual Studio またはその他のアプリケーションを使用してデー
 [Visual Studio を使用したクエリ]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

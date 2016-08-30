@@ -17,9 +17,9 @@
 	ms.date="07/15/2016"
 	ms.author="iainfou"/>
 
-# カスタム ディスク イメージをアップロードして VM を作成する
+# カスタム ディスク イメージをアップロードして Linux VM を作成する
 
-この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) をアップロードし、そのカスタム イメージから VM を作成する方法について説明します。この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
+この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム イメージから Linux VM を作成する方法について説明します。この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
 
 ## クイック コマンド
 [Azure CLI](../xplat-cli-install.md) でログインし、Resource Manager モードを使用していることを確認します (`azure config mode arm`)。
@@ -50,21 +50,21 @@ azure storage container create --account-name testuploadedstorage \
 	--account-key <key1> --container vm-images
 ```
 
-最後に、今作成したコンテナーに VHD をアップロードします。
+最後に、作成したコンテナーに VHD をアップロードします。
 
 ```bash
 azure storage blob upload --blobtype page --account-name testuploadedstorage \
 	--account-key <key1> --container vm-images /path/to/disk/yourdisk.vhd
 ```
 
-これでアップロード済みの仮想ディスクから VM を作成することができます。VM を作成するには、[Resource Manager テンプレートを使用する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd)か、次のように CLI から対象ディスクの URI を指定します。
+これで、[Resource Manager テンプレートを使用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd)して、アップロードされた仮想ディスクから VM を作成できます。次のように、ディスクへの URI を指定することによって、CLI を使用することもできます。
 
 ```bash
 azure vm create TestVM -l "WestUS" --resource-group TestRG \
 	-Q https://testuploadedstorage.blob.core.windows.net/vm-images/yourdisk.vhd
 ```
 
-目標のストレージ アカウントは、仮想ディスクのアップロード先と同じである必要があります。また、`azure vm create` コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キーなど) を指定するか、プロンプトで回答する必要もあります。詳細については、[Resource Manager の CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
+目標のストレージ アカウントは、仮想ディスクのアップロード先と同じである必要があります。また、`azure vm create` コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。詳細については、[Resource Manager の CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
 
 
 ## 詳細な手順
@@ -72,7 +72,7 @@ azure vm create TestVM -l "WestUS" --resource-group TestRG \
 
 
 ## 必要条件
-以上の手順を実行するためには、次の要件を満たす必要があります。
+次の手順を完了するには、以下が必要です。
 
 - **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md) (または[動作保証外のディストリビューションに関する情報](virtual-machines-linux-create-upload-generic.md)を参照してください) を VHD 形式で仮想ディスクにインストールします。VM と VHD を作成するツールはいくつかあります。
 	- [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
@@ -111,9 +111,9 @@ azure group create TestRG --location "WestUS"
 ```
 
 ## ストレージ アカウントの作成
-VM は、ストレージ アカウント内にページ BLOB として保存されます。Azure BLOB ストレージの詳細については[こちら](../storage/storage-introduction.md#blob-storage)をご覧ください。カスタム ディスク イメージおよび VM 用に、ストレージ アカウントを作成する必要があります。カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
+VM は、ストレージ アカウント内にページ BLOB として保存されます。Azure BLOB ストレージの詳細については[こちら](../storage/storage-introduction.md#blob-storage)をご覧ください。カスタム ディスク イメージと VM 用に、ストレージ アカウントを作成します。カスタム ディスク イメージから作成する VM は、必ずそのイメージと同じストレージ アカウント内に存在する必要があります。
 
-先ほど作成したリソース グループ内にストレージ アカウントを作成します。
+作成したリソース グループ内にストレージ アカウントを作成します。
 
 ```bash
 azure storage account create testuploadedstorage --resource-group TestRG \
@@ -144,7 +144,7 @@ info:    storage account keys list command OK
 以降の手順でストレージ アカウントとのやり取りに使用するため、`key1` を書き留めます。
 
 ## ストレージ コンテナーを作成する
-ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ストレージ アカウント内にコンテナーを作成して仮想ディスクとディスク イメージを整理します。ストレージ アカウントには、任意の数のコンテナーを含めることができます。
+ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ストレージ アカウント内にコンテナーを作成して仮想ディスクとイメージを整理します。ストレージ アカウントには、任意の数のコンテナーを含めることができます。
 
 前の手順で取得したアクセス キーを指定して、新しいコンテナーを作成します。
 
@@ -156,7 +156,7 @@ azure storage container create --account-name testuploadedstorage \
 ## VHD をアップロードする
 これで、カスタム ディスク イメージを実際にアップロードできるようになりました。VM で使用するすべての仮想ディスクと同様に、カスタム ディスク イメージをアップロードし、ページ BLOB として保存します。
 
-アクセス キー、前の手順で作成したコンテナー、ローカル コンピューター上のカスタム ディスク イメージへのパスの順に指定する必要があります。
+アクセス キー、前の手順で作成したコンテナー、ローカル コンピューター上のカスタム ディスク イメージへのパスの順に指定します。
 
 ```bash
 azure storage blob upload --blobtype page --account-name testuploadedstorage \
@@ -164,11 +164,11 @@ azure storage blob upload --blobtype page --account-name testuploadedstorage \
 ```
 
 ## カスタム イメージから VM を作成する
-カスタム ディスク イメージから VM を作成する場合は、ディスク イメージへの URI を指定し、目標のストレージ アカウントとカスタム ディスク イメージの保存場所が一致している必要があります。Azure CLI または Resource Manager JSON テンプレートを使用して VM を作成することができます。
+カスタム ディスク イメージから VM を作成する場合は、ディスク イメージの URI を指定します。宛先のストレージ アカウントは、カスタム ディスク イメージが保存されているストレージ アカウントと必ず一致させます。Azure CLI または Resource Manager JSON テンプレートを使用して VM を作成することができます。
 
 
 ### Azure CLI を使用して VM を作成する
-`--image-urn` (または単に `-Q`) パラメーターを `azure vm create` コマンドで指定して、カスタム ディスク イメージをポイントします。`--storage-account-name` (または `-o`) は、カスタム ディスク イメージが保存されているストレージ アカウントと必ず一致させます。カスタム ディスク イメージと同じコンテナーを使用して VM を保存する必要はありませんが、カスタム ディスク イメージをアップロードする前に、必ず前の手順と同様にして追加のコンテナーを作成してください。
+`--image-urn` (または単に `-Q`) パラメーターを `azure vm create` コマンドで指定して、カスタム ディスク イメージをポイントします。`--storage-account-name` (または `-o`) は、カスタム ディスク イメージが保存されているストレージ アカウントと必ず一致させます。カスタム ディスク イメージと同じコンテナーを VM の格納先として使用する必要はありません。カスタム ディスク イメージをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
 
 次のようにカスタム ディスク イメージから VM を作成します。
 
@@ -178,7 +178,7 @@ azure vm create TestVM -l "WestUS" --resource-group TestRG \
 	-o testuploadedstorage
 ```
 
-`azure vm create` コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キーなど) を指定するか、プロンプトで回答する必要があるので注意してください。詳細については、[リソース マネージャーの CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
+また、`azure vm create` コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。詳細については、[リソース マネージャーの CLI から利用できるパラメーター](azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)に関するトピックをご覧ください。
 
 ### JSON テンプレートを使用して VM を作成する
 Azure Resource Manager のテンプレートは、ビルドする環境を定義する JavaScript Object Notation (JSON) ファイルです。このテンプレートは、コンピューティングやネットワークなどのさまざまなリソース プロバイダーに分類されます。既存のテンプレートを使用することも独自に作成することもできます。詳細については、[Resource Manager とテンプレートの使用方法](../resource-group-overview.md)に関する記事をご覧ください。
@@ -219,6 +219,6 @@ azure group deployment create --resource-group TestTemplateRG
 
 
 ## 次のステップ
-カスタム仮想ディスクを準備してアップロードしたら、[リソース マネージャーとテンプレートの使用](../resource-group-overview.md)について学習しましょう。必要であれば、新しい VM に[データ ディスクを追加](virtual-machines-linux-add-disk.md)することもできます。VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず[ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md)を開放してください。
+カスタム仮想ディスクを準備してアップロードしたら、[Resource Manager とテンプレートの使用](../resource-group-overview.md)について学習しましょう。必要であれば、新しい VM に[データ ディスクを追加](virtual-machines-linux-add-disk.md)することもできます。VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず[ポートとエンドポイント](virtual-machines-linux-nsg-quickstart.md)を開放してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0817_2016-->

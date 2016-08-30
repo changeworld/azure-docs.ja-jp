@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/15/2016" 
 	ms.author="mandia"/>
 
 
@@ -26,8 +26,8 @@
 
 ## BizTalk Services の操作ログの表示
 1. Azure クラシック ポータルで、**[管理サービス]** を選択し、**[操作ログ]** タブを選択します。
-2. さまざまなパラメーターに基づいてログをフィルター処理できます。パラメーターの例としては、サブスクリプション、日付の範囲、サービスの種類 (例: BizTalk Services)、サービス名、操作の状態 (成功、失敗) があります。
-3. チェックマークを選択すると、フィルター処理された一覧が表示されます。次の図は、testbiztalkservice に関連するアクティビティを示します。![操作ログの表示][ViewLogs] 
+2. さまざまなパラメーターに基づいてログをフィルター処理できます。パラメーターの例としては、サブスクリプション、日付の範囲、サービスの種類 (例: BizTalk サービス)、サービス名、操作の状態 (成功、失敗) があります。
+3. チェックマークを選択すると、フィルター処理された一覧が表示されます。次の図は、testbiztalkservice に関連するアクティビティを示します。![操作ログの表示][ViewLogs]
 4. 特定の操作について詳細を表示するには、操作の行を選択して、下部のタスク バーにある [**詳細**] をクリックします。
 
 
@@ -67,4 +67,4 @@ PurgeBackupBizTalkService | 保持期間を超えた BizTalk サービスのバ�
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

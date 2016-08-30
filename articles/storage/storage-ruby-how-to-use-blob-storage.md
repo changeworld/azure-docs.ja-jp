@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-    ms.date="06/24/2016"
+    ms.date="08/11/2016"
 	ms.author="robmcm"/>
 
 
 # Ruby から BLOB ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-## 概要
+## Overview
 
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
@@ -33,7 +33,7 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 ## Ruby アプリケーションの作成
 
-Ruby アプリケーションを作成します。手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md)」をご覧ください。
+Ruby アプリケーションを作成します。手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/virtual-machines-linux-classic-ruby-rails-web-app.md)」を参照してください。
 
 ## アプリケーションのストレージへのアクセスの構成
 
@@ -157,4 +157,4 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

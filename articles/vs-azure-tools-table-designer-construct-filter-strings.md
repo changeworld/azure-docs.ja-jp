@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/15/2016"
    ms.author="tarcher" />
 
 # テーブル デザイナー用のフィルター文字列の作成
 
-## 概要
+## Overview
 
 Visual Studio **テーブル デザイナー**に表示される Azure テーブルのデータをフィルター処理するには、フィルター文字列を作成してフィルター フィールドに入力します。フィルター文字列の構文は、WCF Data Services で定義されており、SQL の WHERE 句に似ています。ただし、文字列は HTTP 要求を介して Table サービスに送信されます。必要なエンコード処理は**テーブル デザイナー**で自動的に行われます。したがって、目的のプロパティ値を条件としてフィルター処理するときに必要なことは、フィルター フィールドにプロパティ名、比較演算子、条件値、ブール演算子を入力するだけです (ブール演算子は省略可能)。ストレージ サービスの REST API ([リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=400447)を参照) でテーブルを照会するための URL を作成する場合とは異なり、$filter クエリ オプションを含める必要はありません。
 
@@ -27,7 +27,7 @@ WCF Data Services は、[Open Data Protocol](http://go.microsoft.com/fwlink/p/?L
 
 次の論理演算子は、全種類のプロパティでサポートされます。
 
-|論理演算子|説明|フィルター文字列の例|
+|論理演算子|Description|フィルター文字列の例|
 |---|---|---|
 |eq|等しい|City eq 'Redmond'|
 |gt|より大きい|Price gt 20|
@@ -99,4 +99,4 @@ DateTime 値を条件としてフィルター処理を行うには、**datetime*
 
     CustomerSince eq datetime'2008-07-10T00:00:00Z'
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0817_2016-->

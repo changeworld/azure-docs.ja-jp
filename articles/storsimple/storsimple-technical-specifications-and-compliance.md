@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="04/19/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの技術的仕様とコンプライアンス
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。技術的仕様では、電源と冷却モジュール (PCM)、ディスク ドライブ、記憶域容量、エンクロージャについて説明します。対応情報では、国際標準、安全性と排出量、ケーブルなどについて説明します。
 
@@ -39,7 +39,7 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | 出力 | 5 V スタンバイ電圧 @ 2.0 A | 5 V スタンバイ電圧 @ 2.7 A |
 | | +5V @ 42 A | +5V @ 40 A |
 | | +12V @ 38 A | +12V @ 38 A |
-| ホット プラグ可能 | あり | あり |
+| ホット プラグ可能 | はい | はい |
 | スイッチと LED | AC オン/オフ スイッチと 4 つのステータス インジケーター LED | AC オン/オフ スイッチと 6 つのステータス インジケーター LED |
 | エンクロージャの冷却 | 軸流冷却ファン (可変ファン速度制御) | 軸流冷却ファン (可変ファン速度制御) |
 
@@ -135,16 +135,16 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 ## 国際標準への準拠
 Microsoft Azure StorSimple デバイスは次の国際標準に準拠しています。
 
-- CE - EN 60950 - 1  
-- IEC 60950 - 1 に対する CB レポート  
-- UL 60950 - 1 に対する UL および cUL  
+- CE - EN 60950 - 1
+- IEC 60950 - 1 に対する CB レポート
+- UL 60950 - 1 に対する UL および cUL
 
 ## 安全性コンプライアンス  
 
 Microsoft Azure StorSimple デバイスは次の安全性規格を満たしています。
 
-- システム製品タイプ承認: UL、cUL、CE  
-- 安全性コンプライアンス: UL 60950、IEC 60950、EN 60950  
+- システム製品タイプ承認: UL、cUL、CE
+- 安全性コンプライアンス: UL 60950、IEC 60950、EN 60950
 
 ## EMC コンプライアンス 
 
@@ -154,8 +154,8 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 デバイスは、伝導および放射される排出量レベルについて EMC に準拠しています。
 
-- 伝導性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A  
-- 放射性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A   
+- 伝導性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
+- 放射性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
 
 ### 高調波と明滅  
 
@@ -191,4 +191,4 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 StorSimple デバイスをデータセンターにデプロイする準備ができました。詳細については、「[オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-deployment-walkthrough-u2.md)」を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する" 
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する | Microsoft Azure" 
 	description="このチュートリアルでは、Azure PowerShell を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -23,11 +23,12 @@
 - [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 [Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルでは、[Azure ポータル][azure-portal]を使用して Azure データ ファクトリを作成、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure データ ファクトリを作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
 
-コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.IMPORTANT] 
 このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、前提条件の手順を完了してください。
@@ -47,7 +48,7 @@
 -----| -----------
 [Azure Data Factory を作成する](#create-data-factory) | この手順では、**ADFTutorialDataFactoryPSH** という名前の Azure データ ファクトリを作成します。 
 [リンクされたサービスの作成](#create-linked-services) | この手順では、**StorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。StorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactoryPSH にリンクします。
-[入力データセットと出力データセットを作成する](#create-datasets) | この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。これらは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルおよび出力テーブルとして使用されます。
+[入力データセットと出力データセットを作成する](#create-datasets) | この手順では、2 つのデータセット (**EmpTableFromBlob** と **EmpSQLTable**) を定義します。これらのデータセットは、次の手順で作成する ADFTutorialPipeline の**コピー アクティビティ**の入力テーブルと出力テーブルとして使用されます。
 [パイプラインを作成して実行する](#create-pipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを **ADFTutorialDataFactoryPSH** というデータ ファクトリに作成します。このパイプラインには、Azure BLOB から Azure データベース出力テーブルにデータをコピーする**コピー アクティビティ**があります。
 [データ セットとパイプラインを監視する](#monitor-pipeline) | この手順では、Azure PowerShell を使用してデータセットとパイプラインを監視します。
 
@@ -77,7 +78,9 @@
 	
 以下の点に注意してください。
  
-- Azure Data Factory の名前はグローバルに一意にする必要があります。**""ADFTutorialDataFactoryPSH" という名前のデータ ファクトリは使用できません"** というエラーが発生した場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
+- Azure Data Factory の名前はグローバルに一意にする必要があります。次のエラーが表示される場合は、名前を変更します (yournameADFTutorialDataFactoryPSH など)。このチュートリアルの手順の実行中に、この名前を ADFTutorialFactoryPSH の代わりに使用します。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
+	
+		Data factory name “ADFTutorialDataFactoryPSH” is not available
 - Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 - データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
@@ -89,7 +92,7 @@
 		Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 	
 			Get-AzureRmResourceProvider
-	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。その場合、プロバイダーが自動的に登録されます。
+	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。この操作によって、プロバイダーが自動的に登録されます。
 
 ## リンクされたサービスの作成
 リンクされたサービスは、データ ストアまたはコンピューティング サービスを Azure Data Factory にリンクします。データ ストアには、Azure Storage、Azure SQL Database、またはオンプレミスの SQL Server データベースを指定できます。これらのデータ ストアには、Data Factory パイプラインの入力データが含まれているか、出力データが格納されています。コンピューティング サービスは、入力データを処理し、出力データを生成するサービスです。
@@ -109,7 +112,7 @@
 		  		}
 			}
 
-	**accountname** をストレージ アカウントの名前に、**accountkey** を Azure ストレージ アカウントのキーに置き換えます。
+	**accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーで置き換えます。
 2.	**Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
 3.	**New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** および **DataFactoryName** パラメーターの値を渡す必要があります。または、**Get-AzureRmDataFactory** を使用して DataFactory オブジェクトを取得すると、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力しなくてもオブジェクトを渡すことができます。**Get-AzureRmDataFactory** コマンドレットの出力を変数 **$df** に割り当てるには、次のコマンドを実行します。
 
@@ -157,7 +160,7 @@
 
 前の手順では、**StorageLinkedService** と **AzureSqlLinkedService** というリンクされたサービスを作成し、Azure Storage アカウントと Azure SQL Database を **ADFTutorialDataFactoryPSH** という Data Factory にリンクしました。この手順では、次の手順で作成するパイプラインのコピー アクティビティ用に入力データと出力データを表すデータセットを作成します。
 
-テーブルとは四角形のデータセットで、現在サポートされている唯一の種類のデータセットです。このチュートリアルの入力テーブルは StorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照し、出力テーブルは AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。
+テーブルとは四角形のデータセットで、現在サポートされている唯一の種類のデータセットです。このチュートリアルの入力テーブルは、StorageLinkedService がポイントする Azure Storage 内の BLOB コンテナーを参照します。出力テーブルは、AzureSqlLinkedService がポイントする Azure SQL Database 内の SQL テーブルを参照します。
 
 ### Azure Blob Storage と Azure SQL Database をチュートリアル用に準備する
 [Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事のチュートリアルを完了している方は、この手順をスキップしてください。
@@ -190,9 +193,9 @@
 
 		CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID); 
 
-	SQL Server 2014 がコンピューターにインストールされている場合は、記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。
+	SQL Server 2014 がコンピューターにインストールされている場合は、記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続](../sql-database/sql-database-manage-azure-ssms.md)」に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。
 
-	Visual Studio 2013 がコンピューターにインストールされている場合: Azure ポータル ([http://portal.azure.com](http://portal.sazure.com)) の左側にある **[参照]** ハブ、**[SQL Server]** の順にクリックしてデータベースを選択します。次に、ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
+	クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)を参照してください。
 		
 ### 入力データセットの作成 
 テーブルとは四角形のデータセットで、スキーマを持っています。この手順では、リンクされたサービス **StorageLinkedService** が表す Azure Storage 内の BLOB コンテナーをポイントする **EmpBlobTable** という名前のテーブルを作成します。この BLOB コンテナー (**adftutorial**) には、**emp.txt** ファイルの入力データが含まれています。
@@ -238,9 +241,9 @@
 	- **fileName** は **emp.txt** に設定されています。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。
 	- format の **type** が **TextFormat** に設定されています。
 	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。
-	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory サービスでは、指定した BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
 
-	**入力** **テーブル** に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
+	**入力****テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
  
 	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
@@ -263,7 +266,7 @@
 		New-AzureRmDataFactoryDataset $df -File .\EmpBlobTable.json
 
 ### 出力データセットの作成
-手順のこの部分では、リンクされたサービス **AzureSqlLinkedService** が表す Azure SQL Database 内の SQL テーブル (**emp**) をポイントする **EmpSQLTable** という名前の出力テーブルを作成します。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
+この手順では、**EmpSQLTable** という名前の出力データセットを作成します。このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブル (**emp**) をポイントします。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
 
 1.	以下の内容を記述した **EmpSQLTable.json** という名前の JSON ファイルを **C:\\ADFGetStartedPSH** フォルダー内に作成します。
 		
@@ -297,7 +300,7 @@
 	* dataset の **type** が **AzureSqlTable** に設定されています。
 	* **linkedServiceName** は **AzureSqlLinkedService** に設定されています。
 	* **tablename** は **emp** に設定されています。
-	* データベース内の emp テーブルに 3 つの列 (**ID**、**FirstName**、**LastName**) がありますが、ID は識別子の列であるため、ここでは **FirstName** と **LastName** のみを指定する必要があります。
+	* データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 	* **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
 
 2.	次のコマンドを実行して、Data Factory データセットを作成します。
@@ -346,8 +349,8 @@
 			        }
 			      }
 			    ],
-			    "start": "2015-12-09T00:00:00Z",
-			    "end": "2015-12-10T00:00:00Z",
+			    "start": "2016-08-09T00:00:00Z",
+			    "end": "2016-08-10T00:00:00Z",
 			    "isPaused": false
 			  }
 			}
@@ -362,7 +365,7 @@
 	
 	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
-	上記の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
+	この例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
 	JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](http://go.microsoft.com/fwlink/?LinkId=516971)を参照してください。
 2.	次のコマンドを実行して、Data Factory テーブルを作成します。
@@ -382,7 +385,7 @@
 
 		Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T00:00:00
 
-	**StartDateTime** パラメーターで、年、月、日の部分を現在の年、月、日に置き換えます。この値は、JSON パイプラインの **Start** の値と一致します。
+	**StartDateTime** パラメーターで、年、月、日の部分を現在の年、月、日に置き換えます。この設定は、JSON パイプラインの **Start** の値と一致します。
 
 	現在の日付の 12 AM から次の日の 12 AM までの 1 時間ごとに 1 つずつ、合計 24 個のスライスが表示されます。
 	
@@ -410,7 +413,7 @@
 		LatencyStatus     : 
 		LongRetryCount    : 0
 
-3.	**Get-AzureRmDataFactoryRun** を実行して、**特定**のスライスに関するアクティビティの実行の詳細を取得します。上記の出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。例: 2014-03-03T22:00:00Z。
+3.	**Get-AzureRmDataFactoryRun** を実行して、**特定**のスライスに関するアクティビティの実行の詳細を取得します。出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。例: 2014-03-03T22:00:00Z。
 
 		Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T22:00:00
 
@@ -451,7 +454,7 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 | :---- | :---- |
 | [データ移動アクティビティ](data-factory-data-movement-activities.md) | この記事には、このチュートリアルで使用したコピー アクティビティの詳細な情報が記載されています。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
+| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティについて説明します。 |
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
@@ -474,4 +477,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

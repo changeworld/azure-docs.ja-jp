@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SQL Server Business Intelligence | Microsoft Azure"
-	description="このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure 仮想マシン (VM) 上で実行されている SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
+	description="このトピックでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、Azure Virtual Machines (VM) 上で実行される SQL Server で使用できる Business Intelligence (BI) 機能について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="guyinacube"
@@ -79,11 +79,11 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 |SQL Server BI 機能|ギャラリー イメージにインストールされているかどうか|メモ|
 |---|---|---|
-|**Reporting Services ネイティブ モード**|あり|インストールされていますが、レポート マネージャー URL などの構成が必要です。「[Reporting Services の構成](#configure-reporting-services)」をご覧ください。|
-|**Reporting Services SharePoint モード**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
-|**Analysis Services 多次元およびデータ マイニング (OLAP)**|あり|インストールされ、既定の Analysis Services インスタンスとして構成されています。|
-|**Analysis Services 表形式**|いいえ|SQL Server 2012、2014、および 2016 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
-|**Analysis Services Power Pivot for SharePoint**|いいえ|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
+|**Reporting Services ネイティブ モード**|はい|インストールされていますが、レポート マネージャー URL などの構成が必要です。「[Reporting Services の構成](#configure-reporting-services)」をご覧ください。|
+|**Reporting Services SharePoint モード**|なし|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
+|**Analysis Services 多次元およびデータ マイニング (OLAP)**|はい|インストールされ、既定の Analysis Services インスタンスとして構成されています。|
+|**Analysis Services 表形式**|なし|SQL Server 2012、2014、および 2016 のイメージでサポートされていますが、既定ではインストールされていません。Analysis Services の別のインスタンスをインストールします。このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。|
+|**Analysis Services Power Pivot for SharePoint**|なし|Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。<sup>1</sup>|
 
 <sup>1</sup> SharePoint と Azure 仮想マシンの追加情報については、「[SharePoint 2013 用の Microsoft Azure アーキテクチャ](https://technet.microsoft.com/library/dn635309.aspx)」および「[Microsoft Azure Virtual Machines の SharePoint デプロイ](https://www.microsoft.com/download/details.aspx?id=34598)」をご覧ください。
 
@@ -319,7 +319,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 >[AZURE.NOTE] SQL Server セットアップを初めて実行すると、さらに多くのセットアップ ファイルがダウンロードされ、仮想マシンの再起動と SQL Server セットアップの再起動が必要になる場合があります。
 >
->Microsoft Azure 仮想マシンから選択したイメージを何度もカスタマイズする必要がある場合は、独自の SQL Server イメージを作成することを検討してください。SQL Server 2012 SP1 CU2 で、Analysis Services SysPrep 機能が有効になりました。詳細については、「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」をご覧ください。
+>Microsoft Azure 仮想マシンから選択したイメージを何度もカスタマイズする必要がある場合は、独自の SQL Server イメージを作成することを検討してください。SQL Server 2012 SP1 CU2 で、Analysis Services SysPrep 機能が有効になりました。詳細については、「[SysPrep を使用した SQL Server のインストールに関する注意点](https://msdn.microsoft.com/library/ee210754.aspx)」と「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 ### Analysis Services 表形式モードをインストールするには
 
@@ -389,7 +389,7 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。ただし、VM 上のファイアウォールでポートを開いてください。
 
-	|ポート|型|説明|
+	|ポート|型|Description|
 |---|---|---|
 |**80**|TCP|レポート サーバー リモート アクセス (*)。|
 |**1433**|TCP|SQL Server Management Studio (*)。|
@@ -436,4 +436,4 @@ Analysis Services の**名前付きインスタンス**の場合、ポート ア
 
 - [Azure SQL Database Management with PowerShell (PowerShell を使用した Azure SQL Database の管理)](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="08/16/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 # データの移行
@@ -22,15 +22,15 @@
 この記事では最初に ADF コピー、SSIS、および bcp の単純な移行シナリオについて説明します。次に、移行を最適化する方法についてもう少し詳細に検討していきます。
 
 ## Azure Data Factory (ADF) コピー
-[ADF コピー][]は [Azure Data Factory][] の一部として組み込まれています。ADF コピーを使用して、ローカル ストレージに置かれているフラット ファイル、Azure BLOB ストレージに保持されているリモート フラット ファイル、または SQL Data Warehouse 内のディレクトリにデータをエクスポートできます。
+[ADF コピー][] は [Azure Data Factory][] の一部として組み込まれています。ADF コピーを使用して、ローカル ストレージに置かれているフラット ファイル、Azure BLOB ストレージに保持されているリモート フラット ファイル、または SQL Data Warehouse 内のディレクトリにデータをエクスポートできます。
 
-データがフラット ファイルで始まる場合、SQL Data Warehouse へのロードを開始する前に、まず、Asure ストレージ BLOB にそれを転送する必要があります。データが Azure BLOB ストレージに転送されたら、[ADF コピー][]を使用するようにもう一度選択して、SQL Data Warehouse にデータをプッシュすることができます。
+データがフラット ファイルで始まる場合、SQL Data Warehouse へのロードを開始する前に、まず、Asure ストレージ BLOB にそれを転送する必要があります。データが Azure BLOB ストレージに転送されたら、[ADF コピー][] を使用するようにもう一度選択して、SQL Data Warehouse にデータをプッシュすることができます。
 
 PolyBase には、データをロードするための非常に高いパフォーマンスのオプションも用意されています。ただし、これは 1 つではなく、2 つのツールを使用するという意味です。最高のパフォーマンスが必要であれば、PolyBase を使用してください。1 つのツールのみを使用する場合は (および、データが大規模ではない場合は)、ADF を使用してください。
 
 > [AZURE.NOTE] PolyBase では、データ ファイルは UTF-8 である必要があります。これは ADF コピーの既定のエンコーディングであるため、変更することはできません。ADF コピーの規定の動作は変更しないでください。
 
-それでは、いくつかのすばらしい [ADF コピーの例][]に関する次の記事に進みましょう。
+それでは、いくつかのすばらしい [ADF の例][]に関する次の記事に進みましょう。
 
 ## Integration Services ##
 Integration Services (SSIS) は、強力で柔軟な抽出、変換、ロード (ETL) ツールであり、複雑なワークフロー、データの変換、およびいくつかのデータ ロード オプションをサポートします。SSIS を使用して単にデータを Azure に転送したり、より広範囲にわたる移行の一部として転送したりします。
@@ -167,15 +167,15 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 
 
 ## 次のステップ
-移行の詳細については、「[SQL Data Warehouse へのソリューションの移行][]」を参照してください。開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。。
+移行の詳細については、「[SQL Data Warehouse へのソリューションの移行][]」を参照してください。開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
 [AZCopy]: ../storage/storage-use-azcopy.md
-[ADF コピー]: ../data-factory/data-factory-copy-activity.md
-[ADF コピーの例]: ../data-factory/data-factory-copy-activity-examples.md
-[開発の概要]: sql-data-warehouse-develop-overview.md
+[ADF の例]: ../data-factory/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[開発の概要]: sql-data-warehouse-overview-develop.md
 [SQL Data Warehouse へのソリューションの移行]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
 [bcp を使用した SQL Data Warehouse へのデータのロード]: sql-data-warehouse-load-with-bcp.md
@@ -194,4 +194,4 @@ PolyBase を使用したデータ ロードの詳細については、「[PolyBa
 [ADO NET 変換先エディター]: https://msdn.microsoft.com/library/bb934041.aspx
 [SSIS のドキュメント]: https://msdn.microsoft.com/library/ms141026.aspx
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

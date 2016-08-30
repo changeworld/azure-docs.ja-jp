@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="06/24/2016" 
+    ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/dn205108.aspx -->
@@ -37,8 +37,8 @@ Azure ストレージ アカウントは、JDK、アプリケーション サー
 
 1. **[ストレージ アカウント]** ダイアログ ボックスで、**[Import from PUBLISH-SETTINGS file]** をクリックします。
 2. (ローカル コンピューターへ既に発行設定ファイルを保存している場合、この手順はスキップしてください。) **[Import Subscription Information]** ダイアログ ボックスの **[Download PUBLISH-SETTINGS File]** をクリックします。まだ Azure アカウントにログインしていない場合は、ログインするように求められます。その後、Azure 発行設定ファイルを保存するよう求めるメッセージが表示されます。(結果としてログオン ページに表示される手順は無視することができます。それらは、Azure ポータルによって提供される、Visual Studio ユーザー向けの手順です。) ファイルをローカル コンピューターに保存します。
-3. 引き続き **[Import Subscription Information]** ダイアログ ボックスで **[参照]** ボタンをクリックし、前にローカルへ保存した発行設定ファイルを選択して **[開く]** をクリックします。
-4. **[OK]** をクリックして、**[Import Subscription Information]** ダイアログ ボックスを閉じます。
+3. 引き続き **[Import Subscription Information (サブスクリプション情報のインポート)]** ダイアログ ボックスで **[Browse (参照)]** ボタンをクリックし、前にローカルで保存した発行設定ファイルを選択して **[Open (開く)]** をクリックします。
+4. **[OK]** をクリックして、**[Import Subscription Information (サブスクリプション情報のインポート)]** ダイアログ ボックスを閉じます。
 
 ## 新しいストレージ アカウントを作成するには ##
 
@@ -100,4 +100,4 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [ic719496]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719496.png
 [ic719497]: ./media/azure-toolkit-for-eclipse-azure-storage-account-list/ic719497.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

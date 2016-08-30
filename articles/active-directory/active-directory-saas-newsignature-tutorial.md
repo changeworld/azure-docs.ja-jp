@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="08/16/2016"
 	ms.author="jeedes"/>
 
 
@@ -33,7 +33,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 Cloud Management Portal for Microsoft Azure と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Cloud Management Portal for Microsoft Azure のシングルサインオンが有効なサブスクリプション
+- Cloud Management Portal for Microsoft Azure でのシングル サインオンが有効なサブスクリプション
 
 
 > [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -57,7 +57,7 @@ Azure AD への Cloud Management Portal for Microsoft Azure の統合を構成�
 
 **ギャラリーから Cloud Management Portal for Microsoft Azure を追加するには、次の手順を実行します。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -267,4 +267,4 @@ Cloud Management Portal for Microsoft Azure での Azure AD シングル サイ�
 [204]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0817_2016-->

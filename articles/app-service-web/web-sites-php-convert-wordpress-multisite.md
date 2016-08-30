@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="PHP" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/11/2016" 
 	ms.author="robmcm"/>
 
 
 
 # Azure App Service での WordPress から Multisite への変換
 
-## 概要
+## Overview
 
 *執筆者: [Ben Lobaugh][ben-lobaugh] ([Microsoft Open Technologies Inc.][ms-open-tech]*)
 
@@ -153,4 +153,4 @@ Azure Web Apps では、Web アプリに追加できるドメインの数に制�
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

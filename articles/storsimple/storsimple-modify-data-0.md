@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの DATA 0 ネットワーク インターフェイスの設定の変更
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple デバイスには、DATA 0 ～ DATA 5 の 6 つのネットワーク インターフェイスがあります。DATA 0 インターフェイスは、必ず Windows PowerShell インターフェイスまたはシリアル コンソールを介して構成され、自動的にクラウドに対応します。Azure クラシック ポータルを使用して、DATA 0 ネットワーク インターフェイスを構成することはできません。
 
@@ -73,8 +73,8 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
 
 ## 次のステップ
 
-- DATA 0 以外のネットワーク インターフェイスを構成するには、[Azure クラシック ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。 
+- DATA 0 以外のネットワーク インターフェイスを構成するには、[Azure クラシック ポータルで [構成] ページ](storsimple-modify-device-config.md)を使用できます。
 
 - ネットワーク インターフェイスを構成するときに問題が発生した場合は、[デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0817_2016-->

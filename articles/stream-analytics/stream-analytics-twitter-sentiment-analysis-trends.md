@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/27/2016"
+	ms.date="08/11/2016"
 	ms.author="jeffstok"/>
 
 
@@ -31,7 +31,7 @@ Event Hubs に Twitter イベントをリアルタイム入力することで、
 ## 前提条件
 1.	Twitter アカウントと [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 2.	Microsoft Download Center の [TwitterClient.zip](http://download.microsoft.com/download/1/7/4/1744EE47-63D0-4B9D-9ECF-E379D15F4586/TwitterClient.zip)
-3.	省略可能: [Github](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient) の twitter クライアントのソース コード
+3.	省略可能: [Github](https://aka.ms/azure-stream-analytics-twitterclient) の twitter クライアントのソース コード
 
 ## イベント ハブ入力とコンシューマー グループの作成
 
@@ -198,7 +198,7 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 3.	3 ページ目で、次の値を入力または選択します。
 
 	* **[出力のエイリアス]**: このジョブの出力のフレンドリ名を入力します。
-	* **[サブスクリプション]**: 作成した BLOB ストレージが Stream Analytics ジョブと同じサブスクリプションにある場合は、**[現在のサブスクリプションのストレージ アカウントを使用]** を選択します。ストレージが別のサブスクリプションにある場合は、**[別のサブスクリプションのストレージ アカウントを使用]** を選択し、**[ストレージ アカウント]**、**[ストレージ アカウント キー]**、**[コンテナー]** の情報を手動で入力します。
+	* **[サブスクリプション]**: 作成した Blob Storage が Stream Analytics ジョブと同じサブスクリプションにある場合は、**[現在のサブスクリプションのストレージ アカウントを使用]** を選択します。ストレージが別のサブスクリプションにある場合は、**[別のサブスクリプションのストレージ アカウントを使用]** を選択し、**[ストレージ アカウント]**、**[ストレージ アカウント キー]**、**[コンテナー]** の情報を手動で入力します。
 	* **[ストレージ アカウント]**: ストレージ アカウントの名前を選択します。
 	* **[コンテナー]**: コンテナーの名前を選択します。
 	* **[ファイル名プレフィックス]**: BLOB 出力の書き込み時に使用するファイルのプレフィックスを入力します。
@@ -236,4 +236,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0817_2016-->

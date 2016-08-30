@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/10/2016"
 	ms.author="jgao"/>
 
 # Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
@@ -172,7 +172,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 ##リソース グループの検索
 
-ARM モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。リソース グループを検索するには:
+Resource Manager モードでは、各 HDInsight クラスターは Azure リソース グループに属しています。リソース グループを検索するには:
 
 	$clusterName = "<HDInsight Cluster Name>"
 	
@@ -239,4 +239,4 @@ ARM モードでは、各 HDInsight クラスターは Azure リソース グル
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -12,10 +12,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/18/2016"
+    ms.date="08/15/2016"
     ms.author="elizapo" />
 
 # Azure RemoteApp コレクションにユーザーを追加する方法
+
+> [AZURE.IMPORTANT]
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
 Azure RemoteApp のアプリをユーザーが表示および使用できるようにするには、コレクションへのアクセス権をユーザーに付与しておく必要があります。これは簡単です。**[ユーザー アクセス]** タブで、対象となるユーザーのアカウント情報を入力し、チェック マークをクリックします。
 
@@ -35,21 +38,21 @@ Office 365 ユーザーは、Azure Active Directory のユーザーです。そ�
 
 |ユーザー アカウント |クラウド |ハイブリッド|
 |--------------|--------|------|
-|Microsoft アカウント| 	はい|	いいえ|
+|Microsoft アカウント| 	はい|	なし|
 |Azure Active Directory (Azure AD)| | |
-|Azure AD クラウドのみ |あり |いいえ |
-|パスワード同期がある ADsync |あり |あり |
-|パスワード同期がない ADsync|	あり |いいえ |
-|AD FS がある ADsync |あり |あり |
-|[サード パーティの Azure サポート ID プロバイダー](https://msdn.microsoft.com/library/azure/jj679342.aspx) (Ping など) |あり |あり|
-|Multi-Factor Authentication |あり |あり |
+|Azure AD クラウドのみ |はい |なし |
+|パスワード同期がある ADsync |はい |はい |
+|パスワード同期がない ADsync|	はい |なし |
+|AD FS がある ADsync |はい |はい |
+|[サード パーティの Azure サポート ID プロバイダー](https://msdn.microsoft.com/library/azure/jj679342.aspx) (Ping など) |はい |はい|
+|Multi-Factor Authentication |はい |はい |
 
 RemoteApp を使用するために Active Directory を構成する方法の詳細については、[ここ](remoteapp-ad.md)を参照してください。
 
 
-> [AZURE.NOTE] Azure Active Directory ユーザーは、サブスクリプションに関連付けられているテナントに属している必要があります(サブスクリプションは、ポータルの **[設定]** タブで表示および変更できます。詳細については、「[Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md)」を参照してください)。
+> [AZURE.NOTE] Azure Active Directory ユーザーは、サブスクリプションに関連付けられているテナントに属している必要があります(サブスクリプションは、ポータルの **[設定]** タブで表示、変更できます。詳細については、「[Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md)」を参照してください)。
 
 ## Office 365 ProPlus ユーザー アカウントの情報
 コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="05/12/2016"
+	ms.date="08/12/2016"
 	ms.author="piyushjo;ricksal" />
 
 # Azure Mobile Engagement Android SDK の位置報告
@@ -33,7 +33,7 @@
 
 ### 遅延エリアの場所レポート
 
-大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの場所レポートでは、まったくとは言わないまでも、電力消費量にほとんど影響がありません。
+大まかなエリアの位置報告では、デバイスに関連付けられた国、リージョン、地域をレポートできます。このタイプの場所レポートでは、セル ID または WIFI に基づいたネットワークの場所のみを使用します。デバイス エリアがセッションごとに最大 1 回レポートされます。GPS を使用しないため、このタイプの位置報告では、電力消費量にほとんど影響がありません。
 
 報告されたエリアを基に、ユーザー、セッション、イベント、エラーに関する地理的な統計をコンピューティングします。また、リーチ キャンペーンの条件としても使用されます。
 
@@ -44,34 +44,34 @@
     engagementConfiguration.setLazyAreaLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-さらに、次のアクセス権限が不足している場合は追加する必要があります。
+場所のアクセス許可を指定する必要があります。このコードは ``COARSE`` アクセス許可を使用します。
 
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
+アプリで必要な場合は、代わりに ``ACCESS_FINE_LOCATION`` を使用できます。
 
-### リアル タイム場所レポート
+### リアルタイムの位置報告
 
-リアル タイム場所レポートでは、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの場所レポートでは (セル ID または WIFI に基づいた) ネットワークの場所のみが使用されます。レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。
+リアルタイムの位置報告では、デバイスに関連付けられた緯度と経度をレポートできます。既定では、このタイプの位置報告では、セル ID または WiFi に基づいたネットワークの場所のみを使用します。このレポートは、アプリケーションを前景で実行した場合 (セッション中など) にのみアクティブになります。
 
-リアル タイム場所レポートは、統計のコンピューティングに使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
+リアルタイムの位置報告を統計のコンピューティングに使用することは*できません*。その唯一の目的は、リーチ キャンペーンでリアルタイム ジオフェンシング <Reach-Audience-geofencing> 基準の利用を可能にすることです。
 
-リアルタイム場所レポートを有効にするには、ランチャー アクティビティの Engegement 接続文字列を設定した場所にコード行を追加します。結果は次のようになります。
+リアルタイムの位置報告を有効にするには、ランチャー アクティビティの Engegement 接続文字列を設定した場所にコード行を追加します。結果は次のようになります。
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
     engagementConfiguration.setRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-さらに、次のアクセス権限が不足している場合は追加する必要があります。
+		You also need to specify a location permission. This code uses ``COARSE`` permission:
 
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+			<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-あるいは、アプリケーションで ``ACCESS_FINE_LOCATION`` を使用している場合、引き続きそれを利用できます。
+		If your app requires it, you can use ``ACCESS_FINE_LOCATION`` instead.
 
 #### GPS ベースのレポート
 
-既定では、リアル タイム場所レポートでは、ネットワーク ベースの場所のみを使用します。GPS ベースの場所 (正確性が格段に優れています) を使用できるようにするには、構成オブジェクトを使用します。
+既定では、リアルタイムの位置報告では、ネットワーク ベースの位置のみを使用します。(格段に正確な) GPS ベースの位置を使用できるようにするには、構成オブジェクトを使用します。
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -85,7 +85,7 @@
 
 #### 背景レポート
 
-既定では、リアル タイム場所レポートは、アプリケーションを前景で実行した場合 (セッション中) にのみアクティブになります。バックグラウンドでのレポートも有効にするには、この構成オブジェクトを使用します。
+既定では、リアルタイムの位置報告は、アプリケーションを前景で実行した場合 (セッション中など) にのみアクティブになります。バックグラウンドでのレポートも有効にするには、この構成オブジェクトを使用します。
 
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
     engagementConfiguration.setConnectionString("Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}");
@@ -93,9 +93,9 @@
     engagementConfiguration.setBackgroundRealtimeLocationReport(true);
     EngagementAgent.getInstance(this).init(engagementConfiguration);
 
-> [AZURE.NOTE] アプリケーションを背景で実行した場合、GPS を有効にしても、ネットワーク ベースの場所のみがレポートされます。
+> [AZURE.NOTE] アプリケーションをバックグラウンドで実行した場合、GPS を有効にしても、ネットワーク ベースの位置のみが報告されます。
 
-バックグラウンド ロケーション レポートは、ユーザーがデバイスを再起動すると停止します。以下を追加することで、起動時に自動的に再開されるように設定できます。
+ユーザーがデバイスを再起動すると、バックグラウンドの位置報告は停止します。ブート時にバックグラウンドの位置報告を自動的に再開するには、次のコードを追加します。
 
 	<receiver android:name="com.microsoft.azure.engagement.EngagementLocationBootReceiver"
 		   android:exported="false">
@@ -121,7 +121,7 @@ Mobile Engagement の場所レポートの場合、次のアクセス許可で�
 - `ACCESS_COARSE_LOCATION`
 - `ACCESS_FINE_LOCATION`
 
-標準のシステム ダイアログを利用してユーザーにアクセス許可を要求する必要があります。ユーザーが承認した場合、その変更をリアルタイムで考慮するように ``EngagementAgent`` に通知する必要があります (認識されない場合、ユーザーが次回アプリケーションを起動したときに変更が処理されます)。
+標準のシステム ダイアログを利用してユーザーにアクセス許可を要求します。ユーザーが承認すると、その変更がリアルタイムに考慮されるように、``EngagementAgent`` に通知します。そうしない場合、その変更は次回ユーザーがアプリケーションを起動したときに処理されます。
 
 ここにコード サンプルがあります。これはアクセス許可を要求し、``EngagementAgent`` が肯定された場合、結果を転送するアプリケーション アクティビティで使用されます。
 
@@ -141,7 +141,7 @@ Mobile Engagement の場所レポートの場合、次のアクセス許可で�
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
       {
         /*
-         * Request location permission, but this won't explain why it is needed to the user.
+         * Request location permission, but this doesn't explain why it is needed to the user.
          * The standard Android documentation explains with more details how to display a rationale activity to explain the user why the permission is needed in your application.
          * Putting COARSE vs FINE has no impact here, they are part of the same group for runtime permission management.
          */
@@ -159,4 +159,4 @@ Mobile Engagement の場所レポートの場合、次のアクセス許可で�
         getEngagementAgent().refreshPermissions();
     }
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0817_2016-->

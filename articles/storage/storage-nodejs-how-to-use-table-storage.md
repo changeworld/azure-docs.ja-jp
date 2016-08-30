@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Node.js から Azure Table ストレージを使用する方法 | Microsoft Azure"
-	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
+	description="NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
@@ -13,16 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="nodejs"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	ms.author="micurd"/>
 
 
 # Node.js から Azure Table Storage を使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
-
-## 概要
+## Overview
 
 このトピックでは、Node.js アプリケーションで Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。
 
@@ -67,13 +66,13 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 	var azure = require('azure-storage');
 
-## Azure のストレージ接続文字列の設定
+## Azure Storage の接続文字列の設定
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure Website の [Azure ポータル](https://portal.azure.com)で環境変数を設定する例については、「[Azure Table サービスを使用する Node.js Web アプリ]」を参照してください。
 
-## テーブルの作成
+## テーブルを作成する
 
 次のコードは、**TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
@@ -442,4 +441,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Table サービスを使用する Node.js Web アプリ]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0817_2016-->
