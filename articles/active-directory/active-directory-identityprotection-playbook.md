@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="08/22/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection プレイブック 
@@ -43,7 +43,7 @@
 **匿名 IP からサインインをシミュレートするには、次の手順を実行します**。
 
 1.	[Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) をダウンロードします。
-2.	Tor Browser を使用し、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。   
+2.	Tor Browser を使用し、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 3.	**匿名 IP アドレスからのサインイン** レポートに表示するアカウントの資格情報を入力します。
 
 5 分以内に Identity Protection ダッシュボードにサインインが表示されます。
@@ -63,7 +63,7 @@ Azure Active Directory Identity Protection:
 
 **未知の場所からサインインをシミュレートするには、次の手順を実行します**。
 
-1.	少なくとも 14 日間のサインイン履歴のあるアカウントを選択します。 
+1.	少なくとも 14 日間のサインイン履歴のあるアカウントを選択します。
 
 2.	次のどちらかの操作を行います。
 	
@@ -78,7 +78,7 @@ Azure Active Directory Identity Protection:
 
 **特殊な場所へのあり得ない移動をシミュレートするには、次の手順を実行します**。
 
-1.	標準的なブラウザーを使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。  
+1.	標準的なブラウザーを使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 
 2.	あり得ない移動のリスク イベントを生成するアカウントの資格情報を入力します。
 
@@ -96,7 +96,7 @@ Azure Active Directory Identity Protection:
 
 -	Azure AD [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 -	Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
--	Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
+-	Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 
 
@@ -146,17 +146,17 @@ Azure Active Directory Identity Protection:
 
 4.	**[ポータルの設定]** ブレードの **[セキュリティ規則]** で、**[サインインのリスク]** をクリックします。
 
-5.	[**サインインのリスク**] ブレードで、**[ルールの有効化]** の **[オン]** を選択します。
+5.	**[サインインのリスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。
 
 7.	次のいずれかのオプションを選択します。
 
-    a.ブロックするには、**[リスクが指定された設定値以上の場合、サインインをブロックする]** で **[中]** を選択します。
+    a.ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
 
-    b.セキュリティで保護されたパスワードの変更を強制するには、**[リスクが指定された設定値以上の場合、多要素認証が必要]** で **[中]** を選択します。
+    b.セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証が必要です]** で **[中]** を選択します。
 
 8.	ブロックするには、[リスクが指定された設定値以上の場合、サインインをブロックする] で [中] を選択します。
 
-9.	多要素認証を強制するには、**[リスクが指定された設定値以上の場合、多要素認証が必要]** で **[中]** を選択します。
+9.	多要素認証を強制するには、**[多要素認証が必要です]** で **[中]** を選択します。
 
 10.	**[Save]** をクリックします。
 
@@ -169,4 +169,4 @@ Azure Active Directory Identity Protection:
 
  - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

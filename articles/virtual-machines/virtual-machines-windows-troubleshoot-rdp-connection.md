@@ -130,7 +130,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
 
 VM に対して 2 つ以上のリモート デスクトップ接続が同時に必要でない場合、サーバー マネージャーを使用して、リモート デスクトップ サーバーのロールを削除することができます。
 
-詳細については、["使用できるリモート デスクトップ ライセンス サーバーがありません" で失敗する Azure VM](http://blogs.msdn.com/b/wats/archive/2014/01/21/rdp-to-azure-vm-fails-with-quot-no-remote-desktop-license-servers-available-quot.aspx) に関するブログ投稿をご覧ください。
+詳細については、["使用できるリモート デスクトップ ライセンス サーバーがありません" で失敗する Azure VM](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/) に関するブログ投稿をご覧ください。
 
 <a id="rdpname"></a>
 ### Remote Desktop は、コンピューター "name" を見つけることができません。
@@ -210,4 +210,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

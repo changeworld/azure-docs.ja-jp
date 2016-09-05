@@ -55,7 +55,7 @@
 
 1. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) *から*、Azure の Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net** など) *に*マッピングします。
 
-> [AZURE.NOTE] レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、**awverify.contoso.com** を **contoso.trafficmanager.net** にマッピングしてください。
+> [AZURE.NOTE] また、レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、**contoso.trafficmanager.net** への **awverify.contoso.com** の TXT レコードを作成してください。
 
 1. レジストラーで DNS レコードの追加または変更が完了したら、変更を保存します。
 
@@ -72,4 +72,4 @@
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

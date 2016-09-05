@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
 # Azure Functions における Service Bus トリガーとキューとトピックに使用するバインド
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Azure Service Bus のトリガーとバインドを構成したりコーディングしたりする方法について説明します。
 
@@ -28,16 +30,16 @@
 
 #### function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: キューまたはトピック、キューまたはトピックのメッセージの関数コードで使用される変数名。 
-- `queueName`: キューのトリガーのみの場合は、ポーリングするキューの名前。
-- `topicName`: トピックのトリガーのみの場合は、ポーリングするトピックの名前。
-- `subscriptionName`: トピックのトリガーのみの場合は、サブスクリプション名。
-- `connection`: Service Bus 接続文字列を含むアプリ設定の名前。接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間に使用する必要があります。接続文字列に管理権限がない場合は、`accessRights` プロパティを設定します。`connection` を空のままにすると、トリガーまたはバインドは、AzureWebJobsServiceBus アプリ設定で指定される、Function App の既定の Service Bus 接続文字列で動作します。
-- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。アクセス許可の管理を提供しない接続文字列を使用している場合、`listen` に設定します。それ以外の場合は、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
+- `name`: キューまたはトピック、キューまたはトピックのメッセージの関数コードで使用される変数名。
+- `queueName`: (キュー トリガーのみ) ポーリングするキューの名前。
+- `topicName`: (トピック トリガーのみ) ポーリングするトピックの名前。
+- `subscriptionName`: (トピック トリガーのみ) サブスクリプション名。
+- `connection`: Service Bus 接続文字列を含むアプリ設定の名前。接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。接続文字列に管理権限がない場合は、`accessRights` プロパティを設定します。`connection` を空のままにすると、トリガーまたはバインドは、AzureWebJobsServiceBus アプリ設定で指定される Function App の既定の Service Bus 接続文字列で動作します。
+- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。manage アクセス権を提供しない接続文字列を使用している場合は、`listen` に設定します。それ以外の場合は、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
 - `type`: *serviceBusTrigger* に設定する必要があります。
-- `direction`: *in* に設定する必要があります。 
+- `direction`: *in* に設定する必要があります。
 
 Service Bus キューのトリガーに使用する *function.json* の例
 
@@ -80,37 +82,37 @@ Service Bus キュー メッセージを、次のいずれかの型に逆シリ�
 
 * オブジェクト (JSON)
 * string
-* byte array 
-* `BrokeredMessage` (C#) 
+* byte array
+* `BrokeredMessage` (C#)
 
 #### <a id="sbpeeklock"></a> PeekLock 動作
 
-Functions では、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は、`Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
+Functions ランタイムは、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
 
 #### <a id="sbpoison"></a> 有害メッセージの処理
 
 Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。
 
-#### <a id="sbsinglethread"></a> シングル スレッド
+#### <a id="sbsinglethread"></a> シングルスレッド
 
-既定では、Functions ランタイムは、複数のキュー メッセージを同時に処理します。一度に 1 つのキューまたはトピックのメッセージのみを処理するように、ランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrrentCalls` を 1 に設定します。*host.json* ファイルの詳細については、開発者向けリファレンスの記事「[Folder Structure](functions-reference.md#folder-structure)」と、WebJobs.Script リポジトリ Wiki の「[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)」を参照してください。
+既定では、Functions ランタイムは、複数のキュー メッセージを同時に処理します。一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrrentCalls` を 1 に設定します。*host.json* ファイルの詳細については、開発者向けリファレンスの記事「[フォルダー構造](functions-reference.md#folder-structure)」と、WebJobs.Script リポジトリ Wiki の「[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)」を参照してください。
 
 ## <a id="sboutput"></a>Service Bus キューまたはトピックの出力バインド
 
 #### function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。 
-- `queueName`: キューのトリガーのみの場合は、ポーリングするキューの名前。
-- `topicName`: トピックのトリガーのみの場合は、ポーリングするトピックの名前。
-- `subscriptionName`: トピックのトリガーのみの場合は、サブスクリプション名。
+- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
+- `queueName`: (キュー トリガーのみ) ポーリングするキューの名前。
+- `topicName`: (トピック トリガーのみ) ポーリングするトピックの名前。
+- `subscriptionName`: (トピック トリガーのみ) サブスクリプション名。
 - `connection`: Service Bus のトリガーと同じです。
-- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。アクセス許可の管理を提供しない接続文字列を使用している場合、`send` に設定します。それ以外の場合は、Functions ランタイムは、キューの作成などの管理権限を必要とする操作を試行し、失敗する可能性があります。
+- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。manage アクセス権を提供しない接続文字列を使用している場合は、`send` に設定します。それ以外の場合は、Functions ランタイムは、キューの作成などの管理権限を必要とする操作を試行し、失敗する可能性があります。
 - `type`: *serviceBus* に設定する必要があります。
-- `direction`: *out* に設定する必要があります。 
+- `direction`: *out* に設定する必要があります。
 
-Service Bus キュー メッセージを記述するために、タイマー トリガーを使用する *function.json* の例
+Service Bus キュー メッセージを記述するためにタイマー トリガーを使用する *function.json* の例を次に示します。
 
 ```JSON
 {
@@ -140,7 +142,7 @@ Azure Functions は、次の型のいずれかから Service Bus キュー メ�
 
 * オブジェクト (常に JSON メッセージを作成し、関数が終了したときに、値が null である場合は、null オブジェクトでメッセージを作成)
 * string (関数が終了したときに、値が null でない場合は、メッセージを作成します)
-* byte array (string と同様に動作) 
+* byte array (string と同様に動作)
 * `BrokeredMessage` (C#、string と同様に動作)
 
 C# 関数で複数のメッセージを作成するには、`ICollector<T>` または `IAsyncCollector<T>` を使用できます。`Add` メソッドを呼び出すときに、メッセージが作成されます。
@@ -187,4 +189,4 @@ module.exports = function (context, myTimer) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

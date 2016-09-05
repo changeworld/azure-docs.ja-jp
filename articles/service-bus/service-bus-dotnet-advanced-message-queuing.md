@@ -22,11 +22,11 @@ Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラッ�
 
 サービス バスでの AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
-この記事では、Service Bus .NET API を使って .NET アプリケーションからサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-java-how-to-use-jms-api-amqp.md)があります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、Service Bus .NET API を使用して .NET アプリケーションから Service Bus のブローカー メッセージング機能 (キュー、およびトピックの発行/サブスクライブ) を使用する方法を説明します。標準 Java Message Service (JMS) API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-java-how-to-use-jms-api-amqp.md)があります。これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
 
 ## Service Bus の概要
 
-この記事は、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+この記事は、"queue1" という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure ポータル][]を使用して名前空間とキューを作成できます。Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 ## Service Bus SDK のダウンロード
 
@@ -63,7 +63,7 @@ App.config ファイルの例を以下に示します。
 Endpoint=sb://[namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp
 ```
 
-この場合の `[namespace]` と `[SAS key]` は [Azure クラシック ポータル][]から取得されます。詳細については、「Service Bus キューの使用方法」を参照してください。
+`[namespace]` と `[SAS key]` は、[Azure ポータル][]から取得されます。詳細については、「Service Bus キューの使用方法」を参照してください。
 
 AMQP を使用するときには、接続文字列の末尾に `;TransportType=Amqp` を追加します。これで、AMQP 1.0 を使って Service Bus に接続するようにクライアント ライブラリに通知されます。
 
@@ -291,26 +291,9 @@ Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 exit
 ```
 
-## サポートされていない機能および制限
-
-.NET Service Bus API の次の機能は、現在のところ AMQP の使用時はサポートされていません。
-
-* トランザクション
-* 転送先を経由した送信
-* メッセージ シーケンス番号による受信
-* メッセージとセッションの参照
-* セッションの状態
-* バッチ ベースの API
-* 受信のスケールアウト
-* サブスクリプション ルールの実行時間の操作
-* セッション ロックの更新
-* いくつかの動作の小さな違い
-
-詳細については、「[Service Bus AMQP の概要](service-bus-amqp-dotnet.md)」をご覧ください。この記事には、サポートされていない API の詳細なリストが含まれています。
-
 ## 概要
 
-この記事では、AMQP 1.0 と Service Bus .NET API を使って .NET からサービス バスのブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法を説明しました。
+この記事では、AMQP 1.0 と Service Bus .NET API を使用して .NET から Service Bus のブローカー メッセージング機能 (キュー、およびトピックの発行/サブスクライブ) を使用する方法を説明しました。
 
 Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語からも使用できます。サービス バスで AMQP 1.0 を使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。詳細については、「[Service Bus AMQP の概要](service-bus-amqp-dotnet.md)」をご覧ください。
 
@@ -322,6 +305,6 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
 * [Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
  
-[Azure クラシック ポータル]: https://manage.windowsazure.com
+[Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

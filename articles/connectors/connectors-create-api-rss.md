@@ -14,18 +14,11 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # RSS コネクタの使用
-
-
-
-RSS コネクタは、次のツールから使用できます。
-
-- [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [フロー](http://flows.microsoft.com)
+RSS は、ブログ記事やニュースのヘッドラインのように、頻繁に更新されるコンテンツを発行するために使用する一般的な Web 配信形式です。多くのコンテンツ発行元は、ユーザーがサブスクライブすることができる RSS フィードを提供します。新しい項目を RSS フィードに発行するときに、RSS コネクタを使用してフィード情報を取得しフローをトリガーします。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -40,13 +33,13 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 ### RSS のアクション
 実行できるアクションは以下のとおりです。
 
-|アクション|説明|
+|アクション|Description|
 |--- | ---|
 |[ListFeedItems](connectors-create-api-rss.md#listfeeditems)|すべての RSS フィード アイテムを取得します。|
 ### RSS のトリガー
 次のイベントをリッスンできます。
 
-|トリガー | 説明|
+|トリガー | Description|
 |--- | ---|
 |新しいフィード アイテムが公開されたとき|新しいフィードが公開されたときに、ワークフローをトリガーします。|
 
@@ -65,11 +58,11 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 
 ```GET: /OnNewFeed```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |feedUrl|string|○|query|なし|フィード URL|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -88,11 +81,11 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 
 ```GET: /ListFeedItems```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |feedUrl|string|○|query|なし|フィード URL|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -113,7 +106,7 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -122,14 +115,14 @@ RSS コネクタは、アクションとして使用できます。RSS コネク
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|あり |
-|title|string|あり |
-|content|string|あり |
-|links|array|いいえ |
-|updatedOn|string|いいえ |
+|id|string|はい |
+|title|string|はい |
+|content|string|はい |
+|links|array|なし |
+|updatedOn|string|なし |
 
 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

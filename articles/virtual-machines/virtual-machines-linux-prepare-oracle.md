@@ -3,6 +3,7 @@ pageTitle="Azure 用の Oracle Linux 仮想マシンの準備 | Microsoft Azure"
 description="Microsoft Azure で Linux を実行する Oracle 仮想マシンの構成手順を説明します。"
 services="virtual-machines-linux"
 authors="bbenz"
+manager="timlt"
 documentationCenter="virtual-machines"
 tags="azure-service-management,azure-resource-manager"
 />
@@ -225,4 +226,4 @@ Azure 用の Oracle Linux 7 仮想マシンを準備する手順は、Oracle Lin
 
 15.  Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

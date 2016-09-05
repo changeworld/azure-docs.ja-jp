@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Azure Mobile Apps での認証および承認
 
 ## App Service の認証および承認とは
 
-> [AZURE.NOTE] このトピックは、Web、モバイル、および API Apps に関する説明が記載された[App Service の認証/承認](../app-service/app-service-authentication-overview.md)に関する記事に統合される予定です。
+> [AZURE.NOTE] このトピックは、Web、Mobile、および API Apps に関する説明が記載された[App Service の認証/承認](../app-service/app-service-authentication-overview.md)に関するトピックに統合される予定です。
 
 App Service の認証および承認とは、アプリのバックエンドのコードを変更せずに、アプリケーションがユーザーのログインを許可する機能です。これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
@@ -104,4 +104,4 @@ App Service の認証および承認では、**要求が認証されない場合
 [Microsoft アカウント ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter ログインを使用するようにアプリを構成する方法]: app-service-mobile-how-to-configure-twitter-authentication.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

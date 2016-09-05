@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="06/03/2016"
+ ms.date="08/23/2016"
  ms.author="larryfr"/>
 
 #Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続します。
@@ -182,4 +182,4 @@ __解決策__: このエラーを解決するには、次の手順を使用し�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

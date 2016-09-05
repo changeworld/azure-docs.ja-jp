@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure"
-   ms.date="06/10/2016"
+   ms.date="08/23/2016"
    ms.author="iainfou"/>
 
 # Azure CLI を使用して、完全な Linux 環境を作成する
@@ -35,7 +35,7 @@
 このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI](../xplat-cli-install.md) が必要です。JSON 解析ツールも必要です。この例では、[jq](https://stedolan.github.io/jq/) を使用します。
 
 ## クイック コマンド
-次のクイック コマンドは、カスタム環境の構築に使用できます。環境構築を行うと各コマンドがどのように機能するかの詳細については、[詳細なチュートリアル](#detailed-walkthrough) を参照してください。
+次のクイック コマンドは、カスタム環境の構築に使用できます。環境構築を行うと各コマンドがどのように機能するかの詳細については、[詳細なチュートリアル](#detailed-walkthrough)を参照してください。
 
 リソース グループを作成します。
 
@@ -200,7 +200,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -218,7 +218,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -439,7 +439,7 @@ azure group show TestRG --json | jq '.'
 }
 ```
 
-次に、VM のデプロイ先となるサブネットを `TestVnet` 仮想ネットワーク内に作成します。すでに作成したリソース ( `TestRG`リソース グループと `TestVNet` 仮想ネットワーク) と `azure network vnet subnet create` コマンドを使用します。以下の通り、サブネット名 `FrontEnd` とサブネットのアドレス プレフィックス `192.168.1.0/24` を追加します。
+次に、VM のデプロイ先となるサブネットを `TestVnet` 仮想ネットワーク内に作成します。既に作成したリソース (`TestRG` リソース グループと `TestVNet` 仮想ネットワーク) と `azure network vnet subnet create` コマンドを使用します。以下の通り、サブネット名 `FrontEnd` とサブネットのアドレス プレフィックス `192.168.1.0/24` を追加します。
 
 ```bash
 azure network vnet subnet create -g TestRG -e TestVNet -n FrontEnd -a 192.168.1.0/24
@@ -525,7 +525,7 @@ data:    FQDN                            : testsubdomain.westeurope.cloudapp.azu
 info:    network public-ip create command OK
 ```
 
-これも最上位のリソースであるため、`azure group show` を使用して確認できます。
+パブリック IP アドレスは最上位のリソースでもあるため、`azure group show` を使用して確認できます。
 
 ```bash
 azure group show TestRG --json | jq '.'
@@ -584,7 +584,7 @@ azure group show TestRG --json | jq '.'
 }
 ```
 
-より完全な `azure network public-ip show` コマンドを使用して、サブドメインの完全修飾ドメイン名 (FQDN) など、リソースの詳細を調査することができます。パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていないことに注意してください。そのため、ロード バランサーが必要になりますが、これはまだ作成されていません。
+完全な `azure network public-ip show` コマンドを使用して、サブドメインの完全修飾ドメイン名 (FQDN) など、リソースの詳細を調査することができます。パブリック IP アドレス リソースは論理的に割り当てられていますが、特定のアドレスはまだ割り当てられていません。IP アドレスを取得するには、ロード バランサーが必要ですが、まだ作成されていません。
 
 ```bash
 azure network public-ip show TestRG TestPIP --json | jq '.'
@@ -610,7 +610,7 @@ azure network public-ip show TestRG TestPIP --json | jq '.'
 ```
 
 ## ロード バランサーと IP プールの作成
-ロード バランサーを作成するときに複数の VM にトラフィックを分散できます。たとえば、Web アプリケーションを実行している場合に、これを行うことができます。メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。
+ロード バランサーを作成するときに複数の VM にトラフィックを分散できます。メンテナンスや大きな負荷が発生した場合に、ユーザー要求に応答する複数の VM を実行することで、アプリケーションに冗長性も加わります。
 
 次によってロード バランサーを作成します。
 
@@ -635,7 +635,7 @@ data:    Location                        : westeurope
 data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
-現在ロード バランサーは全く空であるため、いくつかの IP プールを作成しましょう。ロード バランサーには、フロントエンドに 1 つ、バックエンドに 1 つの 2 つの IP プールを作成します。フロントエンド IP プールは公開されます。以前に作成した PIP を割り当てる場所にもなります。接続する VM の保存先として、バックエンド プール を使用します。これにより、トラフィックは、VM にロード バランサーを経由できます。
+現在ロード バランサーは全く空であるため、いくつかの IP プールを作成しましょう。ロード バランサーには、フロントエンドに 1 つ、バックエンドに 1 つの 2 つの IP プールを作成します。フロントエンド IP プールは公開されます。以前に作成した PIP を割り当てる場所にもなります。接続する VM の保存先として、バックエンド プールを使用します。これにより、トラフィックは、VM にロード バランサーを経由できます。
 
 まず、フロント エンド IP プールを作成しましょう。
 
@@ -657,7 +657,7 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/Te
 info:    network lb frontend-ip create command OK
 ```
 
-以前に作成した TestLBPIP を渡すために、`--public-ip-name` スイッチを使用している方法に注意してください。これは、インターネット経由で VM に到達できるように、パブリック IP アドレスをロード バランサーに割り当てます。
+以前に作成した TestLBPIP を渡すために、`--public-ip-name` スイッチを使用している方法に注意してください。パブリック IP アドレスをロード バランサーに割り当てることで、インターネット経由で VM に到達できるようになります。
 
 次に、今度はバック エンド トラフィック用に 2 つ目の IP プールを作成しましょう。
 
@@ -754,7 +754,7 @@ SSH に対する 2 つ目の NAT 規則について、手順を繰り返しま�
 azure network lb inbound-nat-rule create -g TestRG -l TestLB -n VM2-SSH -p tcp -f 4223 -b 22
 ```
 
-さらに、規則を IP プールに接続する TCP ポート 80 の NAT 規則の作成に進みましょう。これを行う場合、VM にルールを個別にフックする代わりに、IP プールから VM を単に追加または削除できます。ロード バランサーは、トラフィックのフローを自動的に調整します。
+さらに、規則を IP プールに接続する TCP ポート 80 の NAT 規則の作成に進みましょう。規則を個々の VM に接続するのではなく、IP プールに接続すると、IP プールから VM を追加または削除するだけで対応できます。ロード バランサーは、トラフィックのフローを自動的に調整します。
 
 ```bash
 azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
@@ -807,7 +807,7 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-ここでは、正常性チェックに 15 秒の間隔を指定したため、最大 4 プローブ (1 分) 失敗すると、ロード バランサーによりホストが機能しなくなったと見なされます。
+ここでは、正常性チェックの間隔を 15 秒に指定しました。4 回のプローブ (1 分間) までは、ホストが機能していないとロード バランサーで判断されません。
 
 ## ロード バランサーの確認
 ロード バランサーの構成を確認できました。実行する手順を次に示します。
@@ -816,7 +816,7 @@ info:    network lb probe create command OK
 2. フロントエンド IP プールを作成し、パブリック IP が割り当てられます。
 3. 次に、VM が接続できるバックエンド IP プールを作成します。
 4. その後、管理用に VM への SSH 通信を許可する NAT 規則と Web アプリ用に TCP ポート 80 を許可する規則を作成します。
-5. 最後に、VM を定期的にチェックする正常性プローブを追加します。これにより、機能しないまたはコンテンツを提供しない VM にユーザーがアクセスを試みなくてもよくなります。
+5. 最後に、VM を定期的にチェックする正常性プローブを追加します。この正常性プローブで、機能しないまたはコンテンツを提供しない VM にユーザーがアクセスを試みなくてもよくなります。
 
 ロード バランサーがどのように見えるようになったか確認しましょう。
 
@@ -943,7 +943,7 @@ azure network lb show -g TestRG -n TestLB --json | jq '.'
 
 ## Linux VM で使用する NIC の作成
 
- ルールを適用するため、NIC はプログラムで使用できます。複数でも可能になります。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けていることに注意してください。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
+ ルールを適用するため、NIC はプログラムで使用できます。複数でも可能になります。次の `azure network nic create` コマンドでは、NIC をロード バックエンド IP プールに接続し、SSH トラフィックを許可する NAT 規則を関連付けています。これを行うには、`<GUID>` の代わりに、Azure サブスクリプションのサブスクリプション ID を指定する必要があります。
 
 ```bash
 azure network nic create -g TestRG -n LB-NIC1 -l westeurope --subnet-vnet-name TestVNet --subnet-name FrontEnd \
@@ -978,7 +978,7 @@ data:
 info:    network nic create command OK
 ```
 
-詳細を確認するには、直接リソースを調査します。このような場合には、`azure network nic show` コマンドを使用します。
+詳細を確認するには、直接リソースを調査します。リソースを確認するには、`azure network nic show` コマンドを使用します。
 
 ```bash
 azure network nic show TestRG LB-NIC1 --json | jq '.'
@@ -1054,7 +1054,7 @@ azure network nsg rule create --protocol tcp --direction inbound --priority 1001
     --destination-port-range 80 --access allow -g TestRG -a TestNSG -n HTTPRule
 ```
 
-> [AZURE.NOTE] 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。これは、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。これは、ポートを開くことを意味し、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れなければなりません。ポートは、通常動的です。
+> [AZURE.NOTE] 受信規則は、受信ネットワーク接続のフィルターです。この例では、NSG を VM の仮想 NIC にバインドします。これは、ポート 22 へのすべての要求が VM の NIC に渡されることを意味します。この受信規則は、エンドポイントではなく、ネットワーク接続に関するルールであり、つまり従来の配置でのことです。ポートを開くには、`--source-port-range` のセットを ' *' (既定値) にして、**任意の** 要求ポートから受信要求を受け入れる必要があります。ポートは、通常動的です。
 
 ## NIC へのバインド
 
@@ -1083,14 +1083,14 @@ azure availset create -g TestRG -n TestAvailSet -l westeurope
 
 ## Linux VM の作成
 
-これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md) に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。
+これまでの手順で、インターネットにアクセス可能な VM をサポートするためのストレージおよびネットワーク リソースを作成しました。ここでは、その VM を作成し、パスワードのない SSH キーを使用してそれらをセキュリティで保護します。この場合は、最新の LTS に基づいて Ubuntu VM を作成します。[Azure での仮想マシン イメージの検索](virtual-machines-linux-cli-ps-findimage.md)に関するページで説明されているように、`azure vm image list` を使用してそのイメージの情報を見つけます。
 
-コマンド `azure vm image list westeurope canonical | grep LTS` を使用してイメージを選択します。この例では、 `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` を使用します。最後のフィールドでは、今後常に直近に構築されたように `latest` を渡します。(使用する文字列は `canonical:UbuntuServer:14.04.4-LTS:14.04.201604060` です)。
+コマンド `azure vm image list westeurope canonical | grep LTS` を使用してイメージを選択します。この例では、`canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` を使用します。最後のフィールドでは、今後常に直近に構築されたように `latest` を渡します(使用する文字列は `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150` です)。
 
 この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キーのペアがない場合、作成することができます。
 
 - 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
-- 手動では [自分で作成する手順](virtual-machines-linux-ssh-from-linux.md) を使用します。
+- 手動では [自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md) を使用します。
 
 また、VM を作成した後、SSH 接続を認証するのに--管理パスワード方法を使用できます。この方法は通常安全性が低いです。
 
@@ -1107,7 +1107,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -1117,8 +1117,8 @@ azure vm create \
 ```bash
 info:    Executing command vm create
 + Looking up the VM "TestVM1"
-info:    Verifying the public key SSH file: /home/ifoulds/.ssh/id_rsa.pub
-info:    Using the VM Size "Standard_A1"
+info:    Verifying the public key SSH file: /home/ahmet/.ssh/id_rsa.pub
+info:    Using the VM Size "Standard_DS1"
 info:    The [OS, Data] Disk or image configuration requires storage account
 + Looking up the storage account computeteststore
 + Looking up the availability set "TestAvailSet"
@@ -1144,17 +1144,11 @@ The authenticity of host '[testlb.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx
 ECDSA key fingerprint is 94:2d:d0:ce:6b:fb:7f:ad:5b:3c:78:93:75:82:12:f9.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '[testlb.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-58-generic x86_64)
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 
- * Documentation:  https://help.ubuntu.com/
-
-  System information as of Wed Apr 27 23:44:06 UTC 2016
-
-  System load: 0.37              Memory usage: 5%   Processes:       81
-  Usage of /:  37.3% of 1.94GB   Swap usage:   0%   Users logged in: 0
-
-  Graph this data and manage this system at:
-    https://landscape.canonical.com/
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
     http://www.ubuntu.com/business/services/cloud
@@ -1163,13 +1157,15 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-58-generic x86_64)
 0 updates are security updates.
 
 
-
 The programs included with the Ubuntu system are free software;
 the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
 
 ops@TestVM1:~$
 ```
@@ -1187,7 +1183,7 @@ azure vm create \
     --vnet-name TestVnet \
     --vnet-subnet-name FrontEnd \
     --storage-account-name computeteststore \
-    --image-urn canonical:UbuntuServer:14.04.4-LTS:latest \
+    --image-urn canonical:UbuntuServer:16.04.0-LTS:latest \
     --ssh-publickey-file ~/.ssh/id_rsa.pub \
     --admin-username ops
 ```
@@ -1204,29 +1200,29 @@ azure vm show TestRG TestVM1
 info:    Executing command vm show
 + Looking up the VM "TestVM1"
 + Looking up the NIC "LB-NIC1"
-data:    Id                              :/subscriptions/8fa5cd83-7fbb-431a-af16-4a20dede8802/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachines/TestVM1
+data:    Id                              :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/TestVM1
 data:    ProvisioningState               :Succeeded
 data:    Name                            :TestVM1
 data:    Location                        :westeurope
 data:    Type                            :Microsoft.Compute/virtualMachines
 data:
 data:    Hardware Profile:
-data:      Size                          :Standard_A1
+data:      Size                          :Standard_DS1
 data:
 data:    Storage Profile:
 data:      Image reference:
 data:        Publisher                   :canonical
 data:        Offer                       :UbuntuServer
-data:        Sku                         :14.04.4-LTS
+data:        Sku                         :16.04.0-LTS
 data:        Version                     :latest
 data:
 data:      OS Disk:
 data:        OSType                      :Linux
-data:        Name                        :cli1cca1d20a1dcf56c-os-1461800591317
+data:        Name                        :clib45a8b650f4428a1-os-1471973896525
 data:        Caching                     :ReadWrite
 data:        CreateOption                :FromImage
 data:        Vhd:
-data:          Uri                       :https://computeteststore.blob.core.windows.net/vhds/cli1cca1d20a1dcf56c-os-1461800591317.vhd
+data:          Uri                       :https://computeteststore.blob.core.windows.net/vhds/clib45a8b650f4428a1-os-1471973896525.vhd
 data:
 data:    OS Profile:
 data:      Computer Name                 :TestVM1
@@ -1238,13 +1234,13 @@ data:    Network Profile:
 data:      Network Interfaces:
 data:        Network Interface #1:
 data:          Primary                   :true
-data:          MAC Address               :00-0D-3A-20-F8-8B
+data:          MAC Address               :00-0D-3A-24-D4-AA
 data:          Provisioning State        :Succeeded
 data:          Name                      :LB-NIC1
 data:          Location                  :westeurope
 data:
 data:    AvailabilitySet:
-data:      Id                            :/subscriptions/guid/resourceGroups/testrg/providers/Microsoft.Compute/availabilitySets/TESTAVAILSET
+data:      Id                            :/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/TESTAVAILSET
 data:
 data:    Diagnostics Profile:
 data:      BootDiagnostics Enabled       :true
@@ -1252,19 +1248,20 @@ data:      BootDiagnostics StorageUri    :https://computeteststore.blob.core.win
 data:
 data:      Diagnostics Instance View:
 info:    vm show command OK
+
 ```
 
 
 ## 環境をテンプレートとしてエクスポートします。
-これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。つまり、この JSON テンプレートを参照することで全体の環境を構築することができます。[JSON テンプレートを手動で構築](../resource-group-authoring-templates.md) できます。または単純にJSON テンプレートを作成する既存の環境をエクスポートすることもできます。
+これで環境を構築できました。同じパラメーターを使用して追加の開発環境を作成する場合、または、一致する運用環境を作成する場合はどのようにすべきでしょうか。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。この JSON テンプレートを参照することで全体の環境を構築します。[JSON テンプレートを手動で構築](../resource-group-authoring-templates.md) できます。または単純にJSON テンプレートを作成する既存の環境をエクスポートすることもできます。
 
 ```bash
 azure group export TestRG
 ```
 
-現在の作業ディレクトリ内に`TestRG.json` ファイルが作成されます。このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、VM などを含むリソース名が表示されます。前に示した `azure group export` コマンドに `-p` または `--includeParameterDefaultValue` を追加することでテンプレート ファイルにこれらを入力できます。リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../resource-group-authoring-templates.md#parameters) します。
+このコマンドで、現在の作業ディレクトリ内に `TestRG.json` ファイルが作成されます。このテンプレートから新しい環境を作成すると、ロード バランサー、ネットワーク インターフェイス、または VM を含むリソース名が表示されます。前に示した `azure group export` コマンドに `-p` または `--includeParameterDefaultValue` パラメーターを追加することでテンプレート ファイルにこれらの名前を入力できます。リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../resource-group-authoring-templates.md#parameters) します。
 
-テンプレートから新しい環境の作成
+テンプレートから環境を作成するには:
 
 ```bash
 azure group deployment create -f TestRG.json -g NewRGFromTemplate
@@ -1276,4 +1273,4 @@ azure group deployment create -f TestRG.json -g NewRGFromTemplate
 
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

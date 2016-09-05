@@ -62,7 +62,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対するリモート デスクトップ接続を使用してリモート接続を確立し、仮想マシンにログオンする必要があります。手順については、次の項目を参照してください。
 
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。
-- [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
+- [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
 
 リモート デスクトップまたは SSH について問題が発生する場合は、[VMAccess](../articles/virtual-machines/virtual-machines-windows-extensions-features.md) 拡張機能をインストールして使用し、問題を修正してください。
@@ -110,7 +110,7 @@ Azure によって提供されるイメージには、事前に構成された�
 
 ## Azure では、仮想マシン上でウイルス対策を実行できますか。
 
-Azure ではウイルス対策ソリューションとしていくつかのオプションが提供されていますが、管理はユーザーに委ねられています。これは、マルウェア対策ソフトウェアを個別のサブスクリプションで導入したい場合や、スキャン実行、更新プログラム インストールのタイミングを指定したい場合などを考慮したものです。ユーザーは、Windows 仮想マシンの作成時やそれ以降のタイミングで、Microsoft マルウェア対策、Symantec Endpoint Protection、または TrendMicro Deep Security Agent 用の VM 拡張機能により、ウイルス対策サポートを追加することができます。Symantec と TrendMicro 用の拡張機能では、無償の期間限定の試用版サブスクリプションか、既存のエンタープライズ サブスクリプションを使用することができます。Microsoft マルウェア対策は無償です。詳細については、次のリンクを参照してください。
+Azure ではウイルス対策ソリューションとしていくつかのオプションが提供されていますが、管理はユーザーに委ねられています。これは、マルウェア対策ソフトウェアを個別のサブスクリプションで導入したい場合や、スキャンを実行するタイミングや更新プログラム インストールのタイミングを指定したい場合などを考慮したものです。ユーザーは、Windows 仮想マシンの作成時やそれ以降のタイミングで、Microsoft マルウェア対策、Symantec Endpoint Protection、または TrendMicro Deep Security Agent 用の VM 拡張機能により、ウイルス対策サポートを追加することができます。Symantec と TrendMicro 用の拡張機能では、無償の期間限定の試用版サブスクリプションか、既存のエンタープライズ サブスクリプションを使用することができます。Microsoft マルウェア対策は無償です。詳細については、次のリンクを参照してください。
 
 - [Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404207)
 - [Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404206)
@@ -156,4 +156,4 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 [Windows 仮想マシンを作成するさまざまな方法](../articles/virtual-machines/virtual-machines-windows-creation-choices.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

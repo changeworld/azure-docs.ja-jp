@@ -3,7 +3,7 @@
    description="SQL AlwaysOn と連携するようにロード バランサーを構成し、PowerShell を利用して SQL の実装用にロード バランサーを作成する方法"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # SQL AlwaysOn のロード バランサーの構成
 
@@ -36,7 +36,7 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 ## サービスに内部ロード バランサーを追加する 
 
-### 手順 1.
+### 手順 1
 
 次の例では、"Subnet-1" という名前のサブネットを含む仮想ネットワークを構成します。
 
@@ -53,7 +53,7 @@ SQL Server AlwaysOn (リスナー) エンドポイントでは、ILB のサポ�
 
 上の例では、sqlsvc1 および sqlsvc2 という 2 つの VM がクラウド サービス "Sqlsvc" で実行されます。DirectServerReturn スイッチで ILB を作成したら、負荷分散されたエンドポイントを ILB に追加して、SQL が可用性グループのリスナーを構成できるようにします。
 
-SQL AlwaysOn の作成の詳細については、「[Using the Portal Gallery (ポータル ギャラリーの使用)](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)」を参照してください。
+[ポータル ギャラリーを使用した](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx) SQL AlwaysOn の作成について、詳細を参照できます。
 
 
 
@@ -68,4 +68,4 @@ SQL AlwaysOn の作成の詳細については、「[Using the Portal Gallery (�
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -60,14 +60,14 @@ Azure App Service Web Apps からドメインを購入した場合は、「[Web 
 
 	![ゾーン レコードの追加](./media/web-sites-godaddy-custom-domain-name/godaddy-addzonerecord.png)
 
-	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 **[Points to]** フィールドを、Azure Web アプリの IP アドレスに設定する必要があります。
+	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 また、**[Points to]** フィールドを、Azure Web アプリの IP アドレスに設定する必要があります。
 
 	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web アプリの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
 
 5. **[Add Another]** をクリックします。
-6. レコードの種類として **[CNAME]** を選択し、**[Host]** 値として **[awverify]**、**[Points to]** 値として **[awverify.&lt;yourwebappname&gt;.azurewebsites.net]** を指定します。
+6. レコードの種類として **[TXT]** を選択し、**[Host]** の値に「**@**」を、**[Points to]** の値に「**&lt;Web アプリ名&gt;.azurewebsites.net**」を指定します。
 
-	> [AZURE.NOTE] この CNAME レコードが Azure で使用され、A レコードまたは最初の CNAME レコードで記述されたドメインの所有者であることが検証されます。ドメインが Azure ポータルで Web アプリにマップされた後、 **awverify** エントリを削除できます。
+	> [AZURE.NOTE] この TXT レコードは、Azure で A レコードまたは最初の TXT レコードで記述されたドメインの所有者であることの検証に使用されます。ドメインが Azure ポータルで Web アプリにマップされた後で、この TXT レコードエントリを削除できます。
 
 5. レコードの追加または変更が完了したら、**[Finish]** をクリックして変更を保存します。
 
@@ -81,4 +81,4 @@ Azure App Service Web Apps からドメインを購入した場合は、「[Web 
 ## 変更内容
 * Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

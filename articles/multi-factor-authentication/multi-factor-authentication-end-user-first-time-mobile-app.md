@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2016" 
+	ms.date="08/22/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での連絡方法としてモバイル アプリを使用する
 
-主要な連絡方法としてモバイル アプリを使用する場合は、この記事を使用できます。モバイル アプリを主要な連絡方法として使用できるよう多要素認証を設定する方法について説明します。
+主要な連絡方法として Microsoft Authenticator アプリを使用する場合は、この記事を使用できます。モバイル アプリを主要な連絡方法として使用できるよう多要素認証を設定する方法について説明します。
 
-Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/ja-JP/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
 
 ## 連絡方法としてモバイル アプリを使用するには
 
@@ -31,7 +31,7 @@ Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/j
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/mobileapp.png)
 
 - [通知] または [ワンタイム パスワード] のいずれかを選択し、[設定] をクリックします。
-- Azure Authenticator アプリがインストールされている電話でアプリを起動し、[バーコードのスキャン] をクリックします。Azure MFA を既に使用しているアカウントまたはサードパーティのアカウントを追加する場合は、「[手動でのアカウントの追加](#adding-an-account-manually)」をご覧ください。
+- Azure Authenticator アプリがインストールされている電話でアプリを起動し、[バーコードのスキャン] をクリックします。Azure MFA を既に使用しているアカウントまたはサードパーティのアカウントを追加する場合は、「<a href="#compte">手動でのアカウントの追加</a>」をご覧ください。
 
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan.png)
 
@@ -70,7 +70,7 @@ Azure MFA を既に使用しているアカウントの場合、バーコード�
 
 ![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/add3rdparty.png)
 
->[AZURE.NOTE]"職場アカウントの追加" と表示されている場合、これは社内参加用であり、多要素認証用ではありません。これは無視してかまいません。
+
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

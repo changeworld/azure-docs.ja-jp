@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性
@@ -54,7 +54,7 @@ Azure サービス (Compute、Azure SQL Database、Azure Storage) を使用す�
 
 |Azure サービス|SLA |月 (30 日) の潜在的なダウンタイム (分)|
 |:------------|:-----|:----------------------------------------:|
-|コンピューティング |99\.95%|21\.6 分 |
+|計算 |99\.95%|21\.6 分 |
 |SQL Database |99\.99%|4\.3 分 |
 |Storage |99\.90%|43\.2 分 |
 
@@ -131,4 +131,4 @@ Azure はさまざまな障害を検出し、処理しますが、アプリケ�
 
 この記事は、Azure アプリケーションの障害復旧と高可用性に関する一連の記事に属しています。このシリーズの次の記事は、「[Microsoft Azure 上に構築されたアプリケーションの高可用性](resiliency-high-availability-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

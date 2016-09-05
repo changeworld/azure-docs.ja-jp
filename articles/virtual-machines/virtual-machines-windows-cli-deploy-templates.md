@@ -14,17 +14,17 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="08/23/2016"
 	ms.author="rasquill"/>
 
 # Azure リソース マネージャー テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理
 
 > [AZURE.SELECTOR]		
- - [PowerShell](virtual-machines-windows-ps-manage.md)		
- - [CLI](virtual-machines-windows-cli-deploy-templates.md)		
+ - [PowerShell](virtual-machines-windows-ps-manage.md)
+ - [CLI](virtual-machines-windows-cli-deploy-templates.md)
 
 </br>
 
 [AZURE.INCLUDE [virtual-machines-common-cli-deploy-templates](../../includes/virtual-machines-common-cli-deploy-templates.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

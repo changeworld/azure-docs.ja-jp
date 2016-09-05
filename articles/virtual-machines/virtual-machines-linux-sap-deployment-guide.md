@@ -4,7 +4,7 @@
    services="virtual-machines-linux,virtual-network,storage"
    documentationCenter="saponazure"
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
@@ -81,7 +81,7 @@
 [dbms-guide-5.5.1]: virtual-machines-linux-sap-dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 "SQL Server 2012 SP1 CU4 以降"
 [dbms-guide-5.5.2]: virtual-machines-linux-sap-dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b "SQL Server 2012 SP1 CU3 以前のリリース"
 [dbms-guide-5.6]: virtual-machines-linux-sap-dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 "Microsoft Azure Marketplace からの SQL Server イメージの使用"
-[dbms-guide-5.8]: virtual-machines-linux-sap-dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 "Azure での 一般的な SAP 用 SQL Server の概要"
+[dbms-guide-5.8]: virtual-machines-linux-sap-dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 "Azure での一般的な SAP 用 SQL Server の概要"
 [dbms-guide-5]: virtual-machines-linux-sap-dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 "SQL Server RDBMS の詳細"
 [dbms-guide-8.4.1]: virtual-machines-linux-sap-dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 "ストレージの構成"
 [dbms-guide-8.4.2]: virtual-machines-linux-sap-dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d "バックアップと復元"
@@ -294,7 +294,7 @@
 [xplat-cli]: ../xplat-cli-install.md
 [xplat-cli-azure-resource-manager]: ../xplat-cli-azure-resource-manager.md
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
 
 Microsoft Azure を使用すると、企業は時間のかかる調達サイクルを省略し、最短時間でコンピューティングとストレージのリソースを取得することができます。Azure Virtual Machines により、企業は SAP NetWeaver ベースのアプリケーションのような従来のアプリケーションを Azure にデプロイし、追加のオンプレミスのリソースを必要とせずに信頼性と可用性を高めることができます。また、Microsoft Azure ではクロス プレミス接続もサポートしており、これにより企業は Azure Virtual Machines を自社のオンプレミス ドメイン、プライベート クラウド、および SAP システム ランドス ケープに積極的に統合できます。
 
@@ -346,7 +346,7 @@ Azure Storage アカウントまたは Azure 仮想ネットワークを別個�
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP リソース
 構成作業では、次のリソースが必要です。
 
-* 次の情報が記載されている SAP ノート [1928533]
+* SAP Note [1928533]
 	* SAP ソフトウェアのデプロイでサポートされる Azure 仮想マシン サイズの一覧
 	* Azure 仮想マシン サイズごとの容量に関する重要な情報
 	* サポートされる SAP ソフトウェアと OS および DB の組み合わせ
@@ -429,7 +429,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
     1. リソース グループ: リソース グループの名前です。新しいグループまたは既に存在するリソース グループの名前を挿入できます。
     1. 場所: 新しい仮想マシンをデプロイする場所を選択します。仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を選択してください。詳細については、[計画ガイド][planning-guide]の「[Microsoft Azure ネットワーク][planning-guide-microsoft-azure-networking]」の章を参照してください。
 1. サイズ: サポートされている VM の種類の一覧については、SAP ノート [1928533] を参照してください。Premium Storage を使用する場合は、適切な種類を選択していることを確認してください。Premium Storage ではすべての VM の種類はサポートしていません。詳細については、[計画ガイド][planning-guide]の「[ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」と「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
-1. [設定]
+1. Settings
     1. ストレージ アカウント: 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成することができます。さまざまなストレージ タイプの詳細については、[DBMS ガイド][dbms-guide]の「[Microsoft Azure Storage][dbms-guide-2.3]」の章を参照してください。すべてのストレージ タイプが SAP アプリケーションの実行でサポートされるわけではない点に注意してください。
     1. 仮想ネットワークとサブネット: 仮想マシンをイントラネットに統合する場合、オンプレミス ネットワークに接続する仮想マシンを選択します。
     1. パブリック IP アドレス: 使用するパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成するためのパラメーターを入力します。パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスすることができます。仮想マシンへのアクセスをフィルター処理するには、ネットワーク セキュリティ グループも作成してください。
@@ -979,4 +979,4 @@ Azure のパフォーマンス メトリックの収集は、複数のソース�
 
 SAP ノート [1999351] を使用したトラブルシューティングで問題が解決しない場合、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、構成スクリプト Set-AzureRmVMAEMExtension を再実行してください。ストレージ分析または診断カウンターは、有効になった直後には作成されない場合があるため、1 時間待機しなくてはならない場合があります。問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

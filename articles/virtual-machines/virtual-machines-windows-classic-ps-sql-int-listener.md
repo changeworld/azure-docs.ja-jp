@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/12/2016"
+	ms.date="08/19/2016"
 	ms.author="MikeRayMSFT" />
 
 # Azure での AlwaysOn 可用性グループの ILB リスナーの構成
@@ -22,7 +22,7 @@
 - [内部リスナー](virtual-machines-windows-classic-ps-sql-int-listener.md)
 - [外部リスナー](virtual-machines-windows-classic-ps-sql-ext-listener.md)
 
-## 概要
+## Overview
 
 このトピックでは、**内部ロード バランサー (ILB)** を使用して AlwaysOn 可用性グループのリスナーを構成する方法について説明します。
 
@@ -104,7 +104,9 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 		$ServiceName="<MyServiceName>" # the name of the cloud service that contains the AG nodes
 		(Get-AzureInternalLoadBalancer -ServiceName $ServiceName).IPAddress
 
-1. VM のいずれかで、次の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
+1. VM のいずれかで、ご利用のオペレーティング システム用の PowerShell スクリプトをテキスト エディターにコピーし、変数を先ほどメモした値に設定します。
+
+    Windows Server 2012 以降の場合、次のスクリプトを使用します。
 
 		# Define variables
 		$ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -113,10 +115,19 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 		Import-Module FailoverClusters
 
-		# If you are using Windows Server 2012 or higher, use the Get-Cluster Resource command. If you are using Windows Server 2008 R2, use the cluster res command. Both commands are commented out. Choose the one applicable to your environment and remove the # at the beginning of the line to convert the comment to an executable line of code.
+	    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+		
+    Windows Server 2008 R2 の場合、次のスクリプトを使用します。
 
-		# Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-		# cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+		# Define variables
+		$ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+		$IPResourceName = "<IPResourceName>" # the IP Address resource name
+		$ILBIP = “<X.X.X.X>” # the IP Address of the Internal Load Balancer (ILB)
+
+		Import-Module FailoverClusters
+
+		cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
+	
 
 1. 変数の設定後、管理者特権で Windows PowerShell ウィンドウを開いて、スクリプトをテキスト エディターからコピーし、それを実行する Azure PowerShell セッションに貼り付けます。プロンプトにまだ >> が表示される場合、スクリプトの実行が確実に開始されるようにするため、Enter キーを再度押します。
 
@@ -138,4 +149,4 @@ ILB の場合、まず内部ロード バランサーを作成する必要があ
 
 [AZURE.INCLUDE [Listener-Next-Steps](../../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,10 +1,10 @@
 
 <properties 
-   pageTitle="インターネットに接続するロード バランサーの概要 |Microsoft Azure"
+   pageTitle="インターネットに接続するロード バランサーの概要 |Microsoft Azure "
    description="インターネットに接続するロード バランサーとその機能の概要ロード バランサーが仮想マシンとクラウド サービスを使用して Azure で機能する方法"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
 # 複数の Virtual Machines またはサービス間でインターネットに接続するロード バランサー
@@ -48,4 +48,4 @@ Servicedefinition.csdef ファイルにはエンドポイント構成が含ま�
 
  
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

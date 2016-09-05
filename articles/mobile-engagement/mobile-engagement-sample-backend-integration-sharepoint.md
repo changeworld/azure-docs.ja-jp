@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement - API の統合
@@ -86,7 +86,7 @@
         }
 
 ## Mobile Engagement の統合
-1.  処理をする必要がある項目を発見すると、そのリスト項目からアナウンスを作成するのに必要な情報を抽出し、`CreateAzMECampaign` を呼び出してアナウンスを作成してから、`ActivateAzMECampaign` を呼び出してアクティブ化します。これらは、本質的には Mobile Engagement バックエンドを呼び出す REST API 呼び出しです。 
+1.  処理をする必要がある項目を発見すると、そのリスト項目からアナウンスを作成するのに必要な情報を抽出し、`CreateAzMECampaign` を呼び出してアナウンスを作成してから、`ActivateAzMECampaign` を呼び出してアクティブ化します。これらは、本質的には Mobile Engagement バックエンドを呼び出す REST API 呼び出しです。
 
 2.  Mobile Engagement REST API では、**基本認証スキームによる HTTP 認証ヘッダー**が必要です。このヘッダーは、`ApplicationId` と、Azure ポータルから取得できる `ApiKey` で構成されています。**[SDK キー]** セクション*ではなく*、**[API キー]** セクションのキーを使用していることを確認します。
 
@@ -207,4 +207,4 @@
 
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Wunderlist コネクタの使用
 
-
-
-Wunderlist コネクタは、次のツールから使用できます。
-
-- [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [フロー](http://flows.microsoft.com)
+Wunderlist では、ユーザーの作業を支援する todo リストとタスク マネージャーを提供します。買い物メモを家族と共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばタスクを簡単に確認、共有、完了できます。Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -40,7 +34,7 @@ Wunderlist コネクタは、アクションとして使用できます。Wunder
 ### Wunderlist のアクション
 実行できるアクションは以下のとおりです。
 
-|アクション|説明|
+|アクション|Description|
 |--- | ---|
 |[RetrieveLists](connectors-create-api-wunderlist.md#retrievelists)|自分のアカウントに関連付けられたリストを取得します。|
 |[CreateList](connectors-create-api-wunderlist.md#createlist)|リストを作成します。|
@@ -73,7 +67,7 @@ Wunderlist コネクタは、アクションとして使用できます。Wunder
 ### Wunderlist のトリガー
 次のイベントをリッスンできます。
 
-|トリガー | 説明|
+|トリガー | Description|
 |--- | ---|
 |タスクの期限日|リスト内のタスクの期限が来たときに新しいフローをトリガーします|
 |新しいタスクの作成時|新しいタスクがリストで作成されたときに新しいフローをトリガーします|
@@ -81,9 +75,9 @@ Wunderlist コネクタは、アクションとして使用できます。Wunder
 
 
 ## Wunderlist への接続を作成する
-Wunderlist を使用してロジック アプリを作成するには、まず**接続**を作成し、次のプロパティの詳細を指定する必要があります。
+Wunderlist を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|プロパティ| 必須|説明|
+|プロパティ| 必須|Description|
 | ---|---|---|
 |トークン|はい|Wunderlist の資格情報を提供します|
 接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
@@ -102,11 +96,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /trigger/tasksdue```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -118,11 +112,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /trigger/tasksnew```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -134,12 +128,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /trigger/reminders```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -151,12 +145,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /lists```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -169,11 +163,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /lists```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいリスト|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -186,12 +180,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /tasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |完了|boolean|×|query|なし|完了|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -206,13 +200,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /tasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいタスク|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |201|作成日時|
 
@@ -222,13 +216,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /subtasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 |完了|boolean|×|query|なし|完了|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -243,13 +237,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /subtasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいサブタスク|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |201|作成日時|
 
@@ -259,14 +253,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /notes```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -279,13 +273,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /notes```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいメモ|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |201|作成日時|
 
@@ -295,14 +289,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /task_comments```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -315,13 +309,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /task_comments```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいタスク コメント|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |201|作成日時|
 
@@ -331,12 +325,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /reminders```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -351,13 +345,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```POST: /reminders```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post| |○|body|なし|作成する新しいアラーム|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |default|操作に失敗しました。|
@@ -368,14 +362,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /files```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |task\_id|integer|×|query|なし|タスク ID|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -388,11 +382,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /lists/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|リスト ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -404,14 +398,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```DELETE: /lists/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|リスト ID|
 |revision|integer|○|query|なし|リビジョン|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |204|コンテンツなし|
 
@@ -421,12 +415,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```PATCH: /lists/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|リスト ID|
 |post| |○|body|なし|リストの詳細|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -438,12 +432,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /tasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |id|integer|○|path|なし|タスク ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -455,13 +449,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```PATCH: /tasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |id|integer|○|path|なし|タスク ID|
 |post| |○|body|なし|タスクの詳細|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -473,15 +467,15 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```DELETE: /tasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |list\_id|integer|○|query|なし|リスト ID|
 |id|integer|○|path|なし|タスク ID|
 |revision|integer|○|query|なし|リビジョン|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |204|コンテンツなし|
 
@@ -491,11 +485,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /subtasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|サブタスク ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -507,12 +501,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```PATCH: /subtasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|サブタスク ID|
 |post| |○|body|なし|サブタスクの詳細|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -524,14 +518,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```DELETE: /subtasks/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|サブタスク ID|
 |revision|integer|○|query|なし|リビジョン|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |204|コンテンツなし|
 
@@ -541,11 +535,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /notes/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|メモ ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -557,14 +551,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```PATCH: /notes/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|メモ ID|
 |post| |○|body|なし|メモの詳細|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 
@@ -574,14 +568,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```DELETE: /notes/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|メモ ID|
 |revision|integer|○|query|なし|リビジョン|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |204|コンテンツなし|
 
@@ -591,11 +585,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```GET: /task_comments/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|コメント ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -607,14 +601,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```PATCH: /reminders/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|アラーム ID|
 |post| |○|body|なし|アラームの詳細|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 
@@ -624,14 +618,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 ```DELETE: /reminders/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|integer|○|path|なし|アラームの ID です。|
 |revision|integer|○|query|なし|リビジョン|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|名前|Description|
 |---|---|
 |204|コンテンツなし|
 
@@ -643,12 +637,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|created\_at|string|いいえ |
-|title|string|いいえ |
-|list\_type|string|いいえ |
-|type|string|いいえ |
-|revision|integer|いいえ |
+|id|integer|なし |
+|created\_at|string|なし |
+|title|string|なし |
+|list\_type|string|なし |
+|type|string|なし |
+|revision|integer|なし |
 
 
 
@@ -657,11 +651,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|created\_at|string|いいえ |
-|title|string|いいえ |
-|revision|integer|いいえ |
-|type|string|いいえ |
+|id|integer|なし |
+|created\_at|string|なし |
+|title|string|なし |
+|revision|integer|なし |
+|type|string|なし |
 
 
 
@@ -670,16 +664,16 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|assignee\_id|integer|いいえ |
-|assigner\_id|integer|いいえ |
-|created\_at|string|いいえ |
-|created\_by\_id|integer|いいえ |
-|due\_date|string|いいえ |
-|list\_id|integer|いいえ |
-|revision|integer|いいえ |
-|starred|boolean|いいえ |
-|title|string|いいえ |
+|id|integer|なし |
+|assignee\_id|integer|なし |
+|assigner\_id|integer|なし |
+|created\_at|string|なし |
+|created\_by\_id|integer|なし |
+|due\_date|string|なし |
+|list\_id|integer|なし |
+|revision|integer|なし |
+|starred|boolean|なし |
+|title|string|なし |
 
 
 
@@ -688,12 +682,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|task\_id|integer|いいえ |
-|created\_at|string|いいえ |
-|created\_by\_id|integer|いいえ |
-|revision|string|いいえ |
-|title|string|いいえ |
+|id|integer|なし |
+|task\_id|integer|なし |
+|created\_at|string|なし |
+|created\_by\_id|integer|なし |
+|revision|string|なし |
+|title|string|なし |
 
 
 
@@ -702,12 +696,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|task\_id|integer|いいえ |
-|content|string|いいえ |
-|created\_at|string|いいえ |
-|updated\_at|string|いいえ |
-|revision|integer|いいえ |
+|id|integer|なし |
+|task\_id|integer|なし |
+|content|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
+|revision|integer|なし |
 
 
 
@@ -716,12 +710,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|task\_id|integer|いいえ |
-|revision|integer|いいえ |
-|text|string|いいえ |
-|type|string|いいえ |
-|created\_at|string|いいえ |
+|id|integer|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|text|string|なし |
+|type|string|なし |
+|created\_at|string|なし |
 
 
 
@@ -730,13 +724,13 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|date|string|いいえ |
-|task\_id|integer|いいえ |
-|revision|integer|いいえ |
-|type|string|いいえ |
-|created\_at|string|いいえ |
-|updated\_at|string|いいえ |
+|id|integer|なし |
+|date|string|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|type|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
 
 
 
@@ -745,12 +739,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|date|string|いいえ |
-|task\_id|integer|いいえ |
-|revision|integer|いいえ |
-|created\_at|string|いいえ |
-|updated\_at|string|いいえ |
+|id|integer|なし |
+|date|string|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
 
 
 
@@ -759,19 +753,19 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|いいえ |
-|url|string|いいえ |
-|task\_id|integer|いいえ |
-|list\_id|integer|いいえ |
-|user\_id|integer|いいえ |
-|file\_name|string|いいえ |
-|content\_type|string|いいえ |
-|file\_size|integer|いいえ |
-|local\_created\_at|string|いいえ |
-|created\_at|string|いいえ |
-|updated\_at|string|いいえ |
-|type|string|いいえ |
-|revision|integer|いいえ |
+|id|integer|なし |
+|url|string|なし |
+|task\_id|integer|なし |
+|list\_id|integer|なし |
+|user\_id|integer|なし |
+|file\_name|string|なし |
+|content\_type|string|なし |
+|file\_size|integer|なし |
+|local\_created\_at|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
+|type|string|なし |
+|revision|integer|なし |
 
 
 
@@ -782,12 +776,12 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 |---|---|---|
 |list\_id|integer|はい |
 |title|string|はい |
-|assignee\_id|integer|いいえ |
-|完了|boolean|いいえ |
-|recurrence\_type|string|いいえ |
-|recurrence\_count|integer|いいえ |
-|due\_date|string|いいえ |
-|starred|boolean|いいえ |
+|assignee\_id|integer|なし |
+|完了|boolean|なし |
+|recurrence\_type|string|なし |
+|recurrence\_count|integer|なし |
+|due\_date|string|なし |
+|starred|boolean|なし |
 
 
 
@@ -796,7 +790,7 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|title|string|あり |
+|title|string|はい |
 
 
 
@@ -805,10 +799,10 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list\_id|integer|あり |
+|list\_id|integer|はい |
 |task\_id|integer|はい |
-|title|string|あり |
-|完了|boolean|いいえ |
+|title|string|はい |
+|完了|boolean|なし |
 
 
 
@@ -817,9 +811,9 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list\_id|integer|あり |
+|list\_id|integer|はい |
 |task\_id|integer|はい |
-|content|string|あり |
+|content|string|はい |
 
 
 
@@ -828,9 +822,9 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list\_id|integer|あり |
-|task\_id|integer|あり |
-|text|string|あり |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
+|text|string|はい |
 
 
 
@@ -839,8 +833,8 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list\_id|integer|あり |
-|task\_id|integer|あり |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
 |date|string|はい |
 
 
@@ -850,14 +844,14 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|いいえ |
-|title|string|いいえ |
-|assignee\_id|integer|いいえ |
-|完了|boolean|いいえ |
-|recurrence\_type|string|いいえ |
-|recurrence\_count|integer|いいえ |
-|due\_date|string|いいえ |
-|starred|boolean|いいえ |
+|revision|integer|なし |
+|title|string|なし |
+|assignee\_id|integer|なし |
+|完了|boolean|なし |
+|recurrence\_type|string|なし |
+|recurrence\_count|integer|なし |
+|due\_date|string|なし |
+|starred|boolean|なし |
 
 
 
@@ -866,8 +860,8 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|いいえ |
-|title|string|いいえ |
+|revision|integer|なし |
+|title|string|なし |
 
 
 
@@ -876,9 +870,9 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|いいえ |
-|title|string|いいえ |
-|完了|boolean|いいえ |
+|revision|integer|なし |
+|title|string|なし |
+|完了|boolean|なし |
 
 
 
@@ -887,8 +881,8 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|いいえ |
-|content|string|いいえ |
+|revision|integer|なし |
+|content|string|なし |
 
 
 
@@ -897,11 +891,11 @@ Wunderlist を使用してロジック アプリを作成するには、まず**
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|date|string|いいえ |
-|revision|integer|いいえ |
+|date|string|なし |
+|revision|integer|なし |
 
 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

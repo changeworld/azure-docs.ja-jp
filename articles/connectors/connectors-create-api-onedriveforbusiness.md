@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/17/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # OneDrive for Business コネクタの使用
 
-
-
-OneDrive for Business コネクタは、次のツールから使用できます。
-
-- [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [フロー](http://flows.microsoft.com)
+OneDrive for Business に接続してファイルを管理します。ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -40,7 +34,7 @@ OneDrive for Business コネクタは、アクションとして使用できま�
 ### OneDrive for Business のアクション
 実行できるアクションは以下のとおりです。
 
-|アクション|説明|
+|アクション|Description|
 |--- | ---|
 |[GetFileMetadata](connectors-create-api-onedriveforbusiness.md#getfilemetadata)|ID を使用して、OneDrive for Business のファイルのメタデータを取得します|
 |[UpdateFile](connectors-create-api-onedriveforbusiness.md#updatefile)|OneDrive for Business のファイルを更新します|
@@ -56,18 +50,18 @@ OneDrive for Business コネクタは、アクションとして使用できま�
 ### OneDrive for Business のトリガー
 次のイベントをリッスンできます。
 
-|トリガー | 説明|
+|トリガー | Description|
 |--- | ---|
 |ファイルの作成時|OneDrive for Business フォルダーに新しいファイルが作成されたときにフローをトリガーします|
 |ファイルの変更時|OneDrive for Business フォルダー内のファイルが変更されたときにフローをトリガーします|
 
 
 ## OneDrive for Business への接続の作成
-OneDrive for Business を使用してロジック アプリを作成するには、まず**接続**を作成し、次のプロパティの詳細を指定する必要があります。
+OneDrive for Business を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|プロパティ| 必須|説明|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|トークン|あり|OneDrive for Business の資格情報を提供します|
+|トークン|はい|OneDrive for Business の資格情報を提供します|
 接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
 >[AZURE.INCLUDE [OneDrive for Business への接続を作成する手順](../../includes/connectors-create-api-onedriveforbusiness.md)]
@@ -82,11 +76,11 @@ ID を使用してファイルのメタデータを取得: ID を使用して、
 
 ```GET: /datasets/default/files/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|ファイルを指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -99,14 +93,14 @@ ID を使用してファイルのメタデータを取得: ID を使用して、
 
 ```PUT: /datasets/default/files/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|更新するファイルを指定します|
 |body| |○|body|なし|OneDrive for Business 内の更新するファイルの内容|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -117,11 +111,11 @@ ID を使用してファイルのメタデータを取得: ID を使用して、
 
 ```DELETE: /datasets/default/files/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|削除するファイルを指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -134,13 +128,13 @@ ID を使用してファイルのメタデータを取得: ID を使用して、
 
 ```GET: /datasets/default/GetFileByPath```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |path|string|○|query|なし|OneDrive for Business 内のファイルへの一意のパス|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -151,13 +145,13 @@ ID を使用してファイルのメタデータを取得: ID を使用して、
 
 ```GET: /datasets/default/GetFileContentByPath```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |path|string|○|query|なし|OneDrive for Business 内のファイルへの一意のパス|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -168,13 +162,13 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```GET: /datasets/default/files/{id}/content```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|ファイルを指定します|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -185,13 +179,13 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```POST: /datasets/default/files```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |folderPath|string|○|query|なし|ファイルを OneDrive for Business にアップロードするフォルダーのパス|
 |name|string|○|query|なし|OneDrive for Business で作成するファイルの名前|
 |body| |○|body|なし|OneDrive for Business にアップロードするファイルの内容|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -204,13 +198,13 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```POST: /datasets/default/copyFile```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |source|string|○|query|なし|ソース ファイルの URL|
 |destination|string|○|query|なし|対象ファイル名を含む OneDrive for Business の宛先ファイル パス|
-|overwrite|ブール値|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
+|overwrite|boolean|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -223,13 +217,13 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```GET: /datasets/default/triggers/onnewfile```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |folderId|string|○|query|なし|フォルダーを指定します|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -240,11 +234,11 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```GET: /datasets/default/triggers/onupdatedfile```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |folderId|string|○|query|なし|フォルダーを指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -257,11 +251,11 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```GET: /datasets/default/folders/{id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |id|string|○|path|なし|フォルダーを指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -275,9 +269,9 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 ```GET: /datasets/default/folders```
 
 この呼び出しには、パラメーターはありません
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -288,13 +282,13 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 ```POST: /datasets/default/extractFolderV2```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |source|string|○|query|なし|アーカイブ ファイルのパス|
 |destination|string|○|query|なし|アーカイブの内容を抽出する OneDrive for Business のパス|
-|overwrite|ブール値|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
+|overwrite|boolean|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -309,8 +303,8 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|tabular|未定義|いいえ |
-|BLOB|未定義|いいえ |
+|tabular|未定義|なし |
+|BLOB|未定義|なし |
 
 
 
@@ -319,11 +313,11 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source セクション|string|いいえ |
-|displayName|string|いいえ |
-|urlEncoding|string|いいえ |
-|tableDisplayName|string|いいえ |
-|tablePluralName|string|いいえ |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
+|tableDisplayName|string|なし |
+|tablePluralName|string|なし |
 
 
 
@@ -332,9 +326,9 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source セクション|string|いいえ |
-|displayName|string|いいえ |
-|urlEncoding|string|いいえ |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
 
 
 
@@ -343,16 +337,16 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ID|string|いいえ |
-|名前|string|いいえ |
-|DisplayName|string|いいえ |
-|パス|string|いいえ |
-|LastModified|string|いいえ |
-|サイズ|integer|いいえ |
-|MediaType|string|いいえ |
-|IsFolder|boolean|いいえ |
-|ETag|string|いいえ |
-|FileLocator|string|いいえ |
+|ID|string|なし |
+|名前|string|なし |
+|DisplayName|string|なし |
+|パス|string|なし |
+|LastModified|string|なし |
+|サイズ|integer|なし |
+|MediaType|string|なし |
+|IsFolder|boolean|なし |
+|ETag|string|なし |
+|FileLocator|string|なし |
 
 
 
@@ -366,4 +360,4 @@ ID を使用してファイルの内容を取得: ID を使用して、OneDrive 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

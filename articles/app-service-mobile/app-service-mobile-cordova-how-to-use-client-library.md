@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-html"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="08/22/2016"
 	ms.author="ggailey"/>
 
 # Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
@@ -24,7 +24,7 @@
 
 ##<a name="Setup"></a>セットアップと前提条件
 
-このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。さらに、Apache Cordova プラグインがコードに追加済みであることを前提とします。まだそれを行っていない場合は、コマンドラインで Apache Cordova プラグインをプロジェクトに追加することができます。
+このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。さらに、Apache Cordova プラグインがコードに追加済みであることを前提とします。まだこれらの操作を行っていない場合は、次のコマンド ラインで Apache Cordova プラグインをプロジェクトに追加します。
 
 ```
 cordova plugin add cordova-plugin-ms-azure-mobile-apps
@@ -55,7 +55,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. **[ツール]** をクリックします。
 4. [監視] メニューの **[リソース エクスプローラー]** をクリックしてから、**[実行]** をクリックします。新しいウィンドウまたはタブが開きます。
-5. 左側のナビゲーションで、サイトの **config**、**authsettings** ノードの順に展開します。
+5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
 6. **[編集]** をクリックします。
 7. "allowedExternalRedirectUrls" 要素を探します。これは null に設定されます。これを次のように変更します。
 
@@ -137,4 +137,4 @@ pushHandler.on('error', function (error) {
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [query オブジェクト]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

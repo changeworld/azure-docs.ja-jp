@@ -3,7 +3,7 @@
    description="Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="kwill-MSFT"
+   authors="sdwheeler"
    manager="carmonm"
    editor="joaoma" />
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure Traffic Manager での機能低下状態のトラブルシューティング
 
@@ -80,4 +80,4 @@ wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 3
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

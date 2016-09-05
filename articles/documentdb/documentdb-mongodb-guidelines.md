@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="08/23/2016" 
 	ms.author="stbaro"/>
 
 # プレビュー開発ガイドライン (MongoDB のプロトコル対応の DocumentDB アカウント)
@@ -65,16 +65,16 @@ MongoDB プロトコル対応アカウントでは、Azure ポータルの操作
 Replace|ReplaceOne| |
 削除|DeleteOne | |
  |DeleteMany| | 
- |削除| | 
+ |Remove| | 
 一括書き込み| |bulkWrite()| 
 比較|すべて| | 
 論理|すべて| | 
 要素クエリ| |すべて| 
-評価|$mod|$regex、$text、$where| 
+評価|$mod、$regex |$text、$where| 
 GeoSpatial|2dsphere、2d、polygon|その他すべて| 
-Array|$all、$size|$elemMatch| 
+Array|$all、$size、$elemMatch|| 
 ビット| |すべて| 
-Comment (コメント)|すべて| | 
+コメント|すべて| | 
 プロジェクション| |すべて| 
 
 
@@ -82,7 +82,7 @@ Comment (コメント)|すべて| |
 
 機能|サポートされています|サポート予定|サポートされていません 
 ---|---|---|---
-集計|カウント| |aggregate、distinct、group、mapreduce
+集計|Count| |aggregate、distinct、group、mapreduce
 GeoSpatial| |すべて| 
 クエリと書き込み|find、insert、update、delete、getLastError、getMore、findAndModify| |Eval、parallelCollectionScan、getPrevError、resetError
 クエリ プラン キャッシュ| | |すべて
@@ -100,4 +100,4 @@ GeoSpatial| |すべて|
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

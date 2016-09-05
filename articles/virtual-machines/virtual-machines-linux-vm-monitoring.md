@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
-   manager="drewm"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -52,10 +52,10 @@ Azure VM の監視を有効にするには:
 
 [Azure.Note] 使用可能な場合は、バージョン 2.0 からそれより後のバージョンに変更できます。
 
-監視メトリックの構成の詳細とサンプルについては、「[Linux の診断拡張機能を使用して Linux VM のパフォーマンスと診断データを監視する](virtual-machines-linux-diagnostic-extension/)」を参照してください。
+監視メトリックの構成の詳細とサンプルについては、「[Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視](virtual-machines-linux-classic-diagnostic-extension.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/virtual-machines-linux-vm-monitoring/portal-enable-disable.png
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

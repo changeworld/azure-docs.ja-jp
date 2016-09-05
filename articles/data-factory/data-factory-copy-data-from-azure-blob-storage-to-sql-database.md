@@ -24,11 +24,12 @@
 - [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
 - [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
-コピー アクティビティにより、Azure Data Factory ではデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.NOTE] Data Factory サービスの詳細については、[Azure Data Factory サービスの概要][data-factory-introduction]に関する記事をご覧ください。
 
@@ -41,7 +42,7 @@
 - **SQL Server 2012/2014 または Visual Studio 2013**。サンプル データベースを作成し、結果データをデータベースに表示するには、SQL Server Management Studio または Visual Studio を使用します。
 
 ## BLOB ストレージ アカウントの名前とキーを収集する 
-このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。以下の手順に従って、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
+このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
 
 1. [Azure ポータル][azure-portal]にログインします。
 2. 左側にある **[参照]** ハブをクリックし、**[ストレージ アカウント]** を選択します。
@@ -52,7 +53,7 @@
 7. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## SQL サーバー、データベース、ユーザーの名前を収集する
-このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。次の手順に従って、Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
+このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
 1. **Azure ポータル**で、左側にある **[参照]** をクリックし、**[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。**データベース名**をメモしておきます。
@@ -61,7 +62,7 @@
 5. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## Azure サービスに SQL サーバーへのアクセスを許可する 
-Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。この設定を確認してオンにするには、次の手順を実行します。
+Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。この設定を確認して有効にするには、次の手順を実行します。
 
 1. 左側にある **[参照]** ハブをクリックし、**[SQL サーバー]** をクリックします。
 2. **お使いのサーバー**を選択し、**[SQL サーバー]** ブレードで **[設定]** をクリックします。
@@ -95,7 +96,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 
 	**SQL Server 2012/2014 がコンピューターにインストールされている場合**: 記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。この記事では、[Azure ポータル](https://portal.azure.com)ではなく、[この Azure ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
 
-	**Visual Studio 2013 がコンピューターにインストールされている場合:** [Azure ポータル](https://portal.azure.com)で、左側にある **[参照]** ハブ、**[SQL サーバー]** の順にクリックしてデータベースを選択します。ツール バーの **[Visual Studio で開く]** をクリックして Azure SQL サーバーに接続し、スクリプトを実行します。クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、上の記事を参照してください。
+	クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)をご覧ください。
 
 
 以下の手順を実行します。
@@ -117,4 +118,4 @@ Azure Data Factory のコピー アクティビティの詳細については、
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

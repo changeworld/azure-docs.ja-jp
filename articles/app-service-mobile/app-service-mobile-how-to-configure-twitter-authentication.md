@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Twitter ログインを使用するように App Service アプリケーションを構成する方法
@@ -22,7 +22,7 @@
 
 このトピックでは、認証プロバイダーとして Twitter を使用するように Azure App Services を構成する方法を示します。
 
-このトピックの手順を完了するには、検証済みの電子メール アドレスと電話番号を持つ Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
+このトピックの手順を完了するには、電子メール アドレスと電話番号を検証済みの Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
 
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 
@@ -77,4 +77,4 @@
 [Azure ポータル]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

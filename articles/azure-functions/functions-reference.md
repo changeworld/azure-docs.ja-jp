@@ -24,23 +24,10 @@ Azure Functions は、使用する言語またはバインドに関係なく、�
 
 この記事は、「[Azure Functions の概要](functions-overview.md)」を既に読んでいて、[トリガー、バインド、JobHost ランタイムなどの WebJobs SDK の概念](../app-service-web/websites-dotnet-webjobs-sdk.md)を熟知していることを前提として書かれています。Azure Functions は WebJobs SDK が基になっています。
 
-## function
 
-*関数* は Azure Functions の主要な概念です。好みの言語を選択して関数のコードを記述し、コード ファイルと構成ファイルを同じフォルダーに保存します。構成には JSON を使用し、ファイルの名前は `function.json` です。さまざまな言語がサポートされていて、各言語はその言語での作業に最適化された少しずつ異なるエクスペリエンスを備えています。フォルダー構造の例を次に示します。
+## 関数のコード
 
-```
-mynodefunction
-| - function.json
-| - index.js
-| - node_modules
-| | - ... packages ...
-| - package.json
-mycsharpfunction
-| - function.json
-| - run.csx
-```
-
-## function.json とバインド
+*関数* は Azure Functions の主要な概念です。好みの言語を選択して関数のコードを記述し、コード ファイルと構成ファイルを同じフォルダーに保存します。構成には JSON を使用し、ファイルの名前は `function.json` です。さまざまな言語がサポートされていて、各言語はその言語での作業に最適化された少しずつ異なるエクスペリエンスを備えています。
 
 `function.json` ファイルには、バインドなど、関数に固有の構成が含まれています。ランタイムはこのファイルを読み取って、トリガーするイベント、関数を呼び出すときに含めるデータ、関数自体から渡されるデータの送信先を決定します。
 
@@ -69,33 +56,19 @@ mycsharpfunction
 |`direction`|"in"、"'out"| バインドが関数への受信データか、関数からの送信データかを示します。
 | `name` | string | 関数のバインドされたデータに使用される名前。C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。
 
+## 関数アプリ
+
+関数アプリは、Azure App Service でまとめて管理される 1 つまたは複数の個々の関数で構成されます。関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。関数を整理し、まとめて管理する方法として関数アプリを考えてください。
+
 ## ランタイム (スクリプト ホストおよび Web ホスト)
 
-スクリプト ホストとも呼ばれるランタイムは基になる WebJobs SDK ホストであり、イベントをリッスンし、データを収集して送信し、最終的にはコードを実行します。
+ランタイムまたはスクリプト ホストは基になる WebJobs SDK ホストであり、イベントをリッスンし、データを収集して送信し、最終的にはコードを実行します。
 
 HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。これにより、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストが分離されます。
 
 ## フォルダー構造
 
-スクリプト ホストは、構成ファイルと 1 つまたは複数の関数を含むフォルダーを参照します。
-
-```
-parentFolder (for example, wwwroot in a function app)
- | - host.json
- | - mynodefunction
- | | - function.json
- | | - index.js
- | | - node_modules
- | | | - ... packages ...
- | | - package.json
- | - mycsharpfunction
- | | - function.json
- | | - run.csx
-```
-
-*host.json* ファイルは、スクリプト ホスト固有の構成を含み、親フォルダーに格納されます。利用可能な設定に関する詳細については、WebJobs.Script リポジトリ wiki の [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) を参照してください。
-
-各関数には、コード ファイル、*function.json*、およびその他の依存関係を含むフォルダーがあります。
+[AZURE.INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 Azure App Service で関数アプリに関数をデプロイするためにプロジェクトをセットアップするときは、このフォルダー構造をサイト コードとして扱うことができます。継続的インテグレーションやデプロイなどの既存のツール、またはカスタム デプロイ スクリプトを使用して、デプロイ時のパッケージのインストールまたはコードの変換を行うことができます。
 
@@ -125,7 +98,7 @@ Azure ポータルに組み込まれている関数エディターでは、*func
 
 1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
 
-2. **[デバッグ コンソール] > [CMD]** の順にクリックします。
+2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 
 3. `D:\home\site\wwwroot` に移動し、*host.json* または `D:\home\site\wwwroot<function_name>` を更新し、関数のファイルを更新します。
 
@@ -137,9 +110,13 @@ Azure ポータルに組み込まれている関数エディターでは、*func
 
 2. 関数アプリのサイトに接続されたら、更新された *host.json* ファイルを `/site/wwwroot` にコピーするか、関数ファイルを `/site/wwwroot/<function_name>` にコピーします。
 
+#### 継続的なデプロイを使用するには
+
+「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」のトピックの手順に従ってください。
+
 ## 並列実行
 
-シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。関数アプリが[動的サービス プラン](functions-scale.md#dynamic-service-plan)を使用している場合、関数アプリは自動的に最大 10 個の同時インスタンスにスケールアウトできます。アプリが動的サービス プランと標準の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理できます。各関数アプリ インスタンスでの同時関数呼び出しの最大数は、関数アプリのメモリ サイズによって異なります。
+シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。関数アプリが[動的サービス プラン](functions-scale.md#dynamic-service-plan)を使用している場合、関数アプリは自動的にスケールアウトできます。アプリが動的サービス プランと標準の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理できます。各関数アプリ インスタンスでの同時関数呼び出しの最大数は、関数アプリのメモリ サイズによって異なります。
 
 ## Azure Functions パルス  
 
@@ -174,4 +151,4 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * Azure App Service チーム ブログの「[Azure Functions: The Journey (Azure Functions への道のり)](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)」。Azure Functions の開発の歴史。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/11/2016"
+   ms.date="08/19/2016"
    ms.author="nicw;barbkess;sonyama"/>
 
 # Premium Storage への移行の詳細
@@ -91,13 +91,13 @@ Data Warehouse が複数ある場合は、以下の[自動移行スケジュー�
 | 東日本 | 2016 年 8 月 10 日 | 2016 年 8 月 24 日 |
 | 西日本 | 未定 | 未定 |
 | 米国中北部 | 未定 | 未定 |
-| 北ヨーロッパ | 2016 年 8 月 10 日 | 2016 年 8 月 24 日 |
+| 北ヨーロッパ | 2016 年 8 月 10 日 | 2016 年 8 月 31 日 |
 | 米国中南部 | 2016 年 6 月 23 日 | 2016 年 7 月 2 日 |
 | 東南アジア | 2016 年 6 月 23 日 | 2016 年 7 月 1 日 |
 | 西ヨーロッパ | 2016 年 6 月 23 日 | 2016 年 7 月 8 日 |
-| 米国中西部 | 2016 年 8 月 14 日 | 2016 年 8 月 28 日 |
+| 米国中西部 | 2016 年 8 月 14 日 | 2016 年 8 月 31 日 |
 | 米国西部 | 2016 年 6 月 23 日 | 2016 年 7 月 7 日 |
-| 米国西部 2 | 2016 年 8 月 14 日 | 2016 年 8 月 28 日 |
+| 米国西部 2 | 2016 年 8 月 14 日 | 2016 年 8 月 31 日 |
 
 ## Premium Storage への手動移行
 ダウンタイムの発生するタイミングを制御する必要がある場合は、以下の手順に従って Standard Storage 上の既存の Data Warehouse を Premium Storage に移行することができます。手動移行を選択した場合、自動移行によって競合が引き起こされる危険を回避するために、対象のリージョンで自動移行が開始する前に手動移行を完了する必要があります ([自動移行スケジュール][]を参照)。
@@ -147,42 +147,19 @@ Premium Storage の変更により、Data Warehouse の基になるアーキテ�
 -- Step 1: Create Table to control Index Rebuild
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select 
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from 
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
+create table sql\_statements WITH (distribution = round\_robin) as select 'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement, row\_number() over (order by s.name, t.name) as sequence from sys.schemas s inner join sys.tables t on s.schema\_id = t.schema\_id where is\_external = 0 ; go
  
 --------------------------------------------------------------------------------
--- Step 2: Execute Index Rebuilds.  If script fails, the below can be rerun to restart where last left off
+-- Step 2: Execute Index Rebuilds.If script fails, the below can be rerun to restart where last left off
 -- Run as user in mediumrc or higher
 --------------------------------------------------------------------------------
 
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
+declare @nbr\_statements int = (select count(*) from sql\_statements) declare @i int = 1 while(@i <= @nbr\_statements) begin declare @statement nvarchar(1000)= (select statement from sql\_statements where sequence = @i) print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement exec (@statement) delete from sql\_statements where sequence = @i set @i += 1 end;
 go
 -------------------------------------------------------------------------------
 -- Step 3: Cleanup Table Created in Step 1
 --------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
+drop table sql\_statements; go ````
 
 Data Warehouse で問題が発生した場合は、[サポート チケットを作成][]し、考えられる原因を "Premium Storage への移行" としてください。
 
@@ -207,4 +184,4 @@ Data Warehouse で問題が発生した場合は、[サポート チケットを
 [パフォーマンス予測可能性の向上を目的とした Premium Storage]: https://azure.microsoft.com/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

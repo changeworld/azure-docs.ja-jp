@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="08/23/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory のパスワードを管理する
 
 管理者は、Azure クラシック ポータルで Azure Active Directory (Azure AD) のユーザーのパスワードをリセットできます。ディレクトリの名前をクリックし、[ユーザー] ページでユーザーの名前をクリックして、ポータルの下部にある **[パスワードのリセット]** をクリックします。
 
-このトピックの以降の部分では、Azure Active Directory がサポートする次のようなパスワード管理機能について詳しく説明します。
+このトピックの以降の部分では、次のような機能をはじめとした、Azure AD がサポートするすべてのパスワード管理機能について説明します。
 
 - **セルフ サービスによるパスワード**の変更では、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、有効期限が切れた、または有効期限が切れていないパスワードを変更できます。
 - **セルフ サービスによるパスワード**のリセットでは、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、パスワードを自動的にリセットできます。セルフ サービスのパスワード リセットには、Azure AD Premium または Basic が必要です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
@@ -43,10 +43,10 @@ Azure AD のワールドワイド インスタンスを使用している中国�
 - [Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)
 
 
-## 次の手順
+## 参照トピック
 
 - [Administer your Azure AD directory (Azure AD ディレクトリの管理)](active-directory-administer.md)
 - [Azure AD でのユーザーの作成または編集](active-directory-create-users.md)
 - [Azure AD でのグループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

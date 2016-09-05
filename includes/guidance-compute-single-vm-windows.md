@@ -171,7 +171,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
   }
 	```
 
-- **[networkSecurityGroup.parameters.json][nsg-parameters]**。このファイルには、NSG と NSG 規則の定義が含まれています。`virtualNetworkSettings` ブロック内の `name` パラメーターは、NSG が接続される VNet を指定します。`networkSecurityGroupSettings` ブロック内の `subnets` パラメーターは、VNet で NSG 規則を適用するすべてのサブネットを指定します。これらは、**virtualNetwork.parameters.json** ファイルで定義された項目である必要があります。
+- **[networkSecurityGroups.parameters.json][nsg-parameters]**このファイルには、NSG と NSG 規則の定義が含まれています。`virtualNetworkSettings` ブロック内の `name` パラメーターは、NSG が接続される VNet を指定します。`networkSecurityGroupSettings` ブロック内の `subnets` パラメーターは、VNet で NSG 規則を適用するすべてのサブネットを指定します。これらは、**virtualNetwork.parameters.json** ファイルで定義された項目である必要があります。
 
 	次の例に示す既定のセキュリティ規則では、ユーザーはリモート デスクトップ (RDP) 接続を介して VM に接続できます。`securityRules` 配列に項目をさらに追加することで、追加のポートを開くことができます (または特定のポート経由のアクセスを拒否できます)。
 
@@ -313,7 +313,7 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 
 	- [virtualNetwork.parameters.json][vnet-parameters]
 
-	- [networkSecurityGroup.parameters.json][nsg-parameters]
+	- [networkSecurityGroups.parameters.json][nsg-parameters]
 
 	- [virtualMachineParameters.json][vm-parameters]
 
@@ -386,11 +386,11 @@ Azure で VM をプロビジョニングする際は、VM 自体のみよりも�
 [vm-resize]: ../articles/virtual-machines/virtual-machines-linux-change-vm-size.md
 [vm-sla]: https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/
 [ARM-Templates]: https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/
-[solution-script]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Scripts/Deploy-ReferenceArchitecture.ps1
-[vnet-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/virtualNetwork.parameters.json
-[nsg-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/networkSecurityGroup.parameters.json
-[vm-parameters]: https://raw.githubusercontent.com/mspnp/arm-building-blocks/master/guidance-compute-single-vm/Templates/windows/virtualMachine.parameters.json
+[solution-script]: https://github.com/mspnp/reference-architectures/tree/master/guidance-compute-single-vm/Scripts/Deploy-ReferenceArchitecture.ps1
+[vnet-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-compute-single-vm/parameters/windows/virtualNetwork.parameters.json
+[nsg-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-compute-single-vm/parameters/windows/networkSecurityGroups.parameters.json
+[vm-parameters]: https://github.com/mspnp/reference-architectures/tree/master/guidance-compute-single-vm/parameters/windows/virtualMachine.parameters.json
 [azure-powershell-download]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [0]: ./media/guidance-blueprints/compute-single-vm.png "Azure での単一の Windows VM アーキテクチャ"
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

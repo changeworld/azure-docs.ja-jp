@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法
@@ -26,6 +26,8 @@ Azure からの重要な電子メールが見つかりませんか? プロファ
 
 -	[プロファイル情報の変更方法](#how-to-change-your-profile-information)
 -	[お問い合わせの多い問題および質問に対する回答](#frequently-asked-questions)
+
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## プロファイルの電子メール アドレスに関する重要な情報
 
@@ -61,4 +63,6 @@ Azure からの重要な電子メールが見つかりませんか? プロファ
 
 新しい Azure 課金アラートのプレビュー機能にサインアップすると、アカウント管理者の電子メール アドレスを変更しているかどうかにかかわらず、指定したアドレスに Azure 課金アラートの電子メールが届きます。
 
-<!---HONumber=AcomDC_0817_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

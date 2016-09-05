@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="06/06/2016"
+   ms.date="08/24/2016"
    ms.author="rickbyh"/>
 
 # SQL Database の認証と承認: アクセス権の付与 
@@ -37,10 +37,10 @@
 論理 SQL インスタンスを作成すると、SQL Database サブスクライバー アカウントと呼ばれる 1 つのログイン アカウントが作成されます。このアカウントは、SQL Server 認証 (ユーザー名とパスワード) を使用して接続します。このアカウントは、論理サーバー インスタンスと、そのインスタンスに接続されているすべてのユーザー データベースの管理者です。サブスクライバー アカウントのアクセス許可を制限することはできません。これらのアカウントのうち、存在できるのは 1 つだけです。
 
 ### Azure Active Directory 管理者
-1 つの Azure Active Directory アカウントも、管理者として構成できます。このアカウントは、個別の Azure AD ユーザーであっても、複数の Azure AD ユーザーを含む Azure AD グループであってもかまいません。Azure AD 管理者の構成は任意ですが、Azure AD アカウントが SQL Database に接続する際に Windows 認証を使用する場合は、Azure AD 管理者を構成する必要があります。Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
+1 つの Azure Active Directory アカウントも、管理者として構成できます。このアカウントは、個別の Azure AD ユーザーであっても、複数の Azure AD ユーザーを含む Azure AD グループであってもかまいません。Azure AD 管理者の構成は任意ですが、Azure AD アカウントが SQL Database に接続する際に Windows 認証を使用する場合は、Azure AD 管理者を構成する必要があります。Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」と「[SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md)」 (SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート) を参照してください。
 
 ### ファイアウォールの構成
-サーバー レベルのファイアウォールを構成すると、Azure SQL Database サブスクライバー アカウントと Azure Active Directory アカウントは、仮想 master データベースとすべてのユーザー データベースに接続できます。サーバー レベルのファイアウォールは、ポータルで構成できます。接続の確立後、サーバー レベルのファイアウォール規則を追加で構成することもできます。それには、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) Transact-SQL ステートメントを使用します。ファイアウォールの構成の詳細については、[Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関する記事を参照してください。
+サーバー レベルのファイアウォールを構成すると、Azure SQL Database サブスクライバー アカウントと Azure Active Directory アカウントは、仮想 master データベースとすべてのユーザー データベースに接続できます。サーバー レベルのファイアウォールは、ポータルで構成できます。接続が確立されると、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) Transact-SQL ステートメントを使用して、サーバー レベルのファイアウォール規則を追加で構成することもできます。ファイアウォールの構成の詳細については、[Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関する記事を参照してください。
 
 ### Administrator access path
 
@@ -68,7 +68,7 @@ SQL Database には、仮想 master データベースの制限付き管理者�
      CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
      ```
 
-     > [AZURE.NOTE] ログイン ユーザーまたは包含データベース ユーザーを作成する際は、強力なパスワードを使用する必要があります。詳細については、「[強力なパスワード](https://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
+     > [AZURE.NOTE] ログイン ユーザーまたは包含データベース ユーザーを作成するときは、強力なパスワードを使用します。詳細については、「[強力なパスワード](https://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
 
 3.	仮想 master データベースで、[CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用してユーザーを作成します。このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。 サンプル ステートメントは、次のとおりです。
 
@@ -93,13 +93,13 @@ SQL Database には、仮想 master データベースの制限付き管理者�
 
 ### ログイン マネージャー
 
-必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが仮想 master に新しいログインを作成できるようにすることができます。ほとんどの場合、この作業は必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベース レベルで認証される包含データベース ユーザーを使用することを推奨しているからです。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+必要であれば、同じ手順を実行して (ログインとユーザーを作成し、ユーザーを **loginmanager** ロールに追加して)、ユーザーが仮想 master に新しいログインを作成できるようにすることができます。通常、この作業は必要ありません。Microsoft は、ログインに基づくユーザーを使用する代わりに、データベース レベルで認証される包含データベース ユーザーを使用することを推奨しているからです。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
 ## 管理者以外のユーザー
 
 一般に、管理者以外のアカウントは、仮想 master データベースへのアクセスを必要としません。[CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用して、データベース レベルの包含データベース ユーザーを作成してください。このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。 詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
-ユーザーを作成するには、データベースに接続し、次のようなステートメントを実行します。
+ユーザーを作成するには、データベースに接続し、次の例のようなステートメントを実行します。
 
 ```
 CREATE USER Mary FROM LOGIN Mary; 
@@ -137,7 +137,7 @@ SQL Server 認証を使用している場合は、次のようにします。
 
 ## アクセス許可
 
-SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。これらのアクセス許可の多くは、入れ子になっています。たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。まずは「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認し、アクセス許可の[ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
+SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。これらのアクセス許可の多くは、入れ子になっています。たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。まず「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認してから、アクセス許可の[ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
 
 
 ## 次のステップ
@@ -161,4 +161,4 @@ SQL Database では、個別に許可または拒否できるアクセス許可�
 
 [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -166,12 +166,21 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 
 この値は、Azure ポータルの **[設定]** ブレードで構成できます。VM スケール セットの場合、ARM テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
 
+たとえば、従来のストレージ アカウントを使用すると、自動スケール設定 metricTrigger は、次のようになります。
 
 ```
 "metricName": "ApproximateMessageCount",
  "metricNamespace": "",
  "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.ClassicStorage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
  ```
+
+(非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
+
+```
+"metricName": "ApproximateMessageCount",
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/mystorage/services/queue/queues/mystoragequeue"
+```
 
 ## 一般的に使用される Service Bus のメトリック
 
@@ -187,4 +196,4 @@ VM スケール セットの場合、ARM テンプレートの [自動スケー�
 
 >[AZURE.NOTE] Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/17/2016"
 	ms.author="luisca"/>
 
 # 複数のレコメンデーションの一括取得
@@ -198,4 +198,4 @@
 -	一度に呼び出すことのできるバッチ ジョブは各サブスクリプションにつき 1 つだけです。
 -	バッチ ジョブの入力ファイルは 2 MB 以下にする必要があります。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

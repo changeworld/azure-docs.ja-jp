@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="04/20/2016"
+   ms.date="08/23/2016"
    ms.author="rajram"/>
 
 # AS2 コネクタの使用開始とロジック アプリへの追加
@@ -36,10 +36,10 @@ Receive & Decode | エンコードと送信
 ## 前提要件
 AS2 コネクタで使用する前に、次の項目を自分で作成する必要があります。
 
-要件 | 説明
+要件 | Description
 --- | ---
 TPM API アプリ | AS2 コネクタを作成する前に、[BizTalk 取引先管理コネクタ][1]を作成する必要があります。<br/><br/>**注:** 使用する TPM API アプリの名前を把握しておいてください。 
-Azure SQL Database | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注:** このデータベースへの接続文字列をコピーしてください。<br/><br/>[Azure SQL Database の作成](../sql-database/sql-database-get-started.md)
+Azure SQL データベース | パートナー、スキーマ、証明書、契約などの B2B 項目を格納します。B2B API Apps ごとに専用の Azure SQL Database が必要です。<br/><br/>**注:** このデータベースへの接続文字列をコピーしてください。<br/><br/>[Azure SQL Database の作成](../sql-database/sql-database-get-started.md)
 Azure BLOB Storage コンテナー | AS2 アーカイブが有効な場合に、メッセージのプロパティを格納します。AS2 メッセージをアーカイブする必要がない場合は、Storage コンテナーは必要ありません。<br/><br/>**注:** アーカイブを有効にしている場合は、この BLOB Storage への接続文字列をコピーしてください。<br/><br/>[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)
 
 ## AS2 コネクタの作成
@@ -89,13 +89,13 @@ TPM インスタンス名 | 前に作成した **BizTalk 取引先管理** API �
 
 	パラメーターは、次のとおりです。
 
-	パラメーター | 型 | 説明
+	パラメーター | 型 | Description
 --- | --- | ---
 ペイロード | オブジェクト| エンコードし、構成済みのエンドポイントに投稿するペイロードの内容。ペイロードは、JSON オブジェクトとして指定する必要があります。
-AS2 の送信元 | 文字列 | AS2 メッセージの送信元の AS2 の ID。このパラメーターは、メッセージを送信するための適切な契約の参照に使用されます。
-AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。このパラメーターは、メッセージを送信するための適切な契約の参照に使用されます。
-パートナーの URL | 文字列 | 送信する必要があるメッセージの宛先となるパートナーのエンド ポイント。
-アーカイブの有効化 | ブール値 | 送信メッセージをアーカイブする必要があるかどうかを判断します。
+AS2 の送信元 | string | AS2 メッセージの送信元の AS2 の ID。このパラメーターは、メッセージを送信するための適切な契約の参照に使用されます。
+AS2 の宛先 | string | AS2 メッセージの受信側の AS2 の ID。このパラメーターは、メッセージを送信するための適切な契約の参照に使用されます。
+パートナーの URL | string | 送信する必要があるメッセージの宛先となるパートナーのエンド ポイント。
+アーカイブの有効化 | boolean | 送信メッセージをアーカイブする必要があるかどうかを判断します。
 
 アクションが正常に終了すると、HTTP 200 の応答コードを返します。
 
@@ -122,4 +122,4 @@ AS2 の宛先 | 文字列 | AS2 メッセージの受信側の AS2 の ID。こ�
 [9]: ./media/app-service-logic-connector-as2/EncodeAndSendInput.PNG
 [10]: ./media/app-service-logic-connector-as2/EncodeAndSendConfigured.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

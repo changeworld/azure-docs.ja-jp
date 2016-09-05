@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
 # Azure Functions におけるタイマー トリガー
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions でタイマー トリガーを構成する方法について説明します。タイマー トリガーでは、スケジュールに従って関数が 1 回または定期的に呼び出されます。
 
@@ -26,7 +28,7 @@
 
 ## タイマー トリガーの function.json
 
-*function.json* ファイルには、スケジュールの式が記述されています。
+*function.json* ファイルには、スケジュールの式が記述されています。たとえば、次のスケジュールでは、関数は毎分実行されます。
 
 ```json
 {
@@ -46,9 +48,11 @@
 
 ## スケジュール式の形式
 
-スケジュール式は、{second} {minute} {hour} {day} {month} {day of the week} の 6 つのフィールドを含む [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。オンラインで見つかる CRON 式に関するドキュメントの多くは、{second} フィールドが省略されているため、これらのいずれかからコピーする場合は、この追加フィールドを調整する必要があります。
+スケジュール式は、[CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)で、次の 6 個のフィールドが含まれます: `{second} {minute} {hour} {day} {month} {day of the week}`。
 
-スケジュール式の例を以下に示します。
+オンラインで見つかる CRON 式の多くは、{second} フィールドが省略されているため、これらのいずれかからコピーする場合は、この追加フィールドを調整する必要があることに注意してください。
+
+スケジュール式の他の例を以下に示します。
 
 5 分に 1 回トリガーするには、次のように指定します。
 
@@ -56,10 +60,34 @@
 "schedule": "0 */5 * * * *"
 ```
 
+毎正時に 1 回トリガーするには、次のように指定します。
+
+```json
+"schedule": "0 0 * * * *",
+```
+
 2 時間に 1 回トリガーするには、次のように指定します。
 
 ```json
 "schedule": "0 0 */2 * * *",
+```
+
+午前 9 時から午後 5 時まで 1 時間ごとにトリガーするには、次のように指定します。
+
+```json
+"schedule": "0 0 9-17 * * *",
+```
+
+毎日の午前 9 時 30 分にトリガーするには、次のように指定します。
+
+```json
+"schedule": "0 30 9 * * *",
+```
+
+平日の午前 9 時 30 分にトリガーするには、次のように指定します。
+
+```json
+"schedule": "0 30 9 * * 1-5",
 ```
 
 ## タイマー トリガーの C# コードの例
@@ -77,4 +105,4 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
 	services="virtual-machines"
 	documentationCenter=""
 	authors="kmouss"
-	manager="drewm"
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -62,4 +62,4 @@ Azure Site Recovery を使用して、VMWare、HYPER-V 仮想マシン上で実�
 
 不明な点がある場合、または Microsoft による代理操作をご希望の場合は、[カスタマー サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)までご連絡ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

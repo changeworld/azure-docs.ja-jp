@@ -23,16 +23,10 @@
 - [Azure CLI](resource-group-template-deploy-cli.md)
 - [ポータル](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
-- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-- [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-
 
 このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。リソース管理の詳細については、「[ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
-現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、[Azure ポータルで利用できるサービスの表](https://azure.microsoft.com/features/azure-portal/availability/)を参照してください。
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。これらのサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
 
 ## Create resource group
 
@@ -40,13 +34,13 @@
 
     ![空のリソース グループの作成](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
-2. 名前と場所を指定し、必要に応じて、サブスクリプションを選択します。
+2. 名前と場所を指定し、必要に応じてサブスクリプションを選択します。
 
     ![グループの値の設定](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
 ## Marketplace からリソースをデプロイする
 
-リソース グループを作成したら、それに Marketplace からリソースをデプロイできます。Marketplace は一般的なシナリオに対する事前定義されたソリューションを提供します。
+リソース グループを作成したら、それに Marketplace からリソースをデプロイできます。Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
 1. デプロイを開始するには、**[新規]** を選択し、デプロイするリソースの種類を選択します。次に、デプロイするリソースの特定のバージョンを探します。
 
@@ -56,15 +50,15 @@
 
     ![search marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
 
-3. 選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。それらのオプションは、リソースの種類によって異なるため、ここでは説明しません。すべての種類で、対象リソース グループを選択する必要があります。次の図は、新しい Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
+3. 選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。それらのオプションは、リソースの種類によって異なるため、ここでは説明しません。すべての種類で、対象リソース グループを選択する必要があります。次の画像は、Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
 
     ![リソースグループの作成](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-    また、リソースをデプロイするときに新しいリソース グループを作成することもできます。**[新規作成]** を選択して、リソース グループに名前を付けます。
+    また、リソースをデプロイするときにリソース グループを作成することもできます。**[新規作成]** を選択して、リソース グループに名前を付けます。
 
     ![新しいリソース グループの作成](./media/resource-group-template-deploy-portal/select-new-group.png)
 
-4. デプロイが開始されます。この処理には数分かかります。デプロイが完了すると、通知が表示されます。
+4. デプロイが開始されます。デプロイには数分かかる場合があります。デプロイが完了すると、通知が表示されます。
 
     ![view notification](./media/resource-group-template-deploy-portal/view-notification.png)
 
@@ -121,7 +115,7 @@
 ## 次のステップ
 
 - 監査ログの表示については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイ エラーのトラブルシューティングの詳細については、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
+- デプロイ エラーのトラブルシューティングについては、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 - デプロイまたはリソース グループからテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

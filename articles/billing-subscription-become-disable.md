@@ -15,10 +15,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションが無効になった場合にどうすればよいか
+
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 Azure サブスクリプションが無効になった場合、この記事の手順を使って再び有効にできます。Azure サブスクリプションは、次の理由で無効になることがあります。
 
@@ -35,9 +37,9 @@ Azure サブスクリプションが無効になった場合、この記事の�
 3. サブスクリプションを選択します。
 
 4. "*サブスクリプションの使用制限に達したので、課金されないように無効にされました*" というメッセージが表示されたら、それをクリックします。
-	
+
 	それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
-	
+
 5. 必要に応じて次のオプションのいずれかを選択します。
 
 |オプション|効果|
@@ -71,4 +73,6 @@ Azure サブスクリプションが無効になった場合、この記事の�
 
 詳細については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

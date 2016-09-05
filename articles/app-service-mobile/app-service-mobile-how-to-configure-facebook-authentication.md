@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # App Service アプリケーションを Facebook ログインを使用するように構成する方法
@@ -22,7 +22,7 @@
 
 このトピックでは、認証プロバイダーとして Facebook を使用するように Azure App Service を構成する方法を示します。
 
-このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
+このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントと携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
 
@@ -44,7 +44,7 @@
 
 	> [AZURE.IMPORTANT] アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-7. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、**[App Review]** をクリックし、**[Make <your-app-name> public]** を有効にして、Facebook 認証を使用した汎用パブリック アクセスを有効にします。
+7. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、**[App Review]** をクリックし、**[Make <アプリケーション名> public]** を有効にして、Facebook 認証を使用した汎用パブリック アクセスを有効にします。
 
 ## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
@@ -75,4 +75,4 @@
 [Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

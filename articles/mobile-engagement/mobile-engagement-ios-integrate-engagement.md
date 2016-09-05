@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="08/19/2016"
 	ms.author="MehrdadMzfr" />
 
 #Engagement を iOS に統合する方法
@@ -48,7 +48,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 > [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
 
-##エンゲージメント SDK を初期化する
+##Engagement SDK を初期化する
 
 アプリケーション デリゲートを変更する必要がある:
 
@@ -70,7 +70,7 @@ Engagement では追加のフレームワークを動作させる必要がある
 
 ### 推奨される方法: `UIViewController` クラスをオーバーロードします
 
-Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\> `EngagementTableViewController` と同じルール)。
+Engagement でのユーザー、セッション、アクティビティ、クラッシュ、技術に関する統計のコンピューティングに必要なすべてのログのレポートを有効化するには、単にすべての `UIViewController` サブクラスを `EngagementViewController` クラスから継承するように設定します (`UITableViewController` -\\> `EngagementTableViewController` と同じルール)。
 
 **エンゲージメントを使用しない場合:**
 
@@ -210,4 +210,4 @@ Engagement でログの送信を停止したい場合は、以下を呼び出し
 [startMonitoringSignificantLocationChanges]: http://developer.apple.com/library/IOs/#documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/instm/CLLocationManager/startMonitoringSignificantLocationChanges
 [IDFA]: https://developer.apple.com/library/ios/documentation/AdSupport/Reference/ASIdentifierManager_Ref/ASIdentifierManager.html#//apple_ref/occ/instp/ASIdentifierManager/advertisingIdentifier
 
-<!-------HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

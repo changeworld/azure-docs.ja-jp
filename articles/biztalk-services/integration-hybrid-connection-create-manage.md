@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/23/2016" 
 	ms.author="mandia"/>
 
 
@@ -26,7 +26,7 @@
 3. オンプレミス リソースに Hybrid Connection Manager をインストールし、特定のハイブリッド接続に接続する。Azure ポータルでは 1 回のクリックでインストールと接続を実行できます。
 4. ハイブリッド接続を管理し、その接続キーを管理します。
 
-このトピックでは次の手順を示します。
+このトピックではこれらの手順について説明します。
 
 > [AZURE.IMPORTANT] ハイブリッド接続のエンドポイントを IP アドレスに設定することができます。IP アドレスを使用する場合、クライアントに応じて、オンプレミス リソースにアクセスできる場合とできない場合があります。ハイブリッド接続は、DNS 参照を行うクライアントに依存します。ほとんどの場合、__クライアント__はアプリケーション コードです。クライアントが DNS 参照を実行しない場合 (IP アドレスをドメイン名 (x.x.x.x) であるかのように解決しようとしない場合)、トラフィックはハイブリッド接続を介して送信されません。
 >
@@ -160,4 +160,4 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

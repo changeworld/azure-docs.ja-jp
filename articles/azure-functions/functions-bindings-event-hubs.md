@@ -15,12 +15,14 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/27/2016"
+	ms.date="08/22/2016"
 	ms.author="wesmc"/>
 
 # Azure Functions における Event Hub のバインド
 
-この記事では、Azure Functions で [Azure Event Hub](../event-hubs/event-hubs-overview.md) のバインドを構成したりコーディングしたりする方法について説明します。Azure Functions は、Azure Event Hubs のバインドのトリガーおよび出力をサポートしています。
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+
+この記事では、Azure Functions で [Azure Event Hub](../event-hubs/event-hubs-overview.md) のバインドを構成およびコーディングする方法について説明します。Azure Functions は、Azure Event Hubs のバインドのトリガーおよび出力をサポートしています。
 
 [AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -33,11 +35,11 @@ Azure Event Hub のトリガーは、イベント ハブのイベント スト�
 
 Azure Event Hub トリガーの *function.json* ファイルでは、次のプロパティを指定します。
 
-- `type` : *eventHubTrigger* に設定する必要があります。
-- `name` : イベント ハブ メッセージの関数コードで使用される変数名。
-- `direction`: *in* に設定する必要があります。
-- `path` : イベント ハブの名前。
-- `connection` : アプリ設定の名前。イベント ハブが配置される名前空間への接続文字列が含まれます。イベント ハブ自体ではなく、名前空間の **[接続情報]** ボタンをクリックして、この接続文字列をコピーします。この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。
+- `type`: *eventHubTrigger* に設定する必要があります。
+- `name`: イベント ハブ メッセージの関数コードで使用される変数名。
+- `direction` : *in* に設定する必要があります。
+- `path`: イベント ハブの名前。
+- `connection`: イベント ハブが配置される名前空間への接続文字列を含むアプリ設定の名前。この接続文字列をコピーするには、イベント ハブ自体ではなく、名前空間の **[接続情報]** ボタンをクリックします。この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。
 
 		{
 		  "bindings": [
@@ -81,11 +83,11 @@ Azure Event Hub の出力バインドを使用して、イベント ハブのイ
 
 Azure Event Hub 出力バインドの *function.json* ファイルでは、次のプロパティを指定します。
 
-- `type` : *eventHub* に設定する必要があります。
-- `name` : イベント ハブ メッセージの関数コードで使用される変数名。
-- `path` : イベント ハブの名前。
-- `connection` : アプリ設定の名前。イベント ハブが配置される名前空間への接続文字列が含まれます。イベント ハブ自体ではなく、名前空間の **[接続情報]** ボタンをクリックして、この接続文字列をコピーします。この接続文字列には、Event Hub ストリームにメッセージを送信するための送信アクセス許可が必要です。
-- `direction` : *out* に設定する必要があります。
+- `type`: *eventHub* に設定する必要があります。
+- `name`: イベント ハブ メッセージの関数コードで使用される変数名。
+- `path`: イベント ハブの名前。
+- `connection`: イベント ハブが配置される名前空間への接続文字列を含むアプリ設定の名前。この接続文字列をコピーするには、イベント ハブ自体ではなく、名前空間の **[接続情報]** ボタンをクリックします。この接続文字列には、Event Hub ストリームにメッセージを送信するための送信アクセス許可が必要です。
+- `direction`: *out* に設定する必要があります。
 
 	    {
 	      "type": "eventHub",
@@ -134,4 +136,4 @@ Azure Event Hub 出力バインドの *function.json* ファイルでは、次�
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

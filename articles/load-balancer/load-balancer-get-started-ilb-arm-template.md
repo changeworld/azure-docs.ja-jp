@@ -3,7 +3,7 @@
    description="リソース マネージャーでテンプレートを使用して、内部ロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/04/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # テンプレートを使用した内部ロード バランサーの作成の概要
 
@@ -40,7 +40,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 2. [パラメーター](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.parameters.json) ファイルをローカル ディスクにダウンロードします。
 3. ファイルを編集し、保存します。
-4. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroupDeployment** コマンドレットを実行します。 
+4. テンプレートを使用してリソース グループを作成するには、**New-AzureRmResourceGroupDeployment** コマンドレットを実行します。
 
 
 		New-AzureRmResourceGroupDeployment -Name TestRG -Location westus `
@@ -53,7 +53,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
 
 Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../../articles/xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../../articles/xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
 		azure config mode arm
@@ -75,4 +75,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

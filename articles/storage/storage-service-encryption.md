@@ -37,11 +37,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 ##可用性
 
-Standard Storage の場合、この機能は現在、オーストラリア南東部、カナダ中部、カナダ東部、米国中部、東アジア、米国東部、米国東部 2、米国中北部、北ヨーロッパ、米国中南部、東南アジア、西ヨーロッパ、および米国西部で使用できます。
-
-Premium Storage の場合、この機能は現在、オーストラリア南東部、カナダ中部、カナダ東部、米国中部、東アジア、米国東部、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、および米国西部で使用できます。
-
-他のリージョンに展開されたら、このドキュメントを更新します。
+現在、この機能は、Standard および Premium Storage 両方のすべてのリージョンで利用できます。
 
 ##暗号化のシナリオ
 
@@ -61,7 +57,7 @@ Storage Service Encryption は、ストレージ アカウント レベルで有
 
 -   既存のデータ - SSE は暗号化有効化後に新しく作成されたデータだけを暗号化します。たとえば、暗号化を有効にしないで新しい Resource Manager ストレージ アカウントを作成し、BLOB またはアーカイブ済み VHD をそのストレージ アカウントにアップロードした後、SSE を有効にした場合、それらの BLOB は、再作成またはコピーしない限り、暗号化されません。
 
--   Marketplace のサポート - Azure ポータル (https://portal.azure.com)、PowerShell、および Azure CLI を使用して Marketplace で作成された VM の暗号化を有効にします。VHD の基本イメージは暗号化されません。ただし、VM が稼働した後の書き込みはすべて暗号化されます。
+-   Marketplace のサポート - [Azure ポータル](https://portal.azure.com)、PowerShell、および Azure CLI を使用して Marketplace で作成された VM の暗号化を有効にします。VHD の基本イメージは暗号化されません。ただし、VM が稼働した後の書き込みはすべて暗号化されます。
 
 -   テーブル、キュー、ファイルのデータは暗号化されません。
 
@@ -229,4 +225,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

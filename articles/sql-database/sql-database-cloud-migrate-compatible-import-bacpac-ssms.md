@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # SSMS を使用して BACPAC から SQL Database にインポートする
@@ -36,11 +36,11 @@
 
     ![[データ層アプリケーションのインポート] メニュー項目](./media/sql-database-cloud-migrate/MigrateUsingBACPAC03.png)
 
-3.	インポート ウィザードでは、ローカル ディスクから BACPAC ファイルをインポートするか、Azure Storage アカウントと、BACPAC ファイルのアップロード先コンテナーを選択して、新しいデータベースを Azure SQL Database に作成します。
+3.	新しいデータベースを Azure SQL Database に作成するには、ローカル ディスクから BACPAC ファイルをインポートするか、Azure Storage アカウントと、BACPAC ファイルのアップロード先コンテナーを選択します。
 
     ![設定のインポート](./media/sql-database-cloud-migrate/MigrateUsingBACPAC04.png)
 
-    ***重要:*** BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
+	 > [AZURE.IMPORTANT] BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
 
 4.	Azure SQL DB でのデータベースの **[新しいデータベース名]** を指定し、**[Microsoft Azure SQL Database のエディション]** (サービス階層)、**[データベースの最大サイズ]**、および **[サービスの目的]** (パフォーマンス レベル) を設定します。
 
@@ -63,4 +63,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

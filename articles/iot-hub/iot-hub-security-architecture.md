@@ -13,7 +13,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/03/2016"
+ ms.date="08/02/2016"
  ms.author="yurid"/>
  
 [AZURE.INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
@@ -37,4 +37,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

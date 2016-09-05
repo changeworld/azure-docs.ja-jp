@@ -4,11 +4,11 @@
 	authors="kamathashwin"
 	manager=""
 	editor=""
-	services="monitoring-and-diagnostics"
-	documentationCenter="monitoring-and-diagnostics"/>
+	services="virtual-machine-scale-sets"
+	documentationCenter=""/>
 
 <tags
-	ms.service="monitoring-and-diagnostics"
+	ms.service="virtual-machine-scale-sets"
 	ms.workload="na"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
@@ -18,4 +18,4 @@
 
 [AZURE.INCLUDE [insights-advanced-autoscale-virtual-machine-scale-sets](../../includes/insights-advanced-autoscale-virtual-machine-scale-sets.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

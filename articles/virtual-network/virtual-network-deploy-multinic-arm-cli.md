@@ -88,7 +88,7 @@
 		                --name $backendSubnetName|grep Id)"
 		subnetId=${subnetId#*/}
 
->[AZURE.TIP] 上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
+	>[AZURE.TIP] 上述の最初のコマンドは [grep](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_04_02.html) と [文字列操作](http://tldp.org/LDP/abs/html/string-manipulation.html) (具体的には、部分文字列の削除) を使用します。
 
 4. `NSG-RemoteAccess` NSG のIDを取得します。この NSG に関連付けられる NIC が別のリソース グループ内にあるため、これを行う必要があります。
 
@@ -330,4 +330,4 @@
 		info:    Updating VM "DB2"
 		info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -21,7 +21,7 @@ description="Windows コンピューターで SSH キーを生成して使用し
 
 > [AZURE.SELECTOR]
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
-- [Linux と Mac](virtual-machines-linux-ssh-from-linux.md)
+- [Linux と Mac](virtual-machines-linux-mac-create-ssh-keys.md)
 
 
 このトピックでは、**ssh** コマンドを使用して Azure 上の Linux VM に接続するために使用できる、**ssh-rsa** 形式と **.pem** 形式の公開キー ファイルおよび秘密キー ファイルを Windows 上で作成して使用する方法について説明します。**.pem** フィルが既に作成されている場合は、これらのファイルを使用して、**ssh** を使って接続できる Linux VM を作成することができます。他のいくつかのコマンドでは、**SSH** プロトコルおよびキー ファイルを使用して、作業を安全に実行することができます。特に **scp** ([Secure Copy](https://en.wikipedia.org/wiki/Secure_copy)) では、**SSH** 接続をサポートするコンピューターとの間でファイルを安全にコピーできます。
@@ -142,13 +142,13 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 
 6. **[開く]** をクリックします。次のような画面が表示されます。
 
-	![linuxgoodforeignkey](./media/virtual-machines-linux-ssh-from-linux/linuxgoodforeignkey.png)
+	![linuxgoodforeignkey](./media/virtual-machines-linux-ssh-from-windows/linuxgoodforeignkey.png)
 
 7. **[OK]** をクリックします。
 
 8. 次の図でハイライト表示されている **[Save Private Key]** をクリックします。
 
-	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-linux/linuxputtygenprivatekey.png)
+	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtygenprivatekey.png)
 
 9. ファイルを PPK として保存します。
 
@@ -159,13 +159,13 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 2.	putty.exe を実行します。
 3.	ホスト名として、管理ポータルの IP を入力します。
 
-	![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-linux/linuxputtyconfig.png)
+	![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-windows/linuxputtyconfig.png)
 
 4.	**[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、自分のキーを選択します。入力するフィールドについては、下図を参照してください。
 
-	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-linux/linuxputtyprivatekey.png)
+	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtyprivatekey.png)
 
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

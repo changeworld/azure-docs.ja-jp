@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article"
-	ms.date="07/07/2015" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Windows Phone Silverlight Reach SDK 統合
@@ -24,7 +24,7 @@
 
 追加するものは何もありません。`EngagementReach` のリファレンスとリソースは、既にプロジェクト内に存在します。
 
-> [AZURE.TIP]プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。
+> [AZURE.TIP]  プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。
 
 ##機能を追加する
 
@@ -48,7 +48,7 @@
 
 ##エンゲージメント Reach SDK を初期化する
 
-### エンゲージメントの構成
+### Engagement の構成
 
 Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで集中管理されます。
 
@@ -73,9 +73,9 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 	/* Initialize Engagement agent with above configuration. */
 	EngagementAgent.Instance.Init(engagementConfiguration);
 
-> [AZURE.TIP]アプリケーションの MPNS プッシュ チャネルの名前を指定できます。既定では、エンゲージメントはアプリ ID に基づいて、名前を作成します。エンゲージメントの外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
+> [AZURE.TIP] アプリケーションの MPNS プッシュ チャネルの名前を指定できます。既定では、Engagement はアプリ ID に基づいて、名前を作成します。エンゲージメントの外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
 
-### エンゲージメントの初期化
+### Engagement の初期化
 
 `App.xaml.cs` を変更します。
 
@@ -99,7 +99,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 		   EngagementReach.Instance.OnActivated(e);
 		}
 
-> [AZURE.IMPORTANT]`EngagementReach.Instance.Init` は専用のスレッドで稼働します。自分で実行する必要はありません。
+> [AZURE.IMPORTANT] `EngagementReach.Instance.Init` は専用のスレッドで稼働します。自分で実行する必要はありません。
 
 ##アプリ ストアの送信に関する考慮事項
 
@@ -125,7 +125,7 @@ EngagementReach オブジェクトは、オプトイン / オプトアウト、`
 
 **これらの推奨事項を順守しない場合は、アプリケーションが検証プロセスに合格することを保証できません。**
 
-##データのプッシュを操作する (オプション)
+##データ プッシュを操作する (オプション)
 
 アプリケーションが Reach データのプッシュを受信できるようにするには、EngagementReach クラスの 2 つのイベントを実装する必要があります。
 
@@ -144,7 +144,7 @@ EngagementReach オブジェクトは、オプトイン / オプトアウト、`
 
 各メソッドのコールバックがブール値を返すことを確認できます。データのプッシュをディスパッチした後、Engagement はバックエンドにフィードバックを送信します。コールバックが false を返した場合、`exit` フィードバックが送信されます。それ以外の場合は、`action` になります。イベントにコールバックが設定されていない場合は、`drop` フィードバックがエンゲージメントに返されます。
 
-> [AZURE.WARNING]Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
+> [AZURE.WARNING] Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
 
 ##UI をカスタマイズする (オプション)
 
@@ -177,7 +177,7 @@ Reach UI をカスタマイズできるようにします。
 	   // Engagement Agent and Reach initialization
 	}
 
-> [AZURE.NOTE]既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、エンゲージメントの基本オブジェクトを選択します。
+> [AZURE.NOTE] 既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、エンゲージメントの基本オブジェクトを選択します。
 
 ### レイアウト
 
@@ -211,11 +211,11 @@ Reach UI をカスタマイズできるようにします。
 	   // return a new instance of your own notification
 	}
 
-> [AZURE.TIP]`CreateNotification` メソッドは null を返すことができます。通知は表示されず、リーチ キャンペーンは削除されます。
+> [AZURE.TIP] `CreateNotification` メソッドは null を返すことができます。通知は表示されず、リーチ キャンペーンは削除されます。
 
 レイアウトの実装を簡素化するために、コードの基礎として機能する独自の xaml を提供します。それらはエンゲージメント SDK アーカイブに配置されています (/src/reach/)。
 
-> [AZURE.WARNING]提供するソースは、使用されているものと全く同じものです。それゆえ、直接変更する場合は、名前空間と名前を忘れずに変更します。
+> [AZURE.WARNING] 提供するソースは、使用されているものと全く同じものです。それゆえ、直接変更する場合は、名前空間と名前を忘れずに変更します。
 
 ### 通知の位置
 
@@ -236,7 +236,7 @@ Reach UI をカスタマイズできるようにします。
 
 アプリケーションが起動されてからページが表示されるまでの間に、(ネットワークの速度に応じて) 遅延が発生します。
 
-読み込み中であることをユーザーに示すには、進行状況バーや進行状況インジケーターなどの視覚的な情報を提供する必要があります。エンゲージメント自身では、それに対応することはできませんが、いくつかのハンドラーを提供します。
+読み込み中であることをユーザーに示すには、進行状況バーや進行状況インジケーターなどの視覚的な情報を提供する必要があります。Engagement 自身では、それに対応することはできませんが、いくつかのハンドラーを提供します。
 
 コールバックを実装するには次のことを実行します:
 
@@ -259,11 +259,11 @@ Reach UI をカスタマイズできるようにします。
 
 `Application_Launching` ファイルの `App.xaml.cs` メソッドにコールバックを設定できます。`EngagementReach.Instance.Init()` コールの前が最適です。
 
-> [AZURE.TIP]各ハンドラーは、UI スレッドにより呼び出されます。メッセージボックスや UI 関連のものは、安心して使用できます。
+> [AZURE.TIP] 各ハンドラーは、UI スレッドにより呼び出されます。メッセージボックスや UI 関連のものは、安心して使用できます。
 
 [アプリケーション ポリシー]: http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
 [Content Policies]: http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
 [特定のアプリケーションの種類の追加要件]: http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
  
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0824_2016-->

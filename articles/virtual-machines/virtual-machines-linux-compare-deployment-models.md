@@ -1,11 +1,11 @@
 <properties
    pageTitle="Compute、Network、Storage プロバイダー | Microsoft Azure"
-   description="Azure Resource Manager デプロイ モデルにおける Linux アプリケーションのコンピューティング、ネットワーク、ストレージ リソース プロバイダー (CRP、NRP、SRP) の概要"
+   description="Azure Resource Manager デプロイ モデルにおける Linux アプリケーションの Compute、Network、Storage リソース プロバイダー (CRP、NRP、SRP) の概要"
    services="virtual-machines-linux"
    documentationCenter=""
-   authors="mahthi"
+   authors="tfitzmac"
    manager="timlt"
-   editor=""
+   editor="tysonn"
    tags="azure-resource-manager,azure-service-management"/>
 
 <tags
@@ -14,8 +14,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="04/29/2015"
-   ms.author="mahthi"/>
+   ms.date="08/19/2015"
+   ms.author="tomfitz"/>
 
 # Azure Resource Manager デプロイ モデルにおける Linux アプリケーション用の Azure Compute、Network、Storage プロバイダー
 
@@ -23,4 +23,4 @@ Azure Resource Manager デプロイ モデルにコンピューティング、�
 
 [AZURE.INCLUDE [virtual-machines-common-compare-deployment-models](../../includes/virtual-machines-common-compare-deployment-models.md)]
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

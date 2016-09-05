@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="08/22/2016"
    ms.author="alkohli" />
 
 # StorSimple のハードウェア コンポーネントの交換
 
-## 概要
+## Overview
 
 ハードウェア コンポーネントの交換に関するチュートリアルでは、Microsoft Azure StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントと、それらのコンポーネントを取り外して交換するために必要な手順について説明します。この記事は安全性アイコンについて説明し、詳細なチュートリアルへの参照情報や、交換可能なコンポーネントの一覧を掲載しています。
 
@@ -63,7 +63,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 |コンポーネント|台数|プラグイン モジュール?|交換手順
 |:---------|:--------|:--------------|:---------------------|
-| シャーシ|1|いいえ|[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
+| シャーシ|1|なし|[StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
 |プライマリ コントローラー|2|はい| [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md) |
 |764W 電源冷却モジュール (PCM)|2|はい| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
 |バックアップ バッテリ|2|はい| [StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-battery-replacement.md) |
@@ -75,7 +75,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 |コンポーネント|台数|プラグイン モジュール?| 交換手順
 |:---------|:--------|:--------------|:---------------------|
-|シャーシ|1|いいえ| [StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
+|シャーシ|1|なし| [StorSimple デバイスのシャーシを交換する](storsimple-chassis-replacement.md) |
 |EBOD コントローラー|2|はい| [StorSimple デバイスの EBOD コントローラーを交換する](storsimple-EBOD-controller-replacement.md) |
 |580W 電源冷却モジュール (PCM)|2|はい| [StorSimple デバイスの電源冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md) |
 |ディスク ドライブ|12|はい| [StorSimple デバイスのディスク ドライブを交換する](storsimple-disk-drive-replacement.md) |
@@ -88,7 +88,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 1** デバイスの前面
 
-|ラベル|説明|
+|ラベル|Description|
 |:----|:----------|
 |0 ～ 11|ディスク ドライブ (合計 12 台)|
 
@@ -98,7 +98,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 2** 主エンクロージャの背面
 
-|ラベル|説明|
+|ラベル|Description|
 |:----|:----------|
 |1|PCM 0|
 |2|PCM 1|
@@ -109,7 +109,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 **図 3** EBOD エンクロージャの背面
 
-|ラベル|説明|
+|ラベル|Description|
 |:----|:----------|
 |1|PCM 0|
 |2|PCM 1|
@@ -142,4 +142,4 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 StorSimple のハードウェア コンポーネントを交換する前に、すべての[安全に関する情報](storsimple-safety.md)を確認します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

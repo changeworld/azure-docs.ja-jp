@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサル アプリ SDK のアップグレード手順
@@ -31,13 +31,13 @@ SDK によって生成されるコンソール ログを有効化/無効化/フ�
 			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
 			EngagementAgent.Instance.Init();
 
-### Resources
+### リソース
 
 Reach オーバーレイの機能を強化しました。これは SDK NuGet パッケージのリソースの一部です。
 
 新しいバージョンの SDK にアップグレードする際、リソースのオーバーレイ フォルダーにある既存ファイルを保持するかどうかを選択できます。
 
-* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。 
+* 以前のオーバーレイが機能している、または `WebView` 要素を手動で統合している場合、既存ファイルを保持することで、引き続き使用することができます。
 * 新しいオーバーレイに更新する場合、リソースの `overlay` フォルダー全体を SDK パッケージの新しいフォルダーに置き換えます (UWP アプリ: アップグレード後に %USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\\3.4.0\\content\\win81\\Resources から新しいオーバーレイ フォルダーを取得できます)。
 
 > [AZURE.WARNING] 新しいオーバーレイを使用すると、以前のバージョンに対して行ったすべてのカスタマイズが上書きされます。
@@ -314,4 +314,4 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="08/23/2016" 
 	ms.author="genemi"/>
 
 
@@ -49,10 +49,9 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
  - 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成できる](sql-database-get-started.md)。
 
 
-- SQL Server Management Studio (ssms.exe)、2015 年 8 月のプレビューまたはそれ以降のバージョン。最新の ssms.exe をダウンロードすることができる。
+- SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。最新の ssms.exe をダウンロードすることができる。
  - 「[SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
  - [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
- - マイクロソフトでは、ssms.exe を定期的に更新することをお勧めします。ssms.exe は毎月更新されることもあります。
 
 
 - [Azure PowerShell モジュール](http://go.microsoft.com/?linkid=9811175)をインストールしておく必要があります。
@@ -64,7 +63,7 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 
 この PowerShell は 2 段階のコード サンプルの第 1 段階です。
 
-このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まり、再実行可能として設計されています。
+このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
 
 
 
@@ -143,7 +142,7 @@ Select-AzureSubscription -SubscriptionName $subscriptionName
 
 
 '
-Clean-up the old Azure Storage Account after any previous run, 
+Clean up the old Azure Storage Account after any previous run, 
 before continuing this new run.'
 
 
@@ -270,7 +269,7 @@ PowerShell スクリプトが終了したら、出力された名前付きの値
 - 次の第 2 段階では、次の Transact-SQL スクリプトでそのコンテナーを使用する必要があります。
 
 
-このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まり、再実行可能として設計されています。
+このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
 
 
 PowerShell スクリプトの終了時に、名前付きの値がいくつか出力されました。それらの値を使用するように Transact-SQL スクリプトを編集する必要があります。Transact-SQL スクリプトの **TODO** を探し、編集する箇所を見つけます。
@@ -610,4 +609,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # アカウント プロファイルとテスト デバイスを管理する方法
  
 この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。**Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
  
-[マイ アカウント] ページにアクセスするには、ページ上部のアカウントをクリックします。
+**[マイ アカウント]** ページにアクセスするには、ページ上部のアカウントをクリックします。
 
 UI の [マイ アカウント] セクションでは、プロファイル設定やテスト デバイス ID などのアカウントに関連付けられている設定を表示し、変更できます。これらの設定には、デバイス API からもアクセスできる項目が含まれています。
 
@@ -40,7 +40,7 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
  
 1. バックエンドからは、デバイス API の "Get" 機能を使用してデバイス ID の完全な一覧を取得できます。
 2. アプリからは、SDK を使用して取得できます。(Android の場合は、エージェント クラスの getDeviceID() 関数を呼び出し、iOS の場合は、エージェント クラスの deviceid プロパティを読み取ります)。
-3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合は、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata will be replaced by: http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata 
+3. リーチのお知らせからは、お知らせに関連付けられているアクションの URL に {deviceid} パターンが含まれている場合、このパターンは、アクションをトリガーするデバイスの ID に自動的に置き換えられます。http://<example>.com/registeruser?deviceid={deviceid}&otherparam=myparamdata は、http://<example>.com/registeruser?deviceid=XXXXXXXXXXXXXXXX&otherparam=myparamdata に置き換えられます。
 4. リーチの Web のお知らせからは、お知らせの HTML コードに {deviceid} パターンが含まれている場合は、Web のお知らせを表示するデバイスの ID に自動的に置き換えられます。自分のデバイス ID: {deviceid} は、次のデバイス ID に置き換えられます。自分のデバイス ID: XXXXXXXXXXXXXXXX
 5.  デバイスでアプリケーションを開き、タグが付けられているアプリでイベントを実行します。[UI] - [アプリ] - [監視] - [イベント] - [詳細] から、実行したイベントを一覧から見つけます。[監視] で、このイベントをクリックします。このイベントを実行したデバイスの一覧に、デバイス ID が見つかるはずです。次に、このデバイス ID をコピーし、[UI] - [マイ アカウント] - [デバイス] - [新しいデバイス] - [デバイスのプラットフォームを選択] で、これを登録できます。
 >(IDFA が iOS で無効になっている場合、アプリをアンインストールして再インストールすると、デバイス ID が経時変化する可能性があります)。
@@ -151,4 +151,4 @@ UI の [マイ アカウント] セクションでは、プロファイル設定
  
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

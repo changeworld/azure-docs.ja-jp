@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/13/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # 質問 - ASP.NET 向けの Application Insights
@@ -27,6 +27,12 @@
 * [Java Web アプリ](app-insights-java-troubleshoot.md)
 * [その他のプラットフォーム](app-insights-platforms.md)
 
+*サーバーからデータを取得できません。*
+
+* [ファイアウォール例外の設定](app-insights-ip-addresses.md)
+* [ASP.NET サーバーのセットアップ](app-insights-monitor-performance-live-website-now.md)
+* [Java サーバーのセットアップ](app-insights-java-agent.md)
+
 
 ## Application Insights と共に使用できるもの
 
@@ -35,7 +41,7 @@
 
 ## これは無料ですか。
 
-* はい、Free [価格レベル](app-insights-pricing.md)を選択した場合は、無料です。ほとんどの機能と大量のデータが手に入ります。 
+* はい、無料[価格レベル](app-insights-pricing.md)を選択した場合は、無料です。ほとんどの機能と大量のデータが手に入ります。
 * Microsoft Azure に登録するには、クレジット カード データを登録する必要がありますが、他の有料の Azure のサービスを使用するか、明示的に有料レベルにアップグレードしない限り、料金は発生しません。
 * アプリが Free レベルの月間クォータより多くのデータを送信すると、ログの記録を停止します。このような場合は、料金の支払いを開始するか、月末にクォータがリセットされるまでお待ちください。
 * 基本的な使用とセッション データは、クォータの対象になりません。
@@ -60,7 +66,7 @@
  + ai.js
 
 
-+ 次の NuGet パッケージがインストールされます。
++ Installs these NuGet packages:
 
  -  *Application Insights API* - コア API
 
@@ -68,7 +74,7 @@
 
  -  *Application Insights API for JavaScript Applications* - クライアントからテレメトリを送信するために使用されます
 
-    これらのパッケージには次のアセンブリが含まれています。
+    The packages include these assemblies:
 
  - Microsoft.ApplicationInsights
 
@@ -121,9 +127,9 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 <tr><td>依存関係テレメトリ</td><td><a href="../app-insights-monitor-performance-live-website-now/">AI Status Monitor をサーバーにインストールする</a></td><td>データベースや、その他の外部コンポーネントの問題を診断する</td></tr>
 <tr><td>例外からスタック トレースを取得する</td><td><a href="../app-insights-search-diagnostic-logs/#exceptions">コード内に TrackException 呼び出しを挿入する</a> (自動で報告されるものもある)</td><td>例外を検出して診断する</td></tr>
 <tr><td>ログ トレースの検索</td><td><a href="../app-insights-search-diagnostic-logs/">ログ アダプターを追加する</a></td><td>例外、パフォーマンスの問題を診断する</td></tr>
-<tr><td>クライアントの利用状況の基本情報: ページ ビュー、セッション、...</td><td><a href="../app-insights-javascript/">Web ページの JavaScript の初期化子</a></td><td>利用状況分析</td></tr>
+<tr><td>クライアントの利用状況の基本情報: ページ ビュー、セッション、...</td><td><a href="../app-insights-javascript/">Web ページの JavaScript の初期化子</a></td><td>Usage analytics</td></tr>
 <tr><td>クライアントのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">Web ページでの呼び出しの追跡</a></td><td>ユーザー エクスペリエンスを向上させる</td></tr>
-<tr><td>サーバーのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">サーバー コードでの呼び出しの追跡</a></td><td>ビジネス インテリジェンス</td></tr>
+<tr><td>サーバーのカスタム メトリック</td><td><a href="../app-insights-api-custom-events-metrics/">サーバー コードでの呼び出しの追跡</a></td><td>Business intelligence</td></tr>
 </table>
 
 
@@ -145,4 +151,4 @@ Application Insights リソースを作成および更新するための [PowerS
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

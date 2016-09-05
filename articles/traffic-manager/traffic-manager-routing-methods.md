@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="05/25/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager のトラフィック ルーティング方法
 
@@ -126,4 +126,4 @@ Traffic Manager はエンドポイントを監視し、エンドポイントが�
 [2]: ./media/traffic-manager-routing-methods/weighted.png
 [3]: ./media/traffic-manager-routing-methods/performance.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

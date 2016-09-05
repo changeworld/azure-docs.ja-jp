@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="08/08/2016"
    ms.author="golive"/>
 
 # 使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
@@ -74,6 +74,8 @@ Automation アカウントは、米国東部 2、米国中南部、米国政府�
 PowerShell ギャラリーは、Azure Automation アカウントに DSC リソースをインストールするためにインストルメント化されています。必要なリソースに移動し、[Azure Automation にデプロイ] ボタンをクリックします。
 
 ![PowerShell ギャラリーの例](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
+
+Azure ポータルに最近追加された別の手法を使用すると、新しいモジュールを取得したり既存のモジュールを更新したりできます。[Automation アカウント] リソース、[アセット] タイル、[モジュール] タイルの順にクリックします。[ギャラリーの参照] アイコンを使用すると、ギャラリー内のモジュールの一覧を表示し、詳細にドリルダウンして、Automation アカウントにインポートできます。これは、モジュールを随時最新の状態に保つことができる素晴らしい方法です。このインポート機能では、同期もれがないように他のモジュールとの依存関係もチェックされます。
 
 手動による方法もあります。Windows コンピューター用の PowerShell 統合モジュールのフォルダー構造は、Azure Automation で必要なフォルダー構造とは少し異なります。ユーザーが少し調整する必要があります。しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。 PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
@@ -167,7 +169,7 @@ New-ConfigurationScript.ps1:
 
 ## 手順 6. まとめ
 
-バージョンを QA に渡し、デプロイが承認されるたびに、パッケージが作成され、nuspec と nupkg が更新あれて、NuGet サーバーにデプロイされます。さらに、構成 (前の手順 4) も、新しいバージョン番号を承認するために更新する必要があります。構成はプル サーバーに送られ、コンパイルされる必要があります。ここからの先の、更新をプルし、インストールする方法は、構成に依存する VM によって異なります。これらの更新はいずれも単純で、PowerShell でほんの 1 ～ 2 行です。Visual Studio Team Services では、これらの更新の一部は、ビルドに連結できるビルド タスクとしてカプセル化されています。詳細については、この[記事](https://www.visualstudio.com/ja-JP/get-started/build/build-your-app-vs)を参照してください。この [GitHub のリポジトリ](https://github.com/Microsoft/vso-agent-tasks)で、使用できるさまざまなビルド タスクを列挙しています。
+バージョンを QA に渡し、デプロイが承認されるたびに、パッケージが作成され、nuspec と nupkg が更新あれて、NuGet サーバーにデプロイされます。さらに、構成 (前の手順 4) も、新しいバージョン番号を承認するために更新する必要があります。構成はプル サーバーに送られ、コンパイルされる必要があります。ここからの先の、更新をプルし、インストールする方法は、構成に依存する VM によって異なります。これらの更新はいずれも単純で、PowerShell でほんの 1 ～ 2 行です。Visual Studio Team Services では、これらの更新の一部は、ビルドに連結できるビルド タスクとしてカプセル化されています。詳細については、この[記事](https://www.visualstudio.com/ja-JP/docs/alm-devops-feature-index#continuous-delivery)を参照してください。この [GitHub のリポジトリ](https://github.com/Microsoft/vso-agent-tasks)で、使用できるさまざまなビルド タスクを列挙しています。
 
 ## メモ
 
@@ -185,4 +187,4 @@ VM でこの手法を使用する際に、ARM テンプレートや VM 拡張機
 - [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
 - [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

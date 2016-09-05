@@ -3,7 +3,7 @@
    description="Azure CLI を使用して、リソース マネージャーでインターネットに接続するロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/24/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサーの作成の開始
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、リソース マネージャーのデプロイ モデルについて説明します。[従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)についても説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、リソース マネージャーのデプロイ モデルについて説明します。[従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)についても説明します。
 
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
@@ -35,7 +35,7 @@
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
-- フロント エンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。 
+- フロント エンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
 
 - バック エンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
 
@@ -49,7 +49,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 ## リソース マネージャーを使用するための CLI のセットアップ
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../../articles/xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../../articles/xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
 
@@ -71,7 +71,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 	azure network vnet subnet create NRPRG NRPVnet NRPVnetSubnet -a 10.0.0.0/24
 
-### 手順 2
+### 手順 2.
 
 フロント エンド IP プールで使用される *NRPPublicIP* という名前のパブリック IP アドレスを作成します。DNS 名は *loadbalancernrp.eastus.cloudapp.azure.com* です。次のコマンドでは、静的な割り当てタイプと 4 分のアイドル タイムアウトを使用しています。
 
@@ -96,7 +96,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 	azure network lb frontend-ip create nrpRG NRPlb NRPfrontendpool -i nrppublicip
 
-### 手順 2 
+### 手順 2. 
 
 フロント エンド IP プールから受信トラフィックを受け取るために使用するバック エンド アドレス プールをセットアップします。
 
@@ -123,13 +123,13 @@ NAT 規則を作成します。
 パラメーター:
 
 - **-g** - リソース グループ名
-- **-l** - ロード バランサー名 
+- **-l** - ロード バランサー名
 - **-n** - NAT 規則、プローブ規則、またはロード バランサー規則を表すリソースの名前
-- **-p** - プロトコル (TCP または UDP)  
+- **-p** - プロトコル (TCP または UDP)
 - **-f** - 使用するフロント エンド ポート (probe コマンドでは、-f を使用してプローブ パスを定義します)
 - **-b** - 使用するバック エンド ポート
 
-### 手順 2
+### 手順 2.
 
 ロード バランサー規則を作成します。
 
@@ -226,10 +226,10 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 - **-g** - リソース グループ名
 - **-n** - NIC リソースの名前
-- **--subnet-name** - サブネットの名前 
+- **--subnet-name** - サブネットの名前
 - **--subnet-vnet-name** - 仮想ネットワークの名前
-- **-d** - バック エンド プール リソースの ID。/subscription/{subscriptionID/resourcegroups/<resourcegroup-name>/providers/Microsoft.Network/loadbalancers/<load-balancer-name>/backendaddresspools/<name-of-the-backend-pool> で始まります。 
-- **-e** - NIC リソースに関連付けられる NAT 規則の ID。/subscriptions/####################################/resourceGroups/<resourcegroup-name>/providers/Microsoft.Network/loadBalancers/<load-balancer-name>/inboundNatRules/<nat-rule-name> で始まります。
+- **-d** - バック エンド プール リソースの ID。/subscription/{subscriptionID/resourcegroups/<リソース グループ名>/providers/Microsoft.Network/loadbalancers/<ロード バランサー名>/backendaddresspools/<バックエンド プールの名前> で始まります。
+- **-e** - NIC リソースに関連付けられる NAT 規則の ID。/subscriptions/####################################/resourceGroups/<リソース グループ名>/providers/Microsoft.Network/loadBalancers/<ロード バランサー名>/inboundNatRules/<NAT 規則名> で始まります。
 
 
 予想される出力:
@@ -258,7 +258,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 	data:
 	info:    network nic create command OK
 
-### 手順 2
+### 手順 2.
 
 *lb-nic2-be* という名前の NIC を作成し、それを *rdp2* NAT 規則と *NRPbackendpool* バック エンド アドレス プールに関連付けます。
 
@@ -266,7 +266,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 ### 手順 3. 
 
-*web1* という名前の仮想マシン (VM) を作成し、それを *lb-nic1-be* という名前の NIC に関連付けます。次のコマンドを実行する前に、*web1nrp* というストレージ アカウントが作成されました。
+*web1* という名前の仮想マシン (VM) を作成し、それを *lb-nic1-be* という名前の NIC に関連付けます。*web1nrp* と呼ばれるストレージ アカウントが次のコマンドを実行する前に作成されました。
 
 	azure vm create --resource-group nrprg --name web1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
@@ -297,7 +297,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 ### 手順 4.
 
-*web2* という名前の仮想マシン (VM) を作成し、それを *lb-nic2-be* という名前の NIC に関連付けます。次のコマンドを実行する前に、*web1nrp* というストレージ アカウントが作成されました。
+*web2* という名前の仮想マシン (VM) を作成し、それを *lb-nic2-be* という名前の NIC に関連付けます。*web1nrp* と呼ばれるストレージ アカウントが次のコマンドを実行する前に作成されました。
 
 	azure vm create --resource-group nrprg --name web2 --location eastus --vnet-	name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
@@ -328,4 +328,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

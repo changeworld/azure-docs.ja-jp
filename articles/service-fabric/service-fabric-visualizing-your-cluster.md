@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/07/2016"
+   ms.date="08/22/2016"
    ms.author="seanmck"/>
 
 # Service Fabric Explorer を使用したクラスターの視覚化
@@ -24,7 +24,7 @@ Service Fabric Explorer は、Azure Service Fabric クラスター内のアプ�
 
 [開発環境を準備する](service-fabric-get-started.md)手順に従った場合は、http://localhost:19080/Explorer に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
 
->[AZURE.NOTE] Internet Explorer と Service Fabric Explorer を併用してリモート クラスターを管理する場合は、Internet Explorer の一部の設定を構成する必要があります。**[ツール]** -> **[互換表示設定]** に移動し、**[イントラネット サイトを互換表示で表示する]** チェック ボックスをオフにして、すべての情報が正しく読み込まれるようにします。
+>[AZURE.NOTE] Internet Explorer と Service Fabric Explorer を併用してリモート クラスターを管理する場合は、Internet Explorer の一部の設定を構成する必要があります。すべての情報が正しく読み込まれるように、**[ツール]** -> **[互換表示設定]** に移動し、**[イントラネット サイトを互換表示で表示する]** チェック ボックスをオフにします。
 
 ## Service Fabric Explorer のレイアウトについて
 
@@ -64,7 +64,7 @@ Service Fabric Explorer では、クラスター内のノード、アプリケ�
 
 ![Service Fabric Explorer でのアプリケーションの削除][sfx-delete-application]
 
->[AZURE.TIP] 同じ操作をツリー ビューから実行するには、各要素の横の省略記号をクリックします。
+>[AZURE.TIP] 同じ操作を実行するには、各要素の横にある省略記号をクリックします。
 
 次の表に、各エンティティに対して実行できるアクションを示します。
 
@@ -83,7 +83,11 @@ Service Fabric Explorer では、クラスター内のノード、アプリケ�
 
 >[AZURE.TIP] Service Fabric Explorer を使用して実行できる操作はすべて、PowerShell または REST API を使用して実行し、自動化することもできます。
 
+Service Fabric Explorer を使用して、特定のアプリケーションの種類とバージョンの新しいアプリケーション インスタンスを生成することもできます。ツリー ビューでアプリケーションの種類を選択し、右側のウィンドウでバージョンの横にある **[Create app instance (アプリ インスタンスの作成)]** リンクをクリックします。
 
+![Service Fabric Explorer でのアプリケーション インスタンスの作成][sfx-create-app-instance]
+
+>[AZURE.NOTE] Service Fabric Explorer を使って作成されたアプリケーション インスタンスは現在パラメーター化できません。これらは、既定のパラメーター値を使用して作成されます。
 
 ## リモート Service Fabric クラスターへの接続
 
@@ -99,9 +103,9 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 
 ### セキュリティ保護されたクラスターに接続する
 
-[証明書](service-fabric-cluster-security.md)または [Azure Active Directory (AAD)](service-fabric-cluster-security-client-auth-with-aad.md) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
+証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
 
-セキュリティで保護されたクラスターで Service Fabric Explorer に接続する場合、クラスターの管理エンドポイントに設定されているセキュリティの種類に応じて、クライアント証明書を提示するか、AAD を使用してログインする必要があります。
+セキュリティで保護されたクラスターで Service Fabric Explorer に接続する場合、クラスターの構成に応じて、クライアント証明書を提示するか、AAD を使用してログインする必要があります。
 
 ## 次のステップ
 
@@ -115,5 +119,6 @@ http://&lt;your-cluster-endpoint&gt;:19080/Explorer
 [sfx-application-tree]: ./media/service-fabric-visualizing-your-cluster/SfxApplicationTree.png
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
+[sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

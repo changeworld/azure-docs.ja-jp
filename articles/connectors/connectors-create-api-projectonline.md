@@ -14,22 +14,16 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/16/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # ProjectOnline コネクタの使用
 
 Project Online は、プロジェクト ポートフォリオ管理 (PPM) や日常業務を行うための Microsoft の柔軟なオンライン ソリューションです。Office 365 経由で配信される Project Online により、強力なプロジェクト管理機能が直ちに実現します。ほとんどすべての場所やデバイスから、プロジェクトとプロジェクト ポートフォリオ投資の計画、優先順位付け、管理を実行できます。
 
-ProjectOnline コネクタは、次のツールから使用できます。
-
-- [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [フロー](http://flow.microsoft.com)
-
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
-まず、ロジック アプリを作成します。「[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
 ## トリガーとアクション
 
@@ -40,7 +34,7 @@ ProjectOnline コネクタは、アクションとして使用できます。Pro
 ### ProjectOnline のアクション
 実行できるアクションは以下のとおりです。
 
-|アクション|説明|
+|アクション|Description|
 |--- | ---|
 |[ListProjects](connectors-create-api-projectonline.md#listprojects)|プロジェクト オンライン サイトでプロジェクトを一覧表示します|
 |[CreateProject](connectors-create-api-projectonline.md#createproject)|プロジェクト オンライン サイトで新しいプロジェクトを作成します|
@@ -52,7 +46,7 @@ ProjectOnline コネクタは、アクションとして使用できます。Pro
 ### ProjectOnline のトリガー
 次のイベントをリッスンできます。
 
-|トリガー | 説明|
+|トリガー | Description|
 |--- | ---|
 |新しいプロジェクトの作成時|新しいプロジェクトが作成されるたびにフローをトリガーします|
 |新しいリソースの作成時|新しいリソースが作成されたときにフローをトリガーします|
@@ -60,9 +54,9 @@ ProjectOnline コネクタは、アクションとして使用できます。Pro
 
 
 ## ProjectOnline への接続を作成する
-ProjectOnline を使用してロジック アプリを作成するには、まず**接続**を作成し、次のプロパティの詳細を指定する必要があります。
+ProjectOnline を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|プロパティ| 必須|説明|
+|プロパティ| 必須|Description|
 | ---|---|---|
 |トークン|はい|ProjectOnline の資格情報を提供します|
 
@@ -78,11 +72,11 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```GET: /trigger/_api/ProjectData/Projects```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -100,11 +94,11 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```GET: /trigger/_api/ProjectData/Resources```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -122,11 +116,11 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```GET: /trigger/_api/ProjectData/Tasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -144,11 +138,11 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```GET: /_api/ProjectServer/Projects```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -166,12 +160,12 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```POST: /_api/ProjectServer/Projects```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |proj| |○|body|なし|作成する新しいプロジェクト|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -189,13 +183,13 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Tasks/Add```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |project\_id|string|○|path|なし|タスクを追加するプロジェクトの一意の ID|
 |タスク| |○|body|なし|プロジェクトに追加する新しいタスク|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -213,12 +207,12 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```POST: /_api/ProjectServer/EnterpriseResources```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |resource| |○|body|なし|プロジェクトに追加する新しいエンタープライズ リソース|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -236,12 +230,12 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```GET: /_api/ProjectServer/Projects('{project_id}')/Tasks```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |project\_id|string|○|path|なし|タスクを取得するプロジェクトの一意の ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -259,12 +253,12 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```POST: /_api/ProjectServer/Projects('{project_id}')/checkOut```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |project\_id|string|○|path|なし|タスクを追加するプロジェクトの一意の ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -282,12 +276,12 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 ```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Publish(true)```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 |project\_id|string|○|path|なし|チェックインするプロジェクトの一意の ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -307,7 +301,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -316,13 +310,13 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ProjectStartDate|string|いいえ |
-|ProjectFinishDate|string|いいえ |
-|ProjectCreatedDate|string|いいえ |
-|ProjectId|string|いいえ |
-|ProjectModifiedDate|string|いいえ |
-|ProjectType|integer|いいえ |
-|ProjectName|string|いいえ |
+|ProjectStartDate|string|なし |
+|ProjectFinishDate|string|なし |
+|ProjectCreatedDate|string|なし |
+|ProjectId|string|なし |
+|ProjectModifiedDate|string|なし |
+|ProjectType|integer|なし |
+|ProjectName|string|なし |
 
 
 
@@ -331,7 +325,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -340,24 +334,24 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ResourceId|string|いいえ |
-|ResourceBaseCalendar|string|いいえ |
-|ResourceBookingType|integer|いいえ |
-|ResourceCanLevel|boolean|いいえ |
-|ResourceCostPerUse|number|いいえ |
-|ResourceCreatedDate|string|いいえ |
-|ResourceEarliestAvailableFrom|string|いいえ |
-|ResourceEmail|string|いいえ |
-|ResourceInitials|string|いいえ |
-|ResourceIsActive|boolean|いいえ |
-|ResourceIsGeneric|boolean|いいえ |
-|ResourceLatestAvailableTo|string|いいえ |
-|ResourceModifiedDate|string|いいえ |
-|ResourceName|string|いいえ |
-|ResourceStatsuName|string|いいえ |
-|ResourceType|integer|いいえ |
-|TypeDescription|string|いいえ |
-|TypeName|string|いいえ |
+|ResourceId|string|なし |
+|ResourceBaseCalendar|string|なし |
+|ResourceBookingType|integer|なし |
+|ResourceCanLevel|boolean|なし |
+|ResourceCostPerUse|number|なし |
+|ResourceCreatedDate|string|なし |
+|ResourceEarliestAvailableFrom|string|なし |
+|ResourceEmail|string|なし |
+|ResourceInitials|string|なし |
+|ResourceIsActive|boolean|なし |
+|ResourceIsGeneric|boolean|なし |
+|ResourceLatestAvailableTo|string|なし |
+|ResourceModifiedDate|string|なし |
+|ResourceName|string|なし |
+|ResourceStatsuName|string|なし |
+|ResourceType|integer|なし |
+|TypeDescription|string|なし |
+|TypeName|string|なし |
 
 
 
@@ -366,7 +360,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -375,16 +369,16 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ProjectId|string|いいえ |
-|TaskId|string|いいえ |
-|ProjectName|string|いいえ |
-|TaskName|string|いいえ |
-|TaskCreatedDate|string|いいえ |
-|TaskModifieddate|string|いいえ |
-|TaskStartDate|string|いいえ |
-|TaskFinishDate|string|いいえ |
-|TaskPriority|integer|いいえ |
-|TaskIsActive|boolean|いいえ |
+|ProjectId|string|なし |
+|TaskId|string|なし |
+|ProjectName|string|なし |
+|TaskName|string|なし |
+|TaskCreatedDate|string|なし |
+|TaskModifieddate|string|なし |
+|TaskStartDate|string|なし |
+|TaskFinishDate|string|なし |
+|TaskPriority|integer|なし |
+|TaskIsActive|boolean|なし |
 
 
 
@@ -393,9 +387,9 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|名前|string|あり |
-|説明|string|いいえ |
-|開始|string|いいえ |
+|名前|string|はい |
+|Description|string|なし |
+|開始|string|なし |
 
 
 
@@ -404,10 +398,10 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|名前|string|あり |
-|IsBudget|boolean|いいえ |
-|IsGeneric|boolean|いいえ |
-|IsInactive|boolean|いいえ |
+|名前|string|はい |
+|IsBudget|boolean|なし |
+|IsGeneric|boolean|なし |
+|IsInactive|boolean|なし |
 
 
 
@@ -416,21 +410,21 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ApprovedStart|string|いいえ |
-|ApprovedEnd|string|いいえ |
-|CheckedOutDate|string|いいえ |
-|CheckOutDescription|string|いいえ |
-|CheckOutId|string|いいえ |
-|CreatedDate|string|いいえ |
-|ID|string|いいえ |
-|IsCheckedOut|boolean|いいえ |
-|LastPublishedDate|string|いいえ |
-|LastSavedDate|string|いいえ |
-|OptimizerDecision|integer|いいえ |
-|PlannerDecision|integer|いいえ |
-|ProjectType|integer|いいえ |
-|名前|string|いいえ |
-|WinprojVersion|string|いいえ |
+|ApprovedStart|string|なし |
+|ApprovedEnd|string|なし |
+|CheckedOutDate|string|なし |
+|CheckOutDescription|string|なし |
+|CheckOutId|string|なし |
+|CreatedDate|string|なし |
+|ID|string|なし |
+|IsCheckedOut|boolean|なし |
+|LastPublishedDate|string|なし |
+|LastSavedDate|string|なし |
+|OptimizerDecision|integer|なし |
+|PlannerDecision|integer|なし |
+|ProjectType|integer|なし |
+|名前|string|なし |
+|WinprojVersion|string|なし |
 
 
 
@@ -439,7 +433,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -448,7 +442,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|parameters|未定義|あり |
+|parameters|未定義|はい |
 
 
 
@@ -458,9 +452,9 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
 |名前|string|はい |
-|メモ|string|いいえ |
-|開始|string|いいえ |
-|時間|string|いいえ |
+|メモ|string|なし |
+|開始|string|なし |
+|時間|string|なし |
 
 
 
@@ -469,29 +463,29 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|CanLevel|boolean|いいえ |
-|コード|string|いいえ |
-|CostAccrual|integer|いいえ |
-|CostCenter|string|いいえ |
-|作成日時|string|いいえ |
-|DefaultBookingType|integer|いいえ |
-|電子メール|string|いいえ |
-|ExternalId|string|いいえ |
-|グループ|string|いいえ |
-|HireDate|string|いいえ |
-|ID|string|いいえ |
-|Initials|string|いいえ |
-|IsActive|boolean|いいえ |
-|IsBudget|boolean|いいえ |
-|IsCheckedOut|boolean|いいえ |
-|IsGeneric|boolean|いいえ |
-|IsTeam|boolean|いいえ |
-|MaterialLabel|string|いいえ |
-|修正済み|string|いいえ |
-|名前|string|いいえ |
-|Phonetics|string|いいえ |
-|ResourceType|integer|いいえ |
-|TerminationDate|string|いいえ |
+|CanLevel|boolean|なし |
+|コード|string|なし |
+|CostAccrual|integer|なし |
+|CostCenter|string|なし |
+|作成日時|string|なし |
+|DefaultBookingType|integer|なし |
+|電子メール|string|なし |
+|ExternalId|string|なし |
+|グループ|string|なし |
+|HireDate|string|なし |
+|ID|string|なし |
+|Initials|string|なし |
+|IsActive|boolean|なし |
+|IsBudget|boolean|なし |
+|IsCheckedOut|boolean|なし |
+|IsGeneric|boolean|なし |
+|IsTeam|boolean|なし |
+|MaterialLabel|string|なし |
+|修正済み|string|なし |
+|名前|string|なし |
+|Phonetics|string|なし |
+|ResourceType|integer|なし |
+|TerminationDate|string|なし |
 
 
 
@@ -500,7 +494,7 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|値|array|いいえ |
+|値|array|なし |
 
 
 
@@ -509,19 +503,19 @@ ProjectOnline を使用してロジック アプリを作成するには、ま�
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|作成日時|string|いいえ |
-|修正済み|string|いいえ |
-|開始|string|いいえ |
-|完了|string|いいえ |
-|名前|string|いいえ |
-|ID|string|いいえ |
-|優先順位|integer|いいえ |
-|PercentComplete|integer|いいえ |
-|メモ|string|いいえ |
-|連絡先|string|いいえ |
+|作成日時|string|なし |
+|修正済み|string|なし |
+|開始|string|なし |
+|完了|string|なし |
+|Name|string|なし |
+|ID|string|なし |
+|優先順位|integer|なし |
+|PercentComplete|integer|なし |
+|メモ|string|なし |
+|連絡先|string|なし |
 
 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

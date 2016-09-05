@@ -82,7 +82,7 @@ _リモート監視構成済みソリューションのプロビジョニング�
     }
     ```
     
-    注: ロジック アプリの保存後に HTTP ポストの URL をコピーできますが、まず、アクションを追加する必要があります。
+    > [AZURE.NOTE] ロジック アプリの保存後に HTTP ポストの URL をコピーできますが、まず、アクションを追加する必要があります。
 
 8. 手動トリガーで __[+ 新しいステップ]__ をクリックします。次に、**[アクションの追加]** をクリックします。
 
@@ -182,4 +182,4 @@ _リモート監視構成済みソリューションのプロビジョニング�
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

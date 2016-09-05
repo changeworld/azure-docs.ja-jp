@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの EBOD コントローラーを交換する
 
-## 概要
+## Overview
 
 このチュートリアルでは、Microsoft Azure StorSimple デバイスの障害が発生した EBOD コントローラー モジュールを交換する方法について説明します。EBOD コントローラー モジュールを交換するには、次の操作を行う必要があります。
 
@@ -54,7 +54,7 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
      **図 1** EBOD モジュールの背面
 
-    |ラベル|説明|
+    |ラベル|Description|
     |:----|:----------|
     |1|障害 LED|
     |2|電源 LED|
@@ -91,7 +91,7 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
     **図 4** ケーブルの再接続
 
-    |ラベル|説明|
+    |ラベル|Description|
     |:----|:----------|
     |1|主エンクロージャ|
     |2|PCM 0|
@@ -107,4 +107,4 @@ StorSimple デバイスの障害が発生した EBOD コントローラー モ�
 
 「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->
