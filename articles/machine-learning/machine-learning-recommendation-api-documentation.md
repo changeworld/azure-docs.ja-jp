@@ -77,11 +77,14 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 ###4\.2.順位付けのビルド
 
-特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
+特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。
+どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。
+注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
 
 ###4\.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。
+理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
 
 ##5\.基本モデル
@@ -105,7 +108,8 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 HTTP 状態コード: 200
 
-- `feed/entry/content/properties/id` – モデル ID が含まれます。**注**: モデル ID は大文字小文字を区別します。
+- `feed/entry/content/properties/id` – モデル ID が含まれます。
+**注**: モデル ID は大文字小文字を区別します。
 
 OData XML
 
@@ -269,7 +273,9 @@ OData XML
 
 ###5\.4.モデルの更新
 
-モデルの説明またはアクティブなビルド ID を更新することができます。<br> <ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
+モデルの説明またはアクティブなビルド ID を更新することができます。<br>
+<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br>
+このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
 
 | HTTP メソッド | URI |
@@ -890,7 +896,18 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureBlockList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>WhiteList ルールを追加するには:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureWhiteList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> 
+<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>FeatureBlockList ルールを追加するには:</ins><br> 
+<br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
+Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
+<ins>WhiteList ルールを追加するには:</ins><br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>FeatureWhiteList ルールを追加するには:</ins><br> 
+<br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
+PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **応答**:
@@ -980,7 +997,7 @@ HTTP 状態コード: 200
 
 | Name | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
 | Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 | 
 | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
 | Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
@@ -3086,7 +3103,10 @@ HTTP 状態コード: 200
 
 
 ##15\.法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 
+使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> 
+このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> 
+© 2015 Microsoft.All rights reserved.
  
 
 <!---HONumber=AcomDC_0824_2016-->

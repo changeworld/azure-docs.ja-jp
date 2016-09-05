@@ -39,7 +39,7 @@
 
 このアーキテクチャは、プロセス サーバーが Azure 上にあり、VPN または ExpressRoute 接続のいずれかがある場合に使用します。
 
-![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 ポートの一覧とフェールバック アーキテクチャの図については、以下の画像をご覧ください。
 
@@ -204,4 +204,4 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 - ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 - データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0824_2016---->

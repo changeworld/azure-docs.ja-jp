@@ -24,7 +24,7 @@
 
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。自動修正は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 クラシック](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
 
 ## 前提条件
 
@@ -51,7 +51,7 @@
 
 自動修正で構成できるオプションを次の表に示します。実際の構成手順は、Azure ポータルと Azure Windows PowerShell コマンドのどちらを使用するかによって異なります。
 
-|Setting|指定できる値|Description|
+|設定|指定できる値|説明|
 |---|---|---|
 |**自動修正**|有効/無効 (無効)|Azure 仮想マシンの自動修正を有効または無効にします。|
 |**メンテナンス スケジュール**|毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日|仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。|

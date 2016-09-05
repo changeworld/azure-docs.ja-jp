@@ -80,11 +80,13 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 1. Visual Studio で**サーバー エクスプローラー** ウィンドウを開きます。
 
-2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
+2. **[Azure]** ノードを右クリックし、**[Microsoft Azure に接続]** をクリックします。
+![Azure への接続](./media/websites-dotnet-webjobs-sdk-get-started/connaz.png)
 
 3. Azure の資格情報を使用してサインインします。
 
-5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
+5. Azure ノードの **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+![ストレージ アカウントの作成](./media/websites-dotnet-webjobs-sdk-get-started/createstor.png)
 
 3. **[ストレージ アカウントの作成]** ダイアログ ボックスで、ストレージ アカウントの名前を入力します。
 
@@ -393,7 +395,7 @@ Azure ストレージ アカウントは、キューおよび BLOB データを�
 
 7. **[認証の変更]** ダイアログで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![[認証なし]](./media/websites-dotnet-webjobs-sdk-get-started/noauth.png)
+	![認証なし](./media/websites-dotnet-webjobs-sdk-get-started/noauth.png)
 
 8. **[新しい ASP.NET プロジェクト]** ダイアログで **[OK]** をクリックします。
 

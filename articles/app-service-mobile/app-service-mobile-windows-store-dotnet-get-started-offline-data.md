@@ -162,11 +162,14 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 
 モバイル サービスのオフライン機能をサポートするために、[IMobileServiceSyncTable] インターフェイスを使用して、ローカル SQLite データベースで [MobileServiceClient.SyncContext][synccontext] を初期化しました。オフラインのときは、モバイル アプリに対する通常の CRUD 操作は、アプリケーションはまだ接続されているが、操作はローカル ストアに対して発生したかのように動作します。ローカル ストアをサーバーと同期するには、次のメソッドを使用します。
 
-*  **[PushAsync]** このメソッドは [IMobileServicesSyncContext] のメンバーなので、すべてのテーブルに対する変更はバックエンドにプッシュされます。ローカルに変更されたレコードのみが、サーバーに送信されます。
+*  **[PushAsync]**  
+   このメソッドは [IMobileServicesSyncContext] のメンバーなので、すべてのテーブルに対する変更はバックエンドにプッシュされます。ローカルに変更されたレコードのみが、サーバーに送信されます。
 
-* **[PullAsync]** プルは [IMobileServiceSyncTable] から開始されます。テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。*pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。*query* パラメーターは、[IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] または OData クエリ文字列を受け取り、返されたデータをフィルター処理します。*queryId* パラメーターは、増分同期の定義に使用されます。詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
+* **[PullAsync]**   
+   プルは [IMobileServiceSyncTable] から開始されます。テーブルに追跡されている変更がある場合は、ローカル ストア内のすべてのテーブルとリレーションシップの一貫性が保持されるように、暗黙のプッシュが実行されます。*pushOtherTables* パラメーターは、コンテキスト内の他のテーブルが暗黙のプッシュでプッシュされるかどうかを制御します。*query* パラメーターは、[IMobileServiceTableQuery&lt;U&gt;][IMobileServiceTableQuery] または OData クエリ文字列を受け取り、返されたデータをフィルター処理します。*queryId* パラメーターは、増分同期の定義に使用されます。詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
 
-* **[PurgeAsync]** アプリはこのメソッドを定期的に呼び出して、ローカル ストアから古いデータを消去する必要があります。まだ同期されていないすべての変更を消去する必要がある場合は、*force* パラメーターを使用します。
+* **[PurgeAsync]**  
+   アプリはこのメソッドを定期的に呼び出して、ローカル ストアから古いデータを消去する必要があります。まだ同期されていないすべての変更を消去する必要がある場合は、*force* パラメーターを使用します。
 
 これらの概念の詳細については、「[Azure Mobile Apps でのオフライン データ同期](app-service-mobile-offline-data-sync.md#how-sync-works)」を参照してください。
 
@@ -175,7 +178,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 Mobile Apps のオフライン同期機能の詳しい背景情報については、以下のトピックを参照してください。
 
 * [Azure Mobile Apps でのオフライン データ同期]
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] (注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
 * [Azure Friday: Azure Mobile Services のオフライン対応アプリ]
 
 <!-- Anchors. -->

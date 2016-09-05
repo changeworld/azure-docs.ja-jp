@@ -118,7 +118,7 @@ Active Directory の概念については、「[アプリケーション オブ�
 
 1. **[アプリケーションの追加]** をクリックします。
 
-2. 一覧から **[Windows Azure サービス管理 API]** を選択します。次に、完了アイコンを選択します。
+2. 一覧から **[Microsoft Azure サービス管理 API]** を選択します。次に、完了アイコンを選択します。
 
       ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
 

@@ -30,7 +30,7 @@ CNAME レコードは、*mail.contoso.com* や **www.contoso.com** などの**�
 
 Web アプリで A レコードを使用するには、まず次の TXT レコードの 1 つを作成する必要があります。
 
-* **ルート ドメインの場合** -**@** の DNS TXT レコードを **& lt; yourwebappname & gt;。*.azurewebsites.net** にマッピング。
+* **ルート ドメインの場合** -**@** の DNS TXT レコードを **&lt; yourwebappname &gt;。*.azurewebsites.net** にマッピング。
 
 * **特定のサブドメインの場合** - **&lt;sub-domain>** の DNS 名を **&lt;yourwebappname&gt;.azurewebsites.net** にマッピング。たとえば、A レコードが **blogs.contoso.com** に対応する場合には、**blogs** となります。
 

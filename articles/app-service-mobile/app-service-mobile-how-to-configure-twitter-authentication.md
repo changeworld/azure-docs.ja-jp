@@ -35,7 +35,7 @@
 
 3.  ページの下部で、条項を読み、同意します。**[Create your Twitter application]** をクリックします。これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 
-4. **[Settings]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
+4. **[設定]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
 
 5. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key)]** と **[Consumer secret (API Secret)]** の値を書き留めます。
 
@@ -56,7 +56,7 @@
 
 17. (省略可能) Twitter によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Twitter]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Twitter にリダイレクトされます。
 
-17. [**Save**] をクリックします。
+17. **[保存]** をクリックします。
 
 これで、アプリケーションで認証に Twitter を使用する準備ができました。
 

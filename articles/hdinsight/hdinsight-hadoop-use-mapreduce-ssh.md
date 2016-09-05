@@ -59,7 +59,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
-	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt**** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
+	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt** ** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「[HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
 
