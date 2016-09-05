@@ -1,27 +1,27 @@
-<properties 
+<properties
    pageTitle="リソース マネージャーでの Azure CLI を使用した内部ロード バランサーの作成 | Microsoft Azure"
    description="リソース マネージャーで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure CLI を使用した内部ロード バランサーの作成の概要
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイ モデル。](load-balancer-get-started-ilb-classic-cli.md)
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-cli.md).
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -29,7 +29,7 @@
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
-- フロント エンド IP 構成 - 受信ネットワーク トラフィックのプライベート IP アドレスを構成します。 
+- フロント エンド IP 構成 - 受信ネットワーク トラフィックのプライベート IP アドレスを構成します。
 
 - バック エンド アドレス プール - ロード バランサーからトラフィックを受信するためのネットワーク インターフェイス (NIC) が含まれます。
 
@@ -55,15 +55,15 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 		info:    New mode is arm
 
-## 内部ロード バランサーの作成手順 
+## 内部ロード バランサーの作成手順
 
 次の手順では前述のシナリオに基づいて内部ロード バランサーを作成します。
 
-### 手順 1 
+### 手順 1
 
 [Azure コマンド ライン インターフェイス](https://azure.microsoft.com/downloads/)の最新バージョンをお持ちでない場合は、ダウンロードする必要がります。
 
-### 手順 2. 
+### 手順 2.
 
 インストールしたら、アカウントを認証します。
 
@@ -84,30 +84,30 @@ Azure リソース マネージャーのすべてのリソースは、リソー�
 	azure group create <resource group name> <location>
 
 
-## 内部ロード バランサー セットの作成 
+## 内部ロード バランサー セットの作成
 
 
-### 手順 1 
+### 手順 1
 
 `azure network lb create` コマンドを使用して内部ロード バランサーを作成します。次のシナリオでは、"nrprg" という名前のリソース グループが米国東部リージョンで作成されています。
- 	
+
 	azure network lb create -n nrprg -l westus
 
 >[AZURE.NOTE] 仮想ネットワークや仮想ネットワーク サブネットなどの内部ロード バランサーのすべてのリソースは同じリソース グループ、同じリージョンにある必要があります。
 
 
-### 手順 2 
+### 手順 2.
 
 内部ロード バランサーのフロント エンド IP アドレスを作成します。使用される IP アドレスは、仮想ネットワークのサブネットの範囲内にある必要があります。
 
-	
+
 	azure network lb frontend-ip create -g nrprg -l ilbset -n feilb -a 10.0.0.7 -e nrpvnetsubnet -m nrpvnet
 
 使用されるパラメーター:
 
 **-g** - リソース グループ **-l** - 内部ロード バランサー セットの名前 **-n** - フロント エンド IP の名前 **-a** - サブネット範囲内のプライベート IP アドレス **-e** - サブネット名 **-m** - 仮想ネットワーク名
 
-### 手順 3. 
+### 手順 3.
 
 バック エンド アドレス プールを作成します。
 
@@ -135,14 +135,14 @@ Azure リソース マネージャーのすべてのリソースは、リソー�
 受信 NAT 規則を作成します。受信 NAT 規則は、ロード バランサー内で特定の仮想マシン インスタンスに移動するエンドポイントの作成に使用されます。下の例では、2 つの NAT 規則がリモート デスクトップ アクセス用に作成されました。
 
 	azure network lb inbound-nat-rule create -g nrprg -l ilbset -n NATrule1 -p TCP -f 5432 -b 3389
-	
+
 	azure network lb inbound-nat-rule create -g nrprg -l ilbset -n NATrule2 -p TCP -f 5433 -b 3389
 
 使用されるパラメーター:
 
 **-g** -リソース グループ **-l** - 内部ロード バランサー セットの名前 **-n** - 受信 NAT 規則の名前 **-p** -規則に使用されるプロトコル **-f** -ロード バランサーのフロント エンドでの着信ネットワーク トラフィックをリッスンするポート **-b** バック エンド アドレス プール内のネットワーク トラフィックの受信ポート。
 
-### 手順 5. 
+### 手順 5.
 
 ロード バランサーの正常性プローブを作成します。正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブチェックが正常になるまで、ロード バランサーから削除されます。
 
@@ -156,20 +156,20 @@ Azure リソース マネージャーのすべてのリソースは、リソー�
 
 NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規則、ロード バランサー規則、プローブに関連付ける必要があります。
 
-### 手順 1 
+### 手順 1
 
 *lb-nic1-be* という名前の NIC を作成し、それを *rdp1* NAT 規則と *beilb* バック エンド アドレス プールに関連付けます。
-	
+
 	azure network nic create -g nrprg -n lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet -d "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" -e "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" eastus
 
 パラメーター:
 
 - **-g** - リソース グループ名
 - **-n** - NIC リソースの名前
-- **--subnet-name** - サブネットの名前 
+- **--subnet-name** - サブネットの名前
 - **--subnet-vnet-name** - 仮想ネットワークの名前
-- **-d** - バック エンド プール リソースの ID。/subscription/{subscriptionID/resourcegroups/<resourcegroup-name>/providers/Microsoft.Network/loadbalancers/<load-balancer-name>/backendaddresspools/<name-of-the-backend-pool> で始まります。 
-- **-e** - NIC リソースに関連付けられる NAT 規則の ID。/subscriptions/####################################/resourceGroups/<resourcegroup-name>/providers/Microsoft.Network/loadBalancers/<load-balancer-name>/inboundNatRules/<nat-rule-name> で始まります。
+- **-d** - バック エンド プール リソースの ID。/subscription/{subscriptionID/resourcegroups/<リソース グループ名>/providers/Microsoft.Network/loadbalancers/<ロード バランサー名>/backendaddresspools/<バックエンド プールの名前> で始まります。
+- **-e** - NIC リソースに関連付けられる NAT 規則の ID。/subscriptions/####################################/resourceGroups/<リソース グループ名>/providers/Microsoft.Network/loadBalancers/<ロード バランサー名>/inboundNatRules/<NAT 規則名> で始まります。
 
 
 予想される出力:
@@ -204,7 +204,7 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
  	azure network nic create -g nrprg -n lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet -d "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/beilb" -e "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" eastus
 
-### 手順 3. 
+### 手順 3.
 
 *DB1* という名前の仮想マシン (VM) を作成し、それを *lb-nic1-be* という名前の NIC に関連付けます。*web1nrp* と呼ばれるストレージ アカウントが次のコマンドを実行する前に作成されました。
 
@@ -218,12 +218,12 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 	azure vm create --resource-group nrprg --name DB2 --location eastus --vnet-	name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
 
-## ロード バランサーの削除 
+## ロード バランサーの削除
 
 
 ロード バランサーを削除するには、次のコマンドを使用します。
 
-	azure network lb delete -g nrprg -n ilbset 
+	azure network lb delete -g nrprg -n ilbset
 
 ここで **nrprg** はリソース グループ、**ilbset** は内部ロード バランサーの名前です。
 
@@ -234,4 +234,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

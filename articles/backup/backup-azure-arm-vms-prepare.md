@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/21/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 
@@ -46,6 +46,7 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 
 - 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
 - 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
+- Docker 拡張機能を持つ Linux 仮想マシンのバックアップはサポートされません。
 - 復元中に既存の仮想マシンを置き換えることはサポートされません。VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
 - リージョン間のバックアップと復元はサポートされません。
 - Azure のすべてのパブリック リージョンに仮想マシンをバックアップすることができます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照してください)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
@@ -141,9 +142,9 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [バックアップの目標] ブレードで、**[ワークロードの実行場所]** を [Azure] に、**[バックアップ対象]** を [仮想マシン] に設定し、**[OK]** をクリックします。
+4. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
 
-    [Backup Goal]\(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    [Backup Goal] (バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 
@@ -277,7 +278,7 @@ HttpProxy.Port=<proxy port>
 
     ![ファイアウォールを開く](./media/backup-azure-vms-prepare/firewall-01.png)
 
-2. [Windows ファイアウォール] ダイアログ ボックスで、**[受信の規則]** を右クリックし、**[新しい規則]** をクリックします。
+2. [Windows ファイアウォール] ダイアログ ボックスで、**[受信の規則]** を右クリックし、**[新しい規則...]** をクリックします。
 
     ![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-02.png)
 
@@ -321,4 +322,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 - [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 - [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

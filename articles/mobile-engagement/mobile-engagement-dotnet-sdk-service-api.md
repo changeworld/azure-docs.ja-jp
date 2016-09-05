@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-multiple" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="03/01/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #.NET SDK を使用して Azure Mobile Engagement サービス API にアクセスする
@@ -24,7 +24,7 @@ C# ラッパーを使用してこれらの API と対話できるようにする
 
 このサンプルでは、.NET SDK を使用するために従う一連の手順について説明します。
 
-1. まず、[こちら](mobile-engagement-api-authentication.md#authentication)に説明されているとおりに、Azure Active Directory を使用して、API の認証をセットアップする必要があります。次の手順の最後に、有効な **SubscriptionId**、**TenantId**、**ApplicationId** と **Secret** を所有している必要があります。 
+1. まず、[こちら](mobile-engagement-api-authentication.md#authentication)に説明されているとおりに、Azure Active Directory を使用して、API の認証をセットアップする必要があります。これらの手順が完了すると、有効な **SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** を入手できます。
 
 2. アナウンス キャンペーンを作成するシナリオを含む .NET SDK の操作を示すために、単純な Windows コンソール アプリを使用します。そのため、Visual Studio を開き、**コンソール アプリケーション**を作成します。
 
@@ -122,4 +122,4 @@ C# ラッパーを使用してこれらの API と対話できるようにする
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

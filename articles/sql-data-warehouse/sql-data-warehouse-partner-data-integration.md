@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Data Warehouse ソリューション パートナー| Microsoft Azure"
-   description="SQL Data Warehouse と連携するソリューションを提供するサードパーティのパートナーの一覧"
+   pageTitle="SQL Data Warehouse データ統合パートナー | Microsoft Azure"
+   description="Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供するサードパーティのパートナーの一覧。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -13,24 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/31/2016"
+   ms.date="08/17/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # SQL Data Warehouse データ統合パートナー
 
-エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。SQL Data Warehouse 向けのデータ統合ソリューションを提供しているパートナー企業の一覧を次に示します。
+エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。この記事は、Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供している Microsoft パートナー企業について説明しています。
 
 ## データ統合パートナー
 
-| パートナー | 説明 | リンク | ビデオ |
+| パートナー | Description | リンク | ビデオ |
 | ------- | ----------- |------ | ------ |
 | ![Alteryx][1] | **Alteryx**<br> Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストをサポートします。 | [Marketplace][alteryx_marketplace]<br>[Web サイト][alteryx_designer_website]<br>[データシート][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] | [![Alteryx ビデオ](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
 | ![Attunity][2] | **Attunity**<br>Attunity CloudBeam は、SQL Data Warehouse にデータを読み込むための、自動化および最適化されたソリューションを提供します。"クリックして読み込み" 設計を使用して、SQL Server、Oracle、DB2、Sybase、mySQL など、多種多様なデータベースからのバッチ読み込みと増分レプリケーションを簡素化し、迅速化します。 | [Marketplace][attunity_marketplace]<br>[クイック スタート][attunity_quickstart]<br>[Web サイト][attunity_cloudbeam_website]<br>[データシート][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] | [![Attunity ビデオ](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
 | ![Bryte Systems][3] | **Bryte Systems**<br>Bryte Systems は、さまざまなデータベースやソースから SQL Data Warehouse へのデータ転送を自動化します。Bryte Systems は、データの移動および統合テクノロジの専門企業です。スケーラブルなクラウド ベースのデータ ウェアハウスと Data Lake を構築することで、知見を見いだすことができます。 | [Marketplace][bryte_systems_marketplace]<br>[Web サイト][bryte_systems_azure_website] | |
-| ![Informatica][4] | **Informatica Cloud**<br>Informatica Cloud の統合ポートフォリオを利用すれば、クラウド、オンプレミス、モバイル、ソーシャルなどのさまざまなデータ ソースに容易に接続して、関連する信頼性の高いビジネス情報を効率的に共有できます。Informatica Cloud は、バッチとリアルタイム パターン、クラウド テスト データ管理、クラウド データ品質、およびクラウド マスター データ管理アプリケーションのための、最も包括的なクラウド統合スイートを提供します。 | [Marketplace][informatica_Cloud_Services_marketplace]<br>[無料評価版][informatica_cloud_free_trial]<br>[構成ガイド][informatica_cloud_services_config]<br>[Web サイト][informatica_Cloud_Services_website]<br>[データシート][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
-| ![Informatica][4] | **Informatica PowerCenter** <br>Informatica は、データ統合ソフトウェアのプロバイダーとして、世界的に有名な独立系企業の 1 つです。PowerCenter は、分析とデータ ウェアハウス、アプリケーションの移行と統合、およびデータ ガバナンスを含む、データ統合のすべての取り組みを支援する基盤としての役割を果たします。 | [Marketplace (Standard)][informatica_PowerCenter_std_marketplace]<br>[ Marketplace (Advanced)][informatica_PowerCenter_adv_marketplace]<br>[Web サイト][informatica_PowerCenter_website]<br>[データシート][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
-| ![Redgate][5] | **Redgate Data Platform Studio (プレビュー)**<br>Redgate の Data Platform Studio は、オンプレミスの SQL データベースを Azure SQL Data Warehouse に移行するためのシンプルで信頼性の高い方法を提供します。Data Platform Studio は、完全に自動化された移行に向けてスマートな判断をするよう設計されており、1 回限りの移行に自由に利用することができます。 | [Web サイト][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] | |
-| ![SnapLogic][6] | **SnapLogic**<br>SnapLogic のサービスとしての統合プラットフォーム (iPaaS) を使用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。SnapLogic は、クラウド、オンプレミス、またはハイブリッド モードで、数百ものアプリケーション、サービス、IoT を統合する機能を提供することで、迅速かつ効果的な洞察をもたらします。 | [Marketplace][snaplogic_marketplace]<br>[Web サイト][snaplogic_website]<br>[データシート][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] | [![Snaplogic ビデオ](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
+| ![Informatica][4] | **Informatica Cloud**<br>Informatica Cloud 統合ポートフォリオにより、さまざまなクラウド、オンプレミス、モバイル、およびソーシャル データ ソースに簡単に接続することができます。Informatica Cloud を使用して、関連した信頼できるビジネス情報を効率的に共有できます。Informatica Cloud は、バッチとリアルタイム パターン、クラウド テスト データ管理、クラウド データ品質、およびクラウド マスター データ管理アプリケーションのための、最も包括的なクラウド統合スイートを提供します。 | [Marketplace][informatica_Cloud_Services_marketplace]<br>[無料評価版][informatica_cloud_free_trial]<br>[構成ガイド][informatica_cloud_services_config]<br>[Web サイト][informatica_Cloud_Services_website]<br>[データシート][informatica_cloud_datasheet]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
+| ![Informatica][4] | **Informatica PowerCenter** <br>Informatica は、データ統合ソフトウェアのプロバイダーとして、世界的に有名な独立系企業の 1 つです。PowerCenter は、すべてのデータ統合イニシアティブのための基盤を形成します。分析、データ ウェアハウジング、アプリケーションの移行、統合、またはデータ ガバナンスに PowerCenter を使用します。 | [Marketplace (Standard)][informatica_PowerCenter_std_marketplace]<br>[ Marketplace (Advanced)][informatica_PowerCenter_adv_marketplace]<br>[Web サイト][informatica_PowerCenter_website]<br>[データシート][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
+| ![Redgate][5] | **Redgate Data Platform Studio (プレビュー)**<br>Redgate の Data Platform Studio は、オンプレミスの SQL データベースを Azure SQL Data Warehouse に移行するためのシンプルで信頼性の高い方法を提供します。Data Platform Studio は、完全に自動化された移行に向けてスマートな判断をするよう設計されており、1 回限りの移行に自由に利用することができます。 | [Web サイト][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] | [![Redgate ビデオ](./media/sql-data-warehouse-partner-data-integration/redgate_video.jpg)](https://www.youtube.com/watch?v=IR9HNvnU46s) |
+| ![SnapLogic][6] | **SnapLogic**<br>SnapLogic のサービスとしての統合プラットフォーム (iPaaS) を使用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。SnapLogic は数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を備えます。SnapLogic は、クラウド、オンプレミス、またはハイブリッド モードの高速で効率的な分析を実現します。 | [Marketplace][snaplogic_marketplace]<br>[Web サイト][snaplogic_website]<br>[データシート][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] | [![Snaplogic ビデオ](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
 
 ## 次のステップ
 
@@ -76,14 +76,14 @@
 [snaplogic_website]: https://www.snaplogic.com/solutions/microsoft-cortana-analytics-integration/
 
 <!--Marketplace Links -->
-[alteryx_marketplace]: https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/
+[alteryx_marketplace]: https://azure.microsoft.com/ja-JP/marketplace/partners/alteryx/alteryx-designer/
 [attunity_marketplace]: https://azure.microsoft.com/en-gb/marketplace/partners/attunity-cloudbeam/cloudbeam-dw-byol/
 [bryte_systems_marketplace]: https://azure.microsoft.com/en-gb/marketplace/partners/bryte/bryteflow-cdc-free-trial/
-[informatica_Cloud_Services_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica-cloud/informatica-cloud/
-[informatica_PowerCenter_std_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
-[informatica_PowerCenter_adv_marketplace]: https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/
+[informatica_Cloud_Services_marketplace]: https://azure.microsoft.com/ja-JP/marketplace/partners/informatica-cloud/informatica-cloud/
+[informatica_PowerCenter_std_marketplace]: https://azure.microsoft.com/ja-JP/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
+[informatica_PowerCenter_adv_marketplace]: https://azure.microsoft.com/ja-JP/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/
 <!--[redgate_marketplace]:-->
-[snaplogic_marketplace]: https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/
+[snaplogic_marketplace]: https://azure.microsoft.com/ja-JP/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/
 
 <!--Quickstart_links-->
 [attunity_quickstart]: http://www.attunity.com/sites/default/files/product_resource/quick_start_guide_attunity_cloudbeam_for_microsoft_azure.pdf
@@ -115,4 +115,4 @@
 [redgate_twitter]: https://twitter.com/DataPlatform_S
 [snaplogic_twitter]: https://twitter.com/snaplogic
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

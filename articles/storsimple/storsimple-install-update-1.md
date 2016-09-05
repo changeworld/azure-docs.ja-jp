@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/22/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 1.2 のインストール
 
-## 概要
+## Overview
 
 このチュートリアルでは、Update 1 より前のソフトウェア バージョンを実行している StorSimple デバイスに Update 1.2 をインストールする方法について説明します。このチュートリアルではまた、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されている場合にこの更新プログラムに必要な追加の手順についても説明します。
 
@@ -125,4 +125,4 @@ Update 1.2 を適用するには、次の手順を実行します。**この更�
 
 詳細については、[Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

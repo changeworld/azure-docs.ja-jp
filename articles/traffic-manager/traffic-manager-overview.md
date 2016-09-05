@@ -3,7 +3,7 @@
    description="この記事は、Traffic Manager の内容と、これがアプリケーションに適したトラフィック ルーティングかどうかを理解するのに役立ちます"
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/09/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager について
 
@@ -33,7 +33,7 @@ Traffic Manager を使用すると、次のようなメリットが得られま�
 - **高パフォーマンスのアプリケーションのために応答性を向上** - Azure によって、世界各地に配置されたデータセンターでクラウド サービスまたは Web サイトを実行できます。Traffic Manager は、クライアントのネットワーク待ち時間が最も短いエンドポイントにエンド ユーザーを転送することで、アプリケーションの応答性を高めます。
 - **ダウンタイムなしのアップグレードおよびサービス メンテナンスの実施** - メンテナンスが行われている間、Traffic Manager を使用して、トラフィックを代替エンドポイントに直接送信することで、エンド ユーザーに対するダウンタイムを発生させずに、アプリケーションのアップグレードとその他の定期的なメンテナンスをシームレスに実施できます。
 - **オンプレミス アプリケーションとクラウド ベースのアプリケーションの結合** - Traffic Manager では、Azure 以外の外部エンドポイントがサポートされています。これにより、Traffic Manager は、"クラウドへのバースト"、"クラウドへの移行"、"クラウドへのフェールオーバー" など、ハイブリッド クラウドとオンプレミス デプロイメントで使用することができます。
-- **大規模で複雑なデプロイに対するトラフィックの分散** - [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使ってトラフィック ルーティング方法を組み合わせることで、高度で柔軟性のあるトラフィック ルーティング構成を作成し、より大規模で複雑なデプロイメントのニーズに対応できます。 
+- **大規模で複雑なデプロイに対するトラフィックの分散** - [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使ってトラフィック ルーティング方法を組み合わせることで、高度で柔軟性のあるトラフィック ルーティング構成を作成し、より大規模で複雑なデプロイメントのニーズに対応できます。
 
 [AZURE.INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
 
@@ -48,4 +48,4 @@ Traffic Manager を使用すると、次のようなメリットが得られま�
 - [Traffic Manager プロファイルを作成します](traffic-manager-manage-profiles.md)。
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

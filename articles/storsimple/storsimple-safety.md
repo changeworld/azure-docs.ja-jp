@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/13/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスを安全にインストールして操作する
@@ -25,13 +25,13 @@ Microsoft Azure StorSimple デバイスに適用されるこの記事に記載�
 
 Microsoft Azure StorSimple デバイスを設定および実行しているときに従うべき安全に関する注意事項に使用されるアイコンを説明します。
 
-| アイコン | 説明 |
+| アイコン | Description |
 |:------|:-------------| 
 |![危険のアイコン](./media/storsimple-safety/IC740879.png) **危険!**|回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。この記号の文字は、最も重大な状況の場合にのみ使用されます。| 
 |![警告のアイコン](./media/storsimple-safety/IC740879.png) **警告!**|回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。|
 |![警告のアイコン](./media/storsimple-safety/IC740879.png) **注意!**|回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。|
-|![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**|重要だが、危険に関連するものではない情報を示します。|
-|![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧|
+|![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**|重要だが、危険に関連するものではない情報を示します。|
+|![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧|
 |![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png)**ヘビー ウェイト**| |
 |![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png)**ユーザーによる保守不可能な部品**|適切な訓練を受けている場合を除き、触らないでください。|
 |![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください**| |
@@ -131,7 +131,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - PCM からカバーを取り外さないでください。内部で感電する危険性があります。PCM を返却して交換品を受け取るには、[Microsoft サポートに連絡](https://msdn.microsoft.com/library/azure/dn757750.aspx)してください。
 
-![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
 機器を適切に操作し、製品の破損を回避する方法
 
@@ -141,7 +141,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ## 静電気 (ESD) に関する注意事項
 
-![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
 次の ESD に関する注意事項を守ってください。
 
@@ -167,7 +167,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 電源からバッテリを取り外す場合は、バッテリの保護エンド キャップを使用してください。
 
-![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
 バッテリを船舶または飛行機で輸送する場合は、[http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) の IATA リチウム バッテリ ガイダンス資料に従ってください。
 
@@ -179,4 +179,4 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 - 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

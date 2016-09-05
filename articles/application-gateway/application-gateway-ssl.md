@@ -105,7 +105,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 	ThumbprintAlgo : sha1RSA
 	State..........: Provisioned
 
->[AZURE.NOTE] 証明書のパスワードは、4 ～ 12 文字のアルファベットまたは数字で指定する必要があります。特殊文字は使用できません。
+>[AZURE.NOTE] 証明書のパスワードは、4 ～ 12 文字の英数字で指定する必要があります。特殊文字は使用できません。
 
 ## ゲートウェイの構成
 
@@ -132,7 +132,7 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 **構成 XML のサンプル**
 
 
-	    <?xml version="1.0" encoding="utf-8"?>
+	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
 	    <FrontendIPConfigurations />
 	    <FrontendPorts>
@@ -235,4 +235,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

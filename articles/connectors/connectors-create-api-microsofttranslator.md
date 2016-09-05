@@ -1,5 +1,5 @@
 <properties
-    pageTitle="PowerApps Enterprise またはロジック アプリに Microsoft Translator を追加する | Microsoft Azure"
+    pageTitle="ロジック アプリに Microsoft Translator を追加する | Microsoft Azure"
     description="Microsoft Translator コネクタと REST API パラメーターの概要"
     services=""
     suite=""
@@ -15,28 +15,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Microsoft Translator コネクタの使用
-Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。Microsoft Translator コネクタは、次のツールから使用できます。
+Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。Microsoft Translator では、次の操作を実行できます。
 
-- Logic Apps 
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-microsofttranslator.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-microsofttranslator.md)
-
-Microsoft Translator では、次の操作を実行できます。
-
-- Microsoft Translator から取得したデータに基づいてビジネス フローを構築できます。 
+- Microsoft Translator から取得したデータに基づいてビジネス フローを構築できます。
 - アクションを使用して、テキストの翻訳、言語の検出などを行うことができます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Dropbox で新しいファイルが作成されたときに、Microsoft Translator を使用してファイル内のテキストを別の言語に翻訳することができます。
-- PowerApps Enterprise に Microsoft Translator コネクタを追加できます。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
 
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
-
-Logic Apps に操作を追加する方法については、「[SaaS サービスを接続する新しいロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」をご覧ください。
+ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
 
 ## トリガーとアクション
 Microsoft Translator には、次のアクションがあります。トリガーはありません。
@@ -59,11 +47,11 @@ Microsoft Translator には、次のアクションがあります。トリガ�
 ### 言語を検出する    
 指定されたテキストのソース言語を検出します。```GET: /Detect```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |query|string|○|query|なし |言語を特定するテキスト|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -73,12 +61,12 @@ Microsoft Translator には、次のアクションがあります。トリガ�
 ### テキストを音声に変換する    
 指定されたテキストを wave 形式のオーディオ ストリームとして音声に変換します。```GET: /Speak```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |query|string|○|query|なし |変換するテキスト|
 |言語|string|○|query|なし |音声を生成する言語コード (例: 'ja-JP')|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -88,15 +76,15 @@ Microsoft Translator には、次のアクションがあります。トリガ�
 ### テキストを翻訳する    
 Microsoft Translator を使用して、指定された言語にテキストを翻訳します。```GET: /Translate```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |query|string|○|query|なし |翻訳するテキスト|
 |languageTo|string|○|query| なし|ターゲット言語コード (例: "fr")|
 |languageFrom|string|×|query|なし |ソース言語。指定しない場合、Microsoft Translator で自動検出が試行されます (例: en)。|
 |カテゴリ|string|×|query|全般 |翻訳のカテゴリ (既定値: 'general')|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -107,7 +95,7 @@ Microsoft Translator がサポートしているすべての言語を取得し�
 
 この呼び出しには、パラメーターはありません。
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -119,7 +107,7 @@ Microsoft Translator がサポートしているすべての言語を取得し�
 
 この呼び出しには、パラメーターはありません。
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -137,7 +125,7 @@ Microsoft Translator がサポートしているすべての言語を取得し�
 
 ## 次のステップ
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
 [API リスト](apis-list.md)に戻ります。
 
@@ -146,4 +134,4 @@ Microsoft Translator がサポートしているすべての言語を取得し�
 [5]: https://datamarket.azure.com/developer/applications/
 [6]: ./media/connectors-create-api-microsofttranslator/register-your-application.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -3,7 +3,7 @@
    description="ロード バランサーの TCP アイドル タイムアウトの構成"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/03/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # ロード バランサーの TCP アイドル タイムアウト設定を変更する方法
 
@@ -166,4 +166,4 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
  
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
 	documentationCenter=""
 	description="PowerShell を使用して、Windows を実行している仮想マシンで Azure 診断を有効にする方法について説明します"
 	authors="sbtron"
-	manager=""
+ 	manager="timlt"
 	editor=""/>
 
 <tags
@@ -201,4 +201,4 @@ VM で診断拡張機能を有効にしたら、[Get-AzureRMVmDiagnosticsExtensi
 - Azure 診断機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、[Azure Cloud Services および Virtual Machines での診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)に関する記事を参照してください。
 - 「[Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx)」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="クラシック デプロイ モデルで Azure CLI を使用した内部ロード バランサーの作成 | Microsoft Azure"
    description="クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
 
@@ -42,7 +42,7 @@
 
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../../articles/xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../../articles/xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
 
@@ -53,7 +53,7 @@
 		info:    New mode is asm
 
 
-## エンドポイントとロード バランサー セットの作成 
+## エンドポイントとロード バランサー セットの作成
 
 シナリオでは、mytestcloud と呼ばれるクラウド サービス内に仮想マシン DB1 および DB2 があることを前提としています。両方の仮想マシンは、サブネット subnet-1 付きの testvnet と呼ばれる仮想ネットワークを使用します。
 
@@ -62,7 +62,7 @@
 これは、内部ロード バランサーを使用して SQL 仮想マシンをバック エンドに配置し、パブリック IP アドレスを直接使用してデータベース サーバーが公開されないようにするための一般的なシナリオです。
 
 
-### 手順 1 
+### 手順 1
 
 `azure network service internal-load-balancer add` を使用して、内部ロード バランサー セットを作成します。
 
@@ -73,7 +73,7 @@
 **-r** - クラウド サービス名<BR> **-n** - 内部 Load Balancer 名<BR> **-t** - サブネット名 (内部ロード バランサーに追加する仮想マシンと同じサブネット)<BR> **-a** - (オプション) 静的プライベート IP アドレスを追加する<BR>
 
 詳細については、「`azure service internal-load-balancer --help`」を参照してください。
- 
+
 内部ロード バランサーのプロパティを確認するには、コマンド `azure service internal-load-balancer list` *クラウド サービス名*を使用します。
 
 出力の例を次に示します。
@@ -87,7 +87,7 @@
 	info:    service internal-load-balancer list command OK
 
 
-## 手順 2. 
+## 手順 2.
 
 最初のエンドポイントの追加時に、内部ロード バランサー セットを構成します。この手順では、エンドポイント、仮想マシン、およびプローブ ポートを内部ロード バランサーに関連付けます。
 
@@ -98,11 +98,11 @@
 **-k** - ローカル仮想マシン ポート<BR> **-t** - プローブ ポート<BR> **-r** - プローブ プロトコル<BR> **-e** - プローブの間隔 (秒)<BR> **-f** - タイムアウトまでの時間 (秒) <BR> **-i** - 内部ロード バランサー名 <BR>
 
 
-## 手順 3. 
+## 手順 3.
 
 `azure vm show` *仮想マシン名*を使用して、ロード バランサーの構成を確認する
 
-	azure vm show DB1 
+	azure vm show DB1
 
 次のように出力されます。
 
@@ -132,7 +132,7 @@
 	data:    Network Endpoints 0 name "PowerShell"
 	data:    Network Endpoints 0 port 5986
 	data:    Network Endpoints 0 protocol "tcp"
-	data:    Network Endpoints 0 virtualIPAddress "137.116.64.107"	
+	data:    Network Endpoints 0 virtualIPAddress "137.116.64.107"
 	data:    Network Endpoints 0 enableDirectServerReturn false
 	data:    Network Endpoints 1 localPort 3389
 	data:    Network Endpoints 1 name "Remote Desktop"
@@ -158,7 +158,7 @@
 
 `azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
-	azure vm endpoint create web1 54580 -k 3389 
+	azure vm endpoint create web1 54580 -k 3389
 
 
 ## ロード バランサーからの仮想マシンの削除
@@ -179,4 +179,4 @@
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

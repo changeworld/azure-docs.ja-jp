@@ -1,5 +1,5 @@
 <properties
-	pageTitle="MySQL を Linux VM にセットアップする | Microsoft Azure"
+	pageTitle="MySQL を Linux VM にセットアップする | Microsoft Azure "
 	description="Azure 上の Linux 仮想マシン (Ubuntu または RedHat ファミリ OS) に MySQL スタックをインストールする方法について説明します。"
 	services="virtual-machines-linux"
 	documentationCenter=""
@@ -32,7 +32,7 @@
 
 この例では、MySQL ポートとしてポート 3306 を使用します。
 
-putty を使用して作成した Linux VM に接続します。初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、[こちら](virtual-machines-linux-ssh-from-linux.md)を参照してください。
+putty を使用して作成した Linux VM に接続します。初めて Azure Linux VM を使用する場合、putty を使用して Linux VM に接続する方法については、[こちら](virtual-machines-linux-mac-create-ssh-keys.md)を参照してください。
 
 この記事では、例として MySQL5.6 のインストールにパッケージのリポジトリを使用します。実際、MySQL5.6 は、MySQL5.5 よりもパフォーマンスが向上しています。詳細情報は[こちら](http://www.mysqlperformanceblog.com/2013/02/18/is-mysql-5-6-slower-than-mysql-5-5/)です。
 
@@ -182,7 +182,7 @@ putty を使用して作成した Linux VM に接続します。初めて Azure 
 
            #[root@mysqlnode ~]# insserv mysql
 
-###次の手順
+###次のステップ
 MySQL の使用法などの情報は[こちら](https://www.mysql.com/)です。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

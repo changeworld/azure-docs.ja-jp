@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/22/2016"
 	ms.author="andkjell;markvi"/>
 
 # Azure AD Connect 同期サービスの機能
@@ -25,7 +25,7 @@ Azure AD Connect の同期機能には 2 つのコンポーネントがありま
 
 このトピックでは、**Azure AD Connect 同期サービス**の各種機能のしくみと、Windows PowerShell を使用してそれらを構成する方法について説明します。
 
-これらの設定は、[Windows PowerShell 用 Azure Active Directory モジュール](http://aka.ms/aadposh)で構成されています。これらの設定を構成するには、このモジュールを Azure AD Connect とは別にダウンロードしてインストールする必要があります。ここで紹介するコマンドレットは、[2016 年 3 月のリリース (ビルド 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1) で導入されたものです。このトピックに記載されているコマンドレットがないか、同じ結果が生成されない場合は、最新バージョンが実行されていることを確認してください。
+これらの設定は、[Windows PowerShell 用 Azure Active Directory モジュール](http://aka.ms/aadposh)で構成されます。これは、Azure AD Connect とは別にダウンロードしてインストールします。このトピックで紹介するコマンドレットは、[2016 年 3 月のリリース (ビルド 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1) で導入されたものです。このトピックに記載されているコマンドレットがないか、同じ結果が生成されない場合は、最新バージョンが実行されていることを確認してください。
 
 Azure AD ディレクトリ内の構成を確認するには、`Get-MsolDirSyncFeatures` を実行します。 ![Get-MsolDirSyncFeatures result](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)
 
@@ -35,11 +35,13 @@ Azure AD ディレクトリ内の構成を確認するには、`Get-MsolDirSyncF
 
 DirSyncFeature | コメント
 --- | ---
- [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。
+[DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) | エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。
 [EnableSoftMatchOnUpn](#userprincipalname-soft-match) | プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。
 [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) | 同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。
 
 いったん機能を有効にすると、後でもう一度無効にすることはできません。
+
+>[AZURE.NOTE] 2016 年 8 月 22 日以降、"*重複属性の回復性*" 機能は、新しい Azure AD ディレクトリに対して既定で有効になります。また、この機能はロールアウトされ、この日付より前に作成されたディレクトリでも有効になります。お使いのディレクトリでこの機能が有効になるときに電子メール通知を受け取ります。
 
 以下の設定は、Azure AD Connect によって構成されており、`Set-MsolDirSyncFeature` で変更することはできません。
 
@@ -52,12 +54,12 @@ UnifiedGroupWriteback | [プレビュー: グループの書き戻し](active-di
 UserWriteback | 現在、サポートされていません。
 
 ## 重複属性の回復性
-UPN や proxyAddress が重複している場合、そのオブジェクトのプロビジョニングが失敗する代わりに、重複している属性を "検疫" し、必要に応じて一時的な値を割り当てます。競合が解決されると、一時的な UPN は適切な値に自動的に修正されます。この動作は、UPN と proxyAddress に個別に有効にできます。詳細については、「[ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)」を参照してください。
+UPN や proxyAddress が重複している場合、そのオブジェクトのプロビジョニングが失敗する代わりに、重複している属性を "検疫" し、一時的な値を割り当てます。競合が解決されると、一時的な UPN は自動的に適切な値に変更されます。この動作は、UPN と proxyAddress に個別に有効にできます。詳細については、「[ID 同期と重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md)」を参照してください。
 
 ## UserPrincipalName のあいまい一致
-この機能を有効にすると、[プライマリ SMTP アドレス](https://support.microsoft.com/kb/2641663)だけでなく、UPN にもあいまい一致が適用されます。プライマリ SMTP アドレスでは、あいまい一致が常に有効になっています。あいまい一致は、Azure AD 内の既存のクラウド ユーザーをオンプレミスのユーザーと照合するために使用されます。
+この機能を有効にすると、[プライマリ SMTP アドレス](https://support.microsoft.com/kb/2641663)に加えて UPN にもあいまい一致が有効になります。プライマリ SMTP アドレスでは、あいまい一致が常に有効になっています。あいまい一致は、Azure AD 内の既存のクラウド ユーザーをオンプレミスのユーザーと照合するために使用されます。
 
-この機能は、Exchange Online を使用していない環境で、オンプレミスの AD アカウントを、クラウドで作成された既存のアカウントと照合する必要がある場合に特に役立ちます。このような状況では、通常、クラウドで SMTP 属性を設定する理由がありません。
+オンプレミスの AD アカウントを、クラウドで作成された既存のアカウントと照合し、Exchange Online を使用していない場合、この機能は役立ちます。このような状況では、通常、クラウドで SMTP 属性を設定する理由がありません。
 
 新たに作成した Azure AD ディレクトリでは、この機能は既定で有効になっています。この機能が有効になっているかどうかを確認するには、次のコマンドレットを実行します。
 ```
@@ -77,7 +79,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 詳細については、「[Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)」を参照してください。
 
-この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード同期を使用している場合は、同期エンジンによって userPrincipalName が更新されます。フェデレーションを使用している場合は、この機能は動作しません。
+この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード同期を使用している場合は、同期エンジンによって userPrincipalName が更新されます。フェデレーションを使用している場合、この機能はサポートされません。
 
 新たに作成した Azure AD ディレクトリでは、この機能は既定で有効になっています。この機能が有効になっているかどうかを確認するには、次のコマンドレットを実行します。
 ```
@@ -91,13 +93,9 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 この機能を有効にすると、既存の userPrincipalName の値はそのまま維持されます。次に serPrincipalName 属性をオンプレミスで変更したときに、ユーザーに関する通常の差分同期によって UPN が更新されます。
 
-## 機能の変更点
-これらの設定は、今後すべての Azure AD ディレクトリで有効になる予定です。
-
 ## 関連項目
 
 - [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
-
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

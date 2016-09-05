@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/23/2016"
 	ms.author="genemi"/>
 
 
@@ -103,7 +103,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 拡張イベント機能をサポートする[カタログ ビュー](http://msdn.microsoft.com/library/ms174365.aspx)がいくつかあります。カタログ ビューでは、現在のデータベースにおけるユーザー作成のイベント セッションの*メタデータまたは定義*がわかります。ビューでは、アクティブなイベント セッションのインスタンスについてはわかりません。
 
 
-| カタログ ビューの名前<br/> | 説明 |
+| カタログ ビューの名前<br/> | Description |
 | :-- | :-- |
 | **sys.database\_event\_session\_actions** | イベント セッションの各イベントに対する操作ごとに行を返します。 |
 | **sys.database\_event\_session\_events** | イベント セッションのイベントごとに行を返します。 |
@@ -121,7 +121,7 @@ Microsoft SQL Server では、同様のカタログ ビュー名には *.databas
 Azure SQL Database には、拡張イベントをサポートする[動的管理ビュー (DMV)](http://msdn.microsoft.com/library/bb677293.aspx)があります。DMV では*アクティブな*イベント セッションについて参照できます。
 
 
-| DMV の名前 | 説明 |
+| DMV の名前 | Description |
 | :-- | :-- |
 | **sys.dm\_xe\_database\_session\_event\_actions** | イベント セッション アクションに関する情報を返します。 |
 | **sys.dm\_xe\_database\_session\_events** | セッション イベントに関する情報を返します。 |
@@ -217,7 +217,7 @@ SQL Database のクラウド環境に利点となるセキュリティ関連の�
 ### ストレージ コンテナーの承認
 
 
-Azure Storage コンテナーのために生成した SAS トークンには、権限として **rwl** を指定する必要があります。これにより次のアクセスが許可されます。
+Azure Storage コンテナーのために生成した SAS トークンには、権限として **rwl** を指定する必要があります。**rwl** 値により次のアクセスが許可されます。
 
 
 - 読み取り
@@ -276,4 +276,4 @@ Azure Storage BLOB にデータを保持する際に、**イベント ファイ�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

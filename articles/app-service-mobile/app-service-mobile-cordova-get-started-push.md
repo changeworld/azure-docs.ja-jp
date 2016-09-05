@@ -250,6 +250,8 @@ Visual Studio を使用して iOS で Cordova アプリを実行する前に、[
 
 iOS 用アプリのビルドが可能であることを確認します。Visual Studio で iOS 用にビルドするには、セットアップ ガイドの手順の実施が必要です。Mac を所持していない場合は、MacInCloud などのサービスで remotebuild エージェントを使用すれば、iOS 用にビルドが可能です。詳細については、[クラウドでの iOS アプリの実行](http://taco.visualstudio.com/ja-JP/docs/build_ios_cloud/)に関するページを参照してください。
 
+>[AZURE.NOTE] iOS でプッシュ プラグインを使用するには XCode 7 以上が必要です。
+
 ####アプリ ID として使用する ID を探す
 
 アプリをプッシュ通知に登録する前に、Cordova アプリで config.xml を開き、ウィジェット要素内の `id` 属性の値を特定して、後で使用できるようにコピーしておきます。次の XML では、ID は `io.cordova.myapp7777777` です。
@@ -320,7 +322,7 @@ Visual Studio でストアのオプションを使用するには、ソリュー
 
 構成デザイナーを開き (config.xml を右クリックして **[ビュー デザイナー]** を選択)、**[Windows]** タブを選択し、**[Windows 対象バージョン]** で **[Windows 10]** を選択します。
 
-	>[AZURE.NOTE] If you are using a Cordova version prior to Cordova 5.1.1 (6.1.1 recommended), you must also set the Toast Capable flag to true in config.xml.
+>[AZURE.NOTE] Cordova 5.1.1 より前のバージョンの Cordova (推奨バージョンは 6.1.1 ) を使用する場合は、config.xml で Toast Capable フラグを true に設定する必要もあります。
 
 既定の (デバッグ) ビルドでプッシュ通知をサポートするには、build.json ファイルを開きます。"release" 構成をデバッグ構成にコピーします。
 
@@ -383,4 +385,4 @@ SDK の使用方法を確認してください。
 [ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

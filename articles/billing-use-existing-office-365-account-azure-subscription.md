@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Office 365 と Azure サブスクリプション全体で 1 つの Azure AD テナントを共有する | Microsoft Azure"
-	description="Office 365 Azure AD テナントとそのユーザーを Azure サブスクリプションと共有する方法、またはその逆の方法について説明します"
+	description="Office 365 Azure AD テナントとそのユーザーを Azure サブスクリプションと共有する方法、またはその逆の方法について説明します。"
 	services=""
 	documentationCenter=""
 	authors="jiangchen79"
@@ -14,22 +14,24 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # 既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)
-シナリオ: 既に Office 365 サブスクリプションがあり、Azure サブスクリプションを開始するに当たって既存の Office 365 ユーザー アカウントを Azure サブスクリプションに使用したい場合。または、既に Azure サブスクライバーであり、既存の Azure Active Directory のユーザー用に Office 365 サブスクリプションを取得したい場合。いずれの方法も簡単です。この記事ではその方法について説明します。
+シナリオ: 既に Office 365 サブスクリプションがあり、Azure サブスクリプションを開始するにあたって既存の Office 365 ユーザー アカウントを Azure サブスクリプションに使用したい場合。または、既に Azure サブスクライバーであり、既存の Azure Active Directory のユーザー用に Office 365 サブスクリプションを取得したい場合。いずれの方法も簡単です。この記事ではその方法について説明します。
 
 > [AZURE.NOTE] この記事は、Enterprise Agreement (EA) のお客様には適用されません。
 
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
 ## クイック ガイド
 
-- 既に Office 365 サブスクリプションがあり、Azure にサインアップする場合、**[組織のアカウントを使用してサインインする]** オプションを使用すると、引き続き現在の Office 365 アカウントで Azure にサインアップできます。[詳細な手順](#s1)を参照してください。
+- 既に Office 365 サブスクリプションがあり、Azure にサインアップする場合、**[組織のアカウントを使用してサインインする]** オプションを使用すると、現在の Office 365 アカウントで引き続き Azure にサインアップできます。[詳細な手順](#s1)を参照してください。
 - 既に Azure サブスクリプションがあり、Office 365 サブスクリプションを取得する場合は、Azure アカウントで Office 365 にサインインし、サインアップ手順を続行します。手順を完了すると、Office 365 サブスクリプションは、Azure サブスクリプションが属している同じ Azure Active Directory に追加されます。[詳細な手順](#s2)を参照してください。
 
->[AZURE.NOTE] Office 365 サブスクリプションを取得するには、サインインに使用するアカウントが、Azure AD テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである必要があります。[Azure Active Directory のロールの説明を参照してください](#how-to-know-your-role-in-your-azure-active-directory)。
+>[AZURE.NOTE] Office 365 サブスクリプションを取得するには、サインインに使用するアカウントが、Azure AD テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである必要があります。[Azure Active Directory のロールの説明を参照してください。](#how-to-know-your-role-in-your-azure-active-directory)
 
-サブスクリプションをアカウントに追加するときの処理内容については、後述する[背景情報](#background-information)を参照してください。
+サブスクリプションをアカウントに追加するときの処理内容については、後述の「[背景情報](#background-information)」を参照してください。
 
 ## 詳細な手順
 <a id="s1"></a>
@@ -80,7 +82,7 @@ Azure にサインアップするには、次の手順を実行します。
 
 このシナリオの Kelley Wall は、アカウント admin@contoso.onmicrosoft.com の Azure サブスクリプションがあるユーザーです。Kelley は Office 365 にサブスクライブし、Azure と同じ既存のディレクトリを使用したいと考えています。
 
->[AZURE.NOTE] Office 365 サブスクリプションを取得するには、サインインに使用するアカウントが、Azure AD テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである必要があります。[Azure Active Directory のロールの説明を参照してください](#how-to-know-your-role-in-your-azure-active-directory)。
+>[AZURE.NOTE] Office 365 サブスクリプションを取得するには、サインインに使用するアカウントが、Azure AD テナントでグローバル管理者または課金管理者ディレクトリ ロールのメンバーである必要があります。[Azure Active Directory のロールの説明を参照してください。](#how-to-know-your-role-in-your-azure-active-directory)
 
 ![azure-portal-settings-subscription](./media/billing-use-existing-office-365-account-azure-subscription/10-azure-portal-settings-subscription.png)
 
@@ -97,7 +99,7 @@ Office 365 にサブスクライブするには、次の手順を実行します
 
 	![office-365-sign-in](./media/billing-use-existing-office-365-account-azure-subscription/13-office-365-sign-in.png)
 
-4. **[今すぐ試す]** をクリックします。
+4. **[無料トライアル]** をクリックします。
 
 	![office-365-confirm-your-order](./media/billing-use-existing-office-365-account-azure-subscription/14-office-365-confirm-your-order.png)
 
@@ -129,7 +131,7 @@ Office 365 にサブスクライブするには、次の手順を実行します
 	![azure-portal-user-identity](./media/billing-use-existing-office-365-account-azure-subscription/18-azure-portal-user-identity.png)
 
 ## 背景情報
-Office 365 と Azure は、ユーザーとサブスクリプションの管理に Azure Active Directory (AAD) サービスを使用しています。Active Directory は、ユーザーとサブスクリプションをグループ化できるコンテナーとして考えてみてください。Microsoft Azure と Office 365 サブスクリプションに同じユーザー アカウントを使用するには、サブスクリプションを同じディレクトリに作成する必要があります。
+Office 365 と Azure では、ユーザーとサブスクリプションの管理に Azure Active Directory (AAD) サービスが使用されています。Active のディレクトリは、ユーザーとサブスクリプションをグループ化できるコンテナーだと考えてください。Microsoft Azure と Office 365 サブスクリプションに同じユーザー アカウントを使用するには、サブスクリプションを同じディレクトリに作成する必要があります。
 
 - サブスクリプションは、他の場所ではなく、ディレクトリに作成されます。
 - ユーザーは、他の場所ではなく、ディレクトリに属します。
@@ -142,9 +144,11 @@ Office 365 と Azure は、ユーザーとサブスクリプションの管理�
 **注:**
 
 - Azure サブスクリプションの所有者は、ディレクトリ内の各ユーザーです。
-- Office 365 サブスクリプションの所有者は、ディレクトリ自体です。ディレクトリ内のユーザーは、必要なアクセス許可を持っている場合、そのサブスクリプションで操作できます。
+- Office 365 サブスクリプションの所有者は、ディレクトリ自体です。ディレクトリ内のユーザーは、必要なアクセス許可を持っている場合、そのサブスクリプションで操作を行えます。
 
 ##次のステップ
 関連したシナリオが紹介されています。過去に別々に購入した Azure サブスクリプションと Office 365 サブスクリプションがあるとき、Azure サブスクリプションから Office 365 テナントにアクセスできるようにするにはどうすればよいのでしょうか。具体的な方法については、「[Office 365 テナントの Azure サブスクリプションへの関連付け](billing-add-office-365-tenant-to-azure-subscription.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

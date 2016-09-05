@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="mobile-multiple"
   ms.devlang="dotnet"
   ms.topic="article"
-  ms.date="05/10/2016"
+  ms.date="08/22/2016"
   ms.author="donnam"/>
 
 # Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
@@ -42,7 +42,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 
 バージョン チェックを除外できます。その場合、アプリ設定 **MS\_SkipVersionCheck** に **true** 値を設定します。これは web.config か Azure ポータルの [アプリケーション設定] セクションで指定します。
 
-> [AZURE.NOTE] Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。テストを完了し、動作変更によりアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
+> [AZURE.NOTE] Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。テストを完了し、動作変更によるアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
 
 ## すべてのバージョンの互換性のまとめ
 
@@ -138,4 +138,4 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Mobile Service を Azure App Service に移行する]: app-service-mobile-migrating-from-mobile-services.md
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

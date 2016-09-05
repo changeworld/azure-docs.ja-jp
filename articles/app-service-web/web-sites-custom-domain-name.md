@@ -61,7 +61,7 @@ Azure App Service では、次のカテゴリのカスタム ドメインをア�
 必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。
 
 - [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。
-- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**&lt;*appname*>.azurewebsites.net**) にマップします。
+- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**& lt;*appname*>.azurewebsites.net**) にマップします。
 
 CNAME の利点は、IP アドレスが変更されても維持されることです。アプリを削除して作成し直したり、より上位の価格レベルから **Shared** レベルに移行したりすると、アプリの仮想 IP アドレスが変更される可能性があります。そのような変更があった場合、A レコードは更新する必要がありますが、CNAME レコードは有効なままです。
 
@@ -77,9 +77,9 @@ A レコードを使用してカスタム ドメイン名にマップするに�
 
 2.	左側のメニューの **[App Services]** をクリックします。
 
-4.	アプリをクリックし、**[設定]**、**[カスタム ドメインおよび SSL]**、**[外部ドメインの使用]** の順にクリックします。
+4.	アプリをクリックし、**[カスタム ドメイン]** をクリックします。
 
-6.  IP アドレスを書き留めます。
+6.  [Hostnames (ホスト名)] セクションの上の IP アドレスを書き留めます。
 
     ![Map custom domain name with A record: Get IP address for your Azure App Service app](./media/web-sites-custom-domain-name/virtual-ip-address.png)
 
@@ -99,7 +99,7 @@ A レコードを使用してカスタム ドメイン名にマップするに�
 <a name="a"></a>
 ### A レコードを作成する
 
-A レコードを使用して Azure アプリの IP アドレスにマップする場合、実際には A レコードと CNAME レコードの両方を作成する必要があります。A レコードは DNS 解決自体のために使用され、CNAME レコードはカスタム ドメイン名を所有していることを Azure が確認するために使用されます。
+A レコードを使用して Azure アプリの IP アドレスにマップする場合、実際には A レコードと TXT レコードの両方を作成する必要があります。A レコードは DNS 解決自体のために使用され、TXT レコードはカスタム ドメイン名を所有していることを Azure が確認するために使用されます。
 
 A レコードを次のように構成します (@ は通常、ルート ドメインを表します)。
  
@@ -126,28 +126,28 @@ A レコードを次のように構成します (@ は通常、ルート ドメ�
   </tr>
 </table>
 
-追加の CNAME レコードでは、awverify.&lt;*subdomain*>.&lt;*rootdomain*> を awverify.&lt;*subdomain*>.azurewebsites.net にマップする規則が適用されます。CNAME レコードを次のように構成します。
+追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*subdomain*>.azurewebsites.net にマップする規則が適用されます。TXT レコードを次のように構成します。
 
 <table cellspacing="0" border="1">
   <tr>
     <th>FQDN の例</th>
-    <th>CNAME ホスト</th>
-    <th>CNAME 値</th>
+    <th>TXT ホスト</th>
+    <th>TXT 値</th>
   </tr>
   <tr>
     <td>contoso.com (ルート)</td>
-    <td>awverify</td>
-    <td>awverify.&lt;<i>appname</i>>.azurewebsites.net</td>
+    <td>@</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
     <td>www.contoso.com (サブ)</td>
-    <td>awverify.www</td>
-    <td>awverify.&lt;<i>appname</i>>.azurewebsites.net</td>
+    <td>www</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
   <tr>
     <td>*.contoso.com (ワイルドカード)</td>
-    <td>awverify</td>
-    <td>awverify.&lt;<i>appname</i>>.azurewebsites.net</td>
+    <td>*</td>
+    <td>&lt;<i>appname</i>>.azurewebsites.net</td>
   </tr>
 </table>
 
@@ -181,23 +181,27 @@ CNAME レコードを次のように構成します (@ は通常、ルート ド
 <a name="enable"></a>
 ## 手順 3.アプリのカスタム ドメイン名を有効にする
 
-Azure ポータルの **[外部ドメインの使用]** ブレードに戻り ([手順 1.](#vip) を参照)、カスタム ドメインの完全修飾ドメイン名 (FQDN) を一覧に追加する必要があります。
+Azure ポータルの **[カスタム ドメイン]** ブレードに戻り ([手順 1.](#vip) を参照)、カスタム ドメインの完全修飾ドメイン名 (FQDN) を一覧に追加する必要があります。
 
 1.	まだ [Azure ポータル](https://portal.azure.com)にログインしていない場合は、ログインします。
 
 2.	Azure ポータルで、左側のメニューの **[App Services]** をクリックします。
 
-4.	アプリをクリックし、**[設定]**、**[カスタム ドメインおよび SSL]**、**[外部ドメインの使用]** の順にクリックします。
+3.	アプリをクリックし、**[カスタム ドメイン]**、**[Add hostname (ホスト名の追加)]** の順にクリックします。
 
-2.	カスタム ドメインの FQDN を一覧に追加します (例: **www.contoso.com**)。
+4.	カスタム ドメインの FQDN を一覧に追加します (例: **www.contoso.com**)。
 
     ![Map a custom domain name to an Azure app: add to list of domain names](./media/web-sites-custom-domain-name/add-custom-domain.png)
 
     >[AZURE.NOTE] Azure により、ここで使用したドメイン名が確認されます。このドメイン名には、[手順 2.](#createdns) で DNS レコードを作成したのと同じドメイン名を必ず使用してください。
 
-6.  **[保存]** をクリックします。
+5.  **[Validate (検証)]** をクリックします。
 
-7.  Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。ブラウザーに Azure アプリが表示されます。これは、カスタム ドメイン名が正しく構成されていることを意味します。
+6.  **[Validate (検証)]** をクリックすると、ドメインの検証ワークフローが開始されます。このワークフローは、ドメインの所有権に加えて、ホスト名を利用できるかどうかを確認して、結果 (成功またはエラー) を報告します。エラーの場合は、エラーの詳細とエラーの解決に役立つガイダンスが表示されます。
+
+7.  検証が成功すると、**[Add hostname (ホスト名の追加)]** ボタンがアクティブになり、ホスト名を割り当てることができます。次に、ブラウザーでカスタム ドメイン名に移動します。実行中のアプリがカスタム ドメイン名を使用していることを確認できます。
+
+8.  Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。ブラウザーに Azure アプリが表示されます。これは、カスタム ドメイン名が正しく構成されていることを意味します。
 
 <a name="verify"></a>
 ## DNS への反映を確認する
@@ -219,4 +223,4 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

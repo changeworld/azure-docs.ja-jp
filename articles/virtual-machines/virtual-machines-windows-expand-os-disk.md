@@ -4,7 +4,7 @@
    services="virtual-machines-windows"
    documentationCenter=""
    authors="kirpasingh"
-   manager="roshar"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"/>
 
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [virtual-machine-common-expand-os-disk](../../includes/virtual-machines-common-expand-os-disk.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

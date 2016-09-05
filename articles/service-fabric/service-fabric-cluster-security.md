@@ -13,16 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/10/2016"
+   ms.date="08/19/2016"
    ms.author="chackdan"/>
 
 # Service Fabric クラスターのセキュリティに関するシナリオ
 
-Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。このリソースは、特に運用ワークロードが実行されている場合などに、許可なくアクセスされるのを防ぐためにセキュリティで保護する必要があります。この記事では、Azure またはスタンドアロンで実行されるクラスターのセキュリティに関するシナリオと、そのようなシナリオを実装するために使用するさまざまなテクノロジの概要を示します。クラスターのセキュリティに関するシナリオは次のとおりです。
+Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。クラスターは、特に運用ワークロードが実行されている場合などに、許可なくユーザーがクラスターに接続するのを防ぐために常にセキュリティで保護する必要があります。セキュリティ保護されていないクラスターを作成することはできますが、これを行うと、パブリック インターネットへの管理エンドポイントを公開している場合、すべての匿名ユーザーがこのクラスターに接続できるようになります。
+
+この記事では、Azure またはスタンドアロンで実行されるクラスターのセキュリティに関するシナリオと、そのようなシナリオを実装するために使用するさまざまなテクノロジの概要を示します。クラスターのセキュリティに関するシナリオは次のとおりです。
 
 - ノード間のセキュリティ
 - クライアントとノードの間のセキュリティ
-- ロールベースのアクセス制御 (RBAC)
+- ロール ベースのアクセス制御 (RBAC)
 
 ## ノード間のセキュリティ
 クラスター内の VM やマシンの間の通信をセキュリティで保護します。これにより、クラスターへの参加が許可されているコンピューターのみが、クラスター内でホストされているアプリケーションとサービスに参加できます。
@@ -35,7 +37,7 @@ Service Fabric では、クラスターを作成するときにノード タイ�
 
 証明書セキュリティは、Azure ポータル、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成されます。プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。指定するプライマリ証明書とセカンダリ証明書は、[クライアントとノードの間のセキュリティ](#client-to-node-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なります。
 
-Azure のクラスターで証明書セキュリティを構成する方法については、「[証明書を使用し、Azure で Service Fabric クラスターをセキュリティで保護する](service-fabric-secure-azure-cluster-with-certs.md)」または [Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
+Azure のクラスターで証明書セキュリティを構成する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
 スタンドアロン Windows Server の場合は、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
@@ -54,12 +56,12 @@ Azure で実行するクラスターまたは Windows で実行するスタン�
 
 管理用証明書を使用してクラスターに接続するクライアントには、管理機能へのフル アクセス権があります。読み取り専用ユーザー クライアント証明書を使用してクラスターに接続するクライアントには、管理機能に対する読み取りアクセス権しかありません。つまり、これらの証明書は、この記事の中で後で説明するロールベースのアクセス制御 (RBAC) に使用されます。
 
-Azure クラスターで証明書のセキュリティを構成する方法については、「[証明書を使用し、Azure で Service Fabric クラスターをセキュリティで保護する](service-fabric-secure-azure-cluster-with-certs.md)」または「[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする](service-fabric-cluster-creation-via-arm.md)」を参照してください。
+Azure のクラスターで証明書セキュリティを構成する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
 スタンドアロン Windows Server の場合は、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
 ### Azure でのクライアントとノードの間の Azure Active Directory (AAD) セキュリティ
-Azure で実行されているクラスターは、Azure Active Directory (AAD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。必要な AAD アーティファクトを作成する方法、クラスターの作成中にそれらを設定する方法、その後これらのクラスターに接続する方法については、「[クライアント認証用に Azure Active Directory を使用する Service Fabric クラスターを作成する](service-fabric-cluster-security-client-auth-with-aad.md)」を参照してください。
+Azure で実行されているクラスターは、Azure Active Directory (AAD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。必要な AAD アーティファクトを作成する方法、クラスターの作成中にそれらを設定する方法、その後これらのクラスターに接続する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
 ## セキュリティに関する推奨事項
 Azure クラスターについては、クライアントの認証に AAD セキュリティ、ノード間のセキュリティに証明書を使用することをお勧めします。
@@ -104,23 +106,10 @@ Azure クラスターについては、クライアントの認証に AAD セキ
 
 ## 次のステップ
 
-セキュリティで保護されたクラスターを設定する方法についてはこちらを参照してください。
-
-- [Azure クラスターを証明書を使用して保護する](service-fabric-secure-azure-cluster-with-certs.md)
-
-クラスターの設定を行った後は、クラスターのアップグレードについてこちらを参照してください。
-
-- [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
-- [ロール オーバーまたは新しい証明書の追加](service-fabric-cluster-security-update-certs-azure.md)
-
-アプリケーションのセキュリティの詳細についてはこちらを参照してください。
-
-- [アプリケーションのセキュリティと RunAs](service-fabric-application-runas-security.md)
-
-- [サービスの通信のセキュリティ確保](service-fabric-reliable-services-secure-communication.md)
+この記事では、クラスターのセキュリティに関する概念的な情報について説明します。次に、[Azure でクラスターを作成します。Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)または [Azure ポータル](service-fabric-cluster-creation-via-portal.md)を使用します。
 
 <!--Image references-->
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

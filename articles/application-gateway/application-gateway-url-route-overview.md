@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="04/05/2016"
+   ms.date="08/18/2016"
    ms.author="gwallace"/>
 
 # URL パス ベースのルーティングの概要
@@ -25,7 +25,7 @@ http://contoso.com/video* の要求は VideoServerPool にルーティングさ�
 
 ## UrlPathMap 構成要素
 
-UrlPathMap 要素は、パス パターンのバックエンド サーバー プールのマッピングへの指定に使用します。これは、テンプレート ファイルの urlPathMap 要素のスニペットです。
+UrlPathMap 要素は、パス パターンのバックエンド サーバー プールのマッピングへの指定に使用します。次は、テンプレート ファイルの urlPathMap 要素のスニペットです。
 
 	"urlPathMaps": [
 	{
@@ -58,9 +58,9 @@ UrlPathMap 要素は、パス パターンのバックエンド サーバー プ
 	}
 	
 
->[AZURE.NOTE] PathPattern: これは、照合するパス パターンの一覧です。それぞれ / で始まる必要があり、* が許可されるのは末尾の '/' の後だけです。パス照合に提供する文字列には最初の ? または # の後にテキストを含めません (これらの文字は、ここでは許可されません)。
+>[AZURE.NOTE] PathPattern: この設定は、照合するパス パターンの一覧です。それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。パス照合に提供する文字列には最初の ? または # の後にテキストを含めません (これらの文字は、ここでは許可されません)。
 
-詳しくは、「[ARM template using URL based routing (URL ベースのルーティングを使用した ARM テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing)」をご覧ください。
+詳しくは、「[Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing)」をご覧ください。
 
 ## PathBasedRouting ルール
 
@@ -84,6 +84,6 @@ UrlPathMap 要素は、パス パターンのバックエンド サーバー プ
 	
 ## 次のステップ 
 
-URL ベースのコンテンツ ルーティングについて理解したら、[URL ベースのルーティングを使用した Application Gateway の作成](application-gateway-create-url-route-arm-ps.md)に関するセクションに移動して、URL ルーティング ルールを使ってアプリケーション ゲートウェイを作成します。
+URL ベースのコンテンツ ルーティングについて理解したら、[URL ベースのルーティングを使用した Application Gateway の作成](application-gateway-create-url-route-portal.md)に関するセクションに移動して、URL ルーティング ルールを使ってアプリケーション ゲートウェイを作成します。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/25/2016"
+	ms.date="08/18/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -35,9 +35,7 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 -	[全般設定](#general-settings)
 	-	[プロパティ](#properties)
 	-	[アクセス キー](#access-keys)
-	-	[アクセス ポート](#access-ports)
-	-	[Maxmemory ポリシー](#maxmemory-policy-and-maxmemory-reserved)
-	-	[詳細設定 (キースペース通知)](#keyspace-notifications-advanced-settings)
+	-	[詳細設定](#advanced-settings)
 	-	[Redis Cache Advisor](#redis-cache-advisor)
 -	[スケールの設定](#scale-settings)
 	-	[[価格レベル]](#pricing-tier)
@@ -60,9 +58,9 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 
 一般的な問題と、その問題を解決するため戦略を確認するには、**[トラブルシューティング]** をクリックします。
 
-キャッシュに対して実行された操作を表示するには、**[監査ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」をご覧ください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」をご覧ください。
+キャッシュに対して実行された操作を表示するには、**[監査ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
-**[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」をご覧ください。
+**[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
 
 >[AZURE.NOTE] 現在、[リソース正常性] では、仮想ネットワークでホストされている Azure Redis Cache インスタンスの正常性については報告できません。詳細については、「[VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)」をご覧ください。
 
@@ -76,9 +74,7 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 
 -	[プロパティ](#properties)
 -	[アクセス キー](#access-keys)
--	[アクセス ポート](#access-ports)
--	[Maxmemory ポリシー](#maxmemory-policy-and-maxmemory-reserved)
--	[詳細設定 (キースペース通知)](#keyspace-notifications-advanced-settings)
+-	[詳細設定](#advanced-settings)
 -	[Redis Cache Advisor](#redis-cache-advisor)
 
 ### プロパティ
@@ -93,15 +89,29 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 
 ![Redis Cache のアクセス キー](./media/cache-configure/redis-cache-manage-keys.png)
 
+
+
+
+
+
+### 詳細設定
+
+次の設定は、**[詳細設定]** ブレードで構成します。
+
+-	[アクセス ポート](#access-ports)
+-	[maxmemory-policy と maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)
+-	[キースペース通知 (詳細設定)](#keyspace-notifications-advanced-settings)
+
+
 ### アクセス ポート
 
-新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。非 SSL ポートを有効にするには、**[アクセス ポート]** ブレードをクリックし、**[いいえ]** をクリックします。
+新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。非 SSL ポートを有効にするには、**[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、**[保存]** をクリックします。
 
 ![Redis Cache のアクセス ポート](./media/cache-configure/redis-cache-access-ports.png)
 
 ### maxmemory-policy と maxmemory-reserved
 
-**[Maxmemory ポリシー]** をクリックしてキャッシュのメモリ ポリシーを構成します。**maxmemory-policy** 設定は、キャッシュの削除ポリシーを構成し、**maxmemory-reserved** は、キャッシュ以外のプロセスのために予約されたメモリを構成します。
+**[詳細設定]** ブレードの **[Maxmemory ポリシー]** と **[xmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。**maxmemory-policy** 設定は、キャッシュの削除ポリシーを構成し、**maxmemory-reserved** は、キャッシュ以外のプロセスのために予約されたメモリを構成します。
 
 ![Redis Cache の Maxmemory ポリシー](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -122,7 +132,7 @@ Maxmemory ポリシーの詳細については、[削除ポリシー](http://red
 
 ### キースペース通知 (詳細設定)
 
-**[詳細設定]** をクリックして Redis キースペース通知を構成します。キースペース通知により、特定のイベントが発生したときに、クライアントが通知を受信できます。
+Redis キースペース通知は、**[詳細設定]** ブレードで構成します。キースペース通知により、特定のイベントが発生したときに、クライアントが通知を受信できます。
 
 ![Redis Cache の高度な設定](./media/cache-configure/redis-cache-advanced-settings.png)
 
@@ -291,7 +301,7 @@ Azure Redis Cache 診断の詳細については、「[Azure Redis Cache の監�
 
 **[ロック]** セクションでは、サブスクリプション、リソース グループ、またはリソースにロックを適用し、組織の他のユーザーが誤って重要なリソースを削除したり変更したりするのを防止できます。詳細については、「[Azure リソース マネージャーによるリソースのロック](../resource-group-lock-resources.md)」を参照してください。
 
-**[ユーザー]** セクションでは、Azure ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、「[Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」をご覧ください。
+**[ユーザー]** セクションでは、Azure ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。詳細については、[Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
 
 **[テンプレートのエクスポート]** をクリックして、将来のデプロイのために、デプロイ済みのリソースのテンプレートをビルドおよびエクスポートします。テンプレートを操作する方法の詳細については、[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](../resource-group-template-deploy.md)に関するページをご覧ください。
 
@@ -305,7 +315,7 @@ Azure Redis Cache 診断の詳細については、「[Azure Redis Cache の監�
 >  
 >**max-memory-policy** などの構成可能な値を、Azure ポータルまたはコマンド ライン管理ツール (Azure CLI、PowerShell など) を使用して構成できます。
 
-|設定|既定値|説明|
+|Setting|既定値|Description|
 |---|---|---|
 |databases|16|データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。dbid が `0` ～ `databases - 1` の数値の `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。|
 |maxclients|価格レベルによって異なります。<sup>2</sup>|これは、同時に接続が許可されているクライアントの最大数です。制限に達すると、Redis はすべての新しい接続を終了し、エラー 'max number of clients reached' を送信します。|
@@ -399,4 +409,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

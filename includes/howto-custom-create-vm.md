@@ -55,7 +55,7 @@
 ##次のステップ##
 仮想マシンは、作成し終わると、自動的に開始されます。ポータルのステータスが実行中であれば、仮想マシンにログインできます。手順については、次のいずれかの記事を参照してください。
 
-- [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-classic-log-on.md)
+- [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)
 - [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/virtual-machines-windows-classic-connect-logon.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/02/2016"
+   ms.date="08/23/2016"
    ms.author="andkjell"/>
 
 # Azure AD Connect: バージョンのリリース履歴
@@ -37,7 +37,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以
 
 - Azure AD Connect を FIPS 準拠のサーバーにインストールできます。
     - パスワードの同期については、「[パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)」を参照してください
-- NetBIOS 名が Active Directory コネクタの FQDN に解決できないという問題が修正されました。
+- Active Directory コネクタで、NetBIOS を FQDN に名前解決できないという問題が修正されました。
 
 ## 1\.1.180.0
 リリース日: 2016 年 5 月
@@ -134,7 +134,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以
 **新しいプレビュー機能:**
 
 - [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)。
-- [Azure AD Domain Services](active-directory-get-started.md) のパスワード同期がサポートされました。
+- [Azure AD Domain Services](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) のパスワード同期がサポートされました。
 
 **新しくサポートされたシナリオ:**
 
@@ -293,4 +293,4 @@ AD アカウントには、AD からのパスワード ハッシュを読み取�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

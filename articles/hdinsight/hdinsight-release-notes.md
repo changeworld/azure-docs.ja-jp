@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="08/18/2016"
 	ms.author="nitinme"/>
 
 
@@ -22,7 +22,11 @@
 
 ## HDinsight の R Server の 2016 年 08 月 17 日リリース
 
-• R Server 8.0.5 - 主にバグの修正プログラムのリリースです。詳細については、[R Server リリース ノート](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes)を参照してください。• エッジ ノードでの AzureML パッケージ – [この R パッケージ](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) により、R モデルが Azure ML web サービスとして発行され、使用されます。詳細については、「[概要: HDInsight の R Server](hdinsight-hadoop-r-server-overview.md)」の「[モデルの運用化](hdinsight-hadoop-r-server-overview.md#operationalize-a-model)」のセクションを参照してください。• [上位 100 の最も一般的な R パッケージ](https://github.com/metacran/cranlogs)の Linux 依存関係 – これらの Linux パッケージの依存関係は、あらかじめインストールされています。• オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。詳細については、「[HDInsight での R Server の概要](hdinsight-hadoop-r-server-get-started.md)」の「[R パッケージをインストールする](hdinsight-hadoop-r-server-get-started.md#install-r-packages)」セクションを参照してください。• クラスターが作成されるときの、R Server のプロビジョニングの信頼性が向上しました。
+- R Server 8.0.5 - 主にバグの修正プログラムのリリースです。詳細については、[R Server リリース ノート](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes)を参照してください。
+- エッジ ノードでの AzureML パッケージ – [この R パッケージ](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)により、R モデルが Azure ML Web サービスとして発行され、使用されます。詳細については、「[HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)」の記事の「[「モデルの運用化](hdinsight-hadoop-r-server-overview.md#operationalize-a-model)」のセクションを参照してください。
+- [上位 100 の最も一般的な R パッケージ](https://github.com/metacran/cranlogs)の Linux の依存関係 – これらの Linux パッケージの依存関係は、あらかじめインストールされています。
+- オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。詳細については、「[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)」の「[R パッケージをインストールする](hdinsight-hadoop-r-server-get-started.md#install-r-packages)」セクションを参照してください。
+- クラスターが作成されるときの、R Server のプロビジョニングの信頼性が向上しました。
 
 
 ## HDInsight の 2016 年 8 月 1 日リリース ノート
@@ -1470,7 +1474,7 @@ Azure PowerShell または HDInsight SDK とクラスター間でのバージョ
 このリリースには、以下のように、HDInsight サービスの拡張機能が含まれています。
 
 * **HDP 2.1 が使用可能**: HDP 2.1 が含まれる HDInsight 3.1 が一般に使用可能となり、新しいクラスターの既定のバージョンになりました。
-* **HBase - Azure ポータルの改良**: HBase クラスターがプレビューで使用可能になりました。ポータルで数回クリックするだけで HBase クラスターが作成できます。 
+* **HBase - Azure ポータルの改良**: HBase クラスターがプレビューで使用可能になりました。ポータルで数回クリックするだけで HBase クラスターが作成できます。
 
 HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータやテレメトリ データを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは Azure PowerShell や Hive クラスター ダッシュボードを使用した HDInsight で実現可能です。
 
@@ -1684,4 +1688,4 @@ SQL Server の Java Database Connnectivity (JDBC) ドライバーは HDInsight �
 [hdinsight-r-scripts]: ../hdinsight-hadoop-r-scripts/
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

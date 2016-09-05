@@ -44,10 +44,13 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - EDI - Electronic Data Interchange (電子データ交換)
 - EAI - Enterprise Application Integration (エンタープライズ アプリケーション統合)
 
-## すぐに使用を開始するために必要なもの
+## 使用を開始するために必要なもの
 - 統合アカウントが付属した Azure サブスクリプション
 - マップとスキーマを作成するための Visual Studio 2015
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
+
+## 試してみる
+実際に試してみましょう。Logic Apps の B2B 機能を使用して、本格的な機能を備えた独自の AS2 送信および受信ロジック アプリをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)をクリックしてください。
 
 ## 各項目の詳細情報
 - [アグリーメント](./app-service-logic-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")
@@ -61,4 +64,4 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

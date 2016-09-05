@@ -14,18 +14,12 @@ ms.devlang="multiple"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/18/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Trello コネクタの使用
 
-
-
-Trello コネクタは、次のツールから使用できます。
-
-- [Logic Apps](../app-service-logic/app-service-logic-what-are-logic-apps.md)
-- [PowerApps](http://powerapps.microsoft.com)
-- [フロー](http://flows.microsoft.com)
+Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。Trello に接続すると、ボード、一覧、およびカードを管理できます。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
@@ -40,7 +34,7 @@ Trello コネクタは、アクションとして使用できます。Trello コ
 ### Trello のアクション
 実行できるアクションは以下のとおりです。
 
-|アクション|説明|
+|アクション|Description|
 |--- | ---|
 |[ListCards](connectors-create-api-trello.md#listcards)|ボードのカードを一覧表示します|
 |[GetCard](connectors-create-api-trello.md#getcard)|ID を使用してカードを取得します|
@@ -54,16 +48,16 @@ Trello コネクタは、アクションとして使用できます。Trello コ
 ### Trello のトリガー
 次のイベントをリッスンできます。
 
-|トリガー | 説明|
+|トリガー | Description|
 |--- | ---|
 |ボードに新しいカードが追加されたタイミング|ボードに新しいカードが追加されたときに、フローをトリガーします|
 |一覧に新しいカードが追加されたタイミング|一覧に新しいカードが追加されたときに、フローをトリガーします|
 
 
 ## Trello への接続を作成する
-Trello を使用してロジック アプリを作成するには、まず**接続**を作成し、次のプロパティの詳細を指定する必要があります。
+Trello を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|プロパティ| 必須|説明|
+|プロパティ| 必須|Description|
 | ---|---|---|
 |トークン|はい|Trello 資格情報を提供します|
 接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
@@ -80,13 +74,13 @@ Trello を使用してロジック アプリを作成するには、まず**接�
 
 ```GET: /trigger/boards/{board_id}/cards```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|path|なし|カードを取得するボードの一意の ID|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -102,12 +96,12 @@ Trello を使用してロジック アプリを作成するには、まず**接�
 
 ```GET: /trigger/lists/{list_id}/cards```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|カードを取得するボードの一意の ID|
 |list\_id|string|○|path|なし|カードを取得する一覧の一意の ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -125,7 +119,7 @@ Trello を使用してロジック アプリを作成するには、まず**接�
 
 ```GET: /boards/{board_id}/cards```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|path|なし|すべてのカードを取得するボードの ID|
 |actions|string|×|query|なし|返すアクションの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
@@ -142,9 +136,9 @@ Trello を使用してロジック アプリを作成するには、まず**接�
 |filter|string|×|query|なし|応答をフィルター処理します|
 |fields|string|×|query|なし|返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -160,7 +154,7 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 
 ```GET: /cards/{card_id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|カードを取得するボードの ID|
 |card\_id|string|○|path|なし|取得するカードの ID|
@@ -188,7 +182,7 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 |sticker\_fields|string|×|query|なし|各ステッカーについて返すステッカー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 |fields|string|×|query|なし|返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -206,13 +200,13 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 
 ```PUT: /cards/{card_id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|カードを取得するボードの ID|
 |card\_id|string|○|path|なし|更新するカードの ID|
 |updateCard| |○|body|なし|更新されたカード値|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -230,12 +224,12 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 
 ```DELETE: /cards/{card_id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|カードを取得するボードの ID|
 |card\_id|string|○|path|なし|削除するカードの ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -253,14 +247,14 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 
 ```POST: /cards```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|カードを作成するボードの一意の ID|
 |newCard| |○|body|なし|Trello ボードに追加する新しいカード|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -276,7 +270,7 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 
 ```GET: /member/me/boards```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |filter|string|×|query|なし|ボードの結果に適用するフィルターの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
 |fields|string|×|query|なし|返すボード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
@@ -291,7 +285,7 @@ ID を使用するカードの取得: ID を使用してカードを取得しま
 |organization\_fields|string|×|query|なし|返す組織フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 |lists|string|×|query|なし|ボードに属している一覧を返すかどうかを指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -309,7 +303,7 @@ ID を使用するボードの取得: ID を使用してボードを取得しま
 
 ```GET: /boards/{board_id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|path|なし|取得するボードの一意の ID|
 |actions|string|×|query|なし|返すアクションの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
@@ -350,7 +344,7 @@ ID を使用するボードの取得: ID を使用してボードを取得しま
 |myPerfs|boolean|×|query|なし|マイ パフォーマンスを返すかどうかを指定します|
 |fields|string|×|query|なし|返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -368,7 +362,7 @@ ID を使用するボードの取得: ID を使用してボードを取得しま
 
 ```GET: /boards/{board_id}/lists```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|path|なし|一覧を取得するボードの一意の ID|
 |cards|string|×|query|なし|返すカードを指定します|
@@ -376,7 +370,7 @@ ID を使用するボードの取得: ID を使用してボードを取得しま
 |filter|string|×|query|なし|一覧のフィルター プロパティを指定します|
 |fields|string|×|query|なし|返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -394,7 +388,7 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 ```GET: /lists/{list_id}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |board\_id|string|○|query|なし|一覧を取得するボードの一意の ID|
 |list\_id|string|○|path|なし|取得する一覧の一意の ID|
@@ -404,9 +398,9 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 |board\_fields|string|×|query|なし|返すボード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 |fields|string|×|query|なし|返す一覧フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -424,27 +418,27 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|いいえ |
-|checkItemStates|array|いいえ |
-|closed|boolean|いいえ |
-|dateLastActivity|string|いいえ |
-|desc|string|いいえ |
-|idBoard|string|いいえ |
-|idList|string|いいえ |
-|idMembersVoted|array|いいえ |
-|idShort|integer|いいえ |
-|idAttachmentCover|string|いいえ |
-|manualCoverAttachment|boolean|いいえ |
-|idLabels|array|いいえ |
-|name|string|いいえ |
-|pos|integer|いいえ |
-|shortLink|string|いいえ |
-|badges|未定義|いいえ |
-|due|string|いいえ |
-|email|string|いいえ |
-|shortUrl|string|いいえ |
-|subscribed|boolean|いいえ |
-|url|string|いいえ |
+|id|string|なし |
+|checkItemStates|array|なし |
+|closed|boolean|なし |
+|dateLastActivity|string|なし |
+|desc|string|なし |
+|idBoard|string|なし |
+|idList|string|なし |
+|idMembersVoted|array|なし |
+|idShort|integer|なし |
+|idAttachmentCover|string|なし |
+|manualCoverAttachment|boolean|なし |
+|idLabels|array|なし |
+|name|string|なし |
+|pos|integer|なし |
+|shortLink|string|なし |
+|badges|未定義|なし |
+|due|string|なし |
+|電子メール|string|なし |
+|shortUrl|string|なし |
+|subscribed|boolean|なし |
+|url|string|なし |
 
 
 
@@ -453,16 +447,16 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Votes|integer|いいえ |
-|ViewingMemberVoted|boolean|いいえ |
-|Subscribed|boolean|いいえ |
-|Fogbugz|string|いいえ |
-|CheckItems|integer|いいえ |
-|CheckItemsChecked|integer|いいえ |
-|説明|integer|いいえ |
-|[添付ファイル]|integer|いいえ |
-|説明|boolean|いいえ |
-|Due|string|いいえ |
+|Votes|integer|なし |
+|ViewingMemberVoted|boolean|なし |
+|Subscribed|boolean|なし |
+|Fogbugz|string|なし |
+|CheckItems|integer|なし |
+|CheckItemsChecked|integer|なし |
+|説明|integer|なし |
+|[添付ファイル]|integer|なし |
+|Description|boolean|なし |
+|Due|string|なし |
 
 
 
@@ -479,16 +473,16 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|idList|string|あり |
+|idList|string|はい |
 |name|string|はい |
-|desc|string|いいえ |
-|pos|string|いいえ |
-|idMembers|string|いいえ |
-|idLabels|string|いいえ |
-|urlSource|string|いいえ |
-|fileSource|string|いいえ |
-|idCardSource|string|いいえ |
-|keepFromSource|string|いいえ |
+|desc|string|なし |
+|pos|string|なし |
+|idMembers|string|なし |
+|idLabels|string|なし |
+|urlSource|string|なし |
+|fileSource|string|なし |
+|idCardSource|string|なし |
+|keepFromSource|string|なし |
 
 
 
@@ -497,16 +491,16 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|name|string|いいえ |
-|desc|string|いいえ |
-|closed|boolean|いいえ |
-|idMembers|string|いいえ |
-|idAttachmentCover|string|いいえ |
-|idList|string|いいえ |
-|idBoard|string|いいえ |
-|pos|string|いいえ |
-|due|string|いいえ |
-|subscribed|boolean|いいえ |
+|name|string|なし |
+|desc|string|なし |
+|closed|boolean|なし |
+|idMembers|string|なし |
+|idAttachmentCover|string|なし |
+|idList|string|なし |
+|idBoard|string|なし |
+|pos|string|なし |
+|due|string|なし |
+|subscribed|boolean|なし |
 
 
 
@@ -515,25 +509,25 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|いいえ |
-|closed|boolean|いいえ |
-|dateLastActivity|string|いいえ |
-|dateLastView|string|いいえ |
-|desc|string|いいえ |
-|idOrganization|string|いいえ |
-|invitations|array|いいえ |
-|invited|boolean|いいえ |
-|labelNames|未定義|いいえ |
-|memberships|array|いいえ |
-|name|string|いいえ |
-|pinned|boolean|いいえ |
-|powerUps|array|いいえ |
-|perfs|未定義|いいえ |
-|shortLink|string|いいえ |
-|shortUrl|string|いいえ |
-|starred|string|いいえ |
-|subscribed|string|いいえ |
-|url|string|いいえ |
+|id|string|なし |
+|closed|boolean|なし |
+|dateLastActivity|string|なし |
+|dateLastView|string|なし |
+|desc|string|なし |
+|idOrganization|string|なし |
+|invitations|array|なし |
+|invited|boolean|なし |
+|labelNames|未定義|なし |
+|memberships|array|なし |
+|name|string|なし |
+|pinned|boolean|なし |
+|powerUps|array|なし |
+|perfs|未定義|なし |
+|shortLink|string|なし |
+|shortUrl|string|なし |
+|starred|string|なし |
+|subscribed|string|なし |
+|url|string|なし |
 
 
 
@@ -542,16 +536,16 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|green|string|いいえ |
-|yellow|string|いいえ |
-|orange|string|いいえ |
-|red|string|いいえ |
-|purple|string|いいえ |
-|blue|string|いいえ |
-|sky|string|いいえ |
-|lime|string|いいえ |
-|pink|string|いいえ |
-|black|string|いいえ |
+|green|string|なし |
+|yellow|string|なし |
+|orange|string|なし |
+|red|string|なし |
+|purple|string|なし |
+|blue|string|なし |
+|sky|string|なし |
+|lime|string|なし |
+|pink|string|なし |
+|black|string|なし |
 
 
 
@@ -560,10 +554,10 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|いいえ |
-|idMember|string|いいえ |
-|memberType|string|いいえ |
-|unconfirmed|boolean|いいえ |
+|id|string|なし |
+|idMember|string|なし |
+|memberType|string|なし |
+|unconfirmed|boolean|なし |
 
 
 
@@ -572,23 +566,23 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|permissionLevel|string|いいえ |
-|voting|string|いいえ |
-|コメント|string|いいえ |
-|invitations|string|いいえ |
-|selfJoin|boolean|いいえ |
-|cardCovers|boolean|いいえ |
-|calendarFeedEnabled|boolean|いいえ |
-|background|string|いいえ |
-|backgroundColor|string|いいえ |
-|backgroundImage|string|いいえ |
-|backgroundImageScaled|string|いいえ |
-|backgroundTile|boolean|いいえ |
-|backgroundBrightness|string|いいえ |
-|canBePublic|boolean|いいえ |
-|canBeOrg|boolean|いいえ |
-|canBePrivate|boolean|いいえ |
-|canInvite|boolean|いいえ |
+|permissionLevel|string|なし |
+|voting|string|なし |
+|コメント|string|なし |
+|invitations|string|なし |
+|selfJoin|boolean|なし |
+|cardCovers|boolean|なし |
+|calendarFeedEnabled|boolean|なし |
+|background|string|なし |
+|backgroundColor|string|なし |
+|backgroundImage|string|なし |
+|backgroundImageScaled|string|なし |
+|backgroundTile|boolean|なし |
+|backgroundBrightness|string|なし |
+|canBePublic|boolean|なし |
+|canBeOrg|boolean|なし |
+|canBePrivate|boolean|なし |
+|canInvite|boolean|なし |
 
 
 
@@ -597,17 +591,17 @@ ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
 | プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|いいえ |
-|name|string|いいえ |
-|closed|boolean|いいえ |
-|idBoard|string|いいえ |
-|pos|number|いいえ |
-|subscribed|boolean|いいえ |
-|cards|array|いいえ |
-|board|未定義|いいえ |
+|id|string|なし |
+|name|string|なし |
+|closed|boolean|なし |
+|idBoard|string|なし |
+|pos|number|なし |
+|subscribed|boolean|なし |
+|cards|array|なし |
+|board|未定義|なし |
 
 
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

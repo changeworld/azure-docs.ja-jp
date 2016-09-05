@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/24/2016"
+   ms.date="08/18/2016"
    ms.author="alkohli@microsoft.com" />
 
 # Windows PowerShell for StorSimple を使用してデバイスを管理する
 
-## 概要
+## Overview
 
 Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイスを管理するために使用できるコマンドライン インターフェイスです。名前が示すように、これは制約付き実行空間に組み込まれている Windows PowerShell ベースのコマンド ライン インターフェイスです。コマンド ラインを使用するユーザーの観点から見ると、制約付き実行空間は、Windows PowerShell の制限付きバージョンとして表示されます。このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、Microsoft Azure StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。
 
@@ -57,7 +57,7 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 
 2. 次のオプションが選択されていることを確認します (これらは新しいセッションを開始したときの既定の設定です)。
 
- 	|キーボードの項目|[|
+ 	|キーボードの項目|Select|
  	|---|---|
  	|Backspace key|Control-? (127)|
 	|Home and End keys|Standard|
@@ -104,15 +104,15 @@ Windows PowerShell for StorSimple に接続するには、[PuTTY をダウンロ
 
 1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。 このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。詳細については、「[サポート セッションを開始する](storsimple-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
 
-2. **Log in to peer controller with full access**。このオプションはオプション １ と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
+2. **Log in to peer controller with full access**。このオプションはオプション 1 と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
 
-3. **Connect with limited access**。このオプションは、Windows PowerShell インターフェイスに制限モードでアクセスするために使用します。アクセス資格情報の入力は必要ありません。このオプションでは、オプション 1 とオプション 2 に比べて、さらに制限された制限付き実行空間に接続します。オプション 1 では利用できるがこのオプションでは利用できないタスクの一部を次に示します。
+3. **Connect with limited access**。このオプションは、Windows PowerShell インターフェイスに制限モードでアクセスするために使用します。アクセス資格情報の入力は必要ありません。このオプションでは、オプション 1 とオプション 2 に比べて、さらに制限された制限付き実行空間に接続します。オプション 1 では利用できるがこのオプションでは利用**できない*タスクの一部を次に示します。
 
 	- 工場出荷時設定をリセットする
 	- パスワードを変更する
 	- サポート アクセスを有効または無効にする
 	- 更新プログラムを適用する
-	- 修正プログラムをインストールする 
+	- 修正プログラムをインストールする
 												
 
 	>[AZURE.NOTE] **これは、デバイス管理者パスワードを忘れてしまい、オプション 1 またはオプション 2 を使用して接続できない場合に推奨するオプションです。**
@@ -192,9 +192,9 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 1. ヘルプ ファイルがインストールされた後、「`Get-Help Get-Command`」と入力します。これにより、ヘルプを利用できるコマンドレットの一覧が表示されます。
 
 
->[AZURE.NOTE] いずれかの実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
+>[AZURE.NOTE] 実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
 
 ## 次のステップ
 上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「[StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

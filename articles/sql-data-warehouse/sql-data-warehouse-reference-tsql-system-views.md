@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/17/2016"
+   ms.date="08/22/2016"
    ms.author="barbkess;sonyama"/>
 
 # システム ビュー
@@ -58,6 +58,14 @@
 - [sys.dm\_pdw\_wait\_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 - [sys.dm\_pdw\_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
+## SQL Data Warehouse に適用可能な SQL Server DMV
+
+次の DMV は、SQL Data Warehouse に適用できますが、**マスター** データベースに接続して実行する必要があります。
+
+- [sys.database\_service\_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
+- [sys.dm\_operation\_status](https://msdn.microsoft.com/library/dn270022.aspx)
+- [sys.fn\_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
+
 ## SQL Server カタログ ビュー
 
 - [sys.all\_columns](http://msdn.microsoft.com/library/ms177522.aspx)
@@ -81,7 +89,6 @@
 - [sys.database\_role\_members](http://msdn.microsoft.com/library/ms189780.aspx)
 - [sys.databases](http://msdn.microsoft.com/library/ms178534.aspx)
 - [sys.default\_constraints](http://msdn.microsoft.com/library/ms173758.aspx)
-- [sys.extended\_properties](http://msdn.microsoft.com/library/ms177541.aspx)
 - [sys.external\_data\_sources](http://msdn.microsoft.com/library/dn935019.aspx)
 - [sys.external\_file\_formats](http://msdn.microsoft.com/library/dn935025.aspx)
 - [sys.external\_tables](http://msdn.microsoft.com/library/dn935029.aspx)
@@ -137,7 +144,7 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 >[AZURE.NOTE] これらのビューを使用するには、次の表に示すように "pdw\_nodes\_" を名前に挿入します。
 
 
-| SQL Data Warehouse での DMV 名 | MSDN での SQL Server Transact-SQL のトピックへのリンク |
+| SQL Data Warehouse での DMV 名 | MSDN の SQL Server Transact-SQL のトピックへのリンク |
 | :----------------------------- | :-------------------------------------------- |
 | sys.dm\_pdw\_nodes\_db\_file\_space\_usage | [sys.dm\_db\_file\_space\_usage](http://msdn.microsoft.com/library/ms174412.aspx) |
 | sys.dm\_pdw\_nodes\_db\_index\_usage\_stats | [sys.dm\_db\_index\_usage\_stats](http://msdn.microsoft.com/library/ms188755.aspx) |
@@ -236,4 +243,4 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

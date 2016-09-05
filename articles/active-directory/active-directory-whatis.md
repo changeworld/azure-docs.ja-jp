@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/13/2016"
+    ms.date="08/23/2016"
     ms.author="markusvi"/>
 
 
@@ -39,7 +39,7 @@ Office365、Azure、Dynamics CRM Online をご利用の方は、既に Azure AD 
 
 
 
-<center>![Azure AD Connect Stack](./media/active-directory-whatis/Azure_Active_Directory.png) </center>
+![Azure AD Connect Stack](./media/active-directory-whatis/Azure_Active_Directory.png)
 
 
 ## Azure AD の信頼性
@@ -104,4 +104,4 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 
 - [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

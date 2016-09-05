@@ -25,7 +25,7 @@
 
 リソースへのアクセスを必要とするアプリケーションやスクリプトがあるとき、そのプロセスを特定のユーザーの資格情報で実行すると高い確率で不都合が生じます。ユーザーの権限がプロセスに割り当てるべき権限と異なっていたり、ユーザーの職責が変わったりする可能性があります。そのような場合は、認証の資格情報とロールの割り当てを含んだアプリケーションの ID を作成します。アプリケーションは、その実行時に都度、この ID でログインすることになります。このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定をすべて [Azure PowerShell](powershell-install-configure.md) で行う方法を紹介しています。
 
-この記事では、Active Directory (AD) アプリケーションとサービス プリンシパルの 2 つのオブジェクトを作成します。この AD アプリケーションは、資格情報としてアプリケーション ID とパスワード (またはアプリケーション ID と証明書) を保持します。サービス プリンシパルは、ロールの割り当てを保持します。AD アプリケーションから、多くのサービス プリンシパルを作成できます。このトピックでは、シングル テナント アプリケーション (単一組織内で実行することのみが意図されたアプリケーション) に焦点を絞って説明します。一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。アプリケーションを複数の組織で実行する必要があるときは、マルチテナント アプリケーションを作成することもできます。一般に、Software-as-a-Service (SaaS) アプリケーションには、マルチテナント アプリケーションが使用されます。マルチテナント アプリケーションのセットアップについては、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
+この記事では、Active Directory (AD) アプリケーションとサービス プリンシパルの 2 つのオブジェクトを作成します。この AD アプリケーションは、資格情報としてアプリケーション ID とパスワード (またはアプリケーション ID と証明書) を保持します。サービス プリンシパルは、ロールの割り当てを保持します。AD アプリケーションから、多くのサービス プリンシパルを作成できます。このトピックでは、シングル テナント アプリケーション (単一組織内でのみ実行するように意図されたアプリケーション) に焦点を絞って説明します。一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。アプリケーションを複数の組織で実行する必要があるときは、マルチテナント アプリケーションを作成することもできます。一般に、Software-as-a-Service (SaaS) アプリケーションには、マルチテナント アプリケーションが使用されます。マルチテナント アプリケーションのセットアップについては、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 
 Active Directory との連携では、理解すべき概念が数多く存在します。アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](./active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](./active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
@@ -44,11 +44,11 @@ AD アプリケーションのセットアップ後、別のプログラミン�
 
         Add-AzureRmAccount
 
-2. 所有するサブスクリプションが 1 つだけである場合は、次のコマンドを使用できます。
+2. 所有するサブスクリプションが 1 つのみである場合は、次のコマンドを使用できます。
 
         $tenant = (Get-AzureRmSubscription).TenantId
     
-     複数のサブスクリプションがある場合は、AD アプリに使用するサブスクリプションを指定します。Active Directory が存在するサブスクリプションを選択します。詳細については、[Azure AD ディレクトリの管理](./active-directory/active-directory-administer.md)に関するページを参照してください。
+     サブスクリプションが複数ある場合は、AD アプリに使用するサブスクリプションを指定します。Active Directory が存在するサブスクリプションを選択します。詳細については、[Azure AD ディレクトリの管理](./active-directory/active-directory-administer.md)に関するページを参照してください。
 
         $tenant = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 
@@ -149,7 +149,7 @@ AD アプリケーションのセットアップ後、別のプログラミン�
 
 4. ディレクトリにアプリケーションを作成します。
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -KeyValue $keyValue -KeyType AsymmetricX509Cert -EndDate $cert.NotAfter -StartDate $cert.NotBefore      
+        $azureAdApplication = New-AzureRmADApplication -DisplayName "exampleapp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.contoso.org/example" -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore      
         
     新しいアプリケーション オブジェクトを調べます。
 
@@ -228,4 +228,4 @@ AD アプリケーションのセットアップ後、別のプログラミン�
   
 - アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

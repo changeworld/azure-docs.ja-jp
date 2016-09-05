@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Azure の回復性技術ガイダンス - データの破損または偶発的な削除からの復旧
@@ -45,7 +45,7 @@ Azure SQL Database で使用できる[ビジネス継続性](../sql-database/sql
 
 ###SQL Database のバックアップ
 
-Microsoft Azure SQL Database の特定の時点のバックアップは、[Azure SQL データベースをコピーする](../sql-database/sql-database-copy.md)ことによって実現します。このコマンドを使用すると、同じ論理データベース サーバー上に、または別のサーバーに、トランザクション上の一貫性があるデータベースのコピーを作成できます。いずれの場合も、データベース コピーは完全に機能し、ソース データベースから完全に独立しています。作成する各コピーは、特定の時点の回復オプションを表します。ソース データベース名で新しいデータベースの名前を変更して、データベースの状態を完全に回復できます。または、Transact-SQL クエリを使用して新しいデータベースからデータの特定のサブセットを復元することができます。SQL Database の詳細については、「[SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](../sql-database/sql-database-business-continuity.md)」を参照してください。
+Microsoft Azure SQL Database の特定の時点のバックアップは、[Azure SQL データベースをコピーする](../sql-database/sql-database-copy.md)ことによって実現します。このコマンドを使用すると、同じ論理データベース サーバー上に、または別のサーバーに、トランザクション上の一貫性があるデータベースのコピーを作成できます。いずれの場合も、データベース コピーは完全に機能し、ソース データベースから完全に独立しています。作成する各コピーは、特定の時点の回復オプションを表します。ソース データベース名で新しいデータベースの名前を変更して、データベースの状態を完全に回復できます。または、Transact-SQL クエリを使用して新しいデータベースからデータの特定のサブセットを復元することができます。SQL Database の詳細については、「[Azure SQL Database によるビジネス継続性の概要](../sql-database/sql-database-business-continuity.md)」を参照してください。
 
 ###Virtual Machines 上の SQL Server のバックアップ
 
@@ -60,35 +60,41 @@ Azure Web Sites と Azure Mobile Services では、関連付けられたデー�
 ##データの破損または偶発的な削除に対するチェックリスト
 
 ##Virtual Machines のチェックリスト
-  1. このドキュメントの「[Virtual Machines](#virtual-machines)」セクションを確認する。
+
+  1. このドキュメントの「Virtual Machines」セクションを確認する。
   2. Azure Backup (または Azure Blob Storage と VHD スナップショットを使用した独自のバックアップ システム) を使用して、VM ディスクをバックアップし、管理する。
 
 ##Storage のチェックリスト
-  1. このドキュメントの「[Storage](#storage)」セクションを確認する。
+
+  1. このドキュメントの「Storage」セクションを確認する。
   2. 重要なストレージ リソースを定期的にバックアップする。
   3. BLOB に対してスナップショット機能の使用を検討する。
 
 ##Database のチェックリスト
-  1. このドキュメントの「[データベース](#database)」セクションを確認する。
+
+  1. このドキュメントの「データベース」セクションを確認する。
   2. データベース コピー コマンドを使用して特定の時点のバックアップを作成する。
 
 ##Virtual Machines 上の SQL Server のバックアップ チェックリスト
-  1. このドキュメントの「[Virtual Machines 上の SQL Server のバックアップ](#sql-server-on-virtual-machines-backup)」セクションを確認する。
+
+  1. このドキュメントの「Virtual Machines 上の SQL Server のバックアップ」セクションを確認する。
   2. 従来のバックアップと復元の手法を使用する。
   3. 遅延ログ配布セッションを作成する。
 
 ##Web Apps のチェックリスト
+
   1. 関連付けられたデータベースがある場合は、バックアップして管理する。
 
 ##Media Services のチェックリスト
+
   1. 関連付けられたストレージ リソースをバックアップして管理する。
 
 ##詳細情報
 
-Azure のバックアップと復元の機能の詳細については、「[ストレージ、バックアップ、復旧のシナリオ](https://azure.microsoft.com/documentation/scenarios/storage-backup-recovery/)」を参照してください。
+Azure のバックアップと復元の機能の詳細については、[ストレージ、バックアップ、復旧のシナリオ](https://azure.microsoft.com/documentation/scenarios/storage-backup-recovery/)に関するページを参照してください。
 
 ##次のステップ
 
-この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明した一連の記事の一部です。回復性、障害復旧、高可用性に関するその他のリソースを探している場合は、Azure の回復性技術ガイダンスの「[その他のリソース](./resiliency-technical-guidance.md#additional-resources)」を参照してください。
+この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。回復性、障害復旧、高可用性に関するその他のリソースを探している場合は、Azure の回復性技術ガイダンスの「[その他のリソース](./resiliency-technical-guidance.md#additional-resources)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

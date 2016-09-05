@@ -6,10 +6,11 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 **しかし、このことはもはやニュースではありません。** 注目すべきは、Docker がもたらす次のようなメリットを Azure で活用できるようになったということです。
 
 - 状況に応じて、[さまざま](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)[な](../articles/virtual-machines/virtual-machines-linux-dockerextension.md)方法で Docker ホストを作成できる
+- [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) で **marathon** や **swarm** といったオーケストレーターを使用して、コンテナー ホストのクラスターを作成できる
 - [Azure リソース マネージャー](../articles/resource-group-overview.md)と[リソース グループ テンプレート](../articles/resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
 - 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
-また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの*オーケストレーション* ツールを使用して Virtual Machines (VM) のグループを作成し、Linux コンテナーと、まもなくリリースされる [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
+また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの*オーケストレーション* ツールを使用して Virtual Machines (VM) のグループを作成し、Linux コンテナーと [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
 
 この記事では、これらの技術の概念について俯瞰的に説明とともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。技術については既にご存知で、リンクだけを確認したいという方は[コンテナーを操作するためのツールに関するページ](#tools-for-working-with-containers)でご確認ください。
 
@@ -23,7 +24,7 @@ Azure は、物理コンピューター ハードウェアをエミュレート�
 
 実に合理的です。
 
-Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上のアプリケーションに提供するためのものです。Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。Hyper-V コンテナーは、非常に最適化された仮想マシンで各コンテナーをホストすることで分離のレイヤーを追加します。Windows コンテナーの詳細については、[Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。Azure で Windows コンテナーを試すには、[Windows コンテナー Azure クイック スタート](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/azure_setup)を参照してください。
+Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上のアプリケーションに提供するためのものです。Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。Hyper-V コンテナーは、非常に強力に最適化された仮想マシンで各コンテナーをホストすることで分離のレイヤーを追加します。Windows コンテナーの詳細については、[Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。Azure で Windows コンテナーを試すには、[Windows コンテナー Azure クイック スタート](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/azure_setup)を参照してください。
 
 これも大きな魅力と言えます。
 
@@ -39,7 +40,7 @@ Windows コンテナーは、Linux コンテナーと同じメリットを Windo
 
 ## コンテナーのメリット
 
-さまざまなメリットが期待できますが、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) や [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md) のように、単一サービスや[マイクロサービス]指向の分散アプリケーションを効果的に作成できるのが第一のメリットです。これにより、大規模で結合性の強いコンポーネントではなく、より小規模な構成パーツによってアプリケーションを設計することができます。
+さまざまなメリットが期待できますが、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) や [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md) のように、単一サービスやマイクロサービス指向の分散アプリケーションを効果的に作成できるのが第一のメリットです。これにより、大規模で結合性の強いコンポーネントではなく、より小規模な構成パーツによってアプリケーションを設計することができます。
 
 これは、必要な場所に必要なタイミングで VM をレンタルできる、Azure のようなパブリック クラウド環境においては特に有効です。分離性を確保し、デプロイメントを迅速化し、便利なオーケストレーション ツールを活用できるだけでなく、アプリケーション インフラストラクチャをより効率的に管理することができます。
 
@@ -53,7 +54,7 @@ Windows コンテナーは、Linux コンテナーと同じメリットを Windo
 
 コンテナー テクノロジが新たなメリットをもたらすことは一般的な観点からも明らかですが、事業部単位でもさまざまなメリットが期待できます。Docker コンテナーの例で見てみましょう。このトピックでは Docker について深く掘り下げることはしませんが (詳細については、「[What is Docker?](https://www.docker.com/whatisdocker/)」や [Wikipedia](http://wikipedia.org/wiki/Docker_%28software%29) を参照してください)、Docker とそのエコシステムは開発者と IT プロフェッショナルに大きなメリットをもたらします。
 
-Docker コンテナーは開発者の間で急速に普及していますが、これは、Linux コンテナーを使いやすくする次のようなメリットがあるためです。
+Docker コンテナーは開発者の間で急速に普及していますが、これは、Linux および Windows コンテナーを使いやすくする次のようなメリットがあるためです。
 
 - シンプルなコマンドを使用して固定イメージを作成し、それらを簡単にデプロイできるだけでなく、Dockerfile を使用してそれらのイメージ作成を自動化することができる
 - シンプルな [Git](https://git-scm.com/) スタイルのコマンドを使用して、[パブリック](https://registry.hub.docker.com/)や[プライベートの Docker レジストリにイメージを](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)プッシュ/プルし、それらを簡単に共有できる
@@ -97,7 +98,7 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 
 ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (Data-Center-As-A-Service) だ」と。
 
-その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます (詳しい方法は[こちら](../articles/virtual-machines/virtual-machines-windows-ps-create.md))。
+その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます。
 
 また多くの場合、これらの機能は [Puppet](https://puppetlabs.com/) や [Chef](https://www.chef.io/) などのツールに移行され、VM の作成や構成を柔軟に自動化する目的に使用されます。(Azure でこれらのツールを使用する方法については、[こちら](#tools-for-working-with-containers)のリンクを参照してください。)
 
@@ -109,14 +110,13 @@ Azure では先ごろ、[Azure リソース管理](../articles/virtual-machines/
 - [Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
 - [Azure PowerShell モジュール](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
 
-
 ### Azure VM とコンテナーのグループの一括的なデプロイメントと管理
 
 複数の VM グループを一括でデプロイし、それらのデプロイメントに Docker (またはその他の Linux コンテナー ホスト システム) をインストールして、自動化可能なグループにするための主なシステムを紹介します。ダイレクト リンクは、[コンテナーとツール](#containers-and-vm-technologies)のセクションを参照してください。機能の範囲はシステムによって異なります。また、ここに挙げるものがこの種のシステムのすべてというわけではありません。どのシステムが便利かは、ユーザーのスキル セットやシナリオによって変わってきます。
 
 Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。また、**swarm** をオーケストレーション エンジンとして使用することもできます。
 
 [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。[Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
@@ -130,7 +130,7 @@ Ubuntu も非常にポピュラーな Linux ディストリビューションで
 
 コンテナーと Azure VM の操作には各種のツールを使用します。このセクションでは、コンテナー、グループ、またはより大きな構成を扱ううえで特に有用かつ重要な概念とツールを紹介するとともに、それらを操作するためのオーケストレーション ツールを列挙します。
 
-> [AZURE.NOTE] この分野のトレンドはきわめて目まぐるしく変化するため、弊社ではトピックとそのリンクをできる限り最新に維持するよう努めていますが、更新が追いつかない場合もあります。興味のあるテーマについては、ご自身でも検索を行い、最新の情報をチェックしてください。
+> [AZURE.NOTE] この分野のトレンドはきわめて目まぐるしく変化するため、マイクロソフトではトピックとそのリンクをできる限り最新に維持するよう努めていますが、更新が追いつかない場合もあります。興味のあるテーマについては、ご自身でも検索を行い、最新の情報をチェックしてください。
 
 ### コンテナーと VM のテクノロジ
 
@@ -208,7 +208,7 @@ Linux ディストリビューションと Azure での導入例:
 
 <!--Anchors-->
 [microservices]: http://martinfowler.com/articles/microservices.html
-[マイクロサービス]: http://martinfowler.com/articles/microservices.html
+[microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

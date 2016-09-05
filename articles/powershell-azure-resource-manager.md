@@ -13,21 +13,10 @@
 	ms.tgt_pltfrm="powershell" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016" 
+	ms.date="08/18/2016" 
 	ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
-
-> [AZURE.SELECTOR]
-- [ポータル](azure-portal/resource-group-portal.md)
-- [Azure CLI](xplat-cli-azure-resource-manager.md)
-- [Azure PowerShell](powershell-azure-resource-manager.md)
-- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
-
 
 Azure リソース マネージャーでは、Azure リソースに関するまったく新しい考え方が導入されています。個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki など、ソリューション全体の構想を練ります。ソリューションの宣言型表現であるテンプレートを使用して、ソリューションをサポートするために必要なすべてのリソースが含まれているリソース グループを作成します。その後、そのリソース グループを論理ユニットとして管理してデプロイします。
 
@@ -96,7 +85,7 @@ Azure アカウントにログインするには、**Add-AzureRmAccount** コマ
 
 >[AZURE.NOTE] リソース マネージャー モジュールでは Add-AzureRmAccount が必要になります。発行設定ファイルでは不十分です。
 
-複数のサブスクリプションがある場合、**Set-AzureRmContext** コマンドレットでデプロイに使用するサブスクリプション ID を指定します。
+サブスクリプションが複数ある場合、**Set-AzureRmContext** コマンドレットでデプロイに使用するサブスクリプション ID を指定します。
 
     Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
@@ -141,7 +130,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
     (Type !? for Help.)
     administratorLoginPassword: ********
 
-テンプレートに、テンプレートをデプロイするコマンドに、パラメーターのいずれかと一致する名前のパラメーターが含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+テンプレートをデプロイするコマンド内のパラメーターのいずれかと名前が一致するパラメーターがテンプレートに含まれている場合 (たとえば、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと同じ名前のパラメーターである **ResourceGroupName** がテンプレートに含まれている場合など)、接尾辞に **FromTemplate** があるパラメーター (**ResourceGroupNameFromTemplate** など) に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイメント処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
 
 コマンドを実行してリソースが作成されると、メッセージが返されます。最終的に、デプロイの結果が表示されます。
 
@@ -178,7 +167,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 
 ### デバッグ情報のログ
 
-テンプレートをデプロイするとき、要求と応答に関する追加情報をログに記録できます。**New-AzureRmResourceGroupDeployment** の実行時に **-DeploymentDebugLogLevel** パラメーターを指定します。その情報を基に、デプロイ時に発生したエラーを解決できる可能性があります。既定値は **[なし]** です。要求と応答のいずれの内容もログに記録されません。要求、応答、または両方の内容をログに記録するように指定できます。デプロイのトラブルシューティングとデバッグ情報のログの詳細については、「[Troubleshooting resource group deployments with Azure PowerShell (Azure PowerShell でのリソース グループのデプロイのトラブルシューティング)](resource-manager-troubleshoot-deployments-powershell.md)」を参照してください。次の例では、デプロイの要求と応答の内容がログに記録されます。
+テンプレートをデプロイするとき、要求と応答に関する追加情報をログに記録できます。**New-AzureRmResourceGroupDeployment** の実行時に **-DeploymentDebugLogLevel** パラメーターを指定します。その情報を基に、デプロイ時に発生したエラーを解決できる可能性があります。既定値は **[なし]** です。要求と応答のいずれの内容もログに記録されません。要求、応答、または両方の内容をログに記録するように指定できます。デプロイのトラブルシューティングとデバッグ情報のログの詳細については、[Azure PowerShell でのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)に関するページを参照してください。次の例では、デプロイの要求と応答の内容がログに記録されます。
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName TestRG1 -DeploymentDebugLogLevel All -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json 
 
@@ -203,7 +192,7 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 		
 		...
 
-	リソース グループ名を指定しない場合、このコマンドレットはサブスクリプションのすべてのリソース グループを帰します。
+	リソース グループ名を指定しない場合、このコマンドレットはサブスクリプションのすべてのリソース グループを返します。
 
 - リソース グループのリソースを取得するには、**Find-AzureRmResource** コマンドレットとその **ResourceGroupNameContains** パラメーターを使用します。パラメーターがない場合、Find-AzureRmResource は Azure サブスクリプション内のすべてのリソースを取得します。
 
@@ -387,4 +376,4 @@ PowerShell により、リソース グループの現在の状態を表すテ�
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./resource-manager-troubleshoot-deployments-powershell.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

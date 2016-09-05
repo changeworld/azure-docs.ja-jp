@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="DocumentDB の SQL 構文と SQL クエリ | Microsoft Azure" 
 	description="DocumentDB (NoSQL データベース) の SQL 構文、データベースの概念、および SQL クエリについて説明します。DocumentDB では、JSON クエリ言語として SQL を使用できます。" 
-	keywords="sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ"
+	keywords="sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2016" 
+	ms.date="08/22/2016" 
 	ms.author="arramac"/>
 
 # DocumentDB における SQL クエリと SQL 構文
@@ -864,8 +864,7 @@ SELECT 句は、プロパティ参照に加えて、定数、算術式、論理�
 	]
 
 
-###* 演算子 
-サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
+###* 演算子 サポートされている特別な演算子 (*) によって、ドキュメントが現状のまま表されます。使用する場合は、この演算子が唯一のプロジェクションされるフィールドである必要があります。`SELECT * FROM Families f` のようなクエリは有効ですが、`SELECT VALUE * FROM Families f ` および `SELECT *, f.id FROM Families f ` は無効です。
 
 **クエリ**
 
@@ -1552,7 +1551,7 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
 ### 文字列関数
 次のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。組み込みの文字列関数を次の表に示します。
 
-使用法|説明
+使用法|Description
 ---|---
 [LENGTH (str\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length)|指定された文字列式の文字数を返します。
 [CONCAT (str\_expr, str\_expr [, str\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat)|2 つ以上の文字列値を連結した結果である文字列を返します。
@@ -1622,7 +1621,7 @@ DocumentDB の関数と ANSI SQL の間の主な違いとして、DocumentDB の
 ### 配列関数
 次のスカラー関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。組み込みの配列関数を次の表に示します。
 
-使用法|説明
+使用法|Description
 ---|---
 [ARRAY\_LENGTH (arr\_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length)|指定された配列式の要素の数を返します。
 [ARRAY\_CONCAT (arr\_expr, arr\_expr [, arr\_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat)|2 つ以上の配列値を連結した結果である配列を返します。
@@ -2093,7 +2092,7 @@ DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ�
 以下の例では、クエリを作成して DocumentDB データベース アカウントに送信する方法について説明します。
 
 ### REST API
-DocumentDB は、HTTP を介したオープンな RESTful プログラミング モデルを提供します。データベース アカウントは Azure サブスクリプションを使用してプロビジョニングできます。DocumentDB リソース モデルは、データベース アカウントに従属する一連のリソースから成り、個々のリソースは、不変の論理 URI アドレスを使用して参照することができます。このドキュメントでは、そうした一連のリソースをフィードと呼ぶことにします。データベース アカウントはデータベースのセットで構成され、各データベースに複数のコレクションが含まれています。これらのコレクションのそれぞれに、ドキュメント、UDF、その他のリソースが含まれます。
+DocumentDB は、HTTP を介したオープンな RESTful プログラミング モデルを提供します。データベース アカウントは Azure サブスクリプションを使用してプロビジョニングできます。DocumentDB リソース モデルは、データベース アカウントに従属する一連のリソースから成り、個々のリソースは、不変の論理 URI アドレスを使用して参照することができます。このドキュメントでは、そうした一連のリソースを " フィード " と呼ぶことにします。データベース アカウントはデータベースのセットで構成され、各データベースに複数のコレクションが含まれています。これらのコレクションのそれぞれに、ドキュメント、UDF、その他のリソースが含まれます。
 
 これらのリソースとの基本的な対話モデルでは、HTTP の動詞である GET、PUT、POST、および DELETE が標準の解釈で使用されます。POST 動詞は、新しいリソースの作成、ストアド プロシージャの実行、または DocumentDB クエリの発行に使用されます。クエリは常に読み取り専用の操作で、副作用はありません。
 
@@ -2356,6 +2355,18 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 	        });
 	}
 
+## 集計関数
+
+集計関数のネイティブ サポートは準備中です。ただし、カウントまたは集計の機能がさしあたって必要な場合は、別の方法を使用して同じ結果を得ることができます。
+
+読み込みパスでは以下のとおりです。
+
+- 集計関数を実行するには、データを取得し、ローカルでカウントを実行します。`SELECT * FROM c` などの完全なドキュメントではなく、`SELECT VALUE 1` のような低コストのクエリ プロジェクションを使用することをお勧めします。これにより、各結果ページで処理されるドキュメント数を最大化し、サービスとの往復の増加を必要に応じて防ぐことができます。
+- ストアド プロシージャを使用して、往復処理の繰り返しによるネットワークの待ち時間を最小限に抑えることもできます。指定したフィルター クエリの数を計算するストアド プロシージャのサンプルについては、[Count.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/stored-procedures/Count.js) に関するページを参照してください。ストアド プロシージャを使用すると、豊富なビジネス ロジックと効率的な方法による集計処理を組み合わせることができます。
+
+書き込みパスでは以下のとおりです。
+
+- 一般的なパターンにはほかに、"書き込み" パスで結果を事前に集計する方法があります。この方法は、"読み取り" 要求の量が "書き込み" 要求よりも多い場合に特に魅力的です。事前に集計しておくと、その結果は、単一のポイントの読み取り要求と共に利用できます。DocumentDB で事前に集計する方法でお勧めなのは、"書き込み" のたびに呼び出されるトリガーを設定して、具体化されるクエリの最新の結果を持つメタデータ ドキュメントを更新する方法です。たとえば、[UpdateaMetadata.js](https://github.com/Azure/azure-documentdb-js-server/blob/master/samples/triggers/UpdateMetadata.js) のサンプルを参照してください。このサンプルでは、コレクションのメタデータ ドキュメントの minSize、maxSize、および totalSize が更新されます。サンプルは、カウンターや集計などを更新するように拡張することができます。
 
 ##参照
 1.	[Azure DocumentDB の概要][introduction]
@@ -2378,4 +2389,4 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 [consistency-levels]: documentdb-consistency-levels.md
  
 
-<!--------HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -204,7 +204,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/inputdata /DestKey:<storagekey>  /Pattern:input.log
 
-		> [AZURE.NOTE] 上記のコマンドは **adfgetstarted** という名前のコンテナーを Azure Blob Storage 内に作成し、**partitionweblogs.hql** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
+		> [AZURE.NOTE] 上記のコマンドは、**adfgetstarted** という名前のコンテナーを Azure BLOB ストレージに作成し、**input.log** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
 	
 	5. ファイルが正常にアップロードされると、AzCopy から次のような出力が表示されます。
 	
@@ -228,4 +228,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

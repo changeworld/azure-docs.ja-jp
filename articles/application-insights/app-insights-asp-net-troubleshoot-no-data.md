@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # データが存在しない場合のトラブルシューティング - Application Insights for .NET
@@ -21,23 +21,27 @@
 
 *Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
 
-* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](app-insights-sampling.md)が原因である可能性があります。これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。要求数が > 1 の場合は、サンプリングが実行中です。 
+* 同じ部分が常に表示される場合は、アダプティブ [サンプリング](app-insights-sampling.md)が原因である可能性があります。これを確認するには、([概要] ブレードから) [検索] を開き、要求やその他のイベントのインスタンスを確認します。プロパティ セクションの下部で、[...] をクリックし、すべてのプロパティの詳細を取得します。要求数が > 1 の場合は、サンプリングが実行中です。
 * それ以外の場合、料金プランの[データ速度の上限](app-insights-pricing.md#limits-summary)に達してる可能性があります。これらの制限は分単位で適用されます。
 
-## 状態モニターの問題
+## サーバーからデータを取得できない
+
+*Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
+
+* おそらく、ファイアウォールの問題でしょう。[Application Insights がデータを送信できるようにファイアウォールの例外を設定](app-insights-ip-addresses.md)してください。
 
 *既存のアプリを監視するための [Status Monitor](app-insights-monitor-performance-live-website-now.md) を Web サーバーにインストールしたのですが、結果がまったく表示されません。*
 
-「[Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting)」を参照してください。最も頻繁に問題になるのは、ファイアウォールのポートです。
+* 「[Status Monitor のトラブルシューティング](app-insights-monitor-performance-live-website-now.md#troubleshooting)」を参照してください。
 
 
-## <a name="q01"></a>Visual Studio に "Application Insights の追加" オプションが表示されない
+## <a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
 
 *Visual Studio で新しいプロジェクトを作成するときや、ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 + このツールでは、一部の種類の .NET プロジェクトがサポートされません。Web プロジェクトと WCF プロジェクトはサポートされます。その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、[Application Insights SDK を手動でプロジェクトに追加](app-insights-windows-desktop.md)できます。
 + [Visual Studio 2013 Update 3 以降](http://go.microsoft.com/fwlink/?LinkId=397827)を使用しているかご確認ください。Application Insights Tools がプレインストールされています。
-+ **[ツール]**、**[拡張機能と更新プログラム]** を選択し、**[Application Insights Tools]** がインストールされ、有効になっていることを確認します。有効な場合は、**[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
++ **[ツール]**、**[拡張機能と更新プログラム]** を選択し、**Application Insights Tools** がインストールされ、有効になっていることを確認します。有効な場合は、**[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 + [新しいプロジェクト] ダイアログを開いて [ASP.NET Web アプリケーション] を選択します。そこに Application Insights オプションが表示された場合、Application Insights Tools はインストールされています。それ以外の場合は、アンインストールしてから Application Insights Tools を再インストールしてください。
 
 
@@ -49,14 +53,14 @@
 
 * Application Insights ポータルとの通信に失敗した場合。つまり、
 * ご利用の Azure アカウントになんらかの問題があります。
-* お客様は、[新しいリソースを作成しようとしたサブスクリプションまたはグループに対して読み取りアクセス権](app-insights-resources-roles-access-control.md)しか持っていません。
+* お客様は、[新しいリソースを作成しようとしたサブスクリプションまたはグループに対する読み取りアクセス権](app-insights-resources-roles-access-control.md)しか持っていません。
 
 解決策:
 
-+ 適切な Azure アカウントのサインイン資格情報を指定していることを確認してください。 
++ 適切な Azure アカウントのサインイン資格情報を指定していることを確認してください。
 + ブラウザーで、[Azure ポータル](https://portal.azure.com)に対するアクセス権があることを確認してください。設定を開き、制限がないかどうか確認してください。
 + [Application Insights を既存のプロジェクトに追加するには](app-insights-asp-net.md): ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。
-+ 解決しない場合は、[手動の手順](app-insights-asp-net-manual.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。 
++ 解決しない場合は、[手動の手順](app-insights-asp-net-manual.md)を実行して、ポータルでリソースを追加してから、SDK をプロジェクトに追加してください。
 
 ## <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 
@@ -84,11 +88,11 @@ Application Insights をインストールしているとき、またはログ �
 解決策:
 
 * Visual Studio のバージョンが 2013 Update 3 以降であることを確認してください。
-* **[ツール]**、**[拡張機能と更新プログラム]** を選択し、**[Application Insights Tools]** がインストールされ、有効になっていることを確認します。有効な場合は、**[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
+* **[ツール]**、**[拡張機能と更新プログラム]** を選択し、**Application Insights Tools** がインストールされ、有効になっていることを確認します。有効な場合は、**[更新プログラム]** をクリックして更新プログラムが存在するかどうかを確認します。
 * ソリューション エクスプローラーでプロジェクトを右クリックします。**[Application Insights の構成]** コマンドが表示される場合は、そのコマンドを使用して Application Insights サービスのリソースにプロジェクトを接続します。
 
 
-それ以外の場合、ご使用のプロジェクトは Application Insights Tools で直接サポートされたプロジェクト タイプではありません。テレメトリを表示するには、[Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで Application Insights を選択して目的のアプリケーションを選択してください。
+それ以外の場合、ご使用のプロジェクトは Application Insights Tools で直接サポートされたプロジェクト タイプではありません。テレメトリを表示するには、[Azure ポータル](https://portal.azure.com)にサインインし、左側のナビゲーション バーで [Application Insights] を選択して目的のアプリケーションを選択してください。
 
 ## Visual Studio から Application Insights を開くとアクセスが拒否される
 
@@ -98,7 +102,7 @@ Application Insights をインストールしているとき、またはログ �
 
 [Application Insights をアプリに追加したときに作成されたリソース](app-insights-asp-net.md)へのアクセス権が、既定のブラウザーで前回使用された Microsoft サインインにはありません。次の 2 つの理由が考えられます。
 
-* Microsoft アカウントが複数存在する (仕事用と個人用など)。 前回既定のブラウザーで使用されたサインインが、[Application Insights をプロジェクトに追加](app-insights-asp-net.md)するためのアクセス権を持ったアカウントと異なります。 
+* Microsoft アカウントが複数存在する (仕事用と個人用など)。 前回既定のブラウザーで使用されたサインインが、[Application Insights をプロジェクトに追加](app-insights-asp-net.md)するためのアクセス権を持ったアカウントと異なります。
 
  * 解決策: ブラウザー ウィンドウの右上に表示される名前をクリックしてサインアウトします。そのうえで、アクセス権のあるアカウントでサインインします。左側のナビゲーション バーで [Application Insights] をクリックし、対象のアプリケーションを選択します。
 
@@ -115,7 +119,7 @@ Application Insights をインストールしているとき、またはログ �
 考えられる原因:
 
 * アプリケーションの Application Insights リソースが削除されている。
-* プロジェクト ファイルを更新せずに ApplicationInsights.config を直接編集することによってインストルメンテーション キーが設定または変更された。 
+* プロジェクト ファイルを更新せずに ApplicationInsights.config を直接編集することによってインストルメンテーション キーが設定または変更された。
 
 テレメトリがどこに送信されるかは、ApplicationInsights.config 内のインストルメンテーション キーによって制御されます。Visual Studio のコマンドを使用したときにどのリソースが開くかは、プロジェクト ファイル内のコード行によって制御されます。
 
@@ -141,13 +145,13 @@ Application Insights をインストールしているとき、またはログ �
 
 *アプリを実行して Microsoft Azure の Application Insights サービスを開いたものの、いずれのグラフも、データの収集方法についての説明や、必要な構成がされていない、という内容のメッセージしか表示されません。* または、*ページ ビューとユーザー データだけが表示され、サーバー データは表示されません。*
 
-+ Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。ある程度テレメトリを生成するために、アプリケーションを使用します。記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。 
++ Visual Studio で F5 キーを押し、アプリケーションをデバッグ モードで実行します。ある程度テレメトリを生成するために、アプリケーションを使用します。記録されたイベントが Visual Studio の出力ウィンドウに表示されていることを確認します。
 
     ![](./media/app-insights-asp-net-troubleshoot-no-data/output-window.png)
 
 + Application Insights ポータルで[診断検索](app-insights-diagnostic-search.md)を開きます。通常、まずここにデータが表示されます。
 + [更新] ボタンをクリックします。ブレードは周期的に自動で更新されますが、手動でも更新できます。時間範囲が広いと、更新間隔は長くなります。
-+ インストルメンテーション キーが一致していることを確認します。Application Insights ポータルから、対象アプリのメイン ブレードで **[要点]** ドロップダウン リストに表示される **[インストルメンテーション キー]** を確認します。次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、`<instrumentationkey>` を探します。2 つのキーが等しいことを確認してください。等しくない場合は、次の作業を行います。
++ インストルメンテーション キーが一致していることを確認します。Application Insights ポータルから、対象アプリのメイン ブレードで **[Essentials]** ドロップダウン リストに表示される **[インストルメンテーション キー]** を確認します。次に、Visual Studio からプロジェクトの ApplicationInsights.config を開き、`<instrumentationkey>` を探します。2 つのキーが等しいことを確認してください。等しくない場合は、次の作業を行います。
  + ポータルで [Application Insights] をクリックし、適切なキーのアプリ リソースを探します。または、
  + Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights]、[構成] の順に選択します。適切なリソースにテレメトリを送信するようにアプリをリセットします。
  + 一致するキーが見つからない場合は、ポータルにサインインするときと同じ資格情報を Visual Studio で使用していることを確認してください。
@@ -171,7 +175,7 @@ Application Insights をインストールしているとき、またはログ �
 
 ## 依存関係または例外のデータが得られない
 
-[依存関係のテレメトリ](app-insights-asp-net-dependencies.md)と[例外のテレメトリ](app-insights-asp-net-exceptions.md)を参照してください。
+[依存関係のテレメトリ](app-insights-asp-net-dependencies.md)と[例外のテレメトリ](app-insights-asp-net-exceptions.md)に関するページを参照してください。
 
 ## パフォーマンス データが表示されない
 
@@ -211,4 +215,4 @@ Azure Web サイトのパフォーマンス データは表示されません。
 
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/ja-JP/home?forum=ApplicationInsights)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

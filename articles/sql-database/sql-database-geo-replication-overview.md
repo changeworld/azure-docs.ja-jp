@@ -90,7 +90,7 @@
 
 ### Transact-SQL
 
-|コマンド|説明|
+|コマンド|Description|
 |-------|-----------|
 |[ALTER DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx)|ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。|
 |[ALTER DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx)|FAILOVER または FORCE\_FAILOVER\_ALLOW\_DATA\_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します。
@@ -114,11 +114,11 @@
 
 ### REST API
 
-|API|説明|
+|API|Description|
 |---|-----------|
 |[Create または Update Database (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|プライマリまたはセカンダリ データベースを作成、更新、または復元します。|
 |[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|復元操作中にステータスを返します。|
-|[Set Secondary Database as Primary (計画されたフェールオーバー)](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。|
+|[Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://msdn.microsoft.com/ibrary/azure/mt575007.aspx)|geo レプリケーション パートナーシップのセカンダリ データベースを新しいプライマリ データベースに昇格させます。|
 |[Set Secondary Database as Primary (計画されていないフェールオーバー)](https://msdn.microsoft.com/library/azure/mt582027.aspx)|セカンダリ データベースに強制的にフェールオーバーして、セカンダリをプライマリに設定します。|
 |[Get Replication Links](https://msdn.microsoft.com/library/azure/mt600929.aspx)|geo レプリケーション パートナーシップで指定された SQL データベースのすべてのレプリケーション リンクを取得します。sys.geo\_replication\_links カタログ ビューで表示可能な情報を取得します。|
 |[Get Replication Link](https://msdn.microsoft.com/library/azure/mt600778.aspx)|geo レプリケーション パートナーシップで指定された SQL データベースの特定のレプリケーション リンクを取得します。sys.geo\_replication\_links カタログ ビューで表示可能な情報を取得します。|
@@ -133,4 +133,4 @@
 - 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

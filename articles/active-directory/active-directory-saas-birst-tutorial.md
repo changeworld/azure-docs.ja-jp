@@ -123,7 +123,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 	![Configure Single Sign-On](./media/active-directory-saas-birst-tutorial/tutorial_birst_04.png)
 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Birst Agile Business Analytics アプリケーションへのサインオンに使用する URL を入力します。"**https://login.bws.birst.com/SAMLSSO/Service.aspx?birst.idpid=TENANTIDPID**"
+    a.[サインオン URL] ボックスに、ユーザーが Birst Agile Business Analytics アプリケーションへのサインオンに使用する URL を入力します。その際、"**https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID**" というパターンを使用してください。この URL は、Birst アカウントが存在するデータセンターに依存します。米国のデータセンターの場合は "**https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID**" を使い、ヨーロッパのデータセンターの場合は "**https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID**" を使います。
 
 	b.**[次へ]** をクリックします。
 
@@ -140,7 +140,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードした証明書ファイルを電子メールに添付して、Birst Agile Business Analytics のサポート チーム ([info@birst.com](emailTo:info@birst.com)) に問い合わせます。SAML SSO URL、サインアウト URL、発行元 URL もお知らせください。サポート チームが SSO 統合で設定します。
 
 
-> [AZURE.NOTE] Birst チームが **app2101** などの適切なサーバーに SSO を設定できるように、この統合には SHA256 アルゴリズムが必要であることをチームに伝えてください (SHA1 はサポートされません)。
+> [AZURE.NOTE] Birst チームが **app2101** などの適切なサーバーに SSO を設定できるように、この統合には SHA256 アルゴリズムが必要であることを伝えてください (SHA1 はサポートされません)。
 
 
 
@@ -282,4 +282,4 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 [204]: ./media/active-directory-saas-birst-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-birst-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/01/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 # Azure Mobile Engagement - 主要な機能
@@ -22,19 +22,19 @@
 
 ## **全般**
 
-- **主要なプラットフォームの用 SDK**。主要なプラットフォーム (iOS、Android、ユニバーサル Windows、Windows Phone Silverlight、Kindle、Cordova) で使用可能な SDK をご用意しています。SDK は容易に統合することができます。任意のプラットフォームで使用を開始できるようにドキュメントを提供しています。 
+- **主要なプラットフォームの用 SDK**。主要なプラットフォーム (iOS、Android、ユニバーサル Windows、Windows Phone Silverlight、Kindle、Cordova) で使用可能な SDK をご用意しています。SDK は容易に統合することができます。任意のプラットフォームで使用を開始できるようにドキュメントを提供しています。
 
 - **独立した SaaS ポータル**。Microsoft Azure 管理ポータルを使用することなく、マーケティング チームに簡単にアクセスできます。
 
 - **オープン REST API の可用性**。オープン プラットフォーム API を使用して CRM/CMS/IT システムと統合し自動化するために、オープン REST API と、これらの API を使用する .NET SDK を提供しています。これにより、Mobile Engagement との統合および自動化が容易になります。詳細については、[こちら](mobile-engagement-api-authentication.md)をご覧ください。
 
-- **Power BI コネクタが使用可能**。主な分析グラフを取り出して Power BI ダッシュ ボードに取り込むこともできます。この[ガイド](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-mobile/)を参照してください。
+- **Power BI コネクタが使用可能**。主な分析グラフを取り出して Power BI ダッシュ ボードに取り込むこともできます。この[ガイド](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-mobile/)を参照してください。
 
 - **セキュリティおよびプライバシーの保証**。Azure ファミリに属する Azure Mobile Engagement は、クラウド サービスで想定されるセキュリティおよびプライバシーにまつわるすべての標準的なベスト プラクティスに従います。
 
 ## **意思決定の基になる分析データ**
 
-- **リアルタイムでデータを監視する**。セッション、イベント、エラー、クラッシュなどの詳細をすべてリアルタイムで表示する監視モジュールを使用して、リアルタイム分析結果を追跡することができます。基本的な概念については、この[記事](mobile-engagement-concepts.md)を参照してください。 
+- **リアルタイムでデータを監視する**。セッション、イベント、エラー、クラッシュなどの詳細をすべてリアルタイムで表示する監視モジュールを使用して、リアルタイム分析結果を追跡することができます。基本的な概念については、この[記事](mobile-engagement-concepts.md)を参照してください。
 
 	![][1]
 
@@ -164,4 +164,4 @@
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
 
-<!----HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

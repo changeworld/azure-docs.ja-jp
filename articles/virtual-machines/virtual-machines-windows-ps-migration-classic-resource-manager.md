@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="mahthi"
-	manager="drewm"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
@@ -105,7 +105,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 
-2. Resource Manager デプロイ モデルの既存の仮想ネットワークに移行する場合
+2. Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する場合
 
 		$existingVnetRGName = "<Existing VNET's Resource Group Name>"
 		$vnetName = "<Virtual Network Name>"
@@ -181,4 +181,4 @@ PowerShell または Azure ポータルを使用して、準備したストレ�
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

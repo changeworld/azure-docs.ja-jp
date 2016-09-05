@@ -113,7 +113,7 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
     * **ドメイン検証**
 
-        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)** **場合にのみ**、最も便利な方法です。
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
         
         * **[検証]** ボタンをクリックして、この手順を実行します。
         
@@ -159,26 +159,27 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 1.	ブラウザーで、**[Azure ポータル](https://portal.azure.com/)**を開きます。
 2.	ページの左側にある **[App Service]** オプションをクリックします。
 3.	この証明書を割り当てるアプリの名前をクリックします。
-4.	**[設定]** で **[カスタム ドメインおよび SSL]** をクリックします。
-5.	**証明書セクション**で **[証明書のインポート]** クリックして、購入した証明書を選択します。
+4.	**[設定]**で、**[SSL certificates (SSL 証明書)]** をクリックします。
+5.	**[Import App Service Certificate (App Service 証明書のインポート)]** をクリックして、購入した証明書を選択します。
 
-    ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.jpg)
+    ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-6. **[SSL の設定]** タブの **[SSL バインド]** セクションで、ドロップダウン リストから、SSL で保護するドメイン名と使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
+6. **[SSL バインド]** セクションで、**[Add bindings (バインドの追加)]** をクリックします。
+7. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
 
-    ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.jpg)
+    ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
        • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。 • SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事を参照してください。
        
-7. 変更を保存して SSL を有効にするには、*[保存]* をクリックします。
+7. 変更を保存して SSL を有効にするには、**[Add Binding (バインドの追加)]** をクリックします。
 
 
 
 **[IP ベースの SSL]** を選択し、カスタム ドメインが A レコードを使用して構成されている場合は、次の追加手順を実行する必要があります。
 
-* IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの **[ダッシュボード]** ページの **[概要]** セクションで確認できます。このアドレスは、**[仮想 IP アドレス]** として示されます。
+* IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[Hostnames (ホスト名)]** セクションの上にあります。このアドレスは、**[外部 IP アドレス]** として示されます。
     
-    ![IP SSL のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/IPSSL.jpg)
+    ![IP SSL のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
     この IP アドレスは、ドメイン用の A レコードを構成するために以前使用した仮想 IP アドレスとは異なります。SNI ベースの SSL を使用するように構成する場合、または SSL を使用するように構成しない場合は、このエントリに対してアドレスは表示されません。
     
@@ -208,4 +209,4 @@ SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスで
 
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

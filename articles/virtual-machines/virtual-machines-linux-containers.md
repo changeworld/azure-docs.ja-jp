@@ -15,7 +15,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure" 
-	ms.date="06/06/2016" 
+	ms.date="08/23/2016" 
 	ms.author="rasquill" 
 />
 
@@ -24,4 +24,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-and-containers](../../includes/virtual-machines-common-containers.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

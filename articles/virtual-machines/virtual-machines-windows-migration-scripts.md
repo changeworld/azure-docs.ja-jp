@@ -4,7 +4,7 @@
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="singhkays"
-	manager="drewm"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
@@ -185,4 +185,4 @@ _Add-AzureSMVmToRM_ コマンドレットは次のテスト ケースを使用�
 ## メモ
 1. 複数の VM を短い間隔で複製する場合、DNS キャッシュ更新時間に起因し、パブリック IP アドレスに DNS 名前競合が発生する可能性があります。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

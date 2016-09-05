@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 #<a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
@@ -23,7 +23,7 @@
 ### ゲームを設定する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)に基づいています。
 
-1. **Unity エディター**を開き、**[New]** (新規) をクリックします。 
+1. **Unity エディター**を開き、**[New]** (新規) をクリックします。
 	
 	![][51]
 	
@@ -35,7 +35,7 @@
  	
 	![][53]
 
-4. **[3D Object] \(3D オブジェクト)、[Plane] \(平面)** の順に選択して、プレイするフィールドとして平面を作成し、この平面オブジェクトの名前を **Ground** に変更します。
+4. **[3D Object] (3D オブジェクト)、[Plane] (平面)** の順に選択して、プレイするフィールドとして平面を作成し、この平面オブジェクトの名前を **Ground** に変更します。
 
 	![][1]
 
@@ -51,13 +51,13 @@
 
 	![][5]
 
-8. **[3D Object] \(3D オブジェクト)、[Sphere] \(球)** の順に選択して新しいオブジェクトをプロジェクトに追加し、この球オブジェクトの名前を **Player** に変更します。
+8. **[3D Object] (3D オブジェクト)、[Sphere] (球)** の順に選択して新しいオブジェクトをプロジェクトに追加し、この球オブジェクトの名前を **Player** に変更します。
 
 	![][6]
 
 9. **Player** オブジェクトを選択し、平面オブジェクトの場合と同様に、**[Reset Transform]** (変換のリセット) をクリックします。
 
-10. **[Transform] \(変換)、[Position] \(位置)、[Y] \(Y)** の順に選択して、Player の Y 座標コンポーネントを 0.5 に更新します。
+10. **[Transform] (変換)、[Position] (位置)、[Y] (Y)** の順に選択して、Player の Y 座標コンポーネントを 0.5 に更新します。
 
 	![][7]
 
@@ -75,20 +75,20 @@
 
 	![][10]
 
-17. 最後に、わかりやすくするために、Directional Light オブジェクトで、**[Transform] \(変換) の [Rotation] \(回転) で [Y] \(Y)** を 60 に設定します。
+17. 最後に、わかりやすくするために、Directional Light オブジェクトで、**[Transform] (変換) の [Rotation] (回転) で [Y] (Y)** を 60 に設定します。
 
 	![][12]
 
 ### プレイヤーを動かす
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)に基づいています。
 
-1. **RigidBody** コンポーネントを **Player** オブジェクトに追加します。 
+1. **RigidBody** コンポーネントを **Player** オブジェクトに追加します。
 
 	![][13]
 
 2. **Scripts** という名前の新しいフォルダーをプロジェクトに作成します。
 
-3. **[Add Component] \(コンポーネントの追加)、[New Script] \(新しいスクリプト)、[C# Script] \(C# スクリプト)** の順にクリックします。スクリプトに **PlayerController** という名前を付け、**[Create and Add]** (作成して追加) をクリックします。これで、スクリプトが作成され、Player オブジェクトにアタッチされます。
+3. **[Add Component] (コンポーネントの追加)、[New Script] (新しいスクリプト)、[C# Script] (C# スクリプト)** の順にクリックします。スクリプトに **PlayerController** という名前を付け、**[Create and Add]** (作成して追加) をクリックします。これで、スクリプトが作成され、Player オブジェクトにアタッチされます。
 
 	![][14]
 
@@ -116,7 +116,7 @@
 			}
 		}
 	
-8. 上記のスクリプトで **Speed** プロパティが使用されていることに注目します。Unity エディターで、[Speed] \(速度) プロパティを 10 に更新します。
+8. 上記のスクリプトで **Speed** プロパティが使用されていることに注目します。Unity エディターで、[Speed] (速度) プロパティを 10 に更新します。
 
 	![][15]
 
@@ -125,8 +125,8 @@
 ### カメラを動かす
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141)に基づいています。この手順では、**Main Camera** を **Player** オブジェクトに関連付けます。
 
-1. **Transform.Position** を X = 0、Y = 10.5、Z=-10 に更新します。  
-2. **Transform.Rotation** を X = 45、Y = 0、Z = 0 に更新します。  
+1. **Transform.Position** を X = 0、Y = 10.5、Z=-10 に更新します。
+2. **Transform.Rotation** を X = 45、Y = 0、Z = 0 に更新します。
 
 	![][16]
 
@@ -160,20 +160,20 @@
 
 	![][18]
 
-6. これで、エディターで [Play] \(再生) をクリックし、Player Ball オブジェクトを回転させると、カメラはその動きを追いかけます。
+6. これで、エディターで [Play] (再生) をクリックし、Player Ball オブジェクトを回転させると、カメラはその動きを追いかけます。
 
 ### プレイ領域を設定する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141)に基づいています。ここでは、Player Ball オブジェクトが動く際にプレイ領域から飛び出さないように Ground オブジェクトを取り囲む Walls オブジェクトを作成します。
 
-1. **[Create] \(作成)、[Create Empty] \(空のオブジェクト)、[Game Object] \(ゲーム オブジェクト)** の順にクリックし、そのオブジェクトに **Walls** という名前を付けます。
+1. **[Create] (作成)、[Create Empty] (空のオブジェクト)、[Game Object] (ゲーム オブジェクト)** の順にクリックし、そのオブジェクトに **Walls** という名前を付けます。
 
 	![][19]
 
-2. この Walls オブジェクトの下で、**[3D Object] \(3D オブジェクト)、[Cube] \(キューブ)** の順に選択してオブジェクトを作成し、"West wall" という名前を付けます。
+2. この Walls オブジェクトの下で、**[3D Object] (3D オブジェクト)、[Cube] (キューブ)** の順に選択してオブジェクトを作成し、"West wall" という名前を付けます。
 
 	![][20]
 
-3. この West wall オブジェクトについて、**[Transform] \(変換) の [Position] \(位置)** と **[Transform] \(変換) の [Scale] \(スケール)** を更新します。
+3. この West wall オブジェクトについて、**[Transform] (変換) の [Position] (位置)** と **[Transform] (変換) の [Scale] (スケール)** を更新します。
 
 	![][21]
 
@@ -192,9 +192,9 @@
 ### 収集可能なオブジェクトを作成する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141)に基づいています。ここでは、収集可能なオブジェクトのセットを構成する見栄えのよいオブジェクトをいくつか作成します。Player Ball オブジェクトは、これらのオブジェクトを衝突させることによって "収集" する必要があります。
 
-1. 新しい **3D キューブ オブジェクト**を作成し、Pickup という名前を付けます。 
+1. 新しい **3D キューブ オブジェクト**を作成し、Pickup という名前を付けます。
 
-2. この Pickup オブジェクトについて、**[Transform] \(変換) の [Rotation] \(回転)** と **[Transform] \(変換) の [Scale] \(スケール)** を調整します。
+2. この Pickup オブジェクトについて、**[Transform] (変換) の [Rotation] (回転)** と **[Transform] (変換) の [Scale] (スケール)** を調整します。
 
 	![][25]
 
@@ -215,7 +215,7 @@
 		    }
 		}
 
-5. エディターで [Play] \(再生) をクリックすると、Pickup オブジェクトがその軸を中心に回転します。
+5. エディターで [Play] (再生) をクリックすると、Pickup オブジェクトがその軸を中心に回転します。
 
 6. **Prefabs** という名前の新しいフォルダーを作成します。
 
@@ -233,7 +233,7 @@
 
 	![][30]
 
-10. **Pickup** という名前の**新しいマテリアル**を作成します。Ground オブジェクトを更新したときと同じように、**[Albedo] \(アルベド) プロパティ**を更新して、その色が [Red] \(赤) になるように更新します。
+10. **Pickup** という名前の**新しいマテリアル**を作成します。Ground オブジェクトを更新したときと同じように、**[Albedo] (アルベド) プロパティ**を更新して、その色が [Red] (赤) になるように更新します。
 
 	![][31]
 
@@ -244,7 +244,7 @@
 ### Pickup オブジェクトを収集する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141)に基づいています。ここでは、Player が衝突することで Pickup オブジェクトを "収集" できるように Player を更新します。
 
-1. Player オブジェクトにアタッチされている **PlayerController** スクリプトを編集するために開き、次のように更新します。  
+1. Player オブジェクトにアタッチされている **PlayerController** スクリプトを編集するために開き、次のように更新します。
 
 		using UnityEngine;
 		using System.Collections;
@@ -374,4 +374,4 @@ Unity の基本的なチュートリアルは、上のセクションで終了�
 	
 	
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0824_2016-->

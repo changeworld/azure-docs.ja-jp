@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## 概要
+## Overview
 
 この文書では、Microsoft Azure CDN のリアルタイム統計情報について説明します。帯域幅、キャッシュの状態、CDN プロファイルへの同時接続数など、クライアントにコンテンツを配信するときのリアルタイム データは、この機能から得ることができます。本番稼働イベントを含め、サービスの正常性を随時継続的に監視することができます。
 
@@ -90,7 +90,8 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 
 ## 次のステップ
 
+- [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)を使用して通知を受け取る
 - [詳細な HTTP レポート](cdn-advanced-http-reports.md)について詳しく調べる
-- [使用量パターン](cdn-analyze-usage-patterns.md)の分析
+- [使用量パターン](cdn-analyze-usage-patterns.md)を分析する
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,10 +12,11 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/19/2016"
+   ms.date="08/18/2016"
    ms.author="cherylmc"/>
 
 # 回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
+
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
 
 ![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
@@ -36,7 +37,8 @@
 	
 	>[AZURE.IMPORTANT] Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
 
-	![](./media/expressroute-workflows/expressroute-routing-workflow.png)
+	![](./media/expressroute-workflows/routing-workflow.png)
+
 
 5. ExpressRoute 回線に仮想ネットワークをリンクする - 仮想ネットワークを ExpressRoute 回線にリンクできます。指示に従い、回線に [VNet をリンク](expressroute-howto-linkvnet-arm.md)してください。VNet は ExpressRoute 回線と同じ Azure サブスクリプションに配置するか、別のサブスクリプションに配置できます。
 
@@ -120,4 +122,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 	- [ルーティングの構成](expressroute-howto-routing-arm.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

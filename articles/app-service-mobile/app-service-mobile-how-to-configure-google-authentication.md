@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Google ログインを使用するように App Service アプリケーションを構成する方法
@@ -26,7 +26,7 @@
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
 
-1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URI は、Google アプリの構成に使用します。
+1. [Azure ポータル]にログオンし、目的のアプリケーションに移動します。**URL** をコピーします。この URL は、後で Google アプリを構成するために使用します。
 
 2. [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。**[プロジェクトの作成]** をクリックして**プロジェクト名**を入力し、**[作成]** をクリックします。
 
@@ -81,4 +81,4 @@
 
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

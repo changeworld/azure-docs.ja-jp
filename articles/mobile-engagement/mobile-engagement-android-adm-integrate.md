@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="02/29/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 
@@ -109,4 +109,4 @@ Engagement ポータルで OAuth Credentials (クライアント ID とクライ
 [統合 ADM]: https://developer.amazon.com/sdk/adm/integrating-app.html
 [この手順]: https://developer.amazon.com/sdk/adm/integrating-app.html#Asset
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0824_2016-->

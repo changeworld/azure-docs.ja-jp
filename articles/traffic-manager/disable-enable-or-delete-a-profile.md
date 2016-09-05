@@ -3,14 +3,17 @@
    description="この記事では、Traffic Manager プロファイルを操作する方法について説明します。"
    services="traffic-manager"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
-<tags  ms.service="traffic-manager" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="infrastructure-services"
-   
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"   
    ms.date="06/10/2016"
-
-   ms.author="joaoma"/>
+   ms.author="sewhee" />
 
 # プロファイルの無効化、有効化、または削除
 
@@ -35,7 +38,7 @@
 
 
 1. インターネット DNS サーバー上の DNS リソース レコードが、Traffic Manager プロファイルのドメイン名を指す CNAME リソース レコードを使用していないことを確認します。
-1. 削除するプロファイルを選択します。プロファイルを選択するには、[Traffic Manager] ページのプロファイル名の横の列をクリックして、 
+1. 削除するプロファイルを選択します。プロファイルを選択するには、[Traffic Manager] ページのプロファイル名の横の列をクリックして、
 1. プロファイルを強調表示します。プロファイルの名前または名前の横の矢印をクリックしないでください。クリックすると、プロファイルの設定ページへ移動します。
 1. プロファイルを選択した後に、ページ下部にある [削除] をクリックします。
 
@@ -51,4 +54,4 @@
 
 [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

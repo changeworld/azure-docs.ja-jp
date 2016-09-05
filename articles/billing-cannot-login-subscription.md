@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure サブスクリプションにログインして管理することができない | Microsoft Azure"
-	description="Azure サブスクリプションのログインに関するよくあるいくつかの問題のトラブルシューティング情報を掲載しています。"
+	description="Azure サブスクリプションのログインに関するいくつかの一般的な問題について、トラブルシューティング情報を掲載しています。"
 	services=""
 	documentationCenter=""
 	authors="genlin"
@@ -15,18 +15,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションにログインして管理することができない
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、[Azure サポートのサイト](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)で Azure サポート インシデントを送信できます。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
 
 この記事は、ログインの問題のよくあるいくつかの原因のトラブルシューティングに役立ちます。
 
 ## どのポータルにアクセスしようとしていますか?
 
-アカウント管理者は[アカウント センター](https://account.windowsazure.com/)だけにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)だけです。
+アカウント管理者は[アカウント センター](https://account.windowsazure.com/)のみにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)のみです。
 
 Azure 管理者ロールの詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
@@ -47,11 +47,13 @@ Microsoft アカウントとはお使いの電子メール アドレスとその
 
 | ログイン方法| Microsoft アカウントを共同管理者またはサービス管理者として追加できる |同じ組織内の組織アカウントを共同管理者またはサービス管理者として追加できる |異なる組織の組織アカウントを共同管理者またはサービス管理者として追加できる
 | ------------- | ------------- |---------------|---------------|
-|Microsoft アカウント |はい|なし|いいえ|
-|組織アカウント|はい|はい|いいえ|
+|Microsoft アカウント |はい|なし|なし|
+|組織アカウント|はい|はい|なし|
 
 ## インターネット ブラウザーに問題がある
 
 IE InPrivate ブラウズ モードを使用したキャッシュ/Cookie の削除や、他のブラウザーの使用を試してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

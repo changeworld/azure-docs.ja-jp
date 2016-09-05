@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="larryfr"/>
 
 # SSH による HDInsight での MapReduce と Hadoop の使用
@@ -31,7 +31,7 @@
 
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
-* SSH クライアントSSH クライアントを備えた Linux、Unix、Mac オペレーティング システムWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
+* SSH クライアント。SSH クライアントを備えた Linux、Unix、Mac オペレーティング システムWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
 ##<a id="ssh"></a>SSH を使用した接続
 
@@ -57,7 +57,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
 1. HDInsight クラスターに接続されたら、以下に従って **Hadoop** コマンドを使用して MapReduce ジョブを起動します。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount wasb:///example/data/gutenberg/davinci.txt wasb:///example/data/WordCountOutput
 
 	これは、**hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt**** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
 
@@ -108,4 +108,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

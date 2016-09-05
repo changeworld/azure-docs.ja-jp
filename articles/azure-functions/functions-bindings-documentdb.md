@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
-	ms.author="chrande"/>
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
 # Azure Functions における DocumentDB のバインド
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Azure DocumentDB のバインドを構成したりコーディングしたりする方法について説明します。
 
@@ -37,7 +39,7 @@
 - `databaseName`: ドキュメントを含むデータベース。
 - `collectionName`: ドキュメントを含むコレクション。
 - `id`: 取得するドキュメントの ID。このプロパティは、"{queueTrigger}" と同類のバインドをサポートします。ここでは、ドキュメント ID としてキュー メッセージの文字列値を使用します。
-- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] (統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;。
+- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] (統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<アカウントのエンドポイント>;AccountKey=<プライマリ アクセス キー>;。
 - `direction : *"in"* に設定する必要があります。
 
 *function.json* の例:
@@ -89,8 +91,8 @@ function.json ファイルは、次のプロパティを提供します。
 - `databaseName`: 新しいドキュメントが作成されるコレクションを含むデータベース。
 - `collectionName`: 新しいドキュメントが作成されるコレクション。
 - `createIfNotExists`: これは、存在しない場合にコレクションを作成するかどうかを示すブール値です。既定値は *false* です。これは、新しいコレクションが予約済みのスループットで作成されるためです。これにより、価格に影響が及びます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
-- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定された**アプリケーション設定**である必要があります。**[統合]** タブからアカウントを選択した場合、新しいアプリ設定が `yourAccount_DOCUMENTDB` という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`。 
-- `direction`: *"out"* に設定する必要があります。 
+- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定された**アプリケーション設定**である必要があります。**[統合]** タブからアカウントを選択した場合、新しいアプリ設定が `yourAccount_DOCUMENTDB` という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`。
+- `direction` : *"out"* に設定する必要があります。
  
 function.json の例:
 
@@ -189,4 +191,4 @@ function.json の例:
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

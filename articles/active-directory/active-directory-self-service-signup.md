@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="05/10/2016"
+	ms.date="08/23/2016"
 	ms.author="curtand"/>
 
 
 # Azure のセルフサービス サインアップについて
 
-このトピックでは、セルフサービス サインアップ プロセスおよび DNS ドメイン名を引き継ぐ方法について説明します。
+このトピックでは、セルフサービス サインアップ プロセスのほか、DNS ドメイン名を引き継ぐ方法について説明します。
 
 ## セルフサービス サインアップを使用する理由
 
@@ -54,7 +54,7 @@
 - 1 つのドメインにつき 1 つの Azure Active Directory ディレクトリが作成されます。
 - Azure AD ディレクトリにはグローバル管理者はいません。
 
-#### ユーザー
+#### Users
 
 - サインアップするユーザーごとに、Azure AD ディレクトリ内にユーザー オブジェクトが作成されます。
 - 各ユーザー オブジェクトは外部としてマークされます。
@@ -173,7 +173,7 @@ Azure AD のディレクトリで作業するには、DNS ドメインの所有�
 
 4. このコマンドから返される値 (チャレンジ) をコピーします。
 
-	例:
+	次に例を示します。
 
 	MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
 
@@ -221,7 +221,7 @@ Azure AD のディレクトリで作業するには、DNS ドメインの所有�
 
 ## 関連項目
 
--  [Azure PowerShell のインストールと構成の方法](../powershell-install-configure/)
+-  [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)
 
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 
@@ -232,4 +232,4 @@ Azure AD のディレクトリで作業するには、DNS ドメインの所有�
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -12,18 +12,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/20/2016"
+   ms.date="08/19/2016"
    ms.author="alkohli" />
 
 # StorSimple Virtual Array の概要
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple Virtual Array は、ハイパーバイザーで実行されるオンプレミス仮想デバイスと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションです。Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれます) は、エンタープライズ ストレージとデータ保護に関連する多くの問題を解消し、コストを削減する、経済性と管理性に優れた効率的なファイル サーバー/iSCSI サーバー ソリューションです。Virtual Array は、リモート オフィス/ブランチ オフィスのシナリオに特に適しています。
 
 この概要では Virtual Array について説明します。
 
-- StorSimple 8000 シリーズの概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 
+- StorSimple 8000 シリーズの概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。
 
 - StorSimple 5000/7000 シリーズ デバイスについては、「[StorSimple Online Help](http://onlinehelp.storsimple.com/)」をご覧ください。
 
@@ -45,7 +45,8 @@ Virtual Array の重要な機能を次の表にまとめます。
 | パフォーマンス | 基になるインフラストラクチャによって異なる |
 | データのモビリティ | 同じデバイスに復元することも、項目レベルの回復 (ファイル サーバー) を実行することも可能 |
 | ストレージ層 | ローカル ハイパーバイザー ストレージとクラウド |
-| 共有またはボリュームのサイズ |階層化: 最大 20 TB、ローカル固定: 最大 2 TB |
+| 共有サイズ |階層化: 最大 20 TB、ローカル固定: 最大 2 TB |
+| ボリューム サイズ |階層化: 最大 5 TB、ローカル固定: 最大 500 GB |
 | スナップショット | クラッシュ整合性 |
 | 項目レベルの回復 | 可能: ユーザーが共有から復元可能 |
 
@@ -87,15 +88,15 @@ Virtual Array では、次のデータ保護および障害復旧シナリオを
 
 - **ボリュームまたは共有の復元** - ボリュームまたは共有を回復する新しいワークフローとして復元を使用します。この手法を使用して、ボリュームまたは共有全体を回復します。
 - **項目レベルの回復** - 共有により、最近のバックアップへのアクセスを簡素化できます。クラウドで利用できる特別な .backup フォルダーから、個々のファイルを簡単に回復できます。この復元機能はユーザー主導型であり、管理者の介入は不要です。
-- **障害復旧** - フェールオーバー機能を使用して、すべてのボリュームまたは共有を新しい Virtual Array に回復します。新しい Virtual Array を作成して StorSimple Manager サービスに登録し、元の Virtual Array をフェールオーバーします。プロビジョニング済みのリソースは、新しい Virtual Array が引き継ぎます。 
+- **障害復旧** - フェールオーバー機能を使用して、すべてのボリュームまたは共有を新しい Virtual Array に回復します。新しい Virtual Array を作成して StorSimple Manager サービスに登録し、元の Virtual Array をフェールオーバーします。プロビジョニング済みのリソースは、新しい Virtual Array が引き継ぎます。
 
 ## Virtual Array のコンポーネント
 
 Virtual Array には、次のコンポーネントがあります。
 
-- [Virtual Array](#virtual-array) - 仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づくハイブリッド クラウド ストレージ デバイス。  
+- [Virtual Array](#virtual-array) - 仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づくハイブリッド クラウド ストレージ デバイス。
 - [StorSimple Manager サービス](#storsimple-manager-service) - さまざまな地理的場所からアクセスできる単一の Web インターフェイスから、1 つ以上の StorSimple デバイスを管理できる、Azure クラシック ポータルの拡張機能。StorSimple Manager サービスを使用して、サービスの作成と管理、デバイスやアラートの表示と管理、ボリューム、共有、および既存のスナップショットの管理を行うことができます。
-- [ローカル Web ユーザー インターフェイス](#local-web-user-interface) - デバイスの構成に使用する Web ベースの UI。この UI を使用して、ローカル ネットワークに接続し、デバイスを StorSimple Manager サービスに登録できます。 
+- [ローカル Web ユーザー インターフェイス](#local-web-user-interface) - デバイスの構成に使用する Web ベースの UI。この UI を使用して、ローカル ネットワークに接続し、デバイスを StorSimple Manager サービスに登録できます。
 - [コマンド ライン インターフェイス](#command-line-interface) - Virtual Array でサポート セッションを開始する際に使用できる Windows PowerShell インターフェイス。以降のセクションでは、これらのコンポーネントについてそれぞれ説明します。また、このソリューションでデータを整理し、ストレージを割り当て、ストレージ管理とデータ保護を容易にする方法について説明します。
 
 ### Virtual Array
@@ -107,9 +108,9 @@ Virtual Array は、ダウンロード可能な 1 つのモデルで使用でき
 Virtual Array には次の特長があります。
 
 - コスト効率に優れています。既存の仮想化インフラストラクチャを使用し、既存の Hyper-V または VMware ハイパーバイザーにデプロイできます。
-- Virtual Array はデータセンターにあり、iSCSI サーバーまたはファイル サーバーとして構成できます。 
+- Virtual Array はデータセンターにあり、iSCSI サーバーまたはファイル サーバーとして構成できます。
 - クラウドと統合されています。
-- バックアップはクラウドに保存されるので、障害復旧が容易になり、項目レベルの回復 (ILR) を簡素化できます。 
+- バックアップはクラウドに保存されるので、障害復旧が容易になり、項目レベルの回復 (ILR) を簡素化できます。
 - 物理デバイスと同様に、Virtual Array には更新プログラムを適用できます。
 
 >[AZURE.NOTE] Virtual Array を拡張することはできません。そのため、仮想デバイスの作成時に十分なストレージをプロビジョニングすることが重要です。
@@ -118,7 +119,7 @@ Virtual Array には次の特長があります。
 
 Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Manager サービス) があり、データ センターとクラウド ストレージを一元管理できます。StorSimple Manager サービスを使用して、次のタスクを実行できます。
 
-- 1 つのサービスから複数の StorSimple Virtual Array を管理する。 
+- 1 つのサービスから複数の StorSimple Virtual Array を管理する。
 - StorSimple デバイスのセキュリティ設定を構成および管理する (クラウドでの暗号化には、Microsoft Azure API を利用)。
 - ストレージ アカウントの資格情報とプロパティを構成する。
 - ボリュームまたは共有を構成および管理する。
@@ -144,9 +145,9 @@ Web ベースの UI の使用方法については、「[Web UI を使用した 
 
 Virtual Array と他のコンポーネントに加え、StorSimple ソリューションでは次のソフトウェア テクノロジを使用して、重要なデータへの迅速なアクセス、ストレージ使用量の削減、Virtual Array に保存されているデータの保護を実現します。
 
-- [自動ストレージ階層化](#automatic-storage-tiering) 
+- [自動ストレージ階層化](#automatic-storage-tiering)
 - [ローカル固定共有/ボリューム](#locally-pinned-shares-and-volumes)
-- [クラウドに階層化またはバックアップされたデータの重複除去と圧縮](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+- [クラウドに階層化またはバックアップされたデータの重複除去と圧縮](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud)
 - [スケジュールされたバックアップとオンデマンド バックアップ](#scheduled-and-on-demand-backups)
 
 ### 自動ストレージ階層化
@@ -184,4 +185,4 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 
 [Virtual Array ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)方法を確認します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

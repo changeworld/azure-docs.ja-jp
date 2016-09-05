@@ -67,7 +67,7 @@ connectionfactory.[jndi_name] = [ConnectionURL]
 
 この `[jndi\_name]` と `[ConnectionURL]` には次の意味があります。
 
-| 名前 | 意味 | | | | |
+| Name | 意味 | | | | |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|
 | `[jndi\_name]` | 接続ファクトリの論理名。この名前は、Java アプリケーションで JNDI `IntialContext.lookup()` メソッドを使用して解決されます。 | | | | |
 | `[ConnectionURL]` | AMQP ブローカーに必要な情報を JMS ライブラリに渡すための URL。 | | | | |
@@ -82,9 +82,9 @@ amqps://[username]:[password]@[namespace].servicebus.windows.net
 
 | 名前 | 意味 | | | | |
 |---------------|--------------------------------------------------------------------------------|---|---|---|---|
-| `[namespace]` | [Azure クラシック ポータル][]から取得した Service Bus 名前空間。 | | | | |
-| `[username]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者名。 | | | | |
-| `[password]` | [Azure クラシック ポータル][]から取得した Service Bus 発行者キーの URL エンコード形式。 | | | | |
+| `[namespace]` | [Azure ポータル][]から取得した Service Bus 名前空間。 | | | | |
+| `[username]` | [Azure ポータル][]から取得した Service Bus 発行者名。 | | | | |
+| `[password]` | [Azure ポータル][]から取得した Service Bus 発行者キーの URL エンコード形式。 | | | | |
 
 > [AZURE.NOTE] パスワードは手動で URL エンコードする必要があります。便利な URL エンコード ユーティリティは、[http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) で入手できます。
 
@@ -120,8 +120,8 @@ topic.[jndi_name] = [physical_name]
 以下の点に注意してください。
 
 - `[physical\name]` 値には、Service Bus のキューまたはトピックを指定できます。
-- Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、持続性の高いサブスクリプションが JMS アプリケーション コードで作成されるときに指定されます。
-- Service Bus トピック サブスクリプションを JMS キューとして扱うことも可能です。この方法には、いくつかの利点があります。1 つ目は、キューとトピック サブスクリプションに同じ受信側コードを使用できること、2 つ目は、すべてのアドレス情報 (トピック名とサブスクリプション名) をプロパティ ファイルで具体化できる点です。
+- Service Bus トピック サブスクリプションから受信した場合は、JNDI で指定された物理名がトピックの名前になります。サブスクリプション名は、JMS アプリケーション コードで永続的なサブスクリプションが作成されるときに指定されます。
+- Service Bus トピック サブスクリプションを JMS キューとして扱うことも可能です。この方法には利点がいくつかあります。1 つ目は、キューとトピック サブスクリプションに同じ受信側コードを使用できること、2 つ目は、すべてのアドレス情報 (トピック名とサブスクリプション名) をプロパティ ファイルで具体化できることです。
 - Service Bus トピック サブスクリプションを JMS キューとして扱うには、プロパティ ファイルのエントリを `queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]` 形式にする必要があります。|
 
 "topic1" という Service Bus トピックにマップされる "TOPIC" という論理的な JMS の送信先を定義するには、プロパティ ファイルのエントリを次のように定義します。
@@ -153,7 +153,7 @@ producer.send(message);
 
 ### JMS を使用してメッセージを受信する
 
-次のコードは、Service Bus トピック サブスクリプションからメッセージを受信する方法を示しています。このコードは、前のセクションの説明に従って、**servicebus.properties** 構成ファイルに `SBCONNECTIONFACTORY` と TOPIC が定義されていることを前提としています。また、サブスクリプション名が `subscription1` であることを前提としています。
+次のコードは、Service Bus トピック サブスクリプションからメッセージを受信する方法を示しています。`how`このコードは、前のセクションの説明に従って、**servicebus.properties** 構成ファイルに `SBCONNECTIONFACTORY` と TOPIC が定義されていることを前提としています。また、サブスクリプション名が `subscription1` であることも前提としています。
 
 ```
 Hashtable<String, String> env = new Hashtable<String, String>(); 
@@ -179,7 +179,7 @@ JMS 仕様には API メソッドの例外コントラクトが定義されて�
 -   **connection.setExceptionListener** を使用して、**ExceptionListener** を JMS 接続に登録します。これにより、クライアントは問題の通知を非同期に受け取ることができます。メッセージのみを使用する接続の場合、接続が失敗したことを知る他の方法がないため、この通知は特に重要です。基礎となる AMQP 接続、セッション、またはリンクに問題が発生した場合は、**ExceptionListener** が呼び出されます。この状況では、アプリケーション プログラムで **JMS Connection**、**Session**、**MessageProducer**、**MessageConsumer** オブジェクトを最初から再作成する必要があります。
 
 -   **MessageProducer** から Service Bus エンティティにメッセージが正常に送信されたかどうかを検証するには、アプリケーションの構成で **qpid.sync\_publish** システム プロパティが設定されていることを確認します。これを行うには、**-Dqpid.sync\_publish=true** Java VM オプションをアプリケーションの起動時にコマンド ラインで設定して、プログラムを起動します。このオプションを設定すると、メッセージが Service Bus で受け入れられたという確認を受け取るまで、送信呼び出しから戻らないようにライブラリが構成されます。送信処理中に問題が発生した場合は、**JMSException** が発生します。原因として、次の 2 つが考えられます。
-	1. 送信された特定のメッセージが Service Bus によって拒否されたことが問題の原因である場合は、**MessageRejectedException** 例外が発生します。このエラーは一時的なものである場合と、メッセージに原因となる問題がある場合があります。推奨される対処方法として、バックオフ ロジックを使用して処理を何度か再試行します。問題が解決しない場合は、エラーをローカルで記録してメッセージを破棄する必要があります。この場合、**JMS Connection**、**Session**、または **MessageProducer** オブジェクトを再作成する必要はありません。 
+	1. 送信された特定のメッセージが Service Bus によって拒否されたことが問題の原因である場合は、**MessageRejectedException** 例外が発生します。このエラーは一時的なものである場合と、メッセージに原因となる問題がある場合があります。推奨される対処方法として、バックオフ ロジックを使用して処理を何度か再試行します。問題が解決しない場合は、エラーをローカルで記録してメッセージを破棄する必要があります。この場合、**JMS Connection**、**Session**、または **MessageProducer** オブジェクトを再作成する必要はありません。
 	2. Service Bus が AMQP リンクを閉じたことが問題の原因である場合は、**InvalidDestinationException** 例外が発生します。これは一時的な問題が原因であるか、メッセージ エンティティが削除されていることが原因である可能性があります。いずれの場合も、**JMS Connection**、**Session**、**MessageProducer** オブジェクトを再作成する必要があります。エラー状態が一時的なものである場合、この処理は最終的に正常に完了します。エンティティが削除されている場合、永続的な失敗となります。
 
 ## .NET と JMS 間のメッセージング
@@ -282,7 +282,7 @@ message = new BrokeredMessage(list);
 message = new BrokeredMessage("this is a text string");
 ```
 
-### アプリケーションのプロパティ
+### Application properties
 
 ####JMS から Service Bus .NET API へ
 
@@ -362,25 +362,7 @@ while (propertyNames.hasMoreElements())
 
 | .NET プロパティの型 | JMS プロパティの型 | メモ |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | UnsignedByte | - |
-| sbyte | Byte | - |
-| char | Character | - |
-| short | Short | - |
-| ushort | UnsignedShort | - |
-| int | Integer | - |
-| uint | UnsignedInteger | - |
-| long | Long | - |
-| ulong | UnsignedLong | - |
-| float | Float | - |
-| double | Double | - |
-| decimal | BigDecimal | - |
-| bool | Boolean | - |
-| Guid | UUID | - |
-| string | String | - |
-| DateTime | Date | - |
-| DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTicks:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
-| TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
-| Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| byte | UnsignedByte | - | | sbyte | Byte | - | | char | Character | - | | short | Short | - | | ushort | UnsignedShort | - | | int | Integer | - | | uint | UnsignedInteger | - | | long | Long | - | | ulong | UnsignedLong | - | | float | Float | - | | double | Double | - | | decimal | BigDecimal | - | | bool | Boolean | - | | Guid | UUID | - | | string | String | - | | DateTime | Date | - | | DateTimeOffset | DescribedType | AMQP 型にマップされる DateTimeOffset.UtcTick:<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | | TimeSpan | DescribedType | AMQP 型にマップされる Timespan.Ticks:<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | | Uri | DescribedType | AMQP 型にマップされる Uri.AbsoluteUri:<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
 ### 標準ヘッダー
 
@@ -390,32 +372,13 @@ while (propertyNames.hasMoreElements())
 
 | JMS | Service Bus .NET | メモ |
 |------------------|--------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| JMSCorrelationID | Message.CorrelationID | - |
-| JMSDeliveryMode | 現在使用できません。 | Service Bus は、指定した内容にかかわらず、持続的なメッセージ (DeliveryMode.PERSISTENT など) のみをサポートします。 |
-| JMSDestination | Message.To | - |
-| JMSExpiration | Message.TimeToLive | 換算 |
-| JMSMessageID | Message.MessageID | 既定では、JMSMessageID は AMQP メッセージのバイナリ形式でエンコードされます。バイナリ message-id を受信すると、.NET クライアント ライブラリはバイトの Unicode 値に基づいて文字列表現に変換します。文字列メッセージ ID を使用するように JMS ライブラリを切り替えるには、"binary-messageid=false" 文字列を JNDI ConnectionURL のクエリ パラメーターに追加します。例: "amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false" |
-| JMSPriority | 現在使用できません。 | Service Bus ではメッセージの優先度はサポートされません。 |
-| JMSRedelivered | 現在使用できません。 | - |
-| JMSReplyTo | Message.ReplyTo | - |
-| JMSTimestamp | Message.EnqueuedTimeUtc | 換算 |
-| JMSType | Message.Properties["jms-type"] | - |
+| JMSCorrelationID | Message.CorrelationID | - | | JMSDeliveryMode | 現在使用できません。 | Service Bus は、指定した内容にかかわらず、持続的なメッセージ (DeliveryMode.PERSISTENT など) のみをサポートします。 | | JMSDestination | Message.To | - | | JMSExpiration | Message.TimeToLive | 換算 | | JMSMessageID | Message.MessageID | 既定では、JMSMessageID は AMQP メッセージのバイナリ形式でエンコードされます。バイナリ message-id を受信すると、.NET クライアント ライブラリはバイトの Unicode 値に基づいて文字列表現に変換します。文字列メッセージ ID を使用するように JMS ライブラリを切り替えるには、"binary-messageid=false" 文字列を JNDI ConnectionURL のクエリ パラメーターに追加します。例: "amqps://[username]:[password]@[namespace].servicebus.windows.net? binary-messageid=false" | | JMSPriority | 現在使用できません。 | Service Bus ではメッセージの優先度はサポートされません。 | | JMSRedelivered | 現在使用できません。 | - | | JMSReplyTo | Message.ReplyTo | - | | JMSTimestamp | Message.EnqueuedTimeUtc | 換算 | | JMSType | Message.Properties["jms-type"] | - |
 
 #### Service Bus .NET API から JMS へ
 
 | Service Bus .NET | JMS | メモ |
 |-------------------------|------------------|-------------------------|
-| ContentType | - | 現在使用できません。 |
-| CorrelationId | JMSCorrelationID | - |
-| EnqueuedTimeUtc | JMSTimestamp | 換算 |
-| Label | なし | 現在使用できません。 |
-| MessageId | JMSMessageID | - |
-| ReplyTo | JMSReplyTo | - |
-| ReplyToSessionId | なし | 現在使用できません。 |
-| ScheduledEnqueueTimeUtc | なし | 現在使用できません。 |
-| SessionId | なし | 現在使用できません。|
-| TimeToLive | JMSExpiration | 換算 |
-| To | JMSDestination | - |
+| ContentType | - | 現在使用できません。 | | CorrelationId | JMSCorrelationID | - | | EnqueuedTimeUtc | JMSTimestamp | 換算 | | Label | なし | 現在使用できません。 | | MessageId | JMSMessageID | - | | ReplyTo | JMSReplyTo | - | | ReplyToSessionId | なし | 現在使用できません。 | | ScheduledEnqueueTimeUtc | なし | 現在使用できません。 | | SessionId | なし | 現在使用できません。| | TimeToLive | JMSExpiration | 換算 | | To | JMSDestination | - |
 
 ## サポートされていない機能および制限
 
@@ -444,6 +407,6 @@ Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制�
 [BrokeredMessage]: https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/03/2016" 
+	ms.date="08/23/2016" 
 	ms.author="genemi"/>
 
 
@@ -32,15 +32,15 @@
 1. 表示させるデータでテーブルを作成する。
 
 2. 既存の拡張イベントのセッション (つまり **sqlserver.sql\_statement\_starting**) を作成する。
- - イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’**。
- - イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring\_buffer**) に送信するよう選択できる。
+	- イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’**。
+	- イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring\_buffer**) に送信するよう選択できる。
 
 3. イベント セッションを開始する。
 
 4. 単純な SQL UPDATE ステートメントをいくつか発行する。
 
 5. リング バッファーからイベント出力を取得する SQL SELECT を発行する。
- - **sys.dm\_xe\_database\_session\_targets** と他の動的管理ビュー (DMV) を結合する。
+	- **sys.dm\_xe\_database\_session\_targets** と他の動的管理ビュー (DMV) を結合する。
 
 6. イベント セッションを停止する。
 
@@ -59,16 +59,15 @@
  - 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成できる](sql-database-get-started.md)。
 
 
-- SQL Server Management Studio (ssms.exe)、2015 年 8 月のプレビューまたはそれ以降のバージョン。最新の ssms.exe をダウンロードすることができる。
- - [トピック内のリンク。](http://msdn.microsoft.com/library/mt238290.aspx)
+- SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。最新の ssms.exe をダウンロードすることができる。
+ - 「[SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
  - [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
- - ssms.exe を定期的に (できれば毎月) 更新することをお勧めします。
 
 
 ## サンプル コード
 
 
-わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。異なる点は、手順 5. の FROM 句に含まれるいくつかの動的管理ビュー (DMV) の名前の中に「\_database」というノード名があることです。次に例を示します。
+わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「\_database」というノード名があることです。次に例を示します。
 
 - sys.dm\_xe**\_database**\_session\_targets
 - sys.dm\_xe\_session\_targets
@@ -242,7 +241,7 @@ GO
 結果ウィンドウで、列ヘッダー **target\_data\_XML** の下のセルをクリックしました。これにより、ssms.exe にもう 1 つのファイル タブが作成され、結果のセルの内容が XML として表示されました。
 
 
-出力は、次のブロックに示されています。ここに含まれるのは、2 つの**<event>**要素です。
+出力は、次のブロックに示されています。ここに含まれるのは、2 つの **<event>** 要素です。
 
 
 &nbsp;
@@ -373,7 +372,7 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - [Extended event considerations in SQL Database (SQL Database での拡張イベントに関する考慮事項)](sql-database-xevent-db-diff-from-svr.md)。この記事では、Microsoft SQL Server と Azure SQL Database の間で異なる拡張イベントの一部の機能を比較します。
 
 
-拡張イベントのその他のコード サンプルのトピックは、次のリンクから参照できます。ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。これにより、変更がサンプル実行に十分であるかを判断できます。
+拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。これにより、変更がサンプル実行に十分であるかを判断できます。
 
 
 - Azure SQL Database のコード サンプル: [Event File target code for extended events in SQL Database (SQL Database での拡張イベントのイベント ファイル ターゲット コード)](sql-database-xevent-code-event-file.md)
@@ -386,4 +385,4 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

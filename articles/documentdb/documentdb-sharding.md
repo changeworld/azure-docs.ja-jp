@@ -32,7 +32,7 @@ Azure DocumentDB は、[コレクションの自動パーティション分割](
 
 [Azure DocumentDB SDK のバージョン 1.5.x](documentdb-sdk-dotnet.md) 以降では、ドキュメントの操作をデータベースに対して直接実行できます。内部では、ユーザーがデータベースに指定した PartitionResolver を使用して、[DocumentClient](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.aspx) が適切なコレクションに要求をルーティングします。
 
->[AZURE.NOTE] [Server-side partitioning](documentdb-partition-data.md) REST API 2015-12-16 および SDK 1.6.0 以上で導入された では、単純なユース ケースでのクライアント側パーティション リゾルバーのアプローチは廃止されています。ただし、クライアント側のパーティション分割の柔軟性が向上しており、パーティション キー全体でのパフォーマンスの分離の制御、複数のパーティションから結果を読み取る際の並列処理次数の制御、ハッシュに対する範囲/空間パーティション分割アプローチの使用が可能になっています。
+>[AZURE.NOTE] [Server-side partitioning]REST API 2015-12-16 および SDK 1.6.0 以上で導入された (documentdb-partition-data.md) では、単純なユース ケースでのクライアント側パーティション リゾルバーのアプローチは廃止されています。ただし、クライアント側のパーティション分割の柔軟性が向上しており、パーティション キー全体でのパフォーマンスの分離の制御、複数のパーティションから結果を読み取る際の並列処理次数の制御、ハッシュに対する範囲/空間パーティション分割アプローチの使用が可能になっています。
 
 たとえば、.NET では、各 PartitionResolver クラスは、[GetPartitionKey](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.getpartitionkey.aspx)、[ResolveForCreate](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforcreate.aspx)、[ResolveForRead](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.resolveforread.aspx) の 3 つのメソッドを持つ [IPartitionResolver](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.ipartitionresolver.aspx) インターフェイスの具体的な実装です。LINQ クエリと ReadFeed 反復子では、ResolveForRead メソッドを内部的に使用して、要求のパーティション キーと一致するすべてのコレクションを反復処理します。同様に、作成操作では、ResolveForCreate メソッドを使用して、適切なパーティションに作成をルーティングします。置換、削除、および読み取りでは、使用するドキュメント内に当該コレクションへの参照が既に含まれているため、必要な変更はありません。
 
@@ -164,4 +164,4 @@ foreach (UserProfile activeUser in query)
 * [パフォーマンスに関するヒントについての DocumentDB ブログ](https://azure.microsoft.com/blog/2015/01/20/performance-tips-for-azure-documentdb-part-1-2/)
  
 
-<!----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
    services="virtual-machines,virtual-network,storage"
    documentationCenter="saponazure"
    authors="hermanndms"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
@@ -166,4 +166,4 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 仮想化環境では、Linux 上の Oracle にはサポートの制約があります。これは Azure 固有のトピックではありませんが、理解しておくことが重要です。Azure のようなパブリック クラウドでは、SAP は SUSE または Red Hat 上の Oracle をサポートしません。このトピックについては、直接 Oracle にお問い合わせください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

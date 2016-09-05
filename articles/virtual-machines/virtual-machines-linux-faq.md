@@ -37,7 +37,7 @@ Azure のストレージ アカウントでは、オペレーティング シス
 
 ## 仮想マシンへのアクセス方法を教えてください。
 
-Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立する必要があります。[Windows から](virtual-machines-linux-ssh-from-windows.md)接続する手順、または [Linux および Mac から](virtual-machines-linux-ssh-from-linux.md)接続する手順を参照します。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
+Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立する必要があります。[Windows から](virtual-machines-linux-ssh-from-windows.md)接続する手順、または [Linux および Mac から](virtual-machines-linux-mac-create-ssh-keys.md)接続する手順を参照します。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
 
 問題がある場合は、[Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)に関する記事を参照してください。
@@ -58,4 +58,4 @@ Secure Shell (SSH) を使用して、仮想マシンにログオンするため�
 
 いいえ。NIC を追加できるのは VM の作成時のみです。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

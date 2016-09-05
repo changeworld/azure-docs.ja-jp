@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
@@ -24,9 +24,9 @@
 
 ## <a name="register-microsoft-account"> </a>Microsoft アカウントにアプリを登録する
 
-1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Microsoft アカウントでアプリを構成するのに使用します。
+1. [Azure ポータル]にログオンし、アプリケーションに移動します。**URL** をコピーします。この URL は、後でアプリに Microsoft アカウント アプリを構成するために使用します。
 
-2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. Microsoft アカウント デベロッパー センターの [[マイ アプリケーション]] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
 
 3. **[アプリの追加]** をクリックし、アプリケーション名を入力して、**[アプリケーションの作成]** をクリックします。
 
@@ -73,7 +73,7 @@
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[[マイ アプリケーション]]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

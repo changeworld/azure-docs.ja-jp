@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="クラシック デプロイ モデルでのクラウド サービスの内部ロード バランサーの作成 | Microsoft Azure"
    description="クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # クラウド サービスの内部ロード バランサー (クラシック) の作成の開始
 
@@ -34,7 +34,7 @@
 
 >[AZURE.IMPORTANT] 以下の手順の前提条件は、クラウド デプロイのために仮想ネットワークを作成しておくことです。内部負荷分散を作成するには仮想ネットワーク名とサブネット名が必要です。
 
-### 手順 1.
+### 手順 1
 
 Visual Studio でクラウド デプロイのサービス構成ファイル (.cscfg) を開き、ネットワーク構成の最後の "`</Role>`" 項目の下に、内部負荷分散を作成するための次のセクションを追加します。
 
@@ -91,4 +91,4 @@ Visual Studio でクラウド デプロイのサービス構成ファイル (.cs
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

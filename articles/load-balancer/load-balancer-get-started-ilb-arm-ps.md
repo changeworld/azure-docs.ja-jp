@@ -3,7 +3,7 @@
    description="リソース マネージャーで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,13 +15,13 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # PowerShell を使用した内部ロード バランサーの作成の開始
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイ モデル](load-balancer-get-started-ilb-classic-ps.md)
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -68,7 +68,7 @@ PowerShell 用 Azure モジュールが最新の製品版であり、Azure サ�
 
 ### 手順 2.
 
-アカウントのサブスクリプションを確認する
+アカウントのサブスクリプションを確認します。
 
 		Get-AzureRmSubscription 
 
@@ -114,7 +114,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 受信ロード バランサー ネットワーク トラフィック用のフロント エンド IP プールと、負荷が分散されたトラフィックを受け取るためのバックエンド アドレス プールを設定します。
 
-### 手順 1. 
+### 手順 1 
 
 受信ネットワーク トラフィックのエンドポイントとなる、サブネット 10.0.2.0/24 のプライベート IP アドレス 10.0.2.5 を使用して、フロントエンド IP プールを作成します。
 
@@ -131,7 +131,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 フロント エンド IP プールとバックエンド アドレス プールを作成した後、ロード バランサーのリソースに属するルールを作成する必要があります。
 
-### 手順 1.
+### 手順 1
 
 	$inboundNATRule1= New-AzureRmLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
 
@@ -163,7 +163,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 内部ロード バランサーの作成後、負荷分散された受信ネットワーク トラフィック、NAT 規則、およびプローブを受信するネットワーク インターフェイスを定義する必要があります。この場合、ネットワーク インターフェイスは個別に構成され、後で仮想マシンに割り当てることができます。
 
 
-### 手順 1. 
+### 手順 1 
 
 
 リソースの仮想ネットワークとサブネットを取得し、ネットワーク インターフェイスを作成します。
@@ -245,7 +245,7 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 
 既に仮想マシンを作成済みの場合は、次の手順でネットワーク インターフェイスを追加することができます。
 
-#### 手順 1. 
+#### 手順 1 
 
 変数にロード バランサーのリソースを読み込みます (まだ実行していない場合)。変数名は $lb で、上記で作成したロード バランサーのリソースと同じ名前を使用します。
 
@@ -280,7 +280,7 @@ LB-Nic2-BE という名前の 2 番目のネットワーク インターフェ�
 ## 既存のロード バランサーの更新
 
 
-### 手順 1.
+### 手順 1
 
 上の例のロード バランサーを使用し、ロード バランサーのオブジェクトを変数 $slb using Get-AzureRmLoadBalancer に割り当てます。
 
@@ -316,4 +316,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

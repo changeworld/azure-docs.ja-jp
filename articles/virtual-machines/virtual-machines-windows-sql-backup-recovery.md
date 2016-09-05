@@ -4,8 +4,8 @@
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
-	manager="jeffreyg"
-	editor="monicar"
+	manager="jhubbard"
+	editor=""
 	tags="azure-resource-management" />
 
 <tags
@@ -14,12 +14,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/06/2016"
+	ms.date="08/19/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines おける SQL Server のバックアップと復元
 
-## 概要
+## Overview
 
 SQL Server データベースのデータのバックアップは、アプリケーション エラーやユーザー エラーによるデータ損失から保護する戦略の重要な要素です。これは、Azure Virtual Machines (VM) で実行されている SQL Server にも同様に当てはまります。
 
@@ -27,7 +27,7 @@ SQL Server データベースのデータのバックアップは、アプリケ
 
 Azure VM で実行されている SQL Server では、バックアップ ファイルの保存先として接続されたディスクを使用するネイティブなバックアップおよび復元手法を使用できます。ただし、[仮想マシンのサイズ](virtual-machines-linux-sizes.md)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。また、ディスク管理のオーバーヘッドも考慮する必要があります。
 
-SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「[Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)」を参照してください。
+SQL Server 2014 以降では、Microsoft Azure BLOB ストレージへのバックアップと復元が可能です。SQL Server 2016 には、このオプションの拡張機能も用意されています。また、データベース ファイルが Microsoft Azure BLOB ストレージに保存されている場合、SQL Server 2016 では、Azure のスナップショットを使用して、ほぼ瞬時にバックアップを作成し、迅速に復元できます。この記事では、これらのオプションの概要を説明します。追加情報については、「[Windows Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)」を参照してください。
 
 >[AZURE.NOTE] 大規模なデータベースのバックアップのオプションについては、「[Multi-Terabyte SQL Server Database Backup Strategies for Azure Virtual Machines (Azure Virtual Machines の数 TB の SQL Server データベースのバックアップ戦略)](http://blogs.msdn.com/b/igorpag/archive/2015/07/28/multi-terabyte-sql-server-database-backup-strategies-for-azure-virtual-machines.aspx)」をご覧ください。
 
@@ -43,9 +43,9 @@ SQL Server インスタンスが Azure 仮想マシンで実行されている�
 
 - バックアップ ファイルを直接 Azure に保存できます。詳細については、各種バージョンの SQL Server に関するガイダンスを示す以降のセクションをご覧ください。
 
-## SQL Server 2016 Release Candidate
+## SQL Server 2016
 
-Microsoft SQL Server 2016 Release Candidate (RC3) では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
+Microsoft SQL Server 2016 では、SQL Server 2014 の [Azure BLOB を使用したバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)機能をサポートしています。ただし、次の拡張機能も用意されています。
 
 | 2016 の拡張機能 | 詳細 |
 |---------------------|-------------------------------|
@@ -63,7 +63,7 @@ SQL Server 2014 には、次の拡張機能が用意されています。
 
  - SQL Server Management Studio で、*SQL Server Backup to URL* がサポートされるようになりました。SQL Server Management Studio で Backup タスクまたは復元タスクを使用するときや、メンテナンス プラン ウィザードを使用するときに、Azure にバックアップするオプションを利用できるようになりました。詳細については、「[SQL Server Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)」をご覧ください。
  - *Azure への SQL Server マネージ バックアップ*は、バックアップ管理の自動化を可能にする新機能です。この機能は、Azure マシンで実行されている SQL Server 2014 インスタンスのバックアップ管理を自動化する際に特に役立ちます。詳細については、「[SQL Server Managed Backup to Microsoft Azure (Microsoft Azure への SQL Server マネージ バックアップ)](https://msdn.microsoft.com/library/dn449496%28v=sql.120%29.aspx)」をご覧ください。
- - *自動アックアップ*は、Azure の SQL Server VM の既存のデータベースと新しいデータベースのすべてを対象とした *Azure への SQL Server マネージ バックアップ*を自動的に有効にする別の自動化機能です。詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
+ - *自動アックアップ*は、Azure の SQL Server VM の既存のデータベースと新しいデータベースのすべてを対象とした *Azure への SQL Server マネージ バックアップ*を自動的に有効にする別の自動化機能です。詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)」をご覧ください。
  - Azure に SQL Server 2014 をバックアップする際のすべてのオプションの概要については、「[SQL Server Backup and Restore with Microsoft Azure Blob Storage Service (Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元)](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)」をご覧ください。
 
 1. **暗号化**: SQL Server 2014 では、バックアップの作成時におけるデータの暗号化をサポートしています。複数の暗号化アルゴリズムと、証明書または非対称キーの使用をサポートしています。詳細については、「[バックアップの暗号化](https://msdn.microsoft.com/library/dn449489%28v=sql.120%29.aspx)」をご覧ください。
@@ -92,4 +92,4 @@ Azure VM に SQL Server をデプロイすることを計画している場合�
 
 [Azure Virtual Machines で SQL Server を実行するための他のリソース](virtual-machines-windows-sql-server-iaas-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

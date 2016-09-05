@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure リソース マネージャーによる Load Balancer のサポート - プレビュー | Microsoft Azure"
+   pageTitle="Azure リソース マネージャーによる Load Balancer のサポート - プレビュー | Microsoft Azure "
    description="Azure リソース マネージャー (ARM) での Load Balancer に対する PowerShell の使用はプレビュー段階です。ロード バランサーにテンプレートを使用します。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,10 +13,10 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
-# Azure リソース マネージャーによる Load Balancer のサポート 
+# Azure リソース マネージャーによる Load Balancer のサポート
 
 Azure リソース マネージャー (ARM) は、Azure 上のサービス向けの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して Azure Load Balancer を管理できるようになりました。
 
@@ -40,13 +40,14 @@ ARM を使用する場合、Azure Load Balancer には次の子リソースが�
 
 
 ## クイック スタート テンプレート
+
 Azure リソース マネージャーでは、宣言型のテンプレートを使用してアプリケーションをプロビジョニングすることができます。1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用して繰り返しアプリケーションをデプロイします。
 
 テンプレートには、Virtual Machines、Virtual Network、可用性セット、ネットワーク インターフェイス (NIC)、ストレージ アカウント、Load Balancer、ネットワーク セキュリティ グループ、パブリック IP が含まれます。テンプレートによって、チェックインして共同作業できる簡単なファイルを使用して、複雑なアプリケーションに必要なすべてのものを作成できます。
 
 [テンプレートの詳細](http://go.microsoft.com/fwlink/?LinkId=544798)
 
-[ネットワーク リソースの詳細](../virtual-network/resource-groups-networking)
+[ネットワーク リソースの詳細](../virtual-network/resource-groups-networking.md)
 
 Azure ロード バランサーを使用したテンプレートは、[GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にあります。ここでは、コミュニティで作成された一連のテンプレートがホストされています。
 
@@ -76,4 +77,4 @@ Azure ロード バランサーを使用したテンプレートは、[GitHub �
 
 アプリケーションでロード バランサーの背後にあるサーバーの接続を維持する必要がある場合は、[ロード バランサーの TCP アイドル タイムアウトの設定](load-balancer-tcp-idle-timeout.md)に関する詳細を確認してください。Azure Load Balancer 使用時にアイドル接続動作について理解するのに役立ちます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

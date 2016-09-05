@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="08/19/2016"
 	ms.author="wesmc"/>
 
 # Azure Functions における通知ハブの出力バインド
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Azure Notification Hub のバインドを構成したりコーディングしたりする方法について説明します。
 
@@ -32,10 +34,10 @@ function.json ファイルは、次のプロパティを提供します。
 
 - `name`: 通知ハブ メッセージの関数コードで使用される変数名。
 - `type`: *"notificationHub"* に設定する必要があります。
-- `tagExpression`: タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳細については、「[Routing and tag expressions (ルーティングとタグ式)](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。
+- `tagExpression`: タグ式。これにより、タグ式に一致する通知を受信するように登録した一連のデバイスに通知を配信するように指定できます。詳細については、「[ルーティングとタグ式](../notification-hubs/notification-hubs-tags-segment-push-message.md)」を参照してください。
 - `hubName`: Azure ポータル内の通知ハブ リソースの名前。
-- `connection`: この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**接続文字列である必要があります。
-- `direction`: *"out"* に設定する必要があります。 
+- `connection`: この接続文字列は、使用している通知ハブの *DefaultFullSharedAccessSignature* 値に設定された**アプリケーション設定**の接続文字列である必要があります。
+- `direction` : *"out"* に設定する必要があります。
  
 function.json の例:
 
@@ -57,18 +59,18 @@ function.json の例:
 
 Notification Hub 出力バインドを使用するには、ハブの接続文字列を設定する必要があります。このためには、*[統合]* タブで、単に通知ハブを選択するか、新しいハブを作成します。
 
-*DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。*DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレード内の **[キー]** ボタンからアクセスできます。ハブの接続文字列を手動で追加するには、次の手順を実行します。
+*DefaultFullSharedAccessSignature* の接続文字列を通知ハブに追加して、既存のハブの接続文字列を手動で追加することもできます。この接続文字列により、通知メッセージを送信するための関数アクセス権限が付与されます。*DefaultFullSharedAccessSignature* 接続文字列の値には、Azure ポータルの通知ハブ リソースのメイン ブレードにある **[キー]** ボタンからアクセスできます。ハブの接続文字列を手動で追加するには、次の手順を実行します。
 
-1. Azure ポータルの **[関数アプリ]** ブレードで、**[関数アプリの設定]、[App Service の設定に移動]** の順にクリックします。
+1. Azure ポータルの **[Function App]** ブレードで、**[Function App Settings (関数アプリの設定)]、[Go to App Service settings (App Service の設定に移動)]** の順にクリックします。
 
 2. **[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
 
-3. **[接続文字列]** セクションまで下にスクロールして、通知ハブの *DefaultFullSharedAccessSignature* 値の名前付きエントリを追加します。種類を **[カスタム]** に変更します。
+3. **[接続文字列]** セクションまでスクロールして、通知ハブの *DefaultFullSharedAccessSignature* 値の名前付きエントリを追加します。種類を **[カスタム]** に変更します。
 4. 出力バインドの接続文字列名を参照します。上の例で使用した **MyHubConnectionString** と同様です。
 
 ## Azure Notification Hub のコード例 (Node.js タイマー トリガー) 
 
-この例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 	module.exports = function (context, myTimer) {
 	    var timeStamp = new Date().toISOString();
@@ -87,7 +89,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 ## Azure Notification Hub のコード例 (C# キュー トリガー)
 
-この例では、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 
 	using System;
@@ -107,7 +109,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	    return templateProperties;
 	}
 
-この例では、有効な JSON 文字列を使用して `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+次の例では、有効な JSON 文字列を使用して、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
 
 	using System;
 	 
@@ -119,7 +121,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 
 ## 種類 Notification を使用した Azure Notification Hub キュー トリガーの C# コード例
 
-この例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)で定義された種類 `Notification` の使用方法を示します。この種類、およびライブラリを使用するには、Function App の *project.json* ファイルをアップロードする必要があります。project.json ファイルは、次のような JSON テキスト ファイルです。
+次の例では、[Microsoft Azure Notification Hubs ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)で定義された種類 `Notification` の使用方法を示します。この種類、およびライブラリを使用するには、Function App の *project.json* ファイルをアップロードする必要があります。project.json ファイルは、次のような JSON テキスト ファイルです。
 
 	{
 	  "frameworks": {
@@ -131,7 +133,7 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	  }
 	}
 
-project.json ファイルのアップロードの詳細については、「[project.json ファイルのアップロード](functions-reference.md#fileupdate)」を参照してください。
+project.json ファイルのアップロードの詳細については、[project.json ファイルのアップロードに関するページ](functions-reference.md#fileupdate)を参照してください。
 
 コード例:
 
@@ -155,4 +157,4 @@ project.json ファイルのアップロードの詳細については、「[pro
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

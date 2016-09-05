@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="08/22/2016"
 	ms.author="chrande"/>
 
 # Azure Functions における HTTP と Webhook のバインド
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、HTTP トリガー、Webhook トリガー、バインディングの構成とコーディングを Azure Functions で行う方法について説明します。
 
@@ -26,21 +28,21 @@
 
 ## HTTP と Webhook のバインドに使用する function.json
 
-*function.json* ファイルは、要求と応答の両方に関連するプロパティを提供します。
+*function.json* ファイルでは、要求と応答の両方に関連するプロパティを指定します。
 
 HTTP 要求のプロパティ:
 
 - `name`: オブジェクトの関数コードで使用される変数名 (または Node.js 関数の要求本文)。
 - `type`: *httpTrigger* に設定する必要があります。
-- `direction`: *in* に設定する必要があります。 
-- `webHookType`: WebHook トリガーの場合、有効な値は *github*、*slack*、*genericJson* です。WebHook ではない HTTP トリガーの場合、このプロパティを空の文字列に設定します。WebHook の詳細については、以降の「[WebHook トリガー](#webhook-triggers)」を参照してください。
+- `direction`: *in* に設定する必要があります。
+- `webHookType`: WebHook トリガーの場合、有効な値は *github*、*slack*、*genericJson* です。WebHook ではない HTTP トリガーの場合、このプロパティを空の文字列に設定します。WebHook の詳細については、以下の「[WebHook トリガー](#webhook-triggers)」を参照してください。
 - `authLevel`: WebHook トリガーには適用されません。API キーを要求するには "function" に、API の主な要件を破棄するには "anonymous" に、マスター API キーを要求するには "admin" に設定します。詳しくは、以下の「[API キー](#apikeys)」を参照してください。
 
 HTTP 応答のプロパティ:
 
 - `name`: response オブジェクトの関数コードで使用される変数名。
 - `type`: *http* に設定する必要があります。
-- `direction`: *out* に設定する必要があります。 
+- `direction`: *out* に設定する必要があります。
  
 *function.json* の例:
 
@@ -86,7 +88,7 @@ GitHub WebHook を設定する方法の詳細については、[GitHub Developer
 
 既定では、API キーを HTTP 要求に含めて、HTTP または WebHook 機能をトリガーします。キーは、`code` という名前のクエリ文字列の変数に含めることも、`x-functions-key` HTTP ヘッダーに含めることもできます。WebHook 以外の関数では、*function.json* ファイルで `authLevel` プロパティを "anonymous" に設定することで、API キーが不要であることを示せます。
 
-API キーは Function App のファイル システムの *D:\\home\\data\\Functions\\secrets* フォルダーにあります。マスター キーと関数キーは、この例で示されているように *host.json* ファイルで設定します。
+API キーは関数アプリのファイル システムの *D:\\home\\data\\Functions\\secrets* フォルダーにあります。マスター キーと関数キーは、この例で示されているように *host.json* ファイルで設定します。
 
 ```json
 {
@@ -201,4 +203,4 @@ module.exports = function (context, data) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

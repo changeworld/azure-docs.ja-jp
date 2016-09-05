@@ -17,7 +17,7 @@
 	ms.author="sstein"/>
 
 
-# SQL Server Management Studio を使用した Azure SQL Database の管理 
+# SQL Server Management Studio を使用した Azure SQL データベースの管理 
 
 
 > [AZURE.SELECTOR]
@@ -25,19 +25,21 @@
 - [SSMS](sql-database-manage-azure-ssms.md)
 - [PowerShell](sql-database-command-line-tools.md)
 
-SQL Server Management Studio (SSMS) を使用して Azure SQL Database の論理サーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database 論理サーバーとデータベースが既にある必要があります。接続してから単純な SELECT クエリを実行する方法については、[最初の Azure SQL Database の作成](sql-database-get-started.md)に関する記事と [SSMS を使用して接続しクエリを実行する](sql-database-connect-query-ssms.md)方法に関する記事をご覧ください。
+SQL Server Management Studio (SSMS) を使用して Azure SQL Database のサーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database にサーバーとデータベースを作成しておく必要があります。詳細については、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」と「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 
 Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。
 
-> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio (SSMS) を使用して、Microsoft Azure と SQL Database の更新プログラムの同期を維持する必要があります。SQL Database で前のバージョンの SSMS が正常に動作しない場合は、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
+> [AZURE.IMPORTANT] SSMS は Azure と SQL Database への最新の更新プログラムと共に動作するように継続して改善されているため、常に SSMS の最新バージョンを使用してください。最新バージョンの取得については、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
+
+
 
 ## Azure SQL データベースの作成と管理
 
-**master** データベースに接続している間に、サーバーに新しいデータベースを作成したり、既存のデータベースを変更または削除したりできます。以下の手順では、Management Studio を使用して一般的なデータベース管理タスクを実行する方法について説明します。これらのタスクを実行するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続している必要があります。
+**master** データベースに接続している間に、サーバーにデータベースを作成したり、既存のデータベースを変更または削除したりできます。以下の手順では、Management Studio を使用して一般的なデータベース管理タスクを実行する方法について説明します。これらのタスクを実行するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続している必要があります。
 
 Management Studio でクエリ ウィンドウを開くには、[データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開します。**[master]** を右クリックし、**[新しいクエリ]** をクリックします。
 
--   新しいデータベースを作成するには、**CREATE DATABASE** ステートメントを使用します。詳細については、「[CREATE DATABASE (Azure SQL データベース)](https://msdn.microsoft.com/library/dn268335.aspx)」を参照してください。次のステートメントは、**myTestDB** という名前の新しいデータベースを作成し、既定の最大サイズが 250 GB の Standard S0 エディションのデータベースとして指定します。
+-   データベースを作成するには、**CREATE DATABASE** ステートメントを使用します。詳細については、「[CREATE DATABASE (Azure SQL データベース)](https://msdn.microsoft.com/library/dn268335.aspx)」を参照してください。次のステートメントは、**myTestDB** という名前のデータベースを作成し、既定の最大サイズが 250 GB の Standard S0 エディションのデータベースとして指定します。
 
         CREATE DATABASE myTestDB
         (EDITION='Standard',
@@ -51,7 +53,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
         MODIFY
         (SERVICE_OBJECTIVE='S1');
 
--   既存のデータベースを削除するには、**DROP DATABASE** ステートメントを使用します。詳細については、「[DROP DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms178613.aspx)」をご覧ください。次のステートメントは、**myTestDB** データベースを削除します。ただし、次の手順でログインを作成する際に使用するので、ここでは削除しないでください。
+-   既存のデータベースを削除するには、**DROP DATABASE** ステートメントを使用します。詳細については、「[DROP DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms178613.aspx)」をご覧ください。次のステートメントは、**myTestDB** データベースを削除します。ただし、次の手順でログインを作成するために使用するので、ここでは削除しないでください。
 
         DROP DATABASE myTestBase;
 
@@ -61,18 +63,18 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
 -   SQL Database では、**USE** ステートメントを使用してデータベースを切り替えることはできません。代わりに、ターゲット データベースに直接接続する必要があります。
 
->[AZURE.NOTE] データベースを作成または変更する Transact-SQL ステートメントの多くは、それ自体のバッチ内で実行する必要があり、他の Transact-SQL ステートメントと共にグループ化することはできません。詳細については、上記のリンクでステートメント固有の情報を参照してください。
+>[AZURE.NOTE] データベースを作成または変更する Transact-SQL ステートメントの多くは、それ自体のバッチ内で実行する必要があり、他の Transact-SQL ステートメントと共にグループ化することはできません。詳細については、ステートメント固有の情報を参照してください。
 
 ## ログインを作成と管理する
 
-**master** データベースでは、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが追跡されます。ログインを管理するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続します。**CREATE LOGIN**、**ALTER LOGIN**、または **DROP LOGIN** ステートメントを使用すると、サーバー全体でログインを管理する master データベースに対してクエリを実行できます。詳細については、「[Microsoft Azure SQL データベースにおけるデータベースとログインの管理](http://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
+**master** データベースには、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが含まれます。ログインを管理するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続します。**CREATE LOGIN**、**ALTER LOGIN**、または **DROP LOGIN** ステートメントを使用すると、サーバー全体でログインを管理する master データベースに対してクエリを実行できます。詳細については、「[Microsoft Azure SQL データベースにおけるデータベースとログインの管理](http://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
 
--   新しいサーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを使用します。詳細については、「[CREATE LOGIN (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。次のステートメントは、**login1** という新しいログインを作成します。**password1** を適切なパスワードに置き換えてください。
+-   サーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを使用します。詳細については、「[CREATE LOGIN (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。次のステートメントは、**login1** と呼ばれるログインを作成します。**password1** を適切なパスワードに置き換えてください。
 
         CREATE LOGIN login1 WITH password='password1';
 
--   データベース レベルのアクセス許可を付与するには、**CREATE USER** ステートメントを使用します。ログインは必ず **master** データベースに作成する必要がありますが、別のデータベースに接続するためのログインに対しては、そのデータベースで **CREATE USER** ステートメントを使用してデータベース レベルのアクセス許可を付与する必要があります。詳細については、「[CREATE USER (Azure SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
+-   データベース レベルのアクセス許可を付与するには、**CREATE USER** ステートメントを使用します。すべてのログインは **master** データベースに作成する必要があります。別のデータベースに接続するためのログインに対しては、そのデータベースで **CREATE USER** ステートメントを使用してデータベース レベルのアクセス許可を付与する必要があります。詳細については、「[CREATE USER (Azure SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
 
 -   login1 に **myTestDB** というデータベースに対するアクセス許可を付与するには、次の手順に従います。
 
@@ -82,7 +84,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
  2. **myTestDB** データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する** login1User** という名前のデータベース ユーザーを作成します。
+    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する ** login1User** という名前のデータベース ユーザーを作成します。
 
             CREATE USER login1User FROM LOGIN login1;
 
@@ -90,9 +92,7 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
 
--   ログインのパスワードなど、既存のログインを必要に応じて変更するには、**ALTER LOGIN** ステートメントを使用します。詳細については、「[ALTER LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189828.aspx)」をご覧ください。**ALTER LOGIN** ステートメントは、**master** データベースに対して実行する必要があります。そのデータベースに接続されているクエリ ウィンドウに切り替えてください。
-
-    次のステートメントは、ログイン **login1** を変更してパスワードをリセットします。**newPassword** を適切なパスワードに、**oldPassword** をログインの現在のパスワードに置き換えます。
+-   ログインのパスワードなど、既存のログインを必要に応じて変更するには、**ALTER LOGIN** ステートメントを使用します。詳細については、「[ALTER LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189828.aspx)」をご覧ください。**ALTER LOGIN** ステートメントは、**master** データベースに対して実行する必要があります。そのデータベースに接続されているクエリ ウィンドウに切り替えてください。次のステートメントは、ログイン **login1** を変更してパスワードをリセットします。**newPassword** を適切なパスワードに、**oldPassword** をログインの現在のパスワードに置き換えます。
 
         ALTER LOGIN login1
         WITH PASSWORD = 'newPassword'
@@ -106,11 +106,11 @@ Management Studio でクエリ ウィンドウを開くには、[データベー
 
         SELECT * FROM sys.sql_logins;
 
-## 動的管理ビューを使用して SQL データベースを監視する</h2>
+## 動的管理ビューを使用して SQL データベースを監視する
 
-SQL データベースでは、個々のデータベースを監視するのに使用できる動的管理ビューがいくつかサポートされています。以下に、これらのビューで取得できるモニター データの種類の例を示します。すべての種類と詳しい使用例については、「[動的管理ビューを使用した Azure SQL Database の監視](https://msdn.microsoft.com/library/azure/ff394114.aspx)」をご覧ください。
+SQL データベースでは、個々のデータベースを監視するのに使用できる動的管理ビューがいくつかサポートされています。これらのビューで取得できるモニター データの種類の例を次に示します。すべての種類と詳しい使用例については、「[動的管理ビューを使用した Azure SQL Database の監視](https://msdn.microsoft.com/library/azure/ff394114.aspx)」を参照してください。
 
--   動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、サーバー レベルのプリンシプル ログインで管理するデータベースに接続し、データベースに対して次のステートメントを実行します。
+-   動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、データベースに接続し、データベースに対して次のステートメントを実行します。
 
         GRANT VIEW DATABASE STATE TO login1User;
 
@@ -151,4 +151,4 @@ SQL データベースでは、個々のデータベースを監視するのに�
  
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->
