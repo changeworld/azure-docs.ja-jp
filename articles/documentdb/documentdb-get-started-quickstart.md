@@ -23,33 +23,29 @@
 - [.NET](documentdb-get-started.md)
 - [Node.JS](documentdb-nodejs-get-started.md)
 
-Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
+Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 クイック スタート プロジェクトを入手するか、このチュートリアルを完了すると、DocumentDB リソースの作成と照会を行うコンソール アプリケーションが手に入ります。
 
-ここで説明する操作は以下のとおりです。
-
-- DocumentDB アカウントを作成して接続する
-- Visual Studio ソリューションを構成する
-- オンライン データベースを作成する
-- コレクションを作成する
-- JSON ドキュメントを作成する
-- コレクションをクエリする
-- ドキュメントを置換する
-- ドキュメントを削除する
-- データベースを削除する
-
-時間がなくても 心配はありません。 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) で完全なソリューションを入手できます。手順については「[完全なソリューションの取得](#GetSolution)」を参照してください。
-
-その後で、このページの上部または下部にある投票ボタンを使用して、フィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
-
-それでは始めましょう。
+- **[クイック スタート](#quickstart)**: サンプル プロジェクトをダウンロードし、接続情報を追加して、5 分未満で DocumentDB アプリを稼働させることができます。
+- **[チュートリアル](#tutorial)**: 30 分以内でクイックスタート アプリを一から構築できます。
 
 ## 前提条件
 
-以下のものがそろっていることを確認してください。
-
 - アクティブな Azure アカウント。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
-- [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/)。
+- [Visual Studio 2013 または Visual Studio 2015](http://www.visualstudio.com/)。
 - .NET Framework 4.6
+
+## [クイック スタート]
+
+1. サンプル プロジェクトを [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) からダウンロードします。
+2. Azure Portal を使用して [DocumentDB アカウントを作成](documentdb-create-account.md)します。
+3. App.config ファイルで、EndpointUri と PrimaryKey の値を [Azure Portal](https://portal.azure.com/) から取得した値に置き換えます (**[DocumentDB (NoSQL)]** ブレードに移動し、**アカウント名**をクリックして、リソース メニューの **[キー]** をクリックします)。![Screen shot of the EndpointUri and PrimaryKey value to replace in App.config](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-keys.png)
+4. プロジェクトをビルドします。コンソール ウィンドウで、新しいリソースが作成、照会、クリーンアップされます。
+    
+    ![Screen shot of the console output](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-console-output.png)
+
+## <a id="tutorial"></a>チュートリアル
+
+このチュートリアルでは、DocumentDB データベース、DocumentDB コレクション、JSON ドキュメントの作成手順について説明します。その後で、コレクションを照会し、データベースをクリーンアップ、削除してみます。このチュートリアルでは、クイック スタート プロジェクトと同じプロジェクトをビルドします。プロジェクトをご自分で段階的にビルドし、プロジェクトに追加するコードに関する説明を確認する形になります。
 
 ## 手順 1: DocumentDB アカウントを作成する
 
@@ -194,7 +190,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 		this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
 		// ADD THIS PART TO YOUR CODE
-		await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+		await this.CreateDatabaseIfNotExists("FamilyDB_va");
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -242,14 +238,14 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 		}
 	}
 
-次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。データベースを作成する処理のすぐ下に追加してください。これで、*FamilyCollection\_oa* というドキュメント コレクションが作成されます。
+次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。データベースを作成する処理のすぐ下に追加してください。これで、*FamilyCollection\_va* というドキュメント コレクションが作成されます。
 
 		this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
 		await this.CreateDatabaseIfNotExists("FamilyDB_oa");
 
 		// ADD THIS PART TO YOUR CODE
-		await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
+		await this.CreateDocumentCollectionIfNotExists("FamilyDB_va", "FamilyCollection_va");
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -340,9 +336,9 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメント コレクションの作成処理のすぐ下に追加してください。
 
-	await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+	await this.CreateDatabaseIfNotExists("FamilyDB_va");
 
-	await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
+	await this.CreateDocumentCollectionIfNotExists("FamilyDB_va", "FamilyCollection_va");
 
 	// ADD THIS PART TO YOUR CODE
 	Family andersenFamily = new Family
@@ -371,7 +367,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 			IsRegistered = true
 	};
 
-	await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", andersenFamily);
+	await this.CreateFamilyDocumentIfNotExists("FamilyDB_va", "FamilyCollection_va", andersenFamily);
 
 	Family wakefieldFamily = new Family
 	{
@@ -408,7 +404,7 @@ DocumentDB [データベース](documentdb-resources.md#databases)は、**Docume
 			IsRegistered = false
 	};
 
-	await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+	await this.CreateFamilyDocumentIfNotExists("FamilyDB_va", "FamilyCollection_va", wakefieldFamily);
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -458,10 +454,10 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。2 つ目のドキュメント作成処理のすぐ下に追加してください。
 
-	await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+	await this.CreateFamilyDocumentIfNotExists("FamilyDB_va", "FamilyCollection_va", wakefieldFamily);
 
 	// ADD THIS PART TO YOUR CODE
-	this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+	this.ExecuteSimpleQuery("FamilyDB_va", "FamilyCollection_va");
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -495,17 +491,17 @@ DocumentDB は、JSON ドキュメントの置換をサポートします。
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。クエリを実行する処理のすぐ下に追加してください。ドキュメントを置換した後に、同じクエリが実行され、変更されたドキュメントが表示されます。
 
-	await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa", wakefieldFamily);
+	await this.CreateFamilyDocumentIfNotExists("FamilyDB_va", "FamilyCollection_va", wakefieldFamily);
 
-	this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+	this.ExecuteSimpleQuery("FamilyDB_va", "FamilyCollection_va");
 
 	// ADD THIS PART TO YOUR CODE
 	// Update the Grade of the Andersen Family child
 	andersenFamily.Children[0].Grade = 6;
 
-	await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
+	await this.ReplaceFamilyDocument("FamilyDB_va", "FamilyCollection_va", "Andersen.1", andersenFamily);
 
-	this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+	this.ExecuteSimpleQuery("FamilyDB_va", "FamilyCollection_va");
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -533,12 +529,12 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。2 回目のクエリ実行のすぐ下に追加してください。
 
-	await this.ReplaceFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1", andersenFamily);
+	await this.ReplaceFamilyDocument("FamilyDB_va", "FamilyCollection_va", "Andersen.1", andersenFamily);
 
-	this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+	this.ExecuteSimpleQuery("FamilyDB_va", "FamilyCollection_va");
 
 	// ADD THIS PART TO CODE
-	await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
+	await this.DeleteFamilyDocument("FamilyDB_va", "FamilyCollection_va", "Andersen.1");
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -550,13 +546,13 @@ DocumentDB は、JSON ドキュメントの削除をサポートしています�
 
 データベース全体とすべての子リソースを削除するために、次のコードをコピーし、**GetStartedDemo** メソッドに貼り付けます。ドキュメントの削除処理のすぐ下に追加してください。
 
-	this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
+	this.ExecuteSimpleQuery("FamilyDB_va", "FamilyCollection_va");
 
-	await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.1");
+	await this.DeleteFamilyDocument("FamilyDB_va", "FamilyCollection_va", "Andersen.1");
 
 	// ADD THIS PART TO CODE
 	// Clean up/delete the database
-	await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"));
+	await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_va"));
 
 **F5** キーを押してアプリケーションを実行します。
 
@@ -568,9 +564,9 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 
 開始したアプリケーションの出力が表示されます。出力では追加したクエリの結果が表示されます。次の例のようなものになるはずです。
 
-	Created FamilyDB_oa
+	Created FamilyDB_va
 	Press any key to continue ...
-	Created FamilyCollection_oa
+	Created FamilyCollection_va
 	Press any key to continue ...
 	Created Family Andersen.1
 	Press any key to continue ...
@@ -591,15 +587,6 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 
 ご利用ありがとうございます。 この NoSQL チュートリアルを完了し、実用的な C# コンソール アプリケーションを入手しました。
 
-##<a id="GetSolution"></a> 完全な NoSQL チュートリアル ソリューションを入手する
-この記事のすべてのサンプルを含む GetStarted ソリューションをビルドするには、以下が必要です。
-
-- アクティブな Azure アカウント。お持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
--   [DocumentDB アカウント][documentdb-create-account]。
--   GitHub で入手可能な [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) ソリューション。
-
-Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリューション エクスプローラーで **GetStarted** ソリューションを右クリックし、**[NuGet パッケージの復元を有効にする]** をクリックします。次に、「[DocumentDB アカウントへの接続](#Connect)」の説明に従って、App.config ファイルの EndpointUrl と AuthorizationKey の値を更新します。
-
 ## 次のステップ
 
 - さらに複雑な ASP.NET MVC NoSQL チュートリアルが必要ですか。 「[DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)」を参照してください。
@@ -610,6 +597,6 @@ Visual Studio で DocumentDB .NET SDK への参照を復元するには、ソリ
 
 [documentdb-create-account]: documentdb-create-account.md
 [documentdb-manage]: documentdb-manage.md
-[keys]: media/documentdb-get-started/nosql-tutorial-keys.png
+[keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
 
 <!---HONumber=AcomDC_0831_2016-->

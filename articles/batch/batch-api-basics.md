@@ -67,7 +67,7 @@
 
 ## Account
 
-Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。すべての処理は、Batch アカウントに関連付けられています。Batch サービスで処理を実行するには、アカウント名とそのいずれかのアカウント キーの両方が必要です。[Azure ポータルで Azure Batch アカウントを作成して管理](batch-account-create-portal.md)することができます。
+Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。すべての処理は、Batch アカウントに関連付けられています。Batch サービスで処理を実行するには、アカウント名とそのいずれかのアカウント キーの両方が必要です。[Azure Portal を使用して Azure Batch アカウントを作成](batch-account-create-portal.md)できます。
 
 ## コンピューティング ノード
 
@@ -518,4 +518,4 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

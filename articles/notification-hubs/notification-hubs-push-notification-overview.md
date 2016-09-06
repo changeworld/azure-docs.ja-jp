@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Notification Hubs"
+	pageTitle="Azure 通知ハブ"
 	description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
 	authors="wesmc7777"
 	manager="erikre"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="hero-article"
-	ms.date="06/29/2016"
+	ms.date="08/25/2016"
 	ms.author="wesmc"/>
 
 
-#Azure Notification Hubs
+#Azure 通知ハブ
 
-##概要
+##Overview
 
 Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス内) から任意のモバイル プラットフォームにモバイル プッシュ通知を送信できるようにする、使いやすい、マルチプラットフォームのスケールアウトされたプッシュ インフラストラクチャです。
 
@@ -39,9 +39,9 @@ Notification Hubs は、エンタープライズ向けシナリオとコンシ�
 
 スマートフォンやタブレットでは、イベントの発生時にそれをユーザーに "知らせる" 機能があります。これらの通知はさまざまな形式を取ることができます。
 
-Windows ストアと Windows Phone のアプリケーションでは、通知は_トースト_の形になることができます。つまり、モードレス ウィンドウが、新しい通知の到着を知らせる音と共に表示されます。他に、_タイル_、_未加工_、_バッジ_の形などの通知がサポートされます。Windows デバイスでサポートされる通知の種類については、「[タイル、バッジ、通知](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)」を参照してください。
+Windows ストアと Windows Phone のアプリケーションでは、通知は_トースト_の形になることができます。つまり、モードレス ウィンドウが、新しい通知の到着を知らせる音と共に表示されます。他に、"_タイル_"、"_未加工_"、"_バッジ_" などの種類の通知がサポートされます。Windows デバイスでサポートされる通知の種類については、「[タイル、バッジ、通知](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)」を参照してください。
 
-Apple iOS デバイスでは、プッシュはダイアログ ボックスを使用して通知され、ユーザーに通知を表示するか閉じるかを要求します。**[View]** をタップすると、そのメッセージを受信するアプリケーションが開きます。iOS 通知の詳細については、[iOS 通知に関するページ](http://go.microsoft.com/fwlink/?LinkId=615245)を参照してください。
+Apple iOS デバイスでは、プッシュはダイアログ ボックスを使用して通知され、ユーザーに通知を表示するか閉じるかを要求します。**[View]** をタップすると、そのメッセージを受信するアプリケーションが開きます。iOS の通知の詳細については、[iOS の通知](http://go.microsoft.com/fwlink/?LinkId=615245)に関するページを参照してください。
 
 プッシュ通知は、モバイル デバイスの電力消費を抑えながら、最新情報を表示するために有効な機能です。通知は、デバイスの対応するアプリがアクティブになっていないときでも、バックエンド システムによってモバイル デバイスに送信できます。プッシュ通知はコンシューマー アプリケーションの必須コンポーネントです。プッシュ通知を利用して、ユーザーをアプリケーションに惹き付け、使用率を向上させるためです。エンタープライズ アプリケーションでも、通知は役立ちます。従業員に最新情報を通知することで、ビジネス イベントに対する即応性を向上することができます。
 
@@ -53,7 +53,7 @@ Apple iOS デバイスでは、プッシュはダイアログ ボックスを使
 
 ##プッシュ通知の動作
 
-プッシュ通知は、_プラットフォーム通知システム_ (PNS: Platform Notification System) と呼ばれるプラットフォーム独自のインフラストラクチャを利用して配信されます。PNS の機能は最小限であり、ブロードキャストや個人向け設定などはサポートされず、共通インターフェイスも用意されていません。たとえば、Windows ストア アプリに通知を送信するには、WNS (Windows Notification Service) にアクセスする必要があります。また、iOS デバイスに通知を送信するには、まず APNS (Apple Push Notification サービス) にアクセスした後で、メッセージを送信する必要があります。Azure Notification hubs は、共通のインターフェイスとその他の機能によって、プラットフォーム間でのプッシュ通知をサポートします。
+プッシュ通知は、_プラットフォーム通知システム_ (PNS: Platform Notification System) と呼ばれるプラットフォーム独自のインフラストラクチャを利用して配信されます。PNS の機能は最小限であり、ブロードキャストや個人向け設定などはサポートされず、共通インターフェイスも用意されていません。たとえば、Windows ストア アプリに通知を送信するには、開発者は、WNS (Windows Notification Service) にコンタクトする必要があります。iOS デバイスに通知を送信するには、同じ開発者が APNs (Apple Push Notification サービス) にコンタクトし、メッセージをもう一度送信する必要があります。Azure Notification hubs は、共通のインターフェイスとその他の機能によって、プラットフォーム間でのプッシュ通知をサポートします。
 
 ただし、大まかに言えば、すべてのプラットフォームの通知システムが同じパターンに従って動作します。
 
@@ -75,7 +75,7 @@ Apple iOS デバイスでは、プッシュはダイアログ ボックスを使
 - **スケール。** このインフラストラクチャの拡張に関しては、次の 2 つの問題点があります。
 	+ PNS のガイドラインに従って、アプリが起動するたびにデバイス トークンを更新する必要があります。そのため、デバイス トークンを最新の状態に維持するためだけに膨大なトラフィック (およびそれに伴うデータベース アクセス) が発生します。デバイスの数が増加すると (数百万台に達する可能性があります)、このインフラストラクチャの作成と保守にかかるコストが無視できないものになります。
 
-	+ ほとんどの PNS は、複数のデバイスに対するブロードキャストをサポートしていません。そのため、数百万台のデバイスに対してブロードキャストを実行すると、PNS に対して数百万回の呼び出しを実行することになります。このように要求が増大する可能性があることは、重大な問題です。一般的に、アプリケーション開発者は合計遅延時間をできるだけ少なくしようとするためです (たとえば、最終的にメッセージを受信するデバイスが通知の送信後 30 分経ってもメッセージを受信しなければ、ほとんどの場合、プッシュ通知を使用する意味がなくなります)。
+	+ ほとんどの PNS は、複数のデバイスに対するブロードキャストをサポートしていません。そのため、数百万台のデバイスに対してブロードキャストを実行すると、PNS に対して数百万回の呼び出しを実行することになります。これらの要求のスケールを調整するのは簡単ではありません。というのも、アプリの開発者は合計遅延時間を抑えたいと考えるのが普通だからです。たとえば、最終的にメッセージを受信するデバイスが通知の送信後 30 分経ってもメッセージを受信しなければ、多くの場合、プッシュ通知を使用する意味がなくなります。
 - **ルーティング。** PNS は、デバイスにメッセージを送信する機能を備えています。しかし、ほとんどのアプリケーションでは通知の対象がユーザーまたは特定のグループです (特定の顧客アカウントに割り当てられた全従業員など)。そのため、通知を適切なデバイスにルーティングするには、特定のグループにデバイス トークンを関連付けるためのレジストリをアプリケーションのバックエンドで維持する必要があります。この対策を行うことで、市場投入までの開発期間が長引き、アプリケーションの保守コストも増大します。
 
 ##Notification Hubs を使用する理由は?
@@ -128,12 +128,16 @@ Mobile Apps の開発者は、次のワークフローで Notification Hubs を�
 3. Notification Hubs を使用してアプリのバックエンドから通知を送信する
 
 この統合は、開発者にいくつかの便利な機能を提供します。
+
 - **Mobile Apps クライアント SDK。** これらの複数プラットフォームの SDK は登録用のシンプルな API を提供し、モバイル アプリに自動的にリンクされている通知ハブと対話します。開発者は Notification Hubs の資格情報を掘り下げて追加のサービスを操作する必要はありません。
     + SDK は自動的に指定のデバイスを Mobile Apps の認証済みユーザー ID にタグ付けしてユーザー シナリオへのプッシュを有効にします。
     + SDK は自動的に Mobile Apps のインストール ID を Notification Hubs に登録する GUID として使用し、開発者が複数サービスの GUID を維持する手間を省きます。
+    
 - **インストール モデル。** Mobile Apps は Notification Hubs の最新のプッシュ モデルと簡単に連携し、プッシュ通知サービスと連携する JSON インストール内のデバイスに関連付けられたすべてのプッシュ プロパティを表します。
+
 - **柔軟性。** 開発者は統合中でも常に Notification Hubs を直接操作することを選択できます。
-- **[Azure ポータル]の統合されたエクスペリエンス。** 機能としてのプッシュが Mobile Apps に視覚的に表示され、開発者は Mobile Apps を通じて関連付けられた通知ハブを簡単に操作できます。
+
+- **[Azure Portal] の統合されたエクスペリエンス。** 機能としてのプッシュが Mobile Apps に視覚的に表示され、開発者は Mobile Apps を通じて関連付けられた通知ハブを簡単に操作できます。
 
 
 
@@ -166,9 +170,9 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-  [App Service Mobile Apps]: https://azure.microsoft.com/en-us/documentation/articles/app-service-mobile-value-prop/
+  [App Service Mobile Apps]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-mobile-value-prop/
   [テンプレート]: notification-hubs-templates.md
-  [Azure ポータル]: https://portal.azure.com
+  [Azure portal]: https://portal.azure.com
   [タグ]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

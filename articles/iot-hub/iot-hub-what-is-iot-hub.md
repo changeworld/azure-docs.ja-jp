@@ -13,7 +13,7 @@
  ms.topic="get-started-article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="06/06/2016"
+ ms.date="08/25/2016"
  ms.author="dobett"/>
 
 # Azure IoT Hub とは
@@ -53,7 +53,7 @@ Azure IoT Hub は、次の方法でデバイスの接続の課題に対処しま
 
 -   **デバイスごとの認証およびセキュリティで保護された接続**。各デバイスを独自の[セキュリティ キー][lnk-devguide-security]を使用してプロビジョニングし、IoT Hub に接続することができます。[IoT Hub ID レジストリ][lnk-devguide-identityregistry]には、ソリューションのデバイスの ID とキーが保存されます。ソリューション バックエンドで個々のデバイスを許可リストと拒否リストのいずれかに追加し、デバイスのアクセスを完全に制御できます。
 
--   **デバイスの接続操作の監視**。デバイス ID の管理操作とデバイス接続イベントに関する詳細な操作ログを受信できます。この監視機能により、IoT ソリューションでは、接続の問題 (不正な資格情報で接続を試みるデバイス、メッセージを送信する頻度が異常であるデバイス、すべての C2D メッセージを拒否するデバイスなど) を簡単に識別することができます。
+-   **デバイスの接続操作の監視**。デバイス ID の管理操作とデバイス接続イベントに関する詳細な操作ログを受信できます。この監視機能により、IoT ソリューションでは、接続の問題 (不適切な資格情報で接続を試みるデバイス、メッセージを送信する頻度が異常であるデバイス、すべての C2D メッセージを拒否するデバイスなど) を識別することができます。
 
 -   **広範なデバイス ライブラリ**。[Azure IoT デバイス SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、リアルタイム オペレーティング システムでは C) で使用でき、サポートされています。Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
 
@@ -92,7 +92,7 @@ Azure IoT Hub は、デバイスとソリューション バックエンド間�
 - コマンドとデバイスの通知は、デバイスが接続され、それらを受信するまで保持されるので、電源や接続の問題によって散発的に接続されるデバイスの双方向通信が円滑になります。IoT Hub は、送信されるコマンドのデバイス固有のキューを維持しています。
 - アプリケーション ペイロード データは個別に保護され、ゲートウェイを介して特定のサービスに転送されます。
 
-モバイル業界では、サービス支援通信パターンを大規模に使用して、[Windows Push 通知サービス][lnk-wns]、[Google Cloud Messaging][lnk-google-messaging]、[Apple Push Notification サービス][lnk-apple-push]などのプッシュ通知サービスを実装し、成果を挙げています。
+モバイル業界では、サービス支援通信パターンを大規模に使用して、[Windows Push 通知サービス][lnk-wns]、[Google Cloud Messaging][lnk-google-messaging]、[Apple Push Notification サービス][lnk-apple-push]などのプッシュ通知サービスを実装しています。
 
 ## 次のステップ
 
@@ -123,4 +123,4 @@ Azure IoT Hub では、標準ベースの IoT デバイス管理が可能とな�
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

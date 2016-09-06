@@ -39,10 +39,10 @@
 - 「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通してください。
 - コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。
 - [この記事](../resource-group-create-service-principal-portal.md)の手順に従って、次の操作を行います。
-	1. Azure Active Directory に、**ADFCopyTutotiralApp** という名前の Web アプリケーションを作成します。
+	1. Azure Active Directory に、**ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
 	2. **クライアント ID** と**秘密キー**を取得します。
 	3. **テナント ID** を取得します。
-	4. **ADFCopyTutotiralApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
+	4. **ADFCopyTutorialApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
 - [Azure PowerShell](../powershell-install-configure.md) をインストールします。
 - **PowerShell** を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
 	1. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
@@ -259,7 +259,7 @@ start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/w
 
 この例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 	
-> [AZURE.NOTE] 上の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
+> [AZURE.NOTE] 前の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
 
 ## グローバル変数の設定
 
@@ -298,7 +298,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。データ ファクトリが正常に作成された場合は、**results** にデータ ファクトリの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-		$results
+		Write-Host $results
 
 以下の点に注意してください。
  
@@ -339,7 +339,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
   
-		$results
+		Write-Host $results
 
 ### Azure SQL のリンクされたサービスの作成
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。このチュートリアルでは、同じ Azure SQL データベースを使用して、出力データを格納します。
@@ -352,7 +352,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
   
-		$results
+		Write-Host $results
 
 ## データセットを作成する
 
@@ -404,7 +404,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
   
-		$results
+		Write-Host $results
 
 ### 出力データセットの作成
 この手順では、**AzureSqlOutput** という名前の出力テーブルを作成します。このデータセットは、**AzureSqlLinkedService** で表される Azure SQL Database 内の SQL テーブル (**emp**) をポイントします。パイプラインで入力 BLOB から **emp** テーブルにデータがコピーされます。
@@ -417,7 +417,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
   
-		$results 
+		Write-Host $results 
 
 ## パイプラインの作成
 この手順では、**AzureBlobInput** を入力、**AzureSqlOutput** を出力として使用する**コピー アクティビティ**を持つパイプラインを作成します。
@@ -430,7 +430,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 		$results = Invoke-Command -scriptblock $cmd;
 3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-		$results
+		Write-Host $results
 
 **お疲れさまでした。** Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが正常に作成されました。
 
@@ -493,4 +493,4 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

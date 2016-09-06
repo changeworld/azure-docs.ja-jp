@@ -106,7 +106,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
 6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらの設定は、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
 
-	**&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;**、**&lt;tenant ID&gt;** の値をそれぞれ独自の値で置き換えます。
+	**&lt;Application ID&gt;**、**&lt;Password&gt;**、**&lt;Subscription ID&gt;**、**&lt;tenant ID&gt;** の値をそれぞれ独自の値に置き換えます。
 
 		<appSettings>
 		    <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
@@ -458,4 +458,4 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
