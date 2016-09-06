@@ -105,7 +105,7 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 電卓 API を構成するには、次の手順を実行します。
 
-1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json****」と入力し、[Swagger] ラジオ ボタンをクリックします。
+1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json**」と入力し、[Swagger] ラジオ ボタンをクリックします。
 2. **[Web API URL サフィックス]** テキスト ボックスに「**calc**」と入力します。
 3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
 4. **[保存]** をクリックして、API をインポートします。

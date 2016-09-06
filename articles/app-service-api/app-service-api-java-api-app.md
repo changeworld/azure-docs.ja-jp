@@ -24,7 +24,7 @@
 
 ## 前提条件
 
-1. [Java Development Kit 8] (以降)
+1. [Java Development Kit 8] \(以降)
 1. 開発用コンピューターにインストールされた [Maven]
 1. 開発用コンピューターにインストールされた [Git]
 1. [Microsoft Azure] の有料または[無料試用版]サブスクリプション
@@ -143,7 +143,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
     ![View Swagger Generated Docs][view-swagger-generated-docs]
 
-1. **[Generate Server]、[JAX-RS]** メニュー オプションの順に選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。
+1. **[Generate Server]、\[JAX-RS]** メニュー オプションの順に選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。
 
     ![Generate Code Menu Item][generate-code-menu-item]
 

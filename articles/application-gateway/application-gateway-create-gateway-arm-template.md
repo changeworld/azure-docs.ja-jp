@@ -244,7 +244,7 @@ Azure CLI を初めて使用する場合は、[Azure CLI のインストール�
 	data:    backendIpAddress2  String  10.0.1.11
 	info:    group deployment create command OK
 
-**-g (または --resource-group)**.新しい仮想ネットワークを作成するリソース グループの名前です。
+**-g (または --resource-group)**。新しい仮想ネットワークを作成するリソース グループの名前です。
 
 **-f (または --template-file)**。Azure リソース マネージャー テンプレート ファイルへのパスです。
 
