@@ -114,12 +114,16 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、Azure ネットワークを [Resource Manager モード](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モード](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でセットアップします。
 - ネットワークをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。
 
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md)を同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で行うことは、Site Recovery のデプロイ用のネットワークではサポートされていません。
+
 
 ### Azure ストレージ アカウントをセットアップする
 
 - Azure にレプリケートされたデータを保持するために Standard Azure ストレージ アカウントが必要になります。アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [Resource Manager モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
 - アカウントをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。
+
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md)を同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で行うことは、Site Recovery のデプロイ用のストレージ アカウントではサポートされていません。
 
 ### VMM サーバーを準備する
 
@@ -189,7 +193,7 @@ Azure Site Recovery プロバイダーを VMM サーバーにインストール�
 
 	![Set up source](./media/site-recovery-vmm-to-azure/set-source1.png)
 
-2. **[Prepare source]** (ソースの準備) で、**[+ VMM]** をクリックして、VMM サーバーを追加します。
+2. **[ソースの準備]** で、**[+ VMM]** をクリックして、VMM サーバーを追加します。
 
 	![Set up source](./media/site-recovery-vmm-to-azure/set-source2.png)
 
@@ -567,4 +571,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

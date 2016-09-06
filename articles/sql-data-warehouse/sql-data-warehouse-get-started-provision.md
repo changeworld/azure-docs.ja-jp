@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/23/2016"
+   ms.date="08/25/2016"
    ms.author="barbkess;lodipalm;sonyama"/>
 
 # Azure SQL Data Warehouse の作成
@@ -60,6 +60,8 @@
 
     - **[ソースの選択]**: **[ソースの選択]**、**[サンプル]** の順にクリックします。**[サンプルの選択]** オプションが自動的に AdventureWorksDW に設定されます。
 
+> [AZURE.NOTE] SQL Data Warehouse の既定の照合順序は、SQL\_Latin1\_General\_CP1\_CI\_AS です。別の照合順序が必要な場合は、[T-SQL][] を使って別の照合順序のデータベースを作成できます。
+
 4. **[作成]** をクリックして SQL Data Warehouse を作成します。
 
 5. 数分間待ちます。データ ウェアハウスの準備が完了すると、再び [Azure ポータル](https://portal.azure.com)が表示されます。SQL Data Warehouse は、ダッシュボード上で、SQL データベースの一覧か、作成に使用したリソース グループ内に表示されます。
@@ -88,7 +90,8 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [DWU]: sql-data-warehouse-overview-what-is.md#data-warehouse-units
 [サブスクリプション]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
-
+[T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
+ 
 <!--MSDN references-->
 [sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
 [sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
@@ -99,4 +102,4 @@ TRANSACT-SQL を使用して、ファイアウォール規則を構成するこ�
 [Azure 無料試用版]: https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 [MSDN Azure クレジット]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

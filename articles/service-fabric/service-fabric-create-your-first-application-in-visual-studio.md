@@ -123,6 +123,7 @@ Service Fabric のアプリケーションには、アプリケーションの�
 - [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
 - [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
 - [Web サービス フロント エンド](service-fabric-add-a-web-frontend.md)を使用してインターネットにサービスを公開する方法を学びます。
+- [ハンズオン ラボ](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)を参照し、ステートレス サービスの作成、監視と正常性レポートの構成、アプリケーションのアップグレードを実行します。
 
 <!-- Image References -->
 
@@ -138,4 +139,4 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

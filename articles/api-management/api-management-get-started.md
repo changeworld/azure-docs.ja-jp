@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での最初の API の管理
@@ -105,7 +105,7 @@ API の構成は、Azure クラシック ポータルから発行者ポータル
 
 電卓 API を構成するには、次の手順を実行します。
 
-1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json****」と入力し、[Swagger] ラジオ ボタンをクリックします。
+1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json**」と入力し、[Swagger] ラジオ ボタンをクリックします。
 2. **[Web API URL サフィックス]** テキスト ボックスに「**calc**」と入力します。
 3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
 4. **[保存]** をクリックして、API をインポートします。
@@ -186,7 +186,7 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 
 ## <a name="next-steps"> </a>次のステップ
 
--	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+- [レート制限で API を保護する](api-management-howto-product-with-rules.md)方法について学習します。
 
 [Azure の無料試用版サイト]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
@@ -205,7 +205,6 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [Azure API Management で通知と電子メール テンプレートを構成する方法]: api-management-howto-configure-notifications.md
 [Responses]: api-management-howto-add-operations.md#responses
 [How create and publish a product]: api-management-howto-add-products.md
-[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 [API Management の価格]: http://azure.microsoft.com/pricing/details/api-management/
 
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
@@ -245,4 +244,4 @@ Basic Calculator の分析結果を表示するには、開発者ポータルの
 [api-management-]: ./media/api-management-get-started/api-management-.png
 [api-management-]: ./media/api-management-get-started/api-management-.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

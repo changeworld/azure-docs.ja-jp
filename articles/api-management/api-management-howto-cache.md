@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # キャッシュを追加して Azure API Management のパフォーマンスを向上させる
@@ -113,7 +113,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 **[param1]** と **[param2]** については既定値のままにしておきます。
 
-**[サブスクリプション キー]** ドロップダウン リストで目的のキーを選択します。アカウントのサブスクリプションが 1 つしかない場合は自動的にそのサブスクリプションが選択されます。
+**[subscription-key (サブスクリプション キー)]** ボックスの一覧で目的のキーを選択します。アカウントのサブスクリプションが 1 つしかない場合は自動的にそのサブスクリプションが選択されます。
 
 **[要求ヘッダー]** ボックスに「**sampleheader:value1**」と入力します。
 
@@ -129,7 +129,6 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 
 ## <a name="next-steps"> </a>次のステップ
 
--	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
 -	キャッシュ ポリシーの詳細については、「[Azure API Management ポリシー リファレンス][]」の「[キャッシュ ポリシー][]」を参照してください。
 -	ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
@@ -152,7 +151,6 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [API Management インスタンスの作成]: api-management-get-started.md
 [Azure API Management の使用]: api-management-get-started.md
-[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 
 [Azure API Management ポリシー リファレンス]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 [キャッシュ ポリシー]: https://msdn.microsoft.com/library/azure/dn894086.aspx
@@ -164,4 +162,4 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 [Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

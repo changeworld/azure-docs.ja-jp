@@ -60,7 +60,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 5. **Program** クラスに次のフィールドを追加します。プレースホルダーの値は、前のセクションで作成した IoT Hub の接続文字列に置き換えてください。
 
 		static RegistryManager registryManager;
-        static string connectionString = "{iothub connection string}";
+        static string connectionString = "{iot hub connection string}";
 
 6. **Program** クラスに次のメソッドを追加します。
 
@@ -237,7 +237,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 
    	![Console output from apps][42]
 
-3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、Hub に送信されたメッセージ数が表示されます。
+3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
 
     ![Azure portal Usage tile][43]
 
@@ -252,7 +252,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 - [デバイス管理の概要][lnk-device-management]
 - [Gateway SDK の概要][lnk-gateway-SDK]
 
-既存の IoT ソリューションを拡張し、大規模な環境でデバイスからクラウドへのメッセージを処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
+既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
 <!-- Images. -->
 [41]: ./media/iot-hub-csharp-csharp-getstarted/run-apps1.png
@@ -282,4 +282,4 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と接
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

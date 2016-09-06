@@ -12,7 +12,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
 # REST API を使用した Azure Search インデックスの照会
@@ -159,4 +159,4 @@ api-key: [query key]
 
 詳細については、「[Search Documents (Azure Search Service REST API) (ドキュメントの検索 (Azure Search Service REST API))](https://msdn.microsoft.com/library/azure/dn798927.aspx)」の「Response (応答)」セクションを参照してください。エラーが発生した場合に返される可能性のあるその他の HTTP 状態コードの詳細については、「[HTTP status codes (Azure Search) (HTTP 状態コード (Azure Search))](https://msdn.microsoft.com/library/azure/dn798925.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

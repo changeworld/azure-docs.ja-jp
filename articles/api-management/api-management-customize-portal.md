@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/09/2016"
+	ms.date="08/24/2016"
 	ms.author="sdanie"/>
 
 # Azure API Management での開発者ポータルのカスタマイズ
@@ -78,7 +78,7 @@
 
 ## <a name="next-steps"> </a>次のステップ
 
--	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-	[開発者ポータル テンプレート](api-management-developer-portal-templates.md)を使用して開発者ポータル ページの内容をカスタマイズする方法について説明します。
 
 [Change the text/logo in the page headers]: #change-page-headers
 [Change the styling of the headers]: #change-headers-styling
@@ -95,8 +95,7 @@
 [api-management-customization-manage-content]: ./media/api-management-customize-portal/api-management-customization-manage-content.png
 
 
-[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 [bootstrap]: http://getbootstrap.com/
 [LESS 変数]: http://getbootstrap.com/css/
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

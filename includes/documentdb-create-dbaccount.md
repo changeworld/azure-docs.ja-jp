@@ -1,9 +1,9 @@
-1.	オンラインの [Microsoft Azure ポータル](https://portal.azure.com/)にサインインします。
-2.	ジャンプバーで **[新規]**、**[データ + ストレージ]**、**[DocumentDB]** の順にクリックします。
+1.	[Azure ポータル](https://portal.azure.com/)にサインインします。
+2.	ジャンプバーで **[新規]** をクリックし、**[データ + ストレージ]**、**[DocumentDB (NoSQL)]** の順にクリックします。
 
-	![Screen shot of the Azure portal to create a database, highlighting the New button, Data + storage in the Create blade, and Azure DocumentDB in the Data + Storage blade](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+	![Screen shot of the Azure portal, highlighting More Services, and DocumentDB (NoSQL)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 
-3. **[新しい DocumentDB アカウント]** ブレードで、DocumentDB アカウントに対して必要な構成を指定します。
+3. **[新しいアカウント]** ブレードで、DocumentDB アカウントに必要な構成を指定します。
 
 	![新しい [DocumentDB] ブレードのスクリーン ショット](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
@@ -18,8 +18,8 @@
 	
     - 今後作成するアカウントとリソースに簡単にアクセスできるようにするには、**[ダッシュボードにピン留めする]** をオンにします。
 
-4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。デプロイの状態を確認するには、スタート画面で進行状況を監視してください。  
-	![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
+4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。デプロイの状態を確認するには、スタート画面で進行状況を監視してください。
+![スタート画面の [作成中] タイルのスクリーン ショット (オンライン データベース クリエーター)](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
 
 	または、通知ハブから進行状況を監視できます。
 
@@ -27,7 +27,7 @@
 
 	![DocumentDB アカウントが正常に作成され、リソース グループにデプロイされたことを示す通知ハブのスクリーンショット - オンライン データベース クリエーターの通知](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-5.png)
 
-5.	DocumentDB アカウントが作成されたら、オンライン ポータルの既定の設定で使用するための準備が整います。DocumentDB アカウントの既定の一貫性は **Session** に設定されることに注意してください。既定の一貫性の設定は、メニューの **[既定の整合性]** タイルをクリックして変更できます。DocumentDB によって提供される一貫性レベルの詳細については、「[DocumentDB の一貫性レベル](../articles/azure-portal/resource-group-portal.md)」を参照してください。
+5.	DocumentDB アカウントが作成されたら、既定の設定で使用できる状態になります。DocumentDB アカウントの既定の一貫性は **Session** に設定されることに注意してください。既定の一貫性は、リソース メニューの **[既定の整合性]** をクリックして調整できます。DocumentDB によって提供される一貫性レベルの詳細については、[DocumentDB の一貫性レベル](../articles/azure-portal/resource-group-portal.md)に関するページを参照してください。
 
     ![[リソース グループ] ブレードのスクリーン ショット - アプリケーション開発の開始](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-6.png)
 
@@ -37,4 +37,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: ../articles/documentdb/documentdb-manage.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->
