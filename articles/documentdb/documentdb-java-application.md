@@ -780,4 +780,4 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!----HONumber=AcomDC_0831_2016-->
