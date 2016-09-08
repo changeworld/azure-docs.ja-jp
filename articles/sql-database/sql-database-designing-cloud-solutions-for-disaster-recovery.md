@@ -20,7 +20,7 @@
 # SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計
 
 
-> [AZURE.NOTE] [Active Geo-Replication]すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md)すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
 
 
 
@@ -161,5 +161,6 @@ Traffic Manager は、プライマリ リージョンへの接続障害を検出
 - より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 - エラスティック プールでのアクティブ geo レプリケーションについては、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+
 
 <!---HONumber=AcomDC_0817_2016-->
