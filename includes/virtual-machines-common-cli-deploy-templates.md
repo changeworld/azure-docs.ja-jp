@@ -102,8 +102,8 @@ Azure リソース グループとその機能の詳細については、「[Azu
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
 | OpenLogic | CentOS | 7 | 7\.0.201503 |
 | OpenLogic | CentOS | 7\.1 | 7\.1.201504 |
-| CoreOS | CoreOS | ベータ版 | 647\.0.0 |
-| CoreOS | CoreOS | 安定版 | 633\.1.0 |
+| CoreOS | CoreOS | Beta | 647\.0.0 |
+| CoreOS | CoreOS | Stable | 633\.1.0 |
 | MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
 | MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1\.0.0 |
 | msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1\.0.0 |
