@@ -15,12 +15,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="03/30/2016"
+   ms.date="08/19/2016"
    ms.author="wesmc"/>
 
 # Azure Functions のテスト
 
-## 概要
+## Overview
 
 このチュートリアルでは、関数をテストするさまざまな方法について説明します。この記事では、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数を定義します。既定の **HttpTrigger Node.js 関数**テンプレート コードでは、`name` クエリ文字列パラメーターがサポートされています。このパラメーターを、要求本文内のユーザーの `address` 情報と共にサポートするコードも追加します。
 
@@ -28,7 +28,7 @@
 
 このチュートリアルの大部分で、**HttpTrigger Nodejs 関数**テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。新しい関数の作成に関する詳細については、チュートリアル「[Create your first Azure Function(初めての Azure 関数の作成)](functions-create-first-azure-function.md)」を参照してください。[Azure ポータル]でテスト関数を作成する際に、**HttpTrigger Nodejs 関数**テンプレートをクリックするだけで入手できます。
 
-この既定の関数テンプレートは、本質的には hello world 関数で、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。記事では、要求本文で JSON コンテンツとして名前と住所を指定できるようにするためのコードの更新も行います。これにより、関数は、これらが取得可能であれば、クライアントに返すようになります。
+この既定の関数テンプレートは、本質的には hello world 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。記事では、要求本文で JSON コンテンツとして名前と住所を指定できるようにするためのコードの更新も行います。これにより、関数は、これらが取得可能であれば、クライアントに返すようになります。
 
 テストに使用する次のコードで関数を更新します。
 
@@ -135,8 +135,8 @@ Postman は、ほとんどの関数でテスト用に推奨されるツールで
 
 > [AZURE.TIP] 使い慣れた REST クライアントを使用できます。次のクライアントが Postman の代わりに使用できます。
 > 
-> * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Paw](https://luckymarmot.com/paw)  
+> * [Fiddler](http://www.telerik.com/fiddler)
+> * [Paw](https://luckymarmot.com/paw)
 
 Postman で要求本文を使用して関数をテストするには、次の手順に従います。
 
@@ -238,7 +238,7 @@ Azure Functions でのバインドの使用に関する詳細については、�
 > [AZURE.NOTE] 別のキュー名を使用する場合は、必ず、[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)の規則に準拠した名前を使用してください。準拠していない場合、"HTTP 状態コード 400: 正しくない要求" が表示されます。
 
 1. 関数アプリの [Azure ポータル]で、**[New Function]** (新しい関数)、**[QueueTrigger - c#]** (QueueTrigger - C#) の順にクリックします。
-2. キュー関数で監視するキューの名前を入力します。 
+2. キュー関数で監視するキューの名前を入力します。
 
 		queue-newusers 
 
@@ -439,4 +439,4 @@ C# のコード例:
 
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

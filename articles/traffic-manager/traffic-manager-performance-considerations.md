@@ -3,7 +3,7 @@
    description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="kwill-MSFT"
+   authors="sdwheeler"
    manager="carmonm"
    editor="joaoma" />
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/10/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
 # Traffic Manager のパフォーマンスに関する考慮事項
@@ -28,7 +28,7 @@
 - Traffic Manager は基本的に DNS の解決だけを行います。つまり、Traffic Manager が Web サイトに対して与える可能性があるパフォーマンスに関する唯一の影響は、初期 DNS 参照です。
 - Traffic Manager の DNS 参照に関する説明のポイント。Traffic Manager は、ポリシーとプローブの結果に基づいて、通常の Microsoft DNS ルート サーバーを設定し、定期的に更新します。したがって、初期 DNS 参照の間であっても、DNS 要求は通常の Microsoft DNS ルート サーバーによって処理されるため、Traffic Manager による影響はありません。Traffic Manager が「停止」しても (つまり、ポリシーのプローブと DNS の更新を行っている VM での障害)、Microsoft DNS サーバーのエントリは維持されるため、Traffic Manager の DNS 名への影響はありません。唯一の影響は、ポリシーに基づくプローブと更新が行われないことです (つまり、プライマリ サイトがダウンした場合、Traffic Manager は DNS を更新してフェールオーバー サイトを参照できません)。
 - トラフィックは Traffic Manager を通過しません。クライアントと Azure ホステッド サービスの間の仲介者として機能する Traffic Manager サーバーはありません。DNS 参照が終了すると、Traffic Manager はクライアントとサーバーの間の通信から完全に削除されます。
-- DNS 参照は非常に高速で、キャッシュされます。初期 DNS 参照はクライアントとそれに構成されている DNS サーバーに依存し、通常、クライアントは DNS 参照を 50 ミリ秒以下で実行できます (http://www.solvedns.com/dns-comparison/) を参照)。最初の参照が終了すると、結果は DNS TTL の間キャッシュされます。Traffic Manager の場合、既定値は 300 秒です。
+- DNS 参照は非常に高速で、キャッシュされます。初期 DNS 参照はクライアントとそれに構成されている DNS サーバーに依存し、通常、クライアントは DNS 参照を 50 ミリ秒以下で実行できます (http://www.solvedns.com/dns-comparison/ を参照)。最初の参照が終了すると、結果は DNS TTL の間キャッシュされます。Traffic Manager の場合、既定値は 300 秒です。
 - ユーザーが選択した Traffic Manager のポリシー (パフォーマンス、フェールオーバー、ラウンド ロビン) は、DNS のパフォーマンスに影響を与えません。パフォーマンス ポリシーは、ユーザーのエクスペリエンスに悪影響を与える可能性があります。たとえば、米国のユーザーをアジアでホストされているサービスに送るような場合です。ただし、このようなパフォーマンスの問題は、Traffic Manager が原因ではありません。
 
   
@@ -84,4 +84,4 @@ http://www.digwebinterface.com – watchmouse サイトと似ていますが、�
 [Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

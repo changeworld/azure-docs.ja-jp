@@ -23,7 +23,7 @@
 - [PowerShell](dns-getstarted-create-dnszone.md)
 - [Azure CLI](dns-getstarted-create-dnszone-cli.md)
 
-この記事では、CLI を使用して DNS ゾーンを作成する手順を説明します。DNS ゾーンは、PowerShell または Azure ポータルを使用して作成することもできます。
+この記事では、PowerShell を使用して DNS ゾーンを作成する手順を説明します。DNS ゾーンは、CLI または Azure ポータルを使用して作成することもできます。
 
 [AZURE.INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -174,4 +174,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

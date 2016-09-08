@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス: リージョン全体のサービス中断からの復旧
@@ -102,11 +102,11 @@ Azure SQL Database には、geo リストアとアクティブ geo レプリケ�
 
 ####地理リストア
 
-[geo リストア](../sql-database/sql-database-recovery-using-backups.md#geo-restore)も、Basic、Standard、および Premium のデータベースで利用できます。データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合は、既定の復旧オプションを提供します。ポイントインタイム リストアと同様に、geo リストアも geo 冗長 Azure Storage のデータベースのバックアップに依存します。geo レプリケーション バックアップ コピーから復元するため、プライマリ リージョンにおけるストレージの障害に対する回復力があります。詳細については、「[障害からの回復](../sql-database/sql-database-disaster-recovery.md)」を参照してください。
+[geo リストア](../sql-database/sql-database-recovery-using-backups.md#geo-restore)も、Basic、Standard、および Premium のデータベースで利用できます。データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合は、既定の復旧オプションを提供します。ポイントインタイム リストアと同様に、geo リストアも geo 冗長 Azure Storage のデータベースのバックアップに依存します。geo レプリケーション バックアップ コピーから復元するため、プライマリ リージョンにおけるストレージの障害に対する回復力があります。詳細については、「[Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](../sql-database/sql-database-disaster-recovery.md)」を参照してください。
 
 ####アクティブ geo レプリケーションを選択するとき
 
-[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md)は、すべてのデータベース レベルで使用できます。アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。いずれかのセカンダリへのフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページ、および[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。アプリケーションを設計して実装する方法、およびダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[ダウンタイムのないアプリケーションのアップグレード](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
+[アクティブ geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md)は、すべてのデータベース レベルで使用できます。アクティブ geo レプリケーションは、geo リストアよりもアグレッシブな復旧要件があるアプリケーション用に設計されています。アクティブ geo レプリケーションを使用して、別のリージョン内のサーバーで最大 4 つの読み取り可能なセカンダリを作成できます。いずれかのセカンダリへのフェールオーバーを開始できます。さらに、アクティブ geo レプリケーションを使用すると、アプリケーションのアップグレードや再配置のシナリオをサポートするだけでなく読み取り専用ワークロードの負荷を分散することができます。詳細については、[geo レプリケーションの構成](../sql-database/sql-database-geo-replication-portal.md)に関するページ、および[セカンダリ データベースへのフェールオーバー](../sql-database/sql-database-geo-replication-failover-portal.md)に関するページをご覧ください。アプリケーションを設計して実装する方法、およびダウンタイムなしのアプリケーション アップグレードの詳細については、「[SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)」と「[SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理](../sql-database/sql-database-manage-application-rolling-upgrade.md)」をご覧ください。
 
 ###Virtual Machines 上の SQL Server
 
@@ -120,7 +120,7 @@ SQL Server 2012 (以降) を Azure Virtual Machines で実行した場合、復�
 
 ###Service Bus
 
-Azure Service Bus は、Azure リージョンにまたがらない一意の名前空間名を使用します。したがって、最初の要件は代替リージョンで必要なサービス バス名前空間を設定することです。ただし、キューに置かれたメッセージの持続性についても考慮事項があります。Azure リージョン間でメッセージをレプリケートするにはいくつかの方法があります。これらのレプリケーション方法とその他の障害復旧計画の詳細については、「[Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス](../service-bus/service-bus-outages-disasters.md)」を参照してください。その他の可用性の考慮事項については、[Service Bus (可用性)](./resiliency-technical-guidance-recovery-local-failures.md#service-bus) に関するページを参照してください。
+Azure Service Bus は、Azure リージョンにまたがらない一意の名前空間名を使用します。したがって、最初の要件は代替リージョンで必要なサービス バス名前空間を設定することです。ただし、キューに置かれたメッセージの持続性についても考慮事項があります。Azure リージョン間でメッセージをレプリケートするにはいくつかの方法があります。これらのレプリケーション方法とその他の障害復旧計画の詳細については、「[Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス](../service-bus/service-bus-outages-disasters.md)」を参照してください。その他の可用性の考慮事項については、[Service Bus (可用性)](./resiliency-technical-guidance-recovery-local-failures.md#other-azure-platform-services) に関するページを参照してください。
 
 ###Web Apps
 
@@ -132,9 +132,9 @@ Azure の Web アプリをセカンダリ Azure リージョンに移行する�
 
 ###HDInsight
 
-HDInsight に関連付けられているデータは、既定では Azure BLOB ストレージに保存されます。HDInsight では、MapReduce ジョブを処理する Hadoop クラスターは分析されるデータを保持したストレージ アカウントと同じリージョンに併置する必要があります。Azure Storage で利用可能な geo レプリケーション機能を使用すると、何らかの理由によりプライマリ リージョンが使用できなくなった場合、データがレプリケートされたセカンダリ リージョンのデータにアクセスできます。データがレプリケートされているリージョンに新しい Hadoop クラスターを作成し、データの処理を継続することができます。その他の可用性の考慮事項については、[HDInsight (可用性)](./resiliency-technical-guidance-recovery-local-failures.md#hdinsight) に関するページを参照してください。
+HDInsight に関連付けられているデータは、既定では Azure BLOB ストレージに保存されます。HDInsight では、MapReduce ジョブを処理する Hadoop クラスターは、分析されるデータを保持したストレージ アカウントと同じリージョンに併置する必要があります。Azure Storage で利用可能な geo レプリケーション機能を使用すると、何らかの理由によりプライマリ リージョンが使用できなくなった場合、データがレプリケートされたセカンダリ リージョンのデータにアクセスできます。データがレプリケートされているリージョンに新しい Hadoop クラスターを作成し、データの処理を継続することができます。その他の可用性の考慮事項については、[HDInsight (可用性)](./resiliency-technical-guidance-recovery-local-failures.md#other-azure-platform-services) に関するページを参照してください。
 
-###SQL レポート
+###SQL Reporting
 
 現時点では、Azure リージョンの損失からの復旧には、異なる Azure リージョンにそれぞれ複数の SQL Reporting インスタンスが必要です。これらの SQL Reporting インスタンスは、同じデータにアクセスする必要があり、そのデータには災害が発生した場合の独自の復旧計画が必要です。また、各レポートに RDL ファイルの外部バックアップ コピーを保持できます。
 
@@ -149,69 +149,81 @@ Azure Media Services には、エンコードとストリーミングのため�
 ##障害復旧のためのチェックリスト
 
 ##Cloud Services のチェックリスト
-  1. このドキュメントの「[Cloud Services](#cloud-services)」セクションを確認する。
+
+  1. このドキュメントの「Cloud Services」セクションを確認する。
   2. 複数のリージョンにわたる障害復旧方法を作成する。
   3. 代替リージョンにおける容量の確保においてのトレードオフを理解する。
   4. Azure Traffic Manager などのトラフィック ルーティング ツールを使用する。
 
 ##Virtual Machines のチェックリスト
-  1. このドキュメントの「[Virtual Machines](#virtual-machines)」セクションを確認する。
+
+  1. このドキュメントの「Virtual Machines」セクションを確認する。
   2. [Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、リージョン間でアプリケーション整合性のあるバックアップを作成する。
 
 ##Storage のチェックリスト
-  1. このドキュメントの「[Storage](#storage)」セクションを確認する。
+
+  1. このドキュメントの「Storage」セクションを確認する。
   2. ストレージ リソースの geo レプリケーションを無効にしない。
   3. フェールオーバーが発生した場合の geo レプリケーションの代替リージョンを理解する。
   4. ユーザー制御のフェールオーバー方法に有効なカスタム バックアップ方法を作成する。
 
 ##SQL Database のチェックリスト
-  1. このドキュメントの「[SQL Database](#sql-database)」セクションを確認する。
+
+  1. このドキュメントの「SQL Database」セクションを確認する。
   2. 必要に応じて [geo リストア](../sql-database/sql-database-recovery-using-backups.md#geo-restore)または [geo レプリケーション](../sql-database/sql-database-geo-replication-overview.md)を使用する。
 
 ##Virtual Machines での SQL Server のチェックリスト
-  1. このドキュメントの「[Virtual Machines 上の SQL Server](#sql-server-on-virtual-machines)」セクションを確認する。
+
+  1. このドキュメントの「Virtual Machines 上の SQL Server」セクションを確認する。
   2. 複数のリージョンにわたる AlwaysOn 可用性グループまたはデータベース ミラーリングを使用する。
   3. または、バックアップを使用して、Blob Storage に復元します。
 
 ##Service Bus のチェックリスト
-  1. このドキュメントの「[Service Bus](#service-bus)」セクションを確認する。
+
+  1. このドキュメントの「Service Bus」セクションを確認する。
   2. 代替リージョンで Service Bus 名前空間を構成する。
   3. リージョン間でのメッセージのカスタム レプリケーション方法を検討する。
 
 ##Web Apps のチェックリスト
-  1. このドキュメントの「[Web Apps](#web-apps)」セクションを確認する。
+
+  1. このドキュメントの「Web Apps」セクションを確認する。
   2. プライマリ リージョンの外で Web サイトのバックアップを維持する。
   3. 障害が部分的な場合は、FTP を使用して現在のサイトの取得を試みる。
   4. 代替リージョンの新規または既存の Web サイトに Web サイトをデプロイする計画を作成する。
   5. アプリケーションと DNS の CNAME レコードの両方の構成変更を計画する。
 
 ##Mobile Services のチェックリスト
-  1. このドキュメントの「[Mobile Services](#mobile-services)」セクションを確認する。
+
+  1. このドキュメントの「モバイル サービス」セクションを確認する。
   2. 代替リージョンのバックアップ モバイル サービスを作成する。
   3. フェールオーバー中に復元する、関連付けられた Azure SQL Database のバックアップを管理する。
   4. Azure コマンド ライン ツールを使用して、モバイル サービスに移動する。
 
 ##HDInsight のチェックリスト
-  1. このドキュメントの「[HDInsight](#hdinsight)」セクションを確認する。
+
+  1. このドキュメントの「HDInsight」セクションを確認する。
   2. レプリケートされたデータを使用して、リージョンに新しい Hadoop クラスターを作成する。
 
 ##SQL Reporting のチェックリスト
-  1. このドキュメントの「[SQL Reporting](#sql-reporting)」セクションを確認する。
+
+  1. このドキュメントの「SQL Reporting」セクションを確認する。
   2. SQL Reporting の代替インスタンスを別のリージョンで保持する。
   3. そのリージョンに対象をレプリケートする別の計画を維持する。
 
 ##Media Services のチェックリスト
-  1. このドキュメントの「[Media Services](#media-services)」セクションを確認する。
+
+  1. このドキュメントの「Media Services」セクションを確認する。
   2. 代替リージョンで Media Services アカウントを作成する。
   3. 両方のリージョンで同じ内容をエンコードして、ストリーム フェールオーバーをサポートする。
-  4. 障害が発生した場合は、エンコード ジョブを代替リージョンに送信する。
+  4. サービスの中断が発生した場合は、エンコード ジョブを代替リージョンに送信する。
 
 ##Virtual Network のチェックリスト
-  1. このドキュメントの「[Virtual Network](#virtual-network)」セクションを確認する。
+
+  1. このドキュメントの「Virtual Network」セクションを確認する。
   2. エクスポートされた仮想ネットワーク設定を使用して、別のリージョンでテーブルを再作成する。
 
 ##次のステップ
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[オンプレミスのデータセンターから Azure への復旧](./resiliency-technical-guidance-recovery-on-premises-azure.md)について重点的に説明します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

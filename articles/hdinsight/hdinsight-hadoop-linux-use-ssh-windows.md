@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/14/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 #HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
@@ -26,6 +26,8 @@
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) では、コマンドライン インターフェイスを利用し、Linux ベース HDInsight クラスターで操作をリモート実行できます。このドキュメントでは、PuTTY SSH クライアントを使用した Windows ベースのクライアントからの HDInsight への接続について説明します。
 
 > [AZURE.NOTE] この記事の手順では、Windows ベースのクライアントを使用していることを前提としています。Linux、Unix、OS X クライアントを使用する場合は、[「Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する」](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
+>
+> Windows 10 で [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) を使用している場合は、[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)方法に関するドキュメントの手順に従ってください。
 
 ##前提条件
 
@@ -235,4 +237,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

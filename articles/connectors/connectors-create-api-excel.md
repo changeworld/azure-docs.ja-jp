@@ -1,5 +1,5 @@
 <properties
-pageTitle="PowerApps Enterprise への Excel コネクタの追加 | Microsoft Azure"
+pageTitle="Excel コネクタを追加する | Microsoft Azure"
 description="Excel コネクタと REST API パラメーターの概要"
 services=""    
 documentationCenter=""     
@@ -14,198 +14,204 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="na"
-ms.date="05/18/2016"
+ms.date="08/23/2016"
 ms.author="deonhe"/>
 
 # Excel コネクタの使用
 
-Excel に接続して行の挿入、削除などを行います。Excel コネクタは、次のツールから使用できます。
+現時点では Logic Apps に Excel コネクタはありません。
 
-- PowerApps
+## Excel データを使用するには
+[OneDrive](connectors-create-api-onedrive.md) などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして Excel データを格納できます。この CSV ファイルは、[フラット ファイル コネクタ](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md)で使用することもできます。
 
-Excel で次の操作を実行できます。
+<!---
 
-- PowerApps Enterprise に Excel コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
+There is no Excel connector in Logic Apps. Originally, this topic only referenced PowerApps. Removed all PowerApps references. 
 
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
 
-## トリガーとアクション
-Excel には次のアクションが含まれています。トリガーはありません。
 
-|トリガー|アクション|
+Connect to Excel to insert a row, delete a row, and more. 
+
+## Triggers and actions
+Excel includes the following action. There are no triggers. 
+
+|Trigger|Actions|
 |--- | ---|
-|なし | <ul><li>行の取得</li><li>行の挿入</li><li>行の削除</li><li>行の取得</li><li>テーブルの取得</li><li>行の更新</li></ul>
+|None | <ul><li>Get rows</li><li>Insert row</li><li>Delete row</li><li>Get row</li><li>Get tables</li><li>Update row</li></ul>
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
+All connectors support data in JSON and XML formats. 
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+## Swagger REST API reference
+Applies to version: 1.0.
 
-### Excel テーブルに新しい行を挿入します。
-```POST: /datasets/{dataset}/tables/{table}/items```
+### Inserts a new row into an Excel table
+```POST: /datasets/{dataset}/tables/{table}/items``` 
 
 
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|Excel ファイル名|
-|テーブル|string|○|path|なし|Excel テーブル名|
-|項目| |○|body|なし|指定された Excel テーブルに挿入する行|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|item| |yes|body|none|Row to insert into the specified Excel table|
 
 
 ### Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
 
 
-### Excel テーブルから 1 つの行を取得します。
-```GET: /datasets/{dataset}/tables/{table}/items/{id}```
+### Retrieves a single row from an Excel table
+```GET: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|Excel ファイル名|
-|テーブル|string|○|path|なし|Excel テーブル名|
-|id|string|○|path|なし|取得する行の一意識別子|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of row to retrieve|
 
 
 ### Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
 
 
-### Excel テーブルから行を削除します。
-```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
+### Deletes a row from an Excel table
+```DELETE: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|Excel ファイル名|
-|テーブル|string|○|path|なし|Excel テーブル名|
-|id|string|○|path|なし|削除する行の一意識別子|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of the row to delete|
 
 
 ### Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
 
 
-### Excel テーブルの既存の行を更新します。
-```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
+### Updates an existing row in an Excel table
+```PATCH: /datasets/{dataset}/tables/{table}/items/{id}``` 
 
 
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|Excel ファイル名|
-|テーブル|string|○|path|なし|Excel テーブル名|
-|id|string|○|path|なし|更新する行の一意識別子|
-|item| |○|body|なし|更新された値のある行|
+|dataset|string|yes|path|none|Excel file name|
+|table|string|yes|path|none|Excel table name|
+|id|string|yes|path|none|Unique identifier of the row to update|
+|item| |yes|body|none|Row with updated values|
 
 
 ### Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
 
 
-## オブジェクト定義
+## Object definitions
 
 #### DataSetsMetadata
 
-| 名前 | データ型 | 必須|
+| Name | Data Type | Required|
 |---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
+|tabular|not defined|no|
+|blob|not defined|no|
 
 #### TabularDataSetsMetadata
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
+|source|string|no|
+|displayName|string|no|
+|urlEncoding|string|no|
+|tableDisplayName|string|no|
+|tablePluralName|string|no|
 
 #### BlobDataSetsMetadata
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|source セクション|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
+|source|string|no|
+|displayName|string|no|
+|urlEncoding|string|no|
 
 #### TableMetadata
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|name|string|×|
-|title|string|×|
-|x-ms-permission|string|×|
-|schema|未定義|×|
+|name|string|no|
+|title|string|no|
+|x-ms-permission|string|no|
+|schema|not defined|no|
 
 #### DataSetsList
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|値|array|×|
+|value|array|no|
 
 #### DataSet
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
+|Name|string|no|
+|DisplayName|string|no|
 
-#### テーブル
+#### Table
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
+|Name|string|no|
+|DisplayName|string|no|
 
-#### 項目
+#### Item
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|ItemInternalId|string|×|
+|ItemInternalId|string|no|
 
 #### TablesList
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|値|array|×|
+|value|array|no|
 
 #### ItemsList
 
-| 名前 | データ型 |必須|
+| Name | Data Type |Required|
 |---|---|---|
-|値|array|×|
+|value|array|no|
 
 
-## 次のステップ
-[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md) [PowerApps の作成](../power-apps/powerapps-get-started-azure-portal.md)
+## Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
 
-<!---HONumber=AcomDC_0525_2016-->
+
+-->
+
+<!---HONumber=AcomDC_0824_2016-->

@@ -26,7 +26,7 @@ Azure Site Recovery は、仮想マシンと物理サーバーのレプリケー
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
 
-## 概要
+## Overview
 
 ネットワーク マッピングは、Hyper-V レプリカまたは SAN レプリケーションを使用して Azure またはセカンダリ データセンターに Hyper-V 仮想マシンをレプリケートするために Azure Site Recovery をデプロイするときに使用します。
 
@@ -55,7 +55,7 @@ VMM でネットワークが正しくセットアップされている場合、�
 ニューヨーク | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago にマップされています
  | | VMNetwork2-NewYork | マッピングなし
 シカゴ | VMM-Chicago| VMNetwork1-Chicago | VMNetwork1-NewYork にマップされています
- | | VMNetwork1-Chicago | マッピングなし
+ | | VMNetwork2-Chicago | マッピングなし
 
 この例では、次の点に注意してください。
 
@@ -123,4 +123,4 @@ VMNetwork1-Chicago のネットワークのマッピングが変更される。 
 
 ネットワーク マッピングに関する理解が深まったところで、[Site Recovery をデプロイしてみましょう](site-recovery-best-practices.md)。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

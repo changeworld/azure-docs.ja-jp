@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-phone" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement の Windows Phone Silverlight SDK 概要
@@ -56,7 +56,7 @@ SDK によって生成されるコンソール ログを有効化/無効化/フ�
 
 ### 古いバージョンからのアップグレード
 
-[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure/)をご覧ください
+[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure.md)をご覧ください
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

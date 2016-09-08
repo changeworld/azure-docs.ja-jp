@@ -27,19 +27,20 @@
 
 ### <a id="general_issues"></a>Media Services の全般的な問題
 
-問題|説明
+問題|Description
 ---|---
 REST API で一般的な HTTP ヘッダーがいくつか提供されていない。|REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。ヘッダーは、今後の更新プログラムで追加される予定です。
-エスケープ文字を含むファイル名 (たとえば、%20) の資産をエンコードすると、"MediaProcessor : File not found." が返され失敗する。|資産に付加し、その後エンコードする予定のファイル名には、英数字とスペースのみを使用する必要があります。問題は、今後の更新プログラムで修正される予定です。
+パーセントエンコーディングは利用できません。|Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。|Media Services は、[2012-02-12](http://msdn.microsoft.com/library/azure/dn592123.aspx) バージョンに基づいて SAS URL を生成します。Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。
 Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。|詳細については、「[Azure Media Services エラー コード](http://msdn.microsoft.com/library/azure/dn168949.aspx)」の 503 HTTP 状態コードの説明を参照してください。
 パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 | [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。|詳細については、[こちらの](media-services-deliver-content-overview.md#known-issues)セクションを参照してください。
 Azure Media Services .NET SDK オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しません。|SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。
+エンコード ジョブが、メッセージ文字列 "段階: DownloadFile.コード: System.NullReferenceException" で失敗します。|一般的なエンコード ワークフローでは、入力ビデオ ファイルを入力資産にアップロードし、その入力資産の 1 つまたは複数のエンコード ジョブを送信します。その入力資産がさらに変更されることはありません。ただし、(たとえば、資産内のファイルの追加/削除/名前変更のために) 入力資産を変更した場合は、これ以降のジョブが DownloadFile エラーで失敗する可能性があります。これを回避するには、入力資産を削除して、新しい資産に入力ファイルを再度アップロードしてください。 
 
 ##<a id="rest_version_history"></a>REST API バージョン履歴
 
-Media Services REST API バージョン履歴の詳細については、「[Azure モバイル サービス REST API リファレンス]」を参照してください。
+Media Services REST API バージョン履歴の詳細については、「[Azure Media Services REST API リファレンス]」を参照してください。
 
 ##<a id="july_changes16"></a>2016 年 7 月のリリース
 
@@ -121,20 +122,20 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 
 	[AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
-- AMS に、Apple ProRes ビデオのサポートが追加されました。Apple ProRes やその他のコーデックを使用する QuickTime ソース ビデオをアップロードできるようになりました。詳細については、[このブログ](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)を参照してください。
+- AMS に、Apple ProRes ビデオのサポートが追加されました。Apple ProRes やその他のコーデックを使用する QuickTime ソース ビデオをアップロードできるようになりました。詳細については、[このブログ](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)をご覧ください。
 
-- Media Encoder Standard を使用して、サブクリップとライブ アーカイブ抽出を実行できるようになりました。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)を参照してください。
+- Media Encoder Standard を使用して、サブクリップとライブ アーカイブ抽出を実行できるようになりました。詳細については、[このブログ](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)をご覧ください。
 
 - 次のフィルター処理の更新が行われました。
 
 	- オーディオ専用フィルター付きの Apple HTTP Live Streaming (HLS) 形式を使用できるようになりました。この更新では、(audio-only=false) を、URL に指定することで、オーディオ専用トラックを削除できます。
 	- アセット用のフィルターを定義するときに、複数のフィルター (最大 3 つ) を 1 つの URL に組み合わせることができるようになりました。
 
-	詳細については、[この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)を参照してください。
+	詳細については、[このブログ](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)をご覧ください。
 
 - AMS で HLS v4 の I フレームをサポートするようになりました。I フレームのサポートは、早送りと巻き戻しの操作を最適化します。既定では、すべての HLS v4 出力には、I フレームの再生リスト (EXT-X-I-FRAME-STREAM-INF) が含まれます。
  
-	詳細については、[この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)を参照してください。
+	詳細については、[このブログ](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)をご覧ください。
 
 ##<a id="august_changes_15"></a>2015 年 8 月のリリース
 
@@ -328,7 +329,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 	* カスタム ホスト名 (たとえば、sports.contoso.com) を Media Services StreamingEndpont のホスト名 (たとえば、amstest.streaming.mediaservices.windows.net) にマップする別の CName を作成する必要があります。
 
 
-	詳細については、「**StreamingEndpoint**」の [CustomHostNames] プロパティを参照してください。
+	詳細については、「[StreamingEndpoint]」の **CustomHostNames** プロパティを参照してください。
 
 ### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
 
@@ -348,7 +349,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 
 ##<a id="august_changes_14"></a>2014 年 8 月のリリース
 
-資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。このリリースから、エンコーダーは入力資産に関するメタデータも生成します。詳細については、「[Input Metadata (入力メタデータ)]」および「[Output Metadata (出力メタデータ)]」を参照してください。
+資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。このリリースから、エンコーダーは入力資産に関するメタデータも生成します。詳細については、「[Input Metadata (入力のメタデータ)]」および「[Output Metadata (出力のメタデータ)]」を参照してください。
 
 
 ##<a id="july_changes_14"></a>2014 年 7 月のリリース
@@ -365,7 +366,7 @@ Azure Media Services パッケージおよび暗号化機能で次のバグが�
 
 現在、[動的パッケージ]を使用して、HTTP ライブ ストリーミング (HLS) v3 をストリーミングできます。HLS v3 をストリーミングするには、次のフォーマットをオリジン ロケーター パスに追加します。*.ism/manifest(format=m3u8-aapl-v3)。詳細については、「[Nick Drouin's Blog (Nick Drouin のブログ)]」を参照してください。
 
-現在、動的パッケージは、PlayReady によるスムーズ ストリーミング静的暗号化に基づく、PlayReady による HLS (v3 および v4) 暗号化の配信もサポートしています。PlayReady によるスムーズ ストリーミングの暗号化方法の詳細については、「[PlayReady によるスムーズ ストリーミングおよび MPEG DASH の保護]」を参照してください。
+現在、動的パッケージは、PlayReady によるスムーズ ストリーミング静的暗号化に基づく、PlayReady による HLS (v3 と v4) 暗号化の配信もサポートしています。PlayReady によるスムーズ ストリーミングの暗号化方法の詳細については、「[PlayReady によるスムーズ ストリーミングおよび MPEG DASH の保護]」を参照してください。
 
 ### <a name="may_14_donnet_changes"></a>Media Services .NET SDK の更新
 
@@ -423,7 +424,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。Nuget から最新パッケージをダウンロードするか、[GitHub] からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK による Media Services への接続]」の「Access Control Service トークンの再利用」を参照してください。
+Media Services SDK Version 3.0.0.0 から、[Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。詳細については、「[Media Services SDK for .NET を使用した Media Services アカウントへの接続]」の「Access Control Service トークンの再利用」を参照してください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 
@@ -477,7 +478,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 	
 	NotificationEndPoint
 	
-	Job
+	ジョブ
 
 * Asset.Uri
 
@@ -515,7 +516,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
 * Azure Storage クライアント SDK 2.0 への依存関係 (Microsoft.WindowsAzure.StorageClient.dll)
 
-* OData 5.5 への依存関係 (Microsoft.Data.OData.dll)
+* OData 5.5 への依存関係 (Microsoft.Data.OData.dll)。
 
 
 ##<a id="december_changes_12"></a>2012 年 12 月のリリース
@@ -614,14 +615,12 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 <!--- URLs. --->
 [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
-[Azure モバイル サービス REST API リファレンス]: http://msdn.microsoft.com/library/azure/hh973617.aspx
 [Media Services の料金詳細]: http://azure.microsoft.com/pricing/details/media-services/
-[Input Metadata (入力メタデータ)]: http://msdn.microsoft.com/library/azure/dn783120.aspx
-[Output Metadata (出力メタデータ)]: http://msdn.microsoft.com/library/azure/dn783217.aspx
+[Input Metadata (入力のメタデータ)]: http://msdn.microsoft.com/library/azure/dn783120.aspx
+[Output Metadata (出力のメタデータ)]: http://msdn.microsoft.com/library/azure/dn783217.aspx
 [コンテンツの配信]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Azure Media Indexer によるメディア ファイルのインデックス作成]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
-[CustomHostNames]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [StreamingEndpoint.aspx]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [ストリーミング エンドポイント]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [Azure Media Services ライブ ストリーミングの操作に関するページ]: http://msdn.microsoft.com/library/azure/dn783466.aspx
@@ -642,7 +641,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [ビデオのセグメントの結合]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[Media Services SDK による Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Media Services SDK for .NET を使用した Media Services アカウントへの接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK Extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
@@ -650,4 +649,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

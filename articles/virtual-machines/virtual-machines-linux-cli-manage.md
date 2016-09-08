@@ -14,11 +14,11 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="infrastructure-services"
-   ms.date="07/12/2016"
+   ms.date="08/23/2016"
    ms.author="rclaus" />
 
 # Linux および Mac での一般的な Azure CLI コマンド
 
 [AZURE.INCLUDE [virtual-machines-common-cli-manage](../../includes/virtual-machines-common-cli-manage.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0824_2016-->

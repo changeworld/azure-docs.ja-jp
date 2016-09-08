@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス - Azure でのローカル障害からの復旧
@@ -148,7 +148,7 @@ Azure 内の SQL Server データベースの高可用性ソリューション�
 
 また、Azure ポータルの AlwaysOn テンプレートを使用して、Azure VM で AlwaysOn 可用性グループのデプロイをエンドツーエンドで自動的にプロビジョニングすることもできます。詳細については、[Microsoft Azure ポータル ギャラリーで提供されている SQL Server AlwaysOn テンプレート](https://blogs.technet.microsoft.com/dataplatforminsider/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery/)に関する記事を参照してください。
 
-次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。この図も、このテーマについての詳細な解説記事「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)」から引用したものです。
+次の図は、Azure Virtual Machines でのデータベース ミラーリングの使用方法を示しています。この図も、[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](../virtual-machines/virtual-machines-windows-sql-high-availability-dr.md)に関する詳細な解説記事から引用したものです。
 
 ![Database mirroring in Microsoft Azure](./media/resiliency-technical-guidance-recovery-local-failures/high_availability_solutions-2.png)
 
@@ -160,23 +160,23 @@ Azure に構築されるアプリケーションは、ローカル障害から�
 
 ###Service Bus
 
-Azure Service Bus の一時的な機能停止状態を緩和するには、永続的なクライアント側キューの作成を検討してください。これにより、一時的に代替の、ローカル ストレージ メカニズムを使用して、Service Bus キューに追加できないメッセージを保存します。アプリケーションでは、サービスを復元した後で、一時的に保存されたメッセージの処理方法を決定することができます。詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](../service-bus/service-bus-performance-improvements.md)」と [Service Bus (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#service-bus) に関するページを参照してください。
+Azure Service Bus の一時的な機能停止状態を緩和するには、永続的なクライアント側キューの作成を検討してください。これにより、一時的に代替の、ローカル ストレージ メカニズムを使用して、Service Bus キューに追加できないメッセージを保存します。アプリケーションでは、サービスを復元した後で、一時的に保存されたメッセージの処理方法を決定することができます。詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](../service-bus/service-bus-performance-improvements.md)」と [Service Bus (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページを参照してください。
 
 ###Mobile Services
 
 Azure Mobile Services には、可用性について 2 つの考慮事項があります。1 つは、モバイル サービスに関連付けられた SQL データベースを定期的にバックアップすること、もう 1 つは、モバイル サービス スクリプトをバックアップすることです。詳細については、「[障害発生時のモバイル サービスの復旧](../mobile-services/mobile-services-disaster-recovery.md)」を参照してください。
 
-Mobile Services で一時的な機能停止が発生した場合、代替の Azure データセンターを一時的に使用する必要があることがあります。詳細については、[Mobile Services (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#mobile-services) に関するページを参照してください。
+Mobile Services で一時的な機能停止が発生した場合、代替の Azure データセンターを一時的に使用する必要があることがあります。詳細については、[モバイル サービス (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページを参照してください。
 
 ###HDInsight
 
-Azure HDInsight に関連付けられているデータは、既定では Azure Blob Storage に保存されます。Azure Storage は、Blob Storage に対して高可用性と持続性のプロパティを指定します。Hadoop MapReduce ジョブに関連付けられたマルチノード処理は、HDInsight が必要とする場合にプロビジョニングされる一時的な Hadoop 分散ファイル システム (HDFS) 上で発生します。MapReduce ジョブの結果も、既定では Azure BLOB ストレージに保存されます。そのため、Hadoop クラスターがプロビジョニング解除された後も、処理されたデータには持続性があり、高可用性が保たれます。詳細については、[HDInsight (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#hdinsight) に関するページを参照してください。
+Azure HDInsight に関連付けられているデータは、既定では Azure Blob Storage に保存されます。Azure Storage は、Blob Storage に対して高可用性と持続性のプロパティを指定します。Hadoop MapReduce ジョブに関連付けられたマルチノード処理は、HDInsight が必要とする場合にプロビジョニングされる一時的な Hadoop 分散ファイル システム (HDFS) 上で発生します。MapReduce ジョブの結果も、既定では Azure BLOB ストレージに保存されます。そのため、Hadoop クラスターがプロビジョニング解除された後も、処理されたデータには持続性があり、高可用性が保たれます。詳細については、[HDInsight (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページを参照してください。
 
 ##ローカル障害のチェックリスト
 
 ###Cloud Services
 
-  1. このドキュメントの「[Cloud Services](#cloud-services)」セクションを確認する。
+  1. このドキュメントの「Cloud Services」セクションを確認する。
   2. 各ロールに 2 つ以上のインスタンスを構成する。
   3. ロール インスタンスではなく、持続性のあるストレージで状態を永続化する。
   4. StatusCheck イベントを適切に処理する。
@@ -187,40 +187,40 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 
 ###Virtual Machines
 
-  1. このドキュメントの「[Virtual Machines](#virtual-machines)」セクションを確認する。
+  1. このドキュメントの「Virtual Machines」セクションを確認する。
   2. 永続的ストレージに D ドライブを使用しない。
   3. サービス層のコンピューターを可用性セットにグループ化する。
   4. 負荷分散とオプションのプローブを構成する。
 
 ###Storage
 
-  1. このドキュメントの「[Storage](#storage)」セクションを確認する。
+  1. このドキュメントの「Storage」セクションを確認する。
   2. データまたは帯域幅がクォータを超えている場合、複数のストレージ アカウントを使用する。
 
 ###SQL Database
 
-  1. このドキュメントの「[SQL Database](#sql-database)」セクションを確認する。
+  1. このドキュメントの「SQL Database」セクションを確認する。
   2. 一時的なエラーを処理するために再試行ポリシーを実行する。
   3. スケールアウトの方法として、パーティション分割/シャーディングを使用する。
 
 ###Virtual Machines 上の SQL Server
 
-  1. このドキュメントの「[Virtual Machines 上の SQL Server](#sql-server-on-virtual-machines)」セクションを確認する。
+  1. このドキュメントの「Virtual Machines 上の SQL Server」セクションを確認する。
   2. Virtual Machines についての前の推奨事項に従う。
   3. AlwaysOn など、SQL Server の高可用性機能を使用する。
 
 ###Service Bus
 
-  1. このドキュメントの「[Service Bus](#service-bus)」セクションを確認する。
+  1. このドキュメントの「Service Bus」セクションを確認する。
   2. バックアップとして永続的なクライアント側キューを作成することを検討する。
 
 ###HDInsight
 
-  1. このドキュメントの「[HDInsight](#hdinsight)」セクションを確認する。
+  1. このドキュメントの「HDInsight」セクションを確認する。
   2. ローカル障害に必要な追加の可用性の手順がない。
 
 ##次のステップ
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[リージョン全体のサービス中断からの復旧](./resiliency-technical-guidance-recovery-loss-azure-region.md)について説明します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

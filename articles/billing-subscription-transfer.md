@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="07/21/2016"
+   ms.date="08/17/2016"
    ms.author="genli"/>
 
 # Azure サブスクリプションの所有権の譲渡
@@ -28,7 +28,9 @@
 
 従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。サブスクリプションを別のユーザーに譲渡する機能が追加されました。つまり、どの国で使用していても、所有する任意の従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになりました。このようなサブスクリプションの種類についても、Azure Marketplace での購入の譲渡がサポートされるようになりました。
 
-> [AZURE.NOTE]  サブスクリプションの別のプランへの変更については、「[Azure サブスクリプションを別のプランに切り替える](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
+> [AZURE.NOTE]  サブスクリプションの別のプランへの変更については、「[別のプランへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
+
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 > 所有権の譲渡を実行するには、アカウント管理者である必要があります。サブスクリプションのアカウント管理者を確認する方法の詳細については、[よく寄せられる質問](#faq)を参照してください。
 
@@ -42,21 +44,21 @@
 
 3.  **[サブスクリプションの譲渡]** オプションをクリックします。
 
-    ![Azure アカウントの [サブスクリプション] タブ](./media/billing-subscription-transfer/image1.png)
+    ![Azure account subscriptions tab](./media/billing-subscription-transfer/image1.png)
 
 4.  指示に従って、譲渡先を指定します。
 
-    ![[サブスクリプションの譲渡] ダイアログ ボックス](./media/billing-subscription-transfer/image2.PNG)
+    ![Transfer Subscription dialog box](./media/billing-subscription-transfer/image2.PNG)
 
 5.  譲渡先には、承認用のリンクが記載された電子メールが自動的に送信されます。
 
-    ![サブスクリプションの譲渡で譲渡先に送信される電子メール](./media/billing-subscription-transfer/image3.png)
+    ![Subscription transfer email to recipient](./media/billing-subscription-transfer/image3.png)
 
 6.  譲渡先のユーザーは、リンクをクリックして指示に従います (支払情報の入力など)。
 
-    ![最初のサブスクリプション譲渡 Web ページ](./media/billing-subscription-transfer/image4.PNG)
+    ![First subscription transfer web page](./media/billing-subscription-transfer/image4.PNG)
 
-    ![次のサブスクリプション譲渡 Web ページ](./media/billing-subscription-transfer/image5.PNG)
+    ![Second subscription transfer web page](./media/billing-subscription-transfer/image5.PNG)
 
 7. 成功です。 サブスクリプションが譲渡されました。
 
@@ -123,12 +125,14 @@
 ## サブスクリプションの所有権を受け取った後の次のステップ
 
 1. アカウント管理者になったら、サービス管理者と共同管理者を見直して更新します。管理者の管理は、[Azure クラシック ポータル](https://manage.windowsazure.com)で [設定] に移動して実行します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533293)
-2. サブスクリプションとサービスに対して、ロール ベースのアクセス制御 (RBAC) を使用することもできます。[Azure ポータル](https://portal.azure.com)に関するページおよび「[Microsoft Azure ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkID=544802)」を参照してください。
-3. このサブスクリプションのサービスに関連付けられている資格情報を更新します。チェックの内容は次のとおりです
+2. サブスクリプションとサービスに対して、ロールベースのアクセス制御 (RBAC) を使用することもできます。[Azure ポータル](https://portal.azure.com)に関するページおよび「[Microsoft Azure ポータルでのロールベースのアクセス制御](http://go.microsoft.com/fwlink/?LinkID=544802)」を参照してください。
+3. このサブスクリプションのサービスに関連付けられている資格情報を更新します。次に例を示します。
     - サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。詳細については、「[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/azure/gg551722.aspx)」をご覧ください。
     -	Storage などのサービス用のアクセス キー。詳細については、「[ストレージのアクセス キーを表示、コピー、および再生成する](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
     -	Azure Virtual Machines などのサービス用のリモート アクセス資格情報
 4. このサブスクリプション用の課金アラートを、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新します。[詳細情報](http://go.microsoft.com/fwlink/?LinkID=533292)
 5. 	パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。この操作は [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で実行できます。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

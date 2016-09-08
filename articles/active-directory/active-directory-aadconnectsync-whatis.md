@@ -13,18 +13,18 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/22/2016"
 	ms.author="markusvi;andkjell"/>
 
 
 # Azure AD Connect sync: 同期を理解してカスタマイズする
-Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、オンプレミスの環境とクラウドの Azure AD 間で ID データの同期に関連するすべての操作を処理する Azure AD Connect のメイン コンポーネントです。Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
+Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
 
-このトピックは **Azure AD Connect sync** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。Azure AD Connect へのリンクについては、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+このトピックは **Azure AD Connect Sync** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。Azure AD Connect へのリンクについては、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
 同期サービスは、オンプレミスの **Azure AD Connect Sync** コンポーネントと、**Azure AD Connect 同期サービス**と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。このサービスは、DirSync、Azure AD Sync、および Azure AD Connect で共通です。
 
-## Azure AD Connect sync のトピック
+## Azure AD Connect Sync のトピック
 
 トピック | 内容
 ----- | -----
@@ -35,12 +35,13 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 **カスタム構成** |
 [インストール ウィザードの再実行](active-directory-aadconnectsync-installation-wizard.md) | Azure AD Connect インストール ウィザードをもう一度実行する場合に使用できるオプションについて説明します。
 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)| 既定のルールと既定の構成について説明します。また、既定のシナリオに対するルールの動作についても説明します。
-[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 前のトピックの続きで、ユーザーと連絡先の構成の連携について説明します (特にマルチ フォレスト環境)。
+[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 前のトピックの続きで、ユーザーと連絡先の構成の連携について説明します (特に複数フォレスト環境)。
+[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md) | 属性フローに対する一般的な構成変更方法について説明します。
 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 構成モデルのしくみおよび式言語の構文について詳しく説明します。
-[既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 上記のトピックを理解した上で、実際のシナリオや要件に合わせて既定の構成を変更する必要方法を説明します。
-[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) | Azure AD と同期するオブジェクトを制限する方法についてのさまざまなオプション、および構成手順について説明します。
+[既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 既定の構成を変更する場合のサポートの制約。
+[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) | Azure AD と同期するオブジェクトを制限する方法についてのさまざまなオプション、およびこれらのオプションの構成手順について説明します。
 **機能とシナリオ** |
-[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | *誤って削除されないように保護する*機能およびその構成方法について説明します。
+[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | "*誤って削除されないように保護する*" 機能とその構成方法について説明します。
 [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) | データをインポート、同期、およびエクスポートする組み込みのスケジューラについて説明します。
 [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) | パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。
 [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) | Azure AD Connect のデバイスの書き戻しのしくみについて説明します。
@@ -62,4 +63,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

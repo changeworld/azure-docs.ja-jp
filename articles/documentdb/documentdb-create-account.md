@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/11/2016"
+	ms.date="08/25/2016"
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB アカウントを作成する方法
@@ -28,7 +28,7 @@ Microsoft Azure DocumentDB でデータベースを作成するには、次の�
 - Azure アカウントを入手する。まだ持っていない場合は、[無料 Azure アカウント](https://azure.microsoft.com/free)を取得できます。
 - DocumentDB アカウントを作成する。
 
-DocumentDB データベース アカウントは、Azure ポータル、Azure Resource Manager テンプレート、Azure CLI (コマンド ライン インターフェイス) のいずれかを使用して作成できます。この記事では、Azure ポータルを使用してデータベース アカウントを作成する方法について説明します。Azure リソース マネージャーまたは Azure CLI を使用してアカウントを作成する方法については、[DocumentDB データベース アカウントを自動で作成する方法](documentdb-automation-resource-manager-cli.md)に関するページを参照してください。
+DocumentDB データベース アカウントは、Azure ポータル、Azure Resource Manager テンプレート、Azure CLI (コマンド ライン インターフェイス) のいずれかを使用して作成できます。この記事では、Azure Portal を使用して DocumentDB アカウントを作成する方法について説明します。Azure リソース マネージャーまたは Azure CLI を使用してアカウントを作成する方法については、[DocumentDB データベース アカウントを自動で作成する方法](documentdb-automation-resource-manager-cli.md)に関するページを参照してください。
 
 DocumentDB を初めて使用する場合は、 Scott Hansleman による [こちら](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) の 4 分間のビデオを視聴し、オンライン ポータルで最もよく使用されるタスクの実行方法を確認してください。
 
@@ -53,4 +53,4 @@ DocumentDB の詳細については、以下の資料を参照してください
 -	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB のリソース モデルと概念](documentdb-resources.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

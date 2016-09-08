@@ -4,7 +4,7 @@
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="TomArcher"
-	manager="douge"
+	manager="timlt"
 	editor=""
 	tags="azure-service-management"/>
 
@@ -23,4 +23,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-classic-web-app-visual-studio](../../includes/virtual-machines-common-classic-web-app-visual-studio.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

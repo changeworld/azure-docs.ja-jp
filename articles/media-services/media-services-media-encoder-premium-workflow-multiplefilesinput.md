@@ -152,7 +152,7 @@ XML 値が想定されるプロパティを設定するには、`<![CDATA[ and ]
 
 
 ### クリップ リスト XML のカスタマイズ
-実行時にワークフローでクリップ リスト XML を指定するには、構成文字列 XML で **sourceTranscode** を使用します。それには、ワークフローでクリップ リスト XML ピンをメディア ソース コンポーネントに接続する必要があります。
+実行時にワークフローでクリップ リスト XML を指定するには、構成文字列 XML で **transcodeSource** を使用します。それには、ワークフローでクリップ リスト XML ピンをメディア ソース コンポーネントに接続する必要があります。
 
     <?xml version="1.0" encoding="utf-16"?>
       <transcodeRequest>
@@ -432,4 +432,4 @@ Configuration:
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

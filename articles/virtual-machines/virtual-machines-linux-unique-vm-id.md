@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
-   manager="drewm"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -37,7 +37,7 @@ VM 内から Azure の一意の VM ID にアクセスするには:
 ## VM に接続します
  
 
-詳細については、「[SSH from Linux (Linux からの SSH)](virtual-machines-linux-ssh-from-linux.md)」を参照してください。
+詳細については、[Linux からの SSH 接続](virtual-machines-linux-mac-create-ssh-keys.md)に関するページを参照してください。
 
 
 ## VM の一意の ID をクエリします
@@ -57,4 +57,4 @@ VM 内から Azure の一意の VM ID にアクセスするには:
     
 Azure VM 一意 ID は VM が Azure またはオンプレミスのどちらで実行していても使用でき、Azure IaaS デプロイでのライセンス、レポート、一般的な追跡などで必要なときに役に立ちます。Azure でアプリケーションを作成してそれを認定する多くの独立系ソフトウェア ベンダーでは、そのライフサイクルを通じて Azure VM を識別し、VM がAzure、オンプレミス、または他のクラウド プロバイダーで動作しているかどうかを特定することが必要になる場合があります。このプラットフォーム ID は、たとえば、ソフトウェアが適切にライセンスされているかどうかを検出したり、適切なプラットフォームに適切なメトリックを設定して他の用途の中からこれらのメトリックを追跡して関連付けるために VM のデータとそのソースを関連付けたりするために使用できます。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

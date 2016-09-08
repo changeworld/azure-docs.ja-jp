@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始 | Microsoft Azure"
+   pageTitle="Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始 | Microsoft Azure "
    description="ロード バランサー ルール、NAT ルール、Azure リソース マネージャーのプローブを作成する方法。ロード バランサーのリソースを作成するエンド ツー エンドのプロセスを示す手順。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure リソース マネージャーを使用したインターネットに接続するロード バランサーの構成の開始
 
@@ -53,7 +53,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 ### ロード バランサーのリソース グループの作成
 
 
-### 手順 1.
+### 手順 1
 ARM コマンドレットを使用するように PowerShell モードを切り替えてください。詳細については、「[Azure リソース マネージャーでの Windows Powershell の使用](../powershell-azure-resource-manager.md)」をご覧ください。
 
 
@@ -91,7 +91,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 ## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
 
-### 手順 1.
+### 手順 1
 
 仮想ネットワークを作成します。
 
@@ -115,7 +115,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 受信ロード バランサー ネットワーク トラフィック用のフロント エンド IP プールと、負荷が分散されたトラフィックを受け取るためのバックエンド アドレス プールを設定します。
 
-### 手順 1.
+### 手順 1
 
 パブリック IP 変数 ($publicIP) を使用して、フロント エンド IP プールを作成します。
 
@@ -133,7 +133,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 フロント エンド IP プールとバックエンド アドレス プールを作成した後、ロード バランサーのリソースに属するルールを作成する必要があります。
 
-### 手順 1.
+### 手順 1
 
 	$inboundNATRule1= New-AzureLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
 
@@ -165,7 +165,7 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 ロード バランサーを作成した後、受信で負荷分散されたネットワーク トラフィック、NAT ルール、およびプローブを受信するネットワーク インターフェイスを定義する必要があります。この場合、ネットワーク インターフェイスは個別に構成され、後で仮想マシンに割り当てることができます。
 
 
-### 手順 1.
+### 手順 1
 
 
 リソースの仮想ネットワークとサブネットを取得し、ネットワーク インターフェイスを作成します。
@@ -253,7 +253,7 @@ PS C:\> $backendnic1
 
 	$slb=get-azureLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 
-### 手順 2
+### 手順 2.
 
 次の例では、フロント エンドでポート 81、バック エンド プールでポート 8181 を使用し、既存のロード バランサーに新しい受信 NAT 規則を追加します。
 
@@ -281,4 +281,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

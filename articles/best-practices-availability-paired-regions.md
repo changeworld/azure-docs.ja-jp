@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="03/20/2016"
+    ms.date="08/23/2016"
     ms.author="raynew"/>
 
 # ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン
@@ -22,7 +22,7 @@
 
 Azure は、世界中の複数の geo で動作します。Azure の geo とは、少なくとも 1 つの Azure リージョンを含む、世界の定義済みの地域です。Azure リージョンは、geo に含まれる領域で、1 つ以上のデータセンターが含まれます。
 
-また、各 Azure リージョンが、そのリージョンと同じ geo 内の別のリージョンと組み合わされています （geo 外のリージョンとペアになっているブラジル南部を除く）。これがリージョン ペアです。
+各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。例外はブラジル南部で、geo の外部のリージョンとペアになっています。
 
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
@@ -32,7 +32,7 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 
 
 | [地理的な場所] | ペアになっているリージョン | |
-| :-------------| :-------------   | :-------------   |
+| :-------------| :-------------   | :-------------      |
 | 北米 | 米国中北部 | 米国中南部 |
 | 北米 | 米国東部 | 米国西部 |
 | 北米 | 米国東部 2 | 米国中部 |
@@ -42,7 +42,7 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 | 中国 | 中国東部 | 中国北部 |
 | 日本 | 東日本 | 西日本 |
 | ブラジル | ブラジル南部 (1) | 米国中南部 |
-| オーストラリア | オーストラリア東部 | オーストラリア南東部|
+| オーストラリア | オーストラリア東部 | オーストラリア南東部 |
 | 米国政府 | 米国政府アイオワ州 | 米国政府バージニア州 |
 | インド | インド中部 | インド南部 |
 | カナダ | カナダ中部 | カナダ東部 |
@@ -65,7 +65,7 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 ## リージョン間アクティビティ
 図 2 を参照してください。
 
-![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 障害発生時に他のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。詳細については、「[Azure の回復性技術ガイダンス](./resiliency/resiliency-technical-guidance.md)」を参照してください。
+![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 障害発生時に他のリージョンでリソースを確実に使用できるように、追加の計算リソースを事前にプロビジョニングする必要があります。詳細については、「[Azure の回復性技術ガイダンス](./resiliency/resiliency-technical-guidance.md)」を参照してください。
 
 ![2Green](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。詳細については、「[Azure Storage 冗長オプション](storage/storage-redundancy.md)」をご覧ください。
 
@@ -88,4 +88,4 @@ Azure は、世界中の複数の geo で動作します。Azure の geo とは�
 
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

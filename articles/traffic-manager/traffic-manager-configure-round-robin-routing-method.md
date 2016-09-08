@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager のエンドポイントにラウンド ロビン負荷分散を構成する方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # ラウンド ロビンによるトラフィック ルーティング方法の構成
 
@@ -52,4 +52,4 @@
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

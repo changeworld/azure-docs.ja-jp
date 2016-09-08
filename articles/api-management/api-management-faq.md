@@ -38,6 +38,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 -	[ARM テンプレートを使用して API Management サービス インスタンスを作成できますか。](#can-i-create-an-api-management-service-instance-using-an-arm-template)
 -	[バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
 -	[GIT リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-am-i-getting-authentication-failure-when-i-try-to-clone-the-git-repository)
+-	[API Management は Express Route と共に使用できますか。](#does-api-management-work-with-express-route)
 
 
 ### API Management チームに質問するにはどうすればよいですか。
@@ -150,4 +151,8 @@ API Management では[パフォーマンス トラフィック ルーティン�
 
 GIT Credential Manager を使用しているか、Visual Studio でリポジトリを複製しようとしている場合、Windows の資格情報ダイアログで、パスワードの文字数が 127 文字に制限され、生成したパスワードが切り詰められるという既知の問題が発生する場合があります。現在、パスワードの短縮を進めています。現時点では、複製には GIT Bash をお使いください。
 
-<!---HONumber=AcomDC_0810_2016-->
+### API Management は Express Route と共に使用できますか。
+
+はい。
+
+<!---HONumber=AcomDC_0824_2016-->

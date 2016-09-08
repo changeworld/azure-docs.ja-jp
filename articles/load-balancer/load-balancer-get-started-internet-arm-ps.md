@@ -3,7 +3,7 @@
    description="リソース マネージャーで PowerShell を使用してインターネットに接続するロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # リソース マネージャーで PowerShell を使用して、インターネットに接続するロード バランサーを作成を開始する
 
@@ -52,7 +52,7 @@ Azure リソース マネージャーでのロード バランサー コンポ�
 
 PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最新の製品版であることを確認します。
 
-### 手順 1.
+### 手順 1
 
 		Login-AzureRmAccount
 
@@ -60,7 +60,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 ### 手順 2.
 
-アカウントのサブスクリプションを確認する
+アカウントのサブスクリプションを確認します。
 
 		Get-AzureRmSubscription 
 
@@ -80,7 +80,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 ## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
 
-### 手順 1.
+### 手順 1
 
 サブネットと仮想ネットワークを作成します。
 
@@ -97,7 +97,7 @@ PowerShell 用 Azure リソース マネージャー (ARM) モジュールが最
 
 ## フロントエンド IP プールとバックエンド アドレス プールの作成
 
-### 手順 1. 
+### 手順 1 
 
 *PublicIp* PIP を使用する *LB-Frontend* という名前のフロントエンド IP プールを作成します。
 
@@ -128,7 +128,7 @@ NAT 規則を作成します。
 
 	$inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
 
-### 手順 2
+### 手順 2.
 
 ロード バランサー規則を作成します。
 
@@ -157,7 +157,7 @@ TCP プローブ
 
 ネットワーク インターフェイスを作成し (または既存のネットワーク インターフェイスを変更し)、それを NAT 規則、ロード バランサー規則、プローブに関連付ける必要があります。
 
-### 手順 1. 
+### 手順 1 
 
 NIC の作成先となる Virtual Network と Virtual Network のサブネットを取得します。
 
@@ -238,7 +238,7 @@ NIC を確認します。
 
 既に仮想マシンを作成済みの場合は、次の手順でネットワーク インターフェイスを追加することができます。
 
-#### 手順 1. 
+#### 手順 1 
 
 変数にロード バランサーのリソースを読み込みます (まだ実行していない場合)。変数名は $lb で、上記で作成したロード バランサーのリソースと同じ名前を使用します。
 
@@ -279,7 +279,7 @@ NIC を確認します。
 
 	$slb = get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
 
-### 手順 2
+### 手順 2.
 
 次の例では、フロント エンドでポート 81、バック エンド プールでポート 8181 を使用し、既存のロード バランサーに新しい受信 NAT 規則を追加します。
 
@@ -308,4 +308,4 @@ Set-AzureLoadBalancer を使用して、新しい構成を保存します。
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

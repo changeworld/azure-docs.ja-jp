@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサル アプリ SDK コンテンツ
@@ -47,4 +47,4 @@
 - `EngagementPageOverlay.cs`: Engagement Reach アプリ内 UI を子に追加するためのオーバーレイ ページ。
   
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

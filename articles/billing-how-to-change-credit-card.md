@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法
@@ -26,7 +26,7 @@
 
 クレジット カードの紛失、盗難、期限切れなどによりクレジット カード番号が変更された場合は、新しいクレジット カードをアカウントに追加する必要があります。これは、クレジット カード番号が変更されると、カード上の CVV セキュリティ コードが変わるためです。
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## 既存のクレジット カードの支払い情報を編集する
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にログオンします。[Azure ポータル](https://portal.azure.com) でアカウント センターにアクセスするには、**[サブスクリプション]**、"*サブスクリプション名*"、**[管理]** の順に選択します。
@@ -53,6 +53,9 @@
 3. ページの右側にある **[支払方法の変更]** を選択します。
 4. **[支払方法の選択]** ページで、クレジット カードの横にあるドロップダウン矢印を選択し、使用するクレジット カードを選択します。次に、![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) を選択してウィンドウを閉じます。
 
-> [AZURE.NOTE] Azure の支払方法として使用しなくなったクレジット カードを削除するには、サポート チケットを送信してサポートを要求する必要があります。クレジット カードを削除するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
+## クレジット カードをアカウントから削除する
+クレジット カードを自分でアカウントから削除することはできません。Azure の支払い方法として使用しなくなったクレジット カードを削除するには、[サポートにお問い合わせいただく](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)必要があります。
 
-<!---HONumber=AcomDC_0817_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

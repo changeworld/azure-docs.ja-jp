@@ -3,7 +3,7 @@
    description="Azure ポータルを使用して Resource Manager で内部ロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-service-management"
@@ -15,11 +15,11 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/04/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure ポータルでの内部ロード バランサーの作成の概要
 
-[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]<BR>[AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
+[AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)] <BR> [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
 
@@ -43,19 +43,19 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 
 >[AZURE.NOTE] 静的 IP アドレスの使用を選択した場合は、ロード バランサーのアドレスを指定する必要があります。
     
-7. **[リソース グループ]** で、ロード バランサーの新しいリソース グループの名前を指定するか、または **[既存のものを選択]** をクリックして既存のリソース グループを選択します。 
-8. **[作成]** をクリックします。 
+7. **[リソース グループ]** で、ロード バランサーの新しいリソース グループの名前を指定するか、または **[既存のものを選択]** をクリックして既存のリソース グループを選択します。
+8. **[作成]** をクリックします。
 
 ## 負荷分散規則の構成 
 
 ロード バランサーを作成した後は、ロード バランサーのリソースに移動して構成します。負荷分散規則を構成する前に、バックエンド アドレス プールとプローブを構成する必要があります。
 
-### 手順 1.
+### 手順 1
 
 バックエンド プールを構成します。
 
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで **[バックエンド プール]** をクリックします。 
+2. **[設定]** ブレードで **[バックエンド プール]** をクリックします。
 3. [**バックエンド アドレス プール**] ブレードで、[**追加**] をクリックします。
 4. **[バックエンド プールの追加]** ブレードで、バックエンド プールの **名前** を入力して、**[OK]** をクリックします。
 
@@ -64,7 +64,7 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 プローブを構成します。
  
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで **[プローブ]** をクリックします。 
+2. **[設定]** ブレードで **[プローブ]** をクリックします。
 3. **[プローブ]** ブレードで **[追加]** をクリックします。
 4. **[プローブの追加]** ブレードで、プローブの **名前** を入力します。
 5. **[プロトコル]** で、**[HTTP]** (Web サイトの場合) または **[TCP]** (その他の TCP ベース アプリケーションの場合) を選択します。
@@ -79,7 +79,7 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 負荷分散規則を構成します。
 
 1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで、**[負荷分散規則]** をクリックします。 
+2. **[設定]** ブレードで、**[負荷分散規則]** をクリックします。
 3. **[負荷分散規則]** ブレードで、**[追加]** をクリックします。
 4. **[負荷分散規則の追加]** ブレードで、規則の **名前** を入力します。
 5. **[プロトコル]** で、**[HTTP]** (Web サイトの場合) または **[TCP]** (その他の TCP ベース アプリケーションの場合) を選択します。
@@ -97,4 +97,4 @@ Azure ポータルから内部ロード バランサーを作成するには、�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Microsoft Azure での監視の概要 | Microsoft Azure"
-	description="Azure 以外のシステムに対する Azure のアラートにおける監視と診断の概要です。"
+	description="アラート、webhook、自動スケールなど Microsoft Azure での監視と診断の最上位レベルの概要。"
 	authors="rboucher"
 	manager=""
 	editor=""
@@ -138,4 +138,4 @@ Azure では、ベアメタル インフラストラクチャからアプリケ�
 - [Azure Storage のトラブルシューティング](../storage/storage-e2e-troubleshooting.md) Storage Blobs、テーブル、またはキューを使用している場合には、こちらをご覧ください。
 - [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) と [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

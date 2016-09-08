@@ -14,7 +14,7 @@
     ms.workload="search"
     ms.topic="get-started-article"
     ms.tgt_pltfrm="na"
-    ms.date="05/31/2016"
+    ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
 # .NET SDK を使用した Azure Search インデックスの作成
@@ -99,7 +99,7 @@ var definition = new Index()
 
 `IsKey` を `true` に設定して、インデックスの `DataType.String` 型のフィールドを 1 つだけ、key フィールドとして指定する必要があることにご注意ください (上記の例の `hotelId` を参照)。
 
-上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドにカスタム言語アナライザーを使用しています。言語アナライザーの詳細については、[MSDN の「言語サポート」](https://msdn.microsoft.com/library/azure/dn879793.aspx)と、関連する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)をご覧ください。
+上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドにカスタム言語アナライザーを使用しています。言語アナライザーの詳細については、[MSDN の言語サポートのトピック](https://msdn.microsoft.com/library/azure/dn879793.aspx)と、対応する[ブログ記事](https://azure.microsoft.com/blog/language-support-in-azure-search/)を参照してください。
 
 > [AZURE.NOTE]  コンストラクターで `AnalyzerName.FrLucene` を渡すことによって、`Field` は自動的に `DataType.String` 型になり、`IsSearchable` が `true` に設定されることにご注意ください。
 
@@ -123,4 +123,4 @@ serviceClient.Indexes.Delete("hotels");
 ## 次へ
 Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

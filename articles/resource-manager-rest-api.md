@@ -17,12 +17,19 @@
    ms.author="navale;tomfitz;"/>
    
 # Resource Manager REST API
+
+> [AZURE.SELECTOR]
+- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [Azure CLI](xplat-cli-azure-resource-manager.md)
+- [ポータル](./azure-portal/resource-group-portal.md)
+- [REST API](resource-manager-rest-api.md)
+
 Azure Resource Manager、デプロイ済みのテンプレート、構成済みのストレージ アカウントを呼び出す裏では、必ず Azure Resource Manager の RESTful API が 1 回以上呼び出されます。このトピックでは、これらの API と、SDK を一切使わずにこれらの API を呼び出す方法について説明します。これは、Azure へのすべての要求を完全に制御したい場合や、優先言語の SDK が利用できないか、実行したい操作がその SDK でサポートされていない場合に、非常に役に立つ可能性があります。
 
 この記事では Azure で公開されているすべての API については説明しませんが、その一部を例として取り上げ、先に進んだり、掘り下げたりできるようにします。基本を理解できたら、次に進み、「[Azure Resource Manager REST API Reference (Azure Resource Manager REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn790568.aspx)」で残りの API の使い方を調べることができます。
 
 ## 認証
-ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。ここでは REST API の直接的で純粋な呼び出しについて説明しますが、読者が通常のユーザー名とパスワードを使用した認証 (ポップアップ画面でユーザー名とパスワードの入力が求められるような認証) や、2 要素認証のシナリオで利用される他の認証メカニズムによる認証を望んでいないということも想定しています。したがって、Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成します。ただし、Azure AD は複数の認証手順をサポートしており、そのどれを使っても、後続の API 要求に必要な認証トークンを取得できることに注意してください。詳しい手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)」を参照してください。
+ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。ここでは REST API の直接的で純粋な呼び出しについて説明しますが、読者が通常のユーザー名とパスワードを使用した認証 (ポップアップ画面でユーザー名とパスワードの入力が求められるような認証) や、2 要素認証のシナリオで利用される他の認証メカニズムによる認証を望んでいないということも想定しています。したがって、Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成します。ただし、Azure AD は複数の認証手順をサポートしており、そのどれを使っても、後続の API 要求に必要な認証トークンを取得できることに注意してください。詳しい手順については、[Azure AD のアプリケーションとサービス プリンシパルの作成](./resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
 ### アクセス トークンの生成 
 Azure AD に対する認証は、login.microsoftonline.com にある Azure AD を呼び出すことで行われます。認証のためには次の情報が必要です。
@@ -94,7 +101,7 @@ Content-Type: application/json
 
 この要求の結果、このサービス プリンシパルでアクセスできるサブスクリプションの一覧が返されます。
 
-(読みやすくするために、以下のサブスクリプション ID は短縮されています)
+(次のサブスクリプション ID は読みやすいように短縮されています)
 
 ```json
 {
@@ -128,7 +135,7 @@ Content-Type: application/json
 
 返される応答は、定義済みのリソース グループの有無によって変わります。定義済みのリソース グループがある場合は、その数が返されます。
 
-(読みやすくするために、以下のサブスクリプション ID は短縮されています)
+(次のサブスクリプション ID は読みやすいように短縮されています)
 
 ```json
 {
@@ -240,4 +247,4 @@ Content-Type: application/json
 
 このドキュメントを読みやすくするために、この要求に対する非常に長い JSON の応答は省略されています。応答には、先ほど作成したテンプレート化されたデプロイに関する情報が含まれます。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

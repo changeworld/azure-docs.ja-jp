@@ -4,7 +4,7 @@
 	services="virtual-machines-linux"
 	documentationCenter="virtual-machines"
 	authors="jluk"
-	manager="squillace"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
@@ -170,4 +170,4 @@ LAMP スタックで Ubuntu のドキュメントを確認します。
 [2]: ./media/virtual-machines-linux-deploy-lamp-stack/phpsuccesspage.png
 [3]: ./media/virtual-machines-linux-deploy-lamp-stack/apachesuccesspage.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

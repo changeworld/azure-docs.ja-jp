@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2016"
+	ms.date="08/24/2016"
 	ms.author="daleche"/>
 
 
 # Azure SQL Database のバックアップから 1 つのテーブルを復元する方法
 
-SQL Database のデータを誤って変更してしまい、影響を受けた 1 つのテーブルを回復することが必要になる場合があります。この記事では、選択したパフォーマンス レベルに基づいて、Azure SQL Database によって[自動的に実行されるバックアップ](sql-database-automated-backups.md)からデータベースの 1 つのテーブルを復元する方法について説明します。
+SQL Database のデータを誤って変更してしまい、影響を受けた 1 つのテーブルを回復することが必要になる場合があります。この記事では、SQL Database [自動バックアップ](sql-database-automated-backups.md)のいずれかからデータベース内の 1 つのテーブルを復元する方法を説明します。
 
 ## 準備手順: テーブルの名前を変更し、データベースのコピーを復元する
 1. Azure SQL Database で、復元したコピーで置き換えるテーブルを識別します。テーブルの名前を変更するには、Microsoft SQL Management Studio を使用します。たとえば、&lt;テーブル名&gt;\_old のような名前に変更します。
 
 	**注意** ブロックされるのを防ぐため、名前を変更するテーブルでアクティビティが実行されていないことを確認します。問題が発生する場合は、メンテナンス期間中にこの手順を実行するようにしてください。
 
-2. 復旧したい時点にデータベースのバックアップを復元します。これを行うには、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
+2. [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)手順を使用して、データベースのバックアップを復元したい時点に復元します。
 
 	**注**:
 	- 復元されたデータベースの名前は、"データベース名 + タイムスタンプ" という形式になります (例: **Adventureworks2012\_2016-01-01T22-12Z**)。この手順では、サーバー上の既存のデータベース名は上書きされません。これは安全のためであり、ユーザーは現在のデータベースを削除して実稼働用に復元されたデータベースの名前を変更する前に、復元されたデータベースを確認できます。
@@ -71,4 +71,4 @@ SQL Database のデータを誤って変更してしまい、影響を受けた 
 
 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

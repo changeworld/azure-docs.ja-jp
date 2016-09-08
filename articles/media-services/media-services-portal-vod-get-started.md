@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/18/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
@@ -22,8 +22,6 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
-
-Azure ポータルの Azure Media Services は現在、プレビュー版です。
 
 > [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -53,10 +51,10 @@ Azure ポータルの Azure Media Services は現在、プレビュー版です�
 	1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
 	2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
 	
-	2. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。リソース グループとは、同じライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。[こちら](resource-group-overview.md#resource-groups)を参照してください。
+	2. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。[こちら](resource-group-overview.md#resource-groups)を参照してください。
 	3. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。このリージョンでメディアの処理とストリーミングが行われます。ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
 	
-	3. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
+	3. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
 
 		ストレージの詳細については、[こちら](storage-introduction.md)を参照してください。
 
@@ -87,7 +85,7 @@ Media Services アカウントにプログラムからアクセスするには�
 
 ## ストリーミング エンドポイントの構成
 
-クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。アダプティブ ビットレート ストリーミングでは、現在のネットワーク帯域幅、CPU 使用率などの条件に基づいてビデオが表示されるため、高低のビットレート ストリームの切り替えをクライアント側で行うことができます。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
+クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
 Media Services にはダイナミック パッケージが用意されており、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
 
@@ -222,7 +220,9 @@ URL が **[発行された URL]** の一覧に追加されます。
 - ビデオが発行されたことを確認します。
 - この**メディア プレイヤー**は既定のストリーミング エンドポイントから再生を行います。既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。([Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
 
-##次のステップ: Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -230,4 +230,4 @@ URL が **[発行された URL]** の一覧に追加されます。
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!-----HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

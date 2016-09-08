@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="03/25/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo" />
 
 #<a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
@@ -23,7 +23,7 @@
 ### ゲームを設定する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)に基づいています。
 
-1. **Unity エディター**を開き、**[New]** (新規) をクリックします。 
+1. **Unity エディター**を開き、**[New]** (新規) をクリックします。
 	
 	![][51]
 	
@@ -82,7 +82,7 @@
 ### プレイヤーを動かす
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)に基づいています。
 
-1. **RigidBody** コンポーネントを **Player** オブジェクトに追加します。 
+1. **RigidBody** コンポーネントを **Player** オブジェクトに追加します。
 
 	![][13]
 
@@ -125,8 +125,8 @@
 ### カメラを動かす
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141)に基づいています。この手順では、**Main Camera** を **Player** オブジェクトに関連付けます。
 
-1. **Transform.Position** を X = 0、Y = 10.5、Z=-10 に更新します。  
-2. **Transform.Rotation** を X = 45、Y = 0、Z = 0 に更新します。  
+1. **Transform.Position** を X = 0、Y = 10.5、Z=-10 に更新します。
+2. **Transform.Rotation** を X = 45、Y = 0、Z = 0 に更新します。
 
 	![][16]
 
@@ -192,7 +192,7 @@
 ### 収集可能なオブジェクトを作成する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141)に基づいています。ここでは、収集可能なオブジェクトのセットを構成する見栄えのよいオブジェクトをいくつか作成します。Player Ball オブジェクトは、これらのオブジェクトを衝突させることによって "収集" する必要があります。
 
-1. 新しい **3D キューブ オブジェクト**を作成し、Pickup という名前を付けます。 
+1. 新しい **3D キューブ オブジェクト**を作成し、Pickup という名前を付けます。
 
 2. この Pickup オブジェクトについて、**[Transform] \(変換) の [Rotation] \(回転)** と **[Transform] \(変換) の [Scale] \(スケール)** を調整します。
 
@@ -244,7 +244,7 @@
 ### Pickup オブジェクトを収集する
 次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141)に基づいています。ここでは、Player が衝突することで Pickup オブジェクトを "収集" できるように Player を更新します。
 
-1. Player オブジェクトにアタッチされている **PlayerController** スクリプトを編集するために開き、次のように更新します。  
+1. Player オブジェクトにアタッチされている **PlayerController** スクリプトを編集するために開き、次のように更新します。
 
 		using UnityEngine;
 		using System.Collections;
@@ -374,4 +374,4 @@ Unity の基本的なチュートリアルは、上のセクションで終了�
 	
 	
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0824_2016-->

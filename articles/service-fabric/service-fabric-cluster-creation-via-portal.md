@@ -1,228 +1,333 @@
+
 <properties
-   pageTitle="Azure ポータルから Service Fabric クラスターを作成する | Microsoft Azure"
-   description="Azure ポータルから Service Fabric クラスターを作成します。"
+   pageTitle="Azure ポータルを使用してセキュリティで保護された Service Fabric クラスターを作成する | Microsoft Azure"
+   description="この記事では、Azure ポータルと Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="ChackDan"
+   authors="chackdan"
    manager="timlt"
-   editor=""/>
+   editor="vturecek"/>
 
 <tags
    ms.service="service-fabric"
    ms.devlang="dotnet"
    ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="05/02/2016"
-   ms.author="chackdan"/>
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/19/2016"
+   ms.author="vturecek"/>
+
+# Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
+
+> [AZURE.SELECTOR]
+- [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+- [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
+
+これは、Azure ポータルを使用して Azure でセキュリティで保護された Service Fabric クラスターのセットアップの手順を説明するステップ バイ ステップ ガイドです。このガイドでは、次の手順について説明します。
+
+ - クラスターのセキュリティのためのキーを管理する Key Vault を設定します。
+ - Azure ポータルを使用して Azure でセキュリティで保護されたクラスターを作成します。
+ - 証明書を使って管理者を認証します。
+
+>[AZURE.NOTE] Azure Active Directory を使用したユーザー認証、アプリケーション セキュリティ用の証明書の設定など、詳細なセキュリティ オプションについては、[Azure Resource Manager を使用したクラスターの作成に関する記事][create-cluster-arm]を参照してください。
+
+セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません** -新しいクラスターを作成する必要があります。
+
+## Azure へのログイン
+このガイドでは [Azure PowerShell][azure-powershell] を使用します。新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
+
+Azure アカウントにログインします。
+
+```powershell
+Login-AzureRmAccount
+```
+
+サブスクリプションを選択します。
+
+```powershell
+Get-AzureRmSubscription
+Set-AzureRmContext -SubscriptionId <guid>
+```
+
+## Key Vault の設定
+
+ガイドのこのセクションでは、Azure Service Fabric クラスターおよび Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。Key Vault の完全なガイドについては、「[Azure Key Vault の概要][key-vault-get-started]」を参照してください。
+
+Service Fabric では X.509 証明書を使用して、クラスターをセキュリティ保護します。Azure Key Vault を使用して、Azure で Service Fabric クラスター用の証明書を管理します。Azure にクラスターがデプロイされると、Service Fabric クラスターの作成担当 Azure リソース プロバイダーにより Key Vault から証明書が取得されてクラスター VM にインストールされます。
+
+次の図は、Key Vault、Service Fabric クラスター、そしてクラスターの作成時に Key Vault に格納された証明書を使用する Azure リソース プロバイダー間の関係を示しています。
+
+![証明書のインストール][cluster-security-cert-installation]
+
+### リソース グループの作成
+
+最初の手順として、Key Vault 専用の新しいリソース グループを作成します。Key Vault を独自のリソース グループに配置することをお勧めします。これにより、コンピューティングおよびストレージ リソース グループ (Service Fabric クラスターを持つリソース グループなど) をキーとシークレットを紛失することなく削除できます。Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります。
+
+```powershell
+
+	PS C:\Users\vturecek> New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
+	WARNING: The output object type of this cmdlet will be modified in a future release.
+	
+	ResourceGroupName : mycluster-keyvault
+	Location          : westus
+	ProvisioningState : Succeeded
+	Tags              :
+	ResourceId        : /subscriptions/<guid>/resourceGroups/mycluster-keyvault
+
+```
+
+### Key Vault の作成 
+
+Key Vault を新しいリソース グループに作成します。Key Vault を**デプロイ用に有効にして**、Service Fabric リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるようにする必要があります。
+
+```powershell
+
+	PS C:\Users\vturecek> New-AzureRmKeyVault -VaultName 'myvault' -ResourceGroupName 'mycluster-keyvault' -Location 'West US' -EnabledForDeployment
+	
+	
+	Vault Name                       : myvault
+	Resource Group Name              : mycluster-keyvault
+	Location                         : West US
+	Resource ID                      : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+	Vault URI                        : https://myvault.vault.azure.net
+	Tenant ID                        : <guid>
+	SKU                              : Standard
+	Enabled For Deployment?          : False
+	Enabled For Template Deployment? : False
+	Enabled For Disk Encryption?     : False
+	Access Policies                  :
+	                                   Tenant ID                :    <guid>
+	                                   Object ID                :    <guid>
+	                                   Application ID           :
+	                                   Display Name             :    
+	                                   Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
+	                                   Permissions to Secrets   :    all
+	
+	
+	Tags                             :
+```
+
+Key Vault が既にある場合は、Azure CLI を使用してそれをデプロイ用に有効にできます。
+
+```cli
+> azure login
+> azure account set "your account"
+> azure config mode arm 
+> azure keyvault list
+> azure keyvault set-policy --vault-name "your vault name" --enabled-for-deployment true
+```
 
 
-# Azure ポータルから Service Fabric クラスターを作成する
+## 証明書の Key Vault への追加
 
-ここでは、Azure Service Fabric クラスターをセットアップする方法について説明します。サブスクリプションに、このクラスターを構成する IaaS VM をデプロイできるだけのコア数が割り当てられている必要があります。
+Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。Service Fabric での証明書の使用方法については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をご覧ください。
 
+### クラスターとサーバーの証明書 (必須) 
 
-## Service Fabric クラスター リソースの検索
+この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。証明書により、クラスター セキュリティが次のような方法で提供されます。
+ 
+ - **クラスター認証:** クラスター フェデレーション用のノード間通信を認証します。この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
+ - **サーバー認証:** 管理クライアントに対するクラスター管理エンドポイントを認証します。これで、管理クライアントにより、実際のクラスターと通信していることが認識されるようになります。この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対して SSL も提供します。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+この目的のため、証明書は次の要件を満たす必要があります。
 
-2. **[新規]** をクリックして、新しいリソース テンプレートを追加します。**[Marketplace]** の **[すべて]** で、テンプレートを検索します。これは **Service Fabric クラスター**と呼ばれます。
+ - 証明書は秘密キーを含む必要があります。
+ - 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
+ - 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
-    a.最上位にある **[Marketplace]** をクリックします。
+### クライアント認証証明書
 
-    b.**[すべて]** の下に "Fabric" と入力し、Enter キーを押します。オート フィルターが動作しないことがあるので、Enter キーを押してください。 ![Azure ポータルで Service Fabric クラスター テンプレートを検索するスクリーン ショット。][SearchforServiceFabricClusterTemplate]
+その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。アクセス ロールについて詳しくは、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。
 
-3. 一覧から **[Service Fabric クラスター]** を選択します。
+Service Fabric を操作するために、クライアント認証証明書を Key Vault にアップロードする必要はありません。この証明書は、クラスター管理を許可されている管理者にのみ指定する必要があります。
 
-4. **[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
+>[AZURE.NOTE] クライアントのクラスター管理操作を認証するには、Azure Active Directory を使用することをお勧めします。Azure Active Directory を使用するには、[Azure Resource Manager を使用してクラスターを作成][create-cluster-arm]する必要があります。
 
-5. **[Service Fabric クラスターの作成]** ブレードに 4 つの手順が表示されます。
+### アプリケーション証明書 (省略可能)
 
-## 手順 1 - 基本
+アプリケーション セキュリティの目的で、任意の数の追加の証明書をクラスターにインストールできます。クラスターを作成する前に、ノードにインストールする証明書を必要とするアプリケーション セキュリティ シナリオについて考慮します。これには次のようなものがあります。
+
+ - アプリケーション構成値の暗号化と復号化
+ - レプリケーション中のノード間のデータの暗号化
+
+Azure ポータルを使用してクラスターを作成した場合、アプリケーション証明書を構成することはできません。クラスターのセットアップ時にアプリケーション証明書を構成するには、[Azure Resource Manager を使用してクラスターを作成][create-cluster-arm]する必要があります。作成後に、アプリケーション証明書をクラスターに追加することもできます。
+
+### Azure リソース プロバイダー用の証明書の書式設定
+
+秘密キー ファイル (.pfx) を追加し、Key Vault を使用して直接使用できます。ただし、Azure リソース プロバイダーは、base-64 でエンコードされた文字列としての .pfx と、秘密キーのパスワードを含む特別な JSON 形式にキーを格納する必要があります。これらの要件に対応するには、キーを JSON 文字列に配置して、*シークレット*として Key Vault に格納する必要があります。
+
+このプロセスをわかりやすくするために、PowerShell モジュールを [GitHub から入手][service-fabric-rp-helpers]できます。モジュールを使用するには、次の手順を実行します。
+
+ 1. リポジトリの内容全体をローカル ディレクトリにダウンロードします。
+ 2. モジュールを PowerShell ウィンドウにインポートします。
+
+  ```powershell
+  PS C:\Users\vturecek> Import-Module "C:\users\vturecek\Documents\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+  ```
+     
+この PowerShell モジュールの `Invoke-AddCertToKeyVault` コマンドは、証明書の秘密キーを JSON 文字列に自動的にフォーマットし、Key Vault にアップロードします。これを使用してクラスター証明書と追加のアプリケーション証明書 (ある場合) を Key Vault に追加します。必要に応じて、クラスターにインストールする追加の証明書についてこの手順を繰り返します。
+
+```powershell
+PS C:\Users\vturecek> Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
+	
+	Switching context to SubscriptionId <guid>
+	Ensuring ResourceGroup mycluster-keyvault in West US
+	WARNING: The output object type of this cmdlet will be modified in a future release.
+	Using existing valut myvault in West US
+	Reading pfx file from C:\path\to\key.pfx
+	Writing secret to myvault in vault myvault
+	
+	
+Name  : CertificateThumbprint
+Value : <value>
+
+Name  : SourceVault
+Value : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+
+Name  : CertificateURL
+Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
+
+```
+
+ノードの認証、管理エンドポイントのセキュリティおよび認証、X.509 証明書を使用する追加のアプリケーション セキュリティ機能用の証明書をインストールする Service Fabric クラスターの Resource Manager テンプレートを構成するためのすべての Key Vault 前提条件について説明しました。この時点で、Azure で以下の設定が完了しています。
+
+ - Key Vault リソース グループ
+   - Key Vault
+     - クラスター サーバー認証証明書
+
+## Azure ポータルでのクラスターの作成
+
+### Service Fabric クラスター リソースの検索
+
+![Azure ポータルで Service Fabric クラスター テンプレートを検索します。][SearchforServiceFabricClusterTemplate]
+
+ 1. [Azure ポータル][azure-portal]にサインインします。
+
+ 2. **[新規]** をクリックして、新しいリソース テンプレートを追加します。**[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
+
+ 3. 一覧から **[Service Fabric クラスター]** を選択します。
+
+ 4. **[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
+
+ 5. **[Service Fabric クラスターの作成]** ブレードに 4 つの手順が表示されます。
+
+#### 1\.基本
+
+![新しいリソース グループを作成するスクリーン ショット。][CreateRG]
 
 [基本] ブレードでは、クラスターの基本情報を提供する必要があります。
 
-1. クラスターの名前を入力します。
+ 1. クラスターの名前を入力します。
 
-2. VM リモート デスクトップの**ユーザー名**と**パスワード**を選択します。
+ 2. VM 向けリモート デスクトップの**ユーザー名**と**パスワード**を入力します。
 
-3. クラスターをデプロイする**サブスクリプション**を選択します (特に、複数のサブスクリプションがある場合)。
+ 3. クラスターをデプロイする**サブスクリプション**を選択します (特に、複数のサブスクリプションがある場合)。
 
-4. **新しいリソース グループ**を作成します。クラスター名と同じにすると、後で検索が楽になります。デプロイメントを変更したり、クラスターを削除したりするときに特に便利です。
+ 4. **新しいリソース グループ**を作成します。クラスター名と同じにすると、後で検索が楽になります。デプロイメントを変更したり、クラスターを削除したりするときに特に便利です。
 
     >[AZURE.NOTE] 既存のリソース グループを使用することもできますが、新しいリソース グループを作成することをお勧めします。こうすることで、不要になったクラスターを簡単に削除できます。
 
- 	![新しいリソース グループを作成するスクリーン ショット。][CreateRG]
+ 5. クラスターを作成する**リージョン**を選択します。Key Vault が存在するのと同じリージョンを使用する必要があります。
+
+#### 2\.クラスター構成
+
+![ノード タイプの作成][CreateNodeType]
+
+クラスター ノードを構成します。ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。"NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成する必要はありません。
+
+   >[AZURE.NOTE] 複数のノードのタイプの一般的なシナリオは、フロントエンド サービスとバックエンド サービスを含むアプリケーションです。フロントエンド サービスを小規模の VM (D2 のような VM サイズ) に配置します。この小規模 VM では、インターネットにポートを開いています。ただし、バックエンド サービスはインターネットに接続されたポートが開いていない大規模な VM (D4、D6、D15 などの VM サイズ) に配置します。
+
+ 1. ノードのタイプの名前を選択します (英字と数字のみを含む 1 ～ 12 文字)。
+
+ 2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性**レベルによって決まります。既定の耐久性レベルはブロンズです。耐久性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]を参照してください。
+
+ 3. VM サイズと価格レベルを選択します。D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。
+
+ 4. プライマリ ノード タイプの最低 VM **数**は、選択した**信頼性**レベルによって決まります。既定の信頼性レベルは Silver です。信頼性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]を参照してください。
+
+ 5. ノードのタイプの VM 数を選択します。後でノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプには、VM 数に最小値の 1 を設定できます。
+
+ 6. カスタム エンドポイントを構成します。このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。エンドポイントについて詳しくは、[アプリケーションとの通信に関する記事][service-fabric-connect-and-communicate-with-services]を参照してください。
+
+ 7. クラスター**診断**を構成します。既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。診断をオフにすることは**推奨されません**。
 
 
-5. ドロップダウン リストから **[場所]** を選択します。既定値は **[米国西部]** です。[OK] をクリックします。
-
-## 手順 2 - クラスターの構成
-
-10. 最初に**ノードのタイプ**について説明します。ノードのタイプは、Cloud Services のロールと同等のものと見なすことができます。ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。複数のノードのタイプに対するニーズを決定するとき、次を考慮してください。
-
-	* デプロイするアプリケーションにフロントエンド サービスとバックエンド サービスが含まれています。フロントエンド サービスを小規模の VM (D2 のような VM サイズ) に配置します。この小規模 VM では、インターネットにポートを開いています。ただし、大量の計算処理を必要とするバックエンド サービスはインターネットに接続していない大規模の VM (D4、D6、D15 などの VM サイズ) に配置します。
-
-	* 1 つのノードのタイプに両方のサービスをデプロイすることはできますが、2 つのノードのタイプを持つクラスターにデプロイすることをお勧めします。ノードのタイプごとに、インターネット接続、VM サイズ、VM 数など、異なるプロパティを指定し、個別に拡張することができます。
-
-	* 少なくとも 5 個の VM を含めるノードのタイプを最初に定義します。他のノードのタイプは、最少 1 個の VM でかまいません。
-
-13.  ノードのタイプを構成するには:
-
-	a.ノードのタイプの名前を選択します (英字と数字のみを含む 1 ～ 12 文字)。
-
-	b.プライマリ ノード タイプの最小 VM サイズは、クラスターに選択した耐久性レベルによって決まります。既定の耐久性レベルは Bronze です。Service Fabric クラスターの信頼性と耐久性を選択する方法については[こちら](service-fabric-cluster-capacity.md)でご確認いただけます。
-
-	b.VM のサイズと価格レベルを選択します。既定値は D4 Standard ですが、アプリケーションのテストにのみこのクラスターを使用する場合は、D2 以下の小さな VM を選択できます。
-
-	c.プライマリ ノード タイプの最低 VM 数は、選択した信頼性レベルによって決まります。既定の信頼性レベルは Silver です。Service Fabric クラスターの信頼性と耐久性を選択する方法については[こちら](service-fabric-cluster-capacity.md)でご確認いただけます。
-
-	c.ノードのタイプの VM 数を選択します。後であるノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプには、VM 数に最小値の 1 を設定できます。
-
-
-  	![ノードのタイプのスクリーン ショット。][CreateNodeType]
-
-9. クラスターにアプリケーションをすぐにデプロイする場合は、**[アプリケーション ポート]** のノード種類 (または作成したノード種類) のアプリケーションに対して開くポートを追加します。後でノードのタイプにポートを追加するには、そのノードのタイプに関連付けられているロード バランサーを変更します(プローブを追加し、そのプローブをロード バランサー ルールに追加します)。 今すぐ行うと、ポータルの Automation が必要なプローブとルールをロード バランサーに追加するので少し楽です。
-
-	a.アプリケーション パッケージの一部であるサービス マニフェストでアプリケーション ポートを検索できます。各アプリケーションに移動し、サービス マニフェストを開き、アプリケーションが外界と通信するために必要なすべての入力エンドポイントを記録します。
-
-	b.**[アプリケーション入力エンドポイント]** フィールドにすべてのポートをコンマで区切って追加します。TCP クライアント接続エンドポイント - 既定で 19000 なので、指定する必要はありません。たとえば、サンプル アプリケーション WordCount の場合、ポート 83 を開く必要があります。この設定は、アプリケーション パッケージの servicemanifest.xml ファイルにあります(複数の servicemanifest.xml ファイルが存在する場合があります)。
-
-    c.ほとんどのサンプル アプリケーションはポート 80 と 8081 を使用するので、このクラスターにサンプルをデプロイする場合はそれらを追加します。 ![ポート][Ports]
-
-10. "NodeTypeName" の既定の配置プロパティはシステムによって追加されるので、**[配置プロパティ]** を構成する必要はありません。アプリケーションに必要な場合は、追加することもできます。
-
-11. **容量プロパティ**の構成は必須ではありませんが、推奨されます。アプリケーションで利用し、システムの負荷を報告すれば、Service Fabric クラスターで行われる配置とリソース バランスの決定に利用されます。Service Fabric のリソース バランスの詳細は[このドキュメント](service-fabric-cluster-resource-manager-architecture.md)でご確認いただけます。
-
-12. すべてのノード タイプに上記の手順を繰り返します。
-
-14. クラスター**診断**を構成します。既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。診断をオフにすることは**推奨されません**。
-
-15. 任意で、Service **Fabric クラスター設定**を設定します。これは詳細オプションなので、Service Fabric クラスターの既定の設定を変更できます。アプリケーションまたはクラスターに必要な場合を除き、既定の設定を変更しないことをお勧めします。
-
-## 手順 3 - セキュリティの構成
-
-セキュリティのシナリオと概念については、[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)に関するページをご覧ください。この時点では、Service Fabric は、X509 証明書経由でのみクラスターをセキュリティで保護することができます。その方法については、「[Secure a Service Fabric cluster on Azure using certificates (証明書を使用した Azure の Service Fabric クラスターのセキュリティ保護)](service-fabric-secure-azure-cluster-with-certs.md)」をご覧ください。
-
-クラスターのセキュリティ保護はオプションですが、強くお勧めします。クラスターをセキュリティで保護しない場合は、**[セキュリティ モード]** を **[セキュリティ保護なし]** に切り替える必要があります。セキュリティ保護のないクラスターを後でセキュリティ保護のあるクラスターに変更することは**できない**ことにご留意ください。
+#### 3\.セキュリティ
 
 ![Azure ポータルのセキュリティ構成のスクリーン ショット。][SecurityConfigs]
 
+最後の手順では、前の手順で作成した Key Vault と証明書情報を使用してクラスターをセキュリティで保護するための証明書情報を指定します。
 
-## 手順 4 - クラスターの作成を完了する
+ 1. `Invoke-AddCertToKeyVault` PowerShell コマンドを使って**クラスター証明書**を Key Vault にアップロードして取得した出力をプライマリ証明書フィールドに設定します。
+
+```powershell
+Name  : CertificateThumbprint
+Value : <value>
+
+Name  : SourceVault
+Value : /subscriptions/<guid>/resourceGroups/mycluster-keyvault/providers/Microsoft.KeyVault/vaults/myvault
+
+Name  : CertificateURL
+Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
+```
+
+ 2. **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。
+
+
+#### 4\.概要
+
+!["Service Fabric クラスターのデプロイ中" が表示されているスタート画面のスクリーン ショット。][Notifications]
 
 クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure Resource Manager テンプレートをダウンロードします。必須の設定を指定すると、**[OK]** ボタンが有効になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
 
 通知には作成の進行状況が表示されます(画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。 クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、**[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が**スタート**画面にピン留めされます。
 
-!["Service Fabric クラスターのデプロイ中" が表示されているスタート画面のスクリーン ショット。][Notifications]
+### クラスターの状態を表示する
 
-## クラスターの状態を表示する
+![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
 
 クラスターの作成後、ポータルでクラスターを検査できます。
 
-1. **[参照]** に移動し、**[Service Fabric クラスター]** をクリックします。
+ 1. **[参照]** に移動し、**[Service Fabric クラスター]** をクリックします。
 
-2. クラスターを探してクリックします。![ポータルでクラスターを検索するスクリーン ショット。][BrowseCluster]
+ 2. クラスターを探してクリックします。
 
-3. これにより、クラスターのパブリック IP アドレスなどのクラスターに関する詳細が、ダッシュボードに表示されます。**[クラスター パブリック IP アドレス]** の上にポインターを移動するとクリップボードが開き、アドレスをクリックしてコピーできます。![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
+ 3. これにより、クラスターのパブリック エンドポイント、Service Fabric Explorer へのリンクなどのクラスターに関する詳細が、ダッシュボードに表示されます。
 
-  クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、[Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)に関するページをご覧ください。
+クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、[Service Fabric の正常性モデルの概要][service-fabric-health-introduction]に関するページをご覧ください。
 
->[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全なバックアップ](service-fabric-reliable-services-backup-restore.md)を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
-
-## クラスターに接続してアプリケーションをデプロイする
-
-クラスターをセットアップした後は、接続してアプリケーションのデプロイを開始できます。まず、Service Fabric SDK がインストールされているコンピューターで Windows PowerShell を起動します。次に、作成したクラスターがセキュリティで保護されているかどうかに応じて、次の PowerShell コマンド セットのいずれかを実行して、クラスターに接続します。
-
-### セキュリティで保護されていないクラスターに接続する
-
-```powershell
-Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
-```
-
-### セキュリティ保護されたクラスターに接続する
-
-1. 次のコマンドを実行し、"Connect-serviceFabricCluster" PowerShell コマンドの実行に使用するコンピューターに証明書を設定します。
-
-    ```powershell
-    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-    ```
-
-2. 次の PowerShell コマンドを実行して、セキュリティで保護されたクラスターに接続します。証明書の詳細はポータルで指定したものと同じです。
-
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-              -KeepAliveIntervalInSec 10 `
-              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-              -StoreLocation CurrentUser -StoreName My
-    ```
-
-    たとえば、上の PowerShell コマンドの結果は次のようになります。
-
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
-              -KeepAliveIntervalInSec 10 `
-              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
-              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
-              -StoreLocation CurrentUser -StoreName My
-    ```
-
-### アプリケーションをデプロイする
-接続が完了するので、次のコマンドを実行してアプリケーションをデプロイします。パスは実際のコンピューターのものに置き換えます。次の例は、単語数サンプル アプリケーションをデプロイします。
-
-1. 前の手順で接続したクラスターにパッケージをコピーします。
-
-    ```powershell
-    $applicationPath = "C:\VS2015\WordCount\WordCount\pkg\Debug"
-    ```
-
-    ```powershell
-    Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $applicationPath -ApplicationPackagePathInImageStore "WordCount" -ImageStoreConnectionString fabric:ImageStore
-    ```
-2. アプリケーションの種類を Service Fabric に登録します。
-
-    ```powershell
-    Register-ServiceFabricApplicationType -ApplicationPathInImageStore "WordCount"
-    ```
-
-3. 登録したアプリケーションの種類で新しいインスタンスを作成します。
-
-    ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/WordCount -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0.0
-    ```
-
-4. 選択したブラウザーが開き、アプリケーションがリッスンしているエンドポイントに接続します。サンプル アプリケーション WordCount の場合、URL は次のようになります。
-
-    http://sfcluster4doc.westus.cloudapp.azure.com:31000
-
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+>[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全バックアップ][service-fabric-reliable-services-backup-restore]を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
 
 ## 仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 
-クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。詳細については、[VM スケール セットのインスタンスへのリモート接続](service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node)に関する記事をご覧ください。
+クラスターで指定する NodeType ごとに、VM スケール セットがセットアップされます。詳細については、[VM スケール セットのインスタンスへのリモート接続][remote-connect-to-a-vm-scale-set]に関する記事をご覧ください。
 
 ## 次のステップ
 
-クラスターを作成したら、セキュリティで保護し、アプリをデプロイする方法について学習します。
-- [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
-- [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
-- [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
+この時点で、管理の認証に証明書を使用したセキュリティで保護されたクラスターがあります。次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
 
+
+<!-- Links -->
+[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
+[azure-portal]: https://portal.azure.com/
+[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[create-cluster-arm]: https://manage.windowsazure.com
+[service-fabric-cluster-security]: service-fabric-cluster-security.md
+[service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
+[service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
+[service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
+[service-fabric-health-introduction]: service-fabric-health-introduction.md
+[service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
 [CreateRG]: ./media/service-fabric-cluster-creation-via-portal/CreateRG.png
 [CreateNodeType]: ./media/service-fabric-cluster-creation-via-portal/NodeType.png
-[Ports]: ./media/service-fabric-cluster-creation-via-portal/ports.png
-[SFConfigurations]: ./media/service-fabric-cluster-creation-via-portal/SFConfigurations.png
 [SecurityConfigs]: ./media/service-fabric-cluster-creation-via-portal/SecurityConfigs.png
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
-[BrowseCluster]: ./media/service-fabric-cluster-creation-via-portal/browse.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
-[SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
+[cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

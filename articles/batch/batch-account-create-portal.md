@@ -13,18 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/26/2016"
 	ms.author="marsma"/>
 
-# Azure ポータルで Azure Batch アカウントを作成して管理する
+# Azure Portal を使用して Azure Batch アカウントを作成する
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](batch-account-create-portal.md)
 - [Batch Management .NET](batch-management-dotnet.md)
 
-[Azure ポータル][azure_portal]には、Azure Batch アカウントの作成と管理に必要なツールが用意されています。これらのツールを使用して、大規模な並列ワークロードを処理することができます。この記事では、ポータルを使用して Batch アカウントを作成する手順について説明し、さらに Batch アカウントの重要な設定とプロパティについて取り上げます。たとえば、Batch を使用して開発するアプリケーションやサービスには、Batch サービスと通信するためにアカウントの URL とアクセス キーが必要です。どちらも Azure ポータル内にあります。
-
->[AZURE.NOTE] Azure ポータルでは、現時点でアカウントの作成、Batch アカウントの設定とプロパティの管理、プールとジョブの作成および監視など、Batch サービスで利用できる機能の一部をサポートしています。開発時は、Batch API を介して Batch の全機能を利用できます。
+[Azure Portal][azure_portal] で Azure Batch アカウントを作成する方法と、アクセス キーやアカウント URL のような重要なアカウント プロパティを確認できる場所について説明します。また、Batch の価格設定や、Azure Storage アカウントを Batch アカウントにリンクして[アプリケーション パッケージ](batch-application-packages.md)の使用と[ジョブおよびタスク出力の保持](batch-task-output.md)を可能にする方法についても紹介します。
 
 ## Batch アカウントを作成する
 
@@ -46,45 +44,65 @@
 
 	d.**場所**: Batch アカウントを作成する Azure リージョン。サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e.**ストレージ アカウント** (省略可能): 新しい Batch アカウントに関連付ける (リンクする) **汎用**のストレージ アカウント。Batch の[アプリケーション パッケージ](batch-application-packages.md)機能では、リンクされたストレージ アカウントを使用してアプリケーション パッケージの保存と取得を行います。この機能の詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
-
-     > [AZURE.IMPORTANT] リンクされたストレージ アカウント内のキーを再生成する際は、特に注意が必要な点があります。詳細については、下の「[Batch アカウントに関する注意点](#considerations-for-batch-accounts)」を参照してください。
+    e.**ストレージ アカウント** (省略可能): 新しい Batch アカウントに関連付ける (リンクする) **汎用**のストレージ アカウント。詳細については、下の「[リンクされた Azure Storage アカウント](#linked-azure-storage-account)」を参照してください。
 
 4. **[作成]** をクリックしてアカウントを作成します。
 
-  アカウントを**デプロ中**であることがポータルに示され、完了すると *[通知]* に **"デプロイメントが成功しました"** という通知が表示されます。
+  アカウントを**デプロイ中**であることがポータルに示され、完了すると *[通知]* に **"デプロイメントが成功しました"** という通知が表示されます。
 
 ## Batch アカウントのプロパティを表示する
 
-[Batch アカウント] ブレードにはアカウントのプロパティがいくつか表示されているほか、アクセス キー、クォータ、ユーザー、ストレージ アカウントの関連付けなどの詳細設定も利用できます。
+アカウントが作成されたら、**[Batch アカウント]** ブレードを開いて Batch アカウントの設定とプロパティにアクセスできます。[Batch アカウント] ブレードの左側のメニューから、アカウントのすべての設定とプロパティにアクセスできます。
 
-* **Batch アカウント URL**: [Batch REST][api_rest] API や [Batch .NET][api_net] クライアント ライブラリなどの API を使用している場合は、この URL で Batch アカウントにアクセスできます。URL の形式は次のとおりです。
+![Batch account blade in Azure portal][account_blade]
+
+* **Batch アカウント URL**: [Batch 開発 API](batch-technical-overview.md#batch-development-apis) で作成するアプリケーションには、リソースを管理し、アカウント内のジョブを実行するためにアカウント URL が必要です。Batch アカウント URL の形式を次に示します。
 
     `https://<account_name>.<region>.batch.azure.com`
 
-* **アクセス キー**: Batch アカウントのアクセス キーの表示や管理を行うには、鍵アイコンをクリックして **[キーの管理]** ブレードを開くか、**[すべての設定]**、**[キー]** の順にクリックします。アクセス キーは、[Batch REST][api_rest] や [Batch .NET][api_net] クライアント ライブラリなどの Batch サービス API と通信する際に必要になります。
+![Batch account URL in portal][account_url]
 
-    ![Batch アカウント キー][account_keys]
+* **アクセス キー**: アプリケーションには、Batch アカウント内のリソースを操作する際に使用するアクセス キーも必要です。Batch アカウントのアクセス キーを表示または再生成するには、[Batch アカウント] ブレードの左側メニューにある **[検索]** ボックスに「`keys`」と入力し、**[キー]** を選択します。
 
-* **すべての設定**: Batch アカウントのすべての設定を管理したり、そのプロパティを表示したりするには、**[すべての設定]** をクリックして **[設定]** ブレードを開きます。このブレードから、アカウント クォータの表示、Batch アカウントにリンクする Azure ストレージ アカウントの選択、ユーザーの管理など、アカウントのすべての設定とプロパティを利用できます。
+    ![Batch account keys in Azure portal][account_keys]
 
-    ![Batch account settings and properties blades][5]
+## 価格
 
-## Batch アカウントに関する注意点
+Batch アカウントは "Free レベル" のみで提供されます。つまり、Batch アカウント自体に課金されることはありません。課金の対象となるのは、基になる Azure コンピューティング リソースのうち Batch ソリューションが使用する部分と、ワークロードの実行時に他のサービスが使用するリソースです。たとえば、プール内のコンピューティング ノードや、タスクの入力または出力として Azure Storage に格納するデータに対して課金されます。同様に、Batch の[アプリケーション パッケージ](batch-application-packages.md)機能を使用している場合は、アプリケーション パッケージを格納するために使用する Azure Storage リソースが課金の対象となります。詳細については、「[Batch の価格][batch_pricing]」を参照してください。
 
-* Batch アカウントの作成と管理には、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)や [Batch Management .NET](batch-management-dotnet.md) ライブラリも使用できます。
+## リンクされた Azure Storage アカウント
 
-* Batch アカウント自体には課金されません。課金は、Batch ソリューションが使用する Azure コンピューティング リソースと、ワークロードの実行時に他のサービスが使用するリソースが対象になります。たとえば、プール内のコンピューティング ノードは課金の対象です。[アプリケーション パッケージ](batch-application-packages.md)機能を使用している場合は、アプリケーション パッケージのバージョンを格納するために使用している Azure Storage リソースに課金されます。詳細については、「[Batch の価格][batch_pricing]」を参照してください。
+既に述べたように、(必要に応じて) **汎用**の Storage アカウントを Batch アカウントにリンクすることができます。Batch の[アプリケーション パッケージ](batch-application-packages.md)機能では、[Batch File Conventions .NET](batch-task-output.md) ライブラリの場合と同様に、リンクされた汎用の Storage アカウント内の BLOB ストレージを使用します。これらのオプション機能は、Batch タスクで実行するアプリケーションのデプロイや、そのアプリケーションによって生成されるデータの保持に役立ちます。
 
-* 1 つの Batch アカウントで複数の Batch ワークロードを実行したり、異なる Azure リージョンの複数の Batch アカウントにワークロードを分散したりすることができます。
+「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。Azure Storage アカウントを Batch アカウントにリンクする場合は、必ず**汎用**のストレージ アカウント "*のみ*" をリンクしてください。
 
-* いくつかの大規模な Batch ワークロードを実行する場合は、Azure サブスクリプションと各 Batch アカウントに適用する [Batch サービス クォータと制限](batch-quota-limit.md)について気を付けてください。Batch アカウントの現在のクォータは、アカウント プロパティのポータルに表示されます。
+![Creating a "General purpose" storage account][storage_account]
 
-* Batch アカウントにストレージ アカウントを関連付けている (リンクしている) 場合は、ストレージ アカウントのアクセス キーを再生成する際に注意が必要です。ストレージ アカウント キーは 1 つだけ再生成します。リンクされたストレージ アカウントのブレードで **[キーの同期]** をクリックし、キーがプール内のコンピューティング ノードに反映されるまで 5 分待ちます。その後、必要に応じて他のキーの再生成と同期を行います。両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、ストレージ アカウントにアクセスできなくなります。
+Batch アカウント専用として使用する Storage アカウントを作成することをお勧めします。
+
+>[AZURE.WARNING] リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのブレードにある **[キーの同期]** をクリックします。キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。
 
   ![Regenerating storage account keys][4]
 
-> [AZURE.IMPORTANT] 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類*のみ*がサポートされています。Azure Storage アカウントを Batch アカウントにリンクする場合は、**汎用**のストレージ アカウント*のみ*をリンクしてください。
+## Batch サービスのクォータと制限
+
+Azure サブスクリプションやその他の Azure サービスと同様に、Batch アカウントにも特定の[クォータと制限](batch-quota-limit.md)が適用される点に注意してください。Batch アカウントの現在のクォータは、ポータル内のアカウントの **[プロパティ]** に表示されます。
+
+![Batch account quotas in Azure portal][quotas]
+
+Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限に達している可能性があります。
+
+また、Azure サブスクリプションで使用できる Batch アカウントの数は 1 つだけではないという点にも注意してください。1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションでありながら異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
+
+これらのクォータの多くは、Azure Portal で無料の製品サポート要求を送信するだけで増やすことができます。クォータ引き上げ要求の詳細については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+
+## その他の Batch アカウント管理オプション
+
+Azure Portal を利用する方法に加えて、次に示す方法でも Batch アカウントを作成および管理できます。
+
+* [Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)
+* [Azure CLI](../xplat-cli-install.md)
+* [Batch Management .NET](batch-management-dotnet.md)
 
 ## 次のステップ
 
@@ -99,9 +117,12 @@
 [batch_pricing]: https://azure.microsoft.com/pricing/details/batch/
 
 [4]: ./media/batch-account-create-portal/batch_acct_04.png "Regenerating storage account keys"
-[5]: ./media/batch-account-create-portal/batch_acct_05.png "Batch account settings and properties blades"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
+[account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
+[account_url]: ./media/batch-account-create-portal/account_url.png
+[storage_account]: ./media/batch-account-create-portal/storage_account.png
+[quotas]: ./media/batch-account-create-portal/quotas.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

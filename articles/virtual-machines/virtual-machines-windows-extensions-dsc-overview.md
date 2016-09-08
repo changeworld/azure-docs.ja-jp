@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/24/2016"
    ms.author="zachal"/>
 
 # Azure Desired State Configuration 拡張機能ハンドラーの概要 #
@@ -29,7 +29,7 @@ Azure VM エージェントとそれに関連付けられた拡張機能は、Mi
 ## 前提条件 ##
 **ローカル コンピューター**: Azure VM 拡張機能と対話するには、Azure ポータルまたは Azure PowerShell SDK を使用する必要があります。
 
-**ゲスト エージェント**: DSC 構成によって構成される Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。サポートされている OS バージョンの詳細な一覧については、DSC 拡張機能のバージョン履歴を参照してください。
+**ゲスト エージェント**: DSC 構成によって構成される Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。サポートされている OS バージョンの詳細な一覧については、[DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
 
 ## 用語と概念 ##
 このガイドでは、読者が次の概念を理解していることを想定しています。
@@ -50,13 +50,13 @@ Azure DSC 拡張機能は、Azure VM エージェント フレームワークを
 2. `wmfVersion` プロパティを指定した場合は、VM の OS と互換性がない場合を除いて、そのバージョンの WMF がインストールされます。
 3. `wmfVersion` プロパティを指定しなかった場合は、WMF の適用可能な最新バージョンがインストールされます。
 
-WMF をインストールした場合は再起動が必要になります。再起動後、`modulesUrl` プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます。その場所が Azure Blob Storage 内の場合は、`sasToken` プロパティに SAS トークンを指定すると、ファイルにアクセスできます。.zip がダウンロードされて展開された後、`configurationFunction` で定義されている構成関数が実行され、MOF ファイルが生成されます。その後、拡張機能によって、生成された MOF ファイルに対して `Start-DscConfiguration -Force` が実行されます。拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。これ以降は、DSC LCM が通常どおり監視と修正に対処します。
+WMF をインストールした場合は再起動が必要になります。再起動後、`modulesUrl` プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます。その場所が Azure BLOB ストレージ内の場合は、`sasToken` プロパティに SAS トークンを指定すると、ファイルにアクセスできます。.zip がダウンロードされて展開された後、`configurationFunction` で定義されている構成関数が実行され、MOF ファイルが生成されます。その後、拡張機能によって、生成された MOF ファイルに対して `Start-DscConfiguration -Force` が実行されます。拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。これ以降は、DSC LCM が通常どおり監視と修正に対処します。
 
 ## PowerShell コマンドレット ##
 
-ARM または ASM と共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、および監視できます。以下に示すコマンドレットは ASM モジュールですが、"Azure" を "AzureRm" に置き換えると ARM モデルを使用できます。たとえば、`Publish-AzureVMDscConfiguration` では ASM が使用されますが、`Publish-AzureRmVMDscConfiguration` では ARM が使用されます。
+ARM または ASM と共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。以下に示すコマンドレットは ASM モジュールですが、"Azure" を "AzureRm" に置き換えると ARM モデルを使用できます。たとえば、`Publish-AzureVMDscConfiguration` では ASM が使用されますが、`Publish-AzureRmVMDscConfiguration` では ARM が使用されます。
 
-`Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。パッケージは、`-ConfigurationArchivePath` パラメーターを使用するとローカルに作成できます。それ以外の場合は、Azure Blob Storage に .zip ファイルを発行し、SAS トークンを使用して保護します。
+`Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。また、`-ConfigurationArchivePath` パラメーターを使用して、パッケージをローカルに作成することもできます。それ以外の場合は、Azure BLOB ストレージに .zip ファイルを発行し、SAS トークンを使用して保護します。
 
 このコマンドレットによって作成された .zip ファイルでは、アーカイブ フォルダーのルートに .ps1 構成スクリプトがあります。リソースのモジュール フォルダーは、アーカイブ フォルダーに配置されます。
 
@@ -64,9 +64,9 @@ ARM または ASM と共に PowerShell コマンドレットを使用すると�
 
 `Get-AzureVMDscExtension` は、特定の VM の DSC 拡張機能の状態を取得します。
 
-`Get-AzureVMDscExtensionStatus` は、VM または VM のグループで DSC 拡張機能ハンドラーによって適用された DSC 構成の状態を取得します。
+`Get-AzureVMDscExtensionStatus` は、DSC 拡張機能ハンドラーによって適用された DSC 構成の状態を取得します。この処理は、単一の VM または VM のグループに対して実行できます。
 
-`Remove-AzureVMDscExtension` は、特定の仮想マシンから拡張機能ハンドラーを削除します。これによって、構成の削除、WMF のアンインストール、または仮想マシンに適用されている設定の変更が**行われることはありません**。拡張機能ハンドラーが削除されるだけです。
+`Remove-AzureVMDscExtension` は、特定の仮想マシンから拡張機能ハンドラーを削除します。このコマンドレットによって、構成の削除、WMF のアンインストール、または仮想マシンに適用されている設定の変更が**行われることはありません**。拡張機能ハンドラーが削除されるだけです。
 
 **ASM コマンドレットと ARM コマンドレットの主な違い**
 
@@ -76,19 +76,19 @@ ARM または ASM と共に PowerShell コマンドレットを使用すると�
 - ConfigurationArchive は、ARM では ArchiveBlobName と呼ばれます。
 - ContainerName は、ARM では ArchiveContainerName と呼ばれます。
 - StorageEndpointSuffix は、ARM では ArchiveStorageEndpointSuffix と呼ばれます。
-- AutoUpdate スイッチが ARM に追加されました。これにより、最新バージョンが利用可能になると、拡張機能ハンドラーが自動的に更新されるようにできます。WMF の新しいバージョンがリリースされると VM で再起動が生じる可能性があることに注意してください。 
+- AutoUpdate スイッチが ARM に追加されました。これにより、最新バージョンが利用可能になると、拡張機能ハンドラーが自動的に更新されるようにできます。WMF の新しいバージョンがリリースされると、このパラメーターによって VM で再起動が生じる可能性があることに注意してください。
 
 
 ## Azure ポータルの機能 ##
-クラシック VM を参照します。[設定]、[全般] の順に移動し、[拡張機能] をクリックします。新しいウィンドウが作成されます。[追加] をクリックし、[PowerShell DSC] を選択します。
+クラシック VM を参照します。[設定]、[全般] の順に移動し、[拡張機能] をクリックします。 新しいウィンドウが作成されます。[追加] をクリックし、[PowerShell DSC] を選択します。
 
-ポータルでは、値の入力が必要になります。**[構成モジュールまたはスクリプト]**: これは必須フィールドです。構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。
+ポータルでは、入力が必要になります。**[構成モジュールまたはスクリプト]**: これは必須フィールドです。構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。
 
 **[構成データ PSD1 ファイル]**: これはオプション フィールドです。.psd1 の構成データ ファイルが必要な構成では、このフィールドを使用して目的のファイルを選択し、SAS トークンによってセキュリティで保護されている、ユーザーの Blob Storage にアップロードします。
  
 **[構成のモジュール修飾名]**: .ps1 ファイルには、複数の構成関数を含めることができます。.ps1 構成スクリプトの名前に続けて "\" と構成関数の名前を入力します。たとえば、.ps1 スクリプトの名前が "configuration.ps1" であり、構成が "IisInstall" であれば、次のように入力します: `configuration.ps1\IisInstall`
 
-**構成引数**: 構成関数が引数を受け取る場合は、`argumentName1=value1,argumentName2=value2` という形式でここに入力します。これは、PowerShell コマンドレットまたは ARM テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
+**[構成引数]**: 構成関数が引数を受け取る場合は、`argumentName1=value1,argumentName2=value2` という形式でここに入力します。これは、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
 ## 使用の開始 ##
 
@@ -144,4 +144,4 @@ PowerShell DSC で管理できる追加機能については、[PowerShell ギ�
 
 機微なパラメーターを構成に渡す方法の詳細については、「[資格情報を Azure DSC 拡張機能ハンドラーに渡す](virtual-machines-windows-extensions-dsc-credentials.md)」を参照してください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,23 +14,22 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Facebook コネクタの使用
-Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。Facebook コネクタは、次のツールから使用できます。
-
-- Logic Apps (このトピックで説明)
-- PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
+Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 
 Facebook では、次の操作を実行できます。
 
-- Facebook から取得したデータに基づいてビジネス フローを構築できます。 
+- Facebook から取得したデータに基づいてビジネス フローを構築できます。
 - 新しい投稿を取得したときにトリガーを使用できます。
-- タイムラインへの投稿、ページ フィードの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、タイムラインに新しい投稿がある場合、その投稿を取得して、Twitter フィードにプッシュすることができます。 
+- タイムラインへの投稿、ページ フィードの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、タイムラインに新しい投稿がある場合、その投稿を取得して、Twitter フィードにプッシュすることができます。
+
+
 
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -47,7 +46,7 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ロジック アプリにこのコネクタを追加するとき、Facebook に接続するロジック アプリを承認する必要があります。
 
 1. Facebook アカウントにサインインします。
-2. **[Authorize]** を選択して、ロジック アプリが Facebook に接続して使用することを許可します。 
+2. **[Authorize]** を選択して、ロジック アプリが Facebook に接続して使用することを許可します。
 
 >[AZURE.INCLUDE [Facebook への接続を作成する手順](../../includes/connectors-create-api-facebook.md)]
 
@@ -59,14 +58,14 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ### タイムラインからフィードを取得する
 ログインしたユーザーのタイムラインからフィードを取得します。```GET: /me/feed```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |fields|string|×|query|なし |取得フィールドを指定します。例 (id、name、picture)。|
 |limit|integer|×|query| なし|取得する投稿の最大数|
 |を以下に置き換えることができます。|string|×|query| なし|投稿の一覧を、接続している場所の投稿に制限します。|
 |filter|string|×|query| なし|特定のストリーム フィルターに一致する投稿のみを取得します。|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -78,12 +77,12 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ### タイムラインに投稿する
 ログインしたユーザーのタイムラインにステータス メッセージを投稿します。```POST: /me/feed```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |post|string |○|body|なし |投稿する新しいメッセージ|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -92,12 +91,12 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 
 
 ### タイムラインに新しい投稿がある場合
-ログインしているユーザーのタイムラインに新しい投稿があると、新しいフローをトリガーします。```GET: /trigger/me/feed```
+ログインしているユーザーのタイムラインに新しい投稿があるときに、新しいフローをトリガーします。```GET: /trigger/me/feed```
 
 パラメーターはありません。
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -108,14 +107,14 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ### ページ フィードを取得する
 指定したページのフィードから投稿を取得します。```GET: /{pageId}/feed```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |pageId|string|○|path| なし|取得する投稿のページ ID。|
 |limit|integer|×|query| なし|取得する投稿の最大数|
-|include\_hidden|ブール値|×|query|なし |ページで非表示にされていた投稿を含めるかどうか|
+|include\_hidden|boolean|×|query|なし |ページで非表示にされていた投稿を含めるかどうか|
 |fields|string|×|query|なし |取得フィールドを指定します。例 (id、name、picture)。|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -127,7 +126,7 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ### ユーザーのタイムラインを取得する
 ユーザーのタイムラインから投稿を取得します。```GET: /{userId}/feed```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |userId|string|○|path|なし |タイムラインを取得するユーザーの ID。|
 |limit|integer|×|query|なし |取得する投稿の最大数|
@@ -135,7 +134,7 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 |filter|string|×|query| なし|特定のストリーム フィルターに一致する投稿のみを取得します。|
 |fields|string|×|query| なし|取得フィールドを指定します。例 (id、name、picture)。|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -147,13 +146,13 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 ### ページに投稿する
 ログインしたユーザーとして Facebook ページにメッセージを投稿します。```POST: /{pageId}/feed```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |pageId|string|○|path|なし |投稿するページの ID。|
 |post|many |○|body|なし |投稿する新しいメッセージ。|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |400|正しくない要求|
@@ -188,8 +187,8 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 |feed\_targeting|未定義|×|
 |from|未定義|×|
 |icon|string|×|
-|is\_hidden|ブール値|×|
-|is\_published|ブール値|×|
+|is\_hidden|boolean|×|
+|is\_published|boolean|×|
 |link|string|×|
 |message|string|×|
 |name|string|×|
@@ -197,7 +196,7 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 |picture|string|×|
 |place|未定義|×|
 |privacy|未定義|×|
-|properties|array|×|
+|プロパティ|array|×|
 |source|string|×|
 |status\_type|string|×|
 |story|string|×|
@@ -264,12 +263,12 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 |object\_attachment|string|×|
 |targeting|未定義|×|
 |feed\_targeting|未定義|×|
-|published|ブール値|×|
+|published|boolean|×|
 |scheduled\_publish\_time|string|×|
 |backdated\_time|string|×|
 |backdated\_time\_granularity|string|×|
 |child\_attachments|array|×|
-|multi\_share\_end\_card|ブール値|×|
+|multi\_share\_end\_card|boolean|×|
 
 #### PostFeedResponse
 
@@ -407,7 +406,7 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 |プロパティ名 | データ型 |必須|
 |---|---|---|
 |url|string|○|
-|is\_silhouette|ブール値|○|
+|is\_silhouette|boolean|○|
 |height|string|×|
 |width|string|×|
 
@@ -434,6 +433,6 @@ Facebook コネクタには、次のトリガーとアクションがありま�
 
 ## 次のステップ
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

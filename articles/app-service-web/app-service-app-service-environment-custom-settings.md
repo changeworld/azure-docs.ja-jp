@@ -13,13 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="08/22/2016"
 	ms.author="stefsch"/>
 
 # App Service Environment のカスタム構成設定
 
 ## Overview ##
 App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
+
+App Service 環境がない場合は、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
 App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
 
@@ -95,4 +97,4 @@ Azure クイック スタート Resource Manager テンプレートのサイト�
 
 <!-- IMAGES -->
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

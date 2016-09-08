@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="nodejs" 
 	ms.topic="hero-article" 
-	ms.date="08/15/2016" 
+	ms.date="08/25/2016" 
 	ms.author="anhoh"/>
 
 # <a name="_Toc395783175"></a>DocumentDB を使用した Node.js Web アプリケーションの作成
@@ -568,4 +568,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

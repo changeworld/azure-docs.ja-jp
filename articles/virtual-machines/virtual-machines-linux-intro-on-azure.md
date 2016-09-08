@@ -28,7 +28,7 @@ Azure クラシック ポータルを使用して Linux 仮想マシンを作成
 
 
  - 詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)」を参照してください。
- - 詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照してください。
+ - 詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-mac-create-ssh-keys.md)」を参照してください。
 
 
 ## `sudo` を使用したスーパーユーザー権限の取得
@@ -98,4 +98,4 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
 
  - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

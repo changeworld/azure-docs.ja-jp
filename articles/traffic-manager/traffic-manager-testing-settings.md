@@ -3,7 +3,7 @@
    description="この記事は、Traffic Manager の設定のテストを支援します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Traffic Manager の設定のテスト
 
@@ -72,4 +72,4 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

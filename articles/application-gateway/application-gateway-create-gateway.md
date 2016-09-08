@@ -24,7 +24,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 - [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -36,24 +36,24 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
 2. 既存の仮想ネットワークがある場合は、既存の空のサブネットを選択するか、既存の仮想ネットワークにアプリケーション ゲートウェイ専用の新しいサブネットを作成します。アプリケーション ゲートウェイの背後にデプロイするリソースとは異なる仮想ネットワークにアプリケーション ゲートウェイをデプロイすることはできません。
 3. 有効なサブネットがある作業用の仮想ネットワークがあることを確認します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. Application Gateway を使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
+3. アプリケーション ゲートウェイを使用するように構成するサーバーが存在している必要があります。つまり、仮想ネットワーク内にエンドポイントが作成されているか、割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
 
 ## Application Gateway の作成に必要な構成
 
 
-**New-AzureApplicationGateway** コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成する必要があります。
+**New-AzureApplicationGateway** コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成します。
 
 
 値は次のとおりです。
 
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
 
-## 新しいアプリケーション ゲートウェイの作成
+## アプリケーション ゲートウェイの作成
 
 Application Gateway を作成するには:
 
@@ -80,7 +80,7 @@ Application Gateway を作成するには:
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description* 、 *InstanceCount* 、および *GatewaySize* は省略可能なパラメーターです。
+ *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
 
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
@@ -110,7 +110,7 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 ## XML を使用して Application Gateway を構成する
 
-次の例では、XML ファイルを使用して、すべての Application Gateway 設定を構成し、Application Gateway のリソースにコミットします。
+次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。
 
 ### 手順 1  
 
@@ -161,9 +161,9 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 構成項目のかっこに囲まれた値を編集します。拡張子 .xml のファイルに保存します。
 
->[AZURE.IMPORTANT] プロトコル項目 Http または Https は、大文字小文字を区別します。
+>[AZURE.IMPORTANT] プロトコル項目 HTTP または HTTPS は、大文字小文字を区別します。
 
-次の例では、パブリック ポート 80 で HTTP トラフィックを負荷分散する Application Gateway を設定し、2 つの IP アドレスのバックエンド ポート 80 にネットワーク トラフィックを送信する構成ファイルを使用する方法を示します。
+次の例では、構成ファイルを使用してアプリケーション ゲートウェイを設定する方法を示します。この例では、パブリック ポート 80 で HTTP トラフィックの負荷分散を行い、2 つの IP アドレスの間のバックエンド ポート 80 にネットワーク トラフィックを送信します。
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -415,4 +415,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -6,7 +6,7 @@
 
      ![名前と値のペアを持つタグ リソース](./media/resource-manager-tag-resources/tag-resources.png)
 
-1. ポータルでタグの分類を表示するには、**[参照]**、**[タグ]** の順に選択します。
+1. ポータルでタグの分類を表示するには、**[参照]**、**[More Services (その他のサービス)]** の順に選択します。
 
      ![参照ハブによるタグの検索](./media/resource-manager-tag-resources/browse-tags.png)
 
@@ -22,4 +22,4 @@
 
      ![スタート画面にタグをピン留めする](./media/resource-manager-tag-resources/show-pinned-tag.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

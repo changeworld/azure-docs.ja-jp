@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # エンドユーザーに通知するためのプッシュの利用と管理を始める方法
@@ -21,7 +21,7 @@
 SDK とアプリを完全統合したら、UI のリーチ セクションでアプリのユーザーにプッシュ通知を実行できます。
 
 ## 最初のプッシュ通知キャンペーンの実行
--    リーチが SDK でアプリに統合されていることを確認します。 
+-    リーチが SDK でアプリに統合されていることを確認します。
 -    アプリケーションを選択します。
  
 ![First1][1]
@@ -112,7 +112,7 @@ SDK とアプリを完全統合したら、UI のリーチ セクションでア
 [アプリ外のみ] 配信モードは、アプリケーションが閉じている場合にプッシュ通知を提供します。これは標準のプッシュ通知です。[アプリ外のみ] を選択する場合は、アプリケーションをビルドしているプラットフォーム (APNS または GCM) から証明書を既に提供している必要があります。
 
 ### 関連項目
--  [Apple Push Notification Service – Certificates (Apple プッシュ通知サービス – 証明書)](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9)、Google Cloud Messaging – Certificate (Google クラウド メッセージング - 証明書)](http://developer.android.com/google/gcm/index.html) 
+-  [Apple Push Notification Service – Certificates (Apple プッシュ通知サービス – 証明書)](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9)、Google Cloud Messaging – Certificate (Google クラウド メッセージング - 証明書)](http://developer.android.com/google/gcm/index.html)
 
 ### [アプリ内のみ] 配信モード
 ![Differentiate3][17]
@@ -127,7 +127,7 @@ SDK とアプリを完全統合したら、UI のリーチ セクションでア
 ![Shedule1][18]
 
 今日が 3 月 21 日で、アナウンスメントを 3 月 22 日の午前 0 時に行うことを計画しています。プッシュを行うために、インターフェイスの前にとどまっている必要はありません。 通知を送信する正確な時刻 (分単位) を事前に計画することができます。
--    [なし] チェック ボックスをオフにし、開始時刻を選択します。 
+-    [なし] チェック ボックスをオフにし、開始時刻を選択します。
 -    プッシュ キャンペーンを開始する日付と時刻を選択します。
 
 ### キャンペーン終了の計画
@@ -297,4 +297,4 @@ Web ビューとは、Web コンテンツを含むポップアップです。こ
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

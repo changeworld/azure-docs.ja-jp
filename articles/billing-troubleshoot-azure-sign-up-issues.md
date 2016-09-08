@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Azure サインアップに関する問題のトラブルシューティング
 この記事は、Azure にサインアップする際に発生の可能性がある問題について、その一般的な原因を探るのに役立ちます。
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、[Azure サポートのサイト](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)で Azure サポート インシデントを送信できます。Azure サポートの使用方法の詳細については、「[Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
 
 ## 情報を入力してサインアップすると、エラーが発生します。
 アカウント プロファイルの情報は正確ですか? プロファイルの詳細は課金明細書の生成に使用されるため、自分の情報を正確に入力することが重要です。正しくないフィールドの例として、
@@ -53,7 +53,7 @@
 - 使用できるクレジット/デビット カード会社は、アカウントの国によって異なります。
 
 ご提案:
-- クレジット カードやデビット カードを使用した場合のサインアップの問題の一般的な原因については、「[Azure にサインアップしようとしたところ、クレジット カードが承認されません](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
+- クレジット カードやデビット カードを使用した場合のサインアップの問題の一般的な原因については、[Azure へのサインアップ時のクレジット カードの拒否](billing-credit-card-fails-during-azure-sign-up.md)に関する記事を参照してください。
 
 ## MSDN、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません。
 資格を確認します。プランを選択する資格がある場合は、特典プログラム チャネルを調べます。
@@ -67,18 +67,20 @@
   - [BizSpark ポータル](https://www.microsoft.com/bizspark/default.aspx#start-two)にサインインし、BizSpark と BizSpark Plus の資格の状態を確認します。自分の資格の状態を確認できない場合は、[BizSpark サポート チーム](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)に電子メールを送信して BizSpark サポートにお問い合わせください。
 
 ご提案:
-- サインアップ操作中に新しい特典サブスクリプションをアクティブ化しようとするとエラーが発生する場合は、[Azure サブスクリプション ページ](http://account.windowsazure.com/Subscriptions)でサブスクリプションのセットアップが完了しているかどうかを確認してください。サブスクリプションがアクティブ状態であると表示されるまで数分かかる場合があります。サブスクリプションがアクティブになると、電子メールが届きます。4 分間以上経過してもサブスクリプションが保留中のままである場合は、[Azure サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
+- サインアップ操作中に新しい特典サブスクリプションをアクティブ化しようとするとエラーが発生する場合は、[Azure サブスクリプション ページ](http://account.windowsazure.com/Subscriptions)でサブスクリプションのセットアップが完了しているかどうかを確認してください。サブスクリプションがアクティブ状態であると表示されるまで数分かかる場合があります。サブスクリプションがアクティブになると、電子メールが届きます。5 分以上経過してもサブスクリプションが保留中のままである場合は、[Azure サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
 
 ## 新しい Azure イン オープン プラン サブスクリプションをアクティブ化できません。
-新しい Azure イン オープン プラン サブスクリプションをアクティブ化するには、少なくとも 1 つの Azure イン オープン トークンが関連付けられている有効な OSA キーを持っている必要があります。
+新しい Azure イン オープン プラン サブスクリプションをアクティブ化するには、少なくとも 1 つの Azure イン オープン プラン トークンが関連付けられている有効な OSA キーを持っている必要があります。
 
 ご提案:
 - OSA キーを持っていない場合は、[Microsoft Pinpoint](http://pinpoint.microsoft.com/) に記載されている Microsoft パートナーのいずれかにお問い合わせください。
 
 ## Azure 無料試用版をアクティブ化できません。
-過去に Azure サブスクリプションを使用していませんか? Azure 使用条件契約書では、以前に使用経験のないユーザーに限り Azure 無料試用版を 1 回だけアクティブ化できるという制限を設けています。他の種類の Azure サブスクリプションを持っていた場合でも、無料試用版をアクティブ化することはできません。
+過去に Azure サブスクリプションを使用していませんか。 Azure 使用条件契約書では、以前に使用経験のないユーザーに限り Azure 無料試用版を 1 回だけアクティブ化できるという制限を設けています。他の種類の Azure サブスクリプションを持っていた場合でも、無料試用版をアクティブ化することはできません。
 
 ご提案:
-- 過去に Azure サブスクリプションをアクティブ化しているために無料試用版をアクティブ化できない場合は、従量課金サブスクリプションの購入をご検討ください。特典を受ける資格をお持ちの可能性があります。Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)を参照してください。福利厚生制度には特定の前提条件が必要となりますので注意してください。
+- Azure サブスクリプションを過去にアクティブ化しているために無料試用版をアクティブ化できない場合は、従量課金サブスクリプションの購入をご検討ください。特典を受ける資格をお持ちの可能性があります。Azure 無料試用版プランではなく、[Microsoft Azure プランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)を参照してください。福利厚生制度には特定の前提条件が必要となりますので注意してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

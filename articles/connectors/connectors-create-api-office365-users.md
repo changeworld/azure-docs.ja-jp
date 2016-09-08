@@ -1,5 +1,5 @@
 <properties
-    pageTitle="PowerApps Enterprise またはロジック アプリに Office 365 Users コネクタを追加する | Microsoft Azure"
+    pageTitle="Logic Apps に Office 365 ユーザー コネクタを追加する | Microsoft Azure"
     description="Office 365 Users コネクタと REST API パラメーターの概要"
     services=""    
     documentationCenter=""     
@@ -14,34 +14,21 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="05/18/2016"
+ms.date="08/18/2016"
 ms.author="deonhe"/>
 
 # Office 365 Users コネクタの使用
 
-Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。Office 365 Users コネクタは、次のツールから使用できます。
-
-- Logic Apps 
-- PowerApps
-
-> [AZURE.SELECTOR]
-- [Logic Apps](../articles/connectors/connectors-create-api-office365-users.md)
-- [PowerApps Enterprise](../articles/power-apps/powerapps-create-api-office365-users.md)
-
-&nbsp;
+Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
-
 Office 365 ユーザーは、次のことを行えます。
 
-- Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。 
-- 直属の部下の取得、上司のユーザーのプロファイルの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ユーザーの直属の部下を取得し、この情報を利用して、SQL Azure Database を更新します。 
-- PowerApps Enterprise に Office 365 Users コネクタを追加します。追加すると、ユーザーはアプリ内でコネクタを使用できるようになります。 
+- Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。
+- 直属の部下の取得、上司のユーザーのプロファイルの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ユーザーの直属の部下を取得し、この情報を利用して、SQL Azure Database を更新します。
 
-PowerApps Enterprise にコネクタを追加する方法については、[PowerApps でのコネクタの登録](../power-apps/powerapps-register-from-available-apis.md)に関するページを参照してください。
-
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
 ## トリガーとアクション
 
@@ -73,7 +60,7 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 
 この呼び出しには、パラメーターはありません。
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -89,11 +76,11 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 ### ユーザー プロファイルの取得 
 特定のユーザー プロファイルを取得します。```GET: /users/{userId}```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -109,13 +96,13 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 ### 上司の取得 
 指定されたユーザーの上司のユーザー プロファイルを取得します。```GET: /users/{userId}/manager```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |202|操作に成功しました|
@@ -130,11 +117,11 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 ### 直接の部下を取得 
 直接の部下を取得します。```GET: /users/{userId}/directReports```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
 
-#### Response
+#### 応答
 
 |名前|説明|
 |---|---|
@@ -151,13 +138,13 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 ### ユーザーの検索 
 ユーザー プロファイルの検索結果を取得します。```GET: /users```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |searchTerm|string|×|query|なし|検索文字列 (以下に適用されます: 表示名、姓を含まない名前、姓、電子メール、メールのニックネーム、ユーザー プリンシパル名)|
 
-#### Response
+#### 応答
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |202|操作に成功しました|
@@ -181,7 +168,7 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 |Mail|string|×|
 |MailNickname|string|×|
 |TelephoneNumber|string|×|
-|AccountEnabled|ブール値|×|
+|AccountEnabled|boolean|×|
 |ID|string|○
 |UserPrincipalName|string|×|
 |学科|string|×|
@@ -191,7 +178,7 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 
 ## 次のステップ
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
 [API リスト](apis-list.md)に戻ります。
 
@@ -203,4 +190,4 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 [10]: ./media/connectors-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/connectors-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

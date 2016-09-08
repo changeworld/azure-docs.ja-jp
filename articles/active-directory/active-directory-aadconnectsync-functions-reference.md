@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/02/2016"
+	ms.date="08/23/2016"
 	ms.author="andkjell;markvi"/>
 
 
@@ -34,10 +34,12 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 - **mvstr** – 複数値の文字列
 - **mvref** – 複数値の参照
 - **num** – 数値
-- **ref** – 単一値の参照
-- **str** – 単一値の文字列
+- **ref** – 参照
+- **str** – 文字列
 - **var** – その他の (ほとんど) すべての型のバリアント
 - **void** – 値を返しません
+
+**mvbin**、**mvstr**、**mvref** 型の関数は、複数値の属性のみに有効です。**bin**、**str**、**ref** 型の関数は、単一値と複数値両方の属性に有効です。
 
 ## 関数参照
 
@@ -141,11 +143,11 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 
 **説明:** Contains 関数は、複数値の属性内で文字列を検索します。
 
-**構文:** `num Contains (mvstring attribute, str search)` - 大文字小文字を区別 `num Contains (mvstring attribute, str search, enum Casetype)` `num Contains (mvref attribute, str search)` - 大文字小文字を区別
+**構文:**`num Contains (mvstring attribute, str search)` - 大文字小文字を区別`num Contains (mvstring attribute, str search, enum Casetype)` `num Contains (mvref attribute, str search)` - 大文字小文字を区別
 
-- attribute: 検索対象の複数値の属性。<br>
-- search: 属性で検索する文字列。<br>
-- Casetype: CaseInsensitive または CaseSensitive。<br>
+- attribute: 検索対象の複数値の属性。
+- search: 属性で検索する文字列。
+- Casetype: CaseInsensitive または CaseSensitive。
 
 文字列が見つかった複数値の属性にインデックスを返します。文字列が見つからない場合は 0 を返します。
 
@@ -158,7 +160,7 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 
 **説明:** ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
 
-**構文:** `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています。<br> `str ConvertFromBase64(str source, enum Encoding)`
+**構文:** `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています。`str ConvertFromBase64(str source, enum Encoding)`
 
 - source: Base64 でエンコードされた文字列
 - Encoding: Unicode、ASCII、UTF8
@@ -232,7 +234,7 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 
 - value: 数値、参照属性、ブール値を指定できます。
 
-**例:** `CStr([dn])` "cn=Joe,dc=contoso,dc=com" などを返します。
+**例:** `CStr([dn])` "cn=Joe,dc=contoso,dc=com" を返します。
 
 ----------
 ### DateAdd
@@ -337,13 +339,13 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 ----------
 ### IIF
 
-**説明:** IIF 関数は、指定した条件に基づいて、使用できる値セットのうち、いずれかを返します。
+**説明:** IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
 
 **構文:** `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 - condition: 評価結果が true または false になる任意の値または式。
-- valueIfTrue: 条件の評価結果が true になる場合に返される値。
-- valueIfFalse: 条件の評価結果が false になる場合に返される値。
+- valueIfTrue: 条件の評価結果が true の場合に返される値。
+- valueIfTrue: 条件の評価結果が false の場合に返される値。
 
 **例:** `IIF([employeeType]="Intern","t-" & [alias],[alias])` ユーザーがインターンの場合はユーザーのエイリアスの先頭に "t-" を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
 
@@ -437,11 +439,11 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### IsNullOrEmpty
 
-**説明:** IsNullOrEmpty 関数は、式が null または空の文字列の場合、true を返します。
+**説明:** 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。
 
 **構文:** `bool IsNullOrEmpty(var Expression)`
 
-**解説:** 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。<br> この関数の逆の関数は IsPresent です。
+**解説:** 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。この関数の逆の関数は IsPresent です。
 
 **例:** `IsNullOrEmpty([displayName])` CS または MV に属性がないか、空の文字列の場合は True を返します。
 
@@ -457,7 +459,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### IsString
 
-**説明:** 式を string 型として評価できる場合、IsString 関数の評価結果は True になります。
+**説明:** 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
 
 **構文:** `bool IsString(var expression)`
 
@@ -500,7 +502,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - attribute: 複数値の属性
 - index: 複数値の文字列内の項目へのインデックス。
 
-**解説:** Contains 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数と共に使用すると便利です。
+**解説:** ItemOrNull 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、Null 値を返します。
 
@@ -543,7 +545,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - numChars < 0 の場合、入力文字列を返します。
 - string が null の場合、空の文字列を返します。
 
-文字列に含まれる文字数が numChars で指定した数より少ない場合は、文字列と同一の文字列 (パラメーター 1 のすべての文字が含まれる) が返されます。
+string に含まれる文字数が numChars で指定した数より少ない場合は、string と同一の文字列 (パラメーター 1 のすべての文字が含まれる) が返されます。
 
 **例:** `Left("John Doe", 3)` "Joh" を返します。
 
@@ -563,7 +565,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `str LTrim(str value)`
 
-**例:** `LTrim(" Test ")` "Test" を返します。
+**例:** `LTrim(" Test ")` "Test " を返します。
 
 ----------
 ### Mid
@@ -576,7 +578,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - start: 文字列内で返される文字の開始位置を指定する数値
 - NumChars: 文字列の位置から数えて返される文字数を指定する数値
 
-**解説:** 文字列内の start 位置から数えて numChars 文字分の文字を返します。文字列内の start 位置から数えて numChars 文字分の文字が含まれる文字列。
+**解説:** string 内の start 位置から数えて numChars 文字分の文字を返します。文字列内の start 位置から数えて numChars 文字分の文字が含まれる文字列。
 
 - numChars = 0 の場合、空の文字列を返します。
 - numChars < 0 の場合、入力文字列を返します。
@@ -584,11 +586,11 @@ CGuid() が成功するかどうかを判断するために使用します。
 - start < = 0 の場合、入力文字列を返します。
 - string が null の場合、空の文字列を返します。
 
-文字列で start 位置から後に numChar 文字が残っていない場合、返すことのできるすべての文字が返されます。
+string で start 位置から後に numChar 文字が残っていない場合、できるだけ多くの文字が返されます。
 
 **例:** `Mid("John Doe", 3, 5)` "hn Do" を返します。
 
-`Mid("John Doe", 6, 999)` "Doe" を返します
+`Mid("John Doe", 6, 999)` "Doe" を返します。
 
 ----------
 ### Now
@@ -600,7 +602,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### NumFromDate
 
-**説明:** NumFromDate 関数は、AD の日付形式の日付を返します。
+**説明:** NumFromDate 関数は、AD の日付形式で日付を返します。
 
 **構文:** `num NumFromDate(dt value)`
 
@@ -744,7 +746,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 - string: 返される文字を含む文字列
 - NumChars: 文字列の右端から数えて返される文字数を指定する数値
 
-**解説:** 文字列の末尾から数えて numChars 文字分の文字が返されます。
+**解説:** string の末尾から数えて numChars 文字分の文字が返されます。
 
 文字列内の最後の numChars 文字分の文字を含む文字列。
 
@@ -763,7 +765,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 **構文:** `str RTrim(str value)`
 
-**例:** `RTrim(" Test ")` "Test" を返します。
+**例:** `RTrim(" Test ")` " Test" を返します。
 
 ----------
 ### Split
@@ -774,7 +776,7 @@ CGuid() が成功するかどうかを判断するために使用します。
 
 - value: 分離する区切り文字が含まれる文字列。
 - delimiter: 区切り記号として使用される 1 文字。
-- limit: 返される値の最大数。
+- limit: 返すことができる値の最大数。
 
 **例:** `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")` proxyAddress 属性に有用な 2 つの要素が含まれる複数値の文字列を返します。
 
@@ -788,9 +790,9 @@ CGuid() が成功するかどうかを判断するために使用します。
 ----------
 ### StringFromSid
 
-**説明:** StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列または複数値のバイト配列を、文字列または複数値の文字列に変換します。
+**説明:** StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。
 
-**構文:** `str StringFromSid(bin ObjectSID)` `mvstr StringFromSid(mvbin ObjectSID)`
+**構文:** `str StringFromSid(bin ObjectSID)`
 
 ----------
 ### Switch
@@ -822,7 +824,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 
 **説明:** Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
 
-**構文:** `str Trim(str value)` `mvstr Trim(mvstr value)`
+**構文:** `str Trim(str value)`
 
 **例:** `Trim(" Test ")` "Test" を返します。
 
@@ -853,7 +855,7 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 - num < 1 の場合、空の文字列を返します。
 - string が null の場合、空の文字列を返します。
 
-文字列に含まれる単語の数が指定より少ないか、区切り記号文字で識別されるどの単語も文字列に含まれていない場合は、空の文字列が返されます。
+string に含まれる単語の数が指定より少ないか、区切り記号文字で識別されるどの単語も string に含まれていない場合は、空の文字列が返されます。
 
 **例:** `Word("The quick brown fox",3," ")` "brown" を返します。
 
@@ -865,4 +867,4 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

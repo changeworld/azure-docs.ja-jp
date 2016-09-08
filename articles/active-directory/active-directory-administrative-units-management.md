@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="04/26/2016"
+   ms.date="08/23/2016"
    ms.author="curtand"/>
 
 # Azure AD の管理単位 - パブリック プレビュー
@@ -37,4 +37,4 @@ Azure AD モジュールのソフトウェア要件とインストールの詳�
 ## 次のステップ
 [Azure Active Directory のエディション](active-directory-editions.md)
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

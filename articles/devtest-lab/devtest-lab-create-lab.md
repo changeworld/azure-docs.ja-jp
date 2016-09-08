@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # Azure DevTest Labs でのラボの作成
@@ -46,6 +46,8 @@
 
     ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
 ラボを作成した後は、次の手順を考慮します。
@@ -60,4 +62,4 @@
 
 - [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

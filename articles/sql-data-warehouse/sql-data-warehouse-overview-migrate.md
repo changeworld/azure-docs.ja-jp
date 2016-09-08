@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # SQL Data Warehouse へのソリューションの移行
 
-SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散データベース システムです。パフォーマンスと拡張性の両方を維持するために、SQL Server 内のすべての機能が SQL Data Warehouse に実装されるわけではありません。次の移行に関するトピックでは、SQL Data Warehouse にソリューションを移行する際のいくつかの主な要素について説明します。拡張性を考えてデータ ウェアハウスを設計すると、さまざまな設計パターンが導入されるため、従来の手法が常に最適であるとは限りません。おそらく、SQL Data Warehouse によって提供される分散プラットフォームを最大限に活用できるソリューションを採用したいと考えるでしょう。
+SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散データベース システムです。パフォーマンスと拡張性の両方を維持するために、SQL Server 内のすべての機能が SQL Data Warehouse に実装されるわけではありません。次の移行に関するトピックでは、SQL Data Warehouse にソリューションを移行する際のいくつかの重要な要素について説明します。拡張性を考えてデータ ウェアハウスを設計すると、さまざまな設計パターンが導入されるため、従来の手法が常に最適であるとは限りません。そのため、既存のソリューションを採用すると、SQL Data Warehouse によって提供される分散プラットフォームを最大限に活用できる場合もあります。
 
-また、SQL Data Warehouse は Microsoft Azure に基づいたプラットフォームであることに留意することも重要です。このため、移行の一環としてクラウドへのデータ転送が含まれる場合もよくあります。データ転送はそれ自体が問題になるものであり、特に容量が増加する場合には慎重に検討する必要があります。データ転送はデータ ロードと混同しないようにする必要もあります。データ ロードはデータ転送とは異なります。
+また、SQL Data Warehouse は Microsoft Azure に基づいたプラットフォームであることに留意することも重要です。このため、移行の一環としてクラウドへのデータ転送が含まれる場合もよくあります。データ転送はそれ自体が問題になるものであり、特に容量が増加する場合には慎重に検討する必要があります。データ転送とデータの読み込みは別々のトピックです。
 
 ## 移行ガイダンス
-移行を開始する前に、次の記事を読んでいつかの製品の相違点と基本的な概念を必ず理解しておいてください。
+移行を開始する前に、次の記事を読んで製品の相違点と基本的な概念を必ず理解しておいてください。
 
 - [スキーマの移行][]
 - [データの移行][]
@@ -34,7 +34,7 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 
 さらに詳細については、「[Transact-SQL リファレンス][]」を参照してください。
 
-最後に、さまざまなデータ ロード オプションの説明と、段階的なガイダンスが記載されている「[SQL Data Warehouse へのデータのロード][]」も確認してください。
+最後に、[読み込みの概要][]を確認します。この記事では、さまざまなデータ読み込みオプションについて説明し、ステップ バイ ステップ ガイダンスを提供します。
 
 <!--Image references-->
 
@@ -44,7 +44,7 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 [コードの移行]: sql-data-warehouse-migrate-code.md
 
 [開発の概要]: sql-data-warehouse-overview-develop.md
-[SQL Data Warehouse へのデータのロード]: sql-data-warehouse-overview-load.md
+[読み込みの概要]: sql-data-warehouse-overview-load.md
 [Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
@@ -52,4 +52,4 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

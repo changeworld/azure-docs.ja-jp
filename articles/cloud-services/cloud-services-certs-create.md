@@ -36,7 +36,7 @@ Azure クラシック ポータルまたはサービス管理 API を使用し�
 >[AZURE.WARNING] ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
 
 ### 制限事項
-各サブスクリプションには、100 の管理証明書の制限があります。また、特定のサービス管理者のユーザーの ID の下にあるすべてのサブスクリプションにも 100 の管理証明書の制限があります。アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。
+各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。
 
 100 を超える証明書を追加する前に既存の証明書を再利用できるかどうかをご確認ください。共同管理者を使用すると、証明書の管理プロセスが不必要に複雑になる場合があります。
 
@@ -81,14 +81,14 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 Java を使用して[証明書を作成](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate)できます。
 
 ### Linux
-[この](../virtual-machines/virtual-machines-linux-ssh-from-linux.md)記事では、SSH で証明書を作成する方法について説明します。
+[この](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)記事では、SSH で証明書を作成する方法について説明します。
 
 ## 次のステップ
 
-[Azure クラシック ポータル または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md) にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)。
+[Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
 
 [管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
 
 >[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

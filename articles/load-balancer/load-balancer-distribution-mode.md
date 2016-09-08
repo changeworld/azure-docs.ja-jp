@@ -3,7 +3,7 @@
    description="ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 
 # ロード バランサー分散モード (ソース IP アフィニティ)
@@ -101,7 +101,7 @@ Azure SDK for .NET 2.5 (11 月にリリース予定) を使用して、.csdef �
 
 サービス管理 API を使用して、ロード バランサーの分散を構成できます。`x-ms-version` ヘッダーが `2014-09-01` 以降のバージョンに設定されていることを確認してください。
  
-デプロイで指定した負荷分散セットの構成をアップデートします。
+デプロイで指定した負荷分散セットの構成を更新します。
 
 要求の例
 
@@ -149,4 +149,4 @@ LoadBalancerDistribution の値は、2 組のアフィニティの sourceIP、3 
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

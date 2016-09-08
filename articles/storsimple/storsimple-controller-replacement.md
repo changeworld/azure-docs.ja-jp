@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="05/31/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスのコントローラー モジュールを交換する
 
-## 概要
+## Overview
 
 このチュートリアルでは、StorSimple デバイスの一方または両方のコントローラー モジュールを取り外して交換する方法について説明します。また、シングルまたはデュアル コントローラーの交換シナリオの基になるロジックも説明します。
 
@@ -87,7 +87,7 @@ Microsoft Azure StorSimple デバイスのコントローラーの一方が故�
 
     **図 1** StorSimple デバイスの背面
 
-    |ラベル|説明|
+    |ラベル|Description|
     |:----|:----------|
     |1|PCM 0|
     |2|PCM 1|
@@ -256,7 +256,7 @@ Azure クラシック ポータルで **[デバイス]**、**[メンテナンス
 
 **図 8** 主エンクロージャ背面のデータ ポートと監視 LED
 
-|ラベル|説明|
+|ラベル|Description|
 |:----|:----------|
 |1 ～ 6|DATA 0 ～ 5 のネットワーク ポート|
 |7|青い LED|
@@ -266,4 +266,4 @@ Azure クラシック ポータルで **[デバイス]**、**[メンテナンス
 
 [StorSimple ハードウェア コンポーネントの交換の詳細](storsimple-hardware-component-replacement.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

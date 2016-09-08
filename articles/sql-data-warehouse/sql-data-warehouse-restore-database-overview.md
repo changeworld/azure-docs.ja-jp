@@ -3,7 +3,7 @@
    description="Azure SQL Data Warehouse でデータベースを復旧するためのデータベース復元オプションの概要。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
+   authors="Lakshmi1812"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/28/2016"
-   ms.author="sonyama;barbkess"/>
+   ms.author="lakshmir;barbkess;sonyama"/>
 
 
 # Azure SQL Data Warehouse の復元 (概要)
@@ -72,4 +72,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

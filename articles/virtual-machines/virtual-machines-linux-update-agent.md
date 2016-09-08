@@ -29,7 +29,7 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 
 <br>
 
-> [AZURE.NOTE] Windows コンピューターでこのタスクを実行する場合は、PuTTY を使用して Linux マシンに SSH 接続できます。詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-classic-log-on.md)」を参照してください。
+> [AZURE.NOTE] Windows コンピューターでこのタスクを実行する場合は、PuTTY を使用して Linux マシンに SSH 接続できます。詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-mac-create-ssh-keys.md)」を参照してください。
 
 Azure での動作保証済み Linux ディストリビューションは、そのリポジトリに Azure Linux エージェント パッケージを格納しているため、可能な場合は、そのディストリビューションのリポジトリを確認して最新のバージョンをインストールしてください。
 
@@ -159,4 +159,4 @@ CoreOS では、上記のコマンドが機能しない場合があります。
 
 Azure Linux エージェントの詳細については、[Azure Linux エージェントの README](https://github.com/Azure/WALinuxAgent) を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

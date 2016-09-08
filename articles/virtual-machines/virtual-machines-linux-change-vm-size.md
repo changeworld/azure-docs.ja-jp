@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter="na"
    authors="mikewasson"
-   manager="roshar"
+   manager="timlt"
    editor=""
    tags=""/>
 
@@ -20,13 +20,13 @@
 
 # Linux VM のサイズを変更する方法
 
-## 概要 
+## Overview 
 
 仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。場合によっては、先に VM の割り当てを解除する必要があります。これは、VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
 
 この記事では、[Azure CLI][azure-cli] を使用して Linux VM のサイズを変更する方法を示します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
 
 
 ## Linux VM のサイズを変更する 
@@ -74,4 +74,4 @@ VM のサイズを変更するには、次の手順を実行します。
 [scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md
 [vm-sizes]: virtual-machines-linux-sizes.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

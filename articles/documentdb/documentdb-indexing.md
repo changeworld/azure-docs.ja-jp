@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/05/2016" 
+	ms.date="08/08/2016" 
 	ms.author="arramac"/>
 	
 # Azure DocumentDB での自動インデックス作成
@@ -67,4 +67,4 @@ DocumentDB のインデックス作成は、ストレージの効率性とマル
 - DocumentDB のインデックスをカスタマイズする方法については、[こちら](documentdb-indexing-policies.md)で説明します。
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

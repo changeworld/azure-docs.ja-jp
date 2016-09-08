@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
+	ms.date="08/24/2016"
 	ms.author="johnkem"/>
 
 # Azure 診断ログの概要
@@ -26,11 +26,12 @@
 
 - 監査や手動での検査に使用するために診断ログを**ストレージ アカウント**に保存する。**診断設定**を使用して、リテンション期間 (日数) を指定できます。
 - サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
+- 診断ログを [OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md) で分析する。
 
 ## 診断設定
 非コンピューティング リソースの診断ログは、診断設定を使用して構成します。リソースの**診断設定**では、以下を制御します。
 
-- 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS)。
+- 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS Log Analytics)。
 - 送信するログ カテゴリ。
 - 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
 
@@ -43,7 +44,7 @@
 
 > [AZURE.TIP] これらの手順は、すべてのリソースに直接適用できるわけではありません。特定のリソースの種類に適用できる具体的な手順については、このページの最後にあるスキーマのリンクを参照してください。
 
-リソース テンプレートを使用して、リソースの作成時に診断設定を有効にする方法については、[こちらの記事](./monitoring-enable-diagnostic-logs-using-template.md)をご覧ください。
+[リソース テンプレートを使用して、リソースの作成時に診断設定を有効にする方法については、こちらの記事をご覧ください。](./monitoring-enable-diagnostic-logs-using-template.md)
 
 ### ポータルでの診断ログの有効化
 リソースの作成時に Azure ポータルで診断ログを有効にするには、次の手順に従います。
@@ -107,5 +108,6 @@ Insights REST API を使用して診断設定を変更する場合は、[こち�
 ## 次のステップ
 - [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Insights REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+- [ログを OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md) で分析する
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

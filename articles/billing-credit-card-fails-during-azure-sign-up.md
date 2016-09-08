@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/17/2016"
 	ms.author="cjiang"/>
 
 # Azure へのサインアップでクレジット カードまたはデビット カードが拒否される
@@ -23,7 +23,7 @@
 
 有効なクレジット カードまたはデビット カードを使用しているのに拒否される場合は、そのカードが有効であること、および銀行によりセキュリティ上の理由でオンライン取引が禁止されていないことを確認してください。
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## クレジット/デビット カードの情報は正確で完全ですか?
 - 使用しているクレジット/デビット カードは、選択した国のドロップダウン リストに表示されます。カードが表示されていない場合、お住まいの国では利用できないカードです。
@@ -39,6 +39,8 @@ Azure サブスクリプションの支払い方法として、小切手、オ�
 
 請求書による支払いを利用できるのは、法人のお客様のみです。個人のサブスクライバーは利用できません。また、請求書による支払い方法を定した後に、別の支払い方法に変更することはできません。
 
-請求書の設定プロセスを開始する方法については、「[Azure の請求処理](https://azure.microsoft.com/pricing/invoicing/)」を参照してください。
+請求書の設定プロセスを開始する方法については、[Azure の課金で請求書による支払いを使用する方法](https://azure.microsoft.com/pricing/invoicing/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

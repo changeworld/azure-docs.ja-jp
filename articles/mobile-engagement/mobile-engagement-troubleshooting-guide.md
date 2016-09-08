@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/26/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # Azure Mobile Engagement - トラブルシューティング ガイド
@@ -121,4 +121,4 @@ Mobile Engagement で作成した**キャンペーン**がそのように呼び�
 	- Mobile Engagement SDK のバージョン (例: Android SDK v2.1.0)
 	- 表示されるエラー メッセージとシナリオを含むエラーの詳細
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

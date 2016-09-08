@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/28/2016"
+   ms.date="08/29/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -76,7 +76,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | サポートされています | サポートされています | 大阪、東京 |
 | **[InterCloud](https://www.intercloud.com/)** | サポートされています | サポートされています | アムステルダム、ロンドン、シンガポール、ワシントン DC |
 | **Internet Solutions - Cloud Connect** | サポートされています | サポートされています | アムステルダム、ロンドン |
-| **Interxion** | サポートされています | サポートされています | アムステルダム、ロンドン、パリ |
+| **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)** | サポートされています | サポートされています | アムステルダム、ロンドン、パリ |
 | **Jisc** | 近日対応予定 | 近日対応予定 | ロンドン+ | 
 | **[レベル 3 通信](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | サポートされています | サポートされています | アムステルダム、シカゴ、ダラス、ラスベガス+、ロンドン、シアトル、シリコン バレー、ワシントン DC |
 | **Megaport** | サポートされています | サポートされています | ダラス、香港、ラスベガス、ロサンゼルス、メルボルン、ニューヨーク、シアトル、シンガポール、シドニー、ワシントン DC |
@@ -89,7 +89,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ソフトバンク** | サポートされています | サポートされています | 大阪、東京 | 
 | **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | サポートされています | サポートされています | アムステルダム、チェンナイ、香港、ロンドン、ムンバイ、シリコン バレー、シンガポール、ワシントン DC |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | サポートされています | サポートされています | アムステルダム、ロンドン |
-| **Telefonica** | 近日対応予定 | 近日対応予定 | サンパウロ+ |
+| **Telefonica** | サポートされています | 近日対応予定 | サンパウロ |
 | **Telenor** | サポートされています | サポートされています | アムステルダム、ロンドン |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | サポートされています | 近日対応予定 | メルボルン、シドニー |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
@@ -133,7 +133,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 	- [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
 	- [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-	- [InterXion](http://www.interxion.com/)
+	- [Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/colocated-hybrid-cloud/microsoft-azure/)
 	- [NextDC](http://www.nextdc.com/)
 	- [CoreSite](http://www.coresite.com/)
 	- [Cologix](http://www.cologix.com/)
@@ -171,4 +171,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

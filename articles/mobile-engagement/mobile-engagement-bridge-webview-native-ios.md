@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios" 
 	ms.devlang="objective-c" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #ネイティブ Mobile Engagement iOS SDK での iOS Web ビューのブリッジ
@@ -26,12 +26,12 @@
 
 どちらも文書化されていませんが、これを実現するには 2 つのアプローチがあります。
 
-- 1 つ目のアプローチは、この[リンク](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip)で説明され、Web ビュー上の `UIWebViewDelegate` の登録に関連し、JavaScript で行われる場所の変更をキャッチしてすぐにキャンセルします。 
-- 2 つ目のアプローチは、この [WWDC 2013 セッション](https://developer.apple.com/videos/play/wwdc2013/615)に基づいており、1 つ目のアプローチよりも簡潔で、このガイドではこの手法に従います。このアプローチは iOS7 以降でのみ動作することに注意してください。 
+- 1 つ目のアプローチは、この[リンク](http://stackoverflow.com/questions/9826792/how-to-invoke-objective-c-method-from-javascript-and-send-back-data-to-javascrip)で説明され、Web ビュー上の `UIWebViewDelegate` の登録に関連し、JavaScript で行われる場所の変更をキャッチしてすぐにキャンセルします。
+- 2 つ目のアプローチは、この [WWDC 2013 セッション](https://developer.apple.com/videos/play/wwdc2013/615)に基づいており、1 つ目のアプローチよりも簡潔で、このガイドではこの手法に従います。このアプローチは iOS7 以降でのみ動作することに注意してください。
 
 iOS のブリッジ サンプルでは、次の手順に従います。
 
-1. まず、「[入門チュートリアル](mobile-engagement-ios-get-started.md)」を実行して、ハイブリッド アプリに Mobile Engagement iOS SDK を統合していることを確認する必要があります。必要に応じて、Web ビューからメソッドをトリガーしたときに、SDK メソッドを表示できるように、次のようにテストのログ記録を有効にすることもできます。 
+1. まず、「[入門チュートリアル](mobile-engagement-ios-get-started.md)」を実行して、ハイブリッド アプリに Mobile Engagement iOS SDK を統合していることを確認する必要があります。必要に応じて、Web ビューからメソッドをトリガーしたときに、SDK メソッドを表示できるように、次のようにテストのログ記録を有効にすることもできます。
     
 		- (BOOL)application:(UIApplication ​*)application didFinishLaunchingWithOptions:(NSDictionary *​)launchOptions {
 		   ....
@@ -162,8 +162,8 @@ iOS のブリッジ サンプルでは、次の手順に従います。
 
 6. 次の **ViewController.m** ファイルに関して次の点に注意してください。
 
-	- `loadWebView` メソッドでは、次を確認するコードを持つ **LocalPage.html** と呼ばれるローカル HTML ファイルを読み込みます。 
-	- `webViewDidFinishLoad` メソッドでは、`JsContext` をつかみ、ラッパー クラスと関連付けています。これにより、Web ビューからのハンドル **EngagementJs** を使用して、ラッパー SDK メソッドを呼び出すことができます。 
+	- `loadWebView` メソッドでは、次を確認するコードを持つ **LocalPage.html** と呼ばれるローカル HTML ファイルを読み込みます。
+	- `webViewDidFinishLoad` メソッドでは、`JsContext` をつかみ、ラッパー クラスと関連付けています。これにより、Web ビューからのハンドル **EngagementJs** を使用して、ラッパー SDK メソッドを呼び出すことができます。
 
 7. 次のコードを含む **LocalPage.html** という名前のファイルを作成します。
 
@@ -254,10 +254,10 @@ iOS のブリッジ サンプルでは、次の手順に従います。
 
 8. 上述の HTML ファイルに関して次の点に注意してください。
 
-	- 	これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement iOS SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。 
-	- 	これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。この追加情報は、`EngagementJsExports.m` ファイルを検索する場合、解析され、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。 
-	- 	Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。 
-	- 	Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer\_name' と、タグの値として入力された値で渡されます。 
+	- 	これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement iOS SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。
+	- 	これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。この追加情報は、`EngagementJsExports.m` ファイルを検索する場合、解析され、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。
+	- 	Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。
+	- 	Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer\_name' と、タグの値として入力された値で渡されます。
  
 9. このアプリを実行すると、次が表示されます。ここで、次のようにテスト イベントにいくつかの名前を指定し、その横にある **[送信]** をクリックします。
 
@@ -271,4 +271,4 @@ iOS のブリッジ サンプルでは、次の手順に従います。
 [1]: ./media/mobile-engagement-bridge-webview-native-ios/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-ios/event-output.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

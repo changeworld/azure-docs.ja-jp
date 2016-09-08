@@ -13,16 +13,16 @@
     ms.tgt_pltfrm="mobile-xamarin-ios"
     ms.devlang="dotnet"
     ms.topic="article"
-    ms.date="05/10/2016"
+    ms.date="08/22/2016"
     ms.author="donnam"/>
 
 #Xamarin.Forms アプリで Azure Storage に接続する
 
-## 概要
+## Overview
 
 Azure Mobile Apps クライアントとサーバー SDK は、/tables エンドポイントに対する CRUD 操作での構造化データのオフライン同期をサポートします。通常、このデータはデータベースや同様のストアに格納されますが、これらのデータ ストアは一般的に大きなバイナリ データを効率的に保存することができません。また、アプリケーションの中には、他の場所 (Blob Storage やファイル共有など) に格納されている関連データを持っているものもあるため、/tables エンドポイント内のレコードとその他のデータ間の関連付けを作成できると便利です。
 
-このトピックでは、Mobile Apps の Todo リスト クイック スタートにイメージのサポートを追加する方法を説明します。先に、[Xamarin.Forms アプリの作成]に関するチュートリアルを完了している必要があります。
+このトピックでは、Mobile Apps の Todo リスト クイックスタートにイメージのサポートを追加する方法を説明します。先に、[Xamarin.Forms アプリの作成]に関するチュートリアルを完了している必要があります。
 
 このチュートリアルでは、ストレージ アカウントを作成し、Mobile App バックエンドに接続文字列を追加します。次に、新しい Mobile Apps 型 `StorageController<T>` から新しい継承をサーバー プロジェクトに追加します。
 
@@ -36,7 +36,7 @@ Azure Mobile Apps クライアントとサーバー SDK は、/tables エンド�
 
 ## ストレージ アカウントの作成
 
-1. [Azure Storage アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。 
+1. [Azure Storage アカウントの作成]のチュートリアルに従って、ストレージ アカウントを作成します。
 
 2. Azure ポータルで、新しく作成したストレージ アカウントに移動し、**キー**のアイコンをクリックします。**プライマリ接続文字列**をコピーします。
 
@@ -133,7 +133,7 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のクイック スタート プロジェクトを開きます。NuGet パッケージをインストールし、ポータブル ライブラリ プロジェクト、iOS プロジェクト、Android プロジェクト、および Windows プロジェクトを更新します。
 
-- [NuGet パッケージの追加](#add-nuget)
+- [NuGet パッケージを追加する](#add-nuget)
 - [IPlatform インターフェイスを追加します。](#add-iplatform)
 - [FileHelper クラスを追加する](#add-filehelper)
 - [ファイル同期ハンドラーを追加する](#file-sync-handler)
@@ -144,7 +144,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
 
 >[AZURE.NOTE] このチュートリアルに含まれているのは、Android、iOS、Windows ストア (Windows Phone ではなく) プラットフォームの手順だけです。
 
-###<a name="add-nuget"></a>NuGet パッケージの追加
+###<a name="add-nuget"></a>NuGet パッケージを追加する
 
 ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。次の NuGet パッケージをソリューション内の**すべて**のプロジェクトに追加します。**[プレリリースを含める]** がオンになっていることを確認します。
 
@@ -243,7 +243,7 @@ Visual Studio または Xamarin Studio のいずれかで、Xamarin.Forms のク
 
 メインのポータブル ライブラリ プロジェクトで新しいクラス `TodoItemFileSyncHandler` を作成します。このクラスには、ファイルが追加または削除された場合にコードに通知するための Azure SDK からのコールバックが含まれています。
 
-Azure Mobile クライアント SDK は実際にはどのファイル データも格納しません。クライアント SDK が `IFileSyncHandler` の実装を呼び出します。これがローカル デバイスにファイルを格納するかどうか、およびその格納方法を決定します。
+Azure Mobile クライアント SDK は、実際にはどのファイル データも格納しません。クライアント SDK は `IFileSyncHandler` の実装を呼び出し、この実装がローカル デバイスにファイルを格納するかどうか、およびその格納方法を決定します。
 
 1. 次の using ステートメントを追加します。
 
@@ -622,7 +622,7 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 ###<a name="update-windows"></a>Windows プロジェクトを更新する
 
-1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919) をインストールします。詳細については、「[Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)」チュートリアルを参照してください。 
+1. Visual Studio の拡張機能 [SQLite for Windows 8.1](http://go.microsoft.com/fwlink/?LinkID=716919) をインストールします。詳細については、「[Windows アプリのオフライン同期を有効にする](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)」チュートリアルを参照してください。
 
 2. **Package.appxmanifest** を編集して、**Web カメラ**機能をチェックします。
 
@@ -705,11 +705,11 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
 - `MobileServiceFile` は、`IMobileServiceTable` または `IMobileServiceSyncTable` をそれぞれ使用することで、オンラインまたはオフラインのいずれかのモードで使用できます。オフラインの場合は、アプリによって `PushFileChangesAsync` が呼び出されると、アップロードが行われます。これにより、オフライン操作キューが処理されます。Azure Mobile クライアント SDK は各操作ファイルに対して、`IFileSyncHandler` インスタンス上で `GetDataSource` メソッドを呼び出して、アップロードのためにファイルの内容を取得します。
 
-- 項目のファイルを取得するためには、`IMobileServiceTable<T>` または IMobileServiceSyncTable<T>' インスタンスで '`GetFilesAsync` メソッドを呼び出します。このメソッドは、提供されたデータ項目に関連付けられたファイルの一覧を返します。(注: これは、 *ローカル*操作で、オブジェクトが最後に同期されたときの状態に基づいてファイルを返します。サーバーからファイルの最新の一覧を取得するには、最初に同期操作を開始する必要があります。)
+- 項目のファイルを取得するためには、`IMobileServiceTable<T>` または IMobileServiceSyncTable<T> インスタンスで `GetFilesAsync` メソッドを呼び出します。このメソッドは、提供されたデータ項目に関連付けられたファイルの一覧を返します。(注: これは*ローカル*操作であり、オブジェクトが最後に同期されたときの状態に基づいてファイルを返します。サーバーからファイルの最新の一覧を取得するには、最初に同期操作を開始する必要があります。)
 
         IEnumerable<MobileServiceFile> files = await myTable.GetFilesAsync(myItem);
 
-- ファイルの同期機能は、クライアントがプッシュ操作またはプル操作の一部として受け取ったレコードを取得するために、ローカル ストアでレコードの変更通知を使用します。これは、`StoreTrackingOptions` パラメーターを使用して、同期コンテキスのローカルおよびサーバーの通知をオンにすることで行えます。
+- ファイルの同期機能は、クライアントがプッシュ操作またはプル操作の一部として受け取ったレコードを取得するために、ローカル ストアでレコードの変更通知を使用します。これは、`StoreTrackingOptions` パラメーターを使用して、同期コンテキストのローカルおよびサーバーの通知をオンにすることで行うことができます。
 
         this.client.SyncContext.InitializeAsync(store, StoreTrackingOptions.NotifyLocalAndServerOperations);
 
@@ -717,11 +717,11 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 
             jobService.MobileService.EventManager.Subscribe<StoreOperationCompletedEvent>(StoreOperationEventHandler);
 
-- 関連付けは名前付け規則によって行われるため、Blob Storage を直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただしこの場合は、**関連付けられた BLOB が変更されたら、レコードのタイムスタンプも必ず更新**する必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
+- 関連付けは名前付け規則によって行われるため、Blob Storage を直接変更して、レコードにファイルを追加またはレコードからファイルを削除することができまます。ただし、この場合は、**関連付けられた BLOB が変更されたらレコードのタイムスタンプも必ず更新する**必要があります。Azure Mobile クライアント SDK では、ファイルが追加または削除されると、レコードも常に更新されます。
 
     これが必要な理由は、一部のモバイル クライアントはローカル ストレージに既にレコードがあるからです。これらのクライアントが増分プルを実行すると、このレコードは返されず、クライアントは新しい関連付けられているファイルに対してクエリを実行しません。この問題を回避するため、Azure Mobile クライアント SDK を使用しない Blob Storage の変更を実行するときに、レコードのタイムスタンプを更新することをお勧めします。
 
-- クライアント プロジェクトは [Xamarin.Forms DependencyService] パターンを使用して、実行時に正しいプラットフォーム固有のクラスをロードします。このサンプルでは、各プラットフォームに固有のプロジェクトに実装することで、インターフェイス `IPlatform` を定義しました。
+- クライアント プロジェクトは、[Xamarin.Forms DependencyService] パターンを使用して、実行時に適切なプラットフォーム固有のクラスをロードします。このサンプルでは、各プラットフォームに固有のプロジェクトに実装することで、インターフェイス `IPlatform` を定義しました。
 
 <!-- URLs. -->
 
@@ -734,4 +734,4 @@ Todo 項目が選択されたときに、メイン ビューを更新して詳�
 [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage/storage-dotnet-shared-access-signature-part-1.md
 [Azure Storage アカウントの作成]: ../storage/storage-create-storage-account.md#create-a-storage-account
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,20 +14,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="05/18/2016"
+   ms.date="08/18/2016"
    ms.author="mandia"/>
 
 # Box コネクタの使用
-Box に接続し、ファイルの作成、削除などを行います。Box コネクタは、次のツールから使用できます。
-
-- Logic Apps (このトピックで説明)
-- PowerApps (詳細な一覧については、[PowerApps 接続リスト](https://powerapps.microsoft.com/tutorials/connections-list/)を参照してください)
+Box に接続し、ファイルの作成、削除などを行います。
 
 >[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 Box では、次の操作を実行できます。
 
-- Box から取得したデータに基づいてビジネス フローを構築できます。 
+- Box から取得したデータに基づいてビジネス フローを構築できます。
 - ファイルを作成または更新するときにトリガーを使用できます。
 - ファイルのコピー、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Box でファイルを変更するときに、Office 365 でそのファイルを取得して電子メールで送信することができます。
 
@@ -57,14 +54,14 @@ Box には、次のトリガーとアクションがあります。
 ### ファイルを作成する
 Box にファイルをアップロードします。```POST: /datasets/default/files```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|あり|query|なし |ファイルを Box にアップロードするフォルダーのパス|
-|name|string|あり|query|なし |Box で作成するファイルの名前|
-|body|string (binary) |あり|body|なし |Box にアップロードするファイルの内容|
+|folderPath|string|はい|query|なし |ファイルを Box にアップロードするフォルダーのパス|
+|name|string|はい|query|なし |Box で作成するファイルの名前|
+|body|string (binary) |はい|body|なし |Box にアップロードするファイルの内容|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -73,11 +70,11 @@ Box にファイルをアップロードします。```POST: /datasets/default/f
 ### ファイルの作成時
 Box フォルダーに新しいファイルが作成されたときにフローをトリガーします。```GET: /datasets/default/triggers/onnewfile```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|あり|query|なし |Box のフォルダーの一意識別子|
+|folderId|string|はい|query|なし |Box のフォルダーの一意識別子|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -87,14 +84,14 @@ Box フォルダーに新しいファイルが作成されたときにフロー�
 ### ファイルをコピーする
 ファイルを Box にコピーします。```POST: /datasets/default/copyFile```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|あり|query|なし |ソース ファイルの URL|
-|destination|string|あり|query| なし|対象ファイル名を含む Box の宛先ファイル パス|
-|overwrite|ブール値|いいえ|query| なし|’true’ に設定すると、宛先ファイルが上書きされます|
+|source|string|はい|query|なし |ソース ファイルの URL|
+|destination|string|はい|query| なし|対象ファイル名を含む Box の宛先ファイル パス|
+|overwrite|boolean|なし|query| なし|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
@@ -104,27 +101,27 @@ Box フォルダーに新しいファイルが作成されたときにフロー�
 Box からファイルを削除します。```DELETE: /datasets/default/files/{id}```
 
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|あり|path|なし |Box から削除するファイルの一意識別子|
+|id|string|はい|path|なし |Box から削除するファイルの一意識別子|
 
-#### Response
-|名前|説明|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
 |default|操作に失敗しました。|
 
 
 ### アーカイブをフォルダーに抽出する
-Box のフォルダーにアーカイブ ファイル (例: .zip) を展開します。```POST: /datasets/default/extractFolderV2```
+Box のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|あり|query| |アーカイブ ファイルのパス|
-|destination|string|あり|query| |アーカイブの内容を抽出する Box 内のパス|
-|overwrite|ブール値|いいえ|query| |’true’ に設定すると、宛先ファイルが上書きされます|
+|source|string|はい|query| |アーカイブ ファイルのパス|
+|destination|string|はい|query| |アーカイブの内容を抽出する Box 内のパス|
+|overwrite|boolean|なし|query| |’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -134,11 +131,11 @@ Box のフォルダーにアーカイブ ファイル (例: .zip) を展開し�
 ### ID を使用してファイルの内容を取得する
 ID を使用して Box からファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|あり|path|なし |Box 内のファイルの一意識別子|
+|id|string|はい|path|なし |Box 内のファイルの一意識別子|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -148,11 +145,11 @@ ID を使用して Box からファイルの内容を取得します。```GET: /
 ### パスを使用してファイルの内容を取得する
 パスを使用して Box からファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|あり|query|なし |Box 内のファイルの一意のパス|
+|path|string|はい|query|なし |Box 内のファイルの一意のパス|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -162,11 +159,11 @@ ID を使用して Box からファイルの内容を取得します。```GET: /
 ### ID を使用してファイルのメタデータを取得する
 ファイル ID を使用して Box からファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|あり|path| なし|Box 内のファイルの一意識別子|
+|id|string|はい|path| なし|Box 内のファイルの一意識別子|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -176,11 +173,11 @@ ID を使用して Box からファイルの内容を取得します。```GET: /
 ### パスを使用してファイルのメタデータを取得する
 パスを使用して Box からファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|あり|query|なし |Box 内のファイルの一意のパス|
+|path|string|はい|query|なし |Box 内のファイルの一意のパス|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -190,12 +187,12 @@ ID を使用して Box からファイルの内容を取得します。```GET: /
 ### ファイルを更新する
 Box 内のファイルを更新します。```PUT: /datasets/default/files/{id}```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|あり|path| なし|Box 内の更新するファイルの一意識別子|
-|body|string (binary) |あり|body|なし |Box 内の更新するファイルの内容|
+|id|string|はい|path| なし|Box 内の更新するファイルの一意識別子|
+|body|string (binary) |はい|body|なし |Box 内の更新するファイルの内容|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -205,11 +202,11 @@ Box 内のファイルを更新します。```PUT: /datasets/default/files/{id}`
 ### ファイルの変更時
 Box フォルダー内のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
 
-| 名前|データ型|必須|場所|既定値|説明|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|あり|query|なし |Box のフォルダーの一意識別子|
+|folderId|string|はい|query|なし |Box のフォルダーの一意識別子|
 
-#### Response
+#### 応答
 |名前|説明|
 |---|---|
 |200|OK|
@@ -229,7 +226,7 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source セクション|string|×|
+|source|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 |tableDisplayName|string|×|
@@ -239,7 +236,7 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|source セクション|string|×|
+|source|string|×|
 |displayName|string|×|
 |urlEncoding|string|×|
 
@@ -248,18 +245,18 @@ Box フォルダー内のファイルが変更されたときにフローをト�
 |プロパティ名 | データ型 |必須|
 |---|---|---|
 |ID|string|×|
-|名前|string|×|
+|Name|string|×|
 |DisplayName|string|×|
 |パス|string|×|
 |LastModified|string|×|
 |サイズ|integer|×|
 |MediaType|string|×|
-|IsFolder|ブール値|×|
+|IsFolder|boolean|×|
 |ETag|string|×|
 |FileLocator|string|×|
 
 ## 次のステップ
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

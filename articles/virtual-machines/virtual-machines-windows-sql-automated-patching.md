@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/18/2016"
+	ms.date="08/19/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
@@ -24,7 +24,7 @@
 
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。このメンテナンス期間にのみ、自動更新プログラムをインストールできます。これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。自動修正は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 クラシック](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 クラシック](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
 
 ## 前提条件
 
@@ -57,7 +57,7 @@
 |**メンテナンス スケジュール**|毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日|仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。|
 |**メンテナンスの開始時間**|0 ～ 24|仮想マシンを更新するローカルの開始時刻。|
 |**メンテナンス時間**|30 ～ 180|更新プログラムのダウンロードとインストールを完了するのに許可されている時間 (分単位)|
-|**パッチのカテゴリ**|重要|ダウンロードしてインストールする更新プログラムのカテゴリ。|
+|**パッチのカテゴリ**|重要:|ダウンロードしてインストールする更新プログラムのカテゴリ。|
 
 ## ポータルでの構成
 Azure ポータルを使用して、プロビジョニング中または既存の VM 用に、自動修正を構成することができます。
@@ -105,7 +105,7 @@ SQL VM をプロビジョニングしたら、PowerShell を使用して自動�
 |**DayOfWeek**|毎週木曜日に修正プログラムがインストールされます。|
 |**MaintenanceWindowStartingHour**|午前 11 時に更新が開始されます。|
 |**MaintenanceWindowsDuration**|修正プログラムを 120 分以内にインストールする必要があります。開始時刻に基づき、修正プログラムのインストールは午後 1 時までに完了する必要があります。|
-|**PatchCategory**|このパラメーターに指定可能な設定は "Important" だけです。|
+|**PatchCategory**|このパラメーターに指定可能な設定は **Important** だけです。|
 
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。
 
@@ -117,4 +117,4 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 
 Azure VM で SQL Server を実行する方法の詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

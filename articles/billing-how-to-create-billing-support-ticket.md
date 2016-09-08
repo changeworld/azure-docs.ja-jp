@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法 | Microsoft Azure"
-	description="Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法を説明する"
+	description="Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法を説明します。"
 	services=""
 	documentationCenter=""
 	authors="genlin"
@@ -15,11 +15,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法
-
 この記事では、Azure サポートでチケットを開くときに必要な情報を提供します。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。**[ヘルプとサポート]**、**[新しいサポート要求]** の順に選択します。
@@ -44,4 +43,4 @@
 
  >[AZURE.NOTE]アカウント センターへのアクセス権があるのは Azure アカウント管理者だけです。サブスクリプションのアカウント管理者を確認する方法の詳細については、[よく寄せられる質問](billing-subscription-transfer.md#faq)を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

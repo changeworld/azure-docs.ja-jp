@@ -4,7 +4,7 @@
    services="virtual-machines-windows"
    documentationCenter=""
    authors="mscurrell"
-   manager="asutton"
+   manager="timlt"
    editor=""/>
 
 <tags
@@ -29,9 +29,9 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 
 ## 前提条件
 
-* **クライアント コンピューター**: デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。 
+* **クライアント コンピューター**: デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
 
-* **Azure PowerShell**: クライアント コンピューターにインストールする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure)」を参照してください。
+* **Azure PowerShell**: クライアント コンピューターにインストールする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 * **Azure サブスクリプション** - サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成することができます。大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
 
@@ -46,14 +46,14 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 
 MATLAB Distributed Computing Server クラスターに Azure の仮想マシンを使用するには、大まかに次の手順を実行する必要があります。詳細な手順については、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) のクイック スタート テンプレートおよびスクリプトに付随するドキュメントを参照してください。
 
-1. **基本 VM イメージを作成する**  
-    * この VM に MATLAB Distributed Computing Server ソフトウェアをダウンロードおよびインストールします。 
+1. **基本 VM イメージを作成する**
+    * この VM に MATLAB Distributed Computing Server ソフトウェアをダウンロードおよびインストールします。
 
     >[AZURE.NOTE]この処理には数時間かかりますが、使用する MATLAB のバージョンごとに一度しか行う必要がありません。
     
 2. **1 つ以上のクラスターを作成する**
-    * 提供されている PowerShell スクリプトまたは、クイック スタート テンプレートを使用し、基本 VM イメージからクラスターを作成します。   
-    * 提供されている PowerShell スクリプトを使用すると、クラスターの一覧表示、一時停止、再開および削除のクラスターの管理ができます。 
+    * 提供されている PowerShell スクリプトまたは、クイック スタート テンプレートを使用し、基本 VM イメージからクラスターを作成します。
+    * 提供されている PowerShell スクリプトを使用すると、クラスターの一覧表示、一時停止、再開および削除のクラスターの管理ができます。
  
 ## クラスター構成 
 
@@ -65,7 +65,7 @@ MATLAB のクライアント ノード、MATLAB のジョブ スケジューラ 
 
 ![クラスター トポロジ](./media/virtual-machines-windows-matlab-mdcs-cluster/mdcs_cluster.png)
 
-* クラスターを使用するには、クライアント ノードにリモート デスクトップで接続します。クライアント ノードで、MATLAB のクライアントが実行されます。 
+* クラスターを使用するには、クライアント ノードにリモート デスクトップで接続します。クライアント ノードで、MATLAB のクライアントが実行されます。
 
 * クライアント ノードには、すべての worker がアクセスできるファイル共有があります。
 
@@ -82,8 +82,8 @@ MATLAB Job Scheduler クラスター プロファイルを作成するには、�
 
 ## 次のステップ
 
-* Azure に MATLAB Distributed Computing Server クラスターをデプロイおよび管理する方法の詳細については、テンプレートとスクリプトを含む [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) リポジトリを参照してください。 
+* Azure に MATLAB Distributed Computing Server クラスターをデプロイおよび管理する方法の詳細については、テンプレートとスクリプトを含む [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) リポジトリを参照してください。
 
 * MATLAB および MATLAB Distributed Computing Server の詳細な説明については、[MathWorks サイト](http://www.mathworks.com/)を参照してください。
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

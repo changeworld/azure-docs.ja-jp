@@ -3,7 +3,7 @@
    description="この記事では、Azure Traffic Manager で使用できるさまざまなエンドポイントの種類について説明します"
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/08/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager エンドポイント
 
@@ -144,4 +144,4 @@ Web アプリの場合、Traffic Manager Azure エンドポイントでは、同
 
 - Traffic Manager の[トラフィック ルーティング方法](traffic-manager-routing-methods.md)を確認します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

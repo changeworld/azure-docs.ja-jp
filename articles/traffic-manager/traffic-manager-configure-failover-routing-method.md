@@ -3,8 +3,8 @@
    description="この記事では、Traffic Manager でフェールオーバーによるトラフィック ルーティング方法を構成する方法について説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="joaoma"
-   manager="adinah"
+   authors="sdwheeler"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/10/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # フェールオーバーのルーティング方法の構成
 
@@ -52,4 +52,4 @@ Azure Websites では、Web サイトのモードに関係なく、データセ�
 
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

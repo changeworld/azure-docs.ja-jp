@@ -128,7 +128,7 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 
 	![ファイル パスを指定する][certwiz4]
 
-これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[ 2\.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_iismgr"></a>
 ### IIS マネージャーを使用した証明書の取得
@@ -423,26 +423,22 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 - Azure アプリにマップするカスタム ドメインがある。
 - アプリが **Basic** レベル以上で実行されている。
 - CA から発行されたカスタム ドメインの SSL 証明書がある。
- 
-1.	[Azure ポータル](https://portal.azure.com)で、**[カスタム ドメインおよび SSL]** ブレードに移動します。
 
-7.	**[その他]** > **[証明書のアップロード]** をクリックします。
 
-	![](./media/web-sites-configure-ssl-certificate/sslupload.png)
+1. ブラウザーで、**[Azure ポータル](https://portal.azure.com/)**を開きます。
+2.	ページの左側にある **[App Service]** オプションをクリックします。
+3.	この証明書を割り当てるアプリの名前をクリックします。
+4.	**[設定]**で、**[SSL certificates (SSL 証明書)]** をクリックします。
+5.	**[証明書のアップロード]** をクリックします。
+6.	[手順 1](#bkmk_getcert) でエクスポートした .pfx ファイルを選択し、以前に作成したパスワードを指定します。次に、**[アップロード]** をクリックして、証明書をアップロードします。アップロードした証明書が **[SSL certificate (SSL 証明書)]** ブレードに表示されます。
+7. **[SSL バインド]** セクションで、**[Add bindings (バインドの追加)]** をクリックします。
+8. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
 
-8.	[手順 1](#bkmk_getcert) でエクスポートした .pfx ファイルを選択し、以前に作成したパスワードを指定します。その後、**[保存]** をクリックして証明書をアップロードします。アップロードした証明書が **[カスタム ドメインおよび SSL]** ブレードに表示されます。
+    ![SSL バインドのイメージを挿入](./media/web-sites-configure-ssl-certificate/sslbindings.png)
 
-	![](./media/web-sites-configure-ssl-certificate/sslcertview.png)
-
-9. **[SSL バインド]** セクションで、ドメイン名と SSL 証明書バインドを一緒に選択します。また、SNI SSL または IP ベースの SSL のどちらを使用するかを選択できます。
-
-	![](./media/web-sites-configure-ssl-certificate/sslbindcert.png)
-
-	* **IP ベースの SSL** は、アプリの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名にバインドします。これは従来の SSL バインドの方法であり、App Service はバインドのための専用 IP アドレスを作成します。
-
-	* [**SNI SSL**](https://en.wikipedia.org/wiki/Server_Name_Indication) では、複数の証明書を複数のドメインにバインドできます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Safari を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。
- 
-10. **[保存]** をクリックして完了します。
+       • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。 • SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事を参照してください。
+     
+9. 変更を保存して SSL を有効にするには、**[Add Binding (バインドの追加)]** をクリックします。
 
 ## 手順 3.ドメイン名マッピングの変更 (IP ベースの SSL のみ)
 
@@ -450,9 +446,9 @@ HTTPS でカスタム ドメイン名をセキュリティで保護するには�
 
 - [A レコードを使用してカスタム ドメインを Azure アプリにマッピング](web-sites-custom-domain-name.md#a)済みで、**IP ベースの SSL** バインドを追加した場合。このシナリオでは、次の手順を実行して、専用 IP アドレスを参照するように既存の A レコードをマッピングし直す必要があります。
 
-	1. IP ベースの SSL バインドを構成した後、アプリの **[設定]** > **[プロパティ]** ブレードで新しい IP アドレスを検索します (**[外部ドメインの使用]** ブレードに表示される仮想 IP アドレスは最新でない可能性があります)。
+	1. IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[Hostnames (ホスト名)]** セクションの上にあります。このアドレスは、**[外部 IP アドレス]** として示されます。
     
-	    ![Virtual IP address](./media/web-sites-configure-ssl-certificate/staticip.png)
+	    ![Virtual IP address](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
 
 	2. [カスタム ドメイン名の A レコードをこの新しい IP アドレスにマッピングし直します](web-sites-custom-domain-name.md#a)。
 
@@ -551,4 +547,4 @@ IIS URL 書き換えモジュールの詳細については、[URL 書き換え]
 [certwiz3]: ./media/web-sites-configure-ssl-certificate/waws-certwiz3.png
 [certwiz4]: ./media/web-sites-configure-ssl-certificate/waws-certwiz4.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

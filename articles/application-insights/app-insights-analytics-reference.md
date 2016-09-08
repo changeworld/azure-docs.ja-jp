@@ -19,7 +19,7 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-> [AZURE.NOTE] [Test drive Analytics on our simulated data]https://analytics.applicationinsights.io/demo (まだアプリから Application Insights にデータを送信していない場合)。
+> [AZURE.NOTE] [Test drive Analytics on our simulated data](https://analytics.applicationinsights.io/demo) (まだアプリから Application Insights にデータを送信していない場合)。
 
 ## Index
 

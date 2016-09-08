@@ -85,10 +85,10 @@ Application Insights リソースは、ページのパフォーマンスと使�
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
     // can affect browser performance.
-    enableDebug: true,
+    enableDebug: boolean,
 
     // Don't log browser exceptions.
-    disableExceptionTracking: true,
+    disableExceptionTracking: boolean,
 
     // Don't log ajax calls.
     disableAjaxTracking: boolean,
@@ -249,4 +249,4 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

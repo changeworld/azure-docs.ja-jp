@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # Visual Studio 用の SQL Server Data Tools を使用して Azure SQL Database に SQL Server データベースを移行する 
@@ -29,7 +29,7 @@
 
 ## Visual Studio 用の SQL Server Data Tools を使用する
 
-Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、データベース スキーマを Visual Studio データベース プロジェクトにインポートして分析できます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合、SSDT (またはこのトピックで説明したその他のツールのいずれか) を使用してエラーを解決できます。プロジェクトが正常に構築されたら、これをソース データベースのコピーとして発行し、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。その後、更新されたこのデータベースを移行できます。このオプションを使用するには、[最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードします。
+Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、データベース スキーマを Visual Studio データベース プロジェクトにインポートして分析できます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合、SSDT (またはこのトピックで説明したその他のツールのいずれか) を使用してエラーを解決できます。プロジェクトが正常に構築されると、それをソース データベースのコピーとして発行できます。次に、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。その後、更新されたこのデータベースを移行できます。このオプションを使用するには、[最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードします。
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
 
@@ -62,14 +62,16 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
 	![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)
     
 ## Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を修正する        
-  
+    
 1.	最初のスクリプトをダブルクリックしてクエリ ウィンドウでスクリプトを開き、スクリプトをコメント アウトし、スクリプトを実行します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
 
-2.	このプロセスを互換性のない各スクリプトに対して、エラーがなくなるまで繰り返します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)  
- 
-3.	データベースにエラーがなくなったら、プロジェクトを右クリックして **[発行]** を選択し、データベースをビルドしてソース データベースのコピーに発行します (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。
+2.	このプロセスを互換性のない各スクリプトに対して、エラーがなくなるまで繰り返します。
+
+	![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+    
+3.	データベースのエラーがなくなったら、プロジェクトを右クリックし、**[発行]** を選択します。これにより、データベースがビルドされ、ソース データベースのコピーに発行されます (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。
  - 発行前に、ソースの SQL Server のバージョン (SQL Server 2014 より前) に応じて、プロジェクトのターゲット プラットフォームをリセットしてデプロイメントを有効にすることが必要になる場合があります。
- - 古い SQL Server データベースを移行する場合は、最初にデータベースを新しいバージョンの SQL Server に移行しない限り、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。
+ - 古い SQL Server データベースを移行する場合は、データベースを新しいバージョンの SQL Server に移行するまで、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。
 
     	![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)    
     
@@ -85,7 +87,7 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
     
 	![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)
     
-6.	デプロイ方法を選択します。[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
+6.	デプロイメント方法を選択します。[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 
 ## 次のステップ
 
@@ -98,4 +100,4 @@ Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、デー�
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

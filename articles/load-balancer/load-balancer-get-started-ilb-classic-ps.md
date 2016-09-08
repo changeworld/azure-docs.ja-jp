@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="クラシック デプロイ モデルで PowerShell を使用した内部ロード バランサーの作成 | Microsoft Azure"
    description="クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # PowerShell を使用した内部ロード バランサー (クラシック) の作成の開始
 
@@ -116,7 +116,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 
 	$svc="mytestcloud"
 	$ilb="ilbset"
-	Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb 
+	Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb
 	$prot="tcp"
 	$locport=1433
 	$pubport=1433
@@ -181,4 +181,4 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

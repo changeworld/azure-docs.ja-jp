@@ -162,7 +162,7 @@ Status Monitor が動作するように、サーバーのファイアウォー�
   * 診断検索 ([検索] タイル) を開き、個々のイベントを表示します。グラフに集計データが表示される前であっても、大抵の場合、イベントは診断検索に表示されます。
   * Status Monitor を開き、左ウィンドウ枠でアプリケーションを選択します。「通知の構成」セクションに、このアプリケーションの診断メッセージがあるかどうかを確認します。
 
-  ![](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
+  ![Open the Performance blade to see request, response time, dependency and other data](./media/app-insights-monitor-performance-live-website-now/appinsights-status-monitor-diagnostics-message.png)
 
   * ファイアウォールで、上に一覧したポートを介した送信トラフィックが許可されていることを確認します。
   * サーバーに「権限が不十分」であるという内容のメッセージが表示される場合、次を実行してください。
@@ -300,4 +300,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

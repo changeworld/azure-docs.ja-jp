@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 # Microsoft Azure サービスの回復性ガイダンス
@@ -28,14 +28,14 @@ Microsoft Azure は、必要なときに必要なリソースを提供できる�
 ##サービス ガイダンス
 | サービス | 障害復旧ガイダンス | 設計ガイダンス |
 |:---------|:--------------------------:|:------------------:|
-| [Cloud Services](https://azure.microsoft.com/services/cloud-services/ "Azure Cloud Services (Azure Cloud Services)") | [link](../cloud-services/cloud-services-disaster-recovery-guidance.md "Azure Cloud Services の障害復旧ガイダンス") | 利用不可 |
+| [Cloud Services](https://azure.microsoft.com/services/cloud-services/ "Azure クラウド サービス") | [link](../cloud-services/cloud-services-disaster-recovery-guidance.md "Azure Cloud Services の障害復旧ガイダンス") | 利用不可 |
 | [Key Vault](https://azure.microsoft.com/services/key-vault/ "Azure Key Vault") | [link](../key-vault/key-vault-disaster-recovery-guidance.md "Azure Key Vault の障害復旧ガイダンス") | 利用不可 |
-| [Storage](https://azure.microsoft.com/services/storage/ "Azure Storage (Azure Storage)") | [link](../storage/storage-disaster-recovery-guidance.md "Azure Storage の障害復旧ガイダンス") | 利用不可 |
+| [Storage](https://azure.microsoft.com/services/storage/ "Azure Storage") | [link](../storage/storage-disaster-recovery-guidance.md "Azure Storage の障害復旧ガイダンス") | 利用不可 |
 | [SQL データベース](https://azure.microsoft.com/services/sql-database/ "Azure SQL Database") | [link](../sql-database/sql-database-disaster-recovery.md "Azure SQL Database の障害復旧ガイダンス") | [link](../sql-database/sql-database-business-continuity-design.md "Azure SQL Databases の設計ガイダンス") |
 | [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/ "Azure Virtual Machines") | [link](../virtual-machines/virtual-machines-disaster-recovery-guidance.md "Azure Virtual Machines の障害復旧ガイダンス") | 利用不可 |
-| [Virtual Network](https://azure.microsoft.com/services/virtual-network/ "Azure 仮想ネットワーク") | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network の障害復旧ガイダンス") | 利用不可 |
+| [Virtual Network](https://azure.microsoft.com/services/virtual-network/ "Azure Virtual Network") | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network の障害復旧ガイダンス") | 利用不可 |
 
 ##次のステップ
 システムとソリューションをより包括的に取り上げたガイダンスが必要であれば、「[Disaster recovery and high availability for applications built on Microsoft Azure (Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性)](https://aka.ms/drtechguide)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

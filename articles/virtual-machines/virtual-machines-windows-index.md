@@ -62,11 +62,11 @@
 
 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)
 
-[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)
+[A8、A9、A10、A11 計算集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
 [Azure Virtual Machines に対する計画的なメンテナンス](virtual-machines-windows-planned-maintenance.md)
 
-[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-windows-infrastructure-service-guidelines.md)
+[Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-windows-infrastructure-subscription-accounts-guidelines.md)
 
 [仮想マシンの可用性セットの作成](virtual-machines-windows-classic-configure-availability.md)
 
@@ -90,7 +90,7 @@
 
 [Azure PowerShell を使用した仮想マシンの管理](virtual-machines-windows-classic-manage-psh.md)
 	
-[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s-howto.md)
+[従来の VNet を新しい VNet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 	
 [仮想マシンのエージェントおよび拡張機能について](virtual-machines-windows-classic-agents-and-extensions.md)
 
@@ -192,4 +192,4 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

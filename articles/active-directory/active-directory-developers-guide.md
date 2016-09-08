@@ -13,25 +13,25 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/06/2016"
+   ms.date="09/01/2016"
    ms.author="mbaldwin"/>
 
 
 # Azure Active Directory 開発者ガイド
 
-## 概要
+## Overview
 Identity Management As A Service (IDMaaS) プラットフォームとして Azure Active Directory (AD) を使用することにより、開発者は ID 管理をアプリケーションに効果的に統合することができます。次の記事では、Azure AD の実装と重要な機能の概要について説明しています。これらの記事を順番に読むことをお勧めします。実作業に取りかかる準備ができている場合は、「[使用の開始](#getting-started)」に進んでください。
 
 
-1. [Azure Active Directory 統合のメリット](active-directory-how-to-integrate.md): Azure AD との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
+1. [Azure AD 統合のメリット](active-directory-how-to-integrate.md): Azure AD との統合が、セキュリティで保護されたサインインと承認に最適なソリューションである理由を説明します。
 
-1. [Active Directory の認証シナリオ](active-directory-authentication-scenarios.md): Azure AD の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
+1. [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md): Azure AD の簡素化された認証を利用して、アプリケーションにサインオン機能を組み込む方法を説明します。
 
-1. [アプリケーションと Azure Active Directory の統合](active-directory-integrating-applications.md): Azure AD にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
+1. [アプリケーションと Azure AD の統合](active-directory-integrating-applications.md): Azure AD にアプリケーションを追加し、それを更新および削除する方法と、統合されたアプリのブランド化のガイドラインについて説明します。
 
-1. [Azure Active Directory Graph API](active-directory-graph-api.md): Azure AD Graph API を使用し、REST API エンドポイント経由で Azure AD にプログラムからアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API です。
+1. [Azure AD Graph API](active-directory-graph-api.md): Azure AD Graph API を使用し、REST API エンドポイント経由で Azure AD にプログラムからアクセスする方法を説明します。Azure AD Graph API には、[Microsoft Graph](https://graph.microsoft.io/) からもアクセスできます。Microsoft Graph は、単一の REST API エンドポイントから単一のアクセス トークンを使用して複数の Microsoft クラウド サービス API にアクセスできる統合 API を備えています。
 
-1. [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md): Azure AD 認証ライブラリ (.NET、JavaScript、Objective-C、Android など用) を使用して、ユーザーを認証し、アクセス トークンを取得する処理を簡単に組み込む方法を説明します。
+1. [Azure AD 認証ライブラリ](active-directory-authentication-libraries.md): Azure AD 認証ライブラリ (.NET、JavaScript、Objective-C、Android などに対応) を使用して、ユーザーの認証とアクセス トークンの取得を簡単に実行する方法について説明します。
 
 
 ## 使用の開始
@@ -84,6 +84,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 ###  サポート
 - [タグ付けされた質問に関するページ](http://stackoverflow.com/questions/tagged/azure-active-directory): Stack Overflow で [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) タグと [adal](http://stackoverflow.com/questions/tagged/adal) タグを検索すると、Azure Active Directory 関連のソリューションが見つかります。
+- アプリケーションの開発と統合に関連があり、一般的に使用される一部の用語の定義については、[Azure AD 開発者向け用語集](active-directory-dev-glossary.md)に関するページを参照してください。
 
 ### コード
 
@@ -91,7 +92,7 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [Azure Active Directory のサンプル](https://github.com/azure-samples?query=active-directory): [コード サンプルのインデックス](active-directory-code-samples.md)を使用すると、サンプルのリスト内を最も簡単に移動できます。
 
-- [ADAL for .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): .NET 認証ライブラリのドキュメントです。
+- [ADAL for .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx): .NET 認証ライブラリに関するドキュメントです。
 
 ### Graph API
 
@@ -107,9 +108,9 @@ Identity Management As A Service (IDMaaS) プラットフォームとして Azur
 
 - [OAuth 2.0 プロトコルでの暗黙的な許可に関する解説](active-directory-dev-understanding-oauth2-implicit-grant.md): 暗黙的な許可についての概要と、この許可の方法に適したアプリケーションの種類について解説しています。
 
-- [OAuth 2.0 プロトコルでの、クライアント資格情報を使用したサービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md): OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (機密性の高いクライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することが許可されます。このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
+- [OAuth 2.0 プロトコルでの、クライアント資格情報を使用したサービス間の呼び出し](active-directory-protocols-oauth-service-to-service.md): OAuth 2.0 クライアント資格情報付与により、Web サービス (機密性の高いクライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装するのではなく、独自の資格情報を使用して認証することが許可されます。このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。
 
-- [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルは、OAuth 2.0 を拡張し、認証プロトコルとして使用できるようにします。クライアント アプリケーションでは、id\_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id\_token と承認コードの両方を受信することもできます。
+- [OpenID Connect 1.0 プロトコルでのサインインと認証](active-directory-protocols-openid-connect-code.md): OpenID Connect 1.0 プロトコルによって OAuth 2.0 が拡張され、認証プロトコルとして使用できるようになります。クライアント アプリケーションでは、id\_token を受信してサインイン プロセスを管理できるほか、承認コード フローを強化して id\_token と承認コードの両方を受信することもできます。
 
 - [SAML 2.0 プロトコル リファレンス](active-directory-saml-protocol-reference.md): SAML 2.0 プロトコルにより、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できます。
 
@@ -145,4 +146,4 @@ Azure Active Directory を使用したアプリケーションの開発に関す
 
 - [Twitter での Azure Active Directory](https://twitter.com/azuread): Azure Active Directory に関するお知らせを 140 文字以内で受け取ることができます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

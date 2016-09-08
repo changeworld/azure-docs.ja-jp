@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure"
-   ms.date="06/06/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択
@@ -41,4 +41,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

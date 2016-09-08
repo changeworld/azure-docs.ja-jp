@@ -34,7 +34,7 @@ PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース デ�
 
 この例では、PostgreSQL ポートとしてポート 1999 を使用します。
 
-PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-ssh-from-linux.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
+PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-mac-create-ssh-keys.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
 
 1. 次のコマンドを実行して、ルート (admin) に切り替えます。
 
@@ -255,4 +255,4 @@ Postgres データベースを作成します。
 ##PostgreSQL の詳細情報
 PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

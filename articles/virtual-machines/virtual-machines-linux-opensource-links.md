@@ -30,7 +30,7 @@
 - [クラシック デプロイ モデルで作成された Azure Virtual Machines についてよく寄せられる質問](virtual-machines-linux-classic-faq.md)
 - [仮想マシンのイメージについて](virtual-machines-linux-classic-about-images.md)
 - [独自のディストリビューション イメージのアップロード](virtual-machines-linux-classic-create-upload-vhd.md) (および [Azure での動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md)の使用手順)
-- [Azure クラシック ポータルを使用した Linux VM へのログオン](virtual-machines-linux-classic-log-on.md)
+- [Azure クラシック ポータルを使用した Linux VM へのログオン](virtual-machines-linux-mac-create-ssh-keys.md)
 
 ## セットアップ
 
@@ -71,7 +71,7 @@
 
 
 ## 計画
-- [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-linux-infrastructure-service-guidelines.md)
+- [Azure インフラストラクチャ サービス実装ガイドライン](virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md)
 - [Linux ユーザー名の選択](virtual-machines-linux-usernames.md)
 - [クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法](virtual-machines-linux-classic-configure-availability.md)
 - [Azure VM の計画的メンテナンスのスケジュールを設定する方法](virtual-machines-linux-planned-maintenance-schedule.md)
@@ -87,7 +87,7 @@
 
 ## 管理
 
-- [SSH](virtual-machines-linux-ssh-from-linux.md)
+- [SSH](virtual-machines-linux-mac-create-ssh-keys.md)
 - [Linux 用のパスワードまたは SSH プロパティをリセットする方法](virtual-machines-linux-classic-reset-access.md)
 - [ルートの使用](virtual-machines-linux-use-root-privileges.md)
 
@@ -189,4 +189,4 @@
 
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

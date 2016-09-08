@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/08/2016"
+   ms.date="08/17/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse でのユーザー クエリの監視
@@ -34,7 +34,7 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 
 ## 次のステップ
 
-管理に関するその他のヒントについては、[管理の概要][]に関するページをご覧ください。
+管理に関するその他のヒントについては、[管理の概要][]に関する記事をご覧ください。
 
 <!--Image references-->
 
@@ -48,4 +48,4 @@ SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

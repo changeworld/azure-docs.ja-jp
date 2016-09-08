@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/20/2016"
+   ms.date="08/19/2016"
    ms.author="masnider"/>
 
 # アプリケーション グループの概要
@@ -158,7 +158,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MinimumNodes
 -	アプリケーション容量は、同じアプリケーションの 2 つのサービスが常に並んで配置されるようにするために使用しないでください。これは、サービス間でのアフィニティの関係を使用して実現でき、アフィニティは一緒に配置する必要があるサービスのみに制限できます。
 
 ## 次のステップ
-- サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
+- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
 - 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
 - メトリックの一般的な動作について詳しくは、[Service Fabric の負荷メトリック](service-fabric-cluster-resource-manager-metrics.md)に関する記事を参照してください。
@@ -168,4 +168,4 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MinimumNodes
 [Image1]: ./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,5 +1,5 @@
 <properties
-    pageTitle="iOS アプリの分析"
+    pageTitle="iOS アプリの分析 | Microsoft Azure"
     description="iOS アプリの使用状況とパフォーマンスを分析します。"
     services="application-insights"
     documentationCenter="ios"
@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="ibiza"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="06/20/2016"
+    ms.date="08/26/2016"
     ms.author="awills"/>
 
 # iOS アプリの分析
@@ -31,8 +31,16 @@
 
 アプリにサーバー側がある場合は、[Application Insights](app-insights-overview.md) を使用して [ASP.NET](app-insights-asp-net.md) または [J2EE](app-insights-java-get-started.md) 上のアプリの Web サーバー側を監視できます。
 
-> [AZURE.NOTE] 間もなく、HockeyApp SDK から送信されたテレメトリで [Application Insights Analytics](app-insights-analytics.md) と[連続エクスポート](app-insights-export-telemetry.md)を使用できるようになります。
->
-> [この変更の詳細については、こちらをご覧ください。](https://azure.microsoft.com/blog/update-on-transitioning-mobile-apps-from-application-insights-to-hockeyapp/)
 
-<!---HONumber=AcomDC_0622_2016-->
+## HockeyApp データに対する分析、エクスポート、API アクセス 
+
+Application Insights で [HockeyApp ブリッジを設定](app-insights-hockeyapp-bridge-app.md)します。これを使用すると、次のことができます。
+
+* テレメトリに対して強力な [Analytics](app-insights-analytics.md) クエリ言語を使用する。
+* Azure BLOB ストレージに[テレメトリをエクスポート](app-insights-export-telemetry.md)する。
+
+## 次のステップ
+
+* [HockeyApp for iOS を使用](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/hockeyapp-for-ios)します。
+
+<!---HONumber=AcomDC_0831_2016-->

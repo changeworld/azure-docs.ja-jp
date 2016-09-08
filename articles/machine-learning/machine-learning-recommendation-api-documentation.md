@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/05/2016" 
+	ms.date="08/17/2016" 
 	ms.author="LuisCa"/>
 
-#Azure Machine Learning Recommendations API のドキュメント
+#Azure Machine Learning Recommendations API ドキュメント
 
-このドキュメントは、Microsoft Azure Machine Learning の Recommendations API を示しています。
+このドキュメントは、マーケットプレースで公開されている Microsoft Azure Machine Learning の Recommendations API を示しています。
+
+
+> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -41,7 +44,7 @@ Azure Machine Learning の Recommendations API は、次の論理グループに
 - <ins>ユーザー データ</ins> - ユーザーの使用状況データの情報が取得できる API。
 - <ins>通知</ins> – API の操作に関連する問題の通知を受信するための API。(たとえば、データ取得により使用状況データを報告していて、イベント処理のほとんどが失敗する場合、エラー通知が発生します)。
 
-##2\.制限事項
+##手順 2.制限事項
 
 - サブスクリプションごとのモデルの最大数は 10 です。
 - モデルごとのビルドの最大数は 20 です。
@@ -96,9 +99,9 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelName |	英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 20 |
-| apiVersion | 1.0 |
+|	apiVersion | 1\.0 |
 |||
-| Request Body | NONE |
+| 要求本文 | なし |
 
 
 **応答**:
@@ -271,7 +274,7 @@ OData XML
 ###5\.4.モデルの更新
 
 モデルの説明またはアクティブなビルド ID を更新することができます。<br>
-<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> 
+<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br>
 このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
 
@@ -359,7 +362,7 @@ HTTP 状態コード: 200
 
 次の表は、各キーを表す値を示しています。
 
-|キー|説明|
+|キー|Description|
 |:-----|:----|
 | AvgItemLength | 項目ごとの別個のユーザーの平均数。 |
 | AvgUserLength | ユーザーごとの別個の項目の平均数。 |
@@ -597,7 +600,7 @@ HTTP 状態コード: 200
 
 次の表は、各キーを表す値を示しています。
 
-| キー | 説明 |
+| キー | Description |
 |:---- |:----|
 | CatalogCoverage | 使用状況のパターンを使用してモデル化できるカタログの部分。項目の残りの部分は、内容に基づく特徴でなければなりません。 |
 | Mpr | モデルの平均パーセンタイル順位付け。小さいほど良好です。 |
@@ -806,17 +809,17 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 ##7\.ビジネス ルールのモデル
 
 サポートされるルールの種類は次のとおりです。
-- <strong>BlockList</strong> - BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。 
+- <strong>BlockList</strong> – BlockList では、推奨事項の結果を返すときに除外する項目の一覧を指定できます。
 
-- <strong>FeatureBlockList</strong> - Feature BlockList では、機能の値に基づいて項目をブロックできます。
+- <strong>FeatureBlockList</strong> – Feature BlockList では、機能の値に基づいて項目をブロックできます。
 
-*1 つの BlockList ルールで 1000 個以上の項目を送信しないでください。呼び出しがタイムアウトになる場合があります。1000 個を超える項目をブロックする必要がある場合は、複数の BlockList 呼び出しを行うことができます。*
+*1 つの BlockList ルールで 1,000 個以上の項目を送信しないでください。呼び出しがタイムアウトになる場合があります。1000 個を超える項目をブロックする必要がある場合は、複数の BlockList 呼び出しを行うことができます。*
 
 - <strong>Upsale</strong> - Upsale では項目を強制的に推奨事項の結果の一部として返すことができます。
 
-- <strong>WhiteList</strong> - White List では、項目の一覧から推奨事項だけを提案できます。
+- <strong>WhiteList</strong> – White List では、項目の一覧から推奨事項だけを提案できます。
 
-- <strong>FeatureWhiteList</strong> - Feature White List では、特定の機能値を持つ項目だけを推奨できます。
+- <strong>FeatureWhiteList</strong> – Feature White List では、特定の機能値を持つ項目だけを推奨できます。
 
 - <strong>PerSeedBlockList</strong> -PerSeedBlockList では、推奨事項の結果として返すことができない項目の一覧を項目ごとに指定できます。
 
@@ -893,17 +896,17 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br>
-<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>FeatureBlockList ルールを追加するには:</ins><br>
-<br>
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> 
+<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>FeatureBlockList ルールを追加するには:</ins><br> 
+<br> 
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
-Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
-<ins>WhiteList ルールを追加するには:</ins><br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>FeatureWhiteList ルールを追加するには:</ins><br>
-<br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
+Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
+<ins>WhiteList ルールを追加するには:</ins><br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
+<ins>FeatureWhiteList ルールを追加するには:</ins><br> 
+<br> 
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
 PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
@@ -990,15 +993,15 @@ HTTP 状態コード: 200
 
 注: ファイルの最大サイズは、200 MB です。
 
-* * 形式の詳細 * *
+**形式の詳細**
 
-| 名前 | 必須 | 型 | 説明 |
+| Name | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |あり | [A-z]、[a-z]、[0-9]、[\_] &#40;アンダースコア&#41;、[-] &#40;ダッシュ&#41; <br>最大長: 50 | 項目の一意識別子。|
-| Item Name | はい | 任意の英数字 <br> 最大長: 255 | 項目名。|
-| Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。|
-| Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字 <br> 最大長: 4000 | この項目の説明。|
-| Features list | いいえ |任意の英数字 <br> 最大長: 4000; 特徴の最大数: 20 | モデルの推奨事項を強化するために使用できる特徴名 = 特徴の値のコンマ区切りの一覧。「[高度なトピック](#2-advanced-topics)」セクションを参照してください。|
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 | 
+| Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
+| Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
+| Features list | なし | 任意の英数字<br> 最大長: 4000、特徴の最大数: 20 | モデルの推奨事項を強化するために使用できる "特徴名=特徴値" のコンマ区切りの一覧。[高度なトピック](#2-advanced-topics)のセクションをご覧ください。 |
 
 
 | HTTP メソッド | URI |
@@ -1010,9 +1013,9 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 | filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
-| apiVersion | 1.0 |
+|	apiVersion | 1\.0 |
 |||
-| Request Body | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
+| 要求本文 | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
 
 
 **応答**:
@@ -1215,10 +1218,10 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (_) のみが許可されます。<br>最大長: 50 |
-| apiVersion | 1.0 |
+| filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
+|	apiVersion | 1\.0 |
 |||
-| Request Body | 利用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[_] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&#95;] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS (例: 2013/06/20T10:00:00)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイルサイズ: 200MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| 要求本文 | 使用状況データ。形式:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>名前</th><th>必須</th><th>型</th><th>説明</th></tr><tr><td>User Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[\_] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41;<br> 最大長: 255 </td><td>ユーザーの一意識別子。</td></tr><tr><td>Item Id</td><td>はい</td><td>[A-z]、[a-z]、[0-9]、[&#95;] &#40;アンダースコア&#41;, [-] &#40;ダッシュ&#41; <br>最大長: 50</td><td>項目の一意識別子。</td></tr><tr><td>Time</td><td>いいえ</td><td>以下の形式の日付: YYYY/MM/DDTHH:MM:SS (例: 2013/06/20T10:00:00)</td><td>データの日付。</td></tr><tr><td>Event</td><td>いいえ。指定する場合は日付も必要。</td><td>以下の 1 つ。<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase</td><td></td></tr></table><br>最大ファイル サイズ: 200 MB<br><br>例:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **応答**:
 
@@ -1264,7 +1267,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	apiVersion | 1\.0 |
-|Request body| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。|
+|要求本文| 送信する各イベントのイベント データ エントリ。同じユーザーまたはブラウザーのセッションに対して、SessionId フィールドに同じ ID を送信する必要があります。(以下のイベントの本文のサンプルを参照してください)。|
 
 
 - 'Click' のイベントの例:
@@ -1651,10 +1654,8 @@ HTTP 状態コード: 200
 
 HTTP 状態コード: 200
 
-##10\.特徴
-このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。
-使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。
-特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
+##10\.Features (機能)
+このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
 ###10\.1.特徴の情報の取得 (最後の順位付けのビルド)
 前回成功した順位付けのビルドの特徴の情報 (順位付けを含む) を取得します。
@@ -1832,9 +1833,9 @@ OData
 - 順位付けのビルドをトリガーして (特徴のスコアが安定している場合を除く)、特徴のスコアが取得されるまで待ちます。
 - [特徴の情報の取得](#101-get-features-info-for-last-rank-build) API を呼び出して、特徴の順位付けを取得します。
 - 次のパラメーターを指定して推奨事項のビルドを構成します。
-	- `useFeatureInModel` - true に設定します。
+	- `useFeatureInModel` - True に設定します。
 	- `ModelingFeatureList` - スコアが 2.0 以上 (前の手順で取得した順位に応じて変更します) の特徴のコンマ区切りのリストに設定します。
-	- `AllowColdItemPlacement` - true に設定します。
+	- `AllowColdItemPlacement` - True に設定します。
 	- オプションで `EnableFeatureCorrelation` を True に設定し、`ReasoningFeatureList` を説明に使用する特徴のリストに設定できます (通常はモデル化またはサブリストで使用される特徴のリストと同じです)。
 - 構成したパラメーターを使用して推奨事項のビルドをトリガーします。
 
@@ -1858,30 +1859,30 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 
 次の表は、順位付けのビルドのビルド パラメーターを示しています。
 
-|キー|説明|型|有効な値:|
+|キー|Description|型|有効な値:|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
-| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
+|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| Integer | 10-50 |
+| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | Integer | 10-40 |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
 
 #####11\.1.3.推奨事項のビルドのパラメーター
 次の表は、推奨事項のビルドのビルド パラメーターを示しています。
 
-|キー|説明|型|有効な値:|
+|キー|Description|型|有効な値:|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
-| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-| 説明 | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
+|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| Integer | 10-50 |
+| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | Integer | 10-40 |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+| Description | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
 | EnableModelingInsights | 推奨モデルのメトリックを計算することができます。 | Boolean | True または False |
 | UseFeaturesInModel | 推奨モデルを強化するために特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
+| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | 文字列 | 特徴名 (最大 512 文字） |
 | AllowColdItemPlacement | 推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | Boolean | True または False |
 | EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 | Boolean | True または False |
 | ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
@@ -1890,10 +1891,10 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 #####11\.1.4.FBT ビルド パラメーター
 次の表は、推奨事項のビルドのビルド パラメーターを示しています。
 
-|キー|説明|型|有効な値 (既定値)|
+|キー|Description|型|有効な値 (既定値)|
 |:-----|:----|:----|:---|
-|FbtSupportThreshold | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。| 整数 | 3-50 (6) |
-|FbtMaxItemSetSize | 頻度のセット内のアイテム数の限度を定めます。| 整数 | 2-3 (2) |
+|FbtSupportThreshold | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。| Integer | 3-50 (6) |
+|FbtMaxItemSetSize | 頻度のセット内のアイテム数の限度を定めます。| Integer | 2-3 (2) |
 |FbtMinimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。大きいほど良好です。| Double | 0 以上 (0) |
 |FbtSimilarityFunction | ビルドで使用する類似関数を定義します。リフトではセレンディピティが、共起では予測可能性が、2 項間では Jaccard が適しています。 | String | 共起、リフト、Jaccard (リフト) |
 
@@ -1914,7 +1915,7 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | userDescription | カタログを表すテキスト形式の識別子。空白を使用する場合は、%20 にエンコードする必要があることに注意してください上記の例をご覧ください。<br>最大長: 50 |
 | apiVersion | 1\.0 |
 |||
-| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細については、「パラメーターのビルド」セクションを参照してください。)`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します (パラメーターの詳細については、「ビルド パラメーター」セクションを参照してください)。`<NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance><EnableModelingInsights>true</EnableModelingInsights><UseFeaturesInModel>false</UseFeaturesInModel><ModelingFeatureList>feature_name_1,feature_name_2,...</ModelingFeatureList><AllowColdItemPlacement>false</AllowColdItemPlacement><EnableFeatureCorrelation>false</EnableFeatureCorrelation><ReasoningFeatureList>feature_name_a,feature_name_b,...</ReasoningFeatureList></BuildParametersList>` |
 
 **応答**:
 
@@ -1990,7 +1991,7 @@ OData XML
 | buildType | 呼び出すビルドの種類: <br/> - 推奨事項のビルドは、'Recommendation' <br> - 順位付けのビルドは 'Ranking' <br/> -FBT のビルドは ' Fbt'
 | apiVersion | 1\.0 |
 |||
-| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します。(パラメーターの詳細と完全なリストについては、パラメーターのビルド セクションを参照してください。)`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
+| 要求本文 | 空のままの場合、ビルドは既定のパラメーターを指定して実行されます。<br><br>ビルド パラメーターを設定する場合、次のサンプルのように、パラメーターを XML として本文に入れて送信します (パラメーターの詳細と完全なリストについては、「ビルド パラメーター」セクションを参照してください)。`<BuildParametersList><NumberOfModelIterations>40</NumberOfModelIterations><NumberOfModelDimensions>20</NumberOfModelDimensions><MinItemAppearance>5</MinItemAppearance><MinUserAppearance>5</MinUserAppearance></BuildParametersList>` |
 
 **応答**:
 
@@ -2280,21 +2281,21 @@ HTTP 状態コード: 200
 
 次の表は、各キーを表す値を示しています。
 
-|キー|説明|型|有効な値:|
+|キー|Description|型|有効な値:|
 |:-----|:----|:----|:---|
-|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| 整数 | 10-50 |
-| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | 整数 | 10-40 |
-|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | 整数 | 2 以上 (0 でコンデンサーが無効) |
-| 説明 | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
+|NumberOfModelIterations | モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。数値が高いと精度が向上しますが、コンピューティング時間が長くなります。| Integer | 10-50 |
+| NumberOfModelDimensions | ディメンションの数は、データ内でモデルが検索しようとする「特徴」の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 | Integer | 10-40 |
+|ItemCutOffLowerBound| コンデンサーの項目の下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|ItemCutOffUpperBound| コンデンサーの項目の上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffLowerBound| コンデンサーのユーザーの下限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+|UserCutOffUpperBound| コンデンサーのユーザーの上限を定義します。前述の使用状況コンデンサーを参照してください。 | Integer | 2 以上 (0 でコンデンサーが無効) |
+| Description | ビルドの説明。 | String | 任意のテキスト (最大 512 文字) |
 | EnableModelingInsights | 推奨モデルのメトリックを計算することができます。 | Boolean | True または False |
 | UseFeaturesInModel | 推奨モデルを強化するために特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
+| ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | 文字列 | 特徴名 (最大 512 文字） |
 | AllowColdItemPlacement | 推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | Boolean | True または False |
 | EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
+| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | 文字列 | 特徴名 (最大 512 文字） |
 
 
 OData XML
@@ -2487,10 +2488,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 次の応答例には、10 個の推奨項目が含まれています。
 
@@ -2668,10 +2669,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2687,7 +2688,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemId | 推奨する項目です。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 <br> 最大: 150 |
+| numberOfResults | 必要な結果の数 <br>最大: 150 |
 | minimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | apiVersion | 1\.0 |
@@ -2698,12 +2699,12 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` - 項目の名前。
-- `Feed\entry\content\properties\Id2` - 2 番目の推奨項目 ID (省略可能)。
-- `Feed\entry\content\properties\Name2` - 2 番目の項目の名前 (省略可能)。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` – 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 次の応答例には、3 個の推奨項目セットが含まれています。
 
@@ -2778,7 +2779,7 @@ OData XML
 |:--------			|:--------								|
 | modelId | モデルの一意識別子 |
 | itemId | 推奨する項目です。<br>最大長: 1024 |
-| numberOfResults | 必要な結果の数 <br> 最大: 150 |
+| numberOfResults | 必要な結果の数 <br>最大: 150 |
 | minimalScore | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。 |
 | includeMetatadata | 将来的に利用 (常に false) |
 | buildId | この推奨事項の要求で使用するビルド ID |
@@ -2790,12 +2791,12 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` - 項目の名前。
-- `Feed\entry\content\properties\Id2` - 2 番目の推奨項目 ID (省略可能)。
-- `Feed\entry\content\properties\Name2` - 2 番目の項目の名前 (省略可能)。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` – 項目の名前。
+- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.3 の応答の例を参照してください。
 
@@ -2827,10 +2828,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2864,10 +2865,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2899,10 +2900,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2937,16 +2938,15 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
-- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
+- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
 ##13\.ユーザーの使用状況の履歴
-推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。
-この API により、ユーザーの履歴が取得できます。
+推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。この API により、ユーザーの履歴が取得できます。
 
 注: ユーザーの履歴は現在推奨設定のビルドに対してのみ利用できます。
 
@@ -2971,8 +2971,8 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` - 推奨項目の ID。
-- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Id` – 推奨項目の ID。
+- `Feed\entry\content\properties\Name` – 項目の名前。
 - `Feed\entry\content\properties\Rating` – 該当なし。
 - `Feed\entry\content\properties\Reasoning` – 該当なし。
 
@@ -3109,4 +3109,4 @@ HTTP 状態コード: 200
 © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

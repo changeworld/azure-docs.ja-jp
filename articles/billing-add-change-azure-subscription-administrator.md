@@ -14,20 +14,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Azure 管理者ロールを追加または変更する方法
 
 Microsoft Azure には、3 種類の管理者ロールがあります。
 
-| 管理ロール | 制限 | 説明
+| 管理ロール | 制限 | Description
 | ------------- | ------------- |---------------|
-|アカウント管理者 (AA) | 1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、多様な管理タスクを実行する権限を持っている個人。管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。
+|アカウント管理者 (AA) | 1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスして多様な管理タスクを実行する権限を持っている個人。管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。
 | サービス管理者 (SA) | 1 Azure サブスクリプションに 1 人 |このロールには、[Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。|
-|[Azure クラシック ポータル](https://manage.windowsazure.com)の共同管理者 (CA)|サブスクリプションあたり 200 人| サービス管理者と同じアクセス権を持っていますが、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
+|[Azure クラシック ポータル](https://manage.windowsazure.com)の共同管理者 (CA)|サブスクリプションあたり 200 人| サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 
 > [AZURE.NOTE] Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。詳細については、「[Azure Active Directory のロールベースの Access Control](./active-directory/role-based-access-control-configure.md)」を参照してください。
+
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 ## サブスクリプションの管理者を追加する方法
 
@@ -35,14 +37,14 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. ハブ メニューで **[サブスクリプション]** を選択し、*管理者にアクセス権を与えるサブスクリプション*を選択します。
+2. ハブ メニューで **[サブスクリプション]** を選択し、"*管理者にアクセス権を与えるサブスクリプション*" を選択します。
 
 	![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
 3. サブスクリプション ブレードで、**[設定]**、**[ユーザー]** の順に選択します。
 
 	![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. [ユーザー] ブレードで、**[追加]**、**[ロールの選択]**、**[所有者]** の順に選択します。
+4. [ユーザー] ブレードで、**[追加]**、**[役割を選択]**、**[所有者]** の順に選択します。
 
 	![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
 
@@ -62,7 +64,7 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 	![addcodmin](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
 
-3. 共同管理者として追加する個人の電子メール アドレスを入力し、共同管理者にアクセス権を与えるサブスクリプションを選択します。</br>
+3. 共同管理者として追加する個人の電子メール アドレスを入力し、共同管理者にアクセス権を付与するサブスクリプションを選択します。</br>
 
 	![addcoadmin2](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
 
@@ -83,8 +85,8 @@ Microsoft Azure には、3 種類の管理者ロールがあります。
 
 	ログイン方法| Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる |同じ組織内の組織アカウントを CA または SA として追加できる |異なる組織内の組織アカウントを CA または SA として追加できる
 	------------- | ------------- |---------------|---------------
-	Microsoft アカウント |はい|なし|いいえ
-	組織アカウント|はい|はい|いいえ
+	Microsoft アカウント |はい|なし|なし
+	組織アカウント|はい|はい|なし
 
 ## サブスクリプションのサービス管理者を変更する方法
 
@@ -112,6 +114,8 @@ Azure アカウントの所有権を別のアカウントに譲渡するには�
 
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory の管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
+* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory での管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

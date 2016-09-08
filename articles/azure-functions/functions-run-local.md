@@ -4,7 +4,7 @@
 	services="functions"
 	documentationCenter="na"
 	authors="tdykstra"
-	manager="wpickett"
+	manager="erikre"
 	editor=""/>
 
 <tags
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/14/2016"
-	ms.author="tdykstra"/>
+	ms.date="08/22/2016"
+	ms.author="glenga"/>
 
 # Visual Studio で Azure Functions をコーディングしてテストする方法
 
-## 概要
+## Overview
 
 この記事では、[WebJobs.Script](https://github.com/Azure/azure-webjobs-sdk-script/) GitHub リポジトリをダウンロードし、そのリポジトリに含まれている Visual Studio ソリューションを実行することで、[Azure Functions](functions-overview.md) をローカルで実行する方法について説明します。
 
@@ -222,4 +222,4 @@ Visual Studio の実行中に行われた環境変数の変更は自動的に反
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

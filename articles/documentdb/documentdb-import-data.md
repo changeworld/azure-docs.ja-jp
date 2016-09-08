@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/05/2016"
+	ms.date="08/23/2016"
 	ms.author="anhoh"/>
 
 # データベース移行ツールを使用した DocumentDB へのデータのインポート
@@ -490,4 +490,4 @@ DocumentDB JSON エクスポーターを使用して、使用可能な任意の�
 
 - DocumentDB の詳細については、[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="05/20/2016"
+	ms.date="08/25/2016"
 	ms.author="kgremban"/>
 
 #RBAC: 組み込みのロール
@@ -22,11 +22,11 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 
 ## Azure におけるロール
 
-次の表には、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
+次の表に、組み込みのロールについての簡単な説明を示します。ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。**actions** プロパティは、Azure リソースに対して許可するアクションを指定します。アクションの文字列にワイルドカード文字を使用できます。**notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
 >[AZURE.NOTE] Azure のロール定義は常に進化しています。この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。適宜、コマンドレット `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。
 
-| ロール名 | 説明 |
+| ロール名 | Description |
 | --------- | ----------- |
 | [API 管理サービスの共同作業者](#api-management-service-contributor) | API Management サービスを管理できます |
 | [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
@@ -42,12 +42,12 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [New Relic APM アカウントの共同作業者](#new-relic-apm-account-contributor) | New Relic Application Performance Management アカウントおよびアプリケーションを管理できます |
 | [所有者](#owner) | アクセス権を含めすべてを管理できます |
 | [閲覧者](#reader) | すべてを閲覧できますが、変更を加えることはできません |
-| [Redis Cache の共同作業者](#redis-cache-contributor]) | Redis キャッシュを管理できます |
+| [Redis Cache の共同作業者](#redis-cache-contributor) | Redis キャッシュを管理できます |
 | [Scheduler Job Collection の共同作業者](#scheduler-job-collections-contributor) | Scheduler Job Collection を管理できます |
 | [Search サービスの共同作業者](#search-service-contributor) | Search サービスを管理できます |
 | [セキュリティ管理者](#security-manager) | セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
 | [SQL DB の共同作業者](#sql-db-contributor) | SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
-| [SQL セキュリティ管理者](#sql-security-manager) | SQL Server やデータベースのセキュリティ関連ポリシーを管理できます |
+| [SQL セキュリティ管理者](#sql-security-manager) | SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます |
 | [SQL Server の共同作業者](#sql-server-contributor) | SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
 | [従来のストレージ アカウントの共同作業者](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できます |
 | [ストレージ アカウントの共同作業者](#storage-account-contributor) | ストレージ アカウントを管理できます |
@@ -147,8 +147,8 @@ ClearDB MySQL データベースを管理できます
 
 | **NotActions** ||
 | ------- | ------ |
+| Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |  
 | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
-| Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 
 ### Data Factory の共同作業者
 Data Factory を管理できます
@@ -260,7 +260,7 @@ New Relic Application Performance Management アカウントおよびアプリ�
 
 | **アクション** ||
 | ------- | ------ |
-| **/read | 機密データを除くあらゆる種類のリソースの読み取り |
+| */read | 機密データを除くあらゆる種類のリソースの読み取り |
 
 ### Redis Cache の共同作業者
 Redis キャッシュを管理できます
@@ -284,7 +284,8 @@ Scheduler ジョブ コレクションを管理できます
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Scheduler/jobcollections/* | ジョブ コレクションの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Scheduler/jobcollections/* | ジョブ コレクションの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### Search サービスの共同作業者
@@ -296,7 +297,8 @@ Search サービスを管理できます
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Search/searchServices/* | 検索サービスの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Search/searchServices/* | 検索サービスの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### セキュリティ管理者
@@ -311,7 +313,8 @@ Search サービスを管理できます
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### SQL DB の共同作業者
@@ -323,7 +326,8 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Sql/servers/databases/* | SQL データベースの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Sql/servers/databases/* | SQL データベースの作成と管理 |
 | Microsoft.Sql/servers/read | SQL Server の読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -331,13 +335,14 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | ------- | ------ |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
+| Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードを読み取ることはできません |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* | セキュリティの警告のポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/securityMetrics/* | セキュリティ基準を編集することはできません |
 
 ### SQL セキュリティ管理者
-SQL Server やデータベースのセキュリティ関連ポリシーを管理できます
+SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます
 
 | **アクション** ||
 | ------- | ------ |
@@ -345,10 +350,12 @@ SQL Server やデータベースのセキュリティ関連ポリシーを管理
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーの作成と管理 |
 | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定の作成と管理 |
+| Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードの読み取り |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーの作成と管理 |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーの作成と管理 |
 | Microsoft.Sql/servers/databases/read | SQL データベースの読み取り |
@@ -370,7 +377,8 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 | **NotActions** ||
@@ -379,6 +387,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
 | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定は編集できません |
+| Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードを読み取ることはできません |
 | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーは編集できません |
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベース セキュリティの警告のポリシーは編集できません |
@@ -395,10 +404,11 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### ストレージ アカウントの共同作業者
-アクセス権以外のストレージ アカウントを管理できます。
+ストレージ アカウントを管理できますが、ストレージ アカウントにアクセスすることはできません。
 
 | **アクション** ||
 | ------- | ------ |
@@ -407,7 +417,8 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Insights/diagnosticSettings/* | 診断設定の管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### ユーザーアクセスの管理者
@@ -415,7 +426,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** ||
 | ------- | ------ |
-| */read | 機密データを除くあらゆる種類のリソースの読み取り | 
+| */read | 機密データを除くあらゆる種類のリソースの読み取り |
 | Microsoft.Authorization/* | 承認の管理 |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -439,7 +450,8 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |
+| Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### 仮想マシンの共同作業者
 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます
@@ -467,7 +479,8 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワーク サブネットの接続 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Storage/storageAccounts/listKeys/action | ストレージ アカウント キーの一覧表示 |
 | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -481,7 +494,8 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ### Web Plan の共同作業者
 Web プランを管理できます
@@ -492,7 +506,8 @@ Web プランを管理できます
 | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Support/* | サポート チケットの作成と管理 |
 | Microsoft.Web/serverFarms/* | サーバー ファームの作成と管理 |
 
 ### Web サイトの共同作業者
@@ -505,7 +520,8 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Insights/components/* | Insights コンポーネントの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り | Microsoft.Support/* | サポート チケットの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの読み取り |  
+| Microsoft.Support/* | サポート チケットの作成と管理 |
 | Microsoft.Web/certificates/* | Web サイト証明書の作成と管理 |
 | Microsoft.Web/listSitesAssignedToHostName/read | ホスト名に割り当てられたサイトの読み取り |
 | Microsoft.Web/serverFarms/join/action | サーバー ファームの接続 |
@@ -513,9 +529,9 @@ Web サイトを管理できますが、接続されている Web プランは�
 | Microsoft.Web/sites/* | Web サイトの作成と管理 |
 
 ## 関連項目
-- [ロール ベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本。
+- [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
 - [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 - [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

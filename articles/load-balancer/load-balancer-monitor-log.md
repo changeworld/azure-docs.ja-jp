@@ -3,7 +3,7 @@
    description="Azure Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します。"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn"
    tags="azure-resource-manager"
@@ -15,14 +15,14 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="04/05/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure Load Balancer のログ分析 (プレビュー)
 Azure の各種ログを使用して、ロード バランサーの管理やトラブルシューティングを行うことができます。これらのログの一部はポータルからアクセスできます。また、すべてのログは、Azure BLOB ストレージから抽出して Excel や PowerBI などのさまざまなツールで表示することができます。各種ログの詳細については、以下の一覧を参照してください。
 
 
 - **監査ログ:** [Azure 監査ログ](../../articles/azure-portal/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその操作の状態を表示できます。監査ログは既定で有効になっており、Azure ポータルで表示できます。
-- **アラート イベント ログ:** ロード バランサーで発生したアラートを確認できます。ロード バランサーの状態は 5 分ごとに収集されます。このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。  
+- **アラート イベント ログ:** ロード バランサーで発生したアラートを確認できます。ロード バランサーの状態は 5 分ごとに収集されます。このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
 - **正常性プローブ ログ:** プローブの正常性チェックの状態を確認し、ロード バランサーのバックエンドでオンラインになっているインスタンスの数や、ロード バランサーからネットワーク トラフィックを受信している仮想マシンの割合を調べることができます。このログは、プローブ状態イベントの変更時に書き込まれます。
 
 >[AZURE.WARNING] ログは、リソース マネージャーのデプロイメント モデルでデプロイされたリソースについてのみ使用できます。クラシック デプロイメント モデルのリソースには使用できません。2 つのモデルについて理解を深めるには、「[リソース マネージャー デプロイと従来のデプロイを理解する](../../articles/resource-manager-deployment-model.md)」を参照してください。<BR> ログ分析は現在、インターネットに接続するロード バランサーに対してのみ機能します。この制限は一時的なものであり、いつでも変更される可能性があります。今後の変更を確認するには、このページに再度アクセスしてください。
@@ -128,4 +128,4 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 - [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
 - [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

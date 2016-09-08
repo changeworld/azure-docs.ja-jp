@@ -4,7 +4,7 @@
    services="dns"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carmon"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 
@@ -134,4 +134,4 @@ Azure ポータルを使用して、レコード セットからレコードを�
 -   DNS 作成の自動化については、「[.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
 -   逆引き DNS レコードの詳細については、「[PowerShell を使用してサービスの逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-ps.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

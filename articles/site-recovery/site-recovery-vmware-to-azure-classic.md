@@ -529,6 +529,14 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 - /PassphraseFilePath: 必須。構成サーバーのパスフレーズを指定します。
 - /LogFilePath: 必須。ログ セットアップ ファイルの場所を指定します。
 
+#### モビリティ サービスを手動でアンインストールする
+
+モビリティ サービスは、コントロール パネルの [プログラムの追加と削除] を使用するか、コマンド ラインを使用してアンインストールできます。
+
+コマンド ラインを使用して、モビリティ サービスをアンインストールするコマンドは次のとおりです。
+
+	MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1}
+
 #### 管理サーバーの IP アドレスを変更する
 
 ウィザードの実行後は、次の手順で管理サーバーの IP アドレスを変更できます。
@@ -796,4 +804,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行されているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細を確認](site-recovery-failback-azure-to-vmware-classic.md)します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

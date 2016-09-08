@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
-   ms.date="06/08/2016"
+   ms.date="08/18/2016"
    ms.author="allclark" />
 
 # Docker エラーのトラブルシューティング
@@ -21,7 +21,7 @@ Docker Preview 用 Visual Studio ツールを使用する場合は、プレビ�
 
 ##Docker サポートのための Program.cs の構成に失敗する
 
-Docker サポートを追加するときに、`.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_SERVER.URLS"))` を WebHostBuilder() に追加する必要があります。Program.cs の `Main()` 関数または新しい WebHostBuilder が見つからない場合は、警告が表示されます。Docker コンテナー内で実行する localhost 以外で Kestrel が受信トラフィックを待機できるようにするには `.UseUrls()` が必要です。完了すると、一般的なコードは次のようになります。
+Docker サポートを追加するときに、`.UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS"))` を WebHostBuilder() に追加する必要があります。`Program.cs` の `Main()` 関数または新しい WebHostBuilder クラスが見つからない場合は、警告が表示されます。Docker コンテナー内で実行する localhost 以外で Kestrel が受信トラフィックを待機できるようにするには `.UseUrls()` が必要です。完了すると、一般的なコードは次のようになります。
 
 ```
 public class Program
@@ -83,21 +83,21 @@ Documents        Libraries        Pictures         desktop.ini
 /wormhole #
 ```
 
-**注:** *Linux VM を使用する場合、コンテナーのファイル システムでは大文字と小文字が区別されます*。
+> [AZURE.NOTE] Linux VM を使用する場合、コンテナーのファイル システムでは大文字と小文字が区別されます。
 
 内容が表示されない場合は、以下を試します。
 
 **Docker for Windows (ベータ)**
-- Docker for Windows のデスクトップ アプリが動作していることを確認するには、システム トレイにあるクジラのアイコンが白く表示され、機能していることを確認します。
-- ボリューム マッピングが構成されていることを確認するには、システム トレイのクジラのアイコンを右クリックして [Settings (設定)] を選択し、**[Manage shared drives... (共有ドライブの管理)]** をクリックします。
+- Docker for Windows のデスクトップ アプリが動作していることを確認するには、システム トレイの `moby` アイコンが白く表示され、機能していることを確認します。
+- ボリューム マッピングが構成されていることを確認するには、システム トレイの `moby` アイコンを右クリックして [Settings (設定)] を選択し、**[Manage shared drives... (共有ドライブの管理)]** をクリックします。
 
 **Docker Toolbox (VirtualBox を含む)**
 
-既定では、VirtualBox は `C:\Users` を `c:/Users` として共有します。可能であれば、プロジェクトをこのディレクトリの下に移動します。または、VirtualBox の[共有フォルダー](https://www.virtualbox.org/manual/ch04.html#sharedfolders)に手動で追加することもできます。
+既定では、VirtualBox は `C:\Users` を `c:/Users` として共有します。可能であれば、プロジェクトをこのディレクトリの下に移動します。それ以外の場合は、VirtualBox の[共有フォルダー](https://www.virtualbox.org/manual/ch04.html#sharedfolders)に手動で追加することもできます。
 	
 ##"Build : Failed to build the image"、"Error checking TLS connection: Host is not running" と表示される
 
-- 既定の Docker ホストが実行されていることを確認します。[Docker クライアントの構成](./vs-azure-tools-docker-setup.md)に関するページをご覧ください。
+- 既定の Docker ホストが実行されていることを確認します。[Docker クライアントの構成](./vs-azure-tools-docker-setup.md)に関するページを参照してください。
 
 ##Microsoft Edge を既定のブラウザーとして使用している
 
@@ -105,7 +105,7 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 
 1. **[インターネット オプション]** に移動します。
     - Windows 10 の場合は、Windows の [ファイル名を指定して実行] ボックスに「`Internet Options`」と入力します。
-    - Internet Explorer から **[設定]** メニューに移動し、**[インターネット オプション]** を選択してもかまいません。
+    - Internet Explorer から **[設定]** メニューに移動し、**[インターネット オプション]** を選択することもできます。
 1. **[インターネット オプション]** が表示されたら選択します。
 1. **[セキュリティ]** タブを選択します。
 1. **[ローカル イントラネット]** ゾーンを選択します。
@@ -119,7 +119,7 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
 
 ###アプリを実行すると、PowerShell が開き、エラーを表示した後に閉じる。ブラウザーのページは開かない。
 
-これは、`docker-compose-up` の実行中のエラーであると考えられます。このエラーを表示するには、次の手順を実行します。
+ブラウザーが開かない場合、`docker-compose-up` 中のエラーの可能性があります。このエラーを表示するには、次の手順を実行します。
 
 1. `Properties\launchSettings.json` ファイルを開きます。
 1. Docker エントリを見つけます。
@@ -129,10 +129,10 @@ Microsoft Edge ブラウザーを使用している場合、IP アドレスが�
     "commandLineArgs": "-ExecutionPolicy RemoteSigned …”
     ```
 	
-1. 次のように、この行に `-noexit` パラメーターを追加します。これにより、PowerShell が開いたままになり、エラーを確認できるようになります。
+1. 次のように、この行に `-noexit` パラメーターを追加します。このコードにより、PowerShell が開いたままになり、エラーを確認できるようになります。
 
     ```
 	"commandLineArgs": "-noexit -ExecutionPolicy RemoteSigned …”
     ```
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

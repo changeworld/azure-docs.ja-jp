@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="05/04/2016"
+	ms.date="08/22/2016"
 	ms.author="mahender"/>
 
 # Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法
@@ -65,7 +65,7 @@
 
     ![][3]
 
-9. **[保存]** をクリックします。その後、アプリケーションの**クライアント ID** をコピーします。後で、これを使用するようにアプリケーションを構成します。
+9. [**Save**] をクリックします。その後、アプリケーションの**クライアント ID** をコピーします。後で、これを使用するようにアプリケーションを構成します。
 
 10. 下部のコマンド バーで、**[エンドポイントの表示]** をクリックして、**[フェデレーション メタデータ ドキュメント]** の URL をコピーし、そのドキュメントをダウンロードするか、ブラウザーでそのドキュメントに移動します。
 
@@ -101,7 +101,7 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 
 4. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として **[ネイティブ クライアント アプリケーション]** をクリックします。その後、クリックして続行します。
 
-5. **[リダイレクト URI]** に、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントを入力します。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。Windows アプリケーションを作成する場合は、[パッケージ SID](app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
+5. **[リダイレクト URI]** に、HTTPS スキームを使用してサイトの _/.auth/login/done_ エンドポイントを入力します。この値は、https://contoso.azurewebsites.net/.auth/login/done_ と同様です。Windows アプリケーションを作成する場合は、[パッケージ SID](app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
 
 6. ネイティブ アプリケーションが追加されたら **[構成]** タブをクリックします。**[クライアント ID]** を検索し、その値をメモします。
 
@@ -130,4 +130,4 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [alternative method]: #advanced
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="get-started-article"
-	ms.date="06/01/2016"
+	ms.date="08/31/2016"
 	ms.author="rachelap"/>
 
 # Azure App Service での Java API アプリの構築とデプロイ
@@ -153,7 +153,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
 このセクションでは、Swagger によって生成されたコードのサーバー側の実装をカスタム コードに置き換えます。新しいコードは、Contact エンティティの ArrayList を呼び出し元のクライアントに返します。
 
-1. [Visual Studio Code] または使い慣れたテキスト エディターを使用して、*Contact.java* モデル ファイルを開きます。このファイルは、*src/gen/java/io/swagger/model* フォルダーにあります。 
+1. [Visual Studio Code] または使い慣れたテキスト エディターを使用して、*Contact.java* モデル ファイルを開きます。このファイルは、*src/gen/java/io/swagger/model* フォルダーにあります。
 
     ![Open Contact Model File][open-contact-model-file]
 
@@ -338,4 +338,4 @@ Azure での Java の使用に関する詳細については、「[Java デベ�
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

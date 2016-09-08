@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/23/2016"
 	ms.author="iainfou"/>
 
 # データ ディスクを Linux 仮想マシンに接続する方法
@@ -58,7 +58,7 @@
 			data:    0    100       TestVM-76f7ee1ef0f6dddc.vhd
 			info:    vm disk list command OK
 
-	これを、同じサンプル仮想マシンに対する `lsscsi` の出力と比較します。
+	このデータを、同じサンプル仮想マシンに対する `lsscsi` の出力と比較します。
 
 			ops@TestVM:~$ lsscsi
 			[1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -68,7 +68,7 @@
 
 	各行の組にある最後の数字が _LUN_ です。詳細については、「`man lsscsi`」を参照してください。
 
-3. プロンプトで、次のコマンドを入力して、新しいデバイスを作成します。
+3. プロンプトで、次のコマンドを入力して、デバイスを作成します。
 
 		$sudo fdisk /dev/sdc
 
@@ -76,9 +76,9 @@
 4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
 
 
-	![Create new device](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+	![デバイスの作成](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
-5. 表示されるプロンプトで、パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
+5. 求められたら、「**p**」と入力して、パーティションをプライマリ パーティションにします。「**1**」と入力して最初のパーティションにし、Enter キーを押してシリンダーの既定値をそのまま使用します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
 
 
 	![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
@@ -103,7 +103,7 @@
 
 	![Create file system](./media/virtual-machines-linux-classic-attach-disk/mkfsext4.png)
 
-	>[AZURE.NOTE] SuSE Linux Enterprise 11 システムでは、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされていることに注意してください。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
+	>[AZURE.NOTE] SuSE Linux Enterprise 11 システムでは、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされます。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
 
 
 9. 次のように、新しいファイル システムをマウントするディレクトリを作成します。
@@ -122,11 +122,11 @@
 
 11. 新しいドライブを /etc/fstab に追加します。
 
-	再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (つまり /dev/sdc1) だけではなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。そうすれば、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされて残りのデータ ディスクにそれらのデバイス ID が割り当てられるのを防ぐことができます。新しいドライブの UUID を確認するには、**blkid** ユーティリティを次のように使用します。
+	再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (つまり /dev/sdc1) だけではなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされて残りのデータ ディスクにそれらのデバイス ID が割り当てられるのを防ぐことができます。新しいドライブの UUID を確認するには、**blkid** ユーティリティを次のように使用します。
 
 		# sudo -i blkid
 
-	次のような出力が表示されます。
+	出力は、次のようになります。
 
 		/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
 		/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
@@ -161,15 +161,15 @@
 >[AZURE.NOTE] この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
 ### Azure における Linux の TRIM/UNMAP サポート
-一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作をサポートします。これは主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。これによって、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。これらの操作は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。ページを破棄すると、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
 
-Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常と同様に、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
 - 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
 
 		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
 
-- または、`fstrim` コマンドを手動でコマンドラインから実行するか、crontab に追加して定期的に実行することができます。
+- または、`fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
 
 	**Ubuntu**
 
@@ -196,6 +196,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
-[Logon]: virtual-machines-linux-classic-log-on.md
+[Logon]: virtual-machines-linux-mac-create-ssh-keys.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->
