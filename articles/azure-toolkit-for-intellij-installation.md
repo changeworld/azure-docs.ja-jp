@@ -38,7 +38,7 @@ Azure Toolkit for IntelliJ には 2 とおりのインストール方法があ�
 
     ![IntelliJ IDEA Settings Dialog Box][02a]
 
-1. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。**\[Azure Toolkit for IntelliJ\]** を強調表示して **[Install]** (インストール) をクリックします。
+1. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。**\[Azure Toolkit for IntelliJ]** を強調表示して **[Install]** (インストール) をクリックします。
 
     ![Search for the Azure Toolkit for IntelliJ][03]
 
@@ -70,7 +70,7 @@ Azure Toolkit for IntelliJ には 2 とおりのインストール方法があ�
 
     ![Browse IntelliJ IDEA Plugin Repositories][02b]
 
-1. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。**[Azure Toolkit for IntelliJ]** を強調表示して **[Install]** (インストール) をクリックします。
+1. **[Browse Repositories]** (リポジトリの参照) ダイアログ ボックスの検索ボックスに「Azure」と入力します。**\[Azure Toolkit for IntelliJ]** を強調表示して **[Install]** (インストール) をクリックします。
 
     ![Search for the Azure Toolkit for IntelliJ][03]
 

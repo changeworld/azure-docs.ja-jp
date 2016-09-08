@@ -20,7 +20,7 @@
 # SQL Database のアクティブ geo レプリケーションを使用したクラウド障害復旧用アプリケーションの設計
 
 
-> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md)すべてのレベルのすべてのデータベースで (sql-database-geo-replication-overview.md) を使用できるようになりました。
+> [AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md)すべてのレベルのすべてのデータベースでを使用できるようになりました。
 
 
 

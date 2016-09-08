@@ -307,7 +307,7 @@ metaconfig -URL 'https://we-agentservice-prod-1.azure-automation.net/accounts/<Y
 Set-DscLocalConfigurationManager .\metaconfig -Force -Verbose
 ```
 
-この構成は、ローカル構成マネージャーがマネージャー自体を OMS Automation DSC に登録するように構成します。基本的には、エンジンの動作方法と構成のずれ (ApplyAndAutoCorrect) が発生した場合の動作を指示するとともに、必要な再起動が行われた場合に以降の構成を続行するように指示します。
+この構成は、ローカル構成マネージャーがマネージャー自体をOMS Automation DSCに登録するように構成します。基本的には、エンジンの動作方法と構成のずれ(ApplyAndAutoCorrect)が発生した場合の動作を指示するとともに、必要な再起動が行われた場合に以降の構成を続行するように指示します。
 
 これを実行すると、ノードは Automation DSC への登録を開始します。
 
