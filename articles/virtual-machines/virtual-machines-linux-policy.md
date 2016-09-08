@@ -4,7 +4,7 @@
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="singhkays"
-	manager="drewm"
+	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
@@ -102,8 +102,8 @@ Azure Resource Manager ポリシーの作業を開始するにあたって、こ
 
 ## ポリシーの適用
 
-ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。スコープとして、サブスクリプション、リソース グループ、またはリソースを指定できます。ポリシーの適用については、以下の記事を参照してください。
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。ポリシーの適用については、以下の記事を参照してください。
 
 * [ポリシーの作成](../resource-manager-policy.md#applying-a-policy)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

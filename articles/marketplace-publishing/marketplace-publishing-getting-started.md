@@ -13,26 +13,37 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/05/2016"
+   ms.date="08/22/2016"
    ms.author="hascipio" />
 
 # Azure Marketplace でプランを発行して管理する方法
 この記事では、Azure Marketplace に掲載されるソリューションを開発者が作成、デプロイ、管理し、Azure の他の顧客やパートナーに有償で提供するための方法を紹介しています。
 
-まず、発行元は、会社がどのような種類のソリューションを提供するかを定義します。Azure Marketplace では複数のソリューションがサポートされており、Azure Marketplace に正常に発行するには、各ソリューションでわずかに異なる作業を行う必要があります。
+## Azure Marketplace とは何ですか?
+Azure Marketplace では、Azure の利用者向けに、オンプレミスまたはクラウド ベースのソリューションおよびアプリケーションの開発に役立つサービスを提供しています。また、基幹アプリケーションや他の Azure の利用者用の革新的なアプリケーションやサービスを迅速に開発するために、[Azure 認定](http://azure.com/certified)サービスを構成要素として使用することができます。
 
-## プランの種類
-|プランの種類| 定義 |
-|---|---|
-|Virtual Machine イメージ | 完全にインストールされたオペレーティング システムと 1 つ以上のアプリケーションを含む事前に構成された仮想マシン (VM) イメージ。仮想マシン イメージのサービス/データには、単一の VM イメージは、またはソリューション テンプレートによって結びつけられた複数の VM イメージを含めることができます。Azure Virtual Machines サービスで仮想マシンの作成やデプロイに必要な情報は、仮想マシン イメージ ("イメージ") により提供されます。1 つのイメージは、1 つのオペレーティング システム仮想ハード ドライブと、0 個以上のデータ ディスク仮想ハード ドライブとで構成されます。顧客は、単一のイメージから、任意の数の仮想マシンをデプロイできます。|
-|開発者サービス| インフォメーション ワーカー、ビジネス アナリスト、開発者、IT 担当者が、カスタム アプリケーション開発またはシステム管理において使用できる完全に管理されたサービス。開発者サービスは、Azure でクラウド スケールのアプリケーションを短期間で開発できるようにする機能を提供します。開発者サービスを購入するお客様は、Azure サブスクリプションを保有している必要があります。発行元には、Microsoft Azure Marketplace Publisher Agreement で詳述されているとおり、お客様の開発者サービスの利用状況を計測し、利用状況の情報を Microsoft に報告する責任があります。|
-|ソリューション テンプレート|"Azure Resource Manager (ARM) ソリューション テンプレート" は、バラバラに存在するさまざまなサービスやデータ (他の発行元から提供されているものを含む) を参照できるデータの構造です。Azure をご利用のお客様は、このテンプレートを通じて、そのサービスやデータを単一の体系的な方法でデプロイすることができます。|
+Azure の発行元にとって、Azure Marketplace は、クラウド ベースのアプリケーションやモバイル ソリューションを短期間で開発しようとしている他の開発者、ISV、および IT プロフェッショナルに革新的なソリューションやサービスを配布し販売するしくみです。
+
+## サポートされるプランの種類
+まず、発行元は、会社がどのような種類のソリューションを提供するかを定義します。Azure Marketplace では、次の 3 種類のサービスを提供しています。
+
+- **仮想マシン イメージ**は、完全にインストールされたオペレーティング システムと 1 つ以上のアプリケーションを含む事前に構成されたイメージです。Azure Virtual Machines サービスで仮想マシンの作成やデプロイに必要な情報は、仮想マシン イメージにより提供されます。
+
+    >[AZURE.NOTE] **たとえば**、Azure の発行元として、革新的なデータベース サービスを有する VM を作成して検証します。この VM は、Azure の他の利用者が進んで調達して独自のクラウド サービス環境にデプロイするほど魅力的なものです。
+
+- **開発者向けサービス**は、アプリケーション開発またはシステム管理に使用される、完全に管理されたサービスです。Azure でクラウド規模のアプリケーションを迅速に開発できる機能を提供します。
+
+    >[AZURE.NOTE] **たとえば**、Azure の発行元として、履歴データに基づいて予測を提供する API アクセスが可能なサービス (Azure または他の場所でホストされる) を開発します。このサービスは、ソリューションを構築する Azure の他の利用者が利用できます。その他の検索および調達サービスや、それぞれのサービスのユーザー向けに、このサービスを Azure Marketplace にデプロイすることができます。
+
+- **ソリューション テンプレート**は、個別に存在するさまざまな Azure サービス (他の販売者から提供されているサービスを含む) を参照できるデータの構造です。Azure の利用者は、このテンプレートを通じて、そのサービスやデータを単一の体系的な方法でデプロイすることができます。
+
+    >[AZURE.NOTE] **たとえば**、Azure の発行元として、一連のサービスを Azure 全体からバンドルします。このサービスによって、負荷分散された、可用性の高い、セキュリティで保護されたクラウド サービスをわずか数クリックですばやくデプロイすることができます。Azure の他の利用者は、手動で特定したり同じまたは類似した Azure サービスを構成したりするのではなく、このソリューション テンプレートを調達することで、時間の節約という価値を見いだすことができます。
 
 いくつかの手順は、異なる種類のソリューションで共通して使用されます。この記事では、ソリューションの種類ごとに必要な手順の概要を示します。
 
 ## 1\.前提条件
 
-> [AZURE.NOTE] Azure Marketplace では、作業を開始する前に、事前承認が必要です。これは、データ サービスの発行元に対しては適用されません。
+> [AZURE.NOTE] Azure Marketplace では、作業を開始する前に、[事前承認](http://azure.com/certified)が必要です。
 
 1. [Microsoft Azure Certified の事前承認を申請する](marketplace-publishing-azure-certification.md)
 2. [Microsoft 開発者アカウントを作成して登録する](marketplace-publishing-accounts-creation-registration.md)
@@ -65,10 +76,18 @@
 - 使用されるポータルの詳細については、「[必要なポータル](marketplace-publishing-portals.md)」を参照してください。
 
 
-## 3\.プランの発行後の管理
+## 手順 3.プランの発行後の管理
 - [仮想マシン プランの作成後ガイド](marketplace-publishing-vm-image-post-publishing.md)
 - [プランまたは SKU の非技術的な詳細を更新する方法](marketplace-publishing-vm-image-post-publishing.md#2-how-to-update-the-non-technical-details-of-an-offer-or-a-sku)
-- [Azure Marketplace からプランまたは SKU を削除する方法](marketplace-publishing-vm-image-post-publishing.md#4-how-to-delete-a-live-offer-or-sku-from-the-azure-marketplace)
+- [プランまたは SKU の技術的な詳細を更新する方法](marketplace-publishing-vm-image-post-publishing.md#1-how-to-update-the-technical-details-of-a-sku)
+- [表示されているプランに新しい SKU を追加する方法](marketplace-publishing-vm-image-post-publishing.md#3-how-to-add-a-new-sku-under-a-listed-offer)
+- [表示されている SKU のデータ ディスク数を変更する方法](marketplace-publishing-vm-image-post-publishing.md#4-how-to-change-the-data-disk-count-for-a-listed-sku)
+- [表示されているプランを Azure Marketplace から削除する方法](marketplace-publishing-vm-image-post-publishing.md#5-how-to-delete-a-listed-offer-from-the-azure-marketplace)
+- [表示されている SKU を Azure Marketplace から削除する方法](marketplace-publishing-vm-image-post-publishing.md#6-how-to-delete-a-listed-sku-from-the-azure-marketplace)
+- [表示されている SKU の現在のバージョンを Azure Marketplace から削除する方法](marketplace-publishing-vm-image-post-publishing.md#7-how-to-delete-the-current-version-of-a-listed-sku-from-the-azure-marketplace)
+- [表示価格を運用時の値に戻す方法](marketplace-publishing-vm-image-post-publishing.md#8-how-to-revert-listing-price-to-production-values)
+- [課金モデルを運用時の運用時の値に戻す方法](marketplace-publishing-vm-image-post-publishing.md#9-how-to-revert-billing-model-to-production-values)
+- [表示されている SKU の可視性の設定を運用時の値に戻す方法](marketplace-publishing-vm-image-post-publishing.md#10-how-to-revert-visibility-setting-of-a-listed-sku-to-the-production-value)
 - [How to change your Cloud Solution Provider reseller incentive (Cloud Solution Provider のリセラー インセンティブを変更する方法)](marketplace-publishing-csp-incentive.md)
 - [Seller Insights レポートの概要](marketplace-publishing-report-seller-insights.md)
 - [支払いレポートを理解する](marketplace-publishing-report-payout.md)
@@ -77,4 +96,4 @@
 ## その他のリソース
 - [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -99,7 +99,7 @@
 
 	イメージの URL は、JSON ファイル テンプレートから取得できます。イメージの完全なパスは、**resources** > **storageProfile** > **osDisk** > **image** > **uri** セクションにあります。イメージの URL は `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` のようになります。
 	
-	ポータルで URI を確認することもできます。イメージは、ストレージ アカウントの **system** という名前の BLOB にコピーされます。
+	ポータルで URI を確認することもできます。イメージは、ストレージ アカウントの **system** という名前のコンテナーにコピーされます。
 
 2. イメージへのパスの変数を作成します。
 
@@ -210,4 +210,4 @@
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

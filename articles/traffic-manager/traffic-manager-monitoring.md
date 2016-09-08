@@ -3,7 +3,7 @@
    description="この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。"
    services="traffic-manager"
    documentationCenter=""
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="07/01/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Traffic Manager エンドポイントの監視とフェールオーバー
 
@@ -175,4 +175,4 @@ Traffic Manager でサポートされている[トラフィック ルーティ�
 
 Traffic Manager エンドポイントの [低下状態に関するトラブルシューティング](traffic-manager-troubleshooting-degraded.md)を行う。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

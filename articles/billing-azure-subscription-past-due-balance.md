@@ -15,11 +15,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="08/17/2016"
 	ms.author="genli"/>
 
 # Azure サブスクリプションに支払期限を過ぎた未払い額があるという通知を受信する理由
 Azure サブスクリプションのアカウント管理者で、期限までに料金を支払っていない場合、支払期限を過ぎた未払い額についての電子メール通知が届いたり、[https://account.windowsazure.com](https://account.windowsazure.com) または [https://portal.azure.com](https://portal.azure.com) にアラートが表示されたりします。
+
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 何らかの理由でお客様の支払いを処理できない場合、次のような電子メールが送信されることがあります。
 
@@ -45,4 +47,6 @@ Azure の支払い方法を変更する手順については、[Azure サブス�
 
 > [AZURE.NOTE] Azure サブスクリプションが無効になった場合、「[Azure サブスクリプションが無効になった場合にどうすればよいか](billing-subscription-become-disable.md)」の記事の手順に従って再び有効にできます。
 
-<!---HONumber=AcomDC_0810_2016-->
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+<!---HONumber=AcomDC_0824_2016-->

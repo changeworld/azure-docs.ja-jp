@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure Resource Manager による Traffic Manager のサポート | Microsoft Azure"
+   pageTitle="Azure Resource Manager による Traffic Manager のサポート | Microsoft Azure "
    description="Azure Resource Manager (ARM) での Traffic Manager に対する Powershell の使用"
    services="traffic-manager"
    documentationCenter="na"
-   authors="jtuliani"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="jtuliani" />
+   ms.author="sewhee" />
 
 # Azure Resource Manager による Azure Traffic Manager のサポート
 Azure リソース マネージャー (ARM) は、Azure 上のサービス向けの新しい管理フレームワークです。Azure リソース マネージャー ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できるようになりました。
@@ -51,7 +51,7 @@ ARM を使用して Traffic Manager プロファイルを構成すると、下�
 
 PowerShell ユーザーまたは Windows ユーザーでない場合は、Azure CLI を使用して類似の操作を実行できます。"入れ子" になった Traffic Manager プロファイルの管理を除くすべての操作は、Azure ポータルでも利用できます。
 
-### 手順 1.
+### 手順 1
 Azure のダウンロード ページから入手できる、最新の Azure PowerShell をインストールします。
 
 ### 手順 2.
@@ -309,4 +309,4 @@ Traffic Manager プロファイルを削除するには、プロファイル名�
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

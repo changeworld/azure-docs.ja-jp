@@ -33,7 +33,7 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 
 ## 仮想マシンをキャプチャする
 
-1. 任意の SSH クライアントを使用して、[仮想マシンに接続](virtual-machines-linux-classic-log-on.md)します。
+1. 任意の SSH クライアントを使用して、[仮想マシンに接続](virtual-machines-linux-mac-create-ssh-keys.md)します。
 
 2. SSH のウィンドウで、次のコマンドを入力します。`waagent` からの出力はこのユーティリティのバージョンによって多少異なる場合があることに注意してください。
 
@@ -95,4 +95,4 @@ Azure では、イメージは **[イメージ]** に格納されます。アッ
 [How to Attach a Data Disk to a Virtual Machine]: virtual-machines-windows-classic-attach-disk.md
 [Linux 仮想マシンを作成する方法]: virtual-machines-linux-classic-create-custom.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -29,7 +29,7 @@ Azure ポータル、CLI、PowerShell コマンドレット、Insights REST API 
 - **Azure ポータル**でアクティビティ ログを照会して表示する。
 - REST API、PowerShell コマンドレット、または CLI を使用してアクティビティ ログを照会する。
 - [アクティビティ ログ イベントをトリガーする電子メール アラートまたは Webhook アラートを作成する。](./insights-auditlog-to-webhook-email.md)
-- アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する。**ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
+- [アーカイブや手動での検査に使用するためにアクティビティ ログを**ストレージ アカウント**に保存する](./monitoring-archive-activity-log.md)。**ログ プロファイル**を使用して、リテンション期間 (日数) を指定できます。
 - [**PowerBI コンテンツ パック**](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
 - サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを **Event Hubs** にストリーミング](./monitoring-stream-activity-logs-event-hubs.md)する。
 
@@ -223,4 +223,4 @@ azure insights logprofile delete --name my_log_profile
 - [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
 - [Azure アクティビティ ログを Event Hubs にストリーミングする](./monitoring-stream-activity-logs-event-hubs.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

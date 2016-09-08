@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="02/25/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #ネイティブ Mobile Engagement Android SDK での Android Web ビューのブリッジ
@@ -24,7 +24,7 @@
 
 一部のモバイル アプリは、アプリ自体がネイティブの Android 開発を使用して開発されるハイブリッド アプリとして設計されますが、一部またはすべての画面が Android Web ビュー内でレンダリングされます。このようなアプリ内では、Mobile Engagement Android SDK を継続して使用することができます。このチュートリアルではこれを行う方法について説明します。次のサンプル コードは、[こちら](https://developer.android.com/guide/webapps/webview.html#BindingJavaScript)の Android ドキュメントに基づいています。このドキュメントでは、この文書化されたアプローチを使用して、Mobile Engagement Android SDK で一般的に使用されるメソッドに対して同様に実装する方法について説明しています。たとえば、ハイブリッド アプリからの Web ビューは、Android SDK を使用してパイプ処理を行う間に、イベント、ジョブ、エラー、アプリ情報を追跡する要求も開始することができます。
 
-1. まず、「[入門チュートリアル](mobile-engagement-android-get-started.md)」を実行して、ハイブリッド アプリに Mobile Engagement Android SDK を統合していることを確認する必要があります。これを行うと、`OnCreate` メソッドは、次のようになります。  
+1. まず、「[入門チュートリアル](mobile-engagement-android-get-started.md)」を実行して、ハイブリッド アプリに Mobile Engagement Android SDK を統合していることを確認する必要があります。これを行うと、`OnCreate` メソッドは、次のようになります。
     
 		@Override
 	    protected void onCreate(Bundle savedInstanceState) {
@@ -200,10 +200,10 @@
 
 8. 上述の HTML ファイルに関して次の点に注意してください。
 
-	- 	これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement Android SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。 
-	- 	これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。この追加情報は、`WebAppInterface` ファイルを検索する場合、解析され、Android `Bundle` に配置し、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。 
-	- 	Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。 
-	- 	Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer\_name' と、タグの値として入力された値で渡されます。 
+	- 	これには、イベント、ジョブ、エラー、AppInfo の名前として使用されるデータを指定できる入力ボックスのセットが含まれます。この横にあるボタンをクリックすると、最終的にブリッジ ファイルからメソッドを呼び出して、Mobile Engagement Android SDK にこの呼び出しを渡す、Javascript への呼び出しが行われます。
+	- 	これを実行できる方法を示すために、イベント、ジョブおよびエラーに静的な追加情報をタグ付けしています。この追加情報は、`WebAppInterface` ファイルを検索する場合、解析され、Android `Bundle` に配置し、イベント、ジョブ、エラーの送信で渡される JSON 文字列として設定されます。
+	- 	Mobile Engagement ジョブは入力ボックスに指定する名前でキック オフされ、10 秒間実行してシャットダウンされます。
+	- 	Mobile Engagement の appinfo またはタグは、静的なキーとしての 'customer\_name' と、タグの値として入力された値で渡されます。
  
 9. このアプリを実行すると、次が表示されます。ここで、次のようにテスト イベントにいくつかの名前を指定し、その下にある **[送信]** をクリックします。
 
@@ -217,4 +217,4 @@
 [1]: ./media/mobile-engagement-bridge-webview-native-android/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-android/event-output.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

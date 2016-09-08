@@ -13,12 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="02/29/2016"
+	ms.date="08/19/2016"
 	ms.author="piyushjo"/>
 
 #メディア アプリで Mobile Engagement を実装する
 
-## 概要
+## Overview
 
 John は、大きなメディア会社のモバイル プロジェクト マネージャーです。最近、ダウンロード数が非常に高い、新しいアプリを公開しました。ダウンロードの目標は達成しましたが、ユーザーあたりの投資利益率 (ROI) は、まだ要件を満たしていません。
 
@@ -101,4 +101,4 @@ KPI の定義が完了したので、エンゲージメント戦略のフェー�
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

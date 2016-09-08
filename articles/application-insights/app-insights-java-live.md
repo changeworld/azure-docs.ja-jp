@@ -12,22 +12,22 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # 既にライブの Java Web アプリ向けの Application Insights
 
 *Application Insights はプレビュー段階です。*
 
-J2EE サーバーで既に実行されている Web アプリケーションがある場合、[Appliction Insight](app-insights-overview.md) を使用すると、コードの変更やプロジェクトの再コンパイルなしで監視を開始できます。この方法では、サーバーに送信される HTTP 要求、未処理の例外、パフォーマンス カウンターに関する情報が取得されます。
+J2EE サーバーで既に実行されている Web アプリケーションがある場合、[Application Insights](app-insights-overview.md) を使用すると、コードの変更やプロジェクトの再コンパイルなしで監視を開始できます。この方法では、サーバーに送信される HTTP 要求、未処理の例外、パフォーマンス カウンターに関する情報が取得されます。
 
 使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です。
 
-> [AZURE.NOTE] このページの手順では、実行時の Web アプリに SDK を追加します。これは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
+> [AZURE.NOTE] このページの手順では、実行時の Web アプリに SDK を追加します。このライタイム インストルメンテーションは、ソース コードの更新やリビルドを実行したくない場合に便利です。ただし、できれば、それよりも [SDK をソース コードに追加](app-insights-java-get-started.md)することをお勧めします。追加すると、ユーザーの利用状況を追跡するためのコードの記述などで選択の幅が広がります。
 
 ## 1\.Application Insights のインストルメンテーション キーを取得する
 
-1. [Microsoft Azure ポータル](https://portal.azure.com)にログインします。
+1. [Microsoft Azure ポータル](https://portal.azure.com)にサインインします。
 2. 新しい Application Insights リソースを作成します。
 
     ![[+] をクリックし、[Application Insights] を選択します](./media/app-insights-java-live/01-create.png)
@@ -41,7 +41,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 ## 2\.SDK のダウンロード
 
 1. [Application Insights SDK for Java](https://aka.ms/aijavasdk) をダウンロードします。
-2. サーバーで、プロジェクトのバイナリの読み込み元のディレクトリに SDK の内容を展開します。Tomcat を使用している場合、この場所は通常 `webapps<your_app_name>\WEB-INF\lib` になります。
+2. サーバーで、プロジェクトのバイナリの読み込み元のディレクトリに SDK の内容を展開します。Tomcat を使用している場合、このディレクトリは通常 `webapps<your_app_name>\WEB-INF\lib` になります。
 
 
 ## 3\.Application Insights の xml ファイルを追加する
@@ -103,13 +103,17 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+## 5\.ファイアウォール例外を確認する
+
+必要に応じて[送信データを送信する例外を設定](app-insights-ip-addresses.md)します。
+
 ## 5\.Web アプリを再起動する
 
 ## 6\.Application Insights でのテレメトリを表示する
 
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
+HTTP 要求に関するテレメトリが概要ブレードに表示されます。(表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-live/5-results.png)
  
@@ -139,4 +143,4 @@ HTTP 要求データが概要ブレードに表示されます (表示されな�
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

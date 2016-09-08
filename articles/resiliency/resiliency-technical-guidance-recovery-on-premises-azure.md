@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="adamglick"
-   manager="hongfeig"
+   manager="saladki"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="aglick"/>
 
 #Azure の回復性に関する技術ガイダンス - オンプレミスから Azure への復旧
@@ -29,7 +29,7 @@ Azure は、高可用性と障害復旧の目的で、オンプレミスのデ�
 
 Azure Virtual Network を使用すると、論理的に切り離されたセクションを Azure 内に作成し、IPsec 接続を使用してオンプレミス データセンターまたは単一のクライアント コンピューターに安全に接続できます。Virtual Network を使用すると、Windows Server、メインフレーム、UNIX で実行中のシステムを含むオンプレミス システムにあるデータおよびアプリケーションへの接続性を保ちながら、Azure のスケーラブルなオンデマンドのインフラストラクチャを活用できます。詳細については、[Azure Network のドキュメント](../virtual-network/virtual-networks-overview.md)を参照してください。
 
-##コンピューティング
+##計算
 
 Hyper-V をオンプレミスで使用している場合は、"リフトとシフト" によって既存の仮想マシンを Azure、および Windows Server 2012 (またはそれ以降) を実行するサービス プロバイダーに移行できます。VM に変更を加えたり、VM 形式を変換したりする必要はありません。詳細については、「[Azure 仮想マシン用のディスクと VHD について](../virtual-machines/virtual-machines-linux-about-disks-vhds.md)」を参照してください。
 
@@ -79,22 +79,23 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 ###ネットワーク
 
-  1. このドキュメントの「[ネットワーク](#networking)」セクションを確認する。
+  1. このドキュメントの「ネットワーク」セクションを確認する。
   2. Virtual Network を使用してオンプレミスをクラウドに安全に接続する。
 
-###コンピューティング
+###計算
 
-  1. このドキュメントの「[コンピューティング](#compute)」セクションを確認する。
+  1. このドキュメントの「計算」セクションを確認する。
   2. VM を Hyper-V と Azure 間に再配置する。
 
 ###Storage
-  1. このドキュメントの「[Storage](#storage)」セクションを確認する。
+
+  1. このドキュメントの「Storage」セクションを確認する。
   2. クラウド ストレージを使用するために StorSimple サービスを利用する。
   3. Azure Backup サービスを使用する。
 
 ###データベース
 
-  1. このドキュメントの「[データベース](#database)」セクションを確認する。
+  1. このドキュメントの「データベース」セクションを確認する。
   2. Azure VM でバックアップとしての SQL Server の使用を検討する。
   3. AlwaysOn 可用性グループを設定する。
   4. 証明書ベースのデータベース ミラーリングを構成する。
@@ -105,4 +106,4 @@ AlwaysOn 可用性グループは、オンプレミスとクラウドの両方�
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[データの破損または偶発的な削除からの復旧](./resiliency-technical-guidance-recovery-data-corruption.md)について説明します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

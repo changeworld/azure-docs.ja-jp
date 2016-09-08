@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure ポータルを使用した Azure リソースの管理 | Microsoft Azure" 
-	description="Azure ポータルと Azure Resource Manager を使用してリソースを管理します。ダッシュボードとタイルを使用してリソースを監視する方法について説明します。" 
+	description="Azure ポータルと Azure Resource Manager を使用してリソースを管理します。ダッシュボードを使用してリソースを監視する方法について説明します。" 
 	services="azure-resource-manager,azure-portal" 
 	documentationCenter="" 
 	authors="tfitzmac" 
@@ -13,23 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/03/2016" 
+	ms.date="08/23/2016" 
 	ms.author="tomfitz"/>
-
 
 # ポータルを使用した Azure リソースの管理
 
 > [AZURE.SELECTOR]
-- [ポータル](azure-portal/resource-group-portal.md)
-- [Azure CLI](xplat-cli-azure-resource-manager.md)
-- [Azure PowerShell](powershell-azure-resource-manager.md)
-- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-- [Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-- [ノード](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [Azure PowerShell](../powershell-azure-resource-manager.md)
+- [Azure CLI](../xplat-cli-azure-resource-manager.md)
+- [ポータル](resource-group-portal.md)
+- [REST API](../resource-manager-rest-api.md)
 
-このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](../resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
+このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](../resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。ポータルを使用したリソースのデプロイについては、「[Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](../resource-group-template-deploy-portal.md)」を参照してください。
+
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
 
 ## リソース グループの管理
 
@@ -75,23 +72,11 @@
 
 ## リソースの監視
 
-リソースを選択すると、そのリソースの種類を監視するための既定のグラフと表が、リソースのブレードに表示されます。表示されるグラフと表を変更することで、リソースを監視する方法をカスタマイズできます。
+リソースを選択すると、そのリソースの種類を監視するための既定のグラフと表が、リソースのブレードに表示されます。
 
-1. リソースのブレード内で概要の下の **[セクションを追加]** を選択し、グラフと表をさらに追加します。
+1. リソースを選択し、**[監視]** セクションに注目してください。リソースの種類に関連するグラフが含まれます。次の図は、ストレージ アカウントの既定の監視データを示しています。
 
-    ![add section](./media/resource-group-portal/add-section.png)
-
-1. タイル ギャラリーで、ブレードに表示する情報を選択します。エディターで、リソースの種類でタイルがフィルター処理されます。別のリソースを選択すると、利用可能なタイルが変更されます。
-
-    ![add section](./media/resource-group-portal/tile-gallery.png)
-
-1. 必要なタイルを使用可能なスペースにドラッグします。
-
-    ![drag tile](./media/resource-group-portal/drag-tile.png)
-
-1. ポータルの上部にある **[完了]** を選択すると、新しいビューがブレードに追加されます。
-
-    ![show tile](./media/resource-group-portal/show-lens.png)
+    ![監視の表示](./media/resource-group-portal/show-monitoring.png)
 
 1. ブレードのセクションは、そのセクションの上にある省略記号 (...) を選択すると、ダッシュボードにピン留めできます。さらに、ブレードのセクションのサイズをカスタマイズしたり、完全に削除したりできます。次の図は、[CPU とメモリ] セクションをピン留め、カスタマイズ、または削除する方法を示しています。
 
@@ -101,11 +86,23 @@
 
     ![view dashboard](./media/resource-group-portal/view-startboard.png)
 
-1. また、リソースを監視、管理するために複数のダッシュボードを作成できるほか、所属する組織の他のユーザーとこれらのダッシュボードを共有することもできます。**[新しいダッシュボード]** を選択します。
+1. ポータルから監視するデータを完全にカスタマイズするには、既定のダッシュボードに移動して、**[新しいダッシュボード]** を選択します。
 
     ![dashboard](./media/resource-group-portal/dashboard.png)
 
-     ダッシュボードの操作の詳細については、ビデオ「[Build Custom Dashboards in the Microsoft Azure Portal (Microsoft Azure ポータルでカスタム ダッシュボードを作成する)](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards)」をご覧ください。発行したダッシュボードへのアクセス権の共有については、[Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)に関するページを参照してください。
+1. 新しいダッシュボードに名前を付けて、ダッシュボードにタイルをドラッグします。タイルは、さまざまなオプションでフィルター処理されます。
+
+    ![dashboard](./media/resource-group-portal/create-dashboard.png)
+
+     ダッシュボードの操作の詳細については、ビデオ [Azure ポータルでカスタム ダッシュボードを作成する](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards) に関するページをご覧ください。発行したダッシュボードへのアクセス権の共有については、[Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)に関するページを参照してください。
+
+## リソースの管理
+
+リソースのブレードで、リソースを管理するためのオプションが表示されます。ポータルでは、その特定のリソースの種類の管理オプションが表示されます。リソース ブレードの上部全体および左側に管理コマンドが表示されます。
+
+![リソースの管理](./media/resource-group-portal/manage-resources.png)
+
+これらのオプションから、仮想マシンの開始と停止、または仮想マシンのプロパティの再構成などの操作を実行できます。
 
 ## リソースの移動
 
@@ -154,4 +151,4 @@
 - ポータルを使用したリソースのデプロイについては、「[Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
 - リソースへのアクセスの管理については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

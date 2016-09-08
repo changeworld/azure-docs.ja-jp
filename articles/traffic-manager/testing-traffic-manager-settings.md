@@ -3,8 +3,8 @@
    description="この記事では、Traffic Manager の設定をテストする方法について説明します。"
    services="traffic-manager"
    documentationCenter="na"
-   authors="joaoma"
-   manager="adinah"
+   authors="sdwheeler"
+   manager="carmonm"
    editor="tysonn" />
 <tags 
    ms.service="traffic-manager"
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/10/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Traffic Manager の設定のテスト
 
@@ -59,4 +59,4 @@ Traffic Manager の設定をテストするには、複数のクライアント�
 [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md) [Traffic Manager](traffic-manager-overview.md)
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

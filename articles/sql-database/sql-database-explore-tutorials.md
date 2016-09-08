@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="06/01/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
    
 # Azure SQL Database チュートリアルの確認
@@ -29,7 +29,7 @@
 > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
 
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| このチュートリアルでは、サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。|
 | [Azure SQL Database にユーザーとして接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) | このチュートリアルでは、データベース レベルのユーザー アカウントを使用して Azure SQL Database に接続する方法を学習します。|
@@ -39,7 +39,7 @@
 
 次のチュートリアルでは、[エラスティック プール](sql-database-elastic-pool.md)を使用して、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理する方法を学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [エラスティック プールの作成](sql-database-elastic-pool-create-portal.md) | このチュートリアルでは、Azure SQL Database のスケーラブルなプールを作成する方法を学習します。 |
 | [エラスティック データベースの監視](sql-database-elastic-pool-manage-portal.md#elastic-database-monitoring) | このチュートリアルでは、個々のエラスティック データベースを監視して潜在的なトラブルを見つける方法を学習します。 |
@@ -53,7 +53,7 @@
 
 以下のチュートリアルでは、[エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)の使用について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md) | このチュートリアルでは、単純なシャーディング アプリケーションを使用して、エラスティック データベース ツールの機能を使用する方法を学習します。 |
 | [Azure SQL Database エラスティック ジョブの概要](sql-database-elastic-jobs-getting-started.md) | このチュートリアルでは、関連データベースのグループを管理するジョブを作成し、管理する方法を学習します。 | 
@@ -63,7 +63,7 @@
 
 以下のチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)の実行について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [水平方向にパーティション分割 (シャーディング) されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started.md) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、水平方向にパーティション分割 (シャード) されたすべてのデータベースからレポートを作成する方法を学習します |
 | [垂直方向にパーティション分割されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、垂直方向にパーティション分割されたすべてのデータベースからレポートを作成する方法を学習します |
@@ -74,7 +74,7 @@
 
 以下のチュートリアルでは、[単一のデータベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。複数のデータベースのパフォーマンスの最適化については、「[エラスティック プール](#elastic-pools)」を参照してください。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [データベースのサービス階層とパフォーマンス レベルを変更する](sql-database-scale-up.md#change-the-service-tier-and-performance-level-of-your-database) | このチュートリアルでは、サービス階層を使用して Azure SQL Database のパフォーマンスをスケールアップまたはスケールダウンする方法を学習します。 |
 | [SQL Database Advisor Query Performance Insight](sql-database-performance.md#performance-overview) | このチュートリアルでは、SQL Database Advisor Query Performance Insight を開き、使用する方法を学習します。|
@@ -87,7 +87,7 @@
 
 以下のチュートリアルでは、[Azure SQL Database への既存の SQL Server データベースの移行](sql-database-cloud-migrate.md)について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を検出する](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md#detecting-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | このチュートリアルでは、Visual Studio 用の SQL Server Data Tools を使用して、Azure SQL Database の互換性を判定する方法を学習します。 |
 | [Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を修正する](sql-database-cloud-migrate-fix-compatibility-issues-ssdt#fixing-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | このチュートリアルでは、Visual Studio 用の SQL Server Data Tools を使用して、Azure SQL Database の互換性の問題を修正する方法を学習します。 |
@@ -111,7 +111,7 @@
 
 以下のチュートリアルでは、[SQL Database の開発](sql-database-develop-overview.md)と[接続ライブラリ](sql-database-libraries.md)の使用について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md) | このチュートリアルでは、C# を使用して Azure SQL Database に接続する方法を学習します。 |
 | [Java を使用して SQL Database に接続する](sql-database-develop-java-simple.md) | このチュートリアルでは、Java を使用して Azure SQL Database に接続する方法について説明します。 |
@@ -125,7 +125,7 @@
 
 以下のチュートリアルでは、[ログインおよびユーザーの作成と管理](sql-database-manage-logins.md)について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md) | このチュートリアルでは、Azure ポータルを使用して SQL Database のサーバー レベルのファイアウォールを構成する方法を学習します。 |
 | [Transact-SQL を使用してデータベース レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings-tsql.md#database-level-firewall-rules) | このチュートリアルでは、Transact-SQL を使用してデータベース レベルのファイアウォール規則を作成する方法を学習します。|
@@ -144,7 +144,7 @@
 
 以下のチュートリアルでは、[Azure SQL Database のデータのセキュリティ保護](sql-database-security.md)について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [Azure ポータルを使用してデータベースの脅威検出を有効にする](sql-database-threat-detection-get-started.md#set-up-threat-detection-for-your-database) | このチュートリアルでは、Azure ポータルでデータベースの脅威検出を設定する方法を学習します。|
 | [Always Encrypted を使用して機密データを保護する](sql-database-always-encrypted-azure-key-vault.md) | このチュートリアルでは、Always Encrypted ウィザードを使用して Azure SQL Database の機密データをセキュリティで保護する方法を学習します。|
@@ -157,7 +157,7 @@
 
 以下のチュートリアルでは、ビジネス継続性とクエリのスケール アウトのために、[geo リストアとアクティブ geo レプリケーション](sql-database-business-continuity.md)を使用してエラーから回復する方法を学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---|
 | [Azure ポータルで以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)| このチュートリアルでは、Azure ポータルを使用して以前の時点にデータベースを復元する方法を学習します。|
 | [PowerShell で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-powershell.md) | このチュートリアルでは、PowerShell を使用して以前の時点にデータベースを復元する方法を学習します。|
@@ -175,7 +175,7 @@
 
 このチュートリアルでは、[データ同期](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)について学習します。
 
-| チュートリアル | 説明 |
+| チュートリアル | Description |
 |---|---|---| 
 | [Azure SQL データ同期の概要 (プレビュー)](sql-database-get-started-sql-data-sync.md) | このチュートリアルでは、Azure クラシック ポータルを使用して、Azure SQL データ同期の基礎を学習します。 |
 ||||
@@ -184,4 +184,4 @@
 
 [Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

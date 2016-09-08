@@ -15,10 +15,12 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/16/2016"
+	ms.date="08/22/2016"
 	ms.author="chrande"/>
 
 # Azure Functions における Azure Storage のトリガーとバインド
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Azure Storage のトリガーとバインドを構成したりコーディングしたりする方法について説明します。
 
@@ -28,15 +30,15 @@
 
 #### ストレージ キュー トリガーの function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。 
+- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
 - `queueName`: ポーリングするキューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
-- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、Function App の既定のストレージ接続文字列で動作します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
 - `type`: *queueTrigger* に設定する必要があります。
-- `direction`: *in* に設定する必要があります。 
+- `direction`: *in* に設定する必要があります。
 
-ストレージ キュー トリガーの *function.json* の例
+ストレージ キュー トリガーの *function.json* の例を次に示します。
 
 ```json
 {
@@ -59,8 +61,8 @@
 
 * オブジェクト (JSON)
 * String
-* Byte array 
-* `CloudQueueMessage` (C#) 
+* Byte array
+* `CloudQueueMessage` (C#)
 
 #### キュー トリガー メタデータ
 
@@ -102,7 +104,7 @@ public static void Run(string myQueueItem,
 
 関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
 
-SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目の実行に失敗した場合、メッセージは有害キューに移動されます。
+SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目が失敗すると、メッセージは有害メッセージ キューに移動します。
 
 有害キューには *{originalqueuename}*-poison という名前が付けられます。メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
@@ -112,15 +114,15 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 #### ストレージ キュー出力バインドの function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。 
+- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
 - `queueName`: キューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
-- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、Function App の既定のストレージ接続文字列で動作します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
 - `type`: *queue* に設定する必要があります。
-- `direction`: *out* に設定する必要があります。 
+- `direction`: *out* に設定する必要があります。
 
-キュー トリガーを使用してキュー メッセージを書き込むストレージ キュー出力バインドの *function.json* の例:
+キュー トリガーを使用してキュー メッセージを書き込むストレージ キュー出力バインドの *function.json* の例を次に示します。
 
 ```json
 {
@@ -148,10 +150,10 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 `queue` バインドは、次の型をキュー メッセージにシリアル化できます。
 
-* オブジェクト (C# の `out T` で、関数が終了したときに、パラメーターが null である場合は、null オブジェクトでメッセージを作成します)
-* String (C# の `out string` で、関数が終了したときに、パラメーター値が null でない場合は、キュー メッセージを作成します)
-* Byte array (C# の `out byte[]` で、string と同様に動作) 
-* `out CloudQueueMessage` (C#、string と同様に動作) 
+* Object (C# の `out T` で、関数が終了したときにパラメーターが null である場合は、null オブジェクトでメッセージを作成します)
+* String (C# の `out string` で、関数が終了したときにパラメーター値が null でない場合は、キュー メッセージを作成します)
+* Byte array (C# の `out byte[]` で、string と同様に動作)
+* `out CloudQueueMessage` (C#、string と同様に動作)
 
 また、C# では、`T` がいずれかのサポートされている型である場合、`ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。
 
@@ -166,7 +168,7 @@ public static void Run(string myQueueItem, out string myOutputQueueItem, TraceWr
 }
 ```
 
-この C# コード例では、`ICollector<T>` を使用して複数のメッセージを書き込みます (非同期関数で `IAsyncCollector<T>` を使用)。
+次の C# コード例では、`ICollector<T>` を使用して複数のメッセージを書き込みます (非同期関数で `IAsyncCollector<T>` を使用)。
 
 ```csharp
 public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
@@ -180,15 +182,15 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 
 #### ストレージ BLOB トリガーの function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: BLOB の関数コードで使用される変数名。 
+- `name`: BLOB の関数コードで使用される変数名。
 - `path`: 監視するコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
-- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは AzureWebJobsStorage アプリ設定で指定される、Function App の既定のストレージ接続文字列で動作します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
 - `type`: *blobTrigger* に設定する必要があります。
 - `direction`: *in* に設定する必要があります。
 
-samples-workitems コンテナーに追加される BLOB を監視するストレージ BLOB トリガーの *function.json* の例:
+samples-workitems コンテナーに追加される BLOB を監視するストレージ BLOB トリガーの *function.json* の例を次に示します。
 
 ```json
 {
@@ -210,7 +212,7 @@ samples-workitems コンテナーに追加される BLOB を監視するスト�
 ノードまたは C# の関数では、BLOB は次の型のいずれかに逆シリアル化することができます。
 
 * オブジェクト (JSON)
-* String
+* 文字列
 
 C# 関数の場合は、次の型のいずれかにもバインドできます。
 
@@ -223,7 +225,7 @@ C# 関数の場合は、次の型のいずれかにもバインドできます�
 * `CloudBlobDirectory`
 * `IEnumerable<CloudBlockBlob>`
 * `IEnumerable<CloudPageBlob>`
-* [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) によって逆シリアル化されるその他の種類 
+* [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) によって逆シリアル化されるその他の種類
 
 #### BLOB トリガーの C# コードの例
 
@@ -238,13 +240,13 @@ public static void Run(string myBlob, TraceWriter log)
 
 #### BLOB トリガー名のパターン
 
-BLOB 名のパターンは `path` プロパティに指定できます。次に例を示します。
+BLOB 名のパターンは、`path` プロパティで指定できます。次に例を示します。
 
 ```json
 "path": "input/original-{name}",
 ```
 
-このパスは、*入力*コンテナーの *original-Blob1.txt* という名前の BLOB を探し、関数コード内の `name` 変数の値は `Blob1` になります。
+このパスは、*input* コンテナーの *original-Blob1.txt* という名前の BLOB を探し、関数コード内の `name` 変数の値は `Blob1` になります。
 
 別の例:
 
@@ -252,7 +254,7 @@ BLOB 名のパターンは `path` プロパティに指定できます。次に�
 "path": "input/{blobname}.{blobextension}",
 ```
 
-このパスは、*original-Blob1.txt* という名前の BLOB を探し、関数コード内の `blobname` および `blobextension` 変数の値は *original-Blob1* および *txt* になります。
+このパスは、*original-Blob1.txt* という名前の BLOB を探し、関数コード内の `blobname` 変数および `blobextension` 変数の値は *original-Blob1* と *txt* になります。
 
 関数をトリガーする BLOB の型を制限するには、ファイル拡張子の値が固定されたパターンを指定します。`path` を *samples/{name}.png* に設定した場合、*samples* コンテナー内の *.png* BLOB のみが関数をトリガーします。
 
@@ -296,19 +298,19 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
 
 トリガーが監視する BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新しいまたは変更された BLOB が監視されます。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。大規模なコンテナーで BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成するときにキュー メッセージを作成し、BLOB トリガーではなくキュー トリガーを使って BLOB を処理することをお勧めします。
  
-## <a id="storageblobbindings"></a> Azure Storage BLOB の入力バインドと出力バインド
+## <a id="storageblobbindings"></a>Azure Storage BLOB の入力バインドと出力バインド
 
 #### ストレージ BLOB 入力または出力バインドの function.json
 
-*function.json* ファイルは、次のプロパティを指定します。
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name`: BLOB の関数コードで使用される変数名。 
+- `name`: BLOB の関数コードで使用される変数名。
 - `path`: BLOB を読み込むまたは BLOB を書き込むコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
-- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは AzureWebJobsStorage アプリ設定で指定される、Function App の既定のストレージ接続文字列で動作します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
 - `type`: *blob* に設定する必要があります。
-- `direction`: *in* または *out* に設定します。 
+- `direction`: *in* または *out* に設定します。
 
-キュー トリガーを使用して BLOB をコピーするストレージ BLOB の入力バインドと出力バインドの *function.json* の例:
+キュー トリガーを使用して BLOB をコピーするストレージ BLOB の入力バインドと出力バインドの *function.json* の例を次に示します。
 
 ```json
 {
@@ -339,11 +341,11 @@ BLOB トリガー関数が失敗した場合、失敗が一時的なエラーに
 }
 ``` 
 
-#### BLOB の入力および出力にサポートされた型
+#### BLOB の入力および出力がサポートする型
 
 `blob` バインドは、Node.js または C# 関数で次の型をシリアル化または逆シリアル化できます。
 
-* オブジェクト (出力 BLOB の場合は、C# の `out T`: 関数が終了したときに、パラメーター値が null の場合に null オブジェクトとして BLOB を作成します)
+* Object (出力 BLOB の場合は C# の `out T`: 関数が終了したときに、パラメーター値が null の場合に null オブジェクトとして BLOB を作成します)
 * String (出力 BLOB の場合は、C# の `out string`: 関数を返されたときに、文字列パラメーターが null 以外の場合にのみ BLOB を作成します)
 
 C# 関数の場合は、次の型にもバインドできます。
@@ -353,8 +355,8 @@ C# 関数の場合は、次の型にもバインドできます。
 * `Stream`
 * `CloudBlobStream` (出力のみ)
 * `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
+* `CloudBlockBlob`
+* `CloudPageBlob`
 
 #### BLOB 出力の C# コードの例
 
@@ -372,18 +374,18 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 #### ストレージ テーブルの function.json
 
-*function.json* は、次のプロパティを指定します。
+*function.json* では、次のプロパティを指定します。
 
-- `name`: テーブル バインドの関数コードで使用される変数名。 
+- `name`: テーブル バインドの関数コードで使用される変数名。
 - `tableName`: テーブルの名前。
 - `partitionKey` および `rowKey`: 一緒に使用して、C# またはノード関数の単一エンティティを読み取るか、ノード関数の単一のエンティティを書き込みます。
 - `take`: ノード関数でのテーブル入力のために読み取る行の最大数。
 - `filter`: ノード関数のテーブル入力の OData フィルター式。
-- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは AzureWebJobsStorage アプリ設定で指定される、Function App の既定のストレージ接続文字列で動作します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
 - `type`: *table* に設定する必要があります。
-- `direction`: *in* または *out* に設定します。 
+- `direction`: *in* または *out* に設定します。
 
-次の例 *function.json* キュー トリガーを使用して 1 つのテーブル行を読み取ります。この JSON は、ハードコーディングされたパーティション キー値を提供すると共に、キュー メッセージから行キーを取得するように指定しています。
+次の例の *function.json* では、キュー トリガーを使用して 1 つのテーブル行を読み取ります。この JSON は、ハードコーディングされたパーティション キー値を提供すると共に、キュー メッセージから行キーを取得するように指定しています。
 
 ```json
 {
@@ -426,11 +428,11 @@ C# 関数の場合は、次の型にもバインドできます。
 
 * C# またはノード関数での単一行の読み取り。
 
-	`partitionKey` と `rowKey` を設定します。`filter` プロパティと `take` プロパティは、このシナリオでは使用されません。
+	`partitionKey` と `rowKey` を設定します。`filter` および `take` プロパティは、このシナリオでは使用しません。
 
 * C# 関数での複数行の読み取り。
 
-	Functions ランタイムは、テーブルにバインドされている `IQueryable<T>` オブジェクトを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。`partitionKey`、`rowKey`、`filter`、および `take` プロパティは、このシナリオでは使用されません。必要なフィルターを実行するには、`IQueryable` オブジェクトを使用できます。
+	Functions ランタイムは、テーブルにバインドされている `IQueryable<T>` オブジェクトを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。`partitionKey`、`rowKey`、`filter`、および `take` の各プロパティは、このシナリオでは使用しません。必要なフィルター処理は、`IQueryable` オブジェクトを使用して実行できます。
 
 * ノード関数での複数行の読み取り。
 
@@ -438,11 +440,11 @@ C# 関数の場合は、次の型にもバインドできます。
 
 * C# 関数での 1 つまたは複数の行の書き込み。
 
-	Functions ランタイムは、テーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。`partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用されません。
+	Functions ランタイムは、テーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。`partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用しません。
 
 #### ストレージ テーブルの例: C# またはノードでの 1 つのテーブル エンティティの読み取り
 
-次の C# コード例では、既出の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。キュー メッセージには行キー値があり、テーブル エンティティは、*run.csx* ファイルに定義された型に読み込まれます。型は `PartitionKey` と `RowKey` プロパティを含み、`TableEntity` から派生しません。
+次の C# コード例では、既出の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。キュー メッセージには行キー値があり、テーブル エンティティは *run.csx* ファイルで定義された型に読み込まれます。型は `PartitionKey` と `RowKey` プロパティを含み、`TableEntity` から派生しません。
 
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
@@ -518,7 +520,7 @@ public class Person : TableEntity
 
 #### ストレージ テーブルの例: C でのテーブル エンティティの作成# 
 
-次の *function.json* と *run.csx* の例は、C# でテーブル エンティティを書き込む方法を示します。
+次の例の *function.json* と *run.csx* では、C# でテーブル エンティティを書き込む方法を示します。
 
 ```json
 {
@@ -567,7 +569,7 @@ public class Person
 
 #### ストレージ テーブルの例: ノードでのテーブル エンティティの作成
 
-次の *function.json* と *run.csx* の例は、ノードでテーブル エンティティを書き込む方法を示します。
+次の例の *function.json* と *run.csx* では、ノードでテーブル エンティティを書き込む方法を示します。
 
 ```json
 {
@@ -605,4 +607,4 @@ module.exports = function (context, myQueueItem) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="08/23/2016" 
 	ms.author="stbaro"/>
 
 # MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法
@@ -24,7 +24,7 @@ MongoDB の標準的な接続文字列の URI 形式を使用して、MongoDB �
 ## アカウントの接続文字列情報を取得する
 
 1. 新しいウィンドウで、[Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[すべての設定]** ブレードの **[接続文字列]** をクリックします。**[すべての設定]** に移動するには、ジャンプバーで **[参照]** をクリックし、**DocumentDB** アカウントをクリックして、MongoDB のプロトコル対応の DocumentDB アカウントを選択します。
+2. [アカウント] ブレードの**左側のナビゲーション** バーで、**[接続文字列]** をクリックします。**[アカウント]** ブレードに移動するには、ジャンプバーで **[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックして、MongoDB のプロトコル対応の DocumentDB アカウントを選択します。
 
 	![Screen shot of the All Settings blade](./media/documentdb-connect-mongodb-account/SettingsBlade.png)
 
@@ -84,4 +84,4 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

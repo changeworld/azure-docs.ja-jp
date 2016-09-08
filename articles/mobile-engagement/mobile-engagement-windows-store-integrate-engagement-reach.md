@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="02/29/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Windows ユニバーサル アプリ Reach SDK 統合
@@ -59,7 +59,7 @@ Engagement には、アナウンスおよびポーリング用の Reach アプ�
 以下に要約した方法で、2 種類の統合のどちらを選択するか決めることができます。
 
 -   ページで既に `EngagementPage` エージェントから継承している場合はオーバーレイ統合を選択できます。この場合、ページ内で `EngagementPage` を `EngagementPageOverlay` に置き換え、`xmlns:engagement="using:Microsoft.Azure.Engagement"` を `xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"` に置き換えるだけです。
--   Reach UI をページ内に正確に配置する必要があるか、別の継承レベルをページに追加することを避ける必要がある場合は、Web ビュー手動統合を選択できます。 
+-   Reach UI をページ内に正確に配置する必要があるか、別の継承レベルをページに追加することを避ける必要がある場合は、Web ビュー手動統合を選択できます。
 
 ### オーバーレイ統合
 
@@ -334,4 +334,4 @@ Engagement オブジェクトを保持する場合、希望する通知とアナ
 			  #endregion
  
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="08/22/2016"
 	ms.author="markvi"/>
 
 # Azure Active Directory Identity Protection と Microsoft Graph の基本
@@ -23,7 +23,7 @@ Microsoft Graph は、Microsoft のさまざまな API を統合したエンド�
 
 Microsoft Graph を介して Identity Protection のデータにアクセスするには、次の 3 つのステップがあります。
 
-1. アプリケーションとクライアント シークレットを追加します。 
+1. アプリケーションとクライアント シークレットを追加します。
 
 2. このシークレットとその他いくつかの情報を使って Microsoft Graph に本人性を証明し、認証トークンを取得します。
 
@@ -39,7 +39,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 ## アプリケーションとクライアント シークレットを追加する
 
 
-1. Azure クラシック ポータルに管理者として[サインイン](https://manage.windowsazure.com)します。 
+1. Azure クラシック ポータルに管理者として[サインイン](https://manage.windowsazure.com)します。
 
 1. 左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
@@ -91,7 +91,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 ## API を使用するためのアクセス許可をアプリケーションに付与します。
 
 
-1. 対象アプリケーションのページで、上部のメニューにある **[構成]** をクリックします。 
+1. 対象アプリケーションのページで、上部のメニューにある **[構成]** をクリックします。
 
 	![Creating an application](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
 
@@ -160,7 +160,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 - client\_secret: <your key>
 
 
-> [AZURE.NOTE] **client\_id** パラメーターと **client\_secret** パラメーターには、各自該当する値を指定する必要があります。
+> [AZURE.NOTE] **client\_id** パラメーターと **client\_secret** パラメーターにはそれぞれ値を指定する必要があります。
 
 認証に成功すると、認証トークンが返されます。API を呼び出すためには、次のパラメーターを持つヘッダーを作成します。
 
@@ -208,7 +208,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 以上、Microsoft Graph の API を呼び出す基本的な方法を紹介しました。 これを応用すれば、思いどおりに ID リスク イベントを照会し、そのデータを活用することができます。
 
-Microsoft Graph についてのさらに詳しい情報や、Graph API を使ったアプリケーションの構築方法については、[こちらのドキュメント](https://graph.microsoft.io/docs)と [Microsoft Graph のサイト](https://graph.microsoft.io/)をご覧ください。また、[Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) のページでは、Graph で利用できる Identity Protection の全 API の一覧を掲載しています。ぜひお気に入りに登録してご利用ください。API を介した Identity Protection の操作方法が新たに追加された場合、このページに反映していく予定です。
+Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、[こちらのドキュメント](https://graph.microsoft.io/docs)と [Microsoft Graph のサイト](https://graph.microsoft.io/)をご覧ください。また、[Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) のページでは、Graph で利用できる Identity Protection の全 API の一覧を掲載しています。ぜひお気に入りに登録してご利用ください。API を介した Identity Protection の操作方法が新たに追加された場合、このページに反映していく予定です。
 
 
 ## その他のリソース
@@ -223,4 +223,4 @@ Microsoft Graph についてのさらに詳しい情報や、Graph API を使っ
 
 - [Azure AD Identity Protection Service Root](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0824_2016-->

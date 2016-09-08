@@ -14,21 +14,21 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="06/06/2016"
+ ms.date="08/23/2016"
  ms.author="larryfr"/>
 
 # HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
 
 HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、DocumentDB、Power BI、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。一部の例では、SignalR や Socket.IO など、Azure 以外、さらにはマイクロソフト以外のテクノロジを使用する方法についても説明されています。
 
-| 説明 | 対象 | 言語/フレームワーク |
+| Description | 対象 | 言語/フレームワーク |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
 | [Apache Storm から Azure Data Lake Store への書き込み](hdinsight-storm-write-data-lake-store.md) | Azure Data Lake Store への書き込み | Java |
 | [Event Hub のスパウトとボルトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) | Event Hub のスパウトとボルトのソース | Java |
 | [HDInsight での Apache Storm の Java ベース トポロジの開発][5797064f] | Maven | Java |
 | [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する][16fce2d1] | HDInsight Tools for Visual Studio | C#、Java |
 | [C# Storm トポロジでの複数のデータ ストリームの作成][ec5a4064] | 複数のストリーム | C# |
-| [HDInsight での Apache Storm を使用した Twitter のトレンディング トピック][3c86c7c8] | Trident | Java、Trident |
+| [HDInsight での Storm を使用した Twitter のトレンディング トピック][3c86c7c8] | Trident | Java、Trident |
 | [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)][844d1d81] | Event Hubs | C#、Java |
 | [Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](hdinsight-storm-develop-java-event-hub-topology.md) | Event Hubs | Java |
 | [Power BI を使用した Storm トポロジのデータの視覚化][94d15238] | Power BI | C# |
@@ -61,4 +61,4 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、DocumentDB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

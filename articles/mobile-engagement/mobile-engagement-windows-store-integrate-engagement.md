@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 # Windows ユニバーサル アプリ Engagement SDK 統合
 
 > [AZURE.SELECTOR] 
-- [ユニバーサル Windows](mobile-engagement-windows-store-integrate-engagement.md) 
-- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
-- [iOS](mobile-engagement-ios-integrate-engagement.md) 
-- [Android](mobile-engagement-android-integrate-engagement.md) 
+- [ユニバーサル Windows](mobile-engagement-windows-store-integrate-engagement.md)
+- [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
+- [iOS](mobile-engagement-ios-integrate-engagement.md)
+- [Android](mobile-engagement-android-integrate-engagement.md)
 
 この手順では、Windows ユニバーサル アプリケーションで Engagement の分析機能と監視機能をアクティブ化する最も簡単な方法を説明します。
 
@@ -54,7 +54,7 @@ NuGet はアプリケーション プロジェクトのルートにある `Resou
 NuGet は、まだ UWP アプリケーションで SDK のリソースを自動的にデプロイしません。NuGet でリソースのデプロイメントが再導入されるまで手動で行う必要があります。
 
 1.  ファイル エクスプ ローラーを開きます。
-2.  次の場所に移動します (**x.x.x** はインストールする Engagement のバージョンです): *%USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\**x.x.x** \\content\\win81*
+2.  次の場所に移動します (**x.x.x** はインストールする Engagement のバージョンです): *%USERPROFILE%\\.nuget\\packages\\MicrosoftAzure.MobileEngagement\**x.x.x**\\content\\win81*
 3.  ファイル エクスプローラーから Visual Studio のプロジェクトのルートに、**リソース** フォルダーをドラッグ アンド ドロップします。
 4.  Visual Studio でプロジェクトを選択し、**[ソリューション エクスプ ローラー]** の一番上にある **[すべてのファイルを表示]** アイコンをアクティブ化します。
 5.  一部のファイルは、プロジェクトには含まれません。一度にインポートするには、**リソース** フォルダーを右クリックして **[プロジェクトから除外]** を選択してから、もう一度**リソース** フォルダーを右クリックして **[プロジェクトに含める]** を選択し、フォルダー全体を再度含めます。これで、**リソース** フォルダーのすべてのファイルがプロジェクトに追加されます。
@@ -283,4 +283,4 @@ EngagementConfiguration オブジェクトを使用して、report crash を fal
 [NuGet website]: http://docs.nuget.org/docs/start-here/overview
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->

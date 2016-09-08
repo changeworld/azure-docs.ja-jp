@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services" 
-   ms.date="04/05/2016"
+   ms.date="08/19/2016"
    ms.author="gwallace"/>
 
 # 内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成
@@ -22,7 +22,7 @@
 - [Resource Manager の PowerShell の手順](application-gateway-ilb-arm.md)
 
 
-Application Gateway は、インターネットに接続する仮想 IP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで便利です。また、セキュリティの境界でインターネットに接続されていない多階層アプリケーション内のサービスや階層でも便利ですが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL ターミネーションが必要です。この記事では、ILB を使用して Application Gateway を構成する手順について説明します。
+Application Gateway は、インターネットに接続する仮想 IP のほか、内部ロード バランサー (ILB) エンドポイントとも呼ばれるインターネットに接続されていない内部エンドポイントを使用して構成できます。ILB を使用したゲートウェイの構成は、インターネットに接続されていない社内用ビジネス アプリケーションで役立ちます。また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層でも役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL ターミネーションが必要です。この記事では、ILB を使用して Application Gateway を構成する手順について説明します。
 
 ## 開始する前に
 
@@ -31,9 +31,9 @@ Application Gateway は、インターネットに接続する仮想 IP のほ�
 3. 仮想ネットワーク内、またはパブリック IP/VIP が割り当てられたバックエンド サーバーがあることを確認します。
 
 
-新しいアプリケーション ゲートウェイを作成するには、次の手順を順番に実行します。
+アプリケーション ゲートウェイを作成するには、次の手順を順番に実行します。
 
-1. [新しいアプリケーション ゲートウェイの作成](#create-a-new-application-gateway)
+1. [アプリケーション ゲートウェイの作成](#create-a-new-application-gateway)
 2. [ゲートウェイの構成](#configure-the-gateway)
 3. [ゲートウェイ構成の設定](#set-the-gateway-configuration)
 4. [ゲートウェイの起動](#start-the-gateway)
@@ -41,7 +41,7 @@ Application Gateway は、インターネットに接続する仮想 IP のほ�
 
 
 
-## 新しいアプリケーション ゲートウェイの作成:
+## アプリケーション ゲートウェイの作成
 
 **ゲートウェイを作成する**には、`New-AzureApplicationGateway` コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
@@ -96,7 +96,7 @@ Application Gateway は、インターネットに接続する仮想 IP のほ�
 
 - フロントエンド IP の *Type* は、[Private] に設定する必要があります。
 
-- *StaticIPAddress* は、ゲートウェイがトラフィックを受信する、目的の内部 IP アドレスに設定する必要があります。なお、*StaticIPAddress* 要素は省略可能です。設定しない場合は、デプロイ済みのサブネットから有効な内部 IP が選択されます。
+- *StaticIPAddress* は、ゲートウェイがトラフィックを受信する内部 IP アドレスに設定する必要があります。なお、*StaticIPAddress* 要素は省略可能です。設定しない場合は、デプロイ済みのサブネットから有効な内部 IP が選択されます。
 
 - *FrontendIPConfiguration* で指定した *Name* 要素の値は、FrontendIPConfiguration を参照するように、HTTPListener の *FrontendIP* 要素に指定する必要があります。
 
@@ -212,4 +212,4 @@ Application Gateway は、インターネットに接続する仮想 IP のほ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

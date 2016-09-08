@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/16/2016" 
+	ms.date="08/23/2016" 
 	ms.author="mandia"/>
 
 
@@ -95,7 +95,7 @@ Access Control ポータルを開くこともできます。「<a HREF="http://g
 </table>
 
 
-## Dashboard
+## ダッシュボード
 BizTalk サービスのエディションによっては、ここに示したオプションの一部が表示されないこともあります。
 
 BizTalk サービス名を選択すると、[ダッシュボード] タブが表示されます。ダッシュボードで、次の操作を実行できます。
@@ -167,7 +167,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 <tr>
 <td><strong>サブスクリプション名</strong></td>
-<td>この BizTalk サービスをホストしているサブスクリプションの名前が表示されます。サブスクリプションは、Azure クラシック ポータルへのアクセスを管理します。</td>
+<td>BizTalk サービスをホストしているサブスクリプションの名前が表示されます。サブスクリプションにより、Azure クラシック ポータルへのアクセスが管理されます。</td>
 </tr>
 <tr>
 <td><strong>サブスクリプション ID</strong></td>
@@ -237,7 +237,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 ![[メトリックの追加] を選択する][AddMetrics]
 3. 表示したいパフォーマンス メトリックのチェック ボックスをオンにします。
 4. チェックマークを選択して **[監視]** タブに戻ります。
-5. グラフにメトリック値を表示するメトリックの横にある円を選択します。  
+5. グラフにメトリック値を表示するメトリックの横にある円を選択します。
 
 	たとえば、**[CPU 使用率]** メトリックが淡色表示されているとき、グラフにその出力は表示されません。  
 ![CPU 使用率のメトリックは淡色表示される][GrayedMetric]  
@@ -345,15 +345,15 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 ## 次へ
 ここでは、各種のタブについて学びました。Azure BizTalk サービスの機能についてさらに学習できます。
 
-- [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)  
-- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)  
+- [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)
+- [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)
 - [BizTalk サービス: バックアップと復元に関するページ](biztalk-backup-restore.md)
 
 ## 関連項目
-- [ハイブリッド接続](integration-hybrid-connection-overview.md)  
-- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
-- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](biztalk-provision-services.md)  
-- [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
+- [ハイブリッド接続](integration-hybrid-connection-overview.md)
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)
+- [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](biztalk-provision-services.md)
+- [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)
 - [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [QuickStart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
@@ -362,4 +362,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

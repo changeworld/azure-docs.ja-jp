@@ -563,7 +563,7 @@ Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure/mobility3.png)
 
-3. **[構成サーバーの詳細]** で、構成サーバーの IP アドレスと、統合セットアップを実行したときに生成されたパスフレーズを指定します。パスフレーズを取得するには、構成サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –n** を実行します。
+3. **[構成サーバーの詳細]** で、構成サーバーの IP アドレスと、統合セットアップを実行したときに生成されたパスフレーズを指定します。パスフレーズを取得するには、構成サーバーで **<SiteRecoveryInstallationFolder>\\home\\sysystems\\bin\\genpassphrase.exe –v** を実行します。
 
 	![モビリティ サービス](./media/site-recovery-vmware-to-azure/mobility6.png)
 
@@ -580,6 +580,14 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 - /InstallLocation: 必須。サービスをインストールする場所を指定します。
 - /PassphraseFilePath: 必須。構成サーバーのパスフレーズ。
 - /LogFilePath: 必須。ログ セットアップ ファイルの場所。
+
+#### モビリティ サービスを手動でアンインストールする
+
+モビリティ サービスは、コントロール パネルの [プログラムの追加と削除] を使用するか、コマンド ラインを使用してアンインストールできます。
+
+コマンド ラインを使用して、モビリティ サービスをアンインストールするコマンドは次のとおりです。
+
+	MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1}
 
 
 #### Linux サーバーに手動でインストールする:
@@ -851,4 +859,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

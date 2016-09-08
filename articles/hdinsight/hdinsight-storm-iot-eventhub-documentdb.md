@@ -13,7 +13,7 @@ ms.devlang="java"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/06/2016"
+ms.date="08/23/2016"
 ms.author="larryfr"/>
 
 #HDInsight 上の Apache Storm を使用した Azure Event Hubs からの車両センサー データの処理
@@ -22,7 +22,7 @@ HDInsight 上の Apache Storm を使用して Azure Event Hubs からの車両�
 
 ![HDInsight and the Internet of Things (IoT) architecture diagram](./media/hdinsight-storm-iot-eventhub-documentdb/iot.png)
 
-##概要
+##Overview
 
 車両にセンサーを追加すると、履歴データの傾向に基づいて機器の問題を予測できるだけでなく、使用状況のパターン分析に基づいてその後のバージョンを改良できます。この分析には従来の MapReduce バッチ処理を使用できますが、MapReduce 処理を行うためには、その前にすべての車両のデータを Hadoop に迅速かつ効率的に読み込めなければなりません。また、重大なエラー パス (エンジン温度、ブレーキなど) に関してリアルタイムで分析を行いたい場合もあります。
 
@@ -58,4 +58,4 @@ Storm トポロジでは、次のコンポーネントが使用されます。
 
 Storm トポロジ例をさらにご覧になる場合、「[HDInsight での Storm トポロジの例](hdinsight-storm-example-topology.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0824_2016-->

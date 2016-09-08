@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="Azure CLI を使用したインターネットに接続するクラシック デプロイメント モデルのロード バランサーの作成の開始 | Microsoft Azure"
    description="Azure CLI を使用し、インターネットに接続するクラシック デプロイメント モデルのロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/09/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure CLI を使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
@@ -32,7 +32,7 @@
 
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、[Azure CLI のインストールと構成](../../articles/xplat-cli-install.md)に関するページを参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../../articles/xplat-cli-install.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
 
 2. 次に示すように、**azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
 
@@ -43,28 +43,28 @@
 		info:    New mode is asm
 
 
-## エンドポイントとロード バランサー セットの作成 
+## エンドポイントとロード バランサー セットの作成
 
 このシナリオでは、仮想マシン "web1" と "web2" が作成済みであることを前提としています。このガイドでは、ポート 80 をパブリック ポートとして、ポート 80 をローカル ポートとして、ロード バランサー セットを作成します。ポート 80 には、ロード バランサー セット "lbset" というプローブ ポートも構成されます。
 
 
-### 手順 1 
+### 手順 1
 
 `azure network vm endpoint create` を使用して仮想マシン "web1" 用に最初のエンドポイントとロード バランサー セットを作成します。
 
-	azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset 
+	azure vm endpoint create web1 80 -k 80 -o tcp -t 80 -b lbset
 
 使用されるパラメーター:
 
 **-k** - 仮想マシンのローカル ポート<br> **-o** - プロトコル<BR> **-t** - プローブ ポート<BR> **-b** - ロード バランサーの名前<BR>
- 
-## 手順 2 
+
+## 手順 2.
 
 ロード バランサー セットに 2 番目の仮想マシン "web2" を追加します。
 
 	azure vm endpoint create web2 80 -k 80 -o tcp -t 80 -b lbset
 
-## 手順 3. 
+## 手順 3.
 
 `azure vm show` を使用し、ロード バランサーの構成を確認します。
 
@@ -118,7 +118,7 @@
 
 `azure vm endpoint create` を使用し、特定の仮想マシンに、ネットワーク トラフィックをパブリック ポートからローカル ポートに送信するリモート デスクトップ エンドポイントを作成することができます。
 
-	azure vm endpoint create web1 54580 -k 3389 
+	azure vm endpoint create web1 54580 -k 3389
 
 
 ## ロード バランサーからの仮想マシンの削除
@@ -141,6 +141,4 @@
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
- 
-
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

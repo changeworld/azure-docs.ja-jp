@@ -14,12 +14,12 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity"
-    ms.date="05/16/2016"
+    ms.date="08/23/2016"
     ms.author="curtand"/>
 
 # Microsoft Azure Active Directory ライセンスとは
 
-##説明
+##Description
 Azure Active Directory (Azure AD) は、マイクロソフトのサービスとしての ID (IDaaS) ソリューションおよびプラットフォームです。Azure AD は、Office 365、Dynamics、Microsoft Intune、Azure (このモードでは Azure AD の使用料金は発生しません) などの任意の Microsoft サービスと使用できる Azure AD 無料版から、Enterprise Mobility Suite (EMS)、Azure AD Premium や Basic、Azure Multi-Factor Authentication (MFA) などの Azure AD の有料バージョンまで、さまざま機能と技術のバージョンが提供されています。多くの Microsoft オンライン サービスと同様、ほとんどの Azure AD の有料バージョンは、Office 365、Microsoft Intune、Azure AD のように、ユーザーごとの資格を通じて提供されます。このような場合、サービスの購入は 1 つ以上のサブスクリプションで表され、各サブスクリプションには、テナントで事前に購入したライセンスの数が含まれます。ユーザーごとの資格はライセンスの割り当てによって実現されます。ユーザーと製品が関連付けられ、ユーザーに対してサービス コンポーネントが有効になり、前払いライセンスの 1 つが使用されます。
 
 [今すぐ Azure AD premium をお試しください。](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) は、マイクロソフトのサービスと�
 
 Azure AD サービスの機能の概要については、「[Azure AD とは](active-directory-whatis.md)」を参照してください。[Azure AD サービス レベルの詳細](https://azure.microsoft.com/support/legal/sla/)
 
-> [AZURE.NOTE]  Azure の従量課金制のサブスクリプションは、ディレクトリで表され、Azure リソースを作成でき、支払方法にマップされる点が異なります。この場合、サブスクリプションに関連付けられているライセンス数は 0 です。ユーザーのサブスクリプションとの関連付け、つまり管理するサブスクリプション リソースへのアクセスは、サブスクリプションにマップされている Azure のリソースを操作するためのアクセス許可が付与されることによって実現されます。
+> [AZURE.NOTE]  Azure の従量課金制のサブスクリプションは、ディレクトリで表され、Azure リソースを作成でき、支払い方法にマップされる点が異なります。この場合、サブスクリプションに関連付けられているライセンス数は 0 です。ユーザーのサブスクリプションとの関連付け、つまり管理するサブスクリプション リソースへのアクセスは、サブスクリプションにマップされている Azure のリソースを操作するためのアクセス許可が付与されることによって実現されます。
 
 
 ##Azure AD ライセンスのしくみ
@@ -41,7 +41,7 @@ Enterprise Mobility Suite、Azure AD Premium、Azure AD Basic を購入または
 
 一般に、Azure AD のサブスクリプション情報は、Azure クラシック ポータルの該当するディレクトリの [ライセンス] タブで管理されます。Azure AD Premium 以外の Azure AD サブスクリプションは Office ポータルに表示されません。
 
-> [AZURE.IMPORTANT] Azure AD Premium と Azure AD Basic は、Enterprise Mobility Suite サブスクリプションと同様に、プロビジョニングされたディレクトリまたはテナントに限定されます。サブスクリプションをディレクトリ間で分割することや、他のディレクトリ内のユーザーに資格を与えるために使用することはできません。ディレクトリ間でサブスクリプションを移動できますが、直接購入の場合は、サポート チケットの送信、または取り消しと再購入が必要になります。
+> [AZURE.IMPORTANT] Azure AD Premium と Azure AD Basic は、Enterprise Mobility Suite サブスクリプションと同様に、プロビジョニングされたディレクトリまたはテナントに限定されます。サブスクリプションをディレクトリ間で分割することや、他のディレクトリ内のユーザーに資格を与えるために使用することはできません。ディレクトリ間でサブスクリプションを移動することはできますが、直接購入の場合は、サポート チケットの送信、または取り消しと再購入が必要になります。
 
 > Azure AD または Enterprise Mobility Suite をボリューム ライセンス サブスクリプションを通して購入したときに、契約に他の Microsoft Online サービス (Office 365 など) が含まれている場合、アクティブ化は自動的に行われます。
 
@@ -78,7 +78,7 @@ Azure AD を使用するのは簡単です。Azure の無料評価版にサイ�
 | Azure AD Basic | ○ | ○ | ○ | ○ | <br /> | <br /> |
 
 ###1 つ以上のライセンスの評価版を選択する
- どの場合でも、ディレクトリの [ライセンス] タブで特定の評価版を選択して、Azure AD Premium または Enterprise Mobility Suite の評価版のサブスクリプションをアクティブにできます。どちらの評価版にも、30 日間のサブスクリプションと 100 ライセンスが含まれています。
+ どの場合でも、ディレクトリの [ライセンス] タブで特定の試用版を選択して、Azure AD Premium または Enterprise Mobility Suite の試用版のサブスクリプションをアクティブにできます。どちらの試用版にも、30 日間のサブスクリプションと 100 ライセンスが含まれています。
 
 ![Azure Active Directory 評価版のライセンス プラン](./media/active-directory-licensing-what-is/trial_plans.png)
 
@@ -125,7 +125,7 @@ Azure AD ライセンスの割り当て中に割り当てエラーが発生す�
 
 ![Office ポータルにて評価版を拡張](./media/active-directory-licensing-what-is/extend_license_trial.png)
 
-顧客は、サポート要求を送信して、評価版の拡張機能を要求することもできます。顧客の管理者は、Office 365 ポータル [サポート ページ](http://aka.ms/extendAADtrial)に移動できます (アクセス権は、Office サポート ページに対するアクセス許可によって異なります)。このページで [機能] の [サブスクリプションと評価版] と [現象] の [評価版の質問] を選択します。最後に、環境に関する情報を入力します。
+顧客は、サポート要求を送信して、評価版の拡張機能を要求することもできます。顧客の管理者は、Office 365 ポータル [サポート ページ](http://aka.ms/extendAADtrial)に移動できます (アクセス権は、Office サポート ページに対するアクセス許可によって異なります)。このページで [機能] の [Subscriptions and Trials (サブスクリプションと試用版)] と [症状] の [Trial questions (試用版の質問)] を選択します。最後に、環境に関する情報を入力します。
 
 ![サポート リクエストによる評価版の拡張](./media/active-directory-licensing-what-is/alternate_office_aad_trial_extension.png)
 
@@ -140,4 +140,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

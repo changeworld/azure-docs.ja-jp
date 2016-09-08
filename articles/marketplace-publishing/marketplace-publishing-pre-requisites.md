@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="Azure"
   ms.workload="na"
-  ms.date="08/01/2016"
+  ms.date="08/18/2016"
   ms.author="hascipio"/>
 
 # Azure Marketplace 向けプラン作成の一般的な前提条件
@@ -42,11 +42,20 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 7. デベロッパー センター登録の場合、1 人のユーザーに関連付けられているアカウントの使用は避けます。これは、1 人のユーザーからの依存関係をなくすための推奨事項です。
 8. デベロッパー センター登録で問題が発生した場合は、こちらの[リンク](https://developer.microsoft.com/ja-JP/windows/support)を使用してチケットを作成します。
 
+## 発行ポータルで共同管理者を削除する手順
+次の手順で共同管理者を削除するには、**管理者である必要があります**。
+
+1. 管理者の電子メール ID で発行ポータルにログインします。
+2. **[パブリッシャー]**、自分のアカウントを選択、**[管理者]**、**[Co-Admins (共同管理者)]** の順に移動します。
+3. 削除する共同管理者の横にある **[X]** ボタンをクリックします (以下のスクリーンショットを参照)。
+
+    ![図](media/marketplace-publishing-pre-requisites/imgDeleteAdmin_03.png)
+
 > [AZURE.IMPORTANT] 無料プランのみを発行する予定 (またはライセンス持ち込み) であれば、会社の税金や銀行情報を入力する必要はありません。
 
-> プラン作成を開始するには、会社の登録を完了する必要があります。ただし、会社が Microsoft デベロッパー センターで税金と銀行情報を入力している途中でも、開発者は[発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
+> プラン作成を開始するには、会社の登録を完了する必要があります。ただし、会社が Microsoft デベロッパー アカウントで税金と銀行情報を入力している途中でも、開発者は[発行ポータル](https://publish.windowsazure.com)で仮想マシン イメージの作成を開始し、それらのイメージの認定取得、および Azure ステージング環境でのテストを実行できます。販売者アカウントの承認が必要になるのは、プランを Azure Marketplace に発行する最後の手順のみです。
 
-## Azure の「従量課金制」サブスクリプションを取得する
+## Azure の "従量課金制" サブスクリプションを取得する
 これは、VM イメージを作成して、それらのイメージを [Azure Marketplace](https://azure.microsoft.com/marketplace/) に渡すために使用するサブスクリプションです。既存のサブスクリプションがない場合は、ここでサインアップしてください。https://account.windowsazure.com/signup?offer=ms-azr-0003p
 
 ## 「販売元」の国
@@ -62,4 +71,4 @@ Azure Marketplace でサービスを販売するには、登録済みエンテ�
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

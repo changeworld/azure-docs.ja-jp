@@ -26,6 +26,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 - [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -74,7 +75,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 	| **backendaddress2** | 2 番目の Web サーバーの IP アドレス |
 
 
->[AZURE.IMPORTANT] GitHub で管理される Azure リソース マネージャー テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
+	>[AZURE.IMPORTANT] GitHub で管理される Azure リソース マネージャー テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
 
 6. **resources** の内容を確認し、次を参照します。
 
@@ -147,8 +148,6 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 必要に応じて、**New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。以下の例では、米国東部に AppgatewayRG という名前のリソース グループを新しく作成します。
 
 	New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
-		VERBOSE: 5:38:49 PM - Created resource group 'AppgatewayRG' in location 'eastus'
-
 
 		ResourceGroupName : AppgatewayRG
 		Location          : eastus
@@ -245,7 +244,7 @@ Azure CLI を初めて使用する場合は、[Azure CLI のインストール�
 	data:    backendIpAddress2  String  10.0.1.11
 	info:    group deployment create command OK
 
-**-g (または --resource-group)**.新しい仮想ネットワークを作成するリソース グループの名前です。
+**-g (または --resource-group)**。新しい仮想ネットワークを作成するリソース グループの名前です。
 
 **-f (または --template-file)**。Azure リソース マネージャー テンプレート ファイルへのパスです。
 
@@ -293,4 +292,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

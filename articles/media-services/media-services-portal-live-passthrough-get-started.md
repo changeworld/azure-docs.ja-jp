@@ -13,15 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="06/22/2016" 
+	ms.date="08/30/2016" 
 	ms.author="juliako"/>
 
 
 #Azure ポータルを使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 
 このチュートリアルでは、Azure ポータルを使用して、パススルー配信用に構成された**チャネル**を作成する手順を紹介します。
-
-Azure ポータルの Azure Media Services は現在、プレビュー版です。
 
 
 ##前提条件
@@ -146,7 +144,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 ##イベントを視聴する
 
-イベントを視聴するには、Azure ポータルで **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。
+イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。
  
 ![作成日時](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -175,4 +173,4 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!-----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

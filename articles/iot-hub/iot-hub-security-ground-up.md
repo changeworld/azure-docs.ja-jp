@@ -13,14 +13,14 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="na"
- ms.date="05/16/2016"
+ ms.date="08/16/2016"
  ms.author="yurid"/>
 
 [AZURE.INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
 ## 次のステップ
 
-IoT ソリューションのセキュリティ保護の詳細については、次のリンクを使用してください。
+IoT ソリューションのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 
 - [IoT セキュリティのベスト プラクティス][lnk-security-best-practices]
 - [IoT のセキュリティ アーキテクチャ][lnk-security-architecture]
@@ -42,4 +42,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

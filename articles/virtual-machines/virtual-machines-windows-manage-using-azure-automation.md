@@ -4,7 +4,7 @@
 	services="virtual-machines-windows, automation"
 	documentationCenter=""
 	authors="jodoglevy"
-	manager="eamono"
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -45,4 +45,4 @@ Virtual Machines は、[Azure PowerShell](https://msdn.microsoft.com/library/azu
 - [初めての Runbook](../automation/automation-first-runbook-graphical.md)
 - [Azure Automation の学習マップ](https://azure.microsoft.com/documentation/learning-paths/automation/)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0824_2016-->

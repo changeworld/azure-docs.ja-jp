@@ -13,7 +13,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="data-services" 
-    ms.date="05/16/2016" 
+    ms.date="08/08/2016" 
     ms.author="arramac"/>
     
 # Azure DocumentDB で地理空間データを扱う
@@ -202,7 +202,7 @@ ST\_WITHIN のポリゴン引数に指定できるのは、単一のリングだ
 
 空間オブジェクトが有効であるかどうかは、ST\_ISVALID と ST\_ISVALIDDETAILED を使用してチェックできます。たとえば以下のクエリでは、範囲外の緯度値 (-132.8) を指定して、ポイントの有効性をチェックしています。ST\_ISVALID で返されるのはブール値だけであるのに対し、ST\_ISVALIDDETAILED では、ブール値に加え、無効と考えられる理由の文字列が返されます。
 
-** クエリ **
+**クエリ**
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
@@ -276,6 +276,8 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 
 /* (すべてのパス) の空間インデックスを含んだインデックス作成ポリシーを指定した場合、コレクション内で検出されたすべてのポイントがインデックス化され、効率的な空間クエリ (ST\_WITHIN および ST\_DISTANCE) の実行が可能となります。空間インデックスには精度値がありません。必ず既定の精度値を使用してください。
 
+>[AZURE.NOTE] DocumentDB は、Point、Polygon (プライベート プレビュー)、LineString (プライベート プレビュー) のインデックス作成をサポートしています。プレビューのご利用方法については、askdocdb@microsoft.com までメールでお問い合わせいただくか、Azure サポートまでお問い合わせください。
+
 以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。Azure ポータルを使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
 
 **インデックス作成ポリシーの JSON でコレクションの空間インデックスを有効にする**
@@ -346,4 +348,4 @@ DocumentDB の地理空間機能の基本的な使い方を身に付けたら、
 - [DocumentDB クエリ](documentdb-sql-query.md)についてさらに理解を深める
 - [DocumentDB のインデックス作成ポリシー](documentdb-indexing-policies.md)についてさらに理解を深める
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0824_2016-->

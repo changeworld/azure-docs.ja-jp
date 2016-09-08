@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="04/18/2016"
+   ms.date="08/24/2016"
    ms.author="zachal"/>
 
 # 資格情報を Azure DSC 拡張機能ハンドラーに渡す #
@@ -56,7 +56,7 @@ configuration Main
 } 
 ```
 
-構成に *node localhost* を含めることが重要です。拡張機能ハンドラーは特に node localhost ステートメントを探し、このステートメントなしでは動作しません。また、型キャスト *[PsCredential]* を含めることも重要です。この型を含めると、以下のように拡張機能によって資格情報が暗号化されます。
+構成に *node localhost* を含めることが重要です。拡張機能ハンドラーは特に node localhost ステートメントを探すため、このステートメントなしでは以下は動作しません。また、型キャスト *[PsCredential]* を含めることも重要です。この型を含めると、拡張機能によって資格情報が暗号化されます。
 
 次のスクリプトを Blob Storage に発行します。
 
@@ -78,7 +78,7 @@ $vm | Update-AzureVM
 
 このコードを実行すると、資格情報の入力を求められます。入力すると、一時的にメモリに格納されます。`Set-AzureVmDscExtension` コマンドレットを使用して発行すると、HTTPS 経由で VM に送信されます。VM では、Azure によってローカルの VM 証明書を使用してディスクで暗号化されます。次に、メモリ内に一時的に復号化され、再暗号化されてから DSC に渡されます。
 
-これは、拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合とは異なります。Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。そのため、DSC 拡張機能ハンドラーを使用する場合、ConfigurationData に $CertificatePath または $CertificateID / $Thumbprint エントリを指定する必要はありません。
+この動作は、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](https://msdn.microsoft.com/powershell/dsc/securemof)とは異なります。Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。そのため、DSC 拡張機能ハンドラーを使用する場合、ConfigurationData に $CertificatePath または $CertificateID / $Thumbprint エントリを指定する必要はありません。
 
 
 ## 次のステップ ##
@@ -89,4 +89,4 @@ PowerShell DSC の詳細については、[PowerShell ドキュメント セン�
 
 PowerShell DSC で管理できる追加機能については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)で DSC リソースを検索してください。
 
-<!---HONumber=AcomDC_0420_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -23,7 +23,7 @@
 アクティビティ ログでストリーミング機能を使用する場合、次のような方法があります。
 
 - **サード パーティのログおよびテレメトリ システムにストリーミングする** - 将来的に、Event Hubs のストリーミングは、アクティビティ ログをサード パーティの SIEM やログ分析ソリューションにパイプ処理するためのメカニズムになります。
-- **カスタムのテレメトリおよびログ プラットフォームを構築する** - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法については、[Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
+- **カスタムのテレメトリおよびログ プラットフォームを構築する** - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。[グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法については、Dan Rosanova によるガイドをご覧ください。](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## アクティビティ ログのストリーミングの有効化
 アクティビティ ログのストリーミングは、プログラムによって有効にすることも、ポータルで有効にすることもできます。どちらの方法でも、Service Bus 名前空間を選択します (存在しない場合は作成します)。アクティビティ ログを初めてストリーミングする場合は、選択した名前空間に Event Hubs が作成されます。選択した名前空間にアクティビティ ログをストリーミングしたことがある場合は、Event Hubs がその名前空間にストリーミングされます。また、ストリーミング メカニズムで使用するアクセス許可をポリシーで定義します。現在、Event Hubs にストリーミングするには、**管理**、**読み取り**、**送信**の各アクセス許可が必要です。Service Bus 名前空間の共有アクセス ポリシーは、クラシック ポータルの Service Bus 名前空間の [構成] タブで作成または変更できます。アクティビティ ログのログ プロファイルを更新してストリーミングを含めるには、クライアントに Service Bus の承認規則に対する ListKey アクセス許可が必要です。
@@ -71,7 +71,8 @@ Service Bus 規則 ID は、`{service bus resource ID}/authorizationrules/{key n
 アクティビティ ログのスキーマは[こちら](./monitoring-overview-activity-logs.md)で入手できます。各イベントは、"レコード" と呼ばれる JSON BLOB の配列に含まれます。
 
 ## 次のステップ
+- [ストレージ アカウントにアクティビティ ログをアーカイブする](./monitoring-archive-activity-log.md)
 - [Azure アクティビティ ログの概要を確認する](./monitoring-overview-activity-logs.md)
 - [アクティビティ ログ イベントに基づいてアラートを設定する](./insights-auditlog-to-webhook-email.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

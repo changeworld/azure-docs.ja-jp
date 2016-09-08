@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure"
-   ms.date="05/26/2016"
+   ms.date="08/23/2016"
    ms.author="rasquill"/>
 
 # AzureLogCollector 拡張機能
@@ -22,4 +22,4 @@
 
 [AZURE.INCLUDE [virtual-machines-common-log-collector-extension](../../includes/virtual-machines-common-log-collector-extension.md)]
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

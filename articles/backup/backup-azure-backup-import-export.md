@@ -39,7 +39,7 @@ Azure へのバックアップ データのアップロードが完了したら�
 2. ワークフローを開始する前に、Azure Backup 資格情報コンテナーの作成、資格情報コンテナーの資格情報のダウンロード、Windows Server、Windows クライアント、または System Center Data Protection Manager (SCDPM) サーバーへの Azure Backup エージェントのインストール、および Azure Backup 資格情報コンテナーへのコンピューター登録が完了していることを確認します。
 3. データをバックアップするコンピューターで、[こちら](https://manage.windowsazure.com/publishsettings)から Azure 発行ファイル設定をダウンロードします。
 4. "*ステージング場所*" を準備します。これは、コンピューター上のネットワーク共有や追加ドライブにすることができます。ステージング場所は "一時ストレージ" であり、このワークフロー中に一時的に使用されます。ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮されているため、使用量はこれよりも少なくなります)。
-5. 外部 SATA ドライブ ライター、外部 3.5 インチ SATA ドライブ。Import/Export サービスで使用できるのは、3.5 インチ SATA II/III ハード ドライブだけです。8 TB を超えるハード ドライブはサポートされていません。大部分のコンピューターには、SATA II/III ディスクを SATA II/III USB アダプターで外部接続できます。サービスでサポートされている最新のドライブについては、Azure Import/Export のドキュメントをご確認ください。
+5. 1 つまたは複数の 3.5 インチ SATA II/III 内部ハード ドライブ。Azure Import/Export サービスで使用できるのは、3.5 インチ SATA II/III 内部ハード ドライブだけです。10 TB を超えるハード ドライブはサポートされていません。これらのハード ドライブは、互換性のある SATA コネクタを使用して内部に接続するか、SATA II/III USB アダプターを使用して外部に接続することができます。サービスでサポートされている最新のハードドライブと SATA USB アダプターについては、[Azure Import/Export のドキュメント](../storage/storage-import-export-service.md)をご確認ください。
 6. SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
 7. [こちら](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)から、SATA ドライブ ライターが接続されているコンピューターに Azure Import/Export ツールをダウンロードします。Azure Backup の更新プログラム 2016 年 8 月 (以降) をインストールした場合、この手順は不要です。
 
@@ -184,4 +184,4 @@ Azure へのバックアップ データのアップロードが完了したら�
 - Azure Import/Export ワークフローに関するご質問は、こちらの[記事](../storage/storage-import-export-service.md)をご覧ください。
 - ワークフローに関するご質問は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションをご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

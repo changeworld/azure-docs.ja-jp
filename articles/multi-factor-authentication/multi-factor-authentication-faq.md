@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/04/2016"
+	ms.date="08/22/2016"
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
@@ -145,7 +145,7 @@ Azure Multi-Factor Authentication、Azure Active Directory Premium、Enterprise 
 
 Azure Multi-factor Authentication サービスは、SMS アグリゲーターを使用してテキスト メッセージを送信します。使用されるアグリゲーター、宛先の国、ユーザーの携帯電話の事業者、信号強度など、多くの要因がテキスト メッセージの配信と受信の信頼性に影響を及ぼす可能性があります。そのため、双方向の SMS でテキスト メッセージの配信および SMS 応答の受信が保証されるわけではありません。可能な場合は、双方向の SMS ではなく、一方向の SMS を使用することをお勧めします。一方向の SMS は、信頼性が高く、別の国から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
 
-またテキスト メッセージによる確認は、米国やカナダなどの一部の国または地域ではより信頼性が高くなります。Azure Multi-Factor Authentication を使用して信頼性の高いテキスト メッセージを受信することが難しいユーザーは、代わりにモバイル アプリまたは電話による方法を選択することをお勧めします。モバイル アプリによる認証方法が優れているのは、ユーザーが携帯電話と Wi-fi 接続経由の両方でモバイル アプリの通知を受け取ることができるためです。さらに、デバイスがまったく信号を出さない場合でも、モバイル アプリ パスコードが表示されます。Azure Authenticator アプリは、[Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)、[IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458) で利用できます。
+またテキスト メッセージによる確認は、米国やカナダなどの一部の国または地域ではより信頼性が高くなります。Azure Multi-Factor Authentication を使用して信頼性の高いテキスト メッセージを受信することが難しいユーザーは、代わりにモバイル アプリまたは電話による方法を選択することをお勧めします。モバイル アプリによる認証方法が優れているのは、ユーザーが携帯電話と Wi-fi 接続経由の両方でモバイル アプリの通知を受け取ることができるためです。さらに、デバイスがまったく信号を出さない場合でも、モバイル アプリ パスコードが表示されます。Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
 
 **Azure Multi-Factor Authentication Server でハードウェア トークンを使用できますか。**
 
@@ -183,6 +183,6 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 現時点で、ユーザーは、ブラウザーからアクセスできるアプリケーションとサービスでのみ、追加のセキュリティ確認を使用することができます。Windows PowerShell など、ローカル コンピューターにインストールされている非ブラウザー アプリケーション ("リッチ クライアント アプリケーション" とも呼ばれます) は、追加のセキュリティ確認を必要とするアカウントでは機能しません。この場合、アプリケーションで 0x800434D4L エラーがユーザーに表示される可能性があります。
 
-これを回避するには、管理関連の操作と管理以外の操作に関して異なるユーザー アカウントを使用します。後ほど、管理アカウントと非管理アカウント間のメールボックスでリンクを作成することによって、非管理アカウントを使用して outlook にサインインできます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)」 を参照してください。
+これを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

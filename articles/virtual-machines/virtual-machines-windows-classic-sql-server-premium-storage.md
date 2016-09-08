@@ -14,13 +14,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/04/2016"
+	ms.date="08/19/2016"
 	ms.author="jroth"/>
 
 # 仮想マシン上での Azure Premium Storage と SQL Server の使用
 
 
-## 概要
+## Overview
 
 [Azure Premium Storage](../storage/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
@@ -355,7 +355,7 @@ Always On 可用性グループを使用しない SQL Server のデプロイと�
 - **新しい SQL Server VM を作成します**。新しいデプロイに記載されているように、Premium Storage アカウントを使用する新しい SQL Server VM を作成できます。その後、SQL Server の構成とユーザー データベースをバックアップして復元します。新しい SQL Server が内部的または外部的にアクセスされる場合、新しい SQL Server を参照するようにアプリケーションを更新する必要があります。サイド バイ サイド (SxS) SQL Server 移行を行う場合のように、すべての ‘out of db’ オブジェクトをコピーする必要があります。これには、ログイン、証明書、およびリンク サーバーなどのオブジェクトが含まれます。
 - **既存の SQL Server VM を移行します**。SQL Server VM をオフラインにしてから、新しいクラウド サービスに転送する必要があります。これには、アタッチされているすべての VHD の Premium Storage アカウントへのコピーが含まれます。VM がオンラインになると、アプリケーションは前と同じサーバー ホスト名を参照します。既存のディスクのサイズがパフォーマンス特性に影響することに注意してください。たとえば、400 GB のディスクは P20 に切り上げられます。そのディスク パフォーマンスが必要ないことがわかっている場合は、VM を DS シリーズ VM として再作成し、必要なサイズ/パフォーマンス仕様の Premium Storage VHD をアタッチできます。その後、SQL DB ファイルをデタッチして再アタッチすることができます。
 
-> [AZURE.NOTE] VHD ディスクをコピーするときは、サイズに注意する必要があります。サイズに依存するということは、当てはまる Premium Storage ディスク タイプがディスク パフォーマンス仕様を決定します。Azure は最も近いディスク サイズに切り上げるので、400 GB ディスクがある場合、P20 に切り上げます。OS VHD の既存の IO 要件によっては、Premium Storage アカウントにこれを移行する必要はありません。
+> [AZURE.NOTE] VHD ディスクをコピーするときは、サイズに注意する必要があります。サイズに依存するということは、当てはまる Premium Storage ディスク タイプがディスク パフォーマンス仕様を決定することになります。Azure は最も近いディスク サイズに切り上げるので、400 GB ディスクがある場合、P20 に切り上げます。OS VHD の既存の IO 要件によっては、Premium Storage アカウントにこれを移行する必要はありません。
 
 SQL Server が外部からアクセスされる場合、クラウド サービス VIP は変更されます。エンドポイント、ACL、DNS の設定も更新する必要があります。
 
@@ -464,7 +464,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 
 ##### ダウンタイムのポイント
 
-- 負荷分散されたエンドポイントで最後のノードを更新するときにダウンタイムが発生します。
+- 負荷分散エンドポイントで最後のノードを更新するときにダウンタイムが発生します。
 - クライアント/DNS の構成によっては、クライアントの再接続が遅れる可能性があります。
 - IP アドレスをスワップするために Always On クラスター グループをオフラインにする場合は、追加のダウンタイムが発生します。追加される IP アドレス リソースに対して OR 依存関係と実行可能な所有者を使用することで、これを回避できます。[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の「同じサブネットの IP アドレス リソースの追加」セクションを参照してください。
 
@@ -504,7 +504,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 - 手順 5ii を使用する場合、追加される IP アドレス リソースの実行可能な所有者として SQL1 追加します。
 - フェールオーバーをテストします。
 
-#### 2\.既存のセカンダリ レプリカを利用する: マルチサイト
+#### 手順 2.既存のセカンダリ レプリカを利用する: マルチサイト
 
 複数の Azure データセンター (DC) にノードがある場合、またはハイブリッド環境がある場合は、その環境で Always On 構成を使用してダウンタイムを最小にできます。
 
@@ -1104,11 +1104,11 @@ SQL Server が 2 つだけであり、それらを同じサブネットのまま
 
 IP アドレスの追加については、[付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の手順 14 を参照してください。
 
-1. 現在の IP アドレス リソースについて、実行可能な所有者を「既存のプライマリ SQL Server」に変更します。下の例では "dansqlams4" です。
+1. 現在の IP アドレス リソースについて、実行可能な所有者を "既存のプライマリ SQL Server" に変更します。下の例では "dansqlams4" です。
 
 	![Appendix13][23]
 
-1. 新しい IP アドレス リソースについて、実行可能な所有者を「移行されたセカンダリ SQL Server」に変更します。下の例では "dansqlams5" です。
+1. 新しい IP アドレス リソースについて、実行可能な所有者を "移行されたセカンダリ SQL Server" に変更します。下の例では "dansqlams5" です。
 
 	![Appendix14][24]
 
@@ -1148,4 +1148,4 @@ IP アドレスの追加については、[付録](#appendix-migrating-a-multisi
 [24]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_14.png
 [25]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/10_Appendix_15.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

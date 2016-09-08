@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="オンプレミス エンコーダーでライブ ストリーミングを実行する方法" 
-	description="このトピックでは、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。" 
+	pageTitle=".NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法 | Microsoft Azure" 
+	description="このトピックでは、.NET を使用して、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="05/05/2016"  
+ 	ms.date="08/19/2016"  
 	ms.author="cenkdin;juliako"/>
 
-#オンプレミス エンコーダーでライブ ストリーミングを実行する方法
+#.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 
 ##前提条件
 
@@ -377,7 +377,9 @@
 	    }
 	}
 
-##Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -385,4 +387,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0824_2016-->

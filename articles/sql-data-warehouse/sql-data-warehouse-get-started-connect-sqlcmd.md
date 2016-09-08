@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/22/2016"
+   ms.date="08/30/2016"
    ms.author="mausher;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse に対するクエリ (sqlcmd)
@@ -24,17 +24,11 @@
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 - [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-このチュートリアルでは、sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
-
-## 前提条件
-
-このチュートリアルを進めるには、次が必要です。
-
--  [sqlcmd.exe][]。ダウンロードするには、[Microsoft Command Line Utilities 11 for SQL Server][] に関するページを参照してください。[Microsoft ODBC Driver 11 for SQL Server Windows][] も必要になることがあります。
+このチュートリアルでは、[sqlcmd][] コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
 
 ## 1\.接続
 
-sqlcmd の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。接続文字列では、次の必須パラメーターが必要になります。
+[sqlcmd][] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。接続文字列では、次のパラメーターが必要になります。
 
 + **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
 + **データベース (-d):** データベース名。
@@ -50,7 +44,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 
 > [AZURE.NOTE] 現在、SQL Data Warehouse に接続するには、引用符で囲まれた識別子を有効にする -I オプションが必要になります。
 
-## 2\.クエリ
+## 手順 2.クエリ
 
 接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。この例では、クエリは対話モードで送信されます。
 
@@ -73,18 +67,16 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## 次のステップ
 
-sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント][sqlcmd.exe]を参照してください。
+sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント][sqlcmd]を参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
 
 <!--MSDN references--> 
-[sqlcmd.exe]: https://msdn.microsoft.com/library/ms162773.aspx
-[Microsoft ODBC Driver 11 for SQL Server Windows]: https://www.microsoft.com/download/details.aspx?id=36434
-[Microsoft Command Line Utilities 11 for SQL Server]: http://go.microsoft.com/fwlink/?LinkId=321501
+[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
 [Azure portal]: https://portal.azure.com
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/04/2016" 
+	ms.date="08/22/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication での問題
@@ -30,7 +30,7 @@
 - [電話を新しくしたので、電話番号を変更する必要がある場合](#i-have-a-new-phone-and-need-to-change-my-phone-number)
 - [電話でコードを受け取ることができない場合](#i-am-not-receiving-a-code-or-a-call-on-my-phone)
 - [アプリ パスワードが機能しない場合](#app-passwords-are-not-working)
-- [古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合](#how-do-i-clean-up-azure-authenticator-from-my-old-device-and-move-to-a-new-one)
+- [古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合](#how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one)
 - [問題に対する回答が見つからなかった場合](#i-didnt-find-an-answer-to-my-problem)
 
 ##関連付け ID のエラー
@@ -147,7 +147,7 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 - 確認コードをテキスト メッセージで携帯電話に送信するように選択している場合は、ご利用のサービス プランと、デバイスがテキスト メッセージの配信をサポートしていることを確認します。配信の速度や利用可能性は、場所やサービス プロバイダーによって異なります。また、これらのコードの受信を試みているときに、十分な電波が届いていることを確認します。
 - モバイル アプリを使って確認コードを受信するように選択している場合は、電波状態が良いことを確認します。配信の速度や利用可能性は、場所とサービス プロバイダーによって異なる場合があることも忘れないでください。
 
-スマートフォンをお持ちの場合は、[Azure Authenticator アプリ](multi-factor-authentication-azure-authenticator.md)を使用することをお勧めします。
+スマートフォンをお持ちの場合は、[Azure Authenticator アプリ](multi-factor-authentication-microsoft-authenticator.md)を使用することをお勧めします。
 
 サインインするときに **[別の確認オプションを使用する]** を選択することで、検証コードを受信する方法をモバイル アプリからテキスト メッセージに切り替えることができます。
 
@@ -162,8 +162,8 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 ##アプリ パスワードが機能しない場合
 最初に、アプリ パスワードが正しく入力されていることを確認します。それでも機能しない場合は、サインインを試し、[新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)します。このパスワードが機能しない場合は、管理者に連絡して[既存のアプリ パスワードの削除](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)を依頼し、新しいパスワードを作成して使用します。
 
-##古いデバイスから Azure Authenticator をクリーンアップして新しいデバイスに移行する場合
-デバイスからアプリをアンインストールしても、デバイスを再フラッシュしても、アクティブ化はバック エンドで削除されません。[新しいデバイスへの移行](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app)に関するトピックで説明されている手順に従ってください。
+##古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
+デバイスからアプリをアンインストールしても、デバイスを再フラッシュしても、アクティブ化はバック エンドで削除されません。[新しいデバイスへの移行](multi-factor-authentication-microsoft-authenticator.md#how-to-move-to-the-new-microsoft-authenticator-app)に関するトピックで説明されている手順に従ってください。
 
 ##問題に対する回答が見つからなかった場合
 このページで問題に対する回答が見つからなかった場合、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、[Microsoft サポート技術情報 (KB) を検索するか](https://www.microsoft.com/ja-JP/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)、[サポートにお問い合わせください](https://support.microsoft.com/ja-JP)。
@@ -172,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

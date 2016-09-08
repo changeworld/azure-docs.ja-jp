@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="03/02/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # collectd: Application Insights での Unix パフォーマンス メトリック
@@ -21,7 +21,7 @@
 
 [Application Insights](app-insights-overview.md) で Unix システムのパフォーマンス メトリックを探索するには、[collectd](http://collectd.org/) を Application Insights のプラグインと共にインストールします。このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
 
-一般的に、collectd は、[Application Insights でJava Web サービスを既にインストルメント化][java]している場合に使用します。これにより、アプリのパフォーマンスの向上や問題の診断に役立つより多くのデータを入手できます。
+既に [Application Insights で Java Web サービスをインストルメント化][java]してある場合は、通常、collectd を使用します。collectd を使用すると、アプリのパフォーマンスの向上や問題の診断に役立つ多くのデータを得られます。
 
 ![サンプルのグラフ](./media/app-insights-java-collectd/sample.png)
 
@@ -31,7 +31,7 @@
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
-![Browse all, open your resource, and then in the Esssentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Esssentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/app-insights-java-collectd/02-props.png)
+![Browse all, open your resource, and then in the Essentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Essentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/app-insights-java-collectd/02-props.png)
 
 
 
@@ -121,6 +121,7 @@ Application Insights のリソースで、[メトリックス エクスプロー
 *ポータルにデータが表示されません。*
 
 * [[検索]][diagnostic] を開き、未加工のイベントが到着しているかどうかを確認します。メトリックス エクスプローラーに表示されるまでに時間がかかる場合があります。
+* 必要に応じて[データ送信についてファイアウォール例外を設定](app-insights-ip-addresses.md)します。
 * Application Insights プラグインでトレースを有効にします。`<Plugin ApplicationInsightsWriter>` に次の行を追加します。
  *  `SDKLogger true`
 * ターミナルを開き、詳細モードで collectd を起動して報告されている問題がないか確認します。
@@ -143,4 +144,4 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -3,7 +3,7 @@
 	description="この記事では、Azure VM での SQL Server のアプリケーション パターンについて説明します。ソリューション設計者および開発者向けに、優れたアプリケーション アーキテクチャと設計の基礎について説明しています。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
-	authors="rothja"
+	authors="luisherring"
 	manager="jhubbard"
 	editor=""
 	tags="azure-service-management,azure-resource-manager" />
@@ -13,13 +13,12 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="05/02/2016"
-	ms.author="jroth" />
+	ms.date="08/19/2016"
+	ms.author="lvargas" />
 
 # Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
-
 
 
 ## 概要:
@@ -40,7 +39,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 一般的な *n 層*アプリケーションには、プレゼンテーション層、ビジネス層、データ層があります。
 
 
-| レベル | 説明 |
+| レベル | Description |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **プレゼンテーション** | *プレゼンテーション層* (Web 層、フロントエンド層) は、ユーザーがアプリケーションとやり取りするレイヤーです。 |
 | **勤務先** | *ビジネス層* (中間層) は、プレゼンテーション層とデータ層が相互に通信するために使用するレイヤーです。システムのコア機能が含まれています。 |
@@ -60,13 +59,13 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 - Azure 環境の機能を活用したいが、Azure SQL Database ではアプリケーションに必要なすべての機能をサポートしていない。これには、次のような点が関係します。
 
-	- **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 500 GB のデータのデータベースをサポートしています。アプリケーションで 500 GB を超すデータが必要だが、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。最新情報については、「[Azure SQL データベースのスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)」および [Azure SQL Database のサービス階層とパフォーマンス レベル](../sql-database/sql-database-service-tiers.md)に関するページを参照してください。
+	- **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 1 TB のデータのデータベースをサポートしています。アプリケーションで 1 TB を超すデータが必要で、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。最新情報については、「[Azure SQL データベースのスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)」および [Azure SQL Database のサービス階層とパフォーマンス レベル](../sql-database/sql-database-service-tiers.md)に関するページを参照してください。
 	- **HIPAA のコンプライアンス**: Azure の Virtual Machines 内の SQL Server は HIPAA Business Associate Agreement (BAA) の対象になっているため、医療関係のお客様や独立系ソフトウェア ベンダー (ISV) は、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) の代わりに、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) を選択できます。コンプライアンスについては、「[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
-	- **インスタンス レベルの機能**: 現時点では、SQL Database では、データベース外部の機能 (リンク サーバー、エージェント ジョブ、FileStream、Service Broker など) をサポートしていません。詳細については、「[Azure SQL Database のガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。
+	- **インスタンス レベルの機能**: 現時点で、SQL Database では、データベース外部の機能 (リンク サーバー、エージェント ジョブ、FileStream、Service Broker など) をサポートしていません。詳細については、「[Azure SQL Database のガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。
 
 ## 1 層 (単純): 単一の仮想マシン
 
-このアプリケーション パターンでは、SQL Server アプリケーションとデータベースを Azure のスタンドアロンの仮想マシンにデプロイします。同じ仮想マシンに、クライアントや Web アプリケーション、ビジネス コンポーネント、データ アクセス レイヤー、およびデータベース サーバーが含まれます。プレゼンテーション、ビジネス、およびデータ アクセス コードは、論理的に分離されますが、1 台のサーバー コンピューターに物理的に配置されます。ほとんどのお客様は、このアプリケーション パターンから開始し、その後、システムに Web ロールや仮想マシンを追加することでスケールアウトします。
+このアプリケーション パターンでは、SQL Server アプリケーションとデータベースを Azure のスタンドアロンの仮想マシンにデプロイします。同じ仮想マシンに、クライアントや Web アプリケーション、ビジネス コンポーネント、データ アクセス レイヤー、およびデータベース サーバーが含まれます。プレゼンテーション、ビジネス、データ アクセス コードは、論理的に分離されますが、1 台のサーバー コンピューターに物理的に配置されます。ほとんどのお客様は、このアプリケーション パターンから開始し、その後、システムに Web ロールや仮想マシンを追加することでスケールアウトします。
 
 このアプリケーション パターンは、次のような場合に便利です。
 
@@ -106,7 +105,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 ![3 層アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728009.png)
 
-このアプリケーション パターンでは、層ごとに 1 台だけ仮想マシン (VM) があります。Azure に複数の VM がある場合は、仮想ネットワークをセットアップすることをお勧めします。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) は、信頼できるセキュリティ境界を作成し、VM 間でプライベート IP アドレスを使用して通信できるようにします。さらに、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。そのため、他の層ではなく、プレゼンテーション層のパブリック エンドポイントを開く必要があります。このアプリケーション パターンに従う場合は、特定の IP アドレスのアクセスを許可するようにそのパブリック ポートのネットワーク アクセス制御リスト (ACL) を設定する必要もあります。詳細については、[エンドポイントの ACL の管理](virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)に関するセクションを参照してください。
+このアプリケーション パターンでは、層ごとに 1 台だけ仮想マシン (VM) があります。Azure に複数の VM がある場合は、仮想ネットワークをセットアップすることをお勧めします。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) は、信頼できるセキュリティ境界を作成し、VM 間でプライベート IP アドレスを使用して通信できるようにします。さらに、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。このアプリケーション パターンに従う場合は、ネットワーク セキュリティ グループのルールを管理してアクセスを制御します。詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
 この図では、インターネット プロトコルには、TCP、UDP、HTTP、または HTTPS を使用できます。
 
@@ -138,7 +137,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 1 つの層の複数の VM インスタンスを活用するには、アプリケーション層の間に Azure Load Balancer を構成する必要があります。各層で Load Balancer を構成するには、各層の VM に個別に負荷分散エンドポイントを作成します。まず特定の層の VM を同じクラウド サービスに作成します。これにより、すべての VM で同じパブリック仮想 IP アドレスを使用するようになります。次に、その層の仮想マシンの 1 つにエンドポイントを作成します。その後、負荷分散のために同じエンドポイントをその層の他の仮想マシンに割り当てます。負荷分散セットを作成すると、複数の仮想マシンにトラフィックが分散され、バックエンド VM ノードに障害が発生したときに接続するノードを Load Balancer が決定できるようになります。たとえば、ロード バランサーの背後に Web サーバーのインスタンスを複数配置すると、プレゼンテーション層の高可用性が確保されます。
 
-ベスト プラクティスとして、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。プレゼンテーション レイヤーがビジネス層にアクセスし、ビジネス層がデータ層にアクセスします。たとえば、プレゼンテーション層のエンドポイントを開きます。各エンドポイントには、パブリック ポートとプライベート ポートがあります。プライベート ポートは、エンドポイントでのトラフィックをリッスンするために、仮想マシンによって内部的に使用されます。パブリック ポートは、Azure 外部からの通信の入り口であり、Azure Load Balancer によって使用されます。ネットワーク アクセス制御リスト (ACL) を設定して、アプリケーション層のパブリック エンドポイントにあるパブリック ポートでの着信トラフィックの分離と制御に役立つルールを定義することをお勧めします。詳細については、「[エンドポイントの ACL の管理](virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
+ベスト プラクティスとして、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。プレゼンテーション レイヤーがビジネス層にアクセスし、ビジネス層がデータ層にアクセスします。プレゼンテーション層へのアクセスを許可する方法の詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
 Azure Load Balancer はオンプレミスの環境のロード バランサーと同じような動作をします。詳細については、「[Azure インフラストラクチャ サービスの負荷分散](virtual-machines-windows-load-balance.md)」を参照してください。
 
@@ -200,7 +199,7 @@ High Availability and Disaster Recovery 手法に関する包括的な情報と�
 
 このアプリケーション パターンでは、[Azure Cloud Services](../cloud-services/cloud-services-choose-me.md#tellmecs) (Web ロールと worker ロール - サービスとしてのプラットフォーム (PaaS)) と [Azure Virtual Machines](virtual-machines-windows-about.md) (サービスとしてのインフラストラクチャ (IaaS)) の両方を使用して、2 層または 3 層アプリケーションを Azure にデプロイします。プレゼンテーション層とビジネス層に [Azure Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) を使用し、データ層に [Azure Virtual Machines](virtual-machines-windows-about.md) 内の SQL Server を使用すると、Azure で実行されるほとんどのアプリケーションにとってメリットがあります。その理由は、Cloud Services で実行されるコンピューティング インスタンスにより、管理、デプロイ、監視、およびスケールアウトが簡単になるためです。
 
-Cloud Services を使用すると、Azure がユーザーに代わってインフラストラクチャの保守と日常的な保守を行い、オペレーティング システムにパッチを適用し、サービスとハードウェアの障害時には回復を図ります。アプリケーションでスケールアウトが必要な場合は、クラウド サービス プロジェクトでは、アプリケーションで使用するインスタンスまたは仮想マシンの数を増減する自動および手動のスケールアウト オプションを使用できます。また、オンプレミスの Visual Studio を使用して、アプリケーションを Azure のクラウド サービス プロジェクトにデプロイすることもできます。
+Cloud Services を使用すると、Azure がユーザーに代わってインフラストラクチャの保守と日常的な保守を行い、オペレーティング システムにパッチを適用し、サービスとハードウェアの障害時には回復を図ります。アプリケーションでスケールアウトが必要な場合、クラウド サービス プロジェクトでは、アプリケーションで使用するインスタンスまたは仮想マシンの数を増減させることで、自動および手動のスケールアウト オプションを使用できます。また、オンプレミスの Visual Studio を使用して、アプリケーションを Azure のクラウド サービス プロジェクトにデプロイすることもできます。
 
 まとめると、アプリケーションでソフトウェアやオペレーティング システムの複雑な構成が必要なく、プレゼンテーション層やビジネス層に対する広範な管理タスクを負わないようにしたい場合は、Azure Cloud Services を使用します。必要なすべての機能を Azure SQL Database がサポートしていない場合は、データ層に Azure の仮想マシン内の SQL Server を使用します。Azure Cloud Services でアプリケーションを実行し、Azure Virtual Machines にデータを格納すると、両方のサービスのメリットが得られます。詳細な比較については、このトピックの [Azure の開発計画の比較](#comparing-web-development-strategies-in-azure)に関するセクションを参照してください。
 
@@ -282,7 +281,7 @@ n 層ハイブリッド アプリケーション パターンでは、指定の�
 
 1. オンプレミスの企業ネットワークと [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 間のネットワーク接続をセットアップします。オンプレミスの企業ネットワークと Azure の仮想マシン間の接続をセットアップするには、次の 2 つの方法のどちらかを使用します。
 
-	1. Azure の仮想マシンのパブリック エンドポイントを介して、オンプレミスと Azure 間の接続を確立する。この方法はセットアップが簡単で、仮想マシンで SQL Server 認証を使用することができます。さらに、特定の IP アドレスのアクセスを許可するように、パブリック ポートのネットワーク アクセス制御リスト (ACL) を設定します。詳細については、[エンドポイントの ACL の管理](virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)に関するセクションを参照してください。
+	1. Azure の仮想マシンのパブリック エンドポイントを介して、オンプレミスと Azure 間の接続を確立する。この方法はセットアップが簡単で、仮想マシンで SQL Server 認証を使用することができます。また、ネットワーク セキュリティ グループのルールをセットアップして、VM へのパブリック トラフィックを制御します。詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
 	1. Azure 仮想プライベート ネットワーク (VPN) トンネルを介して、オンプレミスと Azure 間の接続を確立する。この方法を使用すると、ドメイン ポリシーを Azure の仮想マシンに拡張できます。また、ファイアウォール規則を設定し、仮想マシンで Windows 認証を使用することもできます。現時点では、Azure はセキュリティで保護されたサイト間 VPN 接続とポイント対サイト VPN 接続をサポートしています。
 
@@ -319,12 +318,12 @@ SQL Server ベースの多層アプリケーションを Azure に実装およ�
 |**管理とセットアップ**|アプリケーション、データ、ファイアウォール規則、仮想ネットワーク、およびオペレーティング システムに対する管理作業を行う必要があります。|アプリケーション、データ、ファイアウォール規則、および仮想ネットワークに対する管理作業を行う必要があります。|アプリケーションとデータのみに対する管理作業を行う必要があります。|
 |**高可用性と障害復旧 (HADR)**|仮想マシンを同じ可用性セットと同じクラウド サービス内に配置することをお勧めします。VM を同じ可用性セットに保持すると、Azure で高可用性ノードを別個の障害ドメインとアップグレード ドメインに配置できるようになります。一方、VM を同じクラウド サービスに保持すると、負荷分散できるようになり、VM が Azure データ センター内でローカル ネットワークを介して相互に直接通信できるようになります。<br/><br/>ユーザーは、ダウンタイムを回避するために、Azure Virtual Machines に SQL Server の High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「[Azure Virtual Machines内 の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>Azure では、ハードウェアの問題によってデータ センター内のホスト コンピューターに障害が発生した場合に、仮想マシンを移動できます。また、セキュリティやソフトウェアの更新のためにホスト コンピューターを更新するときなど、VM の計画的なダウンタイムが発生する場合があります。そのため、継続的な可用性を確保するために、アプリケーション層ごとに少なくとも 2 台の VM を保持することをお勧めします。Azure では、単一の仮想マシンに対する SLA は提供していません。詳細については、「[Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)」を参照してください。|基になるハードウェアやオペレーティング システム ソフトウェアに起因するエラーは Azure で管理されます。アプリケーションの高可用性を確保するために、Web ロールまたは worker ロールの複数のインスタンスを実装することをお勧めします。詳細については、[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および[Azure アプリケーションの災害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>データベースが Azure VM 内の SQL Server データベースに存在する場合は、ユーザーは、ダウンタイムを回避するために、High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「Azure 仮想マシンにおける SQL Server の高可用性と障害復旧」を参照してください。<br/><br/>**SQL Server データベース ミラーリング**: Azure Cloud Services (web/worker ロール) で使用します。SQL Server VM とクラウド サービス プロジェクトは、同じ Azure Virtual Network 内に配置できます。SQL Server VM が同じ Virtual Network 内にない場合は、SQL Server のインスタンスに通信をルーティングするために、SQL Server エイリアスを作成する必要があります。さらに、エイリアス名は SQL Server 名と一致する必要もあります。|高可用性は、Azure worker ロール、Azure Blob Storage、および Azure SQL Database から継承されます。たとえば、Azure Storage では、すべての BLOB、テーブル、およびキューのデータの 3 つのレプリカを保持します。Azure SQL Database では、常に、実行中のデータの 3 つのレプリカ (1 つのプライマリ レプリカと 2 つのセカンダリ レプリカ) を保持します。詳細については、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) に関するページおよび [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に関するページを参照してください。<br/><br/>Azure Web Apps のデータ ソースとして Azure VM 内の SQL Server を使用する場合は、Azure Web Apps では Azure Virtual Network がサポートされないことに注意してください。つまり、Azure Web Apps から Azure の SQL Server VM への接続はすべて仮想マシンのパブリック エンドポイントを介して行う必要があります。そのため、高可用性と障害復旧のシナリオが一部制限される可能性があります。たとえば、データベース ミラーリングでは Azure の SQL Server ホスト VM 間に Azure Virtual Network をセットアップする必要があるため、データベース ミラーリングを使用している SQL Server VM に接続している Azure Web Apps のクライアント アプリケーションでは、新しいプライマリ サーバーに接続することができません。そのため、Azure Web Apps では現在、**SQL Server データベース ミラーリング**の使用はサポートされていません。<br/><br/>**SQL Server AlwaysOn 可用性グループ**: Azure Web Apps と Azure の SQL Server VM を使用する場合は、AlwaysOn 可用性グループをセットアップできます。ただし、負荷分散されたパブリック エンドポイントを介してプライマリ レプリカに通信をルーティングするように AlwaysOn 可用性グループ リスナーを構成する必要があります。|
 |**クロスプレミス接続**|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network がサポートされています。詳細については、[Web Apps Virtual Network 統合](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)に関する記事を参照してください。|
-|**拡張性**|スケールアップは、仮想マシンのサイズを大きくするか、ディスクを追加することで実現できます。仮想マシンのサイズの詳細については、[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)に関するページを参照してください。<br/><br/>**データベース サーバー**: データベースのパーティション分割手法と SQL Server AlwaysOn 可用性グループを使用してスケールアウトできます。<br/><br/>読み取り負荷の高いワークロードについては、複数のセカンダリ ノードの [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)と SQL Server レプリケーションを使用できます。<br/><br/>書き込み負荷の高いワークロードについては、複数の物理サーバーにまたがるデータの行方向のパーティション分割を実装することで、アプリケーションのスケールアウトを実現できます。<br/><br/>また、[SQL Server とデータ依存型ルーティングを使用して](https://technet.microsoft.com/library/cc966448.aspx)、スケールアウトを実装することもできます。データ依存型ルーティング (DDR) を使用する場合は、クライアント アプリケーション (通常は、ビジネス層レイヤー) にパーティション分割メカニズムを実装して、データベース要求を複数の SQL Server ノードにルーティングする必要があります。ビジネス層には、データのパーティション分割方法とデータが含まれているノードのマッピングが含まれています。<br/><br/>仮想マシンを実行しているアプリケーションのスケールを設定できます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関するページを参照してください。<br/><br/>**重要**: Azure の**自動スケール**機能を使用すると、アプリケーションで使用する Virtual Machines の規模を自動的に拡張または縮小できます。この機能は、ピーク時にエンド ユーザー エクスペリエンスに悪影響が出ないようにし、要求が少ないときには VM をシャットダウンします。クラウド サービスに SQL Server VM が含まれている場合は、自動スケール オプションを設定しないことをお勧めします。これは、自動スケール機能を使用すると、Azure が、仮想マシンの CPU 使用率がしきい値を超えるとその VM をオンにし、CPU 使用率がしきい値を下回ると仮想マシンをオフにできるようになるためです。自動スケール機能は、VM が以前の状態を参照せずにワークロードを管理できる、Web サーバーなどのステートレスなアプリケーションに役立ちます。ただし、1 つのインスタンスだけがデータベースに書き込むことができる、SQL Server などのステートフルなアプリケーションには適していません。|スケールアップは、複数の Web ロールおよび worker ロールを使用することで実現できます。Web ロールと worker ロールの仮想マシンのサイズの詳細については、[クラウド サービスのサイズの構成](../cloud-services/cloud-services-sizes-specs.md)に関するページを参照してください。<br/><br/>**Cloud Services** を使用すると、複数のロールを定義して処理を分散させることや、アプリケーションの柔軟なスケーリングを実現することができます。各クラウド サービスには 1 つ以上の Web ロールまたは worker ロールが含まれており、各ロールにそれぞれ専用のアプリケーション ファイルと構成が関連付けられます。ロールにデプロイされているロール インスタンス (仮想マシン) の数を増やすことでクラウド サービスをスケールアップし、ロール インスタンスの数を減らすことでクラウド サービスをスケールダウンできます。詳細については、[Azure の実行モデル](../cloud-services/cloud-services-choose-me.md)に関するページを参照してください。<br/><br/>[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および Load Balancer による組み込みの Azure 高可用性サポートを利用して、スケールアウトできます。<br/><br/>多層アプリケーションについては、Azure Virtual Network を介して Web/worker ロール アプリケーションをデータベース サーバー VM に接続することをお勧めします。また、Azure は同じクラウド サービス内の VM に負荷分散を提供して、VM 間でユーザー要求を分散します。この方法で接続された仮想マシンは、Azure データ センター内でローカル ネットワークを介して相互に直接通信できます。<br/><br/>Azure クラシック ポータルで**自動スケール**を設定することや、スケジュール時間を設定することができます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。|**スケールアップとスケールダウン**: Web サイト用に予約されているインスタンス (VM) のサイズを増減できます。<br/><br/>スケールアウト: Web サイト用に予約されているインスタンス (VM) を追加できます。<br/><br/>ポータルで**自動スケール**を設定するだけでなく、スケジュール時間を設定することもできます。詳細については、[Web Apps のスケールの設定方法](../app-service-web/web-sites-scale.md)に関するページを参照してください。|
+|**拡張性**|スケールアップは、仮想マシンのサイズを大きくするか、ディスクを追加することで実現できます。仮想マシンのサイズの詳細については、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。<br/><br/>**データベース サーバー**: データベースのパーティション分割手法と SQL Server AlwaysOn 可用性グループを使用してスケールアウトできます。<br/><br/>読み取り負荷の高いワークロードについては、複数のセカンダリ ノードの [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)と SQL Server レプリケーションを使用できます。<br/><br/>書き込み負荷の高いワークロードについては、複数の物理サーバーにまたがるデータの行方向のパーティション分割を実装することで、アプリケーションのスケールアウトを実現できます。<br/><br/>また、[SQL Server とデータ依存型ルーティングを使用して](https://technet.microsoft.com/library/cc966448.aspx)、スケールアウトを実装することもできます。データ依存型ルーティング (DDR) を使用する場合は、クライアント アプリケーション (通常は、ビジネス層レイヤー) にパーティション分割メカニズムを実装して、データベース要求を複数の SQL Server ノードにルーティングする必要があります。ビジネス層には、データのパーティション分割方法とデータが含まれているノードのマッピングが含まれています。<br/><br/>仮想マシンを実行しているアプリケーションのスケールを設定できます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関するページを参照してください。<br/><br/>**重要**: Azure の**自動スケール**機能を使用すると、アプリケーションで使用する Virtual Machines の規模を自動的に拡張または縮小できます。この機能は、ピーク時にエンド ユーザー エクスペリエンスに悪影響が出ないようにし、要求が少ないときには VM をシャットダウンします。クラウド サービスに SQL Server VM が含まれている場合は、自動スケール オプションを設定しないことをお勧めします。これは、自動スケール機能を使用すると、Azure が、仮想マシンの CPU 使用率がしきい値を超えるとその VM をオンにし、CPU 使用率がしきい値を下回ると仮想マシンをオフにできるようになるためです。自動スケール機能は、VM が以前の状態を参照せずにワークロードを管理できる、Web サーバーなどのステートレスなアプリケーションに役立ちます。ただし、1 つのインスタンスだけがデータベースに書き込むことができる、SQL Server などのステートフルなアプリケーションには適していません。|スケールアップは、複数の Web ロールおよび worker ロールを使用することで実現できます。Web ロールと worker ロールの仮想マシンのサイズの詳細については、[クラウド サービスのサイズの構成](../cloud-services/cloud-services-sizes-specs.md)に関するページを参照してください。<br/><br/>**Cloud Services** を使用すると、複数のロールを定義して処理を分散させることや、アプリケーションの柔軟なスケーリングを実現することができます。各クラウド サービスには 1 つ以上の Web ロールまたは worker ロールが含まれており、各ロールにそれぞれ専用のアプリケーション ファイルと構成が関連付けられます。ロールにデプロイされているロール インスタンス (仮想マシン) の数を増やすことでクラウド サービスをスケールアップし、ロール インスタンスの数を減らすことでクラウド サービスをスケールダウンできます。詳細については、[Azure の実行モデル](../cloud-services/cloud-services-choose-me.md)に関するページを参照してください。<br/><br/>[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および Load Balancer による組み込みの Azure 高可用性サポートを利用して、スケールアウトできます。<br/><br/>多層アプリケーションについては、Azure Virtual Network を介して Web/worker ロール アプリケーションをデータベース サーバー VM に接続することをお勧めします。また、Azure は同じクラウド サービス内の VM に負荷分散を提供して、VM 間でユーザー要求を分散します。この方法で接続された仮想マシンは、Azure データ センター内でローカル ネットワークを介して相互に直接通信できます。<br/><br/>Azure クラシック ポータルで**自動スケール**を設定することや、スケジュール時間を設定することができます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。|**スケールアップとスケールダウン**: Web サイト用に予約されているインスタンス (VM) のサイズを増減できます。<br/><br/>スケールアウト: Web サイト用に予約されているインスタンス (VM) を追加できます。<br/><br/>ポータルで**自動スケール**を設定するだけでなく、スケジュール時間を設定することもできます。詳細については、[Web Apps のスケールの設定方法](../app-service-web/web-sites-scale.md)に関するページを参照してください。|
 
-これらのプログラミング方法の選択に関する詳細については、[Azure Web Apps、Cloud Services、および VM についていつ、どれを使用するか](../app-service-web/choose-web-site-cloud-service-vm.md)に関するページを参照してください。
+これらのプログラミング方法の選択に関する詳細については、[Azure Web Apps、Cloud Services、および VM の選択方法と使用時期](../app-service-web/choose-web-site-cloud-service-vm.md)に関するページを参照してください。
 
 ## 次のステップ
 
 Azure の仮想マシンで SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0824_2016-->

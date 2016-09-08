@@ -47,12 +47,12 @@ Azure AD と 8x8 Virtual Office の統合を構成するには、次のものが
 
 
 ## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
+このチュートリアルの目的は、テスト環境で Microsoft Azure AD のシングル サインオンをテストできるようにすることです。
 
 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの 8x8 Virtual Office の追加
-2. Azure AD シングル サインオンの構成とテスト
+2. Microsoft Azure AD シングル サインオンの構成とテスト
 
 
 ## ギャラリーからの 8x8 Virtual Office の追加
@@ -86,26 +86,26 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 	![ギャラリーでアプリを選択する](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_0001.png)
 
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、8x8 Virtual Office で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+##  Microsoft Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、8x8 Virtual Office で Microsoft Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する 8x8 Virtual Office ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと 8x8 Virtual Office の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、8x8 Virtual Office の **[Username (ユーザー名)]** の値として割り当てます。
 
-8x8 Virtual Office で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+8x8 Virtual Office で Microsoft Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Microsoft Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD テスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Microsoft Azure AD シングル サインオンをテストします。
 3. **[8x8 Virtual Office のテスト ユーザーの作成](#creating-a-8x8-virtual-office-test-user)** - 8x8 Virtual Office で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Microsoft Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### Azure AD シングル サインオンの構成
+### Microsoft Azure AD のシングル サインオンの構成
 
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、8x8 Virtual Office アプリケーションでシングル サインオンを構成します。
+このセクションでは、クラシック ポータルで Microsoft Azure AD のシングル サインオンを有効にして、8x8 Virtual Office アプリケーションでシングル サインオンを構成します。
 
-**8x8 Virtual Office で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**8x8 Virtual Office で Microsoft Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. クラシック ポータルの **8x8 Virtual Office** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 	 
@@ -270,7 +270,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
 ### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+このセクションの目的は、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストすることです。
 
 アクセス パネルで [8x8 Virtual Office] タイルをクリックすると、自動的に 8x8 Virtual Office アプリケーションにサインオンします。
 
@@ -300,4 +300,4 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 [204]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

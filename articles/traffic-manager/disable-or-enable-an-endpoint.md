@@ -3,7 +3,7 @@
    description="この記事では、Traffic Manager プロファイル エンドポイントの無効化または有効化について説明します。"
    services="traffic-manager"
    documentationCenter="na"
-   authors="joaoma"
+   authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
 <tags 
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/10/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Traffic Manager エンドポイントの無効化または有効化
 
@@ -24,7 +24,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 ## エンドポイントを無効にするには
 
 1. Azure クラシック ポータルの [Traffic Manager] ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、プロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
-1. ページの上部にある、**[エンドポイント]** をクリックして、構成に含まれるエンドポイントを表示します。 
+1. ページの上部にある、**[エンドポイント]** をクリックして、構成に含まれるエンドポイントを表示します。
 1. 無効にするエンドポイントをクリックしてから、ページの下部にある **[無効化]** をクリックします。
 1. Traffic Manager ドメイン名用に構成された DNS Time To Live (TTL) に基づいて、トラフィックはエンドポイントに送信されなくなります。TTL は、Traffic Manager プロファイルの [構成] ページから変更できます。
 
@@ -44,4 +44,4 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -19,9 +19,11 @@
 # VPN Gateway について
 
 
-VPN Gateway は、仮想ネットワークとオンプレミスとの間でネットワーク トラフィックの送信に使用される一連の設定です。VPN Gateway は、サイト対サイト、ポイント対サイト、ExpressRoute の各接続で使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。
+VPN Gateway は、仮想ネットワークとオンプレミスの場所との間でネットワーク トラフィックの送信に使用されるリソースのコレクションです。ゲートウェイは、サイト対サイト、ポイント対サイト、ExpressRoute の各接続で使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。
 
-各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは 1 つに限られています。接続を作成するには、VNet に仮想ネットワーク ゲートウェイを追加し、追加の VPN ゲートウェイ設定を構成します。VPN 接続を作成する場合もあります。また、構成に VPN が必要ない場合もあります。設定のコレクションは、接続に VPN が必要かどうかに関係なく、"VPN ゲートウェイ" と呼ばれます。
+接続を作成するには、VNet に仮想ネットワーク ゲートウェイを追加し、追加の VPN Gateway リソースとその設定を構成します。各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。
+
+ゲートウェイの要件については、「[ゲートウェイの要件](vpn-gateway-about-vpn-gateway-settings.md#requirements)」を参照してください。合計スループットの見積もりについては、「[About VPN Gateway Settings (VPN Gateway の設定について)](vpn-gateway-about-vpn-gateway-settings.md#aggthroughput)」を参照してください。価格については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway)」を参照してください。サブスクリプションとサービスの制限については、[ネットワークの制限](../articles/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
 
 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。たとえば、クラシック デプロイメント モデルを使用して VNet を作成した場合は、クラシック デプロイメント モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。詳細については、[Resource Manager およびクラシック デプロイメント モデルの概要](../resource-manager-deployment-model.md)に関するページを参照してください。
 
@@ -34,7 +36,10 @@ VPN ゲートウェイを構成する手順は、仮想ネットワークの作�
 
 図と説明を参考にして、要件を満たす構成トポロジを選択できます。図は主要なベースライン トポロジを示していますが、図をガイドラインとして使用して、より複雑な構成を構築することもできます。各構成は、選択した VPN ゲートウェイ設定に依存します。
 
-VPN ゲートウェイは設定のコレクションであるため、一部の設定を 1 つのツールで構成してから、別のツールに切り替えることができます。現時点では、すべての VPN ゲートウェイ設定を Azure ポータルで構成することはできません。各構成の記事の手順では、特定のツールが必要かどうかが指定されています。クラシック デプロイメント モデルで作業している場合、現時点では、クラシック ポータルで操作するか、PowerShell を使用することができます。使用可能な個々の設定については、「[About VPN Gateway settings (VPN ゲートウェイ設定について)](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
+### VPN Gateway の設定の構成
+
+VPN Gateway はリソースのコレクションであるため、一部のリソースをあるツールで構成してから、別のツールに切り替えて他のリソースの設定を構成できます。現時点では、すべての VPN Gateway リソースの設定を Azure Portal で構成することはできません。各構成の記事の手順では、特定のツールが必要かどうかが指定されています。クラシック デプロイメント モデルで作業している場合、現時点では、クラシック ポータルで操作するか、PowerShell を使用することができます。使用可能な個々の設定については、「[About VPN Gateway settings (VPN ゲートウェイ設定について)](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
+
 
 
 ## サイト間とマルチサイト
@@ -77,14 +82,15 @@ VNet と複数のオンプレミス ネットワークの間に、VPN 接続を�
 
 Azure には現在、クラシックと Resource Manager という 2 つのデプロイメント モデルがあります。これまで Azure を使用してきているユーザーであれば、おそらく Azure VM およびクラシック VNet で実行されているインスタンス ロールを利用されていることでしょう。新しい VM とロール インスタンスが、Resource Manager で作成された VNet 上で実行されていることも考えられます。VNet 間に接続を作成し、一方の VNet 内のリソースがもう一方の VNet 内のリソースと直接通信できるようにすることが可能です。
 
-### VNET ピアリング
-
-仮想ネットワークの構成が特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)は、現在、プレビュー段階です。
-
 
 ### デプロイメント モデルおよび方法
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
+
+### VNET ピアリング
+
+仮想ネットワークの構成が特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)は、現在、プレビュー段階です。
+
 
 
 ## ポイント対サイト
@@ -108,7 +114,9 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](../exp
 
 ## サイト間と ExpressRoute の共存接続
 
-ExpressRoute は、パブリックなインターネットを経由せずに WAN から Azure などの Microsoft サービスに直接アクセスする、専用の接続です。サイト間 VPN トラフィックは、暗号化が施されたうえでパブリック インターネット経由で送受信されます。同じ仮想ネットワークに対してサイト間 VPN と ExpressRoute 接続が構成可能な場合、いくつかの利点があります。ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ネットワークの一部ではないものの、ExpressRoute 経由で接続されているサイトに接続したりすることができます。
+ExpressRoute は、パブリックなインターネットを経由せずに WAN から Azure などの Microsoft サービスに直接アクセスする、専用の接続です。サイト間 VPN トラフィックは、暗号化が施されたうえでパブリック インターネット経由で送受信されます。同じ仮想ネットワークに対してサイト間 VPN と ExpressRoute 接続が構成可能な場合、いくつかの利点があります。
+
+ExpressRoute 用にセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成したり、サイト間 VPN を使用して、ネットワークの一部ではないものの、ExpressRoute 経由で接続されているサイトに接続したりすることができます。この構成では、同一の仮想ネットワークに 2 つの仮想ネットワーク ゲートウェイが必要です (1 つは -GatewayType が Vpn のゲートウェイで、もう 1 つは -GatewayType が ExpressRoute のゲートウェイ)。
 
 
 ![Coexist connection](./media/vpn-gateway-about-vpngateways/demoer.png "expressroute-site2site")
@@ -131,4 +139,4 @@ VPN Gateway の詳細については、「[VPN Gateway に関する FAQ](vpn-gat
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

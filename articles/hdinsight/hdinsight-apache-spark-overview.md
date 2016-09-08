@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="06/06/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 # 概要: HDInsight Linux での Apache Spark
@@ -35,7 +35,7 @@ HDInsight で Spark クラスターを作成するときは、Spark をインス
 
 Azure HDInsight は、完全に管理された Spark サービスを提供します。HDInsight で Spark を使用する利点は次のとおりです。
 
-| 機能 | 説明 |
+| 機能 | Description |
 |-------------------------------------|-------------------|
 | クラスターの作成のしやすさ | Microsoft Azure 管理ポータル、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分で作成できます。[HDInsight での Spark クラスターの概要](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください |
 | 使いやすさ | HDInsight クラスターの Spark には、Jupyter の Notebook が事前に構成されています。対話型のデータ処理とビジュアル化にこれらを使用できます。URL は https://CLUSTERNAME.azurehdinsight.net/jupyter です。__CLUSTERNAME__ を、使用する Spark HDInsight クラスターの名前に置き換えます。|
@@ -135,4 +135,4 @@ HDInsight Linux での Spark クラスターの作成から始めてください
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Linux、Unix、または OS X と Linux ベースの Hadoop の間で SSH キーを使用する | Microsoft Azure"
-   description="Secure Shell (SSH) を使用して Linux ベースの HDInsight にアクセスできます。このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。"
+   description=" Secure Shell (SSH) を使用して Linux ベースの HDInsight にアクセスできます。このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/14/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 #Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する
@@ -25,7 +25,9 @@
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) では、コマンドライン インターフェイスを利用し、Linux ベース HDInsight クラスターで操作をリモート実行できます。このドキュメントでは、Linux、Unix、または OS X の各クライアントから HDInsight で SSH を使用する方法について説明します。
 
-> [AZURE.NOTE] この記事で説明する手順は、Linux、Unix、または OS X の各クライアントを使用していることを前提とします。`ssh` と `ssh-keygen` を提供するパッケージ (Windows の Git など) をインストール済みの場合は、これらの手順を Windows ベースのクライアントで実行できますが、「[Windows から Linux ベースの HDInsight (Hadoop) で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」に記載されている手順に従って Windows ベースのクライアントを設定することをお勧めします。
+> [AZURE.NOTE] この記事で説明する手順は、Linux、Unix、または OS X の各クライアントを使用していることを前提とします。[Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) など、`ssh` と `ssh-keygen` を提供するパッケージがインストールされている場合は、これらの手順を Windows ベースのクライアントで実行できます。
+>
+> SSH が Windows ベースのクライアントにインストールされていない場合は、PuTTYのインストールと使用に関する情報が記載された、[HDInsight (Hadoop) で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)方法に関するページの手順に従ってください。
 
 ##前提条件
 
@@ -118,7 +120,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ターミナル セッションから、SSH コマンドを使用して、アドレスとユーザー名を入力し、クラスター ヘッド ノードに接続します。
 
-* **SSH アドレス** - SSH でクラスターに接続するために使用するアドレスは 2 つあります。
+* **SSH アドレス** - SSH でクラスターに接続するために使用できるアドレスは 2 つあります。
 
     * **ヘッド ノードに接続する**: クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
     
@@ -245,4 +247,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

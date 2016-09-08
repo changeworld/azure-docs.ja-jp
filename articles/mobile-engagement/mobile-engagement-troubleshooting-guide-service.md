@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="mobile-multiple"
    ms.workload="mobile" 
-   ms.date="02/29/2016"
+   ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
 # サービスの問題に関するトラブルシューティング ガイド
@@ -56,8 +56,8 @@
 4) デバイスに問題があるかどうかをテストするには、以下を実行します。
 
    - デバイスが、別の Azure Mobile Engagement 統合アプリを使用して Azure Mobile Engagement に接続できるかどうかをテストします。
-   - Azure Mobile Engagement UI で確認できるイベント、ジョブ、およびクラッシュを電話から生成できることをテストします。 
-   - Azure Mobile Engagement UI から、デバイス ID に基づいてデバイスにプッシュ通知を送信できるかどうかをテストします。 
+   - Azure Mobile Engagement UI で確認できるイベント、ジョブ、およびクラッシュを電話から生成できることをテストします。
+   - Azure Mobile Engagement UI から、デバイス ID に基づいてデバイスにプッシュ通知を送信できるかどうかをテストします。
 
 5) アプリに問題があるかどうかをテストするには、以下を実行します。
 
@@ -89,4 +89,4 @@
     - 最大ファイル サイズの 35 MB よりも小さいファイルを使用します。
  
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0824_2016-->

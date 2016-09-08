@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Application Insights によって使用される IP アドレス | Microsoft Azure"
-	description="静的アドレスの一覧" 
+	description="Application Insights で必要なサーバー ファイアウォール例外" 
 	services="application-insights"
     documentationCenter=".net"
 	authors="alancameronwills" 
@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/30/2016" 
+	ms.date="08/24/2016" 
 	ms.author="awills"/>
  
 # Application Insights によって使用される IP アドレス
 
-[Visual Studio Application Insights](app-insights-overview.md) サービスによって使用されるさまざまな IP アドレスの中には、ファイアウォールの内側で実行されているアプリを監視する場合などに把握しておく必要があるものもあります。
+[Visual Studio Application Insights](app-insights-overview.md) サービスは、多くの IP アドレスを使用します。監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
 
 > [AZURE.NOTE] これらは静的アドレスですが、しばしば変更の必要が生じることがあります。
 
@@ -28,8 +28,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 |目的|URL|IP|ポート
 |---|---|---|---
-| テレメトリ|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|443
-|LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |可変|443
+| テレメトリ|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|使用します
+|LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |可変|使用します
 
 
 
@@ -46,11 +46,11 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
 この一覧は時々変更される場合があります。
 
-## 可用性
+## 可用性テスト
 
-これは[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の実行元のアドレスの一覧です。
+これは[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の実行元のアドレスの一覧です。アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
 
-ポート 80 (http) と 443 (https) を開きます。
+これらのアドレスからの着信トラフィック用にポート 80 (http) と 443 (https) を開きます。
 
 ```
 
@@ -184,4 +184,4 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

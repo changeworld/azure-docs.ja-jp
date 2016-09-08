@@ -71,7 +71,7 @@ Azure ポータルを使用して RHEL 7 仮想マシンをプロビジョニン
 ## 新しくプロビジョニングされた Linux 仮想マシンへのリモート接続
 RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しました。続いて、仮想マシンへのリモート接続を行います。
 
-**RHEL 7.2 仮想マシンへの接続** 「[Linux を実行する仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-classic-log-on.md)」の記事に記載の手順に従ってください。
+**RHEL 7.2 仮想マシンへの接続** [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)に関する記事の手順に従ってください。
 
 次の手順では、SSH クライアントである PuTTY を使用して、RHEL 仮想マシンに接続することを想定しています。詳細については、「[PuTTY Download Page (PuTTY のダウンロード ページ)](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)」を参照してください。
 
@@ -173,8 +173,8 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 
 ## 詳細情報
-- [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-classic-log-on.md)。
+- [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)。
 - [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 - [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0824_2016-->

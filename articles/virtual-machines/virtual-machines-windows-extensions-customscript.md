@@ -49,7 +49,7 @@
 
 上記の例で、ファイルの URL とファイル名を独自の設定に置き換えます。テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
 
-多くのシナリオで、お客様はスクリプトの URL とパラメーターをプライベートとしてを保持することを希望します。これを実現するには、ストレージ アカウント名とキーのみでしかアクセスできないようにし、保護された設定として送信されるように、スクリプトの URL をプライベートとして保持します。さらに、バージョン 1.7 以降の Windows カスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
+スクリプトの URL とパラメーターを公開しない場合は、スクリプトの URL を **private** に設定します。スクリプトの URL が **private** に設定されている場合には、保護された設定としてストレージ アカウント名とキーを送信しないとアクセスできません。また、バージョン 1.7 以降のカスタム スクリプト拡張機能では、保護された設定としてスクリプト パラメーターを指定することもできます。
 
 ## 保護された設定を持つ Windows VM テンプレートの例
 
@@ -68,10 +68,8 @@
         "storageAccountKey": "yourStorageAccountKey"
         }
         }
-カスタム スクリプト拡張機能の最新バージョンのスキーマについては、[こちら](virtual-machines-windows-extensions-configuration-samples.md)のマニュアルを参照してください。
+カスタム スクリプト拡張機能の最新バージョンのスキーマについては、「[Azure Windows VM 拡張機能の構成サンプル](virtual-machines-windows-extensions-configuration-samples.md)」を参照してください。
 
-カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成する完全なサンプルについては、次の例をご覧ください。
+カスタム スクリプト拡張機能を使用して、VM でアプリケーションを構成するサンプルについては、「[Windows 仮想マシンでのカスタムのスクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)」を参照してください。
 
-* [Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
-
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

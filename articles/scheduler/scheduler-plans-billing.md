@@ -12,7 +12,7 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="06/30/2016"
+ ms.date="08/18/2016"
  ms.author="krisragh"/>
 
 # Azure Scheduler のプランと課金
@@ -69,7 +69,7 @@ P20 Premium ジョブ コレクションで提供される機能は P10 Premium 
 
 1 回の操作でジョブ コレクション内のすべてのジョブを無効にすることができますが、その操作を行ってもジョブ コレクションの課金状態は変更されず、ジョブ コレクションに対して_依然として_課金されます。同様に、空のジョブ コレクションもアクティブと見なされ、課金の対象となります。
 
-## 料金
+## 価格
 
 料金の詳細については、「[Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
 
@@ -92,4 +92,4 @@ P20 Premium ジョブ コレクションで提供される機能は P10 Premium 
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

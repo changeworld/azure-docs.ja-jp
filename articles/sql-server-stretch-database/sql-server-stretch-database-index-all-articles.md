@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/21/2016"
 	ms.author="DouglasL"/>
 
 
@@ -60,8 +60,8 @@
 
 | &nbsp; | タイトル | Description |
 | --: | :-- | :-- |
-| 12 | [Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化](sql-server-stretch-database-encryption-tde.md) | Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 |
-| 13 | [Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化](sql-server-stretch-database-tde-tsql.md) | Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 |
+| 12 | [Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化](sql-server-stretch-database-encryption-tde.md) | Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 |
+| 13 | [Azure (Transact-SQL) での Stretch Database に対する Transparent Data Encryption (TDE) の有効化](sql-server-stretch-database-tde-tsql.md) | Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 |
 
 
 
@@ -72,4 +72,4 @@
 | 14 | [Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md) | Stretch が有効なデータベースをバックアップする方法について説明します。 |
 | 15 | [Stretch 対応のデータベースを復元する](sql-server-stretch-database-restore.md) | Stretch が有効なデータベースを復元する方法について説明します。 |
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0824_2016-->

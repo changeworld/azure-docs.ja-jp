@@ -1,21 +1,21 @@
-<properties 
+<properties
    pageTitle="Azure ポータルを使用したインターネットに接続するクラシック デプロイ モデルのロード バランサーの作成の開始 | Microsoft Azure"
    description="Azure ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
    services="load-balancer"
    documentationCenter="na"
-   authors="joaoma"
-   manager="carolz"
+   authors="sdwheeler"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"
 />
-<tags  
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="03/17/2016"
-   ms.author="joaoma" />
+   ms.author="sewhee" />
 
 # Azure ポータルを使用したインターネットに接続するロード バランサー (クラシック) の作成の開始
 
@@ -23,14 +23,14 @@
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[Azure リソース マネージャーを使用し、インターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-arm-ps.md)についても説明します。
 
- 
+
 [AZURE.INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 
 
-## Azure ポータルを使用したロード バランサーのエンドポイントの作成	
+## Azure ポータルを使用したロード バランサーのエンドポイントの作成
 
 Azure ポータルを使用してインターネットに接続するロード バランサー (クラシック) デプロイメント モデルを作成するには、次の手順に従います。
 
@@ -57,7 +57,7 @@ Azure ポータルを使用してインターネットに接続するロード �
 11. [OK] をクリックし、[負荷分散セットの結合] ブレードに戻ります。
 
 12. [OK] をクリックし、[ロード バランサー セット] ブレードに新しいロード バランサー リソースが表示されるのを待ちます。
- 
+
 ## 次のステップ
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
@@ -66,4 +66,4 @@ Azure ポータルを使用してインターネットに接続するロード �
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0824_2016-->

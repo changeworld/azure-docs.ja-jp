@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="TBD"
-   ms.date="05/25/2016"
+   ms.date="08/17/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスの CHAP の構成
@@ -53,7 +53,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
     
 	3. パスワードを確認入力します。
 
-4. **[保存]** をクリックします。確認メッセージが表示されます。**[OK]** をクリックして変更を保存します。
+4. [**Save**] をクリックします。確認メッセージが表示されます。**[OK]** をクリックして変更を保存します。
 
 #### Windows ホスト サーバーで一方向認証を構成するには
 
@@ -85,7 +85,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
 
 	4. **[OK]** をクリックします。
 
-		![Advanceds settings general](./media/storsimple-configure-chap/IC740946.png)
+		![詳細設定 (全般)](./media/storsimple-configure-chap/IC740946.png)
 
 5. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブに、デバイスの状態が **[接続中]** として表示されます。StorSimple 1200 デバイスを使用する場合、各ボリュームは以下に示すように iSCSI ターゲットとしてマウントされます。そのため、ボリュームごとに手順 3 と手順 4 を繰り返す必要があります。
 
@@ -156,7 +156,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 
 	4. **[相互認証の実行]**チェック ボックスをオンにします。
 
-		![Advanceds settings mutual authentication](./media/storsimple-configure-chap/IC740950.png)
+		![詳細設定 (相互認証)](./media/storsimple-configure-chap/IC740950.png)
 
 	5. **[OK]** をクリックして、CHAP 構成を完了します。
 	 
@@ -198,4 +198,4 @@ CHAP の構成が正しくない場合、**"認証エラー"** というエラ�
 
 - [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

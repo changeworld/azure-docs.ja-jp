@@ -214,7 +214,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 2. 次のコマンドは、ソース VMM サーバーとターゲット VMM サーバーの Site Recovery ネットワークを取得します。
 
-    	$PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]
+    	$PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
 
 		$RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
@@ -226,7 +226,30 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 		New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
-## ステップ 6: 仮想マシンの保護の有効化
+## ステップ 6: ストレージ マッピングを構成する
+
+1. 次のコマンドは、記憶域の分類のリストを $storageclassifications 変数に格納します。
+
+		$storageclassifications = Get-AzureRmSiteRecoveryStorageClassification
+
+
+2. 次のコマンドは、ソースの分類を $SourceClassificaion 変数に格納し、ターゲットの分類を $TargetClassification 変数に格納します。
+
+    	$SourceClassificaion = $storageclassifications[0]
+
+		$TargetClassification = $storageclassifications[1]
+
+	
+	> [AZURE.NOTE] ソースとターゲットの分類には、配列内の任意の要素を指定できます。$storageclassifications 配列内のソースとターゲットの分類のインデックスを確認するには、次のコマンドの出力を参照してください。
+	
+	> Get-AzureRmSiteRecoveryStorageClassification | Select-Object -Property FriendlyName, Id | Format-Table
+
+
+3. 次のコマンドレットは、ソースの分類とターゲットの分類間のマッピングを作成します。
+
+		New-AzureRmSiteRecoveryStorageClassificationMapping -PrimaryStorageClassification $SourceClassificaion -RecoveryStorageClassification $TargetClassification
+
+## ステップ 7: 仮想マシンの保護を有効化する
 
 サーバー、クラウド、ネットワークを正しく構成したら、クラウド内の仮想マシンの保護を有効にすることができます。
 
@@ -331,4 +354,4 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://msdn.microsoft.com/library/azure/mt637930.aspx)します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0824_2016-->

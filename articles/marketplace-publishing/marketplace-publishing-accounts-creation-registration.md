@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/01/2016"
+   ms.date="08/18/2016"
    ms.author="hascipio"/>
 
 # Microsoft 開発者アカウントの作成
@@ -172,7 +172,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
   > [AZURE.TIP] 参加ポリシーについては、[Azure Web サイト](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
 
-## 発行ポータルで共同管理者を追加する手順
+## 4\.発行ポータルで共同管理者を追加する手順
 次の手順で共同管理者を追加するには、**管理者である必要があります**。
 
 >[AZURE.NOTE] **新規ユーザーの場合**、発行ポータルで共同管理者を追加する前に、発行ポータルで少なくとも 1 つのアプリケーションが作成されていることを確認します。**[パブリッシャー]** タブは、発行ポータルでアプリケーションを作成しないと表示されないからです。
@@ -184,6 +184,15 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 5. [パブリッシャー] に移動してアカウントを選択し、[管理者] に移動して共同管理者を追加します (以下のスクリーンショットを参照)
 
   ![図](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
+
+## 5\.発行ポータルで共同管理者を削除する手順
+次の手順で共同管理者を削除するには、**管理者である必要があります**。
+
+1. 管理者の電子メール ID で発行ポータルにログインします。
+2. **[パブリッシャー]**、自分のアカウントを選択、**[管理者]**、**[Co-Admins (共同管理者)]** の順に移動します。
+3. 削除する共同管理者の横にある **[X]** ボタンをクリックします (以下のスクリーンショットを参照)。
+
+    ![図](media/marketplace-publishing-accounts-creation-registration/imgDeleteAdmin_03.png)
 
 ## 次のステップ
 以上でアカウントの作成と登録は完了です。プランを発行するためには、技術面以外の前提条件を満たす必要があります。[技術面以外の前提条件](marketplace-publishing-pre-requisites.md)に関するページをご覧ください。
@@ -218,4 +227,4 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 [link-devsvc-prereq]: marketplace-publishing-dev-service-creation-prerequisites.md
 [link-pushstaging]: marketplace-publishing-push-to-staging.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0824_2016-->

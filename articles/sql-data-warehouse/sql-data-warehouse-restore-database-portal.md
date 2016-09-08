@@ -3,7 +3,7 @@
    description="Azure SQL Data Warehouse を復元するための Azure ポータル タスク。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
+   authors="Lakshmi1812"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="07/18/2016"
-   ms.author="sonyama;barbkess;nicw"/>
+   ms.author="lakshmir;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse の復元 (ポータル)
 
@@ -116,4 +116,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 <!--Other Web references-->
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0824_2016-->

@@ -4,7 +4,7 @@
    services="virtual-machines-linux"
    documentationCenter=""
    authors="HaishiBai"
-   manager="larar"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"/>
 
@@ -257,4 +257,4 @@ Deis クラスタをコントロールする **deisctl**　が必要となりま
 [resource-group-overview]: ../resource-group-overview.md
 [powershell-azure-resource-manager]: ../powershell-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0824_2016-->

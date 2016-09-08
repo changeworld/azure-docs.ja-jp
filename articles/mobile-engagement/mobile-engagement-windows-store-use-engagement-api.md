@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/19/2016" 
 	ms.author="piyushjo" />
 
 #Windows ユニバーサルでエンゲージメント API を使用する方法
@@ -160,7 +160,7 @@
 
 ##エラーの報告
 
-エラーには 3 種類あります。
+エラーには次の 3 種類があります。
 
 -   スタンドアロン エラー
 -   セッション エラー
@@ -329,7 +329,7 @@ Extras はセルあたり **1024** 文字に制限されています。
 
 SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリケーション固有情報) を手動で報告できます。
 
-これらの情報は段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。イベント Extras のように、Dictionary<object, object> を使用して情報をアタッチします。
+このデータは段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。イベント Extras のように、Dictionary<object, object> を使用してデータをアタッチします。
 
 ### 例
 
@@ -368,4 +368,4 @@ IDE コンソールにテスト ログを生成するように SDK を構成で�
 			EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0824_2016-->
