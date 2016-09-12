@@ -19,7 +19,9 @@
 
 # Node.js から Azure Table Storage を使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Overview
 
@@ -441,4 +443,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Table サービスを使用する Node.js Web アプリ]: ../storage-nodejs-use-table-storage-web-site.md
   [Create and deploy a Node.js application to an Azure website]: ../web-sites-nodejs-develop-deploy-mac.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0817_2016--->
