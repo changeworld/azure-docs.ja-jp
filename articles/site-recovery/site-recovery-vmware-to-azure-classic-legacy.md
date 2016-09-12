@@ -425,7 +425,8 @@ Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 
 	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
 	2. **[ターゲット (Azure) リソースの準備]** で、**[追加ソフトウェアのダウンロードとインストール (Linux マスター ターゲット サーバーのみ)]** をクリックします。ダウンロードした tar ファイルを、sftp クライアントを使用して仮想マシンにコピーします。または、デプロイ済みの Linux マスター ターゲット サーバーにログオンし、*wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* を使用してファイルをダウンロードしてもかまいません。
 	2. Secure Shell クライアントを使用してサーバーにログオンします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
-	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64***![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
+	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64***
+	![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
 	4. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
 	5. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
 	6. コマンド “**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**” を実行します。

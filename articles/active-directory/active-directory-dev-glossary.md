@@ -64,7 +64,7 @@
 詳細については、OAuth2 仕様の[承認付与タイプ][OAuth2-AuthZ-Grant-Types]と[承認エンドポイント][OAuth2-AuthZ-Endpoint]に関するセクションおよび [OpenIDConnect 仕様][OpenIDConnect-AuthZ-Endpoint]を参照してください。
 
 ## 承認付与
-[リソース所有者](#resource-owner)の保護されたリソースにアクセスしてよいという[承認](#authorization)を表す資格情報。[クライアント アプリケーション](#client-application)に対して付与されます。クライアント アプリケーションは、その種類や要件に応じて、[OAuth2 Authorization Framework によって規定された 4 つの付与タイプ][OAuth2-AuthZ-Grant-Types] ("承認コード付与"、"クライアント資格情報付与"、"暗黙的付与"、"リソース所有者パスワード資格情報付与") のいずれかを使ってアクセス許可を得ることができます。クライアントに返される資格情報は、使用された承認付与のタイプに応じて、[アクセス トークン](#access-token)と[承認コード](#authorization-code) (その後アクセス トークンに交換される) のいずれかになります。
+[リソース所有者](#resource-owner)の保護されたリソースにアクセスしてよいという[承認](#authorization)を表す資格情報。[クライアント アプリケーション](#client-application)に対して付与されます。クライアント アプリケーションは、その種類や要件に応じて、[OAuth2 Authorization Framework によって規定された 4 つの付与タイプ][OAuth2-AuthZ-Grant-Types] \("承認コード付与"、"クライアント資格情報付与"、"暗黙的付与"、"リソース所有者パスワード資格情報付与") のいずれかを使ってアクセス許可を得ることができます。クライアントに返される資格情報は、使用された承認付与のタイプに応じて、[アクセス トークン](#access-token)と[承認コード](#authorization-code) (その後アクセス トークンに交換される) のいずれかになります。
 
 ## 承認サーバー
 [OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)を認証し、その承認を得た後にアクセス トークンを[クライアント](#client-application)に発行するサーバーをいいます。[クライアント アプリケーション](#client-application)は実行時に、その[承認](#authorization-endpoint)エンドポイントおよび[トークン](#token-endpoint) エンドポイントを介し、OAuth2 によって定義された[承認付与](#authorization-grant)に従って承認サーバーと対話します。

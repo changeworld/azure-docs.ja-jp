@@ -102,7 +102,7 @@ Transact-SQL の文法、使用方法、例の詳細については、SQL Server
 
 ### 「適用先」タグについて
 
-TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。トピック タイトルの下に、4 つの SQL Server プラットフォームを一覧表示して、適用性を示すアイコン バーがあります。たとえば、可用性グループは SQL Server 2012 で導入されました。[可用性グループの作成](https://msdn.microsoft.com/library/ff878399.aspx)トピックでは、そのステートメントが ** SQL Server (2012 年以降) に適用されることが示されます 。ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
+TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。トピック タイトルの下に、4 つの SQL Server プラットフォームを一覧表示して、適用性を示すアイコン バーがあります。たとえば、可用性グループは SQL Server 2012 で導入されました。[可用性グループの作成](https://msdn.microsoft.com/library/ff878399.aspx)トピックでは、そのステートメントが** SQL Server (2012 年以降) に適用されることが示されます 。ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 

@@ -134,7 +134,7 @@ IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属し
 
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission]\(Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 

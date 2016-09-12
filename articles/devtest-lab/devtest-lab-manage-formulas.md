@@ -98,7 +98,7 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. **[Create Formula]** (数式の作成) ブレードで、新しい数式の**名前**と**説明**を入力し、**[OK]** を選択します。数式が正常に作成されると、**[Lab formulas]** (ラボ数式) ブレードに一覧表示されます。
 
-	![[Create Formula] (数式の作成) ブレード](./media/devtest-lab-manage-formulas/create-formula-blade.png)
+	![[Create Formula] \(数式の作成) ブレード](./media/devtest-lab-manage-formulas/create-formula-blade.png)
 
 ## 数式の変更
 数式を変更するには、次の手順に従います。

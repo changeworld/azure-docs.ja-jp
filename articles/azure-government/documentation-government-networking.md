@@ -39,7 +39,7 @@ ExpressRoute では、ExpressRoute の場所 (Exchange プロバイダーの施�
 
 プライベート接続アーキテクチャを利用するすべてのお客様は、Azure Government の Gateway Network/Internet (GN/I) エッジ ルーターの責任分界点に対するユーザー接続に関して、適切な実装が確立、維持されていることを確認する必要があります。同様に、Azure Government に使用される Gateway Network/Customer (GN/C) エッジ ルーターの責任分界点とオンプレミス環境との間のネットワーク接続は貴社にて確立してください。
 
-ExpressRoute は、Azure Government で一般提供されています。詳細については (パートナーとピアリングの場所を含む)、<a href="https://azure.microsoft.com/ja-JP/documentation/services/expressroute/">ExpressRoute のパブリック ドキュメント</a>を参照してください。
+ExpressRoute は、Azure Government で一般提供されています。詳細については (パートナーとピアリングの場所を含む)、<a href="https://azure.microsoft.com/documentation/services/expressroute/">ExpressRoute のパブリック ドキュメント</a>を参照してください。
 
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を随時ご覧ください。
 

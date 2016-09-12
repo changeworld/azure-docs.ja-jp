@@ -38,7 +38,7 @@
 
 ITAR に対応している Azure Government サービスについては、<a href="http://www.microsoft.com/ja-JP/TrustCenter/Compliance/default.aspx/">Microsoft Azure セキュリティ センター コンプライアンス ページ</a>を参照し、最新情報を確認してください。その他の Microsoft サービスが利用できる可能性もありますが、Azure Government によって保護されるサービスの範囲には含まれません。また、Azure Government サービスでは、その他さまざまなリソース、アプリケーション、サービスを使用することが認められている場合があります。そうしたリソースやアプリケーション、サービスは、サード パーティまたは Microsoft が、独立した使用条件とプライバシー ポリシーの下で提供しています。そうした "付加的" サービス (Marketplace サービスなど) については、付随する条項をご自身の責任ですべて確認し、ITAR のコンプライアンスに関する要件を確実に満たしてください。
 
-<a href="https://azure.microsoft.com/ja-JP/features/gov/">Azure Government</a> は、扱うデータが特定の政府規制や要件 (ITAR など) の対象となる事業体で利用できます。そのような事業体では、規制に準拠するために Azure Government が必要となります。Azure Government をご利用のお客様は、適格性検証の対象となります。Microsoft による適格性検証ではたとえば、お客様が、米国国務省への登録 (またはデータの取り扱いに関して特定の要件を持った政府機関との資金提供契約) によって証明された ITAR の対象となる軍需品のメーカー、輸出業者、仲介業者であることの確認が行われます。
+<a href="https://azure.microsoft.com/features/gov/">Azure Government</a> は、扱うデータが特定の政府規制や要件 (ITAR など) の対象となる事業体で利用できます。そのような事業体では、規制に準拠するために Azure Government が必要となります。Azure Government をご利用のお客様は、適格性検証の対象となります。Microsoft による適格性検証ではたとえば、お客様が、米国国務省への登録 (またはデータの取り扱いに関して特定の要件を持った政府機関との資金提供契約) によって証明された ITAR の対象となる軍需品のメーカー、輸出業者、仲介業者であることの確認が行われます。
 
 Azure Government の適格性に関してご不明な点がある場合は、担当のアカウント チームにお問い合わせください。
 

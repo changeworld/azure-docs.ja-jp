@@ -145,7 +145,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 
 4. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
 
-    [Backup Goal] (バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    [Backup Goal]\(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 

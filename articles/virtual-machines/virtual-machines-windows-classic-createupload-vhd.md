@@ -95,7 +95,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 ## 手順 4: カスタム イメージの一覧にイメージを追加する
 
-[Add-AzureVMImage] (https://msdn.microsoft.com/library/mt589167.aspx) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
+[Add-AzureVMImage](https://msdn.microsoft.com/library/mt589167.aspx) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
 
 		Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/<vhdName>.vhd" -OS "Windows"
 
