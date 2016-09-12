@@ -94,7 +94,7 @@ Batch アカウントのクォータは、[Azure ポータル][portal]で確認�
 
 ## 関連トピック
 
-* [Azure Batch アカウントの作成と管理](batch-account-create-portal.md)
+* [Azure Portal で Azure Batch アカウントを作成して管理する](batch-account-create-portal.md)
 
 * [Azure Batch 機能の概要](batch-api-basics.md)
 
@@ -106,4 +106,4 @@ Batch アカウントのクォータは、[Azure ポータル][portal]で確認�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

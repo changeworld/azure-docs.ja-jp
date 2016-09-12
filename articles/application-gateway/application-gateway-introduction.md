@@ -72,7 +72,7 @@ Azure Application Gateway は、バックエンド インスタンスの正常�
 
 ## 構成と管理
 
-REST API や PowerShell コマンドレットを使用して、アプリケーション ゲートウェイを作成および管理できます。
+REST API や PowerShell コマンドレット、[Azure Portal](https://portal.azure.com/) を使用して、アプリケーション ゲートウェイを作成および管理できます。
 
 
 ## 次のステップ
@@ -81,4 +81,4 @@ REST API や PowerShell コマンドレットを使用して、アプリケー�
 
 URL ベースのコンテンツ ルーティングを使用してアプリケーション ゲートウェイを作成する方法については、「[URL ベースのルーティングを使用して Application Gateway を作成する](application-gateway-create-url-route-arm-ps.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

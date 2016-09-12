@@ -3,7 +3,7 @@
 	description="API Management の構成に使用できるポリシーについて説明します。" 
 	services="api-management" 
 	documentationCenter="" 
-	authors="steved0x" 
+	authors="vladvino" 
 	manager="erikre" 
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
-	ms.author="sdanie"/>
+	ms.date="08/29/2016" 
+	ms.author="apimpm"/>
 
 # Azure API Management ポリシー リファレンス
 
@@ -36,12 +36,14 @@
 	-	[制御フロー][] - ブール[式][]の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。
 	-	[要求を転送する][] - バックエンド サービスに要求を転送します。
 	-	[Event Hub にログを記録する][] - [Logger](https://msdn.microsoft.com/library/azure/mt592020.aspx#Logger) エンティティによって定義されたメッセージ ターゲットに、指定された形式でメッセージを送信します。
+	-	[再試行](https://msdn.microsoft.com/ja-JP/library/dn894085.aspx#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。
 	-	[応答を返す](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。
 	-	[1 方向の要求を送信する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) - 指定された URL に要求を送信します。応答は待機しません。
 	-	[要求を送信する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) - 指定された URL に要求を送信します。
 	-	[要求メソッドを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 	-	[状態コードを設定する](https://msdn.microsoft.com/library/azure/dn894085.aspx#SetStatus) - HTTP 状態コードを指定された値に変更します。
 	-	[変数の設定][] - 名前付き[コンテキスト][]変数の値を、後でアクセスできるように保持します。
+	-	[トレース](https://msdn.microsoft.com/ja-JP/library/dn894085.aspx#Trace) - [API Inspector](../api-management/api-management-howto-api-inspector.md) の出力に文字列を追加します。
 	-	[待機](https://msdn.microsoft.com/library/azure/dn894085.aspx#Wait) - 含まれている要求の送信、キャッシュからの値の取得、または制御フロー ポリシーが完了するまで待機してから次に進みます。
 -	[認証ポリシー][]
 	-	[基本認証][] -基本認証を使用してバックエンド サービスで認証します。
@@ -51,6 +53,7 @@
 	-	[キャッシュに格納][] - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。
 	-	[キャッシュから値を取得](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) - キャッシュされたキー別の項目を取得します。
 	-	[値をキャッシュに格納](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) - 項目をキー別にキャッシュに格納します。
+	-	[キャッシュから値を削除](https://msdn.microsoft.com/ja-JP/library/dn894086.aspx#RemoveCacheByKey) - キー別にキャッシュ内の項目を削除します。
 -	[クロス ドメイン ポリシー][]
 	-	[クロスドメイン呼び出しを許可][] - Adobe Flash や Microsoft Silverlight ブラウザーベースのクライアントから API を利用できるようにします。
 	-	[CORS][] - クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのクロスドメイン呼び出しを可能にします。
@@ -120,4 +123,4 @@
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

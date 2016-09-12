@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # VM を作成するための DevTest ラボの数式の管理
@@ -42,7 +42,7 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。
 
@@ -84,7 +84,7 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。
 
@@ -105,7 +105,7 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。
 
@@ -122,7 +122,7 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest ラボ]** を選択します。
+1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。
 
@@ -142,6 +142,8 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 
     ![Formula context menu](./media/devtest-lab-manage-formulas/formula-delete-confirmation.png)
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 関連するブログ記事
 
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
@@ -149,4 +151,4 @@ DevTest ラボの*ユーザー* アクセス許可が付与されていればだ
 ## 次のステップ
 VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

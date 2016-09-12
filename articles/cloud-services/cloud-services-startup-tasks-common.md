@@ -175,6 +175,10 @@ Azure はお使いのロール内で開始されるプロセス用のファイ�
 
 このコマンドを **startup.cmd** ファイルに追加します。
 
+    @echo off
+    @echo Installing "IPv4 Address and Domain Restrictions" feature 
+    powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP-Security"
+    @echo Unlocking configuration for "IPv4 Address and Domain Restrictions" feature 
     %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 
 これにより、Web ロールが初期化されるたびに **startup.cmd** バッチ ファイルが実行され、必要な **ipSecurity** セクションのロックを解除します。
@@ -305,7 +309,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 コンピューティング エミュレーターとクラウドで別の操作を実行するには、[ServiceDefinition.csdef] ファイルに環境変数を作成し、お使いのスタートアップ タスクで環境変数をテストします。
 
-環境変数を作成するには、[Variable]/[RoleInstanceValue] 要素を追加し、XPath 値 `/RoleEnvironment/Deployment/@emulated` を作成します。**%ComputeEmulatorRunning %** 環境変数の値は、コンピューティング エミュレーターで実行される場合は `"true"`、クラウドで実行される場合は `"false"` になります。
+環境変数を作成するには、[Variable]/[RoleInstanceValue] 要素を追加し、XPath 値 `/RoleEnvironment/Deployment/@emulated` を作成します。**%ComputeEmulatorRunning %** 環境変数の値は、計算エミュレーターで実行される場合は `"true"`、クラウドで実行される場合は `"false"` になります。
 
 
 ```xml
@@ -487,4 +491,4 @@ Startup2.cmd:
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

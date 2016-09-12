@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/22/2016"
+	ms.date="08/29/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -37,7 +37,8 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)| 既定のルールと既定の構成について説明します。また、既定のシナリオに対するルールの動作についても説明します。
 [ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 前のトピックの続きで、ユーザーと連絡先の構成の連携について説明します (特に複数フォレスト環境)。
 [既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md) | 属性フローに対する一般的な構成変更方法について説明します。
-[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 構成モデルのしくみおよび式言語の構文について詳しく説明します。
+[宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)| 宣言型のプロビジョニングと呼ばれる構成モデルについて説明します。
+[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 宣言型のプロビジョニングで使用される式言語の構文について説明します。
 [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 既定の構成を変更する場合のサポートの制約。
 [フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) | Azure AD と同期するオブジェクトを制限する方法についてのさまざまなオプション、およびこれらのオプションの構成手順について説明します。
 **機能とシナリオ** |
@@ -63,4 +64,4 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

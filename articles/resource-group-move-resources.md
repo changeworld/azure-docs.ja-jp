@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="08/30/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -76,6 +76,7 @@
 - Application Gateway
 - アプリケーション インサイト
 - ExpressRoute
+- Recovery Services コンテナー。Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動しないでください。
 - Virtual Machines スケール セット
 - Virtual Networks (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
 - VPN Gateway
@@ -274,4 +275,4 @@ Web アプリがその App Service プランとは異なるリソース グル�
 - サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用したリソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 - リソースを論理的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

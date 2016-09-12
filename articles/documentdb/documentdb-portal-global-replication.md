@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/15/2016"
+	ms.date="08/26/2016"
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB グローバル データベース レプリケーションを実行する方法
@@ -31,11 +31,10 @@ DocumentDB は、ほとんどの [Azure リージョン][azureregions]で利用�
 
 1. [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
 2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
-3. アカウントのブレードで、メニューから **[リージョンの追加/削除]** をクリックします。![DocumentDB アカウントでのリージョンの追加 > [リージョンの追加/削除]][1]
+3. アカウントのブレードで、メニューから **[リージョンの追加/削除]** をクリックします。
+4. **[リージョンの追加/削除]** ブレードで、追加または削除するリージョンを選択した後、**[OK]** をクリックします。リージョンを追加するには費用が必要になります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)や「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」の記事を参照してください。
 
-5. **[リージョンの追加/削除]** ブレードで、追加または削除するリージョンを選択した後、**[OK]** をクリックします。リージョンを追加するには費用が必要になります。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)や「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」の記事を参照してください。
-
-    ![地図でリージョンをクリックして、リージョンを追加又は削除する][2]
+    ![地図でリージョンをクリックして、リージョンを追加又は削除する][1]
 
 ### グローバル データベース リージョンの選択
 
@@ -54,9 +53,9 @@ While all regions associated with your DocumentDB database account can serve rea
 1. In the **DocumentDB Account** blade, select the database account to modify.
 2. In the account blade, if the **All Settings** blade is not already opened, click **All Settings**.
 3. In the **All Settings** blade, click **Write Region Priority**.
-    ![Change the write region under DocumentDB Account > Settings > Add/Remove Regions][3]
+    ![Change the write region under DocumentDB Account > Settings > Add/Remove Regions][2]
 4. Click and drag regions to order the list of regions. The first region in the list of regions is the active write region.
-    ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][4]
+    ![Change the write region by reordering the region list under DocumentDB Account > Settings > Change Write Regions][3]
 -->
 
 ## <a id="next"></a>次のステップ
@@ -66,15 +65,14 @@ While all regions associated with your DocumentDB database account can serve rea
 DocumentDB におけるグローバル データベース レプリケーションの動作の詳細については、「[DocumentDB を使用したデータのグローバル分散](documentdb-distribute-data-globally.md)」を参照してください。複数のリージョンでのデータのレプリケーションをプログラムで実行する方法については、「[複数リージョンの DocumentDB アカウント使用した開発](documentdb-developing-with-multiple-regions.md)」を参照してください。
 
 <!--Image references-->
-[1]: ./media/documentdb-portal-global-replication/documentdb-account-blade.png
-[2]: ./media/documentdb-portal-global-replication/documentdb-add-region.png
-[3]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-1.png
-[4]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-2.png
+[1]: ./media/documentdb-portal-global-replication/documentdb-add-region.png
+[2]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-1.png
+[3]: ./media/documentdb-portal-global-replication/documentdb_change_write_region-2.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/regions/#services
-[offers]: https://azure.microsoft.com/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
+[offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

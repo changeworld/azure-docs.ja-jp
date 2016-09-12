@@ -26,7 +26,7 @@
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-Azure [SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、 SQL データベースのコピーを作成できます。コピー操作では、トランザクション ログの末尾がコピーされて、自動バックアップの一部の完全、差分、およびトランザクション ログ バックアップを使用して、最後のトランザクション ログ バックアップの時点でトランザクションがコピー元のデータベースと同じデータベースが作成されます。
+Azure [SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、 SQL データベースのコピーを作成できます。コピー操作では、トランザクション ログの末尾がコピーされて、自動バックアップの一部の完全、差分、およびトランザクション ログ バックアップにより、トランザクションが最後のトランザクション ログ バックアップの時点のコピー元データベースと同じデータベースが作成されます。
 
 同じサーバーまたは別のサーバーのいずれかで、データベースのコピーを作成できます。データベース コピーのサービス レベルとパフォーマンス レベル (価格レベル) はコピー元のデータベースと同じになります。コピーの完了後、コピーは完全に機能する独立したデータベースになります。ログイン、ユーザー、アクセス許可は非依存で管理できます。
 
@@ -37,7 +37,7 @@ Azure [SQL Database 自動バックアップ](sql-database-automated-backups.md)
 
 SQL Database をコピーするには、以下が必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料評価版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - コピーする SQL データベース。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 
 ## 次のステップ
@@ -57,4 +57,4 @@ SQL Database をコピーするには、以下が必要です。
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

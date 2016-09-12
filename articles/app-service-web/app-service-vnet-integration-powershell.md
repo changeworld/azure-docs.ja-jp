@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/07/2016"
+	ms.date="08/29/2016"
 	ms.author="ccompy"/>
 
 # PowerShell を使ってアプリを仮想ネットワークに接続する #
 
-## 概要 ##
+## Overview ##
 
 Azure App Service では、アプリ (Web、モバイル、API) を自分のサブスクリプションの Azure 仮想ネットワーク (VNET) に接続できます。この機能は VNET 統合と呼ばれています。VNET 統合機能を App Service Environment 機能と混同しないでください。App Service Environment 機能の場合、仮想ネットワークで Azure App Service のインスタンスを実行できます。
 
@@ -57,7 +57,7 @@ PowerShell ウィンドウを開き、次のコマンドで Azure のアカウ�
 
 	Login-AzureRmAccount
 
-そのコマンドでは Azure 資格情報を取得するためのプロンプトが開きます。サインインした後で、次のコマンドのいずれかを使って、使用するサブスクリプションを選択します。仮想ネットワークと App Service プランがあるサブスクリプションを使用してください。
+そのコマンドでは Azure 資格情報を取得するためのプロンプトが開きます。サインインした後で、次のコマンドのいずれかを使って、使用するサブスクリプションを選択します。お使いの仮想ネットワークと App Service プランが含まれるサブスクリプションを使用してください。
 
 	Select-AzureRmSubscription –SubscriptionName [WebAppSubscriptionName]
 
@@ -500,7 +500,7 @@ Resource Manager の仮想ネットワークには、クラシック仮想ネッ
 
 		    Write-Host "Creating App association to VNET"
 		    $propertiesObject = @{
-		     "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
+		     "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnet.Name)"
 		    }
 
 		    $virtualNetwork = New-AzureRmResource -Location $location -Properties $PropertiesObject -ResourceName "$($webAppName)/$($vnet.Name)" -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName -Force
@@ -725,4 +725,4 @@ Resource Manager デプロイ モデルを使用する仮想ネットワーク�
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/
 [azureportal]: http://portal.azure.com
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

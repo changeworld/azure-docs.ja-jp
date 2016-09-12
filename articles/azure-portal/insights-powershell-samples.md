@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="08/30/2016"
 	ms.author="ashwink"/>
 
 # Azure Insights の PowerShell クイック スタート サンプル
@@ -25,7 +25,7 @@
 
 ## この記事の例
 
-この記事の各例は、Azure Insights コマンドレットの使用方法を示しています。「[Azure Insights Cmdlets (Azure Insights コマンドレット)](https://msdn.microsoft.com/library/mt282452.aspx)」で、Azure Insights (監視) コマンドレットのすべてのリストを確認することもできます。
+この記事の各例は、Azure Insights コマンドレットの使用方法を示しています。「[Azure Insights Cmdlets (Azure Insights コマンドレット)](https://msdn.microsoft.com/library/azure/mt282452#40v=azure.200#41.aspx)」で、Azure Insights (監視) PowerShell コマンドレットのすべてのリストを確認することもできます。
 
 
 ## サインインとサブスクリプションの使用
@@ -384,4 +384,4 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/myrg1/
 Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Network/networkSecurityGroups/viruela1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/sakteststorage -Categories NetworkSecurityGroupEvent -Enable $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

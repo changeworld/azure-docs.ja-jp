@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="DocumentDB のパフォーマンス レベル | Microsoft Azure" 
-	description="DocumentDB のパフォーマンス レベルを使用して、コレクションごとにスループットを予約できるようにする方法について説明します。" 
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar" 
+<properties
+	pageTitle="DocumentDB のパフォーマンス レベル | Microsoft Azure"
+	description="DocumentDB のパフォーマンス レベルを使用して、コレクションごとにスループットを予約できるようにする方法について説明します。"
+	services="documentdb"
+	authors="mimig1"
+	manager="jhubbard"
+	editor="monicar"
 	documentationCenter=""/>
 
-<tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/27/2016" 
+<tags
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
 	ms.author="mimig"/>
 
 # DocumentDB のパフォーマンス レベル
@@ -109,13 +109,13 @@ Azure ポータルで次の手順に従って、使用するパフォーマン�
 
       ![Screen shot of the Database blade with an S1 collection](./media/documentdb-performance-levels/documentdb-change-performance-S1.png)
 
-4. **[コレクション]** ブレードで、上部のバーにある **[設定]** をクリックします。
+4. **[コレクション]** ブレードで **[詳細]** をクリックし、上部のバーにある **[設定]** をクリックします。
 5. **[設定]** ブレードで **[価格レベル]** をクリックすると、**[価格レベルの選択]** ブレードに各プランの月額料金の見積もりが表示されます。ユーザー定義のスループットに変更するには、**[Standard]**、**[選択]** の順にクリックして、変更を保存します。
 
       ![Screen shot of the DocumentDB Settings and Choose your pricing tier blades](./media/documentdb-performance-levels/documentdb-change-performance.png)
 
 6. **[設定]** ブレードに戻ると、**[価格レベル]** が **[Standard]** に変更され、**[スループット (RU/秒)]** ボックスには既定値の 400 が表示されています。スループットは、400 ～ 10,000 [要求ユニット](documentdb-request-units.md)/秒 (RU/秒) の間で設定します。ページの下部にある **[価格の概要]** が自動的に更新され、月額料金の見積もりが表示されます。**[OK]** をクリックして変更を保存します。
-    
+
 	![Screen shot of the Settings blade showing where to change the throughput value](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
 7. **[データベース]** ブレードに戻ると、コレクションの新しいスループットを確認できます。
@@ -137,17 +137,17 @@ Azure ポータルで次の手順に従って、使用するパフォーマン�
 		              .Where(r => r.ResourceLink == collection.SelfLink)    
 		              .AsEnumerable()
 		              .SingleOrDefault();
-	                          
+
 	// Set the throughput to 5000 request units per second
 	offer = new OfferV2(offer, 5000);
-	                    
+
 	//Now persist these changes to the database by replacing the original resource
 	await client.ReplaceOfferAsync(offer);
 
 	// Set the throughput to S2
 	offer = new Offer(offer);
 	offer.OfferType = "S2";
-	                    
+
 	//Now persist these changes to the database by replacing the original resource
 	await client.ReplaceOfferAsync(offer);
 
@@ -168,18 +168,18 @@ Azure ポータルで次の手順に従って、使用するパフォーマン�
 
 1. ブラウザーで、[**Azure ポータル**](https://portal.azure.com)に移動します。
 2. **[参照]**、**[DocumentDB アカウント]** の順にクリックし、変更する DocumentDB アカウントを選択します。
-3. **DocumentDB アカウント** ブレードの **[データベース]** レンズで変更するデータベースを選択し、**[データベース]** ブレードで変更するコレクションを選択します。
+3. **[DocumentDB アカウント]** ブレードの **[データベース]** レンズで変更するデータベースを選択し、**[データベース]** ブレードで変更するコレクションを選択します。
 4. **[コレクション]** ブレードで、上部のバーにある **[設定]** をクリックします。
-5. **[設定]** ブレードで、**[スループット (RU/秒)]** ボックスの値を増やし、**[OK]** をクリックして変更を保存します。ブレードの下部にある **[料金の概要]** が更新されて、単一のリージョンにおけるこのコレクションの新しい月額料金の見積もりが表示されます。
+5. **[設定]** ブレードで、**[スループット (RU/秒)]** ボックスの値を増やし、**[OK]** をクリックして変更を保存します。ブレードの下部にある **[価格の概要]** が更新されて、単一のリージョンにおけるこのコレクションの新しい月額料金の見積もりが表示されます。
 
-    ![[スループット] ボックスと [価格の概要] が強調表示されている [設定] ブレードのスクリーンショット](./media/documentdb-performance-levels/documentdb-change-throughput.png)
- 
+    ![[スループット] ボックスと [価格の概要] が強調表示されている [設定] ブレードのスクリーンショット](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
+
 スループットを増やす量を検討中の場合は、「[スループットのニーズの推定](documentdb-request-units.md#estimating-throughput-needs)」と[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)に関するページをご覧ください。
 
 ## 次のステップ
 
 Azure DocumentDB の価格設定とデータ管理の詳細については、以下のリソースを参照してください。
- 
+
 - [DocumentDB の料金](https://azure.microsoft.com/pricing/details/documentdb/)
 - [DocumentDB の容量の管理](documentdb-manage.md)
 - [DocumentDB のデータのモデル化](documentdb-modeling-data.md)
@@ -193,4 +193,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

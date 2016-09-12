@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/17/2016"
+   ms.date="08/30/2016"
    ms.author="barbkess;jrj;sonyama"/>
 
 # SQL Data Warehouse へのソリューションの移行
@@ -23,6 +23,7 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 また、SQL Data Warehouse は Microsoft Azure に基づいたプラットフォームであることに留意することも重要です。このため、移行の一環としてクラウドへのデータ転送が含まれる場合もよくあります。データ転送はそれ自体が問題になるものであり、特に容量が増加する場合には慎重に検討する必要があります。データ転送とデータの読み込みは別々のトピックです。
 
 ## 移行ガイダンス
+
 移行を開始する前に、次の記事を読んで製品の相違点と基本的な概念を必ず理解しておいてください。
 
 - [スキーマの移行][]
@@ -30,11 +31,8 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 - [コードの移行][]
 
 ## 次のステップ
-開発に関するその他のヒントについては、[開発の概要][]に関するページをご覧ください。
 
-さらに詳細については、「[Transact-SQL リファレンス][]」を参照してください。
-
-最後に、[読み込みの概要][]を確認します。この記事では、さまざまなデータ読み込みオプションについて説明し、ステップ バイ ステップ ガイダンスを提供します。
+また、CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data Warehouse の優れたガイダンスもあります。移行に関する追加のガイダンスについては、「[Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行)][]」の記事をご覧ください。
 
 <!--Image references-->
 
@@ -43,13 +41,11 @@ SQL Data Warehouse は、ニーズに合わせて柔軟に拡張できる分散�
 [データの移行]: sql-data-warehouse-migrate-data.md
 [コードの移行]: sql-data-warehouse-migrate-code.md
 
-[開発の概要]: sql-data-warehouse-overview-develop.md
-[読み込みの概要]: sql-data-warehouse-overview-load.md
-[Transact-SQL リファレンス]: sql-data-warehouse-overview-reference.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
+[Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行)]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

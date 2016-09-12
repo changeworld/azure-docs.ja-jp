@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/20/2016"
+	ms.date="08/24/2016"
 	ms.author="genli"/>
 
 # Azure ストレージ アカウント、コンテナー、または VHD の削除に関するトラブルシューティング
 
-## まとめ
+## 概要
 [Azure ポータル](https://portal.azure.com/) または [Azure クラシック ポータル](https://manage.windowsazure.com/)で Azure ストレージ アカウント、コンテナー、または VHD を削除しようとすると、エラーが表示される場合があります。問題は、次の状況で発生する可能性があります。
 
 -	バーチャル マシンを削除すると、ディスクと VHD は自動的に削除されません。これがストレージ アカウントの削除に失敗する理由である場合があります。ディスクを別の VM にマウントできるように、マイクロソフトはディスクを削除しません。
@@ -50,7 +50,7 @@
 
 > [AZURE.WARNING] アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。これはアカウントのリソースにも当てはまります。 VHD、BLOB、テーブル、キュー、またはファイルを削除すると、それは完全に削除されます。リソースが使用されていないことを確認します。
 
-## 症状
+## 一般的な問題
 
 Azure ストレージ アカウント、コンテナー、または VHD を削除しようとするきに表示される可能性がある一般的なエラーを次のセクションに示します。
 
@@ -60,7 +60,7 @@ Azure ストレージ アカウント、コンテナー、または VHD を削�
 
 **Azure ポータルの場合**:
 
-*ストレージ アカウント <vm-storage-account-name> を削除できませんでした。ストレージ アカウント <vm-storage-account-name> を削除できません。ストレージ カウント <vm-storage-account-name> に、アクティブなイメージやディスクがあります。このストレージ アカウントを削除する前に、これらのイメージやディスクを削除してください。*
+*ストレージ アカウント <vm-storage-account-name> を削除できませんでした。ストレージ アカウント <vm-storage-account-name> を削除できません。ストレージ アカウント <vm-storage-account-name> に、アクティブなイメージやディスクがあります。このストレージ アカウントを削除する前に、これらのイメージやディスクを削除してください。*
 
 **Azure クラシック ポータルの場合**:
 
@@ -88,23 +88,24 @@ VM を削除してから、関連する VHD の BLOB を削除しようと、次
 
 *BLOB 'path/XXXXXX-XXXXXX-os-1447379084699.vhd' を削除できませんでした。エラー: 現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。*
 
-## 詳細
+## 停止済み (割り当て解除済み) について
 
 従来のデプロイ モデルで作成されて保持されている VM は、[Azure ポータル](https://portal.azure.com/)または [Azure クラシック ポータル](https://manage.windowsazure.com/)で **[停止済み (割り当て解除)]** 状態になります。
 
 **Azure クラシック ポータル**:
 
-![Azure クラシック ポータルでの [停止済み (割り当て解除)] 状態。](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo1.png)
+![Azure ポータルでの [停止済み (割り当て解除)] 状態。](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo2.png)
+
 
 **Azure ポータル**:
 
-![Azure ポータルでの [停止済み (割り当て解除)] 状態。](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo2.png)
+![Azure クラシック ポータルでの [停止済み (割り当て解除)] 状態。](./media/storage-cannot-delete-storage-account-container-vhd/moreinfo1.png)
 
 [停止済み (割り当て解除)] 状態は、CPU、メモリ、およびネットワークなど、コンピューター リソースを解放します。ただし、ディスクは引き続き維持されますので、ユーザーは必要に応じて VM を簡単にもう一度作成できます。これらのディスクは、Azure ストレージによって支えられている VHD の上に作成されます。ストレージ アカウントにはこれらの VHD があり、ディスクにはこれらの VHD のリースがあります。
 
-## 参照
+## 次のステップ
 
 - [ストレージ アカウントの削除](storage-create-storage-account.md#delete-a-storage-account)
 - [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (Microsoft Azure (PowerShell) で BLOB ストレージのロックされているリースを解除する方法)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0831_2016-->

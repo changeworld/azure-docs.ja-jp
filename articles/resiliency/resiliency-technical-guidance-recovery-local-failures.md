@@ -110,7 +110,7 @@ Azure Storage のデータの持続性は、リージョン内の完全に独立
 
 Azure SQL Database は、データベースをサービスとして提供します。これにより、リレーショナル データベースに対するプロビジョニング、データの挿入、およびクエリ実行をアプリケーションで迅速に行うことができます。使い慣れた SQL Server の機能の多くが提供される一方で、ハードウェア、構成、修正、および回復力に関する負担は取り除かれます。
 
->[AZURE.NOTE] Azure SQL Database は、SQL Server と 1 対 1 で対応する機能を提供するものではありません。各クラウド アプリケーションに固有のそれぞれ異なる要件セット (柔軟な拡張、メンテナンス コストを削減するサービスとしてのデータベースなど) を満たすことを目的としています。詳細については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。
+>[AZURE.NOTE] Azure SQL Database は、SQL Server と 1 対 1 で対応する機能を提供するものではありません。各クラウド アプリケーションに固有のそれぞれ異なる要件セット (柔軟な拡張、メンテナンス コストを削減するサービスとしてのデータベースなど) を満たすことを目的としています。詳細については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」を参照してください。
 
 ####レプリケーション
 
@@ -223,4 +223,4 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[リージョン全体のサービス中断からの復旧](./resiliency-technical-guidance-recovery-loss-azure-region.md)について説明します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

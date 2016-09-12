@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/30/2016"
    ms.author="sonyama;barbkess"/>
 
 # Azure SQL Data Warehouse のトラブルシューティング
@@ -24,9 +24,11 @@
 
 | 問題 | 解決策 |
 | :----------------------------------| :---------------------------------------------- |
-| CTAIP エラー | このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。このエラーが発生した場合は、[セキュリティの概要][]に関する記事を参照してください。この記事では、マスター上にログインを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。|
+| ユーザー ' NT AUTHORITY\\ANONYMOUS LOGON' はログインできませんでした。(Microsoft SQL Server、エラー: 18456) | このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、master データベースにユーザーを追加します。詳細については、[セキュリティの概要][]に関する記事を参照してください。|
+|サーバー プリンシパル"MyUserName" が、現在のセキュリティ コンテキストでデータベース "master" にアクセスできません。ユーザー既定のデータベースを開けません。ログインできませんでした。ユーザー 'MyUserName' はログインできませんでした。(Microsoft SQL Server、エラー: 916) | このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、master データベースにユーザーを追加します。詳細については、[セキュリティの概要][]に関する記事を参照してください。|
+| CTAIP エラー | このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。このエラーが発生した場合は、[セキュリティの概要][]に関する記事を参照してください。この記事では、マスター上にログインとユーザーを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。|
 | ファイアウォールによってブロックされる |Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。アクセスできるようにファイアウォールを構成するには、[プロビジョニング手順][]に関するページの、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][]に関するトピックの手順に従ってください。|
-| ツールまたはドライバーで接続できない | SQL Data Warehouse では、[Visual Studio 2013 または 2015][] を使用してデータのクエリを実行することをお勧めします。クライアント接続については、[SQL Server Native Client 10/11 (ODBC)][] をお勧めします。|
+| ツールまたはドライバーで接続できない | SQL Data Warehouse では、[SSMS][]、[SSDT for Visual Studio 2015][]、または [sqlcmd][] を使用してデータのクエリを実行することをお勧めします。ドライバーおよび SQL Data Warehouse への接続に関する詳細については、「[Azure SQL Data Warehouse のドライバー][]」と「[Azure SQL Data Warehouse への接続][]」の記事を参照してください。|
 
 
 ## ツール
@@ -72,7 +74,6 @@
 | MERGE ステートメントがサポートされていない | [MERGE の対処方法][]に関するページをご覧ください。|
 | ストアド プロシージャの制限事項 | ストアド プロシージャの制限事項のいくつかを理解するには、[ストアド プロシージャの制限事項][]に関するページをご覧ください。|
 | UDF が SELECT ステートメントをサポートしていない | これは、UDF の現在の制限です。サポートされている構文については、[CREATE FUNCTION][] に関するページをご覧ください。 |
-'<-- ローカル コメント: ページが見つかりません「ストアド プロシージャの制限事項」が壊れています。記事の参照のリンクの修正を試みました -->'
 
 ## 次のステップ
 
@@ -91,6 +92,10 @@
 
 <!--Article references-->
 [セキュリティの概要]: ./sql-data-warehouse-overview-manage-security.md
+[SSMS]: https://msdn.microsoft.com/library/mt238290.aspx
+[SSDT for Visual Studio 2015]: ./sql-data-warehouse-install-visual-studio.md
+[Azure SQL Data Warehouse のドライバー]: ./sql-data-warehouse-connection-strings.md
+[Azure SQL Data Warehouse への接続]: ./sql-data-warehouse-connect-overview.md
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [SQL Data Warehouse をスケーリング]: ./sql-data-warehouse-manage-compute-overview.md
 [DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
@@ -98,7 +103,6 @@
 [クエリを監視する方法]: ./sql-data-warehouse-manage-monitor.md
 [プロビジョニング手順]: ./sql-data-warehouse-get-started-provision.md
 [クライアント IP 用のサーバー ファイアウォール アクセスの構成]: ./sql-data-warehouse-get-started-provision.md#create-a-new-azure-sql-server-level-firewall
-[Visual Studio 2013 または 2015]: ./sql-data-warehouse-query-visual-studio.md
 [SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 [テーブルのサイズ]: ./sql-data-warehouse-tables-overview.md#table-size-queries
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
@@ -117,14 +121,14 @@
 [UPDATE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE の回避策]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
 [MERGE の対処方法]: ./sql-data-warehouse-develop-ctas.md#replace-merge-statements
-[ストアド プロシージャの制限事項]: /sql-data-warehouse-develop-stored-procedures.md#limitations
+[ストアド プロシージャの制限事項]: ./sql-data-warehouse-develop-stored-procedures.md#limitations
 [Azure SQL Data Warehouse への認証]: ./sql-data-warehouse-authentication.md
 [PolyBase UTF-8 要件に対処する]: ./sql-data-warehouse-load-polybase-guide.md#working-around-the-polybase-utf-8-requirement
 
 <!--MSDN references-->
-[SQL Server Native Client 10/11 (ODBC)]: https://msdn.microsoft.com/library/ms131415.aspx
 [sys.database\_principals]: https://msdn.microsoft.com/library/ms187328.aspx
 [CREATE FUNCTION]: https://msdn.microsoft.com/library/mt203952.aspx
+[sqlcmd]: https://azure.microsoft.com/ja-JP/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd/
 
 <!--Other Web references-->
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
@@ -135,4 +139,4 @@
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

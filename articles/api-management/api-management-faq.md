@@ -3,7 +3,7 @@
 	description="Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。" 
 	services="api-management" 
 	documentationCenter="" 
-	authors="steved0x" 
+	authors="miaojiang" 
 	manager="erikre" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/09/2016" 
-	ms.author="sdanie"/>
+	ms.author="mijiang"/>
 
 # Azure API Management の FAQ
 
@@ -155,4 +155,4 @@ GIT Credential Manager を使用しているか、Visual Studio でリポジト�
 
 はい。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

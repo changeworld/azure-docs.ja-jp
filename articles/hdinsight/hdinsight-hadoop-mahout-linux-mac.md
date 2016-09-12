@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/30/2016"
 	ms.author="larryfr"/>
 
 #HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成
@@ -246,4 +246,4 @@ Mahout ジョブは、ジョブの処理中に作成された一時データを�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,5 +1,5 @@
  <properties
-	pageTitle="Eclipse 用 HDInsight プラグインを使用して Spark Scala アプリケーションを作成する | Microsoft Azure"
+	pageTitle="Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark Scala アプリケーションを作成する | Microsoft Azure"
 	description="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/30/2016"
 	ms.author="nitinme"/>
 
 
-# Eclipse 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する
+# Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する
 
-この記事では、Eclipse 用の HDInsight プラグインを使用して、Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信するための詳細な手順を説明します。このプラグインは、次のような使い方があります。
+この記事では、Azure Toolkit for Eclipse の HDInsight ツールを使用して、Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信するための詳細な手順を説明します。このツールは、次のような複数の使い方があります。
 
 * Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する
 * Azure HDInsight Spark クラスター リソースにアクセスする
@@ -33,7 +33,7 @@
 
 * Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* HDInsight Linux での Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+* HDInsight Linux での Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 * Oracle Java Development Kit Version 7 および Version 8。
 	* HDInsight クラスターは Java バージョン 7 をサポートしているため、Spark プロジェクトのコンパイルには **Java SDK 7** が使用されます。Java SDK 7 は、[ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)からダウンロードできます。
@@ -52,25 +52,13 @@
 * e(fx)clipse を [https://www.eclipse.org/efxclipse/install.html](https://www.eclipse.org/efxclipse/install.html) からインストールしてください。
 
 
-## Eclipse 用の HDInsight Tools プラグインをインストールする
+## Azure toolkit for Eclipse の HDInsight ツールをインストールする
 
-1. Eclipse IDE を起動します。.zip パッケージをダウンロードして展開した場所に移動し、その下の **/eclipse** フォルダーに移動して、**eclipse.exe** をクリックします。ようこそ画面で **[Help (ヘルプ)]** をクリックし、**[Install New Software (新しいソフトウェアのインストール)]** をクリックします。
-
-	![HDInsight プラグインのインストール](./media/hdinsight-apache-spark-eclipse-tool-plugin/install-hdinsight-plugin-1.png)
-
-2. 次の画面の **[Work with(連携)]** ボックスに「**http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。**[Azure Toolkit for Java]** を選択し、**[Contact all update sites during install to find required software (必要なソフトウェアを検索するためにインストール中にすべての更新サイトに接続する)]** チェック ボックスをオフにして、**[Next (次へ)]** をクリックします。
-
-	![HDInsight プラグインのインストール](./media/hdinsight-apache-spark-eclipse-tool-plugin/install-hdinsight-plugin-2.png)
-
-3. **[Install Details (インストールの詳細)]** ダイアログ ボックスで、インストールされるコンポーネントを確認し、**[Next (次へ)]** をクリックします。
-
-4. **[Review Licenses (ライセンスの確認)]** ダイアログ ボックスでライセンス契約の条項に同意し、**[Finish (完了)]** をクリックします。
-
-5. インストールが完了すると、Eclipse の再起動を求めるメッセージが表示されます。ダイアログ ボックスの **[Yes (はい)]** をクリックして、Eclipse を再起動します。
+Eclipse 用の HDInsight ツールは、Azure Toolkit for Eclipse に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for Eclipse のインストール](../azure-toolkit-for-eclipse-installation.md)」をご覧ください。
 
 ## Azure サブスクリプションにログインする
 
-1. Azure Explorer を開きます。IDE の **[Window (ウィンドウ)]** メニューから、**[Show View (ビューの表示)]** をクリックし、**[Other (その他)]** をクリックします。表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** をクリックして、**[OK]** をクリックします。
+1. Eclipse IDE を起動し、Azure Explorer を開きます。IDE の **[Window (ウィンドウ)]** メニューから、**[Show View (ビューの表示)]** をクリックし、**[Other (その他)]** をクリックします。表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** をクリックして、**[OK]** をクリックします。
 
 	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/view-explorer-1.png)
 
@@ -94,7 +82,7 @@
 
 1. Eclipse IDE の作業領域で、**[File (ファイル)]**、**[New (新規)]**、**[Project (プロジェクト)]** の順にクリックします。
 
-2. **[New Project (新しいプロジェクト)]** ウィザードで、**[HDInsight]** を展開して、**[Spark on HDInsight (Scala) (HDInsight の Spark (Scala))]** を選択し、**[Next (次へ)]** をクリックします。
+2. **New Project (新しいプロジェクト)** ウィザードで、**[HDInsight]** を展開して、**[Spark on HDInsight (Scala) (HDInsight の Spark (Scala))]** を選択し、**[Next (次へ)]** をクリックします。
 
 	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -106,13 +94,13 @@
 	* **[JRE]** ボックスで、**[Use an execution environment JRE (実行環境 JRE を使用する)]** が **[JavaSE-1.7]** に設定されていることを確認します。
 	* Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。ダウンロード場所へのリンクは、このトピックで前述した「[前提条件](#prerequisites)」にあります。上の図に示すように、このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。
 
-4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7]\(JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
+4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7] (JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
 
 	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
 
-5. **[Edit Library (ライブラリの編集)]** ダイアログ ボックスで、**[Execution Environment (実行環境)]** が **[JavaSE-1.7(jdk1.7.0\_79)]** に設定されていることを確認します。これをオプションとして選択できない場合は、以下の手順に従ってください。
+5. **[Edit Library (ライブラリの編集)]** ダイアログ ボックスで、**[Execution Environment (実行環境)]** が **[JavaSE-1.7 (jdk1.7.0\_79)]** に設定されていることを確認します。これをオプションとして選択できない場合は、以下の手順に従ってください。
 
-	1. **[Alternate JRE (代替 JRE)]** オプションを選択し、**[JavaSE-1.7(jdk1.7.0\_79)]** が利用可能かどうかを確認します。
+	1. **[Alternate JRE (代替 JRE)]** オプションを選択し、**[JavaSE-1.7 (jdk1.7.0\_79)]** が利用可能かどうかを確認します。
 	2. 利用できない場合は、**[Installed JREs (インストールされている JRE)]** ボタンをクリックします。
 
 		  ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-5.png)
@@ -133,7 +121,7 @@
 
 		   ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-9.png)
 
-	7. 新しく追加された JRE が **[Execution Environment (実行環境)]** の一覧に表示されます。**[完了]** をクリックします。
+	7. 新しく追加された JRE が **[Execution Environment (実行環境)]** の一覧に表示されます。**[Finish (完了)]** をクリックします。
 
 	  	   ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-10.png)
 
@@ -145,7 +133,7 @@
 
 ## HDInsight Spark クラスター向けの Scala アプリケーションを作成する
 
-1. 既に開かれている Eclipse IDE の **Package Explorer** で、前に作成したプロジェクトを展開し、**[src]** を右クリックして **[New (新規)]** をポイントし、**[Other (その他)]** をクリックします。
+1. 既に開かれている Eclipse IDE の **Package Explorer** で、前に作成したプロジェクトを展開し、**[src]** を右クリックして **[New (新規)]** をポイントして、**[Other (その他)]** をクリックします。
 
 2. **[Select a wizard (ウィザードの選択)]** ダイアログ ボックスで **[Scala Wizards (Scala ウィザード)]** を展開し、**[Scala Object (Scala オブジェクト)]**、**[Next (次へ)]** の順にクリックします。
 
@@ -191,18 +179,18 @@
 
 		* この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
 
-		* **[Submit]** をクリックします。
+		* **[送信]** をクリックします。
 
 	3. **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission (Spark 送信)] ウィンドウにある赤いボタンをクリックして、アプリケーションを停止できます。地球アイコン (図では青のボックスで示されています) をクリックして、この特定のアプリケーションの実行に関するログを表示することもできます。
 
         ![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)
 
-    次のセクションでは、Eclipse 用の HDInsight プラグインを使用してジョブ出力にアクセスする方法を説明します。
+    次のセクションでは、Azure Toolkit for Eclipse の HDInsight ツールを使用してジョブ出力にアクセスする方法を説明します。
 
 
-## Eclipse 用の HDInsight プラグインを使用して HDInsight Spark クラスターにアクセスして管理する
+## Azure Toolkit for Eclipse の HDInsight ツールを使用して HDInsight Spark クラスターにアクセスして管理する
 
-HDInsight プラグインを使用してさまざまな操作を実行できます。
+HDInsight ツールを使用してさまざまな操作を実行できます。
 
 ### クラスターのストレージ コンテナーにアクセスする
 
@@ -226,12 +214,12 @@ HDInsight プラグインを使用してさまざまな操作を実行できま�
 
 ### Azure サブスクリプションの管理
 
-既定では、HDInsight プラグインは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。**Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。ダイアログ ボックスで、アクセスしないサブスクリプションに対するチェック ボックスをオフにし、**[Close (閉じる)]** をクリックします。Azure サブスクリプションからログオフする場合は、**[Sign Out (サインアウト)]** もクリックします。
+既定では、Azure Toolkit for Eclipse の HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。**Azure Explorer** で、**[Azure]** ルート ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、**[Close (閉じる)]** をクリックします。Azure サブスクリプションからログオフする場合は、**[Sign Out (サインアウト)]** をクリックすることもできます。
 
 
 ## Spark Scala アプリケーションのローカルでの実行
 
-Eclipse 用の HDInsight Tools プラグインを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
+Azure Toolkit for Eclipse の HDInsight ツールを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
 
 ### 前提条件
 
@@ -288,9 +276,9 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -306,4 +294,4 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

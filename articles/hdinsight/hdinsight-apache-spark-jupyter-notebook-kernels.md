@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -74,7 +74,7 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 
 	次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
-	| マジック | 例 | 説明 |
+	| マジック | 例 | Description |
 	|-----------|---------------------------------|--------------|
 	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
 	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
@@ -85,13 +85,15 @@ HDInsight (Linux) の Apache Spark クラスターには、アプリケーショ
 	| 削除 | `%%delete -f -s <session number>` | 現在 Livy エンドポイントの特定のセッションを削除します。カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
 	| cleanup | `%%cleanup -f` | このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。強制フラグ -f は必須です。 |
 
+	>[AZURE.NOTE] PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython マジック](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)も使用することができます。`%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。
+
 3. **自動視覚化**。**Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
 ## %%sql マジックでサポートされるパラメーター
 
 %%sql マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。次の表に、出力を示します。
 
-| パラメーター | 例 | 説明 |
+| パラメーター | 例 | Description |
 |-----------|---------------------------------|--------------|
 | -o | `-o <VARIABLE NAME>` | クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。データ フレーム変数の名前は、指定した変数の名前です。 |
 | パラメーター | `-q` | セルの視覚化をオフにするには、これを使用します。セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。(たとえば、`CREATE TABLE` ステートメントのような、副次的作用のある SQL クエリを実行するために) 結果をキャプチャせずに、視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
@@ -128,7 +130,7 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ## Notebook の格納場所
 
-Jupyter Notebook は、クラスターに関連付けられたストレージ アカウントの **/HdiNotebooks** フォルダーに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からもその Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を `/HdiNotebooks/mynotebook1.ipynb` にある自分のストレージ アカウントに直接アップロードする場合、Jupyter からも Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。そのため、クラスターに SSH で接続すると、次のようなファイル管理コマンドを使用できます。
 
@@ -188,4 +190,4 @@ HDInsight の Spark クラスターに対して実行される Jupyter Notebook 
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

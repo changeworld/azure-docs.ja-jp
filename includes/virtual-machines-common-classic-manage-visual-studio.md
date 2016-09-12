@@ -122,7 +122,7 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 1. この仮想マシンで既に Sysprep が実行されている場合は、**[仮想マシンで Sysprep を実行しました]** をオンにします。
 
-    Sysprep は、仮想マシンの Windows からシステム固有のデータを削除して、他の仮想マシンで利用できるテンプレートを作成することを主な目的としたツールです。詳細については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)に関するページをご覧ください。
+    Sysprep は、仮想マシンの Windows からシステム固有のデータを削除して、他の仮想マシンで利用できるテンプレートを作成することを主な目的としたツールです。詳細については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)に関するページをご覧ください。Sysprep を実行する前に、VM をバックアップします。
 
 1. キャプチャの設定が完了したら、**[キャプチャ]** をクリックしてチェックポイントを作成します。
 
@@ -158,4 +158,4 @@ Azure への仮想マシンの作成は、Visual Studio のサーバー エク�
 
 仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

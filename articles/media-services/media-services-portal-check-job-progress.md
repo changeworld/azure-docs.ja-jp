@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="方法: Azure クラシック ポータルを使用してジョブの進行状況をチェックする方法" 
-	description="方法: Azure クラシック ポータルを使用してジョブの進行状況を追跡する方法" 
+	pageTitle="Azure ポータルを使用したエンコード ジョブの進行状況の監視" 
+	description="このチュートリアルでは、Azure ポータルを使用して、ジョブの進行状況を監視する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,25 +13,33 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="08/29/2016"  
 	ms.author="juliako"/>
 
-#方法: ジョブの進行状況をチェックする
+#Azure ポータルを使用したエンコード ジョブの進行状況の監視
 
 > [AZURE.SELECTOR]
 - [ポータル](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
 - [REST ()](media-services-rest-check-job-progress.md)
 
-##ジョブの状態を確認するには、ポータルを使用します。
+## Overview
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[Media Services]** をクリックし、目的の Media Services アカウント名をクリックします。
-2. **[ジョブ]** ページを選択します。
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-	ページでは、すべてのジョブの状態が確認できます。状態、時刻、またはジョブ ID でもフィルターできます。
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。
 
-	![CheckStatus][checkstatus]
+エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、**[ジョブ]** を選択します。
 
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+
+ジョブをクリックして詳細を確認します。
+
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
+
+##次のステップ
+
+エンコード ジョブが完了したら、[こちら](media-services-portal-publish.md)の説明に従って資産を発行し、再生できます。
 
 ##Media Services のラーニング パス
 
@@ -41,13 +49,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-##次のステップ
-
-コンテンツの発行詳細については、「[方法: アセットをエンコードする](media-services-manage-content.md#publish)」をご覧ください
-
-
-[checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
- 
-
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

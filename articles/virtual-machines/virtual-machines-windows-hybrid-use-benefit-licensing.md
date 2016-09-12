@@ -29,11 +29,11 @@ Windows Server VM 向けの Azure Hybrid Use Benefit を Azure で利用する�
 - Windows Server VHD が Azure Storage にアップロードされている
 
 ### Azure PowerShell をインストールするには
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。VM を Resource Manager テンプレートを使用してデプロイする場合でも、Windows Server VHD をアップロードする (次の手順を参照) ために Azure PowerShell をインストールする必要があります。
+[最新の Azure PowerShell がインストールおよび構成](../powershell-install-configure.md)されていることを確認します。Resource Manager テンプレートを使用して VM をデプロイする場合でも、Windows Server VHD をアップロードする (次の手順を参照) ために Azure PowerShell をインストールする必要があります。
 
 ### Windows Server VHD をアップロードする
 
-Windows Server VM を Azure にデプロイするには、先に Windows Server の基本ビルドを含む VHD を作成する必要があります。この VHD は、Sysprep を使用して適切に準備した後、Azure にアップロードする必要があります。[VHD 要件と Sysprep プロセスの詳細](./virtual-machines-windows-upload-image.md)や「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。VHD が準備できたら、次のように `Add-AzureRmVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
+Windows Server VM を Azure にデプロイするには、先に Windows Server の基本ビルドを含む VHD を作成する必要があります。この VHD は、Sysprep を使用して適切に準備した後、Azure にアップロードする必要があります。[VHD 要件と Sysprep プロセスの詳細](./virtual-machines-windows-upload-image.md)や「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。Sysprep を実行する前に、VM をバックアップします。VHD が準備できたら、次のように `Add-AzureRmVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
 
 ```
 Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorageaccount.blob.core.windows.net/vhds/myvhd.vhd" -LocalFilePath 'C:\Path\To\myvhd.vhd'
@@ -43,7 +43,7 @@ Add-AzureRmVhd -ResourceGroupName MyResourceGroup -Destination "https://mystorag
 
 [VHD を Azure にアップロードするプロセス](./virtual-machines-windows-upload-image.md#upload-the-vm-image-to-your-storage-account)の詳細を確認できます。
 
-> [AZURE.TIP] この記事では Windows Server VM のデプロイを中心に説明していますが、Windows Client VM も同じ方法でデプロイできます。以下の例で、`Server` を `Client` に適宜置き換えます。
+> [AZURE.TIP] この記事では Windows Server VM のデプロイを中心に説明しています。Windows Client VM も同じ方法でデプロイできます。以下の例で、`Server` を `Client` に適宜置き換えます。
 
 ## PowerShell クイック スタートを使用して VM をデプロイする
 Windows Server VM を PowerShell を使用してデプロイするときに、追加パラメーター `-LicenseType` を指定できます。VHD を Azure にアップロードした後、新しい VM を `New-AzureRmVM` を使用して作成し、ライセンスの種類を次のように指定します。
@@ -72,7 +72,7 @@ VM を PowerShell または Resource Manager のいずれかのデプロイ方�
 Get-AzureRmVM -ResourceGroup MyResourceGroup -Name MyVM
 ```
 
-次のような出力が表示されます。
+次のように出力されます。
 
 ```
 Type                     : Microsoft.Compute/virtualMachines
@@ -165,4 +165,4 @@ New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm 
 
 [Resource Manager テンプレートの使用方法](../resource-group-overview.md)の詳細を参照します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="tbd"
-	ms.date="05/22/2016"
+	ms.date="08/19/2016"
 	ms.author="garye" />
 
 
@@ -265,13 +265,13 @@ Azure Machine Learning サービス エンドポイントのバッチ ジョブ�
 
 * **Input**: バッチ ジョブの入力が保存される BLOB 参照を表します。
 * **GlobalParameters**: 実験用に定義できる一連のグローバル パラメーターを表します。Azure Machine Learning の実験では、サービスの実行をカスタマイズする必須パラメーターとオプション パラメーターを使用できます。該当する場合、呼び出し元は必要なすべての必須パラメーターを指定する必要があります。これらのパラメーターは、キーと値のペアのコレクションとして指定します。
-* **Outputs**: サービスによって 1 つ以上の出力が定義されている場合、呼び出し元は Azure BLOB の場所にそれらをリダイレクトできます。これにより、サービスの出力を目的の場所に、予測可能な名前で保存できます。これを設定しなければ、出力 BLOB 名はランダムに生成されます。 
+* **Outputs**: サービスによって 1 つ以上の出力が定義されている場合、呼び出し元は Azure BLOB の場所にそれらをリダイレクトできます。これにより、サービスの出力を目的の場所に、予測可能な名前で保存できます。これを設定しなければ、出力 BLOB 名はランダムに生成されます。
 
     サービスでは、出力コンテンツのタイプに基づいて、サポートされる次の形式で出力コンテンツを保存する必要があることに注意してください。
   - データ セット出力: **.csv、.tsv、.arff** で保存可能
   - トレーニング済みモデル出力: **.ilearner** で保存可能
 
-  出力先のオーバーライドは *<output name  blob reference>* のペアのコレクションとして指定されます。*output name* は特定の出力ノードに対してユーザーが定義した名前であり (サービスの API ヘルプ ページにも表示)、*blob reference* は出力がリダイレクトされる Azure BLOB の場所です。
+  出力先のオーバーライドは *<出力名, BLOB 参照>* ペアのコレクションとして指定されます。*出力名*は特定の出力ノードのユーザー定義の名前であり (サービスの API ヘルプ ページにも表示)、*BLOB 参照*は出力のリダイレクト先となる Azure BLOB の場所への参照です。
 
 これらのすべてのジョブ作成パラメーターは、サービスの性質によっては省略できます。たとえば、入力ノードが定義されていないサービスでは、*Input* パラメーターを渡す必要はありません。同様に、出力先オーバーライド機能は完全に省略可能です。これは、この機能を設定しなければ、出力は Azure Machine Learning ワークスペース用に設定された既定のストレージ アカウントに保存されるからです。以下に、入力情報のみが提供されるサービスについて、REST API に渡されるサンプルの要求ペイロードを示します。
 
@@ -297,11 +297,11 @@ Azure Machine Learning サービス エンドポイントのバッチ ジョブ�
 
 **2.バッチ実行ジョブを開始する**
 
-バッチ ジョブを作成すると、システム内にそれが登録され、状態が *Not started* に設定されます。ジョブが実行されるように実際にスケジュール設定するには、サービス エンドポイントの API ヘルプ ページで説明されている **start** API を呼び出し、ジョブが作成されたときに取得されたジョブ ID を指定します。
+バッチ ジョブを作成すると、システム内にジョブが登録され、状態が *Not started* に設定されます。ジョブが実行されるように実際にスケジュールを設定するには、サービス エンドポイントの API ヘルプ ページで説明されている **start** API を呼び出し、ジョブが作成されたときに取得されたジョブ ID を指定します。
 
 **3.バッチ実行ジョブの状態を取得する**
 
-ジョブの ID を GetJobStatus API に渡して、非同期バッチ ジョブの状態をいつでもポーリングできます。API 応答には、ジョブの現在の状態のインジケーターに加え、バッチ ジョブが正常に完了した場合は、その実際の結果も含まれます。エラーが発生した場合は、ここに示すように、失敗の要因になった実際の理由に関する詳細情報が *Details* プロパティで返されます。
+ジョブの ID を GetJobStatus API に渡して、非同期バッチ ジョブの状態をいつでもポーリングできます。API 応答には、ジョブの現在の状態のインジケーターに加え、バッチ ジョブが正常に完了した場合は、その実際の結果も含まれます。エラーが発生した場合は、次に示すように、失敗の実際の理由に関する詳細情報が *Details* プロパティで返されます。
 
 **応答ペイロード**
 
@@ -319,7 +319,7 @@ Azure Machine Learning サービス エンドポイントのバッチ ジョブ�
 * Cancelled
 * Finished
 
-*Results* プロパティには、ジョブが正常に完了した場合にのみデータが取り込まれます (それ以外は、**null** になります)。ジョブが完了し、サービスで少なくとも 1 つの出力ノードが定義された場合、結果は *[output name, blob reference]* のペアのコレクションとして返されます。blob reference は実際の結果を含む BLOB への SAS 読み取り専用リファレンスです。
+*Results* プロパティには、ジョブが正常に完了した場合にのみデータが取り込まれます (それ以外は、**null** になります)。ジョブが完了し、サービスで少なくとも 1 つの出力ノードが定義されている場合、結果は *[出力名, BLOB 参照]* ペアのコレクションとして返されます。BLOB 参照は、実際の結果が格納されている BLOB への SAS 読み取り専用参照です。
 
 **応答のサンプル**
 
@@ -353,9 +353,9 @@ Azure Machine Learning サービス エンドポイントのバッチ ジョブ�
 
 #### BES SDK の使用
 
-[BES SDK Nugget パッケージ](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/)には、バッチ モードでスコア付けをするために BES を単に呼び出す機能が用意されています。Nuget パッケージをインストールするには、Visual Studio で **[ツール]** メニューの [**Nuget パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** をクリックします。
+[BES SDK Nugget パッケージ](http://www.nuget.org/packages/Microsoft.Azure.MachineLearning/)には、バッチ モードでスコア付けをするために BES を単に呼び出す機能が用意されています。Nuget パッケージをインストールするには、Visual Studio で **[ツール]** メニューの **[Nuget パッケージ マネージャー]** を選択し、**[パッケージ マネージャー コンソール]** をクリックします。
 
-Web サービスとしてデプロイされる Azure Machine Learning の実験には、Web サービス入力モジュールを含めることができます。これは、実験では、入力が BLOB の場所への参照の形で Web サービスの呼び出しを通して提供されると予期していることを意味します。Web サービス入力モジュールを使用せずに、**データのインポート** モジュールを使用することもできます。この場合、**データのインポート** モジュールは、通常は実行時にクエリを使用して SQL DB から読み取りを行ってデータを取得します。Web サービス パラメーターを使用して、他のサーバーやテーブルなどを動的に指すことができます。SDK ではこれらの両方のパターンがサポートされています。
+Web サービスとしてデプロイされる Azure Machine Learning の実験には、Web サービス入力モジュールを含めることができます。これは、実験では、入力が BLOB の場所への参照の形で Web サービスの呼び出しを通して提供されると予期していることを意味します。Web サービス入力モジュールを使用するのではなく、**データのインポート** モジュールを使用することもできます。この場合、**データのインポート** モジュールは、通常は実行時にクエリを使用して SQL DB から読み取りを行ってデータを取得します。Web サービス パラメーターを使用して、他のサーバーやテーブルなどを動的に指すことができます。SDK ではこれらの両方のパターンがサポートされています。
 
 次のサンプル コードでは、BES SDK を使用して Azure Machine Learning サービス エンドポイントに対してバッチ ジョブのサブミットおよび監視を行う方法が示されています。設定と呼び出しの詳細については、コメントを確認してください。
 
@@ -488,7 +488,7 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 	}
 
 #### Java for BES のコード サンプル
-バッチ実行サービス REST API では、下の図のように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。完全なコードは [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) で確認できます。この Java サンプルは [apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)を必要とします。
+バッチ実行サービス REST API では、下の図のように入力サンプル csv と出力サンプル csv への参照から構成される JSON を取得し、バッチ予測を実行するジョブを Azure ML で作成します。完全なコードは [Github](https://github.com/nk773/AzureML_BESApp/tree/master/src/azureml_besapp) で確認できます。この Java サンプルには、[apache http クライアント ライブラリ](https://hc.apache.org/downloads.cgi)が必要です。
 
 
 	{ "GlobalParameters": {}, 
@@ -632,20 +632,20 @@ Web サービスとしてデプロイされる Azure Machine Learning の実験�
 	    }
 	    
 ###その他のプログラミング環境
-API ヘルプ ページの swagger ドキュメントを利用し、[swagger.io](http://swagger.io/) サイトの指示に従うことで、他のさまざまな言語でコードを生成することもできます。[swagger.io](http://swagger.io/swagger-codegen/) にアクセスし、指示に従い、swagger コード、java、apache mvn をダウンロードします。以下は、他のプログラミング言語で swagger を設定する方法のまとめです。
+API ヘルプ ページの swagger ドキュメントを使用し、[swagger.io](http://swagger.io/) サイトの指示に従うことで、他のさまざまな言語でコードを生成することもできます。[swagger.io](http://swagger.io/swagger-codegen/) にアクセスし、指示に従って、swagger コード、java、apache mvn をダウンロードします。以下は、他のプログラミング言語で swagger を設定する方法のまとめです。
 
 * Java 7 以降がインストールされていることを確認する
-* apache mvn をインストールする (ubuntu の場合、*apt-get install mvn* を使用します)
+* apache mvn をインストールする (ubuntu の場合、*apt-get install mvn* を使用)
 * swagger の github にアクセスし、swagger プロジェクトを zip ファイルとしてダウンロードする
 * swagger を解凍する
-* swagger のソース ディレクトリから *mvn パッケージ*を実行し、swagger ツールを構築する
+* swagger のソース ディレクトリから *mvn パッケージ*を実行して、swagger ツールを構築する
 
 これですべての swagger ツールを使用できます。Java クライアント コードを生成する手順は次のとおりです。
 
-* Azure ML API ヘルプ ページに移動する (たとえば、[ここ](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs)から)
+* Azure ML API ヘルプ ページに移動する (たとえば、[こちら](https://studio.azureml.net/apihelp/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/jobs)から)
 * Azure ML REST API 用の swagger.json の URL を見つける (API ヘルプ ページの上部の最後から 2 番目の箇条書き)
 * swagger ドキュメント リンクをクリックする (たとえば、[こちら](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)から)
-* 「[swagger の Read Me ファイル](https://github.com/swagger-api/swagger-codegen/blob/master/README.md)」にある次のコマンドを使用し、クライアント コードを生成する
+* [swagger の Read Me ファイル](https://github.com/swagger-api/swagger-codegen/blob/master/README.md)に示されている次のコマンドを使用して、クライアント コードを生成する
 
 **クライアント コードを生成するサンプル コマンド ライン**
 
@@ -654,7 +654,7 @@ API ヘルプ ページの swagger ドキュメントを利用し、[swagger.io]
 	fb62b56f29fc4ba4b8a8f900c9b89584/services/26a3afce1767461ab6e73d5a206fbd62/swagger.json\
 	 -l java -o /home/username/sample
 
-* 下に表示されている swagger [API ヘルプ ページ](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)のサンプルにある "host"、"basePath"、"/swagger.json" フィールドの値を組み合わせ、上のコマンド ラインで使用される swagger URL を構築する
+* 次に示す swagger [API ヘルプ ページ](https://management.azureml.net/workspaces/afbd553b9bac4c95be3d040998943a4f/webservices/4dfadc62adcc485eb0cf162397fb5682/endpoints/26a3afce1767461ab6e73d5a206fbd62/apidocument)のサンプルにある "host"、"basePath"、"/swagger.json" の各フィールドの値を組み合わせて、上記のコマンド ラインで使用されている swagger URL を作成する
 
 **サンプル API ヘルプ ページ**
 
@@ -685,4 +685,4 @@ API ヘルプ ページの swagger ドキュメントを利用し、[swagger.io]
 	        "operationId": "getSwaggerDocument",
 	        
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

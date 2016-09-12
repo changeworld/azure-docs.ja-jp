@@ -1,9 +1,10 @@
-Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault.
+Azure Backup サービスには、バックアップ コンテナーと Recovery Services コンテナーの 2 種類のコンテナーがあります。
 
-| **Deployment** | **Portal** | **Vault** |
+| **デプロイ** | **ポータル** | **コンテナー** |
 |-----------|------|-----|
-| Classic | [Classic](https://manage.windowsazure.com) | Backup vault |
-| Resource Manager(recommended) | [Azure](https://portal.azure.com) | Recovery Services vault |
+| クラシック | [クラシック](https://manage.windowsazure.com) | バックアップ資格情報コンテナー |
+| リソース マネージャー (推奨) | [Azure](https://portal.azure.com) | Recovery Services コンテナー |
 
-> [AZURE.NOTE] Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically-deployed servers and VMs.  
+> [AZURE.NOTE] Resource Manager モデルでデプロイされたソリューションをバックアップ コンテナーで保護することはできません。ただし、Recovery Services コンテナーを使用して、クラシック デプロイによるサーバーと VM を保護することはできます。
 
+<!---HONumber=AcomDC_0831_2016-->

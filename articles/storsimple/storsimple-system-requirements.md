@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="07/26/2016"
+   ms.date="08/31/2016"
    ms.author="alkohli"/>
 
 # StorSimple ソフトウェア、高可用性、ネットワークの要件
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デバイスおよび StorSimple デバイスにアクセスするストレージ クライアントにおける重要なシステム要件とベスト プラクティスについて説明します。StorSimple システムをデプロイする前に以下の情報を慎重に確認します。さらにデプロイと後続の操作中にも必要に応じて以下の情報を参照することをお勧めします。
 
@@ -57,13 +57,13 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
 |------------------------|-----------|------------|----------|-------|
 |TCP 80 (HTTP)<sup>3</sup>| アウト | WAN | いいえ |<ul><li>送信ポートは、更新プログラムを取得するためにインターネット アクセスに使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul> |
-|TCP 443 (HTTPS)<sup>3</sup>| アウト | WAN | あり |<ul><li>送信ポートは、クラウド内のデータにアクセスするために使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul>|
+|TCP 443 (HTTPS)<sup>3</sup>| アウト | WAN | はい |<ul><li>送信ポートは、クラウド内のデータにアクセスするために使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul>|
 |UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 | アウト | WAN | あり |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) | イン | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
-| 5985 | イン | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 | イン | LAN | いいえ | このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| TCP 9354 | アウト | WAN | はい |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。 |
+| 3260 (iSCSI) | [ | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
+| 5985 | [ | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 | [ | LAN | いいえ | このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -81,13 +81,24 @@ StorSimple デバイスはロックされたデバイスです。ただし、iSC
 
 > [AZURE.NOTE] デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
 
-
+#### Azure ポータルの URL パターン
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
 |`https://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
 |`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
+| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
+
+#### Azure Government ポータルの URL パターン
+| URL パターン | コンポーネント/機能 | デバイスの IP |
+|------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
+|`https://*.backup.windowsazure.us`|デバイス登録| DATA 0 のみ|
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
+| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
 | `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
 | `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
@@ -127,12 +138,7 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 
 	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
 	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+	| Data 0 | 1 | - | | Data 1 | 2 | 20 | | Data 2 | 3 | 30 | | Data 3 | 4 | 40 | | Data 4 | 5 | 50 | | Data 5 | 6 | 60 |
 
 
 - クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
@@ -159,8 +165,7 @@ Update 2 にはいくつかのネットワーク関連の機能強化があり�
 
 - 再試行に関しては、クラウドよりも iSCSI が優先されます。
 
-	次の例で考えてみましょう。
-	StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+	次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
 
 	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
@@ -243,8 +248,7 @@ StorSimple デバイスには、ミラー化されたスペースを使用して
 
 - SSD または HDD の障害または交換が必要な場合、交換が必要な SSD または HDD のみを取り外すようにします。
 
-- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。
-特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 
 - 交換中は、SSD と HDD のドライブの **[メンテナンス]** ページで **[ハードウェア状態]** を監視します。緑のチェック状態は、ディスクが正常または OK であると示しています。一方、赤の感嘆符は障害中の SSD または HDD を示しています。
 
@@ -282,4 +286,4 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

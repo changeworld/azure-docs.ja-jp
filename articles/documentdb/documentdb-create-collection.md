@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/15/2016" 
+	ms.date="08/24/2016" 
 	ms.author="mimig"/>
 
 # Azure ポータルを使用して DocumentDB コレクションを作成する方法
@@ -22,11 +22,11 @@ Microsoft Azure DocumentDB を使用するには、[DocumentDB アカウント](
 
 コレクションについて不明な場合は、 「[DocumentDB コレクションとは](#what-is-a-documentdb-collection)」を参照してください。
 
-1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーにある **[DocumentDB アカウント]** をクリックし、**[DocumentDB アカウント]** ブレードで、コレクションを追加するアカウントを選択します。
+1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーにある **[DocumentDB (NoSQL)]** をクリックし、**[DocumentDB (NoSQL)]** ブレードで、コレクションを追加するアカウントを選択します。
 
     ![ジャンプバーの [DocumentDB アカウント] 、[DocumentDB アカウント] ブレードのアカウント、[DocumentDB アカウント] ブレードの [データベース] レンズのデータベースを強調表示しているスクリーン ショット](./media/documentdb-create-collection/docdb-database-creation-1-2.png)
     
-    **[DocumentDB アカウント]** がジャンプバーに表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB アカウント]** をクリックします。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
+    **[DocumentDB アカウント]** がジャンプバーに表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。アカウントが何も表示されていない場合は、[DocumentDB アカウントを作成する](documentdb-create-account.md)必要があります。
 
 2. 選択したアカウントの **[DocumentDB アカウント]** ブレードにある **[データベース]** レンズで、コレクションを追加するデータベースを選択します。
 
@@ -91,4 +91,4 @@ Azure ポータルで **[コレクションの追加]** が無効になってい
 
 コレクションにドキュメントを用意した後で、ポータルの[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) を使用することで、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)することができます。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -139,10 +139,14 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 - VPN サイト間接続のサポートされるデプロイメント モデルと、[接続の設定](../vpn-gateway/vpn-gateway-site-to-site-create.md#create-your-virtual-network)方法については、[こちら](../vpn-gateway/vpn-gateway-site-to-site-create.md)をご覧ください。
 - また、[Azure ExpressRoute](../expressroute/expressroute-introduction.md) をセットアップすることもできます。ExpressRoute を使用した Azure ネットワークのセットアップの詳細については、[こちら](../expressroute/expressroute-howto-vnet-portal-classic.md)をご覧ください。
 
+> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
+
 ### Azure ストレージ アカウントをセットアップする
 
 - Azure にレプリケートされたデータを保持するために、Standard または Premium Azure Storage アカウントが必要になります。アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [ARM モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
 - レプリケートされたデータに Premium アカウントを使用する場合は、オンプレミスのデータの継続的な変更をキャプチャするレプリケーション ログを保存するために、追加の Standard アカウントを作成する必要があります。
+
+> [AZURE.NOTE] [Migration of storage accounts]Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのストレージ アカウントの移行はサポートされていません。
 
 ### 自動検出用のアカウントを準備する
 
@@ -859,4 +863,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

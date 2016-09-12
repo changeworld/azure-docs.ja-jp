@@ -637,4 +637,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-portal]: iot-hub-manage-through-portal.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

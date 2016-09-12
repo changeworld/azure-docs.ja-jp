@@ -316,7 +316,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 	SqlConnection conn = new SqlConnection(ConnectionString);
 	conn.Open();
 
-接続文字列のキーワード ``Integrated Security=True`` は、Azure SQL Database への接続ではサポートされていません。
+接続文字列のキーワード ``Integrated Security=True`` は、Azure SQL Database への接続ではサポートされていません。ODBC 接続を確立するには、スペースを削除して Authentication を 'ActiveDirectoryIntegrated' に設定する必要があります。
 
 ### 7\.2.Azure AD のプリンシパル名とパスワードを使用して接続する
 統合認証と Azure AD の ID を使用してデータベースに接続するには、Authentication キーワードを "Active Directory Password" に設定する必要があります。接続文字列にユーザー ID (UID) とパスワード (PWD) のキーワードと値を含める必要があります。次の C# のコード サンプルでは、ADO .NET を使用します。
@@ -381,4 +381,4 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 [13]: ./media/sql-database-aad-authentication/13connect-to-db.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

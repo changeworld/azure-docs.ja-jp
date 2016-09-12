@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボ VM のカスタム アーティファクトの作成
@@ -44,7 +44,8 @@
 	  }
 	}
 
-| 要素名 | 必須 | 説明
+| 要素名  
+ | 必須 | Description
 | ------------ | --------- | -----------
 | $schema | いいえ | 定義ファイルの有効性のテストに役立つ JSON スキーマ ファイルの場所
 | title | はい | ラボで表示されるアーティファクトの名前
@@ -68,7 +69,8 @@
 	    }
 	  }
 
-| 要素名 | 必須 | 説明
+| 要素名  
+ | 必須 | Description
 | ------------ | --------- | -----------
 | type | はい | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
 | displayName Yes | ラボのユーザーに対して表示されるパラメーターの名前。
@@ -121,6 +123,8 @@
 
 1. ラボへのアーティファクト リポジトリの追加 - 「[ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 関連するブログ記事
 - [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
 - [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
@@ -129,4 +133,4 @@
 
 - [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

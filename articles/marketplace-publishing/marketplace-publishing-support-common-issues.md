@@ -29,7 +29,7 @@
 
   ![1\_RequestRefund][1]
 
-  1. サポート ページに移動します。
+  1. サポート ページ ([https://support.microsoft.com/ja-JP/getsupport?tenant=ClassicCommercial&locale=ja-JP&supportregion=ja-JP&pesid=15635&sd=&oaspworkflow=start\_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/ja-JP/getsupport?tenant=ClassicCommercial&locale=ja-JP&supportregion=ja-JP&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884)) に移動します。
   2. **[問題の種類]** ボックスで、**[顧客の管理]** を選択します。
   3. **[カテゴリ]** ボックスで、**[お客様への返金の承認または要求]** を選択します。
   4. **[要求の開始]** をクリックします。
@@ -120,4 +120,4 @@
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

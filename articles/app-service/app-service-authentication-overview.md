@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="article"
-	ms.date="04/25/2016"
+	ms.date="08/29/2016"
 	ms.author="mahender"/>
 
 # Azure App Service での認証および承認
@@ -89,7 +89,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
 
 	この場合、認証/承認の機能は無効になります。認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
 
-前述の動作は、Azure ポータルの [**要求が認証されない場合に実行するアクション**] オプションによって制御します。***プロバイダー名*でログイン** を選択した場合、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+前述の動作は、Azure ポータルの [**要求が認証されない場合に実行するアクション**] オプションによって制御します。**[<*プロバイダー名*> でのログイン]** を選択すると、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
 
 ## アプリケーションでのユーザー ID の使用
 
@@ -115,7 +115,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 - [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
 
-ここで示す以外の ID システムを使用する場合は、[Mobile Apps .NET サーバー SDK でのカスタム認証のサポートのプレビュー][custom-auth]も利用できます。このプレビューは、Web アプリ、モバイル アプリ、または API アプリで使用できます。
+ここで示す以外の ID システムを使用する場合は、[Mobile Apps .NET サーバー SDK でのカスタム認証のサポートのプレビュー][custom-auth]も利用できます。このプレビューは、Web アプリ、モバイル アプリ、API アプリで使用できます。
 
 ### Web アプリケーション
 以下のチュートリアルは、Web アプリケーションに認証を追加する方法について説明しています。
@@ -138,6 +138,18 @@ Azure Active Directory のクライアント主導のフローを使用する場
 - [iOS 向け Active Directory 認証ライブラリを使用する][ADAL-iOS]
 - [Android 向け Active Directory 認証ライブラリを使用する][ADAL-Android]
 - [Windows および Xamarin 向け Active Directory 認証ライブラリを使用する][ADAL-dotnet]
+
+Facebook のクライアント主導のフローを使用する場合は、次のリソースを使用します。
+
+- [Facebook SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+
+Twitter のクライアント主導のフローを使用する場合は、次のリソースを使用します。
+
+- [Twitter Fabric for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+
+Google のクライアント主導のフローを使用する場合は、次のリソースを使用します。
+
+- [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
 ### API アプリケーション
 次のチュートリアルで、API Apps を保護する方法を示しています。
@@ -178,4 +190,4 @@ Azure Active Directory のクライアント主導のフローを使用する場
 [ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
 [ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0831_2016-->

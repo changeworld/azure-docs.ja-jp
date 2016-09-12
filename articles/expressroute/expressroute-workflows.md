@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="08/29/2016"
    ms.author="cherylmc"/>
 
 # 回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
@@ -50,7 +50,7 @@
 - サービス プロバイダーのプロビジョニング状態
 - 状態
 
-状態は Microsoft のプロビジョニングの状態を表します。このプロパティは「*有効*」、「*有効にしています*」、「*無効にしています*」のいずれかの状態になります。ExpressRoute 回線を使用するには「有効」状態になっている必要があります。
+状態は Microsoft のプロビジョニングの状態を表します。Expressroute 回線を作成したとき、このプロパティは "有効" に設定されます。
 
 接続プロバイダーのプロビジョニング状態は接続プロバイダー側の状態を表します。これは「*プロビジョニングされていません*」、「*プロビジョニングしています*」、「*プロビジョニング済み*」のいずれかになります。ExpressRoute 回線を使用するには「プロビジョニング済み」状態になっている必要があります。
 
@@ -83,24 +83,18 @@ PowerShell コマンドレットを実行し、ExpressRoute 回線を作成す�
 
 回線は「プロビジョニング済み」で「有効」の状態でなければ使用できません。レイヤー 2 のプロバイダーを使用している場合、この状態にあるときにのみ、回線のルーティングを構成できます。
 
-#### 最初に Microsoft 側でプロビジョニング解除が開始された場合
+#### 接続プロバイダーが回線をプロビジョニング解除しているとき
 
-PowerShell コマンドレットを実行し、ExpressRoute 回線を削除すると、直後に ExpressRoute 回線の状態が以下のようになります。
-
-	ServiceProviderProvisioningState : Provisioned
-	Status                           : Disabling
-
-ExpressRoute 回線のプロビジョニングを解除するには、接続プロバイダーに接触する必要があります。**重要:** PowerShell コマンドレットを実行し、回線のプロビジョニングを解除するまで、Microsoft は回線に課金を続けます。
-
-#### サービス プロバイダー側でプロビジョニング解除が開始された場合
-
-最初にサービス プロバイダーに ExpressRoute 回線のプロビジョニング解除を要請した場合、サービス プロバイダーがプロビジョニング解除を完了すると、回線が以下の状態になります。
+サービス プロバイダーに ExpressRoute 回線のプロビジョニング解除を要請した場合、サービス プロバイダーがプロビジョニング解除を完了すると、回線が以下の状態になります。
 
 
 	ServiceProviderProvisioningState : NotProvisioned
 	Status                           : Enabled
 
-必要に応じて再度有効にしたり、PowerShell コマンドレットを実行して回線を削除したりできます。**重要:** PowerShell コマンドレットを実行し、回線のプロビジョニングを解除するまで、Microsoft は回線に課金を続けます。
+
+必要に応じて再度有効にしたり、PowerShell コマンドレットを実行して回線を削除したりできます。
+
+>[AZURE.IMPORTANT] ServiceProviderProvisioningState が "プロビジョニング中" または "プロビジョニング済み" のときに、回線を削除する PowerShell コマンドレットを実行すると、操作は失敗します。最初に ExpressRoute 回線のプロビジョニング解除を接続プロバイダーに要請してから、回線を削除してください。PowerShell コマンドレットを実行して回線を削除するまで、Microsoft は回線に課金を続けます。
 
 
 ## ルーティング セッション構成の状態
@@ -122,4 +116,4 @@ BGP プロビジョニング状態からは、Microsoft エッジで BGP セッ�
 	- [ルーティングの構成](expressroute-howto-routing-arm.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

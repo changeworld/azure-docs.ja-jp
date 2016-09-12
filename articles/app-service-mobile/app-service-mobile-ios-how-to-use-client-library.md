@@ -502,7 +502,7 @@ if (error.code == MSErrorPreconditionFailed) {
 
 ## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
 
-Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これにより、UX がよりネイティブになり、さらにカスタマイズすることも可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
 1. 「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](app-service-mobile-how-to-configure-active-directory-authentication.md)」のチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。iOS では、`<app-scheme>://<bundle-id>` 形式のリダイレクト URI が推奨されます (必須ではありません)。詳細については、「[ADAL iOS のクイックスタート](active-directory-devquickstarts-ios.md#em1-determine-what-your-redirect-uri-will-be-for-iosem)」をご覧ください。
 
@@ -591,7 +591,7 @@ POD:
 
 ## <a name="facebook-sdk"></a>方法: Facebook SDK for iOS でユーザーを認証する
 
-Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
 1. 「[App Service アプリケーションを Facebook ログインを使用するように構成する方法](app-service-mobile-how-to-configure-facebook-authentication.md)」のチュートリアルに従って、Facebook のサインイン用にモバイル アプリ バックエンドを構成します。
 
@@ -669,7 +669,7 @@ Facebook SDK for iOS を使用すると、Facebook でアプリケーション�
 
 ## <a name="twitter-fabric"></a>方法: Twitter Fabric for iOS でユーザーを認証する
 
-Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginAsync()` メソッドを使用する方法よりも推奨されます。
+Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
 1. 「[App Service アプリケーションを Twitter ログインを使用するように構成する方法](app-service-mobile-how-to-configure-twitter-authentication.md)」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
 
@@ -741,6 +741,68 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
 		}
 	}
 
+## <a name="google-sdk"></a>方法: Google Sign-In SDK for iOS でユーザーを認証する
+
+Google Sign-In SDK for iOS を使用すると、Google アカウントでユーザーをアプリケーションにサインインさせることができます。これにより、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、多くの場合、`loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
+
+1. [Google ログイン用に App Service を構成する方法](app-service-mobile-how-to-configure-google-authentication.md)のチュートリアルに従って、Google のサインイン用にモバイル アプリ バックエンドを構成します。
+
+2. [Google Sign-In for iOS の統合の開始](https://developers.google.com/identity/sign-in/ios/start-integrating)に関するドキュメントに従って、Google SDK for iOS をインストールします。「Authenticate with a Backend Server (バックエンド サーバーによる認証)」セクションについては、App Service によって自動的に処理されるため、スキップできます。
+
+3. コードをそのまま使用するだけでなく、使用する言語に応じてデリゲートの `signIn:didSignInForUser:withError:` メソッドに次のコードを追加します。
+
+**Objective-C**:
+
+	    NSDictionary *payload = @{
+	                              @"id_token":user.authentication.idToken,
+	                              @"authorization_code":user.serverAuthCode
+	                              };
+	    
+	    [client loginWithProvider:@"google" token:payload completion:^(MSUser *user, NSError *error) {
+	        // ...
+	    }];
+
+**Swift**:
+
+		let payload: [String: String] = ["id_token": user.authentication.idToken, "authorization_code": user.serverAuthCode]
+		client.loginWithProvider("google", token: payload) { (user, error) in
+			// ...
+		}
+
+4. アプリ デリゲートの `application:didFinishLaunchingWithOptions:` に、次のコードも必ず追加してください。"SERVER\_CLIENT\_ID" は、手順 1. で App Service の構成に使用したものと同じ ID に置き換えます。
+
+**Objective-C**:
+
+ 		[GIDSignIn sharedInstance].serverClientID = @"SERVER_CLIENT_ID";
+ 
+ 
+ **Swift**:
+ 
+		GIDSignIn.sharedInstance().serverClientID = "SERVER_CLIENT_ID"
+
+ 
+ 5. 使用する言語に応じて、アプリケーションの UIViewController に次のコードを追加します。これは `GIDSignInUIDelegate` プロトコルを実装します。ユーザーがサインアウトしてからもう一度サインインすることに注意してください。ただし、2 回目のサインインでは資格情報を入力する必要はなく、同意ダイアログが表示されます。これは、前の手順で必要な新しいサーバー認証コードを取得するために必要です。このメソッドを呼び出すのは、セッション トークンの有効期限が切れたときだけです。
+ 
+ **Objective-C**:
+
+		#import <Google/SignIn.h>
+		// ...
+		- (void)authenticate
+		{
+			    [GIDSignIn sharedInstance].uiDelegate = self;
+				[[GIDSignIn sharedInstance] signOut];
+			    [[GIDSignIn sharedInstance] signIn];
+ 		}
+ 
+ **Swift**:
+ 	
+		// ...
+		func authenticate() {
+			GIDSignIn.sharedInstance().uiDelegate = self
+			GIDSignIn.sharedInstance().signOut()
+			GIDSignIn.sharedInstance().signIn()
+		}
+ 		
 <!-- Anchors. -->
 
 [What is Mobile Services]: #what-is
@@ -792,4 +854,4 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
 [CLI to manage Mobile Services tables]: ../virtual-machines-command-line-tools.md#Mobile_Tables
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

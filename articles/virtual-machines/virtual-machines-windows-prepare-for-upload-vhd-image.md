@@ -26,7 +26,7 @@ Windows VM をオンプレミスから Azure にアップロードするには�
 
 Windows VHD がローカル サーバーで正しく動作していることを確認します。Azure に変換またはアップロードする前に VM 自体に発生しているすべてのエラーを解決します。
 
-仮想ディスクを Azure に必要な形式に変換する必要がある場合は、次のセクションに記載されているいずれかのメソッドを使用します。
+仮想ディスクを Azure に必要な形式に変換する必要がある場合は、次のセクションに記載されているいずれかのメソッドを使用します。仮想ディスクの変換処理や Sysprep を実行する前に、VM のバックアップを取ってください。
 
 ### Hyper-V マネージャーを使用した変換
 - Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。その上にあるメニューで、**[アクション]**、**[ディスクの編集]** の順にクリックします。
@@ -66,7 +66,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 3. ディスク SAN ポリシーを [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) に設定します。
 
 	```
-	dispart san policy=onlineall
+	diskpart san policy=onlineall
 	```
 
 4. Windows の世界協定時刻 (UTC) の時間を使用して、Windows タイム (w32time) サービスのスタートアップの種類を**自動**に設定します。
@@ -287,6 +287,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 	- [Resource Manager デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-capture-image.md)
 	- [クラシック デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-classic-capture-image.md)
+	- [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) (Sysprep でのサーバー ロールのサポート)
 
 
 ## 推奨される追加の構成
@@ -320,4 +321,4 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

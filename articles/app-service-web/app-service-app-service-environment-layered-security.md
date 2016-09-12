@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="08/30/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 
-## 概要 ##
+## Overview ##
  
 App Service Environment は、Virtual Network にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、物理的なアプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。
 
@@ -41,7 +41,7 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 - **バックエンド API アプリは自己呼び出しを行うか。** バックエンド アプリケーションが自己呼び出しを行うかどうかは、見逃しやすいポイントです。App Service Environment のバックエンド API アプリケーションに自己呼び出しが伴う場合、これも "インターネット" を介した呼び出しと見なされます。サンプル アーキテクチャのケースでは、"apiase" App Service Environment の送信 IP アドレスについてもアクセスを許可する必要があります。
 
 ## ネットワーク セキュリティ グループの設定 ##
-一連の送信 IP アドレスが確認できたら、今度はネットワーク セキュリティ グループを構築します。App Service Environment でサポートされている Virtual Network は現在 "v1" のみであるため、[NSG の構成][NetworkSecurityGroupsClassic]は、Powershell でクラシック NSG を作成することによって行います。
+一連の送信 IP アドレスが確認できたら、今度はネットワーク セキュリティ グループを構築します。ネットワーク セキュリティ グループは、Resource Manager ベースの仮想ネットワークとクラシック仮想ネットワークのどちらにも作成できます。次の例は、PowerShell を使用してクラシック仮想ネットワーク上に NSG を作成して構成する方法を示しています。
 
 このサンプル アーキテクチャの環境は、米国中南部に置かれているため、そのリージョンに空の NSG を作成します。
 
@@ -89,9 +89,9 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 
 
 ## その他のリンクおよび情報 ##
-App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
-クラシック仮想ネットワークに対する[ネットワーク セキュリティ グループ][NetworkSecurityGroupsClassic]の構成
+[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関する情報。
 
 [送信 IP アドレス][NetworkArchitecture]と App Service Environment について
 
@@ -104,11 +104,10 @@ App Service Environment で使用される[ネットワーク ポート][Inbound
 <!-- LINKS -->
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [NetworkArchitecture]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-architecture-overview/
-[NetworkSecurityGroupsClassic]: https://azure.microsoft.com/documentation/articles/virtual-networks-create-nsg-classic-ps/
-[InboundTraffic]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
+[InboundTraffic]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
 
 <!-- IMAGES -->
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

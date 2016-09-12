@@ -30,7 +30,7 @@
 - **アカウントのクォータを確認し**、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
 - Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview]を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
-> [AZURE.NOTE] この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.NOTE] この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure Portal で Azure Batch アカウントを作成して管理する](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch アカウントの作成と削除
 
@@ -134,13 +134,13 @@ Console.WriteLine("Active job and job schedule quota: {0}", account.Properties.A
 
 ## Batch Management .NET、Azure AD、リソース マネージャー
 
-Batch Management .NET ライブラリを使用するときは通常、[Azure Active Directory][aad_about] \(Azure AD) と [Azure Resource Manager][resman_overview]の機能を利用します。以下で説明するサンプル プロジェクトでは、Azure Active Directory とリソース マネージャーの両方を利用して、Batch Management .NET API の動作を示しています。
+Batch Management .NET ライブラリを使用するときは通常、[Azure Active Directory][aad_about] (Azure AD) と [Azure Resource Manager][resman_overview]の機能を利用します。以下で説明するサンプル プロジェクトでは、Azure Active Directory とリソース マネージャーの両方を利用して、Batch Management .NET API の動作を示しています。
 
 ### Azure Active Directory
 
 Azure AD は、顧客、サービス管理者、組織のユーザーを認証するために、Azure 自体で使用されています。Batch Management .NET のコンテキストでは、サブスクリプション管理者または共同管理者の認証を行うために Azure AD を使用します。認証後、Batch サービスのクエリや、この記事で取り上げる操作の実行を管理ライブラリに許可します。
 
-以下で説明するサンプル プロジェクトでは、Azure の [Active Directory Authentication Library][aad_adal] \(ADAL) を使用して、ユーザーに Microsoft の資格情報の入力を求めます。サービス管理者または共同管理者の資格情報が提供されると、それにより、アプリケーションは Azure にサブスクリプションのリストを照会し、リソース グループと Batch アカウントの両方を作成および削除できます。
+以下で説明するサンプル プロジェクトでは、Azure の [Active Directory Authentication Library][aad_adal] (ADAL) を使用して、ユーザーに Microsoft の資格情報の入力を求めます。サービス管理者または共同管理者の資格情報が提供されると、それにより、アプリケーションは Azure にサブスクリプションのリストを照会し、リソース グループと Batch アカウントの両方を作成および削除できます。
 
 ### リソース マネージャー
 
@@ -148,7 +148,7 @@ Batch Management .NET ライブラリで Batch アカウントを作成すると
 
 ## GitHub のサンプル プロジェクト
 
-GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトで、Batch Management .NET ライブラリの動作を確認してください。このコンソール アプリケーションでは、[BatchManagementClient][net_mgmt_client] と [ResourceManagementClient][resman_client] の作成と使用を示しています。また、両方のクライアントで必要な Azure [Active Directory Authentication Library][aad_adal] \(ADAL) の使用も示しています。
+GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクトで、Batch Management .NET ライブラリの動作を確認してください。このコンソール アプリケーションでは、[BatchManagementClient][net_mgmt_client] と [ResourceManagementClient][resman_client] の作成と使用を示しています。また、両方のクライアントで必要な Azure [Active Directory Authentication Library][aad_adal] (ADAL) の使用も示しています。
 
 サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/active-directory-integrating-applications.md#adding-an-application)」の手順に従って、独自のアカウントで既定のディレクトリ内にサンプル アプリケーションを登録してください。アプリケーションの種類には必ず「**ネイティブ クライアント アプリケーション**」を選択してください。「**リダイレクト URI**」には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。リアルエンドポイントにする必要はありません。
 
@@ -213,4 +213,4 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 [2]: ./media/batch-management-dotnet/portal-02.png
 [3]: ./media/batch-management-dotnet/portal-03.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/11/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 
@@ -99,7 +99,7 @@
 
 5. 新しいノードをクラスターに追加する、または既存のノードをクラスターから削除するとき、Service Fabric は最適なパフォーマンスを実現するために、クラスター内のすべてのノード間でアプリケーションを実行している負荷を自動的に分散します。
 
-## 削除
+## Remove
 1. *オペレーター*は、[**DeleteServiceAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync.aspx)、[**Remove-ServiceFabricService** コマンドレット](https://msdn.microsoft.com/library/azure/mt126033.aspx)、[**Delete Service** REST 操作](https://msdn.microsoft.com/library/azure/dn707687.aspx)を使用して、アプリケーション全体を削除することなく、クラスター内の実行中のサービスの特定のインスタンスを削除できます。
 
 2. *オペレーター*は、[**DeleteApplicationAsync** メソッド](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.applicationmanagementclient.deleteapplicationasync.aspx)、[**Remove-ServiceFabricApplication** コマンドレット](https://msdn.microsoft.com/library/azure/mt125914.aspx)、[**Delete Application** REST 操作](https://msdn.microsoft.com/library/azure/dn707651.aspx)を使用して、アプリケーションのインスタンスとそのすべてのサービスも削除できます。
@@ -121,4 +121,4 @@ Service Fabric アプリケーションとサービスの開発、テスト、�
 - [Testability の概要](service-fabric-testability-overview.md)
 - [REST ベース アプリケーション ライフサイクルのサンプル](service-fabric-rest-based-application-lifecycle-sample.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

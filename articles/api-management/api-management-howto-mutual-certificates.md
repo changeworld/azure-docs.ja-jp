@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="08/24/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
@@ -122,14 +122,13 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [API Management インスタンスの作成]: api-management-get-started.md
-[Get started with advanced API configuration]: api-management-get-started-advanced.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
 
 [Azure API Management REST API 証明書エンティティ]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Azure WebSites での証明書認証の構成についてはこの記事を参照してください]: https://azure.microsoft.com/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[Azure WebSites での証明書認証の構成についてはこの記事を参照してください]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-web-configure-tls-mutual-auth/
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -141,4 +140,4 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/15/2016"
+	ms.date="08/24/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウントの管理方法
@@ -23,18 +23,18 @@ Azure ポータルでの、グローバルな整合性の設定、キーの操�
 
 ## <a id="consistency"></a>DocumentDB 整合性の設定を管理する
 
-アプリケーションのセマンティクスに応じて、適切な一貫性レベルを選択します。「[一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化][consistency]」を参考にして、DocumentDB で利用できる一貫性レベルについて把握してください。DocumentDB の一貫性、可用性、パフォーマンスは、お使いのデータベース アカウントで利用できるすべての一貫性レベルで保証されます。データベース アカウントに高い一貫性レベルを設定するには、データを 1 つの Azure リージョンに限定し、グローバルで使用できないようにする必要があります。一方で、低い一貫性レベル (制限のある陳腐化、セッション、または最終的) に設定した場合、任意の数の Azure リージョンをデータベース アカウントに関連付けることができます。次に、データベース アカウントの既定の一貫性レベルを選択するための簡単な手順を説明します。
+アプリケーションのセマンティクスに応じて、適切な整合性レベルを選択します。[整合性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化][consistency]に関するページを参考にして、DocumentDB で利用できる整合性レベルについて把握してください。DocumentDB の整合性、可用性、パフォーマンスは、お使いのデータベース アカウントで利用できるすべての整合性レベルで保証されます。データベース アカウントに高い整合性レベルを設定するには、データを 1 つの Azure リージョンに限定し、グローバルで使用できないようにする必要があります。一方で、低い整合性レベル (制限のある陳腐化、セッション、または最終的) に設定した場合、任意の数の Azure リージョンをデータベース アカウントに関連付けることができます。次に、データベース アカウントの既定の整合性レベルを選択するための簡単な手順を説明します。
 
 ### DocumentDB アカウントの既定の整合性を指定するには
 
 1. [Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 2. アカウントのブレードで、**[既定の整合性]** をクリックします。
-3. **[既定の整合性]** ブレードで、新しい一貫性レベルを選択し、**[OK]** をクリックします。![既定の整合性セッション][5]
+3. **[既定の整合性]** ブレードで、新しい整合性レベルを選択し、**[保存]** をクリックします。![既定の整合性セッション][5]
 
 ## <a id="keys"></a>アクセス キーを表示、コピー、および再生成する
 DocumentDB アカウントを作成すると、2 つのマスター アクセス キーが生成され、DocumentDB アカウントにアクセスする際の認証に使用できます。2 つのアクセス キーが提供されるので、DocumentDB アカウントを中断することなくキーを再生成できます。
 
-[Microsoft Azure ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードの **[キー]** ブレードにアクセスし、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
+[Azure ポータル](https://portal.azure.com/)で、**[DocumentDB アカウント]** ブレードのリソース メニューにある **[キー]** ブレードにアクセスし、DocumentDB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
 
 ![Azure ポータルのスクリーン ショット、[キー] ブレード](./media/documentdb-manage-account/keys.png)
 
@@ -42,7 +42,7 @@ DocumentDB アカウントを作成すると、2 つのマスター アクセス
 
 読み取り専用キーもこのブレードで入手できます。読み取りとクエリは読み取り専用操作ですが、作成、削除、置換はそうではありません。
 
-### Azure ポータルでアクセス キーを表示およびコピーする
+### Azure ポータルでアクセス キーをコピーする
 
 **[キー]** ブレードで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
 
@@ -59,12 +59,12 @@ DocumentDB アカウントを使用するアプリケーションまたはクラ
 1. DocumentDB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
 2. DocumentDB アカウントのプライマリ アクセス キーを再生成します。[Azure ポータル](https://portal.azure.com/)で、DocumentDB アカウントにアクセスします。
 3. **[DocumentDB アカウント]** ブレードで、**[キー]** をクリックします。
-4. **[キー]** ブレードで、**[プライマリの再生成]** コマンドをクリックしてから **[OK]** をクリックして、新しいキーを生成することを確認します。![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-keys.png)
+4. **[キー]** ブレードで、[再生成] ボタンをクリックしてから **[OK]** をクリックして、新しいキーを生成することを確認します。![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-keys.png)
 
 5. (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
 6. セカンダリ アクセス キーを再生成します。
 
-![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-secondary-key.png)
+    ![アクセス キーを再生成する](./media/documentdb-manage-account/regenerate-secondary-key.png)
 
 
 > [AZURE.NOTE] 新しく生成されたキーを使用して DocumentDB アカウントにアクセスできるようになるまで、数分かかることがあります。
@@ -100,7 +100,7 @@ DocumentDB の詳細については、[azure.com](http://go.microsoft.com/fwlink
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [bcdr]: https://azure.microsoft.com/documentation/articles/best-practices-availability-paired-regions/
 [consistency]: https://azure.microsoft.com/documentation/articles/documentdb-consistency-levels/
-[azureregions]: https://azure.microsoft.com/regions/#services
-[offers]: https://azure.microsoft.com/pricing/details/documentdb/
+[azureregions]: https://azure.microsoft.com/ja-JP/regions/#services
+[offers]: https://azure.microsoft.com/ja-JP/pricing/details/documentdb/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -95,11 +95,9 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 
 AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サポートされていません。
 
--   トランザクション。
+-   トランザクション
 
--   転送先を経由した送信。
-
--   受信のスケールアウト。
+-   転送先を経由した送信
 
 また、Service Bus .NET API の動作は、AMQP を使用する場合と既定のプロトコルを使用する場合では以下のようないくつかの細かい違いがあります。
 
@@ -139,4 +137,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

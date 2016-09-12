@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/06/2016" 
+	ms.date="08/24/2016" 
 	ms.author="szark"/>
 
 
@@ -132,4 +132,4 @@ LVM を使用して、複数の物理ディスクを 1 つの記憶域ボリュ�
 
 		/dev/data-vg01/data-lv01  /data  ext4  defaults,nobootwait  0  2
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

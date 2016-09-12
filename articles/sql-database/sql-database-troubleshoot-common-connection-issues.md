@@ -13,15 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2016"
+	ms.date="08/31/2016"
 	ms.author="daleche"/>
 
 # Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 
-Azure SQL Database との接続に失敗すると、 [エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介しています。ここでは接続の問題の[一般的な原因](#cause) を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および [永続的または一時的でないエラー](#troubleshoot-the-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。最後に、[Azure SQL Database の接続の問題に関連したすべての記事](#all-topics-for-azure-sql-database-connection-problems)をまとめています。
+Azure SQL Database との接続に失敗すると、 [エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。ここでは接続の問題の[一般的な原因](#cause) を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および [永続的または一時的でないエラー](#troubleshoot-the-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。最後に、[Azure SQL Database の接続の問題に関連したすべての記事](#all-topics-for-azure-sql-database-connection-problems)をまとめています。
 
-接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。
-[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+接続の問題が発生したら、この記事のトラブルシューティング手順を実行してみてください。[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 原因
 
@@ -44,7 +43,7 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 特定の接続エラーが発生した場合は、[こちらのツール](https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database)をお試しください。問題の速やかな特定と解決に役立ちます。
 
 ## 一時的なエラーのトラブルシューティング
-アプリケーションで一時的なエラーが発生する場合は、トラブルシューティングや、エラーの頻度を減らす方法について、次のヒントのトピックを確認してください。
+アプリケーションで一時的なエラーが発生する場合は、次のトピックで、トラブルシューティングの手順やエラーの頻度を抑える方法に関するヒントを確認してください。
 
 - [Troubleshooting Database &lt;x&gt; on Server &lt;y&gt; is unavailable (Error: 40613) (サーバー &lt;y&gt; 上のデータベース &lt;x&gt; が使用できない問題のトラブルシューティング (エラー: 40613))](sql-database-troubleshoot-connection.md)
 - [SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止](sql-database-connectivity-issues.md)
@@ -63,7 +62,7 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 
 1.	クライアントの IP アドレスを許可するには、[ファイアウォール規則](sql-database-configure-firewall-settings.md)を設定します。
 2.	クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。その他のポインターについては、「[SQL Server のアクセスを許可するための Windows ファイアウォールの構成](https://msdn.microsoft.com/library/cc646023.aspx)」をご覧ください。
-3.	接続文字列およびその他の接続設定を確認します。[接続の問題のトピック](sql-database-connectivity-issues.md#connections-to-azure-sql-database)で、接続文字列のセクションを確認します。
+3.	接続文字列およびその他の接続設定を確認します。[接続の問題に関するトピック](sql-database-connectivity-issues.md#connections-to-azure-sql-database)で、接続文字列のセクションを確認します。
 4.	ダッシュ ボードでサービスの正常性を確認します。リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を[障害からの回復](sql-database-disaster-recovery.md)のトピックで参照してください。
 
 ## Azure SQL Database の接続の問題に関するすべてのトピック
@@ -101,4 +100,4 @@ Azure SQL Database との接続に失敗すると、 [エラー メッセージ]
 - [SQL Database トレーニング: Azure SQL Database について](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database)
 - [SQL Database - Elastic Database 機能とツールの使用](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -11,7 +11,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="05/31/2016"
+	ms.date="08/29/2016"
 	ms.author="ashmaka"/>
 
 # Azure Search とは
@@ -63,7 +63,7 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 
 選択したサービスのレベルに応じて、2 つの次元でサービスを拡張できます。1) クエリの大きな負荷を処理するために、レプリカを追加して容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して記憶域を追加します。ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
 
-### 2\.インデックスの作成
+### 手順 2.インデックスの作成
 コンテンツを Azure Search サービスにアップロードする前に、まず Azure Search インデックスを定義する必要があります。インデックスは、データを保持し、検索クエリを受け付けることができるデータベース テーブルに似ています。データベースのフィールドに似た、検索するドキュメントの構造にマップするインデックス スキーマを定義します。
 
 このようなインデックスのスキーマは Azure ポータルで作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して、プログラムによって作成できます。インデックスが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
@@ -75,7 +75,7 @@ Azure Search では、[インデクサー](https://msdn.microsoft.com/library/az
 
 プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式を使用して、事実上すべてのデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-### 4\.検索
+### 4\.Search
 Azure Search インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](https://msdn.microsoft.com/library/azure/dn798927.aspx)できます。
 
 ## 今すぐお試しください (無料)
@@ -83,4 +83,4 @@ Azure Search インデックスを入力したら、REST API または .NET SDK 
 
 Azure アカウントがない場合は、サインアップ不要で 60 分の無料のセッションをお試しいただけます。「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/p/?LinkId=618214)」に移動し、[Web App] を選択します。 次に、[ASP.NET + Azure Search] テンプレートを選択して開始します。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/14/2016"
+	ms.date="08/25/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB アカウント制限の引き上げを要求する
@@ -35,15 +35,15 @@
 ##<a id="RequestQuotaIncrease"></a> クォータ調整の要求
 クォータ調整を要求するには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)の **[参照]**、**[ヘルプとサポート]** を順にクリックします。
+1. [Azure ポータル](https://portal.azure.com)の **[More Services (その他のサービス)]**、**[ヘルプとサポート]** を順にクリックします。
 
 	![ヘルプとサポート起動時のスクリーンショット](media/documentdb-increase-limits/helpsupport.png)
 
-2. **[ヘルプとサポート]** ブレードで **[サポート リクエストの作成]** をクリックします。
+2. **[ヘルプとサポート]** ブレードで **[新しいサポート要求]** をクリックします。
 
 	![サポート チケット作成のスクリーンショット](media/documentdb-increase-limits/getsupport.png)
 
-3. **[新しいサポート要求]** ブレードで、**[基本]** をクリックします。次に、**[問題の種類]** を **[クォータ]** に、**[サブスクリプション]** を自分の DocumentDB アカウントをホストするサブスクリプションに、**[クォータの種類]** を **[DocumentDB]** に、**[サポート プラン]** を **[Quota SUPPORT - Included (クォータ サポート - 含む)]** に設定します。最後に、**[次へ]** をクリックします。
+3. **[新しいサポート要求]** ブレードで、**[基本]** をクリックします。次に、**[問題の種類]** を **[クォータ]** に、**[サブスクリプション]** を自分の DocumentDB アカウントをホストするサブスクリプションに、**[クォータの種類]** を **[DocumentDB]** に、**[サポート プラン]** を **[Quota SUPPORT - Included (クォータ サポート - 含む)]** に設定します。その後、**[次へ]** をクリックします。
 
 	![サポート チケットのリクエストの種類のスクリーンショット](media/documentdb-increase-limits/supportrequest1.png)
 
@@ -53,14 +53,12 @@
 
 5. 最後に、連絡先情報を **[連絡先情報]** ブレードに入力し、**[作成]** をクリックします。
 
-	![サポート チケットのリソース選択のスクリーンショット](media/documentdb-increase-limits/supportrequest3.png)
-
 サポート チケットが作成されると、サポート要求番号が電子メールで届きます。サポート要求は、**[ヘルプとサポート]** ブレードの **[サポート要求]** をクリックして表示することもできます。
 
 ![サポート リクエスト ブレードのスクリーンショット](media/documentdb-increase-limits/supportrequest4.png)
 
 
-##<a name="NextSteps"></a>次のステップ
+##<a name="NextSteps"></a> 次のステップ
 - DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

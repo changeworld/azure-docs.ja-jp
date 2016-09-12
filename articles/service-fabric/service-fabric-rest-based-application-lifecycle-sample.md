@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/02/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # REST ベース アプリケーション ライフサイクルのサンプル
@@ -42,7 +42,7 @@
 
 このサンプルでは [WordCount サンプル](http://aka.ms/servicefabricsamples) (**入門**サンプル内に収録) を使用します。最初に WordCount サンプルをビルドした後、2 つのアプリケーション パッケージをイメージ ストアにコピーする必要があります。
 
-|フォルダー|説明|
+|フォルダー|Description|
 |------|-----------|
 |WordCount|WordCount サンプル アプリケーション。**ApplicationManifest.xml** には **ApplicationTypeVersion="1.0.0"** が含まれています。|
 |WordCountUpgrade|WordCount サンプル アプリケーション。ApplicationManifest.xml ファイルを **ApplicationTypeVersion="1.1.0"** に変更し、アプリケーションのアップグレードを実行できるようにします。|
@@ -709,4 +709,4 @@ namespace ServiceFabricRestCaller
 
 [Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

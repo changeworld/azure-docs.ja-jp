@@ -18,7 +18,7 @@
 
 # Orchestrator から Azure Automation (ベータ版) へ移行する
 
-[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。Azure Automation での[グラフィカル Runbook](automation-runbook-types#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
+[System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。Azure Automation での[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
 
 [System Center Orchestrator Migration Toolkit](http://www.microsoft.com/download/details.aspx?id=47323&WT.mc_id=rss_alldownloads_all) には、Runbook を Orchestrator から Azure Automation に変換するために役立つツールが含まれています。Runbook 自体を変換するだけでなく、Runbook で使用される活動を含む統合パックを Windows PowerShell コマンドレットを含む統合モジュールに変換する必要もあります。
 
@@ -96,7 +96,7 @@ Orchestrator Runbook を変換して Azure Automation にインポートする�
 
 - RunbookPath - 変換する Runbook を含むエクスポート ファイルへのパス。
 - Module - Runbook の活動を含む統合モジュールのコンマ区切りリスト。
-- OutputFolder - 変換後のグラフィカル Runbook を作成するフォルダーへのパス。 
+- OutputFolder - 変換後のグラフィカル Runbook を作成するフォルダーへのパス。
 
 
 次の例のコマンドは、**MyRunbooks.ois\_export** というエクスポート ファイルの Runbook を変換します。これらの Runbook では、Active Directory と Data Protection Manager の統合パックが使用されています。
@@ -152,12 +152,13 @@ Orchestrator の Runbook は、**Runbook の呼び出し**活動を使用して�
 
 
 
-## 関連記事:
+## 関連記事
 
 - [System Center 2012 - Orchestrator](http://technet.microsoft.com/library/hh237242.aspx)
 - [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)
 - [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 - [Orchestrator 標準活動](http://technet.microsoft.com/library/hh403832.aspx)
+- [System Center Orchestrator Migration Toolkit のダウンロード](https://www.microsoft.com/ja-JP/download/details.aspx?id=47323)
  
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0831_2016-->

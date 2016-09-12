@@ -33,7 +33,7 @@
 
 ## ソース VM の準備 
 
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。Sysprep を実行する前に、VM をバックアップします。
 
 > [AZURE.WARNING] VM を一般化すると、すべてのユーザー アカウントが削除されます。したがって、一般化した VM には RDP 経由ではログインできなくなります。この変更を元に戻すことはできません。
 
@@ -210,4 +210,4 @@
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

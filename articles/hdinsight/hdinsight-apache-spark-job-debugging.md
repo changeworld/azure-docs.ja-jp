@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 # HDInsight Linux の Apache Spark クラスターで実行されるジョブの追跡とデバッグ
@@ -27,7 +27,7 @@
 
 - Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 - HDInsight Linux での Apache Spark クラスター。手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
-- 「**[Machine Learning: MLlib を使用した食品検査データの予測分析](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**」のノートブックを実行済みであること。このノートブックの実行方法については、リンク先のページを参照してください。  
+- 「**[Machine Learning: MLlib を使用した食品検査データの予測分析](hdinsight-apache-spark-machine-learning-mllib-ipython.md)**」のノートブックを実行済みであること。このノートブックの実行方法については、リンク先のページを参照してください。
 
 ## YARN UI でのアプリケーションの追跡
 
@@ -84,7 +84,7 @@
 6. Spark UI には、Spark インスタンスに関する有益な情報を得ることのできるタブが他にもあります。
 
 	* [Storage (ストレージ)] タブ: アプリケーションで RDD を作成した場合、その情報を [Storage (ストレージ)] タブで確認できます。
-	* [Environment (環境)] タブ: Spark インスタンスに関する有益な情報が多数表示されます。その例を次に示します。 
+	* [Environment (環境)] タブ: Spark インスタンスに関する有益な情報が多数表示されます。その例を次に示します。
 		* Scala バージョン
 		* クラスターに関連付けられているイベント ログ ディレクトリ
 		* アプリケーションの Executor のコア数
@@ -146,4 +146,4 @@
 
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

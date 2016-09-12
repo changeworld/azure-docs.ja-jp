@@ -1,5 +1,5 @@
  <properties
-	pageTitle="IntelliJ IDEA 用 HDInsight プラグインを使用して Spark Scala アプリケーションを作成する | Microsoft Azure"
+	pageTitle="Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成する | Microsoft Azure"
 	description="スタンドアロン Scala アプリケーションを作成して HDInsight Spark クラスターで実行する方法を説明します。"
 	services="hdinsight"
 	documentationCenter=""
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/26/2016"
 	ms.author="nitinme"/>
 
 
-# IntelliJ IDEA 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する
+# Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する
 
-この記事では、IntelliJ IDEA 用の HDInsight プラグインを使用して、Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信するための詳細な手順を説明します。このプラグインは、次のような使い方があります。
+この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使用して、Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信するための詳細な手順を説明します。このツールは、次のような複数の使い方があります。
 
 * Scala Spark アプリケーションを開発して HDInsight Spark クラスターに送信する
 * Azure HDInsight Spark クラスター リソースにアクセスする
@@ -38,9 +38,9 @@
 * Oracle Java Development kit。[ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 * IntelliJ IDEA。この記事では、バージョン 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 
-## IntelliJ IDEA 用の HDInsight Tools プラグインのインストール
+## Azure toolkit for IntelliJ の HDInsight ツールをインストールする
 
-IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for IntelliJ に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
+IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
 
 ## HDInsight Spark クラスターでの Spark Scala アプリケーションの実行
 
@@ -134,16 +134,16 @@ IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for Inte
 
 		* **[Submit]** をクリックします。
 
-	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission]\(Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
+	3. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。[Spark Submission] (Spark 送信) ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
 
         ![Spark Application Result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
-    次のセクションでは、IntelliJ IDEA 用の HDInsight プラグインを使用してジョブ出力にアクセスする方法を説明します。
+    次のセクションでは、Azure Toolkit for IntelliJ の HDInsight ツールを使用してジョブ出力にアクセスする方法を説明します。
 
 
-## IntelliJ 用の HDInsight プラグインを使用して HDInsight Spark クラスターにアクセスし、その管理を行います。
+## Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスターにアクセスして管理する
 
-HDInsight プラグインを使用してさまざまな操作を実行できます。
+Azure Toolkit for IntelliJ の一部である HDInsight ツールを使用してさまざまな操作を実行できます。
 
 ### クラスターのストレージ コンテナーにアクセスする
 
@@ -157,7 +157,7 @@ HDInsight プラグインを使用してさまざまな操作を実行できま�
 
 4. クラスターに関連付けられているストレージ コンテナー名をクリックします。右側のウィンドウに、**HVACOut** という名前のフォルダーが表示されます。フォルダーをダブルクリックして開くと、**part-*** ファイルが表示されます。それらのファイルのいずれかを開いて、アプリケーションの出力を確認します。
 
-### プラグインでジョブ ビューに直接アクセスする
+### HDInsight ツールからジョブ ビューに直接アクセスする
 
 1. **HDInsight Explorer** から Spark クラスター名を展開し、**[Jobs (ジョブ)]** をクリックします。
 
@@ -181,12 +181,12 @@ HDInsight プラグインを使用してさまざまな操作を実行できま�
 
 ### Azure サブスクリプションの管理
 
-既定では、HDInsight プラグインは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。**HDInsight Explorer** で、**[HDInsight]** ルート ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。ダイアログ ボックスで、アクセスしないサブスクリプションに対するチェック ボックスをオフにし、**[Close (閉じる)]** をクリックします。Azure サブスクリプションからログオフする場合は、**[Sign Out (サインアウト)]** もクリックします。
+既定では、HDInsight ツールは、すべての Azure サブスクリプションからの Spark クラスターを一覧表示します。必要に応じて、クラスターにアクセスするサブスクリプションを指定できます。**HDInsight Explorer** で、**[HDInsight]** ルート ノードを右クリックし、**[Manage Subscriptions (サブスクリプションの管理)]** をクリックします。ダイアログ ボックスで、アクセスしないサブスクリプションのチェック ボックスをオフにし、**[Close (閉じる)]** をクリックします。Azure サブスクリプションからログオフする場合は、**[Sign Out (サインアウト)]** をクリックすることもできます。
 
 
 ## Spark Scala アプリケーションのローカルでの実行
 
-IntelliJ IDEA 用の HDInsight Tools プラグインを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
+Azure Toolkit for IntelliJ の HDInsight ツールを使用すると、ワークステーション上で Spark Scala アプリケーションをローカルに実行することができます。通常、そのようなアプリケーションは、ストレージ コンテナーなどのクラスター リソースにアクセスする必要がなく、ローカルで実行しテストすることができます。
 
 ### 前提条件
 
@@ -224,9 +224,9 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 	![Spark Application local run result](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-app-local-run-result.png)
 
-## HDInsight ツール プラグインを使用できるように、既存の IntelliJ IDEA アプリケーションを変換します。
+## Azure Toolkit for IntelliJ の HDInsight ツールを使用できるように、既存の IntelliJ IDEA アプリケーションを変換する
 
-HDInsight ツール プラグインに対応するように、IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを変換することもできます。これにより、ツールを使用して HDInsight Spark クラスターにアプリケーションを送信できます。そのためには、以下の手順を実行します。
+Azure Toolkit for IntelliJ の HDInsight ツールに対応するように、IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを変換することもできます。これにより、ツールを使用して HDInsight Spark クラスターにアプリケーションを送信できます。そのためには、以下の手順を実行します。
 
 1. IntelliJ IDEA で作成した既存の Spark Scala アプリケーションについては、関連付けられている .iml ファイルを開きます。
 2. ルート レベルに、次のような **module** 要素が表示されます。
@@ -237,7 +237,7 @@ HDInsight ツール プラグインに対応するように、IntelliJ IDEA で�
 
 		<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
-4. 変更を保存します。これで、アプリケーションは HDInsight ツール プラグインと互換性を持つようになります。これをテストするには、Project Explorer でプロジェクト名を右クリックします。これで、ポップアップ メニューで、**[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]** を選択できるようになります。
+4. 変更を保存します。これで、アプリケーションは Azure Toolkit for IntelliJ の HDInsight ツールと互換性を持つようになります。これをテストするには、Project Explorer でプロジェクト名を右クリックします。これで、ポップアップ メニューで、**[Submit Spark Application to HDInsight (HDInsight への Spark アプリケーションの送信)]** を選択できるようになります。
 
 
 ## トラブルシューティング
@@ -298,9 +298,9 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 ### ツールと拡張機能
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
-* [Eclipse 用の HDInsight Tools プラグインを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -316,4 +316,4 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

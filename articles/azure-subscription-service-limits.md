@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/18/2016"
+	ms.date="08/29/2016"
 	ms.author="btardif"/>
 
 # Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -23,6 +23,8 @@
 ## Overview
 
 本書では、Microsoft Azure での最も一般的な制限について具体的に説明しています。すべての Azure サービスを網羅してはいません。今後、Azure Platform 全体を広くカバーするように制限を展開し、更新していく予定です。
+
+Azure の価格については、[Azure の価格の概要](https://azure.microsoft.com/pricing/)に関するページを参照してください。価格の概要に関するページでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用したり、サービス (たとえば、[Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) の価格の詳細ページに移動したりして、費用を見積もることができます。
 
 > [AZURE.NOTE] 「**既定の制限**」を超える制限の引き上げを希望される場合は、[オンライン カスタマー サポートに申請 (無料)](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) してください。以下の表の「**上限**」の値を超える制限の引き上げはできません。「**上限**」列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
@@ -304,4 +306,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

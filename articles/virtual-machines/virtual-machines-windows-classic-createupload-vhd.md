@@ -32,13 +32,13 @@
 
 - **[Microsoft Azure PowerShell](../powershell-install-configure.md)** - Microsoft Azure PowerShell モジュールをインストールし、サブスクリプションを使用するように構成しておきます。
 
-- **.vhd ファイル** - .vhd ファイルに格納され、仮想マシンに接続された、Windows オペレーティング システムでサポートされている。また、VHD で実行されるサーバー ロールが sysprep でサポートされていることを確認する必要があります。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
+- **.vhd ファイル** - .vhd ファイルに格納され、仮想マシンに接続された、Windows オペレーティング システムでサポートされている。VHD で実行されているサーバー ロールが Sysprep でサポートされていることを確認してください。詳しくは、「[Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」 (サーバー ロールに対する Sysprep サポート) をご覧ください。
 
 > [AZURE.IMPORTANT] VHDX 形式は、Microsoft Azure ではサポートされていません。Hyper-V マネージャーまたは [Convert-VHD コマンドレット](http://technet.microsoft.com/library/hh848454.aspx)を使用して、ディスクを VHD 形式に変換できます。詳細については、この[ブログの投稿](http://blogs.msdn.com/b/virtual_pc_guy/archive/2012/10/03/using-powershell-to-convert-a-vhd-to-a-vhdx.aspx)を参照してください。
 
 ## 手順 1: VHD を準備する 
 
-VHD を Azure にアップロードする前に、Sysprep ツールを使用して一般化する必要があります。一般化によって、VHD をイメージとして使用できるように準備します。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+VHD を Azure にアップロードする前に、Sysprep ツールを使用して一般化する必要があります。一般化によって、VHD をイメージとして使用できるように準備します。Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。Sysprep を実行する前に、VM をバックアップします。
 
 オペレーティング システムがインストールされている仮想マシンから、次の手順を実行します。
 
@@ -104,4 +104,4 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md)できるようになりました。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

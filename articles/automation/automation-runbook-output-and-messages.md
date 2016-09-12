@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/08/2016"
+   ms.date="08/24/2016"
    ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の出力および メッセージ
@@ -21,7 +21,7 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。各ストリームの詳細については、後続のセクションで説明します。
 
-| ストリーム | 説明 | 公開先 | テスト|
+| ストリーム | Description | 公開先 | テスト|
 |:---|:---|:---|:---|
 |出力|他の Runbook によって使用されることを目的とするオブジェクト。|ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウに表示されます。|
 |警告|ユーザー向けの警告メッセージ。|ジョブ履歴に書き込まれます。|[テスト出力] ウィンドウに表示されます。|
@@ -48,30 +48,43 @@ Runbook に含まれている関数から出力ストリームに書き込むと
 
 	Workflow Test-Runbook
 	{
-	   Write-Verbose "Verbose outside of function"
-	   Write-Output "Output outside of function"
-	   $functionOutput = Test-Function
+        Write-Verbose "Verbose outside of function" -Verbose
+        Write-Output "Output outside of function"
+        $functionOutput = Test-Function
+        $functionOutput
 
-	   Function Test-Function
-	   {
-	      Write-Verbose "Verbose inside of function"
-	      Write-Output "Output inside of function"
-	   }
-	}
+    Function Test-Function
+     {
+        Write-Verbose "Verbose inside of function" -Verbose
+        Write-Output "Output inside of function"
+      }
+    }
+
 
 Runbook ジョブの出力ストリームは次のようになります。
 
-	Output outside of function
+	Output inside of function
+    Output outside of function
 
 Runbook ジョブの詳細ストリームは次のようになります。
 
 	Verbose outside of function
 	Verbose inside of function
 
+Runbook を発行したら、それを開始する前に、詳細ストリーム出力を取得するために Runbook の設定で詳細ログを有効にする必要もあります。
+
 ### 出力のデータ型の宣言
 
 ワークフローでは、[OutputType 属性](http://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定できます。この属性は実行時に影響はありませんが、設計時にRunbook 作成者に対して Runbook の予想される出力を通知します。Runbook 用のツールセットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性は高まり続けます。その結果、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
 
+出力例の種類の一覧を次に示します。
+
+-	System.String
+-	System.Int32
+-	System.Collections.Hashtable
+-	Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+  
 次のサンプル Runbook は、文字列オブジェクトを出力し、その出力の型宣言が含まれています。Runbook が特定の型の配列を出力する場合でも、型の配列ではなく、型を指定してください。
 
 	Workflow Test-Runbook
@@ -81,6 +94,25 @@ Runbook ジョブの詳細ストリームは次のようになります。
 	   $output = "This is some string output."
 	   Write-Output $output
 	}
+
+グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+
+次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは "*認証 Runbook テンプレート*" を実行し、結果を **[テスト]** 出力ウィンドウに表示します。通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。
+
+**AuthenticateTo Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Authenticate Runbook Template Example](media/automation-runbook-output-and-messages/runbook-authentication-template.png)
+
+出力の種類は *Microsoft.Azure.Commands.Profile.Models.PSAzureContext* で、認証プロファイルのプロパティが返されます。<br> ![Runbook Output Type Example](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png)
+
+この Runbook は非常に単純ですが、ここで呼び出す構成項目が 1 つあります。最後のアクティビティは **Write-Output** コマンドレットを実行し、**Inputobject** パラメーターの PowerShell 式を使用してプロファイル データを $\_ 変数に書き込みます。これは、そのコマンドレットに必要です。
+
+この例の *Test-ChildOutputType* という 2 番目の Runbook には、2 つのアクティビティだけがあります。<br> ![Example Child Output Type Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+
+最初のアクティビティは **AuthenticateTo-Azure** Runbook を呼び出し、2 番目のアクティビティは **Write-Verbose** コマンドレットを実行します。その際、**[データ ソース]** は **[アクティビティの出力]**、**[フィールド パス]** の値は **Context.Subscription.SubscriptionName** にします。この値は **AuthenticateTo-Azure** Runbook からのコンテキスト出力を指定しています。<br> ![Write-Verbose cmdlet Parameter Data Source](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+
+結果の出力は、サブスクリプションの名前です。<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
+
+[出力の種類] コントロールの動作に関して注意が 1 つあります。入力と出力のプロパティ ブレードで [出力の種類] フィールドに値を入力する場合は、入力後にコントロールの外側をクリックし、入力内容をコントロールに認識させる必要があります。
+
 
 ## メッセージ ストリーム
 
@@ -138,7 +170,7 @@ Windows PowerShell では[ユーザー設定変数](http://technet.microsoft.com
 |:---|:---|
 |Continue|メッセージを記録し、Runbook の実行を続けます。|
 |SilentlyContinue|メッセージを記録せずに Runbook の実行を続けます。これはメッセージを無視する効果があります。|
-|Stop|メッセージを記録し、Runbook を中断します。|
+|停止|メッセージを記録し、Runbook を中断します。|
 
 ## Runbook の出力とメッセージの取得
 
@@ -182,15 +214,15 @@ Windows Powershell では、[Get-AzureAutomationJobOutput](https://msdn.microsof
 
  3. [Runbook] ブレードで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
 
- 4. 選択した Runbook の [設定] ブレードで、**[ログ記録とトレース]** をクリックします。
+ 4. 選択した Runbook の [設定] ブレードで、**[ログとトレース]** をクリックします。
 
- 5. [詳細レコードの記録] の下の [ログ記録とトレース] ブレードで、 **[オン]** をクリックして詳細ログを有効にし、アクティビティ レベルのトレースで、必要なトレースのレベルに基づいてトレース レベルを **Basic** または **Detailed** に変更します。<br>
+ 5. [ログとトレース] ブレードで、[詳細レコードの記録] の下の **[オン]** をクリックして詳細ログを有効にし、[アクティビティ レベルのトレース] で、必要なトレースのレベルに基づいてトレース レベルを **[基本]** または **[詳細]** に変更します。<br>
 
     ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
 ## 次のステップ
 
-- Runbook の実行、Runbook ジョブの監視方法、およびその他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページをご覧ください
+- Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページをご覧ください
 - 子 Runbook を設計および使用する方法については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

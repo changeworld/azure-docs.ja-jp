@@ -50,7 +50,7 @@ Azure Data Factory を使用すると、アクティビティ実行で時系列�
       "interval": 1
     },
 
-アクティビティ実行で使用および生成されるデータの各ユニットは、データ **スライス**と呼ばれます。次の図は、可用性セットが 1 時間ごとの頻度にそれぞれ設定された入力データセットと出力データセットを含むアクティビティの例を示しています。
+アクティビティ実行で使用および生成されるデータの各ユニットは、データ **スライス**と呼ばれます。次の図は、入力データセットと出力データセットが 1 つずつ含まれているアクティビティの例です。データセットの可用性セットの頻度は毎時に設定されています。
 
 ![可用性スケジューラ](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
@@ -239,38 +239,117 @@ Azure SQL テーブルのデータを Azure BLOB に 1 時間ごとにコピー�
 
 Data Factory の監視および管理ツールを使用すると、失敗したスライスの診断ログを詳細に調べ、問題の根本原因を簡単に見つけて修正できます。問題を解決したら、アクティビティ実行を簡単に開始して失敗したスライスを生成することもできます。再実行するには、データ スライスの状態遷移について理解する必要があります。詳細については、[Azure ポータルのブレード](data-factory-monitor-manage-pipelines.md)**を使用したパイプラインの監視と管理**に関する記事または[アプリの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。
 
-dataset2 の 9-10 AM スライスを再実行し、スライスの準備ができると、次の図に示すように、最終データセットに対して 9-10 AM 依存スライスの実行が開始されます。
+dataset2 の 9-10 AM スライスを再実行し、スライスの準備ができると、最終データセットに対して 9-10 AM 依存スライスの実行が開始されます。
 
 ![失敗したスライスの再実行](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
-アクティビティの連鎖の依存関係を指定および追跡する方法の詳細については、以下のセクションをご覧ください。
-
-## 連鎖するアクティビティ
-2 つのアクティビティを連鎖させるには、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。このとき、同じパイプラインのアクティビティと、別のパイプラインのアクティビティを指定できます。2 つ目のアクティビティは、1 つ目のアクティビティが正常に完了した後にのみ実行されます。
+## シーケンス内のアクティビティの実行
+2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) には、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。このとき、同じパイプラインのアクティビティと、別のパイプラインのアクティビティを指定できます。2 つ目のアクティビティは、1 つ目のアクティビティが正常に完了した後にのみ実行されます。
 
 たとえば、次の場合を考えてみましょう。
  
 1.	パイプライン P1 には、外部入力データセット D1 を必要とし、**出力**データセット **D2** を生成するアクティビティ A1 があります。
-2.	パイプライン P2 には、データセット **D2** からの**入力**を必要とし、出力データセット D3 を生成するアクティビティ A2 があります。
+2.	パイプライン P2 には、データセット **D2** からの**入力**を必要とし、出力データセット **D3** を生成するアクティビティ A2 があります。
  
-このシナリオでは、外部データが使用可能なときにアクティビティ A1 が実行され、スケジュールされた可用性の頻度に達します。D2 のスケジュールされたスライスが使用可能になると、アクティビティ A2 が実行され、スケジュールされた可用性の頻度に達します。データセット D2 のスライスのいずれかでエラーが発生した場合、スライスが使用可能になるまで、そのスライスに対して A2 は実行されません。
+このシナリオでは、アクティビティ A1 と A2 は異なるパイプラインにあります。外部データが使用可能なときにアクティビティ A1 が実行され、スケジュールされた可用性の頻度に達します。D2 のスケジュールされたスライスが使用可能になると、アクティビティ A2 が実行され、スケジュールされた可用性の頻度に達します。データセット D2 のスライスのいずれかでエラーが発生した場合、スライスが使用可能になるまで、そのスライスに対して A2 は実行されません。
 
 ダイアグラム ビューは次の図のようになります。
 
 ![2 つのパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-同じパイプラインに両方のアクティビティがあるダイアグラム ビューは、次の図のようになります。
+既に説明したように、アクティビティは同じパイプラインに指定できます。同じパイプラインに両方のアクティビティがあるダイアグラム ビューは、次のようになります。
 
 ![同じパイプラインでのアクティビティの連鎖](./media/data-factory-scheduling-and-execution/chaining-one-pipeline.png)
 
-### 順序指定されたコピー
-複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。パイプラインには、CopyActivity1 と CopyActivity 2 という 2 つのコピー アクティビティがあり、それぞれ入力データと出力データセットは次のようになります。
+### 順次コピー
+複数のコピー操作を、順番にまたは順序を指定して 1 つずつ実行できます。パイプラインには、CopyActivity1 と CopyActivity2 という 2 つのコピー アクティビティがあり、それぞれ入力データと出力データセットは次のようになります。
 
 CopyActivity1: 入力: Dataset1 出力: Dataset2
 
-CopyActivity2: 入力: Dataset2 出力: Dataset4
+CopyActivity2: 入力: Dataset2 出力: Dataset3
 
 CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を使用できた場合にのみ実行します。
+
+パイプライン JSON の例を次に示します。
+
+	{
+		"name": "ChainActivities",
+	    "properties": {
+			"description": "Run activities in sequence",
+	        "activities": [
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource"
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "copyBehavior": "PreserveHierarchy",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "Dataset1"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "Dataset2"
+	                    }
+	                ],
+	                "policy": {
+	                    "timeout": "01:00:00"
+	                },
+	                "scheduler": {
+	                    "frequency": "Hour",
+	                    "interval": 1
+	                },
+	                "name": "CopyFromBlob1ToBlob2",
+	                "description": "Copy data from a blob to another"
+	            },
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource"
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "Dataset2"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "Dataset3"
+	                    }
+	                ],
+	                "policy": {
+	                    "timeout": "01:00:00"
+	                },
+	                "scheduler": {
+	                    "frequency": "Hour",
+	                    "interval": 1
+	                },
+	                "name": "CopyFromBlob2ToBlob3",
+	                "description": "Copy data from a blob to another"
+	            }
+	        ],
+	        "start": "2016-08-25T01:00:00Z",
+	        "end": "2016-08-25T01:00:00Z",
+	        "isPaused": false
+	    }
+	}
+
+この例では、最初のコピー アクティビティの出力データセット (Dataset2) が 2 番目のアクティビティの入力として指定されています。したがって、2 番目のアクティビティは、最初のアクティビティからの出力データセットが準備ができたときにのみ実行されます。
 
 この例では、CopyActivity2 で別の入力 (Dataset3 など) を使用できますが、CopyActivity2 への入力として Dataset2 も指定しているため、CopyActivity1 が完了するまでこのアクティビティは実行されません。次に例を示します。
 
@@ -278,7 +357,88 @@ CopyActivity1: 入力: Dataset1 出力: Dataset2
 
 CopyActivity2: 入力: Dataset3、Dataset2 出力: Dataset4
 
-複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。CopyActivity2 は、次の条件が満たされた場合にのみ実行を開始します。
+	{
+		"name": "ChainActivities",
+	    "properties": {
+			"description": "Run activities in sequence",
+	        "activities": [
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource"
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "copyBehavior": "PreserveHierarchy",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "Dataset1"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "Dataset2"
+	                    }
+	                ],
+	                "policy": {
+	                    "timeout": "01:00:00"
+	                },
+	                "scheduler": {
+	                    "frequency": "Hour",
+	                    "interval": 1
+	                },
+	                "name": "CopyFromBlobToBlob",
+	                "description": "Copy data from a blob to another"
+	            },
+	            {
+	                "type": "Copy",
+	                "typeProperties": {
+	                    "source": {
+	                        "type": "BlobSource"
+	                    },
+	                    "sink": {
+	                        "type": "BlobSink",
+	                        "writeBatchSize": 0,
+	                        "writeBatchTimeout": "00:00:00"
+	                    }
+	                },
+	                "inputs": [
+	                    {
+	                        "name": "Dataset3"
+	                    },
+	                    {
+	                        "name": "Dataset2"
+	                    }
+	                ],
+	                "outputs": [
+	                    {
+	                        "name": "Dataset4"
+	                    }
+	                ],
+	                "policy": {
+	                    "timeout": "01:00:00"
+	                },
+	                "scheduler": {
+	                    "frequency": "Hour",
+	                    "interval": 1
+	                },
+	                "name": "CopyFromBlob3ToBlob4",
+	                "description": "Copy data from a blob to another"
+	            }
+	        ],
+	        "start": "2017-04-25T01:00:00Z",
+	        "end": "2017-04-25T01:00:00Z",
+	        "isPaused": false
+	    }
+	}
+
+
+この例では、2 つの入力データセットが、2 番目のコピー アクティビティに対して指定されています。**複数の入力を指定すると、データのコピーに使用されるのは最初の入力データセットのみで、他のデータセットは依存関係として使用されます。** CopyActivity2 は、次の条件が満たされた場合にのみ実行を開始します。
 
 - CopyActivity1 が正常に完了していて、Dataset2 を使用できる。データを Dataset4 にコピーするときに、このデータセットは使用されません。これは、CopyActivity2 のスケジュールの依存関係としてのみ機能します。
 - Dataset3 を使用できる。このデータセットは、コピー先にコピーされるデータを表します。
@@ -291,7 +451,7 @@ CopyActivity2: 入力: Dataset3、Dataset2 出力: Dataset4
 
 ### サンプル 1: 毎時取得できる入力データの出力レポートを 1 日に 1 回生成する
 
-センサーからの入力測定データを Azure BLOB で 1 時間ごとに使用できるシナリオについて考えてみます。Data Factory の [Hive アクティビティ](data-factory-hive-activity.md)を使用して、1 日の平均値、最大値、最小値などの統計情報を含む日次集計レポートを生成します。
+センサーからの入力測定データを Azure BLOB で 1 時間ごとに使用できるシナリオについて考えてみます。Data Factory の [Hive アクティビティ](data-factory-hive-activity.md)を使用して、1 日の平均値、最大値、最小値など、統計情報を含む日次集計レポートを生成します。
 
 Data Factory を使用して、このシナリオをモデル化する方法を次に示します。
 
@@ -700,4 +860,4 @@ Data Factory で生成されるデータセットと同様に、外部データ�
 
   
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

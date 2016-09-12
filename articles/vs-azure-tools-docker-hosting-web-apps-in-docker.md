@@ -18,7 +18,7 @@
 
 # リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 
-## 概要
+## Overview
 Docker は軽量のコンテナー エンジンで、アプリケーションとサービスをホストするために使用できる仮想マシンにいくつかの点で似ています。このチュートリアルでは、[Visual Studio 2015 Tools for Docker](http://aka.ms/DockerToolsForVS) 拡張機能を使用して、Azure 上の Docker ホストに PowerShell で ASP.NET Core アプリをデプロイする手順について説明します。
 
 ## 前提条件
@@ -33,13 +33,13 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## 2\.Docker サポートの追加
+## 手順 2.Docker サポートの追加
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
 ## 3\.DockerTask.ps1 PowerShell スクリプトの使用 
 
-1.  PowerShell プロンプトからプロジェクトのルート ディレクトリに移動します。 
+1.  PowerShell プロンプトからプロジェクトのルート ディレクトリに移動します。
 
     ```
     PS C:\Src\WebApplication1>
@@ -64,7 +64,7 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
     > [AZURE.NOTE] Docker Beta を使用している場合、-Machine 引数は省略してください。
     > 
     > ```
-    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
+    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
     > ```  
 
 
@@ -77,7 +77,7 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
     > [AZURE.NOTE] Docker Beta を使用している場合、-Machine 引数は省略してください。
     > 
     > ```
-    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
+    > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
     > ```
 
 	Docker が完了すると、次のような結果が表示されます。
@@ -89,4 +89,4 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

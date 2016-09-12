@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/17/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -137,4 +137,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

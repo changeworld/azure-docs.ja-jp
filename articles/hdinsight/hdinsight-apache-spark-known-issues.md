@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 # HDInsight Linux の Apache Spark クラスターの既知の問題
@@ -29,8 +29,8 @@
 
 この問題を回避するには、以下の手順を実行します。
 
-1. ヘッドノードに Ssh します。 
-2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。 
+1. ヘッドノードに Ssh します。
+2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。
 
         yarn application –list
 
@@ -56,10 +56,10 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 
 **対応策:**
  
-1. hdiuser を Hadoop グループに追加します。 
-2. クラスターの作成後、/var/log/spark に 777 アクセス許可を指定します。 
-3. Ambari を使用して、Spark ログの場所を、777 アクセス許可を持つディレクトリに変更します。  
-4. sudo として spark-submit を実行します。  
+1. hdiuser を Hadoop グループに追加します。
+2. クラスターの作成後、/var/log/spark に 777 アクセス許可を指定します。
+3. Ambari を使用して、Spark ログの場所を、777 アクセス許可を持つディレクトリに変更します。
+4. sudo として spark-submit を実行します。
 
 ## Jupyter Notebook に関連する問題
 
@@ -146,4 +146,4 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

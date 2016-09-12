@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/27/2016"
+   ms.date="08/25/2016"
    ms.author="nitinme"/>
 
 # Azure Data Lake Storeで機能するオープン ソースのビッグ データ アプリケーション
@@ -41,4 +41,4 @@
 
 - [Azure Data Lake Store の概要](data-lake-store-overview.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -223,6 +223,8 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
 - 外部で使用されるドメイン名。
 - Ubuntu Server のバージョン番号。ただし、リストのうち 1 つだけを許可します。
 
+[ユーザー名とパスワードの要件](virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
+
 これらの値が決まると、グループを作成し、Azure サブスクリプションにこのテンプレートをデプロイする準備が整います。
 
     {
@@ -1278,4 +1280,4 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
 
 使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

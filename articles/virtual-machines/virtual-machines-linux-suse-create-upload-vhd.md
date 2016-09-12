@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 # Azure 用の SLES または openSUSE 仮想マシンの準備
@@ -25,18 +25,9 @@
 
 この記事では、既に SUSE または openSUSE Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
- - [SUSE Studio](http://www.susestudio.com) では、Azure および Hyper-V 用の SLES/openSUSE イメージを簡単に作成、管理できます。これは、独自の SUSE イメージと openSUSE イメージをカスタマイズするアプローチとして推奨されます。SUSE Studio ギャラリーにある次の公式イメージをダウンロードまたは SUSE Studio アカウントに複製できます。
-
-  - [SUSE Studio ギャラリーの Azure 向け SLES 11 SP3](http://susestudio.com/a/02kbT4/sles-11-sp3-for-windows-azure)
-  - [SUSE Studio ギャラリーの Azure 向け openSUSE 13.1](https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure)
-
-
-- 独自の VHD を構築する代わりに、SUSE が [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007) に SLES の BYOS (Bring Your Own Subscription) イメージも発行します。
-
-
 ### SLES/openSUSE のインストールに関する注記
 
-- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
+- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する一般的な注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
 
 - VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
@@ -45,6 +36,12 @@
 - OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
 
 - すべての VHD のサイズは 1 MB の倍数であることが必要です。
+
+
+## SUSE Studio を使用する
+[SUSE Studio](http://www.susestudio.com) を使用すると、Azure および Hyper-V 用の SLES イメージと openSUSE イメージを簡単に作成、管理できます。独自の SLES イメージや openSUSE イメージをカスタマイズする場合はこの方法をお勧めします。
+
+SUSE では、独自の VHD を構築する代わりに、[VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007) に SLES の BYOS (Bring Your Own Subscription) イメージを発行することもできます。
 
 
 ## SUSE Linux Enterprise Server 11 SP4 を準備する ##
@@ -87,11 +84,11 @@
 
 	変更前
 	
-		root=/dev/disk/bi-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
+		root=/dev/disk/by-id/SCSI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx-part1
 
 	変更後
 	
-		root=/dev/disk/bi-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+		root=/dev/disk/by-uuid/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 10. udev ルールを編集して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となる可能性があります。
 
@@ -211,4 +208,4 @@
 ## 次のステップ
 これで、SUSE Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

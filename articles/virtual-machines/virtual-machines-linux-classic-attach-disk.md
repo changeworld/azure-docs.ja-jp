@@ -81,14 +81,14 @@
 5. 求められたら、「**p**」と入力して、パーティションをプライマリ パーティションにします。「**1**」と入力して最初のパーティションにし、Enter キーを押してシリンダーの既定値をそのまま使用します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
 
 
-	![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+	![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartdetails.png)
 
 
 
 6. 「**p**」を入力すると、パーティション分割されたディスクに関する詳細情報が表示されます。
 
 
-	![ディスク情報の表示](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+	![ディスク情報の表示](./media/virtual-machines-linux-classic-attach-disk/fdiskpartitiondetails.png)
 
 
 
@@ -152,9 +152,9 @@
 		# sudo umount /datadrive
 		# sudo mount /datadrive
 
-	`mount` コマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。追加のデータ ドライブやパーティションを作成する場合、それらも /etc/fstab に個別に入力する必要があります。
+	`mount` コマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。追加のデータ ドライブやパーティションを作成する場合は、それらも /etc/fstab に個別に入力します。
 
-	次のコマンドを使用して、ドライブを書き込み可能にする必要があります。
+	次のコマンドを使用して、ドライブを書き込み可能にします。
 
 		# sudo chmod go+w /datadrive
 
@@ -198,4 +198,4 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-mac-create-ssh-keys.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
