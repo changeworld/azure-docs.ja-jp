@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/01/2016"
+   ms.date="08/29/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
@@ -29,7 +29,7 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 
 * **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。詳細については、「[Storm トポロジで Data Lake Store を使用する](#use-data-lake-store-in-a-storm-topology)」を参照してください。
 
-* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージまたは追加ストレージとして使用できます。詳細については、「[HBase クラスターで Data Lake Store を使用する](#use-data-lake-store-with-hbase-clusters)」を参照してください。
+* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージおよび追加ストレージとして使用できます。詳細については、「[HBase クラスターで Data Lake Store を使用する](#use-data-lake-store-with-hbase-clusters)」を参照してください。
 
 > [AZURE.NOTE] 注意すべき重要な点がいくつかあります。
 > 
@@ -85,7 +85,7 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.4.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
 
-	* **既存のサービス プリンシパルを選択する:**
+	* **既存のサービス プリンシパルを選択する**
 
 		* **[クラスター AAD ID]** ブレードで、**[既存のものを使用]**、**[サービス プリンシパル]** の順にクリックし、**[サービス プリンシパルの選択]** ブレードで既存のサービス プリンシパルを探します。サービス プリンシパルの名前をクリックし、**[選択]** をクリックします。
 
@@ -93,15 +93,29 @@ Azure ポータルを使用して、Azure Data Lake Store にアクセスする�
 
 		* **[クラスター AAD ID]** ブレードで、選択したサービス プリンシパルに関連付けられている証明書 (.pfx) をアップロードし、証明書のパスワードを指定します。
 
-		* **[ADLS アクセスを管理する]** をクリックします。ウィンドウに、サブスクリプションに関連付けられている Data Lake Store アカウントが表示されます。ただし、権限を設定できるのは作成したアカウントのみです。HDInsight クラスターに関連付けるアカウントの READ/WRITE/EXECUTE アクセス許可を選択し、**[アクセス許可の保存]** をクリックします。
+5. **[ADLS アクセスを管理する]** をクリックし、**[ファイル アクセス許可の選択]** をクリックします。
 
-			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.existing.save.png "HDInsight クラスターにサービス プリンシパルを追加する")
+	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.existing.save.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
-		* **[アクセス許可の保存]** をクリックし、**[選択]** をクリックします。
+6. **[ファイル アクセス許可の選択]** ブレードの **[アカウント]** ドロップダウン リストで、HDInsight クラスターに関連付ける Data Lake Store アカウントを選択します。ブレードに、選択した Data Lake Store アカウントで利用できるファイルとフォルダーが一覧表示されます。
+ 
+	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-1.png "Data Lake Store へのアクセスを提供する")
 
-6. **[データ ソース]** ブレードで **[選択]** をクリックし、「[HDInsight で Hadoop クラスターを作成する](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal)」の説明に従ってクラスターのプロビジョニングに進みます。
+	その後、選択したファイルとフォルダーに与えるアクセス許可を決定します。フォルダーについては、アクセス許可をフォルダーのみに適用するのか、フォルダーとフォルダー内のすべての子項目に適用するのかを指定します。選択するには、**[適用対象]** ドロップダウンから該当する値を選択します。アクセス許可を削除するには、**[削除]** アイコンをクリックします。
 
-7. クラスターがプロビジョニングされたら、サービス プリンシパルが HDInsight クラスターに関連付けられていることを確認できます。そのためには、クラスター ブレードで **[設定]** をクリックし、**[クラスター AAD ID]** をクリックして、関連付けられているサービス プリンシパルを確認します。
+	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-2.png "Data Lake Store へのアクセスを提供する")
+
+	その他の Data Lake Store アカウントに関連付けられているファイルとフォルダーにも、以上の手順を繰り返します。アクセス許可の割り当てが完了したら、ブレードの下部にある **[選択]** をクリックします。
+
+7. **[選択したアクセス許可の割り当て]** ブレードで、指定したアクセス許可を確認し、**[実行]** をクリックしてアクセス許可を付与します。
+
+	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-3.png "Data Lake Store へのアクセスを提供する")
+
+	[状態] 列に進行状況が表示されます。すべてのアクセス許可を正常に割り当てたら、**[完了]** をクリックします。
+
+6. **[クラスター AAD ID]** ブレードと **[データ ソース]** ブレードで **[選択]** をクリックし、[HDInsight での Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)に関するページの説明に従ってクラスターの作成に進みます。
+
+7. クラスターがプロビジョニングされたら、サービス プリンシパルが HDInsight クラスターに関連付けられていることを確認できます。そのためには、クラスター ブレードで **[クラスター AAD ID]** をクリックし、関連付けられているサービス プリンシパルを確認します。
 
 	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
@@ -129,9 +143,9 @@ HDInsight クラスターを構成したら、クラスターでテスト ジョ
 
 		CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
 
-5. **クエリ エディター**の下部にある **[実行]** ボタンをクリックしてクエリを開始します。**クエリ エディター**の下に **[クエリ処理結果]** セクションが表示され、ジョブに関する情報が表示されます。
+5. **クエリ エディター**の下部にある **[実行]** ボタンをクリックしてクエリを開始します。**クエリ エディター**の下に **[Query Process Results (クエリ処理結果)]** セクションが表示され、ジョブに関する情報が表示されます。
 
-6. クエリが完了すると、**[クエリ処理結果]** セクションに操作の結果が表示されます。**[Results]** タブには次の情報が表示されます。
+6. クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。**[Results]** タブには次の情報が表示されます。
 
 7. 次のクエリを実行して、テーブルが作成されたことを確認します。
 
@@ -194,7 +208,7 @@ Data Lake Store を使用するように HDInsight クラスターを構成し�
 
 このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-PuTTY の使用の詳細については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
 接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
 
@@ -321,7 +335,7 @@ PuTTY の使用の詳細については、「[HDInsight の Linux ベースの H
 
 ## Storm トポロジで Data Lake Store を使用する
 
-Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。このシナリオを実現する方法については、「[HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」を参照してください。
+Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。このシナリオを実現する方法については、「[HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」をご覧ください。
 
 ## HBase クラスターで Data Lake Store を使用する
 
@@ -347,4 +361,4 @@ HBase クラスターでは、Data Lake Store を既定のストレージとし�
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

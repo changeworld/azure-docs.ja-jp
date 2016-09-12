@@ -38,7 +38,7 @@ Azure のストレージ アカウントでは、オペレーティング シス
 
 ## 仮想マシンへのアクセス方法を教えてください。
 
-Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立する必要があります。手順については、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md)」をご覧ください。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。
+Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立します。手順については、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](virtual-machines-windows-connect-logon.md)」をご覧ください。最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。
 
 
 リモート デスクトップで問題が発生した場合は、[Windows ベースの Azure Virtual Machine へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)に関するページをご覧ください。
@@ -47,7 +47,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 ## 一時ディスク (既定では D: ドライブ) をデータを格納するために使用できますか。
 
-データを格納するのに一時ディスクを使用しないでください。一時ディスクは一時的なストレージであるため、データ損失の発生時にデータを復旧できない恐れがあります。このようなことは、仮想マシンを別のホストに移動するときに発生する可能性があります。仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
+データの格納に一時ディスクを使用しないでください。一時ディスクは一時的なストレージであるため、データ損失の発生時にデータを復旧できない恐れがあります。データ損失は、仮想マシンを別のホストに移動するときに発生する可能性があります。仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
 
 アプリケーションで D: ドライブ文字を使用する必要がある場合は、一時ディスクで D: 以外を使用するようにドライブ文字を再割り当てできます。手順については、「[Windows 一時ディスクのドライブ文字を変更する方法](virtual-machines-windows-classic-change-drive-letter.md)」を参照してください。
 
@@ -83,4 +83,62 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 いいえ。NIC を追加できるのは VM の作成時のみです。
 
-<!---HONumber=AcomDC_0817_2016-->
+## コンピューター名の要件はありますか。
+
+はい。コンピューター名は最大 15 文字の長さまで指定できます。リソースの名前付けの詳細については、「[インフラストラクチャの名前付けガイドライン](virtual-machines-windows-infrastructure-naming-guidelines.md)」を参照してください。
+
+## VM を作成する際のユーザー名の要件は何ですか。
+
+ユーザー名は最大 20 文字の長さまで指定できますが、末尾を句点 (".") にすることはできません 。
+
+次のユーザー名を指定することはできません。
+
+<table>
+	<tr>
+		<td style="text-align:center">administrator </td><td style="text-align:center"> 管理者 </td><td style="text-align:center"> ユーザー </td><td style="text-align:center"> user1</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">backup </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+	</tr>
+</table>
+
+## VM を作成する際のパスワードの要件は何ですか。
+
+パスワードは 8 ～ 123 文字の長さにし、次の 4 つの複雑性要件のうち 3 つを満たしている必要があります。
+
+- 小文字を含む
+- 大文字を含む
+- 数字を含む
+- 特殊文字を含む ([\\W\_] に一致する正規表現)
+
+次のパスワードを指定することはできません。
+
+次のパスワードを指定することはできません。
+<table>
+	<tr>
+		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+	</tr>
+</table>
+
+<!---HONumber=AcomDC_0831_2016-->

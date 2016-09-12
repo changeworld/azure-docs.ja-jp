@@ -216,21 +216,23 @@
           }
         }
 
+    >[AZURE.NOTE] [ユーザー名とパスワードの要件](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
+
 2. パラメーター ファイルを保存します。
 
 ## 手順 3: Azure PowerShell のインストール
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 手順 4: リソース グループの作成
 
-すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。
+すべてのリソースをリソース グループにデプロイする必要があります。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
 
 1. リソースを作成できる場所の一覧を取得します。
 
 	    Get-AzureRmLocation | sort DisplayName | Select DisplayName
 
-2. **$locName** の値を一覧の場所に置き換えます (例: **米国中部**)。変数を作成します。
+2. **$locName** の値を一覧の場所に置き換えます (例: **Central US** (米国中部))。変数を作成します。
 
         $locName = "location name"
         
@@ -284,4 +286,4 @@
 - デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

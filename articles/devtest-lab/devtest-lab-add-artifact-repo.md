@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # ラボへの Git アーティファクト リポジトリの追加
 
 > [AZURE.NOTE] この記事の付属のビデオ「[How to add your private Artifacts Repository in a DevTest Lab (DevTest Labs でプライベート アーティファクト リポジトリを追加する方法)](/documentation/videos/how-to-add-your-private-artifacts-repository-in-a-devtest-lab)」をご覧ください
 
-## 概要
+## Overview
 
 既定では、公式の Azure DevTest Labs アーティファクト リポジトリからのアーティファクトがラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
 
@@ -117,8 +117,10 @@
     3. アーティファクト リポジトリに保存された**個人用アクセス トークン**を入力します。
     4. [**保存**] を選択します。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 関連するブログ記事
 - [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
 - [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

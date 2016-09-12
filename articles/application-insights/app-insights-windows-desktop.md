@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="08/26/2016" 
 	ms.author="awills"/>
 
 # Windows デスクトップ アプリでの使用状況とパフォーマンスの監視
@@ -21,23 +21,23 @@
 
 [Visual Studio Application Insights](app-insights-get-started.md) と [HockeyApp](https://hockeyapp.net) を使用すると、デプロイされたアプリケーションの使用状況とパフォーマンスを監視できます。
 
-> [AZURE.IMPORTANT] デスクトップ アプリとデバイス アプリを配布および監視するには、[HockeyApp](https://hockeyapp.net) を使うことをお勧めします。HockeyApp を使用すると、配布、ライブ テスト、ユーザーからのフィードバックの管理だけでなく、使用状況とクラッシュ レポートの監視も行うことができます。
+> [AZURE.IMPORTANT] デスクトップ アプリとデバイス アプリを配布および監視するには、[HockeyApp](https://hockeyapp.net) を使うことをお勧めします。HockeyApp を使用すると、配布、ライブ テスト、ユーザーからのフィードバックの管理だけでなく、使用状況とクラッシュ レポートの監視も行うことができます。[Analytics を使用してテレメトリのエクスポートやクエリを実行する](app-insights-hockeyapp-bridge-app.md)こともできます。
 
 > デスクトップ アプリケーションから Application Insights にテレメトリを送信できますが、これは主にデバッグと実験の目的に適しています。
 
 
 ## Windows アプリケーションからテレメトリを Application Insights に送信するには
 
-1. [Azure ポータル](https://portal.azure.com)で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET アプリを選択します。
-2. インストルメンテーション キーをコピーします。先ほど作成した新しいリソースの [要点] ボックスの一覧で、キーを探します。アプリケーション マップを閉じるか、左側にあるリソースの概要ブレードまでスクロールします。
+1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成](app-insights-create-new-resource.md)します。アプリケーションの種類として ASP.NET アプリを選択します。
+2. インストルメンテーション キーをコピーします。先ほど作成した新しいリソースの [要点] ボックスの一覧で、キーを探します。
 3. Visual Studio でアプリ プロジェクトの NuGet パッケージを編集し、Microsoft.ApplicationInsights.WindowsServer を追加します(または、標準テレメトリ コレクション モジュールを含まないベア API だけが必要な場合は、Microsoft.ApplicationInsights を選択します)。
 4. インストルメンテーション キーの設定はコードまたは ApplicationInsights.config で行います。コードの場合:
 
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *your key* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`<*自分のキー*>`";`
 
     ApplicationInsights.config の場合 (いずれかの標準テレメトリ パッケージをインストールした場合):
  
-    `<InstrumentationKey>`*your key*`</InstrumentationKey>`
+    `<InstrumentationKey>`<*自分のキー*>`</InstrumentationKey>`
 
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy** に設定されていることを確認します。
 5. [API を使用して](app-insights-api-custom-events-metrics.md)テレメトリを送信します。
@@ -81,7 +81,12 @@
 
 ```
 
+## 次のステップ
 
+* [ダッシュボードを作成する](app-insights-dashboards.md)
+* [診断検索](app-insights-diagnostic-search.md)
+* [メトリックを探索する](app-insights-metrics-explorer.md)
+* [Analytics クエリを作成する](app-insights-analytics.md)
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

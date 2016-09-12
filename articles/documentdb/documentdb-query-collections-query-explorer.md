@@ -14,26 +14,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="08/30/2016"
 	ms.author="anhoh"/>
 
 # クエリ エクスプローラーを使用して DocumentDB に対する SQL クエリを作成、編集、実行する 
 
 この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) クエリ エクスプローラーの概要について説明します。これは、[DocumentDB コレクション](documentdb-create-collection.md)に対する SQL クエリを作成、編集、実行できる Azure ポータルのツールです。
 
-1. Azure ポータルで、ジャンプバーの **[DocumentDB アカウント]** をクリックします。**[DocumentDB アカウント]** が表示されない場合は、**[参照]** をクリックし、**[DocumentDB アカウント]** をクリックします。
+1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。**[DocumentDB (NoSQL)]** が表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
 
-2. **[DocumentDB アカウント]** ブレードの上部にある **[クエリ エクスプローラー]** をクリックします。
+2. リソース メニューの **[クエリ エクスプローラー]** をクリックします。
 
 	![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
-
-    >[AZURE.NOTE] クエリ エクスプローラーは、データベース ブレードとコレクション ブレードにも表示されます。
 
 3. **[クエリ エクスプローラー]** ブレードで、ドロップダウン リストから、クエリの対象となる**データベース**と**コレクション**を選択し、実行するクエリを入力します。
 
     **[データベース]** と **[コレクション]** の各ドロップダウン リストには、クエリ エクスプローラーを起動したコンテキストに応じて値が設定されています。
 
-    既定のクエリ `SELECT TOP 100 * FROM c` が表示されています。既定のクエリをそのまま使用することも、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)または「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」で説明されている SQL クエリ言語を使用して独自のクエリを作成することもできます。
+    既定のクエリ `SELECT TOP 100 * FROM c` が表示されています。既定のクエリをそのまま使用することも、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)または [SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページで説明されている SQL クエリ言語を使用して独自のクエリを作成することもできます。
 
     **[クエリの実行]** をクリックして、結果を表示します。
 
@@ -73,10 +71,10 @@
 
 ## ポータル以外で DocumentDB SQL クエリを実行する
 
-Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。他の方法の詳細については、「[SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)」を参照してください。
+Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。他の方法の詳細については、「[SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)」をご覧ください。
 
 ## 次のステップ
 
-クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、「[DocumentDB における SQL クエリと SQL 構文](documentdb-sql-query.md)」を参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。また、[Query Playground](https://www.documentdb.com/sql/demo)で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
+クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。また、[Query Playground](https://www.documentdb.com/sql/demo)で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

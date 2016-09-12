@@ -19,7 +19,6 @@
 
 # Linux 仮想マシンについてのよく寄せられる質問 
 
-
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。このトピックの Windows バージョンについては、「[Frequently asked question about Windows Virtual Machines (Windows 仮想マシンについてのよく寄せられる質問)](virtual-machines-windows-faq.md)」を参照してください。
 
 ## Azure VM では何を実行できますか。
@@ -34,28 +33,91 @@
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。価格の詳細については、「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 
-
 ## 仮想マシンへのアクセス方法を教えてください。
 
-Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立する必要があります。[Windows から](virtual-machines-linux-ssh-from-windows.md)接続する手順、または [Linux および Mac から](virtual-machines-linux-mac-create-ssh-keys.md)接続する手順を参照します。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
+Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立します。[Windows から](virtual-machines-linux-ssh-from-windows.md)接続する手順、または [Linux および Mac から](virtual-machines-linux-mac-create-ssh-keys.md)接続する手順を参照します。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
 
 
 問題がある場合は、[Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)に関する記事を参照してください。
+
 
 ## データの格納時に一時ディスク (/dev/sdb2) を使用できますか。
 
 データの格納に一時ディスク (/dev/sdb1) を使用しないでください。一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。
 
+
 ## 既存の Azure VM をコピーまたは複製できますか。
 
 はい。詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-copy-vm.md)」を参照してください。
+
 
 ## Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
 
 カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
 
+
 ## VM の作成後、NIC を VM に追加できますか。
 
 いいえ。NIC を追加できるのは VM の作成時のみです。
 
-<!---HONumber=AcomDC_0824_2016-->
+
+## コンピューター名の要件はありますか。
+
+はい。コンピューター名は最大 64 文字の長さまで指定できます。リソースの名前付けの詳細については、「[インフラストラクチャの名前付けガイドライン](virtual-machines-linux-infrastructure-naming-guidelines.md)」を参照してください。
+
+
+## VM を作成する際のユーザー名の要件は何ですか。
+
+ユーザー名は 1 ～ 64 文字の長さにする必要があります。
+
+次のユーザー名を指定することはできません。
+
+<table>
+	<tr>
+		<td style="text-align:center">administrator </td><td style="text-align:center"> 管理者 </td><td style="text-align:center"> ユーザー </td><td style="text-align:center"> user1</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">backup </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+	</tr>
+</table>
+
+
+## VM を作成する際のパスワードの要件は何ですか。
+
+パスワードは 6 ～ 72 文字の長さにし、次の 4 つの複雑性要件のうち 3 つを満たしている必要があります。
+
+- 小文字を含む
+- 大文字を含む
+- 数字を含む
+- 特殊文字を含む ([\\W\_] に一致する正規表現)
+
+次のパスワードを指定することはできません。
+
+<table>
+	<tr>
+		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
+	</tr>
+	<tr>
+		<td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
+	</tr>
+</table>
+
+<!---HONumber=AcomDC_0831_2016-->

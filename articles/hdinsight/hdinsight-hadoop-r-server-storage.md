@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-services"
-   ms.date="06/01/2016"
+   ms.date="09/01/2016"
    ms.author="jeffstok"
 />
 
@@ -188,6 +188,6 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 - [概要: HDInsight の R Server](hdinsight-hadoop-r-server-overview.md)
 - [Hadoop での R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
-- [HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
+- [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

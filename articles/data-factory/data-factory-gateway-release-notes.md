@@ -13,24 +13,34 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/17/2016" 
+	ms.date="08/26/2016" 
 	ms.author="spelluru"/>
 
 # Data Management Gateway のリリース ノート
-
 最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でシームレスにデータを移動することです。Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合がシームレスになります。
 
-詳細については、「[Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」と「[Data Management Gateway](data-factory-data-management-gateway.md)」の記事を参照してください。
+Data Management Gateway とその使用方法の詳細については、次の記事をご覧ください。
 
-## 最新バージョン (2.1.6040.1)
+- [Data Management Gateway](data-factory-data-management-gateway.md)
+- [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
+
+## 最新バージョン (2.2.6072.1)
+
+- Gateway 構成マネージャーを使用して、ゲートウェイ用の HTTP プロキシを設定できます。構成されている場合、Azure BLOB、Azure テーブル、Azure Data Lake、および Document DB には HTTP プロキシでアクセスします。
+- Azure BLOB、Azure Data Lake Store、オンプレミスのファイル システム、およびオンプレミスの HDFS との間でデータをコピーするときに、TextFormat のヘッダーを処理できます。
+- 既にサポートされているブロック BLOB のほか、追加 Blob とページ BLOB からのデータのコピーがサポートされています。
+- 新しいゲートウェイの状態 "**オンライン (制限されたデータ)**" が導入されてました。これは、ゲートウェイの動作の主な機能を示していますが、コピー ウィザードの対話型操作のサポートを除きます。
+- 登録キーにより、ゲートウェイ登録の堅牢性が向上しました。
+
+## 以前のバージョン
+
+## 2\.1.6040.1
 
 - DB2 ドライバーは現在、ゲートウェイ インストール パッケージに含まれています。別途インストールする必要はありません。
 - DB2 ドライバーは、既にサポートされているプラットフォーム (Linux、Unix、Windows) に加え、現在では z/OS と DB2 for i (AS/400) をサポートしています。
 - オンプレミス データ ストアの送信元または送信先として DocumentDB をサポートします。
 - 既にサポートされている汎用ストレージ アカウントに加え、コールド/ホット Blob Storage との間でデータをコピーできるようになりました。
 - ゲートウェイを介し、リモート ログイン特権でオンプレミスの SQL Server に接続することができます。
-
-## 以前のバージョン
 
 ## 2\.0.6013.1
 
@@ -39,8 +49,8 @@
 - Data Management Gateway 構成マネージャーのユーザー インターフェイスが強化されています。
 	- ゲートウェイのステータスが [ホーム] タブで見やすくなりました。
 	- コントロールの配置が見直され、簡素化されました。
-- [コーディング不要のコピー プレビュー ツール](data-factory-copy-data-wizard-tutorial.md)を使用し、Azure Blob 以外のストレージから Polybase とステージング BLOB を介して Azure SQL Data Warehouse にデータをコピーできます。この機能全般について詳しくは、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
-- Data Management Gateway を使用すると、オンプレミスの SQL Server データベースから直接 Azure Machine Learning にデータを取り込むことができます。
+- [コーディング不要のコピー プレビュー ツール](data-factory-copy-data-wizard-tutorial.md)を使用して、ストレージからデータをコピーできます。この機能全般の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」をご覧ください。
+- Data Management Gateway を使用すると、オンプレミスの SQL Server データベースから Azure Machine Learning に直接データを取り込むことができます。
 - パフォーマンスの向上
 	- コーディング不要のコピー プレビュー ツールで SQL Server に対するスキーマ/プレビューを表示する際のパフォーマンスが向上します。
 
@@ -107,7 +117,7 @@
 - Azure Data Factory の表形式データ ソースのテーブル列のサポート
 - Azure Data Factory の SQL DW のサポート
 - Azure Data Factory の BlobSource と FileSource の個別サポート
-- CopyBehavior のサポート – Azure Data Factory のバイナリ コピーを含む BlobSink と FileSink の MergeFiles、PreserveHierarchy および FlattenHierarchy
+- CopyBehavior のサポート – Azure Data Factory のバイナリ コピーを含む BlobSink と FileSink の MergeFiles、PreserveHierarchy、および FlattenHierarchy
 - Azure Data Factory のコピー アクティビティ レポートの進行のサポート
 - Azure Data Factory のデータ ソース接続確認のサポート
 - バグの修正
@@ -165,9 +175,4 @@
 
 - Azure Data Factory のシナリオに影響する変更なし
 
-## 質問/回答
-
-### データ ソース マネージャーがゲートウェイに接続しようとするのはなぜですか。
-これはセキュリティ上の設計で、構成できるのは企業ネットワーク内のクラウドにアクセスするためのオンプレミスなデータ ソースに限られています。資格情報が企業のファイアウォールの外部に流れることはありません。ゲートウェイがインストールされているコンピューターに、お使いのコンピューターからアクセスできることを確認してください。
-
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

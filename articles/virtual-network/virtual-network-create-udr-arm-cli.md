@@ -53,9 +53,9 @@
 		info:    network route-table create command OK
 
 	パラメーター:
-	- **-g (または --resource-group)**。NSG の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。
-	- **-l (または --location)**。NSG が作成される Azure リージョンです。ここでは、*westus* です。
-	- **-n (または --name)**。新しい NSG の名前です。ここでは、*NSG-FrontEnd* です。
+	- **-g (または --resource-group)**.UDR の作成場所となるリソース グループの名前です。ここでは、*TestRG* です。
+	- **-l (または --location)**。新しい UDR が作成される Azure リージョンです。ここでは、*westus* です。
+	- **-n (または --name)**。新しい UDR の名前です。ここでは、*UDR-FrontEnd* です。
 
 4. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、**`azure network route-table route create`** コマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 
@@ -199,4 +199,4 @@
 
 	- **-f (または --enable-ip-forwarding)**。*true* または *false*。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

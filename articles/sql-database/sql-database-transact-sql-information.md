@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="06/13/2016"
+   ms.date="08/30/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure SQL Database の Transact-SQL の相違点
@@ -26,22 +26,22 @@
 - 演算子。
 - 文字列、算術、論理、およびカーソルに関連する機能。
 
-ただし、Azure SQL Database は、**マスター** データベースへの依存から機能を分離するように設計されています。その結果、サーバー レベルの多くのアクティビティは SQL Database には不適切であり、サポートされません。このトピックでは、SQL Database では完全にサポートされない機能について説明します。
+ただし、Azure SQL Database は、**マスター** データベースへの依存から機能を分離するように設計されています。その結果、サーバー レベルの多くのアクティビティは SQL Database には不適切であり、サポートされません。通常、SQL Server で廃止になった機能は SQL Database でサポートされません。
 
-さらに、通常、SQL Server で廃止になった機能は SQL Database でもサポートされません。
+> [AZURE.NOTE]
+このトピックでは、最新バージョン SQL Database V12 にアップグレードする際、SQL Database で利用できる機能について説明します。V12 に関する詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。
 
-## SQL Database V12 にアップグレードする
+次のセクションでは、一部サポートされている機能と、完全にサポートされていない機能を示します。
 
-このトピックでは、無料の SQL Database V12 にアップグレードする際、SQL Database で利用できる機能について説明します。V12 に関する詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。SQL Database V12 ではパフォーマンスが改善され、管理しやすくなり、機能が追加されました。追加された機能の一覧を以下に示します。完全にサポートされている機能と部分的にサポートされている機能に分割されています。
 
 ## SQL Database V12 で部分的にサポートされる機能
 
 SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE のすべてのオプションを利用できるわけではありません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
 - データベース: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
-- DMV は一般的に利用できる機能で利用できます
+- DMV は一般的に利用できる機能で利用できます。
 - 関数: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)
-- [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 
+- [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 - ログイン: [CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
 - ストアド プロシージャ: [CREATE](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
 - テーブル: [CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER](https://msdn.microsoft.com/library/ms190273.aspx)
@@ -52,7 +52,7 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 ## SQL Database でサポートされていない機能
 
 - システム オブジェクトの照合順序
-- 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMEWindows 認証はログインまたは包含データベース ユーザーには利用できません。
+- 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMESQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。いくつかの認証の種類には、最新バージョン の SSMS が必要です。詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
 - 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
 - データベース間での所有権の継承、TRUSTWORTHY 設定
 - データ コレクター
@@ -77,20 +77,20 @@ SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメン
 - .NET framework の [ CLR と SQL Server の統合](http://msdn.microsoft.com/library/ms254963.aspx)
 - リソース ガバナー
 - セマンティック検索
-- サーバー資格情報
+- サーバー資格情報。代わりに データベース スコープの資格情報を使用してください。
 - サーバーレベル項目: サーバー ロール、IS\_SRVROLEMEMBER、sys.login\_token。サーバーレベルのアクセス許可は利用できません。ただし、一部がデータベースレベルのアクセス許可で置換されます。一部のサーバーレベルの DMV は利用できません。ただし、一部がデータベースレベルの DMV で置換されます。
 - サーバーレスの高速: localdb、ユーザー インスタンス
 - Service Broker
 - SET REMOTE\_PROC\_TRANSACTIONS
 - SHUTDOWN
 - sp\_addmessage
-- sp\_configure オプションと RECONFIGURE
+- sp\_configure オプションと RECONFIGURE。一部のオプションは、[ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) で使用できます。
 - sp\_helpuser
 - sp\_migrate\_user\_to\_contained
-- SQL Server 監査 (代わりに SQL Database 監査を使用)
+- SQL Server 監査。代わりに SQL Database 監査を使用してください。
 - SQL Server プロファイラー
 - SQL Server トレース
-- トレース フラグ
+- トレース フラグ。トレース フラグのいくつかの項目は、互換性モードに移動されました。
 - Transact-SQL デバッグ
 - トリガー: サーバー スコープ トリガーまたはログオン トリガー
 - USE ステートメント: データベース コンテキストを別のデータベースに変更するには、新しいデータベースへの接続を新たに確立する必要があります。
@@ -102,10 +102,8 @@ Transact-SQL の文法、使用方法、例の詳細については、SQL Server
 
 ### 「適用先」タグについて
 
-TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。通常は、トピック タイトルの下に、SQL Server のバージョンを示す「適用先」行が表示されます。その他の製品名なども示される可能性があります。多くの場合、同じ「適用先」タグに、Azure SQL Database も表示されます。「適用先」に Azure SQL Database が表示されない場合、そのトピックのコンテンツは Azure SQL Database には適用されません。「適用先」行に複数の製品が表示され、トピックが各製品に適用されるかどうかを示す小さなアイコンも表示されることがあります。
-
- たとえば、可用性グループは SQL Server 2012 で導入されました。可用性グループは SQL Server 2008、SQL Server 2008 R2、または Azure SQL Database には適用されないため、「**可用性グループの作成**」トピックでは、そのトピックが **SQL Server (SQL Server 2012 から現在のバージョンまで)** に適用されることが示されます。
+TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。トピック タイトルの下に、4 つの SQL Server プラットフォームを一覧表示して、適用性を示すアイコン バーがあります。たとえば、可用性グループは SQL Server 2012 で導入されました。[可用性グループの作成](https://msdn.microsoft.com/library/ff878399.aspx)トピックでは、そのステートメントが** SQL Server (2012 年以降) に適用されることが示されます 。ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
 
 場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

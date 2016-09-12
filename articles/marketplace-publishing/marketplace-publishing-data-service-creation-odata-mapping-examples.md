@@ -13,10 +13,12 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用した既存の Web サービスの OData へのマッピングの例
+
+>[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
 
 ## 例： "POST" を使用して返される "生" データのための FunctionImport
 POST の生データを使用して、新しい従属要素を作成し、サーバーによって定義された URL (場所) を返したり、サーバーによって定義された URL で従属要素の一部を更新したりします。ここでは従属要素はストリームです。つまり、テキスト ファイルなどの非構造化データです。場所がないと、POST はべき等ではない状態になることに注意してください。
@@ -155,4 +157,4 @@ GET で取得したデータの RESTful なページングを実装します。�
 - 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事をご覧ください。
 - データ サービスを Azure Marketplace に発行するための指定のパスに戻る場合は、この[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)をご覧ください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

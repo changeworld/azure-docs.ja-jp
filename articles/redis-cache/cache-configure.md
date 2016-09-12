@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="08/18/2016"
+	ms.date="08/25/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の構成方法
@@ -56,9 +56,9 @@ Azure Redis Cache の **[設定]** ブレードには次の設定が用意され
 
 ![サポートとトラブルシューティング](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-一般的な問題と、その問題を解決するため戦略を確認するには、**[トラブルシューティング]** をクリックします。
+一般的な問題と、その問題を解決するための方法を確認するには、**[問題の診断と解決]** をクリックします。
 
-キャッシュに対して実行された操作を表示するには、**[監査ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
+キャッシュに対して実行された操作を表示するには、**[アクティビティ ログ]** をクリックします。また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。監査ログの操作方法の詳細については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」と「[Resource Manager の監査操作](../resource-group-audit.md)」を参照してください。Azure Redis Cache イベントの監視の詳細については、「[処理とアラート](cache-how-to-monitor.md#operations-and-alerts)」を参照してください。
 
 **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。Azure Resource Health サービスの詳細については、「[Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
 
@@ -409,4 +409,4 @@ Azure Redis Cache で無効な Redis コマンドの一覧については、前�
 ## 次のステップ
 -	Redis コマンドの使用の詳細については、[Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

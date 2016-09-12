@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="na"
-	ms.date="06/03/2016"
+	ms.date="08/26/2016"
 	ms.author="marsma" />
 
 # Azure Batch プールの Linux コンピューティング ノードのプロビジョニング
@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## 仮想マシン イメージの一覧
 
-この記事の執筆時点で使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を、次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] \(Python) と [ListNodeAgentSkus][net_list_skus] \(Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
+この記事の最終更新時点で使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を、次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] \(Python) と [ListNodeAgentSkus][net_list_skus] \(Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
 
 > [AZURE.WARNING] 次の一覧は、いつでも変更される可能性があります。Batch ジョブを実行するときに、Batch API で使用できる **ListNodeAgentSkus** メソッドを常に使用して、互換性のある仮想マシンとノード エージェント SKU を一覧表示してから選択します。
 
@@ -209,19 +209,20 @@ ImageReference imageReference = new ImageReference(
 | Canonical | UbuntuServer | 14\.04.2-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.3-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.4-LTS | 最新 | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 15\.10 | 最新 | batch.node.debian 8 |
+| Canonical | UbuntuServer | 14\.04.5-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 16\.04.0-LTS | 最新 | batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
 | OpenLogic | CentOS | 7\.0 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS | 7\.1 | 最新 | batch.node.centos 7 |
-| OpenLogic | CentOS | 7\.2 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS-HPC | 7\.1 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS | 7\.2 | 最新 | batch.node.centos 7 |
 | Oracle | Oracle-Linux | 7\.0 | 最新 | batch.node.centos 7 |
-| SUSE | SLES | 12 | 最新 | batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | 最新 | batch.node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12 | 最新 | batch.node.opensuse 42.1 |
 | SUSE | openSUSE | 13\.2 | 最新 | batch.node.opensuse 13.2 |
 | SUSE | openSUSE-Leap | 42\.1 | 最新 | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12 | 最新 | batch.node.opensuse 42.1 |
+| SUSE | SLES | 12-SP1 | 最新 | batch.node.opensuse 42.1 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | 最新 | batch.node.windows amd64 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | 最新 | batch.node.centos 7 |
 | MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | 最新 | batch.node.windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 最新 | batch.node.windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 最新 | batch.node.windows amd64 |
@@ -234,31 +235,54 @@ ImageReference imageReference = new ImageReference(
 次の Python コード スニペットでは、リモート接続に必要なユーザーをプール内の各ノードに作成します。その後、各ノードの Secure Shell (SSH) 接続情報を出力します。
 
 ```python
+import datetime
 import getpass
+import azure.batch.batch_service_client as batch
+import azure.batch.batch_auth as batchauth
+import azure.batch.models as batchmodels
+
+# Specify your own account credentials
+batch_account_name = ''
+batch_account_key = ''
+batch_account_url = ''
+
+# Specify the ID of an existing pool containing Linux nodes
+# currently in the 'idle' state
+pool_id = ''
 
 # Specify the username and prompt for a password
-username = "linuxuser"
+username = 'linuxuser'
 password = getpass.getpass()
 
-# Create the user that will be added to each node
-# in the pool
+# Create a BatchClient
+credentials = batchauth.SharedKeyCredentials(
+    batch_account_name,
+    batch_account_key
+)
+batch_client = batch.BatchServiceClient(
+        credentials,
+        base_url=batch_account_url
+)
+
+# Create the user that will be added to each node in the pool
 user = batchmodels.ComputeNodeUser(username)
 user.password = password
 user.is_admin = True
-user.expiry_time = (datetime.datetime.today() + datetime.timedelta(days=30)).isoformat()
+user.expiry_time = \
+    (datetime.datetime.today() + datetime.timedelta(days=30)).isoformat()
 
 # Get the list of nodes in the pool
-nodes = client.compute_node.list(pool_id)
+nodes = batch_client.compute_node.list(pool_id)
 
 # Add the user to each node in the pool and print
 # the connection information for the node
 for node in nodes:
     # Add the user to the node
-    client.compute_node.add_user(pool_id, node.id, user)
+    batch_client.compute_node.add_user(pool_id, node.id, user)
 
     # Obtain SSH login information for the node
-    login = client.compute_node.get_remote_login_settings(pool_id,
-                                                          node.id)
+    login = batch_client.compute_node.get_remote_login_settings(pool_id,
+                                                                node.id)
 
     # Print the connection info for the node
     print("{0} | {1} | {2} | {3}".format(node.id,
@@ -287,7 +311,7 @@ Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジ�
 
 ### Batch Python のチュートリアル
 
-Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「[Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。ヘルパー関数、`get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
+Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「[Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。ヘルパー関数 `get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
 
 ### Batch Python コード サンプル
 
@@ -327,4 +351,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "Application packages high-level diagram"
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

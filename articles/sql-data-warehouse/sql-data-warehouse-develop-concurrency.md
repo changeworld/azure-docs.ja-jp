@@ -3,7 +3,7 @@
    description="ソリューション開発のための Azure SQL Data Warehouse での同時実行とワークロード管理を理解します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/17/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="08/30/2016"
+   ms.author="sonyama;barbkess;jrj"/>
 
 # SQL Data Warehouse での同時実行とワークロード管理
 
@@ -270,16 +270,16 @@ Removed as these two are not confirmed / supported under SQLDW
 
 ## ユーザー リソース クラスの変更例
 
-1. **ログインを作成する:** SQL Data Warehouse の**マスター** データベースへの接続を開き、次のコマンドを実行します。
+1. **ログインを作成する:** SQL Data Warehouse データベースをホストしている SQL Server の**マスター** データベースへの接続を開き、次のコマンドを実行します。
 
 	```sql
 	CREATE LOGIN newperson WITH PASSWORD = 'mypassword';
 	CREATE USER newperson for LOGIN newperson;
 	```
 
-	> [AZURE.NOTE] Azure SQL Database と Azure SQL Data Warehouse の両方のマスター データベースに、ログイン用のユーザーを作成することをお勧めします。このレベルでは 2 つのサーバー ロールを利用できます。これらのロールでは、**マスター**にユーザーを作成してメンバーシップを付与するためにログインが必要です。これらのロールは、`Loginmanager` と `dbmanager` です。これらのロールは、Azure SQL Database と SQL Data Warehouse の両方で、ログインを管理し、データベースを作成する権限を付与します。この点が SQL Server とは異なります。詳細については、[Azure SQL Database におけるデータベースとログインの管理][]に関する記事をご覧ください。
+	> [AZURE.NOTE] Azure SQL Data Warehouse ユーザーの master データベースにユーザーを作成することをお勧めします。マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。ユーザーの作成および管理の詳細については、「[SQL Data Warehouse でのデータベース保護][]」をご覧ください。
 
-2. **ユーザー アカウントを作成する:** **SQL Data Warehouse** データベースへの接続を開き、次のコマンドを実行します。
+2. **SQL Data Warehouse ユーザーを作成する:** **SQL Data Warehouse** データベースへの接続を開き、次のコマンドを実行します。
 
 	```sql
 	CREATE USER newperson FOR LOGIN newperson;
@@ -311,9 +311,9 @@ Removed as these two are not confirmed / supported under SQLDW
 
 ```sql
 SELECT 	 r.[request_id]				 AS Request_ID
-	,r.[status]				 AS Request_Status
-	,r.[submit_time]			 AS Request_SubmitTime
-	,r.[start_time]				 AS Request_StartTime
+        ,r.[status]				 AS Request_Status
+        ,r.[submit_time]			 AS Request_SubmitTime
+        ,r.[start_time]				 AS Request_StartTime
         ,DATEDIFF(ms,[submit_time],[start_time]) AS Request_InitiateDuration_ms
         ,r.resource_class                         AS Request_resource_class
 FROM    sys.dm_pdw_exec_requests r;
@@ -331,8 +331,8 @@ AND     ro.[is_fixed_role]  = 0;
 次のクエリは、各ユーザーが割り当てられているロールを示します。
 
 ```sql
-SELECT	r.name AS role_principal_name
-,		m.name AS member_principal_name
+SELECT	 r.name AS role_principal_name
+        ,m.name AS member_principal_name
 FROM	sys.database_role_members rm
 JOIN	sys.database_principals AS r			ON rm.role_principal_id		= r.principal_id
 JOIN	sys.database_principals AS m			ON rm.member_principal_id	= m.principal_id
@@ -420,12 +420,13 @@ FROM	sys.dm_pdw_wait_stats w;
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
+[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 [セグメントの品質を向上させるためのインデックスの再構築]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Azure SQL Database におけるデータベースとログインの管理]: https://msdn.microsoft.com/library/azure/ee336235.aspx
+[Managing Databases and Logins in Azure SQL Database]: https://msdn.microsoft.com/library/azure/ee336235.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

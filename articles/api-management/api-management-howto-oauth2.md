@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="08/24/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
@@ -146,7 +146,6 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [API Management インスタンスの作成]: api-management-get-started.md
-[Get started with advanced API configuration]: api-management-get-started-advanced.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Azure API Management の使用]: api-management-get-started.md#create-service-instance
@@ -160,4 +159,4 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 # Azure 用の Ubuntu 仮想マシンの準備
@@ -22,7 +22,11 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## 公式の Ubuntu クラウド イメージ
-Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) でダウンロードできます。Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。
+Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-images.ubuntu.com/](http://cloud-images.ubuntu.com/) でダウンロードできます。Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。最新のイメージ リリースは、常に次の場所にあります。
+
+ - Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/precise/release/ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip)
+ - Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+ - Ubuntu 16.04/Xenial: [ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
 
 
 ## 前提条件
@@ -31,7 +35,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-
 
 **Ubuntu のインストールに関する注記**
 
-- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
+- Azure で Linux を準備する際のその他のヒントについては、「[Linux のインストールに関する一般的な注記](virtual-machines-linux-create-upload-generic.md#general-linux-installation-notes)」も参照してください。
 - VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 - Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、[LVM](virtual-machines-linux-configure-lvm.md) または [RAID](virtual-machines-linux-configure-raid.md) をデータ ディスク上で使用できます。
 - OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
@@ -83,38 +87,30 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[http://cloud-
 
 		# sudo reboot
 
-5.	(省略可能) Ubuntu システムにエラーが発生して、Ubuntu システムが再起動すると、多くの場合 Grub のブート プロンプトでユーザーの入力を待機し、適切にシステムが起動しなくなります。この動作を回避するために、次の手順を実行します。
 
-	a) /etc/grub.d/00\_header ファイルを開きます。
+5. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、`GRUB_CMDLINE_LINUX_DEFAULT` という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
 
-	b) **make\_timeout()** 関数内で **if ["\\${recordfail}" = 1 ]; then** を検索します。
-
-	c) この行の下の文を **set timeout=5** に変更します。
-
-	d) 'sudo update-grub' を実行します。
-
-6. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、`GRUB_CMDLINE_LINUX_DEFAULT` という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
-
-		GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+		GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
 	このファイルを保存して閉じてから、"`sudo update-grub`" を実行します。これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-8.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
+6.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
-9.	Azure Linux エージェントをインストールします。
+7.	Azure Linux エージェントをインストールします。
 
 		# sudo apt-get update
 		# sudo apt-get install walinuxagent
 
 	`NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
 
-10.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+8.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		# sudo waagent -force -deprovision
 		# export HISTSIZE=0
 		# logout
 
-11. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+9. Hyper-V マネージャーで **[アクション] -> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+
 
 ## 次のステップ
 これで、Ubuntu Linux 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
@@ -126,4 +122,4 @@ Ubuntu HardWare Enablement (HWE) カーネル:
 - [http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html](http://blog.utlemming.org/2015/01/ubuntu-1404-azure-images-now-tracking.html)
 - [http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html](http://blog.utlemming.org/2015/02/1204-azure-cloud-images-now-using-hwe.html)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

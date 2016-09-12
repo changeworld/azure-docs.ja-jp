@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/14/2016"
+   ms.date="08/30/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -96,13 +96,13 @@ HDInsight は Azure BLOB ストレージを既定の保管場所として使用�
 
 HDInsight の既定の保管場所であるため、通常は何もしなくても使用できます。たとえば、次のコマンドは、Azure BLOB ストレージに保存されている **/example/data** フォルダー内のファイルの一覧を表示します。
 
-	hadoop fs -ls /example/data
+	hdfs dfs -ls /example/data
 
 一部のコマンドでは、BLOB ストレージを使用することを指定する必要があります。その場合、コマンドにプレフィックスとして **wasb://**、または wasbs://**** を付けることができます。
 
 HDInsight では、クラスターに複数の BLOB ストレージ アカウントを関連付けることもできます。既定以外の BLOB ストレージ アカウントのデータにアクセスするには、**wasbs://&lt;container-name>@<account-name>.blob.core.windows.net/** という形式を使用できます。たとえば、次のコマンドは、指定したコンテナーと BLOB ストレージ アカウントについて、**/example/data** ディレクトリの内容を表示します。
 
-	hadoop fs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
+	hdfs dfs -ls wasbs://mycontainer@mystorage.blob.core.windows.net/example/data
 
 ### クラスターで使用している BLOB ストレージ
 
@@ -130,7 +130,7 @@ HDInsight では、クラスターに複数の BLOB ストレージ アカウン
     
 2. ストレージ アカウントのキーを取得します。__GROUPNAME__ を、前の手順で取得したリソース グループ名に置き換えてください。__ACCOUNTNAME__ を、ストレージ アカウント名に置き換えてください。
 
-        azure storage account keys list -g GROUPNAME ACCOUNTNAME --json | jq '.storageAccountKeys.key1'
+        azure storage account keys list -g GROUPNAME ACCOUNTNAME --json | jq '.[0].value'
 
     アカウントのプライマリ キーが返されます。
 
@@ -227,7 +227,6 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 * [Hue](hdinsight-hadoop-hue-linux.md)
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [R](hdinsight-hadoop-r-scripts-linux.md)
 * [Solr](hdinsight-hadoop-solr-install-linux.md)
 
 独自のスクリプト アクションを開発する方法の詳細については、「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
@@ -257,4 +256,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

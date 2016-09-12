@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sql-database"
-   ms.date="06/15/2016"
+   ms.date="08/29/2016"
    ms.author="carlrab"/>
 
 #Azure SQL Database のテンポラル テーブルの概要
@@ -199,4 +199,4 @@ ALTER TABLE dbo.WebsiteUserInfo
 
 テンポラル テーブルの詳細については、[MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

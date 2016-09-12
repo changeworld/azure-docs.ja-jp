@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # ラボ用の仮想ネットワークの構成
 
-## 概要
+## Overview
 
 「[アーティファクトを含む VM を Azure DevTest ラボに追加する](devtest-lab-add-vm-with-artifacts.md)」の記事で説明しているように、ラボで VM を作成する際に、その VM に構成されている仮想ネットワーク (およびサブネット) を指定できます。これを行う 1 つのシナリオは、ExpressRoute またはサイト間 VPN で設定されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしたい場合です。以下のセクションでは、VM の作成時に選択できるように、ラボの Virtual Network の設定に既存の仮想ネットワークを追加する方法を説明します。
 
@@ -47,7 +47,7 @@
 
 	![既存の仮想ネットワークを選択する](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 	
-1. **[仮想ネットワークの選択]** ブレードで、目的の仮想ネットワークを選択します。ブレードには、サブスクリプションのラボと同じリージョン下にあるすべての仮想ネットワークが表示されます。
+1. **[仮想ネットワークの選択]** ブレードで、目的の仮想ネットワークを選択します。ブレードには、サブスクリプションのラボと同じリージョンの下にあるすべての仮想ネットワークが表示されます。
 
 1. 仮想ネットワークを選択し、**[仮想ネットワーク]** ブレードに戻ると、いくつかのフィールドが有効になっていることがわかります。
 
@@ -65,8 +65,10 @@
 
 1. 仮想ネットワークが構成されたので、新しい VM の作成時にそれを選択できます。これについては、「[アーティファクトを含む VM をラボに追加する](devtest-lab-add-vm-with-artifacts.md)」の記事で説明しています。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
-ラボに目的の仮想ネットワークを追加したら、次は[ラボに VM を追加](devtest-lab-add-vm-with-artifacts.md)します
+ラボに目的の仮想ネットワークを追加したら、次は[ラボに VM を追加](devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

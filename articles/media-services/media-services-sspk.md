@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/19/2016"  
+	ms.date="08/25/2016"  
 	ms.author="xpouyat"/>
 
 #Licensing Microsoft® Smooth Streaming Client Porting Kit
 
-##概要
+##Overview
 
 Microsoft Smooth Streaming Client Porting Kit (**SSPK**) は、組み込みデバイスのメーカーやケーブル テレビ事業者、携帯電話会社、コンテンツ サービス プロバイダー、携帯電話端末メーカー、独立系ソフトウェア ベンダー (ISV)、ソリューション プロバイダーが、アダプティブ ストリーミング コンテンツをスムーズ ストリーミング形式で配信するための製品やサービスを構築できるように最適化されたスムーズ ストリーミング クライアントの実装です。SSPK は、デバイスやプラットフォームに依存しないスムーズ ストリーミング クライアントの実装であり、ライセンシーは任意のデバイスやプラットフォームに移植できます。
 
@@ -26,7 +26,7 @@ Microsoft Smooth Streaming Client Porting Kit (**SSPK**) は、組み込みデ�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-##説明
+##Description
 
 SSPK は、高い事業価値を提供する契約条件に基づいて使用許諾されます。SSPK のライセンスが業界にもたらす利点を次に示します。
 
@@ -106,6 +106,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - SoftAtHome
 - Sony Corporation
 - Tatung Technology Inc.
+- TCL Technoly Electronics (Huizhou) Co., Ltd.
 - Vestel Elektronik Sanayi ve Ticaret A.S.
 - VisualOn, Inc.
 - ZTE Corporation
@@ -129,7 +130,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Fluendo S.A.
 - Gibson Innovations Limited
 - HANDAN BroadInfoCom Co., Ltd.
-- Hisense International Co., Ltd
 - Homecast Co.,Ltd
 - Hon Hai Precision Industry Co., Ltd.
 - Infomir GMBH
@@ -165,4 +165,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

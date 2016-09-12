@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # 特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
 
-## 概要
+## Overview
 
 この記事では、PowerShell を使用して、特定のラボ ポリシーに対するアクセス許可をユーザーに付与する方法を説明します。そうすることで、アクセス許可を各ユーザーのニーズに基づいて適用できます。たとえば、特定のユーザーに、VM ポリシー設定は変更できるがコスト ポリシーは変更できない能力を付与することができます。
 
@@ -28,9 +28,9 @@
 
 DevTest ラボでは、ポリシーはリソースの種類の 1 つで、RBAC の操作 **Microsoft.DevTestLab/labs/policySets/policies/** を可能にするものです。各ラボ ポリシーはこの種類のポリシー リソースのリソースであり、RBAC のロールにスコープとして割り当てることができます。
 
-たとえば、**VM サイズの許可**ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、**Microsoft.DevTestLab/labs/policySets/policies/*** 操作を扱うカスタム ロールを作成し、**Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
+たとえば、**VM サイズの許可**ポリシーに対する読み取り/書き込みアクセス許可をユーザーに付与するには、**Microsoft.DevTestLab/labs/policySets/policies/ **操作を扱うカスタム ロールを作成し、*Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab** スコープ内でこのカスタム ロールに適切なユーザーを割り当てます。
 
-RBAC のカスタム ロールの詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」の「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac)」のセクションを参照してください。
+RBAC のカスタム ロールの詳細については、[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関する記事の[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-configure.md#custom-roles-in-azure-rbac)に関するセクションをご覧ください。
 
 ##PowerShell を使用してラボ カスタム ロールを作成する
 作業を開始する場合は、Azure PowerShell コマンドレットをインストールして構成する方法を説明する記事 ([https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)) をお読みください。
@@ -60,7 +60,7 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
 ##カスタム ロールを使用して特定のポリシーに対しユーザーにアクセス許可を割り当てる
-カスタム ロールを定義すると、ユーザーにカスタム ロールを割り当てられるようになります。カスタム ロールをユーザーに割り当てるには、まず、そのユーザーを表す **ObjectId** を取得する必要があります。そのためには、**Get AzureRmADUser** コマンドレットを使用します。
+カスタム ロールを定義すると、ユーザーにカスタム ロールを割り当てられるようになります。カスタム ロールをユーザーに割り当てるには、まず、そのユーザーを表す **ObjectId** を取得する必要があります。そのためには、**Get-AzureRmADUser** コマンドレットを使用します。
 
 次の例では、*SomeUser* ユーザーの **ObjectId** は 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 です。
 
@@ -81,6 +81,8 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 - AllowedVmSizesInLab
 - LabVmsShutdown
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
 特定のラボ ポリシーに対するアクセス許可をユーザーに付与した後で実行する手順として、以下のようなものがあります。
@@ -95,4 +97,4 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 
 - [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

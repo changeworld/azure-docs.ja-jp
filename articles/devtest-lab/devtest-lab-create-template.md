@@ -18,7 +18,6 @@
 
 # VM を作成するための Azure DevTest Labs のカスタム イメージの管理
 
-## Overview
 [ラボを作成](devtest-lab-create-lab.md)したら、[そのラボに仮想マシン (VM) を追加](devtest-lab-add-vm-with-artifacts.md)することができます。VM を作成する場合は、*ベース*として*カスタム イメージ*または*Marketplace イメージ*を指定します。この記事では、後でカスタム イメージから VM を作成できるように、[VHD からカスタム イメージを作成する](#create-a-custom-image-from-a-vhd)方法について説明します。さらに、後で迅速に VM を作成できるように、[VM からカスタム イメージを作成する](#create-a-custom-image-from-a-vm)こともできます。
 
 ## VHD ファイルからカスタム イメージを作成する
@@ -99,6 +98,8 @@
 
 1. 完了したら **[OK]** を選択して、カスタム イメージを作成します。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 関連するブログ記事
 
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
@@ -108,4 +109,4 @@
 
 VM を作成するときに使用するカスタム イメージを追加したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 
@@ -36,14 +36,14 @@
 
 ## Azure-Manage を使用した Debian VHD の作成
 
-[credativ](http://www.credativ.com/) の [azure-manage](https://gitlab.credativ.com/de/azure-manage) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。これは、最初からイメージを作成するよりもお勧めの方法です。たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して azure-manage (と依存関係) をダウンロードし、azure\_build\_image スクリプトを実行します。
+[credativ](http://www.credativ.com/) の [azure-manage](https://github.com/credativ/azure-manage) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。これは、最初からイメージを作成するよりもお勧めの方法です。たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して azure-manage (と依存関係) をダウンロードし、azure\_build\_image スクリプトを実行します。
 
 	# sudo apt-get update
 	# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
 	# sudo apt-get install python3-pip
 	# sudo pip3 install azure-storage azure-servicemanagement-legacy pytest pyyaml
-	# git clone https://gitlab.credativ.com/de/azure-manage.git
+	# git clone https://github.com/credativ/azure-manage.git
 	# cd azure-manage
 	# sudo pip3 install .
 
@@ -60,7 +60,7 @@
 
 4. `/etc/default/grub` ファイルを編集し、**GRUB\_CMDLINE\_LINUX** パラメーターを次のように変更して、Azure の追加のカーネル パラメーターを含めます。
 
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200 earlyprintk=ttyS0,115200 rootdelay=30"
+        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=30"
 
 5. GRUB をリビルドして、次のスクリプトを実行します。
 
@@ -110,4 +110,4 @@
 
 これで、Debian 仮想ハード ディスク を使用して、Azure に新しい仮想マシンを作成する準備が整いました。.vhd ファイルを Azure に初めてアップロードする場合は、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](virtual-machines-linux-classic-create-upload-vhd.md)」の手順 2 と 3 をご覧ください。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

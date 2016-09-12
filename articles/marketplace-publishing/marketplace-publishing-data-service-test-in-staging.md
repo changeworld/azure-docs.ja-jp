@@ -13,11 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="01/04/2016"
+   ms.date="08/26/2016"
    ms.author="hascipio; avikova" />
 
 # ステージング環境でのデータ サービス プランのテスト
-最初の 2 つの手順 ([Microsoft 開発者アカウントの作成](marketplace-publishing-accounts-creation-registration.md)と[公開ポータルでのデータ サービス プランの作成](marketplace-publishing-data-service-creation.md)) が完了したら、Azure Marketplace でオファーを使用可能にする準備が整います。このトピックは第一ステップ、中間ステップといった「ステージング」について説明します。
+
+>[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
+
+最初の 2 つの手順 ([Microsoft 開発者アカウントの作成](marketplace-publishing-accounts-creation-registration.md)と[公開ポータルでのデータ サービス プランの作成](marketplace-publishing-data-service-creation.md)) が完了したら、Azure Marketplace でオファーを使用可能にする準備が整います。このトピックでは「ステージング」と呼ばれる第一の中間的なステップについて説明します。
 
 ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。
 
@@ -36,13 +39,13 @@
 
 プランを Azure ポータルに上げる計画がない / 承認が下りていない場合 (現在は容量に制限がある)、ポップアップ ウィンドウはそのまま閉じてください。
 
-(DataMarket ポータルに加えて) Azure ポータルの Data Sevice のテストをするには、テストで使用する Azure サブスクリプション ID が必要になります。このサブスクリプション ID はプランのテストを許可されるアカウントを識別します。
+(DataMarket ポータルに加えて) Azure ポータルの Data Sevice をテストするには、テストで使用する Azure サブスクリプション ID が必要になります。このサブスクリプション ID は、プランのテストに使用できるアカウントを識別します。
 
-サブスクリプション ID を貼り付けて、チェックマークをクリックして続行します。
+サブスクリプション ID を貼り付け、チェックマークをクリックして続行します。
 
   ![図](media/marketplace-publishing-data-service-test-in-staging/step-1.2.png)
 
-> [AZURE.NOTE] これらの Azure サブスクリプション ID は、[Azure 管理ポータル](https://manage.windowsazure.com)でのテストおよびステージングにのみ必要です。Azure Marketplace でのテストには必要ではありません。
+> [AZURE.NOTE] これらの Azure サブスクリプション ID は、[Azure 管理ポータル](https://manage.windowsazure.com)でのテストとステージングにのみ必要です。Azure Marketplace でのテストには必要ではありません。
 
 次に現れる画面では、下に黄色く強調表示された "In progress" アイコンによって発行が進行中であることがわかります。ステージングへのプッシュは 10 ～ 15 分かかります。それより時間がかかる場合、最初にブラウザーを更新してください (IE で F5 を押下)。まれではありますが、プランがステージングへのプッシュを 1 時間過ぎてもまだ行っていたら、その場合はお問い合わせのリンクをクリックして問題報告を行ってください。
 
@@ -86,4 +89,4 @@
 ## 関連項目
 - [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 
@@ -29,7 +29,7 @@ Azure ギャラリーまたは Marketplace にある Linux イメージは多く
 
 ## サポートされているディストリビューションとバージョン ##
 
-次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。
+次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。詳細については、「[Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/ja-JP/kb/2941892)」を参照してください。
 
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。LIS ドライバーは、ディストリビューションのカーネルに既定で組み込まれているか、以前の RHEL/CentOS ベースのディストリビューションの場合は[こちらで](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409)個別にダウンロードする形で入手できます。LIS ドライバーの詳細については、[こちらの記事](virtual-machines-linux-create-upload-generic.md#linux-kernel-requirements)を参照してください。
 
@@ -44,7 +44,7 @@ Oracle Linux | 6\.4+、7.0+ | カーネル内 | パッケージ: リポジトリ
 Red Hat Enterprise Linux | RHEL 6.7+、7.1+ | カーネル内|パッケージ: リポジトリ内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
 SUSE Linux Enterprise | SLES 11 SP4、SLES 12+、<p>SAP 11.3+ 向け SLES | カーネル内 | パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<br/> ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998)
 openSUSE | openSUSE 13.2+ | カーネル内 | パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "WALinuxAgent"<br/> ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
-Ubuntu|Ubuntu 12.04、14.04、および 16.04 | カーネル内 | パッケージ: リポジトリ内の "walinuxagent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
+Ubuntu|Ubuntu 12.04、14.04、および 16.04 | カーネル内 | パッケージ: リポジトリ内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent)
 
 
 ## パートナー
@@ -89,4 +89,4 @@ Canonical のエンジニアリングおよびオープン コミュニティ体
 
 世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC からサーバーや携帯機器まで、さまざまな Ubuntu ソリューションを市場に送り出しています。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

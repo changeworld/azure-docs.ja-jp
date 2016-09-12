@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/22/2016"
+   ms.date="08/30/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
@@ -41,18 +41,18 @@ SQL Data Warehouse への接続は、接続文字列で暗号化モードを設�
 
 ## 認証
 
-認証とは、データベースへの接続時に ID を証明する方法のことです。SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory のプレビューがサポートされています。
+認証とは、データベースへの接続時に ID を証明する方法のことです。SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory がサポートされています。
 
 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
 ただし、ベスト プラクティスとして、組織のユーザーは別のアカウントを使用して認証する必要があります。この方法により、アプリケーションに付与されるアクセス許可を制限でき、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。
 
-SQL Server 認証済みユーザーを作成するには、サーバーの**マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。
+SQL Server 認証済みユーザーを作成するには、サーバーの**マスター** データベースにサーバー管理ログインを使用して接続し、新しいサーバー ログインを作成します。また、Azure SQL Data Warehouse ユーザーの master データベースにユーザーを作成することをお勧めします。マスターでユーザーを作成すると、ユーザーはデータベース名を指定せずに SSMS のようなツールを使用してログインできます。また、オブジェクト エクスプ ローラーを使用して、SQL Server のすべてのデータベースを表示することもできます。
 
 ```sql
 -- Connect to master database and create a login
-CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
-
+CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
+CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
 次に、サーバー管理者ログインを使用して **SQL Data Warehouse データベース**に接続し、先ほど作成したサーバー ログインに基づいてデータベース ユーザーを作成します。
@@ -60,10 +60,9 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'strong_password';
 ```sql
 -- Connect to SQL DW database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
-
 ```
 
-SQL Database の認証の詳細については、「[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理][]」を参照してください。SQL Data Warehouse の Azure AD プレビューの使用に関する詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][]に関するページをご覧ください。
+ユーザーがログインの作成または新しいデータベースの作成など追加の操作を実行している場合は、master データベース内の `Loginmanager` と `dbmanager` ロールにユーザーを割り当てる必要もあります。これらの追加のロールと SQL Database の認証の詳細については、「[SQL Database の認証と承認: アクセス権の付与][]」を参照してください。SQL Data Warehouse の Azure AD に関する詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][]に関するページをご覧ください。
 
 
 ## 承認
@@ -91,9 +90,7 @@ Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用し
 
 
 ```sql
-
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
-
 ```
 
 Transparent Data Encryption は、[Azure ポータル][]のデータベース設定から有効にすることもできます。詳細については、[Transparent Data Encryption (TDE) の概要][]に関するページをご覧ください。
@@ -103,6 +100,7 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
 
 ## 次のステップ
+
 さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、「[Azure SQL Data Warehouse への接続][]」をご覧ください。
 
 <!--Image references-->
@@ -118,7 +116,7 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 [sp\_set\_firewall\_rule]: https://msdn.microsoft.com/library/dn270017.aspx
 [sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/library/dn270010.aspx
 [データベース ロール]: https://msdn.microsoft.com/library/ms189121.aspx
-[Azure SQL Database におけるデータベース、ログイン、およびユーザーの管理]: https://msdn.microsoft.com/library/ee336235.aspx
+[SQL Database の認証と承認: アクセス権の付与]: https://msdn.microsoft.com/library/ee336235.aspx
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
 [透過的なデータ暗号化]: https://go.microsoft.com/fwlink/?LinkId=526242
@@ -127,4 +125,4 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

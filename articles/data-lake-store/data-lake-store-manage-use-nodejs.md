@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="07/18/2016"
+   ms.date="08/25/2016"
    ms.author="nitinme"/>
 
 # Azure SDK for Node.js を使用して Azure Data Lake Store を管理する
@@ -36,7 +36,7 @@ Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントと
   *  **アカウント用の REST API のバージョン: 2015-10-01-preview**
   *  **ファイルシステム用の REST API のバージョン: 2015-10-01-preview**
 
-## 特徴
+## Features (機能)
 
 - アカウント管理: 作成、取得、一覧表示、更新、および削除。
 - ファイル システムの管理: 作成、取得、アップロード、追加、ダウンロード、読み取り、削除、一覧表示。
@@ -61,8 +61,8 @@ npm install azure-arm-datalake-store
 
 ```javascript
 var adlsManagement = require("azure-arm-datalake-store");
-var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, 'your-subscription-id');
-var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials, 'azuredatalakestore.net');
+var acccountClient = new adlsManagement.DataLakeStoreAccountClient(credentials, "your-subscription-id");
+var filesystemClient = new adlsManagement.DataLakeStoreFileSystemClient(credentials);
 ```
 
 ## Data Lake Store アカウントを作成する
@@ -111,7 +111,7 @@ var options = {
   streamContents: new Buffer('some string content')
 }
 
-filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
+filesystemClient.fileSystem.listFileStatus(accountName, fileToCreate, options, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {
@@ -127,7 +127,7 @@ filesystemClient.filesystem.listFileStatus(accountName, fileToCreate, options, f
 var util = require('util');
 var accountName = 'testadlsacct';
 var pathToEnumerate = '/myfolder';
-filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
+filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, function (err, result, request, response) {
   if (err) {
     console.log(err);
   } else {
@@ -141,4 +141,4 @@ filesystemClient.filesystem.listFileStatus(accountName, pathToEnumerate, functio
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

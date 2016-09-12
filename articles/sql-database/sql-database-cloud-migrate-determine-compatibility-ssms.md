@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/29/2016"
    ms.author="carlrab"/>
 
 # Azure SQL Database へ移行する前にSQL Server Management Studio を使用して SQL Database の互換性を判定する
@@ -42,7 +42,7 @@
 
 	![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS02.png)
 
-5. **[詳細設定]** タブをクリックし、**[すべて選択]** チェック ボックスをオフにしてデータのエクスポートをスキップします。ここでの目的は、互換性をテストすることだけです。
+5. データのエクスポートをスキップするために、**[詳細設定]** タブをクリックして **[すべて選択]** チェック ボックスをオフにします。ここでの目的は、互換性をテストすることだけです。
 
 	![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS03.png)
 
@@ -67,4 +67,4 @@
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

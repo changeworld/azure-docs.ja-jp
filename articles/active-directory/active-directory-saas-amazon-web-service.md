@@ -21,7 +21,7 @@
 
 このチュートリアルの目的は、Amazon Web Service (AWS) と Azure Active Directory (Azure AD) を統合する方法を説明することです。Amazon Web Service (AWS) と Azure AD の統合には、次の利点があります。
 
-- Amazon Web Service (AWS) にアクセスする Azure AD ユーザーを制御できます。 
+- Amazon Web Service (AWS) にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Amazon Web Service (AWS) にサインオンできるようにします (シングル サインオン)。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -41,13 +41,13 @@ Amazon Web Service (AWS) と Azure AD の統合を構成するには、次のも
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Amazon Web Service (AWS) の追加 
+1. ギャラリーからの Amazon Web Service (AWS) の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -56,7 +56,7 @@ Azure AD への Amazon Web Service (AWS) の統合を構成するには、ギャ
 
 ### ギャラリーから Amazon Web Service (AWS) を追加するには、次の手順を実行します。
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -91,10 +91,10 @@ Azure AD への Amazon Web Service (AWS) の統合を構成するには、ギャ
  
 Amazon Web Service (AWS) との Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[単一の Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Amazon Web Service (AWS) テスト ユーザーの作成](#creating-a-halogen-software-test-user)** - Amazon Web Service (AWS) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### 単一の Azure AD シングル サインオンの構成
@@ -195,7 +195,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 17. **[Review]** ダイアログで、次の手順を実行します。
 
-	![シングル サインオンの構成][34]
+	![Configure Single Sign-On][34]
 
      a.**Role の ARN 値** をコピーします。
 
@@ -205,7 +205,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 18. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-	![Azure AD Connect の概要][20]
+	![Azure AD Connect とは][20]
 
 19. **[シングル サインオンの確認]** ページで **[完了]** を選択して、**[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -214,7 +214,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 20. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
-	![シングル サインオンの構成][21]
+	![Configure Single Sign-On][21]
 
 21. **[ユーザー属性の追加]** をクリックします。
 
@@ -244,7 +244,10 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
      a.**[属性名]** ボックスに、「**https://aws.amazon.com/SAML/Attributes/RoleSessionName**」と入力します。
 
-     b.**[属性名]** ボックスに、「**userprincipalname**」と入力します。
+     b.**[属性値]** ボックスに「**user.userprincipalname**」と入力するか、ドロップダウン リストから選択します。
+     
+	![Configure Single Sign-On][35]
+	
 
      c.**[完了]** をクリックして **[ユーザー属性の追加]** ダイアログボックスを閉じます。
 
@@ -322,7 +325,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 1. 管理者として **Amazon Web Service (AWS)** 企業サイトにログインします。
 
-2. **[Console Home]** アイコンをクリックします。
+2. **[Console Home (コンソール ホーム)]** アイコンをクリックします。
 
 	![Configure Single Sign-On][11]
 
@@ -336,7 +339,7 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 
 5. [Create User] ダイアログで、次の手順に従います。
 
-	![シングル サインオンの構成][30]
+	![Configure Single Sign-On][30]
 
      a.**[Enter User Names]** ボックスに、Brita Simon の Azure AD でのユーザー名 (userprincipalname) を入力します。
 
@@ -416,5 +419,6 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 [32]: ./media/active-directory-saas-amazon-web-service/ic7950251.png
 [33]: ./media/active-directory-saas-amazon-web-service/ic7950252.png
 [34]: ./media/active-directory-saas-amazon-web-service/ic7950253.png
+[35]: ./media/active-directory-saas-amazon-web-service/user_attributes_01.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

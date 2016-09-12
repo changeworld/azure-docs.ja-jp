@@ -28,12 +28,12 @@
 
 操作内容|Description
 :------------- | :------------- | 
-<a href="#-1">携帯電話または会社電話を使用してサインインする</a> | 携帯電話または会社電話を使用してサインインする際の操作について説明します。
-<a href="#-3">通知を使用してモバイル アプリによってサインインする</a> | 通知を使用してモバイル アプリでサインインする際の操作について説明します。
-<a href="#-5">確認コードを使用してモバイル アプリでサインインする</a> | 確認コードを使用してモバイル アプリでサインインする際の操作について説明します。
-<a href="#-7">別の方法を使用してサインインする</a> | 別の方法を使用する場合の操作について説明します。
+[携帯電話または会社電話を使用してサインインする](#signing-in-with-mobile-or-office-phone) | 携帯電話または会社電話を使用してサインインする際の操作について説明します。
+[通知を使用して Microsoft Authenticator アプリでサインインする](#signing-in-with-the-microsoft-authenticator-app-using-notification) | Microsoft Authenticator アプリを通知と一緒に使用する際の操作について説明します。
+[確認コードを使用して Microsoft Authenticator アプリでサインインする](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|Microsoft Authenticator アプリを確認コードと一緒に使用する際の操作について説明します。
+[別の方法を使用してサインインする](#signing-in-with-an-alternate-method)|別の方法を使用する場合の操作について説明します。
 
-<h2 id="-1">携帯電話または会社電話を使用してサインインする</h2>
+## 携帯電話または会社電話を使用してサインインする
 
 多要素認証で携帯電話または会社電話を使用した場合のエクスペリエンスについて以下に記します。
 
@@ -50,7 +50,7 @@
 
 - これでサインインできます。</li>
 
-<h2 id="-3">通知を使用してモバイル アプリによってサインインする</h2>
+## 通知を使用して Microsoft Authenticator アプリでサインインする
 
 多要素認証で Microsoft Authenticator アプリを使用した場合、通知が送信されたときのエクスペリエンスについて以下に記します。
 
@@ -62,15 +62,16 @@
 ![Microsoft が通知を送信する](./media/multi-factor-authentication-end-user-signin-app-notify/notify.png)
 
 
-- 電話に出て、確認キーを押します。
+- 電話に出て、確認キーを押します。PIN の入力が必要な企業の場合は、ここで入力を求められます。
 
 ![確認](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
 
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
 
 - これでサインインできます。
 
 
-<h2 id="-5">確認コードを使用してモバイル アプリでサインインする</h2>
+## 確認コードを使用して Microsoft Authenticator アプリでサインインする
 
 多要素認証で Microsoft Authenticator アプリを使用した場合、確認コードを使用するときのエクスペリエンスについて以下に記します。
 
@@ -85,10 +86,12 @@
 
 ![コードを取得する](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
 
+
+
 - これでサインインできます。
 
 
-<h2 id="-7">別の方法を使用してサインインする</h2>
+## 別の方法を使用してサインインする
 
 
 次のセクションでは、主要な方法が使用できないときに、別の方法でサインインする方法を示します。
@@ -104,4 +107,4 @@
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

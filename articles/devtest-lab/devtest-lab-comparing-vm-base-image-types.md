@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/08/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # DevTest ラボのカスタム イメージと数式の比較
 
-## 概要
+## Overview
 [カスタム イメージ](./devtest-lab-create-template.md)と[数式](./devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](./devtest-lab-add-vm-with-artifacts.md) のベースとして使用することができます。ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワークとサブネット、アーティファクトなどの構成済み設定*に加え*、VHD に基づくイメージであるという重要な相違点があります。これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
  
 ## カスタム イメージの長所と短所
@@ -42,8 +42,10 @@
 **短所**
 - 数式から VM を作成すると、カスタム イメージから VM を作成する場合よりも時間がかかることがあります。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 関連するブログ記事
 
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

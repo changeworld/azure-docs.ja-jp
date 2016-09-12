@@ -1,6 +1,6 @@
  <properties
-	pageTitle="IntelliJ IDEA 用の HDInsight プラグインを使用して HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする | Microsoft Azure"
-	description="IntelliJ IDEA 用の HDInsight プラグインを使用して、HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする方法について解説します。"
+	pageTitle="Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする | Microsoft Azure"
+	description="Azure Toolkit for IntelliJ の HDInsight ツールを使用して、HDInsight Spark クラスター上で実行されるアプリケーションをリモートでデバッグする方法について解説します。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
+	ms.date="08/26/2016"
 	ms.author="nitinme"/>
 
 
-# IntelliJ IDEA 用の HDInsight Tools プラグインを使用して HDInsight Spark Linux クラスター上で Spark アプリケーションをリモートでデバッグする
+# Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター上で Spark アプリケーションをリモートでデバッグする
 
-この記事では、IntelliJ IDEA 用の HDInsight Tools プラグインを使って HDInsight Spark クラスター上で Spark ジョブを送信し、デスクトップ コンピューターからリモートでデバッグするための詳細な手順を紹介します。この作業に必要な手順は、大まかに言うと次のとおりです。
+この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使って HDInsight Spark クラスター上で Spark ジョブを送信し、デスクトップ コンピューターからリモートでデバッグするための詳細な手順を紹介します。この作業に必要な手順は、大まかに言うと次のとおりです。
 
 1. サイト間またはポイント対サイトの Azure 仮想ネットワークを作成します。このドキュメントの手順では、サイト間ネットワークを使用することを想定しています。
 
@@ -42,7 +42,7 @@
  
 * IntelliJ IDEA。この記事では、バージョン 15.0.1 を使用します。[ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
  
-* IntelliJ IDEA 用の HDInsight Tools プラグイン。IntelliJ IDEA 用の HDInsight Tools プラグインは、Azure Toolkit for IntelliJ に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
+* Azure toolkit for IntelliJ の HDInsight ツール。IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。Azure Toolkit をインストールする手順については、「[Azure Toolkit for IntelliJ のインストール](../azure-toolkit-for-intellij-installation.md)」を参照してください。
  
 * リモート デバッグを行う目的で Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、Windows 上に WinUtils.exe が不足しているために発生する例外が表示される場合があります。この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明されています。このエラーを回避するには、[実行可能ファイルをここからダウンロード](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)して、**C:\\WinUtils\\bin** などの場所に保存する必要があります。次に、環境変数 **HADOOP\_HOME** を追加し、この変数の値を **C\\WinUtils** に設定します。
 
@@ -97,7 +97,7 @@
 
 7. もう一方のヘッドノードについても同じ手順を繰り返します。
 
-## 手順 4. HDInsight IntelliJ IDEA プラグインを使用して Spark Scala アプリケーションを作成し、リモート デバッグ用に構成する
+## 手順 4. Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成し、リモート デバッグ用に構成する
 
 1. IntelliJ IDEA を起動し、新しいプロジェクトを作成します。[New Project (新規プロジェクト)] ダイアログ ボックスで、次の選択を行い、**[Next (次へ)]** をクリックします。
 
@@ -328,9 +328,9 @@
 
 ### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Eclipse 用の HDInsight Tools プラグインを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
@@ -346,4 +346,4 @@
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

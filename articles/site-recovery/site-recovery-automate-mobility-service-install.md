@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Automation DSC で Azure Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする | Microsoft Azure"
-	description="Azure Automation DSC を使用して Azure に ASR モビリティ サービスと仮想/物理マシン用 Azure エージェントを自動的にデプロイする方法について説明します。"
+	pageTitle="Azure Automation DSC で Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする | Microsoft Azure"
+	description="Azure Automation DSC を使用して Azure に Azure Site Recovery モビリティ サービスと仮想/物理マシン用 Azure エージェントを自動的にデプロイする方法について説明します。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="krnese"
@@ -16,63 +16,68 @@
 	ms.date="07/26/2016"
 	ms.author="krnese"/>
 
-# Azure Automation DSC で Azure Site Recovery を使用して VMware VM を Azure にレプリケートする
+# Azure Automation DSC で Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする
 
-OMS では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよび障害復旧ソリューションが提供されています。
+Operations Management Suite では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよび障害復旧ソリューションが提供されています。
 
-当初は HYPER-V レプリカを使用した HYPER-V に対応していましたが、お客様が複数のハイパーバイザーとプラットフォームをクラウドでデプロイしていることを認識したため、多様なセットアップをサポートするように拡張しました。
+当初は HYPER-V レプリカを使用した HYPER-V に対応していました。しかし、お客様が複数のハイパーバイザーとプラットフォームをクラウドでデプロイしていることを認識したため、多様なセットアップをサポートするように拡張しました。
 
-現在 VMware のワークロードや物理サーバーを実行していて、Azure が接続先である場合、Azure との通信およびデータ レプリケーションの処理は、Site Recovery コンポーネントのすべてを実行する管理サーバーで行われます。
+現在 VMware のワークロードや物理サーバーを実行していて、Azure が接続先である場合、その環境では管理サーバーがすべての Azure Site Recovery コンポーネントを実行し、Azure との通信およびデータ レプリケーションを処理します。
 
-## OMS Automation DSC を使用して ASR モビリティ サービスをデプロイする
-初めに、この管理サーバーが実際に行う処理を簡単に説明します。
+## Automation DSC を使用して Site Recovery モビリティ サービスをデプロイする
+初めに、この管理サーバーが行う処理を簡単に説明します。
 
-管理サーバーは、通信の調整およびデータ レプリケーション プロセスと回復プロセスの管理を行う**構成**など、いくつかのサーバー ロールを実行します。
+管理サーバーは複数のサーバー ロールを実行します。これらのロールの1 つが ”*構成*” で、通信を調整し、データ レプリケーションと復旧プロセスを管理します。
 
-また、**プロセス** ロールではレプリケーション ゲートウェイとして機能し、保護されたソース マシンからレプリケーション データを受信してそのデータをキャッシュ、圧縮、暗号化によって最適化してから、Azure ストレージ アカウントに送信します。また、プロセス ロールの機能の 1 つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
+また ”*プロセス*” ロールは、レプリケーションのゲートウェイとして機能します。プロセス ロールは保護されたソース マシンからレプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージ アカウントに送信します。また、プロセス ロールの機能の 1 つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
 
-Azure でのフェールバックについては**マスター ターゲット** ロールがこれを担当し、この操作の一環としてレプリケーション データを処理します。
+Azure でのフェールバックがある場合は、”*マスター ターゲット*” ロールが、この操作の一環としてレプリケーション データを処理します。
 
-保護されたマシンについては、Azure にレプリケートするすべてのマシン (VMware VM または物理サーバー) にデプロイされているコンポーネントである**モビリティ サービス**を活用しています。その役割は、マシン上のデータ書き込みをキャプチャして、管理サーバー (プロセス ロール) に転送することです。
+保護されたマシンについては、”*モビリティ サービス*” を活用しています。このコンポーネントは、Azure にレプリケートするすべてのマシン (VMware VM または物理サーバー) にデプロイされます。マシン上のデータ書き込みをキャプチャして、管理サーバー (プロセス ロール) に転送します。
 
-ビジネス継続性を扱う際には、ワークロードおよびインフラストラクチャだけでなく、RTO と RPO の要件を満たすために必要なコンポーネントを理解することが重要です。このコンテキストでは、モビリティ サービスが、ワークロードを想定どおりに保護するための鍵となります。
+ビジネス継続性を扱う際には、ワークロード、インフラストラクチャ、および関連するコンポーネントを理解することが重要です。それにより、目標復旧時間 (RTO) と目標復旧時点 (RPO) の要件を満たすことができます。このコンテキストでは、モビリティ サービスが、ワークロードを想定どおりに保護するための鍵となります。
 
-それでは、いくつかの OMS コンポーネントを使用して、セットアップを信頼性が高く保護されたものにする最適な方法とはどのようなものでしょうか。
+それでは、いくつかの Operations Management Suite コンポーネントを使用して、セットアップを信頼性が高く保護されたものにする最適な方法とはどのようなものでしょうか。
 
-この記事では、OMS Site Recovery と共に OMS Automation DSC を利用して、モビリティ サービスと Azure VM エージェントを保護対象の Windows マシンにデプロイしし、Azure がレプリケーション対象の場合はこれらが常に実行されるようにする方法についての例を示します。
+この記事では、Site Recovery と共に Azure Automation Desired State Configuration (DSC) を利用して、
+
+- モビリティ サービスと Azure VM エージェントを保護対象の Windows マシンにデプロイし、
+- Azure がレプリケーション対象の場合はこれらが常に実行されるようにする方法についての例を示します。
 
 ## 前提条件
 
 - 必須のセットアップを格納するリポジトリ
 - 管理サーバーへの登録に必要なパスフレーズを格納するリポジトリ
-- 保護を有効にするコンピューターにインストールされている Windows Management Framework 5.0 (OMS Automation DSC の要件)
 
-WMF 4.0 を使用して、Windows コンピューターに対して DSC を使用する場合は、「分離された環境での DSC の使用」セクションを参照してください。
+ > [AZURE.NOTE] 管理サーバーごとに一意のパスフレーズが生成されます。複数の管理サーバーをデプロイする場合は、passphrase.txt ファイルに正しいパスフレーズが保存されていることを確認してください。
 
-(管理サーバーごとに一意のパスフレーズが生成されます。複数の管理サーバーをデプロイする場合は、passphrase.txt ファイルに正しいパスフレーズが保存されていることを確認してください)
+- 保護を有効にするコンピューターにインストールされている Windows Management Framework (WMF) 5.0 (Automation DSC の要件)
 
-モビリティ サービスは、コマンドラインからインストールでき、いくつかの引数を使用できます。
+ > [AZURE.NOTE] WMF 4.0 がインストールされている Windows コンピューターに対して DSC を使用する場合は、「分離された環境での DSC の使用」セクションを参照してください。
 
-このため、バイナリを (セットアップからの抽出後に) 取得し、DSC 構成を使用して取得できる場所に保存する必要があります。
+モビリティ サービスは、コマンドラインからインストールでき、いくつかの引数を使用できます。このため、バイナリを (セットアップからの抽出後に) 取得し、DSC 構成を使用して取得できる場所に保存する必要があります。
 
 ## 手順 1: バイナリの抽出
 
-1. このセットアップに必要なファイルを抽出するために、管理サーバーで **\\Microsoft Azure Site Recovery\\home\\svsystems\\pushinstallsvc\\repository** ディレクトリに移動します。
+1. このセットアップに必要なファイルを抽出するために、管理サーバーで次のディレクトリに移動します。
+
+	**\\Microsoft Azure Site Recovery\\home\\svsystems\\pushinstallsvc\\repository**
 
     このフォルダーに、次の名前の MSI ファイルがあります。
 
-    **Microsoft-ASR\_UA\_<バージョン>_Windows\_GA_<日付>\_Release.exe**
+    **Microsoft-ASR\_UA\_version\_Windows\_GA\_date\_Release.exe**
 
     次のコマンドを使用してインストーラーを抽出します。
 
-    .\\Microsoft-ASR\_UA\_9.1.0.0_Windows\_GA_02May2016\_release.exe /q /x:C:\\Users\\Administrator\\Desktop\\Mobility\_Service\\Extract
+    **.\\Microsoft-ASR\_UA\_9.1.0.0_Windows\_GA_02May2016\_release.exe /q /x:C:\\Users\\Administrator\\Desktop\\Mobility\_Service\\Extract**
 
 2. すべてのファイルを選択し、圧縮 (zip 形式) フォルダーに送ります。
 
-これで終了です。 OMS Automation DSC を使用してモビリティ サービスのセットアップを自動化するために必要なバイナリを取得できました。
+Automation DSC を使用してモビリティ サービスのセットアップを自動化するために必要なバイナリを取得できました。
 
 ### パスフレーズ
-次に、この zip 形式フォルダーを配置する場所を決定する必要があります。Azure ストレージ アカウントを使用して、後で示すように、エージェントがプロセスの一部として管理サーバーに登録できるように、セットアップに必要なパスフレーズを保存できます。
+
+次に、この zip 形式フォルダーを配置する場所を決定する必要があります。Azure ストレージ アカウントを使用して、後で示すようにセットアップに必要なパスフレーズを保存すると、エージェントはこれをプロセスの一部として管理サーバーに登録します。
 
 管理サーバーをデプロイするときに取得したパスフレーズは、passphrase.txt という txt ファイルに保存します。
 
@@ -83,9 +88,10 @@ zip 形式フォルダーとパスフレーズの両方を Azure ストレージ
 ネットワーク内の共有上にこれらのファイルを保持することもできます。ただし、後で使用する DSC リソースにアクセスが設定され、セットアップとパスフレーズを取得できることを確認する必要があります。
 
 ## 手順 2: DSC 構成の作成
-このセットアップでは WMF 5.0 を使用します。つまり、マシンで OMS Automation DSC により正常に構成を適用するために、WMF 5.0 が必要となります。
 
-環境では、次の例の DSC 構成を使用します。
+このセットアップでは WMF 5.0 を使用します。つまり、Automation DSC によって正常に構成を適用するために、WMF 5.0 が必要となります。
+
+この環境では、次の例の DSC 構成を使用します。
 
 ```powershell
 configuration ASRMobilityService {
@@ -185,7 +191,7 @@ configuration ASRMobilityService {
 この構成では、次の操作を行います。
 
 - 変数によって、モビリティ サービスと Azure VM エージェントのバイナリ、およびパスフレーズの取得場所が構成に指定され、出力の保存先も示されます。
-- 'xRemoteFile' を使用してリポジトリからファイルをダウンロードできるように、xPSDesiredStateConfiguration DscResource をインポートします。
+- `xRemoteFile` を使用してリポジトリからファイルをダウンロードできるように、xPSDesiredStateConfiguration DSC リソースをインポートします。
 - バイナリを格納するディレクトリを作成します。
 - Archive リソースにより、zip 形式フォルダーからファイルを抽出します。
 - パッケージの 'Install' リソースにより、特定の引数を指定して UNIFIEDAGENT.EXE インストーラーからモビリティ サービスをインストールします (引数を作成する変数は、環境に合わせて変更する必要があります)。
@@ -194,28 +200,29 @@ configuration ASRMobilityService {
 
 **ASRMobilityService** として構成を保存します。
 
-(実際の管理サーバーに合わせて構成の CSIP を置換して、エージェントが正しく接続され、正しいパスフレーズが使用されるようにしてください)。
+>[AZURE.NOTE] 実際の管理サーバーに合わせて構成の CSIP を置換して、エージェントが正しく接続され、正しいパスフレーズが使用されるようにしてください。
 
-## 手順 3 – OMS Automation DSC へのアップロード
+## 手順 3: Automation DSC へのアップロード
 
-作成した DSC 構成によって必要な DSC リソース モジュール (xPSDesiredStateConfiguration) がインポートされるため、DSC 構成をアップロードする前に、OMS Automation にこのモジュールをインポートする必要があります。
+作成した DSC 構成によって必要な DSC リソース モジュール (xPSDesiredStateConfiguration) がインポートされるため、DSC 構成をアップロードする前に、Automation にこのモジュールをインポートする必要があります。
 
-Automation アカウントにログインし、[アセット]、[モジュール] の順に移動して、[Browse Gallery (ギャラリーの参照)] をクリックします。
+Automation アカウントにサインインし、**[アセット]**、**[モジュール]** の順に移動して、**[Browse Gallery (ギャラリーの参照)]** をクリックします。
 
 ここで、モジュールを検索し、アカウントにインポートすることができます。
 
 ![モジュールのインポート](./media/site-recovery-automate-mobilitysevice-install/search-and-import-module.png)
 
-この作業が完了したら、Azure RM モジュールをインストールしたコンピューターに移動し、新しく作成した DSC 構成のインポートを開始します。
+この作業が完了したら、Azure Resource Manager モジュールをインストールしたコンピューターに移動し、新しく作成した DSC 構成のインポートを開始します。
 
 ### コマンドレットのインポート
 
-PowerShell で、Azure サブスクリプションにログオンします。環境に合わせてコマンドレットを変更し、Automation アカウント情報を変数内にキャプチャします。
+PowerShell で、Azure サブスクリプションにサインインします。環境に合わせてコマンドレットを変更し、Automation アカウント情報を変数内にキャプチャします。
+
 ```powershell
 $AAAccount = Get-AzureRmAutomationAccount -ResourceGroupName 'KNOMS' -Name 'KNOMSAA'
 ```
 
-最初に、次のコマンドレットを使用して OMS Automation DSC へ構成をアップロードします。
+次のコマンドレットを使用して Automation DSC へ構成をアップロードします。
 
 ```powershell
 $ImportArgs = @{
@@ -226,11 +233,9 @@ $ImportArgs = @{
 $AAAccount | Import-AzureRmAutomationDscConfiguration @ImportArgs
 ```
 
-次に、OMS Automation DSC で構成をコンパイルして、ノードを登録できるようにします。
+### Automation DSC での構成のコンパイル
 
-### OMS Automation DSC での構成のコンパイル
-
-これを行うために、次のコマンドレットを実行します。
+次に、Automation DSC で構成をコンパイルして、ノードを登録できるようにします。これを行うために、次のコマンドレットを実行します。
 
 ```powershell
 $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobilityService
@@ -238,26 +243,24 @@ $AAAccount | Start-AzureRmAutomationDscCompilationJob -ConfigurationName ASRMobi
 
 実際にはホストされている DSC プル サービスに構成をデプロイしているため、この処理には数分かかることがあります。
 
-処理が完了したら、PowerShell (Get AzureRmAutomationDscCompilationJob) または portal.azure.com を使用して、ジョブの情報を取得できます。
+構成をコンパイルしたら、PowerShell (Get AzureRmAutomationDscCompilationJob) または [Azure ポータル](https://portal.azure.com/)を使用して、ジョブの情報を取得できます。
 
 ![ジョブの取得](./media/site-recovery-automate-mobilitysevice-install/retrieve-job.png)
 
-DSC 構成が正常に OMS Automation DSC へ公開およびアップロードされました。
+DSC 構成が正常に Automation DSC へ公開およびアップロードされました。
 
-## 手順 4 – OMS Automation DSC へのマシンのオンボード
-* このシナリオを完了するための前提条件の 1 つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。お使いのプラットフォームに適切なバージョンは、https://www.microsoft.com/download/details.aspx?id=50395* からダウンロードおよびインストールできます。
+## 手順 4: Automation DSC へのマシンの追加
+>[AZURE.NOTE] このシナリオを完了するための前提条件の 1 つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。お使いのプラットフォームに適切なバージョンは、[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=50395)からダウンロードおよびインストールできます。
 
-ノードに適用する DSC の metaconfig を作成します。正常に作成するには、Azure で選択した Automation アカウントのエンドポイント URL とプライマリ キーを取得する必要があります。
-
-これらの値は、Automation アカウントの [すべての設定] ブレードの [キー] にあります。
+ノードに適用する DSC の metaconfig を作成します。正常に作成するには、Azure で選択した Automation アカウントのエンドポイント URL とプライマリ キーを取得する必要があります。これらの値は、Automation アカウントの **[すべての設定]** ブレードの **[キー]** にあります。
 
 ![キーの値](./media/site-recovery-automate-mobilitysevice-install/key-values.png)
 
-この例には、OMS Site Recovery で保護する Windows Server 2012 R2 物理サーバーがあります。
-
-サーバーを Automation DSC のエンドポイントに関連付ける前に、レジストリに保留中のファイル名変更操作がないかどうかを確認することをお勧めします。保留中のファイル名変更操作があると、再起動が保留されてセットアップを完了できない可能性があります。
+この例には、Site Recovery で保護する Windows Server 2012 R2 物理サーバーがあります。
 
 ### レジストリ内における保留中のファイル名変更操作の確認
+
+サーバーを Automation DSC のエンドポイントに関連付ける前に、レジストリに保留中のファイル名変更操作がないかどうかを確認することをお勧めします。保留中のファイル名変更操作があると、再起動が保留されてセットアップを完了できない可能性があります。
 
 次のコマンドレットを実行して、サーバー上に保留中の再起動がないかどうかを確認します。
 
@@ -266,7 +269,7 @@ Get-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\' | Sel
 ```
 空白が返された場合は、セットアップを続行できます。それ以外の場合は、メンテナンス期間中にサーバーを再起動して、これに対処する必要があります。
 
-サーバーに構成を適用するために、PowerShell ISE を起動して次のスクリプトを実行します。これは、本質的には DSC ローカル構成の構成であり、ローカル構成マネージャーのエンジンに対して OMS Automation DSC サービスに登録し、特定の構成 (ASRMobilityService.localhost) を取得するように指示します。
+サーバーに構成を適用するために、PowerShell Integrated Scripting Environment (ISE) を起動して次のスクリプトを実行します。これは、本質的には DSC ローカル構成であり、ローカル構成マネージャーのエンジンに対して Automation DSC サービスに登録し、特定の構成 (ASRMobilityService.localhost) を取得するように指示します。
 
 ```powershell
 [DSCLocalConfigurationManager()]
@@ -284,18 +287,18 @@ configuration metaconfig {
             ConfigurationMode = 'ApplyAndMonitor'
             AllowModuleOverwrite = $true
         }
-        
+
         ResourceRepositoryWeb AzureAutomationDSC {
             ServerURL = $URL
             RegistrationKey = $Key
         }
-        
+
         ConfigurationRepositoryWeb AzureAutomationDSC {
             ServerURL = $URL
             RegistrationKey = $Key
             ConfigurationNames = 'ASRMobilityService.localhost'
         }
-        
+
         ReportServerWeb AzureAutomationDSC {
             ServerURL = $URL
             RegistrationKey = $Key
@@ -307,17 +310,17 @@ metaconfig -URL 'https://we-agentservice-prod-1.azure-automation.net/accounts/<Y
 Set-DscLocalConfigurationManager .\metaconfig -Force -Verbose
 ```
 
-この構成は、ローカル構成マネージャーがマネージャー自体をOMS Automation DSCに登録するように構成します。基本的には、エンジンの動作方法と構成のずれ(ApplyAndAutoCorrect)が発生した場合の動作を指示するとともに、必要な再起動が行われた場合に以降の構成を続行するように指示します。
+この構成は、ローカル構成マネージャーがマネージャー自体を Automation DSC に登録するように構成します。基本的には、エンジンの動作方法と構成のずれ (ApplyAndAutoCorrect) が発生した場合の動作を指示するとともに、必要な再起動が行われた場合に以降の構成を続行するように指示します。
 
-これを実行すると、ノードは Automation DSC への登録を開始します。
+このスクリプトを実行すると、ノードは Automation DSC への登録を開始します。
 
-![ノードの登録](./media/site-recovery-automate-mobilitysevice-install/register-node.png)
+![進行中のノード登録](./media/site-recovery-automate-mobilitysevice-install/register-node.png)
 
-portal.azure.com に戻ると、新しく登録したノードがポータルに表示されていることがわかります。
+Azure ポータルに戻ると、新しく登録したノードがポータルに表示されていることがわかります。
 
-![ノードの登録](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
+![ポータルの登録されたノード](./media/site-recovery-automate-mobilitysevice-install/registered-node.png)
 
-サーバーで、次の PowerShell コマンドレットを実行して、登録が正しく行われたことを確認できます。
+サーバーで、次の PowerShell コマンドレットを実行して、ノードが正しく登録されたことを確認できます。
 
 ```powershell
 Get-DscLocalConfigurationManager
@@ -331,45 +334,41 @@ Get-DscConfigurationStatus
 
 出力には、サーバーがその構成を正常にプルしていることが示されます。
 
-![ノードの登録](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
+![出力](./media/site-recovery-automate-mobilitysevice-install/successful-config.png)
 
-さらに、モビリティ サービスのセットアップでは、‘<SystemDrive>\\ProgramData\\ASRSetupLogs’ に独自のログが配置されます。
+さらに、モビリティ サービスのセットアップでは、*SystemDrive*\\ProgramData\\ASRSetupLogs に独自のログが配置されます。
 
 これで完了です。Site Recovery で保護するコンピューター上にモビリティ サービスが正常にデプロイおよび登録され、必要なサービスが常に DSC で実行されるようになります。
 
-![ノードの登録](./media/site-recovery-automate-mobilitysevice-install/successful-install.png)
+![デプロイに成功](./media/site-recovery-automate-mobilitysevice-install/successful-install.png)
 
-これが管理サーバーによって検出された後で、保護の構成に進んで Site Recovery によるマシンでのレプリケーションを有効にできます。
+正常なデプロイが管理サーバーによって検出された後で、保護の構成に進んで Site Recovery を使用したマシンでのレプリケーションを有効にできます。
 
 ## 分離された環境での DSC の使用
 
 コンピューターがインターネットに接続されていない場合でも、DSC を使用して、保護するワークロード上にモビリティ サービスをデプロイおよび構成することができます。
 
-あるいは、環境内で、OMS Automation DSC で使用できるものと同じ機能を提供する独自の DSC プル サーバーをインスタンス化できます。この場合、クライアントは、DSC エンドポイントに登録されると構成をプルします。ただし、プッシュを使用する別のオプションもあります。この場合、ローカルまたはリモートのどちらかにより手動で DSC 構成をマシンにプッシュします。
+あるいは、環境内で、Automation DSC で使用できるものと同じ機能を提供する独自の DSC プル サーバーをインスタンス化できます。この場合、クライアントは、DSC エンドポイントに登録された後に構成をプルします。ただし、プッシュを使用する別のオプションもあります。この場合、ローカルまたはリモートのどちらかにより手動で DSC 構成をマシンにプッシュします。
 
-この例では computername に追加のパラメーターがあり、リモートのファイルは保護対象のマシンからアクセスできるリモート共有に配置され、スクリプトの末尾で構成を設定してからターゲット コンピューターへの DSC 構成の適用を開始しています。
+この例ではコンピューター名に追加のパラメーターがあり、リモートのファイルは保護対象のマシンからアクセスできるリモート共有に配置され、スクリプトの末尾で構成を設定してからターゲット コンピューターへの DSC 構成の適用を開始しています。
 
 ### 前提条件
 
-·xPSDesiredStateConfiguration PowerShell モジュールがインストールされている
-
-WMF 5.0 がインストールされている Windows マシンでは、ターゲット コンピューターで次のコマンドレットを実行するだけで xPSDesiredStateConfiguration モジュールをインストールできます。
+xPSDesiredStateConfiguration PowerShell モジュールがインストールされていることを確認します。WMF 5.0 がインストールされている Windows マシンでは、ターゲット コンピューターで次のコマンドレットを実行するだけで xPSDesiredStateConfiguration モジュールをインストールできます。
 
 ```powershell
 Find-Module -Name xPSDesiredStateConfiguration | Install-Module
 ```
 
-また、WMF 4.0 を使用してモジュールを Windows コンピューターに配信する必要がある場合は、PowerShellGet (WMF 5.0) が存在するコンピューターでこのコマンドレットを実行して、モジュールをダウンロードおよび保存することもできます。
+また、WMF 4.0 がインストール済みの Windows コンピューターにモジュールを配信する必要がある場合は、PowerShellGet (WMF 5.0) が存在するコンピューターでこのコマンドレットを実行して、モジュールをダウンロードおよび保存することもできます。
 
 ```powershell
 Save-Module -Name xPSDesiredStateConfiguration -Path <location>
 ```
 
-また WMF 4.0 では、次の更新プログラムがコンピューターにインストールされているかどうかも確認します。
+また WMF 4.0 では、[Windows 8.1 update KB2883200](https://www.microsoft.com/download/details.aspx?id=40749) がコンピューターにインストールされているかどうかも確認します。
 
-https://www.microsoft.com/download/details.aspx?id=40749
-
-WMF 5.0 または 4.0 がインストール済みの Windows コンピューターのどちらにも、次の構成をプッシュできます。
+WMF 5.0 または WMF 4.0 がインストール済みの Windows コンピューターに、次の構成をプッシュできます。
 
 ```powershell
 configuration ASRMobilityService {
@@ -389,7 +388,7 @@ configuration ASRMobilityService {
     $Install = 'C:\Program Files (x86)\Microsoft Azure Site Recovery'
     $CSEndpoint = '10.0.0.115'
     $Arguments = '/Role "{0}" /InstallLocation "{1}" /CSEndpoint "{2}" /PassphraseFilePath "{3}"' -f $Role,$Install,$CSEndpoint,$LocalPassphrase
-    
+
     Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
     node $ComputerName {      
@@ -397,7 +396,7 @@ configuration ASRMobilityService {
             DestinationPath = 'C:\Temp\ASRSetup\'
             Type = 'Directory'            
         }
-        
+
         xRemoteFile Setup {
             URI = $RemoteFile
             DestinationPath = $TempDestination
@@ -470,34 +469,29 @@ ASRMobilityService -ComputerName 'MyTargetComputerName'
 Start-DscConfiguration .\ASRMobilityService -Wait -Force -Verbose
 ```
 
-独自の DSC プル サーバーを社内ネットワーク内でインスタンス化して OMS Automation DSC で使用できるのと同じ機能を模倣するには、https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396 のガイド参照してください。
+独自の DSC プル サーバーを社内ネットワーク内でインスタンス化して Automation DSC で使用できる機能を模倣するには、「[Setting up a DSC web pull server (DSC Web プル サーバーのセットアップ)](https://msdn.microsoft.com/powershell/dsc/pullserver?f=255&MSPPError=-2147217396)」を参照してください。
 
 ## 省略可能: Azure Resource Manager テンプレートを使用した DSC 構成のデプロイ
 
-この記事では、独自の DSC 構成を作成して自動的にモビリティ サービスと Azure VM エージェントをデプロイし、これらが保護対象のするコンピューターで実行されるようにする方法に重点を置いてきました。こうした方法以外にも、この DSC 構成を新規または既存の Azure Automation アカウントにデプロイする Azure Resource Manager ## ## テンプレートがあります。このテンプレートの入力パラメーターを使用して、環境の変数が含まれる Automation 資産を作成できます。
+この記事では、独自の DSC 構成を作成して自動的にモビリティ サービスと Azure VM エージェントをデプロイし、これらが保護対象のコンピューターで実行されるようにする方法に重点を置いてきました。こうした方法以外にも、この DSC 構成を新規または既存の Azure Automation アカウントにデプロイする Azure Resource Manager テンプレートがあります。このテンプレートの入力パラメーターを使用して、環境の変数が含まれる Automation 資産を作成できます。
 
-デプロイ後は、このガイドの手順 4 を参照してコンピューターを追加できます。
+テンプレートのデプロイ後は、このガイドの手順 4 を参照してコンピューターを追加できます。
 
 このテンプレートは、次の操作を行います。
 
-· 既存の OMS Automation アカウントの使用、または新規 OMS Automation アカウントの作成
+1. 既存の Automation アカウントの使用、または新規 Automation アカウントの作成
+2. 次に対する入力パラメーターの受け取り:
+	- ASRRemoteFile--モビリティ サービスのセットアップを保存した場所
+	- ASRPassphrase--passphrase.txt ファイルを保存した場所
+	- ASRCSEndpoint--管理サーバーの IP アドレス
+3. xPSDesiredStateConfiguration PowerShell モジュールのインポート
+4. DSC 構成の作成とコンパイル
 
-· 次に対する入力パラメーターの受け取り:
+上記の手順をすべて正しい順序で実行すると、コンピューターを保護対象として追加できるようになります。
 
-	· ASRRemoteFile – the location where you have stored the Mobility Service setup
-	· ASRPassphrase – the location where you have stored the passphrase.txt file
-	· ASRCSEndpoint – the IP address of your Management server
-	· Import xPSDesiredStateConfiguration PowerShell module
-	· Create and compile the DSC configuration
+デプロイの手順も含まれるテンプレートは [GitHub](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC) にあります。
 
-
-上記の手順をすべて正しい順序で実行すると、コンピューターを保護対象として簡単に追加できるようになります。
-
-デプロイの手順も含まれるテンプレートは、次の場所にあります。
-
-https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/DSC
-
-PowerShell を使用したデプロイ:
+PowerShell を使用してテンプレートをデプロイする
 
 ```powershell
 $RGDeployArgs = @{
@@ -513,8 +507,8 @@ $RGDeployArgs = @{
 New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
-## 次のステップ:
+## 次のステップ
 
-モビリティ サービスのエージェントをデプロイした後は、引き続き仮想マシンの[レプリケーションを有効にする](site-recovery-vmware-to-azure.md#step-6-replicate-applications)ことができます。
+モビリティ サービスのエージェントをデプロイした後は、仮想マシンの[レプリケーションを有効にする](site-recovery-vmware-to-azure.md#step-6-replicate-applications)ことができます。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -26,7 +26,7 @@
 
 ## Microsoft Power BI Embedded のライセンス
 
-**Microsoft Power BI Embedded** の使用モデルでは、Power BI のライセンスはエンドユーザーの責任ではありません。代わりに、ビジュアルを使用するアプリケーションの開発者が**レンダー**を購入します。レンダーは、それらのリソースを所有するサブスクリプションに課金されます。
+**Microsoft Power BI Embedded** の使用モデルでは、Power BI のライセンスはエンドユーザーの責任ではありません。代わりに、ビジュアルを使用するアプリケーションの開発者が**レンダー**を購入します。レンダーの料金は、それらのリソースを所有するサブスクリプションに課金されます。
 
 ## Microsoft Power BI Embedded の概念モデル
 
@@ -55,11 +55,9 @@ Azure の他のサービスと同様に、[Azure ARM API](https://msdn.microsoft
 
 ## アプリ トークンを使用した認証と承認
 
-**Microsoft Power BI Embedded** では、必要なユーザーの認証と承認の実行をすべてアプリケーションに委ねます。エンドユーザーは Azure Active Directory (Azure AD) の顧客でなければならないという明示的な条件はありません。代わりに、アプリケーションが**アプリケーション認証トークン (アプリ トークン)** を使用して、Power BI レポートのレンダリングの承認を **Microsoft Power BI Embedded** に伝えます。これらの**アプリ トークン**は、アプリケーションがレポートをレンダリングするときに必要に応じて生成されます。[アプリ トークン](power-bi-embedded-get-started-sample.md#key-flow)に関する記事をご覧ください。
+**Microsoft Power BI Embedded** では、必要なユーザーの認証と承認の実行をすべてアプリケーションに委ねます。エンド ユーザーは Azure Active Directory (Azure AD) の顧客でなければならないという明示的な要件はありません。代わりに、アプリケーションが**アプリケーション認証トークン (アプリ トークン)** を使用して、Power BI レポートのレンダリングの承認を **Microsoft Power BI Embedded** に伝えます。これらの**アプリ トークン**は、アプリケーションがレポートをレンダリングするときに必要に応じて生成されます。[アプリ トークン](power-bi-embedded-get-started-sample.md#key-flow)に関する記事をご覧ください。
 
 ![](media\powerbi-embedded-whats-is\app-tokens.png)
-
-### アプリケーション認証トークン
 
 **アプリケーション認証トークン (アプリ トークン)** は、**Microsoft Power BI Embedded** に対する認証に使用されます。**アプリ トークン**には、次の 3 種類があります。
 
@@ -67,21 +65,10 @@ Azure の他のサービスと同様に、[Azure ARM API](https://msdn.microsoft
 2.	開発用トークン - **Power BI REST API** を直接呼び出すときに使用されます。
 3.	埋め込み用トークン - 埋め込まれた iframe でのレポートのレンダリングのために呼び出しを行うときに使用されます。
 
-これらのトークンは、**Microsoft Power BI Embedded** とのやり取りのさまざまなフェーズに使用されます。トークンは、許可をアプリから Power BI に委任できるように設計されています。
-
-### アプリ トークンの生成
-
-プレビュー用に提供されている SDK を使用して、トークンを生成できます。まず、Create\_\_\_Token() メソッドのいずれかを呼び出します。次に、**ワークスペース コレクション**から取得したアクセス キーを使用して、Generate() を呼び出します。トークンの基本的な Create メソッドは Microsoft.PowerBI.Security.PowerBIToken クラスで次のように定義されています。
-
--	[CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx)
--	[CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx)
--	[CreateReportEmbedToken](https://msdn.microsoft.com/library/mt710366.aspx)
-
-[CreateProvisionToken](https://msdn.microsoft.com/library/mt670218.aspx) と [CreateDevToken](https://msdn.microsoft.com/library/mt670215.aspx) の使用方法の例については、[Microsoft Power BI Embedded の使用を開始するためのサンプル コード](power-bi-embedded-get-started-sample.md)に関する記事をご覧ください。
-
+これらのトークンは、**Microsoft Power BI Embedded** とのやり取りのさまざまなフェーズに使用されます。トークンは、許可をアプリから Power BI に委任できるように設計されています。詳細については、[アプリ トークンのフロー](power-bi-embedded-app-token-flow.md)に関するページを参照してください。
 
 ## 関連項目
 - [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

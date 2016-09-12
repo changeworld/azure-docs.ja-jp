@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="08/17/2016"
+  ms.date="08/30/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -210,7 +210,7 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | ラーニング パートナー | 説明 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/ja-JP/training-courses/developing-solutions-with-azure-documentdb-10554) では、Azure DocumentDB の構築に貢献した人々によるトレーニングが提供されています。 |
+| [![Microsoft Virtual Academy](./media/documentdb-community/mva.png)](https://mva.microsoft.com/ja-JP/training-courses/deploying-web-apps-to-azure-app-service-16629) | [**Microsoft Virtual Academy**](https://mva.microsoft.com/ja-JP/training-courses/deploying-web-apps-to-azure-app-service-16629) では、Azure DocumentDB の構築に貢献した人々によるトレーニングが提供されています。 |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) は Azure トレーニングを提供する主要な Microsoft パートナーです。MSDN サブスクライバーの場合、特典を使って Microsoft Azure トレーニングにアクセスしてください。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) は Microsoft Azure の詳細なテクニカル トレーニングを提供します。業界で定評のあるトレーナーによるインストラクター主導のトレーニングを、オンサイトまたはリモート クラスルームで受けることができます。 |
 
@@ -268,4 +268,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

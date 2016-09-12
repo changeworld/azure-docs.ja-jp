@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/17/2016"
+	ms.date="08/25/2016"
 	ms.author="markvi"/>
 
 
@@ -82,7 +82,7 @@ Azure AD に登録されていて、特定の条件を満たすデバイスか�
 
 - **準拠デバイス** - 管理システムによってディレクトリで**準拠**とマークされているデバイスのアクセスを制限するポリシーを設定できます。このポリシーにより、デバイスにファイルの暗号化を強制するなど、セキュリティ ポリシーを満たすデバイスのみアクセスが許可されます。このポリシーは、次のデバイスからのアクセスを制限するために使用できます。
 
-    - ハイブリッド構成でデプロイされた System Center Configuration Manager 2016 によって管理されている **Windows ドメイン参加デバイス**。
+    - ハイブリッド構成でデプロイされた System Center Configuration Manager (現在のブランチ) によって管理されている **Windows ドメイン参加デバイス**。
 
     - Microsoft Intune またはサポート対象のサード パーティのモバイル デバイス管理 (MDM) システムによって管理されている**業務用または個人用の Windows 10 Mobile デバイス**。
 
@@ -125,4 +125,4 @@ Azure AD でデバイス ベースの条件付きアクセス ポリシーを構
 - [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 - [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

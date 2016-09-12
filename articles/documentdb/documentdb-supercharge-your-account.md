@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="08/25/2016" 
 	ms.author="mimig"/>
 
 # DocumentDB アカウントのパワーアップ
@@ -25,13 +25,13 @@
 ## Azure ポータルでユーザー定義のパフォーマンスを変更する
 
 1. ブラウザーで、[**Azure ポータル**](https://portal.azure.com)に移動します。
-2. **[参照]**、**[DocumentDB アカウント]** の順にクリックし、変更する DocumentDB アカウントを選択します。
+2. **[参照]**、**[DocumentDB (NoSQL)]** の順にクリックし、変更する DocumentDB アカウントを選択します。
 3. **[データベース]** レンズで変更するデータベースを選択し、**[データベース]** ブレードで価格レベルが S1 のコレクションを選択します。
 
       ![Screen shot of the Database blade with an S1 collection](./media/documentdb-supercharge-your-account/documentdb-change-performance-S1.png)
 
-4. **[コレクション]** ブレードで、上部のバーにある **[設定]** をクリックします。
-5. **[設定]** ブレードで **[価格レベル]** をクリックすると、各プランの月額料金の見積もりが表示されます。**[Choose your pricing tier (価格レベルの選択)]** ブレードで **[Standard]** をクリックし、**[選択]** をクリックして変更を保存します。
+4. **[コレクション]** ブレードで **[詳細]**をクリックし、**[設定]** をクリックします。
+5. **[設定]** ブレードで **[価格レベル]** をクリックすると、各プランの月額料金の見積もりが表示されます。**[価格レベルの選択]** ブレードで **[Standard]** をクリックし、**[選択]** をクリックして変更を保存します。
 
       ![Screen shot of the DocumentDB Settings and Choose your pricing tier blades](./media/documentdb-supercharge-your-account/documentdb-change-performance.png)
 
@@ -45,10 +45,10 @@
 
 	![Screen shot of the Database blade with modified collection](./media/documentdb-supercharge-your-account/documentdb-change-performance-confirmation.png)
 
-ユーザー定義のスループットと事前定義されたスループットに関連した変更の詳細については、ブログ記事「[DocumentDB: Everything you need to know about using the new pricing options (DocumentDB: 新しい価格オプションの使用に関して知っておく必要があるすべてのこと)](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)」を参照してください。
+ユーザー定義のスループットと事前定義されたスループットに関連した変更の詳細については、ブログ記事「[DocumentDB: Everything you need to know about using the new pricing options (DocumentDB: 新しい価格オプションの使用に関して知っておく必要があるすべてのこと)](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)」をご覧ください。
 
 ## 次のステップ
 
-より優れた (10,000 RU/秒を上回る) スループットまたはさらに大きな (10 GB を超える) 記憶域が必要であると判断した場合は、パーティション分割コレクションを作成できます。パーティション分割コレクションを作成するには、[コレクションの作成](documentdb-create-collection.md)に関するページを参照してください。
+より優れた (10,000 RU/秒を上回る) スループットまたはさらに大きな (10 GB を超える) 記憶域が必要であると判断した場合は、パーティション分割コレクションを作成できます。パーティション分割コレクションを作成するには、[コレクションの作成](documentdb-create-collection.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

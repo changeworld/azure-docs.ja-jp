@@ -63,7 +63,6 @@
 
 
 
->[AZURE.NOTE] まず、[言語ツアー](app-insights-analytics-tour.md)を参照することをお勧めします。
 
 
 
@@ -84,4 +83,10 @@
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+
+## 次のステップ
+
+
+* まず、[言語ツアー](app-insights-analytics-tour.md)を参照することをお勧めします。
+
+<!---HONumber=AcomDC_0831_2016-->

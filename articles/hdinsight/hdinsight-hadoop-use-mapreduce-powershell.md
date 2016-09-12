@@ -14,10 +14,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/02/2016"
+   ms.date="08/29/2016"
    ms.author="larryfr"/>
 
-#PowerShell を使用して HDInsight の Hadoop で Hive クエリを実行
+# PowerShell を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 
 [AZURE.INCLUDE [mapreduce セレクター](../../includes/hdinsight-selector-use-mapreduce.md)]
 
@@ -183,4 +183,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

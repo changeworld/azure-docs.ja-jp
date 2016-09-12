@@ -51,7 +51,7 @@
     - **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
 - 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、[構成] タブからコピーします。
 
-## 2\.ディレクトリに前提条件を追加する
+## 手順 2.ディレクトリに前提条件を追加する
 
 コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
@@ -214,7 +214,7 @@ app.configure(function() {
 app.get('/auth/openid',
   passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
   function(req, res) {
-    log.info('Authenitcation was called in the Sample');
+    log.info('Authentication was called in the Sample');
     res.redirect('/');
   });
 
@@ -251,7 +251,7 @@ OpenID Connect 認証プロトコルを使用して v2.0 エンドポイント�
 
 ```JavaScript
 
-// ルート (セクション 4)
+//Routes (Section 4)
 
 app.get('/', function(req, res){
   res.render('index', { user: req.user });
@@ -286,12 +286,12 @@ app.get('/logout', function(req, res){
 
 ```JavaScript
 
-// ユーザーが認証されることを保証する単純なルート ミドルウェアです。(セクション 4)
+// Simple route middleware to ensure user is authenticated. (Section 4)
 
-//   保護する必要がある任意のリソースでこのルート ミドルウェアを使用します。  If
-//   要求が認証された場合 (通常は永続的なログイン セッションを経由します)、
-//   要求は先に進みます。それ以外の場合、ユーザーは
-//   ログインページにリダイレクトされます。
+//   Use this route middleware on any resource that needs to be protected.  If
+//   the request is authenticated (typically via a persistent login session),
+//   the request will proceed.  Otherwise, the user will be redirected to the
+//   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
@@ -414,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

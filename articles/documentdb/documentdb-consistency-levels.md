@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="08/24/2016"
 	ms.author="mimig"/>
 
 # DocumentDB の一貫性レベル
@@ -83,14 +83,14 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 
 ## 既定の一貫性レベルの構成
 
-1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB アカウント]** をクリックします。
+1.  [Azure ポータル](https://portal.azure.com/)で、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。
 
-2. **[DocumentDB アカウント]** ブレードで、変更するデータベース アカウントを選択します。
+2. **[DocumentDB (NoSQL)]** ブレードで、変更するデータベース アカウントを選択します。
 
 3. アカウントのブレードで、**[既定の整合性]** をクリックします。
 
 
-4. **[既定の整合性]** ブレードで、新しい整合性レベルを選択し、**[OK]** をクリックします。
+4. **[既定の一貫性]** ブレードで、新しい一貫性レベルを選択し、**[保存]** をクリックします。
 
 	![[設定] アイコンと [既定の整合性] エントリが強調表示されたスクリーン ショット](./media/documentdb-consistency-levels/database-consistency-level-1.png)
 
@@ -119,4 +119,4 @@ Azure DocumentDB は、最初からグローバル分散を念頭に置いて設
 
 [1]: ./media/documentdb-consistency-levels/consistency-tradeoffs.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

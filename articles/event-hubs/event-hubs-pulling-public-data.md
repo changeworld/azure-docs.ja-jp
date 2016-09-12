@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="05/31/2016"
+    ms.date="08/25/2016"
     ms.author="spyros;sethm" />
 
 # パブリック データの Azure Event Hubs へのプル
@@ -47,4 +47,4 @@ GenericWebToEH ソリューションが起動すると、ソリューション�
 
 [Azure サンプル ギャラリー](https://azure.microsoft.com/documentation/samples/?service=event-hubs)と [MSDN](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5) で、他の Event Hubs のサンプルをご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

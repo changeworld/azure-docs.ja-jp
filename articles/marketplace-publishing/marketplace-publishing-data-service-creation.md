@@ -13,10 +13,13 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="06/28/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # Azure Marketplace のデータ サービスの発行ガイド
+
+>[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
+
 手順 1 の「[アカウントの作成および登録](marketplace-publishing-accounts-creation-registration.md)」では、Azure Marketplace のデータ サービス オファーの[技術以外の一般的な要件](marketplace-publishing-pre-requisites.md)と[技術的な要件](marketplace-publishing-data-service-creation-prerequisites.md)について説明しました。ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で、データ サービス オファーを作成する手順について説明します。
 
 ## 1\.発行ポータルにログインします。
@@ -27,7 +30,7 @@
 
 初めて発行ポータルにログインする場合は、**[Data Services の発行]** タイルをクリックします。
 
-## 2\.左側のナビゲーション メニューの **[Data Services]** を選択します。
+## 手順 2.左側のナビゲーション メニューの **[Data Services]** を選択します。
 
   ![図](media/marketplace-publishing-data-service-creation/pubportal-main-nav.png)
 
@@ -49,7 +52,7 @@
 
 各オファーには複数のプランを含めることができます。また、少なくとも 1 つのプランを含める必要があります。エンドユーザーがオファーにサブスクライブする場合、オファーのプランのいずれかにサブスクライブします。各プランには、エンドユーザーがサービスを使用できる方法が定義されています。
 
-現在、Azure Marketplace は、Data Services の月単位のサブスクリプション トランザクション ベース モデルのみをサポートしています。そのため、エンドユーザーは、サブスクライブしたプランの料金に従って月額料金を支払います。また、プランに定義されている月数のトランザクションを使用できます。
+現在、Azure Marketplace は、Data Services の月単位のサブスクリプション トランザクション ベース モデルのみをサポートしています。そのため、エンドユーザーは、サブスクライブしたプランの料金に従って月額料金を支払います。また、プランで定義されている月数のトランザクションを使用できます。
 
 各トランザクションは、通常、サービスに送信されるクエリに基づいて、データ サービスが返すレコード数と定義されています。既定値は 100 です。各クエリから返されるトランザクション数は、レコード数を 100 で割り、最も近い整数に切り上げられた数になります。
 
@@ -89,7 +92,7 @@
 
 > [AZURE.IMPORTANT] 支払い方法 (クレジット カード、エンタープライズ契約など) の設定が完了している場合にのみ、エンドユーザーは無料試用版を購入できます。
 
-> 1 か月間の無料試用版が終了したとき、ユーザーがサブスクリプションのキャンセルを開始していない場合、Azure Marketplace のサブスクリプション日時点の料金が課金されます。特別な通知はエンドユーザーに送信されません。
+> 1 か月間の無料試用版の終了後、ユーザーがサブスクリプションのキャンセルを行わなかった場合、Azure Marketplace のサブスクリプション日時点の料金の課金が開始されます。特別な通知はエンドユーザーに送信されません。
 
 |質問|重要性|
 |----|----|
@@ -138,11 +141,11 @@ Web サービスの場合
 
 ## 関連項目
 - [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
-- 全体的な OData マッピング プロセスと目的を理解したい場合は、この[データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md)に関する記事を読んで、定義、構造、手順を確認してください。
+- 全体的な OData マッピングのプロセスと目的を理解したい場合は、こちらの[データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md)に関する記事を読んで、定義、構造、手順を確認してください。
 - 特定のノードとそのパラメーターについて知りたい場合は、定義と説明、例、ユース ケースのコンテキストなどが記載された、この[データ サービスの OData マッピング ノード](marketplace-publishing-data-service-creation-odata-mapping-nodes.md)に関する記事を参照してください。
 - 例に関心がある場合は、[データ サービス OData マッピング例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 
 
 [link-pubportal]: https://publish.windowsazure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,10 +13,13 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="06/29/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
+
+>[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
+
 このドキュメントでは、OData プロトコルを CSDL にマップするためのノード構造について説明します。ノード構造は整形式 XML である点に注意してください。このため、OData マッピングを設計する際は、ルート、親、子のスキーマが適用されます。
 
 ## 無視される要素
@@ -39,7 +42,7 @@
 ## FunctionImport ノード
 FunctionImport ノードは、エンド ユーザーにサービスを公開する 1 つの URL (エントリ ポイント) を表します。このノードでは、URL を指定する方法、エンド ユーザーに提供するパラメーターの種類、およびこれらのパラメーターを提供する方法を記述できます。
 
-このノードの詳細については、[こちら][MSDNFunctionImportLink]を参照してください。
+このノードの詳細については、[こちら][MSDNFunctionImportLink]をご覧ください。
 
 [MSDNFunctionImportLink]: (https://msdn.microsoft.com/library/cc716710(v=vs.100).aspx)
 
@@ -143,12 +146,12 @@ FunctionImport ノード内の追加の (CSDL ドキュメントに記載され�
 
 このノードは、FunctionImport ノードで指定された URI テンプレート/要求本文の一部として公開されている 1 つのパラメーターを表します。
 
-"Parameter 要素" ノードに関する詳細情報が記載された役立つページが [こちら](http://msdn.microsoft.com/library/ee473431.aspx) にあります (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
+"Parameter 要素" ノードに関する詳細情報が記載された役立つページが[こちら](http://msdn.microsoft.com/library/ee473431.aspx)にあります (必要に応じて、**[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
 
 | パラメーター属性 | 必須 | 値 |
 |----|----|----|
-| 名前 | あり | パラメーターの名前。大文字と小文字が区別されます。 BaseUri の大文字小文字と照合されます。**例:** `<Property Name="IsDormant" Type="Byte" />` |
-| 型 | あり | パラメーターの型。この値には、**EDMSimpleType** か、モデルのスコープ内にある複合型を指定する必要があります。詳細については、6 つ目のトピック「サポートされているパラメーター/プロパティの型」を参照してください。(大文字と小文字が区別されます。 先頭の文字は大文字で、残りは小文字です。) 「[概念モデルの型 (CSDL)][MSDNParameterLink]」も参照してください。**例:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
+| 名前 | はい | パラメーターの名前。大文字と小文字が区別されます。 BaseUri の大文字小文字と照合されます。**例:** `<Property Name="IsDormant" Type="Byte" />` |
+| 型 | はい | パラメーターの型。この値には、**EDMSimpleType** か、モデルのスコープ内にある複合型を指定する必要があります。詳細については、6 つ目のトピック「サポートされているパラメーター/プロパティの型」を参照してください。(大文字と小文字が区別されます。 先頭の文字は大文字で、残りは小文字です。) [概念モデルの型 (CSDL)][MSDNParameterLink] に関するページもご覧ください。**例:** `<Property Name="LimitedPartnershipID " Type="Int32" />` |
 | Mode | いいえ | パラメーターが入力、出力、入力/出力のいずれであるかに応じて、**In**、Out、または InOut (Azure Marketplace で使用できるのは "In" のみです)。 **例:** `<Parameter Name="StudentID" Mode="In" Type="Int32" />` |
 | MaxLength | いいえ | パラメーターの許容される最大長**例:** `<Property Name="URI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />` |
 | Precision | いいえ | パラメーターの説明**例:** `<Property Name="PreviousDate" Type="DateTime" Precision="0" />` |
@@ -158,7 +161,7 @@ FunctionImport ノード内の追加の (CSDL ドキュメントに記載され�
 
 CSDL の仕様に追加された属性を次に示します。
 
-| パラメーター属性 | 説明 |
+| パラメーター属性 | Description |
 |----|----|
 | **d:Regex** *(省略可能)* | パラメーターの入力値を検証するために使用する正規表現の式。入力値が式と一致しない場合、値は拒否されます。これを利用して、入力可能な値のセットとして、たとえば ^[0-9]+?$ を指定して数字のみに制限することもできます。**例:** `<Parameter Name="name" Mode="In" Type="String" d:Nullable="false" d:Regex="^[a-zA-Z]*$" d:Description="A name that cannot contain any spaces or non-alpha non-English characters" d:SampleValues="George|John|Thomas|James"/>` |
 | **d:Enum** *(省略可能)* | パラメーターに有効な値のパイプ区切り一覧。値の型は、パラメーターの定義済みの型に一致する必要があります。例: `english|metric|raw`.列挙型は、UI (サービス エクスプローラー) に、パラメーターの選択可能なドロップダウン リストとして表示されます。**例:** `<Parameter Name="Duration" Type="String" Mode="In" Nullable="true" d:Enum="1year|5years|10years"/>` |
@@ -169,11 +172,11 @@ CSDL の仕様に追加された属性を次に示します。
 
 このノードは、Marketplace からエンド ユーザーに返される型の 1 つを表します。また、コンテンツ プロバイダーのサービスによって返される出力とエンド ユーザーに返される値のマッピングも含まれています。
 
-このノードの詳細については、[こちら](http://msdn.microsoft.com/library/bb399206.aspx)を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。
+このノードの詳細については、[こちら](http://msdn.microsoft.com/library/bb399206.aspx)をご覧ください (必要に応じて、**[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。
 
 | 属性名 | 必須 | 値 |
 |----|----|----|
-| 名前 | あり | エンティティ型の名前。**例:** `<EntityType Name="ListOfAllEntities" d:Map="//EntityModel">` |
+| 名前 | はい | エンティティ型の名前。**例:** `<EntityType Name="ListOfAllEntities" d:Map="//EntityModel">` |
 | BaseType | いいえ | 定義するエンティティ型の基本の型である別のエンティティ型の名前。**例:** `<EntityType Name="PhoneRecord" BaseType="dqs:RequestRecord">` |
 
 CSDL の仕様に追加された属性を次に示します。
@@ -202,8 +205,8 @@ CSDL の仕様に追加された属性を次に示します。
 
 | AttributeName | 必須 | 値 |
 |----|----|----|
-| 名前 | あり | プロパティの名前。 |
-| 型 | あり | プロパティ値の型。プロパティ値の型は、**EDMSimpleType** か、モデルのスコープ内にある (完全修飾名で表された) 複合型を指定する必要があります。詳細については、「概念モデルの型 (CSDL)」を参照してください。 |
+| Name | はい | プロパティの名前。 |
+| 型 | はい | プロパティ値の型。プロパティ値の型は、**EDMSimpleType** か、モデルのスコープ内にある (完全修飾名で表された) 複合型を指定する必要があります。詳細については、「概念モデルの型 (CSDL)」を参照してください。 |
 | Nullable | いいえ | プロパティに null 値を指定できるかどうかに応じて、**True** (既定値) または **False**。注: [http://schemas.microsoft.com/ado/2006/04/edm](http://schemas.microsoft.com/ado/2006/04/edm) 名前空間で示された CSDL のバージョンでは、複合型プロパティは Nullable="False" である必要があります。 |
 | DefaultValue | いいえ | プロパティの既定値。 |
 |MaxLength | いいえ | プロパティ値の最大長。 |
@@ -251,13 +254,13 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 ## サポートされているパラメーター/プロパティの型
 パラメーターおよびプロパティのサポートされている型を次に示します (大文字と小文字が区別されます)。
 
-| プリミティブ型 | 説明 |
+| プリミティブ型 | Description |
 |----|----|
 | Null | 値がないことを表します。 |
 | Boolean | 2 値論理という数学的概念を表します。|
 | Byte | 8 ビットの符号なし整数値。|
 |DateTime| 日付と時刻を、西暦 1753 年 1 月 1 日深夜 12:00:00 から西暦 9999 年 12 月 31 日午後 11:59:59 までの値で表します。|
-|小数点 | 固定の有効桁数および小数点以下桁数を指定して数値を表します。この型は、負の 10^255 + 1 から正の 10^255 -1 の間の数値を記述できます。|
+|Decimal | 固定の有効桁数および小数点以下桁数を指定して数値を表します。この型は、負の 10^255 + 1 から正の 10^255 -1 の間の数値を記述できます。|
 | Double | およそ ± 2.23e -308 から ± 1.79e +308 の範囲の値を表すことができる有効桁数 15 桁の浮動小数点数を表します。**Exel のエクスポートに関する問題が発生するため、10 進数を使用します。**|
 | Single | およそ ± 1.18e -38 から ± 3.40e +38 の範囲の値を表すことができる有効桁数 7 桁の浮動小数点数を表します。|
 |Guid |16 バイト (128 ビット) の一意の識別子値を表します。 |
@@ -272,4 +275,4 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

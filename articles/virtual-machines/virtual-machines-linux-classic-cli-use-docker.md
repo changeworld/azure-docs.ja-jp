@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure-services"
-	ms.date="01/04/2016"
+	ms.date="08/29/2016"
 	ms.author="rasquill"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
@@ -23,7 +23,7 @@
 
 
 
-このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI から Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
+このトピックでは、任意のプラットフォーム上のサービス管理 (asm) モードの Azure CLI で Docker VM 拡張機能を使用して VM を作成する方法について説明します。[Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。Docker VM 拡張機能と [Azure Linux エージェント](virtual-machines-linux-agent-user-guide.md)を使用して、Azure 上でアプリケーション用に任意の数のコンテナーをホストする Docker VM を作成することができます。コンテナーとその利点に関する概要については、「[Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 
 
 ##Azure で Docker VM 拡張機能を使用する方法
@@ -44,7 +44,7 @@ Azure CLI のインストールと構成の方法については、[Azure コマ
 > [AZURE.NOTE] Docker には [Docker Machine](https://docs.docker.com/installation/windows/) という Windows 用ツールが用意されています。このプログラムでは、Docker クライアントの作成を自動化することもできます。作成された Docker クライアントは Docker ホストとして Azure VM との連携に使用できます。
 
 ### Azure アカウントへの Azure CLI の接続
-Azure CLI を使用する前に、プラットフォーム上で Azure アカウントの資格情報を Azure CLI に関連付ける必要があります。[Azure サブスクリプションに接続する方法](../xplat-cli-connect.md)に関するセクションに、**.publishsettings** ファイルをダウンロードしてインポートする方法と Azure CLI コマンド ラインを組織 ID に関連付ける方法が説明されています。
+Azure CLI を使用する前に、プラットフォーム上で Azure アカウントの資格情報を Azure CLI に関連付ける必要があります。[Azure サブスクリプションへの接続方法](../xplat-cli-connect.md)に関するセクションで、**.publishsettings** ファイルをダウンロードしてインポートする方法と Azure CLI を組織 ID に関連付ける方法が説明されています。
 
 > [AZURE.NOTE] 使用する認証方法によって動作に若干の違いがあるため、必ず前述のドキュメントをよく読んで、機能の違いを理解してください。
 
@@ -176,4 +176,4 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
  
 [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する]: virtual-machines-linux-docker-compose-quickstart.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

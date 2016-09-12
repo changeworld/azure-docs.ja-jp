@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 #Azure での Linux 入門
@@ -96,6 +96,6 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
 
 Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法](virtual-machines-linux-classic-attach-disk.md)」で詳しく説明しています。
 
- - **関連項目:** [Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)
+ - **関連項目:** 「[Linux でのソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)」と「[Azure で Linux VM の LVM を構成する](virtual-machines-linux-configure-lvm.md)」
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

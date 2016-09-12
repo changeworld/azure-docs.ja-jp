@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="08/30/2016"
 	ms.author="anhoh"/>
 
 # DocumentDB ドキュメント エクスプローラーを使用して JSON ドキュメントを表示、編集、作成、アップロードする
@@ -25,17 +25,13 @@
 
 ## ドキュメント エクスプローラーの起動
 
-1. Azure ポータルで、ジャンプバーの **[DocumentDB アカウント]** をクリックします。**[DocumentDB アカウント]** が表示されない場合は、**[参照]** をクリックし、**[DocumentDB アカウント]** をクリックします。
+1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。**[DocumentDB (NoSQL)]** が表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
 
-2. **[DocumentDB アカウント]** ブレードの上部にある **[ドキュメント エクスプローラー]** をクリックします。
+2. リソース メニューの **[ドキュメント エクスプローラー]** をクリックします。
  
 	![Document Explorer コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/documentexplorercommand.png)
 
- 	>[AZURE.NOTE] ドキュメント エクスプローラーは、データベース ブレードとコレクション ブレードにも表示されます。
-
     **[ドキュメント エクスプローラー]** ブレードの **[データベース]** と **[コレクション]** の各ドロップダウン リストには、ドキュメント エクスプローラーを起動したコンテキストに応じて値が設定されます。
-
-	![Screenshot of the Document Explorer blade](./media/documentdb-view-json-document-explorer/documentexplorerinitial.png)
 
 ## ドキュメントの作成
 
@@ -150,9 +146,17 @@ Document Explorer はさまざまなナビゲーション オプションと高�
 
 ## ポータル外での JSON ドキュメントの操作
 
-Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)を参照してください。
+Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)をご覧ください。
 
 他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用すると、データを DocumentDB にすばやくインポートできます。
+
+## トラブルシューティング
+
+**症状**: Document Explorer から "**ドキュメントが見つかりません**" というメッセージが返されます。
+
+**ソリューション**: ドキュメントが挿入された適切なサブスクリプション、データベース、およびコレクションが選択されていることを確認します。また、スループット クォータ内で操作していることを確認します。最大のスループット レベルで運用していて調整が行われている場合は、コレクションのスループットの最大クォータの範囲で動作するように、アプリケーションの使用量を削減します。
+
+**説明**: ポータルは、他のアプリケーションと同様に、DocumentDB データベースおよびコレクションの呼び出しを行います。別のアプリケーションから行われる呼び出しのために要求が調整中の場合は、ポータルも調整され、リソースがポータルに表示されなくなる可能性があります。問題を解決するには、スループットの使用量が高くなる原因に対処して、ポータルのブレードを最新の状態に更新します。スループットの使用量の測定方法と削減方法の詳細については、[パフォーマンスに関するヒント](documentdb-performance-tips.md)の記事の「[スループット](documentdb-performance-tips.md#throughput)」のセクションをご覧ください。
 
 ## 次のステップ
 
@@ -160,4 +164,4 @@ Azure ポータルのドキュメント エクスプローラーは、DocumentDB
 
 [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
 
-<!----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

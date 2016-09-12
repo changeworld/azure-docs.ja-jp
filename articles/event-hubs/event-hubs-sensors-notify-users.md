@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/31/2016"
+   ms.date="08/25/2016"
    ms.author="spyros;sethm" />
 
 # センサーまたはその他のシステムから受信したデータをユーザーに通知する
@@ -44,7 +44,7 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 このサンプルのコードでは、アプリケーションに追加する場合に適用できる、Event Hubs を監視する方法と、外部のメッセージング サービスを呼び出す方法を示すのみです。このソリューションは DIY、すなわち、開発者向けに限定した例となります。冗長性、フェールオーバー、障害発生時の再起動など、企業の要件には対応していません。より包括的な運用環境向けのソリューションについては、次を参照してください。
 
 - [Azure Logic Apps](../app-service-logic/app-service-logic-connectors-list.md) サービスでコネクタまたはプッシュ通知を使用する。
-- [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx) を使用する。ブログ「[Broadcast push notifications to millions of mobile devices using Azure Notification Hubs (Azure Notification Hubs を使用して何百万ものモバイル デバイスにプッシュ通知をブロードキャストする)](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)」を参照。 
+- [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx) を使用する。ブログ「[Broadcast push notifications to millions of mobile devices using Azure Notification Hubs (Azure Notification Hubs を使用して何百万ものモバイル デバイスにプッシュ通知をブロードキャストする)](http://weblogs.asp.net/scottgu/broadcast-push-notifications-to-millions-of-mobile-devices-using-windows-azure-notification-hubs)」を参照。
 
 ## 次のステップ
 
@@ -83,4 +83,4 @@ Event Hub モニターは、メッセージを検出すると、構成ファイ�
 [1]: ./media/event-hubs-sensors-notify-users/event-hubs-sensor-alert.png
 [2]: ./media/event-hubs-sensors-notify-users/event-hubs-erp-alert.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -291,6 +291,15 @@ Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 exit
 ```
 
+## サポートされていない機能および制限
+
+.NET Service Bus API の次の機能は、現在のところ AMQP の使用時はサポートされていません。
+
+ * トランザクション
+ * 転送先を経由した送信
+
+詳細については、「[サポートされていない機能、制限、および動作の違い](service-bus-amqp-dotnet.md#unsupported-features-restrictions-and-behavioral-differences)」を参照してください。
+
 ## 概要
 
 この記事では、AMQP 1.0 と Service Bus .NET API を使用して .NET から Service Bus のブローカー メッセージング機能 (キュー、およびトピックの発行/サブスクライブ) を使用する方法を説明しました。
@@ -307,4 +316,4 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
  
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2016"
+	ms.date="08/29/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -73,25 +73,15 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 演算子は左から右に評価されます。評価の優先順位は同じです。つまり、* (乗算) は - (減算) よりも先に評価されません。2*(5+3) は、2*5+3 と同じではありません。かっこ () は、左から右への評価順が適切ではない場合に、評価順を変更するために使用されます。
 
 ## 複数値の属性
-
-### 複数値の属性の属性フロー
 関数は、単一値の属性と複数値の属性両方に対して使用できます。複数値の属性の場合、関数は、すべての値で動作し、すべての値に同じ関数を適用します。
 
 次に例を示します。`Trim([proxyAddresses])` proxyAddress 属性の各値の Trim を実行します。`Word([proxyAddresses],1,"@") & "@contoso.com"` アット マークを含むすべての文字列では、ドメインを @contoso.com に置き換えます。`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP アドレスを検索し、値から削除します。
 
-### 属性値の結合
-属性フローには、複数値の属性をいくつかの異なるコネクタから結合する必要があるかどうかを判断する設定があります。既定値は **Update** です。これは、優先順位の最も高い同期規則が優先的に実行されることを示します。
-
-![Merge Types](./media/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions/mergetype.png)
-
-**Merge** と **MergeCaseInsensitive** もあります。これらのオプションを使用すると、異なるソースの値を結合できます。たとえば、それを使用して、いくつかの異なるフォレストのメンバー属性や proxyAddresses 属性を結合できます。このオプションを使用する場合、オブジェクトのスコープ内にあるすべての同期規則では、同じ結合の種類を使用する必要があります。あるコネクタから **Update** を定義し、別のコネクタから **Merge** を定義することはできません。試した場合は、エラーが発生します。
-
-**Merge** と **MergeCaseInsensitive** では、重複する属性値の処理方法が異なります。同期エンジンは、重複する値がターゲット属性に挿入されていないことを確認します。**MergeCaseInsensitive** を使用すると、大文字小文字のみが異なる重複する値は表示されなくなります。たとえば、"SMTP:bob@contoso.com" と "smtp:bob@contoso.com" は両方ともターゲット属性に表示されなくなります。**Merge** は、正確な値だけを調べるため、大文字小文字のみが異なる複数の値は表示される可能性があります。
-
-オプション **Replace** は **Update** と同じですが、使用されていません。
-
 ## その他のリソース
 
-[Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md) [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md) [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+- [Azure AD Connect 同期: 宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
+- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
+- [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
+- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

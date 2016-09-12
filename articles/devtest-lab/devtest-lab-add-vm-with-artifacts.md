@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # アーティファクトを含む VM をラボに追加する
@@ -64,7 +64,7 @@ DevTest Labs "*アーティファクト*" を使用すると、VM の作成時�
 
 1. **[アーティファクト]** を選択し、アーティファクトの一覧から基本イメージに追加するアーティファクトを選択して構成します。**注:** DevTest Labs やアーティファクトの構成に関する経験がない場合は、「[既存のアーティファクトの VM への追加](#add-an-existing-artifact-to-a-vm)」セクションに進み、終了してからここに戻ってください。
 
-1. ARM テンプレートを表示またはコピーする場合は、「[ARM テンプレートの保存](#save-arm-template)」セクションに進み、終了してからここに戻ってください。
+1. Azure Resource Manager テンプレートを表示またはコピーする場合は、「[Azure Resource Manager テンプレートの保存](#save-arm-template)」セクションに進み、終了してからここに戻ってください。
 
 1. **[作成]** を選択して、指定した VM をラボに追加します。
 
@@ -116,9 +116,9 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 
 1. **[OK]** を選択して、**[Selected Artifacts (選択されたアーティファクト)]** ブレードを閉じます。
 
-## ARM テンプレートの保存
+## Azure Resource Manager テンプレートの保存
 
-ARM テンプレートでは、反復可能なデプロイを定義する宣言的な方法が提供されます。次の手順では、作成される VM の ARM テンプレートを保存する方法について説明します。保存した ARM テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイする](../resource-group-overview.md#template-deployment)ことができます。
+Azure Resource Manager テンプレートでは、反復可能なデプロイを定義する宣言的な方法が提供されます。次の手順では、作成される VM の Azure Resource Manager テンプレートを保存する方法について説明します。保存した Azure Resource Manager テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイする](../resource-group-overview.md#template-deployment)ことができます。
 
 1. **[Lab VM (ラボ VM)]** ブレードで、**[View ARM Template (ARM テンプレートの表示)]** を選択します。
 
@@ -134,10 +134,12 @@ ARM テンプレートでは、反復可能なデプロイを定義する宣言�
 
 1. 後で使用するためにファイルを保存します。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
 - VM が作成されたら、VM のブレードで **[接続]** を選択して VM に接続できます。
 - [DevTest Labs VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
 - [DevTest Labs ARM のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を調べます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

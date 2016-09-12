@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/11/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # Service Fabric の用語の概要
@@ -90,4 +90,4 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 - [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 - [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

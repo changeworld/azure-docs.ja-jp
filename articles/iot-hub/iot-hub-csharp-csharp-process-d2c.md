@@ -388,7 +388,7 @@ Service Bus キューで対話型メッセージの信頼性の高い処理を�
 
 2.	**F5** キーを押して 3 つのコンソール アプリケーションを起動します。**ProcessD2CInteractiveMessages** アプリケーションは、**SimulatedDevice** アプリケーションから送信されたすべての対話型メッセージを処理します。
 
-  ![Three console applicatons][50]
+  ![3 つのコンソール アプリケーション][50]
 
 > [AZURE.NOTE] BLOB ファイルの更新内容を表示するために、**StoreEventProcessor** クラスの **MAX\_BLOCK\_SIZE** 定数を、**1024** などのより小さい値に設定することが必要になる場合があります。これは、シミュレーション対象デバイスによって送信されたデータのブロック サイズの制限に達するまでに時間がかかるためです。より小さいブロック サイズであれば、作成および更新される BLOB を表示するために長時間待機する必要はありません。ただし、より大きなブロック サイズを使用すると、アプリケーションの拡張性が向上します。
 
@@ -448,4 +448,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

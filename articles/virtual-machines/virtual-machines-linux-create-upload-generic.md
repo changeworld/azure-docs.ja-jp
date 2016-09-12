@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/09/2016"
+	ms.date="08/24/2016"
 	ms.author="szark"/>
 
 # 動作保証外のディストリビューションに関する情報 #
@@ -25,7 +25,7 @@
 **重要**: Azure プラットフォームの SLA は、[動作保証済みディストリビューション](virtual-machines-linux-endorsed-distros.md)のいずれか 1 つを使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 - [Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)
-- [Microsoft Azure での Linux イメージのサポート](http://support2.microsoft.com/kb/2941892)
+- [Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/kb/2941892)
 
 Azure 上で動作するすべてのディストリビューションは、プラットフォーム上で適切に実行できるように、いくつかの前提条件を満たす必要があります。この記事は決して包括的なものではありません。前提条件はディストリビューションによって異なるためです。次に示している条件をすべて満たす場合でも、プラットフォーム上で適切に動作するように Linux システムを微調整する必要があります。
 
@@ -35,7 +35,7 @@ Azure 上で動作するすべてのディストリビューションは、プ�
 - **[Debian Linux](virtual-machines-linux-debian-create-upload-vhd.md)**
 - **[Oracle Linux](virtual-machines-linux-oracle-create-upload-vhd.md)**
 - **[Red Hat Enterprise Linux](virtual-machines-linux-redhat-create-upload-vhd.md)**
-- **[SLES と openSUSE](../virtual-machines-linux-create-upload-vhd-suse)**
+- **[SLES と openSUSE](virtual-machines-linux-suse-create-upload-vhd.md)**
 - **[Ubuntu](virtual-machines-linux-create-upload-ubuntu.md)**
 
 以降では、Azure 上で Linux ディストリビューションを実行するための一般的なガイダンスについて、重点的に説明します。
@@ -78,7 +78,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 これを修正するには、HYPER-V マネージャー コンソールまたは [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) Powershell コマンドレットを使用して、VM のサイズを変更できます。Windows 環境で実行していない場合は、qemu-img を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
-> [AZURE.NOTE] qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は、qemu-img の今後のリリースで修正される予定です。現時点では、qemu-img のバージョン 2.2.0 以前を使用することをお勧めします。参照先: https://bugs.launchpad.net/qemu/+bug/1490611
+> [AZURE.NOTE] qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。この問題は QEMU 2.6 で修正されています。qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。参照先: https://bugs.launchpad.net/qemu/+bug/1490611。
 
 
  1. `qemu-img` や `vbox-manage` などのツールを使用して直接 VHD のサイズを変更すると、VHD が起動できなくなる可能性があります。そのため、最初に VHD を RAW ディスク イメージに変換することをお勧めします。既に VM イメージを RAW ディスク イメージとして作成している場合は (KVM などの一部のハイパーバイザーでは既定)、この手順を省略できます。
@@ -135,6 +135,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 - [storvsc: RAID と仮想ホスト アダプター ドライバーの WRITE SAME を無効にする](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
 - [storvsc: NULL ポインターの逆参照の修正](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 - [storvsc: リング バッファーのエラーにより I/O の凍結が発生する可能性がある](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
+- [scsi\_sysfs: \_\_scsi\_remove\_device の二重実行を保護する](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 
 ## Azure Linux エージェント ##
@@ -154,7 +155,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - GRUB または GRUB2 でカーネルのブート行を変更して次のパラメーターを含めます。これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+		console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
 
 	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
@@ -182,11 +183,6 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-- /etc/sudoers で、次の行を削除するかコメント アウトする必要があります (ある場合)。
-
-		Defaults targetpw
-		ALL    ALL=(ALL) ALL
-
 - 最後の手順として、次のコマンドを実行して仮想マシンをプロビジョニング解除します。
 
 		# sudo waagent -force -deprovision
@@ -197,4 +193,4 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 - その後、仮想マシンをシャットダウンし、Azure に VHD をアップロードする必要があります。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0831_2016-->

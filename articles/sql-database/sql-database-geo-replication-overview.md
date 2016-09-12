@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
    ms.workload="NA"
-	ms.date="07/14/2016"
+	ms.date="08/29/2016"
 	ms.author="sstein" />
 
 # 概要: Azure SQL Database のアクティブ geo レプリケーション
@@ -39,6 +39,9 @@
 - [フェールオーバー: Azure ポータル](sql-database-geo-replication-failover-portal.md)
 - [フェールオーバー: PowerShell](sql-database-geo-replication-failover-powershell.md)
 - [フェールオーバー: T-SQL](sql-database-geo-replication-failover-transact-sql.md)
+
+フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
+
 
 アクティブ geo レプリケーション機能は、同じ Microsoft Azure リージョン内または異なるリージョン間にデータベースの冗長性 (地理的冗長性) を提供するメカニズムを実装します。アクティブ geo レプリケーションを使用すると、データベースのコミット済みトランザクションが、分離のために Read Committed スナップショット分離 (RCSI) を使用して、別のサーバー上にある最大 4 つのデータベース コピーに非同期にレプリケートされます。アクティブ Geo レプリケーションが構成されている場合は、指定されたサーバーにセカンダリ データベースが作成されます。元のデータベースはプライマリ データベースになります。プライマリ データベースによって、コミット済みのトランザクションが各セカンダリ データベースに非同期にレプリケートされるしくみです。特定の時点におけるセカンダリ データベースは、プライマリ データベースよりもわずかに古い可能性がありますが、プライマリ データベースにコミットされた変更とのトランザクション上の整合性が常に保証されます。
 
@@ -132,5 +135,6 @@
 - Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 - 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
+- 新しいプライマリ サーバーとデータベースの認証要件については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
