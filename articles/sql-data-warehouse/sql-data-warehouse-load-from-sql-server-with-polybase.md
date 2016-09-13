@@ -3,7 +3,7 @@
    description="bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="lodipalm"
+   authors="ckarst"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/30/2016"
-   ms.author="lodipalm;barbkess;sonyama"/>
+   ms.author="cakarst;barbkess;sonyama"/>
 
 
 # SQL Data Warehouse で PolyBase によってデータを読み込む
@@ -116,7 +116,7 @@ Azure Blob Storage にデータをコピーするには:
 Blob Storage にアップロードしたファイルを表示するには:
 
 1. BLOB サービス ブレードに戻ります。
-2. [コンテナー] の下の **[データ コンテナー]** をダブルクリックします。
+2. [コンテナー] の下の **[データコンテナー]** をダブルクリックします。
 3. データへのパスをたどるために **datedimension** フォルダーをクリックすると、アップロードした **DimDate2.txt** ファイルが表示されます。
 4. プロパティを表示するには、**DimDate2.txt** をクリックします。
 5. BLOB プロパティ ブレードでは、ファイルをダウンロードまたは削除することができます。
@@ -285,4 +285,4 @@ PolyBase を使用するソリューションを開発する際に知ってお�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!----HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

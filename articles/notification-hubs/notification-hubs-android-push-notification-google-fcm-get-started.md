@@ -38,9 +38,9 @@
 > [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)を参照してください。
 
 - このチュートリアルでは、上記のアクティブな Azure アカウント以外に、最新版の [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797) が必要です。
-- Android 2.3 以上 (Firebase Cloud Messaging 用)。
+- Android 2.3 以上 (Firebase Cloud Messaging 対応)。
 - Firebase Cloud Messaging には Google Repository revision 27 以上が必要です。
-- Google Play Services 9.0.2 以上 (Firebase Cloud Messaging 用)。
+- Google Play Services 9.0.2 以上 (Firebase Cloud Messaging 対応)。
 - このチュートリアルを完了することは、Android アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
 
 
@@ -66,7 +66,7 @@
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.通知ハブの **[設定]** ブレードで、**[Notification Services]**、[**Google (GCM)]** の順に選択します。先ほど [Firebase Console](https://firebase.google.com/console/) からコピーした FCM キーを入力し、**[保存]** をクリックします。
+&emsp;&emsp;6.通知ハブの **[設定]** ブレードで、**[Notification Services]**、[**Google (GCM)]** の順に選択します。先ほど [Firebase Console](https://firebase.google.com/console/) からコピーした FCM サーバー キーを入力し、**[保存]** をクリックします。
 
 &emsp;&emsp;![Azure Notification Hubs - Google (GCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-gcm-api.png)
 
@@ -230,7 +230,7 @@
 		                regID = hub.register(FCM_token).getRegistrationId();
 		
 		                // If you want to use tags...
-		                // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
+		                // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
 		
 		                resultString = "New NH Registration Successfully - RegId : " + regID;
@@ -249,7 +249,7 @@
 		                regID = hub.register(FCM_token).getRegistrationId();
 		
 		                // If you want to use tags...
-		                // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
+		                // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
 		
 		                resultString = "New NH Registration Successfully - RegId : " + regID;
@@ -402,7 +402,7 @@
 
 13. `MyHandler` クラス用に次のコードを追加して、`com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
 
-	このコードによって `OnReceive` メソッドがオーバーライドされるため、ハンドラーは受信した通知を報告します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにもプッシュ通知を送信します。`sendNotification()` メソッドは、アプリが動作していないときに通知を受信した場合に実行される必要があります。
+	このコードによって `OnReceive` メソッドが上書きされるため、ハンドラーは受信した通知を報告します。ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにもプッシュ通知を送信します。`sendNotification()` メソッドは、アプリが動作していないときに通知を受信した場合に実行される必要があります。
 
 		public class MyHandler extends NotificationsHandler {
 		    public static final int NOTIFICATION_ID = 1;
@@ -648,7 +648,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
+	                        // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
@@ -728,8 +728,8 @@ Notification Hubs の全般的な情報については、「[Notification Hubs �
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure Classic Portal]: https://manage.windowsazure.com/
 [Notification Hubs の概要]: notification-hubs-push-notification-overview.md
-[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-breaking-news.md
+[Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+[Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

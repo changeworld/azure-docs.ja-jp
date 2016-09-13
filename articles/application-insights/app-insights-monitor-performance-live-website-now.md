@@ -283,11 +283,7 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 * Web ページ コードからの例外を参照してトレースの呼び出しを挿入するには、[Web クライアント テレメトリを追加][usage]します。
 * トレースとログの呼び出しをサーバー コードで挿入するには、[Application Insights SDK を Web サービス コードに追加][greenbrown]します。
 
-## ビデオ
 
-#### パフォーマンスの監視
-
-[AZURE.VIDEO app-insights-performance-monitoring]
 
 <!--Link references-->
 
@@ -300,4 +296,4 @@ Web アプリが Azure に存在するとき、Azure Resource Manager テンプ�
 [roles]: app-insights-resources-roles-access-control.md
 [usage]: app-insights-web-track-usage.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

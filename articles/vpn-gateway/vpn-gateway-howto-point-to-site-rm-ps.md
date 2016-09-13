@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Resource Manager デプロイ モデルを使用した仮想ネットワークへのポイント対サイト VPN 接続の構成 | Microsoft Azure"
-   description="ポイント対サイト VPN 接続を作成することで、Azure Virtual Network に安全に接続します。"
+   pageTitle="Resource Manager デプロイメント モデルを使用した仮想ネットワークへのポイント対サイト VPN ゲートウェイ接続の構成 | Microsoft Azure"
+   description="ポイント対サイト VPN ゲートウェイ接続を作成することで、Azure Virtual Network に安全に接続します。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -65,7 +65,7 @@
 
 - Azure サブスクリプションを持っていることを確認します。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 	
-- Azure Resource Manager PowerShell コマンドレット (1.0.2 以降) をインストールします。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- Azure Resource Manager PowerShell コマンドレット (1.0.2 以降) をインストールします。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。この構成に PowerShell を使用する場合は、必ず管理者として実行するようにしてください。
 
 ## <a name="declare"></a>パート 1 - ログインと変数の設定
 
@@ -176,15 +176,24 @@ P2S を使用して Azure に接続するクライアントには、クライア
 
 	![VPN client](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
-## <a name="cc"></a>パート 6 - クライアント証明書のインストール
-	
-クライアント コンピューターのルート証明書からクライアント証明書 (*.pfx) を生成しインストールします。自分に適している方法でインストールしてください。
+## <a name="cc"></a>パート 6: クライアント証明書の生成
 
-自己署名ルート証明書を使用しており、クライアント証明書の生成方法がわからない場合は、[こちらの記事](vpn-gateway-certificates-point-to-site.md)を参照してください。エンタープライズ ソリューションを使用している場合は、"NetBIOS domain name\\username" 形式ではなく、共通名の値の形式 "name@yourdomain.com" を使用してクライアント証明書を発行してください。
+次に、クライアント証明書を生成します。接続するクライアントごとに一意の証明書を生成することも、複数のクライアントに同じ証明書を使用することもできます。一意のクライアント証明書を生成する利点は、必要に応じて 1 つの証明書を失効させることができる点です。そうでなければ、すべてのユーザーが同じクライアント証明書を使用していて、1 つのクライアントの証明書を失効させる必要がある場合は、認証に証明書を使用するすべてのクライアントに新しい証明書を生成してインストールする必要があります。
 
-.pfx ファイルをダブルクリックすることで、クライアント証明書をコンピューターに直接インストールできます。
+- エンタープライズ証明書ソリューションを使用している場合は、NetBIOS "DOMAIN\\username" 形式ではなく、共通名の値の形式 "name@yourdomain.com" を使用してクライアント証明書を生成します。
 
-## パート 7 - Azure への接続
+- 自己署名証明書を使用している場合は、[ポイント対サイト構成の自己署名ルート証明書の操作](vpn-gateway-certificates-point-to-site.md)に関する記事を参照して、クライアント証明書を生成してください。
+
+## パート 7 - クライアント証明書のインストール
+
+仮想ネットワークに接続する各コンピューターに、クライアント証明書をインストールします。クライアント証明書は認証に必要です。クライアント証明書は、自動でも手動でもインストールできます。次の手順では、手動によるクライアント証明書のエクスポートとインストールについて説明します。
+
+1. クライアント証明書をエクスポートするには、*certmgr.msc* を使用できます。エクスポートするクライアント証明書を右クリックして、**[すべてのタスク]**、**[エクスポート]** の順にクリックします。
+2. クライアント証明書と秘密キーをエクスポートします。これは *.pfx* ファイルです。この証明書に設定したパスワード (キー) を記録するか、覚えておいてください。
+3. *.pfx* ファイルをクライアント コンピューターにコピーします。クライアント コンピューターで、*.pfx* ファイルをダブルクリックしてインストールします。要求された場合は、パスワードを入力します。インストール先は変更しないでください。
+
+
+## パート 8 - Azure への接続
 
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。仮想ネットワークと同じ名前が付いています。**[接続]** をクリックします。証明書を使用することを示すポップアップ メッセージが表示される場合があります。その場合、**[続行]** をクリックして、昇格された特権を使用します。
 
@@ -196,7 +205,7 @@ P2S を使用して Azure に接続するクライアントには、クライア
 
 	![VPN client 3](./media/vpn-gateway-howto-point-to-site-rm-ps/connected.png "VPN client connection 2")
 
-## パート 8 - 接続の確認
+## パート 9 - 接続の確認
 
 1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、*ipconfig/all* を実行します。
 
@@ -302,4 +311,4 @@ PowerShell または Azure Portal を使用して、信頼されたルート証�
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -12,39 +12,39 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
 次の手順に従って、Azure ポータルで新規または既存の Azure SQL Database 論理サーバーに新しい Azure SQL Database を作成します。
 
-1. [Azure ポータル](http://portal.azure.com)に接続していない場合は接続します。
-2. **[新規]** をクリックし、「**SQL Database**」と入力し、**[SQL Database (新しいデータベース)]** をクリックします。
+1. [Azure Portal](http://portal.azure.com) に接続していない場合は接続します。
+2. **[新規]** をクリックして「**SQL Database**」と入力し、**[SQL Database (new database) (SQL Database (新しいデータベース))]** をクリックします。
 
-     ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-1.png)
 
-3. [SQL Database (新しいデータベース)] をクリックします。
+3. **[SQL Database (new database) (SQL Database (新しいデータベース))]** をクリックします。
 
-     ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
-   
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-2.png)
+
 4. **[作成]** をクリックして、SQL Database サービスに新しいデータベースを作成します。
 
-     ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-3.png)
 
 5. 次のサーバー プロパティの値を入力します。
 
  - データベース名
- - サブスクリプション (複数のサブスクリプションがある場合のみ)
- - リソース グループ (始めたばかりの場合は、論理サーバーのリソース グループを使用します)
- - ソースの選択 (空のデータベース、サンプル データ、Azure データベースのバックアップのいずれかを選択できます。BCP を使用してデータを読み込んだりオンプレミスの SQL Server データベースを移行したりする方法については、この記事の最後にあるリンクを参照してください)
- - サーバー (新規または既存の論理サーバー)
- - サーバー管理者のパスワード
+ - サブスクリプション: 複数のサブスクリプションがある場合にのみ該当します。
+ - リソース グループ: 始めたばかりの場合は、論理サーバーのリソース グループを使用します。
+ - ソースの選択: 空のデータベース、サンプル データ、または Azure データベースのバックアップを選択できます。BCP コマンド ライン ツールを使用してオンプレミスの SQL Server データベースを移行したり、データを読み込んだりするには、この記事の最後にあるリンクを参照してください。
+ - サーバー: 新規または既存の論理サーバー。
+ - サーバー管理者のログイン
  - パスワード
- - 価格レベル (始めたばかりの場合は、既定値の S0 を使用します)
- - 照合順序 (空のデータベースを選択した場合のみ)
+ - 価格レベル: 始めたばかりの場合は、既定値の S0 を使用します。
+ - 照合順序: 空のデータベースが選択された場合にのみ該当します。
 
-        ![new database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
+        ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-4.png)
 
 6.  **[作成]** をクリックします。通知領域にデプロイの開始が表示されます。
 
-     ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-5.png)
 
 7. デプロイが完了するまで待ってから、次の手順に進みます。
 
-     ![新規データベース](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
+     ![New database](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="05/25/2016"
+	ms.date="08/30/2016"
 	ms.author="awills"/>
 
 
@@ -26,7 +26,7 @@
 
 SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウンター (CPU、メモリ、RPS)、ハンドルされない例外の自動収集機能が提供されます。さらに、カスタム呼び出しを追加して、依存関係、メトリック、またはその他のイベントを追跡することができます。
 
-![Example performance monitoring charts](./media/app-insights-asp-net-manual/10-perf.png)
+![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
 
 #### 開始する前に
@@ -40,7 +40,7 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 
 [Azure ポータル][portal]にサインインし、Application Insights の新しいリソースを作成します。Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
-![[新規]、[Application Insights] の順にクリックする](./media/app-insights-asp-net-manual/01-new-asp.png)
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
 
 アプリケーションの種類として [その他] を選択します。アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
 
@@ -48,7 +48,7 @@ SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウ
 
 これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
 
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-asp-net-manual/02-props-asp.png)
+![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
 
 
 ## <a name="sdk"></a>アプリケーションに SDK をインストールする
@@ -84,7 +84,7 @@ appInsights.setup("<instrumentation_key>").start();
 
 [概要] ページでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。For example:
 
-![クリックしてより多くのデータを表示する](./media/app-insights-asp-net-manual/12-first-perf.png)
+![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
 
 任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
 
@@ -212,6 +212,10 @@ server.on("listening", () => {
 });
 ```
 
+## 次のステップ
+
+* [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
+* [テレメトリに対する Analytics クエリを記述する](app-insights-analytics-tour.md)
 
 
 
@@ -224,4 +228,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

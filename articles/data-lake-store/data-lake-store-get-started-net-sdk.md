@@ -27,14 +27,14 @@
 - [Azure CLI](data-lake-store-get-started-cli.md)
 - [Node.JS](data-lake-store-manage-use-nodejs.md)
 
-Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
+[Azure Data Lake Store .NET SDK](https://msdn.microsoft.com/library/mt581387.aspx) を使用して、Azure Data Lake アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関するページを参照してください。
 
 ## 前提条件
 
 * Visual Studio 2013 または 2015以下の手順では、Visual Studio 2015 を使用します。
 * **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-* **Azure Active Directory アプリケーションを作成する**Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
+* Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+* **Azure Active Directory アプリケーションを作成する**。Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
 	* **対話型の認証** (この記事で使用する認証方法) を使用する場合: Azure Active Directory で **[ネイティブ クライアント アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
 		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
 		- 委任されたアクセス許可を設定する
@@ -65,7 +65,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 5. Nuget パッケージをプロジェクトに追加します。
 
 	1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-	2. **[Nuget パッケージの管理]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含む]** チェック ボックスがオンになっていることを確認します。
+	2. **[Nuget パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
 	3. 以下の Data Lake Store パッケージを検索してインストールします。
 
 		* `Microsoft.Azure.Management.DataLake.Store`
@@ -80,7 +80,7 @@ Azure Data Lake Store .NET SDK を使用して、Azure Data Lake アカウント
 
 	5. **NuGet パッケージ マネージャー**を閉じます。
 
-7. **Program.cs** を開き、既存のコードを削除し、次のステートメントを含めて、名前空間の参照を追加します。
+7. **Program.cs** を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
 		using System;
         using System.IO;
@@ -139,7 +139,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
  	// Authenticate the user with AAD through an interactive popup.
     // You need to have an application registered with AAD in order to authenticate.
     //   For more information and instructions on how to register your application with AAD, see:
-    //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
+    //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -157,7 +157,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 	// Authenticate the application with AAD through the application's secret key.
 	// You need to have an application registered with AAD in order to authenticate.
 	//   For more information and instructions on how to register your application with AAD, see:
-	//   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
+	//   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
 	public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
 	{
 	    var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -220,6 +220,8 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
         var uploader = new DataLakeStoreUploader(parameters, frontend);
         uploader.Execute();
     }
+
+DataLakeStoreUploader は、ローカル ファイル (またはフォルダー) パスと Data Lake Store 間の再帰的なアップロードとダウンロードをサポートしています。
 
 ## ファイルまたはディレクトリの情報を取得する
 
@@ -296,7 +298,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 
 >[AZURE.NOTE] 代わりにコード スニペットを変更して、非対話型 (`AuthenticateApplication`) メソッドを使用する場合は、クライアント ID とクライアント応答 URI だけでなく、メソッドへの入力としてクライアント認証キーを入力する必要もあります。「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」の記事では、クライアント認証キーを生成し、取得する方法についても説明します。
 	
-最後に、ここで指定するローカル パスとファイル名は、コンピューターに存在している必要があります。アップロードするいくつかのサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+最後に、ここで指定するローカル パスとファイル名は、コンピューターに存在している必要があります。アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
 
 
 
@@ -400,7 +402,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
             // Authenticate the user with AAD through an interactive popup.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateUser(string tenantId, string resource, string appClientId, Uri appRedirectUri, string userId = "")
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -415,7 +417,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
             // Authenticate the application with AAD through the application's secret key.
             // You need to have an application registered with AAD in order to authenticate.
             //   For more information and instructions on how to register your application with AAD, see:
-            //   https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-create-service-principal-portal/
+            //   https://azure.microsoft.com/documentation/articles/resource-group-create-service-principal-portal/
             public static TokenCredentials AuthenticateApplication(string tenantId, string resource, string appClientId, Uri appRedirectUri, SecureString clientSecret)
             {
                 var authContext = new AuthenticationContext("https://login.microsoftonline.com/" + tenantId);
@@ -525,5 +527,7 @@ Azure Active Directory を使用して認証する方法は 2 つあります。
 - [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
+- [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -4,17 +4,21 @@
 
 [EventProcessorHost][] を使用するには [Azure ストレージ アカウント][]が必要です。
 
-1. [Azure クラシック ポータル][]にログオンし、画面の下部にある **[新規]** をクリックします。
+1. [Azure Portal][] にログインし、画面の左上にある **[新規]** をクリックします。
 
-2. **[Data Services]**、**[Storage]**、**[簡易作成]** の順にクリックし、ストレージ アカウントの名前を入力します。目的のリージョンを選択し、**[ストレージ アカウントの作成]** をクリックします。
+2. **[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-    ![][11]
+    ![][1]
 
-3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キーの管理]** をクリックします。
+3. **[ストレージ アカウントの作成]** ブレードで、ストレージ アカウントの名前を入力します。リソースが作成される Azure サブスクリプション、リソース グループ、場所を選択します。**[Create]** をクリックします。
 
-    ![][12]
+    ![][2]
 
-    このチュートリアルの後で使用するため、プライマリ アクセス キーをメモしておきます。
+4. ストレージ アカウントの一覧で、新しく作成したストレージ アカウントをクリックします。
+
+5. ストレージ アカウントのブレードで、**[アクセス キー]** をクリックします。後でこのチュートリアルで使用するため、**key1** の値をコピーしておきます。
+
+	![][3]
 
 4. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Receiver**」と入力します。
 
@@ -122,16 +126,17 @@
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
 [イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[Azure ストレージ アカウント]: ../storage/storage-create-storage-account-classic-portal.md
+[Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
-[Azure クラシック ポータル]: http://manage.windowsazure.com
+[Azure portal]: https://portal.azure.com
 
 <!-- Images -->
 
-[11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
-[12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
-[13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp1.png
-[15]: ./media/service-bus-event-hubs-getstarted/create-receiver-csharp2.png
+[1]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png
+[2]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage2.png
+[3]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage3.png
+[13]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png
+[14]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png
+[15]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

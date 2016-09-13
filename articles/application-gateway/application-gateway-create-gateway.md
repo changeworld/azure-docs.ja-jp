@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/02/2016"
    ms.author="gwallace"/>
 
 # Application Gateway の作成、起動、または削除
@@ -26,10 +26,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 - [Azure CLI](application-gateway-create-gateway-cli.md)
 
-<BR>
-
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
-
 
 ## 開始する前に
 
@@ -40,9 +37,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 ## Application Gateway の作成に必要な構成
 
-
 **New-AzureApplicationGateway** コマンドを使用してアプリケーション ゲートウェイを作成した時点では、構成は設定されていません。新しく作成したリソースは、XML または構成オブジェクトを使用して構成します。
-
 
 値は次のとおりです。
 
@@ -51,7 +46,6 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
-
 
 ## アプリケーション ゲートウェイの作成
 
@@ -63,12 +57,11 @@ Application Gateway を作成するには:
 
 >[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-classic-ps.md)に関するページを参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
 
-
 ### Application Gateway リソースの作成
 
 ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-次の例では、"testvnet1" という仮想ネットワークと "subnet-1” というサブネットを使用して新しい Application Gateway を作成します。
+次の例では、"testvnet1" という仮想ネットワークと "subnet-1" というサブネットを使用してアプリケーション ゲートウェイを作成します。
 
 
 	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -80,13 +73,9 @@ Application Gateway を作成するには:
 	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 
 
- *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
-
+ *Description* 、 *InstanceCount* 、および *GatewaySize* は省略可能なパラメーターです。
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
-
-
-
 
 	Get-AzureApplicationGateway AppGwTest
 	Name          : AppGwTest
@@ -101,8 +90,7 @@ Application Gateway を作成するには:
 
 >[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
 
-
- ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ## Application Gateway の構成
 
@@ -224,7 +212,7 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 ## 構成オブジェクトを使用して Application Gateway を構成する
 
-次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。すべての構成項目は個別に構成した後に、Application Gateway の構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、**Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
+次の例では、構成オブジェクトを使用して Application Gateway を構成する方法を示します。すべての構成項目は個別に構成した後に、アプリケーション ゲートウェイの構成オブジェクトに追加する必要があります。構成オブジェクトを作成したら、**Set-AzureApplicationGateway** コマンドを使用して、前の手順で作成したアプリケーション ゲートウェイのリソースに構成をコミットします。
 
 >[AZURE.NOTE] 各構成オブジェクトに値を割り当てる前に、PowerShell でストレージとして使用するオブジェクトの種類を宣言する必要があります。個別の項目を作成する最初の行では、Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model (オブジェクト名) を使用する項目を定義します。
 
@@ -234,57 +222,57 @@ Application Gateway は、XML または構成オブジェクトを使用して�
 
 次の例で示すように、フロントエンド IP を作成します。
 
-	PS C:\> $fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
-	PS C:\> $fip.Name = "fip1"
-	PS C:\> $fip.Type = "Private"
-	PS C:\> $fip.StaticIPAddress = "10.0.0.5"
+	$fip = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration
+	$fip.Name = "fip1"
+	$fip.Type = "Private"
+	$fip.StaticIPAddress = "10.0.0.5"
 
 次の例で示すように、フロントエンド ポートを作成します。
 
-	PS C:\> $fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
-	PS C:\> $fep.Name = "fep1"
-	PS C:\> $fep.Port = 80
+	$fep = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort
+	$fep.Name = "fep1"
+	$fep.Port = 80
 
 バックエンド サーバー プールを作成します。
 
  次の例で示すように、バックエンド サーバー プールに追加する IP アドレスを定義します。
 
 
-	PS C:\> $servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
-	PS C:\> $servers.Add("10.0.0.1")
-	PS C:\> $servers.Add("10.0.0.2")
+	$servers = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendServerCollection
+	$servers.Add("10.0.0.1")
+	$servers.Add("10.0.0.2")
 
  $server オブジェクトを使用して、バックエンド プール オブジェクト ($pool) に値を追加します。
 
-	PS C:\> $pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
-	PS C:\> $pool.BackendServers = $servers
-	PS C:\> $pool.Name = "pool1"
+	$pool = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool
+	$pool.BackendServers = $servers
+	$pool.Name = "pool1"
 
 バックエンド サーバー プール設定を作成します。
 
-	PS C:\> $setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
-	PS C:\> $setting.Name = "setting1"
-	PS C:\> $setting.CookieBasedAffinity = "enabled"
-	PS C:\> $setting.Port = 80
-	PS C:\> $setting.Protocol = "http"
+	$setting = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings
+	$setting.Name = "setting1"
+	$setting.CookieBasedAffinity = "enabled"
+	$setting.Port = 80
+	$setting.Protocol = "http"
 
 リスナーを作成します。
 
-	PS C:\> $listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
-	PS C:\> $listener.Name = "listener1"
-	PS C:\> $listener.FrontendPort = "fep1"
-	PS C:\> $listener.FrontendIP = "fip1"
-	PS C:\> $listener.Protocol = "http"
-	PS C:\> $listener.SslCert = ""
+	$listener = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener
+	$listener.Name = "listener1"
+	$listener.FrontendPort = "fep1"
+	$listener.FrontendIP = "fip1"
+	$listener.Protocol = "http"
+	$listener.SslCert = ""
 
 ルールを作成します。
 
-	PS C:\> $rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
-	PS C:\> $rule.Name = "rule1"
-	PS C:\> $rule.Type = "basic"
-	PS C:\> $rule.BackendHttpSettings = "setting1"
-	PS C:\> $rule.Listener = "listener1"
-	PS C:\> $rule.BackendAddressPool = "pool1"
+	$rule = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule
+	$rule.Name = "rule1"
+	$rule.Type = "basic"
+	$rule.BackendHttpSettings = "setting1"
+	$rule.Listener = "listener1"
+	$rule.BackendAddressPool = "pool1"
 
 ### 手順 2.
 
@@ -292,34 +280,34 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 フロントエンド IP を構成に追加します。
 
-	PS C:\> $appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
-	PS C:\> $appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]"
-	PS C:\> $appgwconfig.FrontendIPConfigurations.Add($fip)
+	$appgwconfig = New-Object Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.ApplicationGatewayConfiguration
+	$appgwconfig.FrontendIPConfigurations = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendIPConfiguration]"
+	$appgwconfig.FrontendIPConfigurations.Add($fip)
 
 フロントエンド ポートを構成に追加します。
 
-	PS C:\> $appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
-	PS C:\> $appgwconfig.FrontendPorts.Add($fep)
+	$appgwconfig.FrontendPorts = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.FrontendPort]"
+	$appgwconfig.FrontendPorts.Add($fep)
 
 バックエンド サーバー プールを構成に追加します。
 
-	PS C:\> $appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
-	PS C:\> $appgwconfig.BackendAddressPools.Add($pool)  
+	$appgwconfig.BackendAddressPools = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendAddressPool]"
+	$appgwconfig.BackendAddressPools.Add($pool)  
 
 バックエンド プールの設定を構成に追加します。
 
-	PS C:\> $appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
-	PS C:\> $appgwconfig.BackendHttpSettingsList.Add($setting)
+	$appgwconfig.BackendHttpSettingsList = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.BackendHttpSettings]"
+	$appgwconfig.BackendHttpSettingsList.Add($setting)
 
 リスナーを構成に追加します。
 
-	PS C:\> $appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
-	PS C:\> $appgwconfig.HttpListeners.Add($listener)
+	$appgwconfig.HttpListeners = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpListener]"
+	$appgwconfig.HttpListeners.Add($listener)
 
 ルールを構成に追加します。
 
-	PS C:\> $appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
-	PS C:\> $appgwconfig.HttpLoadBalancingRules.Add($rule)
+	$appgwconfig.HttpLoadBalancingRules = New-Object "System.Collections.Generic.List[Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model.HttpLoadBalancingRule]"
+	$appgwconfig.HttpLoadBalancingRules.Add($rule)
 
 ### 手順 3.
 
@@ -331,10 +319,7 @@ Application Gateway の構成オブジェクト ($appgwconfig) にすべての�
 
 ゲートウェイを構成したら、**Start-AzureApplicationGateway** コマンドレットを使用してゲートウェイを起動します。Application Gateway の課金は、ゲートウェイが正常に起動された後に開始します。
 
-
 > [AZURE.NOTE] **Start-AzureApplicationGateway** コマンドレットは、終了までに最大で 15 ～ 20 分かかる場合があります。
-
-
 
 	Start-AzureApplicationGateway AppGwTest
 
@@ -415,4 +400,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

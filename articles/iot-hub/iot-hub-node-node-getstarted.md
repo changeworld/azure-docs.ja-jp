@@ -48,7 +48,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     npm init
     ```
 
-2. コマンド プロンプトで、**createdeviceidentity** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** パッケージをインストールします。
+2. コマンド プロンプトで、**createdeviceidentity** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** Service SDK パッケージをインストールします。
 
     ```
     npm install azure-iothub --save
@@ -108,7 +108,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 
 ## デバイスからクラウドへのメッセージの受信
 
-このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Node.js コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを規模を拡大して処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに適用されます。
+このセクションでは、IoT Hub からのデバイスからクラウドへのメッセージを読み込む Node.js コンソール アプリケーションを作成します。Iot Hub は、デバイスからクラウドへのメッセージを読み取るための、[Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub の Event Hubs と互換性のあるエンドポイントに適用されます。
 
 > [AZURE.NOTE] 常に、Event Hubs と互換性のあるエンドポイントは、デバイスからクラウドへのメッセージを読み取るために AMQPS プロトコルを使用します。
 
@@ -184,7 +184,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     npm init
     ```
 
-2. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device-amqp** パッケージをインストールします。
+2. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** Device SDK パッケージと **azure-iot-device-amqp** パッケージをインストールします。
 
     ```
     npm install azure-iot-device azure-iot-device-amqp --save
@@ -272,7 +272,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 
     ![][8]
 
-3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、Hub に送信されたメッセージ数が表示されます。
+3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
 
     ![][43]
 
@@ -312,4 +312,4 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->
