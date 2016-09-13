@@ -107,8 +107,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 その結果をクリックしてポータルで評価し、失敗した理由をご確認ください。
 
-![Web テスト実行結果  
-](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
+![Web テスト実行結果](./media/app-insights-monitor-web-app-availability/18-availDetails.png)
 
 
 代わりに、結果ファイルをダウンロードして Visual Studio で詳しく調べることもできます。

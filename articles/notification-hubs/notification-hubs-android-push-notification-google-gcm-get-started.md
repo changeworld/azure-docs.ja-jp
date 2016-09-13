@@ -231,7 +231,7 @@
 		                regID = hub.register(token).getRegistrationId();
 
 		                // If you want to use tags...
-						// Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
+						// Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
 
 		                resultString = "Registered Successfully - RegId : " + regID;
@@ -621,7 +621,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/ja-JP/documentation/articles/notification-hubs-routing-tag-expressions/
+	                        // Refer to : https://azure.microsoft.com/documentation/articles/notification-hubs-routing-tag-expressions/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
