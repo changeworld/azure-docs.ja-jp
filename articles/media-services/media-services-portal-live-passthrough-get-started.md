@@ -13,14 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article"
-	ms.date="08/30/2016" 
+	ms.date="09/05/2016" 
 	ms.author="juliako"/>
 
 
 #Azure ポータルを使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 
-このチュートリアルでは、Azure ポータルを使用して、パススルー配信用に構成された**チャネル**を作成する手順を紹介します。
+> [AZURE.SELECTOR]
+- [ポータル](media-services-portal-live-passthrough-get-started.md)
+- [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+- [REST ()](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
+このチュートリアルでは、Azure ポータルを使用して、パススルー配信用に構成された**チャネル**を作成する手順を紹介します。
 
 ##前提条件
 
@@ -73,12 +77,13 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 ##ストリーミング エンドポイントの構成 
 
-Media Services には動的パッケージ化機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。動的パッケージ化機能を使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
+Media Services にはダイナミック パッケージが用意されており、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
 動的パッケージ化機能を活用するには、コンテンツの配信元となるストリーミング エンドポイントのストリーミング ユニットを 1 つ以上取得する必要があります。
 
 ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
 
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。
 
 2. 既定のストリーミング エンドポイントをクリックします。
@@ -87,7 +92,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 3. ストリーミング ユニットの数を指定するには、**[ストリーミング ユニット]** のスライダーを動かします。
 
-	![ストリーミング ユニット](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
+	![ストリーミング ユニット](./media/media-services-portal-passthrough-get-started/media-services-streaming-units.png)
 
 4. **[保存]** をクリックして、変更を保存します。
 
@@ -132,9 +137,13 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 	これで、RTMP 取り込みプロトコルを備えたパススルー チャネルが作成されます。
 
-	このチャネルでは、既定のライブ イベントまたはライブ プログラムの追加、開始、発行も行われます。このイベントは、アーカイブ ウィンドウが 8 時間に設定されています。
+##イベントの作成
 
-	さらにイベントを追加するには、**[ライブ イベント]** ボタンをクリックします。
+1. イベントを追加するチャネルを選択します。
+2. **[ライブ イベント]** をクリックします。
+
+![イベント](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
+
 
 ##取り込み URL の取得
 
@@ -142,13 +151,13 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 ![作成日時](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
-##イベントを視聴する
+##イベントの視聴
 
 イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。
  
 ![作成日時](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-ライブ イベントは、停止すると自動的にオンデマンド コンテンツに変換されます。
+ライブ イベントは、停止するとオンデマンド コンテンツに自動的に変換されます。
 
 ##クリーンアップ
 
@@ -165,7 +174,9 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 ![資産](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
-##Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -173,4 +184,4 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

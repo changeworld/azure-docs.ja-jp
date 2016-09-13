@@ -3,7 +3,7 @@
    description="Power BI Embedded、対話型の Power BI レポートをビジネス インテリジェンス アプリケーションに追加する"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Microsoft Power BI Embedded の概要
 
@@ -101,4 +101,4 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 - [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 - [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

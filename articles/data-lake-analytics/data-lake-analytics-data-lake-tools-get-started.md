@@ -34,14 +34,14 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 
     Data Lake Tools for Visual Studio をインストールすると、サーバー エクスプローラーの "Azure" ノードに "Data Lake Analytics" ノードが表示されます (サーバー エクスプローラーを表示するには Ctrl + Alt + S を押します)。
 
-- **「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションを進めます**。
+- **「[Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の次の 2 つのセクションを進めます**。
 
 	- [Azure Data Lake Analytics アカウントの作成](data-lake-analytics-get-started-portal.md#create_adl_analytics_account)
 	- [既定の Data Lake ストレージ アカウントへの SearchLog.tsv のアップロード](data-lake-analytics-get-started-portal.md#update-data-to-the-default-adl-storage-account)
 
     参考までに、Data Lake Analytic サービスを作成し、ソース データ ファイルをアップロードするための PowerShell サンプル スクリプトについては、「[付録 A: チュートリアルの準備のための PowerShell サンプル](data-lake-analytics-data-lake-tools-get-started.md#appx-a-powershell-sample-for-preparing-the-tutorial)」を参照してください。
 
-	Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure ポータル、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
+	Data Lake Tools では、Data Lake Analytics アカウントの作成はサポートされません。そのため、Azure Portal、Azure PowerShell、.NET SDK、または Azure CLI を使用して作成する必要があります。Data Lake Analytics ジョブを実行するには、いくつかのデータが必要です。Data Lake Tools でデータのアップロードがサポートされていても、このチュートリアルに従いやすくするため、サンプル データのアップロードにはポータルを使用します。
 
 ## Azure への接続
 
@@ -50,7 +50,7 @@ U-SQL は、Data Lake 内のすべてのデータを準備、変換、分析す�
 1. Visual Studio を開きます。
 2. **[ビュー]** メニューで、**[サーバー エクスプローラー]** をクリックして、サーバー エクスプローラーを開きます。または、**Ctrl + Alt + S** キーを押します。
 3. **[Azure]** を右クリックし、[Microsoft Azure サブスクリプションへの接続] をクリックして、指示に従います。
-4. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」をご覧ください。
+4. **サーバー エクスプローラー**で、**[Azure]**、**[Data Lake Analytics]** の順に展開します。Data Lake Analytics アカウントが複数ある場合は、そのリストが表示されます。Visual Studio で Data Lake Analytics アカウントを作成することはできません。アカウントを作成する場合は、「[チュートリアル: Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」または「[チュートリアル: Azure PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)」を参照してください。
 
 ## ソース データ ファイルのアップロード
 
@@ -130,7 +130,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 		カタログ エンティティ (データベース、スキーマ、テーブル、UDO など) に対する IntelliSense は、コンピューティング アカウントと関連付けられています。現在のアクティブなコンピューティング アカウント、データベース、スキーマを上部のツールバーで確認でき、ドロップダウン リストで切り替えることができます。
 
-    - *列の "*展開*"*
+    - *列の "*展開*"**
 
         * の右側をクリックすると、"** の下に青い線*" が表示されます。青い下線にマウス カーソルを合わせて、下矢印をクリックします。 ![Data Lake visual studio tools expand *](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-expand-asterisk.png)
 
@@ -150,7 +150,7 @@ Data Lake Analtyics ジョブは U-SQL 言語で記述されます。U-SQL の�
 
 	- **定義に移動してすべての参照を検索**
 
-		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] \(F12) をクリックすると、その定義に移動できます。[すべての参照の検索] \(Shift + F12) をクリックすると、すべての参照が表示されます。
+		行セット/パラメーター/列/UDO などの名前を右クリックし、[定義へ移動] (F12) をクリックすると、その定義に移動できます。[すべての参照の検索] (Shift + F12) をクリックすると、すべての参照が表示されます。
 
 	- **Azure パスの挿入**
 
@@ -278,9 +278,10 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
 
 さまざまなツールを使用して Data Lake Analytics の使用を開始する方法については、以下をご覧ください。
 
-- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 - [.NET SDK で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
+- [U-SQL ジョブのデバッグ](data-lake-analytics-debug-u-sql-jobs.md)
 
 開発に関するその他のトピックも参照してください。
 
@@ -361,4 +362,4 @@ Azure Data Lake Analytics サービスに提出し、登録しなくても C# �
     Get-AzureRmDataLakeStoreChildItem -Account $dataLakeStoreName -Path  "/Samples/Data/"
     #endregion
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

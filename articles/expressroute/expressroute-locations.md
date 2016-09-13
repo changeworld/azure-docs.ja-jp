@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
+   ms.date="09/07/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -31,7 +31,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|---|
 |**北米**|米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部|アトランタ、シカゴ、ダラス、ラスベガス+、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、ケベックシティ+、トロント|
 |**南アメリカ**|ブラジル南部|サンパウロ|
-|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ|
+|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ、英国西部、英国南部|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
 |**日本**|西日本、東日本|大阪、東京|
 |**オーストラリア**|オーストラリア東部、オーストラリア南東部|メルボルン、シドニー|
@@ -83,7 +83,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **MTN** | サポートされています | サポートされています | ロンドン |
 | **NEXTDC** | サポートされています | サポートされています | メルボルン、シドニー |
 | **NTT Communications** | サポートされています | サポートされています | ロンドン、ロサンゼルス、大阪、東京 |
-| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、ワシントン DC |
+| **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **PCCW Global Limited** | サポートされています | サポートされています | 香港特別行政区 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | サポートされています | サポートされています | シンガポール |
 | **ソフトバンク** | サポートされています | サポートされています | 大阪、東京 | 
@@ -171,4 +171,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

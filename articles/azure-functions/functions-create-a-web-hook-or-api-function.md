@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="05/07/2016"
+   ms.date="08/30/2016"
    ms.author="glenga"/>
    
 # webhook または API Azure Function を作成する
@@ -84,9 +84,9 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 + [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングに関するプログラマ向けリファレンスです。
 + [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
++ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
 
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

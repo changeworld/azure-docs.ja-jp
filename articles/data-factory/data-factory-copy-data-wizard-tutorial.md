@@ -25,7 +25,7 @@
 - [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
 
-このチュートリアルでは、Data Factory コピー ウィザードを使用して、コピー アクティビティがあるパイプラインをデータ ファクトリに作成します。最初に、Azure ポータルを使用してデータ ファクトリを作成し、次に、コピー ウィザードを使用して Data Factory のリンクされたサービス、データセット、およびコピー アクティビティがあるパイプラインを作成します。コピー アクティビティとは、Azure BLOB ストレージから Azure SQL データベースにデータをコピーするアクティビティです。
+このチュートリアルでは、Data Factory コピー ウィザードを使用して、コピー アクティビティがあるパイプラインをデータ ファクトリに作成します。最初に、Azure Portal を使用してデータ ファクトリを作成します。次に、コピー ウィザードを使用して Data Factory のリンクされたサービス、データセット、および Azure BLOB ストレージから Azure SQL データベースにデータをコピーするコピー アクティビティがあるパイプラインを作成します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.IMPORTANT] このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、前提条件の手順を完了してください。
 
@@ -57,7 +57,7 @@
 	> [AZURE.NOTE] データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
-10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
+10. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。
 
     ![データ ファクトリのホーム ページ](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
@@ -106,7 +106,7 @@
 12. **[デプロイメントに成功しました]** ページで、**[Click here to monitor copy pipeline (コピー パイプラインを監視するには、ここをクリックしてください)]** をクリックします。
 
 	![Copy Tool - Deployment succeeded](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)
-13. [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関するページの指示に従って、先ほど作成したパイプラインを監視する方法を確認します。
+13. [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関するページの指示に従って、作成したパイプラインを監視する方法を確認します。
 
 	![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
  
@@ -120,4 +120,4 @@
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

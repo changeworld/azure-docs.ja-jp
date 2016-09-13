@@ -42,8 +42,8 @@ NSG ルールには、次のプロパティが含まれています。
 |**プロトコル**|規則に関して一致するプロトコル|TCP、UDP、または *|* をプロトコルとして使用すると、UDP と TCP に加えて ICMP (East-West トラフィックのみ) も含まれ、必要なルール数を減らすことができます。<br/>一方で、* を使用すると、アプローチの幅が広くなりすぎることがあるため、必要な場合にのみ使用してください。|
 |**発信元ポート範囲**|規則に関して一致するソース ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65635 など)、または * (すべてのポート)|発信元は、短期ポートである場合があります。クライアント プログラムが特定のポートを使用している場合を除き、ほとんどのケースでは "*" を使用してください。<br/>複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
 |**宛先ポート範囲**|規則に関して一致する宛先ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65535 など)、または * (すべてのポート)|複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
-|**発信元アドレスのプレフィックス**|規則に関して一致する発信元アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#Default-Tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
-|**宛先アドレスのプレフィックス**|規則に関して一致する宛先アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#Default-Tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
+|**発信元アドレスのプレフィックス**|規則に関して一致する発信元アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#default-tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
+|**宛先アドレスのプレフィックス**|規則に関して一致する宛先アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#default-tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
 |**方向**|規則に関して一致するトラフィックの方向|受信または送信|受信ルールと送信ルールは方向に基づいて個別に処理されます。|
 |**優先順位**|ルールは優先度の順序でチェックされます。ルールが適用されると、それ以上はルールの一致テストが行われなくなります。|100 ～ 4096 の数値|既存のルールの間に新しいルールを追加する余地を残すために、各ルールの優先度の数値を 100 ずつ飛ばして設定することを検討してください。|
 |**Access (アクセス)**|規則が一致した場合に適用されるアクセスの種類|許可または拒否|パケットに一致する許可ルールが見つからない場合はパケットが削除されることに留意してください。|
@@ -124,13 +124,13 @@ NSG は、使用しているデプロイ モデルに応じて、VM、NIC、お�
 
 |デプロイ ツール|クラシック|リソース マネージャー|
 |---|---|---|
-|クラシック ポータル|![いいえ][red]|![いいえ][red]|
-|Azure ポータル|![はい][green]|[](virtual-networks-create-nsg-arm-pportal.md)![はい][green]|
-|PowerShell|[](virtual-networks-create-nsg-classic-ps.md)![はい][green]|[](virtual-networks-create-nsg-arm-ps.md)![はい][green]|
-|Azure CLI|[](virtual-networks-create-nsg-classic-cli.md)![はい][green]|[](virtual-networks-create-nsg-arm-cli.md)![はい][green]|
-|ARM テンプレート|![いいえ][red]|[](virtual-networks-create-nsg-arm-template.md)![はい][green]|
+|クラシック ポータル|![いいえ](./media/virtual-network-nsg-overview/red.png)|![いいえ](./media/virtual-network-nsg-overview/red.png)|
+|Azure ポータル|![はい](./media/virtual-network-nsg-overview/green.png)|[![はい][green]](virtual-networks-create-nsg-arm-pportal.md)|
+|PowerShell|[![はい][green]](virtual-networks-create-nsg-classic-ps.md)|[![はい][green]](virtual-networks-create-nsg-arm-ps.md)|
+|Azure CLI|[![はい][green]](virtual-networks-create-nsg-classic-cli.md)|[![はい][green]](virtual-networks-create-nsg-arm-cli.md)|
+|ARM テンプレート|![いいえ](./media/virtual-network-nsg-overview/red.png)|[![はい][green]](virtual-networks-create-nsg-arm-template.md)|
 
-|**キー**|![はい][green] サポートされています。クリックして記事を確認してください。|![いいえ][red] サポートされていません。|
+|**キー**|![はい](./media/virtual-network-nsg-overview/green.png) サポートされています。|![いいえ](./media/virtual-network-nsg-overview/red.png) サポートされていません。|
 |---|---|---|
 
 ## 計画
@@ -282,4 +282,4 @@ NSG はサブネットに適用できるため、リソースをサブネット�
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

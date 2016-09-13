@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
+   ms.date="09/07/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -31,7 +31,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 |---|---|---|
 |**北米**|米国東部、米国西部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、カナダ東部|アトランタ、シカゴ、ダラス、ラスベガス、ロサンゼルス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC、モントリオール+、ケベックシティ+、トロント|
 |**南アメリカ**|ブラジル南部|サンパウロ|
-|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ|
+|**ヨーロッパ**|北ヨーロッパ、西ヨーロッパ、英国西部、英国南部|アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)+、パリ|
 |**アジア**|東アジア、東南アジア|香港、シンガポール|
 |**日本**|西日本、東日本|大阪、東京|
 |**オーストラリア**|オーストラリア東部、オーストラリア南東部|メルボルン、シドニー|
@@ -80,7 +80,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シアトル** | Equinix、Level 3 Communications、Megaport |
 | **シリコン バレー** | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Equinix、Level 3 Communications、Orange、Tata Communications、Verizon、Zayo Group |
 | **シンガポール** | Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Megaport、Orange、SingTel、Tata Communications、Verizon |
-| **シドニー** | AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Telstra Corporation、Verizon |
+| **シドニー** | AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
 | **東京** | Aryaka Networks、British Telecom、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、Softbank、Verizon |
 | **トロント** | Cologix、Equinix、Zayo Group |
 | **ワシントン DC** | Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Equinix、InterCloud、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
@@ -156,4 +156,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

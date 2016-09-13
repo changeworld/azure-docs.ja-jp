@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights を使用した ASP.NET の Web アプリ分析を設定する" 
+	pageTitle="Application Insights を使用した ASP.NET の Web アプリ分析を設定する | Microsoft Azure" 
 	description="オンプレミスまたは Azure でホストされている ASP.NET Web サイトのパフォーマンス、可用性、利用状況の分析を構成します。" 
 	services="application-insights" 
     documentationCenter=".net"
@@ -117,17 +117,17 @@ Application Insights によって、アプリのテレメトリが (Microsoft Az
 2. [Azure ポータル](https://portal.azure.com/)で、Application Insights のリソースを作成する。ここにデータが表示されます。リソースを識別する*インストルメンテーション キー*を取得します。
 3. `ApplicationInsights.config` にインストルメンテーション キーを挿入し、SDK がポータルにテレメトリを送信できるようにする。
 
-必要な場合は、[ASP.NET 4](app-insights-asp-net-manual.md) または [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) 向けにこれらの手順を手動で実行することもできます。
+必要な場合は、[ASP.NET 4](app-insights-windows-services.md) または [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started) 向けにこれらの手順を手動で実行することもできます。
 
 ### 新しいバージョンの SDK にアップグレードするには
 
-[SDK の新しいリリース](app-insights-release-notes-dotnet.md)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
+[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。[Microsoft.ApplicationInsights.Web]、[アップグレード] の順に選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
 
 
-## 次の手順
+## 次のステップ
 
 | | 
 |---|---
@@ -135,4 +135,4 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 |**[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-asp-net/62.png)
 |**[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-asp-net/64.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

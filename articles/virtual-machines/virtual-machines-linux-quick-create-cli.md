@@ -19,8 +19,6 @@
 
 # CLI を使用した Azure での Linux VM の作成
 
-> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの品質向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
-
 この記事では、Azure CLI の `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシンをすばやくデプロイする方法を説明します。`quick-create` コマンドを使用すると、VM が基本的なインフラストラクチャと共にデプロイされます。この VM を使用して、概念のプロトタイピングやテストを短時間で行うことができます。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) のほか、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化 (`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して Linux VM を短時間でデプロイすることもできます。
 
 ## クイック コマンドの概要
@@ -170,4 +168,4 @@ Warning: Permanently added 'rhel-westu-1630678171-pip.westus.cloudapp.azure.com,
 - [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md)
 - [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

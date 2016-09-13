@@ -5,7 +5,7 @@
    documentationCenter="na"
    services="application-gateway"
    authors="georgewallace"
-   manager="jdial"
+   manager="carmonm"
    editor="tysonn"/>
 <tags
    ms.service="application-gateway"
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/06/2016"
    ms.author="gwallace"/>
 
 
@@ -28,12 +28,9 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 - [Azure CLI](application-gateway-create-gateway-cli.md)
 
-<BR>
-
 GitHub から既存の Azure Resource Manager テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
 GitHub から直接 Azure リソース マネージャー テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
-
 
 ## シナリオ
 
@@ -46,15 +43,11 @@ GitHub から直接 Azure リソース マネージャー テンプレートを�
 
 >[AZURE.NOTE] これらの設定は、このテンプレートのパラメーターです。テンプレートをカスタマイズするには、azuredeploy.json を開くルール、リスナー、SSL を変更できます。
 
-
-
 ![シナリオ](./media/application-gateway-create-gateway-arm-template/scenario-arm.png)
-
-
 
 ## Azure リソース マネージャー テンプレートのダウンロードと理解
 
-GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。再利用するには、次の手順に従ってください。
+GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。そのためには、次の手順を実行してください。
 
 1. [[アプリケーション ゲートウェイの作成]](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-create) に移動します。
 2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
@@ -89,29 +82,29 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 10. 保存したファイルを開き、パラメーターの値を編集します。次の値を使用して、このシナリオで説明したアプリケーション ゲートウェイをデプロイします。
 
 		{
-		  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+		"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 		{
-    	"location" : {
-        "value" : "West US"
-    	},
-    	"addressPrefix": {
-        "value": "10.0.0.0/16"
-    	},
-    	"subnetPrefix": {
-        "value": "10.0.0.0/24"
-    	},
-    	"skuName": {
-        "value": "Standard_Small"
-    	},
-    	"capacity": {
-        "value": 2
-    	},
-    	"backendIpAddress1": {
-        "value": "10.0.1.10"
-    	},
-    	"backendIpAddress2": {
-        "value": "10.0.1.11"
-    	}
+		"location" : {
+		"value" : "West US"
+		},
+		"addressPrefix": {
+		"value": "10.0.0.0/16"
+		},
+		"subnetPrefix": {
+		"value": "10.0.0.0/24"
+		},
+		"skuName": {
+		"value": "Standard_Small"
+		},
+		"capacity": {
+		"value": 2
+		},
+		"backendIpAddress1": {
+		"value": "10.0.1.10"
+		},
+		"backendIpAddress2": {
+		"value": "10.0.1.11"
+		}
 		}
 
 11. ファイルを保存します。[JSlint.com](http://www.jslint.com/) などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
@@ -123,8 +116,6 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 ### 手順 1
 
 	Login-AzureRmAccount
-
-
 
 ### 手順 2.
 
@@ -145,47 +136,14 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 ### 手順 4.
 
 
-必要に応じて、**New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。以下の例では、米国東部に AppgatewayRG という名前のリソース グループを新しく作成します。
+必要に応じて、**New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
 
 	New-AzureRmResourceGroup -Name AppgatewayRG -Location "East US"
-
-		ResourceGroupName : AppgatewayRG
-		Location          : eastus
-		ProvisioningState : Succeeded
-		Tags              :
-		Permissions       :
-	                 Actions  NotActions
-	                 =======  ==========
-	                  *
-
-		ResourceId        : /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourceGroups/AppgatewayRG
 
 **New-AzureRmResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
 
 	New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
  		-TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
-
-コマンド ラインで生成される出力は、以下のとおりです。
-
-	DeploymentName    : testappgatewaydeployment
-	ResourceGroupName : appgatewayRG
-	ProvisioningState : Succeeded
-	Timestamp         : 9/19/2015 1:49:41 AM
-	Mode              : Incremental
-	TemplateLink      :
-	Parameters        :
-				Name             Type                       Value
-				===============  =========================  ==========
-				location         String                     East US
-				addressPrefix    String                     10.0.0.0/16
-				subnetPrefix     String                     10.0.0.0/24
-				skuName          String                     Standard_Small
-				capacity         Int                        2
-				backendIpAddress1  String                     10.0.1.10
-				backendIpAddress2  String                     10.0.1.11
-
-	Outputs           :
-
 
 ## Azure CLI を使用した Azure リソース マネージャー テンプレートのデプロイ
 
@@ -220,44 +178,13 @@ Azure CLI を初めて使用する場合は、[Azure CLI のインストール�
 
 	azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
 
-上記のコマンドで想定される出力を次に示します。
-
-	azure group deployment create -g appgatewayRG -n TestAppgatewayDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
-	info:    Executing command group deployment create
-	+ Initializing template configurations and parameters
-	+ Creating a deployment
-	info:    Created template deployment "TestAppgatewayDeployment"
-	+ Waiting for deployment to complete
-	data:    DeploymentName     : TestAppgatewayDeployment
-	data:    ResourceGroupName  : appgatewayRG
-	data:    ProvisioningState  : Succeeded
-	data:    Timestamp          : 2015-09-21T20:50:27.5129912Z
-	data:    Mode               : Incremental
-	data:    Name               Type    Value
-	data:    -----------------  ------  --------------
-	data:    location           String  East US
-	data:    addressPrefix      String  10.0.0.0/16
-	data:    subnetPrefix       String  10.0.0.0/24
-	data:    skuName            String  Standard_Small
-	data:    capacity           Int     2
-	data:    backendIpAddress1  String  10.0.1.10
-	data:    backendIpAddress2  String  10.0.1.11
-	info:    group deployment create command OK
-
-**-g (または --resource-group)**。新しい仮想ネットワークを作成するリソース グループの名前です。
-
-**-f (または --template-file)**。Azure リソース マネージャー テンプレート ファイルへのパスです。
-
-**-e (または--parameters-file)**。Azure リソース マネージャー パラメーター ファイルへのパスです。
-
 ## "クリックしてデプロイ" を使用した Azure リソース マネージャー テンプレートのデプロイ
 
 "クリックしてデプロイ" は、Azure リソース マネージャー テンプレートを使用するもう 1 つの方法です。これは、Azure ポータルでテンプレートを使用する簡単な方法です。
 
-
 ### 手順 1
-「[Create an Application Gateway with Public IP (パブリック IP でのアプリケーション ゲートウェイの作成)](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
 
+「[Create an Application Gateway with Public IP (パブリック IP でのアプリケーション ゲートウェイの作成)](https://azure.microsoft.com/documentation/templates/101-application-gateway-public-ip/)」に移動します。
 
 ### 手順 2.
 
@@ -279,8 +206,6 @@ Azure CLI を初めて使用する場合は、[Azure CLI のインストール�
 
 [カスタム デプロイ] ブレードで、**[作成]** をクリックします。
 
-
-
 ## 次のステップ
 
 SSL オフロードを構成する場合は、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
@@ -292,4 +217,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -3,7 +3,7 @@
    description="Power BI Embedded は、JavaScript API を使用してレポートと対話します。"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="jocaplan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="08/26/2016"
-   ms.author="jocaplan"/>
+   ms.author="mblythe"/>
 
 # JavaScript API を使った Power BI レポートの対話操作
 
@@ -137,4 +137,4 @@ Power BI JavaScript API の詳細については、次のリンク先を確認�
   - [Ember](https://github.com/Microsoft/powerbi-ember)
 - [ライブ デモ](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

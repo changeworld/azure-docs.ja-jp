@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="09/06/2016"
+   ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse に対するクエリ (sqlcmd)
 
@@ -32,9 +32,12 @@
 
 + **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
 + **データベース (-d):** データベース名。
++ **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
+
+SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。
+
 + **ユーザー (-U):** サーバーのユーザー。`<`User`>` の形式で指定します
 + **パスワード (-P):** ユーザーに関連付けられているパスワード。
-+ **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
 
 たとえば、接続文字列は次のようになります。
 
@@ -42,7 +45,17 @@
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-> [AZURE.NOTE] 現在、SQL Data Warehouse に接続するには、引用符で囲まれた識別子を有効にする -I オプションが必要になります。
+Azure Active Directory 統合認証を使用するには、Azure Active Directory パラメーターを追加する必要があります。
+
++ **Azure Active Directory Authentication (-G):** Azure Active Directory を認証に使用します。
+
+たとえば、接続文字列は次のようになります。
+
+```sql
+C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
+```
+
+> [AZURE.NOTE] Active Directory を使用して認証を行うには、[Azure Active Directory 認証を有効にする](sql-data-warehouse-authentication.md)必要があります。
 
 ## 手順 2.クエリ
 
@@ -79,4 +92,4 @@ sqlcmd で使用可能なオプションの詳細については、[sqlcmd に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

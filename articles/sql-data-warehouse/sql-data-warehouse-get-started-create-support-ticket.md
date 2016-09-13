@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
-   ms.author="sonyam;barbkess;sonyama"/>
+   ms.date="09/01/2016"
+   ms.author="sonyama;barbkess"/>
 
 # SQL Data Warehouse のサポート チケットを作成する方法
  
@@ -38,17 +38,17 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 
     ![要求の種類](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
     
-    >[AZURE.NOTE]  既定では、各 SQL Server (myserver.database.windows.net など) の **DTU クォータ**は 45,000 に設定されています。このクォータは単に安全上の制限です。サポート チケットを作成し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。実際に必要な DTU を計算する場合は、100 [DWU][] の SQL Data Warehouse ごとに 750 DTU が消費される、ということを覚えておいてください。そのため、既定のクォータ (45,000) で作成できるのは DW6000 (45,000 / 750) か、それよりも DWU の低い、いくつかの小さいデータベースとなります。たとえば、2 つの DW6000 を 1 つの SQL Server でホストする場合、90,000 の DTU クォータを要求する必要があります。現在の DTU 消費量は、ポータルの [SQL Server] ブレードから確認できます。DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。
+    >[AZURE.NOTE]  既定では、各 SQL Server (myserver.database.windows.net など) の **DTU クォータ**は 45,000 に設定されています。このクォータは単に安全上の制限です。サポート チケットを作成し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。実際に必要な DTU を計算するには、必要とされる [DWU][] の合計に 7.5 を掛けます。たとえば、2 つの DW6000 を 1 つの SQL Server でホストする場合、90,000 の DTU クォータを要求する必要があります。現在の DTU 消費量は、ポータルの [SQL Server] ブレードから確認できます。DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。
 
 5. 報告する問題が発生しているデータベースをホストしている **[サブスクリプション]** を選択します。
 
-    ![[サブスクリプション]](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
+    ![サブスクリプション](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
 
 6. [リソース] として **[SQL Data Warehouse]** を選択します。
 
     ![リソース](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 
-7. [Azure サポート プラン][Azure support plan] を選択します。
+7. [[Azure サポート プラン]][] を選択します。
 
     - **課金、クォータ、サブスクリプション管理**のサポートは、すべてのサポート レベルでご利用いただけます。
     - **障害対応**のサポートは、[Developer][] サポート、[Standard][] サポート、[Professional Direct][] サポート、[Premier][] サポートにより提供されます。障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
@@ -93,7 +93,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 <!--Other web references--> 
 [Azure ポータル]: https://portal.azure.com/
 [Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
-[Azure サポート プラン]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[[Azure サポート プラン]]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
 [Developer]: https://azure.microsoft.com/support/plans/developer/
 [Standard]: https://azure.microsoft.com/support/plans/standard/
 [Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/
@@ -103,4 +103,4 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!--------HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

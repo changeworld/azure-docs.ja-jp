@@ -1,259 +1,162 @@
-<properties 
-	pageTitle="Windows サービス用の Application Insights" 
-	description="Application Insights で Windows バックグラウンド サービスの使用状況とパフォーマンスを分析します。" 
-	services="application-insights" 
-    documentationCenter="windows"
-	authors="alancameronwills" 
+<properties
+	pageTitle="Windows サービスと worker ロールのための Application Insights | Microsoft Azure"
+	description="Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
+	services="application-insights"
+    documentationCenter=".net"
+	authors="alancameronwills"
 	manager="douge"/>
 
-<tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2016" 
+<tags
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/30/2016"
 	ms.author="awills"/>
 
-# Windows バックグラウンド サービスでの Application Insights
+
+# Application Insights を ASP.NET 4 アプリケーション用に手動で構成する
 
 *Application Insights はプレビュー段階です。*
 
-[Visual Studio Application Insights](app-insights-get-started.md) を使用すると、デプロイされたアプリケーションの使用状況とパフォーマンスを監視できます。
+[AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
-バックグラウンド サービス、worker ロールなどの Windows アプリケーションはすべて、Application Insights SDK を使用して、Application Insights にテレメトリを送信します。クラス ライブラリ プロジェクトに SDK を追加することもできます。
+[Visual Studio Application Insights](app-insights-overview.md) を手動で構成して、Windows サービス、worker ロール、およびその他の ASP.NET アプリケーションを監視できます。Web アプリの場合、手動による構成は、Visual Studio で提供される[自動セットアップ](app-insights-asp-net.md)に代わる方法となります。
 
-(たとえば、パフォーマンス カウンターまたは依存関係の呼出しを監視するために) どの標準データ コレクターを選択するか、単にコア API を使用して、独自のテレメトリを記述できます。
+Application Insights は、実行中のアプリケーションの問題を診断したり、パフォーマンスと使用状況を監視したりするのに役立ちます。
 
-まず、別の種類の Windows アプリケーションを使用しているかどうかを確認します。
-
-* Web アプリ: [ASP.NET 4](app-insights-asp-net.md)、[ASP.NET 5](app-insights-asp-net-five.md) に移動します。
-* [Azure Cloud Services](app-insights-cloudservices.md)
-* デスクトップ アプリ: [HockeyApp](https://hockeyapp.net) をお勧めします。HockeyApp を使用すると、配布、ライブ テスト、ユーザーからのフィードバックの管理だけでなく、使用状況とクラッシュ レポートの監視も行うことができます。また、[デスクトップ アプリからテレメトリを Application Insights に送信する](app-insights-windows-desktop.md)こともできます。 
+![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
 
-## <a name="add"></a>Application Insights リソースの作成
+#### 開始する前に
+
+必要なもの:
+
+* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+* Visual Studio 2013 以降
 
 
-1.  [Azure ポータル][portal]で、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET アプリを選択します。 
 
-    ![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new.png)
+## <a name="add"></a>1.Application Insights リソースの作成
 
+[Azure ポータル](https://portal.azure.com/)にサインインし、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET を選択します。
 
-2.  インストルメンテーション キーをコピーします。先ほど作成した新しいリソースの [要点] ボックスの一覧で、キーを探します。アプリケーション マップを閉じるか、左側にあるリソースの概要ブレードまでスクロールします。
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
 
-    ![Click Essentials, select the key, and press ctrl+C](./media/app-insights-windows-services/10.png)
+Azure の[リソース](app-insights-resources-roles-access-control.md)は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
-## <a name="sdk"></a>アプリケーションでの SDK のインストール
+アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示されるプロパティが設定されます。
 
+#### インストルメンテーション キーのコピー
 
-1. Visual Studio で、Windows アプリケーション プロジェクトの NuGet パッケージを編集します。
+これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
+
+![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
+
+新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。これで、データをリソースに送信できます。
+
+## <a name="sdk"></a>2.アプリケーションに SDK をインストールする
+
+Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。ASP.NET アプリの場合は簡単です。
+
+1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
 
     ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-services/03-nuget.png)
 
-2. Application Insights Windows Server パッケージである Microsoft.ApplicationInsights.WindowsServer をインストールします。
+2. Web Apps 向け Application Insights SDK をインストールします。
 
-    !["Application Insights" の検索](./media/app-insights-windows-services/04-ai-nuget.png)
+    ![Search for "Application Insights"](./media/app-insights-windows-services/04-ai-nuget.png)
 
     *他のパッケージを使用することができますか。*
 
     はい。独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。
 
+#### 新しいバージョンの SDK にアップグレードするには
 
-3. InstrumentationKey を設定します。
+SDK の新しいバージョンは不定期でリリースされます。
 
-    * コア API パッケージ Microsoft.ApplicationInsights のみをインストールする場合は、コードにキーを設定する必要があります。たとえば、main() で次のように設定します。 
+[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。**[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
 
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *your key* `";`
-
-    その他のパッケージの 1 つをインストールした場合は、コードを使用してキーを設定するか、ApplicationInsights.config 内でキーを設定します。
- 
-    `<InstrumentationKey>`*your key*`</InstrumentationKey>`
-
-    ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy** に設定されていることを確認します。
-
-## <a name="telemetry"></a>テレメトリの呼び出しの挿入
-
-テレメトリを送信するには、[Application Insights API][api] のいずれかを使用します。コア API を使用している場合、テレメトリは自動的に送信されません。通常は次のものを使用します。
-
-* `TrackPageView(pageName)` は、フォーム、ページ、またはタブを切り替えるために使用する。
-* `TrackEvent(eventName)` は、他のユーザー アクションに使用する。
-* `TrackMetric(name, value)` は、特定のイベントにアタッチされていないメトリックスの定期的なレポートを送信する場合にバックグラウンド タスクで使用する。
-* `TrackTrace(logEvent)` は、[診断ログ][diagnostic]に使用する。
-* `TrackException(exception)` は catch 句に使用する。
-* `Flush()` は、アプリを終了する前にすべてのテレメトリを確実に送信するために使用する。これは、コア API (Microsoft.ApplicationInsights) を使用する場合に限られます。Web SDK では、この動作が自動的に実装されます(インターネットが常に利用できるとは限らないコンテキストでアプリが実行される場合は、[永続化チャネル](#persistence-channel)に関するページも参照してください。)
+ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
 
 
-#### テレメトリの初期化子
+## 3\.テレメトリを送信する
 
-ユーザーとセッションの数を表示するために、各 `TelemetryClient` インスタンスに値を設定できます。または、テレメトリの初期化子を使用して、この加算をすべてのクライアントに対して実行することもできます。
 
-```C#
+**コア API パッケージのみをインストールしている場合:**
 
-    class UserSessionInitializer : ITelemetryInitializer
-    {
-        public void Initialize(ITelemetry telemetry)
-        {
-            telemetry.Context.User.Id = Environment.UserName;
-            telemetry.Context.Session.Id = Guid.NewGuid().ToString();
-        }
-        
-    }
+* コードでインストルメンテーション キーを設定します (たとえば、`main()` 内)。
 
-    static class Program
-    {
-        ...
-        static void Main()
-        {
-            TelemetryConfiguration.Active.TelemetryInitializers.Add(
-                new UserSessionInitializer());
-            ...
+    `TelemetryConfiguration.Active.InstrumentationKey = "`<*自分のキー*>`";`
 
-```
+* [API を使用して独自のテレメトリを記述](app-insights-api-custom-events-metrics.md#ikey)します。
+
+
+**他の Application Insights パッケージをインストールしている場合**、必要に応じて .config ファイルを使用してインストルメンテーション キーを設定します。
+
+* (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+
+    `<InstrumentationKey>` *コピーしたインストルメンテーション キー* `</InstrumentationKey>`
+
+* ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]** に設定されていることを確認します。
 
 
 
-## <a name="run"></a>プロジェクトの実行
 
-[F5 キーを押してアプリケーションを実行](http://msdn.microsoft.com/library/windows/apps/bg161304.aspx)し、これを使用してテレメトリを生成します。
+## <a name="run"></a> プロジェクトの実行
+
+**F5** キーを使用してアプリケーションを実行して、試します。さまざまなページを開いて、いくつかのテレメトリを生成します。
 
 Visual Studio で、送信されたイベント数が表示されます。
 
-![](./media/app-insights-windows-services/appinsights-09eventcount.png)
+![Event count in Visual Studio](./media/app-insights-windows-services/appinsights-09eventcount.png)
 
-イベントは診断および出力のウィンドウにも表示されます。
+## <a name="monitor"></a> 利用統計情報を表示する
 
-## <a name="monitor"></a>監視データの表示
-
-Azure ポータルで、アプリケーションのブレードに戻ります。
-
-最初のイベントが、[ライブ メトリックス ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) ウィンドウに表示されます。
+[Azure ポータル](https://portal.azure.com/)に戻り、Application Insights のリソースを参照します。
 
 
-## 永続化チャネル 
+Look for data in the Overview charts.最初、1 つまたは 2 つのポイントだけが表示されます。For example:
 
-インターネット接続が常に利用できるとは限らない状況または速度が遅い状況でアプリが実行される場合は、既定のメモリ内チャネルの代わりに永続化チャネルの使用を検討してください。
+![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
 
-既定のメモリ内チャネルでは、アプリが終了するまでに送信されなかったテレメトリは失われます。`Flush()` を使用してバッファーに残っているデータを送信できますが、インターネット接続がない場合、または送信が完了する前にアプリがシャットダウンした場合、データは失われます。
+任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。](app-insights-web-monitor-performance.md)
 
-これに対し、永続化チャネルでは、テレメトリはファイル内でバッファー処理されてからポータルに送信されます。`Flush()` によってデータは確実にファイルに格納されます。アプリが終了するまでに送信されなかったデータはファイル内に保持されます。アプリを再起動したときにインターネット接続がある場合、そのデータは送信されます。接続が利用可能になるまでは、データは、必要である期間だけファイル内に蓄積されます。
+#### データが表示されない場合
 
-### 永続化チャネルを使用するには
+* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
+* 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
+* [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
 
-1. NuGet パッケージ [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/1.2.3) をインポートします。
-2. アプリの適切な初期化の場所に、このコードを含めます。
- 
-    ```C# 
+## アプリケーションの発行
 
-      using Microsoft.ApplicationInsights.Channel;
-      using Microsoft.ApplicationInsights.Extensibility;
-      ...
+ここで、アプリケーションをサーバーまたは Azure にデプロイし、データ累積を確認します。
 
-      // Set up 
-      TelemetryConfiguration.Active.InstrumentationKey = "YOUR INSTRUMENTATION KEY";
- 
-      TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
-    
-    ``` 
-3. アプリを終了する前に `telemetryClient.Flush()` を使用して、確実にデータがポータルに送信されるか、ファイルに保存されるようにします。
+![Visual Studio を使用してアプリを発行する](./media/app-insights-windows-services/15-publish.png)
 
-    Flush() は永続化チャネルでは同期ですが、その他のチャネルでは非同期であることに注意してください。
+デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。リリース構成でアプリケーションをデプロイすると、データ累積速度は遅くなります。
 
- 
-永続化チャネルは、アプリケーションで作成されるイベントの数が比較的少なく、接続の信頼性が低いことの多いデバイス シナリオに対して最適化されています。このチャネルは、イベントを最初にディスクに書き込んで確実に保存してから、送信を試行します。
+#### サーバーに発行した後でデータはありませんか。
 
-#### 例
+サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
 
-未処理の例外を監視するとします。`UnhandledException` イベントをサブスクライブします。コールバックで Flush の呼び出しを含めると、テレメトリが確実に保持されます。
- 
-```C# 
-
-AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; 
- 
-... 
- 
-private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) 
-{ 
-    ExceptionTelemetry excTelemetry = new ExceptionTelemetry((Exception)e.ExceptionObject); 
-    excTelemetry.SeverityLevel = SeverityLevel.Critical; 
-    excTelemetry.HandledAt = ExceptionHandledAt.Unhandled; 
- 
-    telemetryClient.TrackException(excTelemetry); 
- 
-    telemetryClient.Flush(); 
-} 
-
-``` 
-
-アプリをシャットダウンすると、`%LocalAppData%\Microsoft\ApplicationInsights` にファイルが作成され、圧縮されたイベントが格納されます。
- 
-このアプリケーションを次回起動したときに、チャネルがこのファイルを取得し、可能な場合はテレメトリを Application Insights に配信します。
-
-#### テストの例
-
-```C#
-
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Channel;
-using Microsoft.ApplicationInsights.Extensibility;
-
-namespace ConsoleApplication1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Send data from the last time the app ran
-            System.Threading.Thread.Sleep(5 * 1000);
-
-            // Set up persistence channel
-
-            TelemetryConfiguration.Active.InstrumentationKey = "YOUR KEY";
-            TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
-
-            // Send some data
-
-            var telemetry = new TelemetryClient();
-
-            for (var i = 0; i < 100; i++)
-            {
-                var e1 = new Microsoft.ApplicationInsights.DataContracts.EventTelemetry("persistenceTest");
-                e1.Properties["i"] = "" + i;
-                telemetry.TrackEvent(e1);
-            }
-
-            // Make sure it's persisted before we close
-            telemetry.Flush();
-        }
-    }
-}
-
-```
++ `dc.services.visualstudio.com:443`
++ `f5.services.visualstudio.com:443`
 
 
-永続化チャネルのコードは、[github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/v1.2.3/src/TelemetryChannels/PersistenceChannel) にあります。
+#### ビルド サーバーで問題が発生した場合
 
+[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
-## <a name="usage"></a>次のステップ
-
-[アプリの使用状況の追跡][knowUsers]
-
-[診断ログのキャプチャと検索][diagnostic]
-
-[トラブルシューティング][qna]
+> [AZURE.NOTE] (ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 
 
 
-<!--Link references-->
+## 次のステップ
 
-[diagnostic]: app-insights-diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
-[portal]: http://portal.azure.com/
-[qna]: app-insights-troubleshoot-faq.md
-[knowUsers]: app-insights-overview-usage.md
-[api]: app-insights-api-custom-events-metrics.md
-[CoreNuGet]: https://www.nuget.org/packages/Microsoft.ApplicationInsights
- 
+* アプリケーションの状態を完全に把握するために、[他のテレメトリを追加](app-insights-asp-net-more.md)します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

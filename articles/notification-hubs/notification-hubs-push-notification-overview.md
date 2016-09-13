@@ -170,9 +170,9 @@ Notification Hubs の詳細については、次のトピックを参照して�
   [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-  [App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
-  [テンプレート]: notification-hubs-templates.md
+  [App Service Mobile Apps]: https://azure.microsoft.com/ja-JP/documentation/articles/app-service-mobile-value-prop/
+  [テンプレート]: notification-hubs-templates-cross-platform-push-messages.md
   [Azure portal]: https://portal.azure.com
   [タグ]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

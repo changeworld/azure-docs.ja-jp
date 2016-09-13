@@ -13,11 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/29/2016"
+	ms.date="09/07/2016"
 	ms.author="juliako"/>
 
 
 # Azure Portal での Azure Media Services アカウントの作成
+
+> [AZURE.SELECTOR]
+- [ポータル](media-services-portal-create-account.md)
+- [PowerShell](media-services-manage-with-powershell.md)
+- [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
 > [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
@@ -36,7 +41,7 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 	AMS は、現在、ブラジル南部、インド西部、インド南部、およびインド中部のデータ センターでも利用可能です。Azure Portal を使用して、Media Services アカウントを作成し、ここで示すさまざまなタスクを実行できるようになりました。ただし、これらのデータ センターでは Live Encoding は有効ではありません。また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
 	
 	- ブラジル南部: Standard および Basic エンコード予約ユニットのみ使用可能です。
-	- メディア ファイルについては、インド西部とインド中部。Media Services アカウントと同じリージョンに配置する必要があります。Media Services アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
+	- インド西部およびインド南部: メディア ファイルのストレージ BLOB を用意します。ストレージ アカウントは Media Services アカウントと同じリージョンにある必要があります。Media Services アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
 
 ## AMS アカウントの作成
 
@@ -98,4 +103,4 @@ Media Services アカウントにプログラムからアクセスするには�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -30,8 +30,6 @@ Event Hubs は、低遅延の動作と高い信頼性を確保しながら、膨
 
 Event Hubs の他の重要な機能としては、モバイル アプリでのビヘイビアー追跡、Web ファームからのトラフィック情報、コンソール ゲームにおけるゲーム中のイベント キャプチャ、産業機器またはコネクテッド カーから収集されたテレメトリなどがあります。
 
-[Service Bus キューおよびトピック](../service-bus/service-bus-messaging-overview.md)とは異なり、Event Hubs は大規模なメッセージ ストリーム処理を提供することに重点が置かれています。Event Hubs の機能は、たとえば、高スループットおよびイベント処理のシナリオに重きが置かれているという点で、Service Bus のトピックとは異なります。その結果、Event Hubs では、[トピック](../service-bus/service-bus-fundamentals-hybrid-solutions.md#topics)で利用できるメッセージ機能の一部が実装されていません。それらの機能が必要な場合、トピックが最適な選択肢となります。
-
 ## 次のステップ
 
 Event Hubs の詳細については、次のトピックを参照してください。
@@ -45,4 +43,4 @@ Event Hubs の詳細については、次のトピックを参照してくださ
 [Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
 [Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->
