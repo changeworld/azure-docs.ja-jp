@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/14/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 
@@ -25,7 +25,7 @@ Service Fabric クラスターは、特に運用ワークロードが実行さ�
 ノード間のセキュリティは慎重に選ぶ必要があります。1 つのセキュリティを選んだ後で、別のセキュリティを使えるようにクラスターをアップグレードすることはできないからです。セキュリティの選択を変更するには、クラスターの完全な再構築が必要です。
 
 ## Windows セキュリティの構成
-[Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージと共にダウンロードされるサンプルの構成ファイル *ClusterConfig.Windows.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。Windows セキュリティは **Properties** セクション内で構成します。
+[Microsoft.Azure.ServiceFabric.WindowsServer.<バージョン>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージに含まれるサンプル構成ファイルである *ClusterConfig.Windows.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。Windows セキュリティは **Properties** セクション内で構成します。
 
 ```
 "security": {
@@ -77,6 +77,6 @@ Service Fabric クラスターは、特に運用ワークロードが実行さ�
 
 ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
-PowerShell または FabricClient を使用した接続の例については、「[Connect to a secure cluster (セキュリティ保護されたクラスターへの接続)](service-fabric-connect-to-secure-cluster.md)」を参照してください。
+PowerShell または FabricClient を使用した接続の例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

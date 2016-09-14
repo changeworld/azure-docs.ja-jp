@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/10/2016"
+	ms.date="08/29/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect: デバイスの書き戻しの有効化
@@ -130,4 +130,4 @@ Active Directory の構成を確認します。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

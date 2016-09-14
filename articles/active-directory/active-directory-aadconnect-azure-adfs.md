@@ -1,7 +1,7 @@
 <properties
 	pageTitle="Azure における Active Directory フェデレーション サービス | Microsoft Azure"
 	description="このドキュメントでは、Azure に AD FS をデプロイして高可用性を確保する方法について説明します。"
-    keywords="AD FS の概要, Azure, Azure AD Connect の概要, Azure における AD FS, iaas, ADFS"
+    keywords="azure への AD FS のデプロイ, azure adfs のデプロイ, azure adfs, azure ad fs,adfs のデプロイ, ad fs のデプロイ, azure での adfs, azure への adfs のデプロイ, azure への AD FS のデプロイ, adfs azure, AD FS の概要, Azure, Azure での AD FS, iaas, ADFS, azure への adfs の移行"
 	services="active-directory"
 	documentationCenter=""
 	authors="anandyadavmsft"
@@ -302,5 +302,6 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
+* [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
-<!-----HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

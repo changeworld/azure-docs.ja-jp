@@ -90,7 +90,7 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
     // Modify this part:
     }({instrumentationKey:  
       // Generate from server property:
-      @Microsoft.ApplicationInsights.Extensibility.
+      "@Microsoft.ApplicationInsights.Extensibility.
          TelemetryConfiguration.Active.InstrumentationKey"
     }) // ...
 
@@ -127,4 +127,4 @@ iKey は、アプリの Web ページや、[クイック スタート ブレー�
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

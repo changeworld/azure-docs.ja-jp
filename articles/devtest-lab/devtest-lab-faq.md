@@ -13,12 +13,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/05/2016"
+	ms.date="08/29/2016"
 	ms.author="tarcher"/>
 
 # DevTest Labs に関する FAQ
 
 この記事では、DevTest Labs について特に多く寄せられる質問に回答しています。
+
+## ここに質問の答えがない場合はどうすればいいですか。
+質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
+
+- この FAQ の最後に掲載されている [Disqus スレッド](#comments)に質問を投稿し、Azure Cache チームや他のコミュニティ メンバーとこの記事についてやり取りしてください。
+- さらに多くの人と情報交換する場合は、[Azure DevTest Labs MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)に質問を投稿して、Azure DevTest Labs チームや他のコミュニティ メンバーとやり取りします。
+- 機能要求を作成する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信します。
+
+## 作業開始
+- [DevTest Labs の利用はどのように開始するのですか。](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
 ## 全般
 - [なぜ DevTest Labs を使用する必要があるのですか。](#why-should-i-use-devtest-labs)
@@ -161,7 +171,7 @@ VM への複数ディスクの接続はサポートされています。
 [ラボ Azure Resource Manager テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)があります。これらの各テンプレートには、クリックすると自身の Azure サブスクリプションの下に DevTest Labs ラボをデプロイできるリンクが用意されています。
  
 ### 別々のリソース グループに作成した VM すべてが任意の名前を持つのはなぜですか。 これらのリソース グループの名前や内容を変更できますか。 
-リソース グループは、DevTest Labs がユーザーのアクセス許可と仮想マシンへのアクセスを管理するため、ご質問で述べられたように作成されます。このエクスペリエンスを向上させて柔軟性を高めるように取り組んでいますが、必要に応じて、これらのリソース グループの名前を変更できます。アクセス許可を意図せず変更しないようにするため、別のリソース グループに VM を移動しないことをお勧めします。
+リソース グループは、DevTest Labs がユーザーのアクセス許可と仮想マシンへのアクセスを管理するため、ご質問で述べられたように作成されます。VM を別のリソース グループに移動してご希望の名前を使用することはできますが、この方法はお勧めではありません。柔軟性の向上を目指して、機能の改善に取り組んでいます。
  
 ### 同じサブスクリプションにラボをいくつ作成できますか。 
 サブスクリプションごとに作成できるラボの数に具体的な制限はありませんが、使用するリソースはサブスクリプションごとに制限されます。[Azure サブスクリプションに適用される制限とクォータ](../azure-subscription-service-limits.md)および[これらの制限を増やす方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
@@ -175,4 +185,4 @@ VM への複数ディスクの接続はサポートされています。
 ### 既存の仮想ネットワークが正しく保存されないのはなぜですか。  
 仮想ネットワーク名にピリオドが含まれていることが原因となっている可能性があります。その場合は、ピリオドを削除するかハイフンに置き換えてから、仮想ネットワークをもう一度保存してみてください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

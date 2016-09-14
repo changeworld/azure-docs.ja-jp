@@ -13,14 +13,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/17/2016"
+   ms.date="08/29/2016"
    ms.author="cherylmc" />
 
 # VPN Gateway の設定について
 
-VPN Gateway は、仮想ネットワークとオンプレミスとの間でネットワーク トラフィックの送信に使用される一連の設定です。Azure 内の VNET 間でトラフィックを送信するのに VPN Gateway を使用することもできます。この記事の各セクションでは、VPN Gateway に関連した設定について説明します。
+VPN Gateway は、仮想ネットワークとオンプレミスとの間でネットワーク トラフィックの送信に使用される一連のリソースです。Azure 内の VNET 間でトラフィックを送信するのに VPN Gateway を使用することもできます。この記事の各セクションでは、VPN Gateway に関連したリソースと設定について説明します。
 
-接続図を使用すると、利用可能な構成を表示できます。「[Azure VPN Gateway 接続](vpn-gateway-topology.md)」セクションに記載される各構成のデプロイ方法の図を参照してください。
+接続図を使用すると、利用可能な構成の表示に役立つ場合があります。「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」の記事に記載される各構成のデプロイ方法の図を参照してください。
 
 
 ## <a name="gwsku"></a>ゲートウェイの SKU
@@ -49,7 +49,7 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 ## <a name="gwtype"></a>ゲートウェイの種類
 
-ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager デプロイメント モデルに必要な構成設定です。VPN 用のルーティングの種類を指定する VPN の種類とゲートウェイの種類を混同しないでください。`-GatewayType` に使用できる値は次のとおりです。
+ゲートウェイの種類は、ゲートウェイ自体の接続方法を指定するものであり、Resource Manager デプロイメント モデルに必要な構成設定です。各仮想ネットワークに配置できる各種類の仮想ネットワーク ゲートウェイは 1 つに限られています。`-GatewayType` に使用できる値は次のとおりです。
 
 - Vpn
 - ExpressRoute
@@ -70,7 +70,7 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 - ExpressRoute
 - VPNClient
 
-次の PowerShell の例では、接続の種類 "IPsec" を必要とする S2S 接続を作成しています。
+次の PowerShell の例では、接続の種類 'IPsec' を必要とする S2S 接続を作成しています。
 
 	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 	-Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
@@ -133,7 +133,7 @@ REST API と PowerShell を使用する場合のテクニカル リソースお�
 
 ## 次のステップ
 
-使用可能な接続構成の詳細については、「[VPN Gateway について](vpn-gateway-topology.md)」を参照してください。
+使用可能な接続構成の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
 
 
@@ -143,4 +143,4 @@ REST API と PowerShell を使用する場合のテクニカル リソースお�
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

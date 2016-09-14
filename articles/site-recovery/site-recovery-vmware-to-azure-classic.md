@@ -236,6 +236,8 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 
 Azure ネットワークの詳細については、[こちら](../virtual-network/virtual-networks-overview.md)をご覧ください。
 
+> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
+
 ## 手順 3: VMware コンポーネントをインストールする
 
 VMware 仮想マシンをレプリケートする場合、次の VMware コンポーネントを管理サーバーにインストールします。
@@ -599,7 +601,7 @@ UnifiedAgent.exe [/Role <Agent/MasterTarget>] [/InstallLocation <インストー
 
 4. **[ターゲット リソースの指定]** で、レプリケーションを使用しているストレージ アカウントを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。現在、Premium Storage アカウントはサポートされていません。
 
-	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+	>[AZURE.NOTE] 1. [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。2. Site Recovery のデプロイ用のストレージ アカウントについては、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../resource-group-move-resources.md)はサポートされていません。
 
 	![保護を有効にする](./media/site-recovery-vmware-to-azure-classic/enable-protection3.png)
 
@@ -804,4 +806,4 @@ The complete file may be found on the [Microsoft Download Center](http://go.micr
 
 Azure で実行されているフェールオーバーされたマシンをオンプレミス環境に戻す[フェールバックの詳細を確認](site-recovery-failback-azure-to-vmware-classic.md)します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

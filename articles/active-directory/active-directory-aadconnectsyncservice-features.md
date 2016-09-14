@@ -41,7 +41,7 @@ DirSyncFeature | コメント
 
 いったん機能を有効にすると、後でもう一度無効にすることはできません。
 
->[AZURE.NOTE] 2016 年 8 月 22 日以降、"*重複属性の回復性*" 機能は、新しい Azure AD ディレクトリに対して既定で有効になります。また、この機能はロールアウトされ、この日付より前に作成されたディレクトリでも有効になります。お使いのディレクトリでこの機能が有効になるときに電子メール通知を受け取ります。
+>[AZURE.NOTE] 2016 年 8 月 24 日以降、"*重複属性の回復性*" 機能は、新しい Azure AD ディレクトリに対して既定で有効になります。また、この機能はロールアウトされ、この日付より前に作成されたディレクトリでも有効になります。お使いのディレクトリでこの機能が有効になるときに電子メール通知を受け取ります。
 
 以下の設定は、Azure AD Connect によって構成されており、`Set-MsolDirSyncFeature` で変更することはできません。
 
@@ -98,4 +98,4 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 - [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md)
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

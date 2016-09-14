@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/06/2016" 
+	ms.date="08/25/2016" 
 	ms.author="nitinme"/>
 
 
@@ -35,7 +35,7 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 ここに記載したのは、Jupyter のインストールに関する前提条件ではありません。Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
 
 - Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- HDInsight Linux での Apache Spark クラスター。手順については、「[Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
+- HDInsight Linux での Apache Spark クラスター。手順については、「[HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## Jupyter Notebook をコンピューターにインストールする
 
@@ -185,4 +185,4 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

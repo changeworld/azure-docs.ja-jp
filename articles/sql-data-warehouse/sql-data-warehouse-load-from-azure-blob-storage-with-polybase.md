@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/16/2016"
+   ms.date="08/25/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
 
@@ -249,7 +249,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### 4\.3 読み込みの進行状況を追跡する
 
-読み込みの進捗状況を追跡するには、`[sys].[dm_pdw_exec_requests]` 動的管理ビュー (DMV) を使用します。
+読み込みの進捗状況を追跡するには、動的管理ビュー (DMV) を使用します。
 
 ```sql
 -- To see all requests
@@ -257,9 +257,31 @@ SELECT * FROM sys.dm_pdw_exec_requests;
 
 -- To see a particular request identified by its label
 SELECT * FROM sys.dm_pdw_exec_requests as r;
-WHERE r.label = 'CTAS : Load [cso].[DimProduct]             '
-      OR r.label = 'CTAS : Load [cso].[FactOnlineSales]        '
+WHERE r.[label] = 'CTAS : Load [cso].[DimProduct]             '
+      OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 ;
+
+-- To track bytes and files
+SELECT
+    r.command,
+    s.request_id,
+    r.status,
+    count(distinct input_name) as nbr_files, 
+    sum(s.bytes_processed)/1024/1024 as gb_processed
+FROM
+    sys.dm_pdw_exec_requests r
+    inner join sys.dm_pdw_dms_external_work s
+        on r.request_id = s.request_id
+WHERE 
+    r.[label] = 'CTAS : Load [cso].[DimProduct]             '
+    OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
+GROUP BY
+    r.command,
+    s.request_id,
+    r.status
+ORDER BY
+    nbr_files desc,
+    gb_processed desc;
 ```
 
 ## 5\.列ストア圧縮の最適化
@@ -343,8 +365,6 @@ JOIN    [cso].[DimProduct]      AS p ON f.[ProductKey] = p.[ProductKey]
 GROUP BY p.[BrandName]
 ```
 
-SQL Data Warehouse をもっと試してみてください。
-
 ## 次のステップ
 Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使用します。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][]に関するページをご覧ください。
 
@@ -370,4 +390,4 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [完全な Contoso Retail Data Warehouse を読み込む]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

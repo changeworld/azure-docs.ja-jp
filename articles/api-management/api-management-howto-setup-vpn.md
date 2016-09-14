@@ -20,7 +20,7 @@
 
 API Management の VPN のサポートにより、API Management ゲートウェイを Azure Virtual Network (従来型) に接続することができます。これにより、API Management のお客様は、オンプレミスのバックエンド Web サービスまたはパブリック インターネットからアクセスできないバックエンド Web サービスに安全に接続できます。
 
->[AZURE.NOTE] Azure API Management は、従来型 VNET と連携します。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+>[AZURE.NOTE] Azure API Management は、従来型 VNET と連携します。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
 ## <a name="enable-vpn"> </a>VPN 接続を有効にする
 
@@ -62,6 +62,9 @@ API Management サービス インスタンスが VNET でホストされてい�
 | 6381、6382、6383 | 受信/送信 | UDP | Redis Cache への API Management の依存 | VIRTUAL\_NETWORK / VIRTUAL\_NETWORK |
 | 445 | 送信 | TCP | GIT のための Azure ファイル共有への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
 
+## <a name="custom-dns"> </a>カスタム DNS サーバーのセットアップ
+
+API Management は、さまざまな Azure サービスに依存しています。カスタム DNS サーバーが使用される VNET で API Management サービス インスタンスをホストする場合、このサービス インスタンスは、これらの Azure サービスのホスト名を解決できる必要があります。カスタム DNS のセットアップについては、[こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)ガイダンスに従ってください。
 
 ## <a name="related-content"></a>関連コンテンツ
 
@@ -82,4 +85,4 @@ API Management サービス インスタンスが VNET でホストされてい�
 [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

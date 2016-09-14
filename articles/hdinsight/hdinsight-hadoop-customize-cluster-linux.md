@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/25/2016"
 	ms.author="larryfr"/>
 
 # スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -85,7 +85,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 クラスターの作成時に、指定された順序で呼び出される複数のスクリプト アクションを指定できます。
 
-> [AZURE.IMPORTANT] スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。クラスターのプロビジョニング中に、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる場合があります。
+> [AZURE.IMPORTANT] スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。クラスターのプロビジョニング中に、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 >
 > スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure BLOB ストレージに格納して、クラスターにすばやくダウンロードできるようにします。
 
@@ -120,7 +120,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## クラスターの作成時にスクリプト アクションを使用する
 
-このセクションでは、HDInsight クラスターの作成時にスクリプト アクションをさまざまな方法で使用する例を紹介します。ここでは、Azure ポータル、ARM テンプレート、PowerShell コマンドレット、.NET SDK からスクリプト アクションを使用しています。
+このセクションでは、HDInsight クラスターの作成時にスクリプト アクションをさまざまな方法で使用する例を紹介します。ここでは、Azure ポータル、Azure Resource Manager テンプレート、PowerShell コマンドレット、.NET SDK からスクリプト アクションを使用しています。
 
 ### クラスターの作成時に Azure ポータルからスクリプト アクションを使用する
 
@@ -143,19 +143,19 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ### Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
 
-このセクションでは、Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成します。また、スクリプト アクションを使用してクラスターにカスタム コンポーネント (この例では R) をインストールします。このセクションでは、スクリプト アクションを使用してクラスターを作成する ARM テンプレートの例を示します。
+このセクションでは、Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成します。また、スクリプト アクションを使用してクラスターにカスタム コンポーネント (この例では R) をインストールします。このセクションでは、スクリプト アクションを使用してクラスターを作成するテンプレートの例を示します。
 
-> [AZURE.NOTE] このセクションの手順では、スクリプト アクションを使ってクラスターを作成する方法について示します。HDInsight アプリケーションを使用して ARM テンプレートからクラスターを作成する例については、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
+> [AZURE.NOTE] このセクションの手順では、スクリプト アクションを使ってクラスターを作成する方法について示します。HDInsight アプリケーションを使用してテンプレートからクラスターを作成する例については、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」をご覧ください。
 
 #### 開始する前に
 
 * コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)」をご覧ください。
-* ARM テンプレートを作成する方法の手順については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+* テンプレートを作成する方法の手順については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
 * リソース マネージャーで Azure PowerShell を使用したことがない場合は、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 #### スクリプト アクションを使用してクラスターを作成する
 
-1. コンピューター上の場所に次のテンプレートをコピーします。このテンプレートにより、クラスター内のヘッド ノードとワーカー ノードに R がインストールされます。JSON テンプレートが有効かどうかも確認できます。テンプレートの内容を [JSONLint](http://jsonlint.com/) というオンラインの JSON 検証ツールに貼り付けます。
+1. コンピューター上の場所に次のテンプレートをコピーします。このテンプレートにより、クラスター内の worker ノードだけでなく、ヘッド ノードに Giraph がインストールされます。JSON テンプレートが有効かどうかも確認できます。テンプレートの内容を [JSONLint](http://jsonlint.com/) というオンラインの JSON 検証ツールに貼り付けます。
 
 			{
 		    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -252,7 +252,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 		                            "name": "[concat(parameters('clusterStorageAccountName'),'.blob.core.windows.net')]",
 		                            "isDefault": true,
 		                            "container": "[parameters('clusterStorageAccountContainer')]",
-		                            "key": "[listKeys(resourceId(parameters('clusterStorageAccountResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('clusterStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).key1]"
+		                            "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('clusterStorageAccountName')), '2015-05-01-preview').key1]"
 		                        }
 		                    ]
 		                },
@@ -272,8 +272,8 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 		                            },
 		                            "scriptActions": [
 		                                {
-		                                    "name": "installR",
-		                                    "uri": "https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh",
+		                                    "name": "installGiraph",
+		                                    "uri": "https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh",
 		                                    "parameters": ""
 		                                }
 		                            ]
@@ -323,7 +323,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 		Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
 
-    > [AZURE.NOTE] `Get-AzureRmSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これに、各サブスクリプション ID が含まれています。
+    > [AZURE.NOTE] `Get-AzureRmSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
 
 5. 既存のリソース グループがない場合は、新しいリソース グループを作成します。ソリューションに必要なリソース グループと場所の名前を指定します。新しいリソース グループの概要が返されます。
 
@@ -390,18 +390,18 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 		$config.DefaultStorageAccountName="$storageAccountName.blob.core.windows.net"
 		$config.DefaultStorageAccountKey=$storageAccountKey
 
-3. **Add-AzureRmHDInsightScriptAction** コマンドレットを使用してスクリプトを呼び出します。次の例では、クラスターに R をインストールするスクリプトを使用します。
+3. **Add-AzureRmHDInsightScriptAction** コマンドレットを使用してスクリプトを呼び出します。次の例では、クラスターに Giraph をインストールするスクリプトを使用します。
 
 		# INVOKE THE SCRIPT USING THE SCRIPT ACTION FOR HEADNODE AND WORKERNODE
-		$config = Add-AzureRmHDInsightScriptAction -Config $config -Name "Install R"  -NodeType HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
-        $config = Add-AzureRmHDInsightScriptAction -Config $config -Name "Install R"  -NodeType WorkerNode -Uri https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
+		$config = Add-AzureRmHDInsightScriptAction -Config $config -Name "Install Giraph"  -NodeType HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+        $config = Add-AzureRmHDInsightScriptAction -Config $config -Name "Install Giraph"  -NodeType WorkerNode -Uri https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
 	**Add-AzureRmHDInsightScriptAction** コマンドレットは、次のパラメーターを受け取ります。
 
 	| パラメーター | 定義 |
 	| --------- | ---------- |
 	| Config | スクリプト アクション情報が追加される構成オブジェクト。 |
-	| 名前 | スクリプト アクションの名前。 |
+	| Name | スクリプト アクションの名前。 |
 	| NodeType | カスタマイズ スクリプトが実行されるノードを指定します。有効な値は **HeadNode** (ヘッド ノードにインストールする場合)、**WorkerNode** (すべてのデータ ノードにインストールする場合)、**ZookeeperNode** (zookeeper ノードにインストールする場合) です。 |
 	| パラメーター | スクリプトで必要なパラメーター。 |
 	| Uri | 実行されるスクリプトへの URI を指定します。 |
@@ -452,8 +452,8 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 5. [スクリプト アクションの追加] ブレードで、次の情報を入力します。
 
-    * __[名前]__: このスクリプト アクションに使用する表示名。この例では、`R` です。
-    * __[スクリプト URI]__: スクリプトの URI。この例では、`https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh` です。
+    * __[名前]__: このスクリプト アクションに使用する表示名。この例では、`Giraph` です。
+    * __[スクリプト URI]__: スクリプトの URI。この例では、`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh` です
     * __[ヘッド]__、__[worker]__、および __[Zookeeper]__: このスクリプトを適用するノードをオンにします。この例では [ヘッド] と [ワーカー] がオンになっています。
     * __[パラメーター]__: スクリプトがパラメーターを受け取る場合は、そのパラメーターをここに入力します。
     * __[保存済み]__: クラスターをスケールアップするときに、新しい worker ノードに適用されるようにスクリプトを保存する場合は、このエントリをオンにします。
@@ -485,8 +485,8 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
         OperationState  : Succeeded
         ErrorMessage    :
-        Name            : R
-        Uri             : https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh
+        Name            : Giraph
+        Uri             : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
         Parameters      :
         NodeTypes       : {HeadNode, WorkerNode}
 
@@ -690,8 +690,7 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 クラスターをカスタマイズするスクリプトの作成と使用に関する情報と例については、次を参照してください。
 
-- [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions-linux.md)
-- [HDInsight クラスターに R をインストールして使用する](hdinsight-hadoop-r-scripts-linux.md)
+- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
 - [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 - [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 
@@ -699,4 +698,4 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "クラスター作成時の段階"
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

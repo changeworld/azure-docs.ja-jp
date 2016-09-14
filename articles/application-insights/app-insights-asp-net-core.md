@@ -12,21 +12,21 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="08/30/2016" 
 	ms.author="awills"/>
 
 # Application Insights for ASP.NET Core
 
-Visual Studio Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+[Visual Studio Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
 ![例](./media/app-insights-asp-net-five/sample.png)
 
-[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
+[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを所有している場合は、自分の Microsoft アカウントを使用してサブスクリプションに自身を追加してもらうよう所有者に依頼してください。
 
 
 ## 使用の開始
 
-Visual Studio 2015 でプロジェクトを作成した場合、Application Insights は既に用意されています。それ以外の場合は、「[ファースト ステップ ガイド](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started)」に従ってください、
+[ファースト ステップ ガイド](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started)に従ってください。
 
 ## Application Insights の使用
 
@@ -40,7 +40,7 @@ Visual Studio 2015 でプロジェクトを作成した場合、Application Insi
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md): 応答時間、障害発生率、[API](app-insights-api-custom-events-metrics.md) を使用して作成したメトリックスなどのメトリックスと数値のグラフとテーブルを表示します。アプリとそのユーザーの理解を深めるには、プロパティ値によってデータをフィルター処理してセグメント化します。
 * [検索エクスプローラー](app-insights-diagnostic-search.md): 特定の要求、例外、ログ トレース、[API](app-insights-api-custom-events-metrics.md) を使用して作成したイベントなどの個々のイベントを一覧表示します。イベントのフィルター処理と検索、問題を調査するための関連イベント間の移動を行います。
-* [分析](app-insights-analytics.md)は、テレメトリに対して SQL に似たクエリを実行することができる、強力な分析および診断ツールです。
+* [Analytics](app-insights-analytics.md): テレメトリに対して SQL に似たクエリを実行できる、強力な分析および診断ツールです。
 
 ## Alerts
 
@@ -50,14 +50,14 @@ Visual Studio 2015 でプロジェクトを作成した場合、Application Insi
 
 ## さらに多くのテレメトリを取得する
 
-* [Web ページにテレメトリを追加](app-insights-javascript.md)して、ページ閲覧状況やパフォーマンスを監視します。
+* [Web ページへのテレメトリの追加](app-insights-javascript.md): ページの使用状況やパフォーマンスを監視します。
 * [依存関係の監視](app-insights-dependencies.md): REST、SQL、その他の外部リソースによる低下が発生しているかどうかを確認します。
 * [API の使用](app-insights-api-custom-events-metrics.md): アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
-* [可用性テスト](app-insights-monitor-web-app-availability.md): 世界中からアプリを常にチェックします。 
+* [可用性テスト](app-insights-monitor-web-app-availability.md): 世界中からアプリを常にチェックします。
 
 
 ## オープン ソース
 
 [コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

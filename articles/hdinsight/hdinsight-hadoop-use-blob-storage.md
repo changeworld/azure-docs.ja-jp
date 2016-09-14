@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2016"
+	ms.date="09/06/2016"
 	ms.author="jgao"/>
 
 
@@ -49,7 +49,7 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 
 Hadoop は、既定のファイル システムの概念をサポートしています。既定のファイル システムは、既定のスキームとオーソリティを意味します。これは相対パスの解決に使用することもできます。HDInsight の作成プロセス時に、Azure Storage アカウントと、そのアカウントに対応する特定の Azure BLOB ストレージ コンテナーが既定のファイル システムとして指定されます。
 
-作成プロセス時に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成][hdinsight-creation]に関する記述を参照してください。
+作成プロセス時またはクラスターが作成された後に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターの作成][hdinsight-creation]に関する記述を参照してください。
 
 - **クラスターに接続されているストレージ アカウント内のコンテナー:** アカウントの名前とキーは作成中にクラスターと関連付けられるため、これらのコンテナー内の BLOB に対するフル アクセス許可が与えられます。
 
@@ -297,4 +297,4 @@ BLOB 関連のコマンドレットを一覧表示するには、次のコマン
 [img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
 [img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

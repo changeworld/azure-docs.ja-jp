@@ -200,7 +200,7 @@ JSON テンプレートとパラメーター ファイルを使用して、リ�
 
 ## 次のステップ
 
-ここでは、C# プログラムと Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
+ここでは、C# プログラムと Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 
 - [IoT Hub Resource Provider REST API][lnk-rest-api] の機能の詳細をご確認ください。
 - Azure リソース マネージャーの機能の詳細については、「[Azure リソース マネージャーの概要][lnk-azure-rm-overview]」を参照してください。
@@ -233,4 +233,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -80,7 +80,7 @@ VPN ゲートウェイを作成するときは、使用するゲートウェイ�
 
 ### <a name="topologies"></a>接続トポロジ
 
-まず、[接続トポロジ](vpn-gateway-topology.md)に関する記事の図を確認します。この記事には、基本的なダイアグラム、各トポロジのデプロイメント モデル (Resource Manager またはクラシック)、および構成のデプロイに使用できるデプロイ ツールが記載されています。
+まず、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」の記事の図を確認します。この記事には、基本的なダイアグラム、各トポロジのデプロイメント モデル (Resource Manager またはクラシック)、および構成のデプロイに使用できるデプロイ ツールが記載されています。
 
 ### <a name="designbasics"></a>デザインの基礎
 
@@ -161,4 +161,4 @@ VPN デバイスの構成経験が必要です。構成経験がない場合は�
 
 特定のゲートウェイ設定の詳細については、「[About VPN Gateway Settings (VPN ゲートウェイの設定について)](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

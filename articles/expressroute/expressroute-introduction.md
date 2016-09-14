@@ -75,7 +75,7 @@ ExpressRoute 接続によって、次のようなサービスにアクセスで�
 
 - Microsoft Azure サービス
 - Microsoft Office 365 サービス
-- Microsoft CRM Online サービス 
+- Microsoft CRM Online サービス
  
 [ExpressRoute FAQ](expressroute-faqs.md) ページには、ExpressRoute でサポートされているサービスの詳しい一覧があります。
 
@@ -118,9 +118,9 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 
 最適な請求モデルを選択できます。次に示す請求モデルから選択します。詳細については、[ExpressRoute FAQ](expressroute-faqs.md) ページを参照してください。
 
-- **無制限のデータ**。ExpressRoute 回線は月額料金に基づいて課金されます。すべての受信または送信データ転送が無料で含まれます。 
+- **無制限のデータ**。ExpressRoute 回線は月額料金に基づいて課金されます。すべての受信または送信データ転送が無料で含まれます。
 - **従量制課金データ**。ExpressRoute 回線は月額料金に基づいて課金されます。すべての受信データ転送は無料で含まれます。送信データ転送は 1 GB のデータ転送単位で課金されます。データ転送料金は地域によって異なります。
-- **ExpressRoute プレミアム アドオン**。ExpressRoute プレミアムは ExpressRoute 回線のアドオンです。ExpressRoute プレミアム アドオンには次の機能があります。 
+- **ExpressRoute プレミアム アドオン**。ExpressRoute プレミアムは ExpressRoute 回線のアドオンです。ExpressRoute プレミアム アドオンには次の機能があります。
 	- Azure パブリックと Azure プライベートのピアリングのルート上限の増加 (4,000 ルートから 10,000 ルートに)。
 	- サービスのグローバル接続。(国内のクラウドを除く) あらゆる地域で作成された ExpressRoute 回線に与えられる世界中の他の地域にあるリソースへのアクセス。たとえば、西ヨーロッパで作成された仮想ネットワークにシリコン バレーでプロビジョニングされた ExpressRoute 回線からアクセスできます。
 	- ExpressRoute ごとの VNet リンクの増加 (回線の帯域幅にもよりますが、10 からそれ以上に)。
@@ -136,4 +136,4 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 	- [ルーティングの構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -3,7 +3,7 @@
 	description="Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。"
 	services="sql-database"
 	documentationCenter=""
-	authors="carlrabeler"
+	authors="jovanpop-msft"
 	manager="jhubbard"
 	editor=""/>
 
@@ -11,7 +11,7 @@
 	ms.service="sql-database"
 	ms.devlang="NA"
 	ms.date="08/17/2016"
-	ms.author="carlrab"
+	ms.author="jovanpop"
    ms.workload="NA"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
@@ -208,4 +208,4 @@ JSON 配列として書式設定され、ストアド プロシージャにパ�
 
 JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)でお客様のユース ケースに一致するシナリオを見つけてください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

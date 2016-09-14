@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services からストリーミング コンテンツを配信する方法" 
+	pageTitle=".NET を使用した Azure Media Services コンテンツの発行" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	authors="juliako" 
 	manager="erikre" 
@@ -13,26 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
-#方法: ストリーミング コンテンツを配信する
+# .NET を使用した Azure Media Services コンテンツの発行
  
 > [AZURE.SELECTOR]
 - [REST ()](media-services-rest-deliver-streaming-content.md)
 - [.NET](media-services-deliver-streaming-content.md)
-- [ポータル](media-services-manage-content.md#publish)
+- [ポータル](media-services-portal-publish.md)
 
-##概要
+##Overview
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[資産をエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。
 
->[AZURE.NOTE]コンテンツが暗号化されている場合は、ロケーターを作成する前に、資産配信ポリシーを構成します ([この](media-services-dotnet-configure-asset-delivery-policy.md)トピックをご覧ください)。
+>[AZURE.NOTE]コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ([こちら](media-services-dotnet-configure-asset-delivery-policy.md)のトピックをご覧ください)。
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
   	 
 ##オンデマンド ストリーミング ロケーターを作成する
 
@@ -171,4 +171,4 @@
 
 [資産をダウンロードする](media-services-deliver-asset-download.md)[資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

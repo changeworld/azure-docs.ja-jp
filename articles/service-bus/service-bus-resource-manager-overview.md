@@ -20,7 +20,7 @@
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Service Bus リソース プロバイダーを使用して Service Bus と Event Hubs リソースを作成し、デプロイする方法について説明します。
 
-Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+Azure Resource Manager テンプレートを使用すると、ソリューションでデプロイするリソースを定義し、さまざまな環境用の値を入力できるパラメーターと変数を指定できます。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。Azure Resource Manager テンプレートの作成の詳細と、テンプレート形式の説明については、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 
 >[AZURE.NOTE] この記事の例では、Azure Resource Manager を使用して Service Bus の名前空間とメッセージング エンティティ (キュー) を作成する方法について説明します。他のテンプレート例については、「[Azure クイックスタート テンプレート][]」ギャラリーで "Service Bus" を検索してください。
 
@@ -32,7 +32,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 - [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 - [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 - [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
-- [Event Hub とコンシューマー グループを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-event-hub.md)
+- [イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を作成する](../event-hubs/event-hubs-resource-manager-namespace-event-hub.md)
 
 ## PowerShell でデプロイする
 
@@ -160,7 +160,7 @@ Azure アカウントにログオンするように求められます。ログ�
 Get-AzureRMSubscription
 ```
 
-このコマンドを実行すると、使用できる Azure サブスクリプションの一覧が返されます。現在のセッションのサブスクリプションを選択するには、次のコマンドを実行します。`<YourSubscriptionId>` を、使用する Azure サブスクリプションの GUID に置き換えます。
+このコマンドを実行すると、使用できる Azure サブスクリプションの一覧が返されます。現在のセッションのサブスクリプションを選択するには、次のコマンドを実行します。`<YourSubscriptionId>` は、使用する Azure サブスクリプションの GUID に置き換えてください。
 
 ```
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
@@ -253,4 +253,4 @@ Azure Resource Manager テンプレートをデプロイする基本のワーク
 [Azure リソース マネージャーのテンプレートを使用したリソースのデプロイ]: ../resource-group-template-deploy.md
 [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

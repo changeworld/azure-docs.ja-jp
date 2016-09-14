@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure BLOB データセットをコピー/移動する方法 | Azure Data Factory" 
+	pageTitle="Azure Blob Storage との間でのデータのコピー | Azure Data Factory" 
 	description="Azure Data Factory で BLOB データをコピーする方法について説明します。サンプルを使用して、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。" 
     keywords="BLOB データ, Azure BLOB のコピー"
 	services="data-factory" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/22/2016" 
+	ms.date="08/25/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
@@ -38,7 +38,7 @@ Azure Blob Storage との間でデータをコピーするパイプラインを�
 4.	[AzureSqlTable](data-factory-azure-sql-connector.md#azure-sql-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 4.	[BlobSource](#azure-blob-copy-activity-type-properties) と [SqlSink](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) を使用するコピー アクティビティの[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは、Azure BLOB から Azure SQL Database のテーブルに時系列データを 1 時間おきに コピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure BLOB から Azure SQL テーブルに時系列データを 1 時間おきにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -210,7 +210,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 4.	[SqlSource](data-factory-azure-sql-connector.md#azure-sql-copy-activity-type-properties) と [BlobSink](#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 
-このサンプルは、Azure SQL Database のテーブルからAzure BLOB に時系列データを 1 時間おきにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure SQL テーブルから Azure BLOB に時系列データを 1 時間おきにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure SQL のリンクされたサービス:**
 
@@ -433,7 +433,7 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 
 
 ## Azure BLOB のコピー アクティビティの type プロパティ  
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、各種ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります
 
@@ -441,17 +441,34 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- | 
-| treatEmptyAsNull | null と空の文字列を NULL 値として処理するかどうかを指定します。<br/><br/>**quoteChar** プロパティを指定した場合、このプロパティでは引用符で囲まれた空の文字列も null として処理される場合があります。 | TRUE (既定値) <br/>FALSE | なし |
-| skipHeaderLineCount | スキップする必要がある行数を指定します。入力データセットで **TextFormat** を利用しているときにのみ適用されます。 | 0 から最大値までの整数。 | なし | 
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 | True (既定値)、False | なし | 
-
 
 **BlobSink** の **typeProperties** セクションでは次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| blobWriterAddHeader | 列定義のヘッダーを追加するかどうかを指定します。 | TRUE<br/>FALSE (既定値) | なし |
 | copyBehavior | ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 | **PreserveHierarchy:** ターゲット フォルダー内でファイル階層を保持します。ソース フォルダーへのソース ファイルの相対パスは、ターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><br/>**FlattenHierarchy:** ソース フォルダーのすべてのファイルがターゲット フォルダーの最上位レベルに配置されます。ターゲット ファイルは、自動生成された名前になります。<br/><br/>**MergeFiles: (既定値)** ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ |
+
+**BlobSource** は、間もなく廃止予定の次の 2 つのプロパティもサポートしています。
+
+- **treatEmptyAsNull**: null または空の文字列を null 値として処理するかどうかを指定します。
+- **skipHeaderLineCount** - スキップする必要がある行数を指定します。入力データセットで TextFormat を利用しているときにのみ適用されます。
+
+同様に、**BlobSink** は、間もなく廃止予定の次のプロパティをサポートしています。
+
+- **blobWriterAddHeader**: 出力データセットへの書き込み中に列定義のヘッダーを追加するかどうかを指定します。
+
+データセットは、同じ機能を実装するプロパティとして、**treatEmptyAsNull**、**skipLineCount**、**firstRowAsHeader** をサポートするようになりました。
+
+次の表は、間もなく廃止予定の BLOB ソース/シンク プロパティの代わりに新しいデータセットのプロパティを使用するためのガイドラインをまとめたものです。
+
+| コピー アクティビティのプロパティ | データセットのプロパティ |
+| :---------------------- | :---------------- | 
+| BlobSource の skipHeaderLineCount | skipLineCount と firstRowAsHeader。最初に行がスキップされ、その後、最初の行がヘッダーとして読み取られます。 |
+| BlobSource の treatEmptyAsNull | 入力データセットの treatEmptyAsNull |
+| BlobSink の blobWriterAddHeader | 出力データセットの firstRowAsHeader | 
+
+これらのプロパティの詳細については、「[TextFormat の指定](#specifying-textformat)」セクションを参照してください。
 
 ### recursive と copyBehavior の例
 このセクションでは、recursive 値と copyBhavior 値の組み合わせごとに、Copy 操作で行われる動作について説明します。
@@ -475,6 +492,6 @@ false | mergeFiles | ソース フォルダー Folder1 が次のような構造�
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

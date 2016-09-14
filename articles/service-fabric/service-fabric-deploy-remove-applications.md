@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
+   ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
 # PowerShell を使用してアプリケーションのデプロイと削除を実行する
@@ -239,4 +239,4 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

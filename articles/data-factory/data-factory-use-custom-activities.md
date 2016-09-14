@@ -526,7 +526,7 @@ adftutorial\\output フォルダーには、1 つ以上の行 (入力フォル�
 		        "linkedServiceName": "AzureStorageLinkedService",
 		        "typeProperties": {
 		            "fileName": "{slice}.txt",
-		            "folderPath": "adftutorial/customactivityoutput",
+		            "folderPath": "adftutorial/customactivityoutput/",
 		            "partitionedBy": [
 		                {
 		                    "name": "slice",
@@ -565,7 +565,7 @@ adftutorial\\output フォルダーには、1 つ以上の行 (入力フォル�
 
 ### カスタム アクティビティを使用するパイプラインの作成と実行
 
-1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...]\ (省略記号)** をクリックすると表示されます。
+1. Data Factory エディターで、コマンド バーの **[新しいパイプライン]** をクリックします。このコマンドが表示されない場合は、**[...]\(省略記号)** をクリックすると表示されます。
 2. 右側のウィンドウの JSON を、次の JSON スクリプトに置き換えます。
 
 		{
@@ -615,7 +615,7 @@ adftutorial\\output フォルダーには、1 つ以上の行 (入力フォル�
 
 	- **Concurrency** を **2** に設定し、Azure Batch プール内の 2 つの VM で 2 つのスライスが並列処理されるようにします。
 	- activities セクションには、**DotNetActivity** 型のアクティビティが 1 つあります。
-	- **AssemblyName** を DLL の名前 (**MyActivities.dll**) に設定します。
+	- **AssemblyName** を DLL の名前 (**MyDotnetActivity.dll**) に設定します。
 	- **EntryPoint** を **MyDotNetActivityNS.MyDotNetActivity** に設定します。
 	- **PackageLinkedService** は **AzureStorageLinkedService** に設定されます。これは、カスタム アクティビティの zip ファイルを含む Blob Storage を示します。入力/出力ファイルとカスタム アクティビティ zip ファイルに異なる Azure Storage アカウントを使用している場合は、Azure Storage の別のリンクされたサービスを作成します。この記事では、同じ Azure Storage アカウントを使用している前提で説明します。
 	- **PackageFile** を **customactivitycontainer/MyDotNetActivity.zip** に設定します。形式は containerforthezip/nameofthezip.zip です。
@@ -896,4 +896,4 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

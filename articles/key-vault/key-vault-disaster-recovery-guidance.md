@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="08/26/2016"
 	ms.author="sumedhb;aglick"/>
 
 
@@ -46,4 +46,4 @@ Azure リージョン全体が使用できない場合がまれにあります�
  * backup
 * フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り___および___書き込み要求) が可能になります。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

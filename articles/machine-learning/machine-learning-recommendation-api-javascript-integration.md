@@ -3,7 +3,7 @@
 	description="Azure Machine Learning Recommendations - JavaScript 統合 - ドキュメント" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="AharonGumnik" 
+	authors="LuisCabrer" 
 	manager="paulettm" 
 	editor="cgronlun"/>
 
@@ -13,10 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="05/03/2016" 
+	ms.date="08/24/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning Recommendations - JavaScript 統合
+
+> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
+
 
 このドキュメントは、JavaScript を使用して、サイトを統合する方法を表します。JavaScript を使用すると、データ取得のイベントを送信し、推奨設定のモデル作成後に推奨事項を使用できるようになります。JS を使用して行うすべての操作はサーバー側からも実行できます。
 
@@ -47,7 +50,7 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 ![図面 3][3]
 
-##2\.前提条件
+##手順 2.前提条件
 
 1. API を使用して新しいモデルを作成する実行方法についてはクイック スタート ガイドをご覧ください。
 2. &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; を base64 でエンコードします (これは基本認証で使用され、JS コードで API を呼び出すために使用できます)。
@@ -165,7 +168,8 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 パラメーター:
 * event (文字列) – "purchase"
-* items (購入済) – 各項目を購入したエントリを保持する配列。<br><br> 購入の形式:
+* items (購入済) – 購入した各項目のエントリを保持する配列。<br><br> 
+購入の形式:
 	* item (文字列) – 項目の一意識別子。
 	* count (int か文字列) – 購入された項目の数。
 	* price (float 型か文字列) – 省略可能フィールド – 項目の価格。
@@ -183,8 +187,8 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 このイベントは、ユーザーがサイトにログインした後に使用される必要があります。
 
 パラメーター:
-* event (文字列) –"userlogin"
-* ユーザー (文字列) – ユーザーの一意識別子。
+* event (文字列) – "userlogin"
+* user (文字列) – ユーザーの一意の識別子。
 	<script>
 		if (typeof 	AzureMLRecommendationsEvent=="undefined	") { AzureMLRecommendationsEvent = ; }
 			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
@@ -226,4 +230,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0831_2016-->

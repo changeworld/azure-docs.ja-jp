@@ -30,7 +30,7 @@
 - **アカウントのクォータを確認し**、Batch アカウントに対する制限の決定から試行錯誤の当て推量を排除します。ジョブ開始前にアカウントのクォータをチェックしたり、プールを作成したり、コンピューティング ノードを追加したりすることで、いつどこでコンピューティング リソースが作成されるのかを事前に調整できます。アカウントに追加リソースを割り当てる前に、クォータの増量が必要なアカウントを特定できます。
 - Batch Management .NET、[Azure Active Directory][aad_about]、[Azure Resource Manager][resman_overview]を同じアプリケーションで使用することにより、完全な機能を備えた管理エクスペリエンスのために**他の Azure サービスの機能を組み合わせます**。これらの機能とその API を使用して、摩擦のない認証エクスペリエンスや、リソース グループの作成と削除の機能、そして既に説明した機能によってエンド ツー エンドの管理ソリューションを実現できます。
 
-> [AZURE.NOTE] この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure ポータルでの Azure Batch アカウントの作成と管理](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
+> [AZURE.NOTE] この記事では、プログラムによる Batch アカウント、キー、およびクォータの管理に重点を置いて説明しますが、これらのアクティビティの多くは [Azure ポータル][azure_portal]を使用して実行できます。詳細については、「[Azure Portal で Azure Batch アカウントを作成して管理する](batch-account-create-portal.md)」および「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
 ## Batch アカウントの作成と削除
 
@@ -152,11 +152,11 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 
 サンプル アプリケーションを正常に実行するには、最初に Azure ポータルを使用して Azure AD にアプリケーションを登録する必要があります。「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/active-directory-integrating-applications.md#adding-an-application)」の手順に従って、独自のアカウントで既定のディレクトリ内にサンプル アプリケーションを登録してください。アプリケーションの種類には必ず「**ネイティブ クライアント アプリケーション**」を選択してください。「**リダイレクト URI**」には任意の有効な URI を指定できます (`http://myaccountmanagementsample` など)。リアルエンドポイントにする必要はありません。
 
-アプリケーションを追加したら、ポータルのアプリケーションの設定で、*Windows Azure サービス管理 API* アプリケーションに「**組織として Azure サービス管理にアクセスする**」許可を委任します。
+アプリケーションを追加したら、ポータルのアプリケーションの設定で、*Microsoft Azure サービス管理 API* アプリケーションに「**組織として Azure サービス管理にアクセスする**」許可を委任します。
 
 ![Azure ポータルのアプリケーション アクセス許可][2]
 
-> [AZURE.TIP] *[他のアプリケーションに対するアクセス許可]*の下に **[Windows Azure Service Management API]** が表示されない場合、**[アプリケーションの追加]** をクリックして **[Windows Azure Service Management API]** を選択し、チェックボックスをオンにします。次に、上で指定したアクセス許可を委任します。
+> [AZURE.TIP] *[他のアプリケーションに対するアクセス許可]*の下に **[Microsoft Azure Service Management API]** が表示されない場合、**[アプリケーションの追加]** をクリックして **[Microsoft Azure Service Management API]** を選択し、チェックボックスをオンにします。次に、上で指定したアクセス許可を委任します。
 
 上記のようにアプリケーションを追加したら、アプリケーションのリダイレクト URI とクライアント ID を利用し、[AccountManagment][acct_mgmt_sample] サンプル プロジェクトで `Program.cs` を更新します。アプリケーションの **[構成]** タブにこれらの値があります。
 
@@ -213,4 +213,4 @@ GitHub の [AccountManagment][acct_mgmt_sample] サンプル プロジェクト�
 [2]: ./media/batch-management-dotnet/portal-02.png
 [3]: ./media/batch-management-dotnet/portal-03.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="REST API を使用して Media Services アカウントにファイルをアップロードする" 
+	pageTitle="REST を使用して Media Services アカウントにファイルをアップロードする" 
 	description="資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
-#REST API を使用して Media Services アカウントにファイルをアップロードする
+# REST を使用して Media Services アカウントにファイルをアップロードする
 
-[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
- 
+ > [AZURE.SELECTOR]
+ - [.NET](media-services-dotnet-upload-files.md)
+ - [REST ()](media-services-rest-upload-files.md)
+ - [ポータル](media-services-portal-upload-files.md)
 
 Media Services で、デジタル ファイルを資産にアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -59,7 +61,7 @@ AMS では、資産を一括でアップロードすることもできます。�
 
 - **EnvelopeEncryptionProtected** = **4**: AES で暗号化された HLS ファイルをアップロードする場合はこのオプションを使用します。この場合ファイルは、Transform Manager によってあらかじめエンコードされて暗号化されている必要があります。
 
->[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、トピック「[ContentKey を作成する方法](media-services-rest-create-contentkey.md)」で説明されているようにアセットにリンクする必要があります。ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。**MERGE** HTTP 要求を使用して実行します。
+>[AZURE.NOTE]アセットに暗号化を使用する場合は、**ContentKey** を作成し、[ContentKey の作成方法](media-services-rest-create-contentkey.md)に関するページの説明に従ってアセットにリンクする必要があります。ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。**MERGE** HTTP 要求を使用して実行します。
 
 
 次の例では、資産を作成する方法を示します。
@@ -115,7 +117,7 @@ AMS では、資産を一括でアップロードすることもできます。�
 
 **AssetFile** インスタンスと実際のメディア ファイルは次の 2 つの異なるオブジェクトであることに注意してください。AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
-デジタル メディア ファイルを blob コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半に表示) に関する情報とともに AssetFile を更新します。
+デジタル メディア ファイルを BLOB コンテナーにアップロードした後、**MERGE** HTTP 要求を使用して、メディア ファイル (トピックの後半で説明します) に関する情報で AssetFile を更新します。
 
 **HTTP 要求**
 
@@ -458,7 +460,7 @@ IngestManifest の Statistics プロパティをポーリングすることに�
 
 資産で暗号化を使用する場合、資産ファイルを作成する前に、暗号化に使用する ContentKey を作成しておく必要があります。ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
  
-要求本文のプロパティ | 説明
+要求本文のプロパティ | Description
 ---|---
 ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
 ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。
@@ -529,4 +531,4 @@ ContentKey は、HTTP POST 要求を送信することによって 1 つ以上�
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

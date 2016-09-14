@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/22/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 #DevTest ラボとは
@@ -32,8 +32,10 @@ Azure DevTest Labs は、無駄を最小限に抑え、コストを管理しつ�
 
 > [AZURE.VIDEO what-is-azure-devtest-labs]
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ##次のステップ
 
 [DevTest ラボを使用する理由](devtest-lab-why.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/31/2016"
 	ms.author="juliako"/>
 
 #.NET SDK を使用して資産の配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
-##概要
+##Overview
 
 Media Services で暗号化した資産を配信する場合、コンテンツ配信ワークフローの手順の 1 つとして、資産の配信ポリシーを構成します。資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
-このトピックでは、資産の配信ポリシーを作成して構成する理由と方法をご説明します。
+このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。
 
 >[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
 >
@@ -157,7 +157,7 @@ Azure Media Services では、Widevine による暗号化を追加すること�
 
 ##DynamicEnvelopeEncryption 資産の配信ポリシー 
 
-次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を HLS と DASH プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キーの 2 つのパラメーターがあります。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#envelope_contentkey)に関するページを参照してください)。
+次の **CreateAssetDeliveryPolicy** メソッドでは、動的エンベロープ暗号化 (**DynamicEnvelopeEncryption**) を Smooth Streaming、HLS、DASH の各プロトコルに適用するように構成された **AssetDeliveryPolicy** を作成します (指定していないプロトコルはストリーミングからブロックされます)。メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**EnvelopeEncryption** タイプのコンテンツ キーの 2 つのパラメーターがあります。詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md#envelope_contentkey)に関するページを参照してください)。
 
 
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
@@ -189,7 +189,7 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
             _context.AssetDeliveryPolicies.Create(
                         "AssetDeliveryPolicy",
                         AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
-                        AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
+                        AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                         assetDeliveryPolicyConfiguration);
 
         // Add AssetDelivery Policy to the asset
@@ -361,4 +361,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

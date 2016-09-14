@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/27/2016" 
+	ms.date="08/24/2016" 
 	ms.author="rachelap"/>
 
 # Azure App Service での Web アプリの管理
@@ -57,7 +57,7 @@ Azure App Service には、 Free、Shared、Basic、Standard、および Premium
 
 Web アプリの運用中、それが利用可能であり、ユーザー トラフィックに対して適切なスケーリングになっていることを確認する必要があります。また、エラーのトラブルシューティングが必要になることがあるかもしれません。
 
-### Monitoring
+### 監視
 
 - Azure ポータルにより、CPU 使用率やクライアント要求の数などの[パフォーマンス メトリックを追加する](web-sites-monitor.md)ことができます。
 - トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。
@@ -97,4 +97,4 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="02/09/2016"
+   ms.date="08/25/2016"
    ms.author="sewhee" />
 
 # クラウド サービスごとの複数の VIP
@@ -37,7 +37,7 @@ PowerShell を使用すると、クラウド サービスで使用される VIP 
 
 現時点では、複数 VIP の機能は以下のシナリオに制限されています。
 
-- **IaaS のみ**。複数の VIP は、VM を含むクラウド サービスでのみ有効にできます。PaaS のシナリオで、ロール インスタンスと共に複数の VIP を使用することはできません。
+- **IaaS のみ**。複数の VIP は、VM を含むクラウド サービスでのみ有効にできます。PaaS シナリオで、ロール インスタンスと共に複数の VIP を使用することはできません。
 - **PowerShell のみ**。複数の VIP は、PowerShell を使用してのみ管理できます。
 
 >[AZURE.IMPORTANT] これらの制限は一時的なものであり、いつでも変更される可能性があります。今後の変更を確認するには、このページに再度アクセスしてください。
@@ -160,4 +160,4 @@ VIP をサービスを追加するには、次の PowerShell コマンドを実�
 
 [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

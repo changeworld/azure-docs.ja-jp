@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="08/24/2016"
 	ms.author="iainfou"/>
 
 
@@ -28,7 +28,7 @@
 
 Trend Micro のオンプレミスのソリューション用サブスクリプションが既にある場合には、それを使用して Azure の仮想マシンを保護できます。サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。このソリューションの詳細については、Trend Micro ブログの Deep Security 用の [Microsoft Azure VM エージェント拡張機能](http://go.microsoft.com/fwlink/p/?LinkId=403945)に関する投稿を参照してください。
 
-## 新しい仮想マシンに Deep Security Agent をインストールする
+## 新しい VM に Deep Security Agent をインストールする
 
 [Azure クラシック ポータル](http://manage.windowsazure.com)を使用すると、**[ギャラリーから]** オプションを使用して仮想マシンを作成する際に、VM エージェントと Trend Micro のセキュリティ拡張機能をインストールできます。仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
@@ -42,11 +42,11 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 3.	チェック マークをクリックして、仮想マシンを作成します。
 
-## 既存の仮想マシンに Deep Security Agent をインストールする
+## 既存の VM に Deep Security Agent をインストールする
 
-このインストールには、次の条件が必要です。
+既存の VM にエージェントをインストールするには、次の条件が必要です。
 
-- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドを使用して確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- Azure PowerShell モジュール Version 0.8.2 以降がローカル コンピューターにインストールされていること。インストールした Azure PowerShell のバージョンは、**Get-Module azure | format-table version** コマンドを使用して確認できます。最新バージョンの説明とダウンロード用リンクについては、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。`Add-AzureAccount` を使用して Azure サブスクリプションにログインします。
 
 - VM エージェントがターゲットの仮想マシンにインストールされていること。
 
@@ -86,4 +86,4 @@ VM エージェントがインストールされている場合は、次のコ�
 [Windows Server が実行されている仮想マシンにログオンする方法]: virtual-machines-windows-classic-connect-logon.md
 [Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

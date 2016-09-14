@@ -65,7 +65,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 - **Hyper-V ホストまたはクラスター**: オンプレミスの Hyper-V ホスト サーバーまたはクラスター。保護対象の VM を実行している Hyper-V ホストは、Site Recovery のデプロイ時に Hyper-V 論理サイトに収集されます。
 - **Azure Site Recovery Provider と Recovery Services エージェント**: デプロイ時に、Azure Site Recovery Provider と Microsoft Azure Recovery Services エージェントを Hyper-V ホスト サーバーにインストールします。プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、オーケストレーションをレプリケートします。Hyper-V ホスト サーバー上のエージェントは、既定では HTTPS 443 経由で Azure Storage にデータをレプリケートします。
-- **Azure**: Azure サブスクリプション、レプリケートされたデータを保存する Azure Storage アカウント、フェールオーバー後に Azure VM がネットワークに接続するための Azure 仮想ネットワークが必要です。
+- **Azure**: Azure サブスクリプション、レプリケートされたデータを格納するための Azure ストレージ アカウント、および Azure VM がフェールオーバー後にネットワークに接続されように Azure 仮想ネットワークが必要です。
 
 ![Hyper-V サイト アーキテクチャ](./media/site-recovery-hyper-v-site-to-azure/architecture.png)
  
@@ -113,12 +113,15 @@ Azure ネットワークをセットアップします。これは、フェー�
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、Azure ネットワークを [ARM モード](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モード](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でセットアップします。
 - ネットワークをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。
 
+> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
 
 ### Azure ストレージ アカウントをセットアップする
 
 - Azure にレプリケートされたデータを保持するために Standard Azure ストレージ アカウントが必要になります。
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [ARM モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
 - ストレージ アカウントをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
+
+> [AZURE.NOTE] [Migration of storage accounts]Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのストレージ アカウントの移行はサポートされていません。
 
 ### Hyper-V ホストを準備する
 
@@ -158,7 +161,7 @@ Site Recovery に用意されている [使用の開始] エクスペリエン�
 
 	![Choose goals](./media/site-recovery-hyper-v-site-to-azure/choose-goals.png)
 
-3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[Yes, with Hyper-V (はい、Hyper-V を使用する)]** を選択します。VMM を使用していないことを確認するために、**[いいえ]** を選択します。次に、 **[OK]** をクリックします
+3. **[Protection goal]** (保護の目標) で、**[To Azure]** (Azure) と **[Yes, with Hyper-V]** (はい、Hyper-V を使用する) の順に選択します。VMM を使用していないことを確認するために、**[いいえ]** を選択します。次に、 **[OK]** をクリックします
 
 	![Choose goals](./media/site-recovery-hyper-v-site-to-azure/choose-goals2.png)
 
@@ -194,19 +197,19 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 
 	![サーバー登録](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-4\.**[プロキシの設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
+4\. **[プロキシの設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
 - プロバイダーから直接接続するようにするには、**[Connect directly without a proxy (プロキシなしで直接接続する)]** を選択します。
 - サーバーに現在設定されているプロキシを使って接続する場合は、**[Connect with existing proxy settings (既存のプロキシ設定を使用して接続する)]** を選択します。
 - 既存のプロキシに認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy settings (カスタム プロキシ設定を使用して接続する)]** を選択します。
 - カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
-- プロキシを使用する場合、[前提条件](#on-premises-prerequisites)に示されている URL が許可されていることを確認します。
+- プロキシを使用する場合、[前提条件](#on-premises-prerequisites)に関するセクションで示されている URL が許可されていることを確認します。
 
 	![internet](./media/site-recovery-hyper-v-site-to-azure/provider7.PNG)
 
-5\.インストールが完了したら、**[登録]** をクリックして、サーバーをコンテナーに登録します。![インストール場所](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
+5\. インストールが完了したら、**[登録]** をクリックして、サーバーをコンテナーに登録します。![インストール場所](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
 
-6\.登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]** > **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[Hyper-V Hosts (Hyper-V ホスト)]** ブレードにサーバーが表示されます。
+6\. 登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]** > **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[Hyper-V Hosts (Hyper-V ホスト)]** ブレードにサーバーが表示されます。
 
 
 ### コマンド ラインを使用したインストール
@@ -236,7 +239,7 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 
 レプリケーションに使用する Azure ストレージ アカウントと、フェールオーバー後に Azure VM が接続する Azure ネットワークを指定します。
 
-1.	**[Prepare infrastructure]** (インフラストラクチャを準備する)、**[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
+1.	**[インフラストラクチャの準備]**、**[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
 2.	フェールオーバー後に VM に使用するデプロイメント モデルを指定します。
 3.	Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
@@ -246,13 +249,13 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 
 	![Storage](./media/site-recovery-hyper-v-site-to-azure/gs-createstorage.png)
 
-	クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure ポータルで](../storage/storage-create-storage-account-classic-portal.md)作成できます。
+	クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure ポータル](../storage/storage-create-storage-account-classic-portal.md)で作成できます。
 	
 5.	まだ Azure ネットワークを作成しておらず、ARM を使用して作成する場合は、**[+ ネットワーク]** をクリックしてインラインで作成します。**[仮想ネットワークの作成]** ブレードで、ネットワーク名、アドレス範囲、サブネットの詳細、サブスクリプション、場所を指定します。ネットワークは、Recovery Services コンテナーと同じ場所にある必要があります。
 
 	![ネットワーク](./media/site-recovery-hyper-v-site-to-azure/gs-createnetwork.png)
 
-	クラシック モデルを使用してネットワークを作成する場合は、[Azure ポータルで](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)作成できます。
+	クラシック モデルを使用してネットワークを作成する場合は、[Azure ポータル](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)で作成できます。
 	
 
 ## ステップ 4: レプリケーション設定をセットアップする
@@ -278,7 +281,7 @@ Azure Site Recovery Provider とエージェントは、次のコマンド ラ�
 Site Recovery が備えている Capacity Planner を使用して、ソース環境、Site Recovery のコンポーネント、ネットワーク、およびストレージに適切なリソースを割り当てることができます。このキャパシティ プランニング ツールは、VM、ディスク、およびストレージの平均数に基づく見積もりを使用するクイック モードか、ワークロード レベルで数値を入力する詳細モードで実行できます。開始する前に、次のことを行う必要があります。
 
 - VM、VM あたりのディスク数、ディスクあたりのストレージなど、レプリケーション環境の情報を収集する。
-- レプリケートされたデータの 1 日の変更 (チャーン) 率を見積もる。この見積もりには、[Capacity planner for Hyper-V Replica](https://www.microsoft.com/download/details.aspx?id=39057) が役立ちます。
+- レプリケートされたデータの 1 日の変更 (チャーン) 率を見積もる。この見積もりには、[Capacity Planner for Hyper-V Replica](https://www.microsoft.com/download/details.aspx?id=39057) が役立ちます。
 
 1.	**[ダウンロード]** をクリックしてツールをダウンロードし、実行する。ツールに付随する[こちらの記事をご覧ください](site-recovery-capacity-planner.md)。
 2.	作業が完了したら、**[Have you run the Capacity Planner? (Capacity Planner を実行しましたか?)]** で **[はい]** を選択する。
@@ -290,7 +293,7 @@ Site Recovery が備えている Capacity Planner を使用して、ソース環
 Capacity Planner を使用して、レプリケーション (初期レプリケーションとその後の差分レプリケーション) に必要な帯域幅を計算できます。レプリケーションの帯域幅の使用量を制御する方法には、いくつかのオプションがあります。
 
 - **帯域幅を調整する**: Azure にレプリケートされる Hyper-V トラフィックは、特定の Hyper-V ホストを経由します。このホスト サーバーの帯域幅をスロットルできます。
-- **帯域幅を微調整する**: いくつかのレジストリ キーを使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
+- **帯域幅の微調整**: いくつかのレジストリ キーを使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
 
 #### スロットルの帯域幅
 
@@ -300,13 +303,13 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 	![スロットルの帯域幅](./media/site-recovery-hyper-v-site-to-azure/throttle2.png)
 
-[Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) コマンドレットを使用して、調整を設定することもできます。サンプルを次に示します。
+[Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) コマンドレットを使用して、スロットルを設定することもできます。サンプルを次に示します。
 
     $mon = [System.DayOfWeek]::Monday 
     $tue = [System.DayOfWeek]::Tuesday
     Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "18:00:00" -WorkHourBandwidth  (512*1024) -NonWorkHourBandwidth (2048*1024)
 
-**Set-OBMachineSetting -NoThrottle** は、調整が不要であることを示します。
+**Set-OBMachineSetting -NoThrottle** は、スロットルが不要であることを示します。
 
 
 #### ネットワーク帯域幅に影響を与える
@@ -326,8 +329,8 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 2. **[ソース]** ブレードで、Hyper-V サイトを選択します。次に、 **[OK]** をクリックします
 3. **[ターゲット]** で、コンテナーのサブスクリプションと、フェールオーバー後に Azure で使用するフェールオーバー モデル (クラシックまたは Resource Manager) を選択します。
-4. 使用するストレージ アカウントを選択します。現在持っているものとは別のストレージ アカウントを使用する場合は、[ストレージ アカウントを作成](#set-up-an-azure-storage-account)できます。ARM モデルを使用してストレージ アカウントを作成するには、**[新規作成]** をクリックします。クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure ポータルで](../storage/storage-create-storage-account-classic-portal.md)作成できます。次に、 **[OK]** をクリックします
-5.  フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[Configure now for selected machines]** (選択したマシンに対して今すぐ構成する) を選択します。マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。現在あるものとは別のネットワークを使用する場合は、[ネットワークを作成](#set-up-an-azure-network)できます。ARM モデルを使用してネットワークを作成するには、**[新規作成]** をクリックします。クラシック モデルを使用してネットワークを作成する場合は、[Azure ポータル](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)で作成します。該当する場合は、サブネットを選択します。次に、 **[OK]** をクリックします
+4. 使用するストレージ アカウントを選択します。現在持っているものとは別のストレージ アカウントを使用する場合は、[ストレージ アカウントを作成](#set-up-an-azure-storage-account)できます。ARM モデルを使用してストレージ アカウントを作成するには、**[新規作成]** をクリックします。クラシック モデルを使用してストレージ アカウントを作成する場合は、[Azure ポータル](../storage/storage-create-storage-account-classic-portal.md)で作成できます。次に、 **[OK]** をクリックします
+5.  フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。現在あるものとは別のネットワークを使用する場合は、[ネットワークを作成](#set-up-an-azure-network)できます。ARM モデルを使用してネットワークを作成するには、**[新規作成]** をクリックします。クラシック モデルを使用してネットワークを作成する場合は、[Azure ポータル](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)で作成します。該当する場合は、サブネットを選択します。次に、 **[OK]** をクリックします
 
 	![Enable replication](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png)
 
@@ -339,11 +342,11 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 	![Enable replication](./media/site-recovery-hyper-v-site-to-azure/enable-replication6.png)
 
-12. **[レプリケーション設定]** の **[レプリケーション設定の構成]** で、保護された VM に適用するレプリケーション ポリシーを選択します。次に、 **[OK]** をクリックしますレプリケーション ポリシーを変更するには、**[設定]**、**[レプリケーション ポリシー]**、ポリシー名、**[設定の編集]** の順にクリックします。適用する変更は、既にレプリケートしているマシンと、新しいマシンに使用されます。
+12. **[レプリケーションの設定]** の **[レプリケーション設定の構成]** で、保護対象の VM に適用するレプリケーション ポリシーを選択します。次に、 **[OK]** をクリックしますレプリケーション ポリシーを変更するには、**[設定]**、**[レプリケーション ポリシー]**、ポリシー名、**[設定の編集]** の順にクリックします。適用する変更は、既にレプリケートしているマシンと、新しいマシンに使用されます。
 
 	![Enable replication](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
 
-**[設定]**、**[ジョブ]**、**[Site Recovery jobs]** (Site Recovery ジョブ) の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。**保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+**[設定]**、**[ジョブ]**、**[Site Recovery jobs (Site Recovery ジョブ)]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。**保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 ### VM プロパティを表示して管理する
 
@@ -357,7 +360,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 	![Enable replication](./media/site-recovery-hyper-v-site-to-azure/test-failover2.png)
 
-3. **[コンピューティングとネットワーク]** の **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。必要に応じて、Azure の要件に準拠するように名前を変更します。Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示し、変更することもできます。以下の点に注意してください。
+3. **[計算とネットワーク]** の **[計算のプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。必要に応じて、Azure の要件に準拠するように名前を変更します。Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示し、変更することもできます。以下の点に注意してください。
 
 	- ターゲット IP アドレスを設定できます。アドレスを指定しなかった場合、フェールオーバーされたマシンで DHCP が使用されます。フェールオーバーで使用できないアドレスが設定された場合、フェールオーバーは失敗します。テスト フェールオーバー ネットワークのアドレスを利用できる場合、テスト フェールオーバーに同じターゲット IP アドレスを使用できます。
 	- ネットワーク アダプターの数は、次に示すように、ターゲット仮想マシンに指定したサイズによって異なります。
@@ -394,7 +397,7 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 **フェールオーバー前にオンプレミスのマシンで行う操作**:
 
 - インターネット経由のアクセスで RDP を有効にする場合は、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、すべてのプロファイルについて、**[Windows ファイアウォール]** の **[許可されたアプリおよび機能]** で RDP が許可されていることを確認します。
-- マシンでサイト間接続経由のアクセスに対して RDP を有効にする場合は、**ドメイン**と**プライベート** ネットワークについて、**[Windows ファイアウォール]** の **[許可されたアプリおよび機能]** で RDP が許可されていることを確認します。
+- マシンでサイト間接続経由のアクセスに対して RDP を有効にする場合は、**[ドメイン]** および **[プライベート]** ネットワークについて、**[Windows ファイアウォール]** の **[許可されたアプリおよび機能]** で RDP が許可されていることを確認します。
 - オンプレミスのマシンに [Azure VM エージェント](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。
 - オペレーティング システムの SAN ポリシーが OnlineAll に設定されていることを確認します。[詳細情報](https://support.microsoft.com/kb/3031135)
 - フェールオーバーを実行する前に、IPSec サービスを無効にします。
@@ -456,7 +459,7 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 	![Essentials](./media/site-recovery-hyper-v-site-to-azure/essentials.png)
 
 2. **[正常性]** タイルで、問題が発生しているサイト サーバーと、Site Recovery によって過去 24 時間以内に生成されたイベントを監視できます。
-3. **[Replicated Items]** (レプリケートされた項目)、**[復旧計画]**、**[Site Recovery Jobs]** (Site Recovery ジョブ) の各タイルで、レプリケーションの管理と監視を実行できます。**[設定]**、**[ジョブ]**、**[Site Recovery jobs]** (Site Recovery ジョブ) の順にクリックすると、ジョブの詳細を確認できます。
+3. **[レプリケートされたアイテム]**、**[復旧計画]**、**[Site Recovery ジョブ]** の各タイルで、レプリケーションの管理と監視を実行できます。**[設定]**、**[ジョブ]**、**[Site Recovery jobs (Site Recovery ジョブ)]** の順にクリックすると、ジョブの詳細を確認できます。
 
 
 
@@ -466,4 +469,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

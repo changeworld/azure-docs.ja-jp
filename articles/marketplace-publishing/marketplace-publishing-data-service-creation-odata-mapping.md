@@ -13,10 +13,12 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="na"
-      ms.date="01/04/2016"
+      ms.date="08/26/2016"
       ms.author="hascipio; avikova" />
 
 # CSDL を使用した既存の Web サービスの OData へのマッピング
+
+>[AZURE.IMPORTANT] **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
 
 この記事では、CSDL を使用して既存のサービスを OData 互換サービスにマッピングする方法について説明します。また、サービスの呼び出し経由でクライアントからの入力要求を変換し、OData 互換フィード経由で出力 (データ) を返すマッピング ドキュメント (CSDL) を作成する方法についても説明します。Microsoft Azure Marketplace は、OData プロトコルを使用してエンドユーザーにサービスを公開しています。コンテンツ プロバイダー (データ所有者) が公開するサービスは、REST、SOAP など多様な形式で公開されます。
 
@@ -127,7 +129,7 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 
 次に CSDL の例について説明します (以下の CSDL 例をコピーして XML エディターに貼り付け、実際のサービスに合わせて変更します。[Azure Marketplace 発行ポータル](https://publish.windowsazure.com)でサービスを作成するときに、変更した内容を [データ サービス] タブの CSDL マッピングに貼り付けます)。
 
-**用語:** CSDL の用語と[発行ポータル](https://publish.windowsazure.com)の UI (PPUI) 用語との対応関係について。
+**用語:** CSDL の用語と[発行ポータル](https://publish.windowsazure.com) UI (PPUI) の用語との対応関係について。
 - PPUI におけるプランの "タイトル" は、MyWebOffer と対応します。
 - PPUI における MyCompany は、[Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure)の UI における **Publisher Display Name** と対応します。
 - ご利用の API は、Web サービスまたはデータ サービス (PPUI におけるプラン) に対応します。
@@ -308,4 +310,4 @@ CSDL は、Web サービスを記述するための XML 文法です。CSDL の�
 - 例を確認したい場合は、[データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md)に関する記事でサンプル コードを参照し、コード構文とコンテキストを学習してください。
 - データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの[データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0831_2016-->

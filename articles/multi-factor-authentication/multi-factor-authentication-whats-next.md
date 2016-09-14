@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/22/2016" 
+	ms.date="08/30/2016" 
 	ms.author="billmath"/>
 
 # Azure Multi-Factor Authentication の構成
@@ -57,7 +57,7 @@ Azure Multi-Factor Auth プロバイダーを介して MFA 管理ポータルに
 Microsoft の既定の音声案内では、不正アクセスのアラートを送信するには 0# を押すようにユーザーに指示します。0 以外のコードを使用する場合は、適切な指示を行う独自のカスタム音声案内を記録し、アップロードする必要があります。
 
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/fraud.png)</center>
+![クラウド](./media/multi-factor-authentication-whats-next/fraud.png)
 
 ### 不正アクセスのアラートを通報するには
 不正アクセスのアラートは、2 つの方法で通報できます。モバイル アプリまたは電話を使用します。
@@ -71,7 +71,10 @@ Microsoft の既定の音声案内では、不正アクセスのアラートを�
 3. [不正を通報] をクリックします。
 4. アプリの [閉じる] をクリックします。
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/report1.png)</center>
+![クラウド](./media/multi-factor-authentication-whats-next/report1.png)
+
+
+![クラウド](./media/multi-factor-authentication-whats-next/fraud2.png)
 
 ### 不正アクセスのアラートを電話で通報するには
 
@@ -376,4 +379,4 @@ Azure Multi-Factor Authentication を使用しているときにユーザーが�
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

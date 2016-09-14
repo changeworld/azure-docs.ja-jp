@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.topic="article"
     ms.devlang="na"
-	ms.date="07/24/2016"
+	ms.date="08/30/2016"
 	ms.author="swkrish"/>
 
 # Azure Active Directory B2C: Azure AD B2C テナントを作成する
@@ -42,7 +42,7 @@ Microsoft Azure Active Directory (Azure AD) B2C を使い始めるには、以�
 6. テナントが作成され、Active Directory 拡張機能に表示されます。また、現在のユーザーがテナントのグローバル管理者になります。必要に応じて、他のグローバル管理者を追加できます。
 
     > [AZURE.IMPORTANT]
-	B2C テナントを運用アプリ向けに使用する予定がある場合は、[運用スケールとプレビュー B2C テナントの比較](active-directory-b2c-reference-tenant-type.md)に関する記事を参照してください。
+	B2C テナントを運用アプリ向けに使用する予定がある場合は、[運用スケールとプレビュー B2C テナントの比較](active-directory-b2c-reference-tenant-type.md)に関する記事を参照してください。既存の B2C テナントを削除し、同じドメイン名でそれを再作成する場合に、既知の問題があることに注意してください。B2C テナントは異なるドメイン名で作成する必要があります。
 
 ## 手順 3: Azure ポータルで B2C 機能ブレードに移動する
 
@@ -79,4 +79,4 @@ Azure ポータルの B2C 機能ブレードへのショートカットを追加
 
 「[Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md)」を読み、Azure AD B2C にアプリケーションを登録する方法と、クイック スタート アプリケーションを構築する方法を学習します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

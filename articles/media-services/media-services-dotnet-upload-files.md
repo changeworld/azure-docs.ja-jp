@@ -13,14 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="07/18/2016" 
+ 	ms.date="08/30/2016" 
 	ms.author="juliako"/>
 
 
 
-#.NET を使用した Media Services アカウントへのファイルのアップロード
+# .NET を使用した Media Services アカウントへのファイルのアップロード
 
-[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
+ > [AZURE.SELECTOR]
+ - [.NET](media-services-dotnet-upload-files.md)
+ - [REST ()](media-services-rest-upload-files.md)
+ - [ポータル](media-services-portal-upload-files.md)
 
 Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
@@ -228,7 +231,7 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 	    copytask.Start();
 	}
 
-次のコード例には、このトピックで使用されているサンプルの資産ファイルをアップロードするためのコードが表示されています。
+次のコード例には、このトピックで使用されているサンプルのアセット ファイルをアップロードするためのコードが表示されています。
 	
 	UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
 	UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
@@ -310,9 +313,9 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 
 
 ##次のステップ
-これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
+これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサを取得する方法][]に関するトピックに進んでください。
 
-[メディア プロセッサの取得]: media-services-get-media-processor.md
+[メディア プロセッサを取得する方法]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

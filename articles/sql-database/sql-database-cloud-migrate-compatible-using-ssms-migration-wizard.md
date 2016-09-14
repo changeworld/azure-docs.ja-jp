@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-migrate"
-   ms.date="06/07/2016"
+   ms.date="08/24/2016"
    ms.author="carlrab"/>
 
 # [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用して SQL Server データベースを SQL Database に移行する
@@ -29,7 +29,7 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 
 ## [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用する
 
-> [AZURE.NOTE] 以下の手順は、[SQL Database サーバーのプロビジョニング](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database/)が完了していることを想定しています。
+> [AZURE.NOTE] 以下の手順では、[SQL Database サーバーのプロビジョニング](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database/)が完了していると想定しています。
 
 1. 最新バージョンの SQL Server Management Studio があることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
@@ -48,11 +48,17 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 
 	![[タスク] メニューの "Azure へのデプロイ"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 
-5.	新しいデータベース名の **[新しいデータベース名]** を指定し、**[Microsoft Azure SQL Database のエディション]** ([サービス階層](sql-database-service-tiers.md))、**[データベースの最大サイズ]**、**[サービスの目的]** (パフォーマンス レベル)、および移行プロセスの間にこのウィザードが作成する [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルの **[一時ファイル名]** を設定します。
+5.	移行プロセス時にこのウィザードが作成する[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルについて、次の項目を入力します。
 
-	![設定のエクスポート](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
+ - **新しいデータベース名**
+ - **Microsoft Azure SQL Database のエディション** ([サービス レベル](sql-database-service-tiers.md))
+ - **データベースの最大サイズ**
+ - **サービスの目標** (パフォーマンス レベル)
+ - **一時ファイル名**
 
-6.	データベースを移行するウィザードを完了します。データベースのサイズと複雑さに応じて、デプロイメントには数分から数時間かかる場合があります。このウィザードで互換性の問題が検出された場合、画面にエラーが表示され、移行は続行されません。データベース互換性問題の修正方法については、「[データベースの互換性の問題を修正する](sql-database-cloud-migrate-fix-compatibility-issues.md)」を参照してください。
+    ![設定のエクスポート](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
+
+6.	ウィザードを終了します。データベースのサイズと複雑さに応じて、デプロイメントには数分から数時間かかる場合があります。このウィザードで互換性の問題が検出された場合、画面にエラーが表示され、移行は続行されません。データベース互換性問題の修正方法については、「[データベースの互換性の問題を修正する](sql-database-cloud-migrate-fix-compatibility-issues.md)」を参照してください。
 
 7.	オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
 8.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
@@ -68,4 +74,4 @@ SQL Server Management Studio のデータベースの Microsoft Azure Database �
 - [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
 - [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

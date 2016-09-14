@@ -13,7 +13,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="data-management"
-    ms.date="07/19/2016"
+    ms.date="08/29/2016"
     ms.author="carlrab"/>
 
 # Transact-SQL を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始
@@ -96,10 +96,11 @@
 
 ## 次のステップ   
 
+- フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 - 復旧前および復旧後の手順、障害復旧訓練の実施など、アクティブ geo レプリケーションを使用した障害復旧については、[障害復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 - アクティブ geo レプリケーションについては、Sasha Nosov の [geo レプリケーションの新機能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)に関するブログ記事をご覧ください。
-- アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、[geo レプリケーションを使用した、ビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
-- エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+- アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、[geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
+- エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、[エラスティック プールの障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 - ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

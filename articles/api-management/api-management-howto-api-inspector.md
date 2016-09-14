@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="08/24/2016" 
 	ms.author="sdanie"/>
 
 # Azure API Management で API Inspector を使用して呼び出しをトレースする方法
@@ -229,7 +229,6 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
 ## <a name="next-steps"> </a>次のステップ
 
--	「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
 -	「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」でポリシー式のトレースのデモをご覧ください。デモを表示するには、21:00 まで早送りします。
 
 >[AZURE.VIDEO episode-177-more-api-management-features-with-vlad-vinogradsky]
@@ -244,7 +243,6 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
 [Azure API Management の使用]: api-management-get-started.md
 [API Management インスタンスの作成]: api-management-get-started.md#create-service-instance
-[Azure API Management の詳細な構成について]: api-management-get-started-advanced.md
 [Azure Classic Portal]: https://manage.windowsazure.com/
 
 
@@ -261,4 +259,4 @@ API Inspector を使用するには、**ocp-apim-trace: true** 要求ヘッダ�
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

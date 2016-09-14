@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="07/28/2016" 
+	ms.date="09/01/2016" 
 	ms.author="mandia"/>
 
 # コネクタと BizTalk API Apps とは
@@ -35,7 +35,7 @@
 
 
 ## ハイブリッド コネクタ 
-ハイブリッド コネクタによって、企業と [SAP](app-service-logic-connector-sap.md)、[Oracle](app-service-logic-connector-oracle.md)、[DB2](app-service-logic-connector-db2.md)、[Informix](app-service-logic-connector-informix.md)、WebSphere MQ の接続まで、対応範囲が広がります。
+ハイブリッド コネクタによって、企業と [DB2](app-service-logic-connector-db2.md)、[Informix](app-service-logic-connector-informix.md)、WebSphere MQ の接続まで、対応範囲が広がります。
 
 ## EAI と EDI サービス
 ビジネス クリティカルなアプリの構築に必要なのは、接続だけではありません。BizTalk API Apps は、マイクロソフトの業界屈指の統合プラットフォームである BizTalk Server を基礎にして、Web アプリ、モバイル アプリ、ロジック アプリにスナップできる高度な統合機能を簡単に提供しています。これらの統合機能の一部には、[検証](app-service-logic-xml-validator.md)、[抽出](app-service-logic-xpath-extract.md)、[変換](app-service-logic-transform-xml-documents.md)、[エンコーダー](app-service-logic-connector-jsonencoder.md)、[取引先管理](app-service-logic-connector-tpm.md)、EDI 形式 ([X12](app-service-logic-connector-x12.md)、[EDIFACT](app-service-logic-connector-edifact.md)、[AS2](app-service-logic-connector-as2.md) など) のサポートが含まれます。
@@ -50,4 +50,4 @@
 Standard コネクタ、BizTalk EAI、Premium コネクタなどの各カテゴリに含まれるコネクタと API Apps の完全な一覧については、[コネクタと API Apps の一覧](app-service-logic-connectors-list.md)を参照してください。
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

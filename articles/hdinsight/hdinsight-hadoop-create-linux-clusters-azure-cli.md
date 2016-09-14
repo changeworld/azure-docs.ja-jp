@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/13/2016"
+   	ms.date="08/30/2016"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -62,8 +62,8 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
         azure group create groupname location
         
-    * __groupname__ は、グループの一意の名前に置き換えます。 
-    * __location__ には、グループの作成先となる地理的領域を指定します。 
+    * __groupname__ は、グループの一意の名前に置き換えます。
+    * __location__ には、グループの作成先となる地理的領域を指定します。
     
         グループの作成先として有効な場所は、`azure locations list` コマンドで一覧表示できます。__Name__ 列に表示されるいずれかの場所を使用してください。
 
@@ -72,7 +72,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
         
      * __groupname__ には、前の手順で作成したグループの名前を指定します。
-     * __location__ には、前の手順で使用した場所を指定します。 
+     * __location__ には、前の手順で使用した場所を指定します。
      * __storagename__ には、ストレージ アカウントの一意の名前を指定します。
      
      > [AZURE.NOTE] このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
@@ -93,7 +93,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
     * __groupname__ には、リソース グループ名を指定します。
     * __location__ には、前の手順で使用した場所を指定します。
     * __storagename__ には、ストレージ アカウントの名前を指定します。
-    * __storagekey__ には、前の手順で取得したキーを指定します。 
+    * __storagekey__ には、前の手順で取得したキーを指定します。
     * `--defaultStorageContainer` パラメーターには、クラスターに使用している名前と同じ名前を指定します。
     * __admin__ と __httppassword__ には、HTTPS でクラスターにアクセスするときに使用する名前とパスワードを指定します。
     * __sshuser__ と __sshuserpassword__ には、SSH でクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
@@ -121,4 +121,4 @@ Azure CLI を使用して HDInsight クラスターを作成したら、クラ�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0831_2016-->

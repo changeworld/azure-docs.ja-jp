@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/22/2016" 
+	ms.date="08/19/2016" 
 	ms.author="bradsev;garye" />
 
 
 # Azure Machine Learning でモデルのパフォーマンスを評価する方法
 
-ここでは、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を取り上げ、その操作で使用できるメトリックを簡単に説明します。以下の 3 種類の学習のシナリオを取り上げます。
+このトピックでは、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。以下の 3 種類の学習のシナリオを取り上げます。
 
 * 回帰
-* 二項分類 
+* 二項分類
 * 多クラス分類
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -189,4 +189,4 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Media Encoder Standard を使用して資産をエンコードする方法" 
-	description="このトピックでは、.NET を使用し、Media Encoder Standard で資産をエンコードする方法について紹介します。" 
+	pageTitle=".NET を使用した Media Encoder Standard での資産のエンコード" 
+	description="このトピックでは、.NET を使用して、Media Encoder Standard で資産をエンコードする方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="07/18/2016"
+ 	ms.date="08/30/2016"
 	ms.author="juliako;anilmur"/>
 
 
-#Media Encoder Standard を使用して資産をエンコードする方法
+# .NET を使用した Media Encoder Standard での資産のエンコード
 
 エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードには、Media Services の組み込み Media Encoder を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。
 
-このトピックでは、.NET を使用し、Media Encoder Standard (MES) で資産をエンコードする方法について紹介します。Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
+このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
 
@@ -57,7 +57,7 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 - エンコード ジョブを作成します。
 - Media Encoder Standard エンコーダーの参照を取得します。
-- "H264 Multiple Bitrate 720p" プリセットを使用するように指定します。すべてのプリセットは、[こちら](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で確認できます。また、これらのプリセットが従う必要があるスキーマを、[こちらのトピック](https://msdn.microsoft.com/library/mt269962.aspx)で確認できます。
+- "H264 Multiple Bitrate 720p" プリセットを使用するように指定します。すべてのプリセットは、[こちら](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で確認できます。また、これらのプリセットが従う必要のあるスキーマについては、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)のトピックで確認できます。
 - 1 つのエンコード タスクをジョブに追加します。
 - エンコードする入力資産を指定します。
 - エンコードされた資産が含まれる出力資産を作成します。
@@ -150,4 +150,4 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

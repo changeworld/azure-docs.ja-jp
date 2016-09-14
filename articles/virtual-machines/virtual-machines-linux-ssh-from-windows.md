@@ -14,7 +14,7 @@ description="Windows コンピューターで SSH キーを生成して使用し
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="04/15/2016" 
+	ms.date="08/29/2016" 
 	ms.author="rasquill"/>
 
 #Azure 上の Windows における SSH の使用方法
@@ -161,11 +161,11 @@ Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開
 
 	![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-windows/linuxputtyconfig.png)
 
-4.	**[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、自分のキーを選択します。入力するフィールドについては、下図を参照してください。
+4.	**[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、使用するプライベート キーを選択します。入力するフィールドについては、下図を参照してください。
 
 	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtyprivatekey.png)
 
 5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

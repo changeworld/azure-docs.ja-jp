@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/02/2016"
+	ms.date="08/30/2016"
 	ms.author="rachelap"/>
 
 # API の検出とコードの生成用の App Service API Apps メタデータ 
@@ -60,4 +60,4 @@ API アプリの作成、デプロイ、使用の手順を説明するステッ�
 
 API アプリで Azure API Management を使う場合は、Swagger メタデータを使用して API を API Management にインポートできます。詳細については、「[Azure API Management で API の定義を操作と共にインポートする方法](../api-management/api-management-howto-import-api.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0831_2016-->

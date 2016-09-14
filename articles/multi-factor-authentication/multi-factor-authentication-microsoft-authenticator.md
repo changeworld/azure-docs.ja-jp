@@ -35,18 +35,65 @@ Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/f
 
 **ワンタイム パスワード** - このモードでは、Azure Authenticator アプリをソフトウェア トークンとして使用して、OATH 確認コードを生成できます。この確認コードをユーザー名とパスワードと共に入力することにより、2 番目の形式の認証が行われます。
 
-## Microsoft Authenticator アプリにアカウントを追加する
+## QR コード スキャナーを使用して Microsoft Authenticator アプリにアカウントを追加する
+
+- Microsoft Authenticator アプリがインストールされている電話でアプリを起動し、[+] をクリックして新しいアカウントを追加します。次に、[職場または学校アカウント] をタップすると、QR コード スキャナーが起動します。カメラが正常に動作しない場合は、会社情報を手動で入力することもできます。「[手動でのアカウントの追加](#adding-an-account-manually)」を参照してください。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan4.png)
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan.png)
+
+- モバイル アプリの構成画面に表示される QR コード画像をスキャンします。[完了] をクリックして、QR コードの画面を閉じます。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
+
+- QR コードをスキャンできない場合は、情報を手動で入力することができます。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/barcode.png)
+
+- 電話で、アクティブ化が開始され完了したら、[連絡してください] をクリックします。これによって、通知コードまたは認証コードが電話に送信されます。[認証] をクリックします。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/verify.png)
+
+- 企業によっては、認証時に PIN の入力が求められる場合があります。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan3.png)
+
+
+- この操作が完了したら [閉じる] をクリックします。この時点で、認証が完了します。
+- モバイル アプリにアクセスできなくなった場合に備えて、携帯電話番号を入力しておくことをお勧めします。
+- ドロップダウン リストからお住まいの国を指定し、国の横のボックスに携帯電話番号を入力します。[次へ] をクリックします。
+- この時点で、連絡方法が設定されました。次に、非ブラウザー アプリ (Outlook 2010 以前など) のアプリ パスワードを設定します。これらのアプリを使用していない場合は、**[完了]** をクリックします。使用している場合は、次の手順に進みます。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/step4.png)
+
+- これらのアプリを使用してる場合は、指定されたアプリ パスワードをコピーし、非ブラウザー アプリケーションに貼り付けます。Outlook および Lync など、個々のアプリケーションでの手順については、「電子メールのパスワードをアプリ パスワードに変更する」と「アプリケーションのパスワードをアプリ パスワードに変更する」を参照してください。
+- [Done] をクリックします。
+
+
+## Microsoft Authenticator アプリにアカウントを手動で追加する
+アカウントを手動で追加する場合は、アカウントの手動入力ボタンを選択します。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount.png)
+
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount2.png)
+
+Azure MFA を既に使用しているアカウントの場合、バーコードが表示されているページに記載されたコードと URL を入力します。この操作により、モバイル アプリのコードおよび URL ボックスに移動します。これにより、アクティブ化が開始されます。
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/barcode2.png)
+
+アクティブ化が完了したら、[連絡してください] をクリックします。これによって、通知コードまたは認証コードが電話に送信されます。[認証] をクリックします。
 
 ## 新しい Microsoft Authenticator アプリへの移行
 
-リリースにより、古い Azure Authenticator アプリが置き換えられます。Azure Authenticator アプリは引き続き機能しますが、新しい Microsoft Authenticator アプリに移行することにした場合は、この記事が役に立ちます。
+Microsoft Authenticator アプリのリリースに伴い、古い Azure Authenticator アプリが置き換えられます。Azure Authenticator アプリは引き続き機能しますが、新しい Microsoft Authenticator アプリに移行することにした場合は、この記事が役に立ちます。
 
 
-## 新しい Microsoft Authenticator アプリへの移行方法 
+### 新しい Microsoft Authenticator アプリへの移行方法 
 
 **手順 1:** Microsoft Authenticator アプリをインストールします。
 
-![クラウド](./media/multi-factor-authentication-azure-authenticator/home.png)
 
 **手順 2:** 新しいアプリを使用して、アカウントをアクティブ化します。
 
@@ -60,10 +107,9 @@ Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/f
 
 QR コードが取得できたら、アプリを起動します。「+」をクリックします。
 
+[職場または学校アカウント] をタップします。これによって、QR コードをスキャンするためのカメラが起動します。QR コードをスキャンできない場合は、いつでも手動入力オプションを使用できます。
 
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount.png)
-
-これによって、QR コードをスキャンするためのカメラが起動します。QR コードをスキャンできない場合は、いつでも手動入力オプションを使用できます。
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
 
 アカウントが正常にアクティブ化されたことを確認するには、アカウント ページに新しいアカウントが表示されることを確認してください。
 
@@ -92,13 +138,11 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
   
 ![Scan barcode](./media/multi-factor-authentication-azure-authenticator/barcode2.png)
 
-- ここで Microsoft Authenticator アプリを開くと、[アカウント] ページが表示されます。ここでは、設定したアカウントの一覧が表示されます。新しいアカウントを追加する場合は、"+" (プラス) ボタンをクリックします。これでスキャナーが開きます。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
+- ここで Microsoft Authenticator アプリを開くと、[アカウント] ページが表示されます。ここでは、設定したアカウントの一覧が表示されます。新しいアカウントを追加する場合は、+ 記号をクリックし、[職場または学校アカウント] をタップします。これでスキャナーが開きます。
 
 - バーコードをスキャンします。
 
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/scan.png)
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
 
 - アカウントがアクティブ化されるまで待ちます。
 
@@ -106,6 +150,7 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount2.png)
 
+![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/accounts.png)
 
 ## Azure アカウントを手動で追加する方法
 
@@ -121,17 +166,19 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
   
 ![Scan barcode](./media/multi-factor-authentication-azure-authenticator/barcode2.png)
 
-- ここで Microsoft Authenticator アプリを開くと、[アカウント] ページが表示されます。ここでは、設定したアカウントの一覧が表示されます。新しいアカウントを追加する場合は、"+" (プラス) ボタンをクリックします。これでスキャナーが開きます。
+- ここで Microsoft Authenticator アプリを開くと、[アカウント] ページが表示されます。ここでは、設定したアカウントの一覧が表示されます。新しいアカウントを追加する場合は、+ 記号をクリックし、[職場または学校アカウント] をタップします。これでスキャナーが開きます。これでスキャナーが開きます。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- 下部にある [手動で入力] ボタンをクリックします。
+- 下部にある [またはコードを手動で入力] をクリックします。
 
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/scan.png)
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/scan2.png)
 
 - バーコードが表示されているページに記載されたコードと URL を入力します。この操作により、モバイル アプリのコードおよび URL ボックスに移動します。これにより、アクティブ化が開始されます。
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/manual.png)
+
+![セットアップ](./media/multi-factor-authentication-end-user-first-time-mobile-app/addaccount2.png)
 
 - アカウントがアクティブ化されるまで待ちます。
 
@@ -139,36 +186,8 @@ QR コードが取得できたら、アプリを起動します。「+」をク�
 
 ![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount2.png)
 
-## Azure 以外のアカウントを手動で追加する方法
+![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/accounts.png)
 
-Microsoft アカウントなど、Azure 以外のアカウントを手動で追加する場合は、次の手順に従います。
-
-
-- Azure 以外のアカウントの手動での追加は、QR コードをスキャンするかシークレット キーを入力することで実行できます。
-- シークレット キーを手動で入力する場合は、アカウントが関連付けられているサイトからシークレット キーを取得します。たとえば、Outlook.com では、[アカウント設定] のセキュリティに関する設定に移動し、Authentication アプリの設定を選択します。[バーコードをスキャンしてシークレット キーを取得できない] を選択する必要があります。
-- 
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/secretkey.png)
-
-- Microsoft Authenticator アプリを開くと、[アカウント] ページが表示されます。ここでは、設定したアカウントの一覧が表示されます。新しいアカウントを追加する場合は、"+" (プラス) ボタンをクリックします。これでスキャナーが開きます。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
-
-- QR キーをスキャンするか、下部にある [手動で入力] ボタンをクリックします。QR コードをスキャンする場合は次の手順をスキップします。これはアクティブ化がすぐに開始されるためです。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/scan.png)
-
-- シークレット キーを手動で入力する場合は、アカウント名とバーコードと同じページに表示されるシークレット キーを入力します。この操作により、モバイル アプリのコードおよび URL ボックスに移動します。これにより、アクティブ化が開始されます。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/manual.png)
-
-- アカウントがアクティブ化されるまで待ちます。これで、新しいアカウントが追加されたことがわかります。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/msaccount.png)
-
-- アカウントの下にあるコード (この場合は 875 756) を入力し、シークレット キーを受け取ったページのボックスにこのコードを入力するとこのプロセスは完了するため、[次へ] をクリックします。
-
-![アカウントの追加](./media/multi-factor-authentication-azure-authenticator/verify.png)
 
 ## Touch ID を使用してアカウントを追加する方法
 iOS の Microsoft Authenticator モバイル アプリでは、Touch ID がサポートされています。Azure Multi-factor Authentication により、組織は、登録済みデバイスを所有するだけでなく、PIN を要求することもできます。この新機能を使用すると、TouchID 対応デバイスを持つ iOS ユーザーは、これ以上 PIN を入力する必要がなくなります。一度設定したら、ユーザーは、PIN を入力して [承認] をタップする代わりに、指紋をスキャンするだけです。
@@ -187,4 +206,4 @@ Microsoft Authenticator アプリから個々のアカウントを削除する�
 
 ![Remove account](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

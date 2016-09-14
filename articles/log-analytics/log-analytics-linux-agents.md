@@ -131,7 +131,7 @@ Linux のパフォーマンス カウンターは、Windows のパフォーマ�
 
 ### Linux のパフォーマンス カウンターを OMS で追加するには
 
-1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] (設定) ページで Linux のパフォーマンス カウンターを追加し、**[Data]** (データ) をクリックします。 ![data](./media/log-analytics-linux-agents/oms-settings-data01.png)
+1. OMS ポータルを使用して OMS Agent for Linux を構成するには、[Settings] \(設定) ページで Linux のパフォーマンス カウンターを追加し、**[Data]** (データ) をクリックします。 ![data](./media/log-analytics-linux-agents/oms-settings-data01.png)
 2. **[Settings]** (設定) ページの **[Data]** (データ) で、**[Linux performance counters]** (Linux パフォーマンス カウンター) をクリックし、プラス アイコンの左側に、追加するカウンターの名前を入力します。![Linux performance counters](./media/log-analytics-linux-agents/oms-linuxperfcounter01.png)
 3. カウンターのフル ネームがわからない場合は、名前の一部分を入力すると、使用できるカウンターが一覧表示されます。追加するカウンターが見つかったら、目的の名前を一覧から選んでクリックし、プラス アイコンをクリックしてカウンターを追加します。
 4. カウンターの一覧に、追加したカウンターが色付きのバーで強調表示されます。

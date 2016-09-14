@@ -12,14 +12,13 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/06/2016"
    ms.author="gwallace"/>
 
 
 # Azure リソース マネージャーを使用した、Application Gateway の作成、起動、または削除
 
 Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロードなどのアプリケーション配信機能を備えています。
-
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](application-gateway-create-gateway-portal.md)
@@ -28,14 +27,10 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 - [Azure CLI](application-gateway-create-gateway-cli.md)
 
-<BR>
-
-
 この記事では、Application Gateway を作成、構成、起動、および削除する手順について説明します。
 
 
 >[AZURE.IMPORTANT] Azure リソースを使用する前に、Azure は現在、リソース マネージャーのデプロイメント モデルと従来のデプロイメント モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイメント モデルとツール](../azure-classic-rm.md)について理解しておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。このドキュメントでは、Azure Resource Manager を使用したアプリケーション ゲートウェイの作成について説明します。クラシック バージョンを使用する場合は、[PowerShell を使用したアプリケーション ゲートウェイ クラシック デプロイメントの作成](application-gateway-create-gateway.md)に関するページを参照してください。
-
 
 
 ## 開始する前に
@@ -46,21 +41,17 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 ## Application Gateway の作成に必要な構成
 
-
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 - **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
-
-
 ## アプリケーション ゲートウェイの作成
 
 Azure クラシックと Azure Resource Manager の使用方法の違いは、設定が必要なアプリケーション ゲートウェイと項目を作成する順番にあります。
 
 Resource Manager を使用すると、アプリケーション ゲートウェイを作成するすべての項目は個別に構成され、その後結合されてアプリケーション ゲートウェイのリソースが作成されます。
-
 
 アプリケーション ゲートウェイを作成するために必要な手順を次に示します。
 
@@ -69,31 +60,36 @@ Resource Manager を使用すると、アプリケーション ゲートウェ�
 Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
 
 ### 手順 1
-Azure Login-AzureRmAccount にログインします。
 
-資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
+Azure へのログイン
+	
+	Login-AzureRmAccount
+
+資格情報を使用して認証を行うように求めるメッセージが表示されます。
+
 ### 手順 2.
+
 アカウントのサブスクリプションを確認します。
 
-		Get-AzureRmSubscription
+	Get-AzureRmSubscription
 
 ### 手順 3.
-使用する Azure サブスクリプションを選択します。<BR>
 
-		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+使用する Azure サブスクリプションを選択します。
+
+	Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
 ### 手順 4.
-新しいリソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
 
-    New-AzureRmResourceGroup -Name appgw-rg -location "West US"
+リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
+
+    New-AzureRmResourceGroup -Name appgw-rg -Location "West US"
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。この場所は、そのリソース グループ内のリソースの既定の保存先として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
 
 上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
 
 >[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
-
-
 
 ## アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
@@ -105,13 +101,11 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-
 ### 手順 2.
 
 サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ "appgw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
 
 	$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
 
 ### 手順 3.
 
@@ -128,15 +122,13 @@ Application Gateway を作成する次の手順のために、サブネット変
 
 ## Application Gateway 構成オブジェクトの作成
 
-Application Gateway を作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
+アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
 ### 手順 1
 
 "gatewayIP01" という名前の Application Gateway の IP 構成を作成します。Application Gateway が起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
-
 	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
-
 
 ### 手順 2.
 
@@ -144,14 +136,11 @@ Application Gateway を作成する前に、すべての構成項目を設定す
 
 	$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
 
-
-
 ### 手順 3.
 
 バックエンド プール内の負荷を分散したネットワーク トラフィックに対して、Application Gateway の設定 "poolsetting01" を構成します。
 
 	$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
-
 
 ### 手順 4.
 
@@ -164,7 +153,6 @@ Application Gateway を作成する前に、すべての構成項目を設定す
 "fipconfig01" という名前のフロントエンド IP 構成を作成し、このフロントエンド IP 構成にパブリック IP アドレスを関連付けます。
 
 	$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -PublicIPAddress $publicip
-
 
 ### 手順 6.
 
@@ -197,26 +185,6 @@ Application Gateway のインスタンスのサイズを構成します。
 
 	Get-AzureRmPublicIpAddress -Name publicIP01 -ResourceGroupName appgw-rg  
 
-	Name                     : publicIP01
-	ResourceGroupName        : appgwtest 
-	Location                 : westus
-	Id                       : /subscriptions/<sub_id>/resourceGroups/appgw-rg/providers/Microsoft.Network/publicIPAddresses/publicIP01
-	Etag                     : W/"12302060-78d6-4a33-942b-a494d6323767"
-	ResourceGuid             : ee9gd76a-3gf6-4236-aca4-gc1f4gf14171
-	ProvisioningState        : Succeeded
-	Tags                     : 
-	PublicIpAllocationMethod : Dynamic
-	IpAddress                : 137.116.26.16
-	IdleTimeoutInMinutes     : 4
-	IpConfiguration          : {
-	                             "Id": "/subscriptions/<sub_id>/resourceGroups/appgw-rg/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIPConfigurations/fipconfig01"
-	                           }
-	DnsSettings              : {
-	                             "Fqdn": "ee7aca47-4344-4810-a999-2c631b73e3cd.cloudapp.net"
-	                           } 
-
-
-
 ## Application Gateway の削除
 
 Application Gateway を削除するには、次の手順を実行します。
@@ -225,7 +193,7 @@ Application Gateway を削除するには、次の手順を実行します。
 
 Application Gateway オブジェクトを取得し、変数 "$getgw" に関連付けます。
 
-	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+	$getgw = Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### 手順 2.
 
@@ -261,4 +229,4 @@ SSL オフロードを構成する場合は、[SSL オフロード用のアプ�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

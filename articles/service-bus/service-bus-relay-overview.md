@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Service Bus のリレー型メッセージングの概要 | Microsoft Azure"
+	pageTitle="Service Bus Relay の概要 | Microsoft Azure"
 	description="Service Bus Relay の概要"
 	services="service-bus"
 	documentationCenter=".net"
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="multiple"
 	ms.topic="get-started-article"
-	ms.date="05/06/2016"
+	ms.date="09/01/2016"
 	ms.author="sethm"/>
 
 
-# Service Bus のリレー型メッセージング
+# Service Bus Relay の概要
 
-Service Bus の中心となるコンポーネントは、一元管理されたリレー サービスです (ただし、高度に負荷分散されてます)。Azure データセンターと独自のオンプレミス エンタープライズ環境の両方で実行可能なハイブリッド アプリケーションを構築できます。また、リレー サービスは、多様なトランスポート プロトコルと Web サービスの標準をサポートしています。サポートされる標準には、SOAP、WS-*、REST などがあります。ハイブリッド アプリケーションに Service Bus Relay を使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
+Service Bus の主なコンポーネントは、一元管理された (ただし高度に負荷分散された) "*リレー*" サービスです。Azure データセンターと独自のオンプレミス エンタープライズ環境の両方で実行可能なハイブリッド アプリケーションを構築できます。Service Bus Relay では、多様なトランスポート プロトコルと Web サービス標準がサポートされています。サポートされる標準には、SOAP、WS-*、REST などがあります。ハイブリッド アプリケーションにリレー サービスを使用すると、ファイアウォール接続を開放せず、または企業ネットワークのインフラストラクチャ内部を変更せずに、企業のエンタープライズ ネットワーク内部にある Windows Communication Foundation (WCF) サービスを安全にパブリック クラウドに公開することができます。
 
 ![リレーの概念](./media/service-bus-relay-overview/sb-relay-01.png)
 
@@ -38,4 +38,4 @@ Service Bus Relay の詳細については、次のトピックを参照して�
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0907_2016-->

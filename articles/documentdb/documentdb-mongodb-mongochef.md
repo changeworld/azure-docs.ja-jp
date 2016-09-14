@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="08/25/2016" 
 	ms.author="stbaro"/>
 
 # MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する
@@ -30,7 +30,7 @@ MongoChef 接続マネージャーに MongoDB のプロトコル対応の Docume
 
 1. [ここ](documentdb-connect-mongodb-account.md)に記載されている手順に従って、MongoDB のプロトコル対応の DocumentDB に使用する接続情報を取得します。
 
-	![Screen shot of the connection string blade](./media/documentdb-connect-mongodb-account/ConnectionStringBlade.png)
+	![Screen shot of the connection string blade](./media/documentdb-mongodb-mongochef/ConnectionStringBlade.png)
 
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
 
@@ -132,4 +132,4 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0831_2016-->

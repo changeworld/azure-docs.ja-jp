@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/23/2016"
+	ms.date="08/26/2016"
 	ms.author="andkjell"/>
 
 
@@ -111,7 +111,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 この式で属性が値を持つ場合は、属性の最初のアイテムを使用し (Item)、先頭と末尾のスペースを削除して (Trim)、文字列の最初の 448 文字を維持します (Left)。
 
 ### 属性をフローしない
-このセクションのシナリオの背景情報については、「[属性フローの処理の制御](#control-the-attribute-flow-process)」を参照してください。
+このセクションのシナリオの背景情報については、「[属性フローの処理の制御](active-directory-aadconnectsync-understanding-declarative-provisioning.md#control-the-attribute-flow-process)」を参照してください。
 
 属性をフローしない方法は 2 つあります。1 つ目の方法は、インストール ウィザードで使用できます。[選択した属性を削除](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)できます。このオプションは、以前に属性を同期したことがない場合に使用できます。ただし、この属性を同期した後に、この機能で属性を削除した場合、同期エンジンによるその属性の管理は停止され、既存の値は Azure AD に残ります。
 
@@ -124,31 +124,9 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 - 同期規則を保存します。**同期サービス**を開始し、[コネクタ] を探して **[実行]**、**[完全同期]** の順に選択します。この手順では、すべての属性フローが再計算されます。
 - コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。![段階的な削除](./media/active-directory-aadconnectsync-change-the-configuration/deletetobeexported.png)
 
-## 先進的概念
-
-### 属性フローの処理の制御
-複数の受信同期規則が同じメタバース属性に提供されるよう構成されると、その後、優先順位は、優先される規則を決定するために使用されます。優先順位の最も高い (数値が最も小さい) 同期規則は値を提供します。送信規則についても同じことになります。優先順位の最も高い同期規則が優先され、接続されたディレクトリに値を提供します。
-
-場合によっては、同期規則は、値を提供するのではなく、他の規則の動作を決定する必要があります。この例では、いくつかの特殊なリテラルが使用されています。
-
-受信同期規則の場合、リテラルの **NULL** を使用すると、提供する値がフローにないことを示すことができます。優先順位の低い別の規則は値を提供できます。値を提供するルールがない場合、メタバース属性は削除されます。送信規則では、すべての同期規則が処理された後の最終的な値が **NULL** が場合、接続されたディレクトリからこの値が削除されます。
-
-リテラル **AuthoritativeNull** は **NULL** に似ていますが、優先順位の低い規則は値を提供できないという点が異なります。
-
-また、属性フローでは **IgnoreThisFlow** も使用できます。これは、提供するものがないことを示す意味では NULL に似ています。違いは、ターゲットに既に存在する値を削除しないことです。属性フローがそこにあったことがないようなものです。
-
-たとえば次のようになります。
-
-*Out to AD - User Exchange hybrid* では、次のフローが見つかります。`IIF([cloudSOAExchMailbox] = True,[cloudMSExchSafeSendersHash],IgnoreThisFlow)` この式は、ユーザーのメールボックスが Azure AD にある場合に属性を Azure AD から AD へフローするという意味になります。Azure AD にない場合は、Active Directory に何もフローされません。この場合、既存の値が AD で保持されます。
-
-### ImportedValue
-ImportedValue 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。次に例を示します。`ImportedValue("proxyAddresses")`
-
-通常、同期する際は、まだエクスポートされていない場合であっても、エクスポート中にエラーが発生した場合であっても、属性では予想される値を使用します ("top of the tower")。受信同期では、接続されたディレクトリにまだ届いていない属性も最終的には届くと見なされます。また、接続されたディレクトリで確認された値のみを同期することが重要です ("hologram and delta import tower")。
-
-この関数の例は、標準の同期規則 *In from AD – User Common from Exchange* にあります。ハイブリッド Exchange の場合、Exchange Online によって追加された値を同期する必要があるのは、その値が正常エクスポートされたことが確認されたときのみです。`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
-
 ## 次のステップ
+
+[宣言型のプロビジョニング](active-directory-aadconnectsync-understanding-declarative-provisioning.md)と同期規則で利用可能なオプションについてご確認ください。
 
 属性フローで使用される[宣言型プロビジョニングの式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)に関するページをご覧ください。
 
@@ -156,4 +134,4 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

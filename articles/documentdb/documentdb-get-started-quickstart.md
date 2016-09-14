@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/29/2016"
+	ms.date="09/01/2016"
 	ms.author="anhoh"/>
 
 # NoSQL チュートリアル: DocumentDB C# コンソール アプリケーションの作成
@@ -25,7 +25,7 @@
 
 Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 クイック スタート プロジェクトを入手するか、このチュートリアルを完了すると、DocumentDB リソースの作成と照会を行うコンソール アプリケーションが手に入ります。
 
-- **[クイック スタート](#quickstart)**: サンプル プロジェクトをダウンロードし、接続情報を追加して、5 分未満で DocumentDB アプリを稼働させることができます。
+- **[クイック スタート](#quickstart)**: サンプル プロジェクトをダウンロードし、接続情報を追加して、10 分未満で DocumentDB アプリを稼働させることができます。
 - **[チュートリアル](#tutorial)**: 30 分以内でクイックスタート アプリを一から構築できます。
 
 ## 前提条件
@@ -36,7 +36,7 @@ Azure DocumentDB .NET SDK の NoSQL チュートリアルへようこそ。 ク�
 
 ## [クイック スタート]
 
-1. サンプル プロジェクトを [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) からダウンロードします。
+1. [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart/archive/master.zip) からサンプル プロジェクトの .zip をダウンロードするか、[documentdb-dotnet-getting-started-quickstart](https://github.com/Azure-Samples/documentdb-dotnet-getting-started-quickstart) リポジトリをクローンします。
 2. Azure Portal を使用して [DocumentDB アカウントを作成](documentdb-create-account.md)します。
 3. App.config ファイルで、EndpointUri と PrimaryKey の値を [Azure Portal](https://portal.azure.com/) から取得した値に置き換えます (**[DocumentDB (NoSQL)]** ブレードに移動し、**アカウント名**をクリックして、リソース メニューの **[キー]** をクリックします)。![Screen shot of the EndpointUri and PrimaryKey value to replace in App.config](./media/documentdb-get-started-quickstart/nosql-tutorial-documentdb-keys.png)
 4. プロジェクトをビルドします。コンソール ウィンドウで、新しいリソースが作成、照会、クリーンアップされます。
@@ -599,4 +599,4 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
 [documentdb-manage]: documentdb-manage.md
 [keys]: media/documentdb-get-started-quickstart/nosql-tutorial-keys.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

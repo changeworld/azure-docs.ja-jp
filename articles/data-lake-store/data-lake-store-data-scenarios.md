@@ -40,7 +40,7 @@
 | データ ソース | 取り込みに使用するツール |
 |--------------------|----------------------------------------------------------------------------------------|
 | ローカル コンピューター | <ul> <li>[Azure ポータル](/data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure クロスプラットフォーム CLI](data-lake-store-get-started-cli.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md#upload-source-data-files) </li></ul> |
-| Azure Storage BLOB | <ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li> </ul> |
+| Azure Storage BLOB | <ul> <li>[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
  
 ### ストリーミングされたデータ
@@ -49,7 +49,7 @@
 
 使用できるツールは次のとおりです。
  
-* [Azure Stream Analytics](../stream-analytics-data-lake-output)。Event Hubs に取り込まれたイベントは、 Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
+* [Azure Stream Analytics](../stream-analytics-data-lake-output)。Event Hubs に取り込まれたイベントは、Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
 * [EventProcessorHost](../event-hubs/event-hubs-csharp-ephcs-getstarted.md#receive-messages-with-eventprocessorhost)。Event Hubs からイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
 
@@ -94,7 +94,7 @@ Web サーバー ログ データをアップロードする場合、または�
 
 数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。このような場合は、次のオプションを使用できます。
 
-* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、[Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)を参照してください。
+* **Azure ExpressRoute の使用**。Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。詳細については、[Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)をご覧ください。
 
 
 * **データの "オフライン" アップロード**。何らかの理由で Azure ExpressRoute が使用できない場合は、[Azure Import/Export サービス](../storage/storage-import-export-service.md)を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。データはまず Azure Storage BLOB にアップロードされます。その後、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md#sample-copy-data-from-azure-blob-to-azure-data-lake-store) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage BLOB から Data Lake Store にデータをコピーできます。
@@ -145,4 +145,4 @@ Data Lake Store でデータが利用できるようになったら、サポー�
 * まず、[Azure Data Factory を使って、Data Lake Store から Azure SQL Data Warehouse にデータを移動](../data-factory/data-factory-data-movement-activities.md#supported-data-stores)します。
 * その後、[Power BI を Azure SQL Data Warehouse と統合](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md)して、データを視覚的に表現することができます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

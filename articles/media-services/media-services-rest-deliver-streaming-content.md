@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services からストリーミング コンテンツを配信する方法" 
+	pageTitle="REST を使用して Azure Media Services コンテンツを発行する" 
 	description="ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。コードは REST API を使用しています。" 
 	authors="Juliako" 
 	manager="erikre" 
@@ -13,25 +13,25 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="08/30/2016"
 	ms.author="juliako"/>
 
 
-#方法: ストリーミング コンテンツを配信する
+# REST を使用して Azure Media Services コンテンツを発行する
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-deliver-streaming-content.md)
 - [REST ()](media-services-rest-deliver-streaming-content.md)
-- [ポータル](media-services-manage-content.md#publish)
+- [ポータル](media-services-portal-publish.md)
 
-##概要
+##Overview
 
 
-オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[資産をエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に、アセット配信ポリシーを構成します ([この](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
+オンデマンド ストリーミング ロケーターを作成してストリーミング URL を構築することで、アダプティブ ビットレート MP4 セットをストリーミングできます。[アセットをエンコードする](media-services-rest-encode-asset.md)トピックで、アダプティブ ビットレート MP4 セットへのエンコード方法を説明しています。コンテンツが暗号化されている場合は、ロケーターを作成する前に資産配信ポリシーを構成します ([こちらの](media-services-rest-configure-asset-delivery-policy.md)トピックをご覧ください)。
 
 また、オンデマンド ストリーミング ロケーターを使って、プログレッシブ ダウンロードができる MP4 ファイルの URL を作成できます。
 
-このトピックでは、オンデマンド ストリーミング ロケーターを作成して資産を発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
+このトピックでは、オンデマンド ストリーミング ロケーターを作成してアセットを発行し、 Smooth、MPEG DASH、HLS ストリーミング URL を作成する方法について説明します。また、プログレッシブ ダウンロードを行う URL を作成する方法についても説明します。
 
 [次](#types)のセクションに、値が REST コールで使われる列挙型を示します。
   
@@ -191,4 +191,4 @@ URL: **Path** + アセット ファイル mp4 名
 
 [資産配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0831_2016-->

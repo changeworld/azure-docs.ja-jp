@@ -44,8 +44,10 @@ DevTest ラボを使用することで、チームがアプリケーションの
 
 事前作成済みのプラグインや Microsoft の API を活用して、好みの継続的インテグレーション (CI) ツール、統合開発環境 (IDE)、自動リリース パイプラインから、開発/テスト環境のプロビジョニングを直接行うことができます。Microsoft の包括的なコマンド ライン ツールを使用することもできます。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ##次のステップ
 
 [DevTest ラボの概念](devtest-lab-concepts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

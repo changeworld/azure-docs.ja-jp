@@ -86,7 +86,7 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [DocumentDB]: ../documentdb/documentdb-get-started.md
 [認証機能]: ./app-service-mobile-auth.md
 [データ機能]: ./app-service-mobile-offline-data-sync.md
-[プッシュ通知機能]: ../notification-hubs/notification-hubs-overview.md
+[プッシュ通知機能]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
@@ -102,4 +102,4 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
 [学習マップ]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

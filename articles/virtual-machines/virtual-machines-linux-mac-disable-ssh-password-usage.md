@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="01/29/2016"
-	ms.author="v-vlivech"/>
+	ms.date="08/26/2016"
+	ms.author="v-livech"/>
 
 # SSHD の構成により Linux VM で SSH パスワードを無効化する
 
@@ -43,7 +43,7 @@ SSHD は Linux VM で実行されている SSH Server です。SSH は、MacBook
 
 ## 前提条件
 
-- [Azure の Linux VM と Mac for Linux VM に SSH キーを作成する](link)
+- [Azure の Linux VM と Mac for Linux VM に SSH キーを作成する](virtual-machines-linux-mac-create-ssh-keys.md)
 - Azure アカウント
   - [無料試用版サインアップ](https://azure.microsoft.com/pricing/free-trial/)
   - [Azure ポータル](http://portal.azure.com)
@@ -145,4 +145,4 @@ username@macbook$ sudo service sshd restart
 
 VM でパスワードが無効になり、VM はブルート フォース パスワード ログイン試行から保護されます。SSH キーのみを許可すると、ログインが速く、はるかに安全になります。
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0831_2016-->

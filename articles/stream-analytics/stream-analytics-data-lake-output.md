@@ -15,25 +15,23 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="07/27/2016"
+	ms.date="08/30/2016"
 	ms.author="jeffstok"
 />
 
 # Stream Analytics の Data Lake Store 出力
 
-Stream Analytics ジョブは、[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) など、いくつかの出力方法をサポートしています。Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。この記事では、Stream Analytics Azure クラシック ポータルの Azure Data Lake Store の承認、構成、承認の更新について説明します。
-
-> [AZURE.NOTE] 現時点では、Data Lake Store 出力の作成と構成は Azure クラシック ポータルで**のみ**サポートされています。
+Stream Analytics ジョブは、[Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) など、いくつかの出力方法をサポートしています。Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。
 
 ## Data Lake Store アカウントを承認する
 
 1.  Microsoft Azure 管理ポータルで出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、Azure クラシック ポータルで Data Lake Store Preview へのアクセス権を要求するように求められます。
 
-    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.jpg)
+    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)
 
 2.  Data Lake Store へのアクセス権を既に持っている場合、[今すぐ承認] をクリックすると、"承認にリダイレクトしています..." というページが短時間表示されます。このページは自動的に閉じられ、Data Lake Store 出力を構成できるページが表示されます。
 
-Data Lake Store Preview にサインアップしていない場合、[今すぐサインアップ] リンクをクリックして要求を開始するか、[開始手順](../data-lake-store/data-lake-store-get-started-portal.md)に従って操作します。
+Data Lake Store Preview にサインアップしていない場合は、[今すぐサインアップ] リンクをクリックして要求を開始するか、[開始手順](../data-lake-store/data-lake-store-get-started-portal.md)に関するページの説明に従ってください。
 
 ## Data Lake Store 出力のプロパティを構成する
 
@@ -90,6 +88,6 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 
 この問題を解決するには、実行中のジョブを停止し、Data Lake Store 出力に移動します。[承認の更新] リンクをクリックすると、"承認にリダイレクトしています..." というページが短時間表示されます。処理が成功すると、このページは自動的に閉じられ、"承認が正常に更新されました" と表示されます。ページの下部にある [保存] をクリックする必要があります。[最後に停止した時刻] からジョブを再開して継続することで、データの損失を防ぐことができます。
 
-![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.jpg)
+![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0831_2016-->

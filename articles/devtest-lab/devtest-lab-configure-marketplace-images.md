@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # ラボで Azure Marketplace イメージの設定を構成する
 
-## 概要
+## Overview
 
 DevTest ラボでは、実際のラボで使用する Azure Marketplace イメージの構成方法に応じて、Azure Marketplace イメージに基づく VM を新規に作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法を説明します。
 
@@ -50,8 +50,10 @@ DevTest ラボでは、実際のラボで使用する Azure Marketplace イメ�
 
 	![どの Azure Marketplace イメージを VM のベース イメージとして使用できるようにするかを指定できる](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
 VM を作成するときに Azure Marketplace イメージを使用できるようにする方法を構成したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0831_2016-->

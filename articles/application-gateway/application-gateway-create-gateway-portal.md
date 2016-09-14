@@ -26,7 +26,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 - [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-
+- [Azure CLI](application-gateway-create-gateway-cli.md)
 
 <BR>
 
@@ -57,7 +57,7 @@ Azure Application Gateway には、専用のサブネットが必要です。仮
 
 Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**、**[Application Gateway]** の順にクリックします。
 
-![Creating new Application Gateway][1]
+![Creating Application Gateway][1]
 
 ### 手順 2.
 
@@ -69,7 +69,7 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 - **[SKU サイズ]** - アプリケーション ゲートウェイのサイズ。S、M、L のオプションを使用できます。
 - **[インスタンス数]** - インスタンスの数。この値は、2 ～ 10 の数値で指定する必要があります。
 - **[リソース グループ]** - アプリケーション ゲートウェイを保持するリソース グループ。既存のリソース グループを指定することも、新しいグループを指定することもできます。
-- **[場所]** - アプリケーション ゲートウェイのリージョン。リソース グループと同じ場所にします。"*これは、仮想ネットワークとパブリック IP はゲートウェイと同じ場所に存在する必要があるため、重要です。*"
+- **[場所]** - アプリケーション ゲートウェイのリージョン。リソース グループと同じ場所にします。"*この場所は、仮想ネットワークとパブリック IP はゲートウェイと同じ場所に存在する必要があるため、重要です。*"
 
 ![blade showing basic settings][2]
 
@@ -88,7 +88,7 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 
 *[仮想ネットワークの選択]* ブレードで、**[新規作成]** をクリックします。
 
-"*このシナリオでは説明しませんが、この時点で既存の仮想ネットワークを選択することもできます*"
+*"このシナリオでは説明しませんが、この時点で既存の仮想ネットワークを選択することもできます"*
 
 ![choose virtual network blade][4]
 
@@ -162,4 +162,4 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0831_2016-->

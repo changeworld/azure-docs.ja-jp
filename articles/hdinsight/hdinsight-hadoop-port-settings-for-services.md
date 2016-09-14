@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="06/14/2016"
+ms.date="08/30/2016"
 ms.author="larryfr"/>
 
 # HDInsight で使用されるポートと URI
@@ -34,7 +34,7 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 
 HDInsight クラスターのすべてのノードは Azure Virtual Network 内にあり、インターネットから直接アクセスすることはできません。パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
 
-| サービス | ポート | プロトコル | 説明 |
+| サービス | ポート | プロトコル | Description |
 | ---- | ---------- | -------- | ----------- | ----------- |
 | sshd | 22 | SSH | ヘッド ノード 0 の sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
 | sshd | 22 | SSH | エッジ ノードの sshd にクライアントを接続します (HDInsight Premium のみ)。[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。 |
@@ -47,7 +47,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 次のポートは、特定のクラスターの種類で使用できます。
 
-| サービス | ポート | プロトコル |クラスターの種類 | 説明 |
+| サービス | ポート | プロトコル |クラスターの種類 | Description |
 | ------------ | ---- |  ----------- | --- | ----------- |
 | Stargate | 443 | HTTPS | HBase | HBase REST API。[HBase の使用開始](hdinsight-hbase-tutorial-get-started-linux.md)に関する記事をご覧ください。 |
 | Livy | 443 | HTTPS | Spark | Spark REST API。[Livy を使用した Spark ジョブのリモートでの送信](hdinsight-apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 |
@@ -64,9 +64,11 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ## 非パブリック ポート
 
+> [AZURE.NOTE] 一部のサービスは、特定のクラスターの種類でのみ利用できます。たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
+
 ### HDFS ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- | 
 | NameNode Web UI | ヘッド ノード | 30070 | HTTPS | 現在の状態を表示する Web UI |
 | NameNode メタデータ サービス | ヘッド ノード | 8020 | IPC | ファイル システム メタデータ 
@@ -74,9 +76,10 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | DataNode | すべての worker ノード | 30010 | &nbsp; | データ転送 |
 | DataNode | すべての worker ノード | 30020 | IPC | メタデータ操作 |
 | セカンダリ NameNode | ヘッド ノード | 50090 | HTTP | NameNode メタデータのチェックポイント |
+
 ### YARN ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | Resource Manager Web UI | ヘッド ノード | 8088 | HTTP | Resource Manager の Web UI |
 | Resource Manager Web UI | ヘッド ノード | 8090 | HTTPS | Resource Manager の Web UI |
@@ -90,7 +93,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ### Hive ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | HiveServer2 | ヘッド ノード | 10001 | Thrift | プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
 | HiveServer | ヘッド ノード | 10000 | Thrift | プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
@@ -98,13 +101,13 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ### WebHCat ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | WebHCat サーバー | ヘッド ノード | 30111 | HTTP | HCatalog および他の Hadoop サービス上の Web API |
 
 ### MapReduce ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | JobHistory | ヘッド ノード | 19888 | HTTP | MapReduce JobHistory Web UI |
 | JobHistory | ヘッド ノード | 10020 | &nbsp; | MapReduce JobHistory サーバー |
@@ -112,25 +115,32 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ### Oozie
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | Oozie サーバー | ヘッド ノード | 11000 | HTTP | Oozie サービスの URL |
 | Oozie サーバー | ヘッド ノード | 11001 | HTTP | Oozie 管理用ポート |
 
 ### Ambari メトリック
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | TimeLine (アプリケーション履歴) | ヘッド ノード | 6188 | HTTP | Timeline サービス Web UI |
 | TimeLine (アプリケーション履歴) | ヘッド ノード | 30200 | RPC | Timeline サービス Web UI |
 
 ### HBase ポート
 
-| サービス | ノード | ポート | プロトコル | 説明 |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
 | HMaster | ヘッド ノード | 16000 | &nbsp; | &nbsp; |
 | HMaster 情報 Web UI | ヘッド ノード | 16010 | HTTP | HBase Master Web UI のポート |
 | リージョン サーバー | すべての worker ノード | 16020 | &nbsp; | &nbsp; |
 | &nbsp; | &nbsp; | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-<!---HONumber=AcomDC_0713_2016-->
+### Kafka ポート
+
+| サービス | ノード | ポート | プロトコル | Description |
+| ------- | ------- | ---- | -------- | ----------- |
+| ブローカー | ワーカー ノード | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | クライアント通信に使用 |
+| &nbsp; | Zookeeper ノード | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
+
+<!---HONumber=AcomDC_0831_2016-->

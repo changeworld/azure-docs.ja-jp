@@ -3,7 +3,7 @@
 	description="この記事では、PowerShell スクリプトを使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="mahthi"
+	authors="dlepow"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
@@ -15,17 +15,17 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="05/04/2016"
-	ms.author="mahthi"/>
+	ms.author="danlep"/>
 
 # Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 
-以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。以下の手順では、空欄に記入する手法でカスタム環境を移行します。コマンドを利用し、環境に合わせた値を変数 ("$" で始まる行) に入力するだけです。
+以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。以下の手順では、空欄に記入する手法でカスタム環境を移行します。コマンドを利用し、環境に合わせた値を変数 ("$" で始まる行) に入力します。
 
 ## 手順 1. 移行を準備する
 
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
 
-- [サポートされていない構成または機能の一覧](virtual-machines-windows-migration-classic-resource-manager.md)をご確認ください。サポートされていない構成または機能を使用する仮想マシンがある場合、構成または機能のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を可能にすることもできます。
+- [サポートされていない構成または機能の一覧](virtual-machines-windows-migration-classic-resource-manager.md)をご確認ください。サポートされていない構成または機能を使用する仮想マシンがある場合、構成または機能のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を有効にします。
 -	インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
 
 ## 手順 2: Azure PowerShell の最新バージョンをインストールする
@@ -51,7 +51,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 	$subscr="<subscription name>"
 	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
 
->[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます
+>[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます。
 
 >	*BadRequest : Subscription is not registered for migration.* 
 
@@ -82,7 +82,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 ### クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
 
-次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。クラウド サービスの VM が仮想ネットワーク内にある場合、または Web/worker ロールを持つ場合は、エラー メッセージが返されます。
+次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。クラウド サービスの VM が仮想ネットワーク内にある場合、または Web/worker ロールを持つ場合は、コマンドによってエラー メッセージが返されます。
 
 	Get-AzureService | ft Servicename
 
@@ -96,12 +96,12 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 1. プラットフォームで作成した仮想ネットワークに VM を移行する場合
 
-	最初の手順では、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
+	最初に、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
 		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 		$validate.ValidationMessages
 
-	前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+	このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
 
 		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 
@@ -111,12 +111,12 @@ Resource Manager モデルの自分のアカウントにサインインします
 		$vnetName = "<Virtual Network Name>"
 		$subnetName = "<Subnet name>"
 
-	最初の手順では、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
+	最初に、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
 		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
 		$validate.ValidationMessages
 
-	前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+	このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
 
 		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
 
@@ -142,11 +142,11 @@ PowerShell または Azure ポータルを使用して、準備したリソー�
 
 >[AZURE.NOTE] 仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
-最初の手順では、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
+最初に、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
 
 	Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 
-前のコマンドから、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
+このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備の手順に進むことができます。
 	
 	Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 
@@ -181,4 +181,4 @@ PowerShell または Azure ポータルを使用して、準備したストレ�
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

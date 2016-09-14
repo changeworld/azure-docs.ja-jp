@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/29/2016"
 	ms.author="gokuma;weig;bradsev" />
 
 # データ サイエンス仮想マシンでできる 10 のこと
@@ -21,18 +21,18 @@
 Microsoft データ サイエンス仮想マシン (DSVM) は、データの探索とモデリングに関連したさまざま作業に対応する強力なデータ サイエンス開発環境です。あらかじめ環境が構築され、広く使われているいくつかのデータ分析ツールが同梱されているため、初めて利用する方でも、オンプレミスのクラウド デプロイとハイブリッド デプロイの分析をすばやく行うことができます。DSVM は、さまざまな Azure サービスと密接に連携します。Azure SQL Data Warehouse、Azure Data Lake、Azure Storage、DocumentDB として既に Azure に保存されているデータを読み取って処理することが可能です。Azure Machine Learning や Azure Data Factory などのその他の分析ツールを活用することもできます。
 
 
-この記事では、DSVM を使用してさまざまなデータ サイエンス タスクを実行したり、他の Azure サービスと連携したりする方法についてわかりやすく説明します。以下、DSVM でできることをいくつか列挙します。
+この記事では、DSVM を使用してさまざまなデータ サイエンス タスクを実行したり、他の Azure サービスと連携したりする方法についてわかりやすく説明します。DSVM では次のことを実行できます。
 
 1. DSVM 上で Microsoft R Server または Python を使用してローカルからデータを探索し、モデルを開発する
 2. ブラウザーから Jupyter Notebook を使用し、Python 2、Python 3、Microsoft R (スケーラビリティとパフォーマンスを重視して設計された企業向けの R) を使用してデータを探索する
 3. R や Python を使って構築されたモデルを Azure Machine Learning で運用可能な状態にし、クライアント アプリケーションからシンプルな Web サービス インターフェイスを使ってモデルにアクセスできるようにする
-4. Azure ポータルまたは PowerShell を使って Azure リソースを管理する
+4. Azure ポータルまたは PowerShell を使用して Azure リソースを管理する
 5. DSVM にマウント可能なドライブとして Azure File Storage を作成することによって記憶域を拡張し、大規模なデータセット/コードをチーム全体で共有する
 6. Github を使ってチームでコードを共有し、プレインストールされる Git クライアント (Git Bash、Git GUI) を使ってリポジトリにアクセスする
 7. Azure Blob Storage、Azure Data Lake、Azure HDInsight (Hadoop)、Azure DocumentDB、Azure SQL Data Warehouse、Azure SQL データベースなど、Azure のさまざまなデータ サービスと分析サービスにアクセスする
 8. DSVM にプレインストールされる Power BI Desktop を使ってレポートとダッシュボードを作成し、クラウドにデプロイする
 9. DSVM を動的に拡張してプロジェクトのニーズを満たす
-10. 仮想マシンに追加のツールをインストールする   
+10. 仮想マシンに追加のツールをインストールする
 
 
 >[AZURE.NOTE] この記事に掲載されているその他のデータ ストレージ サービスや分析サービスの多くでは、追加の使用料金が適用されます。詳細については、「[Azure の価格](https://azure.microsoft.com/pricing/)」を参照してください。
@@ -40,9 +40,9 @@ Microsoft データ サイエンス仮想マシン (DSVM) は、データの探�
 
 **前提条件**
 
-- Azure サブスクリプションが必要です。[こちら](https://azure.microsoft.com/free/)から無料試用版にサインアップできます。
+- Azure サブスクリプションが必要です。[こちら](https://azure.microsoft.com/free/)で無料試用版にサインアップできます。
 
-- Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、「[Creating a virtual machine (仮想マシンの作成)](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)」を参照してください。
+- Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、[仮想マシンの作成](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に関するページをご覧ください。
 
 ## 1\.Microsoft R Server または Python を使用してデータを探索し、モデルを開発する
 
@@ -64,18 +64,18 @@ Python 環境の作成方法の詳細については、[PTVS のドキュメン�
 
 これで、新しい Python プロジェクトを作成する準備が整いました。**[ファイル]**、**[新規作成]**、**[プロジェクト]**、**[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。現在のプロジェクトの Python 環境を目的のバージョン (Anaconda 2.7 または 3.5) に設定できます。これには、**[Python environment]** を右クリックして、**[Add/Remove Python Environments]** を選択し、プロジェクトに関連付ける目的の環境を選択します。PTVS の操作方法の詳細については、製品の[ドキュメント](https://github.com/Microsoft/PTVS/wiki) ページを参照してください。
 
-## 2\.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
+## 手順 2.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
 
 Jupyter Notebook は、ブラウザー ベースの "IDE" でデータの探索とモデリングを行うことができる強力な環境です。Jupyter Notebook では Python 2 と Python 3 のほか R (オープン ソース R と Microsoft R Server の両方に対応) を使用できます。
 
-Jupyter Notebook を起動するには、[スタート] メニューまたはデスクトップにある **[Jupyter Notebook]** というアイコンをクリックします。また、DSVM で "https://localhost:9999/" に移動して、Jupyter Notebook にアクセスすることもできます。パスワードの入力を求められた場合は、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-provision-vm.md)」トピックの「***Jupyter ノートブック サーバーに強力なパスワードを作成する方法***」セクションを参考にして、Jupyter Notebook にアクセスするための強力なパスワードを作成します。
+Jupyter Notebook を起動するには、[スタート] メニューまたはデスクトップにある **[Jupyter Notebook]** というアイコンをクリックします。また、DSVM で "https://localhost:9999/" に移動して、Jupyter Notebook にアクセスすることもできます。パスワードの入力を求められた場合は、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](machine-learning-data-science-provision-vm.md)」の「***Jupyter ノートブック サーバーに強力なパスワードを作成する方法***」を参考にして、Jupyter Notebook にアクセスするための強力なパスワードを作成します。
 
 Jupyter Notebook を開いたら、DSVM に同梱されているいくつかのサンプル Notebook を含んだディレクトリが表示されます。ここでは、次の操作を実行できます。
 
 - Notebook をクリックしてコードを参照する。
 - **Shift キーを押しながら Enter キー**を押すことで各セルを実行する。
 - **[Cell]**、**[Run]** の順にクリックして Notebook 全体を実行する。
-- 新しい Notebook を作成する。これには、Jupyter アイコン (左上隅) をクリックし、右側の **[New]** ボタンをクリックして、Notebook の言語 (カーネルとも呼ばれます) を選択します。   
+- 新しい Notebook を作成する。これには、Jupyter アイコン (左上隅) をクリックし、右側の **[New]** ボタンをクリックして、Notebook の言語 (カーネルとも呼ばれます) を選択します。
 
 
 >[AZURE.NOTE] 現在は、Python 2.7、Python 3.5、R に対応しています。R カーネルでは、オープン ソース R に加え、企業向けのスケーラブルな Microsoft R Server でのプログラミングがサポートされています。
@@ -138,7 +138,7 @@ Python のモデルを Azure Machine Learning にデプロイするには、モ�
 
 - 以下に示すように、ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。
 - モデルの予測関数のラッパーを作成します。
-- Azure Machine Learning ライブラリで ```publishWebService``` を呼び出し、関数ラッパーを渡します。  
+- Azure Machine Learning ライブラリで ```publishWebService``` を呼び出し、関数ラッパーを渡します。
 
 Azure Machine Learning でモデルを Web サービスとして設定、ビルド、発行、利用するために使用できる手順とコード スニペットを次に示します。
 
@@ -194,11 +194,11 @@ settings.json ファイルの構造は次のとおりです。
 Azure Machine Learning R ライブラリの詳細については、[こちら](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf)をご覧ください。
 
 
-## 4\.Azure ポータルまたは PowerShell を使って Azure リソースを管理する
+## 4\.Azure ポータルまたは PowerShell を使用して Azure リソースを管理する
 
 DSVM を使用すると、仮想マシンに対してローカルに分析ソリューションを構築できるだけでなく、Microsoft Azure クラウド上のさまざまなサービスを利用することができます。Azure には、コンピューティング サービス、ストレージ サービス、データ分析サービスなど、DSVM から管理してアクセスできるさまざまなサービスが用意されています。
 
-Azure サブスクリプションとクラウド リソースは、ブラウザーから [Azure ポータル](https://portal.azure.com)にアクセスして管理できます。Azure PowerShell スクリプトを使って、Azure サブスクリプションとリソースを管理することもできます。Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、[Microsoft Azure PowerShell のドキュメント](../powershell-azure-resource-manager.md)を参照してください。
+Azure サブスクリプションとクラウド リソースは、ブラウザーから [Azure ポータル](https://portal.azure.com)にアクセスして管理できます。Azure PowerShell スクリプトを使って、Azure サブスクリプションとリソースを管理することもできます。Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、[Microsoft Azure PowerShell のドキュメント](../powershell-azure-resource-manager.md)をご覧ください。
 
 
 ## 5\.共有ファイル システムで記憶域を拡張する
@@ -275,8 +275,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 - プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にあることを確認します。azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。AzCopy ツールの詳細については、[AzCopy のドキュメント](../storage/storage-use-azcopy.md)を参照してください。
 
-- VM デスクトップ上のアイコンから Azure ストレージ エクスプローラーを起動します。ディレクトリにも検索できる ***C:\\Program Files (x86) \\Neudesic\\Azure 記憶域エクスプ ローラー 6***します。
-
+- Azure ストレージ エクスプローラー ツールを起動します。このツールは、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。
 
 ![AzureStorageExplorer\_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -312,8 +311,8 @@ AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、�
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-
-![](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_upload_v2.png)
+- コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![](./media/machine-learning-data-science-vm-do-ten-things/storage-accounts.png)
+- **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![](./media/machine-learning-data-science-vm-do-ten-things/upload-files-to-blob.png)
 
 
 **Azure BLOB からのデータの読み取り (AML のリーダー モジュール)**
@@ -326,7 +325,7 @@ Azure Machine Learning Studio では、**データのインポート モジュ�
 
 **Azure BLOB からのデータの読み取り (Python ODBC)**
 
-**BlobService** ライブラリを使用すると、Jupyter Notebook または Python プログラムでは BLOB から直接データを読み取ることができます。
+**BlobService** ライブラリを使用すると、Jupyter Notebook または Python プログラムで BLOB から直接データを読み取ることができます。
 
 まず、必要なパッケージをインポートします。
 
@@ -375,7 +374,7 @@ Azure Machine Learning Studio では、**データのインポート モジュ�
 
 ### Azure Data Lake
 
-Azure Data Lake Storage は、ビッグ データの分析ワークロード用のハイパースケール リポジトリで、Hadoop 分散ファイルシステム (HDFS) と互換性があります。また、Hadoop エコシステムと Azure Data Lake Analytics の両方と連携します。ここでは、データを Azure Data Lake Store に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
+Azure Data Lake Storage は、ビッグ データ分析ワークロード用のハイパースケール リポジトリであり、Hadoop 分散ファイルシステム (HDFS) と互換性があります。また、Hadoop エコシステムと Azure Data Lake Analytics の両方と連携します。ここでは、データを Azure Data Lake Store に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
 
 **前提条件**
 
@@ -384,7 +383,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![Azure\_Data\_Lake\_Create\_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 
-- こちらの[リンク](https://www.microsoft.com/download/details.aspx?id=49504)から入手できる **Azure Data Lake Tools** for **Visual Studio** は、仮想マシン上の Visual Studio Community Edition にあらかじめインストールされています。Visual Studio を起動して Azure サブスクリプションにログインすると、Visual Studio の左パネルに Azure Data Analytics のアカウントとストレージが表示されます。
+- こちらの[リンク](https://www.microsoft.com/download/details.aspx?id=49504)から入手できる **Azure Data Lake Tools** for **Visual Studio** は、仮想マシン上の Visual Studio Community Edition に既にインストールされています。Visual Studio を起動して Azure サブスクリプションにログインすると、Visual Studio の左パネルに Azure Data Analytics のアカウントとストレージが表示されます。
 
 ![Azure\_Data\_Lake\_PlugIn\_v2](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
@@ -395,7 +394,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 
 ![Azure\_Data\_Lake\_UploadData](./media/machine-learning-data-science-vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
-また、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) を使用して、Azure Data Lake との間のデータ移動を可能にするデータ パイプラインを作成することもできます。データ パイプラインを作成する手順については、こちらの[記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)を参照することをお勧めします。
+また、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) を使用して、Azure Data Lake との間のデータ移動を可能にするデータ パイプラインを作成することもできます。データ パイプラインを作成する手順については、こちらの[記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)をご覧ください。
 
 **Azure BLOB から Data Lake にデータを読み取る (U-SQL)**
 
@@ -404,7 +403,7 @@ Azure Data Lake Storage は、ビッグ データの分析ワークロード用�
 ![](./media/machine-learning-data-science-vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 
-Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。Blob Storage 内のデータを参照するときは **wasb://** を、Azure Data Lake 内のデータを参照するときは ****swbhdfs://** を使用します。
+Visual Studio では、Blob Storage からのデータ読み取り、各種データ操作、特徴エンジニアリングを実行するほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。BLOB ストレージ内のデータを参照するときは **wasb://****を使用し、Azure Data Lake 内のデータを参照するときは swbhdfs://** を使用します。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
@@ -589,15 +588,13 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 		    cursor.execute(queryString)
 
 
-- または、こちらの[チュートリアル](machine-learning-data-science-process-hive-walkthrough.md)に従って NYC Taxi データを HDI クラスターにアップロードすることもできます。主な手順は次のとおりです。
+- また、こちらの[チュートリアル](machine-learning-data-science-process-hive-walkthrough.md)に従って NYC Taxi データを HDI クラスターにアップロードすることもできます。主な手順は次のとおりです。
 
 	- AzCopy: zip 圧縮された CSV をパブリック BLOB からローカル フォルダーにダウンロードする
 	- AzCopy: 解凍した CSV をローカル フォルダーから HDI クラスターにアップロードする
 	- Hadoop クラスターのヘッド ノードにログインして探索的データ分析の準備をする
 
 HDI クラスターにデータを読み込んだら、Azure Storage エクスプローラーでデータを確認することができます。加えて、HDI クラスターには、nyctaxidb というデータベースが作成されます。
-
-![](./media/machine-learning-data-science-vm-do-ten-things/Upload_Data_to_HDI_cluster_Azure_Explorer.PNG)
 
 
 **データの探索: Hive クエリ (Python)**
@@ -821,7 +818,7 @@ Hadoop クラスターにデータが存在するため、pyodbc パッケージ
 
 **HDI からのデータの読み取り (AML のリーダー モジュール)**
 
-AML Studio から**リーダー** モジュールを使用して Hadoop クラスター内のデータベースにアクセスすることもできます。HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
+AML Studio で**リーダー** モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/AML_Reader_Hive.PNG)
 
@@ -834,7 +831,7 @@ AML Studio から**リーダー** モジュールを使用して Hadoop クラ�
 
 Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-Azure SQL Data Warehouse は、こちらの[記事](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)で説明されている手順に従ってプロビジョニングできます。Azure SQL Data Warehouse をプロビジョニングすると、この[チュートリアル](machine-learning-data-science-process-sqldw-walkthrough.md)を使って、SQL Data Warehouse 内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
+Azure SQL Data Warehouse は、こちらの[記事](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)で説明されている手順に従ってプロビジョニングできます。Azure SQL Data Warehouse をプロビジョニングしたら、こちらの[チュートリアル](machine-learning-data-science-process-sqldw-walkthrough.md)を使って、SQL Data Warehouse 内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
 
 #### Azure DocumentDB
 
@@ -845,16 +842,16 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 1. DocumentDB Python SDK をインストールします (コマンド プロンプトから ```pip install pydocumentdb``` を実行)。
 1. [Azure ポータル](https://portal.azure.com)から DocumentDB アカウントと DocumentDB データベースを作成します。
 1. [こちら](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)から "DocumentDB Migration tool" をダウンロードし、任意のディレクトリに展開します。
-1. [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を DocumentDB にインポートします。その際、移行ツール (DocumentDB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定してください。インポート元とインポート先の場所を示すパラメーター (以下) を入力します。
+1. 移行ツール (DocumentDB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、[パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を DocumentDB にインポートします。インポート元とインポート先の場所を示すパラメーター (以下) を入力します。
 
 	/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。DocumentDB の詳細については、サービスの[ドキュメント ページ](https://azure.microsoft.com/documentation/learning-paths/documentdb/)を参照してください。
+データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、DocumentDB にアクセスして基本的なクエリを実行する Python コードが含まれています。DocumentDB の詳細については、サービスの[ドキュメント ページ](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
 
 
 ## 8\.Power BI Desktop を使ってレポートとダッシュボードを作成する
 
-先ほどの例の DocumentDB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。詳しい手順については、[Power BI の記事](../documentdb/documentdb-powerbi-visualize.md)を参照してください。おおよその手順は以下のとおりです。
+先ほどの例の DocumentDB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。詳しい手順については、[Power BI の記事](../documentdb/documentdb-powerbi-visualize.md)をご覧ください。おおよその手順は以下のとおりです。
 
 1. Power BI Desktop を開いて "データを取得" します。URL を https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
@@ -889,13 +886,13 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 ## 9\.DSVM を動的に拡張してプロジェクトのニーズを満たす
 
-プロジェクトのニーズを満たすために、DSVM はスケールアップしたりスケールダウンしたりすることができます。夜間や週末に VM を使用する必要がない場合は、単に [Azure ポータル](https://portal.azure.com)から VM をシャットダウンしてください。
+プロジェクトのニーズを満たすために、DSVM はスケールアップしたりスケールダウンしたりすることができます。夜間や週末に VM を使用する必要がない場合は、[Azure ポータル](https://portal.azure.com)から VM をシャットダウンします。
 
 >[AZURE.NOTE]  VM でオペレーティング システムのシャットダウン ボタンを使用しただけであっても、コンピューティングの料金は発生します。
 
-大規模な分析で CPU の処理能力やメモリ量、ディスク容量が足りなくなった場合は、CPU コア数、メモリ容量、ディスクの種類 (ソリッド ステート ドライブなど) の観点から、処理能力や予算のニーズに応じて大きな VM サイズを選ぶことができます。VM とその時間単位のコンピューティング料金をまとめた一覧については、[Azure Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)ページを参照してください。
+大規模な分析で CPU の処理能力やメモリ量、ディスク容量が足りなくなった場合は、CPU コア数、メモリ容量、ディスクの種類 (ソリッド ステート ドライブなど) の観点から、処理能力や予算のニーズに応じて大きな VM サイズを選ぶことができます。VM とその時間単位のコンピューティング料金をまとめた一覧については、「[Azure Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」ページをご覧ください。
 
-同様に、さほど大きな処理能力が VM に必要なくなった場合 (主なワークロードを Hadoop や Spark クラスターに移動したなど)、[Azure ポータル](https://portal.azure.com)から、対象となる VM インスタンスの設定にアクセスして、クラスターをスケールダウンすることができます。スクリーンショットを次に示します。
+同様に、さほど大きな処理能力が VM に必要なくなった場合 (主なワークロードを Hadoop または Spark クラスターに移動したなど)、[Azure ポータル](https://portal.azure.com)から、対象となる VM インスタンスの設定にアクセスして、クラスターをスケールダウンすることができます。スクリーンショットを次に示します。
 
 
 ![](./media/machine-learning-data-science-vm-do-ten-things/VMScaling.PNG)
@@ -907,7 +904,7 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 
 この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。サード パーティが独自に開発したツールなど、特別なツールが必要になることもあるでしょう。新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。プレインストールされない、Python と R の追加パッケージをインストールすることもできます。Python の場合、```conda``` または ```pip``` を使用できます。R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages]** の **[Install Packages]** を選択できます。
 
-## まとめ
+## 概要
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。他にもさまざまな手段で分析環境を強化することができます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0831_2016-->

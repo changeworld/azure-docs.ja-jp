@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="ロード バランサーの TCP アイドル タイムアウトの構成 | Microsoft Azure"
    description="ロード バランサーの TCP アイドル タイムアウトの構成"
    services="load-balancer"
@@ -6,7 +6,7 @@
    authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="load-balancer"
    ms.devlang="na"
    ms.topic="article"
@@ -38,55 +38,49 @@ TCP Keep-alive は、バッテリーの制約がないシナリオでは有効�
 
 ## 仮想マシンとクラウド サービスのアイドル タイムアウト設定を変更する方法
 
-- PowerShell またはサービス管理 API を使用して仮想マシンにエンドポイントへの TCP タイムアウトを構成します。
-- PowerShell またはサービス管理 API を使用して、負荷分散されたエンドポイント セットに TCP タイムアウトを構成します。
-- インスタンス レベル パブリック IP の TCP タイムアウトを構成します。
-- サービス モデルを使用して Web ロール / worker ロールの TCP タイムアウトを構成します。
- 
+>[AZURE.NOTE] 一部のコマンドは、最新の Azure PowerShell パッケージにのみ含まれています。PowerShell コマンドが存在しない場合は、最新の PowerShell パッケージをダウンロードしてください。
 
->[AZURE.NOTE] 一部のコマンドは、最新の Azure PowerShell パッケージにのみ含まれています。Powershell コマンドが存在しない場合は、最新の PowerShell パッケージをダウンロードしてください。
 
- 
-### インスタンス レベル パブリック IP の TCP タイムアウトを 15 分で構成します。
+### インスタンスレベル パブリック IP の TCP タイムアウトを 15 分で構成します。
 
-	Set-AzurePublicIP –PublicIPName webip –VM MyVM -IdleTimeoutInMinutes 15
+    Set-AzurePublicIP –PublicIPName webip –VM MyVM -IdleTimeoutInMinutes 15
 
 IdleTimeoutInMinutes の設定は任意です。設定しない場合、既定のタイムアウト時間は 4 分です。
 
 >[AZURE.NOTE] 設定できるタイムアウトの範囲は 4 ～ 30 分です。
- 
+
 ### 仮想マシンでの Azure エンドポイントの作成時にアイドル タイムアウトを設定します。
 
 エンドポイントのタイムアウト設定を変更するには
 
-	Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
- 
+    Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
+
 アイドル タイムアウトの構成を取得します。
 
-	PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
-	VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
-	LBSetName : MyLoadBalancedSet
-	LocalPort : 80
-	Name : HTTP
-	Port : 80
-	Protocol : tcp
-	Vip : 65.52.xxx.xxx
-	ProbePath :
-	ProbePort : 80
-	ProbeProtocol : tcp
-	ProbeIntervalInSeconds : 15
-	ProbeTimeoutInSeconds : 31
-	EnableDirectServerReturn : False
-	Acl : {}
-	InternalLoadBalancerName :
-	IdleTimeoutInMinutes : 15
- 
+    PS C:\> Get-AzureVM –ServiceName “MyService” –Name “MyVM” | Get-AzureEndpoint
+    VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
+    LBSetName : MyLoadBalancedSet
+    LocalPort : 80
+    Name : HTTP
+    Port : 80
+    Protocol : tcp
+    Vip : 65.52.xxx.xxx
+    ProbePath :
+    ProbePort : 80
+    ProbeProtocol : tcp
+    ProbeIntervalInSeconds : 15
+    ProbeTimeoutInSeconds : 31
+    EnableDirectServerReturn : False
+    Acl : {}
+    InternalLoadBalancerName :
+    IdleTimeoutInMinutes : 15
+
 ### 負荷分散エンドポイント セットでの TCP タイムアウトを設定します。
 
 エンドポイントが負荷分散エンドポイント セットの一部である場合、TCP タイムアウトは負荷分散エンドポイント セットで設定される必要があります。
 
-	Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
- 
+    Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
+
 ### クラウド サービスのタイムアウト設定を変更する
 
 Azure SDK for .NET 2.4 を使用してクラウド サービスを更新できます。
@@ -95,66 +89,66 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
 エンドポイント設定の .csdef の変更は次のように行います。
 
-	<WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
-	  <Endpoints>
+    <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
+      <Endpoints>
     <InputEndpoint name="input-endpoint-name" protocol="[http|https|tcp|udp]" localPort="local-port-number" port="port-number" certificate="certificate-name" loadBalancerProbe="load-balancer-probe-name" idleTimeoutInMinutes="tcp-timeout" />
-	  </Endpoints>
-	</WorkerRole>
+      </Endpoints>
+    </WorkerRole>
 
 パブリック IP のタイムアウト設定のための .cscfg 変更は、次のとおりです。
 
-	<NetworkConfiguration>
- 	 <VirtualNetworkSite name="VNet"/>
- 	 <AddressAssignments>
+    <NetworkConfiguration>
+      <VirtualNetworkSite name="VNet"/>
+      <AddressAssignments>
     <InstanceAddress roleName="VMRolePersisted">
       <PublicIPs>
         <PublicIP name="public-ip-name" idleTimeoutInMinutes="timeout-in-minutes"/>
       </PublicIPs>
     </InstanceAddress>
- 	 </AddressAssignments>
-	</NetworkConfiguration>
+      </AddressAssignments>
+    </NetworkConfiguration>
 
 ## Rest API の例
 
 サービス管理 API を使用して、TCP アイドル タイムアウトを構成できます。x-ms-version ヘッダーが 2014-06-01 以降のバージョンに設定されていることを確認してください。
- 
-デプロイされているすべての仮想マシンで、指定した負荷分散入力エンドポイントの構成をアップデートします。
-	
-	Request
 
-	POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
+デプロイされているすべての仮想マシンで、指定した負荷分散入力エンドポイントの構成をアップデートします。
+
+    Request
+
+    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 <BR>
 
-	Response
+    Response
 
-	<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-	<InputEndpoint>
-	<LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
-	<LocalPort>local-port-number</LocalPort>
-	<Port>external-port-number</Port>
-	<LoadBalancerProbe>
-	<Path>path-of-probe</Path>
-	<Port>port-assigned-to-probe</Port>
-	<Protocol>probe-protocol</Protocol>
-	<IntervalInSeconds>interval-of-probe</IntervalInSeconds>
-	<TimeoutInSeconds>timeout-for-probe</TimeoutInSeconds>
-	</LoadBalancerProbe>
-	<LoadBalancerName>name-of-internal-loadbalancer</LoadBalancerName>
-	<Protocol>endpoint-protocol</Protocol>
-	<IdleTimeoutInMinutes>15</IdleTimeoutInMinutes>
-	<EnableDirectServerReturn>enable-direct-server-return</EnableDirectServerReturn>
-	<EndpointACL>
-	<Rules>
-	<Rule>
-	<Order>priority-of-the-rule</Order>
-	<Action>permit-rule</Action>
-	<RemoteSubnet>subnet-of-the-rule</RemoteSubnet>
-	<Description>description-of-the-rule</Description>
-	</Rule>
-	</Rules>
-	</EndpointACL>
-	</InputEndpoint>
-	</LoadBalancedEndpointList>
+    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <InputEndpoint>
+    <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
+    <LocalPort>local-port-number</LocalPort>
+    <Port>external-port-number</Port>
+    <LoadBalancerProbe>
+    <Path>path-of-probe</Path>
+    <Port>port-assigned-to-probe</Port>
+    <Protocol>probe-protocol</Protocol>
+    <IntervalInSeconds>interval-of-probe</IntervalInSeconds>
+    <TimeoutInSeconds>timeout-for-probe</TimeoutInSeconds>
+    </LoadBalancerProbe>
+    <LoadBalancerName>name-of-internal-loadbalancer</LoadBalancerName>
+    <Protocol>endpoint-protocol</Protocol>
+    <IdleTimeoutInMinutes>15</IdleTimeoutInMinutes>
+    <EnableDirectServerReturn>enable-direct-server-return</EnableDirectServerReturn>
+    <EndpointACL>
+    <Rules>
+    <Rule>
+    <Order>priority-of-the-rule</Order>
+    <Action>permit-rule</Action>
+    <RemoteSubnet>subnet-of-the-rule</RemoteSubnet>
+    <Description>description-of-the-rule</Description>
+    </Rule>
+    </Rules>
+    </EndpointACL>
+    </InputEndpoint>
+    </LoadBalancedEndpointList>
 
 ## 次のステップ
 
@@ -164,6 +158,4 @@ Azure SDK for .NET 2.4 を使用してクラウド サービスを更新でき�
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
 
- 
-
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->

@@ -31,7 +31,7 @@
 
 ## SQL Server エージェント/ジョブ
 
-Microsoft Azure SQL Database では、SQL Server エージェントおよびジョブをサポートしていません。ただし、オンプレミスの SQL Server で SQL Server エージェントを実行し、Microsoft Azure SQL Database に接続することはできます。
+Microsoft Azure SQL Database は SQL Server エージェントをサポートしていませんが、エラスティック ジョブを使用して、一対多のデータベース間でジョブを実行することができます。エラスティック ジョブの詳細については、[エラスティック ジョブ](sql-database-elastic-jobs-overview.md)に関するページを参照してください。
 
 ## SQL Server 照合順序のサポート
 
@@ -63,4 +63,4 @@ Microsoft Azure SQL Database で使用される既定のデータベース照合
 
 - SQL Database の利用可能なドライバーとサポートの詳細については、「[SQL Database および SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

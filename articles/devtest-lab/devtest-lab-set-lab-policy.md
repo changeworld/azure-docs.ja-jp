@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/01/2016"
+	ms.date="08/25/2016"
 	ms.author="tarcher"/>
 
 # ラボのポリシーの定義
 
 > [AZURE.VIDEO how-to-set-vm-policies-in-a-devtest-lab]
 
-## 概要
+## Overview
 
 DevTest ラボでは、ラボとその VM を使用する方法を制御する主要ポリシーを指定できます。たとえば、VM を作成するうえで指定できるサイズや、作成できる数のしきい値についてルールを設定できるほか、ラボ VM を自動的に開始または停止するようにジョブをスケジュール設定することもできます。
 
@@ -36,7 +36,7 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 1. **[設定]** を選択します。
 
-	![[設定]](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
+	![Settings](./media/devtest-lab-set-lab-policy/lab-blade-settings.png)
 
 1. **[設定]** ブレードには、**[VM ポリシー]** という設定グループがあります。
 
@@ -118,7 +118,7 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 1. ラボの **[設定]** ブレードで、**[VM Policies (VM ポリシー)]**の **[Auto start (自動開始)]** を選択します。
 
-	![設定](./media/devtest-lab-set-lab-policy/auto-start.png)
+	![Settings](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
 
@@ -128,6 +128,8 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 
 1. このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。この設定を特定の VM に適用するには、その VM のブレードを開いて **[Auto Start (自動開始)]** 設定を変更します。
 
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
 ## 次のステップ
 
 ラボに対して各種の VM ポリシー設定を定義および適用した後は、次に示すいくつかの操作を試してみてください。
@@ -135,6 +137,6 @@ DevTest ラボでは、ラボとその VM を使用する方法を制御する�
 - [コスト管理を構成する](./devtest-lab-configure-cost-management.md) - **月間推定コスト傾向**グラフを使用し、現在のカレンダー月の現時点までの推定コストと月末の予測コストを表示する方法を示します。
 - [カスタム イメージを作成する](./devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 - [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - DevTest Labs では、Azure Marketplace イメージを基にした新しい VM を作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
-- [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - ベース イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
+- [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - 基本イメージ (カスタムまたは Marketplace) から新しい VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

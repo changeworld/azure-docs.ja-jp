@@ -80,7 +80,7 @@ Linux クラスターを作成するために設定する必要がある最も�
         -StorageAccountName $defaultStorageAccountName `
         -Location $location `
         -Type Standard_LRS
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $defaultStorageAccountName -ResourceGroupName $resourceGroupName)[0].Value
+    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -Name $defaultStorageAccountName -ResourceGroupName $resourceGroupName)[0].Key1
     $destContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
     New-AzureStorageContainer -Name $defaultStorageContainerName -Context $destContext
 
@@ -143,7 +143,7 @@ Linux クラスターを作成するために設定する必要がある最も�
 
 ## クラスターのカスタマイズ
 
-- 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」をご覧ください。
+- 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell)」を参照してください。
 - 「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」をご覧ください。
 
 ## クラスターを削除する
@@ -179,4 +179,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 * [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0831_2016-->

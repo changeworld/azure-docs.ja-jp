@@ -44,11 +44,11 @@ Service Fabric では、クラスターの作成中に証明書セキュリテ�
 
 デプロイが正常に完了したら、プライマリまたはセカンダリ証明書を使用して、クラスターの管理操作を実行できます。
 
-![証明書デプロイ進行中のスクリーン ショット][SecurityConfigurations\_03]
+![証明書デプロイ進行中のスクリーン ショット][SecurityConfigurations_03]
 
 デプロイ完了後の [セキュリティ] ブレードのスクリーン ショットを次に示します。
 
-![デプロイ後の証明書拇印のスクリーン ショット][SecurityConfigurations\_08]
+![デプロイ後の証明書拇印のスクリーン ショット][SecurityConfigurations_08]
 
 
 これで、追加したばかりの新しい証明書を使用して、クラスターの操作を実行できます。
@@ -208,6 +208,10 @@ Get-ServiceFabricClusterHealth
 
 
 <!--Image references-->
-[SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png [SecurityConfigurations_03]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_03.png [SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png [SecurityConfigurations_08]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_08.png
+[SecurityConfigurations_02]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_02.png
+[SecurityConfigurations_03]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_03.png
+[SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png
+[SecurityConfigurations_08]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_08.png
 
 <!---HONumber=AcomDC_0817_2016-->
+

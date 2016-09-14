@@ -12,12 +12,12 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/10/2016"
+	ms.date="09/07/2016"
 	ms.author="awills"/>
 
 # Web サイトの可用性と応答性の監視
 
-ホストに Web アプリケーションをデプロイした後、Web テストを設定して Web アプリケーションの可用性と応答性を監視できます。[Visual Studio Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的に Web 要求を送信します。アプリケーションの応答が遅くなったりアプリケーションがまったく応答しなくなったりした場合は、Application Insights からその旨が通知されます。
+サーバーに Web アプリまたは Web サイトをデプロイした後、Web テストを設定して Web アプリまたは Web サイトの可用性と応答性を監視できます。[Visual Studio Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
 
 ![Web テストの例](./media/app-insights-monitor-web-app-availability/appinsights-10webtestresult.png)
 
@@ -25,26 +25,23 @@ Web テストは、パブリック インターネットからアクセスでき
 
 Web テストには次の 2 種類があります。
 
-* [URL の Ping テスト](#set-up-a-url-ping-test): Azure ポータルで作成できる簡単なテストです。
+* [URL の Ping テスト](#create): Azure ポータルで作成できる簡単なテストです。
 * [複数手順の Web テスト](#multi-step-web-tests): Visual Studio Ultimate または Visual Studio Enterprise で作成してポータルにアップロードします。
 
 アプリケーション リソースごとに最大 10 個の Web テストを作成できます。
 
+## <a name="create"></a>1.テスト レポートのリソースを作成する
 
-## URL の Ping テストを設定します。
-
-### <a name="create"></a>1.新しいリソースを作成するかどうかの判断
-
-このアプリケーションに対する [Application Insights リソースの設定][start]が既に終わっていて、同じ場所で可用性データを表示する場合は、この手順をスキップします。
+このアプリケーションに対する [Application Insights リソースの設定][start]が既に終わっていて、同じ場所で可用性レポートを表示する場合は、この手順をスキップします。
 
 [Microsoft Azure](http://azure.com) にサインアップして、[Azure ポータル](https://portal.azure.com)に移動し、Application Insights のリソースを作成します。
 
 ![[新規] > [Application Insights]  
 ](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
-新しいリソースの概要ブレードが開きます。[Azure ポータル](https://portal.azure.com)で **[参照]** をクリックすると、いつでもここを見ることができます。
+**[すべてのリソース]** をクリックして新しいリソースの概要ブレードを開きます。
 
-### <a name="setup"></a>2.Web テストを作成する
+## <a name="setup"></a>2.URL の Ping テストを作成する
 
 Application Insights のリソースで、可用性のタイルを見つけます。これをクリックして、アプリケーションの Web テスト ブレードを開き、Web テストを追加します。
 
@@ -52,7 +49,7 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 ](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 - **URL** はパブリック インターネットから認識できる必要があります。これにはクエリ文字列を含めることができます。したがって、たとえば限られた範囲でデータベースを実行できます。URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
-- **[依存する要求の解析]**: 画像、スクリプト、スタイル ファイルなど、ページのリソースがテストの一環として要求されます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
+- **[従属要求の解析]**: 画像、スクリプト、スタイル ファイル、およびその他のページのリソースがテストの一環として要求されます。記録される応答時間にはこれらの時間が含まれます。テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。
 - **[Web テストが失敗した場合に再試行を有効にします]**: テストに失敗すると、少し間を置いてテストを再試行します。エラーは試行が 3 回連続で失敗した場合にのみ報告されます。その後、後続のテストが通常のテスト間隔で実行されます。再試行は、次の成功まで一時的に中断されます。このルールがテスト場所ごとに独立して適用されます。(この設定をお勧めします。再試行の際に平均でエラーの約 80% がなくなります)
 - **[テスト間隔]**: 各テストの場所からテストを実行する頻度を設定します。間隔が 5 分で、テストの場所が 5 か所の場合、サイトは平均すると毎分テストされることになります。
 - **テストの場所**とは、指定された URL にサーバーが Web 要求を送信する送信元の場所です。Web サイトで発生している問題とネットワークの問題とを区別できるように、複数の場所を選択してください。最大 16 個の場所を選択できます。
@@ -70,28 +67,22 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
     アラートが発生したときに呼び出される [webhook](../azure-portal/insights-webhooks-alerts.md) を設定できます。(ただし、現時点でクエリ パラメーターはプロパティとしては渡されないという点に注意してください)。
 
-#### 他の URL のテスト
+### 他の URL のテスト
 
 さらにテストを追加します。たとえば、ホーム ページをテストするのに加えて、検索用の URL をテストしてデータベースが稼働していることを確認できます。
 
 
-### <a name="monitor"></a>3.可用性レポートを表示する
+## <a name="monitor"></a>3.Web テストの結果を確認する
 
-1 ～ 2 分後に、可用性/Web テスト ブレードで **[更新]** をクリックします(自動的には更新されません)。
+1、2 分後、結果が次のように表示されます。
 
-![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果  
+](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、概要グラフの棒をクリックします。
 
 これらのグラフでは、このアプリケーションのすべての Web テストの結果が結合されます。
 
-#### Web ページのコンポーネント
-
-Web ページの画像、スタイル シート、スクリプトとその他の静的なコンポーネントは、テストの一部として要求されます。
-
-記録される応答時間は、すべてのコンポーネントの読み込みが完了するまでの所要時間です。
-
-読み込みに失敗したコンポーネントがある場合は、テストには失敗というマークが付けられます。
 
 ## <a name="failures"></a>エラーが発生する場合
 
@@ -257,7 +248,8 @@ Web テストが実際のクライアントであること、つまり、独自�
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化  
+](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -335,4 +327,4 @@ Web サイトに対してロード テストを実行できます。可用性テ
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

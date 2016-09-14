@@ -279,11 +279,15 @@ A2. アラートは、Azure のバックアップが失敗してから 5 分以�
 
 **Q3.通知が設定されているのに、電子メールが送信されないことはありますか。**
 
-A3.通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決すると、電子メールは送信されません。
+A3.アラートのノイズを軽減する目的で、次の場合は通知が送信されません。
+
+   - 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した。
+   - ジョブが取り消された。
+   - 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
 
 ## 次のステップ
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - Azure Backup の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0831_2016-->

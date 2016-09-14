@@ -39,7 +39,7 @@
 
 ## Tutorials (チュートリアル)
 
-- [Azure 上の Linux 仮想マシンへの LAMP スタックのインストール](virtual-machines-linux-install-lamp-stack.md)
+- [Azure 上の Linux 仮想マシンへの LAMP スタックのインストール](virtual-machines-linux-create-lamp-stack.md)
 - [Azure VM での Ruby on Rails Web アプリケーション](virtual-machines-linux-classic-ruby-rails-web-app.md)
 - [方法: AMQP や Service Bus 用の Apache Qpid Proton-C のインストール](../service-bus/service-bus-amqp-apache.md)
 
@@ -189,4 +189,4 @@
 
 - [Azure 用のプラグインの packer](https://github.com/msopentech/packer-azure)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0831_2016-->
