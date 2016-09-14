@@ -99,7 +99,7 @@ Windows の Azure 診断 *(WAD)* 構成を取得、変更、および設定す�
 
 ### WAD 構成の変更
 
-次の例の構成では、EventID 4624 と EventID 4625 のみがセキュリティ イベント ログから収集されます。Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。XPath 式の使用の詳細については、イベントの使用に関するページ (https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85) をご覧ください。
+次の例の構成では、EventID 4624 と EventID 4625 のみがセキュリティ イベント ログから収集されます。Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。XPath 式の使用の詳細については、[イベントの使用](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85))に関するページをご覧ください。
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
