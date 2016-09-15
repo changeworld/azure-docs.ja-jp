@@ -87,4 +87,4 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 Service Bus と Event Hubs の詳細な .NET API リファレンスについては、[MSDN の Azure のリファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)を参照してください。
 
-<!----HONumber=AcomDC_0824_2016-->
+<!--------HONumber=AcomDC_0824_2016-->

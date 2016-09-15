@@ -644,4 +644,4 @@ Web サイトのキャンペーンを作成する際に指定したフィール�
 [Google Cloud Messaging]: http://developer.android.com/guide/google/gcm/index.html
 [Amazon Device Messaging]: https://developer.amazon.com/sdk/adm.html
 
-<!----HONumber=AcomDC_0824_2016-->
+<!---------HONumber=AcomDC_0824_2016-->
