@@ -207,4 +207,4 @@ Data Warehouse で問題が発生した場合は、[サポート チケットを
 [パフォーマンス予測可能性の向上を目的とした Premium Storage]: https://azure.microsoft.com/blog/azure-sql-data-warehouse-introduces-premium-storage-for-greater-performance/
 [Azure ポータル]: https://portal.azure.com
 
-<!-----HONumber=AcomDC_0831_2016-->
+<!--------HONumber=AcomDC_0831_2016-->
