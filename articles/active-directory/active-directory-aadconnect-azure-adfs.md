@@ -304,4 +304,4 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 * [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0907_2016---->
