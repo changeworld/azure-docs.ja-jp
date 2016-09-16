@@ -46,4 +46,4 @@ articles/sql-database/sql-database-configure-firewall-settings
 
 	>[AZURE.IMPORTANT] クライアント IP アドレスは不定期で変更される可能性があるため、新しいファイアウォール規則を作成するまでサーバーにアクセスできなくなる場合があります。[Bing](http://www.bing.com/search?q=my%20ip%20address) を使用して IP アドレスをチェックすることができます。その後、単一の IP アドレスまたは IP アドレスの範囲を追加します。詳細については、[ファイアウォール設定の管理](sql-database-configure-firewall-settings.md#manage-existing-server-level-firewall-rules-through-the-azure-portal)に関するセクションを参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0912_2016-->
