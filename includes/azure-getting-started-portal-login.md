@@ -31,4 +31,4 @@ Azure アカウントがまだない場合は、次のいずれかの方法で�
 
    ![サインイン](./media/azure-getting-started-portal-login/login.png)
 
-<!---HONumber=AcomDC_0912_2016-->
+<!---HONumber=AcomDC_0912_2016--->

@@ -93,4 +93,4 @@ DocumentDB の詳細については、以下のリソースを参照してくだ
 -	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB 階層型リソース モデルと概念](documentdb-resources.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0914_2016--->
