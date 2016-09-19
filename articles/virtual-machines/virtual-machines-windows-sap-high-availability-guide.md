@@ -839,7 +839,7 @@ SAP Azure Resource Manager テンプレートでは、SAP ASCS/SCS インスタ�
 
 
 > [AZURE.NOTE]  
-**SAP ASCS/SCS の仮想ホスト名の IP アドレスは、SAP ASCS/SCS の Azure Load Balancer pr1-lb-ascs の IP アドレスと同じであり、****DBMS の仮想名の IP アドレスは、DBMS の Azure Load Balancer pr1-lb-dbms の IP アドレスと同じです。**
+**SAP ASCS/SCS の仮想ホスト名の IP アドレスは、SAP ASCS/SCS の Azure Load Balancer pr1-lb-ascs の IP アドレスと同じであり、** **DBMS の仮想名の IP アドレスは、DBMS の Azure Load Balancer pr1-lb-dbms の IP アドレスと同じです。**
 
 このガイドの例では、内部ロード バランサー _pr1-lb-ascs_ の IP アドレスを、SAP ASCS/SCS インスタンスの仮想ホスト名の IP アドレス (`10.0.0.43`) に設定します。
 

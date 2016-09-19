@@ -690,7 +690,8 @@ Azure 仮想マシンには、複数の仮想ネットワーク インターフ�
 #### マルチサイト VPN
 Azure では最近、1 つの Azure サブスクリプションでマルチサイト VPN 接続を作成できる機能も提供されています。以前、単一サブスクリプションは 1 つのサイト間 VPN 接続に制限されていました。単一サブスクリプション用のマルチサイト VPN 接続によって、この制限はなくなりました。これにより、クロスプレミス構成を通じて、特定のサブスクリプション用に複数の Azure リージョンを使用できるようになりました。
 
-詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
+詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。
+[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
 
 #### VNet 間接続
 マルチサイト VPN を使用して、各リージョンに個別の Azure Virtual Network を構成する必要があります。ただし多くの場合は、異なるリージョン内のソフトウェア コンポーネント間で相互通信が必要になります。この通信では、Azure リージョンからオンプレミスにルーティングし、そこから別の Azure リージョンにルーティングするという経路は望ましくありません。経路を短縮するために、Azure では、1 つのリージョンにある 1 つの Azure Virtual Network を、別のリージョンでホストされているもう 1 つの Azure Virtual Network に接続するよう構成できます。この機能は、VNet 間接続と呼ばれます。この機能の詳細については、次のリンクから確認できます。<https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>
@@ -784,9 +785,11 @@ Azure PowerShell コマンドレットをローカルのデスクトップ/ラ�
 
 VM をデプロイしたり、VM のデプロイメント内でカスタム ステップを作成するための強力なツールとして、PowerShell (PS) はお客様から高く評価されています。Azure で SAP インスタンスを実行しているすべてのお客様が、PS コマンドレットを使用して Azure ポータルの管理機能を補完したり、Azure 内のデプロイメントを管理するための専用ツールとして PS コマンドレットを使用しています。Azure 用のコマンドレットでは、2,000 を超える Windows 関連コマンドレットと同じ命名規則が使用されているので、これらのコマンドレットを使用している Windows 管理者であれば、どなたでも簡単に Azure 用のコマンドレットを使用できます。
 
-次の例を参照してください: <http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+次の例を参照してください: 
+<http://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO 新しい CLI コマンドについてテスト時に説明してください) Azure Monitoring Extension for SAP のデプロイ (このドキュメントの「[Azure Monitoring Solution for SAP][planning-guide-9.1]」の章を参照してください) は、PowerShell または CLI を通じてのみ実行可能です。したがって、Azure で SAP NetWeaver システムをデプロイまたは管理する場合には、PowerShell または CLI を設定し、構成することが必須となります。
+[comment]: <> (MShermannd TODO 新しい CLI コマンドについてテスト時に説明してください)
+ Azure Monitoring Extension for SAP のデプロイ (このドキュメントの「[Azure Monitoring Solution for SAP][planning-guide-9.1]」の章を参照してください) は、PowerShell または CLI を通じてのみ実行可能です。したがって、Azure で SAP NetWeaver システムをデプロイまたは管理する場合には、PowerShell または CLI を設定し、構成することが必須となります。
 
 Azure の機能が増えるのに応じて、新しい PS コマンドレットが追加され、コマンドレットの更新が必要になります。そのため、少なくとも月に 1 回は、Azure のダウンロード サイト (<https://azure.microsoft.com/downloads/>) で新しいバージョンのコマンドレットを確認することをお勧めします。新バージョンは、以前のバージョンの上にインストールされます。
 
@@ -820,7 +823,11 @@ ___
 
 > ![Windows][Logo_Windows] Windows
 >
-> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) [comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) [comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) [comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
+> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。
+[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) 
+[comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) 
+[comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) 
+[comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -841,7 +848,8 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 
 独自の Azure VM ディスクを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
+[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * 管理者特権を持つ別のローカル アカウントを追加します。VM がデプロイされ、より適切なユーザーが使用可能になるまで、このアカウントをマイクロソフトのサポートが使用したり、サービスやアプリケーションの実行コンテキストとして割り当てることができるようにします。
@@ -866,7 +874,8 @@ ___
 
 独自の Azure VM イメージを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
+[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM でユーザーとして登録されているすべてのドメイン ユーザーは、クラウドのみのシナリオでは存在しなくなるので、(このドキュメントの「[クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ][planning-guide-2.1]」の章を参照してください)、このようなドメイン アカウントを使用したサービスは、イメージが Azure にデプロイされた後には機能しないことがあります。これは特に、DBMS や SAP アプリケーションなどのサービスの実行に使用されるアカウントでよく起こります。したがって、このようなドメイン アカウントは VM ローカル アカウントに置き換えて、VM のオンプレミス ドメイン アカウントを削除する必要があります。このドキュメントの「[クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ][planning-guide-2.2]」の章で説明しているように、VM がクロスプレミス シナリオでデプロイされた場合には、オンプレミス ドメイン ユーザーを VM イメージ内に保持しても問題ない場合があります。
@@ -1618,7 +1627,7 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 * オンプレミスの STMS が正しく構成されていることを確認します。
 * 移送ドメイン コントローラーのホスト名を Azure 上の仮想マシンで解決できること、またその逆で解決できることを確認します。
-* トランザクション STMS -> [Other Configuration] (その他の構成) -> [Include System in Domain] (ドメインにシステムを含める) を呼び出します。
+* トランザクション STMS -> [Other Configuration] \(その他の構成) -> [Include System in Domain] \(ドメインにシステムを含める) を呼び出します。
 * オンプレミスの TMS システムの接続を確認します。
 * 通常どおり、移送ルート、グループ、階層を構成します。
 

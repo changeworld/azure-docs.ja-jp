@@ -60,7 +60,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
   5.  ボックスにモバイル サービスの名前を入力します。たとえば、ドメイン名が「contoso.azure-mobile.net」の場合、ボックスに「_contoso_」と入力します。
   6.  チェック マーク ボタンをクリックします。
 
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「*移行中*」として一覧表示されます。
+利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
 
   ![移行アクティビティ モニター][1]
 
@@ -117,7 +117,7 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 この作業は任意ですが、管理しやすくなります。
 
-> [AZURE.TIP]  Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.TIP] Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 
@@ -166,7 +166,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 複数のアプリ設定を同時に更新できます。
 
-> [AZURE.TIP]  同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> [AZURE.TIP] 同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
 
 ### <a name="authentication"></a>認証
 
@@ -381,17 +381,17 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service 価格]: https://azure.microsoft.com/ja-JP/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure ポータル]: https://portal.azure.com
-[Azure リージョン]: https://azure.microsoft.com/ja-JP/regions/
+[Azure リージョン]: https://azure.microsoft.com/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
 [連続的にデプロイ]: ../app-service-web/app-service-continuous-deployment.md
-[Mixed 名前空間を変換する]: https://azure.microsoft.com/ja-JP/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
+[Mixed 名前空間を変換する]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
 [custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
 [Fiddler]: http://www.telerik.com/fiddler

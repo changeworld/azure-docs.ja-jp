@@ -102,7 +102,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 **SciQuest Spend Director で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルの **SciQuest Spend Director ** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1. Azure クラシック ポータルの **SciQuest Spend Director** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
 	![Configure Single Sign-On][8]
 

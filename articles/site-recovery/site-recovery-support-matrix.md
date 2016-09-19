@@ -52,7 +52,7 @@
 
 **名前** | **説明** | **最新バージョン** | **サポート** | **詳細**
 ---|---|---|---| ---
-**Azure Site Recovery プロバイダー ** | オンプレミスのサーバーと Azure/セカンダリ サイトの間の通信を調整します <br/><br/> オンプレミスの VMM サーバー、または Hyper-V サーバー (VMM サーバーがない場合) にインストールされます | 5\.1.1700 (ポータルから使用可能) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
+**Azure Site Recovery プロバイダー** | オンプレミスのサーバーと Azure/セカンダリ サイトの間の通信を調整します <br/><br/> オンプレミスの VMM サーバー、または Hyper-V サーバー (VMM サーバーがない場合) にインストールされます | 5\.1.1700 (ポータルから使用可能) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 **Azure Site Recovery の統合セットアップ (VMware から Azure)** | オンプレミスの VMware サーバーと Azure の間の通信を調整します <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9\.3.4246.1 (ポータルから使用可能) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 **モビリティ サービス** | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します | 該当なし (ポータルから使用可能) | 各 VMware VM またはレプリケートする物理サーバーにインストールされます。**Microsoft Azure Recovery Services (MARS) エージェント** | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (VMM サーバーの有無にかかわらず) | 2\.0.8689.0 (ポータルから使用可能) | このエージェントは Azure Site Recovery と Azure Backup が使用します。[詳細情報](https://support.microsoft.com/ja-JP/kb/2997692)
 
