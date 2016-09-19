@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/09/2016" 
+    ms.date="09/01/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Gigya の統合
@@ -76,7 +76,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-gigya-tutorial/IC789529.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Gigya サインオン URL]** テキストボックスに、"**http://company.gigya.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Gigya サインオン URL]** ボックスに、"*http://company.gigya.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-gigya-tutorial/IC789530.png "アプリケーション URL の構成")
 
@@ -94,13 +94,13 @@
 
     ![SAML の構成](./media/active-directory-saas-gigya-tutorial/IC789533.png "SAML の構成")
 
-    1.  **[名前]** テキスト ボックスに、構成の名前を入力します。
-    2.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
-    3.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[シングル サインオン サービス URL]** ボックスに貼り付けます。
-    4.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[名前識別子形式]** ボックスに貼り付けます。
+    1.  [**名前**] テキスト ボックスに、構成の名前を入力します。
+    2.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[Issuer (発行者)]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[Single Sign-On Service URL (シングル サインオン サービス URL)]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルの **[Gigya でのシングル サインオンの構成]** ダイアログ ページで、**[名前識別子形式]** の値をコピーし、**[Name ID Format (名前識別子形式)]** ボックスに貼り付けます。
     5.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
         
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+		>[AZURE.TIP]詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
     6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
     7.  **[設定の保存]** をクリックします。
@@ -112,13 +112,13 @@
   
 Azure AD ユーザーが Gigya にログインできるようにするには、ユーザーを Gigya にプロビジョニングする必要があります。Gigya の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **Gigya** 企業サイトに管理者としてログインします。
 
 2.  **[管理者]、[ユーザーの管理]** の順にクリックし、**[ユーザーの招待]** をクリックします。
 
-    ![Manage Users](./media/active-directory-saas-gigya-tutorial/IC789535.png "ユーザーの管理")
+    ![Manage Users](./media/active-directory-saas-gigya-tutorial/IC789535.png "Manage Users")
 
 3.  [ユーザーの招待] ダイアログで、次の手順を実行します。
 
@@ -147,6 +147,6 @@ Azure AD ユーザーが Gigya にログインできるようにするには、�
 
     ![Yes](./media/active-directory-saas-gigya-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Windows VM でパスワードまたはリモート デスクトップをリセットする |Microsoft Azure"
-	description="リソース マネージャーのデプロイ モデルで作成された Windows VM で管理者のパスワードまたはリモート デスクトップ サービスをリセットします。"
+	pageTitle="Windows VM でパスワードまたはリモート デスクトップの構成をリセットする | Microsoft Azure"
+	description="Azure Portal または Azure PowerShell を使用して、Windows VM でアカウントのパスワードまたはリモート デスクトップ サービスをリセットする方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,21 +14,21 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-パスワードを忘れたか、リモート デスクトップ サービスの構成に問題があるために Windows 仮想マシンに接続できない場合は、ローカル管理者パスワードをリセットするか、リモート デスクトップ サービスの構成をリセットしてください。Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。PowerShell を使用する場合は、最新の PowerShell を作業コンピューターにインストールし、Azure サブスクリプションにサインインするようにします。詳細な手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
+Windows 仮想マシンに接続できない場合、ローカル管理者パスワードをリセットすることも、リモート デスクトップ サービスの構成をリセットすることもできます。Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。PowerShell を使用する場合は、最新の PowerShell モジュールが作業コンピューターにインストールされており、Azure サブスクリプションにサインインしていることを確認します。詳細な手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。
 
 > [AZURE.TIP] インストールされている PowerShell のバージョンを確認するには、`Import-Module Azure, AzureRM; Get-Module Azure, AzureRM | Format-Table Name, Version` を使用します。
 
 ## リソース マネージャー デプロイ モデルにおける Windows VM
 
 ### Azure ポータル
-**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックして VM を選択します。次のようにパスワード リセットのブレードが表示されます。
+**[参照]**、**[仮想マシン (クラシック)]**、*ご使用の Windows 仮想マシン*、**[すべての設定]**、**[パスワードのリセット]** の順にクリックして VM を選択します。パスワード リセット ブレードが表示されます。
 
 ![パスワード リセット ページ](./media/virtual-machines-windows-reset-rdp/Portal-RM-PW-Reset-Windows.png)
 
@@ -55,7 +55,7 @@ VM アクセス拡張機能を使用して、次のように新しい資格情�
 		-Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 
 
-`myRG`、`myVM`、`myVMAccess`、および場所を、自分のセットアップに関連する値に置き換えます。
+`myRG`、`myVM`、`myVMAccess`、および場所を、セットアップに関連する値に置き換えます。
 
 
 #### **リモート デスクトップ サービスの構成のリセット**
@@ -93,7 +93,7 @@ VM へのリモート アクセスをリセットするには、次のように 
 
 ### VMAccess 拡張機能と PowerShell
 
-仮想マシンに VM エージェントがインストールされていることを確認します。VM エージェントを使用するには、VMAccess 拡張機能を使用前にインストールしておく必要があります。次のコマンドを使用して VM エージェントがインストールされていることを確認します。("myCloudService" と "myVM" は、それぞれ実際のクラウド サービスの名前と VM に置き換えます。これらの情報は、パラメーターを指定せずに `Get-AzureVM` を実行します)
+仮想マシンに VM エージェントがインストールされていることを確認します。VM エージェントを使用するには、VMAccess 拡張機能を使用前にインストールしておく必要があります。次のコマンドを使用して VM エージェントがインストールされていることを確認します。("myCloudService" と "myVM" は、それぞれ実際のクラウド サービスの名前と VM に置き換えます。これらの名前を確認するには、パラメーターを指定せずに `Get-AzureVM` を実行します)。
 
 	$vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 	write-host $vm.VM.ProvisionGuestAgent
@@ -143,4 +143,4 @@ b. `Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Serv
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/14/2016"
+   ms.date="09/01/2016"
    ms.author="jehollan"/>
 
 # Logic Apps での Azure Functions の使用
@@ -26,7 +26,7 @@
 
 ## Logic Apps 用の関数を作成する
 
-**汎用 Node Webhook** または**汎用 C# Webhook** テンプレートを使用して、Azure Functions ポータルで新しい関数を作成することをお勧めします。そうすれば、ロジック アプリから `application/json` を受け取るテンプレートが自動的に生成されます。これらのテンプレートを使用する関数は自動的に検出されて、Logic Apps デザイナーの **[自分のリージョンの Azure Functions]** に一覧表示されます。
+"**汎用 Webhook - Node**" または "**汎用 Webhook - C#**" テンプレートを使用して、Azure Functions ポータルで新しい関数を作成することをお勧めします。そうすれば、ロジック アプリから `application/json` を受け取るテンプレートが自動的に生成されます。これらのテンプレートを使用する関数は自動的に検出されて、Logic Apps デザイナーの **[自分のリージョンの Azure Functions]** に一覧表示されます。
 
 Webhook 関数は、要求を受け取ると、それを `data` 変数経由でメソッドに渡します。ペイロードのプロパティにアクセスするには、`data.foo` のようなドット表記を使用します。たとえば、DateTime 値を日付文字列に変換する単純な JavaScript 関数は次の例のようになります。
 
@@ -70,4 +70,4 @@ Node.js webhook 関数は、デザイナー内から作成することもでき�
 [1]: ./media/app-service-logic-azure-functions/callFunction.png
 [2]: ./media/app-service-logic-azure-functions/createFunction.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

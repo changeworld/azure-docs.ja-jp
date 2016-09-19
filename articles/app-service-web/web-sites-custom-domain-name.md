@@ -61,7 +61,7 @@ Azure App Service では、次のカテゴリのカスタム ドメインをア�
 必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。
 
 - [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。
-- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**&lt;*appname*>.azurewebsites.net**) にマップします。
+- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**& lt;*appname*>.azurewebsites.net**) にマップします。
 
 CNAME の利点は、IP アドレスが変更されても維持されることです。アプリを削除して作成し直したり、より上位の価格レベルから **Shared** レベルに移行したりすると、アプリの仮想 IP アドレスが変更される可能性があります。そのような変更があった場合、A レコードは更新する必要がありますが、CNAME レコードは有効なままです。
 
@@ -126,7 +126,7 @@ A レコードを次のように構成します (@ は通常、ルート ドメ�
   </tr>
 </table>
 
-追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*subdomain*>.azurewebsites.net にマップする規則が適用されます。TXT レコードを次のように構成します。
+追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*appname*>.azurewebsites.net にマップする規則が適用されます。TXT レコードを次のように構成します。
 
 <table cellspacing="0" border="1">
   <tr>
@@ -203,6 +203,32 @@ Azure ポータルの **[カスタム ドメイン]** ブレードに戻り ([�
 
 8.  Azure による新しいカスタム ドメイン名の構成が完了したら、ブラウザーでカスタム ドメイン名に移動します。ブラウザーに Azure アプリが表示されます。これは、カスタム ドメイン名が正しく構成されていることを意味します。
 
+> [AZURE.NOTE] DNS レコードが既に使用されており (アクティブ ドメインによってトラフィックが処理されているシナリオ)、ドメイン検証のために Web アプリを事前にバインドする必要がある場合は、次の表に示す例のように TXT レコードを作成します。追加の TXT レコードでは、&lt;*subdomain*>.&lt;*rootdomain*> を &lt;*appname*>.azurewebsites.net にマップする規則が適用されます。
+> <table cellspacing="0" border="1">
+>   <tr>
+>     <th>FQDN の例</th>
+>     <th>TXT ホスト</th>
+>     <th>TXT 値</th>
+>   </tr>
+>   <tr>
+>     <td>contoso.com (ルート)</td>
+>     <td>awverify.contoso.com</td>
+>     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+>   </tr>
+>   <tr>
+>     <td>www.contoso.com (サブ)</td>
+>     <td>awverify.www.contoso.com</td>
+>     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+>   </tr>
+>     <tr>
+>     <td>*.contoso.com (サブ)</td>
+>     <td>awverify.*.contoso.com</td>
+>     <td>&lt;<i>appname</i>>.azurewebsites.net</td>
+>   </tr>
+> </table>
+この DNS レコードを作成したら、Azure Portal に戻ってカスタム ドメイン名を対象の Web アプリに追加します。
+ 
+
 <a name="verify"></a>
 ## DNS への反映を確認する
 
@@ -223,4 +249,4 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

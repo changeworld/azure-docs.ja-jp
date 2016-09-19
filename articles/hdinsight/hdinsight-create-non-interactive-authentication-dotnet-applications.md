@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 # 非対話型認証 .NET HDInsight アプリケーションを作成する
@@ -25,7 +25,7 @@
 
 - Azure サブスクリプションのテナント ID
 - Azure Directory アプリケーションのクライアント ID
-- Azure Directory アプリケーションのシークレット キー  
+- Azure Directory アプリケーションのシークレット キー
 
 メイン プロセスには、次の手順が含まれます。
 
@@ -36,7 +36,7 @@
 
 ##前提条件
 
-- HDInsight クラスター。[入門のチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)に記載されている手順を参照して作成できます。 
+- HDInsight クラスター。[入門のチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)に記載されている手順を参照して作成できます。
 
 
 
@@ -122,4 +122,4 @@ PowerShell 経由でテナント ID を取得するには:
 - [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
 - [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

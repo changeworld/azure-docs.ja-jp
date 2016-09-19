@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="09/07/2016" 
 	ms.author="stefsch"/>
 
 # App Service 環境を使用した geo 分散スケール
 
-## 概要 ##
+## Overview ##
 きわめて高いスケールを必要とするアプリケーション シナリオでは、単一のアプリ デプロイメントで使用できるコンピューティング リソース容量では足りないことがあります。投票アプリケーション、スポーツ イベント、テレビ放送される娯楽イベントは、いずれも非常に高いスケールを必要とするシナリオの例です。高スケール要件を満たすには、極端に負荷の大きい要件に対応できるように、単一のリージョン内、または複数のリージョンにわたって、複数のアプリ デプロイメントを使用してアプリを水平方向に拡張する必要があります。
 
 App Service 環境は、水平方向のスケールアウトに最適なプラットフォームです。既知の要求レートをサポートできる App Service 環境構成を選択していれば、開発者は追加の App Service 環境を "ひな型" 方式でデプロイして、必要なピーク時負荷容量を確保できます。
@@ -52,7 +52,7 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 - **webfrontend2.fe2ase.p.azurewebsites.net:** 2 つ目の App Service 環境にデプロイされているサンプル アプリのインスタンス。
 - **webfrontend3.fe3ase.p.azurewebsites.net:** 3 つ目の App Service 環境にデプロイされているサンプル アプリのインスタンス。
 
-**同じ** Azure リージョンで実行される複数の Azure App Service エンドポイントを登録するには、Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] \(プレビュー) を使用すれば最も簡単に実現できます。
+**同じ** Azure リージョンで実行される複数の Azure App Service エンドポイントを登録するには、PowerShell を使用した [Azure Resource Manager による Traffic Manager のサポート][ARMTrafficManager]を使用すれば最も簡単に実現できます。
 
 最初の手順では、Azure Traffic Manager プロファイルの作成です。次のコードでは、サンプル アプリ用プロファイルの作成方法を示しています。
 
@@ -62,19 +62,24 @@ App Service 環境は、水平方向のスケールアウトに最適なプラ�
 
 *TrafficRoutingMethod* パラメーターは負荷分散ポリシーを定義しており、Traffic Manager はこのポリシーを使用して、顧客の負荷を利用可能なすべてのエンドポイントに分散する方法を判断します。この例では、*重み付け*方式が選択されています。この方式では、顧客の要求が、各エンドポイントに関連付けられている相対的な重みに基づいて、登録済みのすべてのアプリケーション エンドポイント間で分散されます。
 
-作成されるプロファイルに対して、各アプリ インスタンスが*外部エンドポイント*として追加されます。次のコードは、プロファイルに追加される 3 つのアプリ インスタンスの各 URL を示しています。
+作成されるプロファイルに対して、各アプリ インスタンスがネイティブ Azure エンドポイントとして追加されます。次のコードは、各フロント エンド Web アプリへの参照をフェッチし、*TargetResourceId* パラメーターを使用して各アプリを Traffic Manager エンドポイントとして追加します。
 
-    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type ExternalEndpoints –Target webfrontend1.fe1ase.p.azurewebsites.net –EndpointStatus Enabled –Weight 10
-    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type ExternalEndpoints –Target webfrontend2.fe2ase.p.azurewebsites.net –EndpointStatus Enabled –Weight 10
-    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type ExternalEndpoints –Target webfrontend3.fe3ase.p.azurewebsites.net –EndpointStatus Enabled –Weight 10
+
+    $webapp1 = Get-AzureRMWebApp -Name webfrontend1
+    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
+
+    $webapp2 = Get-AzureRMWebApp -Name webfrontend2
+    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp2.Id –EndpointStatus Enabled –Weight 10
+
+    $webapp3 = Get-AzureRMWebApp -Name webfrontend3
+    Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp3.Id –EndpointStatus Enabled –Weight 10
     
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
-
-アプリ インスタンスごとに *Add-AzureTrafficManagerEndpointConfig* が　1 回ずつ呼び出されている点に注意してください。各 Powershell コマンドの*Target* パラメーターは、デプロイされた 3 つのアプリ インスタンスの完全修飾ドメイン名 (FQDN) を指しています。これらの FQDN を使用して *scalable-ase-demo.trafficmanager.net* の DNS CNAME チェーンを処理し、トラフィックの負荷を Traffic Manager プロファイルに登録されているすべてのエンドポイント間で分散させます。
+    
+アプリ インスタンスごとに *Add-AzureTrafficManagerEndpointConfig* が　1 回ずつ呼び出されている点に注意してください。各 PowerShell コマンドの *TargetResourceId* パラメーターは、デプロイされたアプリの 3 つのインスタンスのうちの 1 つを参照します。Traffic Manager プロファイルにより、プロファイルに登録されている 3 つのエンドポイントすべての間で負荷が分散されます。
 
 3 つのエンドポイントすべてで *Weight* (重み) パラメーターに同じ値 (10) が使用されています。これにより、顧客の要求が Traffic Manager によって 3 つのアプリケーションのすべてのインスタンス間で比較的均等に分散されます。
 
-*注:* ARM Traffic Manager サポートは現在プレビュー段階のため、Azure App Service のエンドポイントでは *Type* パラメーターを *ExternalEndpoints* に設定する必要があります。将来的に、Azure App Service エンドポイントは、ARM 版の Traffic Manager によってエンドポイントの種類の 1 つとしてネイティブでサポートされます。
 
 ## アプリのカスタム ドメインが Traffic Manager ドメインをポイントするように設定する ##
 最後の必須手順として、アプリのカスタム ドメインが Traffic Manager ドメインをポイントするように設定します。サンプル アプリでは、*www.scalableasedemo.com* を *scalable-ase-demo.trafficmanager.net* にポイントさせています。この手順は、カスタム ドメインを管理するドメイン レジストラーを通じて実行する必要があります。
@@ -98,8 +103,8 @@ Traffic Manager と DNS を構成すると、最終的に、*www.scalableasedemo
 2. ドメイン レジストラーの CNAME エントリによって、DNS 参照が Azure Traffic Manager にリダイレクトされます。
 3. Azure Traffic Manager の DNS サーバーのいずれかに対して、*scalable-ase-demo.trafficmanager.net* の DNS 参照が実行されます。
 4. Traffic Manager が、負荷分散ポリシー (前半で Traffic Manager プロファイルを作成するときに使用した *TrafficRoutingMethod* パラメーター) に基づいて、構成済みのエンドポイントのいずれかを選択し、ブラウザーまたはデバイスにそのエンドポイントの FQDN を返します。
-5.  エンドポイントの FQDN は App Service 環境で実行されているアプリ インスタンスの URL であるため、ブラウザーまたはデバイスは FQDN を IP アドレスに解決するよう Microsoft Azure の DNS サーバーに要請します。 
-6. ブラウザーまたはデバイスはその IP アドレスに HTTP/S 要求を送信します。  
+5.  エンドポイントの FQDN は App Service 環境で実行されているアプリ インスタンスの URL であるため、ブラウザーまたはデバイスは FQDN を IP アドレスに解決するよう Microsoft Azure の DNS サーバーに要請します。
+6. ブラウザーまたはデバイスはその IP アドレスに HTTP/S 要求を送信します。
 7. 要求は、App Service 環境のいずれかで実行されているアプリ インスタンスのいずれかに到達します。
 
 次のコンソールのスクリーンショットは、サンプル アプリのカスタム ドメインの DNS 参照が、3 つあるサンプル App Service 環境の 1 つ (この場合は、3 つの App Service 環境の 2 つ目) で実行されているアプリ インスタンスに正しく解決されたところを示しています。
@@ -107,9 +112,9 @@ Traffic Manager と DNS を構成すると、最終的に、*www.scalableasedemo
 ![DNS Lookup][DNSLookup]
 
 ## その他のリンクおよび情報 ##
-App Service 環境に関するすべての記事と作業方法は [Application Service Environments の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
-Powershell を使用した [Azure リソース マネージャー (ARM) による Traffic Manager のサポート][ARMTrafficManager] \(プレビュー) に関するドキュメント
+PowerShell を使用した [Azure Resource Manager による Traffic Manager のサポート][ARMTrafficManager]に関するドキュメント。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -118,7 +123,7 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 <!-- LINKS -->
 [AzureTrafficManagerProfile]: https://azure.microsoft.com/documentation/articles/traffic-manager-manage-profiles/
 [ARMTrafficManager]: https://azure.microsoft.com/documentation/articles/traffic-manager-powershell-arm/
-[RegisterCustomDomain]: https://azure.microsoft.com/documentation/articles/web-sites-custom-domain-name/
+[RegisterCustomDomain]: https://azure.microsoft.com/ja-JP/documentation/articles/web-sites-custom-domain-name/
 
 
 <!-- IMAGES -->
@@ -127,4 +132,4 @@ Powershell を使用した [Azure リソース マネージャー (ARM) によ�
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

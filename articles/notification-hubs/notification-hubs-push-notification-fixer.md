@@ -224,7 +224,7 @@ Notification Hubs を使用して通知を送信する場合、通知はまず�
 [10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
  
 <!-- LINKS -->
-[Notification Hubs の概要]: notification-hubs-overview.md
+[Notification Hubs の概要]: notification-hubs-push-notification-overview.md
 [Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started.md
 [テンプレート]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNS のガイダンス]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW4
@@ -241,4 +241,4 @@ Notification Hubs を使用して通知を送信する場合、通知はまず�
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

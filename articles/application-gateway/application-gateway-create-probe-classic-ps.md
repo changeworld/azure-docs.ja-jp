@@ -26,7 +26,7 @@
 
 <BR>
 
-[AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)].
+[AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](application-gateway-create-probe-ps.md)方法を確認してください。
 
@@ -47,35 +47,13 @@ Application Gateway を作成するには:
 
 次の例では、"testvnet1" という仮想ネットワークと "subnet-1" というサブネットを使用してアプリケーション ゲートウェイを作成します。
 
-
-	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
-
-	VERBOSE: 4:31:35 PM - Begin Operation: New-AzureApplicationGateway
-	VERBOSE: 4:32:37 PM - Completed Operation: New-AzureApplicationGateway
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
-
-
- *Description*、*InstanceCount*、および *GatewaySize* は省略可能なパラメーターです。
-
+	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
 
-
-	PS C:\> Get-AzureApplicationGateway AppGwTest
-	Name          : AppGwTest
-	Description   :
-	VnetName      : testvnet1
-	Subnets       : {Subnet-1}
-	InstanceCount : 2
-	GatewaySize   : Medium
-	State         : Stopped
-	VirtualIPs    : {}
-	DnsName       :
+	Get-AzureApplicationGateway AppGwTest
 
 >[AZURE.NOTE]  *InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。Small、Medium、Large から選択します。
-
 
  ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
@@ -87,10 +65,9 @@ Application Gateway を作成するには:
 
 次の例では、XML ファイルを使用して、アプリケーション ゲートウェイの設定すべてを構成し、アプリケーション ゲートウェイのリソースにコミットします。
 
-### 手順 1  
+### 手順 1
 
 次のテキストをメモ帳にコピーします。
-
 
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
     <FrontendIPConfigurations>
@@ -161,7 +138,6 @@ Application Gateway を作成するには:
 
 >[AZURE.IMPORTANT] プロトコル項目 HTTP または HTTPS は、大文字小文字を区別します。
 
-
 カスタム プローブの構成のために、新しい構成項目 <Probe> が追加されています。
 
 構成パラメーターは次のとおりです。
@@ -183,7 +159,7 @@ Application Gateway を作成するには:
 
 get-AzureApplicationGatewayConfig を使用して XML ファイルを取得します。この操作により、プローブ設定を追加するために変更される XML 構成ファイルがエクスポートされます。
 
-	get-AzureApplicationGatewayConfig -Name <application gateway name> -Exporttofile "<path to file>"
+	Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
 
 
 ### 手順 2.
@@ -200,6 +176,7 @@ get-AzureApplicationGatewayConfig を使用して XML ファイルを取得し�
             <Timeout>15</Timeout>
             <UnhealthyThreshold>5</UnhealthyThreshold>
         </Probe>
+    </Probes>
 
 XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
 
@@ -214,12 +191,11 @@ XML の backendHttpSettings セクションで、次の例に示すようにプ�
 
 XML ファイルを保存します。
 
-
 ### 手順 3.
 
 **Set-AzureApplicationGatewayConfig** を使用して、アプリケーション ゲートウェイの構成を新しい XML ファイルで更新します。これにより、新しい構成でアプリケーション ゲートウェイが更新されます。
 
-	set-AzureApplicationGatewayConfig -Name <application gateway name> -Configfile "<path to file>"
+	Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
 
 
 ## 次のステップ
@@ -228,4 +204,4 @@ Secure Sockets Layer (SSL) オフロードを構成する場合は、[SSL オフ
 
 内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「[内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

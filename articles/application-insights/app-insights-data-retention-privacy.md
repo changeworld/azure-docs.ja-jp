@@ -26,7 +26,7 @@
 
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。(この拡張機能は Application Insights の優れた機能です。) 手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに強力なレビュー プロセスを適用してください。
-* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
+* アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。
 * データは米国の [Microsoft Azure](http://azure.com) サーバーに保管されます。(ただし、アプリは、場所を問わず実行できます)。 Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
@@ -67,7 +67,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 * [Web ページ](app-insights-javascript.md) - ページ、ユーザーとセッションの数。ページの読み込み時間。例外。AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
-* [例外](app-insights-asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、ビルド ID、CPU タイプ。 
+* [例外](app-insights-asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、ビルド ID、CPU タイプ。
 * [依存関係](app-insights-asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。URI または接続文字列、期間、成功、コマンド。
 * [可用性テスト](app-insights-monitor-web-app-availability.md) - テストとステップの期間、応答。
 * [トレース ログ](app-insights-search-diagnostic-logs.md)と[カスタム製品利用統計情報](app-insights-api-custom-events-metrics.md) - **コード化してログまたは製品利用統計情報に入れるすべて**。
@@ -112,11 +112,11 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 
 ## データが保持されている場所はどこですか。 
 
-* アメリカ合衆国内です。 
+* アメリカ合衆国内です。
 
 #### データを他の場所 (たとえば、ヨーロッパ) に保存することはできますか。 
 
-* 現時点ではすべてではありません。 
+* 現時点ではすべてではありません。
 
 #### それはアプリを米国内でホストする必要があるという意味ですか。
 
@@ -196,10 +196,9 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [Status Monitor を IIS にインストールする][redfield]|Dependencies<br/>ServerContext<br/>Inferred<br/>Perf counters
 [Application Insights SDK を Java Web アプリに追加する][java]|ServerContext<br/>Inferred<br/>Request<br/>Session<br/>ユーザー
 [JavaScript SDK を Web ページに追加する][client]|ClientContext <br/>Inferred<br/>Page<br/>ClientPerf<br/>Ajax
-[SDK を Windows ストア アプリに追加する][windows]|DeviceContext<br/>ユーザー<br/>Crash data
 [既定のプロパティを定義する][apiproperties]|**Properties** (すべての標準イベントおよびカスタム イベント)
 [Call TrackMetric][api]|数値<br/>**Properties**
-[Call Track*][api]||イベント名<br/>**Properties**
+[Call Track*][api]|イベント名<br/>**Properties**
 [Call TrackException][api]|**Exceptions**<br/>スタック ダンプ<br/>**Properties**
 SDK はデータを収集できません。例: <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子での例外 | SDK diagnostics
  
@@ -223,7 +222,7 @@ Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーから�
 PageViews | URL とページ名または画面名
 Client perf | URL/ページ名、ブラウザーの読み込み時間
 Ajax | Web ページからサーバーへの HTTP 呼び出し
-Requests |URL、期間、応答コード
+要求数 |URL、期間、応答コード
 依存関係|種類 (SQL、HTTP、...)、接続文字列または URI、同期または非同期、期間、成功、SQL ステートメント (Status Monitor による)
 **Exceptions** | 種類、**メッセージ**、呼び出し履歴、ソース ファイルと行の番号、スレッド ID
 Crashes | プロセス ID、親プロセスの ID、クラッシュ スレッドの ID。アプリケーションの修正プログラム、ID、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類
@@ -235,7 +234,7 @@ SDK diagnostics | トレース メッセージまたは例外
 [ApplicationInsights.config を編集して、データの一部を無効にできます][config]
 
 
-## クレジット
+## 謝辞
 
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [http://www.maxmind.com](http://www.maxmind.com) から入手できます。
 
@@ -264,8 +263,7 @@ SDK diagnostics | トレース メッセージまたは例外
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

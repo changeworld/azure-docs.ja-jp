@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="09/07/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache のスケーリング方法
@@ -36,7 +36,7 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 現在のキャッシュがアプリケーションの要件を満たさないと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュに変更できます。使用するキャッシュの価格レベルを決定する方法の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
 ## キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure ポータル](https://portal.azure.com)で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[設定]**、**[価格レベル]** の順にクリックします。
+キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-redis-cache-settings)し、**[設定]**、**[価格レベル]** の順にクリックします。
 
 **[Redis Cache]** ブレードの **[価格レベル]** 部分をクリックする方法もあります。
 
@@ -63,7 +63,7 @@ Azure Redis Cache の[監視](cache-how-to-monitor.md)機能を使用して、�
 
 ## スケーリング処理を自動化する方法
 
-Azure Redis Cache インスタンスは、Azure ポータルのほか、Azure Redis Cache PowerShell コマンドレット、Azure CLI、および Microsoft Azure 管理ライブラリ (MAML) を使用してスケーリングすることができます。
+Azure Redis Cache インスタンスは、Azure Portal のほか、Azure Redis Cache PowerShell コマンドレット、Azure CLI、および Microsoft Azure 管理ライブラリ (MAML) を使用してスケーリングすることができます。
 
 -	[PowerShell を使用したスケーリング](#scale-using-powershell)
 -	[Azure CLI を使用したスケーリング](#scale-using-azure-cli)
@@ -145,7 +145,7 @@ Azure CLI によるスケーリングの詳細については、「[既存の Re
 
 -	新しいサイズに **Basic** キャッシュをスケーリングすると、すべてのデータが失われ、スケーリング処理中にキャッシュは使用できなくなります。
 -	**Basic** キャッシュを **Standard** キャッシュにスケーリングする場合、通常、キャッシュのデータは保存されます。
--	**Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。**Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。スケールダウンのときにデータが失われた場合、[allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。 
+-	**Standard** キャッシュをより大きいサイズまたは価格レベルにスケールアップする場合や、**Premium** キャッシュをより大きいサイズにスケールアップする場合、通常はすべてのデータが保持されます。**Standard** または **Premium** キャッシュをより小さいサイズにスケールダウンする場合、キャッシュ内のデータ量と新しいサイズの関係によっては、スケーリング時にデータが失われる可能性があります。スケールダウンのときにデータが失われた場合、[allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用してキーが削除されます。
 
 ### スケーリング中に影響を受けるカスタム データベース
 
@@ -181,7 +181,7 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 ### スケーリングが完了したことをどのようにして確認できますか
 
-スケーリング処理の進捗は Azure ポータルで確認できます。スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
+スケーリング処理の進捗は Azure Portal で確認できます。スケーリングが完了すると、キャッシュの状態が **[実行中]** に変わります。
 
 ### この機能がプレビュー段階なのはなぜですか
 
@@ -199,4 +199,4 @@ Standard および Premium キャッシュには可用性について 99.9% の 
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -15,11 +15,11 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="08/31/2016"
 	ms.author="iainfou"/>
 
 # トラブルシューティング: Azure 仮想マシンで実行されているアプリケーションの起動、アクセス、接続の問題
 
 [AZURE.INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

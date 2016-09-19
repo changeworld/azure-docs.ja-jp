@@ -97,7 +97,7 @@
 
 3. 同じファイルで **RegisteredForRemoteNotifications** イベントをオーバーライドします。このコードでは、サーバーでサポートされているすべてのプラットフォームに送信される単純なテンプレート通知を登録します。
 
-	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](../notification-hubs/notification-hubs-templates.md)」を参照してください。
+	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
 
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -156,4 +156,4 @@
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

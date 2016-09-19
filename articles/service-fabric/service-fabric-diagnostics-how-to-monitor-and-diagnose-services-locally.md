@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/20/2016"
+   ms.date="09/06/2016"
    ms.author="toddabel"/>
 
 
@@ -49,8 +49,8 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 
 **アクター テンプレート**から作成されるプロジェクトの場合 (ステートレスまたはステートフル):
 
-1. **"ProjectName".cs** ファイルを開きます。*ProjectName* は、Visual Studio プロジェクト用に選択した名前です。  
-2. *DoWorkAsync* メソッドでコード `ActorEventSource.Current.ActorMessage(this, "Doing Work");` を検索します。これは、アプリケーション コードからのカスタムの ETW トレースの例です。  
+1. **"ProjectName".cs** ファイルを開きます。*ProjectName* は、Visual Studio プロジェクト用に選択した名前です。
+2. *DoWorkAsync* メソッドでコード `ActorEventSource.Current.ActorMessage(this, "Doing Work");` を検索します。これは、アプリケーション コードからのカスタムの ETW トレースの例です。
 3. **ActorEventSource.cs** ファイルには、パフォーマンス上の理由により頻度の高いイベントに使用する必要がある、`ActorEventSource.ActorMessage` メソッドのオーバーロードが見つかります。
 
 カスタムの ETW トレースをサービスのコードに追加した後で、もう一度アプリケーションをビルド、デプロイ、および実行して、診断イベント ビューアーでイベントを表示することができます。**F5** キーを使用してアプリケーションをデバッグすると、診断イベント ビューアーが自動的に開きます。
@@ -60,4 +60,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

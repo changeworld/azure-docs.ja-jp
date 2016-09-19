@@ -26,10 +26,10 @@
 
 | プロトコル | ポート |
 | -------- | ------- |
-| HTTPS | 443 |
+| MQTT | 8883 |
 | AMQP | 5671 |
 | AMQP over WebSocket | 443 |
-| MQTT | 8883 |
+| HTTPS | 443 |
 | LWM2M (デバイス管理) | 5684 |
 
 Azure リージョンに IoT Hub を作成すると、そのハブはハブの存続期間中同じ IP アドレスを保持します。ただし、サービス品質を維持するため、Microsoft によって IoT Hub が別のスケール ユニットに移動されると、新しい IP アドレスが割り当てられます。
@@ -59,4 +59,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-tokens]: iot-hub-sas-tokens.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

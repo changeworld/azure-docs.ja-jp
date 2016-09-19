@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="06/04/2016" 
+	ms.date="08/04/2016" 
 	ms.author="heidist"/>
 
 # Azure Search でのスコアリング プロファイルの使用方法
@@ -126,4 +126,4 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
 [9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

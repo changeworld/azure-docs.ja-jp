@@ -6,7 +6,7 @@ Event Hubs の Java クライアント ライブラリは、[Maven セントラ�
 <dependency>
 	<groupId>com.microsoft.azure</groupId>
 	<artifactId>azure-eventhubs</artifactId>
-	<version>0.7.2</version>
+	<version>{VERSION}</version>
 </dependency>
 ```
  
@@ -57,4 +57,4 @@ public class Send
 
 ``` 
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

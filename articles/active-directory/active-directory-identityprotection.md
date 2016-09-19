@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="09/07/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
@@ -24,9 +24,6 @@ Azure Active Directory Identity Protection は、リスク イベントや組織
 ## 現在のプレビューの制限事項
 このセクションでは、Azure Active Directory Identity Protection の現在のプレビューに適用される制限を示します。
 
-### 国またはリージョンの制限
-
-現在、Azure Active Directory Identity Protection のプレビューは、**[国/リージョン]** の値が **[米国]** のディレクトリでのみ使用できます。 <br><br> ![修復](./media/active-directory-identityprotection/222.png "修復")
 
 
 ### Identity Protection とフェデレーション ドメイン
@@ -102,8 +99,7 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 | 感染しているデバイスからのサインイン | 感染している可能性があるデバイスからのサインイン |
 | 匿名の IP アドレスからのサインイン | 不明なソースからのサインイン |
 | 不審なアクティビティのある IP アドレスからのサインイン |	不審なアクティビティのある IP アドレスからのサインイン |
-| 未知の場所からのサインイン | - | 
-| ロックアウト イベント (パブリック プレビューには含まれません) | - |
+| 未知の場所からのサインイン | - | | ロックアウト イベント (パブリック プレビューには含まれません) | - |
 
 以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。これらのレポートは Microsoft Azure 管理ポータルではまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
@@ -416,4 +412,4 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
  - [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="cache-redis"
     ms.workload="tbd"
-    ms.date="06/09/2016"
+    ms.date="09/07/2016"
     ms.author="sdanie" />
 
 # Managed Cache Service から Azure Redis Cache への移行
@@ -33,7 +33,7 @@ Managed Cache Service アプリケーションを Azure Redis Cache を使用す
 	-	ConnectionMultiplexer クラスを使用してキャッシュに接続する
 	-	キャッシュのプリミティブ データ型にアクセスする
 	-	キャッシュ内で .NET オブジェクトを使用する
--	ASP.NET のセッション状態と出力キャッシュを Azure Redis Cache に移行する 
+-	ASP.NET のセッション状態と出力キャッシュを Azure Redis Cache に移行する
 
 ## Managed Cache Service の機能を Azure Redis Cache にマップする
 
@@ -78,7 +78,7 @@ Microsoft Azure Redis Cache には、次のレベルがあります。
 
 Azure Redis Cache 用にクライアント アプリケーションを構成するには、その前に、Managed Cache Service の NuGet パッケージをアンインストールすることによって、既存の Managed Cache Service の構成とアセンブリ参照を削除する必要があります。
 
-Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[インストール済みパッケージ]** ノードを選択し、[インストール済みパッケージの検索] ボックスに「W**indowsAzure.Caching**」と入力します。**[Windows** **Azure Cache]** (または、NuGet パッケージのバージョンによっては **[Windows** **Azure Caching]**) を選択し、**[アンインストール]** をクリックして、**[閉じる]** をクリックします。
+Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[インストール済みのパッケージ]** ノードを選択し、[Search installed packages (インストール済みパッケージの検索)] ボックスに「**WindowsAzure.Caching**」と入力します。**[Windows** **Azure Cache]** (または、NuGet パッケージのバージョンによっては **[Windows** **Azure Caching]**) を選択し、**[アンインストール]** をクリックして、**[閉じる]** をクリックします。
 
 ![Azure Managed Cache Service NuGet パッケージのアンインストール](./media/cache-migrate-to-redis/IC757666.jpg)
 
@@ -179,4 +179,4 @@ Azure Redis Cache には、ASP.NET セッション状態とページ出力キャ
 
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

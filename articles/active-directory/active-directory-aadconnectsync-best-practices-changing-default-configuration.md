@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -58,8 +58,10 @@ Azure AD Connect Sync は、インストール ウィザードによって作成
 このコピーした規則のスコープ、結合、変換について必要な変更を加えます。
 
 ## 次のステップ
-[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+**概要トピック**
 
-<!---HONumber=AcomDC_0824_2016-->
+- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0907_2016-->

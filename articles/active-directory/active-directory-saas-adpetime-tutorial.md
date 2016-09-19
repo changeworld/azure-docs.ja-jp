@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -57,7 +57,7 @@ Azure AD への ADP eTime の統合を構成するには、ギャラリーから
 
 **ギャラリーから ADP eTime を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -180,7 +180,7 @@ SAML アサーションを構成する前に、ADP eTime サポート チーム�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpetime-tutorial/create_aaduser_06.png)
 
@@ -273,4 +273,4 @@ SAML アサーションを構成する前に、ADP eTime サポート チーム�
 [204]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-adpetime-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

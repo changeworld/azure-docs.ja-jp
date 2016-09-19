@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/26/2016" 
+	ms.date="09/06/2016" 
 	ms.author="danha"/>
 
 
@@ -125,11 +125,14 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 ## ダッシュボードにピン留めする
 
-ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムを固定することができます (この機能を有効にするには、[アプリの料金パッケージのアップグレード](app-insights-pricing.md)が必要になる場合があります)。
+ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムまたはテーブルをピン留めすることができます (この機能を有効にするには、[アプリの料金パッケージのアップグレード](app-insights-pricing.md)が必要になる場合があります)。
 
 ![ピンのクリック](./media/app-insights-analytics-using/pin-01.png)
 
 つまり、Web サービスのパフォーマンスや使用状況の監視に利用するダッシュボードを構成するときに、複雑な分析を他のメトリックに一緒に組み込むことができます。
+
+列の数が 4 列以下のテーブルはダッシュボードにテーブルをピン留めすることができます。最初の 7 行のみが表示されます。
+
 
 #### ダッシュボードの更新
 
@@ -183,4 +186,4 @@ Application Insights のアプリのホーム リソースで、[Analytics] を�
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

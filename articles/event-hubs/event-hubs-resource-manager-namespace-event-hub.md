@@ -24,14 +24,8 @@
 
 完全なテンプレートについては、GitHub にアクセスし、[イベント ハブとコンシューマー グループを作成するためのテンプレート][]をご覧ください。
 
->[AZURE.NOTE] 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
->
->-    [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
->-    [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
->-    [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
->-    [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
->
->最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Event Hubs" を検索してください。
+>[AZURE.NOTE]
+最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Event Hubs" を検索してください。
 
 ## デプロイの対象
 
@@ -156,14 +150,12 @@ azure group deployment create <my-resource-group> <my-deployment-name> --templat
 
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-- [Azure Automation を使用した Azure Service Bus の管理](service-bus-automation-manage.md)
-- [PowerShell を使用した Event Hubs の管理](service-bus-powershell-how-to-provision.md)
 - [Service Bus Explorer を使用した Event Hubs リソースの管理](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
   [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=service+bus
+  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=event+hubs
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

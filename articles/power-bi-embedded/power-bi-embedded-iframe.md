@@ -3,7 +3,7 @@
    description="REST 経由で Power BI Embedded を使用する方法を説明します。 "
    services="power-bi-embedded"
    documentationCenter=""
-   authors="tsmatsuz"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="08/02/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # REST 経由で Power BI Embedded を使用する方法
 
@@ -451,4 +451,4 @@ RequestId: d4099022-405b-49d3-b3b7-3c60cf675958
 ## 関連項目
 - [Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

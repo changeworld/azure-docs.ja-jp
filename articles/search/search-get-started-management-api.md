@@ -13,7 +13,7 @@
 	ms.workload="search" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="06/08/2016" 
+	ms.date="08/08/2016" 
 	ms.author="heidist"/>
 
 # Azure Search 管理 REST API の使用
@@ -136,10 +136,10 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 	![][9]
 
 5. `TenantID.` を指定します。
-	- [Active Directory]、[SearchTutorial (サービス)] に戻ります。 
-	- 上部のバーで **[アプリケーション]** をクリックします。 
-	- ページの下部にある **[エンドポイントの表示]** をクリックします。 
-	- 一覧の最後の、OAUTH 2.0 承認エンドポイントをコピーします。 
+	- [Active Directory]、[SearchTutorial (サービス)] に戻ります。
+	- 上部のバーで **[アプリケーション]** をクリックします。
+	- ページの下部にある **[エンドポイントの表示]** をクリックします。
+	- 一覧の最後の、OAUTH 2.0 承認エンドポイントをコピーします。
 	- TenantID にエンドポイントを貼り付けます。TenantID 以外のすべての URI パラメーターの値を除去します。
 
     "https://login.windows.net/55e324c7-1656-4afe-8dc3-43efcd4ffa50/oauth2/authorize?api-version=1.0" の場合、"55e324c7-1656-4afe-8dc3-43efcd4ffa50" 以外すべてを削除します。
@@ -158,9 +158,9 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 最初のメソッド呼び出しでブレークポイントを追加して、プログラムをステップ実行できるようにします。**F5** キーを押してアプリケーションを実行してから、**F11** キーを押してコードをステップ実行します。
 
-サンプル アプリケーションでは、既存の Azure サブスクリプションに対する無料 Azure Search サービスを作成します。既に無料のサービスがサブスクリプションに存在する場合は、サンプル アプリケーションは失敗します。サブスクリプションごとに 1 つだけ無料検索サービスが許可されます。
+サンプル アプリケーションでは、既存の Azure サブスクリプションに対する無料 Azure Search サービスが作成されます。既に無料のサービスがサブスクリプションに存在する場合は、サンプル アプリケーションは失敗します。サブスクリプションごとに 1 つだけ無料 Search サービスが許可されます。
 
-1. ソリューション エクスプローラーから Program.cs を開き、Main(stringvoid) 関数に移動します。 
+1. ソリューション エクスプローラーから Program.cs を開き、Main(stringvoid) 関数に移動します。
  
 3. 指定された `subscriptionID` に対して、Azure リソース マネージャーのエンドポイント `https://management.azure.com/subscriptions` に対する要求の実行に **ExecuteArmRequest** が使用されることに注意してください。このメソッドはプログラム全体で使用され、Azure リソース マネージャー API または Search 管理 API を使用して操作を実行します。
 
@@ -168,7 +168,7 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
 4. サブスクリプションに対して有効なユーザー名とパスワードを使用してサインインすることが求められます。
 
-5. 次に、Azure リソース マネージャーのプロバイダーに新しい Azure Search サービスが登録されます。これも **ExecuteArmRequest** メソッドです。ここではこのメソッドを使用し、`providers/Microsoft.Search/register` を介して、サブスクリプションに対する Azure の検索サービスを作成します。
+5. 次に、Azure リソース マネージャーのプロバイダーに新しい Azure Search サービスが登録されます。これも **ExecuteArmRequest** メソッドです。ここではこのメソッドを使用し、`providers/Microsoft.Search/register` を介して、サブスクリプションに Azure の Search サービスを作成します。
 
 6. プログラムの残りの部分では、[Azure Search 管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx) を使用します。この API の `api-version` は Azure リソース マネージャーの API バージョンとは異なることに注意してください。たとえば、`/listAdminKeys?api-version=2014-07-31-Preview` は、Azure Search Management REST API の `api-version` を示しています。
 
@@ -208,4 +208,4 @@ Azure リソース マネージャーには、ID プロバイダーとして Azu
 
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

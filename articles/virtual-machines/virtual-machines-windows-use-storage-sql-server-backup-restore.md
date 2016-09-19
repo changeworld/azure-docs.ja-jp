@@ -3,7 +3,7 @@
 	description="SQL Server を Azure Storage に バックアップする方法について説明します。SQL データベースを Azure Storage にバックアップする利点について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
-	authors="rothja"
+	authors="MikeRayMSFT"
 	manager="jhubbard"
 	tags="azure-service-management"/>
 
@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
 	ms.date="07/22/2016"
-	ms.author="jroth"/>
+	ms.author="mikeray"/>
 
 # Azure Storage を使用した SQL Server のバックアップと復元
 
-## 概要
+## Overview
 
 SQL Server 2012 SP1 CU2 以降で、SQL Server のバックアップを Azure BLOB ストレージ サービスに直接書き込めるようになりました。この機能を使用すると、オンプレミスの SQL Server データベースまたは Azure 仮想マシンの SQL Server データベースを使用する Azure BLOB サービスとの間でバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのgeo レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。Transact-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
 
@@ -46,7 +46,7 @@ SQL Server をバックアップするときに直面する課題はいくつか
 
 Azure BLOB ストレージ サービスにバックアップする際に、次の Azure コンポーネントを使用します。
 
-| コンポーネント | 説明 |
+| コンポーネント | Description |
 |---------------------|-------------------------------|
 | **ストレージ アカウント** | ストレージ アカウントはすべてのストレージ サービスの出発点となります。Azure Blob Storage サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。Azure BLOB ストレージ サービスの詳細については、「[How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)」を参照してください。 |
 | **コンテナー** | コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。SQL Server のバックアップを Azure BLOB サービスに書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
@@ -56,7 +56,7 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 
 Azure BLOB ストレージ サービスにバックアップする際に、次の SQL Server コンポーネントを使用します。
 
-| コンポーネント | 説明 |
+| コンポーネント | Description |
 |---------------------|-------------------------------|
 | **URL** | URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。BLOB が存在しない場合は作成されます。既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。BACKUP コマンドで URL を指定する例を次に示します。**http[s]://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[ファイル名.bak]**HTTPS は必須ではありませんが、使用することをお勧めします。 |
 | **資格情報** | Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。詳細については、[SQL Server 資格情報](https://msdn.microsoft.com/library/ms189522.aspx)に関するページを参照してください。 |
@@ -74,8 +74,8 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 
 1. [Microsoft Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関する記事などのその他のドキュメントを確認してください。
 
-問題がある場合は、トピック「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」をご覧ください。
+問題がある場合は、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」をご覧ください。
 
 その他の SQL Server のバックアップと復元のオプションについては、「[Azure Virtual Machines における SQL Server のバックアップと復元](../virtual-machines/virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

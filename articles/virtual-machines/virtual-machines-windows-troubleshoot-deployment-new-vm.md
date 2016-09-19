@@ -14,7 +14,7 @@
   ms.tgt_pltfrm="vm-windows"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="06/20/2016"
+  ms.date="09/06/2016"
   ms.author="cjiang"/>
 
 # Azure での新しい Windows 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
@@ -84,4 +84,4 @@
 ## 次のステップ
 Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、[Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-windows-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/27/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 #HDInsight の Hadoop での Sqoop の使用
@@ -44,14 +44,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     | フィールド | データ型 |
     | ----- | --------- |
-    | clientid | 文字列 |
-    | querytime | 文字列 |
-    | market | 文字列 |
-    | deviceplatform | 文字列 |
+    | clientid | string |
+    | querytime | string |
+    | market | string |
+    | deviceplatform | string |
     | devicemake | 文字列 |
-    | devicemodel | 文字列 |
-    | state | 文字列 |
-    | country | 文字列 |
+    | devicemodel | string |
+    | state | string |
+    | country | string |
     | querydwelltime | double |
     | sessionid | bigint |
     | sessionpagevieworder | bigint |
@@ -62,15 +62,15 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 ## クラスターと SQL Database を作成します。
 
-ここでは、Azure ポータルと ARM テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
+ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスターと SQL データベース スキーマを作成する方法を説明します。Azure PowerShell を使用する場合は、「[付録 A](#appendix-a---a-powershell-sample)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。
+1. 次の画像をクリックして Azure Portal で Resource Manager テンプレートを開きます。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fusesqoop%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    ARM テンプレートはパブリック BLOB コンテナー内 (*https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*) にあります。
+    Resource Manager テンプレートは、次のパブリック BLOB コンテナー内にあります。*https://hditutorialdata.blob.core.windows.net/usesqoop/create-linux-based-hadoop-cluster-in-hdinsight-and-sql-database.json*
     
-    ARM テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。bacpac パッケージも、パブリック BLOB コンテナー内 (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac) にあります。bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+    Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。bacpac パッケージも、パブリック BLOB コンテナー内 (https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac) にあります。bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
     
         "storageKeyType": "Primary",
         "storageKey": "<TheAzureStorageAccountKey>",
@@ -629,4 +629,4 @@ PowerShell のサンプルでは、次の手順を実行します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,13 +13,17 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/18/2016" 
+	ms.date="08/26/2016" 
 	ms.author="luisca"/>
 
 #Machine Learning Recommendations API の設定と使用に関する FAQ
 
 
 **Recommendations とは何ですか。**
+
+> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
+
+
 
 顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業に対して、Azure Machine Learning の Recommendations サービスは、セルフサービスの推奨エンジンを提供します。これは、コア アルゴリズムとして行列因子分解を使用した協調フィルタリングの実装です。アプリケーション開発者は REST Api を使用してRecommendations にアクセスできます。
 
@@ -63,7 +67,7 @@ Microsoft Azure Marketplace の [プランに関するページ](https://datamar
 
 サブスクリプションをアップグレードする場合:
 
-* 古いサブスクリプションに残っているトランザクションは、新しいサブスクリプションには追加されません。 
+* 古いサブスクリプションに残っているトランザクションは、新しいサブスクリプションには追加されません。
 * 古いサブスクリプションで未使用のトランザクションがある場合でも、新しいサブスクリプションの全額をお支払いください。
 
 サブスクリプションのアップグレード プロセス:
@@ -135,4 +139,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

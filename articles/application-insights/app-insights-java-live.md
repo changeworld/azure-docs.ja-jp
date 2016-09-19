@@ -107,9 +107,9 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 
 必要に応じて[送信データを送信する例外を設定](app-insights-ip-addresses.md)します。
 
-## 5\.Web アプリを再起動する
+## 6\.Web アプリを再起動する
 
-## 6\.Application Insights でのテレメトリを表示する
+## 7\.Application Insights でのテレメトリを表示する
 
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
@@ -143,4 +143,4 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

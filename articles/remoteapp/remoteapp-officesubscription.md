@@ -51,7 +51,7 @@ Azure RemoteApp では、1 人のユーザーが、自覚なしで同じ日に�
 
 ## Office 365 と Azure RemoteApp ではどの Office アプリケーションを使用できますか?
 
-Office 365 ProPlus サブスクリプションを使用すると、Office 2013 および Office 2016 (リリース後) を共有できます。Azure RemoteApp は、これより前のバージョンの Office をサポートしていません。
+Office 365 ProPlus サブスクリプションを使用すると、Office 2013 を共有できます。Azure RemoteApp は、これより前のバージョンの Office をサポートしていません。
 
 ## Visio Pro または Project Pro はどうですか?
 
@@ -126,4 +126,4 @@ Office 展開ツールを使用した更新の詳細については以下をご�
 - [Office 展開ツールを使用して Office 365 ProPlus を展開および更新する](https://channel9.msdn.com/Events/Ignite/2015/BRK3168) (ビデオ)
 - [Office 365 ProPlus の更新設定を構成する](https://technet.microsoft.com/library/dn761708.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

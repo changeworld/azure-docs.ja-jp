@@ -18,7 +18,7 @@
 
 # Azure App Service の Web アプリの診断ログの有効化
 
-## 概要
+## Overview
 
 Azure では、組み込みの診断機能により、[App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
@@ -40,13 +40,13 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 ### アプリケーション診断
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。For example:
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
 実行時にこれらのログを取得してトラブルシューティングに役立てることができます。詳細については、[Visual Studio での Azure Web アプリのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)に関するページを参照してください。
 
-App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。これは自動的に行われ、デプロイ ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
+App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。これは自動的に行われ、展開ログの構成設定はありません。デプロイ ログでは、デプロイが失敗した理由を特定できます。たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
 
@@ -79,7 +79,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 
 > [AZURE.NOTE] **テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](/downloads/#) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
 
-> [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
 
 ##<a name="download"></a> ログをダウンロードする方法
 
@@ -111,7 +111,7 @@ FTP を使用して診断情報にアクセスするには、[クラシック �
 
 これにより、**-Name** パラメーターにより指定された Web アプリのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
 
-> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
 
 ### Azure コマンド ライン インターフェイスを使用してダウンロードする
 
@@ -121,14 +121,14 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 
 これにより、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [AZURE.NOTE] Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure CLI の使用方法](../xplat-cli-install.md)」に関するページを参照してください。
+> [AZURE.NOTE] Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure CLI の使用方法](../xplat-cli-install.md)に関するページを参照してください。
 
 ## Application Insights でログを表示する方法
 
 Visual Studio Application Insights には、ログをフィルターおよび検索したり、要求やその他のイベントにログを関連付けたりするためのツールが用意されています。
 
 1. Application Insights SDK を Visual Studio のプロジェクトに追加します。
- * ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。Application Insights リソースの作成などの手順が示されます。[詳細情報](../application-insights/app-insights-start-monitoring-app-health-usage.md)
+ * ソリューション エクスプローラーでプロジェクトを右クリックし、[Application Insights の追加] を選択します。Application Insights リソースの作成などの手順が示されます。[詳細情報](../application-insights/app-insights-asp-net.md)
 2. トレース リスナーのパッケージをプロジェクトに追加します。
  * プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。`Microsoft.ApplicationInsights.TraceListener` を選択します。[詳細情報](../application-insights/app-insights-asp-net-trace-logs.md)
 3. プロジェクトをアップロードして実行し、ログ データを生成します。
@@ -152,17 +152,17 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 **-Name** パラメーターにより指定された Web アプリに接続され、ログ イベントが Web アプリで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、**-Message** パラメーターを使用します。次に例を示します。
+特定のイベント (エラーなど) をフィルター処理するには、**-Message** パラメーターを使用します。For example:
 
 	Get-AzureWebSiteLog -Name webappname -Tail -Message Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、**-Path** パラメーターを使用します。次に例を示します。
+特定のログの種類 (HTTP など) をフィルター処理するには、**-Path** パラメーターを使用します。For example:
 
 	Get-AzureWebSiteLog -Name webappname -Tail -Path http
 
 使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
-> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
+> [AZURE.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
 
 ### Azure コマンド ライン ツールを使用してストリーミングする
 
@@ -172,11 +172,11 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 "webappname" という名前の Web アプリに接続され、ログ イベントが Web アプリで発生したら、ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、**-Filter** パラメーターを使用します。次に例を示します。
+特定のイベント (エラーなど) をフィルター処理するには、**-Filter** パラメーターを使用します。For example:
 
 	azure site log tail webappname --filter Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、**--Path** パラメーターを使用します。次に例を示します。
+特定のログの種類 (HTTP など) をフィルター処理するには、**--Path** パラメーターを使用します。For example:
 
 	azure site log tail webappname --path http
 
@@ -202,7 +202,7 @@ __ファイル システム__
 
 __テーブル ストレージ__
 
-テーブル ストレージにログ記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
+テーブル ストレージにログを記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
 
 プロパティ名|値/形式
 ---|---
@@ -224,7 +224,7 @@ BLOB ストレージにログを記録するときには、値をコンマで区
 
 プロパティ名|値/形式
 ---|---
-Date|イベントが発生した日時
+日付|イベントが発生した日時
 Level|イベント レベル (例: エラー、警告、情報)
 ApplicationName|Web アプリケーション名
 InstanceId|イベントが発生した Web アプリのインスタンス
@@ -270,4 +270,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

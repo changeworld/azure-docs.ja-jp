@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/17/2016"
+     ms.date="09/06/2016"
      ms.author="obloch"/>
 
 # C 用 Microsoft Azure IoT デバイス SDK – IoTHubClient の詳細
@@ -139,7 +139,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 逆の場合も同様です。最初に **IoTHubClient\_CreateFromConnectionString** を呼び出す場合は、その他の処理でも LL でない API を常に使用します。
 
-C 用 Azure IoT デバイス SDK における下位レベルの API の完全な例は **iothub\_client\_sample\_http** アプリケーションで確認してください。**iothub\_client\_sample\_amqp** アプリケーションでは、LL でない API の完全な例について参照できます。
+C 用 Azure IoT device SDK における下位レベルの API の完全な例は **iothub\_client\_sample\_http** アプリケーションで確認してください。**iothub\_client\_sample\_amqp** アプリケーションでは、LL でない API の完全な例について参照できます。
 
 ## プロパティの処理
 
@@ -296,4 +296,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

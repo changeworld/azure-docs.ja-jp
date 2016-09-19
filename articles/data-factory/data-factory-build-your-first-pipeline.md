@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="06/17/2016"
+	ms.date="09/06/2016"
 	ms.author="spelluru"/>
 
 # チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する 
@@ -30,19 +30,17 @@
 
 この記事では、チュートリアルの**概要**と、チュートリアルの**前提条件**を満たすための手順について説明します。あらかじめ必要な手順を完了したら、Azure ポータルの Data Factory エディター、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレートのいずれかを使用してチュートリアルを実行します。
 
-この記事は、Azure Data Factory の概念の概要を説明するものではないことに注意してください。このサービスの概念の概要については、[Azure Data Factory の概要](data-factory-introduction.md)に関する記事をご覧ください。
+この記事は、Azure Data Factory の概念の概要を説明するものではありません。このサービスの概念の概要については、[Azure Data Factory の概要](data-factory-introduction.md)に関する記事をご覧ください。
 
 ## このチュートリアルの内容	
-**Azure Data Factory** では、データ駆動型ワークフロー (データ パイプラインとも呼ばれます) として、データ**移動**タスクやデータ**処理**タスクを構成できます。Azure HDInsight クラスターを使用して Web ログを変換および分析するデータ処理 (またはデータ変換) タスクを含む最初のデータ パイプラインを作成し、このパイプラインを毎月実行するようにスケジュールする方法について説明します。
+**Azure Data Factory** では、データ駆動型ワークフロー (データ パイプラインとも呼ばれます) として、データ**移動**タスクやデータ**処理**タスクを構成できます。データ処理 (またはデータ変換) タスクを含む最初のデータ パイプラインを構築する方法について説明します。このタスクは、Azure HDInsight クラスターを使用して Web ログを変換および分析します。
 
 このチュートリアルでは、以下の手順を実行します。
 
 1.	**データ ファクトリ**を作成する。データ ファクトリには、データを移動および処理するデータ パイプラインを 1 つ以上含めることができます。
 2.	**リンクされたサービス**を作成する。データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクする、リンクされたサービスを作成します。Azure Storage などのデータ ストアには、パイプラインのアクティビティの入力データや出力データが保持されます。データを処理または変換する、Azure HDInsight などのコンピューティング サービス。
 3.	入力**データセット**と出力データセットを作成する。入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。
-3.	**パイプライン**を作成する。パイプラインには、コピー元からコピー先にデータをコピーするコピー アクティビティや、Hive スクリプトを使って入力データを変換して出力データを生成する HDInsight Hive アクティビティなどのアクティビティを 1 つ以上含めることができます。このサンプルでは、Hive スクリプトを実行する HDInsight Hive アクティビティを使用します。このスクリプトでは、まず Azure Blob Storage に格納されている未加工の Web ログ データを参照する外部テーブルを作成し、その後、年月別に未加工データを分割します。
-
-最初のパイプライン (**MyFirstPipeline**) は、Hive アクティビティを使用して、Azure BLOB ストレージ内の **adfgetstarted** コンテナーの **inputdata** フォルダー (adfgetstarted/inputdata) にアップロードする Web ログを変換して分析します。
+3.	**パイプライン**を作成する。パイプラインには、1 つまたは複数のアクティビティを含めることができます (例: コピー アクティビティ、HDInsight Hive アクティビティ)。このサンプルでは、Hive スクリプトを実行する HDInsight Hive アクティビティを使用します。このスクリプトでは、まず Azure Blob Storage に格納されている未加工の Web ログ データを参照する外部テーブルを作成し、その後、年月別に未加工データを分割します。
  
 ![Diagram view in Data Factory tutorial](./media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
@@ -160,7 +158,7 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 		  month(date)
 		FROM WebLogsRaw
 
-実行時に、Data Factory パイプラインの Hive アクティビティは、次に示すように inputtable パラメーターと partitionedtable パラメーターの値を渡します。storageaccountname は、Azure ストレージ アカウントの名前です。
+実行時に、Data Factory パイプラインの Hive アクティビティは、次のスニペットで inputtable パラメーターと partitionedtable パラメーターの値を渡します。storageaccountname は Azure ストレージ アカウントの名前です。
 
 		"inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
 		"partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
@@ -196,15 +194,15 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 	 
 2. チュートリアル用に Azure Storage を準備するには:
 	1. [最新バージョンの **AzCopy**](http://aka.ms/downloadazcopy) または[最新のプレビュー バージョン](http://aka.ms/downloadazcopypr)をダウンロードします。ユーティリティを使用する手順については、[AzCopy を使用する方法](../storage/storage-use-azcopy.md)に関するページを参照してください。
-	2. AzCopy をインストールした後は、コマンド プロンプトで次のコマンドを実行してシステム パスに追加できます。
+	2. AzCopy をインストール後、コマンド プロンプトで次のコマンドを実行してシステム パスに追加します。
 	
 			set path=%path%;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
 
-	3. c:\\adfgetstarted フォルダーに移動し、次のコマンドを実行して **input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
+	3. c:\\adfgetstarted フォルダーに移動し、次のコマンドを実行します。このコマンドは、**input.log** ファイルをストレージ アカウント (**adfgetstarted** コンテナーと **inputdata** フォルダー) にアップロードします。**StorageAccountName** はストレージ アカウントの名前に、**Storage Key** はストレージ アカウント キーに置き換えます。
 
 			AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/inputdata /DestKey:<storagekey>  /Pattern:input.log
 
-		> [AZURE.NOTE] 上記のコマンドは、**adfgetstarted** という名前のコンテナーを Azure BLOB ストレージに作成し、**input.log** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
+		> [AZURE.NOTE] このコマンドは、**adfgetstarted** という名前のコンテナーを Azure BLOB ストレージに作成し、**input.log** ファイルをローカル ドライブからコンテナーの **inputdata** フォルダーにコピーします。
 	
 	5. ファイルが正常にアップロードされると、AzCopy から次のような出力が表示されます。
 	
@@ -228,4 +226,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

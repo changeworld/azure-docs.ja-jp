@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/24/2016"
+   ms.date="09/01/2016"
    ms.author="rickbyh"/>
 
 # SQL Database の認証と承認: アクセス権の付与 
@@ -40,7 +40,7 @@
 1 つの Azure Active Directory アカウントも、管理者として構成できます。このアカウントは、個別の Azure AD ユーザーであっても、複数の Azure AD ユーザーを含む Azure AD グループであってもかまいません。Azure AD 管理者の構成は任意ですが、Azure AD アカウントが SQL Database に接続する際に Windows 認証を使用する場合は、Azure AD 管理者を構成する必要があります。Azure Active Directory アクセスの構成の詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」と「[SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md)」 (SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート) を参照してください。
 
 ### ファイアウォールの構成
-サーバー レベルのファイアウォールを構成すると、Azure SQL Database サブスクライバー アカウントと Azure Active Directory アカウントは、仮想 master データベースとすべてのユーザー データベースに接続できます。サーバー レベルのファイアウォールは、ポータルで構成できます。接続が確立されると、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) Transact-SQL ステートメントを使用して、サーバー レベルのファイアウォール規則を追加で構成することもできます。ファイアウォールの構成の詳細については、[Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関する記事を参照してください。
+サーバー レベルのファイアウォールを構成すると、Azure SQL Database サブスクライバー アカウントと Azure Active Directory アカウントは、master データベースとすべてのユーザー データベースに接続できます。サーバー レベルのファイアウォールは、ポータルで構成できます。接続が確立されると、[sp\_set\_firewall\_rule](https://msdn.microsoft.com/library/dn270017.aspx) Transact-SQL ステートメントを使用して、サーバー レベルのファイアウォール規則を追加で構成することもできます。ファイアウォールの構成の詳細については、[Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関する記事を参照してください。
 
 ### Administrator access path
 
@@ -161,4 +161,4 @@ SQL Database では、個別に許可または拒否できるアクセス許可�
 
 [SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589.aspx)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,5 +14,7 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 Azure Websites では、逆引き DNS はサポートされていません。Azure PaaS ロールと IaaS 仮想マシンでは、逆引き DNS がサポートされます。
 ### Cloud Services 用に複数の逆引き DNS を構成できますか?
 いいえ、Azure は Azure Cloud Services ごとに 1 つの逆引き DNS レコードをサポートしています。ただし、各 Azure Cloud Services は、独自の逆引き DNS レコードを持つことができます。
+### Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
+いいえ。[こちら](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)に記載されているように、Azure コンピューティング サービスでは、外部ドメインへの電子メールの送信はサポートされていません。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0907_2016-->

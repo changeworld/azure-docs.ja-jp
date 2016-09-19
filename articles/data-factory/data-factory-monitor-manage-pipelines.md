@@ -13,21 +13,34 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="09/06/2016" 
 	ms.author="spelluru"/>
 
 
 # Azure Data Factory のパイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Azure ポータルの使用/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
+- [Azure Portal の使用/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
 - [Monitoring and Management App の使用](data-factory-monitor-manage-app.md)
 
-Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。データ パイプライン全体の正常性を迅速に評価し、問題を特定して、必要に応じて是正処置を取ることができます。データの系列とデータ間のリレーションシップをソース全体にわたって視覚的に追跡し、ジョブの実行、システムの正常性、依存関係の履歴全体を 1 つの監視ダッシュボードから確認することもできます。
+Data Factory サービスでは、データの保存、処理、移動の各サービスの全体像について、信頼性の高い情報が得られます。このサービスには監視ダッシュボードの各種ヘルプが備わっており、これらを使用して以下の操作を行うことができます。
+
+- エンドツーエンドのデータ パイプラインの正常性を素早く評価する。
+- 問題を特定し、必要に応じて是正措置を講じる。
+- データ系列を追跡する。
+- ソース全体のデータ間の関係を追跡する。
+- ジョブ実行の全課金履歴、システムの正常性、依存関係を確認する。
 
 この記事では、パイプラインを監視、管理、およびデバッグする方法について説明します。また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。
 
 ## パイプラインとアクティビティの状態の理解
-Azure ポータルを使用すると、Data Factory のダイアグラム、パイプラインのアクティビティ、入力と出力のデータセットなどを表示できます。このセクションでは、スライスの状態がどのように移行するかについても説明します。
+Azure Portal を使用すると、次の操作を行うことができます。
+
+- 図としてデータ ファクトリを表示する
+- パイプライン内のアクティビティを表示する
+- 入力データセットと出力データセットを参照する。
+- その他にも用途はあります。
+
+このセクションでは、スライスの状態がどのように移行するかについても説明します。
 
 ### Data Factory に移動する
 1.	[Azure ポータル](https://portal.azure.com)にサインインします。
@@ -35,7 +48,7 @@ Azure ポータルを使用すると、Data Factory のダイアグラム、パ�
 	
 	![[すべて参照] -> [Data Factory]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 
-	**[Data Factory]** ブレードにすべての Data Factory が表示されます。 
+	**[Data Factory]** ブレードにすべての Data Factory が表示されます。
 4. [Data factory] ブレードで参照する Data Factory を選択すると、Data factory のホーム ページ ([**Data factory**] ブレード) が表示されます。
 
 	![Data Factory ブレード](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
@@ -47,16 +60,16 @@ Data Factory のダイアグラム ビューを表示するには、Data Factory
 
 ![[ダイアグラム] ビュー](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-拡大、縮小、ウィンドウのサイズに合わせて大きさを変更、100% に拡大、ダイアグラムのレイアウトのロック、パイプラインとテーブルの自動的な配置、系列情報の表示 (選択した項目の上位項目や下位項目の表示) などが可能です。
+ダイアグラムの拡大または縮小、画面に合わせたサイズ変更、100% 表示、レイアウトのロックを行うことができるほか、パイプラインとテーブルを自動で配置することができます。また、データ系列の情報を確認することもできます (選択したアイテムのアップストリーム アイテムとダウンストリーム アイテムが表示されます)。
  
 
 ### パイプライン内のアクティビティ 
-1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティおよびアクティビティの入力データセットと出力データセットが表示されます。これは、パイプラインが複数のアクティビティで構成されている場合に、1 つのパイプラインの動作系列を理解するときに便利です。
+1. パイプラインを右クリックして **[パイプラインを開く]** をクリックすると、パイプライン内のすべてのアクティビティおよびアクティビティの入力データセットと出力データセットが表示されます。この機能は、パイプラインが複数のアクティビティで構成されている場合に、1 つのパイプラインの動作系列を理解するときに便利です。
 
-	![パイプラインを開くメニュー](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)	 
-2. 次の例では、パイプラインの 2 つのアクティビティとその入力および出力がわかります。このサンプル パイプラインには、**JoinData** という名前の HDInsight Hive 型アクティビティと、**EgressDataAzure** という名前のコピー型アクティビティがあります。 
+	![パイプラインを開くメニュー](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)
+2. 次の例では、パイプラインの 2 つのアクティビティとその入力および出力がわかります。このサンプル パイプラインには、**JoinData** という名前の HDInsight Hive 型アクティビティと、**EgressDataAzure** という名前のコピー型アクティビティがあります。
 	
-	![パイプライン内のアクティビティ](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png) 
+	![パイプライン内のアクティビティ](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
 3. 左上隅の階層リンクの [Data Factory] リンクをクリックして、Data Factory のホーム ページに戻ることができます。
 
 	![Data Factory に戻る](./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png)
@@ -74,7 +87,7 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 
 <table>
 <tr>
-	<th align="left">状態</th><th align="left">下位状態</th><th align="left">説明</th>
+	<th align="left">状態</th><th align="left">下位状態</th><th align="left">Description</th>
 </tr>
 <tr>
 	<td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
@@ -139,11 +152,11 @@ Data Factory のデータセット スライスは、次のいずれかの状態
 
 ![スライスに対するアクティビティの実行](./media/data-factory-monitor-manage-pipelines/activity-runs-for-a-slice.png)
 
-**[アクティビティの実行]** ボックスの一覧で実行エントリをクリックすると、アクティビティの実行に関する詳細を確認できます。すべてのログ ファイルと、ある場合はエラー メッセージが表示されます。これは、Data Factory を離れずにログを表示およびデバッグするのに非常に便利です。
+**[アクティビティの実行]** ボックスの一覧で実行エントリをクリックすると、アクティビティの実行に関する詳細を確認できます。リストにはすべてのログ ファイルが表示され、存在する場合はエラー メッセージも示されます。この機能により、Data Factory を離れずにログの確認とデバッグを行うことができます。
 
 ![アクティビティ実行の詳細](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。これは、スライスが **Waiting** 状態のときに、スライスが待機している上位依存関係を理解するのに非常に便利です。
+スライスが **[準備完了]** 状態でない場合、現在のスライスの実行をブロックしている準備完了でない上位スライスが、**[準備完了でない上位スライス]** の一覧に表示されます。この機能は、スライスが **Waiting** 状態のときに、スライスが待機している上位依存関係を理解するのに便利です。
 
 ![アップストリーム スライスの準備ができていない](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -154,26 +167,26 @@ Data Factory をデプロイした後、パイプラインに有効なアクテ�
 
 Data Factory のデータセット状態遷移フローは、Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed となります。
 
-スライスは、実行前に事前条件が満たされるのを待つ **Waiting** 状態で開始します。その後、アクティビティは実行を開始し、スライスは **In-Progress** 状態になります。アクティビティの実行は成功または失敗し、それに基づいてスライスは **Ready** 状態または **Failed** 状態になります。
+スライスは、実行前に事前条件が満たされるのを待つ **Waiting** 状態で開始します。その後、アクティビティは実行を開始し、スライスは **In-Progress** 状態になります。アクティビティの実行結果は成功か失敗のどちらかになります。実行結果に応じて、スライスは **Ready** または **Failed** とマークされます。
 
-ユーザーは、**Ready** または **Failed** 状態から **Waiting** 状態にスライスをリセットできます。また、ユーザーはスライスの状態を **Skip** としてマークでき、この状態ではアクティビティは実行されず、スライスは処理されません。
+**Ready** または **Failed** 状態から **Waiting** 状態にスライスをリセットできます。また、スライスの状態を **Skip** としてマークでき、この状態ではアクティビティは実行されず、スライスは処理されません。
 
 
 ## パイプラインを管理する
 Azure PowerShell を使用してパイプラインを管理できます。たとえば、Azure PowerShell コマンドレットを実行してパイプラインを一時停止および再開できます。
 
 ### パイプラインを一時停止および再開する
-**Suspend-AzureDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。これは、データに問題があることがわかり、問題が解決されるまでパイプラインでそれ以上データを処理しないようにする場合に便利です。
+**Suspend-AzureDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。このコマンドレットは、問題が修正されるまでパイプラインを実行しない場合に便利です。
 
 たとえば、次のスクリーンショットでは、 **productrecgamalbox1dev** Data Factory の **PartitionProductsUsagePipeline** に問題が見つかり、パイプラインを中断します。
 
 ![パイプラインの中断](./media/data-factory-monitor-manage-pipelines/pipeline-to-be-suspended.png)
 
-**PartitionProductsUsagePipeline** を中断するには、次の PowerShell コマンドを実行します。
+次の PowerShell コマンドを実行してパイプラインを中断します。
 
 	Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
-次に例を示します。
+For example:
 
 	Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
@@ -181,7 +194,7 @@ Azure PowerShell を使用してパイプラインを管理できます。たと
 
 	Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 
-次に例を示します。
+For example:
 
 	Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline 
 
@@ -192,7 +205,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 ### パイプラインのエラーを発見する
 パイプラインでアクティビティの実行が失敗した場合、パイプラインによって生成されるデータセットは障害のためにエラー状態になります。次のメカニズムを使用して、Azure Data Factory のエラーをデバッグおよびトラブルシューティングできます。
 
-#### Azure ポータルを使用してエラーをデバッグします。
+#### Azure Portal を使用してエラーをデバッグします。
 
 1.	Data Factory のホーム ページで、**[データセット]** タイルの **[エラーあり]** をクリックします。
 	
@@ -228,7 +241,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 		DataFactoryName] <String> [-TableName] <String> [-StartDateTime] 
 		<DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
 	
-	次に例を示します。
+	For example:
 
 
 		Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -TableName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -258,14 +271,14 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 		Type                	:
 	
 	
-6. 	上記出力結果の ID 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
+6. 	出力結果の ID 値を使用して **Save-AzureDataFactoryLog** コマンドレットを実行し、同コマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
 	Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\\Test"
 
 
 ## パイプラインのエラーを再実行する
 
-### パイプラインのエラーを再実行する
+### Azure Portal の使用
 
 パイプラインのエラーをトラブルシューティングおよびデバッグした後は、エラー スライスに移動してコマンド バーの **[実行]** ボタンをクリックすることで、エラーを再実行できます。
 
@@ -279,7 +292,7 @@ Set-AzureRmDataFactorySliceStatus コマンドレットを使用してエラー�
 
 **例:** 次の例では、Azure Data Factory "WikiADF" のテーブル "DAWikiAggregatedData" のすべてのスライスの状態を "Waiting" に設定します。
 
-**注:** UpdateType は UpstreamInPipeline に設定されます。これは、テーブルの各スライスの状態、およびパイプラインのアクティビティの入力テーブルとして使用されるすべての依存 (アップストリーム) テーブルの状態が "Waiting" に設定されることを意味します。このパラメーターに指定できる他の値は、"Individual" です。
+UpdateType は UpstreamInPipeline に設定しています。これにより、テーブルとすべての依存 (アップストリーム) テーブルの各スライスの状態が "Waiting" に設定されます。 このパラメーターに指定できる他の値は、"Individual" です。
 
 	Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -TableName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 
@@ -294,9 +307,9 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 - データ処理 (実行と呼びます) が開始または完了した場合。
 - オンデマンド HDInsight クラスターが作成および削除された場合。
 
-これらのユーザー イベントに対してアラートを作成し、サブスクリプションの管理者と共同管理者に電子メール通知を送信するよう構成できます。さらに、条件が満たされた場合に電子メール通知を受け取る必要があるユーザーの追加の電子メール アドレスを指定できます。これは、Data Factory を常時監視するのではなく、障害が発生したら通知を受け取るようにする場合に非常に便利です。
+これらのユーザー イベントに対してアラートを作成し、サブスクリプションの管理者と共同管理者に電子メール通知を送信するよう構成できます。さらに、条件が満たされた場合に電子メール通知を受け取る必要があるユーザーの追加の電子メール アドレスを指定できます。この機能は、Data Factory を常時監視するのではなく、障害が発生したら通知を受け取るようにする場合に便利です。
 
-> [AZURE.NOTE] この時点で、ポータルにアラートは表示されません。すべてのアラートを確認するには、「[Monitoring and Management App](data-factory-monitor-manage-app.md)」を参照してください。
+> [AZURE.NOTE] 現時点では、ポータルにアラートは表示されません。すべてのアラートを確認するには、「[Monitoring and Management App](data-factory-monitor-manage-app.md)」を参照してください。
 
 #### アラートの定義の指定:
 アラートの定義を指定するには、アラートの対象となる操作を記述する JSON ファイルを作成します。以下の例では、アラートによって RunFinished 操作に関する電子メール通知が送信されます。具体的には、データ ファクトリで実行が完了し、その実行が失敗していた場合 (Status = FailedExecution) に電子メール通知が送信されます。
@@ -338,9 +351,9 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 	    ]
 	}
 
-特定のエラーについてアラートを受信しないようにする場合は、上記の JSON 定義から **subStatus** を削除できます。
+特定のエラーについてアラートを受信しないようにする場合は、JSON 定義から **subStatus** を削除できます。
 
-上記の例では、サブスクリプション内のすべてのデータ ファクトリのアラートを設定しています。特定のデータ ファクトリのアラートを設定する場合は、次に示すように、**dataSource** ブロックの **resourceUri** にデータ ブロックを指定できます。
+この例では、サブスクリプション内のすべてのデータ ファクトリのアラートを設定しています。特定のデータ ファクトリのアラートを設定する場合は、**dataSource** ブロックの **resourceUri** にデータ ブロックを指定できます。
 
 	"resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
 
@@ -354,7 +367,7 @@ OnDemandClusterCreateStarted | 開始済み
 OnDemandClusterCreateSuccessful | Succeeded
 OnDemandClusterDeleted | Succeeded
 
-上記の例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
+この例で使用する JSON 要素の詳細については、「[アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
 
 #### アラートのデプロイ 
 アラートをデプロイするには、次の例に示すように、Azure PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** を使用します。
@@ -378,7 +391,7 @@ OnDemandClusterDeleted | Succeeded
 	Parameters        :
 	Outputs           :
 
-> [AZURE.NOTE] [アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx) REST API を使用してアラート ルールを作成できます。JSON ペイロードは前述の JSON の例に似ています。
+> [AZURE.NOTE] [アラート ルールの作成](https://msdn.microsoft.com/library/azure/dn510366.aspx) REST API を使用してアラート ルールを作成できます。JSON ペイロードは JSON の例に似ています。
 
 #### Azure リソース グループのデプロイメント一覧の取得
 デプロイした Azure リソース グループの一覧を取得するには、次の例に示すように、**Get-AzureRmResourceGroupDeployment** コマンドレットを使用します。
@@ -468,7 +481,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 - 失敗した実行
 - 成功した実行
 
-これらのメトリックは非常に便利であり、ユーザーは Data Factory での全体的な失敗および成功した実行の概要を取得できます。メトリックは、スライスが実行するたびに生成されます。0 時になると、メトリックは集計されて、ストレージ アカウントにプッシュされます。したがって、メトリックを有効にするには、ストレージ アカウントを設定する必要があります。
+これらのメトリックは便利であり、Data Factory での全体的な失敗および成功した実行の概要を取得できます。メトリックは、スライスが実行するたびに生成されます。0 時になると、メトリックは集計されて、ストレージ アカウントにプッシュされます。したがって、メトリックを有効にするためにストレージ アカウントの設定を行います。
 
 #### メトリックの有効化:
 メトリックを有効にするには、Data Factory ブレードから次のようにクリックします。
@@ -495,10 +508,10 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![有効なアラート ルール](./media/data-factory-monitor-manage-pipelines/alert-rule-enabled.png)
 
-ご利用ありがとうございます。 メトリックに最初のアラートが設定されました。特定の期間にアラート ルールが一致するたびに通知を受け取るようになります。
+お疲れさまでした。 メトリックに最初のアラートが設定されました。特定の期間にアラート ルールが一致するたびに通知を受け取るようになります。
 
 ### アラート通知:
-設定ルールが条件に一致すると、アラートでアクティブ化された電子メールを受け取ります。問題が解決されてアラート条件が一致しなくなると、アラート解決電子メールを受け取ります。
+アラート ルールが条件に一致すると、アラートでアクティブ化された電子メールを受け取ります。問題が解決されてアラート条件が一致しなくなると、アラート解決電子メールを受け取ります。
 
 この動作は、アラート ルールが適合するすべてのエラーで通知が送信されるイベントとは異なります。
 
@@ -545,7 +558,7 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 	    ]
 	}
  
-上のサンプルの subscriptionId、resourceGroupName、dataFactoryName を、適切な値に置き換えます。
+サンプルの subscriptionId、resourceGroupName、dataFactoryName を、適切な値に置き換えます。
 
 現在、*metricName* がサポートしている値は次の 2 つです。
 - FailedRuns
@@ -585,4 +598,4 @@ Data Factory では、さまざまなメトリックを収集し、メトリッ�
 
 ![[リソースの移動] ダイアログ ボックス](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

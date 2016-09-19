@@ -3,7 +3,7 @@
    description="Power BI Embedded の新機能に関する最新情報を入手できます。"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="mblythe"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/06/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Power BI Embedded の新機能
 
@@ -31,7 +31,7 @@
 
 このリリースの新機能は次のとおりです。
 
--    **お知らせ:** Power BI Embedded サービスがプレビューではなくなり、一般公開 (GA) されました。
+-    **お知らせ: ** Power BI Embedded サービスがプレビューではなくなり、一般公開 (GA) されました。
 -    すべての REST API が **/beta** から **/v1.0** に移行されました。
 -    .NET および JavaScript SDK が **v1.0** 用に更新されました。
 -    API キーを使用して、Power BI API 呼び出しを直接認証できるようになりました。埋め込みに必要なのはアプリ トークンだけです。この一環として、プロビジョニング用トークンと開発用トークンは、v1.0 API では使用されなくなりましたが、2016 年 12 月 30 日までベータ版で引き続き機能します。詳細については、「[Power BI Embedded での認証と承認](power-bi-embedded-app-token-flow.md)」をご覧ください。
@@ -41,4 +41,4 @@
 -    視覚化データを **.csv** にエクスポートできるようになりました。
 -    Microsoft Azure と同じすべての言語/ロケールで Power BI Embedded がサポートされるようになりました。詳細については、[Azure の言語](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

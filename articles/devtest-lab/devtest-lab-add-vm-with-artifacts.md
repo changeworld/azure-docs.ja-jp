@@ -1,6 +1,6 @@
 <properties
-	pageTitle="アーティファクトを含む VM をラボに追加する | Microsoft Azure"
-	description="アーティファクトを含む VM を DevTest ラボに追加する方法について説明します"
+	pageTitle="Azure DevTest Labs でアーティファクトを含む VM を ラボに追加する | Microsoft Azure"
+	description="アーティファクトを含む VM を Azure DevTest Labs に追加する方法について説明します"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,14 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="08/30/2016"
 	ms.author="tarcher"/>
 
-# アーティファクトを含む VM をラボに追加する
+# Azure DevTest Labs でアーティファクトを含む VM を ラボに追加する
 
 > [AZURE.VIDEO how-to-create-vms-with-artifacts-in-a-devtest-lab]
-
-## 概要
 
 [カスタム イメージ](./devtest-lab-create-template.md)、[数式](./devtest-lab-manage-formulas.md)、[Marketplace イメージ](./devtest-lab-configure-marketplace-images.md)のいずれかである "*ベース*" から、ラボで VM を作成します。
 
@@ -36,25 +34,23 @@ DevTest Labs "*アーティファクト*" を使用すると、VM の作成時�
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-1. ラボの一覧で、新しい VM を作成するラボを選択します。
+1. ラボの一覧で、VM を作成するラボを選択します。
 
-1. ラボのブレードで、次の図に示す **[Lab VM (ラボ VM)]** を選択します。![[+ ラボ VM] ボタン](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
+1. ラボの **[概要]** ブレードで、**[+ 仮想マシン]** を選択します。![VM ボタンを追加する](./media/devtest-lab-add-vm-with-artifacts/devtestlab-home-blade-add-vm.png)
 
 1. **[Choose a base (ベースの選択)]** ブレードで、VM のベースを選択します。
 
-1. **[ラボ VM]** ブレードで、**[ラボ VM 名]** ボックスに新しい仮想マシンの名前を入力します。
+1. **[仮想マシン]** ブレードで、**[仮想マシン名]** ボックスに新しい仮想マシンの名前を入力します。
 
 	![[ラボ VM] ブレード](./media/devtest-lab-add-vm-with-artifacts/devtestlab-lab-vm-blade.png)
 
 1. **[ユーザー名]** に、仮想マシンの管理者特権を付与するユーザー名を入力します。
 
-1. 選択したベースの OS の種類が Linux の場合は、*[パスワード]* または *[SSH 公開キー]* のいずれかの認証の種類を指定します。
-
-1. 指定した認証の種類に応じて、パスワードまたは SSH 公開キーを入力します。
-
-1. **[VM サイズ]** を選択し、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定する定義済みの項目のいずれかを選択します。
+1. *シークレット ストア* に格納されているパスワードを使用する場合、**[個人用のシークレット ストアからシークレットを使用する]** を選択し、シークレット (パスワード) に対応するキー値を指定します。もしくは、**値を入力** とラベル付けされているテキスト フィールドにパスワードを入力します。
+ 
+1. **[仮想マシン サイズ]** を選択し、定義済みの項目の中から、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定するものを選びます。
 
 1. **[仮想ネットワーク]** を選択して、目的の仮想ネットワークを選択します。
 
@@ -76,11 +72,11 @@ DevTest Labs "*アーティファクト*" を使用すると、VM の作成時�
 
 VM を作成するときに、既存のアーティファクトを追加できます。各ラボには、パブリック DevTest ラボ アーティファクト リポジトリのアーティファクトと、独自のアーティファクト リポジトリに作成または追加されたアーティファクトが含まれます。アーティファクトの作成方法については、[DevTest Labs VM で使用するための独自のアーティファクトを作成する方法](devtest-lab-artifact-author.md)に関する記事を参照してください。
 
-1. **[Lab VM (ラボ VM)]** ブレードで、**[Artifacts (アーティファクト)]** を選択します。
+1. **仮想マシン**のブレードで、**[アーティファクト]** を選択します。
 
-1. **[Add Artifacts (アーティファクトの追加)]** ブレードで、目的のアーティファクトを選択します。
+1. **[アーティファクトの追加]** ブレードで、目的のアーティファクトを選択します。
 
-![Add Artifacts blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
+	![Add Artifacts blade](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifact-blade.png)
 
 1. 必須のパラメーター値を入力します。必要に応じて、省略可能なパラメーターも入力します。
 
@@ -98,7 +94,7 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 
     ![Number of artifacts added to VM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 
-1. 一覧のアーティファクトをドラッグ アンド ドロップして、順序を変更します。**注:** アーティファクトをドラッグできない場合は、アーティファクトの左側からドラッグしていることを確認してください。
+1. アーティファクトの実行順序を指定するには、目的の順序になるようにアーティファクトをドラッグ アンド ドロップします。**注:** アーティファクトをドラッグできない場合は、アーティファクトの左側からドラッグしていることを確認してください。
 
 1. 完了したら、**[OK]** を選択します。
 
@@ -120,9 +116,9 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 
 Azure Resource Manager テンプレートでは、反復可能なデプロイを定義する宣言的な方法が提供されます。次の手順では、作成される VM の Azure Resource Manager テンプレートを保存する方法について説明します。保存した Azure Resource Manager テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイする](../resource-group-overview.md#template-deployment)ことができます。
 
-1. **[Lab VM (ラボ VM)]** ブレードで、**[View ARM Template (ARM テンプレートの表示)]** を選択します。
+1. **仮想マシン**のブレードで、**[ARM テンプレートの表示]** を選択します。
 
-1. **[View Azure Resource Manager Template (Azure Resource Manager テンプレートの表示)]** ブレードで、すべてのテンプレート テキストを選択します。
+1. **[Azure Resource Manager テンプレートの表示]** ブレードで、テンプレート テキストを選択します。
 
 1. 選択したテキストをクリップボードにコピーします。
 
@@ -142,4 +138,4 @@ Azure Resource Manager テンプレートでは、反復可能なデプロイを
 - [DevTest Labs VM のカスタム アーティファクトの作成](devtest-lab-artifact-author.md)方法を学習します。
 - [DevTest Labs ARM のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を調べます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

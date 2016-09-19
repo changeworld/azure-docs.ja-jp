@@ -14,12 +14,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/06/2016"
    ms.author="gwallace" />
 
 # ポータルを使用してアプリケーション ゲートウェイを作成する
 
-Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどのアプリケーション配信機能を備えています。
+Azure Application Gateway はレイヤー 7 のロード バランサーです。クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」を参照してください。
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](application-gateway-create-gateway-portal.md)
@@ -27,10 +27,6 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 - [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 - [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
 - [Azure CLI](application-gateway-create-gateway-cli.md)
-
-<BR>
-
-
 
 ## シナリオ
 
@@ -75,7 +71,6 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 
 >[AZURE.NOTE] テスト目的では、インスタンス数として 1 を選択できます。重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
 
-
 ### 手順 3.
 
 基本設定を定義したら、次の手順では、使用する仮想ネットワークを定義します。仮想ネットワークは、アプリケーション ゲートウェイによる負荷分散の対象となるアプリケーションを収容します。
@@ -88,7 +83,7 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 
 *[仮想ネットワークの選択]* ブレードで、**[新規作成]** をクリックします。
 
-*"このシナリオでは説明しませんが、この時点で既存の仮想ネットワークを選択することもできます"*
+このシナリオでは説明しませんが、この時点で既存の仮想ネットワークを選択することもできます。既存の仮想ネットワークを使用する場合、仮想ネットワークで使用する空のサブネットまたはアプリケーション ゲートウェイ リソースのみのサブネットが必要です。
 
 ![choose virtual network blade][4]
 
@@ -147,7 +142,7 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 
 [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)に関する記事を参照して、カスタムの正常性プローブを作成する方法を確認します。
 
-[SSL オフロードの構成](application-gateway-ssl-arm.md)に関する記事を参照して、SSL オフロードを構成して Web サーバーでのコストのかかる SSL 暗号化解除を回避する方法を確認します。
+[SSL オフロードの構成](application-gateway-ssl-portal.md)に関する記事を参照して、SSL オフロードを構成して Web サーバーでのコストのかかる SSL 暗号化解除を回避する方法を確認します。
 
 <!--Image references-->
 [1]: ./media/application-gateway-create-gateway-portal/figure1.png
@@ -162,4 +157,4 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="sqldb-quickstart"
-   ms.date="06/22/2016"
+   ms.date="09/06/2016"
    ms.author="carlrab"/>
 
 # Azure SQL Database ソリューション クイック スタート ガイド
@@ -71,4 +71,4 @@ Code First では、C# または Visual Basic .NET クラスを使用してモ�
 
 [Azure SQL Database チュートリアルの確認](sql-database-explore-tutorials.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

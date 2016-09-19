@@ -122,6 +122,7 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 
 - スマート カードまたは仮想スマート カードを使用して Windows デバイスにサインインしようとすると、設定の同期機能が停止します。この問題は今後、Windows 10 の更新プログラムで解決される可能性があります。
 - Internet Explorer のお気に入りの同期機能を使用するためには、July Cumulative Update for Windows 10 (ビルド 10586.494 以降) が必要です。
+- Windows Information Protection で保護されているデータは、Enterprise State Roaming での同期を行いません。さらに、Windows Information Protection が有効になっているマシンでは、テーマの同期は発生しません。
 - Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。
     - お使いのデバイスが Azure Active Directory ポータルで [Multi-Factor Authentication](multi-factor-authentication.md) を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスのサインインしている状態で設定の同期が失敗することがあります。このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。管理者ユーザーは、[Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
     - 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。一度サインオフしてから [Microsoft Passport for Work](active-directory-azureadjoin-passport.md) の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
@@ -135,4 +136,4 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 - [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

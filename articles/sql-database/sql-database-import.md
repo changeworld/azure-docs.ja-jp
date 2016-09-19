@@ -1,6 +1,6 @@
 <properties
-	pageTitle="BACPAC ファイルをインポートして新しい Azure SQL Database を作成する | Microsoft Azure"
-	description="既存の BACPAC ファイルをインポートして新しい Azure SQL Database を作成する"
+	pageTitle="BACPAC ファイルをインポートして Azure SQL データベースを作成する | Microsoft Azure"
+	description="既存の BACPAC ファイルをインポートして、Azure SQL データベースを作成します。"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -10,14 +10,14 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="07/09/2016"
+	ms.date="08/31/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"/>
 
 
-# BACPAC ファイルをインポートして新しい Azure SQL Database を作成する
+# BACPAC ファイルをインポートして Azure SQL データベースを作成する
 
 
 **1 つのデータベース**
@@ -28,7 +28,7 @@
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
 
-この記事は、[Azure ポータル](https://portal.azure.com)を使用して BACPAC ファイルから新しい Azure SQL Database を作成する手順について説明します。
+この記事は、[Azure Portal](https://portal.azure.com) を使用して BACPAC ファイルから Azure SQL データベースを作成する手順について説明します。
 
 BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export.md)」の手順に従って作成できます。
 
@@ -42,10 +42,10 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 - Azure SQL Database V12 サーバー。V12 サーバーがない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 - [Azure Storage アカウント (標準)](../storage/storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
 
-***重要*** BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
+> [AZURE.IMPORTANT] BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
 
 
-## データベースを含めるサーバーの選択
+## データベースをホストするサーバーの選択
 
 次のように、[SQL Server] ブレードを開きます。
 
@@ -103,4 +103,4 @@ BACPAC は、データベース スキーマとデータを含む .bacpac ファ
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

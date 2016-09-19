@@ -20,5 +20,7 @@ Azure Websites では、逆引き DNS はサポートされていません。逆
 いいえ。Azure は ARPA ゾーンの以降の委任をサポートしていません。Azure は、すべての使用可能な IP の ARPA ゾーンをホストします。また、ユーザーは ARPA ゾーン内で逆引き DNS レコードを作成できます。
 ### ISP から割り当てられた Azure DNS 上の IP ブロックの ARPA ゾーンをホストできますか?
 いいえ。現在、Azure DNS は、お客様の DNS ゾーン内の逆引き DNS レコードをサポートしていません。
+### Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
+いいえ。[こちら](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)に記載されているように、Azure コンピューティング サービスでは、外部ドメインへの電子メールの送信はサポートされていません。
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0907_2016-->

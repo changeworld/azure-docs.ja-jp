@@ -3,7 +3,7 @@
    description="Microsoft Power BI Embedded の一般的なシナリオ"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="mblythe"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Power BI Embedded の一般的なシナリオ
 
@@ -31,4 +31,4 @@
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 - [サンプルを使ってみる](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -57,7 +57,7 @@ Azure AD への Ceridian Dayforce HCM の統合を構成するには、ギャラ
 
 **ギャラリーから Ceridian Dayforce HCM を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -172,8 +172,8 @@ Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAM
 
     - ダウンロードした証明書ファイル
     - **発行者の URL**
-    - **SAML SSO URL** 
-    - **シングル サインアウト サービス URL** 
+    - **SAML SSO URL**
+    - **シングル サインアウト サービス URL**
 
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
@@ -217,7 +217,7 @@ Ceridian Dayforce HCM アプリケーションでは、特定の形式での SAM
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-ceridiandayforcehcm-tutorial/create_aaduser_06.png)
 
@@ -263,7 +263,7 @@ Ceridian Dayforce HCM サポート チームと協力して、Ceridian Dayforce 
 
 **Ceridian Dayforce HCMに Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure クラシック ポータルのディレクトリ ビューで、トップ メニューにある **[アプリケーション]** をクリックしてアプリケーション ビューを開きます
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
 	![ユーザーの割り当て][201]
 
@@ -312,4 +312,4 @@ Ceridian Dayforce HCM サポート チームと協力して、Ceridian Dayforce 
 [204]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

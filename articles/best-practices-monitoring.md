@@ -662,6 +662,6 @@ _図 6: 分析要件とストレージ要件に基づくデータのパーティ
 - [Service Bus キューの使用方法](./service-bus/service-bus-dotnet-get-started-with-queues.md)
 - [Azure Virtual Machines での SQL Server Business Intelligence](./virtual-machines/virtual-machines-windows-classic-ps-sql-bi.md)
 - 「[アラート通知の受信](./azure-portal/insights-receive-alert-notifications.md)」と「[サービス正常性を追跡する](./azure-portal/insights-service-health.md)」
-- [Application Insights](./application-insights/app-insights-get-started.md)
+- [Application Insights](./application-insights/app-insights-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

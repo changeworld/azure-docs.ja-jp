@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/20/2016"
-	ms.author="markvi;liviodlc"/>
+	ms.date="09/02/2016"
+	ms.author="markvi"/>
 
 #Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 
@@ -70,7 +70,7 @@
 | :---: | --- |
 | パスワード ベースの SSO のしくみと技術的な概要 | [パスワードベースのシングル サインオン](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
 | アカウント共有に関連したシナリオの概要と、Azure AD によるこれらの問題の解決方法 | [Azure AD とのアカウントの共有](active-directory-sharing-accounts.md) |
-| 定期的に特定のアプリのパスワードを自動的に変更 | [Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx0) |
+| 定期的に特定のアプリのパスワードを自動的に変更 | [Automated Password Rollover (preview) (自動パスワード ロールオーバー (プレビュー))](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Azure AD パスワード管理拡張機能の Internet Explorer バージョンのデプロイおよびトラブルシューティング ガイド | [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)<br /><br />[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md) |
 
 パスワード ベースのシングル サインオンは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[アプリケーションへのアクセスの割り当てにグループを使用](#managing-access-to-applications)できます。自動パスワード ロールオーバーは、[Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) の機能です。
@@ -228,4 +228,4 @@ Azure Active Directory の各エディションに付属のレポートを確認
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

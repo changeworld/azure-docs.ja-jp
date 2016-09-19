@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -421,4 +421,4 @@ Amazon Web Service (AWS) との Azure AD シングル サインオンを構成�
 [34]: ./media/active-directory-saas-amazon-web-service/ic7950253.png
 [35]: ./media/active-directory-saas-amazon-web-service/user_attributes_01.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="05/17/2016"
+	ms.date="08/29/2016"
 	ms.author="heidist"/>
 
 #Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
@@ -45,7 +45,7 @@
 次に、ユーザーから高い評価を受けた Azure Search のチュートリアルとビデオをいくつか紹介します。
 
 - [Microsoft Virtual Academy の Azure Search の概要に関するビデオ](https://mva.microsoft.com/ja-JP/training-courses/adding-microsoft-azure-search-to-your-websites-and-apps-10540?l=ADkxnd97_9304984382)は Azure Search の知識を深めるために優れたリソースです。
-- [AzureCon 2015: Azure Search のベスト プラクティスに関するビデオ](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)は、Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスを提供します。 
+- [AzureCon 2015: Azure Search のベスト プラクティスに関するビデオ](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-search-best-practices-for-web-and-mobile-applications/)は、Web またはモバイル シナリオ用のアプリを構築する際に、スケールアウト、パフォーマンスの最適化、および効率的なコーディングを実現する方法に関する実用的なアドバイスを提供します。
 - [.NET クライアント ライブラリのコード サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
 - [チュートリアル「.NET アプリケーションから Azure Search を使用する方法」](search-howto-dotnet-sdk.md)では、Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
 - [チュートリアル「ポータルから Azure Search を使用する」](search-get-started-portal.md)は、コードを書かずに、インデックスとデータを取得する純粋なポータル ベースのチュートリアルです。このチュートリアルは、ポータルで一般的なタスクを実行する方法を学習するために役立ちます。
@@ -77,17 +77,17 @@
 
 ##Tutorials (チュートリアル)
 
-チュートリアル|説明
+チュートリアル|Description
 -----------|-----------
 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)|Azure Search と連携するサンプル Visual Studio Web アプリケーションを構成して実行します。
 [Azure Search と D3.js を使用して対話型データの視覚化をビルドする方法](https://azure.microsoft.com/blog/2015/07/14/how-to-use-azure-search-with-d3-js-to-build-interactive-data-visualizations/)|画像検索機能をカスタム アプリに追加する方法を示すブログ投稿とサンプル コードを掲載しています。
 [NodeJS での Azure Search の使用](search-get-started-nodejs.md)|NodeJS で Azure Search を操作する方法について説明します。
 [Java での Azure Search の使用](search-get-started-java.md)|Eclipse や Apache Tomcat サーバーを使って、Azure Search を使用するサンプル アプリケーションを構築して実行する Java プログラマー向けのチュートリアルです。
 [Azure Search のシナリオと機能](https://azure.microsoft.com/blog/2014/08/28/azure-search-scenarios-and-capabilities/)|現在の機能で実現されるプライマリ シナリオについて説明したブログ投稿です。
-[検索候補を検索アプリケーションに追加する方法](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)|一般的にオート コンプリートと呼ばれる検索候補を実行する方法を説明します。このデモでは、Azure Search の検索候補を活用する MVC4 アプリケーションの作成、Twitter typeahead.js ライブラリを使用した JavaScript での効率的な自動補完コンポーネントの構築、ファジー検索候補を使用して、ユーザーがスペルを間違えても検索候補を表示される方法など、多くのトピックの手順について説明します。
+[検索候補を検索アプリケーションに追加する方法](https://azure.microsoft.com/blog/2015/01/20/azure-search-how-to-add-suggestions-auto-complete-to-your-search-applications/)|一般的にオート コンプリートと呼ばれる検索候補を実行する方法を説明します。このデモでは、Azure Search の検索候補を活用する MVC4 アプリケーションの作成、Twitter typeahead.js ライブラリを使用した JavaScript での効率的な自動提案コンポーネントの構築、ファジー検索候補を使用して、ユーザーがスペルを間違えても検索候補を表示される方法など、多くのトピックの手順について説明します。
 [TechNet バーチャル ラボ: Microsoft Azure Search アプリケーションの構築](http://go.microsoft.com/?linkid=9874663)|開発環境、ツール、ドキュメント、およびデータが用意されたバーチャル ラボ。ラボを完了するには、Azure アカウント (試用版のサブスクリプションまたは個人の Azure サブスクリプションのいずれか) が必要です。
 [SQL Server データの Azure Search との同期](https://azure.microsoft.com/blog/2014/11/10/how-to-sync-sql-server-data-with-azure-search/)|SQL Server リレーショナル データベースのデータを Azure Search インデックスに読み込む方法を説明したブログ投稿。
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

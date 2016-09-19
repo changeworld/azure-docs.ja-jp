@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="08/31/2016"
 	ms.author="trinadhk; jimpark; markgal;"/>
 
 # Azure 仮想マシンのバックアップを管理および監視する
@@ -52,7 +52,7 @@
 ## オンデマンドでの仮想マシンのバックアップ
 仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。仮想マシンの最初のバックアップが保留中の場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Azure のバックアップ コンテナーに作成されます。最初のバックアップが完了している場合、オンデマンド バックアップを実行すると、前のバックアップから変更された部分のみが Azure のバックアップ コンテナーに送られます (すなわち、常に増分バックアップとなります)。
 
->[AZURE.NOTE] オンデマンド バックアップのリテンション期間の範囲は、VM に対応するバックアップ ポリシーの日単位のリテンション期間として指定されたリテンション期間の値に設定されます。
+>[AZURE.NOTE] オンデマンド バックアップの保有期間の範囲は、VM に対応するバックアップ ポリシーの日単位のリテンション期間として指定されたリテンション期間の値に設定されます。
 
 仮想マシンのオンデマンド バックアップを作成するには:
 
@@ -219,7 +219,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **ResourceId**: 前のセクションで説明した操作ログのポップアップから取得できます。具体的には、操作の詳細を示したポップアップ ウィンドウに表示される ResourceUri が、このコマンドレットに指定する ResourceId となります。
 
-**OperationName**: 形式は "Microsoft.Backup/backupvault/<EventName>" となります。ここで、EventName は、Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy のいずれかです
+**OperationName**: 形式は "Microsoft.Backup/backupvault/<EventName>" となります。ここで、EventName は、Register、Unregister、ConfigureProtection、Backup、Restore、StopProtection、DeleteBackupData、CreateProtectionPolicy、DeleteProtectionPolicy、UpdateProtectionPolicy のいずれかです。
 
 **Status**: サポートされる値は、Started、Succeeded、および Failed です。
 
@@ -227,7 +227,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **Name**: アラート ルールの名前を指定します。
 
-**CustomEmail**: アラート通知を送信するカスタム電子メール アドレスを指定します
+**CustomEmail**: アラート通知を送信するカスタム電子メール アドレスを指定します。
 
 **SendToServiceOwners**: このオプションを指定すると、サブスクリプションの管理者と共同管理者全員にアラート通知を送信します。これは、**New-AzureRmAlertRuleEmail** コマンドレットで使用できます
 
@@ -242,4 +242,4 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 - [Azure VM の復元](backup-azure-restore-vms.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

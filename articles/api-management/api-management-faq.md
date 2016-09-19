@@ -23,7 +23,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 ## よく寄せられる質問
 
 -	[API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-a-question-to-the-api-management-team)
--	[機能がプレビュー段階とはどういう意味ですか。](#what-does-it-mean-if-a-feature-is-in-preview)
+-	[機能がプレビュー段階とはどういう意味ですか。](#what-does-it-mean-when-a-feature-is-in-preview)
 -	[API Management ゲートウェイとバックエンド サービス間の接続をセキュリティで保護する場合、どのような方法がサポートされていますか。](#what-are-the-supported-options-to-secure-the-connection-between-the-api-management-gateway-and-my-backend-services)
 -	[API Management インスタンスを新しいインスタンスにコピーするにはどうすればよいですか。](#how-can-i-copy-an-api-management-instance-to-a-new-instance)
 -	[API Management インスタンスはプログラムで管理できますか。](#can-i-manage-my-api-management-instance-programmatically)
@@ -39,6 +39,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 -	[バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-backend)
 -	[GIT リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-am-i-getting-authentication-failure-when-i-try-to-clone-the-git-repository)
 -	[API Management は Express Route と共に使用できますか。](#does-api-management-work-with-express-route)
+-	[あるサブスクリプションから別のサブスクリプションに API Management インスタンスを移動できますか。](#can-i-move-api-management-instance-from-one-subscription-to-another)
 
 
 ### API Management チームに質問するにはどうすればよいですか。
@@ -57,7 +58,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 
 1. HTTP 基本認証を使用します。詳細については、「[API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」を参照してください。
 2. 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
-3. バックエンド サービスで IP ホワイトリストを使用します。Standard または Premium レベルの API Management インスタンスを使用している場合、ゲートウェイの IP アドレスが変わることはないので、この IP アドレスを許可するようにホワイトリストを構成できます。API Management インスタンスの IP アドレスは、Azure クラシック ポータルの**ダッシュボード**で取得できます。
+3. バックエンド サービスで IP ホワイトリストを使用します。Standard レベルまたは Premium レベルの API Management インスタンスを使用している場合、ゲートウェイの IP アドレスが変わることはないので、この IP アドレスを許可するようにホワイトリストを構成できます。API Management インスタンスの IP アドレスは、Azure クラシック ポータルの**ダッシュボード**で取得できます。
 4. API Management インスタンスを Azure Virtual Network (クラシック) に接続できます。詳細については、「[Azure API Management で VPN 接続を設定する方法](api-management-howto-setup-vpn.md)」を参照してください。
 
 ### API Management インスタンスを新しいインスタンスにコピーするにはどうすればよいですか。
@@ -74,18 +75,18 @@ API Management サービス インスタンスは、いくつかの方法で新�
 
 ### ユーザーを Administrators グループに追加するにはどうすればよいですか。
 
-以下の手順に従って実現できます。
+次の手順に従って実現できます。
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にログインします
-2. 目的の API Management インスタンスを含むリソース グループに移動します
+1. 新しい [Azure Portal](https://portal.azure.com) にログインします
+2. 目的の API Management インスタンスが含まれるリソース グループに移動します
 3. 目的のユーザーを "API Management サービス共同作成者" ロールに追加します
 
 それが終わると、新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://msdn.microsoft.com/library/mt613507.aspx)を使用して管理者としてログインできます。
 
 1. `Login-AzureRmAccount` コマンドレットを使用してログインします
 2. `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` を使用して、サービスを含むサブスクリプションへのコンテキストを設定します
-3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して SSO トークンを取得します
-4. URL をコピーしてブラウザーに貼り付けると、ユーザーは管理ポータルにアクセスできます
+3. `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用してシングル サインオン URL を取得します
+4. この URL を使って管理者ポータルにアクセスできます
 
 
 ### 追加するポリシーがポリシー エディターで有効になっていないのはなぜですか。
@@ -101,18 +102,18 @@ API Management サービス インスタンスは、いくつかの方法で新�
 
 ### サンドボックスや実稼働など、API の複数の環境を構成するにはどうすればよいですか。
 
-この時点では、次のオプションがあります。
+現在のオプションは次のとおりです。
 
 -	同じテナントで個別の API をホストすることができます。
 -	それぞれ異なるテナントで同じ API をホストすることができます。
 
 ### SOAP は API Management でサポートされていますか。
 
-現在、Azure API Management での SOAP のサポートは制限されています。これは現在調査中の機能です。私共では、貴社の顧客の WSDL のサンプルを取得すること、貴社の顧客が必要としている機能について情報を得ることに非常に関心があります。それは思考の形成に役立つからです。「[API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-a-question-to-the-api-management-team)」に記載されている連絡先にお問い合わせください。
+現在、Azure API Management での SOAP のサポートは制限されています。これは現在調査中の機能です。Microsoft は、考えを検証するのに役立つと思われる、WSDL ドキュメントの例の収集に関心があります。「[API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-a-question-to-the-api-management-team)」に記載されている連絡先にお問い合わせください。
 
-これを使う必要がある場合は、弊社コミュニティで推奨されている回避策を参照してください (「[Azure API Management - APIM, consuming a SOAP WCF service over HTTP (Azure API Management - APIM、HTTP を介した SOAP WCF サービスの使用)](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html)」)。
+これを使う必要がある場合は、弊社のコミュニティ メンバーによって推奨されている回避策を参照してください (「[Azure API Management - APIM, consuming a SOAP WCF service over HTTP (Azure API Management - APIM、HTTP を介した SOAP WCF サービスの使用)](http://mostlydotnetdev.blogspot.com/2015/03/azure-api-management-apim-consuming.html)」)。
 
-その方法でソリューションを実装する場合、ポリシーをいくらか手動で構成する必要があるほか、WSDL インポート/エクスポートはサポートされず、また、ユーザーは開発者ポータルでテスト コンソールを使用して発行される要求の本体を形成する必要があります。
+その方法でソリューションを実装する場合、ポリシーを一部手動で構成する必要があるほか、WSDL インポート/エクスポートはサポートされず、また、ユーザーは開発者ポータルでテスト コンソールを使用して発行される要求の本体を形成する必要があります。
 
 ### API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。
 
@@ -155,4 +156,8 @@ GIT Credential Manager を使用しているか、Visual Studio でリポジト�
 
 はい。
 
-<!---HONumber=AcomDC_0831_2016-->
+### あるサブスクリプションから別のサブスクリプションに API Management インスタンスを移動できますか。
+
+はい。 この[記事](../resource-group-move-resources.md)の手順に従ってください。
+
+<!---HONumber=AcomDC_0907_2016-->

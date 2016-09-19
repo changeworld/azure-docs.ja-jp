@@ -21,7 +21,7 @@
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 
-##概要
+##Overview
 
 Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。クライアントを認証するために ASP.NET WebAPI バックエンドが使用されます。認証されたクライアント ユーザーを使用して、タグがバックエンドによって通知登録に自動的に追加されます。このタグは、バックエンドが特定のユーザーに対する通知を生成するための送信で使用されます。アプリ バックエンドを使用した通知登録の詳細については、ガイド トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/library/dn743807.aspx)」を参照してください。このチュートリアルは、「[Notification Hubs の使用]」チュートリアルで作成した通知ハブを基に作成されています。
 
@@ -383,8 +383,8 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 <!-- URLs. -->
 [Notification Hubs の使用]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[安全なプッシュ]: notification-hubs-aspnet-backend-windows-dotnet-secure-push.md
+[安全なプッシュ]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [通知ハブを使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

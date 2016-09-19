@@ -57,7 +57,14 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 ##次のステップ
 
-[Azure ポータルを使用してメディア処理のスケールを設定する](media-services-portal-scale-media-processing.md)
+以下のいずれかのテクノロジを利用して、メディア処理のスケール設定タスクを実現します。
+
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-encoding-units.md)
+- [ポータル](media-services-portal-scale-media-processing.md)
+- [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 ##Media Services のラーニング パス
 
@@ -67,4 +74,4 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

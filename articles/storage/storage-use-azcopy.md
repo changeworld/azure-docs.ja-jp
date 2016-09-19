@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/02/2016"
 	ms.author="micurd"/>
 
 # AzCopy コマンド ライン ユーティリティを使用してデータを転送する
 
-## 概要
+## Overview
 
 AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB、File、Table の記憶域との間でデータをコピーするために設計された Windows コマンドライン ユーティリティです。ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
 
@@ -40,7 +40,7 @@ AzCopy コマンドの基本構文は次のとおりです。
 
 	AzCopy /Source:<source> /Dest:<destination> [Options]
 
-コマンド ウィンドウを開き、`AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。必要に応じて、AzCopy のインストール先をシステム パスに追加できます。既定で、AzCopy は `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` (64 ビット Windows) または `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` (32 ビット Windows) にインストールされます。
+コマンド ウィンドウを開き、`AzCopy.exe` 実行可能ファイルが格納されている、コンピューターの AzCopy インストール ディレクトリに移動します。必要に応じて、AzCopy のインストール先をシステム パスに追加できます。既定で、AzCopy は `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` または `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy` にインストールされます。
 
 以下の例では、Microsoft Azure BLOB、File、Table との間でデータをコピーする多様なシナリオを紹介しています。各サンプルで使用されているパラメーターの詳細な説明については、「[AzCopy のパラメーター](#azcopy-parameters)」を参照してください。
 
@@ -866,4 +866,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 - [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 - [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

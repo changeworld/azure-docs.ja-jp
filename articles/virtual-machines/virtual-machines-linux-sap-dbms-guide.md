@@ -4,7 +4,7 @@
    services="virtual-machines-linux,virtual-network,storage"
    documentationCenter="saponazure"
    authors="MSSedusch"
-   manager="timlt"
+   manager="juergent"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="08/02/2016"
+   ms.date="08/18/2016"
    ms.author="sedusch"/>
 
 # Azure Virtual Machines (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド
@@ -89,15 +89,15 @@
 [dbms-guide-8.4.4]: virtual-machines-linux-sap-dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 "その他"
 [dbms-guide-900-sap-cache-server-on-premises]: virtual-machines-linux-sap-dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
 
-[dbms-guide-figure-100]: ./media/virtual-machines-linux-sap-dbms-guide/100_storage_account_types.png
-[dbms-guide-figure-200]: ./media/virtual-machines-linux-sap-dbms-guide/200-ha-set-for-dbms-ha.png
-[dbms-guide-figure-300]: ./media/virtual-machines-linux-sap-dbms-guide/300-reference-config-iaas.png
-[dbms-guide-figure-400]: ./media/virtual-machines-linux-sap-dbms-guide/400-sql-2012-backup-to-blob-storage.png
-[dbms-guide-figure-500]: ./media/virtual-machines-linux-sap-dbms-guide/500-sql-2012-backup-to-blob-storage-different-containers.png
-[dbms-guide-figure-600]: ./media/virtual-machines-linux-sap-dbms-guide/600-iaas-maxdb.png
-[dbms-guide-figure-700]: ./media/virtual-machines-linux-sap-dbms-guide/700-livecach-prod.png
-[dbms-guide-figure-800]: ./media/virtual-machines-linux-sap-dbms-guide/800-azure-vm-sap-content-server.png
-[dbms-guide-figure-900]: ./media/virtual-machines-linux-sap-dbms-guide/900-sap-cache-server-on-premises.png
+[dbms-guide-figure-100]: ./media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
+[dbms-guide-figure-200]: ./media/virtual-machines-shared-sap-dbms-guide/200-ha-set-for-dbms-ha.png
+[dbms-guide-figure-300]: ./media/virtual-machines-shared-sap-dbms-guide/300-reference-config-iaas.png
+[dbms-guide-figure-400]: ./media/virtual-machines-shared-sap-dbms-guide/400-sql-2012-backup-to-blob-storage.png
+[dbms-guide-figure-500]: ./media/virtual-machines-shared-sap-dbms-guide/500-sql-2012-backup-to-blob-storage-different-containers.png
+[dbms-guide-figure-600]: ./media/virtual-machines-shared-sap-dbms-guide/600-iaas-maxdb.png
+[dbms-guide-figure-700]: ./media/virtual-machines-shared-sap-dbms-guide/700-livecach-prod.png
+[dbms-guide-figure-800]: ./media/virtual-machines-shared-sap-dbms-guide/800-azure-vm-sap-content-server.png
+[dbms-guide-figure-900]: ./media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
 
 [deployment-guide]: virtual-machines-linux-sap-deployment-guide.md "Linux 仮想マシン (VM) 上の SAP NetWeaver – デプロイ ガイド"
 [deployment-guide-2.2]: virtual-machines-linux-sap-deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 "SAP リソース"
@@ -120,25 +120,25 @@
 
 [deployment-guide-configure-monitoring-scenario-1]: virtual-machines-linux-sap-deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b "監視の構成"
 [deployment-guide-configure-proxy]: virtual-machines-linux-sap-deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d "プロキシの構成"
-[deployment-guide-figure-100]: ./media/virtual-machines-linux-sap-deployment-guide/100-deploy-vm-image.png
-[deployment-guide-figure-1000]: ./media/virtual-machines-linux-sap-deployment-guide/1000-service-properties.png
+[deployment-guide-figure-100]: ./media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
+[deployment-guide-figure-1000]: ./media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
 [deployment-guide-figure-11]: virtual-machines-linux-sap-deployment-guide.md#figure-11
-[deployment-guide-figure-1100]: ./media/virtual-machines-linux-sap-deployment-guide/1100-azperflib.png
-[deployment-guide-figure-1200]: ./media/virtual-machines-linux-sap-deployment-guide/1200-cmd-test-login.png
-[deployment-guide-figure-1300]: ./media/virtual-machines-linux-sap-deployment-guide/1300-cmd-test-executed.png
+[deployment-guide-figure-1100]: ./media/virtual-machines-shared-sap-deployment-guide/1100-azperflib.png
+[deployment-guide-figure-1200]: ./media/virtual-machines-shared-sap-deployment-guide/1200-cmd-test-login.png
+[deployment-guide-figure-1300]: ./media/virtual-machines-shared-sap-deployment-guide/1300-cmd-test-executed.png
 [deployment-guide-figure-14]: virtual-machines-linux-sap-deployment-guide.md#figure-14
-[deployment-guide-figure-1400]: ./media/virtual-machines-linux-sap-deployment-guide/1400-azperflib-error-servicenotstarted.png
-[deployment-guide-figure-300]: ./media/virtual-machines-linux-sap-deployment-guide/300-deploy-private-image.png
-[deployment-guide-figure-400]: ./media/virtual-machines-linux-sap-deployment-guide/400-deploy-using-disk.png
+[deployment-guide-figure-1400]: ./media/virtual-machines-shared-sap-deployment-guide/1400-azperflib-error-servicenotstarted.png
+[deployment-guide-figure-300]: ./media/virtual-machines-shared-sap-deployment-guide/300-deploy-private-image.png
+[deployment-guide-figure-400]: ./media/virtual-machines-shared-sap-deployment-guide/400-deploy-using-disk.png
 [deployment-guide-figure-5]: virtual-machines-linux-sap-deployment-guide.md#figure-5
-[deployment-guide-figure-50]: ./media/virtual-machines-linux-sap-deployment-guide/50-forced-tunneling-suse.png
-[deployment-guide-figure-500]: ./media/virtual-machines-linux-sap-deployment-guide/500-install-powershell.png
+[deployment-guide-figure-50]: ./media/virtual-machines-shared-sap-deployment-guide/50-forced-tunneling-suse.png
+[deployment-guide-figure-500]: ./media/virtual-machines-shared-sap-deployment-guide/500-install-powershell.png
 [deployment-guide-figure-6]: virtual-machines-linux-sap-deployment-guide.md#figure-6
-[deployment-guide-figure-600]: ./media/virtual-machines-linux-sap-deployment-guide/600-powershell-version.png
+[deployment-guide-figure-600]: ./media/virtual-machines-shared-sap-deployment-guide/600-powershell-version.png
 [deployment-guide-figure-7]: virtual-machines-linux-sap-deployment-guide.md#figure-7
-[deployment-guide-figure-700]: ./media/virtual-machines-linux-sap-deployment-guide/700-install-powershell-installed.png
-[deployment-guide-figure-760]: ./media/virtual-machines-linux-sap-deployment-guide/760-azure-cli-version.png
-[deployment-guide-figure-900]: ./media/virtual-machines-linux-sap-deployment-guide/900-cmd-update-executed.png
+[deployment-guide-figure-700]: ./media/virtual-machines-shared-sap-deployment-guide/700-install-powershell-installed.png
+[deployment-guide-figure-760]: ./media/virtual-machines-shared-sap-deployment-guide/760-azure-cli-version.png
+[deployment-guide-figure-900]: ./media/virtual-machines-shared-sap-deployment-guide/900-cmd-update-executed.png
 [deployment-guide-figure-azure-cli-installed]: virtual-machines-linux-sap-deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]: virtual-machines-linux-sap-deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]: virtual-machines-linux-sap-deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
@@ -166,13 +166,14 @@
 
 [install-extension-cli]: virtual-machines-linux-enable-aem.md
 
-[Logo_Linux]: ./media/virtual-machines-linux-sap-shared/Linux.png
-[Logo_Windows]: ./media/virtual-machines-linux-sap-shared/Windows.png
+[Logo_Linux]: ./media/virtual-machines-shared-sap-shared/Linux.png
+[Logo_Windows]: ./media/virtual-machines-shared-sap-shared/Windows.png
 
 [msdn-set-azurermvmaemextension]: https://msdn.microsoft.com/library/azure/mt670598.aspx
 
 [planning-guide]: virtual-machines-linux-sap-planning-guide.md "Linux 仮想マシン (VM) 上の SAP NetWeaver – 計画および実装ガイド"
 [planning-guide-1.2]: virtual-machines-linux-sap-planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff "リソース"
+[planning-guide-11]: virtual-machines-linux-sap-planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 "Azure Virtual Machines で実行する SAP NetWeaver の高可用性 (HA) と 障害復旧 (DR)"
 [planning-guide-11.4.1]: virtual-machines-linux-sap-planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 "SAP アプリケーション サーバーの高可用性"
 [planning-guide-11.5]: virtual-machines-linux-sap-planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f "SAP インスタンスでの自動開始の使用"
 [planning-guide-2.1]: virtual-machines-linux-sap-planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 "クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ"
@@ -198,29 +199,29 @@
 [planning-guide-9.1]: virtual-machines-linux-sap-planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 "Azure Monitoring Solution for SAP"
 [planning-guide-azure-premium-storage]: virtual-machines-linux-sap-planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 "Azure Premium Storage"
 
-[planning-guide-figure-100]: ./media/virtual-machines-linux-sap-planning-guide/100-single-vm-in-azure.png
-[planning-guide-figure-1300]: ./media/virtual-machines-linux-sap-planning-guide/1300-ref-config-iaas-for-sap.png
-[planning-guide-figure-1400]: ./media/virtual-machines-linux-sap-planning-guide/1400-attach-detach-disks.png
-[planning-guide-figure-1600]: ./media/virtual-machines-linux-sap-planning-guide/1600-firewall-port-rule.png
-[planning-guide-figure-1700]: ./media/virtual-machines-linux-sap-planning-guide/1700-single-vm-demo.png
-[planning-guide-figure-1900]: ./media/virtual-machines-linux-sap-planning-guide/1900-vm-set-vnet.png
-[planning-guide-figure-200]: ./media/virtual-machines-linux-sap-planning-guide/200-multiple-vms-in-azure.png
-[planning-guide-figure-2100]: ./media/virtual-machines-linux-sap-planning-guide/2100-s2s.png
-[planning-guide-figure-2200]: ./media/virtual-machines-linux-sap-planning-guide/2200-network-printing.png
-[planning-guide-figure-2300]: ./media/virtual-machines-linux-sap-planning-guide/2300-sapgui-stms.png
-[planning-guide-figure-2400]: ./media/virtual-machines-linux-sap-planning-guide/2400-vm-extension-overview.png
-[planning-guide-figure-2500]: ./media/virtual-machines-linux-sap-planning-guide/2500-vm-extension-details.png
-[planning-guide-figure-2600]: ./media/virtual-machines-linux-sap-planning-guide/2600-sap-router-connection.png
-[planning-guide-figure-2700]: ./media/virtual-machines-linux-sap-planning-guide/2700-exposed-sap-portal.png
-[planning-guide-figure-2800]: ./media/virtual-machines-linux-sap-planning-guide/2800-endpoint-config.png
-[planning-guide-figure-2900]: ./media/virtual-machines-linux-sap-planning-guide/2900-azure-ha-sap-ha.png
-[planning-guide-figure-300]: ./media/virtual-machines-linux-sap-planning-guide/300-vpn-s2s.png
-[planning-guide-figure-3000]: ./media/virtual-machines-linux-sap-planning-guide/3000-sap-ha-on-azure.png
-[planning-guide-figure-3200]: ./media/virtual-machines-linux-sap-planning-guide/3200-sap-ha-with-sql.png
-[planning-guide-figure-400]: ./media/virtual-machines-linux-sap-planning-guide/400-vm-services.png
-[planning-guide-figure-600]: ./media/virtual-machines-linux-sap-planning-guide/600-s2s-details.png
-[planning-guide-figure-700]: ./media/virtual-machines-linux-sap-planning-guide/700-decision-tree-deploy-to-azure.png
-[planning-guide-figure-800]: ./media/virtual-machines-linux-sap-planning-guide/800-portal-vm-overview.png
+[planning-guide-figure-100]: ./media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
+[planning-guide-figure-1300]: ./media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
+[planning-guide-figure-1400]: ./media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
+[planning-guide-figure-1600]: ./media/virtual-machines-shared-sap-planning-guide/1600-firewall-port-rule.png
+[planning-guide-figure-1700]: ./media/virtual-machines-shared-sap-planning-guide/1700-single-vm-demo.png
+[planning-guide-figure-1900]: ./media/virtual-machines-shared-sap-planning-guide/1900-vm-set-vnet.png
+[planning-guide-figure-200]: ./media/virtual-machines-shared-sap-planning-guide/200-multiple-vms-in-azure.png
+[planning-guide-figure-2100]: ./media/virtual-machines-shared-sap-planning-guide/2100-s2s.png
+[planning-guide-figure-2200]: ./media/virtual-machines-shared-sap-planning-guide/2200-network-printing.png
+[planning-guide-figure-2300]: ./media/virtual-machines-shared-sap-planning-guide/2300-sapgui-stms.png
+[planning-guide-figure-2400]: ./media/virtual-machines-shared-sap-planning-guide/2400-vm-extension-overview.png
+[planning-guide-figure-2500]: ./media/virtual-machines-shared-sap-planning-guide/2500-vm-extension-details.png
+[planning-guide-figure-2600]: ./media/virtual-machines-shared-sap-planning-guide/2600-sap-router-connection.png
+[planning-guide-figure-2700]: ./media/virtual-machines-shared-sap-planning-guide/2700-exposed-sap-portal.png
+[planning-guide-figure-2800]: ./media/virtual-machines-shared-sap-planning-guide/2800-endpoint-config.png
+[planning-guide-figure-2900]: ./media/virtual-machines-shared-sap-planning-guide/2900-azure-ha-sap-ha.png
+[planning-guide-figure-300]: ./media/virtual-machines-shared-sap-planning-guide/300-vpn-s2s.png
+[planning-guide-figure-3000]: ./media/virtual-machines-shared-sap-planning-guide/3000-sap-ha-on-azure.png
+[planning-guide-figure-3200]: ./media/virtual-machines-shared-sap-planning-guide/3200-sap-ha-with-sql.png
+[planning-guide-figure-400]: ./media/virtual-machines-shared-sap-planning-guide/400-vm-services.png
+[planning-guide-figure-600]: ./media/virtual-machines-shared-sap-planning-guide/600-s2s-details.png
+[planning-guide-figure-700]: ./media/virtual-machines-shared-sap-planning-guide/700-decision-tree-deploy-to-azure.png
+[planning-guide-figure-800]: ./media/virtual-machines-shared-sap-planning-guide/800-portal-vm-overview.png
 [planning-guide-microsoft-azure-networking]: virtual-machines-linux-sap-planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd "Microsoft Azure のネットワーク"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]: virtual-machines-linux-sap-planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f "ストレージ: Microsoft Azure Storage とデータ ディスク"
 
@@ -279,9 +280,9 @@
 [virtual-network-deploy-multinic-arm-cli]: ../virtual-network/virtual-network-deploy-multinic-arm-cli.md
 [virtual-network-deploy-multinic-arm-ps]: ../virtual-network/virtual-network-deploy-multinic-arm-ps.md
 [virtual-network-deploy-multinic-arm-template]: ../virtual-network/virtual-network-deploy-multinic-arm-template.md
-[virtual-networks-configure-vnet-to-vnet-connection]: ../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md
+[virtual-networks-configure-vnet-to-vnet-connection]: ../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]: ../virtual-network/virtual-networks-create-vnet-arm-pportal.md
-[virtual-networks-manage-dns-in-vnet]: ../virtual-network/virtual-networks-manage-dns-in-vnet.md
+[virtual-networks-manage-dns-in-vnet]: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]: ../virtual-network/virtual-networks-multiple-nics.md
 [virtual-networks-nsg]: ../virtual-network/virtual-networks-nsg.md
 [virtual-networks-reserved-private-ip]: ../virtual-network/virtual-networks-static-private-ip-arm-ps.md
@@ -289,6 +290,7 @@
 [virtual-networks-udr-overview]: ../virtual-network/virtual-networks-udr-overview.md
 [vpn-gateway-about-vpn-devices]: ../vpn-gateway/vpn-gateway-about-vpn-devices.md
 [vpn-gateway-create-site-to-site-rm-powershell]: ../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md
+[vpn-gateway-cross-premises-options]: ../vpn-gateway/vpn-gateway-plan-design.md
 [vpn-gateway-site-to-site-create]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [vpn-gateway-vpn-faq]: ../vpn-gateway/vpn-gateway-vpn-faq.md
 [xplat-cli]: ../xplat-cli-install.md
@@ -316,7 +318,7 @@
 * SAP ランドスケープ: これは、お客様の IT 環境内にある SAP 資産全体を指します。SAP ランドスケープには、運用環境と非運用環境のすべてが含まれます。運用環境
 * SAP システム: DBMS 層とアプリケーション層を組み合わせたシステム (SAP ERP 開発システム、SAP BW テスト システム、SAP CRM 運用システムなど)。Azure デプロイメントでは、オンプレミスと Azure 間でこれら 2 つの層を分割することはできません。つまり、SAP システムはオンプレミスか Azure のいずれかにデプロイされます。ただし、SAP ランドスケープの異なるシステムを Azure またはオンプレミスにデプロイすることはできます。たとえば、SAP CRM の開発システムとテスト システムを Azure にデプロイし、SAP CRM 運用システムをオンプレミスにデプロイすることは可能です。
 * クラウドのみのデプロイ: Azure サブスクリプションが、サイト間接続または ExpressRoute 接続経由でオンプレミス ネットワーク インフラストラクチャに接続されていないデプロイです。この種のデプロイメントは、共通の Azure ドキュメントでもクラウドのみのデプロイメントとして説明されています。この方法でデプロイされた仮想マシンは、インターネットと、Azure 内の VM に割り当てられたパブリック インターネット エンドポイントを経由してアクセスされます。オンプレミスの Active Directory (AD) と DNS は、これらのタイプのデプロイメントでは Azure に拡張されません。そのため、VM はオンプレミスの Active Directory の一部にはなりません。注: このドキュメントで言う「クラウドのみのデプロイメント」とは、Active Directory の拡張機能や、オンプレミスからパブリック クラウドへの名前解決を使用せず、Azure 内だけで実行されている完全な SAP ランドスケープのことを指します。クラウドのみの構成は、Azure 上でホストされている SAP システムとオンプレミスにあるリソースとの間に、SAP STMS またはその他のオンプレミスのリソースを使用する必要がある、運用 SAP のシステムや構成用にはサポートされていません。
-* クロスプレミス: オンプレミスのデータ センターと Azure との間に、サイト間、マルチサイトまたは ExpressRoute 接続を使用した Azure サブスクリプションに、VM をデプロイするシナリオのことを指します。この種のデプロイメントは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory およびオンプレミスの DNS を、Azure 内に拡張することです。オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。この拡張により。VM はオンプレミス ドメインの一部になることができます。オンプレミス ドメインのドメイン ユーザーはこのサーバーにアクセスできます。また、その VM のサービス (DBMS サービスなど) を実行できます。オンプレミスにデプロイした VM 間、および Azure にデプロイした VM 間の通信および名前解決は可能です。これが Azure 上に SAP 資産をデプロイする場合の最も一般的なシナリオだと思われます。詳細については、[こちらの記事][vpn-gateway-site-to-site-create]を参照してください。
+* クロスプレミス: オンプレミスのデータ センターと Azure との間に、サイト間、マルチサイトまたは ExpressRoute 接続を使用した Azure サブスクリプションに、VM をデプロイするシナリオのことを指します。この種のデプロイメントは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory およびオンプレミスの DNS を、Azure 内に拡張することです。オンプレミスのランドスケープが、サブスクリプションの Azure 資産に拡張されます。この拡張により。VM はオンプレミス ドメインの一部になることができます。オンプレミス ドメインのドメイン ユーザーはこのサーバーにアクセスできます。また、その VM のサービス (DBMS サービスなど) を実行できます。オンプレミスにデプロイした VM 間、および Azure にデプロイした VM 間の通信および名前解決は可能です。これが Azure 上に SAP 資産をデプロイする場合の最も一般的なシナリオだと思われます。詳細については、[こちら][vpn-gateway-cross-premises-options]と[こちら][vpn-gateway-site-to-site-create]の記事をご覧ください。
 
 > [AZURE.NOTE] SAP システムを実行する Azure Virtual Machines がオンプレミス ドメインのメンバーである SAP システムのクロスプレミス デプロイは、運用 SAP システムの場合にサポートされます。クロスプレミス構成では、Azure に SAP ランドスケープの一部または全部をデプロイする場合にサポートされます。Azure で完全な SAP ランドスケープを実行する場合でも、これらの VM をオンプレミス ドメインと ADS の一部に含める必要があります。ハイブリッド IT シナリオについて記載した以前のバージョンのドキュメントでは、「ハイブリッド」という用語はオンプレミスと Azure 間のクロスプレミス接続が存在するという事実に基づいていると説明しました。このケースでは、「ハイブリッド」とは Azure の VM がオンプレミス Active Directory の一部であることも意味します。
 
@@ -444,7 +446,8 @@ ___
 > ![Linux][Logo_Linux] Linux
 >
 > Linux でのソフトウェア RAID の構築がサポートされているのは、MDADM および LVM (論理ボリューム マネージャー) のみです。詳細については、次の記事を参照してください。
-> * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid] \(MDADM の場合)
+>
+> * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid] (MDADM の場合)
 > * [Azure で Linux VM の LVM を構成する][virtual-machines-linux-configure-lvm]
 
 
@@ -465,10 +468,10 @@ Microsoft Azure Storage は、ベース VM (OS を含む) と VHD または BLOB
 
 Azure Storage のローカル レプリケーション (ローカル冗長) は、インフラストラクチャの障害によるデータ損失に対する保護のレベルを提供します。これは、ほとんどのお客様が導入する余裕のないものでしょう。上記のように、4 つの異なるオプションがあり、5 番目は最初の 3 つのいずれかのバリエーションです。それらについて詳しく説明すると次のようになります。
 
-* **Premium ローカル冗長ストレージ (LRS)**: Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。コピーは異なるフォールト ドメインとアップグレード ドメイン内に存在します (概念については、[デプロイ ガイド][deployment-guide]の[この][deployment-guide-3]章を参照)。ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
-* **ローカル冗長ストレージ (LRS)**: Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。コピーは異なるフォールト ドメインとアップグレード ドメイン内に存在します (概念については、[デプロイ ガイド][deployment-guide]の[この][deployment-guide-3]章を参照)。ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
+* **Premium ローカル冗長ストレージ (LRS)**: Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。コピーは異なるフォールト ドメインとアップグレード ドメイン内に存在します (概念については、[計画ガイド][planning-guide]の[この][planning-guide-3.2]章をご覧ください)。ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
+* **ローカル冗長ストレージ (LRS)**: Azure リージョンの同じ Azure データ センター内にデータのレプリカが 3 つあります。コピーは異なるフォールト ドメインとアップグレード ドメイン内に存在します (概念については、[計画ガイド][planning-guide]の[この][planning-guide-3.2]章をご覧ください)。ストレージ ノードの障害またはディスクの障害によってデータのレプリカが停止した場合、新しいレプリカが自動的に生成されます。
 * **Geo 冗長ストレージ (GRS)**: この場合、たいていは同じ地理的リージョン (北ヨーロッパ、西ヨーロッパなど) 内にある別の Azure リージョンにある追加の 3 つのデータ レプリカを提供する非同期のレプリケーションがあります。これにより、追加の 3 つのレプリカが生成されるため、合計で 6 つのレプリカがあります。このバリエーションの 1 つは、Geo レプリケーションされた Azure リージョンのデータを読み取り目的で使用できる (読み取りアクセス Geo 冗長) という追加機能です。
-* **ゾーン冗長ストレージ (ZRS)**: この場合、同じ Azure リージョンに 3 つのデータ レプリカが残ります。[デプロイ ガイド][deployment-guide]の[この][deployment-guide-3]章で説明したように、Azure リージョンは近接する場所にあるデータ センターの数になります。LRS の場合、レプリカが、1 つの Azure リージョンを構成するさまざまなデータ センターに分散されます。
+* **ゾーン冗長ストレージ (ZRS)**: この場合、同じ Azure リージョンに 3 つのデータ レプリカが残ります。[計画ガイド][planning-guide]の[この][planning-guide-3.1]章で説明したように、Azure リージョンは近接する場所にあるデータ センターの数になります。LRS の場合、レプリカが、1 つの Azure リージョンを構成するさまざまなデータ センターに分散されます。
 
 詳細については、[こちら][storage-redundancy]で確認できます。
  
@@ -489,7 +492,7 @@ Azure Standard Storage は、ストレージ アカウントあたりの IOPS �
  
 Azure Standard Storage の場合、可能であれば、異なるストレージ アカウントからストレージを 1 つの VM に提示しないでください。
 
-DS シリーズの Azure VM を使用すると、Standard Storage アカウントと Azure Premium Storage アカウントから VHD をマウントすることが可能です。このような異種混在のストレージを使用できるとすると、VHD でサポートする Standard Storage にバックアップを書き込み、DBMS のデータ ファイルとログ ファイルを Premium Storage に持つというユースケースが思い浮かびます。
+DS シリーズまたは GS シリーズの Azure VM を使用すると、Azure Standard Storage アカウントと Premium Storage アカウントから VHD をマウントすることが可能です。このような異種混在のストレージを使用できるとすると、VHD でサポートする Standard Storage にバックアップを書き込み、DBMS のデータ ファイルとログ ファイルを Premium Storage に持つというユースケースが思い浮かびます。
 
 顧客のデプロイメントとテストに基づき、単一の Azure Standard Storage アカウントではデータベース データ ファイルとログ ファイルを含む約 30 ～ 40 の VHD を許容可能なパフォーマンスでプロビジョニングすることができます。前述のように、Azure Premium Storage アカウントの制限は、IOPS ではなく、保持できるデータの容量に適用される可能性があります。
 
@@ -536,8 +539,7 @@ Microsoft Azure 可用性セットは、VM とその他のサービスがクラ�
 DBMS デプロイメントの高可用性構成 (使用する個別の DBMS HA 機能とは別) を作成する場合、DBMS VM は次のことを行う必要があります。
 
 * VM を同じ Azure Virtual Network に追加します (<https://azure.microsoft.com/documentation/services/virtual-network/>)。
-* HA 構成の VM も同じサブネットにある必要があります。クラウドのみのデプロイでは、異なるサブネット間で名前解決できません。IP 解決のみが機能します。クロスプレミス デプロイメントのサイト間または ExpressRoute 接続を使用して、少なくとも 1 つのサブネットを持つネットワークが既に確立されています。名前解決は、オンプレミス AD ポリシーおよびネットワーク インフラストラクチャに従って行われます。
-[コメント]: <> (ARM でも真かどうか MSSedusch TODO テスト)
+* HA 構成の VM も同じサブネットにある必要があります。クラウドのみのデプロイでは、異なるサブネット間で名前解決できません。IP 解決のみが機能します。クロスプレミス デプロイメントのサイト間または ExpressRoute 接続を使用して、少なくとも 1 つのサブネットを持つネットワークが既に確立されています。名前解決は、オンプレミス AD ポリシーおよびネットワーク インフラストラクチャに従って行われます。[コメント]: <> (ARM でも真かどうか MSSedusch TODO テスト)
 
 #### IP アドレス
 回復力のある方法で HA 構成の VM をセットアップすることを強くお勧めします。静的 IP アドレスを使用しないかぎり、Azure では、HA 構成内の HA パートナーに対応する IP アドレスに依存することは信頼性がありません。Azure には、次の 2 つの「シャット ダウン」の概念があります。
@@ -615,8 +617,7 @@ Azure にアップロードする前にデータベースの圧縮を実行す�
 SQL Server 2014 では、Azure Blob ストアの周囲に VHD の「ラッパー」を用意しなくても、Azure Blob ストアに直接データベース ファイルを格納することができます。特に、Standard Azure Storage またはそれより小さい VM タイプを使用すると、小さい VM タイプでマウントできる VHD の数の制限が適用されることで IOPS が制限されるという問題を解消できます。これは、ユーザー データベースに対するもので、SQL Server のシステム データベースに対しては機能しません。また、SQL Server のデータ ファイルとログ ファイルに対しても機能します。VHD に「ラッピング」するのではなく、このような方法で SAP SQL Server データベースをデプロイする場合は次の点に留意してください。
 
 * 使用するストレージ アカウントは、SQL Server が実行されている VM をデプロイするために使用したストレージ アカウントと同じ Azure リージョン内にある必要があります。
-* 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
-[コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)。
+* 前述の、別の Azure ストレージ アカウントに VHD を分散させることについての考慮事項がこのデプロイメントの場合も適用されます。Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。[コメント]: <> (MSSedusch TODO、ただしこれはネットワーク帯域幅を使うものでストレージ帯域幅ではないと思いませんか)。
 
 このタイプのデプロイに関する詳細は、こちら (<https://msdn.microsoft.com/library/dn385720.aspx>) に記載されています。
  
@@ -714,7 +715,7 @@ Azure Marketplace での SQL Server イメージは SAP NetWeaver アプリケ�
 
 * 「管理者」として Windows コマンド ウィンドウを開きます。
 * ディレクトリを C:\\Program Files\\Microsoft SQL Server\\110\\Setup Bootstrap\\SQLServer2012 に変更します。
-* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=<local\_admin\_account\_name> /SQLCOLLATION=SQL\_Latin1\_General\_Cp850\_BIN2
+* 次のコマンドを実行します。Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name` /SQLCOLLATION=SQL\_Latin1\_General\_Cp850\_BIN2
 	* `<local_admin_account_name`> は、ギャラリーを使って最初に VM をデプロイするときに管理者アカウントとして定義されたアカウントです。
 
 処理にかかるのは、わずか数分間です。この手順で正しい結果が得られるかどうかを確認するために、次の手順を実行してください。
@@ -757,26 +758,14 @@ AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [177
 
 * 可用性グループ リスナーの使用は、Windows Server 2012 または Windows Server 2012 R2 を VM のゲスト OS として使用する場合にのみ可能です。Windows Server 2012 の場合、この更新プログラム (<https://support.microsoft.com/kb/2854082>) が適用されていることを確認する必要があります。
 * Windows Server 2008 R2 の場合、この更新プログラムは存在せず、AlwaysOn は、接続文字列にフェールオーバー パートナーを指定するというデータベース ミラーリングと同じ方法で使用する必要があります (SAP default.pfl パラメーター dbs/mss/server によって実行 – SAP Note[965908] 参照)。
-* 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。クラウドのみのデプロイで名前解決するためには、SAP システムのすべての VM (アプリケーション サーバー、DBMS サーバー、(A)SCS サーバー) が同じ仮想ネットワーク内にあるか、または、解決済みの SQL Server VM の VM 名を取得するために SAP アプリケーション レイヤーから etc\\host ファイルをメンテナンスする必要があります。両方の VM が意図せずシャット ダウンされた場合に、Azure に新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成 の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義は [この][virtual-networks-reserved-private-ip]記事に記載) 
-[コメント]: <> (古いブログ) 
-[コメント]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>、<https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
+* 可用性グループ リスナーを使用する場合、データベースの VM を専用のロード バランサーに接続する必要があります。クラウドのみのデプロイで名前解決するためには、SAP システムのすべての VM (アプリケーション サーバー、DBMS サーバー、(A)SCS サーバー) が同じ仮想ネットワーク内にあるか、または、解決済みの SQL Server VM の VM 名を取得するために SAP アプリケーション レイヤーから etc\\host ファイルをメンテナンスする必要があります。両方の VM が意図せずシャットダウンされた場合に、Azure に新しい IP アドレスが割り当てられるのを回避するため、AlwaysOn 構成の VM のネットワーク インターフェイスに静的 IP アドレスを割り当てる必要があります (静的 IP アドレスの定義は [この][virtual-networks-reserved-private-ip]記事に記載) [コメント]: <> (古いブログ) [コメント]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>、<https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>)
 * Azure の現在の機能では、クラスター名にクラスターが作成されたノードと同じ IP アドレスを割り当てるため、WSFC クラスター構成を構築してそのクラスターに特定の IP アドレスを割り当てる必要がある場合、特別な手順が必要です。つまり、クラスターに別の IP アドレスを割り当てるためには手動の手順を実行する必要があります。
 * Azure で、可用性グループのプライマリ レプリカとセカンダリ レプリカを実行している VM に割り当てられている TCP/IP エンドポイントを使って可用性グループ リスナーを作成しようとしています。
 * これらのエンドポイントと ACL をセキュリティで保護する必要があります。
 
-[コメント]: <> (TODO 古いブログ) 
-[コメント]: <> ([ここ][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]で提供されているチュートリアルを完了させると Azure で AlwaysOn 構成をインストールするために必要なものと詳細な手順を体験できます) 
-[コメント]: <> (Azure のギャラリー <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx> を使用した事前構成済み AlwaysOn のセットアップ) 
-[コメント]: <> (可用性グループ リスナーの作成については[この][virtual-machines-windows-classic-ps-sql-int-listener]チュートリアルの説明が最適です) 
-[コメント]: <> (ACL を使用したネットワーク エンドポイントの保護についてはこの説明が最適です)
-[コメント]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) 
-[コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx>) 
-[コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) 
-[コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
+[コメント]: <> (TODO 古いブログ) [コメント]: <> ([ここ][virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]で提供されているチュートリアルを完了させると Azure で AlwaysOn 構成をインストールするために必要なものと詳細な手順を体験できます) [コメント]: <> (Azure のギャラリー <https://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx> を使用した事前構成済み AlwaysOn のセットアップ) [コメント]: <> (可用性グループ リスナーの作成については[この][virtual-machines-windows-classic-ps-sql-int-listener]チュートリアルの説明が最適です) [コメント]: <> (ACL を使用したネットワーク エンドポイントの保護についてはこの説明が最適です)[コメント]: <> (* <https://michaelwasham.com/windows-azure-powershell-reference-guide/network-access-control-list-capability-in-windows-azure-powershell/>) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/08/31/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-1-of-2.aspx>) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/01/weekend-scripter-creating-acls-for-windows-azure-endpoints-part-2-of-2.aspx>) [コメント]: <> (* <https://blogs.technet.com/b/heyscriptingguy/archive/2013/09/18/creating-acls-for-windows-azure-endpoints.aspx>)
 
-異なる Azure リージョンにも、SQL Server AlwaysOn 可用性グループをデプロイすることができます。この機能は Azure Vnet 間接続 ([詳細][virtual-networks-configure-vnet-to-vnet-connection]) を利用します。
-[コメント]: <> (TODO 古いブログ) 
-[コメント]: <> (このようなシナリオでの SQL Server AlwaysOn 可用性グループのセットアップについてはこちらに記載されています: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>)
+異なる Azure リージョンにも、SQL Server AlwaysOn 可用性グループをデプロイすることができます。この機能は Azure Vnet 間接続 ([詳細][virtual-networks-configure-vnet-to-vnet-connection]) を利用します。[コメント]: <> (TODO 古いブログ) [コメント]: <> (このようなシナリオでの SQL Server AlwaysOn 可用性グループのセットアップについてはこちらに記載されています: <https://blogs.technet.com/b/dataplatforminsider/archive/2014/06/19/sql-server-alwayson-availability-groups-supported-between-microsoft-azure-regions.aspx>)
 
 #### Azure での SQL Server 高可用性の概要
 Azure ストレージがコンテンツを保護しているという事実を考えると、ホット スタンバイ イメージを要求する理由はあまりありません。これは、高可用性シナリオは、次のケースに対してのみ保護する必要があることを意味します。
@@ -1137,8 +1126,7 @@ Azure VHD を使用して Azure ページ BLOB Storage の章では、このド�
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと Hyper-V と同様にサポートされています。ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 #### 高可用性
-[コメント]: <> (リンクは ASM を参照) 
-高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳細については、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントを参照してください。
+[コメント]: <> (リンクは ASM を参照) 高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳細については、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントを参照してください。
 
 #### その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
@@ -1358,4 +1346,58 @@ Azure ストアの Geo レプリケーションを使用しないでください
 
 「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+## Linux の IBM DB2 for LUW の詳細
+Microsoft Azure では、IBM DB2 for Linux, UNIX, and Windows (LUW) で実行される既存の SAP アプリケーションを Azure Virtual Machines に簡単に移行できます。SAP on IBM DB2 for LUW では、管理者および開発者はオンプレミスで提供されているものと同じ開発ツールや管理ツールを引き続き使用できます。IBM DB2 for LUW で SAP Business Suite を実行する場合の一般的な情報については、SAP Community Network (SCN) の <https://scn.sap.com/community/db2-for-linux-unix-windows> に記載されています。
+
+Azure での SAP on DB2 for LUW に関するその他の情報および更新については、SAP Note [2233094] を参照してください。
+
+### IBM DB2 for Linux, UNIX, and Windows バージョンのサポート
+Microsoft Azure Virtual Machine サービスにおける SAP on IBM DB2 for LUW は、DB2 バージョン 10.5 の時点でサポートされています。
+
+サポートされる SAP 製品と Azure VM の種類については、SAP Note [1928533] を参照してください。
+
+### Azure VM で SAP をインストールするための IBM DB2 for Linux, UNIX, and Windows 構成ガイドライン
+
+#### ストレージの構成
+すべてのデータベース ファイルは、VHD ディスクに基づくファイル システムに保存する必要があります。これらの VHD は、Azure VM にマウントされ、Azure ページ BLOB Storage に基づいています (<https://msdn.microsoft.com/library/azure/ee691964.aspx>)。あらゆる種類のネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は次のデータベース ファイルをサポートして**いません**。
+
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
+* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+
+Azure ページ BLOB Storage に基づいて Azure VHD を使用する場合、このドキュメントの「[RDBMS デプロイの構造][dbms-guide-2]」の章の説明が、IBM DB2 for LUW データベースでのデプロイにも適用されます。
+
+ドキュメント前半の全般的な部分で説明したように、Azure VHD の IOPS スループットにクォータが存在します。正確なクォータは使用する VM タイプによって異なります。VM タイプとそのクォータの一覧は、[こちら][virtual-machines-sizes]に記載されています。
+
+ディスクあたりの現在の IOPS クォータが要件を満たしている限り、すべてのデータベース ファイルを 1 つのマウントされた Azure VHD に格納することが可能です。
+
+パフォーマンスに関する考慮事項についても、SAP インストール ガイドの「データベース ディレクトリのデータの安全性とパフォーマンスに関する考慮事項」の章を参照してください。
+
+このドキュメントの「[ソフトウェア RAID][dbms-guide-2.2]」で説明した LVM (論理ボリューム マネージャー) または MDADM を使用して、マウントされた複数の VHD ディスク上で 1 つの大きな論理デバイスを作成することもできます。Sapdata と saptmp ディレクトリに対する DB2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。
+
+#### バックアップ/復元
+IBM DB2 for LUW のバックアップ/復元機能は、オンプレミスの標準の Linux インストールの場合と同様にサポートされています。
+
+有効なデータベース バックアップ戦略が設定されていることを確認する必要があります。
+
+ベア メタル デプロイメントと同様に、バックアップ/復元のパフォーマンスは、並列で読み取ることができるボリュームの数と、それらのボリュームのスループットに依存します。さらに、バックアップの圧縮で使用される CPU 使用量は最大 8 CPU スレッドとなり、VM 上で相当の役割となる可能性があります。そのため、次のことを想定できます。
+
+* データ デバイスの格納に使用される VHD の数が少ないほど、読み取りの全体的なスループットは小さくなる。
+* VM の CPU スレッドの数が少ないほど、バックアップの圧縮への影響が大きくなる。
+* バックアップを書き込むためのターゲット (ストライプ ディレクトリまたは VHD) が少ないほど、スループットが減少する。
+
+書き込まれるターゲット数を増やすには、ニーズに応じて使用または組み合わせることのできるオプションが 2 つあります。
+
+* 複数のマウントされた VHD をストライプ ボリューム上で IOPS のスループットを向上させるために、バックアップ ターゲット ボリュームをストライピング
+* バックアップの書き込み先として複数のターゲット ディレクトリを使用する
+
+#### 高可用性と障害復旧
+DB2 の高可用性と障害復旧 (HADR) がサポートされています。HA 構成に参加している VM で名前解決を行えているのであれば、Azure でのセットアップはオンプレミスのセットアップとなんら変わりません。IP 解決のみに依存することはお勧めしません。
+
+Azure ストアの Geo レプリケーションを使用しないでください。詳細については、「[Microsoft Azure Storage][dbms-guide-2.3]」と「[Azure VM の高可用性と障害復旧][dbms-guide-3]」の章を参照してください。
+
+#### その他
+このドキュメントの最初の 3 つの章で説明したように、IBM DB2 for LUW を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
+
+「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章を参照してください。
+
+<!---HONumber=AcomDC_0907_2016-->

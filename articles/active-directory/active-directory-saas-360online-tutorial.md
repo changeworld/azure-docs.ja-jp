@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -112,7 +112,7 @@ Azure AD への 360° Online の統合を構成するには、ギャラリーか
 **360° Online で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 
-1. Azure クラシック ポータルの **360° Online** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1. Azure クラシック ポータルの **360° Online ** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
 	![Configure Single Sign-On][13]
 
@@ -182,7 +182,7 @@ Azure AD への 360° Online の統合を構成するには、ギャラリーか
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-360online-tutorial/create_aaduser_06.png)
 
@@ -285,4 +285,4 @@ Azure AD への 360° Online の統合を構成するには、ギャラリーか
 [203]: ./media/active-directory-saas-360online-tutorial/tutorial_general_203.png
 [205]: ./media/active-directory-saas-360online-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

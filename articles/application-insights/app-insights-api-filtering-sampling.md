@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Application Insights SDK におけるサンプリング、フィルター処理、および前処理" 
-	description="テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理、サンプリング、またはデータへのプロパティの追加を行うためのプラグインを記述します。" 
+	pageTitle="Application Insights SDK におけるフィルター処理および前処理 | Microsoft Azure" 
+	description="テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理またはデータへのプロパティの追加を行うためのテレメトリ プロセッサおよびテレメトリ初期化子を記述します。" 
 	services="application-insights"
     documentationCenter="" 
 	authors="beckylino" 
@@ -12,10 +12,10 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="05/19/2016" 
+	ms.date="08/30/2016" 
 	ms.author="borooji"/>
 
-# Application Insights SDK におけるテレメトリのサンプリング、フィルター処理、および前処理
+# Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
 *Application Insights はプレビュー段階です。*
 
@@ -23,58 +23,16 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 現在これらの機能は、ASP.NET SDK で利用できます。
 
-* [サンプリング](#sampling)は、統計に影響を与えることなくテレメトリの量を削減します。関連するデータ ポイントが一緒に保持されるので、問題の診断時にそれらのデータ ポイント間を移動することができます。ポータルでは、サンプリングを補正するために合計数が乗算されます。
-* [フィルター処理](#filtering)では、テレメトリがサーバーに送信される前に、SDK でテレメトリを選択または変更することができます。たとえば、ロボットからの要求を除外することでテレメトリの量を削減することができます。フィルター処理は、トラフィックを削減する上では、サンプリングよりも基本的な方法です。フィルター処理を使用すると、送信する内容をより細かく制御することができます。ただし、統計に影響を及ぼすことになるので注意が必要です (たとえば、すべての成功した要求を除外する場合など)。
-* アプリから送信される任意のテレメトリ (標準のモジュールからのテレメトリなど) に[プロパティを追加](#add-properties)します。たとえば、算出値や、ポータルでデータをフィルター処理するのに使用できるバージョン番号を追加することが可能です。
+* [サンプリング](app-insights-sampling.md)は、統計に影響を与えることなくテレメトリの量を削減します。関連するデータ ポイントが一緒に保持されるので、問題の診断時にそれらのデータ ポイント間を移動することができます。ポータルでは、サンプリングを補正するために合計数が乗算されます。
+* [テレメトリ プロセッサによるフィルター処理](#filtering)では、テレメトリがサーバーに送信される前に、SDK でテレメトリを選択または変更することができます。たとえば、ロボットからの要求を除外することでテレメトリの量を削減することができます。ただし、フィルター処理は、トラフィックを削減するうえでは、サンプリングよりも基本的な方法です。フィルター処理を使用すると、送信する内容をより細かく制御することができます。ただし、統計に影響を及ぼすことになるので注意が必要です (たとえば、すべての成功した要求を除外する場合など)。
+* テレメトリ初期化子を使用すると、アプリから送信される任意のテレメトリ (標準のモジュールからのテレメトリなど) に[プロパティを追加](#add-properties)できます。たとえば、算出値や、ポータルでデータをフィルター処理するのに使用できるバージョン番号を追加することが可能です。
 * [SDK API](app-insights-api-custom-events-metrics.md) は、カスタム イベントとメトリックの送信に使用します。
+
 
 開始する前に次の操作を実行してください。
 
-* アプリに [Application Insights SDK for ASP.NET v2](app-insights-asp-net.md) をインストールする。 
+* アプリに [Application Insights SDK for ASP.NET v2](app-insights-asp-net.md) をインストールする。
 
-
-## サンプリング
-
-[サンプリング](app-insights-sampling.md)は、正確な統計情報を保持したままでトラフィックを削減するお勧めの方法です。フィルターを使用すると、関連のある項目が選択されるため、診断内の項目間を移動しやすくなります。フィルター処理された項目を補正するために、メトリックス エクスプローラーでイベントの数が調整されます。
-
-* アダプティブ サンプリングをお勧めします。アダプティブ サンプリングはサンプリングの割合を自動的に調整し、要求が一定の量になるようにします。現在は、ASP.NET サーバー側テレメトリでのみ使用できます。 
-* [固定レート サンプリング](app-insights-sampling.md)も利用できます。サンプリングの割合を指定します。ASP.NET Web アプリ コードおよび JavaScript Web ページで使用できます。クライアントとサーバーはサンプリングを同期するので、検索では関連のあるページ ビューと要求の間を移動できます。
-* インジェスト サンプリングは、Application Insights ポータルでテレメトリを受信したときに動作するので、使用している SDK に関係なく使用できます。ネットワーク上のテレメトリ トラフィックは削減されませんが、Application Insights で処理され、保存される量は削減されます。保持されているテレメトリだけが月間クォータでカウントされます。 
-
-### インジェスト サンプリングを有効にするには
-
-[設定] バーから [クォータと価格] ブレードを開きます。[サンプリング] をクリックし、サンプリング率を選択します。
-
-SDK が固定レート サンプリングまたはアダプティブ サンプリングを実行している場合、インジェスト サンプリングは動作しません。SDK のサンプリング レートが 100% 未満である間は、インジェスト サンプリング設定は無視されます。
-
-### アダプティブ サンプリングを有効にするには
-
-**プロジェクトの NuGet** パッケージを Application Insights の最新の*プレリリース* バージョンに更新します。ソリューション エクスプ ローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選択し、**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。
-
-[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) では、アダプティブ アルゴリズムが目標とするテレメトリの最大レートを調整できます。
-
-    <MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>
-
-### クライアント側のサンプリング
-
-Web ページからのデータに対して固定レートのサンプリングを行うには、(通常は、\_Layout.cshtml などのマスター ページに) 挿入した [Application Insights のスニペット](app-insights-javascript.md)に追加の行を配置します。
-
-*JavaScript*
-
-```JavaScript
-
-	}({ 
-
-	samplingPercentage: 10.0, 
-
-	instrumentationKey:...
-	}); 
-```
-
-* 100/N (N は整数) と等しいパーセント値 (この例では 10) を設定します。たとえば、50 (=100/2)、33.33 (=100/3)、25 (=100/4)、10 (=100/10) です。 
-* サーバー側でも[固定レート サンプリング](app-insights-sampling.md)を有効にしている場合は、クライアントとサーバーはサンプリングを同期するので、検索で関連のあるページ ビューと要求の間を移動できます。
-
-[サンプリングの詳細についてはこちらを参照してください](app-insights-sampling.md)。
 
 <a name="filtering"></a>
 ## フィルター: ITelemetryProcessor
@@ -85,7 +43,7 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 > [AZURE.WARNING] プロセッサを使用して SDK から送信されるテレメトリをフィルター処理すると、ポータルに表示される統計にゆがみが生じ、関連項目を追跡するのが困難になる可能性があります。
 > 
-> 代わりに、[サンプリング](#sampling)の使用を検討します。
+> 代わりに、[サンプリング](app-insights-sampling.md)の使用を検討します。
 
 ### テレメトリ プロセッサを作成する
 
@@ -140,7 +98,7 @@ Web ページからのデータに対して固定レートのサンプリング�
     
 
     ```
-2. 次の内容を ApplicationInsights.config に挿入します 
+2. 次の内容を ApplicationInsights.config に挿入します
 
 ```XML
 
@@ -153,7 +111,7 @@ Web ページからのデータに対して固定レートのサンプリング�
 
 ```
 
-(これは、サンプリング フィルターを初期化するセクションと同じであることに注意してください)。
+(これは、サンプリング フィルターを初期化するセクションと同じです)。
 
 名前付きのパブリック プロパティをクラス内に指定することにより、.config ファイルから文字列値を渡すことができます。
 
@@ -380,6 +338,112 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 * TelemetryProcessor を使用すると、テレメトリ項目を完全に置換または破棄できます。
 * TelemetryProcessor は、パフォーマンス カウンター テレメトリを処理しません。
 
+
+
+## 永続化チャネル 
+
+インターネット接続が常に利用できるとは限らない状況または速度が遅い状況でアプリが実行される場合は、既定のメモリ内チャネルの代わりに永続化チャネルの使用を検討してください。
+
+既定のメモリ内チャネルでは、アプリが終了するまでに送信されなかったテレメトリは失われます。`Flush()` を使用してバッファーに残っているデータを送信できますが、インターネット接続がない場合、または送信が完了する前にアプリがシャットダウンした場合、データは失われます。
+
+これに対し、永続化チャネルでは、テレメトリはファイル内でバッファー処理されてからポータルに送信されます。`Flush()` によってデータは確実にファイルに格納されます。アプリが終了するまでに送信されなかったデータはファイル内に保持されます。アプリを再起動したときにインターネット接続がある場合、そのデータは送信されます。接続が利用可能になるまでは、データは、必要である期間だけファイル内に蓄積されます。
+
+### 永続化チャネルを使用するには
+
+1. NuGet パッケージ [Microsoft.ApplicationInsights.PersistenceChannel](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PersistenceChannel/1.2.3) をインポートします。
+2. アプリの適切な初期化の場所に、このコードを含めます。
+ 
+    ```C# 
+
+      using Microsoft.ApplicationInsights.Channel;
+      using Microsoft.ApplicationInsights.Extensibility;
+      ...
+
+      // Set up 
+      TelemetryConfiguration.Active.InstrumentationKey = "YOUR INSTRUMENTATION KEY";
+ 
+      TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+    
+    ``` 
+3. アプリを終了する前に `telemetryClient.Flush()` を使用して、確実にデータがポータルに送信されるか、ファイルに保存されるようにします。
+
+    Flush() は永続化チャネルでは同期ですが、その他のチャネルでは非同期であることに注意してください。
+
+ 
+永続化チャネルは、アプリケーションで作成されるイベントの数が比較的少なく、接続の信頼性が低いことの多いデバイス シナリオに対して最適化されています。このチャネルは、イベントを最初にディスクに書き込んで確実に保存してから、送信を試行します。
+
+#### 例
+
+未処理の例外を監視するとします。`UnhandledException` イベントをサブスクライブします。コールバックで Flush の呼び出しを含めると、テレメトリが確実に保持されます。
+ 
+```C# 
+
+AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException; 
+ 
+... 
+ 
+private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) 
+{ 
+    ExceptionTelemetry excTelemetry = new ExceptionTelemetry((Exception)e.ExceptionObject); 
+    excTelemetry.SeverityLevel = SeverityLevel.Critical; 
+    excTelemetry.HandledAt = ExceptionHandledAt.Unhandled; 
+ 
+    telemetryClient.TrackException(excTelemetry); 
+ 
+    telemetryClient.Flush(); 
+} 
+
+``` 
+
+アプリをシャットダウンすると、`%LocalAppData%\Microsoft\ApplicationInsights` にファイルが作成され、圧縮されたイベントが格納されます。
+ 
+このアプリケーションを次回起動したときに、チャネルがこのファイルを取得し、可能な場合はテレメトリを Application Insights に配信します。
+
+#### テストの例
+
+```C#
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Send data from the last time the app ran
+            System.Threading.Thread.Sleep(5 * 1000);
+
+            // Set up persistence channel
+
+            TelemetryConfiguration.Active.InstrumentationKey = "YOUR KEY";
+            TelemetryConfiguration.Active.TelemetryChannel = new PersistenceChannel();
+
+            // Send some data
+
+            var telemetry = new TelemetryClient();
+
+            for (var i = 0; i < 100; i++)
+            {
+                var e1 = new Microsoft.ApplicationInsights.DataContracts.EventTelemetry("persistenceTest");
+                e1.Properties["i"] = "" + i;
+                telemetry.TrackEvent(e1);
+            }
+
+            // Make sure it's persisted before we close
+            telemetry.Flush();
+        }
+    }
+}
+
+```
+
+
+永続化チャネルのコードは、[github](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/v1.2.3/src/TelemetryChannels/PersistenceChannel) にあります。
+
+
 ## リファレンス ドキュメント
 
 * [API の概要](app-insights-api-custom-events-metrics.md)
@@ -397,11 +461,9 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 ## <a name="next"></a>次のステップ
 
 
-[イベントおよびログを検索する][diagnostic]
-
-[サンプルとチュートリアル](app-insights-code-samples.md)
-
-[トラブルシューティング][qna]
+* [イベントおよびログを検索する][diagnostic]
+* [サンプリング](app-insights-sampling.md)
+* [トラブルシューティング][qna]
 
 
 <!--Link references-->
@@ -421,4 +483,4 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 
  
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

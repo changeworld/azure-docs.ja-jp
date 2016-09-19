@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/26/2016"
+	ms.date="08/31/2016"
 	ms.author="andkjell"/>
 
 
@@ -55,7 +55,7 @@
 	- タグ: 空のままにします。Microsoft が提供する標準の規則の場合のみ、このボックスには値が設定されています。
 3. **[Scoping filter (スコープ フィルター)]** ページで、「**givenName ISNOTNULL**」と入力します。![Inbound rule scoping filter](./media/active-directory-aadconnectsync-change-the-configuration/scopingfilter.png) このセクションを使用して、規則を適用するオブジェクトを定義します。空のままにした場合は、すべてのユーザー オブジェクトに規則が適用されます。ただし、それには、会議室、サービス アカウントなど、人以外のユーザー オブジェクトも含まれます。
 4. **[Join rules (結合規則)]** では、空白のままにします。
-5. **[Transformations (変換)]** ページで、[FlowType] を **[式]** に変更します。[Target Attribute (ターゲット属性)] で **[givenName]** を選択し、[ソース] に「`PCase([givenName])`」と入力します。![Inbound rule transformations](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png) 同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。このエディターでは、保存して続行することが可能なため、規則を再度開き、修正する必要があります。
+5. **[Transformations (変換)]** ページで、[FlowType] を **[式]** に変更します。[Target Attribute (ターゲット属性)] で **[givenName]** を選択し、[Source (ソース)] に「`PCase([givenName])`」と入力します。![Inbound rule transformations](./media/active-directory-aadconnectsync-change-the-configuration/transformations.png) 同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。このエディターでは、保存して続行することが可能なため、規則を再度開き、修正する必要があります。
 6. **[追加]** をクリックして規則を保存します。
 
 新しいカスタム規則は、システム内の他の同期規則と共に表示されます。
@@ -126,12 +126,12 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 ## 次のステップ
 
-[宣言型のプロビジョニング](active-directory-aadconnectsync-understanding-declarative-provisioning.md)と同期規則で利用可能なオプションについてご確認ください。
+- この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
+- 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 
-属性フローで使用される[宣言型プロビジョニングの式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)に関するページをご覧ください。
+**概要トピック**
 
-[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
+- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

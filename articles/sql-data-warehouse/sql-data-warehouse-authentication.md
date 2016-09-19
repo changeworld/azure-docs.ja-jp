@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/15/2016"
+   ms.date="09/04/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse への認証
@@ -37,15 +37,12 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 - パスワード
 - 既定のデータベース (省略可)
 
-既定では、ユーザー データベースではなく、マスター データベースに接続されます。ユーザー データベースに接続するには、次の 2 つの操作のいずれかを選択します。
+既定では、ユーザー データベースではなく、*master* データベースに接続されます。ユーザー データベースに接続するには、次の 2 つの操作のいずれかを選択します。
 
 - SQL Server オブジェクト エクスプ ローラーで、SSDT、 SSMS または アプリケーションの接続文字列を使用してサーバーを登録する際に、 既定のデータベースを指定する。たとえば、ODBC 接続に InitialCatalog パラメーターを含めます。
-- SSDT でセッションを作成する前に、まずユーザー データベースを強調表示する。
+- SSDT でセッションを作成する前に、ユーザー データベースを強調表示する。
 
-> [AZURE.NOTE] SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、[Visual Studio を使用したクエリ][]に関する記事をご覧ください。
-
-重要事項を繰り返しますが、接続目的でデータベースを切り替えるための Transact -SQL ステートメント **USE <your DB>** はサポートされていません
-
+> [AZURE.NOTE] 接続目的でデータベースを切り替えるための TRANSACT-SQL ステートメント **USE MyDatabase;** はサポートされていません。SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、[Visual Studio を使用したクエリ][]に関する記事をご覧ください。
 
 ## Azure Active Directory (AAD) 認証
 
@@ -53,21 +50,22 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 
 ### メリット
 
-次のような利点があります。
+Azure Active Directory には次のような利点があります。
 
 - SQL Server 認証の代替方法が用意されています。
 - データベース サーバー全体でユーザー ID が急増するのを防ぎます。
 - 1 か所でのパスワードのローテーションを許可します。
-- 顧客は外部の (AAD) グループを使用してデータベースのアクセス許可を管理できます。
-- 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
-- Azure Active Directory 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
-- Azure Active Directory では、SQL Data Warehouse に接続するアプリケーション向けにトークンベース認証をサポートしています。
-- Azure Active Directory 認証が構成されている場合、SQL Server Management Studio は、Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。Multi-Factor Authentication の説明については、「[SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
+- 外部の (AAD) グループを使用してデータベースのアクセス許可を管理できます。
+- 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすると、パスワードが保存されません。
+- 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
+- SQL Data Warehouse に接続するアプリケーション向けにトークンベース認証をサポートしています。
+- SQL Server Management Studio の Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。Multi-Factor Authentication の説明については、「[SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
 
+> [AZURE.NOTE] Azure Active Directory はまだ比較的新しいため、制限がいくつかあります。Azure Active Directory を環境に確実に適合させるには、「[Azure AD の機能と制限事項][]」を参照してください。
 
 ### 構成の手順
 
-構成の手順には、Azure Active Directory 認証を構成して使用する次の手順が含まれます。
+Azure Active Directory 認証を構成するには、次の手順に従います。
 
 1. Azure Active Directory を作成して設定する
 2. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
@@ -90,5 +88,6 @@ Visual Studio またはその他のアプリケーションを使用してデー
 [SQL Data Warehouse でのデータベース保護]: ./sql-data-warehouse-overview-manage-security.md
 [Visual Studio を使用したクエリ]: ./sql-data-warehouse-query-visual-studio.md
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
+[Azure AD の機能と制限事項]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->
