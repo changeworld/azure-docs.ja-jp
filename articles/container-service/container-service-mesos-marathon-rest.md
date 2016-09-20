@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/13/2016"
    ms.author="nepeters"/>
 
 # REST API を使用したコンテナー管理
@@ -74,8 +74,6 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 Docker 形式のコンテナーをデプロイするために、独自の JSON ファイルを作成するか、[Azure コンテナー サービスのデモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)に用意されているサンプルを使用します。アクセス可能な場所にそれを格納します。次に、コンテナーをデプロイするために、次のコマンドを実行します。JSON ファイルの名前を指定します。
 
 ```
-# deploy container
-
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
@@ -104,8 +102,6 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 >[AZURE.NOTE] URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 
 ```json
-# scale container
-
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
@@ -149,8 +145,6 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 独自の JSON ファイルを作成するか、[Azure コンテナー サービスのデモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)に用意されているサンプルを使用します。アクセス可能な場所にそれを格納します。次に、コンテナーをデプロイするために、次のコマンドを実行します。JSON ファイルの名前を指定します。
 
 ```powershell
-# deploy container
-
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
@@ -165,8 +159,6 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 > [AZURE.NOTE] URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
 
 ```powershell
-# scale container
-
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
@@ -175,4 +167,4 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 - [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。
 - [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

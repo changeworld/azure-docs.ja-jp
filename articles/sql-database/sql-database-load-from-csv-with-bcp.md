@@ -1,7 +1,7 @@
 <properties
    pageTitle="CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Azure"
    description="データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。"
-   services="sql-data-warehouse"
+   services="sql-database"
    documentationCenter="NA"
    authors="CarlRabeler"
    manager="jhubbard"
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
+   ms.date="09/13/2016"
    ms.author="carlrab"/>
 
 
@@ -37,12 +37,9 @@ bcp および sqlcmd ユーティリティは [Microsoft ダウンロード セ�
 
 自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。
 
-PolyBase では UTF-8 がサポートされていますが、UTF-16 はまだサポートされていません。bcp と PolyBase を組み合わせて使用する場合は、SQL Server からエクスポートしたデータを UTF-8 に変換する必要があります。
-
-
 ## 1\.ターゲット テーブルを作成する
 
-読み込み操作のターゲット テーブルとなるテーブルを SQL Data Warehouse 内に定義します。テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
+SQL Database 内でターゲット テーブルとなるテーブルを定義します。テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
 
 テーブルを作成するには、コマンド プロンプトを開き、sqlcmd.exe を使用して次のコマンドを実行します。
 
@@ -60,7 +57,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 2\.ソース データ ファイルを作成する
+## 手順 2.ソース データ ファイルを作成する
 
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\\Temp\\DimDate2.txt)。このデータは ASCII 形式です。
 
@@ -127,4 +124,4 @@ SQL Server データベースを移行するには、[SQL Server データベー
 <!--Other Web references-->
 [Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -137,4 +137,4 @@
 
 [SQL Database とは](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0914_2016--->
+<!---HONumber=AcomDC_0914_2016-->

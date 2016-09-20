@@ -17,9 +17,11 @@
 	ms.date="08/10/2016"
 	ms.author="carlrab"/>
 
-# SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します
+# SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 
-[Azure SQL Database](sql-database-technical-overview.md) には、さまざまなワークロードを処理する複数のサービス階層があります。[サービス レベル](sql-database-scale-up.md)はいつでも変更することが可能で、アプリケーションのダウンタイムも最小限に留められます (通常、平均で 4 秒未満)。また、定義済みの特性と価格を指定して[単一データベースを作成](sql-database-get-started.md)することもできます。または、[エラスティック データベース プールを作成して](sql-database-elastic-pool-create-portal.md)複数のデータベースを管理できます。いずれの場合も、階層には **Basic**、**Standard**、および **Premium** があります。これらのレベルのデータベース オプションは、スタンドアロン データベースとエラスティック プールの場合に似ていますが、エラスティック プールにはさらに考慮事項があります。この記事では、スタンドアロン データベースとエラスティック プールのサービス レベルの詳細について説明します。
+[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。パフォーマンス レベルごとに提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。DTU と eDTU については、[DTU について説明したページ](sql-database-what-is-a-DTU.md)を参照してください。
+
+どちらの場合も、サービス レベルには **Basic**、**Standard**、**Premium** があります。これらのレベルのデータベース オプションは、スタンドアロン データベースとエラスティック プールの場合に似ていますが、エラスティック プールにはさらに考慮事項があります。この記事では、スタンドアロン データベースとエラスティック プールのサービス レベルの詳細について説明します。
 
 ## サービス階層とデータベース オプション
 Basic、Standard、および Premium のサービス階層は、いずれも稼働時間の SLA が 99.99% で、予測可能なパフォーマンス、柔軟なビジネス継続性のオプション、セキュリティ機能、1 時間単位の課金体系などが提供されます。次の表では、各種のアプリケーション ワークロードに最適なサービス階層の例を示します。
@@ -39,8 +41,6 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 [AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
-DTU について理解を深めるためには、このトピックの [DTU に関するセクション](#understanding-dtus)を参照してください。
-
 >[AZURE.NOTE] このサービス層テーブルのその他すべての行の詳細については、「[サービス層の機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」を参照してください。
 
 ## エラスティック プール サービス階層と eDTU のパフォーマンス
@@ -53,10 +53,6 @@ DTU について理解を深めるためには、このトピックの [DTU に�
 [AZURE.INCLUDE [エラスティック プールの SQL DB サービス レベル](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
 プール内の各データベースはまた、該当するレベルにおけるスタンドアロン データベースの特性に従います。たとえば、Basic プールでは、プールあたりの最大セッション数が 4,800 ～ 28,800 の範囲に制限されます。ただし、Basic プール内の個々のデータベースでは、データベースあたりのセッション数が 300 に制限されます。
-
-## DTU について
-
-[AZURE.INCLUDE [SQL DB DTU の説明](../../includes/sql-database-understanding-dtus.md)]
 
 ## サービス階層の選択
 
@@ -92,4 +88,4 @@ SQL Database のエディションを選んだら、データベースのパフ�
 
 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

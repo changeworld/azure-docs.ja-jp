@@ -52,8 +52,9 @@
 
     ブラウザーで <http://localhost:3000> に移動し、Express のホーム ページが表示されることを確認します。アプリが適切に実行されることを確認したら、`Ctrl-C` を使用してアプリを停止します。
     
-1. 次のようにして Azure にログインします (この操作には [Azure CLI](#prereq) が必要です)。
+1. ASM モードに切り替え、Azure にログインします (そのためには、[Azure CLI](#prereq) が必要です)。
 
+        azure config mode asm
         azure login
 
     画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
@@ -62,7 +63,7 @@
 
         azure site create --git {appname}
 
-    プロンプトに従って、デプロイ先の Azure リージョンを選択します。Azure サブスクリプションの Git/FTP デプロイの資格情報を設定したことがない場合は、資格情報の作成も求められます。
+    プロンプトに従って、デプロイ先の Azure リージョンを選択します。まだ Azure サブスクリプションに Git/FTP デプロイの資格情報を設定していない場合は、資格情報を作成するように求められます。
 
 3. アプリケーションのルートから ./config/config.js ファイルを開き、運用環境のポートを `process.env.port` に変更します。`config` オブジェクトの `production` プロパティは次の例のようになります。
 
@@ -236,4 +237,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

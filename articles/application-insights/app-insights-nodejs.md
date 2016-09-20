@@ -215,7 +215,7 @@ server.on("listening", () => {
 ## 次のステップ
 
 * [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
-* [テレメトリに対する Analytics クエリを記述する](app-insights-analytics-tour.md)
+* [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)
 
 
 
@@ -228,4 +228,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

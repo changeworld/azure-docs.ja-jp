@@ -5,7 +5,7 @@
     keywords="Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="billmath;andkjell"/>
 
 # Azure AD Connect のカスタム インストール
@@ -34,7 +34,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 ![必須コンポーネント](./media/active-directory-aadconnect-get-started-custom/requiredcomponents.png)
 
-オプションの構成 | 説明
+オプションの構成 | Description
 ------------- | -------------
 既存の SQL Server を使用する | SQL Server 名とインスタンス名を指定することができます。使用するデータベース サーバーが既にある場合は、このオプションを選択します。SQL Server で参照が有効になっていない場合は、**[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。
 既存のサービス アカウントを使用する | 既定では、同期サービスで使用するローカル サービス アカウントが Azure AD Connect によって作成されます。パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のサービス アカウントとパスワードが必要です。このような場合は、使用するサービス アカウントを入力します。サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。「[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)」を参照してください
@@ -43,24 +43,24 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 ### ユーザーのサインイン
 必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。次の表に、指定できるオプションの簡単な説明を示します。サインイン方法の詳細については、「[ユーザーのサインイン](active-directory-aadconnect-user-signin.md)」を参照してください。
 
-![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
+![User Sign in](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
 
-シングル サインオン オプション | 説明
+シングル サインオン オプション | Description
 ------------- | -------------
 パスワードの同期 | ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。詳細については、「[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)」を参照してください。
 AD FS とのフェデレーション | ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。
 構成しない | どちらの機能もインストールおよび構成されません。サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。
 
-### Azure AD に接続
+### Azure への接続
 [Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
-このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。 ![ユーザーのサインイン](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
+このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。 ![User Sign in](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
-グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。MFA チャレンジは確認コードの入力か音声通話によって行うことができます。 ![ユーザーのサインイン MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。チャレンジは確認コードの入力か音声通話によって行うことができます。 ![User Sign in MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
 グローバル管理者アカウントは [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) も有効になっている可能性があります。
 
-接続の問題によってエラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
+接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 
 ## [同期] セクションのページ
 
@@ -77,7 +77,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 **UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことをお勧めします。この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。たとえば、サインイン ID を保持する属性として電子メールを選択することができます。userPrincipalName 以外の属性を使用する方法は、**代替 ID** と呼ばれます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
 
 >[AZURE.WARNING]
-代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、[代替ログイン ID の構成](https://technet.microsoft.com/library/dn659436.aspx)に関するページを参照してください。
+代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、「[Configuring Alternate Login ID (代替ログイン ID の構成)](https://technet.microsoft.com/library/dn659436.aspx)」を参照してください。
 
 ### ドメインと OU のフィルター処理
 既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
@@ -89,7 +89,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 
 ![一意](./media/active-directory-aadconnect-get-started-custom/unique.png)
 
-設定 | 説明
+Setting | Description
 ------------- | -------------
 [ユーザーはフォレスト全体で 1 回だけ表されます](active-directory-aadconnect-topologies.md#multiple-forests-separate-topologies) | すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。オブジェクトは、メタバースに結合されません。
 [メール属性](active-directory-aadconnect-topologies.md#multiple-forests-full-mesh-with-optional-galsync) | このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。
@@ -117,12 +117,12 @@ sAMAccountName および MailNickName | このオプションは、ユーザー�
 >[AZURE.WARNING]
 現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
 
-オプション機能 | 説明
+オプション機能 | Description
 ------------------- | -------------
-Exchange ハイブリッドのデプロイメント | Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。Azure AD Connect により、Azure AD の特定の[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。
+Exchange ハイブリッドのデプロイ | Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。Azure AD Connect により、Azure AD の特定の[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。
 Azure AD アプリと属性フィルター | Azure AD アプリと属性フィルターを有効にすると、同期される属性セットをカスタマイズできます。このオプションにより、2 つの構成ページがウィザードに追加されます。詳細については、「[Azure AD アプリと属性フィルター](#azure-ad-app-and-attribute-filtering)」を参照してください。
 パスワードの同期 | サインイン ソリューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。バックアップ オプションとして、パスワード同期を使用できます。詳細については、[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。
-パスワード ライトバック | パスワード ライトバックを有効にすると、Azure AD で行われたパスワードの変更が、オンプレミスのディレクトリに書き戻されます。詳細については、「[パスワード管理の概要](active-directory-passwords-getting-started.md)」を参照してください。
+パスワードの書き戻し | パスワード ライトバックを有効にすると、Azure AD で行われたパスワードの変更が、オンプレミスのディレクトリに書き戻されます。詳細については、「[パスワード管理の概要](active-directory-passwords-getting-started.md)」を参照してください。
 グループの書き戻し | **Office 365 グループ**機能を使用すると、そのグループをオンプレミスの Active Directory 内に表示することができます。このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が置かれている場合に限られます。詳細については、「[グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)」を参照してください。
 デバイスの書き戻し | 条件付きアクセスのシナリオの場合は、Azure AD 内のデバイス オブジェクトをオンプレミスの Active Directory に書き戻すことができます。詳細については、[Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)に関するページを参照してください。
 ディレクトリ拡張属性の同期 | ディレクトリ拡張機能の属性の同期を有効にすると、指定した属性が Azure AD に同期されます。詳細については、[ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に関するページを参照してください。
@@ -247,7 +247,7 @@ Azure AD Connect がインストールされたので、[インストールを�
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 ## 関連ドキュメント
 
@@ -258,4 +258,4 @@ Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory �
 DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
-<!-----HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

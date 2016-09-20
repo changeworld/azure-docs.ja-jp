@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="04/12/2016"
+   ms.date="09/13/2016"
    ms.author="rogardle"/>
 
 
@@ -37,8 +37,6 @@ Linux または OS X で SSH トンネルを作成するにはまず、負荷分
 **PORT** は、公開するエンドポイントのポートです。Swarm の場合は 2375 です。DC/OS の場合、ポート 80 を使用します。**USERNAME** は、クラスターのデプロイ時に指定したユーザー名です。**DNSPREFIX** は、クラスターのデプロイ時に指定した DNS 接頭辞です。**REGION** は、リソース グループが置かれているリージョンです。**PATH\_TO\_PRIVATE\_KEY** [省略可能] は、コンテナー サービス クラスターの作成時に指定した公開キーに対応する秘密キーへのパスです。このオプションは、-i フラグと共に使用します。
 
 ```bash
-# ssh sample
-
 ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.azure.com -p 2200
 ```
 > SSH 接続ポートは、標準の 22 ではなく 2200 です。
@@ -48,8 +46,6 @@ ssh -L PORT:localhost:PORT -f -N [USERNAME]@[DNSPREFIX]mgmt.[REGION].cloudapp.az
 DC/OS 関連のエンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
-# ssh sample
-
 sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -66,8 +62,6 @@ sudo ssh -L 80:localhost:80 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.az
 Swarm エンドポイントへのトンネルを開くには、次のようなコマンドを実行します。
 
 ```bash
-# ssh sample
-
 ssh -L 2375:localhost:2375 -f -N azureuser@acsexamplemgmt.japaneast.cloudapp.azure.com -p 2200
 ```
 
@@ -120,4 +114,4 @@ Docker Swarm のトンネルを構成したら、Docker CLI から Swarm クラ�
 - [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 - [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

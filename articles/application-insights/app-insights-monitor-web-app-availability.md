@@ -74,10 +74,9 @@ Application Insights のリソースで、可用性のタイルを見つけま�
 
 ## <a name="monitor"></a>3.Web テストの結果を確認する
 
-1、2 分後、結果が次のように表示されます。
+1、2 分後、結果が Web テスト ブレードに表示されます。
 
-![ホーム ブレード上の概要結果  
-](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
+![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary.png)
 
 その期間のより詳しいビューを表示するには、概要グラフの棒をクリックします。
 
@@ -248,8 +247,7 @@ Web テストが実際のクライアントであること、つまり、独自�
 
 個々のテストを開くと、テストを編集したり無効にしたりできます。
 
-![Web テストの編集または無効化  
-](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
+![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit.png)
 
 たとえば、サービスのメンテナンスを行うときは Web テストを無効にします。
 
@@ -327,4 +325,4 @@ Web サイトに対してロード テストを実行できます。可用性テ
 [qna]: app-insights-troubleshoot-faq.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

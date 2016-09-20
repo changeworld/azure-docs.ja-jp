@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
-## 概要
+## Overview
 
 Azure ストレージ アカウントを使用すると、Azure Storage の Azure BLOB サービス、Queue サービス、Table サービス、ファイル サービスにアクセスできます。ストレージ アカウントは、Azure Storage のデータ オブジェクトに対して一意の名前空間を提供します。既定では、アカウントのデータはアカウント所有者だけが使用できます。
 
@@ -65,7 +65,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 	ストレージ アカウントを作成するときにアフィニティ グループを選択する必要があることに注意してください。既存のアカウントをアフィニティ グループに移動することはできません。アフィニティ グループの詳細については、後述の「[アフィニティ グループによるサービス コロケーション](#service-co-location-with-an-affinity-group)」をご覧ください。
 
-	>[AZURE.IMPORTANT] 「[すべてのリソース プロバイダーの一覧表示](https://msdn.microsoft.com/library/azure/dn790524.aspx)」の操作を呼び出して、サブスクリプションに使用可能な場所を判別できます。PowerShell からプロバイダーをリストするには、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx) を呼び出します。.NET から、ProviderOperationsExtensions クラスの [List](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) メソッドを使用します。
+	>[AZURE.IMPORTANT] 「[List all resource providers (すべてのリソース プロバイダーの一覧表示)](https://msdn.microsoft.com/library/azure/dn790524.aspx)」の操作を呼び出して、サブスクリプションに使用可能な場所を判別できます。PowerShell からプロバイダーをリストするには、[Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx) を呼び出します。.NET から、ProviderOperationsExtensions クラスの [List](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) メソッドを使用します。
 	>
 	>どの領域でどのサービスを使用できるかについては、「[Azure リージョン](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
@@ -111,7 +111,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-> [AZURE.NOTE] ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*Shared Access Signature* が利用できます。Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+> [AZURE.NOTE] ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*Shared Access Signature* が利用できます。Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 [Azure クラシック ポータル](https://manage.windowsazure.com)で、ダッシュボードまたは **[Storage]** ページの **[キーの管理]** を使用して、BLOB、Table、および Queue サービスのアクセスに使用するストレージ アクセス キーを表示、コピー、再生成します。
 
@@ -175,4 +175,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->
