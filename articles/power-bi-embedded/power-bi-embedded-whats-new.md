@@ -3,7 +3,7 @@
    description="Power BI Embedded の新機能に関する最新情報を入手できます。"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="mblythe"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/06/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Power BI Embedded の新機能
 
@@ -41,4 +41,4 @@
 -    視覚化データを **.csv** にエクスポートできるようになりました。
 -    Microsoft Azure と同じすべての言語/ロケールで Power BI Embedded がサポートされるようになりました。詳細については、[Azure の言語](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

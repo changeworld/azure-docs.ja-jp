@@ -33,7 +33,7 @@
 
 - 診断ログの送信先 (ストレージ アカウント、Event Hubs、OMS Log Analytics)。
 - 送信するログ カテゴリ。
-- 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+- 各ログ カテゴリをストレージ アカウントに保持する期間。リテンション期間 0 日の場合、ログは永続的に保持されます。それ以外の場合、この値は 1 ～ 2,147,483,647 の範囲の数にすることができます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
 
 これらの設定は、Azure ポータルのリソースの [診断] ブレード、Azure PowerShell および CLI のコマンド、または [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) を使用して簡単に構成できます。
 
@@ -50,13 +50,17 @@
 リソースの作成時に Azure ポータルで診断ログを有効にするには、次の手順に従います。
 
 1.	**[新規]** に移動し、興味のあるリソースを選択します。
-2.	基本設定を構成し、サイズを選択したら、**[設定]** ブレードの **[監視]** で **[有効]** を選択し、診断ログの保存先となるストレージ アカウントを選択します。診断データをストレージ アカウントに送信する際には、ストレージとトランザクションの通常のデータ料金が発生します。![リソースの作成時に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
+2.	基本設定を構成し、サイズを選択したら、**[設定]** ブレードの **[監視]** で **[有効]** を選択し、診断ログの保存先となるストレージ アカウントを選択します。診断データをストレージ アカウントに送信する際には、ストレージとトランザクションの通常のデータ料金が発生します。
+
+    ![リソースの作成時に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-new.png)
 3.	**[OK]** をクリックしてリソースを作成します。
 
 リソースの作成後に Azure ポータルで診断ログを有効にするには、次の手順を実行します。
 
 1.	リソースのブレードに移動し、**[診断]** ブレードを開きます。
-2.	**[オン]** をクリックし、ストレージ アカウントおよび Event Hubs を選択します。![リソースの作成後に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
+2.	**[オン]** をクリックし、ストレージ アカウントおよび Event Hubs を選択します。
+
+    ![リソースの作成後に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
 3.	**[ログ]** で、収集またはストリーミングする**ログ カテゴリ**を選択します。
 4.	[**Save**] をクリックします。
 
@@ -91,7 +95,7 @@ Service Bus 規則 ID は、`{service bus resource ID}/authorizationrules/{key n
 
 Insights REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
 
-## サポートされているサービスと診断ログのスキーマ
+## 診断ログでサポートされているサービスとスキーマ
 診断ログのスキーマは、リソースとログ カテゴリによって異なります。サポートされているサービスとそのスキーマを次に示します。
 
 | サービス | スキーマとドキュメント |
@@ -104,10 +108,35 @@ Insights REST API を使用して診断設定を変更する場合は、[こち�
 | Data Lake Store | [Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Data Lake Analytics | [Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Logic Apps | 使用可能なスキーマはありません。 |
+| Azure Batch | 使用可能なスキーマはありません。 |
+| Azure Automation | 使用可能なスキーマはありません。 |
+
+## リソースの種類ごとのサポートされているログ カテゴリ
+
+|リソースの種類|カテゴリ|カテゴリの表示名|
+|---|---|---|
+|Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
+|Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
+|Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
+|Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
+|Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
+|Microsoft.DataLakeStore/accounts|要求数|要求ログ|
+|Microsoft.KeyVault/vaults|AuditEvent|Audit Logs|
+|Microsoft.Logic/workflows|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
+|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
+|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
+|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
+|Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
+|Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
+|Microsoft.Search/searchServices|OperationLogs|操作ログ|
 
 ## 次のステップ
 - [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Insights REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-- [ログを OMS Log Analytics](../log-analytics/log-analytics-azure-storage-json.md) で分析する
+- [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

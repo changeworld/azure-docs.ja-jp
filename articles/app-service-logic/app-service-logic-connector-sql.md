@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="03/16/2016"
+   ms.date="09/01/2016"
    ms.author="sameerch"/>
 
 
@@ -48,18 +48,18 @@ SQL コネクタでは、次のトリガーとアクションを使用できま�
 3. 名前、App Service プラン、その他のプロパティを入力します。
 4. 次のパッケージの設定を入力します。
 
-	名前 | 必須 | 説明
+	名前 | 必須 | Description
 --- | --- | ---
-サーバー名 | あり | SQL Server の名前を入力します。たとえば、「*SQLserver/sqlexpress*」や「*SQLserver.mydomain.com*」と入力します。
-ポート | いいえ | 既定値は 1433 です。
-ユーザー名 | あり | SQL Server にログインできるユーザー名を入力します。オンプレミスの SQL Server に接続する場合は、SQL 認証資格情報を入力します。
-パスワード | あり | ユーザー名のパスワードを入力します。
-データベース名 | あり | 接続先のデータベースを入力します。たとえば、「*Customers*」や「*dbo/orders*」と入力します。
-オンプレミス | あり | 既定値は False です。Azure SQL データベースに接続する場合は False を入力します。オンプレミスの SQL Server に接続する場合は True を入力します。
-Service Bus の接続文字列 | いいえ | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
-パートナー サーバー名 | いいえ | プライマリ サーバーを使用できない場合は、代替サーバーまたはバックアップ サーバーとして、パートナー サーバーを入力できます。
-テーブル | いいえ | コネクタによって更新可能なデータベース テーブルの一覧を示します。たとえば、「*OrdersTable*」や「*EmployeeTable*」と入力します。テーブルが入力されない場合はすべてのテーブルを使用できます。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
-ストアド プロシージャ | いいえ | コネクタによって呼び出すことができる、既存のストアド プロシージャを入力します。たとえば、「*sp\_IsEmployeeEligible*」や「*sp\_CalculateOrderDiscount*」と入力します。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
+サーバー名 | はい | SQL Server の名前を入力します。たとえば、「*SQLserver/sqlexpress*」や「*SQLserver.mydomain.com*」と入力します。
+ポート | なし | 既定値は 1433 です。
+ユーザー名 | はい | SQL Server にログインできるユーザー名を入力します。オンプレミスの SQL Server に接続する場合は、SQL 認証資格情報を入力します。
+パスワード | はい | ユーザー名のパスワードを入力します。
+データベース名 | はい | 接続先のデータベースを入力します。たとえば、「*Customers*」や「*dbo/orders*」と入力します。
+オンプレミス | はい | 既定値は False です。Azure SQL データベースに接続する場合は False を入力します。オンプレミスの SQL Server に接続する場合は True を入力します。
+Service Bus の接続文字列 | なし | オンプレミスに接続する場合は、Service Bus Relay の接続文字列を入力します。<br/><br/>[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)<br/>[Service Bus 料金](https://azure.microsoft.com/pricing/details/service-bus/)
+パートナー サーバー名 | なし | プライマリ サーバーを使用できない場合は、代替サーバーまたはバックアップ サーバーとして、パートナー サーバーを入力できます。
+テーブル | なし | コネクタによって更新可能なデータベース テーブルの一覧を示します。たとえば、「*OrdersTable*」や「*EmployeeTable*」と入力します。テーブルが入力されない場合はすべてのテーブルを使用できます。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
+ストアド プロシージャ | なし | コネクタによって呼び出すことができる、既存のストアド プロシージャを入力します。たとえば、「*sp\_IsEmployeeEligible*」や「*sp\_CalculateOrderDiscount*」と入力します。このコネクタをアクションとして使用するには有効なテーブルまたはストアド プロシージャが必要です。
 Data Available Query (データの存在確認クエリ) | トリガのサポート | SQL Server データベース テーブルのポーリングに使用できるデータが存在するかどうかを調べる SQL ステートメント。これは、存在するデータの行数を表す数値を返します。例: SELECT COUNT(*) from table\_name
 Poll Data Query (データ ポーリング クエリ) | トリガのサポート | SQL Server データベース テーブルをポーリングする SQL ステートメント。任意の数の SQL ステートメントをセミコロンで区切って指定できます。このステートメントはトランザクション的に実行され、データがロジック アプリで安全に保存される場合にのみコミットされます。たとえば「SELECT * FROM table\_name; DELETE FROM table\_name」のように入力します。<br/><br/>**注**<br/>同じデータが再度ポーリングされないように、選択したデータを削除、移動、または更新して無限ループを回避するポーリング ステートメントを指定する必要があります。
 
@@ -163,4 +163,4 @@ App Service では、 ハイブリッド構成マネージャーを使用して�
 [11]: ./media/app-service-logic-connector-sql/LogicApp7.png
 [12]: ./media/app-service-logic-connector-sql/LogicApp8.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

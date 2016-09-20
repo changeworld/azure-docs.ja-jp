@@ -20,7 +20,7 @@
 # Azure RBAC のカスタム ロール
 
 
-組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス (CLI)](role-based-access-control-manage-access-azure-cli.md)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションのAzure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
+組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス (CLI)](role-based-access-control-manage-access-azure-cli.md)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。カスタム ロールは Azure AD テナントで保存され、そのテナントをサブスクリプションの Azure AD ディレクトリとして使用するすべてのサブスクリプションで共有することができます。
 
 以下は、仮想マシンの監視と再起動を行うためのカスタム ロールの例です。
 
@@ -63,7 +63,7 @@
 Azure リソース プロバイダーの操作を一覧表示するには、`Get-AzureRmProviderOperation` (PowerShell の場合) または `azure provider operations show` (Azure CLI の場合) を使用します。これらのコマンドを使って、操作文字列が有効であるかどうかを確認したり、操作文字列のワイルドカードを展開した結果を表示したりすることもできます。
 
 ```
-Get-AzureRMProviderOperation Microsoft.Computer/virtualMachines/*/action | FT Operation, OperationName
+Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName
 
 Get-AzureRMProviderOperation Microsoft.Network/*
 ```
@@ -90,7 +90,7 @@ azure provider operations show "Microsoft.Network/*"
 
 -	"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"、"/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - 対象となるロールの割り当てを 2 つのサブスクリプションに許可します。
 -	"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - 対象となるロールの割り当てを 1 つのサブスクリプションに許可します。
--  "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network" - 対象となるロールの割り当てを Network リソース グループにのみ許可します。
+-  "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network" - 対象となるロールの割り当てを Network リソース グループのみに許可します。
 
 > [AZURE.NOTE] 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 
@@ -111,4 +111,4 @@ azure provider operations show "Microsoft.Network/*"
 	- [REST API](role-based-access-control-manage-access-rest.md)
 - [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細について説明します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

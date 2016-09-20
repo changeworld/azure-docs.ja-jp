@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -60,7 +60,7 @@ Azure AD への Showpad の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Showpad を追加するには、次の手順を実行します。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![アプリケーション][1]
 
@@ -198,7 +198,7 @@ Showpad で Azure AD のシングル サインオンを構成してテストす�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-showpad-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-showpad-tutorial/create_aaduser_05.png)
 
@@ -304,4 +304,4 @@ Showpad では、ジャストインタイム プロビジョニングがサポ�
 [204]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-showpad-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

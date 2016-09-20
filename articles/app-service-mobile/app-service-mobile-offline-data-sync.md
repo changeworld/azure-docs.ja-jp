@@ -39,7 +39,7 @@
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
 * [Xamarin.Forms: オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Windows 8.1: オフライン同期を有効にする]
+* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
 
 ## 同期テーブルについて
 
@@ -51,7 +51,7 @@ Azure Mobile クライアント SDK では、"/tables" エンドポイントに�
 
 ローカル ストアは、クライアント デバイス上のデータ永続化レイヤーです。Azure モバイル アプリ クライアントの SDK では、既定のローカル ストアの実装を提供します。ローカル ストアのベースは、Windows、Xamarin、および Android では SQLite ですが、iOS では Core Data です。
 
-Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。詳細については、「[Windows 8.1: オフライン同期を有効にする]」を参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
+Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。詳細については、[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]方法に関するページを参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
 
 開発者は、独自のローカル ストアを実装することもできます。たとえば、データを暗号化された形式でモバイル クライアント上に保存する必要がある場合は、SQLCipher を使用して暗号化を行うローカル ストアを定義できます。
 
@@ -95,7 +95,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 * [iOS: オフライン同期を有効にする]
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]
-* [Windows 8.1: オフライン同期を有効にする]
+* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
 
 <!-- Links -->
 [.NET クライアント SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
@@ -103,6 +103,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [iOS: オフライン同期を有効にする]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Windows 8.1: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

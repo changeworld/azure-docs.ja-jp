@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
@@ -71,7 +71,9 @@ VHD ファイルをアップロードするストレージ アカウントが必
 Azure CLI でイメージをアップロードするには、次のコマンドを使用します。
 
 ```bash
-azure vm image create <ImageName> --blob-url <BlobStorageURL>/<YourImagesFolder>/<VHDName> --os Linux <PathToVHDFile>
+azure vm image create <ImageName> `
+	--blob-url <BlobStorageURL>/<YourImagesFolder>/<VHDName> `
+	--os Linux <PathToVHDFile>
 ```
 
 前の例を使うと、次のようになります。
@@ -84,14 +86,17 @@ azure vm image create <ImageName> --blob-url <BlobStorageURL>/<YourImagesFolder>
 完全な例を次に示します。
 
 ```bash
-azure vm image create UbuntuLTS --blob-url https://teststorage.blob.core.windows.net/vhds/UbuntuLTS.vhd --os Linux /home/ahmet/UbuntuLTS.vhd
+azure vm image create UbuntuLTS `
+	--blob-url https://teststorage.blob.core.windows.net/vhds/UbuntuLTS.vhd `
+	--os Linux /home/ahmet/UbuntuLTS.vhd
 ```
 
 ## 手順 4: イメージから VM を作成する
 通常の VM と同じように、`azure vm create`使用して VM を作成します。前の手順でイメージに付けた名前を指定します。次の例では、前の手順で指定したイメージの名前 **UbuntuLTS** を使用します。
 
 ```bash
-azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh --location "West US" "DeployedUbuntu" UbuntuLTS
+azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
+	--location "West US" "DeployedUbuntu" UbuntuLTS
 ```
 
 独自の VM を作成するには、独自のユーザー名とパスワード、場所、DNS 名、およびイメージ名を指定します。
@@ -104,4 +109,4 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh --loca
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

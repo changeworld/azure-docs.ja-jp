@@ -19,7 +19,7 @@
 
 *Application Insights はプレビュー段階です。*
 
-[Visual Studio Application Insights](app-insights-get-started.md) と [HockeyApp](https://hockeyapp.net) を使用すると、デプロイされたアプリケーションの使用状況とパフォーマンスを監視できます。
+[Visual Studio Application Insights](app-insights-overview.md) と [HockeyApp](https://hockeyapp.net) を使用すると、デプロイされたアプリケーションの使用状況とパフォーマンスを監視できます。
 
 > [AZURE.IMPORTANT] デスクトップ アプリとデバイス アプリを配布および監視するには、[HockeyApp](https://hockeyapp.net) を使うことをお勧めします。HockeyApp を使用すると、配布、ライブ テスト、ユーザーからのフィードバックの管理だけでなく、使用状況とクラッシュ レポートの監視も行うことができます。[Analytics を使用してテレメトリのエクスポートやクエリを実行する](app-insights-hockeyapp-bridge-app.md)こともできます。
 
@@ -89,4 +89,4 @@
 * [Analytics クエリを作成する](app-insights-analytics.md)
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

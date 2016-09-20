@@ -97,13 +97,14 @@ Resource Manager | クラシック リソース用のロールベースの Acces
 計算 | VM に関連付けられている複数のサブネット | サブネットのみを参照するように、サブネット構成を更新します。
 計算 | 仮想ネットワークに属しているが、明示的なサブネットが割り当てられていない仮想マシン | 必要に応じて VM を削除することができます。
 計算 | アラートの自動スケール ポリシーが適用されている仮想マシン | 移行を実行すると、これらの設定は削除されます。したがって、移行を行う前に環境を評価することを強くお勧めします。移行の完了後に、アラート設定を再構成することもできます。
-計算 | XML VM 拡張機能 (Visual Studio デバッガー、Web デプロイ、およびリモート デバッグ) | これはサポートされていません。仮想マシンからこれらの拡張機能を削除して、移行を続行することをお勧めします。
+計算 | XML VM 拡張機能 (BGInfo 1.*、Visual Studio デバッガー、Web デプロイ、リモート デバッグ) | これはサポートされていません。移行を続行するために、仮想マシンからこれらの拡張機能を削除することをお勧めします。削除していない場合、移行プロセスで自動的に削除されます。
 計算 | Premium storage を使用したブート診断 | VM のブート診断機能を無効にしてから移行を続行してください。移行が完了した後に、Resource Manager スタックでブート診断を再び有効にできます。さらに、スクリーン ショットとシリアル ログに使用されている BLOB を削除する必要があるため、これらの BLOB に対して課金されることはなくなります。
 計算 | Web/worker ロールを含む Cloud Services | 現在これはサポートされていません。
 ネットワーク | 仮想マシンと Web/worker ロールを含む仮想ネットワーク | 現在これはサポートされていません。
 Azure App Service | App Service 環境を含む仮想ネットワーク | 現在これはサポートされていません。
 Azure HDInsight | HDInsight サービスを含む仮想ネットワーク | 現在これはサポートされていません。
 Microsoft Dynamics Lifecycle Services | Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク | 現在これはサポートされていません。
+計算 | オンプレミスの DNS サーバーへの VPN ゲートウェイまたは ER ゲートウェイがある VNET を使用する Azure Security Center の拡張機能 | Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。ゲートウェイの移行は現在サポートされていないため、移行のコミットを進める前にゲートウェイを削除する必要があります。ゲートウェイを削除すると、VM のストレージ アカウントへのインターネット アクセスが失われます。この場合、ゲスト エージェントの状態 BLOB を設定できないので、移行を続行できなくなります。移行を進める 3 時間前に、サブスクリプションで Azure Security Center のポリシーを無効にしておくことをお勧めします。
 
 ## 移行エクスペリエンス
 
@@ -205,7 +206,7 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 
 **現在、Azure Site Recovery または Azure Backup サービスを使用している場合はどうすればよいですか?**
 
-Resource Manager での VM の Azure Site Recovery および Backup サポートは最近追加されました。また、Resource Manager への VM の移行をサポートできるように取り組んでいます。現時点で、こうした機能を使用する場合には、移行を実行しないことをお勧めします。
+バックアップが有効になっている仮想マシンを移行する場合は、「[私はクラシック VM を Backup コンテナーにバックアップしてあります」をご覧ください。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。](../backup/backup-azure-backup-ibiza-faq.md#i-have-backed-up-my-classic-vms-in-backup-vault-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode-how-can-i-backup-them-in-recovery-services-vault)
 
 **サブスクリプションまたはリソースを検証し、移行が可能かどうかを確認できますか?**
 
@@ -227,6 +228,7 @@ Resource Manager での VM の Azure Site Recovery および Backup サポート
 
 このメッセージを受信するのは、VM がインターネットに送信接続されていない場合です。VM エージェントでは、送信接続を使用して、5 分ごとにエージェントの状態を更新するために Azure ストレージ アカウントにアクセスします。
 
+
 ## 次のステップ
 これで Resource Manager へのクラシック IaaS リソースの移行について理解できました。次は、リソースの移行を開始します。
 
@@ -235,4 +237,4 @@ Resource Manager での VM の Azure Site Recovery および Backup サポート
 - [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

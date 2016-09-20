@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="09/01/2016"
 	ms.author="jimpark; anuragm;trinadhk;markgal"/>
 
 
@@ -29,7 +29,7 @@
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell に正しい環境があることを確認してください。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
+PowerShell を使用して Data Protection Manager から Azure へのバックアップを管理する前に、PowerShell の環境が整っている必要があります。PowerShell セッションの開始時に、必ず次のコマンドレットを実行して適切なモジュールをインポートし、DPM コマンドレットを適切に参照できるようにしてください。
 
 ```
 PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
@@ -173,7 +173,7 @@ Machine registration succeeded.
 ```
 
 ### 初期構成の設定
-DPM サーバーが Recovery Services コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、およびステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
+DPM サーバーが Recovery Services コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。サブスクリプション設定を変更するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
 
 ```
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
@@ -186,7 +186,7 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 ```
 
 ## ネットワーク
-インターネット上の DPM コンピューターの Azure Backup サービスの接続にプロキシ サーバーを使用している場合、続行するには、プロキシ サーバーの設定を指定する必要があります。これを行うには、```-ProxyServer```、```-ProxyPort```、```-ProxyUsername```、および ```ProxyPassword``` パラメーターと [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用します。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
+インターネット上の Azure Backup サービスへの DPM コンピューターの接続にプロキシ サーバーを使用している場合、バックアップを正しく行うには、プロキシ サーバーの設定を指定する必要があります。これを行うには、```-ProxyServer```、```-ProxyPort```、```-ProxyUsername```、および ```ProxyPassword``` パラメーターと [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) コマンドレットを使用します。この例では、プロキシ サーバーがないため、プロキシ関連の情報はないことを明示的に示しています。
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -283,13 +283,13 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Onl
 ### 保有期間の範囲設定
 [Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) コマンドレットを使用してバックアップ ポイントの保有期間を設定します。バックアップ スケジュールが定義される前に保有期間を設定するのは不自然な操作に思えるかもしれませんが、```Set-DPMPolicyObjective``` コマンドレットでは、後で変更できる既定のバックアップ スケジュールが自動的に設定されます。バックアップ スケジュールを設定した後で、保有ポリシーを設定することも常に可能です。
 
-次の例では、コマンドレットはディスク バックアップ用の保有期間パラメーターを設定します。ここではバックアップの保有期間は 10 日間で、運用サーバーと DPM サーバーの間でデータが 6 時間ごとに同期されます。```SynchronizationFrequencyMinutes``` ではバックアップ ポイントの作成頻度は定義されませんが、データの DPM サーバーへのコピー頻度は定義されます。これにより、バックアップの肥大化を回避できます。
+次の例では、コマンドレットはディスク バックアップ用の保有期間パラメーターを設定します。ここではバックアップの保有期間は 10 日間で、運用サーバーと DPM サーバーの間でデータが 6 時間ごとに同期されます。```SynchronizationFrequencyMinutes``` ではバックアップ ポイントの作成頻度は定義されませんが、DPM サーバーへのデータのコピー頻度は定義されます。この設定により、バックアップの肥大化を回避できます。
 
 ```
 PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-Azure へのバックアップ (DPM ではオンライン バックアップの意味) では、保有期間の範囲は [Grandfather-Father-Son スキーム (GFS) を使用して長期間保有](backup-azure-backup-cloud-as-tape.md)用に構成できます。つまり、日次、週次、月次、年次の保有期間ポリシーを組み合わせた保有ポリシーを定義できます。この例では、必要な複雑な保有期間スキームを表す配列を作成し、[Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) コマンドレットを使用して保有期間の範囲を構成します。
+Azure へのバックアップ (DPM ではオンライン バックアップの意味) では、リテンション期間の範囲は [Grandfather-Father-Son スキーム (GFS) を使用して長期間保有](backup-azure-backup-cloud-as-tape.md)用に構成できます。つまり、日次、週次、月次、年次の保有期間ポリシーを組み合わせた保有ポリシーを定義できます。この例では、必要な複雑な保有期間スキームを表す配列を作成し、[Set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) コマンドレットを使用して保有期間の範囲を構成します。
 
 ```
 PS C:\> $RRlist = @()
@@ -322,7 +322,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 したがって、週次のスケジュールを変更する必要がある場合は、```$onlineSch[1]``` を参照します。
 
 ### 初回バックアップ
-データソースを初めてバックアップする場合、DPM レプリカ ボリューム上に保護対象データソースのコピーを作成する初期レプリカを、DPM により作成する必要があります。このアクティビティは特定の期間スケジュール設定することも、[Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) コマンドレットとパラメーター ```-NOW``` を使用して手動でトリガーすることもできます。
+データソースを初めてバックアップする場合、DPM レプリカ ボリューム上に保護対象データソースの完全なコピーを作成する初期レプリカを、DPM により作成する必要があります。このアクティビティは特定の期間スケジュール設定することも、[Set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) コマンドレットとパラメーター ```-NOW``` を使用して手動でトリガーすることもできます。
 
 ```
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -351,7 +351,7 @@ PS C:\> $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 ## Azure で保護されているデータの復元
 データの復元は、```RecoverableItem``` オブジェクトと ```RecoveryOption``` オブジェクトの組み合わせです。前のセクションで、データソースのバックアップ ポイントの一覧を取得しました。
 
-次の例では、バックアップ ポイントと回復対象を組み合わせて、Hyper-V 仮想マシンを Microsoft Azure Backup から復元する方法を示します。次のトピックがあります。
+次の例では、バックアップ ポイントと回復対象を組み合わせて、Hyper-V 仮想マシンを Microsoft Azure Backup から復元する方法を示します。この例には次が含まれています。
 
 - [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) コマンドレットを使用した回復オプションの作成。
 - ```Get-DPMRecoveryPoint``` コマンドレットを使用したバックアップ ポイントの配列の取得。
@@ -371,6 +371,6 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 ## 次のステップ
 
-- Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
+- Azure Backup と DPM の詳細については、[DPM バックアップの概要](backup-azure-dpm-introduction.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

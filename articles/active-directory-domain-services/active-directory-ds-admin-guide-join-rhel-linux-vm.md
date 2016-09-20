@@ -13,20 +13,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="08/31/2016"
 	ms.author="maheshu"/>
 
 # Red Hat Enterprise Linux 7 仮想マシンの管理対象ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD ドメイン サービスの管理対象ドメインに参加させる方法について説明します。
 
 ## Red Hat Enterprise Linux 仮想マシンのプロビジョニング
-Azure ポータルを使用して RHEL 7 仮想マシンをプロビジョニングするには、次の手順を実行します。
+Azure Portal を使用して RHEL 7 仮想マシンをプロビジョニングするには、次の手順を実行します。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
     ![Azure ポータル ダッシュボード](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-dashboard.png)
 
-2. 次のスクリーンショットのように、左側のウィンドウの**[新規]**をクリックして、検索バーに**「Red Hat」**と入力します。検索結果に Red Hat Enterprise Linux の項目が表示されます。**Red Hat Enterprise Linux 7.2** をクリックします。
+2. 次のスクリーンショットのように、左側のウィンドウの **[新規]** をクリックして、検索バーに「**Red Hat**」と入力します。検索結果に Red Hat Enterprise Linux の項目が表示されます。**Red Hat Enterprise Linux 7.2** をクリックします。
 
     ![検索結果から RHEL を選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-find-rhel-image.png)
 
@@ -34,7 +34,7 @@ Azure ポータルを使用して RHEL 7 仮想マシンをプロビジョニン
 
     ![検索結果から RHEL を選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-rhel-image.png)
 
-4. **[Red Hat Enterprise Linux 7.2]** ウインドウに、仮想マシン イメージの詳細情報が表示されます。**[デプロイ モデルの選択]** ボックスの一覧で **[クラシック]** を選択します。次に **[作成]** ボタンをクリックします。
+4. **[Red Hat Enterprise Linux 7.2]** ウィンドウに、仮想マシン イメージの詳細情報が表示されます。**[デプロイ モデルの選択]** ボックスの一覧で **[クラシック]** を選択します。次に **[作成]** ボタンをクリックします。
 
     ![イメージの詳細を表示](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-clicked.png)
 
@@ -42,11 +42,11 @@ Azure ポータルを使用して RHEL 7 仮想マシンをプロビジョニン
 
     ![VM の作成 - 基本情報](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-basic-details.png)
 
-6. **[オプションの構成]** をクリックします。**[オプションの構成]** ウインドウが開きます。次のスクリーンショットのように、**[オプションの構成]** ウインドウの **[ネットワーク]** をクリックします。
+6. **[オプションの構成]** をクリックします。**[オプションの構成]** ウインドウが開きます。**[オプションの構成]** ウィンドウで、**[ネットワーク]** をクリックします。
 
     ![VM の作成 - 仮想ネットワークの構成](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-configure-vnet.png)
 
-7. **[ネットワーク]** ウインドウが開きます。**[ネットワーク]** ウインドウの **[仮想ネットワーク]** をクリックして、Linux VM をデプロイする仮想ネットワークを選択します。**[仮想ネットワーク]** ウインドウが開きます。**[仮想ネットワーク]** ウインドウで、**[既存の仮想ネットワークの使用]** オプションを選択します。Azure AD ドメイン サービスを利用できる仮想ネットワークを選択します。この例では、”MyPreviewVNet” 仮想ネットワークを選択しています。
+7. **[ネットワーク]** ウィンドウが開きます。**[ネットワーク]** ウィンドウの **[仮想ネットワーク]** をクリックして、Linux VM をデプロイする仮想ネットワークを選択します。**[仮想ネットワーク]** ウィンドウが開きます。**[仮想ネットワーク]** ウインドウで、**[既存の仮想ネットワークの使用]** オプションを選択します。Azure AD ドメイン サービスを利用できる仮想ネットワークを選択します。この例では、”MyPreviewVNet” 仮想ネットワークを選択しています。
 
     ![VM の作成 - 仮想ネットワークの選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-select-vnet.png)
 
@@ -149,9 +149,9 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 
 ## ドメイン参加の確認
-コンピューターが管理対象ドメインに参加できたか確認してみましょう。そのためには、ドメインに新しく参加した RHEL VM に、ssh とドメイン ユーザー アカウントを使用して接続し、 ユーザー アカウントが正しく解決済みかを確認します。
+コンピューターが管理対象ドメインに参加できたか確認してみましょう。ドメインに新しく参加した RHEL VM に、ssh とドメイン ユーザー アカウントを使用して接続し、ユーザー アカウントが正しく解決済みかを確認します。
 
-1. PuTTY ターミナルで次のコマンドを入力し、ドメインに新しく参加した RHEL 仮想マシンに、SSH を使用して接続します。管理アカウントに所属するドメイン アカウントを使用します (ここでは ”bob@CONTOSO100.COM”)。
+1. PuTTY ターミナルで次のコマンドを入力し、ドメインに新しく参加した RHEL 仮想マシンに、SSH を使用して接続します。管理対象ドメインに属するドメイン アカウントを使用します (例: ここでは "bob@CONTOSO100.COM")。
 
     ssh-l bob@CONTOSO100.COM contoso rhel.cloudapp.net
 
@@ -159,7 +159,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 	pwd
 
-3. PuTTY ターミナルで次のコマンドを入力し、ユーザーの指定したグループ メンバーが正しく解決済みかを確認します。
+3. PuTTY ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決済みかを確認します。
 
     id
 
@@ -172,9 +172,15 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 「[Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join)」を参照してください。
 
 
-## 詳細情報
-- [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)。
+## 関連コンテンツ
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+
+- [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)
+
 - [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
+
 - [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

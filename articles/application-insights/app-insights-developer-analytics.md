@@ -40,9 +40,9 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 ![Web app devops cycle](./media/app-insights-developer-analytics/040.png)
 
 * 開発者は、コード リポジトリにチェックインするか、またはメイン ブランチにマージします。この図では、リポジトリに Git を使用していますが、同様に [Team Foundation バージョン管理](https://www.visualstudio.com/docs/tfvc/overview)も使用できます。
-* 変更により、ビルドと単体テストがトリガーされます。ビルド サービスは、[Visual Studio Team Services か、それと同等のオンプレミスの Team Foundation Server](https://www.visualstudio.com/docs/vsts-tfs-overview) にあります。 
-* ビルドと単体テストが成功すると、[自動デプロイをトリガー](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)できます。Web アプリのホストには、独自の Web サーバーまたは Microsoft Azure を指定できます。 
-* ライブ アプリからのテレメトリが、サーバーと[クライアント ブラウザー](app-insights-javascript.md)の両方から [Application Insights](app-insights-overview.md) に送信されます。これで、アプリのパフォーマンスと使用パターンの両方を分析できます。強力な[検索ツール](app-insights-analytics.md)を使用すると、問題の診断に役立ちます。[アラート](app-insights-alerts.md)を使用すると、問題が発生するとすぐにそれについて把握できるようになります。 
+* 変更により、ビルドと単体テストがトリガーされます。ビルド サービスは、[Visual Studio Team Services か、それと同等のオンプレミスの Team Foundation Server](https://www.visualstudio.com/docs/vsts-tfs-overview) にあります。
+* ビルドと単体テストが成功すると、[自動デプロイをトリガー](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)できます。Web アプリのホストには、独自の Web サーバーまたは Microsoft Azure を指定できます。
+* ライブ アプリからのテレメトリが、サーバーと[クライアント ブラウザー](app-insights-javascript.md)の両方から [Application Insights](app-insights-overview.md) に送信されます。これで、アプリのパフォーマンスと使用パターンの両方を分析できます。強力な[検索ツール](app-insights-analytics.md)を使用すると、問題の診断に役立ちます。[アラート](app-insights-alerts.md)を使用すると、問題が発生するとすぐにそれについて把握できるようになります。
 * 次の開発サイクルには、ライブ テレメトリの分析から通知されます。
 
 ### デバイス アプリとデスクトップ アプリ
@@ -71,10 +71,18 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 3. デバイス アプリの場合:
  * デバッグ ビルドを HockeyApp にアップロードします。そこから、テスト ユーザーのチームに配布できます。それ以降、ビルドをアップロードするたびに、チームに通知されます。
  * 継続的なビルド サービスを設定する際は、プラグインの手順を使用して HockeyApp にアップロードするリリース定義を作成します。
+
+### HockeyApp テレメトリの分析とエクスポート
+
+[ブリッジを設定](app-insights-hockeyapp-bridge-app.md)すると、Application Insights の Analytics 機能と連続エクスポート機能を使用して HockeyApp のカスタムおよびログ テレメトリを調査することができます。
+
+
+
+## 次のステップ
  
 アプリの種類ごとの詳細な手順については、以下のリンク先を参照してください。
 
-* [ASP.NET Web アプリ](app-insights-asp-net.md) 
+* [ASP.NET Web アプリ](app-insights-asp-net.md)
 * [Java Web アプリ](app-insights-java-get-started.md)
 * [Node.js Web アプリ](https://github.com/Microsoft/ApplicationInsights-node.js)
 * [iOS アプリ](https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/hockeyapp-for-ios)
@@ -84,4 +92,4 @@ Visual Studio と開発者分析ツールによって、十分に統合された
 * [Windows Phone 8 および 8.1 アプリ](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-phone-silverlight-apps-80-and-81)
 * [Windows Presentation Foundation アプリ](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-wpf-apps)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0907_2016-->

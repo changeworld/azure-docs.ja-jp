@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/29/2016"
+	ms.date="09/01/2016"
 	ms.author="juliako"/>
 
 # 予約ユニットの種類の変更
@@ -27,7 +27,7 @@
 
 ## Overview
 
-メディア処理のスケール設定についての詳細は、[概要](media-services-scale-media-processing-overview.md)に関するページを参照してください。
+>[AZURE.IMPORTANT] メディア処理のスケール設定の詳細については、[概要](media-services-scale-media-processing-overview.md)に関するトピックを必ず確認してください。
 
 ## メディア処理のスケール設定
 
@@ -57,4 +57,4 @@ Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="06/07/2016"
+   ms.date="08/29/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Transparent Data Encryption (TDE) の概要
@@ -54,6 +54,8 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
+注: 一時停止した SQL Data Warehouse は、TDE 設定を変更する前に再開する必要があります。
+
 ##暗号化の検証
 
 SQL Data Warehouse の暗号化状態を確認するには、次の手順を実行します。
@@ -86,4 +88,4 @@ FROM
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/07/2016"
 	ms.author="genli"/>
 
 #  Azure の課金とサブスクリプションに関する FAQ
@@ -34,6 +34,7 @@
 
 - [請求書のコピーを取得するにはどうすればよいですか。](#how-do-i-get-a-copy-of-my-invoice)
 - [前回の請求期間の請求書が表示されません。なぜですか?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
+- [支払い方法を教えてください。](#how-do-i-make-a-payment)
 
 ## 無料試用版
 
@@ -314,4 +315,10 @@ Azure 無料試用版サブスクリプションは、新規ユーザーを対�
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+### 支払い方法を教えてください。
+
+支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。
+
+[支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用するように設定している場合、請求書の下部に記載されている場所に支払いを送付します。詳しくは、[サポートにお問い合わせください](billing-how-to-create-billing-support-ticket.md)。
+
+<!---HONumber=AcomDC_0907_2016-->

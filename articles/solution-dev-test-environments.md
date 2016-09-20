@@ -3,9 +3,9 @@
    description="Azure リソース マネージャーのテンプレートを使用して、迅速かつ一貫した方法で開発環境およびテスト環境を作成し、削除する方法について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
-   authors="jimdial"
-   manager="carmonm"
-   editor=""/>
+   authors="tfitzmac"
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="01/22/2016"
-   ms.author="jdial"/>
+   ms.author="tomfitz"/>
 
 # Microsoft Azure の開発環境とテスト環境
 
@@ -361,4 +361,4 @@ Azure PowerShell (バージョン 1.01 以降) のコマンド プロンプト�
 - 各環境のリソース グループや個々のリソースに[タグを割り当てる](resource-group-using-tags.md)。"環境" タグをリソース グループに追加し、その値を環境名に対応するように設定できます。タグは、課金または管理の目的でリソースを整理する必要がある場合に特に役立ちます。
 - [Azure ポータル](https://portal.azure.com)でリソース グループのリソースのアラートと課金情報を監視する。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

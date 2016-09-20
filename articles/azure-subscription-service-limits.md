@@ -64,6 +64,7 @@ Azure の価格については、[Azure の価格の概要](https://azure.micros
 - [Media Services](#media-services-limits)
 - [Mobile Engagement](#mobile-engagement-limits)
 - [Mobile Services](#mobile-services-limits)
+- [監視](#monitoring-limits)
 - [Multi-Factor Authentication](#multi-factor-authentication)
 - [ネットワーク](#networking-limits)
 - [Notification Hub Service](#notification-hub-service-limits)
@@ -220,6 +221,10 @@ Azure の価格については、[Azure の価格の概要](https://azure.micros
 
 [AZURE.INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
+### 監視の制限
+
+[AZURE.INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
+
 ### Notification Hubs サービスの制限
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
@@ -306,4 +311,4 @@ SQL Database の制限については、「[SQL Database のリソース制限](
 
 [クラウド サービスのサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

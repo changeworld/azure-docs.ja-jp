@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="support-article"
-	ms.date="06/14/2016"
+	ms.date="09/01/2016"
 	ms.author="iainfou"/>
 
 # Windows を実行する Azure Virtual Machines への Remote Desktop 接続に関するトラブルシューティング
@@ -65,7 +65,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
 		-VMName "myVM" -Name "myVMAccess" -Location Westus
 	```
 
-	> [AZURE.NOTE] 上記の例で、`myVMAccessExtension` または `MyVMAccess` は、プロセスの一環としてインストールする新しい拡張機能に対して指定する名前です。多くの場合、これには、VM の名前を設定します。VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。出力の 'Extensions' セクションを調べます。1 つの VM には VMAccessAgent が 1 つだけ存在できるため、`Set-AzureRmVMExtension` を使用するときに `-ForceReRun` パラメーターも追加する必要があります。これにより、エージェントが再登録されます。
+	> [AZURE.NOTE] 上記の例で、`myVMAccessExtension` または `MyVMAccess` は、プロセスの一環としてインストールする新しい拡張機能に対して指定する名前です。多くの場合、これには、VM の名前を設定します。VMAccessAgent を前に操作したことがある場合は、`Get-AzureRmVM -ResourceGroupName "myRG" -Name "myVM"` を使用して VM のプロパティをチェックすることで、既存の拡張機能の名前を取得できます。出力の "Extensions" セクションで名前を確認します。1 つの VM には VMAccessAgent が 1 つだけ存在できるため、`Set-AzureRmVMExtension` を使用するときに `-ForceReRun True` パラメーターも追加する必要があります。これにより、エージェントが再登録されます。
 
 2. その他のスタートアップの問題に対処するには VM を再起動します。**[参照]**、**[仮想マシン]**、<ご使用の VM>、**[再起動]** の順に選択します。
 
@@ -210,4 +210,4 @@ Windows ベースのコンピューターでは、ローカル アカウント�
 
 [Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

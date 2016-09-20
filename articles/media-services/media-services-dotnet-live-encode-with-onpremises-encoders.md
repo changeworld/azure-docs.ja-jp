@@ -13,10 +13,18 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
- 	ms.date="08/19/2016"  
+ 	ms.date="08/31/2016"  
 	ms.author="cenkdin;juliako"/>
 
 #.NET を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
+
+> [AZURE.SELECTOR]
+- [ポータル](media-services-portal-live-passthrough-get-started.md)
+- [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+- [REST ()](https://msdn.microsoft.com/library/azure/dn783458.aspx)
+
+このチュートリアルでは、Azure Media Services .NET SDK を使用して、パススルー配信用に構成された**チャネル**を作成する手順を紹介します。
+
 
 ##前提条件
 
@@ -387,4 +395,4 @@ Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

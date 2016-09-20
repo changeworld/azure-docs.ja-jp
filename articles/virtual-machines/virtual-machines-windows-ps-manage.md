@@ -21,7 +21,7 @@
 
 ## Azure PowerShell をインストールするには
  
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 ## 変数の設定
 
@@ -168,7 +168,7 @@
     ---------  -------------------  ----------  ------------
                               True          OK  OK
 
-## 仮想マシンの更新
+## 仮想マシンのサイズ変更
 
 この例では、仮想マシンのサイズを更新する方法を示します。
         
@@ -222,4 +222,4 @@
 
 デプロイに問題がある場合は、「[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

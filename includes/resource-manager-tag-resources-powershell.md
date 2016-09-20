@@ -1,20 +1,22 @@
 ### PowerShell の最新バージョンでの Tag コマンドレットの変更
 
-Azure PowerShell の 2016 年 8 月付けのリリースには、タグの操作方法に関する大幅な変更が含まれています。次に進む前に、AzureRm.Resources モジュールのバージョンを確認してください。
+[Azure PowerShell 2.0][powershell] の 2016 年 8 月付けのリリースには、タグの操作方法に関する大幅な変更が含まれています。次に進む前に、AzureRm.Resources モジュールのバージョンを確認してください。
 
-    (Get-Module -ListAvailable | Where-Object{ $_.Name -eq 'AzureRm.Resources' }) | Select Version, Name | Format-List
+    Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 
 Azure PowerShell の最後の更新を 2016 年 8 月より前に行った場合は、3.0 より前のバージョンが表示されます。
 
-    Version : 2.0.2
-    Name    : AzureRM.Resources
+    Version
+    -------
+    2.0.2
 
 Azure PowerShell を 2016 年 8 月以降に更新している場合は、バージョン 3.0 が表示されます。
 
-    Version : 3.0.1
-    Name    : AzureRM.Resources
-
-モジュールのバージョンが 3.0.1 以降であれば、最新のコマンドレットを使用してタグを操作できます。バージョンが 3.0.1 より前であっても、そのバージョンを引き続き使用できますが、最新バージョンに更新することを検討してください。最新バージョンには、タグを簡単に操作できるようにする変更が含まれています。このトピックでは、両方の方法を紹介します。
+    Version
+    -------
+    3.0.1
+    
+モジュールのバージョンが 3.0.1 以降であれば、最新のコマンドレットを使用してタグを操作できます。このバージョンの Azure リソース モジュールは、PowerShell ギャラリー、PowerShellGet、または Web Platform Installer を使用して Azure PowerShell をインストールまたはアップグレードするときに、自動的にインストールされます。バージョンが 3.0.1 より前であっても、そのバージョンを引き続き使用できますが、最新バージョンに更新することを検討してください。最新バージョンには、タグを簡単に操作できるようにする変更が含まれています。このトピックでは、両方の方法を紹介します。
 
 ### 最新バージョンの変更に合わせるためのスクリプトの更新 
 
@@ -228,4 +230,7 @@ PowerShell を使用してサブスクリプション内のすべてのタグの
 
 分類に新しいタグを追加するには、**New-AzureRmTag** コマンドレットを使用します。これらのタグは、リソースまたはリソース グループにまだ適用されていない場合でもオートコンプリートに含められます。タグ名/値を削除するには、タグが使用されている任意のリソースからタグを削除した後、**Remove-AzureRmTag** コマンドレットを使用して分類から削除します。
 
-<!---HONumber=AcomDC_0817_2016-->
+
+[powershell]: https://msdn.microsoft.com/library/mt619274(v=azure.200).aspx
+
+<!---HONumber=AcomDC_0907_2016-->

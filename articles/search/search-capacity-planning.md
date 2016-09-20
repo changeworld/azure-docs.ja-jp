@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
-	ms.date="06/03/2016"
+	ms.date="08/29/2016"
 	ms.author="heidist"/>
 
 # Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
@@ -118,4 +118,4 @@ S3 HD では、12 SU の上限に対して 1 個のパーティションと最�
 
 SU あたりのコストはレベルによって決定されます。SU あたりのコストは、Standard レベルより Basic レベルの方が安価です。各レベルの価格は、「[Search の価格](https://azure.microsoft.com/pricing/details/search/)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

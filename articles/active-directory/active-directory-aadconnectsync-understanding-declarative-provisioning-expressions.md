@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/29/2016"
+	ms.date="08/31/2016"
 	ms.author="markusvi;andkjell"/>
 
 
@@ -77,11 +77,19 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 次に例を示します。`Trim([proxyAddresses])` proxyAddress 属性の各値の Trim を実行します。`Word([proxyAddresses],1,"@") & "@contoso.com"` アット マークを含むすべての文字列では、ドメインを @contoso.com に置き換えます。`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP アドレスを検索し、値から削除します。
 
-## その他のリソース
+## 次のステップ
 
-- [Azure AD Connect 同期: 宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
-- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
-- [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
+- この構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
+- 宣言型のプロビジョニングをすぐに使用する方法については、「[既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
+- 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
+
+**概要トピック**
+
+- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+**参照トピック**
+
+- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
+
+<!---HONumber=AcomDC_0907_2016-->

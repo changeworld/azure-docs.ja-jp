@@ -19,7 +19,7 @@
 
 [Visual Studio Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
 
-![例](./media/app-insights-asp-net-five/sample.png)
+![例](./media/app-insights-asp-net-core/sample.png)
 
 [Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを所有している場合は、自分の Microsoft アカウントを使用してサブスクリプションに自身を追加してもらうよう所有者に依頼してください。
 
@@ -60,4 +60,4 @@
 
 [コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

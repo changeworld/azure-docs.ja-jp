@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="08/31/2016"
 	ms.author="andkjell"/>
 
 
@@ -43,21 +43,21 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 戻るには、**[前へ]** をクリックします。**[終了]** を選択すると、インストール ウィザードが閉じます。
 
 ## 同期オプションをカスタマイズする
-同期の構成を変更するには、このオプションを使用します。カスタム構成のインストール パスからオプションのサブセットが表示されます。これは、最初に高速インストールを使用した場合でも表示されます。
+同期の構成を変更するには、このオプションを使用します。カスタム構成のインストール パスからオプションのサブセットが表示されます。このオプションは、最初に高速インストールを使用した場合でも表示されます。
 
 - [ディレクトリを追加する](active-directory-aadconnect-get-started-custom.md#connect-your-directories)。ディレクトリの削除については、[コネクタの削除](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete)についての説明を参照してください。
 - [ドメインと OU のフィルター処理を変更する](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)。
 - グループのフィルター処理を削除する。
 - [オプションの機能を変更する](active-directory-aadconnect-get-started-custom.md#optional-features)。
 
-最初のインストール時のその他のオプションは変更することができないため、使用できません。該当するオプションは次のとおりです。
+最初のインストール時のその他のオプションは変更することができないため、使用できません。オプションは次のとおりです。
 
 - UserPrincipalName と sourceAnchor として使用する属性を変更する。
 - 別のフォレストのオブジェクトに使用する結合方法を変更する。
 - グループ ベースのフィルター処理を有効にする。
 
 ## ディレクトリ スキーマの更新
-このオプションは、オンプレミス AD DS フォレストのいずれかでスキーマを変更した場合に使用します。たとえば、Exchange をインストールした場合や、デバイス オブジェクトを持つ Windows Server 2012 スキーマにアップグレードしたような場合です。そのような場合は、AD DS からもう一度スキーマを読み取ってキャッシュを更新するよう、Azure AD Connect に指示する必要があります。この指示によって、同期規則も再生成されます。例として、Exchange のスキーマを追加した場合は、Exchange の同期規則が構成に追加されます。
+このオプションは、オンプレミス AD DS フォレストのいずれかでスキーマを変更した場合に使用します。たとえば、Exchange をインストールした場合や、デバイス オブジェクトを持つ Windows Server 2012 スキーマにアップグレードしたような場合です。そのような場合は、AD DS からもう一度スキーマを読み取ってキャッシュを更新するよう、Azure AD Connect に指示する必要があります。この操作により、同期規則も再生成されます。例として、Exchange のスキーマを追加した場合は、Exchange の同期規則が構成に追加されます。
 
 このオプションを選択すると、構成に含まれるすべてのディレクトリの一覧が表示されます。既定の設定を保持し、すべてのフォレストを更新するか、一部のフォレストの選択を解除することができます。
 
@@ -66,19 +66,22 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 ## ステージング モードの構成
 このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。ステージング モードとその使用方法の詳細については、「[操作](active-directory-aadconnectsync-operations.md#staging-mode)」を参照してください。
 
-このオプションは、ステージングが現時点で有効になっているか無効になっているかを表示します。![ステージング モードの現在の状態も示すオプション](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
+このオプションでは、ステージングが現時点で有効になっているか無効になっているかが表示されます。![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
 
-状態を変更するには、このオプションを選択し、チェックボックスをオンまたはオフにします。![ステージング モードの現在の状態も示すオプション](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
+状態を変更するには、このオプションを選択し、チェック ボックスをオンまたはオフにします。![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## ユーザー サインインの変更
 このオプションでは、パスワード同期からフェデレーションに、またはその逆に変更することができます。**[構成しない]** に変更することはできません。
 
 このオプションの詳細については、「[ユーザーのサインイン](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method)」を参照してください。
 
-
 ## 次のステップ
-[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+- Azure AD Connect Sync の同期で使用される構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+**概要トピック**
+
+- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
+- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0907_2016-->

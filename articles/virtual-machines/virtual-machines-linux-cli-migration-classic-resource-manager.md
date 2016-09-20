@@ -38,7 +38,7 @@
 	
 	azure login
 
-次のコマンドを使用して Azure サブスクリプションを選択します
+次のコマンドを使用して Azure サブスクリプションを選択します。
 
 	azure account set "<azure-subscription-name>"
 
@@ -58,8 +58,26 @@
 
 	azure config mode asm
 
+## 手順 3. 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
 
-## 手順 3. オプション 1 - クラウド サービス内の仮想マシンを移行する 
+この手順では、`arm` モードに切り替える必要があります。これを行うには、次のコマンドを使用します。
+
+```
+azure config mode arm
+```
+
+次の CLI コマンドを使用すると、Azure Resource Manager での現在のコア数を確認できます。コア クォータの詳細については、「[制限と Azure Resource Manager](../articles/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」をご覧ください。
+
+```
+azure vm list-usage -l "<Your VNET or Deployment's Azure region"
+```
+
+確認が終わったら、`asm` モードに切り替えることができます。
+
+	azure config mode asm
+
+
+## 手順 4. オプション 1 - クラウド サービスの仮想マシンを移行する 
 
 次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。クラウド サービスの VM が仮想ネットワーク内にある場合、または Web/worker ロールを持つ場合は、エラー メッセージが返されます。
 
@@ -79,7 +97,7 @@ Resource Manager デプロイメント モデルの既存の仮想ネットワ�
 
 	azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> subnetName <vnetName>
 
-準備操作が成功したら、詳細出力で VM の移行状態を検索し、VM が `Prepared` 状態であることを確認します。
+準備操作が正常に完了したら、詳細出力で VM の移行状態を調べ、VM が `Prepared` 状態であることを確認します。
 
 	azure vm show <vmName> -vv
 
@@ -93,7 +111,7 @@ CLI または Azure ポータルを使用して、準備したリソースの構
 
 
 	
-## 手順 3. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
+## 手順 4. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 
 移行する仮想ネットワークを選択します。仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
@@ -105,7 +123,7 @@ CLI または Azure ポータルを使用して、準備したリソースの構
 
 ![仮想ネットワークの名前全体が強調表示されているコマンド ラインのスクリーン ショット。](./media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-上の例では、**virtualNetworkName** は、名前全体が **"Group classicubuntu16 classicubuntu16"** です。
+上の例では、**"Group classicubuntu16 classicubuntu16"** 全体が **virtualNetworkName** です。
 
 次のコマンドを使用して、移行対象の仮想ネットワークを準備します。
 
@@ -119,7 +137,7 @@ CLI または Azure ポータルを使用して、準備した仮想マシンの
 
 	azure network vnet commit-migration <virtualNetworkName>
 
-## 手順 4. ストレージ アカウントを移行する
+## 手順 5. ストレージ アカウントを移行する
 
 仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
 
@@ -140,4 +158,4 @@ CLI または Azure ポータルを使用して、準備したストレージ �
 - [プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

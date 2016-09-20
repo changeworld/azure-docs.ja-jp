@@ -76,7 +76,15 @@ Resource Manager モデルの自分のアカウントにサインインします
 	$subscr="<subscription name>"
 	Get-AzureSubscription –SubscriptionName $subscr | Select-AzureSubscription
 
-## 手順 4: IaaS リソースを移行するコマンドを実行する
+## 手順 4: 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
+
+次の PowerShell コマンドを使用すると、Azure Resource Manager での現在のコア数を確認できます。コア クォータの詳細については、「[制限と Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」をご覧ください。
+
+```
+Get-AzureRmVMUsage -Location "<Your VNET or Deployment's Azure region"
+```
+
+## 手順 5: IaaS リソースを移行するコマンドを実行する
 
 >[AZURE.NOTE] ここで説明するすべての操作がべき等です。サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。これによりプラットフォームでアクションが再試行されます。
 
@@ -181,4 +189,4 @@ PowerShell または Azure ポータルを使用して、準備したストレ�
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

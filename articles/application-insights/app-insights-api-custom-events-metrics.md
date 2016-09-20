@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="09/01/2016" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
@@ -46,7 +46,6 @@ Application Insights でデータを集めるとき、この API を使用すれ
 
 * Application Insights SDK をプロジェクトに追加します。
  * [ASP.NET プロジェクト][greenbrown]
- * [Windows プロジェクト][windows]
  * [Java プロジェクト][java]
  * [各 Web ページの JavaScript][client]
 
@@ -276,7 +275,6 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 
 * ASP.NET: [例外をキャッチするコードを記述する](app-insights-asp-net-exceptions.md)
 * J2EE: [例外は自動的にキャッチされる](app-insights-java-get-started.md#exceptions-and-request-failures)
-* Windows アプリ: [クラッシュは自動的にキャッチされる](app-insights-windows-crashes.md)
 * JavaScript: 自動的にキャッチされる。自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
     ```
@@ -306,7 +304,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
 `message`のサイズ制限はプロパティの制限よりも高くなっています。TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。たとえば、その中に POST データをエンコードできます。
 
 
-加えて、メッセージに重大度レベルを追加することができます。また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタで抽出したり検索したりすることができます。次に例を示します。
+加えて、メッセージに重大度レベルを追加することができます。また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタで抽出したり検索したりすることができます。For example:
 
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -353,7 +351,7 @@ Application Insights に「階層リンクの軌跡」を送信して問題を�
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
 
-この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-windows-services.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
+この関数はインメモリ チャネルでは非同期ですが、[永続化チャネル](app-insights-api-filtering-sampling.md#persistence-channel)の使用を選択した場合は同期になることに注意してください。
 
 
 ## 認証されたユーザー
@@ -611,7 +609,7 @@ HTTP 要求に関連付けられていないイベントを監視している場
 
 **JavaScript Web クライアント**の場合、[JavaScript テレメトリ初期化子](#js-initializer)を使用します。
 
-標準コレクション モジュールのデータなど、**すべてのテレメトリにプロパティを追加する**には、[`ITelemetryInitializer` を実装](app-insights-api-filtering-sampling.md#add-properties)します。
+標準コレクション モジュールのデータなど、**すべてのテレメトリにプロパティを追加する**には、`ITelemetryInitializer` を[実装](app-insights-api-filtering-sampling.md#add-properties)します。
 
 
 ## テレメトリのサンプリング、フィルター処理、および処理 
@@ -702,7 +700,7 @@ Web ページで、スクリプトに一語一語コーディングするので�
 
 ## TelemetryContext
 
-TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。次に例を示します。
+TelemetryClient には、すべてのテレメトリ データとともに送信される値の数が含まれるコンテキスト プロパティがあります。通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。For example:
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
@@ -747,17 +745,16 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
 * [ASP.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-aspnet5)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
+* [Windows Server パッケージ](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 * [すべてのプラットフォーム](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## 疑問がある場合
 
 * *Track\_() の呼び出しでは、どのような例外がスローされることがありますか。*
     
-    ありません。try catch 句で例外をラップする必要はありません。SDK で問題が発生すると、デバッグ コンソール出力に表示されるメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
+    なし。try catch 句で例外をラップする必要はありません。SDK で問題が発生すると、デバッグ コンソール出力に表示されるメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 
 
 
@@ -788,8 +785,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 [metrics]: app-insights-metrics-explorer.md
 [qna]: app-insights-troubleshoot-faq.md
 [trace]: app-insights-search-diagnostic-logs.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

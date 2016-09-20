@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/03/2016"
+   ms.date="09/02/2016"
    ms.author="v-six" />
 
 # クラウド サービスのデプロイメントに関する問題のトラブルシューティング
@@ -64,7 +64,7 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 
 この症状が見られた場合、アプリケーションのコード、パッケージ、構成ファイルに問題がある可能性があります。該当する場合、数分おきに [状態] が変化し、Azure ポータルには、**[リサイクル中]**、**[ビジー]**、**[初期化しています]** などのメッセージが表示される場合があります。これは、ロール インスタンスの実行を妨げる問題がアプリケーションに生じていることを示します。
 
-この問題をトラブルシューティングする方法の詳細については、[Azure PaaS コンピューティング診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事と「[ロールのリサイクルを引き起こす一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)」をご覧ください。
+この問題をトラブルシューティングする方法の詳細については、[Azure PaaS 計算診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事と[ロールのリサイクルを引き起こす一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)に関するページを参照してください。
 
 ## 問題: アプリケーションの動作しなくなった
 
@@ -82,4 +82,4 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

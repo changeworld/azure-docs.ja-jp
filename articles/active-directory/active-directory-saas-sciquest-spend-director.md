@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,7 +21,7 @@
 
 このチュートリアルの目的は、SciQuest Spend Director と Azure Active Directory (Azure AD) を統合する方法を説明することです。SciQuest Spend Director と Azure AD の統合には、次の利点があります。
 
-- SciQuest Spend Director にアクセスする Azure AD ユーザーを制御できます。 
+- SciQuest Spend Director にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に SciQuest Spend Director にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
@@ -32,7 +32,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 SciQuest Spend Director と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- シングル サインオン対応の SciQuest Spend Director サブスクリプション
+- SciQuest Spend Director でのシングル サインオンが有効なサブスクリプション
 
 
 > [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -41,13 +41,13 @@ SciQuest Spend Director と Azure AD の統合を構成するには、次のも�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの SciQuest Spend Director の追加 
+1. ギャラリーからの SciQuest Spend Director の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -56,7 +56,7 @@ Azure AD への SciQuest Spend Director の統合を構成するには、ギャ�
 
 **ギャラリーから SciQuest Spend Director を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -114,7 +114,7 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 	![Configure App Settings][10]
  
-     3\.1.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが SciQuest Spend Director アプリケーションへのサインオンに使用する URL を入力します。**https://.*sciquest.com/.**。
+     3\.1.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが SciQuest Spend Director アプリケーションへのサインオンに使用する URL を入力します。*https://.*sciquest.com/.**。
 
      3\.2.**[応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。
 
@@ -122,13 +122,13 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
  
 4. **[SciQuest Spend Director でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
 
-	![What is Azure AD Connect][11]
+	![Azure AD Connect とは][11]
 
 5. 上記のダウンロードしたメタデータを使用してこの認証方法を有効にする方法については、SciQuest のサポートにお問い合わせください。
 
 6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-	![What is Azure AD Connect][15]
+	![Azure AD Connect とは][15]
 
 10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
@@ -144,20 +144,20 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-	![What is Azure AD Connect][100]
+	![Azure AD Connect とは][100]
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-	![What is Azure AD Connect][101]
+	![Azure AD Connect とは][101]
 
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-	![What is Azure AD Connect][102]
+	![Azure AD Connect とは][102]
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-	![What is Azure AD Connect][103]
+	![Azure AD Connect とは][103]
 
 	a.**[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
   
@@ -165,9 +165,9 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
   
 	c.[次へ] をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-	![What is Azure AD Connect][104]
+	![Azure AD Connect とは][104]
 
 	a.**[名]** ボックスに「**Britta**」と入力します。
   
@@ -181,11 +181,11 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-	![What is Azure AD Connect][105]
+	![Azure AD Connect とは][105]
 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-	![What is Azure AD Connect][106]
+	![Azure AD Connect とは][106]
 
 	a.**[新しいパスワード]** の値を書き留めます。
   
@@ -207,29 +207,29 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 
 このセクションの目的は、Britta Simon に SciQuest Spend Director へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-![What is Azure AD Connect][200]
+![Azure AD Connect とは][200]
 
 **SciQuest Spend Director に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure クラシック ポータルのディレクトリ ビューで、トップ メニューにある **[アプリケーション]** をクリックしてアプリケーション ビューを開きます。
 
-	![What is Azure AD Connect][201]
+	![Azure AD Connect とは][201]
 
 2. アプリケーションの一覧で **[SciQuest Spend Director]** を選択します。
 
-	![What is Azure AD Connect][202]
+	![Azure AD Connect とは][202]
 
 1. 上部のメニューで **[ユーザー]** をクリックします。
 
-	![What is Azure AD Connect][203]
+	![Azure AD Connect とは][203]
 
 1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-	![What is Azure AD Connect][204]
+	![Azure AD Connect とは][204]
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-	![What is Azure AD Connect][205]
+	![Azure AD Connect とは][205]
 
 
 
@@ -270,4 +270,4 @@ SciQuest Spend Director で Azure AD のシングル サインオンを構成し
 [204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -20,9 +20,9 @@
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-##概要
+##Overview
 
-Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。[アプリ バックエンドからの登録管理](notification-hubs-registration-management.md#registration-management-from-a-backend)に関するガイダンス トピックに示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。
 
 > [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。また、「[安全なプッシュ (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)」チュートリアルの前提条件でもあります。バックエンド サービスとして Mobile Apps を使用する場合は、「[iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
 
@@ -44,7 +44,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 	+ **Password**: "*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
 	+ **Log in**: パスワードのテキスト フィールドのすぐ下にあるラベル付きの UI ボタンです。Attributes Inspector の *[Control-Content]* の下にある **[Enabled]** オプションをオフにします。
 	+ **WNS**: Windows Notification Service に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。詳しくは、[Windows で通知ハブを使用する方法に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started.md)をご覧ください。
-	+ **GCM**: Google Cloud Messaging に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。詳しくは、[Android で通知ハブを使用する方法に関するチュートリアル](notification-hubs-android-get-started.md)をご覧ください。
+	+ **GCM**: Google Cloud Messaging に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。詳しくは、[Android で通知ハブを使用する方法に関するチュートリアル](notification-hubs-android-push-notification-google-gcm-get-started.md)をご覧ください。
 	+ **APNS**: Apple Platform Notification Service に通知を送信するためのスイッチとそのラベルです。
 	+ **Recipent Username**: "*Recipient username tag*" というプレースホルダー テキストが入っている UI テキスト フィールドです。GCM ラベルのすぐ下にあり、左右の余白と、GCM ラベルの下の余白による制約が適用されます。
 
@@ -262,7 +262,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 		@end
 
-	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」で説明したロジックを実装します。
+	上記のコードは、アプリケーション バックエンドへの REST 呼び出しを実行するための NSURLSession、および通信ハブによって返される registrationId をローカルに格納するための NSUserDefaults の使用についてのガイダンス記事「[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)」で説明したロジックを実装します。
 
 	このクラスが適切に機能するためには、プロパティ **authorizationHeader** を設定する必要があります。このプロパティは、ログイン後に **ViewController** クラスによって設定されます。
 
@@ -465,4 +465,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

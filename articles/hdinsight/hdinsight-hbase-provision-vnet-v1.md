@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
 # Azure Virtual Network での HBase クラスターのプロビジョニング
@@ -106,7 +106,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 8. ストレージ アカウント名とプライマリ アクセス キーやセカンダリ アクセス キー (動作しているいずれかのキー) の値を書き留めます。この情報は後で必要になります。
 9. ページの上部にある **[コンテナー]** をクリックします。
 10. ページの下部にある **[追加]** をクリックします。
-11. コンテナーの名前を入力します。このコンテナーは、HBase クラスターの既定のコンテナーとして使用されます。既定では、既定のコンテナー名はクラスター名に一致します。**[アクセス]** フィールドは **[プライベート]** のままにします。  
+11. コンテナーの名前を入力します。このコンテナーは、HBase クラスターの既定のコンテナーとして使用されます。既定では、既定のコンテナー名はクラスター名に一致します。**[アクセス]** フィールドは **[プライベート]** のままにします。
 12. チェックマークをクリックしてコンテナーを作成します。
 
 **Azure クラシック ポータルを使用して HBase クラスターをプロビジョニングするには**
@@ -137,7 +137,7 @@ DNS サーバーはオプションですが、場合によっては必要にな�
 		<tr><td>Zookeeper サイズ</td><td><p>Zookeeper ノードの VM サイズを選択します。</p></td></tr>
 	</table>
 
-	>[AZURE.NOTE] VM の選択に基づき、料金が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」を参照してください。
+	>[AZURE.NOTE] VM の選択に基づき、価格が異なる場合があります。HDInsight は、クラスター ノードにすべて Standard レベルの VM を使用します。VM サイズに応じた料金の詳細については、「<a href="http://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">HDInsight 料金</a>」を参照してください。
 
 	右側のボタンをクリックします。
 
@@ -436,4 +436,4 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
 [img-provision-cluster-page1]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png "新しい HBase クラスターのプロビジョニングの詳細"
 [img-provision-cluster-page5]: ./media/hdinsight-hbase-provision-vnet/hbasewizard5.png "スクリプト アクションを使って HBase クラスターをカスタマイズする"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -104,4 +104,4 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
 
 アップロードしたイメージを使用して、[カスタム VM を作成](virtual-machines-windows-classic-createportal.md)できるようになりました。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

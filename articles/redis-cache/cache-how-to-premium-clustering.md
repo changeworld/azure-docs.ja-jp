@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/09/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
@@ -26,10 +26,10 @@ Azure Redis Cache の Premium レベルには、クラスタリング、永続�
 ## Redis クラスターとは
 Azure Redis Cache では、[Redis での実装](http://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。Redis クラスターには次の利点があります。
 
--	データセットを複数のノードに自動的に分割する機能。 
--	ノードのサブセットで障害が発生したとき、クラスターの他の部分と通信できないときに、操作を続行する機能。 
--	より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。 
--	より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。  
+-	データセットを複数のノードに自動的に分割する機能。
+-	ノードのサブセットで障害が発生したとき、クラスターの他の部分と通信できないときに、操作を続行する機能。
+-	より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。
+-	より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。
 
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
 
@@ -164,4 +164,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

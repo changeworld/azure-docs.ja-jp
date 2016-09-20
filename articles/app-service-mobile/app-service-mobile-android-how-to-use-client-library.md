@@ -678,7 +678,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 
 ## 方法: アプリにプッシュ通知を追加する
 
-Microsoft Azure Notification Hubs によるさまざまなプッシュ通知のサポート方法については、[概要](../notification-hubs/notification-hubs-overview.md#integration-with-app-service-mobile-apps)をご確認ください。
+Microsoft Azure Notification Hubs によるさまざまなプッシュ通知のサポート方法については、[概要](../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps)をご確認ください。
 
 [このチュートリアル](app-service-mobile-android-get-started-push.md)では、レコードが挿入されるたびに、プッシュ通知が送信されます。
 
@@ -837,4 +837,4 @@ Java クライアント コードで、ToDoItem オブジェクト プロパテ�
 [Android アプリに認証を追加する]: app-service-mobile-android-get-started-users.md
 [認証の使用]: app-service-mobile-android-get-started-users.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

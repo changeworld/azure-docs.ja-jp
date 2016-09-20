@@ -12,20 +12,27 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/01/2016"
 	ms.author="awills"/>
 
 # Azure Web アプリのパフォーマンスの監視
 
-[Azure ポータル](https://portal.azure.com)を使用すると、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または [Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) のアプリケーションの依存関係の統計と詳細を収集する監視を設定できます。
+[Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)または[仮想マシン](../virtual-machines/virtual-machines-linux-about.md)のアプリケーション パフォーマンス監視を設定することができます。パフォーマンス監視ソリューションは、アプリをインストルメント化して、アクティビティに関するテレメトリを送信します。得られたメトリックとテレメトリは、問題の診断、パフォーマンスの改善、使用状況の評価などに使用することができます。
 
-Azure は、拡張機能を活用してアプリケーション パフォーマンス監視 (APM) をサポートします。これらの拡張機能はアプリケーションにインストールされ、データを収集し、監視サービスにレポートを返します。
+## 実行時またはビルド時
 
-**Application Insights** と **New Relic** は、利用できるパフォーマンス監視拡張機能のうちの 2 つです。それらを使用するには、実行時にエージェントをインストールします。Application Insights には、SDK を使用してコードをビルドするためのオプションもあります。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
+監視は、アプリを次の 2 つの方法のどちらかでインストルメント化することによって構成できます。
 
-## アプリケーション インサイト
+* **実行時** - Web アプリが既に実行されているときにパフォーマンス監視拡張機能を選択できます。アプリを再構築または再インストールする必要はありません。応答時間、成功率、例外、依存関係などを監視するパッケージの標準セットを利用できます。
 
-### (オプション) SDK を使用してアプリをリビルドする
+    **Application Insights** と **New Relic** は、利用できる実行時パフォーマンス監視拡張機能のうちの 2 つです。
+ 
+* **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。これは、汎用性が高い方法です。同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。
+
+    **Application Insights** は、ビルド時パッケージを提供します。
+
+
+## Application Insights パッケージを使用したアプリケーションのビルド
 
 Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。
 
@@ -104,4 +111,4 @@ Visual Studio で SDK を追加しなかった場合は、テレメトリが格�
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](../application-insights/app-insights-monitor-web-app-availability.md)して、サイトがダウンした場合にアラートを送信するようにします。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

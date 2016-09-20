@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/02/2016"
    ms.author="tomfitz"/>
 
 # Azure リソース マネージャーでのリンクされたテンプレートの使用
@@ -29,7 +29,7 @@
     "resources": [ 
       { 
          "apiVersion": "2015-01-01", 
-         "name": "nestedTemplate", 
+         "name": "linkedTemplate", 
          "type": "Microsoft.Resources/deployments", 
          "properties": { 
            "mode": "incremental", 
@@ -53,7 +53,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
 
 リンクされたテンプレートは外部から利用可能でなければなりませんが、一般公開する必要はありません。ストレージ アカウント所有者のみがアクセス可能なプライベート ストレージ アカウントに、テンプレートを追加できます。次に、デプロイ時にアクセスできるように、Shared Access Signature (SAS) トークンを作成します。リンクされたテンプレートの URI に SAS トークンを追加します。ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。
 
-次の例は、別のテンプレートにリンクしている親テンプレートを示しています。入れ子になったテンプレートには、パラメーターとして渡された SAS トークンを使用してアクセスします。
+次の例は、別のテンプレートにリンクしている親テンプレートを示しています。リンクされたテンプレートには、パラメーターとして渡された SAS トークンを使用してアクセスします。
 
     "parameters": {
         "sasToken": { "type": "securestring" }
@@ -61,7 +61,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
     "resources": [
         {
             "apiVersion": "2015-01-01",
-            "name": "nestedTemplate",
+            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
               "mode": "incremental",
@@ -82,7 +82,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
     "resources": [ 
       { 
          "apiVersion": "2015-01-01", 
-         "name": "nestedTemplate", 
+         "name": "linkedTemplate", 
          "type": "Microsoft.Resources/deployments", 
          "properties": { 
            "mode": "incremental", 
@@ -161,7 +161,7 @@ Resource Manager サービスは、リンクされたテンプレートにアク
     "resources": [
         {
             "apiVersion": "2015-01-01",
-            "name": "nestedTemplate",
+            "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
                 "mode": "incremental",
@@ -200,7 +200,7 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       }
     }
 
-次の例は、**newStorageAccount.json** テンプレートを示しています。既存のストレージ アカウント テンプレートの同様に、出力でストレージ アカウント オブジェクトが返されることに注意してください。マスター テンプレートは、入れ子になったテンプレートにも対応しています。
+次の例は、**newStorageAccount.json** テンプレートを示しています。既存のストレージ アカウント テンプレートの同様に、出力でストレージ アカウント オブジェクトが返されることに注意してください。マスター テンプレートは、リンクされたテンプレートにも対応しています。
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -247,7 +247,7 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       "resources": [
         {
           "apiVersion": "2015-01-01",
-          "name": "nestedTemplate",
+          "name": "linkedTemplate",
           "type": "Microsoft.Resources/deployments",
           "properties": {
             "mode": "incremental",
@@ -261,7 +261,7 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       "outputs": {
         "result": {
           "type": "object",
-          "value": "[reference('nestedTemplate').outputs.result]"
+          "value": "[reference('linkedTemplate').outputs.result]"
         }
       }
     }
@@ -300,4 +300,4 @@ Azure CLI では、コンテナーのトークンを取得し、次のコード�
 - リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
 - リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

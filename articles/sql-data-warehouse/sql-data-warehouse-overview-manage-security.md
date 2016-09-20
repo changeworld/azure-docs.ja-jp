@@ -21,12 +21,10 @@
 > [AZURE.SELECTOR]
 - [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
 - [脅威の検出](sql-data-warehouse-security-threat-detection.md)
-- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
-- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 - [監査の概要](sql-data-warehouse-auditing-overview.md)
 - [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
-
-
+- [Transparent Data Encryption (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [Transparent Data Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 この記事では、Azure SQL Data Warehouse データベースの保護に関する基本事項を説明します。特にこの記事では、アクセスの制限、データの保護、データベースでのアクティビティの監視を行うためのリソースの概要を説明します。
 
@@ -34,10 +32,9 @@
 
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure クラシック ポータル、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、[Azure SQL Database ファイアウォール][]に関するページ、「[sp\_set\_firewall\_rule][]」、および「[sp\_set\_database\_firewall\_rule][]」をご覧ください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。詳細については、[Azure SQL Database ファイアウォール][]に関するページ、「[sp\_set\_firewall\_rule][]」、および「[sp\_set\_database\_firewall\_rule][]」をご覧ください。
 
-SQL Data Warehouse への接続は、接続文字列で暗号化モードを設定することで暗号化できます。接続の暗号化を有効にする構文は、プロトコルによって異なります。接続文字列を設定するには、Azure ポータルでデータベースに移動します。[要点] で [データベース接続文字列の表示] をクリックします。
-
+SQL Data Warehouse への接続は、既定で暗号化されます。暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
 ## 認証
 
@@ -125,4 +122,4 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

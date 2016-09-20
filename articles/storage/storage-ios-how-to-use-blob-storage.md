@@ -19,7 +19,7 @@
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## 概要
+## Overview
 
 この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。また、[サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample)をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
 
@@ -82,50 +82,7 @@ Azure Storage iOS ライブラリを使用するには、最初にフレーム�
     // Include the following import statement to use blob APIs.
     #import <AZSClient/AZSClient.h>
 
-## BLOB ストレージにアクセスするようにアプリケーションを構成する
-
-Storage サービスにアクセスできるようにアプリケーションを認証するには、次の 2 つの方法があります。
-
-- 共有キー: テスト目的のみに共有キーを使用します
-- Shared Access Signature (SAS): 運用アプリケーション用に SAS を使用します
-
-### 共有キー
-共有キー認証の場合、アプリケーションは Storage サービスへのアクセスにアカウント名とアカウント キーを使用します。iOS から BLOB ストレージを使用する方法を簡単に説明するため、ここでは共有キー認証を使用します。
-
-> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] アカウント名とアカウント キーは、関連付けられているストレージ アカウントへの完全な読み取りおよび書き込みアクセスが付与されており、アプリをダウンロードするすべてのユーザーに配布されます。これは信頼できないクライアントによってキーが侵害される危険があるため、**お勧めしません**。
-
-共有キー認証を使用する場合は、接続文字列を作成します。接続文字列の構成要素は次のとおりです。
-
-- **DefaultEndpointsProtocol** - HTTP または HTTPS を選択できますが、HTTPS の使用を強くお勧めします。
-- **Account Name** - ストレージ アカウントの名前
-- **Account Key** - この情報を確認するには、[Azure ポータル](https://portal.azure.com)を使用してお使いのストレージ アカウントに移動し、**[キー]** アイコンをクリックします。[Azure クラシック ポータル](https://manage.windowsazure.com)を使用している場合は、ポータルでストレージ アカウントに移動し、**[アクセス キーの管理]** をクリックします。
-
-アプリケーションでは次のようになります。
-
-    // Create a storage account object from a connection string.
-    AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here" error:&accountCreationError];
-
-### Shared Access Signatures (SAS)
-iOS アプリケーションの場合、BLOB ストレージに対するクライアントからの要求を認証する際には、Shared Access Signature (SAS) を使用することをお勧めします。SAS を使用すると、期間およびアクセス許可セットを指定して、リソースへのクライアント アクセスを許可することができます。ストレージ アカウント所有者は、iOS クライアントが使用する SAS を生成する必要があります。SAS を生成するには、クライアントに配布する SAS を生成する別のサービスを記述することが必要になります。テスト目的で、Microsoft Azure ストレージ エクスプローラーを使用して SAS を生成することができます。SAS の作成時には、SAS の有効期間と、SAS がクライアントに付与するアクセス許可を指定できます。
-
-次に示すのは、Microsoft Azure ストレージ エクスプローラーを使用して SAS を生成する方法の例です。
-
-1. まだインストールしていない場合は、[Microsoft Azure ストレージ エクスプローラーをインストール](http://storageexplorer.com)します。
-
-2. サブスクリプションに接続する方法に関するページをご覧ください ()。
-
-3. ストレージ アカウントをクリックし、左下の [アクション] タブをクリックします。[Get Shared Access Signature]\(Shared Access Signature の取得) をクリックすると、SAS の "接続文字列" が生成されます。
-
-4. 次に示すのは、ストレージ アカウントの BLOB サービスに対するサービス、コンテナー、およびオブジェクト レベルの読み取りおよび書き込みのアクセス許可を付与する SAS 接続文字列の例です。
-
-        SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net
-
-6. iOS アプリケーションでは、接続文字列を次のように使用して、アカウントへの参照を取得できます。
-
-		// Get a reference to your Storage account
-    	AZSCloudStorageAccount *account = [AZSCloudStorageAccount accountFromConnectionString:@"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net" error:&accountCreationError];
-
-ご覧のように、SAS を使用する場合、iOS アプリケーションでアカウント名とアカウント キーを公開することはありません。SAS の詳細については、「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+[AZURE.INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## 非同期操作
 > [AZURE.NOTE] サービスに対して要求を実行するメソッドは、すべてが非同期操作です。コード サンプルでは、このようなメソッドに完了ハンドラーが含まれていることがわかります。完了ハンドラーの中のコードは、要求が完了した**後に**実行されます。完了ハンドラーの後のコードは、要求が行われている**間に**実行されます。
@@ -412,4 +369,4 @@ NSString からブロック BLOB をアップロードする場合だけでな�
 
 このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)または[スタック オーバーフロー](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)に投稿してください。Azure Storage の機能についてご提案がある場合は、[Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

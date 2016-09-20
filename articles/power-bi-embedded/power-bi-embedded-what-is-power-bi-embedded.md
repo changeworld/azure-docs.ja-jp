@@ -3,7 +3,7 @@
    description="Power BI Embedded を利用すると、Web アプリケーションやモバイル アプリケーションに Power BI レポートを統合できるため、ユーザー向けにデータを視覚化するカスタム ソリューションを作成する必要はありません"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="mblythe"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Microsoft Power BI Embedded とは何ですか?
 
@@ -71,4 +71,4 @@ Azure の他のサービスと同様に、[Azure ARM API](https://msdn.microsoft
 - [Common Microsoft Power BI Embedded scenarios (Microsoft Power BI Embedded の一般的なシナリオ)](power-bi-embedded-scenarios.md)
 - [Microsoft Power BI Embedded の概要](power-bi-embedded-get-started.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

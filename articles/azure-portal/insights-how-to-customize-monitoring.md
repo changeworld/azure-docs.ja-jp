@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Microsoft Azure でのサービス メトリックの監視 | Microsoft Azure"
+	pageTitle="Microsoft Azure のメトリックの概要 | Microsoft Azure"
 	description="Azure でグラフの監視をカスタマイズする方法について説明します。"
 	authors="rboucher"
 	manager=""
@@ -16,7 +16,7 @@
 	ms.date="09/08/2015"
 	ms.author="robb"/>
 
-# サービス メトリックの監視
+# Microsoft Azure のメトリックの概要
 
 すべての Azure サービスでは、サービスの正常性、パフォーマンス、可用性、使用状況を監視するための重要なメトリックが追跡されます。Azure ポータルでこれらのメトリックを参照できますが、[REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) または [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights/) を使用してすべてのメトリックにプログラムでアクセスすることもできます。
 
@@ -72,4 +72,4 @@
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

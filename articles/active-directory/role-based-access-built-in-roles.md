@@ -34,7 +34,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [BizTalk の共同作業者](#biztalk-contributor) | BizTalk Services を管理できます |
 | [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) | ClearDB MySQL データベースを管理できます |
 | [共同作成者](#contributor) | アクセス権以外のすべてを管理できます。 |
-| [Data Factory の共同作業者](#data-factory-contributor) | Data Factory を管理できます |
+| [Data Factory の共同作業者](#data-factory-contributor) | Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs ユーザー](#devtest-labs-user) | すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [Document DB アカウントの共同作業者](#documentdb-account-contributor) | DocumentDB アカウントを管理できます |
 | [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) | Intelligent Systems アカウントを管理できます |
@@ -151,12 +151,12 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 
 ### Data Factory の共同作業者
-Data Factory を管理できます
+Data Factory と Data Factory に含まれる子リソースを作成および管理します。
 
 | **アクション** ||
 | ------- | ------ |
 | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-| Microsoft.DataFactory/dataFactories/* | Data Factory の管理 |
+| Microsoft.DataFactory/dataFactories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
 | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read | リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
@@ -534,4 +534,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 - [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

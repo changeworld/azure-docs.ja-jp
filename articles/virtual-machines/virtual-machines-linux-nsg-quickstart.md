@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux 仮想マシンへのポートおよびエンドポイントの開放 |Microsoft Azure"
-   description="Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM に対する外部アクセスを許可するポートを開き、エンドポイントを作成する方法について説明します。"
+   pageTitle="Linux 仮想マシンへのポートの開放 |Microsoft Azure"
+   description="Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,8 +16,8 @@
    ms.date="08/08/2016"
    ms.author="iainfou"/>
 
-# ポートおよびエンドポイントの開放
-サブネットまたは仮想マシン (VM) ネットワークポ インターフェイス上の選択したポートへのトラフィックを許可するネットワーク フィルターを作成して、Azure でポートを開くかエンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。ポート 80 での Web トラフィックの一般的な例を使用して説明します。
+# Azure での Linux VM へのポートの開放
+サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。ポート 80 での Web トラフィックの一般的な例を使用して説明します。
 
 ## クイック コマンド
 ネットワーク セキュリティ グループとルールを作成するには、Resource Manager モードの [Azure CLI](../xplat-cli-install.md) が必要です (`azure config mode arm`)。
@@ -52,7 +52,7 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 
 ネットワーク セキュリティ グループと ACL 規則は、Azure Resource Manager のテンプレートの一部として定義できます。詳細については、[テンプレートを使用したネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-template.md)に関するページをご覧ください。
 
-ポート転送を使用して一意の外部ポートを VM 上の内部ポートにマップする必要がある場合は、ロード バランサーとネットワーク アドレス変換 (NAT) 規則を使用する必要があります。たとえば、TCP ポート 8080 を外部に公開し、VM 上の TCP ポート 80 にトラフィックを送ることができます。詳細については、[インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページをご覧ください。
+ポート フォワーディングを使用して、一意の外部ポートを VM 上の内部ポートにマップする必要がある場合は、ロード バランサーとネットワーク アドレス変換 (NAT) 規則を使用します。たとえば、TCP ポート 8080 を外部に公開し、VM 上の TCP ポート 80 にトラフィックを送ることができます。詳細については、[インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページをご覧ください。
 
 ## 次のステップ
 この例では、HTTP トラフィックを許可する単純な規則を作成します。より精密な環境の作成については、次の記事で確認できます。
@@ -61,4 +61,4 @@ azure network vnet subnet set --resource-group TestRG --name TestSubnet --networ
 - [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
 - [ロード バランサーのための Azure Resource Manager の概要](../load-balancer2 /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

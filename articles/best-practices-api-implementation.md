@@ -23,7 +23,7 @@
 
 このガイダンスの一部のトピックは審議中であり、今後変更される場合があります。ご意見をお待ちしております。
 
-## 概要
+## Overview
 入念に設計された REST ベースの Web API では、リソース、関係、およびクライアント アプリケーションにアクセスできるナビゲーション スキームを定義します。Web API を実装し、デプロイするときは、データの論理構造ではなく、Web API をホストする環境の物理的な要件と、Web API を構成する方法を検討する必要があります。このガイダンスでは、Web API を実装し、Web API を公開してクライアント アプリケーションで使用できるようにするためのベスト プラクティスに重点を置いて説明します。セキュリティ上の問題については、API セキュリティ ガイダンスで別途説明しています。Web API の設計の詳細については、API 設計ガイダンスをご覧ください。
 
 ## REST ベースの Web API の実装に関する考慮事項
@@ -1020,7 +1020,7 @@ Web API の性質により、Web API が正しく動作することを確認す�
 
 	> [AZURE.IMPORTANT] API Management サービスを使用して Web API を公開する場合、これらの URI は、Web API をホストする Web サーバーの URL ではなく、管理サービスの URL を反映する必要があります。
 
-- 各操作が入力のさまざまな組み合わせに対して正しい状態コードを返していることを確認します。次に例を示します。
+- 各操作が入力のさまざまな組み合わせに対して正しい状態コードを返していることを確認します。For example:
 	- クエリが成功した場合は、状態コード 200 (OK) を返します。
 	- リソースが見つからない場合は、HTTP 状態コード 404 (Not Found) を返します。
 	- クライアントがリソースを正常に削除する要求を送信した場合、状態コードは 204 (No Content) になります。
@@ -1110,7 +1110,7 @@ Visual Studio 2013 と、ASP.NET Web API テンプレートを (Azure クラウ�
 
 このデータは、Microsoft Azure 管理ポータルからリアルタイムで表示できます。Web API の正常性を監視する WebTest を作成することもできます。WebTest では、Web API の指定した URI に定期的な要求を送信し、応答をキャプチャします。正常な応答の定義 (HTTP 状態コード 200 など) を指定し、要求でこの応答が返されない場合に、管理者に送信するアラートを準備できます。必要に応じて、管理者は Web API をホストするサーバーで障害が発生した場合にサーバーを再起動できます。
 
-詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](../articles/application-insights/app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
+詳細については、Microsoft Web サイトにある [ASP.NET での Application Insights の使用](../articles/application-insights/app-insights-asp-net.md)に関するページをご覧ください。
 
 ### API Management サービスを使用した Web API の監視
 
@@ -1131,7 +1131,7 @@ API Management サービスを使用して Web API を公開した場合、Micro
 ## 関連するパターン
 - [ファサード](http://en.wikipedia.org/wiki/Facade_pattern) パターンは、Web API にインターフェイスを提供する方法を記述します。
 
-## 詳細
+## 詳細情報
 - Web API を使用して REST ベースの Web サービスを構築する方法の詳細については、Microsoft Web サイトの「[Learn About ASP.NET Web API (ASP.NET Web API の詳細)](http://www.asp.net/web-api)」をご覧ください。
 - ASP.NET Web API フレームワークでの規約ベースのルーティングのしくみについては、Microsoft Web サイトの「[Routing in ASP.NET Web API (ASP.NET Web API におけるルーティング)](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api)」をご覧ください。
 - 属性ベースのルーティングの詳細については、Microsoft Web サイトの「[Attribute Routing in Web API 2 (Web API 2 における属性ルーティング)](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)」をご覧ください。
@@ -1147,8 +1147,8 @@ API Management サービスを使用して Web API を公開した場合、Micro
 - Web API への制御された安全なアクセスを提供する成果物を発行する方法については、Microsoft Web サイトの「[API Management](https://azure.microsoft.com/services/api-management/)」をご覧ください。
 - API Management REST API を使用して、カスタム管理アプリケーションを構築する方法については、Microsoft Web サイトの「[Azure API Management REST API リファレンス](https://msdn.microsoft.com/library/azure/dn776326.aspx)」をご覧ください。
 - Azure Traffic Manager を使用して、Web API をホストする Web サイトの複数のインスタンスに要求の負荷を分散する方法の概要については、Microsoft Web サイトの「[Traffic Manager のルーティング方法](../articles/traffic-manager/traffic-manager-routing-methods.md)」をご覧ください。
-- ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトの「[Application Insights - アプリケーションの状態と利用状況の監視を開始する](../articles/application-insights/app-insights-start-monitoring-app-health-usage.md)」をご覧ください。
+- ASP.NET Web API プロジェクトでの Application Insights のインストールと構成の詳細については、Microsoft Web サイトにある [ASP.NET での Application Insights の使用](../articles/application-insights/app-insights-asp-net.md)に関するページをご覧ください。
 - Visual Studio を使用した単体テストの作成と管理の詳細については、Microsoft Web サイトの「[単体テストを使用したコードの検証](https://msdn.microsoft.com/library/dd264975.aspx)」をご覧ください。
 - Visual Studio Ultimate を使用して、Web パフォーマンスおよびロード テスト プロジェクトを作成する方法については、Microsoft Web サイトの[リリース前のアプリケーションでのパフォーマンス テストの実行](https://msdn.microsoft.com/library/dn250793.aspx)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

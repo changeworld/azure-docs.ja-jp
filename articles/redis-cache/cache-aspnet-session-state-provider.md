@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/12/2016"
+	ms.date="09/01/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の ASP.NET セッション状態プロバイダー
@@ -65,7 +65,7 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 -	**port**: SSL の設定に応じて、非 SSL ポートまたは SSL ポートを使用します。
 -	**accessKey**: キャッシュのプライマリ キーまたはセカンダリ キーを使用します。
 -	**ssl**: キャッシュとクライアント間の通信を SSL で保護する場合は true、保護しない場合は false を指定します。必ず適切なポートを指定してください。
-	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache の構成方法](cache-configure.md)」トピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
+	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 -	**throwOnError**: 失敗時に例外がスローされるようにする場合は true、操作の失敗時にエラー メッセージが表示されないようにする場合は false を指定します。静的 Microsoft.Web.Redis.RedisSessionStateProvider.LastException プロパティをチェックすることでエラーを確認できます。既定値は true です。
 -	**retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。既定値は 0 です。これは再試行されないことを意味します。
 -	**databaseId**: キャッシュ出力データに使用するデータベースを指定します。指定されていない場合は、既定値の 0 が使用されます。
@@ -98,7 +98,7 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 - SQL Server のセッション状態プロバイダー: このプロバイダーでは、SQL Server 内にセッション状態が格納されます。永続的なストレージにセッション状態を保持するには、このプロバイダーを使用する必要があります。Web アプリは拡張できますが、セッションに SQL Server を使用すると、Web アプリのパフォーマンスに影響を与えます。
 
-- Redis Cache セッション状態プロバイダーなどの分散型メモリ内セッション状態プロバイダー: このプロバイダーを使用すると、両方の長所を活用できます。Web アプリで、単純かつ高速で、スケーラブルなセッション状態プロバイダーを使用できます。ただし、このプロバイダーではセッション状態がキャッシュに格納されるため、一時的なネットワーク障害など、分散型メモリ内キャッシュとの通信時に関するすべての要素をアプリで考慮する必要があります。キャッシュの使用に関するベスト プラクティスについては、Microsoft のパターンとプラクティスの[Azure クラウド アプリケーションの設計と実装のガイダンス](https://github.com/mspnp/azure-guidance)に関するページの[キャッシュのガイダンス](https://github.com/mspnp/azure-guidance/blob/master/Caching.md)のセクションを参照してください。
+- Redis Cache セッション状態プロバイダーなどの分散型メモリ内セッション状態プロバイダー: このプロバイダーを使用すると、両方の長所を活用できます。Web アプリで、単純かつ高速で、スケーラブルなセッション状態プロバイダーを使用できます。ただし、このプロバイダーではセッション状態がキャッシュに格納されるため、一時的なネットワーク障害など、分散型メモリ内キャッシュとの通信時に関するすべての要素をアプリで考慮する必要があります。キャッシュの使用に関するベスト プラクティスについては、Microsoft のパターンとプラクティスの[Azure クラウド アプリケーションの設計と実装のガイダンス](https://github.com/mspnp/azure-guidance)に関するページの[キャッシュのガイダンス](../best-practices-caching.md)のセクションを参照してください。
 
 セッション状態とその他のベスト プラクティスの詳細については、[Web 開発に関するベスト プラクティス (Azure を使用した実際のクラウド アプリケーションの構築)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices) に関するページを参照してください。
 
@@ -106,4 +106,4 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 
 「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

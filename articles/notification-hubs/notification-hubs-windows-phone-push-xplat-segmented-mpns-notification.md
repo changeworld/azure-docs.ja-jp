@@ -21,7 +21,7 @@
 [AZURE.INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 
-##概要
+##Overview
 
 このトピックでは、Azure Notification Hubs を使用してニュース速報通知を Windows Phone 8.0/8.1 Silverlight アプリにブロードキャストする方法について説明します。Windows ストアまたは Windows Phone 8.1 アプリを対象としている場合は、[Windows ユニバーサル](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) バージョンを参照してください。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
@@ -187,7 +187,7 @@
         }
 
 
-    このクラスは、このデバイスが受信するニュースのカテゴリを格納するために分離されたストレージを使用します。そのストレージには、[テンプレート](notification-hubs-templates.md)通知登録を使用してこれらのカテゴリを登録するメソッドも格納されます。
+    このクラスは、このデバイスが受信するニュースのカテゴリを格納するために分離されたストレージを使用します。そのストレージには、[テンプレート](notification-hubs-templates-cross-platform-push-messages.md)通知登録を使用してこれらのカテゴリを登録するメソッドも格納されます。
 
 
 4. App.xaml.cs プロジェクト ファイルで、次のプロパティを **App** クラスに追加します。`<hub name>` プレースホルダーと `<connection string with listen access>` プレースホルダーを、通知ハブの名前と取得済みの *DefaultListenSharedAccessSignature* の接続文字列に置き換えます。
@@ -321,4 +321,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Windows Phone]: ??
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

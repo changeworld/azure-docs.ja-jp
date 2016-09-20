@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/07/2016"
+   	ms.date="09/02/2016"
    	ms.author="jgao"/>
 
 #.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
@@ -43,7 +43,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     |プロパティ|値|
     |--------|-----|
     |テンプレート|テンプレート/Visual C#/Windows/コンソール アプリケーション|
-    |名前|CreateHDICluster|
+    |Name|CreateHDICluster|
 
 5. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
@@ -394,4 +394,4 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 - [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
 - [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

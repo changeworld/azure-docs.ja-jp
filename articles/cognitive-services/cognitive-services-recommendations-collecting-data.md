@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/31/2016"
+	ms.date="09/06/2016"
 	ms.author="luisca"/>
 
 #  モデルをトレーニングするためのデータの収集 #
@@ -45,15 +45,15 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 
 特徴あり:
 
-    AAA04294,Office Language Pack Online DwnLd,Office, softwaretype=productivity, compatibility=Windows
-    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming, compatibility=iOS, agegroup=all
-    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia, hardwaretype=mobile
+    AAA04294,Office Language Pack Online DwnLd,Office,, softwaretype=productivity, compatibility=Windows
+    BAB04303,Minecraft DwnLd,Games, softwaretype=gaming,, compatibility=iOS, agegroup=all
+    C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia,, hardwaretype=mobile
 
 #### 形式の詳細
 
 | 名前 | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
 | Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 |
 | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
 | Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
@@ -78,6 +78,25 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 
 特徴は、カタログ データの一部としてインポートされた後、その順位 (またはモデル内での特徴の重要度) は、順位のビルドが実行されたときに関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
+
+###特徴はカテゴリ
+
+これは、カテゴリのような特徴を作成する必要があるという意味です。たとえば、"price=9.34" はカテゴリのような特徴ではありません。一方、"priceRange=Under5Dollars" のような特徴はカテゴリです。よくある別の間違いは、項目の名前を特徴として使用することです。このようにすると項目の名前が一意になるため、カテゴリを表さなくなります。特徴は、項目のカテゴリを表すようにしてください。
+
+
+###使用する特徴の種類と数
+
+
+推奨ビルドは最終的には、最大 20 個の特徴を持つモデルのビルドをサポートします。20 個を超える特徴をカタログ内の項目に割り当てることもできますが、順位付けのビルドを実行して上位の特徴のみを選択する必要があります (ランクが 2.0 以上の特徴は非常に優れています)。
+
+
+###特徴を実際に使用する場合
+
+特徴は、トランザクション情報のみに基づいて推奨を提供するのに十分なトランザクション データがない場合に、モデルによって使用されます。したがって、特徴が最も大きな影響を及ぼすのは、"コールド項目" (ほとんどトランザクションがない項目) です。すべての項目に十分なトランザクション情報がある場合は、特徴を使用してモデルを強化する必要がないこともあります。
+
+
+###製品の特徴の使用
+
 ビルドの一部として特徴を使用するには、次の手順を実行します。
 
 1. カタログをアップロードするときに、カタログに特徴が含まれていることを確認します。
@@ -85,6 +104,9 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 2. 順位付けのビルドをトリガーします。これで、特徴の重要度/順位の分析が行われます。
 
 3. 次のようにビルド パラメーターを設定して、推奨ビルドをトリガーします。useFeaturesInModel を true、allowColdItemPlacement を true に設定し、modelingFeatureList にはモデルの強化に使用する特徴のコンマ区切り一覧を設定します。詳細については、[Recommendations ビルド タイプのパラメーター](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d0)に関するページを参照してください。
+
+
+
 
 
 ## 使用状況データ ##
@@ -97,8 +119,8 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 
 | 名前 | 必須 | 型 | Description
 |-------|------------|------|---------------
-|ユーザー ID| はい|[A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 255 |ユーザーの一意識別子。
-|項目 ID|はい|[A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50|項目の一意識別子
+|ユーザー ID| はい|[A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 255 |ユーザーの一意識別子。
+|項目 ID|はい|[A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50|項目の一意識別子
 |Time|はい|YYYY/MM/DDTHH:MM:SS 形式の日付 (例: 2013/06/20T10:00:00)|データの時間。
 |イベント|いいえ | 次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| トランザクションの種類。 |
 
@@ -129,4 +151,4 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 
 モデルを作成したら、[オフライン評価](cognitive-services-recommendations-buildtypes.md)を実行して、モデルがどの程度正常に機能する可能性があるかを確認できます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->
