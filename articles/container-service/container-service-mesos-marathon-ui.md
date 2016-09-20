@@ -60,7 +60,7 @@ ID | nginx
 コンテナー ポートをエージェント上のポートに対して静的にマップするには、JSON モードを使用する必要があります。トグル スイッチを使用して、New Application (新しいアプリケーション) ウィザードを [**JSON Mode (JSON モード)**] に切り替えてください。その後、アプリケーション定義の `portMappings` セクションに次のように入力します。この例では、コンテナーのポート 80 を DC/OS エージェントのポート 80 にバインドしています。JSON モードで変更が済んだらウィザードを元のモードに切り替えてかまいません。
 
 ```none
-“hostPort”: 80,
+"hostPort": 80,
 ```
 
 ![New Application UI--port 80 example](media/dcos/dcos13.png)
@@ -101,4 +101,4 @@ Mesos と共に Azure Container Service を使用する方法の詳細
 
 > [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

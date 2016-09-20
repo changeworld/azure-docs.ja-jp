@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -43,4 +43,4 @@
 
 このチュートリアルは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/18/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Java で Azure Data Lake Store の使用を開始する
@@ -41,8 +41,7 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
 * Java Development Kit (JDK) 8 (Java バージョン 1.8 を使用)。
 * IntelliJ または別の適切な Java 開発環境。この手順は省略可能ですが、実施することをお勧めします。以下の手順では、IntelliJ を使用します。
 * **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-* **Azure Active Directory アプリケーションを作成する**Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
+* **Azure Active Directory アプリケーションを作成する**。Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
 	* **対話型の認証**を使用する場合: Azure Active Directory で**ネイティブ クライアント アプリケーション**を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
 		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
 		- 委任されたアクセス許可を設定する
@@ -280,4 +279,4 @@ Azure Data Lake Store Java SDK を使用して、Azure Data Lake アカウント
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

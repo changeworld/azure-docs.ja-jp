@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/06/2016"
+	ms.date="09/07/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービス *(プレビュー)* - Azure AD ドメイン サービスとのパスワード同期を有効にする
 
 ## タスク 5: AAD ドメイン サービスとのパスワード同期を有効にする (同期された Azure AD テナントの場合)
-Azure AD ディレクトリに対する Azure AD ドメイン サービスを有効にしたら、Azure AD ドメイン サービスとの間でパスワードの同期を有効にします。これにより、ユーザーは、会社の資格情報を使用してドメインにサインインできます。
+Azure AD ディレクトリに対する Azure AD ドメイン サービスを有効にしたら、Azure AD ドメイン サービスとの間でパスワードの同期を有効にします。そのようにすると、ユーザーは会社の資格情報を使用してドメインにサインインできます。
 
 実行する手順は、組織の Azure AD ディレクトリがクラウド専用であるか、Azure AD Connect を使用してオンプレミスのディレクトリと同期するように設定されているかによって異なります。
 
@@ -32,15 +32,15 @@ Azure AD ディレクトリに対する Azure AD ドメイン サービスを有
 <br>
 
 ### 同期テナント - NTLM と Kerberos の資格情報ハッシュの Azure AD との同期を有効にする
-組織の Azure AD テナントが Azure AD Connect を使用してオンプレミスのディレクトリと同期するように設定されている場合は、NTLM/Kerberos 認証で必要な資格情報のハッシュを同期するように Azure AD Connect を構成する必要があります。これらのハッシュは、既定では Azure AD と同期しません。次の手順に従って、Azure AD テナントとのハッシュの同期を有効にできます。
+同期対象の Azure AD テナントは、Azure AD Connect を使用して組織のオンプレミス ディレクトリと同期するように設定されます。Azure AD Connect は、既定では NTLM および Kerberos 資格情報ハッシュを Azure AD と同期しません。Azure AD Domain Services を使用するには、NTLM および Kerberos 認証に必要な資格情報ハッシュを同期するように Azure AD Connect を構成する必要があります。以下の手順では、必要な資格情報ハッシュの Azure AD テナントとの同期を有効にします。
 
 #### Azure AD Connect のインストールまたは更新
 
-Azure AD Connect の最新の推奨リリースを、ドメイン参加コンピューターにインストールする必要があります。Azure AD Connect の既存のインスタンスが設定されている場合は、Azure AD Connect の GA ビルドを使用するように更新する必要があります。既に修正されている既知の問題やバグを避けるために、必ず最新バージョンの Azure AD Connect を使用してください。
+Azure AD Connect の最新の推奨リリースをドメイン参加コンピューターにインストールする必要があります。Azure AD Connect の既存のインスタンスが設定されている場合は、Azure AD Connect の最新バージョンを使用するように更新する必要があります。既に修正されている既知の問題/バグを回避するために、常に最新バージョンの Azure AD Connect を使用してください。
 
 **[Azure AD Connect のダウンロード](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-推奨バージョン: **1.1.189.0** (2016 年 6 月 3 日公開)
+推奨バージョン: **1.1.281.0** - 2016 年 9 月 7 日公開
 
   > [AZURE.WARNING] 従来のパスワードの資格情報 (NTLM/Kerberos 認証で必要) で Azure AD テナントとの同期を有効にするには、Azure AD Connect の最新の推奨リリースをインストールする必要があります。この機能は、旧リリースの Azure AD Connect または従来の DirSync ツールでは使用できません。
 
@@ -49,7 +49,7 @@ Azure AD Connect のインストール手順については、次の記事を参
 
 #### Azure AD へのパスワードの完全同期を強制する
 
-パスワードの完全同期を強制し、オンプレミスの全ユーザーの (NTLM/Kerberos 認証で必要な資格情報のハッシュを含む) パスワード ハッシュが Azure AD テナントと同期できるようにするには、各 AD フォレストで、次の PowerShell スクリプトを実行します。
+各 AD フォレストで以下の PowerShell スクリプトを実行して、完全パスワード同期を強制的に適用し、すべてのオンプレミス ユーザーの資格情報ハッシュが Azure AD テナントと同期できるようにします。このスクリプトは、NTLM/Kerberos 認証に必要な資格情報ハッシュが Azure AD テナントと同期されるようにします。
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
@@ -65,7 +65,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true  
 ```
 
-ディレクトリのサイズ (ユーザーやグループの数など) によっては、資格情報が Azure AD と同期されるまでに時間がかかります。資格情報ハッシュが Azure AD と同期されるとすぐに、Azure AD ドメイン サービスでパスワードを使用できるようになります。
+ディレクトリのサイズ (ユーザーやグループの数など) によっては、資格情報ハッシュが Azure AD と同期されるまでに時間がかかります。資格情報ハッシュが Azure AD と同期されるとすぐに、Azure AD ドメイン サービスでパスワードを使用できるようになります。
 
 
 <br>
@@ -80,4 +80,4 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 - [Azure AD ドメイン サービスで管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

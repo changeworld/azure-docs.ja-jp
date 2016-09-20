@@ -4,7 +4,7 @@
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/02/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # REST API で Azure Data Lake Store の使用を開始する
@@ -34,8 +34,7 @@
 ## 前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Azure Active Directory アプリケーションを作成する**Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
+- **Azure Active Directory アプリケーションを作成する**。Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
 	* **対話型の認証** (この記事で使用する認証方法) を使用する場合: Azure Active Directory で **[ネイティブ クライアント アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
 		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
 		- 委任されたアクセス許可を設定する
@@ -61,9 +60,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-
-	>[AZURE.NOTE] \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。したがって、https://localhost は `https%3A%2F%2Flocalhost` を使用します。
-
+	>[AZURE.NOTE] <REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。したがって、https://localhost では `https%3A%2F%2Flocalhost` を使用します。
 
 	このチュートリアルでは、上記 URL のプレースホルダーの値を置換し、Web ブラウザーのアドレス バーに貼り付けることができます。ユーザーは、Azure ログインを使用して認証するためにリダイレクトされます。正常にログインすると、ブラウザーのアドレス バーに応答が表示されます。応答は次の形式になります。
 		
@@ -78,9 +75,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F client_id=<CLIENT-ID> \
         -F code=<AUTHORIZATION-CODE>
 
-
-	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。  
-
+	>[AZURE.NOTE] この場合、<REDIRECT-URI> をエンコードする必要はありません。
 
 3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
 
@@ -94,7 +89,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
       		-F client_id=<CLIENT-ID> \
       		-F refresh_token=<REFRESH-TOKEN>
  
-対話型ユーザー認証の詳細については、「[Authorization code grant flow (承認コード付与フロー)](https://msdn.microsoft.com/library/azure/dn645542.aspx)」を参照してください。
+対話型ユーザー認証の詳細については、[承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
 ### 非対話型
 
@@ -106,17 +101,17 @@ Azure Active Directory を使用した認証方法には 2 つあります。
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-この要求の出力には、後で REST API 呼び出しと共に渡される認証トークン (以下の出力の `access-token` で示される) が取り込まれます。この認証トークンをテキスト ファイルに保存します。この記事の後半で必要となります。
+この要求の出力には、後で REST API 呼び出しで渡す認証トークン (以下の出力の `access-token` で示される) が取り込まれます。この認証トークンをテキスト ファイルに保存します。この記事の後半で必要となります。
 
 	{"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-この記事では、**非対話型**のアプローチを使用します。非対話型 (サービス間呼び出し) の詳細については、「[Service to service calls using credentials (資格情報を使用したサービス間呼び出し)](https://msdn.microsoft.com/library/azure/dn645543.aspx)」を参照してください。
+この記事では、**非対話型**のアプローチを使用します。非対話型 (サービス間呼び出し) の詳細については、[資格情報を使用したサービス間呼び出し](https://msdn.microsoft.com/library/azure/dn645543.aspx)に関するページを参照してください。
 
 ## Data Lake Store アカウントを作成する
 
-この操作は、[ここ](https://msdn.microsoft.com/library/mt694078.aspx)で定義されている REST API をベースにしています。
+この操作は、[ここ](https://msdn.microsoft.com/library/mt694078.aspx)で定義されている REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -134,7 +129,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS
 
@@ -148,7 +143,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS
 
@@ -179,7 +174,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 WebHDFS REST API を使用したデータのアップロードは、次に説明するように 2 段階のプロセスとなります。
 
-1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。次のコマンドで、**<yourstorename>** はご自分の Data Lake Store 名に置き換えます。
+1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。次のコマンドで、**<yourstorename>** は自分の Data Lake Store 名に置き換えます。
 
 		curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=CREATE
 
@@ -194,7 +189,7 @@ WebHDFS REST API を使用したデータのアップロードは、次に説明
 		...
 		...
 
-2. 次に、応答内の **Location** プロパティに関して一覧された URL に対して別の HTTP PUT 要求を送信する必要があります。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+2. 次に、応答内の **Location** プロパティに関して一覧表示された URL に対して別の HTTP PUT 要求を送信する必要があります。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 		curl -i -X PUT -T myinputfile.txt -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=CREATE&write=true
 
@@ -215,7 +210,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 * まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` に対して GET 要求を送信します。これにより、次の GET 要求を送信する場所が返されます。
 * 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` に対して GET 要求を送信します。これにより、ファイルの内容が表示されます。
 
-ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、`-L` パラメーターを使用して最初の要求を送信できます。`-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。最後に、次のように、すべての要求呼び出しの出力が表示されます。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、`-L` パラメーターを使用して最初の要求を送信できます。`-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。最後に、次のように、すべての要求呼び出しの出力が表示されます。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
 
@@ -235,7 +230,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-ファイルの名前を変更するには、次の cURL コマンドを使用します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+ファイルの名前を変更するには、次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt
 
@@ -250,7 +245,7 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用して、ファイルを削除します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用して、ファイルを削除します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE
 
@@ -263,9 +258,9 @@ Data Lake Store アカウントからのデータの読み取りは、2 段階�
 
 ## Data Lake Store アカウントを削除する
 
-この操作は、[ここ](https://msdn.microsoft.com/library/mt694075.aspx)で定義されている REST API をベースにしています。
+この操作は、[ここ](https://msdn.microsoft.com/library/mt694075.aspx)で定義されている REST API 呼び出しをベースにしています。
 
-Data Lake Store アカウントを削除するには、次の cURL コマンドを使用します。**<yourstorename>** は、ご自分の Data Lake Store 名に置き換えます。
+Data Lake Store アカウントを削除するには、次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
 	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
 
@@ -280,4 +275,4 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
 - [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

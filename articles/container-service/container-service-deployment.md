@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/13/2016"
    ms.author="rogardle"/>
 
 # Azure コンテナー サービス クラスターのデプロイ
@@ -115,8 +115,6 @@ azure config mode arm
 > [AZURE.NOTE] このコマンドを実行すると、シェルからデプロイのパラメーター値の入力が求められます。
 
 ```bash
-# sample deployment
-
 azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
 ```
 
@@ -125,18 +123,14 @@ azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri 
 このバージョンのコマンドでは、パラメーターを対話で定義する必要があります。JSON で書式設定された文字列などのパラメーターを指定する場合、`-p` スイッチでそれを実行できます。次に例を示します。
 
  ```bash
- # sample deployment
-
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
- ```
+```
 
 または、`-e` スイッチを利用し、JSON で書式設定されたパラメーター ファイルを指定することもできます。
 
- ```bash
- # sample deployment
-
+```bash
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -e PATH/FILE.JSON
- ```
+```
 
 `azuredeploy.parameters.json` という名前のサンプル パラメーター ファイルを参照するには、GitHub で Azure コンテナー サービス テンプレートと共にこのファイルを検索します。
 
@@ -170,10 +164,8 @@ New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
 リソース グループを作成したら、次のコマンドでクラスターを作成できます。目的のテンプレートの URI は `-TemplateUri` パラメーターに指定されます。このコマンドを実行すると、PowerShell からデプロイのパラメーター値の入力が求められます。
 
 ```powershell
-# sample deployment
-
 New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
- ```
+```
 
 ### テンプレート パラメーターを指定する
 
@@ -182,8 +174,6 @@ PowerShell に慣れている場合は、マイナス記号 (-) を入力して 
 パラメーターが含まれている完全なコマンドを以下に示します。リソースの名前には独自の値を指定できます。
 
 ```powershell
-# sample deployment
-
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
 
@@ -195,4 +185,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-Templa
 - [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
 - [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

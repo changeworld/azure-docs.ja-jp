@@ -24,7 +24,7 @@
 ## 前提条件
 
  - Visual Studio 2013 または 2015
- - [Python Tools for Visual Studio][] \(PTVS)
+ - [Python Tools for Visual Studio][] (PTVS)
  - [Azure SDK Tools for VS 2013][] または [Azure SDK Tools for VS 2015][]
  - [Python 2.7 (32 ビット)][] または [Python 3.5 (32 ビット)][]
 
@@ -61,7 +61,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 
 ## クラウド サービスに Python をインストールする
 
->[AZURE.WARNING] \(この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
+>[AZURE.WARNING] (この記事が最後に更新された時点で) Visual Studio と共にインストールされるセットアップ スクリプトは動作しません。このセクションでは、回避策について説明します。
 
 セットアップ スクリプトの一番の問題は、Python がインストールされないことです。最初に、2 つの[スタートアップ タスク](cloud-services-startup-tasks.md)を [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイルに定義します。最初のタスク (**PrepPython.ps1**) は、Python ランタイムをダウンロードしてインストールします。2 番目のタスク (**PipInstaller.ps1**) は、pip を実行して、すべての依存関係をインストールします。
 
@@ -240,6 +240,8 @@ if (-not $is_emulated){
 
 #### LaunchWorker.ps1 を変更する
 
+>[AZURE.NOTE] **worker ロール** プロジェクトの場合は、スタートアップ ファイルを実行するために **LauncherWorker.ps1** ファイルが必要です。**Web ロール** プロジェクトでは、スタートアップ ファイルがプロジェクト プロパティで定義されています。
+
 **bin\\LaunchWorker.ps1** は本来多くの準備作業を行うために作成されていますが、実際には機能しません。このファイルの内容を次のスクリプトに置き換えます。
 
 このスクリプトは、Python プロジェクトの **worker.py** ファイルを呼び出します。**PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.5 が使用されます。
@@ -364,4 +366,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Python 2.7 (32 ビット)]: https://www.python.org/downloads/
 [Python 3.5 (32 ビット)]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

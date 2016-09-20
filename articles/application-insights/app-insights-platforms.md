@@ -37,7 +37,7 @@
 + [ASP.NET - 既にライブとなっているアプリ用](app-insights-monitor-performance-live-website-now.md)
 + [ASP.NET 5](app-insights-asp-net-core.md)
 + [Android](https://github.com/Microsoft/ApplicationInsights-Android) (HockeyApp)
-+ [Azure Web アプリと VM](../azure-portal/insights-perf-analytics.md)
++ [Azure Web アプリと VM](app-insights-azure-web-apps.md)
 + [Azure Cloud Services](app-insights-cloudservices.md) &#151; Web ロールと worker ロールの両方を含む
 + [Microsoft Dynamics からの CRM オンライン](app-insights-sample-mscrm.md)
 + [Docker](app-insights-docker.md)
@@ -84,4 +84,4 @@
 
 使用する言語やプラットフォーム用の SDK がない場合は、自分で作成するという方法があります。 [GitHub の Application Insights SDK プロジェクト](https://github.com/Microsoft/AppInsights-Home)に示されている既存の SDK のコードをご覧ください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

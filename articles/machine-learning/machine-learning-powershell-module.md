@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -55,4 +55,4 @@ Machine Learning PowerShell を初めて使用する方は、GitHub から[リ�
 
 PowerShell モジュールは、このプレビュー期間中に引き続き改善され、拡張される予定です。「[Cortana Intelligence and Machine Learning Blog (Cortana Intelligence と Machine Learning のブログ)](https://blogs.technet.microsoft.com/machinelearning/)」で最新情報をチェックしてください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->
