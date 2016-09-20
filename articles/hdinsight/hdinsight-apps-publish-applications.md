@@ -52,7 +52,7 @@ Azure Marketplace へのアプリケーションの発行は 2 つの段階を�
 	}
 
 
-|フィールド | Description | 指定できる値|
+|フィールド | 説明 | 指定できる値|
 |-------|---------------|----------------|
 |types |アプリケーションと適合するクラスターの種類。 |Hadoop、HBase、Storm、Spark のいずれか (またはその任意の組み合わせ)|
 |tiers |アプリケーションと適合するクラスターのプラン。 |Standard または Premium (またはその両方)|
@@ -71,11 +71,11 @@ HDInsight アプリケーションのインストールに必要なファイル�
 		
 	>スクリプト名は、次の 3 つの部分で構成されていることに注意してください。
 		
-	>	1. A script name prefix, which shall include either the application name or a name relevant to the application.
-	>	2. A "-" for readability.
-	>	3. A unique string function with the application name as the parameter.
+	>	1. スクリプト名のプレフィックス。アプリケーション名またはアプリケーションに関連する名前のどちらかが含まれている必要があります。
+	>	2. "-" (読みやすくするため)。
+	>	3. 一意の文字列の関数 (パラメーターとしてアプリケーション名を指定)。
 
-	>	An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	上記の例の場合、保存されたスクリプト アクションの一覧では hue-install-v0-4wkahss55hlas となります。JSON ペイロードのサンプルについては、[https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json) 参照してください。
 
 - 必要なすべてのスクリプト。
 
