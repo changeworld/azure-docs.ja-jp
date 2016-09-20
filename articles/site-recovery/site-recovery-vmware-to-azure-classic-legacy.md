@@ -75,7 +75,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
 
-	> [AZURE.NOTE] [Migration of storage accounts]Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのストレージ アカウントの移行はサポートされていません。
+	> [AZURE.NOTE] Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../resource-group-move-resources.md)はサポートされていません。
 
 10. **[アカウントの指定]** で、モビリティ サービスの新しいバージョンをプッシュするため、マシンへのアクセス用にプロセス サーバーに対して作成したアカウントを選択します。
 
@@ -732,7 +732,7 @@ Site Recovery コンポーネントは随時更新されます。新しい更新
 1. マシンの状態が **[保護されています]** になると、マシンのフェールオーバーのプロパティを構成できます。保護グループの詳細で、マシンを選択し、**[構成]** タブを開きます。
 2. フェールオーバー後に Azure のマシンに付けられる名前と Azure 仮想マシンのサイズを変更できます。フェールオーバー後にマシンが接続する Azure ネットワークを選択することもできます。
 
-	> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
+	> [AZURE.NOTE] Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
 
 	![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure-classic-legacy/vm-props.png)
 
