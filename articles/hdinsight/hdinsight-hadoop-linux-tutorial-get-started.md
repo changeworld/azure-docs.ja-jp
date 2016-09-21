@@ -4,7 +4,7 @@
    	services="hdinsight"
    	documentationCenter=""
    	authors="mumian"
-   	manager="paulettm"
+   	manager="jhubbard"
    	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
    	ms.topic="hero-article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="06/13/2016"
+   	ms.date="09/14/2016"
    	ms.author="jgao"/>
 
 # Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する
@@ -35,19 +35,19 @@
 
 ## クラスターの作成
 
-Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。このセクションでは、[Azure ARM テンプレート](../resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。ARM テンプレートは完全にカスタマイズ可能です。そのため、HDInsight のような Azure リソースの作成が簡単になります。このチュートリアルを利用するにあたり、Azure ARM テンプレートの使用経験は必要ありません。その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。このチュートリアルで使う ARM テンプレートは次のパブリック BLOB コンテナー内にあります。 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json)
+Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。このセクションでは、[Azure Resource Manager テンプレート](../resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。Resource Manager テンプレートは完全にカスタマイズ可能です。そのため、HDInsight のような Azure リソースの作成が簡単になります。このチュートリアルを利用するにあたり、Resource Manager テンプレートの使用経験は必要ありません。その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。このチュートリアルで使う Resource Manager テンプレートは、パブリック BLOB コンテナー内にあります ([https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight.json))。
 
-1. 次の画像をクリックして Azure にサインインし、Azure ポータルで ARM テンプレートを開きます。 
+1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。
 
-	<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. **[パラメーター]** ブレードで、次の各項目を入力します。
 
-    ![HDInsight Linux get started arm template on portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png)
+    ![HDInsight Linux get started Resource Manager template on portal](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png)
 
     - **ClusterName**: 作成する Hadoop クラスターの名前を入力します。
     - **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
-    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。 
+    - **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。この名前は変更できます。
     
     その他のパラメーターは、このチュートリアルを進めるうえでは省略可能です。そのまま残すことができます。
     
@@ -56,8 +56,8 @@ Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを
 3. **[OK]** をクリックしてパラメーターを保存します。
 4. **[カスタム デプロイ]** ブレードで、**新しいリソース グループ名**を入力してリソース グループを新規作成します。リソース グループとは、クラスター、依存するストレージ アカウントなどをグループ化しているコンテナーです。リソース グループの場所は、クラスターの場所とは異なる場合があります。
 5. **[法律条項]** をクリックし、**[作成]** をクリックします。
-6. **[ダッシュボードにピン留めする]** チェック ボックスがオンになっていることを確認して、**[作成]** をクリックします。"**テンプレートのデプロイのデプロイ中**" という新しいタイルが表示されます。クラスターの作成には約 20 分かかります。 
-7.  クラスターが作成されると、タイルのキャプションが、指定したリソース グループ名に変更されます。ポータルに、2 つのブレードが自動的に開き、クラスターとクラスター設定が表示されます。 
+6. **[ダッシュボードにピン留めする]** チェック ボックスがオンになっていることを確認して、**[作成]** をクリックします。"**テンプレートのデプロイのデプロイ中**" という新しいタイルが表示されます。クラスターの作成には約 20 分かかります。
+7.  クラスターが作成されると、タイルのキャプションが、指定したリソース グループ名に変更されます。ポータルに、2 つのブレードが自動的に開き、クラスターとクラスター設定が表示されます。
 
     ![HDInsight Linux get started cluster settings](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png)
 
@@ -71,7 +71,7 @@ Hadoop ジョブのほとんどはバッチ ジョブです。クラスターを
 2. Hadoop ユーザー名と前のセクションで指定したパスワードを入力します。既定のユーザー名は **admin** です。
 3. 次のスクリーンショットのように **[ハイブ ビュー]**を開きます。
 
-    ![Selecting ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
+    ![Selecting Ambari views](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png)
 4. ページの __[Query Editor]__ セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
 
 		SHOW TABLES;
@@ -108,7 +108,7 @@ Hive ジョブが完了したら、[結果を Azure SQL データベースまた
 
 ## 次のステップ
 
-このチュートリアルでは、ARM テンプレートを利用し、Linux ベースの HDInsight クラスターを作成する方法と基本的な Hive クエリを実行する方法について説明しました。
+このチュートリアルでは、Resource Manager テンプレートを利用し、Linux ベースの HDInsight クラスターを作成する方法と基本的な Hive クエリを実行する方法について説明しました。
 
 HDInsight でデータを分析する方法の詳細については、次を参照してください。
 
@@ -161,4 +161,4 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

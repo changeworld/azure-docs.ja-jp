@@ -3,7 +3,7 @@
    description="Power BI Embedded の行レベルのセキュリティの詳細"
    services="power-bi-embedded"
    documentationCenter=""
-   authors="minewiskan"
+   authors="mgblythe"
    manager="NA"
    editor=""
    tags=""/>
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="powerbi"
    ms.date="07/05/2016"
-   ms.author="owend"/>
+   ms.author="mblythe"/>
 
 # Power BI Embedded の行レベルのセキュリティ
 
@@ -102,4 +102,4 @@ username プロパティが存在する場合は、roles にも 1 つ以上の�
 ## 関連項目
 [Power の行レベルのセキュリティ (RLS)](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-admin-rls/)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

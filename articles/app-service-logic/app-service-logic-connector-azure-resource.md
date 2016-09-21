@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/31/2016"
+   ms.date="09/01/2016"
    ms.author="stepsic"/>
 
 # Azure リソース コネクタの使用開始とロジック アプリへの追加
@@ -32,7 +32,7 @@ David Ebbo の[ブログ記事](http://blog.davidebbo.com/2014/12/azure-service-
 ### トリガー
 Azure リソース コネクタでは、2 つのトリガーがサポートされています。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 Event occurs | ご利用のサブスクリプション内のリソースに対してイベントが発生したときに作用するトリガーです。
 Metric crosses threshold | メトリックが特定のしきい値を満たしたときに作用するトリガーです。
@@ -43,7 +43,7 @@ Metric crosses threshold | メトリックが特定のしきい値を満たし�
 
 **リソース グループ**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 List resource groups | サブスクリプションに含まれているすべてのリソース グループをリストします。
 Get resource group | リソース グループをその ID で取得します。
@@ -52,7 +52,7 @@ Delete resource group | リソース グループを削除します。
 
 **リソース**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 List resources | サブスクリプションに含まれているリソースを各種フィルターでリストします。
 Get resource | 単一のリソースをそのリソース ID で取得します。
@@ -62,13 +62,13 @@ Delete resource | リソースを削除します。
 
 **リソース プロバイダー**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 List resource providers | サブスクリプション内の利用可能なリソース プロバイダーをすべてリストします。
 
 **リソース グループ デプロイ**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 List deployments | リソース グループに含まれているデプロイをすべてリストします。
 Get deployment | テンプレート デプロイをその ID で取得します。
@@ -76,13 +76,13 @@ Create deployment | テンプレートを指定して新しいリソース グ�
 
 リソースについての**イベント**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 Get events | サブスクリプション内のイベントやリソースのイベントを取得します。
 
 リソースについての**メトリック**に関しては、次のアクションを実行できます。
 
-名前 | 説明
+名前 | Description
 ---- | -----------
 Get metrics | リソース ID のメトリックを取得します。
 
@@ -98,4 +98,4 @@ Get metrics | リソース ID のメトリックを取得します。
 <!--Links -->
 [Creating a Logic app]: app-service-logic-create-a-logic-app.md
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,10 +13,10 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="05/27/2016"
+   ms.date="09/02/2016"
    ms.author="jgao"/>
 
-# HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用  
+# HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用  
 
 HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
@@ -36,10 +36,10 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 **Zookeeper のホスト名を確認するには**
 
-1. **https://<ClusterName>.azurehdinsight.net/** にアクセスして、Ambari を開きます。
+1. **https://<ClusterName>.azurehdinsight.net** にアクセスして Ambari を開きます。
 2. HTTP (クラスター) ユーザー名とパスワードを入力してログインします。
 3. 左側のメニューで **[Zookeeper]** をクリックします。リストに 3 つの **Zookeeper サーバー**が表示されます。
-4. リストの **ZooKeeper サーバー** のいずれかをクリックします。[概要] ウィンドウで**ホスト名**を確認します。ホスト名は、*zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net* のように表示されます。
+4. リストの **ZooKeeper サーバー**のいずれかをクリックします。[概要] ウィンドウで**ホスト名**を確認します。ホスト名は、*zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net* のように表示されます。
 
 **SQLLine を使用するには**
 
@@ -71,7 +71,7 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
 - 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 - 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-- 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。 
+- 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
 - 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析する](http://en.wikipedia.org/wiki/Sentiment_analysis)方法について説明します。
 
 [azure-portal]: https://portal.azure.com
@@ -95,4 +95,4 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

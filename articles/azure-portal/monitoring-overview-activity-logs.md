@@ -39,7 +39,7 @@ Azure ポータル、CLI、PowerShell コマンドレット、Insights REST API 
 - アクティビティ ログの送信先 (ストレージ アカウントまたは Event Hubs)
 - 送信するイベント カテゴリ (Write、Delete、Action など)
 - エクスポートするリージョン (場所)
-- アクティビティ ログをストレージ アカウントに保持する期間。リテンション期間が 0 日の場合、ログは永続的に保持されます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
+- アクティビティ ログをストレージ アカウントに保持する期間。リテンション期間が 0 日の場合、ログは永続的に保持されます。それ以外の場合、値は 1 ～ 2,147,483,647 の範囲の任意の日数にすることができます。保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合 (Event Hubs または OMS オプションだけが選択されている場合)、保持ポリシーは無効になります。
 
 これらの設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションを使用して構成することも、[REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使用してプログラムによって構成することもできます。1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
@@ -52,7 +52,7 @@ Azure ポータルの [エクスポート] オプションを使用して、ア�
 2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
 
     ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. 表示されるブレードで、イベントをエクスポートするリージョン、イベントの保存先となるストレージ アカウント (およびイベントをストレージに保持する日数)、イベントをストリーミングするための Event Hubs を作成する Service Bus 名前空間を選択できます。
+3. 表示されるブレードで、イベントをエクスポートするリージョン、イベントの保存先となるストレージ アカウント (およびイベントをストレージに保持する日数。0 日にすると、ログはいつまでも保持されます)、イベントをストリーミングするための Event Hubs を作成する Service Bus 名前空間を選択できます。
 
     ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
 4. **[保存]** をクリックして設定を保存します。設定はサブスクリプションにすぐに適用されます。
@@ -74,7 +74,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId | なし | アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId | なし | Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
 | 場所 | はい | アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays | はい | イベントを保持する日数。値が 0 の場合、ログは無期限に保存されます。 |
+| RetentionInDays | はい | イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
 | カテゴリ | なし | 収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
 
 #### ログ プロファイルの削除
@@ -103,7 +103,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 | storageId | なし | アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId | なし | Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
 | 場所 | はい | アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| retentionInDays | はい | イベントを保持する日数。値が 0 の場合、ログは無期限に保存されます。 |
+| retentionInDays | はい | イベントを保持する日数。1 ～2,147,483,647 の範囲。値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
 | categories | なし | 収集するイベント カテゴリのコンマ区切りリスト。指定できる値は、Write、Delete、Action です。 |
 
 #### ログ プロファイルの削除
@@ -223,4 +223,4 @@ azure insights logprofile delete --name my_log_profile
 - [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../resource-group-audit.md)
 - [Azure アクティビティ ログを Event Hubs にストリーミングする](./monitoring-stream-activity-logs-event-hubs.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

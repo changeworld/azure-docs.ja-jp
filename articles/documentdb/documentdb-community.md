@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="08/30/2016"
+  ms.date="09/01/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -120,9 +120,9 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Capital City .NET Users Group](https://www.meetup.com/tally-dot-net/events/233070827/) | Santosh Hari | タラハッシー (フロリダ州) | 2016 年 9 月 1 日 | 該当なし |
 | [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu、Tara Jana | アトランタ (ジョージア州) | 2016 年 9 月 26 ～ 30 日 | [#MSIgnite](https://twitter.com/MS_Ignite) |
 | [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | TBD | ニューヨーク州ニューヨーク | 2016 年 9 月 26 ～ 29 日 | [#StrataConf](https://twitter.com/strataconf) |
+| [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) | Santosh Hari | タラハッシー (フロリダ州) | 2016 年 11 月 3 日 | 該当なし |
 
 
 *イベントで講演を行ったり、イベントを主催していますか。 お手伝いできることがあれば[お知らせください](mailto:askdocdb@microsoft.com)。*
@@ -268,4 +268,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

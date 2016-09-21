@@ -21,9 +21,9 @@
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-##概要
+##Overview
 
-Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](notification-hubs-registration-management.md#registration-management-from-a-backend)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。このチュートリアルは、「[Notification Hubs の使用 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)」チュートリアルで作成した通知ハブが基になっています。
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。[アプリ バックエンドからの登録管理](notification-hubs-registration-management.md#registration-management-from-a-backend)に関するガイダンス トピックに示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。このチュートリアルは、「[Notification Hubs の使用 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)」チュートリアルで作成した通知ハブが基になっています。
 
 > [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
 
@@ -242,7 +242,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
             }
         }
 
-	プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「*アプリ バックエンドからの登録*」で説明しているとおり、Notification Hubs によって作成された [registrationIds](notification-hubs-registration-management.md#registration-management-from-a-backend) もローカルに格納されます。**[ログイン]** ボタンをクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
+	プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「*アプリ バックエンドからの登録*」で説明しているとおり、Notification Hubs によって作成された [registrationIds](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) もローカルに格納されます。**[ログイン]** ボタンをクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
 
 5. `MainActivity` クラスを削除するか、`NotificationHub` のプライベート フィールドをコメント アウトして、`RegisterClient` クラスのフィールドと、ASP.NET バックエンドのエンドポイントの文字列を追加します。必ず、前に取得したバックエンド エンドポイントで `<Enter Your Backend Endpoint>` を置き換えてください。たとえば、「`http://mybackend.azurewebsites.net`」のように入力します。
 
@@ -432,4 +432,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

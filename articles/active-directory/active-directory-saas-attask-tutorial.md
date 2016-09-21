@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -41,13 +41,13 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの @Task の追加 
+1. ギャラリーからの @Task の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -56,7 +56,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
 **ギャラリーから @Task を追加するには、次の手順に従います。**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
 	![Active Directory][1]
 
@@ -131,29 +131,29 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 2. **[Single Sign On Configuration]** に移動します。
 
 
-1. **[Single Sign-On]** ダイアログ ボックスで、次の手順を実行します。
+1. **[Single Sign-On (シングル サインオン)]** ダイアログ ボックスで、次の手順を実行します。
 
-	![シングル サインオンの構成][23]
+	![Configure Single Sign-On][23]
 
     a.**[Type]** で **[SAML 2.0]** を選択します。
 
     b.**Service Provider ID** を選択します。
 
-    c.Azure クラシック ポータルで、**[リモート ログイン URL]** をコピーし、**[Login Portal URL]** ボックスに貼り付けます。
+    c.Azure クラシック ポータルで、**[リモート ログイン URL]** をコピーし、**[Login Portal URL (ログイン ポータル URL)]** ボックスに貼り付けます。
 
-    d.Azure クラシック ポータルで、**[シングル サインアウト サービス URL]** をコピーし、**[Sign-Out URL]** ボックスに貼り付けます。
+    d.Azure クラシック ポータルで、**[シングル サインアウト サービス URL]** をコピーし、**[Sign-Out URL (サインアウト URL)]** ボックスに貼り付けます。
 
-    e.Azure クラシック ポータルで **[パスワードの URL の変更]** をコピーし、**[Change Password URL]** ボックスに貼り付けます。
+    e.Azure クラシック ポータルで **[パスワードの URL の変更]** をコピーし、**[Change Password URL (パスワードの URL の変更)]** ボックスに貼り付けます。
 
-    e.**[保存]** をクリックします。
+    e.[**Save**] をクリックします。
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-	![Azure AD Connect の概要][10]
+	![Azure AD Connect とは][10]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-	![What is Azure AD Connect][11]
+	![Azure AD Connect とは][11]
 
 
 
@@ -311,4 +311,4 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 [204]: ./media/active-directory-saas-attask-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-attask-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

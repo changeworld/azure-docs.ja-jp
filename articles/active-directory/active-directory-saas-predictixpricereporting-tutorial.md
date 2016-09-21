@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/01/2016"
 	ms.author="jeedes"/>
 
 
@@ -173,7 +173,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_05.png)
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-predictixpricereporting-tutorial/create_aaduser_05.png)
 
     a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
@@ -270,4 +270,4 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 [204]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-predictixpricereporting-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

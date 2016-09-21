@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/09/2016"
+	ms.date="09/02/2016"
 	ms.author="jgao"/>
 
 # ブートストラップを使って HDInsight クラスターをカスタマイズする
@@ -46,7 +46,7 @@
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
     
 - .NET SDK の使用
-- ARM テンプレートの使用
+- Azure Resource Manager テンプレートの使用
 
 作成時に HDInsight クラスターへの追加コンポーネントのインストールの詳細については、次を参照してください。
 
@@ -114,9 +114,9 @@
 
 「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)」をご覧ください。
 
-## Azure ARM テンプレートの使用
+## Resource Manager テンプレートの使用
 
-ARM テンプレートでは、ブートストラップを使用できます。
+Resource Manager テンプレートでは、ブートストラップを使用できます。
 
     "configurations": {
         …
@@ -128,7 +128,7 @@ ARM テンプレートでは、ブートストラップを使用できます。
     }
 
 
-![hdinsight hadoop を使用し、クラスターのブートストラップの arm テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![hdinsight hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 
 
@@ -261,4 +261,4 @@ ARM テンプレートでは、ブートストラップを使用できます。
 
     #endregion
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

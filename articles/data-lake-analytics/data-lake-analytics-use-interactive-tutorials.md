@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -30,7 +30,7 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 - [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 - [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 - [.NET SDK で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-net-sdk.md)
-- [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md) 
+- [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 
 **前提条件**
 
@@ -48,7 +48,7 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 
 1. [Azure ポータル](https://portal.azure.com/signin/index/?Microsoft_Azure_Kona=true&Microsoft_Azure_DataLake=true&hubsExtension_ItemHideKey=AzureDataLake_BigStorage%2cAzureKona_BigCompute)にサインオンします。
 2. 左上隅にある **[Microsoft Azure]** をクリックして、スタート画面を開きます。
-3. **[Marketplace]** タイルをクリックします。  
+3. **[Marketplace]** タイルをクリックします。
 3. **[すべて]** ブレードの検索ボックスに「**Azure Data Lake Analytics**」と入力して、**Enter** キーを押します。リストに **Azure Data Lake Analytics** が表示されます。
 4. リストから **Azure Data Lake Analytics** をクリックします。
 5. ブレードの下部にある **[作成]** をクリックします。
@@ -59,8 +59,8 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 	- **名前**: Analytics アカウントに名前を付けます。
 	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいものを作成します。アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
-	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいものを作成します。アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。
 7. **[スタート画面にピン留めする]** を選択します。このチュートリアルに従う場合はこれが必要です。
 8. **[作成]** をクリックします。ポータルのスタート画面が表示されます。新しいタイルはホーム ページに追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成には数分かかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
@@ -88,4 +88,4 @@ Azure ポータルでは、Data Lake Analytics を使用するための対話型
 - [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
 - [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

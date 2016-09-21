@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2016"  
+	ms.date="09/06/2016"  
 	ms.author="xpouyat"/>
 
 #Licensing Microsoft® Smooth Streaming Client Porting Kit
@@ -90,6 +90,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Alticast Corporation
 - Amazon Digital Services, Inc.
 - AVC Multimedia Software Co., Ltd.
+- Cavium, Inc.
 - EchoStar Purchasing Corporation
 - Enseo, Inc.
 - Fluendo S.A.
@@ -129,6 +130,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 - Filmflex Movies Limited
 - Fluendo S.A.
 - Gibson Innovations Limited
+- Haier Information Applicantion S.R.L
 - HANDAN BroadInfoCom Co., Ltd.
 - Homecast Co.,Ltd
 - Hon Hai Precision Industry Co., Ltd.
@@ -165,4 +167,4 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

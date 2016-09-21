@@ -15,7 +15,7 @@
 	ms.topic="reference"
 	ms.tgt_pltfrm="multiple"
 	ms.workload="na"
-	ms.date="05/27/2016"
+	ms.date="08/27/2016"
 	ms.author="chrande"/>
 
 # Azure Functions のトリガーとバインドの開発者用リファレンス
@@ -24,14 +24,9 @@
 
 ## トリガーとバインドの記事
 
-* [HTTP と WebHook のトリガーとバインド](functions-bindings-http-webhook.md)
-* [タイマー トリガー](functions-bindings-timer.md)
-* [Azure Storage (キュー、BLOB、テーブル) のトリガーとバインド](functions-bindings-storage.md)
-* [Azure Service Bus (キュー、トピック) のトリガーとバインド](functions-bindings-service-bus.md)
-* [Azure DocumentDB バインド](functions-bindings-documentdb.md)
-* [Azure Event Hub のバインド](functions-bindings-event-hubs.md)
-* [Azure Mobile Apps のバインド](functions-bindings-mobile-apps.md)
-* [Azure Notification Hub 出力バインド](functions-bindings-notification-hubs.md)
+詳細については、以下に列挙されているトリガーとバインドをクリックしてください。
+
+[AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 ## 次のステップ
 
@@ -40,4 +35,4 @@
 * [関数のテスト](functions-test-a-function.md)
 * [関数のスケール](functions-scale.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0907_2016-->

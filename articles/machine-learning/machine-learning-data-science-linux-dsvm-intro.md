@@ -106,13 +106,13 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。
 2. X2Go クライアントを実行し、**[New Session (新しいセッション)]** を選択します。複数のタブがある構成ウィンドウが開きます。次の構成パラメーターを入力します。
-    * **[Session] \(セッション) タブ**:
+    * **[Session] (セッション) タブ**:
         - **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
         - **[Login (ログイン)]**: Linux VM のユーザー名。
-        - **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
-        - **[Session Type] \(セッションの種類)**: 値を XFCE に変更します。現在、Linux VM では XFCE デスクトップのみをサポートしています。
-    * **[Media] \(メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-    * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+        - **[SSH Port] (SSH ポート)**: 既定値の 22 のままにします。
+        - **[Session Type] (セッションの種類)**: 値を XFCE に変更します。現在、Linux VM では XFCE デスクトップのみをサポートしています。
+    * **[Media] (メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+    * **[Shared folders] (共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
@@ -247,7 +247,7 @@ VM には、いくつかの機械学習ツールとアルゴリズムがプリ�
 * **CNTK** (Microsoft Research の Computational Network Toolkit): ディープ ラーニング ツールキット。
 * **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。
 * **xgboost**: 最適化されたブースト ツリー アルゴリズムを提供するツール。
-* **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。その他のライブラリは、pip install を実行することでインストールできます。
+* **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。その他のライブラリは、`pip install` を使用してインストールできます。
 * **R**: R 向けに、機械学習関数の豊富なライブラリが用意されています。プレインストールされているライブラリには、lm、glm、randomForest、rpart などがあります。その他のライブラリは、次のコマンドを実行してインストールできます。
 
 		install.packages(<lib name>)
@@ -344,4 +344,4 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

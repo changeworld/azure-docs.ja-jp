@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -116,7 +116,7 @@ HDInsight の Storm には、完全なエンタープライズ レベルの 24 �
 * ソーシャル分析
 * Extract Transform Load (ETL)
 * ネットワーク監視
-* 検索
+* Search
 * Mobile Engagement  
 
 
@@ -197,7 +197,7 @@ tick タプルを使用する例については、「[Storm と HDInsight を使
 
 Trident を使用している場合、これはタプルのバッチ処理を基盤とします。
 
-###キャッシュ
+###Caching (キャッシュ)
 
 メモリ内キャッシュは、頻繁に使用されるアセットをメモリ内に保持することで、処理速度を上げるためのメカニズムとしてよく使用されます。トポロジは、複数のノードにわたって、また各ノード内の複数のプロセスにわたって分散されるため、キャッシュの検索に使用されるフィールドを含むタプルが常に同じプロセスにルーティングされるように、[fieldsGrouping](http://javadox.com/org.apache.storm/storm-core/0.9.1-incubating/backtype/storm/topology/InputDeclarer.html#fieldsGrouping%28java.lang.String,%20backtype.storm.tuple.Fields%29) の使用を検討する必要があります。これにより、プロセス間でのキャッシュ エントリの重複が回避されます。
 
@@ -226,4 +226,4 @@ HDInsight で Apache Storm を使用したリアルタイム分析ソリュー�
 [apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-apache-storm-tutorial-get-started-linux.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

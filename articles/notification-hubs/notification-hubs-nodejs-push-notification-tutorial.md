@@ -20,7 +20,7 @@
 # Azure Notification Hubs と Node.js でのプッシュ通知の送信
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-##概要
+##Overview
 
 > [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)を参照してください。
 
@@ -31,7 +31,7 @@
 * Android
 * iOS
 * Windows Phone
-* ユニバーサル Windows プラットフォーム 
+* ユニバーサル Windows プラットフォーム
 
 通知ハブの詳細については、「[次のステップ](#next)」のセクションを参照してください。
 
@@ -41,7 +41,7 @@ Azure Notification Hubs によって、モバイル デバイスにプッシュ�
 
 ##Node.js アプリケーションの作成
 
-このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Web サイト]」を参照してください。
+このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト]に関する各ページを参照してください。
 
 ##アプリケーションを構成して Notification Hubs を使用する
 
@@ -218,4 +218,4 @@ Azure Notification Hubs を使用するには、Node.js[ azure パッケージ](
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
   [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

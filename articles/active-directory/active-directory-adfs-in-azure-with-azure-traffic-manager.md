@@ -19,7 +19,7 @@
     
 #Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ
 
-「[Azure への AD FS のデプロイ](.\active-directory-aadconnect-azure-adfs.md)」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。この記事では、その次の手順として、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。
+「[Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)」では、組織の簡単な AD FS インフラストラクチャを Azure にデプロイする方法について、詳細なガイドラインを示しています。この記事では、その次の手順として、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用して Azure で AD FS の地域間デプロイを作成する手順について説明します。Azure Traffic Manager を使用すると、インフラストラクチャのさまざまなニーズに合わせて使用可能な各種ルーティング方法を利用して、地理的に分散し、高い可用性とパフォーマンスを誇る AD FS インフラストラクチャを組織向けに作成できます。
 
 可用性に優れた地域間 AD FS インフラストラクチャにより、次のことを実現できます。
 
@@ -49,7 +49,7 @@
 ##Azure Traffic Manager を統合する手順
 
 ###新しい地理的リージョンに AD FS をデプロイする
-「[Azure への AD FS のデプロイ](.\active-directory-aadconnect-azure-adfs.md)」の手順とガイドラインに従って、新しい地理的リージョンに同じトポロジをデプロイします。
+「[Azure への AD FS のデプロイ](active-directory-aadconnect-azure-adfs.md)」の手順とガイドラインに従って、新しい地理的リージョンに同じトポロジをデプロイします。
 
 ###インターネットに接続された (パブリック) ロード バランサーのパブリック IP アドレスの DNS ラベル
 前述のように、Azure Traffic Manager はエンドポイントとして DNS ラベルしか参照できないため、外部ロード バランサーのパブリック IP アドレスの DNS ラベルを作成することが重要です。下のスクリーンショットは、パブリック IP アドレスの DNS ラベルを構成する方法を示しています。
@@ -131,4 +131,4 @@ AD FS をテストする最も簡単な方法は、IdpInitiatedSignon.aspx ペ�
 * [Azure Traffic Manager プロファイルの管理](../traffic-manager/traffic-manager-manage-profiles.md)
 * [エンドポイントの追加と削除、有効化と無効化](../traffic-manager/traffic-manager-endpoints.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

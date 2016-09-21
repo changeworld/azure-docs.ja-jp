@@ -13,7 +13,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="web" 
-	ms.date="08/31/2016" 
+	ms.date="09/01/2016" 
 	ms.author="cephalin"/>
 
 # Azure Active Directory 認証を使用した基幹業務 Azure アプリの作成 #
@@ -29,6 +29,7 @@
 
 - Azure Active Directory に対してユーザーを認証する
 - [Azure Active Directory Graph API](http://msdn.microsoft.com/library/azure/hh974476.aspx) を使用してディレクトリ ユーザーとグループを照会する
+- ASP.NET MVC *No Authentication* テンプレートを使用する
 
 基幹業務 Azure アプリにロールベースのアクセス制御 (RBAC) が必要な場合は、「[次のステップ](#next)」を参照してください。
 
@@ -142,19 +143,11 @@
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/14-edit-parameters.png)
 
-14. 次に、Azure Active Directory Graph API にアクセスするための認証トークンを取得しているかどうかをテストするために、`Index()` アクション メソッドを使用するように ~\\Controllers\\HomeController.cs を変更します。
-	<pre class="prettyprint">
-	public ActionResult Index()
-	{
-		return <mark>Content(Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);</mark>
-	}
-	</pre>
+14. 次に、Azure Active Directory Graph API にアクセスするための認証トークンがあるかどうかをテストするために、ブラウザーで **https://&lt;*appname*>.azurewebsites.net/.auth/me** に移動します。すべての構成が正しく行われていると、JSON 応答に `access_token` プロパティが表示されます。
 
-15. プロジェクトを右クリックし、**[発行]** をクリックして、変更を発行します。ダイアログ ボックスでもう一度 **[発行]** をクリックします。
+	`~/.auth/me` URL パスは App Service の認証/承認によって管理されており、認証済みセッションに関する情報がすべて取得できます。詳細については、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」を参照してください。
 
-	![](./media/web-sites-dotnet-lob-application-azure-ad/15-publish-token-code.png)
-
-	ここでアプリのホーム ページにアクセス トークンが表示された場合は、アプリが Azure Active Directory Graph API にアクセスできます。必要に応じて、~\\Controllers\\HomeController.cs の変更を元に戻してください。
+	>[AZURE.NOTE] `access_token` には有効期限があります。ただし、App Service の認証/承認には、`~/.auth/refresh` を使用したトークン更新機能が用意されています。この機能の使用方法の詳細については、「[App Service Token Store (App Service トークン ストア)](https://cgillum.tech/2016/03/07/app-service-token-store/)」を参照してください。
 
 次に、ディレクトリ データを使用してみます。
 
@@ -194,29 +187,6 @@
 10.	作成したモデルを選択し、**[+]**、**[追加]** の順にクリックして、データ コンテキストを追加し、**[追加]** をクリックします。
 
 	![](./media/web-sites-dotnet-lob-application-azure-ad/16-add-scaffolded-controller.png)
-
-9.	~\\Controllers\\WorkItemsController.cs を開きます。
-
-13.	後で JavaScript で変数を使用できるように、`Create()` と `Edit(int? id)` メソッドの先頭に次のコードを追加します。各名前付け解決エラーに対して `Ctrl` + `.` キーを押して、エラーを修正します。
-
-		ViewData["token"] = Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"];
-		ViewData["tenant"] =
-			ClaimsPrincipal.Current.Claims
-			.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/tenantid")
-			.Select(c => c.Value).SingleOrDefault();
-
-	> [AZURE.NOTE] 一部の操作では <code>[ValidateAntiForgeryToken]</code> 装飾を使用します。[Brock Allen](https://twitter.com/BrockLAllen) が 「[MVC 4, AntiForgeryToken and Claims (MVC 4、AntiForgeryToken とクレーム)](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/)」で説明している動作により、HTTP POST が偽造防止トークンの検証に次の理由で失敗する可能性があります。
-
-	> - 既定で偽造防止トークンに必要となる http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider を Azure Active Directory が送信しない。
-	> - Azure Active Directory が AD FS とディレクトリを同期している場合、AD FS 信頼は既定で http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider の要求を送信しない。ただし、この要求を送信するように AD FS を手動で構成できます。
-
-	> この問題については次の手順で対処します。
-
-12.  ~\\Global.asax の `Application_Start()` メソッドに次のコード行を追加します。各名前付け解決エラーに対して `Ctrl` + `.` キーを押して、エラーを修正します。
-
-		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
-	
-	`ClaimTypes.NameIdentifies` は、Azure Active Directory が提供する要求 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` を指定します。
 
 14.	~\\Views\\WorkItems\\Create.cshtml (自動的にスキャフォールディングされた項目) で、`Html.BeginForm` ヘルパー メソッドを探し、次の強調表示された変更を加えます。
 	<pre class="prettyprint">
@@ -287,8 +257,11 @@
 			var maxResultsPerPage = 14;
 			var input = document.getElementById("AssignedToName");
 	
-			var token = "@ViewData["token"]";
-			var tenant = "@ViewData["tenant"]";
+			// Access token from request header, and tenantID from claims identity
+			var token = "@Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]";
+			var tenant ="@(System.Security.Claims.ClaimsPrincipal.Current.Claims
+							.Where(c => c.Type == "http://schemas.microsoft.com/identity/claims/tenantid")
+							.Select(c => c.Value).SingleOrDefault())";
 	
 			var picker = new AadPicker(maxResultsPerPage, input, token, tenant);
 	
@@ -302,8 +275,21 @@
 	}
 	</pre>
 	
-	Azure Active Directory Graph API の呼び出しを行うために、`AadPicker` オブジェクトで `token` と `tenant` が使用されていることに注目してください。後で `AadPicker` を追加します。
-
+	Azure Active Directory Graph API の呼び出しを行うために、`AadPicker` オブジェクトで `token` と `tenant` が使用されていることに注意してください。後で `AadPicker` を追加します。
+	
+	>[AZURE.NOTE] `~/.auth/me` を使用してクライアント側から `token` と `tenant` を取得することもできます。ただし、これは追加のサーバー呼び出しになります。For example:
+	>  
+    >     $.ajax({
+    >         dataType: "json",
+    >         url: "/.auth/me",
+    >         success: function (data) {
+    >             var token = data[0].access_token;
+    >             var tenant = data[0].user_claims
+    >                             .find(c => c.typ === 'http://schemas.microsoft.com/identity/claims/tenantid')
+    >                             .val;
+    >         }
+    >     });
+	
 15. 同じ変更を ~\\Views\\WorkItems\\Edit.cshtml にも加えます。
 
 15. `AadPicker` オブジェクトが定義されているスクリプトをプロジェクトに追加する必要があります。~\\Scripts フォルダーを右クリックし、**[追加]** をポイントして、**[JavaScript ファイル]** をクリックします。ファイル名として「`AadPickerLibrary`」と入力し、**[OK]** をクリックします。
@@ -350,6 +336,17 @@
 
 	アプリで JavaScript と CSS ファイルを管理する効率的な方法は他にもありますが、わかりやすくするために、すべてのビューで読み込まれるバンドルを利用します。
 
+12. 最後に、~\\Global.asax の `Application_Start()` メソッドに次のコード行を追加します。各名前付け解決エラーに対して `Ctrl` + `.` キーを押して、エラーを修正します。
+
+		AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
+	
+	> [AZURE.NOTE] このコード行を追加する必要があるのは、既定の MVC テンプレートでは、一部の操作に <code>[ValidateAntiForgeryToken]</code> 装飾が使用されるためです。[Brock Allen](https://twitter.com/BrockLAllen) が 「[MVC 4, AntiForgeryToken and Claims (MVC 4、AntiForgeryToken とクレーム)](http://brockallen.com/2012/07/08/mvc-4-antiforgerytoken-and-claims/)」で説明している動作により、HTTP POST が偽造防止トークンの検証に次の理由で失敗する可能性があります。
+
+	> - 既定で偽造防止トークンに必要となる http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider を Azure Active Directory が送信しない。
+	> - Azure Active Directory が AD FS とディレクトリを同期している場合、AD FS 信頼は既定で http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider の要求を送信しない。ただし、この要求を送信するように AD FS を手動で構成できます。
+
+	> `ClaimTypes.NameIdentifies` は、Azure Active Directory が提供する要求 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` を指定します。
+
 20. 変更を発行します。プロジェクトを右クリックし、**[発行]** をクリックします。
 
 21. **[設定]** をクリックし、SQL Database への接続文字列があることを確認します。**[データベースを更新する]** を選択して、モデルのスキーマを変更し、**[発行]** をクリックします。
@@ -385,4 +382,4 @@
 
 [Protect the Application with SSL and the Authorize Attribute]: web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md#protect-the-application-with-ssl-and-the-authorize-attribute
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -118,7 +118,7 @@ Active Directory の概念については、「[アプリケーション オブ�
 
 1. **[アプリケーションの追加]** をクリックします。
 
-2. 一覧から **[Microsoft Azure サービス管理 API]** を選択します。次に、完了アイコンを選択します。
+2. リストから **[Microsoft Azure サービス管理 API]** を選択します。次に、完了アイコンを選択します。
 
       ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
 
@@ -208,4 +208,4 @@ Active Directory の概念については、「[アプリケーション オブ�
 - セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 - これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

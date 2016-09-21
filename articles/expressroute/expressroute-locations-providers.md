@@ -43,9 +43,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 |**地理的リージョン**|**Azure リージョン**|**ExpressRoute の場所**|
 |---|---|---|---|
-|**米国政府のクラウド**|米国政府アイオワ、米国政府バージニア|シカゴ、ダラス+、ニューヨーク、ワシントン DC|
+|**米国政府のクラウド**|米国政府アイオワ、米国政府バージニア|シカゴ、ダラス、ニューヨーク、ワシントン DC|
 |**中国**|中国北部、中国東部|北京、上海|
-|**ドイツ**|ドイツ中部、ドイツ東部|ベルリン、フランクフルト|
+|**ドイツ**|ドイツ中部、ドイツ東部|ベルリン+、フランクフルト|
 
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。国内のクラウド環境には接続できません。国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
@@ -65,7 +65,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **チェンナイ** | Tata Communications |
 | **シカゴ** | AT&T NetBond、Comcast、Equinix、Level 3 Communications、Zayo Group |
 | **ダラス** | AT&T NetBond、Equinix、Level 3 Communications、Megaport |
-| **ダブリン** | Colt |
+| **ダブリン** | Colt、Telecity Group |
 | **香港** | British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ロンドン** | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc+、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
 | **ラスベガス** | Level 3 Communications+、Megaport
@@ -94,7 +94,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **場所** |**サービス プロバイダー** |
 |---------------|--------------------|
 | **シカゴ** | AT&T NetBond、Equinix、Level 3 Communications、Verizon |
-| **ダラス** | Equinix+、Verizon+ |
+| **ダラス** | Equinix、Verizon+ |
 | **ニューヨーク** | Equinix、Level 3 Communications+、Verizon |
 | **ワシントン DC** | AT&T NetBond、Equinix、Level 3 Communications、Verizon |
 
@@ -156,4 +156,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

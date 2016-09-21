@@ -13,17 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/01/2016"
+   ms.date="09/02/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management でアクセス レビューを開始する方法
 
-ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。このドキュメントでは、Azure AD Privileged Identity Management (PIM) でセキュリティ レビューを開始する手順を説明します。
+ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者は、ユーザーに与えられているロールを定期的に確認する必要があります。このドキュメントでは、Azure AD Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
 
-## セキュリティ レビューを開始する
+## アクセス レビューを開始する
 > [AZURE.NOTE] Azure ポータルのダッシュボードに PIM アプリケーションをまだ追加していない場合は、「[Azure Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md)」の手順を参照してください。
 
-PIM アプリケーションのメイン ページには、セキュリティ レビューを開始する方法が 3 つあります。
+PIM アプリケーションのメイン ページには、アクセス レビューを開始する方法が 3 つあります。
 
 - **[アクセス レビュー]**、**[追加]** の順にクリックする
 - **[ロール]**、**[レビュー]** ボタンの順にクリックする
@@ -53,13 +53,14 @@ PIM アプリケーションのメイン ページには、セキュリティ �
 
 ### レビューを実行するユーザを決定する
 
-レビューを実行するための 2 つのオプションがあります。これは自身で実行できます。ロールのすべてのユーザーに対するアクセスを承認または拒否します。または、各ユーザーが自身のアクセスを確認できます。
+レビューを実行するための 3 つのオプションがあります。他のユーザーにレビューを割り当てて完了してもらうか、自分でレビューするか、または各ユーザーが自身のアクセスを確認できます。
 
 1. **[レビュー担当者の選択]** に移動する
 
     ![レビュー担当者を選択する - スクリーン ショット][4]
 
 2. いずれかのオプションを選択してください。
+    - **[レビュー担当者の選択]**: アクセスが必要なユーザーがわからない場合は、このオプションを使用します。このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
     - **[Me (自分)]**: アクセス レビューが機能する方法をプレビューするか、できないユーザーの代わりに確認する場合に役に立ちます。
     - **[Members review themselves (メンバーによる自身のレビュー)]**: ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
 
@@ -67,7 +68,7 @@ PIM アプリケーションのメイン ページには、セキュリティ �
 
 最後に、アクセスを承認する場合にユーザーが理由を提供することを要求するオプションがあります。必要に応じて、レビューの説明を追加し、**[開始]** を選択します。
 
-待機しているアクセスレビューがあることをユーザーに通知し、[[How to perform an access review (アクセスレビューを実行する方法)]](active-directory-privileged-identity-management-how-to-perform-security-review.md) を表示することを確認します。
+待機しているアクセス レビューがあることをユーザーに通知し、[アクセス レビューを実行する方法](active-directory-privileged-identity-management-how-to-perform-security-review.md)を示します。
 
 ## アクセスレビューを管理する
 
@@ -87,4 +88,4 @@ PIM アプリケーションのメイン ページには、セキュリティ �
 [3]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_role.png
 [4]: ./media/active-directory-privileged-identity-management-how-to-start-security-review/PIM_review_reviewers.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

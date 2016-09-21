@@ -14,14 +14,14 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/15/2016"
+	ms.date="09/07/2016"
 	ms.author="jroth" />
 
 # Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
-## 概要
+## Overview
 
-このトピックでは、Microsoft Azure 仮想マシンで SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
+このトピックでは、Microsoft Azure Virtual Machine で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
 SQL Server イメージを作成するときは、[VM を Azure ポータルにプロビジョニングすることを検討してください](virtual-machines-windows-portal-sql-server-provision.md)。Resource Manager を使用してポータルにプロビジョニングされた SQL Server VM は、ストレージの構成を含むすべてのベスト プラクティスを実装します。
 
@@ -37,11 +37,11 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 |---|---|
 |[VM サイズ](#vm-size-guidance)|[DS3](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Enterprise Edition の場合)。<br/><br/>[DS2](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Standard Edition および Web Edition の場合)。|
 |[Storage](#storage-guidance)|[Premium Storage](../storage/storage-premium-storage.md) を使用します。標準ストレージは dev/test に対してのみ推奨されます。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure geo [冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
-|[ディスク](#disks-guidance)|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを増やします。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
+|[ディスク](#disks-guidance)|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>重要: Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを向上させます。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
 |[I/O](#io-guidance)|データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。|
 |[機能固有](#feature-specific-guidance)|BLOB ストレージに直接バックアップします。|
 
-これらの最適化を行うための*方法*と*理由*については、 次のセクションに記載されている詳細とガイダンスを確認してください。
+これらの最適化を行う*方法*と*理由*については、以下のセクションに記載されている詳細とガイダンスを確認してください。
 
 ## VM サイズのガイダンス
 
@@ -54,7 +54,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 
 ## ストレージのガイダンス
 
-DS シリーズ (DSv2 シリーズおよび GS シリーズと共に) の VM は、[Premium Storage](../storage/storage-premium-storage.md) をサポートしています。すべての運用環境のワークロードには Premium Storage をお勧めします。
+(DSv2 シリーズおよび GS シリーズと共に) DS シリーズの VM は、[Premium Storage](../storage/storage-premium-storage.md) をサポートしています。すべての運用環境のワークロードには Premium Storage をお勧めします。
 
 > [AZURE.WARNING] Standard Storage には、さまざまな待機時間や帯域幅があり、開発/テスト ワークロードにのみ推奨されます。運用環境のワークロードでは、Premium Storage を使用する必要があります。
 
@@ -80,13 +80,13 @@ Azure VM には、次の 3 種類のメイン ディスクがあります。
 
 **D**: ドライブとしてラベル付けされる一時ストレージ ドライブは、Azure BLOB ストレージに保持されません。ユーザー データベース ファイルやユーザー トランザクション ログ ファイルを **D**: ドライブに保存しないでください。
 
-D シリーズ、Dv2 シリーズ、および G シリーズの VM では、これらの VM 上の一時ドライブは SSD ベースです。一時オブジェクトや複雑な結合などのワークロードで TempDB が多用される場合、TempDB を **D** ドライブに格納すると、TempDB のスループットは高く、TempDB の遅延時間は低くなる可能性があります。
+D シリーズ、Dv2 シリーズ、および G シリーズの VM では、これらの VM 上の一時ドライブは SSD ベースです。一時オブジェクトや複雑な結合などのワークロードで TempDB が多用される場合、TempDB を **D** ドライブに格納すると、TempDB のスループットが向上し、TempDB の遅延時間が短縮される可能性があります。
 
-Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB とバッファー プール拡張機能を格納することをお勧めします。この推奨事項には 1 つの例外があります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、より高いパフォーマンスを実現できます。これも、マシン サイズに基づく SSD ベースです。
+Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB とバッファー プール拡張機能を格納することをお勧めします。この推奨事項には例外が 1 つあります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、パフォーマンスを向上させることができます。これも、マシン サイズに基づく SSD ベースです。
 
 ### データ ディスク
 
-- **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を含めます。
+- **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を格納します。
 
 - **ディスク ストライピング**: スループットを向上させるには、データ ディスクをさらに追加して、ディスク ストライピングを使用します。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage.md)に関する記事で [VM サイズ](virtual-machines-windows-sizes.md)およびディスク サイズごとの IOPS を示す表をご覧ください。次のガイドラインに従ってください。
 
@@ -100,7 +100,13 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 
 - **キャッシュ ポリシー**: Premium Storage データ ディスクの場合は、データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
 
+	>[AZURE.WARNING] データベースの破損の可能性を回避するために、Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。
+
 - **NTFS アロケーション ユニット サイズ**: データ ディスクをフォーマットするときは、データ ファイルとログ ファイルに加えて TempDB にも 64 KB アロケーション ユニット サイズを使用することをお勧めします。
+
+- **ディスク管理のベスト プラクティス**: データ ディスクの削除またはキャッシュの種類の変更を行う場合、変更中は SQL Server サービスを停止します。OS ディスクでキャッシュ設定が変更されると、Azure は VM を停止し、キャッシュの種類を変更して、VM を再起動します。データ ディスクのキャッシュ設定が変更されても VM は停止されませんが、変更中、データ ディスクが VM から切断され、その後再接続されます。
+
+	>[AZURE.WARNING] これらの操作中に、SQL Server サービスの停止を怠ると、データベースが破損するおそれがあります。
 
 ## I/O のガイダンス
 
@@ -116,11 +122,11 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 
 - システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。詳細については、「[システム データベースの移動](https://msdn.microsoft.com/library/ms345408.aspx)」をご覧ください。
 
-- SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。これは、SQL Server インスタンスを右クリックしてプロパティを選択することにより、SQL Server 構成マネージャーで実行できます。エラー ログとトレース ファイルの設定は、**[起動時のパラメーター]** タブで変更できます。ダンプ ディレクトリは、 **[詳細設定]** タブで指定します。次のスクリーンショットでは、エラー ログの起動時のパラメーターを検索する場所を示します。
+- SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。これは、SQL Server インスタンスを右クリックしてプロパティを選択することにより、SQL Server 構成マネージャーで実行できます。エラー ログとトレース ファイルの設定は、**[起動時のパラメーター]** タブで変更できます。ダンプ ディレクトリは、**[詳細設定]** タブで指定します。次のスクリーンショットでは、エラー ログの起動時のパラメーターを検索する場所を示します。
 
 	![SQL ErrorLog のスクリーンショット](./media/virtual-machines-windows-sql-performance/sql_server_error_log_location.png)
 
-- 既定のバックアップ ファイルとデータベース ファイルの場所を設定します。このトピックでは、推奨事項を使用し、[サーバーのプロパティ] ウィンドウで変更を行います。手順については、「[データ ファイルとログ ファイルの既定の場所の表示または変更 (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx)」を参照してください。次のスクリーンショットでは、これらの変更を行う場所を示します。
+- 既定のバックアップ ファイルとデータベース ファイルの場所を設定します。このトピックでは、推奨事項を使用し、[サーバーのプロパティ] ウィンドウで変更を行います。手順については、「[データ ファイルとログ ファイルの既定の場所の表示または変更 (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx)」をご覧ください。次のスクリーンショットでは、これらの変更を行う場所を示します。
 
 	![SQL データのログおよびバックアップ ファイル](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 
@@ -146,6 +152,6 @@ SQL Server と Premium Storage についてさらに詳しく調べたい場合�
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 
-SQL Server 仮想マシンに関する他のトピックについては、[Azure 仮想マシンにおける SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

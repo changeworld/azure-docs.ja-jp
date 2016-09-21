@@ -13,7 +13,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="08/22/2016"
+	ms.date="09/08/2016"
 	ms.author="marsma"/>
 
 # 開発者向け Batch 機能の概要
@@ -81,8 +81,6 @@ Batch のすべてのコンピューティング ノードには、次の要素�
 - アクセスを制御するために構成される**ファイアウォール**設定。
 - Windows (リモート デスクトップ プロトコル (RDP)) ノードと Linux (Secure Shell (SSH)) ノードの両方に対する[リモート アクセス](#connecting-to-compute-nodes)。
 
-> [AZURE.NOTE] Batch の Linux サポートは現在プレビュー段階です。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
-
 ## プール
 
 プールは、アプリケーションが実行されるノードのコレクションです。プールは手動で作成できるほか、実行する操作を指定した場合は Batch サービスによって自動的に作成されます。アプリケーションのリソース要件を満たすプールを作成して管理することができます。プールは、そのプールを作成した Batch アカウントのみが使用できます。1 つの Batch アカウントで複数のプールを持つことができます。
@@ -145,7 +143,7 @@ Azure Batch プールは、コア Azure コンピューティング プラット
 
 - **アプリケーション パッケージ**
 
-	プール内のコンピューティング ノードにデプロイする[アプリケーション パッケージ](#application-packages)を指定できます。アプリケーション パッケージにより、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。プールに指定したアプリケーション パッケージは、そのプールに参加しているすべてのノードにインストールされます。また、ノードが再起動または再イメージ化されるたびにインストールされます。
+	プール内のコンピューティング ノードにデプロイする[アプリケーション パッケージ](#application-packages)を指定できます。アプリケーション パッケージにより、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。プールに指定したアプリケーション パッケージは、そのプールに参加しているすべてのノードにインストールされます。また、ノードが再起動または再イメージ化されるたびにインストールされます。アプリケーション パッケージは、Linux コンピューティング ノードでは現在サポートされていません。
 
 - **ネットワーク構成**
 
@@ -468,7 +466,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[batch_forum]: https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch
+[batch_forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch
 [cloud_service_sizes]: ../cloud-services/cloud-services-sizes-specs.md
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
@@ -518,4 +516,4 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

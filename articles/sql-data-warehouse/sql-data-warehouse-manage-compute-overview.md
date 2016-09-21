@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/01/2016"
+   ms.date="09/03/2016"
    ms.author="barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
@@ -98,6 +98,10 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 - [PowerShell によるコンピューティングの再開][]
 - [REST API によるコンピューティングの再開][]
 
+## アクセス許可
+
+データベースをスケーリングするには、[ALTER DATABASE][] に関するページで説明されているアクセス許可が必要です。一時停止と再開には、[SQL DB の共同作成者][]のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
+
 <a name="next-steps-bk"></a>
 
 ## 次のステップ
@@ -140,9 +144,12 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 [ベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 [development overview]: ./sql-data-warehouse-overview-develop.md
 
+[SQL DB の共同作成者]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
+
 <!--MSDN references-->
+[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
 
 <!--Other Web references-->
 [Azure portal]: http://portal.azure.com/
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

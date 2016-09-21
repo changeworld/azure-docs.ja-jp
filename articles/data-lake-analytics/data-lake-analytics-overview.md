@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -78,4 +78,4 @@ Azure Data Lake Analytics は、ビッグ データ分析を容易にするた�
     - [機能要求の送信](http://aka.ms/adlafeedback)
     - [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

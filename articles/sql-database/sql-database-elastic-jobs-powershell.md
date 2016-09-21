@@ -30,11 +30,11 @@
 * Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 * **エラスティック データベース ジョブ**の PowerShell パッケージ。「[エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
-### Azure サブスクリプションを選択します。
+### Azure サブスクリプションの選択
 
-サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要になります。複数のサブスクリプションがある場合は **Get-AzureSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
+サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。複数のサブスクリプションがある場合は、**Get-AzureRmSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
 
-	Select-AzureSubscription -SubscriptionId {SubscriptionID}
+	Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
 エラスティック データベース ジョブに対して PowerShell スクリプトを開発して実行する場合には、[PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) をお勧めします。
 
@@ -45,7 +45,7 @@
 <table style="width:100%">
   <tr>
     <th>オブジェクトの種類</th>
-    <th>説明</th>
+    <th>Description</th>
     <th>関連する PowerShell API</th>
   </tr>
   <tr>
@@ -116,7 +116,7 @@
   </tr>
 
 <tr>
-    <td>Job</td>
+    <td>ジョブ</td>
     <td>
 	<p>実行のトリガーまたはスケジュールの設定に使用できるジョブのパラメーターの定義。</p>
 	</td>
@@ -680,4 +680,4 @@ DACPAC の作成については、[データ層アプリケーション](https:/
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -3,7 +3,7 @@
    description="PolyBase を使用して、Azure Blob Storage から SQL Data Warehouse にデータを読み込む方法について説明します。パブリック データから Contoso Retail Data Warehouse スキーマにテーブルをいくつか読み込みます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="jrowlandjones"
+   authors="ckarst"
    manager="barbkess"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="08/25/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.author="cakarst;barbkess;sonyama"/>
 
 
 # Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)
@@ -390,4 +390,4 @@ Contoso Retail Data Warehouse データを完全に読み込むには、スク�
 [Microsoft Download Center]: http://www.microsoft.com/download/details.aspx?id=36433
 [完全な Contoso Retail Data Warehouse を読み込む]: https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

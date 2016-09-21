@@ -409,11 +409,11 @@ public void Abort()
 
 private void StopWebServer()
 {
-    if (this.serverHandle != null)
+    if (this.webApp != null)
     {
         try
         {
-            this.serverHandle.Dispose();
+            this.webApp.Dispose();
         }
         catch (ObjectDisposedException)
         {
@@ -684,4 +684,4 @@ New-ServiceFabricService -ApplicationName "fabric:/WebServiceApplication" -Servi
 
 [Visual Studio による Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

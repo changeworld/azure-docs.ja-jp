@@ -1,6 +1,6 @@
 ## Apache Storm を使用したメッセージの受信
 
-[**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを信頼性高く簡略化して処理する分散型リアルタイム計算システムです。このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
+[**Apache Storm**](https://storm.incubator.apache.org) は、境界のないデータ ストリームを確実かつ容易に処理する分散型リアルタイム計算システムです。このセクションでは、Event Hub Storm スパウトを使用して、Event Hub からイベントを受信する方法を示します。Apache Storm を使用して、別々のノードにホストされている複数のプロセスでイベントを分割することができます。Storm と Event Hub の統合は、Storm の Zookeeper のインストールを使用して、進行状況への透過的なチェックポイントの設定、永続的なチェックポイントの管理、並行した Event Hub からの受信によって、イベントの利用を簡略化します。
 
 Event Hub の受信パターンの詳細については、「[Event Hub の概要][]」を参照してください。
 
@@ -226,6 +226,6 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
 <!-- Images -->
 
-[12]: ./media/service-bus-event-hubs-getstarted/create-storm1.png
-[13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
+[12]: ./media/service-bus-event-hubs-get-started-receive-storm/create-storm1.png
+
+<!---HONumber=AcomDC_0907_2016-->

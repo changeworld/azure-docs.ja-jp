@@ -16,28 +16,15 @@
  
 # Windows Phone と Windows ストア向けの Application Insights SDK のリリース ノート
 
-[Application Insights SDK](app-insights-windows-get-started.md) では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
+Application Insights SDK では、実行中のアプリに関するテレメトリを [Application Insights](https://azure.microsoft.com/services/application-insights/) に送信し、その使用状況とパフォーマンスを分析できます。
 
-
-#### アプリケーションに SDK をインストールするには
-
-「[Windows Phone アプリと Windows ストア アプリ向けの Application Insights を使ってみる](app-insights-windows-get-started.md)」をご覧ください。
-
-#### 最新の SDK にアップグレードするには 
-
-* 実行済みのカスタマイズを維持するには、ApplicationInsights.config をコピーします。
-* ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-* インストールされているパッケージを表示するフィルターを設定します。 
-* インストール済みの Application Insights パッケージを選択し、[アップグレード] を選択します。
-* 新旧のバージョンの ApplicationInsights.config を比較します。旧バージョンに対して行ったカスタマイズをもう一度マージします。
-* ソリューションをリビルドします。
 
 ## バージョン 1.1.1
 
 ### Windows SDK
 
-- Windows Phone の Silverlight SDK を使用する場合は、クラッシュ時にハングを修正します。この変更を行うと、WindowsAppInitialier.InitializeAsync(...) の呼び出しの後で、約 2 秒後以降に発生するクラッシュがディスクに保存され、次回のアプリケーションの起動時に送信されます。呼び出し後約 2 秒より前に発生するクラッシュは、無視されます。  
-- NuGet の依存関係を特定のバージョンのコアと Microsoft.ApplicationInsights.PersistenceChannel (v1.2.3) に設定します。   
+- Windows Phone の Silverlight SDK を使用する場合は、クラッシュ時にハングを修正します。この変更を行うと、WindowsAppInitialier.InitializeAsync(...) の呼び出しの後で、約 2 秒後以降に発生するクラッシュがディスクに保存され、次回のアプリケーションの起動時に送信されます。呼び出し後約 2 秒より前に発生するクラッシュは、無視されます。
+- NuGet の依存関係を特定のバージョンのコアと Microsoft.ApplicationInsights.PersistenceChannel (v1.2.3) に設定します。
 
 ### コア SDK
 
@@ -93,6 +80,6 @@
 
 ## バージョン 0.13
 
-使用可能な以前のバージョンのリリース ノートはありません。
+No release notes for older versions available.
 
-<!---HONumber=AcomDC_0218_2016-->
+<!---HONumber=AcomDC_0907_2016-->

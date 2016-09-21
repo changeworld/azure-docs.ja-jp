@@ -18,13 +18,13 @@
 
 # Mobile Services アプリへのプッシュ通知の追加
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> このトピックの Mobile Apps バージョンについては、「[Add push notifications to your Android app (Android アプリにプッシュ通知を追加する)](../app-service-mobile/app-service-mobile-android-get-started-push.md)」を参照してください。
+> このトピックの Mobile Apps バージョンについては、「[プッシュ通知を Android アプリに追加する](../app-service-mobile/app-service-mobile-android-get-started-push.md)」を参照してください。
  
 &nbsp;
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../../includes/mobile-services-selector-get-started-push.md)]
 
-このトピックでは、Azure モバイル サービスを使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
+このトピックでは、Azure Mobile Services を使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
 このチュートリアルは、Mobile Services のクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services を使ってみる]」を完了してプロジェクトをモバイル サービスに接続している必要があります。そのため、このチュートリアルには、Visual Studio 2013 も必要です。
 
@@ -114,6 +114,6 @@ Mobile Services と Notification Hubs については次のトピックを参照
 
 [Notification Hubs とは]: ../notification-hubs-overview.md
 [登録者へのブロードキャスト通知の送信]: ../notification-hubs-windows-store-dotnet-send-breaking-news.md
-[登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-send-localized-breaking-news.md
+[登録者への通知の送信]: ../notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

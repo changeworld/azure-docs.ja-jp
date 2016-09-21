@@ -8,7 +8,7 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 検索ボックスに「**StackExchange.Redis**」または「**StackExchange.Redis.StrongName**」と入力し、結果の中から必要なバージョンを選択して、**[インストール]** をクリックします。
 
->[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**[StackExchange.Redis]** を選択します。
+>[AZURE.NOTE] 厳密な名前を持つバージョンの **StackExchange.Redis** クライアント ライブラリを希望する場合は、**[StackExchange.Redis.StrongName]** を選択してください。それ以外の場合は、**StackExchange.Redis** を選択します。
 
 ![StackExchange.Redis NuGet package](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
@@ -16,4 +16,4 @@ Visual Studio で StackExchange.Redis NuGet パッケージを使用してクラ
 
 >[AZURE.NOTE] StackExchange.Redis を使用するようにプロジェクトを構成していた場合、 **NuGet パッケージ マネージャー**から、そのパッケージへの更新プログラムを確認できます。StackExchange.Redis NuGet パッケージの更新版を確認してインストールするには、**[NuGet パッケージ マネージャー]** ウィンドウで **[更新プログラム]** をクリックします。StackExchange.Redis NuGet パッケージの更新プログラムがある場合は、新しいバージョンを使用するためにプロジェクトを更新できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!----HONumber=AcomDC_0622_2016-->

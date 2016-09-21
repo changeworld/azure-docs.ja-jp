@@ -27,7 +27,7 @@
 
 ## Resource Manager テンプレートを使用したスケール設定
 
-アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイしてプロビジョニングするテンプレートを使用します。このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。詳しくは、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
+アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイしてプロビジョニングするテンプレートを使用します。このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。詳しくは、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
 
 テンプレートでは、容量 (capacity 要素) を指定します。
 
@@ -159,7 +159,7 @@ autoscaleSettings リソースは、スケール セット内の仮想マシン�
 
 この例では、自動スケール アクションを定義するために 2 つの規則を作成しています。最初の規則でスケールアウト アクションを定義し、2 番目の規則でスケールイン アクションを定義します。この 2 つの規則では次の値が指定されています。
 
-- **metricName** - 診断拡張機能の wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。この例では、Thread Count カウンターが使用されます。  
+- **metricName** - 診断拡張機能の wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。この例では、Thread Count カウンターが使用されます。
 - **metricResourceUri** - 仮想マシン スケール セットのリソース識別子です。この識別子には、リソース グループの名前、リソースプロバイダーの名前、スケールするスケール セットの名前が含まれます。
 - **timeGrain** – 収集するメトリックの粒度です。この例では、1 分間隔でデータを収集します。この値は、timeWindow と組み合わせて使用されます。
 - **statistic** – 自動スケーリング処理に対応するためのメトリックの集計方法を指定します。指定できる値は Average、Min、Max です。
@@ -215,7 +215,7 @@ Azure PowerShell を使用して、スケール セットの自動スケール�
 ## スケール操作に関する情報
 
 - [Azure ポータル]() - 現在、ポータルを使用して入手できる情報の量は限られています。
-- [Azure リソース エクスプローラー]() - スケール セットの現在の状態を調査するうえで最適なツールです。次のパスに従うと、作成したスケール セットのインスタンス ビューが表示されます。[subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Compute]、[virtualMachineScaleSets]、{該当するスケール セット}、[virtualMachines]
+- [Azure リソース エクスプローラー]() - スケール セットの現在の状態を調査するうえで最適なツールです。次のパスに従うと、作成したスケール セットのインスタンス ビューが表示されます: [subscriptions]、{該当するサブスクリプション}、[resourceGroups]、{該当するリソース グループ}、[providers]、[Microsoft.Compute]、[virtualMachineScaleSets]、{該当するスケール セット}、[virtualMachines]
 - Azure PowerShell - 次のコマンドを使用して一部の情報を得ることができます。
 
         Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
@@ -228,5 +228,6 @@ Azure PowerShell を使用して、スケール セットの自動スケール�
 - 自動スケールを構成したスケール セットの作成方法の例については、「[仮想マシン スケール セットでのマシンの自動スケール](virtual-machine-scale-sets-windows-autoscale.md)」をご覧ください。
 - Azure Insights の監視機能の例を「[Azure Insights の PowerShell クイック スタート サンプル](../azure-portal/insights-powershell-samples.md)」で確認します。
 - 通知機能について「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-autoscale-to-webhook-email.md)」と「[Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する](../azure-portal/insights-auditlog-to-webhook-email.md)」を参照します。
+- [高度な自動スケールのシナリオ](./virtual-machine-scale-sets-advanced-autoscale.md)を紹介します。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0907_2016-->

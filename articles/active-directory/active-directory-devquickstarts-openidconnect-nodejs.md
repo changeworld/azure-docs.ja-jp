@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="08/15/2016"
 	ms.author="brandwe"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -21,7 +21,7 @@
 
 ここでは、Passport を使用して次のことを行います。
 
-- Azure AD と v2.0 アプリ モデルを使用するアプリにユーザーをサインインします。
+- Azure AD を使用するアプリにユーザーをサインインします。
 - ユーザーについての情報を表示します。
 - ユーザーをアプリからサインアウトします。
 
@@ -36,7 +36,7 @@
 
 このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
-```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
+```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
@@ -205,7 +205,7 @@ app.configure(function() {
 
 // Our Auth routes (Section 3)
 
-// POST /auth/openid
+// GET /auth/openid
 //   Use passport.authenticate() as route middleware to authenticate the
 //   request.  The first step in OpenID authentication will involve redirecting
 //   the user to their OpenID provider.  After authenticating, the OpenID
@@ -414,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

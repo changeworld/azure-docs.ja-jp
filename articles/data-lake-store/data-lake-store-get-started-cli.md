@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/07/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Azure コマンド ラインを使用して Azure Data Lake Store の使用を開始する
@@ -37,7 +37,6 @@ Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Nod
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照してください。CLI をインストールした後で、コンピューターを再起動してください。
 
 ##Azure サブスクリプションへのログイン
@@ -108,7 +107,7 @@ Data Lake Store アカウントのファイルを一覧表示するには、以�
 
 	azure datalake store filesystem list <dataLakeStoreAccountName> <path>
 
-次に例を示します。
+For example:
 
 	azure datalake store filesystem list mynewdatalakestore /mynewfolder
 
@@ -142,7 +141,7 @@ Data Lake Store アカウントのファイルを一覧表示するには、以�
 
 		azure datalake store filesystem export <dataLakeStoreAccountName> <source_path> <destination_path>
 
-	次に例を示します。
+	For example:
 
 		azure datalake store filesystem export mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv "C:\mysampledata\vehicle1_09142014_copy.csv"
 
@@ -150,7 +149,7 @@ Data Lake Store アカウントのファイルを一覧表示するには、以�
 
 		azure datalake store filesystem delete <dataLakeStoreAccountName> <path>
 
-	次に例を示します。
+	For example:
 
 		azure datalake store filesystem delete mynewdatalakestore /mynewfolder/vehicle1_09142014_copy.csv
 
@@ -189,4 +188,4 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

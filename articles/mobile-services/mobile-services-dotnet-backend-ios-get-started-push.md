@@ -24,7 +24,7 @@
 &nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-> このトピックの Mobile Apps バージョンについては、「[Add Push Notifications to your iOS App (iOS アプリにプッシュ通知を追加する)](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
+> このトピックの Mobile Apps バージョンについては、「[iOS アプリへのプッシュ通知の追加](../app-service-mobile/app-service-mobile-ios-get-started-push.md)」を参照してください。
 
 このトピックでは、[クイックスタート プロジェクト](mobile-services-dotnet-backend-ios-get-started.md)にプッシュ通知を追加して、レコードが挿入されるたびにモバイル サービスがプッシュ通知を送信できるようにします。先に [Mobile Services の使用]を完了しておく必要があります。
 
@@ -130,6 +130,6 @@
 [Mobile Services Objective-C how-to conceptual reference]: mobile-services-windows-dotnet-how-to-use-client-library.md
 [What are Notification Hubs?]: ../notification-hubs-overview.md
 [Send broadcast notifications to subscribers]: ../notification-hubs-ios-send-breaking-news.md
-[Send template-based notifications to subscribers]: ../notification-hubs-ios-send-localized-breaking-news.md
+[Send template-based notifications to subscribers]: ../notification-hubs-ios-xplat-localized-apns-push-notification.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

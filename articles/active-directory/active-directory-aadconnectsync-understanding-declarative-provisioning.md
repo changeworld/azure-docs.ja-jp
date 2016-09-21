@@ -132,12 +132,20 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 このシナリオでは、同期規則のスコープを変更して、ソース オブジェクトがスコープ内に異なる同期規則を持つようにする必要があります。そうすれば、異なる優先順位を定義できます。![Multiple objects joined to the same mv object](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)
 
-## その他のリソース
+## 次のステップ
 
-- [Azure AD Connect Sync: 既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)
-- [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
-- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
-- [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
+- 式言語について詳しくは、「[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
+- 宣言型のプロビジョニングをすぐに使用する方法については、「[既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
+- 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。
+- ユーザーと連絡先がどのように連携して動作するのかについてさらに詳しく知りたい場合には、「[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)」をご覧ください。
+
+**概要トピック**
+
+- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
 - [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+**参照トピック**
+
+- [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
+
+<!---HONumber=AcomDC_0907_2016-->

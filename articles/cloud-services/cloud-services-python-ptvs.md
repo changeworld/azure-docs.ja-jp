@@ -240,6 +240,8 @@ if (-not $is_emulated){
 
 #### LaunchWorker.ps1 を変更する
 
+>[AZURE.NOTE] **worker ロール** プロジェクトの場合は、スタートアップ ファイルを実行するために **LauncherWorker.ps1** ファイルが必要です。**Web ロール** プロジェクトでは、スタートアップ ファイルがプロジェクト プロパティで定義されています。
+
 **bin\\LaunchWorker.ps1** は本来多くの準備作業を行うために作成されていますが、実際には機能しません。このファイルの内容を次のスクリプトに置き換えます。
 
 このスクリプトは、Python プロジェクトの **worker.py** ファイルを呼び出します。**PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.5 が使用されます。
@@ -364,4 +366,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Python 2.7 (32 ビット)]: https://www.python.org/downloads/
 [Python 3.5 (32 ビット)]: https://www.python.org/downloads/
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/16/2016" 
+	ms.date="09/06/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して DB2 からデータを移動する
@@ -21,13 +21,20 @@
 
 Data Factory は、Data Management Gateway を使用したオンプレミスの DB2 ソースへの接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
-**注:** Azure IaaS VM でホストされている場合でも、DB2 への接続にゲートウェイを利用する必要があります。クラウドでホストされている DB2 のインスタンスに接続しようとしている場合は、IaaS VM でゲートウェイ インスタンスをインストールすることもできます。
+> [AZURE.NOTE]
+Azure IaaS VM でホストされている場合でも、DB2 への接続にゲートウェイを使用します。クラウドでホストされている DB2 のインスタンスに接続しようとしている場合は、IaaS VM でゲートウェイ インスタンスをインストールすることもできます。
 
 Data Factory は、他のデータ ストアから DB2 へのデータの移動ではなく、DB2 から他のデータ ストアへのデータの移動のみをサポートします。
 
 ## インストール 
 
-Data Management Gateway が DB2 データベースに接続するために、ゲートウェイのバージョン 2.1 以降では、DB2 for LUW (Linux、Unix、Windows)、DB2 for z/OS、DB2 for i (別名: AS/400) などの DB2 をサポートする組み込みドライバー (SQLAM 9/10/11) が Azure Data Factory に用意されています。そのため、DB2 からデータをコピーするときに、ドライバーを手動でインストールする必要はなくなりました。
+Data Management Gateway には、以下をサポートする組込みの DB2 ドライバーが備わっています:
+
+- SQLAM 9 / 10 / 11
+- DB2 for LUW (Linux, Unix, Windows)
+- DB2 for z/OS および DB2 for i (aka AS/400)
+
+そのため、DB2 からデータをコピーするときに、ドライバーを手動でインストールする必要はなくなりました。
 
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
@@ -48,9 +55,9 @@ DB2 データベースとの間でデータをコピーするパイプライン�
 4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5.	[RelationalSource](data-factory-onprem-db2-connector.md#db2-copy-activity-type-properties) と [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルは DB2 データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは DB2 データベースのクエリ結果のデータを Azure BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定してください。
+最初の手順として、Data Management Gateway をインストールして構成します。設定手順は、[オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事に記載されています。
 
 **DB2 のリンクされたサービス:**
 
@@ -87,7 +94,7 @@ DB2 データベースとの間でデータをコピーするパイプライン�
 
 このサンプルでは、DB2 で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
 
-「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルがデータ ファクトリに対して外部にあるテーブルで、データ ファクトリのアクティビティでは生成されていないことが Data Factory に通知されます。**type** が **RelationalTable** に設定されている点に注目してください。
+"external": true の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。**type** が **RelationalTable** に設定されている点に注目してください。
 
 	{
 	    "name": "Db2DataSet",
@@ -171,7 +178,7 @@ DB2 データベースとの間でデータをコピーするパイプライン�
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、Orders テーブルからデータを選択します。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、Orders テーブルからデータを選択します。
 
 	{
 	    "name": "CopyDb2ToBlob",
@@ -225,7 +232,7 @@ DB2 データベースとの間でデータをコピーするパイプライン�
 | type | type プロパティを **OnPremisesDB2** に設定する必要があります | はい |
 | server | DB2 サーバーの名前です。 | はい |
 | database | DB2 データベースの名前です。 | あり |
-| schema | データベース内のスキーマの名前です。スキーマ名は、大文字と小文字を区別します。 | いいえ |
+| schema | データベース内のスキーマの名前です。スキーマ名は、大文字と小文字が区別されます。 | なし |
 | authenticationType | DB2 データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい |
 | username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ |
@@ -236,38 +243,38 @@ DB2 データベースとの間でデータをコピーするパイプライン�
 
 ## DB2 データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。RelationalTable 型のデータセット (DB2 データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| tableName | リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。tableName は、大文字と小文字を区別します。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
+| tableName | リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。tableName は、大文字と小文字が区別されます。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) |
 
 ## DB2 のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、typeProperties セクションで次のプロパティを使用できます:
 
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------- | -------------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**dataset**の **tableName** が指定されている場合)|
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。(例: `"query": "select * from "MySchema"."MyTable""`)。 | いいえ (**データセット**の **tableName** が指定されている場合)|
 
-> [AZURE.NOTE] スキーマとテーブルの名前は、大文字と小文字を区別します。クエリ内では、"" (二重引用符) で囲む必要があります。
+> [AZURE.NOTE] スキーマ名とテーブル名は、大文字と小文字が区別されます。クエリ内では、名前を "" (二重引用符) で囲みます。
 
 **例:**
 
- "query": "select * from "DB2ADMIN"."Customers""
+	"query": "select * from "DB2ADMIN"."Customers""
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## DB2 の型マッピング
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
@@ -326,4 +333,4 @@ Char | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/16/2016"
+   ms.date="09/06/2016"
    ms.author="carlrab"/>
 
 # SQL Database 自動バックアップ
@@ -58,8 +58,8 @@ Basic、Standard、Premium のすべてのデータベースは、自動バッ�
 ## 次のステップ
 
 - 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
-- より迅速な回復オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 - 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関するページをご覧ください
 - ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

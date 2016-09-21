@@ -25,7 +25,7 @@ Microsoft Azure では **Azure キュー**と **Service Bus キュー**の 2 種
 
 **Azure キュー**は、[Azure Storage](https://azure.microsoft.com/services/storage/) インフラストラクチャの一部であり、単純な REST ベースの Get/Put/Peek インターフェイスを使用して、サービス内およびサービス間で信頼性の高い永続的なメッセージングを提供します。
 
-**Service Bus キュー**は、より大きな [Azure メッセージング](https://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、発行/サブスクライブ、Web サービスのリモート処理、統合のパターンがサポートされています。Service Bus キュー、トピック/サブスクリプション、リレーの詳細情報は、「[Service Bus メッセージングの概要](service-bus-messaging-overview.md)」をご覧ください。
+**Service Bus キュー**は、より大きな [Azure メッセージング](https://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、発行/サブスクライブ、Web サービスのリモート処理、統合のパターンがサポートされています。Service Bus キュー、トピック/サブスクリプション、リレーの詳細情報は、[Service Bus メッセージングの概要](service-bus-messaging-overview.md)に関するページをご覧ください。
 
 この 2 つのキュー テクノロジは共存していますが、最初に Azure キューが、Azure ストレージ サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。Service Bus キューは、より大きな「ブローカー メッセージング」インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信用ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
 
@@ -227,30 +227,6 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 
 - Service Bus のキュー名は最大 260 文字までの長さで指定でき、名前付け規則の制限は厳しくありません。Service Bus のキュー名には、文字、数字、ピリオド、ハイフン、アンダースコアを使用できます。
 
-## パフォーマンス
-
-このセクションでは、パフォーマンスの観点から Azure キューと Service Bus キューを比較します。
-
-|比較条件|Azure キュー|Service Bus キュー|
-|---|---|---|
-|最大スループット|**2,000 メッセージ/秒**<br/><br/>(1 KB のメッセージによるベンチマークに基づく値)|**2,000 メッセージ/秒**<br/><br/>(1 KB のメッセージによるベンチマークに基づく値)|
-|平均待機時間|**10 ms**<br/><br/>([TCP Nagle](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx) を無効にした場合)|**20 ～ 25 ms**|
-|調整動作|**HTTP 503 コードによる拒否**<br/><br/>(調整された要求は課金可能な操作として扱われません)|**例外/HTTP 503 による拒否**<br/><br/>(調整された要求は課金可能な操作として扱われません)|
-
-### 追加情報
-
-- 1 つの Azure キューで 1 秒間に最大 2,000 トランザクションを処理できます。トランザクションとは、**Put**、**Get**、**Delete** のいずれかの操作です。キューに 1 つのメッセージを送信する操作 (**Put**) は 1 つのトランザクションとしてカウントされますが、メッセージを受信する操作は、多くの場合、メッセージを取得する操作 (**Get**) とその後にメッセージをキューから削除する操作 (**Delete**) から成る 2 段階のプロセスです。そのため、成功したデキュー操作には 2 つのトランザクションが含まれるのが一般的です。複数のメッセージを一括取得すると、この影響を軽減できます。この場合、1 つのトランザクションで最大 32 メッセージの **Get** 操作を実行し、その後、各メッセージに **Delete** 操作を実行できます。スループットを改善するために、複数のキューを作成することができます (1 つのストレージ アカウントで作成できるキューの数は無制限です)。
-
-- アプリケーションが Azure キューの最大スループットに達すると、通常、Queue サービスから "HTTP 503 (サーバーがビジー状態)" 応答が返されます。この場合、アプリケーションで、指数関数的なバックオフ遅延を使用する再試行ロジックを開始する必要があります。
-
-- ストレージ アカウントと同じ場所 (リージョン) にあるホストされるサービスからの小さなメッセージ (10 KB 未満) を処理する場合の Azure キューの待機時間は平均 10 ミリ秒です。
-
-- Azure キューとService Bus キューの両方で、要求の拒否による調整動作が適用されます。ただし、どちらのキューでも、調整された要求は課金可能な操作として扱われません。
-
-- より高いスループットを達成するには複数の Service Bus キューを使用します。Service Bus によるパフォーマンスの最適化の詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)」をご覧ください。
-
-- Service Bus キューが最大スループットに達すると、キューが調整されていることを示す [ServerBusyException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx) (.NET メッセージング API を使用している場合) または HTTP 503 (REST API を使用している場合) の応答がキュー クライアントに返されます。
-
 ## 認証と権限承認
 
 このセクションでは、Azure キューと Service Bus キューでサポートされる認証および承認機能について説明します。
@@ -275,9 +251,9 @@ Azure キューと Service Bus キューは、どちらも、現在 Microsoft Az
 |---|---|---|
 |キュー トランザクションのコスト|**$0.0036**<br/><br/>(100,000 トランザクションあたり)|**Basic レベル**: **$0.05**<br/><br/>(100 万回の処理あたり)|
 |課金可能な操作|**すべて**|**送信/受信のみ**<br/><br/>(他の操作には料金はかかりません)|
-|アイドル状態のトランザクション|**課金対象**<br/><br/>(空のキューに対するクエリは課金可能なトランザクションと見なされます)|**課金対象**<br/><br/>(空のキューに対する受信は課金可能なメッセージと見なされます)|
+|アイドル状態のトランザクション|**課金対象**<br/><br/>(空のキューに対するクエリは課金可能なトランザクションと見なされます。)|**課金対象**<br/><br/>(空のキューに対する受信は課金可能なメッセージと見なされます。)|
 |Storage コスト|**$0.07**<br/><br/>(GB/月あたり)|**$0.00**|
-|送信データ転送のコスト|**$0.12 ～ $0.19**<br/><br/>(地理的条件による)|**$0.12 ～ $0.19**<br/><br/>(地理的条件による)|
+|送信データ転送のコスト|**$0.12 ～ $0.19**<br/><br/>(地理的条件によって異なります。)|**$0.12 ～ $0.19**<br/><br/>(地理的条件によって異なります。)|
 
 ### 追加情報
 
@@ -304,7 +280,7 @@ Service Bus キューには高度な機能が数多く用意されているた�
 - [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 - [キュー Storage Service を使用する方法](../storage/storage-dotnet-how-to-use-queues.md)
 - [Service Bus のブローカー メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-- [Introducing Queues and Topics in Azure Service Bus (Azure Service Bus のキューとトピックの概要)](http://www.code-magazine.com/article.aspx?quickid=1112041)
+- [Azure Service Bus のキューとトピックの概要](http://www.code-magazine.com/article.aspx?quickid=1112041)
 - [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/)
 - [Azure Storage のアーキテクチャ (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 - [Using the Queuing Service in Azure (Azure でのキュー サービスの使用)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
@@ -313,4 +289,4 @@ Service Bus キューには高度な機能が数多く用意されているた�
 [Azure クラシック ポータル]: http://manage.windowsazure.com
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

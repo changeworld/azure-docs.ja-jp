@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/17/2016"
+     ms.date="09/06/2016"
      ms.author="obloch"/>
 
 # C 用 Microsoft Azure IoT device SDK – シリアライザーの詳細
@@ -60,7 +60,7 @@ END_NAMESPACE(WeatherStation);
 
 次のデータの型は、**シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| 型 | 説明 |
+| 型 | Description |
 |-------------------------|----------------------------------------|
 | double | 倍精度浮動小数点数 |
 | int | 32 ビット整数 |
@@ -70,7 +70,7 @@ END_NAMESPACE(WeatherStation);
 | int16\_t | 16 ビット整数型 |
 | int32\_t | 32 ビット整数 |
 | int64\_t | 64 ビット整数 |
-| bool | ブール値 |
+| bool | boolean |
 | ascii\_char\_ptr | ASCII 文字列 |
 | EDM\_DATE\_TIME\_OFFSET | 日時オフセット |
 | EDM\_GUID | GUID |
@@ -685,4 +685,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0907_2016-->

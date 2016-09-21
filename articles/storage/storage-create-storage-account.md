@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
-## 概要
+## Overview
 
 Azure ストレージ アカウントは、Azure Storage データ オブジェクトの格納およびアクセスのための一意の名前空間を提供します。ストレージ アカウント内のすべてのオブジェクトは、グループとしてまとめて課金されます。既定では、アカウントのデータはアカウント所有者だけが使用できます。
 
@@ -101,7 +101,7 @@ BLOB ストレージ アカウントでは、アクセス層を変更すると�
 
 ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-> [AZURE.NOTE] ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *Shared Access Signature* が利用できます。Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[Shared Access Signature: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+> [AZURE.NOTE] ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*Shared Access Signature* が利用できます。Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 #### ストレージ アクセス キーの表示とコピー
 
@@ -157,4 +157,4 @@ Azure 仮想マシンに関連付けられているストレージ アカウン�
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

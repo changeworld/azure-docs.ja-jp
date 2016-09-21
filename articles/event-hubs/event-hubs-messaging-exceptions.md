@@ -56,7 +56,8 @@
 | [TransactionSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.transactionsizeexceededexception_methods.aspx) | トランザクションの一部になっている操作が多すぎます。 | このトランザクションの一部である操作の数を減らします。 | 再試行によって解決することはありません。 |
 | [MessagingEntityDisabledException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagingentitydisabledexception.aspx) | 無効になっているエンティティに対してランタイム操作を要求しました。 | エンティティをアクティブ化します。 | エンティティがそれまでにアクティブ化されている場合は、再試行によって解決することがあります。 |
 | [MessageSizeExceededException](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) | メッセージ ペイロードが 256K の制限を超えています。ただし 256k の制限はメッセージの合計サイズであり、システム プロパティや .NET のオーバーヘッドも含めたサイズです。 | メッセージ ペイロードのサイズを小さくし、操作を再試行します。 | 再試行によって解決することはありません。 |
-| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | - | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
+| [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) | アンビエント トランザクション (*Transaction.Current*) が無効です。トランザクションは完了または中止された可能性がありますがなります。内部例外で追加情報が提供される場合があります。 | | 再試行によって解決することはありません。 | - 
+| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) | 未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 | トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 | - |
 
 ## QuotaExceededException
 
@@ -86,4 +87,4 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 Service Bus と Event Hubs の詳細な .NET API リファレンスについては、[MSDN の Azure のリファレンス](https://msdn.microsoft.com/library/azure/mt419900.aspx)を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--------HONumber=AcomDC_0824_2016-->

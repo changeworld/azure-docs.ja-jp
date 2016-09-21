@@ -13,18 +13,18 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="08/06/2016"
+	ms.date="09/07/2016"
 	ms.author="marsma" />
 
 # Azure Batch のジョブとタスクの出力の保持
 
 通常、Batch で実行されるタスクは出力を生成します。この出力は、格納された後、ジョブ内の他のタスクかジョブを実行したクライアント アプリケーション、またはその両方によって取得される必要があります。この出力は、入力データを処理して作成されたファイルであるか、タスクの実行に関連付けられたログ ファイルである可能性があります。この記事では、規則ベースの手法でこのようなタスク出力を Azure BLOB ストレージで保持する .NET クラス ライブラリを紹介し、プール、ジョブ、コンピューティング ノードを削除した後でもタスク出力を使用できるようにします。
 
-この記事の手法を使用して、[Azure ポータル][portal]の **[Saved output files (保存された出力ファイル)]** と **[Saved logs (保存されたログ)]** でタスク出力を確認することもできます。
+この記事の手法を使用して、[Azure Portal][portal] の **[Saved output files (保存された出力ファイル)]** と **[Saved logs (保存されたログ)]** でタスク出力を確認することもできます。
 
 ![Saved output files and Saved logs selectors in portal][1]
 
->[AZURE.NOTE] ここで説明するファイルの保存と取得の手法は、**Batch アプリ** (現在では非推奨) によるタスク出力の管理方法と似たものです。
+>[AZURE.NOTE] この記事で説明されている [Azure Batch ファイル規則][nuget_package] .NET クラス ライブラリは現在プレビュー段階です。ここで説明する機能の一部は、一般公開前に変更される可能性があります。
 
 ## タスク出力に関する考慮事項
 
@@ -36,7 +36,7 @@ Batch ソリューションを設計する際は、ジョブとタスク出力�
 
 * **出力の取得**: タスク出力は、プール内のコンピューティング ノードから直接取得できるほか、タスク出力が保持されている場合は Azure Storage から取得することもできます。タスクの出力をコンピューティング ノードから直接取得するには、ファイル名とノード上の出力場所が必要です。Azure Storage で出力を保持する場合、下流のタスクまたはクライアント アプリケーションは、Azure Storage SDK を使用して出力をダウンロードするために Azure Storage のファイルの完全なパスを把握する必要があります。
 
-* **出力の表示**: Azure ポータルで Batch のタスクに移動し、**[Files on node (ノード上のファイル)]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。Azure Storage で保持されているタスク出力を [Azure ストレージ エクスプローラー][storage_explorer]などのアプリケーションやポータルで表示するには、出力の保存場所を確認してファイルに直接移動する必要があります。
+* **出力の表示**: Azure Portal で Batch のタスクに移動し、**[Files on node (ノード上のファイル)]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。Azure Storage で保持されているタスク出力を [Azure ストレージ エクスプローラー][storage_explorer]などのアプリケーションやポータルで表示するには、出力の保存場所を確認してファイルに直接移動する必要があります。
 
 ## 保持されている出力に関するヘルプ
 
@@ -72,7 +72,7 @@ Batch ソリューションを設計する際は、ジョブとタスク出力�
 
 ### ストレージ コンテナーの作成
 
-ストレージでのタスク出力の保持を始める前に、出力のアップロード先となる Blob Storage コンテナーを作成する必要があります。これは [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出すことで作成できます。この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、コンテナーを作成します。このコンテナーには、Azure ポータルまたはこれ以降に説明する取得メソッドで内容を検出できるように、決まった方法で名前が付けられます。
+ストレージでのタスク出力の保持を始める前に、出力のアップロード先となる Blob Storage コンテナーを作成する必要があります。これは [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出すことで作成できます。この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、コンテナーを作成します。このコンテナーには、Azure Portal またはこれ以降に説明する取得メソッドで内容を検出できるように、決まった方法で名前が付けられます。
 
 通常、このコードはクライアント アプリケーション (プール、ジョブ、タスクを作成するアプリケーション) に配置します。
 
@@ -91,7 +91,7 @@ await job.PrepareOutputStorageAsync(linkedStorageAccount);
 
 ### タスク出力の格納
 
-これで BLOB ストレージにコンテナーを準備できたので、ファイル規則ライブラリの [TaskOutputStorage][net_taskoutputstorage] クラスを使用して、タスク出力をコンテナーに保存できます。
+これで Blob Storage にコンテナーを準備できたので、ファイル規則ライブラリの [TaskOutputStorage][net_taskoutputstorage] クラスを使用して、タスク出力をコンテナーに保存できます。
 
 タスク コードでは、最初に [TaskOutputStorage][net_taskoutputstorage] オブジェクトを作成し、そのタスクが完了したら [TaskOutputStorage][net_taskoutputstorage].[SaveAsync][net_saveasync] メソッドを呼び出して、出力を Azure Storage に保存します。
 
@@ -109,11 +109,11 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-保持されたファイルは "出力の種類" パラメーターによって分類されます。[TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。"TaskOutput"、"TaskPreview"、"TaskLog"、"TaskIntermediate" です。カスタムの種類を定義して、ワークフローで活用することもできます。
+保持されたファイルは "出力の種類" パラメーターによって分類されます。[TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。"TaskOutput"、"TaskPreview"、"TaskLog"、"TaskIntermediate" です。 カスタムの種類を定義して、ワークフローで活用することもできます。
 
 これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 一覧の表示と出力の取得については、この記事の後ろのセクションの「[出力の取得](#retrieve-output)」で詳しく説明します。
 
->[AZURE.TIP] 出力の種類によって、特定のファイルが Azure ポータルのどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは [Task output files (タスク出力ファイル)] に表示され、*TaskLog* に分類されたファイルは [Task logs (タスクのログ)] に表示されます。
+>[AZURE.TIP] 出力の種類によって、特定のファイルが Azure Portal のどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは [Task output files (タスク出力ファイル)] に表示され、*TaskLog* に分類されたファイルは [Task logs (タスクのログ)] に表示されます。
 
 ### ジョブの出力の格納
 
@@ -129,7 +129,7 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobOutput, "mymovie.mp4");
 await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4");
 ```
 
-タスク出力のときの TaskOutputKind と同様に、[JobOutputKind][net_joboutputkind] パラメーターで、ジョブの保持されたファイルを分類します。これにより、後で指定の種類の出力を照会 (または一覧表示) できるようになります。JobOutputKind は出力とプレビューの両種類を含み、カスタマイズした種類の作成をサポートします。
+タスク出力のときの TaskOutputKind と同様に、[JobOutputKind][net_joboutputkind] パラメーターで、ジョブの保持されたファイルを分類します。このパラメーターにより、後で指定の種類の出力を照会 (または一覧表示) できるようになります。JobOutputKind は出力とプレビューの両種類を含み、カスタマイズした種類の作成をサポートします。
 
 ### タスクのログの格納
 
@@ -138,21 +138,31 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4"
 次のコード スニペットでは、タスクの実行中、15 秒ごとに Azure Storage で `stdout.txt` を更新するために [SaveTrackedAsync][net_savetrackedasync] を使用しています。
 
 ```csharp
+TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
 string logFilePath = Path.Combine(
 	Environment.GetEnvironmentVariable("AZ_BATCH_TASK_DIR"), "stdout.txt");
 
+// The primary task logic is wrapped in a using statement that sends updates to
+// the stdout.txt blob in Storage every 15 seconds while the task code runs.
 using (ITrackedSaveOperation stdout =
-		taskStorage.SaveTrackedAsync(
+		await taskStorage.SaveTrackedAsync(
 		TaskOutputKind.TaskLog,
 		logFilePath,
 		"stdout.txt",
 		TimeSpan.FromSeconds(15)))
 {
 	/* Code to process data and produce output file(s) */
+
+	// We are tracking the disk file to save our standard output, but the
+	// node agent may take up to 3 seconds to flush the stdout stream to
+	// disk. So give the file a moment to catch up.
+ 	await Task.Delay(stdoutFlushDelay);
 }
 ```
 
 `Code to process data and produce output file(s)` は、タスクが通常実行するコードの単なるプレースホルダーです。たとえば、Azure Storage からデータをダウンロードして何らかの変換や計算を行うコードがあるとします。このスニペットの重要な役割は、ファイルを定期的に [SaveTrackedAsync][net_savetrackedasync] で更新するために、そのようなコードを `using` ブロックにラップする方法を示すことです。
+
+ノード上の stdout.txt ファイルに対する標準出力の内容をノード エージェントがフラッシュするための時間を確保するために、この `using` ブロックの最後には `Task.Delay` が必要です (ノード エージェントは、プール内の各ノードで実行されるプログラムで、ノードと Batch サービスとの間でコマンドと制御の仲立ちとしての役割を果たします)。この待機時間を設けなかった場合、最後の数秒間分の出力が失われる可能性があります。ファイルによっては、この待機時間が不要である場合もあります。
 
 >[AZURE.NOTE] SaveTrackedAsync でファイルの追跡を有効にすると、追跡されているファイルへの "*追加分*" だけが Azure Storage で保持されます。このメソッドは、ローテーションのないログ ファイルの追跡か、データが追加される他のファイルの追跡のみに使用してください。更新の際のデータはファイルの末尾に追加されるだけだからです。
 
@@ -180,7 +190,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## タスク出力と Azure ポータル
 
-Azure ポータルでは、[Azure Batch ファイル規則の README][github_file_conventions_readme] 内の名前付け規則を使って、リンク済みの Azure ストレージ アカウントに保持されているタスク出力とログが表示されます。これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
+Azure Portal では、[Azure Batch ファイル規則の README][github_file_conventions_readme] 内の名前付け規則を使って、リンク済みの Azure ストレージ アカウントに保持されているタスク出力とログが表示されます。これらの規則を好きな言語で実装できるほか、自分の .NET アプリケーションのファイル規則ライブラリを使用することもできます。
 
 ### ポータルの表示の有効化
 
@@ -242,4 +252,4 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 [1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
 [2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->

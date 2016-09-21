@@ -35,11 +35,11 @@ Azure でサイズ A8 および A9 の仮想マシンを使用して Linux RDMA 
 
 * **Azure CLI スクリプト** - 後で示すように、サイズ A8 または A9 の Linux VM のクラスターのデプロイをスクリプトにするには、[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用します。クラシック デプロイメント モデルのサービス管理モードの CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードのデプロイには数分かかる場合があります。クラシック デプロイメント モデルでは、RDMA ネットワークを通して接続するには、A8 または A9 の複数の VM を同じクラウド サービスにデプロイする必要があります。
 
-* **Azure Resource Manager テンプレート** - RDMA ネットワークを利用して MPI ワークロードを実行するコンピューティング クラスターに複数の A8 および A9 Linux VM をデプロイするには、Resource Manager デプロイメント モデルを使用します。[独自のテンプレートを作成する](../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。Resource Manager デプロイメント モデルでは、RDMA ネットワークを通して接続するには、A8 または A9 の複数の VM を同じ可用性セットにデプロイする必要があります。
+* **Azure Resource Manager テンプレート** - RDMA ネットワークに接続して MPI ワークロードを実行する A8 および A9 VM のクラスターをデプロイするには、Resource Manager デプロイメント モデルを使用します。[独自のテンプレートを作成する](../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。Resource Manager デプロイメント モデルでは、RDMA ネットワークを通して接続するには、A8 または A9 の複数の VM を同じ可用性セットにデプロイする必要があります。
 
 ## クラシック モデルでのサンプル デプロイ
 
-次の手順では、Azure CLI を使用して、Azure Marketplace から SUSE Linux Enterprise Server (SLES) 12 HPC VM をデプロイし、Intel MPI Library およびその他のカスタマイズをインストールして、カスタム VM イメージを作成する方法を説明します。次に、そのイメージを使用して、A8 または A9 VM のクラスターをデプロイするスクリプトを作成します。
+次の手順では、Azure CLI を使用して、Azure Marketplace から SUSE Linux Enterprise Server (SLES) 12 HPC VM をデプロイし、Intel MPI Library をインストールして、カスタム VM イメージを作成する方法を説明します。次に、そのイメージを使用して、A8 または A9 VM のクラスターをデプロイするスクリプトを作成します。
 
 >[AZURE.TIP]  Azure Marketplace の CentOS ベースの 6.5 または 7.1 HPC イメージに基づいて、A8 または A9 VM のクラスターをデプロイする場合と同様の手順を実行します。違いについては、手順の中で説明します。たとえば、CentOS ベースの HPC イメージには Intel MPI に含まれているため、そのイメージから作成された VM に別に Intel MPI をインストールする必要はありません。
 
@@ -107,7 +107,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
     >
     >Marketplace から CentOS ベースの HPC イメージでは、**yum** 構成ファイルでのカーネルの更新は無効にされています。Linux RDMA ドライバーは RPM パッケージとして配布されているため、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があります。
 
-* **Linux RDMA ドライバーの更新プログラム** - SLES 12 HPC VM をデプロイした場合、RDMA ドライバーを更新する必要があります。詳細については、「[About the A8, A9, A10, and A11 compute-intensive instances (A8、A9、A10、A11 コンピューティング集中型インスタンスの概要)](virtual-machines-linux-a8-a9-a10-a11.md#Linux-RDMA-driver-updates-for-SLES-12)」を参照してください。
+* **Linux RDMA ドライバーの更新プログラム** - SLES 12 HPC VM をデプロイした場合、RDMA ドライバーを更新する必要があります。詳細については、「[About the A8, A9, A10, and A11 compute-intensive instances (A8、A9、A10、A11 コンピューティング集中型インスタンスの概要)](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12)」を参照してください。
 
 * **Intel MPI** - SLES 12 HPC VM をデプロイした場合、次のようなコマンドを実行して、Intel MPI Library 5 ランタイムを Intel.com のサイトからダウンロードしてインストールします。CentOS ベースの 6.5 または 7.1 HPC VM をデプロイした場合、この手順は不要です。
 
@@ -129,7 +129,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
     >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。たとえば、「<ユーザーまたはグループ名> hard memlock unlimited」とします。
 
-* **SLES 12 VM 用 SSH キー** - MPI ジョブの実行時に SLES 12 HPC クラスター内のすべてのコンピューティング ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します (CentOS ベースの HPC VM をデプロイした場合、この手順は実行しないでください。この記事で後述する、イメージをキャプチャし、クラスターをデプロイした後に、クラスター ノード内にパスワードなしの SSH 信頼関係をセットアップする手順を参照してください)。
+* **SLES 12 VM 用 SSH キー** - MPI ジョブの実行時に SLES 12 HPC クラスター内のコンピューティング ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します (CentOS ベースの HPC VM をデプロイした場合、この手順は実行しないでください。この記事で後述する、イメージをキャプチャし、クラスターをデプロイした後に、クラスター ノード内にパスワードなしの SSH 信頼関係をセットアップする手順を参照してください)。
 
     次のコマンドを実行して、SSH キーを作成します。入力を求められたら、パスフレーズを設定せずに、単に Enter を押して既定の場所でキーを生成します。
 
@@ -398,4 +398,4 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 
 * [クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)を実行し、CentOS ベースの HPC イメージを使用して Intel Lustre クラスターを作成してみてください。詳細については、[このブログ](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0907_2016-->

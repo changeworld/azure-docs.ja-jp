@@ -17,20 +17,17 @@
 	ms.date="08/16/2016"
 	ms.author="spelluru"/>
 
-# Data Factory REST API を使用した初めての Azure データ ファクトリの作成
+# チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
-- [Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)
-- [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
-- [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
-- [REST API の使用](data-factory-build-your-first-pipeline-using-rest-api.md)
+- [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成する方法について説明します。
+[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
 
-## 前提条件
-
-- 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通してください。この記事では、Azure Data Factory の基本的な概念について説明しています。
+## 追加の前提条件
 - コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
 - [この記事](../resource-group-create-service-principal-portal.md)の手順に従って、次の操作を行います。
 	1. Azure Active Directory に、**ADFGetStartedApp** という名前の Web アプリケーションを作成します。
@@ -405,4 +402,4 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 | [Azure ポータルのブレードを使用したパイプラインの監視と管理に関するページ](data-factory-monitor-manage-pipelines.md) | この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

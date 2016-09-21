@@ -1,6 +1,6 @@
 <properties
-	pageTitle="ラボで Azure Marketplace イメージの設定を構成する | Microsoft Azure"
-	description="DevTest ラボで VM を作成する場合にどの Azure Marketplace イメージを使用できるようにするかを構成する"
+	pageTitle="Azure DevTest Labs で Azure Marketplace イメージの設定を構成する | Microsoft Azure"
+	description="Azure DevTest Labs で VM を作成する場合にどの Azure Marketplace イメージを使用できるようにするかを構成する"
 	services="devtest-lab,virtual-machines"
 	documentationCenter="na"
 	authors="tomarcher"
@@ -13,28 +13,24 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/25/2016"
+	ms.date="09/06/2016"
 	ms.author="tarcher"/>
 
-# ラボで Azure Marketplace イメージの設定を構成する
+# Azure DevTest Labs で Azure Marketplace イメージの設定を構成する
 
-## Overview
-
-DevTest ラボでは、実際のラボで使用する Azure Marketplace イメージの構成方法に応じて、Azure Marketplace イメージに基づく VM を新規に作成することができます。この記事では、ラボで新しい VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法を説明します。
+DevTest Labs では、実際のラボで使用する Azure Marketplace イメージの構成方法に応じて、Azure Marketplace イメージに基づく VM を作成することができます。この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法を説明します。
 
 ## VM を作成する際に使用できるようにする Azure Marketplace イメージを選択する
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[参照]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。
 
-1. 選択したラボの **[設定]** ブレードが表示されます。
-
-1. **[設定]** ブレードで、**[Marketplace images (Marketplace イメージ)]** を選択します
-
-	![Azure Marketplace イメージの使用方法を構成する](./media/devtest-lab-configure-marketplace-images/lab-settings-marketplace-images.png)
+1. ラボのブレードで、**[構成]** を選択します。
+	
+1. ラボの **[構成]** ブレードで、**[Marketplace images (Marketplace イメージ)]** を選択します
 
 1. 対象となるすべての Azure Marketplace イメージを新しい VM のベースとして利用できるようにするかどうかを指定します。**[はい]** を選択すると、次の条件をすべて満たす Azure Marketplace イメージのすべてがラボで使用できるようになります。
 
@@ -56,4 +52,4 @@ DevTest ラボでは、実際のラボで使用する Azure Marketplace イメ�
 
 VM を作成するときに Azure Marketplace イメージを使用できるようにする方法を構成したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

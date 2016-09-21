@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/17/2016" 
+    ms.date="09/07/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ITRP の統合
@@ -64,19 +64,19 @@
     ![ITRP](./media/active-directory-saas-itrp-tutorial/IC775566.png "ITRP")
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで ITRP に対する認証を行うことができるようにする方法を説明します。ITRP のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで ITRP に対する認証を行うことができるようにする方法を説明します。ITRP のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
 1.  Azure クラシック ポータルの **ITRP** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-itrp-tutorial/IC771709.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-itrp-tutorial/IC771709.png "Configure single sign-on")
 
 2.  **[ユーザーの ITRP へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-itrp-tutorial/IC775567.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[ITRP サインイン URL]** テキストボックスに、"*https://\<テナント名>.ITRP.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリの URL の構成]** ページで、**[サインオン URL]** テキストボックスに、"*https://\<テナント名>.ITRP.com*" のパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-itrp-tutorial/IC775568.png "アプリケーション URL の構成")
 
@@ -86,7 +86,7 @@
 
 5.  別の Web ブラウザー ウィンドウで、ITRP 企業サイトに管理者としてログインします。
 
-6.  上部のツールバーで **[設定]** をクリックします。
+6.  上部のツールバーで **[Settings]** をクリックします。
 
     ![ITRP](./media/active-directory-saas-itrp-tutorial/IC775570.png "ITRP")
 
@@ -101,13 +101,13 @@
     ![シングル サインオン](./media/active-directory-saas-itrp-tutorial/IC775573.png "シングル サインオン")
 
     1.  **[有効]** をクリックします。
-    2.  Azure クラシック ポータルで、**[ITRP でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[リモート ログアウト URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[ITRP でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Remote Logout URL (リモート ログアウト URL)]** ボックスに貼り付けます。
     3.  Azure クラシック ポータルで、**[ITRP でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML SSO URL]** ボックスに貼り付けます。
-    4.  エクスポートした証明書から **[拇印]** の値をコピーし、**[証明書フィンガープリント]** テキストボックスに貼り付けます。
+    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[証明書フィンガープリント]** ボックスに貼り付けます。
         
 		>[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
 
-    5.  **[保存]** をクリックします。
+    5.  [**Save**] をクリックします。
 
 9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -116,7 +116,7 @@
   
 Azure AD ユーザーが ITRP にログインできるようにするには、ユーザーを ITRP にプロビジョニングする必要があります。ITRP の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **ITRP** テナントにログインします。
 
@@ -134,10 +134,10 @@ Azure AD ユーザーが ITRP にログインできるようにするには、�
 
 5.  [新しいユーザーの追加] ダイアログで、次の手順を実行します。
 
-    ![ユーザー](./media/active-directory-saas-itrp-tutorial/IC775577.png "ユーザー")
+    ![User](./media/active-directory-saas-itrp-tutorial/IC775577.png "User")
 
     1.  プロビジョニングする有効な AAD アカウントの**名前**と**電子メール**を入力します。
-    2.  **[保存]** をクリックします。
+    2.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] ITRP から提供されている他の ITRP ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -157,6 +157,6 @@ Azure AD ユーザーが ITRP にログインできるようにするには、�
 
     ![Yes](./media/active-directory-saas-itrp-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0907_2016-->

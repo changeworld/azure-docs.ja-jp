@@ -22,10 +22,7 @@
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
 
 - データベース リソース (DTU) の消費量の詳細な情報。
-- CPU 消費の多いクエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
-  - CPU
-  - 時間
-  - 実行回数
+- CPU/期間/実行回数の上位クエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
 - クエリの詳細にドリルダウンして、テキストやリソース使用率履歴を表示する機能。
 - [SQL Azure Database Advisor](sql-database-advisor.md) で実行されるアクションを示す、パフォーマンス チューニングの注釈
 
@@ -244,4 +241,4 @@ Query Performance Insight を使うと、クエリ ワークロードの影響�
 [8]: ./media/sql-database-query-performance/qds-off.png
 [9]: ./media/sql-database-query-performance/qds-button.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

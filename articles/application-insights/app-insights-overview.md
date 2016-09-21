@@ -17,11 +17,11 @@
  
 # Application Insights - 紹介
 
-[Visual Studio Application Insights](app-insights-get-started.md) は、実行中の Web アプリケーションを監視する拡張可能な分析サービスです。パフォーマンスの問題の検出と診断や、ユーザーがアプリを使用して実際に実行する操作の理解に役立ちます。開発者向けに設計された Application Insights を使用して、パフォーマンスやユーザビリティを継続的に向上させることができます。オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。
+Visual Studio Application Insights は、実行中の Web アプリケーションを監視する拡張可能な分析サービスです。パフォーマンスの問題の検出と診断や、ユーザーがアプリを使用して実際に実行する操作の理解に役立ちます。開発者向けに設計された Application Insights を使用して、パフォーマンスやユーザビリティを継続的に向上させることができます。オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。
 
 ![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
 
-[紹介用アニメーションをご覧ください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
+[概要を説明するアニメーションを参照してください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
 
 ## それはどのように機能しますか?
 
@@ -76,7 +76,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
  * [**J2EE**](app-insights-java-live.md)
 * **開発時: コードに Application Insights を追加します。** カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
  * [Visual Studio](app-insights-asp-net.md) 2013 Update 2 以降。
- * [Eclipse](app-insights-java-eclipse.md) の Java または[その他のツール](app-insights-java-get-started.md)
+ * [Eclipse](app-insights-java-eclipse.md) または[その他のツール](app-insights-java-get-started.md)の Java
  * [Node.JS](app-insights-nodejs.md)
  * [その他のプラットフォーム](app-insights-platforms.md)
 * ページ ビュー、AJAX、およびその他のクライアント側テレメトリのために **[Web ページをインストルメント化](app-insights-javascript.md)**します。
@@ -86,7 +86,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 ## メトリックを探索する
 
-アプリを実行します (開発用コンピューターでデバッグ モードで実行するか、サーバーにデプロイします)。その後、しばらくの間、アプリを使用します。次に、[Azure ポータル](https://portal.azure.com)にサインインします。
+アプリを実行します (開発用コンピューターでデバッグ モードで実行するか、サーバーにデプロイします)。その後、しばらくの間、アプリを使用します。次に、[Azure Portal](https://portal.azure.com) にサインインします。
 
 アプリの Application Insights の概要ブレードに移動します。
 
@@ -142,13 +142,13 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 ## 分析
 
-[Analytics ](app-insights-analytics.md)はさらに強力な検索と分析の機能であり、テレメトリ データに対して SQL に似たクエリを作成して、特定の問題を調べたり統計情報を取得したりできます。
+[Analytics](app-insights-analytics.md) はさらに強力な検索と分析の機能であり、テレメトリ データに対して SQL に似たクエリを作成して、特定の問題を調べたり統計情報を取得したりできます。
 
 ![分析](./media/app-insights-overview/10.png)
 
 データに対するクエリの実行例を確認するには、チュートリアル ウィンドウを開きます。または、[詳しい説明](app-insights-analytics-tour.md)を参照してください。Intellisense によって、使用可能なクエリが示されます。[完全な言語リファレンス](app-insights-analytics-reference.md)も用意されています。
 
-クエリは、通常は、要求、例外、依存関係などのテレメトリ ストリームの名前で始まります。使用可能なテレメトリ ストリームの一覧を表示するには、左側のスキーマ バーを開きます。クエリは、`where` (ブール値フィルター) や `project` (新しいプロパティの計算を実行) などの[クエリ操作](app-insights-analytics-reference.md#queries-and-operators)のパイプラインです。`summarize` [集計インスタンス](app-insights-analytics-tour.md#aggregate-groups-of-rows)は、定義された関数でグループ化を行った後、グループ化されたデータに集計関数を適用します。
+クエリは、通常は、要求、例外、依存関係などのテレメトリ ストリームの名前で始まります。使用可能なテレメトリ ストリームの一覧を表示するには、左側のスキーマ バーを開きます。クエリは、`where` (ブール値フィルター) や `project` (新しいプロパティの計算を実行) などの[クエリ操作](app-insights-analytics-reference.md#queries-and-operators)のパイプラインです。`summarize` は、定義した関数でインスタンスをグループ化した後、グループ化されたデータに集計関数を適用して、[インスタンスを集計](app-insights-analytics-tour.md#aggregate-groups-of-rows)します。
 
 結果は、[表やさまざまな種類のグラフで表示](app-insights-analytics-tour.md#charting-the-results)できます。
 
@@ -247,7 +247,7 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 * *最初は、ポータルにテレメトリを送信するよう Application Insights を構成しましたが、今は、Visual Studio でテレメトリだけを表示したくなりました。*
 
  * アプリからポータルにテレメトリを送信している場合でも、[検索] ウィンドウの [設定] に用意されているオプションでローカルの診断を検索できます。
- * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトします。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
+ * ポータルへのテレメトリの送信を中止するには、ApplicationInsights.config から `<instrumentationkey>...` 行をコメント アウトしてください。もう一度ポータルにテレメトリを送信する準備ができたら、コメント解除します。
 
 ## Trends
 
@@ -272,7 +272,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 
 ### 注釈
 
-メトリックに関する[リリース注釈](app-insights-annotations.md)に、新しいビルドのデプロイ先が示されます。これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/ja-JP/get-started/build/build-your-app-vs)により自動で作成されます。[PowerShell から作成](#create-annotations-from-powershell)することもできます。
+メトリック グラフに関する[リリース注釈](app-insights-annotations.md)に、新しいビルドのデプロイ先が示されます。これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。リリース注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/ja-JP/get-started/build/build-your-app-vs)により自動で作成されます。[PowerShell から作成](#create-annotations-from-powershell)することもできます。
 
 ![サーバー応答時間と明確な相関関係のある注釈の例](./media/app-insights-annotations/00.png)
 
@@ -385,8 +385,7 @@ Application Insights の利用には制限がありますが、その程度は�
 [portal]: http://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
-[windows]: app-insights-windows-get-started.md
 
  
 
-<!----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

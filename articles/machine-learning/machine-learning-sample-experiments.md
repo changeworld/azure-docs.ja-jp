@@ -4,7 +4,7 @@
     services="machine-learning"
     documentationCenter=""
     authors="cjgronlund"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -66,4 +66,4 @@
 - [Web サービス API を作成する](machine-learning-publish-a-machine-learning-web-service.md)
 - [すぐに使用できるアプリケーションを参照する](https://datamarket.azure.com/browse?query=machine+learning)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

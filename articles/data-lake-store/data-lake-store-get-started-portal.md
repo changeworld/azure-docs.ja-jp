@@ -4,7 +4,7 @@
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/02/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Azure ポータルで Azure Data Lake Store の使用を開始する
@@ -35,16 +35,6 @@ Azure ポータルを使用して、Azure Data Lake Store アカウントを作�
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-## <a name="signup"></a>Azure サブスクリプションを Data Lake Store パブリック プレビューに対して有効にする
-
-まず、Azure サブスクリプションを Data Lake Store パブリック プレビューに対して有効にする必要があります。以下の手順に従ってください。
-
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. **[新規]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。
-3. **[新しい Data Lake Store]** ブレードで、**[プレビュー版にサインアップ]** をクリックします。情報を確認し、**[OK]** をクリックします。パブリック プレビューに対して Azure サブスクリプションが有効になると、電子メールを受信します。
-
-	![パブリック プレビューにサインアップ](./media/data-lake-store-get-started-portal/preview-signup.png "新しい Azure Data Lake アカウントの作成")
-
 ## ビデオで速習する
 
 Data Lake Store の基本操作については以下のビデオをご覧ください。
@@ -62,7 +52,7 @@ Data Lake Store の基本操作については以下のビデオをご覧くだ�
 
 	![新しい Azure Data Lake Store アカウントの作成](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "新しい Azure Data Lake アカウントの作成")
 
-	- **[サブスクリプション]**: 新しい Data Lake Store アカウントを作成するサブスクリプションを選択します。
+	- **サブスクリプション**。新しい Data Lake Store アカウントを作成するサブスクリプションを選択します。
 	- **[リソース グループ]**:既存のリソース グループを選択するか、**[リソース グループの作成]** をクリックしてリソース グループを作成します。リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。詳細については、[Azure のリソース グループ](resource-group-overview.md#resource-groups)に関する記述を参照してください。
 	- **[場所]**: Data Lake Store アカウントを作成する場所を選択します。
 
@@ -138,4 +128,4 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/20/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;sngun"/>
 
 # Azure Automation におけるロールベースのアクセス制御
@@ -29,7 +29,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 |**ロール** | **説明** |
 |:--- |:---|
 | 所有者 | Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
-| 共同作成者 | Automation アカウントに対する他のユーザーのアクセス権に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
+| 共同作成者 | Automation アカウントに対する他のユーザーのアクセス許可に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
 | 閲覧者 | 閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。|
 | オートメーション オペレーター | ジョブの開始、停止、一時停止、再開、スケジュール設定などの運用タスクは、Automation オペレーター ロールで実行できます。Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
 | ユーザーアクセスの管理者 | Azure Automation アカウントに対するユーザー アクセスは、ユーザー アクセスの管理者ロールで管理できます。 |
@@ -127,17 +127,17 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ## Azure ポータルを使用して Automation アカウントの RBAC を構成する
 
-1.	[Azure ポータル](https://portal.azure.com/)にログインし、[Automation アカウント] ブレードから、ご利用の Automation アカウントを開きます。  
+1.	[Azure ポータル](https://portal.azure.com/)にログインし、[Automation アカウント] ブレードから、ご利用の Automation アカウントを開きます。
 
 2.	右上隅にある **[アクセス]** コントロールをクリックします。表示された **[ユーザー]** ブレードで、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
 
     ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
 
->[AZURE.NOTE] **[サブスクリプション管理]** は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントにも所有者ロールが継承されます。つまり、サブスクリプションの**サービス管理者と共同管理者**のアクセス権が**継承**されます。それ以外のユーザーについてはアクセス権を**割り当てる**ことになります。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
+>[AZURE.NOTE] **サブスクリプション管理者**は、既定のユーザーとして最初から存在します。Active Directory のサブスクリプション管理グループには、Azure サブスクリプションのサービス管理者と共同管理者が含まれます。サービス管理者は、Azure サブスクリプションとそのリソースの所有者であり、Automation アカウントに継承される所有者ロールも持ちます。つまり、アクセスはサブスクリプションの**サービス管理者と共同管理者**に**継承**され、それが他のすべてのユーザーに**割り当て**られます。**[サブスクリプション管理]** をクリックすると、その権限の詳細が表示されます。
 
 ### 新しいユーザーの追加とロールの割り当て
 
-1.	[ユーザー] ブレードの **[追加]** をクリックして **[アクセスを追加]** ブレードを開きます。このブレードでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。  
+1.	[ユーザー] ブレードの **[追加]** をクリックして **[アクセスを追加]** ブレードを開きます。このブレードでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。
 
     ![ユーザーの追加](media/automation-role-based-access-control/automation-02-add-user.png)
 
@@ -179,7 +179,7 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 ## ロールが割り当てられているユーザー
 
-ロールに割り当てられているユーザーがその Automation アカウントにログインすると、**既定のディレクトリ**の一覧に所有者のアカウントが表示されていることが確認できます。自分が追加されている Automation アカウントを確認するには、既定のディレクトリを所有者の既定のディレクトリに切り替える必要があります。
+ロールに割り当てられているユーザーがその Automation アカウントにログインすると、**[既定のディレクトリ]** の一覧に所有者のアカウントが表示されていることが確認できます。自分が追加されている Automation アカウントを確認するには、既定のディレクトリを所有者の既定のディレクトリに切り替える必要があります。
 
 ![既定のディレクトリ](media/automation-role-based-access-control/automation-09-default-directory-in-role-assigned-user.png)
 
@@ -213,13 +213,13 @@ Automation アカウントに対するロールベースのアクセス制御は
 
 ![Get role assignment](media/automation-role-based-access-control/automation-15-get-azurerm-role-assignment.png)
 
-• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てます。**例:** Automation アカウント スコープのユーザーに対して "Automation Operator" ロールを割り当てるには、次のコマンドを使用します。
+• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てます。**例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
     New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName "Automation operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”  
 
 ![New role assignment](media/automation-role-based-access-control/automation-16-new-azurerm-role-assignment.png)
 
-• [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。**例:** Automation アカウント スコープの "Automation Operator" ロールからユーザーを削除するには、次のコマンドを使用します。
+• [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。**例:** Automation アカウント スコープの "Automation オペレーター" ロールからユーザーを削除するには、次のコマンドを使用します。
 
     Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName "Automation Operator" -Scope “/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>”
 
@@ -231,4 +231,4 @@ Automation アカウントに対するロールベースのアクセス制御は
 - Runbook を開始するさまざまな方法については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事を参照してください。
 - Runbook のさまざまな種類については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

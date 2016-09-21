@@ -60,7 +60,7 @@ Azure App Service の利点の詳細については、[Mobile Services と App S
   5.  ボックスにモバイル サービスの名前を入力します。たとえば、ドメイン名が「contoso.azure-mobile.net」の場合、ボックスに「_contoso_」と入力します。
   6.  チェック マーク ボタンをクリックします。
 
-利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「*移行中*」として一覧表示されます。
+利用状況モニターで移行の状態を監視できます。サイトは Azure クラシック ポータルに「 *移行中* 」として一覧表示されます。
 
   ![移行アクティビティ モニター][1]
 
@@ -117,7 +117,7 @@ Scheduler Jobs は移行後約 30 分経過するまで表示されません。�
 
 この作業は任意ですが、管理しやすくなります。
 
-> [AZURE.TIP]  Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
+> [AZURE.TIP] Azure App Service を使用する利点の 1 つは、同じサイトで Web サイトとモバイル サービスを実行できることです。詳細については、「[次のステップ](#next-steps)」セクションを参照してください。
 
 ### <a name="download-publish-profile"></a>新しい発行プロファイルのダウンロード
 
@@ -166,7 +166,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 
 複数のアプリ設定を同時に更新できます。
 
-> [AZURE.TIP]  同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
+> [AZURE.TIP] 同じ値を含むアプリケーション設定が 2 つあります。たとえば、_ApplicationKey_ と _MS\_ApplicationKey_ の 2 つがあります。**MS\_** という接頭辞の付いたアプリ設定だけを変更します。ただし、両方のアプリ設定を同時に更新するのはよい考えです。
 
 ### <a name="authentication"></a>認証
 
@@ -248,7 +248,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure ポータル]経由で管理されます。Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
   1. [Azure ポータル]にログインします。
-  2. **[参照]** > \[Notification Hubs] の順に選択します。
+  2. **[参照]** > **[Notification Hubs]** の順に選択します。
   3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [AZURE.NOTE] 「Mixed」タイプの場合、通知ハブは表示されません。「Mixed」タイプの通知ハブでは、Notification Hubs と以前の Service Bus 機能の両方が利用されます。[Mixed 名前空間を変換する]必要があります。変換が完了すると、通知ハブが [Azure ポータル]に表示されます。
@@ -400,7 +400,7 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [ログ]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md
-[Notification Hubs]: ../notification-hubs/notification-hubs-overview.md
+[Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [パフォーマンス監視]: ../app-service-web/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
 [モバイル サービス スクリプトをバックアップする]: ../mobile-services/mobile-services-disaster-recovery.md
@@ -409,4 +409,4 @@ Traffic Manager プロファイルを作成するとき、移行された Mobile
 [WebJobs]: ../app-service-web/websites-webjobs-resources.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

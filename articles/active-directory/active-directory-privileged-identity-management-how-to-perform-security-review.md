@@ -13,23 +13,23 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/01/2016"
+   ms.date="09/02/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management でアクセス レビューを実行する方法
 
-Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスの管理が簡略化されます。
+Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。
 
-既に管理者ロールに割り当てられているユーザーは、組織の特権ロール管理者から、自分の業務にそのロールがまだ必要であるかどうかを定期的に確認するよう求められることがあります。リンクが記載された電子メールが届く場合もあれば、直接 [Azure ポータル](https://portal.azure.com)にアクセスすることもできます。この記事に記載された手順に従って、割り当てられたロールの自己レビューを実行することができます。
+既に管理者ロールに割り当てられているユーザーは、組織の特権ロール管理者から、自分の業務にそのロールがまだ必要であるかどうかを定期的に確認するよう求められることがあります。リンクが記載された電子メールが届く場合もあれば、直接 [Azure Portal](https://portal.azure.com) にアクセスすることもできます。この記事に記載された手順に従って、割り当てられたロールの自己レビューを実行することができます。
 
-特権ロール管理者としてセキュリティ レビューに関心がある場合は、[セキュリティ レビューを開始する方法](active-directory-privileged-identity-management-how-to-start-security-review.md)に関するページで詳細を確認できます。
+特権ロール管理者としてアクセス レビューに関心がある場合は、[アクセス レビューを開始する方法](active-directory-privileged-identity-management-how-to-start-security-review.md)に関するページで詳細を確認できます。
 
 ## Privileged Identity Management アプリケーションの追加
 
 [Azure ポータル](https://portal.azure.com/) で Azure AD Privileged Identity Management (PIM) アプリケーションを使用して、レビューを実行できます。ポータルに Azure AD Privileged Identity Management アプリケーションがない場合は、まず、次の手順を実行してください。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
+2. Azure Portal の右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
 3. **[新規]**、**[セキュリティ + ID]**、**[Azure AD Privileged Identity Management]** の順に選択します。
 
 	![ポータルで PIM を有効にする][1]
@@ -56,4 +56,4 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0907_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/01/2016"
 	ms.author="casoper"/>
     
 # CDN ファイルの圧縮のトラブルシューティング
@@ -26,6 +26,10 @@
 
 エンドポイントの圧縮が有効になっているにもかかわらず、ファイルが圧縮されていない状態で戻されています。
 
+>[AZURE.TIP] ファイルが圧縮されている状態で戻されているかどうかをチェックするには、[Fiddler](http://www.telerik.com/fiddler) などのツールや、ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使用する必要があります。キャッシュされた CDN コンテンツと共に返される HTTP 応答ヘッダーをチェックします。値が **gzip**、**bzip2**、**deflate** のいずれかである `Content-Encoding` という名前のヘッダーがある場合、コンテンツは圧縮されています。
+>
+>![Content-Encoding header](./media/cdn-troubleshoot-compression/cdn-content-header.png)
+
 ## 原因
 
 以下のような原因が考えられます。
@@ -36,7 +40,7 @@
 
 ## トラブルシューティングの手順
 
-> [AZURE.TIP] 新しいエンドポイントをデプロイする場合と同様に、CDN の構成の変更がネットワークを通じて反映されるまでには多少の時間がかかります。ほとんどの場合、90 分以内に変更内容が適用されます。今回初めて CDN エンドポイントの圧縮を設定した場合は、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
+> [AZURE.TIP] 新しいエンドポイントをデプロイする場合と同様に、CDN の構成の変更がネットワークを通じて反映されるまでには多少の時間がかかります。通常、変更は 90 分以内に適用されます。今回初めて CDN エンドポイントの圧縮を設定した場合は、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
 
 ### 要求を確認する
 
@@ -53,7 +57,7 @@
 
 > [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Standard from Akamai** プロファイルの場合のみです。
 
-[Azure ポータル](https://portal.azure.com)で、エンドポイントに移動し、**[構成]** ボタンをクリックします。
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、**[構成]** ボタンをクリックします。
 
 - 圧縮が有効になっていることを確認します。
 - 圧縮するコンテンツの MIME の種類が、圧縮形式の一覧に含まれていることを確認します。
@@ -64,10 +68,10 @@
 
 > [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 
-[Azure ポータル](https://portal.azure.com)で、エンドポイントに移動し、**[管理]** ボタンをクリックします。補助ポータルが開きます。**[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、**[管理]** ボタンをクリックします。補助ポータルが開きます。**[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
 
 - 圧縮が有効になっていることを確認します。
-- **ファイルの種類**一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
+- **[ファイルの種類]** 一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
 - 圧縮するコンテンツの MIME の種類が、圧縮形式の一覧に含まれていることを確認します。
 
 ![CDN Premium の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
@@ -87,7 +91,7 @@
 
 > [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
 
-圧縮の対象とするため、ファイルは次のサイズ要件を満たす必要があります。
+圧縮の対象であるには、ファイルは次のサイズ要件を満たす必要があります。
 
 - 128 バイトより大きい
 - 1 MB 未満
@@ -97,6 +101,6 @@
 **Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。この動作を上書きするには、次の作業を実行します。
 
 - **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](https://msdn.microsoft.com/library/ms525390.aspx)
-- **IIS 7 以降**: [**サーバーの構成で noCompressionForHttp10** と **noCompressionForProxies** をどちらも False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
+- **IIS 7 以降**: [**サーバーの構成で noCompressionForHttp10** と **noCompressionForProxies** を False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0907_2016-->

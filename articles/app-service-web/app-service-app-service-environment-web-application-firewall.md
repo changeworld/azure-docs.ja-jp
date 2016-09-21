@@ -28,6 +28,8 @@
 
 ![アーキテクチャ][Architecture]
 
+> 注: [App Service 環境での ILB のサポート](app-service-environment-with-internal-load-balancer.md)の導入により、ASE を DMZ からアクセスできないように設定し、プライベート ネットワークでのみ使用できるように構成することができます。
+
 ## App Service 環境の構成 ##
 App Service 環境の構成については、このテーマに関する[ドキュメント](app-service-web-how-to-create-an-app-service-environment.md)を参照してください。App Service 環境を作成した後、その環境の中に、次のセクションで構成する WAF の背後ですべてが保護される [Web Apps](app-service-web-overview.md)、[API Apps](../app-service-api/app-service-api-apps-why-best-platform.md)、および [Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) を作成できます。
 
@@ -99,4 +101,4 @@ SourceAddressPrefix を、WAF のクラウド サービスの仮想 IP アドレ
 [ConfigureTrafficManager]: ./media/app-service-app-service-environment-web-application-firewall/ConfigureTrafficManager.png
 [WebsiteTranslations]: ./media/app-service-app-service-environment-web-application-firewall/WebsiteTranslations.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

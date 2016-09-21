@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Azure"
-   	description="Azure ARM テンプレートを使用して Azure HDInsight のクラスターを作成する方法について説明します。"
+   pageTitle="Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Azure"
+   	description="Azure Resource Manager テンプレートを使用して Azure HDInsight のクラスターを作成する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -17,11 +17,11 @@
    ms.date="07/25/2016"
    ms.author="jgao"/>
 
-# ARM テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
+# Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 
 [AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
-Azure リソース マネージャー (ARM) テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
+Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
 ##前提条件:
 
@@ -35,13 +35,13 @@ Azure リソース マネージャー (ARM) テンプレートを使用して HD
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
-## ARM テンプレート
+## リソース マネージャーのテンプレート
 
-ARM テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
+Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
-HDInsight クラスターと依存 Azure Storage アカウントを作成するための ARM テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。テキスト エディターを使用し、ワークステーション上のファイルにテンプレートを保存します。さまざまなツールを使用してテンプレートを呼び出す方法について説明します。
+HDInsight クラスターと依存 Azure Storage アカウントを作成するための Resource Manager テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。テキスト エディターを使用し、ワークステーション上のファイルにテンプレートを保存します。さまざまなツールを使用してテンプレートを呼び出す方法について説明します。
 
-ARM テンプレートについて詳しくは、以下を参照してください。
+Resource Manager テンプレートの詳細については、以下を参照してください。
 
 - [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
 - [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
@@ -51,7 +51,7 @@ ARM テンプレートについて詳しくは、以下を参照してくださ�
 
 次の手順では、HDInsight クラスターを作成します。
 
-**ARM のテンプレートを使用してクラスターをデプロイするには**
+**Resource Manager テンプレートを使用してクラスターをデプロイするには**
 
 1. [付録 A](#appx-a-arm-template) の JSON ファイルをワークステーションに保存します。
 2. 必要な場合は、パラメーターを設定します。
@@ -144,7 +144,7 @@ Visual Studio とリソース グループの使用の概要については、�
 
 
 
-##付録 A: ARM テンプレート
+##付録 A: Resource Manager テンプレート
 
 次に示す Azure リソース マネージャーのテンプレートは、Azure ストレージ アカウントに依存する Windows ベースの Hadoop クラスターを作成します。
 
@@ -294,4 +294,4 @@ Visual Studio とリソース グループの使用の概要については、�
         }
     }
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0907_2016-->

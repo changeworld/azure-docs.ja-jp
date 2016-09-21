@@ -15,7 +15,7 @@
     ms.workload="search"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.date="05/17/2016"
+    ms.date="08/29/2016"
     ms.author="liamca"
 />
 
@@ -31,7 +31,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 ## この記事の例の表示
 
-この記事のすべての例では、* * * * queryType** 検索パラメーターを使用して Lucene Query Parser を指定します。コードから Lucene Query Parser を使用する場合、要求ごとに **queryType** を指定します。有効な値には **simple**|**full** が含まれます。**simple** が既定値で、**full** は Lucene Query Parser 用です。クエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+この記事のすべての例では、**queryType** 検索パラメーターを使用して Lucene Query Parser を指定します。コードから Lucene Query Parser を使用する場合、要求ごとに **queryType** を指定します。有効な値には **simple**|**full** が含まれます。**simple** が既定値で、**full** は Lucene Query Parser 用です。クエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search サービスの REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
 **例 1** -- 次のクリエ スニペットを右クリックし、新しいブラウザー ページで開きます。新しいページが JSFiddle を読み込み、クエリを実行します。
 - [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
@@ -42,7 +42,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
     http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
 
-クエリでは、nycjobs という構成済みの Azure Search インデックスが使用されていることに注意してください。**searchFields** パラメーターは、検索範囲をビジネス タイトル フィールドだけに制限します。**queryType** を **full** に設定されています。この場合、このクエリで Lucene Query Parser を使用するように Azure Search に指示します。
+クエリでは、nycjobs という構成済みの Azure Search インデックスが使用されていることに注意してください。**searchFields** パラメーターは、検索範囲をビジネス タイトル フィールドだけに制限します。**queryType** は **full** に設定されています。これによって、このクエリで Lucene Query Parser を使用するように Azure Search に指示しています。
 
 ### フィールド クエリ操作
 
@@ -53,7 +53,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、場所フィールドで 2 つの異なる都市を検索しています。また、NOT や AND のように、演算子は大文字表記になります。
 
-**fieldname:searchterm** に指定されたフィールドが検索可能フィールドになります。フィールド定義におけるインデックス属性の利用方法に関する詳細については、「[インデックスの作成 (Azure Search サービス REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx)」を参照してください。
+**fieldname:searchterm** に指定されたフィールドは検索可能フィールドである必要があります。フィールド定義におけるインデックス属性の利用方法に関する詳細については、「[Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://msdn.microsoft.com/library/azure/dn798941.aspx)」を参照してください。
 
 ## あいまい検索
 
@@ -85,7 +85,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。これはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。次の例はその違いを示しています。
 
-スコアリング プロファイルでは、musicstoreindex サンプルの **genre** など、特定のフィールドの一致がブーストされます。用語ブーストでは、特定の用語に他の用語より高い順位を与えます。たとえば、"rock^2 electronic" と指定した場合、**genre** フィールドに検索語句を含む文書にインデックスの他の検索可能フィールドより高い順位が与えられます。さらに、用語のブースト値 (2) により、"rock" という検索用語を含む文書に、"electronic" というもう 1 つの用語よりも高い順位が与えられます。
+musicstoreindex の例の **genre** など、特定のフィールドの一致がブーストされるスコアリング プロファイルについて考えてみましょう。用語ブーストでは、特定の用語に他の用語より高い順位を与えます。たとえば、"rock^2 electronic" と指定した場合、**genre** フィールドに検索語句を含む文書に、インデックスの他の検索可能フィールドより高い順位が与えられます。さらに、用語のブースト値 (2) により、"rock" という検索用語を含む文書に、"electronic" というもう 1 つの用語よりも高い順位が与えられます。
 
 用語をブーストするには、キャレット記号 "^" とブースト係数 (数字) を検索語句の終わりに付けます。ブースト係数が高ければ高いほど、その語句の関連性が他の検索語句に比べて大きくなります。既定のブースト係数は 1 です。ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
 
@@ -105,7 +105,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 - `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-この例の URL はページで正しく表示されません。回避策として、下の URL をコピーし、ブラウザー URL アドレスに貼り付けます。 `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+この例の URL はページで正しく表示されません。回避策として、下の URL をコピーし、ブラウザーの URL アドレスに貼り付けます。`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 
 ## ワイルドカード検索
@@ -121,7 +121,7 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
 ## 次のステップ
 
-自分のコードに Lucene Query Parser を指定してみてください。次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。これらのリンクでは、既定の単純な構文を使用しています。この記事で学習したことを応用し、**queryType** を指定する必要があります。
+自分のコードに Lucene Query Parser を指定してみてください。次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
 - [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
 - [REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)
@@ -129,4 +129,4 @@ Azure Search のクエリを構築するときは、既定の[単純なクエリ
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0907_2016-->

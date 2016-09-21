@@ -25,7 +25,7 @@ Azure SDK 2.8 を Visual Studio にインストールする必要があります
 
 ## Application Insights リソースを取得する
 
-最善の結果を得るには、[Application Insights SDK を Cloud Services アプリの各ロールに追加する](app-insights-cloudservices.md)か、または [VM 内で実行する任意のアプリに追加](app-insights-get-started.md)します。そうすれば、診断データを送信して同じ Application Insights リソースを分析および表示できます。
+最善の結果を得るには、[Application Insights SDK を Cloud Services アプリの各ロールに追加する](app-insights-cloudservices.md)か、または [VM 内で実行する任意のアプリに追加](app-insights-overview.md)します。そうすれば、診断データを送信して同じ Application Insights リソースを分析および表示できます。
 
 または、SDK を使用したくない場合は (アプリがすでに活動中の場合など)、Azureポータルで[新しい Application Insights リソースを作成する](app-insights-create-new-resource.md)こともできます。アプリケーションの種類として **Azure 診断**を選択します。
 
@@ -146,4 +146,4 @@ Application Insights にすべてのエラー (`DiagnosticMonitorConfiguration` 
 * [PowerShell を使用した Application Insights への Azure 診断の送信](app-insights-powershell-azure-diagnostics.md)
 * [Azure 診断構成ファイル](https://msdn.microsoft.com/library/azure/dn782207.aspx)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0907_2016-->

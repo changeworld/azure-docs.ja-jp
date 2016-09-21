@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/27/2016"
+    ms.date="09/06/2016"
     ms.author="ddove"/>
 
 # Azure SQL Database によるスケール アウト
@@ -33,10 +33,10 @@
 1. **Azure SQL データベース**が、シャーディング アーキテクチャを使用して Azure でホストされています。
 2. **Elastic Database クライアント ライブラリ**は、シャード セットの管理に使用します。
 3. 一部のデータベースは、**エラスティック データベース プール**に入っています (「[プールとは](sql-database-elastic-pool.md)」を参照してください)。
-4. **Elastic Database ジョブ**は、すべてのデータベースに対して T-SQL スクリプトを実行します。
+4. **Elastic Database ジョブ**は、すべてのデータベースに対して、スケジュールされた、またはアドホックの T-SQL スクリプトを実行します。
 5. 1 つのシャードから別のシャードにデータを移動するときには、**分割/マージ ツール**を使用します。
 6. **Elastic Database クエリ**では、シャード セット内のすべてのデータベースにまたがるクエリを記述することができます。
-7. **エラスティック トランザクション**: 複数のデータベースにまたがるトランザクションを実行できます。 
+7. **エラスティック トランザクション**: 複数のデータベースにまたがるトランザクションを実行できます。
 
 
 ![Elastic Database ツール][1]
@@ -109,4 +109,4 @@ Elastic Database プールの詳細を確認するには、「[エラスティ�
 [3]: ./media/sql-database-elastic-scale-introduction/overview.png
 [4]: ./media/sql-database-elastic-scale-introduction/single_v_multi_tenant.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0907_2016-->

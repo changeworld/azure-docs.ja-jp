@@ -44,9 +44,9 @@ quoteChar ではなく escapeChar を使用するには、quoteChar の行を次
 
 ### firstRowAsHeader と skipLineCount を使用するシナリオ
 
-- ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ (例: SQL スキーマ) を含むヘッダー行を追加する: このシナリオでは、出力データセットの firstRowAsHeader を True として指定します。
-- ヘッダー行を含むテキスト ファイルから、ファイル以外のシンクにコピーし、その行を削除する: 入力データセットの firstRowAsHeader を True として指定します。
-- テキスト ファイルからコピーして、データでもヘッダーでもない先頭の数行をスキップする: skipLineCount を指定してスキップする行数を示します。ファイルの残りの部分にヘッダー行が含まれている場合は、firstRowAsHeader も指定できます。skipLineCount と firstRowAsHeader の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
+- ファイル以外のソースからテキスト ファイルにコピーし、スキーマ メタデータ (例: SQL スキーマ) を含むヘッダー行を追加する: このシナリオでは、出力データセットの **firstRowAsHeader** を True として指定します。
+- ヘッダー行を含むテキスト ファイルから、ファイル以外のシンクにコピーし、その行を削除する: 入力データセットの **firstRowAsHeader** を True として指定します。
+- テキスト ファイルからコピーして、データでもヘッダーでもない先頭の数行をスキップする: **skipLineCount** を指定してスキップする行数を示します。ファイルの残りの部分にヘッダー行が含まれている場合は、**firstRowAsHeader** も指定できます。**skipLineCount** と **firstRowAsHeader** の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ### AvroFormat の指定
 形式が AvroFormat に設定されている場合、typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。例:
@@ -251,4 +251,4 @@ JsonFormat 型の入力データセットは次のように定義されます (�
 -	複雑なデータ型はサポートされていません (STRUCT、MAP、LIST、UNION)。
 -	ORC ファイルには 3 つの[圧縮関連のオプション](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) (NONE、ZLIB、SNAPPY) があります。Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。データの読み取りには、メタデータ内の圧縮コーデックが使用されます。ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。現時点でこの動作をオーバーライドするオプションはありません。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0907_2016-->

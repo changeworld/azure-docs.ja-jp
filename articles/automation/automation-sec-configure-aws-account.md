@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="get-started-article"
-   ms.date="08/17/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte"/>
 
 # アマゾン ウェブ サービスによる Runbook の認証
@@ -36,4 +36,4 @@ AWS セキュリティ キーを作成し、コピーしたら、Azure Automatio
 
 - AWS のタスクを自動化する Runbook を作成する方法については、記事「[Automating deployment of a VM in Amazon Web Services (Amazon Web Services での VM のデプロイを自動化する)](../automation/automation-scenario-aws-deployment.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -101,57 +101,17 @@ Service Bus の現在のバージョンは、個々のサブスクリプショ�
 
 個々のコンシューマー グループに対する SAS 認証が存在しない場合は、SAS キーを使用することで、一般的なキーを持つすべてのコンシューマー グループを保護できます。この方法によって、アプリケーションは、Event Hub のすべてのコンシューマー グループのデータを使用できます。
 
-### ACS でサービス ID、証明書利用者、ルールを作成する
-
-ACS では、いくつかの方法で、サービス ID、証明書利用者、およびルールを作成できますが、最も簡単な方法は [SBAZTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93) を使用することです。次に例を示します。
-
-1. **EventHubSender** のサービス ID を作成します。この操作は、作成されたサービス ID の名前とそのキーを返します。
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key>  makeid eventhubsender
-	```
-
-2. Event Hub に、**EventHubSender** "クレーム送信" 権限を与えます。
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Send /AuthTestEventHub eventhubsender
-	```
-
-3. Consumer Group 1 に対するレシーバー用のサービス ID を作成します。
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key> makeid consumergroup1receiver
-	```
-
-4. **ConsumerGroup1** に、`consumergroup1receiver` "クレーム リッスン" 権限を与えます。
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup1 consumergroup1receiver
-	```
-
-5. **Consumer Group 2** に対するレシーバー用のサービス ID を作成します。
-
-	```
-	sbaztool.exe exe -n <namespace> -k <key>  makeid consumergroup2receiver
-	```
-
-6. **ConsumerGroup2** に、`consumergroup2receiver` "クレーム リッスン" 権限を与えます。
-
-	```
-	sbaztool.exe -n <namespace> -k <key> grant Listen /AuthTestEventHub/ConsumerGroup2 consumergroup2receiver
-	```
-
 ## 次のステップ
 
 Event Hubs の詳細については、次のトピックを参照してください。
 
 - [Event Hubs の概要]
-- [Event Hubs を使用する完全なサンプル アプリケーション]
 - Service Bus キューを使用する[キューに格納されたメッセージング ソリューション]
+- [Event Hub を使用する完全なサンプル アプリケーション]
 
 [Event Hubs の概要]: event-hubs-overview.md
-[Event Hubs を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
+[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0907_2016-->

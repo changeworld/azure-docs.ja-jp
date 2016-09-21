@@ -16,7 +16,7 @@
 	ms.date="05/31/2016"
 	ms.author="brandwe"/>
 
-#  サード パーティのライブラリと Graph API と v2.0 エンドポイントを使用して Android アプリにサインインを追加する
+#  v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
@@ -48,8 +48,9 @@ git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.g
 [アプリケーション登録ポータル](https://apps.dev.microsoft.com)で新しいアプリを作成するか、「[v2.0 エンドポイントを使用してアプリケーションを登録する方法](active-directory-v2-app-registration.md)」の詳細な手順に従ってください。次のことを確認します。
 
 - アプリに割り当てられた**アプリケーション ID** をコピーしておきます。これは後で必要になります。
-- アプリ用の**モバイル** プラットフォームを追加します。
-- ポータルから**リダイレクト URI** をコピーしておきます。既定値の `https://login.microsoftonline.com/common/oauth2/nativeclient`を使用する必要があります。
+- アプリ用の**モバイル** プラットフォームを追加します。
+
+> 注: アプリケーション登録ポータルで**リダイレクト URI** の値を取得できます。ただし、今回の例では既定の値 (`https://login.microsoftonline.com/common/oauth2/nativeclient`) を使用する必要があります。
 
 
 ## NXOAuth2 サード パーティ製ライブラリのダウンロードとワークスペースの作成
@@ -196,4 +197,4 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0907_2016-->

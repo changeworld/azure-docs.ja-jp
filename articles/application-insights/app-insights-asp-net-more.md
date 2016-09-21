@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Application Insights をさらに活用する" 
+	pageTitle="Application Insights をさらに活用する | Microsoft Azure" 
 	description="Application Insights の利用開始後に使用できる機能の概要を示します。" 
 	services="application-insights" 
     documentationCenter=".net"
@@ -12,7 +12,7 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/10/2016" 
+	ms.date="08/30/2016" 
 	ms.author="awills"/>
 
 # Application Insights からのテレメトリの追加
@@ -60,16 +60,19 @@ Status Monitor をサーバー コンピューターにインストールする�
 
 (Visual Studio でアプリをインストルメント化していない場合でも、この方法を使用して、[実行時のパフォーマンス監視を有効にする](app-insights-monitor-performance-live-website-now.md)こともできます。)
 
+## クライアント側の監視
 
-## ブラウザーのパフォーマンス
+アプリケーションのサーバー側 (バックエンド) からテレメトリ データを送信する SDK を既にインストールしています。このため、クライアント側の監視を追加することができます。これにより、ユーザー、セッション、ページ ビュー、およびブラウザーで発生する例外やクラッシュに関するデータを入手できます。また、独自のコードを記述して、ユーザーのアプリの操作をクリックやキーボード操作までの細部にわたって追跡できます。
 
-クライアントのブラウザーからテレメトリを取得するには、Web ページに Application Insights の JavaScript スニペットを追加します。
+クライアントのブラウザーからテレメトリを取得するには、それぞれの Web ページに Application Insights の JavaScript スニペットを追加します。
 
 1. Azure で、アプリの Application Insights リソースを開きます。
 2. [クイック スタート]、[Monitor Client Side (クライアント側の監視)] の順に開き、スニペットをコピーします。
 3. コピーしたスニペットを、各 Web ページの先頭に表示されるように貼り付けます。通常、これを行うには、マスター レイアウト ページに貼り付けます。
 
 ![Extend in Azure](./media/app-insights-asp-net-more/100.png)
+
+コードにはアプリケーション リソースを識別するインストルメンテーション キーが含まれています。
 
 ### 取得できるもの
 
@@ -78,6 +81,27 @@ Status Monitor をサーバー コンピューターにインストールする�
 * [ブラウザー] ブレードの[クライアント パフォーマンスと使用状況データ](app-insights-javascript.md)。
 
 ![Extend in Azure](./media/app-insights-asp-net-more/090.png)
+
+
+[Web ページの追跡についてはこちらをご覧ください。](app-insights-web-track-usage.md)
+
+
+
+## アプリケーションのバージョンを追跡する
+
+MSBuild プロセスで `buildinfo.config` が生成されていることを確認します。.csproj ファイルに、次のコードを追加します。
+
+```XML
+
+    <PropertyGroup>
+      <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
+    </PropertyGroup> 
+```
+
+ビルド情報がある場合、Application Insights Web モジュールは、**アプリケーションのバージョン**をプロパティとしてテレメトリのすべての項目に自動的に追加します。これにより、[診断の検索](app-insights-diagnostic-search.md)を実行するとき、または[メトリックを調べる](app-insights-metrics-explorer.md)ときに、バージョンによってフィルター処理できます。
+
+ただし、Visual Studio で開発者向けのビルドではなく、MS ビルドでのみビルド バージョン番号が生成されることに注意してください。
+
 
 ## 可用性 Web テスト
 
@@ -121,4 +145,4 @@ Status Monitor をサーバー コンピューターにインストールする�
 |**データ アクセス API**<br/>近日対応予定。|
 |[**サンプリング**](app-insights-sampling.md)<br/>データ速度を削減し、価格レベルの制限内で維持できます。|![サンプリング タイル](./media/app-insights-asp-net-more/030.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0907_2016-->
