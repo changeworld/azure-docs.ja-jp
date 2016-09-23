@@ -14,20 +14,20 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="09/09/2016" 
+	ms.date="09/16/2016" 
 	ms.author="cephalin"
 />
 	
 # 初めての Web アプリを Azure に 5 分でデプロイする
 
-このチュートリアルでは、初めての Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイします。App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
+このチュートリアルでは、シンプルな HTML+CSS Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイします。App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
 
 このチュートリアルの内容は次のとおりです。
 
 - Azure App Service で Web アプリを作成する。
-- サンプル コードをデプロイする (ASP.NET、PHP、Node.js、Java、Python の中から選択する)。
-- 運用環境でライブ実行されているコードを確認する。
-- [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法で Web アプリを更新する。
+- Web アプリに HTML および CSS をデプロイする。
+- 運用環境でライブ実行されているページを確認する。
+- [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法でコンテンツを更新する。
 
 ## 前提条件
 
@@ -43,7 +43,7 @@
 
 2. 左側のメニューで、**[新規]**、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
-    ![start creating your first web app in Azure](./media/app-service-web-get-started/create-web-app-portal.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
 
 3. アプリ作成ブレードでは、新しいアプリに次の設定を使用します。
 
@@ -53,27 +53,27 @@
 
     設定が完了すると、アプリ作成ブレードは次のようになります。
 
-    ![configure your first web app in Azure](./media/app-service-web-get-started/create-web-app-settings.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
 3. 下部にある **[作成]** をクリックします。上部にある **[通知]** アイコンをクリックすると、進行状況を確認できます。
 
-    ![app creation notification for your first web app in Azure](./media/app-service-web-get-started/create-web-app-started.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
-4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイのブレードを開きます。
+4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイメントのブレードを開きます。
 
-    ![deployment finished message for your first web app in Azure](./media/app-service-web-get-started/create-web-app-finished.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
 
 5. **[デプロイメントに成功しました]** ブレードで、**[リソース]** のリンクをクリックして、新しい Web アプリのブレードを開きます。
 
-    ![resource link for your first web app in Azure](./media/app-service-web-get-started/create-web-app-resource.png)
+    ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## Web アプリにコードをデプロイする
+## Web アプリにコンテンツをデプロイする
 
-次に、Git を使用して Azure にコードをデプロイしましょう。
+次に、Git を使用して Azure にコンテンツをデプロイしましょう。
 
 5. [Web アプリ] ブレードで、下にスクロールして **[デプロイ オプション]** を表示するかこれを探してクリックします。
 
-    ![deployment options for your first web app in Azure](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
+    ![](./media/app-service-web-get-started-languages/deploy-web-app-deployment-options.png)
 
 6. **[ソースの選択]**、**[ローカル Git リポジトリ]**、**[OK]** の順にクリックします。
 
@@ -83,24 +83,15 @@
 
 7. [Web アプリ] ブレードに戻り、下にスクロールして **[プロパティ]** を表示するかこれを探してクリックします。**[Git URL]** の横の **[コピー]** ボタンをクリックします。
 
-    ![properties blade for your first web app in Azure](./media/app-service-web-get-started/deploy-web-app-properties.png)
+    ![](./media/app-service-web-get-started-languages/deploy-web-app-properties.png)
 
-    これで Git を使用してコードをデプロイする準備ができました。
+    これで Git を使用してコンテンツをデプロイする準備ができました。
 
 1. コマンド ライン端末で、作業ディレクトリに移動し (`CD`)、次のようにサンプル アプリを複製します。
 
-        git clone <github_sample_url>
+        git clone https://github.com/Azure-Samples/app-service-web-html-get-started.git
 
-    ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started/html-git-clone.png)
-
-    *&lt;github\_sample\_url>* には、好みのフレームワークに応じて次の URL のいずれかを使用します。
-
-    - HTML + CSS + JS: [https://github.com/Azure-Samples/app-service-web-html-get-started.git](https://github.com/Azure-Samples/app-service-web-html-get-started.git)
-    - ASP.NET: [https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git](https://github.com/Azure-Samples/app-service-web-dotnet-get-started.git)
-    - PHP (CodeIgniter): [https://github.com/Azure-Samples/app-service-web-php-get-started.git](https://github.com/Azure-Samples/app-service-web-php-get-started.git)
-    - Node.js (Express): [https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git](https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git)
-    - Java: [https://github.com/Azure-Samples/app-service-web-java-get-started.git](https://github.com/Azure-Samples/app-service-web-java-get-started.git)
-    - Python (Django): [https://github.com/Azure-Samples/app-service-web-python-get-started.git](https://github.com/Azure-Samples/app-service-web-python-get-started.git)
+    ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started-languages/html-git-clone.png)
 
 2. サンプル アプリのリポジトリに移動します。たとえば、次のように入力します。
 
@@ -114,15 +105,13 @@
 
         git push azure master
 
-    ![Push code to your first web app in Azure](./media/app-service-web-get-started/html-git-push.png)
-
-    いずれかの言語フレームワークを使用した場合は、別の出力が表示されます。`git push` を実行すると、Azure にコードが配置されるだけでなく、デプロイ エンジンのデプロイ タスクがトリガーされるためです。プロジェクト (リポジトリ) のルートに package.json (Node.js) ファイルまたは requirements.txt (Python) ファイルがある場合、または ASP.NET プロジェクトに packages.config ファイルがある場合は、デプロイメント スクリプトによって必要なパッケージが復元されます。また、[Composer 拡張機能を有効にして](web-sites-php-mysql-deploy-use-git.md#composer)、PHP アプリで composer.json ファイルを自動的に処理することもできます。
+    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/html-git-push.png)
 
 これで完了です。 Azure でコードがライブ実行されています。ブラウザーで http://*&lt;appname>*.azurewebsites.net に移動して、実行中のコードを確認します。
 
 ## アプリを更新する
 
-Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。これは、初めてコードをデプロイしたときと同様に行います。たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
+Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。これは、初めてコンテンツをデプロイしたときと同様に行います。たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
 
     git add .
     git commit -m "<your_message>"
