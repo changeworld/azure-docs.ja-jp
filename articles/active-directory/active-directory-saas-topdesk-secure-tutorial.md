@@ -16,7 +16,8 @@
 
 #チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
   
-このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   TOPdesk - Secure でのシングル サインオンが有効なサブスクリプション
@@ -66,7 +67,8 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TOPdesk - Secure に対する認証を行うことができるようにする方法を説明します。TOPdesk - Secure のシングル サインオンを構成するには、ロゴのアイコン ファイルをアップロードする必要があります。アイコン ファイルを取得するには、TOPdesk サポート チームにお問い合わせください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TOPdesk - Secure に対する認証を行うことができるようにする方法を説明します。  
+TOPdesk - Secure のシングル サインオンを構成するには、ロゴのアイコン ファイルをアップロードする必要があります。アイコン ファイルを取得するには、TOPdesk サポート チームにお問い合わせください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -89,7 +91,8 @@
     ![技術設定](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "技術設定")
 
     1.  **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
-    2.  メタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
+    2.  メタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
+    	![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
     3.  **AssertionConsumerService** の値をコピーします。
 
         >[AZURE.NOTE] この値は、このチュートリアルの以降の「**アプリケーション URL の構成**」セクションで必要になります。
@@ -158,7 +161,8 @@
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが TOPdesk - Secure にログインできるようにするには、そのユーザーを TOPdesk - Secure にプロビジョニングする必要があります。TOPdesk - Secure の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが TOPdesk - Secure にログインできるようにするには、そのユーザーを TOPdesk - Secure にプロビジョニングする必要があります。  
+TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 

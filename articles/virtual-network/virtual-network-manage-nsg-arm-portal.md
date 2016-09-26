@@ -48,7 +48,7 @@
 
 **RG-NSG** リソース グループの NSG の一覧を表示するには、次の手順を実行します。
 
-1. **[リソース グループ] ** > **[RG-NSG]** > **[...]** をクリックします。
+1. **[リソース グループ]** > **[RG-NSG]** > **[...]** をクリックします。
 
 ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure3.png)
 

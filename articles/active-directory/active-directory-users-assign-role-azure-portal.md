@@ -30,7 +30,7 @@
 
 3.  **[ユーザーとグループ]** ブレードで、**[すべてのユーザー]** を選択します。
 
-    ![[すべてのユーザー] ブレードを開く](./media/active-directory-users-assign-role-azure-portal/create-users-opja-JPers-blade.png)
+    ![[すべてのユーザー] ブレードを開く](./media/active-directory-users-assign-role-azure-portal/create-users-open-users-blade.png)
 
 4. **[ユーザーとグループ - すべてのユーザー]** ブレードで、一覧からユーザーを選択します。
 

@@ -228,11 +228,11 @@
 
 SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラー GUI か、同等の TRANSACT-SQL コマンドを使用して行います。
 
-1. ソースの場所にあるデータベースをデタッチします。詳細については、「データベースのデタッチhttps://technet.microsoft.com/library/ms191491(v=sql.110).aspx)」をご覧ください。
+1. ソースの場所にあるデータベースをデタッチします。詳細については、 [データベースのデタッチ](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx) をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
-3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、「データベースのアタッチhttps://technet.microsoft.com/library/ms190209(v=sql.110).aspx)」をご覧ください。
+3. コピーしたファイルを対象の SQL Server インスタンスにアタッチします。詳細については、[データベースのアタッチ](https://technet.microsoft.com/library/ms190209(v=sql.110).aspx)をご覧ください。
 
-デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)https://technet.microsoft.com/library/ms187858(v=sql.110).aspx
+[デタッチとアタッチを使用してデータベースを移動する (Transact-SQL)](https://technet.microsoft.com/library/ms187858(v=sql.110).aspx)
 
 ## <a name="largedbtohive"></a>シナリオ #7: ローカル ファイルのビッグ データ (Azure HDInsight Hadoop クラスターの Hive データベースを対象)
 

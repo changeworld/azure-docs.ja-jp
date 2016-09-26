@@ -136,7 +136,8 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 
 ####3\.2.3.ショッピング カートのイベントを追加
-このイベントはユーザーがショッピング カートに項目を追加する際に使用されます。パラメーター:
+このイベントはユーザーがショッピング カートに項目を追加する際に使用されます。
+パラメーター:
 * event (文字列、必須) – "addshopcart"
 * item (文字列、必須) – 項目の一意識別子
 * itemName (文字列、省略可能) – 項目の名前
@@ -187,7 +188,12 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 
 パラメーター:
 * event (文字列) – "userlogin"
-* user (文字列) – ユーザーの一意の識別子。<script> if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” }); </script>
+* user (文字列) – ユーザーの一意の識別子。
+
+	<script>
+		if (typeof 	AzureMLRecommendationsEvent=="undefined	") { AzureMLRecommendationsEvent = ; }
+			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
+		</script>
 
 ##4\.JavaScript で推奨設定を使用します。
 推奨設定を使用するコードは、クライアント Web ページで、一部の JavaScript イベントによってトリガーされます。推奨設定の応答には、推奨項目の ID、名前、評価が含まれます。このオプションは、推奨項目の一覧表示に対してのみ使うことをお勧めします – 項目のメタデータの追加などのより複雑な処理は、サーバー側の統合で行われます。
@@ -225,4 +231,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0914_2016--->

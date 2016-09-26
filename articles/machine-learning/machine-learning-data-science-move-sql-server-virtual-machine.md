@@ -129,7 +129,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 	Set-ExecutionPolicy Restricted #reset the execution policy
 
 
-### <a name="insert-tables-bulkquery">一括挿入 SQL クエリ</a>
+### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
 
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 

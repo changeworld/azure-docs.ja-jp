@@ -42,7 +42,7 @@
 
 	![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
-6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。
+6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。 
 
 	![イベント](./media/insights-receive-alert-notifications/Insights_Events.png)
 

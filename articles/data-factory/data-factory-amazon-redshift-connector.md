@@ -213,7 +213,7 @@ Amazon Redshift からデータをコピーするパイプラインを作成す�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **AmazonRedshift ** に設定する必要があります。 | はい |
+| type | type プロパティを **AmazonRedshift** に設定する必要があります。 | はい |
 | server | Amazon Redshift サーバーの IP アドレスまたはホスト名。 | はい |
 | ポート | Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 | いいえ、既定値: 5439 |
 | database | Amazon Redshift データベースの名前。 | はい |

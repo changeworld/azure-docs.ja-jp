@@ -97,7 +97,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 2. **[Create New App]** をクリックします。
 3. **名前**、**説明**、**Web サイト**を入力します。Twitter アプリケーションの名前は一意の名前にする必要があります。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
-5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。
+5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
 6. **[Keys and Access Tokens]** タブをクリックします。
 7. **[Create my access token]** をクリックします。
 8. ページの右上隅にある **[Test OAuth]** をクリックします。

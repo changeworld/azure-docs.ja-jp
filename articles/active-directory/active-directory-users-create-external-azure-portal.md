@@ -34,7 +34,7 @@
 
 3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択し、**[追加]** をクリックします。
 
-    ![[追加] をクリックする](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
+    ![[追加] をクリックする](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
 
 4. **[ユーザー]** ブレードで、**[名前]** に表示名を入力し、**[ユーザー名]** にユーザーのサインイン名を入力します。
 
@@ -42,15 +42,15 @@
 
 6. 必要に応じて、**[プロファイル]** を選択して、ユーザーの姓、名、役職、部門名を追加します。
 
-		![Opening the user profile](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
+	![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
 
 	- **[グループ]** を選択して、1 つ以上のグループにユーザーを追加します。
 
-		![ユーザーをグループに追加する](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
+		![ユーザーをグループに追加する]](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
 
 	- **[組織のロール]** を選択して、**[ロール]** 一覧のロールにユーザーを割り当てます。ユーザーおよび管理者のロールの詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
 
-		![ユーザーをロールに割り当てる](./media/ management](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
+		![ユーザーをロールに割り当てる](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
 
 7. **[作成]** を選択します。
 
@@ -73,4 +73,4 @@
 - [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 - [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0914_2016--->

@@ -107,7 +107,7 @@ Active Directory のアカウントは管理者 (**全体管理者**や**ユー�
      次のような結果が返されます。
 
         info:    Executing command account show
-        data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
+        data:    Name                        : Microsoft Azure MSDN - Visual Studio Ultimate
         data:    ID                          : {guid}
         data:    State                       : Enabled
         data:    Tenant ID                   : {guid}
@@ -190,7 +190,7 @@ Active Directory のアカウントは管理者 (**全体管理者**や**ユー�
      次のような結果が返されます。
 
         info:    Executing command account show
-        data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
+        data:    Name                        : Microsoft Azure MSDN - Visual Studio Ultimate
         data:    ID                          : {guid}
         data:    State                       : Enabled
         data:    Tenant ID                   : {guid}

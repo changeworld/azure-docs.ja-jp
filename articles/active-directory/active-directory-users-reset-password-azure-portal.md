@@ -34,7 +34,7 @@
 
 3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
 
-    ![[ユーザー] ブレードを開く](./media/active-directory-users-reset-password-azure-portal/create-users-opja-JPers-blade.png)
+    ![[ユーザー] ブレードを開く](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
 
 4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
 

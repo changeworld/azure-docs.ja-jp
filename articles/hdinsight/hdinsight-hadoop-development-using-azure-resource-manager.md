@@ -271,7 +271,7 @@ ASM ベースの SDK を使用して操作を実行する方法と、ARM ベー�
 		//Service principal auth
 		//This will log the application in as itself, rather than on behalf of a specific user.
 		//For details, including how to set up the application, see:
-		//   https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
+		//   https://azure.microsoft.com/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications/
 		 
 		var authFactory = new AuthenticationFactory();
 		 

@@ -64,7 +64,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。�
 	
 	- **設定**と**すべての設定**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
 	- **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]: これらはすべてクラスター ダッシュボードにアクセスするために使用します。クラスター ダッシュボードは、Linux ベースのクラスター用の Ambari Web です。
-    - **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
+	- **[SSH (Secure Shell)]**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。
 	- **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
 	- **[削除]**: クラスターを削除します。
 	- **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-administer-use-portal-linux/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
@@ -267,7 +267,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 ARM モードでは、各 HDInsight クラスターは Azure リソース グループと共に作成されます。クラスターが属している Azure リソース グループは、次の場所に表示されます。
 
 - クラスター一覧の**リソース グループ**列。
-- クラスターの **[基本情報]** タイル。
+- クラスターの **[基本情報]** タイル。  
 
 「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
 
@@ -284,7 +284,7 @@ Azure ポータルから直接 Hive ジョブを実行することはできま�
 **Ambari Hive ビューを使用して Hive クエリを実行するには**
 
 1. HDInsight クラスター ユーザーの資格情報を使用して Ambari Web UI にサインインします。既定のユーザー名は **admin** です。URL は **https://&lt;HDInsightクラスター名>azurehdinsight.net** です。
-2. 次のスクリーンショットのように Hive ビューを開きます。
+2. 次のスクリーンショットのように Hive ビューを開きます。  
 
 	![HDInsight Hive ビュー](./media/hdinsight-administer-use-portal-linux/hdinsight-hive-view.png)
 3. ページの上部にある **[クエリ]** をクリックします。

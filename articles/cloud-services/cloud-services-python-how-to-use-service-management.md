@@ -436,6 +436,6 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
+[クラウド サービス]: https://azure.microsoft.com/documentation/services/cloud-services/
 
 <!---HONumber=AcomDC_0914_2016-->

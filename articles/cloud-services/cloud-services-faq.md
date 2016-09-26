@@ -37,7 +37,7 @@ Azure では、証明書の使用中にその証明書を削除することは�
 
 証明書が使用されていない限りは、[Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) PowerShell コマンドレットを使って証明書を削除できます。
 
-### Windows Azure Service Management for Extensions という名前の証明書の期限が切れています
+### Mirosoft Azure Service Management for Extensions という名前の証明書の期限が切れています
 
 リモート デスクトップ拡張機能などの拡張機能がクラウド サービスに追加されるとかならず、これらの証明書が作成されます。これらの証明書は、拡張機能のプライベート構成を暗号化および復号化するためだけに使用されます。これらの証明書の有効期限が切れていても問題はありません。有効期限の日付はチェックされません。
 

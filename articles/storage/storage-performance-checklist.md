@@ -185,7 +185,7 @@ CORS の詳細については、「[Azure ストレージ サービスでのク�
 
 	ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 
-詳細については、「[ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx)」を参照してください。
+詳細については、「[ThreadPool.SetMinThreads メソッド](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads(v=vs.110)」.aspx)) を参照してください。
 
 ####<a name="subheading11"></a>.NET 4.5 のガベージ コレクションを活用する
 クライアント アプリケーション用に .NET 4.5 以降を使用すると、サーバー ガベージ コレクションによるパフォーマンス向上が期待できます。

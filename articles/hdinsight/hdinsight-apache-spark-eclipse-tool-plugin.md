@@ -94,7 +94,7 @@ Eclipse 用の HDInsight ツールは、Azure Toolkit for Eclipse に付属し�
 	* **[JRE]** ボックスで、**[Use an execution environment JRE (実行環境 JRE を使用する)]** が **[JavaSE-1.7]** に設定されていることを確認します。
 	* Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。ダウンロード場所へのリンクは、このトピックで前述した「[前提条件](#prerequisites)」にあります。上の図に示すように、このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。
 
-4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7] (JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
+4. 次のダイアログ ボックスで **[Libraries (ライブラリ)]** タブをクリックし、**[JRE System Library [JavaSE-1.7]\(JRE システム ライブラリ [JavaSE 1.7])]** をダブルクリックします。
 
 	![Spark Scala アプリケーションの作成](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-4.png)
 

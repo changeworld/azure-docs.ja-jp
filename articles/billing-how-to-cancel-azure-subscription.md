@@ -40,7 +40,7 @@
 
 5. ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) をクリックしてダイアログ ウィンドウを閉じ、サブスクリプション ページに戻ります。
 
-	> [AZURE.NOTE] 従量課金制サブスクリプションを誤ってキャンセルした場合は、[こちら](https://azure.microsoft.com/ja-JP/documentation/articles/billing-subscription-become-disable/)に記載されている手順に従って再アクティブ化できます。
+	> [AZURE.NOTE] 従量課金制サブスクリプションを誤ってキャンセルした場合は、[こちら](https://azure.microsoft.com/documentation/articles/billing-subscription-become-disable/)に記載されている手順に従って再アクティブ化できます。
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
