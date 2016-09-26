@@ -5,7 +5,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="garyericson" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="09/09/2016" 
 	ms.author="kbaroni;garye" />
 
 # Azure Machine Learning での線形回帰の使用
@@ -29,8 +29,8 @@
 
 次の 2 つの目標を念頭においてプロジェクトを開始しました。
 
-1. 予測分析を使用して、組織の毎月の収益予測の精度を向上させる  
-2. Azure ML を使用して、結果の確認、最適化、高速化、拡張を行う  
+1. 予測分析を使用して、組織の毎月の収益予測の精度を向上させる
+2. Azure ML を使用して、結果の確認、最適化、高速化、拡張を行う
 
 多くの企業と同様に、組織は毎月の収益予測プロセスを通過しています。小さなビジネス アナリスト チームが、Machine Learning を使用してプロセスをサポートし、予測の精度を向上させる任務に取り組みました。チームは、数か月かけて複数のソースからデータを収集し、サービスの売上予測に関連するキーとなる属性を識別する統計分析を使用してデータ属性を実行しました。次のステップは、Excel のデータで統計的回帰モデルのプロトタイプ作成を開始することでした。数週間で、現在のフィールドや財務の予測プロセスを上回る Excel の回帰モデルを作成しました。これが予測結果のベースラインになりました。
 
@@ -51,8 +51,8 @@ Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回
 次の手順に従って、Azure ML で実験を作成しました。
 
 1.	データセットを csv ファイルとして Azure ML にアップロードしました (非常に小さいファイル)
-2.	Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[データセット内の列の選択][select-columns]モジュールを使用しました   
-3.	[データ分割][split]モジュール (*相対式*モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました  
+2.	Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[データセット内の列の選択][select-columns]モジュールを使用しました
+3.	[データ分割][split]モジュール (*相対式*モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました
 4.	[線形回帰][linear-regression]モジュール (既定のオプションのみ) で実験、文書化し、Excel の回帰モデルと結果を比較しました
 
 ### 最初の結果を確認する
@@ -71,7 +71,7 @@ Azure ML チームの開発者とデータ サイエンティストによって�
 * Azure ML で[線形回帰][linear-regression]モジュールを使用する場合は、次の 2 つ方法が用意されています。
 	*  オンライン勾配降下: 大規模な問題に適しています。
 	*  通常の最小二乗法: これは、線形回帰と聞くと多くの人が考える方法です。小さなデータセットの場合は、通常の最小二乗法が最適な選択肢です。
-*  パフォーマンスを向上させるために、L2 正則化重みパラメーターを調整することを検討します。既定では 0.001 に設定されていますが、小さなデータ セットでは、パフォーマンスを向上させるために 0.005 に設定しました。    
+*  パフォーマンスを向上させるために、L2 正則化重みパラメーターを調整することを検討します。既定では 0.001 に設定されていますが、小さなデータ セットでは、パフォーマンスを向上させるために 0.005 に設定しました。
 
 ### 問題の解決
 Recommendations を適用した結果、Azure ML で Excel と同等のベースライン パフォーマンスを達成しました。
@@ -143,7 +143,7 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 次のリソースは、回帰を使用する際に役立ちます。
 
 * Excel での回帰。Excel で回帰を初めて試してみる場合は、このチュートリアルが簡単です: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* 回帰と予測。Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。[http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)  
+* 回帰と予測。Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。[http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)
 * 	通常の最小二乗法の線形回帰: 欠点、問題、注意点回帰の概要と説明: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
@@ -159,4 +159,4 @@ Excel の回帰と Azure Machine Learning の実験を並行して実行する�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

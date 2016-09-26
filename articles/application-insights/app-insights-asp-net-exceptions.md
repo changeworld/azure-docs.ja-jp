@@ -23,7 +23,7 @@
 
 [Visual Studio Application Insights][start] を利用してアプリケーションを監視すれば、要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
 
-ASP.NET アプリを監視するには、アプリケーションに [Application Insights SDK を追加する][greenbrown]か、[IIS サーバーに Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension][azure] を追加する必要があります。
+ASP.NET アプリを監視するには、アプリケーションに [Application Insights SDK を追加する][greenbrown]か、[IIS サーバーに Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension](app-insights-azure-web-apps.md) を追加する必要があります。
 
 ## Visual Studio を使用して例外を診断する
 
@@ -76,7 +76,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 *依存関係*は、アプリケーションが通常は REST API またはデータベースの接続を介して呼び出すサービスです。[Application Insights Status Monitor][redfield] はさまざまな依存関係呼び出しを自動的に監視し、呼び出し期間と成功または失敗を測定します。
 
-依存関係データを取得するには、IIS サーバーに [Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension][azure] を使用する必要があります。
+依存関係データを取得するには、IIS サーバーに [Status Monitor をインストールする][redfield]か、アプリが Azure Web App の場合、[Application Insights Extension](app-insights-azure-web-apps.md) を使用する必要があります。
 
 依存関係の呼び出し失敗は [障害] ブレードに一覧表示されます。要求詳細と例外詳細の [関連項目] の下にもあります。
 
@@ -109,7 +109,7 @@ Visual Studio で Application Insights の [検索] ウィンドウを開き、�
 
 * アプリケーション プロジェクトに [SDK をインストールします][greenbrown]。
 * アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()][api] を呼び出します。メッセージ パラメーターで POST データを送信します。許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
-* 失敗した要求を調査するときは、関連付けられているトレースを検索します。  
+* 失敗した要求を調査するときは、関連付けられているトレースを検索します。
 
 ![ドリル スルー](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -325,12 +325,12 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
 
 [サンプル](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-例外フィルターが処理できないケースがあります。次に例を示します。
+例外フィルターが処理できないケースがあります。For example:
 
-* コントローラー コンストラクターからスローされる例外。 
-* メッセージ ハンドラーからスローされる例外。 
-* ルーティング中にスローされる例外。 
-* 応答コンテンツのシリアル化中にスローされる例外。 
+* コントローラー コンストラクターからスローされる例外。
+* メッセージ ハンドラーからスローされる例外。
+* ルーティング中にスローされる例外。
+* 応答コンテンツのシリアル化中にスローされる例外。
 
 ## Web API 2.x
 
@@ -386,7 +386,7 @@ IExceptionLogger の実装を追加します。
 
 代替として、次のように操作できます。
 
-2. 唯一の ExceptionHandler を IExceptionHandler のカスタム実装で置換します。これはフレームワークが送信する応答メッセージを選択できるときにのみ呼び出されます (たとえば、接続が中止されるときではなく)。 
+2. 唯一の ExceptionHandler を IExceptionHandler のカスタム実装で置換します。これはフレームワークが送信する応答メッセージを選択できるときにのみ呼び出されます (たとえば、接続が中止されるときではなく)。
 3. 例外フィルター (上の Web API 1.x コントローラーのセクション参照) - 場合によっては呼び出されません。
 
 
@@ -467,7 +467,6 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[azure]: ../azure-portal/insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [greenbrown]: app-insights-asp-net.md
@@ -477,4 +476,4 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0914_2016-->

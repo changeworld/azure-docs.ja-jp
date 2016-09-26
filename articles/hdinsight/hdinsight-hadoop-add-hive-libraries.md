@@ -4,7 +4,7 @@ description="クラスターの作成時に Hive ライブラリ (jar ファイ�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -88,4 +88,4 @@ __要件__
 
 このドキュメントでは、クラスターの作成時に、jar ファイルに格納されている Hive ライブラリを HDInsight クラスターに追加する方法について説明しました。Hive の使用法の詳細については、「[HDInsight での Hive の使用](hdinsight-use-hive.md)」を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -50,7 +50,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 	| フィールド | 値 |
 	|:----- |:----- |
 	| 名前 | MyHDInsightApp |
-	| 説明 | MyHDInsightApp |
+	| Description | MyHDInsightApp |
 	| Web サイト | http://www.myhdinsightapp.com |
 	
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
@@ -319,4 +319,4 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

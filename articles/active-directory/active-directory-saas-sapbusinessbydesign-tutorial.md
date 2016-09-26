@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="09/09/2016"
 	ms.author="jeedes"/>
 
 
@@ -241,7 +241,7 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 	
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_06.png)
 
@@ -333,4 +333,4 @@ SAP Business ByDesign アプリケーションは、特定の形式で構成さ�
 [204]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

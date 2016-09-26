@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -19,7 +19,7 @@
 
 # Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 
-このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure BLOB ストレージを経由して SQL Azure データベースにデータを移動する方法を説明します。
+このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage を経由して SQL Azure データベースにデータを移動する方法を説明します。
 
 次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
@@ -94,7 +94,7 @@ Data Management Gateway のセットアップ手順と詳細については、�
 Azure BLOB ストレージ アカウント用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*ADF ストレージアカウント*を選択して Azure BLOB ストレージ アカウント キーとコンテナー名を入力します。リンク サービスに *adfds* という名前を付けます。
 
 ###<a name="adf-linked-service-azure-sql"></a>Azure SQL データベース用のリンクされたサービス
-Azure SQL Database 用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*Azure SQL* を選択して Azure SQL Database の*ユーザー名*と*パスワード*に対して資格情報を入力します。*ユーザー名*は **user@servername* で指定する必要があります。
+Azure SQL Database 用にリンクされたサービスを作成するには、Azure クラシック ポータルで ADF ランディング ページ内の **[データ ストア]** をクリックし、*Azure SQL* を選択して Azure SQL Database の*ユーザー名*と*パスワード*に対して資格情報を入力します。*ユーザー名*は *user@servername* で指定する必要があります。
 
 
 ##<a name="adf-tables"></a>データセットへのアクセス方法を指定するためのテーブルを定義して作成する
@@ -106,7 +106,7 @@ Azure SQL Database 用にリンクされたサービスを作成するには、A
 テーブル内の JSON ベースの定義では、次の名前が使用されます。
 
 * オンプレミスの SQL サーバーでは、**テーブル名**は *nyctaxi\_data* です。
-* Azure BLOB ストレージ アカウントでは、**コンテナー名**は *containername* です。  
+* Azure BLOB ストレージ アカウントでは、**コンテナー名**は *containername* です。
 
 この ADF パイプラインには、次の 3 つのテーブル定義が必要です。
 
@@ -310,4 +310,4 @@ Azure クラシック ポータルで (図をクリックすると) ADF 上に�
 
 ADF が提供するデータを段階的にパイプ処理する機能をまだ活用していないことに注意してください。これを行う方法と ADF が提供するその他の機能の詳細については、[ADF のドキュメント](https://azure.microsoft.com/services/data-factory/)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

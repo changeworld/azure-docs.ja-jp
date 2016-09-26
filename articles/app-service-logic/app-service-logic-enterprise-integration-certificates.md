@@ -23,6 +23,7 @@
 - パブリック証明書。証明機関 (CA) から購入する必要があります。
 - プライベート証明書。自身で発行できます。これらは自己署名証明書とも呼ばれます。
 
+
 ## 証明書の概要
 証明書はデジタル ドキュメントであり、電子通信の参加者の ID を確認するために使用します。また、電子通信を保護するためにも使用します。
 
@@ -36,7 +37,7 @@
 ### パブリック証明書
 B2B 機能を備えたロジック アプリで**パブリック証明書**を使用するには、最初に統合アカウントにアップロードする必要があります。一方、**自己署名証明書**を使用するには、最初に [key Vault](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報") にアップロードする必要があります。
 
-証明書をアップロードすると、作成する[契約](./app-service-logic-enterprise-integration-agreements.md)でプロパティを定義するときに、B2B メッセージを保護できるようになります。
+証明書をアップロードすると、[契約](./app-service-logic-enterprise-integration-agreements.md)でプロパティを定義するときに、B2B メッセージを保護できるようになります。
 
 Azure Portal にログインした後に統合アカウントにパブリック証明書をアップロードする詳細な手順を次に示します。
 1. **[参照]** を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
@@ -49,6 +50,7 @@ Azure Portal にログインした後に統合アカウントにパブリック�
 8. **[証明書]** タイルを選択します。ページが更新され、新しく追加された証明書が表示されます。![](./media/app-service-logic-enterprise-integration-certificates/certificate-4.png)
 
 ### プライベート証明書
+
 プライベート証明書を統合アカウントにアップロードすることもできます。そのためには、次の手順を実行します。
 
 1. [key Vault に秘密キーをアップロードします。](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")
@@ -61,6 +63,7 @@ Azure Portal にログインした後に統合アカウントにパブリック�
 上記の手順が完了すると、プライベート証明書を使用して契約を作成することができます。
 
 Azure Portal にログインした後に統合アカウントにプライベート証明書をアップロードする詳細な手順を次に示します。
+   
 1. **[参照]** を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
 2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]** を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
 3. 証明書の追加先となる**統合アカウント**を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
@@ -78,4 +81,4 @@ Azure Portal にログインした後に統合アカウントにプライベー�
 - [B2B 契約の作成](./app-service-logic-enterprise-integration-agreements.md)
 - [key Vault についての詳細情報](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/20/2016"
+	ms.date="09/09/2016"
 	ms.author="jeedes"/>
 
 
@@ -21,9 +21,9 @@
 
 このチュートリアルの目的は、Kindling と Azure Active Directory (Azure AD) を統合する方法を説明することです。Kindling と Azure AD の統合には、次の利点があります。
 
-- Kindling にアクセスする Azure AD ユーザーを制御できます。 
+- Kindling にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで自動的に Kindling にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。 
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
@@ -42,13 +42,13 @@ Kindling と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。 
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
 ## シナリオの説明
 このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Kindling の追加 
+1. ギャラリーからの Kindling の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 
@@ -144,8 +144,8 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 
 	- ダウンロードした証明書
 	- Kindling の**エンティティ ID** に対応する**発行者の URL** 値
-	- Kindling の **SSO サインオン URL** に対応する**シングル サインオン サービス URL** 
-	- Kindling の **SSO サインアウト URL** に対応する**シングル サインアウト サービス URL** 
+	- Kindling の **SSO サインオン URL** に対応する**シングル サインオン サービス URL**
+	- Kindling の **SSO サインアウト URL** に対応する**シングル サインアウト サービス URL**
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
@@ -189,7 +189,7 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_06.png)
  
@@ -219,7 +219,7 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 
 このセクションの目的は、Kindling で Britta Simon というユーザーを作成することです。Kindling では、ジャストインタイム プロビジョニングがサポートされています。この機能は、「[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」で既に有効にしています。
 
-このセクションでは必要な操作はありません。
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
 
@@ -281,4 +281,4 @@ Kindling のシングル サインオンを構成するには、登録済みの�
 [204]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

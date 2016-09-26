@@ -77,10 +77,10 @@ Decode AS2 Message に接続すると、メッセージを転送するときに�
 
 ##試してみる
 
-実際に試してみましょう。Logic Apps AS2 の機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)をクリックしてください。
+実際に試してみましょう。Logic Apps AS2 の機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)をクリックしてください。
 
 ## 次のステップ
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

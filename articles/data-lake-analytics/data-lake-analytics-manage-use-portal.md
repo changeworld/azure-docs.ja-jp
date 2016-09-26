@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -45,8 +45,8 @@ Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカ�
 	- **名前**: Analytics アカウントに名前を付けます。
 	- **Data Lake Store**: 各 Data Lake Analytics アカウントには、従属する Azure Data Lake Store アカウントがあります。Data Lake Analytics アカウントと従属する Data Lake Store アカウントは、同じ Azure データ センターに配置する必要があります。以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。
 	- **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
-	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。 
-	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。 
+	- **リソース グループ**。既存の Azure リソース グループを選択するか、新しいグループを作成します。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内のリソースを 1 つのグループと見なして作業できます。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+	- **[場所]**: Data Lake Analytics アカウントの Azure データ センターを選択します。
 
 8. **[作成]** をクリックします。ポータルのホーム画面が表示されます。新しいタイルはスタート画面に追加され、"Azure Data Lake Analytics のデプロイ" を示すラベルが付けられます。Data Lake Analytics アカウントの作成にはしばらく時間がかかります。アカウントが作成されると、ポータルの新しいブレードにアカウントが開きます。
 
@@ -113,7 +113,7 @@ Data Lake Analytics アカウントを作成する際には、既定のストレ
 **データ ソースをさらに追加するには**
 
 1. 管理する Data Lake Analytics アカウントを開きます。手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[設定]** をクリックしてから、**[データ ソース]** をクリックします。そこに既定の Data Lake Store アカウントがリストされます。 
+2. **[設定]** をクリックしてから、**[データ ソース]** をクリックします。そこに既定の Data Lake Store アカウントがリストされます。
 3. **[データ ソースの追加]** をクリックします。
 
 	![Azure Data Lake Analytics のデータ ソースの追加](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-add-data-source.png)
@@ -123,7 +123,7 @@ Data Lake Analytics アカウントを作成する際には、既定のストレ
 <a name="explore-data-sources"></a>**データ ソースを検索するには**
 
 1. 管理する Analytics アカウントを開きます。手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
-2. **[設定]** をクリックしてから、**[データ エクスプローラー]** をクリックします。 
+2. **[設定]** をクリックしてから、**[データ エクスプローラー]** をクリックします。
  
 	![Azure Data Lake Analytics データ エクスプ ローラー](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-data-explorer.png)
 	
@@ -158,7 +158,7 @@ Data Lake Analytics アカウントを作成する際には、既定のストレ
 
 Data Lake Analytics では、Azure Active Directory でのロール ベースの Access Control を使用します。Data Lake Analytics アカウントの作成時に、"サブスクリプション管理者" ロールがアカウントに追加されます。以下のロールを持つユーザーとセキュリティ グループをさらに追加することができます。
 
-|ロール|説明|
+|役割|説明|
 |----|-----------|
 |所有者|リソースへのアクセスを含め、すべてを管理できます。|
 |共同作成者|ポータルにアクセスし、ジョブを送信および監視します。ジョブを送信するには、共同作成者に Data Lake Store アカウントに対する読み取りまたは書き込みアクセス許可も必要になります。|
@@ -204,14 +204,14 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 	ジョブごとに、以下を構成することができます。
 
 
-	|名前|説明|
+	|名前|Description|
 	|----|-----------|
 	|ジョブ名|ジョブの名前を入力します。|
 	|優先順位|数が小さいほど優先順位が高くなります。2 つのジョブが両方ともキューに登録されている場合は、優先順位の低いものが最初に実行されます。|
 	|並列処理 |同時に発生する可能性があるコンピューティング プロセスの最大数。この数を増やすことで、パフォーマンスを向上させることができますが、コストが増加することもあります。|
 	|スクリプト|ジョブの U-SQL スクリプトを入力します。|
 
-	同じインターフェイスを使用して、リンク データ ソースを検索し、リンクされているデータ ソースにファイルをさらに追加することもできます。 
+	同じインターフェイスを使用して、リンク データ ソースを検索し、リンクされているデータ ソースにファイルをさらに追加することもできます。
 3. ジョブを送信する場合は、**[ジョブの送信]** をクリックします。
 
 **ジョブを送信するには**
@@ -257,7 +257,7 @@ Azure Active Directory ユーザーとセキュリティ グループの作成�
 
 1. 管理する Analytics アカウントを開きます。手順については、[Data Lake Analytics アカウントへのアクセス](#access-adla-account)に関する記述を参照してください。
 2. 上部のメニューにある **[データ エクスプローラー]** をクリックします。
-3. **[カタログ]**、**[master]** の順に展開し、**[テーブル]、**[テーブル値関数]** または **[アセンブリ]** を展開します。次のスクリーンショットには、1 つのテーブル値関数が示されています。
+3. **[カタログ]**、**[master]** の順に展開し、**[テーブル]**、**[テーブル値関数]** または [アセンブリ]** を展開します。次のスクリーンショットには、1 つのテーブル値関数が示されています。
 
 	![Azure Data Lake Analytics データ エクスプ ローラーのストレージ アカウント](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-explore-catalog.png)
 
@@ -290,4 +290,4 @@ Data Lake Analytics アカウントと従属するストレージ アカウン�
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

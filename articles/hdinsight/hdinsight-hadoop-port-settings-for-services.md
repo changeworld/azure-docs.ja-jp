@@ -4,7 +4,7 @@ description="HDInsight で実行されている Hadoop サービスで使用さ�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -143,4 +143,4 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | ブローカー | ワーカー ノード | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | クライアント通信に使用 |
 | &nbsp; | Zookeeper ノード | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

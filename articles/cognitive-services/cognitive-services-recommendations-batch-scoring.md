@@ -5,7 +5,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -198,4 +198,4 @@
 -	一度に呼び出すことのできるバッチ ジョブは各サブスクリプションにつき 1 つだけです。
 -	バッチ ジョブの入力ファイルは 2 MB 以下にする必要があります。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

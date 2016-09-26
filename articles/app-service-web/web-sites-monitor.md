@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/31/2016"
+	ms.date="09/07/2016"
 	ms.author="byvinyal"/>
 
 # Azure App Service でアプリを監視する方法
@@ -126,9 +126,9 @@ CPU の使用状況を反映するメトリックには、**CPU 時間**と **CP
 
 アプリケーションと App Service プランのメトリックがサービスによってログに記録され、集計される際には、次の粒度と保持ポリシーが適用されます。
 
- * 粒度が**分**のメトリックは **24 時間**保持されます。
- * 粒度が**時間**のメトリックは **7 日間**保持されます。
- * 粒度が**日**のメトリックは **30 日間**保持されます。
+ * 粒度が**分**のメトリックは **48 時間**保持されます。
+ * 粒度が**時間**のメトリックは **30 日間**保持されます。
+ * 粒度が**日**のメトリックは **90 日間**保持されます。
 
 ## Azure ポータルでのクォータとメトリックの監視
 
@@ -160,4 +160,4 @@ Basic、Standard、Premium の App Service プランでホストされている 
 [quotas]: ./media/web-sites-monitor/quotas.png
 [metrics]: ./media/web-sites-monitor/metrics.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

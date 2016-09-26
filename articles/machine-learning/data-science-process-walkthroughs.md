@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -56,4 +56,4 @@
 
 Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、[データ サイエンス プロセス](http://aka.ms/datascienceprocess)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

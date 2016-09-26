@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Shared Access Signature: SAS モデルについて | Microsoft Azure"
-	description="Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。Shared Access Signature を使用すると、ストレージ アカウント キーを保護しながら、アカウント内のリソースへのアクセス権を他のユーザーに付与できます。付与するアクセス許可と、SAS の有効期間を制御できます。また、ストアド アクセス ポリシーを確立すると、万が一アカウントのセキュリティが侵害される恐れがある場合に SAS を無効にできます。"
+	pageTitle="Shared Access Signatures (SAS) の使用 | Microsoft Azure"
+	description="Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage のリソースへのアクセスを委任する方法について説明します。"
 	services="storage"
 	documentationCenter=""
 	authors="tamram"
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/23/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 
 
-# Shared Access Signature、第 1 部: SAS モデルについて
+# Shared Access Signatures (SAS) の使用
 
-## 概要
+## Overview
 
 Shared Access Signature (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。Shared Access Signature についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2](storage-dotnet-shared-access-signature-part-2.md) では、BLOB サービスで Shared Access Signature を作成するプロセスを詳しく説明します。
 
@@ -98,7 +98,7 @@ BLOB に読み書きアクセス許可を付与するサービス SAS URI の例
 
 	https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 
-名前|SAS の部分|説明
+名前|SAS の部分|Description
 ---|---|---
 Blob URI|https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt |BLOB のアドレス。HTTPS の使用を強くお勧めします。
 ストレージ サービスのバージョン|sv=2015-04-05|ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
@@ -114,7 +114,7 @@ IP 範囲|sip=168.1.5.60-168.1.5.70|要求が受け入れられる IP アドレ�
 
 	https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 
-名前|SAS の部分|説明
+名前|SAS の部分|Description
 ---|---|---
 リソース URI|https://myaccount.blob.core.windows.net/?restype=service&comp=properties|The BLOB サービス エンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーターまたは (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。
 サービス|ss = bf|SAS は BLOB およびファイル サービスに適用されます。
@@ -318,4 +318,4 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

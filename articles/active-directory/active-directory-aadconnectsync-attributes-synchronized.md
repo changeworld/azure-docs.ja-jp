@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,22 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/13/2016"
 	ms.author="markvi;andkjell"/>
 
 
 # Azure AD Connect Sync: Azure Active Directory に同期される属性
-
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。属性は、関連する Azure AD アプリによってグループ化されます。
 
 ## 同期する属性
-よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように、既定の属性を維持することでき、さらに Office 365 ワークロードですべての機能を利用です。場合によっては、次の例のように、属性に機密性の高いデータまたは PII (個人を特定できる情報) データが含まれるため、組織が属性をクラウドと同期するのを望まないことがあります。
+よく寄せられる質問に、"*同期させる最低限の属性のリストは何か*" というものがあります。既定の推奨されるアプローチは、クラウドに完全な GAL (グローバル アドレス一覧) を構築できるように、既定の属性を維持することでき、さらに Office 365 ワークロードですべての機能を利用です。場合によっては、次の例のように、属性に機密性の高いデータや PII (個人を特定できる情報) データが含まれるため、組織が属性をクラウドと同期するのを望まないことがあります。![使用しない方がよい属性](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
 
-![使用しない方がよい属性](./media/active-directory-aadconnectsync-attributes-synchronized/badextensionattribute.png)
+この場合、このトピックの属性の一覧をまず確認し、機密性の高いデータや PII データが含まれ、同期できない属性を特定します。次に、インストール時に、[Azure AD アプリと属性フィルター](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの属性の選択を解除します。
 
-この場合は、以下の属性のリストから開始し、機密性の高いデータまたは PII データを含み、同期できないものを特定します。次に、インストール時に、[Azure AD アプリと属性フィルター](active-directory-aadconnect-get-started-custom.md#azure-ad-app-and-attribute-filtering)を使用して、それらの選択を解除します。
-
->[AZURE.WARNING] 属性の選択を解除する場合は、注意を払う必要があり、絶対に同期できないもののみを選択解除する必要があります。その他の属性の選択を解除すると、機能に悪影響を及ぼす可能性があります。
+>[AZURE.WARNING] 属性の選択を解除するときは、注意が必要であり、絶対に同期できない属性だけを選択解除する必要があります。その他の属性の選択を解除すると、機能に悪影響を及ぼす可能性があります。
 
 ## Office 365 ProPlus
 
@@ -43,10 +40,9 @@
 | usageLocation| ○| 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userPrincipalName| ○| UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
-
 ## Exchange Online
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | assistant| ○| ○| | |
@@ -167,11 +163,9 @@
 | userSMIMECertificates| ○| ○| | |
 | wWWHomePage| ○| ○| | |
 
-
-
 ## SharePoint Online
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | authOrig| ○| ○| ○| |
@@ -254,7 +248,7 @@
 
 ## Lync Online
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
@@ -302,10 +296,9 @@
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 | wWWHomePage| ○| ○| | |
 
-
 ## Azure RMS
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | cn| ○| | ○| 共通名または別名です。多くの場合、[mail] 値のプレフィックスです。|
@@ -320,10 +313,9 @@
 | usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userPrincipalName| ○| | | この UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
-
 ## Intune
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
@@ -341,11 +333,9 @@
 | usageLocation| ○| | | 機械的なプロパティ。ユーザーの国。ライセンスの割り当てに使用されます。|
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
-
-
 ## Dynamics CRM
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | c| ○| ○| | |
@@ -378,14 +368,14 @@
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
 ## サード パーティ製アプリケーション
-これは、一般的なワークロードまたはアプリケーションで最低限必要な属性として使用される属性セットです。上記以外のワークロードまたは Microsoft 以外のアプリで使用できます。これは、次の場合に明示的に使用されます。
+このグループは、一般的なワークロードまたはアプリケーションで最低限必要な属性として使用される属性セットです。別のセクションに示されていないワークロードまたは Microsoft 以外のアプリで使用できます。これは、次の場合に明示的に使用されます。
 
-- Yammer (ユーザーのみが実際に使用されます)
+- Yammer (User のみを使用)
 - [SharePoint のようなリソースによって提供されるハイブリッド企業間取引 (B2B) の組織間コラボレーションのシナリオ](http://go.microsoft.com/fwlink/?LinkId=747036)
 
-これは、Office 365、Dynamics、Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる一連の属性です。この中には、少数のコア属性が含まれます。
+このグループは、Office 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる属性セットです。この中には、少数のコア属性が含まれます。
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
 | accountEnabled| ○| | | アカウントが有効な場合に定義します。|
 | cn| ○| | ○| |
@@ -404,7 +394,7 @@
 | userPrincipalName| ○| | | UPN は、ユーザーのログイン ID です。多くの場合、[mail] 値と同じです。|
 
 ## Windows 10
-Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD に同期します。シナリオの詳細については、「[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)」を参照してください。これらの属性は常に同期し、Windows 10 は選択を解除できるアプリとして表示されません。Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
+Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD と同期します。シナリオの詳細については、「[Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](active-directory-azureadjoin-devices-group-policy.md)」をご覧ください。これらの属性は常に同期され、Windows 10 は選択解除できるアプリとして表示されません。Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
 
 | 属性名| デバイス| コメント |
 | --- | :-: | --- |
@@ -418,19 +408,19 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | operatingSystemVersion | ○| deviceOSVersion とも呼ばれます。|
 | userCertificate | ○| |
 
-選択したアプリに加えてユーザーには以下の属性があります。
+選択したアプリに加え、**ユーザー**には以下の属性があります。
 
 | 属性名| ユーザー| コメント |
 | --- | :-: | --- |
-| domainFQDN| ○| dnsDomainName とも呼ばれます。例: contoso.com|
-| domainNetBios| ○| netBiosName とも呼ばれます。例: CONTOSO|
+| domainFQDN| ○| dnsDomainName とも呼ばれます。たとえば、contoso.com です。|
+| domainNetBios| ○| netBiosName とも呼ばれます。たとえば、CONTOSO です。|
 
 ## Exchange ハイブリッドの書き戻し
-次の属性は、Exchange ハイブリッドを有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
+次の属性は、**Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名| ユーザー| 連絡先| グループ| コメント |
+| 属性名| User| 連絡先| グループ| コメント |
 | --- | :-: | :-: | :-: | --- |
-| msDS ExternalDirectoryObjectID| ○| | | Azure AD の cloudAnchor から派生します。これは Exchange 2016 で新たに追加されました。|
+| msDS ExternalDirectoryObjectID| ○| | | Azure AD の cloudAnchor から派生します。この属性は、Exchange 2016 で導入されました。|
 | msExchArchiveStatus| ○| | | オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。|
 | msExchBlockedSendersHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
 | msExchSafeRecipientsHash| ○| | | フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。|
@@ -440,7 +430,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 | proxyAddresses| ○| ○| ○| Exchange Online の x500 アドレスのみが挿入されます。|
 
 ## デバイスの書き戻し
-デバイス オブジェクトは、Active Directory に作成されます。これらは、Azure AD に参加しているデバイスか、ドメインに参加している Windows 10 コンピューターです。
+デバイス オブジェクトは、Active Directory に作成されます。これらのオブジェクトは、Azure AD に参加しているデバイス、またはドメインに参加している Windows 10 コンピューターです。
 
 | 属性名| デバイス| コメント |
 | --- | :-: | --- |
@@ -461,12 +451,13 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 
 ## メモ
-- 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の属性 userPrincipalName と同期されます。
-- 前の一覧で、オブジェクトの種類 **User** はまた、オブジェクトの種類 **iNetOrgPerson** に適用されます。
+
+- 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。mail などの代替 ID 属性は、Azure AD の userPrincipalName 属性と同期されます。
+- 前の一覧で、オブジェクトの種類 **User** は、オブジェクトの種類 **iNetOrgPerson** にも適用されます。
 
 ## 次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

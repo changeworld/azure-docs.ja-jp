@@ -5,7 +5,7 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -68,12 +68,12 @@
             </td>
             <td width="204" valign="top">
                 <p>
-                    あり
+                    はい
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-                    あり
+                    はい
                 </p>
             </td>
         </tr>
@@ -588,4 +588,4 @@
     </tbody>
 </table>
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

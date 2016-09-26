@@ -4,7 +4,7 @@ description="HDInsight クラスターの各種削除方法について説明し
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -48,4 +48,4 @@ __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き�
     
 __CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

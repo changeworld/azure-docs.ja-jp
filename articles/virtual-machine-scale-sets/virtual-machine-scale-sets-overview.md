@@ -14,14 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/13/2016"
 	ms.author="guybo"/>
 
 # 仮想マシン スケール セットの概要
 
-仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
+仮想マシン スケール セットは、同一の VM のセットをデプロイおよび管理するために使用できる Azure 計算リソースです。すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードなどを対象にした大規模サービスを簡単に構築できます。
 
-コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。VM スケール セットの概要については、最近の [Azure ブログでの発表](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)を参照してください。
+コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。VM スケール セットの概要については、[Azure ブログでの発表](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)を参照してください。
 
 以下のビデオで、VM スケール セットが詳しく解説されています。
 
@@ -31,7 +31,9 @@
 
 ## VM スケール セットの作成と管理
 
-VM スケール セットは、個々の Azure リソース マネージャー VM と同様に、JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して定義およびデプロイできます。そのため、Azure リソース マネージャーの標準的なデプロイ方法を利用することができます。テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
+[Azure ポータル](https://portal.azure.com)で VM スケール セットを作成するには、_[新規]_ を選択して、検索バーに「スケール」と入力します。検索結果として、"仮想マシン スケール セット" が表示されます。そこから必要なフィールドを入力し、スケール セットをカスタマイズしてデプロイします。
+
+VM スケール セットは、個々の Azure Resource Manager VM と同様に、JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して、定義およびデプロイすることもできます。そのため、Azure リソース マネージャーの標準的なデプロイ方法を利用することができます。テンプレートの詳細については、「[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
 
 VM スケール セットのサンプル テンプレートは、[こちら](https://github.com/Azure/azure-quickstart-templates)の Azure Quickstart templates GitHub リポジトリから入手できます (タイトルに _vmss_ が付いているテンプレートを探してください)
 
@@ -61,7 +63,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
  - **NAT 規則を使用した VM への接続** - パブリック IP アドレスを作成し、ロード バランサーに割り当て、IP アドレス上のポートを VM スケール セット内の VM 上のポートにマッピングする受信 NAT 規則を定義することができます。次に例を示します。
  
-	ソース | 発信元ポート | 変換先 | 宛先ポート
+	から | 発信元ポート | 変換先 | 宛先ポート
 	--- | --- | --- | ---
 	パブリック IP | ポート 50000 | vmss\_0 | ポート 22
 	パブリック IP | ポート 50001 | vmss\_1 | ポート 22
@@ -92,7 +94,7 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 - 各ストレージ アカウント名の最初の文字は、できるだけ重複しないようにします。[Azure のクイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/)のサンプル VMSS テンプレートには、その方法の例が紹介されています。
 - カスタム VM を使用している場合は、1 つのストレージ アカウントで、VM スケール セットあたり 40 個以下の VM を計画します。VM スケール セットのデプロイを開始する前に、イメージをストレージ アカウントに事前コピーする必要があります。詳細については、FAQ を参照してください。
 - VNET あたり 4,096 個以下の VM を計画します。
-- 作成できる VM の数は、デプロイ先のリージョンのコア クォータによって制限されます。コンピューティング クォータの制限を緩和するには、現時点でクラウド サービスや IaaS v1 で使用するためのコアの上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。クォータを照会するには、Azure CLI コマンドの場合は `azure vm list-usage`、PowerShell コマンドの場合は `Get-AzureRmVMUsage` (1.0 以前のバージョンの PowerShell を使用している場合は `Get-AzureVMUsage`) を実行します。
+- 作成できる VM の数は、デプロイ先のリージョンのコア クォータによって制限されます。計算クォータの制限を緩和するには、現時点でクラウド サービスや IaaS v1 で使用するためのコアの上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。クォータを照会するには、Azure CLI コマンドの場合は `azure vm list-usage`、PowerShell コマンドの場合は `Get-AzureRmVMUsage` (1.0 以前のバージョンの PowerShell を使用している場合は `Get-AzureVMUsage`) を実行します。
 
 ## VM スケール セットに関してよく寄せられる質問
 
@@ -149,10 +151,10 @@ VM スケール セット内の仮想マシンの数を増減するには、単�
 
 **Q.** VM スケール セットで複数の拡張機能を使用する場合、実行順序を強制できますか?
 
-**A.** 直接的にではありませんが、customScript 拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます ([たとえば、拡張機能ログを監視することによって](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh))。拡張機能の実行順序についての詳しいガイダンスについては、「[Extension Sequencing in Azure VM Scale Sets (Azure VM スケール セットにおける拡張機能の実行順序)](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)」のブログ記事を参照してください。
+**A.** 直接的にではありませんが、customScript 拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます ([たとえば、拡張機能ログを監視することによって](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh))。拡張機能の実行順序についての詳しいガイダンスについては、ブログ記事「[Extension Sequencing in Azure VM Scale Sets (Azure VM スケール セットにおける拡張機能の実行順序)](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)」を参照してください。
 
 **Q.** VM スケール セットは、Azure 可用性セットと連携できますか?
 
 **A.** はい。VM スケール セットは、5 つの FD と 5 つの UD を持つ、暗黙的な可用性セットです。virtualMachineProfile の下のものは、何も構成する必要はありません。今後のリリースでは、VM スケール セットが複数のテナントにまたがる可能性がありますが、現時点では 1 つの可用性セットです。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

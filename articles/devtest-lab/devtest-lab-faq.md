@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2016"
+	ms.date="09/13/2016"
 	ms.author="tarcher"/>
 
 # Azure DevTest Labs に関する FAQ
@@ -45,6 +45,7 @@
 - [既存の Azure VM を Azure DevTest Labs ラボに移動するにはどうすればよいですか。](#how-do-i-move-my-existing-azure-vms-into-my-azure-devtest-labs-lab)
 - [複数のディスクを VM に接続できますか。](#can-i-attach-multiple-disks-to-my-vms)
 - [カスタム イメージを作成するために VHD ファイルをアップロードするプロセスを自動化するにはどうすればよいですか。](#how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images)
+- [ラボ内の VM をすべて削除するプロセスを自動化するにはどうすればよいですか。](#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)
  
 ## アーティファクト 
  
@@ -56,6 +57,8 @@
 - [別々のリソース グループに作成した VM が任意の名前を持つのはなぜですか。 これらのリソース グループの名前や内容を変更できますか。](#why-are-my-vms-created-in-different-resource-groups-with-arbitrary-names-can-i-rename-or-modify-these-resource-groups)
 - [同じサブスクリプションにラボをいくつ作成できますか。](#how-many-labs-can-i-create-under-the-same-subscription)
 - [ラボごとにいくつの VM を作成できますか。](#how-many-vms-can-i-create-per-lab)
+- [ラボへの直接リンクを共有するにはどうすればよいですか。](#how-do-i-share-a-direct-link-to-my-lab)
+- [Microsoft アカウントとは何ですか。](#what-is-a-microsoft-account)
  
 ## トラブルシューティング 
  
@@ -168,11 +171,48 @@ VM への複数ディスクの接続はサポートされています。
 1. 一覧内でアップロードを検索します。存在しない場合は、手順 4 に戻り、別のストレージ アカウントを試します。
 1. AzCopy コマンドで、コピー先としてこの **URL** を使用します。
 
+
+### ラボ内の VM をすべて削除するプロセスを自動化するにはどうすればよいですか。
+
+Azure Portal でラボから VM を削除できる以外に、PowerShell スクリプトを使用してラボ内の VM をすべて削除することもできます。次の例の **Values to change** コメントの下のパラメーター値を変更するだけです。`subscriptionId`、`labResourceGroup`、および `labName` の値は、Azure Portal のラボのブレードから取得することができます。
+
+
+	# Delete all the VMs in a lab
+	
+	# Values to change
+	$subscriptionId = "<Enter Azure subscription ID here>"
+	$labResourceGroup = "<Enter lab's resource group here>"
+	$labName = "<Enter lab name here>"
+
+	# Login to your Azure account
+	Login-AzureRmAccount
+	
+	# Select the Azure subscription that contains the lab. This step is optional
+	# if you have only one subscription.
+	Select-AzureRmSubscription -SubscriptionId $subscriptionId
+	
+	# Get the lab that contains the VMs to delete.
+	$lab = Get-AzureRmResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+	
+	# Get the VMs from that lab.
+	$labVMs = Get-AzureRmResource | Where-Object { 
+	          $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
+	          $_.ResourceName -like "$($lab.ResourceName)/*"}
+	
+	# Delete the VMs.
+	foreach($labVM in $labVMs)
+	{
+	    Remove-AzureRmResource -ResourceId $labVM.ResourceId -Force
+	}
+
+
+
+
 ### アーティファクトとは何ですか。 
 アーティファクトは、最新のビットまたは開発用ツールを VM 上にデプロイするために使用できるカスタマイズ可能な要素です。いくつかの簡単なクリック操作で作成時に VM に接続され、VM がプロビジョニングされると、アーティファクトによって VM がデプロイおよび構成されます。[パブリック GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)には、様々な既存のアーティファクトが存在しますが、[独自のアーティファクトの作成](devtest-lab-artifact-author.md)も簡単です。
 
 ### Azure Resource Manager テンプレートからラボを作成するにはどうすればよいですか。 
-[ラボ Azure Resource Manager テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)があります。これらの各テンプレートには、クリックすると自身の Azure サブスクリプションの下に Azure DevTest Labs ラボをデプロイできるリンクが用意されています。
+弊社が提供する[ラボの Azure Resource Manager テンプレートの Github リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を、そのままの状態でデプロイしたり、修正してラボ用のカスタム テンプレートを作成したりできます。各テンプレートにはリンクが含まれます。このリンクをクリックすると、Azure サブスクリプションにラボをそのままデプロイできます。また、テンプレートをカスタマイズし、[PowerShell や Azure CLI を使用してデプロイ](../resource-group-template-deploy.md)することもできます。
  
 ### 別々のリソース グループに作成した VM が任意の名前を持つのはなぜですか。 これらのリソース グループの名前や内容を変更できますか。 
 リソース グループは、Azure DevTest Labs がユーザーのアクセス許可と仮想マシンへのアクセスを管理するため、ご質問で述べられたように作成されます。VM を別のリソース グループに移動してご希望の名前を使用することはできますが、この方法はお勧めではありません。柔軟性の向上を目指して、機能の改善に取り組んでいます。
@@ -182,6 +222,21 @@ VM への複数ディスクの接続はサポートされています。
  
 ### ラボごとにいくつの VM を作成できますか。 
 ラボごとに作成できる VM の数に特定の制限はありません。ただし、現時点のラボでは、Standard Storage で同時に実行できる VM の数は 40 個程度、Premium Storage で同時に実行できる VM の数は 25 個に限られています。現在、これらの制限値を増やす作業に取り組んでいます。
+
+### ラボへの直接リンクを共有するにはどうすればよいですか。
+
+直接リンクをラボ ユーザーと共有するには、次の手順を実行できます。
+
+1. Azure Portal でラボを参照します。
+2. お使いのブラウザーからラボの URL をコピーし、ラボ ユーザーと共有します。
+
+>[AZURE.NOTE] ラボ ユーザーが、[MSA アカウント](#what-is-a-microsoft-account)を持つ外部ユーザーであり、会社の Active Directory に属していない場合、指定されたリンクに移動するとエラーが表示される可能性があります。エラーが表示された場合は、Azure Portal の右上隅に表示されている自分の名前をクリックし、メニューの **[ディレクトリ]** セクションからラボが存在するディレクトリを選択するように、ユーザーに指示してください。
+
+### Microsoft アカウントとは何ですか。
+
+Microsoft アカウントは、Microsoft のデバイスおよびサービスで行うほぼすべての操作に対して使用するものです。電子メール アドレスとパスワードで構成され、Skype、Outlook.com、OneDrive、Windows Phone、および Xbox LIVE へのサインインに使用します。つまり、ファイル、写真、連絡先、および設定が、任意のデバイスで利用できることを意味します。
+
+>[AZURE.NOTE] Microsoft アカウントは、以前は "Windows Live ID" と呼ばれていました。
  
 ### VM の作成時にアーティファクトでエラーが発生しました。どのようにトラブルシューティングすればよいですか。 
 障害が発生したアーティファクトに関するログを取得する方法については、MVP の 1 人によるブログ記事「[How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs 内のアーティファクトの障害をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)」をご覧ください。
@@ -189,4 +244,4 @@ VM への複数ディスクの接続はサポートされています。
 ### 既存の仮想ネットワークが正しく保存されないのはなぜですか。  
 仮想ネットワーク名にピリオドが含まれていることが原因となっている可能性があります。その場合は、ピリオドを削除するかハイフンに置き換えてから、仮想ネットワークをもう一度保存してみてください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

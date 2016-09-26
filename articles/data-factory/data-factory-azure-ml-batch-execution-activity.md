@@ -27,7 +27,7 @@
 
 1. **トレーニング実験を作成する**。この手順を実行するには、Azure ML Studio を使用します。ML Studio は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
 2. **トレーニング実験を予測実験に変換する**。既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
-3. **Web サービスとしてデプロイする**。Azure Web サービスとしてスコア付け実験を発行できます。この Web サービスのエンドポイントを使用して、ユーザーはモデルにデータを送信し、モデルの予測を受信できます。
+3. **Web サービスとしてデプロイする**。Azure Web サービスとしてスコア付け実験を発行できます。この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 Azure Data Factory を使用すると、公開された [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure ML Web サービスを呼び出して、データの予測を一括で行うことができます。詳細については、「[バッチ実行アクティビティを使用して、Azure ML Web サービスを呼び出す](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity)」を参照してください。
 
@@ -44,7 +44,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning]
 
 詳細については、「[更新リソース アクティビティを使用して Azure ML モデルを更新する](#updating-azure-ml-models-using-the-update-resource-activity)」を参照してください。
 
-## バッチ実行アクティビティを使用して Azure ML Web サービスを呼び出す
+## バッチ実行アクティビティを使用して Web サービスを呼び出す
 
 Azure Data Factory を使用してデータの移動と処理を調整した後、Azure Machine Learning を使用してバッチを実行します。大まかな手順を以下に示します。
 
@@ -61,7 +61,12 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 ### シナリオ: Azure Blob Storage のデータを参照する Web サービスの入力/出力を使用する
 このシナリオの Azure Machine Learning Web サービスは、Azure BLOB ストレージ内のファイルのデータを使用して予測を作成し、BLOB ストレージに予測結果を保存します。次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。**DecisionTreeInputBlob** は、**webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。**DecisionTreeResultBlob** は、**webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
 
-> [AZURE.NOTE] **webServiceInput** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
+> [AZURE.IMPORTANT] 
+Web サービスで複数の入力を受け取る場合は、**webServiceInput** プロパティを使用せずに、**webServiceInputs** プロパティを使用します。webServiceInputs プロパティの使用例については、「[Web サービスで複数の入力が必要である](#web-service-requires-multiple-inputs)」のセクションを参照してください。
+>  
+> **webServiceInput**/**webServiceInputs** と **webServiceOutputs** の各プロパティ (**typeProperties** 内) から参照されているデータセットもアクティビティの **inputs** と **outputs** に含める必要があります。
+> 
+> Azure ML の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、Azure ML エンドポイントで必要なマッピングを確認することができます。
 
 
 	{
@@ -99,8 +104,8 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 	        }
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
 
@@ -258,8 +263,8 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
 		        }
 		      }
 		    ],
-		    "start": "2015-02-13T00:00:00Z",
-		    "end": "2015-02-14T00:00:00Z"
+		    "start": "2016-02-13T00:00:00Z",
+		    "end": "2016-02-14T00:00:00Z"
 		  }
 		}
 
@@ -347,8 +352,8 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 	        },
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
  
@@ -358,6 +363,50 @@ Azure Machine Learning の実験でリーダー モジュールを使用する�
 - **start** と **end** の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能です。**end** プロパティは、値を指定しない場合は "**start + 48 時間**" になります。パイプラインを無期限に実行するには、**end** プロパティの値に「**9999-09-09**」を指定します。JSON のプロパティの詳細については、[JSON スクリプティング リファレンス](https://msdn.microsoft.com/library/dn835050.aspx)を参照してください。
 
 ### その他のシナリオ
+
+#### Web サービスで複数の入力が必要である
+Web サービスで複数の入力を受け取る場合は、**webServiceInput** プロパティを使用せずに、**webServiceInputs** プロパティを使用します。**webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。
+ 
+Azure ML の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 ("input1"、"input2") がありますが、これらはカスタマイズすることができます。webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、Azure ML エンドポイントで必要なマッピングを確認することができます。
+
+
+	{
+		"name": "PredictivePipeline",
+		"properties": {
+			"description": "use AzureML model",
+			"activities": [{
+				"name": "MLActivity",
+				"type": "AzureMLBatchExecution",
+				"description": "prediction analysis on batch input",
+				"inputs": [{
+					"name": "inputDataset1"
+				}, {
+					"name": "inputDataset2"
+				}],
+				"outputs": [{
+					"name": "outputDataset"
+				}],
+				"linkedServiceName": "MyAzureMLLinkedService",
+				"typeProperties": {
+					"webServiceInputs": {
+						"input1": "inputDataset1",
+						"input2": "inputDataset2"
+					},
+					"webServiceOutputs": {
+						"output1": "outputDataset"
+					}
+				},
+				"policy": {
+					"concurrency": 3,
+					"executionPriorityOrder": "NewestFirst",
+					"retry": 1,
+					"timeout": "02:00:00"
+				}
+			}],
+			"start": "2016-02-13T00:00:00Z",
+			"end": "2016-02-14T00:00:00Z"
+		}
+	}
 
 #### Web サービスに入力が必要ではない
 
@@ -447,7 +496,7 @@ Azure ML Web サービスのリーダーとライター モジュールは、Glo
 - アクティビティの入力と出力のプロパティには、アクティビティの typeProperties から参照せずに含めることができるその他のデータセットがあります。このようなデータセットは実行の制御にスライスの依存関係を使用しますが、それ以外の場合は、AzureMLBatchExecution アクティビティから無視されます。
 
 
-## 更新リソース アクティビティを使用して Azure ML モデルを更新する
+## 更新リソース アクティビティを使用してモデルを更新する
 時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。再トレーニングが完了したら、再トレーニング済みの ML モデルでスコア付け Web サービスを更新する必要があります。Web サービスを使用して Azure ML モデルの再トレーニングと更新を有効にするための標準的な手順を次に示します。
 
 1. [Azure ML Studio](https://studio.azureml.net) で実験を作成します。
@@ -682,8 +731,8 @@ Azure ML 更新リソース アクティビティでは出力は作成されま�
 	                "linkedServiceName": "updatableScoringEndpoint2"
 	            }
 	        ],
-	    	"start": "2015-02-13T00:00:00Z",
-	   		"end": "2015-02-14T00:00:00Z"
+	    	"start": "2016-02-13T00:00:00Z",
+	   		"end": "2016-02-14T00:00:00Z"
 	    }
 	}
 
@@ -738,8 +787,8 @@ AzureMLBatchScoring アクティビティを引き続き使用する場合は、
 	        }
 	      }
 	    ],
-	    "start": "2015-02-13T00:00:00Z",
-	    "end": "2015-02-14T00:00:00Z"
+	    "start": "2016-02-13T00:00:00Z",
+	    "end": "2016-02-14T00:00:00Z"
 	  }
 	}
 
@@ -779,4 +828,4 @@ Web サービス パラメーターの値を指定するには、パイプライ
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

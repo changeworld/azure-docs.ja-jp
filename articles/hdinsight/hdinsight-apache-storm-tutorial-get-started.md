@@ -5,7 +5,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/22/2016"
+   ms.date="09/07/2016"
    ms.author="larryfr"/>
 
 
@@ -47,7 +47,7 @@ HDInsight の Storm では、ログ ファイルとクラスターに送信さ�
 
 4. 複数のサブスクリプションがある場合は、__[サブスクリプション]__ エントリを選択し、クラスターで使用する Azure サブスクリプションを選択します。
 
-5.  __[クラスターの種類の選択]__ を使用して __Storm__ クラスターを選択します。__[オペレーティング システム]__ で [Windows] を選択します。__[Cluster Tier]__ (クラスター階層) に [STANDARD] \(標準) を選択します。最後に、選択ボタンを使用してこれらの設定を保存します。
+5.  __[クラスターの種類の選択]__ を使用して __Storm__ クラスターを選択します。__[オペレーティング システム]__ で [Windows] を選択します。__[Cluster Tier]__ (クラスター階層) に [STANDARD] (標準) を選択します。最後に、選択ボタンを使用してこれらの設定を保存します。
 
 	![クラスター名、クラスターの種類、および OS の種類](./media/hdinsight-apache-storm-tutorial-get-started/clustertype.png)
 
@@ -245,4 +245,4 @@ Storm UI を使用してトポロジを監視できます。
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

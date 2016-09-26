@@ -153,7 +153,7 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 
 ![登録時にプロキシを設定](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
 
-ゲートウェイは、プロキシ サーバーを使用してクラウド サービスに接続します。初期設定中に **[変更]** をクリックすると、プロキシ設定のダイアログが表示されます。
+ゲートウェイは、プロキシ サーバーを使用してクラウド サービスに接続します。初期セットアップする際に **[変更]** リンクをクリックします。**[プロキシ設定]** ダイアログが表示されます。
 
 ![構成マネージャーを使用してプロキシを設定](media/data-factory-data-management-gateway/SetProxySettings.png)
 
@@ -181,7 +181,7 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 ### diahost.exe.config でのプロキシ サーバー設定の構成
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config のプロキシ設定を使用します。diahost.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。構成ファイルを更新する手順を次に示します。
 
-1.	ファイル エクスプ ローラーで、C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared\\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
+1.	ファイル エクスプ ローラーで、C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
 2.	管理者として Notepad.exe を起動し、テキスト ファイル C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config を開きます。次のように、system.net の既定のタグを確認します。
 
 			<system.net>
@@ -217,7 +217,7 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
 	msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-ゲートウェイ コンピューター上でポート 8050 を開かずに、オンプレミスでリンクされたサービスを設定する場合は、**資格情報の設定**アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、[資格情報とセキュリティの設定](#set-credentials-and-securityy)に関するセクションを参照してください。
+ゲートウェイ コンピューター上でポート 8050 を開かない場合は、**資格情報の設定**アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。たとえば、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。データ ストア資格情報を設定する方法については、[資格情報とセキュリティの設定](#set-credentials-and-securityy)に関するセクションを参照してください。
 
 ## 更新 
 既定では、Data Management Gateway の新しいバージョンが利用可能になると、自動的に更新されます。ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
@@ -246,7 +246,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 次の手順で、自動更新機能を無効/有効にすることができます。
 
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript フォルダーに切り替えます。
+2. C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\PowerShellScript フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
 		.\GatewayAutoUpdateToggle.ps1  -off
@@ -259,7 +259,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 - **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
-- **C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\Shared** フォルダーの実行可能ファイル **ConfigManager.exe** を実行します。
+- **C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared** フォルダーの実行可能ファイル **ConfigManager.exe** を実行します。
  
 ### ホーム ページ
 ホーム ページでは、次の操作を行うことができます。
@@ -340,6 +340,32 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 ![Data Management Gateway - ログのアーカイブ](media/data-factory-data-management-gateway/data-management-gateway-archive-logs.png)
 
+### ゲートウェイはオンラインだが機能が制限されている 
+ゲートウェイの状態が、次のいずれかの理由で、**オンラインだが機能が制限されている**ことがわかります。
+
+- ゲートウェイからサービス バス経由でクラウド サービスに接続できない。
+- クラウド サービスからサービス バス経由でゲートウェイに接続できない。
+
+ゲートウェイがオンラインだが機能が制限されている場合、Data Factory コピー ウィザードを使用してオンプレミスのデータ ストアとの間でデータをコピーするためのデータ パイプラインを作成することができない可能性があります。
+
+この問題 (オンラインだが機能が制限されている) の解決策または回避策は、ゲートウェイからクラウド サービスに接続できないのか、その逆かによって異なります。次のセクションで回避策を説明します。
+
+#### ゲートウェイからサービス バス経由でクラウド サービスに接続できない
+次の手順に従って、ゲートウェイをオンラインに戻します。
+
+1. ゲートウェイ コンピューターの Windows ファイアウォールと企業のファイアウォールの両方で送信ポート 9350 ～ 9354 を有効にします。詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。
+2. ゲートウェイのプロキシ設定を構成します。詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
+
+回避策として、Azure Portal、Visual Studio、または Azure PowerShell で、Data Factory エディターを使用します。
+
+#### エラー: クラウド サービスからサービス バス経由でゲートウェイに接続できない。
+次の手順に従って、ゲートウェイをオンラインに戻します。
+ 
+1. ゲートウェイ コンピューターの Windows ファイアウォールと企業のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。詳細については、「[ポートとファイアウォール](#ports-and-firewall)」のセクションを参照してください。
+2. ゲートウェイのプロキシ設定を構成します。詳細については、「[プロキシ サーバーに関する考慮事項](#proxy-server-considerations)」のセクションを参照してください。
+3. プロキシ サーバー上の静的 IP 制限を削除します。
+
+回避策として、Azure Portal、Visual Studio、または Azure PowerShell で、Data Factory エディターを使用することができます。
  
 ## コンピューターから別のコンピューターへのゲートウェイの移動
 このセクションでは、1 台のコンピューターから別のコンピューターにゲートウェイ クライアントを移動する手順を説明します。
@@ -406,7 +432,7 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 
 **資格情報の設定**アプリケーションを使用すると、ポータルでは、ゲートウェイ コンピューターの **Gateway 構成マネージャー**の **[証明書]** タブで指定された証明書を使用して、資格情報が暗号化されます。
 
-API を使用して資格情報を暗号化した方がよい場合は、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。暗号化された資格情報は、[New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットで使用する JSON ファイルの **connectionString** の **EncryptedCredential** 要素に追加することも、Data Factory エディターで JSON スニペットに追加することもできます。
+API を使用して資格情報を暗号化した方がよい場合は、[New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用して資格情報を暗号化できます。コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。暗号化された資格情報を、JSON の **connectionString** の **EncryptedCredential** 要素に追加します。JSON は、[New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) コマンドレットや Data Factory エディターで使用します。
 
 	"connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
 
@@ -442,7 +468,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 		Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
 
 	
-4. Azure PowerShell で、**C:\\Program Files\\Microsoft Data Management Gateway\\1.0\\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+4. Azure PowerShell で、**C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\PowerShellScript** フォルダーに移動します。次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
 		PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
 		
@@ -470,4 +496,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## 次のステップ
 - ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

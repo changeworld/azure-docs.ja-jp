@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/26/2016"
+	ms.date="09/14/2016"
 	ms.author="markvi"/>
 
-# Azure AD への条件付きアクセスの基本  
+# Azure Active Directory 条件付きアクセスの概要
 
-[SaaS](https://azure.microsoft.com/overview/what-is-saas/) アプリや Azure AD 接続アプリ向けの Azure Active Directory の条件付きアクセスを使用すると、グループや場所、アプリケーションの機密性に基づいて条件付きアクセスを構成できます。
+[SaaS](https://azure.microsoft.com/overview/what-is-saas/) アプリや Azure AD 接続アプリ向けの Azure Active Directory 条件付きアクセスを使用すると、グループや場所、アプリケーションの秘密度に基づいて条件付きアクセスを構成できます。
 
-Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。アプリケーションの秘密度に基づく条件付きアクセスを使用すれば、Multi-Factor Authentication (MFA) アクセス規則をアプリケーションごとに設定し、信頼されたネットワーク上に存在しないユーザーのアクセスをブロックすることが可能です。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+アプリケーションの秘密度に基づく条件付きアクセスでは、Multi-Factor Authentication (MFA) アクセス規則をアプリケーションごとに設定できます。アプリケーションごとの MFA により、信頼されたネットワーク上に存在しないユーザーのアクセスをブロックできます。MFA 規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを MFA の要件から除外できます。
 
 これらの機能は、Azure Active Directory Premium ライセンスを購入したお客様に提供されます。
 
@@ -53,7 +53,7 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 
 既定では、このポリシーは、アプリケーションへのアクセスを持つすべてのユーザーに適用されます。ただし、指定したセキュリティ グループのメンバーであるユーザーのみにポリシーを制限することもできます。**[グループの追加]** を使用すると、グループ選択のダイアログ ボックスから、アクセス規則を適用するグループを 1 つまたは複数選択できます。このダイアログ ボックスを使用して、選択したグループを削除することもできます。グループに適用する規則を選択すると、アクセス規則は、指定したセキュリティ グループに属するユーザーにのみ課せられます。
 
-[除外] をオンにして、1 つまたは複数のグループを指定することで、セキュリティ グループをポリシーから明示的に除外することもできます。除外リストのグループ メンバーであるユーザーは、アクセス規則が適用されるグループのメンバーである場合でも、Multi-Factor Authentication の要件が適用されません。以下に示すアクセス規則では、マネージャー グループのすべてのユーザーが、アプリケーションにアクセスするときに Multi-Factor Authentication を使用する必要があります。
+**[除外]** をオンにし、1 つ以上のグループを指定することで、セキュリティ グループをポリシーから明示的に除外することもできます。**除外**リストのグループのメンバーであるユーザーは、アクセス規則が適用されるグループのメンバーである場合でも、Multi-Factor Authentication の要件は適用されません。以下に示すアクセス規則では、マネージャー グループのすべてのユーザーが、アプリケーションにアクセスするときに Multi-Factor Authentication を使用する必要があります。
 
 ![MFA による条件付きアクセス規則の設定](./media/active-directory-conditional-access-azuread-connected-apps/conditionalaccess-saas-apps.png)
 
@@ -63,32 +63,34 @@ Multi-Factor Authentication の規則は、アプリケーションに割り当�
 ### アクセス規則のオプション
 次のオプションがサポートされています。
 
-* **多要素認証が必要です**: このオプションを使用した場合、アクセス規則が適用されるユーザーは、ポリシーが適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
+* **[多要素認証を要求する]**: アクセス規則が適用されるユーザーは、ポリシーが適用されるアプリケーションにアクセスする前に Multi-Factor Authentication を完了する必要があります。
 
-* **作業中でない場合、多要素認証が必要です**: このオプションを使用した場合、信頼できる IP アドレスからのユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
+* **[社外ネットワークからの利用は、多要素認証を要求する]**: 信頼できる IP アドレスからアクセスするユーザーは、Multi-Factor Authentication を実行する必要はありません。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
 
-* **作業中でない場合、アクセスをブロック**: このオプションを使用した場合、信頼できる IP アドレス以外からのユーザーはブロックされます。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
+* **[社外ネットワークからの利用は、禁止する]**: 信頼できる IP アドレス以外からアクセスするユーザーはブロックされます。Multi-Factor Authentication の設定ページでは、信頼できる IP アドレスの範囲を構成できます。
 
 ### 規則の状態の設定
-アクセス規則の状態により、規則を有効または無効にすることができます。アクセス規則が無効の場合は、Multi-Factor Authentication の要件は適用されません。
+アクセス規則の状態により、規則を有効または無効にすることができます。アクセス規則が無効の場合、Multi-Factor Authentication の要件は適用されません。
 
 ### アクセス規則の評価
 
-アクセス規則は、ユーザーが OAuth 2.0、OpenID Connect、SAML、または WS-Federation を使用するフェデレーション アプリケーションにアクセスした場合に評価されます。さらに、アクセス規則は、OAuth 2.0 と OpenID Connect が使用された場合、アクセス トークンの取得に更新トークンが使用された場合に評価されます。更新トークンの使用時にポリシーの評価が失敗すると、エラー invalid\_grant が返されます。これは、ユーザーがクライアントに対して再認証する必要があることを示します。Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
+アクセス規則は、ユーザーが OAuth 2.0、OpenID Connect、SAML、または WS-Federation を使用するフェデレーション アプリケーションにアクセスした場合に評価されます。また、OAuth 2.0 と OpenID Connect でアクセス トークンを取得するために更新トークンが使用されたときにもアクセス規則が評価されます。更新トークンの使用時にポリシーの評価が失敗すると、**invalid\_grant** エラーが返されます。これは、ユーザーがクライアントに対して再認証する必要があることを示します。
 
-フェデレーション テナントでは、Multi-Factor Authentication (MFA) が、Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。
+###Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
 
-既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell の Azure AD モジュールを使用して、Azure Active Directory で -SupportsMFA プロパティを **true** に設定する必要があります。
+フェデレーション テナントでは、MFA が Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。
+
+既定では、MFA は Azure Active Directory によってホストされているページで実行されます。オンプレミスの MFA を構成するには、Windows PowerShell の Azure AD モジュールを使用して、Azure Active Directory で **-SupportsMFA** プロパティを **true** に設定する必要があります。
 
 次の例で、contoso.com テナントで [Set-MsolDomainFederationSettings コマンドレット](https://msdn.microsoft.com/library/azure/dn194088.aspx)を使用して、オンプレミスの MFA を有効にする方法を示します。
 
     Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true
 
-このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。オンプレミスの Azure Multi-Factor Authentication のデプロイの手順に従ってください。
+このフラグの設定に加えて、Multi-Factor Authentication が実行されるように、フェデレーション テナントの AD FS インスタンスを構成する必要があります。[オンプレミスの Azure Multi-Factor Authentication のデプロイ](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)の手順に従ってください。
 
 ## 関連記事
 
 - [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

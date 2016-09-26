@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -40,7 +40,7 @@ Microsoft Azure Machine Learning には、多くの強力なマシン ラーニ�
 
 この記事で使用されているデータと R スクリプトは、[こちらからダウンロードできます][download]。このデータは、ウィスコンシン大学 (http://future.aae.wisc.edu/tab/production.html) から入手した情報を元に作成したものです。
 
-###	組織
+###	Organization
 
 Azure Machine Learning 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。
 
@@ -1358,4 +1358,4 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series 
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

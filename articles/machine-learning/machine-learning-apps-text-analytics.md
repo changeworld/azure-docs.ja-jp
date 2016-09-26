@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="onewth"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -21,7 +21,7 @@
 
 >[AZURE.NOTE] このガイドはバージョン 1 の API 用です。バージョン 2 については、[**こちらのドキュメントを参照**](../cognitive-services/cognitive-services-text-analytics-quick-start.md)してください。この API の推奨バージョンは現在、バージョン 2 となっています。
 
-## 概要
+## Overview
 
 テキスト分析 API は、Azure Machine Learning で構築されたテキスト分析 [Web サービス](https://datamarket.azure.com/dataset/amla/text-analytics)です。API を使用して、センチメント分析、キー フレーズの抽出、言語検出、トピック検出などのタスクの非構造化テキストを分析することができます。この API を使用するためにトレーニング データは必要ありません。自分のテキスト データを使用するだけです。この API は、高度な自然言語の処理手法を使用し、このクラスで最高の予測機能を提供します。
 
@@ -371,18 +371,18 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 
 **TopicInfo プロパティ**
 
-| キー | 説明 |
+| キー | Description |
 |:-----|:----|
-| TopicId | 各トピックの一意の識別子 |
+| TopicId | 各トピックの一意の識別子。 |
 | Score | トピックに割り当てられているレコードの数。 |
 | KeyPhrase | トピックの要約となる単語または語句。1 つの単語の場合もあれば、複数の単語の場合もあります。 |
 
 **TopicAssignment プロパティ**
 
-| キー | 説明 |
+| キー | Description |
 |:-----|:----|
 | ID | レコードの識別子。入力に含まれる ID と同じです。 |
 | TopicId | レコードが割り当てられているトピック ID。 |
 | Distance | レコードがトピックに属する確実性。Distance がゼロに近ければ、それだけ確実性が高くなります。 |
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

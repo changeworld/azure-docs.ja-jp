@@ -18,6 +18,13 @@
 
 # Azure リソース マネージャーでの Azure PowerShell の使用
 
+> [AZURE.SELECTOR]
+- [ポータル](azure-portal/resource-group-portal.md)
+- [Azure CLI](xplat-cli-azure-resource-manager.md)
+- [Azure PowerShell](powershell-azure-resource-manager.md)
+- [REST API](resource-manager-rest-api.md)
+
+
 Azure Resource Manager では、Azure リソースのライフサイクル管理のための最新のアプローチが実装されています。個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki など、ソリューション全体の構想を練ります。ソリューションの宣言型表現であるテンプレートを使用して、ソリューションをサポートするために必要なすべてのリソースが含まれているリソース グループを定義します。その後、そのリソース グループを論理ユニットとしてデプロイし、管理します。
 
 このチュートリアルでは、Azure リソース マネージャーで Azure PowerShell を使用する方法について説明します。ソリューションのデプロイとそのソリューションの使用のプロセスについて段階的に説明します。Azure PowerShell とリソース マネージャーのテンプレートを使用し、以下をデプロイします。
@@ -376,4 +383,4 @@ PowerShell により、リソース グループの現在の状態を表すテ�
 - プロジェクトのデプロイの詳細な例については、[Azure でマイクロサービスを予測どおりにデプロイする](app-service-web/app-service-deploy-complex-application-predictably.md)方法に関するページを参照してください。
 - 失敗したデプロイのトラブルシューティングについては、「[Azure でのリソース グループのデプロイのトラブルシューティング](./resource-manager-troubleshoot-deployments-powershell.md)」を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

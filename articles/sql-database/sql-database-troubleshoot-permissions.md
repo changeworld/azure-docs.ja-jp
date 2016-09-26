@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/13/2016"
 	ms.author="v-shysun"/>
 
 # Azure SQL Database で管理者パスワードのリセットなどの一般的な管理タスクを実行する方法
@@ -43,4 +43,4 @@ Azure SQL Database へのアクセスの付与および削除を行う簡単な�
 ## 仮想マスター データベースで高い特権を持つユーザーの追加ログインを作成するには
 - [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用し、[Azure SQL Database でのデータベースとログインの管理](sql-database-manage-logins.md)に関するページのログイン管理セクションで詳細を確認してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

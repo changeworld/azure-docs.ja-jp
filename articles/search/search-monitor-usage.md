@@ -4,7 +4,7 @@
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor=""
    tags="azure-portal"/>
 
@@ -27,7 +27,7 @@
 
 ##ポータルでの数値とメトリックの表示 
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. Azure Search サービスのサービス ダッシュボードを開きます。[ホーム] ページに、サービスのタイルが表示されます。またはジャンプ バーの [参照] で、サービスを参照することもできます。詳細な手順については、「[Create an Azure Search service in the portal](search-create-service-portal.md)」を参照してください。
 
@@ -59,4 +59,4 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

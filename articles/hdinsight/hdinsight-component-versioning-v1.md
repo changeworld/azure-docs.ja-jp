@@ -3,7 +3,7 @@
 	description="HDInsight は、デプロイできる Hadoop クラスター バージョンを複数サポートしています。サポートされている Hadoop および Hortonworks Data Platform (HDP) ディストリビューションのバージョンを確認します。"
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="mumian"
 	documentationCenter=""/>
 
@@ -107,11 +107,11 @@ HDInsight プラットフォームの重要な機能には、次のようなも�
 
 <table border="1">
 <tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a><th>高可用性</th></th><th>リリース日</th><th>Azure クラシック ポータルでの利用</th><th>サポート有効期限</th><th>非推奨となる日</th></tr>
-<tr><td>HDI 3.2</td><td>HDP 2.2</td><td>あり</td><td>2015 年 2 月 18 日</td><td>あり</td><td></td><td></td></tr>
-<tr><td>HDI 3.1</td><td>HDP 2.1</td><td>あり</td><td>2014 年 6 月 24 日</td><td>あり</td><td></td><td></td></tr>
-<tr><td>HDI 3.0</td><td>HDP 2.0</td><td>あり</td><td>02/11/2014</td><td>あり</td><td>09/17/2014</td><td>06/30/2015</td></tr>
-<tr><td>HDI 2.1</td><td>HDP 1.3</td><td>あり</td><td>10/28/2013</td><td>いいえ</td><td>05/12/2014</td><td>05/31/2015</td></tr>
-<tr><td>HDI 1.6</td><td>HDP 1.1</td><td>いいえ</td><td>10/28/2013</td><td>いいえ</td><td>04/26/2014</td><td>05/31/2015</td></tr>
+<tr><td>HDI 3.2</td><td>HDP 2.2</td><td>はい</td><td>2015 年 2 月 18 日</td><td>はい</td><td></td><td></td></tr>
+<tr><td>HDI 3.1</td><td>HDP 2.1</td><td>はい</td><td>2014 年 6 月 24 日</td><td>はい</td><td></td><td></td></tr>
+<tr><td>HDI 3.0</td><td>HDP 2.0</td><td>はい</td><td>02/11/2014</td><td>はい</td><td>09/17/2014</td><td>06/30/2015</td></tr>
+<tr><td>HDI 2.1</td><td>HDP 1.3</td><td>はい</td><td>10/28/2013</td><td>なし</td><td>05/12/2014</td><td>05/31/2015</td></tr>
+<tr><td>HDI 1.6</td><td>HDP 1.1</td><td>なし</td><td>10/28/2013</td><td>なし</td><td>04/26/2014</td><td>05/31/2015</td></tr>
 </table><br>
 
 **既定以外のクラスターのデプロイメント**
@@ -167,4 +167,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

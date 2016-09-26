@@ -22,7 +22,7 @@
 
 >[AZURE.NOTE] Azure サポート プランの期間は 6 か月単位であり、Microsoft では、その期間全体について継続的な料金のコミットメントを必須としております。期間の満了前に解約した場合でも、残りの期間についてのコミットメントが免除されることはなく、既にお支払いいただいた料金の払い戻しもありません。サブスクリプションを誤って取り消したため、再アクティブ化する必要がある場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-サブスクリプションを取り消すと、すぐにすべてのサービスが削除されます。キャンセルする前に、保存しておくデータをバックアップしたことを確認してください。
+サブスクリプションをキャンセルした場合でも、データは、[Microsoft の保有ポリシー](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に従って90 日間保存されます。詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/ja-JP/TrustCenter/Privacy/You-are-in-control-of-your-data)をご覧ください。
 
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にログオンします。
 
@@ -40,6 +40,8 @@
 
 5. ![checkbutton](./media/billing-how-to-cancel-azure-subscription/checkbutton.png) をクリックしてダイアログ ウィンドウを閉じ、サブスクリプション ページに戻ります。
 
+	> [AZURE.NOTE] 従量課金制サブスクリプションを誤ってキャンセルした場合は、[こちら](https://azure.microsoft.com/documentation/articles/billing-subscription-become-disable/)に記載されている手順に従って再アクティブ化できます。
+
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

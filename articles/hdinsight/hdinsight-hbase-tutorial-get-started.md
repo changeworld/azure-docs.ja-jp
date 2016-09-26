@@ -5,7 +5,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -52,7 +52,7 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 	- **クラスターの種類** - **[HBase]** を選択します。
 	- **クラスターのオペレーティング システム** - **[Windows]** を選択します。Linux ベースのクラスターを作成する場合は、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
 	- **バージョン** - HBase のバージョンを選択します。
-	- **サブスクリプション** - このクラスターを作成するために使用する Azure サブスクリプションを選択します。
+	- **サブスクリプション**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
 	- **リソース グループ** - 新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
 	- **資格情報** - Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます。リモート デスクトップ ユーザーの資格情報を追加するには、**[リモート デスクトップを有効にする]** をクリックします。次のセクションでは、RDP が必要になります。
 	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
@@ -334,4 +334,4 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

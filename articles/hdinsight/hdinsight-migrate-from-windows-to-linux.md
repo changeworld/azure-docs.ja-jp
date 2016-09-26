@@ -4,7 +4,7 @@ description="Windows ベースの HDInsight クラスターから Linux ベー�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -134,7 +134,7 @@ Linux ベースのクラスターのブートストラップでは、この機�
 
 ### Virtual Networks
 
-Windows ベースの HDInsight クラスターは従来の仮想ネットワークでのみ動作しますが、Linux ベースの HDInsight クラスターにはリソース マネージャーの仮想ネットワークが必要になります。Linux ベースの HDInsight クラスターを接続する必要がある従来の Virtual Network にリソースがある場合は、「[従来の VNet を新しい VNet に接続する](../virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+Windows ベースの HDInsight クラスターは従来の仮想ネットワークでのみ動作しますが、Linux ベースの HDInsight クラスターにはリソース マネージャーの仮想ネットワークが必要になります。Linux ベースの HDInsight クラスターを接続する必要がある従来の Virtual Network にリソースがある場合は、「[従来の VNet を新しい VNet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
 HDInsight で Azure Virtual Networks を使用する場合の構成要件の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
 
@@ -254,4 +254,4 @@ Linux クラスター ノードで直接実行されるスクリプト (Hive ま
 
 -   [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

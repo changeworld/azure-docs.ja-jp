@@ -4,7 +4,7 @@
 	services="machine-learning,hdinsight"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -97,7 +97,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../storage/storage-use-azcopy.md)」に記載されている手順に従います。
 
-1. コマンド プロンプト ウィンドウで、次の AzCopy コマンドを発行し、*<path_to_data_folder>* を、目的の転送先に置き換えます。
+1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを発行します。*<path\_to\_data\_folder>* を、目的の転送先に置き換えてください。
 
 
 		"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -794,8 +794,8 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 ## 参照
 
-•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) 
+•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) 
 •	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
@@ -810,4 +810,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

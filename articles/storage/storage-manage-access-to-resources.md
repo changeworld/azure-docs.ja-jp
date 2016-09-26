@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/23/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # コンテナーと BLOB への匿名読み取りアクセスを管理する
 
-## 概要
+## Overview
 
 既定では、ストレージ アカウントの所有者のみがそのアカウントを使ってストレージ リソースにアクセスできます。Blob Storage の場合にのみ、コンテナーとその BLOB への匿名読み取りアクセスを許可するように、コンテナーのアクセス許可を設定できます。これにより、アカウント キーを共有せずにこれらのリソースへのアクセスを許可できます。
 
-匿名アクセスは、特定の BLOB で匿名読み取りアクセスを常に使用できるようにするシナリオに最適です。詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための Shared Access Signature を作成できます。Shared Access Signature の作成の詳細については、[Shared Access Signatures の SAS モデル](storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
+匿名アクセスは、特定の BLOB で匿名読み取りアクセスを常に使用できるようにするシナリオに最適です。詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための Shared Access Signature を作成できます。Shared Access Signature の作成方法の詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ## コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します。
 
@@ -122,19 +122,19 @@
 | REST 操作 | 完全パブリック読み取りアクセス許可 | BLOB に限定したパブリック読み取りアクセス許可 |
 |--------------------------------------------------------|-----------------------------------------|---------------------------------------------------|
 | List Containers | 所有者のみ | 所有者のみ |
-| Create Container | 所有者のみ | 所有者のみ |
-| Get Container Properties | すべて | 所有者のみ |
+| コンテナーの作成 | 所有者のみ | 所有者のみ |
+| コンテナーのプロパティの取得 | すべて | 所有者のみ |
 | Get Container Metadata | すべて | 所有者のみ |
 | Set Container Metadata | 所有者のみ | 所有者のみ |
-| Get Container ACL | 所有者のみ | 所有者のみ |
+| コンテナー ACL の取得 | 所有者のみ | 所有者のみ |
 | Set Container ACL | 所有者のみ | 所有者のみ |
-| Delete Container | 所有者のみ | 所有者のみ |
+| コンテナーの削除 | 所有者のみ | 所有者のみ |
 | BLOBs の一覧 | すべて | 所有者のみ |
 | Put Blob | 所有者のみ | 所有者のみ |
 | Get Blob | すべて | すべて |
-| Get Blob Properties | すべて | すべて |
+| BLOB のプロパティの取得 | すべて | すべて |
 | Set Blob Properties | 所有者のみ | 所有者のみ |
-| Get Blob Metadata | すべて | すべて |
+| BLOB のメタデータの取得 | すべて | すべて |
 | Set Blob Metadata | 所有者のみ | 所有者のみ |
 | Put Block | 所有者のみ | 所有者のみ |
 | Get Block List (REST API) (コミット後のブロックのみ) | すべて | すべて |
@@ -145,14 +145,14 @@
 | Snapshot Blob | 所有者のみ | 所有者のみ |
 | Lease Blob | 所有者のみ | 所有者のみ |
 | Put Page | 所有者のみ | 所有者のみ |
-| Get Page Ranges | すべて | すべて |
+| ページ範囲の取得 | すべて | すべて |
 | Append Blob | 所有者のみ | 所有者のみ |
 
 
 ## 関連項目
 
 - [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
-- [共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)
-- [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx) 
+- [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
+- [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

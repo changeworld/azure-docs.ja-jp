@@ -35,7 +35,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 + Microsoft Visual Studio 2015、
 
-+ アクティブな Azure アカウントアカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
++ アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
 
 ## IoT Hub への Azure Storage アカウントの関連付け
 
@@ -151,7 +151,7 @@ Azure ストレージ アカウントを IoT Hub に関連付けるには、「[
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を活用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
-- [C# プログラムを使って IoT Hub を作成する][lnk-create-hub]
+- [プログラムによる IoT Hub 作成][lnk-create-hub]
 - [C SDK の概要][lnk-c-sdk]
 - [IoT Hub SDK][lnk-sdks]
 
@@ -197,4 +197,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

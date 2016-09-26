@@ -4,7 +4,7 @@ description="オンプレミスの SQL Server データベースのデータを�
 services="machine-learning"
 documentationCenter=""
 authors="garyericson"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -51,7 +51,7 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 - 一度に 1 つだけのワークスペースに対して、ゲートウェイを構成します。現時点では、複数のワークスペースでゲートウェイを共有することはできません。
 - 1 つのワークスペースに対して複数のゲートウェイを構成することはできます。たとえば、開発中はテスト データ ソースに接続されているゲートウェイを使用し、運用の準備ができたら運用ゲートウェイを使用したい場合があります。
 - ゲートウェイはデータ ソースと同じコンピューター上に存在する必要はありませんが、データ ソースの近くにあると、ゲートウェイがデータ ソースに接続する際の時間が短縮されます。ゲートウェイとデータ ソースの間でリソースの競合が発生しないように、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにゲートウェイをインストールすることをお勧めします。
-- Power BI または Azure Data Factory のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、Azure Machine Learning 用のゲートウェイを別のコンピューターにインストールしてください。 
+- Power BI または Azure Data Factory のシナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、Azure Machine Learning 用のゲートウェイを別のコンピューターにインストールしてください。
 
     > [AZURE.NOTE] 同じコンピューター上で Data Management Gateway と Power BI Gateway を実行することはできません。
 
@@ -162,4 +162,4 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。**データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](machine-learning-excel-add-in-for-web-services.md)を使用することをお勧めします。現時点では、**データのエクスポート**によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

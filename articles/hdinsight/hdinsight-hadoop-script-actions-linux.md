@@ -4,7 +4,7 @@
     services="hdinsight"
     documentationCenter=""
     authors="Blackmist"
-    manager="paulettm"
+    manager="jhubbard"
     editor="cgronlun"/>
 
 <tags
@@ -62,7 +62,7 @@ HDInsight のバージョンが異なれば、異なるバージョンの Hadoop
 
 スクリプトとスクリプトで使用されるリソースがクラスターの有効期間全体で使用できること、実行中これらのファイルのバージョンが変更されないことを確認する必要があります。これらのリソースは、スケーリング処理中に、新しいノードをクラスターに追加する場合に必要です。
 
-ベスト プラクティスとして、すべてをダウンロードして、Azure ストレージ アカウントのサブスクリプションにアーカイブする方法があります。
+ベスト プラクティスとして、すべてをダウンロードして、Azure Storage アカウントのサブスクリプションにアーカイブする方法があります。
 
 > [AZURE.IMPORTANT] 使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
@@ -160,7 +160,7 @@ Bash スクリプトは、行が LF で終了する ASCII 形式で保存する�
 
 これにより、スクリプトで、次のヘルパーが使用できるようになります。
 
-| ヘルパーの使用 | 説明 |
+| ヘルパーの使用 | Description |
 | ------------ | ----------- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` | 元の URL から指定されたファイルのパスに、ファイルをダウンロードします。既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` | tar ファイルを (`-xf` を使用して) インストール先ディレクトリに抽出します。 |
@@ -268,4 +268,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

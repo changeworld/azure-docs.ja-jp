@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Wikispaces の統合
@@ -78,7 +78,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-wikispaces-tutorial/IC787189.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Wikispaces サインオン URL]** テキストボックスに、"**http://company.wikispaces.net*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Wikispaces サインオン URL]** テキストボックスに、"http://company.wikispaces.net*" というパターンの URL を入力し、[次へ] をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-wikispaces-tutorial/IC787190.png "アプリケーション URL の構成")
 
@@ -98,7 +98,7 @@
   
 Azure AD ユーザーが Wikispaces にログインできるようにするには、そのユーザーを Wikispaces にプロビジョニングする必要があります。Wikispaces の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **Wikispaces** 企業サイトに管理者としてログインします。
 
@@ -115,7 +115,7 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
     ![ユーザーの招待](./media/active-directory-saas-wikispaces-tutorial/IC787208.png "ユーザーの招待")
 
     1.  プロビジョニングする有効な AAD アカウントの関連するテキスト ボックスに、**名前または電子メール アドレス**を入力します。
-    2.  [**送信**] をクリックします。  
+    2.  [**送信**] をクリックします。
 
         >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
@@ -129,7 +129,7 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
 
 1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  **Wikispaces **アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  **Wikispaces** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
     ![ユーザーの割り当て](./media/active-directory-saas-wikispaces-tutorial/IC787195.png "ユーザーの割り当て")
 
@@ -137,6 +137,6 @@ Azure AD ユーザーが Wikispaces にログインできるようにするに�
 
     ![Yes](./media/active-directory-saas-wikispaces-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/22/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 # Azure におけるロール インスタンスの通信の有効化
@@ -101,7 +101,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 
 **Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。このコレクションには常に、現在のインスタンスが含まれています。ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
 
-> [AZURE.NOTE] Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)を使用すると、実行中のロール インスタンスの情報を取得できます。
+> [AZURE.NOTE] Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](cloud-services-dotnet-diagnostics.md)を使用すると、実行中のロール インスタンスの情報を取得できます。
 
 ロール インスタンスの内部エンドポイントのポート番号を判断するには、[InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。[IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。**PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。**PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
 
@@ -120,7 +120,7 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 
 これは、サービス定義で公開されるエンドポイントを取得し、接続のリッスンを開始する worker ロールの例です。
 
-> [AZURE.WARNING] このコードは、デプロイ済みのサービスのみに使用できます。Azure Compute Emulator での実行時に、直接ポート エンドポイントを作成するサービス構成要素 　(**InstanceInputEndpoint** 要素) は無視されます。
+> [AZURE.WARNING] このコードは、デプロイ済みのサービスのみに使用できます。Azure 計算エミュレーターでの実行時に、直接ポート エンドポイントを作成するサービス構成要素 (**InstanceInputEndpoint** 要素) は無視されます。
 
 ```csharp
 using System;
@@ -359,4 +359,4 @@ namespace WorkerRole1
 ## 次のステップ
 Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

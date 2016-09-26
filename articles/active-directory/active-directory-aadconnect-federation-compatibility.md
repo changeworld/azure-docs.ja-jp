@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
+	ms.date="09/12/2016"
 	ms.author="billmath"/>
 
 # Azure AD のフェデレーション互換性リスト
@@ -41,7 +41,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
-- [CA SiteMinder 12.52](#ca-siteminder-1252)
+- [CA SiteMinder 12.52](#ca-siteminder-1252-sp1-cumulative-release-4)
 - [RadiantOne CFS 3.0](#radiantone-cfs-30)
 - [Okta](#okta)
 - [OneLogin](#onelogin)
@@ -173,15 +173,15 @@ SecureAuth IdP 7.2.0 は、広く使用されている WS-Federation/WS-Trust ID
 
 SecureAuth の詳細については、[SecureAuth IdP](http://go.microsoft.com/?linkid=9845293) に関するページを参照してください。
 
-## CA SiteMinder 12.52 
+## CA SiteMinder 12.52 SP1 Cumulative Release 4
 CA SiteMinder Federation 12.52 は、広く使用されている WS-Federation/WS-Trust ID 標準を実装して、シングル サインオンと属性交換フレームワークを提供しています。
 
 このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
 
 | クライアント |サポート |例外|
 | --------- | --------- |--------- |
-| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |統合 Windows 認証|
-| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション | サポートされています |統合 Windows 認証|
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント | サポートされています |なし|
+| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション | サポートされています |なし|
 | Outlook や ActiveSync などの電子メール リッチ クライアント | サポートされています |なし|
 
 CA SiteMinder の詳細については、[CA SiteMinder Federation](http://www.ca.com/us/products/ca-single-sign-on.html) に関するページを参照してください。
@@ -339,4 +339,4 @@ AuthAnvil Single Sign On 4.5 は、広く使用されている WS-Federation/WS-
 
 詳細については、[AuthAnvil のシングル サインオン](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

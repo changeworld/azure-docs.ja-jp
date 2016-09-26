@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/07/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 # .NET で Web または Worker ロールのライフサイクルをカスタマイズする
@@ -33,9 +33,9 @@ worker ロールを作成する際に、[RoleEntryPoint](https://msdn.microsoft.
 
      例外がライフサイクル メソッドの内部で発生すると、Azure で [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) イベントが発生し、プロセスが終了します。ロールは、オフラインになった後、Azure によって再開されます。未処理の例外が発生した場合、[Stopping](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) イベントは発生せず、**OnStop** メソッドは呼び出されません。
 
-ロールが開始しない場合や、ロールが初期化、ビジー状態、停止中の状態で再利用されている場合、コードが再開されるたびに、ライフサイクル イベントの内部で未処理の例外がスローされる場合があります。この場合は、[UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) イベント使用して、例外の原因を特定し適切に処理します。ロールは、[Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドから戻ることもあります。その場合、ロールは再開されます。デプロイ状態の詳細については、「[ロールがリサイクルされる一般的な問題](https://msdn.microsoft.com/library/azure/gg465402.aspx)」をご覧ください。
+ロールが開始しない場合や、ロールが初期化、ビジー状態、停止中の状態で再利用されている場合、コードが再開されるたびに、ライフサイクル イベントの内部で未処理の例外がスローされる場合があります。この場合は、[UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) イベント使用して、例外の原因を特定し適切に処理します。ロールは、[Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドから戻ることもあります。その場合、ロールは再開されます。デプロイ状態の詳細については、「[ロールがリサイクルされる一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)」をご覧ください。
 
-> [AZURE.NOTE] [Azure Tools for Microsoft Visual Studio](https://msdn.microsoft.com/library/azure/ee405484.aspx) を使用してアプリケーションを開発している場合は、ロール プロジェクトのテンプレートによって WebRole.cs ファイルと WorkerRole.cs ファイルで **RoleEntryPoint** クラスが自動的に拡張されます。
+> [AZURE.NOTE] **Azure Tools for Microsoft Visual Studio** を使用してアプリケーションを開発している場合は、ロール プロジェクトのテンプレートによって *WebRole.cs* ファイルと *WorkerRole.cs* ファイルで **RoleEntryPoint** クラスが自動的に拡張されます。
 
 ## OnStart メソッド
 
@@ -80,4 +80,4 @@ Web ロールの初期化とシャットダウン シーケンスを管理する
 ## 次のステップ
 [クラウド サービス パッケージを作成する方法](cloud-services-model-and-package.md)について説明します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

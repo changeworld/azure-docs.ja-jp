@@ -5,7 +5,7 @@
    documentationCenter=""
    tags="azure-portal"
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -438,4 +438,4 @@ Data Factory と共に HDInsight を使用すると、次のような多くの�
 - [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
 - [データ ファクトリのドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

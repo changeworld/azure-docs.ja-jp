@@ -4,7 +4,7 @@
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
- manager="paulettm"
+ manager="jhubbard"
  editor="cgronlun"
  tags="azure-portal"/>
 
@@ -151,7 +151,7 @@ HBase では、データは、次のスキーマと設定を使用してテー�
 
 4.  プロパティを保存し、プロジェクトをビルドします。
 
-5.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。
+5.	**[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。メッセージが表示されたら、Azure サブスクリプションの資格情報を入力します。
 
 	![[Storm に送信] メニュー項目の画像](./media/hdinsight-storm-correlation-topology/submittostorm.png)
 
@@ -204,4 +204,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

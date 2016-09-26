@@ -4,7 +4,7 @@ description="Windows ベースの HDInsight で Tez UI を使用して Tez ジ�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -147,4 +147,4 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
 
 Tez に関する技術的な情報の詳細については、[Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

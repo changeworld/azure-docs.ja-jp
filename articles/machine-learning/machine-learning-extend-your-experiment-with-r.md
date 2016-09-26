@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -17,7 +17,7 @@
 	ms.author="garye" />
 
 
-#R を使用した実験の拡張
+# R を使用した実験の拡張
 
 [R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって ML Studio 機能を拡張できます。
 
@@ -29,7 +29,7 @@
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##現在インストールされているすべてのパッケージを一覧表示する
+## 現在インストールされているすべてのパッケージを一覧表示する
 
 インストールされているパッケージの一覧を変更できます。現在インストールされているパッケージと各パッケージの説明が含まれた完全な一覧を取得するには、[R スクリプトの実行][execute-r-script]モジュールに次のコードを入力します。
 
@@ -40,8 +40,11 @@
 
 ![](./media/machine-learning-extend-your-experiment-with-r/download-package-list.png)
 
+<!--
+For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+-->
 
-##パッケージをインポートする
+## パッケージをインポートする
 
 [R スクリプトの実行][execute-r-script]モジュールと圧縮されたパッケージのアーカイブで次のコマンドを使用して、ステージングされた ML Studio リポジトリから、まだインストールされていないパッケージをインポートすることもできます。
 
@@ -50,9 +53,8 @@
 
 ここで、`my_favorite_package.zip` にはパッケージの zip ファイルが含まれています。
 
-
 <!-- Module References -->
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [convert-to-csv]: https://msdn.microsoft.com/library/azure/faa6ba63-383c-4086-ba58-7abf26b85814/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

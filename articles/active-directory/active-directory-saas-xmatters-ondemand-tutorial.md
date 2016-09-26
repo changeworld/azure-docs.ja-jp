@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/20/2016" 
+    ms.date="09/09/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と xMatters OnDemand の統合
@@ -72,7 +72,7 @@
 
 1.  Azure クラシック ポータルの **xMatters OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Configure single sign-on")
 
 2.  **[ユーザーの xMatters OnDemand へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -91,7 +91,7 @@
 
     >[AZURE.IMPORTANT] XMatters サポート チームに証明書を転送する必要があります。シングル サインオンの構成を確定するには、その前に、xMatters サポート チームによって証明書がアップロードされる必要があります。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "シングル サインオンの有効化")
+    ![シングル サインオンの有効化](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "シングル サインオンの構成")
 
 5.  別の Web ブラウザーのウィンドウで、XMatters OnDemand の企業サイトに管理者としてログインします。
 
@@ -111,13 +111,13 @@
 
 8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "シングル サインオンの有効化")
+    ![シングル サインオンの構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "シングル サインオンの構成")
 
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが XMatters OnDemand にログインできるようにするには、そのユーザーを XMatters OnDemand にプロビジョニングする必要があります。XMatters OnDemand の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **XMatters OnDemand** テナントにログインします。
 
@@ -125,7 +125,7 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
 
 3.  **[ユーザーの追加]** をクリックします。
 
-    ![ユーザー](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "ユーザー")
+    ![Users](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")
 
 4.  **[アクティブ]** を選択します。
 
@@ -134,7 +134,7 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
     ![ユーザーの追加](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "ユーザーの追加")
 
     1.  プロビジョニングする有効な AAD アカウントの**ユーザー ID**、**名**、**姓**、**サイト**を入力します。
-    2.  **[保存]** をクリックします。
+    2.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] XMatters OnDemand から提供されている他の XMatters OnDemand ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -152,8 +152,8 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

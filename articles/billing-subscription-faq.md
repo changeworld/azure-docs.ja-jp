@@ -61,8 +61,9 @@
 - [Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
 - [クレジット カードの情報を更新または変更するにはどうすればよいですか。](#how-can-i-update-or-change-my-credit-card-information)
 - [Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
+- [国際クレジット カードを使用する必要があるというメッセージが表示されるのはなぜですか。](#why-am-i-seeing-a-message-that-i-need-to-use-an-international-credit-card)
 
-## Azure の料金
+## Azure の価格
 
 - [Azure サービスの利点と価格に関する情報はどこで確認できますか。](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
 - [価格プランを変更するにはどうすればよいですか。](#how-do-i-change-my-pricing-plan)
@@ -74,7 +75,7 @@
 - [Azure SLA クレジットとは何ですか。](#what-are-the-azure-sla-credits)
 - [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
-## Azure の使用制限
+## 使用制限
 
 - [使用制限を無効にした場合、再度有効にすることはできますか。](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
 - [使用制限の量は調整できますか。](#can-i-adjust-the-amount-of-the-spending-limit)
@@ -251,6 +252,10 @@ Azure アカウント情報を表示して編集するには、Azure アカウ�
 
 >[AZURE.NOTE] 現時点では、[支払い方法の変更] ツールでは支払い方法として設定されている既存のクレジット カードを削除できません。クレジット カードの削除方法の詳細については、「[Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)」を参照してください。
 
+### 国際クレジット カードを使用する必要があるというメッセージが表示されるのはなぜですか。
+
+Azure サービスの支払いを現地/優先通貨で行っているが、現地以外の Microsoft エンティティを通じてサービスを購入したことで、クレジット カードが地元以外の銀行で処理される場合があります。この場合、地元の銀行によって発行されたカードは承認されず、これによって Azure サービスに影響が出る可能性があります。ご使用のクレジット カードが国際取引に対応しているか不明な場合は、ご利用の銀行またはカード発行会社にお問い合わせください。[サポートされる国および通貨](billing-countries-and-currencies.md)に関するページを参照してください。
+
 ### サブスクリプションの編集や詳細の追加ができないのはなぜですか。
 
 Azure アカウント情報を表示して編集するには、Azure アカウント センターにアカウント管理者としてサインインする必要があります。アカウント管理者としてサインインしたのにサブスクリプションを編集できない場合は、サポート チケットを送信してサポートを要求してください。サポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
@@ -321,4 +326,4 @@ Azure 無料試用版サブスクリプションは、新規ユーザーを対�
 
 [支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用するように設定している場合、請求書の下部に記載されている場所に支払いを送付します。詳しくは、[サポートにお問い合わせください](billing-how-to-create-billing-support-ticket.md)。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

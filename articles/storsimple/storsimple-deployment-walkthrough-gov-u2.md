@@ -12,14 +12,14 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="04/26/2016"
+   ms.date="08/16/2016"
    ms.author="v-sharos" />
 
 # Government Portal でのオンプレミスの StorSimple デバイスのデプロイ (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-deploy-gov](../../includes/storsimple-version-selector-deploy-gov.md)]
 
-## 概要
+## Overview
 
 Microsoft Azure StorSimple デバイスのデプロイへようこそ。デプロイに関するこれらのチュートリアルは、Azure Government Portal で Update 2 ソフトウェアを実行している StorSimple 8000 シリーズに適用されます。このチュートリアル シリーズには、構成チェック リスト、構成の前提条件の一覧、および StorSimple デバイスを構成するための詳細な手順が含まれています。
 
@@ -32,12 +32,12 @@ Microsoft Azure StorSimple デバイスのデプロイへようこそ。デプ�
 
 > [AZURE.NOTE] Microsoft Azure の Web サイトで発行されている StorSimple のデプロイに関する情報は、StorSimple 8000 シリーズ デバイスのみに適用されます。7000 シリーズ デバイスの詳細については、[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) を参照してください。7000 シリーズのデプロイについては、『[StorSimple システム クイック スタート ガイド](http://onlinehelp.storsimple.com/111_Appliance/)』を参照してください。
 
-## デプロイの手順
+## デプロイメントの手順
 
 StorSimple デバイスを構成し、StorSimple Manager サービスに接続するには、次の必須手順を実行します。必須手順に加えて、デプロイ中に完了することが必要となる可能性がある省略可能な手順が存在します。デプロイの詳細な手順では、どの時点でこれらの省略可能な手順を実行するかを示しています。
 
 
-| 手順 | 説明 |
+| 手順 | Description |
 |----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **前提条件** | これらの前提条件は、今回のデプロイの準備として完了する必要があります。 |
 |[デプロイの構成チェック リスト](#deployment-configuration-checklist) | このチェック リストを使用して、デプロイ前およびデプロイ中に情報を収集し、記録します。 |
@@ -67,7 +67,7 @@ StorSimple デバイスをデプロイする前に、デバイスにソフトウ
 
 [StorSimple デプロイ構成チェックリストをダウンロードする](http://www.microsoft.com/download/details.aspx?id=49159)
 
-## デプロイメントの前提条件
+## デプロイの前提条件
 
 ここでは、StorSimple Manager サービスと StorSimple デバイスの構成の前提条件について説明します。
 
@@ -79,7 +79,7 @@ StorSimple デバイスをデプロイする前に、デバイスにソフトウ
 
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがある。
 
-- StorSimple Manager サービスの Microsoft Azure サブスクリプションが有効である。サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) から購入する必要があります。
+- Microsoft Azure サブスクリプションが StorSimple Manager サービスに対して有効である。サブスクリプションは [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) を通じて購入する必要があります。
 
 - PuTTY などのターミナル エミュレーション ソフトウェアにアクセスできる。
 
@@ -111,7 +111,7 @@ StorSimple Manager サービスでは、複数の StorSimple デバイスを管�
 
 > [AZURE.IMPORTANT] サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。このストレージ アカウントは、ボリューム コンテナーを作成するときに使用します。
 >
-> * ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。 
+> * ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。
 > * ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
 
 ## 手順 2. サービス登録キーを取得する
@@ -208,8 +208,8 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 
 #### デバイスを更新するには
 
-1.	デバイスの **[クイック スタート]** ページで、**[デバイス]** をクリックします。物理デバイスを選択し、**[メンテナンス]**、**[更新プログラムのスキャン]** を順にクリックします。  
-2.	利用可能な更新プログラムをスキャンするジョブが作成されます。更新プログラムが利用できる場合、**[更新プログラムのスキャン]** が **[更新プログラムのインストール]** に変わります。**[更新プログラムのインストール]** をクリックします。 
+1.	デバイスの **[クイック スタート]** ページで、**[デバイス]** をクリックします。物理デバイスを選択し、**[メンテナンス]**、**[更新プログラムのスキャン]** を順にクリックします。
+2.	利用可能な更新プログラムをスキャンするジョブが作成されます。更新プログラムが利用できる場合、**[更新プログラムのスキャン]** が **[更新プログラムのインストール]** に変わります。**[更新プログラムのインストール]** をクリックします。
 3.	更新ジョブが作成されます。**[ジョブ]** に移動して、更新の状態を監視します。
 
 	> [AZURE.NOTE] 更新ジョブが開始されるとすぐ、状態は 50% として表示されます。更新ジョブの完了後、状態が 100% に変わります。更新プログラムのプロセスでは、リアルタイムの状態は表示されません。
@@ -243,4 +243,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 - [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx)を使用して StorSimple デバイスを管理します。
  
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0914_2016-->

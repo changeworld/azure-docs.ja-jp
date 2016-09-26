@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/20/2016" 
+    ms.date="09/09/2016" 
     ms.author="markvi" />
 
 #チュートリアル: Azure Active Directory と Zoho Mail の統合
@@ -89,7 +89,7 @@
 
 4.  **[Zoho Mail でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "シングル サインオンの構成")
+    ![Configure Single Sign-On](./media/active-directory-saas-zoho-mail-tutorial/IC789606.png "Configure Single Sign-On")
 
 5.  別の Web ブラウザー ウィンドウで、Zoho Mail 企業サイトに管理者としてログインします。
 
@@ -108,7 +108,7 @@
     1.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーして、**[ログイン URL]** テキスト ボックスに貼り付けます。
     2.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログアウト URL]** の値をコピーして、**[ログアウト URL]** テキスト ボックスに貼り付けます。
     3.  Azure クラシック ポータルの **[Zoho Mail でのシングル サインオンの構成]** ダイアログ ページで **[パスワード変更 URL]** の値をコピーして、**[パスワード変更 URL]** テキスト ボックスに貼り付けます。
-    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
         >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
@@ -124,7 +124,7 @@
   
 Azure AD ユーザーが Zoho Mail にログインできるようにするには、そのユーザーを Zoho Mail にプロビジョニングする必要があります。Zoho Mail の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **Zoho Mail** 企業サイトに管理者としてログインします。
 
@@ -139,7 +139,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
     ![ユーザーの追加](./media/active-directory-saas-zoho-mail-tutorial/IC789612.png "ユーザーの追加")
 
     1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**電子メール ID**、**パスワード**を入力します。
-    2.  **[OK]** をクリックします。  
+    2.  **[OK]** をクリックします。
 
         >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
@@ -161,6 +161,6 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     ![Yes](./media/active-directory-saas-zoho-mail-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

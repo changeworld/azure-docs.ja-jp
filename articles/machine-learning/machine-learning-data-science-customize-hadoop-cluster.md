@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags 
@@ -51,11 +51,11 @@
 
 最後の **[スクリプトのアクション]** 構成ページで **[スクリプト アクションの追加]** ボタンをクリックし、テキスト フィールドに次の値を入力します。
  
-* **[名前]** - このスクリプト アクションの名前として任意の文字列を入力します。 
-* **[ノード タイプ]** - **[すべてのノード]** を選択します。 
-* **スクリプト URI** - **http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
-	* *publicscripts* は、ストレージ アカウントのパブリック コンテナーです。 
-	* *getgoing* は、Azure でユーザーが作業しやすくなるように、PowerShell スクリプト ファイルを共有するために使用します。 
+* **[名前]** - このスクリプト アクションの名前として任意の文字列を入力します。
+* **[ノード タイプ]** - **[すべてのノード]** を選択します。
+* **スクリプト URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
+	* *publicscripts* は、ストレージ アカウントのパブリック コンテナーです。
+	* *getgoing* は、Azure でユーザーが作業しやすくなるように、PowerShell スクリプト ファイルを共有するために使用します。
 * **[パラメーター]** - (空白のままにします)
 
 最後に、チェック マークをクリックして、カスタマイズされた HDInsight Hadoop クラスターの作成を開始します。
@@ -86,4 +86,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

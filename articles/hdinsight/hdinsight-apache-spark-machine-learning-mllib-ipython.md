@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -149,7 +149,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 
 		df.show(5)
 
-	出力次のように表示されます。
+	出力は次のように表示されます。
 
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -173,7 +173,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		df.select('results').distinct().show()
 
 	
-	出力次のように表示されます。
+	出力は次のように表示されます。
 
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -215,7 +215,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=colors)
 		plt.axis('equal')
 
-	出力次のように表示されます。
+	出力は次のように表示されます。
 
 	![出力結果](./media/hdinsight-apache-spark-machine-learning-mllib-ipython/output_13_1.png)
 
@@ -250,7 +250,7 @@ Spark を使用して、[シカゴ市のデータ ポータル](https://data.cit
 		labeledData.take(1)
 
 
-	出力次のように表示されます。
+	出力は次のように表示されます。
 	
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -292,7 +292,7 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 		predictionsDf.columns
 
 
-	出力次のように表示されます。
+	出力は次のように表示されます。
 	
 	    # -----------------
 		# THIS IS AN OUTPUT
@@ -420,4 +420,4 @@ MLLib では、この操作を実行する簡単な方法を提供します。�
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

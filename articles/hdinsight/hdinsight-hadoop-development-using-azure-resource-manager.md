@@ -3,7 +3,7 @@
 	description="HDInsight クラスター用の Azure Resource Manager 開発ツールに移行する方法"
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="nitinme"
 	documentationCenter=""/>
 
@@ -137,11 +137,11 @@ Windows PowerShell コンソールで HDInsight ASM コマンドレットを一�
 ARM モードでのみ使用できる新しいコマンドレットを次に示します。
 
 **スクリプト操作に関連するコマンドレット:**
-- **Get-AzureRmHDInsightPersistedScriptAction**: クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
-- **Get-AzureRmHDInsightScriptActionHistory**: クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
+- **Get-AzureRmHDInsightPersistedScriptAction**: クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。
+- **Get-AzureRmHDInsightScriptActionHistory**: クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。
 - **Remove-AzureRmHDInsightPersistedScriptAction**: 保存されたスクリプト操作を HDInsight クラスターから削除します。
 - **Set-AzureRmHDInsightPersistedScriptAction**: 以前に実行されたスクリプト操作を、保存されたスクリプト操作に設定します。
-- **Submit-AzureRmHDInsightScriptAction**: 新しいスクリプト操作を Azure HDInsight クラスターに送信します。 
+- **Submit-AzureRmHDInsightScriptAction**: 新しいスクリプト操作を Azure HDInsight クラスターに送信します。
 
 その他の使用方法について詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
@@ -375,4 +375,4 @@ ASM ベースの SDK を使用して操作を実行する方法と、ARM ベー�
 
 		client.Clusters.Delete(resourceGroup, dnsname);
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0914_2016-->
