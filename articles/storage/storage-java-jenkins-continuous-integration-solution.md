@@ -110,7 +110,7 @@ Jenkins で BLOB サービスを使用するには、Azure Storage プラグイ�
     
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Jenkins が認識できる環境変数へのリンクがあります。環境変数の名前および説明を確認するには、リンクをクリックします。**BUILD\_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 
-8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名の詳細については、「[共有アクセス署名: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+8. この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。)
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、**[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
 11. このチュートリアルでは、**[Common virtual path for uploaded artifacts]** に「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
@@ -166,4 +166,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

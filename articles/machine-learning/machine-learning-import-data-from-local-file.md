@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -40,4 +40,4 @@
 
 データがアップロードされると、データセット モジュールに格納され、ワークスペース内のすべての実験で使用できるようになります。実験の編集中に、モジュール パレットの **[保存されたデータセット]** リストに、あらかじめ読み込まれているすべてのサンプル データセットやデータセットが表示されます。データ セットを別の分析と機械学習のために使用する場合、実験キャンバスのデータセットをドラッグ アンド ドロップできます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

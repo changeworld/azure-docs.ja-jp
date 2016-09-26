@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -42,7 +42,7 @@
 
 3. **データをどのように移動しますか。** データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用できる手順とリソースが、以下の各トピックで説明されています。
 
-	-  [分析用のストレージ環境にデータを読み込む](machine-learning-data-science-ingest-data.md) 
+	-  [分析用のストレージ環境にデータを読み込む](machine-learning-data-science-ingest-data.md)
 	-  [トレーニング データをさまざまなデータ ソースから Azure Machine Learning Studio にインポートする](machine-learning-data-science-import-data,md)
 
 4. **データを定期的なスケジュールで移動したり移行中に変更したりする必要がありますか。** 特にオンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオに関連して、継続的にデータを移行する必要がある場合、および移行の過程でデータを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、Azure Data Factory (ADF) の使用を検討してください。詳細については、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)」を参照してください。
@@ -53,11 +53,11 @@
 ## データの特性の確認事項: 型、形式、およびサイズ
 これらの確認事項は、ストレージと処理環境を計画するうえで重要です。各ストレージと処理環境には、適切なデータの種類があり、特定の制限があります。
 
-1. **データ型は何ですか。** 次に例を示します。 
+1. **データ型は何ですか。** 次に例を示します。
 	- 数値
 	- カテゴリ
 	- 文字列
-	- バイナリ
+	- Binary
 
 2. **データはどのような形式か?** 次に例を示します。
     - コンマ区切り (CSV) またはタブ区切り (TSV) のフラット ファイル
@@ -87,7 +87,7 @@ Azure Machine Learning 環境を例とします。
 ## ツールと言語の確認事項
 どの言語および開発環境やツールが必要であるかや、使いやすいかに応じて、多くのオプションがあります。
  
-1. **分析にはどの言語を使用しますか。**  
+1. **分析にはどの言語を使用しますか。**
 	- R
 	- Python
 	- SQL
@@ -100,7 +100,7 @@ Azure Machine Learning 環境を例とします。
 	- [Python Tools for Visual Studio](http://microsoft.github.io/PTVS/)
 	- [Anaconda](https://www.continuum.io/why-anaconda)
 	- [Jupiter notebooks](http://jupyter.org/)
-	- [Microsoft Power BI](http://powerbi.microsoft.com) 
+	- [Microsoft Power BI](http://powerbi.microsoft.com)
 
 
 ## 高度な分析シナリオの特定
@@ -114,4 +114,4 @@ Azure Machine Learning 環境を例とします。
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,23 +13,26 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/06/2016"
 	ms.author="lmazuel"/>
 
 # Python からサービス管理を使用する方法
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](../python-how-to-install.md) クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
-
 > [AZURE.NOTE] サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
 
+このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](https://github.com/Azure/azure-sdk-for-python) クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 ## <a name="WhatIs"> </a>サービス管理とは
 サービス管理 API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
 
-サービス管理 API を使用するには、[Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
+Service Management API を使用するには、[Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
 
 ## <a name="Concepts"> </a>概念
 Azure SDK for Python は、REST API である [Azure サービス管理 API][svc-mgmt-rest-api] をラップします。すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
+
+## <a name="Installation"> </a>インストール
+
+`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](../python-how-to-install.md)に関する記事をご覧ください
 
 ## <a name="Connect"> </a>方法: サービス管理に接続する
 サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
@@ -59,7 +62,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 	sms = ServiceManagementService(subscription_id, certificate_path)
 
-この例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
+前の例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
 
 ### Windows での管理証明書 (MakeCert)
 
@@ -81,7 +84,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 	sms = ServiceManagementService(subscription_id, certificate_path)
 
-この例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
+前の例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
 
 ## <a name="ListAvailableLocations"> </a>方法: 利用可能な場所を列挙する
 
@@ -155,7 +158,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 	sms.delete_hosted_service('myhostedservice')
 
-サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があることに注意してください(詳細については「[方法: デプロイの削除](#DeleteDeployment)」を参照)。
+サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があります。(詳細については「[方法: デプロイの削除](#DeleteDeployment)」を参照)。
 
 ## <a name="DeleteDeployment"> </a>方法: デプロイの削除
 
@@ -187,7 +190,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-上の例では、**create\_storage\_account** 処理のステータスを取得するため、**create\_storage\_account** から返された結果を **get\_operation\_status** メソッドに渡しています。
+前の例では、**create\_storage\_account** 処理のステータスを取得するため、**create\_storage\_account** から返された結果を **get\_operation\_status** メソッドに渡しています。
 
 ストレージ アカウントとそのプロパティを列挙するには、**list\_storage\_accounts** メソッドを使用します。
 
@@ -435,4 +438,4 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 
 [クラウド サービス]: https://azure.microsoft.com/ja-JP/documentation/services/cloud-services/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

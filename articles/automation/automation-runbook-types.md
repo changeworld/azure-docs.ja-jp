@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="07/06/2016"
+   ms.date="09/12/2016"
    ms.author="bwren" />
 
 # Azure Automation の Runbook の種類
@@ -20,7 +20,7 @@
 Azure Automation がサポートする 4 種類の Runbook について次の表で簡単に説明します。その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
 
-| 型 | 説明 |
+| 型 | Description |
 |:---|:---|
 | [グラフィカル](#graphical-runbooks) | Windows PowerShell に基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 | 
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks) | Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 
@@ -104,4 +104,4 @@ PowerShell ワークフロー Runbook は、[Windows PowerShell ワークフロ�
 - Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「[Windows PowerShell ワークフローについて](automation-powershell-workflow.md)」を参照してください。
 - Runbook を作成またはインポートする方法については、「[Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

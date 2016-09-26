@@ -5,7 +5,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
    tags="azure-portal"/>
 
@@ -72,7 +72,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 	|クラスターの種類| このチュートリアルでは **[Hadoop]** を選択します。 |
 	|クラスターのオペレーティング システム| このチュートリアルでは **[Windows Server 2012 R2 Datacenter]** を選択します。|
 	|HDInsight のバージョン| このチュートリアルでは最新バージョンを選択します。|
-	|[サブスクリプション]| このクラスターに使用する Azure サブスクリプションを選択します。|
+	|サブスクリプション| このクラスターに使用する Azure サブスクリプションを選択します。|
 	|リソース グループ | 既存の Azure リソース グループを選択するか、新しいリソース グループを作成します。基本的な HDInsight クラスターには、クラスターとその既定のストレージ アカウントが含まれています。管理を容易にするために、これら 2 つを 1 つのリソース グループにグループ化できます。|
 	|資格情報| クラスターのログイン ユーザー名とパスワードを入力します。Windows ベースのクラスターでは、2 つのユーザー アカウントを使用できます。クラスター ユーザー (または HTTP ユーザー) は、クラスターの管理とジョブの送信に使用されます。必要に応じて、リモート デスクトップ (RDP) ユーザー アカウントを作成し、クラスターにリモート接続することもできます。リモート デスクトップを有効にした場合は、RDP ユーザー アカウントが作成されます。|
 	|データ ソース| 新しい既定の Azure ストレージ アカウントを作成する場合は、[新規作成] をクリックします。クラスター名を既定のコンテナー名として使用します。すべての HDinsight クラスターでは、Azure ストレージ アカウントに既定の BLOB コンテナーがあります。既定の Azure ストレージ アカウントの場所によって、HDInsight クラスターの場所が決まります。|
@@ -83,7 +83,7 @@ Azure の HDInsight を一般に利用可能にすると共に、Microsoft は H
 
 	| 作成中 | 作成の完了時 |
 	| ------------------ | --------------------- |
-	| ![Creating indicator on startboard](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![Created cluster tile](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
+	| ![スタート画面の作成中インジケーター](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioning.png) | ![Created cluster tile](./media/hdinsight-hadoop-tutorial-get-started-windows/provisioned.png) |
 
 	> [AZURE.NOTE] クラスターが作成されるまで、通常は約 15 分かかります。作成プロセスをチェックするには、スタート画面のタイル、またはページの左側にある **[通知]** エントリを使用してください。
 
@@ -255,4 +255,4 @@ HDInsight クラスターには、ポータルからサンプルを直接実行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

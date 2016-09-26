@@ -4,7 +4,7 @@
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -44,7 +44,7 @@
 
 このチュートリアルでは、2 つのデータセットを使用します。
 
-- QueryLog 
+- QueryLog
 
     QueryLog は、検索エンジンで検索された内容の一覧を表します。各クエリ ログの内容は次のとおりです。
     
@@ -166,7 +166,7 @@ SalaryByDept 列の合計は $165000 です。これは、前のスクリプト�
  
 次のいずれの場合も、出力行数は入力行数より少なくなります。
  
-- GROUP BY を使用しない場合は、集計により、すべての行が 1 行にまとめられます。 
+- GROUP BY を使用しない場合は、集計により、すべての行が 1 行にまとめられます。
 - GROUP BY を使用する場合は、N 行が出力されます (N はデータ内で重複しない値の数です)。この場合、出力されるのは 4 行です。
 
 ###  ウィンドウ関数の使用
@@ -328,7 +328,7 @@ MIN を MAX に置き換えて試してみてください。
 サポートされる順位付け関数は次のとおりです。
 
 - RANK
-- DENSE\_RANK 
+- DENSE\_RANK
 - NTILE
 - ROW\_NUMBER
 
@@ -341,7 +341,7 @@ MIN を MAX に置き換えて試してみてください。
 	) AS <alias>
 
 - ORDER BY 句は、順位付け関数では省略可能です。指定した場合は、順位付けが決定されます。ORDER BY を指定しなかった場合は、U-SQL がレコードを読み取る順番に基づいて値を割り当てます。したがって、ORDER BY 句が指定されていない場合、行番号、順位、密度の高い順位は非確定的な値になります。
-- NTILE には、正の整数に評価される式が必要です。この数値は、各パーティションをいくつのグループに分割する必要があるかを示します。この識別子は、NTILE 順位付け関数でのみ使用されます。 
+- NTILE には、正の整数に評価される式が必要です。この数値は、各パーティションをいくつのグループに分割する必要があるかを示します。この識別子は、NTILE 順位付け関数でのみ使用されます。
 
 OVER 句の詳細については、[U-SQL リファレンス]()を参照してください。
 
@@ -359,9 +359,9 @@ OVER 句が同じであることに注意してください。結果は次のよ
 
 |クエリ|Latency:int|Vertical|RowNumber|Rank|DenseRank
 |-----|-----------|--------|--------------|---------|--------------
-|Banana|300|Image|1|1|1
-|Cherry|300|Image|2|1|1
-|Durian|500|Image|3|3|2
+|Banana|300|イメージ|1|1|1
+|Cherry|300|イメージ|2|1|1
+|Durian|500|イメージ|3|3|2
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|3|2|2
@@ -419,9 +419,9 @@ Web バーティカルには 6 行が含まれます。追加の 2 行は最初�
 
 |クエリ|待機時間|Vertical|Quartile
 |-----|-----------|--------|-------------
-|Banana|300|Image|1
-|Cherry|300|Image|2
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|2
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|1
 |Papaya|200|Web|2
@@ -431,10 +431,10 @@ Web バーティカルには 6 行が含まれます。追加の 2 行は最初�
 
 NTILE では、パラメーター ("numgroups") を使用します。numgroups は、各パーティションが分割されるグループ数を指定する、正の int または long 定数式です。
 
-- パーティション内の行数を numgroups で均等に割り切れる場合、グループのサイズは均一です。 
-- パーティション内の行数を numgroups で割り切れない場合、1 つのメンバーが異なる 2 つのサイズのグループが作成されます。OVER 句で指定された順序では、大きいグループが小さいグループの前に位置します。 
+- パーティション内の行数を numgroups で均等に割り切れる場合、グループのサイズは均一です。
+- パーティション内の行数を numgroups で割り切れない場合、1 つのメンバーが異なる 2 つのサイズのグループが作成されます。OVER 句で指定された順序では、大きいグループが小さいグループの前に位置します。
 
-次に例を示します。
+For example:
 
 - 100 行が 4 グループに分割された場合: [ 25, 25, 25, 25 ]
 - 102 行が 4 グループに分割された場合: [ 26, 26, 25, 25 ]
@@ -458,9 +458,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|Rank|DenseRank|RowNumber
 |-----|-----------|--------|---------|--------------|--------------
-|Banana|300|Image|1|1|1
-|Cherry|300|Image|1|1|2
-|Durian|500|Image|3|2|3
+|Banana|300|イメージ|1|1|1
+|Cherry|300|イメージ|1|1|2
+|Durian|500|イメージ|3|2|3
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|2|2|3
@@ -487,9 +487,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|DenseRank
 |-----|-----------|--------|--------------
-|Banana|300|Image|1
-|Cherry|300|Image|1
-|Durian|500|Image|2
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|1
+|Durian|500|イメージ|2
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
@@ -512,9 +512,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 |クエリ|待機時間|Vertical|Rank
 |-----|-----------|--------|---------
-|Banana|300|Image|1
-|Cherry|300|Image|1
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|1
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
@@ -537,9 +537,9 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
     
 |クエリ|待機時間|Vertical|RowNumber
 |-----|-----------|--------|--------------
-|Banana|300|Image|1
-|Cherry|300|Image|2
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|2
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|3
@@ -561,7 +561,7 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 **サポートされている分析ウィンドウ関数**
 
-- CUME\_DIST 
+- CUME\_DIST
 - PERCENT\_RANK
 - PERCENTILE\_CONT
 - PERCENTILE\_DISC
@@ -570,7 +570,7 @@ NTILE では、パラメーター ("numgroups") を使用します。numgroups �
 
 CUME\_DIST は、値のグループにおける指定された値の相対位置を算出します。同じバーティカルで、現在のクエリの待機時間以下のクエリの割合が計算されます。行 R の場合、昇順での順序付けを想定すると、R の CUME\_DIST は、R の値以下の値を含む行の数を、パーティションまたはクエリ結果セットで評価された行の数で割った値になります。CUME\_DIST で返される数値の範囲は、0 より大きく 1 以下になります。
 
-** 構文**
+**構文**
 
     CUME_DIST() 
         OVER (
@@ -591,8 +591,8 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 |クエリ|待機時間|Vertical|CumeDist
 |-----|-----------|--------|---------------
 |Durian|500|Image|1
-|Banana|300|Image|0\.666666666666667
-|Cherry|300|Image|0\.666666666666667
+|Banana|300|イメージ|0\.666666666666667
+|Cherry|300|イメージ|0\.666666666666667
 |Durian|500|Web|1
 |Cherry|400|Web|0\.833333333333333
 |Fig|300|Web|0\.666666666666667
@@ -606,7 +606,7 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 - 値が 400 以下の行は 5 行あるため、CUME\_DIST は 5/6=0.83 となります。
 - E値が 300 以下の行は 4 行あるため、CUME\_DIST は 4/6=0.66 となります。
 - 値が 200 以下の行は 3 行あるため、CUME\_DIST は 3/6=0.5 となります。待機時間の値が同じ行が 2 行あります。
-- 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。 
+- 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。
 
 
 **使用上の注意:**
@@ -623,7 +623,7 @@ CUME\_DIST は、値のグループにおける指定された値の相対位置
 
 PERCENT\_RANK は、行グループ内の行の相対的な順位を計算します。PERCENT\_RANK を使用すると、行セットまたはパーティション内で値の相対的な位置を評価できます。PERCENT\_RANK によって返される値の範囲は、0 より大きく 1 以下になります。CUME\_DIST とは異なり、最初の行では、PERCENT\_RANK は常に 0 になります。
 	
-** 構文**
+**構文**
 
     PERCENT_RANK() 
         OVER (
@@ -636,7 +636,7 @@ PERCENT\_RANK は、行グループ内の行の相対的な順位を計算しま
 - どのセットでも、最初の行では PERCENT\_RANK は 0 になります。
 - NULL 値は、有効な最小値として扱われます。
 - PERCENT\_RANK を計算するには、ORDER BY 句を指定する必要があります。
-- CUME\_DIST は PERCENT\_RANK 関数に似ています。 
+- CUME\_DIST は PERCENT\_RANK 関数に似ています。
 
 
 次の例では、PERCENT\_RANK 関数を使用して、バーティカル内のクエリごとに待機時間の百分位数を計算します。
@@ -656,8 +656,8 @@ PERCENT\_RANK 関数で返された値は、バーティカル内のクエリの
 
 |クエリ|Latency:int|Vertical|PercentRank
 |-----|-----------|--------|------------------
-|Banana|300|Image|0
-|Cherry|300|Image|0
+|Banana|300|イメージ|0
+|Cherry|300|イメージ|0
 |Durian|500|Image|1
 |Apple|100|Web|0
 |Fig|200|Web|0\.2
@@ -678,9 +678,9 @@ PERCENT\_RANK 関数で返された値は、バーティカル内のクエリの
 
 **numeric\_literal** - 計算する百分位数です。値は 0.0 ～ 1.0 の範囲で指定してください。
 
-WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ]) - 並べ替える数値の一覧を指定し、百分位数を計算します。許可される列識別子は 1 つだけです。式は、数値型に評価される必要があります。その他のデータ型は許可されていません。既定の並べ替え順は昇順です。
+WITHIN GROUP ( ORDER BY <識別子> [ ASC | DESC ]) - 並べ替える数値の一覧を指定し、百分位数を計算します。許可される列識別子は 1 つだけです。式は、数値型に評価される必要があります。その他のデータ型は許可されていません。既定の並べ替え順は昇順です。
 
-OVER ([ PARTITION BY <identifier,>…[n] ] ) - パーティション キーごとに入力行セットをパーティションに分割します。パーティションには百分位関数が適用されます。詳細については、このドキュメントの順位付けに関するセクションを参照してください。注: データ セット内の null はすべて無視されます。
+OVER ([ PARTITION BY <識別子>…[n] ] ) - パーティション キーごとに入力行セットをパーティションに分割します。パーティションには百分位関数が適用されます。詳細については、このドキュメントの順位付けに関するセクションを参照してください。注: データ セット内の null はすべて無視されます。
 
 **PERCENTILE\_CONT** は、列値の連続型分布に基づいて百分位数を計算します。結果には値が補間され、列内の特定の値と一致しない可能性があります。
 
@@ -705,9 +705,9 @@ OVER ([ PARTITION BY <identifier,>…[n] ] ) - パーティション キーご�
 
 |クエリ|Latency:int|Vertical|PercentileCont50|PercentilDisc50
 |-----|-----------|--------|-------------------|----------------
-|Banana|300|Image|300|300
-|Cherry|300|Image|300|300
-|Durian|500|Image|300|300
+|Banana|300|イメージ|300|300
+|Cherry|300|イメージ|300|300
+|Durian|500|イメージ|300|300
 |Apple|100|Web|250|200
 |Fig|200|Web|250|200
 |Papaya|200|Web|250|200
@@ -743,4 +743,4 @@ PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 
 - [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
 - [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath,gokuma"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -20,7 +20,7 @@
 
 [AZURE.INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-このトピックでは、Spark MLlib を使用して構築され、Azure Blob Storage (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、やはり WASB に保存されているデータセットを使用してその機械学習モデルをスコア付けする方法を説明します。入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
+このトピックでは、Spark MLlib を使用して構築され、Azure Blob ストレージ (WASB) に保存された機械学習 (ML) モデルを読み込む方法と、やはり WASB に保存されているデータセットを使用してその機械学習モデルをスコア付けする方法を説明します。入力データを前処理し、MLlib ツールキットのインデックス機能とエンコード機能を使用して特徴を変換する方法と、ML モデルをスコア付けする際に入力として使用できるラベル付けされたポイント データ オブジェクトの作成方法を示します。スコア付けに使用するモデルには、線形回帰、ロジスティック回帰、ランダム フォレスト モデル、勾配ブースティング ツリー モデルなどがあります。
 
 
 ## 前提条件
@@ -104,16 +104,16 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 Jupyter Notebook で提供される PySpark カーネルは、コンテキストがあらかじめ設定されており、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
 
-- sc: Spark 用 
+- sc: Spark 用
 - sqlContext: Hive 用
 
 PySpark カーネルには、"マジック"、つまり、%% で呼び出すことができる特別なコマンドがいくつか事前定義されています。そのようなコマンドが、以降のコード サンプルでは 2 つ使用されています。
 
 - **%%local** このコマンドを指定した場合、後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。
-- **%%sql -o <variable name>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
+- **%%sql -o <変数名>** sqlContext に対して Hive クエリを実行します。-o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
  
 
-Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前定義済みの "マジック" (%%local など) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」を参照してください。
+Jupyter Notebook のカーネルと、%% で呼び出される定義済みの "マジック" (例: %%local) の詳細については、[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)に関する記事をご覧ください。
 
 
 ## データの取り込みとクリーンなデータ フレームの作成
@@ -385,7 +385,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
+	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -412,7 +412,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 
 [ランダム フォレスト](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)は、複数のデシジョン ツリーをまとめたものです。オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。ランダム フォレストによって、カテゴリの特徴を処理し、多クラス分類の設定に拡張できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
 
-[spark.mllib](http://spark.apache.org/mllib/) は、継続的な特徴とカテゴリの特徴の両方を使った、バイナリ分類および多クラス分類と回帰のためのランダム フォレストをサポートします。
+[spark.mllib](http://spark.apache.org/mllib/) は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類および多クラス分類と回帰のためのランダム フォレストをサポートします。
 
 	# SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -458,7 +458,7 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 
 このセクションのコードでは、Azure Blob Storage から分類と回帰の勾配ブースティング ツリー モデルを読み込み、標準の分類方法と回帰方法でそのパフォーマンスをスコア付けした後、結果を Blob Storage に保存する方法を示します。
 
-**spark.mllib** は、継続的な特徴とカテゴリの特徴の両方を使った、バイナリ分類と回帰のための GBT をサポートします。
+**spark.mllib** は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類と回帰のための GBT をサポートします。
 
 [勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。GBT ではデシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。また、多クラス分類の設定にも使用できます。
 
@@ -529,23 +529,23 @@ Jupyter Notebook のカーネルと、%% で呼び出すことのできる事前
 
 **出力:**
 
-logisticRegFileLoc: LogisticRegressionWithLBFGS\_2016-05-0317\_22\_38.953814.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22\_38.953814.txt
 
-linearRegFileLoc: LinearRegressionWithSGD\_2016-05-0317\_22\_58.878949
+linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22\_58.878949
 
-randomForestClassificationFileLoc: RandomForestClassification\_2016-05-0317\_23\_15.939247.txt
+randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23\_15.939247.txt
 
-randomForestRegFileLoc: RandomForestRegression\_2016-05-0317\_23\_31.459140.txt
+randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23\_31.459140.txt
 
-BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification\_2016-05-0317\_23\_49.648334.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23\_49.648334.txt
 
-BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression\_2016-05-0317\_23\_56.860740.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23\_56.860740.txt
 
 
 
 ## Web インターフェイス経由での Spark モデルの利用
 
-Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、「[Livy を使用して Spark ジョブをリモートで送信する](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)」を参照してください。
+Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。HDInsight Spark クラスターでは Livy が既定で有効になっています。Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)に関するページを参照してください。
 
 Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。それには、[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。**Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。
 
@@ -595,11 +595,11 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 	conn.close()
 
 
-この Python コードを [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) に追加することで、タイマー、BLOB の作成、BLOB の更新などのさまざまなイベントに基づいて BLOB をスコア付けする Spark ジョブの送信をトリガーできます。
+この Python コードを [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) に追加することで、タイマー、BLOB の作成、BLOB の更新などのさまざまなイベントに基づいて BLOB をスコア付けする Spark ジョブの送信をトリガーすることもできます。
 
 コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。
 
-- Azure ポータルで、**[新規]**、**[Web + モバイル]**、**[Logic App]** の順に選択して、新しいロジック アプリを作成します。 
+- Azure Portal で、**[+ 新規]**、**[Web + モバイル]**、**[Logic App]** の順に選択して、新しいロジック アプリを作成します。
 - ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
 - HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 
@@ -608,6 +608,6 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 ## 次の手順 
 
-**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」を参照してください。
+**クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

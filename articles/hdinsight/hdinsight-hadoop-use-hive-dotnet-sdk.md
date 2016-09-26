@@ -2,7 +2,7 @@
 	pageTitle="HDInsight .NET SDK を使用した Hive クエリの実行 | Microsoft Azure"
 	description="HDInsight .NET SDK を使用して、Hadoop ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-   ms.date="06/28/2016"
+   ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 # HDInsight .NET SDK を使用した Hive クエリの実行
 
-[AZURE.INCLUDE [Hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
 
 HDInsight .NET SDK を使用して Hive クエリを送信する方法について説明します。
@@ -146,4 +146,4 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

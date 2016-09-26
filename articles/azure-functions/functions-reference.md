@@ -78,21 +78,19 @@ Azure ポータルに組み込まれている関数エディターでは、*func
 
 関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md)はすべて、関数アプリでも利用できます。ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。
 
-#### Visual Studio Online (Monaco) を使用するには
+#### App Service Editor を使用するには
 
 1. Azure Functions ポータルで、**[関数アプリの設定]** をクリックします。
 
 2. **[詳細設定]** セクションで、**[App Service の設定に移動]** をクリックします。
 
-3. **[ツール]** をクリックします。
+3. **[開発ツール]** の App Menu ナビゲーション バーの **[App Service Editor]** をクリックします。
 
-4. **[開発]** で、**[Visual Studio Online]** をクリックします。
+4.  **[移動]** をクリックします。
 
-5. Visual Studio Online が有効になっていない場合は**オン**にして、**[Go]** をクリックします。
+	App Service Editor の読み込み後、*host.json* ファイルと関数フォルダーが *wwwroot* の下に表示されます。
 
-	Visual Studio Online の読み込み後、*host.json* ファイルと関数フォルダーが *wwwroot* の下に表示されます。
-
-6. ファイルを開いて編集するか、開発コンピューターからドラッグアンドドロップしてファイルをアップロードします。
+5. ファイルを開いて編集するか、開発コンピューターからドラッグアンドドロップしてファイルをアップロードします。
 
 #### 関数アプリの SCM (Kudu) エンドポイントを使用するには
 
@@ -151,4 +149,4 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * Azure App Service チーム ブログの「[Azure Functions: The Journey (Azure Functions への道のり)](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)」。Azure Functions の開発の歴史。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

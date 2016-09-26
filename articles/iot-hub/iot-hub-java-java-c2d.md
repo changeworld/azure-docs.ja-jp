@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="06/23/2016"
+     ms.date="09/13/2016"
      ms.author="dobett"/>
 
 # チュートリアル: IoT Hub と Java でクラウドからデバイスへのメッセージを送信する方法
@@ -32,24 +32,24 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
 
-このチュートリアルの最後には、次の 2 つの Java コンソール アプリケーションを実行します。
+このチュートリアルの最後に、次の 2 つの Java コンソール アプリケーションを実行します。
 
 * **simulated-device**。[IoT Hub の概要]に関するページで作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
 * **send-c2d-messages**。これは、クラウドからデバイスへのメッセージを IoT Hub を介してシミュレーション済みデバイスに送信し、その配信確認を受け取ります。
 
 > [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]のページを参照してください。
 
-このチュートリアルで行う作業には次のものが必要となります。
+このチュートリアルを完了するには、以下が必要です。
 
-+ Java SE 8。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Java をインストールする方法について説明しています。Windows と Linux の両方が対象となっています。
++ Java SE 8。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Java をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
-+ Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Maven をインストールする方法について説明しています。Windows と Linux の両方が対象となっています。
++ Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Maven をインストールする方法があります。Windows と Linux の両方が対象となっています。
 
 + アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
 
 ## シミュレーション済みデバイスでメッセージを受信する
 
-このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレートされたデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレーション済みデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
 1. テキスト エディターを使用し、simulated-device\\src\\main\\java\\com\\mycompany\\app\\App.java ファイルを開きます。
 
@@ -81,9 +81,9 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 ## C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Java コンソール アプリを作成します。[IoT Hub の概要]に関するページのチュートリアルで追加したデバイスのデバイス ID と、[Azure ポータル]で確認できる IoT Hub の接続文字列が必要です。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。[IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。また、IoT Hub の接続文字列も必要です ([Azure Portal] で確認できます)。
 
-1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という新しい Maven プロジェクトを作成します。これは 1 つの長いコマンドです。
+1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。これは、1 つの長いコマンドであることに注意してください。
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -91,7 +91,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 2. コマンド プロンプトで、新しい send-c2d-messages フォルダーに移動します。
 
-3. テキスト エディターを使用して、send-c2d-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。これにより、アプリケーションの **iothub-java-service-client** パッケージを使用して、IoT Hub サービスと通信できます。
+3. テキスト エディターを使用して、send-c2d-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。依存関係を追加することにより、アプリケーションの **iothub-java-service-client** パッケージを使用して、IoT Hub サービスと通信できます。
 
     ```
     <dependency>
@@ -159,7 +159,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 これで、アプリケーションを実行する準備が整いました。
 
-1. simulated-device フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始して、IoT Hub から送信される (クラウドからデバイスへの) メッセージを待機します。
+1. simulated-device フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリの送信を開始して、IoT Hub から送信される (クラウドからデバイスへの) メッセージをリッスンします。
 
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
@@ -173,7 +173,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![C2D メッセージを送信するコマンドを実行する][img-send-command]
+    ![クラウドからデバイスへのメッセージを送信するコマンドを実行する][img-send-command]
 
 ## 次のステップ
 
@@ -196,7 +196,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure ポータル]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

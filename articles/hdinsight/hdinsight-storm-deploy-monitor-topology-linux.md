@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/22/2016"
+   ms.date="09/07/2016"
    ms.author="larryfr"/>
 
 # Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理
@@ -62,11 +62,11 @@
 
 クラスターでホストされている Nimbus サービスと通信することにより、プログラムを使用して HDInsight の Storm にトポロジをデプロイできます。Nimbus サービスを使ってトポロジをデプロイおよび開始する方法については、[https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology](https://github.com/Azure-Samples/hdinsight-java-deploy-storm-topology) に用意されている Java アプリケーションの例を参照してください。
 
-##Storm コマンドを使用して監視および管理する
+## Storm コマンドを使用して監視および管理する
 
 `storm` ユーティリティを使用すると、コマンド ラインから実行中のトポロジを操作できます。次に、一般的に使用されるコマンドの一覧を示します。完全なコマンド一覧を表示するには、`storm -h` を使用してください。
 
-###トポロジの一覧を表示する
+### トポロジの一覧を表示する
 
 実行中のすべてのトポロジを一覧表示するには、次のコマンドを使用します。
 
@@ -78,7 +78,7 @@
     -------------------------------------------------------------------
     WordCount            ACTIVE     29         2            263
 
-###アクティブ化の解除と再アクティブ化
+### アクティブ化の解除と再アクティブ化
 
 トポロジが強制終了または再アクティブ化されるまで、トポロジのアクティブ化の解除は一時停止されます。次のコマンドを使用して、アクティブ化の解除と再アクティブ化を行います。
 
@@ -86,13 +86,13 @@
     
     storm Activate TOPOLOGYNAME
 
-###実行中のトポロジを強制終了する
+### 実行中のトポロジを強制終了する
 
 Storm トポロジが開始されると、停止されるまで実行が継続されます。トポロジを停止するには、次のコマンドを使用します。
 
     storm stop TOPOLOGYNAME
 
-###再調整
+### 再調整
 
 トポロジを再調整すると、トポロジの並列処理が変更されます。たとえば、クラスターのサイズを変更してノートを追加すると、再調整によって実行中のトポロジが新しいノードを利用できるようになります。
 
@@ -100,7 +100,7 @@ Storm トポロジが開始されると、停止されるまで実行が継続�
 
     storm rebalance TOPOLOGYNAME
 
-##Storm UI を使用して監視および管理する
+## Storm UI を使用して監視および管理する
 
 Storm UI には、トポロジの実行を操作する Web インターフェイスがあり、HDInsight クラスターに含まれています。Storm UI を表示するには、Web ブラウザーで __https://CLUSTERNAME.azurehdinsight.net/stormui____ (CLUSTERNAME\_\_ は実際のクラスター名に置き換えます) に移動します。
 
@@ -197,4 +197,4 @@ REST API から返される情報は、クラスターと同じ Azure Virtual Ne
 
 その他の Storm トポロジ例は、「[HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

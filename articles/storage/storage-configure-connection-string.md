@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # Azure Storage の接続文字列を構成する
@@ -72,7 +72,7 @@ Shared Access Signature (SAS) の URL を所有している場合は、その SA
 
 サービス エンドポイントはいずれも省略可能ですが、少なくとも 1 つは、接続文字列に存在する必要があります。
 
-ベスト プラクティスとして、SAS は HTTPS と組み合わせて使用することをお勧めします。共有アクセス署名の詳細については、「[Shared Access Signature、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+ベスト プラクティスとして、SAS は HTTPS と組み合わせて使用することをお勧めします。Shared Access Signature の詳細については、「[Shared Access Signature (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 >[AZURE.NOTE] 構成ファイル内で接続文字列に SAS を指定する場合、URL に含まれる特殊文字のエンコードが必要になる場合があります。
 
@@ -163,4 +163,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 - [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 - [Azure ストレージ エクスプローラー](storage-explorers.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

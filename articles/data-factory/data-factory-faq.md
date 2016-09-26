@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="09/12/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - よく寄せられる質問
@@ -24,7 +24,7 @@
 
 Data Factory は、**データの移動や変換を自動化する**クラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
  
-Data Factory サービスを使用すると、データ ドリブンのワークフローを作成して、オンプレミスとクラウド データ ストア間でデータを移動したり、Azure HDInsight や Azure Data Lake Analytics などのコンピューティング サービスを使用してデータを処理/変換したりすることができます。必要なアクションを実行するパイプラインを作成した後で、それを定期的に実行するようにスケジュールすることができます (毎時、毎日、毎週など)。
+Data Factory を使用すると、データ ドリブンのワークフローを作成して、オンプレミスとクラウドのデータ ストアの間でデータを移動したり、Azure HDInsight や Azure Data Lake Analytics などのコンピューティング サービスを使用してデータを処理/変換したりすることができます。必要なアクションを実行するパイプラインを作成した後で、それを定期的に実行するようにスケジュールすることができます (毎時、毎日、毎週など)。
 
 詳細については、「[概要と主要な概念](data-factory-introduction.md)」を参照してください。
 
@@ -49,11 +49,11 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 データ ファクトリを生成または作成する方法には、以下のものがあります。
 
-- **Azure ポータル**: Azure ポータルの Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、「[Azure ポータルまたは Data Factory Editor を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-editor.md)」を参照してください。
+- **Azure Portal**: Azure Portal の Data Factory ブレードは、Data Factory およびリンクされたサービスを作成するための優れたユーザー インターフェイスです。**Data Factory エディター**は、ポータルの一部でもあり、これらの成果物の JSON の定義を指定することによって、リンクされたサービス、テーブル、データ セット、パイプラインを簡単に作成できる機能です。ポータルまたはエディターを使用した Data Factory の作成とデプロイの例については、[Azure Portal を使用した初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline-using-editor.md)に関するページを参照してください。
 
 - **Visual Studio**: Visual Studio を使用して、Azure Data Factory を作成することができます。詳細については、「[Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」を参照してください。
 
-- **Azure PowerShell**: PowerShell を使用する Data Factory の作成に関するチュートリアルについては、「[Azure PowerShell を使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-powershell.md)」を参照してください。Data Factory コマンドレットの包括的なドキュメントについては、[MSDN ライブラリの Data Factory コマンドレット リファレンス][adf-powershell-reference]に関するコンテンツをご覧ください。
+- **Azure PowerShell**: PowerShell を使用する Data Factory の作成に関するチュートリアルについては、[Azure PowerShell を使用した Azure Data Factory の作成と監視](data-factory-build-your-first-pipeline-using-powershell.md)に関するページを参照してください。Data Factory コマンドレットの包括的なドキュメントについては、[MSDN ライブラリの Data Factory コマンドレット リファレンス][adf-powershell-reference]に関するコンテンツをご覧ください。
    
 - **.NET クラス ライブラリ**: Data Factory .NET SDK を使用すると、プログラムでデータ ファクトリを作成できます。.NET SDK を使用したデータ ファクトリの作成のチュートリアルについては、[.NET SDK を使用したデータ ファクトリの作成、監視、管理](data-factory-create-data-factories-programmatically.md)に関するページをご覧ください。Data Factory .NET SDK の包括的なドキュメントについては、[Data Factory クラス ライブラリ リファレンス][msdn-class-library-reference]に関するページをご覧ください。
 
@@ -65,7 +65,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 いいえ。他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
 
 ### Azure サブスクリプション間でデータ ファクトリを移動できますか。 
-はい。次に示すように、データ ファクトリ ブレードの **[移動]** ボタンを使用します。
+はい。次の図に示すように、データ ファクトリ ブレードの **[移動]** ボタンを使用します。
 
 ![データ ファクトリの移動](media/data-factory-faq/move-data-factory.png)
 
@@ -76,11 +76,11 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 - [データ変換アクティビティ](data-factory-data-transformation-activities.md)で、データを処理/変換します。
 
 ### アクティビティはいつ実行されますか。
-アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。入力データセットが指定される場合、アクティビティは実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**[準備完了]** 状態になっている) かどうかを確認します。
+アクティビティが実行されるタイミングは、出力データ テーブルの **availability** 構成設定によって決定されます。入力データセットが指定される場合、アクティビティは、実行を開始する前に、入力データのすべての依存関係が満たされている (つまり、**[準備完了]** 状態になっている) かどうかを確認します。
 
 ## コピー アクティビティ - FAQ
 ### 1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。 
-パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。論理的には、複数のアクティビティを接続するテーブルがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときによりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
+パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
 ### コピー操作はどこで実行されますか。 
 
@@ -104,7 +104,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 - [代替のストレージ アカウントとメタストアでの HDInsight クラスターの使用][hdinsight-alternate-storage]
 - [HDInsight ハイブでの追加のストレージ アカウントの使用][hdinsight-alternate-storage-2]
 
-出荷時のデータ サービスによって作成された、オンデマンドでクラスターを使用している場合は、HDInsight 用の追加のストレージ アカウントにリンクされるので、データのファクトリのサービスが自動的に登録できます考慮すべきサービスを指定する必要があります。オンデマンドのリンクされたサービスの JSON 定義内で、次の JSON のスニペットに示すように、**additionalLinkedServiceNames** プロパティを使用して、代替のストレージ アカウントを指定します。
+Data Factory サービスで作成されたオンデマンド クラスターを使用している場合は、Data Factory で自動的に登録できるように、HDInsight のリンクされたサービス用に追加のストレージ アカウントを指定します。オンデマンドのリンクされたサービスの JSON 定義内で、次の JSON のスニペットに示すように、**additionalLinkedServiceNames** プロパティを使用して、代替のストレージ アカウントを指定します。
  
 	{
 	    "name": "MyHDInsightOnDemandLinkedService",
@@ -124,14 +124,14 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ## スライス - FAQ
 
-### 入力スライスが準備完了状態にならない  
+### 入力スライスが準備完了状態にならないのはなぜですか。  
 一般的なミスとして、入力データがデータ ファクトリの外部に存在する (データ ファクトリによって生成されたものでない) ときに、入力データセットの **external** プロパティが **true** に設定されていないことが挙げられます。
 
 次の例では、**dataset1** のみ、**external** を true に設定する必要があります。
 
 **DataFactory1** パイプライン 1: dataset1 -> activity1 -> dataset2 -> activity2 -> dataset3 パイプライン 2: dataset3-> activity3 -> dataset4
 
-別のデータ ファクトリに dataset4 (データ ファクトリ 1 のパイプライン 2 で生成) を受け取るパイプラインがある場合、dataset4 は、外部のデータセットとして指定する必要があります。dataset4 は異なるデータ ファクトリ (DataFactory2 ではなく DataFactory1) によって生成されたものであるためです。
+別のデータ ファクトリに dataset4 (データ ファクトリ 1 のパイプライン 2 で生成) を受け取るパイプラインがある場合、dataset4 は、外部のデータセットとして指定します。dataset4 は異なるデータ ファクトリ (DataFactory2 ではなく DataFactory1) によって生成されたものであるためです。
 
 **DataFactory2** パイプライン 1: dataset4->activity4->dataset5
 
@@ -153,7 +153,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 スライスを再実行するには、次のどちらかの方法を使用します。
 
 - 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。「[選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#re-run-selected-activity-windows)」を参照してください。
-- ポータルのスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
+- Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
 - スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。
 	
 		Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00" 
@@ -170,7 +170,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。
 4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。
 5. **[アクティビティの実行の詳細]** ブレードで、**[プロパティ]** タイルをクリックします。
-6. **[期間]** フィールドに表示されている値を確認します。これが、スライスの処理にかかった時間です。
+6. **[期間]** フィールドに表示されている値を確認します。この値が、スライスの処理にかかった時間です。
 
 ### 実行中のスライスを停止するにはどうすればよいですか
 パイプラインの実行を停止する必要がある場合は、[Suspend-AzureDataFactoryPipeline](https://msdn.microsoft.com/library/mt603721.aspx) コマンドレットを使用できます。現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。進行中の実行が完了すると、追加のスライスは取得されません。
@@ -192,4 +192,4 @@ external プロパティが適切に設定されている場合は、入力デ�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

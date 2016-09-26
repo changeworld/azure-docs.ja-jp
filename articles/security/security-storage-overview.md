@@ -1,6 +1,6 @@
 <properties
    pageTitle="Azure Storage のセキュリティの概要 | Microsoft Azure"
-   description="Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。"
+   description=" Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="09/08/2016"
    ms.author="terrylan"/>
 
 # Azure Storage のセキュリティの概要
@@ -29,7 +29,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 
 Azure Storage でのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/storage-security-guide.md)」を参照してください。このガイドには、ストレージ アカウント キー、転送中および保存時のデータ暗号化、Storage Analytics など、Azure Storage のセキュリティ機能が詳しく説明されています。
 
-この記事では、Azure Storage で使用できる Azure セキュリティ機能の概要について説明します。各機能の詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
+この記事では、Azure Storage で使用できる Azure のセキュリティ機能の概要について説明します。各機能の詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
 
 この記事では、以下の主要機能について扱います。
 
@@ -42,7 +42,7 @@ Azure Storage でのセキュリティの詳細については、「[Azure Stora
 
 ## ロール ベースのアクセス制御 (RBAC)
 
-ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md) (ストレージ アカウントの共同作成者など) を利用してユーザーに権限を割り当てることができます。
+ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md) (ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。
 
 詳細情報:
 
@@ -50,7 +50,7 @@ Azure Storage でのセキュリティの詳細については、「[Azure Stora
 
 ## ストレージ オブジェクトへの委任されたアクセス
 
-Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
+Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
 詳細情報:
 
@@ -101,4 +101,4 @@ Azure Disk Encryption では [Azure Key Vault](https://azure.microsoft.com/servi
 - [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
 - [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

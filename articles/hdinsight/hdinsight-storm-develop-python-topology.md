@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -138,7 +138,7 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 
     * __Linux ベースの HDInsight__
     
-        1. `scp` を使用して、HDInsight クラスターのヘッド ノードにファイルをコピーします。次に例を示します。
+        1. `scp` を使用して、HDInsight クラスターのヘッド ノードにファイルをコピーします。For example:
         
                 scp wordcount-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:wordcount-1.0-SNAPSHOT.jar
                 
@@ -174,4 +174,4 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

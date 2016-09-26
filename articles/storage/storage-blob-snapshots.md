@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/07/2016"
 	ms.author="tamram"/>
 
 # BLOB のスナップショットの作成
@@ -174,4 +174,4 @@ Premium Storage でスナップショットを使うには次のルールに従�
 
 BLOB ストレージのその他の使用例については、「[Azure のコード サンプル](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob)」をご覧ください。サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

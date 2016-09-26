@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="mumian" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/09/2016" 
+	ms.date="09/09/2016" 
 	ms.author="jgao"/>
 
 # HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
@@ -75,7 +75,7 @@ Visual Studio ソリューションの完全なサンプルは、GitHub: [Realti
 
 
 	<table border="1">
-	<tr><th>クラスター プロパティ</th><th>説明</th></tr>
+	<tr><th>クラスター プロパティ</th><th>Description</th></tr>
 	<tr><td>HBase クラスター名</td><td>使用する HDInsight HBase クラスター名です。例: https://myhbase.azurehdinsight.net/</td></tr>
 	<tr><td>クラスター ユーザー名</td><td>Hadoop ユーザー アカウント名。既定の Hadoop ユーザー名は <strong>admin</strong> です。</td></tr>
 	<tr><td>クラスター ユーザー パスワード</td><td>Hadoop クラスター ユーザーのパスワード。</td></tr>
@@ -95,9 +95,9 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 1. [Twitter アプリ](https://apps.twitter.com/) にサインインしますTwitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
 2. **[Create New App]** をクリックします。
-3. **名前**、**説明**、**Web サイト**を入力します。Twitter アプリケーションの名前は一意の名前にする必要があります。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。 
+3. **名前**、**説明**、**Web サイト**を入力します。Twitter アプリケーションの名前は一意の名前にする必要があります。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
-5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。 
+5. **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。
 6. **[Keys and Access Tokens]** タブをクリックします。
 7. **[Create my access token]** をクリックします。
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
@@ -140,24 +140,29 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
 
 **ストリーミング アプリケーションを作成するには**
 
-1. **Visual Studio** を開き、**TweetSentimentStreaming** という名前の Visual C# コンソール アプリケーションを作成します。 
+1. **Visual Studio** を開き、**TweetSentimentStreaming** という名前の Visual C# コンソール アプリケーションを作成します。
 2. **パッケージ マネージャー コンソール**で、次のコマンドを実行します。
 
-		Install-Package Microsoft.HBase.Client
-		Install-Package TweetinviAPI
-    これらのコマンドによって、HBase クラスターにアクセスするクライアント ライブラリの [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) パッケージと、Twitter API へのアクセスに使用する [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) パッケージがインストールされます。
+		Install-Package Microsoft.HBase.Client -version 0.4.2.0
+		Install-Package TweetinviAPI -version 1.0.0.0
+
+	これらのコマンドによって、HBase クラスターにアクセスするクライアント ライブラリの [HBase .NET SDK](https://www.nuget.org/packages/Microsoft.HBase.Client/) パッケージと、Twitter API へのアクセスに使用する [Tweetinvi API](https://www.nuget.org/packages/TweetinviAPI/) パッケージがインストールされます。
+
+	> [AZURE.NOTE] この記事で使用しているサンプルは、上記で指定したバージョンを使用してテストされています。-version スイッチを削除することで最新のバージョンをインストールできます。
+
 3. **ソリューション エクスプローラー**で、参照に **System.Configuration** を追加します。
 4. **HBaseWriter.cs** という名前の新しいクラス ファイルをプロジェクトに追加し、そのコードを次のコードに置き換えます。
 
-        using System;
-        using System.Collections.Generic;
-        using System.Linq;
-        using System.Text;
-        using System.IO;
-        using System.Threading;
-        using Microsoft.HBase.Client;
-        using Tweetinvi.Core.Interfaces;
-        using org.apache.hadoop.hbase.rest.protobuf.generated;
+		using System;
+		using System.Collections.Generic;
+		using System.IO;
+		using System.Linq;
+		using System.Text;
+		using System.Threading;
+		using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
+		using org.apache.hadoop.hbase.rest.protobuf.generated;
+		using Microsoft.HBase.Client;
+		using Tweetinvi.Models;
 
         namespace TweetSentimentStreaming
         {
@@ -167,7 +172,12 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                 const string CLUSTERNAME = "https://<Enter Your Cluster Name>.azurehdinsight.net/";
                 const string HADOOPUSERNAME = "admin"; //the default name is "admin"
                 const string HADOOPUSERPASSWORD = "<Enter the Hadoop User Password>";
+
                 const string HBASETABLENAME = "tweets_by_words";
+				const string COUNT_ROW_KEY = "~ROWCOUNT";
+				const string COUNT_COLUMN_NAME = "d:COUNT";
+        		
+				long rowCount = 0;
 
                 // Sentiment dictionary file and the punctuation characters
                 const string DICTIONARYFILENAME = @"..\..\dictionary.tsv";
@@ -198,9 +208,12 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                         TableSchema tableSchema = new TableSchema();
                         tableSchema.name = HBASETABLENAME;
                         tableSchema.columns.Add(new ColumnSchema { name = "d" });
-                        client.CreateTableAsync(tableSchema).Wait;
+						client.CreateTableAsync(tableSchema).Wait();
                         Console.WriteLine("Table "{0}" is created.", HBASETABLENAME);
                     }
+
+					// Read current row count cell
+            		rowCount = GetRowCount();
 
                     // Load sentiment dictionary from a file
                     LoadDictionary();
@@ -214,6 +227,38 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                 {
                     threadRunning = false;
                 }
+
+				private long GetRowCount()
+				{
+					try
+					{
+						RequestOptions options = RequestOptions.GetDefaultOptions();
+						options.RetryPolicy = RetryPolicy.NoRetry;
+						var cellSet = client.GetCellsAsync(HBASETABLENAME, COUNT_ROW_KEY, null, null, options).Result;
+						if (cellSet.rows.Count != 0)
+						{
+							var countCol = cellSet.rows[0].values.Find(cell => Encoding.UTF8.GetString(cell.column) == COUNT_COLUMN_NAME);
+							if (countCol != null)
+							{
+								return Convert.ToInt64(Encoding.UTF8.GetString(countCol.data));
+							}
+						}
+					}
+					catch(Exception ex)
+					{
+						if (ex.InnerException.Message.Equals("The remote server returned an error: (404) Not Found.", StringComparison.OrdinalIgnoreCase))
+						{
+							return 0;
+						}
+						else
+						{
+							throw ex;
+						}
+						
+					}
+
+					return 0;
+				}
 
                 // Enqueue the Tweets received
                 public void WriteTweet(ITweet tweet)
@@ -374,7 +419,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
         using System;
         using System.Diagnostics;
         using Tweetinvi;
-        using Tweetinvi.Core.Parameters;
+        using Tweetinvi.Models;
 
         namespace TweetSentimentStreaming
         {
@@ -400,7 +445,7 @@ Twitter Streaming API は [OAuth](http://oauth.net/) を使用して要求を承
                         {
                             HBaseWriter hbase = new HBaseWriter();
                             var stream = Stream.CreateFilteredStream();
-                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90)); //Geo .GenerateLocation(-180, -90, 180, 90));
+                            stream.AddLocation(new Coordinates(-180, -90), new Coordinates(180, 90)); 
 
                             var tweetCount = 0;
                             var timer = Stopwatch.StartNew();
@@ -463,15 +508,15 @@ Web アプリケーションの作成中はストリーミング コンソール
 	- テンプレート カテゴリ: **Visual C#/Web**
 	- テンプレート: **ASP.NET Web アプリケーション**
 	- 名前: **TweetSentimentWeb**
-	- 場所: **C:\\Tutorials** 
+	- 場所: **C:\\Tutorials**
 4. **[OK]** をクリックします。
-5. **[テンプレートの選択]** で **[MVC]** をクリックします。 
+5. **[テンプレートの選択]** で **[MVC]** をクリックします。
 6. **[Microsoft Azure]** で **[サブスクリプションの管理]** をクリックします。
 7. **[Microsoft Azure サブスクリプションの管理]** で **[サインイン]** をクリックします。
 8. Azure の資格情報を入力します。**[アカウント]** タブに、Azure サブスクリプションの情報が表示されます。
 9. **[閉じる]** をクリックし、**[Microsoft Azure サブスクリプションの管理]** ウィンドウを閉じます。
 10. **[新規 ASP.NET プロジェクト - TweetSentimentWeb]** で **[OK]** をクリックします。
-11. **[Microsoft Azure サイト設定の構成]** で、お近くの **[リージョン]** を選択します。データベース サーバーを指定する必要はありません。 
+11. **[Microsoft Azure サイト設定の構成]** で、お近くの **[リージョン]** を選択します。データベース サーバーを指定する必要はありません。
 12. **[OK]** をクリックします。
 
 **Nuget パッケージをインストールするには**
@@ -597,7 +642,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 4. **HBaseReader** クラス内で、次の定数値を変更します。
 
-	- **CLUSTERNAME**: *https://<HBaseClusterName>.azurehdinsight.net/* などの HBase cluster 名。 
+	- **CLUSTERNAME**: *https://<HBase クラスター名>.azurehdinsight.net/* などの HBase cluster 名。
     - **HADOOPUSERNAME**: HBase クラスター Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     - **HADOOPUSERPASSWORD**: HBase クラスター Hadoop ユーザーのパスワード。
     - **HBASETABLENAME** = "tweets\_by\_words";
@@ -899,7 +944,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 1. **ソリューション エクスプローラー**で **[TweetSentimentWeb]** を展開します。
 2. **[スクリプト]** を右クリックし、**[追加]**、**[JavaScript ファイル]** の順にクリックします。
-3. **[項目名]** フィールドで、「**twitterStream.js**」と入力します。
+3. **[項目名]** フィールドに、「**twitterStream.js**」と入力します。
 4. 以下のコードをコピーして、ファイルに貼り付けます。
 
 		var liveTweetsPos = [];
@@ -1099,7 +1144,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 
 **layout.cshtml を変更するには**
 
-1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、_**[Layout.cshtml]** をダブルクリックします。
+1. **ソリューション エクスプローラー**で、**[TweetSentimentWeb]**、**[ビュー]**、**[共有]** の順に展開し、**[Layout.cshtml]** をダブルクリックします。
 2. 次のコンテンツに置き換えます。
 
 		<!DOCTYPE html>
@@ -1218,7 +1263,7 @@ Web アプリケーションの作成中はストリーミング コンソール
 2. **F5** を押して、Web アプリケーションを実行します。
 
 	![hdinsight.hbase.twitter.sentiment.bing.map][img-bing-map]
-2. テキスト ボックスにキーワードを入力し、**[検索]** をクリックします。HBase テーブルで収集したデータによっては、キーワードが検出できない場合もあります。「love」、「xbox」、「playstation」などの一般的なキーワードを試してください。 
+2. テキスト ボックスにキーワードを入力し、**[検索]** をクリックします。HBase テーブルで収集したデータによっては、キーワードが検出できない場合もあります。「love」、「xbox」、「playstation」などの一般的なキーワードを試してください。
 3. **[肯定]**、**[中立]**、**[否定]** を切り替えて、対象のセンチメントを比較します。
 4. 別の時間帯にストリーミング サービスを実行し、同じキーワードを検索して結果を比較してください。
 
@@ -1230,7 +1275,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 このチュートリアルでは、ツイートを取得し、ツイートのセンチメントを分析し、センチメント データを HBase に保存し、リアルタイムの Twitter センチメント データを Bing マップに表示する方法について学習しました。詳細については、次を参照してください。
 
 - [HDInsight の概要][hdinsight-get-started]
-- [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md) 
+- [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)
 - [HDInsight での Hadoop を使用した Twitter データの分析][hdinsight-analyze-twitter-data]
 - [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]
 - [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
@@ -1276,4 +1321,4 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
  
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0914_2016-->

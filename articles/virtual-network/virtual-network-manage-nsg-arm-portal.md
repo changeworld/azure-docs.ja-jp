@@ -19,7 +19,10 @@
 
 # プレビュー ポータルを使用して NSG を管理する
 
-[AZURE.INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
+> [AZURE.SELECTOR]
+- [ポータル](virtual-network-manage-nsg-arm-portal.md)
+- [PowerShell](virtual-network-manage-nsg-arm-ps.md)
+- [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
 [AZURE.INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -45,7 +48,7 @@
 
 **RG-NSG** リソース グループの NSG の一覧を表示するには、次の手順を実行します。
 
-1. **[リソース グループ]** > **[RG-NSG]** > **[...]** をクリックします。
+1. **[リソース グループ] ** > **[RG-NSG]** > **[...]** をクリックします。
 
 ![Azure ポータル - NSG](./media/virtual-network-manage-nsg-arm-portal/figure3.png)
 
@@ -184,4 +187,4 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
 
 - NSG の[ログを有効にします](virtual-network-nsg-manage-log.md)。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

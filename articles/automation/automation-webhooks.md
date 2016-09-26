@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="05/24/2016"
+   ms.date="09/12/2016"
    ms.author="magoedte;bwren;sngun"/>
 
 # Azure Automation Webhook
@@ -42,7 +42,7 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 
 **$WebhookData** オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--- |:---|
 | WebhookName | Webhook の名前。 |
 | RequestHeader | 受信 POST 要求のヘッダーを含むハッシュ テーブル。 |
@@ -84,7 +84,7 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 
 次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
-1. Azure ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。 
+1. Azure ポータルの **[Runbook] ブレード**から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。
 3. ブレードの上部にある **Webhook** をクリックして、**[Webhook の追加]** ブレードを開きます。<br> ![Webhook ボタン](media/automation-webhooks/webhooks-button.png)
 4. **[新しい Webhook の作成]** をクリックして、**[Webhook ブレードの作成]** を開きます。
 5. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。これらのプロパティの詳細については、「[Webhook の詳細](#details-of-a-webhook)」を参照してください。
@@ -101,7 +101,7 @@ Webhook を作成後に使用する場合、クライアント アプリケー�
 
 クライアントは、POST 要求から次のリターン コードのいずれかを受け取ります。
 
-| コード | テキスト | 説明 |
+| コード | テキスト | Description |
 |:---|:----|:---|
 | 202 | 承認済み | 要求が承認され、Runbook が正常にキューに入れられました。 |
 | 400 | 正しくない要求 | 次のいずれかの理由で要求が受け入れられませんでした。<ul> <li>Webhook の有効期限が切れている。</li> <li>Webhook は無効になっている。</li> <li>URL 内のトークンが無効である。</li> </ul>|
@@ -272,4 +272,4 @@ Azure アラートを通知システムとして使用するだけでなく、�
 - Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」を参照してください。
 - Azure Automation を使用して Azure アラートに対処する方法については、[Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0914_2016-->

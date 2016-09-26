@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/20/2016"
+	ms.date="09/08/2016"
 	ms.author="ashwink"/>
 
 # Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル
 
-この記事では、Azure Insights の監視機能にアクセスできるコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
+この記事では、Azure Insights の監視機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。Azure Insights では、AutoScale Cloud Services、Virtual Machines、Web Apps を使用できます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも可能です。
 
 
 ## 前提条件
@@ -46,7 +46,7 @@ azure help
 azure login
 ```
 
-そのためには、サインインする必要があります。サインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。すべてのコマンドは、既定のサブスクリプションのコンテキストで動作します。
+このコマンドを実行した後、画面の指示に従ってサインインする必要があります。サインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。すべてのコマンドは、既定のサブスクリプションのコンテキストで動作します。
 
 現在のサブスクリプションの詳細を一覧表示するには、次のコマンドを使用します。
 
@@ -60,7 +60,7 @@ azure account show
 azure account set "subscription ID or subscription name"
 ```
 
-Azure Resource Manager と Azure Insights コマンドを使用するには、ARM モードにする必要があります
+Azure Resource Manager と Azure Insights コマンドを使用するには、Azure Resource Manager モードにする必要があります。
 
 ```
 azure config mode arm
@@ -110,34 +110,34 @@ azure insights logs list --resourceProvider "Microsoft.Web" --caller "myname@com
 ### リソース グループのアラート ルールの取得
 
 ```
-node bin\azure insights alerts rule list abhingrgtest123
-node bin\azure insights alerts rule list abhingrgtest123 --ruleName andy0323
+azure insights alerts rule list abhingrgtest123
+azure insights alerts rule list abhingrgtest123 --ruleName andy0323
 ```
 
 ### メトリックのアラート ルールの作成
 
 ```
-node bin\azure insights alerts actions email create --customEmails foo@microsoft.com
-node bin\azure insights alerts actions webhook create https://someuri.com
-node bin\azure insights alerts rule metric set andy0323 eastus abhingrgtest123 PT5M GreaterThan 2 /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Web-EastUS/providers/Microsoft.Web/serverfarms/Default1 BytesReceived Total
+azure insights alerts actions email create --customEmails foo@microsoft.com
+azure insights alerts actions webhook create https://someuri.com
+azure insights alerts rule metric set andy0323 eastus abhingrgtest123 PT5M GreaterThan 2 /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Web-EastUS/providers/Microsoft.Web/serverfarms/Default1 BytesReceived Total
 ```
 
 ### ログのアラート ルールの作成
 
 ```
-insights alerts rule log set ruleName eastus resourceGroupName someOperationName
+azure insights alerts rule log set ruleName eastus resourceGroupName someOperationName
 ```
 
 ### Web テストのアラート ルールの作成
 
 ```
-node bin\azure insights alerts rule webtest set leowebtestr1-webtestr1 eastus Default-Web-WestUS PT5M 1 GSMT_AvRaw /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1
+azure insights alerts rule webtest set leowebtestr1-webtestr1 eastus Default-Web-WestUS PT5M 1 GSMT_AvRaw /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Default-Web-WestUS/providers/microsoft.insights/webtests/leowebtestr1-webtestr1
 ```
 
 ### アラート ルールの削除
 
 ```
-node bin\azure insights alerts rule delete abhingrgtest123 andy0323
+azure insights alerts rule delete abhingrgtest123 andy0323
 ```
 
 ## ログ プロファイル
@@ -146,33 +146,33 @@ node bin\azure insights alerts rule delete abhingrgtest123 andy0323
 ### ログ プロファイルの取得
 
 ```
-node bin\azure insights logprofile list
-node bin\azure insights logprofile get -n default
+azure insights logprofile list
+azure insights logprofile get -n default
 ```
 
 
 ### 保有期間を指定しないログ プロファイルの追加
 
 ```
-node bin\azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
+azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia
 ```
 
 ### ログ プロファイルの削除
 
 ```
-node bin\azure insights logprofile delete --name default
+azure insights logprofile delete --name default
 ```
 
 ### 保有期間を指定したログ プロファイルの追加
 
 ```
-node bin\azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
+azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
 ```
 
 ### 保有期間とイベント ハブを指定したログ プロファイルの追加
 
 ```
-node bin\azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --serviceBusRuleId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/testshoeboxeastus/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
+azure insights logprofile add --name default --storageId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 --serviceBusRuleId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/testshoeboxeastus/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia --retentionInDays 90
 ```
 
 
@@ -182,42 +182,42 @@ node bin\azure insights logprofile add --name default --storageId /subscriptions
 ### 診断設定の取得
 
 ```
-node bin\azure insights diagnostic get --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp
+azure insights diagnostic get --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp
 ```
 
 ### 診断設定の無効化
 
 ```
-node bin\azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled false
+azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled false
 ```
 
 ### 保有期間を指定しない診断設定の有効化
 
 ```
-node bin\azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled true
+azure insights diagnostic set --resourceId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/andyrg/providers/Microsoft.Logic/workflows/andy0315logicapp --storageId /subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/shibanitesting --enabled true
 ```
 
 
 ## Autoscale
-このセクションの情報を使用すると、自動スケール設定を操作できます。これらの例は、変更が必要になります。
+このセクションの情報を使用すると、自動スケール設定を操作できます。これらの例を変更する必要があります。
 
 ### リソース グループの自動スケール設定の取得
 
 ```
-node bin\azure insights autoscale setting list montest2
+azure insights autoscale setting list montest2
 ```
 
 ### 名前によるリソース グループの自動スケール設定の取得
 
 ```
-node bin\azure insights autoscale setting list montest2 -n setting2
+azure insights autoscale setting list montest2 -n setting2
 ```
 
 
-### 自動スケール設定の実行
+### 自動スケール設定の設定
 
 ```
-node bin\azure insights autoscale setting set montest2 -n setting2 --settingSpec
+azure insights autoscale setting set montest2 -n setting2 --settingSpec
 ```
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

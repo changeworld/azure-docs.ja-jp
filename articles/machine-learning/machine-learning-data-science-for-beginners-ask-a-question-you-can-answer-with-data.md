@@ -5,7 +5,7 @@
    services="machine-learning"
    documentationCenter="na"
    authors="brohrer-ms"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cjgronlund"/>
 
 <tags
@@ -25,7 +25,7 @@
 
 このシリーズを最大限に活用するには、これらのビデオを順番に視聴してください。[ビデオの一覧に移動する](#other-videos-in-this-series)
 
-<div class="wa-video-container" data-control="video-container" data-slug="data-science-for-beginners-ask-a-question-you-can-answer-with-data"> <a title="Data science for beginners: Ask a question you can answer with data" class="wa-video-thumbnail" href="/en-us/documentation/videos/data-science-for-beginners-ask-a-question-you-can-answer-with-data/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="data-science-for-beginners-ask-a-question-you-can-answer-with-data" data-caption="" data-ch9="//channel9.msdn.com/Blogs/Windows-Azure/Data-science-for-beginners-Ask-a-question-you-can-answer-with-data/player/" data-expanding="false"> <img class="thumbnail" alt="Data science for beginners: Ask a question you can answer with data" src="https://sec.ch9.ms/ch9/fde7/9f858f2c-1472-4345-a8e2-be99535cfde7/DataScienceForBeginnersAskQuestionYouCanAnswerWit_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>06-28-2016</span> <span>04 min, 17 sec</span> </span> </span> </a> </div>
+> [AZURE.VIDEO data-science-for-beginners-ask-a-question-you-can-answer-with-data]
 
 ## このシリーズの他のビデオ
 
@@ -47,7 +47,7 @@
 
 ## シャープな質問をする
 
-これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。ただし、どのような質問でも可能なわけではありません。*"シャープな質問"* である必要があります。
+これまで、データ サイエンスが、名前 (カテゴリまたはラベルとも呼ばれます) と数値を使用して質問に対する回答を予測するプロセスであることを説明してきました。ただし、どのような質問でも可能なわけではありません。"*シャープな質問*" である必要があります。
 
 あいまいな質問には、名前や数値で答える必要がないからです。シャープな質問であることが必須です。
 
@@ -93,7 +93,7 @@
 
 ここでは、データによって回答可能な質問をするための基本原則について説明してきました。
 
-Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
+Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" の他のビデオも必ずご覧ください。
 
 
 ## 次のステップ
@@ -101,4 +101,4 @@ Microsoft Azure Machine Learning の "初心者向けデータ サイエンス" 
   * [Azure Machine Learning で初めてのデータ サイエンス実験を実行してみる](machine-learning-create-experiment.md)
   * [Microsoft Azure での Machine Learning の概要を学習する](machine-learning-what-is-machine-learning.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

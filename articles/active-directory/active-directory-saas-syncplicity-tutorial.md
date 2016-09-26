@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Syncplicity の統合
@@ -72,7 +72,7 @@
 
 1.  Azure クラシック ポータルの **Syncplicity** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769534.png "Configure single sign-on")
 
 2.  **[ユーザーの Syncplicity へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -86,7 +86,7 @@
 
 4.  **[Syncplicity でのシングル サインオン構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769543.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-syncplicity-tutorial/IC769543.png "Configure single sign-on")
 
 5.  **Syncplicity** テナントにサインインします。
 
@@ -122,7 +122,7 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 3.  **[Add a user]** をクリックします。
 
-    ![ユーザーの管理](./media/active-directory-saas-syncplicity-tutorial/IC769764.png "ユーザーの管理")
+    ![Manage Users](./media/active-directory-saas-syncplicity-tutorial/IC769764.png "Manage Users")
 
 4.  プロビジョニングする AAD アカウントの**電子メール アドレス**を入力し、**[Role]** として **[User]** を選択し、**[次へ]** をクリックします。
 
@@ -156,8 +156,8 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-syncplicity-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-syncplicity-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

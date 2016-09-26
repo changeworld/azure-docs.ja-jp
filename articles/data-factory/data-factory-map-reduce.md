@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory から MapReduce プログラムを起動する
-Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要について説明する記事「[データ変換のアクティビティ](data-factory-data-transformation-activities.md)」を基に作成されています。
+Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
 
 ## はじめに 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。この記事では、HDInsight MapReduce アクティビティを使用する方法について説明しています。
  
-HDInsight Pig および Hive アクティビティを使用して Azure Data Factory パイプラインから Windows/Linux ベースの HDInsight クラスターで Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity.md) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
+HDInsight Pig および Hive アクティビティを使用してパイプラインから Windows/Linux ベースの HDInsight クラスターで Pig/Hive スクリプトを実行する方法の詳細については、[Pig](data-factory-pig-activity.md) と [Hive](data-factory-hive-activity.md) に関する記事を参照してください。
 
 ## HDInsight MapReduce アクティビティの JSON 
 
@@ -134,7 +134,7 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 ### データセット
 
 #### 出力データセット
-この例のパイプラインには入力はありません。HDInsight MapReduce アクティビティ用の出力データセットを指定する必要があります。これは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。
+この例のパイプラインには入力はありません。HDInsight MapReduce アクティビティ用の出力データセットを指定します。このデータセットは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。
 
 	{
 	    "name": "MROutput",
@@ -163,8 +163,8 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 :-------- | :-----
 type | type には、**HDInsightMapReduce** を設定する必要があります。 
 className | クラスの名前は **wordcount** です。
-jarFilePath | 上記のクラスを含む jar ファイルのパス。次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 
-jarLinkedService | jar ファイルが含まれるAzure Storage のリンクされたサービス。これは、HDInsight クラスターに関連付けられるストレージです。 
+jarFilePath | クラスを含む jar ファイルのパス。次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 
+jarLinkedService | jar ファイルが含まれるAzure Storage のリンクされたサービス。このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 
 arguments | wordcount プログラムは、入力と出力という2 つの引数を使用します。入力ファイルは davinci.txt ファイルです。
 frequency/interval | これらのプロパティの値は、出力データセットと一致します。 
 linkedServiceName | 前に作成した HDInsight のリンクされたサービスを参照します。   
@@ -228,4 +228,4 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 - [Spark プログラムを呼び出す](data-factory-spark.md)
 - [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

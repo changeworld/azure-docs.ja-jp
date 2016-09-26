@@ -4,7 +4,7 @@
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
- manager="paulettm"
+ manager="jhubbard"
  editor="cgronlun"
  tags="azure-portal"/>
 
@@ -37,7 +37,7 @@ WebHCat (旧称 Templeton) を使用して HDInsight を使用するときに、
 
 WebHCat のパフォーマンスに影響を与えたり、超過したときにエラーが発生したりする既定の構成値を次に示します。
 
-| 設定 | 実行内容 | 既定値 |
+| Setting | 実行内容 | 既定値 |
 | ------- | ------------ | ------------- |
 | [yarn.scheduler.capacity.maximum-applications][maximum-applications] | 同時にアクティブにできるジョブの最大数 (保留中または実行中) | 10,000 |
 | [templeton.exec.max-procs][max-procs] | 同時に処理できる要求の最大数 | 20 |
@@ -86,4 +86,4 @@ WebHCat のパフォーマンスに影響を与えたり、超過したときに
 [max-age-ms]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml
  
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

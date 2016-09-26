@@ -14,7 +14,7 @@
 	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="08/25/2016"
+	ms.date="09/14/2016"
 	ms.author="markvi"/>
 
 
@@ -30,9 +30,7 @@ Azure Active Directory の条件付きアクセス制御機能を使用すると
 
 ## ライセンス要件
 
-条件付きアクセスは、[Azure AD Premium](http://www.microsoft.com/identity) の機能です。条件付きアクセス ポリシーが適用されたアプリケーションにアクセスするすべてのユーザーは、Azure AD Premium のライセンスを取得する必要があります。使用状況については、[ライセンスのないユーザーのレポート](https://aka.ms/utc5ix)で確認できます。
-
-
+Azure Active Directory の条件付きアクセスは、[Azure AD Premium](http://www.microsoft.com/identity) の機能です。条件付きアクセス ポリシーが適用されたアプリケーションにアクセスするすべてのユーザーは、Azure AD Premium のライセンスを取得する必要があります。使用状況については、[ライセンスのないユーザーのレポート](https://aka.ms/utc5ix)で確認できます。
 
 
 
@@ -125,4 +123,4 @@ Azure AD でデバイス ベースの条件付きアクセス ポリシーを構
 - [条件付きアクセスのよく寄せられる質問](active-directory-conditional-faqs.md)
 - [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

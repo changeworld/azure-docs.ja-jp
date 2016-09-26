@@ -4,7 +4,7 @@
 	services="data-factory"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -44,7 +44,7 @@
 | &nbsp; | 記事 | 更新されたテキスト (抜粋) |
 | --: | :-- | :-- |
 | 8 | [Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する](data-factory-create-data-factories-programmatically.md) | **ポップアップ ダイアログ ボックスなしでのログイン** 上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動します。ダイアログ ボックスを使用せずにプログラムによってサインインする必要がある場合は、Azure Resource Manager を使用したサービス プリンシパルの認証 (resource-group-authenticate-service-principal.md authenticate-service-principal-with-certificate---powershell) に関する記事をご覧ください。**例** 次に示すように、GetAuthorizationHeaderNoPopup メソッドを作成します。public static string GetAuthorizationHeaderNoPopup() { var authority = new Uri(new Uri("https://login.windows.net"), ConfigurationManager.AppSettings "ActiveDirectoryTenantId" ); var context = new AuthenticationContext(authority.AbsoluteUri); var credential = new ClientCredential(ConfigurationManager.AppSettings "AdfClientId" , ConfigurationManager.AppSettings "AdfClientSecret" ); AuthenticationResult result = context.AcquireTokenAsync(ConfigurationManager.AppSettings "WindowsManagementUri" , credential).Result; |
-| 9 | [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) | **サポートされるファイル形式** コピー アクティビティでは、Azure BLOB、ファイル システム、Hadoop 分散ファイル システム (HDFS) などの、2 つのファイル ベースのデータ ストアの間でファイルをそのままコピーできます。これを行うには、入力と出力の両方のデータセット定義で format セクション (data-factory-create-datasets.md) をスキップします。これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。また、コピー アクティビティでは、テキスト、Avro、ORC、JSON など、指定した形式でファイルの読み取りと書き込みを実行します。次に、実行可能なコピー アクティビティの例をいくつか示します。/Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL に書き込む/オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む/Azure SQL Database のデータをコピーし、オンプレミスの HDFS に ORC 形式で書き込む ** .a name="global"../a.グローバルに使用できるデータの移動**Azure Data Factory は、米国西部、米国東部、および北ヨーロッパのリージョンのみで利用できますが、コピー アクティビティを利用するサービスは、以下のリージョンと場所でグローバルに使用できます。|
+| 9 | [コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md) | **サポートされるファイル形式** コピー アクティビティでは、Azure BLOB、ファイル システム、Hadoop 分散ファイル システム (HDFS) などの、2 つのファイル ベースのデータ ストアの間でファイルをそのままコピーできます。これを行うには、入力と出力の両方のデータセット定義で format セクション (data-factory-create-datasets.md) をスキップします。これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。また、コピー アクティビティでは、テキスト、Avro、ORC、JSON など、指定した形式でファイルの読み取りと書き込みを実行します。次に、実行可能なコピー アクティビティの例をいくつか示します。/Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL に書き込む/オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む/Azure SQL Database のデータをコピーし、オンプレミスの HDFS に ORC 形式で書き込む ** .a name="global"../a.グローバルに使用できるデータの移動** Azure Data Factory は米国西部、米国東部、および北ヨーロッパの各リージョンでのみ利用できますが、コピー アクティビティを促進するサービスは、以下のリージョンと場所でグローバルに使用できます。|
 | 10 | [Azure Data Factory を使用して OData ソースからデータを移動する](data-factory-odata-connector.md) | **オンプレミス OData ソースにアクセスする際に Windows 認証を使用する** { "name": "inputLinkedService", "properties": { "type": "OData", "typeProperties": { "url": ".endpoint of on-premises OData source e.g. Dynamics CRM.", "authenticationType": "Windows", "username": "domain\\user", "password": "password", "gatewayName": "mygateway" } } } |
 
 
@@ -162,4 +162,4 @@
 | 66 | [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) | Data Factory エンティティの名前付け規則について説明します。 |
 | 67 | [Data Factory のトラブルシューティング](data-factory-troubleshoot.md) | Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。 |
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

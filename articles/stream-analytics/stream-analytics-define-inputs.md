@@ -5,7 +5,7 @@
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -114,7 +114,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 ## BLOB Storage データ ストリーム入力の作成
 
-大量の非構造化データをクラウドに保存する場合は、BLOB ストレージを使用するとコスト効率の高いスケーラブルなソリューションが実現します。[BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)のデータは一般的に "休息中の" データとして見なされますが、Stream Analytics でデータ ストリームとして処理できます。BLOB ストレージと Stream Analytics の一般的なシナリオには、テレメトリをシステムから取得し、解析し、処理し、意味のあるデータを抽出するログ処理があります。
+大量の非構造化データをクラウドに保存する場合は、BLOB ストレージを使用するとコスト効率の高いスケーラブルなソリューションが実現します。[BLOB ストレージ](https://azure.microsoft.com/services/storage/blobs/)のデータは一般的に "休息中の" データとして見なされますが、Stream Analytics でデータ ストリームとして処理できます。BLOB ストレージと Stream Analytics の一般的なシナリオには、製品利用統計情報をシステムから取得し、解析し、処理し、意味のあるデータを抽出するログ処理があります。
 
 Stream Analytics の BLOB ストレージ イベントの既定のタイムスタンプは BLOB が最後に更新されたタイムスタンプであることに注意してください。このタイムスタンプが *BlobLastModifiedUtcTime* です。イベント ペイロードのタイムスタンプを利用してデータを処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
@@ -213,4 +213,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -61,7 +61,7 @@ Azure App Service では、次のカテゴリのカスタム ドメインをア�
 必要に応じて、2 種類の標準 DNS レコードを使用してカスタム ドメインをマップできます。
 
 - [A](https://en.wikipedia.org/wiki/List_of_DNS_record_types#A) - カスタム ドメイン名を Azure アプリの仮想 IP アドレスに直接マップします。
-- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**&lt;*appname*>.azurewebsites.net**) にマップします。
+- [CNAME](https://en.wikipedia.org/wiki/CNAME_record) - カスタム ドメイン名をアプリの Azure ドメイン名 (**& lt;*appname*>.azurewebsites.net**) にマップします。
 
 CNAME の利点は、IP アドレスが変更されても維持されることです。アプリを削除して作成し直したり、より上位の価格レベルから **Shared** レベルに移行したりすると、アプリの仮想 IP アドレスが変更される可能性があります。そのような変更があった場合、A レコードは更新する必要がありますが、CNAME レコードは有効なままです。
 
@@ -154,7 +154,7 @@ A レコードを次のように構成します (@ は通常、ルート ドメ�
 <a name="cname"></a>
 ### CNAME レコードを作成する
 
-CNAME レコードを使用して Azure アプリの既定のドメイン名にマップする場合は、A レコードの場合と異なり、追加の CNAME レコードは不要です。
+CNAME レコードを使用して Azure アプリの既定のドメイン名にマップする場合は、A レコードの場合と異なり、追加の TXT レコードは不要です。
 
 >[AZURE.IMPORTANT] ルート ドメインの CNAME レコード (つまり "ルート レコード") は作成しないようにしてください。詳細については、[CNAME レコードをルート ドメインで使用できない理由](http://serverfault.com/questions/613829/why-cant-a-cname-record-be-used-at-the-apex-aka-root-of-a-domain)に関するページを参照してください。ルート ドメインを Azure アプリにマップするには、CNAME レコードではなく [A レコード](#a)を使用します。
 
@@ -249,4 +249,4 @@ HTTPS でカスタム ドメイン名をセキュリティ保護する方法を�
 <!-- Images -->
 [subdomain]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

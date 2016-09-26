@@ -12,7 +12,7 @@ ms.workload="tbd"
 ms.tgt_pltfrm="na" 
 ms.devlang="na" 
 ms.topic="article" 
-ms.date="06/07/2016" 
+ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
 
@@ -44,7 +44,7 @@ Azure でのロールのスタートアップ手順を次に示します。
 
 2. **taskType** 属性に従って、すべてのスタートアップ タスクが実行されます。
     - **単純な**タスクは、一度に 1 つずつ同期的に実行されます。
-    - **バック グラウンド** タスクと**フォアグラウンド** タスクは、スタートアップ タスクと並列に非同期的に開始されます。  
+    - **バック グラウンド** タスクと**フォアグラウンド** タスクは、スタートアップ タスクと並列に非同期的に開始されます。
        
     > [AZURE.WARNING] IIS はスタートアップ プロセスのスタートアップ タスク ステージの間に完全に構成されない場合があるので、ロール固有のデータを使用できないことがあります。ロール固有のデータが必要なスタートアップ タスクは、[Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) を使用する必要があります。
 
@@ -105,7 +105,7 @@ EXIT /B 0
 
 **taskType** -スタートアップ タスクを実行する方法を指定します。
 
-- **simple** タスクは、[ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。   
+- **simple** タスクは、[ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。
 
     > [AZURE.NOTE] **simple** タスクが 0 以外の **errorlevel** で終了した場合は、インスタンスがブロックされます。後続の **simple** スタートアップ タスクおよびロール自体は開始されません。
 
@@ -163,4 +163,4 @@ Cloud Service で[一般的なスタートアップ タスク](cloud-services-st
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

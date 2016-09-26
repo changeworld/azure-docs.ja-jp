@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="raymondlaghaeian" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags
@@ -22,7 +22,7 @@
 
 -	Web サービスでのログ記録を有効にする方法
 	-	[Azure クラシック ポータル](https://manage.windowsazure.com/)にログインします。
-	-	[Machine Learning]、自分のワークスペース、[Web サービス] \(メニュー オプション) の順にクリックします。
+	-	[Machine Learning]、自分のワークスペース、[Web サービス] (メニュー オプション) の順にクリックします。
 	-	Web サービスの一覧で、Web サービスの名前をクリックします。
 	-	エンドポイントの一覧で、エンドポイントの名前をクリックします。
 	-	[構成] メニュー オプションをクリックします。
@@ -44,4 +44,4 @@
 
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

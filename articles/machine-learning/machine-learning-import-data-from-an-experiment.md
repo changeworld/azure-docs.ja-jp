@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -35,4 +35,4 @@
 
 保存が完了すると、ワークスペースのどの実験でもデータセットを使用できるようになります。データセットは、モジュール パレットの **[保存されたデータセット]** リストから検索できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

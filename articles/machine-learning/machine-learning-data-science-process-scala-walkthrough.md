@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,deguhath"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -1164,4 +1164,4 @@ Azure でのデータ サイエンス プロセスを構成するタスクにつ
 
 Scala コードを使用して、Spark で構築され Azure BLOB に保存されている機械学習モデルで新しいデータ セットを自動的に読み込んでスコア付けする手順については、「[Spark で構築した機械学習モデルのスコア付け](machine-learning-data-science-spark-model-consumption.md)」に記載されています。これらの資料の手順に従い、この記事の Scala コードを Python コードに置き換えるだけで使用を自動化できます。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

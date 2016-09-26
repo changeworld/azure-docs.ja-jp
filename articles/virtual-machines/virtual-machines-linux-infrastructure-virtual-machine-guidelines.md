@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # 仮想マシンのガイドライン
@@ -41,7 +41,7 @@
 
 Azure 環境内の主要なコンポーネントの 1 つは VM です。ここでアプリケーション、データベース、認証サービスなどを実行します。
 
-パフォーマンスとコストの観点から環境のサイズを設定するために、[さまざまなサイズの VM](virtual-machines-linux-sizes.md) について理解しておくことが重要です。VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。デプロイ後、[VM のサイズを変更](virtual-machines-linux-change-vm-size.md)できます。
+パフォーマンスとコストの観点から環境のサイズを設定するには、[さまざまなサイズの VM](virtual-machines-linux-sizes.md) について理解しておくことが重要です。VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。デプロイ後、[VM のサイズを変更](virtual-machines-linux-change-vm-size.md)できます。
 
 ストレージは、VM のパフォーマンスにおいて重要な役割を果たします。通常の回転ディスクを使った Standard Storage か、高い I/O ワークロードとピーク パフォーマンス用の SSD ディスクを使った Premium Storage を使用できます。VM サイズと同様に、ストレージ メディア選択についてはコストに関する考慮事項があります。VM の最適なパフォーマンスを実現するための適切なストレージの設計の詳細は、[ストレージ インフラストラクチャのガイドラインに関する記事](virtual-machines-linux-infrastructure-storage-solutions-guidelines.md)を参照してください。
 
@@ -57,4 +57,4 @@ Azure 環境内の主要なコンポーネントの 1 つは VM です。ここ�
 ## 次のステップ
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,6 +1,6 @@
 > [AZURE.SELECTOR]
-[Portal](..\articles\virtual-network\virtual-network-manage-nsg-portal.md)
-[PowerShell](..\articles\virtual-network\virtual-network-manage-nsg-ps.md)
-[Azure CLI](..\articles\virtual-network\virtual-network-manage-nsg-cli.md)
+- [ポータル](virtual-network-manage-nsg-arm-portal.md)
+- [PowerShell](virtual-network-manage-nsg-arm-ps.md)
+- [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0914_2016-->

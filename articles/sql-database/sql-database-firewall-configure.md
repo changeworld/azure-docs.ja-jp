@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/06/2016"
+   ms.date="09/14/2016"
    ms.author="rickbyh"/>
 
 # Azure SQL Database ファイアウォール規則の構成 - 概要
@@ -76,7 +76,7 @@ Azure からの接続は、2 つの方法で有効にすることができます
 
 ## 最初のサーバー レベルのファイアウォール規則の作成
 
-最初のサーバー レベルのファイアウォール設定は、[Azure Portal](https://portal.azure.com/) を使用するか、プログラムで REST API または Azure PowerShell を使用して作成できます。それ以降のサーバー レベルのファイアウォール規則もこれらの方法で作成および管理できます。また、Transact-SQL を介しても実行できます。サーバー レベルのファイアウォール規則の詳細については、[Azure Portal を使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関するページをご覧ください。
+最初のサーバー レベルのファイアウォール設定は、[Azure Portal](https://portal.azure.com/) を使用するか、プログラムで REST API または Azure PowerShell を使用して作成できます。それ以降のサーバー レベルのファイアウォール規則もこれらの方法で作成および管理できます。また、Transact-SQL を介しても実行できます。パフォーマンスを向上させるため、サーバー レベルのファイアウォール規則はデータベース レベルで一時的にキャッシュされます。キャッシュを更新する方法については、「[DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)」をご覧ください。サーバー レベルのファイアウォール規則の詳細については、[Azure Portal を使用して Azure SQL Database ファイアウォールを構成する方法](sql-database-configure-firewall-settings.md)に関するページをご覧ください。
 
 ## データベース レベルのファイアウォール規則の作成
 
@@ -158,4 +158,4 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

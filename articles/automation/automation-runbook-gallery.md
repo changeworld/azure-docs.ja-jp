@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="06/14/2016"
+	ms.date="09/18/2016"
 	ms.author="magoedte;bwren" />
 
 
@@ -66,7 +66,7 @@ Runbook ギャラリーから直接インポートできるのは、Azure クラ
 
 他のユーザーにも役に立つと思われる Runbook を Runbook ギャラリーに追加してください。[Runbook をスクリプト センターにアップロード](http://gallery.technet.microsoft.com/site/upload)して追加するときは、次の詳細を考慮してください。
 
-- Runbook をウィザードに表示するには、**カテゴリ**として *Microsoft Azure* を指定し、**サブカテゴリ**として *Automation* を指定する必要があります。  
+- Runbook をウィザードに表示するには、**カテゴリ**として *Windows Azure* を指定し、**サブカテゴリ**として *Automation* を指定する必要があります。
 
 - アップロードは、単一の .ps1 ファイルまたは .graphrunbook ファイルである必要があります。Runbook でモジュール、子 Runbook、または資産が必要な場合は、送信の説明および Runbook のコメント セクションで列記する必要があります。複数の Runbook を必要とするシナリオがある場合は、各 Runbook を個別にアップロードし、それぞれの説明に関連する Runbook の名前を列記します。同じカテゴリに表示されるように同じタグを使用していることを確認します。シナリオが動作するためには他の Runbook が必要であることをユーザーが知るには、説明を読む必要があります。
 
@@ -78,17 +78,16 @@ Runbook ギャラリーから直接インポートできるのは、Azure クラ
 
 - 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。この一覧にないタグは、ウィザードによって無視されます。一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
 
- - Backup  
-
+ - バックアップ
  - 容量管理
  - Change Control
  - コンプライアンス
  - Dev / Test Environments
  - 障害復旧
- - Monitoring
+ - 監視
  - Patching
  - プロビジョニング
- - Remediation
+ - 修復
  - VM Lifecycle Management
 
 
@@ -139,4 +138,4 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 - Runbookの使用を開始するには、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 - Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「[PowerShell ワークフローについて](automation-powershell-workflow.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0914_2016-->

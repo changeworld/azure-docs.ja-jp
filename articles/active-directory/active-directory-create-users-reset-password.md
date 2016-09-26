@@ -18,6 +18,10 @@
 
 # ユーザーのパスワードのリセット
 
+> [AZURE.SELECTOR]
+- [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
+
 ロックアウト後にユーザーからのパスワードのリセット要求に対応する場合であれ、日常的なセキュリティ メンテナンスに対応する場合であれ、ユーザーのパスワードをリセットする必要が生じることがあります。Azure Active Directory (Azure AD) を使用すると、この作業が容易になります。
 
   1. ディレクトリを開きます。
@@ -35,4 +39,4 @@
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

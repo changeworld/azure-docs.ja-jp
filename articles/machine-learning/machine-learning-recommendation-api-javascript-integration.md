@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="javascript" 
 	ms.topic="article" 
-	ms.date="08/24/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 # Azure Machine Learning Recommendations - JavaScript 統合
 
-> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
 
 このドキュメントは、JavaScript を使用して、サイトを統合する方法を表します。JavaScript を使用すると、データ取得のイベントを送信し、推奨設定のモデル作成後に推奨事項を使用できるようになります。JS を使用して行うすべての操作はサーバー側からも実行できます。
@@ -62,7 +62,7 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 1.	コードに JQuery ライブラリを含めます。次の URL の nuget からダウンロードできます。
 
 		http://www.nuget.org/packages/jQuery/1.8.2
-2.	次の URL http://1drv.ms/1Aoa1Zp から Recommendation JavaScript ライブラリを含めます。
+2.	次の URL http://aka.ms/RecoJSLib1 から Recommendation JavaScript ライブラリを含めます。
 
 3.	Azure ML Recommendations ライブラリを適切なパラメーターで初期化します。
 
@@ -168,8 +168,7 @@ Azure ML Recommendation を使用したサイトの統合は、次の 2 つの�
 
 パラメーター:
 * event (文字列) – "purchase"
-* items (購入済) – 購入した各項目のエントリを保持する配列。<br><br> 
-購入の形式:
+* items (購入済) – 購入した各項目のエントリを保持する配列。<br><br> 購入の形式:
 	* item (文字列) – 項目の一意識別子。
 	* count (int か文字列) – 購入された項目の数。
 	* price (float 型か文字列) – 省略可能フィールド – 項目の価格。
@@ -188,11 +187,7 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 
 パラメーター:
 * event (文字列) – "userlogin"
-* user (文字列) – ユーザーの一意の識別子。
-	<script>
-		if (typeof 	AzureMLRecommendationsEvent=="undefined	") { AzureMLRecommendationsEvent = ; }
-			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
-		</script>
+* user (文字列) – ユーザーの一意の識別子。<script> if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = ; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” }); </script>
 
 ##4\.JavaScript で推奨設定を使用します。
 推奨設定を使用するコードは、クライアント Web ページで、一部の JavaScript イベントによってトリガーされます。推奨設定の応答には、推奨項目の ID、名前、評価が含まれます。このオプションは、推奨項目の一覧表示に対してのみ使うことをお勧めします – 項目のメタデータの追加などのより複雑な処理は、サーバー側の統合で行われます。
@@ -230,4 +225,4 @@ Azure ML Recommendations のイベント ライブラリでは、同じブラウ
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

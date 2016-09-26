@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="hning86"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/05/2016"
+	ms.date="09/06/2016"
 	ms.author="haining;chlovel;garye"/>
 
 # Microsoft Cortana Intelligence コンペティションの FAQ
@@ -32,7 +32,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **コンペティションに参加するにはどうすればよいですか?**
 
-Cortana Intelligence ギャラリー経由で、コンペティションのホーム ページにアクセスしてください。このページには、実施中のすべてのコンペティションが含まれています。各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
+Cortana Intelligence ギャラリー経由で、コンペティションのホーム ページにアクセスします。このページには、実施中のすべてのコンペティションが含まれています。各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。[ここ](http://aka.ms/CIComp)からコンペティションのホーム ページにアクセスしてください。
 
 1. Cortana Intelligence ギャラリーで参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオを見てください。その後、[Enter Competition] ボタンをクリックして、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。通常は、この段階に時間の大半を費やします。
 
@@ -115,4 +115,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。詳細については、[契約条件](http://aka.ms/comptermsandconditions)を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

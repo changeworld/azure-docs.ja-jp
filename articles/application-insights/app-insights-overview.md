@@ -278,7 +278,7 @@ Application Insights のツール バー ボタンか [Application Insights の�
 
 リリース注釈は、Visual Studio Team Services のクラウド ベースのビルドとリリース サービスの機能です。
 
-## アラート
+## Alerts
 
 アプリで問題が発生した場合、問題に関する情報をすぐに得ることができます。
 
@@ -286,7 +286,7 @@ Application Insights には、電子メールで配信される 3 種類のア�
 
 ### プロアクティブ診断 
 
-[プロアクティブ診断](app-insights-nrt-proactive-diagnostics.md)** は自動的に設定されます。構成は不要です。サイトに十分なトラフィックがあることを条件として、日中の特定の時間や要求レートを考慮すると異常である失敗した要求の増加が発生すると、電子メールが送信されます。アラートには、診断情報が含まれています。
+[プロアクティブ診断](app-insights-nrt-proactive-diagnostics.md)**は自動的に設定されます。構成は不要です。サイトに十分なトラフィックがあることを条件として、日中の特定の時間や要求レートを考慮すると異常である失敗した要求の増加が発生すると、電子メールが送信されます。アラートには、診断情報が含まれています。
 
 アラートの例を次に示します。
 
@@ -347,6 +347,7 @@ Application Insights の利用には制限がありますが、その程度は�
  * [トラブルシューティング][qna]
  * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+ * [開発者のサポートを得る](app-insights-get-dev-support.md)
 * ご提案:
  * [UserVoice](https://visualstudio.uservoice.com/forums/357324)
 * ブログ:
@@ -354,12 +355,9 @@ Application Insights の利用には制限がありますが、その程度は�
 
 
 
-
 ## ビデオ
 
 [![Animated introduction](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
-
-<div class="wa-video-container" data-control="video-container" data-slug="218"> <a title="Get 360° Application Insights for Any App or Service" class="wa-video-thumbnail" href="/en-us/documentation/videos/218/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="218" data-caption="" data-ch9="//channel9.msdn.com/Series/ConnectOn-Demand/218/player/" data-expanding="false"> <img class="thumbnail" alt="Get 360° Application Insights for Any App or Service" src="https://sec.ch9.ms/ch9/8e9a/f3bbe7e0-a223-44f3-9f44-35820c128e9a/Get360ApplicationInsightsforAnyApporService_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>04-29-2015</span> <span>05 min, 28 sec</span> </span> </span> </a> </div>
 
 > [AZURE.VIDEO 218]
 
@@ -388,4 +386,4 @@ Application Insights の利用には制限がありますが、その程度は�
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

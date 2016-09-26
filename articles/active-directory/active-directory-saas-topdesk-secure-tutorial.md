@@ -11,13 +11,12 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
   
-このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。  
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   TOPdesk - Secure でのシングル サインオンが有効なサブスクリプション
@@ -67,16 +66,15 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TOPdesk - Secure に対する認証を行うことができるようにする方法を説明します。  
-TOPdesk - Secure のシングル サインオンを構成するには、ロゴのアイコン ファイルをアップロードする必要があります。アイコン ファイルを取得するには、TOPdesk サポート チームにお問い合わせください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TOPdesk - Secure に対する認証を行うことができるようにする方法を説明します。TOPdesk - Secure のシングル サインオンを構成するには、ロゴのアイコン ファイルをアップロードする必要があります。アイコン ファイルを取得するには、TOPdesk サポート チームにお問い合わせください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
 1.  **TOPdesk - Secure** 企業サイトに管理者としてサインオンします。
 
 2.  **[TOPdesk]** メニューで **[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "設定")
+    ![Settings](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
 
 3.  **[Login Settings]** をクリックします。
 
@@ -91,9 +89,8 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
     ![技術設定](./media/active-directory-saas-topdesk-secure-tutorial/IC790855.png "技術設定")
 
     1.  **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
-    2.  メタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
-        ![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
-    3.  **AssertionConsumerService** の値をコピーします。  
+    2.  メタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。![Assertion Consumer Service](./media/active-directory-saas-topdesk-secure-tutorial/IC790856.png "Assertion Consumer Service")
+    3.  **AssertionConsumerService** の値をコピーします。
 
         >[AZURE.NOTE] この値は、このチュートリアルの以降の「**アプリケーション URL の構成**」セクションで必要になります。
 
@@ -130,7 +127,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
 
 12. TOPdesk - Secure 企業サイトの **[TOPdesk]** メニューで、**[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "設定")
+    ![Settings](./media/active-directory-saas-topdesk-secure-tutorial/IC790598.png "Settings")
 
 13. **[Login Settings]** をクリックします。
 
@@ -142,7 +139,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
 
 15. **[Public]** セクションで、**[Add]** をクリックします。
 
-    ![[追加] のいずれかを](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "[追加] のいずれかを")
+    ![Add](./media/active-directory-saas-topdesk-secure-tutorial/IC790607.png "Add")
 
 16. **[SAML configuration assistant]** ダイアログ ページで、次の手順を実行します。
 
@@ -153,7 +150,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
     3.  TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
     4.  **[User name attribute]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
     5.  **[Display name]** テキスト ボックスに、構成の名前を入力します。
-    6.  **[保存]** をクリックします。
+    6.  [**Save**] をクリックします。
 
 17. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -161,8 +158,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
 
 ##ユーザー プロビジョニングの構成
   
-Azure AD ユーザーが TOPdesk - Secure にログインできるようにするには、そのユーザーを TOPdesk - Secure にプロビジョニングする必要があります。  
-TOPdesk - Secure の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが TOPdesk - Secure にログインできるようにするには、そのユーザーを TOPdesk - Secure にプロビジョニングする必要があります。TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 ###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
@@ -180,7 +176,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
     2.  **[General]** セクションの **[Surname]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの姓を入力します。
     3.  **[Location]** セクションでアカウントの **[Site]** を選択します。
     4.  **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
-    5.  **[保存]** をクリックします。
+    5.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] 他の TOPdesk - Secure ユーザー アカウントの作成ツールまたは TOPdesk - Secure から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -200,6 +196,6 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
     ![Yes](./media/active-directory-saas-topdesk-secure-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

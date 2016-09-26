@@ -5,7 +5,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -126,21 +126,21 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 RunHiveScript には、変数がいくつかあります。その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
 
 <table border = "1">
-<tr><th>ワークフローの変数</th><th>説明</th></tr>
+<tr><th>ワークフローの変数</th><th>Description</th></tr>
 <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight バージョン 3.0 と 2.1 では <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
 <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システム アドレス (たとえば、<i>wasbs://&lt;containerName>@&lt;storageAccountName>.blob.core.windows.net</i>) を使用します。</td></tr>
 <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>既定値</strong>を使用します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Hive アクションの変数</th><th>説明</th></tr>
+<tr><th>Hive アクションの変数</th><th>Description</th></tr>
 <tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダーを指定します。</td></tr>
 <tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前を指定します。</td></tr>
 </table>
 
 <table border = "1">
-<tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
+<tr><th>Sqoop アクションの変数</th><th>Description</th></tr>
 <tr><td>${sqlDatabaseConnectionString}</td><td>Azure SQL データベースの接続文字列を指定します。</td></tr>
 <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる Azure SQL データベース テーブルを指定します。</td></tr>
 <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダーを指定します。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
@@ -680,4 +680,4 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

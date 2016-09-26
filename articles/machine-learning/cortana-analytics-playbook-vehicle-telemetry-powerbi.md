@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="bradsev" />
 
 
@@ -28,9 +28,9 @@
 
 
 ## 前提条件
-1.	[https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3](https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3) に移動して、車両テレメトリ分析ソリューションをデプロイします。  
+1.	[https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3](https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3) に移動して、車両テレメトリ分析ソリューションをデプロイします。
 2.	[Microsoft Power BI Desktop をインストールします。](http://www.microsoft.com/download/details.aspx?id=45331)
-3.	[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)。Azure サブスクリプションを持っていない場合は、Azure 無料サブスクリプションで開始します。
+3.	[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)。Azure サブスクリプションを持っていない場合は、Azure 無料サブスクリプションで開始します
 4.	Microsoft PowerBI アカウント
 	
 
@@ -58,8 +58,8 @@
 
 デプロイが完了すると、次の図のように、すべてのコンポーネントが緑色でマークされます。
 
-- 緑色のノードの右上隅にある矢印をクリックして、対応するサービスに移動し、正常にデプロイされたかどうかを確認します。
-- 車両テレマティックス シミュレーター ノードの右上隅にある矢印をクリックして、データ シミュレーター パッケージをダウンロードします。ローカルのコンピューターにファイルを保存して、展開します。 
+- 対応するサービスに移動し、正常にデプロイされたかどうかを確認するには、緑色のノードの右上隅にある矢印をクリックします。
+- データ シミュレーター パッケージをダウンロードするには、**車両テレマティックス シミュレーター** ノードの右上隅にある矢印をクリックします。ローカルのコンピューターにファイルを保存して、展開します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/1-deployed-components.png)
 
@@ -78,7 +78,7 @@
 	 
 **リアルタイム ダッシュボード アプリケーションの開始**
 
-PowerBI でリアルタイムのダッシュボードを生成するためのアプリケーションが、ソリューションの一部として含まれています。このアプリケーションは、Stream Analytics が連続的なパターンでイベントを発行している Event Hub インスタンスをリッスンしています。このアプリケーションは、受け取った各イベントで、Machine Learning Request-Response スコアリング エンドポイントを使用してデータを処理します。結果のデータセットは、視覚化のために、PowerBI プッシュ API に発行されます。
+ソリューションには、PowerBI でリアルタイムのダッシュ ボードを生成するアプリケーションが含まれています。このアプリケーションは Event Hub インスタンスをリッスンしますが、そのインスタンスから Stream Analytics がイベントを継続的に発行しています。このアプリケーションが受信されるすべてのイベントに対して、Machine Learning Request-Response スコアリング エンドポイントを使用してデータを処理します。結果のデータセットは、PowerBI プッシュ API に発行され視覚化されます。
 
 アプリケーションをダウンロードするには:
 
@@ -106,12 +106,12 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/8-save-blank-report.png)
 
-レポート名として、「*Vehicle Telemetry Analytics Real time - Reports*」を指定します。
+レポート名として、*"Vehicle Telemetry Analytics Real time - Reports"* を指定します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
 
 ## リアルタイム レポート
-このソリューションには、次の 3 つのリアルタイム レポートが用意されています。
+このソリューションには、次の 3 つのリアルタイム レポートが用意されています:
 
 1.	Vehicles in operation
 2.	Vehicles Requiring Maintenance
@@ -131,7 +131,7 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 フィールドから **[City]** と **[vin]** を選択します。視覚化を **[地図]** に変更します。**[vin]** を値領域にドラッグします。フィールドから **[city]** を **[凡例]** 領域にドラッグします。![Connected Cars - Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
   
-**[視覚化]** の **[書式]** を選択し、**[タイトル]** をクリックしてテキストを **"Vehicles in operation by city"** に変更します。![Connected Cars - Vehicles in operation by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)
+**[視覚化]** の **[書式]** を選択し、**[タイトル]** をクリックして**テキスト**を **"Vehicles in operation by city"** に変更します。![Connected Cars - Vehicles in operation by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)
 
 最終的に、視覚化は次の図のようになります。![Connected Cars - Final visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
 
@@ -157,17 +157,17 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 ### 2\.Vehicles Requiring Maintenance
   
-![[追加] のいずれかを](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Requiring Maintenance"** に変更します。
+![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Requiring Maintenance"** に変更します。
 
 ![Connected Cars - Vehicles Requiring Maintenance](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)
 
 **[vin]** フィールドを選択し、視覚化の種類を **[カード]** に変更します。![Connected Cars - Vin Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)
 
-データセットに、"MaintenanceLabel" という名前のフィールドがあります。このフィールドには "0" または "1" の値を指定できます。 値は、ソリューションの一部としてプロビジョニングされ、リアルタイム パスと統合される Azure Machine Learning モデルによって設定されます。値 "1" は、車両にメンテナンスが必要であることを示します。
+データセットに "MaintenanceLabel" という名前のフィールドがあります。このフィールドには "0" または "1" の値を指定できます。 値は、ソリューションの一部としてプロビジョニングされ、リアルタイム パスと統合される Azure Machine Learning モデルによって設定されます。値 "1" は、車両にメンテナンスが必要であることを示します。
 
-メンテナンスを必要とする車両データを表示するための**ページ レベル** フィルターを追加します。
+メンテナンスを必要とする車両データを表示するための**ページ レベル** フィルターを追加するには:
 
-1. **"MaintenanceLabel"** フィールドを **[ページ レベル フィルター]** にドラッグします。![Connected Cars - Page Level Filters](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)  
+1. **"MaintenanceLabel"** フィールドを **[ページ レベル フィルター]** にドラッグします。![Connected Cars - Page Level Filters](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
 2. MaintenanceLabel ページ レベル フィルターの下部にある **[基本フィルター]** メニューをクリックします。![Connected Cars - Basic Filtering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png)
 
@@ -190,17 +190,17 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 新しい視覚化を追加するために、空の領域をクリックします。
 
-視覚化から **[複数の行カード]** を選択し、**[Model]** と **[vin]** を **[フィールド]** 領域にドラッグします。![Connected Cars - Multi Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)
+視覚化から **[複数の行カード]** を選択し、**[Model]** と **[vin]** を **[フィールド]** 領域にドラッグします。![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)
 
-すべての視覚化を再配置します。最終的に、レポートは次の図のようになります。![Connected Cars - Multi Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)
+すべての視覚化を並べ替えると、最終的なレポートは次のようになります: ![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)
 
 これで、Vehicles Requiring Maintenance リアルタイム レポートを正しく構成できました。次のリアルタイム レポートを作成するか、ここで終了して、ダッシュボードの構成に進むことができます。
 
 ### 3\.Vehicles Health Statistics
   
-![[追加] のいずれかを](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Health Statistics"** に変更します。
+![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Health Statistics"** に変更します。
 
-視覚化から **[ゲージ]** を選択し、**[Speed]** フィールドを **[値]、[最小値]、[最大値]** 領域にドラッグします。![Connected Cars - Multi Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)
+視覚化から **[ゲージ]** を選択し、**[Speed]** フィールドを **[値]、[最小値]、[最大値]** 領域にドラッグします。![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)
 
 **[値]** 領域の **[speed]** の既定の集計を **[平均]** に変更します。
 
@@ -208,7 +208,7 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 **[最大]** 領域の **[speed]** の既定の集計を **[最大]** に変更します。
 
-![Connected Cars - Multi Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)
+![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)
 
 **Gauge Title** という名前を **"Average speed"** に変更します。
  
@@ -248,7 +248,7 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 ![Connected Cars - Add New Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4dd.png)
 
-**[書式]** をクリックし、**[データの色]** を選択して、**[MaintenanceProbability]** の色の値を **"F2C80F"** に変更します。
+**[書式]** をクリックし、**[データの色]** を選択して、**[MaintenanceProbability]** の色の値を **"F2C80F"** に設定します。
 
 グラフの **[タイトル]** を **"Probability of Vehicle Maintenance & Recall by City"** に変更します。
 
@@ -267,10 +267,11 @@ Power BI では、新しいデータセットが生成されます。**Connected
 新しい視覚化を追加するために、空の領域をクリックします。
 
 1. 視覚化から **[散布図]** を選択します。
-2. **[Model]** フィールドを **[詳細]** および **[凡例]** 領域にドラッグします。 
-3. **[fuel]** フィールドを **[X 軸]** 領域にドラッグし、集計を [平均] に変更します。
+2. **[Model]** フィールドを **[詳細]** および **[凡例]** 領域にドラッグします。
+3. **[fuel]** フィールドを **[X 軸]** 領域にドラッグし、集計を **[平均]** に変更します。
 4. **[engineTemparature]** を **[Y 軸]** にドラッグし、集計を **[平均]** に変更します。
 5. **[vin]** フィールドを **[サイズ]** 領域にドラッグします。
+
 
 ![Connected Cars - Add new visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
@@ -297,25 +298,28 @@ Power BI では、新しいデータセットが生成されます。**Connected
 ![Connected Cars-Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-4.0.png)
 
 お疲れさまでした。 これで、リアルタイム ダッシュボードが正常に作成されました。続けて CarEventGenerator.exe および RealtimeDashboardApp.exe を実行すると、ダッシュボードにライブ更新が表示されるようになります。以下の手順を完了するには、10 ～ 15 分ほどかかります。
+
  
 ##  Power BI バッチ処理ダッシュボードのセットアップ
 
-注: エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。次のステップに進む前に、しばらくお待ちください。
+>[AZURE.NOTE] エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。したがって、次のステップに進む前に、処理が終了するまで待ってください。
 
 **PowerBI デザイナー ファイルのダウンロード**
+
 -	事前に構成された PowerBI デザイナー ファイルは、デプロイの一部として含まれています
--	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで "Download the PowerBI designer" ファイル リンクをクリックします![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
+-	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで **"Download the PowerBI designer" ファイル** リンクをクリックします![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
 
 -	ローカルに保存します
 
 **PowerBI レポートの構成**
--	PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。 
+
+-	PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。
 
 -	**[クエリを編集]** をクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/10-edit-powerbi-query.png)
 
-- **[Source]** をダブルクリックします。
+- **[ソース]** をダブルクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
 
@@ -340,7 +344,7 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/14-close-powerbi-desktop.png)
 
-- **[保存]** ボタンをクリックして、変更を保存します。 
+- **[保存]** ボタンをクリックして、変更を保存します。
  
 これで、ソリューション内のバッチ処理パスに対応するすべてのレポートが構成されました。
 
@@ -348,11 +352,11 @@ Power BI では、新しいデータセットが生成されます。**Connected
 ## *powerbi.com* へのアップロード
  
 1.	PowerBI Web ポータル (http://powerbi.com) に移動してログインします。
-2.	[データの取得] をクリックします。  
-3.	Power BI Desktop ファイルをアップロードします。  
-4.	アップロードするには、**[データの取得]、[ファイル] の [取得]、[ローカル ファイル]** の順にクリックします。  
-5.	**"VehicleTelemetryAnalytics – Desktop Report.pbix"** の場所に移動します。  
-6.	ファイルがアップロードされると、Power BI のワークスペースに戻ります。  
+2.	**[データの取得]** をクリックします。
+3.	Power BI Desktop ファイルをアップロードします。
+4.	アップロードするには、**[データの取得]、[ファイル] の [取得]、[ローカル ファイル]** の順にクリックします。
+5.	**"VehicleTelemetryAnalytics – Desktop Report.pbix"** の場所に移動します。
+6.	ファイルがアップロードされると、Power BI のワークスペースに戻ります。
 
 データセット、レポート、および空のダッシュボードが作成されます。
  
@@ -367,20 +371,22 @@ Power BI では、新しいデータセットが生成されます。**Connected
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
 
-**ページ 3 から**、以下のものをピン留めします
-1.	Count of VIN ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
+**ページ 3 から**、以下のものをピン留めします。
+
+1.	Count of VIN ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
 
 2.	Aggressively driven vehicles by model – ウォーター フォール図 ![Vehicle Telemetry - Pin Charts 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
 
-**ページ 5 から**、以下のものをピン留めします
-1.	Count of vin ![Vehicle Telemetry - Pin Charts 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
+**ページ 5 から**、以下のものをピン留めします。
+ 
+1.	Count of vin ![Vehicle Telemetry - Pin Charts 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
 2.	Fuel efficient vehicles by model : 集合縦棒グラフ ![Vehicle Telemetry - Pin Charts 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
-**ページ 4 から**、以下のものをピン留めします。
+**ページ 4 から**、以下のものをピン留めします:
 
-1.	Count of vin ![Vehicle Telemetry - Pin Charts 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
+1.	Count of vin ![Vehicle Telemetry - Pin Charts 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png)
 
-2.	Recalled vehicles by city, model : ツリーマップ ![Vehicle Telemetry - Pin Charts 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)
+2.	Recalled vehicles by city, model: ツリーマップ ![Vehicle Telemetry - Pin Charts 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)
 
 **ページ 6 から**、以下のものをピン留めします。
 
@@ -390,10 +396,10 @@ Power BI では、新しいデータセットが生成されます。**Connected
 
 1.	ダッシュボードに移動します。
 2.	各グラフにポインターを合わせ、以下の完成したダッシュボードの画像で指定されている名前に合わせて名前を変更します。また、以下のダッシュボードと同じになるように、グラフも移動します。 ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png) ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
-3. すべてのレポートをこのドキュメントで説明したとおりに作成した場合、最終的に完成したダッシュボードは次のようになります。 
+3.  すべてのレポートをこのドキュメントで説明したとおりに作成した場合、最終的に完成したダッシュボードは次のようになります。
 
 ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
 
 お疲れさまでした。 レポートとダッシュボードが正常に作成され、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を一括して把握できるようになりました。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

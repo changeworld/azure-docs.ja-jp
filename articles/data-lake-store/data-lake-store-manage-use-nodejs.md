@@ -4,7 +4,7 @@
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
-   manager="paulettm" 
+   manager="jhubbard" 
    editor="cgronlun"/>
  
 <tags
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="08/25/2016"
+   ms.date="09/13/2016"
    ms.author="nitinme"/>
 
 # Azure SDK for Node.js を使用して Azure Data Lake Store を管理する
@@ -35,6 +35,12 @@ Azure SDK for Node.js を使用して、Azure Data Lake Store アカウントと
   *  **Node.js のバージョン: 0.10.0 以降**
   *  **アカウント用の REST API のバージョン: 2015-10-01-preview**
   *  **ファイルシステム用の REST API のバージョン: 2015-10-01-preview**
+
+##前提条件
+
+この記事を読み始める前に、次の項目を用意する必要があります。
+
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## Features (機能)
 
@@ -141,4 +147,4 @@ filesystemClient.fileSystem.listFileStatus(accountName, pathToEnumerate, functio
 - [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
 - [Microsoft Azure SDK for Node.js - Data Lake Analytics の管理](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

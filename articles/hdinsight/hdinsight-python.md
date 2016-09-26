@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="07/25/2016" 
+	ms.date="09/07/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight における Python と Hive および Pig の使用
@@ -33,9 +33,9 @@ Hive と Pig は HDInsight でデータを処理する場合にきわめて有�
 
 Python2.7 は HDInsight 3.0 以降のクラスターに既定でインストール済みです。このバージョンの Python と共に Hive を使用することで、ストリームを処理できます (Hive と Python の間のデータの受け渡しには STDOUT/STDIN を使用します)。
 
-HDInsight には、Java で記述された Python 実装である Jython も付属しています。Pig ではストリーミングを用いずに Jython と対話できるため、Pig を使用している場合に有効です。
+HDInsight には、Java で記述された Python 実装である Jython も付属しています。Pig ではストリーミングを用いずに Jython と対話できるため、Pig を使用している場合に有効です。ただし、標準 Python (C Python) を Pig と使用することもできます。
 
-###<a name="hivepython"></a>Hive と Python
+##<a name="hivepython"></a>Hive と Python
 
 Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive から UDF として使用することができます。たとえば、次の HiveQL は **streaming.py** ファイルに格納されている Python スクリプトを呼び出します。
 
@@ -103,38 +103,53 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 
 HDInsight クラスターでこの例を実行する方法については「[例を実行する](#running)」を参照してください。
 
-###<a name="pigpython"></a>Pig と Python
+##<a name="pigpython"></a>Pig と Python
 
-Python スクリプトは、**GENERATE** ステートメントを通じて Pig から UDF として使用できます。たとえば、次の例では **jython.py** ファイルに格納されている Python スクリプトを使用します。
+Python スクリプトは、**GENERATE** ステートメントを通じて Pig から UDF として使用できます。これを実現するには、Jython (Java 仮想マシンでの Python 実装) か C Python (標準の Python) を使うという、2 つの方法があります。
 
-	Register 'wasbs:///jython.py' using jython as myfuncs;
+主な違いは、Jython は JVM 上で実行され、Pig (JVM 上で実行される) から呼び出すことができるのに対し、 C Python は外部プロセス (C 言語で書かれている) です。 JVM 上の Pig からのデータが Python のプロセスで実行されるスクリプトに送信され、その出力が Pig に返送されます。
+
+Pig がスクリプトの実行に Jython と C Python のどちらを使うかを指定するには、Pig Latin から Python スクリプトを参照するときに __[登録]__ を使ってください。これにより、スクリプトに対してどのインタープリターを使用するか、どのエイリアスを作成するか、Pig に指示します。次の例では、Pig を __myfuncs__ としてスクリプトを登録します:
+
+* __Jython を使用するには__: `register '/path/to/pig_python.py' using jython as myfuncs;`
+* __C Python を使用するには__: `register '/path/to/pig_python.py' using streaming_python as myfuncs;`
+
+> [AZURE.IMPORTANT] Jython を使用する場合、pig\_jython ファイルへのパスには、ローカル パスまたは WASB:// パスが指定できます。ただし、C Python を使用する場合は、Pig ジョブの送信に使用しているノードのローカル ファイル システム上のファイルを参照する必要があります。
+
+一度登録したこの例では、Pig Latin は両方について同じです:
+
     LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
     LOG = FILTER LOGS by LINE is not null;
     DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
     DUMP DETAILS;
 
-以下に、このスクリプトの動作の例を示します。
+この例では以下のように処理されます。
 
-1. **Jython** を使用して Python スクリプト (**jython.py**) が含まれるファイルを登録し、**myfuncs** として Pig に公開します。Jython は、Java による Python 実装であり、Pig と同じ Java 仮想マシンで動作します。この方法によって、Hive で使用するストリーミング手法ではなく、従来の関数呼び出しのように Python スクリプトを扱うことができます。
+1. 最初の行は、サンプルのデータ ファイルである、**sample.log** を **LOGS** に読み込みます。このファイルには一貫したスキーマがないことから、各レコード (この場合は **LINE**) を **chararray** として定義します。Chararray は本質的には文字列です。
 
-2. 次の行は、サンプルのデータ ファイルである、**sample.log** を **LOGS** に読み込みます。このファイルには一貫したスキーマがないことから、各レコード (この場合は **LINE**) を **chararray** として定義します。Chararray は本質的には文字列です。
+2. 次の行はすべての null 値を除去し、操作の結果を **LOG** に格納します。
 
-3. 3 行目はすべての null 値を除去し、操作の結果を **LOG** に格納します。
+3. 次に、**LOG** のレコードを反復処理し、**GENERATE** を使用して、**myfuncs** として読み込まれた Python/Jython スクリプトに格納されている **create\_structure** メソッドを呼び出します。**LINE** は現在のレコードを関数に渡すために使用されます。
 
-4. 次に、**LOG** のレコードを反復処理し、**GENERATE** を使用して、**myfuncs** として読み込まれた **jython.py** スクリプトに格納されている **create\_structure** メソッドを呼び出します。**LINE** は現在のレコードを関数に渡すために使用されます。
+4. 最後に、**DUMP** コマンドで出力が STDOUT にダンプされます。この例は、操作完了後の結果をすぐに示すためのものであり、実際のスクリプトでは通常、**STORE** を通じて新しいファイルにデータを保存します。
 
-5. 最後に、**DUMP** コマンドで出力が STDOUT にダンプされます。この例は、操作完了後の結果をすぐに示すためのものであり、実際のスクリプトでは通常、**STORE** を通じて新しいファイルにデータを保存します。
+また実際の Python スクリプト ファイルはPython と Jython とで類似しており、唯一異なる点は、C Python を使用する場合には __pig\_util__ からインポートする必要があることです。これが __pig\_python.py__ スクリプトです:
 
-<a name="jythonpy"></a>次に、Pig の例で使用する **jython.py** ファイルを示します。
+<a name="streamingpy"></a>
 
-	@outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
-	def create_structure(input):
-	  if (input.startswith('java.lang.Exception')):
-	    input = input[21:len(input)] + ' - java.lang.Exception'
-	  date, time, classname, level, detail = input.split(' ', 4)
-	  return date, time, classname, level, detail
+    # Uncomment the following if using C Python
+    #from pig_util import outputSchema
 
-先ほど、入力の一貫したスキーマがないために **LINE** 入力を chararray として定義したことを覚えているでしょうか。 これから **jython.py** が行うのは、出力用に、データを一貫したスキーマに変換することです。次のような処理です。
+    @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
+    def create_structure(input):
+    if (input.startswith('java.lang.Exception')):
+        input = input[21:len(input)] + ' - java.lang.Exception'
+    date, time, classname, level, detail = input.split(' ', 4)
+    return date, time, classname, level, detail
+
+> [AZURE.NOTE] "pig\_util" は、インストールの必要はありません。スクリプトで自動的に使用可能です。
+
+先ほど、入力の一貫したスキーマがないために **LINE** 入力を chararray として定義したことを覚えているでしょうか。 これから Python が行うのは、出力用に、データを一貫したスキーマに変換することです。次のような処理です。
 
 1. **@outputSchema** ステートメントは、Pig に返されるデータ形式を定義します。この場合、Pig のデータ型である、**data bag** になります。この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
@@ -160,13 +175,13 @@ Linux ベースの HDInsight クラスターを使用している場合は、次
 
 ###SSH
 
-SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する</a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
+SSH の使用に関する詳細については、「Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する<a href="../hdinsight-hadoop-linux-use-ssh-unix/" target="_blank"></a>」または「<a href="../hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する</a>」をご覧ください。
 
-1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
+1. Python の例の [streaming.py](#streamingpy) と [pig\_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
 2. `scp` を使用して HDInsight クラスターにファイルをコピーします。以下の例では、**mycluster** という名前のクラスターにファイルをコピーします。
 
-		scp streaming.py jython.py myuser@mycluster-ssh.azurehdinsight.net:
+		scp streaming.py pig_python.py myuser@mycluster-ssh.azurehdinsight.net:
 
 3. SSH を使用してクラスターに接続します。以下の例では、**mycluster** という名前のクラスターにユーザー **myuser** として接続します。
 
@@ -175,7 +190,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 4. 以前アップロードした python のファイルを SSH セッションからクラスターの WASB ストレージに追加します。
 
 		hdfs dfs -put streaming.py /streaming.py
-		hdfs dfs -put jython.py /jython.py
+		hdfs dfs -put pig_python.py /pig_python.py
 
 ファイルをアップロードした後、次の手順に従って、Hive ジョブと Pig ジョブを実行します。
 
@@ -204,9 +219,9 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 
 1. `pig` コマンドを使用してシェルを起動します。シェルが読み込まれると、`grunt>` プロンプトが表示されます。
 
-2. `grunt>` プロンプトで、以下のステートメントを入力します。
+2. 次のステートメントを `grunt>` プロンプトに入力して、Jython インタープリターを使用する Python スクリプトを実行します。
 
-		Register wasbs:///jython.py using jython as myfuncs;
+		Register wasbs:///pig_python.py using jython as myfuncs;
 	    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
 	    LOG = FILTER LOGS by LINE is not null;
 	    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
@@ -220,19 +235,39 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 		((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
 		((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
+4. `quit` を使用して Grunt シェルを終了し、次のコマンドを使ってローカル ファイル システムで pig\_python.py ファイルを編集します:
+
+    nano pig\_python.py
+
+5. エディターを使い、次の各行で、行の先頭から`#`文字を削除してコメント解除します:
+
+        #from pig_util import outputSchema
+
+    変更を加えた後は、Ctrl キーを押しながら X キーを押してエディターを終了します。Y を選択し、Enter を押して変更を保存します。
+
+6. `pig` コマンドを使用してシェルを再起動します。`grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
+
+        Register 'pig_python.py' using streaming_python as myfuncs;
+	    LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
+	    LOG = FILTER LOGS by LINE is not null;
+	    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
+	    DUMP DETAILS;
+
+    このジョブが完了すると、以前に Jython を使用してスクリプトを実行したときと同じ出力が表示されます。
+
 ###PowerShell
 
 次の手順では、Azure PowerShell を使用します。まだインストールと構成が終了していない場合は、以下の手順に進む前に「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-1. Python の例の [streaming.py](#streamingpy) と [jython.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
+1. Python の例の [streaming.py](#streamingpy) と [pig\_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
 
-2. 次の PowerShell スクリプトを使用して、**streaming.py** ファイルと **jython.py** ファイルをサーバーにアップロードします。スクリプトの最初の 3 行に、Azure HDInsight クラスターの名前と、**streaming.py** ファイルおよび **jython.py** ファイルへのパスを入力します。
+2. 次の PowerShell スクリプトを使用して、**streaming.py** ファイルと **pig\_python.py** ファイルをサーバーにアップロードします。スクリプトの最初の 3 行に、Azure HDInsight クラスターの名前と、**streaming.py** ファイルおよび **pig\_python.py** ファイルへのパスを入力します。
 
 		$clusterName = YourHDIClusterName
 		$pathToStreamingFile = "C:\path\to\streaming.py"
-		$pathToJythonFile = "C:\path\to\jython.py"
+		$pathToJythonFile = "C:\path\to\pig_python.py"
 
 		$clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
         $resourceGroup = $clusterInfo.ResourceGroup
@@ -255,7 +290,7 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 		
         Set-AzureStorageBlobContent `
             -File $pathToJythonFile `
-            -Blob "jython.py" `
+            -Blob "pig_python.py" `
             -Container $container `
             -Context $context
 
@@ -284,10 +319,12 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
     $context = New-AzureStorageContext `
         -StorageAccountName $storageAccountName `
         -StorageAccountKey $storageAccountKey
-            
+    
+    # If using a Windows-based HDInsight cluster, change the USING statement to:
+    # "USING 'D:\Python27\python.exe streaming.py' AS " +
 	$HiveQuery = "add file wasbs:///streaming.py;" +
 	             "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
-	               "USING 'D:\Python27\python.exe streaming.py' AS " +
+	               "USING 'python streaming.py' AS " +
 	               "(clientid string, phoneLabel string, phoneHash string) " +
 	             "FROM hivesampletable " +
 	             "ORDER BY clientid LIMIT 50;"
@@ -330,9 +367,11 @@ SSH の使用に関する詳細については、「<a href="../hdinsight-hadoop
 	100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 	100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 
-####Pig
+####Pig (Jython)
 
-次の例では、__jython.py__ スクリプトを使用します。実行前に、HDInsight クラスターの HTTPs/Admin 情報の入力が求められます。
+次のステートメントは、Jython インタープリターを使用して __pig\_python.py__ スクリプトを使います。実行前に、HDInsight クラスターの HTTPs/Admin 情報の入力が求められます。
+
+> [AZURE.NOTE] PowerShell を使用してジョブをリモートで送信するときは、C Python をインタープリターとして使用することはできません。
 
 	# Replace 'YourHDIClusterName' with the name of your cluster
 	$clusterName = YourHDIClusterName
@@ -444,4 +483,4 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

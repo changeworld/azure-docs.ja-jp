@@ -134,7 +134,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 3. プロジェクトをアップロードして実行し、ログ データを生成します。
 4. [Azure ポータル](https://portal.azure.com/)で、新しい Application Insights リソースを参照し、**[検索]** を開きます。ログ データが、要求、使用状況、およびその他の製品利用統計情報と共に表示されます。一部の製品利用統計情報については、表示されるまで数分かかる場合があります。[更新] をクリックします。[詳細情報](../application-insights/app-insights-diagnostic-search.md)
 
-[Application Insights でのパフォーマンス追跡についての詳細情報](../azure-portal/insights-perf-analytics.md)
+[Application Insights でのパフォーマンス追跡についての詳細情報](../application-insights/app-insights-azure-web-apps.md)
 
 ##<a name="streamlogs"></a> ログをストリーミングする方法
 
@@ -270,4 +270,4 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 * 以前のポータルから新しいポータルへの変更ガイドについては、「[Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)」を参照してください。
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

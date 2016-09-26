@@ -13,44 +13,38 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/28/2016" 
+	ms.date="09/14/2016" 
 	ms.author="spelluru"/>
 
 # Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
-## 概要
-Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。Data Factory .NET SDK の詳細については、[Data Factory クラス ライブラリ リファレンス][adf-class-library-reference]に関するページをご覧ください。
-
-
+## Overview
+Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。Data Factory .NET SDK の詳細については、[Data Factory クラス ライブラリ リファレンス](https://msdn.microsoft.com/library/mt415893.aspx)に関するページをご覧ください。
 
 ## 前提条件
 
 - Visual Studio 2012 または 2013 または 2015
-- [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
+- [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。
+- Azure Active Directory にネイティブ クライアント アプリケーションを追加します。アプリケーションを追加する手順については、「[Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md)」を参照してください。**[構成]** ページの**クライアント ID** と**リダイレクト URI** をメモしておきます。
+- Azure の**サブスクリプション ID** と**テナント ID** を入手します。手順については、「[Azure サブスクリプションとテナント ID を入手する](#get-azure-subscription-and-tenant-ids)」を参照してください。
 - Azure Data Factory の NuGet パッケージをダウンロードしてインストールします。手順はこのチュートリアルにあります。
 
 ## チュートリアル
 1. Visual Studio 2012 または 2013 を使用して、C# .NET コンソール アプリケーションを作成します。
-	<ol type="a">
-		<li><b>Visual Studio 2012</b> または <b>Visual Studio 2013</b> を起動します。</li>
-		<li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li> 
-		<li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。</li> 
-		<li>右側にあるプロジェクトの種類の一覧から <b>[コンソール アプリケーション]</b> を選択します。</li>
-		<li><b>[名前]</b> に「<b>DataFactoryAPITestApp</b>」と入力します。</li> 
-		<li><b>[場所]</b> で <b>[C:\ADFGetStarted]</b> を選択します。</li>
-		<li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
-	</ol>
-2. <b>[ツール]</b> をクリックし、<b>[NuGet パッケージ マネージャー]</b> にカーソルを合わせ、<b>[パッケージ マネージャー コンソール]</b> をクリックします。
-3.	<b>[パッケージ マネージャー コンソール]</b> で、次のコマンドを 1 つずつ入力します。</b>
+	1. **Visual Studio 2012/2013/2015** を起動します。
+	2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
+	3. **[テンプレート]** を展開し、**[Visual C#]** を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
+	4. 右側にあるプロジェクトの種類の一覧から **[コンソール アプリケーション]** を選択します。
+	5. **[名前]** に「**DataFactoryAPITestApp**」と入力します。
+	6. **[場所]** で **[C:\\ADFGetStarted]** を選択します。
+	7. **[OK]** をクリックしてプロジェクトを作成します。
+2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
+3.	**[パッケージ マネージャー コンソール]** で、次のコマンドを 1 つずつ実行します。
 
-		Install-Package Microsoft.Azure.Management.DataFactories
-		Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
-6. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらは、ヘルパー メソッド **GetAuthorizationHeader** によって使用されます。
+			Install-Package Microsoft.Azure.Management.DataFactories
+			Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
+4. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらの構成値は、**GetAuthorizationHeader** メソッドで使用されます。
 
-	**AdfClientId**、**RedirectUri**、**SubscriptionId**、**ActiveDirectoryTenantId** は、実際の値で置き換えてください。
-
-	サブスクリプション ID とテナント ID の値は、Azure PowerShell (最初に Add-AzureAccount でログインすることが必要になる場合もあります) から Login-AzureRmAccount でログインした後、**Get-AzureAccount -Format-List** を実行することによって取得できます。
-
-	AD アプリケーションの CLIENT ID とリダイレクト URI は、Azure ポータルから取得できます。
+	> [AZURE.IMPORTANT] **AdfClientId**、**RedirectUri**、**SubscriptionId**、**ActiveDirectoryTenantId** の値は、実際の値で置き換えてください。
  
 		<appSettings>
 		    <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
@@ -58,12 +52,12 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		    <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
 		    <!-- Replace the following values with your own -->
-		    <add key="AdfClientId" value="Your AD application ID" />
-		    <add key="RedirectUri" value="Your AD application's redirect URI" />
+		    <add key="AdfClientId" value="Your AAD application ID" />
+		    <add key="RedirectUri" value="Your AAD application's redirect URI" />
 		    <add key="SubscriptionId" value="your subscription ID" />
     		<add key="ActiveDirectoryTenantId" value="your tenant ID" />
 		</appSettings>
-6. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
+5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
 		using System.Threading;
 		using System.Configuration;
@@ -75,7 +69,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		
 		using Microsoft.IdentityModel.Clients.ActiveDirectory;
 		using Microsoft.Azure;
-6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、Data Factory、リンクされたサービス、入力と出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。
+6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、入力データセットと出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。
 
         // create data factory management client
         string resourceGroupName = "resourcegroupname";
@@ -132,7 +126,6 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 	入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
 	
 	出力 BLOB の FolderPath を **adftutorial/apifactoryoutput/{Slice}** に設定します。この **Slice** は **SliceStart** (各スライスの開始日時) の値に基づいて動的に計算されます。
-
  
         // create input and output datasets
         Console.WriteLine("Creating input and output datasets");
@@ -207,9 +200,9 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             });
 
-11. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
+10. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
 
-コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。また、このアクティビティは、安全で信頼性が高いスケーラブルな方法でさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
+	コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
             // create a pipeline
         Console.WriteLine("Creating a pipeline");
@@ -265,9 +258,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
                 }
             });
 
-	
-
-12. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure ポータルへのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
+11. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure Portal へのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
  
 		public static string GetAuthorizationHeader()
         {
@@ -337,7 +328,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
             }
         }
 
-14. **(省略可能)**データ スライスの実行の詳細を取得するために次のコードを **Main** メソッドに追加します。
+13. **(省略可能)** データ スライスの実行の詳細を取得するために次のコードを **Main** メソッドに追加します。
 
         Console.WriteLine("Getting run details of a data slice");
 
@@ -369,13 +360,12 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         Console.WriteLine("\nPress any key to exit.");
         Console.ReadKey();
 
-15. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。**System.Configuration** アセンブリのチェック ボックスをオンにして、**[OK]** をクリックします。
-16. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
+14. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。`System.Configuration` アセンブリのチェック ボックスをオンにし、**[OK]** をクリックします。
+15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
 16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
-		Jane, Doe
-	 
+		Jane, Doe 
 17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
 18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
 	- リンクされたサービス: **LinkedService\_AzureStorage**
@@ -383,13 +373,14 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 	- パイプライン: **PipelineBlobSample**
 18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
-
 ## ポップアップ ダイアログ ボックスなしでのログイン 
-上記のサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)」を参照してください。
+このチュートリアルのサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、[Azure Resource Manager でのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)に関するページを参照してください。
+
+> [AZURE.IMPORTANT] Web アプリケーションを Azure Active Directory に追加し、アプリケーションのクライアント ID とクライアント シークレットを書き留めてください。
 
 ### 例
 
-次に示すように、GetAuthorizationHeaderNoPopup メソッドを作成します。
+GetAuthorizationHeaderNoPopup メソッドを作成します。
 
     public static string GetAuthorizationHeaderNoPopup()
     {
@@ -403,7 +394,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
         throw new InvalidOperationException("Failed to acquire token");
     }
 
-**Main** 関数の **GetAuthorizationHeader** の呼び出しを **GetAuthorizationHeaderNoPopup** の呼び出しに置き換えます。
+**Main** 関数の **GetAuthorizationHeader** の呼び出しを **GetAuthorizationHeaderNoPopup** の呼び出しで置き換えます。
 
         TokenCloudCredentials aadTokenCredentials =
             new TokenCloudCredentials(
@@ -429,15 +420,24 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 		$azureAdApplication
 
 
-アプリケーション ID とパスワード (クライアント シークレット) を書き留めて、前出のコードで使用します。
+アプリケーション ID とパスワード (クライアント シークレット) を書き留めて、チュートリアルで使用します。
 
-[data-factory-introduction]: data-factory-introduction.md
-[adf-getstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-[use-custom-activities]: data-factory-use-custom-activities.md
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
- 
-[adf-class-library-reference]: http://go.microsoft.com/fwlink/?LinkID=521877
-[azure-developer-center]: http://azure.microsoft.com/downloads/
- 
+## Azure サブスクリプションとテナント ID を入手する
+コンピューターに PowerShell の最新バージョンをインストールしていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従ってインストールします。
 
-<!---HONumber=AcomDC_0803_2016-->
+1. Azure PowerShell を起動し、次のコマンドを実行します。
+2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+
+		Login-AzureRmAccount
+
+	このアカウントに関連付けられている Azure サブスクリプションを 1 つのみをお持ちの場合は、次の 2 つの手順を実行する必要はありません。
+3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+
+		Get-AzureRmSubscription
+4. 次のコマンドを実行して、使用するサブスクリプションを選択します。**NameOfAzureSubscription** を自分の Azure サブスクリプションの名前で置き換えます。
+
+		Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext 
+
+**SubscriptionId** と **TenantId** の値を書き留めておきます。
+
+<!---HONumber=AcomDC_0914_2016-->

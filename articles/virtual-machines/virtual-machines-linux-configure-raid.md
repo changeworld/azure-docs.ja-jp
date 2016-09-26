@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/21/2016" 
+	ms.date="09/06/2016" 
 	ms.author="rclaus"/>
 
 
@@ -24,7 +24,7 @@
 
 
 ## データ ディスクをアタッチする
-2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Microsoft Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](virtual-machines-linux-add-disk.md)」をご覧ください。
+RAID デバイスの構成には、2 つ以上の空のデータ ディスクが必要です。RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、[ディスクの接続](virtual-machines-linux-add-disk.md)に関する Microsoft Azure の記事をご覧ください。
 
 
 ## mdadm ユーティリティをインストールする
@@ -103,7 +103,7 @@
 
 2. 新しい RAID デバイスにファイル システムを作成します。
 
-	**CentOS、Oracle Linux、SLES 12、openSUSE と Ubuntu**
+	**CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
 		# sudo mkfs -t ext4 /dev/md127
 
@@ -171,4 +171,4 @@
 
 	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

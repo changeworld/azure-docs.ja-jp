@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure サブスクリプションにログインして管理することができない | Microsoft Azure"
+	pageTitle="Azure サブスクリプションにサインインして管理することができない | Microsoft Azure"
 	description="Azure サブスクリプションのログインに関するいくつかの一般的な問題について、トラブルシューティング情報を掲載しています。"
 	services=""
 	documentationCenter=""
@@ -15,22 +15,68 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/09/2016"
 	ms.author="genli"/>
 
-# Azure サブスクリプションにログインして管理することができない
+# Azure サブスクリプションにサインインして管理することができない
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
+この記事では、ログインに関する問題の最も一般的な解決方法を紹介します。
 
-この記事は、ログインの問題のよくあるいくつかの原因のトラブルシューティングに役立ちます。
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-## どのポータルにアクセスしようとしていますか?
+## Azure の各ポータル
 
-アカウント管理者は[アカウント センター](https://account.windowsazure.com/)のみにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)のみです。
+| 名前 | Description | URL |
+|---|---|---|
+| Azure ポータル |Azure リソースのプロビジョニングと管理を一元的に行うことができる場所 | [https://portal.azure.com](https://portal.azure.com) |
+| Azure クラシック ポータル | 旧バージョンの Azure Portal |[https://manage.windowsazure.com](https://manage.windowsazure.com) |
+| Azure アカウント センター | Azure の使用状況の追跡とサブスクリプションの管理を一元的に行うことができる場所 |[https://account.windowsazure.com/Subscriptions](https://account.windowsazure.com/Subscriptions) ||
 
-Azure 管理者ロールの詳細については、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md)」を参照してください。
+## 症状: ページの読み込み中にハングする
 
-## サブスクリプションは Microsoft アカウントまたは組織アカウントに関連付けられていますか?
+お使いのインターネット ブラウザーの問題が原因である可能性があります。
+
+この問題を解決するには、次の手順を記載された順番で実行してみてください。各手順の実行後に、ポータルのサインイン ページに再接続してみてください。
+
+-	ページを更新します。
+-	別のインターネット ブラウザーを使用します。
+-	Microsoft Internet Explorer を使用している場合は、InPrivate ブラウズ モードを使用して Azure Portal にアクセスします。そのためには、次の手順に従います。
+
+	A.**[ツール]** (![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png)) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+
+	B.[Azure Portal](https://portal.azure.com) または [Azure クラシック ポータル](https://manage.windowsazure.com) にアクセスして、サインインします。
+
+## 症状: "サブスクリプションが見つかりません" エラー メッセージが表示される
+
+この問題は、アカウントに適切なユーザー権限が無い場合に発生する可能性があります。アカウント管理者は[アカウント センター](https://account.windowsazure.com/)のみにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure Portal](https://portal.azure.com)または [Azure クラシック ポータル](https://manage.windowsazure.com/)のみです。
+
+**1: Azure Portal または Azure クラシック ポータルでこのエラー メッセージが表示された場合**
+
+この問題を解決するには、アカウントに[共同管理者または所有者のロールを追加します](billing-add-change-azure-subscription-administrator.md)。
+
+**シナリオ 2: Azure アカウント センターでこのエラー メッセージが表示された場合**
+
+使用しているアカウントがアカウント管理者であるかどうかを確認します。どのアカウントがアカウント管理者であるかを確認するには、次の手順を実行します。
+
+1.	[Azure Portal](https://portal.azure.com) にサインインします。
+2.	ハブ メニューで、**[サブスクリプション]** を選択します。
+3.	確認するサブスクリプションを選択し、**[設定]** を選択します。
+4.	**[プロパティ]** を選択します。サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。
+
+## 症状: サインイン時に自動で別のユーザーになる
+
+この問題は、インターネット ブラウザーで複数のユーザー アカウントを使用している場合に発生する可能性があります。
+
+この問題を解決するには、次の方法のいずれかを試してください。
+
+- ポータルからサインアウトし、目的のアカウントでもう一度サインインする。
+-	キャッシュをクリアし、インターネット Cookie を削除する。Internet Explorer でこれを行うには、**[ツール]** (![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png)) > **[インターネット オプション]** > **[削除]** の順にクリックし、一時ファイル、Cookie、パスワード、および閲覧履歴の各チェックボックスをオンにして [削除] をクリックします。
+
+-	Internet Explorer の設定をリセットして、構成済みの個人設定を元に戻す。これを行うには、**[ツール]** (![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png)) > **[インターネット オプション]** > **[詳細設定]** > **[リセット]** の順にクリックし、**[個人設定を削除する]** チェックボックスをオンにして [リセット] をクリックします。
+
+-	InPrivate ブラウズ モードで Azure Portal にアクセスする。これを行うには、**[ツール]** (![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png)) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
+
+## Microsoft アカウントと組織アカウントの違い
 
 Microsoft アカウントとはお使いの電子メール アドレスとそのパスワードです。これを使用して、Windows Live プログラムまたはサービス (Outlook、Hotmail、MSN、OneDrive など) にサインインします。Microsoft アカウントを設定するには、会社の電子メールなど、所有する任意の電子メール アドレスを使用します。詳しくは、[www.microsoft.com/account](http://www.microsoft.com/account) をご覧ください。
 
@@ -38,22 +84,6 @@ Microsoft アカウントとはお使いの電子メール アドレスとその
 
 ![サインイン ページ](./media/billing-cannot-login-subscription/signin.png)
 
-## 共同管理者: 他のアカウントを管理するのに適切な種類のアカウントを使用していますか?
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-- Microsoft アカウントを使用してログインした場合、他の Microsoft アカウントを共同管理者として追加することしかできません。これは、非組織アカウントが特定のアカウント (たとえば、janedoe@contoso.com) が有効であるかどうかを検出することを防止するためのセキュリティ上の要件です。
-- 組織アカウントを使用してログインした場合、組織内の他の組織アカウントを共同管理者として追加することができます。たとえば、abby@contoso.com はサービス管理者または共同管理者として bob@contoso.com を追加できますが、john@notcontoso.com を追加することはできません。組織アカウントでログインしているユーザーは、Microsoft アカウント ユーザーをサービス管理者または共同管理者として追加することもできます。
-
-組織アカウントで Azure にログインできるようになると、サービス管理者 (SA) と共同管理者 (CA) アカウントの要件は次のように変わります。
-
-| ログイン方法| Microsoft アカウントを共同管理者またはサービス管理者として追加できる |同じ組織内の組織アカウントを共同管理者またはサービス管理者として追加できる |異なる組織の組織アカウントを共同管理者またはサービス管理者として追加できる
-| ------------- | ------------- |---------------|---------------|
-|Microsoft アカウント |はい|なし|なし|
-|組織アカウント|はい|はい|なし|
-
-## インターネット ブラウザーに問題がある
-
-IE InPrivate ブラウズ モードを使用したキャッシュ/Cookie の削除や、他のブラウザーの使用を試してください。
-
-> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。
-
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->
