@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/10/2016"
+   ms.date="09/16/2016"
    ms.author="ganesr"/>
 
 
@@ -78,7 +78,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 
 ## 自律システム番号
 
-Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。ASN 65515 ～ 65520 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。ピアリング側 (顧客またはプロバイダー) では、AS をパブリック ASN にすることができるほか (自分の所有であることが確認できる場合)、プライベート ピアリングについてはプライベート ASN 番号を設定できます。パブリック ピアリングおよび Microsoft ピアリングについては、パブリック ASN が必要です。
+Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。ASN 65515 ～ 65520 は、内部使用のために予約されています。16 ビットと 32 ビットの両方の AS 番号がサポートされています。ピアリング側 (顧客またはプロバイダー) では、AS をパブリック ASN にしたり (自分の所有であることが確認できる場合)、プライベート ASN 番号にしたりすることができます。
 
 特定の回路のプライマリ パスとセカンダリ パスにおいて、データ転送の対称性に関する要件はありません。転送パスとリターン パスは、異なるルーター ペアを通過することができます。同じルートについては、自分に属している特定の回線ペアのプライマリまたはセカンダリの側からアドバタイズする必要があります。ルートのメトリックは同一である必要はありません。
 
@@ -175,4 +175,4 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 	- [クラシック デプロイメント モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイメント モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
 	- [クラシック VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

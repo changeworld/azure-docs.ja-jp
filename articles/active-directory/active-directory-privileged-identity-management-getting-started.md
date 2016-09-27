@@ -13,13 +13,13 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/29/2016"
+   ms.date="09/16/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management の使用
 
 
-Azure Active Directory (AD) Privileged Identity Management (PIM) を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
+組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 この記事では、Azure AD PIM アプリを Azure ポータル ダッシュボードに追加する方法を説明します。
 
@@ -28,17 +28,24 @@ Azure Active Directory (AD) Privileged Identity Management (PIM) を使用する
 Azure AD Privileged Identity Management を使用するには、まず Azure ポータル ダッシュボードにアプリケーションを追加する必要があります。
 
 1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名をクリックし、PIM を使用するディレクトリを選択します。
-3. **[新規]**、**[セキュリティ + ID]**、**[Azure AD Privileged Identity Management]** の順に選択します。
-
-    ![Enable PIM in the portal][1]
-
-4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。Privileged Identity Management アプリケーションが起動します。
+2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名を選択し、PIM を使用するディレクトリを選択します。
+3. **[その他のサービス]** を選択し、[フィルター] テキスト ボックスを使用して **[Azure AD Privileged Identity Management]** を検索します。
+4. **[ダッシュボードにピン留めする]** チェックボックスをオンにして、**[作成]** をクリックします。Privileged Identity Management アプリケーションが起動します。
 
 
 ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。特権ロール管理者だけが、このアプリケーションにアクセスして他の管理者のアクセスを管理できます。
 
-1 つ以上のロールに割り当てられると、**[ロールをアクティブ化する]** オプションが表示されます。特権ロール管理者である場合は、**[特権ロールの管理]** オプションも表示されます。
+## タスクへの移動
+
+Azure AD Privileged Identity Management を設定すると、アプリケーションを開くたびにナビゲーション ブレードが表示されます。このブレードを使用して、ID 管理タスクを実行します。
+
+![Top-level tasks for PIM - screenshot](./media/active-directory-privileged-identity-management-getting-started/pim_tasks.png)
+
+- **[ロールをアクティブ化する]** を使用すると、自分に割り当てられているロールの一覧が表示されます。ここで、権限がある任意のロールをアクティブ化できます。
+
+- **[特権ロールの管理]** は、特権ロール管理者がロール割り当ての管理、ロールのアクティブ化設定の変更、アクセス レビューの開始などを行うためのダッシュボードです。このダッシュボードのオプションは、特権ロール管理者以外に対しては無効になっています。
+
+- **[特権アクセスのレビュー]** は、完了する必要がある保留中のすべてのアクセス レビューを表示します。自分自身のアクセスをレビューすることも、他のユーザーのアクセスをレビューすることもできます。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
@@ -52,4 +59,4 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 
 [1]: ./media/active-directory-privileged-identity-management-configure/PIM_EnablePim.png
 
-<!-----HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

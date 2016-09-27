@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/29/2016"
+	ms.date="09/15/2016"
 	ms.author="markgal; jimpark"/>
 
 
 # 最初に: Azure 仮想マシンのバックアップ
 
 > [AZURE.SELECTOR]
-- [最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)
-- [最初に: バックアップ コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look.md)
+- [Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)
+- [バックアップ コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look.md)
 
 このチュートリアルでは、Azure 仮想マシン (VM) を Azure のバックアップ コンテナーにバックアップする手順について説明します。この記事では、クラシック モデルまたは Service Manager デプロイメント モデルでの VM のバックアップについて説明します。リソース グループに属する Recovery Services コンテナーへの VM のバックアップについては、「[最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)」を参照してください。このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
@@ -213,4 +213,4 @@ VM をバックアップする手順は、主に次の 5 つです。
 ## 疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -20,9 +20,9 @@
 # Azure Portal を使用してサイト間接続を持つ VNet を作成する
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
-- [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
 
 
 この記事では、**Azure Resource Manager デプロイメント モデル**と Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
@@ -154,4 +154,4 @@ VPN 接続の確認はポータルで行えるほか、PowerShell を使って�
 
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

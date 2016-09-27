@@ -39,9 +39,9 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 ## HBase クラスターの作成
 
-以下の手順では、Azure ARM テンプレートを使用して HBase クラスターを作成します。この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+以下の手順では、Azure Resource Manager テンプレートを使用して HBase クラスターを作成します。この手順で使用するパラメーターとその他のクラスター作成方法について理解するには、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-1. 次の画像をクリックして Azure ポータルで ARM テンプレートを開きます。ARM テンプレートはパブリック BLOB コンテナー内にあります。
+1. 次の画像をクリックして Azure Portal でテンプレートを開きます。テンプレートは、パブリック BLOB コンテナー内にあります。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hbase-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
@@ -247,7 +247,7 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 4. PuTTY セッション画面の基本オプションで、次の値を入力します。
 
 	- **ホスト名**: [ホスト名 (または IP アドレス)] フィールドの HDInsight サーバーの SSH アドレス。SSH アドレスは、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (*mycluster-ssh.azurehdinsight.net* など)。
-	- **ポート**: 22。ヘッド ノード 0 の SSH ポートは 22 です。
+	- **ポート**: 22。プライマリ ヘッドノードの ssh ポートは 22 です。
 5. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** をクリックします。
 6. [SSH ポートの転送を管理するオプション] フォームに次の情報を入力します。
 
@@ -325,4 +325,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/23/2016"
+	ms.date="09/20/2016"
 	ms.author="deonhe"/>
 
 # コネクタの一覧
@@ -26,18 +26,18 @@
 |コネクタ||||
 |-----------|-----------|-----------|-----------|
 |[![API アイコン][API/Web-Appicon]<br/>**API/Web アプリ**][API/Web-Appdoc]|[![API アイコン][Azure-Blobicon]<br/>**Azure BLOB**][Azure-Blobdoc]|[![API アイコン][Azure~Functionsicon]<br/>**Azure<br/>Functions**][Azure~Functionsdoc]|[![API アイコン][Boxicon]<br/>**Box**][Boxdoc]|
-|[![API アイコン][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API アイコン][Delayicon]<br/>**遅延**][Delaydoc]|[![API アイコン][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|[![API アイコン][Facebookicon]<br/>**Facebook**][Facebookdoc]|
-|[![API アイコン][FTPicon]<br/>**FTP**][FTPdoc]|[![API アイコン][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API アイコン][Google-Driveicon]<br/>**Google ドライブ**][Google-Drivedoc]|![API アイコン][Google-Sheetsicon]<br/>**Google スプレッドシート**|
-|![API アイコン][Google-Tasksicon]<br/>**Google ToDo リスト**|![API アイコン][Google~Calendaricon]<br/>**Google<br/>カレンダー**|[![API アイコン][HTTPicon]<br/>**HTTP**][HTTPdoc]|[![API アイコン][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|
-|[![API アイコン][HTTP~Requesticon]<br/>**HTTP<br/>要求**][HTTP~Requestdoc]|[![API アイコン][HTTP~Responseicon]<br/>**HTTP<br/>応答**][HTTP~Responsedoc]|![API アイコン][Instagramicon]<br/>**Instagram**|[![API アイコン][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|
-|![API アイコン][Mandrillicon]<br/>**Mandrill**|[![API アイコン][Nested~Logic-Appicon]<br/>**入れ子になった<br/>ロジック アプリ**][Nested~Logic-Appdoc]|[![API アイコン][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API アイコン][Office-365~Usersicon]<br/>**Office 365<br/>ユーザー**][Office-365~Usersdoc]|
-|[![API アイコン][Office-365~Videoicon]<br/>**Office 365<br/>ビデオ**][Office-365~Videodoc]|[![API アイコン][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|[![API アイコン][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API アイコン][Outlookicon]<br/>**Outlook**][Outlookdoc]|
-|[![API アイコン][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API アイコン][Queryicon]<br/>**クエリ**][Querydoc]|[![API アイコン][Recurrenceicon]<br/>**繰り返し**][Recurrencedoc]|[![API アイコン][RSSicon]<br/>**RSS**][RSSdoc]|
-|[![API アイコン][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API アイコン][SendGridicon]<br/>**SendGrid**][SendGriddoc]|[![API アイコン][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API アイコン][SFTPicon]<br/>**SFTP**][SFTPdoc]|
-|[![API アイコン][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API アイコン][Slackicon]<br/>**Slack**][Slackdoc]|[![API アイコン][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API アイコン][SparkPosticon]<br/>**SparkPost**|
-|[![API アイコン][SQLicon]<br/>**SQL**][SQLdoc]|[![API アイコン][Translatoricon]<br/>**Translator**][Translatordoc]|[![API アイコン][Trelloicon]<br/>**Trello**][Trellodoc]|[![API アイコン][Twilioicon]<br/>**Twilio**][Twiliodoc]|
-|[![API アイコン][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API アイコン][Webhookicon]<br/>**webhook**][Webhookdoc]|[![API アイコン][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API アイコン][Yammericon]<br/>**Yammer**][Yammerdoc]|
-|![API アイコン][YouTubeicon]<br/>**YouTube**||||
+|[![API アイコン][CRM-Onlineicon]<br/>**CRM Online**][CRM-Onlinedoc]|[![API アイコン][DB2icon]<br/>**DB2**][db2doc]|[![API アイコン][Delayicon]<br/>**遅延**][Delaydoc]|[![API アイコン][Dropboxicon]<br/>**Dropbox**][Dropboxdoc]|
+|[![API アイコン][Facebookicon]<br/>**Facebook**][Facebookdoc]|[![API アイコン][FTPicon]<br/>**FTP**][FTPdoc]|[![API アイコン][GitHubicon]<br/>**GitHub**][GitHubdoc]|[![API アイコン][Google-Driveicon]<br/>**Google ドライブ**][Google-Drivedoc]|
+|![API アイコン][Google-Sheetsicon]<br/>**Google スプレッドシート**|![API アイコン][Google-Tasksicon]<br/>**Google ToDo リスト**|![API アイコン][Google~Calendaricon]<br/>**Google<br/>カレンダー**|[![API アイコン][HTTPicon]<br/>**HTTP**][HTTPdoc]|
+|[![API アイコン][HTTP-Swaggericon]<br/>**HTTP Swagger**][HTTP-Swaggerdoc]|[![API アイコン][HTTP~Requesticon]<br/>**HTTP<br/>要求**][HTTP~Requestdoc]|[![API アイコン][HTTP~Responseicon]<br/>**HTTP<br/>応答**][HTTP~Responsedoc]|[![API アイコン][Informixicon]<br/>**Informix**][informixdoc]|
+|![API アイコン][Instagramicon]<br/>**Instagram**|[![API アイコン][MailChimpicon]<br/>**MailChimp**][MailChimpdoc]|![API アイコン][Mandrillicon]<br/>**Mandrill**|[![API アイコン][Nested~Logic-Appicon]<br/>**入れ子になった<br/>ロジック アプリ**][Nested~Logic-Appdoc]|
+|[![API アイコン][Office-365~Outlookicon]<br/>**Office 365<br/>Outlook**][Office-365~Outlookdoc]|[![API アイコン][Office-365~Usersicon]<br/>**Office 365<br/>ユーザー**][Office-365~Usersdoc]|[![API アイコン][Office-365~Videoicon]<br/>**Office 365<br/>ビデオ**][Office-365~Videodoc]|[![API アイコン][OneDriveicon]<br/>**OneDrive**][OneDrivedoc]|
+|[![API アイコン][OneDrive-for~Businessicon]<br/>**OneDrive for<br/>Business**][OneDrive-for~Businessdoc]|[![API アイコン][Outlookicon]<br/>**Outlook**][Outlookdoc]|[![API アイコン][Project-Onlineicon]<br/>**Project Online**][Project-Onlinedoc]|[![API アイコン][Queryicon]<br/>**クエリ**][Querydoc]|
+|[![API アイコン][Recurrenceicon]<br/>**繰り返し**][Recurrencedoc]|[![API アイコン][RSSicon]<br/>**RSS**][RSSdoc]|[![API アイコン][Salesforceicon]<br/>**Salesforce**][Salesforcedoc]|[![API アイコン][SendGridicon]<br/>**SendGrid**][SendGriddoc]|
+|[![API アイコン][Service-Busicon]<br/>**Service Bus**][Service-Busdoc]|[![API アイコン][SFTPicon]<br/>**SFTP**][SFTPdoc]|[![API アイコン][SharePointicon]<br/>**SharePoint**][SharePointdoc]|[![API アイコン][Slackicon]<br/>**Slack**][Slackdoc]|
+|[![API アイコン][SMTPicon]<br/>**SMTP**][SMTPdoc]|![API アイコン][SparkPosticon]<br/>**SparkPost**|[![API アイコン][SQLicon]<br/>**SQL**][SQLdoc]|[![API アイコン][Translatoricon]<br/>**Translator**][Translatordoc]|
+|[![API アイコン][Trelloicon]<br/>**Trello**][Trellodoc]|[![API アイコン][Twilioicon]<br/>**Twilio**][Twiliodoc]|[![API アイコン][Twittericon]<br/>**Twitter**][Twitterdoc]|[![API アイコン][Webhookicon]<br/>**webhook**][Webhookdoc]|
+|[![API アイコン][Wunderlisticon]<br/>**Wunderlist**][Wunderlistdoc]|[![API アイコン][Yammericon]<br/>**Yammer**][Yammerdoc]|![API アイコン][YouTubeicon]<br/>**YouTube**||
 
 > [AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps を体験することもできます。[Logic App の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。App Service で短時間有効な簡易版のロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
@@ -72,10 +72,12 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [azure-blobdoc]: ./connectors-create-api-azureblobstorage.md "Azure BLOB に接続して、BLOB コンテナーのファイルを管理します。"
 [boxDoc]: ./connectors-create-api-box.md "Box に接続して、ファイルのアップロード、取得、削除、一覧の取得や、その他のファイル タスクを実行できます。"
 [crm-onlinedoc]: ./connectors-create-api-crmonline.md "Dynamics CRM Online に接続し、CRM Online データでより多くのことを実行できます。"
+[db2doc]: ./connectors-create-api-db2.md "クラウドまたはオンプレミスの IBM DB2 に接続し、行の更新、テーブルの取得などを実行できます。"
 [dropboxdoc]: ./connectors-create-api-dropbox.md "Dropbox に接続して、ファイルの取得、削除、一覧の取得や、その他のファイル タスクを実行できます。"
 [facebookdoc]: ./connectors-create-api-facebook.md "Facebook に接続することで、タイムラインへの投稿、ページ フィードの取得などを行います。"
 [ftpdoc]: ./connectors-create-api-ftp.md "FTP/FTPS サーバーに接続して、ファイルのアップロード、取得、削除などのさまざまな FTP タスクを実行できます。"
 [google-drivedoc]: ./connectors-create-api-googledrive.md "GoogleDrive に接続し、自分のデータを操作します。"
+[informixdoc]: ./connectors-create-api-informix.md "クラウドまたはオンプレミスの Informix に接続し、行の読み取り、テーブルの一覧表示などを実行できます。"
 [translatordoc]: ./connectors-create-api-microsofttranslator.md
 [office-365~outlookdoc]: ./connectors-create-api-office365-outlook.md "Office 365 コネクタを使用すると、電子メールの送受信、予定表の管理などの操作を実行できます。さらに、Office 365 アカウントを使用して連絡先を管理することができます。"
 [office-365~usersdoc]: ./connectors-create-api-office365-users.md
@@ -133,13 +135,22 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 
 <!--Icon references-->
 [Azure-Blobicon]: ./media/apis-list/azureblob.png
+[Azure~Functionsicon]: ./media/apis-list/function.png
 [Boxicon]: ./media/apis-list/box.png
-[FTPicon]: ./media/apis-list/ftp.png
-[GitHubicon]: ./media/apis-list/github.png
 [CRM-Onlineicon]: ./media/apis-list/dynamicscrmonline.png
+[DB2icon]: ./media/apis-list/db2.png
 [Dropboxicon]: ./media/apis-list/dropbox.png
 [Facebookicon]: ./media/apis-list/facebook.png
+[FTPicon]: ./media/apis-list/ftp.png
+[GitHubicon]: ./media/apis-list/github.png
 [Google-Driveicon]: ./media/apis-list/googledrive.png
+[Google~Calendaricon]: ./media/apis-list/googlecalendar.png
+[Google-Tasksicon]: ./media/apis-list/googletasks.png
+[Google-Sheetsicon]: ./media/apis-list/googlesheet.png
+[HTTPicon]: ./media/apis-list/http.png
+[HTTP~Requesticon]: ./media/apis-list/request.png
+[HTTP~Responseicon]: ./media/apis-list/response.png
+[Informixicon]: ./media/apis-list/informix.png
 [MailChimpicon]: ./media/apis-list/mailchimp.png
 [Translatoricon]: ./media/apis-list/microsofttranslator.png
 [Office-365~Outlookicon]: ./media/apis-list/office365.png
@@ -163,21 +174,14 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [Twittericon]: ./media/apis-list/twitter.png
 [Wunderlisticon]: ./media/apis-list/wunderlist.png
 [Yammericon]: ./media/apis-list/yammer.png
-[Google~Calendaricon]: ./media/apis-list/googlecalendar.png
-[Google-Tasksicon]: ./media/apis-list/googletasks.png
-[Google-Sheetsicon]: ./media/apis-list/googlesheet.png
 [Mandrillicon]: ./media/apis-list/mandrill.png
 [SparkPosticon]: ./media/apis-list/sparkpost.png
 [Instagramicon]: ./media/apis-list/instagram.png
 [YouTubeicon]: ./media/apis-list/youtube.png
-[HTTPicon]: ./media/apis-list/http.png
-[HTTP~Requesticon]: ./media/apis-list/request.png
-[HTTP~Responseicon]: ./media/apis-list/response.png
 [Delayicon]: ./media/apis-list/delay.png
 [HTTP-Swaggericon]: ./media/apis-list/http_swagger.png
 [Queryicon]: ./media/apis-list/query.png
 [Webhookicon]: ./media/apis-list/webhook.png
-[Azure~Functionsicon]: ./media/apis-list/function.png
 [API/Web-Appicon]: ./media/apis-list/api.png
 [Nested~Logic-Appicon]: ./media/apis-list/workflow.png
 [Recurrenceicon]: ./media/apis-list/recurrence.png
@@ -190,4 +194,4 @@ EAI および EDI を含む B2B シナリオ用のロジック アプリを作�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

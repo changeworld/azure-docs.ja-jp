@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server" 
-	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server"
+	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Windows 認証と Azure Multi-Factor Authentication Server
 
@@ -31,7 +31,7 @@ Windows 認証セクションでは、管理者が 1 つ以上のアプリケー
 
 
 >[AZURE.NOTE]この機能は Windows Server 2012 R2 上のターミナル サービスのセキュリティを保護しません。
- 
+
 
 
 
@@ -49,4 +49,4 @@ Windows 認証セクションでは、管理者が 1 つ以上のアプリケー
 10. サブネット表記を使用して IP の範囲を指定する場合は、[サブネット] を選択します。サブネットの開始 IP を入力し、ドロップダウン リストから適切なネットマスクを選択します。
 11. [OK] ボタンをクリックします。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

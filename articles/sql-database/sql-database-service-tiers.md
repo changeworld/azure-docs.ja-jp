@@ -62,7 +62,7 @@ Basic、Standard、および Premium のサービス階層は、いずれも稼�
 
 スタンドアロン データベースのサービス レベルを決めるにあたって最初に行うことは、SQL Database のエディションの選択に必要なデータベース機能を特定することです。
 
-- データベース サイズ (Basic では最大 5 GB、Standard では最大 250 GB、Premium では最大 500 GB ～ 1 TB、パフォーマンス レベルによって異なる)
+- データベース サイズ (パフォーマンス レベルによって異なり、Basic では最大 2 GB、Standard では最大 250 GB、Premium では最大 500 GB ～ 1 TB)
 - データベース バックアップの保有期間 (Basic では 7 日間、Standard では 35 日間、Premium では 35 日間)
 
 SQL Database のエディションを選んだら、データベースのパフォーマンス レベル (DTU 数) を決めます。見当をつけたうえで実際の使用感に基づいて[動的にスケールアップしたりスケールダウンしたり](sql-database-scale-up.md)することができます。[DTU Calculator](http://dtucalculator.azurewebsites.net/) を使用して、必要な DTU 数を見積もることもできます。
@@ -88,4 +88,4 @@ SQL Database のエディションを選んだら、データベースのパフ�
 
 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->
