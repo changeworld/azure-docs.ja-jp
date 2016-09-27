@@ -646,13 +646,14 @@ Azure での名前解決と IP 解決の構成については、さまざまな�
 
 Azure Virtual Network を作成することで、Azure の DHCP 機能によって割り当てられたプライベート IP アドレスのアドレス範囲を定義できます。クロスプレミス シナリオでは、定義されている IP アドレス範囲が Azure によって DHCP を使用して割り当てられます。ただし、ドメイン名解決は (VM がオンプレミス ドメインの一部であると想定して) オンプレミスで実行されるため、複数の Azure Cloud Services にまたがってアドレスを解決できます。
 
-[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/>) を参照してください。
+[comment]: <> (MSSedusch still needed? TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただしこれは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて**いない**ことを条件としています。これについては、1 年前の推奨事項には反しますが、 **今後は Azure アフィニティ グループを使用しない**ように既にお伝えしています。詳細については、<https://azure.microsoft.com/blog/regional-virtual-networks/>) を参照してください。)
 
 Azure 内のすべての仮想マシンは、Virtual Network に接続される必要があります。
 
 詳細については、[こちらの記事][resource-groups-networking]と[こちらのページ](https://azure.microsoft.com/documentation/services/virtual-network/)で説明されています。
 
-[comment]: <> (MShermannd TODO OpenLDAP トピック + ARM を含む記事が見つかりませんでした; ) [comment]: <> (MSSedusch <https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
+[comment]: <> (MShermannd TODO OpenLDAP トピック + ARM を含む記事が見つかりませんでした; ) 
+[comment]: <> (MSSedusch <https://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL>)
 
 > [AZURE.NOTE] 既定では、VM がデプロイされた後に Virtual Network の構成を変更することはできません。TCP/IP 設定は、Azure DHCP サーバーのままにしておく必要があります。既定の動作は、動的 IP 割り当てです。
 
@@ -686,12 +687,17 @@ Azure 仮想マシンには、複数の仮想ネットワーク インターフ�
 #### ポイント対サイト VPN
 ポイント対サイト VPN では、すべてのクライアント マシンが独自の VPN で Azure に接続する必要があります。ここで取り上げている SAP シナリオでは、ポイント対サイト接続は実用的ではありません。そのため、ポイント対サイト VPN 接続に関する説明はこれ以上行いません。
 
-[comment]: <> (MSSedusch -- 詳細はこちらで説明されています) [comment]: <> (MShermannd TODO リンクが無効になっています。ただし、ARM はいずれにしてもサポートされません。以下のリンクを参照してください) [comment]: <> (MSSedusch -- <http://msdn.microsoft.com/library/azure/dn133798.aspx>.) [comment]: <> (MShermannd TODO ポイント対サイトは ARM ではまだサポートされていません) [comment]: <> (MSSedusch -- <https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/>)
+[comment]: <> (MSSedusch -- 詳細はこちらで説明されています) 
+[comment]: <> (MShermannd TODO リンクが無効になっています。ただし、ARM はいずれにしてもサポートされません。以下のリンクを参照してください) 
+[comment]: <> (MSSedusch -- <http://msdn.microsoft.com/library/azure/dn133798.aspx>.) 
+[comment]: <> (MShermannd TODO ポイント対サイトは ARM ではまだサポートされていません) 
+[comment]: <> (MSSedusch -- <https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/>)
 
 #### マルチサイト VPN
 Azure では最近、1 つの Azure サブスクリプションでマルチサイト VPN 接続を作成できる機能も提供されています。以前、単一サブスクリプションは 1 つのサイト間 VPN 接続に制限されていました。単一サブスクリプション用のマルチサイト VPN 接続によって、この制限はなくなりました。これにより、クロスプレミス構成を通じて、特定のサブスクリプション用に複数の Azure リージョンを使用できるようになりました。
 
-詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
+詳細については、[こちらの記事][vpn-gateway-create-site-to-site-rm-powershell]を参照してください。
+[comment]: <> (MShermannd TODO ARM ドキュメントのリンクが見つかりません)
 
 #### VNet 間接続
 マルチサイト VPN を使用して、各リージョンに個別の Azure Virtual Network を構成する必要があります。ただし多くの場合は、異なるリージョン内のソフトウェア コンポーネント間で相互通信が必要になります。この通信では、Azure リージョンからオンプレミスにルーティングし、そこから別の Azure リージョンにルーティングするという経路は望ましくありません。経路を短縮するために、Azure では、1 つのリージョンにある 1 つの Azure Virtual Network を、別のリージョンでホストされているもう 1 つの Azure Virtual Network に接続するよう構成できます。この機能は、VNet 間接続と呼ばれます。この機能の詳細については、次のリンクから確認できます。<https://azure.microsoft.com/documentation/articles/vpn-gateway-vnet-vnet-rm-ps/>
@@ -763,7 +769,8 @@ Azure ポータルは、Azure VM デプロイメントを管理するための 3
  
 ![Microsoft Azure Portal - Virtual Machine overview (Microsoft Azure ポータル - 仮想マシンの概要)][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>) [comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>) 
+[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 仮想マシン インスタンスの管理タスクと構成タスクは、Azure ポータル内で実行できます。
 
@@ -774,7 +781,9 @@ Azure ポータルでは、VM とその他のさまざまな Azure サービス�
 * Azure に VHD をアップロードする
 * VM をコピーする
 
-[comment]: <> (MShermannd TODO SAP VM の自動サービスについては? ) [comment]: <> (MSSedusch 複数の VM のデプロイメントは可能です) [comment]: <> (MSSedusch また、デプロイメントに関連するいずれのタイプの自動化も、Azure ポータルでは実行できません。複数の VM をスクリプトによってデプロイメントするタスクなどは、Azure ポータルでは実行できません。)
+[comment]: <> (MShermannd TODO SAP VM の自動サービスについては? ) 
+[comment]: <> (MSSedusch 複数の VM のデプロイメントは可能です) 
+[comment]: <> (MSSedusch また、デプロイメントに関連するいずれのタイプの自動化も、Azure ポータルでは実行できません。複数の VM をスクリプトによってデプロイメントするタスクなどは、Azure ポータルでは実行できません。)
 
 ### Microsoft Azure PowerShell コマンドレットを使用した管理
 Windows PowerShell は、Azure に多数のシステムをデプロイしているお客様に広く採用されている、強力で拡張可能なフレームワークです。デスクトップ、ラップトップ、または専用の管理ステーションに PowerShell コマンドレットをインストールした後は、PowerShell コマンドレットをリモートで実行できます。
@@ -821,7 +830,11 @@ ___
 
 > ![Windows][Logo_Windows] Windows
 >
-> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) [comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) [comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) [comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
+> Windows の設定 (Windows SID やホスト名など) は、sysprep コマンドを使用してオンプレミスの VM 上で抽象化/一般化する必要があります。
+[comment]: <> (MSSedusch > 詳細については、こちらを参照してください:) 
+[comment]: <> (MShermannd TODO 最初のリンクは従来のモデルに関するものです。Azure ドキュメントの記事が見つかりませんでした) 
+[comment]: <> (MSSedusch > <https://azure.microsoft.com/documentation/articles/virtual-machines-create-upload-vhd-windows-server/>) 
+[comment]: <> (MSSedusch > <http://blogs.technet.com/b/blainbar/archive/2014/09/12/modernizing-your-infrastructure-with-hybrid-cloud-using-custom-vm-images-and-resource-groups-in-microsoft-azure-part-21-blain-barton.aspx>)
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -842,7 +855,8 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 
 独自の Azure VM ディスクを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
+[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * 管理者特権を持つ別のローカル アカウントを追加します。VM がデプロイされ、より適切なユーザーが使用可能になるまで、このアカウントをマイクロソフトのサポートが使用したり、サービスやアプリケーションの実行コンテキストとして割り当てることができるようにします。
@@ -867,7 +881,8 @@ ___
 
 独自の Azure VM イメージを準備する場合の要件は次のとおりです。
 
-* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
+* 当初、オペレーティング システムを含んだ VHD には、最大で 127 GB のサイズしか設定できませんでした。この制限は、2015 年 3 月末に解消されました。現在、オペレーティング システムを含んだ VHD は、Azure Storage でホストされているその他の VHD と同様に、最大 1 TB のサイズにすることができます。
+[comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります)
 * 固定の VHD 形式である必要があります。動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。VHD は、最大で 1 TB のサイズにすることができます。動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM でユーザーとして登録されているすべてのドメイン ユーザーは、クラウドのみのシナリオでは存在しなくなるので、(このドキュメントの「[クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ][planning-guide-2.1]」の章を参照してください)、このようなドメイン アカウントを使用したサービスは、イメージが Azure にデプロイされた後には機能しないことがあります。これは特に、DBMS や SAP アプリケーションなどのサービスの実行に使用されるアカウントでよく起こります。したがって、このようなドメイン アカウントは VM ローカル アカウントに置き換えて、VM のオンプレミス ドメイン アカウントを削除する必要があります。このドキュメントの「[クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ][planning-guide-2.2]」の章で説明しているように、VM がクロスプレミス シナリオでデプロイされた場合には、オンプレミス ドメイン ユーザーを VM イメージ内に保持しても問題ない場合があります。
