@@ -7,27 +7,21 @@
 	manager="jhubbard" 
 	editor="monicar"/>
 
-<tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/01/2016" 
-	ms.author="spelluru"/>
+<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ** ms.devlang="na" ms.topic="get-started-article" ms.date="09/16/2016" ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
+- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、Data Factory コピー ウィザードを使用して、コピー アクティビティがあるパイプラインをデータ ファクトリに作成します。最初に、Azure Portal を使用してデータ ファクトリを作成します。次に、コピー ウィザードを使用して Data Factory のリンクされたサービス、データセット、および Azure BLOB ストレージから Azure SQL データベースにデータをコピーするコピー アクティビティがあるパイプラインを作成します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
-> [AZURE.IMPORTANT] このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、前提条件の手順を完了してください。
+> [AZURE.IMPORTANT] このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、**前提条件**の手順を完了してください。
 
 ## データ ファクトリの作成
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure データ ファクトリを作成します。
@@ -88,7 +82,10 @@
 	3. **[次へ]** をクリックします。
 
 	![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/copy-tool-choose-input-file-or-folder.png)
-7. **[File format settings (ファイル形式設定)]** ページで、**既定の**値を選択した状態で **[次へ]** をクリックします。
+7. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで、**[次へ]** をクリックします。**[Binary copy (バイナリ コピー)]** は選択しないでください。
+
+	![Copy Tool - Choose the input file or folder](./media/data-factory-copy-data-wizard-tutorial/chose-input-file-folder.png)
+8. **[File format settings (ファイル形式設定)]** ページで、**既定の**値を選択した状態で **[次へ]** をクリックします。
 
 	![Copy Tool - File format settings](./media/data-factory-copy-data-wizard-tutorial/copy-tool-file-format-settings.png)
 8. [Destination data store (ターゲット データ ストア)] ページで、**[Azure SQL Database]** タイル、**[次へ]** の順にクリックします。
@@ -102,11 +99,12 @@
 
 	![Copy Tool - Table mapping](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png)
 10. **[Schema mapping (スキーマ マッピング)]** ページで、**[次へ]** をクリックします。
+11. **[Performance settings (パフォーマンス設定)]** ページで、**[次へ]** をクリックします。
 11. **[概要]** ページの内容を確認し、**[完了]** をクリックします。これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。
-12. **[デプロイメントに成功しました]** ページで、**[Click here to monitor copy pipeline (コピー パイプラインを監視するには、ここをクリックしてください)]** をクリックします。
+12. **[デプロイメントに成功しました]** ページで、**[Click here to monitor copy pipeline (コピー パイプラインを監視するには、ここをクリックしてください)]** というリンクをクリックします。
 
 	![Copy Tool - Deployment succeeded](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)
-13. [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関するページの指示に従って、作成したパイプラインを監視する方法を確認します。
+13. [監視アプリを使用したパイプラインの監視と管理](data-factory-monitor-manage-app.md)に関するページの指示に従って、作成したパイプラインを監視する方法を確認します。**[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** 一覧の **[更新]** アイコンをクリックして、スライスを表示します。
 
 	![Monitoring App](./media/data-factory-copy-data-wizard-tutorial/monitoring-app.png)
  
@@ -120,4 +118,4 @@
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Microsoft Azure Multi-Factor Authentication のライセンスの割り当て" 
-	description="Microsoft Azure Multi-Factor Authentication のユーザー ライセンスを割り当てる方法について説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Microsoft Azure Multi-Factor Authentication のライセンスの割り当て"
+	description="Microsoft Azure Multi-Factor Authentication のユーザー ライセンスを割り当てる方法について説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure MFA、Azure AD Premium、または Enterprise Mobility のライセンスをユーザーに割り当てる
 
@@ -33,4 +33,4 @@ Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセ�
 7. チェック マークのアイコンを**クリック**して変更を保存します。![Assign Licenses](./media/multi-factor-authentication-get-started-assign-licenses/assign4.png)
 8. 割り当てられたライセンスの数と、割り当てに失敗した場合はその数を示すメッセージが表示されます。**[OK]** をクリックします。![Assign Licenses](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

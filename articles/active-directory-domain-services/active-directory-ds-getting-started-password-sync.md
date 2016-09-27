@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="09/08/2016"
+	ms.date="09/20/2016"
 	ms.author="maheshu"/>
 
-# Azure AD ドメイン サービス *(プレビュー)* - Azure AD ドメイン サービスとのパスワード同期を有効にする
+# Azure AD Domain Services とのパスワード同期を有効にする
 ここまでの作業では、自分の Azure AD テナントの Azure AD Domain Services を有効にしました。次のタスクでは、Azure AD Domain Services と同期するために、NTLM および Kerberos 認証に必要な資格情報ハッシュを有効にします。資格情報の同期が設定されると、ユーザーは企業の資格情報を使用して、管理対象ドメインにサインインできます。
 
 実行する手順は、組織がクラウド専用 Azure AD テナントであるか、Azure AD Connect を使用してオンプレミスのディレクトリに同期するように設定されているかによって異なります。
@@ -61,11 +61,11 @@ Azure AD Domain Services では、管理対象ドメインでユーザーを認�
 
 ## 関連コンテンツ
 
-- [AAD Domain Services とのパスワード同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
-
 - [自分のパスワードを更新する方法](../active-directory/active-directory-passwords-update-your-own-password.md)
 
 - [Azure AD でのパスワード管理の概要](../active-directory/active-directory-passwords-getting-started.md)
+
+- [AAD Domain Services とのパスワード同期を有効にする (同期された Azure AD テナントの場合)](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 - [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 
@@ -73,4 +73,4 @@ Azure AD Domain Services では、管理対象ドメインでユーザーを認�
 
 - [Azure AD ドメイン サービスで管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

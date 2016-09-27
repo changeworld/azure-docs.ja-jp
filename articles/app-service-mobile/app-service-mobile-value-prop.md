@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="hero-article"
 	ms.date="05/03/2016"
-	ms.author="krisagh"/>
+	ms.author="glennga"/>
 
 # <a name="getting-started"></a>Mobile Apps とは
 
@@ -100,6 +100,6 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
-[学習マップ]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
+[学習マップ]: https://azure.microsoft.com/ja-JP/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

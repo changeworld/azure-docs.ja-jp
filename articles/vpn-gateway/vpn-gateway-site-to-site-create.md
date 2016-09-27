@@ -20,10 +20,9 @@
 # Azure クラシック ポータルを使用してサイト間接続を持つ VNet を作成する
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
-- [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
-
+- [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
 
 この記事では、**クラシック デプロイメント モデル**とクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。現在、クラシック デプロイメント モデルのエンド ツー エンドのサイト間構成を Azure ポータルで作成することはできません。
 
@@ -55,7 +54,7 @@ VNet どうしを接続する場合は、「[クラシック デプロイメン�
 
 2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
-3. VNet を作成するには、以下のページで情報を入力します。
+3. VNet を作成するには、次のページで構成設定を入力します。
 
 ## [Virtual Network の詳細] ページ
 
@@ -76,7 +75,7 @@ VNet どうしを接続する場合は、「[クラシック デプロイメン�
 
 ローカル ネットワークを新しく作成する場合は、**[サイト間接続]** ページが表示されます。以前作成したローカル ネットワークを使用する場合は、このページはウィザードで表示されず次のセクションに進みます。
 
-次の情報を入力し、矢印をクリックして次に進みます。
+次の情報を入力して、次へ進む矢印をクリックします。
 
 - 	**[名前]**: ローカル (オンプレミス) ネットワーク サイトの名前です。
 - 	**[VPN デバイスの IP アドレス]**: Azure への接続に使用するオンプレミスの VPN デバイスで使用される、外部に公開されている IPv4 アドレスです。VPN デバイスは NAT の内側に配置することはできません。
@@ -107,4 +106,4 @@ VNet どうしを接続する場合は、「[クラシック デプロイメン�
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

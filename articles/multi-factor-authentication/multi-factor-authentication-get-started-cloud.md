@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="クラウドでの Microsoft Azure Multi-Factor Authentication の概要" 
-	description="クラウドで Azure MFA を開始する方法について説明する Microsoft Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="クラウドでの Microsoft Azure Multi-Factor Authentication の概要"
+	description="クラウドで Azure MFA を開始する方法について説明する Microsoft Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 # クラウドでの Azure Multi-Factor Authentication Server の概要
 次の記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。
@@ -33,7 +33,7 @@
 2. [Multi-Factor Auth プロバイダーを作成](multi-factor-authentication-get-started-auth-provider.md)して自分のディレクトリに割り当てるか、[ライセンスをユーザーに割り当てる](multi-factor-authentication-get-started-assign-licenses.md)
 
 > [AZURE.NOTE]  ライセンスの使用は、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite (EMS) を所有するユーザーが対象となります。MFA は Azure AD Premium と EMS に含まれています。ライセンスが足りている場合は、認証プロバイダーの作成は不要です。
-		
+
 
 ## ユーザーの多要素認証を有効にする
 ユーザーの多要素認証を有効にするには、ユーザーの状態を無効から有効に変更するだけです。ユーザーの状態の詳細については、「[User States in Azure Multi-Factor Authentication (Azure Multi-Factor Authentication でのユーザーの状態)](multi-factor-authentication-get-started-user-states.md)」を参照してください。
@@ -65,7 +65,7 @@
 - 無効
 
 > [AZURE.IMPORTANT]  Disabled の状態から Enforced の状態に直接変更した場合は、ユーザーによる MFA 登録と[アプリ パスワード](multi-factor-authentication-whats-next.md#app-passwords)の取得が行われていないため、最新ではない認証クライアントは処理を停止するという点に注意してください。お使いの認証クライアントが最新ではなく、アプリ パスワードを必要とする場合は、Disabled から Enabled に状態を変更することをお勧めします。これにより、ユーザーはアプリ パスワードの登録と取得を行うことができます。
-		
+
 		$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
 		$st.RelyingParty = "*"
 		$st.State = “Enabled”
@@ -73,7 +73,7 @@
 		Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
 ユーザーを一括で有効にする方法の 1 つとして、PowerShell を使用します。現在、Azure ポータルには一括有効化の機能がないため、各ユーザーを個別に選択する必要があります。そのため、ユーザーの数が多いと作業量は膨大になります。上記のように PowerShell スクリプトを作成することで、ユーザーのリストをループ処理して各ユーザーを有効にすることができます。たとえば次のようになります。
-    
+
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
     {
@@ -90,4 +90,4 @@
 ## 次のステップ
 クラウド側の多要素認証を設定したら、デプロイ側の構成とセットアップを行います。「Azure Multi-Factor Authentication の構成」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

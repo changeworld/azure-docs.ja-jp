@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する | Microsoft Azure" 
+	pageTitle="チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する | Microsoft Azure" 
 	description="このチュートリアルでは、Azure ポータルで Data Factory エディターを使用して、コピー アクティビティを含む Azure Data Factory パイプラインを作成します。" 
 	services="data-factory" 
 	documentationCenter="" 
@@ -13,32 +13,34 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/01/2016" 
+	ms.date="09/16/2016" 
 	ms.author="spelluru"/>
 
-# チュートリアル: コピー アクティビティがあるパイプラインを Data Factory Editor で作成する
+# チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
+- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
 
-このチュートリアルで実行する手順は次のとおりです。
+このチュートリアルでは、Azure Portal を使用して Azure データ ファクトリを作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
+
+このチュートリアルの一部として実行する手順を次に示します。
 
 手順 | Description
 -----| -----------
 [Azure Data Factory を作成する](#create-data-factory) | この手順では、**ADFTutorialDataFactory** という名前の Azure データ ファクトリを作成します。  
 [リンクされたサービスの作成](#create-linked-services) | この手順では、**AzureStorageLinkedService** と **AzureSqlLinkedService** の 2 つのリンクされたサービスを作成します。AzureStorageLinkedService は Azure Storage を、AzureSqlLinkedService は Azure SQL Database を、それぞれ ADFTutorialDataFactory にリンクします。パイプラインの入力データは、Azure BLOB ストレージの BLOB コンテナーにあります。また出力データは、Azure SQL Database のテーブルに格納されます。そのため、これら 2 つのデータ ストアをリンクされたサービスとしてデータ ファクトリに追加します。      
-[入力データセットと出力データセットを作成する](#create-datasets) | 前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つの Data Factory テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、構造や可用性など、他のプロパティも指定します。 
+[入力データセットと出力データセットを作成する](#create-datasets) | 前の手順では、入力/出力データを含むデータ ストアを参照する、リンクされたサービスを作成しました。この手順では、**EmpTableFromBlob** と **EmpSQLTable** の 2 つの Data Factory テーブルを定義します。これらはデータ ストアに格納されている入力/出力データを表します。EmpTableFromBlob の場合、ソース データを持つ BLOB を含む BLOB コンテナーを指定します。EmpSQLTable の場合は、出力データを格納する SQL テーブルを指定します。また、構造、可用性、ポリシーなど、他のプロパティも指定します。 
 [パイプラインを作成する。](#create-pipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。このパイプラインには、Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**があります。コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性が高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。 
 [パイプラインの監視](#monitor-pipeline) | この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
 
 > [AZURE.IMPORTANT] 
-このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、前提条件の手順を完了してください。
+このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、**前提条件**の手順を完了してください。
 
 ## データ ファクトリの作成
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure データ ファクトリを作成します。
@@ -72,7 +74,7 @@
 	> Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
 
 9. 左側の **[通知]** ハブをクリックし、作成プロセスからの通知を探します。**[通知]** ブレードが開いている場合は、**[X]** をクリックして閉じます。
-10. 作成が完了すると、次に示すような **[Data Factory]** ブレードが表示されます。
+10. 作成が完了すると、図に示されているような **[Data Factory]** ブレードが表示されます。
 
     ![データ ファクトリのホーム ページ][image-data-factory-get-stated-factory-home-page]
 
@@ -216,7 +218,7 @@
      以下の点に注意してください。
 	
 	* dataset の **type** が **AzureSQLTable** に設定されています。
-	* **linkedServiceName** が **AzureSqlLinkedService** (手順 2. で作成したリンク) に設定されています。
+	* **linkedServiceName** が **AzureSqlLinkedService** (手順 2. で作成した、リンクされたサービス) に設定されています。
 	* **tablename** は **emp** に設定されています。
 	* データベース内の emp テーブルには、**ID**、**FirstName**、**LastName** の 3 つの列があります。ID は ID 列であるため、ここで指定する必要があるのは **FirstName** と **LastName** のみです。
 	* **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。Data Factory サービスは、Azure SQL Database 内の **emp** テーブルに 1 時間ごとに出力データ スライスを生成します。
@@ -228,7 +230,7 @@
 ## パイプラインの作成
 この手順では、**EmpTableFromBlob** を入力、**EmpSQLTable** を出力として使用し、**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] \(省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] (省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 
 	![エディターの [新しいパイプライン] ボタン][image-editor-newpipeline-button]
  
@@ -303,7 +305,7 @@
 
 	![[Data Factory] ブレードの [ダイアグラム] タイル][image-datafactoryblade-diagramtile]
 
-2. 以下のような図が表示されるはずです。
+2. 以下の図のようなダイアグラムが表示されるはずです。
 
 	![ダイアグラム ビュー][image-data-factory-get-started-diagram-blade]
 
@@ -332,7 +334,7 @@
 
 	**[最近更新したスライス]** と **[最近失敗したスライス]** の一覧は、どちらも **[最終更新時刻]** で並べ替えられます。次の状況では、スライスの更新時刻が変更されます。
     
-	一覧のタイトルをクリックするか、**[...] \(省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
+	一覧のタイトルをクリックするか、**[...] (省略記号)** をクリックすると、さらに多くのスライスが一覧表示されます。スライスをフィルター処理するには、ツール バーの **[フィルター]** をクリックします。
 	
 	代わりに、スライスの開始時刻と終了時刻で並べ替えられたデータ スライスを表示するには、**[データ スライス (スライスの時刻別)]** タイルをクリックします。
 
@@ -347,7 +349,7 @@
 	![[テーブル] ブレード][image-data-factory-get-started-table-blade]
  
 7. 現在の時刻までのデータ スライスが既に生成されており、**準備完了**になっています。下部の **[問題のあるスライス]** セクションにはスライスが表示されていません。
-8. **[...] \(省略記号)** をクリックし、すべてのスライスを表示します。
+8. **[...] (省略記号)** をクリックし、すべてのスライスを表示します。
 
 	![[データ スライス] ブレード][image-data-factory-get-started-dataslices-blade]
 
@@ -461,4 +463,4 @@
 [image-data-factory-name-not-available]: ./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-not-available.png
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

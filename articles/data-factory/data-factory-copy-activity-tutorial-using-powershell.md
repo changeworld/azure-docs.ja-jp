@@ -13,33 +13,31 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/01/2016" 
+	ms.date="09/16/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
+- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
-[Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルでは、[Azure ポータル][azure-portal]を使用して Azure データ ファクトリを作成、監視する方法について説明しています。このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure データ ファクトリを作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
+このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure データ ファクトリを作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
 
 コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.IMPORTANT] 
-このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、前提条件の手順を完了してください。
+このチュートリアルを実行する前に、「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、**前提条件**の手順を完了してください。
 >   
 > この記事では、すべての Data Factory コマンドレットを取り上げているわけではありません。Data Factory コマンドレットに関する包括的なドキュメントについては、「[Data Factory コマンドレット リファレンス](https://msdn.microsoft.com/library/dn820234.aspx)」を参照してください。
   
 
 ##前提条件
-「チュートリアルの概要」トピックに記載されている前提条件とは別に、次をインストールする必要があります。
-
-- **Azure PowerShell**「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。
+「チュートリアルの概要」トピックに記載されている前提条件とは別に、**Azure PowerShell** をインストールする必要があります。「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。
 
 ##このチュートリアルの内容
 次の表に、このチュートリアルの一環として実行する手順とその説明を示します。
@@ -55,8 +53,8 @@
 ## データ ファクトリの作成
 この手順では、Azure PowerShell を使用して、**ADFTutorialDataFactoryPSH** という名前の Azure Data Factory を作成します。
 
-1. **PowerShell** を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	1. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
+1. **PowerShell** を起動します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+	1. 次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
 	
 			Login-AzureRmAccount   
 	2. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
@@ -71,7 +69,7 @@
 		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
 	このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
-4. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前の Data Factory を作成します。
+4. **New-AzureRmDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。
 
 		New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
 
@@ -112,7 +110,7 @@
 		  		}
 			}
 
-	**accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーで置き換えます。
+	**accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。
 2.	**Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
 3.	**New-AzureRmDataFactoryLinkedService** コマンドレットを使用して、リンクされたサービスを作成できます。このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** および **DataFactoryName** パラメーターの値を渡す必要があります。または、**Get-AzureRmDataFactory** を使用して DataFactory オブジェクトを取得すると、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力しなくてもオブジェクトを渡すことができます。**Get-AzureRmDataFactory** コマンドレットの出力を変数 **$df** に割り当てるには、次のコマンドを実行します。
 
@@ -136,7 +134,7 @@
 				"properties": {
 					"type": "AzureSqlDatabase",
 					"typeProperties": {
-				      	"connectionString": "Server=tcp:<server>.database.windows.net,1433;Database=<databasename>;User ID=user@server;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+				      	"connectionString": "Server=tcp:<server>.database.windows.net,1433;Database=<databasename>;User ID=<user>@<server>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
 					}
 		  		}
 			}
@@ -165,7 +163,7 @@
 ### Azure Blob Storage と Azure SQL Database をチュートリアル用に準備する
 [Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事のチュートリアルを完了している方は、この手順をスキップしてください。
 
-このチュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備するには、次の手順を実行する必要があります。
+このチュートリアルで使用する Azure BLOB ストレージと Azure SQL Database を準備するには、次の手順を実行します。
  
 * **StorageLinkedService** がポイントする Azure BLOB ストレージ内に **adftutorial** という名前の BLOB コンテナーを作成します。
 * **emp.txt** という名前のテキスト ファイルを作成し、BLOB として **adftutorial** コンテナーにアップロードします。
@@ -241,13 +239,13 @@
 	- **fileName** は **emp.txt** に設定されています。BLOB の名前を指定しない場合、コンテナー内のすべての BLOB からのデータが入力データと見なされます。
 	- format の **type** が **TextFormat** に設定されています。
 	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。
-	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory は、指定された BLOB コンテナー (**adftutorial**) のルート フォルダーにある入力データを 1 時間ごとに検索します。
+	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory は BLOB コンテナー (**adftutorial**) のルート フォルダーで、入力データを 1 時間ごとに検索します。
 
 	**入力****テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
  
 	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
-	**folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。たとえば、スライスが 2014-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2014/10/20 に設定され、fileName は 08.csv に設定されます。
+	**folderPath** と **fileName** を **SliceStart** 時刻に基づいて動的に設定するには、**partitionedBy** プロパティを使用します。次の例では、folderPath に SliceStart (処理されるスライスの開始時刻) の年、月、日を使用し、fileName に SliceStart の時間を使用します。たとえば、スライスが 2016-10-20T08:00:00 に生成されている場合、folderName は wikidatagateway/wikisampledataout/2016/10/20 に設定され、fileName は 08.csv に設定されます。
 
 			"folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 	        "fileName": "{Hour}.csv",
@@ -361,7 +359,7 @@
 	- アクティビティの入力は **EmpTableFromBlob** に設定され、アクティビティの出力は **EmpSQLTable** に設定されています。
 	- **transformation** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。
 
-	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります (例: 2014-10-14T16:32:41Z)。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+	**start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります たとえば、2016-10-14T16:32:41Z とします。**end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 	
 	**end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **end** プロパティの値として指定します。
 	
@@ -383,53 +381,41 @@
  
 2.	**Get-AzureRmDataFactorySlice** を実行し、**EmpSQLTable** のすべてのスライスの詳細を表示します。これは、パイプラインの出力テーブルです。
 
-		Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T00:00:00
+		Get-AzureRmDataFactorySlice $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
 
 	**StartDateTime** パラメーターで、年、月、日の部分を現在の年、月、日に置き換えます。この設定は、JSON パイプラインの **Start** の値と一致します。
 
 	現在の日付の 12 AM から次の日の 12 AM までの 1 時間ごとに 1 つずつ、合計 24 個のスライスが表示されます。
 	
-	**最初のスライス:**
+	**サンプル出力:**
 
 		ResourceGroupName : ADFTutorialResourceGroup
 		DataFactoryName   : ADFTutorialDataFactoryPSH
 		TableName         : EmpSQLTable
-		Start             : 3/3/2015 12:00:00 AM
-		End               : 3/3/2015 1:00:00 AM
+		Start             : 8/9/2016 12:00:00 AM
+		End               : 8/9/2016 1:00:00 AM
 		RetryCount        : 0
 		Status            : Waiting
 		LatencyStatus     :
 		LongRetryCount    : 0
 
-	**最後のスライス:**
+3.	**Get-AzureRmDataFactoryRun** を実行して、**特定**のスライスに関するアクティビティの実行の詳細を取得します。出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。
 
-		ResourceGroupName : ADFTutorialResourceGroup
-		DataFactoryName   : ADFTutorialDataFactoryPSH
-		TableName         : EmpSQLTable
-		Start             : 3/4/2015 11:00:00 PM
-		End               : 3/4/2015 12:00:00 AM
-		RetryCount        : 0
-		Status            : Waiting
-		LatencyStatus     : 
-		LongRetryCount    : 0
+		Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2016-08-09T00:00:00
 
-3.	**Get-AzureRmDataFactoryRun** を実行して、**特定**のスライスに関するアクティビティの実行の詳細を取得します。出力のスライスの **Start** 時間と一致するように、**StartDateTime** パラメーターの値を変更します。**StartDateTime** の値は [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。例: 2014-03-03T22:00:00Z。
-
-		Get-AzureRmDataFactoryRun $df -DatasetName EmpSQLTable -StartDateTime 2015-03-03T22:00:00
-
-	次のような出力が表示されます。
+	次のサンプル出力のような出力が表示されます。
 
 		Id                  : 3404c187-c889-4f88-933b-2a2f5cd84e90_635614488000000000_635614524000000000_EmpSQLTable
 		ResourceGroupName   : ADFTutorialResourceGroup
 		DataFactoryName     : ADFTutorialDataFactoryPSH
 		TableName           : EmpSQLTable
-		ProcessingStartTime : 3/3/2015 11:03:28 PM
-		ProcessingEndTime   : 3/3/2015 11:04:36 PM
+		ProcessingStartTime : 8/9/2016 11:03:28 PM
+		ProcessingEndTime   : 8/9/2016 11:04:36 PM
 		PercentComplete     : 100
-		DataSliceStart      : 3/8/2015 10:00:00 PM
-		DataSliceEnd        : 3/8/2015 11:00:00 PM
+		DataSliceStart      : 8/9/2016 10:00:00 PM
+		DataSliceEnd        : 8/9/2016 11:00:00 PM
 		Status              : Succeeded
-		Timestamp           : 3/8/2015 11:03:28 PM
+		Timestamp           : 8/9/2016 11:03:28 PM
 		RetryAttempt        : 0
 		Properties          : {}
 		ErrorMessage        :
@@ -477,4 +463,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

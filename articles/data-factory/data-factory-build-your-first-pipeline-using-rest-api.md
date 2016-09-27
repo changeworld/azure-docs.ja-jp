@@ -19,15 +19,17 @@
 
 # チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [AZURE.SELECTOR]
+- [概要と前提条件](data-factory-build-your-first-pipeline.md)
 - [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
+この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。
 
-## 追加の前提条件
+## 前提条件
+- 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、**前提条件**の手順を完了する必要があります。
 - コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
 - [この記事](../resource-group-create-service-principal-portal.md)の手順に従って、次の操作を行います。
 	1. Azure Active Directory に、**ADFGetStartedApp** という名前の Web アプリケーションを作成します。
@@ -263,7 +265,7 @@ Azure PowerShell で、値を独自の値に置き換えて、以下のコマン
 
 以下の点に注意してください。
  
-- Azure Data Factory の名前はグローバルに一意にする必要があります。results に "**データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の操作を行います。
+- Azure Data Factory の名前はグローバルに一意にする必要があります。results に "**データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の手順に従います。
 	1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
 	2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
 	3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
@@ -370,6 +372,10 @@ Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.lo
     	    (convertFrom-Json $results2).RemoteException
 	}
 
+
+> [AZURE.IMPORTANT] 
+オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。そのため、パイプラインによるスライスの処理に**約 30 分**かかると想定してください。
+
 **Ready** 状態または **Failed** 状態のスライスが見つかるまで、順番に Invoke-Command を実行します。スライスが Ready 状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。オンデマンド HDInsight クラスターの作成には、通常はしばらく時間がかかります。
 
 ![output data](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
@@ -402,4 +408,4 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 | [Azure ポータルのブレードを使用したパイプラインの監視と管理に関するページ](data-factory-monitor-manage-pipelines.md) | この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/07/2016"
+   ms.date="09/20/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -64,7 +64,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **アトランタ** | Equinix |
 | **チェンナイ** | Tata Communications |
 | **シカゴ** | AT&T NetBond、Comcast、Equinix、Level 3 Communications、Zayo Group |
-| **ダラス** | AT&T NetBond、Equinix、Level 3 Communications、Megaport |
+| **ダラス** | AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport |
 | **ダブリン** | Colt、Telecity Group |
 | **香港** | British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ロンドン** | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc+、Level 3 Communications、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telenor、Verizon、Vodafone |
@@ -156,4 +156,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

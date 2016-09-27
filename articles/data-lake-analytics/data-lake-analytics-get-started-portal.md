@@ -24,8 +24,6 @@ Azure ポータルを使用して Azure Data Lake Analytics アカウントを�
 
 このチュートリアルでは、タブ区切り値 (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換するジョブを開発します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。最初のジョブが成功したら、U-SQL でのより複雑なデータ変換の記述を開始できます。
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ##前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -156,4 +154,4 @@ Azure ポータルには、検索ログ ファイルを含むサンプル デー
 - 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
 - 診断情報のログについては、「[Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->
