@@ -703,7 +703,11 @@ x64 インストール ファイルとドキュメントをダウンロードし
 * Microsoft Azure ストレージ エクスプローラー (<https://azure.microsoft.com/downloads/>)
 * サード パーティ製のツール
 
-[コメント]: <> (ARM ではまだサポートされていません) [コメント]: <> (### Azure VM のバックアップ) [コメント]: <> (Azure Virtual Machine Backup 機能を使用することで SAP システム内の VM をバックアップできます。Azure Virtual Machine Backup は 2015 年初めに導入され、それ以来、Azure で完全な VM をバックアップするための標準の方法となっています。Azure Backup は Azure にバックアップを格納し、VM を再び復旧できる機能です。) [コメント]: <> (データベースを実行する VM は、DBMS システムで Windows VSS (ボリューム シャドウ コピー サービス - <https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx>) がサポートされていれば、SQL Server と同様の整合性のとれた方法でバックアップできます。Azure VM Backup を使用すると、SAP データベースの復元可能なバックアップを取得できます。ただし、データベースの Azure VM Backup のポイントインタイム リストアによってはバックアップできない場合があることにご注意ください。そのため、Azure VM Backup を使用するのではなく、DBMS 機能を使ってデータベースのバックアップを実行することをお勧めします。) [コメント]: <> (Azure Virtual Machine Backup について理解する場合はこちら <https://azure.microsoft.com/documentation/services/backup/> から始めてください)
+[コメント]: <> (ARM ではまだサポートされていません) 
+[コメント]: <> (### Azure VM のバックアップ) 
+[コメント]: <> (Azure Virtual Machine Backup 機能を使用することで SAP システム内の VM をバックアップできます。Azure Virtual Machine Backup は 2015 年初めに導入され、それ以来、Azure で完全な VM をバックアップするための標準の方法となっています。Azure Backup は Azure にバックアップを格納し、VM を再び復旧できる機能です。) 
+[コメント]: <> (データベースを実行する VM は、DBMS システムで Windows VSS (ボリューム シャドウ コピー サービス - <https://msdn.microsoft.com/library/windows/desktop/bb968832.aspx>) がサポートされていれば、SQL Server と同様の整合性のとれた方法でバックアップできます。Azure VM Backup を使用すると、SAP データベースの復元可能なバックアップを取得できます。ただし、データベースの Azure VM Backup のポイントインタイム リストアによってはバックアップできない場合があることにご注意ください。そのため、Azure VM Backup を使用するのではなく、DBMS 機能を使ってデータベースのバックアップを実行することをお勧めします。) 
+[コメント]: <> (Azure Virtual Machine Backup について理解する場合はこちら <https://azure.microsoft.com/documentation/services/backup/> から始めてください)
 
 ### <a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Microsoft Azure Marketplace からの SQL Server イメージの使用
 Microsoft は、Azure Marketplace で SQL Server がすでに含まれている VM を提供しています。SQL Server および Windows のライセンスを必要とする SAP のお客様は、SQL Server がすでにインストールされている VM をスピン アップすることで、ライセンスの必要性に根本的に対応できるというチャンスがあります。SAP でそのようなイメージを使用するためには、次の事項を考慮する必要があります。
@@ -735,7 +739,8 @@ Azure Marketplace での SQL Server イメージは SAP NetWeaver アプリケ�
 ### Azure の SAP 向け SQL Server 高可用性
 このホワイト ペーパーでこれまで説明したように、共有ストレージを作成するために最も古い SQL Server の高可用性機能を使用する必要はありません。この機能は、ユーザー データベース (最終的には tempdb) 用の共有ディスクを使用して、Windows Server フェールオーバー クラスター (WSFC) に 2 つ以上の SQL Server インスタンスをインストールします。これは、SAP でもサポートされている長期的な標準の高可用性メソッドです。Azure はが共有ストレージをサポートしていないため、共有ディスク クラスター構成を使用した SQL Server の高可用性構成は実現できません。ただし、高可用性を実現する方法はその他にも多くあります。詳しくは以降のセクションで説明します。
 
-[コメント]: <> (記事が ASM について書かれているままです) [コメント]: <> (Azure で SQL Server 向けに使用できるさまざまな高可用性テクノロジを読み取る前に、詳細情報や参照先について書かれた非常に良いドキュメントが[こちら][virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]にあります)
+[コメント]: <> (記事が ASM について書かれているままです) 
+[コメント]: <> (Azure で SQL Server 向けに使用できるさまざまな高可用性テクノロジを読み取る前に、詳細情報や参照先について書かれた非常に良いドキュメントが[こちら][virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]にあります)
 
 #### SQL Server ログ配布
 高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。HA 構成に参加している VM で名前解決を行えているのであれば、何も問題はなく、Azure でのセットアップはオンプレミスのセットアップとなんら変わりません。IP 解決のみに依存することはお勧めしません。ログ配布のセットアップとログ配布の指針については、このドキュメントを参照してください。
@@ -1140,7 +1145,8 @@ Azure VHD を使用して Azure ページ BLOB Storage の章では、このド�
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと Hyper-V と同様にサポートされています。ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 #### 高可用性
-[コメント]: <> (リンクは ASM を参照) 高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳細については、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントを参照してください。
+[コメント]: <> (リンクは ASM を参照) 
+高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。詳細については、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントを参照してください。
 
 #### その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
