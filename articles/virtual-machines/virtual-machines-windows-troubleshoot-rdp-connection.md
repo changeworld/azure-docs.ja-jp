@@ -156,7 +156,7 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 
 原因: ターゲット VM が、資格情報のユーザー名の部分でセキュリティ機関を見つけることができません。
 
-ユーザー名が *SecurityAuthority*\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、VM のコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
+ユーザー名が *SecurityAuthority*\\*UserName* という形式 (例: CORP\\User1) の場合、*SecurityAuthority* の部分は、VM のコンピューター名 (ローカル セキュリティ機関) または Active Directory ドメイン名になります。
 
 考えられる解決策:
 
@@ -173,8 +173,8 @@ VM に対して 2 つ以上のリモート デスクトップ接続が同時に�
 
 Windows ベースのコンピューターでは、ローカル アカウントとドメイン アカウントの資格情報を認証できます。
 
-- ローカル アカウントの場合は、*ComputerName*\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
-- ドメイン アカウントの場合は、*DomainName*\*UserName* という構文を使用します (例: CONTOSO\\peterodman)。
+- ローカル アカウントの場合は、*ComputerName*\\*UserName* という構文を使用します (例: SQL1\\Admin4798)。
+- ドメイン アカウントの場合は、*DomainName*\\*UserName* という構文を使用します (例: CONTOSO\\peterodman)。
 
 新しい Active Directory フォレスト内で VM がドメイン コントローラーに昇格している場合、サインイン時に使用したローカル管理者アカウントが、新しいフォレストとドメイン内で同じパスワードを持つ同等のアカウントに変換されます。その後、ローカル アカウントは削除されます。
 
