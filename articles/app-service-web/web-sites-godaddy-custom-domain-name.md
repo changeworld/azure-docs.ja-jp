@@ -62,7 +62,7 @@ Azure App Service Web Apps からドメインを購入した場合は、「[Web 
 
 	* **A (ホスト) レコード**を追加するときは、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名)、* (複数のサブドメインに一致するワイルドカード)、または使用するサブドメイン (**www** など) のいずれかに設定する必要があります。 また、**[Points to]** フィールドを、Azure Web アプリの IP アドレスに設定する必要があります。
 
-	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web アプリの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
+	* **CNAME (エイリアス) レコード**を追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points to]** フィールドを、Azure Web アプリの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurewebsites.net** にします。
 
 5. **[Add Another]** をクリックします。
 6. レコードの種類として **[TXT]** を選択し、**[Host]** の値に「**@**」を、**[Points to]** の値に「**&lt;Web アプリ名&gt;.azurewebsites.net**」を指定します。
