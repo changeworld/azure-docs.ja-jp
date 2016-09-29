@@ -358,7 +358,8 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-サンプル テーブルの読み込みにかかる時間は 6.492000 秒です。取得される列と行の数= (84952, 21)
+サンプル テーブルの読み込みにかかる時間は 6.492000 秒です。  
+取得される列と行の数= (84952, 21)
 
 #### 説明的な統計情報
 
@@ -688,7 +689,9 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 ### 参照
 
-• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
+• [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [1]: ./media/machine-learning-data-science-process-sql-walkthrough/sql-walkthrough_26_1.png

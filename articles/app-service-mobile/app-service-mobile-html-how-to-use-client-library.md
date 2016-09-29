@@ -97,7 +97,7 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
+[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
 
 [Azure ポータル]: https://portal.azure.com/
 [Azure Mobile Apps 向け JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
