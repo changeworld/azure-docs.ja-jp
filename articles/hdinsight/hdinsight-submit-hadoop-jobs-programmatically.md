@@ -2,7 +2,7 @@
 	pageTitle="HDInsight での Hadoop ジョブの送信 | Microsoft Azure"
 	description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/28/2016"
+	ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 # HDInsight での Hadoop ジョブの送信
@@ -26,4 +26,4 @@
 - [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
 - [HDInsight での Oozie の使用](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

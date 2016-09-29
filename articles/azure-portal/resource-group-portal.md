@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/23/2016" 
+	ms.date="09/12/2016" 
 	ms.author="tomfitz"/>
 
 # ポータルを使用した Azure リソースの管理
@@ -26,7 +26,7 @@
 
 このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](../resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。ポータルを使用したリソースのデプロイについては、「[Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](../resource-group-template-deploy-portal.md)」を参照してください。
 
-現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。それらがサポートされていないサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。これらのサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
 
 ## リソース グループの管理
 
@@ -94,7 +94,7 @@
 
     ![dashboard](./media/resource-group-portal/create-dashboard.png)
 
-     ダッシュボードの操作の詳細については、ビデオ [Azure ポータルでカスタム ダッシュボードを作成する](https://channel9.msdn.com/Blogs/trevor-cloud/azure-portal-dashboards) に関するページをご覧ください。発行したダッシュボードへのアクセス権の共有については、[Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)に関するページを参照してください。
+     ダッシュボードの操作の詳細については、「[Azure Portal でのダッシュボードの作成と共有](azure-portal-dashboards.md)」を参照してください。
 
 ## リソースの管理
 
@@ -151,4 +151,4 @@
 - ポータルを使用したリソースのデプロイについては、「[Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
 - リソースへのアクセスの管理については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

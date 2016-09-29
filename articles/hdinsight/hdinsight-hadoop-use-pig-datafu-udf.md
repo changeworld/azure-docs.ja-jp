@@ -4,7 +4,7 @@ description="DataFu は、Hadoop で使用するライブラリのコレクシ�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -109,4 +109,4 @@ DataFu または Pig の詳細については、次のドキュメントを参�
 
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

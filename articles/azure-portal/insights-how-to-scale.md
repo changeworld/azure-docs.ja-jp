@@ -132,8 +132,8 @@
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](insights-receive-alert-notifications.md)ます。
-* コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
+* コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

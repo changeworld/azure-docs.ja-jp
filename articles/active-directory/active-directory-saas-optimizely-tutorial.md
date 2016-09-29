@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/25/2016"
+	ms.date="09/11/2016"
 	ms.author="jeedes"/>
 
 
@@ -162,7 +162,7 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
     - ダウンロードした証明書
     - シングル サインオン サービス URL
  
-    電子メールに応じて、Optimizely では、[サインオン URL]\(SP によって開始された SSO) と [識別子] \(サービス プロバイダーのエンティティ ID) の値が提供されます。
+    電子メールに応じて、Optimizely では、[サインオン URL] (SP によって開始された SSO) と [識別子] \(サービス プロバイダーのエンティティ ID) の値が提供されます。
 
 9. **[アプリケーション設定の構成]** ダイアログ ページに戻り、次の手順を実行します。
 
@@ -184,12 +184,12 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 
 11. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
   	
-	![Azure AD のシングル サインオン][11]
+	![Azure AD Single Sign-On][11]
 
 12. 別のブラウザー ウィンドウで、Optimizely アプリケーションにサインオンします。
 13. 右上隅のアカウント名をクリックし、 **[アカウント設定]** に移動します。
 
-	![Azure AD のシングル サインオン](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_09.png)
+	![Azure AD Single Sign-On](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_09.png)
 
 14. [アカウント] タブで、**[概要]** セクションの [シングル サインオン] にある **[Enable SSO (SSO の有効化)]** チェック ボックスをオンにします。
 
@@ -291,7 +291,7 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 
 	![ユーザーの割り当て][203]
 
-1. [すべてのユーザー] 一覧で **[Britta Simon]** を選択します。
+1. [すべてのユーザー] の一覧で **[Britta Simon]** を選択します。
 
 2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
@@ -332,4 +332,4 @@ Optimizely アプリケーションでは、SAML アサーションに、"email"
 [204]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-optimizely-tutorial/tutorial_general_205.png
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

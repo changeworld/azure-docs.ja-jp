@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="fashah;garye;bradsev" />
+	ms.date="09/13/2016" 
+	ms.author="bradsev" />
 
 #Azure の SQL Server Virtual Machine に格納されているデータを探索する
 
@@ -67,7 +67,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 	# Query database and load the returned results in pandas data frame
 	data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-これで、トピック「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」で扱うとおりに Pandas データ フレームを操作できるようになりました。
+これで、「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」トピックで扱うとおりに Pandas データ フレームを操作できるようになりました。
 
 ## Cortana Analytics Process の活用例
 
@@ -75,4 +75,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

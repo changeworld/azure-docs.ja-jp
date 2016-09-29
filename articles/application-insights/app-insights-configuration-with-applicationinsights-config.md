@@ -20,7 +20,7 @@
 
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。[コア パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights)は、テレメトリを Application Insights に送信するための API を提供します。[その他のパッケージ](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、お使いのアプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ _モジュール_と_初期化子_を提供します。構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
 
-アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。[SDK のほとんどのバージョンをインストールする際に][start]、これはプロジェクトに自動的に追加されます。また、これは、[状態モニターを IIS サーバーに][redfield]追加することによって、または [Azure Web サイトまたは VM の Appplication Insights 拡張機能を選択する][azure]際にも Web アプリに追加されます。
+アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。[SDK のほとんどのバージョンをインストールする際に][start]、これはプロジェクトに自動的に追加されます。また、これは、[状態モニターを IIS サーバーに][redfield]追加することによって、または [Azure Web サイトまたは VM の Appplication Insights 拡張機能を選択する](app-insights-azure-web-apps.md)際にも Web アプリに追加されます。
 
 [Web ページの SDK][client] を制御するための同等のファイルはありません。
 
@@ -36,7 +36,7 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 
 ### 依存関係の追跡
 
-[依存関係の追跡](app-insights-dependencies.md)により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。このモジュールを IIS サーバーで機能させるには、[ をインストールする][redfield]必要があります。これを Azure Web アプリまたは VM で使用するには、[Application Insights 拡張を選択します][azure]。
+[依存関係の追跡](app-insights-dependencies.md)により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。このモジュールを IIS サーバーで機能させるには、[ をインストールする][redfield]必要があります。これを Azure Web アプリまたは VM で使用するには、[Application Insights 拡張を選択します](app-insights-azure-web-apps.md)。
 
 [TrackDependency API](app-insights-api-custom-events-metrics.md#track-dependency) を使用して、独自の依存関係追跡コードを記述することもできます。
 
@@ -57,7 +57,7 @@ CPU、メモリ、IIS インストールのネットワーク負荷など、[シ
 `DiagnosticsTelemetryModule` は Application Insights インストルメンテーション コード自体のエラーを報告します。たとえば、コードのパフォーマンス カウンターにアクセスできない場合、または `ITelemetryInitializer` が例外をスローする場合です。このモジュールが追跡するトレース テレメトリが[診断検索][diagnostic]に表示されます。dc.services.vsallin.net に診断データが送信されます。
  
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージこのパッケージのみをインストールする場合、ApplicationInsights.config ファイルは自動作成されません。 
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージこのパッケージのみをインストールする場合、ApplicationInsights.config ファイルは自動作成されません。
 
 ### 開発者モード
 
@@ -124,8 +124,8 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 * `DomainNameRoleInstanceTelemetryInitializer` は、Web アプリケーションを実行中のコンピューターのドメイン名を使用して、すべてのテレメトリ項目の `Device` コンテキストの `RoleInstance` プロパティを更新します。
 * `OperationNameTelemetryInitializer` は、HTTP メソッドのほか、ASP.NET MVC コントローラーの名前、要求の処理のために呼び出されるアクションに基づいて、すべてのテレメトリ項目の`RequestTelemetry` の `Name` プロパティと `Operation` コンテキストの `Name` プロパティを更新します。
 * `OperationIdTelemetryInitializer` または `OperationCorrelationTelemetryInitializer` は、追跡されたすべてのテレメトリ項目の `Operation.Id` コンテキスト プロパティを更新し、自動生成された `RequestTelemetry.Id` が付いた要求を処理します。
-* `SessionTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_session` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `Session` コンテキストの `Id` プロパティを更新します。 
-* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、および `Operation` コンテキスト プロパティを更新します。既定では、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)には合成テレメトリは表示されません。 
+* `SessionTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_session` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `Session` コンテキストの `Id` プロパティを更新します。
+* `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、および `Operation` コンテキスト プロパティを更新します。既定では、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)には合成テレメトリは表示されません。
 
     `<Filters>` は、要求の識別プロパティを設定します。
 * `UserAgentTelemetryInitializer` は、要求の `User-Agent` HTTP ヘッダーに基づいて、すべてのテレメトリ項目の `User` コンテキストの `UserAgent` プロパティを更新します。
@@ -278,7 +278,6 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 <!--Link references-->
 
 [api]: app-insights-api-custom-events-metrics.md
-[azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [exceptions]: app-insights-asp-net-exceptions.md
@@ -287,4 +286,4 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 
-<!---HONumber=AcomDC_0316_2016-->
+<!---HONumber=AcomDC_0914_2016-->

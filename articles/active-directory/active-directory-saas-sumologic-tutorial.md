@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SumoLogic の統合
@@ -72,11 +72,11 @@
 
 1.  Azure クラシック ポータルの **SumoLogic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Configure single sign-on")
 
 2.  **[ユーザーの SumoLogic へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778553.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778553.png "Configure single sign-on")
 
 3.  **[アプリケーション URL の構成]** ページで、**[SumoLogic サインイン URL]** テキストボックスに、"*https://\<テナント名>.SumoLogic.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
@@ -84,7 +84,7 @@
 
 4.  **[SumoLogic でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778555.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778555.png "Configure single sign-on")
 
 5.  別の Web ブラウザーのウィンドウで、SumoLogic 企業サイトに管理者としてログインします。
 
@@ -116,17 +116,17 @@
     7.  **[Email Attribute]** として、**[Use SAML subject]** を選択します。
     8.  **[SP initiated Login Configuration]** を選択します。
     9.  **[Login Path]** テキスト ボックスに、「**Azure**」と入力します。
-    10. **[保存]** をクリックします。
+    10. [**Save**] をクリックします。
 
 10. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sumologic-tutorial/IC778560.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778560.png "Configure single sign-on")
 
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが SumoLogic にログインできるようにするには、そのユーザーを SumoLogic にプロビジョニングする必要があります。SumoLogic の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **SumoLogic** テナントにログインします。
 
@@ -163,8 +163,8 @@ Azure AD ユーザーが SumoLogic にログインできるようにするには
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Batch サービスのクォータと制限 | Microsoft Azure"
-	description="Azure Batch サービスを使用する際のクォータ、制限、制約について説明します"
+	description="既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
 	services="batch"
 	documentationCenter=""
 	authors="mmacy"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/10/2016"
 	ms.author="marsma"/>
 
 # Azure Batch サービスのクォータと制限
@@ -46,13 +46,13 @@ Batch アカウントあたりの[アプリケーション](batch-application-pa
 
 Batch アカウントのクォータは、[Azure ポータル][portal]で確認します。
 
-1. ポータルで **Batch アカウント**、Batch アカウント名の順にクリックします。
+1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
 
-2. アカウント ブレードで **[すべての設定]**、**[プロパティ]** の順にクリックします。
-
-	![Batch アカウントのクォータ][account_quotas]
+2. Batch アカウントのメニュー ブレードで **プロパティ** を選択します。
 
 3. **[プロパティ]** ブレードに、Batch アカウントに現在適用されているクォータが表示されます。
+
+	![Batch アカウントのクォータ][account_quotas]
 
 ## クォータを増やす
 
@@ -106,4 +106,4 @@ Batch アカウントのクォータは、[Azure ポータル][portal]で確認�
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

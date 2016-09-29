@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -34,4 +34,4 @@ Microsoft Azure HDInsight では、クラスターで Hadoop タスクを実行�
 
 * [HDInsight のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0914_2016-->

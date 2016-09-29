@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -100,4 +100,4 @@ TDSP は、特定の種類の**ドキュメント** アーティファクトを�
 
 また、**特定のシナリオ**のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」に、これらのチュートリアルが簡単な説明と共に紹介されています。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

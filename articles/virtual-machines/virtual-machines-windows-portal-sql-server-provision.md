@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/21/2016"
+	ms.date="09/21/2016"
 	ms.author="jroth" />
 
 # Azure ポータルでの SQL Server 仮想マシンのプロビジョニング
@@ -62,7 +62,7 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
 ## VM を構成する
 SQL Server 仮想マシンを構成するための 5 つのブレードがあります。
 
-| 手順 | 説明 |
+| 手順 | Description |
 |---------------------|-------------------------------|
 | **基本** | [基本設定を構成する](#1-configure-basic-settings) |
 | **サイズ** | [仮想マシンのサイズを選択する](#2-choose-virtual-machine-size) |
@@ -97,7 +97,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 マシン サイズを選択し、**[選択]** をクリックします。
 
-## 3\.オプション機能を構成する
+## 手順 3.オプション機能を構成する
 **[設定]** ブレードで、仮想マシン用に Azure Storage、ネットワーク、監視を構成します。
 
 - **[ストレージ]** で、**ディスクの種類**として Standard または Premium (SSD) を指定します。運用環境のワークロードには Premium Storage をお勧めします。
@@ -117,7 +117,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 ## 4\.SQL Server の設定を構成する
 **[SQL Server の設定]** ブレードで、SQL Server の個々の設定と最適化を構成します。SQL Server について構成できる設定は次のとおりです。
 
-| 設定 |
+| Setting |
 |---------------------|
 | [接続](#connectivity) |
 | [認証](#authentication) |
@@ -125,9 +125,10 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 | [自動修正](#automated-patching) |
 | [自動化されたバックアップ](#automated-backup) |
 | [Azure Key Vault の統合](#azure-key-vault-integration) |
+| [R Services](#r-services) |
 
 ### 接続
-**[SQL connectivity (SQL 接続)]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。このチュートリアルでは、**[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
+**[SQL の接続]** で、この VM 上の SQL Server インスタンスに必要なアクセスの種類を指定します。このチュートリアルでは、**[パブリック (インターネット)]** を選択して、インターネット上のコンピューターやサービスから SQL Server に接続できるようにします。このオプションを選択すると、ポート 1433 のトラフィックを許可するように、ファイアウォールとネットワーク セキュリティ グループが自動的に構成されます。
 
 ![SQL Connectivity Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)
 
@@ -137,12 +138,14 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 インターネット経由によるデータベース エンジンへの接続を有効にしない場合は、次のいずれかのオプションを選択します。
 
-- **ローカル (VM 内のみ)**: VM 内から SQL Server への接続のみを許可します。
-- **プライベート (仮想ネットワーク内)**: 同じ仮想ネットワーク内のマシンまたはサービスから SQL Server への接続を許可します。
+- **ローカル (VM 内のみ)**: VM 内からのみ SQL Server への接続を許可します。
+- **プライベート (Virtual Network 内)**: 同じ仮想ネットワーク内のマシンまたはサービスから SQL Server への接続を許可します。
+
+>[AZURE.NOTE] SQL Server Express エディション用の仮想マシン イメージでは、TCP/IP プロトコルは自動で有効になっていません。これは、パブリック接続とプライベート接続のオプションについても当てはまります。Express エディションでは、SQL Server 構成マネージャーを使用し、VM の作成後に [TCP/IP プロトコルを手動で有効にする](#configure-sql-server-to-listen-on-the-tcp-protocol)必要があります。
 
 一般的に、シナリオで許容される最も制限の厳しい接続を選択すると、セキュリティが向上します。ただし、ネットワーク セキュリティ グループの規則と SQL 認証または Windows 認証を使用すると、すべてのオプションをセキュリティで保護できます。
 
-**[ポート]** の既定値は 1433 です。別のポート番号を指定できます。詳細については、[SQL Server 仮想マシンへの接続 (Resource Manager)](virtual-machines-windows-sql-connect.md)に関する記事を参照してください。
+**[ポート]** の既定値は 1433 です。別のポート番号を指定できます。詳細については、[Microsoft Azure での SQL Server 仮想マシンへの接続 (Resource Manager)](virtual-machines-windows-sql-connect.md) に関する記事を参照してください。
 
 ### 認証
 SQL Server 認証が必要な場合は、**[SQL 認証]** の **[有効]** をクリックします。
@@ -151,7 +154,7 @@ SQL Server 認証が必要な場合は、**[SQL 認証]** の **[有効]** を�
 
 >[AZURE.NOTE] インターネット経由で SQL Server にアクセスする場合 (つまりパブリック接続オプション)、ここで SQL 認証を有効にする必要があります。SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
 
-SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。このユーザー名が、SQL Server 認証ログインおよび **sysadmin** 固定サーバー ロールのメンバーとして構成されます。認証モードの詳細については、「[認証モードの選択](http://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。
+SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。このユーザー名が、SQL Server 認証ログインと **sysadmin** 固定サーバー ロールのメンバーとして構成されます。認証モードの詳細については、「[認証モードの選択](http://msdn.microsoft.com/library/ms144284.aspx)」を参照してください。
 
 SQL Server 認証を有効にしない場合は、VM のローカル管理者アカウントを使用して SQL Server インスタンスに接続できます。
 
@@ -164,11 +167,11 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。スライド スケールを使用してこれらを構成します。これらの要件に基づいて、ディスクの数が自動的に計算されます。
 
-既定では、Azure はストレージを 5000 IOP、200 MB、1 TB の記憶域容量に最適化します。ワークロードに基づいて、これらのストレージ設定を変更できます。**[Storage optimized for (ストレージ最適化対象)]** で、次のいずれかのオプションを選択します。
+既定では、Azure はストレージを 5000 IOP、200 MB、1 TB の記憶域容量に最適化します。ワークロードに基づいて、これらのストレージ設定を変更できます。**[ストレージの最適化]** で、次のいずれかのオプションを選択します。
 
-- **[General (全般)]** は、既定の設定であり、ほとんどのワークロードをサポートします。
-- **[Transactional (トランザクション)]** は、従来のデータベース OLTP ワークロード用にストレージを最適化します。
-- **[Data warehousing (データ ウェアハウジング)]** は、分析とレポートのワークロード用にストレージを最適化します。
+- **[全般]** は、既定の設定であり、ほとんどのワークロードをサポートします。
+- **[トランザクション]** は、従来のデータベース OLTP ワークロード用にストレージを最適化します。
+- **[データ ウェアハウス]** は、分析とレポートのワークロード用にストレージを最適化します。
 
 >[AZURE.NOTE] スライダーの上限値は、選択した仮想マシンのサイズによって異なります。
 
@@ -177,7 +180,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 ![SQL Automated Patching](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-patching.png)
 
-詳細については、「[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。
+詳細については、[Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-sql-automated-patching.md)に関するページを参照してください。
 
 ### 自動バックアップ
 **[自動バックアップ]** では、すべてのデータベースの自動データベース バックアップを有効にすることができます。既定では、自動バックアップは無効です。
@@ -192,10 +195,10 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 
 ![SQL Automated Backup](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-autobackup.png)
 
- 詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。
+ 詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)」をご覧ください。
 
 ### Azure Key Vault の統合
-暗号化のためのセキュリティ シークレットを Azure に格納するには、**[Azure key vault integration (Azure Key Vault の統合)]**、**[有効]** の順にクリックします。
+暗号化のためのセキュリティ シークレットを Azure に格納するには、**[Azure Key Vault の統合]**、**[有効]** の順にクリックします。
 
 ![SQL Azure Key Vault Integration](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-akv.png)
 
@@ -208,9 +211,16 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 | **プリンシパル シークレット**|Azure Active Directory サービスのプリンシパル シークレット。クライアント シークレットとも呼ばれます。 | 9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=|
 |**資格情報名**|**資格情報名**: AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。この資格情報の名前を選択します。| mycred1|
 
-詳細については、「[Azure VM 上の SQL Server 向け Azure Key Vault 統合の構成](virtual-machines-windows-classic-ps-sql-keyvault.md)」を参照してください。
+詳細については、[Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)に関するページを参照してください。
 
 SQL Server の設定の構成が完了したら、**[OK]** をクリックします。
+
+### R Services
+SQL Server 2016 Enterprise エディションには、[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) を有効にするオプションがあります。これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。**[SQL Server の設定]** ブレードで **[有効]** をクリックします。
+
+![Enable SQL Server R Services](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+
+>[AZURE.NOTE] 2016 Enterprise エディションではない SQL Server イメージでは、R Services を有効にするオプションは使用できません。
 
 ## 5\.概要を確認する
 **[概要]** ブレードで概要を確認し、**[OK]** をクリックして、この VM に対して指定した SQL Server、リソース グループ、リソースを作成します。
@@ -253,4 +263,4 @@ Azure 仮想マシン上の SQL Server の概要に関するビデオについ�
 
 Azure 仮想マシン上の SQL Server の[ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/)。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

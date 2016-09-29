@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/12/2016"   
 	ms.author="adsolank;juliako;johndeu"/>
 
 
@@ -46,7 +46,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 
 マニフェスト ファイルを使用して一度に複数のメディア ファイルを処理できます。
 
-詳細については、「[Azure Media Indexer 用のタスク プリセット](#)」をご覧ください。
+詳細については、「[Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/dn783454.aspx)」をご覧ください。
 
 ## 資産のインデックス作成
 
@@ -162,7 +162,7 @@ __JobResult.txt__ |出力マニフェストは、複数のファイルのイン�
 
 次のメソッドは、資産として複数のメディア ファイルをアップロードし、ジョブを作成してバッチ内のすべてのファイルのインデックスを作成します。
 
-.Lst 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。詳細については、「[Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/azure/dn783454.aspx)」をご覧ください。
+.Lst 拡張子のマニフェスト ファイルが作成され、資産にアップロードします。マニフェスト ファイルには、すべての資産ファイルの一覧が含まれています。詳細については、「[Azure Media Indexer 用のタスク プリセット](https://msdn.microsoft.com/library/dn783454.aspx)」をご覧ください。
 
 	static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
 	{
@@ -294,4 +294,4 @@ __features__ <br /><br /> バージョン 1.2 で追加現時点でサポート�
 
 [Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成](media-services-process-content-with-indexer2.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

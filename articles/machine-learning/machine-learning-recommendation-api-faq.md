@@ -3,8 +3,8 @@
 	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="luisca" 
-	manager="paulettm" 
+	authors="LuisCabrer" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/26/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 #Machine Learning Recommendations API の設定と使用に関する FAQ
@@ -21,9 +21,7 @@
 
 **Recommendations とは何ですか。**
 
-> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
-
-
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
 顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業に対して、Azure Machine Learning の Recommendations サービスは、セルフサービスの推奨エンジンを提供します。これは、コア アルゴリズムとして行列因子分解を使用した協調フィルタリングの実装です。アプリケーション開発者は REST Api を使用してRecommendations にアクセスできます。
 
@@ -139,4 +137,4 @@ API ドキュメントは、「[Azure Machine Learning Recommendations - クイ�
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

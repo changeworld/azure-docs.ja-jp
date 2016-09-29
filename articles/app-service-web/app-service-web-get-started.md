@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="5 分で初めての Web アプリを Azure にデプロイする | Microsoft Azure" 
+	pageTitle="初めての Web アプリを Azure に 5 分でデプロイする | Microsoft Azure" 
 	description="サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。実際の開発を速やかに開始し、すぐに成果を確認できます。" 
 	services="app-service\web"
 	documentationCenter=""
@@ -18,7 +18,7 @@
 	ms.author="cephalin"
 />
 	
-# 5 分で初めての Web アプリを Azure にデプロイする
+# 初めての Web アプリを Azure に 5 分でデプロイする
 
 このチュートリアルでは、初めての Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイします。App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
 
@@ -59,7 +59,7 @@
 
     ![app creation notification for your first web app in Azure](./media/app-service-web-get-started/create-web-app-started.png)
 
-4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイメントのブレードを開きます。
+4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイのブレードを開きます。
 
     ![deployment finished message for your first web app in Azure](./media/app-service-web-get-started/create-web-app-finished.png)
 
@@ -73,7 +73,7 @@
 
 5. [Web アプリ] ブレードで、下にスクロールして **[デプロイ オプション]** を表示するかこれを探してクリックします。
 
-    ![deploymnet options for your first web app in Azure](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
+    ![deployment options for your first web app in Azure](./media/app-service-web-get-started/deploy-web-app-deployment-options.png)
 
 6. **[ソースの選択]**、**[ローカル Git リポジトリ]**、**[OK]** の順にクリックします。
 
@@ -139,9 +139,9 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 - [Python](web-sites-python-ptvs-django-mysql.md)
 - [Java](web-sites-java-get-started.md)
 
-または、最初の Web アプリを活用します。For example:
+または、最初の Web アプリを活用します。次に例を示します。
 
 - [Azure にコードをデプロイする他の方法](../app-service-web/web-sites-deploy.md)を試してみます。たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 - Azure アプリを次のレベルに進めます。ユーザーを認証します。必要に応じてスケールを変更したり、パフォーマンスのアラートを設定したりできます。いずれも、数回のクリックで実現できます。「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!-----HONumber=AcomDC_0920_2016-->

@@ -4,7 +4,7 @@
    services="hdinsight,notification hubs"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -44,7 +44,7 @@ Azure Event Hubs では、Web サイト、アプリ、デバイスで発生す�
 
 	> [AZURE.NOTE] お使いのエディターまたは IDE には、Maven との操作用の特定の機能が搭載されている場合があります (本ドキュメントではカバーしていません)。お使いの編集環境の機能に関する詳細は、製品のマニュアルをご覧ください。
 
- * SSH クライアントHDInsight で SSH を使用する方法の詳細については、次の記事をご覧ください。
+ * SSH クライアント。HDInsight で SSH を使用する方法の詳細については、次の記事をご覧ください。
 
     - [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -453,4 +453,4 @@ Storm UI の詳細な使用方法については、次のトピックを参照�
 
 * [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

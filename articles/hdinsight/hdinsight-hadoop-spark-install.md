@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -145,7 +145,7 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 
 		hiveContext.sql("""SELECT * FROM hivesampletable WHERE devicemake LIKE "HTC%" LIMIT 20""").collect().foreach(println)
 
-6. 出力次のように表示されます。
+6. 出力は次のように表示されます。
 
 	![HDInsight クラスターで Spark SQL を実行したときの出力](./media/hdinsight-hadoop-spark-install/hdi-spark-sql.png)
 
@@ -318,4 +318,4 @@ Spark SQL では、Spark を使用して構造化照会言語 (SQL)、HiveQL、S
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [powershell-install-configure]: powershell-install-configure.md
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

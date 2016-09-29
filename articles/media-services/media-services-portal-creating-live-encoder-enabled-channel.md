@@ -3,7 +3,7 @@
 	description="このチュートリアルでは、Azure ポータルを利用し、シングル ビットレートのライブ ストリームを受信してマルチ ビットレート ストリームにエンコードするチャネルを作成する手順について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
+	authors="anilmur" 
 	manager="erikre" 
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="get-started-article"
 	ms.date="09/06/2016"
-	ms.author="juliako"/>
+	ms.author="juliako;juliako"/>
 
 
 #Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
@@ -183,7 +183,7 @@ Media Services には動的パッケージ化機能があり、マルチビッ�
 	
 	![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 	
-	**[Publish this event now (このイベントを今すぐ発行)]** をオンにしたままにすると、URL の発行イベントが作成されます。
+	**[Publish this live event now (このライブ イベントを今すぐ発行)]** をオンにしたままにすると、URL の発行イベントが作成されます。
 	
 	イベントをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
 
@@ -240,4 +240,4 @@ Media Services のラーニング パスを確認します。
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

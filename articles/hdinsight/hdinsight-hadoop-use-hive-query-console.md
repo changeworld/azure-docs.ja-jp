@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -19,7 +19,7 @@
 
 # クエリ コンソールを使用して Hive クエリを実行
 
-[AZURE.INCLUDE [Hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
@@ -128,4 +128,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

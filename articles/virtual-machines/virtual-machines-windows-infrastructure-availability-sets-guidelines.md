@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # 可用性セットのガイドライン
@@ -39,7 +39,7 @@
 
 Azure では、可用性セットと呼ばれる論理的なグループに仮想マシン (VM) を配置できます。可用性セット内で VM を作成する場合、Azure Platform により、基になるインフラストラクチャ全体にこれらの VM の配置が分散されます。Azure Platform または基になるハードウェア/インフラストラクチャの障害に対する計画済みメンテナンス イベントが発生する場合、可用性セットを使用することで、少なくとも 1 つの VM の 実行を継続できます。
 
-ベスト プラクティスとして、複数のアプリケーションを 1 つの VM に配置しないでください。可用性セットに 1 つの VM しか含まれていない場合、Azure Platform 内の計画済みまたは計画外のイベントから保護されません。[Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) では、基になるインフラストラクチャ全体にわたって VM を分散できるようにするために、1 つの可用性セット内に 2 つ以上の VM が必要です。
+ベスト プラクティスとして、複数のアプリケーションを 1 つの VM に配置しないでください。可用性セットに 1 つの VM しか含まれていない場合、Azure Platform 内の計画済みまたは計画外のイベントから保護されません。[Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) では、基になるインフラストラクチャ全体に VM を分散できるように、1 つの可用性セット内に 2 つ以上の VM が必要です。
 
 Azure における基になるインフラストラクチャは、更新ドメインと障害ドメインに分けられます。これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](virtual-machines-windows-manage-availability.md)に関するページをご覧ください。
 
@@ -51,4 +51,4 @@ Azure における基になるインフラストラクチャは、更新ドメ�
 ## 次のステップ
 [AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

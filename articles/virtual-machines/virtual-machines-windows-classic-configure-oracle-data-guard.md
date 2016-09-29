@@ -12,13 +12,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="05/17/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus" />
 
 #Azure 用の Oracle データ保護の構成
 
 
-このチュートリアルでは、高可用性と障害復旧のための Azure 仮想マシン環境に Oracle Data Guard をセットアップ、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの 1 ウェイレプリケーションの方法について説明します。
+このチュートリアルでは、高可用性と障害復旧のための Azure Virtual Machines 環境に Oracle Data Guard を設定、実装する方法について説明します。このチュートリアルでは、RAC 以外の Oracle データベースの一方向レプリケーションについて説明します。
 
 Oracle Data Guard は Oracle データベースのデータの保護および障害復旧をサポートします。シンプルで高パフォーマンスな、障害復旧、データの保護、および Oracle データベース全体の高可用性のすぐに使えるソリューションです。
 
@@ -26,10 +26,10 @@ Oracle Data Guard は Oracle データベースのデータの保護および障
 
 また、このチュートリアルでは、次の前提条件が既に実装されていることを前提としています。
 
-- 「[Oracle 仮想マシン イメージ - 他の考慮事項](virtual-machines-windows-classic-oracle-considerations.md)」に関するトピックの「高可用性と障害復旧」セクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていないことにご注意ください。
+- [Oracle 仮想マシン イメージの他の考慮事項](virtual-machines-windows-classic-oracle-considerations.md)に関するトピックの、高可用性と障害復旧に関するセクションを既に確認していること。Azure では、スタンドアロンの Oracle Database インスタンスをサポートしていますが、Oracle Real Application Cluster (Oracle RAC) をサポートしていません。
 
 
-- 同じプラットフォームで提供される Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成していること。Virtual Machines が永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-windows-load-balance.md)にあり、同じ [Virtual Network](azure.microsoft.com/documentation/services/virtual-network/) にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用可能となっていますのでご注意ください。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](virtual-machines-windows-sizes.md)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](virtual-machines-windows-classic-attach-disk.md)」を参照してください。
+- 同じプラットフォームで提供される Oracle Enterprise Edition のイメージを使用して、Azure に 2 つの Virtual Machines (VM) を作成していること。Virtual Machines が永続的なプライベート IP アドレスを介して相互にアクセスできるように、[同じクラウド サービス](virtual-machines-windows-load-balance.md)にあり、同じ Virtual Network にあることを確認します。さらに、VM を同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することにより、Azure は個別のフォールト ドメインとアップグレード ドメインに配置できるようになります。Oracle Data Guard は Oracle Database Enterprise Edition でのみ使用できます。それぞれのマシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。プラットフォームが提供する VM サイズの最新情報については、[「Azure の仮想マシンおよびクラウド サービスのサイズ」](virtual-machines-windows-sizes.md)を参照してください。VM に追加のディスク ボリュームが必要な場合は、追加のディスクをアタッチすることができます。詳細については、「[How to Attach a Data Disk to a Virtual Machine(データディスクを仮想マシンに追加する方法)](virtual-machines-windows-classic-attach-disk.md)」を参照してください。
 
 
 
@@ -65,11 +65,11 @@ Oracle Data Guard は Oracle データベースのデータの保護および障
 
 	1. 両方のデータベースのエントリを保持するために両方のサーバーで listener.ora を構成
 
-	2. プライマリおよびスタンバイの両方のデータベースのエントリを保持するために、プライマリおよびスタンバイの Virtual Machines で tnsnames.ora を構成
+	2. プライマリおよびスタンバイの両方のデータベースのエントリを保持するために、プライマリおよびスタンバイの Virtual Machines で tnsnames.ora を構成。
 
 	3. リスナーを開始し、両方のサービスの両方の Virtual Machines で tnsping を確認します。
 
-3. マウント状態でスタンバイインスタンスを起動
+3. マウント状態でスタンバイ インスタンスを起動
 
 4. RMAN を使用して、データベースのクローンとスタンバイ データベースを作成
 
@@ -77,7 +77,7 @@ Oracle Data Guard は Oracle データベースのデータの保護および障
 
 6. 物理スタンバイデータベースの検証
 
-> [AZURE.IMPORTANT] このチュートリアルは、次のハードウェアおよびソフトウェア構成に対してセットアップ、テストされています。
+> [AZURE.IMPORTANT] このチュートリアルは、次のハードウェアおよびソフトウェア構成に対して設定、テストされています。
 >
 >| | **プライマリ データベース** | **スタンバイ データベース** |
 >|----------------------|-------------------------------------------|-------------------------------------------|
@@ -88,13 +88,13 @@ Oracle Data Guard は Oracle データベースのデータの保護および障
 >| **メモリ** | 最小 2 GB | 最小 2 GB |
 >| **ディスク領域** | 最小 5 GB | 最小 5 GB |
 
-Oracle データベースおよび Oracle Data Guard の今後のリリースでは、追加の変更を実装する必要が生じる可能性があります。最新バージョンについては、Oracle Web サイトの「[Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html)」と「[Oracle データベース](http://www.oracle.com/us/corporate/features/database-12c/index.html)」のドキュメントをご覧ください。
+Oracle データベースおよび Oracle Data Guard の今後のリリースでは、追加の変更を実装する必要が生じる可能性があります。最新バージョンについては、Oracle Web サイトの [Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) と [Oracle データベース](http://www.oracle.com/us/corporate/features/database-12c/index.html)に関するドキュメントをご覧ください。
 
 ##物理スタンバイ データベース環境の展開
 ### 1\.プライマリ データベースの作成
 
 - プライマリ仮想マシンでプライマリ データベース "TEST" を作成詳細は、「Oracle データベースの作成と構成」を参照してください。
-- SQL で SYSDBA ロールを持つsql では、SYS ユーザーとしてデータベースに接続 * さらにコマンド プロンプトおよびデータベースの名前を表示するには、次のステートメントを実行します。
+- データベースの名前を表示するには、SQL*Plus コマンド プロンプトで、SYSDBA ロールを持つ SYS ユーザーとしてデータベースに接続し、次のステートメントを実行します。
 
 		SQL> select name from v$database;
 
@@ -126,7 +126,7 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 
 #### 強制ログ記録の有効化
 
-スタンバイ データベースを展開するには、プライマリ データベースでの「強制ログ」を有効にする必要があります。このオプションにより、イベントで 'nologging' 操作が完了した時も、強制ログが優先されすべての操作は、redo ログに記録されます。そのため、プライマリ データベース内のすべてがログに記録され、スタンバイへレプリケーションには、プライマリ データベースでのすべての操作が含まれていることを確認します。強制ログを有効にするには、alter database ステートメントを実行します。
+スタンバイ データベースを実装するには、プライマリ データベースでの "強制ログ" を有効にする必要があります。このオプションにより、"nologging" 操作が完了しても、強制ログが優先され、すべての操作が redo ログに記録されます。そのため、プライマリ データベース内のすべてがログに記録され、スタンバイへレプリケーションには、プライマリ データベースでのすべての操作が含まれていることを確認します。強制ログを有効にするには、alter database ステートメントを実行します。
 
 	SQL> ALTER DATABASE FORCE LOGGING;
 
@@ -138,7 +138,7 @@ Oracle データベースおよび Oracle Data Guard の今後のリリースで
 
 >[AZURE.IMPORTANT] Oracle Database 12 c を使用する場合は、Oracle Data Guard の管理に使用できる新しいユーザー**SYSDG**があります。詳細については、[Oracle Database 12c Release の変更](http://docs.oracle.com/database/121/UNXAR/release_changes.htm#UNXAR404)を参照してください。
 
-さらに、ORACLE\_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
+さらに、ORACLE\_HOME 環境が既に Machine1 で定義されていることを確認します。そうでない場合は「環境変数」ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。環境変数を設定するには、**[システム変数]** で **[新規]** をクリックします。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開きます。
 
 C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\database など Oracle\_Home ディレクトリに切り替えるには、次のステートメントを実行します。
 
@@ -243,7 +243,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	SQL> create pfile from spfile;
 	File created.
 
-次に、スタンバイのパラメーターを追加するには pfile を編集する必要があります。そのためには %Oracle\_home%\\database の場所で INITTEST.ORA ファイルを開きます。次に、INITTEST.ora ファイルに次のステートメントを追加します。INIT.ORA ファイルの命名規則は INIT<YourDatabaseName>.ORA です。
+次に、スタンバイのパラメーターを追加するには pfile を編集する必要があります。そのためには %Oracle\_home%\\database の場所で INITTEST.ORA ファイルを開きます。次に、INITTEST.ora ファイルに次のステートメントを追加します。INIT.ORA ファイルの名前付け規則は INIT<YourDatabaseName>.ORA です。
 
 	db_name='TEST'
 	db_unique_name='TEST'
@@ -266,7 +266,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 前のステートメント ブロックには、3 つの重要なセットアップ項目が含まれています。
 -	**LOG\_ARCHIVE\_CONFIG...:** このステートメントを使用して、一意のデータベースの ID を定義します。
--	**LOG\_ARCHIVE\_DEST\_1...:** このステートメントを使用して、ローカルのアーカイブ フォルダーの場所を定義します。データベース用のアーカイブのニーズのための新しいディレクトリを作成し、Oracle の既定フォルダー %ORACLE\_HOME%\\database\\archive を使用する代わりに、明示的にこのステートメントを使用して、ローカルのアーカイブ場所を指定することを推奨します。
+-	**LOG\_ARCHIVE\_DEST\_1...:** このステートメントを使用して、ローカルのアーカイブ フォルダーの場所を定義します。データベース用のアーカイブのニーズのための新しいディレクトリを作成し、Oracle の既定フォルダー %ORACLE\_HOME%\\database\\archive を使用する代わりに、明示的にこのステートメントを使用して、ローカルのアーカイブ場所を指定することをお勧めします。
 -	**LOG\_ARCHIVE\_DEST\_2 ....LGWR ASYNC...:**トランザクション redo データを収集するために、非同期ログライター プロセス (LGWR) を定義し、スタンバイ変換先に転送します。ここでは、DB\_UNIQUE\_NAME は転送先のスタンバイ サーバーにあるデータベースの一意の名前を指定します。
 
 新規パラメーターファイルが準備できたら、ここから spfile を作成する必要があります。
@@ -320,7 +320,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 まず、Azure クラシック ポータルを使用して Machine2 にリモート デスクトップをポイントする必要があります。
 
-次に、スタンバイ サーバー (Machine2) 上には C:\\<YourLocalFolder>\\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE\_HOME および ORACLE\_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。**システム変数**で**新規**ボタンをクリックして環境変数を設定します。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
+次に、スタンバイ サーバー (Machine2) 上には C:\\<YourLocalFolder>\\TEST などのスタンバイ データベースのために必要なすべてのフォルダーを作成します。このチュートリアルに従いながら、controlfile、datafiles, redologfiles、udump、bdump cdump ファイルなどのすべての必要なファイルを保持するために、ファイル構造が Machine1 上のフォルダー構造と一致していることを確認します。さらに、Machine2 で ORACLE\_HOME および ORACLE\_BASE 環境変数を定義します。そうでない場合は環境変数ダイアログ ボックスを使用して環境変数として定義します。このダイアログ ボックスにアクセスするには、**コントロール パネル**の「システム」アイコンをダブルクリックして**システム**ユーティリティを開始します。次に**詳細設定**タブをクリックし**環境変数**を選択します。環境変数を設定するには、**[システム変数]** で **[新規]** をクリックします。環境変数を設定した後に、既存の Windows コマンド プロンプトを閉じ、新しいものを開いて変更を確認します。
 
 次に、次の手順に従います。
 
@@ -334,7 +334,7 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 
 	3. リスナーを開始し、両方のサービスの両方の Virtual Machines で tnsping を確認します。
 
-3. マウント状態でスタンバイインスタンスを起動
+3. マウント状態でスタンバイ インスタンスを起動
 
 4. RMAN を使用して、データベースのクローンとスタンバイ データベースを作成
 
@@ -368,11 +368,11 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 -	***.LOG\_ARCHIVE\_DEST\_1:**Machine2 で手動で c:\\OracleDatabase\\TEST\_STBY\\archives フォルダーを作成する必要があります。
 -	***.LOG\_ARCHIVE\_DEST\_2:**これは省略可能な手順です。この設定が必要になるため、プライマリ マシンがメンテナンス中の場合にスタンバイマシンがプライマリ データベースになる場合に必要となる場合があるため、これを設定します。
 
-次に、スタンバイインスタンスを開始する必要があります。スタンバイデータベースサーバーで、新しい Windows サービスを作成することにより Oracle インスタンスを作成するために Windows コマンド プロンプトで次のコマンドを入力します。
+次に、スタンバイインスタンスを開始する必要があります。スタンバイデータベースサーバーで、Windows サービスを作成することにより Oracle インスタンスを作成するために Windows コマンド プロンプトで次のコマンドを入力します。
 
 	oradim -NEW -SID TEST\_STBY -STARTMODE MANUAL
 
-**Oradim**コマンドは Oracle インスタンスを作成しますが、開始しません。これは C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\BIN ディレクトリにあります。
+**Oradim** コマンドは Oracle インスタンスを作成しますが、開始しません。これは C:\\OracleDatabase\\product\\11.2.0\\dbhome\_1\\BIN ディレクトリにあります。
 
 ##プライマリおよびスタンバイのマシンでデータベースをサポートするためのリスナーと tnsnames の構成
 スタンバイ データベースを作成する際、構成内のプライマリ データベースとスタンバイ データベースが互いに通信しあえることを確認する必要があります。この場合は、手動でまたはネットワーク構成ユーティリティ NETCA を使用してリスナーと TNSNames の両方を構成する必要があります。Recovery Manager ユーティリティ (RMAN) を使用する場合、これは必須のタスクです。
@@ -501,8 +501,8 @@ INIT.ORA パラメーターを使用して、Data Guard 環境を制御できま
 	OK (260 msec)
 
 
-##マウント状態でスタンバイインスタンスを起動
-スタンバイ状態の仮想マシン (machine 2) にスタンバイ データベースをサポートするために、環境をセットアップする必要があります。
+##マウント状態でスタンバイ インスタンスを起動
+スタンバイ仮想マシン (MACHINE2) でスタンバイ データベースをサポートできるように環境を設定するには、
 
 まず、パスワード ファイルを、プライマリ コンピューター (Machine1) からスタンバイ マシン (machine 2) に手動でコピーします。これは**sys**パスワードは両方のコンピューターで同じである必要があるため必要となるものです。
 
@@ -555,7 +555,7 @@ SQL * Plus コマンド プロンプトを開き、次のように、スタン�
 
 **READ ONLY**モードでプライマリ データベースを開いた時、アーカイブ ログ配布は続行されます。ただし、管理されている回復プロセスは停止されます。これにより、管理されている回復プロセスが再開されるまで、スタンバイデータベースはどんどん古くなっていきます。この期間中には、レポート目的でスタンバイ データベースにアクセスできますが、データには最新の変更が反映されない場合があります。
 
-一般的には、万一プライマリ データベースに不具合が発生した場合に、データをスタンバイ データベースで最新に保つため、スタンバイ データベースは**マウント** モードで保持することが推奨されます。ただし、アプリケーションの要件によっては、スタンバイデータベースは**READ ONLY**モードでレポート目的で保持できます。次の手順では、SQL*Plus を使用して、読み取り専用モードでの Data Guard を有効にする方法を示します:
+一般的には、万一プライマリ データベースに不具合が発生した場合に、データをスタンバイ データベースで最新に保つため、スタンバイ データベースは**マウント** モードで保持することをお勧めします。ただし、アプリケーションの要件によっては、スタンバイデータベースは**READ ONLY**モードでレポート目的で保持できます。次の手順では、SQL*Plus を使用して、読み取り専用モードでの Data Guard を有効にする方法を示します:
 
 	SHUTDOWN IMMEDIATE;
 	STARTUP MOUNT;
@@ -630,4 +630,4 @@ SQL * Plus コマンド プロンプト ウィンドウを開き、プライマ�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-windows-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

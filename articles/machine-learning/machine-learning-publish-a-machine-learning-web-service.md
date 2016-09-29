@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -171,7 +171,7 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment
 [予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
-[新規]: #deploy-the-predictive-experiment-as-a-new-web-service
+[[新規]]: #deploy-the-predictive-experiment-as-a-new-web-service
 [新しい]: #deploy-the-predictive-experiment-as-a-new-web-service
 [新規]: #deploy-the-predictive-experiment-as-a-new-web-service
 [従来]: #deploy-the-predictive-experiment-as-a-new-web-service
@@ -180,4 +180,4 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 [Manage]: #manage-the-web-service-in-the-azure-management-portal
 [Update]: #update-the-web-service
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

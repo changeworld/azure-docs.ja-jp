@@ -15,7 +15,7 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.date="04/29/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus"/>
 
 # Linux VM へのディスクの追加
@@ -277,4 +277,4 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 - [Linux マシンのパフォーマンスの最適化](virtual-machines-linux-optimization.md)に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 - ディスクを追加してストレージ容量を拡張し、[RAID を構成](virtual-machines-linux-configure-raid.md)してパフォーマンスを強化します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

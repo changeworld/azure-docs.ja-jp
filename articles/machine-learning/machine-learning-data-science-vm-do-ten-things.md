@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"  />
 
 <tags
@@ -907,4 +907,4 @@ DSVM から DocumentDB にアクセスするには、以下の前提条件を満
 ## 概要
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。他にもさまざまな手段で分析環境を強化することができます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

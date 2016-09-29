@@ -5,7 +5,7 @@
 	documentationCenter=""
 	tags="azure-portal"
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-    ms.date="06/28/2016"
+    ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 # HDInsight Hadoop クラスターに R をインストールして使用する
@@ -45,7 +45,7 @@ HDInsight クラスターで R をインストールする[サンプル スク�
 1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
 2. **[スクリプト アクション]** ページで、次の値を入力します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Script Action を使ってクラスターをカスタマイズする")
+	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -114,4 +114,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

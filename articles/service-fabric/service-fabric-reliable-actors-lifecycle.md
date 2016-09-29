@@ -34,7 +34,7 @@
 アクターは次のように非アクティブ化されます。
 
 - アクターは、一定期間使用されていない場合、アクティブ アクター テーブルから削除されます。
-- `OnDeactivateAsync` メソッド (アクターの実装でオーバーライドできる) が呼び出されます。呼び出されると、アクターのタイマーをすべてクリアします。
+- `OnDeactivateAsync` メソッド (アクターの実装でオーバーライドできる) が呼び出されます。呼び出されると、アクターのタイマーをすべてクリアします。状態の変更などのアクター操作は、このメソッドから呼び出さないようにしてください。
 
 > [AZURE.TIP] Fabric アクター ランタイムはいくつかの [アクターのアクティブ化と非アクティブ化に関するイベント](service-fabric-reliable-actors-diagnostics.md#actor-activation-and-deactivation-events)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
@@ -129,4 +129,4 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

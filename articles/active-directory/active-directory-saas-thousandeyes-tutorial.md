@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ThousandEyes の統合
@@ -70,7 +70,7 @@
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
-1.  Azure クラシック ポータルの **[ThousandEyes]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  Azure クラシック ポータルの **ThousandEyes** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "シングル サインオンの構成")
 
@@ -78,9 +78,9 @@
 
     ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "シングル サインオンの構成")
 
-3.  **[アプリケーション URL の構成]** ページの **[ThousandEyes のサインオン URL]** テキストボックスに、ユーザーが ThousandEyes アプリケーションにサインオンするときに使用する URL (例: **https://app.thousandeyes.com/login/sso*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[ThousandEyes のサインオン URL]** テキストボックスに、ユーザーが ThousandEyes アプリケーションにサインオンするときに使用する URL (例: "https://app.thousandeyes.com/login/sso*") を入力し、[次へ] をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "アプリケーション URL の構成")
 
 4.  **[ThousandEyes でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -90,11 +90,11 @@
 
 6.  上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "設定")
+    ![Settings](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
 7.  **[Account]** をクリックします。
 
-    ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
+    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
 
 8.  **[Security & Authentication]** タブをクリックします。
 
@@ -104,12 +104,12 @@
 
     ![シングル サインオンの設定](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "シングル サインオンの設定")
 
-    1.  **[Enable Single Sign-On]** を選択します。
+    1.  **[シングル サインオンを有効にする]** を選択します。
     2.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[ログイン ページの URL]** テキスト ボックスに貼り付けます。
     3.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[ログアウト ページの URL]** テキスト ボックスに貼り付けます。
     4.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[発行者の URL]** 値をコピーして、**[ID プロバイダーの発行者]** テキスト ボックスに貼り付けます。
     5.  **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Microsoft Azure クラシック ポータルからダウンロードした証明書をアップロードします。
-    6.  **[保存]** をクリックします。
+    6.  [**Save**] をクリックします。
 
 10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -125,11 +125,11 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
 
 2.  **[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "設定")
+    ![Settings](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
 3.  [**アカウント**] クリックします。
 
-    ![アカウント](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
+    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
 
 4.  **[Accounts & Users]** タブをクリックします。
 
@@ -162,6 +162,6 @@ Azure AD ユーザーが ThousandEyes にログインできるようにするに
 
     ![Yes](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

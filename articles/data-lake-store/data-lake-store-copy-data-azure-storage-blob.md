@@ -4,7 +4,7 @@
    services="data-lake-store"
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -38,7 +38,7 @@ AdlCopy ツールは 2 つの異なるモードで使用できます。
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - データが含まれる **Azure Storage Blobs** コンテナー。
 - **Azure Data Lake Analytics アカウント (省略可能)** - Data Lake Store アカウントの作成手順については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」を参照してください。
 - **AdlCopy ツール**。[http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) の AdlCopy ツールをインストールします。
@@ -51,12 +51,12 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 構文のパラメーターを次に示します。
 
-| オプション | 説明 |
+| オプション | Description |
 |-----------|------------|
-| Source | Azure Storage Blob のソース データの場所を指定します。ソースには BLOB コンテナー、BLOB、または別の Data Lake Store アカウントを指定できます。 |
+| から | Azure Storage Blob のソース データの場所を指定します。ソースには BLOB コンテナー、BLOB、または別の Data Lake Store アカウントを指定できます。 |
 | Dest | Data Lake Store のコピー先を指定します。 |
 | SourceKey | Azure Storage Blob ソースのストレージ アクセス キーを指定します。これが必要なのは、ソースが BLOB コンテナーかBLOB の場合のみです。 |
-| アカウント | **省略可能**。Azure Data Lake Analytics アカウントを使用してコピー ジョブを実行する場合に、このオプションを使用します。構文に /Account オプションを使用して、Data Lake Analytics アカウントを指定しない場合、AdlCopy は既定のアカウントを使用してジョブを実行します。また、このオプションを使用する場合、ソース (Azure Storage Blob) とコピー先 (Azure Data Lake Store) を Data Lake Analytics アカウントのデータ ソースとして追加する必要があります。 |
+| Account | **省略可能**。Azure Data Lake Analytics アカウントを使用してコピー ジョブを実行する場合に、このオプションを使用します。構文に /Account オプションを使用して、Data Lake Analytics アカウントを指定しない場合、AdlCopy は既定のアカウントを使用してジョブを実行します。また、このオプションを使用する場合、ソース (Azure Storage Blob) とコピー先 (Azure Data Lake Store) を Data Lake Analytics アカウントのデータ ソースとして追加する必要があります。 |
 | Units | コピー ジョブに使用する Data Lake Analytics ユニット数を指定します。 **/Account** オプションを使用して Data Lake Analytics アカウントを指定する場合、このオプションは必須です。
 | パターン | コピーするBLOB やファイルを示す regex パターンを指定します。AdlCopy は、大文字と小文字を区別する照合を使用します。すべての項目のコピーにパターンが指定されていない場合は、既定のパターンが使用されます。 複数のファイル パターンを指定することはサポートされていません。                                                                                                                                                                                                                                                                                                                                               
 
@@ -70,7 +70,7 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 		AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-	次に例を示します。
+	For example:
 
 		AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
@@ -103,7 +103,7 @@ AdlCopy を使用して、2 つの Data Lake Store アカウント間でデー�
 
 		AdlCopy /Source adl://<source_adls_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adls_account>.azuredatalakestore.net/<path>/
 
-	次に例を示します。
+	For example:
 
 		AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
 
@@ -152,7 +152,7 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 
 		AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 
-	次に例を示します。
+	For example:
 
 		AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
@@ -173,4 +173,4 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 - [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

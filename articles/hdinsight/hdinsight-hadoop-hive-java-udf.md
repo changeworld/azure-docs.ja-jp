@@ -4,7 +4,7 @@ description="HDInsight で Hive から Java ユーザー定義関数 (UDF) を�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -166,4 +166,4 @@ Hive の他の使用方法について [HDInsight での Hive の使用](hdinsig
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)のセクションを参照します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

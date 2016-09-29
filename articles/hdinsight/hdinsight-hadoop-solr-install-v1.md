@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -45,10 +45,10 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 
 * [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install.md)
 
-1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。 
+1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-v1/hdi-script-action-solr.png "Script Action を使ってクラスターをカスタマイズする")
+	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-v1/hdi-script-action-solr.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 	
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -86,11 +86,11 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 
 	post.jar ユーティリティは、**solr.xml** と **monitor.xml** という 2 つのサンプル ドキュメントで Solr のインデックスを作成します。post.jar ユーティリティとサンプル ドキュメントは Solr のインストールで利用できるようになります。
 
-3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュボードを起動します。左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から **[Query]** をクリックします。例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
+3. **Solr ダッシュボードを使用して、インデックス付きドキュメント内を検索します**。HDInsight クラスターへの RDP セッションで Internet Explorer を開き、**http://headnodehost:8983/solr/#/** で Solr のダッシュボードを起動します。**左側のウィンドウの **[Core Selector]** ボックスから、**[collection1]** を選択し、メニューの中から [Query]** をクリックします。例として、Solr 内のすべてのドキュメントを選択して返すために、次の値を指定します。
 	1. **[q]** ボックスに「***:***」を入力します。これにより、Solr でインデックス付けされたすべてのドキュメントが返されます。ドキュメント内の特定の文字列を検索する場合には、ここにその文字列を入力することができます。
 	2. **[wt]** ボックスでは、出力形式を選択します。既定値は、**json** です。**[Execute Query]** をクリックします。
 
-		![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-v1/hdi-solr-dashboard-query.png "Solr ダッシュボードでクエリを実行する")
+		![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-solr-install-v1/hdi-solr-dashboard-query.png "Solr ダッシュボードでクエリを実行する")
 	
 	これによる出力は、Solr のインデックス作成のために使用した 2 つのドキュメントを返します。出力結果は、以下のようになります。
 
@@ -198,4 +198,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に Solr を
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
  
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

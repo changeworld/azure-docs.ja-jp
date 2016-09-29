@@ -5,7 +5,7 @@
    documentationCenter=""
    tags="azure-portal"
    authors="mumian"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -142,11 +142,11 @@ Visual Studio とリソース グループの使用の概要については、�
 ##次のステップ
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](../virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md)」 (.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ) を参照してください。
 - アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
 - ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
-- Azure Resource Manager テンプレートのセクションについては、「[Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
-- Azure Resource Manager テンプレートで使用できる関数の一覧については、「[Azure Resource Manager テンプレートの関数](../resource-group-template-functions.md)」を参照してください。
+- Azure Resource Manager のテンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+- Azure Resource Manager のテンプレートで使用できる関数の一覧については、「[Azure Resource Manager のテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
 
 ##付録 A: Resource Manager テンプレート
 
@@ -353,4 +353,4 @@ Visual Studio とリソース グループの使用の概要については、�
     }
     }
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

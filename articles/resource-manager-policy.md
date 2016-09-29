@@ -132,7 +132,7 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
 | エイリアス名 | Description |
 | ---------- | ----------- |
-| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br /> Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft..CDN/profiles |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft.CDN/profiles |
 | {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
 | {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
 | Microsoft.Compute/virtualMachines/imagePublisher | |
@@ -414,6 +414,27 @@ HTTP PUT を使用してリソースの作成やテンプレートのデプロ�
 
     New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
+### Azure CLI を使用したポリシー定義の作成
+
+以下に示すように、Azure CLI でポリシー定義コマンドを使用して、新しいポリシー定義を作成できます。以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定できるポリシーを作成します。
+
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{	
+      "if" : {
+        "not" : {
+          "field" : "location",
+          "in" : ["northeurope" , "westeurope"]
+    	}
+      },
+      "then" : {
+        "effect" : "deny"
+      }
+    }'    
+    
+
+以下に示すように、ポリシー インラインではなく、ポリシーが含まれている .json ファイルへのパスを指定することもできます。
+
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
+
 
 ## ポリシーの適用
 
@@ -456,17 +477,46 @@ Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-Azu
 
 同様に、Get-AzureRmPolicyAssignment、Set-AzureRmPolicyAssignment、および Remove-AzureRmPolicyAssignment コマンドレットをそれぞれ使用して、ポリシーの割り当てを取得、変更、または削除することもできます。
 
+### Azure CLI を使用したポリシーの割り当て
+
+以下に示すように、ポリシーの割り当てコマンドを使用して、上記で作成したポリシーを Auzre CLI を介して目的のスコープに適用できます。
+
+    azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/<policy-name> --scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+        
+ここでのスコープは、指定するリソース グループの名前です。policy-definition-id パラメーターの値が不明な場合は、次に示すように、Azure CLI を介して取得できます。
+
+    azure policy definition show <policy-name>
+
+上記のポリシー割り当てを削除するには、次のようにします。
+
+    azure policy assignment remove --name regionPolicyAssignment --ccope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+
+ポシリー定義の表示、設定、削除コマンドをそれぞれ使用して、ポリシー定義を取得、変更、または削除できます。
+
+同様に、ポシリー割り当ての表示および削除コマンドをそれぞれ使用して、ポリシー割り当てを取得、変更、または削除できます。
+
 ##ポリシー監査イベント
 
-ポリシーを適用した後、ポリシー関連イベントの表示を開始します。このデータを取得するには、ポータルに移動するか、PowerShell を使用します。
+ポリシーを適用した後、ポリシー関連イベントの表示を開始します。このデータを取得するには、ポータルに移動するか、PowerShell または Azure CLI を使用します。
 
-拒否効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
+### PowerShell を使用したポリシー監査イベント
+
+拒否効果に関連するすべてのイベントを表示するには、次の PowerShell コマンドを使用できます。
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
 監査効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
-    
 
-<!---HONumber=AcomDC_0810_2016-->
+### Azure CLI を使用したポリシー監査イベント
+
+拒否効果に関連するリソース グループのイベントをすべて表示するには、次の CLI コマンドを使用できます。
+
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/deny/action")"
+
+監査効果に関連するすべてのイベントを表示するには、次の CLI コマンドを使用できます。
+
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/audit/action")"
+
+<!---HONumber=AcomDC_0914_2016-->

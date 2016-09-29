@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/03/2016"
+	ms.date="09/13/2016"
 	ms.author="v-shysun"/>
 
 # サーバー間、サブスクリプション間、および Azure の内外にデータベースを移動する
@@ -31,4 +31,4 @@
 ## Azure の外部で使用するためにデータベースのコピーを作成するには
 - [BACPAC ファイルをエクスポートします。](sql-database-export.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

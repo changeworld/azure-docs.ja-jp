@@ -12,16 +12,14 @@
 	ms.tgt_pltfrm="ibiza" 
 	ms.devlang="multiple" 
 	ms.topic="article" 
-	ms.date="09/01/2016" 
+	ms.date="09/11/2016" 
 	ms.author="awills"/>
 
 # カスタムのイベントとメトリックのための Application Insights API 
 
 *Application Insights はプレビュー段階です。*
 
-アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。
-
-Application Insights でデータを集めるとき、この API を使用すれば、ページ ビューや例外レポートなど、標準のテレメトリを送信できるだけでなく、独自のカスタム テレメトリも送信できます。
+アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。[Visual Studio Application Insights](app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントとメトリック、および独自のバージョンの標準テレメトリを送信できます。この API は、Application Insights の標準のデータ コレクターで使用される API と同じです。
 
 ## API の概要
 
@@ -103,7 +101,8 @@ Application Insights では、*カスタム イベント*はデータ ポイン�
 
     telemetry.trackEvent("WinGame");
 
-ここでは、"WinGame"は、Application Insights ポータルに表示される名前です。
+
+### Azure ポータルでイベントを表示する
 
 イベントの数を表示するには、[[メトリックス エクスプローラー]](app-insights-metrics-explorer.md) ブレードを開き、新しいグラフを追加して、[イベント] を選択します。
 
@@ -243,6 +242,36 @@ Web サービス モジュールが実行されていない状況で要求をシ
        stopwatch.Elapsed, 
        "200", true);  // Response code, success
 
+
+
+## 操作コンテキスト
+
+テレメトリ項目に共通の操作 ID を割り当てることで、項目をまとめて関連付けることができます。標準の要求追跡モジュールでは、HTTP 要求を処理するときに、例外や他のイベントに対してこれを実行します。[Search](app-insights-diagnostic-search.md) および [Analytics](app-insights-analytics.md) では、ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+
+ID を設定する最も簡単な方法は、次のパターンを使用して操作コンテキストを設定することです。
+
+    // Establish an operation context and associated telemetry item:
+    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+    {
+        // Telemetry sent in here will use the same operation ID.
+        ...
+        telemetry.TrackEvent(...); // or other Track* calls
+        ...
+        // Set properties of containing telemetry item - for example:
+        operation.Telemetry.ResponseCode = "200";
+        
+        // Optional: explicitly send telemetry item:
+        telemetry.StopOperation(operation);
+
+    } // When operation is disposed, telemetry item is sent.
+
+操作コンテキストを設定するほかに、`StartOperation` は指定したタイプのテレメトリ項目を作成し、操作を破棄するとき、または明示的に `StopOperation` を呼び出す場合に、そのテレメトリ項目を送信します。`RequestTelemetry` をテレメトリ タイプとして使用する場合、その継続時間は、開始から停止までの間の一定の間隔に設定します。
+
+操作コンテキストを入れ子にすることはできません。操作コンテキストが既にある場合は、含まれているすべての項目 (StartOperation で作成された項目を含む) に、その操作コンテキストの ID が関連付けられます。
+
+Search では、操作コンテキストを使用して、関連項目の一覧が作成されます。
+
+![関連項目](./media/app-insights-api-custom-events-metrics/21.png)
 
 
 ## 例外を追跡する
@@ -517,32 +546,6 @@ ASP.NET Web MVC アプリケーションでの例:
 
 > [AZURE.WARNING] Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。再利用すると、正しくない構成でテレメトリが送信される場合があります。
 
-## 操作コンテキスト
-
-Web アプリが HTTP 要求を受け取ると、Application Insights の要求追跡モジュールが要求に ID を割り当て、現在の操作 ID と同じ値を設定します。この操作 ID は、要求に対する応答が送信されるとクリアされます。既定の TelemetryContext を使用していれば、操作中に行われたすべての追跡呼び出しに同じ操作 ID が割り当てられます。これにより、ポータルでイベントを調べるときに、特定の要求に関連するイベントを見つけることができます。
-
-![関連項目](./media/app-insights-api-custom-events-metrics/21.png)
-
-HTTP 要求に関連付けられていないイベントを監視している場合、または要求追跡モジュールを使用していない場合 (バックエンド プロセスを監視している場合など) は、次のパターンを使用して独自の操作コンテキストを設定できます。
-
-    // Establish an operation context and associated telemetry item:
-    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
-    {
-        // Telemetry sent in here will use the same operation ID.
-        ...
-        telemetry.TrackEvent(...); // or other Track* calls
-        ...
-        // Set properties of containing telemetry item - for example:
-        operation.Telemetry.ResponseCode = "200";
-        
-        // Optional: explicitly send telemetry item:
-        telemetry.StopOperation(operation);
-
-    } // When operation is disposed, telemetry item is sent.
-
-操作コンテキストを設定するほかに、`StartOperation` は指定したタイプのテレメトリ項目を作成し、操作を破棄するとき、または明示的に `StopOperation` を呼び出す場合に、そのテレメトリ項目を送信します。`RequestTelemetry` をテレメトリ タイプとして使用する場合、その継続時間は、開始から停止までの間の一定の間隔に設定します。
-
-操作コンテキストを入れ子にすることはできません。操作コンテキストが既にある場合は、含まれているすべての項目 (StartOperation で作成された項目を含む) に、その操作コンテキストの ID が関連付けられます。
 
 
 ## <a name="timed"></a> タイミング イベント
@@ -788,4 +791,4 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

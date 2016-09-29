@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="rastala"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -95,4 +95,4 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 
 [MSDN ドキュメント](https://msdn.microsoft.com/library/azure/dn905886.aspx)でテキスト分析モジュールの詳細を確認してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/24/2016"
+   ms.date="09/12/2016"
    ms.author="bwren" />
 
 # Windows PowerShell ワークフローについて
@@ -40,7 +40,7 @@ PowerShell スクリプトを PowerShell ワークフローに変換する最初
        <Commands>
     }
 
-ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
+The name of the workflow must match the name of the Automation runbook.Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
 
 ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
 
@@ -99,7 +99,7 @@ For example, consider the following code that gets all running services.
 
 ## InlineScript
 
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。ワークフロー内のコマンドは Windows Workflow Foundation に送信されて処理され、InlineScript ブロック内のコマンドは Windows PowerShell によって処理されます。
+**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell.
 
 InlineScript uses the syntax shown below.
 
@@ -151,7 +151,7 @@ InlineScript の使用の詳細については、「[ワークフローでの Wi
 
 Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
 
-**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。これには、次に示す構文を使用します。この場合、Activity1 と Activity2 は同時に開始されます。Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。This uses the syntax shown below.この場合、Activity1 と Activity2 は同時に開始されます。Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
 
     Parallel
     {
@@ -276,4 +276,4 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
 
 - PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

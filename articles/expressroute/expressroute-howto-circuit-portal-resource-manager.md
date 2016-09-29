@@ -59,6 +59,7 @@
 
 	![SKU レベルとデータ計測方法の構成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit2.png)
 
+>[AZURE.IMPORTANT] ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示すことに注意してください。この場所は "Location" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
 ### 3\.回線とプロパティを表示する
 
@@ -153,4 +154,4 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-portal-resource-manager.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

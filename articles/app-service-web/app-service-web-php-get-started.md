@@ -39,13 +39,13 @@ PHP 開発者の方は、お気に入りの PHP フレームワークを Azure �
 - [Composer](https://getcomposer.org/download/) をインストールします。
 - [Azure CLI](../xplat-cli-install.md) をインストールします。
 - [Git](http://www.git-scm.com/downloads) をインストールします。
-- Microsoft Azure アカウントを取得します。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か、または [Visual Studio サブスクライバー特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)ことができます。
+- Microsoft Azure アカウントを取得します。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
 >[AZURE.NOTE] Web アプリの動作を確認してください。今すぐ [App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)して、有効期間が短いスターター アプリを作成してみてください。このサービスの利用にあたり、クレジット カードや契約は必要ありません。
 
 ## 開発コンピューター上で PHP (Laravel) アプリを作成する
 
-1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。必要なツールが適切にコンピューターにインストールされていることを次のコマンドを実行して確認します。 
+1. 新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルを開きます。必要なツールが適切にコンピューターにインストールされていることを次のコマンドを実行して確認します。
 
         php --version
         composer --version
@@ -82,8 +82,9 @@ PHP 開発者の方は、お気に入りの PHP フレームワークを Azure �
 
 Azure App Service への Web アプリの作成と、Git デプロイに必要なセットアップは、Azure CLI から 1 行のコマンドで実行できます。以下に示したのは、そのための手順です。
 
-3. 次のようにして、Azure にログインします。
+1. ASM モードに変更し、Azure にログインします。
 
+        azure config mode asm
         azure login
     
     ヘルプ メッセージに従って、ログイン プロセスを続行します。
@@ -105,7 +106,7 @@ Azure App Service への Web アプリの作成と、Git デプロイに必要�
 
 作成した Laravel アプリが Azure で正しく動作するためには、いくつかのことに注意する必要があります。これと同様の作業は、すべての PHP フレームワークで必要となります。
 
-- PHP 5.5.9 以降を構成します。サーバーの全要件については、[最新の Laravel 5.2 サーバーの要件](https://laravel.com/docs/5.2#server-requirements)を参照してください。その他の要件は拡張機能に関するものであり、Azure の PHP 環境であらかじめ使用できる状態になっています。 
+- PHP 5.5.9 以降を構成します。サーバーの全要件については、[最新の Laravel 5.2 サーバーの要件](https://laravel.com/docs/5.2#server-requirements)を参照してください。その他の要件は拡張機能に関するものであり、Azure の PHP 環境であらかじめ使用できる状態になっています。
 - アプリに必要な環境変数を設定します。Laravel では、`.env` ファイルを使用して簡単に環境変数を設定できます。ただし、このファイルをソース管理下に置くことは避けてください ([Laravel の環境構成](https://laravel.com/docs/5.2/configuration#environment-configuration)に関するページを参照)。Azure Web アプリに対するアプリ設定は自分で行うことになります。
 - Laravel アプリのエントリ ポイント (`public/index.php`) が最初に読み込まれることを確認します。[Laravel のライフサイクルの概要](https://laravel.com/docs/5.2/lifecycle#lifecycle-overview)に関するページを参照してください。つまり、Web アプリのルート URL が `public` ディレクトリを指すように設定する必要があります。
 - composer.json があるので、Azure で Composer 拡張機能を有効にします。これにより、`git push` でのデプロイ時に必要なパッケージの入手に関連した面倒な処理を Composer に委ねることができます。これは利便性の問題です。Composer によるオートメーションを有効にしなかった場合、必要なことは、コードのコミットとデプロイ時に `vendor` ディレクトリの内容がすべて対象となる ("無視されない") ように、`/vendor` を `.gitignore` ファイルから削除するだけです。
@@ -248,4 +249,4 @@ Web アプリを正しく Azure にデプロイしたにもかかわらず、Azu
 - [Azure App Service での WordPress から Multisite への変換](web-sites-php-convert-wordpress-multisite.md)
 - [Azure App Service のエンタープライズ クラスの WordPress](web-sites-php-enterprise-wordpress.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -21,7 +21,7 @@
    
 # Azure Functions の概要
 
-Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。これにより開発の生産性が大幅に向上するだけでなく、C#、Node.js、Python、PHP などの開発言語も使用できるようになります。コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。
+Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。これにより開発の生産性が大幅に向上するだけでなく、C#、F#、Node.js、Python、PHP などの開発言語も使用できるようになります。コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。
 
 このトピックでは、Azure Functions の概要について説明します。Azure Functions の利用をすぐに開始する場合は、「[初めての Azure 関数の作成](functions-create-first-azure-function.md)」を参照してください。Azure Functions の詳細な技術情報をお探しの場合は、[開発者向けリファレンス](functions-reference.md)を参照してください。
 
@@ -29,7 +29,7 @@ Azure Functions は、小規模なコード ("関数") をクラウドで手軽�
 
 Azure Functions の主要な機能を次に示します。
     
-* **さまざまな言語** - C#、Node.js、Python、F#、PHP、Batch、Bash、Java、その他実行可能な言語を使って関数を記述できます。
+* **さまざまな言語** - C#、F#、Node.js、Python、PHP、Batch、Bash、Java、その他実行可能な言語を使って関数を記述できます。
 * **従量課金制の価格モデル** - コードの実行に要した時間に対してのみ課金されます。下の[価格に関するセクション](#pricing)で動的 App Service プランのオプションをご覧ください。
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。
@@ -87,4 +87,4 @@ Azure Functions には 2 種類の料金プランがあり、ニーズに合わ�
 + [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
 + [Azure App Service とは](../app-service/app-service-value-prop-what-is.md) Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service プラットフォームを活用しています。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

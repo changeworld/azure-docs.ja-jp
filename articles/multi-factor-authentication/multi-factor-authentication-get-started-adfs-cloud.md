@@ -1,26 +1,26 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護" 
-	description="クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護"
+	description="クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
 組織が Azure Active Directory とフェデレーションしており、Azure AD によってアクセスされるリソースがある場合、Azure Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用してこれらのリソースをセキュリティ保護します。Azure Multi-factor Authentication または Active Directory フェデレーション サービスで Azure Active Directory リソースをセキュリティ保護するには、以下の手順を使用します。
 
-## AD FS を使用して Azure AD リソースをセキュリティ保護するには、次の手順に従います。 
+## AD FS を使用して Azure AD リソースをセキュリティ保護するには、次の手順に従います。
 
 
 
@@ -67,7 +67,7 @@
 10. 変換要求規則の追加ウィザードで、ドロップダウンから [カスタムの規則を使用して要求を送信する] を選択し、[次へ] をクリックします。
 11. [要求規則名] の下のボックスに 「Keep Users Signed In」 (ユーザーをサインインしたままにする) と入力します。
 12. [カスタムの規則] ボックスに次のように入力します。
-	    
+
 		c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
 			=> issue(claim = c);
 ![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
@@ -93,4 +93,4 @@
 
 これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

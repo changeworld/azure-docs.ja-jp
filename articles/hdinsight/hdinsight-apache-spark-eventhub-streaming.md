@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -90,7 +90,7 @@ Spark ストリーミングは、コア Spark API を拡張して、スケーラ
 	
 2. プロジェクトをビルドします。**[Build (ビルド)]** メニューの **[Make Project (プロジェクトの作成)]** をクリックします。出力 jar が **\\out\\artifacts** の下に作成されます。
 
->[AZURE.TIP] IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。その方法については、ガイダンスの次のセクションに記載された手順を参照してください。そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。次に例を示します。
+>[AZURE.TIP] IntelliJ IDEA で提供されているオプションを使用して、GitHub リポジトリからプロジェクトを直接作成することもできます。その方法については、ガイダンスの次のセクションに記載された手順を参照してください。そのセクションで記載されている手順の多くは、この手順で作成する Scala アプリケーションには適用されないので注意してください。For example:
 
 > * Spark バージョンを取り込むときに POM を更新する必要はありません。それは、このアプリケーションを作成するための依存関係が Spark に存在しないからです。
 > * プロジェクト ライブラリにいくつかの依存関係 jar を追加する必要はありません。このプロジェクトで、それらの jar は必要ないからです。
@@ -292,7 +292,7 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 
 	SELECT * FROM eventhivetable10 LIMIT 10;
 
-出力次のように表示されます。
+出力は次のように表示されます。
 
 	ZN90apUSQODDTx7n6Toh6jDbuPngqT4c
 	sor2M7xsFwmaRW8W8NDwMneFNMrOVkW1
@@ -391,4 +391,4 @@ SELECT クエリを実行して、テーブルの内容を表示することも�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

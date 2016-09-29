@@ -51,7 +51,7 @@
 プラットフォーム | インストール
 ---|---
 IIS サーバー | [サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](app-insights-asp-net.md) をアプリにインストールする
-Azure Web アプリ | [Application Insights Extension](../azure-portal/insights-perf-analytics.md)
+Azure Web アプリ | [Application Insights Extension](app-insights-azure-web-apps.md)
 Java Web サーバー | [Java Web アプリ](app-insights-java-agent.md)
 Web ページ | [JavaScript モニター](app-insights-javascript.md) (Web ページの監視以外の追加設定なし)
 Azure Cloud Services | [スタートアップ タスクを使用](app-insights-cloudservices.md#dependencies)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)する  
@@ -154,4 +154,4 @@ IIS サーバー用の Status Monitor では、Application Insights SDK を使�
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

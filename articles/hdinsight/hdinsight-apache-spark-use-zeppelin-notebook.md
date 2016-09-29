@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -27,7 +27,7 @@ Apache Spark クラスターに Zeppelin Notebook をインストールする方
 
 * このチュートリアルを開始する前に、Azure サブスクリプションが必要です。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
-* SSH クライアントLinux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
+* SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
 
 	> [AZURE.NOTE] `ssh`または PuTTY 以外の SSH クライアントを使用する場合は、クライアントのマニュアルで SSH トンネルの確立方法を確認してください。
 
@@ -201,7 +201,7 @@ FoxyProxy Standard をインストール済みの場合は、次の手順を使�
 
 	* **[パターン名]** - **zeppelinnotebook** - パターンのフレンドリ名です。
 
-	* **URL パターン** - **\*hn0*\** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン **hn0** を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
+	* **URL パターン** - ***hn0*** - Zeppelin Notebook がホストされているエンドポイントの内部の完全修飾ドメイン名と一致するパターンを定義します。Zeppelin Notebook はクラスターの headnode0 だけで利用可能であり、エンドポイントは通常は `http://hn0-<string>.internal.cloudapp.net` であるため、パターン *hn0* を使用すると、要求は Zeppelin エンドポイントにリダイレクトされることになります。
 
 		![foxyproxy のパターン](./media/hdinsight-apache-spark-use-zeppelin-notebook/foxypattern.png)
 
@@ -387,4 +387,4 @@ SSH トンネリングをセットアップしたら、以下の手順で、Spar
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

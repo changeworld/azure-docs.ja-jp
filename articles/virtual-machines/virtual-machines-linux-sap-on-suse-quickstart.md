@@ -14,7 +14,7 @@
    ms.topic="campaign-page"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="na"
-   ms.date="05/30/2016"
+   ms.date="09/12/2016"
    ms.author="hermannd"/>
 
 # Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行
@@ -125,9 +125,16 @@ CLI と Azure Resource Manager の詳細については、「[Azure Resource Man
 
 正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。SAP カーネルはこれを利用するように適合させる必要がありました。Linux 向けの SAP カーネルの以前のバージョンには、このコード変更が含まれていませんでした。そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが無効になりました。これは、最新の SAP Linux のカーネルで解決されています。詳細については、SAP Note 1928533 を確認してください。
 
-## SUSE の sapconf パッケージ
+## SUSE の sapconf パッケージ / tuned-adm
 
 SUSE には、一連の SAP 固有の設定を管理する、"sapconf" と呼ばれるパッケージが用意されています。このパッケージの実行内容、インストール方法、使用方法の詳細については、「[Using sapconf to prepare a SUSE Linux Enterprise Server to run SAP systems (SAP システムを実行するために sapconf を使用して SUSE Linux Enterprise Server を準備する)](https://www.suse.com/communities/blog/using-sapconf-to-prepare-suse-linux-enterprise-server-to-run-sap-systems/)」および「[What is sapconf or how to prepare a SUSE Linux Enterprise Server for running SAP systems? (sapconf の説明と SAP システムの実行用に SUSE Linux Enterprise Server を準備する方法)](http://scn.sap.com/community/linux/blog/2014/03/31/what-is-sapconf-or-how-to-prepare-a-suse-linux-enterprise-server-for-running-sap-systems)」を参照してください。
+
+また、sapconf に代わる新しいツール tuned-adm もあります。このツールの詳細については、次の 2 つのリンク先をご覧ください。
+
+[tuned-adm プロファイルの sap-hana に関する SLES ドキュメント](https://www.suse.com/documentation/sles-for-sap-12/book_s4s/data/sec_s4s_configure_sapconf.html)
+
+[Tuning Systems for SAP Workloads with tuned-adm (tuned-adm を使用した SAP ワークロードのチューニング システム)](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/book_s4s/book_s4s.pdf) (第 6.2 章)
+
 
 ## 分散 SAP インストールでの NFS 共有
 
@@ -166,4 +173,4 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 仮想化環境では、Linux 上の Oracle にはサポートの制約があります。これは Azure 固有のトピックではありませんが、理解しておくことが重要です。Azure のようなパブリック クラウドでは、SAP は SUSE または Red Hat 上の Oracle をサポートしません。このトピックについては、直接 Oracle にお問い合わせください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

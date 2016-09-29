@@ -4,7 +4,7 @@
    services="data-lake-store,data-catalog" 
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -94,4 +94,4 @@
 * [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Store と他の Azure サービスを統合する](data-lake-store-integrate-with-other-services.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

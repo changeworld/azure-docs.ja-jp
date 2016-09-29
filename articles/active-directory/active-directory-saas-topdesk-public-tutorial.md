@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と TOPdesk - Public の統合
@@ -70,13 +70,13 @@
 このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで TOPdesk - Public に対する認証を行うことができるようにする方法を説明します。  
 TOPdesk - Public のシングル サインオンを構成するには、ロゴのアイコン ファイルをアップロードする必要があります。アイコン ファイルを取得するには、TOPdesk サポート チームにお問い合わせください。
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###シングル サインオンを構成するには、次の手順に従います。
 
 1.  **TOPdesk - Public** 企業サイトに管理者としてサインオンします。
 
 2.  **[TOPdesk]** メニューで **[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "設定")
+    ![設定](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
 
 3.  **[Login Settings]** をクリックします。
 
@@ -92,10 +92,10 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
     1.  **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
     2.  メタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
-        ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
+    	![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/IC790619.png "AssertionConsumerService")
     3.  **AssertionConsumerService** の値をコピーします。  
 
-        >[AZURE.NOTE] この値は、このチュートリアルの以降の「**アプリケーション URL の構成**」セクションで必要になります。
+        >[AZURE.NOTE]この値は、このチュートリアルの以降の「**アプリケーション URL の構成**」セクションで必要になります。
 
 6.  別の Web ブラウザーのウィンドウで、**Azure クラシック ポータル**に管理者としてログインします。
 
@@ -111,7 +111,7 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
     ![Configure App URL](./media/active-directory-saas-topdesk-public-tutorial/IC790622.png "アプリケーション URL の構成")
 
-    1.  **[TOPdesk - Public サインオン URL]** テキストボックスに、ユーザーが TOPdesk - Public アプリケーションへのサインオンに使用する URL (例: **https://qssolutions.topdesk.net*")) を入力します。
+    1.  **[TOPdesk - Public サインオン URL]** テキストボックスに、ユーザーが TOPdesk - Public アプリケーションへのサインインに使用する URL (例: *https://qssolutions.topdesk.net*") を入力します。
     2.  **[TOPdesk – Public 応答 URL]** テキストボックスに、**TOPdesk - Public AssertionConsumerService URL** (例: *https://qssolutions.topdesk.net/tas/public/login/saml*") を貼り付けます。
     3.  **[次へ]** をクリックします。
 
@@ -130,7 +130,7 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
 
 12. TOPdesk - Public 企業サイトの **[TOPdesk]** メニューで、**[Settings]** をクリックします。
 
-    ![設定](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "設定")
+    ![Settings](./media/active-directory-saas-topdesk-public-tutorial/IC790598.png "Settings")
 
 13. **[Login Settings]** をクリックします。
 
@@ -153,7 +153,7 @@ TOPdesk - Public のシングル サインオンを構成するには、ロゴ�
     3.  TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
     4.  **[User name attribute]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
     5.  **[Display name]** テキスト ボックスに、構成の名前を入力します。
-    6.  **[保存]** をクリックします。
+    6.  [**Save**] をクリックします。
 
 17. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -179,7 +179,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
     1.  [General] タブをクリックします。
     2.  [Surname] テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの姓を入力します。
     3.  アカウントの **[Site]** を選択します。
-    4.  **[保存]** をクリックします。
+    4.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] 他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -199,6 +199,6 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
     ![Yes](./media/active-directory-saas-topdesk-public-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

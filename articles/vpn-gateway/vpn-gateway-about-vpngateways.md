@@ -13,20 +13,34 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/01/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc" />
 
 # VPN Gateway について
 
 
-仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間のほか、Azure 内の仮想ネットワーク間 (VNet 間) のネットワーク トラフィックの送信に使用されます。接続を作成するには、追加のリソースとその設定と共に、仮想ネットワーク ゲートウェイを VNet に追加します。
+仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間のほか、Azure 内の仮想ネットワーク間 (VNet 間) のネットワーク トラフィックの送信にも使用されます。VPN ゲートウェイを構成するときに、仮想ネットワーク ゲートウェイ、および仮想ネットワーク ゲートウェイの接続を作成して構成する必要があります。
 
-仮想ネットワーク ゲートウェイ リソースを作成する場合、設定をいくつか指定します。必要な設定の 1 つは "-GatewayType" です。ゲートウェイの種類では、ゲートウェイの接続方法を指定します。Vpn と ExpressRoute という 2 種類の仮想ネットワーク ゲートウェイがあります。専用プライベート接続でネットワーク トラフィックを送信する場合、ゲートウェイの種類 "ExpressRoute" を使用します。これは、ExpressRoute ゲートウェイとも呼ばれます。パブリック接続でネットワーク トラフィックを暗号化して送信する場合、ゲートウェイの種類 "Vpn" を使用します。これは、VPN ゲートウェイと呼ばれます。サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。
+Resource Manager デプロイメント モデルでは、仮想ネットワーク ゲートウェイ リソースを作成する際に、設定をいくつか指定します。必要な設定の 1 つは "-GatewayType" です。Vpn と ExpressRoute という 2 種類の仮想ネットワーク ゲートウェイがあります。
 
-各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。たとえば、-GatewayType が Vpn の仮想ネットワーク ゲートウェイと -GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。この記事では主に、VPN ゲートウェイについて説明します。ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+専用プライベート接続でネットワーク トラフィックを送信する場合、ゲートウェイの種類 "ExpressRoute" を使用します。これは、ExpressRoute ゲートウェイとも呼ばれます。パブリック接続でネットワーク トラフィックを暗号化して送信する場合、ゲートウェイの種類 "Vpn" を使用します。これは、VPN ゲートウェイと呼ばれます。サイト間接続、ポイント対サイト接続、VNet 間接続のすべてで、VPN ゲートウェイが使用されます。
 
-ゲートウェイの要件については、「[ゲートウェイの要件](vpn-gateway-about-vpn-gateway-settings.md#requirements)」を参照してください。合計スループットの見積もりについては、「[About VPN Gateway Settings (VPN Gateway の設定について)](vpn-gateway-about-vpn-gateway-settings.md#aggthroughput)」を参照してください。価格については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway)」を参照してください。サブスクリプションとサービスの制限については、[ネットワークの制限](../articles/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
+各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは、ゲートウェイの種類ごとに 1 つに限られています。たとえば、-GatewayType が ExpressRoute の仮想ネットワーク ゲートウェイと -GatewayType が Vpn の仮想ネットワーク ゲートウェイをそれぞれ 1 つ配置できます。この記事では主に、VPN ゲートウェイについて説明します。ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
+## 価格
+
+[AZURE.INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
+
+
+## ゲートウェイの SKU
+
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+
+###  <a name="skugw"></a>SKU とゲートウェイの種類別の予測される合計スループット
+
+次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+
+[AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ## VPN ゲートウェイの構成
 
@@ -136,4 +150,4 @@ VPN ゲートウェイの構成を計画します。[VPN ゲートウェイの�
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

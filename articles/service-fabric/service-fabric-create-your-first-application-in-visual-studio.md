@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/10/2016"
+   ms.date="08/26/2016"
    ms.author="ryanwi"/>
 
 # Visual Studio で最初の Azure Service Fabric アプリケーションを作成する
@@ -110,6 +110,14 @@ Service Fabric のアプリケーションには、アプリケーションの�
 
     ![フェールオーバー後の診断イベント ビューアー][diagnostic-events-viewer-detail-post-failover]
 
+## クラスター モードを切り替える
+
+既定では、ローカル開発クラスターは 5 ノード クラスターとして実行するように構成されています。こうしておくと、複数のノードにデプロイされているサービスをデバッグする場合に便利です。ただし、アプリケーションを 5 ノードの開発クラスターにデプロイするのには、少し時間がかかります。アプリを 5 ノードでは実行せず、コードの変更をすばやく繰り返したい場合は、開発クラスターを 1 ノード モードに切り替えることができます。ノードが 1 つのクラスターでコードを実行するには、システム トレイでローカル クラスター マネージャーを右クリックし、**[Switch Cluster Mode (クラスター モードの切り替え)]、[1 Node (1 ノード)]** の順に選択します。
+
+![クラスター モードを切り替える][switch-cluster-mode]
+
+クラスター モードを変更すると、開発クラスターがリセットされ、クラスターでプロビジョニングまたは実行されているすべてのアプリケーションが削除されます。
+
 ## クリーンアップしています
 
   まとめに入る前に、ローカル クラスターが非常に現実的であることを覚えておくことが重要です。デバッガーを停止すると、アプリケーション インスタンスが削除され、アプリケーションの種類の登録が解除されます。ただし、クラスターは引き続きバックグラウンドで実行されます。クラスターは、いくつかの方法で管理することができます。
@@ -138,5 +146,6 @@ Service Fabric のアプリケーションには、アプリケーションの�
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
+[switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

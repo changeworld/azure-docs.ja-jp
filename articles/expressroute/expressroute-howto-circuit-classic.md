@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/29/2016"
-   ms.author="ganesr"/>
+   ms.date="09/14/2016"
+   ms.author="ganesr;cherylmc"/>
 
 # ExpressRoute 回線の作成と変更
 
@@ -32,20 +32,39 @@
 
 ## 開始する前に
 
-- Azure PowerShell モジュールの最新バージョンが必要になります。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)の PowerShell セクションから、最新の PowerShell モジュールをダウンロードすることができます。Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」の手順に従ってください。
+### 1\.前提条件とワークフローに関する記事を確認する
 
-- 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
+構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
+
+
+### 2\.Azure PowerShell モジュールの最新バージョンをインストールする 
+
+Azure PowerShell モジュールを使用するようにコンピューターを構成する方法の手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」の手順に従ってください。
+
+### 3\.Azure アカウントにログインしてサブスクリプションを選択する
+
+1. 管理者特権の Windows PowerShell プロンプトで、次のコマンドレットを実行します。
+
+		Add-AzureAccount
+2. 表示されたサインイン画面で自分のアカウントにサインインします。
+
+3. サブスクリプションの一覧を取得します。
+
+		Get-AzureSubscription
+4. 使用するサブスクリプションを選択します。
+	
+		Select-AzureSubscription -SubscriptionName "mysubscriptionname"
 
 ## ExpressRoute 回線の作成とプロビジョニング
 
 ### 1\.ExpressRoute 用の PowerShell モジュールをインポートする
 
- ExpressRoute コマンドレットの使用を開始するには、PowerShell セッションに Azure および ExpressRoute モジュールをインポートする必要があります。これを行うには、次のコマンドを実行します。
+ ExpressRoute コマンドレットの使用を開始するには、PowerShell セッションに Azure および ExpressRoute のモジュールをインポートする必要があります (インポートがまだの場合)。ローカル コンピューター上のインストールされた場所からモジュールをインポートします。モジュールのインストールに使用した方法によっては、次の例で示す場所と異なる場合があります。必要に応じて例を変更します。
 
 	Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
 	Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
 
-### 手順 2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
+### 2\.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 
 ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。
 
@@ -313,4 +332,4 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 - [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-classic.md)
 - [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

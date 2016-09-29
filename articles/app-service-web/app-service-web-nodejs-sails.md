@@ -49,8 +49,10 @@
 
 次に App Service アプリのリソースを作成します。そのリソースに Sails.js アプリを後でデプロイします。
 
-1. 同じターミナルで Azure にそのようにログインします。
+1. 次のようにして、Azure にログインします。
+1. 同じターミナルで、ASM モードに変更し、Azure にログインします。
 
+        azure config mode asm
         azure login
 
     画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
@@ -59,7 +61,7 @@
 
         azure site create --git <appname>
 
-    プロンプトに従って、デプロイ先の Azure リージョンを選択します。Azure サブスクリプションの Git/FTP デプロイの資格情報を設定したことがない場合は、資格情報の作成も求められます。
+    プロンプトに従って、デプロイ先の Azure リージョンを選択します。まだ Azure サブスクリプションに Git/FTP デプロイの資格情報を設定していない場合は、資格情報を作成するように求められます。
 
     App Service アプリのリソースの作成後:
 
@@ -82,9 +84,9 @@
         loggingEnabled: true
         logDirectory: iisnode
 
-    これで iisnode のログが有効になりました。このしくみの詳細については、「[iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-get-started.md#iisnodelog)」を参照してください。
+    これで iisnode のログが有効になりました。このしくみの詳細については、「[iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-get-started.md#iisnodelog)」をご覧ください。
 
-2. config/env/production.js を開いて、運用環境を構成して、`port` と `hookTimeout` を設定します。
+2. config/env/production.js を開いて運用環境を構成し、`port` と `hookTimeout` を設定します。
 
         module.exports = {
 
@@ -97,7 +99,7 @@
             ...
         };
 
-    これらの構成設定のドキュメントは [Sails.js ドキュメント](http://sailsjs.org/documentation/reference/configuration/sails-config)にあります。
+    これらの構成設定のドキュメントについては、[Sails.js のドキュメント](http://sailsjs.org/documentation/reference/configuration/sails-config)のページをご覧ください。
 
     次に、[Grunt](https://www.npmjs.com/package/grunt) に Azure のネットワーク ドライブとの互換性があることを確認する必要があります。バージョン 1.0.0 未満の Grunt は、使用されている [glob](https://www.npmjs.com/package/glob) パッケージが古く (5.0.14 未満)、ネットワーク ドライブをサポートしていません。
 
@@ -113,7 +115,7 @@
             "sails-sqlserver": "<leave-as-is>"
         },
 
-6. 変更内容を保存して、アプリがまだローカルで実行されるかどうかを確認するために変更をテストします。そのためには、`node_modules` フォルダーを削除して次のコマンドを実行します。
+6. 変更内容を保存して、アプリがまだローカルで実行されるかどうかを確認するために変更をテストします。そのためには、`node_modules` フォルダーを削除してから次のコマンドを実行します。
 
         npm install
         sails lift
@@ -134,7 +136,7 @@
 
 ## デプロイのトラブルシューティング
 
-App Service で何らかの理由により Sails.js アプリケーションのエラーが発生した場合は、そのトラブルシューティングを行うのに役立つ stderr ログを探します。詳細については、「[Get stdout and stderr logs from iisnode (iisnode から stdout ログと stderr ログを取得する)](app-service-web-nodejs-sails.md#iisnodelog)」をご覧ください。Sails.js アプリケーションが正常に開始した場合は、見慣れたメッセージが stdout ログに表示されます。
+App Service で何らかの理由により Sails.js アプリケーションのエラーが発生した場合は、そのトラブルシューティングを行うのに役立つ stderr ログを探します。詳細については、「[iisnode から stdout ログと stderr ログを取得する](app-service-web-nodejs-sails.md#iisnodelog)」をご覧ください。Sails.js アプリケーションが正常に開始した場合は、見慣れたメッセージが stdout ログに表示されます。
 
                 .-..-.
 
@@ -156,7 +158,7 @@ stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/co
 
 ## Azure のデータベースへの接続
 
-データベース Azure に接続するには、Azure SQL Database、MySQL、MongoDB、Azure (Redis) のキャッシュなど、Azure で任意のデータベースを作成して、対応する[データストア アダプター](https://github.com/balderdashy/sails#compatibility)を使用してそのデータベースに接続します。このセクションの手順は、Azure SQL Database に接続する方法を説明しています。
+Azure のデータベースに接続するには、Azure SQL Database、MySQL、MongoDB、Azure (Redis) Cache など、Azure で任意のデータベースを作成し、対応する[データストア アダプター](https://github.com/balderdashy/sails#compatibility)を使用してそのデータベースに接続します。このセクションの手順は、Azure SQL Database に接続する方法を説明しています。
 
 1. [こちら](../sql-database/sql-database-get-started.md)のチュートリアルに従って、新しい SQL Server に空の Azure SQL Database を作成します。既定のファイアウォール設定では、Azure サービス (たとえば App Service) に接続できます。
 
@@ -213,14 +215,14 @@ stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/co
             migrate: 'alter'
         },
 
-    `migrate: 'alter'` を指定すると、データベース移行機能を使って簡単に、Azure SQL Database のデータベース テーブルを作成したり更新したりすることができます。ただし、Azure (運用) 環境で使用されるのは `migrate: 'safe'` です。Sails.js では、運用環境で `migrate: 'alter'` を使用することが認められていません ([Sails.js のドキュメント](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)を参照)。
+    `migrate: 'alter'` を指定すると、データベース移行機能を使用して、Azure SQL Database のデータベース テーブルの作成や更新を簡単に行うことができます。ただし、Sails.js では運用環境で `migrate: 'alter'` を使用することができないため ([Sails.js のドキュメント](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings)を参照)、Azure (運用) 環境では `migrate: 'safe'` が使用されます。
 
-4. ターミナルから、普段と同じように Sails.js の [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) を[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate)し、`sails lift` を実行して、データベースを作成すると共に Sails.js データベースを移行します。次に例を示します。
+4. ターミナルから、通常と同様に Sails.js の [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) を[生成](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate)し、`sails lift` を実行して、データベースを作成すると共に Sails.js データベースを移行します。次に例を示します。
 
          sails generate api mywidget
          sails lift
 
-    このコマンドによって生成される `mywidget` モデルは空ですが、このモデルを使用することで、データベース接続の存在を証明できます。`sails lift` を実行すると、アプリで使用されているモデルに足りないテーブルが作成されます。
+    このコマンドによって生成される `mywidget` モデルは空ですが、このモデルを使用することで、データベース接続の存在を示すことができます。`sails lift` を実行すると、アプリで使用されているモデルに足りないテーブルが作成されます。
 
 6. 今作成した blueprint API にブラウザーでアクセスします。次に例を示します。
 
@@ -237,7 +239,7 @@ stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/co
         git push azure master
         azure site browse
 
-6. Azure Web アプリの blueprint API にアクセスします。次に例を示します。
+6. Azure Web アプリの blueprint API にアクセスします。For example:
 
         http://<appname>.azurewebsites.net/mywidget/create
 
@@ -248,4 +250,4 @@ stdout ログの粒度は [config/log.js](http://sailsjs.org/#!/documentation/co
 - [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-nodejs-get-started.md)
 - [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

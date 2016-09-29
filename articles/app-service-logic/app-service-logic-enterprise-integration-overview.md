@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/08/2016" 
+	ms.date="09/08/2016" 
 	ms.author="deonhe"/>
 
 # Enterprise Integration Pack の概要
@@ -23,9 +23,9 @@ Enterprise Integration Pack は、企業間 (B2B) の通信をシームレスに
 
 このパックを使用すれば、互いに異なるプロトコルと形式が使用されている組織の間で、メッセージを電子的に交換できます。これは、異なる形式を、どちらの組織のシステムでも解釈してアクションを実行できる形式に変換することによって行います。
 
-BizTalk Server または Microsoft Azure BizTalk Services を使い慣れている方は、ほとんどの概念が類似しているため、Enterprise Integration の機能を使いやすいと感じるものと思われます。主な違いの 1 つは、B2B 通信で使用されるアーティファクトの保管と管理を簡単にするために、Enterprise Integration では統合アカウントを利用する点です。
+BizTalk Server または Microsoft Azure BizTalk Services を使い慣れている方は、ほとんどの概念が類似しているため、Enterprise Integration の機能を使いやすいと感じるものと思われます。主な違いの 1 つは、B2B 通信で使用されるアーティファクトの保管と管理を簡単にするために、Enterprise Integration では統合アカウントを使用する点です。
 
-Enterprise Integration Pack のアーキテクチャは、B2B アプリの設計、デプロイ、管理に使用できるすべてのアーティファクトが格納される**統合アカウント**をベースにしています。統合アカウントは基本的に、スキーマ、パートナー、証明書、マップ、契約などのアーティファクトが格納されるクラウドベースのコンテナーです。そして、これらのアーティファクトは、B2B ワークフローを構築するロジック アプリで使用できます。ロジック アプリでアーティファクトを使用する前に、統合アカウントとロジック アプリの関連付けだけ行っておく必要があります。これらの関連付けが終わったら、ロジック アプリは統合アカウントのアーティファクトにアクセスできるようになります。
+Enterprise Integration Pack のアーキテクチャは、B2B アプリの設計、デプロイ、管理に使用できるすべてのアーティファクトが格納される**統合アカウント**をベースにしています。統合アカウントは基本的に、スキーマ、パートナー、証明書、マップ、契約などのアーティファクトが格納されるクラウドベースのコンテナーです。そして、これらのアーティファクトは、B2B ワークフローを構築するロジック アプリで使用できます。ロジック アプリでアーティファクトを使用する前に、統合アカウントとロジック アプリの関連付けを行っておく必要があります。これらの関連付けが終わったら、ロジック アプリは統合アカウントのアーティファクトにアクセスできるようになります。
 
 ## Enterprise Integration を使用する理由
 - Enterprise Integration を使用すれば、対象のアーティファクトをすべて 1 か所 (統合アカウント) に格納できます。
@@ -35,7 +35,9 @@ Enterprise Integration Pack のアーキテクチャは、B2B アプリの設計
 ## Enterprise Integration の使用を開始する方法
 **Azure ポータル**の Logic Apps デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。
 
-Azure ポータルでアプリを作成する前に必要な手順の概要は、次のとおりです。![overviewimage](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
+Logic Apps の管理に [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "Logic Apps PowerShell 関連トピック") を使用することもできます。
+
+Azure ポータルでアプリを作成する前に必要な手順の概要は、次のとおりです。![概要のイメージ](./media/app-service-logic-enterprise-integration-overview/overview-0.png)
 
 ## いくつかの一般的なシナリオ
 
@@ -50,7 +52,7 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)
 
 ## 試してみる
-実際に試してみましょう。Logic Apps の B2B 機能を使用して、本格的な機能を備えた独自の AS2 送信および受信ロジック アプリをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)をクリックしてください。
+Logic Apps の B2B 機能を使用する、完全に動作する AS2 送信および受信ロジック アプリのサンプルをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)をクリックしてください。
 
 ## 各項目の詳細情報
 - [アグリーメント](./app-service-logic-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")
@@ -63,5 +65,6 @@ Enterprise Integration では、次の業界標準がサポートされていま
 - [スキーマ](./app-service-logic-enterprise-integration-schemas.md "Enterprise Integration のスキーマについての詳細情報")
 - [XML メッセージの検証](./app-service-logic-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
+- [エンタープライズ統合コネクタ](../connectors/apis-list.md "Enterprise Integration Pack コネクタについての詳細情報")
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

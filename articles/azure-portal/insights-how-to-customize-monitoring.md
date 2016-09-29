@@ -68,8 +68,8 @@
 * メトリックがしきい値を超えたときに、[アラート通知を受信](insights-receive-alert-notifications.md)します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * [インスタンス数を自動的にスケール変更](insights-how-to-scale.md)して、サービスの可用性と応答性を確実にします。
-* コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
+* コードがクラウドで実行される方法を正確に理解するには、[アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md)します。
 * [JavaScript のアプリや Web ページに Application Insights](../application-insights/app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーに関するクライアント分析を取得します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

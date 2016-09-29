@@ -2,7 +2,7 @@
 	pageTitle="非対話型認証 .NET HDInsight アプリケーションを作成する | Microsoft Azure"
 	description="非対話型認証 .NET HDInsight アプリケーションを作成する方法について説明します。"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	documentationCenter=""
 	tags="azure-portal"
@@ -122,4 +122,4 @@ PowerShell 経由でテナント ID を取得するには:
 - [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
 - [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

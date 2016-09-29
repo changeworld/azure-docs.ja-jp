@@ -4,7 +4,7 @@
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -50,7 +50,7 @@ PowerShell を使用して、Data Lake Store を使用するように HDInsight 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store のパブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 - **Windows SDK**。[ここ](https://dev.windows.com/ja-JP/downloads)からインストールできます。この機能は、セキュリティ証明書の作成に使用します。
 
 
@@ -135,7 +135,7 @@ Data Lake Store を作成するには、次の手順に従います。
 
 ## Data Lake Store へのロールベースのアクセスの認証を設定する
 
-各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure クラシック ポータルか Azure リソース マネージャー API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
+すべての Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure クラシック ポータルか Azure Resource Manager API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初にその Azure Active Directory での認証を実行する必要があります。Azure のサブスクリプションやサービスにアクセス権を付与するには、Azure リソースに対する該当するロールを割り当てます。サービスの場合は、サービス プリンシパルにより、Azure Active Directory (AAD) 内のサービスが識別されます。このセクションでは、Azure PowerShell を使用してアプリケーションのサービス プリンシパルを作成し、作成したサービス プリンシパルにロールを割り当てることで、HDInsight のようなアプリケーション サービスに Azure のリソース (先ほど作成した Azure Data Lake Store アカウント) へのアクセス権を付与する方法を説明します。
 
 Azure Data Lake の Active Directory 認証を設定するには、次のタスクを行う必要があります。
 
@@ -384,4 +384,4 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

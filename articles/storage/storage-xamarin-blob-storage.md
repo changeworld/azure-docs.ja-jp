@@ -217,4 +217,4 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 
 [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+<!-----HONumber=AcomDC_0907_2016-->

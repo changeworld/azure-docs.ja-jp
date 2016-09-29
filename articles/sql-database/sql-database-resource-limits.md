@@ -20,7 +20,7 @@
 
 # Azure SQL Database のリソース制限
 
-## 概要
+## Overview
 
 Azure SQL Database では、**リソース ガバナンス**と**制限の適用**という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。このトピックでは、リソース管理のこれら 2 つの主な領域について説明します。
 
@@ -45,11 +45,17 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 ## サービス プランとパフォーマンス レベル
 
-単一のデータベースの場合、データベースの制限はデータベース サービス階層とパフォーマンス レベルによって決まります。次の表では、パフォーマンス レベルごとの Basic、Standard、Premium の各データベースの特性について説明します。
+スタンドアロン データベースとエラスティック プールの両方に、サービス階層とパフォーマンス レベルがあります。
+
+### スタンドアロン データベース
+
+スタンドアロン データベースの場合、データベースの制限はデータベース サービス階層とパフォーマンス レベルによって決まります。次の表では、パフォーマンス レベルごとの Basic、Standard、Premium の各データベースの特性について説明します。
 
 [AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
-[エラスティック データベース プール](sql-database-elastic-pool.md)は、プール内のデータベース全体のリソースを共有します。次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
+### エラスティック プール
+
+[エラスティック プール](sql-database-elastic-pool.md)は、プール内のデータベース全体のリソースを共有します。次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
 
 [AZURE.INCLUDE [エラスティック データベースの SQL DB サービス階層を示す表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
@@ -57,7 +63,7 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 ## その他の SQL Database の制限
 
-| 領域 | 制限 | 説明 |
+| 領域 | 制限 | Description |
 |---|---|---|
 | サブスクリプションあたりの自動エクスポートを使用するデータベース | 10 | 自動エクスポートを使用すると、カスタム スケジュールを作成して、SQL Database をバックアップできます。詳細については、「[SQL Database: 自動 SQL Databaseエクスポートのサポート](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines)」を参照してください。|
 | サーバーあたりのデータベース | 最大 5000 | V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。 |  
@@ -73,4 +79,4 @@ Basic、Standard、および Premium サービス プランの設計目標の 1 
 
 [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

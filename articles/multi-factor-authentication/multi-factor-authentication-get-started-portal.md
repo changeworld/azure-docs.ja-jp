@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ" 
-	description="Azure MFA およびユーザー ポータルを開始する方法について説明する Azure Multi-Factor Authentication のページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ"
+	description="Azure MFA およびユーザー ポータルを開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/15/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ
 
@@ -101,7 +101,7 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 Azure Multi-Factor Authentication Server にはユーザー ポータル用のさまざまなオプションがあります。次の表に、これらのオプションとそれぞれの使用目的を示します。
 
 ユーザー ポータル設定|Description|
-:------------- | :------------- | 
+:------------- | :------------- |
 ユーザー ポータル URL| ポータルがホストされる場所の URL を入力できます。
 プライマリ認証| ポータルにサインインするときに使用する認証の種類を指定できます。Windows 認証、Radius 認証または LDAP 認証のいずれかです。
 ユーザーにログインを許可する|ユーザーが、ユーザー ポータルのサインイン ページにユーザー名とパスワードを入力できるようにします。これが選択されていない場合、ボックスは淡色表示されます。
@@ -187,6 +187,4 @@ SAML を使用する ID プロバイダーからの要求を受け入れるよ�
 
 これで、ユーザーの自己登録が完了し、ユーザーはユーザー ポータルにログインします。管理者によって許可されている場合、ユーザーは、今後いつでもユーザー ポータルに戻って、電話番号、PIN、認証方法、およびセキュリティの質問を変更できます。
 
- 
-
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="MFA Server モバイル アプリ Web サービスの概要" 
-	description="Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。これにより MFA Server で、ユーザーへのプッシュ通知を許可できます。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="MFA Server モバイル アプリ Web サービスの概要"
+	description="Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。これにより MFA Server で、ユーザーへのプッシュ通知を許可できます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # MFA Server モバイル アプリ Web サービスの概要
 
@@ -58,11 +58,11 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 ### モバイル アプリ Web サービスをインストールするには
 
 <ol>
-<li>Azure Multi-Factor Authentication Server で Windows エクスプローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\Program Files\Azure Multi-Factor Authentication など)。モバイル アプリ Web サービスをインストールするサーバーに対し、必要に応じて Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。</li> 
+<li>Azure Multi-Factor Authentication Server で Windows エクスプローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\Program Files\Azure Multi-Factor Authentication など)。モバイル アプリ Web サービスをインストールするサーバーに対し、必要に応じて Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。</li>
 
 <li>インターネットに接続された Web サーバーで、セットアップ ファイルを管理者権限で実行する必要があります。これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。</li>  
 
-<li>Multi-Factor AuthenticationMobileAppWebServiceSetup インストール ファイルを実行し、必要な場合はサイトを変更し、仮想ディレクトリを「PA」などの短い名前に変更します。ユーザーはアクティブ化の際にモバイル アプリ Web サービス URL をモバイル デバイスに入力する必要があるため、短い仮想ディレクトリ名をお勧めします。</li> 
+<li>Multi-Factor AuthenticationMobileAppWebServiceSetup インストール ファイルを実行し、必要な場合はサイトを変更し、仮想ディレクトリを「PA」などの短い名前に変更します。ユーザーはアクティブ化の際にモバイル アプリ Web サービス URL をモバイル デバイスに入力する必要があるため、短い仮想ディレクトリ名をお勧めします。</li>
 
 <li>Azure Multi-Factor AuthenticationMobileAppWebServiceSetup のインストールを完了したら、C:\inetpub\wwwroot\PA (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。</li>  
 
@@ -72,7 +72,7 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 <li>既定の Web サイトの直下などにモバイル アプリ Web サービスがインストールされた Web サイトがまだ公的署名証明書にバインドされていない場合、証明書がまだインストールされていないならサーバーにインストールし、IIS マネージャーを開き、証明書を Web サイトにバインドします。</li>  
 
-<li>任意のコンピューターで Web ブラウザーを開き、モバイル アプリ Web サービスがインストールされた URL に移動します (https://www.publicwebsite.com/PA など)。証明書の警告およびエラーが表示されないことを確認してください。</li> 
+<li>任意のコンピューターで Web ブラウザーを開き、モバイル アプリ Web サービスがインストールされた URL に移動します (https://www.publicwebsite.com/PA など)。証明書の警告およびエラーが表示されないことを確認してください。</li>
 
 ### Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
 モバイル アプリ Web サービスがインストールされたため、ポータルから Azure Multi-Factor Authentication Server を構成する必要があります。
@@ -88,6 +88,5 @@ Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication W
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
- 
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

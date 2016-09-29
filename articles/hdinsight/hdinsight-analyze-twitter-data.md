@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="mumian"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -45,7 +45,7 @@
 
 このチュートリアルで使用するファイルを次の表に示します。
 
-ファイル|説明
+ファイル|Description
 ---|---
 /tutorials/twitter/data/tweets.txt|Hive ジョブのソース データです。
 /tutorials/twitter/output|Hive ジョブの出力フォルダーです。既定の Hive ジョブ出力ファイル名は **000000\_0** です。
@@ -74,7 +74,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 	フィールド|値
 	---|---
 	名前|MyHDInsightApp
-	説明|MyHDInsightApp
+	Description|MyHDInsightApp
 	Web サイト|http://www.myhdinsightapp.com
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
@@ -221,7 +221,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 3. スクリプトに、最初の 5 ～ 8 個の変数を設定します。
 
 
-	変数|説明
+	変数|Description
 	---|---
 	$clusterName|アプリケーションを実行する HDInsight クラスターの名前です。
 	$oauth\_consumer\_key|Twitter アプリケーションを作成したときに書き留めた Twitter アプリケーションの**コンシューマー キー**です。
@@ -432,7 +432,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 4. スクリプトの最初の 2 個の変数を設定します。
 
-	変数|説明
+	変数|Description
 	---|---
 	$clusterName|アプリケーションを実行する HDInsight クラスター名を入力します。
 	$subscriptionID|Azure サブスクリプション ID を入力します。
@@ -450,7 +450,7 @@ HiveQL スクリプトは、次の作業を実行します。
 
 すべての準備作業が完了しました。Hive スクリプトを呼び出して、結果を確認できます。
 
-### Hive ジョブの送信
+### Hive ジョブを送信する
 
 次の Windows PowerShell スクリプトを使用して Hive スクリプトを実行します。最初の変数を設定する必要があります。
 
@@ -565,4 +565,4 @@ HiveQL スクリプトは、次の作業を実行します。
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-ODBC-driver.md
 [hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

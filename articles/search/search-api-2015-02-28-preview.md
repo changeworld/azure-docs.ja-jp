@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="search"
-   ms.date="07/25/2016"
+   ms.date="09/07/2016"
    ms.author="brjohnst"/>
 
 # Azure Search サービス REST API: バージョン 2015-02-28-Preview
@@ -22,7 +22,7 @@
 
 - [Search Documents](#SearchDocs) API の `moreLikeThis` クエリ パラメーター。特定のドキュメントに関連する別のドキュメントを検索します。
 
-`2015-02-28-Preview` REST API の一部に関する情報が個別に文書化されています。学習した内容は次のとおりです。
+`2015-02-28-Preview` REST API の一部に関する情報が個別に文書化されています。次に例を示します。
 
 - [スコアリング プロファイル](search-api-scoring-profiles-2015-02-28-preview.md)
 - [インデクサー](search-api-indexers-2015-02-28-preview.md)
@@ -55,7 +55,7 @@ Azure Search サービス API は、API 操作に簡単な構文と OData 構文
 
 [アナライザーのテスト](#TestAnalyzer)
 
-    GET /indexes/[index name]/analyze?api-version=2015-02-28-Preview
+    POST /indexes/[index name]/analyze?api-version=2015-02-28-Preview
 
 [インデックスの削除](#DeleteIndex)
 
@@ -644,7 +644,7 @@ Azure Search は、さまざまな言語をサポートしています。各言�
         {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false},
         {"name": "baseRate", "type": "Edm.Double"},
         {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-	    {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, analyzer="fr.lucene"},
+        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
         {"name": "hotelName", "type": "Edm.String"},
         {"name": "category", "type": "Edm.String"},
         {"name": "tags", "type": "Collection(Edm.String)"},
@@ -863,7 +863,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -930,7 +930,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -964,7 +964,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -999,7 +999,7 @@ HTTPS はすべてのサービス要求に必要です。**List Indexes** 要求
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -1247,31 +1247,31 @@ HTTPS はすべてのサービス要求に必要です。HTTP POST を使用し�
     <tr>
 		<td>400</td>
 		<td>ドキュメントにエラーがあり、インデックスを作成できませんでした。</td>
-		<td>いいえ</td>
+		<td>なし</td>
 		<td>応答に含まれるエラー メッセージに、ドキュメントに関する問題が示されます。</td>
 	</tr>
     <tr>
 		<td>404</td>
 		<td>指定されたキーがインデックス内に存在しないため、ドキュメントを結合できませんでした。</td>
-		<td>いいえ</td>
+		<td>なし</td>
 		<td>アップロードの場合は新しいドキュメントが作成されるため、このエラーは発生しません。また、削除は<a href="https://en.wikipedia.org/wiki/Idempotence">べき等</a>であるため、削除の場合も発生しません。</td>
 	</tr>
     <tr>
 		<td>409</td>
 		<td>ドキュメントのインデックスを作成しようとしたときにバージョンの競合が検出されました。</td>
-		<td>あり</td>
+		<td>はい</td>
 		<td>これは、同じドキュメントに対して同時に複数回インデックスを作成しようとしたときに発生することがあります。</td>
 	</tr>
     <tr>
 		<td>422</td>
 		<td>インデックスは、allowIndexDowntime フラグを true に設定して更新されたため、一時的に使用できない状態です。</td>
-		<td>あり</td>
+		<td>はい</td>
 		<td></td>
 	</tr>
     <tr>
 		<td>503</td>
 		<td>検索サービスは一時的に使用できない状態です。負荷が高いことが原因として考えられます。</td>
-		<td>あり</td>
+		<td>はい</td>
 		<td>この場合は、待機してから再試行する必要があります。そうしないと、サービスを使用できない状態が長引く場合があります。</td>
 	</tr>
 </table> 
@@ -1344,7 +1344,9 @@ ________________________________________
 
 HTTP GET を使用して **Search** API を呼び出す場合、要求 URL の長さが 8 KB を超えることはできないことに注意する必要があります。これは通常、ほとんどのアプリケーションで十分な長さです。ただし、一部のアプリケーションでは、非常に大規模なクエリまたは OData フィルター式が生成されます。このようなアプリケーションでは、HTTP POST を使用する方がより適切です。GET より大規模なフィルターおよびクエリを使用できるためです。POST 要求のサイズ制限がほぼ 16 MB であるため、POST を使用する場合は、クエリのサイズそのものではなく、クエリに含まれる語または句の数が制限要因になります。
 
-> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)および [OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)に関するページをご覧ください。**要求**
+> [AZURE.NOTE] POST 要求のサイズ制限が非常に大きいとはいえ、検索のクエリとフィルター式を任意に複雑にすることはできません。検索クエリおよびフィルターにおける複雑さの制限の詳細については、[Lucene クエリ構文](https://msdn.microsoft.com/library/mt589323.aspx)および [OData 式の構文](https://msdn.microsoft.com/library/dn798921.aspx)に関するページをご覧ください。
+
+**要求**
 
 サービス要求には HTTPS が必要です。**Search** 要求は、GET メソッドまたは POST メソッドを使用して作成できます。
 
@@ -1761,7 +1763,7 @@ Azure Search が継続トークンを返す理由は、実装に固有で、変�
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -1809,7 +1811,7 @@ OData 構文を使用して、キー '3' を持つドキュメントを参照し
 
 **要求本文**
 
-ありません。
+なし。
 
 **応答**
 
@@ -1970,4 +1972,4 @@ POST の場合:
       "suggesterName": "sg"
     }
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/26/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog とは何ですか
@@ -74,4 +74,4 @@ Data Catalog の機能の詳細については、以下のページを参照し�
 * [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
 * [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -22,6 +22,8 @@
 
 #Azure での動作保証済み Linux ディストリビューション
 
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+
 Azure ギャラリーまたは Marketplace にある Linux イメージは多くのパートナーから提供されており、Microsoft はさまざまな Linux コミュニティと協力して、動作保証済みディストリビューションの一覧をよりいっそう充実させようと努めています。ギャラリーから利用できないディストリビューションの場合も、[このページ](virtual-machines-linux-classic-create-upload-vhd.md)の指針に従うことにより、いつでも独自の Linux を展開することができます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
@@ -89,4 +91,4 @@ Canonical のエンジニアリングおよびオープン コミュニティ体
 
 世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC からサーバーや携帯機器まで、さまざまな Ubuntu ソリューションを市場に送り出しています。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

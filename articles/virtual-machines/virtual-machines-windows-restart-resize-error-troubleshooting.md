@@ -14,14 +14,10 @@
    ms.tgt_pltfrm="vm-windows"
    ms.devlang="na"
    ms.workload="required"
-   ms.date="06/16/2016"
+   ms.date="09/09/2016"
    ms.author="delhan"/>
 
 # Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング
-
-> [AZURE.SELECTOR]
-- [クラシック](../articles/virtual-machines/virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
-- [リソース マネージャー](../articles/virtual-machines/virtual-machines-windows-restart-resize-error-troubleshooting.md)
 
 停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
@@ -76,6 +72,6 @@ VM のサイズ変更要求は、クラウド サービスをホストしてい�
 
 ## 次のステップ
 
-Azure で新しい Windows VM を作成するときに問題が発生する場合は、[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)を参照してください。
+Azure で新しい Windows VM を作成するときに問題が発生する場合は、「[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/24/2016"
+	ms.date="09/08/2016"
 	ms.author="iainfou"/>
 
 # サンプルの Azure インフラストラクチャによるチュートリアル
@@ -38,7 +38,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 
 ![アプリケーション インフラストラクチャのさまざまなレベルの図](./media/virtual-machines-common-infrastructure-service-guidelines/example-tiers.png)
 
-セキュリティで保護された着信 Web トラフィックについて、顧客がオンライン ストアを閲覧する際に Web サーバー間で負荷を分散する必要があります。Web サーバーからの HTTP 要求の形式での注文処理トラフィックについては、アプリケーション サーバー間で負荷を分散する必要があります。さらに、インフラストラクチャは高可用性対応で設計する必要があります。
+セキュリティで保護された着信 Web トラフィックについては、顧客がオンライン ストアを閲覧する際に Web サーバー間で負荷を分散する必要があります。Web サーバーからの HTTP 要求の形式での注文処理トラフィックについては、アプリケーション サーバー間で負荷を分散する必要があります。さらに、インフラストラクチャは高可用性対応で設計する必要があります。
 
 結果として得られる設計には、次のものが組み込まれる必要があります。
 
@@ -54,7 +54,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 - Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
 	- たとえば、"**azos**" (Azure On-line Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
 - ストレージ アカウントは、adventureazosusesa**[説明]** を使用します。
-	- "adventure" は一意性のためにプレフィックスに追加されており、ストレージ アカウント名ではハイフンを使用できないことに注意してください。
+	- "adventure" は一意性のためにプレフィックスに追加されており、ストレージ アカウント名ではハイフンを使用できません。
 - 仮想ネットワークは、AZOS-USE-VN**[番号]** を使用します。
 - 可用性セットは、azos-use-as-**[ロール]** を使用します。
 - 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
@@ -132,4 +132,4 @@ Adventure Works Cycles は、各 Azure VM に対して次の名前を決定し�
 
 [AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0914_2016-->

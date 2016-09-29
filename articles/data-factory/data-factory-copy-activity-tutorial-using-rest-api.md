@@ -13,22 +13,20 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="08/17/2016" 
+	ms.date="09/16/2016" 
 	ms.author="spelluru"/>
 
 # チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
+- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、REST API を使用して Azure Data Factory を作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
-
-コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
 > [AZURE.NOTE] 
 この記事では、すべての Data Factory REST API を取り上げているわけではありません。Data Factory REST API に関する包括的なドキュメントについては、[Data Factory REST API リファレンス](https://msdn.microsoft.com/library/azure/dn906738.aspx)を参照してください。
@@ -36,7 +34,7 @@
 
 ## 前提条件
 
-- 「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通してください。
+- 「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」に目を通し、**前提条件**の手順を完了する必要があります。
 - コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。
 - [この記事](../resource-group-create-service-principal-portal.md)の手順に従って、次の操作を行います。
 	1. Azure Active Directory に、**ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
@@ -302,7 +300,7 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 
 以下の点に注意してください。
  
-- Azure Data Factory の名前はグローバルに一意にする必要があります。results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"** というエラーが表示される場合は、次の操作を行います。
+- Azure Data Factory の名前はグローバルに一意にする必要があります。results に **"データ ファクトリ名 "ADFCopyTutorialDF" は利用できません"** というエラーが表示される場合は、次の手順に従います。
 	1. **datafactory.json** ファイルで名前を変更します (たとえば、yournameADFCopyTutorialDF)。
 	2. **$cmd** 変数に値が割り当てられる最初のコマンドで、ADFCopyTutorialDF を新しい名前に置き換え、コマンドを実行します。
 	3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
@@ -493,4 +491,4 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

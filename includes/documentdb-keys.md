@@ -1,5 +1,5 @@
-これらの値は次で作成する Web アプリケーションで使用するため、DocumentDB アカウントの [Keys (キー)] ブレードに移動します。
+  これらの値は次で作成する Web アプリケーションで使用するため、[DocumentDB アカウント] ブレードに移動し、**[キー]** をクリックします。
 
-![Screen shot of the Azure portal, showing a DocumentDB account, with the Keys button highlighted on the DocumentDB account blade, and the URI, PRIMARY KEY and SECONDARY KEY values highlighted on the Keys blade](./media/documentdb-keys/keys.png)
+![DocumentDB アカウントを示す Azure ポータルのスクリーン ショット。[DocumentDB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている](./media/documentdb-keys/keys.png)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

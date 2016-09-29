@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="Blackmist" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -65,7 +65,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 		ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 		
-	Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事をご覧ください。
+	Linux ベースの HDInsight での SSH の使用方法の詳細については、次の記事を参照してください。
 	
 	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -291,4 +291,4 @@ SQL Database がまだない場合は、「[SQL Database チュートリアル: 
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

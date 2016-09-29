@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する"
+	pageTitle="Objective C で IOS の Azure Mobile Engagement を開始する | Microsoft Azure"
 	description="iOS アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。"
 	services="mobile-engagement"
-	documentationCenter="ios"
+	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
+	ms.date="09/14/2016"
 	ms.author="piyushjo" />
 
 # Objective C で IOS アプリ の Azure Mobile Engagement を開始する
@@ -24,7 +24,7 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ XCode 6 または XCode 7。Mac アプリ ストアからインストールできます。
++ XCode 8 (Mac アプリ ストアからインストールすることができます)
 + [モバイル エンゲージメント iOS SDK]
 
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。
@@ -179,4 +179,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

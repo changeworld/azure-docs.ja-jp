@@ -4,7 +4,7 @@ description="HDInsight で Ambari Tez ビューを使用して Tez ジョブを�
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
-manager="paulettm"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -141,4 +141,4 @@ Tez に関する技術的な情報の詳細については、[Hortonworks の Te
 
 HDInsight での Ambari の使用の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

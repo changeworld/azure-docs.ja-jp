@@ -18,26 +18,23 @@
 
 # チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [AZURE.SELECTOR]
+- [概要と前提条件](data-factory-build-your-first-pipeline.md)
 - [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
+この記事では、Azure Resource Manager テンプレートを使用して最初の Azure データ ファクトリを作成します。
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
-
-## 追加の前提条件
-前の前提条件セクションに示されている前提条件の他に、次のものをインストールします。
-
-- **Azure PowerShell をインストールします**。「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
+## 前提条件
+- 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、**前提条件**の手順を完了する必要があります。
+- 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
 - Azure Resource Manager テンプレートについては、「[Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
 
 ## Resource Manager テンプレートの作成
 
-以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
-
-このテンプレートでは、次の Data Factory エンティティを作成できます。
+このセクションでは、以下の Data Factory エンティティを作成します。
 
 1. **TutorialDataFactoryARM** という名前の**データ ファクトリ**。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。
 2. 2 つの**リンクされたサービス** (**StorageLinkedService** と **HDInsightOnDemandLinkedService**)。これらのリンクされたサービスでは、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクします。
@@ -45,8 +42,9 @@
 
 **[Data Factory エディターを使用する]** タブをクリックすると、このテンプレートで使用する JSON プロパティの詳細に関する記事に切り替わります。
 
-> [AZURE.IMPORTANT] **storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
+以下の内容を含む **ADFTutorialARM.json** という名前の JSON ファイルを **C:\\ADFGetStarted** フォルダーに作成します。
 
+> [AZURE.IMPORTANT] **storageAccountName** 変数と **storageAccountKey** 変数は、実際の値に変更してください。また、**dataFactoryName** も変更してください。この名前は一意であることが必要です。
 
 	{
 	    "contentVersion": "1.0.0.0",
@@ -227,8 +225,9 @@
 ## データ ファクトリの作成
 
 1. **Azure PowerShell** を起動し、次のコマンドを実行します。
-	- **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
-	- 次のコマンドを実行して、Data Factory を作成するサブスクリプションを選択します。Get-AzureRmSubscription -SubscriptionName <サブスクリプション名> | Set-AzureRmContext
+	- `Login-AzureRmAccount` を実行し、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
+	- `Get-AzureRmSubscription` を実行して、このアカウントのサブスクリプションをすべて表示します。
+	- `Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext` を実行して、使用するサブスクリプションを選択します。このサブスクリプションは、Azure ポータルで使用したものと同じである必要があります。
 1. 次のコマンドを実行し、手順 1. で作成した Resource Manager テンプレートを使用して Data Factory エンティティをデプロイします。
 
 		New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFTutorialARM.json
@@ -244,7 +243,7 @@
 8. ダイアグラム ビューで、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
-9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。
+9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。そのため、パイプラインによるスライスの処理に**約 30 分**かかると想定してください。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。
@@ -302,4 +301,4 @@ Azure ポータル ブレードを使用して、このチュートリアルで�
 
   
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,14 +13,14 @@ ms.devlang="rest-api"
 ms.workload="search" 
 ms.topic="article"  
 ms.tgt_pltfrm="na" 
-ms.date="07/14/2016" 
+ms.date="09/07/2016" 
 ms.author="eugenesh" />
 
 #インデクサー操作 (Azure Search サービス REST API: 2015-02-28-Preview)#
 
 > [AZURE.NOTE] この記事では、[2015-02-28-Preview REST API](search-api-2015-02-28-preview.md) のインデクサーについて説明します。この API バージョンにより、ドキュメント抽出機能を備えた Azure BLOB ストレージ インデクサーと Azure Table Storage インデクサーのプレビュー バージョンが追加されます。また、その他の面でも改善されています。この API は、一般公開 (GA) インデクサーもサポートします。これには、Azure SQL Database、Azure VM の SQL Server、および Azure DocumentDB のインデクサーが含まれます。
 
-## 概要 ##
+## Overview ##
 
 Azure Search は一部の共通データ ソースと直接統合できます。データにインデックスを作成するためにコードを記述する必要はありません。これをセットアップするために、Azure Search API を呼び出し、**インデクサー**と**データ ソース**を作成し、管理できます。
 
@@ -39,6 +39,7 @@ Azure Search は一部の共通データ ソースと直接統合できます。
 - **Azure SQL Database** と **Azure VM の SQL Server**該当するチュートリアルについては、[この記事](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)をご覧ください。
 - **Azure DocumentDB**。該当するチュートリアルについては、[この記事](../documentdb/documentdb-search-indexer.md)をご覧ください。
 - 次のドキュメント形式を含む **Azure BLOB Storage**: PDF、Microsoft Office (DOCX/DOC、XSLX/XLS、PPTX/PPT、MSG)、HTML、XML、ZIP、プレーン テキスト ファイル (JSON など)。該当するチュートリアルについては、[この記事](search-howto-indexing-azure-blob-storage.md)をご覧ください。
+- **Azure テーブル ストレージ**。該当するチュートリアルについては、[この記事](search-howto-indexing-azure-tables.md)をご覧ください。
 	 
 将来的にサポートするデータ ソースを増やす予定です。決定項目に優先順位を付けるために、[Azure Search フィードバックフォーラム](http://feedback.azure.com/forums/263029-azure-search)でフィードバックをご提供ください。
 
@@ -94,18 +95,18 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 - `Content-Type`: 必須。これを `application/json` に設定します
 - `api-key`: 必須。`api-key` は Search サービスに対する要求の認証に使用されます。これはサービスに固有の文字列値です。**データ ソースの作成**要求には (クエリ キーではなく) 管理者キーに設定された `api-key` ヘッダーを含めます。
  
-要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、[Azure ポータル](https://portal.azure.com/)のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
+要求 URL を作成するにはサービス名も必要です。サービス名と `api-key` はどちらも、[Azure Portal](https://portal.azure.com/) のサービス ダッシュボードから取得できます。ページのナビゲーション ヘルプについては、「[ポータルで Search サービスを作成する](search-create-service-portal.md)」を参照してください。
 
 <a name="CreateDataSourceRequestSyntax"></a> **要求本文の構文**
 
 要求本文にはデータ ソースの定義が含まれます。この定義には、データ ソースの種類、データを読むための資格情報、定期的にスケジュールされたインデクサーで使用するときに、データ ソースで変更または削除されたデータを効率的に識別するための任意のデータ変更検出/データ削除検出ポリシーが含まれます。
 
-要求ペイロードを構築するための構文は次のとおりです。サンプルの要求はこのトピックをさらに進むと登場します。
+要求ペイロードを構築するための構文は次のとおりです。サンプル要求については、このトピックでさらに詳しく取り上げます。
 
     { 
 		"name" : "Required for POST, optional for PUT. The name of the data source",
     	"description" : "Optional. Anything you want, or nothing at all",
-    	"type" : "Required. Must be one of 'azuresql', 'documentdb', or 'azureblob'",
+    	"type" : "Required. Must be one of 'azuresql', 'documentdb', 'azureblob', or 'azuretable'",
     	"credentials" : { "connectionString" : "Required. Connection string for your data source" },
     	"container" : { "name" : "Required. The name of the table, collection, or blob container you wish to index" },
     	"dataChangeDetectionPolicy" : { Optional. See below for details }, 
@@ -119,24 +120,25 @@ HTTPS はすべてのサービス要求に必要です。**データ ソース�
 - `type`: 必須。サポートされているデータ ソースの種類のいずれかを指定する必要があります。
 	- `azuresql` - Azure SQL Database または Azure VM の SQL Server
 	- `documentdb` - Azure DocumentDB
-	- `azureblob` - Azure BLOB ストレージ
+	- `azureblob` - Azure Blob ストレージ
+	- `azuretable` - Azure テーブル ストレージ
 - `credentials`:
 	- 必須の `connectionString` プロパティはデータ ソースの接続文字列を指定します。接続文字列の形式はデータ ソースの種類によって異なります。
-		- Azure SQL の場合、通常の SQL Server 接続文字列です。Azure ポータルを利用して接続文字列を取得する場合、`ADO.NET connection string` オプションを使用します。
+		- Azure SQL の場合、通常の SQL Server 接続文字列です。Azure ポータルを利用して接続文字列を取得する場合は、`ADO.NET connection string` オプションを使用します。
 		- DocumentDB の場合、接続文字列は `"AccountEndpoint=https://[your account name].documents.azure.com;AccountKey=[your account key];Database=[your database id]"` の形式にする必要があります。すべての値が必須です。値は [Azure ポータル](https://portal.azure.com/)にあります。
-		- Azure BLOB ストレージの場合、これはストレージ アカウント接続文字列です。形式の説明は[こちら](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)にあります。HTTPS エンドポイント プロトコルが必要です。
-		
-- `container`、必須: `name` プロパティと `query` プロパティを利用してインデックスを作成するデータを指定:
+		- Azure Blob ストレージおよび Azure テーブル ストレージの場合、これはストレージ アカウント接続文字列です。形式については、[こちら](https://azure.microsoft.com/documentation/articles/storage-configure-connection-string/)をご覧ください。HTTPS エンドポイント プロトコルが必要です。
+- `container`、必須: `name` プロパティと `query` プロパティを使用して、インデックスを作成するデータを指定します。
 	- `name`、必須:
-		- Azure SQL: テーブルまたはビューを指定します。`[dbo].[mytable]` のようなスキーマ修飾名を使用できます。
+		- Azure SQL: テーブルまたはビューを指定します。`[dbo].[mytable]` などのスキーマ修飾名を使用できます。
 		- DocumentDB: コレクションを指定します。
-		- Azure BLOB ストレージ: ストレージ コンテナーを指定します。
+		- Azure Blob ストレージ: ストレージ コンテナーを指定します。
+		- Azure テーブル ストレージ: テーブルの名前を指定します。
 	- `query`、省略可能:
 		- DocumentDB: Azure Search がインデックスを作成できるフラット スキーマに任意の JSON ドキュメント レイアウトをフラット化するクエリを指定できます。
-		- Azure BLOB ストレージ: BLOB コンテナー内の仮想フォルダーを指定できます。たとえば、BLOB パス `mycontainer/documents/blob.pdf` の場合、`documents` を仮想フォルダーとして利用できます。
-		- Azure SQL: クエリはサポートされていません。この機能が必要な場合、[この提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer)に投票してください。
-   
-- 任意の `dataChangeDetectionPolicy` プロパティと `dataDeletionDetectionPolicy` プロパティの説明は下にあります。
+		- Azure BLOB ストレージ: BLOB コンテナー内の仮想フォルダーを指定できます。たとえば、BLOB パス `mycontainer/documents/blob.pdf` については、`documents` を仮想フォルダーとして使用できます。
+		- Azure テーブル ストレージ: インポートする行のセットをフィルター処理するクエリを指定できます。
+		- Azure SQL: クエリはサポートされていません。この機能が必要な場合は、[こちらの提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/9893490-support-user-provided-query-in-sql-indexer)に投票してください
+- 省略可能な `dataChangeDetectionPolicy` プロパティと `dataDeletionDetectionPolicy` プロパティについては、次に説明します。
 
 <a name="DataChangeDetectionPolicies"></a> **データ変更検出ポリシー**
 
@@ -239,11 +241,9 @@ HTTP PUT 要求を使用して既存のデータ ソースを更新できます�
 
 要求本文の構文は[データ ソースの作成要求](#CreateDataSourceRequestSyntax)の場合と同じです。
 
-> [AZURE.NOTE]
-一部のプロパティは既存のデータ ソースで更新できません。たとえば、既存のデータ ソースの種類は変更できません。
+> [AZURE.NOTE] 一部のプロパティは既存のデータ ソースで更新できません。たとえば、既存のデータ ソースの種類は変更できません。
 
-> [AZURE.NOTE]
-既存のデータ ソースの接続文字列を変更しない場合、接続文字列にリテラル `<unchanged>` を指定できます。これは、データ ソースを更新する必要があるが、機密データであるため、接続文字列に簡単にアクセスできない場合に便利です。
+> [AZURE.NOTE] 既存のデータ ソースの接続文字列を変更しない場合、接続文字列にリテラル `<unchanged>` を指定できます。これは、データ ソースを更新する必要があるが、機密データであるため、接続文字列に簡単にアクセスできない場合に便利です。
 
 **応答**
 
@@ -366,7 +366,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 要求の本文には、インデックス作成のためのデータ ソースとターゲット インデックスを指定するインデクサー定義と、任意でインデックス作成のスケジュールとパラメーターが含まれます。
 
 
-要求ペイロードを構築するための構文は次のとおりです。サンプルの要求はこのトピックをさらに進むと登場します。
+要求ペイロードを構築するための構文は次のとおりです。サンプル要求については、このトピックでさらに詳しく取り上げます。
 
     { 
 		"name" : "Required for POST, optional for PUT. The name of the indexer",
@@ -383,7 +383,7 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 
 インデクサーには、必要に応じてスケジュールを指定できます。スケジュールが存在する場合、インデクサーはスケジュールに従って定期的に実行されます。スケジュールには次の属性があります。
 
-- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`"P[nD][T[nH][nM]]"` です。たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。
+- `interval`: 必須。インデクサーが実行される間隔または期間を指定する時間の値。許可される最短の間隔は 5 分です。最長は 1 日です。XSD "dayTimeDuration" 値 ([ISO 8601 期間](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。使用されるパターンは、`"P[nD][T[nH][nM]]"` です。たとえば、15 分ごとの場合は `PT15M`、2 分ごとの場合は `PT2H` です。
 
 - `startTime`: 必須。インデクサーの実行を開始する UTC 日時。
 
@@ -398,7 +398,6 @@ HTTP POST 要求を実行し、Azure Search サービス内に新しいインデ
 - `base64EncodeKeys`: ドキュメント キーを base 64 でエンコードするかどうかを指定します。Azure Search では、ドキュメント キーの文字に制約があります。ただし、ソース データの値には無効な文字を含めることができます。そのような値にドキュメント キーとしてインデックスを作成する必要がある場合、このフラグを true に設定できます。既定値は `false` です。
 
 - `batchSize`: パフォーマンスを改善する目的で、データ ソースから読み込まれ、1 つのバッチとしてインデックスが作成されるアイテムの数を指定します。既定値はデータ ソースの種類によって異なります。Azure SQL と DocumentDB の場合は 1000 であり、Azure BLOB ストレージの場合は 10 です。
-
 
 **フィールド マッピング**
 
@@ -641,7 +640,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 
 - `endTime`: この実行を終了した UTC 時刻。実行が進行中の場合、この値は設定されません。
 
-- `errors`: 項目レベルのエラーがあれば、その一覧。各エントリには、ドキュメント キー(`key` プロパティ) とエラー メッセージ (`errorMessage` プロパティ) が含まれています。
+- `errors`: 項目レベル エラーの配列 (そのエラーがある場合)。　各エントリには、ドキュメント キー(`key` プロパティ) とエラー メッセージ (`errorMessage` プロパティ) が含まれています。
 
 - `itemsProcessed`: この実行の間にインデクサーがインデックス作成を試行したデータ ソース項目 (テーブル行など) の数。
 
@@ -772,7 +771,7 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 <td></td>
 </tr>
 <tr>
-<td>文字列</td>
+<td>string</td>
 <td>Edm.String</td>
 <td></td>
 </tr>
@@ -798,4 +797,4 @@ HTTP PUT 要求を使用して既存のインデクサーを更新できます�
 </tr>
 </table>
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

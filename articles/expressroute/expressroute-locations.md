@@ -12,7 +12,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/07/2016"
+   ms.date="09/20/2016"
    ms.author="cherylmc" />
 
 # ExpressRoute パートナーとピアリングの場所
@@ -66,7 +66,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | サポートされています | サポートされています | アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 |**CenturyLink** | 近日対応予定 | 近日対応予定| シリコン バレー |
 |**China Telecom Global** | サポートされています | サポートされていません | 香港特別行政区 |
-|**[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** | サポートされています | 近日対応予定 | モントリオール+、トロント |
+|**[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** | サポートされています | 近日対応予定 | ダラス、モントリオール+、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | サポートされています | サポートされています | アムステルダム、ダブリン、ロンドン、東京 |
 | **Comcast** | サポートされています | サポートされています | シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** | サポートされています | サポートされています | ロサンゼルス | 
@@ -171,4 +171,4 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 <!--Image References-->
 [0]: ./media/expressroute-locations/expressroute-locations-map.png "Location map"
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

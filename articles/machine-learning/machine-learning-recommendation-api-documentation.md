@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,15 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/17/2016" 
+	ms.date="09/08/2016" 
 	ms.author="LuisCa"/>
 
 #Azure Machine Learning Recommendations API ドキュメント
 
-このドキュメントは、マーケットプレースで公開されている Microsoft Azure Machine Learning の Recommendations API を示しています。
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
-
-> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
+このドキュメントは、Microsoft Azure Machine Learning の Recommendations API を示しています。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -77,9 +76,9 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 ###4\.2.順位付けのビルド
 
-特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。
-どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。
-注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
+特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。
+このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。
+これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
 
 ###4\.3.推奨の理由
 
@@ -896,17 +895,17 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> 
-<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>FeatureBlockList ルールを追加するには:</ins><br> 
-<br> 
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br>
+<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>FeatureBlockList ルールを追加するには:</ins><br>
+<br>
 `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
-Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> 
-<ins>WhiteList ルールを追加するには:</ins><br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> 
-<ins>FeatureWhiteList ルールを追加するには:</ins><br> 
-<br> 
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> 
+Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
+<ins>WhiteList ルールを追加するには:</ins><br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>FeatureWhiteList ルールを追加するには:</ins><br>
+<br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
 PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
@@ -997,7 +996,7 @@ HTTP 状態コード: 200
 
 | Name | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
 | Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 | 
 | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
 | Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
@@ -1369,7 +1368,8 @@ OData XML
   		</EventData>
 		</Event>
 
-**応答**: HTTP 状態コード: 200
+**応答**:
+HTTP 状態コード: 200
 
 ###9\.2.モデルの使用状況ファイルの一覧
 すべてのモデルに関する使用状況ファイルのメタデータを取得します。使用状況ファイルは、一度に 1 ページずつ取得されます。各ページに 100 個の項目が含まれます。特定のインデックスで項目を取得する場合は、$skip odata パラメーターを使用します。たとえば、位置 100 から開始する項目を取得する場合、要求にパラメーターとして $skip=100 を追加します。
@@ -1885,7 +1885,7 @@ FBT (よく一緒に購入されている品目) のビルドは「控えめな�
 | ModelingFeatureList | 推奨事項を強化するために推奨事項のビルドに使用される、特徴名のコンマ区切りの一覧。 | 文字列 | 特徴名 (最大 512 文字） |
 | AllowColdItemPlacement | 推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | Boolean | True または False |
 | EnableFeatureCorrelation | 理由で特徴を使用するかどうかを示します。 | Boolean | True または False |
-| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | String | 特徴名 (最大 512 文字） |
+| ReasoningFeatureList | 理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。 | 文字列 | 特徴名 (最大 512 文字） |
 | EnableU2I | 個人用に設定された推奨事項、別名U2I (ユーザーから項目の推奨事項) を許可します。 | Boolean | True または False (既定値は True) |
 
 #####11\.1.4.FBT ビルド パラメーター
@@ -2946,7 +2946,8 @@ HTTP 状態コード: 200
 12\.1 の応答の例を参照してください。
 
 ##13\.ユーザーの使用状況の履歴
-推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。この API により、ユーザーの履歴が取得できます。
+推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。
+この API により、ユーザーの履歴が取得できます。
 
 注: ユーザーの履歴は現在推奨設定のビルドに対してのみ利用できます。
 
@@ -3103,10 +3104,7 @@ HTTP 状態コード: 200
 
 
 ##15\.法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 
-使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> 
-このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> 
-© 2015 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

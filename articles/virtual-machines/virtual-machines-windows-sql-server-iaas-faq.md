@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/03/2016"
+	ms.date="09/13/2016"
 	ms.author="v-shysun"/>
 
 # Azure Virtual Machines における SQL Server に関する FAQ
@@ -33,7 +33,7 @@
 
 	概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。これに対し、[SQL Database](../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。SQL Database では、データベースをホストするマシンにアクセスできません。完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。
 
-1. ** オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
+1. **オンプレミス SQL Server データベースをクラウドに移行するにはどうすればよいですか?**
 
 	まず SQL Server インスタンスで、Azure 仮想マシンを作成します。次に、オンプレミス データベースをそのインスタンスに移行します。データ移行の方法については、「[Azure VM の SQL Server への SQL Server データベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。
 
@@ -65,7 +65,7 @@
 
 	「[Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/ja-JP/download/details.aspx?id=42313)」から、SQL データ ツールをダウンロードして、インストールします。
 
-## Resources
+## リソース
 
 Azure Virtual Machines 上の SQL Server の概要については、ビデオ「[Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するトピックも優れた入門書です。
 
@@ -77,4 +77,4 @@ Azure Virtual Machines 上の SQL Server の概要については、ビデオ「
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)
 - [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

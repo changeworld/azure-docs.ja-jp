@@ -4,7 +4,7 @@
 	services="data-catalog"
 	documentationCenter=""
 	authors="spelluru"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
 	tags=""/>
 <tags 
@@ -278,7 +278,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 
 > [AZURE.NOTE]
 >
-> **permissions** は、ルート項目のみに適用されます。
+> **\_\_permissions** は、ルート項目のみに適用されます。
 >
 > **所有者**ロールは、ルート項目のみに適用されます。
 >
@@ -353,4 +353,4 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 <!--Image references-->
 [1]: ./media/data-catalog-developer-concepts/concept2.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

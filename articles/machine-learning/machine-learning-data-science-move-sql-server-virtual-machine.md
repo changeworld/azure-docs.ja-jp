@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -20,7 +20,7 @@
 
 このトピックでは、フラット ファイル (CSV 形式または TSV 形式) またはオンプレミスの SQL Server から、Azure 仮想マシン上の SQL Server にデータを移動するためのオプションについて説明します。このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
-Machine Learning 用に Azure SQL データベースにデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
+Machine Learning 用に Azure SQL Database にデータを移動するためのオプションに関する説明は、「[Azure Machine Learning 用に Azure SQL データベースにデータを移動する](machine-learning-data-science-move-sql-azure.md)」を参照してください。
 
 次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
@@ -52,12 +52,12 @@ Machine Learning 用に Azure SQL データベースにデータを移動する�
 
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
 
-1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp) 
+1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp)
 2. [一括挿入 SQL クエリ](#insert-tables-bulkquery)
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
 
-### <a name="insert-tables-bcp"></a>コマンド ライン一括コピー ユーティリティ (BCP)
+### <a name="insert-tables-bcp">コマンド ライン一括コピー ユーティリティ (BCP)</a>
 
 BCP は、SQL Server と一緒にインストールされるコマンド ライン ユーティリティであり、データを移動する最も簡単な方法の 1 つです。これは、3 つの異なる SQL Server (オンプレミスの SQL Server、SQL Azure、および Azure での SQL Server VM) すべて機能します。
 
@@ -152,11 +152,11 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
     	)
  	  
 
-### <a name="sql-builtin-utilities"></a>SQL Server の組み込みユーティリティ
+### <a name="sql-builtin-utilities">SQL Server の組み込みユーティリティ</a>
 
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。SSIS は 2 つの Studio 環境で使用できます。詳細については、「[統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
 
-- SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)」を参照してください。  
+- SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)」を参照してください。
 - インポート/エクスポート ウィザードの詳細については、「[SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)」を参照してください。
 
 
@@ -165,7 +165,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 次の移行方法を使用することもできます。
 
 1. [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
-2. [フラット ファイルへのエクスポート](#export-flat-file) 
+2. [フラット ファイルへのエクスポート](#export-flat-file)
 3. [SQL Database 移行ウィザード](#sql-migration)
 4. [データベースのバックアップと復元](#sql-backup)
 
@@ -198,7 +198,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 	
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm)」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
-### <a name="sql-migration"></a>SQL Database 移行ウィザード
+### <a name="sql-migration">SQL Database 移行ウィザード</a>
 
 [SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/)は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。これにより、ユーザーは、ソースと移動先テーブルの間のデータ スキーマをマップし、列のタイプおよびその他のさまざまな機能を選択できます。これは、内部で一括コピー (BCP) を使用します。次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。
 
@@ -208,8 +208,8 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 
 SQL Server は以下のものをサポートします。
 
-1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC のエクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。 
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。詳細については、「[データベース コピー ウィザードの使用](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。 
+1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC のエクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。詳細については、「[データベース コピー ウィザードの使用](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
 
 以下に、SQL Server Management Studio からのデータベースのバックアップ/復元オプションのスクリーン ショットを示します。
 
@@ -224,4 +224,4 @@ SQL Server は以下のものをサポートします。
 [1]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/machine-learning-data-science-move-sql-server-virtual-machine/database_migration_wizard.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

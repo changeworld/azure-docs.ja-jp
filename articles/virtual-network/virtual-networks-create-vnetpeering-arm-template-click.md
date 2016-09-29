@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
 
 # Resource Manager テンプレートを使用した VNET ピアリングの作成
 
@@ -29,7 +29,7 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-    注: VNET ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
+    > [AZURE.NOTE] VNet ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
 
 2. 以下のテキストは、前述のシナリオに基づく VNet1 から VNet2 への VNET ピアリング リンクの定義です。以下の内容をコピーし、VNetPeeringVNet1.json というファイル名で保存してください。
 
@@ -58,7 +58,7 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
             }
         ]
         }
-    
+
 3. 以下に示したのは、前述のシナリオに基づく VNet2 から VNet1 への VNET ピアリング リンクの定義です。以下の内容をコピーし、VNetPeeringVNet2.json というファイル名で保存してください。
 
         {
@@ -178,7 +178,7 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet3.json -DeploymentDebugLogLevel all
 
     この JSON ファイルの定義は以下のとおりです。
-    
+
         {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
@@ -204,11 +204,11 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
             }
         ]
         }
-   
+
 4. 次に、User-B のログイン セッションで次のコマンドレットを実行します。
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName VNet101 -TemplateFile .\VNetPeeringVNet5.json -DeploymentDebugLogLevel all
-   
+
 	この JSON ファイルの定義は以下のとおりです。
 
         {
@@ -236,7 +236,7 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
             }
         ]
         }
- 
+
  	このシナリオでピアリングが確立された後は、双方の VNet の任意の仮想マシンから、サブスクリプションの境界を越えて任意の仮想マシンへの接続を開始することができます。
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
@@ -303,4 +303,57 @@ Resource Manager テンプレートを使用して VNET ピアリングを作成
 
 3. ピアリングが確立されたら、こちらの[記事](virtual-network-create-udr-arm-ps.md)を参照してください。VNet1 トラフィックを仮想アプライアンス経由でリダイレクトするようにユーザー定義ルート (UDR) を設定することで、その機能を利用することができます。ルートの次ホップ アドレスを指定するときは、ピア VNET (HubVNet) に存在する仮想アプライアンスの IP アドレスを設定します。
 
-<!---HONumber=AcomDC_0810_2016-->
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+異なるデプロイメント モデルの仮想ネットワーク間にピアリングを作成するには、次の手順に従います。
+1. 以下のテキストは、このシナリオにおける VNET1 から VNET2 への VNet ピアリング リンクの定義です。クラシック仮想ネットワークから Azure Resource Manager 仮想ネットワークへのピアリングに必要なリンクは 1 つだけです。
+
+    クラシック仮想ネットワーク (VNET2) が属しているサブスクリプションのサブスクリプション ID を入力し、MyResouceGroup を適切なリソース グループ名に変更してください。
+
+    { "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#", "contentVersion": "1.0.0.0", "parameters": { }, "variables": { }, "resources": [ { "apiVersion": "2016-06-01", "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "name": "VNET1/LinkToVNET2", "location": "[resourceGroup().location]", "properties": { "allowVirtualNetworkAccess": true, "allowForwardedTraffic": false, "allowGatewayTransit": false, "useRemoteGateways": false, "remoteVirtualNetwork": { "id": "[resourceId('Microsoft.ClassicNetwork/virtualNetworks', 'VNET2')]" } } } ] }
+
+2. テンプレート ファイルをデプロイするには、次のコマンドレットを実行して、デプロイを作成または更新します。
+
+        New-AzureRmResourceGroupDeployment -ResourceGroupName MyResourceGroup -TemplateFile .\VnetPeering.json -DeploymentDebugLogLevel all
+
+        Output shows:
+
+        DeploymentName          : VnetPeering
+        ResourceGroupName       : MyResourceGroup
+        ProvisioningState       : Succeeded
+        Timestamp               : XX/XX/YYYY 5:42:33 PM
+        Mode                    : Incremental
+        TemplateLink            :
+        Parameters              :
+        Outputs                 :
+        DeploymentDebugLogLevel : RequestContent, ResponseContent
+
+3. デプロイが正常に完了したら、次のコマンドレットを実行してピアリング状態を確認できます。
+
+        Get-AzureRmVirtualNetworkPeering -VirtualNetworkName VNET1 -ResourceGroupName MyResourceGroup -Name LinkToVNET2
+
+        Output shows:
+
+        Name                             : LinkToVNET2
+        Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResource
+                                   Group/providers/Microsoft.Network/virtualNetworks/VNET1/virtualNetworkPeering
+                                   s/LinkToVNET2
+        Etag                             : W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ResourceGroupName                : MyResourceGroup
+        VirtualNetworkName               : VNET1
+        PeeringState                     : Connected
+        ProvisioningState                : Succeeded
+        RemoteVirtualNetwork             : {
+                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/M
+                                   yResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2"
+                                   }
+        AllowVirtualNetworkAccess        : True
+        AllowForwardedTraffic            : False
+        AllowGatewayTransit              : False
+        UseRemoteGateways                : False
+        RemoteGateways                   : null
+        RemoteVirtualNetworkAddressSpace : null
+
+クラシック VNet と Resource Manager VNet の間にピアリングが確立されたら、VNET1 の任意の仮想マシンから VNET2 の任意の仮想マシンへの接続とその逆方向の接続を開始できます。
+
+<!---HONumber=AcomDC_0921_2016-->
