@@ -13,7 +13,7 @@
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
 	ms.date="07/26/2016"
-	ms.author="minet" />
+	ms.author="minet;robinsh" />
 
 # Windows で Azure File Storage を使用する
 
@@ -189,7 +189,7 @@ Azure PowerShell のバージョン 0.9.7 以降では、ファイルを別の�
     # copy a blob to a file directory
     Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 
-## ファイル共有のマウント 
+## ファイル共有のマウント
 
 SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアントから暗号化と永続的ハンドルをサポートするようになりました。暗号化のサポートは、SMB 3.0 クライアントが、次を含む任意の場所からファイル共有をマウントできることを意味します。
 
@@ -200,7 +200,7 @@ SMB 3.0 のサポートにより、File Storage では、SMB 3.0 クライアン
 クライアントが File Storage にアクセスするときに使用する SMB バージョンは、オペレーティング システムでサポートされている SMB バージョンによって異なります。次の表に、Windows クライアントでのサポートの概要を示します。SMB バージョンの詳細については、[こちらのブログ](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx)を参照してください。
 
 | Windows クライアント | サポートされている SMB バージョン |
-|------------------------|-----------------------|
+|:-----------------------|:----------------------|
 | Windows 7 | SMB 2.1 |
 | Windows Server 2008 R2 | SMB 2.1 |
 | Windows 8 | SMB 3.0 |
@@ -247,7 +247,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
-### Windows を実行するオンプレミスのクライアントからのファイル共有のマウント 
+### Windows を実行するオンプレミスのクライアントからのファイル共有のマウント
 
 オンプレミスのクライアントからファイル共有をマウントするには、まず次の手順を実行する必要があります。
 
@@ -264,7 +264,7 @@ File Storage を呼び出すコードを作成する場合、.NET と Java の�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage Client Library を含む NuGet パッケージをインストールするには、次の手順を実行します。
 
-1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows] をクリックし、Visual C# テンプレートの一覧から [コンソール アプリケーション]**をクリックします。
+1. Visual Studio で、**[ファイル]、[新しいプロジェクト]** の順にクリックした後、**[Windows]、\[コンソール アプリケーション\]** (Visual C# テンプレートの一覧から)をクリックします。
 2. コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3. プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンラインで検索し、**[インストール]** をクリックして Azure Storage Client Library for .NET のパッケージと依存関係をインストールします。
 
@@ -589,13 +589,13 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 	SAS は、REST API またはクライアント ライブラリを使用してのみサポートされます。SMB プロトコルを使用してファイル共有をマウントした場合、SAS を使用してそのコンテンツへのアクセスを委任することはできません。
 
 2. **Azure のファイル共有はインターネット経由で確認できますか。または Azure からのみアクセスできるでのしょうか。**
- 
+
 	ポート 445 (TCP 送信) が開いており、(Windows 8 または Windows Server 2012 *など*の) クライアントが SMB 3.0 プロトコルをサポートしている場合は、ファイル共有はインターネット経由で使用できます。
 
 3. **Azure の仮想マシンとファイル共有間のネットワーク トラフィックは、サブスクリプションに課金される外部帯域幅としてカウントされますか。**
 
 	ファイル共有と仮想マシンのリージョンが別の場合、これらの間のトラフィックは外部帯域幅として課金されます。
- 
+
 4. **同じリージョン内の仮想マシンとファイル共有間で発生するネットワーク トラフィックは、無料ですか。**
 
 	はい。同じリージョン内のトラフィックは無料です。
@@ -607,7 +607,7 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 6. **Azure File Storage の 1 つの用途は、フェールオーバー クラスターの "ファイル共有監視" ですか。**
 
 	現在これはサポートされていません。
- 
+
 7. **現在 File ストレージのレプリケーションは、LRS または GRS を介してのみ実行できるのですか。**
 
 	RA-GRS もサポート予定ですが、まだ予定は公表できません。
@@ -634,7 +634,7 @@ Blob Storage、Table Storage、Queue Storage は `Microsoft.WindowsAzure.Storage
 
 13. **Azure Files の低パフォーマンスの問題を解決するためにリリースされた修正プログラム**
 
-	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/en-us/kb/3114025)」を参照してください。
+	Windows チームは先日、ユーザーが Windows 8.1 または Windows Server 2012 R2 から Azure Files Storage にアクセスする際に生じる低パフォーマンスの問題を解決するための修正プログラムをリリースしました。詳細については、関連するサポート技術情報の記事「[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files Storage にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/ja-JP/kb/3114025)」を参照してください。
 
 14. **IBM MQ での Azure File Storage の使用**
 
@@ -667,4 +667,4 @@ Azure File Storage の詳細については、次のリンクを参照してく�
 - [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

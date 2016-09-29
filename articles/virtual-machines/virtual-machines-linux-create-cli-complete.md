@@ -121,7 +121,7 @@ azure network lb rule create -g TestRG -l TestLB -n WebRule -p tcp -f 80 -b 80 \
 ロード バランサーの正常性プローブを作成します。
 
 ```bash
-azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
+azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "tcp" -i 15 -c 4
 ```
 
 JSON パーサーを使用したロード バランサー、IP プール、および NAT 規則を確認します。
@@ -788,7 +788,7 @@ info:    network lb rule create command OK
 正常性プローブは、ロード バランサーの背後にある VM を定期的にチェックして、それらが定義されているとおりに動作し、要求に応答していることを確認します。動作していない場合は、運用から削除され、ユーザーがそれらに転送されないようにします。間隔およびタイムアウト値と共に、正常性プローブのカスタム チェックを定義できます。正常性プローブの詳細については、[Load Balancer のプローブ](../load-balancer/load-balancer-custom-probe-overview.md)に関するページをご覧ください。
 
 ```bash
-azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "http" -f healthprobe.aspx -i 15 -c 4
+azure network lb probe create -g TestRG -l TestLB -n HealthProbe -p "tcp" -i 15 -c 4
 ```
 
 出力:
@@ -800,7 +800,7 @@ warn:    Using default probe port: 80
 + Updating load balancer "TestLB"
 data:    Name                            : HealthProbe
 data:    Provisioning state              : Succeeded
-data:    Protocol                        : Http
+data:    Protocol                        : Tcp
 data:    Port                            : 80
 data:    Interval in seconds             : 15
 data:    Number of probes                : 4
@@ -928,14 +928,13 @@ azure network lb show -g TestRG -n TestLB --json | jq '.'
   "probes": [
     {
       "etag": "W/"62a7c8e7-859c-48d3-8e76-5e078c5e4a02"",
-      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/probes/HealthProbe",
-      "protocol": "Http",
-      "port": 80,
-      "intervalInSeconds": 15,
-      "numberOfProbes": 4,
-      "requestPath": "healthprobe.aspx",
+      "name": "HealthProbe",
       "provisioningState": "Succeeded",
-      "name": "HealthProbe"
+      "numberOfProbes": 4,
+      "intervalInSeconds": 15,
+      "port": 80,
+      "protocol": "Tcp",
+      "id": "/subscriptions/guid/resourceGroups/TestRG/providers/Microsoft.Network/loadBalancers/TestLB/probes/HealthProbe"
     }
   ]
 }
@@ -1090,7 +1089,7 @@ azure availset create -g TestRG -n TestAvailSet -l westeurope
 この次の手順は、Linux または Mac で **ssh-keygen -t rsa -b 2048** を使用して SSH RSA の公開キーと秘密キーのペアを既に作成した経験があるユーザーであればだれでもよく知っています。`~/.ssh` ディレクトリに証明書キーのペアがない場合、作成することができます。
 
 - 自動的に `azure vm create --generate-ssh-keys` オプションを使用します。
-- 手動では [自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md) を使用します。
+- 手動では[自分で作成する手順](virtual-machines-linux-mac-create-ssh-keys.md)を使用します。
 
 また、VM を作成した後、SSH 接続を認証するのに--管理パスワード方法を使用できます。この方法は通常安全性が低いです。
 
@@ -1273,4 +1272,4 @@ azure group deployment create -f TestRG.json -g NewRGFromTemplate
 
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

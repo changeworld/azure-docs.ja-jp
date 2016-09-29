@@ -19,8 +19,8 @@
 # PowerShell を使用した VNet へのポイント対サイト接続の構成
 
 > [AZURE.SELECTOR]
-- [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [ポータル - クラシック](vpn-gateway-point-to-site-create.md)
+- [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [クラシック - クラシック ポータル](vpn-gateway-point-to-site-create.md)
 
 ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。P2S 接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。
 
@@ -111,7 +111,7 @@
 
 		New-AzureRmResourceGroup -Name $RG -Location $Location
 
-2. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet*という名前を付けます。これらのプレフィックスは、上で宣言された VNet アドレス空間に含まれる必要があります。
+2. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet*という名前を付けます。これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
 
 		$fesub = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
 		$besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
@@ -172,7 +172,7 @@ P2S を使用して Azure に接続するクライアントには、クライア
 
 3. Web ブラウザーに返されたリンクをコピーして貼り付け、パッケージをダウンロードします。その後、パッケージをクライアント コンピューターにインストールします。
 
-4. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** をクリックします。接続が一覧で表示されます。接続先となる仮想ネットワークの名前が、次のように表示されます。
+4. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** をクリックします。接続が一覧で表示されます。接続先となる仮想ネットワークの名前が、次の例のように表示されます。
 
 	![VPN client](./media/vpn-gateway-howto-point-to-site-rm-ps/vpn.png "VPN client")
 
@@ -226,7 +226,7 @@ P2S を使用して Azure に接続するクライアントには、クライア
 
 証明書は、ポイント対サイト VPN の VPN クライアントの認証に使用されます。以下の手順に従って、ルート証明書を追加および削除できます。Base64 でエンコードされた X.509 (.cer) ファイルを Azure に追加すると、このファイルが表すルート証明書を信頼するよう Azure に伝えることになります。
 
-PowerShell または Azure Portal を使用して、信頼されたルート証明書を追加したり削除したりできます。Azure Portal を使用してこれを行う場合、**[仮想ネットワーク ゲートウェイ]、[設定]、[ポイント対サイトの構成]、[ルート証明書]** の順に移動します。以下の手順では、PowerShell を使用してこれらのタスクについて説明します。
+PowerShell または Azure Portal を使用して、信頼されたルート証明書を追加したり削除したりできます。Azure Portal を使用してこれを行う場合、**[仮想ネットワーク ゲートウェイ]、[設定]、[ポイント対サイトの構成]、[ルート証明書]** の順に移動します。次の手順では、これらのタスクを PowerShell を使用して行う方法について説明します。
 
 ### 信頼されたルート証明書を追加する
 
@@ -238,7 +238,7 @@ PowerShell または Azure Portal を使用して、信頼されたルート証�
 
 	![証明書](./media/vpn-gateway-howto-point-to-site-rm-ps/copycert.png "証明書")
 	
-2. 次の例では、証明書名とキーの情報を変数として指定しています。情報は独自のものに置き換えてください。
+2. 証明書名とキーの情報を変数として指定しています。次の例で示すように、情報は実際のものに置き換えてください。
 
 		$P2SRootCertName2 = "ARMP2SRootCert2.cer"
 		$MyP2SCertPubKeyBase64_2 = "MIIC/zCCAeugAwIBAgIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAMBgxFjAUBgNVBAMTDU15UDJTUm9vdENlcnQwHhcNMTUxMjE5MDI1MTIxWhcNMzkxMjMxMjM1OTU5WjAYMRYwFAYDVQQDEw1NeVAyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjIXoWy8xE/GF1OSIvUaA0bxBjZ1PJfcXkMWsHPzvhWc2esOKrVQtgFgDz4ggAnOUFEkFaszjiHdnXv3mjzE2SpmAVIZPf2/yPWqkoHwkmrp6BpOvNVOpKxaGPOuK8+dql1xcL0eCkt69g4lxy0FGRFkBcSIgVTViS9wjuuS7LPo5+OXgyFkAY3pSDiMzQCkRGNFgw5WGMHRDAiruDQF1ciLNojAQCsDdLnI3pDYsvRW73HZEhmOqRRnJQe6VekvBYKLvnKaxUTKhFIYwuymHBB96nMFdRUKCZIiWRIy8Hc8+sQEsAML2EItAjQv4+fqgYiFdSWqnQCPf/7IZbotgQIDAQABo00wSzBJBgNVHQEEQjBAgBAkuVrWvFsCJAdK5pb/eoCNoRowGDEWMBQGA1UEAxMNTXlQMlNSb290Q2VydIIQKazxzFjMkp9JRiX+tkTfSzAJBgUrDgMCHQUAA4IBAQA223veAZEIar9N12ubNH2+HwZASNzDVNqspkPKD97TXfKHlPlIcS43TaYkTz38eVrwI6E0yDk4jAuPaKnPuPYFRj9w540SvY6PdOUwDoEqpIcAVp+b4VYwxPL6oyEQ8wnOYuoAK1hhh20lCbo8h9mMy9ofU+RP6HJ7lTqupLfXdID/XevI8tW6Dm+C/wCeV3EmIlO9KUoblD/e24zlo3YzOtbyXwTIh34T0fO/zQvUuBqZMcIPfM1cDvqcqiEFLWvWKoAnxbzckye2uk1gHO52d8AVL3mGiX8wBJkjc/pMdxrEvvCzJkltBmqxTM6XjDJALuVh16qFlqgTWCIcb7ju"
@@ -311,4 +311,4 @@ PowerShell または Azure Portal を使用して、信頼されたルート証�
 
 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

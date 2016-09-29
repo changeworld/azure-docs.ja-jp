@@ -4,7 +4,7 @@
    services="hdinsight"
    documentationCenter=".net"
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
    tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="06/17/2016"
+   ms.date="09/06/2016"
    ms.author="larryfr"/>
 
 #HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
@@ -143,4 +143,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 * [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

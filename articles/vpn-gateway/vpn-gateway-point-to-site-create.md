@@ -20,12 +20,12 @@
 # クラシック ポータルを使用した VNet へのポイント対サイト接続の構成
 
 > [AZURE.SELECTOR]
-- [PowerShell - Resource Manager](vpn-gateway-howto-point-to-site-rm-ps.md)
-- [ポータル - クラシック](vpn-gateway-point-to-site-create.md)
+- [Resource Manager - PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
+- [クラシック - クラシック ポータル](vpn-gateway-point-to-site-create.md)
 
 ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。P2S 接続は、自宅や会議室など、リモートの場所から VNet に接続する場合や、仮想ネットワークに接続する必要があるクライアントの数が少ない場合に便利です。
 
-この記事では、クラシック ポータルを使用して、ポイント対サイト接続を持つ VNet を**クラシック デプロイメント モデル**で作成する手順を説明します。現在この構成は、クラシック デプロイメント モデルの Azure Portal のみで作成することはできません。
+この記事では、**クラシック ポータル**を使用して、ポイント対サイト接続を備えた VNet を**クラシック デプロイメント モデル**で作成する手順を説明します。現在この構成は、クラシック デプロイメント モデルの Azure Portal のみで作成することはできません。手順の一部は Azure Portal で実行できますが、VPN クライアント構成をダウンロードする際に PowerShell が必要になります。
 
 ポイント対サイト接続を機能させるために、VPN デバイスや公開 IP アドレスは必要ありません。VPN 接続を確立するには、クライアント コンピューターからの接続を開始します。ポイント対サイト接続の詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#point-to-site-connections)」と[計画と設計](vpn-gateway-plan-design.md)に関するページを参照してください。
 
@@ -193,4 +193,4 @@
 
 Virtual Network の詳細については、[Virtual Network のドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

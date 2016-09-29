@@ -3,8 +3,8 @@
 	description="Azure Marketplace に Azure Machine Learning Web サービスを発行する方法" 
 	services="machine-learning" 
 	documentationCenter="" 
-	authors="LuisCabrer" 
-	manager="paulettm" 
+	authors="BharathS" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/31/2016" 
+	ms.date="09/08/2016" 
 	ms.author="bharaths"/>
 
 # Azure Marketplace への Azure Machine Learning Web サービスの発行 
@@ -29,15 +29,15 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 
 1. Machine Learning Request-Response サービス (RRS) を作成して発行する
 2. サービスを運用環境にデプロイし、API キーと OData のエンドポイント情報を取得する
-3. 発行済みの Web サービスの URL を使用して、[Azure Marketplace (データ マーケット)](https://publish.windowsazure.com/workspace/) に発行します。 
-4. 送信すると、プランの内容が確認され、顧客が購入するにはこのサービスが承認される必要があります。発行プロセスには数営業日かかります。 
+3. 発行済みの Web サービスの URL を使用して、[Azure Marketplace (データ マーケット)](https://publish.windowsazure.com/workspace/) に発行します。
+4. 送信すると、プランの内容が確認され、顧客が購入するにはこのサービスが承認される必要があります。発行プロセスには数営業日かかります。
 
 ## チュートリアル
 ###手順 1: Machine Learning Request-Response サービス (RRS) を作成して発行する###
  まだ完了していない場合は、こちらの[チュートリアル](machine-learning-walkthrough-5-publish-web-service.md)をご覧ください。
 
 ###手順 2: サービスを運用環境にデプロイし、API キーと OData のエンドポイント情報を取得する###
-1. [[Azure クラシック ポータル]](http://manage.windowsazure.com) で、左側のナビゲーション バーから **[MACHINE LEARNING]** オプションを選択し、ワークスペースを選択します。 
+1. [[Azure クラシック ポータル]](http://manage.windowsazure.com) で、左側のナビゲーション バーから **[MACHINE LEARNING]** オプションを選択し、ワークスペースを選択します。
 
 2. **[WEB サービス]** タブをクリックし、マーケットプレースに発行する Web サービスを選択します。
 
@@ -64,10 +64,10 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 
 ###手順 3: 発行済みの Web サービスの URL を使用して、Azure Marketplace (データ マーケット) に発行する###
 
-1.  [Azure Marketplace (データ マーケット)](http://datamarket.azure.com/home) に移動します。 
+1.  [Azure Marketplace (データ マーケット)](http://datamarket.azure.com/home) に移動します。
 2.  ページの上部にある **[発行]** リンクをクリックします。[[Microsoft Azure 発行ポータル]](https://publish.windowsazure.com) が表示されます。
 3.  **[発行者]** セクションをクリックし、発行者として登録します。
-4.	新しいプランを作成するには、**[Data Services]** を選択し、**[新しいデータ サービスの作成]** をクリックします。 
+4.	新しいプランを作成するには、**[Data Services]** を選択し、**[新しいデータ サービスの作成]** をクリックします。
  
 	![Azure Marketplace][image1]
 
@@ -109,4 +109,4 @@ Azure Machine Learning Web サービスを Azure Marketplace に発行するた�
 [odata]: ./media/machine-learning-publish-web-service-to-azure-marketplace/odata.png
  
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

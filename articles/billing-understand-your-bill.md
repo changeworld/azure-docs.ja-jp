@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/23/2016"
+   ms.date="09/13/2016"
    ms.author="erihur;genli"/>
 
 
@@ -161,8 +161,8 @@ SKU | SKU | 各 Azure リソースの一意のシステム ID を示します。
 
  名前 | ダウンロード |
  :----------:| :-------: |
- Detailed Usage .csv Version 1| [サンプル ファイル](https://azurepricing.blob.core.windows.net/sampleinvoices/Micorosft_Azure_Detailed_Usage_v1.csv)
- Detailed Usage .csv Version 2 | [サンプル ファイル](https://azurepricing.blob.core.windows.net/sampleinvoices/Micorosft_Azure_Detailed_Usage_v2.csv)
+ Detailed Usage .csv Version 1| [サンプル ファイル](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv1.xlsx)
+ Detailed Usage .csv Version 2 | [サンプル ファイル](https://azurepricing.blob.core.windows.net/supplemental/MOSPServices_csv2.xlsx)
 
 
 
@@ -206,11 +206,11 @@ Version 1 | Version 2 | Description |
 ![additionalinfo\_csv2](./media/billing-understand-your-bill/AdditionaInfo_csv2.png)
 
 - **タグ**: この列には、ユーザーが指定したリソース タグが含まれます。タグは、課金記録のグループ化に使用できます。たとえば、タグを使用して、サービスを使用する部門ごとにコストを配分することができます。タグの使用方法については、[Azure リソースの整理](./resource-group-using-tags.md)を参照してください。タグの生成をサポートするサービスは、次のとおりです。
-    
+
     - Virtual Machines
-    
+
     - 記憶域
-   
+
     - [Azure リソース マネージャー API を使用してプロビジョニングされたネットワーク サービス。](https://msdn.microsoft.com/library/azure/dn790567.aspx)
 
 ![tags](./media/billing-understand-your-bill/tags.png)
@@ -241,4 +241,4 @@ OLD MSDN Articles
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

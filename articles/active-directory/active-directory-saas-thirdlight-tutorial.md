@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Thirdlight の統合
@@ -66,7 +66,7 @@
 
 ##シングル サインオンの構成
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Thirdlight に対する認証を行うことができるようにする方法を説明します。Thirdlight のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書のサムプリント値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Thirdlight に対する認証を行うことができるようにする方法を説明します。Thirdlight のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
 ###シングル サインオンを構成するには、次の手順に従います。
 
@@ -78,7 +78,7 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-thirdlight-tutorial/IC805840.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Thirdlight のサインイン URL]** ボックスに、ユーザーが Thirdlight アプリケーションにサインオンする際に使用する URL (例: **http://azuresso2.thirdlight.com/*")) を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Thirdlight のサインイン URL]** ボックスに、ユーザーが Thirdlight アプリケーションにサインオンする際に使用する URL (例: "http://azuresso2.thirdlight.com/*") を入力し、[次へ] をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-thirdlight-tutorial/IC805841.png "アプリケーション URL の構成")
 
@@ -141,6 +141,6 @@ Azure AD ユーザーが Thirdlight にログインできるようにするに�
 
     ![Yes](./media/active-directory-saas-thirdlight-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

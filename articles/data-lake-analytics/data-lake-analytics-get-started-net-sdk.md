@@ -25,8 +25,6 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 
 このチュートリアルでは、U-SQL スクリプトを含む C# コンソール アプリケーションを開発します。このスクリプトでは、タブ区切り値 (TSV) ファイルを読み取り、それをコンマ区切り値 (CSV) ファイルに変換します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ##前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -265,4 +263,4 @@ Azure .NET SDK を使用して、Azure Data Lake Analytics アカウントを作
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="infrastructure-services"
-	ms.date="05/31/2016"
+	ms.date="09/12/2016"
 	ms.author="magoedte;bwren" />
 
 # Azure Automation での Runbook の作成またはインポート
@@ -123,7 +123,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603705.aspx) コマンドレットを使用して、Runbook を発行できます。次のサンプル コマンドでは、サンプルの Runbook を発行する方法を示します。
 
-	$automationAccountName =  "AutomationAccount"
+	$automationAccountName =  AutomationAccount"
     $runbookName = "Sample_TestRunbook"
     $RGName = "ResourceGroup"
 
@@ -136,4 +136,4 @@ Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft
 - テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「[Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)」を参照してください。
 - グラフィカル Runbook 作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

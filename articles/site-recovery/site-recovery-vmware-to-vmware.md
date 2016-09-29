@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/11/2016"
 	ms.author="nisoneji"/>
 
 
 # オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
 
 
-## 概要
+## Overview
 
 Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
 
@@ -32,7 +32,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 ## ステップ 1: コンテナーの作成
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
 3. **[新規作成]**、**[簡易作成]** の順にクリックします。
 4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
@@ -164,4 +164,4 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 
 疑問点がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿して質問してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

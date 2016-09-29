@@ -3,7 +3,7 @@
 	description="Hadoop エコシステムの使用について学ぶには、まず Hortonworks の Hadoop サンドボックスを Azure 仮想マシンに設定します。"
 	keywords="hadoop emulator,hadoop sandbox"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	services="hdinsight"
 	authors="nitinme"
 	documentationCenter=""
@@ -26,4 +26,4 @@ Hortonworks Hadoop サンドボックスの使用については、「[Hortonwor
 
 Hadoop について理解できたら、HDInsight クラスターを作成して、Azure で Hadoop を使い始めることができます。使用方法の詳細については、[HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0914_2016-->

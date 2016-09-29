@@ -1,9 +1,9 @@
 <properties
-	pageTitle="PlayReady または Widevine の動的共通暗号化を使用する"
+	pageTitle="PlayReady または Widevine の動的共通暗号化を使用する | Microsoft Azure"
 	description="Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを Microsoft PlayReady DRM で保護して配信できます。Widevine DRM で暗号化された DASH を配信することもできます。このトピックでは、PlayReady と Widevine DRM を使用して動的に暗号化する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,Mingfeiy"
+	authors="Mingfeiy"
 	manager="erikre"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/19/2016"
+	ms.author="juliako;mingfeiy"/>
 
 
 #PlayReady または Widevine の動的共通暗号化を使用する
@@ -37,7 +37,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 このトピックには、PlayReady や Widevine など、複数の DRM で保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。このトピックでは、認証ポリシーを使用する PlayReady ライセンス配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが PlayReady または Widevine のライセンスを受け取ることができるようになります。また、DASH を介した PlayReady または Widevine DRM による動的な暗号化を使用する方法も説明します。
 
->[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+>[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 
 ##サンプルのダウンロード
@@ -53,10 +53,10 @@ Media Services では、キーを要求するユーザーを承認する複数�
 1. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 1. コンテンツ キーの承認ポリシーを構成します。コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
 
-	コンテンツ キー承認ポリシーを作成するときは、配信方法 (PlayReady または Widevine)、制限 (オープンまたはトークン)、クライアントへのキー配信方法を定義するキー配信種類に固有の情報 ([PlayReady](media-services-playready-license-template-overview.md) または [Widevine](media-services-widevine-license-template-overview.md) ライセンス テンプレート) を指定する必要があります。
+コンテンツ キー承認ポリシーを作成するときは、配信方法 (PlayReady または Widevine)、制限 (オープンまたはトークン)、クライアントへのキー配信方法を定義するキー配信種類に固有の情報 ([PlayReady](media-services-playready-license-template-overview.md) または [Widevine](media-services-widevine-license-template-overview.md) ライセンス テンプレート) を指定する必要があります。
 1. 資産の配信ポリシーを構成します。配信ポリシーの構成には、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはそのすべて)、動的暗号化の種類 (たとえば、共通暗号化)、PlayReady または Widevine のライセンス取得 URL が含まれます。
- 
-	同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
+
+同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 1. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
 
 このトピックの最後に、詳細な .NET の例があります。
@@ -81,10 +81,10 @@ Azure Media Services で Widevine を使用して暗号化するときの制限�
 
 ##ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 
-動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストおよびフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
+動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストおよびフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、トピック「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 エンコード手順については、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
-	
+
 
 ##<a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 
@@ -115,7 +115,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 >[AZURE.NOTE]資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
-資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」を参照してください。
+資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
 ##テスト トークンを取得する
 
@@ -609,7 +609,9 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 		}
 
 
-##Media Services のラーニング パス
+## 次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -626,4 +628,4 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

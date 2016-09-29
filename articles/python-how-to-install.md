@@ -3,7 +3,7 @@
 	description="Azure で使用するための Python と SDK のインストール方法について説明します。"
 	services=""
 	documentationCenter="python"
-	authors="huguesv"
+	authors="lmazuel"
 	manager="wpickett"
 	editor=""/>
 
@@ -13,29 +13,31 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="08/31/2015"
-	ms.author="huvalo"/>
+	ms.date="09/06/2016"
+	ms.author="lmazuel"/>
 
 # Python と SDK のインストール
 
-Python は、Windows でのセットアップが容易であり、Mac および Linux ではプレインストールされています。このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
+Python は、Windows でのセットアップが容易であり、Mac、Linux、および [Bash for Windows](https://msdn.microsoft.com/commandline/wsl/about) ではプレインストールされています。このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。
 
 ## Python Azure SDK の機能
 
 Azure SDK for Python には、Azure 向けの Python アプリケーションを開発、デプロイ、管理するためのコンポーネントが用意されています。Azure SDK for Python には次のコンポーネントが用意されています。
 
-* **Azure 用 Python クライアント ライブラリ**。これらのクラス ライブラリには、ストレージやサービス バスなどのAzure の機能にアクセスするためのインターフェイスや、ストレージ アカウントや仮想マシンなどの Azure リソースを管理するためのインターフェイスが用意されています。
-* **Azure エミュレーター (Windows のみ)**。コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするための Cloud Services およびデータ管理サービスのローカル エミュレーターです。Azure エミュレーターは Windows 上でのみ動作します。
+* **管理ライブラリ**。このクラス ライブラリには、ストレージ アカウントや仮想マシンなどの Azure リソースを管理するインターフェイスが用意されています。
+
+* **ランタイム ライブラリ**。このクラス ライブラリには、ストレージやサービス バスなどの Azure 機能にアクセスするためのインターフェイスが用意されています。
 
 ## 使用する Python とそのバージョン
 
 利用可能な Python インタープリターにはいくつかの種類があります。以下に例を示します。
 
 * CPython - 最も一般的に使用されている標準的な Python インタープリター
+* PyPy - CPython に対応する高速な代替実装
 * IronPython - .Net/CLR 上で実行する Python インタープリター
-* Jython - JVM 上で実行する Python インタープリター
+* Jython - Java 仮想マシン上で実行する Python インタープリター
 
-このリリースでは、Python Azure SDK と Websites や Cloud Services などの Azure サービス向けの **CPython** のみをテストしサポートします。Version 2.7 または 3.4 をお勧めします。
+**CPython** v2.7 または v3.3 以降および PyPy 5.4.0 が、Python Azure SDK に対してテストされ、サポートされています。
 
 ## Python を入手するには
 
@@ -45,91 +47,53 @@ CPython はいくつかの方法で入手できます。
 * [www.continuum.io][]、[www.enthought.com][]、[www.activestate.com][] などの信頼できるディストリビューターから入手
 * ソースからビルド
 
-特定のニーズがない限り、以下に説明するように、最初の 2 つの入手方法をお勧めします。
+特定のニーズがない限り、最初の 2 つの入手方法をお勧めします。
 
-## Windows、Linux、および MacOS (クライアント ライブラリのみ) でのインストール
+## Windows、Linux、および MacOS (クライアント ライブラリのみ) での SDK のインストール
 
 既に Python をインストールしている場合は、pip を使用して、既存の Python 2.7 または Python 3.3 以降の環境ですべてのクライアント ライブラリのバンドルをインストールできます。これにより、[Python Package Index][] (PyPI) からパッケージがダウンロードされます。
 
-Linux および MacOS で `sudo` コマンドを使用する必要がある場合があります。`sudo pip install azure`
+管理者権限が必要になる場合があります。
 
-	pip install azure
+- Linux および MacOS で `sudo` コマンド `sudo pip install azure-mgmt-compute` を使用します。
+- Windows: 管理者として PowerShell/コマンド プロンプトを開きます
 
-バージョン 1.0.0 以降では、ライブラリは複数のパッケージに分割されています。このため、必要なパッケージまたはバンドルのみをインストールできます。
+Azure サービスごとに個別にインストールできます。
 
-Azure Storage ランタイム クライアント ライブラリをインストールするには、次の手順に従います。
+```console
+   $ pip install azure-batch          # Install the latest Batch runtime library
+   $ pip install azure-mgmt-scheduler # Install the latest Storage management library
+```
 
-	pip install azure-storage
+プレビュー パッケージをインストールするには、`--pre` フラグを使用します。
 
-Azure Service Bus ランタイム クライアント ライブラリをインストールするには、次の手順に従います。
+```console
+   $ pip install --pre azure-mgmt-compute # will install only the latest Compute Management library
+```
 
-	pip install azure-servicebus
+`azure` メタ パッケージを使用して、一連の Azure ライブラリを 1 行でインストールすることもできます。このメタ パッケージ内の一部のパッケージはまだ安定版として発行されていません。したがって、`azure` メタ パッケージはまだプレビュー段階です。コア パッケージについては、コード品質/完全性の観点から、現時点で "安定版" と考えることができますが、
+- できるだけ早く、他の言語と同期するように、このメタ パッケージを正式に "安定版" として発表する予定です。それまで、大きな変更を行う予定はありません。
 
-Azure リソース マネージャー (ARM) クライアント ライブラリをインストールするには、次の手順に従います。
+これはプレビュー リリースであるため、`--pre` フラグを使用する必要があります。
 
-	pip install azure-mgmt
+```console
+   $ pip install --pre azure
+```
+   
+または、直接指定します
 
-Azure サービス管理 (ARM) クライアント ライブラリをインストールするには、次の手順に従います。
-
-	pip install azure-servicemanagement-legacy
-
-
-## Windows (Python、Azure エミュレーター、クライアント ライブラリ) でのインストール
-
-Web プラットフォーム インストーラーを使用して、インストールを合理化できます。これらには、[www.python.org][] にある CPython などがあります。
-
-* [Microsoft Azure SDK for Python 2.7][]
-* [Microsoft Azure SDK for Python 3.4][]
-
-**注:** Windows Server では、WebPI インストーラーをダウンロードするため、IE ESC 設定の構成が必要になる場合があります。設定するには、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、[**IE セキュリティ強化の構成**] をクリックし、[オフ] に設定します。
-
-### Python 2.7
-
-WebPI インストーラーには、Python Azure アプリケーション開発に必要なものがすべて用意されています。
-
-![how-to-install-python-webpi-27-1](./media/python-how-to-install/how-to-install-python-webpi-27-1.png)
-
-インストールの完了後、プロンプトで「`python`」と入力し、インストールが問題なく実行されたことを確認します。インストールの方法によっては、"path" 変数を (正しいバージョンの) Python が検索されるように設定する必要があります。
-
-![how-to-install-python-win-run-27](./media/python-how-to-install/how-to-install-python-win-run-27.png)
-
-インストール後は、既定の場所から Python とクライアント ライブラリを使用することができます。
-
-		C:\Python27\Lib\site-packages\azure
-
-
-### Python 3.4
-
-WebPI インストーラーには、Python Azure アプリケーション開発に必要なものがすべて用意されています。
-
-![how-to-install-python-webpi-34-1](./media/python-how-to-install/how-to-install-python-webpi-34-1.png)
-
-インストールの完了後、プロンプトで「python」と入力し、インストールが問題なく実行されたことを確認します。インストールの方法によっては、"path" 変数を (正しいバージョンの) Python が検索されるように設定する必要があります。
-
-![how-to-install-python-win-run-34](./media/python-how-to-install/how-to-install-python-win-run-34.png)
-
-インストール後は、既定の場所から Python とクライアント ライブラリを使用することができます。
-
-		C:\Python34\Lib\site-packages\azure
-
-### Windows でのアンインストール
-
-**Azure SDK for Python** WebPI 製品は、一般的な意味でのアプリケーションではありません。実際には、これは 32 ビット版 Python 2.7/3.4、Python 用 Azure クライアント ライブラリなどの各製品のコレクションです。これらの製品がまとめてバンドルされています。このため、このコレクション自体には、従来のアンインストーラーがありません。インストールされるプログラムを個別に Windows のコントロール パネルから削除する必要があります。
-
-**Azure SDK for Python** を再インストールする場合は、管理者として PowerShell コマンド プロンプトを開き、次のコマンドを実行するだけです。
-
-	rm -force "HKLM:\SOFTWARE\Microsoft\Python Tools for Azure"
-
-次に、WebPI を再実行します。
+```console
+   $ pip install azure==2.0.0rc6
+```
 
 ## その他のパッケージの入手
 
-「[Python Package Index][] (Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施することができます。
+「[Python Package Index][] (Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施できます。
 
 
 ## Python Tools for Visual Studio
 
-[Python Tools for Visual Studio][] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用することができます。
+[Python Tools for Visual Studio][] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用できます。
 
 ![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
 
@@ -141,7 +105,7 @@ PTVS は、既存の Visual Studio 2013 または 2015 インストールに対�
 
 ## Linux や MacOS 向けの Python Azure
 
-Mac/Linux で開発する場合、次の方法がサポートされています。
+Linux または MacOS の場合は、主に次の Azure シナリオがサポートされています。
 
 1. Python クライアント ライブラリを使用して、Azure サービスを利用する
 
@@ -157,11 +121,14 @@ Linux 仮想マシンのセットアップの詳細については、「[Linux �
 
 Git のデプロイを使って Python Web アプリケーションを開発できます。また、どのオペレーティング システムからでも Azure Web サイトを公開できます。ご利用のリポジトリを Azure にプッシュする場合、自動的に仮想環境が作られ、pip によって必要なパッケージがインストールされます。
 
-Azure Websites を開発して公開する詳細については、「[Creating Websites with Django (Django を使った Websites の作成)][]」、「[Creating Websites with Bottle (Bottle を使った Websites の作成)][]」、「[Flask を使った Websites の作成][]」をご覧ください。さまざまな WSGI 互換フレームワークの使用についての一般的な情報は、「[Azure Websites での Python の構成][]」をご覧ください。
+Azure Websites を開発して公開する詳細については、[Django を使った Websites の作成][]に関するページ、[Bottle を使った Websites の作成][]に関するページ、および[Flask を使った Websites の作成][]に関するページをご覧ください。さまざまな WSGI 互換フレームワークの使用についての一般的な情報については、[Azure Websites での Python の構成][]に関するページをご覧ください。
 
 
 ## その他のソフトウェアとリソース:
 
+* [Azure SDK for Python ReadTheDocs](http://azure-sdk-for-python.readthedocs.io/en/latest/)
+* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+* [Python 用の Azure 公式サンプル](https://azure.microsoft.com/documentation/samples/?platform=python)
 * [Continuum Analytics Python Distribution (Continuum Analytics Python Distribution ディストリビューション)][]
 * [Enthought Python Distribution (Enthought の Python ディストリビューション)][]
 * [ActiveState Python Distribution (ActiveState の Python ディストリビューション)][]
@@ -196,12 +163,12 @@ Azure Websites を開発して公開する詳細については、「[Creating W
 [Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
 [How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
 [Linux を実行する仮想マシンの作成]: virtual-machines-linux-quick-create-cli.md
-[Creating Websites with Django (Django を使った Websites の作成)]: web-sites-python-create-deploy-django-app.md
-[Creating Websites with Bottle (Bottle を使った Websites の作成)]: web-sites-python-create-deploy-bottle-app.md
+[Django を使った Websites の作成]: web-sites-python-create-deploy-django-app.md
+[Bottle を使った Websites の作成]: web-sites-python-create-deploy-bottle-app.md
 [Flask を使った Websites の作成]: web-sites-python-create-deploy-flask-app.md
 [Azure Websites での Python の構成]: web-sites-python-configure.md
 [テーブル ストレージ]: storage-python-how-to-use-table-storage.md
 [キュー ストレージ]: storage-python-how-to-use-queue-storage.md
 [BLOB ストレージ]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0914_2016-->

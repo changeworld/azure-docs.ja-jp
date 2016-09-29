@@ -93,39 +93,7 @@ Edison デバイスを設定して使用方法を理解するには、これら�
 
 サンプルを実行する前に、Edison ボードから SensorTag デバイスに接続できることを確認する必要があります。
 
-まず、Edison の BlueZ ソフトウェアのバージョンを更新する必要があります。既にバージョン 5.37 がインストールされていても、次の手順を最後まで実行してインストールが完了していることを確認する必要があるので注意してください。
-
-1. 現在実行中の Bluetooth デーモンを停止します。
-    
-    ```
-    systemctl stop bluetooth
-    ```
-
-2. BlueZ バージョン 5.37 の[ソース コード](http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz)をダウンロードして解凍します。
-    
-    ```
-    wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz
-    tar -xvf bluez-5.37.tar.xz
-    cd bluez-5.37
-    ```
-
-3. BlueZ をビルドしてインストールします。
-    
-    ```
-    ./configure --disable-udev --disable-systemd --enable-experimental
-    make
-    make install
-    ```
-
-4. **/lib/systemd/system/bluetooth.service** ファイルを編集し、Bluetooth の *systemd* サービス構成を、新しい Bluetooth デーモンを参照するように変更します。**ExecStart** 属性の値を、次のように置き換えます。
-    
-    ```
-    ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
-    ```
-
-5. Edison を再起動します。
-
-次に、Edison から SensorTag デバイスに接続できることを確認する必要があります。
+最初に、Edison から SensorTag デバイスに接続できることを確認する必要があります。
 
 1. Edison で Bluetooth のブロックを解除し、バージョン番号が **5.37** であることを確認します。
     
@@ -134,20 +102,22 @@ Edison デバイスを設定して使用方法を理解するには、これら�
     bluetoothctl --version
     ```
 
-2. **bluetoothctl** コマンドを実行します。次のような出力が表示されます。
+2. **bluetoothctl** コマンドを実行します。これで対話型の Bluetooth シェルが表示されます。
+
+3. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。次のような出力が表示されます。
     
     ```
     [NEW] Controller 98:4F:EE:04:1F:DF edison [default]
     ```
 
-3. これで対話型の Bluetooth シェルが表示されます。**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。次のような出力が表示されます。
+4. 対話型の Bluetooth シェルにいる間に、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。次のような出力が表示されます。
     
     ```
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
-4. 小さいボタンを押して SensorTag デバイスを検出可能な状態にします (緑色の LED が点滅します)。Edison では次のように SensorTag デバイスが検出されます。
+5. 小さいボタンを押して SensorTag デバイスを検出可能な状態にします (緑色の LED が点滅します)。Edison では次のように SensorTag デバイスが検出されます。
     
     ```
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
@@ -157,14 +127,14 @@ Edison デバイスを設定して使用方法を理解するには、これら�
     
     この例では、SensorTag デバイスの MAC アドレスが **A0:E6:F8:B5:F6:00** であることがわかります。
 
-5. **scan off** コマンドを入力してスキャンをオフにします。
+6. **scan off** コマンドを入力してスキャンをオフにします。
     
     ```
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: no
     Discovery stopped
     ```
 
-6. SensorTag デバイスの MAC アドレスを使用し、**connect <MAC address>** コマンドを入力してデバイスに接続します。次に示す出力サンプルは一部省略されている点に注意してください。
+7. SensorTag デバイスの MAC アドレスを使用し、**connect <MAC address>** コマンドを入力してデバイスに接続します。次に示す出力サンプルは一部省略されている点に注意してください。
     
     ```
     Attempting to connect to A0:E6:F8:B5:F6:00
@@ -185,7 +155,7 @@ Edison デバイスを設定して使用方法を理解するには、これら�
     
     注: **list-attributes** コマンドを使用すると、もう一度デバイスの GATT 特性を一覧表示することができます。
 
-7. 接続が確認できたので、**disconnect** コマンドを使用してデバイスから切断し、**quit** コマンドを使用して Bluetooth シェルを終了します。
+8. 接続が確認できたので、**disconnect** コマンドを使用してデバイスから切断し、**quit** コマンドを使用して Bluetooth シェルを終了します。
     
     ```
     Attempting to disconnect from A0:E6:F8:B5:F6:00
@@ -458,4 +428,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -19,8 +19,7 @@
 
 # チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する 
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
-- [Data Factory エディターの使用](data-factory-build-your-first-pipeline-using-editor.md)
+- [Azure ポータルの使用](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
@@ -226,4 +225,4 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 - [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレートの使用](data-factory-build-your-first-pipeline-using-arm.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

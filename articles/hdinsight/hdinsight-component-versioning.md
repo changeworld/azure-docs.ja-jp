@@ -3,7 +3,7 @@
 	description="HDInsight は、デプロイできる Hadoop クラスター コンポーネントとバージョンを複数サポートしています。サポートされている Hadoop および Hortonworks Data Platform (HDP) ディストリビューションのバージョンを確認します。"
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	authors="mumian"
 	tags="azure-portal"
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/10/2016"
+	ms.date="09/14/2016"
 	ms.author="jgao"/>
 
 
@@ -51,10 +51,11 @@ HDInsight Premium の料金と SLA の詳細については、「[HDInsight の�
 
 ## HDInsight の各バージョンで使用できる Hadoop コンポーネント
 
-Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。Azure HDInsight で使用される既定のクラスター バージョンは、2015 年 12 月 3 日現在、HDP 2.2 を基盤とした 3.2 です。
+Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。Azure HDInsight で使用される既定のクラスター バージョンは、2016 年 9 月 14 日現在、HDP 2.4 を基盤とした 3.4 です。
 
+> [AZURE.NOTE] サービスの既定のバージョンは、予告なく変更される場合があります。バージョンに依存する .NET SDK/Azure PowerShell や Azure CLI を使用する場合は、クラスターの作成時にバージョンを指定することをお勧めします。
 
-コンポーネント|HDInsight Version 3.4 | HDInsight Version 3.3 | HDInsight Version 3.2 (既定)|HDInsight Version 3.1 |HDInsight Version 3.0|
+コンポーネント|HDInsight Version 3.4 (既定) | HDInsight Version 3.3 | HDInsight Version 3.2 |HDInsight Version 3.1 |HDInsight Version 3.0|
 ---|---|---|---|---|---
 Hortonworks Data Platform|2\.4|2\.3|2\.2|2\.1.7|2\.0|
 Apache Hadoop & YARN|2\.7.1|2\.7.1|2\.6.0|2\.4.0|2\.2.0|
@@ -112,7 +113,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート##
 
-* HDInsight クラスター Version 3.4 は、[Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html) を基盤とする Hadoop ディストリビューションを使用します。
+* HDInsight クラスター Version 3.4 は、[Hortonworks Data Platform 2.4](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html) を基盤とする Hadoop ディストリビューションを使用します。これが、ポータルの使用時に作成される**既定**の Hadoop クラスターです。
 
 
 
@@ -120,7 +121,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 	* Apache Storm リリース ノートは、[こちら](https://storm.apache.org/2015/11/05/storm0100-released.html)で入手できます。
 	* Apache Hive リリース ノートは、[こちら](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843)で入手できます。
 
-* HDInsight クラスター Version 3.2 は、[Hortonworks Data Platform 2.2][hdp-2-2] を基盤とする Hadoop ディストリビューションを使用します。これが、ポータルの使用時に作成される**既定**の Hadoop クラスターです。
+* HDInsight クラスター Version 3.2 は、[Hortonworks Data Platform 2.2][hdp-2-2] を基盤とする Hadoop ディストリビューションを使用します。
 
 	* 各 Apache コンポーネントのリリース ノート - [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)、[Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
 
@@ -156,4 +157,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -200,4 +200,4 @@ Cortana Intelligence ギャラリーは、1 回のクリックで予測分析の
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -14,8 +14,8 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/02/2016"
-   ms.author="narayanannamalai"/>
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
 
 # Azure ポータルを使用した仮想ネットワーク ピアリングの作成
 
@@ -60,7 +60,7 @@
 
 	![Final link state 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
 
-10. 注: VNET ピアリングは両方のリンクが接続されている場合にのみ確立されます。
+    > [AZURE.NOTE] VNET ピアリングは両方のリンクが接続されている場合にのみ確立されます。
 
 それぞれのリンクには、構成可能なプロパティがいくつかあります。
 
@@ -91,7 +91,7 @@
 
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
 
-    注: 承認が問題なく有効になっていることを確認するために、ブラウザーで両方のユーザー セッションから一度ログオフし、その後ログオンしてください。
+    > [AZURE.NOTE] 承認が問題なく有効になっていることを確認するために、ブラウザーで両方のユーザー セッションから一度ログオフし、その後ログオンしてください。
 
 6. UserA としてポータルにログインし、VNET3 ブレードに移動して [ピアリング] をクリックし、[リソース ID を知っている] チェック ボックスをオンにして、VNET5 のリソース ID を以下の形式で入力します。
 
@@ -117,6 +117,28 @@
 
 3. ピアリングが確立されたら、こちらの[記事](virtual-network-create-udr-arm-ps.md)を参照してください。VNet1 トラフィックを仮想アプライアンス経由でリダイレクトするようにユーザー定義ルート (UDR) を設定することで、その機能を利用することができます。ルートの次ホップ アドレスを指定するときは、ピア VNet (HubVNet) に存在する仮想アプライアンスの IP アドレスを設定します。
 
+
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+
+
+1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
+
+2. このシナリオで VNET ピアリングを確立するには、Azure Resource Manager 仮想ネットワークからクラシック仮想ネットワークにリンクを 1 つだけ作成する必要があります。この例では、**VNET1** から **VNET2** に作成します。ポータルで **[参照]** をクリックし、**[仮想ネットワーク]** を選択します。
+
+3. [仮想ネットワーク] ブレードで **[VNET1]** を選択します。**[ピアリング]**、**[追加]** の順にクリックします。
+
+4. [ピアリングの追加] ブレードで、リンクの名前を入力します。ここでは、**LinkToVNet2** と名付けます。[ピアの詳細] で、**[クラシック]** を選択します。
+
+5. サブスクリプションとピア仮想ネットワーク **VNET2** を選択します。次に、[OK] をクリックします。
+
+    ![Linking Vnet1 to Vnet 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
+
+6. この VNet ピアリングのリンクが作成されると、2 つの仮想ネットワークがピアリングされて、次のように表示されます。
+
+    ![Checking peering connection](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
+
+
 ## VNet ピアリングの削除
 
 1.	ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
@@ -130,4 +152,4 @@
 
 4. この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNet ピアリングを作成し直すことをお勧めします。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

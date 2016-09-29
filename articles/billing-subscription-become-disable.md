@@ -60,9 +60,20 @@ Azure サブスクリプションが無効になった場合、この記事の�
 - [別のクレジット カードに切り替えます](billing-how-to-change-credit-card.md)。
 - 企業の場合、[請求書による支払いに切り替える](https://azure.microsoft.com/pricing/invoicing/)ことができます。
 
-## サブスクリプションを再度有効にする方法
+## サブスクリプションがアカウント管理者によって取り消されている
 
-無効になったサブスクリプションを再度有効にするには、サポート チケットを作成する必要があります。[Azure ポータル](https://portal.azure.com/)にサインインし、**[ヘルプとサポート]**、**[新しいサポート要求]** の順に選択してください。
+>[AZURE.NOTE] 現時点では、ここで説明する方法は、従量課金制サブスクリプションにのみ適用されます。その他の種類のサブスクリプションについては、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+
+ご自身がアカウント管理者の場合は、次の手順に従って、従量課金制サブスクリプションを再度有効にできます。
+
+- 取り消されたサブスクリプションを選択します。
+- サブスクリプション詳細ページのいずれかの **[再アクティブ化]** リンクをクリックします。
+
+![reactivate-sub](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+
+## 従量課金制以外のサブスクリプションを再度有効にする方法
+
+無効になったサブスクリプションを再度有効にするには、サポート チケットを作成する必要があります。[Azure ポータル](https://portal.azure.com/)にサインインし、**[ヘルプとサポート]**、**[新しいサポート要求]** の順に選択します。
 
 ![helpandsupportbutton](./media/billing-how-to-create-billing-support-ticket/helpandsupport.png)
 
@@ -75,4 +86,4 @@ Azure サブスクリプションが無効になった場合、この記事の�
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

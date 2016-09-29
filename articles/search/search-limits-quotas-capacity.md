@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -97,4 +97,4 @@ Api キーは、サービスの認証に使用されます。次の 2 つの種�
 - サービスあたりの最大管理キー数: 2
 - サービスあたりの最大クエリ キー数: 50
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

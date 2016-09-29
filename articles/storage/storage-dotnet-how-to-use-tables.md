@@ -13,19 +13,19 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="07/23/2016"
-	ms.author="tamram"/>
+	ms.date="09/20/2016"
+	ms.author="gusapost;tamram"/>
 
 
 # .NET を使用して Azure Table Storage を使用する
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## 概要
+## Overview
 
-Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。テーブル ストレージは、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
+Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。Table Storage は、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
-テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
+Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
 ### このチュートリアルについて
 
@@ -57,7 +57,7 @@ Table Storage を使用したその他の例については、「[Getting Starte
 
 次の `using` ステートメントを `program.cs` ファイルの先頭に追加します。
 
-	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
@@ -74,20 +74,20 @@ Table Storage を使用したその他の例については、「[Getting Starte
 
 これで、Table Storage に対してデータの読み取りと書き込みを実行するコードを記述する準備が整いました。
 
-## テーブルの作成
+## テーブルを作成する
 
 この例は、テーブルがない場合に、キューを作成する方法を示しています。
 
 	// Retrieve the storage account from the connection string.
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 	    CloudConfigurationManager.GetSetting("StorageConnectionString"));
-	
+
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 	// Retrieve a reference to the table.
     CloudTable table = tableClient.GetTableReference("people");
-		
+
     // Create the table if it doesn't exist.
     table.CreateIfNotExists();
 
@@ -229,7 +229,7 @@ Table Storage を使用したその他の例については、「[Getting Starte
 
 ## 単一のエンティティを取得する
 
-単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** を使用して、"Ben Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、テーブル サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** を使用して、"Ben Smith" というユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、Table サービスから単一のエンティティを取得するための最速の方法です。
 
     // Retrieve the storage account from the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -293,7 +293,7 @@ Table Storage を使用したその他の例については、「[Getting Starte
 	else
 	   Console.WriteLine("Entity could not be retrieved.");
 
-## エンティティの挿入または置換を行う
+## エンティティを挿入または置換する
 
 **Replace** 操作は、サーバーからエンティティを取得した後にエンティティが変更されていると失敗します。さらに、**Replace** 操作を成功させるためには、先にエンティティをサーバーから取得する必要があります。しかし、サーバーにエンティティが存在するかどうかわからないが、現在格納されている値は不適切である場合があります。このため、更新ですべての値を上書きする必要があります。そのような場合は、**InsertOrReplace** 操作を使用します。この操作は、最終更新日時に関係なく、エンティティが存在しない場合は挿入し、存在する場合は置換します。次のコード例では、先ほどと同じように Ben Smith のユーザー エンティティを取得していますが、今度は **InsertOrReplace** を使用してサーバーに保存しています。そのため、取得操作と更新操作の間に行われたエンティティの更新は上書きされます。
 
@@ -469,4 +469,4 @@ Table Storage を使用したその他の例については、「[Getting Starte
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

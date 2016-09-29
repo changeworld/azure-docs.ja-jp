@@ -14,12 +14,10 @@
   ms.tgt_pltfrm="vm-linux"
   ms.devlang="na"
   ms.topic="article"
-  ms.date="09/06/2016"
+  ms.date="09/09/2016"
   ms.author="cjiang"/>
 
 # Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
-
-[AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
@@ -84,4 +82,4 @@
 ## 次のステップ
 Azure で停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、「[Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-linux-restart-resize-error-troubleshooting.md)」を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

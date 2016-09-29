@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="09/13/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 
-この記事では、Azure Data Factory のコピー アクティビティを使用し、Azure テーブルと別のデータ ストアの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Table と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## データのコピー ウィザード
 Azure Table Storage との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
@@ -27,7 +27,7 @@ Azure Table Storage との間でデータをコピーするパイプラインを
 
 ## サンプル: Azure テーブルから Azure BLOB にデータをコピーする
 
-下のサンプルで確認できる要素:
+次のサンプルは以下を示しています。
 
 1.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス (テーブルと BLOB の両方に使用)。
 2.	[AzureTable](#azure-table-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
@@ -54,7 +54,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 このサンプルでは、Azure テーブルに「MyTable」という名前のテーブルが作成されているものと想定しています。
  
-“external”: ”true” を設定して externalData ポリシーを指定すると、これがデータ ファクトリに対して外部にあるテーブルで、データ ファクトリのアクティビティでは生成されていないことが Data Factory に通知されます。
+”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 	{
 	  "name": "AzureTableInput",
@@ -139,7 +139,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **AzureTableSource** に設定され、**sink** 型が **BlobSink** に設定されています。**AzureTableSourceQuery** プロパティで指定された SQL クエリにより、コピーするデータが 1 時間ごとにデフォルト パーティションから選択されます。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** 型が **AzureTableSource** に設定され、**sink** 型が **BlobSink** に設定されています。**AzureTableSourceQuery** プロパティで指定された SQL クエリにより、コピーするデータが 1 時間ごとにデフォルト パーティションから選択されます。
 
 	{  
 	    "name":"SamplePipeline",
@@ -188,7 +188,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 ## サンプル: Azure BLOB から Azure テーブルにデータをコピーする
 
-下のサンプルで確認できる要素:
+次のサンプルは以下を示しています。
 
 1.	[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service-properties) 型のリンクされたサービス (テーブルと BLOB の両方に使用)
 3.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の入力[データセット](data-factory-create-datasets.md)。
@@ -196,7 +196,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 4.	[BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) と [AzureTableSink](#azure-table-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
 
-このサンプルはある時系列に属するデータを 1 時間おきに Azure BLOB から Azure テーブル データベースのテーブルにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
+このサンプルは、Azure BLOB から Azure テーブルに時系列データを 1 時間おきにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
 **Azure Storage のリンクされたサービス (Azure テーブルと BLOB の両方で使用):**
 
@@ -214,7 +214,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。"external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 	
 	{
 	  "name": "AzureBlobInput",
@@ -281,7 +281,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **Azure テーブルの出力データセット:**
 
-このサンプルは Azure テーブルの「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含めることが予想される数の列で Azure テーブルにテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは Azure テーブルの「MyTable」というテーブルにデータをコピーします。BLOB CSV ファイルに含める予定の数の列を持つ Azure テーブルを作成します。新しい行は 1 時間ごとにテーブルに追加されます。
 
 	{
 	  "name": "AzureTableOutput",
@@ -300,7 +300,7 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **AzureTableSink** に設定されています。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **AzureTableSink** に設定されています。
 
 
 	{  
@@ -356,7 +356,7 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 
 ## Azure テーブル データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**AzureTable** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
 
@@ -368,21 +368,21 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 Azure Table などのスキーマのないデータ ストアの場合、Data Factory サービスは次のいずれかの方法でスキーマを推論します。
 
 1.	データセット定義で **structure** プロパティを使用してデータの構造を指定した場合、Data Factory サービスはスキーマとしてこの構造を優先します。この場合、行に列の値が含まれていないと、null 値が指定されます。
-2.	データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory サービスはデータの最初の行を使用してスキーマを推論します。この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の行が欠落します。
+2. データセット定義で **structure** プロパティを使用してデータの構造を指定しなかった場合、Data Factory はデータの最初の行を使用してスキーマを推論します。この場合、最初の行に完全なスキーマが含まれていないと、コピー操作の結果で一部の列が欠落します。
 
 したがって、スキーマのないデータ ソースでは、**structure** プロパティを使用してデータの構造を指定するのがベスト プラクティスです。
 
 ## Azure テーブルのコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 **AzureTableSource** の typeProperties セクションでは次のプロパティがサポートされます。
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
-azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | Azure テーブルのクエリ文字列。下記の例をご覧ください。 | いいえ。azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。  
+azureTableSourceQuery | カスタム クエリを使用してデータを読み取ります。 | Azure テーブルのクエリ文字列。次のセクションの例を参照してください。 | いいえ。azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。
 azureTableSourceIgnoreTableNotFound | テーブルが存在しないという例外を受け入れるかどうかを示します。 | TRUE<br/>FALSE | なし |
 
 ### azureTableSourceQuery の例
@@ -402,14 +402,14 @@ Azure テーブルの列が datetime 型の場合:
 プロパティ | 説明 | 使用できる値 | 必須  
 -------- | ----------- | -------------- | -------- 
 azureTableDefaultPartitionKeyValue | シンクで使用できる既定のパーティション キー値です。 | 文字列の値。 | なし 
-azureTablePartitionKeyName | ユーザーが指定した列名です。列の値がパーティション キーとして使用されます。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | なし |
-azureTableRowKeyName | ユーザーが指定した列名です。列の値が行キーとして使用されます。指定しない場合、各行に GUID を使用します。 | 列の名前。 | なし  
-azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。<br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されることに注意してください。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 | merge (既定値)<br/>replace | なし 
+azureTablePartitionKeyName | 値をパーティション キーとして使用する列の名前を指定します。指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 | 列の名前。 | なし |
+azureTableRowKeyName | 値を行キーとして使用する列の名前を指定します。指定しない場合、各行に GUID を使用します。 | 列の名前。 | なし  
+azureTableInsertType | Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。<br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。<br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 | merge (既定値)<br/>replace | なし 
 writeBatchSize | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | 整数 (行数)| いいえ (既定値: 10000) 
 writeBatchTimeout | writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 | timespan<br/><br/>例: "00:20:00" (20 分) | No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒)
 
 ### azureTablePartitionKeyName
-azureTablePartitionKeyName として宛先列を使用する前に、translator JSON プロパティを使用して、ソース列を宛先列にマップする必要があります。
+azureTablePartitionKeyName として宛先列を使用する前に、translator JSON プロパティを使用して、ソース列を宛先列にマップします。
 
 次の例では、ソース列の DivisionID が宛先列の DivisionID にマップされます。
 
@@ -432,12 +432,12 @@ EmpID は、パーティション キーとして指定されます。
 
 ### Azure テーブルの型のマッピング
 
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure Table 間でデータの移動時に、次の [Azure Table サービスにより定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)が Azure Table の OData 型と .NET 型の間の移動に利用されます。
+Azure テーブル間でデータの移動時に、次の [Azure テーブル サービスにより定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)が Azure テーブルの OData 型と .NET 型の間の移動に利用されます。
 
 | OData データ型 | .NET 型 | 詳細 |
 | --------------- | --------- | ------- |
@@ -495,7 +495,7 @@ BLOB のデータセットは CSV 形式で、3 つの列を含んでいると�
 	    }
 	}
 
-上記の Azure テーブル OData 型から .NET 型への型マッピングを所与とすると、次のスキーマで Azure テーブルのテーブルを定義します。
+Azure テーブル OData 型から .NET 型への型マッピングを所与として、次のスキーマで Azure テーブルのテーブルを定義します。
 
 **Azure テーブル スキーマ:**
 
@@ -522,13 +522,13 @@ lastlogindate | Edm.DateTime
 	  }
 	}
 
-ここでは、データを BLOB から Azure テーブルに移動するときに、Data Factory はカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を fr-fr カルチャを使用して自動的に実行します。
+ここでは、データを BLOB から Azure テーブルに移動するときに、Data Factory はカスタム日付/時刻を持つ Datetime フィールドを含むタイプ変換を "fr-fr" カルチャを使用して自動的に実行します。
 
 
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

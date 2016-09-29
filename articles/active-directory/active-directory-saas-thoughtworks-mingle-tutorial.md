@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
@@ -70,19 +70,19 @@
 
 1.  Azure クラシック ポータルの **Thoughtworks Mingle** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785153.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785153.png "Configure single sign-on")
 
 2.  **[ユーザーの Thoughtworks Mingle へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785154.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[Thoughtworks Mingle テナント URL]** テキストボックスに、"**http://company.mingle.thoughtworks.com*"" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Thoughtworks Mingle テナント URL]** テキストボックスに、"http://company.mingle.thoughtworks.com*" というパターンの URL を入力し、[次へ] をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785155.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785155.png "アプリケーション URL の構成")
 
 4.  **[Thoughtworks Mingle でのシングル サインオンの構成]** ページで、[メタデータのダウンロード] をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785156.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785156.png "Configure single sign-on")
 
 5.  **Thoughtworks Mingle** 企業サイトに管理者としてログインします。
 
@@ -99,7 +99,7 @@
 
 8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "Configure single sign-on")
 
 ##ユーザー プロビジョニングの構成
   
@@ -115,7 +115,7 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
 3.  **[Admin]** タブをクリックし、**[Users]** をクリックします。
 
-    ![ユーザー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785161.png "Users")
+    ![Users](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785161.png "Users")
 
 4.  **[新しいユーザー]** をクリックします。
 
@@ -147,6 +147,6 @@ AAD ユーザーがサインインできるように、Azure Active Directory �
 
     ![Yes](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

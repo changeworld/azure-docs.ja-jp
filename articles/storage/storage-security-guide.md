@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="08/03/2016"
+	ms.date="09/08/2016"
 	ms.author="robinsh"/>
 
 #Azure Storage セキュリティ ガイド
@@ -114,7 +114,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 
     この記事では、Resource Manager デプロイとクライアント デプロイ モデル、Resource Manager とリソース グループを使用する利点について説明しています。
 
--   [Azure リソース マネージャーにおける Compute、Network、Strage プロバイダー](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
+-   [Azure Resource Manager における Compute、Network、Strage プロバイダー](../virtual-machines/virtual-machines-windows-compare-deployment-models.md)
 
     この記事では、Resource Manager モデルでの Azure Compute、Network、Storage プロバイダーの動作について説明しています。
 
@@ -138,7 +138,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 
 ストレージ アカウント キーは、Azure で作成される 512 ビットの文字列です。ストレージ アカウント名と共に使用して、ストレージ アカウントに保存されているデータ オブジェクト (BLOB、テーブル内のエンティティ、キュー メッセージ、Azure ファイル共有上のファイルなど) へのアクセスに使用できます。ストレージ アカウント キーに対するアクセス権の制御によって、そのストレージ アカウントのデータ プレーンに対するアクセス権を制御します。
 
-各ストレージ アカウントには、[Azure ポータル](http://portal.azure.com/)と PowerShell コマンドレットで "キー 1" と "キー 2" と呼ばれる 2 つのキーがあります。これらのキーは、[Azure ポータル](https://portal.azure.com/)、PowerShell、Azure CLI、プログラム (.NET ストレージ クライアント ライブラリや Azure ストレージ サービス REST API を使用) など、いずれかの方法を使用して手動で再生成できます。
+各ストレージ アカウントには、[Azure ポータル](http://portal.azure.com/)と PowerShell コマンドレットで "キー 1" と "キー 2" と呼ばれる 2 つのキーがあります。これらのキーは、[Azure ポータル](https://portal.azure.com/)、PowerShell、Azure CLI、プログラム (.NET ストレージ クライアント ライブラリや Azure Storage Services REST API を使用) など、いずれかの方法を使用して手動で再生成できます。
 
 ストレージ アカウント キーは、さまざまな理由で再生成することがあります。
 
@@ -366,19 +366,17 @@ Azure には、保存時の暗号化を提供する機能が 3 つあります�
 
 ###Storage Service Encryption (SSE)
 
-SSE は新しい Azure Storage 機能です。現在、パブリック プレビュー段階です。この機能を使用すると、Storage サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。Azure Storage からデータを読み取ると、Storage サービスによって復号化されてから、返されます。そのため、データをセキュリティで保護するためにコードを変更したり、アプリケーションにコードを追加したりする必要はありません。
+SSE を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。Azure Storage からデータを読み取ると、Storage サービスによって復号化されてから、返されます。そのため、データをセキュリティで保護するためにコードを変更したり、アプリケーションにコードを追加したりする必要はありません。
 
 これは、ストレージ アカウント全体に適用される設定です。この機能の設定値を変更すると、有効または無効に切り替えることができます。変更には、Azure ポータル、PowerShell、Azure CLI、Storage Resource Provider REST API、または .NET ストレージ クライアント ライブラリを使用できます。既定では、SSE はオフになっています。
 
 現時点で、暗号化に使用されるキーは Microsoft が管理しています。Microsoft 社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。
 
-この機能は、Resource Manager デプロイ モデルを使用して、2016/3/30 午前 12:00 PST を越えて作成された Standard および Premium Storage アカウントで使用できるようになります。SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。
+この機能は、Resource Manager デプロイメント モデルを使用して作成された Standard および Premium Storage アカウントで使用できます。SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。
 
 データが暗号化されるのは、SSE が有効で、データが Blob Storage に書き込まれるときのみです。SSE の有効/無効を切り替えても、既存のデータに影響はありません。つまり、この暗号化を有効にしても、既存のデータがさかのぼって暗号化されることはありません。また、SSE を無効にしても、既存のデータは復号化されません。
 
-前述の日付の前に作成したストレージ アカウント、つまりクラシック ストレージ アカウントでこの機能を試すには、新しいストレージ アカウントを作成し、AzCopy を使用してデータを新しいアカウントにコピーします。プレビューの後は、このような操作は不要になります。
-
-ほとんどのプレビューと同様に、一般公開されるまではこの機能を運用環境に使用しないでください。
+クラシック ストレージ アカウントでこの機能を使用するには、新しい Resource Manager ストレージ アカウントを作成し、AzCopy を使用してデータを新しいアカウントにコピーします。
 
 ###クライアント側の暗号化
 
@@ -460,7 +458,7 @@ Azure Marketplace のイメージを使用して VM を作成する場合、Azur
 
 ####Storage Service Encryption (SSE)
 
-SSE は、Azure Storage で管理されているので、簡単に管理できます。SSE を使用しても、転送中のデータはセキュリティで保護されませんが、Azure Storage に書き込まれるときのデータは暗号化されます。この機能を使用してもパフォーマンスに影響はありません。
+SSE は Azure Storage で管理されます。SSE を使用しても、転送中のデータはセキュリティで保護されませんが、Azure Storage に書き込まれるときのデータは暗号化されます。この機能を使用してもパフォーマンスに影響はありません。
 
 SSE を使用して、ブロック BLOB、追加 BLOB、ページ BLOB のみを暗号化できます。テーブル データまたはキュー データを暗号化する必要がある場合、クライアント側の暗号化の使用を検討してください。
 
@@ -634,4 +632,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

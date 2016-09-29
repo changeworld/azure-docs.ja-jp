@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/16/2016"
+   ms.date="09/19/2016"
    ms.author="nepeters"/>
 
 # Web UI 経由のコンテナー管理
@@ -101,4 +101,4 @@ Mesos と共に Azure Container Service を使用する方法の詳細
 
 > [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

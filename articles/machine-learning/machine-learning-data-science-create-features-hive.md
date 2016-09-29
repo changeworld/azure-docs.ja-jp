@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags
@@ -25,8 +25,8 @@
 
 また、[Github リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)にも、[NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/)のシナリオに固有のクエリの例が用意されています。これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。最後のセクションでは、Hive クエリのパフォーマンスを向上させるためにユーザーが調整できるパラメーターについても説明します。
 
-[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+[AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)] 
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process TDSP](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 
 ## 前提条件
@@ -141,7 +141,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
 		and dropoff_latitude between 30 and 90
 		limit 10;
 
-2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、関数 `toRad()` は単に *lat\_or\_lon*pi/180* であり、これは、角度をラジアンに変換します。ここで、*lat\_or\_lon* は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。彼の Javascript で、`toRad()`関数は単に *lat\_or\_lon**pi/180 であり、これは、角度をラジアンに変換します。ここで、lat\_or\_lon は緯度または経度です。Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![Create workspace](./media/machine-learning-data-science-create-features-hive/atan2new.png)
 
@@ -184,4 +184,4 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016--->

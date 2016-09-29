@@ -4,8 +4,8 @@ pageTitle="SCP.NET プログラミング ガイド |Azure"
 description="SCP.NET を使用して、HDInsight 上の Storm で使用するための NET ベースの Storm トポロジを作成する方法について説明します。"
 services="hdinsight"
 documentationCenter=""
-authors="rperi"
-manager="paulettm"
+authors="raviperi"
+manager="jhubbard"
 editor="cgronlun"/>
 
 <tags
@@ -167,7 +167,7 @@ Context は、アプリケーションに実行環境を提供します。各 IS
 	public Dictionary<string, Object> stormConf { get; set; }  
 	public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。次に例を示します。
+`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。For example:
 
 	public class Constants
 	{
@@ -688,4 +688,4 @@ SCP を使用して作成された Storm トポロジの例については、次
 * [Azure Event Hubs から HBase への抽出、変換、ロード (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
 * [HDInsight での Storm および HBase を使用した関連付け](hdinsight-storm-correlation-topology.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0914_2016-->

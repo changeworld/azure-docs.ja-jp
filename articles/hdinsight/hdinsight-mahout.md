@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -64,11 +64,11 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 ###データの説明
 
-[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。このデータは、クラスターの既定のストレージ (`/HdiSamples/MahoutMovieData`) にあります。
+[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。このデータは、クラスターの既定の記憶域 (`/HdiSamples/MahoutMovieData`) にあります。
 
 2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。user-ratings.txt ファイルは分析中に使用されます。moviedb.txt は、分析の結果を表示するときに、わかりやすいテキスト情報を提供するために使用されます。
 
-user-ratings.txt に含まれているデータは、`userID`、`movieID`、`userRating`、`timestamp` で構成されており、各ユーザーが映画をどれだけ高く評価したかを示します。次にデータの例を示します。
+user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。次にデータの例を示します。
 
 
     196	242	3	881250949
@@ -524,4 +524,4 @@ HDInsight 3.1 クラスターには Mahout が含まれていますが、パス�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

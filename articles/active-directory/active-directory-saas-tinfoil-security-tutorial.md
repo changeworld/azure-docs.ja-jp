@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/21/2016" 
+    ms.date="09/11/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Tinfoil Security の統合
@@ -78,9 +78,9 @@
 
     ![Configure Single Sign-On](./media/active-directory-saas-tinfoil-security-tutorial/IC798968.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Tinfoil Security 応答 URL]** テキストボックスに Tinfoil Security Assertion Consumer Service (ACS) URL (例: **https://www.tinfoilsecurity.com/saml/consume*") を入力し、**[次へ]** をクリックします。
+3.  **[アプリケーション URL の構成]** ページの **[Tinfoil Security 応答 URL]** テキストボックスに Tinfoil Security Assertion Consumer Service (ACS) の URL (例: "https://www.tinfoilsecurity.com/saml/consume*") を入力し、[次へ] をクリックします。
 
-    >[AZURE.NOTE] ACS URL は Tinfoil Security メタデータ (https://www.tinfoilsecurity.com/saml/metadata)) から入手できます。
+    >[AZURE.NOTE] ACS の URL は Tinfoil Security メタデータ (https://www.tinfoilsecurity.com/saml/metadata) から入手できます。
 
     ![Configure App URL](./media/active-directory-saas-tinfoil-security-tutorial/IC798969.png "アプリケーション URL の構成")
 
@@ -105,12 +105,12 @@
     1.  **[Enable SAML]** を選択します。
     2.  **[Manual Configuration]** をクリックします。
     3.  Azure クラシック ポータルで、**[Tinfoil Security でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML Post URL]** テキスト ボックスに貼り付けます。
-    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[SAML 証明書フィンガープリント]** テキストボックスに貼り付けます。  
+    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[SAML 証明書フィンガープリント]** テキストボックスに貼り付けます。
 
-        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
 
     5.  **お使いのアカウント ID** をコピーします。
-    6.  **[保存]** をクリックします。
+    6.  [**Save**] をクリックします。
 
 9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -159,6 +159,6 @@ Azure AD ユーザーが Tinfoil Security にログインできるようにす�
 
     ![Yes](./media/active-directory-saas-tinfoil-security-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -382,9 +382,9 @@ public async Task<int> Run()
 
 Run() の実装コードからは次のデータにアクセスできます。
 
-* タスクのパラメーター。\_parameters フィールドを通じてアクセスします。
-* ジョブ ID とタスク ID。\_jobId フィールドと \_taskId フィールドを通じてアクセスします。
-* タスクの構成。\_configuration フィールドを通じてアクセスします。
+* タスクのパラメーター。`_parameters` フィールドを通じてアクセスします。
+* ジョブ ID とタスク ID。`_jobId` フィールドと `_taskId` フィールドを通じてアクセスします。
+* タスクの構成。`_configuration` フィールドを通じてアクセスします。
 
 **タスクの失敗**
 
@@ -427,7 +427,7 @@ SAS を含んだコンテナーの URL を使用する場合は、ジョブの�
 
 タスクに必要なコンテナーがあれば、そのタスクをジョブに追加する前に、クライアントまたはジョブ マネージャー タスクで作成することをお勧めします。SAS を含んだコンテナーの URL を使用する場合は、これが必須となります。そのような URL には、コンテナーを作成するためのアクセス許可が含まれていないためです。個々のタスクでコンテナーの CloudBlobContainer.CreateIfNotExistsAsync を呼び出さずに済むため、この推奨事項は、ストレージ アカウントの資格情報を渡す場合にも当てはまります。
 
-## クライアント コードからのパラメーターと環境変数の受け渡し
+## パラメーターと環境変数の受け渡し
 
 ### 環境設定の受け渡し
 
@@ -482,4 +482,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

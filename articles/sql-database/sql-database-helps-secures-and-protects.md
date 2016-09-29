@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="06/23/2016"
+   ms.date="09/13/2016"
    ms.author="carlrab"/>
    
 # Azure SQL Database のセキュリティと保護
@@ -55,4 +55,4 @@ SQL Database の他の機能についてはホーム ページを[ぜひご確�
  
 [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

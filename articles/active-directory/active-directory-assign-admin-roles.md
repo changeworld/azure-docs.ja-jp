@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="08/31/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory での管理者ロールの割り当て
@@ -22,22 +22,45 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 次の管理者ロールを使用できます。
 
+
 - **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
-- **グローバル管理者**: すべての管理機能にアクセスできます。Azure アカウントにサインアップしたユーザーがグローバル管理者になります。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。会社に複数のグローバル管理者が存在してかまいません。
+- **全体管理者/会社の管理者**: すべての管理機能にアクセスできます。Azure アカウントにサインアップしたユーザーがグローバル管理者になります。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。会社に複数のグローバル管理者が存在してかまいません。
 
-	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。
+	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。[Azure ポータル](https://portal.azure.com)では、"全体管理者" になります。
 
-- **パスワード管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
+- **コンプライアンス管理者**:
+
+- **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
+
+- **カスタマー ロックボックス アクセスの承認者**: ロックボックス サービスが有効になっている場合、このロールが割り当てられたユーザーは、Microsoft のエンジニアによる会社情報へのアクセス要求を承認できます。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
+
+- **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスで管理者になります。
+
+- **ディレクトリ リーダー**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。このロールをユーザーに割り当てることはできません。
+
+- **ディレクトリ同期アカウント**: 使用しないでください。このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
+
+- **ディレクトリ ライター**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。このロールをユーザーに割り当てることはできません。
+
+- **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
+
+- **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
+
+- **Skype for Business サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。このロールは、以前は **Lync サービス管理者**ロールと呼ばれていました。
+
+- **パスワード管理者/ヘルプデスク管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
 	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
+
+- **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
 - **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
 	> [AZURE.NOTE] 
 	> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
-- **ユーザー管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
+- **ユーザー アカウント管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
 
 - **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/ コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
 
@@ -97,7 +120,7 @@ Privileged Identity Management | <ul><li>セキュリティ リーダーのす�
 
 ## 管理者ロールの割り当てまたは削除
 
-1. Azure クラシック ポータルで **[Active Directory]** をクリックし、該当する組織のディレクトリ名をクリックします。
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** をクリックし、組織のディレクトリの名前をクリックします。
 
 2. **[ユーザー]** ページで、編集するユーザーの表示名をクリックします。
 
@@ -125,4 +148,4 @@ Privileged Identity Management | <ul><li>セキュリティ リーダーのす�
 
 - [グループの管理](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

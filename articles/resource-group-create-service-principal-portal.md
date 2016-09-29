@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/18/2016"
+   ms.date="09/07/2016"
    ms.author="tomfitz"/>
 
 # リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
@@ -148,9 +148,23 @@ Active Directory の概念については、「[アプリケーション オブ�
 
      アプリケーションにアクセス権を付与するための適切なアクセス許可がない場合、ユーザー アクセス管理者ロールに自身を追加するようにサブスクリプション管理者に依頼するか、アプリケーションにアクセス権を付与するように管理者に依頼する必要があります。
 
-1. アプリケーションを割り当てるスコープのレベルに移動します。このトピックでは、リソース グループに移動し、リソース グループ ブレードで **[アクセス制御]** を選択します。
+1. アプリケーションを割り当てるスコープのレベルに移動します。サブスクリプションのスコープでロールを割り当てるには、**[サブスクリプション]** を選択します。
+
+     ![サブスクリプションを選択する](./media/resource-group-create-service-principal-portal/select-subscription.png)
+
+     アプリケーションを割り当てる特定のサブスクリプションを選択します。
+
+     ![割り当てのためのサブスクリプションの選択](./media/resource-group-create-service-principal-portal/select-one-subscription.png)
+
+     右上にある **[アクセス]** アイコンを選択します。
+
+     ![アクセスの選択](./media/resource-group-create-service-principal-portal/select-access.png)
+     
+     または、リソース グループのスコープでロールを割り当てるには、リソース グループに移動します。リソース グループのブレードで **[アクセス制御]** を選択します。
 
      ![ユーザーの選択](./media/resource-group-create-service-principal-portal/select-users.png)
+
+     以降の手順は、どちらのスコープでも同じです。
 
 2. **[追加]** を選択します。
 
@@ -208,4 +222,4 @@ Active Directory の概念については、「[アプリケーション オブ�
 - セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 - これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

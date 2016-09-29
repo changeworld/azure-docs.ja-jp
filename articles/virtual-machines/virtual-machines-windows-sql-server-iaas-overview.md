@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="08/29/2016"
+	ms.date="09/21/2016"
 	ms.author="jroth"/>
 
 # Azure Virtual Machines における SQL Server の概要
@@ -38,10 +38,13 @@
 
 Azure VM で SQL Server を実行することを決めたら、まず、SQL Server ライセンス費用が含まれている VM イメージを使用するかどうかを決定します。ライセンス持ち込み (BYOL) により VM 自体の料金のみを支払う方法もあります。次の 2 つのセクションでは、これらのオプションについて説明します。
 
-## オプション 1: SQL VM のデプロイ (分単位のライセンス)
-次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。すべてのイメージには、[SQL Server のライセンス費用](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)が含まれています。
+## 新しい SQL VM の作成
+以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。選択するイメージによっては、SQL Server のライセンス費用を支払って分単位の従量課金で利用するか、ライセンス持ち込み (BYOL) を利用するかを選択できます。
 
-詳細な手順は、チュートリアルの「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」に記載されています。また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
+このプロセスの詳細な手順については、チュートリアル「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」に記載されています。また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
+
+## オプション 1: 分単位のライセンスを利用した SQL VM の作成
+次の表には、仮想マシン ギャラリーで使用可能な SQL Server イメージのマトリックスが示されています。指定したバージョン、エディション、およびオペレーティング システムで新しい SQL VM の作成を開始するには、いずれかのリンクをクリックします。
 
 |バージョン|オペレーティング システム|エディション|
 |---|---|---|
@@ -54,12 +57,8 @@ Azure VM で SQL Server を実行することを決めたら、まず、SQL Serv
 |**SQL 2008 R2 SP3**|Windows Server 2008 R2|[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3EnterpriseWindowsServer2008R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3StandardWindowsServer2008R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3WebWindowsServer2008R2)|
 |**SQL 2008 R2 SP3**|Windows Server 2012|[Express](https://portal.azure.com/#create/Microsoft.SQLServer2008R2SP3ExpressWindowsServer2012)|
 
-## オプション 2: SQL VM のデプロイ (BYOL)
-もう 1 つのオプションは、ライセンス持ち込み (BYOL) です。このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。所有するライセンスを使用するには、以下の SQL Server のバージョン、エディション、およびオペレーティング システムのマトリックスを使用します。ポータルでは、イメージ名に **{BYOL}** というプレフィックスが付きます。
-
-> [AZURE.IMPORTANT] BYOL VM イメージを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)を持つエンタープライズ契約が必要です。使用する SQL Server のバージョン/エディションに有効なライセンスも必要です。VM のプロビジョニングから **10** 日以内に、[必要な BYOL 情報を Microsoft に提供する](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf)必要があります。
-
-[プロビジョニング チュートリアル](virtual-machines-windows-portal-sql-server-provision.md)内のガイダンスが適用されますが、以下の **BYOL** イメージ オプションのいずれかを使用する必要があります。また、[SQL Server VM のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)の記事も参照してください。ここでは、適切なマシンのサイズと、プロビジョニング中に使用できるその他の機能の選択方法を説明しています。
+## オプション 2: 既存のライセンスを利用した SQL VM の作成
+ライセンス持ち込み (BYOL) を利用することもできます。このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。所有するライセンスを使用するには、以下の SQL Server のバージョン、エディション、およびオペレーティング システムのマトリックスを使用します。ポータルでは、これらのイメージ名に **{BYOL}** というプレフィックスが付きます。
 
 |バージョン|オペレーティング システム|エディション|
 |---|---|---|
@@ -67,8 +66,10 @@ Azure VM で SQL Server を実行することを決めたら、まず、SQL Serv
 |**SQL Server 2014 SP1**|Windows Server 2012 R2|[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP1StandardWindowsServer2012R2)|
 |**SQL Server 2012 SP2**|Windows Server 2012 R2|[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP3StandardWindowsServer2012R2)|
 
+> [AZURE.IMPORTANT] BYOL VM イメージを使用するには、[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)を伴うエンタープライズ契約が必要です。使用する SQL Server のバージョン/エディションに有効なライセンスも必要です。VM のプロビジョニングから **10** 日以内に、[必要な BYOL 情報を Microsoft に提供する](http://d36cz9buwru1tt.cloudfront.net/License_Mobility_Customer_Verification_Guide.pdf)必要があります。
+
 ## SQL VM の管理
-SQL Server VM をプロビジョニングした後、オプションの管理タスクがいくつかあります。一部の側面では、SQL Server の構成と管理は、オンプレミスの場合とまったく同じです。しかし、一部のタスクは Azure に固有です。以降のセクションでは、それらの領域の一部について説明し、詳細情報へのリンクを付記します。
+SQL Server VM をプロビジョニングした後、オプションの管理タスクがいくつかあります。多くの点について、SQL Server の構成と管理は、オンプレミスの SQL Server インスタンスを管理する場合とまったく同じです。しかし、一部のタスクは Azure に固有です。以降のセクションでは、それらの領域の一部について説明し、詳細情報へのリンクを付記します。
 
 ### データの移行
 
@@ -94,4 +95,4 @@ Azure 仮想マシン上の SQL Server の[ラーニング パスを調べます
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

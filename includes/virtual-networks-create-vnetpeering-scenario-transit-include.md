@@ -4,8 +4,8 @@
 
 ![NVA Transit](./media/virtual-networks-create-vnetpeering-scenario-transit-include/figure01.PNG)
 
-注: ここでは単純化するため、すべての VNet が同じサブスクリプションに存在することを前提としています。ただし、異なるサブスクリプション間のシナリオでも正常に機能します。
+> [AZURE.NOTE] ここでは単純化するために、すべての VNet が同じサブスクリプションに存在することを前提としています。ただし、異なるサブスクリプション間のシナリオでも正常に機能します。
 
 トランジット ルーティングの実現の鍵となるプロパティは、"Allow Forwarded Traffic" パラメーターです。この設定によって、ピアリングされた VNet 内の NVA からトラフィックを受信したり、その NVA にトラフィックを送信したりすることができます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -34,13 +34,13 @@
 
 3. **[追加アラート]** コマンドをクリックします。
 
-    ![アラートの追加](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
+	![アラートの追加](./media/insights-receive-alert-notifications/Insights_AddAlert.png)
 
 4. アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
 
 5. **[メトリック]** を選択する場合は、メトリックの条件としきい値を選択します。これは、Azure がアラート アクティビティの監視とプロットに使用する期間です。
 
-    ![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
+	![条件としきい値](./media/insights-receive-alert-notifications/Insights_ConditionAndThreshold.png)
 
 6. **[イベント]** を選択することもできます。この場合は、特定のイベントが発生すると通知を受け取ります。 
 
@@ -65,9 +65,8 @@
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md)にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * Application Insights で [Web ページの可用性と応答性を監視](../application-insights/app-insights-monitor-web-app-availability.md)すると、ページがダウンしているかどうかを検出できます。
-* コードがクラウドで実行する方法を正確に理解する場合は、[アプリケーションのパフォーマンスを監視](insights-perf-analytics.md)します。
+* コードがクラウドで実行する方法を正確に理解する場合は、[アプリケーションのパフォーマンスを監視](../application-insights/app-insights-azure-web-apps.md)します。
 * [イベントと監査ログを表示](insights-debugging-with-events.md)して、サービスで発生したすべてのことを理解します。
 * [サービス正常性を追跡](insights-service-health.md)して、Azure でパフォーマンスの低下やサービスの中断が発生したことを検出します。
 
-<!---HONumber=AcomDC_0810_2016-->
-
+<!---HONumber=AcomDC_0914_2016-->

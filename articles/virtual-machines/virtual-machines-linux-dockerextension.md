@@ -18,6 +18,8 @@
 
 # Docker VM 拡張機能を使用した環境のデプロイ
 
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
+
 Docker は一般的なコンテナー管理およびイメージング プラットフォームで、Linux (および Windows) 上のコンテナーを簡単に操作できます。Azure を使用すると、ニーズに合ったいくつかの方法で Docker を柔軟にデプロイできます。
 
 - アプリのプロトタイプを迅速に作成する場合、[Docker マシン Azure ドライバーを使用](./virtual-machines-linux-docker-machine.md)して、Azure 内で Docker ホストをデプロイできます。
@@ -138,4 +140,4 @@ Resource Manager テンプレートの使用方法の詳細については、「
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
 3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

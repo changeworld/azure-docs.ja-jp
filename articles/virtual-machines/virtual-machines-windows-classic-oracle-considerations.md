@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="vm-windows"
 ms.workload="infrastructure-services"
-ms.date="05/17/2016"
+ms.date="09/06/2016"
 ms.author="rclaus" />
 
 #Oracle 仮想マシンのイメージに関するその他の考慮事項
@@ -53,7 +53,7 @@ Azure は各仮想マシンに内部 IP アドレスを割り当てます。仮�
 
 Azure 仮想マシンで Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性と障害復旧ソリューションを実装する責任があります。また、ご自身のデータやアプリケーションをバックアップする責任も負うことになります。
 
-Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](virtual-machines-linux-classic-connect-vms.md)と同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することを推奨します。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
+Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。両方の仮想マシンを同じ[クラウド サービス](virtual-machines-linux-classic-connect-vms.md)と同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。さらに、Azure が仮想マシンを個別のフォールト ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ[可用性セット](virtual-machines-windows-manage-availability.md)に配置することをお勧めします。同じクラウド サービス上にある仮想マシンのみを、同じ可用性セットに含めることができます。それぞれの仮想マシンには、少なくとも 2 GB のメモリと 5 GB のディスク領域が必要です。
 
 Oracle Data Guard では、1 つの仮想マシンにプライマリ データベース、別の仮想マシンにセカンダリ データベース (待機)、そしてその間に一方向のレプリケーションセットを配置することで高可用性を実現できます。データベースのコピーへのアクセスを結果として読み込みます。Oracle GoldenGate では、2 つのデータベース間に双方向レプリケーションを構成することができます。これらのツールを使用してデータベース用に高可用性ソリューションを設定する方法については、Oracle の Web サイトにある [Active Data Guard](http://www.oracle.com/technetwork/database/features/availability/data-guard-documentation-152848.html) および [GoldenGate](http://docs.oracle.com/goldengate/1212/gg-winux/index.html) 文書を参照してください。データベースのコピーに読み込み/書き込みアクセスをする必要がある場合は、[Oracle Active Data Guard](http://www.oracle.com/uk/products/database/options/active-data-guard/overview/index.html) もご利用いただけます。
 
@@ -63,9 +63,9 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 -  **接続タイムアウト:** アプリケーションが別の Azure のクラウド サービス (データベース層のサービスなど) のパブリック エンドポイントへの接続に依存している場合、4 分間の無活動の後 Azure はこれらの開いている接続を閉じることがあります。無活動時間がこの上限を超えると、接続が無効になるため、接続プールに依存している機能やアプリケーションに影響が及ぼされることがあります。アプリケーションに影響がある場合は、接続プール上の「キープアライブ」 ロジックの有効化を検討してください。
 
-	エンドポイントが Azure クラウド サービス デプロイの*内部*になる場合 (WebLogic 仮想マシンと*同じ*クラウド サービス内にあるスタンドアロンのデータベース仮想マシンなど)、接続は直接的であり、Azure ロード バランサーに依存しません。そのため、接続タイムアウトの対象にはなりません。
+	エンドポイントが Azure クラウド サービス デプロイの "*内部*" になる場合 (WebLogic 仮想マシンと "*同じ*" クラウド サービス内にあるスタンドアロンのデータベース仮想マシンなど)、接続は直接的であり、Azure Load Balancer に依存しません。そのため、接続タイムアウトの対象にはなりません。
 
--  **UDP マルチキャストはサポートされていません。** Azure は UDP ユニキャストをサポートしていますが、マルチキャストおよびブロードキャストはサポートしていません。WebLogic Server は Azure の UDP ユニキャスト機能に依存できます。UDP ユニキャストへの依存で最適な結果を得るための、WebLogic クラスターのサイズを静的に保ち、クラスターに 10 以上の管理サーバーを置かないことを推奨します。
+-  **UDP マルチキャストはサポートされていません。** Azure は UDP ユニキャストをサポートしていますが、マルチキャストとブロードキャストはサポートしていません。WebLogic Server は Azure の UDP ユニキャスト機能に依存できます。UDP ユニキャストへの依存で最適な結果を得るための、WebLogic クラスターのサイズを静的に保ち、クラスターに 10 以上の管理サーバーを置かないことを推奨します。
 
 -  **WebLogic Server は T3 アクセスに対し、パブリック ポートとプライベート ポートを同じにすることを要求します (Enterprise JavaBeans を使用する場合など)。** **SLWLS** というクラウド サービス上で、2 つ以上の管理サーバーで構成される WebLogic Server クラスターでサービス層 (EIB) アプリケーションが実行している多層シナリオを検討してみてください。クライアント層は別のクラウド サービスにあり、サービス層にある EJB を呼び出すためにシンプルな Java プログラムを実行します。サービス層の負荷を分散する必要があるため、負荷分散されたパブリックなエンドポイントを WebLogic Server クラスター内の仮想マシンに作成する必要があります。そのエンドポイント用に指定したプライベートポートがパブリックポート (7006:7008 など) と異なる場合、次のようなエラーが発生します。
 
@@ -73,7 +73,7 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 		Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-	どのようなリモート T3 アクセスにおいても、WebLogic Server に対してロード バランサー ポートおよび WebLogic 管理サーバーのポートが同じでなければいけないためです。上記の場合、クライアントはポート 7006 (ロード バランサー ポート) へ接続し、管理サーバーは 7008 (プライベート ポート) で待機します。この制限は、 HTTP ではなく T3 アクセスにのみ適用されることに注意してください。
+	どのようなリモート T3 アクセスにおいても、WebLogic Server に対してロード バランサー ポートおよび WebLogic 管理サーバーのポートが同じでなければいけないためです。上記の場合、クライアントはポート 7006 (ロード バランサー ポート) へ接続し、管理サーバーは 7008 (プライベート ポート) で待機します。この制限は、HTTP ではなく T3 アクセスにのみ適用されます。
 
 	この問題を避けるには、次の回避策のいずれかを実施してください。
 
@@ -95,11 +95,11 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 -  **JDK 6 および 7 の最新アップデート。** パブリックをサポートする Java の最新バージョン (現在は Java 8) の使用を推奨していますが、Azure には JDK 6 および JDK 7 のイメージもご利用いただけます。これは JDK 8 へのアップグレードの準備が整っていない従来のアプリケーションのための対処としてです。一般向けには以前の JDK イメージの一般公開は終了していますが、Microsoft と Oracle の業務提携により、Azure 提供の JDK 6 および 7 のイメージには、通常、Oracle のサポート対象顧客の選ばれたグループにのみ Oracle が提供する最近の非公開更新が含まれます。新しいバージョンの JDK イメージは JDK 6 および 7 の更新版がリリースされた後に利用可能になります。
 
-	この JDK 6 および JDK 7 のイメージで利用可能な JDK 、そしてそこから派生した仮想マシンおよびイメージは Azure 内でのみ使用できます。
+	この JDK 6 および JDK 7 のイメージで利用可能な JDK と、そこから派生した仮想マシンおよびイメージは、Azure 内でのみ使用できます。
 
 -  **64-bit JDK.** Azure によって提供される Oracle WebLogic Server 仮想マシンおよび Oracle JDK 仮想マシンのイメージには、Windows Server と JDK 両方の 64 ビット版が含まれています。
 
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

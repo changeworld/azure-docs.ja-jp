@@ -23,7 +23,7 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
 
 ## オペレーティング システム ディスク
 
@@ -73,4 +73,4 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 -  冗長性を持たせるための[ソフトウェア RAID の構成](virtual-machines-linux-configure-raid.md)。
 -  追加の VM を短時間でデプロイできるようにするための [Linux 仮想マシンのキャプチャ](virtual-machines-linux-classic-capture-image.md)。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

@@ -18,7 +18,7 @@
 
 # Enterprise Integration Pack の B2B 機能を使用したデータの受信についての詳細情報#
 
-## 概要 ##
+## Overview ##
 
 このドキュメントは、Logic Apps Enterprise Integration Pack の一部です。[Enterprise Integration Pack の機能](./app-service-logic-enterprise-integration-overview.md)の詳細については、概要のページを参照してください。
 
@@ -46,10 +46,10 @@ AS2 および X12 アクションを使用するには、エンタープライ�
 8. AS2 に必要な**ヘッダー**を追加します。これらは HTTP 要求ヘッダーになります。この例では、ロジック アプリをトリガーした HTTP 要求のヘッダーを選択します。
 9. ここで、**[アクションの追加]** をもう一度選択して、X12 メッセージのデコード アクションを追加します。![](./media/app-service-logic-enterprise-integration-b2b/b2b-9.png)
 10. 検索ボックスに "**x12**" と入力し、すべてのアクションから使用するアクションだけをフィルタリングします。![](./media/app-service-logic-enterprise-integration-b2b/b2b-10.png)
-11. **[X12 - Decode X12 message (X12 - X12 メッセージのデコード)]** アクションを選択し、ロジック アプリに追加します。![](./media/app-service-logic-enterprise-integration-b2b/b2b-11.png)
+11. **[X12 - Decode X12 message (X12 - X12 メッセージのデコード)]** アクションを選択し、ロジック アプリに追加します。![](./media/app-service-logic-enterprise-integration-b2b/b2b-as2message.png)
 12. ここで、上記の AS2 アクションの出力となるこのアクションへの入力を指定する必要があります。実際のメッセージの内容は JSON オブジェクトにあり、base64 でエンコードされています。そのため、入力として式を指定する必要があります。**[X12 FLAT FILE MESSAGE TO DECODE (デコードする X12 フラット ファイル メッセージ)]** 入力フィールドに次の式を入力します。
 
-    @base64ToString(body('Decode\_AS2\_message')?['Message']?['Content'])
+    @base64ToString(body('Decode\_AS2\_message')?['AS2Message']?['Content'])
 
 13. この手順では、取引先から受信した X12 データをデコードし、JSON オブジェクト内の項目の数の出力します。データの受信をパートナーに知らせるために、HTTP 応答アクションでの AS2 Message Disposition Notification (MDN) を含む応答を返信することができます。
 14. **[応答]** アクションを追加するには、**[アクションの追加]** を選択します。![](./media/app-service-logic-enterprise-integration-b2b/b2b-14.png)
@@ -75,4 +75,4 @@ AS2 および X12 アクションを使用するには、エンタープライ�
 
 [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

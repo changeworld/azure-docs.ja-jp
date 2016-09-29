@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="06/22/2016"
+    ms.date="09/06/2016"
     ms.author="adegeo"/>
 
 # Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
@@ -156,4 +156,4 @@ help New-AzureServiceADDomainExtensionConfig
 
 私たちは、仮想マシンをドメイン コントローラーに昇格させる拡張機能の有用性に関して皆さんからのご意見を募集しています。このような拡張機能が便利だと思われる方は、コメントを残してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0914_2016-->

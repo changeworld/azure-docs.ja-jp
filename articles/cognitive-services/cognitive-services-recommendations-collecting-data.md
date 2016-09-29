@@ -4,7 +4,7 @@
 	services="cognitive-services"
 	documentationCenter=""
 	authors="luiscabrer"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -151,4 +151,4 @@ Recommendations API は、特定のユーザーにどの項目を勧めればよ
 
 モデルを作成したら、[オフライン評価](cognitive-services-recommendations-buildtypes.md)を実行して、モデルがどの程度正常に機能する可能性があるかを確認できます。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

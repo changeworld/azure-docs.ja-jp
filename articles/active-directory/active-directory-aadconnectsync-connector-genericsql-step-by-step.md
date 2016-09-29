@@ -52,7 +52,7 @@ Generic SQL コネクタは ODBC を使用してリモート サーバーに接�
 6. 属性タイプの一部は SQL データベースで検出できません。具体的には、参照属性タイプを検出できません。グループ オブジェクト タイプについては、OwnerID と MemberID を参照に変更する必要があります。 ![Connector6](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector6.png)
 7. 前の手順で参照属性として選択した属性には、それらの値を参照するオブジェクト タイプが必要になります。ここでは User オブジェクト タイプです。 ![Connector7](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector7.png)
 8. [Global Parameters (グローバル パラメーター)] ページで、[Delta Strategy (デルタ方針)] として **[透かし]** を選択します。日付/時刻形式 **yyyy-MM-dd HH:mm:ss** を入力します。![Connector8](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector8.png)
-9. **[Configure Partitions and Hierarchies (パーティションと階層の構成)]** ページで、両方のオブジェクト タイプを選択します。 ![Connector9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
+9. **[Configure Partitions and Hierarchies (パーティションと階層の構成)]** ページで、両方のオブジェクト タイプを選択します。![Connector9](.\media\active-directory-aadconnectsync-connector-genericsql-step-by-step\connector9.png)
 10. **[オブジェクトの種類を選択]** と **[属性の選択]** で、両方のオブジェクト タイプとすべての属性を選択します。**[Configure Anchors (アンカーの構成)]** ページで **[完了]** をクリックします。
 
 ## 実行プロファイルの作成
@@ -170,4 +170,4 @@ ALTER TABLE [dbo].[USERPHONE] CHECK CONSTRAINT [FK_USERPHONE_USER]
 GO
 ```
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

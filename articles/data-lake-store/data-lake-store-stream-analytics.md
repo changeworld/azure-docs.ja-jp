@@ -4,7 +4,7 @@
    services="data-lake-store,stream-analytics" 
    documentationCenter=""
    authors="nitinme"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"/>
 
 <tags
@@ -129,4 +129,4 @@ Stream Analytics ジョブを実行するには、[クエリ] タブからクエ
 
 * [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0914_2016-->

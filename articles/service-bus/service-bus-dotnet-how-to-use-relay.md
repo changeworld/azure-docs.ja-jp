@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="get-started-article"
-	ms.date="05/06/2016"
+	ms.date="09/16/2016"
 	ms.author="sethm"/>
 
 
@@ -43,13 +43,12 @@ Azure で Service Bus Relay を使用するには、最初に名前空間を作�
 
 ## Service Bus NuGet パッケージの取得
 
-[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。アプリケーションに NuGet パッケージをインストールするには、次のステップを行います。
+[Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。プロジェクトに NuGet パッケージをインストールするには、次のステップを行います。
 
 1.  ソリューション エクスプローラーで **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2.  "Service Bus" を検索して、**[Microsoft Azure Service Bus]** 項目を選択します。**[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
 
 	![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)
-
 
 ## Service Bus を使用して SOAP Web サービスを TCP で公開および使用する
 
@@ -57,10 +56,10 @@ Azure で Service Bus Relay を使用するには、最初に名前空間を作�
 
 このタスクでは、単純な WCF サービスを構築し、そのサービスに Service Bus リスナーを追加します。この演習はある程度 Visual Studio に習熟したユーザーを対象としているため、プロジェクトの作成手順の詳しい内容については説明していません。代わりに、コードに重点を置いています。
 
-次の手順を完了して環境を設定してから、後の手順を開始してください。
+これらの手順を開始する前に、次の手順を完了して環境を設定してください。
 
 1.  Visual Studio 内で、"Client" と "Service" という 2 つのプロジェクトを含むコンソール アプリケーションをソリューション内に作成します。
-2.  Microsoft Azure Service Bus NuGet パッケージを両方のプロジェクトに追加します。これにより、プロジェクトへの必要なアセンブリ参照がすべて追加されます。
+2.  Microsoft Azure Service Bus NuGet パッケージを両方のプロジェクトに追加します。このパッケージによって、プロジェクトに必要なアセンブリ参照がすべて追加されます。
 
 ### サービスの作成方法
 
@@ -114,7 +113,7 @@ sh.AddServiceEndpoint(
    typeof(IProblemSolver), new NetTcpRelayBinding(),
    ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver"))
     .Behaviors.Add(new TransportClientEndpointBehavior {
-          TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", "yourKey")});
+          TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", "<yourKey>")});
 
 sh.Open();
 
@@ -124,7 +123,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。大きな違いはバインドです。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。Service Bus エンドポイントは、文字列 `sb`、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。前述のようにプレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
+この例では、同じコントラクト実装にある 2 つのエンドポイントを作成します。1 つはローカルで、もう 1 つは Service Bus を経由して提示されます。大きな違いはバインドです。ローカルには [NetTcpBinding](https://msdn.microsoft.com/library/azure/system.servicemodel.nettcpbinding.aspx) を使用し、Service Bus エンドポイントとアドレスには [NetTcpRelayBinding](https://msdn.microsoft.com/library/azure/microsoft.servicebus.nettcprelaybinding.aspx) を使用します。ローカル エンドポイントは、個々のポートを含むローカル ネットワーク アドレスを持ちます。Service Bus エンドポイントは、文字列 `sb`、使用する名前空間の名前、およびパス "solver" で構成されるエンドポイント アドレスを持ちます。 全体としては `sb://[serviceNamespace].servicebus.windows.net/solver` という URI になり、このサービス エンドポイントは完全修飾の外部 DNS 名を持つ Service Bus TCP エンドポイントとして識別されます。プレースホルダーを置き換えたコードを **Service** アプリケーションの `Main` 関数に配置すると、このサービスが実際に機能します。サービスで Service Bus を排他的にリッスンするには、ローカル エンドポイントの宣言を削除します。
 
 ### サービス ホストを App.config ファイルで構成する
 
@@ -138,7 +137,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-エンドポイントの定義は App.config ファイルに移動します。NuGet パッケージでは定義の範囲がすでに App.config ファイルに追加していることに注意してください。この定義の範囲は Service Bus の必要な構成の拡張機能です。次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。このコード例では、プロジェクト C# 名前空間の名前が **Service** であると想定しています。プレースホルダーを実際の Service Bus Service の名前空間と SAS キーに置き換えてください。
+エンドポイントの定義は App.config ファイルに移動します。NuGet パッケージによって定義の範囲が App.config ファイルに既に追加されています。この定義の範囲は Service Bus に必要な構成の拡張機能です。次の例 (先に示したコードと同じ) は **system.serviceModel** 要素のすぐ下に配置する必要があります。このコード例では、プロジェクト C# 名前空間の名前が **Service** であると想定しています。プレースホルダーを実際の Service Bus Service の名前空間と SAS キーに置き換えてください。
 
 ```
 <services>
@@ -157,7 +156,7 @@ sh.Close();
         <behavior name="sbTokenProvider">
             <transportClientEndpointBehavior>
                 <tokenProvider>
-                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="yourKey" />
+                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="<yourKey>" />
                 </tokenProvider>
             </transportClientEndpointBehavior>
         </behavior>
@@ -171,7 +170,7 @@ sh.Close();
 
 #### クライアントをプログラムで構成する
 
-サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。下の例では [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用し、適切な SAS トークンの取得を処理します。名前とキーは、前のセクションで説明したようにポータルから取得されます。
+サービスを使用するために、[ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx) オブジェクトを使用して WCF クライアントを作成できます。Service Bus は SAS を使用して実装されるトークン ベースのセキュリティ モデルを使用します。[TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) クラスは、いくつかの既知のトークン プロバイダーを返すファクトリ メソッドが組み込まれたセキュリティ トークン プロバイダーを表します。次の例では [CreateSharedAccessSignatureTokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.createsharedaccesssignaturetokenprovider.aspx) メソッドを使用し、適切な SAS トークンの取得を処理します。名前とキーは、前のセクションで説明したようにポータルから取得されます。
 
 最初に、`IProblemSolver` コントラクト コードをサービスからクライアント プロジェクトに対して参照またはコピーします。
 
@@ -183,7 +182,7 @@ var cf = new ChannelFactory<IProblemSolverChannel>(
     new EndpointAddress(ServiceBusEnvironment.CreateServiceUri("sb", "namespace", "solver")));
 
 cf.Endpoint.Behaviors.Add(new TransportClientEndpointBehavior
-            { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey","yourKey") });
+            { TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey","<yourKey>") });
 
 using (var ch = cf.CreateChannel())
 {
@@ -219,7 +218,7 @@ using (var ch = cf.CreateChannel())
         <behavior name="sbTokenProvider">
             <transportClientEndpointBehavior>
                 <tokenProvider>
-                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="yourKey" />
+                    <sharedAccessSignature keyName="RootManageSharedAccessKey" key="<yourKey>" />
                 </tokenProvider>
             </transportClientEndpointBehavior>
         </behavior>
@@ -239,4 +238,4 @@ using (var ch = cf.CreateChannel())
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
   [Service Bus サンプルの概要]: service-bus-samples.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

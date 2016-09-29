@@ -4,7 +4,7 @@
 	services="hdinsight" 
 	documentationCenter="" 
 	authors="nitinme" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
+	ms.date="09/14/2016" 
 	ms.author="nitinme"/>
 
 
@@ -33,7 +33,7 @@ HDInsight の Apache Spark クラスターを使用して Machine Learning ア�
 
 アプリケーションの作成を始める前に、データの構造およびデータに対して実行する分析の種類を説明します。
 
-この記事では、すべての HDInsight クラスターにおいて既定で使用できる **HVAC.csv** サンプル データ ファイル (**\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac**) を使用します。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
+この記事では、HDInsight クラスターに関連付けた Azure Storage アカウントで使用できる、サンプルの **HVAC.csv** データ ファイルを使用します。このファイルは、ストレージ アカウントの **\\HdiSamples\\HdiSamples\\SensorSampleData\\hvac** にあります。CSV ファイルをダウンロードして開き、データのスナップショットを取得します。
 
 ![HVAC データのスナップショット](./media/hdinsight-apache-spark-ipython-notebook-machine-learning/hdispark.ml.show.data.png "HVAC データのスナップショット")
 
@@ -262,4 +262,4 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 [azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: storage-create-storage-account.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

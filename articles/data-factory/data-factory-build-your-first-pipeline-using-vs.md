@@ -18,35 +18,39 @@
 
 # チュートリアル: Microsoft Visual Studio を使用した初めての Azure データ ファクトリの作成
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
+- [概要と前提条件](data-factory-build-your-first-pipeline.md)
+- [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-[AZURE.INCLUDE [data-factory-tutorial-prerequisites](../../includes/data-factory-tutorial-prerequisites.md)]
+この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成します。
 
-## 追加の前提条件
+## 前提条件
+1. 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、**前提条件**の手順を完了する必要があります。
 2. Data Factory エンティティを Visual Studio から Azure Data Factory に発行できる **Azure サブスクリプションの管理者**である必要があります。
 3. コンピューターに以下がインストールされている必要があります。
 	- Visual Studio 2013 または Visual Studio 2015
 	- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
 	- Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。Visual Studio 2013 を使用している場合は、メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。
  
-次のチュートリアルでは、Data Factory エンティティを作成して、デプロイする方法について説明します。
+それでは、Visual Studio を使用して、Azure データ ファクトリを作成しましょう。
+
 
 ## Visual Studio プロジェクトの作成 
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。
 
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス  
+](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
 	![Solution Explorer](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
-## リンクされたサービスの作成
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。後で Data Factory ソリューションを発行するときに、データ ファクトリの名前と設定を指定します。
+### リンクされたサービスの作成
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。後で Data Factory ソリューションを発行するときに、データ ファクトリの名前と設定を指定します。
 
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクします。
 
@@ -267,10 +271,12 @@
 
 21. Data Factory の構成ページで、次の操作を行います。
 	1. **[Data Factory の新規作成]** オプションを選択します。
-	2. **[名前]** フィールドに「**FirstDataFactoryUsingVS**」と入力します。
+	2. データ ファクトリの一意の**名前**を入力します。たとえば、「**FirstDataFactoryUsingVS09152016**」と入力します。名前はグローバルに一意である必要があります。
 	
-		> [AZURE.IMPORTANT] Azure Data Factory の名前はグローバルに一意にする必要があります。発行時に "**Data factory 名 "FirstDataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryUsingVS など)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
+		> [AZURE.IMPORTANT] 発行時に "**Data factory 名 "FirstDataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryUsingVS など)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
 	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。
+	 
+		> [AZURE.IMPORTANT] サブスクリプションが表示されない場合は、サブスクリプションの管理者または共同管理者のアカウントを使用してログインしたことを確認します。
 	4. 作成するデータ ファクトリの**リソース グループ**を選択します。
 	5. データ ファクトリの**リージョン**を選択します。
 	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。(**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します)。
@@ -278,7 +284,8 @@
 24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
 25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。
 
-以下の点に注意してください。
+ 
+注意すべき重要な点は、次のとおりです。
 
 - "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
 
@@ -291,15 +298,15 @@
 			Get-AzureRmResourceProvider
 	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。この操作によって、プロバイダーが自動的に登録されます。
 - 	データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-- 	Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
+- 	Data Factory インスタンスを作成するには、Azure サブスクリプションの管理者または共同管理者である必要があります。
 
  
 ## パイプラインを監視する
 
+### ダイアグラム ビューを使用してパイプラインを監視する
 6. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[参照]** をクリックし、**[Data Factory]** を選択します。 
-		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。
+	1. **[More services (その他のサービス)]**、**[データ ファクトリ]** の順にクリックします。 ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
+	2. データ ファクトリの一覧から、データ ファクトリの名前 (例: **FirstDataFactoryUsingVS09152016**) を選択します。 ![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   
 	![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
@@ -322,17 +329,34 @@
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。
-	>[AZURE.IMPORTANT] オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。
+	>[AZURE.IMPORTANT] オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。そのため、パイプラインによるスライスの処理に**約 30 分**かかると想定してください。
 
 	![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)
 	
 10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。
  
 	![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
+11. スライスをクリックすると、**[データ スライス]** ブレードに詳細が表示されます。
+
+	![Data slice details](./media/data-factory-build-your-first-pipeline-using-vs/data-slice-details.png)
+12. **[アクティビティの実行]** 一覧でアクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ウィンドウにアクティビティの実行の詳細 (このシナリオでは Hive アクティビティ) が表示されます。 ![アクティビティ実行の詳細](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)
+	
+	ログ ファイルで、実行された Hive クエリとステータス情報を確認できます。これらのログは、すべての問題のトラブルシューティングに役立ちます。
+ 
 
 Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
 
-データ パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方の詳細については、[監視アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
+### 監視と管理アプリを使用してパイプラインを監視する
+パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方の詳細については、[監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
+
+1. [監視と管理] タイルをクリックします。
+
+	![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png)
+2. 監視と管理アプリケーションが表示されます。パイプラインの開始時刻 (2016 年 4 月 1 日午前 12:00) と終了時刻 (2016 年 4 月 2 日午前 12:00) と一致するように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。
+
+	![Monitor & Manage App](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
+3. [アクティビティ ウィンドウ] 一覧でアクティビティ ウィンドウを選択し、詳細を確認します。 ![Activity window details](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
+
 
 > [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
  
@@ -479,4 +503,4 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

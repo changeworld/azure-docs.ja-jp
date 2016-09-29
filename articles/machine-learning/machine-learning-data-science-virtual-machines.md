@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"  />
 
 <tags
@@ -26,7 +26,7 @@
 
 クラウド ベースのデータ サイエンス環境の一部として使用するように、いくつかの種類の Azure Virtual Machine をプロビジョニングし、構成できます。使用する仮想マシンの種類を決定する方法は、Machine Learning によってモデル化するデータの種類と量、さらにクラウド内でのデータの宛先によって異なります。
 
-* この決定を行う際の考慮事項については、「[Azure Machine Learning のデータ サイエンス環境を計画する](machine-learning-data-science-plan-your-environment.md)」をご覧ください。 
+* この決定を行う際の考慮事項については、「[Azure Machine Learning のデータ サイエンス環境を計画する](machine-learning-data-science-plan-your-environment.md)」をご覧ください。
 * 高度な分析を実施する際に発生する可能性があるシナリオのカタログについては、「[Azure Machine Learning に関するクラウド データ サイエンス プロセス](machine-learning-data-science-plan-sample-scenarios.md)」をご覧ください。
 
 次の 2 つの指示について説明します。
@@ -41,4 +41,4 @@
 > [AZURE.NOTE] Azure Virtual Machines の料金は**従量課金制**です。仮想マシンを使用していないときに課金されないようにするには、[Azure クラシック ポータル](http://manage.windowsazure.com/)から、その仮想マシンを **[停止 (割り当て解除)]** 状態にする必要があります。仮想マシンの割り当てを解除する方法については、「[未使用時に仮想マシンをシャットダウンして割り当てを解除する](machine-learning-data-science-setup-virtual-machine.md#shutdown)」をご覧ください。
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

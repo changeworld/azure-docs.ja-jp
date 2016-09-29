@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="LuisCabrer" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -13,13 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/17/2016" 
+	ms.date="09/08/2016" 
 	ms.author="luisca"/>
 
 # Machine Learning の Recommendations API のクイック スタート ガイド
 
-> これは、データマーケットにおける以前の推奨 API に関するドキュメントです。2016 年 12 月 31 日以降、このドキュメントの内容は非推奨となります。[推奨 API Cognitive Services](https://www.microsoft.com/cognitive-services/ja-JP/recommendations-api) に移行することをお勧めします。
-
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
 
 このドキュメントでは、サービスやアプリケーションで Microsoft Azure Machine Learning の Recommendations を使用する方法について説明します。Recommendations API の詳細については、[ギャラリー](http://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)を参照してください。
@@ -716,4 +715,4 @@ OData XML
 このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。社内での参照目的に限り、このドキュメントを複製して使用できます。© 2014 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0914_2016-->

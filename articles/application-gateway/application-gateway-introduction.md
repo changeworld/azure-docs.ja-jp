@@ -75,4 +75,4 @@ REST API、PowerShell コマンドレット、Azure CLI、または [Azure Porta
 
 URL ベースのコンテンツ ルーティングを使用してアプリケーション ゲートウェイを作成する方法については、「[URL ベースのルーティングを使用して Application Gateway を作成する](application-gateway-create-url-route-arm-ps.md)」を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

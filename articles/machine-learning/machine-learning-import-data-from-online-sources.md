@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -54,7 +54,7 @@ Azure Machine Learning Studio で実験を行うためのワークフローは�
 ## サポートされるオンライン データ ソース
 Azure Machine Learning の**データのインポート** モジュールは、以下のデータ ソースをサポートしています。
 
-データ ソース | 説明 | パラメーター |
+データ ソース | Description | パラメーター |
 ---|---|---|
 HTTP を使用する Web URL |コンマ区切り (CSV)、タブ区切り (TSV)、ARFF (Attribute-Relation File Format)、サポート ベクター マシン (SVM-Light) の各形式のデータを HTTP を使用する任意の Web URL から読み取ります。 | <b>URL</b>: サイトの URL とファイル名、拡張子を含むファイルの完全名を指定します。<br/><br/><b>データ形式</b>: サポートされているいずれかのデータ形式 (CSV、TSV、ARFF、SVM-light) を指定します。データにヘッダー行がある場合、その行が列名の割り当てに使用されます。|
 Hadoop/HDFS|Hadoop の分散ストレージからデータを読み取ります。必要なデータは、HiveQL という SQL に似たクエリ言語で指定します。Machine Learning Studio にデータを追加する前に、HiveQL を使用してデータを集計したり、データのフィルタリングを実行したりすることもできます。|<b>Hive データベース クエリ</b>: データを生成するために使用する Hive クエリを指定します。<br/><br/><b>HCatalog サーバー URI</b>: *&lt;your cluster name&gt;.azurehdinsight.net* 形式でクラスターの名前を指定します。<br/><br/><b>Hadoop ユーザー アカウント名</b>: クラスターをプロビジョニングするために使用する Hadoop ユーザー アカウント名を指定します。<br/><br/><b>Hadoop ユーザー アカウントのパスワード</b>: クラスターをプロビジョニングする際に使用する資格情報を指定します。詳細については、[HDInsight での Hadoop クラスターの作成](../hdinsight/hdinsight-provision-clusters.md)に関するページを参照してください。<br/><br/><b>出力データの場所</b>: データを Hadoop 分散ファイル システム (HDFS) に保存するか、Azure に保存するかを指定します。<br/><ul>出力データを HDFS に保存する場合、HDFS サーバーの URI を指定します。(必ず、HTTPS:// プレフィックスなしの HDInsight クラスター名を使用してください)。<br/><br/>出力データを Azure に保存する場合は、Azure ストレージ アカウント名、ストレージ アクセス キー、ストレージ コンテナー名を指定する必要があります。</ul>|
@@ -68,4 +68,4 @@ Azure BLOB ストレージ | 画像、非構造化テキスト、バイナリ �
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 [export-data]: https://msdn.microsoft.com/library/azure/7A391181-B6A7-4AD4-B82D-E419C0D6522C/
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

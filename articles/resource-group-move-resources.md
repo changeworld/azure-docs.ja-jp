@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/30/2016" 
+	ms.date="09/12/2016" 
 	ms.author="tomfitz"/>
 
 # 新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -76,7 +76,7 @@
 - Application Gateway
 - アプリケーション インサイト
 - ExpressRoute
-- Recovery Services コンテナー。Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動しないでください。
+- Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動しないでください。「[Recovery Services の制限事項](#recovery-services-limitations)」を参照してください。
 - Virtual Machines スケール セット
 - Virtual Networks (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
 - VPN Gateway
@@ -85,7 +85,7 @@
 
 App Service アプリを使用している場合、App Service プランのみを移動することはできません。App Service アプリを移動するには、次のオプションがあります。
 
-- App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。これは、App Service プランに関連付けられていない App Service リソースも移動することを意味します。
+- App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。この要件により、App Service プランに関連付けられていない App Service リソースも移動する必要があります。
 - アプリを別のリソース グループに移動し、元のリソース グループにも App Service プランをすべて保持する。
 
 元のリソース グループに Application Insights のリソースも含まれている場合、Application Insights では現在移行操作がサポートされていないため、このリソースを移動できません。App Service アプリを移動する際に Application Insights のリソースも含めると、移動操作自体が失敗します。ただし、アプリが正常に動作するために、Application Insights と App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
@@ -115,6 +115,12 @@ Web アプリがその App Service プランとは異なるリソース グル�
 1. **web-a** を **plan-group** に移動します
 2. **web-a** および **plan-a** を **combined-group** に移動します
 
+## Recovery Services の制限事項
+
+Azure Site Recovery で障害復旧を設定するときに使用されるストレージ リソース、ネットワーク リソース、またはコンピューティング リソースでは移動がサポートされていません。
+
+たとえば、ストレージ アカウント (Storage1) へのオンプレミス コンピューターのレプリケーションが設定済みで、Azure へのフェールオーバー後、保護されたコンピューターを、Azure 仮想ネットワーク (Network1) に接続された仮想マシン (VM1) として使用する必要があるとします。こうした Azure リソース、つまり Storage1、VM1、および Network1 はどれも、同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で移動することはできません。
+
 ## クラシック デプロイメントの制限事項
 
 クラシック モデルを使用してデプロイされるリソースを移動するためのオプションは、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
@@ -131,107 +137,12 @@ Web アプリがその App Service プランとは異なるリソース グル�
 リソースを**新しいサブスクリプション**に移動する場合、次の制限が適用されます。
 
 - サブスクリプション内のすべてのクラシック リソースは、同じ操作で移動する必要があります。
-- 移動は、ポータル、またはクラシックの移動のための別の REST API を通じてのみ要求できます。標準の Resource Manager の移動コマンドは、クラシック リソースを新しいサブスクリプションに移動する場合は機能しません。ポータルまたは REST API を使用する手順については、以下のセクションで示します。
+- 対象のサブスクリプションには、他のクラシック リソースは含めないでください。
+- クラシック リソースの場合、移動は、別の REST API を通じてのみ要求できます。標準の Resource Manager の移動コマンドは、クラシック リソースを新しいサブスクリプションに移動する場合は機能しません。
 
-## ポータルを使用したリソースの移動
+クラシック リソースを、**同じサブスクリプション内**の新しリソース グループに移動するには、[ポータル](#use-portal)、[Azure PowerShell](#use-powershell)、[Azure CLI](#use-azure-cli)、または [REST API](#use-rest-api) を使用します。
 
-リソースを移動するには、リソースを選択し、**[移動]** ボタンを選択します。
-
-![リソースの移動](./media/resource-group-move-resources/move-resources.png)
-
-> [AZURE.NOTE] すべてのリソースが、ポータルを使用した移動を現在サポートしているわけではありません。移動するリソースの **[移動]** ボタンが表示されない場合は、PowerShell、CLI、または REST API を使用してリソースを移動します。
-
-リソースを移動するときに、移動先のサブスクリプションとリソース グループを指定します。そのリソースと一緒に他のリソースを移動する必要がある場合、それらが一覧表示されます。
-
-![移動先の選択](./media/resource-group-move-resources/select-destination.png)
-
-**[通知]** に移動操作が実行されていることが表示されます。
-
-![移動の状態の表示](./media/resource-group-move-resources/show-status.png)
-
-完了すると、結果が表示されます。
-
-![移動の結果の表示](./media/resource-group-move-resources/show-result.png)
-
-別の方法でリソースを新しいリソース グループ (サブスクリプションを除く) に移動するには、移動するリソースを選択します。
-
-![移動するリソースの選択](./media/resource-group-move-resources/select-resource.png)
-
-その **[プロパティ]** を選択します。
-
-![プロパティの選択](./media/resource-group-move-resources/select-properties.png)
-
-このリソースの種類で利用可能であれば、**[リソース グループの変更]** を選択します。
-
-![リソース グループの変更](./media/resource-group-move-resources/change-resource-group.png)
-
-移動するリソースと、移動先のリソース グループを選択することができます。
-
-![リソースの移動](./media/resource-group-move-resources/select-group.png)
-
-クラシック モデルを使用してデプロイされたリソースを新しいリソース グループに移動すると、リソース グループの名前の横にある [編集] アイコンを使用することができます。
-
-![クラシック リソースの移動](./media/resource-group-move-resources/edit-rg-icon.png)
-
-「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を念頭に置きながら、移動するリソースを選択します。**[OK]** を選択すると、移動が開始します。
-
- ![クラシック リソースの選択](./media/resource-group-move-resources/select-classic-resources.png)
- 
- クラシック モデルを使用してデプロイされたリソースを新しいサブスクリプションに移動すると、サブスクリプションの名前の横にある [編集] アイコンを使用することができます。
- 
- ![新しいサブスクリプションへの移動](./media/resource-group-move-resources/edit-subscription-icon.png)
- 
- すべてのクラシック リソースが移動のために自動的に選択されます。
-
-## PowerShell を使用したリソースの移動
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**Move-AzureRmResource** コマンドを使用します。
-
-最初の例では、1 つのリソースを新しいリソース グループに移動する方法を示します。
-
-    $resource = Get-AzureRmResource -ResourceName ExampleApp -ResourceGroupName OldRG
-    Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $resource.ResourceId
-
-2 番目の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
-
-    $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-    $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-    Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
-
-新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
-
-指定したリソースを移動することの確認を求められます。
-
-    Confirm
-    Are you sure you want to move these resources to the resource group
-    '/subscriptions/{guid}/resourceGroups/newRG' the resources:
-
-    /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/serverFarms/exampleplan
-    /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/sites/examplesite
-    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-
-## Azure CLI を使用したリソースの移動
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**azure resource move** コマンドを使用します。次の例は、Redis Cache を新しいリソース グループに移動する方法を示しています。 **-I** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
-
-    azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
-	
-指定したリソースを移動することの確認を求められます。
-	
-    info:    Executing command resource move
-    Move selected resources in OldRG to NewRG? [y/n] y
-    + Moving selected resources to NewRG
-    info:    resource move command OK
-
-## REST API を使用したリソースの移動
-
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、次のコマンドを実行します。
-
-    POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
-
-要求の本文で、ターゲット リソース グループと、移動するリソースを指定します。REST による移動操作の詳細については、「[リソースの移動](https://msdn.microsoft.com/library/azure/mt218710.aspx)」を参照してください。
-
-ただし、**クラシック リソースを新しいサブスクリプション**に移動するには、別の REST 操作を使用する必要があります。クラシック リソースのサブスクリプション間移動で、サブスクリプションがソース/ターゲット サブスクリプションとして参加できるかどうかを確認するには、次の操作を行います。
+**クラシック リソースを新しいサブスクリプション**に移動するには、クラシック リソース固有の REST 操作を使用する必要があります。クラシック リソースのサブスクリプション間移動で、サブスクリプションがソース/ターゲット サブスクリプションとして参加できるかどうかを確認するには、次の操作を行います。
 
     POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
     
@@ -268,11 +179,83 @@ Web アプリがその App Service プランとは異なるリソース グル�
     }
 
 
+## ポータルの使用
+
+同じサブスクリプション内の新しいリソース グループにリソースを移動するには、そのリソースが含まれるリソース グループを選択し、**[移動]** を選択します。
+
+![リソースの移動](./media/resource-group-move-resources/edit-rg-icon.png)
+
+新しいサブスクリプションにリソースを移動するには、そのリソースが含まれるリソース グループを選択し、サブスクリプションの編集アイコンを選択します。
+
+![リソースの移動](./media/resource-group-move-resources/change-subscription.png)
+
+移動するリソースを、移動先のリソース グループを選択します。そのリソースのスクリプトを更新する必要があること確認し、**[OK]** を選択します。前の手順でサブスクリプションの編集アイコンを選択した場合は、移動先のサブスクリプションも選択する必要があります。
+
+![移動先の選択](./media/resource-group-move-resources/select-destination.png)
+
+**[通知]** に、移動操作が実行されていることが表示されます。
+
+![移動の状態の表示](./media/resource-group-move-resources/show-status.png)
+
+完了すると、結果が表示されます。
+
+![移動の結果の表示](./media/resource-group-move-resources/show-result.png)
+
+## PowerShell の使用
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**Move-AzureRmResource** コマンドを使用します。
+
+最初の例では、1 つのリソースを新しいリソース グループに移動する方法を示します。
+
+    $resource = Get-AzureRmResource -ResourceName ExampleApp -ResourceGroupName OldRG
+    Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $resource.ResourceId
+
+2 番目の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
+
+    $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
+    $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+    Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+
+新しいサブスクリプションに移動する場合は、**DestinationSubscriptionId** パラメーターの値を含めます。
+
+指定したリソースの移動を確認するように求められます。
+
+    Confirm
+    Are you sure you want to move these resources to the resource group
+    '/subscriptions/{guid}/resourceGroups/newRG' the resources:
+
+    /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/serverFarms/exampleplan
+    /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/sites/examplesite
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+## Azure CLI の使用
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、**azure resource move** コマンドを使用します。次の例は、Redis Cache を新しいリソース グループに移動する方法を示しています。 **-I** パラメーターには、移動するリソース ID のコンマ区切りリストを指定します。
+
+    azure resource move -i "/subscriptions/{guid}/resourceGroups/OldRG/providers/Microsoft.Cache/Redis/examplecache" -d "NewRG"
+	
+指定したリソースの移動を確認するように求められたら、
+	
+    info:    Executing command resource move
+    Move selected resources in OldRG to NewRG? [y/n] y
+    + Moving selected resources to NewRG
+    info:    resource move command OK
+
+## REST API を使用する
+
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、次のコマンドを実行します。
+
+    POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
+
+要求の本文で、ターゲット リソース グループと、移動するリソースを指定します。REST による移動操作の詳細については、「[リソースの移動](https://msdn.microsoft.com/library/azure/mt218710.aspx)」を参照してください。
+
+
+
 
 ## 次のステップ
 - サブスクリプションを管理するための PowerShell コマンドレットについては、「[Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
 - サブスクリプションを管理するための Azure CLI コマンドについては、「[リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
-- サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用したリソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
+- サブスクリプションを管理するためのポータル機能については、[Azure Portal を使用したリソースの管理](./azure-portal/resource-group-portal.md)に関するページをご覧ください。
 - リソースを論理的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0914_2016-->

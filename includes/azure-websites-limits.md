@@ -29,7 +29,7 @@ SLA||<p>|99\.9%|99\.95%<sup>10</sup>|99\.95%<sup>10</sup>
 
 <sup>1</sup>アプリとストレージのクォータは、特に記述のない限り、App Service プラン単位の数字です。  
 <sup>2</sup>これらのマシンで実際にホストできるアプリの数は、アプリのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。  
-<sup>3</sup>専用インスタンスのサイズはさまざまです。詳細については、「[App Service 料金](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/)」を参照してください。サポート要求を行って、インスタンスを追加することもできます。  
+<sup>3</sup>専用インスタンスのサイズはさまざまです。詳細については、「[App Service 料金](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/)」を参照してください。  
 <sup>4</sup>Premium レベルでは、App Service 環境の使用時に最大 50 のコンピューティング インスタンス (可用性による) と 500 GB のディスク領域を、それ以外の場合に 20 のコンピューティング インスタンスと 250 GB のストレージを使用できます。  
 <sup>5</sup>ストレージの制限は、同じ App Service プランのすべてのアプリにまたがる合計コンテンツ サイズです。[App Service Environment](../articles/app-service-web/app-service-web-configure-an-app-service-environment.md#storage) ではより多くのストレージ オプションを利用できます。  
 <sup>6</sup>これらのリソースは、専用インスタンス上の物理リソース (インスタンスのサイズとインスタンス数) によって制限されます。  
@@ -38,4 +38,4 @@ SLA||<p>|99\.9%|99\.95%<sup>10</sup>|99\.95%<sup>10</sup>
 <sup>9</sup>カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。Web ジョブを継続的に実行するには、常時接続が必要です。スケジュールされた Web ジョブの実行には、Azure Scheduler Free または Standard が必要です。App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありませんが、実際にはアプリケーション コードの処理に依存する限界があります。  
 <sup>10</sup>フェールオーバー用に Azure Traffic Manager が構成された複数のインスタンスを使用するデプロイでは、SLA は 99.95% です。  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0914_2016-->

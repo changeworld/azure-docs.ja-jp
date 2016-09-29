@@ -4,7 +4,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="bradsev,wguo123"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun" />
 
 <tags
@@ -70,7 +70,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 ## Azure Data Lake のデータ サイエンス環境を準備する
 このチュートリアルのデータ サイエンス環境を準備するには、次のリソースを作成します。
 
-- Azure Data Lake Store (ADLS) 
+- Azure Data Lake Store (ADLS)
 - Azure Data Lake Analytics (ADLA)
 - Azure BLOB ストレージ アカウント
 - Azure Machine Learning Studio アカウント
@@ -158,7 +158,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
 
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** と指定して参照します。**Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob_storage_account_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
+Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**** と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
 
 	///Read in Trip data
 	@trip0 =
@@ -181,7 +181,7 @@ Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_accou
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。処理したデータは ****swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ を使用して Azure Data Lake ストレージに保存するか、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。
+1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。処理したデータは **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_** を使用して Azure Data Lake ストレージに保存するか、wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。
 
 	// change data types
 	@trip =
@@ -213,7 +213,7 @@ Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_accou
 	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
 	USING Outputters.Csv();  
 
-同様に、料金データセットを読み込むことができます。Azure Data Lake Store を右クリックし、**[Azure ポータル] の [データ エクスプローラー]** か、Visual Studio の **[ファイル エクスプローラー]** でデータを確認することができます。
+同様に、料金データセットを読み込むことができます。Azure Data Lake Store を右クリックし、**[Azure Portal] の [データ エクスプローラー]** か、Visual Studio の **[ファイル エクスプローラー]** でデータを確認することができます。
 
  ![10](./media/machine-learning-data-science-process-data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
@@ -470,8 +470,8 @@ U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics ア
 
 実行可能な 2 つのオプションを例にして、モデルを構築してデプロイするために Azure Machine Learning にデータをプルする方法について説明します。
 
-- 最初のオプションでは、上記の「**データ サンプリング**」手順で Azure BLOB に書き込まれたサンプリング データを使用し、Python を使用して Azure Machine Learning からモデルを構築およびデプロイします。 
-- 2 つ目のオプションでは、Hive クエリを使用して、Azure Data Lake のデータを直接クエリします。このオプションの場合、新しい HDInsight クラスターを作成するか、Hive テーブルが Azure Data Lake ストレージの NYC タクシー データを指している既存の HDInsight クラスターを使用する必要があります。ここでは、これらの両方のオプションについて説明します。 
+- 最初のオプションでは、上記の「**データのサンプリング**」手順で Azure BLOB に書き込まれたサンプリング データを使用し、Python を使用して Azure Machine Learning からモデルを構築およびデプロイします。
+- 2 つ目のオプションでは、Hive クエリを使用して、Azure Data Lake のデータを直接クエリします。このオプションの場合、新しい HDInsight クラスターを作成するか、Hive テーブルが Azure Data Lake ストレージの NYC タクシー データを指している既存の HDInsight クラスターを使用する必要があります。ここでは、これらの両方のオプションについて説明します。
 
 ## オプション 1: Python を使用して機械学習モデルを構築してデプロイする
 
@@ -504,7 +504,7 @@ Python を使用して機械学習モデルを構築およびデプロイする�
 
 ### BLOB のデータを読み込む
 
-- 接続文字列   
+- 接続文字列
 
 		CONTAINERNAME = 'test1'
 		STORAGEACCOUNTNAME = 'XXXXXXXXX'
@@ -596,7 +596,7 @@ Python を使用して機械学習モデルを構築およびデプロイする�
 
 機械学習モデルの構築後に、運用可能な状態にする必要があります。ここでは、二項ロジスティック モデルを例として使用します。ローカル コンピューターの scikit-learn のバージョンが 0.15.1 であることを確認してください。Azure ML Studio サービスを使用している場合、確認する必要はありません。
 
-- Azure ML Studio 設定でワークスペースの資格情報を確認します。Azure Machine Learning Studio で、**[設定]**、**[名前]**、**[承認トークン]** の順にクリックします。 
+- Azure ML Studio 設定でワークスペースの資格情報を確認します。Azure Machine Learning Studio で、**[設定]**、**[名前]**、**[承認トークン]** の順にクリックします。
 
 	![c3](./media/machine-learning-data-science-process-data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -640,7 +640,7 @@ Azure Machine Learning Studio では、Azure Data Lake Store から直接デー�
 
 ### HDInsight Linux クラスターを作成する
 
-[Azure ポータル](http://portal.azure.com)から HDInsight クラスター (Linux) を作成します。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションを参照してください。
+[Azure Portal](http://portal.azure.com) から HDInsight クラスター (Linux) を作成します。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションを参照してください。
 
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -658,7 +658,7 @@ Azure Machine Learning Studio では、Azure Data Lake Store から直接デー�
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
 
-次の Hive スクリプトを貼り付けてテーブルを作成します。データ ソースの場所は Azure Data Lake Store 内であり、****adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
+次の Hive スクリプトを貼り付けてテーブルを作成します。データ ソースの場所は Azure Data Lake Store 内であり、**adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
 
 	CREATE EXTERNAL TABLE nyc_stratified_sample
 	(
@@ -715,11 +715,11 @@ Hive テーブルからデータを読み取る二項分類の実験の例を次
 
  ![24](./media/machine-learning-data-science-process-data-lake-walkthrough/24-AML-exp.PNG)
 
-実験の作成後に、**[Set Up Web Service (Web サービスのセットアップ)]**、**[Predictive Web Service (予測 Web サービス)]** の順にクリックします。
+実験の作成後に、**[Web サービスのセットアップ]**、**[予測 Web サービス]** の順にクリックします。
 
  ![25](./media/machine-learning-data-science-process-data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
-自動的に作成されたスコア付け実験を実行し、完了したら、**[Deploy Web Service (Web サービスのデプロイ)]** をクリックします。
+自動的に作成されたスコア付け実験を実行し、完了したら、**[Web サービスのデプロイ]** をクリックします。
 
  ![26](./media/machine-learning-data-science-process-data-lake-walkthrough/26-AML-exp-deploy-web.PNG)
 
@@ -728,17 +728,17 @@ Web サービス ダッシュボードがすぐに表示されます。
  ![27](./media/machine-learning-data-science-process-data-lake-walkthrough/27-AML-web-api.PNG)
 
 
-## まとめ
+## 概要
 
 このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成することができます。この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。データの処理、調査、およびサンプリングには、U-SQL が使用されました。予測モデルの構築とデプロイには、Azure Machine Learning Studio と共に、Python と Hive が使用されました。
 
 ## 次の手順
 
-[Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。「[Team Data Science Process walkthroughs (Team Data Science Process のチュートリアル)](data-science-process-walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
+[Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
 
 - [Team Data Science Process の活用: SQL Data Warehouse の使用](machine-learning-data-science-process-sqldw-walkthrough.md)
 - [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)
 - [Team Data Science Process: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)
 - [Azure HDInsight 上の Spark を使用したデータ サイエンス プロセスの概要](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

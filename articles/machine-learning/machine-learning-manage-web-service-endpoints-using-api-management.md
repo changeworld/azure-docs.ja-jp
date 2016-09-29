@@ -5,7 +5,7 @@
 	services="machine-learning"
 	documentationCenter=""
 	authors="roalexan"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
@@ -20,7 +20,7 @@
 
 # API Management を使用した AzureML Web サービスの管理方法
 
-##概要
+##Overview
 
 このガイドでは、API Management を使用して AzureML Web サービスを管理する方法について簡単に説明します。
 
@@ -130,7 +130,7 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。AzureML Web サービスのダッシュ ボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。AzureML Web サービスのダッシュ ボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <AZUREML サービス API キー>**」を入力します。AzureML Web サービスのダッシュ ボードに **api key** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
 要求本文に「**{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}**」と入力します。
 
@@ -148,7 +148,7 @@ RRS 操作の追加の場合とよく似ているため、BES 操作のスクリ
 
 ###実験の作成
 
-シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。次に例を示します。
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。For example:
 
 テキスト | ハッシュされたテキスト
 --- | ---
@@ -384,4 +384,4 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 	return
 	invokeBatchExecutionService()
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

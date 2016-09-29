@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure コンテナー サービス クラスターの負荷分散 | Microsoft Azure"
-   description="Azure コンテナー サービス クラスターを負荷分散します。"
+   pageTitle="Azure Container Service クラスターの負荷分散コンテナー | Microsoft Azure"
+   description="Azure Container Service クラスターの複数のコンテナーに負荷を分散します。"
    services="container-service"
    documentationCenter=""
    authors="rgardler"
@@ -18,13 +18,13 @@
    ms.date="07/11/2016"
    ms.author="rogardle"/>
 
-# Azure コンテナー サービス クラスターの負荷分散
+# Azure Container Service クラスターの負荷分散コンテナー
 
-この記事では、DC/OS によって管理された Azure コンテナー サービスで Web フロント エンドを設定します。また、アプリケーションをスケールアップできるようにするために、Marathon-LB の構成も行います。
+この記事では、Marathon-LB を使用して、DC/OS によって管理された Azure Container Service で内部ロード バランサーを作成する方法を見ていきます。こうすることで、アプリケーションを水平方向にスケーリングすることができます。また、ロード バランサーをパブリック クラスターに配置し、アプリケーション コンテナーをプライベート クラスターに配置することによって、パブリックおよびプライベート エージェント クラスターを活用することもできます。
 
 ## 前提条件
 
-orchestrator の種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。
+オーケストレーターの種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。
 
 ## 負荷分散
 
@@ -55,9 +55,11 @@ DC/OS CLI をインストールし、クラスターに接続できることを�
 dcos package install marathon-lb
 ```
 
+このコマンドは、ロード バランサーをパブリック エージェント クラスターに自動的にインストールします。
+
 ## 負荷分散 Web アプリケーションをデプロイする
 
-これで marathon-lb パッケージがインストールされたので、次の構成を使用して簡単な Web サーバーをデプロイできます。
+marathon-lb パッケージができたので、負荷分散するアプリケーション コンテナーをデプロイできます。この例では、次の構成を使用して、単純な Web サーバーをデプロイします。
 
 ```json
 {
@@ -94,11 +96,13 @@ dcos package install marathon-lb
 
 ```
 
-  * `HAProxy_0_VHOST` の値に、エージェントのロード バランサーの FQDN を設定します。これは、`<acsName>agents.<region>.cloudapp.azure.com` という形式になります。たとえば、`West US` リージョンに `myacs` という名前のコンテナー サービス クラスターを作成した場合、FQDN は `myacsagents.westus.cloudapp.azure.com` になります。この FQDN は、[Azure ポータル](https://portal.azure.com)でコンテナー サービス用に作成したリソース グループのリソースを表示している状態で、名前に "agent" が含まれるロード バランサーを検索する方法でも確認できます。
+  * `HAProxy_0_VHOST` の値に、エージェントのロード バランサーの FQDN を設定します。これは、`<acsName>agents.<region>.cloudapp.azure.com` という形式になります。たとえば、`West US` リージョンに `myacs` という名前の Container Service クラスターを作成した場合、FQDN は `myacsagents.westus.cloudapp.azure.com` になります。この FQDN は、[Azure Portal](https://portal.azure.com) で Container Service 用に作成したリソース グループのリソースを表示している状態で、名前に "agent" が含まれるロード バランサーを検索する方法でも確認できます。
   * servicePort を 10,000 以上のポートに設定します。この設定により、このコンテナーで実行されているサービスを特定できます。つまり、marathon-lb は、これを使用して、分散先となるサービスを特定します。
   * `HAPROXY_GROUP` ラベルを "external" に設定します。
   * `hostPort` を 0 に設定します。この設定は、使用可能なポートを Marathon が任意に割り当てることを意味します。
   * `instances` を、作成するインスタンスの数に設定します。これらの値は、設定後にいつでもスケールアップまたはスケールダウンできます。
+
+Marathon は既定でプライベート クラスターにデプロイされることに注意する必要があります。つまり、上のデプロイは、ロード バランサー経由でのみアクセスできます。通常は、これが望ましい動作です。
 
 ### DC/OS Web UI を使用してデプロイする
 
@@ -137,4 +141,4 @@ Azure lb:80 -> marathon-lb:10001 -> mycontainer:233423 Azure lb:8080 -> marathon
 
 DC/OS に関するドキュメントで [Marathon-LB](https://dcos.io/docs/1.7/usage/service-discovery/marathon-lb/) の詳細について参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

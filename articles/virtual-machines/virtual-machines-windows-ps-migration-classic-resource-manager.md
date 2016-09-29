@@ -48,8 +48,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
-	$subscr="<subscription name>"
-	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
+	Select-AzureRmSubscription –SubscriptionName "<subscription name>"
 
 >[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます。
 
@@ -73,8 +72,7 @@ Resource Manager モデルの自分のアカウントにサインインします
 
 現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
-	$subscr="<subscription name>"
-	Get-AzureSubscription –SubscriptionName $subscr | Select-AzureSubscription
+	Select-AzureSubscription –SubscriptionName "<subscription name>"
 
 ## 手順 4: 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
 
@@ -189,4 +187,4 @@ PowerShell または Azure ポータルを使用して、準備したストレ�
 - [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0914_2016-->

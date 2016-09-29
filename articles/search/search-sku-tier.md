@@ -4,7 +4,7 @@
 	services="search"
 	documentationCenter=""
 	authors="HeidiSteen"
-	manager="paulettm"
+	manager="jhubbard"
 	editor=""
     tags="azure-portal"/>
 
@@ -101,4 +101,4 @@ SKU ごとに許可されるインデックス数|3|5|50|200|200|1,000
 - [ポータルで Search サービスを作成する](search-create-service-portal.md)
 - [サービスをスケールするためにパーティションとレプリカの割り当てを変更する](search-capacity-planning.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

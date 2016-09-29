@@ -3,7 +3,7 @@
 	description="HDInsight の Hadoop クラスターを Azure PowerShell を使用して管理する方法について説明します。"
 	services="hdinsight"
 	editor="cgronlun"
-	manager="paulettm"
+	manager="jhubbard"
 	tags="azure-portal"
 	authors="mumian"
 	documentationCenter=""/>
@@ -239,4 +239,4 @@ Resource Manager モードでは、各 HDInsight クラスターは Azure リソ
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0914_2016-->

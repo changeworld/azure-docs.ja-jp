@@ -4,7 +4,7 @@
 	services="machine-learning" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="05/27/2016" 
+	ms.date="09/12/2016" 
 	ms.author="bradsev" />
 
 
@@ -23,13 +23,13 @@
 
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-このセクションでは、ソリューション アーキテクチャで示されている各ステージの詳細について、手順やカスタマイズのアドバイスと共に説明します。
+このセクションでは、ソリューション アーキテクチャで示されている各ステージについて、手順やカスタマイズのアドバイスと共に詳しく説明します。
 
 ## データ ソース
 
 このソリューションでは、次の 2 つのデータ ソースを使用します。
 
-- **シミュレートされた車両信号と診断データセット** 
+- **シミュレートされた車両信号と診断データセット**
 - **車両カタログ**
 
 車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。診断情報と信号を出力し、信号は特定の時点での車両の状態と運転パターンに対応しています。[ここ](http://go.microsoft.com/fwlink/?LinkId=717075)をクリックして、**車両テレマティックス シミュレーター Visual Studio ソリューション**をダウンロードし、要件に基づいてカスタマイズします。車両カタログには、参照データセットと、モデル マッピングに対する VIN が含まれています。
@@ -38,17 +38,17 @@
 
 *図 2 - 車両テレマティックス シミュレーター*
 
-これは JSON 形式のデータセットであり、以下のスキーマが含まれています。
+これは、次のスキーマを含む JSON 形式のデータセットです。
 
-分割 | 説明 | 値   
- ------- | ----------- | ---------  
-VIN | ランダムに生成された車両識別番号 | ランダムに生成された 10,000 個の車両識別番号を持つマスター リストから取得されます
+分割 | Description | 値 
+ ------- | ----------- | --------- 
+VIN | ランダムに生成された車両識別番号 | ランダムに生成された 10,000 個の車両識別番号を持つマスター リストから取得されます。
 Outside temperature | 車両運転時の外部温度 | ランダムに生成された 0 ～ 100 の数値
 Engine temperature | 車両のエンジン温度 | ランダムに生成された 0 ～ 500 の数値
 速度 | 車両運転時のエンジン回転数 | ランダムに生成された 0 ～ 100 の数値
 Fuel | 車両の燃料レベル | ランダムに生成された 0 ～ 100 の数値 (燃料レベルの割合を示す)
 EngineOil | 車両のエンジン オイル レベル | ランダムに生成された 0 ～ 100 の数値 (エンジン オイル レベルの割合を示す)
-Tirepressure | 車両のタイヤ空気圧 | ランダムに生成された 0 ～ 50 の数値 (タイヤ空気圧レベルの割合を示す)
+タイヤ空気圧 | 車両のタイヤ空気圧 | ランダムに生成された 0 ～ 50 の数値 (タイヤ空気圧レベルの割合を示す)
 Odometer | 車両の走行距離計の数値 | ランダムに生成された 0 ～ 200000 の数値
 Accelerator\_pedal\_position | 車両のアクセル ペダルの位置 | ランダムに生成された 0 ～ 100 の数値 (アクセル レベルの割合を示す)
 Parking\_brake\_status | 車両が駐車されているかどうか | True または False
@@ -58,8 +58,8 @@ Transmission\_gear\_position | 車両のギアの位置 | 状態: first、second
 Ignition\_status | 車両が走行しているか停車しているか | True または False
 Windshield\_wiper\_status | フロント ガラス ワイパーが動作しているかどうか | True または False
 ABS | ABS が動作中かどうか | True または False
-タイムスタンプ | データ ポイントが作成されたときのタイムスタンプ | 日付
-City | 車両の場所 | このソリューションでは、次の 4 つの都市: ベルビュー、レドモンド、サマミッシュ、シアトル
+Timestamp | データ ポイントが作成されたときのタイムスタンプ | 日付
+City | 車両の場所 | このソリューションでは、ベルビュー、レドモンド、サマミッシュ、シアトルの 4 つの都市
 
 
 車両モデル参照データセットには、VIN とモデルのマッピングが含まれています。
@@ -99,7 +99,7 @@ XUF99EW9OIQOMV7Q7 | ファミリー サルーン
 
 
 ### シミュレートされたデータを生成するには
-1.	車両テレマティックス シミュレーター ノードの右上隅にある矢印をクリックして、データ シミュレーター パッケージをダウンロードします。ローカルのコンピューターにファイルを保存して、展開します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *図 3 – 車両テレメトリ分析ソリューションのブループリント*
+1.	データ シミュレーター パッケージをダウンロードするには、車両テレマティックス シミュレーター ノードの右上隅にある矢印をクリックします。ローカルのコンピューターにファイルを保存して、展開します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *図 3 – 車両テレメトリ分析ソリューションのブループリント*
 
 2.	ローカル コンピューター上で、車両テレマティックス シミュレーター パッケージを展開したフォルダーに移動します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-simulator-folder.png)*図 4 - 車両テレマティックス シミュレーターのフォルダー*
 
@@ -115,7 +115,7 @@ XUF99EW9OIQOMV7Q7 | ファミリー サルーン
 
 
 ## データの取り込み
-車両信号および診断イベントと、リアルタイム分析および一括分析を取り込むために、Azure Event Hubs、Stream Analytics、および Data Factory の組み合わせが利用されます。これらのすべてのコンポーネントは、ソリューション デプロイの一部として作成および構成されます。
+車両信号、診断イベント、リアルタイム分析、一括分析を取り込むために、Azure Event Hubs、Stream Analytics、および Data Factory の組み合わせが利用されます。これらのすべてのコンポーネントは、ソリューション デプロイの一部として作成および構成されます。
 
 ### リアルタイム分析
 車両テレマティックス シミュレーターによって生成されたイベントは、Event Hub SDK を使用してイベント ハブに公開されます。Stream Analytics ジョブは、イベント ハブからこれらのイベントを取り込み、リアルタイムでデータを処理して、車両の状態を分析します。
@@ -128,7 +128,13 @@ XUF99EW9OIQOMV7Q7 | ファミリー サルーン
 
 *図 6 - Stream Analytics ジョブによるデータの処理*
 
-Stream Analytics ジョブは、イベント ハブからデータを取り込み、参照データと結合して、車両 VIN を対応するモデルにマップします。また、それらを Azure BLOB Storage に保持して、さまざまな一括分析で利用できるようにします。以下の Stream Analytics クエリを使用すると、データを Azure BLOB Storage に保持できます。
+Stream Analytics ジョブは以下の処理を行います。
+
+- イベント ハブからデータを取り込む
+- 参照データと結合して、車両 VIN を対応するモデルにマップする
+- データを Azure Blob Storage に保持して、さまざまな一括分析で利用できるようにする
+
+以下の Stream Analytics クエリを使用して、データを Azure Blob Storage に保持します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png)
 
@@ -147,7 +153,7 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 *図 9 - PrepareSampleDataPipeline*
 
-パイプラインが正常に実行され、"RawCarEventsTable" データセットが "Ready" としてマークされると、1 年分のシミュレートされた車両信号と診断データが生成されます。ストレージ アカウントの "connectedcar" コンテナーの下に、作成された次のフォルダーとファイルが表示されます。
+パイプラインが正常に実行され、"RawCarEventsTable" データセットが "Ready" としてマークされると、1 年分のシミュレートされた車両信号と診断データが生成されます。ストレージ アカウントの "connectedcar" コンテナーの下に、次のフォルダーとファイルが作成されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-prepare-sample-data-pipeline-output.png)
 
@@ -162,22 +168,29 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 [サンプル データを準備するための Azure Data Factory DotNet アクティビティの Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077)
 
 
-## 準備
->[AZURE.ALERT] ソリューションのこの手順は、一括処理の場合にだけ行います。
+## データセットの分割
 
-生の半構造化された車両信号と診断データセットは、データの準備の手順で、YEAR/MONTH 形式に分割されます。これは、クエリを効率化し、スケーラブルな長期保存を可能にするためです (*つまり*、最初の BLOB アカウントがいっぱいになったら、次のアカウントにフェールオーバーできます)。*PartitionedCarEventsTable* というラベルが付いた出力データは、基本的な "最も加工されていない" 形式のデータとして、お客様の "Data Lake" に長期間保持されます。このパイプラインへの入力データは、出力データが入力に対して完全に忠実であれば、通常は破棄されます。後で使用する場合にだけ、格納 (および分割) されます。
+未加工の半構造化された車両信号データセットと診断データセットは、データの準備の手順で、YEAR/MONTH 形式に分割されます。この分割はクエリを効率化します。また、最初の BLOB アカウントがいっぱいになったら次のアカウントにフェールオーバーすることにより、スケーラブルな長期保存を可能にします。
+
+>[AZURE.NOTE] ソリューションのこの手順は、一括処理の場合にだけ行います。
+
+入出力データのデータ管理
+
+- **出力データ** (ラベルは *PartitionedCarEventsTable*) は、基本的な "最も加工されていない" 形式のデータとして、顧客の "Data Lake" に長期間保存されます。
+- このパイプラインへの**入力データ**は、出力データが入力に対して完全に忠実であれば、通常は破棄されます。後で使用する場合にのみ、格納 (および分割) されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-workflow.png)
 
 *図 11 - 車両イベントの分割のワークフロー*
 
-生データは、"PartitionCarEventsPipeline" の Hive HDInsight アクティビティを使用して分割されます。手順 1 で生成された 1 年分のサンプル データは、YEAR/MONTH で分割され、1 年の各月に対応する車両信号と診断データのパーティション (合計 12 パーティション) が生成されます。
+生データは、"PartitionCarEventsPipeline" の Hive HDInsight アクティビティを使用して分割されます。手順 1. で生成された 1 年間のサンプル データは、YEAR/MONTH 形式に分割されます。パーティションは、1 年の各月の車両信号と診断データの生成に使用されます (合計 12 個のパーティション)。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partition-car-events-pipeline.png)
 
 *図 12 - PartitionCarEventsPipeline*
 
-分割には、次に示す "partitioncarevents.hql" という名前の Hive スクリプトが使用されます。このスクリプトは、ダウンロードした zip の \\demo\\src\\connectedcar\\scripts フォルダーにあります。
+分割には、次に示す "partitioncarevents.hql" という名前の Hive スクリプトを使用します。このスクリプトは、ダウンロードした zip の \\demo\\src\\connectedcar\\scripts フォルダーにあります。
+
 
 	SET hive.exec.dynamic.partition=true;
 	SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -316,7 +329,7 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 *図 13 - PartitionConnectedCarEvents Hive スクリプト*
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、生成された次のパーティションが表示されます。
+パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-partitioned-output.png)
 
@@ -326,7 +339,7 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 ## データ分析
 
-このセクションでは、車両の状態と運転の習慣に対するさまざまな高度な分析を行うために、Azure Stream Analytics、Azure Machine Learning、Azure Data Factory、および Azure HDInsight の組み合わせをどのように使用したかについて説明します。このセクションには、以下の 3 つのサブセクションがあります。
+このセクションでは、Azure Stream Analytics、Azure Machine Learning、Azure Data Factory、Azure HDInsight を組み合わせて、車両の状態と運転の習慣に対してさまざまな高度な分析を行う方法について説明します。このセクションには、次の 3 つのサブセクションがあります。
 
 1.	**機械学習**: このサブセクションには、サービス メンテナンスを必要とする車両と、安全性の問題のためにリコールを必要とする車両を予測するためにこのソリューションで使用した、異常検出実験に関する情報が含まれています。
 2.	**リアルタイム分析**: このサブセクションには、Stream Analytics クエリ言語を使用し、カスタム アプリケーションによるリアルタイムでの機械学習実験を運用可能にした、リアルタイム分析に関する情報が含まれています。
@@ -345,24 +358,26 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 	- エンジン温度が高いが、外部温度が低い
 	- エンジン温度が低いが、外部温度が高い
 
-上の要件に基づき、異常を検出するための 2 つの異なるモデルを作成しました。1 つは車両メンテナンスの検出用で、もう 1 つは車両リコールの検出用です。どちらのモデルでも、異常検出のために、組み込みの主成分分析 (PCA) アルゴリズムが使用されています。
+これらの要件に基づき、異常を検出するための 2 つの異なるモデルを作成しました。1 つは車両メンテナンスの検出用で、もう 1 つは車両リコールの検出用です。どちらのモデルでも、異常検出のために、組み込みの主成分分析 (PCA) アルゴリズムが使用されています。
 
-**メンテナンス検出モデル** メンテナンス検出モデルでは、3 つのインジケーター (タイヤ空気圧、エンジン オイル、およびエンジン温度) のいずれかがそれぞれの条件を満たす場合に、異常が報告されます。そのため、モデルの構築では、これらの 3 つの変数だけを考慮すれば済みます。Azure Machine Learning による実験では、まず、**データセット内の列の選択**モジュールを使用して、これらの 3 つの変数を抽出します。次に、PCA ベースの異常検出モジュールを使用して、異常検出モデルを構築します。
+**メンテナンス検出モデル**
+
+3 つのインジケーター (タイヤ空気圧、エンジン オイル、エンジン温度) のいずれかがそれぞれの条件を満たす場合、メンテナンス検出モデルは異常を報告します。そのため、モデルの構築では、これらの 3 つの変数だけを考慮すれば済みます。Azure Machine Learning による実験では、まず、**データセット内の列の選択**モジュールを使用して、これらの 3 つの変数を抽出します。次に、PCA ベースの異常検出モジュールを使用して、異常検出モデルを構築します。
 
 主成分分析 (PCA) は、機能の選択、分類、および異常検出に使用できる、機械学習で確立された手法です。PCA では、関連を持つ可能性がある変数を含むケースのセットを、主要成分と呼ばれる値のセットに変換します。PCA ベースのモデルの基本的な考え方は、機能や異常をより簡単に識別できるように、データをより低い次元の空間に投影することです。
  
-異常検出の場合、異常検出機能は新しい入力のそれぞれに対して、まず、固有ベクトルへの投影を計算し、次に正規化された再構成エラーを計算します。この正規化されたエラーが、異常スコアです。エラーのスコアが高いほど、より異常なインスタンスになります。
+検出モデルの新しい入力のそれぞれに対して、異常検出機能はまず、固有ベクトルへの投影を計算し、次に正規化された再構成エラーを計算します。この正規化されたエラーが、異常スコアです。エラーのスコアが高いほど、より異常なインスタンスになります。
 
-メンテナンス検出の問題では、各レコードを 3 次元空間内の点として考えることができます。この点は、タイヤ空気圧、エンジン オイル、およびエンジン温度の座標によって定義されます。これらの異常をキャプチャするには、PCA を使用して、3 次元空間内のデータを 2 次元空間に投影します。そのため、PCA で使用する Number of components パラメーターを 2 に設定しました。このパラメーターは、PCA ベースの異常検出を適用するときに、重要な役割を果たします。PCA を使用してデータを投影すると、これらの異常をより簡単に特定できます。
+メンテナンス検出の問題では、各レコードを 3 次元空間内の点として考えることができます。この点は、タイヤ空気圧、エンジン オイル、およびエンジン温度の座標によって定義されます。これらの異常をキャプチャするには、PCA を使用して、3 次元空間内の元データを 2 次元空間に投影します。そのため、PCA で使用する Number of components パラメーターを 2 に設定しました。このパラメーターは、PCA ベースの異常検出を適用するときに、重要な役割を果たします。PCA を使用してデータを投影すると、これらの異常をより簡単に特定できます。
 
-**リコール異常検出モデル** リコール異常検出モデルでは、データセット内の列の選択モジュールと PCA ベースの異常検出モジュールを同じような方法で使用します。具体的には、まず、**データセット内の列の選択**モジュールを使用して、3 つの変数 (エンジン温度、外部温度、および速度) を抽出します。エンジン温度は、通常、速度と関連しているため、速度の変数も含めます。次に、PCA ベースの異常検出モジュールを使用して、3 次元空間から 2 次元空間にデータを投影します。エンジン温度と外部温度が大きく負相関している場合、リコール条件が満たされ、車両のリコールが必要になります。PCA ベースの異常検出アルゴリズムを使用すると、PCA の実行後、異常をキャプチャできます。
+**リコール異常検出モデル** リコール異常検出モデルでは、データセット内の列の選択モジュールと PCA ベースの異常検出モジュールを同じような方法で使用します。具体的には、まず、**データセット内の列の選択**モジュールを使用して、3 つの変数 (エンジン温度、外部温度、速度) を抽出します。エンジン温度は、通常、速度と関連しているため、速度の変数も含めます。次に、PCA ベースの異常検出モジュールを使用して、3 次元空間から 2 次元空間にデータを投影します。エンジン温度と外部温度が大きく負相関している場合、リコール条件が満たされ、車両のリコールが必要になります。PCA ベースの異常検出アルゴリズムを使用すると、PCA の実行後、異常をキャプチャできます。
 
-どちらのモデルをトレーニングするときも、PCA ベースの異常検出モデルをトレーニングするための入力データとして、メンテナンスやリコールを必要としない通常のデータを使用する必要があることに注意してください。スコア付け実験では、トレーニング済みの異常検出モデルを使用して、車両がメンテナンスやリコールを必要とするかどうかを調べます。
+どちらのモデルをトレーニングするときも、PCA ベースの異常検出モデルをトレーニングするための入力データとして、メンテナンスやリコールを必要としない通常のデータを使用する必要があります。スコア付け実験では、トレーニング済みの異常検出モデルを使用して、車両がメンテナンスやリコールを必要とするかどうかを調べます。
 
 
 ### リアルタイム分析
 
-次の Stream Analytics SQL クエリは、異常を検出し、アラートを発し、特定の地域で運転されている車両の全体的な状態を判断して、人口統計に関連付けるために、重要なすべての車両パラメーター (車両速度、燃料レベル、エンジン温度、走行距離計の数値、タイヤ空気圧、エンジン オイル レベルなど) の平均を取得する目的で使用されます。
+次の Stream Analytics SQL クエリを使用して、車両速度、燃料レベル、エンジン温度、走行距離計の数値、タイヤ空気圧、エンジン オイル レベルなどの重要な車両パラメーターすべての平均を取得します。この平均を使用して、異常を検出してアラートを発行し、特定の地域で運転されている車両の全体的な状態を判断して、人口統計に関連付けます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
@@ -370,55 +385,55 @@ Stream Analytics ジョブは、イベント ハブからデータを取り込�
 
 すべての平均は、3 秒間のタンブリング ウィンドウで計算します。ここでタンブリング ウィンドウを使用しているのは、重複せずに連続する時間間隔が必要であるためです。
 
-Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細については、「[Windowing (Azure Stream Analytics) (ウィンドウ化 (Azure Stream Analytics))](https://msdn.microsoft.com/library/azure/dn835019.aspx)」をクリックしてください。
+Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細については、「[Windowing (Azure Stream Analytics) (ウィンドウ化 (Azure Stream Analytics))](https://msdn.microsoft.com/library/azure/dn835019.aspx)」を参照してください。
 
 **リアルタイムの予測**
 
 機械学習モデルをリアルタイムで運用できるようにするアプリケーションが、ソリューションの一部として含まれています。"RealTimeDashboardApp" と呼ばれるこのアプリケーションは、ソリューションのデプロイの一環として作成および構成されます。このアプリケーションは、以下の処理を行います。
 
-1.	Stream Analytics がイベントを連続するパターンで発行しているイベント ハブ インスタンスをリッスンします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)*図 16 – 出力のイベント ハブ インスタンスにデータを発行するための Stream Analytics クエリ* 
+1.	Stream Analytics があるパターンで連続的にイベントを発行しているイベント ハブ インスタンスをリッスンします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)"*図 16 – 出力のイベント ハブ インスタンスにデータを発行するための Stream Analytics クエリ*"
 
 2.	このアプリケーションが受け取るすべてのイベントに対して、次の処理を行います。
 
 	- Machine Learning Request-Response Scoring (RRS) エンドポイントを使用して、データを処理します。RRS エンドポイントは、デプロイの一環として自動的に発行されます。
 	- RRS 出力は、プッシュ API を使用して PowerBI データセットに発行されます。
 
-このパターンは、基幹業務アプリケーションをアラート、通知、メッセージングなどのシナリオ用のリアルタイム分析フローと統合するシナリオにも適用できます。
+このパターンは、基幹業務 (LOB) アプリケーションを、アラート、通知、メッセージングなどのシナリオ用のリアルタイム分析フローと統合するシナリオにも適用できます。
 
 [ここ](http://go.microsoft.com/fwlink/?LinkId=717078)をクリックして、RealtimeDashboardApp Visual Studio ソリューションをダウンロードし、カスタマイズします。
 
-****リアルタイム ダッシュボード アプリケーションを実行するには **
+**リアルタイム ダッシュボード アプリケーションを実行するには**
 
 1.	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで "Download Real-time Dashboard Application" リンクをクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *図 17 – PowerBI ダッシュボードのセットアップ手順*
 2.	ローカルに展開し、保存します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *図 18 – RealtimeDashboardApp フォルダー*
 3.	RealtimeDashboardApp.exe アプリケーションを実行します。
-4.	有効な Power BI 資格情報を指定し、サインインして、[Accept] をクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+4.	有効な Power BI 資格情報を指定し、サインインして、[Accept] をクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png)
 
-*図 19 – RealtimeDashboardApp: PowerBI へのサインイン*
+"*図 19 – RealtimeDashboardApp: PowerBI へのサインイン*"
 
->[AZURE.NOTE] 注: PowerBI データセットをフラッシュする場合は、次のように、"flushdata" パラメーターを指定して RealtimeDashboardApp を実行します。
+>[AZURE.NOTE] PowerBI データセットをフラッシュする場合は、"flushdata" パラメーターを指定して RealtimeDashboardApp を実行します。
 
 	RealtimeDashboardApp.exe -flushdata
 
 ### 一括分析
 
-ここでの目標は、Contoso Motors がビッグ データを活用するために Azure コンピューティング機能をどのように使用しているかを示すことです。運転パターン、使用行動、および車両の状態についてさまざまな情報を得て、次のようなことに役立てています。
+ここでの目標は、Contoso Motors がビッグ データを活用するために Azure コンピューティング機能をどのように使用しているかを示すことです。運転パターン、使用行動、および車両の状態についてさまざまな情報を得て、次のようなことに役立てています。これにより、次のことが可能になります。
 
 - カスタマー エクスペリエンスを向上させ、運転の習慣や燃費のよい運転行動についての知見を提供して、コストを下げます。
-- 顧客とその運転パターンについて事前に学習して、ビジネスの意思決定を制御したり、最高クラスの製品やサービスを提供したりします。
+- 顧客とその運転パターンについて事前に学習して、ビジネスの意思決定を制御したり、最高クラスの製品やサービスを提供します。
 
 このソリューションでは、以下のメトリックを対象にします。
 
-1.	**アグレッシブな運転行動** モデル、場所、運転条件、および時期の傾向を識別して、アグレッシブな運転パターンを把握し、それを Contoso Motors がマーケティング キャンペーン、新しい個人用の機能の促進、走行距離ベースの保険料などに使用できるようにします。
-2.	**低燃費な運転行動** モデル、場所、運転条件、および時期の傾向を識別して、低燃費な運転パターンを把握し、それを Contoso Motors がマーケティング キャンペーン、新機能の促進、低コストで環境にやさしい運転習慣についての運転者への積極的な広報などに使用できるようにします。 
-3.	**リコール モデル** 異常検出の機械学習実験を実施して、リコールを必要とするモデルを識別します。
+1.	**アグレッシブな運転行動**: モデル、場所、運転条件、時期の傾向を識別して、アグレッシブな運転パターンを把握します。Contoso Motors は、マーケティング キャンペーン、新しい個人用機能の促進、走行距離ベースの保険料などにこれらの知見を使用できます。
+2.	**低燃費な運転行動**: モデル、場所、運転条件、時期の傾向を識別して、低燃費な運転パターンを把握します。Contoso Motors は、マーケティング キャンペーン、新機能の促進、低コストで環境にやさしい運転習慣についての運転者への積極的な広報などにこれらの知見を使用できます。
+3.	**リコール モデル**: 異常検出の機械学習実験を実施して、リコールを必要とするモデルを識別します。
 
 次に、各メトリックの詳細を説明します。
 
 
 **アグレッシブな運転パターン**
 
-分割された車両信号と診断データが、"AggresiveDrivingPatternPipeline" という名前のパイプラインで Hive を使用して処理され、アグレッシブな運転パターンを示すモデル、場所、車両、運転条件などが特定されます。
+分割された車両信号と診断データが、"AggresiveDrivingPatternPipeline" という名前のパイプラインで Hive を使用して処理され、アグレッシブな運転パターンを示すモデル、場所、車両、運転条件などのパラメーターが特定されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-aggressive-driving-pattern.png) *図 20 – アグレッシブな運転パターンのワークフロー*
 
@@ -483,9 +498,9 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 
 *図 21 – アグレッシブな運転パターンの Hive クエリ*
 
-このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、および速度の組み合わせを使用して、高速度でのブレーキ使用パターンに基づいて無謀/アグレッシブな運転行動を検出します。
+このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、速度の組み合わせを使用して、高速度でのブレーキ使用パターンに基づいた無謀/アグレッシブな運転行動を検出します。
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、生成された次のパーティションが表示されます。
+パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aggressive-driving-pattern-output.png)
 
@@ -494,7 +509,7 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 
 **低燃費な運転パターン**
 
-分割された車両信号と診断データが、"FuelEfficientDrivingPatternPipeline" という名前のパイプラインで Hive を使用して処理され、低燃費な運転パターンを示すモデル、場所、車両、運転条件などが特定されます。
+分割された車両信号と診断データが、"FuelEfficientDrivingPatternPipeline" という名前のパイプラインで処理されます。Hive を使用して、低燃費な運転パターンを示すモデル、場所、車両、運転条件などのプロパティが特定されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-fuel-efficient-driving-pattern.png)
 
@@ -562,9 +577,9 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 
 *図 24 – 低燃費な運転パターンの Hive クエリ*
 
-このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、速度、およびアクセス ペダルの位置の組み合わせを使用して、加速度、ブレーキ使用、および速度のパターンに基づいて低燃費な運転行動を検出します。
+このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、速度、アクセル ペダルの位置の組み合わせを使用して、加速度、ブレーキ使用、速度のパターンに基づいた低燃費な運転行動を検出します。
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、生成された次のパーティションが表示されます。
+パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-fuel-efficient-driving-pattern-output.png)
 
@@ -650,9 +665,8 @@ Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細に�
 	from CarEventsAnomaly
 	where RecallLabel = '1' AND RecallProbability >= '0.60'
 
-*図 29 – リコール集計の Hive クエリ*
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、生成された次のパーティションが表示されます。
+パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-detect-anamoly-pipeline-output.png)
 
@@ -702,8 +716,8 @@ PowerBI レポートとダッシュボードを設定するための詳細な手
 
 *図 36 - PowerBI ダッシュボード*
 
-## まとめ
+## 概要
 
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0914_2016-->

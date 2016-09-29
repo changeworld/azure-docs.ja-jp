@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/10/2016"
+	ms.date="09/16/2016"
 	ms.author="garye"/>
 
 
@@ -43,4 +43,4 @@
 
 このチュートリアルは、[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)にある「[Binary Classfication: Credit risk prediction (二項分類: 信用リスク予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

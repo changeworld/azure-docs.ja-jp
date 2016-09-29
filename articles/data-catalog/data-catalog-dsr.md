@@ -3,8 +3,8 @@
    description="現在サポートされているデータ ソースの仕様。"
    services="data-catalog"
    documentationCenter=""
-   authors="spelluru"
-   manager="paulettm"
+   authors="trhabe"
+   manager="jstrauss"
    editor=""
    tags=""/>
 <tags
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="07/25/2016"
+   ms.date="09/13/2016"
    ms.author="trhabe"/>
 
 # Azure Data Catalog でサポートされるデータ ソース
 
-Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。さらにその下の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+Azure Data Catalog のユーザーは、ワンクリック登録ツールのパブリック API を使用して、または Data Catalog の Web ポータルに直接情報を手動で入力してメタデータを公開できます。以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。記事の 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
 
 
 ## サポートされるデータ ソースの一覧
@@ -73,8 +73,8 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Azure Storage Table</td>
       <td>✓</td>
-      <td></td>
-      <td></td>
+      <td>✓</td>
+      <td>✓</td>
       <td>
         <font size="2"></font>
       </td>
@@ -562,7 +562,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>address:
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; schema </font>
       </td>
     </tr>
@@ -591,7 +591,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>Hadoop 分散ファイル システム</td>
       <td>コンテナー</td>
-      <td>プロビジョニング</td>
+      <td>クラスター</td>
       <td>
         <font size=2> protocol: webhdfs
             <br>authentication: {basic, oauth}
@@ -634,7 +634,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>address:
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>connectionProperties:
             <br>&#160;&#160;&#160;&#160;&#160; serverProtocol: {hive2} </font>
       </td>
@@ -795,6 +795,17 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       </td>
     </tr>
     <tr>
+      <td>Power Query</td>
+      <td>テーブル</td>
+      <td>データのマッシュアップ</td>
+      <td>
+        <font size=2> protocol: power-query
+            <br>authentication: {oauth}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; url </font>
+      </td>
+    </tr>
+    <tr>
       <td>Salesforce</td>
       <td>テーブル</td>
       <td>オブジェクト</td>
@@ -853,7 +864,21 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; schema
-            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト</font>
+            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Data Warehouse</td>
+      <td>TableValuedFunction</td>
+      <td>テーブル値関数</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object</font>
       </td>
     </tr>
     <tr>
@@ -898,6 +923,20 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
     <tr>
       <td>SQL Server</td>
+      <td>TableValuedFunction</td>
+      <td>テーブル値関数</td>
+      <td>
+        <font size=2> protocol: tds
+            <br>authentication: {protocol, windows}
+            <br>address:
+            <br>&#160;&#160;&#160;&#160;&#160; server
+            <br>&#160;&#160;&#160;&#160;&#160; database
+            <br>&#160;&#160;&#160;&#160;&#160; schema
+            <br>&#160;&#160;&#160;&#160;&#160; object</font>
+      </td>
+    </tr>
+    <tr>
+      <td>SQL Server</td>
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
@@ -911,7 +950,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     <tr>
       <td>SQL Server</td>
       <td>テーブル</td>
-      <td>テーブル、ビュー、テーブル値関数</td>
+      <td>テーブル、ビュー</td>
       <td>
         <font size=2> protocol: tds
             <br>authentication: {protocol, windows}
@@ -946,7 +985,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
       </td>
     </tr>
@@ -961,7 +1000,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
       </td>
     </tr>
@@ -1004,7 +1043,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {KPI} </font>
       </td>
     </tr>
@@ -1019,7 +1058,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Measure} </font>
       </td>
     </tr>
@@ -1034,7 +1073,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
             <br>&#160;&#160;&#160;&#160;&#160; server
             <br>&#160;&#160;&#160;&#160;&#160; database
             <br>&#160;&#160;&#160;&#160;&#160; model
-            <br>&#160;&#160;&#160;&#160;&#160; object
+            <br>&#160;&#160;&#160;&#160;&#160; オブジェクト
             <br>&#160;&#160;&#160;&#160;&#160; objectType: {Table} </font>
       </td>
     </tr>
@@ -1127,4 +1166,4 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 </table>
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

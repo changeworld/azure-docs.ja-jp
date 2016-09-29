@@ -27,7 +27,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じリソース グループに含めることはできません。したがって、バックエンド サーバーは、他のすべてのコンポーネントと異なるリソース グループで実装する必要があります。以下の手順では、メイン リソース グループとして *IaaSStory* という名前のリソース グループを使用し、バックエンド サーバーとして *IaaSStory-BackEnd* を使用します。
+現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じ可用性セットに含めることはできません。したがって、バックエンド サーバーは、他のすべてのコンポーネントと異なるリソース グループで実装する必要があります。以下の手順では、メイン リソース グループとして *IaaSStory* という名前のリソース グループを使用し、バックエンド サーバーとして *IaaSStory-BackEnd* を使用します。
 
 ## 前提条件
 
@@ -309,4 +309,4 @@
 		RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 		StatusCode          : OK
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0914_2016-->

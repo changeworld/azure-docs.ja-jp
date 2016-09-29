@@ -1,0 +1,9 @@
+## RM からクラシックへの仮想ネットワークのピアリング
+
+このシナリオでは、2 つの Vnet 間、具体的には、Azure Resource Manager デプロイメント モデルに属する **VNET1** とクラシック デプロイメント モデルに属する **VNET2** の間にピアリングを作成します。
+
+> [AZURE.NOTE] 仮想ネットワークはすべて同じサブスクリプションに属している必要があります。
+
+![asm to arm deployment scenario](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)
+
+<!---HONumber=AcomDC_0921_2016-->

@@ -20,9 +20,9 @@
 # PowerShell を使用したサイト間接続を持つ VNet の作成
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Azure クラシック ポータル](vpn-gateway-site-to-site-create.md)
-- [PowerShell - Resource Manager](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+- [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
+- [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
 
 この記事では、**Azure Resource Manager デプロイメント モデル**を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
 
@@ -177,7 +177,7 @@ PowerShell の例を使用する場合は、以下の点に注意してくださ
 
 ## 7\.VPN デバイスの構成
 
-オンプレミス VPN デバイスを構成するには、この時点で仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。また、詳細については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。
+オンプレミス VPN デバイスを構成するには、この時点で仮想ネットワーク ゲートウェイのパブリック IP アドレスが必要です。具体的な構成方法については、お使いのデバイスの製造元の情報を参照してください。詳細については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページをご覧ください。
 
 仮想ネットワーク ゲートウェイのパブリック IP アドレスを検索するには、次のサンプルを使用します。
 
@@ -222,4 +222,4 @@ VPN 接続を検証する方法はいくつかあります。
 
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -70,4 +70,4 @@ Azure Search の[インデックス属性について詳しくは、MSDN をご�
 
 データ ストレージの要件が随時変更される環境でも、パーティションを追加または削除することで容量を増減できます。詳細については、「[Microsoft Azure で Search サービスを管理する](search-manage.md)」または「[サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

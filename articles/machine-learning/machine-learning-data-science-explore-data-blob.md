@@ -4,7 +4,7 @@
 	services="machine-learning,storage" 
 	documentationCenter="" 
 	authors="bradsev" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun" />
 
 <tags 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="fashah;garye;bradsev" />
+	ms.date="09/13/2016" 
+	ms.author="bradsev" />
 
 #Pandas を使用して Azure BLOB ストレージのデータを探索する
 
 このドキュメントでは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 
-次の**メニュー**は、ツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+次の**メニュー**は、ツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。このタスクは、[Data Science Process]() の 1 ステップです。
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -28,13 +28,13 @@
 ## 前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。
-* Azure BLOB ストレージ アカウントにデータが格納されている。
+* Azure のストレージ アカウントが作成されている。手順については、「[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md)」をご覧ください。
+* Azure BLOB ストレージ アカウントにデータが格納されている。手順については、「[Azure Storage との間でのデータの移動](../storage/storage-moving-data.md)」を参照してください。
 
 ## Pandas データ フレームにデータを読み込む
-データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。この手順に必要な操作は次のとおりです。
+データセットを探索および操作するには、先にデータを BLOB ソースからローカル ファイルにダウンロードしておく必要があります。このローカル ファイルを、Pandas データ フレームに読み込むことができます。この手順に必要な操作は次のとおりです。
 
-1. BLOB サービスを使用する次の Python コード サンプルで Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
+1. BLOB サービスを使用する次の Python コード サンプルで Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。
 
 	    from azure.storage.blob import BlobService
     	import tables
@@ -64,11 +64,11 @@
 
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
-1. **行と列の数**を調べる 
+1. **行と列の数**を調べる
 
 		print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 
-2. 次に示すように、データセット内の最初と最後の**数行**を**検査**します。
+2. 次のデータセットの始めまたは終わりの数**行**を**検査**します。
 
 		dataframe_blobdata.head(10)
 		
@@ -115,4 +115,4 @@
 		#correlation between column_a and column_b
 		dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0914_2016-->

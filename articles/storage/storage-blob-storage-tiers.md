@@ -3,8 +3,8 @@
     description="Azure Blob Storage のストレージ層では、アクセス パターンに基づいてオブジェクト データをコスト効率の高い方法で格納できるストレージを提供しています。クール ストレージ層は、アクセス頻度の低いデータ向けに最適化されています。"
     services="storage"
     documentationCenter=""
-    authors="sribhat-msft"
-    manager=""
+    authors="michaelhauss"
+    manager="vamshik"
     editor="tysonn"/>
 
 <tags
@@ -13,13 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="get-started-article"
-    ms.date="07/05/2016"
-    ms.author="sribhat"/>
+    ms.date="09/20/2016"
+    ms.author="mihauss;robinsh"/>
 
 
 # Azure Blob Storage: ホット ストレージ層とクール ストレージ層
 
-## 概要
+## Overview
 
 Azure Storage では現在、Blob Storage (オブジェクト ストレージ) 用に 2 つのストレージ層が提供されています。そのため、使い方しだいで、コスト効率の高い方法でデータを格納することができます。Azure **ホット ストレージ層**は、頻繁にアクセスされるデータの格納に適しています。Azure **クール ストレージ層**は、アクセスされる頻度は低いものの、保管期間が長いデータの格納に適しています。クール ストレージ層に格納されるデータについては、可用性が若干低くても許容できますが、高い持続性は必要で、アクセスにかかる時間とスループット特性もホット データと同程度である必要があります。クール データの場合、可用性の SLA が若干低く、アクセス コストが高めであっても、ストレージ コストが大幅に低ければ許容できます。
 
@@ -340,4 +340,4 @@ Azure クライアント ライブラリのいずれかまたは Azure ストレ
 
 [自分のストレージ アカウントを調べる](http://storageexplorer.com/)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

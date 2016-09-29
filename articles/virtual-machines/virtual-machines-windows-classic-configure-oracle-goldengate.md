@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure-services"
-	ms.date="05/17/2016"
+	ms.date="09/06/2016"
 	ms.author="rclaus" />
 
 
@@ -43,7 +43,7 @@ Oracle GoldenGate に含まれる主なコンポーネントには、抽出、�
 
 このチュートリアルでは、次のことについて説明します。
 
-1. サイト A とサイト B でデータベースをセットアップする  
+1. サイト A とサイト B でデータベースをセットアップする
 
 	1. 初期データ ロードを実行する
 
@@ -601,4 +601,4 @@ Oracle GoldenGate 構成を確認するには、サイト A でデータベー�
 ##その他のリソース
 [Azure の Oracle 仮想マシン イメージ](virtual-machines-linux-classic-oracle-images.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0914_2016-->

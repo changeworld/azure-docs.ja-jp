@@ -4,7 +4,7 @@
 	services="hdinsight"
 	documentationCenter=""
 	authors="nitinme"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 	tags="azure-portal"/>
 
@@ -45,7 +45,7 @@ Script Action を使用して Windows ベースの HDInsight クラスターを 
 1. 「[HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md#portal)」の説明に基づき、**CUSTOM CREATE** オプションを使用してクラスターの作成を開始します。
 2. ウィザードの **[スクリプトのアクション]** ページで、**[スクリプト アクションの追加]** をクリックし、次に示すように、スクリプト アクションの詳細を指定します。
 
-	![Script Action を使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "スクリプト アクションを使ってクラスターをカスタマイズする")
+	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "スクリプト アクションを使ってクラスターをカスタマイズする")
 
 	<table border='1'>
 		<tr><th>プロパティ</th><th>値</th></tr>
@@ -183,4 +183,4 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->

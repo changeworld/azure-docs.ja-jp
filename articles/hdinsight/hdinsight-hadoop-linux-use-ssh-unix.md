@@ -14,7 +14,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/30/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 #Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する
@@ -128,7 +128,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 * **ユーザー名** - クラスターの作成時に指定した SSH ユーザー名。
 
-次の例では、ユーザー **me** として、**mycluster** のヘッド ノード 0 に接続します。
+次の例では、ユーザー **me** として、**mycluster** のプライマリ ヘッド ノードに接続します。
 
 	ssh me@mycluster-ssh.azurehdinsight.net
 
@@ -140,7 +140,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 >
 > `ssh -i ~/.ssh/id_rsa me@mycluster-ssh.azurehdinsight.net`
 
-ヘッド ノードのアドレスを使用して接続する際に、ポートが指定されていない場合は、SSH のポートは既定でポート 22 に設定され、HDInsight クラスターのヘッド ノード 0 に接続されます。ポート 23 を使用した場合は、ヘッド ノード 1 に接続します。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+ヘッド ノードのアドレスを使用して接続する際に、ポートが指定されていない場合は、SSH のポートは既定でポート 22 に設定され、HDInsight クラスターのプライマリ ヘッド ノードに接続されます。ポート 23 を使用すると、セカンダリに接続されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
 ###ワーカー ノードへの接続
 
@@ -195,9 +195,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
     > [AZURE.NOTE] SSH セッションの認証にパスワードを使用する場合は、もう一度パスワードを入力するように求めるメッセージ表示されます。SSH キーを使用する場合は、何も表示されずに接続が完了します。
 
-4. セッションが確立されると、ターミナルのプロンプトが `username@hn0-clustername` から `username@wk0-clustername` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
+4. セッションが確立されると、ターミナルのプロンプトが `username@hn#-clustername` から `username@wk#-clustername` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
 
-4. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@hn0-clustername` プロンプトが表示されます。
+4. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@hn#-clustername` プロンプトが表示されます。
 
 ##複数のアカウントの追加
 
@@ -229,7 +229,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCelfkjrpYHYiks4TM+r1LVsTYQ4jAXXGeOAF9Vv/KG
 
 ##<a id="tunnel"></a>SSH トンネリング
 
-SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
+SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求されたリソースにルーティングされます。
 
 > [AZURE.IMPORTANT] SSH トンネルは、Hadoop サービス用の Web UI にアクセスするための要件です。たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
 
@@ -247,4 +247,4 @@ SSH トンネルの作成と使用の詳細については、[SSH トンネリ�
 
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

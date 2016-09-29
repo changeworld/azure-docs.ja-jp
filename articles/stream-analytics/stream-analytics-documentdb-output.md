@@ -5,7 +5,7 @@
 	documentationCenter=""
 	services="stream-analytics,documentdb"
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -62,4 +62,4 @@ Stream Analytics で DocumentDB を出力として作成すると、以下に示
 -   **パーティション キー** – コレクション間で出力をパーティション分割するためのキーの指定に使用される、出力イベント内のフィールドの名前。コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。
 -   **Document ID** – 省略可能です。挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0914_2016-->
