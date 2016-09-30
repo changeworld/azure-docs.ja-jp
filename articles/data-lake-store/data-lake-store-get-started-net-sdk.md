@@ -263,4 +263,4 @@ DataLakeStoreUploader は、ローカル ファイル (またはフォルダー)
 - [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
 - [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!-----HONumber=AcomDC_0921_2016-->
