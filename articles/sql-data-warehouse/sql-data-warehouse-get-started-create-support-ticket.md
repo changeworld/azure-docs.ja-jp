@@ -103,4 +103,4 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=AcomDC_0907_2016-->
+<!-------HONumber=AcomDC_0907_2016-->

@@ -102,4 +102,4 @@ Visual Studio を使用して SQL データベースに接続するには、以�
 - Visual Studio で SQL データベースを開くには、SQL Server Data Tools を使用します。詳細については、「[SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx)」を参照してください。
 - コードを使用して SQL データベースに接続するには、「[.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!-------HONumber=AcomDC_0824_2016-->

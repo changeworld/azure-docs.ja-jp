@@ -29,4 +29,4 @@
 
 StorSimple ボリュームの作成方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/)を参照してください。
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---------HONumber=AcomDC_0211_2016-->

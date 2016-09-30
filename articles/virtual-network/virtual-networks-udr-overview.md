@@ -94,4 +94,4 @@ Azure PowerShell では、次のように、一部の "NextHopType" 値が異な
 - [リソース マネージャーのデプロイ モデルでルートを作成](virtual-network-create-udr-arm-template.md)し、サブネットに関連付ける方法について説明します。
 - [クラシック デプロイ モデルでルートを作成](virtual-network-create-udr-classic-ps.md)し、サブネットに関連付ける方法について説明します。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!-------HONumber=AcomDC_0810_2016-->

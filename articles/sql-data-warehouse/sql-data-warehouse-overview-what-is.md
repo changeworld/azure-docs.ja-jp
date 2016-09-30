@@ -182,4 +182,4 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=AcomDC_0727_2016-->
+<!-------HONumber=AcomDC_0727_2016-->
