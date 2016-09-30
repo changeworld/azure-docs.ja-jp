@@ -94,4 +94,4 @@
 ## タスク 4: Azure 仮想ネットワークの DNS 設定を更新する
 次に、[Azure 仮想ネットワークの DNS 設定を更新](active-directory-ds-getting-started-dns.md)します。
 
-<!-----HONumber=AcomDC_0706_2016-->
+<!-------HONumber=AcomDC_0706_2016-->

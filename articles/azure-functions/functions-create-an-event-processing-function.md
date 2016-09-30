@@ -81,4 +81,4 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!-----HONumber=AcomDC_0622_2016-->
+<!-------HONumber=AcomDC_0622_2016-->

@@ -51,4 +51,4 @@ Azure AD ドメイン サービスを有効にした仮想ネットワークの 
 ## タスク 5 - Azure AD ドメイン サービスとのパスワード同期を有効にする
 次に、[Azure AD ドメイン サービスとのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)にします。
 
-<!-----HONumber=AcomDC_0706_2016-->
+<!-------HONumber=AcomDC_0706_2016-->

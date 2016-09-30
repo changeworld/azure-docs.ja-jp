@@ -113,4 +113,4 @@ SQL Database サービスでは使用状況の履歴を評価し、単一のデ�
 - [C# で SQL Database を作成し、管理する](sql-database-elastic-pool-manage-csharp.md)
 - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
-<!-----HONumber=AcomDC_0907_2016-->
+<!-------HONumber=AcomDC_0907_2016-->
