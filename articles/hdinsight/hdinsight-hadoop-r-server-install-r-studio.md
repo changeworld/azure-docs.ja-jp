@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/22/2016"
+   ms.date="09/16/2016"
    ms.author="jeffstok"/>
 
 
@@ -28,7 +28,7 @@
 ## 前提条件
 
 * R Server がインストールされた Azure HDInsight クラスター。手順については、[HDInsight の R Server クラスターの概要](hdinsight-hadoop-r-server-get-started.md)に関するページを参照してください。
-* SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows の場合は、[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) をお勧めします。
+* SSH クライアント。Linux および UNIX のディストリビューション、または Macintosh OS X の場合、オペレーティング システムに `ssh`コマンドが用意されています。Windows には、[Cygwin](http://www.redhat.com/services/custom/cygwin/) と [OpenSSH オプション](https://www.youtube.com/watch?v=CwYSvvGaiWU)、または [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) が推奨されます。
 
 
 ## カスタム スクリプトを使用してクラスターに RStudio をインストールする
@@ -73,13 +73,13 @@
 
 7. クラスターへの SSH トンネルを作成するには、HDInsight クラスターの `localhost:8787` からクライアント コンピューターにマッピングします。SSH トンネルを作成してから、新しいブラウザー セッションを開く必要があります。
 
-	* Linux クライアント、または ([Cygwin](http://www.redhat.com/services/custom/cygwin/) を使用する) Windows クライアントで、ターミナル セッションを開き、次のコマンドを実行します。
+	* Linux クライアント、または [Cygwin](http://www.redhat.com/services/custom/cygwin/) を使用する Windows クライアントで、ターミナル セッションを開き、次のコマンドを実行します。
 
 			ssh -L localhost:8787:localhost:8787 USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.net
 			
 		**USERNAME** は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** は、HDInsight クラスターの名前に置き換えます。`-i id_rsa_key`パスワードではなく、SSH キーも使用することもできます。
 
-	* Windows クライアントで、SSH トンネル用の PuTTY を作成します。
+	* PuTTY を使用する Windows クライアントの場合
 
 		1.  PuTTY を開き、接続情報を入力します。HDInsight で PuTTY を使用する方法については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
 		2.  ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** を選択します。
@@ -126,4 +126,4 @@
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

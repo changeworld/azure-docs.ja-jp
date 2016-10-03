@@ -9,12 +9,12 @@ editor=""
 tags="connectors"/>
 
 <tags
-ms.service="multiple"
+ms.service="logic-apps"
 ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
-ms.workload="na"
-ms.date="05/18/2016"
+ms.workload="integration"
+ms.date="09/19/2016"
 ms.author="mandia"/>
 
 # Twilio コネクタの使用
@@ -25,8 +25,8 @@ Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信
 
 Twilio では次のことができます。
 
-- Twilio から取得したデータに基づいてビジネス フローを構築します。 
-- メッセージを取得したり、メッセージを一覧表示したりするアクションを使用します。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、新しい Twilio メッセージを取得したとき、そのメッセージを Service Bus ワークフローで利用できます。 
+- Twilio から取得したデータに基づいてビジネス フローを構築します。
+- メッセージを取得したり、メッセージを一覧表示したりするアクションを使用します。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、新しい Twilio メッセージを取得したとき、そのメッセージを Service Bus ワークフローで利用できます。
 
 ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
@@ -42,10 +42,10 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 ## Twilio への接続を作成する
 このコネクタをロジック アプリに追加するときに、次の Twilio 値を入力します。
 
-|プロパティ| 必須|説明|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Account ID|あり|Twilio アカウント ID を入力します。|
-|Access Token|あり|Twilio アカウント トークンを入力します。|
+|Account ID|はい|Twilio アカウント ID を入力します。|
+|Access Token|はい|Twilio アカウント トークンを入力します。|
 
 >[AZURE.INCLUDE [Twilio への接続を作成する手順](../../includes/connectors-create-api-twilio.md)]
 
@@ -60,12 +60,12 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 ### メッセージを取得する
 入力したメッセージ ID で指定された 1 つのメッセージを返します。```GET: /Messages/{MessageId}.json```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |MessageId|string|○|path|なし|メッセージ ID|
 
-### Response
-|名前|説明|
+### 応答
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -77,16 +77,16 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 ### メッセージを一覧表示する
 自分のアカウントに関連付けられているメッセージの一覧を返します。```GET: /Messages.json```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |To|string|×|query|なし|宛先の電話番号|
-|ファイル|string|×|query|なし|送信元の電話番号|
+|From|string|×|query|なし|送信元の電話番号|
 |DateSent|string|×|query|なし|この YYYY-MM-DD 日付 (GMT 形式) で送信されたメッセージのみを表示します。例: DateSent=2009-07-06。不等号も指定できます。たとえば、ある日付の真夜中以前に送信されたメッセージの場合は「DateSent<=YYYY-MM-DD」と、ある日付の真夜中以後に送信されたメッセージの場合は「DateSent>=YYYY-MM-DD」と指定できます。|
 |PageSize|integer|×|query|50|各リスト ページで返されるリソースの数。既定は 50 です。|
 |ページ|integer|×|query|0|ページ番号。既定値は 0 です。|
 
-### Response
-|名前|説明|
+### 応答
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -98,12 +98,12 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 ### メッセージを送信する
 携帯電話番号に新しいメッセージを送信します。```POST: /Messages.json```
 
-| 名前| データ型|必須|場所|既定値|説明|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 |sendMessageRequest| |○|body|なし|送信するメッセージ|
 
-### Response
-|名前|説明|
+### 応答
+|Name|説明|
 |---|---|
 |200|操作に成功しました|
 |400|正しくない要求|
@@ -118,7 +118,7 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 |プロパティ名 | データ型 | 必須|
 |---|---|---|
 |from|string|○|
-|] を [|string|○|
+|to|string|○|
 |body|string|○|
 |media\_url|array|×|
 |status\_callback|string|×|
@@ -133,7 +133,7 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 |---|---|---|
 |body|string|×|
 |from|string|×|
-|] を [|string|×|
+|to|string|×|
 |status|string|×|
 |sid|string|×|
 |account\_sid|string|×|
@@ -208,9 +208,9 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 
 |プロパティ名 | データ型 |必須|
 |---|---|---|
-|mms|ブール値|×|
-|sms|ブール値|×|
-|voice|ブール値|×|
+|mms|boolean|×|
+|sms|boolean|×|
+|voice|boolean|×|
 
 #### AvailablePhoneNumbers: 利用可能な電話番号
 
@@ -224,9 +224,9 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 |postal\_code|string|×|
 |rate\_center|string|×|
 |region|string|×|
-|MMS|ブール値|×|
-|SMS|ブール値|×|
-|voice|ブール値|×|
+|MMS|boolean|×|
+|SMS|boolean|×|
+|voice|boolean|×|
 
 
 #### UsageRecords: 使用状況レコード クラス
@@ -248,4 +248,4 @@ Twilio コネクタには、次のアクションがあります。トリガー�
 ## 次のステップ
 [ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -128,4 +128,4 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 - [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!-------HONumber=AcomDC_0914_2016-->

@@ -19,7 +19,7 @@
 
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
 
-> [AZURE.NOTE] [Test drive Analytics on our simulated data](https://analytics.applicationinsights.io/demo) (まだアプリから Application Insights にデータを送信していない場合)。
+> [AZURE.NOTE] [Test drive Analytics on our simulated data]https://analytics.applicationinsights.io/demo (まだアプリから Application Insights にデータを送信していない場合)。
 
 ## Index
 
@@ -27,13 +27,13 @@
 **let と set**: [let](#let-clause) | [set](#set-clause)
 
 
-**クエリと演算子** [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator)
+**クエリと演算子**: [count](#count-operator) | [evaluate](#evaluate-operator) | [extend](#extend-operator) | [join](#join-operator) | [limit](#limit-operator) | [mvexpand](#mvexpand-operator) | [parse](#parse-operator) | [project](#project-operator) | [project-away](#project-away-operator) | [range](#range-operator) | [reduce](#reduce-operator) | [render ディレクティブ](#render-directive) | [restrict 句](#restrict-clause) | [sort](#sort-operator) | [summarize](#summarize-operator) | [take](#take-operator) | [top](#top-operator) | [top-nested](#top-nested-operator) | [union](#union-operator) | [where](#where-operator) | [where-in](#where-in-operator)
 
 **集計**: [any](#any) | [argmax](#argmax) | [argmin](#argmin) | [avg](#avg) | [buildschema](#buildschema) | [count](#count) | [countif](#countif) | [dcount](#dcount) | [dcountif](#dcountif) | [makelist](#makelist) | [makeset](#makeset) | [max](#max) | [min](#min) | [percentile](#percentile) | [percentiles](#percentiles) | [percentilesw](#percentilesw) | [percentilew](#percentilew) | [stdev](#stdev) | [sum](#sum) | [variance](#variance)
 
 **スカラー**: [ブール型リテラル](#boolean-literals) | [ブール演算子](#boolean-operators) | [キャスト](#casts) | [スカラーの比較](#scalar-comparisons) | [gettype](#gettype) | [hash](#hash) | [iff](#iff) | [isnotnull](#isnotnull) | [isnull](#isnull) | [notnull](#notnull) | [toscalar](#toscalar)
 
-**数値**: [算術演算子](#arithmetic-operators) | [数値リテラル](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+**数値**: [算術演算子](#arithmetic-operators) | [数値リテラル](#numeric-literals) | [abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) | [log](#log) | [rand](#rand) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 **日付と時刻**: [日付と時刻の式](#date-and-time-expressions) | [日付と時刻のリテラル](#date-and-time-literals) | [ago](#ago) | [datepart](#datepart) | [dayofmonth](#dayofmonth) | [dayofweek](#dayofweek) | [dayofyear](#dayofyear) | [endofday](#endofday) | [endofmonth](#endofmonth) | [endofweek](#endofweek) | [endofyear](#endofyear) | [getmonth](#getmonth) | [getyear](#getyear) | [now](#now) | [startofday](#startofday) | [startofmonth](#startofmonth) | [startofweek](#startofweek) | [startofyear](#startofyear) | [todatetime](#todatetime) | [totimespan](#totimespan) | [weekofyear](#weekofyear)
 
@@ -445,7 +445,7 @@ traces
 
 **構文**
 
-    Table1 | join [kind=Kind] \(Table2) on CommonColumn [, ...]
+    Table1 | join [kind=Kind] (Table2) on CommonColumn [, ...]
 
 **引数**
 
@@ -1053,7 +1053,7 @@ exceptions
 
 ### where 演算子
 
-     T | where fruit=="apple"
+     requests | where resultCode==200
 
 述語の条件を満たす行のサブセットにテーブルをフィルター処理します。
 
@@ -1086,7 +1086,7 @@ exceptions
 **例**
 
 ```AIQL
-Traces
+traces
 | where Timestamp > ago(1h)
     and Source == "Kuskus"
     and ActivityId == SubActivityIt 
@@ -1096,6 +1096,26 @@ Traces
 
 2 つの列の比較を最後に配置していることに注目してください。これは、インデックスを使用できず、スキャンを強制するためです。
 
+
+### where-in 演算子
+
+    requests | where resultCode !in (200, 201)
+
+    requests | where resultCode in (403, 404)
+
+**構文**
+
+    T | where col in (expr1, expr2, ...)
+    T | where col !in (expr1, expr2, ...)
+
+**引数**
+
+* `col`: テーブルの列。
+* `expr1`...: スカラー式のリスト。
+
+`in` は、`col` が式 `expr1...` のいずれかに等しい行のみを含めるために使用します。
+
+`!in` は、`col` が式 `expr1...` のいずれにも等しくない行のみを含めるために使用します。
 
 
 ## 集計
@@ -1670,7 +1690,7 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 ## 数値
 
-[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
+[abs](#abs) | [bin](#bin) | [exp](#exp) | [floor](#floor) | [gamma](#gamma) |[log](#log) | [rand](#rand) | [range](#range) | [sqrt](#sqrt) | [todouble](#todouble) | [toint](#toint) | [tolong](#tolong)
 
 ### 数値リテラル
 
@@ -1757,10 +1777,25 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
     exp10(v) // 10 raised to the power v
 
 
-
 ### floor
 
 [`bin()`](#bin) のエイリアス。
+
+### gamma
+
+[gamma 関数](https://en.wikipedia.org/wiki/Gamma_function)
+
+**構文**
+
+    gamma(x)
+
+**引数**
+
+* *x:* 実数
+
+正の整数の場合、`gamma(x) == (x-1)!` のように指定します。例: `gamma(5) == 4 * 3 * 2 * 1`。
+
+[loggamma](#loggamma) も参照してください。
 
 
 ### log
@@ -1771,6 +1806,20 @@ iff(floor(timestamp, 1d)==floor(now(), 1d), "today", "anotherday")
 
 
 `v` は 0 を超える実数である必要があります。それ以外の場合、null が返されます。
+
+### loggamma
+
+
+[関数](#gamma)の絶対値の自然対数。
+
+**構文**
+
+    loggamma(x)
+
+**引数**
+
+* *x:* 実数
+
 
 ### rand
 
@@ -2397,7 +2446,7 @@ substring("ABCD", 0, 2)       // AB
 
 ## 配列、オブジェクト、および動的
 
-[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic)
+[リテラル](#dynamic-literals) | [キャスト](#casting-dynamic-objects) | [演算子](#operators) | [let 句](#dynamic-objects-in-let-clauses) <br/> [arraylength](#arraylength) | [extractjson](#extractjson) | [parsejson](#parsejson) | [range](#range) | [treepath](#treepath) | [todynamic](#todynamic) | [zip](#zip)
 
 
 Application Insights の例外に対するクエリの結果を次に示します。`details` の値は配列です。
@@ -2699,6 +2748,24 @@ range(1, 8, 3)
 
 "[0]" は配列の存在を示しますが、特定のパスで使用されるインデックスを指定しないことに注意してください。
 
+### zip
+
+    zip(list1, list2, ...)
+
+リストのセットをタプルの 1 つのリストに結合します。
+
+* `list1...`: 値のリスト
+
+**例**
+
+    zip(parsejson('[1,3,5]'), parsejson('[2,4,6]'))
+    => [ [1,2], [3,4], [5,6] ]
+
+    
+    zip(parsejson('[1,3,5]'), parsejson('[2,4]'))
+    => [ [1,2], [3,4], [5,null] ]
+
+
 ### 名前
 
 名前の最大長は 1024 文字です。大文字と小文字が区別され、アルファベット、数字、およびアンダースコア (`_`) を含めることができます。
@@ -2724,4 +2791,4 @@ range(1, 8, 3)
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

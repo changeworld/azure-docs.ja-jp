@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
@@ -25,7 +25,7 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 
 >[AZURE.NOTE] このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。SQL Server にデータが存在しない場合、データを Azure の SQL Server に移動する方法については、「[Azure 仮想マシン上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
 
-**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
+**データをサンプリングする理由** 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプを迅速に作成できるようにすることです。
 
 次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
 
@@ -60,7 +60,7 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
-Azure ML データのインポート モジュールで上記のサンプル クエリを直接使用し、データをその場でダウンサンプリングして Azure ML の実験で使用できます。リーダー モジュールを使用してサンプリングされたデータを読み取るスクリーン ショットを次に示します。
+Azure Machine Learning の[データのインポート][import-data] モジュールで上記のサンプル クエリを直接使用して、データをその場でダウンサンプリングし、Azure Machine Learning の実験で使用できます。リーダー モジュールを使用してサンプリングされたデータを読み取るスクリーン ショットを次に示します。
    
 ![リーダー SQL][1]
 
@@ -83,7 +83,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
 ###<a name="python-aml"></a>Azure Machine Learning への接続
 
-次のサンプル コードを使用すると、ダウンサンプリングされたデータをファイルに保存し、Azure BLOB にアップロードすることができます。BLOB 内のデータは、*データのインポート* モジュールを使用して Azure ML Experiment に直接読み込むことができます。手順は次のとおりです。
+次のサンプル コードを使用すると、ダウンサンプリングされたデータをファイルに保存し、Azure BLOB にアップロードすることができます。BLOB 内のデータは、[データのインポート][import-data] モジュールを使用して Azure Machine Learning の実験に直接読み込むことができます。手順は次のとおりです。
 
 1. Pandas データ フレームをローカル ファイルに書き込む
 
@@ -111,7 +111,7 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 	    except:	        
 		    print ("Something went wrong with uploading blob:"+BLOBNAME)
 
-3. 次のスクリーン ショットに示すように、Azure ML の*データのインポート* モジュールを使用して Azure BLOB からデータを読み取ります。
+3. 次のスクリーンショットに示すように、Azure Machine Learning の[データのインポート][import-data] モジュールを使用して Azure BLOB からデータを読み取ります。
  
 ![リーダー BLOB][2]
 
@@ -122,6 +122,6 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png
 
- 
+ [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -58,15 +58,14 @@ Web アプリのドメイン名を持っていない場合は、[Azure ポータ
 
 	a) [Auto renew]: ドメインを毎年自動更新します
 	
-	b) [Privacy protection]: 無料の購入価格に含まれる、プライバシー保護のためのオプトインです
+	b) [Privacy protection]: 無料の購入価格に含まれる、プライバシー保護のためのオプトインです (レジストリがプライバシーをサポートしていない TLD を除きます。たとえば、.co.in や .co.uk などです)
 	
 	c) [Assign default hostnames]: 現在の Web アプリに WWW とルート ドメインの既存のホスト名を割り当てます
 
   ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.5.png)
   
     > [AZURE.NOTE] Option C configures DNS bindings and Hostname bindings automatically for you.  This way, your Web App can be accessed using custom domain as soon as the purchase is complete (baring DNS propagation delays in few cases). In case, your Web App is behind Azure Traffic Manager, you will not see an option to assign root domain, as A-Records do not work with the Traffic Manager. 
-    >
-    >You can always assign the domains/sub-domains purchased through one Web App to another Web App and vice-versa. See step 8 for more details. 
+    You can always assign the domains/sub-domains purchased through one Web App to another Web App and vice-versa. See step 8 for more details. 
 	
 7. **[ドメインを購入]** ブレードで **[選択]** をクリックすると、**[購入内容の確認]** ブレードに注文情報が表示されます。法律条項に同意して **[購入]** をクリックすると、注文が送信され、**[通知]** で購入プロセスを確認できます。ドメインの購入は完了するまでに数分かかります。
 
@@ -103,4 +102,4 @@ Web アプリのドメイン名を持っていない場合は、[Azure ポータ
 - ある時点でカスタム ドメインを削除した可能性があります。アプリのメイン ブレードから **[設定]**、**[監査ログ]** の順にクリックし、監査ログを確認してください。
 - 探している **[カスタム ドメインおよび SSL]** ブレードが、別の Azure サブスクリプションで作成されたアプリに属している可能性があります。別のサブスクリプションの別のアプリに切り替え、その **[カスタム ドメインおよび SSL]** ブレードを確認してください。ポータル内では、アプリと異なる Azure サブスクリプションで作成されたカスタム ドメインを表示または管理できません。ただし、ドメインの **[ドメインの管理]** ブレードの **[詳細管理]** をクリックすると、ドメイン プロバイダーの Web サイトにリダイレクトされます。そのサイトで、別の Azure サブスクリプションで作成されたアプリの[カスタム ドメイン (任意の外部カスタム ドメインと同様に) を手動で構成](web-sites-custom-domain-name.md)できます。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

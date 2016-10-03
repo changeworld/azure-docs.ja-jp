@@ -3,7 +3,7 @@
    description="Docker マシンを利用し、Azure で Docker ホストを作成する方法について説明します。"
    services="azure-container-service"
    documentationCenter="na"
-   authors="allclark"
+   authors="mlearned"
    manager="douge"
    editor="" />
 <tags
@@ -13,7 +13,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="06/08/2016"
-   ms.author="allclark;stevelas" />
+   ms.author="mlearned" />
 
 # Docker マシンを利用し、Azure で Docker ホストを作成する
 
@@ -27,7 +27,7 @@
 
 `azure` ドライバーを使用する `docker-machine create` コマンドを使用して、Azure に Docker ホスト VM を作成します。
 
-Azure ドライバーにはサブスクリプション ID が必要になります。[Azure CLI](xplat-cli-install.md) または [Azure ポータル](https://portal.azure.com)を使用して、Azure サブスクリプションを取得することができます。
+Azure ドライバーにはサブスクリプション ID が必要になります。[Azure CLI](xplat-cli-install.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。
 
 **Azure ポータルの使用**
 - 左側のナビゲーション ページからサブスクリプションを選択し、サブスクリプション ID をコピーします。
@@ -109,4 +109,4 @@ docker-machine を使用して、個々の Docker ホストの検証のために
 
 Visual Studio を使用した .NET Core アプリケーションの開発については、「[Docker Tools for Visual Studio (Visual Studio 用 Docker ツール)](http://aka.ms/DockerToolsForVS)」を参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

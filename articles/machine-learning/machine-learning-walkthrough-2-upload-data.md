@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016" 
+	ms.date="09/16/2016" 
 	ms.author="garye"/>
 
 
@@ -84,4 +84,4 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 
 [1]: ./media/machine-learning-walkthrough-2-upload-data/upload1.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,7 +14,7 @@
    	ms.topic="article"
    	ms.tgt_pltfrm="na"
    	ms.workload="big-data"
-   	ms.date="08/30/2016"
+   	ms.date="09/20/2016"
    	ms.author="larryfr"/>
 
 #Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
@@ -23,11 +23,11 @@
 
 Azure CLI は、Azure サービスを管理できる、プラットフォームに依存しないコマンドライン ユーティリティです。Azure リソース管理テンプレートと共に使用して、HDInsight クラスター、関連するストレージ アカウント、その他のサービスを作成できます。
 
-Azure リソース管理テンプレートは、__リソース グループ__とグループ内のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート基準の手法では、1 つのテンプレートで HDInsight に必要なすべてのリソースを定義でき、グループに変更を適用する__デプロイメント__を介して、グループに対する変更をまとめて管理できます。
+Azure リソース管理テンプレートは、__リソース グループ__とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート ベースのアプローチでは、HDInsight で必要なすべてのリソースを 1 つのテンプレートで定義することができます。__デプロイ__の際にグループの全体としての変更を管理して、グループ全体に変更を適用することもできます。
 
 このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
 
-> [AZURE.IMPORTANT] この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスター作成または作成後の拡大で 32 以上のワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> [AZURE.IMPORTANT] この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスターの作成または拡張にあたって 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -40,7 +40,7 @@ Azure リソース管理テンプレートは、__リソース グループ__と
 
     [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-##Azure サブスクリプションへのログイン
+##Azure サブスクリプションにログイン
 
 「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
 
@@ -52,22 +52,22 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
 
         azure login
 
-    名前とパスワードを入力するように求められます。複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、Azure CLI コマンドが使用するサブスクリプションを設定できます。
+    名前とパスワードを入力するように求められます。複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、Azure CLI コマンドが使用するサブスクリプションを設定します。
 
 3. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
 
         azure config mode arm
 
-4. 新しいリソース グループを作成します。ここに、HDInsight クラスターおよび関連するストレージ アカウントを追加することになります。
+4. リソース グループを作成します。このリソース グループに、HDInsight クラスターおよび関連するストレージ アカウントを追加することになります。
 
         azure group create groupname location
         
     * __groupname__ は、グループの一意の名前に置き換えます。
     * __location__ には、グループの作成先となる地理的領域を指定します。
     
-        グループの作成先として有効な場所は、`azure locations list` コマンドで一覧表示できます。__Name__ 列に表示されるいずれかの場所を使用してください。
+        グループの作成先として有効な場所は、`azure location list` コマンドで一覧表示できます。__Name__ 列に表示されるいずれかの場所を使用してください。
 
-5. 新しいストレージ アカウントを作成します。これが、HDInsight クラスターの既定のストレージとして使用されます。
+5. ストレージ アカウントを作成します。このストレージ アカウントが、HDInsight クラスターの既定のストレージとして使用されます。
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
         
@@ -86,7 +86,7 @@ Azure CLI をインストールして構成したら、コマンド プロンプ
     
     返されたデータから、__key1__ の __key__ 値を保存します。
 
-6. 新しい HDInsight クラスターを作成します。
+6. HDInsight クラスターを作成する。
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
@@ -121,4 +121,4 @@ Azure CLI を使用して HDInsight クラスターを作成したら、クラ�
 * [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
 * [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

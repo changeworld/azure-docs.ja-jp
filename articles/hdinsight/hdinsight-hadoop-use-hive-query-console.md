@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/19/2016"
+   ms.date="09/20/2016"
    ms.author="larryfr"/>
 
 # クエリ コンソールを使用して Hive クエリを実行
@@ -23,7 +23,7 @@
 
 この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
-> [AZURE.NOTE] クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。
+> [AZURE.IMPORTANT] HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。Linux ベースの HDInsight クラスターを使用している場合は、[Hive ビューを使用した Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 
 ##<a id="prereq"></a>前提条件
@@ -128,4 +128,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

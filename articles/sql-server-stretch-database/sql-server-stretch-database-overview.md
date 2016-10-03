@@ -80,4 +80,4 @@ SQL Server 2016 Upgrade Advisor の 1 機能である Stretch Database Advisor �
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!-------HONumber=AcomDC_0629_2016-->

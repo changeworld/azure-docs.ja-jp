@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/06/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace" />
 
 # ポータルを使用してアプリケーション ゲートウェイを作成する
@@ -157,4 +157,4 @@ Azure ポータルに移動し、**[新規]**、**[ネットワーキング]**�
 [10]: ./media/application-gateway-create-gateway-portal/figure10.png
 [scenario]: ./media/application-gateway-create-gateway-portal/scenario.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

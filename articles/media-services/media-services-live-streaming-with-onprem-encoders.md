@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する" 
-	description="このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
+	pageTitle="マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング | Microsoft Azure" 
+	description="このトピックでは、内部設置型のエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="cenkdin;juliako"/>
 
 #オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
 
-##概要
+##Overview
 
 Azure Media Services では、**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。**チャネル**は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
@@ -35,13 +35,13 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 - **Standard** – Media Services を使用して、シングル ビットレートのライブ ストリームをマルチ ビットレート ストリームにエンコードする場合に、この値を選択します。ライブ エンコードは課金に影響することと、ライブ エンコード チャネルを "実行中" 状態のままにしておくと請求料金が課されることに注意してください。余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
->[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が無効なチャネルの属性について取り上げます (**なし**のエンコード型)。ライブ エンコードの実行が有効なチャネルの操作については、「[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+>[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が無効なチャネル (エンコードの種類が**なし**のチャネル) の属性について説明します。ライブ エンコードの実行が有効なチャネルの操作については、「[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 次の図は、オンプレミスのライブのエンコーダーを使用してマルチビットレートの RTMP や Fragmented MP4 (スムーズ ストリーミング) ストリームを出力するライブ ストリーミング ワークフローを表しています。
 
 ![ライブ ワークフロー][live-overview]
 
-このトピックは、以下の内容を説明します。
+このトピックでは、以下の内容を説明します。
 
 - [一般的なライブ ストリーミング シナリオ](media-services-live-streaming-with-onprem-encoders.md#scenario)
 - [チャネルとその関連コンポーネントの説明](media-services-live-streaming-with-onprem-encoders.md#channel)
@@ -212,10 +212,10 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
  
 チャネルの状態|ポータル UI インジケーター|課金対象
 ---|---|---|---
-開始中|開始中|いいえ (遷移状態)
+Starting|Starting|いいえ (遷移状態)
 実行中|準備完了 (実行中プログラムなし)<p>または<p>ストリーミング (実行中プログラムが最低 1 つ存在)|はい
 停止中|停止中|いいえ (遷移状態)
-停止済み|停止済み|いいえ
+停止済み|停止済み|なし
 
 ##<a id="cc_and_ads"></a>クローズド キャプションと広告の挿入 
 
@@ -271,10 +271,10 @@ SCTE-35|広告の挿入のキューには、デジタル信号システムが使
 
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 
-[Azure Media Services を使用してライブ ストリーミング イベントを配信する](media-services-live-streaming-workflow.md)
+[Azure Media Services を使用してライブ ストリーミング イベントを配信する](media-services-overview.md)
 
 [Media Services の概念](media-services-concepts.md)
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

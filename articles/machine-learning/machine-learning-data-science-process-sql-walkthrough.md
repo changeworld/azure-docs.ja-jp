@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="fashah;bradsev"/>
 
 
@@ -76,7 +76,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 
 1. [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)
 
-2. [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
+2. [Azure Machine Learning ワークスペースの作成](machine-learning-create-workspace.md)
 
 3. [データ サイエンス仮想マシンをプロビジョニングする](machine-learning-data-science-setup-sql-server-virtual-machine.md)。この仮想マシンは SQL Server と IPython Notebook サーバーの役割をします。
 
@@ -609,7 +609,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 ## <a name="mlmodel"></a>Azure Machine Learning でのモデルの作成
 
-モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。Machine Learning ワークスペースをまだ作成していない場合は、「[Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)」を参照してください。
+モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning ワークスペースの作成](machine-learning-create-workspace.md)に関する記事をご覧ください。
 
 1. Azure Machine Learning の使用を開始するには、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
 
@@ -620,7 +620,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 一般的なトレーニング実験は以下のもので構成されています。
 
 1. **+NEW** 実験を作成する
-2. Azure ML へのデータの取得。
+2. Azure Machine Learning へのデータの取得。
 3. 必要に応じたデータの事前処理、変換、および操作。
 4. 必要に応じた特徴の生成。
 5. トレーニング/検証/テスト データ セットへのデータの分割 (またはそれぞれに個別のデータセットを用意する)。
@@ -630,11 +630,11 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 9. 学習問題の関連メトリックを計算するためのモデルの評価。
 10. モデルの微調整およびデプロイに最適なモデルの選択。
 
-この演習では、既に SQL Server でデータの探索とエンジニアリングを実行し、Azure ML に取り込むサンプルのサイズを決定しました。決定した 1 つ以上の予測モデルを作成するには、
+この演習では、SQL Server でデータの探索とエンジニアリングを既に実行し、Azure Machine Learning に取り込むサンプルのサイズを決定しました。決定した 1 つ以上の予測モデルを作成するには、
 
-1. [データのインポート][import-data] モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、Azure ML にデータを取得します。詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取得します。詳細については、[データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
 
-	![Azure ML のデータのインポート][17]
+	![Azure Machine Learning の [データのインポート]][17]
 
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
 
@@ -650,7 +650,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 
 SQL Server データベースから直接データを読み取る、二項分類の実験の例を次の図に示します。同様の実験を、多クラス分類と回帰問題で構築することができます。
 
-![Azure ML トレーニング][10]
+![Azure Machine Learning のトレーニング][10]
 
 > [AZURE.IMPORTANT] 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、**3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 >
@@ -658,7 +658,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
 
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。Azure ML Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。Azure Machine Learning Web サービスのデプロイの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 
@@ -679,7 +679,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 サンプルのスコア付け実験を次の図に示します。デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 
-![Azure ML 発行][11]
+![Azure Machine Learning の発行][11]
 
 要点をまとめると、このチュートリアルでは、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスのデプロイまでを通して、大規模な公開されているデータセットを操作しました。
 
@@ -719,4 +719,4 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

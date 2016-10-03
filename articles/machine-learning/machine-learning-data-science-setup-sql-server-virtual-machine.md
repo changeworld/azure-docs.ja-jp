@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="xibingao;bradsev" />
 
 # 高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
@@ -219,7 +219,7 @@ SQL Server Management Studio を使用して新しい SQL Server ログインを
 
 11. これが初めて作成するログインである場合は、このログインを SQL Server 管理者専用に使用することが考えられます。その場合は、**[サーバー ロール]** ページで、**[sysadmin]** をオンにします。
 
-    **セキュリティ上の注意:** sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。このロールのメンバーは、適切なユーザーのみに限定してください。
+    > [AZURE.IMPORTANT] sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。セキュリティ上の理由から、このロールのメンバーシップを慎重に制限してください。
 
     ![sysadmin][12]
 
@@ -271,7 +271,7 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 
 仮想マシンをシャット ダウンして割り当て解除するには、次のようにします。
 
-1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。
+1. アカウントを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインします。  
 
 2. 左側のナビゲーション バーから **[仮想マシン]** を選択します。
 
@@ -306,4 +306,4 @@ Azure Virtual Machines の料金は**従量課金制**です。仮想マシン�
 [15]: ./media/machine-learning-data-science-setup-sql-server-virtual-machine/vmshutdown.png
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

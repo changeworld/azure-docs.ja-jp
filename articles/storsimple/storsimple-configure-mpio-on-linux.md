@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/21/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # CentOS を実行している StorSimple ホスト上の MPIO の構成
@@ -330,14 +330,14 @@ StorSimple デバイスに必要なものは次のとおりです。
 
 		次の例は、`iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` のターゲット IQN を使用した出力を示します。この出力は、デバイスの 2 つの iSCSI 対応ネットワーク インターフェイスに正常に接続されていることを示しています。
 
-		    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] \(multiple)
-	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] \(multiple)
-	    	Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] \(multiple)
-	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] \(multiple)
+		    Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
+	    	Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
+	    	Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
 	    	Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
 	    	Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] successful.
 	    	Login to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
-	    	Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
+	    		Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
 
 
 		ここに表示されているのが 1 つのホスト インターフェイスと 2 つのパスのみの場合は、iSCSI 用にホストの両方のインターフェイスを有効にする必要があります。[Linux ドキュメントの詳細な手順](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)を参照してください。
@@ -390,7 +390,7 @@ A.通常、マルチパスのパスが表示されないのはマルチパス �
 
 マルチパスの一覧から応答を得られないのは、ディスクがないことを意味している可能性もあるため、ターゲットに接続した後で一部のディスクが実際に表示されることを確認する必要もあります。
 
-- 次のコマンドを使用して SCSI バスを再スキャンします。 
+- 次のコマンドを使用して SCSI バスを再スキャンします。
  
 	`$ rescan-scsi-bus.sh ` (sg3\_utils パッケージの一部)
  
@@ -464,7 +464,7 @@ A.ご使用のデバイスがホワイトリストに登録されているかど
 
 ## 便利なコマンドの一覧
 
-|型|コマンド|説明|
+|型|コマンド|Description|
 |---|---|---|
 |**iSCSI**|`service iscsid start`|iSCSI サービスを開始する|
 ||`service iscsid stop`|iSCSI サービスを停止する|
@@ -492,4 +492,4 @@ Linux ホストで MPIO を構成しているため、CentoS 6.6 の次のドキ
 - [CentOS での MPIO の設定](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
 - [Linux トレーニング ガイド](http://linux-training.be/files/books/LinuxAdm.pdf)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

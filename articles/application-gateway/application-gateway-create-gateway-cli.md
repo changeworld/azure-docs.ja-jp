@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/02/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace" />
 
 # Azure CLI を使用してアプリケーション ゲートウェイを作成する
@@ -53,6 +53,28 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 Azure Application Gateway には、専用のサブネットが必要です。仮想ネットワークを作成する場合は、複数のサブネットを持つことができるように十分なアドレス空間を残しておいてください。アプリケーション ゲートウェイをサブネットにデプロイすると、追加のアプリケーション ゲートウェイのみをそのサブネットにデプロイすることができます。
 
+## Azure へのログイン
+
+**Microsoft Azure コマンド プロンプト**を開き、ログインします。
+
+    azure login
+
+上記の例に従って入力すると、コードが表示されます。ブラウザーで https://aka.ms/devicelogin に移動して、ログイン プロセスを続行します。
+
+![cmd showing device login][1]
+
+ブラウザーで、受け取ったコードを入力します。サインイン ページにリダイレクトされます。
+
+![browser to enter code][2]
+
+コードを入力してサインインした後、ブラウザーを閉じてこのシナリオに基づいて操作を続行します。
+
+![successfully signed in][3]
+
+## Resource Manager モードへの切り替え
+
+    azure config mode arm
+
 ## リソース グループの作成
 
 アプリケーション ゲートウェイを作成する前に、そのアプリケーション ゲートウェイの追加先となるリソース グループを作成します。コマンドを次に示します。
@@ -75,9 +97,11 @@ Azure Application Gateway には、専用のサブネットが必要です。仮
 
 仮想ネットワークとサブネットを作成すれば、アプリケーション ゲートウェイの前提条件は満たされたことになります。以下の手順では、それに加えて、あらかじめエクスポートしておいた .pfx 証明書とそのパスワードが必要となります。バックエンド用の IP アドレスは、ご使用のバックエンド サーバーの IP アドレスです。バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。
 
-    azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd
+    azure network application-gateway create -n AdatumAppGateway -l eastus -g AdatumAppGatewayRG -e AdatumAppGatewayVNET -m Appgatewaysubnet -r 134.170.185.46,134.170.188.221,134.170.185.50 -y c:\AdatumAppGateway\adatumcert.pfx -x P@ssw0rd -z 2 -a Standard_Medium -w Basic -j 443 -f Enabled -o 80 -i http -b https -u Standard
 
-この例では、リスナー、バックエンド プール、バックエンド http 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。さらに、SSL オフロードの構成も行われます。プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。前の手順で設定したバックエンド プールの IP アドレスに対して既に Web アプリケーションが定義されている場合、アプリケーション ゲートウェイをプロビジョニングして起動した後に、負荷分散が開始されます。
+
+
+この例では、リスナー、バックエンド プール、バックエンド http 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。さらに、SSL オフロードの構成も行われます。プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。前の手順でバックエンド プールに対して既に Web アプリケーションを定義している場合、アプリケーション ゲートウェイを作成すると負荷分散が開始されます。
 
 ## 次のステップ
 
@@ -88,5 +112,8 @@ Azure Application Gateway には、専用のサブネットが必要です。仮
 <!--Image references-->
 
 [scenario]: ./media/application-gateway-create-gateway-cli/scenario.png
+[1]: ./media/application-gateway-create-gateway-cli/figure1.png
+[2]: ./media/application-gateway-create-gateway-cli/figure2.png
+[3]: ./media/application-gateway-create-gateway-cli/figure3.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

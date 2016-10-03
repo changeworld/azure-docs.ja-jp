@@ -117,4 +117,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - デプロイの自動化に関心がある場合は、[Resource Manager テンプレートを使用した Windows 仮想マシンの作成](virtual-machines-windows-ps-template.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0912_2016--->
+<!-------HONumber=AcomDC_0912_2016--->

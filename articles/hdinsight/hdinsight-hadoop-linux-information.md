@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/30/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 # Linux での HDInsight の使用方法
@@ -55,25 +55,25 @@ Linux ベースの Azure HDInsight クラスターは、Azure クラウドで実
 
 	認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-	> [AZURE.IMPORTANT] クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。これは内部ドメイン名で、パブリックではないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生します。
+	> [AZURE.IMPORTANT]クラスター用の Ambari にはインターネットから直接アクセスできますが、一部の機能では、クラスターが使用する内部ドメイン名によってノードにアクセスします。これは内部ドメイン名で、パブリックではないため、インターネット経由で機能にアクセスしようとすると、サーバーが見つからないことを示すエラーが発生します。
 	>
 	> Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
 
 * **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.net/ambari
 
-	> [AZURE.NOTE] クラスター管理者のユーザー名とパスワードを使用して認証します。
+	> [AZURE.NOTE]クラスター管理者のユーザー名とパスワードを使用して認証します。
 	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
 * **WebHCat (Templeton)** - https://&lt;clustername>.azurehdinsight.net/templeton
 
-	> [AZURE.NOTE] クラスター管理者のユーザー名とパスワードを使用して認証します。
+	> [AZURE.NOTE]クラスター管理者のユーザー名とパスワードを使用して認証します。
 	>
 	> 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **SSH** - ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。ポート 22 はヘッド ノード 0 への接続に、23 はヘッド ノード 1 への接続に使用されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
+* **SSH** - ポート 22 または 23 上の &lt;clustername>-ssh.azurehdinsight.net。ポート 22 はプライマリ ヘッドノードへの接続に、23 はセカンダリ ヘッドノードへの接続に使用されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
-	> [AZURE.NOTE] クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用して worker ノードにアクセスできます。
+	> [AZURE.NOTE]クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。接続されたら、ヘッド ノードから SSH を使用して worker ノードにアクセスできます。
 
 ## ファイルの場所
 
@@ -237,7 +237,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 たとえば、最新版の [DataFu](http://datafu.incubator.apache.org/) を使用する場合、プロジェクトを含む jar をダウンロードし、それを HDInsight クラスターにアップロードできます。その後、Pig や Hive からそれを使用する方法については、DataFu のドキュメントに従います。
 
-> [AZURE.IMPORTANT] スタンドアロン jar ファイルである一部のコンポーネントは HDInsight で提供され、パスにはありません。特定のコンポーネントを探している場合、次を利用し、クラスターでそれを検索できます。
+> [AZURE.IMPORTANT]スタンドアロン jar ファイルである一部のコンポーネントは HDInsight で提供され、パスにはありません。特定のコンポーネントを探している場合、次を利用し、クラスターでそれを検索できます。
 >
 > ```find / -name *componentname*.jar 2>/dev/null```
 >
@@ -245,7 +245,7 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 
 クラスターがスタンドアロン jar ファイルとしてあるバージョンのコンポーネントを提供するが、別のバージョンを希望する場合、クラスターに新しいバージョンのコンポーネントをアップロードし、ジョブでそれを試すことができます。
 
-> [AZURE.WARNING] HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
+> [AZURE.WARNING]HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
 > カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
@@ -256,4 +256,4 @@ HDInsight は、管理されたサービスです。つまり、問題が検出�
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -17,7 +17,7 @@
    ms.date="05/10/2016"
    ms.author="magoedte;coreyp"/>
 
-# Azure Automation DSC の概要 #
+# Azure Automation DSC Overview #
 
 ##Azure Automation DSC とは##
 サーバーとアプリケーションのリソースをデプロイし、目的の状態を維持することは、単調でエラーが発生しやすい作業です。Azure Automation Desired State Configuration (DSC) を使用すると、クラウドの規模で、すべての IT リソースの目的の状態を一貫した方法でデプロイし、確実に監視し、自動的に更新できます。Automation DSC は PowerShell DSC に基づいて構築されているので、Windows または Linux を使用して、クラウド内またはオンプレミス内の物理および仮想マシン (VM) 全体で、マシン構成を特定の状態に合わせることができます。一貫した制御で継続的な IT サービス配信を有効にし、異種ハイブリッド IT 環境全体の急な変更を管理する作業も簡単になります。
@@ -101,7 +101,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。
 
-- 現時点では、Azure Automation DSC では部分的または複合 DSC 構成はサポートされていません。ただし、DSC の複合リソースをインポートし、構成の再利用を有効にしてローカル PowerShell と同様に使用することができます。
+- 現時点では、Azure Automation DSC では部分的または複合 DSC 構成はサポートされていません。ただし、ローカル PowerShell と同様に、DSC の複合リソースをインポートして Azure Automation DSC 構成で使用することで、構成を再利用できます。
 
 - Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。Linux を Azure Automation と通信できるようにするには、最新バージョンの Linux 用 PowerShell DSC エージェントをインストールする必要があります。
 
@@ -117,7 +117,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、$env:windir\\system32\\configuration\\DSCEngineCache.mof を削除します。
 
-- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。`mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。 `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
  
 
 ##関連記事##
@@ -128,4 +128,4 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 - [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
 - [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

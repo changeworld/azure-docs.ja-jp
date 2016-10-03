@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを構成する" 
+	pageTitle="FMLE エンコーダーを構成して単一ビットレートのライブ ストリームを送信する | Microsoft Azure" 
 	description="このトピックでは、Flash Media Live Encoder (FMLE) エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -24,7 +24,7 @@
 - [Tricaster](media-services-configure-tricaster-live-encoder.md)
 - [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
-このトピックでは、[Flash Media Live Encoder (FMLE) エンコーダー](http://www.adobe.com/products/flash-media-encoder.html)を構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+このトピックでは、[Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program)を作成します。
 
@@ -33,7 +33,7 @@
 ##前提条件
 
 - [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。
+- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 - 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 - ツールを起動し、AMS アカウントに接続します。
 
@@ -137,7 +137,7 @@
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 
-エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。ガイダンスについては、「[トラブルシューティング](media-services-troubleshooting-live-streaming.md)」のトピックを参照してください。
+エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
 
 ##プログラムを作成する
 
@@ -159,7 +159,7 @@
 
 ## トラブルシューティング
 
-ガイダンスについては、「[トラブルシューティング](media-services-troubleshooting-live-streaming.md)」のトピックを参照してください。
+ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
 
 
 ##Media Services のラーニング パス
@@ -170,4 +170,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

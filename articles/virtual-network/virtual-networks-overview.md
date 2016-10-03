@@ -95,4 +95,4 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 - [NSG](virtual-networks-nsg.md) について。
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!-------HONumber=AcomDC_0810_2016-->

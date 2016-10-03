@@ -306,4 +306,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!----HONumber=AcomDC_0914_2016-->

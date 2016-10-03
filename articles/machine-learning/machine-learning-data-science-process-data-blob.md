@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016"
-	ms.author="sunliangms;fashah;garye;bradsev" />
+	ms.date="09/19/2016"
+	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading"></a>Azure BLOB データを高度な分析を使用して処理する
 
@@ -23,7 +23,7 @@
 ## Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。この手順に必要な操作は次のとおりです。
 
-1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。
+1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
 
 	    from azure.storage.blob import BlobService
     	import tables
@@ -54,7 +54,7 @@
 
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
-1. 行と列の数を調べる
+1. 行と列の数を調べる 
 
 		print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 
@@ -191,4 +191,4 @@
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

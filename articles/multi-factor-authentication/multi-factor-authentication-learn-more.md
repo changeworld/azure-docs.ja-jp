@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication - 詳細" 
-	description="これは、Azure Multi-Factor Authentication に関するその他のコンテンツへのリンクを提供する Azure Multi-Factor Authentication ページです。ここからは、Multi-Factor Authentication に関するその他のトピックについて学習できます。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication - 詳細"
+	description="これは、Azure Multi-Factor Authentication に関するその他のコンテンツへのリンクを提供する Azure Multi-Factor Authentication ページです。ここからは、Multi-Factor Authentication に関するその他のトピックについて学習できます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication の詳細について
 
@@ -35,7 +35,4 @@
 
 [カスタム アプリに Multi-Factor Authentication を構築する (SDK)](https://msdn.microsoft.com/library/azure/dn249464.aspx)
 
-
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

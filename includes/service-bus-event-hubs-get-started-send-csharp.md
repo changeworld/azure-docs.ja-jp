@@ -4,13 +4,13 @@
 
 1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Sender**」と入力します。
 
-	![][7]
+	![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png)
 
 2. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
 3. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。プロジェクト名 (**Sender**) が **[バージョン]** ボックスで指定されていることを確認します。**[インストール]** をクリックして、使用条件に同意します。
 
-	![][8]
+	![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png)
 
 	Visual Studio によりパッケージのダウンロードとインストールが実行され、[Azure Service Bus ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus)への参照が追加されます。
 
@@ -65,9 +65,4 @@
 	SendingRandomMessages();
 	```
 
-
-<!-- Images -->
-[7]: ./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png
-[8]: ./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png
-
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

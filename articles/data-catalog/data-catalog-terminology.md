@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/06/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の用語集
@@ -40,7 +40,7 @@ Azure Data Catalog は、データ ソースとデータ資産を登録できる
 
 ## 記述メタデータ
 
-記述メタデータは、データ資産の目的または意図を説明するメタデータです。通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。Azure Data Catalog 登録ツールで、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティから、SQL Server データベースの場合は [ms\_description 拡張プロパティ](https://technet.microsoft.com/library/ms190243.aspx)から記述を抽出します (これらのプロパティに値が設定されている場合)。
+記述メタデータは、データ資産の目的または意図を説明するメタデータです。通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。たとえば、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティ、SQL Server データベースの場合は [ms\_description 拡張プロパティ](https://technet.microsoft.com/library/ms190243.aspx)から、Azure Data Catalog 登録ツールで説明を抽出します (これらのプロパティに値が設定されている場合)。
 
 ## アクセスの要求
 
@@ -86,4 +86,4 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 
 - [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

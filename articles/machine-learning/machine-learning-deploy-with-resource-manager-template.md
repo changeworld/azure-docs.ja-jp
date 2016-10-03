@@ -124,6 +124,12 @@ $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\ml
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
+既存のワークスペースのトークンを取得するもう 1 つの方法として、Invoke-AzureRmResourceAction コマンドを使用します。たとえば、すべてのワークスペースのプライマリ トークンとセカンダリ トークンを一覧表示できます。
+
+```  
+# List the primary and secondary tokens of all workspaces
+Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
+```
 ワークスペースをプロビジョニングしたら、[Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
 ## 次のステップ 
@@ -138,4 +144,4 @@ $rgd.Outputs.mlWorkspaceToken.Value
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

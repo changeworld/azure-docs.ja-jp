@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="コンテンツの再生" 
-	description="このトピックでは、コンテンツの再生に使用できる既存のプレーヤーのリストを示します。" 
+	pageTitle="コンテンツの再生 | Microsoft Azure" 
+	description="このトピックでは、コンテンツの再生に使用できる既存のプレーヤーを示します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
@@ -21,18 +21,18 @@
 
 Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
 
->[AZURE.NOTE]動的にパッケージ化または暗号化されたコンテンツを再生するには、コンテンツを配信する予定のストリーミング エンドポイントのストリーミング ユニットを必ず 1 つ以上取得するようにしてください。ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的にパッケージ化または暗号化されたコンテンツを再生するには、コンテンツを配信する予定のストリーミング エンドポイントのストリーミング ユニットを必ず 1 つ以上取得するようにしてください。ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 ###Azure クラシック ポータル Media Services コンテンツ プレーヤー
 
-**Azure クラシック ポータル**には、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
+**Azure** ポータルには、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
 
-目的のビデオをクリックし ([発行済](media-services-manage-content.md#publish)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
- 
+目的のビデオをクリックし ([発行済](media-services-portal-publish.md)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
+
 いくつかの考慮事項が適用されます。
 
 - **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します([Azure Media Player など](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
- 
+
 
 ![AMSPlayer][AMSPlayer]
 
@@ -48,13 +48,13 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 ###Flash Player
 
-####トークンを使用した AES 暗号化 
+####トークンを使用した AES 暗号化
 
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
 ###Silverlight Players
 
-####Monitoring
+####監視
 
 [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
 
@@ -90,7 +90,7 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
- 
+
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

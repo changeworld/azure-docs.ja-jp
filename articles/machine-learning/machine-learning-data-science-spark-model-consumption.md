@@ -3,7 +3,7 @@
 	description="Azure Blob Storage (WASB) に保存されている学習モデルをスコア付けする方法です。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,deguhath,gokuma"
+	authors="bradsev"
 	manager="jhubbard"
 	editor="cgronlun" />
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/14/2016"
-	ms.author="deguhath;bradsev" />
+	ms.author="deguhath;bradsev;gokuma" />
 
 # Spark で構築した機械学習モデルのスコア付け 
 
@@ -25,7 +25,7 @@
 
 ## 前提条件
 
-1. Azure アカウントと HDInsight Spark が必要となります。このチュートリアルを実行するには HDInsight 3.4 Spark 1.6 クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される 2013 年 NYC タクシー データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](machine-learning-data-science-spark-overview.md)」をご覧ください。このトピックのコード サンプルが含まれた **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックは、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
+1. Azure アカウントと HDInsight Spark が必要となります。このチュートリアルを実行するには HDInsight 3.4 Spark 1.6 クラスターが必要です。このチュートリアルの要件、チュートリアルで使用される 2013 年 NYC タクシー データの説明、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「[Overview of Data Science using Spark on Azure HDInsight (Azure HDInsight での Spark を使用したデータ サイエンスの概要)](machine-learning-data-science-spark-overview.md)」をご覧ください。このトピックのコード サンプルが含まれた **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ノートブックは、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) で入手できます。
 
 2. ここでスコア付けする機械学習モデルは、「[Spark を使用したデータ探索とモデリング](machine-learning-data-science-spark-data-exploration-modeling.md)」のチュートリアルでも作成できます。
 
@@ -385,7 +385,7 @@ Jupyter Notebook のカーネルと、%% で呼び出される定義済みの "�
 	#LOAD LIBRARIES​
 	from pyspark.mllib.regression import LinearRegressionWithSGD, LinearRegressionModel
 	
-	# LOAD MODEL AND SCORE USING ** SCALED VARIABLES **
+	# LOAD MODEL AND SCORE USING **SCALED VARIABLES**
 	savedModel = LinearRegressionModel.load(sc, linearRegFileLoc)
 	predictions = oneHotTESTregScaled.map(lambda features: (float(savedModel.predict(features))))
 	
@@ -610,4 +610,4 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

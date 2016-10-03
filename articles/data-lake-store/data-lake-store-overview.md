@@ -110,4 +110,4 @@ Data Lake Store の一連の機能について紹介するビデオをご覧く�
 * [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!-------HONumber=AcomDC_0914_2016-->

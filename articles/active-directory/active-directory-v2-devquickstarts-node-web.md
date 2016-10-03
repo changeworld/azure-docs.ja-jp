@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # サインインを nodeJS Web アプリに追加する
@@ -63,7 +63,7 @@
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- さらに、クイック スタートのスケルトンで、`passport-azure-ad` を使用しています。
+- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
@@ -277,7 +277,7 @@ app.get('/logout', function(req, res){
 
 -	これらについて詳しく説明しましょう。
     -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
-    - `/account` ルートは、***ユーザーが認証されていることを確認*** した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
     - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
     - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
@@ -420,8 +420,8 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 - [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## マイクロソフト製品のセキュリティ更新プログラムを取得する
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

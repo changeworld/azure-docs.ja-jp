@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services REST API を使用したコンテンツ キー承認ポリシーの構成" 
+	pageTitle="Media Services REST API を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Azure" 
 	description="Media Services REST API を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/19/2016"  
 	ms.author="juliako"/>
 
 
-#動的暗号化: コンテンツ キー承認ポリシーを構成する 
+#動的暗号化: コンテンツ キー承認ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
- 
 
-##概要
+
+##Overview
 
 Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady または Widevine DRM を使用して (動的に) 暗号化されたコンテンツを配信できます。Media Services では、承認されたクライアントにキーと PlayReady/Widevine ライセンスを配信するためのサービスも提供しています。
 
@@ -44,7 +44,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 ###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 - 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
@@ -53,7 +53,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 - 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
 
 
-##AES-128 動的暗号化 
+##AES-128 動的暗号化
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
@@ -483,4 +483,4 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # Azure AD の iOS アプリへの統合
@@ -48,7 +48,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 - 	**aap-scheme**: これは XCode プロジェクトに登録されています。他のアプリケーションから呼び出す方法を示します。これは、Info.plist、URL types、URL ID の順に探すと見つかります。まだ 1 つも構成していない場合は作成する必要があります。
 - 	**bundle-id**: XCode プロジェクトの設定の "identity" の下にある Bundle Identifier です。
 
-この QuickStart コードの例は次のようになります。******msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+この QuickStart コードの例は次のようになります。***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## *2.DirectorySearcher アプリケーションを登録する*
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
@@ -216,9 +216,9 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 
 
-ご利用ありがとうございます。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。テナントに一連のユーザーを設定します (設定していない場合)。QuickStart アプリを実行し、そのユーザーの 1 人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。
+お疲れさまでした。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。テナントに一連のユーザーを設定します (設定していない場合)。QuickStart アプリを実行し、そのユーザーの 1 人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`getToken` のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`getToken` のみです。
 
 完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)をクリックしてください。
 
@@ -226,8 +226,8 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
 
 - [Azure AD による Node.JS Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)
-- [iOS で ADAL を使用してクロス アプリ SSO を有効にする方法](active-directory-sso-ios.md)  
+- [iOS で ADAL を使用してクロス アプリ SSO を有効にする方法](active-directory-sso-ios.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,9 +1,9 @@
 <properties 
-	pageTitle=".NET SDK を使用して資産の配信ポリシーを構成する" 
+	pageTitle=".NET SDK を使用して資産配信ポリシーを構成する | Microsoft Azure" 
 	description="このトピックでは、Azure Media Services .NET SDK を利用し、さまざまな資産配信ポリシーを構成する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,Mingfeiy" 
+	authors="Mingfeiy" 
 	manager="dwrede" 
 	editor=""/>
 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="08/31/2016"
-	ms.author="juliako"/>
+	ms.date="09/19/2016"
+	ms.author="juliako;mingfeiy"/>
 
-#.NET SDK を使用して資産の配信ポリシーを構成する
+#.NET SDK を使用して資産配信ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 ##Overview
@@ -25,7 +25,7 @@ Media Services で暗号化した資産を配信する場合、コンテンツ�
 
 このトピックでは、アセットの配信ポリシーを作成して構成する理由と方法をご説明します。
 
->[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的パッケージ化と動的暗号化を使用するには、少なくとも 1 つのスケール ユニット (ストリーミング ユニットとも呼ばれる) が存在している必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 >
 >また、資産には、一連のアダプティブ ビットレート MP4、またはアダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。
 
@@ -39,19 +39,19 @@ Media Services で暗号化した資産を配信する場合、コンテンツ�
 
 スムーズ ストリーミング:
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
 
 HLS:
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
 MPEG DASH
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf) 
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
 HDS
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
 
 資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
@@ -63,23 +63,17 @@ HDS
 - 既存のストリーミング ロケーターを持つ資産が存在する場合、その資産に新しいポリシーをリンクすることはできません (資産から既存のポリシーのリンクを解除するか、資産に関連付けられている配信ポリシーを更新できます)。先にストリーミング ロケーターを削除し、ポリシーを調整した後、ストリーミング ロケーターを再作成する必要があります。ストリーミング ロケーターを再作成するときに同じ locatorId を使用できますが、コンテンツが最初の CDN またはダウンストリーム CDN によってキャッシュされる可能性があるため、クライアントで問題が発生しないことを確認する必要があります。
 
 
-##資産の配信ポリシーを解除する 
+##資産の配信ポリシーを解除する
 
 次の **ConfigureClearAssetDeliveryPolicy** メソッドでは、動的暗号化を適用せず、MPEG DASH、HLS、スムーズ ストリーミングのいずれかのプロトコルでストリームを配信することを指定します。ストレージで暗号化された資産にこのポリシーを適用する場合があります。
-  
+
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
 
-    static public void ConfigureClearAssetDeliveryPolicy(IAsset asset)
-    {
-        IAssetDeliveryPolicy policy =
-            _context.AssetDeliveryPolicies.Create("Clear Policy",
-            AssetDeliveryPolicyType.NoDynamicEncryption, 
-            AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.Dash, null);
+static public void ConfigureClearAssetDeliveryPolicy(IAsset asset) { IAssetDeliveryPolicy policy = \_context.AssetDeliveryPolicies.Create("Clear Policy", AssetDeliveryPolicyType.NoDynamicEncryption, AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.Dash, null);
 
-        asset.DeliveryPolicies.Add(policy);
-    }
+asset.DeliveryPolicies.Add(policy); }
 
-##DynamicCommonEncryption 資産の配信ポリシー 
+##DynamicCommonEncryption 資産の配信ポリシー
 
 
 次の **CreateAssetDeliveryPolicy** メソッドでは、動的で一般的な暗号化 (**DynamicCommonEncryption**) をスムーズ ストリーミング プロトコルに適用するよう構成された **AssetDeliveryPolicy** (他のプロトコルはストリーミングからブロック) を作成します。メソッドには、**Asset** (配信ポリシーを適用する資産) と **IContentKey** (**CommonEncryption** タイプのコンテンツ キーの 2 つのパラメーターがあります。詳細については、「[Creating a content key (コンテンツ キーの作成)](media-services-dotnet-create-contentkey.md#common_contentkey)」をご覧ください)。
@@ -87,15 +81,9 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 AssetDeliveryPolicy を作成する際に指定できる値については、[AssetDeliveryPolicy を定義するときに使用される種類](#types)セクションをご覧ください。
 
 
-    static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
-    {
-        Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
+static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key) { Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
 
-        Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-            new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-        {
-            {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-        };
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration = new Dictionary<AssetDeliveryPolicyConfigurationKey, string> { {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()}, };
 
         var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
                 "AssetDeliveryPolicy",
@@ -361,4 +349,4 @@ AssetDeliveryPolicy を作成する際に指定できる値については、[As
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

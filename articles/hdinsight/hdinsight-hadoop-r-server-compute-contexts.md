@@ -1,10 +1,10 @@
 <properties
-   pageTitle="HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション | Microsoft Azure"
+   pageTitle="HDInsight の R Server (プレビュー) の計算コンテキストのオプション | Microsoft Azure"
    description="HDInsight の R Server (プレビュー) でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
-   manager="paulettem"
+   manager="jhubbard"
    editor="cgronlun"
 />
 
@@ -18,19 +18,19 @@
    ms.author="jeffstok"
 />
 
-# HDInsight の R Server (プレビュー) のコンピューティング コンテキストのオプション
+# HDInsight の R Server (プレビュー) の計算コンテキストのオプション
 
 Azure HDInsight の Microsoft R Server (プレビュー) は、R ベースの分析を行うための最新の機能を備えています。HDFS 内の [Azure Blob](../storage/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントのコンテナー、またはローカルの Linux ファイル システムに格納されているデータを使用します。R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。また、[ScaleR](http://www.revolutionanalytics.com/revolution-r-enterprise-scaler "Revolution Analytics ScaleR") (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも活用できます。
 
 Premium クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-## エッジ ノードに対するコンピューティング コンテキスト
+## エッジ ノードに対する計算コンテキスト
 
 一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。ScaleR 関数を呼び出すステップは例外です。ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は、local sequential ("local")、local parallel ("localpar")、Map Reduce、および Spark です。
 
 オプション "local" と "localpar" の違いは、rxExec 呼び出しを実行する方法のみです。ScaleR の numCoresToUse オプションの使用を通じて別途指定されている (rxOptions(numCoresToUse=6) など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。さまざまなコンピューティング コンテキスト オプションを以下にまとめました。
 
-| コンピューティング コンテキスト | 設定方法 | 実行コンテキスト |
+| 計算コンテキスト | 設定方法 | 実行コンテキスト |
 |------------------|---------------------------------|---------------------------------------------------------------------------------------|
 | Local sequential | rxSetComputeContext(‘local’) | エッジ ノード サーバーのコアの実行の並列化 (順次実行される rxExec 呼び出しを除く) |
 | Local parallel | rxSetComputeContext(‘localpar’) | エッジ ノード サーバーのコアの実行の並列化 |
@@ -83,4 +83,4 @@ ScaleR コンピューティング コンテキストの詳細と例について
 - [HDInsight Premium への RStudio Server の追加に関する記事](hdinsight-hadoop-r-server-install-r-studio.md)
 - [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

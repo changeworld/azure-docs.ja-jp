@@ -13,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/26/2016"
+    ms.date="09/19/2016"
     ms.author="aungoo-msft"/>
 
 # Azure Premium Storage: 高パフォーマンスのための設計
 
-## 概要  
+## Overview  
 この記事では、Azure Premium Storage を使用する高パフォーマンスのアプリケーションを構築するためのガイドラインを示します。このドキュメントで説明する手順は、アプリケーションで使用されているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使用できます。ガイドラインを示すために、このドキュメント全体を通じて、Premium Storage で実行されている SQL Server を例として使用しています。
 
 この記事では、ストレージ層のパフォーマンスのシナリオに対処していますが、アプリケーション層を最適化する必要があります。たとえば、Azure Premium Storage で SharePoint ファームをホストしている場合は、この記事の SQL Server の例を使用してデータベース サーバーを最適化できます。さらに、最大限のパフォーマンスを得るために、SharePoint ファームの Web サーバーとアプリケーション サーバーを最適化します。
@@ -99,7 +99,7 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 
 PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論理ディスクと物理ディスクに使用できます。VM で Premium Storage ディスクを使用している場合、物理ディスク カウンターは各 Premium Storage ディスクを対象としており、論理ディスク カウンターは Premium Storage ディスクに作成された各ボリュームを対象としています。アプリケーションのワークロードをホストするディスクの値をキャプチャする必要があります。論理ディスクと物理ディスクの間に一対一のマッピングが存在する場合は、物理ディスク カウンターを参照できます。それ以外の場合は、論理ディスク カウンターを参照します。Linux では、iostat コマンドによって、CPU とディスクの使用レポートが生成されます。ディスク使用レポートには、物理デバイスまたはパーティションごとの統計が示されます。データベース サーバーがデータとログに個別のディスクを使用している場合は、両方のディスクでこのデータを収集します。次の表に、ディスク、プロセッサ、メモリのカウンターを示します。
 
-| カウンター | 説明 | PerfMon | iostat |
+| カウンター | Description | PerfMon | iostat |
 |---|---|---|---|
 | **1 秒あたりの IOPS またはトランザクション数** | 1 秒あたりにストレージ ディスクに発行された I/O 要求の数。 | Disk Reads/sec <br> Disk Writes/sec | tps <br> r/s <br> w/s |
 | **ディスク読み取り回数/書き込み回数** | ディスク上で実行された読み取り操作と書き込み操作の割合。 | % Disk Read Time <br> % Disk Write Time | r/s <br> w/s |
@@ -170,7 +170,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 ## 高スケール VM サイズ  
 アプリケーションの設計を始めるときに、最初に行うことの 1 つとして、アプリケーションをホストする VM の選択があります。Premium Storage には、高いコンピューティング能力と高いローカル ディスク I/O パフォーマンスを必要とするアプリケーションを実行できる、高スケール VM サイズが用意されています。これらの VM は、高速プロセッサ、高いメモリ対コア比、ローカル ディスク用ソリッド ステート ドライブ (SSD) を提供します。Premium Storage をサポートする高スケール VM の例として、DS シリーズ VM、DSv2 シリーズ VM、GS シリーズ VM があります。
 
-高スケール VM は、CPU コア数、メモリ容量、OS/一時ディスク サイズが異なるさまざまなサイズで提供されます。各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。また、コンピューティングおよびストレージ コストにも影響します。例として、DS シリーズ、DSv2 シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
+高スケール VM は、CPU コア数、メモリ容量、OS/一時ディスク サイズが異なるさまざまなサイズで提供されます。各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。また、計算およびストレージ コストにも影響します。例として、DS シリーズ、DSv2 シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
 
 | VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大データ ディスク数 | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
 |---|---|---|---|---|---|---|---|
@@ -230,6 +230,8 @@ Premium Storage ディスクは、Standard Storage ディスクよりも高い�
 
 ## ディスク キャッシュ  
 Azure Premium Storage を利用する高スケール VM には、BlobCache と呼ばれる多層キャッシュ テクノロジがあります。BlobCache では、仮想マシンの RAM とローカル SSD を組み合わせてキャッシュに使用します。このキャッシュは、Premium Storage の永続ディスクと VM のローカル ディスクで使用できます。既定では、このキャッシュは、OS ディスクでは Read/Write に設定され、Premium Storage でホストされるデータ ディスクでは ReadOnly に設定されます。Premium Storage ディスクでディスク キャッシュを有効にすると、高スケール VM は基になるディスクのパフォーマンスを上回るきわめて高いレベルのパフォーマンスを実現できます。
+
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
 BlobCache の機能の詳細については、Inside の [Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) に関するブログ記事をご覧ください。
 
@@ -540,4 +542,4 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

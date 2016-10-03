@@ -22,7 +22,7 @@
 ## 必要なツールとアプリケーションをダウンロードします。
 プロセスを開始する前に、次の項目を準備してください。
 
-- 対象とするオペレーティング システムに合わせて、Azure のダウンロード ページから、Azure PowerShell コマンドレットまたは Linux コマンド ライン インターフェイスのツールをインストールします。
+- 対象とするオペレーティング システムに応じて、[Azure のダウンロード](https://azure.microsoft.com/downloads/) ページから、[Azure PowerShell コマンドレット](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids)または [Linux コマンド ライン インターフェイス ツール](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409)をインストールします。
 - Azure Storage エクスプローラーを CodePlex からインストールします。
 - 次のリンクから、Azure 認定用の認定テスト ツールをダウンロードおよびインストールします。
   - [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913)。この認定ツールは、Windows ベースのコンピューターで実行する必要があります。使用可能な Windows ベースのコンピューターがない場合は、Azure で Windows ベースの VM を使用するとツールを実行できます。
@@ -48,9 +48,9 @@ Azure VHD は、クラウドまたはオンプレミスでも開発できます�
 
 ## 関連項目
 - [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
-- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines-windows-hero-tutorial/)
+- [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 
 [link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Authenticatior の最新バージョンにアップグレードする方法について説明します。"
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
+	authors="kgremban"
 	manager="femila"
 	editor="curtland"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/22/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Microsoft Authenticator
 
@@ -137,4 +137,4 @@ Microsoft Authenticator アプリからアカウントを削除するには、�
 
 ![[削除] ボタン](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

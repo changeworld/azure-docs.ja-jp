@@ -5,7 +5,7 @@
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/19/2016" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics ジョブ監視とクエリの監視方法の概要
@@ -41,9 +41,8 @@ Stream Analytics ジョブを初めてリージョンに作成したときに、
 | メトリック | 定義 |
 |--------|-------------|
 | SU % 使用率 | ジョブの [スケール] タブからジョブに割り当てられたストリーミング ユニットの使用率。このインジケーターが 80% 以上に達した場合、イベントの処理が遅れたり、進行が遅延または停止する可能性があります。 |
-| 入力イベント | Stream Analytics のジョブが受信したデータのイベント数単位の量。イベントが入力ソースに送信されることを検証するために使用できます。 |
-| 入力イベントのバイト数 | Stream Analytics のジョブが受信したデータのバイト単位のスループットの量 |
-| 出力イベント | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベント数単位の量。 |
+| 入力イベント | Stream Analytics のジョブが受信したデータのイベントの量。イベントが入力ソースに送信されることを検証するために使用できます。 |
+| 出力イベント | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベントの量。 |
 | 異常イベント | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | データ変換エラー | Stream Analytics のジョブによって発生した、データ変換エラーの数。 |
 | 実行時エラー | Stream Analytics ジョブの実行中に発生したエラーの数。 |
@@ -107,4 +106,4 @@ Microsoft Azure 管理ポータルのジョブのダッシュボードには、�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

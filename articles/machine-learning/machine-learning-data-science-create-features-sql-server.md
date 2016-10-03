@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev;fashah;garye" />
 
 
@@ -23,7 +23,7 @@
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。これは SQL を使用して実行することも、Python などのプログラミング言語を使用して実行することもできます。ここでは、この両方を使用します。
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process TDSP](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
 > [AZURE.NOTE] 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
 
@@ -32,7 +32,7 @@
 この記事では、以下のことを前提としています。
 
 * Azure のストレージ アカウントが作成されている。手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。
-* データは SQL Server に格納されている。格納されていない場合、データの移動手順については、[Azure Machine Learning 用にデータを Azure SQL Database に移動する](machine-learning-data-science-move-sql-azure.md)方法についてのページを参照してください。
+* データが SQL Server に格納されている。格納されていない場合、データの移動手順については、「[Azure Machine Learning 用にデータを Azure SQL Database に移動する](machine-learning-data-science-move-sql-azure.md)」をご覧ください。
 
 
 ##<a name="sql-featuregen"></a>SQL を使用した特徴の生成
@@ -95,10 +95,7 @@
 上記の位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。
 
 
-> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)
- 
-
-> [AZURE.TIP] もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。[こちらで pyodbc を使用した実行方法の例を確認してください。](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
@@ -125,4 +122,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 
  
 
-<!---HONumber=AcomDC_0914_2016--->
+<!---HONumber=AcomDC_0921_2016-->

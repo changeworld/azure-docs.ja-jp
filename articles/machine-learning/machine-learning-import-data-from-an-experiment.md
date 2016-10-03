@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="09/16/2016"
 	ms.author="garye;bradsev" />
 
 
@@ -35,4 +35,4 @@
 
 保存が完了すると、ワークスペースのどの実験でもデータセットを使用できるようになります。データセットは、モジュール パレットの **[保存されたデータセット]** リストから検索できます。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

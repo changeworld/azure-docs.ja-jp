@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 
 # Azure Machine Learning での高度な分析のシナリオ
 
-この記事では、Team Data Science Process (TDSP) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
+この記事では、[Team Data Science Process (TDSP)](data-science-process-overview.md) で処理できる多様なデータ ソースとターゲット シナリオの例について概要を説明します。TDSP は、チームが共同でインテリジェントなアプリケーションを構築するための体系的手法を提供します。ここで示すシナリオでは、データ処理ワークフローで使用できるオプションを紹介します。このオプションは、データの特性、ソースの場所、および Azure でのターゲット リポジトリによって異なります。
 
 最後のセクションに、データと目標に適したサンプル シナリオを選択するための**デシジョン ツリー**を示します。
 
@@ -28,10 +28,9 @@
 
 以下の各セクションに、サンプル シナリオを示します。シナリオごとに、考えられるデータ サイエンスまたは高度な分析のフローと、サポートする Azure リソースの説明があります。
 
->[AZURE.NOTE] **以下のすべてのシナリオでは、以下の操作を行う必要があります。**
-
-*   [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)
-*   [Azure ML ワークスペースを作成する](machine-learning-create-workspace.md)
+>[AZURE.NOTE] **以下のすべてのシナリオで、次の操作を行う必要があります。**<br/>
+>* [ストレージ アカウントの作成](../storage/storage-create-storage-account.md)<br/>
+>* [Azure Machine Learning ワークスペースの作成](machine-learning-create-workspace.md)
 
 
 ## <a name="smalllocal"></a>シナリオ 1: ローカル ファイルの小規模から中規模の表形式のデータセット
@@ -92,7 +91,7 @@
 
 9. [データのインポート][import-data] モジュールを使用して、Azure BLOB からデータを読み取ります。
 
-10. 統合されたデータセットで始まる Azure ML の実験フローを構築します。
+10. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
 
 ## <a name="smalllocaltodb"></a>シナリオ 4: ローカル ファイルの小規模から中規模のデータセット (Azure VM の SQL Server を対象)
@@ -113,18 +112,18 @@
 
 6.  Azure VM で実行している SQL Server データベースにデータを読み込みます。
 
-    a.オプション 1: SQL Server Management Studio を使用する
+    オプション 1: SQL Server Management Studio を使用する
 
-		i.  Login to SQL Server VM
-        ii. Run SQL Server Management Studio.
-        iii. Create database and target tables.
-        iv. Use one of the bulk import methods to load the data from VM-local files.
+    - SQL Server VM にログインします。
+    - SQL Server Management Studio を実行します。
+    - データベースとターゲット テーブルを作成します。
+    - いずれかの一括インポート方法を使用して、ローカルの VM ファイルからデータを読み込みます。
 
-    b.オプション 2: IPython Notebook を使用する (中規模以上のデータセットには不向き)
-
-        i.  Use ODBC connection string to access SQL Server on VM.
-        ii. Create database and target tables.
-        iii. Use one of the bulk import methods to load the data from VM-local files.
+    オプション 2: IPython Notebook を使用する (中規模以上のデータセットには不向き)
+    <!-- -->    
+    - ODBC 接続文字列を使用して、VM 上の SQL Server にアクセスします。
+    - データベースとターゲット テーブルを作成します。
+    - いずれかの一括インポート方法を使用して、ローカルの VM ファイルからデータを読み込みます。
 
 7.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -134,7 +133,7 @@
 
 10. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
-11. 統合されたデータセットで始まる Azure ML の実験フローを構築します。
+11. データセットの取り込みから始まる Azure Machine Learning の実験フローを構築します。
 
 ## <a name="largelocaltodb"></a>シナリオ 5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)
 
@@ -168,7 +167,7 @@
 
     f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
- > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+     > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速化するために、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートすることをお勧めします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -178,7 +177,7 @@
 
 8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
-9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
+9. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
 ## <a name="largedbtodb"></a>シナリオ 6: オンプレミスの SQL Server データベースの大規模データセット (Azure 仮想マシンの SQL Server を対象)
 
@@ -190,7 +189,7 @@
 
 2.  いずれかのデータ エクスポート方法を使用して、SQL Server からダンプ ファイルにデータをエクスポートします。
 
-    a.注: オンプレミスのデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
+    > [AZURE.NOTE] オンプレミスのデータベースからすべてのデータを移動する場合、より速い方法は、完全なデータベースを Azure の SQL Server インスタンスに移動することです。データのエクスポート、データベースの作成、ターゲット データベースへのデータの読み込み/インポートの手順を省略し、別の方法を続行します。
 
 3.  ダンプ ファイルを Azure ストレージ コンテナーにアップロードします。
 
@@ -208,7 +207,7 @@
 
 	f.テーブルの結合が必要な場合は、インデックスを作成して処理時間を短縮します。
 
-> [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
+    > [AZURE.NOTE] 大きなサイズのデータの読み込みを高速にするため、パーティション分割されたテーブルを作成し、並列処理でデータを一括インポートします。詳細については、「[Parallel Data Import to SQL Partitioned Tables (SQL パーティション テーブルへのデータの並列インポート](machine-learning-data-science-parallel-load-sql-partitioned-tables.md)」をご覧ください。
 
 5.  データを探索し、必要に応じて機能を作成します。機能をデータベース テーブルで具体化する必要はありません。作成に必要なクエリに注意してください。
 
@@ -218,7 +217,7 @@
 
 8. [データのインポート][import-data] モジュールを使用して、SQL Server から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
-9. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
+9. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
 ### オンプレミス SQL Server から Azure SQL Database に完全なデータベースをコピーする別の方法
 
@@ -226,7 +225,7 @@
 
 #### その他の Azure リソース: Azure 仮想マシン (SQL Server / IPython Notebook サーバー)
 
-SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラー GUI か、同等の TRANSACT-SQL コマンドを使用して行います。
+SQL Server VM で SQL Server データベース全体をレプリケートするには、データベースを 1 つの場所/サーバーから別の場所にコピーする必要があり、データベースが一時的にオフラインになることを想定しています。これは、SQL Server Management Studio のオブジェクト エクスプローラーか、同等の Transact-SQL コマンドを使用して行います。
 
 1. ソースの場所にあるデータベースをデタッチします。詳細については、 [データベースのデタッチ](https://technet.microsoft.com/library/ms191491(v=sql.110).aspx) をご覧ください。
 2. Windows エクスプローラーや Windows コマンド プロンプト ウィンドウで、デタッチされたデータベース ファイルとログ ファイルを Azure の SQL Server VM 上のターゲットの場所にコピーします。
@@ -282,7 +281,7 @@ SQL Server VM で SQL Server データベース全体をレプリケートする
 
 9. [データのインポート][import-data] モジュールを使用して、`Hive Queries` から直接データを読み取ります。フィールドの抽出、機能の作成、データのサンプリングを行うのに必要なクエリを、必要に応じて、直接[データのインポート][import-data] クエリに貼り付けます。
 
-10. アップロードされたデータセットで始まる Azure ML の実験フローを構築します。
+10. データセットのアップロードから始まる Azure Machine Learning の単純な実験フローを構築します。
 
 ## <a name="decisiontree"></a>シナリオを選択するためのデシジョン ツリー
 ------------------------
@@ -314,4 +313,4 @@ Advanced Analytics Process and Technology とパブリック データセット�
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

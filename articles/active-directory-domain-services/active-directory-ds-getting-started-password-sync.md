@@ -73,4 +73,4 @@ Azure AD Domain Services では、管理対象ドメインでユーザーを認�
 
 - [Azure AD ドメイン サービスで管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!-------HONumber=AcomDC_0921_2016-->

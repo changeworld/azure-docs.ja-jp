@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/30/2016"
+   ms.date="09/20/2016"
    ms.author="sumukhs"/>
 
 # ステートフル Reliable Services の構成
@@ -85,7 +85,7 @@ ReplicatorConfig
 ### 構成名
 |名前|単位|既定値|解説|
 |----|----|-------------|-------|
-|BatchAcknowledgementInterval|秒|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
+|BatchAcknowledgementInterval|Seconds|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
 |ReplicatorEndpoint|該当なし|既定値なし - 必須パラメーター|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソース定義の詳細については、[サービス マニフェストのリソース](service-fabric-service-manifest-resources.md)に関する記事を参照してください。 |
 |MaxPrimaryReplicationQueueSize|操作数|8192|プライマリ キューの操作の最大数です。操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 |MaxSecondaryReplicationQueueSize|操作数|16384|セカンダリ キューの操作の最大数です。操作は、永続性によってその状態の高可用性が実現されてから解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
@@ -93,7 +93,7 @@ ReplicatorConfig
 |MaxRecordSizeInKB|KB|1024|レプリケーターがログに書き込むことができるレコードの最大サイズです。この値は 4 の倍数で 16 より大きい必要があります。|
 |SharedLogId|GUID|""|このレプリカで使用される共有ログ ファイルの識別に使用する一意の GUID を指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。|
 |SharedLogPath|完全修飾パス名|""|このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。|
-|SlowApiMonitoringDuration|秒|300|マネージ API 呼び出しの監視間隔を設定します。たとえば、バックアップのコールバック関数を用意しておき、一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。|
+|SlowApiMonitoringDuration|Seconds|300|マネージ API 呼び出しの監視間隔を設定します。たとえば、バックアップのコールバック関数を用意しておき、一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。|
 
 ### コードによるサンプル構成
 ```csharp
@@ -162,4 +162,4 @@ SharedLogId と SharedLogPath の設定は常に一緒に使用して、サー�
  - [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
  - [Reliable Services の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

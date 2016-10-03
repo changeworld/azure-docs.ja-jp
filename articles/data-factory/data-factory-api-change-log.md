@@ -13,34 +13,60 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="09/21/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory - .NET API の変更ログ 
-この記事では、特定のバージョンの Azure Data Factory SDK の変更に関する情報を提供します。Azure Data Factory の最新の Nuget パッケージについては、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)をご覧ください。
+この記事では、特定のバージョンの Azure Data Factory SDK の変更に関する情報を提供します。Azure Data Factory の最新の NuGet パッケージについては、[こちら](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)をご覧ください。
+
+## バージョン 4.11.0
+機能の追加:
+
+- 次のリンクされたサービスの種類が追加されています。
+	- [OnPremisesMongoDbLinkedService](https://msdn.microsoft.com/library/mt765129.aspx)
+	- [AmazonRedshiftLinkedService](https://msdn.microsoft.com/library/mt765121.aspx)
+	- [AwsAccessKeyLinkedService](https://msdn.microsoft.com/library/mt765144.aspx)
+- 次のデータセットの型が追加されています。
+	- [MongoDbCollectionDataset](https://msdn.microsoft.com/library/mt765145.aspx)
+	- [AmazonS3Dataset](https://msdn.microsoft.com/library/mt765112.aspx)
+- 次のコピー ソースの種類が追加されています。
+	- [MongoDbSource](https://msdn.microsoft.com/ja-JP/library/mt765123.aspx)
+
+## バージョン 4.10.0
+- 次の省略可能なプロパティが TextFormat に追加されました。
+	- [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
+	- [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
+	- [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+- 次のリンクされたサービスの種類が追加されています。
+	- [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
+	- [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
+- 次のデータセットの型が追加されています。
+	- [OnPremisesCassandraTableDataset](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandratabledataset.aspx)
+- 次のコピー ソースの種類が追加されています。
+	- [CassandraSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.cassandrasource.aspx)
+- [WebServiceInputs](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azuremlbatchexecutionactivity.webserviceinputs.aspx) プロパティを AzureMLBatchExecutionActivity に追加しました。
+	- Azure Machine Learning の実験に複数の Web サービスの入力を渡すことができるようになりました。
+
 
 ## バージョン 4.9.1
-_リリース日: 2016 年 7 月 5 日_
 
 ### バグの修正
 
-- [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)のWeb APIベースの認証が非推奨になりました。
+- [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx) の Web API ベースの認証が非推奨になりました。
 
 ## バージョン 4.9.0
-_リリース日: 2016 年 6 月 10 日_
 
 ### 機能の追加
 
-- [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) プロパティ と [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) プロパティを CopyActivity に追加しました。機能の詳細については、 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) を参照してください。
+- [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) プロパティと [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) プロパティを CopyActivity に追加しました。機能の詳細については、「[ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)」を参照してください。
 
 
 ### バグの修正
 
 - [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) インスタンスを受け取る [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) メソッドのオーバーロードを導入しました。
-- CopySink で[WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) と [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) が、省略可能としてマークされました。
+- CopySink で [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) と [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) が、省略可能としてマークされました。
 
 ## バージョン 4.8.0
-_リリース日: 2016 年 5 月 25 日_
 
 ### 機能の追加
 - 次の省略可能なプロパティがコピー アクティビティの種類に追加され、コピー パフォーマンスの調整が有効になりました。
@@ -48,7 +74,6 @@ _リリース日: 2016 年 5 月 25 日_
 	- [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
 ## Version 4.7.0
-リリース日: 2016-05-20
 
 ### 機能の追加
 * Optimized Row Columnar (ORC) 形式でファイルをコピーするための新しい StorageFormat タイプ ([OrcFormat](https://msdn.microsoft.com/library/mt723391.aspx)) を追加しました。
@@ -56,14 +81,12 @@ _リリース日: 2016 年 5 月 25 日_
     * PolyBase を使用して SQL Data Warehouse にデータをコピーすることができます。
 
 ## Version 4.6.1
-リリース日: 2016-04-26
 
 ### バグの修正
 * アクティビティ ウィンドウをリストするための HTTP 要求を修正します。
     * リソース グループの名前とデータ ファクトリの名前を要求のペイロードから削除します。
 
 ## バージョン 4.6.0
-リリース日: 2016.04.14
 
 ### 機能の追加
 
@@ -76,7 +99,6 @@ _リリース日: 2016 年 5 月 25 日_
 - JSON 形式のデータを持つデータセットを定義するために、新しい [StorageFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.storageformat.aspx) 型の [JsonFormat](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.jsonformat.aspx) 型が追加されました。
 
 ## バージョン 4.5.0
-リリース日: 2016.02.24
 
 ### 機能の追加
 * [アクティビティ ウィンドウの一覧操作](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.activitywindowoperationsextensions.aspx)が追加されました。
@@ -89,15 +111,13 @@ _リリース日: 2016 年 5 月 25 日_
     * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## バージョン 4.4.0
-リリース日: 2016 年 1 月 28 日
 
 ### 機能の追加
 
 - 次のリンクされたサービスの種類が、コピー アクティビティのデータ ソースおよびシンクとして追加されています。
-	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、[Azure Storage SAS のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)に関するセクションを参照してください。
+	- [AzureStorageSasLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.azurestoragesaslinkedservice.aspx)。概念情報と例については、「[Azure Storage SAS のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service)」を参照してください。
 
 ## バージョン 4.3.0
-リリース日: 2015 年 11 月 25 日
 
 ### 機能の追加
 
@@ -106,7 +126,6 @@ _リリース日: 2016 年 5 月 25 日_
 	- [OnPremisesOdbcLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisesodbclinkedservice.aspx)。概念情報と例については、「[Azure Data Factory を使用して ODBC データ ストアからデータを移動する](data-factory-odbc-connector.md)」を参照してください。
 
 ## バージョン 4.2.0
-リリース日: 2015 年 11 月 10 日
 
 ### 機能の追加
 
@@ -117,7 +136,6 @@ _リリース日: 2016 年 5 月 25 日_
 
 
 ## バージョン 4.1.0
-リリース日: 2015 年 10 月 28 日
 
 ### 機能の追加
 * 次のリンクされたサービスの種類が追加されています。
@@ -133,7 +151,6 @@ _リリース日: 2016 年 5 月 25 日_
 
 
 ## バージョン 4.0.1
-リリース日: 2015 年 10 月 13 日
 
 ### 重大な変更
 次のクラスの名前が変更されました。新しい名前は、4.0.0 リリースより前の、クラスの元の名前です。
@@ -149,7 +166,6 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 
 
 ## バージョン 4.0.0
-リリース日: 2015 年 10 月 2 日
 
 ### 重大な変更
 
@@ -169,7 +185,6 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 | TableListResponse | [DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters | [DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) | 
     
-- このリリースの **API バージョンは** **2015-10-01** です。
 
 - **List** メソッドでページングされた結果が返されるようになりました。応答に空でない **NextLink** プロパティが含まれている場合、クライアント アプリケーションは、すべてのページが返されるまで次のページを取得し続ける必要があります。たとえば次のようになります。
 
@@ -190,6 +205,6 @@ SqlServerDataset | [SqlServerTableDataset](https://msdn.microsoft.com/library/mi
 ### 機能の追加
 - [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) クラスでは、Azure SQL Data Warehouse へのべき等コピーをサポートするために、**SliceIdentifierColumnName** と **SqlWriterCleanupScript** の 2 つの新しいプロパティがサポートされるようになりました。これらのプロパティの詳細については、[Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) に関する記事の「[メカニズム 1](data-factory-azure-sql-data-warehouse-connector.md#mechanism-1)」および「[メカニズム 2](data-factory-azure-sql-data-warehouse-connector.md#mechanism-2)」をご覧ください。
 
-- コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、これをサポートするプロパティとして、**SqlReaderStoredProcedureName** と **StoredProcedureParameters** があります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
+- コピー アクティビティの一環として、Azure SQL Database ソースと Azure SQL Data Warehouse ソースに対するストアド プロシージャの実行がサポートされるようになりました。[SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) クラスと [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) クラスには、**SqlReaderStoredProcedureName** プロパティと **StoredProcedureParameters** プロパティがあります。これらのプロパティの詳細については、Azure.com の [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) と [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

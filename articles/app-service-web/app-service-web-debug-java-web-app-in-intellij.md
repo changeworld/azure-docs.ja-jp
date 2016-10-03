@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="07/07/2016" 
+	ms.date="09/20/2016" 
 	ms.author="asirveda;robmcm"/>
 
 # IntelliJ で Azure の Java Web アプリをデバッグする
@@ -29,7 +29,7 @@ IntelliJ でデバッグする場合、このチュートリアルの完了時�
 * Java Developer Kit (JDK) v 1.8 以降。
 * IntelliJ IDEA Ultimate エディション。<https://www.jetbrains.com/idea/download/index.html> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for IntelliJ。詳細については、「[Azure Toolkit for IntelliJ のインストール]」を参照してください。
 * 作成して Azure App Service にデプロイした Dynamic Web Project。「[IntelliJ で Azure 用の Hello World Web アプリを作成する]」の例を参照してください。
 
@@ -103,4 +103,4 @@ Azure Web Apps の作成の詳細については、「[Web Apps の概要]」を
 [05]: ./media/app-service-web-debug-java-web-app-in-intellij/05-ready-for-remote-debugging.png
 [06]: ./media/app-service-web-debug-java-web-app-in-intellij/06-windows-command-prompt-connection-successful-to-remote.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

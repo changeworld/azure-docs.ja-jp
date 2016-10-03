@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/06/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Azure AD の認証シナリオ
@@ -468,4 +468,4 @@ Web アプリケーションは、認証コードを使用して JWT アクセ�
 
 [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

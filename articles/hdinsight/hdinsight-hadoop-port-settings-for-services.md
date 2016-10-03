@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="08/30/2016"
+ms.date="09/13/2016"
 ms.author="larryfr"/>
 
 # HDInsight で使用されるポートと URI
@@ -36,9 +36,9 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 | サービス | ポート | プロトコル | Description |
 | ---- | ---------- | -------- | ----------- | ----------- |
-| sshd | 22 | SSH | ヘッド ノード 0 の sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
+| sshd | 22 | SSH | プライマリ ヘッドノードの sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
 | sshd | 22 | SSH | エッジ ノードの sshd にクライアントを接続します (HDInsight Premium のみ)。[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。 |
-| sshd | 23 | SSH | ヘッド ノード 1 の sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
+| sshd | 23 | SSH | セカンダリ ヘッドノードの sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
 | Ambari | 443 | HTTPS | Ambari Web UI。[Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関する記事をご覧ください。 |
 | Ambari | 443 | HTTPS | Ambari REST API。[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md)に関する記事をご覧ください。 |
 | WebHCat | 443 | HTTPS | HCatalog REST API。[Curl での Hive の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での Pig の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での MapReduce の使用](hdinsight-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
@@ -143,4 +143,4 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | ブローカー | ワーカー ノード | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | クライアント通信に使用 |
 | &nbsp; | Zookeeper ノード | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

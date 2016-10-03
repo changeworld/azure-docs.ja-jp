@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SmarterU の統合
@@ -97,7 +97,7 @@
     3.  **[User Default Login]** セクションで、**[SmarterU]** タブを選択します。
     4.  **[Enable Okta]** を選択します。
     5.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[Okta Metadata]** テキスト ボックスに貼り付けます。
-    6.  **[保存]** をクリックします。
+    6.  [**Save**] をクリックします。
 
 7.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -107,7 +107,7 @@
   
 Azure AD ユーザーが SmarterU にログインできるようにするには、そのユーザーを SmarterU にプロビジョニングする必要があります。SmarterU の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **SmarterU** テナントにログインします。
 
@@ -120,7 +120,7 @@ Azure AD ユーザーが SmarterU にログインできるようにするには�
     1.  **[+User]** をクリックします。
     2.  次のテキスト ボックスに、Azure AD のユーザー アカウントの関連する属性の値を入力します。**[Primary Email]**、**[Employee ID]**、**[Password]**、**[Verify Password]**、**[Given Name]**、**[Surname]**。
     3.  **[Active]** をクリックします。
-    4.  **[保存]** をクリックします。
+    4.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] SmarterU から提供されている他の SmarterU ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -142,4 +142,4 @@ Azure AD ユーザーが SmarterU にログインできるようにするには�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

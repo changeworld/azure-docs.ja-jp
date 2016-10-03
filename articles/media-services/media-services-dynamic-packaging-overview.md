@@ -1,6 +1,6 @@
 <properties
-	pageTitle="動的パッケージの概要"
-	description="このトピックでは、動的パッケージの概要について説明します。"
+	pageTitle="ダイナミック パッケージの概要 | Microsoft Azure"
+	description="このトピックでは、ダイナミック パッケージの概要について説明します。"
 	authors="Juliako"
 	manager="erikre"
 	editor=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
@@ -34,7 +34,7 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 ![動的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
->[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+>[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 ##一般的なシナリオ
 
@@ -80,4 +80,4 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

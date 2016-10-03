@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016" 
+	ms.date="09/20/2016" 
 	ms.author="jeannt"/>
 
 # Azure Machine Learning を使用した顧客離れの分析
@@ -51,7 +51,7 @@
 
 1.	リスク モデルでは、可能性とリスクに対するアクションの影響を検討できます。
 2.	介入モデルでは、離反の可能性と顧客生涯価値 (CLV) の大きさに対する介入レベルの影響を検討できます。
-3.	この分析は、最適なプランを配信する顧客セグメントを対象とする事前対応型のマーケティング キャンペーンにエスカレートを質的、分析に適しています。
+3.	この分析は、最適なプランを配信する顧客セグメントを対象とする事前対応型のマーケティング キャンペーンにエスカレートを質的、分析に適しています。  
 
 ![][1]
 
@@ -114,7 +114,7 @@
 1.	ロジスティック回帰 (LR)
 2.	ブースト デシジョン ツリー (BT)
 3.	平均化パーセプトロン (AP)
-4.	サポート ベクター マシン (SVM)
+4.	サポート ベクター マシン (SVM)  
 
 
 次の図に、実験のデザイン サーフェイスの一部を示します。これは、モデルが作成されたシーケンスを示しています。
@@ -151,7 +151,7 @@ AUC は一般に、異なるアルゴリズム (または異なるシステム) 
 およそ 8,000 件のサブスクリプションが含まれる CRM データを使用して、問題のデータセットの誤分類率を比較しました。
 
 -	SAS の誤分類率は 10 ～ 15% でした。
--	Machine Learning Studio の誤分類率は、上位 200 ～ 300 名の離反者については 15 ～ 20% でした。
+-	Machine Learning Studio の誤分類率は、上位 200 ～ 300 名の離反者については 15 ～ 20% でした。  
 
 電気通信業界では、離反のリスクが最も高い顧客のみにコンセルジュ サービスや優待を提供して対処することが重要です。その点で、Azure Cloud ML を使用した実装は、SAS モデルに匹敵する結果を出しています。
 
@@ -202,7 +202,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 
 Azure Machine Learning にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。これは、市場で Azure Machine Learning を差別化している重要な機能です。
 
-このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。  
+このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
 ##まとめ
 このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning を使って実装しました。最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。
 
@@ -215,7 +215,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。
 
-[こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。 
+[こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。
 ##参照
 [1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
@@ -225,7 +225,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 \[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-\[5] Cortana Analytics ギャラリーの [Telco 顧客離反モデル テンプレート](https://caqs.azure.net/#gallery/telcocustomerchurn)
+\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 (http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) の「Telco churn model template (Telco の顧客離れモデルのテンプレート)」  
 ##付録
 
 ![][10]
@@ -244,4 +244,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

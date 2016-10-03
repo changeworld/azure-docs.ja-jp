@@ -15,7 +15,7 @@
       ms.topic="article"
       ms.tgt_pltfrm="na"
       ms.workload="identity"
-      ms.date="03/28/2016"
+      ms.date="09/16/2016"
       ms.author="v-jibran@microsoft.com"/>
 
 # Azure AD Graph API のクイック スタート
@@ -120,4 +120,4 @@ Graph によって公開される Azure AD エンティティと型の詳細と�
 - [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) の詳細
 - [Azure AD Graph API のアクセス許可スコープ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)の詳細については、こちらを参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

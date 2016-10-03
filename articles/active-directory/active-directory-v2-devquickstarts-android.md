@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 #  v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
@@ -197,4 +197,4 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

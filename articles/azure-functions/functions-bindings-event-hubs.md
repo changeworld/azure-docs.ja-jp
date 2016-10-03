@@ -65,6 +65,13 @@ Azure Event Hub トリガーの *function.json* ファイルでは、次のプ�
 	    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
 	}
 
+#### Azure Event Hub のトリガー F# の例
+
+上記の function.json の例を使用して、次の F# 関数コードでイベント メッセージの本文を記録します。
+
+	let Run(myEventHubMessage: string, log: TraceWriter) =
+	    log.Info(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
+
 #### Azure Event Hub のトリガー Node.js の例
  
 上記の function.json の例を使用して、次の Node.js 関数コードでイベント メッセージの本文を記録します。
@@ -113,6 +120,15 @@ Azure Event Hub 出力バインドの *function.json* ファイルでは、次�
 	    outputEventHubMessage = msg;
 	}
 
+#### 出力バインドのための Azure Event Hub F# のコード例
+
+次の F# 関数コードの例では、Event Hub のイベント ストリームにイベントを書き込みます。この例では、上記の Event Hub 出力バインドを C# タイマー トリガーに適用しています。
+
+	let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =
+	    let msg = sprintf "TimerTriggerFSharp1 executed at: %s" DateTime.Now.ToString()
+	    log.Verbose(msg);
+	    outputEventHubMessage <- msg;
+
 #### 出力バインドのための Azure Event Hub Node.js のコード例
  
 次の Node.js 関数コードの例では、Event Hub のイベント ストリームにイベントを書き込みます。この例では、上記の Event Hub 出力バインドを Node.js タイマー トリガーに適用しています。
@@ -136,4 +152,4 @@ Azure Event Hub 出力バインドの *function.json* ファイルでは、次�
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

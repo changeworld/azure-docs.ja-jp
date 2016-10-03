@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/09/2016"
+   ms.date="09/09/2016"
    ms.author="gwallace"/>
 
 # クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する
@@ -33,7 +33,7 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 
 アプリケーション ゲートウェイで SSL オフロードを構成するには、次の手順を順番に実行します。
 
-1. [新しいアプリケーション ゲートウェイの作成](#create-a-new-application-gateway)
+1. [アプリケーション ゲートウェイの作成](#create-an-application-gateway)
 2. [SSL 証明書のアップロード](#upload-ssl-certificates)
 3. [ゲートウェイの構成](#configure-the-gateway)
 4. [ゲートウェイ構成の設定](#set-the-gateway-configuration)
@@ -45,57 +45,27 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 
 ゲートウェイを作成するには、**New-AzureApplicationGateway** コマンドレットを独自の値に置き換えて使用します。この時点ではゲートウェイの課金は開始されません。課金は後の手順でゲートウェイが正しく起動されたときに開始します。
 
-このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。
-
-	PS C:\> New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
-
-	VERBOSE: 4:31:35 PM - Begin Operation: New-AzureApplicationGateway
-	VERBOSE: 4:32:37 PM - Completed Operation: New-AzureApplicationGateway
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
+	New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 
 ゲートウェイが作成されたことを確認するには、**Get-AzureApplicationGateway** コマンドレットを使用します。
 
 サンプルでは、*Description*、*InstanceCount*、および*GatewaySize* は省略可能なパラメーターです。*InstanceCount* の既定値は 2、最大値は 10 です。*GatewaySize* の既定値は Medium です。その他の値は Small および Large です。ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
-このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。
-
-	PS C:\> Get-AzureApplicationGateway AppGwTest
-
-	VERBOSE: 4:39:39 PM - Begin Operation:
-	Get-AzureApplicationGateway VERBOSE: 4:39:40 PM - Completed
-	Operation: Get-AzureApplicationGateway
-	Name: AppGwTest
-	Description:
-	VnetName: testvnet1
-	Subnets: {Subnet-1}
-	InstanceCount: 2
-	GatewaySize: Medium
-	State: Stopped
-	VirtualIPs:
-	DnsName:
-
+	Get-AzureApplicationGateway AppGwTest
 
 ## SSL 証明書のアップロード
 
 **Add-AzureApplicationGatewaySslCertificate** を使用して、サーバー証明書を *pfx* 形式でアプリケーション ゲートウェイにアップロードします。証明書の名前はユーザーが指定し、アプリケーション ゲートウェイ内で一意である必要があります。この証明書はアプリケーション ゲートウェイ上のすべての証明書管理操作でこの名前で呼ばれます。
 
-このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。サンプル内の値を独自の値に置き換えます。
+サンプルのコマンドレットを次に示します。自分の環境に合わせてサンプル内の値を置き換えてください。
 
-	PS C:\> Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
-
-	VERBOSE: 5:05:23 PM - Begin Operation: Get-AzureApplicationGatewaySslCertificate
-	VERBOSE: 5:06:29 PM - Completed Operation: Get-AzureApplicationGatewaySslCertificate
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   21fdc5a0-3bf7-2c12-ad98-192e0dd078ef
+	Add-AzureApplicationGatewaySslCertificate  -Name AppGwTest -CertificateName GWCert -Password <password> -CertificateFile <full path to pfx file>
 
 次に、証明書のアップロードを検証します。**Get-AzureApplicationGatewayCertificate** コマンドレットを使用します。
 
 このサンプルの最初の行はコマンドレットを示し、その後に出力が続きます。
 
-	PS C:\> Get-AzureApplicationGatewaySslCertificate AppGwTest
+	Get-AzureApplicationGatewaySslCertificate AppGwTest
 
 	VERBOSE: 5:07:54 PM - Begin Operation: Get-AzureApplicationGatewaySslCertificate
 	VERBOSE: 5:07:55 PM - Completed Operation: Get-AzureApplicationGatewaySslCertificate
@@ -116,21 +86,20 @@ Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL)
 - **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
 - **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
 - **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
+- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 - **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。現在、*basic* ルールのみサポートされます。*basic* ルールは、ラウンド ロビンの負荷分散です。
 
 **構成に関する追加の注意**
 
-SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCert** 要素は、前述の SSL 証明書のアップロードで使用したものと同じ名前を値に設定して **HttpListener** に追加されます。フロントエンド ポートは 443 に更新する必要があります。
+SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (大文字小文字の区別あり) に変更する必要があります。**SslCert** 要素は、前の SSL 証明書のアップロードに関するセクションで使用したものと同じ名前を値に設定して **HttpListener** に追加します。フロントエンド ポートは 443 に更新する必要があります。
 
-**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるように Application Gateway を構成できます。これはセッション Cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
+**Cookie ベースのアフィニティを有効にするには**: クライアント セッションからの要求が常に Web ファーム内の同じ VM に送られるように Application Gateway を構成できます。このシナリオはセッション Cookie の挿入によって行われ、ゲートウェイがトラフィックを適切に送信できるようにします。Cookie ベースのアフィニティを有効にするには、**BackendHttpSettings** 要素で **CookieBasedAffinity** を *Enabled* に設定します。
 
 
 
 構成は、構成オブジェクトを作成するか、構成 XML ファイルを使用して構築できます。構成 XML ファイルを使用して構成を構築するには、次のサンプルを使用します。
 
 **構成 XML のサンプル**
-
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -182,14 +151,7 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 
 次に、アプリケーション ゲートウェイを設定します。構成オブジェクトまたは構成 XML ファイルのいずれの場合でも、**Set-AzureApplicationGatewayConfig** コマンドレットを使用できます。
 
-
-	PS C:\> Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
-
-	VERBOSE: 7:54:59 PM - Begin Operation: Set-AzureApplicationGatewayConfig
-	VERBOSE: 7:55:32 PM - Completed Operation: Set-AzureApplicationGatewayConfig
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
+	Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
 
 ## ゲートウェイの起動
 
@@ -198,15 +160,7 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 
 **注:** **Start-AzureApplicationGateway** コマンドレットは終了までに最大で 15 ～ 20 分かかる場合があります。
 
-
-	PS C:\> Start-AzureApplicationGateway AppGwTest
-
-	VERBOSE: 7:59:16 PM - Begin Operation: Start-AzureApplicationGateway
-	VERBOSE: 8:05:52 PM - Completed Operation: Start-AzureApplicationGateway
-	Name       HTTP Status Code     Operation ID                             Error
-	----       ----------------     ------------                             ----
-	Successful OK                   fc592db8-4c58-2c8e-9a1d-1c97880f0b9b
-
+	Start-AzureApplicationGateway AppGwTest
 
 ## ゲートウェイの状態の確認
 
@@ -214,7 +168,7 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 
 このサンプルは、起動に成功し、実行中で、トラフィックを受け取る準備が完了しているアプリケーション ゲートウェイを示します。
 
-	PS C:\> Get-AzureApplicationGateway AppGwTest
+	Get-AzureApplicationGateway AppGwTest
 
 	Name          : AppGwTest2
 	Description   :
@@ -235,4 +189,4 @@ SSL 証明書の構成では、**HttpListener** のプロトコルを *Https* (�
 - [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 - [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

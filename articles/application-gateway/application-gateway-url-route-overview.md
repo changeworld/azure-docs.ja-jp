@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="09/16/2016"
    ms.author="gwallace"/>
 
 # URL パス ベースのルーティングの概要
@@ -25,7 +25,7 @@ http://contoso.com/video* の要求は VideoServerPool にルーティングさ�
 
 ## UrlPathMap 構成要素
 
-UrlPathMap 要素は、パス パターンのバックエンド サーバー プールのマッピングへの指定に使用します。次は、テンプレート ファイルの urlPathMap 要素のスニペットです。
+UrlPathMap 要素は、パス パターンのバックエンド サーバー プールのマッピングへの指定に使用します。次のコード例は、テンプレート ファイルの urlPathMap 要素のスニペットです。
 
 	"urlPathMaps": [
 	{
@@ -82,8 +82,8 @@ UrlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
     }
 	
-## 次のステップ 
+## 次のステップ
 
 URL ベースのコンテンツ ルーティングについて理解したら、[URL ベースのルーティングを使用した Application Gateway の作成](application-gateway-create-url-route-portal.md)に関するセクションに移動して、URL ルーティング ルールを使ってアプリケーション ゲートウェイを作成します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

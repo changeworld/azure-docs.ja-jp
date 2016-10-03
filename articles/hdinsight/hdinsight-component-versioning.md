@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/14/2016"
+	ms.date="09/21/2016"
 	ms.author="jgao"/>
 
 
@@ -91,12 +91,12 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 HDInsight のバージョン|HDP のバージョン|VM の OS|高可用性|リリース日|Azure ポータルでの利用|サポート有効期限|非推奨となる日
 ---|---|---|---|---|---|---|---
 HDI 3.4|HDP 2.4|Ubuntu 14.0.4 LTS|はい|2016 年 3 月 29 日|はい||
-HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS または Windows Server 2012R2|はい|2015 年 12 月 2 日|はい||
-HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS または Windows Server 2012R2|はい|2015 年 2 月 18 日|はい||
-HDI 3.1|HDP 2.1|Windows Server 2012R2|はい|2014 年 6 月 24 日|はい||
-HDI 3.0|HDP 2.0|Windows Server 2012R2|はい|02/11/2014|はい|09/17/2014|06/30/2015
-HDI 2.1|HDP 1.3|Windows Server 2012R2|はい|10/28/2013|はい|05/12/2014|05/31/2015
-HDI 1.6|HDP 1.1||なし|10/28/2013|はい|04/26/2014|05/31/2015
+HDI 3.3|HDP 2.3|Ubuntu 14.0.4 LTS または Windows Server 2012R2|はい|2015 年 12 月 2 日|はい|2016 年 6 月 27 日|2017 年 7 月 31 日
+HDI 3.2|HDP 2.2|Ubuntu 12.04 LTS または Windows Server 2012R2|はい|2015 年 2 月 18 日|はい|2016 年 3 月 1 日|2017 年 4 月 1 日
+HDI 3.1|HDP 2.1|Windows Server 2012R2|はい|2014 年 6 月 24 日|なし|2015 年 5 月 18 日|2016 年 6月 30 日
+HDI 3.0|HDP 2.0|Windows Server 2012R2|はい|02/11/2014|なし|09/17/2014|06/30/2015
+HDI 2.1|HDP 1.3|Windows Server 2012R2|はい|10/28/2013|なし|05/12/2014|05/31/2015
+HDI 1.6|HDP 1.1||なし|10/28/2013|なし|04/26/2014|05/31/2015
 
 **既定以外のクラスターのデプロイメント**
 
@@ -109,7 +109,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 **非推奨となる日**は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。
 
-> [AZURE.NOTE] HDInsight 2.1 と 3.0 クラスターはともに、64 ビット版 Windows Server 2012 R2 を使用し、.NET Framework 4.0、4.5、4.5.1 をサポートする Azure ゲスト OS [ファミリ 4](../cloud-services/cloud-services-guestos-update-matrix.md) で実行されます。
+> [AZURE.NOTE] Windows ベースの HDInsight クラスター (バージョン 2.1、3.0、3.1、3.2、および 3.3 を含む) は Azure ゲスト OS ファミリ 4 で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用し、.NET Framework 4.0、4.5、4.5.1、および 4.5.2 をサポートします。
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート##
 
@@ -157,4 +157,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

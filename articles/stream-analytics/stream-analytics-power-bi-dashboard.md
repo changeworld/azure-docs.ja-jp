@@ -1,11 +1,11 @@
 <properties
 	pageTitle="Stream Analytics の Power BI ダッシュ ボード | Microsoft Azure"
-	description="リアルタイム ストリーミング Power BI ダッシュ ボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
+	description="リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
 	keywords="分析ダッシュボード、リアルタイム ダッシュボード"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -240,4 +240,4 @@ Power BI で認証が更新されたら、承認の領域に緑色のアラー�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

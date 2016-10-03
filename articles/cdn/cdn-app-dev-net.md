@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/28/2016"
+	ms.date="09/15/2016"
 	ms.author="casoper"/>
 
 # Azure CDN 開発の概要
 
 > [AZURE.SELECTOR]
-- [.NET](cdn-app-dev-net.md)
 - [Node.JS](cdn-app-dev-node.md)
+- [.NET](cdn-app-dev-net.md)
 
 [.NET 向け Azure CDN ライブラリ](https://msdn.microsoft.com/library/mt657769.aspx)を使用すると、CDN プロファイルとエンドポイントの作成と管理を自動化できます。このチュートリアルでは、単純な .NET コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。このチュートリアルは、.NET 向け Azure CDN ライブラリのすべての側面を詳細に説明することを目的としていません。
 
@@ -339,4 +339,4 @@ Azure CDN Management Library for .NET に関連するドキュメントについ
 
 [PowerShell](./cdn-manage-powershell.md) で CDN リソースを管理します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

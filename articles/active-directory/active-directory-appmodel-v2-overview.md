@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
@@ -61,4 +61,4 @@ v2.0 エンドポイントを使うアプリは、どちらの種類のアカウ
   - [Android OAuth2 クライアント](https://github.com/wuman/android-oauth-client)
   - [Android OpenID Connect クライアント](https://github.com/kalemontes/OIDCAndroidLib)
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

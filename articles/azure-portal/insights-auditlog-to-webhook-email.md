@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure Insights: Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する | Microsoft Azure"
-	description="サービス監査ログのエントリを使用して Web URL を呼び出したり、Azure Insights で電子メール通知を送信したりする方法について説明します。"
+	pageTitle="Azure アクティビティ ログ アラートでの webhook の構成 | Microsoft Azure"
+	description="アクティビティ ログ アラートを使用して webhook を呼び出す方法について説明します。"
 	authors="kamathashwin"
 	manager=""
 	editor=""
@@ -13,33 +13,25 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/30/2016"
+	ms.date="09/15/2016"
 	ms.author="ashwink"/>
 
-# Azure Insights で監査ログを使用して電子メールと Webhook アラート通知を送信する
+# Azure アクティビティ ログ アラートでの webhook の構成
 
-この記事では、監査ログ イベントが Webhook をトリガーした場合のペイロード スキーマと、監査ログ イベントを使用して電子メールを送信する方法について説明します。
+webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。この記事では、Azure アクティビティ ログ アラートで webhook を設定する方法のほか、webhook に対する HTTP POST のペイロードの内容について説明します。Azure メトリック アラートの設定とスキーマについては、[こちらのページをご覧ください](./insights-webhooks-alerts.md)。また、起動時に電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
 
->[AZURE.NOTE] 現在、この機能はプレビュー段階にあります。今後数か月をかけて、イベント発生時のアラートのインフラストラクチャとパフォーマンスを改善する予定です。このプレビューでこの機能にアクセスするには、Azure PowerShell と CLI を使用する必要があります。今後、Azure ポータルを使用してこの機能にアクセスできるようになる予定です。
+>[AZURE.NOTE] この機能は現在プレビューの段階であり、品質とパフォーマンスの変更が予想されます。
 
-## Webhook
-Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。たとえば、受信 Web 要求を処理して SMS を送信する、バグをログに記録する、チャットやメッセージング サービスを使用して誰かに通知するなどのサービスにアラートをルーティングすることができます。Webhook URI は有効な HTTP または HTTPS エンドポイントである必要があります。
+アクティビティ ログ アラートは、[Azure PowerShell コマンドレット](./insights-powershell-samples.md#create-alert-rules)、[クロスプラットフォーム CLI](./insights-cli-samples.md#work-with-alerts)、[Insights REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用して設定できます。
 
-## 電子メール
-電子メールは、任意の有効な電子メール アドレスに送信できます。このルールが実行されているサブスクリプションの管理者と共同管理者にも通知されます。
+## webhook の認証
+webhook は、次の方法のいずれかを使用して認証できます。
 
-### 電子メール ルールの例
-電子メール ルール、Webhook ルールを設定してから、監査ログ イベントが発生したときに開始されるようにルールに指示する必要があります。PowerShell を使用した例については、[Azure Insights PowerShell のクイックスタート サンプル](insights-powershell-samples.md#alert-on-audit-log-event)のページを参照してください。
+1. **トークンベースの認証** - webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+2.	**基本認証** - webhook URI は次のようなユーザー名とパスワードを使用して保存されます。 `https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
 
-
-## 認証
-認証 URI には、2 つの形式があります。
-
-1. クエリ パラメーターとしてトークン ID を使用して Webhook URI を保存するトークンベースの認証。たとえば、https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
-2. ユーザー ID とパスワードを使用する基本認証。たとえば、https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value のように指定します。
-
-## 監査ログ イベント通知の Webhook ペイロード スキーマ
-新しいイベントが使用できるようになると、監査ログ イベント発生時のアラートによって、Webhook ペイロードのイベント メタデータを使用して構成済みの Webhook が実行されます。次に、Webhook ペイロード スキーマの例を示します。
+## ペイロード スキーマ
+POST 操作には、すべてのアクティビティ ログベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。このスキーマは、メトリックベースのアラートによって使用されるものと似ています。
 
 ```
 {
@@ -91,32 +83,39 @@ Webhook を使用すると、後処理やカスタム通知のために、Azure 
 
 |要素名|	Description|
 |---|---|
-|status |常に "activated" に設定します。|
-|context|イベントのコンテキスト|
-|resourceProviderName|影響を受けるリソースのリソース プロバイダー|
-|conditionType |"Event"|
-|name |アラート ルールの名前|
-|id |アラートのリソース ID|
-|description|	アラートの作成者がアラートに設定した説明|
-|subscriptionId |Azure サブスクリプションの GUID|
-|timestamp|	イベントに対応する要求を処理した Azure サービスによって、イベントが生成されたときのタイムスタンプ|
-|resourceId |リソースを一意に識別するリソース ID の URI|
-|resourceGroupName|影響を受けるリソースのリソース グループ名|
-|properties |イベントの詳細を含む <キー, 値> ペアのセット (つまり、ディクショナリ <文字列, 文字列>)|
-|event|イベントに関するメタデータを含む要素|
-|authorization|イベントの RBAC プロパティをキャプチャします。通常、“action”、“role”、“scope” が含まれます。|
-|カテゴリ | イベントのカテゴリ。サポートされる値: Administrative、Alert、Security、ServiceHealth、Recommendation|
-|caller|可用性に基づいた、操作、UPN 要求、または SPN 要求を実行したユーザーの電子メール アドレス。一部のシステム呼び出しでは、null の場合があります。|
-|correlationId|	通常は GUID (文字列形式)。correlationId を含むイベントは、より大きな 1 つのアクションに属し、通常は同じ correlationId を共有します。|
-|eventDescription |イベントを説明する静的テキスト|
-|eventDataId|イベントの一意識別子|
-|eventSource |イベントを生成した Azure サービスまたはインフラストラクチャの名前|
+|status |メトリック アラートで使用されます。アクティビティ ログ アラートでは常に "Activated" に設定されます。|
+|context|イベントのコンテキスト。|
+|resourceProviderName|影響を受けるリソースのリソース プロバイダー。|
+|conditionType |常に "Event" です。|
+|name |アラート ルールの名前。|
+|id |アラートのリソース ID。|
+|description|	アラートの作成時に設定したアラートの説明。|
+|subscriptionId |Azure サブスクリプション ID。|
+|timestamp|	要求を処理した Azure サービスによってイベントが生成された時刻。|
+|resourceId |影響を受けるリソースのリソース ID。|
+|resourceGroupName|影響を受けるリソースのリソース グループの名前。|
+|properties |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。|
+|event|イベントに関するメタデータを含む要素。|
+|authorization|イベントの RBAC プロパティ。通常、"action"、"role"、"scope" が含まれます。|
+|カテゴリ | イベントのカテゴリ。サポートされる値は Administrative、Alert、Security、ServiceHealth、Recommendation です。|
+|caller|操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。一部のシステム呼び出しでは、null の場合があります。|
+|correlationId|	通常は GUID (文字列形式)。correlationId を含むイベントは、より大きな同じアクションに属し、通常は correlationId を共有します。|
+|eventDescription |イベントを説明する静的テキスト。|
+|eventDataId|イベントの一意識別子。|
+|eventSource |イベントを生成した Azure サービスまたはインフラストラクチャの名前。|
 |httpRequest|	通常、“clientRequestId”、“clientIpAddress”、“method” (HTTP メソッド、たとえば PUT) が含まれます。|
-|level|次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose”|
-|operationId|通常、単一の操作に対応する複数のイベントで共有される GUID|
-|operationName|操作の名前|
-|プロパティ |event 要素内の要素には、イベントのプロパティが含まれています。|
-|status|操作の状態を説明する文字列。一般的な値: Started、In Progress、Succeeded、Failed、Active、Resolved|
-|subStatus|	通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。また、subStatus を説明する他の文字列を含めることもできます。一般的な subStatus の値: OK (HTTP Status Code: 200)、Created (HTTP Status Code: 201)、Accepted (HTTP Status Code: 202)、No Content (HTTP Status Code: 204)、Bad Request (HTTP Status Code: 400)、Not Found (HTTP Status Code: 404)、Conflict (HTTP Status Code: 409)、Internal Server Error (HTTP Status Code: 500)、Service Unavailable (HTTP Status Code:503)、Gateway Timeout (HTTP Status Code: 504)|
+|level|"Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値。|
+|operationId|通常、単一の操作に対応する複数のイベントで共有される GUID。|
+|operationName|操作の名前。|
+|properties |イベントのプロパティ。|
+|status|文字列] をオンにします。操作の状態。一般的な値は "Started"、"In Progress"、"Succeeded"、"Failed"、"Active"、"Resolved" です。|
+|subStatus|	通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。また、subStatus を説明する他の文字列を含めることもできます。一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。|
 
-<!---HONumber=AcomDC_0810_2016-->
+## 次のステップ
+- [アクティビティ ログについて詳しく学習します](./monitoring-overview-activity-logs.md)。
+- [Azure アラートで Azure Automation スクリプト (Runbook) を実行します](http://go.microsoft.com/fwlink/?LinkId=627081)。
+- [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+- [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+- [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+
+<!---HONumber=AcomDC_0921_2016-->

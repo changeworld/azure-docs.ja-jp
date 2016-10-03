@@ -23,21 +23,40 @@
 
 ## スキーマを追加する方法
 Azure ポータルで次の手順を実行します。
+
 1. **[そのほかのサービス]** を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-11.png)
 2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]** を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-21.png)
 3. スキーマの追加先となる**統合アカウント**を選択します。 ![](./media/app-service-logic-enterprise-integration-overview/overview-31.png)
-4.  **[スキーマ]** タイルを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)
+4. **[スキーマ]** タイルを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)
+
+#### 2 MB 未満のスキーマ ファイルを追加するには  
+
 5. 開いた [スキーマ] ブレードの **[追加]** ボタンを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-21.png)
 6. スキーマの**名前**を入力し、**[スキーマ]** ボックスの右側にあるフォルダー アイコンを選択して、スキーマ ファイルをアップロードします。アップロード プロセスが完了したら、**[OK]** ボタンを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-31.png)
-7. 2 MB (最大 8 MB) より大きいスキーマ ファイルを追加するには
-   * スキーマをストレージにアップロードし、URI をコピーします。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)
-   * [スキーマの追加] で [Large file (大きなファイル)] を選択し、[コンテンツ URI] に URI を指定します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png) 8. 新しく追加したスキーマが表示されます。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-41.png)
+
+#### 2 MB を超える (最大 8 MB) スキーマ ファイルを追加するには  
+
+7. BLOB のセキュリティ アクセス レベルが "**パブリック**" の場合 ![](./media/app-service-logic-enterprise-integration-schemas/blob-public.png)
+
+  * スキーマをストレージにアップロードし、URI をコピーします。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)
+
+  * [スキーマの追加] で [Large file (大きなファイル)] を選択し、[コンテンツ URI] に URI を指定します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)
+
+8. BLOB のセキュリティ アクセス レベルが "**匿名アクセスはありません**" の場合 ![](./media/app-service-logic-enterprise-integration-schemas/blob-1.png)
+
+  * スキーマをストレージにアップロードします。 ![](./media/app-service-logic-enterprise-integration-schemas/blob-3.png)
+
+  * スキーマの Shared Access Signature を生成します。 ![](./media/app-service-logic-enterprise-integration-schemas/blob-2.png)
+
+  * [スキーマの追加] で [Large file (大きなファイル)] を選択し、[コンテンツ URI] に Shared Access Signature URI を指定します。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)
+
+9. 新しく追加されたスキーマが表示されます。 ![](./media/app-service-logic-enterprise-integration-schemas/schema-41.png)
 
 ## スキーマを使用する方法
 - スキーマは、B2B シナリオで交換されるメッセージを検証するために使用します。
 
 ## スキーマを編集する方法
-1. **[スキーマ]** タイルを選択します。
+1. **[Schemas (スキーマ)]** タイルを選択します。
 2. 開いた [Schemas (スキーマ)] ブレードで、編集するスキーマを選択します。
 3. [スキーマ] ブレードの **[アップロード]** リンクを選択します。 ![](./media/app-service-logic-enterprise-integration-schemas/edit-12.png)
 4. 開いたファイル ピッカー ダイアログを使用して、アップロードするスキーマ ファイルを選択します。
@@ -55,4 +74,4 @@ Azure ポータルで次の手順を実行します。
 
 - [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

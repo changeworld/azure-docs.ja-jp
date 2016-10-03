@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="hangzh;bradsev" />
 
 # Team Data Science Process 用に Azure HDInsight Hadoop クラスターをカスタマイズ 
 
 この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで用いている手順については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」を参照してください。
 
-次のメニューは、Team Data Science Process (TDSP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+次のメニューは、[Team Data Science Process (TDSP)](data-science-process-overview.md) で使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
@@ -86,4 +86,4 @@ Hive レコードを処理するために使用されるクラスターに格納
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

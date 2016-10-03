@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery"
-	ms.date="05/09/2016"
+	ms.date="09/19/2016"
 	ms.author="raynew"/>
 
 
@@ -193,11 +193,11 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 1. プロバイダーのセットアップ ファイルを実行します。
 2. **[Microsoft Update]** で更新プログラムを登録すると、Microsoft Update ポリシーに従ってプロバイダーの更新プログラムがインストールされます。
 3. **[インストール]** で、プロバイダーの既定のインストール先をそのまま使用するか、インストール先を変更して、**[インストール]** をクリックします。
-5. **[資格情報コンテナー設定]** ページで **[参照]** をクリックして、ダウンロードしたコンテナー キー ファイルを選択します。Azure Site Recovery のサブスクリプション、コンテナー名、Hyper-V サーバーが属している Hyper-V サイトを指定します。
+4. **[資格情報コンテナー設定]** ページで **[参照]** をクリックして、ダウンロードしたコンテナー キー ファイルを選択します。Azure Site Recovery のサブスクリプション、コンテナー名、Hyper-V サーバーが属している Hyper-V サイトを指定します。
 
 	![サーバー登録](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-4\. **[プロキシの設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
+5\. **[プロキシ設定]** で、サーバーにインストールされるプロバイダーからインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
 - プロバイダーから直接接続するようにするには、**[Connect directly without a proxy (プロキシなしで直接接続する)]** を選択します。
 - サーバーに現在設定されているプロキシを使って接続する場合は、**[Connect with existing proxy settings (既存のプロキシ設定を使用して接続する)]** を選択します。
@@ -207,9 +207,9 @@ Hyper-V サイトをセットアップし、Azure Site Recovery Provider と Azu
 
 	![internet](./media/site-recovery-hyper-v-site-to-azure/provider7.PNG)
 
-5\. インストールが完了したら、**[登録]** をクリックして、サーバーをコンテナーに登録します。![インストール場所](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
+6\. インストールが完了したら、**[登録]** をクリックして、サーバーをコンテナーに登録します。![インストール場所](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
 
-6\. 登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]** > **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]** > **[Hyper-V Hosts (Hyper-V ホスト)]** ブレードにサーバーが表示されます。
+7\. 登録が完了すると、Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[設定]**、**[Site Recovery インフラストラクチャ]** の順にアクセスすると、**[Hyper-V Hosts (Hyper-V ホスト)]** ブレードにサーバーが表示されます。
 
 
 ### コマンド ラインを使用したインストール
@@ -469,4 +469,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

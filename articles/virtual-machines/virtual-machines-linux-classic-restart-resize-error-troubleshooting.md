@@ -13,7 +13,7 @@
    ms.topic="support-article"
    ms.tgt_pltfrm="vm-linux"
    ms.workload="required"
-   ms.date="06/16/2016"
+   ms.date="09/20/2016"
    ms.devlang="na"
    ms.author="delhan"/>
 
@@ -85,4 +85,4 @@ VM サイズを小さくできない場合は、次の手順に従います。
 
 Azure で新しい Linux VM を作成するときに問題が発生する場合は、[Azure での新しい Linux 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

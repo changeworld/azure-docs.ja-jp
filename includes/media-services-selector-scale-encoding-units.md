@@ -1,6 +1,6 @@
 > [AZURE.SELECTOR] 
-- [Portal](../articles/media-services/media-services-portal-encoding-units.md)
+- [ポータル](../articles/media-services/media-services-portal-scale-media-processing.md)
 - [.NET](../articles/media-services/media-services-dotnet-encoding-units.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
-<!---HONumber=Oct15_HO3-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Data Lake を使用してデータセットに対してデータ探索と二項分類タスクを行う方法について説明します。"  
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,wguo123"
+	authors="bradsev"
 	manager="jhubbard"
 	editor="cgronlun" />
 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="bradsev;weig;gopitk"/>
+	ms.date="09/19/2016"
+	ms.author="bradsev;weig"/>
 
 
 # Azure Data Lake のスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
 
-このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、[データ サイエンス プロセス](http://aka.ms/datascienceprocess)全体の手順について説明します。
+このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、[Team Data Science Process](http://aka.ms/datascienceprocess) のエンド ツー エンドの手順について説明します。
 
 
 ### Azure Data Lake Analytics
@@ -76,10 +76,8 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 - Azure Machine Learning Studio アカウント
 - Azure Data Lake Tools for Visual Studio (推奨)
 
-このセクションでは、これらの各リソースを作成する手順について説明します。モデルの構築に Python ではなく Hive テーブルを Azure Machine Learning と共に使用する場合は、HDInsight (Hadoop) クラスターもプロビジョニングする必要があります。この代替手順は、以降の該当するセクションで説明します。
-
->AZURE.NOTE **Azure Data Lake Store** は、個別に作成することも、**Azure Data Lake Analytics** を作成するときに既定のストレージとして作成することもできます。これらの各リソースを作成する手順は、以下の別のセクションで説明していますが、Data Lake ストレージ アカウントを別途作成する必要はありません。
-
+このセクションでは、これらの各リソースを作成する手順について説明します。Python ではなく、Azure Machine Learning で Hive テーブルを使用してモデルを構築する場合は、HDInsight (Hadoop) クラスターもプロビジョニングする必要があります。この代替手順については、以降の該当するセクションで説明します。<br/>
+>AZURE.NOTE **Azure Data Lake Store** は、個別に作成することも、**Azure Data Lake Analytics** を作成するときに既定のストレージとして作成することもできます。以降のセクションでは、これらの各リソースを個別に作成する手順を説明していますが、Data Lake ストレージ アカウントを個別に作成する必要はありません。<br/>
 ### Azure Data Lake Store を作成する
 
 [Azure ポータル](http://portal.azure.com)から ADLS を作成します。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。
@@ -158,7 +156,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
 
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**** と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
+Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** **と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
 
 	///Read in Trip data
 	@trip0 =
@@ -741,4 +739,4 @@ Web サービス ダッシュボードがすぐに表示されます。
 - [Team Data Science Process: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)
 - [Azure HDInsight 上の Spark を使用したデータ サイエンス プロセスの概要](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

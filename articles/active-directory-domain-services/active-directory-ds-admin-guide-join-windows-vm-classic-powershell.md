@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理ガイド | Microsoft Azure"
+	pageTitle="Azure Active Directory Domain Services: 管理ガイド | Microsoft Azure"
 	description="Azure PowerShell とクラシック デプロイ モデルを使用して Windows 仮想マシンを管理対象ドメインに参加させます。"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/20/2016"
 	ms.author="maheshu"/>
 
 
-# Powershell とクラシック デプロイ モデルを使用して Windows 仮想マシンを作成する
+# PowerShell を使用して Windows Server 仮想マシンを管理対象ドメインに参加させる
 
 > [AZURE.SELECTOR]
 - [Azure クラシック ポータル - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
@@ -147,4 +147,11 @@ VM のサブネットを設定します。
 
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname -Location "Central US" -DnsSettings $dns
 
-<!---HONumber=AcomDC_0706_2016-->
+<br>
+
+## 関連コンテンツ
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインの管理](./active-directory-ds-admin-guide-administer-domain.md)
+
+<!---HONumber=AcomDC_0921_2016-->

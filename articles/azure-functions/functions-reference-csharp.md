@@ -22,6 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
+- [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md)
 - [Node.JS](../articles/azure-functions/functions-reference-node.md)
  
 Azure Functions の C# エクスペリエンスは、Azure WebJobs SDK に基づいています。データは、メソッドの引数を使用して C# 関数に渡されます。引数名は `function.json` で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
@@ -30,11 +31,11 @@ Azure Functions の C# エクスペリエンスは、Azure WebJobs SDK に基づ
 
 ## .csx のしくみ
 
-`.csx` の形式では、"定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常どおりに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義だけを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
+`.csx` の形式では、"定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常どおりに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義のみを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
 
 ## 引数へのバインド
 
-*function.json* 構成の `name` プロパティから、さまざまなバインドが C# 関数にバインドされます。各バインドには、バンドごとに記述される、独自のサポートされている型があります。たとえば、blob のトリガーでは、文字列、POCO、その他いくつかの型がサポートされます。ニーズに合わせて最適な型を使用できます。
+*function.json* 構成の `name` プロパティを通じて、さまざまなバインドが C# 関数にバインドされます。各バインドには、バンドごとに記述される、独自のサポートされている型があります。たとえば、blob のトリガーでは、文字列、POCO、その他いくつかの型がサポートされます。ニーズに合わせて最適な型を使用できます。
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -51,7 +52,7 @@ public class MyClass
 
 ## ログの記録
 
-ストリーミング ログを C# にログ出力するために、`TraceWriter` 型の引数を含めることができます。これの名前を `log` とすることをお勧めします。Azure Functions では `Console.Write` を回避することをお勧めします。
+出力を C# のストリーミング ログにログ記録するために、`TraceWriter` 型の引数を含めることができます。これの名前を `log` にすることをお勧めします。Azure Functions の `Console.Write` は避けることをお勧めします。
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -127,7 +128,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
 
-* `mscorlib`
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -146,11 +147,11 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `Microsoft.AspNet.WebHooks.Receivers`
 * `Microsoft.AspNEt.WebHooks.Common`
 
-プライベート アセンブリを参照する必要がある場合、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
+プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
 ## パッケージの管理
 
-NuGet パッケージを C# 関数で使用するには、*project.json* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。Microsoft.ProjectOxford.Face バージョン 1.1.0 に参照を追加する *project.json* ファイルの例を次に示します。
+NuGet パッケージを C# 関数で使用するには、*project.json* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。Microsoft.ProjectOxford.Face バージョン 1.1.0 への参照を追加する *project.json* ファイルの例を次に示します。
 
 ```json
 {
@@ -171,11 +172,11 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 
 ### Project.json ファイルをアップロードする方法
 
-1. Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。 
+1. Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。
 
 	これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
 
-2. project.json ファイルをアップロードするには、「[Azure Functions 開発者向けリファレンス](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションにあるいずれかの方法を利用してください。
+2. project.json ファイルをアップロードするには、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションにあるいずれかの方法を利用してください。
 
 3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログの出力は次の例のようになります。
 
@@ -255,7 +256,8 @@ public static void MyLogger(TraceWriter log, string logtext)
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
+* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

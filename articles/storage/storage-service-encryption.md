@@ -29,11 +29,11 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 
 SSE は、Azure Storage に書き込まれるときにデータを暗号化することで機能し、ブロック BLOB、ページ BLOB、追加 BLOB に使用できます。これは、以下に利用できます。
 
-	- General purpose storage accounts and Blob storage accounts
-	- Standard storage and Primary storage 
-	- All redundancy levels (LRS, ZRS, GRS, RA-GRS)
-	- Azure Resource Manager storage accounts (but not classic) 
-	- All regions
+-   汎用ストレージ アカウントと Blob Storage アカウント
+-   Standard Storage と Premium Storage
+-   すべての冗長性レベル (LRS、ZRS、GRS、RA-GRS)
+-   Azure Resource Manager ストレージ アカウント (クラシック以外)
+-   すべてのリージョン
 
 次のスクリーンショットは、[Azure ポータル](https://azure.portal.com)での Storage Service Encryption の設定画面です。この画面では、[暗号化] をクリックして続行します。
 
@@ -195,4 +195,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

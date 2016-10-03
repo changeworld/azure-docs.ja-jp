@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/29/2016"
+	ms.date="09/19/2016"
 	ms.author="jeedes"/>
 
 
@@ -172,7 +172,7 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 	
 	![Configure Single Sign-On](./media/active-directory-saas-rightscale-tutorial/tutorial_rightscale_009.png)
 
-	h.**[保存]** をクリックします。
+	h.[**Save**] をクリックします。
 	
 
 
@@ -208,7 +208,7 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-rightscale-tutorial/create_aaduser_05.png)
 
@@ -309,4 +309,4 @@ RightScale で Azure AD のシングル サインオンを構成してテスト�
 [204]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-rightscale-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -68,6 +68,29 @@
 	    document.text = "This has changed.";
 	}
 
+#### Azure DocumentDB 入力コード例 (F# キュー トリガー)
+
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージと一致する ID を持つドキュメントを取得し、それを document パラメーターに渡します。そのドキュメントが見つからない場合、document パラメーターは null になります。関数の終了時に、ドキュメントは新しいテキスト値で更新されます。
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- "This has changed."
+
+次のように、NuGet を使用して `FSharp.Interop.Dynamic` および `Dynamitey` パッケージをパッケージ依存関係として指定する `project.json` ファイルが必要です。
+
+	{
+	  "frameworks": {
+	    "net46": {
+	      "dependencies": {
+	        "Dynamitey": "1.0.2",
+	        "FSharp.Interop.Dynamic": "3.0.0"
+	      }
+	    }
+	  }
+	}
+
+このファイルは NuGet を使用して依存関係を取得し、それをスクリプト内で参照します。
+
 #### Azure DocumentDB 入力コード例 (Node.js キュー トリガー)
  
 上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージ文字列と一致する ID を持つドキュメントを取得し、それを `documentIn` バインド プロパティに渡します。Node.js 関数では、更新されたドキュメントは再びコレクションに送信されません。ただし、入力バインドを、更新をサポートする `documentOut` という名前の DocumentDB 出力バインドに直接渡すことができます。このコード例では、入力ドキュメントの text プロパティを更新し、出力ドキュメントとして設定します。
@@ -131,6 +154,12 @@ function.json の例:
 	}
  
 
+#### Azure DocumentDB 出力コード例 (F# キュー トリガー)
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- (sprintf "I'm running in an F# function! %s" myQueueItem)
+
 #### Azure DocumentDB 出力コード例 (C# キュー トリガー)
 
 
@@ -178,6 +207,27 @@ function.json の例:
 	    };
 	}
 
+または、次のような同等の F# コードを使用できます。
+
+	open FSharp.Interop.Dynamic
+	open Newtonsoft.Json
+
+	type Employee = {
+	    id: string
+	    name: string
+	    employeeId: string
+	    address: string
+	}
+
+	let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
+	    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+	    let employee = JObject.Parse(myQueueItem)
+	    employeeDocument <-
+	        { id = sprintf "%s-%s" employee?name employee?employeeId
+	          name = employee?name
+	          employeeId = employee?id
+	          address = employee?address }
+
 出力例:
 
 	{
@@ -191,4 +241,4 @@ function.json の例:
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

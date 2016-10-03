@@ -13,7 +13,7 @@
   ms.tgt_pltfrm="na"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 
@@ -40,7 +40,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 ## 1\.アプリケーションを Azure AD に登録する
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-- Microsoft Azure の管理ポータルにサインインします。
+- Microsoft Azure 管理ポータルにサインインします。
 - 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -178,7 +178,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 
 
 
-## 3\.Java PublicClient ファイルを作成する
+## 手順 3.Java PublicClient ファイルを作成する
 
 既に説明したとおり、ここでは Graph API を使用して、ログイン ユーザーに関するデータを取得します。これを簡単に実現するには、**ディレクトリ オブジェクト**を表すファイルと、**ユーザー**を表す個々のファイルの両方を作成し、Java のオブジェクト指向パターンを使用できるようにします。
 
@@ -262,10 +262,10 @@ public class PublicClient {
 
 ##次のステップ
 
-ご利用ありがとうございます。 これで、作業中の Java アプリケーションで、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。テナントに一連のユーザーを設定します (設定していない場合)。
+お疲れさまでした。 これで、作業中の Java アプリケーションで、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。テナントに一連のユーザーを設定します (設定していない場合)。
 
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

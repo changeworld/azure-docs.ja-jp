@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/16/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory の認証プロトコル
 
-Azure Active Directory (Azure AD) では、最も広く使用されている認証および承認のプロトコルを複数サポートしています。このセクションの各トピックでは、Azure AD でサポートされているプロトコルとその実装について説明します。トピックには、サポートされているクレームの種類の確認、フェデレーション メタデータの用途の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳しいリファレンス ドキュメント、トラブルシューティング セクションなどがあります。
+Azure Active Directory (Azure AD) では、最も広く使用されている認証および承認のプロトコルを複数サポートしています。このセクションの各トピックでは、Azure AD でサポートされているプロトコルとその実装について説明します。トピックには、サポートされている要求の種類の確認、フェデレーション メタデータの用途の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳しいリファレンス ドキュメント、トラブルシューティング セクションなどがあります。
 
 ## 認証プロトコルの記事とリファレンス
 
@@ -55,4 +55,4 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 
 [Active Directory のコード例](active-directory-code-samples.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

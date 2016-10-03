@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="08/29/2016"
+   ms.date="09/15/2016"
    ms.author="zachal"/>
 
 # Azure Resource Manager テンプレートを使用した Windows VMSS および Desired State Configuration
@@ -23,7 +23,7 @@
 
 ## Windows VM のテンプレートの例
 
-以下のスニペットは、テンプレートのリソース セクションに含まれます。
+以下のスニペットは、テンプレートの Resource セクションに含まれます。
 
 ```json
 			"name": "Microsoft.Powershell.DSC",
@@ -90,7 +90,7 @@ VMSS ノードには、"VirtualMachineProfile" を備えた "properties" セク�
 
 ## 設定情報の詳細
 
-これは、Azure Resource Manager テンプレートの Azure DSC 拡張機能の settings 部分のスキーマです。
+次のスキーマは、Azure Resource Manager テンプレートの Azure DSC 拡張機能の settings 部分のものです。
 
 ```json
 
@@ -169,7 +169,7 @@ VMSS ノードには、"VirtualMachineProfile" を備えた "properties" セク�
 
 次の例は、[DSC 拡張機能ハンドラーの概要ページ](virtual-machines-windows-extensions-dsc-overview.md)の「使用の開始」セクションから派生しています。この例では、コマンドレットの代わりに Resource Manager テンプレートを使用して拡張機能をデプロイします。"IisInstall.ps1" の構成を保存し、.ZIP ファイル内に配置してから、アクセス可能な URL にファイルをアップロードします。この例では、Azure Blob Storage を使用しますが、.ZIP ファイルを任意の場所からダウンロードすることもできます。
 
-Resource Manager テンプレートでは、次のように、VM に対して正しいファイルをダウンロードし、適切な PowerShell 関数を実行するように指示します。
+Azure Resource Manager テンプレートでは、次のコードにより、正しいファイルをダウンロードして適切な PowerShell 関数を実行するように VM に対して指示をします。
 
 ```json
 "settings": {
@@ -186,9 +186,9 @@ Resource Manager テンプレートでは、次のように、VM に対して正
 ```
 
 ## 以前の形式からの更新
-以前の形式の設定 (ModulesUrl、ConfigurationFunction、SasToken、または Properties というパブリック プロパティを含む) は、自動的に現在の形式に対応し、以前と同じように動作します。
+以前の形式の設定 (ModulesUrl、ConfigurationFunction、SasToken、または Properties の各パブリック プロパティを含む) は、自動的に現在の形式に対応し、以前と同じように動作します。
 
-以前の設定スキーマの例を次に示します。
+次のスキーマで、以前の設定スキーマの例を示します。
 
 ```json
 "settings": {
@@ -257,7 +257,7 @@ Resource Manager テンプレートでは、次のように、VM に対して正
 
 問題点: ConfigurationArguments プロパティがハッシュテーブル オブジェクトに解決できません。
 
-解決策: ConfigurationArguments プロパティをハッシュテーブルにしてください。上の例に示されている形式に従います。引用符、コンマ、および中かっこに注意します。
+解決策: ConfigurationArguments プロパティをハッシュテーブルにしてください。前の例に示されている形式に従います。引用符、コンマ、および中かっこに注意します。
 
 ### ConfigurationArguments の重複
 "Found duplicate arguments '{0}' in both public and protected configurationArguments (パブリックと保護対象の両方の configurationArguments で重複する引数 '{0}' が見つかりました)"
@@ -285,4 +285,14 @@ Resource Manager テンプレートでは、次のように、VM に対して正
 - 不足しているプロパティを指定します。
 - 不足しているプロパティを必要とするプロパティを削除します。
 
-<!---HONumber=AcomDC_0914_2016-->
+
+## 次のステップ
+[DSC と VMSS の詳細を確認してください](virtual-machines-scale-sets-dsc.md)。
+
+[DSC による安全な資格情報管理](virtual-machines-windows-extensions-dsc-credentials.md)の詳細を確認してください。
+
+Azure DSC 拡張機能ハンドラーの詳細については、「[Azure Desired State Configuration 拡張機能ハンドラーの概要](virtual-machines-windows-extensions-dsc-overview.md)」を参照してください。
+
+PowerShell DSC の詳細については、[PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。
+
+<!---HONumber=AcomDC_0921_2016-->

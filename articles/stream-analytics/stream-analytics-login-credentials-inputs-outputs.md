@@ -5,7 +5,7 @@
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -30,7 +30,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 * BLOB ストレージ
 * Event Hubs
 * SQL Database
-* テーブル ストレージ
+* Table Storage
 
 その他の入力/出力の場合は、パート2 へ進んでください。
 
@@ -94,8 +94,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
 4.	パート 4 に進みます。
 
-###Event Hubs  
-
+###Event Hubs
 1.	[イベント ハブ ポリシー キー] フィールドを見つけ、新しく生成されたキーをそこに貼り付けます。![図 33][graphic33]
 2.	[保存] コマンドをクリックし、変更内容の保存を確定します。![図 34][graphic34]
 3.	変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
@@ -127,7 +126,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 * BLOB ストレージ
 * Event Hubs
 * SQL Database
-* テーブル ストレージ
+* Table Storage
 
 ###BLOB ストレージとテーブル ストレージ
 ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
@@ -200,4 +199,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

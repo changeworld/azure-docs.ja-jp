@@ -92,8 +92,8 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
 - ポート 3441 のすべての受信トラフィックをポート 3389 に転送する NAT 規則
 - ポート 3442 のすべての受信トラフィックをポート 3389 に転送する NAT 規則
-- バックエンド プールのアドレスでポート 80 ～ 80 に入ってくるすべてのトラフィックを分散するロード バランサー規則
 - **HealthProbe.aspx** という名前のページで正常性状態を確認するプローブ規則
+- バックエンド プールのアドレスでポート 80 ～ 80 に入ってくるすべてのトラフィックを分散するロード バランサー規則
 - これらのオブジェクトをすべて使用するロード バランサー
 
 次の手順を使用します:
@@ -104,11 +104,7 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
         $inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name RDP2 -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
 
-2. ロード バランサー規則を作成します。
-
-        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-
-3. 正常性プローブを作成します。プローブは次の 2 とおりの方法で構成できます。
+2. 正常性プローブを作成します。プローブは次の 2 とおりの方法で構成できます。
 
     HTTP プローブ
 
@@ -117,6 +113,10 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
     TCP プローブ
 
         $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HealthProbe -Protocol Tcp -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+
+3. ロード バランサー規則を作成します。
+
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 
 4. ロード バランサーを作成するには、以前に作成したオブジェクトを使用します。
 
@@ -150,16 +150,22 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
         Location             : westus
         Id                   : /subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
         Etag                 : W/"d448256a-e1df-413a-9103-a137e07276d1"
+        ResourceGuid         : 896cac4f-152a-40b9-b079-3e2201a5906e
         ProvisioningState    : Succeeded
         Tags                 :
         VirtualMachine       : null
         IpConfigurations     : [
                             {
+                            "Name": "ipconfig1",
+                            "Etag": "W/"d448256a-e1df-413a-9103-a137e07276d1"",
+                            "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/ipconfig1",
                             "PrivateIpAddress": "10.0.2.6",
                             "PrivateIpAllocationMethod": "Static",
                             "Subnet": {
                                 "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/virtualNetworks/NRPVNet/subnets/LB-Subnet-BE"
                             },
+                            "ProvisioningState": "Succeeded",
+                            "PrivateIpAddressVersion": "IPv4",
                             "PublicIpAddress": {
                                 "Id": null
                             },
@@ -173,19 +179,18 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
                                 "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/loadBalancers/NRPlb/inboundNatRules/RDP1"
                                 }
                             ],
-                            "ProvisioningState": "Succeeded",
-                            "Name": "ipconfig1",
-                            "Etag": "W/"d448256a-e1df-413a-9103-a137e07276d1"",
-                            "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/ipconfig1"
+                            "Primary": true,
+                            "ApplicationGatewayBackendAddressPools": []
                             }
                         ]
         DnsSettings          : {
                             "DnsServers": [],
-                            "AppliedDnsServers": []
+                            "AppliedDnsServers": [],
+                            "InternalDomainNameSuffix": "prcwibzcuvie5hnxav0yjks2cd.dx.internal.cloudapp.net"
                         }
-        AppliedDnsSettings   :
+        EnableIPForwarding   : False
         NetworkSecurityGroup : null
-        Primary              : False
+        Primary              : 
 
 5. `Add-AzureRmVMNetworkInterface` コマンドレットを使用し、NIC をさまざまな VM に割り当てます。
 
@@ -249,4 +254,4 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

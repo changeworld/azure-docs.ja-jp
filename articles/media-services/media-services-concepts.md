@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Media Services の概念" 
-	description="このトピックでは、Azure Media Services の概念について概要を示します。" 
+	pageTitle="Azure Media Services の概念 | Microsoft Azure" 
+	description="このトピックでは、Azure Media Services の概念の概要を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 #Azure Media Services の概念 
 
-このトピックでは、Media Services の最も重要な概念について概要を説明します。
+このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
 ##<a id="assets"></a>資産とストレージ
 
@@ -26,7 +26,7 @@
 
 [資産](https://msdn.microsoft.com/library/azure/hh974277.aspx)には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。デジタル ファイルが資産にアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
-資産は Azure Storage アカウント内の BLOB コンテナーにマップされ、資産内のファイルは BLOB としてそのコンテナーに格納されます。
+資産は Azure ストレージ アカウント内の BLOB コンテナーにマップされ、資産内のファイルは BLOB としてそのコンテナーに格納されます。
 
 アップロードして資産内に格納するメディア コンテンツを特定する場合は、次の考慮事項に注意してください。
 
@@ -85,7 +85,7 @@ Azure のストレージにアクセスする場合には必ず、ストレー�
 
 ジョブには、実行する処理に関するメタデータが含まれます。ジョブ内の複数の[タスク](https://msdn.microsoft.com/library/azure/hh974286.aspx)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 
-##<a id="encoding"></a>エンコード 
+##<a id="encoding"></a>エンコード
 
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
@@ -96,7 +96,7 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
@@ -123,7 +123,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを 1 つまたは複数のチャネル専用にすることができます。StreamingEndpoint は、どのチャネルからでもプルできます。
 
 
-###プログラム 
+###プログラム
 
 ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://msdn.microsoft.com/library/azure/dn783463.aspx)を使用して制御します。プログラムはチャネルによって管理されます。チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
@@ -174,9 +174,9 @@ Media Services を使用する際、中間ファイルをアダプティブ ビ�
 
 ###ストリーミング エンドポイント
 
-StreamingEndpoint は、ストリーミング サービスを表し、コンテンツをクライアント プレーヤー アプリケーションに直接配信するか、Content Delivery Network (CDN) を介して配信できます (Azure Media Services で Azure CDN 統合が提供されるようになりました)。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリームまたは Media Services アカウントのオンデマンド ビデオ資産を使用します。さらに、スケール単位 (ストリーミング ユニットとも呼ばれます) を調整することによって、帯域幅で増え続けるニーズを処理する StreamingEndpoint サービスの容量を制御できます。運用環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。スケール ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほかに、動的パッケージ化機能などの追加機能を利用できるようになります。
+StreamingEndpoint は、ストリーミング サービスを表し、コンテンツをクライアント プレーヤー アプリケーションに直接配信するか、Content Delivery Network (CDN) を介して配信できます (Azure Media Services で Azure CDN 統合が提供されるようになりました)。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリームまたは Media Services アカウントのオンデマンド ビデオ資産を使用します。さらに、スケール単位 (ストリーミング ユニットとも呼ばれます) を調整することによって、帯域幅で増え続けるニーズを処理する StreamingEndpoint サービスの容量を制御できます。実稼働環境でのアプリケーションの 1 つ以上のスケール単位を割り当てることをお勧めします。スケール ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほかに、動的パッケージ化機能などの追加機能を利用できるようになります。
 
-動的パッケージや動的暗号化の使用をお勧めします。これらの機能を使用するには、ストリーミング元となるエンドポイントに、少なくとも 1 つのストリーミング ユニットが必要です。詳細については、「[ストリーミング エンドポイントの拡張](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+動的パッケージや動的暗号化の使用をお勧めします。これらの機能を使用するには、ストリーミング元となるエンドポイントに、少なくとも 1 つのストリーミング ユニットが必要です。詳細については、「[ストリーミング エンドポイントの拡張](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 既定では、Media Services アカウントに最大 2 つのストリーミング エンドポイントを追加できます。上限の拡大を要求するには、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 
@@ -188,7 +188,7 @@ Media Services におけるコンテンツ配信ワークフローの手順の 1
 
 ストレージで暗号化した資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリーミングする必要があります。たとえば、AES (Advanced Encryption Standard) 暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を DynamicEnvelopeEncryption に設定します。ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を NoDynamicEncryption に設定します。
 
-###プログレッシブ ダウンロード 
+###プログレッシブ ダウンロード
 
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。プログレッシブ ダウンロードでダウンロードできるのは、MP4 ファイルのみです。
 
@@ -196,7 +196,7 @@ Media Services におけるコンテンツ配信ワークフローの手順の 1
 
 ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。ロケーターを作成すると、資産への基本パスが提供されます。それに MP4 ファイルの名前を付加する必要があります。次に例を示します。
 
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
 ###ストリーミング URL
 
@@ -210,40 +210,40 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 - スムーズ ストリーミング
 
-	{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
-		
-		http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest
+
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 
 - MPEG DASH
 
-	{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
- 
-		http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
+
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 
 
 - Apple HTTP ライブ ストリーミング (HLS) V4
 
-	{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
-		http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 
 
 - Apple HTTP ライブ ストリーミング (HLS) V3
 
-	{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 
-		http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 - HDS (Adobe PrimeTime/Access ライセンスのみ)
 
-	{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
+{ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=f4m-f4f)
 
-		http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f) 
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f)
 
- 
+
 ##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -252,4 +252,4 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -15,12 +15,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="08/29/2016"
+   ms.date="09/15/2016"
    ms.author="zachal"/>
 
 # 仮想マシン スケール セットと Azure DSC 拡張機能の使用
 
-[仮想マシンのスケール セット (VMSS)](virtual-machines-windows-vmss-powershell-creating.md) は、[Azure Desired State Configuration (DSC)](virtual-machines-windows-extensions-dsc-overview.md) 拡張機能ハンドラーと共に使用できます。VMSS は、負荷を満たすために仮想マシンのデプロイを構成するときに使用されます。DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
+[仮想マシンのスケール セット (VMSS)](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) は、[Azure Desired State Configuration (DSC)](virtual-machines-windows-extensions-dsc-overview.md) 拡張機能ハンドラーと共に使用できます。VMSS は多数の仮想マシンをデプロイおよび管理する手段であり、そのスケールは負荷に応じて柔軟に拡大および縮小することができます。DSC は、オンラインで運用ソフトウェアを実行できるように VM を構成するときに使用されます。
 
 ## VM へのデプロイと VMSS へのデプロイの違い
 
@@ -98,4 +98,13 @@ VMSS ノードには、"VirtualMachineProfile" を備えた "properties" セク�
 
 VMSS の動作は、1 つの VM の動作と同じです。新しく作成された VM は、DSC 拡張機能で自動的にプロビジョニングされます。拡張機能に新しいバージョンの WMF が必要な場合、VM はオンラインになる前に再起動されます。オンラインになると、DSC 構成 .zip がダウンロードされ、VM 上でプロビジョニングされます。詳細については、[Azure DSC 拡張機能の概要](virtual-machines-windows-extensions-dsc-overview.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+## 次のステップ ##
+[DSC 拡張機能用の Azure Resource Manager テンプレート](virtual-machines-windows-extensions-dsc-template.md)に関するページをご覧ください。
+
+[DSC 拡張機能で資格情報を安全に処理する方法](virtual-machines-windows-extensions-dsc-credentials.md)に関するページを確認してください。
+
+Azure DSC 拡張機能ハンドラーの詳細については、「[Azure Desired State Configuration 拡張機能ハンドラーの概要](virtual-machines-windows-extensions-dsc-overview.md)」を参照してください。
+
+PowerShell DSC の詳細については、[PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。
+
+<!---HONumber=AcomDC_0921_2016-->

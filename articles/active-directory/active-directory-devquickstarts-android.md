@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-android"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # Azure AD の Android アプリへの統合
@@ -24,7 +24,7 @@
 
 デスクトップ アプリケーションを開発する場合、Azure AD を使用すると、Active Directory アカウントを使ってユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
-保護されたリソースにアクセスする必要がある Android クライアントに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリがアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、ここで、次を実行する Android To-Do List アプリケーションを作成します。
+保護されたリソースにアクセスする必要がある Android クライアントに対しては、Azure AD は Active Directory 認証ライブラリ (ADAL) を提供します。ADAL の唯一の目的は、アプリケーションがアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、ここで、次を実行する Android To-Do List アプリケーションを作成します。
 
 -	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して To-Do List API を呼び出すためのアクセス トークンを取得します。
 -	ユーザーの To-Do List を取得します。
@@ -270,7 +270,7 @@ Maven リポジトリから jar ファイルを取得して、プロジェクト
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **ブローカー**:
+11. **ブローカー**: 
 Microsoft Intune の企業ポータル アプリは、ブローカー コンポーネントを提供します。この認証システムで作成された 1 つのユーザー アカウントがあり、開発者がそれをスキップしないことを選択すると、ADAL はブローカー アカウントを使用します。開発者は、次のように指定してブローカー ユーザーをスキップすることができます。
 
     ```java
@@ -350,7 +350,7 @@ ADAL は、プロンプトの動作を指定するオプションを提供しま
 
 これが診断を行う際の最初の情報であることは明白です。Microsoft では、役立つエラー メッセージを提供するための取り組みがなされています。役に立たないエラー メッセージを見つけた場合は、問題を報告してください。モデルや SDK 番号などのデバイス情報も提供してください。
 
-#### ログ
+#### Logs (ログ)
 
 問題の診断に役立てることができるログ メッセージを生成するようにライブラリを構成できます。次の呼び出しを行って、生成時に各ログ メッセージを渡すために ADAL が使用するコールバックを構成することで、ログを構成します。
 
@@ -411,7 +411,7 @@ Fiddler は、最も簡単な HTTP トレース ツールです。これが ADAL
 ### ダイアログ モード
 アクティビティがない acquireToken メソッドは、ダイアログ プロンプトをサポートします。
 
-### 暗号化
+### Encryption
 
 ADAL は、既定では SharedPreferences のトークンとストアを暗号化します。詳細を確認するには、StorageHelper クラスを参照できます。Android は、秘密キーのセキュリティ保護された記憶域として AndroidKeyStore for 4.3(API18) を導入しています。ADAL はこの API18 以降を使用します。下位バージョンの SDK に ADAL を使用する場合は、AuthenticationSettings.INSTANCE.setSecretKey で秘密キーを提供する必要があります。
 
@@ -457,4 +457,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!----HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0921_2016-->

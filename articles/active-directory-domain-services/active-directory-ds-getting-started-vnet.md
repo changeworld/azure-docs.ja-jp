@@ -58,4 +58,4 @@ Azure AD Domain Services が利用できる Azure 仮想ネットワークを作
 ## タスク 3: Azure AD ドメイン サービスを有効にする
 次に、[Azure AD Domain Services を有効](active-directory-ds-getting-started-enableaadds.md)にします。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!-------HONumber=AcomDC_0921_2016-->

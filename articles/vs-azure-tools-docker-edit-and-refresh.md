@@ -3,7 +3,7 @@
    description="編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。"
    services="azure-container-service"
    documentationCenter="na"
-   authors="allclark"
+   authors="mlearned"
    manager="douge"
    editor="" />
 <tags
@@ -13,11 +13,11 @@
    ms.tgt_pltfrm="na"
    ms.workload="multiple"
    ms.date="07/22/2016"
-   ms.author="allclark" />
+   ms.author="mlearned" />
 
 # ローカルの Docker コンテナーでアプリをデバッグする
 
-## 概要
+## Overview
 Visual Studio Tools for Docker を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。コード変更のたびにコンテナーを再起動する必要はありません。この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET Core Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。デバッグ用のブレークポイントを設定する方法についても説明します。
 
 > [AZURE.NOTE] Windows コンテナーのサポートは今後のリリースで開始する予定です
@@ -26,8 +26,8 @@ Visual Studio Tools for Docker を使用すると、一貫した方法でアプ�
 次のツールをインストールする必要があります。
 
 - [Visual Studio 2015 Update 2](https://go.microsoft.com/fwlink/?LinkId=691978)
-- [Microsoft ASP .NET Core RC 2](http://go.microsoft.com/fwlink/?LinkId=798481)
-- [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)
+- [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
+- [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 
 ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。Hyper-V を無効にして、リリース済みの [Docker Toolbox](https://www.docker.com/products/overview#/docker_toolbox) を使用するか、または Hyper-V を使用し、Windows 10 が必要な [Docker for Windows のベータ版](https://beta.docker.com)を使用することができます。
 
@@ -37,7 +37,7 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## 2\.Docker サポートの追加
+## 手順 2.Docker サポートの追加
 
 [AZURE.INCLUDE [Docker サポートの追加](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
@@ -125,4 +125,4 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
 [2]: ./media/vs-azure-tools-docker-edit-and-refresh/breakpoint.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
+	ms.date="09/13/2016"
 	ms.author="larryfr"/>
 
 # HDInsight Hadoop クラスターに Solr をインストールして使用する
@@ -166,13 +166,25 @@ Solr ダッシュボードは、Web ブラウザーを介して Solr を操作�
 
 SSH トンネルを確立したら、Solr ダッシュボードを使用するために次の手順を実行します。
 
-1. ヘッド ノードのホスト名を決定します。
+1. プライマリ ヘッドノードのホスト名を決定します。
 
-    1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。ダイアログ ボックスが表示されたら、認証に管理者のユーザー名とパスワードを使用してサイトに入ります。
+    1. ポート 22 で SSH を使用してクラスターに接続します。たとえば、`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` を使用して、__USERNAME__ に SSH ユーザー名を、__CLUSTERNAME__ にクラスターの名前を指定します。
+
+        SSH の使用方法の詳細については、次のドキュメントを参照してください。
+
+        * [Linux、Unix、または Mac OS X クライアントから Linux ベースの HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+
+        * [Windows クライアントから Linux ベースの HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
     
-    2. ページ上部のメニューから、__[ホスト]__ を選択します。
+    3. 次のコマンドを使用して、完全修飾ホスト名を取得します。
+
+            hostname -f
+
+        次のような名前が返されます。
+
+            hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
     
-    3. 「__hn0__」で始まるエントリを選択します。ページが開くと、一番上にホスト名が表示されます。ホスト名の形式は「__hn0-PARTOFCLUSTERNAME.randomcharacters.cx.internal.cloudapp.net__」です。これは Solr ダッシュボードに接続するときに使用するホスト名です。
+        これが、次の手順で使用するホスト名です。
     
 1. ブラウザーで、__http://HOSTNAME:8983/solr/#/____ に接続します。HOSTNAME は前の手順で決定した名前です。
 
@@ -311,4 +323,4 @@ Solr のバックアップと復元の操作の詳細については、[SolrCore
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

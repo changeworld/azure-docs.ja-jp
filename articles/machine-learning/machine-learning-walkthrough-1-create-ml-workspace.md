@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/10/2016"
+	ms.date="09/16/2016"
 	ms.author="garye"/>
 
 
@@ -30,6 +30,8 @@
 6.	[Web サービスにアクセスする](machine-learning-walkthrough-6-access-web-service.md)
 
 ----------
+
+<!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
 Machine Learning Studio を使用するには、Microsoft Azure Machine Learning ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
@@ -51,4 +53,4 @@ Machine Learning ワークスペースが作成されると、Azure クラシッ
 
 [1]: ./media/machine-learning-walkthrough-1-create-ml-workspace/create1.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

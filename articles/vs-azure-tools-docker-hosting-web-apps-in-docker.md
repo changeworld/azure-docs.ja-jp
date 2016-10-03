@@ -3,7 +3,7 @@
    description="Visual Studio Tools for Docker を使用して、Azure Docker ホストの Linux VM で実行されている Docker コンテナーに ASP.NET Core Web アプリをデプロイする方法を説明します。"   
    services="azure-container-service"
    documentationCenter=".net"
-   authors="allclark"
+   authors="mlearned"
    manager="douge"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
    ms.date="06/08/2016"
-   ms.author="allclark;stevelas"/>
+   ms.author="mlearned"/>
 
 # リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 
@@ -25,11 +25,12 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 このチュートリアルを完了するには、以下が必要です。
 
 - 「[Azure で docker マシンを使用する方法](./virtual-machines/virtual-machines-linux-docker-machine.md)」の説明に従って、Azure Docker ホスト VM を作成する
-- [Visual Studio 2015 Update 2](https://go.microsoft.com/fwlink/?LinkId=691978) をインストールする
+- [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) をインストールする
+- [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
 - [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS) のインストール
 
-## 1\.ASP.NET 5 Web アプリの作成
-次の手順では、このチュートリアルで使用する基本的な ASP.NET 5 アプリの作成について説明します。
+## 1\.ASP.NET Core Web アプリケーションの作成
+次の手順では、このチュートリアルで使用する基本的な ASP.NET Core アプリの作成について説明します。
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
@@ -89,4 +90,4 @@ Docker は軽量のコンテナー エンジンで、アプリケーションと
 [2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
 [3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

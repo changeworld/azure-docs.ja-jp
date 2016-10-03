@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成" 
+	pageTitle="Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Azure" 
 	description="Media Services .NET SDK を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,Mingfeiy" 
+	authors="Mingfeiy" 
 	manager="erikre" 
 	editor=""/>
 
@@ -13,15 +13,16 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/15/2016"
+	ms.author="juliako;mingfeiy"/>
 
 
 
-#動的暗号化: コンテンツ キー承認ポリシーを構成する 
+# 動的暗号化: コンテンツ キー承認ポリシーを構成する
+
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
-##概要
+##Overview
 
 Microsoft Azure Media Services を使用すると、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護された MPEG DASH、Smooth Streaming、HTTP ライブ ストリーミング (HLS) のストリームを配信できます。AMS では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
@@ -45,7 +46,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 
 ###いくつかの考慮事項が適用されます。
 
-- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 - 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 - **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
 - 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
@@ -54,24 +55,17 @@ Media Services では、Secure Token Services は提供されません。トー�
 - 現在、HDS ストリーミング形式およびプログレッシブ ダウンロードは暗号化できません。
 
 
-##AES-128 動的暗号化 
+##AES-128 動的暗号化
 
 ###オープン制限
 
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。この制限は、テストに便利です。
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
-	
-	static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
-	{
-	    // Create ContentKeyAuthorizationPolicy with Open restrictions 
-	    // and create authorization policy             
-	    IContentKeyAuthorizationPolicy policy = _context.
-	                            ContentKeyAuthorizationPolicies.
-	                            CreateAsync("Open Authorization Policy").Result;
-	
-	    List<ContentKeyAuthorizationPolicyRestriction> restrictions =
-	        new List<ContentKeyAuthorizationPolicyRestriction>();
+
+static public void AddOpenAuthorizationPolicy(IContentKey contentKey) { // Create ContentKeyAuthorizationPolicy with Open restrictions // and create authorization policy IContentKeyAuthorizationPolicy policy = \_context.ContentKeyAuthorizationPolicies.CreateAsync("Open Authorization Policy").Result;
+
+List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
 	
 	    ContentKeyAuthorizationPolicyRestriction restriction =
 	        new ContentKeyAuthorizationPolicyRestriction
@@ -154,7 +148,7 @@ Media Services では、Secure Token Services は提供されません。トー�
 	  <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
 	</xs:schema>
 
-**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+**トークン**制限ポリシーを構成するときは、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。**プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。**対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的か、トークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。次の例では、トークン制限を含む承認ポリシーを作成します。この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
 	
@@ -239,7 +233,7 @@ Media Services により、ユーザーが保護されたコンテンツを再�
 
 PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、[PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
-[このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法について説明します。
+[トピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
 
 ###オープン制限
 	
@@ -437,10 +431,8 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
 ##次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[アセットの配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)」トピックにお進みください。
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

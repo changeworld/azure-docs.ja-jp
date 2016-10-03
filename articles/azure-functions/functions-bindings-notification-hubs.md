@@ -87,6 +87,13 @@ Notification Hub 出力バインドを使用するには、ハブの接続文字
 	    context.done();
 	};
 
+## Azure Notification Hub のコード例 (F# タイマー トリガー)
+
+次の例では、`location` と `message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
+
+	let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
+	    notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
+
 ## Azure Notification Hub のコード例 (C# キュー トリガー)
 
 次の例では、`message` を含む[テンプレート登録](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)の通知を送信します。
@@ -157,4 +164,4 @@ project.json ファイルのアップロードの詳細については、[projec
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

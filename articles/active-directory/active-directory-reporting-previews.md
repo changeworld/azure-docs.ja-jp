@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/07/2016"
+   ms.date="09/16/2016"
    ms.author="dhanyahk"/>
 
 # Azure Active Directory のレポートのプレビュー
@@ -54,4 +54,4 @@ RMS 対応アプリケーションの利用状況 | パブリック プレビュ
 **プライベート プレビュー レポート** |
 すべてのユーザーのサインイン アクティビティ | プライベート プレビュー
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0921_2016-->

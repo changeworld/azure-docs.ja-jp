@@ -13,21 +13,23 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="zhangya;bradsev" />
 
 
 # Team Data Science Process (TDSP) の特徴選択
 
-このトピックでは、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
+この記事では、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおける特徴選択の役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
 このトピックでは、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。例は、Azure Machine Learning Studio で描画しています。
 
-特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[What is the Team Data Science Process? (Team Data Science Process について)](data-science-process-overview.md)」を参照してください 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
+特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、[Team Data Science Process の概要](data-science-process-overview.md)に関する記事をご覧ください。特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
+
 * **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
+
 * **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
@@ -74,4 +76,4 @@ Azure Machine Learning Studio には、特徴選択に提供されるモジュ�
 [fisher-linear-discriminant-analysis]: https://msdn.microsoft.com/library/azure/dcaab0b2-59ca-4bec-bb66-79fd23540080/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

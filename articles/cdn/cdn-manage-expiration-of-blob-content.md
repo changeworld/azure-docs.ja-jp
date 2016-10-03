@@ -12,11 +12,15 @@
  ms.tgt_pltfrm="na"
  ms.devlang="multiple"
  ms.topic="article"
- ms.date="08/24/2016"
+ ms.date="09/15/2016"
  ms.author="casoper"/>
 
 
 # Azure CDN で Azure Storage BLOB コンテンツの有効期限を管理する
+
+> [AZURE.SELECTOR]
+- [Azure Web Apps/Cloud Services、ASP.NET、または IIS](cdn-manage-expiration-of-cloud-service-content.md)
+- [Azure Storage BLOB サービス](cdn-manage-expiration-of-blob-content.md)
 
 [Azure Storage](../storage/storage-introduction.md) の [BLOB サービス](../storage/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure CDN と統合されたサービスの 1 つです。パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。TTL は、Azure Storage からの HTTP 応答の [*Cache-control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)によって決まります。
 
@@ -106,6 +110,6 @@ BLOB の TTL は簡単に確認できます。お使いのブラウザーの[開
 ## 次のステップ
 
 - [*Cache-Control* ヘッダーに関するページを読みます](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)。
-- [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](./cdn-manage-expiration-of-cloud-service-content.md)。
+- [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します。](./cdn-manage-expiration-of-cloud-service-content.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

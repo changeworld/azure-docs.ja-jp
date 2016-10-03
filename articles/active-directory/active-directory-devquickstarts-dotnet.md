@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 
@@ -116,7 +116,7 @@ private async void Search(object sender, RoutedEventArgs e)
 - アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
 - `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報を収集するために使用される `UserInfo` オブジェクトが含まれていることに注意してください。DirectorySearcher で、`UserInfo` は、ユーザーの ID を使用してアプリの UI をカスタマイズするために使用されます。
 
-- ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
+- ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じぐらい容易に達成できます。
 
 ```C#
 private void SignOut(object sender = null, RoutedEventArgs args = null)
@@ -157,9 +157,9 @@ public async void CheckForCachedToken()
 }
 ```
 
-ご利用ありがとうございます。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する . WPF アプリケーションが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。サインアウトし、別のユーザーとしてサインインします。
+お疲れさまでした。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する . WPF アプリケーションが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。サインアウトし、別のユーザーとしてサインインします。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireTokenAsync(...)` のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireTokenAsync(...)` のみです。
 
 完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
 
@@ -167,4 +167,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

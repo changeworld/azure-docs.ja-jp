@@ -42,4 +42,4 @@
 
 4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png) をクリックします。指定した設定でボリュームが作成されます。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!-----------HONumber=AcomDC_0914_2016-->

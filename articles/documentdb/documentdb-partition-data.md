@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/21/2016" 
+	ms.date="09/20/2016" 
 	ms.author="arramac"/>
 
 # Azure DocumentDB でのパーティション分割とスケーリング
@@ -261,7 +261,7 @@ DocumentDB SDK 1.9.0 以降では、並列クエリ実行オプションがサ�
 
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
-- `MaxDegreeOfParallelism` を設定すると、並列処理次数、つまりコレクションのパーティションに同時ネットワーク接続できる数の上限を制御することができます。このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。
+- `MaxDegreeOfParallelism` を設定すると、並列処理次数、つまりコレクションのパーティションに同時ネットワーク接続できる数の上限を制御することができます。このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。`MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コレクションのパーティションへのネットワーク接続は 1 つのみです。
 - `MaxBufferedItemCount` を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。このパラメーターを省略するか、このパラメーターに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
 コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。並べ替え (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、DocumentDB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
@@ -283,8 +283,8 @@ DocumentDB SDK 1.9.0 以降では、並列クエリ実行オプションがサ�
 
 単一パーティション コレクションからパーティション分割コレクションへの移行方法
 
-1. 単一パーティション コレクションから JSON にデータをエクスポートします。詳細については、「[JSON ファイルへのエクスポート](documentdb-import-data.md#export-to-json-file)」をご覧ください。
-2. 次の例で示すように、パーティション キーの定義、および 1 秒あたり 10,000 要求ユニットを超えるスループットを指定して作成されたパーティション分割コレクションにデータをインポートします。詳細については、「[DocumentDB へのインポート](documentdb-import-data.md#DocumentDBSeqTarget)」をご覧ください。
+1. 単一パーティション コレクションから JSON にデータをエクスポートします。詳細については、「[JSON ファイルへのエクスポート](documentdb-import-data.md#export-to-json-file)」を参照してください。
+2. 次の例で示すように、パーティション キーの定義、および 1 秒あたり 10,000 要求ユニットを超えるスループットを指定して作成されたパーティション分割コレクションにデータをインポートします。詳細については、「[DocumentDB へのインポート](documentdb-import-data.md#DocumentDBSeqTarget)」を参照してください。
 
 ![DocumentDB のパーティション分割コレクションへのデータの移行][3]
 
@@ -329,10 +329,10 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 ## 次のステップ
 この記事では、Azure DocumentDB でのパーティション分割のしくみ、パーティション分割コレクションの作成方法、またアプリケーションに最適なパーティション キーの選択方法を説明しました。
 
--   DocumentDB のスケールとパフォーマンスのテストを行う。サンプルについては、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」をご覧ください。
+-   DocumentDB のスケールとパフォーマンスのテストを行う。サンプルについては、「[Azure DocumentDB のパフォーマンスとスケールのテスト](documentdb-performance-testing.md)」を参照してください。
 -   [SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使ってコーディングを開始します。
 -   [DocumentDB でのプロビジョニング済みスループット](documentdb-performance-levels.md)について確認します。
--   アプリケーションでのパーティション分割の実行方法をカスタマイズする必要がある場合は、独自のクライアント側のパーティション分割の実装を採用できます。[クライアント側のパーティション分割のサポート](documentdb-sharding.md)に関するページをご覧ください。
+-   アプリケーションでのパーティション分割の実行方法をカスタマイズする必要がある場合は、独自のクライアント側のパーティション分割の実装を採用できます。[クライアント側のパーティション分割のサポート](documentdb-sharding.md)に関するページを参照してください。
 
 [1]: ./media/documentdb-partition-data/partitioning.png
 [2]: ./media/documentdb-partition-data/single-and-partitioned.png
@@ -340,4 +340,4 @@ DocumentDB を使用したマルチテナント アプリケーションを実�
 
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

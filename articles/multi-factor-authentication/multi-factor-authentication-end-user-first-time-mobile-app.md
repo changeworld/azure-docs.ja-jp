@@ -3,8 +3,8 @@
 	description="この記事では、Azure Multi-Factor Authentication の主要な連絡方法としてモバイル アプリを使用する方法を説明します。"
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
-	manager="stevenp"
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/30/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication での連絡方法としてモバイル アプリを使用する
 
@@ -55,7 +55,7 @@ Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/f
 
 8. PIN の入力が完了したら、**[閉じる]** を選択します。この時点で、認証が完了します。
 9. モバイル アプリにアクセスできなくなった場合に備えて、携帯電話番号を入力しておくことをお勧めします。ドロップダウン リストからお住まいの国を指定し、国名の横のボックスに携帯電話番号を入力します。**[次へ]** を選択します。
-10. この時点で、連絡方法が設定されました。ここで、非ブラウザー アプリ (Outlook 2010 以前など) のアプリ パスワードを設定します。これらのアプリを使用しない場合は **[完了]** を選択します。使用している場合は、次の手順に進みます。
+10. この時点で、連絡方法が設定されました。ここで、非ブラウザー アプリ (Outlook 2010 以前など) のアプリ パスワードを設定します。これらのアプリを使用しない場合は **[完了]** を選択します。使用する場合は、次の手順に進みます。
 
 	![アプリ パスワードを作成する画面](./media/multi-factor-authentication-end-user-first-time-mobile-app/step4.png)
 
@@ -78,4 +78,4 @@ Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/f
 
 3. アクティブ化が完了したら、**[連絡してください]** を選択します。これによって、通知コードまたは認証コードが電話に送信されます。**[認証]** を選択します。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/25/2016"
-	ms.author="tamram;aungoo-msft"/>
+	ms.date="09/20/2016"
+	ms.author="tamram;aungoo"/>
 
 
 # Azure 仮想マシン ディスクを増分スナップショットでバックアップする
 
-## 概要 
+## Overview
 
 Azure Storage には、BLOB のスナップショットを作成する機能があります。スナップショットは、特定の時点における BLOB の状態をキャプチャします。この記事では、スナップショットを使って仮想マシン ディスクのバックアップを保存する方法について説明します。この手法は、Azure Backup と Recovery Service を使用せず、仮想マシン ディスク用に独自のバックアップ方法を構築する必要がある場合にご利用ください。
 
@@ -128,4 +128,4 @@ Azure VM のバックアップについて詳しくは、[Azure での VM バッ
 - [BLOB のスナップショットの作成](https://msdn.microsoft.com/library/azure/hh488361.aspx)
 - [VM のバックアップ インフラストラクチャの計画](../backup/backup-azure-vms-introduction.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->
