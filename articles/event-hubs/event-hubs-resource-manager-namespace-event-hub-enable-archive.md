@@ -286,7 +286,7 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-  [Azure リソースの名前付け規則]: https://azure.microsoft.com/ja-JP/documentation/articles/guidance-naming-conventions/
+  [Azure リソースの名前付け規則]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
   [イベント ハブと、アーカイブ テンプレートの有効化]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
 <!---HONumber=AcomDC_0921_2016-->

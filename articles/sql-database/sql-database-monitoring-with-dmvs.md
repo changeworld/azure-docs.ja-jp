@@ -42,7 +42,7 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- Calculates the size of the database.
+-- データベースのサイズを計算します。 
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO

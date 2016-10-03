@@ -125,7 +125,7 @@ Data Lake Store へのアクセスを後から追加するには、Azure ポー�
 ![Create Data Lake store Service Principle 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
 
 ## Data Lake Store と R Server の使用
-Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から adl://**** に変わることです。
+Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 ````
 # Point to the ADL store (e.g. ADLtest)

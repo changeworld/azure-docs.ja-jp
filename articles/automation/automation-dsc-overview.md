@@ -117,7 +117,7 @@ Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード�
 
 - WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、$env:windir\\system32\\configuration\\DSCEngineCache.mof を削除します。
 
-- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。`mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。 `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
  
 
 ##関連記事##

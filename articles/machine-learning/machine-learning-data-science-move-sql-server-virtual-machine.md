@@ -52,7 +52,7 @@ Machine Learning 用に Azure SQL Database にデータを移動するための�
 
 データがフラット ファイル (行と列の形式で配置されている) に存在する場合は、次の方法を使用して Azure の SQL Server VM にデータを移動できます。
 
-1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp)
+1. [コマンド ライン一括コピー ユーティリティ (BCP)](#insert-tables-bcp) 
 2. [一括挿入 SQL クエリ](#insert-tables-bulkquery)
 3. [SQL Server のグラフィカル組み込みユーティリティ (インポート/エクスポート、SSIS)](#sql-builtin-utilities)
 
@@ -129,7 +129,7 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
 	Set-ExecutionPolicy Restricted #reset the execution policy
 
 
-### <a name="insert-tables-bulkquery">一括挿入 SQL クエリ</a>
+### <a name="insert-tables-bulkquery"></a>一括挿入 SQL クエリ
 
 [一括挿入 SQL クエリ](https://msdn.microsoft.com/library/ms188365)は、行/列ベースのファイルからデータをデータベースにインポートする場合に使用できます (サポートされるタイプについては「[一括エクスポートまたは一括インポートのデータの準備 (SQL Server)](https://msdn.microsoft.com/library/ms188609)」のトピックで説明されています)。
 
@@ -152,11 +152,11 @@ BCP は、SQL Server と一緒にインストールされるコマンド ライ�
     	)
  	  
 
-### <a name="sql-builtin-utilities">SQL Server の組み込みユーティリティ</a>
+### <a name="sql-builtin-utilities"></a>SQL Server の組み込みユーティリティ
 
 SQL Server 統合サービス (SSIS) を使用して、フラット ファイルから Azure の SQL Server VM にデータをインポートすることができます。SSIS は 2 つの Studio 環境で使用できます。詳細については、「[統合サービス (SSIS) と Studio 環境](https://technet.microsoft.com/library/ms140028.aspx)」を参照してください:。
 
-- SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)」を参照してください。
+- SQL Server データ ツールの詳細については、「[Microsoft SQL Server データ ツール](https://msdn.microsoft.com/data/tools.aspx)」を参照してください。  
 - インポート/エクスポート ウィザードの詳細については、「[SQL Server のインポートおよびエクスポート ウィザード](https://msdn.microsoft.com/library/ms141209.aspx)」を参照してください。
 
 
@@ -165,7 +165,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 次の移行方法を使用することもできます。
 
 1. [Microsoft Azure VM への SQL Server データベースのデプロイ ウィザード](#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard)
-2. [フラット ファイルへのエクスポート](#export-flat-file)
+2. [フラット ファイルへのエクスポート](#export-flat-file) 
 3. [SQL Database 移行ウィザード](#sql-migration)
 4. [データベースのバックアップと復元](#sql-backup)
 
@@ -209,7 +209,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 SQL Server は以下のものをサポートします。
 
 1. [データベースのバックアップと復元機能](https://msdn.microsoft.com/library/ms187048.aspx) (ローカル ファイルに対するバックアップと復元、または BLOB への BACPAC エクスポート) と[データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx) (BACPAC を使用)。
-2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。詳細については、「[データベース コピー ウィザードの使用](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。
+2. コピーされたデータベースを使用して Azure で SQL Server VM を直接作成する機能、または既存の SQL Azure データベースにコピーする機能。詳細については、「[データベース コピー ウィザードの使用](https://msdn.microsoft.com/library/ms188664.aspx)」を参照してください。 
 
 SQL Server Management Studio のデータベースのバックアップ/復元オプションのスクリーンショットを次に示します。
 

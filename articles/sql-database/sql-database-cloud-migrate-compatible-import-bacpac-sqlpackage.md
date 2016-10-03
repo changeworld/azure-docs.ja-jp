@@ -31,7 +31,7 @@
 
 ## SqlPackage を使用して BACPAC ファイルを Azure SQL Database にインポートする
 
-以下の手順では、[SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) コマンドライン ユーティリティを使用して、互換性のある SQL Server データベース (または Azure SQL Database) を BACPAC ファイルからインポートします。
+以下の手順では、[SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) コマンド ライン ユーティリティを使用して、互換性のある SQL Server データベース (または Azure SQL Database) を BACPAC ファイルからインポートします。
 
 > [AZURE.NOTE] 以下の手順では、Azure SQL Database サーバーを既にプロビジョニングしてあり、接続情報がわかっていることを前提にしています。
 
@@ -42,11 +42,11 @@
 
 	| 引数 | 説明 |
 	|---|---|
-	| <server\_name> | ターゲット サーバー名 |
-	| <database\_name> | ターゲット データベース名 |
-	| <user\_name> | ターゲット サーバーのユーザー名 |
-	| <password> | ユーザーのパスワード |
-	| <source\_file> | インポートする BACPAC ファイルのファイル名と場所 |
+	| < server\_name > | ターゲット サーバー名 |
+	| < database\_name > | ターゲット データベース名 |
+	| < user\_name > | ターゲット サーバーのユーザー名 |
+	| < password > | ユーザーのパスワード |
+	| < source\_file > | インポートする BACPAC ファイルのファイル名と場所 |
 
 	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 

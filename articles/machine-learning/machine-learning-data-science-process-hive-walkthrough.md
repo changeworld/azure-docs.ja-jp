@@ -111,7 +111,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* ***&#60;path\_to\_data\_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。
+* ***&#60;path\_to\_data\_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。  
 * ***&#60;Hadoop クラスターのストレージ アカウント名>*** を、HDInsight クラスターに関連付けられているストレージ アカウントに置き換えます。
 * ***&#60;Hadoop クラスターの既定のコンテナー>*** を、クラスターで使用する既定のコンテナーに置き換えます。通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
 * ***&#60;ストレージ アカウント キー>*** を、クラスターで使用するストレージ アカウントのキーに置き換えます。
@@ -434,10 +434,10 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 検査用の *sample\_hive\_quality\_assessment.hql* ファイルの内容を次に示します。
 
-	    SELECT COUNT(*) FROM nyctaxidb.trip
-	    WHERE month=1
-	    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-	    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+    	SELECT COUNT(*) FROM nyctaxidb.trip
+    	WHERE month=1
+    	AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    	OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
 	    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
 	    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
@@ -454,7 +454,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている二項分類の問題では、チップが支払われたかどうかがわかると便利です。このチップの分布は、次の二項です。
 
-* tip given(Class 1, tip\_amount > $0)
+* tip given(Class 1, tip\_amount > $0)  
 * no tip (Class 0, tip\_amount = $0)
 
 次に示す *sample\_hive\_tipped\_frequencies.hql* ファイルがこれを実行します。
@@ -564,10 +564,10 @@ Azure Machine Learning の[データのインポート][import-data] モジュ�
 
 Azure Machine Learning でモデル作成用データを準備する *sample\_hive\_prepare\_for\_aml\_full.hql* ファイルの内容を以下に示します。
 
-        set R = 3959;
-        set pi=radians(180);
+		set R = 3959;
+	    set pi=radians(180);
 
-        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+		create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
         medallion string,
         hack_license string,
@@ -622,7 +622,7 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
         t.pickup_latitude,
         t.dropoff_longitude,
         t.dropoff_latitude,
-        t.direct_distance,
+		t.direct_distance,
         f.payment_type,
         f.fare_amount,
         f.surcharge,
@@ -794,7 +794,9 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 ## 参照
 
-• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
+•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+•	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png

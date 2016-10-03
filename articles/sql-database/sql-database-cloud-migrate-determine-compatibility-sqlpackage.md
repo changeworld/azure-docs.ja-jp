@@ -29,18 +29,18 @@
 
 ## SqlPackage.exe を使用する
 
-1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) と [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/ja-JP/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
+1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。[最新の Visual Studio 用 SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードして、最新バージョンの SqlPackage ユーティリティを取得します。
 2. 次の SqlPackage コマンドをご利用の環境に合わせた引数で実行します。
 
-	'sqlpackage.exe /Action:Export /ssn:<server\_name> /sdn:<database\_name> /tf:<target\_file> /p:TableData=<schema\_name.table\_name> > <output\_file> 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:< server\_name > /sdn:< database\_name > /tf:< target\_file > /p:TableData=< schema\_name.table\_name > > < output\_file > 2>&1'
 
 	| 引数 | 説明 |
 	|---|---|
-	| <server\_name> | ソース サーバー名 |
-	| <database\_name> | 移行元データベースの名前 |
-	| <target\_file> | BACPAC ファイルのファイル名と場所 |
+	| < server\_name > | ソース サーバー名 |
+	| < database\_name > | 移行元データベースの名前 |
+	| < target\_file > | BACPAC ファイルのファイル名と場所 |
 	| <schema\_name.table\_name> | データをターゲット ファイルに出力するテーブル |
-	| <output\_file> | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
+	| < output\_file > | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
 
 	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数はゼロ テーブルの抽出をサポートしていません。1 つの小さなテーブルなど少なくとも 1 つのテーブルを指定する必要があります。< output\_file > には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
 

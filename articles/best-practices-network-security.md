@@ -467,7 +467,7 @@ ExpressRoute プライベート ピアリング ネットワーク接続を追�
 ## 参照
 ### 役に立つ Web サイトとドキュメント
 - Azure Resource Manager を使用した Azure へのアクセス
-- PowerShell を使用した Azure へのアクセス: [https://azure.microsoft.com/ja-jp/documentation/articles/powershell-install-configure/](./powershell-install-configure.md)
+- PowerShell を使用した Azure へのアクセス: [https://azure.microsoft.com/documentation/articles/powershell-install-configure/](./powershell-install-configure.md)
 - 仮想ネットワークのドキュメント: [https://azure.microsoft.com/documentation/services/virtual-network/](https://azure.microsoft.com/documentation/services/virtual-network/)
 - ネットワーク セキュリティ グループのドキュメント: [https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/](./virtual-network/virtual-networks-nsg.md)
 - ユーザー定義ルーティングのドキュメント: [https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/](./virtual-network/virtual-networks-udr-overview.md)

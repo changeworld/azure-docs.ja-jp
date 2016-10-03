@@ -29,7 +29,7 @@ Eclipse でデバッグする場合、このチュートリアルの完了時に
 * Java Developer Kit (JDK) v 1.8 以降。
 * Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for Eclipse。詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 * 作成して Azure App Service にデプロイした Dynamic Web Project。「[Eclipse で Azure 用の Hello World Web アプリを作成する]」の例を参照してください。
 

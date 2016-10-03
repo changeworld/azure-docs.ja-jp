@@ -23,7 +23,7 @@
 ## Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。この手順に必要な操作は次のとおりです。
 
-1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。
+1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。次のコードの変数を、実際の値に置き換えます。 
 
 	    from azure.storage.blob import BlobService
     	import tables
@@ -54,7 +54,7 @@
 
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
-1. 行と列の数を調べる
+1. 行と列の数を調べる 
 
 		print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 
@@ -110,7 +110,7 @@
 	
 次のように、Python を使用して特徴を生成できます。
 
-###<a name="blob-countfeature">インジケーター値ベースの特徴の生成</a>
+###<a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
 
 カテゴリの特徴は、次のように作成できます。
 

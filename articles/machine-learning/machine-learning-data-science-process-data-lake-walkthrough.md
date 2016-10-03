@@ -156,7 +156,7 @@ U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新�
 
 ### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
 
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**** と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
+Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** **と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
 
 	///Read in Trip data
 	@trip0 =

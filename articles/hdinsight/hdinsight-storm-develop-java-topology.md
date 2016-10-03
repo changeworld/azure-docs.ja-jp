@@ -84,7 +84,7 @@ Maven では、プロパティと呼ばれるプロジェクト レベルの値�
         <!--
         Storm 0.10.0 is for HDInsight 3.3 and 3.4.
         To find the version information for earlier HDInsight cluster
-        versions, see https://azure.microsoft.com/ja-JP/documentation/articles/hdinsight-component-versioning/
+        versions, see https://azure.microsoft.com/documentation/articles/hdinsight-component-versioning/
         -->
         <storm.version>0.10.0</storm.version>
     </properties>

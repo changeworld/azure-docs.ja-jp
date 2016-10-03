@@ -63,7 +63,7 @@
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- さらに、クイック スタートのスケルトンで、`passport-azure-ad` を使用しています。
+- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 

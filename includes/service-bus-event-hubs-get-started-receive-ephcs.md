@@ -89,7 +89,7 @@
 
 	このクラスは、**EventProcessorHost** から呼び出されて、Event Hub から受信したイベントを処理します。`SimpleEventProcessor` クラスは、ストップウォッチを使用して **EventProcessorHost** コンテキストで定期的にチェックポイント メソッドを呼び出します。これにより、受信側を再起動すると、処理の作業の 5 分以内に機能が失われます。
 
-9. **Program** クラスで、ファイルの先頭に次の `using` ステートメントを追加します。
+9. **Program** クラスで、 ファイルの先頭に次の `using` ステートメントを追加します。
 
 	```
 	using Microsoft.ServiceBus.Messaging;
@@ -124,7 +124,7 @@
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
-[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx

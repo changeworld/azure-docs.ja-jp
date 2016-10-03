@@ -29,7 +29,7 @@ IntelliJ でデバッグする場合、このチュートリアルの完了時�
 * Java Developer Kit (JDK) v 1.8 以降。
 * IntelliJ IDEA Ultimate エディション。<https://www.jetbrains.com/idea/download/index.html> からダウンロードできます。
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
-* Azure サブスクリプション。<https://azure.microsoft.com/ja-JP/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
 * Azure Toolkit for IntelliJ。詳細については、「[Azure Toolkit for IntelliJ のインストール]」を参照してください。
 * 作成して Azure App Service にデプロイした Dynamic Web Project。「[IntelliJ で Azure 用の Hello World Web アプリを作成する]」の例を参照してください。
 
