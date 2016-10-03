@@ -241,9 +241,9 @@ SQL Data Warehouse は、統計の自動作成または自動更新を行いま�
 この例では、新しい DimDate2 テーブルに単一列統計を作成します。
 
 ```sql
-CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
-CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
-CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
+CREATE STATISTICS [DateId] on [DimDate2] \([DateId]);
+CREATE STATISTICS [CalendarQuarter] on [DimDate2] \([CalendarQuarter]);
+CREATE STATISTICS [FiscalQuarter] on [DimDate2] \([FiscalQuarter]);
 ```
 
 詳細については、[統計][]に関するページを参照してください。

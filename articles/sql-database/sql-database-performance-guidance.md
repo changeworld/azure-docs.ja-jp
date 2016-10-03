@@ -306,7 +306,7 @@ Azure SQL Database には、データベース管理者が一般的なインデ�
 
 この例では、次のインデックスが提案されました。
 
-	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])  
+	CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] \([col2])  
 
 作成後、その同じ SELECT ステートメントが今度は、スキャンの代わりに、シークを使用する別の計画を選択します。次のクエリ プランのように、より効率的に実行されます。
 

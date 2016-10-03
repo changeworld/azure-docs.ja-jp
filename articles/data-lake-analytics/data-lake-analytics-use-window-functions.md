@@ -672,7 +672,7 @@ PERCENT\_RANK 関数で返された値は、バーティカル内のクエリの
 
 **構文**
 
-    [PERCENTILE_CONT | PERCENTILE_DISC] ( numeric_literal ) 
+    [PERCENTILE_CONT | PERCENTILE_DISC] \( numeric_literal ) 
         WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ] )
         OVER ( [ PARTITION BY <identifier,>…[n] ] ) AS <alias>
 

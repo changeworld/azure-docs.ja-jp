@@ -52,7 +52,7 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 
     ![テスト データ クエリ](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)
 
-3.	テスト ファイルを参照します。[github] (https://github.com/Azure/azure-stream-analytics/tree/master/Sample データ) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
+3.	テスト ファイルを参照します。[github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample データ) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
 
     ![クエリの入力](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)
 

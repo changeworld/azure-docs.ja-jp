@@ -211,7 +211,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 	<tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポート (export-dir) と同じフォルダーです。</td></tr>
 	</table>
 
-	Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+	Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 2. ANSI(ASCII) エンコードを使用して、ファイルを **C:\\Tutorials\\UseOozie\\workflow.xml** として保存します。(テキスト エディターにこのオプションがない場合はメモ帳を使用します。)
 
@@ -378,7 +378,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 ##Oozie プロジェクトを実行する
 
-現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight クラスター バージョン 2.1 の場合) を参照してください。
+現在、Azure PowerShell には Oozie ジョブを定義するコマンドレットが用意されていません。**Invoke-RestMethod** コマンドレットを使用して Oozie Web サービスを呼び出すことができます。Oozie Web サービス API は、HTTP REST JSON API です。Oozie Web サービス API の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight クラスター バージョン 2.1 の場合) を参照してください。
 
 **Oozie ジョブを送信するには**
 

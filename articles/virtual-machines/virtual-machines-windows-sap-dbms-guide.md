@@ -449,7 +449,7 @@ ___
 >
 > Linux でのソフトウェア RAID の構築がサポートされているのは、MDADM および LVM (論理ボリューム マネージャー) のみです。詳細については、次の記事を参照してください。
 >
-> * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid] (MDADM の場合)
+> * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid] \(MDADM の場合)
 > * [Azure で Linux VM の LVM を構成する][virtual-machines-linux-configure-lvm]
 
 

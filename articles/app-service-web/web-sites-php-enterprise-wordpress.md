@@ -49,7 +49,7 @@ Azure [Traffic Manager][trafficmanager] を使用すると、WordPress サイト
 
 各リージョン内でも、WordPress サイトは複数の Web Apps インスタンス間に展開されることがありますが、こうしたスケーリングはリージョンに固有です。つまり、トラフィックの多いリージョンと少ないリージョンでは、異なるスケーリングが実施されます。
 
-複数の MySQL データベースへのレプリケーションとルーティングは、ClearDB の [CDBR High Availability Router][cleardbscale] (前掲図を参照) または [MySQL Cluster CGE][cge] を使用して実行できます。
+複数の MySQL データベースへのレプリケーションとルーティングは、ClearDB の [CDBR High Availability Router][cleardbscale] \(前掲図を参照) または [MySQL Cluster CGE][cge] を使用して実行できます。
 
 ### メディア ストレージとキャッシュを用いる複数リージョンのデプロイ
 

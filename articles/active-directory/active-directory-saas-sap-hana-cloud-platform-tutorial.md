@@ -150,7 +150,7 @@
     >
     >b.スクリーンショットに表示されている **[プリンシパル属性]** の名前と値は、アプリケーションがどのように作成されているかに依存します。使用するアプリケーションによって、異なるマッピングが必要になる場合があります。
 
-13. Azure クラシック ポータルの **[SAP HANA Cloud Platform でのシングル サインオンの構成]** ダイアログ ページで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[完了]** をクリックします。
+13. Azure クラシック ポータルの **[SAP HANA Cloud Platform でのシングル サインオンの構成]** ダイアログ ページで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[完了]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC796933.png "Configure Single Sign-On")
   

@@ -198,7 +198,7 @@ ImageReference imageReference = new ImageReference(
 
 ## 仮想マシン イメージの一覧
 
-この記事の最終更新時点で使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を、次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] (Python) と [ListNodeAgentSkus][net_list_skus] (Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
+この記事の最終更新時点で使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を、次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] \(Python) と [ListNodeAgentSkus][net_list_skus] (Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
 
 > [AZURE.WARNING] 次の一覧は、いつでも変更される可能性があります。Batch ジョブを実行するときに、Batch API で使用できる **ListNodeAgentSkus** メソッドを常に使用して、互換性のある仮想マシンとノード エージェント SKU を一覧表示してから選択します。
 

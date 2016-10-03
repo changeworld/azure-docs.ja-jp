@@ -389,7 +389,7 @@ AP4000
 
 ### Description
 
-Azure Web サイトや Azure Mobile Services などのプロジェクトで [ConfigurationManager] (https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) クラスを使用すると、実行時の問題が発生しなくなります。ただし、すべての Azure クラウド アプリケーションの構成管理の統一された方法として、Cloud[ConfigurationManager] (https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) を使用することをお勧めします。
+Azure Web サイトや Azure Mobile Services などのプロジェクトで [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) クラスを使用すると、実行時の問題が発生しなくなります。ただし、すべての Azure クラウド アプリケーションの構成管理の統一された方法として、Cloud[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager(v=vs.110).aspx) を使用することをお勧めします。
 
 [Azure コード分析のフィードバック](http://go.microsoft.com/fwlink/?LinkId=403771)のページでアイデアやフィードバックを共有してください。
 
@@ -449,7 +449,7 @@ AP4001
 
 - ASP.NET vNext アプリケーションでは、configuration.json を使用して接続文字列を保存します。
 
-web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン] (https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Microsoft Azure Web Sites: How Application Strings and Connection Strings Work (Microsoft Azure Web サイト: アプリケーション文字列と接続文字列の機能)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
+web.config や app.config などの構成ファイルの使用方法については、「[ASP.NET Web 構成のガイドライン](https://msdn.microsoft.com/library/vstudio/ff400235(v=vs.100).aspx))」をご覧ください。Azure の環境変数の機能については、「[Microsoft Azure Web Sites: How Application Strings and Connection Strings Work (Microsoft Azure Web サイト: アプリケーション文字列と接続文字列の機能)](https://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)」をご覧ください。ソース管理での接続文字列の保存については、[ソース コード リポジトリに保存されているファイルに接続文字列などの機密情報を含めないようにする](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control)ことに関する記事をご覧ください。
 
 ## 診断構成ファイルを使用する
 

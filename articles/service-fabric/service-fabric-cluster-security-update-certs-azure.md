@@ -20,7 +20,7 @@
 
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために「[Service Fabric クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)」を読むことをお勧めします。先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
 
-Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。詳細については、「[Azure ポータルから Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)」または [Azure Resource Manager を使用した Azure クラスターの作成に関する記事] (service-fabric-cluster-creation-via-Resource Manager.md) を参照してください。Resource Manager によるデプロイ中にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
+Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。詳細については、「[Azure ポータルから Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)」または [Azure Resource Manager を使用した Azure クラスターの作成に関する記事](service-fabric-cluster-creation-via-Resource Manager.md) を参照してください。Resource Manager によるデプロイ中にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
 >[AZURE.NOTE] セキュリティ保護されたクラスターでは、常に (失効も期限切れもしていない) 有効な証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしなかった場合、クラスターの機能が停止します。有効なすべての証明書が期限切れになる 90 日前に、システムは、警告トレースとノードの正常性に関する警告イベントを生成します。現時点では、この件に関して Service Fabric が電子メールやその他の通知を送信することはありません。
 

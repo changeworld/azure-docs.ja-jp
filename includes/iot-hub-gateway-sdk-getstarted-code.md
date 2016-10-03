@@ -195,7 +195,7 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 Gateway SDK の使用方法については、以下を参照してください。
 
-- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] (IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
+- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] \(IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
 - GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
 <!-- Links -->
