@@ -67,6 +67,13 @@ public static void Run(string myQueueItem, TraceWriter log)
 }
 ```
 
+#### Service Bus キュー メッセージを処理する F# コードの例
+
+```fsharp
+let Run(myQueueItem: string, log: TraceWriter) =
+    log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
+```
+
 #### Service Bus キュー メッセージを処理する Node.js コードの例
 
 ```javascript
@@ -168,6 +175,15 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 }
 ```
 
+#### Service Bus キュー メッセージを作成する F# コードの例
+
+```fsharp
+let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
+    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
+    log.Info(message)
+    outputSbQueue = message
+```
+
 #### Service Bus キュー メッセージを作成する Node.js コードの例
 
 ```javascript
@@ -189,4 +205,4 @@ module.exports = function (context, myTimer) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

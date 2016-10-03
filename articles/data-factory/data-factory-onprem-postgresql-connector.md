@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="09/20/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して PostgreSQL からデータを移動する
@@ -22,7 +22,8 @@
 
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの PostgreSQL ソースへの接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
-**注:** Azure IaaS VM でホストされている場合でも、PostgreSQL への接続にゲートウェイを利用する必要があります。クラウドでホストされている PostgreSQL のインスタンスに接続しようとしている場合は、IaaS VM でゲートウェイ インスタンスをインストールすることもできます。
+> [AZURE.NOTE]
+PostgreSQL データベースが Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 
 Data Factory は、PostgreSQL から他のデータ ストアへのデータ移動をサポートしますが、他のデータ ストアから PostgreSQL へのデータ移動はサポートしません。
 
@@ -51,7 +52,7 @@ PostgreSQL データベースから、サポートされているシンク デ�
 
 このサンプルは PostgreSQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定します。
+最初の手順として、データ管理ゲートウェイを設定します。設定手順は、[オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事に記載されています。
 
 **PostgreSQL のリンクされたサービス:**
 
@@ -87,7 +88,7 @@ PostgreSQL データベースから、サポートされているシンク デ�
 
 このサンプルでは、PostgreSQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
 
-「“external”: true」を設定して externalData ポリシーを指定すると、このテーブルがData Factory に対して外部にあるテーブルで、Data Factory のアクティビティでは生成されていないことが Data Factory に通知されます。
+"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 	{
 	    "name": "PostgreSqlDataSet",
@@ -172,7 +173,7 @@ PostgreSQL データベースから、サポートされているシンク デ�
 
 **コピー アクティビティ:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、PostgreSQL データベースの public.usstates テーブルからデータを選択します。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、PostgreSQL データベースの public.usstates テーブルからデータを選択します。
 	
 	{
 	    "name": "CopyPostgreSqlToBlob",
@@ -226,7 +227,7 @@ PostgreSQL データベースから、サポートされているシンク デ�
 type | type プロパティを **OnPremisesPostgreSql** に設定する必要があります | はい
 server | PostgreSQL サーバーの名前です。 | はい 
 database | PostgreSQL データベースの名前です。 | はい 
-schema | データベース内のスキーマの名前です。スキーマ名は、大文字と小文字を区別します。 | いいえ 
+schema | データベース内のスキーマの名前です。スキーマ名は、大文字と小文字が区別されます。 | なし 
 authenticationType | PostgreSQL データベースへの接続に使用される認証の種類です。Anonymous、Basic、Windows のいずれかの値になります。 | はい 
 username | Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 | いいえ 
 パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | いいえ 
@@ -236,25 +237,25 @@ gatewayName | Data Factory サービスが、オンプレミスの PostgreSQL �
 
 ## PostgreSQL データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**RelationalTable** 型のデータセット (PostgreSQL データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。tableName は、大文字と小文字を区別します。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
+tableName | リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。tableName は、大文字と小文字が区別されます。 | いいえ ( **RelationalSource** の **クエリ** が指定されている場合) 
 
 ## PostgreSQL のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-コピー アクティビティで、source の種類が **RelationalSource** (PostgreSQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
+source の種類が **RelationalSource** (PostgreSQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**dataset**の **tableName** が指定されている場合)
+query | カスタム クエリを使用してデータを読み取ります。 | SQL クエリ文字列。例: "query": "select * from "MySchema"."MyTable"" | いいえ (**データセット**の **tableName** が指定されている場合)
 
 > [AZURE.NOTE] スキーマとテーブルの名前は、大文字と小文字を区別します。クエリ内では、"" (二重引用符) で囲む必要があります。
 
@@ -266,7 +267,7 @@ query | カスタム クエリを使用してデータを読み取ります。 |
 
 ## PostgreSQL の型マッピング
 
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 1. .NET 型からネイティブの sink 型に変換する
@@ -324,4 +325,4 @@ text | | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,8 +3,8 @@
     description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。"
     documentationCenter=".net"
     services="storage"
-    authors="tamram"
-    manager="carmonm"
+    authors="dineshmurthy"
+    manager="jahogg"
     editor="tysonn"/>
 <tags
     ms.service="storage"
@@ -12,8 +12,8 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/24/2016"
-    ms.author="dineshm"/>
+    ms.date="09/20/2016"
+    ms.author="dineshm;tamram"/>
 
 # C++ での Azure Storage のリソース一覧の取得
 
@@ -184,4 +184,4 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 -	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -71,4 +71,4 @@ Azure Resource Manager コマンドレット、コマンド ライン ツール�
 
 [ロード バランサーの TCP アイドル タイムアウト設定](load-balancer-tcp-idle-timeout.md)を管理する方法を確認します。これは、ロード バランサーの背後にあるサーバーに対してアプリケーションの接続を維持する必要がある場合に重要となります。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

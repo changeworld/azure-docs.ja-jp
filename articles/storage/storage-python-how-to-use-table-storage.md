@@ -3,8 +3,8 @@
 	description="NoSQL データ ストアの Azure Table Storage を使用して、構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="python"
-	authors="emgerner-msft"
-	manager="wpickett"
+	authors="tamram"
+	manager="carmonm"
 	editor="tysonn"/>
 
 <tags
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="07/26/2016"
-	ms.author="emgerner"/>
+	ms.date="09/20/2016"
+	ms.author="gusapost;tamram"/>
 
 
 # Python から Table ストレージを使用する方法
 
 [AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## 概要
+## Overview
 
 このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で作成され、[Microsoft Azure Storage SDK for Python] を使用しています。紹介するシナリオは、テーブルのエンティティの挿入とクエリ実行のほか、テーブルの作成と削除などがあります。
 
@@ -29,7 +29,7 @@
 
 [AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## テーブルの作成
+## テーブルを作成する
 
 **TableService** オブジェクトを使用して、テーブル サービスを操作できます。次のコードでは、**TableService** オブジェクトを作成します。プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、コードを追加します。
 
@@ -149,4 +149,4 @@
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016"
-	ms.author="fashah;bradsev" />
+	ms.date="09/14/2016"
+	ms.author="bradsev" />
 
 # Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
@@ -22,7 +22,7 @@
 
 Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
 
-次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できる他のターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
@@ -35,11 +35,11 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 
 ## <a name="prereqs"></a>前提条件
-ここに記載されているこの手順には次のものが必要です。
+ここに記載されている手順には次のものが必要です。
 
 * **Azure サブスクリプション**。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-* **Azure ストレージ アカウント**。このチュートリアルのデータを格納するには、Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成した後は、ストレージにアクセスするために使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」をご覧ください。
-* **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、「[最初の Azure SQL データベースを作成する](../sql-database/sql-database-get-started.md)」をご覧ください。
+* **Azure ストレージ アカウント**。このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+* **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../sql-database/sql-database-get-started.md)に関する記事をご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 **データ**: 移行プロセスは、[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。NYC タクシー データセットには乗車データと料金についての情報が含まれています。投稿で説明されているように、NYC タクシー データセットは Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)で入手できます。これらのファイルのサンプルと説明については、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」をご覧ください。
@@ -65,7 +65,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 3. [データベースのバックアップと復元](#db-migration)
 4. [Azure Data Factory](#adf)
 
-最初の 3 つの手順は、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」の対応する手順とよく似ています。そのトピックの該当するセクションへのリンクを以下に示します。
+最初の 3 つの手順は、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」の対応する手順とよく似ています。以降の説明には、そのトピックの該当するセクションへのリンクが含まれています。
 
 ###<a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
@@ -81,8 +81,8 @@ SQL Database 移行ウィザードを使用する手順は、「[SQL Database �
 
 ###<a name="adf"></a>Azure Data Factory
 
-Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する手順は、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)」に記載されています。このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure Blob Storage 経由で Azure SQL Database にデータを移動する方法が示されています。
+Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する手順は、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)」に記載されています。このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージ経由で Azure SQL Database にデータを移動する方法が示されています。
 
-オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、継続的にデータを移行する必要がある場合、および移行の過程で、データを処理する場合や、データに変更を加えたりビジネス ロジックを付加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
+オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、データを継続的に移行する必要がある場合、移行時にデータを処理する場合、移行時にデータを変更したり、ビジネス ロジックを追加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

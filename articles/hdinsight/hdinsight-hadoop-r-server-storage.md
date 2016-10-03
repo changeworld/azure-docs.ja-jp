@@ -5,7 +5,7 @@
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
-   manager="paulettem"
+   manager="jhubbard"
    editor="cgronlun"
 />
 
@@ -125,7 +125,7 @@ Data Lake Store へのアクセスを後から追加するには、Azure ポー�
 ![Create Data Lake store Service Principle 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
 
 ## Data Lake Store と R Server の使用
-Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から adl://**** に変わることです。
+Data Lake Store へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の R Server で Store を使用できます。唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 ````
 # Point to the ADL store (e.g. ADLtest)
@@ -190,4 +190,4 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 - [HDInsight Premium への RStudio Server の追加](hdinsight-hadoop-r-server-install-r-studio.md)
 - [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

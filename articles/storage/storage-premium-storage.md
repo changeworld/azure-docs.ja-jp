@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter=""
 	authors="aungoo-msft"
-	manager=""
+	manager="tadb"
 	editor="tysonn"/>
 
 <tags
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/24/2016"
-	ms.author="aungoo-msft"/>
+	ms.date="09/19/2016"
+	ms.author="aungoo;robinsh"/>
 
 
 # Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ
 
-## 概要
+## Overview
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage を使用する仮想マシン (VM) では、ソリッド ステート ドライブ (SSD) にデータを格納します。アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。
 
@@ -35,7 +35,7 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 ## Premium Storage の機能
 
-**Premium Storage ディスク**: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。Premium Storage の使用時に、それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の 3 つのディスク サイズから選択できます。アプリケーション要件に応じて、これらのディスクの 1 つ以上を DS、DSv2 または GS シリーズ VM に接続できます。[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)に関する次のセクションで、仕様についてさらに詳しく説明します。
+**Premium Storage ディスク**: Azure Premium Storage は、Premium Storage でサポートされる DS、DSv2、GS、または Fs シリーズ Azure VM に接続可能な VM ディスクをサポートしています。Premium Storage の使用時に、それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の 3 つのディスク サイズから選択できます。アプリケーション要件に応じて、これらのディスクの 1 つ以上を Premium Storage でサポートされる VM に接続できます。[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)に関する次のセクションで、仕様についてさらに詳しく説明します。
 
 **Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。Premium Storage アカウントに配置されている他のオブジェクトはページ BLOB であり、サポートされているプロビジョニングされたサイズのいずれかにスナップされます。したがって、Premium Storage アカウントは小さな BLOB を格納するためのものではありません。
 
@@ -43,41 +43,41 @@ Azure Premium Storage を使用するには、[無料試用版](https://azure.mi
 
 **Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「[スナップショットと Copy Blob](#snapshots-and-copy-blob)」を参照してください。
 
-ストレージ アカウントは、オペレーティング システム (OS) とデータ ディスクのコンテナーとして使用されます。Azure DS、DSv2 または GS VM を作成して Azure Premium Storage アカウントを選択すると、オペレーティング システムとデータ ディスクはそのストレージ アカウントに格納されます。
+ストレージ アカウントは、オペレーティング システム (OS) とデータ ディスクのコンテナーとして使用されます。Azure DS、DSv2、GS、または Fs VM を作成して Azure Premium Storage アカウントを選択すると、オペレーティング システムとデータ ディスクはそのストレージ アカウントに格納されます。
 
 ディスク向け Premium Storage は次のいずれかの方法で使用できます。
-- まず、Premium Storage アカウントを作成します。次に、新しい DS、DSv2 または GS VM の作成時に、Storage の構成設定でプレミアム ストレージ アカウントを選択します。または
-- DS、DSv2 または GS VM の作成時に、Storage の構成設定に新しいプレミアム ストレージ アカウントを作成するか、Azure ポータルで既定のプレミアム ストレージ アカウントを自動作成します。
+- まず、Premium Storage アカウントを作成します。次に、新しい DS、DSv2、GS、または Fs VM の作成時に、Storage の構成設定で Premium Storage アカウントを選択します。または
+- DS、DSv2、GS、Fs VM の作成時に、Storage の構成設定に新しい Premium Storage アカウントを作成するか、Azure Portal で既定の Premium Storage アカウントを自動作成します。
 
 詳細な手順については、この記事の以降の[クイック スタート](#quick-start)を参照してください。
 
 >[AZURE.NOTE] Premium Storage のアカウントをカスタム ドメイン名にマッピングすることはできません。
 
-## DS、DSv2 および GS シリーズ VM
+## Premium Storage でサポートされる VM
 
-Premium Storage は、DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines (VM) をサポートしています。DS シリーズ、DSv2 シリーズまたは GS シリーズの VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。DS シリーズや GS シリーズ以外の VM では Premium Storage ディスクを使用できません。
+Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズおよび Fs シリーズの Azure Virtual Machines (VM) をサポートしています。Premium Storage でサポートされる VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。Premium Storage に互換性のない VM シリーズでは Premium Storage ディスクを使用できません。
 
 Windows VM で使用できる Azure VM の種類やサイズについては、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。Linux VM の VM の種類やサイズについては、「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
-次に、DS、DSv2 および GS シリーズ VM の機能をいくつか紹介します。
+次に、DS、DSv2、GS、および Fs シリーズ VM の機能をいくつか紹介します。
 
 **Cloud Service**: DS シリーズ VM は DS シリーズ VM のみを含むクラウド サービスに追加できます。DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加しないでください。既存の VHD を DS シリーズ VM のみを実行する新しいクラウド サービスに移行できます。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 
-**オペレーティング システム ディスク**: DS シリーズ、DSv2 シリーズおよび GS シリーズの Azure Virtual Machines で使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。最適なエクスペリエンスを実現するために、Premium Storage ベースの OS ディスクを使用することをお勧めします。
+**オペレーティング システム ディスク**: Premium Storage でサポートされる Azure 仮想マシンで使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。最適なエクスペリエンスを実現するために、Premium Storage ベースの OS ディスクを使用することをお勧めします。
 
-**データ ディスク**: 同じ DS シリーズの VM、DSv2 シリーズの VM または GS シリーズの VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。Premium Storage を使用すると、DS、DSv2 または GS シリーズの VM をプロビジョニングし、複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。
+**データ ディスク**: 同じ Premium Storage でサポートされる VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。Premium Storage を使用すると、Premium Storage でサポートされる VM をプロビジョニングし、複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。
 
 > [AZURE.NOTE] [記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。ただし、8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。PowerShell の [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) コマンドレットの *NumberOfColumns* パラメーターを使用して、仮想ディスクが使用する列数を指定できます。詳細については、[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)に関するページおよび「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
 
-**キャッシュ**: DS、DSv2 および GS シリーズ VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンス以上の高いレベルのスループットと待機時間を実現できます。Premium Storage ディスクで ReadOnly、ReadWrite、None などのディスク キャッシュ ポリシーを構成できます。既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。たとえば、SQL Server データ ファイルなどの読み取り負荷の高いデータ ディスクまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
+**キャッシュ**: Premium Storage でサポートされる VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンス以上の高いレベルのスループットと待機時間を実現できます。Premium Storage ディスクで ReadOnly、ReadWrite、None などのディスク キャッシュ ポリシーを構成できます。既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。たとえば、SQL Server データ ファイルなどの読み取り負荷の高いデータ ディスクまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
 
 **分析**: Premium Storage アカウントを使用して VM のパフォーマンスを分析するには、Azure ポータルで Azure VM 診断を有効にします。詳細については、「[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)」をご覧ください。ディスクのパフォーマンスを確認するには、オペレーティング システム ベースのツール (Windows VM 向け [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx)、Linux VM 向け [IOSTAT](http://linux.die.net/man/1/iostat) など) を使用します。
 
-**VM のスケール制限とパフォーマンス**: 各 DS シリーズ、DSv2 シリーズおよび GS シリーズの VM サイズにはスケール制限や、IOPS、帯域幅、VM に接続できるディスク数に関するパフォーマンス仕様があります。DS、DSv2 または GS シリーズ VM によりプレミアム ストレージ ディスクを使用するときは、ディスク トラフィックをスムーズにするために VM に十分な IOPS と帯域幅があることを確認してください。たとえば、STANDARD\_DS1 VM では、Premium Storage ディスク トラフィック専用の帯域幅は 32 MB/秒です。P10 プレミアム ディスクでは、100 MB/秒の帯域幅が提供されます。この VM に接続された Premium Storage ディスクが P10 の場合も、32 MB/秒が上限となり、P10 ディスクのスループットの上限である 100 MB に達することはありません。
+**VM のスケール制限とパフォーマンス**: 各 Premium Storage でサポートされる VM サイズにはスケール制限や、IOPS、帯域幅、VM ごとに接続できるディスク数に関するパフォーマンス仕様があります。Premium Storage でサポートされる VM で Premium Storage ディスクを使用するときは、ディスク トラフィックを円滑にするために VM に十分な IOPS と帯域幅があることを確認してください。たとえば、STANDARD\_DS1 VM では、Premium Storage ディスク トラフィック専用の帯域幅は 32 MB/秒です。P10 プレミアム ディスクでは、100 MB/秒の帯域幅が提供されます。この VM に接続された Premium Storage ディスクが P10 の場合も、32 MB/秒が上限となり、P10 ディスクのスループットの上限である 100 MB に達することはありません。
 
 現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
 
-DS シリーズ、DSv2 シリーズおよび GS シリーズの VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」または「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+Premium Storage でサポートされる VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」または「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
 Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」のセクションにある表を参照してください。
 
@@ -147,7 +147,7 @@ Premium Storage アカウントにディスクをプロビジョニングする�
 </tbody>
 </table>
 
-> [AZURE.NOTE] この記事の「[DS、DSv2 および GS シリーズ VM](#ds-dsv2-and-gs-series-vms)」で説明したように、VM の帯域幅が、ディスク トラフィックをスムーズにするために十分な大きさであることを確認してください。このとおりでない場合は、ディスクのスループットと IOPS が VM の上限の制約を受けて低くなり、前述の表で示したディスクの上限は達成できなくなります。
+> [AZURE.NOTE] この記事の「[Premium Storage でサポートされる VM](#ds-dsv2-and-gs-series-vms)」で説明したように、VM の帯域幅が、ディスク トラフィックを処理するのに十分な大きさであることを確認してください。このとおりでない場合は、ディスクのスループットと IOPS が VM の上限の制約を受けて低くなり、前述の表で示したディスクの上限は達成できなくなります。
 
 Premium Storage の拡張性とパフォーマンスの目標についか知っておく必要のある重要事項をいくつか説明します。
 
@@ -185,7 +185,7 @@ Premium Storage の拡張性とパフォーマンスの目標についか知っ�
 </tbody>
 </table>
 
-- **キャッシュ ヒット**: キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。たとえば、DS シリーズ VM、DSv2 シリーズまたは GS シリーズ VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。GS シリーズ VM の制限は、IOPS が 5000 で、キャッシュとローカル SSD の IO がコアあたり 50 MB/秒です。
+- **キャッシュ ヒット**: キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。たとえば、Premium Storage でサポートされる VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。GS シリーズ VM の制限は、IOPS が 5000 で、キャッシュとローカル SSD の IO がコアあたり 50 MB/秒です。
 
 ## 調整
 アプリケーションの IOPS またはスループットが Premium Storage ディスクの上限を超えた場合や、VM の全ディスクのディスク トラフィック合計がその VM でのディスク帯域幅上限を超えた場合に、調整 (スロットル) が行われることがあります。調整を回避するために、プロビジョニングしたディスクの拡張性とパフォーマンスのターゲット、および VM で使用可能なディスク帯域幅に基づいて、ディスクの保留中の I/O 要求の数を制限することをお勧めします。
@@ -357,7 +357,7 @@ Premium Storage を使用するときには、課金に関する次の考慮事�
 
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
-Premium Storage、DS シリーズの VM、DSv2 シリーズの VM および GS シリーズの VM の料金についての詳細は、次の項目を参照してください。
+Premium Storage と Premium Storage でサポートされる VM の料金についての詳細は、次の項目を参照してください。
 
 - [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
 - [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
@@ -391,7 +391,7 @@ Premium Storage を使用した仮想マシンは、Azure Backup を使用して
 	>  
 	> ストレージ アカウント名は Azure 内で一意である必要があります。選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
 
-4. 使用するデプロイ モデル (**[Resource Manager]** または **[クラシック]**) を指定します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
+4. 使用するデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
 5. ストレージ アカウントのパフォーマンス レベルとして **[Premium]** を指定します。
 
@@ -407,11 +407,11 @@ Premium Storage を使用した仮想マシンは、Azure Backup を使用して
 
 #### II.Azure ポータルで Azure 仮想マシンを作成する
 
-Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM を作成する必要があります。最初に、[Azure ポータルでの Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの手順に従って、DS、DSv2、または GS 仮想マシンを新しく作成します。
+Premium Storage を使用するには、Premium Storage でサポートされる VM を作成する必要があります。[Azure Portal での Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの手順に従って、DS、DSv2、GS または Fs 仮想マシンを新しく作成します。
 
 #### III.Azure ポータルで Premium Storage データ ディスクを接続する
 
-1. Azure ポータルで新規または既存の DS、DSv2 または GS VM を探します。
+1. Azure Portal で新規または既存の DS、DSv2、GS または Fs VM を探します。
 2. VM の **[すべての設定]** で、**[ディスク]** に移動し、**[新しいディスクの接続]** をクリックします。
 3. データ ディスクの名前を入力し、**[種類]** として **[Premium]** を選択します。**[サイズ]** と **[ホスト キャッシュ]** で目的の設定を選択します。
 
@@ -421,9 +421,11 @@ Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM �
 
 #### IV.Azure ポータルでディスク キャッシュ ポリシーを変更する
 
-1. Azure ポータルで新規または既存の DS、DSv2 または GS VM を探します。
+1. Azure Portal で新規または既存の DS、DSv2、GS または Fs VM を探します。
 2. VM の [すべての設定] で、[ディスク] に移動し、変更するディスクをクリックします。
 3. ホスト キャッシュ オプションを目的の値 (None、ReadOnly、ReadWrite) に変更します。
+
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
 ### Premium Storage を使用する Azure 仮想マシンを Azure PowerShell で作成する
 
@@ -454,7 +456,7 @@ Premium Storage を使用するには、DS、DSv2 または GS シリーズ VM �
 
 #### III.Azure PowerShell で Premium Storage データ ディスクを接続する
 
-VM のディスク領域を増やしたい場合は、VM の作成後に、コンソール ウィンドウで次の PowerShell コマンドレットを実行して既存の DS シリーズ、DSv2 シリーズまたは GS シリーズの VM に新しいデータ ディスクを接続します。
+VM のディスク領域を増やしたい場合は、VM の作成後に、コンソール ウィンドウで次の PowerShell コマンドレットを実行して既存の Premium Storage でサポートされる VM に新しいデータ ディスクをアタッチします。
 
     	$storageAccount = "yourpremiumaccount"
     	$vmName ="yourVM"
@@ -469,6 +471,8 @@ VM のディスク領域を増やしたい場合は、VM の作成後に、コ�
 ディスク キャッシュ ポリシーを更新するには、接続されているデータ ディスクの LUN 番号を書き留めます。次のコマンドを実行して、LUN 番号 2 に接続されているデータ ディスクを ReadOnly に変更します。
 
 		Get-AzureVM "myservice" -name "MyVM" | Set-AzureDataDisk -LUN 2 -HostCaching ReadOnly | Update-AzureVM
+
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
 ### Premium Storage を使用する Azure 仮想マシンを Azure コマンド ライン インターフェイスで作成する
 
@@ -507,15 +511,17 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 		azure vm disk attach --help
 
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
+
 ## FAQ
 
-1. **Premium および Standard データ ディスクの両方を DS、DSv2 または GS シリーズ VM に接続できますか?**
+1. **Premium および Standard データ ディスクの両方を Premium Storage でサポートされる VM に接続できますか?**
 
-	はい。Premium Standard データ ディスクの両方を DS、DSv2 または GS シリーズ VM に接続できます。
+	はい。Premium および Standard データ ディスクの両方を Premium Storage でサポートされる VM に接続できます。
 
-2. **Premium および Standard データ ディスクの両方を D、Dv2 または G シリーズ VM に接続できますか?**
+2. **Premium および Standard データ ディスクの両方を D、Dv2、G または F シリーズ VM に接続できますか?**
 
-	いいえ。Standard データ ディスクを接続できるのは、DS、DSv2 または GS シリーズ以外のすべての VM です。
+	いいえ。Standard データ ディスクを接続できるのは、Premium Storage でサポートされていないシリーズの VM です。
 
 3. **Premium データ ディスクをサイズが 80 GB の既存の VHD から作成した場合、どのくらいの料金がかかりますか?**
 
@@ -525,17 +531,17 @@ Azure CLI を使用して、いずれかのディスクのキャッシュ ポリ
 
 	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
-5. **DS、DSv2 または GS シリーズ VM のブート診断はどこに保存できますか?**
+5. **Premium Storage でサポートされる VM のブート診断はどこに保存できますか?**
 
-	Standard ストレージ アカウントを作成して、DS、DSv2 または GS シリーズ VM のブート診断を保存できます。
+	Standard ストレージ アカウントを作成して、Premium Storage でサポートされるシリーズの VM のブート診断を保存できます。
 
 6. **ディスク キャッシュから入手できる IOPS 数とスループットを教えてください。**
 
 	DS シリーズのキャッシュとローカル SSD の制限の合計は、コアあたり 4000 IOPS、またコアあたり 33 MB/秒 です。GS シリーズでは、コアあたり 5000 IOP、コアあたり 50 MB/秒です。
 
-7. **DS、DSv2 または GS シリーズ VM のローカル SSD とは何ですか?**
+7. **Premium Storage でサポートされるシリーズの VM のローカル SSD とは何ですか?**
 
-	ローカル SSD とは、DS、DSv2 または GS シリーズ VM に含まれている一時的なストレージです。この一時ストレージに追加の料金は発生しません。これは Azure Blob Storage に永続化されないため、アプリケーション データの保存にこの一時的なストレージを使用しないことをお勧めします。
+	ローカル SSD とは、Premium Storage でサポートされるシリーズの VM に含まれている一時的なストレージです。この一時ストレージに追加の料金は発生しません。これは Azure Blob Storage に永続化されないため、アプリケーション データの保存にこの一時的なストレージを使用しないことをお勧めします。
 
 8. **Standard Storage アカウントを Premium Storage アカウントに変換できますか?**
 
@@ -565,4 +571,4 @@ Azure Premium Storage の詳細については、以下の記事を参照して�
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 
@@ -141,7 +141,7 @@ $scope.logout = function () {
 <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
 ```
 
-ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。このアプリは、ユーザーの認証処理を行い、OAuth 2.0 を使用してバックエンドを安全に呼び出し、ユーザーについての基本情報を取得することができます。テナントに一連のユーザーを設定します (設定していない場合)。To Do List SPA を実行し、それらのユーザーの一人としてサインインします。タスクをユーザーの To Do List に追加し、サインアウトして、再びサインインします。
+お疲れさまでした。 Azure AD に統合されたシングル ページ アプリが完成しました。このアプリは、ユーザーの認証処理を行い、OAuth 2.0 を使用してバックエンドを安全に呼び出し、ユーザーについての基本情報を取得することができます。テナントに一連のユーザーを設定します (設定していない場合)。To Do List SPA を実行し、それらのユーザーの一人としてサインインします。タスクをユーザーの To Do List に追加し、サインアウトして、再びサインインします。
 
 adal.js を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。
 
@@ -151,4 +151,4 @@ adal.js を使用することにより、これらの共通 ID 機能のすべ�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

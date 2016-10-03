@@ -5,7 +5,7 @@
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -52,7 +52,7 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 
     ![テスト データ クエリ](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)
 
-3.	テスト ファイルを参照します。[github] (https://github.com/Azure/azure-stream-analytics/tree/master/Sample データ) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
+3.	テスト ファイルを参照します。[github] \(https://github.com/Azure/azure-stream-analytics/tree/master/Sample データ) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
 
     ![クエリの入力](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)
 
@@ -71,4 +71,4 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

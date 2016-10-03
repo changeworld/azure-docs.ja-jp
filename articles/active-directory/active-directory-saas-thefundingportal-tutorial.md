@@ -219,7 +219,7 @@ The Funding Portal アプリケーションでは、SAML アサーションに�
 
 ### The Funding Portal テスト ユーザーの作成
 
-このセクションでは、The Funding Portal で Britta Simon というユーザーを作成します。このセクションでは、The Funding Portal で Britta Simon というユーザーを作成します。The Funding Portal に Britta Simon を追加する方法がわからない場合は、The Funding Portal サポート チームと協力してテスト ユーザーを追加し、SSO を有効にしてください。連絡先は info@regenteducation.com です。
+このセクションでは、The Funding Portal で Britta Simon というユーザーを作成します。The Funding Portal に Britta Simon を追加する方法がわからない場合は、The Funding Portal サポート チームと協力してテスト ユーザーを追加し、SSO を有効にしてください。連絡先は info@regenteducation.com です。
 
 ### Azure AD テスト ユーザーの割り当て
 
@@ -282,4 +282,4 @@ The Funding Portal アプリケーションでは、SAML アサーションに�
 [204]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

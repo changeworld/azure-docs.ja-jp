@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="07/07/2016" 
+	ms.date="09/20/2016" 
 	ms.author="robmcm;asirveda"/>
 
 # Azure Toolkit for IntelliJ の新機能
@@ -56,7 +56,7 @@ Azure Toolkits for Java IDE の詳細については、次のリンクをご覧�
   - [IntelliJ で Azure 用の Hello World Web アプリを作成する]
   - *Azure Toolkit for IntelliJ の新機能 (この記事)*
 
-Java での Azure の使用方法の詳細については、「[Azure Java Developer Center]」を参照してください。
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
 
@@ -69,8 +69,8 @@ Java での Azure の使用方法の詳細については、「[Azure Java Devel
 [Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
 [What's New in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 
 [IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

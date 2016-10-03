@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/18/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin" />
 
 # Azure Active Directory Graph API
@@ -36,7 +36,7 @@ Azure Active Directory Graph API を使用すると、REST API エンドポイ�
 Azure Active Directory Graph API の使用を開始するには、「[Graph API クイック スタート ガイド](active-directory-graph-api-quickstart.md)」または[対話型の Graph API リファレンス ドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)を参照してください。
 
 
-## 特徴
+## Features (機能)
 
 Graph API には、次の機能が用意されています。
 
@@ -73,4 +73,4 @@ Graph API により、多くのアプリケーション シナリオを実現で
 
 [Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!---HONumber=AcomDC_0921_2016-->

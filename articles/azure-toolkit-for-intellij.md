@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="07/07/2016" 
+	ms.date="09/20/2016" 
 	ms.author="robmcm;asirveda"/>
 
 # Azure Toolkit for IntelliJ
@@ -70,4 +70,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [IntelliJ で Azure の Java Web アプリをデバッグする]: ./app-service-web/app-service-web-debug-java-web-app-in-intellij.md
 [HDInsight Tools Plugin for IntelliJ]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

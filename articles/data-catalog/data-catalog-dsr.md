@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="09/13/2016"
+   ms.date="09/15/2016"
    ms.author="trhabe"/>
 
 # Azure Data Catalog でサポートされるデータ ソース
@@ -269,7 +269,7 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
       <td>✓</td>
       <td>✓</td>
       <td><font size=2>PowerBI</font></td>
-      <td><font size=2></font></td>
+      <td><font size=2>計算ビューと分析ビューのみ。属性ビューはサポートされていません。</font></td>
     </tr>
 
     <tr>
@@ -1166,4 +1166,4 @@ Azure Data Catalog のユーザーは、ワンクリック登録ツールのパ�
     </tr>
 </table>
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

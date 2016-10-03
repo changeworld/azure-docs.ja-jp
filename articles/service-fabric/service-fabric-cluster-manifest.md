@@ -27,8 +27,8 @@
 次の JSON スニペットに示すように、ここでは、クラスター固有の一般的な構成について説明します。
 
     "name": "SampleCluster",
-    "clusterManifestVersion": "1.0.0",
-    "apiVersion": "2015-01-01-alpha",
+    "clusterConfigurationVersion": "1.0.0",
+    "apiVersion": "2016-09-26",
 
 **name** 変数にフレンドリ名を割り当てることで、Service Fabric クラスターにフレンドリ名を付けることができます。セットアップに従って、**clusterManifestVersion** を変更できます。Service Fabric 構成をアップグレードする前に、これを更新する必要があります。**apiVersion** は既定値のままにしておくこともできます。
 
@@ -68,24 +68,30 @@ Service Fabric クラスターには、少なくとも 3 つのノードが必�
 |upgradeDomain|アップグレード ドメインは、Service Fabric のアップグレードのためにほぼ同時にシャットダウンされる一連のノードを表します。アップグレード ドメインは物理的な要件によって制限されないため、どのノードをどのアップグレード ドメインに割り当てるかを選択できます。| 
 
 
-## 診断構成
-次のスニペットに示すように、**diagnosticsFileShare** セクションを使用して、ノードおよびクラスターの障害の診断とトラブルシューティングを可能にするパラメーターを構成できます。
-
-    "diagnosticsFileShare": {
-        "etlReadIntervalInMinutes": "5",
-        "uploadIntervalInMinutes": "10",
-        "dataDeletionAgeInDays": "7",
-        "etwStoreConnectionString": "file:c:\ProgramData\SF\FileshareETW",
-        "crashDumpConnectionString": "file:c:\ProgramData\SF\FileshareCrashDump",
-        "perfCtrConnectionString": "file:c:\ProgramData\SF\FilesharePerfCtr"
-    },
-
-これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。ETW トレース ログの詳細については、「[Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx)」および「[ETW トレース](https://msdn.microsoft.com/library/ms751538.aspx)」をご覧ください。Service Fabric ノードとクラスターの[クラッシュ ダンプ](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)は、**crashDumpConnectionString** フォルダーに送信できます。クラスターの[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)は、コンピューターの **perfCtrConnectionString** フォルダーに送信できます。
-
-
 ## クラスターの **properties**
 
 ClusterConfig.JSON の **properties** セクションは、以下のようにクラスターの構成に使用します。
+
+### **diagnosticsStore**
+次のスニペットに示すように、**diagnosticsStore** セクションを使用して、ノードおよびクラスターの障害の診断とトラブルシューティングを可能にするパラメーターを構成できます。
+
+    "diagnosticsStore": {
+        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+        "dataDeletionAgeInDays": "7",
+        "storeType": "FileShare",
+        "IsEncrypted": "false",
+        "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
+    }
+
+**metadata** は、クラスターの診断の説明であり、セットアップに従って設定できます。これらの変数は、ETW トレース ログ、クラッシュ ダンプ、パフォーマンス カウンターの収集に役立ちます。ETW トレース ログの詳細については、「[Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx)」および「[ETW トレース](https://msdn.microsoft.com/library/ms751538.aspx)」を参照してください。[クラッシュ ダンプ](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)など、すべてのログを、コンピューターの **connectionString** フォルダーに送信できます。**AzureStorage** を使用して診断を格納することもできます。サンプル スニペットを次に示します。
+
+	"diagnosticsStore": {
+        "metadata":  "Please replace the diagnostics store with an actual file share accessible from all cluster machines.",
+        "dataDeletionAgeInDays": "7",
+        "storeType": "AzureStorage",
+        "IsEncrypted": "false",
+        "connectionstring": "xstore:DefaultEndpointsProtocol=https;AccountName=[AzureAccountName];AccountKey=[AzureAccountKey]"
+    }
 
 ### **security** 
 **security** セクションは、セキュリティで保護されたスタンドアロン Service Fabric クラスターに必要です。次のスニペットは、このセクションの一部を示しています。
@@ -127,7 +133,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
         "isPrimary": true
     }]
 
-**name** はこのノード タイプのフレンドリ名です。このノード タイプのノードを作成するには、「[クラスターのノード](#clusternodes)」で前述したように、そのノードの **nodeTypeRef** 変数にこのノード タイプのフレンドリ名を割り当てる必要があります。ノード タイプごとに、このクラスターに接続するためのさまざまなエンドポイントを定義できます。このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。複数のノード タイプが存在するクラスターでは、プライマリ ノード タイプは 1 つだけであり、**isPrimary** が *true* に設定されています。それ以外のノードは、**isPrimary** が *false* に設定されます。クラスターの容量に従った **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプの違いについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」をご覧ください。
+**name** はこのノード タイプのフレンドリ名です。このノード タイプのノードを作成するには、「[クラスターのノード](#clusternodes)」で前述したように、そのノードの **nodeTypeRef** 変数にこのノード タイプのフレンドリ名を割り当てる必要があります。ノード タイプごとに、このクラスターに接続するためのさまざまなエンドポイントを定義できます。このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。複数のノード タイプが存在するクラスターでは、プライマリ ノード タイプは 1 つだけであり、**isPrimary** が *true* に設定されています。それ以外のノードは、**isPrimary** が *false* に設定されます。クラスターの容量に従った **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプの違いについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。
 
 
 ### **fabricSettings**
@@ -143,11 +149,11 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
             "value": "C:\ProgramData\SF\Log"
     }]
 
-データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの 1 つ下のレベルに配置されます。
+非 OS ドライブは OS のクラッシュに対する信頼性が高いため、FabricDataRoot および FabricLogRoot として使用することをお勧めします。データ ルートだけをカスタマイズすると、ログ ルートはデータ ルートの 1 つ下のレベルに配置されます。
 
 
 ## 次のステップ
 
-スタンドアロン クラスターのセットアップに従って、ClusterConfig.JSON ファイルの構成を完了したら、「[Azure Service Fabric クラスターをオンプレミスまたはクラウドに作成する](service-fabric-cluster-creation-for-windows-server.md)」に従ってクラスターをデプロイした後、[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)に進むことができます。
+スタンドアロン クラスターのセットアップに従って、ClusterConfig.JSON ファイルの構成を完了したら、[オンプレミスまたはクラウドでの Azure Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページに従ってクラスターをデプロイした後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進むことができます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

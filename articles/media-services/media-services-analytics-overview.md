@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/27/2016"   
+	ms.date="09/14/2016"   
 	ms.author="milanga;juliako;johndeu"/>
 
-# Azure Media Services Analytics の概要
+# Azure Media Services Analytics の概要 | Microsoft Azure
 
-##概要
+##Overview
 
 従業員のトレーニング、お客様への対応、およびビジネス機能のドキュメント化で優先的に利用するメディアとしてビデオを取り入れる組織や企業が増えています。クラウド コンピューティングでは、このような大量のメディア ファイルの格納、ストリーミング、およびアクセスを効果的に行うことができます。しかし、所有するビデオのコンテンツ ライブラリが増大するにつれて、組織や企業は、対象ユーザーとのより意味のある個別化した対話を実現し、ビジネスを次のレベルに進めることができるよう、ビデオから新しい洞察を抽出するための効果的な手段も同様に準備する必要があります。
 
@@ -45,6 +45,8 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 - **光学式文字認識** - Azure Media Analytics OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
  
+- **スケーラブルな顔編集** - **Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する Azure Media Analytics MP です。顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。詳細については、[こちらの記事](media-services-face-redaction.md)をご覧ください。
+
  
 ## 一般的なシナリオ
 
@@ -52,7 +54,7 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 - **コール センター** - ソーシャル メディアが登場しても、顧客サービス トランザクションの大部分は引き続きカスタマー コール センターによって支えられています。この音声データには顧客に関する豊富な情報がエンコードされています。これらの情報を分析すれば、製品のロードマップを向上させることができるほか、コール センターの従業員をトレーニングし高い顧客満足度を達成することができます。Azure Media Indexer を使用することで、顧客はテキストを抽出して検索インデックスとダッシュボードを構築し、最も一般的な苦情、苦情発生の原因、およびその他の関連するデータを取り巻くインテリジェンスを抽出することができます。
 
-- **ユーザー生成のコンテンツ モデレート** - 新しい報道発信源から警察まで、組織の多くは公開したポータルを備えており、そこではビデオやイメージなどの UGC メディアを受け入れています。コンテンツの量は、予期しないイベントが原因で急上昇することがあります。これらのシナリオで、コンテンツが適切かどうかを手動で効果的に確認することは不可能に近いと言えます。顧客は、コンテンツ モデレート サービスを利用して、適切なコンテンツに的を絞ることができます。
+- **ユーザー生成のコンテンツ モデレート** - 新しい報道発信源から警察まで、多くの組織に一般向けのポータルがあり、そこでビデオや画像などの UGC メディアを受け入れています。コンテンツの量は、予期しないイベントが原因で急上昇することがあります。これらのシナリオで、コンテンツが適切かどうかを手動で効果的に確認することは不可能に近いと言えます。顧客は、コンテンツ モデレート サービスを利用して、適切なコンテンツに的を絞ることができます。
 
 - **監視** - IP カメラの増加に伴い、監視ビデオが急増しています。監視ビデオを手動で確認するとなると、時間がかかり、ヒューマン エラーが発生しやすくなります。Azure Media Analytics では、派生物を確認、管理、および作成するプロセスをより簡単にするために、モーション検出、顔検出、Hyperlapse など、いくつかのコンポーネントを用意しています。
 
@@ -127,7 +129,9 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-##Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -135,7 +139,7 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-##関連記事:
+##関連記事
 
 [Media Services Analytics のお知らせ](https://azure.microsoft.com/blog/introducing-azure-media-analytics/)
   
@@ -144,4 +148,4 @@ Azure Media Analytics を使用することで、開発者は、限定された�
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

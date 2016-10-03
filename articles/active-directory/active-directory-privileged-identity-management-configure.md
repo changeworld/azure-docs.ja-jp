@@ -13,14 +13,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/11/2016"
+	ms.date="09/16/2016"
 	ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management
 
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
-組織では、セキュリティで保護された情報やリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にする可能性が抑えられるためです。しかし一方で、ユーザーは、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。結局は、仕事をしなければならないために、組織はユーザーが管理者特権で行う操作を監視することなく、Azure AD でユーザーに特権アクセスを与えることになります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
+> [AZURE.NOTE] Privileged Identity Management は、Azure Active Directory の Premium P2 エディションでのみ使用できます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+
+組織では、セキュリティで保護された情報やリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にする可能性が抑えられるためです。しかし一方で、ユーザーは、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。組織は、ユーザーが管理者特権で行う操作を監視することなく、Azure AD でユーザーに特権アクセスを与えます。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
 Azure AD Privileged Identity Management では、次のことが可能です。
 
@@ -49,11 +51,8 @@ Azure AD Privileged Identity Management の使用は、[Azure ポータル](http
 
 1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名を選択し、Azure AD Privileged Identity Management を使用するディレクトリを選択します。
-3. **[新規]**、**[セキュリティ + ID]**、**[Azure AD Privileged Identity Management]** の順に選択します。
-
-	![ポータルで PIM を有効にする][1]
-
-4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** ボタンをクリックします。Privileged Identity Management ダッシュボードが開きます。
+3. **[More services (その他のサービス)]** を選択し、[フィルター] ボックスを使用して "**Azure AD Privileged Identity Management**" を検索します。
+4. **[ダッシュボードにピン留めする]** チェックボックスをオンにして、**[作成]** をクリックします。Privileged Identity Management アプリケーションが起動します。
 
 ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。
 
@@ -78,7 +77,7 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 
 ## ロール アクティブ化設定の構成
 
-ロールのアクティブ化の設定を使用して、次のような候補ロールのアクティブ化プロパティを構成できます。
+[ロールの設定](active-directory-privileged-identity-management-how-to-change-default-settings.md)を使用して、次のような候補ロールのアクティブ化プロパティを構成できます。
 
 - ロールのアクティブ化の期間
 - ロールのアクティブ化の通知
@@ -90,21 +89,22 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 
 ## ロールのアクティブ化  
 
-ロールをアクティブ化するには、管理者候補は、ロールに対する時間制限付きの "アクティブ化" を要求する必要があります。アクティブ化の要求は、Azure AD Privileged Identity Management の **[ロールのアクティブ化]** オプションを使用して行うことができます。
+[ロールをアクティブ化する](active-directory-privileged-identity-management-how-to-activate-role.md)には、管理者候補は、ロールに対する時間制限付きの "アクティブ化" を要求します。アクティブ化の要求は、Azure AD Privileged Identity Management の **[ロールのアクティブ化]** オプションを使用して行うことができます。
 
 ロールのアクティブ化を要求する管理者は、Azure ポータルで Azure AD Privileged Identity Management を初期化する必要があります。
-
-任意の種類の管理者が、Azure AD Privileged Identity Management を使用してロールをアクティブ化できます。
 
 ロールのアクティブ化は、カスタマイズできます。PIM の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を設定できます。
 
 ![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
 
-## ロール アクティブ化の履歴
+## ロール アクティビティの確認
 
-Azure AD Privileged Identity Management を使用すると、特権ロールの割り当ての変更およびロールのアクティブ化の履歴を追跡することもできます。これは、監査ログ オプションを使用して行うことができます。
+従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。1 つ目の方法は、[監査履歴](active-directory-privileged-identity-management-how-to-use-audit-log.md)を使用する方法です。監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更を追跡します。
 
 ![PIM アクティブ化履歴 - スクリーンショット][6]
+
+2 番目の方法は、標準的な[アクセス レビュー](active-directory-privileged-identity-management-how-to-start-security-review.md)を設定する方法です。これらのアクセス レビューは、割り当てられたレビュー担当者 (たとえば、チーム マネージャー) によって実行することも、従業員が自分自身の確認を行うこともできます。これは、アクセスを必要としているユーザーとアクセスを必要としなくなったユーザーを監視するための最善の方法です。
+
 
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
@@ -118,4 +118,4 @@ Azure AD Privileged Identity Management を使用すると、特権ロールの�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -371,7 +371,7 @@ public async Task<int> Run()
     {
         throw new TaskProcessorException(
         $"{ex.GetType().Name} exception in run task processor: {ex.Message}",
-        Ex
+        ex
         );
     }
 }
@@ -482,4 +482,4 @@ MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッシ�
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

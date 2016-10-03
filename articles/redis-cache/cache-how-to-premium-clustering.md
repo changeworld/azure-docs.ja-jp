@@ -13,25 +13,25 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="09/09/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
-Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および Virtual Network のサポートが含まれています。この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
+Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
 
-その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」をご覧ください。
+Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## Redis クラスターとは
 Azure Redis Cache では、[Redis での実装](http://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。Redis クラスターには次の利点があります。
 
 -	データセットを複数のノードに自動的に分割する機能。
--	ノードのサブセットで障害が発生したとき、クラスターの他の部分と通信できないときに、操作を続行する機能。
+-	ノードのサブセットで障害が発生したとき、またはクラスターの他の部分と通信できないときに、操作を続行する機能。
 -	より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。
 -	より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。
 
-Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」をご覧ください。
+Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
 Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Redis Cache Service によって管理されます。
 
@@ -134,7 +134,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 
 ### 以前に作成したキャッシュのクラスタリングを構成できますか。
 
-現時点では、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
+現在、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
 
 ### Basic または Standard キャッシュのクラスタリングを構成できますか。
 
@@ -153,8 +153,7 @@ SSL の場合は、`1300N` を `1500N` に置き換えます。
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
--	[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)
--	[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
+-	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
   
 <!-- IMAGES -->
 
@@ -164,4 +163,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

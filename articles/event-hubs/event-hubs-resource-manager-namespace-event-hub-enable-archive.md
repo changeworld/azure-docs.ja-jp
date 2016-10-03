@@ -18,7 +18,7 @@
 
 # Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする
 
-この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
@@ -31,9 +31,9 @@ Azure リソースの名前付け規則のプラクティスとパターンの�
 
 ## デプロイの対象
 
-このテンプレートを使用して、イベント ハブを含んだ Event Hubs 名前空間をデプロイし、Archive を有効にします。
+このテンプレートを使用して、イベント ハブを含んだ Event Hubs 名前空間をデプロイし、アーカイブを有効にします。
 
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。Event Hubs Archive を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを好みの Azure BLOB ストレージに自動的に配信できます。
+[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。Event Hubs Archive を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを任意の Azure BLOB ストレージに自動的に配信できます。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
@@ -287,6 +287,6 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
   [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
   [Azure リソースの名前付け規則]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-  [イベント ハブと、アーカイブ テンプレートの有効化]: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive]
+  [イベント ハブと、アーカイブ テンプレートの有効化]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
- pageTitle="Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法 | Microsoft Azure"
+ pageTitle="Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、IIS コンテンツの有効期限を管理する方法 | Microsoft Azure"
  description="Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法について説明します"
  services="cdn"
  documentationCenter=".NET"
@@ -12,16 +12,24 @@
  ms.tgt_pltfrm="na"
  ms.devlang="dotnet"
  ms.topic="article"
- ms.date="07/28/2016"
+ ms.date="09/19/2016"
  ms.author="casoper"/>
 
-# Azure Content Delivery Network (CDN) でクラウド サービスのコンテンツの有効期限を管理する方法
+# Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、IIS コンテンツの有効期限を管理する方法
 
-有効期限 (TTL) の期間中に頻繁にアクセスされるオブジェクトでは、Azure CDN のキャッシュを最大限に活用できます。オブジェクトは、TTL の期間中キャッシュ内に保持され、その期間が経過した後、クラウド サービスによって更新されます。このプロセスが繰り返されます。
+> [AZURE.SELECTOR]
+- [Azure Web Apps/Cloud Services、ASP.NET、または IIS](cdn-manage-expiration-of-cloud-service-content.md)
+- [Azure Storage BLOB サービス](cdn-manage-expiration-of-blob-content.md)
 
-キャッシュの値を指定しない場合は、オブジェクトの TTL は 7 日間です。
+パブリックにアクセス可能な任意の配信元 Web サーバーのファイルは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。TTL は、配信元サーバーからの HTTP 応答の [*Cache-Control* ヘッダー](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)によって決まります。この記事では、Azure Web Apps、Azure Cloud Services、ASP.NET アプリケーション、インターネット インフォメーション サービス サイトの `Cache-Control` ヘッダーの設定方法について説明します。これらはすべて同様に構成されます。
 
-画像やスタイル シートなどの静的なコンテンツの場合、コンテンツが含まれる CDN フォルダーに web.config を含め、**clientCache** 設定を修正してコンテンツの Cache-Control ヘッダーを制御することによって、更新頻度を制御することができます。web.config の設定は、フォルダーとすべてのサブフォルダー内にあるすべてのものに影響を与えます。ただし、それらのフォルダーの下位にある別のサブフォルダーでオーバーライドが行われていない場合に限ります。たとえば、静的なコンテンツはすべて 3 日間キャッシュされるが、可変コンテンツが含まれているサブフォルダーではキャッシュの設定が 6 時間になるように、ルートに対して既定の有効期限を設定できます。
+>[AZURE.TIP] ファイルに TTL を設定しなくてもかまいません。その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
+>
+>ファイルとその他のリソースへのアクセスを高速化する Azure CDN のしくみの詳細については、[Azure CDN の概要](./cdn-overview.md)に関するページを参照してください。
+
+## 構成での Cache-Control ヘッダーの設定
+
+画像やスタイル シートなどの静的コンテンツの場合は、Web アプリケーションの **applicationHost.config** ファイルか **web.config** ファイルを変更することで、更新頻度を制御できます。構成ファイル内の **system.webServer\\staticContent\\clientCache** 要素が、コンテンツの `Cache-Control` ヘッダーを設定します。**web.config** の構成設定は、サブフォルダー レベルでオーバーライドされていない限り、フォルダーとすべてのサブフォルダー内にあるすべてのものに影響を与えます。たとえば、静的なコンテンツはすべて 3 日間キャッシュされるが、可変コンテンツが含まれているサブフォルダーではキャッシュの設定が 6 時間になるように、ルートに対して既定の有効期限を設定できます。**applicationHost.config** の場合、サイト上のすべてのアプリケーションが影響を受けますが、アプリケーション内の **web.config** ファイルでオーバーライドすることができます。
 
 次の XML は、3 日間の最大有効期間を指定するように **clientCache** を設定する例を示します。
 
@@ -35,11 +43,13 @@
 </configuration>
 ```
 
-**UseMaxAge** を指定して、Cache-Control: max-age=<nnn> ヘッダーを **CacheControlMaxAge** 属性に指定された値に基づいて応答に追加します。**cacheControlMaxAge** 属性の期間の形式は、<days>.<hours>:<min>:<sec> です。**clientCache** ノードの詳細については、「[Client Cache <clientCache> (クライアント キャッシュ <clientCache>)](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)」を参照してください。
+**UseMaxAge** を指定して、`Cache-Control: max-age=<nnn>` ヘッダーを **CacheControlMaxAge** 属性に指定された値に基づいて応答に追加します。**cacheControlMaxAge** 属性の期間の形式は、<days>.<hours>:<min>:<sec> です。**clientCache** ノードの詳細については、[クライアント キャッシュ <clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache) のリファレンス ページを参照してください。
 
-.aspx ページなどのアプリケーションから返されるコンテンツの場合、**HttpResponse.Cache** プロパティを設定して CDN のキャッシュ動作をプログラムで設定できます。**HttpResponse.Cache** プロパティの詳細については、[HttpResponse.Cache プロパティ](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)に関するページと [HttpCachePolicy クラス](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)に関するページを参照してください。
+## コードでの Cache-Control ヘッダーの設定
 
-アプリケーション コンテンツをプログラムでキャッシュする場合は、HttpCacheability を *Public* に設定してコンテンツをキャッシュ可能としてマークします。また、キャッシュ検証が設定されていることを確認します。キャッシュ検証では、SetLastModified を呼び出して最終更新のタイムスタンプを設定することや、SetETag を呼び出して etag 値を設定することができます。必要に応じて、SetExpires を呼び出してキャッシュの有効期限を指定できます。また、このドキュメントで既に説明した既定のキャッシュのヒューリスティックに依存することもできます。
+ASP.NET アプリケーションの場合、**HttpResponse.Cache** プロパティを設定することにより、CDN のキャッシュ動作をプログラムで設定できます。**HttpResponse.Cache** プロパティの詳細については、[HttpResponse.Cache プロパティ](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)に関するページと [HttpCachePolicy クラス](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)に関するページを参照してください。
+
+ASP.NET のアプリケーション コンテンツをプログラムでキャッシュする場合は、HttpCacheability を *Public* に設定することにより、コンテンツをキャッシュ可能としてマークします。また、キャッシュ検証が設定されていることを確認します。キャッシュ検証では、SetLastModified を呼び出して最終更新のタイムスタンプを設定することや、SetETag を呼び出して etag 値を設定することができます。必要に応じて、SetExpires を呼び出してキャッシュの有効期限を指定できます。また、このドキュメントで既に説明した既定のキャッシュのヒューリスティックに依存することもできます。
 
 たとえば、1 時間のコンテンツをキャッシュするには、次を追加します。
 
@@ -50,8 +60,10 @@ Response.Cache.SetCacheability(HttpCacheability.Public);
 Response.Cache.SetLastModified(DateTime.Now);
 ```
 
-##関連項目
+## 次のステップ
 
-[Azure Content Delivery Network (CDN) で BLOB コンテンツの有効期限を管理する方法](./cdn-manage-expiration-of-blob-content.md)
+- [**clientCache** 要素の詳細を確認する](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
+- [**HttpResponse.Cache** プロパティのドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)
+- [**HttpCachePolicy クラス**のドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication のアプリ パスワードを Azure ポータルで作成する" 
-	description="このページでは、Azure ポータルで追加のアプリ パスワードを作成する方法を示します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenp" 
+<properties
+	pageTitle="Azure Multi-Factor Authentication のアプリ パスワードを Azure ポータルで作成する"
+	description="このページでは、Azure ポータルで追加のアプリ パスワードを作成する方法を示します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication のアプリ パスワードを Azure ポータルで作成する
 
@@ -32,6 +32,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)</center>
 
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

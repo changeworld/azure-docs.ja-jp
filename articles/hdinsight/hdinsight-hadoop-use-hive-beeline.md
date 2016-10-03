@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/12/2016"
+   ms.date="09/13/2016"
    ms.author="larryfr"/>
 
 #Beeline による HDInsight での Hive と Hadoop の使用
@@ -59,7 +59,7 @@ PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で
 
         beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
 
-    これにより、Beeline クライアントが起動され、JDBC の URL に接続されます。ここでは、HiveServer2 がクラスター内の両方のヘッド ノードで実行されているため `localhost` を使用し、ヘッド ノード 0 上で直接 Beeline を実行しています。
+    これにより、Beeline クライアントが起動され、JDBC の URL に接続されます。ここでは、HiveServer2 がクラスター内の両方のヘッド ノードで実行されているため `localhost` を使用し、プライマリ ヘッドノード上で直接 Beeline を実行しています。
     
     コマンドが完了すると、`jdbc:hive2://localhost:10001/>` プロンプトが表示されます。
 
@@ -235,4 +235,4 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

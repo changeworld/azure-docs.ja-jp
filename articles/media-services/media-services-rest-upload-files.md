@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="REST を使用して Media Services アカウントにファイルをアップロードする" 
+	pageTitle="REST を使用した Media Services アカウントへのファイルのアップロード | Microsoft Azure" 
 	description="資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/30/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 
@@ -26,8 +26,11 @@
 
 Media Services で、デジタル ファイルを資産にアップロードします。[Asset](https://msdn.microsoft.com/library/azure/hh974277.aspx) エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルを資産にアップロードすると、コンテンツがクラウドに安全に保存され、処理したりストリーミングしたりできるようになります。
 
-
->[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>[AZURE.NOTE]資産ファイル名を選択するときは、次の考慮事項が適用されます。
+>
+>- Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>
+>- 名前は 260 文字以内で指定する必要があります。
 
 資産をアップロードする基本的なワークフローは、次のセクションに分けられます。
 
@@ -517,7 +520,9 @@ ContentKey は、HTTP POST 要求を送信することによって 1 つ以上�
 
 
 
-##Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -531,4 +536,4 @@ ContentKey は、HTTP POST 要求を送信することによって 1 つ以上�
 [How to Get a Media Processor]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

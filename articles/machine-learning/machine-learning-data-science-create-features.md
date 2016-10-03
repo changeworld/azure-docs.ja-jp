@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="zhangya;bradsev" />
 
 
@@ -25,8 +25,10 @@
 
 この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
-特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[What is the Team Data Science Process? (Team Data Science Process について)](data-science-process-overview.md)」を参照してください。 特徴エンジニアリングと特徴選択は、CAP の**特徴の開発**ステップの一部です。
+特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[What is the Team Data Science Process? (Team Data Science Process について)](data-science-process-overview.md)」を参照してください 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
+
 * **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
+
 * **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
@@ -95,4 +97,4 @@ Azure Machine Learning には、これらの単語や語句の特徴を都合よ
 必ずしも特徴エンジニアリングや特徴選択を実行する必要はありません。必要があるかどうかは、持っているデータや収集するデータ、選択するアルゴリズム、実験の目的によって異なります。
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

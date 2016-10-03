@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/30/2016"
+   ms.date="09/20/2016"
    ms.author="sumukhs"/>
 
 # Reliable Actors の構成 - KVSActorStateProvider
@@ -39,10 +39,10 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 
 |名前|単位|既定値|解説|
 |----|----|-------------|-------|
-|BatchAcknowledgementInterval|秒|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
+|BatchAcknowledgementInterval|Seconds|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。|
 |ReplicatorEndpoint|該当なし|既定値なし - 必須パラメーター|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソースの定義の詳細については、「[サービス マニフェストでのリソースの指定](service-fabric-service-manifest-resources.md)」をご覧ください。 |
-|RetryInterval|秒|5|レプリケーターが操作の受信確認を受信しなかった場合に、メッセージを再送信するまでの期間です。|
-|MaxReplicationMessageSize|バイト|50 MB|1 つのメッセージで送信できるレプリケーション データの最大サイズです。|
+|RetryInterval|Seconds|5|レプリケーターが操作の受信確認を受信しなかった場合に、メッセージを再送信するまでの期間です。|
+|MaxReplicationMessageSize|Bytes|50 MB|1 つのメッセージで送信できるレプリケーション データの最大サイズです。|
 |MaxPrimaryReplicationQueueSize|操作数|1024|プライマリ キューの操作の最大数です。操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 |MaxSecondaryReplicationQueueSize|操作数|2048|セカンダリ キューの操作の最大数です。操作は、永続性によってその状態の高可用性が実現されてから解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
 
@@ -86,4 +86,4 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 
 BatchAcknowledgementInterval パラメーターは、レプリケーションの待機時間を制御します。値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。これは、トランザクションのコミットの待機時間に直結します。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -172,7 +172,7 @@ Postman で要求本文を使用して関数をテストするには、次の手
 
 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して BLOB トリガー関数をテストできます。
 
-1. 関数アプリの [Azure ポータル]で、C# または Node の BLOB トリガー関数を新規作成します。監視するパスを BLOB コンテナーの名前に設定します。次に例を示します。
+1. 関数アプリの [Azure Portal] で、C#、F#、または Node の BLOB トリガー関数を新規作成します。監視するパスを BLOB コンテナーの名前に設定します。次に例を示します。
 
 		files
 
@@ -437,6 +437,7 @@ C# のコード例:
 
 <!-- URLs. -->
 
+[Azure Portal]: https://portal.azure.com
 [Azure ポータル]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

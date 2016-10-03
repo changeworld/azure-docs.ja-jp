@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-windows-store"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/21/2016"
+	ms.date="09/20/2016"
 	ms.author="glenga"/>
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
@@ -25,7 +25,7 @@
 
 このチュートリアルでは、Azure Mobile Services と .NET バックエンドを使用して Windows ストア アプリケーションを作成する方法について説明します。Azure Mobile Services は、組み込まれた認証、監視、プッシュ通知、その他の機能に加え、モバイル アプリケーション作成用のクロスプラットフォーム クライアント ライブラリによって、スケーラブルで、セキュリティで保護されたバックエンドを提供します。Mobile Services 用の .NET バックエンドは、[ASP.NET Web API](http://asp.net/web-api) に基づき、REST API を作成するための最も優れた方法を .NET 開発者に提供します。
 
-## 概要
+## Overview
 
 Web API は、オープン ソースのフレームワークであり、REST API を作成するための最も優れた方法を .NET 開発者に提供します。Web API ソリューションは Azure Websites でホストするか、.NET バックエンドを使用して Azure Mobile Services でホストするか、またはカスタム プロセスでセルフホストすることもできます。Mobile Services は、特にモバイル アプリケーション用に設計されたホスティング環境です。Web API サービスを Mobile Services でホストすると、データ ストレージに加えて次の利点が得られます。
 
@@ -424,7 +424,7 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
         }
     }
 
-次に、監視可能なプロパティを追加します。XAML では、これらのプロパティに対してデータ バインドが実行されます。
+次に、監視可能なプロパティを追加します。XAML では、これらのプロパティに対してデータ バインドが実行さます。
 
     class LeaderboardViewModel : INotifyPropertyChanged
     {
@@ -765,4 +765,4 @@ Model-View-View Model (MVVM) は、Model-View-Controller (MVC) の一種です�
 [プッシュ通知の追加]: ../notification-hubs-windows-store-dotnet-get-started.md
 [認証の使用]: /develop/mobile/tutorials/get-started-with-users-dotnet
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

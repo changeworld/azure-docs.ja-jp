@@ -13,13 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/02/2016"
+   ms.date="09/09/2016"
    ms.author="chackdan"/>
 
 
 # Service Fabric ノードの種類と仮想マシン スケール セットの関係
 
-仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure Compute リソースです。Service Fabric クラスターで定義されているすべてのノードの種類は、個別の VM スケール セットとしてセットアップされます。各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。
+仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure 計算リソースです。Service Fabric クラスターで定義されているすべてのノードの種類は、個別の VM スケール セットとしてセットアップされます。各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。
 
 次のスクリーン ショットでは、ノードが 2 種類あるクラスターを示します (FrontEnd と BackEnd)。各ノードの種類に、5 つのノードがあります。
 
@@ -27,16 +27,16 @@
 
 ## VM スケール セットのインスタンスをノードにマッピング
 
-上述のように、VM スケール セットのインスタンスは、インスタンス 0 から始まり増えていきます。番号設定は名前に反映されます。たとえば、BackEnd\_0 は、BackEnd VM スケール セットのインスタンス 0 です。この特定の VM スケール セットには、BackEnd\_0、BackEnd\_1、BackEnd\_2、BackEnd\_3、BackEnd\_4 という名前の 5 つのインスタンスがあります。
+上述のように、VM スケール セットのインスタンスは、インスタンス 0 から始まり増えていきます。番号設定は名前に反映されます。たとえば、BackEnd_0 は、BackEnd VM スケール セットのインスタンス 0 です。この特定の VM スケール セットには、BackEnd_0、BackEnd1、BackEnd2、BackEnd3、BackEnd4 という名前の 5 つのインスタンスがあります。
 
-VM スケール セットをスケール アップすると、新しいインスタンスが作成されます。通常、新しい VM スケール セットのインスタンス名は、VM スケール セットの名前 + 次のインスタンス番号になります。この例では、BackEnd\_5 になります。
+VM スケール セットをスケール アップすると、新しいインスタンスが作成されます。通常、新しい VM スケール セットのインスタンス名は、VM スケール セットの名前 + 次のインスタンス番号になります。この例では、BackEnd\_5 です。
 
 
 ## VM スケール セットのロード バランサーを各ノードの種類/VM スケール セットにマッピングする
 
-ポータルからクラスターをデプロイした場合、または提供しているサンプル ARM テンプレートを使用した場合、リソース グループ下のすべてのリソースの一覧を取得すると、VM スケール セットまたはノードの種類ごとにロード バランサーが表示されます。
+ポータルからクラスターをデプロイした場合、または提供しているサンプル Resource Manager テンプレートを使用した場合、リソース グループ下のすべてのリソースの一覧を取得すると、VM スケール セットまたはノードの種類ごとにロード バランサーが表示されます。
 
-名前は次のようになります: **LB-<NodeType name>**。たとえば、次のスクリーンショットで示すように、LB-sfcluster4doc-0 などです。
+名前は次のようになります: **LB-&lt;NodeType name&gt;**。たとえば、次のスクリーンショットで示すように、LB-sfcluster4doc-0 などです。
 
 
 ![リソース][Resources]
@@ -56,7 +56,7 @@ IP アドレスとポートを検出する手順を次に示します。
 ![LBBlade][LBBlade]
 
 
-**[設定]** で、**[受信 NAT 規則]** をクリックします。ここでは、最初の VM スケール セットのインスタンスにリモート接続するために使用できる IP アドレスとポートを提供します。次のスクリーンショットでは、**104.42.106.156** と **3389** です。
+**[設定]** で、**[受信 NAT 規則]** をクリックします。ここでは、最初の VM スケール セットのインスタンスにリモート接続するために使用できる IP アドレスとポートを提供します。次のスクリーンショットでは、**104.42.106.156** と **3389** です
 
 ![NATRules][NATRules]
 
@@ -86,7 +86,7 @@ IP アドレスとポートを検出する手順を次に示します。
 
 ### クラスター デプロイの前
 
-ARM テンプレートを使用してクラスターを設定している場合、**inboundNatPools** の範囲を指定することができます。
+Resource Manager テンプレートを使用してクラスターを設定している場合、**inboundNatPools** の範囲を指定できます。
 
 **Microsoft.Network/loadBalancers** のリソース定義に移動します。その下に、**inboundNatPools** の説明があります。*frontendPortRangeStart* と *frontendPortRangeEnd* の値を置き換えます。
 
@@ -102,7 +102,7 @@ Azure アカウントにサインインします。この PowerShell コマン�
 Login-AzureRmAccount
 ```
 
-ロード バランサーに関する詳細を取得するために、次を実行すると、**inboundNatPools** の値と説明が表示されます。
+次を実行して、ロード バランサーに関する詳細を取得すると、**inboundNatPools** の説明の値が表示されます。
 
 ```
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
@@ -133,4 +133,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

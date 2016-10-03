@@ -1,6 +1,6 @@
 <properties
 	pageTitle="顧客へのコンテンツ配信 | Microsoft Azure"
-	description="このトピックでは、Azure Media Services を使用したコンテンツの配信に関する概要を説明します。"
+	description="このトピックでは、Azure Media Services を使用したコンテンツの配信の概要を説明します。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 
@@ -36,7 +36,7 @@ Media Services が提供するダイナミック パッケージを使用する�
 動的パッケージ化機能を利用するには、次の作業が必要となります。
 
 - mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルやアダプティブ ビットレート Smooth Streaming ファイルにエンコードします。
-- コンテンツ配信元となるストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、[オンデマンド ストリーミング予約ユニットの規模変更方法](media-services-manage-origins.md#scale_streaming_endpoints)に関するトピックをご覧ください。
+- コンテンツ配信元となるストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[オンデマンド ストリーミング予約ユニットのスケールの変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 ダイナミック パッケージを使用すると、単一のストレージ形式のファイルに対して保存と支払を行います。Media Services は要求に応じて適切な応答を作成して返します。
 
@@ -87,7 +87,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 
 
@@ -95,21 +95,21 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### Apple HTTP Live Streaming (HLS) V3 形式
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### Apple HTTP Live Streaming (HLS) 形式 (オーディオ専用フィルター付き)
 
 既定では、HLS マニフェストにはオーディオ専用トラックのみが含まれます。これは、Apple ストアのセルラー ネットワーク用の認定で必要です。この場合、クライアントの帯域幅が十分でないか、2G 接続を超えて接続されると、再生はオーディオ専用に切り替わります。このため、バッファリングされることなく引き続きコンテンツがストリーミングされますが、画像は表示されません。シナリオによっては、オーディオ専用よりもプレーヤーのバッファリングのほうが好ましい場合があります。オーディオ専用トラックを削除する場合は、**audio-only=false** を URL に追加します。
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
-詳細については、[動的マニフェストの構成のサポートと HLS 出力の追加機能](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)に関するページを参照してください。
+詳細については、[動的マニフェストの構成のサポートと HLS 出力の追加機能](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)に関するページをご覧ください。
 
 
 ### ストリーミング URL の形式
@@ -118,9 +118,9 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 例:
 
-	http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (旧マニフェスト)
+### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
 
 既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。ただし、一部のプレーヤーは、r タグをサポートしていません。これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。
 
@@ -159,7 +159,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 ## ストリーミング エンドポイント
 
-ストリーミング エンドポイントは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。ストリーミング予約ユニットを調整することで、ストリーミング エンドポイント サービスの容量を制御し、帯域幅の増化ニーズに対応することもできます。運用環境のアプリケーションに、1 つ以上の予約ユニットを割り当てる必要があります。詳細については、[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)に関するトピックをご覧ください。
+ストリーミング エンドポイントは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のためのコンテンツ配信ネットワーク (CDN) に直接配信するストリーミング サービスを表します。ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。ストリーミング予約ユニットを調整することで、ストリーミング エンドポイント サービスの容量を制御し、帯域幅の増化ニーズに対応することもできます。運用環境のアプリケーションに、1 つ以上の予約ユニットを割り当てる必要があります。詳細については、[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)に関するトピックをご覧ください。
 
 ## 既知の問題
 
@@ -167,16 +167,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。次に例を示します。
 
-	<?xml version="1.0" encoding="UTF-8"?>
-	<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
-		<StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
-			<QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />
-			<c t="0" d="2000" n="0" />
-			<c d="2000" />
-			<c d="2000" />
-			<c d="2000" />
-		</StreamIndex>
-	</SmoothStreamingMedia>
+<?xml version="1.0" encoding="UTF-8"?> <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000"> <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000"> <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" /> <c t="0" d="2000" n="0" /> <c d="2000" /> <c d="2000" /> <c d="2000" /> </StreamIndex> </SmoothStreamingMedia>
 
 2016 年 7 月のサービス リリースでは、生成される Smooth Streaming のマニフェストがバージョン 2.2 に対応しており、フラグメントの継続期間で繰り返しタグを使用できます。次に例を示します。
 
@@ -188,7 +179,7 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 		</StreamIndex>
 	</SmoothStreamingMedia>
 
-一部のレガシ Smooth Streaming クライアントは繰り返しタグをサポートしいない場合があり、マニフェストを読み込むことができません。この問題を回避するには、レガシ マニフェスト形式のパラメーター **(format=fmp4 v20)** を使用するか、繰り返しタグをサポートする最新バージョンにクライアントを更新します。詳細については、[Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20) に関するトピックを参照してください。
+一部のレガシ Smooth Streaming クライアントは繰り返しタグをサポートしいない場合があり、マニフェストを読み込むことができません。この問題を軽減するには、レガシ マニフェスト形式のパラメーター **(format=fmp4 v20)** を使用するか、繰り返しタグをサポートする最新バージョンにクライアントを更新します。詳細については、[Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20) に関するセクションをご覧ください。
 
 ## Media Services のラーニング パス
 
@@ -202,4 +193,4 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/12/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
 Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
-Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および仮想ネットワーク (VNet) のサポートが含まれています。VNet とは、クラウド内のプライベート ネットワークです。VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
+Azure Redis Cache の Premium レベルの機能には、クラスタリング、永続化、および仮想ネットワーク (VNet) のサポートが含まれています。VNet とは、クラウド内のプライベート ネットワークです。VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
 
 >[AZURE.NOTE] Azure Redis Cache では、クラシック VNet と ARM VNet の両方がサポートされています。
 
-その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache の永続性を構成する方法](cache-how-to-premium-persistence.md)」と「[Premium Azure Redis Cache のクラスタリングを構成する方法](cache-how-to-premium-clustering.md)」を参照してください。
+Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## VNet を選ぶ理由
 [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Redis Cache のセキュリティと分離が強化されるとともに、サブネット、アクセス制御ポリシー、Azure Redis Cache へのアクセスをさらに制限する他の機能も提供されます。
@@ -95,10 +95,10 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 | 20226 | 受信 + 送信 | TCP | Redis クラスターの実装の詳細 | VIRTUAL\_NETWORK |
 
 
-Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。仮想ネットワーク内で使用したときに正常に動作させるためには、Azure Redis Cache に次のものすべてが必要になります。
+Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。仮想ネットワーク内で使用したときに正常に動作させるためには、Azure Redis Cache に次の項目すべてが必要になります。
 
 -  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、Azure Redis Cache インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
--  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。これは、SSL 機能をサポートするために必要です。
+-  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。この接続は、SSL 機能をサポートするために必要です。
 -  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
 
 
@@ -115,7 +115,7 @@ Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは�
 
 ### VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか
 
-キャッシュが VNET の一部である場合、キャッシュにアクセスできるのは VNET 内のクライアントだけであるため、この場合、次のキャッシュ管理機能は動作しません。
+キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。そのため、次のキャッシュ管理機能は現時点では動作しません。
 
 -	Redis コンソール - Redis コンソールでは VNET に含まれていない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュには接続できません。
 
@@ -145,14 +145,12 @@ ExpressRoute を使用したオンプレミス アプリケーションから Az
 
 ユーザー定義ルートの背景情報については、この[概要](../virtual-network/virtual-networks-udr-overview.md)を参照してください。
 
-ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」をご覧ください。
+ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
--	[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)
--	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
--	[Azure Redis Cache でデータをインポートまたはエクスポートする](cache-how-to-import-export-data.md)
+-	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
 
 
 
@@ -167,4 +165,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

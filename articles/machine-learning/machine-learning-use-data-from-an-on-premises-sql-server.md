@@ -13,7 +13,7 @@ ms.workload="data-services"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="06/14/2016"
+ms.date="09/16/2016"
 ms.author="garye;krishnan"/>
 
 # オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
@@ -70,49 +70,49 @@ Data Management Gateway のセットアップと使用の際には、以下の�
 
 最初の手順は、オンプレミス SQL データベースにアクセスするゲートウェイを作成し、セットアップすることです。
 
-1.  [Azure Machine Learning Studio](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
+1. [Azure Machine Learning Studio](https://studio.azureml.net/Home/) にログインし、作業するワークスペースを選択します。
 
-2.  左側の **[設定]** ブレードをクリックし、上部の **[データ ゲートウェイ]** タブをクリックします。
+2. 左側の **[設定]** ブレードをクリックし、上部の **[データ ゲートウェイ]** タブをクリックします。
 
-3.  画面の下部の **[新しいデータ ゲートウェイ]** をクリックします。
+3. 画面の下部の **[新しいデータ ゲートウェイ]** をクリックします。
 
     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-button.png)
 
-4.  **[新しいデータ ゲートウェイ]** ダイアログ ボックスで**ゲートウェイ名**を入力し、必要に応じて**説明**を追加します。右下隅の矢印をクリックし、構成の次の手順に進みます。
+4. **[新しいデータ ゲートウェイ]** ダイアログ ボックスで**ゲートウェイ名**を入力し、必要に応じて**説明**を追加します。右下隅の矢印をクリックし、構成の次の手順に進みます。
 
     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/new-data-gateway-dialog-enter-name.png)
 
-5.  [Download and register data gateway (データ ゲートウェイのダウンロードと登録)] ダイアログで、ゲートウェイ登録キーをクリップボードにコピーします。
+5. [Download and register data gateway (データ ゲートウェイのダウンロードと登録)] ダイアログで、ゲートウェイ登録キーをクリップボードにコピーします。
 
     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 
-6.  <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、**[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
+6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、**[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)」という記事の冒頭のセクションを参照してください。
 
-7.  ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、**[ゲートウェイの登録]** ダイアログが表示されます。クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
+7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、**[ゲートウェイの登録]** ダイアログが表示されます。クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
 
-8.  既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行し、**[キーの変更]** をクリックして、クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
+8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行し、**[キーの変更]** をクリックして、クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
 
-9.  インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。前にクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。
+9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。前にクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。
 
     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 
-10.  Microsoft Data Management Gateway 構成マネージャーの **[ホーム]** タブで以下の値が設定されていれば、ゲートウェイの構成は完了です。
+10. Microsoft Data Management Gateway 構成マネージャーの **[ホーム]** タブで以下の値が設定されていれば、ゲートウェイの構成は完了です。
 
-    -   **ゲートウェイ名**と**インスタンス名**がゲートウェイの名前に設定されている。
+    - **ゲートウェイ名**と**インスタンス名**がゲートウェイの名前に設定されている。
 
-    -   **[登録]** が **[登録済み]** に設定されます。
+    - **[登録]** が **[登録済み]** に設定されます。
 
-    -   **[状態]** が **[開始]** に設定されます。
+    - **[状態]** が **[開始]** に設定されます。
 
-    -   下部のステータス バーには、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されます。
+    - 下部のステータス バーには、緑色のチェック マークと共に "**Data Management Gateway クラウド サービスに接続済み**" と表示されます。
 
-    ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
+     ![](media/machine-learning-use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-registered.png)
 
-    登録が正常に完了すると、Azure Machine Learning Studio も更新されます。
+     登録が正常に完了すると、Azure Machine Learning Studio も更新されます。
 
     ![](media\machine-learning-use-data-from-an-on-premises-sql-server\gateway-registered.png)
 
-11.  **[Download and register data gateway (データ ゲートウェイのダウンロードと登録)]** ダイアログで、セットアップを完了するチェック マークをクリックします。**[設定]** ページに、ゲートウェイの状態が "オンライン" として表示されます。右側のウィンドウには、状態とその他の有益な情報が表示されます。
+11. **[Download and register data gateway (データ ゲートウェイのダウンロードと登録)]** ダイアログで、セットアップを完了するチェック マークをクリックします。**[設定]** ページに、ゲートウェイの状態が "オンライン" として表示されます。右側のウィンドウには、状態とその他の有益な情報が表示されます。
 
     ![](media\machine-learning-use-data-from-an-on-premises-sql-server\gateway-status.png)
 
@@ -162,4 +162,4 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。**データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](machine-learning-excel-add-in-for-web-services.md)を使用することをお勧めします。現時点では、**データのエクスポート**によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

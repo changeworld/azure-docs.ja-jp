@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services リリース ノート" 
+	pageTitle="Media Services リリース ノート | Microsoft Azure" 
 	description="Media Services リリース ノート" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="media" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="07/14/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 # Azure Media Services リリース ノート
@@ -150,7 +150,7 @@ Azure Media Services (AMS) は、現在、ブラジル南部、インド西部�
 
 - Media Encoder Standard の一般公開の発表。詳細については、[このブログの投稿](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
 
-	Media Encoder Standard では、[このセクション](http://go.microsoft.com/fwlink/?LinkId=618336)で説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合は、**Premium** 予約ユニットの種類を取得する必要があります。詳細については、「[Encoding の規模の設定方法](media-services-portal-encoding-units)」を参照してください。
+	Media Encoder Standard では、[このセクション](http://go.microsoft.com/fwlink/?LinkId=618336)で説明されているプリセットを使用しています。4k エンコードのプリセットを使用する場合は、**Premium** 予約ユニットの種類を取得する必要があります。詳細については、「[Encoding の規模の設定方法](media-services-scale-media-processing-overview.md)」を参照してください。
 - Azure Media Services と Azure Media Player のライブ リアルタイム キャプション。詳細については、[このブログの投稿](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)を参照してください。
 
 ###Media Services .NET SDK の更新
@@ -261,12 +261,12 @@ Azure Media Services .NET SDK が 3.1.0.1 にバージョン アップしまし�
 
 ##<a id="november_changes_14"></a>2014 年 11 月のリリース
 
-- ライブ スムーズ ストリーミング (FMP4) コンテンツの SSL 接続での取り込みに Media Services が対応しました。SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。ライブ ストリーミングの詳細については、[Azure Media Services ライブ ストリーミングの操作に関するページ]をご覧ください。
-- RTMP ライブ ストリームについては現在、SSL 接続で取り込むことはできません。
-- SSL 接続経由でコンテンツのストリーミングもできます。そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。
-- SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。ストリーミング URL の基になるストリーミング エンドポイントの作成日が 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。"origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。URL が旧形式である場合、SSL ストリーミングに対応するためには、[新しいストリーミング エンドポイントを作成](media-services-manage-origins.md)します。SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいて作成された URL を使用する必要があります。
-   
-##<a id="october_changes_14"></a>2014 年 10 月のリリース
+        - Media Services now enables you to ingest a live Smooth Streaming (FMP4) content over an SSL connection. To ingest over SSL, make sure to update the ingest URL to HTTPS.  For more information about live streaming, see [Working with Azure Media Services Live Streaming].
+        - Note that currently, you cannot ingest an RTMP live stream over an SSL connection.
+        - You can also stream your content over an SSL connection. To do this, make sure your streaming URLs start with HTTPS.
+        - Note that you can only stream over SSL if the streaming endpoint from which you deliver your content was created after September 10th, 2014. If your streaming URLs are based on the streaming endpoints created after September 10th, the URL contains “streaming.mediaservices.windows.net” (the new format). Streaming URLs that contain “origin.mediaservices.windows.net” (the old format) do not support SSL. If your URL is in the old format and you want to be able to stream over SSL, [create a new streaming endpoint](media-services-portal-manage-streaming-endpoints.md). Use URLs created based on the new streaming endpoint to stream your content over SSL.
+
+        ##<a id="october_changes_14"></a>October 2014 Release
 
 ### <a id="new_encoder_release"></a>Media Services Encoder のリリース
 
@@ -623,7 +623,6 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [StreamingEndpoint.aspx]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [ストリーミング エンドポイント]: http://msdn.microsoft.com/library/azure/dn783468.aspx
-[Azure Media Services ライブ ストリーミングの操作に関するページ]: http://msdn.microsoft.com/library/azure/dn783466.aspx
 [Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]: http://msdn.microsoft.com/library/azure/dn783466.aspx
 [AES-128 動的暗号化とキー配信サービスの使用]: http://msdn.microsoft.com/library/azure/dn783457.aspx
 [Using PlayReady Dynamic Encryption and License Delivery Service (PlayReady 動的暗号化とライセンス配信サービスの使用)]: http://msdn.microsoft.com/library/azure/dn783467.aspx
@@ -649,4 +648,4 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services ジョブ通知の処理]: http://msdn.microsoft.com/library/azure/dn261241.aspx
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

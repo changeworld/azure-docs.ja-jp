@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication レポート" 
-	description="ここでは、Azure Multi-Factor Authentication 機能のレポートを使用する方法について説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication レポート"
+	description="ここでは、Azure Multi-Factor Authentication 機能のレポートを使用する方法について説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication のレポート
 
@@ -23,7 +23,7 @@ Azure Multi-Factor Authentication は、個人や組織が使用できるいく�
 レポートは、Azure 管理ポータルを介してアクセスできます。
 
 Name| Description
-:------------- | :------------- | 
+:------------- | :------------- |
 使用法 | 使用法レポートは、全体的な使用状況、ユーザーの概要およびユーザーの詳細に関する情報を示します。
 サーバーの状態|このレポートは、アカウントに関連付けられている Multi-Factor Authentication Server の状態を示します。
 ユーザーのブロックの履歴|これらのレポートは、ユーザーのブロックまたはブロック解除の要求の履歴を示します。
@@ -47,6 +47,5 @@ Name| Description
 
 * [ユーザー向け](multi-factor-authentication-end-user.md)
 * [Azure Multi-Factor Authentication (MSDN)](https://msdn.microsoft.com/library/azure/dn249471.aspx)
- 
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

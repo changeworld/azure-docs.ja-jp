@@ -33,7 +33,7 @@ Docker は一般的なコンテナー管理およびイメージング プラッ
 
 Azure Docker VM 拡張機能では、Linux 仮想マシンで Docker デーモン、Docker クライアント、Docker Compose をインストールして構成します。この拡張機能は、Docker Compose を使用してコンテナー アプリケーションを定義し、デプロイするためにも使用します。Docker マシンの使用や Docker ホストの自作について制御を強化することができるので、堅牢性に優れた開発者環境や運用環境に適しています。
 
-Azure Resource Manager を使用すると、環境の全体構造を定義するテンプレートを作成してデプロイすることができます。テンプレートを使用すると、Docker ホスト、ストレージ、ロール ベースのアクセス制御 (RBAC)、診断などを定義できます。そのメリットについて詳しくは、[Resource Manager](../resource-group-overview.md) およびテンプレートに関する記事をご覧ください。Resource Manager のテンプレートを使用すると、将来必要に応じて、デプロイを再現することもできます。
+Azure Resource Manager を使用すると、環境の全体構造を定義するテンプレートを作成してデプロイすることができます。テンプレートを使用すると、Docker ホスト、ストレージ、ロール ベースのアクセス制御 (RBAC)、診断などを定義できます。そのメリットについて詳しくは、[Resource Manager](../resource-group-overview.md) およびテンプレートに関する記事をご覧ください。Resource Manager テンプレートを使用すると、将来必要に応じてデプロイを再現することもできます。
 
 ## Docker VM 拡張機能を使用したテンプレートのデプロイ:
 
@@ -46,7 +46,7 @@ azure group create --name myDockerResourceGroup --location "West US" \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-ストレージ アカウント、DNS 名、ユーザー名などを指定するためのプロンプトに入力したら、デプロイが完了するまで数分待ちます。次のような出力が表示されます。
+メッセージに従ってストレージ アカウント名、ユーザー名とパスワード、および DNS 名を入力します。次の例のような出力が表示されます。
 
 ```
 info:    Executing command group create
@@ -71,6 +71,66 @@ info:    group create command OK
 
 ```
 
+わずか数秒でプロンプトに戻りますが、バックグラウンドでは作成したリソース グループへのテンプレートのデプロイが進行中です。デプロイが完了するまで数分待ってから、VM に SSH で接続してください。
+
+`azure vm show` コマンドでデプロイの詳細と VM の DNS 名を確認できます。次の例の `myDockerResourceGroup` を、前の手順で指定した名前に置き換えてください。
+
+```bash
+azure vm show -g myDockerResourceGroup -n myDockerVM
+info:    Executing command vm show
++ Looking up the VM "myDockerVM"
++ Looking up the NIC "myVMNicD"
++ Looking up the public ip "myPublicIPD"
+data:    Id                              :/subscriptions/guid/resourceGroups/mydockerresourcegroup/providers/Microsoft.Compute/virtualMachines/MyDockerVM
+data:    ProvisioningState               :Succeeded
+data:    Name                            :MyDockerVM
+data:    Location                        :westus
+data:    Type                            :Microsoft.Compute/virtualMachines
+data:
+data:    Hardware Profile:
+data:      Size                          :Standard_F1
+data:
+data:    Storage Profile:
+data:      Image reference:
+data:        Publisher                   :Canonical
+data:        Offer                       :UbuntuServer
+data:        Sku                         :14.04.4-LTS
+data:        Version                     :latest
+data:
+data:      OS Disk:
+data:        OSType                      :Linux
+data:        Name                        :osdisk1
+data:        Caching                     :ReadWrite
+data:        CreateOption                :FromImage
+data:        Vhd:
+data:          Uri                       :http://mydockerstorage.blob.core.windows.net/vhds/osdiskfordockersimple.vhd
+data:
+data:    OS Profile:
+data:      Computer Name                 :MyDockerVM
+data:      User Name                     :ops
+data:      Linux Configuration:
+data:        Disable Password Auth       :false
+data:
+data:    Network Profile:
+data:      Network Interfaces:
+data:        Network Interface #1:
+data:          Primary                   :true
+data:          MAC Address               :00-0D-3A-33-D3-95
+data:          Provisioning State        :Succeeded
+data:          Name                      :myVMNicD
+data:          Location                  :westus
+data:            Public IP address       :13.91.107.235
+data:            FQDN                    :mydockergroup.westus.cloudapp.azure.com
+data:
+data:    Diagnostics Instance View:
+info:    vm show command OK
+```
+
+出力の先頭付近に VM の `ProvisioningState` が表示されます。ここで "`Succeeded`" と表示されている場合デプロイは完了しており、VM に SSH で接続できます。
+
+出力の末尾付近にある `FQDN` は、指定したドメイン名と選択した場所に基づく完全修飾ドメイン名を示しています。この FQDN は、後の手順で VM に SSH 接続する際に使用するものです。
+
+
 ## 最初の nginx コンテナーのデプロイ
 デプロイが完了したら、デプロイ時に指定した DNS 名を使用して、SSH で新しい Docker ホストに接続します。nginx コンテナーを実行してみましょう。
 
@@ -78,7 +138,7 @@ info:    group create command OK
 sudo docker run -d -p 80:80 nginx
 ```
 
-次のような出力が表示されます。
+次の例のような出力が表示されます。
 
 ```
 Unable to find image 'nginx:latest' locally
@@ -103,11 +163,11 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 
 ![実行中の ngnix コンテナー](./media/virtual-machines-linux-dockerextension/nginxrunning.png)
 
-Docker デーモン TCP ポートやセキュリティを構成したり、Docker Compose を使ってコンテナーをデプロイすることができます。詳細については、「[Azure Virtual Machine Extension for Docker GitHub project (Docker GitHub プロジェクト用の Azure 仮想マシン拡張機能)](https://github.com/Azure/azure-docker-extension/)」を参照してください。
+Docker デーモン TCP ポートやセキュリティを構成したり、Docker Compose を使ってコンテナーをデプロイすることができます。詳細については、[Docker GitHub プロジェクト用の Azure 仮想マシン拡張機能](https://github.com/Azure/azure-docker-extension/)に関するページを参照してください。
 
 ## Docker VM 拡張機能の JSON テンプレート リファレンス
 
-この例では、クイック スタート テンプレートを使用しました。独自の Resource Manager テンプレートと Azure Docker VM 拡張機能をデプロイするには、次のように追加します。
+この例では、クイック スタート テンプレートを使用しました。独自の Resource Manager テンプレートを使用して Azure Docker VM 拡張機能をデプロイするには、次の JSON を追加します。
 
 ```
 {
@@ -140,4 +200,4 @@ Resource Manager テンプレートの使用方法の詳細については、「
 3. [Docker と Compose を使用して Azure 仮想マシン上で複数コンテナー アプリケーションを定義して実行する](virtual-machines-linux-docker-compose-quickstart.md)
 3. [Azure コンテナー サービス クラスターのデプロイ](../container-service/container-service-deployment.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

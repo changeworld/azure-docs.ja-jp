@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/24/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # StorSimple Manager サービスを使用した StorSimple デバイスの管理
 
-## 概要
+## Overview
 
 この記事では、接続方法、用意されている各種オプション、この UI を通じて実行できる特定のワークフローへのリンクを含め、StorSimple Manager サービス インターフェイスについて説明します。このガイドは、StorSimple 物理デバイスと仮想デバイスの両方に適用されます。
 
@@ -114,4 +114,4 @@ StorSimple デバイスの日常的な操作または StorSimple デバイスの
 
 問題を解決できず、サービス要求の作成が必要な場合は、｢[Microsoft サポートに問い合わせる](storsimple-contact-microsoft-support.md)」を参照してください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

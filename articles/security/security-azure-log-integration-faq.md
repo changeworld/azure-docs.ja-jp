@@ -113,7 +113,9 @@ Windows の Azure 診断 *(WAD)* 構成を取得、変更、および設定す�
 
 変更後、ストレージ アカウントをチェックして、適切なイベントが収集されていることを確認します。
 
+Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
+
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

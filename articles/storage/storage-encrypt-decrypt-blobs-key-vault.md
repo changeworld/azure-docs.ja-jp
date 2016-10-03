@@ -1,20 +1,20 @@
 <properties
-   pageTitle="チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Azure"
-   description="このチュートリアルでは、Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
-   services="storage"
-   documentationCenter=""
-   authors="adhurwit"
-   manager=""
-   editor="tysonn"/>
+	pageTitle="チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Azure"
+	description="このチュートリアルでは、Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="adhurwit"
+	manager=""
+	editor="tysonn"/>
 
 <tags
-   ms.service="storage"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="required"
-   ms.date="03/31/2016"
-   ms.author="lakasa"/>
+	ms.service="storage"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="required"
+	ms.date="09/20/2016"
+	ms.author="lakasa;robinsh"/>
 
 # チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 
@@ -235,4 +235,4 @@ Microsoft Azure Storage の最新情報については、[Microsoft Azure Storag
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -15,7 +15,7 @@
 	ms.topic="support-article" 
 	ms.tgt_pltfrm="vm-linux"
 	ms.workload="infrastructure" 
-	ms.date="06/28/2016" 
+	ms.date="09/19/2016" 
 	ms.author="iainfou" 
 />
 
@@ -28,7 +28,7 @@ Azure 仮想マシン (VM) への SSH またはアプリケーション アク�
 
 ## Azure CLI の使用
 
-コンピューターに[最新の Azure CLI がインストール](../xplat-cli-install.md)されていること、およびリソース マネージャー モード (`azure config mode arm`) であることを確認します。
+コンピューターに[最新の Azure CLI がインストール](../xplat-cli-install.md)されていること、および Resource Manager モード (`azure config mode arm`) であることを確認します。
 
 次の Azure CLI コマンドを使用して、仮想マシンを再デプロイします。
 
@@ -49,4 +49,4 @@ azure vm list -g <resourcegroup>
 ## 次のステップ
 VM への接続に関する問題が発生した場合は、[SSH 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)に関するページまたは「[SSH の詳細なトラブルシューティング手順](virtual-machines-linux-detailed-troubleshoot-ssh-connection.md)」を参照してください。VM で実行されるアプリケーションにアクセスできない場合は、[アプリケーションの問題のトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)に関するページもご覧ください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

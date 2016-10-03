@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/30/2016" 
+	ms.date="09/15/2016" 
 	ms.author="tomfitz"/>
 
 # Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
@@ -34,7 +34,7 @@
 
     ![空のリソース グループの作成](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
-2. 名前と場所を指定し、必要に応じてサブスクリプションを選択します。
+2. 名前と場所を指定し、必要に応じてサブスクリプションを選択します。リソース グループにはリソースに関するメタデータが格納されるため、リソース グループの場所を入力する必要があります。場合によっては、コンプライアンス上の理由から、そのメタデータが格納される場所を指定する必要があります。一般に、ほとんどのリソースが存在する場所を指定することをお勧めします。同じ場所を使用することで、テンプレートを簡素化できます。
 
     ![グループの値の設定](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
@@ -118,4 +118,4 @@
 - デプロイ エラーのトラブルシューティングについては、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 - デプロイまたはリソース グループからテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

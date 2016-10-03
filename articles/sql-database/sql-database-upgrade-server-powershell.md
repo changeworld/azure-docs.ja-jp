@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/06/2016"
+	ms.date="09/19/2016"
 	ms.author="sstein"/>
 
 # PowerShell を使用した Azure SQL Database V12 へのアップグレード
@@ -53,9 +53,7 @@ V12 にアップグレードした後、[サービス レベルの推奨事項](
 
 ## 前提条件
 
-サーバーを PowerShell を使用する V12 にアップグレードするには、Azure PowerShell がインストールされ実行されている必要があります。バージョンによっては、リソース マネージャー モードに切り替えて Azure リソース マネージャーの PowerShell コマンドレットにアクセスする必要があります。
-
-PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+PowerShell を使用してサーバーを V12 にアップグレードするには、最新の Azure PowerShell をインストールして実行する必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 
 
 ## 資格情報を構成してサブスクリプションを選択
@@ -70,7 +68,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
 現在のサブスクリプションを設定するには、サブスクリプション情報と共に次のコマンドレットを実行します。
 
-	Select-AzureRmSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
+	Set-AzureRmContext -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
 上で選択したサブスクリプションに対し、次のコマンドが実行されます。
 
@@ -109,7 +107,7 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
 
     # Selecting the right subscription
     #
-    Select-AzureRmSubscription -SubscriptionName $SubscriptionName
+    Set-AzureRmContext -SubscriptionName $SubscriptionName
 
     # Getting the upgrade recommendations
     #
@@ -163,7 +161,7 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 個々のデータベースを監視するだけではなく、[ポータルを使用して](sql-database-elastic-pool-manage-portal.md)、または [PowerShell](sql-database-elastic-pool-manage-powershell.md) を使用してエラスティック データベース プールを監視することもできます。
 
 
-**リソース消費データ:** Basic、Standard、Premium データベースの場合、ユーザー データベース内の [sys.dm\_ db\_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、Premium データベース リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
+**リソース消費データ:** Basic、Standard、Premium の各データベースの場合、ユーザー データベース内の [sys.dm_db_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
 
     SELECT end_time
     	 , (SELECT Max(v)
@@ -182,7 +180,7 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 
 
 
-**アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure ポータルで 'アラート' を設定します。データベース アラートは、Azure ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。データベースを参照し、**[設定]** ブレードで **[アラート ルール]** を選択します。
+**アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure ポータルで 'アラート' を設定します。データベース アラートは、Azure Portal で、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。データベースを参照し、**[設定]** ブレードで **[アラート ルール]** を選択します。
 
 たとえば、DTU の平均割合の値が 5 分間にわたって 75% を超過したような場合に、「DTU 割合」に関する電子メール アラートを送るように設定できます。アラート通知の構成方法については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」をご覧ください。
 
@@ -201,4 +199,4 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

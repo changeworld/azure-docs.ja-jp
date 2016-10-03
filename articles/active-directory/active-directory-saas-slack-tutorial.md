@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Slack の統合
@@ -140,4 +140,4 @@ Slack へのユーザー プロビジョニングの構成にあたって必要�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

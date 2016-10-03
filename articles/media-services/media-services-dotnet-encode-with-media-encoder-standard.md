@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET を使用した Media Encoder Standard での資産のエンコード" 
+	pageTitle=".NET を使用した Media Encoder Standard での資産のエンコード | Microsoft Azure" 
 	description="このトピックでは、.NET を使用して、Media Encoder Standard で資産をエンコードする方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="08/30/2016"
+ 	ms.date="09/19/2016"
 	ms.author="juliako;anilmur"/>
 
 
@@ -23,7 +23,7 @@
 
 このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)」をご覧ください。
 
@@ -150,4 +150,4 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 [Media Encoder Standard と .NET を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md) [Media Services でのエンコーディングの概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

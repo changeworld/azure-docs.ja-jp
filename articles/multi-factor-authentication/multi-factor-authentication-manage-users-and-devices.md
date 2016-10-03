@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication レポート" 
-	description="ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。" 
-	documentationCenter="" 
-	services="multi-factor-authentication" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure Multi-Factor Authentication レポート"
+	description="ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。"
+	documentationCenter=""
+	services="multi-factor-authentication"
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 
@@ -86,4 +86,4 @@
 9. [保存] をクリックします。
 10. [閉じる] をクリックします。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

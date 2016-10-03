@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 エンドポイントの変更点
@@ -132,4 +132,4 @@ v2.0 トークンによって発行される特定の要求の詳細について
 ## 制限事項
 v2.0 エンドポイントを使用する場合に注意する必要があるいくつかの制限があります。これらの制限事項が実際のシナリオに当てはまるかどうかについては、「[v2.0 の制限事項に関するドキュメント](active-directory-v2-limitations.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

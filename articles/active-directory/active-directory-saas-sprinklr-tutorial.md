@@ -11,12 +11,13 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Sprinklr の統合
   
-このチュートリアルでは、Azure と Sprinklr の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Azure と Sprinklr の統合について説明します。  
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 -   有効な Azure サブスクリプション
 -   Sprinklr テナント
@@ -74,7 +75,7 @@
 
 1.  Azure クラシック ポータルの **[Sprinklr]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782903.png "Configure single sign-on")
 
 2.  **[ユーザーの Sprinklr へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -82,7 +83,7 @@
 
 3.  **[アプリケーション URL の構成]** ページで、**[Sprinklr サインイン URL]** ボックスに、"*https://\<テナント名>.sprinklr.com*" というパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "アプリケーション URL の構成")
+    ![アプリケーション URL の構成](./media/active-directory-saas-sprinklr-tutorial/IC782905.png "アプリケーション URL の構成")
 
 4.  **[prinklr.com でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
@@ -92,7 +93,7 @@
 
 6.  **[Administration]、[Settings]** の順に選択します。
 
-    ![Administration](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
+    ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
 
 7.  左側のパネルで、**[Manage Partner]、[Single Sign]** の順に選択します。
 
@@ -109,7 +110,7 @@
     1.  **[Name]** テキスト ボックスに、構成の名前を入力します (例: *WAADSSOTest*)。
     2.  **[Enabled]** を選択します。
     3.  **[Use new SSO Certificate]** を選択します。
-    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。  
+    4.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
         >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
@@ -125,7 +126,7 @@
 
 10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-sprinklr-tutorial/IC782912.png "Configure single sign-on")
 
 ##ユーザー プロビジョニングの構成
   
@@ -137,15 +138,15 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 2.  **[Administration]、[Settings]** の順に選択します。
 
-    ![Administration](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
+    ![管理](./media/active-directory-saas-sprinklr-tutorial/IC782907.png "管理")
 
 3.  左側のパネルで、**[クライアントの管理]、[Users]** の順に選択します。
 
-    ![設定](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "Settings")
+    ![Settings](./media/active-directory-saas-sprinklr-tutorial/IC782914.png "Settings")
 
 4.  **[Add User]** をクリックします。
 
-    ![Settings](./media/active-directory-saas-sprinklr-tutorial/IC782915.png "設定")
+    ![Settings](./media/active-directory-saas-sprinklr-tutorial/IC782915.png "Settings")
 
 5.  **[Edit user]** ダイアログで、次の手順に従います。
 
@@ -182,8 +183,8 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-sprinklr-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

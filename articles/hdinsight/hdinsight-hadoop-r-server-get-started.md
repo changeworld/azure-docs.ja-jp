@@ -4,7 +4,7 @@
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
-   manager="paulettem"
+   manager="jhubbard"
    editor="cgronlun"
 />
 
@@ -410,4 +410,4 @@ Azure Resource Manager テンプレートを使用して HDInsight で R Server 
 
 Azure Resource Manager テンプレートの使用に関する全般的な情報については、「[ARM テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

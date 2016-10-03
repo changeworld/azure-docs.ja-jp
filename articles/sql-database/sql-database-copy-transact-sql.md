@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/16/2016"
+	ms.date="09/19/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -31,7 +31,7 @@
 
 この記事の手順を完了するには、次のものが必要です。
 
-- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料試用版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料評価版**をクリックしてからこの記事に戻り、最後まで完了してください。
 - Azure SQL Database。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms174173.aspx)。SSMS を入手していない場合、またはこの記事で説明する機能を使用できない場合は、[最新版をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)してください。
 
@@ -85,8 +85,8 @@ sys.databases ビューと sys.dm\_database\_copies ビューを照会して、�
 
 ## 次のステップ
 
-- Azure SQL Database のコピーの概要については、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
-- Azure ポータルを使用してデータベースをコピーするには、「[Copy an Azure SQL database using the Azure Portal (Azure ポータルを使用した Azure SQL Database のコピー)](sql-database-copy-portal.md)」をご覧ください。
+- Azure SQL Database のコピーの概要については、「[Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
+- Azure ポータルを使用してデータベースをコピーするには、「[Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy-portal.md)」を参照してください。
 - PowerShell を使用してデータベースをコピーするには、「[PowerShell を使用した Azure SQL Database のコピー](sql-database-copy-powershell.md)」をご覧ください。
 - 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 
@@ -100,4 +100,4 @@ sys.databases ビューと sys.dm\_database\_copies ビューを照会して、�
 - [ビジネス継続性の概要](sql-database-business-continuity.md)
 - [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/13/2016"
+	ms.date="09/16/2016"
 	ms.author="rajanaki"/>
 
 # PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
@@ -26,7 +26,7 @@
 
 
 
-## 概要
+## Overview
 
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。デプロイ シナリオのすべての一覧については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
@@ -35,11 +35,11 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 この記事にはシナリオの前提条件が含まれています。また、次の方法について説明しています。
 
 - Recovery Services コンテナーを設定する
-- ソース VMM サーバーに Azure Site Recovery プロバイダーをインストールする 
+- ソース VMM サーバーに Azure Site Recovery プロバイダーをインストールする
 - コンテナーにサーバーを登録し、Azure ストレージ アカウントを追加する
 - Hyper-V ホスト サーバーに Azure Recovery Services エージェントをインストールする
-- すべての保護された仮想マシンに適用される VMM クラウドの保護設定を構成する 
-- これらの仮想マシンの保護を有効にする 
+- すべての保護された仮想マシンに適用される VMM クラウドの保護設定を構成する
+- これらの仮想マシンの保護を有効にする
 - すべて問題なく動作していることを確認するために、フェールオーバーをテストする
 
 このシナリオの設定時に問題が発生した場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
@@ -75,7 +75,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### Hyper-V の前提条件
 
 - ホスト Hyper-V サーバーは、少なくとも Hyper-V ロールを持つ Windows Server 2012 を実行しており、最新の更新プログラムがインストールされている必要があります。
-- クラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。クラスター ブローカーを手動で構成する必要があります。次に 
+- クラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。クラスター ブローカーを手動で構成する必要があります。次に
 - 手順については、「[How to Configure Hyper-V Replica Broker (Hyper-V レプリカ ブローカーを構成する方法)](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx)」をご覧ください。
 - 保護を管理するすべての Hyper-V ホスト サーバーまたはクラスターが VMM クラウドに属している必要があります。
 
@@ -89,7 +89,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ネットワーク マッピングをデプロイする場合は、以下のことが必要になります。
 
 - ソース VMM サーバー上の保護する仮想マシンが VM ネットワークに接続している。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
-- レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。フェールオーバー時にこのネットワークを選択します。ネットワークは Azure Site Recovery サブスクリプションと同じリージョンである必要があります。
+- レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。フェールオーバー時にこのネットワークを選択します。ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
 
 ネットワーク マッピングの詳細については、以下を参照してください。
 
@@ -99,7 +99,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 
 
 ###PowerShell の前提条件
-Azure PowerShell を使用する準備が整っていることを確認してください。PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。PowerShell の設定方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを[ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
+Azure PowerShell を使用する準備が整っていることを確認してください。PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。PowerShell の設定については、[Azure PowerShell のインストールと構成](../powershell-install-configure.md)に関するページをご覧ください。PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを[ここ](https://msdn.microsoft.com/library/dn850420.aspx)に表示できます。
 
 Azure PowerShell でのパラメーター値、入力、出力の一般的な処理方法など、コマンドレットの使用に役立つヒントについては、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」をご覧ください。
 
@@ -345,4 +345,4 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認します](https://msdn.microsoft.com/library/azure/mt637930.aspx)。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,10 +13,15 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="06/30/2016"
+	ms.date="09/12/2016"
 	ms.author="piyushjo" />
 
 #Azure Mobile Engagement iOS SDK リリース ノート
+
+##4\.0.0 (2016 年 9 月 12 日)
+
+-   iOS 10 デバイスで処理されない通知を修正しました。
+-   XCode 7 が非推奨になりました。
 
 ##3\.2.4 (2016 年 6 月 30 日)
 
@@ -71,4 +76,4 @@
 -   セキュリティの強化。
 -   SmartAd の追跡が削除されました。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

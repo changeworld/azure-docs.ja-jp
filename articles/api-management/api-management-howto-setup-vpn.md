@@ -24,7 +24,7 @@ API Management の VPN のサポートにより、API Management ゲートウェ
 
 ## <a name="enable-vpn"> </a>VPN 接続を有効にする
 
->VPN 接続は、**Premium** レベルでのみ利用できます。Premium レベルに切り替えるには、[Azure クラシック ポータル][]で API Management サービスを開き、**[スケール]** タブを開きます。 **[全般]** セクションで、Premium レベルを選択し、[保存] をクリックします。
+>VPN 接続は、**Premium** レベルと **Developer** レベルでのみ利用できます。Premium レベルに切り替えるには、[Azure クラシック ポータル][]で API Management サービスを開き、**[スケール]** タブを開きます。**[全般]** セクションで、Premium レベルを選択し、[保存] をクリックします。
 
 VPN 接続を有効にするには、[Azure クラシック ポータル][]で API Management サービスを開き、**[構成]** タブに切り替えます。
 
@@ -85,4 +85,4 @@ API Management は、さまざまな Azure サービスに依存しています�
 [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
 [Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,8 +3,8 @@
 	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 	services="storage"
 	documentationCenter="python"
-	authors="emgerner-msft"
-	manager="wpickett"
+	authors="tamram"
+	manager="carmonm"
 	editor="tysonn"/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-    ms.date="07/26/2016"
-	ms.author="jehine"/>
+    ms.date="09/20/2016"
+	ms.author="jwillis;tamram"/>
 
 # Python から Azure BLOB ストレージを使用する方法
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## 概要
+## Overview
 
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
@@ -127,4 +127,4 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

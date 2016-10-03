@@ -35,7 +35,7 @@
 
 ## デプロイの対象
 
-このテンプレートでは、[Basic または Standard](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
+このテンプレートでは、[Basic、Standard、または Premium](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
@@ -69,7 +69,8 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
     "type": "string", 
     "allowedValues": [ 
         "Basic", 
-        "Standard" 
+        "Standard",
+        "Premium" 
     ], 
     "defaultValue": "Standard", 
     "metadata": { 
@@ -78,9 +79,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 ```
 
-テンプレートでは、このパラメーターに指定できる値 (Basic または Standard) を定義します。値が指定されない場合は既定値 (Standard) が割り当てられます。
-
-Standard 階層には 1 か月あたり 10 ドルの基本料金があり、1 か月間に 1,250 万操作を追加コストなしで実行できます。Basic 階層では、100 万回の処理につき $0.05 の費用がかかります。
+テンプレートには、このパラメーターに指定できる値 (Basic、Standard、または Premium) を定義します。値が指定されない場合は既定値 (Standard) が割り当てられます。
 
 Service Bus の価格の詳細については、「[Service Bus の料金と課金][]」を参照してください。
 
@@ -154,4 +153,4 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
   [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
   [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

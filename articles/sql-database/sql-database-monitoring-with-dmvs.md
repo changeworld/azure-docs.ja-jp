@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="07/05/2016"
+   ms.date="09/20/2016"
    ms.author="carlrab"/>
 
 # 動的管理ビューを使用した Azure SQL Database の監視
@@ -42,7 +42,7 @@ SQL Database で、動的管理ビューに対してクエリを実行するに�
 次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- Calculates the size of the database.
+-- データベースのサイズを計算します。 
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
@@ -76,7 +76,7 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE] **sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、ユーザーがデータベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションがユーザーに表示されます。ユーザーがアクセス許可を持っていない場合は、現在のセッションのみが表示されます。
+> [AZURE.NOTE] **sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、データベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションが表示されます。アクセス許可を持っていない場合は、現在のセッションのみが表示されます。
 
 ## クエリのパフォーマンスの監視
 
@@ -135,4 +135,4 @@ ORDER BY highest_cpu_queries.total_worker_time DESC;
 
 [SQL Database の概要](sql-database-technical-overview.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

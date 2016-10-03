@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Azure Mobile Engagement iOS SDK のアップグレード手順"
+	pageTitle="Azure Mobile Engagement iOS SDK のアップグレード手順 | Microsoft Azure"
 	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
 	services="mobile-engagement"
 	documentationCenter="mobile"
-	authors="MehrdadMzfr"
-	manager="dwrede"
+	authors="piyushjo"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,14 +13,98 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="02/29/2016"
-	ms.author="MehrdadMzfr" />
+	ms.date="09/14/2016"
+	ms.author="piyushjo" />
 
 #アップグレードの手順
 
-既にアプリケーションに以前のバージョンのモバイル エンゲージメントを統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
+既にアプリケーションに以前のバージョンの Mobile Engagement を統合してある場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
 まず、新しいバージョンの SDK ごとに、EngagementSDK フォルダーと EngagementReach フォルダーを置き換える (削除し、xcode で再インポートする) 必要があります。
+
+##3\.0.0 から 4.0.0 に移行
+
+### XCode 8
+SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
+
+> [AZURE.NOTE] XCode 7 に依存している場合は、[iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh) を使用できます。この以前のバージョンの Reach モジュールには、iOS 10 デバイスで実行したときに、システム通知が処理されないという既知のバグがあります。これを修正するには、次のようにアプリケーション デリゲートで非推奨 API の `application:didReceiveRemoteNotification:` を実装する必要があります。
+
+	- (void)application:(UIApplication*)application
+	didReceiveRemoteNotification:(NSDictionary*)userInfo
+	{
+	    [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:nil];
+	}
+
+> [AZURE.IMPORTANT] **この回避策はお勧めできません**。この iOS API は推奨されていないため、(マイナー アップグレードも含め) iOS バージョンの今後のアップグレードでこの動作が変更される可能性があります。できるだけ速やかに XCode 8 に切り替えてください。
+
+### UserNotifications フレームワーク
+`UserNotifications` フレームワークをビルド フェーズに追加する必要があります。
+
+プロジェクト エクスプローラーでプロジェクト ペインを開き、適切なターゲットを選択します。次に、**[Build phases (ビルド フェーズ)]** タブを開き、**[Link Binary With Libraries (バイナリをライブラリとリンク)]** メニューで `UserNotifications.framework` フレームワークを追加し、リンクを `Optional` として設定します。
+
+### アプリケーションのプッシュ機能
+XCode 8 はアプリケーションのプッシュ機能をリセットする場合があります。選択したターゲットの `capability` タブで、この機能を再確認してください。
+
+### 開発者独自の UNUserNotificationCenterDelegate 実装が既にある場合
+
+SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装があります。これは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。UNUserNotificationCenter デリゲートはアプリケーションごとに 1 つしか使用できないため、SDK は開発者のデリゲートを検出すると、独自の実装を使用しなくなります。これは、開発者独自のデリゲートに Engagement ロジックを追加する必要があることを意味します。
+
+これを実現する方法は 2 つあります。
+
+デリゲート呼び出しを SDK に転送します。
+
+	#import <UIKit/UIKit.h>
+	#import "EngagementAgent.h"
+	#import <UserNotifications/UserNotifications.h>
+
+
+	@interface MyAppDelegate : NSObject <UIApplicationDelegate, UNUserNotificationCenterDelegate>
+	@end
+
+	@implementation MyAppDelegate
+
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+	{
+	  // Your own logic.
+
+	  [[EngagementAgent shared] userNotificationCenterWillPresentNotification:notification withCompletionHandler:completionHandler]
+	}
+
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler
+	{
+	  // Your own logic.
+
+	  [[EngagementAgent shared] userNotificationCenterDidReceiveNotificationResponse:response withCompletionHandler:completionHandler]
+	}
+	@end
+
+または、`AEUserNotificationHandler` クラスから継承します。
+
+	#import "AEUserNotificationHandler.h"
+	#import "EngagementAgent.h"
+
+	@interface CustomUserNotificationHandler :AEUserNotificationHandler
+	@end
+
+	@implementation CustomUserNotificationHandler
+
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+	{
+	  // Your own logic.
+
+	  [super userNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
+	}
+
+	- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse: UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler
+	{
+	  // Your own logic.
+
+	  [super userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
+	}
+
+	@end
+
+> [AZURE.NOTE] 通知が Engagement から送信されたものかどうかを確認するには、`userInfo` ディクショナリをエージェントの `isEngagementPushPayload:` クラス メソッドに渡します。
 
 ##2\.0.0 から 3.0.0 に移行
 iOS 4.X のサポートが終了。このバージョンから、アプリケーションのデプロイ ターゲットは iOS 6 以降である必要があります。
@@ -72,4 +156,4 @@ SmartAd の追跡が SDK から削除されました。`AETrackModule` クラス
 -   クラス `CapptainUtils` は `EngagementUtils` に変更されました。
 -   クラス `CapptainViewController` は `EngagementViewController` に変更されました。
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0921_2016-->

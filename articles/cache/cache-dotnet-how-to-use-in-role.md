@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 
@@ -131,9 +131,9 @@ In-Role Cache のキャッシュにアクセスするには、クライアント
 
 ![RoleCache4][RoleCache4]
 
-**[インロール キャッシュ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
+**[ インロール キャッシュ ]** を選択し、**[インストール]**、**[同意する]** の順にクリックします。
 
->一覧に **[インロール キャッシュ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
+>一覧に **[ インロール キャッシュ ]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
 
 ![RoleCache5][RoleCache5]
 
@@ -410,4 +410,4 @@ In-Role Cache 用の出力キャッシュ プロバイダーを有効にする�
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

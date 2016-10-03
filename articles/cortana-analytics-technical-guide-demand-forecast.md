@@ -104,7 +104,7 @@ Azure HD Insight サービスを使用して、[Hive](http://blogs.msdn.com/b/bi
 
 -   次を選択する
 
-    -   クエリ入力を表示する場合は ***[入力]***
+    -   入力クエリを表示する場合は ***[入力]***
 
     -   クエリ自体を表示する場合は ***[クエリ]***
 
@@ -189,7 +189,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 ## **Power BI ダッシュボード**
 
-### 概要
+### Overview
 
 このセクションでは、Azure Stream Analytics (ホット パス) からのリアルタイムのデータのほか、Azure Machine Learning (コールド パス) からの予測結果を表示する Power BI ダッシュボードの設定方法について説明します。
 
@@ -262,7 +262,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 	-   前のページに戻ったら、ウィンドウを閉じます。メッセージが表示されます。**[適用]** をクリックします。最後に、**[保存]** ボタンをクリックして、変更を保存します。これで、Power BI ファイルは、サーバーへの接続を確立しました。視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
 
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](http://www.powerbi.com/)に発行します。この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](http://www.powerbi.com/)に公開します。この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
 
 	-   **[発行]** をクリックします。数秒後、緑色のチェック マークの付いた "Publishing to Power BI Success! (Power BI への発行が成功しました)" と表示するウィンドウが表示されます。[Power BI で demoprediction.pbix を開く] の下のリンクをクリックします。詳細な手順については、「[Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
 
@@ -294,6 +294,6 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 -   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
 ## **謝辞**
-この記事は、Microsoft のデータ サイエンティスト Yijing Chen およびソフトウェア エンジニア Qiu Min によって作成されています。
+この記事は、Microsoft のデータ サイエンティスト Yijing Chen とソフトウェア エンジニア Qiu Min によって作成されています。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/05/2016"
+   ms.date="09/20/2016"
    ms.author="dkshir;chackdan"/>
 
 
@@ -32,7 +32,7 @@
 6. 追加する新しいノードを記述したパラメーターを指定して、*AddNode.ps1* Powershell を実行します。次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と FD1 に追加します。*ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。このエンドポイントでは、クラスター内の "*任意*" のノードの IP アドレスを選択できます。
 
 ```
-.\AddNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClusterConnectionEndPoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain FD1
+.\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClusterConnectionEndPoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain FD1 -AcceptEULA true
 ```
 
 ## クラスターからのノードの削除
@@ -43,7 +43,7 @@
 4. *RemoveNode.ps1* Powershell を実行します。次の例では、現在のノードをクラスターから削除します。*ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。このエンドポイントでは、クラスター内の "*任意*" のノードの IP アドレスを選択できます。
 
 ```
-.\RemoveNode.ps1 -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab -ExistingClusterConnectionEndPoint 182.17.34.50:19000
+.\RemoveNode.ps1 -ExistingClusterConnectionEndPoint 182.17.34.50:19000
 ```
 
 
@@ -53,4 +53,4 @@
 - [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 - [Windows を実行する Azure VM を使用してスタンドアロン Service Fabric クラスターを作成する](service-fabric-cluster-creation-with-windows-azure-vms.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

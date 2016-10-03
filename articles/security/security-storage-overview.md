@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/08/2016"
+   ms.date="09/16/2016"
    ms.author="terrylan"/>
 
 # Azure Storage のセキュリティの概要
@@ -101,4 +101,4 @@ Azure Disk Encryption では [Azure Key Vault](https://azure.microsoft.com/servi
 - [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
 - [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

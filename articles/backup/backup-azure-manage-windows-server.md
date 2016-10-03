@@ -60,7 +60,12 @@
 - 削除 - 不要になった Recovery Services コンテナーを削除して、ストレージ領域を解放できます。[削除] は、保護されているサーバーすべてがコンテナーから削除された後にのみ有効になります。
 
 ![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
-
+## Azure Backup エージェントを使用したバックアップに関するアラート:
+| アラート レベル | 送信されるアラート |
+| ------------- | ------------- |
+| 重大 | バックアップの失敗、回復エラー |
+| 警告 | 警告を伴ってバックアップが完了した (破損が原因で 100 個未満のファイルがバックアップされず、膨大な数のファイルが正常にバックアップされたとき) |
+| 情報 | なし |
 ## バックアップ アラートの管理
 **[バックアップ アラート]** タイルをクリックして **[バックアップ アラート]** ブレードを開き、アラートを管理します。
 
@@ -285,9 +290,14 @@ A3.アラートのノイズを軽減する目的で、次の場合は通知が�
    - ジョブが取り消された。
    - 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
 
+## 監視に関する問題のトラブルシューティング<br>
+#### 問題: Azure Backup エージェントからのジョブとアラートがポータルに表示されない。
+##### トラブルシューティングの手順:
+ジョブやアラートのデータを Azure Backup サービスに送信するには、"OBRecoveryServicesManagementAgent" を使用します。タスク マネージャーを開き、"OBRecoveryServicesManagementAgent" プロセスが実行されているかどうかを確認します。場合によっては、このプロセスが停止またはシャットダウンしていることがあります。このプロセスが実行されていない場合は、コントロール パネルからサービスの一覧を表示し、"Microsoft Azure Recovery Services 管理エージェント" を開始または再起動してください。詳細については、"Azure Backup エージェントのインストール フォルダー"\\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider* にあるログを参照してください。<b>例:</b> C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Temp\\GatewayProvider0.errlog
+
 ## 次のステップ
 - [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 - Azure Backup の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

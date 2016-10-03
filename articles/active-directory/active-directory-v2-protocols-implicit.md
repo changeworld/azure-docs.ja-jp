@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 プロトコル: 暗黙的なフローを使用する SPA
@@ -56,7 +56,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [AZURE.TIP] この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーには `id_token` が入った状態になります。<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| パラメーター | | 説明 |
+| パラメーター | | Description |
 | ----------------------- | ------------------------------- | --------------- |
 | テナント | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。詳細については、[プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client\_id | 必須 | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
@@ -88,7 +88,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=12345
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | access\_token | `response_type` に `token` が含まれる場合に含まれます。この場合は、Microsoft Graph 用にアプリケーションが要求したアクセス トークンです。アクセス トークンはデコードしないようにする必要があります。検証した場合、不明瞭な文字列として扱われることがあります。 |
 | token\_type | `response_type` に `token` が含まれる場合に含まれます。常に `Bearer` になります。 |
@@ -107,7 +107,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint={{consumers-or-organizations}}&login_hint={{your-username}}
 ```
 
-| パラメーター | | 説明 |
+| パラメーター | | Description |
 | ----------------------- | ------------------------------- | --------------- |
 | テナント | 必須 | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。詳細については、[プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client\_id | 必須 | 登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) によってアプリに割り当てられたアプリケーション ID。 |
@@ -182,7 +182,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | access\_token | アプリが要求したトークン。 |
 | token\_type | 常に `Bearer` になります。 |
@@ -199,7 +199,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -232,4 +232,4 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

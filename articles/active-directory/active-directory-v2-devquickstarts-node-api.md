@@ -13,7 +13,7 @@
   	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # node.js を使用して Web API をセキュリティで保護する
@@ -645,7 +645,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 次に、ディレクトリを変更し、curl コマンドを実行してコンテンツを取得します。
 
-`$ cd azuread`
+`$ cd azuread` 
 `$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
@@ -713,7 +713,7 @@ server.use(passport.session()); // Provides session support
 ```
 
 > [AZURE.TIP]
-API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される(token.sub を通して呼び出される) トークン内のユーザーのサブスクリプション ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
+API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、"owner" フィールドに配置される (token.sub を通して呼び出される) トークン内のユーザーのサブスクリプション ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
 
 次に、passport-azure-ad に含まれる Open ID Connect Bearer 戦略を使用します。今はコードをざっと見てください。内容は後で説明します。このコードを、上述のコードの後ろに置きます。
 
@@ -835,7 +835,7 @@ Transfer-Encoding: chunked
 ここで期待される応答は、Passport レイヤーが認証エンドポイントへのリダイレクトを試みていることを示す 401 です。期待どおりの応答が返っています。
 
 
-## ご利用ありがとうございます。 OAuth2 を使用する REST API サービスが完成しました。
+## お疲れさまでした。 OAuth2 を使用する REST API サービスが完成しました。
 
 OAuth2 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。別のチュートリアルに進むことが必要になります。
 
@@ -855,8 +855,8 @@ Restify と OAuth2 を使用して REST API を実装する方法についての
 - [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## マイクロソフト製品のセキュリティ更新プログラムを取得する
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

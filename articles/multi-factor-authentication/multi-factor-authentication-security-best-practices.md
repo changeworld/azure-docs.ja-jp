@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Azure MFA を使用するためのセキュリティのベスト プラクティス" 
-	description="このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のベスト プラクティスについて説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Azure MFA を使用するためのセキュリティのベスト プラクティス"
+	description="このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のベスト プラクティスについて説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティのベスト プラクティス
 
@@ -31,7 +31,7 @@
 ![EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 Azure AD Premium または Enterprise Mobility Suite を使用してクラウドに Azure MFA を導入するには、まず、ユーザーにライセンスを割り当てることをお勧めします。Azure Multi-Factor Authentication はこれらのスイートに含まれるため、組織は、多要素認証機能をすべてのユーザーに展開する以外に追加操作は必要ありません。
- 
+
 Multi-Factor Authentication を設定する場合は、次の点を考慮してください。
 
 - 多要素認証プロバイダーを作成する必要はありません。Azure AD Premium と Enterprise Mobility Suite には、Azure Multi-Factor Authentication が付属しています。認証プロバイダーを作成すると、二重に課金される場合があります。
@@ -102,7 +102,7 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 オンプレミスでデプロイされる各コンポーネントの追加の考慮事項とベスト プラクティスについては、次の一覧を参照してください。
 
 メソッド|Description
-:------------- | :------------- | 
+:------------- | :------------- |
 [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)|AD FS による Azure Multi-Factor Authentication の設定に関する情報です。
 [RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)| RADUIS による Azure MFA Server のセットアップと構成に関する情報です。
 [IIS 認証](multi-factor-authentication-get-started-server-iis.md)|IIS を使用した Azure MFA Server のセットアップと構成に関する情報です。
@@ -111,7 +111,7 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](multi-factor-authentication-get-started-server-rdg.md)| RADIUS を使用したリモート デスクトップ ゲートウェイによる Azure MFA Server のセットアップと構成に関する情報です。
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
-[Azure Multi-Factor Authentication を使用した高度な VPN の構成](multi-factor-authentication-advanced-vpn-configurations.md)|Cisco ASA、Citrix Netscaler、Juniper/Pulse Secure などの VPN アプライアンスの LDAP または RADIUS を使用した構成に関する情報です。 
+[Azure Multi-Factor Authentication を使用した高度な VPN の構成](multi-factor-authentication-advanced-vpn-configurations.md)|Cisco ASA、Citrix Netscaler、Juniper/Pulse Secure などの VPN アプライアンスの LDAP または RADIUS を使用した構成に関する情報です。
 
 
 ## その他のリソース
@@ -121,4 +121,4 @@ Azure Multi-Factor Authentication Server を使用すると、Azure AD アカウ
 - [Azure Multi-Factor Authentication のセットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md)
 - [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

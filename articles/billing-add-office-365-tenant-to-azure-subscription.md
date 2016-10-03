@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="ibiza"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="09/16/2016"
 	ms.author="cjiang"/>
 
 # Office 365 テナントの Azure サブスクリプションへの関連付け
@@ -26,7 +26,7 @@
 Office 365 テナントを Azure サブスクリプションに関連付けるには、まず Azure アカウントを使用して Office 365 テナントを追加した後、その Office 365 テナントに Azure サブスクリプションを関連付けます。詳細な手順を参照してください。
 
 ## 詳細な手順
-このシナリオの Kelley Wall は、アカウント kelly.wall@outlook.com の Azure サブスクリプションがあるユーザーです。また Kelley は、kelley.wall@contoso.onmicrosoft.com というアカウントで Office 365 サブスクリプションも所有しています。そこで Kelley は、Office 365 テナントに Azure サブスクリプションでアクセスしたいと考えています。
+このシナリオの Kelley Wall は、アカウント kelly.wall@outlook.com の Azure サブスクリプションがあるユーザーです。Kelley は、kelley.wall@contoso.onmicrosoft.com というアカウントで Office 365 サブスクリプションも所有していて、Office 365 テナントに Azure サブスクリプションでアクセスしたいと考えています。
 
 ![msa-aad-status](./media/billing-add-office-365-tenant-to-azure-subscription/s31_msa-aad-status.png)
 
@@ -143,6 +143,6 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 		![Azure-sign-in-with-co-admin](./media/billing-add-office-365-tenant-to-azure-subscription/s324_azure-sign-in-with-co-admin.png)
 
 ## 次のステップ
-関連したシナリオが紹介されています。既に Office 365 サブスクリプションがあり、Azure サブスクリプションが使用できる状態にあるものの、Azure サブスクリプションには既存の Office 365 ユーザー アカウントを使用したい、というケースです。または、既に Azure サブスクライバーであり、既存の Azure Active Directory のユーザー用に Office 365 サブスクリプションを取得したい場合。具体的な方法については、「[既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)](billing-use-existing-office-365-account-azure-subscription.md)」を参照してください。
+関連するシナリオとして、既に Office 365 サブスクリプションがあり、Azure サブスクリプションが使用できる状態にあるものの、Azure サブスクリプションには既存の Office 365 ユーザー アカウントを使用したい、という場合があります。または、既に Azure サブスクライバーであり、既存の Azure Active Directory のユーザー用に Office 365 サブスクリプションを取得したい場合。具体的な方法については、「[既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)](billing-use-existing-office-365-account-azure-subscription.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

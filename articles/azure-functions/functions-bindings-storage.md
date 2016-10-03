@@ -461,6 +461,21 @@ public class Person
 }
 ```
 
+次の F# コード例でも、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。
+
+```fsharp
+[<CLIMutable>]
+type Person = {
+  PartitionKey: string
+  RowKey: string
+  Name: string
+}
+
+let Run(myQueueItem: string, personEntity: Person) =
+    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+    log.Info(sprintf "Name in Person entity: %s" personEntity.Name)
+```
+
 次のノード コード例でも、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。
 
 ```javascript
@@ -567,6 +582,47 @@ public class Person
 
 ```
 
+#### ストレージ テーブルの例: F でのテーブル エンティティの作成#
+
+次の例の *function.json* と *run.fsx* では、F# でテーブル エンティティを書き込む方法を示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnection",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+```fsharp
+[<CLIMutable>]
+type Person = {
+  PartitionKey: string
+  RowKey: string
+  Name: string
+}
+
+let Run(input: string, tableBinding: ICollector<Person>, log: TraceWriter) =
+    for i = 1 to 10 do
+        log.Info(sprintf "Adding Person entity %d" i)
+        tableBinding.Add(
+            { PartitionKey = "Test"
+              RowKey = i.ToString()
+              Name = "Name" + i.ToString() })
+```
+
 #### ストレージ テーブルの例: ノードでのテーブル エンティティの作成
 
 次の例の *function.json* と *run.csx* では、ノードでテーブル エンティティを書き込む方法を示します。
@@ -607,4 +663,4 @@ module.exports = function (context, myQueueItem) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

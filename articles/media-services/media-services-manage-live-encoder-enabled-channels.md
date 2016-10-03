@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する" 
-	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信し、その後に Media Services でアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
+	pageTitle="Azure Media Services を使用してマルチビットレートのストリームを作成するライブ ストリーミング | Microsoft Azure" 
+	description="このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信した後、Media Services を使用してアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH、HDS のいずれかを使用してクライアントの再生アプリケーションに送信できます。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="anilmur" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/19/2016"
+	ms.author="juliako;anilmur"/>
 
 #Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
-##概要
+##Overview
 
 Azure Media Services (AMS) では、**チャネル**はライブ ストリーミング コンテンツを処理するパイプラインを表します。**チャネル**は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
@@ -34,7 +34,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 
 - **Standard** – Media Services を使用して、シングル ビットレートのライブ ストリームをマルチ ビットレート ストリームにエンコードする場合に、この値を選択します。ライブ エンコードは課金に影響することと、ライブ エンコード チャネルを "実行中" 状態のままにしておくと請求料金が課されることに注意してください。余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。
 
->[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が有効なチャネルの属性について取り上げます (**標準**エンコード型)。ライブ エンコードの実行が無効なチャネルの操作については、「[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」をご覧ください。
+>[AZURE.NOTE]このトピックでは、ライブ エンコードの実行が有効なチャネル (エンコードの種類が**標準**のチャネル) の属性について説明します。ライブ エンコードの実行が無効なチャネルの操作については、「[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)」をご覧ください。
 >
 >必ず「[考慮事項](media-services-manage-live-encoder-enabled-channels.md#Considerations)」セクションを確認してください。
 
@@ -59,7 +59,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
  
 チャネルの状態|ポータル UI インジケーター|課金対象
 ---|---|---
-開始中|開始中|いいえ (遷移状態)
+開始中|Starting|いいえ (遷移状態)
 実行中|準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在)|はい
 停止中|停止中|いいえ (遷移状態)
 停止済み|停止済み|いいえ
@@ -416,10 +416,10 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
  
 チャネルの状態|ポータル UI インジケーター|課金対象
 ---|---|---
-開始中|開始中|いいえ (遷移状態)
+Starting|Starting|いいえ (遷移状態)
 実行中|準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在)|はい
 停止中|停止中|いいえ (遷移状態)
-停止済み|停止済み|いいえ
+停止済み|停止済み|なし
 
 
 >[AZURE.NOTE] 現時点では、チャネルの開始の平均は約 2 分ですが、20 分以上かかる場合もあります。チャネルのリセットには、最大で 5 分かかります。
@@ -457,7 +457,9 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 - [REST API](https://msdn.microsoft.com/library/azure/dn783458.aspx)
 
 
-##Media Services のラーニング パス
+##次のステップ
+
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -468,7 +470,7 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 
 ##関連トピック
 
-[Azure Media Services を使用してライブ ストリーミング イベントを配信する](media-services-live-streaming-workflow.md)
+[Azure Media Services を使用してライブ ストリーミング イベントを配信する](media-services-overview.md)
 
 [Media Services の概念](media-services-concepts.md)
 
@@ -476,4 +478,4 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

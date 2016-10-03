@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/16/2016" 
 	ms.author="fashah;garye;bradsev" />
 
 #<a name="heading">Azure の SQL Server Virtual Machine でデータを処理する</a>
@@ -113,10 +113,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 上記の位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。
 
 
-> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python (SQL Server に python でアクセスするための HelloWorld サンプル)](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」で pyodbc を使用した実行方法の例を確認してください。
- 
-
-> [AZURE.TIP] もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> [AZURE.TIP] お好みのプログラム言語でレコードを挿入できます。書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python (SQL Server に python でアクセスするための HelloWorld サンプル)](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」で pyodbc を使用した実行方法の例を確認してください。もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
 
 ###<a name="sql-aml"></a>Azure Machine Learning への接続
 
@@ -152,4 +149,4 @@ Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python �
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

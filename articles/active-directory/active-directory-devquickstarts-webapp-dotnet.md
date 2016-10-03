@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # Azure AD を使用した Web アプリのサインインおよびサインアウト
@@ -37,7 +37,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 ## *1.アプリケーションを Azure AD に登録する*
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-- Microsoft Azure の管理ポータルにサインインします。
+- Microsoft Azure 管理ポータルにサインインします。
 - 左側のナビゲーションで **[Active Directory]** をクリックします。
 - アプリケーションの登録先となるテナントを選択します。
 - **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
@@ -59,7 +59,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 -	OWIN Startup クラスを `Startup.cs` という名前のプロジェクトに追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックし、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(...)` メソッドを呼び出します。
--	クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。`Configuration(...)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。  
+-	クラス宣言を `public partial class Startup` に変更します。このクラスの一部は別ファイルで実装済みです。`Configuration(...)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。
 
 ```C#
 public partial class Startup
@@ -178,4 +178,4 @@ public ActionResult About()
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

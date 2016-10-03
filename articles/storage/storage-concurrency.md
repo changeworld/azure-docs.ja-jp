@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="Microsoft Azure Storage での同時実行制御の管理"
 	description="BLOB、キュー、テーブル、およびファイル サービスの同時実行制御を管理する方法"
 	services="storage"
@@ -14,11 +14,11 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="02/20/2016"
-	ms.author="jahogg"/>
+	ms.author="jahogg;tamram"/>
 
 # Microsoft Azure Storage での同時実行制御の管理
 
-## 概要
+## Overview
 
 最新のインターネットを基盤とするアプリケーションでは、複数のユーザーが同時にデータを表示し、更新することが一般的です。このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。開発者は、データの同時実行制御の主な戦略として、次の 3 つの方法を検討する場合が一般的です。
 
@@ -86,40 +86,41 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。
 
-操作 |コンテナーの ETag 値を返す|	条件ヘッダーを受け取る|
-------------|-----------------------|------------------------------------|
-コンテナーの作成|	あり|	いいえ|
-コンテナーのプロパティの取得|	あり|	いいえ|
-コンテナーのメタデータの取得|	あり|	いいえ|
-コンテナーのメタデータの設定|	あり|	あり|
-コンテナー ACL の取得|	あり|	いいえ|
-コンテナー ACL の設定|	あり|	あり (*)|
-Delete Container| なし| あり|
-Lease Container| あり| あり|
-List BLOB| なし| なし 
+| 操作 | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
+|:-------------------------|:-----------------------------|:----------------------------|
+| コンテナーの作成 | はい | なし |
+| コンテナーのプロパティの取得 | はい | なし |
+| Get Container Metadata | はい | なし |
+| コンテナーのメタデータの設定 | はい | はい |
+| コンテナー ACL の取得 | はい | なし |
+| Set Container ACL | はい | あり (*) |
+| Delete Container | なし | はい |
+| Lease Container | はい | はい |
+| BLOBs の一覧 | なし | なし |
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返す BLOB 操作をまとめたものです。
 
-操作 |ETag 値を返す |条件ヘッダーを受け取る|
------------|-------------------|----------------------------|
-Put Blob|	あり|	あり|
-Get Blob|	あり|	あり|
-Get Blob Properties|	あり|	あり|
-Set Blob Properties|	あり|	あり|
-Get Blob Metadata|	あり|	あり|
-Set Blob Metadata|	あり|	あり|
-Lease BLOB (*)| あり| あり|
-Snapshot BLOB| あり| あり|
-Copy BLOB| あり| あり (コピー元 BLOBとコピー先 BLOB)|
-Abort Copy BLOB| なし| なし|
-Delete BLOB| なし| あり|
-Put Block| なし| なし|
-Put Block List| あり| あり|
-Get Block List| あり| なし|
-Put Page| あり| あり|
-Get Page Ranges| あり| あり
+| 操作 | ETag 値を返す | 条件ヘッダーを受け取る |
+|:--------------------|:-------------------|:--------------------------------------|
+| Put Blob | はい | はい |
+| Get Blob | はい | はい |
+| BLOB のプロパティの取得 | はい | はい |
+| Set Blob Properties | はい | はい |
+| Get Blob Metadata | はい | はい |
+| Set Blob Metadata | はい | はい |
+| Lease Blob (*) | はい | はい |
+| Snapshot Blob | はい | はい |
+| BLOB のコピー | はい | Yes (コピー元とコピー先 BLOB に対して) |
+| Abort Copy Blob | なし | なし |
+| Delete Blob | なし | はい |
+| Put Block | なし | なし |
+| Put Block List | はい | はい |
+| Get Block List | はい | なし |
+| Put Page | はい | はい |
+| Get Page Ranges | はい | はい |
+
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。
 
@@ -175,7 +176,7 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 -	Snapshot Blob - リースが存在する場合にオプションでリース ID を使用
 -	Copy Blob - コピー先の BLOB でリースが存在する場合はリース ID が必要
 -	Abort Copy Blob - コピー先の BLOB で無制限のリースが存在する場合はリース ID が必要
--	Lease Blob  
+-	Lease Blob
 
 ### コンテナーでのペシミスティック同時実行制御
 コンテナーのリースでは、BLOB でサポートされるものと同じ同期戦略 (排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取り) がサポートされます。ただし、BLOB とは異なり、Storage サービスで排他的に実行できるのは削除操作のみです。アクティブなリースを使用してコンテナーを削除するには、クライアントが削除要求に有効なリース ID を含める必要があります。それ以外のコンテナー操作は、リース ID を含めなくてもリースされたコンテナーに対して正常に実行されます。この場合、各操作は共有操作になります。更新操作 (put または set) または読み込み操作を排他的に行う必要がある場合、開発者はすべてのクライアントがリース ID を使用し、有効なリース ID を持つクライアントが一度に 1 つのみになるようにする必要があります。
@@ -185,10 +186,10 @@ BLOB をロックして排他的に使用する場合は、[リース](http://ms
 -	コンテナーの削除
 -	コンテナーのプロパティの取得
 -	コンテナーのメタデータの取得
--	コンテナーのメタデータの設定
+-	Set Container Metadata
 -	コンテナー ACL の取得
 -	コンテナー ACL の設定
--	Lease Container  
+-	Lease Container
 
 詳細情報
 
@@ -228,19 +229,19 @@ BLOB サービスとは異なり、Table サービスではクライアントが
 
 同時実行制御の確認を明示的に無効にするには、置換操作を実行する前に、**employee** オブジェクトの **ETag** プロパティを "*" に設定する必要があります。
 
-customer.ETag = "*";
+	customer.ETag = "*";  
 
 次の表は、Table エンティティで ETag の値がどのように使用されるかをまとめたものです。
 
-操作 |ETag 値を返す |If-Match 要求ヘッダーが必須|
-------------|-------------------|--------------------------------|
-エンティティのクエリ|	あり|	いいえ|
-エンティティの挿入|	あり|	いいえ|
-エンティティの更新|	あり|	あり|
-エンティティの統合|	あり|	あり|
-エンティティの削除|	いいえ|	あり|
-エンティティの挿入または置換|	あり|	いいえ|
-エンティティの挿入または統合|	あり|	いいえ
+| 操作 | ETag 値を返す | If-Match 要求ヘッダーが必須 |
+|:-------------------------|:-------------------|:---------------------------------|
+| エンティティのクエリ | はい | なし |
+| エンティティの挿入 | はい | なし |
+| エンティティの更新 | はい | はい |
+| エンティティの統合 | はい | はい |
+| エンティティの削除 | なし | はい |
+| エンティティの挿入または置換 | はい | なし |
+| エンティティの挿入または統合 | はい | なし |
 
 **Insert or Replace Entity** および **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。
 
@@ -274,7 +275,7 @@ Microsoft Azure Storage サービスは、非常に複雑なオンライン ア�
 
 このブログで参照したサンプル アプリケーションの完全版は、次のページからダウンロードできます。
 
-- [Azure Storage での同時実行制御の管理 - サンプル アプリケーション](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+- [Azure Storage での同時実行制御の管理 - サンプル アプリケーション](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)
 
 Azure Storage の詳細については、以下を参照してください。
 
@@ -283,4 +284,4 @@ Azure Storage の詳細については、以下を参照してください。
 - Storage Getting Started for [Blob](storage-dotnet-how-to-use-blobs.md), [Table](storage-dotnet-how-to-use-tables.md), [Queues](storage-dotnet-how-to-use-queues.md), and [Files](storage-dotnet-how-to-use-files.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET からテーブル ストレージを使用する方法、.NET からキュー ストレージを使用する方法、.NET から ファイル ストレージを使用する方法)
 - Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0921_2016-->

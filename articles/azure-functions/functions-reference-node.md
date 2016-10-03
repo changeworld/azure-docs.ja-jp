@@ -22,6 +22,7 @@
 
 > [AZURE.SELECTOR]
 - [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
+- [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md)
 - [Node.JS](../articles/azure-functions/functions-reference-node.md)
 
 Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
@@ -46,7 +47,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-`direction === "in"` のバインドが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。この機能は、トリガーだけがあり、追加の入力がない場合に非常に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
+`direction === "in"` のバインドが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。この機能は、トリガーのみがあり、追加の入力がない場合に非常に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
 
 引数は、exports ステートメントで順序を指定していなくても、*function.json* に出現する順序で常に関数に渡されます。たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[3]` を参照することで、関数コードの `b` の値を取得できます。
 
@@ -142,7 +143,7 @@ context.res = { status: 202, body: 'You successfully ordered more coffee!' };
 
 Node のバージョンは、現在、`5.9.1` にロックされています。現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
-関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。ファイルをアップロードする方法については、「[Azure Functions developer reference topic (Azure Functions 開発者参照トピック)](functions-reference.md#fileupdate)」の「**How to update function app files (関数アプリ ファイルを更新する方法)**」セクションを参照してください。
+関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。ファイルをアップロードする方法については、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションを参照してください。
 
 関数アプリの SCM (Kudu) コマンド ライン インターフェイスで `npm install` を使用することもできます。
 
@@ -198,6 +199,7 @@ function GetEnvironmentVariable(name)
 
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
-* [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
+* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0921_2016-->

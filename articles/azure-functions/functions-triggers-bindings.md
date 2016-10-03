@@ -20,7 +20,7 @@
 
 # Azure Functions のトリガーとバインドの開発者用リファレンス
 
-以下の記事では、Azure Functions のトリガーとバインドを構成およびコード化する方法について説明します。この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md) または [ノード](functions-reference-node.md)の開発者向けリファレンスを既に読んでいることを前提としています。
+以下の記事では、Azure Functions のトリガーとバインドを構成およびコード化する方法について説明します。この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md)、または [Node.js](functions-reference-node.md) の開発者向けリファレンスを既に読んでいることを前提としています。
 
 ## トリガーとバインドの記事
 
@@ -35,4 +35,4 @@
 * [関数のテスト](functions-test-a-function.md)
 * [関数のスケール](functions-scale.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

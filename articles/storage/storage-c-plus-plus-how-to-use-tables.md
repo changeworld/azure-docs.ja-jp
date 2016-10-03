@@ -3,8 +3,8 @@
 	description="NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
     services="storage"
     documentationCenter=".net"
-    authors="tamram"
-    manager="carmonm"
+    authors="dineshmurthy"
+    manager="jahogg"
     editor="tysonn"/>
 
 <tags
@@ -13,14 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-	ms.date="07/26/2016"
-    ms.author="dineshm"/>
+	ms.date="09/20/2016"
+    ms.author="dineshm;tamram"/>
 
 # C++ から Table ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## Overview  
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは C++ で記述され、[C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
@@ -416,4 +414,4 @@ Azure のストレージ エミュレーターを起動するには、**[スタ�
 -	[C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 -	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 
-<!---HONumber=AcomDC_0817_2016--->
+<!---HONumber=AcomDC_0921_2016-->

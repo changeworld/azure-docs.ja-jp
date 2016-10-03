@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/18/2016" 
+	ms.date="09/21/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache の FAQ
@@ -45,6 +45,56 @@ Azure Redis Cache についてよく寄せられる質問の回答、パター�
 -	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
 
+
+## 計画に関する FAQ
+
+-	[Redis Cache のサービス内容と適切なサイズの選択](#what-redis-cache-offering-and-size-should-i-use)
+-	[Azure Redis Cache のパフォーマンス](#azure-redis-cache-performance)
+-	[キャッシュを配置するリージョン](#in-what-region-should-i-locate-my-cache)
+-	[Azure Redis Cache の課金方法を教えてください。](#how-am-i-billed-for-azure-redis-cache)
+
+
+
+## 開発に関する FAQ
+
+-	[StackExchange.Redis 構成オプションについて](#what-do-the-stackexchangeredis-configuration-options-do)
+-	[どのような Redis キャッシュ クライアントを使用できますか。](#what-redis-cache-clients-can-i-use)
+-	[Azure Redis Cache のローカル エミュレーターがない場合](#is-there-a-local-emulator-for-azure-redis-cache)
+-	[Redis コマンドの実行方法](#how-can-i-run-redis-commands)
+-	[他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+-	[Azure Redis Cache を PHP セッションのキャッシュとして使用できますか。](#can-i-use-azure-redis-cache-as-a-php-session-cache)
+
+
+## セキュリティに関する FAQ
+
+-	[Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+
+
+## 運用に関する FAQ
+
+-	[いくつかの運用上のベスト プラクティスについて](#what-are-some-production-best-practices)
+-	[一般的な Redis コマンドの使用に関するいくつかの考慮事項](#what-are-some-of-the-considerations-whja-JPing-common-redis-commands)
+-	[キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+-	[ThreadPool 拡大の重要な詳細情報](#important-details-about-threadpool-growth)
+-	[StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる](#enable-server-gc-to-get-more-throughput-on-the-client-whja-JPing-stackexchangeredis)
+
+
+## 監視とトラブルシューティングに関する FAQ
+
+このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」を参照してください。
+
+-	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+-	[キャッシュ診断ストレージ アカウントの設定を変更した場合](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
+-	[新しいキャッシュの診断を有効にして、それ以外は有効にしない理由](#why-is-diagnostics-enabled-for-some-new-caches-but-not-others)
+-	[タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
+-	[クライアントがキャッシュから切断される理由](#why-was-my-client-disconnected-from-the-cache)
+
+
+## 事前のキャッシュ オファリングに関する FAQ
+
+-	[どの Azure Cache を利用すればよいですか。](#which-azure-cache-offering-is-right-for-me)
+
+
 ### Azure Redis Cache とは
 
 Azure Redis Cache は広く普及しているオープン ソース [Redis Cache](http://redis.io) を基盤にしています。これを使用すると、Microsoft によって管理されている、セキュリティで保護された専用 Redis Cache に Azure 内の任意のアプリケーションからアクセスできます。詳細については、azure.com の [Azure Redis Cache](https://azure.microsoft.com/services/cache/) の製品ページを参照してください。
@@ -64,12 +114,6 @@ Azure アカウントをお持ちでない場合は、次の操作を行いま�
 -    [無料で Azure アカウントを開きます](/pricing/free-trial/?WT.mc_id=redis_cache_hero)。Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
 -    [Visual Studio サブスクライバーの特典を有効にします](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
 
-## 計画に関する FAQ
-
--	[Redis Cache のサービス内容と適切なサイズの選択](#what-redis-cache-offering-and-size-should-i-use)
--	[Azure Redis Cache のパフォーマンス](#azure-redis-cache-performance)
--	[キャッシュを配置するリージョン](#in-what-region-should-i-locate-my-cache)
--	[Azure Redis Cache の課金方法を教えてください。](#how-am-i-billed-for-azure-redis-cache)
 
 <a name="cache-size"></a>
 ### Redis Cache のサービス内容と適切なサイズの選択
@@ -79,10 +123,10 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 -	**メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。Premium レベルは最大 530 GB であり、[要求すれば](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)さらに多く使用できます。詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 -	**ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。詳細については[後の表](#cache-performance)を参照してください。
--	**スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生します。詳細については後の表を参照してください。
+-	**スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生します。詳細については、後の表を参照してください。
 -	**高可用性/SLA**: Azure Redis Cache は、Standard/Premium キャッシュについて 99.9% の可用性を保証します。SLA の詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)」を参照してください。SLA は、Cache エンドポイントへの接続のみをカバーします。SLA は、データ損失からの保護には対応していません。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
 -	**Redis データの保持**: Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、Redis の永続化の RDB オプションと AOF オプション (近日公開予定) があります。詳細については、「[Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
--	**Redis クラスター**: 53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有する場合、Premium レベルで利用可能な Redis クラスタリングを使用することができます。各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+-	**Redis クラスター**: 53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有するには、Premium レベルで利用可能な Redis クラスタリングを使用することができます。各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
 -	**強化されたセキュリティとネットワーク分離**: Azure Virtual Network (VNET) のデプロイメントでは、Azure Redis Cache のための強化されたセキュリティと分離、およびサブネット、アクセス制御ポリシー、さらにアクセスを制限するためのその他の機能が提供されます。詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
 -	**Redis の構成**: Standard レベルと Premium レベルでは、Keyspace 通知用に Redis を構成できます。
 -	**最大クライアント接続数**: Premium レベルでは、Redis に接続できるクライアントの最大数が提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。[詳細については、料金のページを参照してください](https://azure.microsoft.com/pricing/details/cache/)。
@@ -130,13 +174,6 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 
 Azure Redis Cache の価格については、[ここ](https://azure.microsoft.com/pricing/details/cache/)を参照してください。価格ページには、1 時間単位の価格が表示されます。キャッシュは、キャッシュが作成された時間から削除された時間までの期間に関して、分単位で課金されます。キャッシュの課金を停止または一時停止するオプションはありません。
 
-## 開発に関する FAQ
-
--	[StackExchange.Redis 構成オプションについて](#what-do-the-stackexchangeredis-configuration-options-do)
--	[どのような Redis キャッシュ クライアントを使用できますか。](#what-redis-cache-clients-can-i-use)
--	[Azure Redis Cache のローカル エミュレーターがない場合](#is-there-a-local-emulator-for-azure-redis-cache)
--	[Redis コマンドの実行方法](#how-can-i-run-redis-commands)
--	[他のいくつかの Azure サービスと異なり Azure Redis Cache の MSDN クラス ライブラリ リファレンスが提供されない理由](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 
 <a name="cache-configuration"></a>
 ### StackExchange.Redis 構成オプションについて
@@ -221,9 +258,19 @@ Microsoft Azure Redis Cache は、広く普及しているオープン ソース
 クライアントはそれぞれ異なるため、MSDN には単独の一元的なクラス リファレンスは用意されていません。各クライアントで独自のリファレンス ドキュメントが管理されます。リファレンス ドキュメントのほかに、チュートリアルもいくつか用意されています。チュートリアルでは、さまざまな言語とキャッシュ クライアントを使用して Azure Redis Cache を使用する方法について説明します。こうしたチュートリアルにアクセスするには、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」の上部にある言語のタブで、目的の言語をクリックしてください。
 
 
-## セキュリティに関する FAQ
+### Azure Redis Cache を PHP セッションのキャッシュとして使用できますか。
 
--	[Redis への接続に非 SSL ポートを有効にする必要がある状況](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+はい。Azure Redis Cache を PHP セッションのキャッシュとして使用するには、`session.save_path` に Azure Redis Cache インスタンスへの接続文字列を指定します。
+
+>[AZURE.IMPORTANT] Azure Redis Cache を PHP セッションのキャッシュとして使用する場合、次の例に示すように、キャッシュへの接続に使用するセキュリティ キーを URL エンコードする必要があります。
+>
+>`session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
+>
+>キーが URL エンコードされていない場合、次のような例外が表示されます。`Failed to parse session.save_path`
+
+Redis Cache を PhpRedis クライアントで PHP セッションのキャッシュとして使用する方法の詳細については、「[PHP Session handler (PHP セッション ハンドラー)](https://github.com/phpredis/phpredis#php-session-handler)」を参照してください。
+
+
 
 <a name="cache-ssl"></a>
 ### Redis への接続に非 SSL ポートを有効にする必要がある状況
@@ -236,13 +283,7 @@ Redis サーバーは既定で SSL をサポートしませんが、Azure Redis 
 
 Redis ツールのダウンロードの詳細については、「[Redis コマンドの実行方法](#cache-commands)」セクションを参照してください。
 
-## 運用に関する FAQ
 
--	[いくつかの運用上のベスト プラクティスについて](#what-are-some-production-best-practices)
--	[一般的な Redis コマンドの使用に関するいくつかの考慮事項](#what-are-some-of-the-considerations-whja-JPing-common-redis-commands)
--	[キャッシュのベンチマークを実行およびテストする方法](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
--	[ThreadPool 拡大の重要な詳細情報](#important-details-about-threadpool-growth)
--	[StackExchange.Redis を使用するときにサーバー GC を有効にしてクライアントでのスループットを向上させる](#enable-server-gc-to-get-more-throughput-on-the-client-whja-JPing-stackexchangeredis)
 
 ### いくつかの運用上のベスト プラクティスについて
 
@@ -357,15 +398,7 @@ StackExchange.Redis を使用するときにサーバー GC を有効にする�
 
 
 
-## 監視とトラブルシューティングに関する FAQ
 
-このセクションの FAQ では、監視とトラブルシューティングに関する一般的な質問について説明します。Azure Redis Cache インスタンスの監視とトラブルシューティングの詳細については、「[Azure Redis Cache の監視方法](cache-how-to-monitor.md)」および「[Azure Redis Cache のトラブルシューティング方法](cache-how-to-troubleshoot.md)」を参照してください。
-
--	[キャッシュの正常性とパフォーマンスの監視方法](#how-do-i-monitor-the-health-and-performance-of-my-cache)
--	[キャッシュ診断ストレージ アカウントの設定を変更した場合](#my-cache-diagnostics-storage-account-settings-changed-what-happened)
--	[新しいキャッシュの診断を有効にして、それ以外は有効にしない理由](#why-is-diagnostics-enabled-for-some-new-caches-but-not-others)
--	[タイムアウトが発生する理由](#why-am-i-seeing-timeouts)
--	[クライアントがキャッシュから切断される理由](#why-was-my-client-disconnected-from-the-cache)
 
 <a name="cache-monitor"></a>
 ### キャッシュの正常性とパフォーマンスの監視方法
@@ -418,9 +451,7 @@ Redis Cache の **[設定]** ブレードの **[サポート + トラブルシ�
 
 
 
-## 事前のキャッシュ オファリングに関する FAQ
 
--	[どの Azure Cache を利用すればよいですか。](#which-azure-cache-offering-is-right-for-me)
 
 ### どの Azure Cache を利用すればよいですか。
 
@@ -449,4 +480,4 @@ Azure Redis Cache の使用方法については、「[Azure Redis Cache の使�
 
 ["minIoThreads" 構成設定]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

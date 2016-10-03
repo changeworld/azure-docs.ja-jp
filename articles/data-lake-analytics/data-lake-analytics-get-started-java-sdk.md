@@ -24,8 +24,6 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 
 このチュートリアルでは、テスト データの作成とジョブの送信だけでなく、一般的な管理タスクのサンプルを含む Java コンソール アプリケーションを作成します。サポートされている他のツールを使用する同じチュートリアルを読み進めるには、このセクションの上部にあるタブをクリックします。
 
-[AZURE.INCLUDE [basic-process-include](../../includes/data-lake-analytics-basic-process.md)]
-
 ## 前提条件
 
 * Java Development Kit (JDK) 8 (Java バージョン 1.8 を使用)。
@@ -356,4 +354,4 @@ Azure Data Lake Analytics Java SDK を使用して、Azure Data Lake アカウ�
 - 管理タスクについては、「[Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
 - Data Lake Analytics の概要については、「[Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

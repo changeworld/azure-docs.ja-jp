@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="garye;bradsev" />
 
 
@@ -53,6 +53,8 @@ Machine Learning Studio は、区切られたテキスト データやデータ�
 - プレーン テキスト (.txt)
 - コンマ区切り値 (CSV) - ヘッダー付き (.csv) またはヘッダーなし (.nh.csv)
 - タブ区切り値 (TSV) - ヘッダー付き (.tsv) またはヘッダーなし (.nh.tsv)
+- Excel ファイル
+- Azure テーブル
 - Hive テーブル
 - SQL データベース テーブル
 - OData 値
@@ -89,4 +91,4 @@ Machine Learning Studio は***データ テーブル***と呼ばれる内部デ�
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

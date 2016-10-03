@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Azure Redis Cache Premium レベルの概要
@@ -24,7 +24,7 @@ Azure Redis Cache は、データへの超高速アクセスを提供するこ�
 ## Standard/Basic レベルを超えるパフォーマンス
 **Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
 
-**同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。** たとえば、53 GB のキャッシュでは、C6 (Standard) のスループットが毎秒 15 万要求であるのに対し、P4 (Premium) は毎秒 25 万要求です。
+**同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。** たとえば、C6 (Standard) キャッシュのスループットが毎秒 15 万要求であるのに対し、53 GB の P4 (Premium) キャッシュは毎秒 25 万要求です。
 
 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
@@ -90,4 +90,4 @@ Premium レベルにスケーリングするには、**[価格レベルの変更
 -	[Azure Redis Cache を管理する方法](cache-administration.md)
   
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

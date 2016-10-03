@@ -4,8 +4,8 @@
 	keywords="MFA の概要, mfaの概要, mfa とは"
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
 <tags
@@ -13,9 +13,9 @@
 	ms.workload="identity"
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
-	ms.topic="article" 
+	ms.topic="article"
 	ms.date="08/22/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication とは
 多要素認証 (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。これらは、次の確認方法のうち 2 つ以上を要求することで機能します。
@@ -147,12 +147,12 @@ Azure Multi-Factor Authentication では、クラウドとサーバーの両方�
 
 さまざまな種類の Azure Multi-Factor Authentication があるため、使用に適したバージョンを把握するには、2 つの要素を判別する必要があります。その要素とは次のとおりです。
 
--	<a href="#-1">セキュリティで保護しようとしている対象</a>
--	<a href="#-2">ユーザーが位置する場所</a>
+-	[セキュリティで保護しようとしている対象](#what-am-i-trying-to-secure)
+-	[ユーザーが位置する場所](#where-are-the-users-located)
 
 次のセクションでは、この判断についてガイダンスを提供します。
 
-<h3 id="-1">セキュリティで保護しようとしている対象</h3>
+### セキュリティで保護しようとしている対象
 
 適切な多要素認証ソリューションを判別するには、まず 2 番目の認証方法で保護しようとしている対象に関する疑問に答える必要があります。Azure のアプリケーションですか。 またはリモート アクセス システムなどですか。何をセキュリティで保護しようとしているかを判断すると、多要素認証を有効にする必要がある場所に関する疑問に答えることができます。
 
@@ -168,7 +168,7 @@ VPN、RDG などのリモート アクセス| |* |
 
 
 
-<h3 id="-2">ユーザーが配置される場所</h3>
+### ユーザーが配置される場所
 
 次に、ユーザーが位置する場所で異なりますが、クラウドでの多要素認証か、MFA Server を使用するオンプレミスの多要素認証か、使用する適切なソリューションを判断できます。
 
@@ -209,4 +209,4 @@ MFA レポート | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

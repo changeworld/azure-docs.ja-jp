@@ -194,7 +194,7 @@ MSBuild を使用したコマンドライン デプロイの詳細について�
 * [Web アプリと SQL Database をプロビジョニングする](app-service-web-arm-with-sql-database-provision.md)
 * [Azure でマイクロサービスを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
 * [Azure での実際のクラウド アプリケーションのビルド - すべてを自動化](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything)。電子書籍の中に掲載されているサンプル アプリケーションが、Windows PowerShell スクリプトをどのように使用して Azure テスト環境を作成し、その環境をデプロイするかを説明する、電子書籍の章。Azure PowerShell の他のドキュメントへのリンクを掲載している「[リソース](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything#resources)」セクションを参照してください。
-* [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](http://msdn.microsoft.com/library/dn642480.aspx)。Visual Studio で生成される Windows PowerShell デプロイ スクリプトの使用方法
+* [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](../vs-azure-tools-publishing-using-powershell-scripts.md)。Visual Studio で生成される Windows PowerShell デプロイ スクリプトの使用方法
 
 ###<a name="api"></a>.NET 管理 API を使用したデプロイの自動化
 
@@ -234,4 +234,4 @@ Azure のロールベースのアクセス許可を使用して、App Service �
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

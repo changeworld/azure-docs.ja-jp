@@ -4,7 +4,8 @@
     services="storage"
     documentationCenter="na"
     authors="tamram"
-    manager="carmonm"/>
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags
     ms.service="storage"
@@ -12,12 +13,12 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="05/02/2016"
-    ms.author="micurd"/>
+    ms.date="09/20/2016"
+    ms.author="micurd;tamram"/>
 
 # Azure Storage での Azure CLI の使用
 
-## 概要
+## Overview
 
 Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。豊富なデータ アクセス機能だけでなく、[Azure ポータル](https://portal.azure.com)にあるものと同じ機能の多くを使用できます。
 
@@ -121,7 +122,7 @@ Azure Storage を使用するには、ストレージ アカウントが必要�
 
 ## BLOB を作成および管理する
 
-Azure BLOB ストレージは、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」および「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。詳細については、「[.NET を使用して Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)」および「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
 
 ### コンテナーを作成する
 
@@ -133,7 +134,7 @@ Azure Storage のすべての BLOB はコンテナーに格納する必要があ
 
 ### コンテナーに BLOB をアップロードする
 
-Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs (ブロック BLOB、追加 BLOB、ページ BLOB について)](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 BLOB をコンテナーにアップロードするには、`azure storage blob upload` を使用できます。既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。BLOB の種類を指定するには、`--blobtype` パラメーターを使用できます。
 
@@ -221,4 +222,4 @@ Azure Storage の詳細についての関連記事とリソースがあります
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

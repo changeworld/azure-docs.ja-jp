@@ -13,9 +13,9 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="12/14/2015" 
+	ms.date="09/12/2016" 
 	ms.author="anbacker"/>
-
+ 
 
 # Azure Site Recovery を使用した Hyper-V レプリケーションについて
 
@@ -24,7 +24,7 @@
 ## コンポーネントについて
 
 ### オンプレミスと Azure の間のレプリケーションのための Hyper-V サイトまたは VMM サイトのデプロイ
-
+ 
 オンプレミスと Azure の間で DR を設定するとき、Azure Site Recovery プロバイダーをダウンロードして VMM サーバーにインストールし、Azure Recovery Services エージェントを各 Hyper-V ホストにインストールする必要があります。
 
 ![オンプレミスと Azure の間のレプリケーションのための VMM サイトのデプロイ](media/site-recovery-understanding-site-to-azure-protection/image00.png)
@@ -36,11 +36,11 @@ Hyper-V サイトのデプロイは VMM のデプロイと同じです。プロ�
 ### 保護の有効化
 ポータルまたはオンプレミスから仮想マシンを保護すると、*保護の有効化*という名前の ASR ジョブが開始され、[ジョブ] タブで監視できます。
 
-![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/image01.png)
+![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/image001.PNG)
 
 *保護の有効化*ジョブは、保護中に構成された入力を使用して Azure にレプリケーションを作成する [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) を呼び出す前に前提条件をチェックします。*保護の有効化*ジョブは、仮想マシンの仮想ディスクを Azure に送信する [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) を呼び出すことによって、オンプレミスから初期レプリケーションを開始します。
 
-![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/image02.png)
+![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/IMAGE002.PNG)
 
 ### 保護の最終処理
 初期レプリケーションがトリガーされると [HYPER-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。仮想ハード ディスクは、すべてのディスクが Azure にアップロードされるまで 1 つずつ処理されます。通常、この処理の完了には、ディスク サイズと帯域幅に応じて、時間がかかります。ネットワーク使用量の最適化については、[Azure 保護ネットワークの帯域幅使用量のオンプレミスでの管理方法](https://support.microsoft.com/kb/3056159)に関するページを参照してください。初期レプリケーションが完了すると、*仮想マシンでの保護の最終処理*ジョブにより、ネットワークとレプリケーション後の設定が構成されます。初期レプリケーションの処理中は、次の「差分レプリケーション」セクションで説明するように、ディスクに対するすべての変更が追跡されます。追加のディスク記憶域は、初期レプリケーションの処理中にスナップショット ファイルと HRL ファイルに使用されます。初期レプリケーションが完了すると、HYPER-V VM スナップショットが削除されます。その結果、初期レプリケーション後のデータ変更が親ディスクにマージされます。
@@ -57,7 +57,9 @@ HYPER-V レプリカ レプリケーション トラッカーは、HYPER-V レ�
 
 再同期が完了したら、通常の差分レプリケーションを再開する必要があります。再同期を再開できるのは、障害 (ネットワークの停止、VMM のクラッシュなど) が発生した場合です。
 
-既定では、*自動的にスケジュールされた再同期*は営業時間外に構成されます。仮想マシンを手動で再同期する必要がある場合、ポータルから仮想マシンを選択し、[再同期] をクリックします。![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/image04.png)
+既定では、*自動的にスケジュールされた再同期*は営業時間外に構成されます。仮想マシンを手動で再同期する必要がある場合、ポータルから仮想マシンを選択し、[再同期] をクリックします。
+
+![オンプレミスの Hyper-V に関する問題のトラブルシューティング](media/site-recovery-understanding-site-to-azure-protection/image04.png)
 
 再同期では、固定ブロック チャンク アルゴリズムが使用されています。このアルゴリズムでは、ソース ファイルとターゲット ファイルを固定チャンクに分割されます。つまり、チャンクごとにチェックサムが生成され、それを比較することで、ソースのどのブロックをターゲットに適用する必要があるかが特定されます。
 
@@ -79,4 +81,4 @@ HYPER-V レプリカ レプリケーション トラッカーは、HYPER-V レ�
 - [Microsoft サポートを得る](./site-recovery-monitoring-and-troubleshooting.md#reaching-out-for-microsoft-support)
 - [ASR の一般的なエラーとその解決策](./site-recovery-monitoring-and-troubleshooting.md#common-asr-errors-and-their-resolutions)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0921_2016-->

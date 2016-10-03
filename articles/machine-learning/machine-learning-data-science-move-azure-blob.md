@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="bradsev;sunliangms;sachouks" />
+	ms.date="09/14/2016"
+	ms.author="bradsev;sachouks" />
 
 # Azure Blob ストレージとの間のデータの移動
 
@@ -24,11 +24,18 @@
 
 [AZURE.INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
  
-最適な方法は、シナリオによって異なります。高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での高度な分析のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)」が役立ちます。
+最適な方法はシナリオによって異なります。高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での高度な分析のシナリオ](machine-learning-data-science-plan-sample-scenarios.md)」が役立ちます。
 
-> [AZURE.NOTE] Azure BLOB ストレージの完全な概要については、「[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)」と「[Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)」を参照してください。
+> [AZURE.NOTE] Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../storage/storage-dotnet-how-to-use-blobs.md)に関する記事および [Azure BLOB サービス](https://msdn.microsoft.com/library/azure/dd179376.aspx)に関するページをご覧ください。
 
-> [AZURE.TIP] 別の方法として、[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、Azure BLOB ストレージからデータをダウンロードして公開済みの Azure Machine Learning Web サービスに渡し、予測分析の結果を受け取ってストレージにアップロードするパイプラインを作成してスケジュールできます。詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../data-factory/data-factory-azure-ml-batch-execution-activity.md)」を参照してください。
+別の方法として、[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して以下を行うこともできます。
+
+- Azure BLOB ストレージからデータをダウンロードするパイプラインを作成し、スケジュールを設定する
+- パイプラインを発行済みの Azure Machine Learning Web サービスに渡す
+- 予測分析の結果を受け取る
+- 結果をストレージにアップロードする
+
+詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../data-factory/data-factory-azure-ml-batch-execution-activity.md)」を参照してください。
 
 ## 前提条件
 
@@ -37,4 +44,4 @@
 - Azure サブスクリプションを設定するには、[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 - ストレージ アカウントの作成と、アカウントとキー情報の取得の手順については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

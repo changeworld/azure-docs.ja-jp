@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter="na"
 	authors="tamram"
-	manager="na"
+	manager="carmonm"
 	editor="tysonn" />
 <tags
 	ms.service="storage"
@@ -12,8 +12,8 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage"
-	ms.date="08/03/2016"
-	ms.author="tamram" />
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram" />
 
 # Azure Storage のサンプル
 
@@ -90,4 +90,4 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 - [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)
 - [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

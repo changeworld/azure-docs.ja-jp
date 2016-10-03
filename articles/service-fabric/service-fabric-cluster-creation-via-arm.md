@@ -63,7 +63,7 @@ Service Fabric では、X.509 証明書を使用してクラスターをセキ�
 
 ```powershell
 
-	PS C:\Users\vturecek> New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
+	New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
 	WARNING: The output object type of this cmdlet will be modified in a future release.
 	
 	ResourceGroupName : mycluster-keyvault
@@ -80,7 +80,7 @@ Service Fabric では、X.509 証明書を使用してクラスターをセキ�
 
 ```powershell
 
-	PS C:\Users\vturecek> New-AzureRmKeyVault -VaultName 'myvault' -ResourceGroupName 'mycluster-keyvault' -Location 'West US' -EnabledForDeployment
+	New-AzureRmKeyVault -VaultName 'myvault' -ResourceGroupName 'mycluster-keyvault' -Location 'West US' -EnabledForDeployment
 	
 	
 	Vault Name                       : myvault
@@ -156,7 +156,7 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 この PowerShell モジュールの `Invoke-AddCertToKeyVault` コマンドは、証明書の秘密キーを JSON 文字列に自動的にフォーマットし、Key Vault にアップロードします。これを使用してクラスター証明書と追加のアプリケーション証明書 (ある場合) を Key Vault に追加します。必要に応じて、クラスターにインストールする追加の証明書についてこの手順を繰り返します。
 
 ```powershell
-PS C:\Users\vturecek> Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
+ Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName mycluster-keyvault -Location "West US" -VaultName myvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
 	
 	Switching context to SubscriptionId <guid>
 	Ensuring ResourceGroup mycluster-keyvault in West US
@@ -488,4 +488,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 [assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
 [assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

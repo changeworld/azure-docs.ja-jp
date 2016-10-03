@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="brandwe"/>
 
 # ノード用の Web API の概要
@@ -59,13 +59,13 @@
     - アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
     - **[サインオン URL]** は、アプリのベース URL です。サンプル コードの既定値は `https://localhost:8080` です。
     - **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
-- 登録が完了すると、AAD により、アプリに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、[構成] タブからコピーします。
+- 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、[構成] タブからコピーします。
 
 - リマインダー: アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
 - リマインダー: アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
 
 
-## 3\.プラットフォーム用の Node.js をダウンロードする
+## 手順 3.プラットフォーム用の Node.js をダウンロードする
 このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
 
 Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
@@ -924,7 +924,7 @@ Transfer-Encoding: chunked
 
 ここで期待される応答は、Passport レイヤーが認証エンドポイントへのリダイレクトを試みていることを示す 401 です。期待どおりの応答が返っています。
 
-## ご利用ありがとうございます。 OAuth2 を使用する REST API サービスが完成しました。
+## お疲れさまでした。 OAuth2 を使用する REST API サービスが完成しました。
 
 OAuth2 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。別のチュートリアルに進むことが必要になります。
 
@@ -941,4 +941,4 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

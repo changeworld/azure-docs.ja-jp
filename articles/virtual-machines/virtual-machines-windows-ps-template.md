@@ -283,7 +283,7 @@
 
 ## 次のステップ
 
-- デプロイに問題がある場合は、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+- デプロイに問題がある場合は、[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -219,7 +219,8 @@ Visual Studio の実行中に行われた環境変数の変更は自動的に反
 
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
+* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

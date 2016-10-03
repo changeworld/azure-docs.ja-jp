@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="09/20/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用して MySQL からデータを移動する
@@ -22,7 +22,7 @@
 
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの MySQL ソースへの接続をサポートします。Data Management Gateway の詳細およびゲートウェイの設定手順については、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。
 
-> [AZURE.NOTE] Azure IaaS VM でホストされている場合でも、MySQL への接続にゲートウェイを使用する必要があります。クラウドでホストされている MySQL のインスタンスに接続しようとしている場合は、IaaS VM でゲートウェイ インスタンスをインストールすることもできます。
+> [AZURE.NOTE] MySQL データベースが Azure IaaS 仮想マシン (VM) でホストされている場合でも、ゲートウェイは必須です。ゲートウェイはデータ ストアと同じ VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 
 データ ファクトリは、他のデータ ストアから MySQL へのデータの移動ではなく、MySQL から他のデータ ストアへのデータの移動のみをサポートします。
 
@@ -34,7 +34,7 @@ Data Management Gateway で MySQL Databases に接続するには、[MySQL コ�
 ## データのコピー ウィザード
 MySQL データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、MySQL データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
+次の例は、パイプラインを作成する際に使用できるサンプルの JSON 定義です。手順が記載された完全なチュートリアルについては、[オンプレミスの場所とクラウドの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
 
 ## サンプル: MySQLから Azure BLOB にデータをコピーする
 このサンプルは、オンプレミスの MySQL データベースから Azure BLOB ストレージにデータをコピーする方法を示します。Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータを**直接**コピーすることもできます。
@@ -51,7 +51,7 @@ MySQL データベースから、サポートされているシンク データ 
 
 このサンプルは MySQL データベースのクエリ結果のデータを BLOB に 1 時間ごとにコピーします。これらのサンプルで使用される JSON プロパティの説明はサンプルに続くセクションにあります。
 
-最初の手順として、「[オンプレミスの場所とクラウド間のデータ移動](data-factory-move-data-between-onprem-and-cloud.md)」の指示に従って Data Management Gateway を設定します。
+最初の手順として、データ管理ゲートウェイを設定します。設定手順は、[オンプレミスの場所とクラウドの間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事に記載されています。
 
 **MySQL のリンクされたサービス**
 
@@ -323,4 +323,4 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure MFA のアプリ パスワードとは" 
-	description="このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Azure MFA のアプリ パスワードとは"
+	description="このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 
 
@@ -25,7 +25,7 @@
 >[AZURE.NOTE] Office 2013 クライアントのための最新の認証
 >
 > Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
- 
+
 ## アプリ パスワードを使用する方法
 
 アプリ パスワードの使用方法の注意点を次に示します。
@@ -34,7 +34,7 @@
 - 現在、ユーザーあたりのパスワード数の制限は 40 個です。制限に達した後に作成しようとした場合、新しいものを作成できるよう既存のアプリ パスワードのいずれかを削除するよう求められます。
 - アプリ パスワードは、アプリケーションごとではなく、デバイスごとに作成することをお勧めします。たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。
 - 最初にサインインするときにアプリ パスワードが提供されます。追加のアプリ パスワードが必要な場合は、作成できます。
- 
+
 ![セットアップ](./media/multi-factor-authentication-end-user-app-passwords/app.png)
 
 アプリ パスワードが取得できたら、これらの非ブラウザー アプリに対して、元のパスワードの代わりに使用します。たとえば、電話で多要素認証と Apple ネイティブ電子メール クライアントを使用している場合は、多要素認証をバイパスし、作業を続行できるようにアプリ パスワードを使用します。
@@ -43,12 +43,12 @@
 最初のサインイン時に、使用可能なアプリ パスワードが提供されます。さらに、後でアプリ パスワードを作成したり、削除したりすることもできます。そうする方法は、多要素認証を使用する方法によって異なります。最も適切な方法を選択します。
 
 多要素認証の使用方法|Description
-:------------- | :------------- | 
-<a href="#で使用する">Office 365 で使用する</a>| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
-<a href="#で使用する">わからない</a>|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
-<a href="#vai">Microsoft Azure で使用する</a>| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
+:------------- | :------------- |
+[Office 365 で使用する](#creating-and-deleting-app-passwords-with-office-365)| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
+[わからない](#creating-and-deleting-app-passwords-with-myapps-portal)|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
+[Microsoft Azure で使用する](#create-app-passwords-in-the-azure-portal)| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
 
-<h2 id="で使用する">Office 365 でのアプリ パスワードの作成と削除</h2> 
+## Office 365 でのアプリ パスワードの作成と削除
 
 Office 365 で多要素認証を使用している場合は、Office 365 ポータルでアプリ パスワードを作成し、削除します。
 
@@ -81,12 +81,12 @@ Office 365 で多要素認証を使用している場合は、Office 365 ポー�
 9. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-<h2 id="で使用するs">Myapps ポータルでのアプリ パスワードの作成と削除</h2>
+## Myapps ポータルでのアプリ パスワードの作成と削除
 多要素認証を使用する方法がわからない場合、いつでも Myapps ポータルでアプリ パスワードを作成し、削除できます。
 
 ### Myapps ポータルでアプリ パスワードを作成するには
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。	
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 2. 上部にある [プロファイル] を選択します。
 3. [追加のセキュリティ確認] を選択します。![クラウド](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. 設定を変更できるページに移動します。![セットアップ](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -97,7 +97,7 @@ Office 365 で多要素認証を使用している場合は、Office 365 ポー�
 
 ### Myapps ポータルでアプリ パスワードを削除するには
 
-1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。	
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 2. 上部にある [プロファイル] を選択します。
 3. [追加のセキュリティ確認] を選択します。![クラウド](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. 設定を変更できるページに移動します。![セットアップ](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -107,7 +107,7 @@ Office 365 で多要素認証を使用している場合は、Office 365 ポー�
 8. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-<h2 id="vai">Azure ポータルでアプリ パスワードを作成する</h2>
+## Azure ポータルでアプリ パスワードを作成する
 
 Azure で多要素認証を使用している場合は、Azure ポータルでアプリ パスワードを作成します。
 
@@ -129,4 +129,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 5. **[はい]** をクリックし、削除を確定します。
 6. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

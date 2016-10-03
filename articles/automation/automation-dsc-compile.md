@@ -185,7 +185,7 @@ PowerShell DSC の使用時に、**ConfigurationData** によって、環境固�
 - [変数](automation-variables.md)
 
 ###資格情報資産###
-Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。構成が **PSCredential** 型のパラメーターを受け取る場合は、パラメーターの値として、PSCredential オブジェクトではなく、Azure Automation 資格情報資産の文字列名を渡す必要があります。バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。
+Azure Automation の DSC 構成では **Get-AzureRmAutomationCredential** を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。構成が **PSCredential** 型のパラメーターを受け取る場合は、パラメーターの値として、PSCredential オブジェクトではなく、Azure Automation 資格情報資産の文字列名を渡す必要があります。バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。Azure Automation ではさらに、MOF ファイル全体を暗号化します。ただし、現時点では、ノード構成 MOF 作成時に資格情報をプレーンテキストで出力することを許可するように PowerShell DSC に指定する必要があります。PowerShell DSC は、コンパイル ジョブによって生成された MOF ファイル全体を Azure Automation が暗号化することを認識していないためです。
 
@@ -195,7 +195,7 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用�
 
     Configuration CredentialSample
     {
-       $Cred = Get-AutomationPSCredential -Name "SomeCredentialAsset"
+       $Cred = Get-AzureRmAutomationCredential -Name "SomeCredentialAsset"
     
     	Node $AllNodes.NodeName
     	{ 
@@ -228,4 +228,4 @@ Azure Automation の DSC 構成では **Get-AutomationPSCredential** を使用�
     
     Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "CredentialSample" -ConfigurationData $ConfigData
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0921_2016-->

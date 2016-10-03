@@ -1,10 +1,10 @@
 <properties 
-	pageTitle="ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する" 
+	pageTitle="ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する | Microsoft Azure" 
 	description="ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,johndeu,anilmur" 
-	manager="dwrede" 
+	authors="anilmur" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
-	ms.author="juliako"/>
+	ms.date="09/15/2016"
+	ms.author="juliako;johndeu;anilmur"/>
 
 
 #ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
 
-##概要
+##Overview
 
 **ワークフロー デザイナー**は、**メディア エンコーダー プレミアム ワークフロー**でエンコードするカスタム ワークフローの設計と構築に使用する Windows デスクトップ ツールです。ワークフロー デザイナー ツールの機能を利用することで、**メディア エンコーダー プレミアム**で実行する複雑なワークフローを設計し、作成できます。
 
@@ -74,8 +74,9 @@ Day 3 のビデオの内容は次のとおりです。
 > [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-3]
 
 
+## 次のステップ
 
-##Media Services のラーニング パス
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
@@ -90,4 +91,4 @@ Day 3 のビデオの内容は次のとおりです。
 
 [Azure プレミアム エンコーダー ワークフロー デザイナーのトレーニング ビデオ](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

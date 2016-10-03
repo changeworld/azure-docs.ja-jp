@@ -1,5 +1,5 @@
 <properties
-   pageTitle="トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Azure"
+   pageTitle="トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Azure "
    description="Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。"
    services="active-directory"
    documentationCenter="na"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/31/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # トラブルシューティング: Active Directory 項目が不足しているか使用できない
@@ -54,4 +54,4 @@ Access Control 名前空間または Multi-factor Authentication プロバイダ
 
 ![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

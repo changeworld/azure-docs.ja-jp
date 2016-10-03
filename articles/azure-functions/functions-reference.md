@@ -145,8 +145,9 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
+* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * Azure App Service チーム ブログの「[Azure Functions: The Journey (Azure Functions への道のり)](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)」。Azure Functions の開発の歴史。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

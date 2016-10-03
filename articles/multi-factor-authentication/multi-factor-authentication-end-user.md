@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication とは何ですか" 
-	description="この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Azure Multi-Factor Authentication とは何ですか"
+	description="この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/22/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="kgremban"/>
 
 
 
@@ -40,13 +40,11 @@
 以下のいずれかのトピックを選択して開始してください。
 
 トピック|Description
-:------------- | :------------- | 
+:------------- | :------------- |
 [セットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md)| 初めて多要素認証をセットアップする際のプロセスについて説明します。
 [サインイン エクスペリエンス](multi-factor-authentication-end-user-signin.md)|電話またはアプリなどのさまざまな方法を使用したサインインで想定されることを示します。
 [設定を変更する](multi-factor-authentication-end-user-manage-settings.md)|電話番号や優先登録方法など、設定の変更方法を示します。
 [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md)| アプリ パスワードの作成と使用に関する情報があります。
 [モバイル アプリの使用](multi-factor-authentication-microsoft-authenticator.md)|Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。
 
- 
-
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

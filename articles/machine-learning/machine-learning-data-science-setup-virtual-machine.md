@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="xibingao;bradsev" />
 
 # 高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
@@ -85,10 +85,10 @@ IPython Notebook サーバーにアクセスするには、Web ブラウザー�
 
 次の図のように、_この Web サイトのセキュリティ証明書には問題があります_ (Internet Explorer) や_この接続ではプライバシーが保護されません_ (Chrome) という警告が表示されます。Internet Explorer の場合は **[このサイトの閲覧を続行する (推奨されません)]**、Chrome の場合は **[詳細設定]** の **[&#60;*DNS 名*> にアクセスする (安全ではありません)]** をクリックして続行します。次に、既に指定したパスワードを入力して IPython Notebook にアクセスします。
 
-Internet Explorer:
+**Internet Explorer:**
 ![Create workspace][20]
 
-Chrome:
+**Chrome:**
 ![Create workspace][21]
 
 IPython Notebook にログオンした後、*DataScienceSamples* ディレクトリがブラウザーに表示されます。このディレクトリには、ユーザーがデータ サイエンス タスクを実行するうえで役立つ、Microsoft が共有するサンプル IPython Notebook が含まれています。これらのサンプル IPython Notebook は、IPython Notebook サーバーのセットアップ プロセス中に [**Github リポジトリ**](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)から仮想マシンにチェックアウトされます。Microsoft はこのリポジトリを保守し、頻繁に更新しています。ユーザーは Github リポジトリを参照して、最近更新されたサンプル IPython Notebook を入手できます。
@@ -145,4 +145,4 @@ Team Data Science Process の次のステップは、[ラーニング パス](ht
 [28]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/machine-learning-data-science-setup-virtual-machine/create-virtual-machine-6.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

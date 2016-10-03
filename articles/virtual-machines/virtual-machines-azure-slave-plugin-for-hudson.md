@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
@@ -86,7 +86,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 
 1. サブスクリプション プロファイルからサブスクリプションID と管理証明書をコピーし、適切なフィールドに貼り付けます。
 
-    サブスクリプション ID と管理証明書をコピーするときは、値を囲む引用符は含めないでください。
+    サブスクリプション ID と管理証明書をコピーするときは、値を囲む引用符を含めないでください。
 
 1. **[Verify configuration]** をクリックします。
 
@@ -237,4 +237,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [template config]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-setup-templateconfig1-withdata.png
 [OS family list]: ./media/virtual-machines-azure-slave-plugin-for-hudson/hudson-oslist.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

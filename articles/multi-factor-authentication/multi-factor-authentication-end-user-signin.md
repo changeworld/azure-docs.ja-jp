@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication を使用した Azure MFA サインイン エクスペリエンス" 
+<properties
+	pageTitle="Azure Multi-Factor Authentication を使用した Azure MFA サインイン エクスペリエンス"
 	description="このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。"
-	keywords="ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	keywords="ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/22/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [AZURE.NOTE]  このページで提供する次のドキュメントでは、一般的なサインイン エクスペリエンスを示します。サインインのヘルプについては、「[Azure Multi-Factor Authentication での問題](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
@@ -27,7 +27,7 @@
 
 
 操作内容|Description
-:------------- | :------------- | 
+:------------- | :------------- |
 [携帯電話または会社電話を使用してサインインする](#signing-in-with-mobile-or-office-phone) | 携帯電話または会社電話を使用してサインインする際の操作について説明します。
 [通知を使用して Microsoft Authenticator アプリでサインインする](#signing-in-with-the-microsoft-authenticator-app-using-notification) | Microsoft Authenticator アプリを通知と一緒に使用する際の操作について説明します。
 [確認コードを使用して Microsoft Authenticator アプリでサインインする](#signing-in-with-the-microsoft-authenticator-app-using-verification-code)|Microsoft Authenticator アプリを確認コードと一緒に使用する際の操作について説明します。
@@ -105,6 +105,4 @@
 
 - 代替方法を選択し、サインインします。
 
- 
-
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

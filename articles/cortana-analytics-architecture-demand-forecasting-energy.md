@@ -5,7 +5,7 @@
 	services="cortana-analytics"
 	documentationCenter=""
 	authors="garyericson"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"/>
 
 <tags
@@ -27,4 +27,4 @@
 
 [image]: ./media/cortana-analytics-architecture-demand-forecasting-energy/ca-topologies-energy-forecasting.png
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0921_2016-->
