@@ -41,7 +41,7 @@ Azure Notification Hubs によって、モバイル デバイスにプッシュ�
 
 ##Node.js アプリケーションの作成
 
-このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト]に関する各ページを参照してください。
+このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] \(Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト]に関する各ページを参照してください。
 
 ##アプリケーションを構成して Notification Hubs を使用する
 

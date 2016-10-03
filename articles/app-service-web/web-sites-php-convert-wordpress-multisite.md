@@ -22,7 +22,7 @@
 
 ## Overview
 
-*執筆者: [Ben Lobaugh][ben-lobaugh] ([Microsoft Open Technologies Inc.][ms-open-tech]*)
+*執筆者: [Ben Lobaugh][ben-lobaugh] \([Microsoft Open Technologies Inc.][ms-open-tech]*)
 
 このチュートリアルでは、Azure のギャラリーを使って作成された既存の WordPress Web アプリを取得し WordPress Multisite インストールに変換する方法を説明します。また、インストール内の各サブサイトにカスタム ドメインを割り当てる方法も説明します。
 

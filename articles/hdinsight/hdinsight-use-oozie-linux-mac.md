@@ -187,7 +187,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
 	- **RunSqoopExport**: Sqoop を使用して、作成されたデータを Hive スクリプトから SQL Database にエクスポートします。このアクションは、**RunHiveScript** アクションが正常に実行された場合にのみ実行されます。
 
-		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] (HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] (HDInsight バージョン 2.1 の場合) を参照してください。
+		> [AZURE.NOTE] Oozie ワークフローとワークフロー アクションの使用の詳細については、[Apache Oozie 4.0 のドキュメント][apache-oozie-400] \(HDInsight クラスター バージョン 3.0 の場合) または [Apache Oozie 3.3.2 のドキュメント][apache-oozie-332] \(HDInsight バージョン 2.1 の場合) を参照してください。
 
 	このワークフローには、このドキュメントで後述するジョブ定義で使用する値に置き換えられる複数のエントリ (`${jobTracker}` など) が含まれています。
 

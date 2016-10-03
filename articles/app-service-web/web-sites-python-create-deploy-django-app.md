@@ -35,7 +35,7 @@ Django Web フレームワークを使用してアプリケーションを作成
 - Python 2.7 または 3.4
 - setuptools、pip、virtualenv (Python 2.7 のみ)
 - Git
-- [Python Tools for Visual Studio][] (PTVS) - 注: これはオプションです
+- [Python Tools for Visual Studio][] \(PTVS) - 注: これはオプションです
 
 **注**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 

@@ -172,7 +172,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
     b.**[Status]** フィールドの値が **[Last test status: created]** と同じ場合は、HackerOne サポート チーム ([support@hackerone.com](mailto:support@hackerone.com)) に構成のレビューをご依頼ください。
 
 
-6. Azure クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+6. Azure クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
 	![Azure AD Single Sign-On][10]
 

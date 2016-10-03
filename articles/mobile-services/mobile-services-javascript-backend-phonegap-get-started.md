@@ -39,7 +39,7 @@
 + PhoneGap は、複数のプラットフォーム向けの開発をサポートします。PhoneGap ツール自体に加えて、対象としている各プラットフォーム用のツールをインストールする必要があります。
 
 	- Windows Phone: [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374) のインストール
-	- iOS: [Xcode] (v4.4 以上が必要) のインストール
+	- iOS: [Xcode] \(v4.4 以上が必要) のインストール
 	- Android: [Android Developer Tools][Android SDK] のインストール<br/> (Android 向けの Mobile Services SDK は Android 2.2 以降用のアプリケーションをサポートします。Android 4.2 以降がクイック スタート アプリケーションの実行に必要です。)
 
 ## 新しいモバイル サービスを作成する

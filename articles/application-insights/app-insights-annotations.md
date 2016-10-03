@@ -50,7 +50,7 @@
 
     [API アクセス] ブレードからコピーした**アプリケーション ID** を貼り付けます。
 
-    ![Visual Studio Team Services で [リリース] を開き、リリース定義を選択して [編集] を選択します。[タスクの追加] をクリックし、[Application Insights Release Annotation] (Application Insights リリース注釈) を選択します。Application Insights ID を貼り付けます。](./media/app-insights-annotations/30.png)
+    ![Visual Studio Team Services で [リリース] を開き、リリース定義を選択して [編集] を選択します。[タスクの追加] をクリックし、[Application Insights Release Annotation] \(Application Insights リリース注釈) を選択します。Application Insights ID を貼り付けます。](./media/app-insights-annotations/30.png)
 
 3. **[APIKey]** フィールドを `$(ApiKey)` 変数に設定します。
 

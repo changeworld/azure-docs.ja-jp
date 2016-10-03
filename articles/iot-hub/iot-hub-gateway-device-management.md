@@ -58,8 +58,8 @@
 
 Gateway SDK の使用方法については、次のチュートリアルを参照してください。
 
-- [IoT Gateway SDK - Get started using Linux][lnk-gateway-get-started] (IoT Gateway SDK – Linux の使用)
-- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] (IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
+- [IoT Gateway SDK - Get started using Linux][lnk-gateway-get-started] \(IoT Gateway SDK – Linux の使用)
+- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] \(IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
 
 IoT Hub を使用したデバイス管理の詳細については、「[Azure IoT Hub デバイス管理 (DM) クライアント ライブラリの概要][lnk-library-c]」をご覧ください。
 

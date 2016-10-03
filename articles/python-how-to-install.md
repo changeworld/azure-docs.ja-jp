@@ -51,7 +51,7 @@ CPython はいくつかの方法で入手できます。
 
 ## Windows、Linux、および MacOS (クライアント ライブラリのみ) での SDK のインストール
 
-既に Python をインストールしている場合は、pip を使用して、既存の Python 2.7 または Python 3.3 以降の環境ですべてのクライアント ライブラリのバンドルをインストールできます。これにより、[Python Package Index][] (PyPI) からパッケージがダウンロードされます。
+既に Python をインストールしている場合は、pip を使用して、既存の Python 2.7 または Python 3.3 以降の環境ですべてのクライアント ライブラリのバンドルをインストールできます。これにより、[Python Package Index][] \(PyPI) からパッケージがダウンロードされます。
 
 管理者権限が必要になる場合があります。
 
@@ -88,12 +88,12 @@ Azure サービスごとに個別にインストールできます。
 
 ## その他のパッケージの入手
 
-「[Python Package Index][] (Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施できます。
+「[Python Package Index][] \(Python パッケージ インデックス) (PyPI)」では、Python ライブラリから豊富なリソースを選べます。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施できます。
 
 
 ## Python Tools for Visual Studio
 
-[Python Tools for Visual Studio][] (PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用できます。
+[Python Tools for Visual Studio][] \(PTVS) は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用できます。
 
 ![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
 

@@ -52,7 +52,7 @@ CLI を npm パッケージからインストールするには、ご使用の�
 
 * [Windows インストーラー][windows-installer]
 
-* [Linux tar ファイル][linux-installer] (Node.js と npm が必要) - `sudo npm install -g <path to downloaded tar file>` を実行してインストールします。
+* [Linux tar ファイル][linux-installer] \(Node.js と npm が必要) - `sudo npm install -g <path to downloaded tar file>` を実行してインストールします。
 
 
 ## 方法 3.Docker コンテナーの使用

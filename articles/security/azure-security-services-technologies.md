@@ -25,7 +25,7 @@
 手始めとして、次のリストを用意しました。時間の経過と共に、このリストは Azure と同様に変更および増加します。リストは分類されています。カテゴリのリストも徐々に増えていきます。セキュリティ関連のサービスとテクノロジを最新の状態に維持するために、定期的にこのページを確認してください。
 
 ## Azure セキュリティ- 全般
-- [[Azure Security Center] (Azure Security Center)](https://azure.microsoft.com/documentation/services/security-center/)
+- [[Azure Security Center] \(Azure Security Center)](https://azure.microsoft.com/documentation/services/security-center/)
 - [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/)
 - [Azure Disk Encryption](azure-security-disk-encryption.md)
 - [Log Analytics](../log-analytics/log-analytics-overview.md)
