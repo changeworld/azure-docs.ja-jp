@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="オンプレミス ID と Azure Active Directory の統合" 
-	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="オンプレミス ID と Azure Active Directory の統合"
+	description="これは、Azure AD Connect の内容と使用する理由を説明するページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 
@@ -33,7 +33,7 @@ API は Azure Active Directory に登録されているユーザーにアクセ�
 
 
 
-## Azure Multi-Factor Authentication SDK のダウンロード 
+## Azure Multi-Factor Authentication SDK のダウンロード
 
 Azure Multi-Factor SDK のダウンロードには、[Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。SDK をダウンロードするには、Multi-Factor Auth プロバイダーを直接管理するか、MFA サービスの設定ページで **[ポータルに移動する]** リンクをクリックして、Multi-Factor 管理ポータルに移動する必要があります。
 
@@ -101,11 +101,11 @@ SDK 内には、次の項目があります。
 
 デモ ページの Web クライアント コードを次に示します。
 
-	
+
 	<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-	
+
 	<!DOCTYPE html>
-	
+
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head runat="server">
 	<title>Multi-Factor Authentication Demo</title>
@@ -113,21 +113,21 @@ SDK 内には、次の項目があります。
 	<body>
 	<h1>Azure Multi-Factor Authentication Demo</h1>
 	<form id="form1" runat="server">
-	
+
 	<div style="width:auto; float:left">
 	Username:&nbsp;<br />
 	Password:&nbsp;<br />
 	</div>
-	
+
 	<div">
 	<asp:TextBox id="username" runat="server" width="100px"/><br />
 	<asp:Textbox id="password" runat="server" width="100px" TextMode="password" /><br />
 	</div>
-	
+
 	<asp:Button id="btnSubmit" runat="server" Text="Log in" onClick="btnSubmit_Click"/>
-	
+
 	<p><asp:Label ID="lblResult" runat="server"></asp:Label></p>
-	
+
 	</form>
 	</body>
 	</html>
@@ -143,13 +143,13 @@ SDK 内には、次の項目があります。
 	using System.Web;
 	using System.Web.UI;
 	using System.Web.UI.WebControls;
-	
+
 	public partial class _Default : System.Web.UI.Page
 	{
 	    protected void Page_Load(object sender, EventArgs e)
 	    {
 	    }
-	
+
 	    protected void btnSubmit_Click(object sender, EventArgs e)
 	    {
 	        // Step 1: Validate the username and password
@@ -161,23 +161,23 @@ SDK 内には、次の項目があります。
 	        else
 	        {
 	            // Step 2: Perform multi-factor authentication
-	
+
 	            // Add call details from the user database.
 	            PfAuthParams pfAuthParams = new PfAuthParams();
 	            pfAuthParams.Username = username.Text;
 	            pfAuthParams.Phone = "9134884271";
 	            pfAuthParams.Mode = pf_auth.MODE_STANDARD;
-	            
-	            // Specify a client certificate 
+
+	            // Specify a client certificate
 	            // NOTE: This file contains the private key for the client
-	            // certificate. It must be stored with appropriate file 
+	            // certificate. It must be stored with appropriate file
 	            // permissions.
 	            pfAuthParams.CertFilePath = "c:\\cert_key.p12";
-	
+
 	            // Perform phone-based authentication
 	            int callStatus;
 	            int errorId;
-	
+
 	            if(pf_auth.pf_authenticate(pfAuthParams, out callStatus, out errorId))
 	            {
 	                lblResult.ForeColor = System.Drawing.Color.Green;
@@ -189,8 +189,8 @@ SDK 内には、次の項目があります。
 	                lblResult.Text = " Multi-Factor Authentication failed.";
 	            }
 	        }
-	
+
 	    }
 	}
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

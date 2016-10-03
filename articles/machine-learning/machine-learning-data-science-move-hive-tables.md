@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
-	ms.author="hangzh;bradsev" />
+	ms.date="09/14/2016" 
+	ms.author="bradsev" />
 
  
 #データを作成して Azure BLOB ストレージから Hive テーブルに読み込む
@@ -31,14 +31,18 @@
  
 * Azure のストレージ アカウントが作成されている。手順については、「[Azure ストレージ アカウントの作成](../hdinsight-get-started.md#storage)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。手順については、「[Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」をご覧ください。
-* クラスターへのリモート アクセスを有効にし、ログインし、Hadoop コマンド ライン コンソールを開いている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。
+* クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。手順については、「[Hadoop クラスターのヘッド ノードへのアクセス](machine-learning-data-science-customize-hadoop-cluster.md#headnode)」をご覧ください。
 
 ## Azure BLOB ストレージにデータをアップロードする
 [高度な分析のための Azure 仮想マシンのセットアップ](machine-learning-data-science-setup-virtual-machine.md)に関するページの指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\<ユーザー名>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。
 
 ここでは、Hive テーブルのデータが**圧縮されていない**表形式であることと、Hadoop クラスターが使用するストレージ アカウントの既定の (または追加の) コンテナーにデータがアップロードされていることを想定しています。
 
-_NYC タクシー乗車データ_の実習を行う場合は、まず 24 個の <a href="http://www.andresmh.com/nyctaxitrips/" target="_blank">NYC タクシー乗車データ</a> ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) をダウンロードし、すべてのファイルを .csv ファイルに**解凍**します。次に、「[Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](machine-learning-data-science-customize-hadoop-cluster.md)」で説明する手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルをアップロードする必要があります。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough.md#upload)をご覧ください。
+**NYC タクシー乗車データ**の実習を行う場合は、次の準備が必要です。
+
+- 24 個の [NYC タクシー乗車データ](http://www.andresmh.com/nyctaxitrips) ファイル (12 個の Trip ファイルと 12 個の Fare ファイル) を**ダウンロード**します。
+- すべてのファイルを .csv ファイルに**解凍**します。
+- [Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする方法](machine-learning-data-science-customize-hadoop-cluster.md)に関する記事に記載されている手順で作成された Azure ストレージ アカウントの既定のコンテナー (または適切なコンテナー) にそれらのファイルを**アップロード**します。ストレージ アカウントの既定のコンテナーに .csv ファイルをアップロードするプロセスについては、この[ページ](machine-learning-data-science-process-hive-walkthrough.md#upload)をご覧ください。
 
 
 ## <a name="submit"></a>Hive クエリを送信する方法
@@ -49,7 +53,7 @@ Hive クエリは、以下のものを使用して送信できます。
 2. [Hive エディターで Hive クエリを送信する](#hive-editor)
 3. [Azure PowerShell コマンドで Hive クエリを送信する](#ps)
  
-Hive クエリは SQL に似ています。SQL を使い慣れているユーザーには、[Hive for SQL Users チート シート](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)が役立つ場合があります。
+Hive クエリは SQL に似ています。SQL を使い慣れている場合は、[Hive for SQL Users チート シート](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)が役立つことがあります。
 
 Hive クエリの送信時、Hive クエリの出力先を、画面上、ヘッド ノード上のローカル ファイル、または Azure BLOB のどれにするか制御できます。
 
@@ -60,7 +64,7 @@ Hive クエリが複雑な場合、Hadoop クラスターのヘッド ノード�
 
 Hadoop クラスターのヘッド ノードにログインし、ヘッド ノードのデスクトップで Hadoop コマンド ラインを開き、コマンド `cd %hive_home%\bin` を入力します。
 
-ユーザーには Hadoop コマンド ラインでハイブ クエリを送信する 3 つの方法があります。
+Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 つの方法があります。
 
 * 直接
 * .hql ファイルの使用
@@ -68,7 +72,7 @@ Hadoop クラスターのヘッド ノードにログインし、ヘッド ノ�
 
 #### Hadoop コマンド ラインでハイブ クエリを直接送信する 
 
-ユーザーは、`hive -e "<your hive query>;` のようなコマンドを実行することで、Hadoop コマンド ラインで単純な Hive クエリを直接送信できます。次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
+`hive -e "<your hive query>;` のようなコマンドを実行することで、Hadoop コマンド ラインで単純な Hive クエリを直接送信できます。次に例を示します。ここで赤いボックスは Hive クエリを送信するコマンドを囲んでいます。緑色のボックスは Hive クエリの出力を囲んでいます。
 
 ![Create workspace](./media/machine-learning-data-science-move-hive-tables/run-hive-queries-1.png)
 
@@ -83,18 +87,18 @@ Hadoop クラスターのヘッド ノードにログインし、ヘッド ノ�
 
 **Hive クエリの進行状況ステータス画面の出力を抑制する**
 
-既定では、Hadoop コマンド ラインでハイブ クエリを送信した後に、マップ/縮小ジョブの進捗が画面に出力されます。マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
+既定では、Hadoop コマンド ラインで Hive クエリを送信した後に、マップ/縮小ジョブの進行状況が画面に出力されます。マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
 
 	hive -S -f "<path to the .hql file>"
 	hive -S -e "<Hive queries>"
 
 #### Hive コマンド コンソールで Hive クエリを送信する。
 
-ユーザーが Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。たとえば次のようになります。この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。緑色のボックスは、Hive クエリからの出力を強調表示しています。
+Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。たとえば次のようになります。この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。緑色のボックスは、Hive クエリからの出力を強調表示しています。
 
 ![Create workspace](./media/machine-learning-data-science-move-hive-tables/run-hive-queries-2.png)
 
-前の例では、画面上に直接 Hive クエリの結果を出力しています。ユーザーは、ヘッド ノードにあるローカル ファイルや Azure BLOB に出力を書き込むこともできます。次に、ユーザーはその他のツールを使用して、ハイブ クエリの出力をさらに分析することができます。
+前の例では、画面上に直接 Hive クエリの結果を出力しています。出力は、ヘッド ノードにあるローカル ファイルまたは Azure BLOB に書き込むこともできます。その後、他のツールを使用して、Hive クエリの出力をさらに分析できます。
 
 **Hive クエリの結果をローカル ファイルに出力する。**
 
@@ -108,29 +112,25 @@ Hive クエリの結果をヘッド ノード上のローカル ディレクト�
 
 **Hive クエリの結果を Azure BLOB に出力する**
 
-ユーザーは、Hadoop クラスターの既定のコンテナー内にある Azure BLOB に Hive クエリの結果を出力することもできます。ハイブ クエリは、次のように指定する必要があります。
+Hive クエリの結果は、Hadoop クラスターの既定のコンテナー内にある Azure BLOB に出力することもできます。そのための Hive クエリは次のとおりです。
 
 	insert overwrite directory wasb:///<directory within the default container> <select clause from ...>
 
-次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。`wasb:///queryoutputdir/queryoutput.txt` のようにディレクトリと BLOB の両方の名前を指定すると、エラーがスローされます。
+次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。`wasb:///queryoutputdir/queryoutput.txt` のようにディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
 ![Create workspace](./media/machine-learning-data-science-move-hive-tables/output-hive-results-2.png)
 
-Azure ストレージ エクスプローラーなどのツールを使用して Hadoop クラスターの既定のコンテナーを開く場合、ハイブ クエリの出力が次のように表示されます。フィルター (赤色の四角形によって示されています) を適用して、名前に指定された文字を持つ BLOB のみを取得できます。
+Azure ストレージ エクスプローラーを使用して Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力が次の図のように表示されます。フィルター (赤色の四角形によって示されています) を適用して、名前に指定された文字を持つ BLOB のみを取得できます。
 
 ![Create workspace](./media/machine-learning-data-science-move-hive-tables/output-hive-results-3.png)
 
 ###<a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
 
-ユーザーは、クエリのコンソール (Hive エディター) を使用するために、URL
-
-*https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor*
-
-を Web ブラウザーに入力することもできます。ログインするために、Hadoop クラスターの資格情報の入力を求められます。
+*https://&#60;Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
 ###<a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
 
-ユーザーは PowerShell を使用して Hive クエリを送信することもできます。手順については、「[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)」を参照してください。
+PowerShell を使用して Hive クエリを送信することもできます。手順については、「[PowerShell を使用して Hive ジョブを送信する](../hdinsight/hdinsight-submit-hadoop-jobs-programmatically.md#hive-powershell)」を参照してください。
 
 
 ## <a name="create-tables"></a>Hive データベースとテーブルの作成。
@@ -152,14 +152,14 @@ Hive テーブルを作成する Hive クエリを次に示します。
 	ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' lines terminated by '<line separator>' 
 	STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line.count"="1");
 
-ユーザーが接続する必要があるフィールドとその他の構成の説明を次に示します。
+接続する必要があるフィールドと他の構成の説明を次に示します。
 
-- **&#60;データベース名>**: ユーザーが作成するデータベースの名前。ユーザーが既定のデータベースを使用する場合、*create database...* クエリは省略してかまいません。
-- **&#60;テーブル名>**: ユーザーが指定されたデータベース内に作成するテーブルの名前。ユーザーが既定のデータベースを使用する場合、テーブルは *&#60;テーブル名>* で直接参照でき、&#60;データベース名> は不要です。
+- **&#60;データベース名>**: 作成するデータベースの名前。既定のデータベースを使用する場合、*create database...* クエリは省略してかまいません。
+- **&#60;テーブル名>**: 指定したデータベース内に作成するテーブルの名前。既定のデータベースを使用する場合、テーブルは *&#60;テーブル名>* で直接参照でき、&#60;データベース名> は不要です。
 - **&#60;フィールド区切り記号>**: Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
 - **&#60;行区切り記号>**: データ ファイル内の行を区切る区切り記号。
-- **&#60;ストレージの場所>**: Hive テーブルのデータを保存する Azure Sorage の場所。ユーザーが *LOCATION &#60;ストレージの場所>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。ユーザーがストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。この場所は、クラスターの既定のコンテナーを基準として、*'wasb:///&#60;ディレクトリ 1>/'* や *'wasb:///&#60;directory 1>/&#60;ディレクトリ 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
-- **TBLPROPERTIES("skip.header.line.count"="1")**: データ ファイルにヘッダー行が含まれる場合、ユーザーはこのプロパティを *create table* クエリの**最後に**追加する必要があります。それ以外の場合、ヘッダー行はテーブルへのレコードとして読み込まれます。データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
+- **&#60;ストレージの場所>**: Hive テーブルのデータを保存する Azure Sorage の場所。*LOCATION &#60;ストレージの場所>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。この場所は、クラスターの既定のコンテナーを基準として、*'wasb:///&#60;ディレクトリ 1>/'* や *'wasb:///&#60;directory 1>/&#60;ディレクトリ 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
+- **TBLPROPERTIES("skip.header.line.count"="1")**: データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data"></a>Hive テーブルへのデータの読み込み
 Hive テーブルにデータを読み込む Hive クエリを次に示します。
@@ -199,9 +199,9 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 ### <a name="orc"></a>ORC 形式での Hive データの格納
 
-ユーザーは ORC 形式で格納されているデータを直接 BLOB ストレージから Hive テーブルに読み込むことはできません。以下に、ORC 形式で格納されているデータを Azure BLOB から Hive テーブルに読み込むためにユーザーが実行する必要がある手順を示します。
+ORC 形式で格納されているデータを BLOB ストレージから Hive テーブルに直接読み込むことはできません。ORC 形式で格納されているデータを Azure BLOB から Hive テーブルに読み込むために実行する必要がある手順を以下に示します。
 
-1. 外部テーブル **STORED AS TEXTFILE** を作成し、データを BLOB ストレージからテーブルに読み込みます。
+外部テーブル **STORED AS TEXTFILE** を作成し、データを BLOB ストレージからテーブルに読み込みます。
 
 		CREATE EXTERNAL TABLE IF NOT EXISTS <database name>.<external textfile table name>
 		(
@@ -216,7 +216,7 @@ Hive テーブルをパーティション分割することに加え、Optimized
 
 		LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<table name>;
 
-2. 手順 1 の外部テーブルと同じスキーマを持つ内部テーブルを、同じフィールド区切り記号を使用して作成し、ORC 形式で Hive データを格納します。
+手順 1 の外部テーブルと同じスキーマを持つ内部テーブルを、同じフィールド区切り記号を使用して作成し、ORC 形式で Hive データを格納します。
 
 		CREATE TABLE IF NOT EXISTS <database name>.<ORC table name> 
 		(
@@ -227,22 +227,22 @@ Hive テーブルをパーティション分割することに加え、Optimized
 		) 
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY '<field separator>' STORED AS ORC;
 
-3. 手順 1 の外部テーブルからデータを選択し、ORC テーブルに挿入します。
+手順 1 の外部テーブルからデータを選択し、ORC テーブルに挿入します。
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name>
             SELECT * FROM <database name>.<external textfile table name>;
 
-	>[AZURE.NOTE] TEXTFILE テーブル *&#60;データベース名>.&#60;外部テキストファイル テーブル名>* にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。*&#60;データベース名>.&#60;ORC テーブル名>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、*&#60;データベース名>.&#60;ORC テーブル名>* に挿入すると失敗します。この場合、ユーザーは *&#60;データベース名>.&#60;ORC テーブル名>* に挿入するフィールドを次のように具体的に選択する必要があります。
+>[AZURE.NOTE] TEXTFILE テーブル *&#60;データベース名>.&#60;外部テキストファイル テーブル名>* にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。*&#60;データベース名>.&#60;ORC テーブル名>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、*&#60;データベース名>.&#60;ORC テーブル名>* に挿入すると失敗します。この場合、*&#60;データベース名>.&#60;ORC テーブル名>* に挿入するフィールドを次のように具体的に選択する必要があります。
 
 		INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition variable>=<partition value>)
 		   SELECT field1, field2, ..., fieldN
 		   FROM <database name>.<external textfile table name> 
 		   WHERE <partition variable>=<partition value>;
 
-4. すべてのデータが *&#60;データベース名>.&#60;ORC テーブル名>* に挿入された後に、次のクエリを使用して *&#60;外部テキストファイル テーブル名>* を削除するのが安全です。
+すべてのデータが *&#60;データベース名>.&#60;ORC テーブル名>* に挿入された後に、次のクエリを使用して *&#60;外部テキストファイル テーブル名>* を削除するのが安全です。
 
 		DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
 この手順が終了すれば、すぐに使用できる ORC 形式のデータを含むテーブルが手に入ったことになります。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

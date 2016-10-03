@@ -56,17 +56,17 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
  - **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。HTTPS トラフィックが発生した場合、リバース プロキシで SSL 終了が発生します。リバース プロキシによってクラスター内のサービスに転送される要求は http 経由になります。
- - **Cluster FQDN | internal IP:** 外部クライアントの場合、リバース プロキシは、クラスターのドメイン (mycluster.eastus.cloudapp.azure.com など) を介してアクセスするように構成できます。既定では、すべてのノードでリバース プロキシが実行されるので、内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (10.0.0.1 など) でアクセスできます。。
+ - **Cluster FQDN| internal IP:** For external clients, the reverse proxy can be configured so that it is reachable through the cluster domain (e.g., mycluster.eastus.cloudapp.azure.com). By default the reverse proxy runs on every node, so for internal traffic it can be reached on localhost or on any internal node IP (e.g., 10.0.0.1).
  - **Port:** リバース プロキシに指定されているポート (例: 19008)。
- - **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているサービスのデプロイ済みの完全修飾サービス インスタンス名です。たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
+ - **ServiceInstanceName:** "fabric:/" スキームなしでアクセスしようとしているサービスのデプロイ済み完全修飾サービス インスタンス名です。たとえば、*fabric:/myapp/myservice/* サービスにアクセスするには、*myapp/myservice* を使用します。
  - **Suffix path:** 接続先となるサービスの実際の URL パスです (例: *myapi/values/add/3*)。
- - **PartitionKey:** パーティション分割されたサービスの場合、到達するパーティションの計算済みのパーティション キーです。これはパーティション ID の GUID ではありません。シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
+ - **PartitionKey:** パーティション分割されたサービスの場合、アクセスするパーティションの計算済みのパーティション キーです。これはパーティション ID の GUID ではありません。シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
  - **PartitionKind:** サービス パーティション構成です。これには、"Int64Range" または "Named" を指定できます。シングルトン パーティション構成を使用するサービスでは、このパラメーターは不要です。
  - **Timeout:** クライアント要求の代わりに、リバース プロキシによって作成される、サービスに対する http 要求のタイムアウトを指定します。このパラメーターの既定値は 60 秒です。これは省略可能なパラメーターです。
 
 ### 使用例
 
-例として、次の URL で HTTP リスナーを開く **fabric:/MyApp/MyService** サービスを取得します。
+次の URL で HTTP リスナーを開く **fabric:/MyApp/MyService** サービスを例にとってみましょう。
 
 ```
 http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
@@ -77,12 +77,12 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
  - `/index.html`
  - `/api/users/<userId>`
 
-サービスがシングルトン パーティション構成を使用している場合、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターは不要であり、次のようにゲートウェイ経由でサービスに到達できます。
+サービスがシングルトン パーティション構成を使用している場合、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターは不要であり、次のようにゲートウェイ経由でサービスにアクセスできます。
 
  - 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService`
  - 内部: `http://localhost:19008/MyApp/MyService`
 
-サービスが Uniform Int64 パーティション構成を使用している場合、サービスのパーティションに到達するには、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターを使用する必要があります。
+サービスが Uniform Int64 パーティション構成を使用している場合、サービスのパーティションにアクセスするには、*PartitionKey* および *PartitionKind* クエリ文字列パラメーターを使用する必要があります。
 
  - 外部: `http://mycluster.eastus.cloudapp.azure.com:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
  - 内部: `http://localhost:19008/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
@@ -126,7 +126,7 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 この HTTP 応答ヘッダーは、要求されたリソースが存在しないという通常の HTTP 404 の状況を示すので、ゲートウェイはサービス アドレスの再解決を試みなくなります。
 
 ## セットアップと構成
-[Azure Resource Manager テンプレート](./service-fabric-cluster-creation-via-arm.md)によって、クラスターで Service Fabric リバース プロキシを有効にすることができます。
+[Azure Resource Manager テンプレート](./service-fabric-cluster-creation-via-arm.md)によって、クラスターの Service Fabric リバース プロキシを有効にすることができます。
 
 (サンプル テンプレートを使用するか、カスタムの Resource Manager テンプレートを作成して) デプロイするクラスター用テンプレートを用意したら、次の手順に従って、テンプレートでリバース プロキシを有効にすることができます。
 
@@ -141,7 +141,7 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         }
     },
     ```
-2. **[クラスター]** の [[リソースの種類]](../resource-group-authoring-templates.md) セクションで、nodetype オブジェクトごとにポートを指定します
+2. **クラスター**の [resources の type](../resource-group-authoring-templates.md) セクションで、nodeType オブジェクトごとにポートを指定します。
 
     ```json
     {
@@ -205,7 +205,7 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
         ]
     }
     ```
-4. リバース プロキシのポートで SSL 証明書を構成するには、**Cluster** [Resource type セクション](../resource-group-authoring-templates.md)で httpApplicationGatewayCertificate プロパティに証明書を追加します。
+4. リバース プロキシのポートで SSL 証明書を構成するには、**クラスター**の [resources の type セクション](../resource-group-authoring-templates.md)で httpApplicationGatewayCertificate プロパティに証明書を追加します。
 
     ```json
     {
@@ -229,7 +229,7 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
     ```
 
 ## 次のステップ
- - [GitHUb のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
+ - [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/WordCount)で、サービス間の HTTP 通信の例を確認します。
 
  - [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 
@@ -241,4 +241,4 @@ http://10.0.05:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

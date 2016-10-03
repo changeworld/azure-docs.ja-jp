@@ -1,21 +1,21 @@
-<properties 
-	pageTitle="Azure Multi-Factor Authentication での問題 | Microsoft Azure" 
-	description="このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。" 
+<properties
+	pageTitle="Azure Multi-Factor Authentication での問題 | Microsoft Azure"
+	description="このドキュメントでは、Azure Multi-factor Authentication で問題が発生した場合の処置に関する情報をユーザーに提供します。"
 	services="multi-factor-authentication"
 	keywords = "多要素認証のクライアント, 認証の問題, 関連付け ID"
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/22/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication での問題
 >[AZURE.IMPORTANT]
@@ -44,7 +44,7 @@
  - **セッション ID** - 受信した特定のセッション ID。
  - **関連付け ID** – エラーが表示されたときに生成された関連付け ID コード。
  - **タイムスタンプ** – エラーが表示された正確な日時 (タイムゾーンを含む)。
- 
+
 ![関連付け ID](./media/multi-factor-authentication-end-user-manage/correlation.png)
 
  - **ユーザー ID** – エラーが表示されたユーザーの ID は何でしたか (例: user@contoso.com)。
@@ -58,7 +58,7 @@
 アカウントに再度サインインする方法は 2 種類あります。1 つ目は、代替の認証用電話番号をセットアップしている場合、その番号を使用してアカウントにサインインし、セキュリティ設定を変更します。
 
 2 つ目の認証用電話番号を指定していた場合は、その番号を使用してサインインします。![セットアップ](./media/multi-factor-authentication-end-user-manage/altphone.png)上のスクリーン ショットでは、2 つの電話番号がセットアップされています。1 つ目は末尾が 67 の番号で、2 つ目は末尾が 30 の番号です。
-  
+
 代替の電話番号を使用してサインインするには、通常どおりサインインしてから、単に **[別の確認オプションを使用する]** を選択するだけです。![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
 
 それから 2 つ目の電話番号を選択します。ここでは、**[折り返し先: X XXXXXXXX30]** を選択します。
@@ -74,13 +74,13 @@
 多要素認証の使用方法に応じて、電話番号などの設定を変更できる場所がいくつかあります。下の表からご使用の状況に最も近いものを選択します。
 
 多要素認証の使用方法|Description
-:------------- | :------------- | 
+:------------- | :------------- |
 [Office 365 で使用する](#changing-your-settings-with-office-365)| この場合には、Office 365 ポータルを使用して設定を変更します。
 [わからない](#changing-your-settings-with-the-myapps-portal)|この場合には、[http://myapps.microsoft.com](http://myapps.microsoft.com) にサインインし、設定を変更します。
 [Microsoft Azure で使用する](#changing-your-settings-with-microsoft-azure)| この場合には、Azure ポータルを使用して設定を変更します。
 
 
- 
+
 ### Office 365 で設定を変更する
 
 
@@ -128,7 +128,7 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 2 つ目の認証用電話番号を構成することは重要です。1 つ目の電話番号の携帯電話にモバイル アプリがインストールされている場合が多いため、電話の紛失や盗難が起きた場合にアカウントに再度サインインできる唯一の手段は、2 つ目の電話番号を使用する方法になります。
 
 最初の方法は、2 つ目の認証方法を使用することです。2 つ目の認証用電話番号を指定していた場合は、その番号を使用してサインインします。![セットアップ](./media/multi-factor-authentication-end-user-manage/altphone.png)上のスクリーン ショットでは、2 つの電話番号がセットアップされています。1 つ目は末尾が 67 の番号で、2 つ目は末尾が 30 の番号です。
-  
+
 代替の電話番号を使用してサインインするには、通常どおりサインインしてから、単に **[別の確認オプションを使用する]** を選択するだけです。![Different Verification](./media/multi-factor-authentication-end-user-manage/differentverification.png)
 
 それから 2 つ目の電話番号を選択します。ここでは、**[折り返し先: X XXXXXXXX30]** を選択します。
@@ -172,4 +172,4 @@ Azure で多要素認証を使用している場合は、Azure ポータルで�
 
 最後に、このページに関する詳しいフィードバックを残してください。それにより、このページを更新し、情報を追加して継続的に改善できます。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/18/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 エンドポイントの使用が適しているかどうかを判断するには
@@ -121,4 +121,4 @@ Azure Active Directory サービスで利用できる開発者向け機能の中
 - Azure AD ユーザーのグループ要求
 - アプリケーション ロールとロール要求
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

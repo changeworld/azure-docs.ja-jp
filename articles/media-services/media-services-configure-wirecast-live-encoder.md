@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Telestream Wirecast エンコーダーを構成して、単一ビットレートのライブ ストリームを送信する " 
+	pageTitle="Telestream Wirecast エンコーダーを構成して単一ビットレートのライブ ストリームを送信する | Microsoft Azure" 
 	description="このトピックでは、Wirecast ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako;cenkdin;anilmur"/>
 
 #Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -32,7 +32,7 @@
 ##前提条件
 
 - [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md)」を参照してください。
+- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 - 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
 - ツールを起動し、AMS アカウントに接続します。
 
@@ -148,7 +148,7 @@
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 
-エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。ガイダンスについては、「[トラブルシューティング](media-services-troubleshooting-live-streaming.md)」のトピックを参照してください。
+エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
 
 ##プログラムを作成する
 
@@ -170,7 +170,7 @@
 
 ## トラブルシューティング
  
-ガイダンスについては、「[トラブルシューティング](media-services-troubleshooting-live-streaming.md)」のトピックを参照してください。
+ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
 
 ##Media Services のラーニング パス
 
@@ -180,4 +180,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

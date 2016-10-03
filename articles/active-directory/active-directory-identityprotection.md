@@ -14,24 +14,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/11/2016"
+	ms.date="09/20/2016"
 	ms.author="markvi"/>
 
 #Azure Active Directory Identity Protection 
 
-Azure Active Directory Identity Protection は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。Microsoft は 10 年以上にわたってクラウド ベースの ID を保護してきました。Azure AD Identity Protection は、同じ保護システムを企業のお客様が利用できるようにするものです。Identity Protection は、既存の Azure AD 異常検出機能 (Azure AD の異常アクティビティ レポートで利用可能) を利用し、リアルタイムで異常を検出できる新しいリスク イベントの種類が導入されています。
+Azure Active Directory Identity Protection は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供する、Azure AD Premium P2 エディションの機能です。Microsoft は 10 年以上にわたってクラウド ベースの ID を保護してきました。Azure AD Identity Protection は、同じ保護システムを企業のお客様が利用できるようにするものです。Identity Protection は、既存の Azure AD 異常検出機能 (Azure AD の異常アクティビティ レポートで利用可能) を利用し、リアルタイムで異常を検出できる新しいリスク イベントの種類が導入されています。
 
-## 現在のプレビューの制限事項
-
-Azure Active Directory Identity Protection には、フェデレーション ドメインとの関係について次の制限があります。
-
-- フェデレーション ドメインに対して機能するユーザーのリスク セキュリティ ポリシー
-
-	- クラウドでのパスワード変更がオンプレミスに書き戻されるように、フェデレーション ドメインに対して[パスワード ライトバック](active-directory-passwords-getting-started.md)を有効にする必要があります。
-
-	- Azure AD Premium ライセンスがエンドユーザーに割り当てられている必要があります。
-
-- リスク イベントは、Azure Active Directory とフェデレーションを行っているアプリに対してのみ検出されます。
 
 
 ##Getting Started (概要)
@@ -54,7 +43,7 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 
 - 脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します
 
-<br>
+
 
 **リスク イベントの調査:**
 
@@ -66,7 +55,7 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 
 - パスワード リセットなどの修復アクションへの簡単なアクセスを提供します
 
-<br>
+
 
 **リスクに基づく条件付きアクセス ポリシー:**
 
@@ -83,7 +72,7 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 
 リスク イベントは Identity Protection によって疑いありのフラグが設定されたイベントであり、ID が侵害されている可能性を示します。すべてのリスク イベントについては、「[Azure Active Directory Identity Protection で検出されるリスク イベントの種類](active-directory-identityprotection-risk-events-types.md)」を参照してください。
 
-これらのリスク イベントの一部は、Microsoft Azure 管理ポータルの Azure AD 異常アクティビティ レポートで利用できたものです。次の表では、さまざまなリスク イベントの種類と、対応する **Azure AD 異常なアクティビティ** レポートの一覧を示します。Microsoft はこの分野への投資を続けることにより、既存のリスク イベントの検出精度を継続的に向上させ、必要に応じて新しいリスク イベントの種類を追加する予定です。
+これらのリスク イベントの一部は、Azure Portal の Azure AD 異常アクティビティ レポートで利用できたものです。次の表では、さまざまなリスク イベントの種類と、対応する **Azure AD 異常なアクティビティ** レポートの一覧を示します。Microsoft はこの分野への投資を続けることにより、既存のリスク イベントの検出精度を継続的に向上させ、必要に応じて新しいリスク イベントの種類を追加する予定です。
 
 
 
@@ -94,10 +83,9 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 | 感染しているデバイスからのサインイン | 感染している可能性があるデバイスからのサインイン |
 | 匿名の IP アドレスからのサインイン | 不明なソースからのサインイン |
 | 不審なアクティビティのある IP アドレスからのサインイン |	不審なアクティビティのある IP アドレスからのサインイン |
-| 未知の場所からのサインイン | - |
-| ロックアウト イベント (パブリック プレビューには含まれません) | - |
+| 未知の場所からのサインイン | - | | ロックアウト イベント | - |
 
-以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。これらのレポートは Microsoft Azure 管理ポータルではまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
+以下の Azure AD 異常アクティビティ レポートは Azure AD Identity Protection のリスク イベントには含まれず、したがって Identity Protection では利用できません。これらのレポートは Azure Portal でまだ使用できますが、Identity Protection のリスク イベントによって置き換えられるため、将来的には廃止されます。
 
 - 複数のエラー後のサインイン
 - 複数の地域からのサインイン
@@ -125,7 +113,7 @@ Azure Active Directory Identity Protection には、フェデレーション ド
 ## 調査
 Identity Protection を使用するときは、通常、Identity Protection ダッシュボードから開始します。
 
-<br><br> ![修復](./media/active-directory-identityprotection/29.png "修復") <br>
+![修復](./media/active-directory-identityprotection/1000.png "修復")
 
 ダッシュボードからは次のものにアクセスできます。
  
@@ -153,7 +141,7 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 - それらのイベントのリスク レベル
 - すべての修復アクションが実施されたかどうか
 
-<br> ![ユーザーのリスク](./media/active-directory-identityprotection/86.png "ユーザーのリスク") <br>
+![ユーザーのリスク](./media/active-directory-identityprotection/1001.png "ユーザーのリスク")
 
 
 
@@ -162,14 +150,14 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## リスク イベントの手動クローズ
 
-ほとんどの場合、セキュリティ保護されたパスワードのリセットなどの修復アクションを実行すると、リスク イベントは自動的にクローズします。ただし、それが不可能な場合もあります。<br>たとえば次のような場合です。
+ほとんどの場合、セキュリティ保護されたパスワードのリセットなどの修復アクションを実行すると、リスク イベントは自動的にクローズします。ただし、それが不可能な場合もあります。たとえば次のような場合です。
 
 - アクティブなリスク イベントの対象ユーザーが削除されている
 - 報告されたリスク イベントが正当なユーザーによって実行されたことが調査でわかっている
 
-**アクティブ**なリスク イベントはユーザー リスク計算に使用されるため、リスク イベントを手動でクローズしてリスク レベルを下げることが必要になる場合があります。<br>調査の過程で、リスク イベントの状態を変更するいずれかの操作を実行できます。
+**アクティブ**なリスク イベントはユーザー リスク計算に使用されるため、リスク イベントを手動でクローズしてリスク レベルを下げることが必要になる場合があります。調査の過程で、リスク イベントの状態を変更するいずれかの操作を実行できます。
 
-<br> ![アクション](./media/active-directory-identityprotection/34.png "アクション") <br>
+![アクション](./media/active-directory-identityprotection/34.png "アクション")
 
 - **解決** - リスク イベントを調査した後、Identity Protection の外部で適切な修復アクションを行い、リスク イベントがクローズしたことが確実な場合、イベントを解決済みとしてマークします。解決されたイベントはリスク イベントの状態をクローズに設定し、そのリスク イベントはユーザー リスクに対して考慮されなくなります。
 
@@ -179,11 +167,35 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 - **再アクティブ化** - **解決**、**誤検知**、または**無視**を選択することによって手動でクローズされたリスク イベントを再アクティブ化し、イベントの状態を**アクティブ**に戻すことができます。再アクティブ化されたリスク イベントは、ユーザー リスク レベルの計算に対して考慮されます。修復 (セキュリティ保護されたパスワードのリセットなど) によってクローズされたリスク イベントを再アクティブ化することはできません。
 
+
+
+
 **関連する構成ダイアログ ボックスを開くには**:
 
-1. **[Azure AD Identity Protection]** ブレードで、**[リスクのフラグ付きユーザー]** をクリックします。 <br><br> ![パスワードの手動リセット](./media/active-directory-identityprotection/408.png "パスワードの手動リセット") <br>
+1. **[Azure AD Identity Protection]** ブレードの **[Investigate (調査)]** で **[Risk events (リスク イベント)]** をクリックします。
 
-2. 影響を受けるユーザーを右クリックします。 <br><br> ![パスワードの手動リセット](./media/active-directory-identityprotection/437.png "パスワードの手動リセット") <br>
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1002.png "パスワードの手動リセット")
+
+2. **[Risk events (リスク イベント)]** の一覧で、リスクをクリックします。
+
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1003.png "パスワードの手動リセット")
+
+2. リスクのブレードで、ユーザーを右クリックします。
+
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1004.png "パスワードの手動リセット")
+
+
+
+### ユーザーのすべてのリスク イベントを手動で閉じる
+
+Azure Active Directory Identity Protection には、ユーザーのリスク イベントを個別に手動で閉じる代わりに、1 回のクリックでユーザーのすべてのイベントを閉じる方法が用意されています。
+
+
+![アクション](./media/active-directory-identityprotection/2222.png "アクション")
+
+**[Dismiss all events (すべてのイベントを閉じる)]** をクリックすると、すべてのイベントが閉じられ、影響を受けるユーザーは危険な状態ではなくなります。
+
+
 
 ## ユーザー リスク イベントの修復
 
@@ -208,15 +220,25 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 **一時パスワード** - **[一時パスワードを生成する]** を選択すると、すぐに既存のパスワードが無効化され、ユーザーに対して新しい一時パスワードが作成されます。ユーザーの連絡用メール アドレスまたはユーザーのマネージャーに、新しい一時パスワードを送信します。パスワードは一時的なので、ユーザーはサインイン時にパスワードの変更を求められます。
 
-<br> ![ポリシー](./media/active-directory-identityprotection/71.png "ポリシー") <br>
+
+![ポリシー](./media/active-directory-identityprotection/1005.png "ポリシー")
+
 
 **関連する構成ダイアログ ボックスを開くには**:
 
-1. **[Azure AD Identity Protection]** ブレードで、**[リスクのフラグ付きユーザー]** をクリックします。 <br><br> ![パスワードの手動リセット](./media/active-directory-identityprotection/408.png "パスワードの手動リセット") <br>
+1. **[Azure AD Identity Protection]** ブレードで、**[Users flagged for risk (リスクのフラグ付きユーザー)]** をクリックします。
 
-2. 影響を受けるユーザーをクリックします。 <br><br> ![パスワードの手動リセット](./media/active-directory-identityprotection/404.png "パスワードの手動リセット") <br>
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1006.png "パスワードの手動リセット")
 
-2. [パスワードのリセット] をクリックします。 <br><br> ![パスワードの手動リセット](./media/active-directory-identityprotection/420.png "パスワードの手動リセット") <br>
+
+2. ユーザーの一覧から、少なくとも 1 つのリスク イベントを持つユーザーを選択します。
+
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1007.png "パスワードの手動リセット")
+
+
+2. ユーザーのブレードで、**[パスワードのリセット]** をクリックします。
+
+	![パスワードの手動リセット](./media/active-directory-identityprotection/1008.png "パスワードの手動リセット")
 
 
 
@@ -224,19 +246,37 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## ユーザーのリスク セキュリティ ポリシー
 
-ユーザーのリスク セキュリティ ポリシーは、特定のユーザーに対するリスク レベルを評価し、定義されている条件とルールに基づいて修復および軽減のアクションを適用する条件付きアクセス ポリシーです。<br><br> ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/500.png "ユーザーのリスク ポリシー") <br>
+ユーザーのリスク セキュリティ ポリシーは、特定のユーザーに対するリスク レベルを評価し、定義されている条件とルールに基づいて修復および軽減のアクションを適用する条件付きアクセス ポリシーです。
+
+
+![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1009.png "ユーザーのリスク ポリシー")
+
 
 Azure AD Identity Protection では、リスクのフラグ付きユーザーの軽減策と修復を管理するために、次のことが可能です。
 
-- ポリシーを適用するユーザーとグループを設定します。<br><br> ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/501.png "ユーザーのリスク ポリシー") <br>
+- ポリシーを適用するユーザーとグループを設定する。
 
-- パスワードの変更をトリガーするユーザー リスク レベルのしきい値 (低、中、高) を設定します。<br><br> ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/502.png "ユーザーのリスク ポリシー") <br>
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1010.png "ユーザーのリスク ポリシー")
 
-- ユーザーのブロックをトリガーするユーザー リスク レベルのしきい値 (低、中、高) を設定します。<br><br> ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/503.png "ユーザーのリスク ポリシー") <br>
 
-- ポリシーの状態を切り替えます。<br><br> ![MFA 登録](./media/active-directory-identityprotection/403.png "MFA 登録") <br>
+- ポリシーをトリガーするユーザー リスク レベルのしきい値 (低、中、高) を設定する。
 
-- 変更を行う前に、変更の影響を確認、評価します。<br><br> ![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/504.png "ユーザーのリスク ポリシー") <br>
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1011.png "ユーザーのリスク ポリシー")
+
+
+- ポリシーがトリガーされたときに適用するコントロールを設定する。
+
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1012.png "ユーザーのリスク ポリシー")
+
+
+- ポリシーの状態を切り替える。
+
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/403.png "MFA 登録")
+
+
+- 変更を行う前に、変更の影響を確認、評価する。
+
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1013.png "ユーザーのリスク ポリシー")
 
 
 **高**しきい値を選択すると、ポリシーがトリガーされる回数が減り、ユーザーへの影響が最小限になります。ただし、**低**および**中**レベルのリスクのフラグ付きユーザーはポリシーから除外されるため、以前に疑いのあった、または侵害されたことが知られていた、ID またはデバイスをセキュリティで保護することはできません。
@@ -262,9 +302,9 @@ Azure AD Identity Protection では、リスクのフラグ付きユーザーの
 
 **関連する構成ダイアログ ボックスを開くには**:
 
-1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。 <br><br> ![ユーザー リスクのポリシー](./media/active-directory-identityprotection/401.png "ユーザー リスクのポリシー") <br>
+1. **[Azure AD Identity Protection]** ブレードの **[構成]** セクションで **[User risk policy (ユーザー リスク ポリシー)]** をクリックします。
 
-2. **[セキュリティ ポリシー]** セクションで、**[ユーザーのリスク]** をクリックします。 <br><br> ![ユーザー リスクのポリシー](./media/active-directory-identityprotection/500.png "ユーザー リスクのポリシー") <br>
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1009.png "ユーザーのリスク ポリシー")
 
 
 
@@ -294,22 +334,40 @@ Azure AD Identity Protection の条件付きアクセスを使用して、サイ
 
 ## サインインのリスク セキュリティ ポリシー
 
-サインインのリスク ポリシーは、事前定義された条件と規則に基づいて、特定のサインインのリスクを評価し、対応策を適用する条件付きアクセス ポリシーです。<br><br>![サインインのリスク ポリシー](./media/active-directory-identityprotection/700.png "サインインのリスク ポリシー")<br>
+サインインのリスク ポリシーは、事前定義された条件と規則に基づいて、特定のサインインのリスクを評価し、対応策を適用する条件付きアクセス ポリシーです。
+
+![サインインのリスク ポリシー](./media/active-directory-identityprotection/1014.png "サインインのリスク ポリシー")
+
 
 Azure AD Identity Protection では、リスクの高いサインインの軽減策を管理するために、次のことが可能です。
 
-- ポリシーを適用するユーザーとグループを設定します。<br><br> ![サインインのリスク ポリシー](./media/active-directory-identityprotection/701.png "サインインのリスク ポリシー") <br>
+- ポリシーを適用するユーザーとグループを設定する。
 
-- 影響を受けたサインインに対して多要素認証のチャレンジをトリガーするサインイン リスク レベルのしきい値 (低、中、高) を設定します。<br><br> ![サインインのリスク ポリシー](./media/active-directory-identityprotection/702.png "サインインのリスク ポリシー") <br>
+	![サインインのリスク ポリシー](./media/active-directory-identityprotection/1015.png "サインインのリスク ポリシー")
 
-- 影響を受けたサインインをブロックするサインイン リスク レベルのしきい値 (低、中、高) を設定します。<br><br> ![サインインのリスク ポリシー](./media/active-directory-identityprotection/703.png "サインインのリスク ポリシー") <br>
 
-- ポリシーの状態を切り替えます。<br><br> ![MFA 登録](./media/active-directory-identityprotection/403.png "MFA 登録") <br>
+- ポリシーをトリガーするサインイン リスク レベルのしきい値 (低、中、高) を設定する。
 
-- 変更を行う前に、変更の影響を確認、評価します。<br><br> ![サインインのリスク ポリシー](./media/active-directory-identityprotection/704.png "サインインのリスク ポリシー") <br>
+	![サインインのリスク ポリシー](./media/active-directory-identityprotection/1016.png "サインインのリスク ポリシー")
+
+
+- ポリシーがトリガーされたときに適用するコントロールを設定する。
+
+	![サインインのリスク ポリシー](./media/active-directory-identityprotection/1017.png "サインインのリスク ポリシー")
+
+
+- ポリシーの状態を切り替える。
+
+	![MFA 登録](./media/active-directory-identityprotection/403.png "MFA 登録")
+
+- 変更を行う前に、変更の影響を確認、評価する。
+
+	![サインインのリスク ポリシー](./media/active-directory-identityprotection/1018.png "サインインのリスク ポリシー")
 
  
-**高**しきい値を選択すると、ポリシーがトリガーされる回数が減り、ユーザーへの影響が最小限になります。<br> ただし、**低**および**中**レベルのリスクのフラグ付きサインインはポリシーから除外されるため、攻撃者が侵害された ID を悪用するのをブロックすることはできません。
+**高**しきい値を選択すると、ポリシーがトリガーされる回数が減り、ユーザーへの影響が最小限になります。
+ 
+ただし、**低**および**中**レベルのリスクのフラグ付きサインインはポリシーから除外されるため、攻撃者が侵害された ID を悪用するのをブロックすることはできません。
 
 ポリシーを設定するときは次のようにします。
 
@@ -350,33 +408,52 @@ Identity Protection コンソールの **[リスク イベント]** ページに
 
 **関連する構成ダイアログ ボックスを開くには**:
 
-1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。 <br><br> ![MFA 登録](./media/active-directory-identityprotection/401.png "MFA 登録") <br>
+1. **[Azure AD Identity Protection]** ブレードの **[構成]** セクションで **[Sign-in risk policy (サインイン リスク ポリシー)]** をクリックします。
 
-1. **[セキュリティ ポリシー]** セクションで、**[サインインのリスク]** をクリックします。 <br><br> ![MFA 登録](./media/active-directory-identityprotection/700.png "MFA 登録") <br>
+	![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1014.png "ユーザーのリスク ポリシー")
+
 
 
 
 
 ## 多要素認証登録ポリシー
 
-Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。<br>次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
+Azure Multi-Factor Authentication は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
 
 - 簡単な検証オプションで強力な認証が提供されます。
 
 - アカウント侵害からの組織の保護と復旧の準備において重要な役割を果たします。
+
+![ユーザーのリスク ポリシー](./media/active-directory-identityprotection/1019.png "ユーザーのリスク ポリシー")
+
+
 
 詳細については、「[Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)」を参照してください。
 
 
 Azure AD Identity Protection を使用すると、多要素認証の登録の展開を管理するために、以下のことを有効にするポリシーを構成できます。
 
-- 現在の登録状態を表示します。<br><br> ![MFA 登録](./media/active-directory-identityprotection/603.png "MFA 登録") <br>
 
-- ポリシーを適用するユーザーとグループを設定します。<br><br> ![MFA 登録](./media/active-directory-identityprotection/601.png "MFA 登録") <br>
 
-- 登録のスキップを許可する時間を定義します。<br><br> ![MFA 登録](./media/active-directory-identityprotection/602.png "MFA 登録") <br>
+- ポリシーを適用するユーザーとグループを設定する。
 
-- ポリシーの状態を切り替えます。<br><br> ![MFA 登録](./media/active-directory-identityprotection/403.png "MFA 登録") <br>
+	![MFA policy](./media/active-directory-identityprotection/1020.png "MFA policy")
+
+
+
+- ポリシーがトリガーされたときに適用するコントロールを設定する。
+
+	![MFA policy](./media/active-directory-identityprotection/1021.png "MFA policy")
+
+
+- ポリシーの状態を切り替える。
+
+	![MFA policy](./media/active-directory-identityprotection/403.png "MFA policy")
+
+- 現在の登録状態を表示する。
+
+	![MFA policy](./media/active-directory-identityprotection/1022.png "MFA policy")
+
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 
@@ -390,23 +467,27 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
 
 **関連する構成ダイアログ ボックスを開くには**:
 
-1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。 <br><br> ![MFA 登録](./media/active-directory-identityprotection/401.png "MFA 登録") <br>
+1. **[Azure AD Identity Protection]** ブレードの **[構成]** セクションで **[Multi-factor authentication registration (多要素認証の登録)]** をクリックします。
 
-2. **[多要素認証]** セクションで、**[登録]** クリックします。<br><br> ![MFA 登録](./media/active-directory-identityprotection/402.png "MFA 登録") <br>
-
-
+	![MFA policy](./media/active-directory-identityprotection/1019.png "MFA policy")
 
 
-## 関連項目
+
+
+
+## 次のステップ
 
  - [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
- - [Azure Active Directory Identity Protection の有効化](active-directory-identityprotection-enable.md)
  - [Azure Active Directory Identity Protection で検出されるリスク イベントの種類](active-directory-identityprotection-risk-events-types.md)
  - [Azure Active Directory Identity Protection で検出される脆弱性](active-directory-identityprotection-vulnerabilities.md)
  - [Azure Active Directory Identity Protection の通知](active-directory-identityprotection-notifications.md)
  - [Azure Active Directory Identity Protection のフロー](active-directory-identityprotection-flows.md)
  - [Azure Active Directory Identity Protection プレイブック](active-directory-identityprotection-playbook.md)
  - [Azure Active Directory Identity Protection 用語集](active-directory-identityprotection-glossary.md)
+
+ - [Azure Active Directory Identity Protection の有効化](active-directory-identityprotection-enable.md)
+ - [Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法](active-directory-identityprotection-unblock-howto.md)
+
  - [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

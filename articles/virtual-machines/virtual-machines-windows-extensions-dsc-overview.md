@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
    ms.workload="na"
-   ms.date="08/24/2016"
+   ms.date="09/15/2016"
    ms.author="zachal"/>
 
 # Azure Desired State Configuration 拡張機能ハンドラーの概要 #
@@ -27,9 +27,9 @@ Azure VM エージェントとそれに関連付けられた拡張機能は、Mi
 この記事では、Azure PowerShell SDK に含まれる、Azure VM 用 PowerShell Desired State Configuration (DSC) 拡張機能について紹介します。PowerShell DSC 拡張機能が有効になっている Azure VM で、新しいコマンドレットを使用して、PowerShell DSC 構成をアップロードして適用することができます。PowerShell DSC 拡張機能は、PowerShell DSC を呼び出して、受け取った DSC 構成を VM に適用します。この機能は、Azure ポータルを通して使用することもできます。
 
 ## 前提条件 ##
-**ローカル コンピューター**: Azure VM 拡張機能と対話するには、Azure ポータルまたは Azure PowerShell SDK を使用する必要があります。
+**ローカル コンピューター**: Azure VM 拡張機能と対話するには、Azure Portal または Azure PowerShell SDK のいずれかを使用する必要があります。
 
-**ゲスト エージェント**: DSC 構成によって構成される Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。サポートされている OS バージョンの詳細な一覧については、[DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
+**ゲスト エージェント**: DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。サポートされている OS バージョンの詳細な一覧については、[DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
 
 ## 用語と概念 ##
 このガイドでは、読者が次の概念を理解していることを想定しています。
@@ -44,9 +44,9 @@ Azure VM エージェントとそれに関連付けられた拡張機能は、Mi
 
 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。DSC 拡張機能では、1 つ以上の構成ドキュメントを含む .zip ファイルと、Azure PowerShell SDK または Azure ポータルで提供される一連のパラメーターが必要です。
 
-拡張機能は、初めて呼び出されたときに、インストール プロセスを実行します。このプロセスによって、以下に定義されているように、Windows Management Framework (WMF) のバージョンがインストールされます。
+拡張機能は、初めて呼び出されたときに、インストール プロセスを実行します。このプロセスによって、次のロジックに従ってあるバージョンの Windows Management Framework (WMF) がインストールされます。
 
-1. Azure VM の OS が Windows Server 2016 の場合は、処理は行われません。WS 2016 の場合は、既に PowerShell の最新バージョンがインストールされています。
+1. Azure VM の OS が Windows Server 2016 の場合は、処理は行われません。Windows Server 2016 では既に PowerShell の最新バージョンがインストールされてるためです。
 2. `wmfVersion` プロパティを指定した場合は、VM の OS と互換性がない場合を除いて、そのバージョンの WMF がインストールされます。
 3. `wmfVersion` プロパティを指定しなかった場合は、WMF の適用可能な最新バージョンがインストールされます。
 
@@ -82,13 +82,13 @@ ARM または ASM と共に PowerShell コマンドレットを使用すると�
 ## Azure ポータルの機能 ##
 クラシック VM を参照します。[設定]、[全般] の順に移動し、[拡張機能] をクリックします。 新しいウィンドウが作成されます。[追加] をクリックし、[PowerShell DSC] を選択します。
 
-ポータルでは、入力が必要になります。**[構成モジュールまたはスクリプト]**: これは必須フィールドです。構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。
+ポータルでは、入力が必要になります。**[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です。構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。
 
-**[構成データ PSD1 ファイル]**: これはオプション フィールドです。.psd1 の構成データ ファイルが必要な構成では、このフィールドを使用して目的のファイルを選択し、SAS トークンによってセキュリティで保護されている、ユーザーの Blob Storage にアップロードします。
+**[Configuration Data PSD1 File (構成データ PSD1 ファイル)]**: このフィールドはオプションです。.psd1 の構成データ ファイルが必要な構成では、このフィールドを使用して目的のファイルを選択し、SAS トークンによってセキュリティで保護されている、ユーザーの Blob Storage にアップロードします。
  
 **[構成のモジュール修飾名]**: .ps1 ファイルには、複数の構成関数を含めることができます。.ps1 構成スクリプトの名前に続けて "\" と構成関数の名前を入力します。たとえば、.ps1 スクリプトの名前が "configuration.ps1" であり、構成が "IisInstall" であれば、次のように入力します: `configuration.ps1\IisInstall`
 
-**[構成引数]**: 構成関数が引数を受け取る場合は、`argumentName1=value1,argumentName2=value2` という形式でここに入力します。これは、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
+**[構成引数]**: 構成関数が引数を受け取る場合は、`argumentName1=value1,argumentName2=value2` という形式でここに入力します。この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
 ## 使用の開始 ##
 
@@ -140,8 +140,10 @@ C:\\WindowsAzure\\Logs\\Plugins\\Microsoft.Powershell.DSC[バージョン番号]
 
 PowerShell DSC の詳細については、[PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。
 
+[DSC 拡張機能用の Azure Resource Manager テンプレート](virtual-machines-windows-extensions-dsc-template.md)に関するページをご覧ください。
+
 PowerShell DSC で管理できる追加機能については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)で DSC リソースを検索してください。
 
 機微なパラメーターを構成に渡す方法の詳細については、「[資格情報を Azure DSC 拡張機能ハンドラーに渡す](virtual-machines-windows-extensions-dsc-credentials.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

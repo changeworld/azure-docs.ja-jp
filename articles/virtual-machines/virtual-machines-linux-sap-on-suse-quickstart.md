@@ -1,20 +1,20 @@
 <properties
    pageTitle="Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト | Microsoft Azure"
    description="Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト"
-   services="virtual-machines,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="hermanndms"
    manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
-   ms.service="virtual-machines"
-   ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.service="virtual-machines-linux"
+   ms.devlang="na"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
-   ms.date="09/12/2016"
+   ms.workload="infrastructure-services"
+   ms.date="09/15/2016"
    ms.author="hermannd"/>
 
 # Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行
@@ -173,4 +173,4 @@ Gnome デスクトップを使用して、1 つの VM 内に SAP GUI、ブラウ
 
 仮想化環境では、Linux 上の Oracle にはサポートの制約があります。これは Azure 固有のトピックではありませんが、理解しておくことが重要です。Azure のようなパブリック クラウドでは、SAP は SUSE または Red Hat 上の Oracle をサポートしません。このトピックについては、直接 Oracle にお問い合わせください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

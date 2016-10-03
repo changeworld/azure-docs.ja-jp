@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Azure Managed Cache Service の使用方法
@@ -41,7 +41,7 @@ Managed Cache Service は、次の 3 つのレベルで利用できます。
 -	Standard - 1 GB ～ 10 GB のキャッシュ
 -	Premium - 5 GB ～ 150 GB のキャッシュ
 
-各レベルは、機能と料金ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細][]」を参照してください。
+各レベルは、機能と価格ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細][]」を参照してください。
 
 このガイドでは、Managed Cache Service の基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、[Azure Managed Cache Service の概要に関するページ][]を参照してください。
 
@@ -485,4 +485,4 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

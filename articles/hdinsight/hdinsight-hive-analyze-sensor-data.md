@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016" 
+	ms.date="09/20/2016" 
 	ms.author="larryfr"/>
 
 #HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
@@ -52,6 +52,8 @@ Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセン
 
 2. 表示された Web ページで **[概要ギャラリー]** タブをクリックし、**[Solutions with Sample Data]** カテゴリにある **[センサー データ分析]** サンプルを選択します。
 
+    ![ギャラリー イメージの概要](./media/hdinsight-hive-analyze-sensor-data/getting-started-gallery.png)
+
 3. Web ページに記載されている手順に従って、サンプルを完了します。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

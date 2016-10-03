@@ -12,7 +12,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="09/12/2016"
+   ms.date="09/15/2016"
    ms.author="magoedte;bwren"/>
 
 # Azure Automation での Runbook の開始
@@ -32,14 +32,6 @@
 次の図は、Runbook のライフ サイクルにおけるプロセスをステップごとに詳細に示したものです。これには、Azure Automation で Runbook を開始するためのさまざまな方法、Hybrid Runbook Worker で Azure Automation Runbook を実行するために必要な各コンポーネント、異なるコンポーネント間でのやり取りなどが示されています。自社のデータセンターで Automation Runbook を実行する方法については、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に関する記事をご覧ください。
 
 ![Runbook のアーキテクチャ](media/automation-starting-runbook/runbooks-architecture.png)
-
-## Azure ポータルでの Runbook の開始
-
-1.	Azure ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
-2.	**[Runbook]** タブを選択します。
-3.	Runbook を選択し、**[開始]** をクリックします。
-4.	Runbook にパラメーターがある場合は、各パラメーターのテキスト ボックスに値を指定するように求めるプロンプトが表示されます。パラメーターについて詳しくは、「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
-5.	**[開始]** Runbook メッセージの隣にある **[ジョブの表示]** を選択するか、Runbook の **[ジョブ]** タブを選択してその Runbook ジョブの状態を表示します。
 
 ## Azure ポータルでの Runbook の開始
 
@@ -91,7 +83,7 @@ Azure Automation Web サービスは、次のセクションで説明されて�
 
 ### 名前付きの値
 
-パラメーターのデータ型が [object] の場合、*{"Name1":Value1, "Name2":Value2, "Name3":Value3}* という JSON 形式を使用して名前付きの値の一覧を送信できます。これらの値は単純型にする必要があります。Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) としてパラメーターを受け取ります。
+パラメーターのデータ型が [object] の場合、*{Name1:'Value1', Name2:'Value2', Name3:'Value3'}* という JSON 形式を使用して名前付きの値の一覧を送信できます。これらの値は単純型にする必要があります。Runbook は、それぞれの名前付き値に対応するプロパティが設定された [PSCustomObject](https://msdn.microsoft.com/library/system.management.automation.pscustomobject%28v=vs.85%29.aspx) としてパラメーターを受け取ります。
 
 user というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
@@ -195,4 +187,4 @@ jsmith
 -	この記事の Runbook アーキテクチャは、Hybrid Runbook Worker で Azure とオンプレミスのリソースを管理する Runbook の概要を示しています。自社のデータセンターで Automation Runbook を実行する方法については、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に関する記事をご覧ください。
 -	他の Runbook で特定の関数または一般的な関数に使用されるモジュールの Runbook の作成方法については、[子 Runbook](automation-child-runbooks.md) に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="動的パッケージの概要"
-	description="このトピックでは、動的パッケージの概要について説明します。"
+	pageTitle="ダイナミック パッケージの概要 | Microsoft Azure"
+	description="このトピックでは、ダイナミック パッケージの概要について説明します。"
 	authors="Juliako"
 	manager="erikre"
 	editor=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
 #動的パッケージ
 
-##概要
+##Overview
 
 Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
@@ -34,7 +34,7 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 ![動的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
->[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+>[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 ##一般的なシナリオ
 
@@ -55,12 +55,12 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 2. [Media Encoder Standard エンコーダーを使用して、H.264 MP4 アダプティブ ビットレート セットを生成します](media-services-dotnet-encode-with-media-encoder-standard.md)。
 3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
--または-
- 
-1. 事前にエンコードされた MP4 ファイルをアップロードします。 
+- または -
 
-	>[AZURE.NOTE] このオプションは推奨されません。
-	
+1. 事前にエンコードされた MP4 ファイルをアップロードします。
+
+>[AZURE.NOTE] このオプションは推奨されません。
+
 2. [事前にエンコードされたファイルを検証します](media-services-static-packaging.md#validating-adaptive-bitrate-mp4s-encoded-with-external-encoders)。
 3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
@@ -80,4 +80,4 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

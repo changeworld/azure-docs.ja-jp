@@ -418,7 +418,7 @@ azureTablePartitionKeyName として宛先列を使用する前に、translator 
 		"columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 	} 
 
-EmpID は、パーティション キーとして指定されます。
+DivisionID は、パーティション キーとして指定されます。
 
 	"sink": {
 		"type": "AzureTableSink",
@@ -531,4 +531,4 @@ lastlogindate | Edm.DateTime
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -5,7 +5,7 @@
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
-	manager="paulettm" 
+	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
@@ -398,7 +398,7 @@ Azure PowerShell 1.0:
 
 
 ### Stop-AzureStreamAnalyticsJob | Stop-AzureRMStreamAnalyticsJob
-Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停止し、使用していたリソースの割り当てを解除します。ジョブを編集したり再開したりできるように、Azure ポータルと管理 API を使えば、ジョブ定義とメタデータをサブスクリプション内で引き続き利用できます。停止状態のジョブに対しては課金されません。
+Microsoft Azure で実行中の Stream Analytics ジョブを非同期的に停止し、使用していたリソースの割り当てを解除します。ジョブを編集したり再開したりできるように、Azure Portal と管理 API を使えば、ジョブ定義とメタデータをサブスクリプション内で引き続き利用できます。停止状態のジョブに対しては課金されません。
 
 **例 1**
 
@@ -472,4 +472,4 @@ Azure PowerShell 1.0:
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

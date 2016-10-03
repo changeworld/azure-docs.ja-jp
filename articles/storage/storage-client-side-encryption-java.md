@@ -4,7 +4,7 @@
 	services="storage"
 	documentationCenter="java"
 	authors="dineshmurthy"
-	manager="carmonm"
+	manager="jahogg"
 	editor="tysonn"/>
 
 <tags
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2016"
-	ms.author="dineshm"/>
+	ms.date="09/20/2016"
+	ms.author="dineshm;robinsh"/>
 
 
 # Java による Microsoft Azure Storage のクライアント側の暗号化   
@@ -35,8 +35,7 @@
 
 2.	ユーザー データは、この CEK を使用して暗号化されます。
 
-3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。  
-ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。  
+3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
 
 4.	暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
 
@@ -248,4 +247,4 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 	- [クライアント](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) パッケージ
 - [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)を参照する
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

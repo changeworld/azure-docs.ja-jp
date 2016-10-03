@@ -494,6 +494,6 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 
 
 ## 次のステップ
-- ゲートウェイの詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
+- [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページを参照してください。チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

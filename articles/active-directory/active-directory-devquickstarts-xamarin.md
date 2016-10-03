@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 
@@ -34,7 +34,7 @@ Xamarin を使用すると、iOS、Android、および Windows (モバイル デ
 完全に動作するアプリケーションを構築するには、次の手順を行う必要があります。
 
 2. Xamarin の開発環境を設定します。
-2. Azure AD にアプリケーションを登録します。
+2. Azure AD にアプリケーションを登録する
 3. ADAL をインストールおよび構成する
 5. ADAL を使用して、Azure AD からトークンを取得する
 
@@ -174,9 +174,9 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ...
 ```
 
-ご利用ありがとうございます。 以上で、5 種類のプラットフォームで OAuth 2.0 を使用して、ユーザーを認証し、安全に Web API を呼び出す機能を備えた、動作する Xamarin アプリの完成です。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。
+お疲れさまでした。 以上で、5 種類のプラットフォームで OAuth 2.0 を使用して、ユーザーを認証し、安全に Web API を呼び出す機能を備えた、動作する Xamarin アプリの完成です。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。
 
-ADAL を使用することにより、共通 ID 機能を容易にアプリに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireToken*(…)` のみです。
+ADAL を使用することにより、共通 ID 機能を容易にアプリに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireToken*(…)` のみです。
 
 完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらに ID シナリオに進むことができます。次のチュートリアルを試してみてください。
 
@@ -184,4 +184,4 @@ ADAL を使用することにより、共通 ID 機能を容易にアプリに�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 
 # 高度な分析データ処理のためのシナリオとプランを特定する方法
 
-データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。予測分析の大まかな手順については、「[What is the Team Data Science Process (TDSP)? (Team Data Science Process (TDSP) について)](data-science-process-overview.md)」で説明されています。それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
+データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。予測分析の大まかな手順は、「[Team Data Science Process (TDSP) について](data-science-process-overview.md)」に記載されています。それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -114,4 +114,4 @@ Azure Machine Learning 環境を例とします。
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

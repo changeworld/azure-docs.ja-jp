@@ -1,5 +1,5 @@
 <properties
-	pageTitle="AES-128 動的暗号化とキー配信サービスの使用"
+	pageTitle="AES-128 動的暗号化とキー配信サービスの使用 | Microsoft Azure"
 	description="Microsoft Azure Media Services では、AES 128 ビット暗号化キーを使用して暗号化したコンテンツを配信できます。Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。このトピックでは、AES-128 を使用して動的に暗号化する方法とキー配信サービスを使用する方法について説明します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="07/27/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 #AES-128 動的暗号化とキー配信サービスの使用
@@ -23,17 +23,17 @@
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
-##概要
+##Overview
 
 Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) を使用して暗号化された、HTTP ライブ ストリーミング (HLS) とスムーズ ストリームを配信できます。Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。Media Services で資産を暗号化する場合は、暗号化キーを資産に関連付ける必要があります。また、キーの承認ポリシーを構成する必要があります。プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。Media Services では、[Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。詳細については、「[コンテンツ キー承認ポリシーを構成する](media-services-protect-with-aes128.md#configure_key_auth_policy)」を参照してください。
 
-動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。また、資産の配信ポリシーを構成する必要があります (このトピック内で後述します)。次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。また、資産の配信ポリシーを構成する必要があります (このトピックで後述します)。次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
 このトピックには、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。このトピックでは、認証ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。また、動的暗号化の使用方法についても説明します。
 
->[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」をご覧ください。
+>[AZURE.NOTE]動的暗号化を使用するには、まず、スケール ユニット (ストリーミング ユニットとも呼ばれる) を少なくとも 1 つ取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 ##AES-128 動的暗号化とキー配信サービスのワークフロー
 
@@ -45,7 +45,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 1. [コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)コンテンツ キー承認ポリシーを構成する必要があります。コンテンツ キーがクライアントに配信されるには、クライアントがこのコンテンツ キー承認ポリシーを満たしている必要があります。
 1. [資産の配信ポリシーを構成します](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。配信ポリシーの構成には、次の内容が含まれます。キー取得 URL と初期化ベクトル (IV) (AES 128 では、暗号化と暗号化解除の際に同じ IV を指定する必要があります)、配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)、動的暗号化の種類 (たとえば、エンベロープ暗号化、または動的暗号化を行わない)。
 
-	同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
+同じ資産の各プロトコルに異なるポリシーを適用できます。たとえば、PlayReady 暗号化を Smooth/DASH に適用し、AES Envelope を HLS に適用できます。配信ポリシーで定義されていないプロトコル (たとえば、プロトコルとして HLS のみを指定する 1 つのポリシーを追加した場合) は、ストリーミングからブロックされます。ただし、資産配信ポリシーをまったく定義していない場合は例外となります。この場合、すべてのプロトコルが平文で許可されます。
 
 1. ストリーミング URL を取得するために [OnDemand ロケーターを作成](media-services-protect-with-aes128.md#create_locator)します。
 
@@ -71,7 +71,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 ##<a id="encode_asset"></a>ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードする
 
-動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、「[動的パッケージの概要](media-services-dynamic-packaging-overview.md)」を参照してください。
+動的暗号化を使用する場合に必要となるのは、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産の作成のみです。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。詳細については、[ダイナミック パッケージの概要](media-services-dynamic-packaging-overview.md)に関する記事をご覧ください。
 
 エンコード手順については、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-dotnet-encode-with-media-encoder-standard.md)」を参照してください。
 
@@ -96,7 +96,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 - 資産配信プロトコル (たとえば、MPEG DASH、HLS、HDS、Smooth Streaming、またはすべて)。
 - 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。
 
-詳細については、「[資産の配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
+詳細については、[資産の配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
 
 ##<a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 
@@ -104,7 +104,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 
 >[AZURE.NOTE]資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 
-資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」を参照してください。
+資産を発行し、ストリーミング URL を構築する手順については、「[Build a streaming URL (ストリーミング URL の構築)](media-services-deliver-streaming-content.md)」をご覧ください。
 
 ##テスト トークンを取得する
 
@@ -629,4 +629,4 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

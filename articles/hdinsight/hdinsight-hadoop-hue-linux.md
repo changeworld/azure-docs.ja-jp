@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2016" 
+	ms.date="09/13/2016" 
 	ms.author="nitinme"/>
 
 # HDInsight Hadoop クラスターに Hue をインストールして使用する
@@ -68,15 +68,24 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 1. 「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」の情報を使用して、クライアント システムから HDInsight クラスターへの SSH トンネルを作成し、この SSH トンネルをプロキシとして使用するように Web ブラウザーを構成します。
 
-2. SSH トンネルを作成し、これをトラフィックのプロキシとして使用するようにブラウザーを構成したら、ヘッド ノードのホスト名を見つける必要があります。次の手順に従って、この情報を Ambari から取得します。
+2. SSH トンネルを作成し、これをトラフィックのプロキシとして使用するようにブラウザーを構成したら、プライマリ ヘッド ノードのホスト名を見つける必要があります。そのためには、ポート 22 で SSH を使用してクラスターに接続します。たとえば、`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` を使用して、__USERNAME__ に SSH ユーザー名を、__CLUSTERNAME__ にクラスターの名前を指定します。
 
-    1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスします。ダイアログ ボックスが表示されたら、認証に管理者のユーザー名とパスワードを使用してサイトに入ります。
-    
-    2. ページ上部のメニューから、__[ホスト]__ を選択します。
-    
-    3. 「__hn0__」で始まるエントリを選択します。ページが開くと、一番上にホスト名が表示されます。ホスト名の形式は「__hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net__」です。これは Hue に接続するときに使用するホスト名です。
+    SSH の使用方法の詳細については、次のドキュメントを参照してください。
 
-2. SSH トンネルを作成し、これをトラフィックのプロキシとして使用するようにブラウザーを構成したら、ブラウザーを使用して Hue ポータル (http://HOSTNAME:8888) を開きます。HOSTNAME を前の手順で Ambari から取得した名前に変えます。
+    * [Linux、Unix、または Mac OS X クライアントから Linux ベースの HDInsight で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
+    * [Windows クライアントから Linux ベースの HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
+
+3. 接続後に、次のコマンドを使用してプライマリ ヘッドノードの完全修飾ドメイン名を取得します。
+
+        hostname -f
+
+    次のような名前が返されます。
+
+        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+    
+    これは、Hue の Web サイトが配置されているプライマリ ヘッドノードのホスト名です。
+
+2. ブラウザーを使用して、Hue ポータル (http://HOSTNAME:8888) を開きます。HOSTNAME は前の手順で取得した名前で置き換えてください。
 
     > [AZURE.NOTE] 初めてログインするときには、Hue ポータルにログインするためのアカウントを作成するよう求められます。ここで指定した資格情報はポータルに制限され、クラスターのプロビジョニング時に指定した管理者または SSH ユーザーの資格情報には関連しません。
 
@@ -108,7 +117,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 ## 重要な考慮事項
 
-1. Hue のインストールに使用されるスクリプトはクラスターのヘッド ノード 0 にのみ Hue をインストールします。
+1. Hue のインストールに使用されるスクリプトは、クラスターのプライマリ ヘッドノードにのみ Hue をインストールします。
 
 2. インストール中、複数の Hadoop サービス (HDFS、YARN、MR2、Oozie) が再起動し、構成を更新します。スクリプトが Hue のインストールを完了した後、他の Hadoop サービスが起動するまで少し時間がかかる場合があります。最初はこれが Hue のパフォーマンスに影響を与えることがあります。すべてのサービスが起動すると、Hue が完全に機能します。
 
@@ -116,11 +125,11 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 		set hive.execution.engine=mr;
 
-4.	Linux クラスターの場合、サービスをヘッド ノード 0 で実行し、Resource Manager をヘッド ノード 1 で実行するシナリオがありえます。そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。ただし、ジョブが完了したときにジョブの詳細を表示できます。
+4.	Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。ただし、ジョブが完了したときにジョブの詳細を表示できます。
 
 	![Hue ポータル エラー](./media/hdinsight-hadoop-hue-linux/HDI.Hue.Portal.Error.png "Hue ポータル エラー")
 
-	これは既知の問題によるものです。この問題を回避するには、アクティブな Resource Manager もヘッド ノード 0 で実行されるように Ambari を変更します。
+	これは既知の問題によるものです。この問題を回避するには、アクティブな Resource Manager もプライマリ ヘッドノードで実行されるように Ambari を変更します。
 
 5.	HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー**の上にマウスを移動したときなど)、WASB として解釈するべきです。
 
@@ -137,4 +146,4 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

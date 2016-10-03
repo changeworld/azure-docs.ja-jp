@@ -13,7 +13,7 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/05/2016"
+ms.date="09/20/2016"
 ms.author="larryfr"/>
 
 #HDInsight クラスター作成時の Hive ライブラリの追加
@@ -88,4 +88,4 @@ __要件__
 
 このドキュメントでは、クラスターの作成時に、jar ファイルに格納されている Hive ライブラリを HDInsight クラスターに追加する方法について説明しました。Hive の使用法の詳細については、「[HDInsight での Hive の使用](hdinsight-use-hive.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

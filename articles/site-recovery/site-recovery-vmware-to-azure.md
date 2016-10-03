@@ -116,10 +116,11 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 **前提条件** | **詳細**
 --- | ---
-**オンプレミスの VMware VM** | 保護対象の VMware VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/> 保護対象のマシンは、Azure VM を作成するための [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。<br/><br/>保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。<br/><br/>共有ディスク ゲスト クラスターはサポートされていません。<br/><br/>Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) ブートはサポートされていません。<br/><br/>マシン名は 1 ～ 63 文字 (英字、数字、ハイフン) にする必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンのレプリケーションを有効にした後で、Azure 上の名前を変更できます。<br/><br/>ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>保護された VM に iSCSI ディスクがある場合、VM が Azure にフェールオーバーしたときに、Site Recovery は保護された VM の iSCSI ディスクを VHD ファイルに変換します。Azure VM から iSCSI ターゲットに到達できる場合、iSCSI ターゲットに接続すると、基本的に Azure VM 上の VHD ディスクとソース iSCSI ディスクの 2 つのディスクがあります。この場合、Azure VM 上の iSCSI ターゲットを切断する必要があります。
-**Windows マシン (物理または VMware)** | マシンでは、サポートされている 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 以降) が実行されている必要があります。<br/><br/> オペレーティング システムは C:\\ ドライブにインストールする必要があります。OS ディスクは、ダイナミック ディスクではなく、Windows ベーシック ディスクである必要があります。データ ディスクはダイナミックでもかまいません。<br/><br/>Site Recovery は、RDM ディスクを使用する VM をサポートします。フェールバック時に、元のソース VM と RDM ディスクを使用できる場合、Site Recovery は RDM ディスクを再利用します。これらが使用できない場合は、フェールバック時に各ディスクの新しい VMDK ファイルが作成されます。
-**Linux マシン** | サポートされている 64 ビット オペレーティング システム (Red Hat Enterprise Linux 6.7、7.1、7.2、Centos 6.5、6.6、6.7、7.0、7.1、7.2、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3) が必要です。<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名をすべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合は、保護対象のマシン上の Secure Shell サービスがシステム ブート時に自動的に起動するように設定されていることと、ファイアウォール規則で仮想マシンへの ssh 接続が許可されていることを確認します。<br/><br/>ホスト名、マウント ポイント、デバイス名、Linux システム パスとファイル名 (例: /etc/; /usr) には英語のみを使用できます。<br/><br/>ファイル システム (EXT3、ETX4、ReiserFS、XFS)、マルチパス ソフトウェア デバイス マッパー (multipath)、ボリューム マネージャー (LVM2) の各ストレージを使用する Linux マシンでのみ保護を有効にできます。HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。ReiserFS ファイルシステムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートします。Linux のフェールバックの場合、Site Recovery は RDM ディスクを再利用しません。代わりに、対応する各 RDM ディスクの新しい VMDK ファイルが作成されます。<br/><br/>VMware の VM の構成パラメーターで disk.enableUUID=true が設定されていることを確認します。このエントリが存在しない場合は作成します。これは、VMDK が適切にマウントされるように、一貫性のある UUID を提供するために必要となります。また、この設定を追加すると、フェールバック時に、完全なレプリケーションではなく、差分変更だけをオンプレミスに転送できます。
-**モビリティ サービス** | **Windows**: Windows を実行している VM にモビリティ サービスを自動的にプッシュするには、プロセス サーバーがプッシュ インストールを実行できるように、管理者アカウント (Windows マシンのローカル管理者) を指定する必要があります。<br/><br/> **Linux**: Linux を実行している VM にモビリティ サービスを自動的にプッシュするには、プロセス サーバーがプッシュ インストールを実行する際に使用できるアカウントを作成する必要があります。<br/><br/> 既定では、マシンのすべてのディスクがレプリケートされます。[レプリケーションからディスクを除外](#exclude-disks-from-replication)するには、レプリケーションを有効にする前に、モビリティ サービスをマシンに手動でインストールする必要があります。
+**オンプレミスの VMware VM** | 保護対象の VMware VM では、VMware ツールがインストールされ、実行されている必要があります。<br/><br/> 保護対象のマシンは、Azure VM を作成するための [Azure の前提条件](site-recovery-best-practices.md#azure-virtual-machine-requirements)に準拠している必要があります。<br/><br/>保護対象のマシン上の個々のディスク容量が 1023 GB 以下である必要があります。VM は最大 64 個のディスク (従って最大 64 TB) に対応できます。<br/><br/>暗号化されたディスク (ルートおよびデータ ディスク) を持つ VM の保護はサポートされていません。
+
+共有ディスク ゲスト クラスターはサポートされていません。<br/><br/>**アプリケーションの整合性**を有効にする場合は、**ポート 20004** は、保護対象の VM 上で開いた状態にする必要があります。
+
+Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) ブートはサポートされていません。<br/><br/>マシン名は 1 ～ 63 文字 (英字、数字、ハイフン) にする必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンのレプリケーションを有効にした後で、Azure 上の名前を変更できます。<br/><br/>ソース VM に NIC チーミングがある場合、Azure へのフェールオーバー後に単一の NIC に変換されます。<br/><br/>保護された VM に iSCSI ディスクがある場合、VM が Azure にフェールオーバーしたときに、Site Recovery は保護された VM の iSCSI ディスクを VHD ファイルに変換します。Azure VM から iSCSI ターゲットに到達できる場合、iSCSI ターゲットに接続すると、基本的に Azure VM 上の VHD ディスクとソース iSCSI ディスクの 2 つのディスクがあります。この場合、Azure VM 上の iSCSI ターゲットを切断する必要があります。**Windows マシン (物理または VMware)** | マシンでは、サポートされている 64 ビット オペレーティング システム (Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 以降) が実行されている必要があります。<br/><br/> オペレーティング システムは C:\\ ドライブにインストールする必要があります。OS ディスクは、ダイナミック ディスクではなく、Windows ベーシック ディスクである必要があります。データ ディスクはダイナミックでもかまいません。<br/><br/>Site Recovery は、RDM ディスクを使用する VM をサポートします。フェールバック時に、元のソース VM と RDM ディスクを使用できる場合、Site Recovery は RDM ディスクを再利用します。これらが使用できない場合は、フェールバック時に各ディスクの新しい VMDK ファイルが作成されます。**Linux マシン** | サポートされている 64 ビット オペレーティング システム (Red Hat Enterprise Linux 6.7、7.1、7.2、Centos 6.5、6.6、6.7、7.0、7.1、7.2、Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、SUSE Linux Enterprise Server 11 SP3) が必要です。<br/><br/>保護対象のマシン上の /etc/hosts ファイルには、ローカル ホスト名をすべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが含まれている必要があります。<br/><br/>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合は、保護対象のマシン上の Secure Shell サービスがシステム ブート時に自動的に起動するように設定されていることと、ファイアウォール規則で仮想マシンへの ssh 接続が許可されていることを確認します。<br/><br/>ホスト名、マウント ポイント、デバイス名、Linux システム パスとファイル名 (例: /etc/、/usr) には英語のみを使用できます。<br/><br/>ファイル システム (EXT3、ETX4、ReiserFS、XFS)、マルチパス ソフトウェア デバイス マッパー (multipath)、ボリューム マネージャー (LVM2) の各ストレージを使用する Linux マシンでのみ保護を有効にできます。HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。ReiserFS ファイルシステムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。<br/><br/>Site Recovery は RDM ディスクが搭載された VM をサポートします。Linux のフェールバックの場合、Site Recovery は RDM ディスクを再利用しません。代わりに、対応する各 RDM ディスクの新しい VMDK ファイルが作成されます。<br/><br/>VMware の VM の構成パラメーターで disk.enableUUID=true が設定されていることを確認します。このエントリが存在しない場合は作成します。これは、VMDK が適切にマウントされるように、一貫性のある UUID を提供するために必要となります。また、この設定を追加すると、フェールバック時に、完全なレプリケーションではなく、差分変更だけをオンプレミスに転送できます。**モビリティ サービス** | **Windows**: Windows を実行している VM にモビリティ サービスを自動的にプッシュするには、プロセス サーバーがプッシュ インストールを実行できるように、管理者アカウント (Windows マシンのローカル管理者) を指定する必要があります。<br/><br/> **Linux**: Linux を実行している VM にモビリティ サービスを自動的にプッシュするには、プロセス サーバーがプッシュ インストールを実行する際に使用できるアカウントを作成する必要があります。<br/><br/> 既定では、マシンのすべてのディスクがレプリケートされます。[レプリケーションからディスクを除外](#exclude-disks-from-replication)するには、レプリケーションを有効にする前に、モビリティ サービスをマシンに手動でインストールする必要があります。
 
 ## デプロイの準備をする
 
@@ -553,10 +554,10 @@ Capacity Planner を使用して、レプリケーション (初期レプリケ�
 
 ソース オペレーティング システム | モビリティ サービスのインストール ファイル
 --- | ---
-Windows Server (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_Windows_* release.exe
-CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_RHEL6-64_*release.tar.gz
-SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_SLES11-SP3-64_*release.tar.gz
-Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR_UA_9.*.0.0_OL6-64_*release.tar.gz
+Windows Server (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0_Windows_* release.exe
+CentOS 6.4、6.5、6.6 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_RHEL6-64\_*release.tar.gz
+SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_SLES11-SP3-64\_*release.tar.gz
+Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | Microsoft-ASR\_UA\_9.*.0.0\_OL6-64\_*release.tar.gz
 
 
 #### Windows サーバーに手動でインストールする
@@ -791,9 +792,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
 Site Recovery デプロイメントの構成設定、状態、および正常性を監視する方法を次に示します。
 
-1. コンテナー名をクリックして、**[要点]** ダッシュボードにアクセスします。このダッシュボードで、Site Recovery ジョブ、レプリケーションの状態、復旧計画、サーバーの状態、およびイベントを確認できます。[要点] ダッシュボードをカスタマイズして、他の Site Recovery コンテナーや Backup コンテナーの状態など、ニーズに最適なタイルとレイアウトを表示できます。
-
-![Essentials](./media/site-recovery-vmware-to-azure/essentials.png)
+1. コンテナー名をクリックして、**[要点]** ダッシュボードにアクセスします。このダッシュボードで、Site Recovery ジョブ、レプリケーションの状態、復旧計画、サーバーの状態、およびイベントを確認できます。[要点] ダッシュボードをカスタマイズして、他の Site Recovery コンテナーや Backup コンテナーの状態など、ニーズに最適なタイルとレイアウトを表示できます。<br>![Essentials](./media/site-recovery-vmware-to-azure/essentials.png)
 
 2. **[正常性]** タイルで、問題が発生しているサイト サーバー (VMM または構成サーバー) と、Site Recovery によって過去 24 時間以内に発生したイベントを監視できます。
 3. **[レプリケートされたアイテム]**、**[復旧計画]**、**[Site Recovery ジョブ]** の各タイルで、レプリケーションの管理と監視を実行できます。**[設定]**、**[ジョブ]**、**[Site Recovery ジョブ]** の順にクリックすると、ジョブの詳細を確認できます。
@@ -863,4 +862,4 @@ The information in Section B is regarding Third Party Code components that are b
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

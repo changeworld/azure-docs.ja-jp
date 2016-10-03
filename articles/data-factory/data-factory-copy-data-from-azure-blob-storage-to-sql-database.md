@@ -19,13 +19,13 @@
 
 # Data Factory を使用した Blob Storage から SQL Database へのデータのコピー 
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-- [Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)
-- [Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)
-- [REST API の使用](data-factory-copy-activity-tutorial-using-rest-api.md)
-- [.NET API の使用](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザードの使用](data-factory-copy-data-wizard-tutorial.md)
+- [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+- [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
+- [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+- [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
+- [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
@@ -94,20 +94,18 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 
 		CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
-	**SQL Server 2012/2014 がコンピューターにインストールされている場合**: 記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。この記事では、[Azure ポータル](https://portal.azure.com)ではなく、[この Azure ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
+	**SQL Server 2012/2014 がコンピューターにインストールされている場合**: 記事「[SQL Server Management Studio を使用した Azure SQL Database の管理」の「手順 2. SQL Database への接続][sql-management-studio]」に従い、Azure SQL サーバーに接続して SQL スクリプトを実行します。この記事では、[新しい Azure Portal](https://portal.azure.com) ではなく、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
 
-	クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)をご覧ください。
+	クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。Azure SQL サーバーのファイアウォールを構成する手順については、[こちらの記事](../sql-database/sql-database-configure-firewall-settings.md)を参照してください。
 
+これで前提条件を完了しました。上部にあるタブをクリックし、いずれかのオプションを使用してチュートリアルを実行します。
 
-以下の手順を実行します。
-
-- Azure ポータルの一部である Data Factory エディターを使用してチュートリアルを実行するには、上部にある "[Data Factory エディターの使用](data-factory-copy-activity-tutorial-using-azure-portal.md)" リンクをクリックします。
-- Azure PowerShell を使用してチュートリアルを実行するには、上部にある「[PowerShell の使用](data-factory-copy-activity-tutorial-using-powershell.md)」というリンクをクリックします。
-- Visual Studio 2013 を使用してチュートリアルを実行するには、上部にある「[Visual Studio の使用](data-factory-copy-activity-tutorial-using-visual-studio.md)」というリンクをクリックします。
-
-## アクティビティ
-Azure Data Factory のコピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」を参照してください。
-
+- Azure ポータル
+- Visual Studio
+- PowerShell
+- REST API
+- .NET API
+- コピー ウィザード
 
 <!--Link references-->
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
@@ -118,4 +116,4 @@ Azure Data Factory のコピー アクティビティの詳細については、
 [data-factory-create-storage]: http://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account
 [data-factory-create-sql-database]: ../sql-database/sql-database-get-started.md
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

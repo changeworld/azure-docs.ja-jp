@@ -95,7 +95,7 @@ eDTU を共有する場合は、プール内のすべてのデータベースが
 
 可能なサイズの詳細については、「[エラスティック データベース プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
 
-SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。推奨事項に加え、組み込みの経験を利用して、サーバー上のデータベースのカスタム グループの eDTU 使用量を見積もります。対話形式でのプールへのデータベースの追加やデータベースの削除を行い、変更をコミットする前にリソース使用状況分析やサイズ設定のアドバイスを入手できるため、"what-if" 分析が可能です。その方法については、[エラスティック プールの監視、管理、およびサイズ設定に関する記事](sql-database-elastic-pool-manage-portal.md)を参照してください。
+SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。構成を推奨するだけでなく、サーバー上にあるデータベースのカスタム グループの eDTU 使用量の見積もりが、組み込み済みの機能によって実施されます。対話形式でのプールへのデータベースの追加やデータベースの削除を行い、変更をコミットする前にリソース使用状況分析やサイズ設定のアドバイスを入手できるため、"what-if" 分析が可能です。その方法については、[エラスティック プールの監視、管理、およびサイズ設定に関する記事](sql-database-elastic-pool-manage-portal.md)を参照してください。
 
 柔軟性の高いリソース使用状況評価によって、V12 より前のサーバーに対するアドホックなサイズの見積もりと、さまざまなサーバーのデータベース サイズの見積もりを可能にする方法については、「[エラスティック データベース プールに適したデータベースを識別する PowerShell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)」を参照してください。
 
@@ -131,4 +131,4 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 - [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)
 - [エラスティック データベース プールに適したデータベースを識別する Powershell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

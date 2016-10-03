@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure オンデマンド メディア エンコーダーの概要と比較" 
-	description="このトピックでは、Azure オンデマンド メディア エンコーダーの概要と比較を提供します。" 
+	pageTitle="Azure オンデマンド メディア エンコーダーの概要と比較 | Microsoft Azure" 
+	description="このトピックでは、Azure オンデマンド メディア エンコーダーの概要を説明し、エンコーダーを比較します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 #Azure オンデマンド メディア エンコーダーの概要と比較
@@ -29,16 +29,16 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 [動的パッケージ化](media-services-dynamic-packaging-overview.md)機能を利用するには、次の作業が必要となります。
 
 - メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルにエンコードします (エンコードの手順は、このチュートリアルの後半で説明しています)。
-- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-manage-origins.md#scale_streaming_endpoints/)」をご覧ください。
+- コンテンツに配信するストリーミング エンドポイントの 1 つ以上のオンデマンド ストリーミング ユニットを取得します。詳細については、「[How to Scale On-Demand Streaming Reserved Unit (オンデマンド ストリーミング占有ユニットの規模変更方法)](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
 - [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
 - [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。このトピックではまた、エンコーダーを比較します。
+この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。また、このトピックではエンコーダーを比較します。
 
-既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。詳細については、「[エンコード ユニットの拡大/縮小](media-services-portal-encoding-units.md)」を参照してください。
+既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。詳細については、「[エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
 
 ##メディア エンコーダー スタンダード
 
@@ -78,7 +78,7 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
  
 ##メディア エンコーダー Premium ワークフロー
 
-###概要
+###Overview
 
 [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
@@ -110,96 +110,96 @@ Media Encoder Standard は、[ここ](http://go.microsoft.com/fwlink/?linkid=618
 
 入力コンテナー/ファイル形式|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-Adobe® Flash® F4V |あり|あり
-MXF/SMPTE 377M |あり|あり
-GXF |あり|あり
-MPEG-2 トランスポート ストリーム |あり|あり
-MPEG-2 プログラム ストリーム |あり|あり
-MPEG-4/MP4 |あり|あり
-Windows Media/ASF |あり|あり
-AVI (非圧縮 8-bit/10-bit)|あり|あり
-3GPP/3GPP2 |あり|いいえ
-スムーズ ストリーミング ファイル形式 (PIFF 1.3)|あり|いいえ
-[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|あり|いいえ
-Matroska/WebM |あり|いいえ
-QuickTime (.mov) |あり|いいえ
+Adobe® Flash® F4V |はい|はい
+MXF/SMPTE 377M |はい|はい
+GXF |はい|はい
+MPEG-2 トランスポート ストリーム |はい|はい
+MPEG-2 プログラム ストリーム |はい|はい
+MPEG-4/MP4 |はい|はい
+Windows Media/ASF |はい|はい
+AVI (非圧縮 8-bit/10-bit)|はい|はい
+3GPP/3GPP2 |はい|なし
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|はい|なし
+[Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|はい|なし
+Matroska/WebM |はい|なし
+QuickTime (.mov) |はい|なし
 
 ###入力ビデオ コーデック
 
 入力ビデオ コーデック|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2|あり
-Avid DNxHD (MXF) |あり|あり
-DVCPro/DVCProHD (MXF) |あり|あり
-JPEG2000 |あり|あり
-MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル|あり
-MPEG-1 |あり|あり
-Windows Media ビデオ/VC-1 |あり|あり
-Canopus HQ/HQX |いいえ|いいえ
-MPEG-4 Part 2 |あり|いいえ
-[Theora](https://en.wikipedia.org/wiki/Theora) |あり|いいえ
-Apple ProRes 422 |あり|いいえ
-Apple ProRes 422 LT |あり|いいえ
-Apple ProRes 422 HQ |あり|いいえ
-Apple ProRes プロキシ|あり|いいえ
-Apple ProRes 4444 |あり|いいえ
-Apple ProRes 4444 XQ |あり|いいえ
+AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2|はい
+Avid DNxHD (MXF) |はい|はい
+DVCPro/DVCProHD (MXF) |はい|はい
+JPEG2000 |はい|はい
+MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|最大 422 プロファイル|はい
+MPEG-1 |はい|はい
+Windows Media ビデオ/VC-1 |はい|はい
+Canopus HQ/HQX |なし|なし
+MPEG-4 Part 2 |はい|なし
+[Theora](https://en.wikipedia.org/wiki/Theora) |はい|なし
+Apple ProRes 422 |はい|なし
+Apple ProRes 422 LT |はい|なし
+Apple ProRes 422 HQ |はい|なし
+Apple ProRes プロキシ|はい|なし
+Apple ProRes 4444 |はい|なし
+Apple ProRes 4444 XQ |はい|なし
 
 ###入力オーディオ コーデック
 
 入力オーディオ コーデック|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-AES (SMPTE 331M および 302M、AES3-2003) |いいえ|あり
-Dolby® E |いいえ|あり
-Dolby® Digital (AC3) |いいえ|あり
-Dolby® Digital Plus (E-AC3) |いいえ|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり
-MPEG Layer 2|あり|あり
-MP3 (MPEG-1 Audio Layer 3)|あり|あり
-Windows Media オーディオ|あり|あり
-WAV/PCM|あり|あり
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|あり|いいえ
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |あり|いいえ
-[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|あり|いいえ
+AES (SMPTE 331M および 302M、AES3-2003) |なし|はい
+Dolby® E |なし|はい
+Dolby® Digital (AC3) |なし|はい
+Dolby® Digital Plus (E-AC3) |なし|はい
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|はい|はい
+MPEG Layer 2|はい|はい
+MP3 (MPEG-1 Audio Layer 3)|はい|はい
+Windows Media オーディオ|はい|はい
+WAV/PCM|はい|はい
+[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|はい|なし
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |はい|なし
+[Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|はい|なし
 
 
 ###出力コンテナー/ファイル形式
 
 出力コンテナー/ファイル形式|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-Adobe® Flash® F4V|いいえ|あり
-MXF (OP1a、XDCAM および AS02)|いいえ|あり
-DPP (AS11 を含む)|いいえ|あり
-GXF|いいえ|あり
-MPEG-4/MP4|あり|あり
-MPEG TS|あり|あり
-Windows Media/ASF|いいえ|あり
-AVI (非圧縮 8-bit/10-bit)|いいえ|あり
-スムーズ ストリーミング ファイル形式 (PIFF 1.3)|いいえ|あり
+Adobe® Flash® F4V|なし|はい
+MXF (OP1a、XDCAM および AS02)|なし|はい
+DPP (AS11 を含む)|なし|はい
+GXF|なし|はい
+MPEG-4/MP4|はい|はい
+MPEG TS|はい|はい
+Windows Media/ASF|なし|はい
+AVI (非圧縮 8-bit/10-bit)|なし|はい
+スムーズ ストリーミング ファイル形式 (PIFF 1.3)|なし|はい
 
 ###出力ビデオ コーデック
 
 出力ビデオ コーデック|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)|8 ビット 4:2:0 のみ|あり
-Avid DNxHD (MXF)|いいえ|あり
-DVCPro/DVCProHD (MXF)|いいえ|あり
-MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|いいえ|あり
-MPEG-1|いいえ|あり
-Windows Media ビデオ/VC-1|いいえ|あり
-JPEG サムネール作成|いいえ|あり
+AVC (H.264、8-bit、最大ハイ プロファイル、レベル 5.2、4K Ultra HD、AVC Intra)|8 ビット 4:2:0 のみ|はい
+Avid DNxHD (MXF)|なし|はい
+DVCPro/DVCProHD (MXF)|なし|はい
+MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル)|なし|はい
+MPEG-1|なし|はい
+Windows Media ビデオ/VC-1|なし|はい
+JPEG サムネール作成|なし|はい
 
 ###出力オーディオ コーデック
 
 出力オーディオ コーデック|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー
 ---|---|---
-AES (SMPTE 331M および 302M、AES3-2003)|いいえ|あり
-Dolby® Digital (AC3)|いいえ|あり
-Dolby® Digital Plus (E-AC3) 最大 7.1|いいえ|あり
-AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|あり|あり
-MPEG Layer 2|いいえ|あり
-MP3 (MPEG-1 Audio Layer 3)|いいえ|あり
-Windows Media オーディオ|いいえ|あり
+AES (SMPTE 331M および 302M、AES3-2003)|なし|はい
+Dolby® Digital (AC3)|なし|はい
+Dolby® Digital Plus (E-AC3) 最大 7.1|なし|はい
+AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1)|はい|はい
+MPEG Layer 2|なし|はい
+MP3 (MPEG-1 Audio Layer 3)|なし|はい
+Windows Media オーディオ|なし|はい
 
 
 ##エラー コード  
@@ -233,7 +233,7 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-##関連記事:
+##関連記事
 
 - [Media Encoder Standard のプリセットをカスタマイズし、高度なエンコード タスクを実行する](media-services-custom-mes-presets-with-dotnet.md)
 - [クォータと制限](media-services-quotas-and-limitations.md)
@@ -242,4 +242,4 @@ TransientError|一時的な問題に関するエラーのカテゴリ (Azure Sto
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

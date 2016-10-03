@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="04/25/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の前提条件
@@ -22,16 +22,17 @@
 
 **Azure Data Catalog** をセットアップする前に、いくつかのことに注意する必要があります。それほど長くはかかりません。
 
-
 ## Azure サブスクリプション
 Azure Data Catalog をセットアップするには、Azure サブスクリプションの所有者または共同所有者であることが必要です。
 
-Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。詳細については、「[アカウント、サブスクリプション、管理ロールの管理](../active-directory/active-directory-assign-admin-roles.md)」を参照してください。
+Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。詳細については、[アカウント、サブスクリプション、管理ロールの管理](../active-directory/active-directory-assign-admin-roles.md)に関するページを参照してください。
 
 ## Azure Active Directory
 Azure Data Catalog をセットアップするには、Azure Active Directory ユーザー アカウントを使用してログインする必要があります。
 
 Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。ユーザーは、任意のクラウドおよびオンプレミス Web アプリケーションへのシングル サインオンのために、1 つの職場または学校アカウントを使用できます。Azure Data Catalog は、Azure AD を使用して、サインオンを認証します。詳細については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
+
+> [AZURE.NOTE] [Azure Portal](http://portal.azure.com/) では、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com)を使用して Azure Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してログインする必要があります。
 
 ## Active Directory ポリシーの構成
 
@@ -45,4 +46,4 @@ Azure Active Directory (Azure AD) は、企業がクラウドとオンプレミ�
 
 詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0921_2016-->

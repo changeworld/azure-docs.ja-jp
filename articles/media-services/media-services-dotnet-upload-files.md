@@ -1,5 +1,5 @@
 <properties 
-	pageTitle=".NET を使用した Media Services アカウントへのファイルのアップロード" 
+	pageTitle=".NET を使用した Media Services アカウントへのファイルのアップロード | Microsoft Azure" 
 	description="資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="08/30/2016" 
+ 	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
@@ -28,6 +28,12 @@
 Media Services で、デジタル ファイルを資産にアップロードし (取り込み) ます。**Asset** エンティティには、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
 資産内のこれらのファイルを**資産ファイル**といいます。**AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+
+>[AZURE.NOTE]資産ファイル名を選択するときは、次の考慮事項が適用されます。
+>
+>- Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
+>
+>- 名前は 260 文字以内である必要があります。
 
 資産を作成する際には、次の暗号化オプションを指定できます。
 
@@ -44,7 +50,6 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 資産を **StorageEncrypted** オプションで暗号化することを指定した場合、Media Services SDK for .NET によって、資産の **StorateEncrypted** の **ContentKey** が作成されます。
 
->[AZURE.NOTE]Media Services は、ストリーミング コンテンツ (例: http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。**Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) !*'();:@&=+$,/?%#" は使用できません。また、ファイル名拡張子で使用できる "." は 1 つのみです。
 
 このトピックでは、Media Services .NET SDK と Media Services .NET SDK Extensions を使用してファイルを Media Services 資産にアップロードする方法を説明します。
 
@@ -311,11 +316,11 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
-
 ##次のステップ
+
 これで、資産を Media Services にアップロードできました。次は、[メディア プロセッサを取得する方法][]に関するトピックに進んでください。
 
 [メディア プロセッサを取得する方法]: media-services-get-media-processor.md
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

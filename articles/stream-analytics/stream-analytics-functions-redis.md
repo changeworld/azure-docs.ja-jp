@@ -4,7 +4,7 @@
 	keywords="データ ストリーム, Redis Cache, Service Bus キュー"
 	services="stream-analytics"
 	authors="ryancrawcour"
-	manager="paulettm"
+	manager="jhubbard"
     documentationCenter=""
 	/>
 
@@ -202,6 +202,7 @@ Microsoft Azure を初めてお使いになる場合は、[Azure 無料試用版
 
 - [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](../azure-functions/functions-reference.md)
 - [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](../azure-functions/functions-reference-csharp.md)
+- [Azure Functions F# developer reference (Azure Functions F# 開発者向けリファレンス)](../azure-functions/functions-reference-fsharp.md)
 - [Azure Functions NodeJS 開発者向けリファレンス](../azure-functions/functions-reference.md)
 - [Azure Functions のトリガーとバインドに関する記事](../azure-functions/functions-triggers-bindings.md)
 - [Azure Redis Cache の監視方法](../redis-cache/cache-how-to-monitor.md)
@@ -214,4 +215,4 @@ Microsoft Azure を初めてお使いになる場合は、[Azure 無料試用版
 [use-rediscache]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md
 [functions-getstarted]: ../azure-functions/functions-create-first-azure-function.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="jhubbard"
 	editor="cgronlun"
 />
 
@@ -145,4 +145,4 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 
     ![Stream Analytics Machine Learning, Machine Learning モニター ビュー](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-ml-monitor-view.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

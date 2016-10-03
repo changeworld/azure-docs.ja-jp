@@ -3,8 +3,8 @@
 	description="Python から Azure File Storage を使用して、ファイルをアップロード、一覧表示、ダウンロード、削除する方法について説明します。"
 	services="storage"
 	documentationCenter="python"
-	authors="emgerner-msft"
-	manager="wpickett"
+	authors="robinsh"
+	manager="carmonm"
 	editor="tysonn"/>
 
 <tags
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="07/26/2016"
-	ms.author="emgerner"/>
+	ms.date="09/20/2016"
+	ms.author="minet;robinsh"/>
 
 # Python から Azure File Storage を使用する方法
 
 [AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-## 概要
+## Overview
 
 この記事では、File Storage を使用して一般的なシナリオを実行する方法について説明します。サンプルは Python で作成され、[Microsoft Azure Storage SDK for Python] を使用しています。紹介するシナリオは、ファイルのアップロード、一覧表示、ダウンロード、および削除です。
 
@@ -100,4 +100,4 @@ Azure ファイル ストレージ共有には、少なくとも、ファイル�
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -3,7 +3,7 @@
 	description="HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。クロス検証とハイパーパラメーターの最適化を使用しています。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,deguhath,gokuma"
+	authors="bradsev"
 	manager="jhubbard"
 	editor="cgronlun"  />
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/14/2016"
-	ms.author="deguhath;bradsev" />
+	ms.author="deguhath;bradsev;gokuma" />
 
 # Spark を使用した高度なデータ探索とモデリング 
 
@@ -1496,4 +1496,4 @@ Spark MlLib を使用して回帰モデルと分類モデルを作成しまし�
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、[Spark で構築した機械学習モデルのスコア付けと評価](machine-learning-data-science-spark-model-consumption.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

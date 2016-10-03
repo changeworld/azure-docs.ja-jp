@@ -39,7 +39,7 @@
 - `databaseName`: ドキュメントを含むデータベース。
 - `collectionName`: ドキュメントを含むコレクション。
 - `id`: 取得するドキュメントの ID。このプロパティは、"{queueTrigger}" と同類のバインドをサポートします。ここでは、ドキュメント ID としてキュー メッセージの文字列値を使用します。
-- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] \(統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<アカウントのエンドポイント>;AccountKey=<プライマリ アクセス キー>;。
+- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] (統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<アカウントのエンドポイント>;AccountKey=<プライマリ アクセス キー>;。
 - `direction : *"in"* に設定する必要があります。
 
 *function.json* の例:
@@ -67,6 +67,29 @@
 	{   
 	    document.text = "This has changed.";
 	}
+
+#### Azure DocumentDB 入力コード例 (F# キュー トリガー)
+
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージと一致する ID を持つドキュメントを取得し、それを document パラメーターに渡します。そのドキュメントが見つからない場合、document パラメーターは null になります。関数の終了時に、ドキュメントは新しいテキスト値で更新されます。
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- "This has changed."
+
+次のように、NuGet を使用して `FSharp.Interop.Dynamic` および `Dynamitey` パッケージをパッケージ依存関係として指定する `project.json` ファイルが必要です。
+
+	{
+	  "frameworks": {
+	    "net46": {
+	      "dependencies": {
+	        "Dynamitey": "1.0.2",
+	        "FSharp.Interop.Dynamic": "3.0.0"
+	      }
+	    }
+	  }
+	}
+
+このファイルは NuGet を使用して依存関係を取得し、それをスクリプト内で参照します。
 
 #### Azure DocumentDB 入力コード例 (Node.js キュー トリガー)
  
@@ -131,6 +154,12 @@ function.json の例:
 	}
  
 
+#### Azure DocumentDB 出力コード例 (F# キュー トリガー)
+
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- (sprintf "I'm running in an F# function! %s" myQueueItem)
+
 #### Azure DocumentDB 出力コード例 (C# キュー トリガー)
 
 
@@ -178,6 +207,27 @@ function.json の例:
 	    };
 	}
 
+または、次のような同等の F# コードを使用できます。
+
+	open FSharp.Interop.Dynamic
+	open Newtonsoft.Json
+
+	type Employee = {
+	    id: string
+	    name: string
+	    employeeId: string
+	    address: string
+	}
+
+	let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
+	    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+	    let employee = JObject.Parse(myQueueItem)
+	    employeeDocument <-
+	        { id = sprintf "%s-%s" employee?name employee?employeeId
+	          name = employee?name
+	          employeeId = employee?id
+	          address = employee?address }
+
 出力例:
 
 	{
@@ -191,4 +241,4 @@ function.json の例:
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

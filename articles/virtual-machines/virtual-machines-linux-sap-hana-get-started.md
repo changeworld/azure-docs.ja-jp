@@ -1,20 +1,20 @@
 <properties
    pageTitle="Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド | Microsoft Azure"
    description="Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド"
-   services="virtual-machines,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="hermanndms"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
-   ms.service="virtual-machines"
-   ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.service="virtual-machines-linux"
+   ms.devlang="na"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
-   ms.date="09/07/2016"
+   ms.workload="infrastructure-services"
+   ms.date="09/15/2016"
    ms.author="hermannd"/>
 
 # Azure VM に単一インスタンスの SAP HANA を手動でインストールするためのクイック スタート ガイド
@@ -484,4 +484,4 @@ SAP アプリ サーバーと SAP GUI のインストール後、最後に "dbac
 
 * SAP サービス マーケットプレースからの HANA SP12 Platform Edition のダウンロード: ![](./media/virtual-machines-linux-sap-hana-get-started/image002.jpg)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

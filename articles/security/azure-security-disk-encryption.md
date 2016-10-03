@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/14/2016"
+   ms.date="09/20/2016"
    ms.author="devtiw"/>
 
 
@@ -461,7 +461,7 @@ CLI コマンドを使用するこのシナリオでは、次の手順に従っ�
 	- "EnabledForDiskEncryption" フラグを設定します: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
 	- KeyVault へのシークレットの書き込み権限を Azure AD アプリに設定します: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
 2. 既存/実行中の VM で暗号化を有効にするために、次のように入力します: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 暗号化状態を取得します: *“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+3. 暗号化状態を取得します: *"azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json"*
 4. 顧客が暗号化した VHD からの新しい VM での暗号化を有効にするには、“azure vm create” コマンドで以下のパラメーターを使用します。
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
 	- disk-encryption-key-url <disk-encryption-key-url>
@@ -504,7 +504,7 @@ CLI コマンドを使用して、Azure で既存/実行中の IaaS Windows VM �
 	- "EnabledForDiskEncryption" フラグを設定します: “azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
 	- KeyVault へのシークレットの書き込み権限を Azure AD アプリに設定します: “azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
 2. 既存/実行中の VM で暗号化を有効にするために、次のように入力します: *azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
-3. 暗号化状態を取得します: *“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
+3. 暗号化状態を取得します: *"azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json"*
 4. 顧客が暗号化した VHD からの新しい VM での暗号化を有効にするには、“azure vm create” コマンドで以下のパラメーターを使用します。
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
 	- disk-encryption-key-url <disk-encryption-key-url>
@@ -854,8 +854,8 @@ BitLocker 暗号化または DM-Crypt 暗号化を有効にしたら、ローカ
 
 
 ## BLOB の詳細
-[Azure PowerShell を使用する Azure Disk Encryption の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
+[Azure PowerShell を使用する Azure ディスク暗号化の探索](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)
 
-[Azure PowerShell を使用する Azure Disk Encryption の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
+[Azure PowerShell を使用する Azure ディスク暗号化の探索 - パート 2](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

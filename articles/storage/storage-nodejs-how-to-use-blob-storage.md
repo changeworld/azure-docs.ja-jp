@@ -83,9 +83,7 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
 	    if(!error){
-	      // Container exists and allows
-	      // anonymous read access to blob
-	      // content and metadata within this container
+	      // Container exists and is private
 	    }
 	});
 
@@ -103,7 +101,9 @@ Azure Web アプリの [Azure ポータル](https://portal.azure.com)で環境�
 
 	blobSvc.createContainerIfNotExists('mycontainer', {publicAccessLevel : 'blob'}, function(error, result, response){
 	    if(!error){
-	      // Container exists and is private
+	      // Container exists and allows
+	      // anonymous read access to blob
+	      // content and metadata within this container
 	    }
 	});
 
@@ -415,4 +415,4 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node の API リファレンス]: http://dl.windowsazure.com/nodestoragedocs/index.html
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

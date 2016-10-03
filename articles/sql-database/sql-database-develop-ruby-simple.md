@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="ruby"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="09/16/2016"
 	ms.author="andrela"/>
 
 
@@ -50,4 +50,4 @@
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

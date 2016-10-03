@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 プロトコル - OAuth 2.0 と OpenID Connect
@@ -54,7 +54,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 ここで、`{tenant}` は次の 4 つの値のいずれかになります。
 
-| 値 | 説明 |
+| 値 | Description |
 | ----------------------- | ------------------------------- |
 | `common` | 個人の Microsoft アカウントと Azure Active Directory の職場/学校アカウントのどちらでもアプリケーションにサインインできます。 |
 | `organizations` | Azure Active Directory の職場/学校アカウントを持つユーザーのみがアプリケーションにサインインできます。 |
@@ -80,4 +80,4 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

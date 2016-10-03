@@ -75,6 +75,8 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 
 6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。SIEM 構成については、[SIEM 構成](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm)に関するページをご覧ください。
 
+Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
+
 ## 次のステップ
 
 Azure 監査ログとプロパティ定義の詳細については、次をご覧ください。
@@ -88,4 +90,4 @@ Azure 監査ログとプロパティ定義の詳細については、次をご�
 - 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

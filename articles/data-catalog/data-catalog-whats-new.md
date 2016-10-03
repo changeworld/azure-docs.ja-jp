@@ -13,28 +13,84 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/20/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog の新機能
 
 定期的に **Azure Data Catalog** の更新がリリースされます。すべてのリリースにユーザー向けの新機能が含まれているわけではなく、一部のリリースはバックエンド サービス機能向けです。ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
 
+
+
+## 2016 年 9 月 16 日の週のリリースの新機能
+
+2016 年 9 月 16 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- IBM DB2 データ ソースのサポート。DB2 のデータベース、テーブル、ビューの登録と検出を実行できるようになりました。
+- Azure DocumentDB データ ソースのサポート。DocumentDB のデータベースとコレクションの登録と検出を実行できるようになりました。
+- Data Catalog ポータルでのカタログ名のカスタマイズのサポート。カタログ管理者が、ポータルのタイトルに表示されるテキスト (組織名など) を指定できるようになりました。
+
+## 2016 年 8 月 26 日の週のリリースの新機能
+
+2016 年 8 月 26 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- SQL Server マスター データ サービス (MDS) データ ソースの登録のための機能拡張。Data Catalog データ ソース登録ツールを使用して MDS エンティティを登録する際に、プレビューとデータ プロファイルを含めることができるようになりました。
+- 管理者定義の組織用検索条件の保存のサポート。Data Catalog 管理者が Data Catalog ポータルで検索条件を保存する際に、検索条件を個人用に保存するか、カタログのすべてのユーザー用に保存するかを選択できるようになりました。組織用に保存した検索条件はカタログのすべてのユーザーに共有され、データ ソース検出の標準化された開始点となります。
+
+## 2016 年 8 月 5 日の週のリリースの新機能
+
+2016 年 8 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Data Catalog ポータルでのプロパティ表示の更新。すべてのデータ資産のプロパティをサイズ変更可能な 1 つのウィンドウで表示および管理できるようになり、エクスペリエンスの一貫性と検出のしやすさが向上しました。
+
+## 2016 年 7 月 29 日の週のリリースの新機能
+
+2016 年 7 月 29 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- SQL Server マスター データ サービス (MDS) データ ソースのサポート。MDS のモデルとエンティティの登録と検出を実行できるようになりました。
+
+## 2016 年 7 月 22 日の週のリリースの新機能
+
+2016 年 7 月 22 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- SQL Server のストアド プロシージャのサポート。SQL Server データ ソースのストアド プロシージャ オブジェクトの登録と検出を実行できるようになりました。
+- Azure Data Catalog ポータルとデータ ソース登録ツールで対応する言語が追加されました (合計で 18 の言語に対応)。Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
+
+## 2016 年 7 月 8 日の週のリリースの新機能
+
+2016 年 7 月 8 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Data Catalog ポータルのホームページの更新と改良 (パフォーマンスの向上、ユーザー エクスペリエンスの効率化など)。
+
+## 2016 年 6 月 24 日の週のリリースの新機能
+
+2016 年 6 月 24 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Data Catalog ポータルでのデータ資産の検出時に、リスト ビュー内の列のサイズ変更をサポート。タグや説明など、長い資産メタデータの個々の列サイズを変更して、読みやすくできるようになりました。
+- Data Catalog ポータルの [開く] メニューへの Power Query for Excel の追加。Excel 2016、または [Power Query for Excel](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605) アドインがインストールされている Excel 2010 と Excel 2013 でサポートされているデータ ソースを開けるようになりました。
+
+
+## 2016 年 6 月 17 日の週のリリースの新機能
+
+2016 年 6 月 17 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
+
+- Azure Table Storage データ ソースのサポート。Azure Storage データ ソースのテーブル オブジェクトの登録と検出を実行できるようになりました。
+
 ## 2016 年 5 月 20 日の週のリリースの新機能
 
 2016 年 5 月 20 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
 - Data Catalog ビジネス用語集の機能強化により、ユーザーが 1 回の操作で複数の用語集の用語を更新できるようになっています。ユーザーは、複数の用語を選択して次の各フィールドを編集できます。
-    - 親の用語: 新しい親の用語を選択することができ、選択した用語はいずれも選択した親の用語の子になるように更新されます。選択したすべての用語が同じ親を持つ場合、その親はテキスト ボックスに表示され、それ以外の場合、親の用語フィールドは空白となります。   
+    - 親の用語: 新しい親の用語を選択することができ、選択した用語はいずれも選択した親の用語の子になるように更新されます。選択したすべての用語が同じ親を持つ場合、その親はテキスト ボックスに表示され、それ以外の場合、親の用語フィールドは空白となります。
     - タグと関係者: 複数のデータ資産にタグ付けする場合と同じ操作方法で、複数の用語集の用語に対してタグと関係者を追加および削除できます。
 
-ビジネス用語集の詳細については、「[How to set up the Business Glossary for Governed Tagging (管理タグ付け用のビジネス用語集を設定する方法)](data-catalog-how-to-business-glossary.md)」を参照してください。
+ビジネス用語集の詳細については、「[管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)」を参照してください。
 
 ## 2016 年 5 月 6 日の週のリリースの新機能
 
 2016 年 5 月 6 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-- カタログ管理者がビジネス用語と階層を定義し、一般的なビジネス語彙を作成できるビジネス用語集。ユーザーは、登録したデータ資産に用語集の用語でタグを付けて、カタログの内容を検出しやすく、わかりやすくすることができます。詳細については、「[How to set up the Business Glossary for Governed Tagging (管理タグ付け用のビジネス用語集を設定する方法)](data-catalog-how-to-business-glossary.md)」を参照してください。  
+- カタログ管理者がビジネス用語と階層を定義し、一般的なビジネス語彙を作成できるビジネス用語集。ユーザーは、登録したデータ資産に用語集の用語でタグを付けて、カタログの内容を検出しやすく、わかりやすくすることができます。詳細については、「[管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)」を参照してください。
 
 > [AZURE.NOTE] ビジネス用語集は、Azure Data Catalog の Standard Edition でのみ使用できます。無料エディションには、管理タグ付けまたはビジネス用語集の機能がありません。
 
@@ -43,7 +99,7 @@
 
 2016 年 3 月 11 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-- Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。既存の検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止されるため、推奨していません。API のセマンティクスに変更はありません。エンドポイント URI のみが変更されます。詳細については、「[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)」を参照してください。API サンプルについては、[Azure Data Catalog の開発者向けサンプル](data-catalog-samples.md)に関するページを参照してください。
+- Azure Data Catalog サービスの検索機能およびカタログ資産管理機能にプログラムでアクセスするために統合された REST API エンドポイント。既存の検索 API エンドポイントとカタログ API エンドポイントは 2016 年 3 月 21 日に廃止されるため、推奨していません。API のセマンティクスに変更はありません。エンドポイント URI のみが変更されます。詳細については、[Azure Data Catalog の REST API リファレンス](https://msdn.microsoft.com/library/azure/mt267595.aspx)のページを参照してください。API サンプルについては、[Data Catalog 開発者向けサンプル](data-catalog-samples.md)のページを参照してください。
 
 ## 2016 年 2 月 19 日の週のリリースの新機能
 
@@ -58,7 +114,7 @@
 
 2016 年 2 月 5 日の週の時点で、Azure Data Catalog には次の機能が追加されています。
 
-- Azure Data Catalog によって使用される Azure サブスクリプションを変更するためのサポート。Azure Data Catalog の管理者は、Azure Data Catalog ポータルの [設定] ページを使用して、課金用に別の Azure サブスクリプションを選択できます。
+- Azure Data Catalog によって使用される Azure サブスクリプションの変更のサポート。Azure Data Catalog の管理者は、Azure Data Catalog ポータルの [設定] ページを使用して、課金用に別の Azure サブスクリプションを選択できます。
 
 ## 2016 年 1 月 29 日の週のリリースの新機能
 
@@ -73,7 +129,7 @@
    + Salesforce.com - オブジェクト
    + DB2 - テーブル、ビュー、データベース
    + PostgreSQL - テーブル、ビュー、データベース
-- Azure SQL DB と Azure SQL Data Warehouse を含む SQL Server データ ソースに対する "SQL Server Data Tools で開く" のサポート。  
+- Azure SQL DB と Azure SQL Data Warehouse を含む SQL Server データ ソースに対する "SQL Server Data Tools で開く" のサポート。
 
 > [AZURE.NOTE] "SQL Server Data Tools で開く" には、Visual Studio 2013 Update 4 と SQL Server Tooling がインストールされている必要があります。SQL Server Data Tools の最新バージョンをインストールするには、「[SQL Server Data Tools (SSDT) のダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)」を参照してください。
 
@@ -90,7 +146,7 @@
 - Azure Data Catalog ポータルでデータ資産をピン留め/ピン留め解除する機能。ユーザーはデータ資産のピン留めを選択することで、再検出/再利用しやすくなります。
 - Azure Data Catalog ポータルの新たに再設計されたホーム ページ。新しいホーム ページには、最近公開またはピン留めされた資産、保存された検索など、現在のユーザーのアクティビティに関する詳細な情報のほか、カタログ全体でのアクティビティに関する詳細な情報も含まれています。
 - Azure Data Catalog ポータルでの固定のユーザー設定のサポート。ユーザー エクスペリエンスの設定 (グリッドまたはタイル ビュー、ページあたりの結果の数、検索結果の強調表示のオンまたはオフなど) はユーザー セッション間で永続化されます。
-- Azure Data Catalog が、2 つの新しい Azure リージョンで利用できるようになりました。お客様は Azure Data Catalog を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
+- Azure Data Catalog が、2 つの新しい Azure リージョンで利用できるようになりました。お客様は Azure Data Catalog を、米国東部、米国西部、西ヨーロッパ、オーストラリア東部に加え、北ヨーロッパおよび東南アジア リージョンでもプロビジョニングできます。詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」をご覧ください。
 
 ## 2015 年 12 月 18 日の週のリリースの新機能
 
@@ -114,7 +170,7 @@
 
 - SQL Server (Azure SQL Database を含む) と Oracle データ ソースの Azure Data Catalog ポータルの中から接続文字列の表示とコピーを行う機能。SQL Server または Oracle のテーブル、ビュー、またはデータベースの接続情報に含まれる [接続文字列の表示] リンクをクリックすることで、データ ソースに接続するために使用される接続文字列を確認できます。SQL Server データ ソースには、ADO.NET、ODBC、OLEDB、および JDBC 接続文字列があります。Oracle データ ソースには、ODBC および OLEDB 接続文字列があります。
 - Teradata のテーブルとビューの登録時にデータ プロファイルを含めることのサポート。
-- SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。  
+- SQL Server (Azure SQL DB と Azure SQL Data Warehouse を含む)、Server Analysis Services、Azure Storage、および HDFS ソースに対する [Power BI Desktop で開く] のサポート。
 
 > [AZURE.NOTE] [Power BI Desktop で開く] を使用するには、Power BI Desktop アプリケーションの現在のバージョンをインストールしておく必要があります。この機能を使用して問題やエラーが発生した場合は、[PowerBI.com](https://powerbi.com) から提供される Power BI Desktop の最新バージョンを使用していることを確認してください。
 
@@ -235,4 +291,4 @@
 - Standard Edition のみ: データ資産に所有者を追加するとき、Azure Data Catalog は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 - Azure BLOB Storage データ ソースのサポート。ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

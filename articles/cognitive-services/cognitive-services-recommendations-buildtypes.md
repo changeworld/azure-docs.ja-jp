@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/24/2016"
+	ms.date="09/20/2016"
 	ms.author="luisca"/>
 
 #  ビルドの種類とモデルの品質 #
@@ -263,4 +263,4 @@ FBT ビルドでは、コールド項目はサポートされていません。�
     "IsFaulted": false
     }
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

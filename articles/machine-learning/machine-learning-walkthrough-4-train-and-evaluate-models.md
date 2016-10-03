@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/16/2016"
 	ms.author="garye"/>
 
 
@@ -39,7 +39,8 @@ Azure Machine Learning Studio を使用して機械学習モデルを作成す�
 
 > [AZURE.TIP] 解決しようとしている特定の問題に最適な機械学習アルゴリズムを決定するには、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](machine-learning-algorithm-choice.md)」を参照してください。
 
-##モデルをトレーニングする
+## モデルをトレーニングする
+
 まず、ブースト デシジョン ツリー モデルを以下の手順で設定します。
 
 1.	モジュール パレットで [2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree] モジュールを見つけ、キャンバスにドラッグします。
@@ -82,7 +83,8 @@ SVM モデルを設定するには、次の操作を行います。
 
 ![Training the second model][2]
 
-##モデルにスコアを付け、評価する
+## モデルにスコアを付け、評価する
+
 [データの分割][split]モジュールによって分離されたテスト データを使用して、トレーニングされたモデルにスコアを付けます。その後、2 つのモデルの結果を比較して、どちらのモデルがより適した結果を生成したかを判断します。
 
 1.	[モデルのスコア付け][score-model]モジュールを見つけ、キャンバスにドラッグします。
@@ -143,4 +145,4 @@ SVM モデルを設定するには、次の操作を行います。
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="コンテンツ保護の概要" 
+	pageTitle="コンテンツ保護の概要 | Microsoft Azure" 
 	description="この記事では、Media Services でのコンテンツ保護の概要について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 #コンテンツ保護の概要
@@ -23,7 +23,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 - 次に、"PlayReady と Widevine DRM の動的共通暗号化" ワークフローの説明図を示します。詳細については、「[PlayReady DRM の動的暗号化とライセンス提供サービスの使用](media-services-protect-with-drm.md)」を参照してください。
 
-![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
+![PlayReady による保護](./media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
 
 - 次に、"AES-128 動的暗号化" ワークフローの説明図を示します。詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
@@ -36,13 +36,13 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 アップロードするコンテンツの種類に応じて、Media Services によって提供されるさまざまな暗号化オプションから選択できます。
 
-###なし 
+###なし
 
 暗号化は使用されません。これが既定値です。このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されません。
 
 プログレッシブ ダウンロードを使用して MP4 を配信する場合は、このオプションを使用してコンテンツをアップロードします。
 
-###StorageEncrypted 
+###StorageEncrypted
 
 **StorageEncrypted** で AES 256 ビット暗号化を使用してクリア コンテンツをローカルに暗号化し、それを Azure Storage にアップロードすると、コンテンツが保存時に暗号化された状態で格納されます。ストレージの暗号化で保護された資産は、エンコーディングの前に自動的に暗号化が解除され、暗号化されたファイル システムに置かれます。その後、新しい出力資産として再度アップロードする前に必要に応じて再度暗号化されます。ストレージの暗号化の主な使用事例としては、高品質の入力メディア ファイルをディスクに保存するときに強力な暗号化を使用してセキュリティを保護する場合が挙げられます。
 
@@ -58,7 +58,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 - [AesCtr](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/FileEncryptionTransform.cs)
 
 
-###CommonEncryptionProtected 
+###CommonEncryptionProtected
 
 共通暗号化を使用してコンテンツを暗号化する場合 (または暗号化済みのコンテンツをアップロードする場合) は、**CommonEncryptionProtected** を使用します。PlayReady と Widevine はいずれも共通暗号化 (CENC) 仕様に従って暗号化されているので、AMS でサポートされます。
 
@@ -78,7 +78,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES か共通暗号化でコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
->[AZURE.NOTE]動的暗号化を活用するには、暗号化されたコンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+>[AZURE.NOTE]動的暗号化を活用するには、暗号化されたコンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 ##ライセンスとキーの配信サービス
 
@@ -86,9 +86,9 @@ Media Services は、承認されたクライアントに DRM (PlayReady と Wid
 
 ポータルを使用している場合、構成できるのは 1 つの AES ポリシー (AES で暗号化されたすべてのコンテンツに適用されます) および 1 つの PlayReady ポリシー (PlayReady で暗号化されたすべてのコンテンツに適用されます) であることに注意してください。さらに詳細に構成を制御したい場合は、Media Services SDK for .NET を使用してください。
 
-##DRM ライセンス 
+##DRM ライセンス
 
-###PlayReady ライセンス 
+###PlayReady ライセンス
 
 Media Services には PlayReady ライセンスを提供するサービスが用意されています。エンド ユーザーのプレーヤー (Silverlight など) は、PlayReady で保護されたコンテンツを再生しようとする際に、ライセンス配信サービスにライセンス取得要求を送信します。ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
@@ -155,4 +155,4 @@ Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用�
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

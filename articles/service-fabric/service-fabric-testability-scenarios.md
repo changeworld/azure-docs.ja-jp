@@ -4,7 +4,7 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="motanv"
-   manager="timlt"
+   manager="rsinha"
    editor="toddabel"/>
 
 <tags
@@ -20,6 +20,8 @@
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
 
 Fault Analysis Service を使用すると、開発者は障害アクションを誘発して、障害のある状態でサービスをテストできます。ただし、ターゲットを特定した障害のシミュレーションには限界があります。さらにテストを実行するには、混乱のテストとフェールオーバー テストという Service Fabric のテスト シナリオを使用できます。これらのシナリオでは、長時間にわたり、クラスター全体で、グレースフルとアングレースフルの両方が交互配置された連続した障害がシミュレートされます。テストで障害の発生率と種類を構成したら、C# API または PowerShell を使用してテストを開始し、クラスターとサービスに障害を生成します。
+
+>[AZURE.WARNING] ChaosTestScenario は、弾力性に優れたサービス ベースの混乱で置き換えられています。詳細については、[制御された混乱](service-fabric-controlled-chaos.md)に関する新しい記事をご覧ください。
 
 ## 混乱のテスト
 混乱のシナリオでは、Service Fabric クラスター全体にわたる障害を生成します。このシナリオには、一般的に数か月間または数年間から数時間で発生するエラーが圧縮されています。障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。これにより、サービスのコードの品質が大幅に向上します。
@@ -247,4 +249,4 @@ Connect-ServiceFabricCluster $connection
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

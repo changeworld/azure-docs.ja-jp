@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/28/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
@@ -37,7 +37,7 @@ Azure CLI を使用して Azure Redis Cache インスタンスを作成および
 
 Redis Cache インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
-| プロパティ | Switch | 説明 |
+| プロパティ | Switch | Description |
 |---------------------|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name | -n, --name | Redis Cache の名前です。 |
 | resource group | -g, --resource-group | リソース グループの名前です。 |
@@ -48,12 +48,12 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | Redis 構成 | -c、--redis-configuration | Redis 構成。構成のキーと値の JSON 形式の文字列をここに入力します。形式: "{"":"","":""}" |
 | Redis 構成 | -f、--redis-configuration-file | Redis 構成。構成キーおよび値を含むファイルのパスをここに入力します。ファイル エントリの形式: {"":"","":""} |
 | シャード数 | -r、--shard-count | クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
-| Virtual Network | -v、--virtual-network | VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| 仮想ネットワーク | -v、--virtual-network | VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type | -t、--key-type | 更新するキーの種類です。有効な値: [Primary、Secondary] |
 | StaticIP | -p, --static-ip <static-ip> | VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
 | サブネット | t, --subnet <subnet> | VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork | -v, --virtual-network <virtual-network> | VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| [サブスクリプション] | -s、--subscription | サブスクリプションの識別子です。 |
+| サブスクリプション | -s、--subscription | サブスクリプションの識別子です。 |
 
 ## すべての Redis Cache コマンドを参照してください。
 
@@ -271,4 +271,4 @@ Redis Cache を削除するには、次のコマンドを使用します。
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

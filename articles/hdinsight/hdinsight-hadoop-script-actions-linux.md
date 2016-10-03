@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/05/2016"
+    ms.date="09/13/2016"
     ms.author="larryfr"/>
 
 # HDInsight でのスクリプト アクション開発
@@ -167,6 +167,11 @@ Bash スクリプトは、行が LF で終了する ASCII 形式で保存する�
 | `test_is_headnode` | クラスターのヘッド ノードで実行された場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `test_is_datanode` | 現在のノードがデータ (ワーカー) ノードの場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `test_is_first_datanode` | 現在のノードが最初のデータ (ワーカー) ノード (workernode0) の場合は 1 を返し、それ以外の場合は 0 を返します。 |
+| `get_headnodes` | クラスターのヘッドノードの完全修飾ドメイン名が返されます。名前はコンマで区切られます。エラーの場合は、空の文字列が返されます。 |
+| `get_primary_headnode` | プライマリ ヘッドノードの完全修飾ドメイン名を取得します。エラーの場合は、空の文字列が返されます。 |
+| `get_secondary_headnode` | セカンダリ ヘッドノードの完全修飾ドメイン名を取得します。エラーの場合は、空の文字列が返されます。 |
+| `get_primary_headnode_number` | プライマリ ヘッドノードの数値のサフィックスを取得します。エラーの場合は、空の文字列が返されます。 |
+| `get_secondary_headnode_number` | セカンダリ ヘッドノードの数値のサフィックスを取得します。エラーの場合は、空の文字列が返されます。 |
 
 ## <a name="commonusage"></a>一般的な使用パターン
 
@@ -268,4 +273,4 @@ _解決_: ファイルを ASCII として、または BOM なしの UTF-8 とし
 
 * [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,11 +14,11 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/01/2016"
+	ms.date="09/18/2016"
 	ms.author="glimoli;genli"/>
 
 # Windows VHD の Azure へのアップロードの準備
-Windows VM をオンプレミスから Azure にアップロードするには、仮想ハード ディスク (VHD) を正しく準備する必要があります。VHD を Azure にアップロードする前に完了しておくことをお勧めするいくつかの手順があります。`sysprep` の実行は一般的なプロセスですが、イメージの一般化のほんの一手順です。この記事では、Windows VHD の Microsoft Azure へのアップロードを準備する方法を説明します。
+Windows VM をオンプレミスから Azure にアップロードするには、仮想ハード ディスク (VHD) を正しく準備する必要があります。VHD を Azure にアップロードする前に完了しておくことをお勧めするいくつかの手順があります。この記事では、Microsoft Azure にアップロードする Windows VHD を準備する方法と、[Sysprep を使用するタイミングおよび使用方法](#step23)について説明します。
 
 ## 仮想ディスクの準備
 
@@ -248,8 +248,8 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 14. TCP パケットを分析するソフトウェアなど、余分な Transport Driver Interface フィルターを削除します。
 15. ディスクが正常で一貫性があることを確認するには、`CHKDSK /f` コマンドを実行します。
-16.	その他のすべてのサード パーティのソフトウェアとドライバーをアンインストールします。
-17. サード パーティのアプリケーションでポート 3389 を使用していないことを確認します。このポートは、Azure の RDP サービスに使用します。
+16.	物理コンポーネントまたはその他の仮想化テクノロジに関連する、すべてのサードパーティ ソフトウェアとドライバーをアンインストールします。
+17. サード パーティのアプリケーションでポート 3389 を使用していないことを確認します。このポートは、Azure の RDP サービスに使用します。アプリケーションで使用されているポートは、`netstat -anob` コマンドで確認できます。
 18.	アップロードする Windows VHD がドメイン コントローラーの場合は、[追加の手順](https://support.microsoft.com/kb/2904015)に従ってディスクを準備します。
 19.	VM を再起動して、Windows がまだ正常で、アクセスできることを RDP 接続を使用して確認します。
 20.	現在の管理者パスワードをリセットし、このアカウントを使用して RDP 接続を介して Windows にサインインできることを確認します。このアクセス許可は、"リモート デスクトップ サービスを使ったログオンを許可" ポリシー オブジェクトによって制御されます。このオブジェクトは、Computer Configuration\\Windows Settings\\Security Settings\\Local Policies\\User Rights Assignment にあります。
@@ -279,13 +279,13 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 	- [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: 特権の昇格に対処する Microsoft Windows のセキュリティ更新プログラム (2016 年 3 月 8 日)
 
 	- [KB3146723](https://support.microsoft.com/kb/3146723) MS16-048: Description of the security update for CSRSS: April 12, 2016 (CSRSS 用のセキュリティ更新プログラムの説明: 2016 年 4 月 12 日)
-	- [KB2904100](https://support.microsoft.com/kb/2904100) System freezes during disk I/O in Windows (Windows でディスク I/O 時にシステムがフリーズする)
-
-23. 複数のマシンをデプロイするためのイメージを作成するには、VHD を Azure にアップロードする前に `sysprep` を実行してイメージを一般化する必要があります。一般化されたイメージを作成する方法については、次の記事を参照してください。
+	- [KB2904100](https://support.microsoft.com/kb/2904100) System freezes during disk I/O in Windows (Windows でディスク I/O 時にシステムがフリーズする) <a id="step23"></a>
+23. 複数のマシンをデプロイするためのイメージを作成するには、VHD を Azure にアップロードする前に `sysprep` を実行してイメージを一般化する必要があります。専用 VHD を使用する場合は、`sysprep` を実行する必要はありません。一般化されたイメージを作成する方法については、次の記事を参照してください。
 
 	- [Resource Manager デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-capture-image.md)
 	- [クラシック デプロイメント モデルを使用した既存の Azure VM からの VM イメージの作成に関する記事](virtual-machines-windows-classic-capture-image.md)
 	- [Sysprep Support for Server Roles (Sysprep でのサーバー ロールのサポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
 
 
 ## 推奨される追加の構成
@@ -319,4 +319,4 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Encoder Standard を使用して資産をエンコードする方法" 
+	pageTitle="Media Encoder Standard を使用して資産をエンコードする方法 | Microsoft Azure" 
 	description="Media Encoder Standard を使用して Media Services でメディア コンテンツをエンコードする方法について説明します。コード サンプルでは REST API を使用しています。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/19/2016"
 	ms.author="juliako"/>
 
 
@@ -23,9 +23,9 @@
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encode-asset.md)
 - [REST ()](media-services-rest-encode-asset.md)
-- [ポータル](media-services-manage-content.md#encode)
+- [ポータル](media-services-portal-encode.md)
 
-##概要
+##Overview
 インターネット経由でデジタル ビデオを配信するには、メディアを圧縮する必要があります。デジタル ビデオ ファイルはサイズがとても大きく、インターネット経由で配信したり、顧客のデバイスでうまく表示したりできない可能性があります。エンコードはビデオやオーディオを圧縮するプロセスです。圧縮することでメディア コンテンツが見やすくなります。
 
 エンコード ジョブは Media Services で最も一般的な処理の 1 つです。エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。エンコードするときは、Media Services の組み込みエンコーダー (Media Encoder Standard) を使用できます。Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。エンコーディング タスクの詳細を指定するには、エンコーダー用に定義されたプリセット文字列を使用するか、プリセット構成ファイルを使用します。使用できるプリセットの種類を確認する場合は、「[Task Presets for MES (Media Encoder Standard)](http://msdn.microsoft.com/library/mt269960)」をご覧ください。
@@ -34,16 +34,16 @@
 
 - タスクは、Job エンティティの Tasks ナビゲーション プロパティまたは
 - OData バッチ処理を使用して、インラインで定義できます。
-  
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する 必要があります。詳細については、「[Media Services の規模の設定方法](media-services-manage-origins.md#scale_streaming_endpoints)」を参照してください。
+
+中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。詳細については、「[アセット配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
 
 >[AZURE.NOTE]メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
 
-##1 つのエンコード タスクを持つジョブの作成 
+##1 つのエンコード タスクを持つジョブの作成
 
 >[AZURE.NOTE] Media Services REST API を使用する場合は、次のことに考慮します。
 >
@@ -54,18 +54,10 @@
 >JSON を使用し、要求で **\_\_metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 
 次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。Media Encoder Standard でエンコードするときは、[こちら](http://msdn.microsoft.com/library/mt269960)で指定されているタスク構成のプリセットを使用できます。
-	
+
 要求:
 
-	POST https://media.windows.net/API/Jobs HTTP/1.1
-	Content-Type: application/json;odata=verbose
-	Accept: application/json;odata=verbose
-	DataServiceVersion: 3.0
-	MaxDataServiceVersion: 3.0
-	x-ms-version: 2.11
-	Authorization: Bearer <token value>
-	x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-	Host: media.windows.net
+POST https://media.windows.net/API/Jobs HTTP/1.1 Content-Type: application/json;odata=verbose Accept: application/json;odata=verbose DataServiceVersion: 3.0 MaxDataServiceVersion: 3.0 x-ms-version: 2.11 Authorization: Bearer <token value> x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 Host: media.windows.net
 
 	
 	{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "H264 Multiple Bitrate 720p", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version="1.0" encoding="utf-8"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
@@ -84,7 +76,7 @@
 
 ##考慮事項
 
-- TaskBody プロパティでは、リテラル XML を使用して、タスクが使用するアセットの入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
+- TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。タスクのトピックには、XML のための XML スキーマ定義が含まれます。
 - TaskBody の定義では <inputAsset> と <outputAsset> の内部値を、それぞれ JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
 - タスクは、複数の出力資産を持つことができます。1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 - タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
@@ -268,11 +260,11 @@
 
 
 ##次のステップ
-これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
+これで、資産をエンコードするジョブの作成方法がわかりました。次は、[Media Services でジョブの進行状況をチェックする方法](media-services-rest-check-job-progress.md)に関するトピックに進みます。
 
 
 ##関連項目
 
 [メディア プロセッサの取得](media-services-rest-get-media-processor.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

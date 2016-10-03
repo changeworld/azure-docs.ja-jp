@@ -67,4 +67,4 @@ Logic Apps の B2B 機能を使用する、完全に動作する AS2 送信お�
 - [XML 変換](./app-service-logic-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
 - [エンタープライズ統合コネクタ](../connectors/apis-list.md "Enterprise Integration Pack コネクタについての詳細情報")
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

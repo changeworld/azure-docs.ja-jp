@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016" 
+	ms.date="09/20/2016" 
 	ms.author="jeannt"/>
 
 # Azure Machine Learning を使用した顧客離れの分析
@@ -192,7 +192,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 	-	**[アクティビティ]**: たとえば、ログインの数など、エンティティに関連するすべての可能な使用状況情報を取得します。
 	-	**カスタマー サポート**。サブスクリプションに問題やカスタマー サポートとのやり取りがあったかどうかを示す情報をカスタマー サポート ログから収集します。
 	-	**競合に関するデータとビジネス データ**。顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。
--	重要度を特徴選択に利用します。これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。  
+-	重要度を特徴選択に利用します。これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。
 
 この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "決定論的" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
 
@@ -211,7 +211,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 このペーパーはお役に立ちましたか。 フィードバックをお待ちしております。1 を "役に立たなかった"、5 を "非常に役に立った" としてこのペーパーを評価すると共に、その評価の理由をお聞かせください。 次に例を示します。
 
 -	適切な例があった、スクリーン ショットがわかりやすかった、文章がわかりやすかったなど、高く評価した理由を教えてください。
--	例が不適切だった、スクリーン ショットがわかりにくかった、文章がわかりにくかったなど、低く評価した理由を教えてください。  
+-	例が不適切だった、スクリーン ショットがわかりにくかった、文章がわかりにくかったなど、低く評価した理由を教えてください。
 
 このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。
 
@@ -221,11 +221,11 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 [2] Wikipedia の記事: [Accuracy and precision (正確性と精度)](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-\[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
+[3] CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド (http://www.the-modeling-agency.com/crisp-dm.pdf)
 
-\[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] Big Data Marketing : Engage Your Customers More Effectively and Drive Value (ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する) (http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-\[5] Cortana Analytics ギャラリーの [Telco 顧客離反モデル テンプレート](https://caqs.azure.net/#gallery/telcocustomerchurn)
+[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 (http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) の「Telco churn model template (Telco の顧客離れモデルのテンプレート)」  
 ##付録
 
 ![][10]
@@ -244,4 +244,4 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

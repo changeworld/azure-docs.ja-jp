@@ -15,7 +15,7 @@
 	ms.topic="support-article" 
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="infrastructure" 
-	ms.date="06/28/2016" 
+	ms.date="09/19/2016" 
 	ms.author="iainfou" 
 />
 
@@ -28,7 +28,7 @@ Windows ベースの Azure 仮想マシン (VM) へのリモート デスクト�
 
 ## Azure PowerShell の使用
 
-マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+マシンに最新の Azure PowerShell 1.x がインストールされていることを確認します。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
 次の Azure PowerShell コマンドを使用して仮想マシンを再デプロイします。
 
@@ -41,4 +41,4 @@ Windows ベースの Azure 仮想マシン (VM) へのリモート デスクト�
 ## 次のステップ
 VM への接続に関する問題が発生した場合は、[RDP 接続のトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)または[RDP の詳細なトラブルシューティング手順](virtual-machines-windows-detailed-troubleshoot-rdp.md)に関するページをご覧ください。VM で実行されるアプリケーションにアクセスできない場合は、[アプリケーションの問題のトラブルシューティング](virtual-machines-windows-troubleshoot-app-connection.md)に関するページもご覧ください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

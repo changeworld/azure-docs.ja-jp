@@ -13,31 +13,27 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="05/18/2016"
+   ms.date="09/14/2016"
    ms.author="SubramaR"/>
 
 # Linux 上の Service Fabric
 
-現在、Service Fabric は Linux 上で制限付きプレビューとして利用できるため、Windows 上と同様の環境で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、管理できます。さらに、高度な Service Fabric フレームワーク (Reliable Services と Reliable Actors) を Java で構築できるようになりました。
+[このブログ投稿](https://azure.microsoft.com/blog/service-fabric-on-linux-support-available-this-month/)で発表したように、プレビューは 9 月 26 日に一般公開されます。Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。さらに、高度な Service Fabric フレームワーク (Reliable Services と Reliable Actors) を、Linux 上の Java で使用できるようになりました。
 
 > [AZURE.VIDEO service-fabric-linux-preview]
 
 ## サポートされるオペレーティング システムとプログラミング言語
 
-制限付きプレビューは、Ubuntu Server 15.10 が実行されている Azure でのワンボックス開発クラスターとマルチマシン クラスターの作成をサポートします。
+制限付きプレビューは、Ubuntu Server 16.04 が実行されている Azure でマルチマシン クラスターのほか、ワンボックス開発クラスターとの作成をサポートします。
 
-任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築できます。また、Java を使用して、Reliable Services フレームワークや Reliable Actors フレームワークに基づくサービスを構築することもできます。
+任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築できます。Java または C# を使用して、Docker コンテナーの調整のほか、Reliable Services フレームワークや Reliable Actors フレームワークに基づくサービスを構築することもできます。
 
->[AZURE.NOTE] Reliable Collection は Java ではまだサポートされていません。
+>[AZURE.NOTE] Reliable Collection は Linux ではまだサポートされていません。
 
-## プレビューへの参加
-
-制限付きプレビュー プログラムの対象となることに関心がある場合は、ご使用のシナリオと要件について Microsoft が理解を深めることができるように、[アンケートにご記入ください](http://aka.ms/sflinuxsurvey)。プレビューは最初は非常に小規模ですが、徐々に拡張される予定です。
-
-Linux 上の Service Fabric は、Windows 上で利用できるものと概念的に同じである (OS の仕様とプログラミング言語のサポートを除く) ことに注意してください。そのため、[既存のドキュメント](http://aka.ms/servicefabricdocs)のほとんどはこちらにも適用されるので、このテクノロジについて理解するのに役立ちます。
+Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric と同じです (OS の詳細およびプログラミング言語のサポートを除く)。したがって、[既存のドキュメント](http://aka.ms/servicefabricdocs)のほとんどがこちらにも適用されるため、テクノロジを理解するうえで役立ちます。
 
 ## 次のステップ
 
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解します。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

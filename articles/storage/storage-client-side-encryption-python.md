@@ -3,9 +3,9 @@
 	description="Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
 	services="storage"
 	documentationCenter="python"
-	authors="rickle-msft"
-	manager="carmonm"
-	editor=""/>
+	authors="dineshmurthy"
+	manager="jahogg"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="python"
 	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="t-rickle"/>
+	ms.date="09/20/2016"
+	ms.author="dineshm;robinsh"/>
 
 
 # Python による Microsoft Azure Storage のクライアント側の暗号化
@@ -226,4 +226,4 @@ queueservice オブジェクトで暗号化ポリシー フィールドを設定
 - [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage) をダウンロードする
 - GitHub から [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)をダウンロードする
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/14/2016"
+	ms.date="09/19/2016"
 	ms.author="hangzh;bradsev" />
 
 
 # Team Data Science Process の活用: HDInsight Hadoop クラスターの使用
 
-このチュートリアルでは、[Azure HDInsight Spark クラスター](https://azure.microsoft.com/services/hdinsight/)によるエンド ツー エンドのシナリオで Team Data Science Process を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットでデータを格納、調査し、特徴エンジニアリングとダウンサンプリングを行います。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行するエンド ツー エンドのシナリオで、[Team Data Science Process (TDSP)](data-science-process-overview.md) を使用します。データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
 
 HDInsight Hadoop クラスターを使用したデータ処理の同様のシナリオで、より大きなサイズ (1 テラバイト) のデータセットを処理する方法については、「[Team Data Science Process - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-criteo-walkthrough.md)」を参照してください。
 
@@ -111,7 +111,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* ***&#60;path\_to\_data\_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。  
+* ***&#60;path\_to\_data\_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。
 * ***&#60;Hadoop クラスターのストレージ アカウント名>*** を、HDInsight クラスターに関連付けられているストレージ アカウントに置き換えます。
 * ***&#60;Hadoop クラスターの既定のコンテナー>*** を、クラスターで使用する既定のコンテナーに置き換えます。通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
 * ***&#60;ストレージ アカウント キー>*** を、クラスターで使用するストレージ アカウントのキーに置き換えます。
@@ -434,10 +434,10 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 検査用の *sample\_hive\_quality\_assessment.hql* ファイルの内容を次に示します。
 
-    	SELECT COUNT(*) FROM nyctaxidb.trip
-    	WHERE month=1
-    	AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-    	OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+	    SELECT COUNT(*) FROM nyctaxidb.trip
+	    WHERE month=1
+	    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+	    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
 	    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
 	    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
 
@@ -454,7 +454,7 @@ Hive ディレクトリ プロンプトで次のコマンドを実行します�
 
 「[予測タスクの例](machine-learning-data-science-process-hive-walkthrough.md#mltasks)」で説明されている二項分類の問題では、チップが支払われたかどうかがわかると便利です。このチップの分布は、次の二項です。
 
-* tip given(Class 1, tip\_amount > $0)  
+* tip given(Class 1, tip\_amount > $0)
 * no tip (Class 0, tip\_amount = $0)
 
 次に示す *sample\_hive\_tipped\_frequencies.hql* ファイルがこれを実行します。
@@ -564,10 +564,10 @@ Azure Machine Learning の[データのインポート][import-data] モジュ�
 
 Azure Machine Learning でモデル作成用データを準備する *sample\_hive\_prepare\_for\_aml\_full.hql* ファイルの内容を以下に示します。
 
-		set R = 3959;
-	    set pi=radians(180);
+        set R = 3959;
+        set pi=radians(180);
 
-		create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
         medallion string,
         hack_license string,
@@ -622,7 +622,7 @@ Azure Machine Learning でモデル作成用データを準備する *sample\_hi
         t.pickup_latitude,
         t.dropoff_longitude,
         t.dropoff_latitude,
-		t.direct_distance,
+        t.direct_distance,
         f.payment_type,
         f.fare_amount,
         f.surcharge,
@@ -794,9 +794,7 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 
 ## 参照
 
-•	[Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) 
-•	[NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) 
-•	[ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
+• [Andrés Monroy NYC タクシー乗車ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/) • [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/) • [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/html/tlc/html/about/statistics.shtml)
 
 
 [2]: ./media/machine-learning-data-science-process-hive-walkthrough/output-hive-results-3.png
@@ -810,4 +808,4 @@ b.回帰の問題については、予測や決定係数での二乗誤差を見
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

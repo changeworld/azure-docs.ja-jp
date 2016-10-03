@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/05/2016" 
+	ms.date="09/20/2016" 
 	ms.author="spelluru"/>
 
 # Azure Data Factory を使用してオンプレミスの Oracle との間でデータを移動する 
@@ -21,10 +21,10 @@
 この記事では、データ ファクトリのコピー アクティビティを使用して Oracle と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
 
 ## インストール 
-Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次をインストールする必要があります。
+Azure Data Factory サービスをオンプレミスの Oracle データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。
 
-- データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
-- Oracle Data Provider for .NET。これは、[Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。[Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
+- データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた Data Management Gateway。データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスのデータ ソースをクラウド サービスに接続するクライアント エージェントです。Data Management Gateway の詳細については、[オンプレミスとクラウド間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事を参照してください。
+- Oracle Data Provider for .NET。このコンポーネントは、[Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/) に含まれます。ゲートウェイがインストールされているホスト コンピューターに適切なバージョン (32/64 ビット) をインストールします。[Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
 
 	"XCopy インストール" を選択した場合は、readme.htm の手順に従います。UI を備えたインストーラー (XCopy 以外のインストーラー) を選択することをお勧めします。
  
@@ -48,7 +48,7 @@ Oracle データベースから、サポートされているシンク データ
 4.	[AzureBlob](data-factory-azure-blob-connector.md#azure-blob-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5.	source として [OracleSource](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。下のサンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションの各プロパティのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
 
 **Oracle のリンクされたサービス:**
 
@@ -79,7 +79,7 @@ Oracle データベースから、サポートされているシンク データ
 
 このサンプルでは、Oracle で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
-“external”: ”true” を設定して externalData ポリシーを指定すると、これがデータ ファクトリに対して外部にあるテーブルで、データ ファクトリのアクティビティでは生成されていないことが Data Factory に通知されます。
+”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 	{
 	    "name": "OracleInput",
@@ -168,7 +168,7 @@ Oracle データベースから、サポートされているシンク データ
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。**oracleReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。**oracleReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 	
 	{  
@@ -221,7 +221,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 
 	Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-(to\_date 関数を使用して) 次のようにクエリを変更する必要があります。
+(to\_date 関数を使用して) 次のサンプルのようにクエリを変更する必要があります。
 
 	"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
@@ -236,7 +236,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 4.	[OracleTable](data-factory-onprem-oracle-connector.md#oracle-dataset-type-properties) 型の出力[データセット](data-factory-create-datasets.md)。
 5.	source として [BlobSource](data-factory-azure-blob-connector.md#azure-blob-copy-activity-type-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#oracle-copy-activity-type-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。下のサンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションの各プロパティのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
 
 **Oracle のリンクされたサービス:**
 
@@ -265,7 +265,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 
 **Azure BLOB の入力データセット**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。「“external”: “true”」設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。"external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
 
 	{
 	  "name": "AzureBlobInput",
@@ -332,7 +332,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 
 **Oracle 出力データセット:**
 
-このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。BLOB CSV ファイルに含めることが予想される数の列で Oracle にテーブルを作成する必要があります。新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Oracle にテーブルを作成します。新しい行は 1 時間ごとにテーブルに追加されます。
 
 	{
 	    "name": "OracleOutput",
@@ -352,7 +352,7 @@ Oracle データベースでの日付の構成方法に基づいて、クエリ�
 
 **コピー アクティビティのあるパイプライン:**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** の型が **BlobSource** に設定され、**sink** の型が **OracleSink** に設定されています。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** の型が **BlobSource** に設定され、**sink** の型が **OracleSink** に設定されています。
 
 	
 	{  
@@ -423,11 +423,12 @@ tableName | リンクされたサービスが参照する Oracle データベー
 
 ## Oracle のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-**注:** コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
+> [AZURE.NOTE]
+コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 ### OracleSource
 コピー アクティビティで、source の種類が **OracleSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
@@ -443,15 +444,15 @@ oracleReaderQuery | カスタム クエリを使用してデータを読み取�
 -------- | ----------- | -------------- | --------
 writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ
 writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (行数)| いいえ (既定値: 10000)  
-sqlWriterCleanupScript | 特定のスライスのデータを消去する方法で実行するコピー アクティビティのユーザー指定のクエリ。 | クエリ ステートメント。 | いいえ
-sliceIdentifierColumnName | コピー アクティビティで、自動生成スライス ID を入力する列のユーザー指定の名前。再実行時、特定のスライスのデータを消去するために使用されます。 | バイナリ (32) のデータ型の列の列名。 | いいえ
+sqlWriterCleanupScript | 特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 | クエリ ステートメント。 | いいえ
+sliceIdentifierColumnName | 自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 | バイナリ (32) のデータ型の列の列名。 | いいえ
 
 
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ### Oracle の型マッピング
 
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
@@ -496,11 +497,11 @@ XML | String
 **解決/回避策**
 
 1. Oracle 用の .NET Provider をインストールしていない場合は[インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/)した後、シナリオをやり直します。
-2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の操作を行います。
+2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の手順を実行します。
 	1. <システム ディスク>:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\CONFIG\\machine.config というフォルダーから、.NET 2.0 のコンピューター構成を開きます。
-	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のようなエントリを見つけることができます: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />"
+	2. **Oracle Data Provider for .NET** を探します。**system.data** の **DbProviderFactories** の下に次のサンプルのようなエントリを見つけることができます: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />"
 2.	このエントリを、v4.0 フォルダーの machine.config ファイル (<システム ディスク>:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
-3.	"gacutil /i [プロバイダーのパス]" を実行して、"<ODP.NET インストール パス>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll" をグローバル アセンブリ キャッシュ (GAC) にインストールします。
+3.	`gacutil /i [provider path]` を実行して、"<ODP.NET インストール パス>\\11.2.0\\client\_1\\odp.net\\bin\\4\\Oracle.DataAccess.dll" をグローバル アセンブリ キャッシュ (GAC) にインストールします。
 
 
 
@@ -510,4 +511,4 @@ XML | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

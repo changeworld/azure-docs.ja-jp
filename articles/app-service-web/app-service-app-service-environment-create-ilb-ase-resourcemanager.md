@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/20/2016" 
+	ms.date="09/21/2016" 
 	ms.author="stefsch"/>
 
 # Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
-## 概要 ##
+## Overview ##
 App Service Environment は、パブリック VIP の代わりに仮想ネットワークの内部アドレスを使用して作成することができます。この内部アドレスは、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによって提供されます。ILB ASE は、Azure ポータルを使用して作成できます。また、Azure Resource Manager テンプレートによる自動化を利用して作成することもできます。この記事では、Azure Resource Manager テンプレートを使用して ILB ASE を作成するために必要な手順と構文について詳しく説明します。
 
 ILB ASE の自動作成は、次に示す 3 つの手順で実行されます。
@@ -81,7 +81,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 - *pfxBlobString*: based64 でエンコードされた .pfx ファイルの文字列表現。前述したコード スニペットを使用すると、"exportedcert.pfx.b64" 内に含まれる文字列をコピーし、*pfxBlobString* 属性の値として貼り付けることになります。
 - *password*: .pfx ファイルの保護に使用されるパスワード。
 - *certificateThumbprint*: 証明書の拇印。この値を Powershell (前述のコード スニペットにある *$certificate.Thumbprint* など) から取得した場合、値はそのまま使用できます。ただし、この値を Windows 証明書のダイアログからコピーした場合は、忘れずに余分なスペースを削除してください。*certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
-- *certificateName*: 証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティに固有の Azure Resource Manager 識別子の一部として使用されます。
+- *certificateName*: 証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティに固有の Azure Resource Manager 識別子の一部として使用されます。この名前は、サフィックス "\_yourASENameHere\_InternalLoadBalancingASE" で終わる**必要があります**。このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示すインジケーターとして、ポータルによって使用されます。
 
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
@@ -107,12 +107,12 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
                    "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
               },
               "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere"
+                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
               }
          }
     }
 
-*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の Powershell コード スニペットを使用して既定の SSL 証明書を構成することができます。ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
+*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して既定の SSL 証明書を構成することができます。ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -121,7 +121,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。テンプレートの実行中に、ASE をスケーリングすることはできません。
 
-テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の SSL 証明書を使用して保護されます。既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。たとえば、*https://mycustomapp.internal-contoso.com* と指定された場合は、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の SSL 証明書を使用して保護されます。既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。たとえば、*https://mycustomapp.internal-contoso.com** と指定された場合は、*.internal-contoso.com* の既定の SSL 証明書が使用されます。
 
 ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI SSL 証明書バインドを構成することもできます。
 
@@ -130,7 +130,7 @@ Azure Resource Manager テンプレートを送信した後、変更が適用さ
 
 App Service 環境の使用を開始するには、「[App Service 環境の概要](app-service-app-service-environment-intro.md)」を参照してください。
 
-App Service Environment に関するすべての記事と作業手順については、[App Service Environment の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -142,4 +142,4 @@ App Service Environment に関するすべての記事と作業手順につい�
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0921_2016-->

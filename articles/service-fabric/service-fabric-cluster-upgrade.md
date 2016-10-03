@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/02/2016"
+   ms.date="09/13/2016"
    ms.author="chackdan"/>
 
 
@@ -71,13 +71,10 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ### 証明書
 
-プライマリまたはセカンダリ証明書は、Azure ポータル (下図参照) から、または servicefabric.cluster リソースへの PUT コマンドの発行を通じて、簡単に更新できます。
+ポータルを使用すると、クラスターの新しい証明書の追加、または削除を簡単に行うことができます。[詳細な手順については、こちらのドキュメント](service-fabric-cluster-security-update-certs-azure.md)を参照してください
 
 ![スクリーンショットは、Azure ポータルの証明書の拇印を示しています。][CertificateUpgrade]
 
->[AZURE.NOTE] クラスター リソースに使用する証明書を特定する前に、次の手順を完了しておく必要があります。この手順を行わなかった場合、新しい証明書は使用されません。
-1. Azure Key Vault に新しい証明書をアップロードします。手順については、[Service Fabric のセキュリティ](service-fabric-cluster-security.md)に関するページを参照してください。そのドキュメントの手順 2. から開始します。
-2. 証明書がデプロイされるように、クラスターを構成するすべての仮想マシン (VM) を更新します。更新方法については、[Azure Key Vault チームのブログ](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)を参照してください。
 
 ### アプリケーション ポート
 
@@ -87,7 +84,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 1. 適切なロード バランサーに新しいプローブを追加します。
 
-    ポータルを使用してクラスターをデプロイした場合、ノードの種類ごとのロード バランサーの名前は "loadBalancer-0"、"loadBalancer-1" のようになります。ロード バランサー名はリソース グループ内でのみ一意であるため、検索は特定のリソース グループの下で行うことをお勧めします。
+    ポータルを使用してクラスターをデプロイした場合、ロード バランサーには、ノードの種類ごとに "Resource group-NodeTypename の LB-name" という名前が付けられます。ロード バランサー名はリソース グループ内でのみ一意であるため、検索は特定のリソース グループの下で行うことをお勧めします。
 
     ![スクリーンショットでは、ポータルのロード バランサーにプローブを追加しています。][AddingProbes]
 
@@ -102,11 +99,11 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ノードの種類ごとに、アプリケーションで使用するカスタム配置プロパティを追加できます。NodeType は、明示的に追加せずに使用できる、既定のプロパティです。
 
->[AZURE.NOTE] 配置の制約の使用方法、ノードのプロパティ、プロパティの定義方法については、Service Fabric クラスター リソース マネージャー ドキュメントの「[Describing Your Cluster (クラスターの説明)](service-fabric-cluster-resource-manager-cluster-description.md)」の「Placement Constraints and Node Properties (配置の制約とノードのプロパティ)」を参照してください。
+>[AZURE.NOTE] 配置の制約の使用方法、ノードのプロパティ、プロパティの定義方法については、Service Fabric クラスター リソース マネージャー ドキュメント ドキュメントの[クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)に関するページの「配置の制約とノードのプロパティ」を参照してください。
 
 ### 容量メトリック
 
-ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。負荷をレポートする容量メトリックの使用方法については、Service Fabric クラスター リソース マネージャー ドキュメントの「[Describing Your Cluster (クラスターの説明)](service-fabric-cluster-resource-manager-cluster-description.md)」と「[Metrics and Load (メトリックと負荷)](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
+ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。負荷をレポートする容量メトリックの使用方法については、Service Fabric クラスター リソース マネージャー ドキュメントの[クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)および[メトリックと負荷](service-fabric-cluster-resource-manager-metrics.md)に関するページをご覧ください。
 
 ### クラスターを構成する VM の OS 修正プログラム
 
@@ -122,8 +119,8 @@ Microsoft は、クラスターで実行されるファブリック コードと
 - [アプリケーションのアップグレード](service-fabric-application-upgrade.md)の方法を学習する
 
 <!--Image references-->
-[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade.png
-[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
+[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
+[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=AcomDC_0511_2016-->
+<!---HONumber=AcomDC_0921_2016-->

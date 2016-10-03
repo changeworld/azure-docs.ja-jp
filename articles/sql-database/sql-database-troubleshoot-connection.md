@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/21/2016"
 	ms.author="daleche"/>
 
 # SQL データベースに接続するときの "サーバーのデータベースは現在使用できません" というエラー
@@ -40,4 +40,4 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 - 別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を確認してください。
 - 問題が解消されない場合は、「[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0921_2016-->

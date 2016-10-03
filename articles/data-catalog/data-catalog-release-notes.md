@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-catalog"
-   ms.date="05/11/2016"
+   ms.date="09/21/2016"
    ms.author="maroche"/>
 
 # Azure Data Catalog リリース ノート
@@ -58,10 +58,6 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
 
-### BLOB および UDT 列がプレビューに含まれない
-
-バイナリ ラージ オブジェクト (BLOB) 列とユーザー定義データ型 (UDT) 列を含むテーブルとビューを登録し、データ資産のプレビューを含めるように選択しても、これらの列はプレビューに含まれません。
-
 ### プロキシおよびポリシーの構成とデータ ソースの登録
 
 ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。
@@ -88,4 +84,4 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

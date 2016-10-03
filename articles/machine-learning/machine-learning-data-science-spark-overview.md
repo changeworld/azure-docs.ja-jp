@@ -3,7 +3,7 @@
 	description="Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。"
 	services="machine-learning"
 	documentationCenter=""
-	authors="bradsev,deguhath,gokuma"
+	authors="bradsev"
 	manager="jhubbard"
 	editor="cgronlun"  />
 
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="06/14/2016"
-	ms.author="bradsev" />
+	ms.author="deguhath;bradsev;gokuma" />
 
 # Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 
@@ -37,7 +37,11 @@
 
 ![](./media/machine-learning-data-science-spark-overview/spark-cluster-on-portal.png)
 
+<!-- -->
+
 > [AZURE.NOTE] Python ではなく Scala を使用して、エンド ツー エンドのデータ サイエンス プロセスのタスクを実行する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](machine-learning-data-science-process-scala-walkthrough.md)」をご覧ください。
+
+<!-- -->
 
 >[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -146,4 +150,4 @@ HDInsight Spark クラスターが設定され、Jupyter Notebook がアップ�
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「[Spark を使用した高度なデータ探索とモデリング](machine-learning-data-science-spark-advanced-data-exploration-modeling.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -33,7 +33,7 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
 
 
 - アプリケーションを終了する場合は、RemoteApp アプリケーションを保存して閉じます。アプリケーションを終了しないと、データが失われる可能性があります。
-- Azure RemoteApp で使用する前にカスタム アプリケーションを検証します。これには、アプリケーションが複数のセッションのプラットフォームで動作し、同じコレクション内の別のユーザーに悪影響を与えるメモリや CPU などの不要なリソースが消費されないことを確認することが含まれます。詳細については、「[Application Compatibility Best Practices for Remote Desktop Services (リモート デスクトップ サービスのためのアプリケーションの互換性ベスト プラクティス)](http://www.microsoft.com/download/details.aspx?id=18704)」をダウンロードして確認してください。
+- Azure RemoteApp で使用する前にカスタム アプリケーションを検証します。これには、アプリケーションが複数のセッションのプラットフォームで動作し、同じコレクション内の別のユーザーに悪影響を与えるメモリや CPU などの不要なリソースが消費されないことを確認することが含まれます。詳細については、「[Application Compatibility Best Practices for Remote Desktop Services (リモート デスクトップ サービスのためのアプリケーションの互換性ベスト プラクティス)](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf)」をダウンロードして確認してください。
 
 ## 構成と管理
 
@@ -46,4 +46,4 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
 	- サービスの個々の仮想マシンではなく、テンプレート イメージにシステム全体のすべての設定を構成します。
 	- 発行済みのアプリケーションのソフトウェアの自動更新を無効にします - 代わりにそれらをテンプレート イメージに手動で適用し、テンプレートからデプロイする前にテストします。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,7 +12,7 @@
    ms.topic="article" 
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/04/2016"
+   ms.date="09/19/2016"
    ms.author="cherylmc"/>
 
 # ExpressRoute の FAQ
@@ -53,6 +53,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しない�
 
 - 仮想ネットワークにデプロイされている Virtual Machines と Cloud Services への接続は、プライベート ピアリング パス経由でサポートされます。
 - Azure Websites は、パブリック ピアリング パス経由でサポートされます。
+- IoT Hub は、パブリック ピアリング パス経由でサポートされます。
 - Office 365 は、Microsoft ピアリング パス経由でサポートされます。
 - その他のサービスには、パブリック ピアリング パス経由でアクセスできます。ただし、次のような例外があります。
 
@@ -240,4 +241,4 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 ### ExpressRoute 接続経由で Dynamics AX にオンラインでアクセスできますか。
 いいえ。それはサポートされていません。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 エンドポイントのスコープ、アクセス許可、および同意
@@ -120,4 +120,4 @@ OpenID Connect の v2.0 実装には、特定のリソースには適用され�
 
 更新トークンの取得方法と使用方法の詳細については、「[v2.0 プロトコルのリファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="08/24/2016"
+   ms.date="09/16/2016"
    ms.author="rick.byham@microsoft.com"/>
 
 # Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する
@@ -312,7 +312,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 統合認証と Azure AD の ID を使用してデータベースに接続するには、データベース接続文字列内の Authentication キーワードを "Active Directory Integrated" に設定する必要があります。次の C# のコード サンプルでは、ADO .NET を使用します。
 
 	string ConnectionString =
-	@"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated;";
+	@"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
 	SqlConnection conn = new SqlConnection(ConnectionString);
 	conn.Open();
 
@@ -322,7 +322,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 統合認証と Azure AD の ID を使用してデータベースに接続するには、Authentication キーワードを "Active Directory Password" に設定する必要があります。接続文字列にユーザー ID (UID) とパスワード (PWD) のキーワードと値を含める必要があります。次の C# のコード サンプルでは、ADO .NET を使用します。
 
 	string ConnectionString =
-	  @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Password; UID=bob@contoso.onmicrosoft.com; PWD=MyPassWord!";
+	  @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Password; Initial Catalog=testdb;  UID=bob@contoso.onmicrosoft.com; PWD=MyPassWord!";
 	SqlConnection conn = new SqlConnection(ConnectionString);
 	conn.Open();
 
@@ -381,4 +381,4 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth.png
 [13]: ./media/sql-database-aad-authentication/13connect-to-db.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0921_2016-->

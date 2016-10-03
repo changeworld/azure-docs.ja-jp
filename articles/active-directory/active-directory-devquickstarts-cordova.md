@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/16/2016"
+	ms.date="09/16/2016"
 	ms.author="vittorib"/>
 
 # Azure AD と Apache Cordova アプリとの統合
@@ -27,7 +27,7 @@ Apache Cordova により、完全なネイティブ アプリケーションと�
 このチュートリアルでは、Active Directory 認証ライブラリ (ADAL) の Apache Cordova プラグインを使用して、簡単なアプリケーションに次の機能を付加して能力を向上させます。
 
 -	少数行のコードで、AD ユーザーを認証し、Azure AD Graph API を呼び出すためのトークンを取得する。
--	そのトークンを使用して Graph API を呼び出し、そのディレクトリのクエリを実行して結果を表示する。  
+-	そのトークンを使用して Graph API を呼び出し、そのディレクトリのクエリを実行して結果を表示する。
 -	ユーザーに対する認証プロンプトを最小限に抑えるために、ADAL トークン キャッシュを利用する。
 
 これを行うには、次の手順を実行する必要があります。
@@ -42,7 +42,7 @@ Apache Cordova により、完全なネイティブ アプリケーションと�
 このチュートリアルを実行するには、以下が必要です。
 
 - アプリケーション開発権限があるアカウントが登録されている Azure AD テナント
-- Apache Cordova を使用するように構成された開発環境  
+- Apache Cordova を使用するように構成された開発環境
 
 両方とも設定済みの場合は、手順 1. に直接進んでください。
 
@@ -156,7 +156,7 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
             // Attempt to authorize user silently
             app.context.acquireTokenSilentAsync(resourceUri, clientId)
             .then(authCompletedCallback, function () {
-                // We require user cridentials so triggers authentication dialog
+                // We require user credentials so triggers authentication dialog
                 app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
                 .then(authCompletedCallback, function (err) {
                     app.error("Failed to authenticate: " + err);
@@ -180,7 +180,7 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
             // Attempt to authorize user silently
             app.context.acquireTokenSilentAsync(resourceUri, clientId)
             .then(authCompletedCallback, function () {
-                // We require user cridentials so triggers authentication dialog
+                // We require user credentials so triggers authentication dialog
                 app.context.acquireTokenAsync(resourceUri, clientId, redirectUri)
                 .then(authCompletedCallback, function (err) {
                     app.error("Failed to authenticate: " + err);
@@ -269,4 +269,4 @@ Graph API を呼び出すために必要な、ホワイトリスト プラグイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

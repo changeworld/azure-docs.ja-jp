@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="javascript"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 
@@ -46,7 +46,7 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-DotNet.git
 
 - アプリの **Web** プラットフォームを追加します。
 - 適切な**リダイレクト URI** を入力します。このサンプルの既定値は `https://localhost:44326/` です。
-- **[暗黙的フローを許可する]** チェック ボックスはオンのままにします。 
+- **[暗黙的フローを許可する]** チェック ボックスはオンのままにします。
 
 アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
@@ -221,7 +221,7 @@ return $http.get('/api/tasks');
 ...
 ```
 
-ご利用ありがとうございます。 Azure AD に統合されたシングル ページ アプリが完成しました。アプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
+お疲れさまでした。 Azure AD に統合されたシングル ページ アプリが完成しました。アプリは、ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
 v2.0 エンドポイントについての学習を続けるには、[v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。その他のリソースについては、以下を参照してください。
 
@@ -229,8 +229,8 @@ v2.0 エンドポイントについての学習を続けるには、[v2.0 開発
 - [Stack Overflow の Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) の Azure AD ドキュメント >>
 
-## マイクロソフト製品のセキュリティ更新プログラムを取得する
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -12,12 +12,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD"
-   ms.date="06/21/2016"
+   ms.date="09/21/2016"
    ms.author="alkohli" />
 
 # StorSimple デバイスへの Update 2 のインストール
 
-## 概要
+## Overview
 
 このチュートリアルでは、Update 2 より前のソフトウェア バージョンを実行している StorSimple デバイスに、Azure クラシック ポータル経由で Update 2 をインストールする方法について説明します。このチュートリアルでは、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されているときに、Update 1 より前のソフトウェア バージョンから更新する場合に、この更新プログラムで必要な手順についても説明します。
 
@@ -91,4 +91,4 @@ Update 2 にすると、Microsoft はデバイスから追加の診断情報を�
 
 詳細については、[Update 2 リリース](storsimple-update2-release-notes.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0921_2016-->

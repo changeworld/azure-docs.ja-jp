@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="05/16/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
 # Azure Active Directory のコード例
@@ -32,7 +32,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | C#/.NET | [WebApp-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) | OpenID Connect (ASP.Net OpenID Connect OWIN ミドルウェア) を使用して Azure AD テナントからのユーザーを認証します。
 | C#/.NET | [WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect) | OpenID Connect (ASP.Net OpenID Connect OWIN ミドルウェア) を使用して複数の Azure AD テナントからのユーザーを認証するマルチテナント .NET MVC Web アプリケーション。
@@ -47,7 +47,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 このサンプルでは、Azure AD を使用してセキュリティ保護されているシングル ページ アプリケーションの作成方法を示します。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | JavaScript、C#/.NET | [SinglePageApp-DotNet](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | ADAL for JavaScript と Azure AD を使用して、ASP.NET Web API のバック エンドで実装された AngularJS ベースのシングル ページ アプリケーションをセキュリティ保護します。
 
@@ -56,7 +56,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のコード サンプルでは、Azure AD によってセキュリティ保護されている Web API を呼び出すネイティブ クライアント アプリケーションの構築方法を示します。[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) および [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) が使用されます。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | JavaScript | [NativeClient-MultiTarget-Cordova](https://github.com/Azure-Samples/active-directory-cordova-multitarget) | Apache Cordova 用の ADAL プラグインを使用して、認証のために Web API を呼び出し、Azure AD を使用する Apache Cordova アプリを作成します。
 | C#/.NET | [NativeClient-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) | Azure AD を使用してセキュリティ保護されている Web API を呼び出す .NET WPF アプリケーション。
@@ -77,7 +77,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のコード サンプルでは、Azure AD によってセキュリティ保護されている Web API を呼び出す Web アプリケーションを、[Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) を使用して構築する方法を示します。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | C#/.NET | [WebApp-WebAPI-OpenIDConnect-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect) | サインインしているユーザーのアクセス許可を使用して Web API を呼び出します。
 | C#/.NET | [WebApp-WebAPI-OAuth2-AppIdentity-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity) | アプリケーションのアクセス許可を使用して Web API を呼び出します。
@@ -89,7 +89,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のコード サンプルでは、Web API からリソースを取得するデーモンまたはサーバー アプリケーションを、[Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) および [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) を使用して構築する方法を示します。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | C#/.NET | [Daemon-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon) | Web API を呼び出すコンソール アプリケーション。クライアント資格情報はパスワードです。
 | C#/.NET | [Daemon-CertificateCredential-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) | Web API を呼び出すコンソール アプリケーション。クライアント資格情報は証明書です。
@@ -99,7 +99,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のコード サンプルでは、ディレクトリ データの読み書きを行うために Azure AD Graph API を呼び出すアプリケーションの構築方法を示します。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | Java | [WebApp-GraphAPI-Java](https://github.com/Azure-Samples/active-directory-java-graphapi-web) | Graph API を使用して Azure AD ディレクトリ データにアクセスする Web アプリケーション。
 | PHP | [WebApp-GraphAPI-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-web) | Graph API を使用して Azure AD ディレクトリ データにアクセスする Web アプリケーション。
@@ -114,7 +114,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のコード サンプルでは、承認で Azure AD を使用する方法を示します。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | C#/.NET | [WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) | Azure AD と統合されるアプリケーション内で Azure Active Directory グループ要求を利用したロール ベースのアクセス制御 (RBAC) を実行します。
 | C#/.NET | [WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD と統合されるアプリケーション内で Azure Active Directory アプリケーション ロールを利用したロール ベースのアクセス制御 (RBAC) を実行します。
@@ -124,7 +124,7 @@ GitHub でのサンプルに関する情報: [Microsoft Azure Active Directory �
 
 次のチュートリアルは、少し古い技術を使用していますが、依然として重要であると考えられます。
 
-| 言語/プラットフォーム | サンプル | 説明
+| 言語/プラットフォーム | サンプル | Description
 | ----------------- | ------ | -----------
 | C#/.NET | [Microsoft Azure AD アプリケーションでのロール ベースおよび ACL ベースの承認](http://go.microsoft.com/fwlink/?LinkId=331694) | Azure AD と統合されているアプリケーションで、ロール ベースの承認 (RBAC) および ACL ベースの承認を実行します。
 | C#/.NET | [AAL - Windows ストア アプリ対 REST サービス - 認証](http://go.microsoft.com/fwlink/?LinkId=330605) | Windows ストアのベータ版に対応する [Azure AD Authentication Library (ADAL)](active-directory-authentication-libraries.md) (以前の AAL) を使用して、ユーザー認証機能を Windows ストア アプリに追加します。
@@ -151,4 +151,4 @@ PHP | [Azure AD Graph API 用の PHP サンプル アプリ](http://code.msdn.mi
 
 [Azure AD Graph API Helper Library](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

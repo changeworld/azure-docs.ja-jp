@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
@@ -55,7 +55,7 @@
 
 1. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) *から*、Azure の Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net** など) *に*マッピングします。
 
-> [AZURE.NOTE] また、レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、**contoso.trafficmanager.net** への **awverify.contoso.com** の TXT レコードを作成してください。
+    > [AZURE.NOTE] レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」を参照してください。
 
 1. レジストラーで DNS レコードの追加または変更が完了したら、変更を保存します。
 
@@ -72,4 +72,8 @@
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!-- URL List -->
+
+[CREATEDNS]: ../dns/dns-web-sites-custom-domain.md
+
+<!---HONumber=AcomDC_0921_2016-->

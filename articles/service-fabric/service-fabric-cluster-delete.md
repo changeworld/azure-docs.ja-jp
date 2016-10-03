@@ -1,5 +1,5 @@
 <properties
-   pageTitle="クラスターおよびそのリソースの削除 | Microsoft Azure"
+   pageTitle="Azure クラスターとそのリソースの削除 | Microsoft Azure"
    description="クラスターを含むリソース グループを削除するか、リソースを選択的に削除して、Service Fabric クラスターを完全に削除する方法について学習します。"
    services="service-fabric"
    documentationCenter=".net"
@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="05/04/2016"
+   ms.date="09/09/2016"
    ms.author="chackdan"/>
 
-# Service Fabric クラスターおよびその使用リソースの削除
+# Azure の Service Fabric クラスターとその使用リソースの削除
 
-Service Fabric クラスターは、クラスター リソース自体に加え、その他の多くの Azure リソースで構成されます。そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。これを行うには 2 つのオプションがあります。クラスターのあるリソース グループを削除 (クラスター リソースとリソース グループ内のその他のすべてのリソースが削除されます) するか、クラスター リソースとその関連するリソース (リソース グループ内のその他のリソースは対象から除かれます) を個別に削除します。
+Service Fabric クラスターは、クラスター リソース自体に加え、その他の多くの Azure リソースで構成されます。そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。オプションは 2 つあります。クラスターのあるリソース グループを削除 (クラスター リソースとリソース グループ内のその他のすべてのリソースが削除されます) するか、クラスター リソースとその関連するリソース (リソース グループ内のその他のリソースは対象から除かれます) を個別に削除します。
 
 >[AZURE.NOTE] クラスター リソースを削除しても、Service Fabric クラスターを構成しているその他のすべてのリソースが削除されることは**ありません**。
 
@@ -56,11 +56,11 @@ Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 
 リソース グループに、削除する Service Fabric クラスターに関連付けられているリソースのみがある場合は、リソース グループ全体を削除する方が簡単です。リソース グループ内のリソースを 1 つずつ選択して削除する場合は、次の手順を実行します。
 
-ポータルを使用するか、テンプレート ギャラリーに含まれる Service Fabric の ARM テンプレートのいずれかを使用してクラスターをデプロイした場合は、クラスターで使用するすべてのリソースに次の 2 つのタグが付けられています。それらを使用して、削除するリソースを決定することができます。
+ポータルを使用するか、テンプレート ギャラリーに含まれる Service Fabric の Resource Manager テンプレートのいずれかを使用してクラスターをデプロイした場合は、クラスターで使用するすべてのリソースに次の 2 つのタグが付けられています。それらを使用して、削除するリソースを決定することができます。
 
-***タグ 1:*** キー = clusterName、値 = <クラスターの名前>
+"***タグ 1:***" キー = clusterName、値 = <クラスターの名前>
 
-***タグ 2:*** キー = resourceName、値 = ServiceFabric
+"***タグ 2:***" キー = resourceName、値 = ServiceFabric
 
 ### Azure ポータルでの特定のリソースの削除
 
@@ -111,4 +111,4 @@ Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Mic
 
 [TaggedResources]: ./media/service-fabric-cluster-delete/TaggedResources.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0921_2016-->

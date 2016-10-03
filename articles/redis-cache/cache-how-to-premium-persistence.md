@@ -4,7 +4,7 @@
 	services="redis-cache" 
 	documentationCenter="" 
 	authors="steved0x" 
-	manager="erikre" 
+	manager="douge" 
 	editor=""/>
 
 <tags 
@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="cache-redis" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/09/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 # Premium Azure Redis Cache のデータ永続化の構成方法
 
 Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
-Azure Redis Cache の Premium レベルには、クラスタリング、永続性、および Virtual Network のサポートが含まれています。この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
+Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
 
-その他の Premium キャッシュ機能については、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」および「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」をご覧ください。
+Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## データの永続化とは
 Redis の永続化を使用すると、Redis に格納されたデータを保持できます。また、スナップショットを取得したりデータをバックアップしたりして、ハードウェア障害のときに読み込むことができます。これは、Basic レベルや Standard レベルにはない大きな利点です。Basic/Standard レベルでは、すべてのデータはメモリに格納され、Cache ノードがダウンするような障害時にはデータが失われる可能性があります。
@@ -33,7 +33,7 @@ Azure Redis Cache の Redis 永続化では、[RDB モデル](http://redis.io/to
 
 ## Premium キャッシュの作成
 
-キャッシュを作成し、永続化を構成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** をクリックします。
+キャッシュを作成し、永続化を構成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
 ![Redis Cache の作成][redis-cache-new-cache-menu]
 
@@ -57,7 +57,7 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 
 バックアップの間隔を構成するには、ドロップダウン リストから **[バックアップの頻度]** を選択します。選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間**です。前のバックアップ操作が正常に完了するとこの間隔のカウントダウンが開始し、期間が経過すると新しいバックアップが開始されます。
 
-**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ドロップダウンから使用する**プライマリ キー**または**セカンダリ キー**を選択します。キャッシュと同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。
+**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ドロップダウンから使用する**プライマリ キー**または**セカンダリ キー**を選択します。Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。
 
 >[AZURE.IMPORTANT] 永続化アカウントのストレージ キーを再生成した場合、**[ストレージ キー]** ドロップダウンから目的のキーを再選択する必要があります。
 
@@ -98,14 +98,13 @@ Redis の永続化を有効にするには、**[有効]** をクリックして 
 ### 別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか
 
 -	大きいサイズにスケーリングした場合、影響はありません。
--	小さいサイズにスケーリングして、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定がある場合、そのデータベースのデータは復元されません。詳細については、「[スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)」をご覧ください。
--	小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するには、小さなサイズでスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
+-	小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。詳細については、「[スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)」をご覧ください。
+-	小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
 
 ## 次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
--	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
--	[Premium Azure Redis Cache に対する Virtual Network サポートの構成方法](cache-how-to-premium-vnet.md)
+-	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
   
 <!-- IMAGES -->
 
@@ -119,4 +118,4 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

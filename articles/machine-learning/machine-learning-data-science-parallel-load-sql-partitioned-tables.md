@@ -13,23 +13,24 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/14/2016" 
+	ms.date="09/19/2016" 
 	ms.author="bradsev" />
 
 # SQL パーティション テーブルを使用した並列の一括データ インポート
 
-このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。SQL データベースへのビッグ データの読み込み/転送では、_パーティション テーブルとビュー_を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。
+このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。SQL Database へのビッグ データの読み込み/転送では、"_パーティション テーブルとビュー_" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。
 
 
 ## 新しいデータベースとファイル グループのセットの作成
 
-- [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (存在しない場合)
+- [新しいデータベースを作成する](https://technet.microsoft.com/library/ms176061.aspx) (データベースが存在しない場合)
 - パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加する
-- 注: 新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
+
+  注: 新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用してこれを行うことができます。
 
 - 1 つまたは複数のファイル (必要に応じて) を各データベース ファイル グループに追加する
 
- > [AZURE.NOTE] このパーティションのデータを格納するターゲットのファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
+ > [AZURE.NOTE] このパーティションのデータを保持するターゲット ファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
  
 次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
 
@@ -74,7 +75,7 @@
 	    <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
 	    <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
 
-- ヒント: 関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
+  ヒント: 関数/構成に従って各パーティションで有効な範囲を確認するには、次のクエリを実行します。
 
 	    SELECT psch.name as PartitionScheme,
 	    	prng.value AS ParitionValue,
@@ -89,7 +90,7 @@
 	    CREATE TABLE <table_name> ( [include schema definition here] )
 	    ON <TablePScheme>(<partition_field>)
 
-- 詳細については、「[パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
+詳細については、「[パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
 
 
 ## 個別のパーティション テーブルごとにデータを一括インポートする
@@ -187,4 +188,4 @@
 パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「[Cortana Analytics Process の活用: SQL Server を使用する](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

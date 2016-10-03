@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="よく寄せられる質問" 
+	pageTitle="よく寄せられる質問 | Microsoft Azure" 
 	description="よく寄せられる質問 (FAQ)" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,21 +13,21 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/19/2016" 
 	ms.author="juliako"/>
 
 
-#よく寄せられる質問  
+#よく寄せられる質問
 
-##AMS に関してよく寄せられる一般的な質問 
+##AMS に関してよく寄せられる一般的な質問
 
 Q: インデックス作成の規模はどのように設定できますか?
 
-A: 予約ユニットは、エンコード タスクでもインデックス作成タスクでも同じです。詳細については、「[Media Services の規模の設定方法](media-services-how-to-scale.md)」をご覧くださいIndexer のパフォーマンスは、予約ユニットの種類に左右されないことに**注意してください**。
+A: 予約ユニットは、エンコード タスクでもインデックス作成タスクでも同じです。詳細については、「[Media Services の規模の設定方法](media-services-scale-media-processing-overview.md)」をご覧くださいIndexer のパフォーマンスは、予約ユニットの種類に左右されないことに**注意してください**。
 
 Q: ビデオをアップロード、エンコード、公開しました。ビデオをストリームしようとしても再生できない場合、どんな原因が考えられますか。
 
-可能性が高い原因は、再生しようとしているストリーミング エンドポイントに、1 つ以上の予約済みストリーミング エンドポイント ユニットが割り当てられていないことです。[Media Services の規模の設定方法](media-services-how-to-scale.md)の手順をご覧ください。
+可能性が高い原因は、再生しようとしているストリーミング エンドポイントに、1 つ以上の予約済みストリーミング エンドポイント ユニットが割り当てられていないことです。[Media Services の規模の設定方法](media-services-portal-scale-streaming-endpoints.md)の手順をご覧ください。
 
 Q: ライブ ストリームで合成はできますか。
 
@@ -35,7 +35,7 @@ A: 現時点では、Azure Media Services でのライブ ストリームの合�
 
 Q: ライブ ストリーミングを Azure CDN で使用できますか。
 
-A: Media Services では Azure CDN との統合をサポートしています (詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-manage-origins.md#enable_cdn)」をご覧ください)。CDN でライブ ストリーミングを使用できます。Azure Media Services は、スムーズ ストリーミング、HLS、MPEG-DASH の出力を提供します。これらのすべての形式では、データの転送に HTTP を使用し、HTTP キャッシュを活用します。ライブ ストリーミングでは実際のビデオ/オーディオ データがフラグメントに分割され、この個別のフラグメントが CDN にキャッシュされます。更新する必要があるデータは、マニフェスト データのみです。CDN はマニフェスト データを定期的に更新します。
+A: Media Services では Azure CDN との統合をサポートしています (詳細については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください)。CDN でライブ ストリーミングを使用できます。Azure Media Services は、スムーズ ストリーミング、HLS、MPEG-DASH の出力を提供します。これらのすべての形式では、データの転送に HTTP を使用し、HTTP キャッシュを活用します。ライブ ストリーミングでは実際のビデオ/オーディオ データがフラグメントに分割され、この個別のフラグメントが CDN にキャッシュされます。更新する必要があるデータは、マニフェスト データのみです。CDN はマニフェスト データを定期的に更新します。
 
 Q: Azure Media services では画像の保存はサポートされますか。
 
@@ -83,4 +83,4 @@ A: [メディア エンコーダー スタンダード](media-services-dotnet-en
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

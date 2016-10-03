@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="Multi-Factor Authentication で別の方法を使用したサインイン" 
-	description="このページでは、Azure MFA で別の方法を使用してサインインする方法を説明します。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Multi-Factor Authentication で別の方法を使用したサインイン"
+	description="このページでは、Azure MFA で別の方法を使用してサインインする方法を説明します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femilao"
 	editor="curtland"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.workload="identity" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/04/2016" 
-	ms.author="billmath"/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # Multi-Factor Authentication で別の方法を使用したサインイン
 
@@ -33,6 +33,4 @@
 
 <li>代替方法を選択し、サインインします。</li>
 
- 
-
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

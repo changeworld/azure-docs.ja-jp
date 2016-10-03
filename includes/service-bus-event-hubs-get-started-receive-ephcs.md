@@ -8,33 +8,33 @@
 
 2. **[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-    ![][1]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png)
 
 3. **[ストレージ アカウントの作成]** ブレードで、ストレージ アカウントの名前を入力します。リソースが作成される Azure サブスクリプション、リソース グループ、場所を選択します。**[Create]** をクリックします。
 
-    ![][2]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage2.png)
 
 4. ストレージ アカウントの一覧で、新しく作成したストレージ アカウントをクリックします。
 
 5. ストレージ アカウントのブレードで、**[アクセス キー]** をクリックします。後でこのチュートリアルで使用するため、**key1** の値をコピーしておきます。
 
-	![][3]
+	![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage3.png)
 
 4. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、新しい Visual C# のデスクトップ アプリ プロジェクトを作成します。プロジェクトの名前として「**Receiver**」と入力します。
 
-    ![][14]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png)
 
 5. ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
 6. **[参照]** タブをクリックして、`Microsoft Azure Service Bus Event Hub - EventProcessorHost` を検索します。プロジェクト名 (**Receiver**) が **[バージョン]** ボックスで指定されていることを確認します。**[インストール]** をクリックして、使用条件に同意します。
 
-    ![][13]
+    ![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png)
 
 	Visual Studio によって、[Azure Service Bus Event Hub - EventProcessorHost NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)への参照がすべての依存関係と共にダウンロード、インストール、追加されます。
 
 7. **[Receiver]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスの名前として「**SimpleEventProcessor**」と入力し、**[追加]** をクリックしてクラスを作成します。
 
-	![][15]
+	![](./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png)
 
 8. SimpleEventProcessor.cs ファイルの先頭に次のステートメントを追加します。
 
@@ -124,19 +124,10 @@
 <!-- Links -->
 [Event Hubs の概要]: event-hubs-overview.md
 [Event Hubs のプログラミング ガイド]: event-hubs-programming-guide.md
-[イベント処理のスケールアウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
+[[イベント処理のスケールアウトのサンプル]]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [イベント処理のスケール アウトのサンプル]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [EventProcessorHost]: http://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx
 [Azure portal]: https://portal.azure.com
 
-<!-- Images -->
-
-[1]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage1.png
-[2]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage2.png
-[3]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-storage3.png
-[13]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-eph-csharp1.png
-[14]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp1.png
-[15]: ./media/service-bus-event-hubs-getstarted-receive-ephcs/create-receiver-csharp2.png
-
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

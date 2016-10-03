@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/24/2016" 
+	ms.date="09/15/2016" 
 	ms.author="sdanie"/>
 
 
@@ -410,4 +410,4 @@ In-Role Cache 用の出力キャッシュ プロバイダーを有効にする�
 [Which Azure Cache offering is right for me?]: cache-faq.md#which-azure-cache-offering-is-right-for-me
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

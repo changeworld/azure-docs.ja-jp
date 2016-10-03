@@ -13,7 +13,7 @@
 	ms.workload="data-management"
 	ms.topic="article"
 	ms.tgt_pltfrm="NA"
-	ms.date="09/14/2016"
+	ms.date="09/19/2016"
 	ms.author="sstein"/>
 
 
@@ -78,7 +78,7 @@
 ファイアウォール規則を表示、作成、または更新するには、**[SQL データベース]** ブレードで **[Set server firewall (サーバー ファイアウォールの設定)]** をクリックします。詳細については、「[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
-![firewall rules](./media/sql-database-manage-portal/commands.png)
+![firewall rules](./media/sql-database-manage-portal/sql-database-firewall.png)
 
 
 ## SQL データベースのサービス レベルまたはパフォーマンス レベルを変更する方法
@@ -128,14 +128,14 @@ geo レプリケートされたセカンダリにフェールオーバーする�
 SQL データベースをコピーするには、**[SQL データベース]** ブレードで **[コピー]** をクリックします。詳細については、「[Azure Portal を使用した Azure SQL Database のコピー](sql-database-copy-portal.md)」を参照してください。
 
 
-![SQL データベースの設定](./media/sql-database-manage-portal/commands.png)
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-copy.png)
 
 ## Azure SQL データベースを BACPAC ファイルにアーカイブする方法
 
 SQL データベースの BACPAC を作成するには、**[SQL データベース]** ブレードで **[エクスポート]** をクリックします。詳細については、「[Azure Portal を使用して BACPAC ファイルに Azure SQL Database をアーカイブする](sql-database-export.md)」を参照してください。
 
 
-![SQL database export](./media/sql-database-manage-portal/commands.png)
+![SQL database export](./media/sql-database-manage-portal/sql-database-export.png)
 
 
 
@@ -144,7 +144,7 @@ SQL データベースの BACPAC を作成するには、**[SQL データベー�
 SQL データベースを復元するには、**[SQL データベース]** ブレードで **[復元]** をクリックします。詳細については、「[Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)」を参照してください。
 
 
-![SQL データベースの設定](./media/sql-database-manage-portal/commands.png)
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-restore.png)
 
 
 ## BACPAC ファイルから Azure SQL データベースを作成する方法
@@ -163,7 +163,7 @@ BACPAC ファイルから SQL データベースを作成するには、**[SQL S
 
 SQL データベースを削除するには、**[SQL データベース]** ブレードで **[削除]** をクリックします。
 
-![SQL データベースの設定](./media/sql-database-manage-portal/commands.png)
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-delete.png)
 
 
 
@@ -172,4 +172,4 @@ SQL データベースを削除するには、**[SQL データベース]** ブ�
 - [SQL Database](sql-database-technical-overview.md)
 - [Azure ポータルを使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

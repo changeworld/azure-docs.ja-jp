@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="06/29/2016" 
+    ms.date="09/19/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SpringCM の統合
@@ -82,7 +82,7 @@
 
     アプリの URL は、SpringCM テナントの URL です (例: *https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=16826*):
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-spring-cm-tutorial/IC797049.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-spring-cm-tutorial/IC797049.png "アプリケーション URL の構成")
 
 4.  **[SpringCM でのシングル サインオン構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
@@ -102,7 +102,7 @@
     2.  Azure クラシック ポータルの **[SpringCM でのシングル サインオンの構成]** ページで、**[発行者の URL]** の値をコピーし、**[発行者]** ボックスに貼り付けます。
     3.  Azure クラシック ポータルの **[SpringCM でのシングル サインオンの構成]** ダイアログ ページで **[シングル サインオン サービスの URL]** の値をコピーし、それを **[サービス プロバイダー (SP) によって開始されたエンドポイント]** ボックスに貼り付けます。
     4.  **[SAML Enabled]** として、**[Enable]** を選択します。
-    5.  **[保存]** をクリックします。
+    5.  [**Save**] をクリックします。
 
 8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -132,7 +132,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 7.  ユーザーを **[Security group]** に追加します。
 
-8.  **[保存]** をクリックします。
+8.  [**Save**] をクリックします。
 
 >[AZURE.NOTE] SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
@@ -154,4 +154,4 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0921_2016-->

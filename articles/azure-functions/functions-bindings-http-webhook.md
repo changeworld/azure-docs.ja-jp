@@ -138,6 +138,49 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 }
 ```
 
+## HTTP トリガー関数の F# コードの例
+
+コード例では、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
+
+```fsharp
+open System.Net
+open System.Net.Http
+open FSharp.Interop.Dynamic
+
+let Run(req: HttpRequestMessage) =
+    async {
+        let q =
+            req.GetQueryNameValuePairs()
+                |> Seq.tryFind (fun kv -> kv.Key = "name")
+        match q with
+        | Some kv ->
+            return req.CreateResponse(HttpStatusCode.OK, "Hello " + kv.Value)
+        | None ->
+            let! data = Async.AwaitTask(req.Content.ReadAsAsync<obj>())
+            try
+                return req.CreateResponse(HttpStatusCode.OK, "Hello " + data?name)
+            with e ->
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+    } |> Async.StartAsTask
+```
+
+次のように、NuGet を使用して `FSharp.Interop.Dynamic` および `Dynamitey` アセンブリを参照する `project.json` ファイルが必要です。
+
+```json
+{
+  "frameworks": {
+    "net46": {
+      "dependencies": {
+        "Dynamitey": "1.0.2",
+        "FSharp.Interop.Dynamic": "3.0.0"
+      }
+    }
+  }
+}
+```
+
+このファイルは NuGet を使用して依存関係を取得し、それをスクリプト内で参照します。
+
 ## HTTP トリガー関数の Node.js コードの例 
 
 次のコード例では、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
@@ -187,6 +230,31 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
+## GitHub WebHook 関数の F# コードの例
+
+次のコード例では、GitHub の問題に対するコメントをログに記録します。
+
+```fsharp
+open System.Net
+open System.Net.Http
+open FSharp.Interop.Dynamic
+open Newtonsoft.Json
+
+type Response = {
+    body: string
+}
+
+let Run(req: HttpRequestMessage, log: TraceWriter) =
+    async {
+        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
+        let data = content |> JsonConvert.DeserializeObject
+        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
+        return req.CreateResponse(
+            HttpStatusCode.OK,
+            { body = sprintf "New GitHub comment: %s" data?comment?body })
+    } |> Async.StartAsTask
+```
+
 ## GitHub WebHook 関数の Node.js コードの例 
 
 次のコード例では、GitHub の問題に対するコメントをログに記録します。
@@ -203,4 +271,4 @@ module.exports = function (context, data) {
 
 [AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # v2.0 の認証プロトコルに対する重要な更新
@@ -217,4 +217,4 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 
 Microsoft ID 部門
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->

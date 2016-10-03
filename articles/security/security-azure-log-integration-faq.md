@@ -99,7 +99,7 @@ Windows の Azure 診断 *(WAD)* 構成を取得、変更、および設定す�
 
 ### WAD 構成の変更
 
-次の例の構成では、EventID 4624 と EventID 4625 のみがセキュリティ イベント ログから収集されます。Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。XPath 式の使用の詳細については、[イベントの使用](https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85\)) に関するページをご覧ください。
+次の例の構成では、EventID 4624 と EventID 4625 のみがセキュリティ イベント ログから収集されます。Microsoft マルウェア対策のイベントは、システム イベント ログから収集されます。XPath 式の使用の詳細については、イベントの使用に関するページ (https://msdn.microsoft.com/library/windows/desktop/dd996910(v=vs.85) をご覧ください。
 
     <WindowsEventLog scheduledTransferPeriod="PT1M">
         <DataSource name="Security!*[System[(EventID=4624 or EventID=4625)]]" />
@@ -113,7 +113,9 @@ Windows の Azure 診断 *(WAD)* 構成を取得、変更、および設定す�
 
 変更後、ストレージ アカウントをチェックして、適切なイベントが収集されていることを確認します。
 
+Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
+
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-faq/event-xml.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

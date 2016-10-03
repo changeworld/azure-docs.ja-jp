@@ -2,6 +2,6 @@
 
 * [初めての Azure 関数の作成](../articles/azure-functions/functions-create-first-azure-function.md)
 * [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](../articles/azure-functions/functions-reference.md)
-* [C#](../articles/azure-functions/functions-reference-csharp.md) または [Node](../articles/azure-functions/functions-reference-node.md) 開発者向けリファレンス
+* [C#](../articles/azure-functions/functions-reference-csharp.md)、[F#](../articles/azure-functions/functions-reference-fsharp.md) または [Node](../articles/azure-functions/functions-reference-node.md) 開発者向けリファレンス
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0921_2016-->

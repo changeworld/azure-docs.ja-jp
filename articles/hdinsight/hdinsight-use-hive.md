@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="09/06/2016"
+	ms.date="09/19/2016"
 	ms.author="larryfr"/>
 
 # HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する
@@ -32,6 +32,8 @@ Hive では、大規模な非構造化データに構造を投影することが
 
 Hive は、フィールドが特定の文字で区切られるテキスト ファイルなどの構造化データや半構造化データを操作する方法を認識しています。また、Hive では、複雑なまたは不規則な構造化データのためのカスタム **シリアライザー/デシリアライザー (SerDe)** もサポートされます。詳細については、「[HDInsight でのカスタム JSON SerDe の使用方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx)」を参照してください。
 
+## ユーザー定義関数 (UDF)
+
 Hive は**ユーザー定義関数 (UDF)** で拡張することもできます。UDF では、HiveQL で簡単にモデル化されない機能やロジックを実装することができます。Hive での UDF の使用例については、以下を参照してください。
 
 * [Java ユーザー定義関数と Hive の使用](hdinsight-hadoop-hive-java-udf.md)
@@ -42,6 +44,7 @@ Hive は**ユーザー定義関数 (UDF)** で拡張することもできます�
 
 * [HDInsight にカスタムの Hive UDF を追加する方法](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
+* [日付/時刻の形式を Hive タイムスタンプに変換するカスタムの Hive UDF の例](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## Hive の内部テーブルと外部テーブル
 
@@ -214,4 +217,4 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0921_2016-->

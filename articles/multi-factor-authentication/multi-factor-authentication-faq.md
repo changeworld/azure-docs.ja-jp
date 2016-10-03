@@ -3,8 +3,8 @@
 	description="Azure Multi-Factor Authentication に関してよく寄せられる質問の一覧を提供します。Azure Multi-Factor Authentication は、本人確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
 	services="multi-factor-authentication"
 	documentationCenter=""
-	authors="billmath"
-	manager="stevenpo"
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/22/2016"
-	ms.author="billmath"/>
+	ms.author="kgremban"/>
 
 # Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)
 
@@ -38,7 +38,7 @@
   従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、[パスワード リセット](mailto:phonefactorsupport@microsoft.com)のリンクを使用してサポート ケースを開いてください。
 
 - [Azure Multi-Factor Authentication Server (PhoneFactor) のサポート](https://support.microsoft.com/oas/default.aspx?prid=14947)
-  
+
   このリンクを使用してマイクロソフトのサポート担当者にお問い合わせください。電子メール、オンラインによる送信、電話でのサポートなど、サポート オプションを特定するためにいくつかの質問にお答えいただくことになります。
 
 
@@ -185,4 +185,4 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 これを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](http://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0921_2016-->

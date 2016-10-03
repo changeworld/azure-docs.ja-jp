@@ -1,5 +1,5 @@
 > [AZURE.SELECTOR]
-- [Android](../articles/notification-hubs/notification-hubs-android-push-notification-google-gcm-get-started.md)
+- [Android](../articles/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)
 - [Baidu](../articles/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started.md)
 - [Chrome](../articles/notification-hubs/notification-hubs-chrome-push-notifications-get-started.md)
 - [iOS](../articles/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -9,4 +9,4 @@
 - [Xamarin.Android](../articles/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm.md)
 - [Xamarin.iOS](../articles/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0921_2016-->

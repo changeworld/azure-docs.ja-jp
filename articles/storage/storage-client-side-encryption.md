@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/03/2016"
-	ms.author="robinsh"/>
+	ms.author="lakasa;robinsh"/>
 
 
 # Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
@@ -141,7 +141,7 @@ Key Vault の使用方法について詳しくは、[暗号化コードのサン
 >- 暗号化されたデータのみを処理する必要のあるユーザーについては、既定の要求オプションで、**RequireEncryption** プロパティを有効にします。詳細については、以下をご覧ください。
 
 
-## クライアント API / インターフェイス
+## クライアント API/インターフェイス
 
 EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実装)、リゾルバーのみ (IKeyResolver の実装)、またはその両方を指定できます。IKey は基本的なキーの種類で、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。IKeyResolver は復号化プロセス中のキーの解決に使用します。これは、IKey で指定されたキー識別子を返す ResolveKey メソッドを定義します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。
 
@@ -251,4 +251,4 @@ BLOB、キュー、およびテーブルや、Key Vault 統合の詳細なエン
 - Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする
 - [Azure Key Vault のドキュメント](../key-vault/key-vault-whatis.md)を参照する
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="java"
 	ms.topic="article"
-	ms.date="06/27/2016"
+	ms.date="09/20/2016"
 	ms.author="robmcm"/>
 
 # Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法
@@ -173,7 +173,7 @@ Jenkins 用の Azure スレーブ プラグインを使用して、分散され�
 
 1. **[Verify Template]** をクリックして、指定したパラメーターが有効であることを確認します。
 
-1. **[保存]** をクリックします。
+1. [**Save**] をクリックします。
 
 
 ## Azure のスレーブ ノードで実行される Jenkins ジョブを作成する
@@ -220,7 +220,7 @@ Jenkins 用の Azure スレーブ プラグインを使用して、分散され�
 
 		ant
 
-1. **[保存]** をクリックします。
+1. [**Save**] をクリックします。
 
 1. Jenkins ダッシュボードで、作成したばかりのタスクの上にマウスを移動し、ドロップダウン矢印をクリックしてタスク オプションを表示します。
 
@@ -246,4 +246,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [checkpoint general template config]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-slave-template-general-configuration.png
 [OS Image list sample]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-os-family-list-sample.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0921_2016-->

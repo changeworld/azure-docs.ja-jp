@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
 # MVC Web API をセキュリティで保護する
@@ -121,7 +121,7 @@ public class TodoListController : ApiController
 {
 ```
 
-- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。  
+- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -163,8 +163,8 @@ Todo List Service の動作を確認できるようにするには、Todo List C
 - [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
 - [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## マイクロソフト製品のセキュリティ更新プログラムを取得する
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0921_2016-->
