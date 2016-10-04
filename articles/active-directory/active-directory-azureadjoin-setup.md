@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # 組織での Azure AD 参加の設定
@@ -32,10 +32,10 @@ Azure AD にユーザーを手動で作成して管理する方法について�
 3. **[ディレクトリ]** タブで、ディレクトリを選択します。
 4. **[構成]** タブをクリックします。
 5. **[デバイス]** セクションに移動します。
-6. **[デバイス]**タブで、次のように設定します。
+6. **[デバイス] **タブで、次のように設定します。
    * **[ユーザーごとのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
    * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](..\multi-factor-authentication\multi-factor-authentication-get-started-cloud.md)に関するページを参照してください。
-   * **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。   
+   * **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。
    * **[Azure AD 参加済みデバイスの追加の管理者]**: Azure AD Premium または Enterprise Mobility Suite (EMS) では、デバイスに対するローカル管理者権限が許可されるユーザーを選択できます。全体管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。
 
 <center>![デバイスの登録の設定](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
@@ -55,4 +55,4 @@ Azure AD 参加をユーザーが設定できるようにする 3 つのシナ�
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

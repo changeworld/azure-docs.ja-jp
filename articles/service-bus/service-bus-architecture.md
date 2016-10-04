@@ -31,7 +31,7 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 - **1 つのゲートウェイ ストア。** ゲートウェイ ストアは、このスケール ユニット内に定義されているすべてのエンティティのデータを保持します。ゲートウェイ ストアは、SQL Azure データベース上に実装されます。
 
-- **複数のメッセージング ストア。** メッセージング ストアは、このスケール ユニット内に定義されているすべてのキュー、トピック、およびサブスクリプションのメッセージを保持します。また、すべてのサブスクリプション データも含まれています。[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)が有効でない限り、1 つのキューまたはトピックが 1 つのメッセージング ストアにマップされます。サブスクリプションは、その親トピックと同じメッセージング ストアに格納されます。Service Bus [Premium メッセージング](service-bus-premium-messaging.md)を除き、メッセージング ストアは、SQL Azure データベース上に実装されます。
+- **複数のメッセージング ストア。** メッセージング ストアは、このスケール ユニット内に定義されているすべてのキュー、トピック、およびサブスクリプションのメッセージを保持します。また、すべてのサブスクリプション データも含まれています。[パーティション分割されたメッセージング エンティティ](../service-bus-messaging/service-bus-partitioning.md)が有効でない限り、1 つのキューまたはトピックが 1 つのメッセージング ストアにマップされます。サブスクリプションは、その親トピックと同じメッセージング ストアに格納されます。Service Bus [Premium メッセージング](../service-bus-messaging/service-bus-premium-messaging.md)を除き、メッセージング ストアは、SQL Azure データベース上に実装されます。
 
 ## コンテナー
 
@@ -55,8 +55,8 @@ Service Bus の名前空間は、スケール ユニットにマップされま�
 
 ここまで、Service Bus のアーキテクチャの概要を説明しました。使用を開始するには、次のリンクを参照してください。
 
-- [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
+- [Service Bus メッセージングの概要](../service-bus-messaging/service-bus-messaging-overview.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
-- [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
+- [Service Bus キューを使用するキューに格納されたメッセージング ソリューション](../service-bus-messaging/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

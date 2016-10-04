@@ -36,8 +36,6 @@ Resource Manager デプロイメント モデルでは、仮想ネットワー�
 
 [AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-###  <a name="skugw"></a>SKU とゲートウェイの種類別の予測される合計スループット
-
 次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
@@ -95,7 +93,7 @@ Azure には現在、クラシックと Resource Manager という 2 つのデ�
 
 #### VNET ピアリング
 
-仮想ネットワークが特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)は、現在、プレビュー段階です。
+仮想ネットワークが特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。詳細については、「[VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 
 ### VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
@@ -150,4 +148,4 @@ VPN ゲートウェイの構成を計画します。[VPN ゲートウェイの�
 
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

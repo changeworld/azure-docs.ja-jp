@@ -3,8 +3,8 @@
    description="コンテナーを作成し、Recovery Services エージェントをインストールして、ファイルとフォルダーを Azure にバックアップすることで、Windows Server のデータをバックアップする方法について説明します。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="markgalioto"
+   manager="cfreeman"
    editor=""
    keywords="バックアップする方法, バックアップ方法"/>
 
@@ -14,8 +14,8 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="hero-article"
-   ms.date="06/27/2016"
-   ms.author="jimpark;"/>
+   ms.date="09/27/2016"
+   ms.author="markgal;"/>
 
 # 最初に: Resource Manager デプロイメント モデルを使用して Azure Backup でファイルやフォルダーをバックアップする
 
@@ -25,7 +25,7 @@ Azure Backup の詳細については、こちらの[概要記事](backup-introd
 
 ファイルとフォルダーを Azure にバックアップするには、以下のアクティビティが必要です。
 
-![手順 1.](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure サブスクリプションを入手する (まだない場合)。<br> ![手順 2.](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services コンテナーを作成する。<br> ![手順 3.](./media/backup-try-azure-backup-in-10-mins/step-3.png) 必要なファイルをダウンロードする。<br> ![手順 4.](./media/backup-try-azure-backup-in-10-mins/step-4.png) Recovery Services エージェントをインストールして登録する。<br> ![手順 5](./media/backup-try-azure-backup-in-10-mins/step-5.png) ファイルとフォルダーをバックアップする。
+![手順 1](./media/backup-try-azure-backup-in-10-mins/step-1.png) Azure サブスクリプションを入手する (まだない場合)。<br> ![手順 2.](./media/backup-try-azure-backup-in-10-mins/step-2.png) Recovery Services コンテナーを作成する。<br> ![手順 3.](./media/backup-try-azure-backup-in-10-mins/step-3.png) 必要なファイルをダウンロードする。<br> ![手順 4.](./media/backup-try-azure-backup-in-10-mins/step-4.png) Recovery Services エージェントをインストールして登録する。<br> ![手順 5.](./media/backup-try-azure-backup-in-10-mins/step-5.png) ファイルとフォルダーをバックアップする。
 
 ![How to back up your Windows machine with Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
     ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
+    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
 
     ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/rs-vault-attributes.png)
 
@@ -72,7 +72,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 2. コンテナーのダッシュボードと一緒に自動的に開く **[設定]** ブレードで、**[Backup Infrastructure]** (バックアップ インフラストラクチャ) をクリックします。
 
-3. [Backup Infrastructure] \(バックアップ インフラストラクチャ) ブレードで **[Backup Configuration]** (バックアップ構成) をクリックして、**[Storage replication type]** (ストレージ レプリケーションの種類) を表示します。
+3. [Backup Infrastructure] ブレードで **[Backup Configuration]** をクリックして、**[Storage replication type]** を表示します。
 
     ![Create Recovery Services vault step 5](./media/backup-try-azure-backup-in-10-mins/backup-infrastructure.png)
 
@@ -94,17 +94,17 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/getting-started-backup.png)
 
-3. [Backup] ブレードで、**[Backup goal]** (バックアップの目標) をクリックします。
+3. [Backup] ブレードで、**[Backup goal]** をクリックします。
 
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/backup-goal.png)
 
-4. [Where is your workload running] \(ワークロードの実行場所) メニューの **[オンプレミス]** を選択します。
+4. [Where is your workload running] メニューの **[オンプレミス]** を選択します。
 
-5. [What do you want to backup] \(バックアップ対象) メニューの **[Files and folders]** (ファイルとフォルダー) を選択し、**[OK]** をクリックします。
+5. [What do you want to backup] メニューの **[Files and folders]** を選択し、**[OK]** をクリックします。
 
 ### Recovery Services エージェントのダウンロード
 
-1. **[Prepare infrastructure]** (インフラストラクチャの準備) ブレードで、**[Download Agent for Windows Server or Windows Client]** (Windows Server または Windows クライアント用エージェントのダウンロード) をクリックします。
+1. **[Prepare infrastructure]** ブレードで、**[Download Agent for Windows Server or Windows Client]** をクリックします。
 
     ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-short.png)
 
@@ -112,7 +112,7 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 ### コンテナー資格情報のダウンロード
 
-1. [Prepare infrastructure] \(インフラストラクチャの準備) ブレードで、**[ダウンロード]、[保存]** の順にクリックします。
+1. [Prepare infrastructure] ブレードで、**[ダウンロード]、[保存]** の順にクリックします。
 
     ![prepare infrastructure](./media/backup-try-azure-backup-in-10-mins/prepare-infrastructure-download.png)
 
@@ -203,4 +203,4 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 - ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 - バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -87,7 +87,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 --- | ---
 **VMM**| 1 つまたは複数の VMM サーバーが System Center 2012 R2 で実行されていること。各 VMM サーバーに 1 つ以上のクラウドが構成されている必要があります。クラウドには次の要素が含まれている必要があります。<br/><br/> 1 つ以上の VMM ホスト グループ<br/><br/> 各ホスト グループに 1 つ以上の Hyper-V ホスト サーバーまたはクラスター<br/><br/>VMM クラウドのセットアップの詳細については、[こちら](http://www.server-log.com/blog/2011/8/26/vmm-2012-and-the-clouds.html)を参照してください。
 **Hyper-V** | Hyper-V ホスト サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 R2 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに 1 つ以上の VM が含まれている必要があります。<br/><br/> レプリケートする VM が含まれた Hyper-V ホスト サーバーまたはクラスターは、VMM クラウドで管理されている必要があります。<br/><br/>Hyper-V サーバーは、直接またはプロキシを経由してインターネットに接続されている必要があります。<br/><br/>記事 [2961977](https://support.microsoft.com/kb/2961977) に記載されている修正プログラムが Hyper-V サーバーにインストールされている必要があります。<br/><br/>Hyper-V ホスト サーバーは、Azure へのデータ レプリケーションのためにインターネットにアクセスできる必要があります。
-**プロバイダーとエージェント** | Azure Site Recovery をデプロイする際に、VMM サーバーに Azure Site Recovery プロバイダーをインストールし、Hyper-V ホストに Recovery Services エージェントをインストールします。プロバイダーとエージェントは、直接またはプロキシを使用して、インターネット経由で Azure に接続する必要があります。HTTPS ベースのプロキシはサポートされていないため、注意してください。VMM サーバーと Hyper-V ホストのプロキシ サーバーに対して、次の URL へのアクセスを許可する必要があります。<br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blob.core.windows.net <br/><br/> *.store.core.windows.net<br/><br/>VMM サーバーに IP アドレスベースのファイアウォール規則がある場合は、規則で Azure との通信を許可していることを確認します。[Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。<br/><br/>また、VMM サーバーのプロキシ サーバーに、https://www.msftncsi.com/ncsi.txt へのアクセスが必要です。
+**プロバイダーとエージェント** | Azure Site Recovery をデプロイする際に、VMM サーバーに Azure Site Recovery プロバイダーをインストールし、Hyper-V ホストに Recovery Services エージェントをインストールします。プロバイダーとエージェントは、直接またはプロキシを使用して、インターネット経由で Azure に接続する必要があります。HTTPS ベースのプロキシはサポートされていないため、注意してください。VMM サーバーと Hyper-V ホストのプロキシ サーバーに対して、次の URL へのアクセスを許可する必要があります。<br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blob.core.windows.net <br/><br/> *.store.core.windows.net<br/><br/>VMM サーバーに IP アドレスベースのファイアウォール規則がある場合は、規則で Azure との通信を許可していることを確認します。[Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。<br/><br/>また、VMM サーバーのプロキシ サーバーに、https://www.msftncsi.com/ncsi.txt へのアクセスが必要です。
 
 
 ## 保護対象のマシンの前提条件
@@ -571,4 +571,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

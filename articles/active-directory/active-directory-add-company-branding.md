@@ -3,7 +3,7 @@
 	description="Azure サインイン ページとアクセス パネル ページに会社のブランドを追加する方法について説明します。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="curtand"
 	manager="femila"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/13/2016"
-	ms.author="MarkVi"/>
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
 # サインイン ページとアクセス パネル ページに対する会社のブランドの追加
 
@@ -29,8 +29,8 @@
 
 > [AZURE.NOTE]
 >
-- 会社のブランド化は、Azure Active Directory の Premium または Basic エディションにアップグレードする場合にのみ使用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
-- Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
+- 会社のブランド化は、Azure Active Directory の Premium または Basic エディションにアップグレードした場合か、Office 365 ユーザーである場合にのみ使用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+- 中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 
 
@@ -40,7 +40,7 @@
 
 サインイン ページに変更を適用した場合、変更が反映されるまでに最大 1 時間かかる場合があります。
 
-ブランドに合わせてカスタマイズしたサインイン ページが表示されるのは、テナント固有の URL (https://outlook.com/**contoso**.com、https://mail.**contoso**.com など) でサービスにアクセスしたときだけです。
+ブランド化されたサインイン ページが表示されるのは、テナント固有の URL (https://outlook.com/**contoso**.com や https://mail.**contoso**.com など) でサービスにアクセスしたときだけです。
 
 テナント固有ではない URL (例: https://mail.office365.com) でサービスにアクセスした場合、ブランド表示のないサインイン ページが表示されます。この場合ブランドは、自分のユーザー ID を入力した後、またはユーザー タイルを選択した後に表示されます。
 
@@ -52,11 +52,11 @@
 
 このページに会社のブランド、色、およびその他のカスタマイズ可能な要素を表示する場合は、次の画像を参照して、2 つのエクスペリエンスの違いを理解してください。
 
-次のスクリーンショットは、デスクトップ コンピューターに表示される、カスタマイズ**前**の Office 365 サインイン ページの例を示しています。
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**前**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page before customization][1]
 
-次のスクリーンショットは、デスクトップ コンピューターに表示される、カスタマイズ**後**の Office 365 サインイン ページの例を示しています。
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**後**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page after customization][2]
 
@@ -134,7 +134,7 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 3. 上部のツール バーで **[構成]** をクリックします。
 4. **[ブランドのカスタマイズ]** をクリックします。
 4. カスタマイズする要素に変更を加えます。すべてのフィールドは省略可能です。
-5. **[保存]** をクリックします。
+5. [**Save**] をクリックします。
 
 サインイン ページのブランドに加えた変更が表示されるまでに、最大で 1 時間かかる場合があります。
 
@@ -147,7 +147,7 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 2. **[特定の言語のブランド設定を追加する]** をクリックします。
 3. ロゴをカスタマイズする言語を選択し、**[次へ]** をクリックします。
 3. 言語固有の上書きを構成する要素のみを編集します。すべてのフィールドは省略可能です。フィールドが空白の場合は、カスタムの既定値 (または、カスタムの既定値が構成されていない場合は、Microsoft の既定値) が代わりに表示されます。
-4. **[保存]** をクリックします。
+4. [**Save**] をクリックします。
 
 **ディレクトリから会社のブランドを削除するには、次の手順を実行します。**
 
@@ -193,7 +193,7 @@ Azure クラシック ポータルでは、ディレクトリごとに、カス�
 
 Azure AD でカスタマイズ可能な要素には、複数のユース ケースに対応するものがあります。会社のロゴはディレクトリごとに 1 回構成でき、サインイン ページとアクセス パネル ページの両方で使用されます。カスタマイズ可能な要素の中には、サインイン ページにしか適用できないものもあります。次の表では、さまざまなカスタマイズ可能な要素の詳細を説明します。
 
-名前 | 説明 | 制約 | 推奨事項
+名前 | Description | 制約 | 推奨事項
 	------------- | ------------- | ------------- | -------------
 バナー ロゴ | バナー ロゴはサインイン ページとアクセス パネルに表示されます。 | <p>JPG または PNG</p><p>60 x 280 ピクセル</p><p>10 KB</p> | <p>組織の完全なロゴ (ピクトグラムとロゴタイプを含む) を使用する</p><p>高さは 30 ピクセル以内にして、モバイル デバイスでスクロール バーが表示されないようにする</p><p>常に 4 KB 未満にする</p><p>透過 PNG を使用する (サインイン ページの背景が常に白であるとは仮定しないこと)</p>
 タイル ロゴ | (現在サインイン ページでは未使用) 今後、このテキストを使用して、エクスペリエンスのさまざまな場面で "職場または学校のアカウント" の汎用ピクトグラムを置換する場合があります。 | <p>JPG または PNG</p><p>120 x 120 ピクセル</p><p>10 KB</p> | <p>このイメージのサイズは 50% に変更される場合があるため、常にシンプルにする (小さなテキストは含めない)
@@ -219,4 +219,4 @@ Azure AD でカスタマイズ可能な要素には、複数のユース ケー�
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

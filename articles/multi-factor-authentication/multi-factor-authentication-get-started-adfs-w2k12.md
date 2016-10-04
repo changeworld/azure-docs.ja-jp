@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Multi-Factor Authentication Server と Windows Server 2012 R2 AD FS を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護 | Microsoft Azure"
+	pageTitle="MFA Server と Windows Server 2012 R2 AD FS | Microsoft Azure"
 	description="この記事では、Azure Multi-Factor Authentication と Windows Server 2012 R2 の AD FS の使用を開始する方法について説明します。"
 	services="multi-factor-authentication"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/04/2016"
+	ms.date="09/22/2016"
 	ms.author="kgremban"/>
 
 
@@ -73,16 +73,57 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
 3. MultiFactorAuthenticationAdfsAdapterSetup64.msi インストール ファイルを実行します。
 4. Multi-Factor Authentication AD FS アダプター インストーラーで **[次へ]** をクリックしてインストールを実行します。
 5. インストールが完了したら、**[閉じる]** をクリックします。
-6. 次の操作を行って、MultiFactorAuthenticationAdfsAdapter.config ファイルを編集します。
 
-|MultiFactorAuthenticationAdfsAdapter.config の手順| サブ手順|
-|:------------- | :------------- |
-|**UseWebServiceSdk** ノードを **true** に設定します。||
-|**WebServiceSdkUrl** の値を、Multi-Factor Authentication Web サービス SDK の URL に設定します。</br></br>例: **https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx**</br></br>この certificatename は実際の証明書の名前です。 ||
-|Web サービス SDK を構成します。<br><br>"*オプション 1*": ユーザー名とパスワードの使用|<ol type="a"><li>**WebServiceSdkUsername** の値を、PhoneFactor Admins セキュリティ グループのメンバーであるアカウントに設定します。&lt;domain&gt;&#92;&lt;user name&gt; の形式を使用します。<li>**WebServiceSdkPassword** の値を適切なアカウント パスワードに設定します。</li></ol>
-|Web サービス SDK を構成します ("*続き*")。<br><br>"*オプション 2*": クライアント証明書の使用|<ol type="a"><li>Web サービス SDK を実行しているサーバーの証明機関からクライアント証明書を取得します。[クライアント証明書を取得する](https://technet.microsoft.com/library/cc770328.aspx)方法を確認してください。</li><li>クライアント証明書を、Web サービス SDK を実行しているサーバー上のローカル コンピューターの個人用証明書ストアにインポートします。注: 証明機関の公開証明書が、信頼されたルート証明書の証明書ストアにあることを確認します。</li><li>クライアント証明書の公開キーと秘密キーを .pfx ファイルにエクスポートします。</li><li>Base64 形式の公開キーを .cer ファイルにエクスポートします。</li><li>サーバー マネージャーで、Web Server (IIS)\\Web Server\\Security\\IIS Client 証明書マッピング認証機能がインストールされていることを確認します。インストールされていない場合は、**[役割と機能の追加]** を選択してこの機能を追加します。</li><li>IIS マネージャーで、Web サービス SDK 仮想ディレクトリが含まれている Web サイトの **[構成エディター]** をダブルクリックします。注: 仮想ディレクトリ レベルではなく、Web サイト レベルでこの操作を行うことが非常に重要です。</li><li>**system.webServer/security/authentication/iisClientCertificateMappingAuthentication** セクションに移動します。</li><li>**[有効]** を **true** に設定します。</li><li>**[OneToOneCertificateMappingsEnabled]** を **true** に設定します。</li><li>**[oneToOneMappings]** の横にある **[...]** ボタンをクリックし、**[追加]** リンクをクリックします。</li><li>前にエクスポートした Base64.cer ファイルを開きます。*-----BEGIN CERTIFICATE-----*、*-----END CERTIFICATE-----*、およびすべての改行を削除します。結果の文字列をコピーします。</li><li>**証明書**を、前の手順でコピーした文字列に設定します。</li><li>**[有効]** を **true** に設定します。</li><li>**userName** を、PhoneFactor Admins セキュリティ グループのメンバーであるアカウントに設定します。&lt;domain&gt;&#92;&lt;user name&gt; 形式を使用します。</li><li>パスワードを適切なアカウントのパスワードに設定します。その後、構成エディターを閉じます。</li><li>**[適用]** リンクをクリックします。</li><li>Web サービス SDK の仮想ディレクトリで、**[認証]** をダブルクリックします。</li><li>**[ASP.NET 偽装]** と **[基本認証]** が **[有効]** になっており、他のアイテムがすべて **[無効]** になっていることを確認します。</li><li>Web サービス SDK の仮想ディレクトリで、**[SSL 設定]** をダブルクリックします。</li><li>**[クライアント証明書]** を **[受け入れる]** に設定し、**[適用]** をクリックします。</li><li>前にエクスポートした .pfx ファイルを、AD FS アダプターを実行しているサーバーにコピーします。</li><li>.pfx ファイルを、ローカル コンピューターの個人証明書ストアにインポートします。</li><li>**[秘密キーの管理]** を右クリックして選択し、AD FS サービスへのサインインに使用したアカウントに対して読み取りアクセス権を付与します。</li><li>クライアント証明書を開き、**[詳細]** タブから拇印をコピーします。</li><li>MultiFactorAuthenticationAdfsAdapter.config ファイルで、**WebServiceSdkCertificateThumbprint** を前の手順でコピーした文字列に設定します。</li></ol>
-| Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集します。具体的には、*-ConfigurationFilePath &lt;path&gt;* を `Register-AdfsAuthenticationProvider` コマンドの末尾に追加します。このときの *&lt;path&gt;* は、MultiFactorAuthenticationAdfsAdapter.config ファイルへの完全なパスです。||
+## MultiFactorAuthenticationAdfsAdapter.config ファイルを編集する
 
-アダプターを登録するために、\\Program Files\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを PowerShell で実行します。アダプターが WindowsAzureMultiFactorAuthentication として登録されます。登録を有効にするには、AD FS サービスを再起動する必要があります。
+次の手順に従って、MultiFactorAuthenticationAdfsAdapter.config ファイルを編集します。
 
-<!---HONumber=AcomDC_0921_2016-->
+1. **UseWebServiceSdk** ノードを **true** に設定します。
+2. **WebServiceSdkUrl** の値を、Multi-Factor Authentication Web サービス SDK の URL に設定します。たとえば、**https://contoso.com/&lt;certificatename&gt;/MultiFactorAuthWebServicesSdk/PfWsSdk.asmx** のようにします (certificatename は証明書の名前です)。
+3. Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを編集します。具体的には、*-ConfigurationFilePath &lt;path&gt;* を `Register-AdfsAuthenticationProvider` コマンドの末尾に追加します。このときの *&lt;path&gt;* は、MultiFactorAuthenticationAdfsAdapter.config ファイルへの完全なパスです。
+
+### Web サービス SDK をユーザー名とパスワードを使って構成する
+
+Web サービス SDK の構成には、2 つの選択肢があります。1 つ目はユーザー名とパスワードを使用する方法で、2 つ目はクライアント証明書を使用する方法です。最初の方法の場合は次の手順に従い、2 つ目の方法の場合はスキップしてください。
+
+1. **WebServiceSdkUsername** の値を、PhoneFactor Admins セキュリティ グループのメンバーであるアカウントに設定します。&lt;ドメイン&gt;&#92;&lt;ユーザー名&gt; 形式を使用します。
+2. **WebServiceSdkPassword** の値を、該当するアカウント パスワードに設定します。
+
+### Web サービス SDK をクライアント証明書を使って構成する
+
+ユーザー名とパスワードを使用しない場合は、次の手順に従って、クライアント証明書で Web サービス SDK を構成します。
+
+1. Web サービス SDK を実行しているサーバーの証明機関からクライアント証明書を取得します。方法については、[クライアント証明書の取得](https://technet.microsoft.com/library/cc770328.aspx)に関するページを参照してください。
+2. クライアント証明書を、Web サービス SDK を実行しているサーバー上のローカル コンピューターの個人用証明書ストアにインポートします。注: 証明機関の公開証明書が、信頼されたルート証明書の証明書ストアにあることを確認します。
+3. クライアント証明書の公開キーと秘密キーを .pfx ファイルにエクスポートします。
+4. 公開キーを Base64 形式で .cer ファイルにエクスポートします。
+5. サーバー マネージャーで、Web Server (IIS)\\Web Server\\Security\\IIS Client Certificate Mapping Authentication 機能がインストールされていることを確認します。インストールされていない場合は、**[役割と機能の追加]** を選択して、この機能を追加します。
+6. IIS マネージャーで、Web サービス SDK 仮想ディレクトリが含まれている Web サイトの **[構成エディター]** をダブルクリックします。注: これを仮想ディレクトリ レベルでなく、Web サイト レベルで行うことが非常に重要です。
+7. **system.webServer/security/authentication/iisClientCertificateMappingAuthentication** セクションに移動します。
+8. **[enabled]** を **true** に設定します。
+9. **[oneToOneCertificateMappingsEnabled]** を **true** に設定します。
+10. **[oneToOneMappings]** の横にある **[...]** ボタンをクリックし、**[追加]** リンクをクリックします。
+11. 前にエクスポートした Base64 .cer ファイルを開きます。*-----BEGIN CERTIFICATE-----*、*-----END CERTIFICATE-----*、およびすべての改行を削除します。結果の文字列をコピーします。
+12. **[certificate]** を、前の手順でコピーした文字列に設定します。
+13. **[enabled]** を **true** に設定します。
+14. **[userName]** を、PhoneFactor Admins セキュリティ グループのメンバーであるアカウントに設定します。&lt;ドメイン&gt;&#92;&lt;ユーザー名&gt; 形式を使用します。
+15. パスワードとして適切なアカウント パスワードを設定して、構成エディターを閉じます。
+16. **[適用]** リンクをクリックします。
+17. Web サービス SDK 仮想ディレクトリで、**[認証]** をダブルクリックします。
+18. **[ASP.NET 偽装]** と **[基本認証]** が **[有効]** に設定され、他のすべての項目が **[無効]** に設定されていることを確認します。
+19. Web サービス SDK 仮想ディレクトリで、**[SSL 設定]** をダブルクリックします。
+20. **[クライアント証明書]** を **[受理]** に設定し、**[適用]** をクリックします。
+21. 前にエクスポートした .pfx ファイルを、AD FS アダプターを実行しているサーバーにコピーします。
+22. .pfx ファイルをローカル コンピューターの個人用証明書ストアにインポートします。
+23. 右クリックして **[秘密キーの管理]** を選択し、AD FS サービスへのサインインに使用するアカウントに読み取りアクセス権を付与します。
+24. クライアント証明書を開いて、**[詳細]** タブの拇印をコピーします。
+25. MultiFactorAuthenticationAdfsAdapter.config ファイルの **[WebServiceSdkCertificateThumbprint]** に、前の手順でコピーした文字列を設定します。
+
+
+最後に、アダプターを登録するために、\\Program Files\\Multi-Factor Authentication Server\\Register-MultiFactorAuthenticationAdfsAdapter.ps1 スクリプトを PowerShell で実行します。アダプターが WindowsAzureMultiFactorAuthentication として登録されます。登録を有効にするには、AD FS サービスを再起動する必要があります。
+
+## 関連トピック
+
+トラブルシューティングのヘルプについては、「[Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)」を参照してください。
+
+<!---HONumber=AcomDC_0928_2016-->

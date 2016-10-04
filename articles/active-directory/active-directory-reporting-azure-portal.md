@@ -13,20 +13,20 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/12/2016"
+   ms.date="09/25/2016"
    ms.author="markvi"/>
 
 # Azure Active Directory レポート - プレビュー
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
-Azure Active Directory プレビューのレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。[プレビューにはどのような機能があるのでしょうか](active-directory-preview-explainer.md)。
+Azure Active Directory プレビューのレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。[プレビューにはどのような機能があるのでしょうか。](active-directory-preview-explainer.md)
 
 レポートには、次の 2 つの主要な領域があります。
 
 - **サインイン アクティビティ** – マネージ アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
 
-- **システム アクティビティ** - ユーザーとグループの管理や、マネージ アプリケーションとディレクトリのアクティビティの監査情報
+- **監査ログ** - ユーザーとグループの管理や、マネージ アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
 
 必要なデータのスコープに応じて、[Azure Portal](https://portal.azure.com) のサービス一覧で **[ユーザーとグループ]** または **[エンタープライズ アプリケーション]** をクリックし、これらのレポートにアクセスすることができます。
 
@@ -118,7 +118,7 @@ Azure Active Directory プレビューのレポートでは、環境の動作状
 
 ![レポート](./media/active-directory-reporting-azure-portal/84.png "レポート")
 
-## システム アクティビティ
+## 監査ログ
 
 Azure Active Directory の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。
 
@@ -216,4 +216,4 @@ Azure Portal には、監査関連のアクティビティとして、次の 3 �
 
 「[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

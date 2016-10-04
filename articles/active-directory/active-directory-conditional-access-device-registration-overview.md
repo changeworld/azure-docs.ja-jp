@@ -14,16 +14,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="09/27/2016"
+	ms.author="Markvi"/>
 
 # Azure Active Directory Device Registration の基本
 
 Azure Active Directory Device Registration は、デバイスに基づいて条件付きでアクセスを許可するというシナリオの基礎となる機能です。デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
-Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
-
-Azure Active Directory Device Registration は、Azure Active Directory で使用できます。このサービスには、iOS デバイス、Android デバイス、および Windows デバイスのサポートが含まれています。Azure Active Directory Device Registration を使用する個々のシナリオでは、より具体的な要件とプラットフォームのサポートが存在する場合があります。
+Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。Microsoft Intune へのデバイスの登録の詳細については、「[管理するデバイスを Intune に登録する](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)」を参照してください。
 
 ## Azure Active Directory Device Registration で実現されるシナリオ
 
@@ -31,11 +29,14 @@ Azure Active Directory Device Registration は、iOS、Android、Windows の各�
 
 - **オンプレミスでホストされるアプリケーションへの条件付きアクセス**: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。オンプレミスの条件付きアクセスを設定する方法の詳細については、「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](active-directory-conditional-access-on-premises-setup.md)」を参照してください。
 
-- **Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス**: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「Office 365 サービス用条件付きアクセスのデバイス ポリシー」を参照してください。
+- **Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス**: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠デバイスからサービスへのアクセスを許可できます。詳細については、「[Office 365 サービス用条件付きアクセスのデバイス ポリシー](active-directory-conditional-access-device-policies.md)」を参照してください。
 
 ##Azure Active Directory Device Registration の設定
 
 Azure AD Device Registration は、周知された DNS レコードをモバイル デバイスから探してそのサービスを検出できるように、Azure ポータルで有効にする必要があります。Windows 10、Windows 8.1、Windows 7、Android、iOS のデバイスでサービスが検出されて使用されるように、会社の DNS を構成する必要があります。Azure Active Directory の管理者ポータルを使用して、登録されているデバイスを表示し、有効または無効にすることができます。
+
+>[AZURE.NOTE]
+ デバイスの自動登録をセットアップする最新手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
 
 ### Azure Active Directory Device Registration サービスを有効にする
 
@@ -54,7 +55,7 @@ Office 365 用に Microsoft Intune またはモバイル デバイス管理を�
 
 - このサービスに対して 2 要素認証を必要とするように設定する場合は、事前に Azure Active Directory で 2 要素認証プロバイダーを構成し、Multi-Factor Authentication に対してユーザー アカウントを構成する必要があります。「[クラウドでの Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
 
-- Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。「[Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)」を参照してください。
+- Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。[Multi-Factor Authentication と Active Directory フェデレーション サービスの概要](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)に関するページを参照してください。
 
 ## Azure Active Directory Device Registration の検出を構成する
 Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー アカウント名と既知のデバイス登録サーバー名とを組み合わせることによって Device Registration サービスが検出されます。
@@ -87,4 +88,4 @@ Azure AD Device Registration を使用して、ドメイン参加済みの Windo
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

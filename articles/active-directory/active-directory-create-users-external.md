@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="08/02/2016"
+	ms.date="09/22/2016"
 	ms.author="curtand"/>
 
 # Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](active-directory-create-users-external-azure-portal.md)
+- [Azure ポータル](active-directory-users-create-external-azure-portal.md)
 - [Azure クラシック ポータル](active-directory-create-users-external.md)
 
 この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
@@ -70,7 +70,7 @@
 - **Azure クラシック ポータル**: 複数のディレクトリの管理者である外部ユーザーは、その各ディレクトリを管理できます。
 - **SharePoint Online**: 外部共有が有効になっている場合、外部ユーザーは SharePoint Online で承認されたリソースにアクセスできます。
 - **Dynamics CRM**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics CRM の承認されたリソースにアクセスできます。
-- **Dynamics AX**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics AX の承認されたリソースにアクセスできます。[Azure AD 外部ユーザー](#known-limitations-of-azure-ad-external-users)と[ゲスト ユーザー](#guest-user-management-and-limitations)の制限事項は、Dynamics AX の外部ユーザーにも適用されます。
+- **Dynamics AX**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics AX の承認されたリソースにアクセスできます。[Azure AD 外部ユーザー](#known-limitations-of-azure-ad-external-users)の制限事項は、Dynamics AX の外部ユーザーにも適用されます。
 
 ### Azure AD 外部ユーザーの既知の制限事項
 
@@ -88,4 +88,4 @@
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

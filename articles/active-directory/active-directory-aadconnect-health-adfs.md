@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="karavar"
-	manager="stevenpo"
+	manager="femila"
 	editor="karavar"/>
 
 <tags
@@ -92,7 +92,7 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 
 レポートには、次の情報が記載されます。
 
-| レポート アイテム | 説明
+| レポート アイテム | Description
 | ------ | -------- |
 |ユーザー ID| 使用されたユーザー ID を示しています。この値はユーザーが入力したもので、間違ったユーザー ID が使用されたことを示している場合もあります。|
 |失敗した試行の回数|そのユーザー ID で試行が失敗した回数の合計を示しています。この表は、失敗した試行の回数が多いものから降順に並べ替えられています。|
@@ -114,4 +114,4 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!-----HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

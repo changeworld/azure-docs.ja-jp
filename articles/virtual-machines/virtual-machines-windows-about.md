@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/15/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 #Azure の Windows 仮想マシンについて
@@ -39,4 +39,4 @@ Azure Virtual Machine は、仮想マシンを実行する物理的なハード�
 
 これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、「[リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)」を参照してください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0928_2016-->

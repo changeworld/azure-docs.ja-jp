@@ -20,16 +20,16 @@
 
 [AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-このチュートリアルでは、簡単な [Node.js][NODEJS] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] の [Web アプリ]にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
+このチュートリアルでは、簡単な [Node.js] アプリケーションを作成し、cmd.exe や bash などのコマンド ライン環境を使用して [Azure App Service] にデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
 
 <a name="prereq"></a>
 ## 前提条件
 
-- **Node.js** ([インストールするにはここをクリック][NODEJS])
-- **Bower** ([インストールするにはここをクリック][BOWER])
-- **Yeoman** ([インストールするにはここをクリック][YEOMAN])
-- **Git** ([インストールするにはここをクリック][GIT])
-- **Azure CLI** ([インストールするにはここをクリック][Azure CLI])
+- [Node.JS]
+- [Bower]
+- [Yeoman]
+- [Git]
+- [Azure CLI]
 - Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする]か、または [Visual Studio サブスクライバー特典を有効にする]ことができます。
 
 ## 単純な Node.js Web アプリの作成とデプロイ
@@ -52,14 +52,14 @@
 
     ブラウザーで <http://localhost:3000> に移動し、Express のホーム ページが表示されることを確認します。アプリが適切に実行されることを確認したら、`Ctrl-C` を使用してアプリを停止します。
     
-1. ASM モードに切り替え、Azure にログインします (そのためには、[Azure CLI](#prereq) が必要です)。
+1. ASM モードに切り替え、Azure にログインします ([Azure CLI](#prereq) が必要です)。
 
         azure config mode asm
         azure login
 
     画面の指示に従い、Azure サブスクリプションのある Microsoft アカウントを使用してブラウザーでログイン操作を進めます。
 
-2. まだアプリのルート ディレクトリにいることを確認し、次のコマンドを使用して、一意のアプリ名で Azure に App Service アプリ リソースを作成します。例: http://{appname}.azurewebsites.net
+2. まだアプリのルート ディレクトリにいることを確認し、次のコマンドを使用して、一意のアプリ名で Azure に App Service アプリ リソースを作成します。次に例を示します。http://{appname}.azurewebsites.net
 
         azure site create --git {appname}
 
@@ -77,6 +77,12 @@
 
     これにより Node.js アプリは、iisnode がリッスンする既定のポートで Web 要求に応答できるようになります。
     
+4. ./package.json を開き、[必要な Node.js バージョンを指定する](#version)ために `engines` プロパティを追加します。
+
+        "engines": {
+            "node": "6.6.0"
+        }, 
+
 4. 変更内容を保存し、git を使用してアプリを Azure にデプロイします。
 
         git add .
@@ -118,12 +124,13 @@ Azure App Service では、Node.js アプリを実行するために [iisnode] �
 - [Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築]
 - [Azure App Service Web Apps で io.js を使用する方法]
 
+<a name="version"></a>
 ## 特定の Node.js エンジンの使用
 
-App Service には、通常のワークフローでいつものように package.json で、特定の Node.js エンジンの使用を指示できます。次に例を示します。
+一般的なワークフローでは、通常 package.json で行うように、特定の Node.js エンジンの使用を App Service に指示します。次に例を示します。
 
     "engines": {
-        "node": "5.5.0"
+        "node": "6.6.0"
     }, 
 
 Kudu デプロイ エンジンは、使用する Node.js エンジンを次の順序で決定します。
@@ -132,10 +139,12 @@ Kudu デプロイ エンジンは、使用する Node.js エンジンを次の�
 - 次に package.json を参照し、`engines` オブジェクトに `"node": "..."` が指定されているかどうかを確認します。指定されている場合はそれを使用します。
 - 特に指定されていない場合、既定の Node.js バージョンを選択します。
 
+>[AZURE.NOTE] 必要な Node.js エンジンを明示的に定義することをお勧めします。既定の Node.js バージョンは変更できます。既定の Node.js バージョンがアプリに適していないことが理由で Azure Web アプリでエラーが発生する場合があります。
+
 <a name="iisnodelog"></a>
 ## iisnode から stdout ログと stderr ログを取得する
 
-iisnode ログを確認するには、次の手順を実行してください。
+iisnode ログを読み取るには、次の手順を実行します。
 
 > [AZURE.NOTE] 次の手順を完了した後も、エラーが発生するまでログ ファイルが生成されない場合があります。
 
@@ -154,7 +163,7 @@ iisnode ログを確認するには、次の手順を実行してください。
         git commit -m "{your commit message}"
         git push azure master
    
-   これで iisnode の構成は完了です。以下、これらのログにアクセスする方法を説明します。
+    これで iisnode の構成は完了です。以下、これらのログにアクセスする方法を説明します。
      
 4. ブラウザーでアプリの Kudu デバッグ コンソールにアクセスします。URL は次のとおりです。
 
@@ -215,20 +224,20 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [Azure CLI]: ../xplat-cli-install.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [Visual Studio サブスクライバー特典を有効にする]: http://go.microsoft.com/fwlink/?LinkId=623901
-[BOWER]: http://bower.io/
+[Bower]: http://bower.io/
 [Azure App Service での Socket.IO を使用する Node.js チャット アプリケーションの構築]: ./web-sites-nodejs-chat-app-socketio.md
 [Deploy a Sails.js web app to Azure App Service (Sails.js Web アプリを Azure App Service にデプロイする)]: ./app-service-web-nodejs-sails.md
 [優れた Kudu デバッグ コンソールの詳細]: /documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [Express generator for Yeoman]: https://github.com/petecoop/generator-express
-[GIT]: http://www.git-scm.com/downloads
+[Git]: http://www.git-scm.com/downloads
 [Azure App Service Web Apps で io.js を使用する方法]: ./web-sites-nodejs-iojs.md
 [iisnode]: https://github.com/tjanczuk/iisnode/wiki
 [MEANJS]: http://meanjs.org/
-[NODEJS]: http://nodejs.org
+[Node.js]: http://nodejs.org
 [SAILSJS]: http://sailsjs.org/
 [無料試用版にサインアップする]: http://go.microsoft.com/fwlink/?LinkId=623901
-[Web アプリ]: ./app-service-web-overview.md
-[YEOMAN]: http://yeoman.io/
+[web app]: ./app-service-web-overview.md
+[Yeoman]: http://yeoman.io/
 
 <!-- IMG List -->
 
@@ -237,4 +246,4 @@ Node-Inspector を有効にするには、次の手順を実行します。
 [iislog-kudu-console-open]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-open.png
 [iislog-kudu-console-read]: ./media/app-service-web-nodejs-get-started/iislog-kudu-console-read.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

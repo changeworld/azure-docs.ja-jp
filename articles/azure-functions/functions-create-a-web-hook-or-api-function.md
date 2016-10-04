@@ -42,7 +42,7 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 
 	![新しい GitHub webhook 関数を作成する](./media/functions-create-a-web-hook-or-api-function/functions-create-new-github-webhook.png)
 
-4. **[開発]** タブの **[コード]** ウィンドウに、サンプルの express.js 関数が表示されます。この関数は、問題のコメント webhook から GitHub 要求を受信し、問題のテキストをログに記録し、webhook への応答を `New GitHub comment: <Your issue comment text>` として送信します。
+4. **[開発]** の **[コード]** ウィンドウに、サンプルの express.js 関数が表示されます。この関数は、問題のコメント webhook から GitHub 要求を受信し、問題のテキストをログに記録し、webhook への応答を `New GitHub comment: <Your issue comment text>` として送信します。
 
 
 	![新しい GitHub webhook 関数を作成する](./media/functions-create-a-web-hook-or-api-function/functions-new-webhook-in-portal.png)
@@ -89,4 +89,4 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!-------HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

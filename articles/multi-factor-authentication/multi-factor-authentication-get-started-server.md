@@ -64,7 +64,7 @@ Azure Multi-Factor Authentication Server は 2 つの方法でダウンロード
 
 
 ## Azure Multi-Factor Authentication Server のインストールと構成
-サーバーをダウンロードできたので、インストールおよび構成を行うことができます。インストールしているサーバーが次の要件を満たすようにしてください。
+サーバーをダウンロードできたので、インストールと構成を行うことができます。インストールしているサーバーが次の要件を満たすようにしてください。
 
 
 
@@ -107,7 +107,6 @@ IP サブネット|ネットマスク|IP 範囲
 2. [インストール フォルダーの選択] 画面で、フォルダーが正しいかどうかを確認し、[次へ] をクリックします。
 3. インストールが完了したら、[終了] をクリックします。これによって、構成ウィザードが起動します。
 4. 構成ウィザードのようこそ画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。これによりウィザードが終了し、サーバーが起動します。![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
-
 5. サーバーをダウンロードしたページに戻るには、**[アクティブ化資格情報の生成]** ボタンをクリックします。この情報を提供されたボックスの Azure MFA Server にコピーし、**[アクティブ化]** をクリックします。
 
 
@@ -185,4 +184,4 @@ Azure Multi-Factor Authentication Server では、さまざまな方法で Multi
 [Windows Server Active Directory との同期](multi-factor-authentication-get-started-server-dirint.md)|Active Directory と Azure MFA Server 間の同期のセットアップと構成に関する情報です。
 [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](multi-factor-authentication-get-started-server-webservice.md)|Azure MFA Server Web サービスのセットアップと構成に関する情報です。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

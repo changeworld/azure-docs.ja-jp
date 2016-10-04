@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -156,4 +156,4 @@ Azure AD プラットフォームによって処理される認証およびサ�
 
 > [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

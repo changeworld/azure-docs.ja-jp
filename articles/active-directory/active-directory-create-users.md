@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/21/2016"
-	ms.author="curtand;viviali"/>
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
 # 新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
 
@@ -78,12 +78,12 @@ Azure クラシック ポータルで **[構成]** タブを開くには、**[Ac
 ## 参照トピック
 
 - [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)
-- [Azure AD ディレクトリの管理](active-directory-administer.md)
-- [Azure AD でのパスワードの管理](active-directory-manage-passwords.md)
-- [Azure AD でのグループの管理](active-directory-manage-groups.md)
+- [Administer your Azure AD directory](active-directory-administer.md)
+- [Manage passwords in Azure AD](active-directory-manage-passwords.md)
+- [Manage groups in Azure AD](active-directory-manage-groups.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

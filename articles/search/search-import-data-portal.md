@@ -34,9 +34,9 @@ DocumentDB のサンプル データを使用して、このワークフロー�
 
 ## データのインポート ウィザードでサポートされるデータ ソース
 
-インデックス作成の自動化ツールは、次のデータ ソースで使用可能です。
+データのインポート ウィザードでは、次のデータ ソースがサポートされています。
 
-- Azure SQL データベース
+- Azure SQL Database
 - Azure VM 上の SQL Server のリレーショナル データ
 - Azure DocumentDB
 - Azure Blob Storage (プレビュー段階)
@@ -119,4 +119,4 @@ Azure Search では、インデックスの構造を更新するには、その�
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,7 +1,7 @@
 <properties
    pageTitle="イベント処理機能の作成 | Microsoft Azure"
    description="イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。"
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,7 +15,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="06/05/2016"
+   ms.date="09/25/2016"
    ms.author="glenga"/>
    
 # イベント処理用の Azure の機能の作成
@@ -44,7 +44,7 @@ Azure Functions では、イベント ドリブンでオンデマンドのコン
 
 	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
 
-5. **[Azure Storage Queue output (Azure Storage キューの出力)]** で、**[Storage account connection (ストレージ アカウント接続)]** の横にある **[選択]** をクリックし、既存のストレージ アカウントを選択するか、新しく作成し、**[保存]** をクリックします。
+5. **[Azure Storage Queue output (Azure Storage キューの出力)]** で、既存の**ストレージ アカウント接続**を選択するか、新しく作成して **[保存]** をクリックします。
 
 	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
 
@@ -77,8 +77,8 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 + [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 + [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
++ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!-------HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

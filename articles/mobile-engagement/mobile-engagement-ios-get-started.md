@@ -61,28 +61,24 @@
 
 	![][3]
 
-6. **XCode 7** の場合は、`libxml2.dylib` ではなく `libxml2.tbd` を追加します。
-
-7. Azure ポータルに戻り、アプリの **[接続情報]** ページで接続文字列をコピーします。
+6. アプリの **[接続情報]** ページで Azure ポータルに戻り、接続文字列をコピーします。
 
 	![][4]
 
-8. 次のコード行を **AppDelegate.m** ファイルに追加します。
+7. 次のコード行を **AppDelegate.m** ファイルに追加します。
 
 		#import "EngagementAgent.h"
 
-9. ここで、接続文字列を `didFinishLaunchingWithOptions` デリゲートに貼り付けます。
+8. ここで、接続文字列を `didFinishLaunchingWithOptions` デリゲートに貼り付けます。
 
 		- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 		{
-  			[...]
-			//[EngagementAgent setTestLogEnabled:YES];
-   
+  			[...]   
   			[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
   			[...]
 		}
 
-10. `setTestLogEnabled` は、問題を識別するための SDK ログを有効にするステートメントです (省略可能)。
+9. `setTestLogEnabled` は、問題を識別するための SDK ログを有効にするステートメントです (省略可能)。
 
 ##<a id="monitor"></a>リアルタイム監視を有効にする
 
@@ -121,6 +117,7 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 1. **AppDeletegate.m** ファイルに戻り、Engagement Reach モジュールをインポートします。
 
 		#import "AEReachModule.h"
+		#import <UserNotifications/UserNotifications.h>
 
 2. `application:didFinishLaunchingWithOptions` 内に Reach モジュールを作成し、それをEngagement を初期化する既存の行に渡します。
 
@@ -135,12 +132,19 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 1. 次の行を `application:didFinishLaunchingWithOptions` メソッドに追加します。
 
-		if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-			[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
+		if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+		{
+			if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
+			{
+				[UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+			}else
+			{
+				[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
+			}
 			[application registerForRemoteNotifications];
 		}
-		else {
-
+		else
+		{
 			[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 		}
 
@@ -179,4 +183,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [3]: ./media/mobile-engagement-ios-get-started/xcode-build-phases.png
 [4]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

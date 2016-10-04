@@ -12,7 +12,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/17/2016"
+   ms.date="09/23/2016"
    ms.author="alkohli" />
 
 # Azure での StorSimple 仮想デバイスのデプロイと管理
@@ -139,13 +139,14 @@ StorSimple 仮想デバイスを作成するには、次の手順を実行しま
 
 [AZURE.INCLUDE [仮想デバイスの作成](../../includes/storsimple-create-virtual-device-u2.md)]
 
+この手順で仮想デバイスを作成できない場合は、インターネットに接続されていない可能性があります。詳細については、「[インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors)」を参照してください。
+
 
 ### 手順 2. 仮想デバイスの構成と登録
 
 この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
-[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
 ### 手順 3. (オプション) デバイスの構成設定の変更
 
@@ -273,6 +274,19 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 [AZURE.INCLUDE [仮想デバイスの削除](../../includes/storsimple-delete-virtual-device.md)]
 
    
+## インターネット接続エラーのトラブルシューティング 
+
+仮想デバイスを作成する際、インターネットに接続されていないと作成手順は失敗します。インターネット接続が原因で発生したエラーのトラブルシューティングを行うには、Azure クラシック ポータルで次の手順を実行します。
+
+1. Azure で Windows Server 2012 仮想マシンを作成します。この仮想マシンでは、仮想デバイスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが既に Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
+2. 前の手順で作成した仮想マシンにリモート ログインします。
+3. 仮想マシン内でコマンド ウィンドウを開きます (Win + R キーを押し、「`cmd`」と入力します)。
+4. プロンプトで次のコマンドを実行します。
+
+	`nslookup windows.net`
+
+5. `nslookup` が失敗する場合は、インターネット接続エラーが原因で仮想デバイスが StorSimple Manager サービスに登録できていません。
+6. 仮想デバイスが "windows.net" などの Azure サイトにアクセスできるように、必要な変更を仮想ネットワークに加えます。
 
 ## 次のステップ
 
@@ -280,4 +294,4 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
  
 - [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

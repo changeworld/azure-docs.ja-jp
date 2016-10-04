@@ -13,7 +13,7 @@
 	ms.topic="hero-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-compute"
-	ms.date="09/08/2016"
+	ms.date="09/27/2016"
 	ms.author="marsma"/>
 
 # Azure Batch Python クライアントの概要
@@ -44,9 +44,33 @@ Python チュートリアルの[コード サンプル][github_article_samples]�
 
 ### Python 環境
 
-サンプル スクリプト *python\_tutorial\_client.py* をローカル ワークステーションで実行するには、バージョン **2.7** または **3.3 ～ 3.5** と互換性のある **Python インタープリター**が必要です。このスクリプトは、Linux と Windows の両方でテストされています。
+サンプル スクリプト *python\_tutorial\_client.py* をローカル ワークステーションで実行するには、バージョン **2.7** または **3.3+** と互換性のある **Python インタープリター**が必要です。このスクリプトは、Linux と Windows の両方でテストされています。
 
-さらに、**Azure Batch** と **Azure Storage** の Python パッケージをインストールする必要があります。それには、**pip** と次の場所にある *requirements.txt* を使います。
+### 暗号化の依存関係
+
+`azure-batch` Python パッケージと `azure-storage` Python パッケージに必要な、[暗号化][crypto]ライブラリの依存関係をインストールする必要があります。プラットフォームに適した次のいずれかの操作を実行するか、[暗号化インストール][crypto_install]の詳細を参照してください。
+
+* Ubuntu
+
+    `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython-dev python-dev`
+
+* CentOS
+
+    `yum update && yum install -y gcc openssl-dev libffi-devel python-devel`
+
+* SLES/OpenSUSE
+
+    `zypper ref && zypper -n in libopenssl-dev libffi48-devel python-devel`
+
+* Windows
+
+    `pip install cryptography`
+
+>[AZURE.NOTE] Linux に Python 3.3+ をインストールする場合は、Python 依存関係には python3 に対応するものを使用します。たとえば、Ubuntu では次のようになります: `apt-get update && apt-get install -y build-essential libssl-dev libffi-dev libpython3-dev python3-dev`
+
+### Azure パッケージ
+
+次に、**Azure Batch** と **Azure Storage** の Python パッケージをインストールします。それには、**pip** と次の場所にある *requirements.txt* を使います。
 
 `/azure-batch-samples/Python/Batch/requirements.txt`
 
@@ -56,7 +80,7 @@ Batch パッケージと Storage パッケージをインストールするに�
 
 または、[azure-batch][pypi_batch] と [azure-storage][pypi_storage] の Python パッケージを手動でインストールしてもかまいません。
 
-`pip install azure-batch==0.30.0rc4`<br/> `pip install azure-storage==0.30.0`
+`pip install azure-batch`<br/> `pip install azure-storage`
 
 > [AZURE.TIP] 特権のないアカウントを使用する場合、コマンドの前に「`sudo`」を入力する必要があります。たとえば、「`sudo pip install -r requirements.txt`」のように入力します。Python パッケージのインストールの詳細については、readthedocs.io の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
 
@@ -254,7 +278,7 @@ Batch **プール**は複数のコンピューティング ノード (仮想マ�
 
 ```python
 def create_pool(batch_service_client, pool_id,
-                resource_files, distro, version):
+                resource_files, publisher, offer, sku):
     """
     Creates a pool of compute nodes with the specified OS settings.
 
@@ -263,10 +287,9 @@ def create_pool(batch_service_client, pool_id,
     :param str pool_id: An ID for the new pool.
     :param list resource_files: A collection of resource files for the pool's
     start task.
-    :param str distro: The Linux distribution that should be installed on the
-    compute nodes, e.g. 'Ubuntu' or 'CentOS'.
-    :param str version: The version of the operating system for the compute
-    nodes, e.g. '15' or '14.04'.
+    :param str publisher: Marketplace image publisher
+    :param str offer: Marketplace image offer
+    :param str sku: Marketplace image sku
     """
     print('Creating pool [{}]...'.format(pool_id))
 
@@ -282,24 +305,32 @@ def create_pool(batch_service_client, pool_id,
         # Copy the python_tutorial_task.py script to the "shared" directory
         # that all tasks that run on the node have access to.
         'cp -r $AZ_BATCH_TASK_WORKING_DIR/* $AZ_BATCH_NODE_SHARED_DIR',
-        # Install pip and then the azure-storage module so that the task
-        # script can access Azure Blob storage
+        # Install pip and the dependencies for cryptography
         'apt-get update',
         'apt-get -y install python-pip',
+        'apt-get -y install build-essential libssl-dev libffi-dev python-dev',
+        # Install the azure-storage module so that the task script can access
+        # Azure Blob storage
         'pip install azure-storage']
 
-    # Get the virtual machine configuration for the desired distro and version.
+    # Get the node agent SKU and image reference for the virtual machine
+    # configuration.
     # For more information about the virtual machine configuration, see:
     # https://azure.microsoft.com/documentation/articles/batch-linux-nodes/
-    vm_config = get_vm_config_for_distro(batch_service_client, distro, version)
+    sku_to_use, image_ref_to_use = \
+        common.helpers.select_latest_verified_vm_image_with_node_agent_sku(
+            batch_service_client, publisher, offer, sku)
 
     new_pool = batch.models.PoolAddParameter(
         id=pool_id,
-        virtual_machine_configuration=vm_config,
+        virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+            image_reference=image_ref_to_use,
+            node_agent_sku_id=sku_to_use),
         vm_size=_POOL_VM_SIZE,
         target_dedicated=_POOL_NODE_COUNT,
         start_task=batch.models.StartTask(
-            command_line=wrap_commands_in_shell('linux', task_commands),
+            command_line=
+            common.helpers.wrap_commands_in_shell('linux', task_commands),
             run_elevated=True,
             wait_for_success=True,
             resource_files=resource_files),
@@ -310,7 +341,6 @@ def create_pool(batch_service_client, pool_id,
     except batchmodels.batch_error.BatchErrorException as err:
         print_batch_exception(err)
         raise
-}
 ```
 
 プールを作成するときに [PoolAddParameter][py_pooladdparam] を定義し、プールのプロパティをいくつか指定します。
@@ -319,7 +349,7 @@ def create_pool(batch_service_client, pool_id,
 
 - **コンピューティング ノード数** (*target\_dedicated* - 必須)<p/>プールにデプロイする VM の数を指定するプロパティです。すべての Batch アカウントには、1 つの Batch アカウントで使用できる**コア**数 (ひいてはコンピューティング ノード数) に上限を設ける既定の**クォータ**が割り当てられています。既定のクォータと、[クォータを増やす](batch-quota-limit.md#increase-a-quota)手順 (Batch アカウントの最大コア数を増やす方法など) については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。なぜかプール内のノードが一定数を超えない、と疑問を感じている場合、このコア クォータが原因である可能性があります。
 
-- ノードの**オペレーティング システム** (*virtual\_machine\_configuration* **または** *cloud\_service\_configuration* - 必須)<p/>*python\_tutorial\_client.py* では、`get_vm_config_for_distro` ヘルパー関数によって取得した [VirtualMachineConfiguration][py_vm_config] を使用して、Linux ノードのプールを作成します。このヘルパー関数は、[list\_node\_agent\_skus][py_list_skus] を使用して、互換性のある一連の [Azure Virtual Machines Marketplace][vm_marketplace] イメージから、いずれかのイメージを選択します。別の方法として、[CloudServiceConfiguration][py_cs_config] を指定し、Cloud Services から Windows ノードのプールを作成してもかまいません。2 つの構成の詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
+- ノードの**オペレーティング システム** (*virtual\_machine\_configuration* **または** *cloud\_service\_configuration* - 必須)<p/>*python\_tutorial\_client.py* では、[VirtualMachineConfiguration][py_vm_config] を使用して、Linux ノードのプールを作成します。`common.helpers` の `select_latest_verified_vm_image_with_node_agent_sku` 関数を使用すると、[Azure Virtual Machines Marketplace][vm_marketplace] イメージの操作を簡素化できます。Marketplace イメージの使用の詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
 - **コンピューティング ノードのサイズ** (*vm\_size* - 必須)<p/>ここでは [VirtualMachineConfiguration][py_vm_config] に Linux ノードを指定するため、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」に基づいて VM サイズ (このサンプルでは `STANDARD_A1`) を指定します。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
@@ -372,7 +402,7 @@ def create_job(batch_service_client, job_id, pool_id):
 
 Batch の**タスク**は、コンピューティング ノードで実行される独立した作業単位です。タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
-実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] \(プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
+実際に作業を実行するには、タスクをジョブに追加する必要があります。コマンド ラインが自動的に実行される前に、タスクによってノードにダウンロードされる [ResourceFiles][py_resource_file] (プールの StartTask と同様) とコマンド ライン プロパティを使用して、各 [CloudTask][py_task] を構成します。このサンプルでは、各タスクで処理するファイルは 1 つだけです。したがって、その ResourceFiles コレクションには、1 つの要素が含まれています。
 
 ```python
 def add_tasks(batch_service_client, job_id, input_files,
@@ -556,7 +586,9 @@ if query_yes_no('Delete pool?') == 'yes':
 
 チュートリアルの[コード サンプル][github_article_samples]にある *python\_tutorial\_client.py* スクリプトを実行すると、コンソールの出力は次のようになります。プールのコンピューティング ノードを作成するときや起動するとき、またはプールの起動タスクのコマンドを実行しているときに、画面に `Monitoring all tasks for 'Completed' state, timeout in 0:20:00...` と表示されて待機状態になります。実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure ポータル][azure_portal]を使用します。アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure ポータル][azure_portal]または [Microsoft Azure ストレージ エクスプローラー][storage_explorer]を使用します。
 
-既定の構成でアプリケーションを実行する場合、通常の実行時間は**約 5 ～ 7 分間**です。
+>[AZURE.TIP] `azure-batch-samples/Python/Batch/article_samples` ディレクトリ内から *python\_tutorial\_client.py* スクリプトを実行してください。`common.helpers` モジュール インポートの相対パスが使用されるため、このディレクトリ内からスクリプトを実行しなかった場合に `ImportError: No module named 'common'` が表示されることがあります。
+
+既定の構成でサンプルを実行する場合、通常の実行時間は**約 5 ～ 7 分間**です。
 
 ```
 Sample start: 2016-05-20 22:47:10
@@ -601,6 +633,8 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [azure_portal]: https://portal.azure.com
 [batch_learning_path]: https://azure.microsoft.com/documentation/learning-paths/batch/
 [blog_linux]: http://blogs.technet.com/b/windowshpc/archive/2016/03/30/introducing-linux-support-on-azure-batch.aspx
+[crypto]: https://cryptography.io/en/latest/
+[crypto_install]: https://cryptography.io/en/latest/installation/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_zip]: https://github.com/Azure/azure-batch-samples/archive/master.zip
 [github_topnwords]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords
@@ -658,4 +692,4 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [10]: ./media/batch-python-tutorial/credentials_storage_sm.png "ポータルの Storage の資格情報"
 [11]: ./media/batch-python-tutorial/batch_workflow_minimal_sm.png "Batch ソリューション ワークフロー (最小限の図)"
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

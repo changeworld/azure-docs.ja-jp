@@ -36,7 +36,7 @@ Hello World サンプルによってログ ファイルに書き込まれた出�
 
 ### ゲートウェイの作成
 
-開発者は*ゲートウェイ プロセス*を作成する必要があります。このプログラムは、内部インフラストラクチャ (メッセージ バス) を作成し、モジュールを読み込み、すべてが正常に動作するように設定します。SDK には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。**Gateway\_Create\_From\_JSON** 関数を使用するには、読み込むモジュールを指定する JSON ファイルへのパスを渡す必要があります。
+開発者は*ゲートウェイ プロセス*を作成する必要があります。このプログラムは、内部インフラストラクチャ (ブローカー) を作成し、モジュールを読み込んで、すべてが正常に動作するように設定します。SDK には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。**Gateway\_Create\_From\_JSON** 関数を使用するには、読み込むモジュールを指定する JSON ファイルへのパスを渡す必要があります。
 
 ゲートウェイ プロセスのコードは、[main.c][lnk-main-c] ファイルの Hello World サンプル内にあります。次のスニペットは、ゲートウェイ プロセス コードを読みやすく省略したものです。このプログラムは、ゲートウェイを作成し、ユーザーが **Enter** キーを押すまで待機してから、ゲートウェイを破棄します。
 
@@ -65,21 +65,34 @@ JSON 設定ファイルには、読み込むモジュールの一覧が含まれ
 - **module\_path**: モジュールを含むライブラリへのパス。Linux の場合は .so ファイル、Windows の場合は .dll ファイルです。
 - **args**: モジュールに必要な構成情報。
 
-次の例は、Linux での Hello World サンプルの構成に使用される JSON 設定ファイルを示します。引数が必要かどうかは、モジュールの設計によって変わります。この例では、logger モジュールは出力ファイルへのパスを引数として受け取り、Hello World モジュールは引数を受け取りません。
+JSON ファイルには、ブローカーに渡されるモジュール間のリンクも含まれています。リンクには、2 つのプロパティがあります。
+- **source**: `modules` セクションからのモジュール名か、"*"。
+- **sink**: `modules` セクションからのモジュール名。
+
+各リンクにより、メッセージのルートと方向が定義されます。モジュール `source` からのメッセージはモジュール `sink` に配信されます。`source` は "*" に設定することもできます。これは、モジュールからのメッセージが `sink` によって受信されることを示します。
+
+次の例は、Linux での Hello World サンプルの構成に使用される JSON 設定ファイルを示します。モジュール `hello_world` から生成されたメッセージは、いずれもモジュール `logger` によって使用されます。引数が必要かどうかは、モジュールの設計によって変わります。この例では、logger モジュールは出力ファイルへのパスを引数として受け取り、Hello World モジュールは引数を受け取りません。
 
 ```
 {
     "modules" :
     [ 
         {
-            "module name" : "logger_hl",
+            "module name" : "logger",
             "module path" : "./modules/logger/liblogger_hl.so",
             "args" : {"filename":"log.txt"}
         },
         {
-            "module name" : "helloworld",
+            "module name" : "hello_world",
             "module path" : "./modules/hello_world/libhello_world_hl.so",
 			"args" : null
+        }
+    ],
+    "links" :
+    [
+        {
+            "source" : "hello_world",
+            "sink" : "logger"
         }
     ]
 }
@@ -87,29 +100,29 @@ JSON 設定ファイルには、読み込むモジュールの一覧が含まれ
 
 ### Hello World モジュールでのメッセージの発行
 
-"hello world" モジュールでメッセージを発行するコードは、['hello\_world.c'][lnk-helloworld-c] ファイル内にあります。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
+"hello world" モジュールでメッセージを発行するコードは、[hello\_world.c][lnk-helloworld-c] ファイル内にあります。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
 
 ```
 int helloWorldThread(void *param)
 {
-    // Create data structures used in function.
+    // create data structures used in function.
     HELLOWORLD_HANDLE_DATA* handleData = param;
     MESSAGE_CONFIG msgConfig;
     MAP_HANDLE propertiesMap = Map_Create(NULL);
     
-    // Add a property named "helloWorld" with a value of "from Azure IoT
+    // add a property named "helloWorld" with a value of "from Azure IoT
     // Gateway SDK simple sample!" to a set of message properties that
     // will be appended to the message before publishing it. 
     Map_AddOrUpdate(propertiesMap, "helloWorld", "from Azure IoT Gateway SDK simple sample!")
 
-    // Set the content for the message
+    // set the content for the message
     msgConfig.size = strlen(HELLOWORLD_MESSAGE);
     msgConfig.source = HELLOWORLD_MESSAGE;
 
-    // Set the properties for the message
+    // set the properties for the message
     msgConfig.sourceProperties = propertiesMap;
     
-    // Create a message based on the msgConfig structure
+    // create a message based on the msgConfig structure
     MESSAGE_HANDLE helloWorldMessage = Message_Create(&msgConfig);
 
     while (1)
@@ -121,8 +134,8 @@ int helloWorldThread(void *param)
         }
         else
         {
-            // Publish the message to the bus
-            (void)MessageBus_Publish(handleData->busHandle, helloWorldMessage);
+            // publish the message to the broker
+            (void)Broker_Publish(handleData->brokerHandle, helloWorldMessage);
             (void)Unlock(handleData->lockHandle);
         }
 
@@ -137,7 +150,7 @@ int helloWorldThread(void *param)
 
 ### Hello World モジュールでのメッセージの処理
 
-Hello World モジュールでは、他のモジュールがメッセージ バスに発行したメッセージを処理する必要はありません。このため、Hello World モジュールでのメッセージ コールバックの実装は no-op 関数になります。
+Hello World モジュールでは、他のモジュールからブローカーに発行されたメッセージを処理する必要はありません。このため、Hello World モジュールでのメッセージ コールバックの実装は no-op 関数になります。
 
 ```
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -148,9 +161,9 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 
 ### Logger モジュールでのメッセージの発行と処理
 
-Logger モジュールはメッセージ バスからメッセージを受信し、ファイルに書き込みます。メッセージ バスにメッセージを発行することはありません。このため、logger モジュールのコードで **MessageBus\_Publish** 関数を呼び出すことはありません。
+Logger モジュールはブローカーからメッセージを受信し、ファイルに書き込みます。メッセージを発行することはありません。このため、logger モジュールのコードで **Broker\_Publish** 関数を呼び出すことはありません。
 
-[logger.c][lnk-logger-c] ファイル内の **Logger\_Recieve** 関数は、logger モジュールにメッセージを配信するためにメッセージ バスが呼び出すコールバックです。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
+[logger.c][lnk-logger-c] ファイル内の **Logger\_Recieve** 関数は、logger モジュールにメッセージを配信するためにブローカーが呼び出すコールバックです。次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすく修正したコードです。
 
 ```
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -195,7 +208,7 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 Gateway SDK の使用方法については、以下を参照してください。
 
-- [IoT Gateway SDK – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated] \(IoT Gateway SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する)
+- [IoT ゲートウェイ SDK – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated]
 - GitHub の [Azure IoT Gateway SDK][lnk-gateway-sdk]
 
 <!-- Links -->
@@ -205,4 +218,4 @@ Gateway SDK の使用方法については、以下を参照してください�
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
 [lnk-gateway-simulated]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

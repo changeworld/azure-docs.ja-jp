@@ -14,48 +14,50 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="get-started-article" 
-	ms.date="09/08/2016" 
+	ms.date="09/22/2016" 
 	ms.author="spelluru"/>
 
 # クラウドによるデータ統合サービスである Azure Data Factory サービスの概要
 
 ## Azure Data Factory とは何ですか。 
-Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。原材料を機械で加工して最終製品を作成する工場と同じように、Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。
+Data Factory は、データの**移動**や**変換**を調整し、自動化するクラウドベースのデータ統合サービスです。さまざまなデータ ストアからデータを取り込み、データを変換/処理して結果データをデータ ストアに発行できる Data Factory サービスを使用することで、データ統合ソリューションを作成できます。
 
-Data Factory は、オンプレミスとクラウドのデータ ソースおよび SaaS で動作し、データの取り込み、準備、変換、分析、および発行を行います。Data Factory を使えば、各種のサービスを管理されたデータ フロー パイプラインにまとめ上げることによって、ビッグ データのコンピューティング ニーズに応えるために [Azure HDInsight (Hadoop)](http://azure.microsoft.com/documentation/services/hdinsight/) や [Azure Batch](https://azure.microsoft.com/documentation/services/batch/) のようなサービスを使用してデータを変換したり、[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) で分析ソリューションを運用したりすることができます。単なる表形式の監視ビューではなく、Data Factory のリッチな視覚化機能を使用してデータ パイプライン間の系列と依存関係をすばやく表示します。1 つの統一されたビューからすべてのデータ フロー パイプラインを監視し、問題を簡単に特定して監視アラートを設定します。
+Data Factory サービスでは、データを移動して変換するデータ パイプラインを作成し、指定したスケジュール (毎時、毎日、毎週など) でパイプラインを実行できます。また、このサービスには視覚化機能が豊富に用意されています。このため、データ パイプライン間の系列と依存関係を表示できるほか、統一された 1 つのビューからすべてのデータ パイプラインを監視して、容易に問題を特定し、監視アラートを設定できます。
 
-![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png)
+![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png) **図 1.** さまざまなデータ ソースからデータを取り込み、準備、変換、分析を行って、すぐ使用できるデータを発行します。
 
-**図 1** 多くのさまざまなオンプレミス データ ソースからデータを収集し、データの取り込み、準備、変換、および分析を行って、すぐ使用できるデータを発行します。
+## パイプラインとアクティビティ
+Data Factory ソリューションでは、1 つ以上のデータ **パイプライン**を作成します。パイプラインは、アクティビティの論理的なグループです。パイプラインは、まとまってタスクを実行するユニットにアクティビティをグループ化するために使用されます。
 
-必要があればいつでも Data Factory を使用して、異なる形状とサイズのデータを収集し、変換し、発行して深い洞察を抽出することのすべてを、信頼できるスケジュールで実行できます。Data Factory を使えば、さまざまな業界の分析とパイプラインのニーズに対応し、数多くのシナリオにも対応する、可用性の高いデータ フロー パイプラインを作成できます。たとえば、オンラインの小売業者であれば、Data Factory を使って顧客の閲覧行動に基づいて顧客一人一人に合わせた[お勧めの商品](data-factory-product-reco-usecase.md)を生成することが考えられます。また、ゲーム スタジオが自らの[マーケティング キャンペーンの効果](data-factory-customer-profiling-usecase.md)の測定に使用することもできるでしょう。お客様が Data Factory を使用する方法と理由については、[お客様導入事例](data-factory-customer-case-studies.md)を直接ご覧ください。
+**アクティビティ**は、データに対して実行するアクションを定義します。たとえば、コピー アクティビティを使用して、データ ストア間でデータをコピーできます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換または分析できます。Data Factory では、データ移動アクティビティとデータ変換アクティビティの 2 種類のアクティビティがサポートされています。
+  
+## データ移動アクティビティ 
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-> [AZURE.VIDEO azure-data-factory-overview]
+詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事をご覧ください。
 
-## 主要な概念
+## データ変換アクティビティ
+[AZURE.INCLUDE [data-factory-transformation-activities](../../includes/data-factory-transformation-activities.md)]
 
+詳細については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事をご覧ください。
+
+コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合、つまり独自のロジックを使用してデータを変換する場合は、**カスタム .NET アクティビティ**を作成します。カスタム アクティビティの作成と使用の詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
+
+## リンクされたサービス
+リンクされたサービスは、Data Factory が外部リソース (例: Azure Storage、オンプレミスの SQL Server、Azure HDInsight) に接続するために必要な情報を定義します。Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
+
+- オンプレミスの SQL Server、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の**データ ストア**を表すため。サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事をご覧ください。
+- アクティビティの実行をホストできる**コンピューティング リソース**を表すため。たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。サポートされているコンピューティング環境の一覧については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事をご覧ください。
+
+## データセット 
+リンクされたサービスは、データ ストアを Azure データ ファクトリにリンクします。データセットは、データ ストア内のデータ構造を表します。たとえば、Azure Storage のリンクされたサービスは、Azure Storage アカウントに接続するための接続情報を Data Factory に提供します。Azure BLOB データセットは、パイプラインによってデータが読み取られる、Azure BLOB ストレージ内の BLOB コンテナーと BLOB フォルダーを指定します。同様に、Azure SQL のリンクされたサービスは、Azure SQL データベースに関する接続情報を提供します。また、Azure SQL データセットは、データが含まれているテーブルを指定します。
+
+## Data Factory エンティティ間の関係
 Data Factory には、入力と出力データ、処理イベント、および目的のデータ フローの実行に必要なスケジュールとリソースを定義するために連携するいくつかの重要なエンティティがあります。
 
-![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png) **図 2** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
 
-**図 2.** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
-
-### パイプライン
-[パイプライン](data-factory-create-pipelines.md)は、アクティビティの論理的なグループです。パイプラインは、まとまってタスクを実行するユニットにアクティビティをグループ化するために使用されます。たとえば、複数の変換アクティビティのシーケンスがログ ファイル データのクレンジングに必要な場合があります。このシーケンスには、調整および自動化が必要な複雑なスケジュールと依存関係があります。これらのアクティビティのすべてを "CleanLogFiles" という名前の 1 つのパイプラインにグループ化できます。個々のアクティビティを個別に管理するのではなく、"CleanLogFiles" を 1 つの単位としてデプロイ、スケジューリング、削除できます。
-
-### アクティビティ
-アクティビティは、データに対して実行するアクションを定義します。各アクティビティは、入力として 0 個以上の[データセット](data-factory-create-datasets.md)を受け取り、出力として 1 つまたは複数のデータセットを生成します。アクティビティは、Azure Data Factory でのオーケストレーションの単位です。たとえば、[コピー アクティビティ](data-factory-data-movement-activities.md)を使用して、データセット間のデータのコピーを調整できます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する [Hive アクティビティ](data-factory-data-transformation-activities.md)を使用して、データを変換および分析できます。Azure Data Factory には、データ変換、分析、データ移動のための広範なアクティビティがあります。
-
-### データセット
-[データセット](data-factory-create-datasets.md)は、アクティビティの入力または出力として使用するデータへの名前付きの参照/ポインターです。データセットは、テーブル、ファイル、フォルダー、ドキュメントなどのさまざまなデータ ストア内のデータ構造を示します。
-
-### リンクされたサービス
-リンクされたサービスは、Data Factory が外部リソースに接続するために必要な情報を定義します。Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
-
-- オンプレミスの SQL Server、Oracle DB、ファイル共有、Azure BLOB ストレージ アカウント、その他のデータ ストアを表すため。前述のように、データセットは、リンクされたサービスによって Data Factory に接続されるデータ ストア内のデータ構造を表します。
-- アクティビティの実行をホストできるコンピューティング リソースを表すため。たとえば、“HDInsightHive Activity” は HDInsight Hadoop クラスターで実行します。
-
-データセット、アクティビティ、パイプライン、およびリンクされたサービスという 4 つの簡単な概念を理解すれば、Azure Data Factory を使用できます。 [最初のパイプラインを作成する](data-factory-build-your-first-pipeline.md)ことも、[Data Factory のサンプル](data-factory-samples.md)を示した記事の説明に従って既成のサンプルをデプロイすることもできます。
+リンクされたサービス、データセット、アクティビティ、パイプラインという 4 つの簡単な概念を理解したら、開始する準備は完了です。 [最初のパイプラインを作成](data-factory-build-your-first-pipeline.md)できます。
 
 ## サポートされているリージョン
 現時点では、データ ファクトリは、**米国西部**、**米国東部**、**北ヨーロッパ** リージョンで作成できます。ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
@@ -77,4 +79,4 @@ Azure Data Factory を利用できるリージョンが**米国西部**、**米�
 [2 つのクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | このチュートリアルでは、BLOB ストレージから SQL データベースに**データを移動**するパイプラインを備えたデータ ファクトリを作成します。
 [Data Management Gateway を使用してオンプレミス データ ストアとクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-move-data-between-onprem-and-cloud.md) | このチュートリアルでは、**オンプレミス**の SQL Server データベースから Azure BLOB に**データを移動**するパイプラインを備えたデータ ファクトリを構築します。チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->
