@@ -19,7 +19,9 @@
 
 # Azure ストレージ アカウントについて
 
-[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Overview
 
@@ -83,7 +85,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 ### ストレージ アカウント エンドポイント
 
-Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの*エンドポイント*になります。
+Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの *エンドポイント* になります。
 
 たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 

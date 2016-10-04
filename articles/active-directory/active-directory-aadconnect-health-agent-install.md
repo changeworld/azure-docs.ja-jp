@@ -39,7 +39,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 

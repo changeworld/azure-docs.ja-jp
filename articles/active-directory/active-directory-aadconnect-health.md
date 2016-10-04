@@ -44,7 +44,7 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2 の AD FS 2.0 
 
 次のビデオでは、Azure AD Connect Health for AD FS の概要について説明します。
 
->[AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
+> [AZURE.VIDEO azure-ad-connect-health--monitor-you-identity-bridge]
 
 ## [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)
 

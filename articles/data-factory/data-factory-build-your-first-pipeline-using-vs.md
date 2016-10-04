@@ -18,12 +18,11 @@
 
 # チュートリアル: Microsoft Visual Studio を使用した初めての Azure データ ファクトリの作成
 > [AZURE.SELECTOR]
-- [概要と前提条件](data-factory-build-your-first-pipeline.md)
-- [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
-- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
-- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
+- [Data Factory エディターを使用する](data-factory-build-your-first-pipeline-using-editor.md)
+- [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
+- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 
 この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成します。
 
@@ -42,8 +41,7 @@
 1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。
 2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
 3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
 
@@ -307,8 +305,9 @@
 
 ### ダイアグラム ビューを使用してパイプラインを監視する
 6. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[More services (その他のサービス)]**、**[データ ファクトリ]** の順にクリックします。 ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-	2. データ ファクトリの一覧から、データ ファクトリの名前 (例: **FirstDataFactoryUsingVS09152016**) を選択します。 ![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
+	1. **[参照]** をクリックし、**[Data Factory]** を選択します。
+		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
+	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。 
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   
 	![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
