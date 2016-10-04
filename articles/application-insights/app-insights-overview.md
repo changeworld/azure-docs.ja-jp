@@ -359,11 +359,7 @@ Application Insights の利用には制限がありますが、その程度は�
 
 [![Animated introduction](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
-> [AZURE.VIDEO 218]
-
-> [AZURE.VIDEO usage-monitoring-application-insights]
-
-> [AZURE.VIDEO performance-monitoring-application-insights]
+<div class="wa-video-container" data-control="video-container" data-slug="218"> <a title="Get 360° Application Insights for Any App or Service" class="wa-video-thumbnail" href="/en-us/documentation/videos/218/" data-control="video" data-event="videopage-clicked-videothumbnail" data-event-property="218" data-caption="" data-ch9="//channel9.msdn.com/Series/ConnectOn-Demand/218/player/" data-expanding="false"> <img class="thumbnail" alt="Get 360° Application Insights for Any App or Service" src="https://sec.ch9.ms/ch9/8e9a/f3bbe7e0-a223-44f3-9f44-35820c128e9a/Get360ApplicationInsightsforAnyApporService_960.jpg"> <img class="play-icon" src="/cdn/cvt-a29a0e789afe7f47464f393c011b53f210c511ee5fed2c4c9c0633442f30d6ec/images/icon/VideoPlay.svg"> <span class="metadata"> <span class="date"> <span>04-29-2015</span> <span>05 min, 28 sec</span> </span> </span> </a> </div>
 
 > [紹介用アニメーション](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
