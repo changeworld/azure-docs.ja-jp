@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/15/2016"
+   ms.date="09/26/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
@@ -37,13 +37,7 @@
 
 * **Azure Data Lake Store アカウント**。アカウントを作成する手順については、「[Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
 
-* アプリケーションが自動的に Azure Active Directory で認証を行うようにするには、**Azure Active Directory アプリケーションを作成**します。
-
-	* **非対話型のサービス プリンシパルの認証**を使用する場合: Azure Active Directory で **Web アプリケーション**を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
-		- アプリケーションの**クライアント ID** と**クライアント シークレット**を取得します。
-		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。
-
-	これらの値を取得したりアクセス許可を設定したりロールを割り当てたりする手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
+* **Azure Active Directory アプリケーションを作成する**。Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**という異なる方法があります。認証方法の手順と詳しい情報については、「[Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 ## .NET アプリケーションの作成
 
@@ -96,12 +90,15 @@
                 private static string _adlsAccountName;
                 private static string _resourceGroupName;
                 private static string _location;
+				private static string _subId;
+
                 
                 private static void Main(string[] args)
                 {
                     _adlsAccountName = "<DATA-LAKE-STORE-NAME>"; // TODO: Replace this value with the name of your existing Data Lake Store account.
                     _resourceGroupName = "<RESOURCE-GROUP-NAME>"; // TODO: Replace this value with the name of the resource group containing your Data Lake Store account.
                     _location = "East US 2";
+					_subId = "<SUBSCRIPTION-ID>";
                     
                     string localFolderPath = @"C:\local_path"; // TODO: Make sure this exists and can be overwritten.
                     string localFilePath = localFolderPath + "file.txt"; // TODO: Make sure this exists and can be overwritten.
@@ -115,31 +112,41 @@
 
 ## 認証
 
-次のスニペットは、対話型のログイン エクスペリエンスに使用できます。
+### エンドユーザー認証を使用している場合
+
+既存の Azure AD "ネイティブ クライアント" アプリケーションと共に、次に記載されているスニペットを使用します。
 
     // User login via interactive popup
-    //    Use the client ID of an existing AAD "Native Client" application.
+    // Use the client ID of an existing AAD "Native Client" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "common"; // Replace this string with the user's Azure Active Directory tenant ID or domain name, if needed.
     var nativeClientApp_clientId = "1950a258-227b-4e31-a9cf-717495945fc2";
-    var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"))
+    var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
 
-また、次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを非対話的に認証するためにも使用できます。
+上記のスニペットでは、すべての Azure サブスクリプションで既定で使用できる Azure AD ドメインとクライアント ID を使用します。独自の Azure AD ドメインとアプリケーション クライアント ID を使用したい場合は、Azure AD ネイティブ アプリケーションを作成する必要があります。手順については、「[Active Directory アプリケーションを作成する](../resource-group-create-service-principal-portal.md#create-an-active-directory-application)」を参照してください。
+
+>[AZURE.NOTE] 上記のリンクの手順は、Azure AD Web アプリケーションのためのものです。しかし、ネイティブ クライアント アプリケーションを作成する場合でも、手順はまったく同じです。
+
+### クライアント シークレットによるサービス間認証を使用している場合 
+
+次のスニペットは、アプリケーション/サービス プリンシパルのクライアント シークレット/キーを使用して、アプリケーションを非対話的に認証するために使用できます。これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
 
     // Service principal / appplication authentication with client secret / key
-    //    Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
-    var clientSecret = "<AAD-application-clientid>";
+    var clientSecret = "<AAD-application-client-secret>";
     var clientCredential = new ClientCredential(webApp_clientId, clientSecret);
     var creds = ApplicationTokenProvider.LoginSilentAsync(domain, clientCredential).Result;
 
-3 つ目のオプションとして、次のスニペットは、アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを非対話的に認証するためにも使用できます。
+### 証明書によるサービス間認証を使用している場合
+
+3 つ目のオプションとして、次のスニペットは、アプリケーション/サービス プリンシパルの証明書を使用して、アプリケーションを非対話的に認証するためにも使用できます。これは、既存の [Azure AD "Web アプリ" アプリケーション](../resource-group-create-service-principal-portal.md)と共に使用します。
 
     // Service principal / application authentication with certificate
-    //    Use the client ID and certificate of an existing AAD "Web App" application.
+    // Use the client ID and certificate of an existing AAD "Web App" application.
     SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
     var domain = "<AAD-directory-domain>";
     var webApp_clientId = "<AAD-application-clientid>";
@@ -151,8 +158,11 @@
 
 次のスニペットは、Data Lake Store アカウントとファイルシステム クライアント オブジェクトを作成します。これらは、サービスに要求を発行するために使用されます。
 
-    // Create client objects
-    var fileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
+    // Create client objects and set the subscription ID
+    _adlsClient = new DataLakeStoreAccountManagementClient(creds);
+    _adlsFileSystemClient = new DataLakeStoreFileSystemManagementClient(creds);
+
+	_adlsClient.SubscriptionId = _subId;
 
 ## サブスクリプション内のすべての Data Lake Store アカウントを一覧表示する
 
@@ -161,7 +171,7 @@
     // List all ADLS accounts within the subscription
     public static List<DataLakeStoreAccount> ListAdlStoreAccounts()
     {
-        var response = _adlsClient.Account.List(_adlsAccountName);
+        var response = _adlsClient.Account.List();
         var accounts = new List<DataLakeStoreAccount>(response);
         
         while (response.NextPageLink != null)
@@ -196,7 +206,7 @@
         uploader.Execute();
     }
 
-DataLakeStoreUploader は、ローカル ファイル (またはフォルダー) パスと Data Lake Store 間の再帰的なアップロードとダウンロードをサポートしています。
+`DataLakeStoreUploader` では、ローカル ファイル パスと Data Lake Store ファイル パスの間の再帰的なアップロードとダウンロードがサポートされています。
 
 ## ファイルまたはディレクトリの情報を取得する
 
@@ -263,4 +273,4 @@ DataLakeStoreUploader は、ローカル ファイル (またはフォルダー)
 - [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
 - [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!-------HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

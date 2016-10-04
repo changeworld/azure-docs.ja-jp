@@ -109,7 +109,7 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 	|AllowVirtualNetworkAccess|ピア VNet のアドレス空間を Virtual\_network タグの一部として含めるかどうかを選択します。|はい|
 	|AllowForwardedTraffic|ピアリングされた VNet 以外の送信元のトラフィックを許可するか破棄するかを選択します。|いいえ|
 	|AllowGatewayTransit|VNet ゲートウェイの使用をピア VNet に許可するかどうかを選択します。|いいえ|
-	|UseRemoteGateways|ピアの VNet ゲートウェイを使用します。ピア VNet でゲートウェイが構成され、かつ AllowGatewayTransit が選択されている必要があります。ゲートウェイをローカルで構成した場合、このオプションは使用できません。|いいえ|
+	|UseRemoteGateways|ピアの VNet ゲートウェイを使用します。ピア VNET でゲートウェイが構成され、かつ AllowGatewayTransit が選択されている必要があります。ゲートウェイをローカルで構成した場合、このオプションは使用できません。|いいえ|
 
 	上記の一連のプロパティは、VNET ピアリングの各リンクに存在します。たとえば、AllowVirtualNetworkAccess は、VNet1 から VNet2 への VNET ピアリング リンクの場合は True に、逆方向の VNET ピアリング リンクの場合は False に設定します。
 
@@ -143,13 +143,13 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 1. サブスクリプション A の特権 User-A アカウントで Azure にサインインし、次のコマンドレットを実行します。
 
-        New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
+        New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetworks/VNet5
 
-    これは必須ではありません。ユーザーが個々の VNet に対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。相手側 VNET の特権ユーザーをローカル VNET のユーザーとして追加すると、セットアップしやすくなります。
+    これは必須ではありません。ユーザーが個々の VNET に対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。相手側 VNET の特権ユーザーをローカル VNET のユーザーとして追加すると、セットアップしやすくなります。
 
 2. サブスクリプション B の特権 User-B アカウントで Azure にサインインし、次のコマンドレットを実行します。
 
-        New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet3
+        New-AzureRmRoleAssignment -SignInName <UserA ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-B-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetworks/VNet3
 
 3. User-A のログイン セッションで次のコマンドレットを実行します。
 
@@ -234,4 +234,4 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 2. VNET ピアリングのいずれかのリンクを削除すると、ピアのリンク状態が "切断" に変わります。この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNET ピアリングを作成し直すことをお勧めします。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

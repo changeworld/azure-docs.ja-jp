@@ -13,7 +13,7 @@
    ms.devlang="na"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
 
 # Azure Security Center 計画および運用ガイド
@@ -231,7 +231,9 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 上の図のように、このブレードには、攻撃が発生した時間、ソース ホスト名、標的となった VM に関する詳細情報と、推奨される手順が表示されます。状況によっては、攻撃元の情報が空白になっていることもあります。このような動作の詳細については、「[Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/)」を参照してください。
 
-> [AZURE.NOTE] ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (Azure Security Center と Microsoft Operations Management Suite をインシデントの対応に活用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
+ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (Azure Security Center と Microsoft Operations Management Suite をインシデントの対応に活用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
+
+> [AZURE.NOTE] インシデント対応に役立つ Security Center 機能を使用する方法の詳細については、「[Azure Security Center を活用したインシデント対応](security-center-incident-response.md)」を参照してください。
 
 ## 関連項目
 このドキュメントでは、Security Center の導入を計画する方法について説明しました。セキュリティ センターの詳細については、次を参照してください。
@@ -242,4 +244,4 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 - 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-<!---------HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -189,7 +189,7 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
 > [AZURE.NOTE] このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。スループットを向上させるには、EventProcessorHost の複数のインスタンスを実行することをお勧めします。このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。複数の受信側でぞれぞれ*すべて*のイベントを処理する場合、**ConsumerGroup** 概念を使用する必要があります。さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
 
 <!-- Links -->
-[Event Hubs Overview]: event-hubs-overview.md
+[Event Hubs overview]: event-hubs-overview.md
 [Azure ストレージ アカウント]: ../storage/storage-create-storage-account.md
 [Azure クラシック ポータル]: http://manage.windowsazure.com
 [Maven Package]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
@@ -198,4 +198,4 @@ Event Hubs の Java クライアント ライブラリは、[Maven Central Repos
 [11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
 [12]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp3.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

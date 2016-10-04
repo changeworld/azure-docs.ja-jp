@@ -1,10 +1,10 @@
 <properties
-	pageTitle="Swift で IOS の Azure Mobile Engagement を開始する"
+	pageTitle="Swift で iOS の Azure Mobile Engagement を開始する | Microsoft Azure"
 	description="iOS アプリ の分析やプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。"
 	services="mobile-engagement"
-	documentationCenter="ios"
+	documentationCenter="mobile"
 	authors="piyushjo"
-	manager="dwrede"
+	manager="erikre"
 	editor="" />
 
 <tags
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="mobile-ios"
 	ms.devlang="swift"
 	ms.topic="hero-article"
-	ms.date="08/19/2016"
+	ms.date="09/20/2016"
 	ms.author="piyushjo" />
 
 # Swift で IOS アプリ の Azure Mobile Engagement を開始する
@@ -24,11 +24,11 @@
 
 このチュートリアルには、次のものが必要です。
 
-+ XCode 6 または XCode 7。Mac アプリ ストアからインストールできます。
++ XCode 8 (Mac アプリ ストアからインストールすることができます)
 + [モバイル エンゲージメント iOS SDK]
 + プッシュ通知証明書 (.p12)。Apple Dev Center で入手できます
 
-> [AZURE.NOTE] このチュートリアルでは、Swift バージョン 2.0 を使用します。
+> [AZURE.NOTE] このチュートリアルでは、Swift バージョン 3.0 を使用します。
 
 このチュートリアルを完了することは、iOS アプリケーションの他のすべての Mobile Engagement チュートリアルの前提条件です。
 
@@ -60,17 +60,15 @@
 
 	![][2]
 
-5. `Build Phases` タブを開き、`Link Binary With Libraries` メニューで、次に示すように、フレームワークを追加します。**注**: `CoreLocation, CFNetwork, CoreTelephony, and SystemConfiguration` を含める必要があります。
+5. `Build Phases` タブを開き、`Link Binary With Libraries` メニューで次に示すように、フレームワークを追加します。
 
 	![][3]
 
-6. **XCode 7** の場合は、`libxml2.dylib` ではなく `libxml2.tbd` を追加します。
-
-7. ブリッジ ヘッダーを作成して、[作成] > [新規] > [ファイル] > [iOS] > [ソース] > [ヘッダー ファイル] を選択して SDK's Objective C API を使用できるようにします。
+8. ブリッジ ヘッダーを作成して、[作成] > [新規] > [ファイル] > [iOS] > [ソース] > [ヘッダー ファイル] を選択して SDK's Objective C API を使用できるようにします。
 
 	![][4]
 
-8. ブリッジ ヘッダー ファイルを編集して、Mobile Engagement Objective-C コードを Swift コードに公開し、次の imports を追加します。
+9. ブリッジ ヘッダー ファイルを編集して、Mobile Engagement Objective-C コードを Swift コードに公開し、次の imports を追加します。
 
 		/* Mobile Engagement Agent */
 		#import "AEModule.h"
@@ -79,19 +77,20 @@
 		#import "EngagementAgent.h"
 		#import "EngagementTableViewController.h"
 		#import "EngagementViewController.h"
+		#import "AEUserNotificationHandler.h"
 		#import "AEIdfaProvider.h"
 
-9. [ビルドの設定] で、Swift コンパイラの Objective-C Bridging Header のビルド設定で Swift コンパイラ - コード生成にこのヘッダーへのパスがあることを確認します。パスの例を次に示します。 **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (パスによる)**
+10. [ビルドの設定] で、Swift コンパイラの Objective-C Bridging Header のビルド設定で Swift コンパイラ - コード生成にこのヘッダーへのパスがあることを確認します。パスの例を次に示します。 **$(SRCROOT)/MySuperApp/MySuperApp-Bridging-Header.h (パスによる)**
 
 	![][6]
 
-10. アプリの *[接続情報]* ページで Azure ポータルに戻り、[接続文字列] をコピーします。
+11. アプリの *[接続情報]* ページで Azure ポータルに戻り、[接続文字列] をコピーします。
 
 	![][5]
 
-11. `didFinishLaunchingWithOptions` 認証で、接続文字列を貼り付けます。
+12. `didFinishLaunchingWithOptions` 認証で、接続文字列を貼り付けます。
 
-		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+		func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
 		{
   			[...]
 				EngagementAgent.init("Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}")
@@ -154,9 +153,10 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 
 1. `didFinishLaunchingWithOptions` 内に reach モジュールを作成し、それを既存の Engagement 初期化行に渡します
 
-		func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-			let reach = AEReachModule.moduleWithNotificationIcon(UIImage(named:"icon.png")) as! AEReachModule
-			EngagementAgent.init("Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}", modulesArray:[reach])
+		func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool 
+		{
+			let reach = AEReachModule.module(withNotificationIcon: UIImage(named:"icon.png")) as! AEReachModule
+    		EngagementAgent.init("Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}", modulesArray:[reach])
 			[...]
 			return true
 		}
@@ -164,29 +164,32 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 ###アプリで APNS プッシュ通知を受信できるようにする
 1. 次の行を `didFinishLaunchingWithOptions` メソッドに追加します。
 
-		/* Ask user to receive push notifications */
 		if #available(iOS 8.0, *)
 		{
-		   let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound], categories: nil)
-		   application.registerUserNotificationSettings(settings)
-		   application.registerForRemoteNotifications()
+			if #available(iOS 10.0, *)
+			{
+				UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in }
+			}else
+			{
+				let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+				application.registerUserNotificationSettings(settings)
+			}
+			application.registerForRemoteNotifications()
 		}
 		else
 		{
-		   application.registerForRemoteNotificationTypes([UIRemoteNotificationType.Alert, UIRemoteNotificationType.Badge, UIRemoteNotificationType.Sound])
+			application.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
 		}
 
 2. 次のように、`didRegisterForRemoteNotificationsWithDeviceToken` メソッドを追加します。
 
-		func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
-		{
+		func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 			EngagementAgent.shared().registerDeviceToken(deviceToken)
 		}
 
 3. 次のように、`didReceiveRemoteNotification:fetchCompletionHandler:` メソッドを追加します。
 
-		func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
-		{
+		func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 			EngagementAgent.shared().applicationDidReceiveRemoteNotification(userInfo, fetchCompletionHandler:completionHandler)
 		}
 
@@ -204,4 +207,4 @@ Mobile Engagement により、ユーザーと通信を行い、キャンペー�
 [5]: ./media/mobile-engagement-ios-get-started/app-connection-info-page.png
 [6]: ./media/mobile-engagement-ios-swift-get-started/add-bridging-header.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

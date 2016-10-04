@@ -110,9 +110,9 @@ Service Bus Relay を使用する場合、アプリケーションは Windows Co
 
 これで Azure Service Bus の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-- [Service Bus キュー](service-bus-dotnet-get-started-with-queues.md)の使用方法
-- [Service Bus トピック](service-bus-dotnet-how-to-use-topics-subscriptions.md)の使用方法
-- [Service Bus Relay](service-bus-dotnet-how-to-use-relay.md) の使用方法
+- [Service Bus キュー](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)の使用方法
+- [Service Bus トピック](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)の使用方法
+- [Service Bus Relay](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) の使用方法
 - [Service Bus サンプル](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png
@@ -120,4 +120,4 @@ Service Bus Relay を使用する場合、アプリケーションは Windows Co
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

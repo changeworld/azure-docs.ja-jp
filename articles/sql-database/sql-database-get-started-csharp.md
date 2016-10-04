@@ -25,7 +25,7 @@
 - [C#](sql-database-get-started-csharp.md)
 - [PowerShell](sql-database-get-started-powershell.md)
 
-C# を使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL データベースを作成する方法について説明します。この記事では、SQL と C# を使って単一のデータベースを作成する方法について説明します。エラスティック データベース プールを作成するには、[エラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)に関する記事を参照してください。
+C# を使用して、[Azure SQL Database Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Sql) で Azure SQL データベースを作成する方法について説明します。この記事では、SQL と C# を使って単一のデータベースを作成する方法について説明します。エラスティック データベース プールを作成するには、[エラスティック データベース プールの作成](sql-database-elastic-pool-create-csharp.md)に関する記事を参照してください。
 
 Azure SQL Database Library for .NET は、[リソース マネージャー ベースの SQL Database REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx) をラップする [Azure リソース マネージャー](../resource-group-overview.md) ベースの API を提供します。
 
@@ -291,4 +291,4 @@ C# を使用して SQL データベースを作成するために、([パッケ�
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!-------HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

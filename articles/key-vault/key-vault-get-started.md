@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="07/15/2016"
+	ms.date="09/27/2016"
 	ms.author="cabailey"/>
 
 # Azure Key Vault の概要 #
@@ -24,9 +24,9 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。詳�
 
 **推定所要時間:** 20 分
 
->[AZURE.NOTE] このチュートリアルでは、Key Vault でキーやシークレットを使用するようにアプリケーションを承認する手順の中で、Azure アプリケーションを作成する方法については説明していません。
+>[AZURE.NOTE]  このチュートリアルでは、Key Vault でキーやシークレットを使用するようにアプリケーションを承認する手順の中で、Azure アプリケーションを作成する方法については説明していません。
 >
->現時点では、Azure ポータルで Azure Key Vault を構成できません。代わりに、Azure PowerShell 命令を使用します。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
+>このチュートリアルでは、Azure PowerShell を使用します。クロスプラットフォーム コマンド ライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)を参照してください。
 
 Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」をご覧ください。
 
@@ -35,7 +35,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault
 このチュートリアルを完了するには、以下が必要です。
 
 - Microsoft Azure サブスクリプション。サブスクリプションがない場合でも、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
-- Azure PowerShell **1.1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」をご覧ください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。
+- Azure PowerShell **1.1.0 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。たとえば、`Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、[Azure Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)に関するページを参照してください。
 - このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/ja-JP/download/details.aspx?id=45343)から入手できます。手順については、付属の Readme ファイルをご覧ください。
 
 
@@ -85,7 +85,7 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 ## <a id="vault"></a>Key Vault を作成する ##
 
-[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736.aspx) コマンドレットを使用して、Key Vault を作成します。このコマンドレットには、3 つの必須パラメーター (**リソース グループ名**、**Key Vault 名**、**地理的な場所**) が含まれています。
+[New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736(v=azure.200).aspx) コマンドレットを使用して、キー コンテナーを作成します。このコマンドレットには、3 つの必須パラメーター (**リソース グループ名**、**Key Vault 名**、**地理的な場所**) が含まれています。
 
 たとえば、Key Vault 名に **ContosoKeyVault**、リソース グループ名に **ContosoResourceGroup**、場所に**東アジア**を使用する場合は、次のように入力します。
 
@@ -98,12 +98,12 @@ Azure リソース マネージャーを使用すると、すべての関連す�
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。まだ、どのユーザーも許可されていません。
 
->[AZURE.NOTE]  新しい Key Vault を作成するときに "**サブスクリプションが名前空間 'Microsoft.KeyVault' を使用するように登録されていません**" というエラーが表示された場合は、`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` を実行した後に、New-AzureRmKeyVault コマンドを再実行します。詳細については、「[Register-AzureRmResourceProvider](https://msdn.microsoft.com/library/mt679020.aspx)」を参照してください。
+>[AZURE.NOTE]  新しいキー コンテナーを作成するときに "**サブスクリプションが名前空間 'Microsoft.KeyVault' を使用するように登録されていません**" というエラーが表示された場合は、`Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"` を実行した後に、New-AzureRmKeyVault コマンドを再実行します。詳細については、「[Register-AzureRmResourceProvider](https://msdn.microsoft.com/library/azure/mt759831(v=azure.200).aspx)」を参照してください。
 >
 
 ## <a id="add"></a>キーやシークレットを Key Vault に追加する ##
 
-Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048.aspx) コマンドレットを使用して次のように入力します。
+Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、[Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048(v=azure.200).aspx) コマンドレットを使用して次のように入力します。
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -158,7 +158,7 @@ Key Vault を使用するアプリケーションは、Azure Active Directory �
 Azure Active Directory にアプリケーションを登録するには:
 
 1. Azure クラシック ポータルにサインインします。
-2. 左側で、**[Active Directory]** をクリックし、アプリケーションを登録するディレクトリを選択します。<br> <br> **注:** Key Vault を作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。ディレクトリが不明な場合は、**[設定]** をクリックし、Key Vault を作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
+2. 左側で、**[Active Directory]** をクリックし、アプリケーションを登録するディレクトリを選択します。<br> <br> **注:** キー コンテナーを作成した Azure サブスクリプションが含まれている、同じディレクトリを選択する必要があります。ディレクトリが不明な場合は、**[設定]** をクリックし、キー コンテナーを作成したサブスクリプションを見つけて、最後の列に表示されているディレクトリ名をご確認ください。
 
 3. **[アプリケーション]** をクリックします。アプリがディレクトリに追加されていない場合は、このページには **[アプリケーションの追加]** リンクのみが表示されます。リンクをクリックするか、コマンド バーの **[追加]** をクリックします。
 4.	**[アプリケーションの追加]** ウィザードの **[What do you want to do?]** ページで、**[組織で開発中のアプリケーションを追加]** をクリックします。
@@ -171,7 +171,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 ## <a id="authorize"></a>キーまたはシークレットを使用してアプリケーションを承認する ##
 
-資格情報コンテナーのキーまたはシークレットへのアクセスをアプリケーションに承認するには、[Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) コマンドレットを使用します。
+資格情報コンテナーのキーまたはシークレットへのアクセスをアプリケーションに承認するには、[Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625(v=azure.200).aspx) コマンドレットを使用します。
 
 たとえば、資格情報コンテナー名が **ContosoKeyVault** で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
 
@@ -206,7 +206,7 @@ Azure Active Directory にアプリケーションを登録するには:
 	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
 
 
-次のコマンドは、“bring your own key" (BYOK) パッケージをインポートします。これを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
+次のコマンドは、“bring your own key" (BYOK) パッケージをインポートします。このシナリオを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
 
 	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
 
@@ -214,7 +214,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 ## <a id="delete"></a>Key Vault と関連付けられているキーやシークレットを削除する ##
 
-Key Vault と、これに含まれるキーまたはシークレットが不要になった場合は、[Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485.aspx) コマンドレットを使用して Key Vault を削除できます。
+キー コンテナーと、それに含まれるキーまたはシークレットが不要になった場合は、[Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485(v=azure.200).aspx) コマンドレットを使用して キー コンテナーを削除できます。
 
 	Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
@@ -240,9 +240,9 @@ Web アプリケーションでの Azure Key Vault の使用方法に関する�
 
 Key Vault の使用方法については、「[Azure Key Vault のログ記録](key-vault-logging.md)」を参照してください。
 
-Azure Key Vault の Azure PowerShell コマンドレットの最新の一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」を参照してください。
+Azure Key Vault の Azure PowerShell コマンドレットの最新の一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052(v=azure.200).aspx)」を参照してください。
  
 
 プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

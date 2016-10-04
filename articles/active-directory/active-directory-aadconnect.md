@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -104,7 +104,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 --------- | --------- |
 フィルター処理の構成 | [Azure AD Connect Sync: フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)
 パスワードの同期 | [Azure AD Connect Sync: パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md)
-パスワード ライトバック | [パスワード管理の概要](active-directory-passwords-getting-started.md)
+パスワードの書き戻し | [パスワード管理の概要](active-directory-passwords-getting-started.md)
 デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)
 誤って削除されないように保護する | [Azure AD Connect Sync: 誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 自動アップグレード | [Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
@@ -162,4 +162,4 @@ Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](active
 
 >[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

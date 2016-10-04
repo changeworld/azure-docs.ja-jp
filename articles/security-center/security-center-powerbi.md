@@ -13,7 +13,7 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/11/2016"
+   ms.date="09/22/2016"
    ms.author="yurid"/>
 
 # Power BI で Azure Security Center のデータから洞察を得る
@@ -26,7 +26,7 @@ Azure Security Center ダッシュボードを使用して、Power BI レポー�
 
 1. **Azure Security Center** ダッシュボードで **[Power BI で探索する]** ボタンをクリックします。
 
-	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new1.png)
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
 
 2. 次の画面に示すように、**[Power BI で探索する]** ブレードが右側に表示されます。
 
@@ -115,4 +115,4 @@ Power BI で [Power BI のコンテンツ パック サービス](https://msit.p
 - 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 - [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-<!-----HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

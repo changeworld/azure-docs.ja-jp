@@ -14,7 +14,7 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-management"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="carlrab"/>
 
 # Azure SQL Database におけるデータベース パフォーマンスの監視
@@ -47,4 +47,4 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

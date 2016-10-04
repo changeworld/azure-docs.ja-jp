@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="karavar"
-	manager="stevenpo"
+	manager="femila"
 	editor="karavar"/>
 
 <tags
@@ -39,7 +39,7 @@
 ## Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。最初の画面で [インストール] をクリックします。
 
-![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install1.png)
+![Azure AD Connect Health の確認](./media/active-directory-aadconnect-health-requirements/install1.png)
 
 インストールが完了したら、[すぐに構成する] をクリックします。
 
@@ -266,4 +266,4 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!-----HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -17,6 +17,12 @@
    ms.author="ryanwi"/>
 
 # 開発環境を準備する
+
+> [AZURE.SELECTOR]
+-[ Windows](service-fabric-get-started.md)
+- [Linux](service-fabric-get-started-linux.md)
+- [OSX](service-fabric-get-started-mac.md)
+
  開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、ツールをインストールする必要があります。また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
 
 ## 前提条件
@@ -60,6 +66,6 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI link"
 [full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI link"
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI link"
-[powershell5-download]: https://www.microsoft.com/en-us/download/details.aspx?id=50395
+[powershell5-download]: https://www.microsoft.com/ja-JP/download/details.aspx?id=50395
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

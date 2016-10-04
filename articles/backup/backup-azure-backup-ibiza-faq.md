@@ -23,11 +23,11 @@
 - [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
 - [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
 
-この記事では、Recovery Services コンテナーに固有の情報を提供すると共に、[Azure Backup に関する FAQ](backup-azure-backup-faq) を補足します。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
+この記事では、Recovery Services コンテナーに固有の情報を提供すると共に、[Azure Backup に関する FAQ](backup-azure-backup-faq.md) を補足します。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
 
 この記事や関連の記事の「DISQUS」セクションでも Azure Backup について質問できます。また、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
-## Recovery Services コンテナーは Resource Manager ベースですが、Backup コンテナー (クラシック モード) は引き続きサポートされますか。<br/>
+## Recovery Services コンテナーは Resource Manager に基づいています。Backup コンテナー (クラシック モード) はまだサポートされていますか。<br/>
 はい。Backup コンテナーは引き続きサポートされます。Backup コンテナーは[クラシック ポータル](https://manage.windowsazure.com)で作成しますが、Recovery Services コンテナーは [Azure ポータル](https://portal.azure.com)で作成します。ただし、Recovery Services コンテナーを作成することを強くお勧めします。今後強化される機能は Recovery Services コンテナーでしか利用できないためです。
 
 ## Backup コンテナーを Recovery Services コンテナーに移行することはできますか。<br/>
@@ -43,4 +43,4 @@ Backup コンテナー内のクラシック VM のバックアップは、VM を
 2. 仮想マシンをクラシック モードから Resource Manager モードに移行します。仮想マシンに対応するストレージとネットワークも Resource Manager モードに移行されることを確認してください。
 3. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。[Recovery Services コンテナーでバックアップを有効にする](backup-azure-vms-first-look-arm.md)方法について、さらに詳しくご確認ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

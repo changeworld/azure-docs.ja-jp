@@ -14,12 +14,14 @@
 	ms.devlang="na"
 	ms.topic="get-started-article"
 	ms.date="07/26/2016"
-	ms.author="robinsh"/>
+	ms.author="micurd;robinsh"/>
 
 
 # Azure ストレージ アカウントについて
 
-[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
+[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## Overview
 
@@ -85,7 +87,7 @@ Azure Storage は、ストレージ アカウントに基づいた使用量に�
 
 Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの *エンドポイント* になります。
 
-たとえば、ストレージ アカウントの名前が *mystorageaccount* の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
+たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 
 - BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
@@ -97,7 +99,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 ストレージ アカウントが作成されると、そのアカウントのエンドポイントが [Azure クラシック ポータル](https://manage.windowsazure.com)のストレージ ダッシュボードに表示されます。
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/ *mycontainer* / *myblob*
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
 また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。
 
@@ -175,4 +177,4 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 - [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

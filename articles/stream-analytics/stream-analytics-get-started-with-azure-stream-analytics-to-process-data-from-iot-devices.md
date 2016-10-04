@@ -15,7 +15,7 @@
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="08/11/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"
 />
 
@@ -120,4 +120,4 @@ Contoso は工業オートメーション スペースの会社で、自社の�
 
 このチュートリアルの目的は、Stream Analytics クエリ言語を使ったさまざまなクエリを記述し、その結果をブラウザーで確認する方法を紹介することです。ただし、これはほんの導入部に過ぎません。Stream Analytics でできることはたくさんあります。Stream Analytics は多様な入出力に対応していることに加え、Azure Machine Learning の関数も利用できることから、データ ストリームを分析するうえで強力な手段となっています。[学習マップ](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)を使用して、Stream Analytics の詳細を探究することができます。クエリの作成の詳細については、[一般的なクエリ パターン](./stream-analytics-stream-analytics-query-patterns.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

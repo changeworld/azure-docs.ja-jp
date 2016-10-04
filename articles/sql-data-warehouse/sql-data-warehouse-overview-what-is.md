@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/23/2016"
+   ms.date="09/27/2016"
    ms.author="lodipalm;barbkess;mausher;jrj;sonyama;kevin"/>
 
 
@@ -31,7 +31,7 @@ SQL Data Warehouse では、次の処理が行われます。
 
 ## 超並列処理アーキテクチャ
 
-SQL Data Warehouse は、超並列処理 (MPP) 分散データベース システムです。SQL Data Warehouse は、データと処理機能を複数のノードに分割することで、単一のシステムをはるかに超えた大規模なスケーラビリティを実現します。SQL Data Warehouse は、バックグラウンドで多数のシェアード ナッシング ストレージと処理装置にデータを分散します。データは Premium ローカル冗長ストレージに格納され、クエリ実行のためにコンピューティング ノードにリンクされます。このアーキテクチャを使用すると、SQL Data Warehouse は負荷と複雑なクエリの実行に分割統治手法を利用できます。要求は制御ノードが受け取り、最適化してコンピューティング ノードに渡します。それらのノードで、作業が並列に行われます。
+SQL Data Warehouse は、超並列処理 (MPP) 分散データベース システムです。SQL Data Warehouse は、データと処理機能を複数のノードに分割することで、単一のシステムをはるかに超えた大規模なスケーラビリティを実現します。SQL Data Warehouse は、バックグラウンドで多数のシェアード ナッシング ストレージと処理装置にデータを分散します。データは Premium ローカル冗長ストレージに格納され、クエリ実行のためにコンピューティング ノードにリンクされます。このアーキテクチャを使用すると、SQL Data Warehouse は読み込みと複雑なクエリの実行に分割統治手法を利用できます。要求は制御ノードが受け取り、最適化して計算ノードに渡します。それらのノードで、作業が並列に行われます。
 
 MPP アーキテクチャと Azure ストレージ機能を組み合わせることで、SQL Data Warehouse では以下のことが可能になります。
 
@@ -47,9 +47,9 @@ MPP アーキテクチャと Azure ストレージ機能を組み合わせるこ
 
 **制御ノード:** 制御ノードは、クエリを管理および最適化します。すべてのアプリケーションおよび接続と対話するフロントエンドです。SQL Data Warehouse の制御ノードは SQL Database をベースにしており、接続時の外観や操作性は SQL Database と同じです。制御ノードは、分散したデータに対する並列クエリを実行するために必要なすべてのデータ移動と計算を内部的に調整します。SQL Data Warehouse に T-SQL クエリを送信すると、制御ノードはそれを各コンピューティング ノードで並列で実行される個々のクエリに変換します。
 
-**コンピューティング ノード:** コンピューティング ノードは、SQL Data Warehouse の背後で動力として機能します。これは、データを格納し、クエリを処理する SQL Database です。データを追加すると、SQL Data Warehouse は行をコンピューティング ノードに分散します。コンピューティング ノードは、データに対する並列クエリを実行するワーカーです。処理後は、制御ノードに結果を返します。クエリを終了するために、制御ノードは結果を集計し、最終的な結果を返します。
+**コンピューティング ノード:** コンピューティング ノードは、SQL Data Warehouse を陰から動かす原動力として機能します。これは、データを格納し、クエリを処理する SQL Database です。データを追加すると、SQL Data Warehouse は行を計算ノードに分散します。計算ノードは、データに対する並列クエリを実行するワーカーです。処理後は、制御ノードに結果を返します。クエリを終了するために、制御ノードは結果を集計し、最終的な結果を返します。
 
-**ストレージ:** データは Azure Blob Storage に格納されます。コンピューティング ノードは、データと対話する際に、直接 Blob Storage に対して書き込みと読み取りを行います。Azure ストレージは制限なしで透過的に拡大されるため、SQL Data Warehouse も同様に拡大できます。コンピューティングとストレージは独立しているため、SQL Data Warehouse は、コンピューティングのスケーリングとは別に、ストレージを自動的にスケーリングできます。Azure Blob Storage は完全にフォールト トレラントでもあり、バックアップと復元のプロセスが合理化されています。
+**ストレージ:** データは Azure BLOB ストレージに格納されます。計算ノードは、データと対話する際に、直接 Blob Storage に対して書き込みと読み取りを行います。Azure ストレージは透過的に大幅に拡大されるため、SQL Data Warehouse も同様に拡大できます。コンピューティングとストレージは独立しているため、SQL Data Warehouse は、コンピューティングのスケーリングとは別に、ストレージを自動的にスケーリングできます。Azure Blob Storage は完全にフォールト トレラントでもあり、バックアップと復元のプロセスが合理化されています。
 
 **データ移動サービス:** データ移動サービス (DMS) は、ノード間でデータを移動します。DMS は、コンピューティング ノードに、結合および集計に必要なデータへのアクセスを提供します。DMS は Azure サービスではありません。これは、すべてのノードで SQL Database と共に実行される Windows サービスです。DMS はバックグラウンドで実行されるため、ユーザーが直接操作することはありません。ただし、クエリ プランを見ると、いくつかの DMS 操作が含まれていることがわかります。これは、各クエリを並列で実行するにはデータ移動が必要であるためです。
 
@@ -103,7 +103,7 @@ Data Warehouse ユニットによって、データ ウェアハウスのワー�
 
 - 大量のデータの読み込みまたは変換操作を実行する場合は、データが短時間で使用可能になるようにスケールアップすることが必要になる可能性があります。
 
-理想的な DWU 値を把握するには、データ読み込みの後で、拡大/縮小を行い、いくつかのクエリを実行してください。スケーリングは簡単に行えるので、1 時間以内でさまざまなレベルのパフォーマンスを多数試すことができます。SQL Data Warehouse は、大量のデータを処理することで、スケーリングの本当の機能を確認するように設計されています。特に、ここで提供する大規模環境では、1 TB に近いか、それ以上のデータを使用してください。
+理想的な DWU 値を把握するには、データ読み込みの後で、拡大/縮小を行い、いくつかのクエリを実行してください。スケーリングは簡単に行えるので、1 時間以内でさまざまなレベルのパフォーマンスを多数試すことができます。SQL Data Warehouse は、大量のデータを処理するように設計されています。特に、ここで述べているような大規模なスケーリングの場合、スケーリングの正確な処理能力を確認するには、1 TB に近いか、それ以上のデータを使用してください。
 
 
 ## SQL Server ベースに構築
@@ -120,7 +120,7 @@ Transact-SQL と、SQL Server、SQL Data Warehouse、SQL Database、および An
 
 ## データ保護
 
-SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。バックアップと復元のしくみの詳細については、[バックアップと復元の概要][]に関するページを参照してください。
+SQL Data Warehouse は、Azure Premium のローカル冗長ストレージにすべてのデータを格納します。複数の同期されたデータ コピーがローカル データ センターに保持され、ローカルで障害が発生した場合には透過的なデータ保護が保証されます。さらに、SQL Data Warehouse では、Azure Storage Snapshots を使用して、アクティブな (一時停止されていない) データベースが定期的に自動でバックアップされます。バックアップと復元のしくみについては、[バックアップと復元の概要][]に関するページを参照してください。
 
 ## Microsoft のツールとの統合
 
@@ -148,10 +148,11 @@ Polybase では、使い慣れている T-SQL コマンドを使用してさま�
 
 SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][]し、[サンプル データを読み込む][]方法について学習してください。Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][]が役立ちます。または、次の SQL Data Warehouse リソースも確認できます。
 
+- [顧客の成功事例]
 - [ブログ]
 - [機能に関する要求]
 - [ビデオ]
-- [CAT チームのブログ]
+- [Customer Advisory Team のブログ]
 - [サポート チケットを作成する]
 - [MSDN フォーラム]
 - [Stack Overflow フォーラム]
@@ -162,24 +163,25 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[サポート チケットを作成する]: sql-data-warehouse-get-started-create-support-ticket.md
-[サンプル データを読み込む]: sql-data-warehouse-load-sample-databases.md
-[SQL Data Warehouse を作成]: sql-data-warehouse-get-started-provision.md
-[移行に関するドキュメント]: sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse ソリューション パートナー]: sql-data-warehouse-partner-business-intelligence.md
-[統合されているツールの概要]: sql-data-warehouse-overview-integrate.md
-[バックアップと復元の概要]: sql-data-warehouse-restore-database-overview.md
+[サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[サンプル データを読み込む]: ./sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse を作成]: ./sql-data-warehouse-get-started-provision.md
+[移行に関するドキュメント]: ./sql-data-warehouse-overview-migrate.md
+[SQL Data Warehouse ソリューション パートナー]: ./sql-data-warehouse-partner-business-intelligence.md
+[統合されているツールの概要]: ./sql-data-warehouse-overview-integrate.md
+[バックアップと復元の概要]: ./sql-data-warehouse-restore-database-overview.md
 [Azure 用語集]: ../azure-glossary-cloud-terminology.md
 
 <!--MSDN references-->
 
 <!--Other Web references-->
+[顧客の成功事例]: https://customers.microsoft.com/search?sq=&ff=story_products_services%26%3EAzure%2FAzure%2FAzure%20SQL%20Data%20Warehouse%26%26story_product_families%26%3EAzure%2FAzure%26%26story_product_categories%26%3EAzure&p=0
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[CAT チームのブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
+[Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=AzureSQLDataWarehouse
 [Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!-------HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->
