@@ -149,7 +149,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 	![Azure AD Single Sign-On][14]
 
 
-6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
 	![Azure AD Single Sign-On][15]
 

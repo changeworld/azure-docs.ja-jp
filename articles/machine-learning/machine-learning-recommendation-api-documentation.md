@@ -80,7 +80,8 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 ###4\.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。
+理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
 
 ##5\.基本モデル
@@ -268,7 +269,9 @@ OData XML
 
 ###5\.4.モデルの更新
 
-モデルの説明またはアクティブなビルド ID を更新することができます。<br> <ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
+モデルの説明またはアクティブなビルド ID を更新することができます。<br>
+<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> 
+このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
 
 | HTTP メソッド | URI |
@@ -889,7 +892,18 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureBlockList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>WhiteList ルールを追加するには:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureWhiteList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br>
+<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>FeatureBlockList ルールを追加するには:</ins><br>
+<br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
+Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
+<ins>WhiteList ルールを追加するには:</ins><br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
+<ins>FeatureWhiteList ルールを追加するには:</ins><br>
+<br>
+`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
+PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **応答**:
@@ -979,7 +993,7 @@ HTTP 状態コード: 200
 
 | Name | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
 | Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 | 
 | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
 | Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
@@ -995,7 +1009,7 @@ HTTP 状態コード: 200
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
 | filename | カタログを表すテキスト形式の識別子。<br>英字 (A～Z、a～z)、数字 (0～9)、ハイフン (-)、アンダー スコア (\_) のみが許可されます。<br>最大長: 50 |
-|	apiVersion | 1\.0 |
+| apiVersion | 1\.0 |
 |||
 | 要求本文 | 例 (特徴あり):<br/>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book,the book description,author=Richard Wright,publisher=Harper Flamingo Canada,year=2001<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book,,author=Nick Bantock,publisher=Harpercollins,year=1997<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book,,author=Timothy Findley, publisher=HarperFlamingo Canada, year=2001<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book,the book description,author=Magnus Mills, publisher=Arcade Publishing, year=1998</pre> |
 
@@ -1351,7 +1365,8 @@ OData XML
   		</EventData>
 		</Event>
 
-**応答**: HTTP 状態コード: 200
+**応答**:
+HTTP 状態コード: 200
 
 ###9\.2.モデルの使用状況ファイルの一覧
 すべてのモデルに関する使用状況ファイルのメタデータを取得します。使用状況ファイルは、一度に 1 ページずつ取得されます。各ページに 100 個の項目が含まれます。特定のインデックスで項目を取得する場合は、$skip odata パラメーターを使用します。たとえば、位置 100 から開始する項目を取得する場合、要求にパラメーターとして $skip=100 を追加します。
@@ -1637,7 +1652,9 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 ##10\.Features (機能)
-このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
+このセクションでは特徴の情報 (インポートされた特徴とその値、順位付け、この順位付けが割り当てられた時期など) を取得する方法を説明します。特徴は、カタログ データの一部としてインポートされ、順位付けのビルドが実行されたときに順位付けが関連付けられます。
+使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。
+特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
 ###10\.1.特徴の情報の取得 (最後の順位付けのビルド)
 前回成功した順位付けのビルドの特徴の情報 (順位付けを含む) を取得します。
@@ -3085,7 +3102,10 @@ HTTP 状態コード: 200
 
 
 ##15\.法的情報
-このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
+このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 
+使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> 
+このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> 
+© 2015 Microsoft.All rights reserved.
  
 
 <!---HONumber=AcomDC_0928_2016-->

@@ -133,7 +133,14 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 | timeinterval *<演算子>* timeinterval | +, - | timeinterval |
 | timeinterval *<演算子>* timestamp | + | timestamp |
 | timestamp *<演算子>* timeinterval | + | timestamp |
-| timestamp *<演算子>* timestamp | - | timeinterval | | *<演算子>*double | -、! | double | | *<演算子>*timeinterval | - | timeinterval | | double *<演算子>* double | <、<=、==、>=、>、!= | double | | string *<演算子>* string | <、<=、==、>=、>、!= | double | | timestamp *<演算子>* timestamp | <、<=、==、>=、>、!= | double | | timeinterval *<演算子>* timeinterval | <、<=、==、>=、>、!= | double | | double *<演算子>* double | &&、|| | double |
+| timestamp *<演算子>* timestamp | - | timeinterval |
+| *<演算子>*double | -、! | double |
+| *<演算子>*timeinterval | - | timeinterval |
+| double *<演算子>* double | <、<=、==、>=、>、!= | double |
+| string *<演算子>* string | <、<=、==、>=、>、!= | double |
+| timestamp *<演算子>* timestamp | <、<=、==、>=、>、!= | double |
+| timeinterval *<演算子>* timeinterval | <、<=、==、>=、>、!= | double |
+| double *<演算子>* double | &&、 &#124;&#124; | double |
 
 3 項演算子で double 型の値をテストするときに (`double ? statement1 : statement2`)、0 以外の値は **true**、0 は **false** になります。
 
@@ -217,7 +224,7 @@ Batch サービスでは、タスクおよびリソースのメトリックの "
 
 また、前述したようにサンプルの可用性には遅延があるため、時間範囲を指定する際には、常に、開始時間を 1 分より長く遡って指定することが重要です。サンプルがシステムを介して伝達されるまで約 1 分かかるため、`(0 * TimeInterval_Second, 60 * TimeInterval_Second)` の範囲内のサンプルは使用できないことがよくあります。ここでも、`GetSample()` の割合パラメーターを使用することで、サンプルの割合に関する特定の要件を適用できます。
 
-> [AZURE.IMPORTANT] 自動スケールの数式で、**`GetSample(1)` に "*のみ*" 依存するのは避けるようにすることを**強くお勧めします****。これは、`GetSample(1)` では基本的に、"どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。`GetSample(1)` を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
+> [AZURE.IMPORTANT] 自動スケールの数式で、**`GetSample(1)` に " *のみ*"  **依存するのは避けるようにすることを**強くお勧めします**。これは、`GetSample(1)` では基本的に、"どれほど前に取得したのかに関係なく、最後に取得したサンプルを渡す" よう Batch サービスに指示するためです。 それは単一のサンプルであり、また以前のサンプルであるため、最近のタスクまたはリソースの状態を表す情報として十分でない可能性があります。`GetSample(1)` を使用する場合は、より大きなステートメントの一部であり、数式が依存する唯一のデータ ポイントになっていないことを確認してください。
 
 ## メトリック
 

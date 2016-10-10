@@ -236,7 +236,7 @@ Linux VM のみ - VMware で VM の構成パラメーターに disk.enableUUID=t
 
 Azure ネットワークの詳細については、[こちら](../virtual-network/virtual-networks-overview.md)をご覧ください。
 
-> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
+> [AZURE.NOTE] Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
 
 ## 手順 3: VMware コンポーネントをインストールする
 

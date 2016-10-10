@@ -17,7 +17,7 @@
 	ms.author="andkjell"/>
 
 
-# Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) をアップグレードする
+# Microsoft Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) をアップグレードする
 Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日でサポートが終了するため、Azure AD Connect へアップグレードする絶好の機会です。
 
 廃止されるこの 2 つの ID 同期ツールは、単一フォレスト顧客用 (DirSync) および複数フォレストとその他の高度なユーザー用 (Azure AD Sync) に提供されていました。これらの古いツールは、すべてのシナリオで使用できる Azure AD Connect という単一のソリューションに代わりました。Azure AD Connect は、新機能、機能強化、および新しいシナリオのサポートを提供します。Azure AD と Office 365 に対してオンプレミスの ID データの同期を継続するには、Azure AD Connect にアップグレードすることを強くお勧めします。
@@ -31,7 +31,7 @@ Azure AD Connect は DirSync と Azure AD Sync の後継となります。Azure 
 
 Date | コメント
  --- | ---
-2016 年 4 月13 日 | Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) の廃止が発表されます。
+2016 年 4 月13 日 | Microsoft Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) の廃止が発表されます。
 2017 年 4 月 13 日 | サポートが終了します。Azure AD Connect にアップグレードしていないと、サポート ケースを開くことができなくなります。
 
 ## Azure AD Connect へ移行する方法

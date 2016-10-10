@@ -434,7 +434,8 @@ Microsoft Azure を使用すると、企業は時間のかかる調達サイク�
 このドキュメントでは、新しい Azure Resource Manager デプロイメント モデルで新しい方法を使用して、高可用性 SAP システムを Azure にデプロイするために必要なすべての手順について詳しく説明します。このガイドで説明する主な手順は次のとおりです。
 
 
-- 適切な SAP インストール ガイドと SAP Notes を見つける。これらは、「[リソース][sap-ha-guide-2]」に記載されています。特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
+- 適切な SAP インストール ガイドと SAP Notes を見つける。これらは、「[リソース][sap-ha-guide-2]」に記載されています。  
+  特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Notes を補足する内容となっています。
 
 - 現在の Azure クラシック デプロイメント モデルとこの新しい Azure Resource Manager デプロイメント モデルの違いを理解する。
 
@@ -839,7 +840,7 @@ SAP Azure Resource Manager テンプレートでは、SAP ASCS/SCS インスタ�
 
 
 > [AZURE.NOTE]  
-**SAP ASCS/SCS の仮想ホスト名の IP アドレスは、SAP ASCS/SCS の Azure Load Balancer pr1-lb-ascs の IP アドレスと同じであり、****DBMS の仮想名の IP アドレスは、DBMS の Azure Load Balancer pr1-lb-dbms の IP アドレスと同じです。**
+**SAP ASCS/SCS の仮想ホスト名の IP アドレスは、SAP ASCS/SCS の Azure Load Balancer pr1-lb-ascs の IP アドレスと同じであり、** **DBMS の仮想名の IP アドレスは、DBMS の Azure Load Balancer pr1-lb-dbms の IP アドレスと同じです。**
 
 このガイドの例では、内部ロード バランサー _pr1-lb-ascs_ の IP アドレスを、SAP ASCS/SCS インスタンスの仮想ホスト名の IP アドレス (`10.0.0.43`) に設定します。
 

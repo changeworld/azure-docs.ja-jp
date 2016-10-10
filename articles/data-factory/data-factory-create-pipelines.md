@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="パイプラインの作成とスケジュール、データ ファクトリのアクティビティの連鎖 | Microsoft Azure" 
 	description="Azure Data Factory でデータ パイプラインを作成してデータを移動および変換する方法について説明します。データ主導ワークフローを作成して、すぐに使える情報を生成します。" 
-    keywords="データ パイプライン, データ主導ワークフロー"
+	keywords="データ パイプライン, データ主導ワークフロー"
 	services="data-factory" 
 	documentationCenter="" 
 	authors="spelluru" 
@@ -271,9 +271,9 @@ longRetryInterval | TimeSpan | 00:00:00 | 長い再試行の間の遅延
 
 ## 次のステップ
 
-- [Azure Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)について理解してください。
+- [Azure Data Factory でのスケジュールと実行](data-factory-scheduling-and-execution.md)について理解してください。  
 - Azure Data Factory での[データの移動](data-factory-data-movement-activities.md)および[データ変換機能](data-factory-data-transformation-activities.md)について読んでください。
 - [Azure Data Factory での管理と監視](data-factory-monitor-manage-pipelines.md)について理解してください。
-- [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。
+- [初めてのパイプラインをビルドしてデプロイしてください](data-factory-build-your-first-pipeline.md)。 
 
 <!---HONumber=AcomDC_0928_2016-->

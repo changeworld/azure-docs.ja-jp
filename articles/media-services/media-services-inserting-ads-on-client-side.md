@@ -160,7 +160,7 @@ Application/x-javascript – リソースが HTML <**script**> タグで表示�
 
 Application/x-shockwave-flash – リソースが Flash プレーヤーで表示されます。
 
-**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく ** <NonLinearAds>** 要素にある点に注意してください。
+**<IFrameResource>** は、IFrame で表示可能な HTML リソースを記述します。**<HTMLResource>** は、Web ページに挿入可能な HTML コードを記述します。**<TrackingEvents>** は、追跡イベントと、イベント発生時に要求する URI を指定します。このサンプルでは、acceptinvitation イベントと collapse イベントが追跡されます。**<NonLinearAds>** 要素とその子の詳細については、「IAB.NET/VAST」をご覧ください。**<TrackingEvents>** 要素は、**<NonLinear>** 要素ではなく **<NonLinearAds>** 要素にある点に注意してください。
 
 コンパニオン広告は、<CompanionAds> 要素内で定義されます。<CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、または <HTMLResource> を含めることができます。VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 

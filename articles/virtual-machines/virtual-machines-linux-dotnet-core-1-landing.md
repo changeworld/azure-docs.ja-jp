@@ -45,7 +45,9 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 このボタンを使って、ミュージック ストア アプリケーションをデプロイできます。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fdotnet-core-sample-templates%2Fmaster%2Fdotnet-core-music-linux%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/> </a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fdotnet-core-sample-templates%2Fmaster%2Fdotnet-core-music-linux%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>
 
 この Azure Resource Manager テンプレートには、次のパラメーター値が必要です。
 
@@ -71,4 +73,4 @@ Azure Resource Manager テンプレートを開発する目的は、Azure イン
 
 [手順 4 - Azure Resource Manager テンプレートを使ったアプリケーションのデプロイ](./virtual-machines-linux-dotnet-core-5-app-deployment.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_0928_2016--->

@@ -89,7 +89,8 @@
 
 https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資格情報でサインインします。 ![passwordreminder][7]
 
-**[公開元] タブを選択します。 ** ![selectpublisherstab][8]
+**[公開元] タブを選択します。**
+![selectpublisherstab][8]
 
 
 URL で公開元 ID を探します。

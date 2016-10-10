@@ -113,7 +113,7 @@ Azure ネットワークをセットアップします。これは、フェー�
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、Azure ネットワークを [ARM モード](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)または[クラシック モード](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)でセットアップします。
 - ネットワークをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。
 
-> [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
+> [AZURE.NOTE] Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
 
 ### Azure ストレージ アカウントをセットアップする
 
@@ -121,7 +121,7 @@ Azure ネットワークをセットアップします。これは、フェー�
 - フェールオーバーされた Azure VM に使用するリソース モデルに応じて、アカウントを [ARM モード](../storage/storage-create-storage-account.md)または[クラシック モード](../storage/storage-create-storage-account-classic-portal.md)でセットアップします。
 - ストレージ アカウントをセットアップしてから、以下の作業を開始することをお勧めします。行わない場合は、Site Recovery のデプロイ中に行う必要があります。アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 
-> [AZURE.NOTE] [Migration of storage accounts]Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのストレージ アカウントの移行はサポートされていません。
+> [AZURE.NOTE] Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../resource-group-move-resources.md)はサポートされていません。
 
 ### Hyper-V ホストを準備する
 

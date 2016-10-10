@@ -19,7 +19,7 @@
 # Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure AD Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。Azure AD Connect を常に最新リリースにしておくことをお勧めします。
 
-DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Windows Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
+DirSync からアップグレードする場合は、代わりに「[Azure AD Connect: Microsoft Azure Active Directory 同期 (DirSync) のアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)」を参照してください。
 
 Azure AD Connect のアップグレードには複数の方法があります。
 

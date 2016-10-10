@@ -102,7 +102,7 @@
 
 	![Monitoring\_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-	> [AZURE.NOTE] メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/azure/hh360997.aspx)を参照してください。
+	> [AZURE.NOTE]メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/azure/hh360997.aspx)を参照してください。
 
 3. **[メトリックの追加]** をクリックします。
 
@@ -122,7 +122,7 @@
 	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
 
-6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
+6. すべてのサービスについてメトリックを選択したら、[OK] \(チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
 7. テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 

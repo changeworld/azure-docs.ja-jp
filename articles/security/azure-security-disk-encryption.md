@@ -718,7 +718,7 @@ CentOS 7.2 では、OS ディスクの暗号化は、特別なイメージを使
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 
-*再起動する前*に、VM の[ブート診断](https://azure.microsoft.com/ja-JP/blog/boot-diagnostics-for-virtual-machines-v2/) を保存することをお勧めします。
+*再起動する前*に、VM の[ブート診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/) を保存することをお勧めします。
 
 #### OS 暗号化の進行状況の監視
 
@@ -753,7 +753,7 @@ InstanceView で、画面を下にスクロールして、ドライブの暗号�
 
 ![VM インスタンス ビュー](./media/azure-security-disk-encryption/vm-instanceview.png)
 
-2\. [ブート診断](https://azure.microsoft.com/ja-JP/blog/boot-diagnostics-for-virtual-machines-v2/)を調べる。ADE 拡張機能のメッセージには、頭に `[AzureDiskEncryption]` が付きます。
+2\. [ブート診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)を調べる。ADE 拡張機能のメッセージには、頭に `[AzureDiskEncryption]` が付きます。
 
 3\. SSH を使用して VM にログオンし、拡張機能ログを取得する。
 
@@ -787,7 +787,7 @@ OS 暗号化の進行中は、VM にログオンしないでください。し�
 
 ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6\. [こちらの手順](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+6\. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 ###### Azure で使用する暗号化を構成する
 
@@ -862,7 +862,7 @@ OS 暗号化の進行中は、VM にログオンしないでください。し�
 
 ![openSUSE 13.2 のセットアップ](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3\. [こちらの手順](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+3\. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 ###### Azure で使用する暗号化を構成する
 
@@ -942,7 +942,7 @@ OS 暗号化の進行中は、VM にログオンしないでください。し�
 
 ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5\. [こちらの手順](https://azure.microsoft.com/ja-JP/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+5\. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)に従って、VM を Azure にアップロードするための準備をします。最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 6\. 次に、VM をプロビジョニング解除し、Azure に [VHD をアップロード](#upload-encrypted-vhd-to-an-azure-storage-account)できます。
 

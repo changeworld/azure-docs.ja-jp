@@ -72,7 +72,7 @@
 
 ## ロード バランサーの作成
 
-次のコマンドは、"*米国東部*" の Azure の場所の *NRPRG* リソース グループに *NRPlb* という名前のロード バランサーを作成します。
+次のコマンドは、" *米国東部* " の Azure の場所の *NRPRG* リソース グループに *NRPlb* という名前のロード バランサーを作成します。
 
     azure network lb create NRPRG NRPlb eastus
 

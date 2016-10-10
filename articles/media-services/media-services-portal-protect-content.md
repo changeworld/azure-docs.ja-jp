@@ -125,7 +125,7 @@ AES クリア キーによる暗号化はすべてのストリーミング プ�
 
 - **MPEG-DASH との PlayReady および Widevine** - PlayReady および Widevine DRM により MPEG-DASH ストリームが動的に暗号化されます。
 - **MPEG-DASH との PlayReady および Widevine + HLS との FairPlay** - PlayReady および Widevine DRM により MPEG-DASH ストリームが動的に暗号化されます。また、FairPlay で HLS ストリームが暗号化されます。
-- ** Smooth Streaming、HLS、および MPEG-DASH とのみの PlayReady** - PlayReady DRM により Smooth Streaming、HLS、MPEG-DASH ストリームが動的に暗号化されます。
+- **Smooth Streaming、HLS、および MPEG-DASH とのみの PlayReady** - PlayReady DRM により Smooth Streaming、HLS、MPEG-DASH ストリームが動的に暗号化されます。
 - **MPEG-DASH とのみの Widevine** - Widevine DRM により MPEG-DASH が動的に暗号化されます。
 - **HLS とのみの FairPlay** - FairPlay により HLS ストリームが動的に暗号化されます。
 

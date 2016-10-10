@@ -108,7 +108,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で入
 
 バックエンド テーブルのデータへのアクセスまたはデータの変更を行うすべてのコードで、`MobileServiceTable` オブジェクトに対して関数を呼び出します。次のように、[GetTable] メソッドを呼び出して、テーブルへの参照を取得します。
 
-    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+    IMobileServiceTable<TodoItem> todoTable =
+    	client.GetTable<TodoItem>();
 
 返されたオブジェクトでは、型指定されたシリアル化モデルを使用します。型指定されていないシリアル化モデルもサポートされます。次のコード例では、[型指定されていないテーブルへの参照を作成]します。
 
@@ -152,7 +153,8 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource] で入
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false && todoItem.Text != null)
+	   .Where(todoItem => todoItem.Complete == false 
+	   	&& todoItem.Text != null)
 	   .ToListAsync();
 
 次の例は、Server SDK によって SQL クエリに変換されます。

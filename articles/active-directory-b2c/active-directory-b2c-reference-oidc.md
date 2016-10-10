@@ -166,8 +166,14 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
-
+{
+	"grant_type": "authorization_code",
+	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
+	"scope": "openid offline_access",
+	"code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
+	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+	"client_secret": "<your-application-secret>"
+}
 ```
 
 | パラメーター | 必須 | Description |
@@ -232,7 +238,14 @@ POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
+{
+	"grant_type": "refresh_token",
+	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
+	"scope": "openid offline_access",
+	"refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
+	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+	"client_secret": "<your-application-secret>"	
+}
 ```
 
 | パラメーター | 必須 | Description |
@@ -298,8 +311,7 @@ p=b2c_1_sign_in
 | p | 必須 | ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
 | post\_logout\_redirect\_uri | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。指定しない場合、Azure AD B2C はユーザーに汎用メッセージを表示します。 |
 
-> [AZURE.NOTE]
-	ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD B2C のユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。ユーザーが B2C アプリケーションからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
+> [AZURE.NOTE] ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD B2C のユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。ユーザーが B2C アプリケーションからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
 
 ## 独自の B2C テナントを使用する
 

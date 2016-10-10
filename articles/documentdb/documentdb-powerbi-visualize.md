@@ -73,7 +73,7 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 
 1. ワークステーションで Power BI Desktop を実行します。
-2. Power BI Desktop を起動すると、*ようこそ*画面が表示されます。
+2. Power BI Desktop を起動すると、*ようこそ* 画面が表示されます。
 
 	![Power BI Desktop のようこそ画面- Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_welcome.png)
 

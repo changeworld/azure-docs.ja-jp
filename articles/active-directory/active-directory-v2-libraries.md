@@ -20,7 +20,7 @@
 # Azure Active Directory (AD) v2.0 と認証ライブラリ
 Azure AD v2.0 エンドポイントは、業界標準の OAuth 2.0 や OpenID Connect 1.0 プロトコルをサポートします。v2.0 エンドポイントでは、Microsoft およびその他のさまざまなライブラリを使用することができます。
 
-v2.0 エンドポイントを使用するアプリケーションを構築する場合は、[Microsoft が使用するような][Microsoft-SDL]Security Development Lifecycle (SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。プロトコルのサポートをハンド コードする場合は、SDL を採用し、各プロトコルの標準仕様でセキュリティ上の配慮を慎重に確認することをお勧めします。
+v2.0 エンドポイントを使用するアプリケーションを構築する場合は、[Microsoft が使用するような]\[Microsoft-SDL]Security Development Lifecycle (SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。プロトコルのサポートをハンド コードする場合は、SDL を採用し、各プロトコルの標準仕様でセキュリティ上の配慮を慎重に確認することをお勧めします。
 
 ## ライブラリの種類
 v2.0 で動作するライブラリとして、次の 2 種類があります:
@@ -107,7 +107,7 @@ Microsoft のコンテンツ改善のため、次の Disqus コメント セク�
 [ServerLib-Net4-Owin-Oidc-Sample]: active-directory-v2-devquickstarts-dotnet-web.md
 [ServerLib-Net4-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/
 [ServerLib-Net4-Owin-Oauth-Repo]: http://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/
+[ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/
 [ServerLib-Net-Jwt-Lib]: https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt
 [ServerLib-Net-Jwt-Repo]: https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet
 [ServerLib-Net-Jwt-Sample]: /
@@ -119,6 +119,6 @@ Microsoft のコンテンツ改善のため、次の Disqus コメント セク�
 [ServerLib-NetCore-Owin-Oauth-Sample]: /
 [ServerLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
 [ServerLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad/
-[ServerLib-Node-Sample]: https://azure.microsoft.com/ja-JP/documentation/articles/active-directory-v2-devquickstarts-node-web/
+[ServerLib-Node-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-node-web/
 
 <!---HONumber=AcomDC_0928_2016-->
