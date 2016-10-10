@@ -148,8 +148,9 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 
 ### デプロイメント
 
-- 継続的なデプロイを設定します。「Using Git to deploy Web Apps in Azure App Service (Git を使用して Web アプリを Azure App Service にデプロイする)」を参照してください。
+- 継続的なデプロイを設定します。[Git を使用した Azure App Service への Web Apps のデプロイ](./web-sites-deploy.md)に関するページをご覧ください。
 - デプロイメント スロット:[Azure App Service での Web Apps のステージング環境へのデプロイ]に関するページを参照してください。
+
 
 デプロイ スロットを表示するには、**[すべて設定]** > **[デプロイ スロット]** をクリックします。
 
@@ -188,4 +189,4 @@ Web アプリのカスタム ドメイン名を追加します。詳細につい
 [configure02]: ./media/web-sites-configure/configure02.png
 [configure03]: ./media/web-sites-configure/configure03.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

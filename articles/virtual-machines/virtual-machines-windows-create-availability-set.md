@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/17/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 
@@ -79,4 +79,4 @@
 
 [データ ディスク](virtual-machines-windows-attach-disk-portal.md)を追加して、記憶域を VM にさらに追加します。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

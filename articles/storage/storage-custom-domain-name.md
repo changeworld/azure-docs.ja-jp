@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="jwillis;tamram"/>
 
 
 # BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
@@ -130,4 +130,4 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 
 -   [Content Delivery Network (CDN) エンドポイントにカスタム ドメインをマップする方法](../cdn/cdn-map-content-to-custom-domain.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

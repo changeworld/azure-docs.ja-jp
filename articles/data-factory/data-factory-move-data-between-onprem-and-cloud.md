@@ -4,7 +4,7 @@
     keywords="データ ゲートウェイ, データ統合, データの移動, ゲートウェイの資格情報"
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/12/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 この記事では、Data Factory を使用したオンプレミス データ ストアとクラウド データ ストア間でのデータ統合の概要について説明します。この記事は、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事と、Data Factory の中核となる概念である[データセット](data-factory-create-datasets.md)と[パイプライン](data-factory-create-pipelines.md)に関する他の記事に基づいています。
@@ -76,7 +76,7 @@
 	>  
 	> Firefox についても、同じ操作を実行します (アドインをインストール)。ツール バーの **[メニューを開く]** ボタン (右上隅にある **3 本の横線**) をクリックし、**[アドオン]** をクリックします。"ClickOnce" キーワードで検索し、ClickOnce 拡張機能のいずれかを選択してインストールします。
 
-	![ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+	![[ゲートウェイ - 構成 ブレード](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
 	これは、たった 1 つの手順 (クリック 1 回) でゲートウェイのダウンロード、インストール、構成、および登録を行う、最も簡単な方法です。**Microsoft Data Management Gateway 構成マネージャー** アプリケーションがコンピューターにインストールされていることがわかります。**C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared** フォルダーで実行可能ファイル **ConfigManager.exe** を検索することもできます。
 
@@ -107,7 +107,7 @@
 
 	**[診断]** タブでは、次の操作を行うこともできます。
 	
-	- ゲートウェイを使用して、オンプレミスのデータ ソースに **[接続のテスト]** セクションを使用します。
+	- ゲートウェイを使用して、オンプレミスのデータ ソースに**[接続のテスト]** セクションを使用します。
 	- **[ログの表示]** をクリックして、[イベント ビューアー] ウィンドウの Data Management Gateway のログを確認します。
 	- **[ログを送信]** をクリックして過去 7 日間のログの zip ファイルを Microsoft にアップロードし、問題のトラブルシューティングを容易にします。
 10. Azure Portal の **[構成]** ブレードと **[新しいデータ ゲートウェイ]** ブレードで **[OK]** をクリックします。
@@ -157,7 +157,7 @@
    
  
 ## データセットを作成する
-このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下を実施する必要があります (一覧の後に詳細な手順があります)。
+このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。データセットまたはテーブル (四角形のデータセット) を作成する前に、以下の手順を実行する必要があります (一覧の後に詳細な手順があります)。
 
 - リンク サービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 - Data Factory にリンクされたサービスとして追加した Azure BLOB ストレージ アカウントに **adftutorial** という名前の BLOB コンテナーを作成します。
@@ -358,7 +358,7 @@
 
 	![ダイアグラム リンク](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 
-2. 以下のような図が表示されるはずです。
+2. 以下の図のようなダイアグラムが表示されるはずです。
 
 	![ダイアグラム ビュー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
 
@@ -414,4 +414,4 @@
 - Data Management Gateway の詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 - コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する方法については、[Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/12/2016"
+   ms.date="09/27/2016"
    ms.author="larryfr"/>
 
 # リモート デスクトップによる HDInsight での MapReduce と Hadoop の使用
@@ -47,7 +47,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 		hadoop jar hadoop-mapreduce-examples.jar wordcount wasbs:///example/data/gutenberg/davinci.txt wasbs:///example/data/WordCountOutput
 
-	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt**** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
+	これは、現在のディレクトリの **hadoop-mapreduce-examples.jar** ファイルに含まれる **wordcount** クラスを起動します。入力として **wasbs://example/data/gutenberg/davinci.txt** ドキュメントを使用し、出力は wasbs:///example/data/WordCountOutput** に格納されます。
 
 	> [AZURE.NOTE] この MapReduce ジョブとサンプル データの詳細については、「<a href="hdinsight-use-mapreduce.md">HDInsight での Hadoop MapReduce の使用</a>」をご覧ください。
 
@@ -96,4 +96,4 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

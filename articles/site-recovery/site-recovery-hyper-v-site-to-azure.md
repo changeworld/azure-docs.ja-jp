@@ -21,8 +21,8 @@
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](site-recovery-hyper-v-site-to-azure.md)
-- [Azure クラシック](site-recovery-hyper-v-site-to-azure-classic.md)
-- [PowerShell ARM](site-recovery-deploy-with-powershell-resource-manager.md)
+- [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
+- [クラシック ポータル](site-recovery-hyper-v-site-to-azure-classic.md)
 
 
 
@@ -88,7 +88,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 **前提条件** | **詳細**
 --- | ---
 **Hyper-V**| 最新の更新プログラムが適用された Windows Server 2012 R2 と Hyper-V ロールを実行している 1 つ以上のオンプレミス サーバー。<br/><br/>Hyper-V サーバーには、1 つ以上の仮想マシンが含まれています。<br/><br/>Hyper-V サーバーは、インターネットに直接またはプロキシ経由で接続します。<br/><br/>Hyper-V サーバーには、[KB2961977](https://support.microsoft.com/ja-JP/kb/2961977 "KB2961977") に記載されている修正プログラムがインストールされている必要があります。
-**プロバイダーとエージェント** | Azure Site Recovery のデプロイ時に、Azure Site Recovery Provider をインストールします。保護対象の仮想マシンを実行している各 Hyper-V サーバーにプロバイダーをインストールすると、Azure Recovery Services エージェントもインストールされます。Site Recovery コンテナー内のすべての Hyper-V サーバーに、同じバージョンのプロバイダーとエージェントが必要です。<br/><br/>プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。トラフィックを直接送信することも、プロキシ経由で送信することもできます。HTTPS ベースのプロキシはサポートされていないことに注意してください。プロキシ サーバーでは、次の URL へのアクセスを許可する必要があります。<br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blog.core.windows.net <br/><br/> *store.core.windows.net <br/><br/> https://www.msftncsi.com/ncsi.txt<br/><br/>サーバーで IP アドレスベースのファイアウォール規則を使用している場合は、規則で Azure への通信が許可されていることを確認します。[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (433) プロトコルを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。
+**プロバイダーとエージェント** | Azure Site Recovery のデプロイ時に、Azure Site Recovery Provider をインストールします。保護対象の仮想マシンを実行している各 Hyper-V サーバーにプロバイダーをインストールすると、Azure Recovery Services エージェントもインストールされます。Site Recovery コンテナー内のすべての Hyper-V サーバーに、同じバージョンのプロバイダーとエージェントが必要です。<br/><br/>プロバイダーは、インターネット経由で Azure Site Recovery に接続する必要があります。トラフィックを直接送信することも、プロキシ経由で送信することもできます。HTTPS ベースのプロキシはサポートされていないことに注意してください。プロキシ サーバーでは、次の URL へのアクセスを許可する必要があります。<br/><br/> *.hypervrecoverymanager.windowsazure.com <br/><br/> *.accesscontrol.windows.net <br/><br/> *.backup.windowsazure.com <br/><br/> *.blog.core.windows.net <br/><br/> *store.core.windows.net <br/><br/> https://www.msftncsi.com/ncsi.txt<br/><br/>サーバーで IP アドレスベースのファイアウォール規則を使用している場合は、規則で Azure への通信が許可されていることを確認します。[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可する必要があります。<br/><br/>ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します。
 
 ## 保護対象のマシンの前提条件
 
@@ -469,4 +469,4 @@ Site Recovery デプロイメントの構成設定、状態、および正常性
 
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの[詳細を確認](site-recovery-failover.md)します。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

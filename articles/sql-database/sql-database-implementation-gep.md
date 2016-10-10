@@ -18,9 +18,9 @@
 
 # GEP 社のグローバルな事業展開と効率性向上を Azure が支援
 
-![GEP ロゴ](./media/sql-database-case-study-gep/geplogo.png)
+![GEP ロゴ](./media/sql-database-implementation-gep/geplogo.png)
 
-GEP 社 (以下 GEP) は、世界中の調達責任者が、事業のオペレーション、戦略、および財務パフォーマンスへの効果を最大化するためのソフトウェアとサービスを提供しています。コンサルティングおよびマネージド サービスに加えて、クラウド ベースの包括的な調達ソフトウェア プラットフォーム SMART by GEP® も提供しています。しかし GEP は、SMART by GET などのソリューションを自社のオンプレミス型データセンターでサポートすることを試みて壁に突き当たりました。莫大な投資が必要なこと、また世界各国の規制要件への対応を考慮すると、必要な投資はさらに困難なものに思えました。現在 GEP は、クラウドへの移行によって IT リソースを確保し、IT 運用の省力化を実現するとともに、世界中の顧客に新しい価値をもたらすサービスの開発に注力できるようになりました。
+GEP 社 (以下 GEP) は、世界中の調達責任者が、事業のオペレーション、戦略、および財務パフォーマンスへの効果を最大化するためのソフトウェアとサービスを提供しています。コンサルティングおよびマネージド サービスに加えて、クラウド ベースの包括的な調達ソフトウェア プラットフォーム SMART by GEP® も提供しています。しかし GEP は、SMART by GET などのソリューションを自社のオンプレミス型データセンターでサポートすることを試みて壁に突き当たりました。ばく大な投資が必要なこと、また世界各国の規制要件への対応を考慮すると、必要な投資はさらに困難なものに思えました。現在 GEP は、クラウドへの移行によって IT リソースを確保し、IT 運用の省力化を実現するとともに、世界中の顧客に新しい価値をもたらすサービスの開発に注力できるようになりました。
 
 ## Azure でサービスを拡大し成長を加速
 
@@ -48,7 +48,7 @@ Nagalkar 氏と彼のチームは、いくつかのクラウド サービスを�
 
 SMART by GEP は、Azure 上で一から構築されました。この取り組みの大きなきっかけとなったのが、オンプレミスと比べて、Azure SQL Database では優れたスケーラビリティ、ダウンタイムの抑制、および維持管理コストの削減を実現できる点でした。それだけにとどまらず、GEP はクラウド移行後に、顧客のニーズに対応するための迅速なプロトタイピングや無駄のないエンジニアリングなどの、新たな開発機会をクラウドで見出しました。Azure での開発により、開発者がオンプレミスで抱えるソフトウェアのライセンスの問題を解消できます。SMART by GEP の中枢となるのは Azure SQL Database ですが、GEP はその他さまざまな Azure サービスを使用して、SMART by GEP の改善を容易に、かつ迅速に進めています。
 
-![図 1](./media/sql-database-case-study-gep/figure1.png)図 1：SMART by GEP のアーキテクチャ
+![SMART by GEP Architecture](./media/sql-database-implementation-gep/figure1.png)図 1：SMART by GEP のアーキテクチャ
 
 ## 構造化データ
 
@@ -68,7 +68,7 @@ SMART by GEP を利用する各顧客には、オンライン トランザクシ
 
 ## 非構造化データと半構造化データ
 
-一方、SMART by GEP の顧客の中には、厳密に構造化されたストレージを必要としないケースもあります。このような種類のデータには、Azure Blob Storage、Azure Table Storage、および Azure Redis Cache が使用されます。Azure Blob Storage には、SMART by GEP ユーザーがアプリケーションにアップロードした添付ファイルがすべて格納されるほか、SMART by GEP により静的コンテンツ (カスケード スタイル シート (CSS) や JavaScript ファイルなど) が格納されます。
+一方、SMART by GEP の顧客の中には、厳密に構造化されたストレージを必要としないケースもあります。このような種類のデータには、Azure Blob Storage、Azure Table Storage、および Azure Redis Cache が使用されます。Azure Blob Storage には、SMART by GEP ユーザーがアプリケーションにアップロードした添付ファイルがすべて格納されます。またここには、SMART by GEP により静的コンテンツ (カスケード スタイル シート (CSS) や JavaScript ファイルなど) が格納されています。
 
 顧客向けデータ以外のデータ (SMART by GEP のログ データなど) は、データのスキーマ設定なしでコスト効率に優れた無制限のストレージを提供し、取得時間の短縮を実現する Azure Table Storage に格納されます。Azure Redis Cache はマスター キャッシュに使用されています。
 
@@ -82,7 +82,7 @@ Azure Access Control Service (ACS) は、SMART by GEP ユーザーに、ソフ�
 
 GEP では、SMART by GEP が顧客のニーズに速やかに対応できるよう、Azure のその他のサービスも多数利用しています。アプリケーションのプレゼンテーションおよびセキュリティで保護されたビジネス ロジックのサービスのホストには、Azure クラウド サービス (Web ロールと worker ロール) が使用されています。クラウド サービスでは、IT 部門の関与を必要とせずに、開発者がコードとしてのインフラストラクチャ (IAC) の管理を行い、SMART by GEP の新しいアプリケーションをオンプレミス型データセンターに比べ短期間でデプロイすることが可能です。GEP の開発者はクラウド サービスのステージング環境を使用して、現在の運用環境には影響を与えずに、新しいリリースをテストできます。テスト完了後は Azure の VIP スワップ機能を使用して、1 分以内にステージング コードを運用スロットに移動することで、デプロイのダウンタイムを削減できます。
 
-また、GEP ではアプリケーションの遅延時間の抑制に、Azure Content Delivery Network (CDN) を使用して、Azure Blob Storage に格納されている静的コンテンツ (CSS および JavaScript ファイルなど) をユーザーに近いエッジ サーバーに配置しています。発行/購読パターンから部分的なコマンド クエリ責務分離 (CQRS)、疎結合および非同期通信のレイヤー化アーキテクチャに至るまで、アプリケーションのアーキテクチャ パターンのサポートには Azure Service Bus が使用されています。さらに GEP では、顧客サポート サービスの向上に Azure Media Services を使用しています。Azure Media Services では、ユーザー サポート動画を簡単に投稿することができます。サポート動画でユーザーからよく寄せられる質問に答えることで、SMART by GEP ユーザーの満足度向上に貢献するとともに、GEP の顧客サポート スタッフの負荷軽減にも役立っています。
+また、GEP ではアプリケーションの遅延時間の抑制に、Azure Content Delivery Network (CDN) を使用して、Azure Blob Storage に格納されている静的コンテンツ (CSS および JavaScript ファイルなど) をユーザーに近いエッジ サーバーに配置しています。発行/購読パターンから部分的なコマンド クエリ責務分離 (CQRS)、疎結合および非同期通信のレイヤー化アーキテクチャに至るまで、アプリケーションのアーキテクチャ パターンのサポートには Azure Service Bus が使用されています。さらに GEP では、顧客サポート サービスの向上に Azure Media Services を使用しています。Azure Media Services では、ユーザー サポート動画を簡単に投稿することができます。サポート動画でユーザーからよく寄せられる質問に答えることで、SMART by GEP ユーザーの満足度向上に貢献すると共に、GEP の顧客サポート スタッフの負荷軽減にも役立っています。
 
 SMART by GEP が日々生成する数千ものトランザクション メールの送信には、Azure との統合に SendGrid .NET API が使用されています。Azure で使用するアドオン SendGrid は Azure Marketplace で直接入手できるため、簡単に使用できます。GEP の開発者は、SendGrid NuGet パッケージを Microsoft Visual Studio で使用して SMART by GEP の構成を行うことができました。IT 担当者はソフトウェアの SendGrid メール トラフィックを Azure から直接監視できます。
 
@@ -107,8 +107,4 @@ SMART by GEP が日々生成する数千ものトランザクション メール
 - GEP エンジニアリング マネージャー Sathyan Narasingh
 - GEP データベース アーキテクト Deepa Velukutty
 
-![Smart ロゴ](./media/sql-database-case-study-gep/smartbygeplogo.png)
-
-![GEP ロゴ](./media/sql-database-case-study-gep/geplogo.png)
-
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -5,7 +5,7 @@
 	  keywords="Azure AD のライセンス"
     documentationCenter=""
     authors="curtand"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -140,4 +140,4 @@ Azure AD Premium の一部の機能を構成し、使用する準備ができま
 - [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 - [Azure AD Premium ライセンスの直接購入](http://aka.ms/buyaadp)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

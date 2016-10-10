@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して Azure DocumentDB コレクションに、または Azure DocumentDB コレクションからデータを移動する方法を説明します。" 
 	services="data-factory, documentdb" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/26/2016" 
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用した DocumentDB との間でのデータの移動
 
@@ -348,18 +348,18 @@ DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許�
 
 | **プロパティ** | **説明** | **必須** |
 | -------- | ----------- | --------- |
-| type | type プロパティを **DocumentDb** に設定する必要があります。 | あり |
-| connectionString | Azure DocumentDB データベースに接続するために必要な情報を指定します。 | あり |
+| type | type プロパティを **DocumentDb** に設定する必要があります。 | はい |
+| connectionString | Azure DocumentDB データベースに接続するために必要な情報を指定します。 | はい |
 
 ## Azure DocumentDB データベースの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
  
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**DocumentDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
 | **プロパティ** | **説明** | **必須** |
 | -------- | ----------- | -------- |
-| collectionName | DocumentDB ドキュメント コレクションの名前です。 | あり |
+| collectionName | DocumentDB ドキュメント コレクションの名前です。 | はい |
 
 
 例:
@@ -390,7 +390,7 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 ## Azure DocumentDB のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
  
 **注:** コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
@@ -400,16 +400,16 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | ------------ | --------------- | ------------------ | ------------ |
-| query | データを読み取るためのクエリを指定します。 | DocumentDB でサポートされているクエリ文字列。<br/><br/>例: SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00" | いいえ <br/><br/>指定しない場合に実行される SQL ステートメント: select <構造に定義された列> from mycollection 
-| nestingSeparator | ドキュメントが入れ子であることを示す特殊文字 | 任意の文字。<br/><br/>DocumentDB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。Azure Data Factory を利用すると、nestingSeparator で階層が示されます。上記の例では「.」です。区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 | いいえ
+| query | データを読み取るためのクエリを指定します。 | DocumentDB でサポートされているクエリ文字列。<br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > "2009-01-01T00:00:00"` | いいえ <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` 
+| nestingSeparator | ドキュメントが入れ子であることを示す特殊文字 | 任意の文字。<br/><br/>DocumentDB は JSON 文書の NoSQL ストアであり、入れ子構造が許可されます。Azure Data Factory を利用すると、nestingSeparator で階層が示されます。上記の例では「.」です。区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 | なし
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | -------- | ----------- | -------------- | -------- |
-| nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<br/><br/>上記の例の場合: 出力テーブルの Name.First は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/> "First": "John"<br/>}, | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は . (ドット) です。 | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は . (ドット) です。 | いいえ | 
+| nestingSeparator | 入れ子になった文書が必要であることを示すソース列名の特殊文字。<br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、DocumentDB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/> "First": "John"<br/>}, | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 | 入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 | なし | 
 | writeBatchSize | DocumentDB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、DocumentDB との間でコピーするときのパフォーマンスを微調整できます。writeBatchSize を増やすとパフォーマンスが良くなります。DocumentDB に送信される並列要求の数が増えるためです。ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、文書のサイズ、文書内の用語の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 | Integer | いいえ (既定値: 10000) |
-| writeBatchTimeout | タイムアウトする前に操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ |
+| writeBatchTimeout | タイムアウトする前に操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | なし |
  
 ## 付録
 1. **質問:** コピー アクティビティは、既存のレコードの更新をサポートしていますか?
@@ -430,4 +430,4 @@ DocumentDB などのスキーマのないデータ ストアの場合、Data Fac
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

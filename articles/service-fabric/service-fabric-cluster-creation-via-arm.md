@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/19/2016"
+   ms.date="09/25/2016"
    ms.author="vturecek"/>
 
 # Azure Resource Manager を使用して Azure で Service Fabric クラスターを作成する
@@ -30,6 +30,8 @@
  - クラスター管理のため、Azure Active Directory (AAD) でユーザーを認証します。
 
 セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません**。新しいクラスターを作成する必要があります。
+
+セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、「[セキュリティで保護されたクラスターを Linux 上に作成する](#secure-linux-clusters)」を参照してください。
 
 ## Azure へのログイン
 このガイドでは [Azure PowerShell][azure-powershell] を使用します。新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
@@ -49,7 +51,7 @@ Set-AzureRmContext -SubscriptionId <guid>
 
 ## Key Vault の設定
 
-ガイドのこのセクションでは、Azure Service Fabric クラスターおよび Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。Key Vault の完全なガイドについては、「[Azure Key Vault の概要][key-vault-get-started]」を参照してください。
+このセクションでは、Azure Service Fabric クラスターと Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。Key Vault の完全なガイドについては、「[Azure Key Vault の概要][key-vault-get-started]」を参照してください。
 
 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。Azure で Service Fabric クラスター用の証明書を管理するために、Azure Key Vault が使用されます。Azure にクラスターがデプロイされると、Service Fabric クラスターの作成担当 Azure リソース プロバイダーにより Key Vault から証明書が取得されてクラスター VM にインストールされます。
 
@@ -59,12 +61,12 @@ Service Fabric では、X.509 証明書を使用してクラスターをセキ�
 
 ### リソース グループの作成
 
-最初の手順として、Key Vault 専用の新しいリソース グループを作成します。Key Vault を独自のリソース グループに配置することをお勧めします。これにより、コンピューティングおよびストレージ リソース グループ (Service Fabric クラスターを持つリソース グループなど) をキーとシークレットを紛失することなく削除できます。Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります。
+最初の手順として、Key Vault 専用のリソース グループを作成します。Key Vault は専用のリソース グループに配置することをお勧めします。そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります。
 
 ```powershell
 
 	New-AzureRmResourceGroup -Name mycluster-keyvault -Location 'West US'
-	WARNING: The output object type of this cmdlet will be modified in a future release.
+	WARNING: The output object type of this cmdlet is going to be modified in a future release.
 	
 	ResourceGroupName : mycluster-keyvault
 	Location          : westus
@@ -131,7 +133,7 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 
  - 証明書は秘密キーを含む必要があります。
  - 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
- - 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+ - 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
 ### アプリケーション証明書 (省略可能)
 
@@ -160,7 +162,7 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 	
 	Switching context to SubscriptionId <guid>
 	Ensuring ResourceGroup mycluster-keyvault in West US
-	WARNING: The output object type of this cmdlet will be modified in a future release.
+	WARNING: The output object type of this cmdlet is going to be modified in a future release.
 	Using existing valut myvault in West US
 	Reading pfx file from C:\path\to\key.pfx
 	Writing secret to myvault in vault myvault
@@ -177,8 +179,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 ```
 
-
-ノードの認証、管理エンドポイントのセキュリティおよび認証、X.509 証明書を使用する追加のアプリケーション セキュリティ機能用の証明書をインストールする Service Fabric クラスターの Resource Manager テンプレートを構成するためのすべての Key Vault 前提条件について説明しました。この時点で、Azure で以下の設定が完了しています。
+前掲の文字列はいずれも、ノードの認証、管理エンドポイントのセキュリティおよび認証、X.509 証明書を使用する追加のアプリケーション セキュリティ機能用の証明書をインストールする Service Fabric クラスターの Resource Manager テンプレートを構成するための Key Vault 前提条件です。この時点で、Azure で以下の設定が完了しています。
 
  - Key Vault リソース グループ
    - Key Vault
@@ -366,7 +367,7 @@ AAD の Service Fabric クラスターでの構成に関する手順の一部を
 }
 ```
 
-### Resource Manager テンプレート パラメーターの構成
+### <a "configure-arm" ></a>Resource Manager テンプレート パラメーターの構成
 
 最後に、Key Vault と AAD PowerShell コマンドからの出力値を使用してパラメーター ファイルを作成します。
 
@@ -445,6 +446,7 @@ Resource Manager テンプレートのテストに合格した場合は、次の
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
+<a name="assign-roles"></a>
 ## ユーザーをロールに割り当てる
 
 クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (read-only と admin) にユーザーを割り当てる必要があります。これは、[Azure クラシック ポータル][azure-classic-portal]で実行できます。
@@ -462,6 +464,54 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 
 >[AZURE.NOTE] Service Fabric でのロールの詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
+ <a name="secure-linux-cluster"></a>
+##  セキュリティで保護されたクラスターを Linux 上に作成する
+
+必要なプロセスがわかりやすいように、ヘルパー スクリプトを[こちら](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)に用意しました。このヘルパー スクリプトを使用するためには、あらかじめ Azure CLI をインストールし、パスを通しておく必要があります。ダウンロード後、必ず `chmod +x cert_helper.py` を実行して、スクリプトに実行権限を割り当ててください。最初に、CLI から `azure login` コマンドを実行して Azure アカウントにログインします。Azure アカウントへのログイン後、次のコマンドに示したように、証明機関の署名入りの証明書と一緒にヘルパー スクリプトを指定します。
+
+```sh
+./cert_helper.py [-h] CERT_TYPE [-ifile INPUT_CERT_FILE] [-sub SUBSCRIPTION_ID] [-rgname RESOURCE_GROUP_NAME] [-kv KEY_VAULT_NAME] [-sname CERTIFICATE_NAME] [-l LOCATION] [-p PASSWORD]
+
+The -ifile parameter can take a .pfx or a .pem file as input, with the certificate type (pfx or pem, or ss if it is a self-signed cert).
+The parameter -h prints out the help text.
+```
+
+コマンドの出力として次の 3 つの文字列が返されます。
+
+1. SourceVaultID: 作成された新しい KeyVault ResourceGroup の ID です。
+
+2. 証明書にアクセスするための CertificateUrl。
+
+3. CertificateThumbprint: 認証に使用されます。
+
+
+次の例は、コマンドの使用方法を示しています。
+
+```sh
+./cert_helper.py pfx -sub "fffffff-ffff-ffff-ffff-ffffffffffff"  -rgname "mykvrg" -kv "mykevname" -ifile "/home/test/cert.pfx" -sname "mycert" -l "East US" -p "pfxtest"
+```
+先ほどのコマンドを実行すると、次の 3 つの文字列が返されます。
+
+```sh
+SourceVault: /subscriptions/fffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/mykvrg/providers/Microsoft.KeyVault/vaults/mykvname
+CertificateUrl: https://myvault.vault.azure.net/secrets/mycert/00000000000000000000000000000000
+CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
+```
+
+ 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+
+「[Resource Manager テンプレート パラメーターの構成](#configure-arm)」で取り上げた、セキュリティで保護された Service Fabric クラスターを (AAD なしで) 作成するためには、これらのエントリが必要となります。セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。Linux プレビュー クラスターでは、AAD 認証がサポートされません。「[ユーザーをロールに割り当てる](#assign-roles)」セクションの説明に従って管理者ロールとクライアント ロールを割り当ててください。Linux プレビュー クラスターの管理者ロールとクライアント ロールを指定するときは、サブジェクト名ではなく、認証に使用する証明書の拇印を指定する必要があります (このプレビュー リリースではチェーンの検証や失効が実行されないため)。
+
+
+テスト用に自己署名証明書を使用したい場合は、同じスクリプトを使用して自己署名証明書を生成し、KeyVault にアップロードすることができます。その場合は、証明書パスと証明書名の代わりにフラグ `ss` を指定してください。たとえば自己署名証明書を作成してアップロードするには、次のコマンドを使用します。
+
+```sh
+./cert_helper.py ss -rgname "mykvrg" -sub "fffffff-ffff-ffff-ffff-ffffffffffff" -kv "mykevname"   -sname "mycert" -l "East US" -p "selftest" -subj "mytest.eastus.cloudapp.net" 
+```
+
+このコマンドからは、先ほどと同じ 3 つの文字列 (SourceVault、CertificateUrl、CertificateThumbprint) が返されます。自己署名証明書が置かれている場所と共に、これらの文字列を使用することで、セキュリティで保護された Linux クラスターを作成します。クラスターに接続するためには、自己署名証明書が必要となります。セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+
+ヘルパー スクリプトから得られるパラメーターは、「[Azure Portal でのクラスターの作成](service-fabric-cluster-creation-via-portal.md#create-cluster-portal)」セクションの説明に従ってポータルに入力することができます。
 
 ## 次のステップ
 
@@ -488,4 +538,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 [assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
 [assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

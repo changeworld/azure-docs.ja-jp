@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="ihenkel"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
    <tags
@@ -17,7 +17,7 @@
       ms.author="inhenk"/>
 
 # Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
-## 概要
+## Overview
 このトピックは、アプリケーションを Azure Active Directory (AD) と統合するためのロードマップを示すことを目的としています。以下の各セクションには、詳細なトピックの要点が記載されており、このファースト ステップ ガイドのどの部分が自分に必要かを特定できるようになっています。リンク先のページで各トピックの詳細を参照できます。
 
 ## 開始する前にインベントリを取得する
@@ -89,4 +89,4 @@ Microsoft Azure AD アプリケーション プロキシを使用すると、プ
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0928_2016-->

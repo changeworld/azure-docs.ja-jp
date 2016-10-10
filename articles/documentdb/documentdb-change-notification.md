@@ -14,7 +14,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="rest-api" 
     ms.topic="article" 
-    ms.date="06/14/2016" 
+    ms.date="09/23/2016" 
     ms.author="b-hoedid"/>
 
 # Logic Apps を使用した DocumentDB リソースの新規作成や変更の通知
@@ -391,7 +391,7 @@ Logic Apps に慣れていない場合は、[Azure Marketplace](https://portal.a
 
 #### 操作
 
-##### Request (要求)
+##### 要求
 
 ```JSON
 
@@ -404,7 +404,7 @@ Logic Apps に慣れていない場合は、[Azure Marketplace](https://portal.a
 	}   
 ```
 
-##### Response
+##### 応答
 
 ```JSON
 
@@ -470,7 +470,7 @@ QueryDocuments アクションは、API アプリへの HTTP POST 操作を実�
 
 #### 操作
 
-##### Request (要求)
+##### 要求
 
 ```JSON
 
@@ -483,7 +483,7 @@ QueryDocuments アクションは、API アプリへの HTTP POST 操作を実�
 	}
 ```
 
-##### Response
+##### 応答
 
 ```JSON
 
@@ -628,7 +628,7 @@ Azure BLOB API の使用に慣れていない場合は、「[Get started with th
 
 #### 操作
 
-##### Request (要求)
+##### 要求
 
 ```JSON
 
@@ -695,7 +695,7 @@ Azure BLOB API の使用に慣れていない場合は、「[Get started with th
 
 ```
 
-##### Response
+##### 応答
 
 ```JSON
 
@@ -798,7 +798,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 
 #### 操作
 
-##### Request (要求)
+##### 要求
 ```JSON
 
 	{
@@ -812,7 +812,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 
 ```
 
-##### Response
+##### 応答
 
 ```JSON
 
@@ -907,7 +907,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 
 #### 操作
 
-##### Request (要求)
+##### 要求
 
 ```JSON
 
@@ -925,7 +925,7 @@ emailBody では、クエリから返されるドキュメント数を連結し�
 
 ```
 
-##### Response
+##### 応答
 
 ```JSON
 
@@ -1119,7 +1119,7 @@ PowerShell で、次のようにして呼び出します。
 
 次の表は、DocDb トリガー ロジック アプリの本文を構成するトリガー パラメーターを一覧にしたものです。
 
-パラメーター | 説明 
+パラメーター | Description 
 --- | --- 
 GetUtcDate\_HoursBack | 検索開始日の時間数を設定するために使用
 sendgridUsername | 検索開始日の時間数を設定するために使用
@@ -1156,4 +1156,4 @@ Patient BLOB ファイル情報が次のように表示されます。
 
 DocumentDB をさらに詳しく知りたい場合は、こちらの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

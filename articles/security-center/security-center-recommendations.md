@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/26/2016"
+   ms.date="09/25/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターでのセキュリティに関する推奨事項の管理
@@ -69,7 +69,7 @@
 |[OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md)|OS の構成を推奨される構成規則 (パスワードの保存を許可しないなど) に合わせることをお勧めします。|
 |[システムの更新の適用](security-center-apply-system-updates.md)|システムの不足しているセキュリティ更新プログラムおよび重要な更新プログラムを VM にデプロイすることをお勧めします。|
 |[システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates)|VM を再起動してシステムの更新プログラムの適用プロセスを完了するよう推奨します。|
-|[Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)|Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。|
+|[Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)|Web エンドポイントに Web アプリケーション ファイアウォール (WAF) をデプロイすることをお勧めします。セキュリティ センターで複数の Web アプリケーションを保護するには、対象のアプリケーションを既存の WAF デプロイに追加します。(リソース マネージャー デプロイ モデルを使用して作成した) WAF アプライアンスは、別の仮想ネットワークにデプロイする必要があります。(クラシック デプロイ モデルを使用して作成した) WAF アプライアンスは、ネットワーク セキュリティ グループの使用に限定されています。今後、このサポートは、全面的にカスタマイズされた WAF アプライアンスのデプロイ (クラシック) へと拡大される予定です。Security Center では、VM 上および App Service 環境 (ASE) 上の Web アプリケーションを対象とする攻撃から保護するための WAF をプロビジョニングするよう推奨します。ASE の詳細については、[App Service 環境のドキュメント](../app-service/app-service-app-service-environments-readme.md)をご覧ください。 |
 |[アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)|WAF の構成を完了するには、WAF アプライアンスにトラフィックを再ルーティングする必要があります。この推奨事項に従うと、必要なセットアップの変更が完了します。|
 |[次世代ファイアウォールの追加](security-center-add-next-generation-firewall.md)|セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。|
 |[NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)|VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。|
@@ -84,6 +84,8 @@
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。|
 |[セキュリティの連絡先詳細の提供](security-center-provide-security-contact-details.md) | 各サブスクリプションのセキュリティの連絡先情報を提供することをお勧めします。連絡先情報は、電子メール アドレスと電話番号です。セキュリティ チームがリソースの侵害に気付いた場合、この情報を使用してご連絡します。 |
 | [OS バージョンの更新](security-center-update-os-version.md) | クラウド サービスのオペレーティング システム (OS) のバージョンを、ご利用の OS ファミリで利用できる最新のバージョンに更新するようお勧めします。Cloud Services の詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページをご覧ください。 |
+| [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) | VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
+| [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-recommendation) | VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 
 推奨事項をフィルター処理し、無視することができます。
 
@@ -115,4 +117,4 @@
 [2]: ./media/security-center-recommendations/filter-recommendations.png
 [3]: ./media/security-center-recommendations/dismiss-recommendations.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

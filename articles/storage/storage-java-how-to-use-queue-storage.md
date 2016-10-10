@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -14,11 +14,13 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+	ms.author="cbrooks;robmcm"/>
 
 # Java から Queue ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Overview
 
@@ -391,4 +393,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage Services REST API (Azure Storage サービスの REST API)]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

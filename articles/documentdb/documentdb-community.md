@@ -13,7 +13,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="data-services"
-  ms.date="09/12/2016"
+  ms.date="09/26/2016"
   ms.author="andrl"/>
 
 # コミュニティ ポータル
@@ -120,8 +120,9 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 
 | イベント名 | 講演者 | 場所 | 日付 | ハッシュタグ |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu、Tara Jana | アトランタ (ジョージア州) | 2016 年 9 月 26 ～ 30 日 | [#MSIgnite](https://twitter.com/MS_Ignite) |
-| [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | TBD | ニューヨーク州ニューヨーク | 2016 年 9 月 26 ～ 29 日 | [#StrataConf](https://twitter.com/strataconf) |
+| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb)<br><br>[: Enable digital transformation using The Unreasonable Effectiveness of A.C.I.D with Joseph Sirosh (A.C.I.D のとてつもない有効性を利用したデジタル変換の有効化: Joseph Sirosh)](https://myignite.microsoft.com/sessions/34953)<br><br>[: Azure DocumentDB at massive scale: Customer success and design patterns with Syam Kumar Nair and Andrew Liu (巨大なスケールの Azure DocumentDB: 顧客の成功と設計パターン: Syam Kumar Nair および Andrew Liu)](https://myignite.microsoft.com/sessions/3066)<br><br>[: Manage IoT assets with Node.js and DocumentDB with Joshua Davis (Node.js および DocumentDB を使用した IoT 資産の管理: Joshua Davis)](https://myignite.microsoft.com/sessions/39704)<br><br>[: Build smarter and scalable applications using Microsoft Azure Database Services with Tara Jana and Moshe Gutman (Microsoft Azure Database Services を使用したスマートでスケーラブルなアプリケーションの構築: Tara Jana および Moshe Gutman)](https://myignite.microsoft.com/sessions/2633)| Andrew Liu、Syam Kumar Nair、および Tara Jana | アトランタ (ジョージア州) | 2016 年 9 月 26 ～ 30 日 | [#MSIgnite](https://twitter.com/MS_Ignite) |
+| [Ignite で会いましょう: DocumentDB: 大規模アプリ向けの高度な機能](http://www.meetup.com/Azure-in-the-ATL/events/234252070/) | Andrew Liu、Syam Kumar Nair | アトランタ (ジョージア州) | 2016 年 9 月 27 日 | [#MSIgnite](https://twitter.com/MS_Ignite) [@FlatironCity](https://twitter.com/FlatironCity) |
+| [Strata + Hadoop World](http://conferences.oreilly.com/strata/hadoop-big-data-ny/?cmp=kn-data-confreg-home-stny16_bing_branded) | 弊社のブースをお訪ねください! | ニューヨーク州ニューヨーク | 2016 年 9 月 26 ～ 29 日 | [#StrataConf](https://twitter.com/strataconf) |
 | [Capital City .NET Users Group](http://www.meetup.com/tally-dot-net/events/233768568/) | Santosh Hari | タラハッシー (フロリダ州) | 2016 年 11 月 3 日 | 該当なし |
 
 
@@ -137,7 +138,8 @@ DocumentDB の最新のニュースと機能については、[弊社のブロ�
 | [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | Web キャスト | 2016 年 6 月 20 日 | [Do Logic Apps support error handling? (Logic Apps によるエラー処理のサポート)](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
 | [Meetup: UK Azure User Group](http://www.meetup.com/UKAzureUserGroup/events/229673468/)| Andrew Liu | ロンドン (英国) | 2016 年 5 月 12 日 | 該当なし
 |[Meetup: ONETUG - Orlando .NET User Group ](http://www.meetup.com/ONETUG/events/230797164/)| Santosh Hari| オーランド (フロリダ州)| 2016 年 5 月 12 日| 該当なし 
-| [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | 該当なし| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | ニューヨーク州ニューヨーク市 | 2016 年 4 月 21 日 | 該当なし |
+| [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | リバプール (英国) | 2016 年 5 月 4 ～ 7日 | 該当なし| 
+| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | ニューヨーク州ニューヨーク市 | 2016 年 4 月 21 日 | 該当なし |
 | [Integration User Group](http://www.integrationusergroup.com/#) | Howard Edidin | ウェビナー | 2016 年 4 月 25 日 | 該当なし |
 | [グローバル Azure ブートキャンプ: 南カリフォルニア](http://xprs.imcreator.com/free/vishalishere/gab2016) | Leonard Lobel | カリフォルニア州オレンジ | 2016 年 4 月 16 日 | 該当なし |
 | [グローバル Azure ブートキャンプ: レドモンド](https://www.eventbrite.com/e/2016-global-azure-bootcamp-redmond-wa-tickets-21387752343) | David Makogon | ワシントン州レドモンド | 2016 年 4 月 16 日 | 該当なし |
@@ -269,4 +271,4 @@ DocumentDB ウィザードは、Azure DocumentDB を最大限に活用できる�
 
 DocumentDB ウィザードになりたいですか。 DocumentDB ウィザードになるための基準はありませんが、StackOverflow や MSDN などのオンライン フォーラム、wiki、オンライン コンテンツ、ユーザー グループ、ポッドキャスト、Web サイト、ブログ、ソーシャル メディア、記事、書籍での貢献度が評価されます。[電子メールを送信](mailto:askdocdb@microsoft.com)することで、自薦または他薦できます。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -14,7 +14,7 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+	ms.author="dinesh;robmcm"/>
 
 # Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 
@@ -182,4 +182,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

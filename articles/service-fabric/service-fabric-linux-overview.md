@@ -1,6 +1,6 @@
 <properties
    pageTitle="Linux 上の Azure Service Fabric | Microsoft Azure"
-   description="Service Fabric クラスターは Linux と Java をサポートするので、Java で記述された Service Fabric アプリケーションを Linux にデプロイし、ホストすることができます。"
+   description="Service Fabric クラスターは Linux と Java をサポートするので、Java と C# で記述された Service Fabric アプリケーションを Linux にデプロイし、ホストすることができます。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -13,27 +13,36 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/14/2016"
+   ms.date="09/26/2016"
    ms.author="SubramaR"/>
 
 # Linux 上の Service Fabric
 
-[このブログ投稿](https://azure.microsoft.com/blog/service-fabric-on-linux-support-available-this-month/)で発表したように、プレビューは 9 月 26 日に一般公開されます。Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。さらに、高度な Service Fabric フレームワーク (Reliable Services と Reliable Actors) を、Linux 上の Java で使用できるようになりました。
+Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。Service Fabric フレームワーク (Reliable Services と Reliable Actors) を、Linux 上の C# (.NET Core) の他に、Java でも使用できるようになりました。任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築することもできます。さらに、プレビューでは、調整 Docker コンテナーもサポートされています。Docker コンテナーは、ゲスト実行可能ファイルまたはネイティブ Service Fabric サービスを実行できます。これらは、Service Fabric フレームワークを使用します。
+
+Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric と同じです (OS の詳細およびプログラミング言語のサポートを除く)。したがって、[既存のドキュメント](http://aka.ms/servicefabricdocs)のほとんどがこちらにも適用されるため、テクノロジを理解するうえで役立ちます。
 
 > [AZURE.VIDEO service-fabric-linux-preview]
 
 ## サポートされるオペレーティング システムとプログラミング言語
 
-制限付きプレビューは、Ubuntu Server 16.04 が実行されている Azure でマルチマシン クラスターのほか、ワンボックス開発クラスターとの作成をサポートします。
+制限付きプレビューは、Ubuntu Server 16.04 が実行されている Azure でマルチマシン クラスターのほか、ワンボックス開発クラスターとの作成をサポートします。プレビューでは、ゲスト実行可能ファイルと調整 Docker コンテナーの他に、Reliable Actors と Reliable Stateless Services フレームワークを Java および C# でサポートしています。
 
-任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築できます。Java または C# を使用して、Docker コンテナーの調整のほか、Reliable Services フレームワークや Reliable Actors フレームワークに基づくサービスを構築することもできます。
+>[AZURE.NOTE] Reliable Collection は Linux ではまだサポートされていません。スタンド アロン クラスターも、サポートされていません。プレビューでは、ワン ボックスと Azure Linux マルチマシン クラスターだけがサポートされています。
 
->[AZURE.NOTE] Reliable Collection は Linux ではまだサポートされていません。
+## サポートされているツール
 
-Linux 上の Service Fabric は、概念的には Windows 上の Service Fabric と同じです (OS の詳細およびプログラミング言語のサポートを除く)。したがって、[既存のドキュメント](http://aka.ms/servicefabricdocs)のほとんどがこちらにも適用されるため、テクノロジを理解するうえで役立ちます。
+プレビューでは、Azure CLI を介したクラスターの対話操作がサポートされています。Java 開発者のために、Eclipse および Yeoman との統合が提供されており、Eclipse は Linux および OSX 上でサポートされています。OSX の統合では、内部的には vagrant を介して Linux VM を使用します。C# 開発者のためには、アプリケーション テンプレートを生成できるように、Yeoman との統合が提供されています。
 
 ## 次のステップ
 
-[Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解します。
 
-<!---HONumber=AcomDC_0921_2016-->
+1. [Reliable Actors](service-fabric-reliable-actors-introduction.md) および [Reliable Services](service-fabric-reliable-services-introduction.md) プログラミング フレームワークを理解します。
+
+2. [Linux で開発環境を準備する](service-fabric-get-started-linux.md)
+
+3. [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
+
+4. [Linux 上で最初の Service Fabric Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+
+<!---HONumber=AcomDC_0928_2016-->

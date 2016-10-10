@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="07/27/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"/>
 
 # ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング
@@ -27,7 +27,7 @@ Stream Analytics のジョブ定義は、入力、クエリ、および出力で
 ジョブにはデータ ストリーミング用に少なくとも 1 つの入力ソースが必要です。データ ストリームの入力ソースは、Azure Service Bus Event Hub または Azure BLOB ストレージに格納できます。詳細については、「[Azure Stream Analytics の概要](stream-analytics-introduction.md)」および「[Azure Stream Analytics の使用](stream-analytics-get-started.md)」を参照してください。
 
 ## ストリーミング ユニットの構成
-ストリーミング ユニット (SU) は、Azure Stream Analytics ジョブを実行するリソースとパワーを表します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。
+ストリーミング ユニット (SU) は、Azure Stream Analytics ジョブを実行するために必要なリソースと処理能力を表します。SU は、CPU、メモリ、および読み取りと書き込みのレートを組み合わせた測定に基づいて、相対的なイベントの処理能力を記述する方法を提供します。各ストリーミング ユニットは、約 1 MB/秒のスループットに対応します。
 
 特定のジョブに必要な SU の数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。Azure クラシック ポータルを使用して、1 つのジョブにクォータまでのストリーミング ユニットを設定できます。また、1 つの Azure サブスクリプションの既定のクォータでは、ストリーミング ユニットの最大数は特定のリージョン内のすべての分析ジョブを合わせて 50 個です。サブスクリプションのストリーミング ユニット数を増やすには、[Microsoft サポート](http://support.microsoft.com)までご連絡ください。
 
@@ -350,4 +350,4 @@ Azure ポータルの [設定] からスケールの設定にアクセスでき�
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="03/04/2016"
+   ms.date="09/27/2016"
    ms.author="femila"/>
 
 # Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
@@ -176,7 +176,7 @@ Windows Server AD DS は多くの場合、Azure 上の VM としてデプロイ�
 
 このケースで AD FS をデプロイする大まかな手順は次のとおりです。
 
-1. VPN または [ExpressRoute](http://azure.microsoft.com/services/expressroute/) を使用して、[クロスプレミス接続を備えた仮想ネットワーク](../vpn-gateway/vpn-gateway-cross-premises-options.md)を作成します。
+1. VPN または [ExpressRoute](http://azure.microsoft.com/services/expressroute/) を使用して、クロスプレミス接続を備えた仮想ネットワークを作成します。
 
 2. 仮想ネットワーク上にドメイン コントローラーをデプロイします。この手順は省略可能ですが、実施することをお勧めします。
 
@@ -233,7 +233,7 @@ Office 365 のサインインに対応することのみが目的である場合
 | ------------- | ------------- |
 | 1\.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 | 1\.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 |
 | 2\.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 | 2\.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 |
-| 3\.Office 365 がユーザーを Azure AD にリダイレクトします。 | 3\.Office 365 がユーザーを Azure AD にリダイレクトします。 |
+| 手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 | 手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |
 | 4\.Azure AD はユーザーを認証できませんが、オンプレミスの AD FS との間に信頼関係があることがわかっているため、ユーザーを AD FS にリダイレクトします。 | 4\.Azure AD は Kerberos チケットを直接受理することができず、信頼関係が存在しないため、ユーザーに資格情報の入力を要請します。 |
 | 5\.ユーザーは Kerberos チケットを AD FS STS に送信します。 | 5\.ユーザーは、同じオンプレミスのパスワードを入力します。Azure AD は、DirSync によって同期されているユーザー名とパスワードに照らして入力内容を検証します。 |
 | 6\.AD FS は Kerberos チケットを必要なトークン形式/要求に変換し、ユーザーを Azure AD にリダイレクトします。 | 6\.Azure AD がユーザーを Office 365 にリダイレクトします。 |
@@ -275,7 +275,7 @@ Office 365 で DirSync とパスワード同期を使用する場合 (AD FS を�
 
 ![Cloud-only AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_cloud.png) **図 1**
 
-#### 説明
+#### Description
 
 SharePoint は Azure 仮想マシンにデプロイされ、アプリケーションは会社のネットワーク リソースに依存していません。また、Windows Server AD DS は必要ですが、それがオンプレミスにある必要は*ありません*。Kerberos またはフェデレーションによる信頼関係は不要です。Windows Server AD DS ドメインはクラウド内の Azure 仮想マシンでもホストされており、ユーザーはそのドメインに対し、アプリケーションを介して自己プロビジョニングすることになります。
 
@@ -303,7 +303,7 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
 
 ![Federation with cross-premises connectivity](media/active-directory-deploying-ws-ad-guidelines/Federation_xprem.png) **図 2**
 
-#### 説明
+#### Description
 
 社内ユーザーによって使用されている、オンプレミスにデプロイされた要求対応のアプリケーションにインターネットから直接アクセスできるようにします。アプリケーションは、データの保存先となる SQL データベースへの Web フロントエンドとして機能しています。アプリケーションによって使用される SQL Server も会社のネットワークに配置されています。社内ユーザーのアクセス用に、2 つの Windows Server AD FS STS と 1 つのロード バランサーがオンプレミスにデプロイされています。今後は、既存の社内ユーザーだけでなく、自社の ID を使用するビジネス パートナーも、インターネット経由でアプリケーションに直接アクセスする必要があります。
 
@@ -330,7 +330,7 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
 
 ![Cross-premises AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_xprem.png) **図 3**
 
-#### 説明
+#### Description
 
 LDAP 対応アプリケーションを Azure 仮想マシンにデプロイします。このアプリケーションは Windows 統合認証をサポートし、構成データとユーザー プロファイル データのリポジトリとして Windows Server AD DS を使用します。このシナリオの目的は、会社の既存の Windows Server AD DS を利用し、かつシングル サインオンにアプリケーションを対応させることです。アプリケーションは要求対応ではありません。また、ユーザーはインターネットから直接アプリケーションにアクセスする必要があります。パフォーマンスとコストを考慮し、会社のドメインに属している 2 つのドメイン コントローラーを別途、アプリケーションと共に Azure にデプロイすることになりました。
 
@@ -558,4 +558,4 @@ Windows Server AD FS フェデレーション サービスをスタンドアロ�
 
 > [AZURE.NOTE] Azure で Windows Server AD FS のエンドポイントの負荷分散を行うには、同じクラウド サービス内の Windows Server AD FS ファームのすべてのメンバーが HTTP ポート (既定では 80) と HTTPS ポート (既定では 443) に Azure の負荷分散機能を使用するように構成します。詳細については、Azure サイトで「[LoadBalancerProbe スキーマ](https://msdn.microsoft.com/library/azure/jj151530)」を参照してください。Windows Server のネットワーク負荷分散 (NLB) は Azure でサポートされていません。
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

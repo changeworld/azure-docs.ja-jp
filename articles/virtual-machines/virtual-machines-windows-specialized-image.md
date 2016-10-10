@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/26/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Azure Resource Manager デプロイメント モデルでの Windows 仮想マシンのコピーの作成
@@ -32,7 +32,7 @@
 
 - **Windows を実行している Azure 仮想マシンがある**。この仮想マシンは、クラシック デプロイメント モデルまたは Resource Manager デプロイメント モデルのいずれかを使用して作成されている必要があります。また、オペレーティング システムの構成、データ ディスクの接続、その他のカスタマイズ (必要なアプリケーションのインストールなど) が完了している必要があります。この VM を使用して、コピーを作成します。ソース VM の作成については、[Resource Manager を使用した Windows VM の作成方法](virtual-machines-windows-ps-create.md)に関するページをご覧ください。
 
-- 使用しているコンピューターに **Azure PowerShell 1.0 以降**がダウンロードおよびインストールされていること。また、Azure サブスクリプションにサインインする必要があります。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+- 使用しているコンピューターに **Azure PowerShell 1.0 以降**がインストールされていること。また、Azure サブスクリプションにサインインしている必要があります。詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
 - **AzCopy ツール**がダウンロードおよびインストールされていること。このツールの詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../storage/storage-use-azcopy.md)」を参照してください。
 
@@ -126,4 +126,4 @@
 
 Azure PowerShell で新しい仮想マシンを管理する方法については、[Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0525_2016-->
+<!---HONumber=AcomDC_0928_2016-->

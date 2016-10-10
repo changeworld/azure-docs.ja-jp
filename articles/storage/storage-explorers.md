@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/20/2016"
-	ms.author="micurd"/>
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram"/>
 
 # Azure Storage クライアント ツール
 
@@ -250,4 +250,4 @@ Microsoft では次のサードパーティ製ツールが主張する機能と�
   </tr>
 </table>
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

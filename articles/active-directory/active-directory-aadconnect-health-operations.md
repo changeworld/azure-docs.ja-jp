@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="karavar"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -89,7 +89,7 @@ Azure AD Connect Health for AD DS:
 
 [//]: # "RBAC セクションの開始"
 ## ロール ベースの Access Control を使用してアクセスを管理する
-### 概要
+### Overview
 Azure AD Connect Health の[ロール ベースの Access Control](role-based-access-control-configure.md) では、グローバル管理者以外のユーザー/グループに Azure AD Connect Health サービスへのアクセスを提供します。これは、目的のユーザー/グループにロールを割り当て、ディレクトリ内のグローバル管理者を制限するメカニズムを用意することで実現します。
 
 #### ロール
@@ -97,9 +97,9 @@ Azure AD Connect Health では、次の組み込みのロールをサポート�
 
 | ロール | アクセス許可 |
 | ----------- | ---------- |
-| Owner | 所有者は、***アクセスの管理*** (例: ユーザー/グループへのロールの割り当て)、***ポータルからのすべての情報の表示*** (例: アラートの表示)、Azure AD Connect Health 内の***設定の変更*** (例: 電子メール通知) を実行できます。<br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
-|Contributor| 共同作成者は、ポータルからの***すべての情報の表示*** (例: アラートの表示) と Azure AD Connect Health 内の***設定の変更*** (例: 電子メール通知) を実行できます。|
-|Reader| 閲覧者は、ポータルから Azure AD Connect Health 内の***すべての情報の表示*** (例: アラートの表示) を実行できます。|
+| 所有者 | 所有者は、***アクセスの管理*** (例: ユーザー/グループへのロールの割り当て)、***ポータルからのすべての情報の表示*** (例: アラートの表示)、Azure AD Connect Health 内の***設定の変更*** (例: 電子メール通知) を実行できます。<br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
+|共同作成者| 共同作成者は、ポータルからの***すべての情報の表示*** (例: アラートの表示) と Azure AD Connect Health 内の***設定の変更*** (例: 電子メール通知) を実行できます。|
+|閲覧者| 閲覧者は、ポータルから Azure AD Connect Health 内の***すべての情報の表示*** (例: アラートの表示) を実行できます。|
 
 上記以外のすべてのロール ("ユーザー アクセス管理者" や "DevTest Labs ユーザー" など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。
 
@@ -158,4 +158,4 @@ Azure AD Connect Health Role の [ロール ベースの Access Control] 部分�
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

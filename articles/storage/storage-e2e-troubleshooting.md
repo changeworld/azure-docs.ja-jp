@@ -13,7 +13,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="08/03/2016"
-	ms.author="robinsh"/>
+	ms.author="jahogg;robinsh"/>
 
 
 # Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
@@ -366,4 +366,4 @@ Azure Storage におけるエンド ツー エンド シナリオのトラブル
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 - [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

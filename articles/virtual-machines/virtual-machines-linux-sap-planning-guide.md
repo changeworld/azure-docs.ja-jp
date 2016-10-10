@@ -1,19 +1,19 @@
 <properties
    pageTitle="Linux 仮想マシン (VM) 上の SAP NetWeaver – 計画および実装ガイド | Microsoft Azure"
    description="Linux 仮想マシン (VM) 上の SAP NetWeaver – 計画および実装ガイド"
-   services="virtual-machines-linux,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -1945,4 +1945,4 @@ Azure での SAP システムの高可用性における重要なポイントは
 * SAP ダイアログ インスタンスのバックアップは、通常単にダイアログ インスタンスを再デプロイするほうが速いため、ほとんど意味がありません。
 * SAP システムのグローバル ディレクトリを含む VM を異なるインスタンスのすべてのプロファイルと共にバックアップすることは合理的であり、これは、Windows Backup (または Linux 上の tar など) で実行する必要があります。Windows Server 2008 (R2) と Windows Server 2012 (R2) にはいくつかの違いがあり、このため最新の Windows Server リリースを使用したバックアップのほうが簡単であるため、Windows Server 2012 (R2) を Windows ゲスト オペレーティング システムとして実行することをお勧めします。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

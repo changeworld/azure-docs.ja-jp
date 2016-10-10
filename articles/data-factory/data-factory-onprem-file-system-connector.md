@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/01/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータを移動する
 
@@ -502,9 +502,9 @@ typeProperties セクションは、データセットの型ごとに異なり�
 folderPath | フォルダーへのサブ パス。文字列内の特殊文字にはエスケープ文字 "\" を使用します。例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」をご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 | はい
 fileName | テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。このプロパティの値を指定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。<br/><br/>Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt | なし
 partitionedBy | partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 | なし
-形式 | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」をご覧ください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 | いいえ
+形式 | 次のファイル形式がサポートされます: **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、**ParquetFormat**。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。 | いいえ
 fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: * (複数の文字) および ? (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2014-1-?.txt"<br/><br/>**注**: fileFilter は FileShare 入力データセットに適用されます。 | いいえ
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | いいえ |
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」を参照してください。 | なし |
 
 > [AZURE.NOTE] fileName と fileFilter は、同時に使用することができません。
 
@@ -572,7 +572,7 @@ false | mergeFiles | ソース フォルダー Folder1 が次のような構造�
 
 [AZURE.INCLUDE [data-factory-column-mapping](../../includes/data-factory-column-mapping.md)]
 
-## パフォーマンスとチューニング 
+## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
 
@@ -582,4 +582,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

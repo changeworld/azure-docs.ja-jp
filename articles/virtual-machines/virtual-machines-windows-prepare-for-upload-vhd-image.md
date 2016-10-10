@@ -22,7 +22,11 @@ Windows VM をオンプレミスから Azure にアップロードするには�
 
 ## 仮想ディスクの準備
 
->[AZURE.NOTE] 新しい VHDX 形式は、Azure ではサポートされていません。VHD は動的ではなく、固定サイズである必要があります。必要に応じて、以下の VHDX またはダイナミック ディスクからの変換の詳細をご覧ください。VHD のサイズの上限は、1,023 GB です。
+>[AZURE.NOTE] 
+Azure では、VHD ファイル形式の[第 1 世代の仮想マシン](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx)のみがサポートされています。新しい VHDX 形式は、Azure ではサポートされていません。
+>
+> VHD は動的ではなく、固定サイズである必要があります。必要に応じて、以下の VHDX またはダイナミック ディスクからの変換の詳細をご覧ください。VHD のサイズの上限は、1,023 GB です。
+
 
 Windows VHD がローカル サーバーで正しく動作していることを確認します。Azure に変換またはアップロードする前に VM 自体に発生しているすべてのエラーを解決します。
 
@@ -319,4 +323,4 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](virtual-machines-windows-upload-image.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

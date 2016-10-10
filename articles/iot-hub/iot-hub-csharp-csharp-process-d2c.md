@@ -417,8 +417,8 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [Azure Blob storage]: ../storage/storage-dotnet-how-to-use-blobs.md
 [Azure Data Factory]: https://azure.microsoft.com/documentation/services/data-factory/
 [HDInsight (Hadoop)]: https://azure.microsoft.com/documentation/services/hdinsight/
-[Service Bus queue]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
-[Service Bus キュー]: ../service-bus/service-bus-dotnet-get-started-with-queues.md
+[Service Bus queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
+[Service Bus キュー]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 
 [D2C (デバイスからクラウド)]: iot-hub-devguide.md#d2c
 
@@ -449,4 +449,4 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-c2d]: iot-hub-csharp-csharp-process-d2c.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

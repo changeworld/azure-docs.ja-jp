@@ -72,7 +72,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | ----------------------- |
 | client\_id | 必須 | [Azure ポータル](https://portal.azure.com)によってアプリに割り当てられたアプリケーション ID。 |
 | response\_type | 必須 | 応答の種類。承認コード フローでは `code` を指定する必要があります。 |
@@ -95,7 +95,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | code | アプリが要求した authorization\_code。アプリは承認コードを使用して、対象リソースの access\_token を要求します。authorization\_code は非常に短命です。通常、約 10 分で期限が切れます。 |
 | state | 前の表の詳しい説明を参照してください。要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
@@ -109,7 +109,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -120,7 +120,7 @@ error=access_denied
 authorization\_code を取得したところで、`POST` 要求を `/token` エンドポイントに送信して、トークンの `code` を目的のリソースに適用できます。Azure AD B2C では、トークンを要求できる唯一のリソースはアプリの独自のバックエンド Web API です。自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
 
 ```
-POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
+POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -128,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | --------------------- |
 | p | 必須 | 認証コードの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。このパラメーターは、POST 本文ではなく、"*クエリ文字列*" に追加することに注意してください。 |
 | client\_id | 必須 | [Azure ポータル](https://portal.azure.com)によってアプリに割り当てられたアプリケーション ID。 |
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 	"refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | not\_before | トークンが有効と見なされる時間 (エポック時間)。 |
 | token\_type | トークン タイプ値。Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -167,12 +167,12 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
-## 3\.トークンを使用する
+## 手順 3.トークンを使用する
 `access_token` を正常に取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、バックエンド Web API への要求に使用することができます。
 
 ```
@@ -185,20 +185,20 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 アクセス トークンと ID トークンの有効期限は非常に短いです。リソースに引き続きアクセスできるようにするには、有効期限が切れた後で更新する必要があります。トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
 
 ```
-POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
+POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | -------- |
 | p | 必須 | 元の refresh\_token の取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。このパラメーターは、POST 本文ではなく、"*クエリ文字列*" に追加することに注意してください。 |
 | client\_id | 推奨 | [Azure ポータル](https://portal.azure.com)によってアプリに割り当てられたアプリケーション ID。 |
 | grant\_type | 必須 | 許可の種類。承認コード フローのこのレッグの `refresh_token` を指定する必要があります。 |
 | scope | 推奨 | スコープのスペース区切りリスト。1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できる**アクセス トークン**をアプリが必要とすることを示します。`offline_access` 範囲は、リソースに長期アクセスするためにアプリは **refresh\_token** を必要とすることを示します。Azure AD B2C の **id\_token** を要求するために、`openid` スコープを使用することもできます。 |
-| redirect\_uri | 省略可能。 | authorization\_code を受け取った、アプリケーションの redirect\_uri。 |
+| redirect\_uri | 省略可能 | authorization\_code を受け取った、アプリケーションの redirect\_uri。 |
 | refresh\_token | 必須 | フローの第 2 段階で取得した元の refresh\_token。 |
 
 正常なトークン応答は次のようになります。
@@ -213,7 +213,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 	"refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | not\_before | トークンが有効と見なされる時間 (エポック時間)。 |
 | token\_type | トークン タイプ値。Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -231,7 +231,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -244,4 +244,4 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに**ネイティブ クライアント**を追加します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

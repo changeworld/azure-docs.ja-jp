@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="castLabs を使用して Azure Media Services に Widevine ライセンスを配信する" 
+	pageTitle="castLabs を使用して Azure Media Services に Widevine ライセンスを配信する | Microsoft Azure" 
 	description="この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="Mingfeiy;willzhan;Juliako"/>
 
 
@@ -23,7 +23,7 @@
 - [Axinom](media-services-axinom-integration.md)
 - [castLabs](media-services-castlabs-integration.md)
 
-##概要
+##Overview
 
 この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは **castLabs** ライセンス サーバーから取得します。
 
@@ -50,7 +50,7 @@ CastLabs と AMS の両方でライセンスの承認に使用する JWT (JSON W
 
 次の表では AMS での JWT トークンについて説明しています。
 
-Issuer|選択したからセキュリティ トークン サービス (STS) から取得した発行者の文字列
+発行者|選択したからセキュリティ トークン サービス (STS) から取得した発行者の文字列
 ---|---
 対象ユーザー|使用される STS から取得した対象文字列
 Claims|一連の要求
@@ -62,7 +62,7 @@ SigningCredentials|PlayReady ライセンス サーバー、castLabs ライセ�
 
 次の表では castLabs での JWT トークンについて説明してます。
 
-名前|説明
+名前|Description
 ---|---
 optData|ユーザーに関する情報が含まれる JSON 文字列 
 crt|アセット、ライセンス情報、再生権に関する情報が含まれる JSON 文字列
@@ -122,4 +122,4 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

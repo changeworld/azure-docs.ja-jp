@@ -18,7 +18,7 @@
    
 # Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
 
-![ロゴ](./media/sql-database-case-study-daxko/csidaxkologo25.png)
+![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI Software 社 (以下 CSI Software) は問題に直面していました。自社の包括的な企業向けソフトウェア ソリューションの成功により、フィットネス レクリエーション センターの顧客基盤が急速に拡大する一方で、顧客数の増加により、IT インフラストラクチャのニーズに応えることが難しくなっていたのです。CSI Software は、拡大するデータベースの管理に伴う経費の増加に頭を悩ませるようになりました。また、この問題により、ソフトウェアのモビリティ機能などの新たな取り組みに向けた開発リソースがひっ迫していました。
 
@@ -75,7 +75,7 @@ SpectrumNG では Web ロールを使用します。マルチテナント型ア�
 このサービスの Web 層には、日時に基づく Azure 自動スケールが活用されています。各リージョンのデータセンターのタイム ゾーンに従って、使用可能なリソースが自動的に増加され、業務時間中の使用率上昇に対応します。一方、顧客の需要が低くなる週末には、リソースをスケールダウンする設定になっています。
 
      
-![図 1](./media/sql-database-case-study-daxko/figure1.png)
+![Daxko/CSI Architecture](./media/sql-database-implementation-daxko/figure1.png)
 
 図 1.クラウド サービスの worker ロールにより、Azure SQL Database から構造化データが、また Table Storage からは半構造化データが引き出されます。SpectrumNG ユーザーはクラウド サービスの Web ロールを通じて、これらのデータとやり取りを行います。
 
@@ -105,4 +105,4 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 
 - 自動スケールの詳細については、[クラウド サービスのスケーリング](../cloud-services/cloud-services-how-to-scale.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

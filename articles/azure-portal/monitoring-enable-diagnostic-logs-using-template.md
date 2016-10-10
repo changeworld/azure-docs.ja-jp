@@ -13,11 +13,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/17/2016"
+	ms.date="09/26/2016"
 	ms.author="johnkem"/>
 
 # Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
-この記事では、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミングやストレージ アカウントへのアーカイブを自動的に開始できます。
+この記事では、[Azure Resource Manager テンプレート](../resource-group-authoring-templates.md)を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
 
 Resource Manager テンプレートを使用して診断ログを有効にする方法は、リソースの種類によって異なります。
 
@@ -36,9 +36,9 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## 非コンピューティング リソース テンプレート
 非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
-1. (ストレージ アカウントへの診断ログのアーカイブおよび Event Hubs へのログのストリーミングを有効にするために) パラメーター BLOB にストレージ アカウント名と Service Bus 規則 ID のパラメーターを追加します。
+1. (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするために) パラメーター BLOB に、ストレージ アカウント名、Service Bus 規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します。
 
-    ```
+    ```json
     "storageAccountName": {
       "type": "string",
       "metadata": {
@@ -50,11 +50,17 @@ Resource Manager テンプレートを使用して診断ログを有効にする
       "metadata": {
         "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
       }
+    },
+    "workspaceId":{
+      "type": "string",
+      "metadata": {
+        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+      }
     }
     ```
 2. 診断ログを有効にするリソースのリソース配列に、`[resource namespace]/providers/diagnosticSettings` 型のリソースを追加します。
 
-    ```
+    ```json
     "resources": [
       {
         "type": "providers/diagnosticSettings",
@@ -66,6 +72,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
         "properties": {
           "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
           "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+          "workspaceId": "[parameters('workspaceId')]",
           "logs": [ 
             {
               "category": "/* log category name */",
@@ -85,76 +92,85 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 
 ネットワーク セキュリティ グループを作成し、Event Hubs およびストレージ アカウント内のストレージへのストリーミングを有効にする例を次に示します。
 
-```
+```json
+
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "nsgName": {
-            "type": "string",
-			"metadata": {
-				"description": "Name of the NSG that will be created."
-			}
-        },
-		"storageAccountName": {
-			"type": "string",
-			"metadata": {
-				"description":"Name of the Storage Account in which Diagnostic Logs should be saved."
-			}
-		},
-		"serviceBusRuleId": {
-			"type": "string",
-			"metadata": {
-				"description":"Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
-			}
-		}
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nsgName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the NSG that will be created."
+      }
     },
-    "variables": {},
-    "resources": [
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
+      }
+    },
+    "serviceBusRuleId": {
+      "type": "string",
+      "metadata": {
+        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+      }
+    },
+    "workspaceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Log Analytics workspace ID for the Log Analytics workspace to which logs will be sent."
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('nsgName')]",
+      "apiVersion": "2016-03-30",
+      "location": "westus",
+      "properties": {
+        "securityRules": []
+      },
+      "resources": [
         {
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "name": "[parameters('nsgName')]",
-            "apiVersion": "2016-03-30",
-            "location": "westus",
-            "properties": {
-                "securityRules": []
-            },
-            "resources": [
-				{
-					"type": "providers/diagnosticSettings",
-					"name": "Microsoft.Insights/service",
-					"dependsOn": [
-						"[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
-					],
-					"apiVersion": "2015-07-01",
-					"properties": {
-						"storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-                        "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
-						"logs": [
-							{
-								"category": "NetworkSecurityGroupEvent",
-								"enabled": true,
-								"retentionPolicy": {
-									"days": 0,
-									"enabled": false
-								}
-							},
-                            {
-								"category": "NetworkSecurityGroupRuleCounter",
-								"enabled": true,
-								"retentionPolicy": {
-									"days": 0,
-									"enabled": false
-								}
-							}
-						]
-					}
-				}
-			],
-            "dependsOn": []
+          "type": "providers/diagnosticSettings",
+          "name": "Microsoft.Insights/service",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+          ],
+          "apiVersion": "2015-07-01",
+          "properties": {
+            "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+            "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+            "workspaceId": "[parameters('workspaceId')]",
+            "logs": [
+              {
+                "category": "NetworkSecurityGroupEvent",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                }
+              },
+              {
+                "category": "NetworkSecurityGroupRuleCounter",
+                "enabled": true,
+                "retentionPolicy": {
+                  "days": 0,
+                  "enabled": false
+                }
+              }
+            ]
+          }
         }
-    ]
+      ],
+      "dependsOn": []
+    }
+  ]
 }
+
 ```
 
 ## コンピューティング リソース テンプレート
@@ -173,4 +189,4 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 - [Azure 診断ログの詳細を確認する](./monitoring-overview-of-diagnostic-logs.md)
 - [Azure 診断ログを Event Hubs にストリーミングする](./monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

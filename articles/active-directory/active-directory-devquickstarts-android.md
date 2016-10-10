@@ -32,6 +32,8 @@
 
 作業を開始するには、ユーザーを作成し、アプリケーションを登録できるようにするために Azure AD テナントが必要になります。テナントを所有していない場合は、「[How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
 
+> [AZURE.TIP] Azure Active Directory をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/Android)のプレビュー版をお試しください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスを説明してあります。完了すると、テナント内のユーザーを認証できる単純なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
+
 ## 手順 1. Node.js REST API の TODO サンプル サーバーをダウンロードして実行する
 
 このサンプルは、Microsoft Azure Active Directory の単一のテナント To-Do REST API の作成用の既存のサンプルを扱うために、特別に作成されました。これは、クイック スタートの前提条件です。
@@ -457,4 +459,4 @@ ADAL バージョン 1.1.0 は、WebViewClient からの onReceivedHttpAuthReque
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

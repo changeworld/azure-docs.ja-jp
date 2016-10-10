@@ -1,7 +1,8 @@
 > [AZURE.SELECTOR]
-- [Portal](../articles/data-lake-analytics/data-lake-analytics-manage-use-portal.md)
-- [PowerShell](../articles/data-lake-analytics/data-lake-analytics-manage-use-powershell.md)
+- [ポータル](../articles/data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 - [CLI](../articles/data-lake-analytics/data-lake-analytics-manage-use-cli.md)
-- [Node.js](../articles/data-lake-analytics/data-lake-analytics-manage-use-nodejs.md)
+- [PowerShell](../articles/data-lake-analytics/data-lake-analytics-manage-use-powershell.md)
+- [.NET SDK](../articles/data-lake-analytics/data-lake-analytics-manage-use-dotnet-sdk.md)
+- [Node.JS](../articles/data-lake-analytics/data-lake-analytics-manage-use-nodejs.md)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!---HONumber=AcomDC_0928_2016-->

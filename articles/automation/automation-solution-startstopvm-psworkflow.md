@@ -34,7 +34,7 @@
 
 このシナリオは、次のリンクからダウンロード可能な 2 つの PowerShell ワークフロー Runbook で構成されています。グラフィカル Runbook へのリンクについては、このシナリオの[グラフィカル バージョン](automation-solution-startstopvm-graphical.md)を参照してください。
 
-| Runbook | リンク | 型 | 説明 |
+| Runbook | リンク | 型 | Description |
 |:---|:---|:---|:---|
 | Start-AzureVMs | [Azure クラシック VM の起動](https://gallery.technet.microsoft.com/Start-Azure-Classic-VMs-86ef746b) | PowerShell ワークフロー | Azure サブスクリプションのすべてのクラシック仮想マシンまたは特定のサービス名を持つすべての仮想マシンを起動します。 |
 | Stop-AzureVMs | [Azure クラシック VM の停止](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) | PowerShell ワークフロー | Azure アカウントのすべての仮想マシンまたは特定のサービス名を持つすべての仮想マシンを停止します。 |
@@ -52,7 +52,7 @@ Runbook には、説明と必要な資産を含むコメント付きヘルプ �
 ### 3\.資産を構成する
 Runbook には以下の資産が必要です。これらを作成し、適切な値を設定する必要があります。
 
-| 資産の種類 | 資産名 | 説明 |
+| 資産の種類 | 資産名 | Description |
 |:---|:---|:---|:---|
 | 資格情報 | AzureCredential | Azure サブスクリプションの仮想マシンを起動および停止する権限を持つアカウントの資格情報が含まれています。代わりに別の資格情報資産を **Add-AzureAccount** アクティビティの **Credential** パラメーターで指定することもできます。 |
 | 変数 | AzureSubscriptionId | Azure サブスクリプションのサブスクリプション ID が含まれています。 |
@@ -63,11 +63,11 @@ Runbook には以下の資産が必要です。これらを作成し、適切な
 
 Runbook にはそれぞれ以下のパラメーターがあります。すべての必須パラメーターの値を指定する必要があります。必要に応じて、要件に合わせて他のパラメーターの値を指定することができます。
 
-| パラメーター | 型 | 必須 | 説明 |
+| パラメーター | 型 | 必須 | Description |
 |:---|:---|:---|:---|
-| ServiceName | string | いいえ | 値が指定されている場合、そのサービス名を持つすべての仮想マシンが起動または停止します。値が指定されていない場合、Azure サブスクリプションのすべてのクラシック仮想マシンが起動または停止します。 |
-| AzureSubscriptionIdAssetName | string | いいえ | Azure サブスクリプションのサブスクリプション ID を含む[変数資産](#installing-and-configuring-the-scenario)の名前が含まれています。値を指定しない場合、*AzureSubscriptionId* が使用されます。 |
-| AzureCredentialAssetName | string | いいえ | 使用する Runbook の資格情報を含む[資格情報資産](#installing-and-configuring-the-scenario)の名前が含まれます。値を指定しない場合、*AzureCredential* が使用されます。 |
+| ServiceName | string | なし | 値が指定されている場合、そのサービス名を持つすべての仮想マシンが起動または停止します。値が指定されていない場合、Azure サブスクリプションのすべてのクラシック仮想マシンが起動または停止します。 |
+| AzureSubscriptionIdAssetName | string | なし | Azure サブスクリプションのサブスクリプション ID を含む[変数資産](#installing-and-configuring-the-scenario)の名前が含まれています。値を指定しない場合、*AzureSubscriptionId* が使用されます。 |
+| AzureCredentialAssetName | string | なし | 使用する Runbook の資格情報を含む[資格情報資産](#installing-and-configuring-the-scenario)の名前が含まれます。値を指定しない場合、*AzureCredential* が使用されます。 |
 
 ### Runbook の開始
 
@@ -78,7 +78,7 @@ Runbook にはそれぞれ以下のパラメーターがあります。すべて
 	$params = @{"ServiceName"="MyVMService"}
 	Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Start-AzureVMs" –Parameters $params
 
-### Output
+### 出力
 
 Runbook は各仮想マシンに対して[メッセージを出力](automation-runbook-output-and-messages.md)します。このメッセージは、開始または停止命令が正常に送信されたかどうかを示します。出力の特定の文字列を検索して、各 Runbook の結果を判別することができます。考えられる出力文字列を次の表にリストします。
 
@@ -87,9 +87,9 @@ Runbook は各仮想マシンに対して[メッセージを出力](automation-r
 | Start-AzureVMs | 仮想マシンが既に実行されている | MyVM is already running |
 | Start-AzureVMs | 仮想マシンの起動要求が正常に送信されました | MyVM has been started |
 | Start-AzureVMs | 仮想マシンの起動要求に失敗しました | MyVM failed to start |
-| Stop-AzureVMs | 仮想マシンが既に実行されている | MyVM is already stopped |
-| Stop-AzureVMs | 仮想マシンの起動要求が正常に送信されました | MyVM has been started |
-| Stop-AzureVMs | 仮想マシンの起動要求に失敗しました | MyVM failed to start |
+| Stop-AzureVMs | 仮想マシンは既に停止しています | MyVM is already stopped |
+| Stop-AzureVMs | 仮想マシンの停止要求が正常に送信されました | MyVM has been stopped |
+| Stop-AzureVMs | 仮想マシンの停止要求に失敗しました | MyVM failed to stop |
 
 たとえば、Runbook からの次のコード スニペットでは、*MyServiceName* というサービス名のすべての仮想マシンの起動を試みます。起動要求に失敗した場合は、エラー アクションを実行できます。
 
@@ -193,4 +193,4 @@ Runbook で使用する仮想マシンを取得する場合は、**Get-AzureVM**
 - 子 Runbook の操作に関する詳細については、「[Azure Automation での子 Runbook](automation-child-runbooks.md)」を参照してください。
 - トラブルシューティングに役立つ Runbook 実行時やログ記録中の出力メッセージに関する詳細については、「[Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

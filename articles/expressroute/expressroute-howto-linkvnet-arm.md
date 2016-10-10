@@ -80,7 +80,7 @@ ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回�
 	Add-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
-        $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName = MyRG"
+        $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 	$auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 		
 
@@ -146,4 +146,4 @@ ExpressRoute 回線を仮想ネットワークにリンクしている接続を�
 
 ExpressRoute の詳細については、「[ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して Azure Data Lake Store に、または Azure Data Lake Store からデータを移動する方法を説明します。"
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="spelluru"/>
+	ms.date="09/27/2016"
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用した Azure Data Lake Store との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Data Lake Store と別のデータ ストアの間でデータを移動する方法の概要を説明します。この記事は、コピー アクティビティによるデータ移動の概要とサポートされるデータ ストアの組み合わせについて説明する、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
@@ -467,8 +467,8 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 | folderPath | Azure Data Lake Store のコンテナーとフォルダーのパス。 | はい |
 | fileName | Azure Data Lake Store 内のファイルの名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定のファイルで機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべてのファイルが含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | なし |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの使用](#using-partitionedby-property)」をご覧ください。 | なし |
-| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」をご覧ください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| なし
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | なし |
+| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、**ParquetFormat** の 5 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| なし
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」を参照してください。 | なし |
 
 ### partitionedBy プロパティの使用
 **partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用して、時系列データの動的な folderPath と fileName を指定できます。
@@ -546,7 +546,7 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 
 
 ## Azure Data Lake のコピー アクティビティの type プロパティ  
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、各種ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります
 
@@ -574,4 +574,4 @@ Azure Storage のリンクされたサービスを利用し、Azure Storage ア�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

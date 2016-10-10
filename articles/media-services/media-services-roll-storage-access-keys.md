@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="ストレージ アクセス キーをローリングした後に Media Services を更新する" 
+	pageTitle="ストレージ アクセス キーをローリングした後に Media Services を更新する | Microsoft Azure" 
 	description="この記事は、ストレージ アクセス キーをローリングした後に Media Services を更新する際のガイダンスについて説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="milangada;cenkdin;juliako"/>
 
-#方法: ストレージ アクセス キーをローリングした後に Media Services を更新する
+#ストレージ アクセス キーをローリングした後に Media Services を更新する
 
 新しく Azure Media Services アカウントを作成すると、メディア コンテンツの保存に使用する Azure ストレージ アカウントも選択するよう求めるメッセージが表示されます。Media Services アカウントには[複数のストレージ アカウントを追加](meda-services-managing-multiple-storage-accounts.md)できます。
 
@@ -159,4 +159,4 @@ SAS ロケーターを更新 (または再作成) するときに、URL は常�
 
 この文書の作成に協力してくれた Cenk Dingiloglu、Milan Gada、 Seva Titov に感謝します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

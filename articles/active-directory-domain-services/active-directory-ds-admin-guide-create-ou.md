@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理ガイド | Microsoft Azure"
+	pageTitle="Azure Active Directory Domain Services: 管理ガイド | Microsoft Azure"
 	description="Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/21/2016"
 	ms.author="maheshu"/>
 
 # Azure AD ドメイン サービスの管理対象ドメインに組織単位 (OU) を作成する
@@ -26,9 +26,9 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 ## 管理対象ドメイン上に組織単位を作成する
 管理対象ドメインに参加している仮想マシンに AD 管理ツールをインストールしたら、そのツールを使って管理対象ドメインに組織単位を作成することができます。次の手順に従います。
 
-> [AZURE.NOTE] 新しく OU を作成するために必要な権限を持つのは、"AAD DC Administrators" グループのメンバーのみです。次の手順を実施するときは、自分がこのグループに参加していることを確認してください。
+> [AZURE.NOTE] カスタム OU を作成するために必要な権限を持つのは、"AAD DC Administrators" グループのメンバーのみです。次の手順を実施するときは、自分がこのグループに参加していることを確認してください。
 
-1. スタート画面で **[Administrative Tools]** (管理ツール) をクリックします。仮想マシンにインストールされた AD 管理ツールを確認できます。
+1. スタート画面で **[管理ツール]** をクリックします。仮想マシンにインストールされた AD 管理ツールを確認できます。
 
 	![Administrative Tools installed on server](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 
@@ -36,17 +36,17 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 	![Active Directory 管理センター](./media/active-directory-domain-services-admin-guide/adac-overview.png)
 
-3. 左側のウィンドウのドメイン名 ("contoso100.com" など) をクリックしてドメインを表示します。
+3. ドメインを表示するには、左ウィンドウのドメイン名 ("contoso100.com" など) をクリックします。
 
     ![ADAC - view domain](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-4. 右側にある **[タスク]** ウィンドウで、ドメイン名のノードの下に表示されている **[New]** (新規作成) をクリックします。今回の例では、右側の **[タスク]** ウィンドウの "contoso100.com" ノードの下に表示されている **[New]** (新規作成) をクリックします。
+4. 右側にある **[タスク]** ウィンドウで、ドメイン名のノードの下に表示されている **[新規]** をクリックします。今回の例では、右側の **[タスク]** ウィンドウで "contoso100(local)" ノードの下に表示されている **[新規]** をクリックします。
 
     ![ADAC - new OU](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
 5. 組織単位を作成するオプションが表示されます。**[組織単位]** をクリックして **[Create Organizational Unit]** (組織単位の作成) ダイアログを開きます。
 
-6. **[Create Organizational Unit]** (組織単位の作成) ダイアログで、新しい OU の **[名前]** を指定します。作成する OU について、簡単な説明を入力します。OU について、**[Managed By]** (管理者) フィールドの設定をすることも可能です。**[OK]** をクリックして、新しい OU を作成します。
+6. **[Create Organizational Unit]** (組織単位の作成) ダイアログで、新しい OU の **[名前]** を指定します。作成する OU について、簡単な説明を入力します。OU について、**[Managed By]** (管理者) フィールドの設定をすることも可能です。カスタム OU を作成するには、**[OK]** をクリックします。
 
     ![ADAC - create OU dialog](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 
@@ -56,7 +56,7 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 
 ## 新しく作成した OU へのアクセス許可とセキュリティ
-既定では、新しい OU を作成したユーザー ("AAD DC Administrators" グループのメンバー) に、その OU に対する管理特権 (フル コントロール) が付与されます。管理特権が付与されたら、ユーザーは他のユーザーや "AAD DC Administrators" グループに、必要に応じて権限を付与できるようになります。次のスクリーンショットでは、新しい "MyCustomOU" 組織単位を作成した "bob@domainservicespreview.onmicrosoft.com" というユーザーに、OU に対するフル コントロールの権限が付与されています。
+既定では、カスタム OU を作成したユーザー ("AAD DC Administrators" グループのメンバー) に、その OU に対する管理特権 (フル コントロール) が付与されます。管理特権が付与されたら、ユーザーは他のユーザーや "AAD DC Administrators" グループに、必要に応じて権限を付与できるようになります。次のスクリーンショットでは、新しい "MyCustomOU" 組織単位を作成した "bob@domainservicespreview.onmicrosoft.com" というユーザーに、OU に対するフル コントロールの権限が付与されています。
 
  ![ADAC - new OU security](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
@@ -75,4 +75,4 @@ Azure AD ドメイン サービスの管理対象ドメインは、Active Direct
 
 - [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

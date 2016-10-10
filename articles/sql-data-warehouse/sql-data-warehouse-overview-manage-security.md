@@ -13,18 +13,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/30/2016"
+   ms.date="09/24/2016"
    ms.author="rortloff;barbkess;sonyama"/>
 
 # SQL Data Warehouse でのデータベース保護
 
 > [AZURE.SELECTOR]
 - [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
-- [脅威の検出](sql-data-warehouse-security-threat-detection.md)
-- [監査の概要](sql-data-warehouse-auditing-overview.md)
-- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
-- [Transparent Data Encryption (ポータル)](sql-data-warehouse-encryption-tde.md)
-- [Transparent Data Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+- [認証](sql-data-warehouse-authentication.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 この記事では、Azure SQL Data Warehouse データベースの保護に関する基本事項を説明します。特にこの記事では、アクセスの制限、データの保護、データベースでのアクティビティの監視を行うためのリソースの概要を説明します。
 
@@ -83,18 +81,9 @@ Azure クラシック ポータルまたは Azure リソース マネージャ�
 
 ## Encryption
 
-Azure SQL Data Warehouse では、[透過的なデータ暗号化][]を使用して、データが "静止" 状態のとき、またはデータベース ファイルやバックアップに格納されているときに、そのデータを暗号化することでデータを保護できます。TDE を有効にするには、管理者か、master データベース内の dbmanager ロールのメンバーである必要があります。データベースを暗号化するには、サーバーの master データベースに接続して以下を実行します。
+Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。SQL Data Warehouse で使用される暗号化アルゴリズムは AES-256 です。TDE の一般的な説明については、「[Transparent Data Encryption (TDE)][]」を参照してください。
 
-
-```sql
-ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
-```
-
-Transparent Data Encryption は、[Azure ポータル][]のデータベース設定から有効にすることもできます。詳細については、[Transparent Data Encryption (TDE) の概要][]に関するページをご覧ください。
-
-## 監査
-
-データベースの監査イベントと追跡イベントは、規制遵守の維持や、疑わしいアクティビティの特定に役立ちます。SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。詳細については、「[SQL Database 監査の使用][]」を参照してください。
+データベースは、[Azure Portal][Encryption with Portal] または [T-SQL][Encryption with TSQL] を使用して暗号化できます。
 
 ## 次のステップ
 
@@ -104,8 +93,8 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 
 <!--Article references-->
 [Azure SQL Data Warehouse への接続]: ./sql-data-warehouse-connect-overview.md
-[SQL Database 監査の使用]: ./sql-data-warehouse-auditing-overview.md
-[Transparent Data Encryption (TDE) の概要]: ./sql-data-warehouse-encryption-tde.md
+[Encryption with Portal]: ./sql-data-warehouse-encryption-tde.md
+[Encryption with TSQL]: ./sql-data-warehouse-encryption-tde-tsql.md
 [Azure Active Directory 認証を使用した SQL Data Warehouse への接続]: ./sql-data-warehouse-authentication.md
 
 <!--MSDN references-->
@@ -116,10 +105,10 @@ Transparent Data Encryption は、[Azure ポータル][]のデータベース設
 [SQL Database の認証と承認: アクセス権の付与]: https://msdn.microsoft.com/library/ee336235.aspx
 [アクセス許可]: https://msdn.microsoft.com/library/ms191291.aspx
 [ストアド プロシージャ]: https://msdn.microsoft.com/library/ms190782.aspx
-[透過的なデータ暗号化]: https://go.microsoft.com/fwlink/?LinkId=526242
-[Azure ポータル]: https://portal.azure.com/
+[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Azure portal]: https://portal.azure.com/
 
 <!--Other Web references-->
 [Azure ポータルでのロール ベースのアクセス制御]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

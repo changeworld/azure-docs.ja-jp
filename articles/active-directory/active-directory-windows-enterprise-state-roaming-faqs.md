@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/21/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # 設定とデータのローミングに関する FAQ
@@ -136,4 +136,4 @@ Windows 10 と Azure RMS の (機能が限定された) 無料サブスクリプ
 - [設定を同期させるためのグループ ポリシーと MDM の設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
 - [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

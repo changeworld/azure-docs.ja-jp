@@ -3,7 +3,7 @@
 	description="Office 365 ディレクトリ (テナント) を Azure サブスクリプションに追加して両者の関連付けを行う方法について説明します。"
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="mbaldwin"
 	editor=""
 	tags="billing,top-support-issue"/>
@@ -145,4 +145,4 @@ Office 365 テナントを Azure サブスクリプションに関連付ける�
 ## 次のステップ
 関連するシナリオとして、既に Office 365 サブスクリプションがあり、Azure サブスクリプションが使用できる状態にあるものの、Azure サブスクリプションには既存の Office 365 ユーザー アカウントを使用したい、という場合があります。または、既に Azure サブスクライバーであり、既存の Azure Active Directory のユーザー用に Office 365 サブスクリプションを取得したい場合。具体的な方法については、「[既存の Office 365 アカウントを Azure サブスクリプションに使用する (またはその逆)](billing-use-existing-office-365-account-azure-subscription.md)」を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

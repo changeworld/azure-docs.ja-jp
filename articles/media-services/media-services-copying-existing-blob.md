@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="既存の Blob を Media Services 資産にコピーする" 
-	description="このトピックでは、既存の blob を Media Services 資産にコピーする方法を説明します。" 
+	pageTitle="既存の Blob を Media Services 資産にコピーする | Microsoft Azure" 
+	description="このトピックでは、既存の BLOB を Media Services 資産にコピーする方法を説明します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 #既存の Blob を Media Services 資産にコピーする
 
-このトピックでは、ストレージ アカウントから新しい Microsoft Azure Media Services 資産に blob をコピーする方法について説明します。
+このトピックでは、ストレージ アカウントから新しい Microsoft Azure Media Services 資産に BLOB をコピーする方法について説明します。
 
-blob は、Media Services アカウントに関連付けられた (または関連付けられていない) ストレージ アカウントに存在します。このトピックでは、ストレージ アカウントから Media Services 資産に blob をコピーする方法について説明します。データ センター間でもコピーできることにご注意ください。ただし、これによって料金が発生する可能性があります。価格の詳細については、「[データ転送](https://azure.microsoft.com/pricing/#header-11)」をご覧ください。
+blob は、Media Services アカウントに関連付けられた (または関連付けられていない) ストレージ アカウントに存在します。このトピックでは、ストレージ アカウントから Media Services 資産に BLOB をコピーする方法について説明します。データ センター間でもコピーできることにご注意ください。ただし、これによって料金が発生する可能性があります。価格の詳細については、「[データ転送](https://azure.microsoft.com/pricing/#header-11)」をご覧ください。
 
 >[AZURE.NOTE] Media Services によって生成された BLOB コンテナーの内容を変更する場合は、必ず Media Service API を使用してください。
 
@@ -30,7 +30,7 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 ##前提条件
 
-- 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。「[Media Services アカウントの作成方法](media-services-create-account.md)」を参照してください。
+- 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。「[メディア サービス アカウントの作成方法](media-services-create-account.md)」を参照してください。
 - オペレーティング システム: Windows 10、Windows 7、Windows Server 2008 R2、または Windows 8。
 - .NET Framework 4.5。
 - Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express) 以降。
@@ -322,4 +322,4 @@ blob は、Media Services アカウントに関連付けられた (または関�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

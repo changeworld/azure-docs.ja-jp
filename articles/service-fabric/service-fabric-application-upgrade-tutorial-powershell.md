@@ -17,9 +17,13 @@
    ms.author="subramar"/>
 
 
-
-
 # PowerShell を使用した Service Fabric アプリケーションのアップグレード
+
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
+- [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+
+<br/>
 
 最も頻繁に使用され、推奨されているアップグレード方法は、監視付きローリング アップグレードです。アップグレードされているアプリケーションの正常性は、正常性ポリシーのセットに基づいて、Azure Service Fabric により監視されます。更新ドメイン (UD) がアップグレードされると、Service Fabric によってアプリケーションの正常性が評価され、正常性ポリシーに応じて、アップグレードは次の更新ドメインに進むか、失敗します。
 
@@ -135,4 +139,4 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

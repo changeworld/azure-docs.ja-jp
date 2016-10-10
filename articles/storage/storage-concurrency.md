@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="02/20/2016"
+	ms.date="09/22/2016"
 	ms.author="jahogg;tamram"/>
 
 # Microsoft Azure Storage での同時実行制御の管理
 
-## Overview
+## 概要
 
 最新のインターネットを基盤とするアプリケーションでは、複数のユーザーが同時にデータを表示し、更新することが一般的です。このような場合、アプリケーション開発者は予測可能なエクスペリエンスをエンド ユーザーに提供する方法を注意深く検討する必要があり、特に複数のユーザーが同じデータを更新できる場合はこれが重要になります。開発者は、データの同時実行制御の主な戦略として、次の 3 つの方法を検討する場合が一般的です。
 
@@ -249,7 +249,7 @@ BLOB サービスとは異なり、Table サービスではクライアントが
 
 詳細情報
 
-- [エンティティに対する操作](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
+- [エンティティに対する操作](http://msdn.microsoft.com/library/azure/dd179375.aspx)
 
 ## キュー サービスでの同時実行制御の管理
 キュー サービスでの同時実行制御について注意が必要なケースとして、複数のクライアントが 1 つのキューからメッセージを取得する場合があります。キューからメッセージを取得するときの応答には、メッセージと、メッセージを削除するときに必要な pop receipt 値が含まれます。メッセージはキューから自動的に削除されることはありませんが、取得された後、visibilitytimeout パラメーターで指定された期間は他のクライアントに表示されなくなります。メッセージを取得するクライアントは、メッセージの処理後、応答の TimeNextVisible 要素で指定された時刻までにメッセージを削除します。この時刻は visibilitytimeout パラメーターの値に基づいて算出されます。visibilitytimeout の値をメッセージの取得時刻に加算することで、TimeNextVisible の値が決定されます。
@@ -259,7 +259,7 @@ BLOB サービスとは異なり、Table サービスではクライアントが
 詳細情報
 
 - [キュー サービスの REST API](http://msdn.microsoft.com/library/azure/dd179363.aspx)
-- [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
+- [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)
 
 ## ファイル サービスでの同時実行制御の管理
 ファイル サービスでは、SMB と REST の 2 種類のプロトコルを使用してエンドポイントにアクセスできます。REST サービスではオプティミスティック同時実行制御とペシミスティック同時実行制御のいずれもサポートされておらず、すべての更新操作は最終書き込み者優先戦略に従います。ファイル共有をマウントする SMB クライアントではファイル システムのロック機構を使用して、共有ファイルへのアクセスを管理できます。ペシミスティック同時実行制御も実行できます。SMB クライアントがファイルを開くときに、ファイルのアクセス権と共有モードの両方が指定されます。ファイルのアクセス権のオプションが "Write" または "Read/Write" に設定され、同時にファイル共有モードが "None" に設定された場合、そのファイルは閉じられるまで SMB クライアントによってロックします。SMB クライアントがロックしているファイルに REST 操作を実行しようとすると、REST サービスはステータス コード 409 (Conflict) およびエラー コード SharingViolation を返します。
@@ -268,7 +268,7 @@ SMB クライアントがファイルを開いて削除する場合、そのフ�
 
 詳細情報
 
-- [ファイルのロックの管理](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
+- [ファイルのロックの管理](http://msdn.microsoft.com/library/azure/dn194265.aspx)
 
 ## 概要と次のステップ
 Microsoft Azure Storage サービスは、非常に複雑なオンライン アプリケーションのニーズに対応するように設計されていますが、開発者は、同時実行制御やデータの整合性など、当然のように想定されるようになった主要設計項目を再検討したり、妥協したりする必要がありません。
@@ -284,4 +284,4 @@ Azure Storage の詳細については、以下を参照してください。
 - Storage Getting Started for [Blob](storage-dotnet-how-to-use-blobs.md), [Table](storage-dotnet-how-to-use-tables.md), [Queues](storage-dotnet-how-to-use-queues.md), and [Files](storage-dotnet-how-to-use-files.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET からテーブル ストレージを使用する方法、.NET からキュー ストレージを使用する方法、.NET から ファイル ストレージを使用する方法)
 - Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

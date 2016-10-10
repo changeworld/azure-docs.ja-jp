@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/25/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # 仮想マシンの可用性管理
@@ -31,4 +31,4 @@
 
 仮想マシンの負荷分散の詳細については、[仮想マシンの負荷分散](virtual-machines-windows-load-balance.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

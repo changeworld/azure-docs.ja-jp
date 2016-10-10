@@ -45,7 +45,7 @@ ExpressRoute 回線には、複数のルーティング ドメイン (Azure パ�
 
 ### プライベート ピアリング
 
-Azure Compute Services、つまり、仮想ネットワーク内にデプロイされる仮想マシン (IaaS) とクラウド サービス (PaaS) には、プライベート ピアリング ドメイン経由で接続できます。プライベート ピアリング ドメインは、お客様のコア ネットワークを Microsoft Azure に信頼できる方法で拡張したものと言えます。コア ネットワークと Azure Virtual Network (VNET) の間に双方向接続を設定できます。これにより、仮想マシンとクラウド サービスにプライベート IP アドレスで直接接続できます。
+Azure Compute Services、つまり、仮想ネットワーク内にデプロイされる仮想マシン (IaaS) とクラウド サービス (PaaS) には、プライベート ピアリング ドメイン経由で接続できます。プライベート ピアリング ドメインは、お客様のコア ネットワークを Microsoft Azure に信頼できる方法で拡張したものと言えます。コア ネットワークと Azure Virtual Network (VNET) の間に双方向接続を設定できます。このピアリングにより、仮想マシンとクラウド サービスにプライベート IP アドレスで直接接続できます。
 
 プライベート ピアリング ドメインには複数の仮想ネットワークを接続できます。上限と制限事項については、[FAQ のページ](expressroute-faqs.md)を参照してください。制限に関する最新情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」ページをご覧ください。ルーティング構成の詳細については、[ルーティング](expressroute-routing.md)に関するページを参照してください。
 
@@ -92,4 +92,4 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 	- [ルーティング (回線ピアリング) の構成](expressroute-howto-routing-classic.md)
 	- [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-classic.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

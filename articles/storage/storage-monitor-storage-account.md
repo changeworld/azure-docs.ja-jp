@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/03/2016"
-	ms.author="robinsh"/>
+	ms.author="fryu;robinsh"/>
 
 # Azure ポータルでのストレージ アカウントの監視
 
@@ -102,7 +102,7 @@
 
 	![Monitoring\_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-	> [AZURE.NOTE] メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/azure/hh360997.aspx)を参照してください。
+	> [AZURE.NOTE]メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://msdn.microsoft.com/library/azure/hh360997.aspx)を参照してください。
 
 3. **[メトリックの追加]** をクリックします。
 
@@ -159,4 +159,4 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/library/azure/hh343262.aspx)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

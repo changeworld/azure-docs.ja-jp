@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -54,10 +54,10 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 ヘッダー|型|値
 ---|---|---
-Authorization|ベアラ|ベアラは、唯一許容される承認のメカニズムです。値には、ACS によって提供されるアクセス トークンを含める必要もあります。
+承認|ベアラ|ベアラは、唯一許容される承認のメカニズムです。値には、ACS によって提供されるアクセス トークンを含める必要もあります。
 x-ms-version|小数点|2\.11
-DataServiceVersion|小数点|3\.0
-MaxDataServiceVersion|小数点|3\.0
+DataServiceVersion|Decimal|3\.0
+MaxDataServiceVersion|Decimal|3\.0
 
 
 
@@ -95,7 +95,7 @@ Content-Encoding|多様|Gzip またはデフレート (必要に応じて)。
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
 
 
-動詞|説明
+動詞|Description
 ---|---
 GET|オブジェクトの現在の値を返します。
 POST|提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。
@@ -132,4 +132,4 @@ Media Services のエンティティを見つけやすくするには、$metadat
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="infrastructure-services"
- ms.date="07/18/2016"
+ ms.date="09/22/2016"
  ms.author="danlep"/>
 
 # Linux VM のコンピューティング ベンチマーク スコア
@@ -84,9 +84,23 @@ Standard\_GS4 | 16 | 1 | Intel Xeon E5-2698B v3 @ 2 GHz | 84 | 194,111 | 4,735
 Standard\_GS5 | 32 | 2 | Intel Xeon E5-2698B v3 @ 2 GHz | 84 | 357,396 | 16,228
 
 
+## H シリーズ
+
+サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | イテレーション数/秒 | 標準偏差
+------- | ------ | ---- | -------| ---- | ---- | -----
+Standard\_H8 | 8 | 1 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 28 | 140,782 | 2,512
+Standard\_H16 | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 35 | 275,289 | 7,110 
+Standard\_H18m | 8 | 1 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 28 | 139,071 | 3,988 
+Standard\_H16m | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 28 | 275,988 | 6,963 
+Standard\_H16r | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 28 | 273,982 | 6,069 
+Standard\_H16mr | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 28 | 274,523 | 5,698 
+
+
+
 ## CoreMark について
 
-Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.php) を実行して計算しました。CoreMark は、スレッド数を仮想 CPU の数に設定し、同時実行数を pThread に設定して構成しました。イテレーション数の目標は、テストを実行するために要した秒数で除算した完了イテレーション数を表す最終的なスコアを使用して、少なくとも 20 秒間 (通常はもっと長い時間) のランタイムを提供するように、予想パフォーマンスに基づいて調整しました。VM ごとに各テストを少なくとも 7 回実行しました。テストは、2015 年 10 月に、実行当日に VM がサポートされているすべての Azure パブリック リージョンで、複数の VM 上で実行されました。
+Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.php) を実行して計算しました。CoreMark は、スレッド数を仮想 CPU の数に設定し、同時実行数を PThreads に設定して構成しました。イテレーション数の目標は、テストを実行するために要した秒数で除算した完了イテレーション数を表す最終的なスコアを使用して、少なくとも 20 秒間 (通常はもっと長い時間) のランタイムを提供するように、予想パフォーマンスに基づいて調整しました。VM ごとに各テストを少なくとも 7 回実行しました。テスト (H シリーズを除く) は、2015 年 10 月に、実行当日に VM がサポートされているすべての Azure パブリック リージョンで、複数の VM 上で実行されました。
+
 ## 次のステップ
 
 
@@ -95,4 +109,4 @@ Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.
 
 * Linux VM 上で CoreMark スクリプトを実行するには、[CoreMark スクリプト パック](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)をダウンロードします。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

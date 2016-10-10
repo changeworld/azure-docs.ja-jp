@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 # 参照アーキテクチャ: Microsoft Azure Stream Analytics によるリアルタイム イベント処理
@@ -63,4 +63,4 @@ Microsoft Azure は、さまざまなソリューションのシナリオと要�
 
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

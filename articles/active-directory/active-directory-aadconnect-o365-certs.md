@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -163,4 +163,4 @@ Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成�
 
 詳細については、「[信頼の修復](./active-directory-aadconnect-federation-management.md#repairing-the-trust)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

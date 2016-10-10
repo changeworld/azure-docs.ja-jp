@@ -14,7 +14,9 @@
 
 ## ゲートウェイのサイズを変更する
 
-3 つの[ゲートウェイ SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md) があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+[ゲートウェイ SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md) には複数の種類があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+
+>[AZURE.IMPORTANT] このコマンドは UltraPerformance ゲートウェイでは使用できません。ゲートウェイを UltraPerformance ゲートウェイに変更するには、既存の ExpressRoute ゲートウェイを削除してから、新しい UltraPerformance ゲートウェイを作成します。ゲートウェイを UltraPerformance ゲートウェイからダウングレードするには、UltraPerformance ゲートウェイを削除してから、新しいゲートウェイを作成します。
 
 	Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
@@ -24,4 +26,4 @@
 
 	Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
 
-<!---HONumber=AcomDC_0413_2016-->
+<!---HONumber=AcomDC_0928_2016-->

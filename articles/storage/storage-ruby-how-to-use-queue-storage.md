@@ -14,12 +14,14 @@
 	ms.devlang="ruby" 
 	ms.topic="article" 
 	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+	ms.author="cbrooks;robmcm"/>
 
 
 # Ruby から Queue ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## Overview
 
@@ -159,7 +161,7 @@ Azure ポータルでクラシック ストレージ アカウントからこれ
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
+この記事で説明されている Azure Queue サービスと、「[Service Bus キューの使用方法](/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

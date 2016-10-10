@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/29/2016" 
+	ms.date="07/29/2016" 
 	ms.author="anwestg"/>
 
 # Azure App Service Web Apps の企業向け製品・サービスに関するホワイトペーパー #
@@ -147,7 +147,7 @@ App Service Web Apps では、Azure ポータルを使用し、スケジュー�
 
 Web Apps の規模設定の柔軟さに加え、プラットフォーム全体が、複数のデータセンターや地域にわたって Web アプリケーションやその資源を分配できる可能性を持つことで、ビジネスの継続性や回復性が得られます。
 
-## まとめ ##
+## 概要 ##
 App Service Web Apps では、急速に発展を続ける環境において動的なビジネス ニーズに対応すべく、柔軟性、効率性、応答性に優れたソリューションを提供します。Web Apps によって、企業は最新の DevOps 機能を備え、細かい操作の必要性を抑えたマネージド プラットフォームを活用することで生産性と効率性を向上させ、同時に拡張性、回復性、安全性、さらにはオンプレミスの資源と統合する能力が得られます。
 
 ## 行動への呼び掛け ##
@@ -159,4 +159,4 @@ Azure App Service Web Apps サービスの詳細については、[http://aka.ms
  
  
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

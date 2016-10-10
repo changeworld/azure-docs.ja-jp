@@ -1,0 +1,52 @@
+<properties
+   pageTitle="Linux Azure 診断でログを収集する方法 | Microsoft Azure"
+   description="この記事では、Azure で実行されている Service Fabric Linux クラスターのログを収集するように Azure 診断を設定する方法について説明します。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="mani-ramaswamy"
+   manager="timlt"
+   editor=""/>
+
+<tags
+   ms.service="service-fabric"
+   ms.devlang="dotNet"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="09/28/2016"
+   ms.author="subramar"/>
+
+
+# Azure 診断でログを収集する方法
+
+> [AZURE.SELECTOR]
+- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+
+Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。1 か所にログを収集すると、サービス、アプリケーション、またはクラスター自体のどこに問題があるかに関係なく、問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。ストレージからイベントを読み取って、[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品または他のログ解析ソリューションに配置できます。
+
+## 収集することができるさまざまなログ ソース
+1. **Service Fabric のログ:** LTTng を使用してプラットフォームによって出力され、ストレージ アカウントにアップロードされます。ログには、プラットフォームによって出力される操作イベントまたは実行時イベントが含まれます。これらのログは、クラスター マニフェストで示される位置に格納されます。ストレージ アカウントの詳細を取得するには、タグ "AzureTableWinFabETWQueryable" を検索し、"StoreConnectionString" を見つけます。
+2. **アプリケーション イベント:** サービス コードから出力されたイベント。テキスト ベースのログ ファイルを書き込む任意のログ記録ソリューションを使用できます (たとえば、[LTTng](http://lttng.org))。アプリケーションでトレースを実行する方法については、LTTng に関するドキュメントを参照してください。
+
+
+## 診断拡張機能のデプロイ
+ログ収集の最初の手順は、Service Fabric クラスター内の各 VM に診断拡張機能をデプロイすることです。診断拡張機能を使用すると、各 VM のログが収集され、指定したストレージ アカウントにアップロードされます。手順は、Azure Portal と Azure Resource Manager のどちらを使用するかに応じて変わります。
+
+### クラスター作成の一環で診断拡張機能をデプロイする 
+クラスター作成の一環としてクラスター内の VM に診断拡張機能をデプロイするには、[診断] を **[オン]** に設定します。クラスターの作成後、ポータルを使用してこの設定を変更することはできません。
+
+ファイルを収集する Linux Azure Diagnostics (LAD) を構成し、顧客のストレージ アカウントに配置します。このプロセスについては、[LAD を使用して Linux VM を監視および診断する方法](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md)に関する記事でシナリオ 3 (「独自のログ ファイルをアップロードする」) として説明されています。この手順に従ってトレースにアクセスして、これを任意のビジュアライザーにアップロードできます。
+
+
+診断拡張機能は Azure Resource Manager を使用してデプロイすることもできます。このプロセスは、Windows と Linux とで似ています。Windows クラスター向けのプロセスについては、「[Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)」を参照してください。
+
+また、[Linux での OMS Log Analytics](https://blogs.technet.microsoft.com/hybridcloud/2016/01/28/operations-management-suite-log-analytics-with-linux/) に関するページに説明されているように、OMS を使用することもできます。
+
+この構成が完了すると、LAD エージェントは指定されたログ ファイルを監視します。新しい行がファイルに追加されるたびに、顧客によって指定されたストレージに送信される syslog エントリが作成されます。
+
+
+## 次のステップ
+[LTTng のドキュメント](http://lttng.org/docs)と [LAD の使用](../virtual-machines/virtual-machines-linux-classic-diagnostic-extension.md)に関するページを参照して、問題をトラブルシューティングするときに調査する必要があるイベントの詳細について理解してください。
+
+<!---HONumber=AcomDC_0928_2016-->

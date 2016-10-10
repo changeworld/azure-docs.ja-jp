@@ -14,20 +14,16 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/17/2016"
+	ms.date="06/27/2016"
 	ms.author="cynthn"/>
 
 # クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-attach-disk-portal.md)方法について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 新しいポータルを使用する場合は、「[Azure ポータルで Windows VM にデータ ディスクを接続する方法](virtual-machines-windows-attach-disk-portal.md)」を参照してください。
 
 データ ディスクを追加する必要がある場合は、空のディスクまたはデータを含む既存のディスクを仮想マシンにアタッチできます。どちらの場合も、ディスクは Azure ストレージ アカウントにある .vhd ファイルです。新しいディスクの場合は、ディスクをアタッチした後で、Windows VM で使用できるように初期化する必要もあります。
 
 ディスクの詳細については、[About Disks and VHDs for Virtual Machines (Virtual Machines 用のディスクと VHD について)](virtual-machines-windows-about-disks-vhds.md) を参照してください。
-
-## ビデオ チュートリアル
-
-[こちら](https://azure.microsoft.com/documentation/videos/attaching-a-data-disk-to-a-windows-vm/)で、このチュートリアルのビデオをご覧いただけます。
 
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-windows-linux.md)]
@@ -60,4 +56,4 @@
 
 [logon]: virtual-machines-windows-classic-connect-logon.md
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

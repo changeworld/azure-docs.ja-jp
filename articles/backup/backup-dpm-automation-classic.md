@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/01/2016"
+	ms.date="09/27/2016"
 	ms.author="jimpark; trinadhk; anuragm; markgal"/>
 
 
@@ -56,13 +56,13 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 PowerShell を使用して次のセットアップおよび登録タスクを自動化できます。
 
-- バックアップ コンテナーの作成
+- バックアップ資格情報コンテナーの作成
 - Microsoft Azure Backup エージェントのインストール
 - Microsoft Azure Backup サービスへの登録
 - ネットワークの設定
 - 暗号化の設定
 
-### バックアップ コンテナーの作成
+### バックアップ資格情報コンテナーの作成
 
 > [AZURE.WARNING] 顧客が初めて Azure Backup を使用する場合、サブスクリプションで使用する Azure Backup プロバイダーを登録する必要があります。これは、Register-AzureProvider -ProviderNamespace "Microsoft.Backup" コマンドを実行して行うことができます。
 
@@ -140,7 +140,7 @@ PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredenti
 > [AZURE.IMPORTANT] コンテナーの資格情報ファイルを指定する際には、相対パスは使用しないでください。このコマンドレットへの入力には、絶対パスを指定する必要があります。
 
 ### 初期構成の設定
-DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、およびステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
+DPM サーバーが Azure Backup 資格情報コンテナーに登録されると、既定のサブスクリプション設定で起動されます。これらのサブスクリプションの設定には、ネットワーク、暗号化、ステージング領域が含まれます。サブスクリプション設定の変更を開始するには、まず既存 (既定) の設定のハンドルを [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) コマンドレットを使用して取得する必要があります。
 
 ```
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
@@ -340,4 +340,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 
 - Azure DPM Backup の詳細については、「[DPM Backup の概要](backup-azure-dpm-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

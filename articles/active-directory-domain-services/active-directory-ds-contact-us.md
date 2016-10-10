@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービス プレビュー: お問い合わせ | Microsoft Azure"
+	pageTitle="Azure Active Directory Domain Services: お問い合わせ | Microsoft Azure"
 	description="Azure AD ドメイン サービスの製品チームにお問い合わせください"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/21/2016"
 	ms.author="maheshu"/>
 
 
-# Azure AD ドメイン サービス (プレビュー) - お問い合わせ
+# Azure AD ドメイン サービス - お問い合わせ
 
-## お問い合わせ
+## 製品チームへのお問い合わせ
 管理対象ドメインに問題がある場合は、[トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)で説明されている手順で問題が解決するかどうかを確認してください。問題が解消しない場合は、お気軽にお問い合わせください。
 
 [Azure AD ドメイン サービスのフィードバック](mailto:aaddsfb@microsoft.com)から電子メールを送ることができます。
@@ -36,4 +36,4 @@
 
 弊社が確認できるように、質問またはご意見の先頭に **"AADDS"** という単語を付けてください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

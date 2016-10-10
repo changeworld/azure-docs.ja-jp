@@ -484,4 +484,4 @@ SAP アプリ サーバーと SAP GUI のインストール後、最後に "dbac
 
 * SAP サービス マーケットプレースからの HANA SP12 Platform Edition のダウンロード: ![](./media/virtual-machines-linux-sap-hana-get-started/image002.jpg)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

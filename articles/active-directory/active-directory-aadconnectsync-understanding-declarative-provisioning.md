@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -148,4 +148,4 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 - [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

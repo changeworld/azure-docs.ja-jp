@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -81,4 +81,4 @@ Azure Service Bus|5671 (TCP/UDP)| 送信
 ### 表 6b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、[Azure AD Connect Health エージェントの「必要条件」セクション](active-directory-aadconnect-health-agent-install.md#requirements)を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と PolicyStat の統合
@@ -136,7 +136,7 @@ Azure AD ユーザーが PolicyStat にログインできるようにするに�
 
 >[AZURE.NOTE]PolicyStat から提供されている他の PolicyStat ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -152,6 +152,6 @@ Azure AD ユーザーが PolicyStat にログインできるようにするに�
 
     ![Yes](./media/active-directory-saas-policystat-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

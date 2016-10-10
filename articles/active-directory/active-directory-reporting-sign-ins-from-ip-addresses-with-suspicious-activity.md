@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="SSalahAhmed"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -22,4 +22,4 @@
 
 ![不審なアクティビティのある IP アドレスからのサインイン](./media/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity/signInsFromIPAddressesWithSuspiciousActivity.PNG)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

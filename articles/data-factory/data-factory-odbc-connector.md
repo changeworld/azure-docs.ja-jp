@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して ODBC データ ストアからデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/12/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの ODBC データ ストアから他のデータ ストアにデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -374,4 +374,4 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

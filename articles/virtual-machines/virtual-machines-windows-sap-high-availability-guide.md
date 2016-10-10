@@ -1,19 +1,19 @@
 <properties
    pageTitle="Windows 仮想マシン (VM) 上の SAP NetWeaver - 高可用性ガイド | Microsoft Azure"
    description="Windows 仮想マシン (VM) 上の SAP NetWeaver - 高可用性ガイド"
-   services="virtual-machines-windows,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-windows"
+   documentationCenter=""
    authors="goraco"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="goraco"/>
 
@@ -1432,4 +1432,4 @@ SIOS DataKeeper UI を使用して、共有ディスクのデータが、クラ�
 
 "_**図 62:** SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_"
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

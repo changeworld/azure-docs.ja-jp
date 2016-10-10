@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ShiftPlanning の統合
@@ -116,7 +116,7 @@
   
 Azure AD ユーザーが ShiftPlanning にログインできるようにするには、ユーザーを ShiftPlanning にプロビジョニングする必要があります。ShiftPlanning の場合、プロビジョニングは手動で行います。
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1.  **ShiftPlanning** 企業サイトに管理者としてログインします。
 
@@ -157,6 +157,6 @@ Azure AD ユーザーが ShiftPlanning にログインできるようにする�
 
     ![Yes](./media/active-directory-saas-shiftplanning-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

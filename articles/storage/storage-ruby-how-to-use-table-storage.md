@@ -13,7 +13,7 @@
 	ms.devlang="ruby"
 	ms.topic="article"
 	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+	ms.author="gusapost;robmcm"/>
 
 
 # Ruby から Azure Table Storage を使用する方法
@@ -165,4 +165,4 @@ Azure ポータルでクラシック ストレージ アカウントからこれ
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!---HONumber=AcomDC_0817_2016--->
+<!---HONumber=AcomDC_0928_2016-->

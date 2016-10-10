@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="mbaldwin"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -13,20 +13,20 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/16/2016"
-   ms.author="dhanyahk"/>
+   ms.date="09/27/2016"
+   ms.author="femila"/>
 
 
 # Azure Active Directory レポート ガイド
 
+ - [Azure Active Directory レポート - プレビュー](active-directory-reporting-azure-portal.md)
  - [Azure AD Reporting API の概要](active-directory-reporting-api-getting-started.md)
  - [Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)
  - [Azure Active Directory レポートの保持期間](active-directory-reporting-retention.md)
- - [Azure Active Directory レポートのプレビュー](active-directory-reporting-previews.md)
  - [Azure Active Directory のレポート検索](active-directory-reporting-search.md)
  - [Azure Active Directory レポートのバックフィル](active-directory-reporting-backfill.md)
  - [Azure Active Directory レポートの待機時間](active-directory-reporting-latencies.md)
  - [Azure Active Directory レポートの "Unknown Actor" イベント](active-directory-reporting-unknown-actor.md)
  - [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

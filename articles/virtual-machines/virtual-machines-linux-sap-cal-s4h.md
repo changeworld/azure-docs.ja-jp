@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Azure" 
-description="Microsoft Azure での S/4 HANA または BW/4 HANA のデプロイ" 
+pageTitle="Azure VM での S/4 HANA または BW/4 HANA のデプロイ | Microsoft Azure" 
+description="Azure VM での S/4 HANA または BW/4 HANA のデプロイ" 
 services="virtual-machines-linux" 
 documentationCenter="" 
 authors="hermanndms" 
@@ -88,4 +88,4 @@ Azure ポータルで、SAP CAL で指定したのと同じインスタンス名
 
 別のオプションとして、クライアント Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

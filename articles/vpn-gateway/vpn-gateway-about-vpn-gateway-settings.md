@@ -65,13 +65,7 @@ Azure Portal を使用して Resource Manager の仮想ネットワーク ゲー
 	$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 
-<br>
-
-
-###  <a name="aggthroughput"></a>SKU とゲートウェイの種類別の予測される合計スループット
-
-
-次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+<br>次の表は、ゲートウェイの種類と、予測される合計スループットを示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -164,4 +158,4 @@ VPN Gateway 構成に対して REST API および PowerShell コマンドレッ�
 
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="curtand"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -45,4 +45,4 @@ Azure クラシック ポータルで Azure AD ディレクトリを追加する
 
 Azure AD のライセンスに関する問題とベスト プラクティスの概要については、[Azure Active Directory ライセンス](active-directory-licensing-what-is.md)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

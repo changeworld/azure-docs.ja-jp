@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=".net"
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -25,4 +25,4 @@
 
 [AZURE.INCLUDE [ID](../../includes/identity.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

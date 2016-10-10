@@ -86,6 +86,9 @@ Azure コマンド ライン インターフェイスを使用するには、**N
 		; Example Settings
 		display_errors=On
 		upload_max_filesize=10M
+		
+		; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
+		; log_errors=On
 
 3. Web アプリをデプロイします。
 4. Web アプリを再起動します。(再起動する必要があるのは、`.user.ini` ファイルが PHP によって読み取られる頻度が、`user_ini.cache_ttl` 設定によって制御されるためです。この設定はシステム レベルの設定であり、既定では 300 秒 (5 分) です。Web アプリを再起動すると、PHP により、`.user.ini` ファイル内の新しい設定が強制的に読み取られます。)
@@ -208,4 +211,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
  
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

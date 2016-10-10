@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/26/2016"
 	ms.author="carlasab"/>
 
 
 # Azure VM の SQL Server への SQL Server データベースの移行
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] リソース マネージャー モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)] Resource Manager モデル。
 
 
 オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。この記事では、さまざまな方法について簡単に説明したうえで、さまざまなシナリオに最適な方法を紹介します。また、**Microsoft Azure VM への SQL Server データベースのデプロイ** ウィザードを使用する方法について順を追って説明する[チュートリアル](#azure-vm-deployment-wizard-tutorial)も含まれています。
@@ -115,7 +115,7 @@ Microsoft SQL Server Management Studio の "**Microsoft Azure VM への SQL Serv
 
 		![Deploymnent Settings](./media/virtual-machines-windows-migrate-sql/deployment-settings.png)
 
-10. [設定] のクリック
+10. Click Settings
   - 既存のクラウド サービス名と仮想マシン名を指定した場合は、ユーザー名とパスワードを入力するように求められます。
 
 		![Azure machine settings](./media/virtual-machines-windows-migrate-sql/azure-machine-settings.png)
@@ -180,4 +180,4 @@ Azure Virtual Machines で SQL Server を実行する方法の詳細について
 
 Azure SQL Server 仮想マシンをキャプチャ イメージから作成する手順については、CSS SQL Server Engineers のブログ「[Tips & Tricks on ‘cloning’ Azure SQL virtual machines from captured images (Azure SQL 仮想マシンをキャプチャ イメージから複製するためのヒント)](https://blogs.msdn.microsoft.com/psssql/2016/07/06/tips-tricks-on-cloning-azure-sql-virtual-machines-from-captured-images/)」を参照してください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

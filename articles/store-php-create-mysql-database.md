@@ -19,7 +19,7 @@
 
 # Azure で MySQL データベースを作成して接続する
 
-このガイドでは、[Azure ポータル](https://portal.azure.com) (プロバイダーは [ClearDB](http://www.cleardb.com/)) で MySQL データベースを作成する方法と、[Azure App Service](./app-service/app-service-value-prop-what-is.md) で実行されている PHP Web アプリからそのデータベースに接続する方法について説明します。
+このチュートリアルでは、[Azure Portal](https://portal.azure.com) (プロバイダーは [ClearDB](http://www.cleardb.com/)) で MySQL データベースを作成する方法と、[Azure App Service](./app-service/app-service-value-prop-what-is.md) で実行されている PHP Web アプリからそのデータベースに接続する方法について説明します。
 
 > [AZURE.NOTE] MySQL データベースは、[Marketplace アプリ テンプレート](./app-service-web/app-service-web-create-web-app-from-marketplace.md)の一部として作成することもできます。
 
@@ -56,17 +56,18 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
 
 	デプロイに成功すると、別のポップアップが表示されます。ポータルでは、MySQL データベースのブレードも自動的に開かれます。
 
-## Azure で PHP Web アプリから MySQL データベースに接続する
+<a name="connect"></a>
+## MySQL データベースに接続する
 
-新しい MySQL データベースの接続情報を表示するには、**[プロパティ]** をクリックするだけです。**[設定]** ブレードが表示されない場合は、**[設定]**、**[プロパティ]** の順にクリックします。
+新しい MySQL データベースの接続情報を表示するには、Web アプリのブレードで **[プロパティ]** をクリックするだけです。
 	
 ![Create a MySQL database in Azure - MySQL database blade](./media/store-php-create-mysql-database/create-db-5-finished-db-blade.png)
 
 これで、どの Web アプリでもその接続情報を使用できるようになりました。単純な PHP アプリから接続情報を使用する方法を示すサンプルは、[こちら](https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql)で入手できます。
 
-### Laravel Web アプリの接続 (PHP の入門チュートリアルから)
+## Laravel Web アプリの接続 (PHP の入門チュートリアルから)
 
-「[Azure への PHP Web アプリの作成、構成、デプロイ](./app-service-web/app-service-web-php-get-started.md)」のチュートリアルを完了し、Azure で [Laravel](https://www.laravel.com/) Web アプリを実行しているとすると、Laravel アプリにデータベース機能を簡単に追加することができます。以下の手順に従ってください。
+「[Azure への PHP Web アプリの作成、構成、デプロイ](./app-service-web/app-service-web-php-get-started.md)」のチュートリアルを完了したばかりで、Azure で [Laravel](https://www.laravel.com/) Web アプリを実行しているとします。その場合、Laravel アプリにデータベース機能を簡単に追加できます。以下の手順に従ってください。
 
 >[AZURE.NOTE] 以下の手順では、「[Azure への PHP Web アプリの作成、構成、デプロイ](./app-service-web/app-service-web-php-get-started.md)」のチュートリアルが完了していることを前提としています。
 
@@ -139,4 +140,4 @@ Azure ポータルで MySQL データベースを作成するには、次の手�
 
 詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

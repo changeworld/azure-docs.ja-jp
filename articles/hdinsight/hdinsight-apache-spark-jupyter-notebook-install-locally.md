@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2016" 
+	ms.date="09/26/2016" 
 	ms.author="nitinme"/>
 
 
@@ -51,24 +51,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 ## カーネルと Spark マジックをインストールする
 
-このセクションでは、Spark マジックと PySpark/Spark カーネルをインストールした後、Azure HDInsight 内で実行されている Apache Spark クラスターに接続するようにそのカーネルを構成します。
-
-1. 最新のパブリック プレビューの Spark マジックを [Github](https://github.com/jupyter-incubator/sparkmagic/archive/publicpreview0.5.zip) からダウンロードします。
-
-2. ダウンロードしたファイルをディスク上の場所に解凍します。この手順では、このパスを `$SPARKMAGIC_PATH` で表すことにします。
-
-2. 次のコマンドを実行します。
-
-		pip install -r $SPARKMAGIC_PATH/requirements.txt  
-
-3. 次のコマンドを実行して Spark マジックをインストールします。
-
-		pip install -e $SPARKMAGIC_PATH
-
-4. PySpark カーネルと Spark カーネルをインストールします。次のコマンドを実行します。
-
-		jupyter-kernelspec install $SPARKMAGIC_PATH/remotespark/kernels/sparkkernel
-		jupyter-kernelspec install $SPARKMAGIC_PATH/remotespark/kernels/pysparkkernel
+Spark マジック、PySpark カーネル、および Spark カーネルのインストール手順については、GitHub の [sparkmagic ドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation)を参照してください。
 
 ## HDInsight の Spark クラスターにアクセスするように Spark マジックを構成する
 
@@ -97,7 +80,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 		  },
 		  "kernel_scala_credentials" : {
 		    "username": "{USERNAME}",
-		    " base64_password ": "{BASE64ENCODEDPASSWORD}",
+		    "base64_password": "{BASE64ENCODEDPASSWORD}",
 		    "url": "https://{CLUSTERDNSNAME}.azurehdinsight.net/livy"
 		  }
 		}
@@ -185,4 +168,4 @@ Jupyter をローカル コンピューターにインストールし、HDInsigh
 
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

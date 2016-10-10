@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する方法について説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/07/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/07/2016" 
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オンプレミスの Cassandra データベースから、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores) に関するセクションのシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -31,7 +31,7 @@ Azure Data Factory サービスをオンプレミスの Cassandra データベ�
 > [AZURE.NOTE] 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshoot-gateway-issues)に関するセクションをご覧ください。
 
 ## データのコピー ウィザード
-Cassandra データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
+Cassandra データベースから、サポートされているシンク データ ストアにデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
 次の例は、[Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。これらの例は、Cassandra データベースから Azure BLOB ストレージにデータをコピーする方法を示しています。ただし、Azure Data Factory のコピー アクティビティを使用して、[こちら](data-factory-data-movement-activities.md#supported-data-stores)に記載されているシンクのいずれかにデータをコピーすることができます。
 
@@ -132,7 +132,7 @@ Cassandra データベースから、サポートされているシンク デー
 
 **コピー アクティビティのあるパイプライン**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** の型が **CassandraSource** に設定され、**sink** の型が **BlobSink** に設定されています。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** の型が **CassandraSource** に設定され、**sink** の型が **BlobSink** に設定されています。
 
 RelationalSource でサポートされるプロパティの一覧については、「[RelationalSource type プロパティ](#cassandrasource-type-properties)」をご覧ください。
 	
@@ -198,7 +198,7 @@ RelationalSource でサポートされるプロパティの一覧については
 
 ## CassandraTable プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**CassandraTable** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -209,11 +209,11 @@ RelationalSource でサポートされるプロパティの一覧については
 
 
 ## CassandraSource type プロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-コピー アクティビティで、source が **CassandraSource** 型の場合は、typeProperties セクションで次のプロパティを使用できます。
+コピー アクティビティで、source の種類が **CassandraSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -253,7 +253,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 -	実テーブルと同じデータ (コレクション列を除く) を含む **ベース テーブル**。ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 -	入れ子になったデータを展開する、各コレクション列の**仮想テーブル**。コレクションを表す仮想テーブルには、実テーブルの名前、区切り文字の "_vt_"、および列の名前を使用して名前が付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、次の「例」を参照してください。仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、「例」セクションを参照してください。仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
 
 [コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard)を利用して、仮想テーブルを含む Cassandra データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
@@ -267,7 +267,7 @@ pk\_int | 値 | 一覧表示 | マップ |	StringSet
 
 ドライバーによって、この単一のテーブルを表す複数の仮想テーブルが生成されます。 仮想テーブルの外部キー列は、実テーブルの主キー列を参照して、仮想テーブルの行が対応する実テーブルの行を示します。
 
-最初の仮想テーブルは、次に示す "ExampleTable" という名前のベース テーブルです。ベース テーブルには、元のデータベース テーブルと同じデータ (コレクションを除く) が含まれています。このテーブルで省略されたコレクションは、他の仮想テーブルで展開されます。
+最初の仮想テーブルは、次の表に示す "ExampleTable" という名前のベース テーブルです。ベース テーブルには、元のデータベース テーブルと同じデータ (コレクションを除く) が含まれています。このテーブルで省略されたコレクションは、他の仮想テーブルで展開されます。
 
 pk\_int | 値
 ------ | -----
@@ -313,4 +313,4 @@ pk\_int | StringSet\_value
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

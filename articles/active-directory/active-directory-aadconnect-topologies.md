@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="AndKjell"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 <tags
     ms.service="active-directory"
@@ -21,7 +21,7 @@
 
 ドキュメント内の図の凡例:
 
-説明 | アイコン
+Description | アイコン
 -----|-----
 オンプレミスの Active Directory フォレスト| ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)
 Active Directory とフィルター処理されたインポート| ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)
@@ -187,4 +187,4 @@ Azure AD のディレクトリは、分離するように設計されていま�
 
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

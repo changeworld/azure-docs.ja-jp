@@ -15,7 +15,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/30/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"
 />
 
@@ -90,4 +90,4 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 
 ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-renew-authorization.png)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

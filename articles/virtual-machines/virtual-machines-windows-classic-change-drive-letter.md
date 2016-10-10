@@ -1,5 +1,5 @@
 <properties
-	pageTitle="仮想マシンの D ドライブをデータ ディスクにする | Microsoft Azure"
+	pageTitle="VM の D: ドライブをデータ ディスクにする | Microsoft Azure"
 	description="Windows VM のドライブ文字を変更して、データ ディスクとして D: ドライブを使用する方法について説明します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
@@ -14,10 +14,10 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
-# Windows 仮想マシンのデータ ドライブとしての D ドライブの使用 
+# Windows VM のデータ ドライブとしての D: ドライブの使用 
 
 D ドライブを使用してデータを格納する必要があるアプリケーションの場合、次の手順に従って一時ディスク用の別のドライブ文字を使用します。維持する必要があるデータは、一時ディスクに格納しないでください。
 
@@ -111,4 +111,4 @@ Azure が一時ディスクを使用する方法については、[Microsoft Azu
 ## 次のステップ
 - [追加のデータ ディスクをアタッチする](virtual-machines-windows-attach-disk-portal.md)ことで、仮想マシンに使用できる記憶域を増やすことができます。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

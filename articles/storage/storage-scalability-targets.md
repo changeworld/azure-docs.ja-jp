@@ -1,19 +1,19 @@
 <properties
-   pageTitle="Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Azure"
-   description="Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。"
-   services="storage"
-   documentationCenter="na"
-   authors="robinsh"
-   manager="carmonm"
-   editor="tysonn" />
+	pageTitle="Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Azure"
+	description="Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。"
+	services="storage"
+	documentationCenter="na"
+	authors="robinsh"
+	manager="carmonm"
+	editor="tysonn" />
 <tags
-   ms.service="storage"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="storage"
-   ms.date="08/03/2016"
-   ms.author="robinsh" />
+	ms.service="storage"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="storage"
+	ms.date="08/03/2016"
+	ms.author="jahogg;robinsh" />
 
 # Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
 
@@ -83,4 +83,4 @@ Azure Storage に格納されているデータを含むすべてのオブジェ
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](storage-performance-checklist.md)
 - [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

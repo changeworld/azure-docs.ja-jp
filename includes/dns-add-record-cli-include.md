@@ -39,6 +39,11 @@ CNAME レコードでは、単一の文字列値だけを使用できます。
 
 	azure network dns record-set add-record myresourcegroup  contoso.com  "test-ns" NS -d "ns1.contoso.com"
 
+#### 1 つのレコードを含む PTR レコード セットの作成  
+ここで ' my-arpa-zone.com' は IP 範囲を表す ARPA ゾーンを表します。このゾーンの各 PTR レコード セットは、この IP の範囲内の IP アドレスに対応します。
+
+	azure network dns record-set add-record myresourcegroup my-arpa-zone.com "10" PTR -P "myservice.contoso.com"   
+
 #### 1 つのレコードを含む SRV レコード セットの作成
 
 ゾーンのルートに SRV レコードを作成する場合、レコード名で "\_service" と "\_protocol" を指定できます。レコード名に "@" を含める必要はありません。
@@ -54,4 +59,4 @@ CNAME レコードでは、単一の文字列値だけを使用できます。
 
 	azure network dns record-set add-record myresourcegroup contoso.com "test-txt" TXT -x "this is a TXT record"
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

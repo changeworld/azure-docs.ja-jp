@@ -4,7 +4,7 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="stevenpo" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
@@ -93,4 +93,4 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 ## 次のステップ
 「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)」を参照してください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

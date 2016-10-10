@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 
@@ -24,13 +24,13 @@
 - [.NET](media-services-get-media-processor.md)
 - [REST ()](media-services-rest-get-media-processor.md)
 
-##概要
+##Overview
 
 メディア プロセッサは、Media Services のコンポーネントとして、メディア コンテンツのエンコード、形式変換、暗号化、復号化など、特定の処理タスクを担います。通常、メディア コンテンツのエンコード、暗号化、形式変換を行うタスクの作成時にメディア プロセッサを作成します。
 
 次の表は、利用可能なメディア プロセッサの名前と説明の一覧です。
 
-メディア プロセッサ名|説明|詳細情報
+メディア プロセッサ名|Description|詳細情報
 ---|---|---
 メディア エンコーダー スタンダード|オンデマンド エンコードのための標準機能を備えています。 |[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)
 メディア エンコーダー Premium ワークフロー|メディア エンコーダー Premium ワークフローを使用してエンコード タスクを実行できます。|[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)
@@ -99,4 +99,4 @@ Azure Media Encryptor|償却対象|
 
 これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、「[Media Encoder Standard を使用して資産をエンコードする方法](media-services-rest-get-started.md)」に進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

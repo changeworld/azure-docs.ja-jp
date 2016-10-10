@@ -16,7 +16,7 @@
 	ms.date="09/16/2016"
 	ms.author="dastrock"/>
 
-# Azure AD を使用した Web アプリのサインインおよびサインアウト
+# Azure AD を使用した ASP.NET Web アプリのサインインおよびサインアウト
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
@@ -178,4 +178,4 @@ public ActionResult About()
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

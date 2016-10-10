@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/19/2016"
+   ms.date="09/21/2016"
    ms.author="cherylmc"/>
 
 # VPN ゲートウェイの計画と設計
@@ -46,20 +46,13 @@
 
 ### <a name="gwrequire"></a>VPN の種類と SKU 別のゲートウェイの要件
 
+[AZURE.INCLUDE [vpn-gateway-gwsku](../../includes/vpn-gateway-gwsku-include.md)]
 
-VPN ゲートウェイを作成するときは、使用するゲートウェイの SKU を指定する必要があります。次の 3 つの VPN Gateway SKU があります。
-
-- 基本
-- Standard
-- 高性能
+ゲートウェイの SKU の詳細については、[VPN ゲートウェイ設定](vpn-gateway-about-vpn-gateway-settings.md#gwsku)に関するページをご覧ください。
 
 [AZURE.INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
-
-
-### <a name="aggthroughput"></a>ゲートウェイの種類と合計スループットの見積もり
-
-次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。見積もられた合計スループットは、設計の決定要因になる可能性があります。料金はゲートウェイの SKU によって異なります。料金については、[VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)のページをご確認ください。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+<br>次の表は、ゲートウェイの種類と、予測される合計スループットを示したものです。見積もられた合計スループットは、設計の決定要因になる可能性があります。料金はゲートウェイの SKU によって異なります。料金については、[VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)のページをご確認ください。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -161,4 +154,4 @@ VPN デバイスの構成経験が必要です。構成経験がない場合は�
 
 特定のゲートウェイ設定の詳細については、「[About VPN Gateway Settings (VPN ゲートウェイの設定について)](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services のクォータと制限" 
+	pageTitle="Media Services のクォータと制限 | Microsoft Azure" 
 	description="このトピックでは、Microsoft Azure Media Services に関連付けられているクォータと制限について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 
@@ -32,4 +32,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

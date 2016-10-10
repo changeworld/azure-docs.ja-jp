@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Projectplace の統合
@@ -78,7 +78,7 @@
 
 3.  **[Configure App URL]** (アプリケーション URL の構成) ページで、**[Projectplace サインオン URL]** ボックスに Projectplace テナント URL (例: "*http://company.projectplace.com*"*) を入力し、*[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-projectplace-tutorial/IC790222.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-projectplace-tutorial/IC790222.png "アプリケーション URL の構成")
 
 4.  **[Projectplace でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
@@ -118,7 +118,7 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
     
 >[AZURE.NOTE]Projectplace から提供されている他の Projectplace ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -136,4 +136,4 @@ Azure AD ユーザーが Projectplace にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

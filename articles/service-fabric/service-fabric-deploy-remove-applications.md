@@ -18,6 +18,12 @@
 
 # PowerShell を使用してアプリケーションのデプロイと削除を実行する
 
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-deploy-remove-applications.md)
+- [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+
+<br/>
+
 [アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。デプロイには、次の 3 つの手順が含まれます。
 
 1. アプリケーション パッケージをアップロードする
@@ -239,4 +245,4 @@ PS D:\temp>
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

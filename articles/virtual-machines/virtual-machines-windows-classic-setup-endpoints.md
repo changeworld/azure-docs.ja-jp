@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/13/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Azure 上でクラシック Windows 仮想マシンにエンドポイントをセットアップする方法
@@ -39,4 +39,4 @@ Azure クラシック ポータルで Windows 仮想マシンを作成すると�
 
 * Resource Manager デプロイメント モデルで仮想マシンを作成した場合は、Azure PowerShell を使用して、VM へのトラフィックを制御する[ネットワーク セキュリティ グループを作成](../virtual-network/virtual-networks-create-nsg-arm-ps.md)できます。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -101,15 +101,29 @@
 
 *この時点で、アプリケーションにはエンゲージメント フロントエンドで登録済みの Apple プッシュ証明書が必要になります。*
 
-まだ登録していない場合は、プッシュ通知を受信するアプリケーションを登録する必要があります。アプリケーションの起動時に、次の行を追加します (通常は `application:didFinishLaunchingWithOptions:`)。
+まだ登録していない場合は、プッシュ通知を受信するアプリケーションを登録する必要があります。
 
-	if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-	  	[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
-	  	[application registerForRemoteNotifications];
-	}
-	else {
-	  	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-	}
+* `User Notification` フレームワークをインポートします。
+
+		#import <UserNotifications/UserNotifications.h>
+
+* アプリケーションの起動時に、次の行を追加します (通常は `application:didFinishLaunchingWithOptions:`)。
+
+		if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+		{
+			if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
+			{
+				[UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+			}else
+			{
+				[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
+			}
+			[application registerForRemoteNotifications];
+		}
+		else
+		{
+			[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+		}
 
 次に、Apple サーバーによって返されたデバイス トークンをエンゲージメントに提供する必要があります。これは、アプリケーション デリゲートの `application:didRegisterForRemoteNotificationsWithDeviceToken:` という名前のメソッドで行われます。
 
@@ -486,4 +500,4 @@ SDK にも UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 	@end
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

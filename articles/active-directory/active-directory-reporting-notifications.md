@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="dhanyahk"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -51,4 +51,4 @@
 - [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
 - [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
@@ -14,11 +14,11 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="08/11/2016"
-	ms.author="rmcmurray"/>
+	ms.author="jwillis;rmcmurray"/>
 
 # BLOB ストレージを使用するオンプレミスのアプリケーション
 
-## 概要
+## Overview
 
 次の例では、Azure Storage を使用して画像を Azure に保存する方法を示しています。この記事では、画像を Azure にアップロードし、ブラウザーに画像を表示する HTML ファイルを作成するコンソール アプリケーションのコードを紹介します。
 
@@ -359,4 +359,4 @@
 - [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

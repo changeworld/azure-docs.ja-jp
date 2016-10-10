@@ -17,8 +17,13 @@
    ms.author="subramar"/>
 
 
-
 # Visual Studio による Service Fabric アプリケーションのアップグレード チュートリアル
+
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
+- [Visual Studio](service-fabric-application-upgrade-tutorial.md)
+
+<br/>
 
 Azure Service Fabric では、変更されたサービスのみをアップグレードし、アップグレード プロセス全体を通じてそのアプリケーションの正常性を監視することで、クラウド アプリケーションのアップグレードのプロセスを簡略化します。また、問題が発生した場合は、アプリケーションが自動的に以前のバージョンにロールバックされます。Service Fabric アプリケーションのアップグレードは、*ゼロ ダウンタイム*です。アプリケーションをダウンタイムなしでアップグレードできます。このチュートリアルでは、Visual Studio からローリング アップグレードを行う方法について説明します。
 
@@ -87,4 +92,4 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
 [image3]: media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

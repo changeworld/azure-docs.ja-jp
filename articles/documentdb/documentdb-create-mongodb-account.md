@@ -2,7 +2,7 @@
 	pageTitle="MongoDB のプロトコル対応の DocumentDB アカウントを作成する | Microsoft Azure" 
 	description="現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントを作成する方法について説明します。" 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # Azure ポータルを使用して MongoDB のプロトコル対応の DocumentDB アカウントを作成する方法
 
@@ -78,4 +78,4 @@ MongoDB のプロトコル対応の DocumentDB アカウントを作成するに
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

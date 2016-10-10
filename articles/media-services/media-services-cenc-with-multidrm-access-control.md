@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装" 
+	pageTitle="CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装 | Microsoft Azure" 
 	description="Microsoft® Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="willzhan;kilroyh;yanmf;juliako"/>
 
 #CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
@@ -501,7 +501,7 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 どちらの場合も、ユーザー認証は変わらず、Azure AD によって行われます。唯一の違いは、JWT トークンが Azure AD ではなくカスタム STS によって発行されることです。もちろん、動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT トークンの種類として対称キーまたは非対称キーが指定されます。
 
-## まとめ
+## 概要
 
 このドキュメントでは、トークン認証によるマルチ ネイティブ DRM およびアクセス制御を使用する CENC、Azure を使用したその設計と実装、Azure Media Services、Azure Media Player について説明しました。
 
@@ -522,4 +522,4 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 William Zhang、Mingfei Yan、Roland Le Franc、Kilroy Hughes、Julia Kornich
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

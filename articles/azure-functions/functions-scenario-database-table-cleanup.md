@@ -1,7 +1,7 @@
 <properties
    pageTitle="スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Azure"
    description="イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。"
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,12 +15,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="06/05/2016"
+   ms.date="09/26/2016"
    ms.author="glenga"/>
    
 # スケジュールされたクリーンアップ タスクを Azure Functions で実行する
 
-このトピックでは、Azure Functions を使用して C# の新しい関数を作成する方法を紹介します。作成するのは、イベント タイマーに従ってデータベース テーブル内の行を消去する関数です。この新しい関数は、Azure Functions ポータルで定義済みテンプレートに基づいて作成されます。このシナリオを実現するには、別途データベースの接続文字列を関数アプリの App Service 設定として設定する作業が必要となります。
+このトピックでは、Azure Functions を使用して C# の新しい関数を作成する方法を紹介します。作成するのは、イベント タイマーに従ってデータベース テーブル内の行をクリーンアップする関数です。この新しい関数は、Azure Functions ポータルで定義済みテンプレートに基づいて作成されます。このシナリオを実現するには、別途データベースの接続文字列を関数アプリの App Service 設定として設定する作業が必要となります。
 
 ## 前提条件 
 
@@ -38,7 +38,7 @@ Mobile Apps バックエンドで使用する接続文字列は、ポータル�
 
 1. [Azure Functions ポータル](https://functions.azure.com/signin)に移動し、Azure アカウントでサインインします。
 
-2. 使用する既存の関数アプリがある場合は、**[Your function apps (関数アプリ)]** から選択し、**[開く]** をクリックします。新しい関数アプリを作成するには、アプリ用に一意の **[名前]** を入力するか、生成された名前をそのまま使用し、希望する **[リージョン]** を選択して **[Create + get started (作成 + 開始)]** をクリックします。
+2. 使用する既存の関数アプリがある場合は、**[Your function apps]** (関数アプリ) から選択し、**[開く]** をクリックします。新しい関数アプリを作成するには、アプリ用に一意の **[名前]** を入力するか、生成された名前をそのまま使用し、希望する **[リージョン]** を選択して **[Create + get started (作成 + 開始)]** をクリックします。
 
 3. 関数アプリで、**[Function App Settings (関数アプリの設定)]**、**[Go to App Service Settings (App Service の設定に移動)]** の順にクリックします。
 
@@ -52,7 +52,7 @@ Mobile Apps バックエンドで使用する接続文字列は、ポータル�
 
 ## タイマーでトリガーされる関数をテンプレートから作成する
 
-1. 関数アプリで **[+ 新しい関数]**、**[TimerTrigger - C#]**、**[作成]** の順にクリックします。既定のスケジュールで (1 分おきに) 実行される関数が既定の名前で作成されます。 
+1. 関数アプリで **[+ 新しい関数]**、**[TimerTrigger - C#]**、**[作成]** の順にクリックします。既定のスケジュールで (1 分おきに) 実行される関数が既定の名前で作成されます。
 
 	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
 
@@ -95,8 +95,8 @@ Azure Functions の詳細については、次のトピックを参照してく�
 
 + [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
 + [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。  
++ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
 
 [AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0928_2016-->

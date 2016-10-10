@@ -4,7 +4,7 @@
     services="storage"
     documentationCenter="na"
     authors="aungoo-msft"
-    manager=""
+    manager="tadb"
     editor="tysonn"/>
 
 <tags
@@ -13,13 +13,13 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="07/25/2016"
-    ms.author="aungoo-msft"/>
+    ms.date="09/21/2016"
+    ms.author="aungoo;robinsh"/>
 
 
 # Azure Premium Storage への移行
 
-## 概要
+## Overview
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage を使用する仮想マシン (VM) では、ソリッド ステート ドライブ (SSD) にデータを格納します。アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。
 
@@ -79,7 +79,7 @@ Premium Storage の仕様の詳細については、「[Premium Storage を使�
 #### ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。既存のデータ ディスクのキャッシュ設定は、[Azure ポータル](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
 
-#### Location (場所)
+#### 場所
 Azure Premium Storage を使用できる場所を選択します。使用できる場所に関する最新情報については、「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照してください。VM のディスクを保存するストレージ アカウントと同じリージョンにある VM は、個々のリージョン内にある場合よりも優れたパフォーマンスを提供します。
 
 #### Azure VM のその他の構成設定
@@ -680,4 +680,4 @@ OS イメージまたは OS ディスクが登録されたら、DS シリーズ�
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -17,7 +17,7 @@
    ms.date="02/09/2016"
    ms.author="sewhee" />
 
-# テンプレートを使用したインターネットに接続するロード バランサーの作成の開始
+# テンプレートを使用したインターネット接続ロード バランサーの作成
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -70,4 +70,4 @@ Azure CLI を使用してテンプレートをデプロイするには、次の�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

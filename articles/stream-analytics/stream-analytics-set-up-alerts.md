@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 
@@ -30,7 +30,7 @@
 
 ## Azure クラシック ポータルを使用してアラートを設定する
 
-Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つあります。
+Azure クラシック ポータルでアラートを設定する方法は 2 つあります。
 
 1.	Stream Analytics ジョブの **[監視]** タブ
 2.	Management Services の操作ログ
@@ -60,19 +60,19 @@ Microsoft Azure 管理ポータルでアラートを設定する方法は 2 つ�
 
     ![アラートの定義](./media/stream-analytics-set-up-alerts/05-stream-analytics-set-up-alerts.png)
 
-## Azure ポータルでアラートを設定する ##
+## Azure Portal でアラートを設定する ##
 
-Azure ポータルで、アラートを有効にする Stream Analytics ジョブを参照し、**[監視]** セクションをクリックします。表示された **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
+Azure Portal で、アラートを有効にする Stream Analytics ジョブを参照し、**[監視]** セクションをクリックします。表示された **[メトリック]** ブレードで、**[アラートの追加]** コマンドをクリックします。
 
-  ![Azure ポータルのセットアップ](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)
+  ![Azure portal setup](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)
 
 アラート ルールに名前を付け、通知メールに表示される説明を選択できます。
 
 [メトリック] を選択する場合は、メトリックの条件としきい値を選択します。
 
-  ![Azure ポータルでのメトリックの選択](./media/stream-analytics-set-up-alerts/07-stream-analytics-set-up-alerts.png)
+  ![Azure portal select metric](./media/stream-analytics-set-up-alerts/07-stream-analytics-set-up-alerts.png)
 
-Azure ポータルでのアラートの構成の詳細については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」を参照してください。
+Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」を参照してください。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -85,4 +85,4 @@ Azure ポータルでのアラートの構成の詳細については、「[ア�
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

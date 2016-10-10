@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="node"
 	ms.topic="article"
-	ms.date="08/02/2016"
-	ms.author="adrianhall"/>
+	ms.date="09/23/2016"
+	ms.author="adrianha"/>
 
 # Azure Mobile Apps Node.js SDK の使用方法
 
@@ -33,11 +33,17 @@ Azure App Service Mobile Apps は、Web アプリケーションにモバイル�
 
 各ユース ケースのサンプルは、[GitHub の samples ディレクトリ]にあります。
 
+## サポートされているプラットフォーム
+
+Azure Mobile Apps Node SDK は、Node の現在の LTS リリース以降をサポートします。この記事の執筆時点では、最新の LTS バージョンは Node v4.5.0 です。Node の他のバージョンが動作する場合もありますが、サポートされているわけではありません。
+
+Azure Mobile Apps Node SDK は、2 つのデータベース ドライバーをサポートしています。node-mssql ドライバーは、SQL Azure インスタンスとローカル SQL Server インスタンスをサポートします。sqlite3 ドライバーは、単一のインスタンスでのみ、SQLite データベースをサポートします。
+
 ### <a name="howto-cmdline-basicapp"></a>方法: コマンド ラインを使用して基本的な Node.js バックエンドを作成する
 
 Azure App Service Mobile Apps の Node.js バックエンドはすべて ExpressJS アプリケーションとして開始されます。ExpressJS は、Node.js で使用可能な最も人気のある Web サービス フレームワークです。次のように、基本的な [Express] アプリケーションを作成できます。
 
-1. コマンドまたは PowerShell ウィンドウで、プロジェクト用の新しいディレクトリを作成します。
+1. コマンド ウィンドウまたは PowerShell ウィンドウで、プロジェクトのディレクトリを作成します。
 
         mkdir basicapp
 
@@ -46,7 +52,7 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
         cd basicapp
         npm init
 
-    npm init コマンドでは、プロジェクトを初期化するための一連の質問が示されます。以下の出力例を参照してください。
+    npm init コマンドでは、プロジェクトを初期化するための一連の質問が示されます。次の出力例を参照してください。
 
     ![npm init の出力][0]
 
@@ -71,7 +77,7 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
 		// Start listening on HTTP
 		app.listen(process.env.PORT || 3000);
 
-このアプリケーションでは、単一のエンドポイント (`/tables/TodoItem`) でモバイルに最適化された WebAPI が作成され、動的スキーマを使用する基になる SQL データ ストアへの非認証アクセスが可能になります。次のクライアント ライブラリのクイック スタートに従う場合に適しています。
+このアプリケーションは、単一のエンドポイント (`/tables/TodoItem`) でモバイルに最適化された WebAPI を作成します。この WebAPI は、動的スキーマを使用して基になる SQL データ ストアへの認証されていないアクセスを可能にします。次のクライアント ライブラリのクイック スタートに従う場合に適しています。
 
 - [Android クライアントのクイック スタート]
 - [Apache Cordova クライアントのクイック スタート]
@@ -81,12 +87,11 @@ Azure App Service Mobile Apps の Node.js バックエンドはすべて Express
 - [Xamarin.Android クライアントのクイック スタート]
 - [Xamarin.Forms クライアントのクイック スタート]
 
-
 この基本的なアプリケーションのコードは、[GitHub の basicapp サンプル]にあります。
 
 ### <a name="howto-vs2015-basicapp"></a>方法: Visual Studio 2015 を使用して Node バックエンドを作成する
 
-Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発するための拡張機能が必要です。最初に、[Node.js Tools 1.1 for Visual Studio] をダウンロードしてインストールします。Node.js Tools for Visual Studio をインストールしたら、Express 4.x アプリケーションを作成します。
+Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発するための拡張機能が必要です。まず、[Node.js Tools 1.1 for Visual Studio] をインストールします。Node.js Tools for Visual Studio をインストールしたら、Express 4.x アプリケーションを作成します。
 
 1. **[新しいプロジェクト]** ダイアログを開きます (**[ファイル]**、**[新規作成]**、**[プロジェクト...]** の順にクリック)。
 
@@ -100,9 +105,9 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 5. **npm** ノードを右クリックし、**[新しい npm パッケージのインストール]** を選択します。
 
-6. 最初の Node.js アプリケーションの作成時に、npm カタログを更新することが必要な場合があります。更新が必要な場合は、更新するよう求められるので、**[更新]** をクリックします。
+6. 最初の Node.js アプリケーションの作成時に、npm カタログを更新することが必要な場合があります。必要に応じて、**[最新の情報に更新]** をクリックします。
 
-7. 検索ボックスに「_azure-mobile-apps_」と入力します。**azure-mobile-apps 2.0.0** パッケージをクリックしてから、**[パッケージのインストール]** をクリックします。
+7. 検索ボックスに「_azure-mobile-apps_」と入力します。**azure-mobile-apps 2.0.0** パッケージをクリックし、**[パッケージのインストール]** をクリックします。
 
 	![新しい npm パッケージのインストール][2]
 
@@ -128,30 +133,27 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 ### <a name="create-node-backend-portal"></a>方法: Azure ポータルを使用して Node.js バックエンドを作成する
 
-[Azure ポータル]で新しいモバイル アプリ バックエンドを作成できます。
-
-以下の手順を実行するか、チュートリアル「[モバイル アプリを作成する](app-service-mobile-ios-get-started.md)」の手順でクライアントとサーバーをまとめて新規作成することもできます。このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
+モバイル アプリ バックエンドは、[Azure ポータル]ですぐに作成できます。次の手順に従うことも、[モバイル アプリの作成](app-service-mobile-ios-get-started.md)のチュートリアルに従って、クライアントとサーバーをまとめて作成することもできます。このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-**[テーブル API の作成]** の _[はじめに]_ ブレードに戻り、**[バックエンド言語]** として **[Node.js]** を選択します。**[これにより、すべてのサイト コンテンツが上書きされることを確認しました。]** というボックスをオンにし、**[TodoItem テーブルを作成する]** をクリックします。
-
+**[テーブル API の作成]** の _[はじめに]_ ブレードに戻り、**[バックエンド言語]** として **[Node.js]** を選択します。**[これにより、すべてのサイト コンテンツが上書きされることを確認しました。]** のボックスをオンにし、**[TodoItem テーブルを作成する]** をクリックします。
 
 ### <a name="download-quickstart"></a>方法: Git を使用して Node.js バックエンド クイック スタート コード プロジェクトをダウンロードする
 
-ポータルの **[クイック スタート]** ブレードを使用して新しい Node.js モバイル アプリ バックエンドを作成すると、新しい Node.js プロジェクトが作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイ ツールの 1 つを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
+ポータルの **[クイック スタート]** ブレードを使用して Node.js モバイル アプリ バックエンドを作成すると、Node.js プロジェクトが自動的に作成され、サイトにデプロイされます。ポータルでは、テーブルと API を追加したり、Node.js バックエンドのコード ファイルを編集したりできます。また、さまざまなデプロイ ツールを使用してバックエンド プロジェクトをダウンロードすると、テーブルと API を追加または変更した後でプロジェクトを再発行できます。詳細については、[Azure App Service のデプロイ ガイド]を参照してください。次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
-1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、「[Installing Git (Git のインストール)](http://git-scm.com/book/en/Getting-Started-Installing-Git)」を参照してください。
+1. Git をまだインストールしていない場合はインストールします。Git をインストールするために必要な手順は、オペレーティング システムによって異なります。オペレーティング システム固有の配布とインストールのガイダンスについては、[Git のインストール](http://git-scm.com/book/en/Getting-Started-Installing-Git)に関するページをご覧ください。
 
 2. 「[App Service アプリのリポジトリの有効化](../app-service-web/web-sites-deploy-local-git.md#Step3)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。このとき、デプロイ用のユーザー名とパスワードをメモしておきます。
 
 3. モバイル アプリ バックエンドのブレードで、**[Git クローン URL]** の設定をメモしておきます。
 
-4.  次の例のように、Git 対応のコマンド ライン ツールで Git クローン URL を使用して `git clone` コマンドを実行します。このとき、必要な場合はパスワードを入力します。
+4. 次の例に示すように、Git クローン URL を使用して、`git clone` コマンドを実行します (必要に応じてパスワードを入力します)。
 
 		$ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-5. ローカル ディレクトリ (上の例では /todolist) を参照し、プロジェクト ファイルがダウンロード済みであることを確認します。/tables サブフォルダーには、todoitem.json ファイル (テーブルに対するアクセス許可を定義します) と、todoitem.js ファイル (テーブルの CRUD 操作スクリプトを定義します) があります。
+5. ローカル ディレクトリ (前の例では /todolist) を参照し、プロジェクト ファイルがダウンロード済みであることを確認します。`/tables` ディレクトリで `todoitem.json` ファイルを見つけます。このファイルでは、テーブルに対するアクセス許可を定義します。また、同じディレクトリにある `todoitem.js` ファイルも見つけます。このファイルでは、テーブルの CRUD 操作スクリプトを定義します。
 
 6. プロジェクト ファイルに変更を加えた後に、次のコマンドを実行して、変更をサイトに追加、コミット、アップロードします。
 
@@ -164,7 +166,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
 ### <a name="howto-publish-to-azure"></a>方法: Azure に Node.js バックエンドを発行する
 
-Microsoft Azure では、Azure サービスに Azure App Service Mobile Apps Node.js バックエンドを発行するための多数のメカニズムが提供されます。Visual Studio に統合されたデプロイ ツール、コマンドライン ツールおよびソース管理に基づく継続的なデプロイ オプションも利用します。このトピックの詳細については、[Azure App Service のデプロイ ガイド]を参照してください。
+Microsoft Azure では、Azure サービスに Azure App Service Mobile Apps Node.js バックエンドを発行するための多数のメカニズムが提供されます。Visual Studio に統合されたデプロイ ツール、コマンドライン ツール、ソース管理に基づく継続的なデプロイ オプションも利用します。このトピックの詳細については、[Azure App Service デプロイメント ガイド]をご覧ください。
 
 Azure App Service には、デプロイ前に確認する必要がある Node.js アプリケーションに関する以下の特定のアドバイスがあります。
 
@@ -173,11 +175,11 @@ Azure App Service には、デプロイ前に確認する必要がある Node.js
 
 ### <a name="howto-enable-homepage"></a>方法: アプリケーションのホーム ページを有効にする
 
-多くのアプリケーションは Web とモバイル アプリを組み合わせており、ExpressJS フレームワークを使用すると、この 2 つを結合することができます。しかし、場合によっては、モバイル インターフェイスだけを実装することができます。アプリ サービスを確実に稼働させるために、ランディング ページを提供すると便利です。ホーム ページを指定するか、一時的なホーム ページを有効にします。一時的なホーム ページを有効にするには、Mobile App コンストラクターを次のように調整します。
+多くのアプリケーションは Web とモバイル アプリを組み合わせており、ExpressJS フレームワークを使用すると、この 2 つを結合することができます。しかし、場合によっては、モバイル インターフェイスだけを実装することができます。アプリ サービスを確実に稼働させるために、ランディング ページを提供すると便利です。ホーム ページを指定するか、一時的なホーム ページを有効にします。一時的なホーム ページを有効にするには、次のコードを使用して Azure Mobile Apps をインスタンス化します。
 
     var mobile = azureMobileApps({ homePage: true });
 
-ローカルで開発するときのみ、このオプションを利用する場合は、この設定を `azureMobile.js` ファイルに追加することができます。
+ローカルで開発するときにのみ、このオプションを利用する場合は、この設定を `azureMobile.js` ファイルに追加します。
 
 ## <a name="TableOperations"></a>テーブル操作 
 
@@ -187,8 +189,8 @@ azure-mobile-apps Node.js Server SDK では、WebAPI として Azure SQL Databas
 | --------- | ----------- |
 | GET /tables/_tablename_ | テーブルのすべてのレコードを取得します。 |
 | GET /tables/_tablename_/:id | テーブルの特定のレコードを取得します。 |
-| POST /tables/_tablename_ | テーブルに新しいレコードを作成します。 |
-| PATCH /tables/_tablename_/:id | テーブルの既存のレコードを更新します。 |
+| POST /tables/_tablename_ | テーブルのレコードを作成します。 |
+| PATCH /tables/_tablename_/:id | テーブルのレコードを更新します。 |
 | DELETE /tables/_tablename_/:id | テーブルのレコードを削除します。 |
 
 この WebAPI は [OData] をサポートし、テーブル スキーマを拡張して[オフライン データ同期]をサポートします。
@@ -233,7 +235,7 @@ azure-mobile-apps Node.js Server SDK では、WebAPI として Azure SQL Databas
 
 ### <a name="howto-staticschema"></a>方法: 静的スキーマを使用してテーブルを定義する
 
-WebAPI を使用して公開する列を明示的に定義することができます。azure-mobile-apps Node.js SDK では、指定した一覧にオフライン データ同期に必要な他の列が自動的に追加されます。たとえば、クイック スタート クライアント アプリケーションには、text (文字列) と complete (ブール値) という 2 つの列を持つテーブルが必要になります。これは、テーブル定義 JavaScript ファイル (テーブル ディレクトリにある) に次のように定義できます。
+WebAPI を使用して公開する列を明示的に定義することができます。azure-mobile-apps Node.js SDK では、オフライン データ同期に必要なその他の列が指定したリストに自動的に追加されます。たとえば、クイック スタート クライアント アプリケーションには、text (文字列) と complete (ブール値) という 2 つの列を持つテーブルが必要になります。このテーブルは、次のように、(テーブル ディレクトリにある) テーブル定義 JavaScript ファイルで定義できます。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -250,7 +252,7 @@ WebAPI を使用して公開する列を明示的に定義することができ�
 
     module.exports = table;
 
-静的にテーブルを定義する場合は、tables.initialize() メソッドを呼び出して起動時にデータベース スキーマを作成する必要もあります。tables.initialize() メソッドは [Promise] を返します。これは、Web サービスがデータベースの初期化前に要求を処理しないようにするために使用されます。
+静的にテーブルを定義する場合は、tables.initialize() メソッドを呼び出して起動時にデータベース スキーマを作成する必要もあります。Web サービスがデータベースの初期化前に要求を処理しないように、tables.initialize() メソッドは [Promise] を返します。
 
 ### <a name="howto-sqlexpress-setup"></a>方法: ローカル コンピューター上で開発データ ストアとして SQL Express を使用する
 
@@ -264,11 +266,11 @@ Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用し
 
 > [AZURE.TIP] メモリ ドライバーでは、テスト用の完全な機能セットは提供されません。ローカルでバックエンドをテストする場合は、SQL Express データ ストアと mssql ドライバーを使用することをお勧めします。
 
-1. [Microsoft SQL Server 2014 Express] をダウンロードしてインストールします。必ず、SQL Server 2014 Express with Tools エディションをインストールしてください。明示的に 64 ビットのサポートが要求された場合を除き、32 ビット バージョンを使用することで実行時のメモリ使用量が少なくなります。
+1. [Microsoft SQL Server 2014 Express] をダウンロードしてインストールします。必ず、SQL Server 2014 Express with Tools エディションをインストールしてください。64 ビット サポートを明示的に要求した場合を除き、32 ビット版を使用することで実行時のメモリ使用量が少なくなります。
 
 2. SQL Server 2014 構成マネージャーを実行します。
 
-  1. 左側のツリー メニューにある **[SQL Server ネットワークの構成]** ノードを展開します。
+  1. 左側のツリー メニューの **[SQL Server ネットワークの構成]** ノードを展開します。
   2. **[SQLEXPRESS のプロトコル]** をクリックします。
   3. **[TCP/IP]** を右クリックし、**[有効化]** を選択します。ポップアップ ダイアログで **[OK]** をクリックします。
   4. **[TCP/IP]** を右クリックし、**[プロパティ]** を選択します。
@@ -276,8 +278,9 @@ Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用し
   6. **[IPAll]** ノードを見つけます。**[TCP ポート]** フィールドに、「**1433**」と入力します。
 
 	 	 ![Configure SQL Express for TCP/IP][3]
+
   7. **[OK]** をクリックします。ポップアップ ダイアログで **[OK]** をクリックします。
-  8. 左側のツリー メニューにある **[SQL Server のサービス]** をクリックします。
+  8. 左側のツリー メニューの **[SQL Server のサービス]** をクリックします。
   9. **[SQL Server (SQLEXPRESS)]** を右クリックし、**[再起動]** を選択します。
   10. SQL Server 2014 構成マネージャーを閉じます。
 
@@ -305,11 +308,11 @@ Azure Mobile Apps Node.js SDK では [mssql Node.js パッケージ]を使用し
 
 選択したユーザー名とパスワードは必ず記録してください。特定のデータベース要件に応じて、他のサーバーの役割またはアクセス許可の割り当てが必要になる場合があります。
 
-Node.js アプリケーションは、**SQLCONNSTR\_MS\_TableConnectionString** 環境変数を読み取って、このデータベースの接続文字列を確認します。ご使用の環境内にこれを設定することができます。たとえば、PowerShell を使用して、以下のようにこの環境変数を設定することができます。
+Node.js アプリケーションは、**SQLCONNSTR\_MS\_TableConnectionString** 環境変数を読み取って、このデータベースの接続文字列を確認します。ご使用の環境内にこの変数を設定できます。たとえば、PowerShell を使用して、以下のようにこの環境変数を設定することができます。
 
     $env:SQLCONNSTR_MS_TableConnectionString = "Server=127.0.0.1; Database=mytestdatabase; User Id=azuremobile; Password=T3stPa55word;"
 
-TCP/IP 接続を介して、データベースにアクセスし、接続用のユーザー名とパスワードを入力する必要があることに注意してください。
+TCP/IP 接続を介してデータベースにアクセスし、接続用のユーザー名とパスワードを入力します。
 
 ### <a name="howto-config-localdev"></a>方法: ローカル開発用のプロジェクトを構成する
 
@@ -319,7 +322,7 @@ Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile
 - 診断ログ設定
 - 代替 CORS 設定
 
-上記のデータベース設定を実装する _azureMobile.js_ ファイルの例を次に示します。
+前のデータベース設定を実装する _azureMobile.js_ ファイルの例を次に示します。
 
     module.exports = {
         cors: {
@@ -341,7 +344,7 @@ Azure Mobile Apps は、ローカル ファイルシステムから _azureMobile
 
 ### <a name="howto-appsettings"></a>方法: モバイル アプリのアプリ設定を構成する
 
-_azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポータル] 内に対応するアプリ設定があります。[アプリ設定] でアプリを構成するには、次の一覧を使用します。
+_azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポータル]内に対応するアプリ設定があります。[アプリ設定] でアプリを構成するには、次の一覧を使用します。
 
 | アプリ設定 | _azureMobile.js_ 設定 | 説明 | 有効な値 |
 | :-------------------------- | :------------------------ | :---------------------------------------- | :------------------------------------------ |
@@ -357,8 +360,8 @@ _azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポー�
 
 1. [Azure ポータル]にログインします。
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3. 既定で [設定] ブレードが開きます。開かない場合は、**[設定]** をクリックします。
-4. [全般] メニューで、**[アプリケーション設定]** をクリックします。
+3. [設定] ブレードが既定で開きます。開かない場合は、**[すべての設定]** をクリックします。
+4. [全般] メニューの **[アプリケーション設定]** をクリックします。
 5. [アプリ設定] セクションまでスクロールします。
 6. アプリ設定が既に存在する場合は、アプリ設定の値をクリックして値を編集します。
 7. アプリ設定が存在しない場合は、[キー] ボックスにアプリ設定を入力し、[値] ボックスに値を入力します。
@@ -370,7 +373,7 @@ _azureMobile.js_ ファイル内のほとんどの設定には、[Azure ポー�
 
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
-Azure SQL Database をデータ ストアとして使用する方法は、Azure App Service アプリケーションのすべての種類で同じです。モバイル アプリ バックエンドをまだ作成していない場合は、次の手順に従って新しいものを作成します。
+Azure SQL Database をデータ ストアとして使用する方法は、Azure App Service アプリケーションのすべての種類で同じです。モバイル アプリ バックエンドをまだ作成していない場合は、次の手順に従って作成します。
 
 1. [Azure ポータル]にログインします。
 
@@ -378,13 +381,13 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 3. **[リソース グループ]** ボックスで、アプリと同じ名前を入力します。
 
-4. 既定の App Service プランが選択されます。App Service プランを変更するには、[App Service プラン]、**[+ 新規作成]** の順にクリックします。新しい App Service プランの名前を指定し、適切な場所を選択します。[価格レベル] をクリックし、サービスに適切な価格レベルを選択します。**[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。価格レベルを選択したら、**[選択]** をクリックします。**[App Service プラン]** ブレードに戻り、**[OK]** をクリックします。
+4. 既定の App Service プランが選択されています。App Service プランを変更するには、[App Service プラン]、**[+ 新規作成]** の順にクリックします。新しい App Service プランの名前を指定し、適切な場所を選択します。[価格レベル] をクリックし、サービスに適切な価格レベルを選択します。**[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。価格レベルを選択したら、**[選択]** をクリックします。**[App Service プラン]** ブレードに戻り、**[OK]** をクリックします。
 
-5. **[作成]** をクリックします。これにより、モバイル アプリ バックエンドが作成され、後でサーバー プロジェクトをデプロイすることができます。モバイル アプリ バックエンドのプロビジョニングには数分かかる場合があります。モバイル アプリ バックエンドのプロビジョニングが完了すると、ポータルでモバイル アプリ バックエンドの **[設定]** ブレードが開きます。
+5. **[作成]** をクリックします。モバイル アプリ バックエンドのプロビジョニングには数分かかる場合があります。モバイル アプリ バックエンドのプロビジョニングが完了すると、ポータルでモバイル アプリ バックエンドの **[設定]** ブレードが開きます。
 
-モバイル アプリ バックエンドが作成されたら、既存の SQL データベースをモバイル アプリ バックエンドに接続するか、新しい SQL データベースを作成するかを選択できます。このセクションでは、新しい SQL データベースを作成します。
+モバイル アプリ バックエンドが作成されたら、既存の SQL データベースをモバイル アプリ バックエンドに接続するか、新しい SQL データベースを作成するかを選択できます。このセクションでは、SQL データベースを作成します。
 
-> [AZURE.NOTE] 新しいモバイル アプリ バックエンドと同じ場所に、既にデータベースがある場合は、**[既存のデータベースを使用する]** を選ぶと、そのデータベースを選択できます。別の場所にあるデータベースを使用することは、帯域幅コストと待機時間が増加するため、お勧めしません。
+> [AZURE.NOTE] モバイル アプリ バックエンドと同じ場所に、既にデータベースがある場合は、**[既存のデータベースを使用する]** を選択すると、そのデータベースを選択できます。別の場所にあるデータベースを使用すると、待機時間が増加するため、これはお勧めできません。
 
 6. 新しいモバイル アプリ バックエンドで、**[設定]**、**[モバイル アプリ]**、**[データ]**、**[+ 追加]** の順にクリックします。
 
@@ -402,7 +405,7 @@ Azure SQL Database をデータ ストアとして使用する方法は、Azure 
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイの進行状況を監視します。データベースのデプロイが正常に完了するまでは、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
+データベースの作成には数分かかる場合があります。**[通知]** 領域を使用して、デプロイの進行状況を監視します。データベースのデプロイが正常に完了するまで、先に進まないでください。正常にデプロイされると、モバイル バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。このアプリ設定を確認するには、**[設定]**、**[アプリケーション設定]**、**[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>方法: テーブルへのアクセスに認証を要求する
 
@@ -444,9 +447,9 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
 ### <a name="howto-tables-getidentity"></a>方法: テーブルで認証要求を使用する
 
-認証が設定されている場合に、要求されている要求の数を設定することができます。これらの要求は `context.user` オブジェクトでは通常使用できません。ただし、`context.user.getIdentity()` メソッドで取得できます。`getIdentity()` メソッドは、オブジェクトに解決される Promise を返します。オブジェクトは、認証方法 (facebook、google、twitter、microsoftaccount または aad) によってキー付けされます。
+認証が設定されている場合、要求されている各種要求を設定できます。これらの要求は `context.user` オブジェクトでは通常使用できません。ただし、`context.user.getIdentity()` メソッドで取得できます。`getIdentity()` メソッドは、オブジェクトに解決される Promise を返します。オブジェクトは、認証方法 (facebook、google、twitter、microsoftaccount、または aad) によってキー付けされます。
 
-たとえば、Microsoft アカウント認証を設定し、電子メール アドレス要求を要求する場合は、次のレコードに電子メール アドレスを追加できます。
+たとえば、Microsoft アカウント認証を設定し、電子メール アドレス要求を要求する場合は、次のテーブル コントローラーを使用してレコードに電子メール アドレスを追加できます。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -512,7 +515,7 @@ access プロパティが定義されていない場合は、非認証アクセ�
   - *update* は、テーブルに対する RESTful PATCH 操作です。
   - *delete* は、テーブルに対する RESTful DELETE 操作です。
 
-たとえば、読み取り専用の非認証テーブルを指定するとします。これは、次のようなテーブル定義で指定することができます。
+たとえば、読み取り専用の認証されていないテーブルを指定できます。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -528,7 +531,7 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
 ### <a name="howto-tables-query"></a>方法: テーブル操作で使用されるクエリを調整する
 
-テーブル操作の一般的な要件は、データの制限付きビューを提供することです。たとえば、ユーザーが独自のレコードの読み取りまたは更新のみができるように、認証済みユーザー ID がタグ付けされているテーブルを提供できます。次のようなテーブル定義では、この機能が提供されます。
+テーブル操作の一般的な要件は、データの制限付きビューを提供することです。たとえば、ユーザーが独自のレコードの読み取りまたは更新のみを実行できるように、認証済みユーザー ID でタグ付けされているテーブルを提供できます。次のテーブル定義では、この機能を提供しています。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -559,13 +562,13 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
     module.exports = table;
 
-通常はクエリを実行する操作には、where 句で調整できる query プロパティがあります。query プロパティは [QueryJS] オブジェクトであり、これを使用して、データ バックエンドで処理できるものに OData クエリを変換します。(上記のような) 単純な等式の場合、マップを使用できます。特定の SQL 句の追加も比較的容易です。
+通常はクエリを実行する操作には、where 句で調整できる query プロパティがあります。query プロパティは [QueryJS] オブジェクトであり、これを使用して、データ バックエンドで処理できるものに OData クエリを変換します。(上記のような) 単純な等式の場合は、マップを使用できます。また、特定の SQL 句を追加することもできます。
 
     context.query.where('myfield eq ?', 'value');
 
 ### <a name="howto-tables-softdelete"></a>方法: テーブルの論理削除を構成する
 
-論理削除では実際にレコードは削除されません。代わりに、削除列を true に設定して、データベース内のレコードを削除済みとしてマークします。Mobile Client SDK で IncludeDeleted() が使用されない限り、Azure Mobile Apps SDK によって結果から論理削除レコードが自動的に削除されます。論理削除のテーブルを構成するには、テーブル定義ファイルで softDelete プロパティを設定します。例を以下に示します。
+論理削除では実際にレコードは削除されません。代わりに、削除列を true に設定して、データベース内のレコードを削除済みとしてマークします。Mobile Client SDK で IncludeDeleted() が使用されない限り、Azure Mobile Apps SDK によって結果から論理削除レコードが自動的に削除されます。論理削除のテーブルを構成するには、テーブル定義ファイルで `softDelete` プロパティを設定します。
 
     var azureMobileApps = require('azure-mobile-apps');
 
@@ -588,7 +591,7 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
 	module.exports = table;
 
-クライアント アプリケーションから、WebJob またはカスタム メカニズムを使用して、レコードを消去するためのメカニズムを確立する必要があります。
+クライアント アプリケーション、WebJob、Azure 関数、またはカスタム API を使用して、レコードを消去するためのメカニズムを確立する必要があります。
 
 ### <a name="howto-tables-seeding"></a>方法: データベースに対するデータのシード処理を実行する
 
@@ -616,9 +619,9 @@ access プロパティが定義されていない場合は、非認証アクセ�
 
 	module.exports = table;
 
-データのシード処理は、テーブルが Azure Mobile Apps SDK で作成されている場合にのみ行われることに注意してください。データベース内にテーブルが既に存在する場合、テーブルにデータは挿入されません。動的スキーマが有効な場合、スキーマはシード処理されたデータから推論されます。
+データのシード処理は、テーブルが Azure Mobile Apps SDK で作成されている場合にのみ実行されます。データベース内にテーブルが既に存在する場合、テーブルにデータは挿入されません。動的スキーマが有効になっている場合、スキーマはシード処理されたデータから推論されます。
 
-initialize() メソッドを明示的に呼び出して、サービスの実行開始時にテーブルを作成することをお勧めします。
+`tables.initialize()` メソッドを明示的に呼び出して、サービスの実行開始時にテーブルを作成することをお勧めします。
 
 ### <a name="Swagger"></a>方法: Swagger のサポートを有効にする
 
@@ -634,7 +637,7 @@ Azure App Service Mobile Apps には、組み込みの [Swagger] のサポート
 
     var mobile = azureMobileApps({ swagger: process.env.NODE_ENV !== 'production' });
 
-Swagger エンドポイントは http://_yoursite_.azurewebsites.net/swagger にあります。Swagger UI には `/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とするように選択している場合、Swagger は / エンドポイントに対してエラーを生成することに注意してください。最良の結果を得るには、Azure App Service の [認証/承認] 設定で認証されていない要求を許可し、`table.access` プロパティを使用して認証を制御します。
+Swagger エンドポイントは http://_yoursite_.azurewebsites.net/swagger にあります。Swagger UI には、`/swagger/ui` エンドポイントからアクセスできます。アプリケーション全体で認証を必要とする場合、エラーが生成されます。最良の結果を得るには、Azure App Service の [認証/承認] 設定で認証されていない要求を許可し、`table.access` プロパティを使用して認証を制御します。
 
 また、ローカルで開発する場合にのみ、Swagger のサポートが必要な場合は、`azureMobile.js` ファイルに Swagger オプションを追加できます。
 
@@ -693,7 +696,7 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 
 ## <a name="CustomAPI"></a> カスタム API
 
-###  <a name="howto-customapi-basic"></a>方法: 単純なカスタム API を定義する
+###  <a name="howto-customapi-basic"></a>方法: カスタム API を定義する
 
 
 /tables エンドポイント経由のデータ アクセス API に加え、Azure Mobile Apps ではカスタム API も提供できます。カスタム API はテーブル定義と同じような方法で定義され、認証を含む、すべての同じ機能にアクセスできます。
@@ -729,7 +732,7 @@ Mobile Apps と Azure Notification Hubs を統合することで、あらゆる�
 	// Start listening on HTTP
 	app.listen(process.env.PORT || 3000);
 
-ここでは、_Date.now()_ メソッドを使用してサーバーの日付を返す単純な API を使用します。api/date.js ファイルを以下に示します。
+ここでは、_Date.now()_ メソッドを使用してサーバーの日付を返す API の例を見てみましょう。api/date.js ファイルを以下に示します。
 
 	var api = {
 		get: function (req, res, next) {
@@ -796,7 +799,7 @@ Azure Mobile Apps SDK では、[body-parser ミドルウェア](https://github.c
 	// Start listening on HTTP
 	app.listen(process.env.PORT || 3000);
 
-上記の 50 MB の制限は調整できます。このファイルは、送信前に Base-64 でエンコードされるため、実際のアップロードのサイズは増加します。
+ファイルは送信前に base 64 でエンコードされます。そのため、実際のアップロードのサイズが増加します (したがって、このサイズを考慮する必要があります)。
 
 ### <a name="howto-customapi-sql"></a>方法: カスタム SQL ステートメントを実行する
 
@@ -839,19 +842,19 @@ Azure App Service では、Node.js アプリケーションに関するいくつ
 - [Azure App Service での診断ログの有効化]
 - [Visual Studio での Azure App Service のトラブルシューティング]
 
-Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。Azure Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。これを自動的に有効にするには、デバッグ モードを有効にするか、[Azure ポータル]で **MS\_DebugMode** アプリ設定を true に設定します。生成されたログは、[Azure ポータル]の [診断ログ] に表示されます。
+Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。Azure Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。ログを自動的に有効にするには、デバッグ モードを有効にするか、[Azure ポータル]で **MS\_DebugMode** アプリ設定を true に設定します。生成されたログは、[Azure ポータル]の [診断ログ] に表示されます。
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>方法: Azure ポータルで Easy Tables を使用する
 
 ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。App Service Editor を使用してテーブルの操作を編集することもできます。
 
-バックエンド サイトの設定で **[テーブルの簡単操作]** をクリックすると、新しいテーブルを追加したり、既存のテーブルを変更または削除したりできます。さらに、テーブル内のデータを表示することもできます。
+バックエンド サイトの設定で **[Easy Tables]** をクリックすると、テーブルを追加、変更、または削除できます。さらに、テーブル内のデータを表示することもできます。
 
 ![Work with Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
 
 テーブル用のコマンド バーには、次のコマンドが用意されています。
 
-+ **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。これにより、table.json プロジェクト コード ファイルは変更されます。
++ **[アクセス許可の変更]** - テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。
 + **[スクリプトの編集]** - テーブルのスクリプト ファイルは、App Service Editor で開きます。
 + **[スキーマの管理]** - 列の追加または削除やテーブルのインデックスの変更を実行します。
 + **[テーブルのクリア]** - 既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
@@ -860,9 +863,9 @@ Node.js アプリケーションは、広範囲の診断ログ ツールにア�
 
 ###<a name="work-easy-apis"></a>方法: Azure ポータルで [API の簡単操作] を使用する
 
-ポータルの [API の簡単操作] を使用すると、ポータル内でカスタム API をすぐに作成して操作できます。App Service Editor を使用して API のスクリプトを編集することもできます。
+ポータルの [API の簡単操作] を使用すると、ポータル内でカスタム API をすぐに作成して操作できます。App Service Editor を使用して、API のスクリプトを編集できます。
 
-バックエンド サイトの設定で **[API の簡単操作]** をクリックすると、新しいカスタム API エンドポイントを追加したり、既存の API エンドポイントを変更または削除したりできます。
+バックエンド サイトの設定で **[API の簡単操作]** をクリックすると、カスタム API エンドポイントを追加、変更、または削除できます。
 
 ![Work with Easy APIs](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
@@ -904,6 +907,7 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [Microsoft 認証の構成方法]: app-service-mobile-how-to-configure-microsoft-authentication.md
 [Twitter 認証の構成方法]: app-service-mobile-how-to-configure-twitter-authentication.md
 [Azure App Service のデプロイ ガイド]: ../app-service-web/web-sites-deploy.md
+[Azure App Service デプロイメント ガイド]: ../app-service-web/web-sites-deploy.md
 [Azure App Service の監視]: ../app-service-web/web-sites-monitor.md
 [Azure App Service での診断ログの有効化]: ../app-service-web/web-sites-enable-diagnostic-log.md
 [Visual Studio での Azure App Service のトラブルシューティング]: ../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md
@@ -928,4 +932,4 @@ Azure ポータルでは、ローカル コンピューターにプロジェク�
 [ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

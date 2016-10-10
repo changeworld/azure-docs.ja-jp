@@ -18,6 +18,12 @@
 
 # Visual Studio を使用してリモート クラスターにアプリケーションを発行する
 
+> [AZURE.SELECTOR]
+- [PowerShell](service-fabric-deploy-remove-applications.md)
+- [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+
+<br/>
+
 Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service Fabric クラスターへのアプリケーションの発行を反復可能な方法で簡単に実行できるうえに、スクリプト化することもできます。
 
 ## 発行に必要なアーティファクトの概要
@@ -28,7 +34,7 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
 
 ### 発行プロファイル
 
-「**PublishProfiles**」という名前の Service Fabric アプリケーション プロジェクトのフォルダーには、次のようなアプリケーションを発行するための重要な情報を格納する XML ファイルが含まれています。
+"**PublishProfiles**" という名前の Service Fabric アプリケーション プロジェクトのフォルダーには、次のようなアプリケーションを発行するための重要な情報を格納する XML ファイルが含まれています。
 
 - Service Fabric クラスターの接続パラメーター
 - アプリケーション パラメーター ファイルへのパス
@@ -48,11 +54,11 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
 
 1. Service Fabric アプリケーション プロジェクトのショートカット メニューで **[発行]** を選択すると、**[Service Fabric アプリケーションの発行]** ダイアログ ボックスが表示されます。
 
-    ![**[Service Fabric アプリケーションの発行]** ダイアログ ボックス][0]
+    ![The **Publish Service Fabric Application** dialog box][0]
 
     **[ターゲット プロファイル]** ボックスの一覧で選択したファイルには、**マニフェスト バージョン**を除くすべての設定が保存されます。既存のプロファイルを再利用するか、**[ターゲット プロファイル]** ボックスの一覧で **[プロファイルの管理]** を選択して新しいプロファイルを作成できます。発行プロファイルを選択すると、その内容がダイアログ ボックスの対応するフィールドに表示されます。**[プロファイルの保存]** リンクを選択すると、いつでも変更を保存できます。
 
-2. **[接続エンドポイント]** セクションで、ローカルまたはリモートの Service Fabric クラスターの発行エンドポイントを指定します。接続エンドポイントを追加または変更するには、**[接続のエンドポイント]** ボックスをクリックします。ご利用の Azure サブスクリプションに基づき、発行先として使用可能な Service Fabric クラスター接続エンドポイントが表示されます。Visual Studio にまだログインしていない場合、ログインするように求められます。
+2. **[接続エンドポイント]** セクションで、ローカルまたはリモートの Service Fabric クラスターの発行エンドポイントを指定します。接続エンドポイントを追加または変更するには、**[接続のエンドポイント]** ボックスをクリックします。ご利用の Azure サブスクリプションに基づき、発行先として使用できる Service Fabric クラスター接続エンドポイントが表示されます。Visual Studio にまだログインしていない場合、ログインするように求められます。
 
     クラスターの選択ダイアログ ボックスで、利用可能なサブスクリプションとクラスターのセットから選択します。
 
@@ -68,7 +74,7 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
 
 4. **[アプリケーションをアップグレードする]** チェック ボックスを使用して、この発行操作がアップグレードであるかどうかを指定します。アップグレードの発行操作は、通常の発行操作とは異なります。「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。アップグレードの設定を構成するには、**[アップグレード設定の構成]** リンクを選択します。アップグレード パラメーター エディターが表示されます。アップグレード パラメーターの詳細については、「[Service Fabric アプリケーションのアップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)」を参照してください。
 
-5. **[マニフェスト バージョン]** をクリックすると、**[バージョンの編集]** ダイアログ ボックスが表示されます。更新を実行するには、アプリケーションとサービスのバージョンをアップグレードする必要があります。アプリケーションとサービス マニフェストのバージョンがアップグレード プロセスに及ぼす影響の詳細については、[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)のページを参照してください。
+5. **[マニフェスト バージョン]** をクリックすると、**[バージョンの編集]** ダイアログ ボックスが表示されます。更新を実行するには、アプリケーションとサービスのバージョンをアップグレードする必要があります。アプリケーションとサービス マニフェストのバージョンがアップグレード プロセスに及ぼす影響の詳細については、[Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)に関するページを参照してください。
 
     ![The **Edit Versions** dialog box][3]
 
@@ -107,4 +113,4 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 [3]: ./media/service-fabric-publish-app-remote-cluster/EditVersions.png
 [4]: ./media/service-fabric-publish-app-remote-cluster/publish-to-party-cluster.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

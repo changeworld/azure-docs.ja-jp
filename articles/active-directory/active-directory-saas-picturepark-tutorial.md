@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Picturepark の統合
@@ -110,7 +110,7 @@
 
     6.  **[JoinDefaultUsersGroup]** をクリックします。
     7.  **Emailaddress** 属性の設定のため、**[Claim]** テキストボックスに * *http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。![構成](./media/active-directory-saas-picturepark-tutorial/IC795065.png "構成")
-    8.  **[保存]** をクリックします。
+    8.  [**Save**] をクリックします。
 
 9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
@@ -126,7 +126,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
 
 2.  上部にあるツールバーで **[Administrative tools]**、**[Users]** の順にクリックします。
 
-    ![Users](./media/active-directory-saas-picturepark-tutorial/IC795067.png "ユーザー")
+    ![Users](./media/active-directory-saas-picturepark-tutorial/IC795067.png "Users")
 
 3.  **[Users overview]** タブで、**[New]** をクリックします。
 
@@ -142,7 +142,7 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
 
 >[AZURE.NOTE]Picturepark から提供されている他の Picturepark ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -160,4 +160,4 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

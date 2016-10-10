@@ -14,7 +14,7 @@
  ms.topic="article"
  ms.tgt_pltfrm="na"
  ms.workload="big-data"
- ms.date="07/05/2016"
+ ms.date="09/27/2016"
  ms.author="larryfr"/>
 
 # HDInsight での一定期間に発生したイベントの Storm および HBase との関連付け
@@ -204,4 +204,4 @@ START イベントと同じ方法で END イベントを検索できます。た
 Storm の例の詳細については、「[HDInsight での Storm のサンプル トポロジ](hdinsight-storm-example-topology.md)」を参照してください。
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

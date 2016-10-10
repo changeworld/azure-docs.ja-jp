@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して MongoDB データベースからデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/04/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して MongoDB からデータを移動する
 
@@ -22,12 +22,12 @@
 
 Data Factory のサービスでは、Data Management Gateway を使用したオンプレミスの MongoDB ソースへの接続をサポートします。Data Management Gateway の詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
-> [AZURE.NOTE] Azure IaaS VM でホストされている場合でも、MongoDB への接続にゲートウェイを利用する必要があります。クラウドでホストされている MongoDB のインスタンスに接続しようとしている場合は、IaaS VM にゲートウェイ インスタンスをインストールすることもできます。
+> [AZURE.NOTE] Azure IaaS VM でホストされている場合でも、MongoDB への接続にゲートウェイを使用する必要があります。クラウドでホストされている MongoDB のインスタンスに接続しようとしている場合は、IaaS VM にゲートウェイ インスタンスをインストールすることもできます。
 
 現時点では、Data Factory は、他のデータ ストアから MongoDB へのデータの移動ではなく、MongoDB から他のデータ ストアへのデータの移動のみをサポートしています。
 
 ## 前提条件
-Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次をインストールする必要があります。
+Azure Data Factory サービスをオンプレミスの MongoDB データベースに接続できるようにするには、次のコンポーネントをインストールする必要があります。
 
 - データベースをホストするコンピューターと同じコンピューター、またはデータベースとのリソースの競合を避けるために別のコンピューター上にインストールされた、バージョン 2.0 以降の Data Management Gateway。Data Management Gateway は、安全かつ管理された方法でオンプレミスのデータをクラウド サービスに接続するソフトウェアです。Data Management Gateway の詳細については、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
   
@@ -238,7 +238,7 @@ MongoDB データベースから、サポートされているシンク デー�
 
 ## データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**MongoDbCollection** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -248,9 +248,9 @@ MongoDB データベースから、サポートされているシンク デー�
 
 ## コピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの **typeProperties** セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 コピー アクティビティで、source の種類が **MongoDbSource** である場合は、typeProperties セクションで次のプロパティを使用できます。
 
@@ -263,7 +263,7 @@ Azure Data Factory サービスは、MongoDB コレクション内の最新の�
 
 ## MongoDB の型マッピング
 
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
@@ -286,7 +286,7 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 > [AZURE.NOTE]  
 仮想テーブルを使用した配列に対するサポートの詳細については、下の「[仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables)」セクションをご覧ください。
 
-現時点でサポートされている MongoDB データ型は、DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined です。
+現時点では、次の MongoDB データ型はサポートされていません: DBPointer、JavaScript、Max/Min key、Regular Expression、Symbol、Timestamp、Undefined。
 
 ## 仮想テーブルを使用した複合型のサポート
 Azure Data Factory では、ビルトインの ODBC ドライバーを使用して、MongoDB データベースへの接続や、MongoDB データベースからのデータのコピーを行います。複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。
@@ -296,7 +296,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、次の「例」を参照してください。仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
-[コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard) を利用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
+[コピー ウィザード](data-factory-data-movement-activities.md#data-factory-copy-wizard) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
 ### 例
 
@@ -304,8 +304,8 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 \_id | Customer Name | Invoices | Service Level | Ratings
 --- | ------------- | -------- | ------------- | -------
-1111 | ABC | [{invoice\_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice\_id:”124”, item:”oven”,price: ”1235”,discount: ”0.2”}] | シルバー | [5,6]
-2222 | XYZ | [{invoice\_id:”135”, item:”fridge”,price: ”12543”,discount: ”0.0”}] | ゴールド | [1,2]
+1111 | ABC | [{invoice\_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice\_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] | シルバー | [5,6]
+2222 | XYZ | [{invoice\_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] | ゴールド | [1,2]
 
 ドライバーによって、この単一のテーブルを表す複数の仮想テーブルが生成されます。 最初の仮想テーブルは、次に示す "ExampleTable" という名前のベース テーブルです。ベース テーブルには元のテーブルのすべてのデータが含まれますが、配列のデータは省略され、仮想テーブルで展開されます。
 
@@ -314,7 +314,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 1111 | ABC | シルバー
 2222 | XYZ | ゴールド
 
-次のテーブルは、例における元の配列を表す仮想テーブルを示しています。各テーブルには次のフィールドが含まれます。
+次のテーブルは、例における元の配列を表す仮想テーブルを示しています。これらのテーブルには、以下が含まれます。
 
 - 元の配列の行に対応する元のプライマリ キー列への参照 (\_Id 列を使用)
 - 元の配列内のデータの位置の指定
@@ -347,4 +347,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 ## 次のステップ
 オンプレミスのデータ ストアから Azure データ ストアにデータを移動するデータ パイプラインを作成するための詳しい手順については、[オンプレミスとクラウドの間でデータを移動する方法](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

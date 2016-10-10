@@ -1,0 +1,200 @@
+<properties
+    pageTitle="Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する | Microsoft Azure"
+    description="Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。"
+    services="load-balancer"
+    documentationCenter="na"
+    authors="sdwheeler"
+    manager="carmonm"
+    editor=""
+    tags="azure-resource-manager"
+/>
+<tags
+    ms.service="load-balancer"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="infrastructure-services"
+    ms.date="09/14/2016"
+    ms.author="sewhee"
+/>
+
+# Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
+
+> [AZURE.SELECTOR]
+- [PowerShell](load-balancer-IPv6-internet-ps.md)
+- [Azure CLI](load-balancer-IPv6-internet-cli.md)
+- [テンプレート](load-balancer-IPv6-internet-template.md)
+
+Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+
+## デプロイ シナリオの例
+
+次の図は、この記事でデプロイされる負荷分散ソリューションを示します。
+
+![ロード バランサーのシナリオ](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
+
+このシナリオでは、次の Azure リソースを作成します。
+
+- IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
+- パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
+- 2 つの VM が含まれる可用性セット
+- 2 つの仮想マシン (VM)
+- IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
+
+## Azure PowerShell を使用したソリューションのデプロイ
+
+次の手順では、Azure Resource Manager で PowerShell を使用して、インターネットに接続するロード バランサーを作成する方法を示します。Azure Resource Manager では、それぞれのリソースは個別に作成され構成された後、リソースを作成するためにまとまられます。
+
+ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
+
+- フロントエンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+- バックエンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+- 負荷分散規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内のポートにマッピングする規則が含まれます。
+- 受信 NAT 規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。
+- プローブ - バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+
+詳細については、「[Azure Resource Manager によるロード バランサーのサポート](load-balancer-arm.md)」を参照してください。
+
+## Resource Manager を使用するための PowerShell をセットアップ
+
+PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版であることを確認します。
+
+1. Azure へのサインイン
+
+        Login-AzureRmAccount
+
+    メッセージが表示されたら、資格情報を入力します。
+
+2. アカウントのサブスクリプションを確認します。
+
+        Get-AzureRmSubscription
+
+3. 使用する Azure サブスクリプションを選択します。
+
+        Select-AzureRmSubscription -SubscriptionId 'GUID of subscription'
+
+4. リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
+
+        New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+
+## Virtual Network と、フロント エンド IP プールのパブリック IP アドレスの作成
+
+1. サブネットを含む仮想ネットワークを作成します。
+
+        $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
+
+2. フロントエンド IP アドレス プール用の Azure パブリック IP (PIP) リソースを作成します。
+
+        $publicIPv4 = New-AzureRmPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
+        $publicIPv6 = New-AzureRmPublicIpAddress -Name 'pub-ipv6' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Dynamic -IpAddressVersion IPv6 -DomainNameLabel lbnrpipv6
+
+    >[AZURE.IMPORTANT] ロード バランサーはその FQDN のプレフィックスとしてパブリック IP のドメイン ラベルを使用します。この例では、FQDN は *lbnrpipv4.westus.cloudapp.azure.com* と *lbnrpipv6.westus.cloudapp.azure.com* です。
+
+## フロントエンド IP 構成とバックエンド アドレス プールの作成
+
+1. 作成したパブリック IP アドレスを使用するフロントエンド アドレス構成を作成します。
+
+        $FEIPConfigv4 = New-AzureRmLoadBalancerFrontendIpConfig -Name "LB-Frontendv4" -PublicIpAddress $publicIPv4
+        $FEIPConfigv6 = New-AzureRmLoadBalancerFrontendIpConfig -Name "LB-Frontendv6" -PublicIpAddress $publicIPv6
+
+2. バックエンド アドレス プールを作成します。
+
+        $backendpoolipv4 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv4"
+        $backendpoolipv6 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
+
+
+## LB ルール、NAT 規則、プローブ、およびロード バランサーの作成
+
+次の例では、以下の項目が作成されます:
+
+- ポート 443 のすべての受信トラフィックをポート 4443 に転送する NAT 規則
+- ポート 80 のすべての受信トラフィックをバックエンド プールのアドレスのポート 80 に分散するロード バランサー規則
+- *HealthProbe.aspx* という名前のページまたはポート 8080 上のサービスの正常性状態を確認するプローブ規則
+- これらのオブジェクトをすべて使用するロード バランサー
+
+1. NAT 規則を作成します。
+
+        $inboundNATRule1v4 = New-AzureRmLoadBalancerInboundNatRuleConfig -Name "NicNatRulev4" -FrontendIpConfiguration $FEIPConfigv4 -Protocol TCP -FrontendPort 443 -BackendPort 4443
+        $inboundNATRule1v6 = New-AzureRmLoadBalancerInboundNatRuleConfig -Name "NicNatRulev6" -FrontendIpConfiguration $FEIPConfigv6 -Protocol TCP -FrontendPort 443 -BackendPort 4443
+
+2. 正常性プローブを作成します。プローブは次の 2 とおりの方法で構成できます。
+
+    HTTP プローブ
+
+        $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+
+    または TCP プローブ
+
+        $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -Protocol Tcp -Port 8080 -IntervalInSeconds 15 -ProbeCount 2
+
+    この例では、TCP プローブを使用します。
+
+3. ロード バランサー規則を作成します。
+
+        $lbrule1v4 = New-AzureRmLoadBalancerRuleConfig -Name "HTTPv4" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool backendpoolipv4 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
+        $lbrule1v6 = New-AzureRmLoadBalancerRuleConfig -Name "HTTPv6" -FrontendIpConfiguration $FEIPConfigv6 -BackendAddressPool backendpoolipv6 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
+
+4. 以前に作成したオブジェクトを使用してロード バランサーを作成します。
+
+        $NRPLB = New-AzureRmLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe -LoadBalancingRule $lbrule1v4,$lbrule1v6
+
+## バックエンド VM 用の NIC の作成
+
+1. NIC の作成先となる Virtual Network と Virtual Network のサブネットを取得します。
+
+        $vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
+        $backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
+
+2. VM の IP 構成と NIC を作成します。
+
+        $nic1IPv4 = New-AzureRmNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4 -LoadBalancerInboundNatRule $inboundNATRule1v4
+        $nic1IPv6 = New-AzureRmNetworkInterfaceIpConfig -Name "IPv6IPConfig" -PrivateIpAddressVersion "IPv6" -LoadBalancerBackendAddressPool $backendpoolipv6 -LoadBalancerInboundNatRule $inboundNATRule1v6
+        $nic1 = New-AzureRmNetworkInterface -Name 'myNrpIPv6Nic0' -IpConfiguration $nic1IPv4,$nic1IPv6 -ResourceGroupName NRP-RG -Location 'West US'
+
+        $nic2IPv4 = New-AzureRmNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4
+        $nic2IPv6 = New-AzureRmNetworkInterfaceIpConfig -Name "IPv6IPConfig" -PrivateIpAddressVersion "IPv6" -LoadBalancerBackendAddressPool $backendpoolipv6
+        $nic2 = New-AzureRmNetworkInterface -Name 'myNrpIPv6Nic1' -IpConfiguration $nic2IPv4,$nic2IPv6 -ResourceGroupName NRP-RG -Location 'West US'
+
+3. NIC を作成し、NAT 規則とバックエンド アドレス プールに関連付けます。
+
+        $backendnic1= New-AzureRmNetworkInterface -ResourceGroupName NRP-RG -Name lb-nic1-be -Location 'West US' -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
+
+## 仮想マシンを作成して新しく作成された NIC を割り当てる
+
+VM の作成に関する詳細については、「[リソース マネージャーと Azure PowerShell を使用して、Windows 仮想マシンを作成し、事前構成する](..\virtual-machines\virtual-machines-windows-ps-create.md)」を参照してください。
+
+1. 可用性セットとストレージ アカウントの作成
+
+        New-AzureRmAvailabilitySet -Name $availabilitySetName -ResourceGroupName NRP-RG -location 'West US'
+        $availabilitySet = Get-AzureRmAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG
+        New-AzureRmStorageAccount -ResourceGroupName NRP-RG -Name $vmStorageAccount -Location 'West US' -SkuName $LRS
+        $CreatedStorageAccount = Get-AzureRmStorageAccount -ResourceGroupName NRP-RG -Name $vmStorageAccount
+
+2. 各 VM を作成して以前に作成した NIC を割り当てる
+
+        $vm1 = New-AzureRmVMConfig -VMName 'myNrpIPv6VM0 -VMSize 'Standard_G1' -AvailabilitySetId $availabilitySet.Id
+        $vm1 = Set-AzureRmVMOperatingSystem -VM $vm1 -Windows -ComputerName 'myNrpIPv6VM0 -Credential $mySecureCredentials -ProvisionVMAgent -EnableAutoUpdate
+        $vm1 = Set-AzureRmVMSourceImage -VM $vm1 -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+        $vm1 = Add-AzureRmVMNetworkInterface -VM $vm1 -Id $nic1.Id -Primary
+        $osDisk1Uri = $CreatedStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/myNrpIPv6VM0osdisk.vhd"
+        $vm1 = Set-AzureRmVMOSDisk -VM $vm1 -Name 'myNrpIPv6VM0osdisk' -VhdUri $osDisk1Uri -CreateOption FromImage
+        New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm1
+
+        $vm2 = New-AzureRmVMConfig -VMName 'myNrpIPv6VM1 -VMSize 'Standard_G1' -AvailabilitySetId $availabilitySet.Id
+        $vm2 = Set-AzureRmVMOperatingSystem -VM $vm2 -Windows -ComputerName 'myNrpIPv6VM1 -Credential $mySecureCredentials -ProvisionVMAgent -EnableAutoUpdate
+        $vm2 = Set-AzureRmVMSourceImage -VM $vm2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+        $vm2 = Add-AzureRmVMNetworkInterface -VM $vm2 -Id $nic2.Id -Primary
+        $osDisk2Uri = $CreatedStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/myNrpIPv6VM1osdisk.vhd"
+        $vm2 = Set-AzureRmVMOSDisk -VM $vm2 -Name 'myNrpIPv6VM1osdisk' -VhdUri $osDisk2Uri -CreateOption FromImage
+        New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
+
+## 次のステップ
+
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
+
+[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
+
+[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+
+<!---HONumber=AcomDC_0928_2016-->

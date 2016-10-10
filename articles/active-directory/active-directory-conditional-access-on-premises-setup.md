@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 
@@ -121,8 +121,9 @@ Azure Active Directory Device Registration サービスを Azure Active Director
   2.	Azure AD Connect のインストールと実行: 「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールします。
   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
   
-  > [AZURE.NOTE] 上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。
-  > [AZURE.NOTE] プレビュー機能を構成する必要はありません。
+  > [AZURE.NOTE] 
+  上記のリンクされたドキュメントで概説されているように、AD FS とのフェデレーションを構成します。
+  プレビュー機能を構成する必要はありません。
 
 
 ## Active Directory ドメイン サービス スキーマをアップグレードする
@@ -194,7 +195,7 @@ Azure Active Directory Device Registration では、iOS デバイスに対して
 
 ### Azure Active Directory Device Registration を使用して Android デバイスを参加させる
 
-[「Android 用の Azure Authenticator」](active-directory-conditional-access-azure-authenticator-app.md)トピックに、Android デバイスに Azure 認証アプリをインストールして、仕事用アカウントを追加するための手順が説明されています。Android デバイスで仕事用アカウントが正常に作成されると、そのデバイスを組織に社内参加させることができます。
+「[Android 用の Azure Authenticator](active-directory-conditional-access-azure-authenticator-app.md)」トピックに、Android デバイスに Azure 認証アプリをインストールして、仕事用アカウントを追加するための手順が説明されています。Android デバイスで仕事用アカウントが正常に作成されると、そのデバイスを組織に社内参加させることができます。
 
 ## 登録済みのデバイスが Active Directory に書き戻されていること確認する
 LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが Active Directory に書き戻されたことを表示し、確認することができます。どちらも、Active Directory 管理ツールで利用できます。
@@ -252,4 +253,4 @@ LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

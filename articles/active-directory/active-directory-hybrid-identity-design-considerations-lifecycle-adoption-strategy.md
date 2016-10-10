@@ -5,7 +5,7 @@
 	documentationCenter=""
 	services="active-directory"
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -95,4 +95,4 @@ ID の同期プロセス
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
    description="Azure での新しい Linux 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング"
    services="virtual-machines-linux"
    documentationCenter=""
-   authors="jiangchen79"
+   authors="JiangChen79"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
@@ -51,7 +51,7 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Window
 
 **キャプチャ エラー:**
 
-**N<sup>3</sup>:** OS が一般化された Linux であり、特殊化された Linux としてキャプチャされた場合、一般化としてマークされた元の VM を使用できないため、プロビジョニング タイムアウト エラーが発生します。
+**N<sup>3</sup>:** OS が一般化された Linux であり、特殊化された Linux としてキャプチャされた場合、一般化された Linux としてマークされた元の VM を使用できないため、プロビジョニング タイムアウト エラーが発生します。
 
 **N<sup>4</sup>:** OS が特殊化された Linux であり、一般化された Linux としてキャプチャされた場合、新しい VM は元のコンピューター名、ユーザー名、パスワードを使用して実行されるため、プロビジョニング エラー (プロビジョニング失敗) が発生します。また、元の VM は特殊化としてマークされているので使用できません。
 
@@ -84,4 +84,4 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Window
 ## 次のステップ
 Azure での停止していた Linux VM の再起動または既存の Linux VM のサイズ変更に問題が発生する場合は、[Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

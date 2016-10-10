@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Media Services REST API を使用したフィルターの作成" 
+	pageTitle="Azure Media Services REST API を使用したフィルターの作成 | Microsoft Azure" 
 	description="このトピックでは、クライアントがストリームの特定のセクションをストリームする際に使用できるフィルターを作成する方法について説明します。Media Services では、動的マニフェストを作成してこの選択型ストリーミングをアーカイブします。"
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="ne" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako;cenkdin"/>
 
 #Azure Media Services REST API を使用したフィルターの作成
@@ -68,7 +68,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 	x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
 	Host:media.windows.net 
 
-Request body
+要求本文
 
 	{  
 	   "Name":"GlobalFilter",
@@ -124,7 +124,7 @@ Request body
 	x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
 	Host: media.windows.net  
 
-Request body
+要求本文
 
 	{   
 	   "Name":"AssetFilter", 
@@ -374,4 +374,4 @@ Request body
 
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

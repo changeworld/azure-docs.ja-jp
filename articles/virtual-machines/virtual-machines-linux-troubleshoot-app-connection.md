@@ -1,6 +1,6 @@
 <properties
-	pageTitle="VM 上でプログラムが起動しない、またはリッスン ポートがブロックされている | Microsoft Azure"
-	description="Azure VM 上で実行されているプログラムを起動 (または使用) できない場合、これらの手順に従って問題の原因を特定します。"
+	pageTitle="Linux VM でのアプリケーション アクセスのトラブルシューティング |Microsoft Azure"
+	description="ここには、Azure 上の Linux 仮想マシンで実行されているアプリケーションへの接続における問題を切り分けるための詳細なトラブルシューティング手順が記載されています。"
 	services="virtual-machines-linux"
 	documentationCenter=""
 	authors="iainfoulds"
@@ -14,12 +14,12 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2016"
+	ms.topic="support-article"
+	ms.date="09/27/2016"
 	ms.author="iainfou"/>
 
-# トラブルシューティング: Azure 仮想マシンで実行されているアプリケーションの起動、アクセス、接続の問題
+# Linux Azure 仮想マシンにおけるアプリケーション接続の問題のトラブルシューティング
 
 [AZURE.INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

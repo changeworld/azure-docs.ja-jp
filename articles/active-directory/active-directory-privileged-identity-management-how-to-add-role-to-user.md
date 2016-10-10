@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/01/2016"
+   ms.date="09/22/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
@@ -26,7 +26,7 @@ Azure AD Privileged Identity Management (PIM) アプリケーションを使用�
 
 組織の管理者は、Azure AD や Office 365 などの Microsoft のサービスおよびアプリケーションで、異なる管理者ロールにユーザーを割り当てることができます。利用可能なロールの詳細については、[Azure PIM におけるロール](active-directory-privileged-identity-management-roles.md)に関するページを参照してください。
 
-Privileged Identity Management を使用してロールのユーザーの追加や削除を行うには、PIM ダッシュボードを表示し、**[管理者ロールのユーザー]** をクリックするか、ロールのテーブルから特定のロール (グローバル管理者など) を選択します。
+Privileged Identity Management を使用してロール内のユーザーを追加または削除するには、PIM ダッシュ ボードを表示します。次に、**[管理者ロールのユーザー]** ボタンをクリックするか、またはロール テーブルから特定のロール (グローバル管理者など) を選択します。
 
 > [AZURE.NOTE] まだ Azure ポータルで PIM を有効にしていない場合は、「[Azure AD Privileged Identity Management の使用](active-directory-privileged-identity-management-getting-started.md)」を参照してください。
 
@@ -58,11 +58,11 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 3. **[削除]** をクリックします。確認を求めるメッセージが表示されます。
 4. **[はい]** をクリックすると、ユーザーからロールが削除されます。
 
-どのユーザーに引き続きロールの割り当てが必要であるかわからない場合は、[ロールのセキュリティ レビューを開始](active-directory-privileged-identity-management-how-to-start-security-review.md)してください。
+どのユーザーに引き続きロールの割り当てが必要であるかわからない場合は、[ロールのアクセス レビューを開始](active-directory-privileged-identity-management-how-to-start-security-review.md)してください。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

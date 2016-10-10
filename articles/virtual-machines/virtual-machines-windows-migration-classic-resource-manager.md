@@ -198,7 +198,7 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 
 **Resource Manager で IaaS を使用する必要がある場合、別の Express Route 回線を購入する必要はありますか?**
 
-いいえ。最近、[クラシックおよび Resource Manager での ExpressRoute 回線の共存](../expressroute/expressroute-howto-coexist-resource-manager.md)が可能になりました。ExpressRoute 回線が既にある場合は、新しいものを購入する必要はありません。
+いいえ。最近、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../expressroute/expressroute-move.md)が可能になりました。ExpressRoute 回線が既にある場合は、新しいものを購入する必要はありません。
 
 **クラシック IaaS リソース用にロールベースの Access Control ポリシーを構成した場合はどうすればよいですか?**
 
@@ -237,4 +237,4 @@ Resource Manager デプロイメント モデルへのツールの更新は、�
 - [CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](virtual-machines-linux-cli-migration-classic-resource-manager.md)
 - [コミュニティ PowerShell スクリプトを使用して Azure Resource Manager にクラシック仮想マシンを複製する](virtual-machines-windows-migration-scripts.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

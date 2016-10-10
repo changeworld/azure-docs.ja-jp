@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="vm-linux"
   ms.workload="infrastructure-services"
-  ms.date="07/11/2016" 
+  ms.date="09/27/2016" 
   ms.author="ahmetb" />
 
 # Azure への独自のプライベート Docker Registry のデプロイ
@@ -100,4 +100,4 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 [registry-config]: http://docs.docker.com/registry/configuration/
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

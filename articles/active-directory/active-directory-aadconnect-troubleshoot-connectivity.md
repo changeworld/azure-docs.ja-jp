@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -26,14 +26,13 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 まず、[**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity) が正しく構成されていることを確認する必要があります。 ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
-
->[AZURE.NOTE]Microsoft 以外の一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
+>[AZURE.NOTE] Microsoft 以外の一部のブログでは、machine.config ではなく miiserver.exe.config に変更を加える必要があると記載されていますが、このファイルはアップグレードのたびに上書きされるため、初回インストール時には有効であっても、初回アップグレード時には機能しなくなります。このような理由から、machine.config を更新することをお勧めします。
 
 プロキシ サーバーでは、必須となる URL を開いておくことも必要です。公式の URL 一覧は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されています。
 
 その中でも、次の表に記載したものは Azure AD への接続に最低限必要な URL です。この一覧には、パスワード ライトバックや Azure AD Connect Health のようなオプション機能は含まれていません。ここには、初期構成に関するトラブルシューティングに役立つものが記載されています。
 
-URL | ポート | 説明
+URL | ポート | Description
 ---- | ---- | ----
 mscrl.microsoft.com | HTTP/80 | CRL リストのダウンロードに使用します。
 *.verisign.com | HTTP/80 | CRL リストのダウンロードに使用します。
@@ -91,7 +90,7 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 
 **Azure AD に接続**
 
-時刻 | URL
+Time | URL
 --- | ---
 1/11/2016 8:31 | connect://login.microsoftonline.com:443
 1/11/2016 8:31 | connect://adminwebservice.microsoftonline.com:443
@@ -102,7 +101,7 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 
 **構成**
 
-時刻 | URL
+Time | URL
 --- | ---
 1/11/2016 8:43 | connect://login.microsoftonline.com:443
 1/11/2016 8:43 | connect://*bba800-anchor*.microsoftonline.com:443
@@ -118,7 +117,7 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 
 **初期同期**
 
-時刻 | URL
+Time | URL
 --- | ---
 1/11/2016 8:48 | connect://login.windows.net:443
 1/11/2016 8:49 | connect://adminwebservice.microsoftonline.com:443
@@ -175,4 +174,4 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

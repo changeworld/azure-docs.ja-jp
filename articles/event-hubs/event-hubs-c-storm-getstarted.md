@@ -3,7 +3,7 @@
 	description="このチュートリアルでは、C でイベントを送信し、Apache Storm クラスターでそれを受信するための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
-	authors="fsautomata"
+	authors="jtaubensee"
 	manager="timlt"
 	editor=""/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="java"
 	ms.topic="article"
 	ms.date="08/16/2016"
-	ms.author="sethm"/>
+	ms.author="jotaub;sethm"/>
 
 # Event Hubs の使用
 
@@ -74,4 +74,4 @@ Event Hubs と Storm を統合するアプリケーションの開発には、�
 [HDInsight (Hadoop) での Storm と HBase を使用したセンサー データの分析]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: ../hdinsight/hdinsight-storm-develop-csharp-visual-studio-topology.md
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

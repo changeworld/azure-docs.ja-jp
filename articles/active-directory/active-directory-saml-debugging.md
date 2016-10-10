@@ -1,9 +1,9 @@
 <properties 
     pageTitle="Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法 | Microsoft Azure" 
-    description="Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法について説明します" 
+    description="Azure Active Directory のアプリケーションに対す SAML に基づいたシングル サインオンをデバッグする方法について説明します " 
     services="active-directory" 
     authors="asmalser-msft"  
-    documentationCenter="na" manager="stevenpo"/>
+    documentationCenter="na" manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
@@ -27,11 +27,11 @@ SAML トークンは、行を選択し、右側のパネルで **[インスペ�
 
 ## 関連記事
 
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 - [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
 - [Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-debugging/fiddler.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0928_2016-->

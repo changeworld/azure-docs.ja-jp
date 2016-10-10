@@ -3,7 +3,7 @@
 	description="Azure にサインアップする際に発生の可能性のある問題の一般的な原因を探る"
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="felixwu"
 	editor=""
 	tags="billing,top-support-issue"/>
@@ -87,4 +87,4 @@ Azure サブスクリプションを過去にアクティブ化しているた�
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

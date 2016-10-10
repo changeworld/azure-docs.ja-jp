@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="REST API によるジョブの進行状況のチェック方法" 
+	pageTitle="REST API によるジョブの進行状況のチェック方法 | Microsoft Azure" 
 	description="ジョブの進行状況を追跡する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"   
+	ms.date="09/26/2016"   
 	ms.author="juliako"/>
 
 #方法: ジョブの進行状況をチェックする
@@ -64,4 +64,4 @@
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

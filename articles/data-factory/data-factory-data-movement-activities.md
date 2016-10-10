@@ -4,7 +4,7 @@
 	keywords="データのコピー, データの移動, データの移行, データ転送"
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -14,8 +14,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="spelluru"/>
+	ms.date="09/22/2016"
+	ms.author="jingwang"/>
 
 # コピー アクティビティを使用したデータの移動
 
@@ -54,23 +54,14 @@ Azure Data Factory では、コピー アクティビティを使用して、さ
 Data Management Gateway を使用すると、Azure IaaS 仮想マシン (VM) でホストされている、サポートされるデータ ストア間でデータを移動することもできます。この場合、Data Management Gateway は、データ ストア自体と同じ VM、またはデータ ストアにアクセスできる別の VM にインストールできます。
 
 ## サポートされるデータ ストアと形式
-コピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。Data Factory は次のデータ ストアをサポートしています。また、任意のソースのデータを任意のシンクに書き込むことができます。データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
-
-カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート
-:------- | :--------- | :------------------ | :-----------------
-Azure | [Azure BLOB ストレージ](data-factory-azure-blob-connector.md) <br/> [Azure Data Lake Store](data-factory-azure-datalake-connector.md) <br/> [Azure SQL Database](data-factory-azure-sql-connector.md) <br/> [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) <br/> [Azure テーブル ストレージ](data-factory-azure-table-connector.md) <br/> [Azure DocumentDB](data-factory-azure-documentdb-connector.md) <br/> | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓
-データベース | [SQL Server](data-factory-sqlserver-connector.md)* <br/> [Oracle](data-factory-onprem-oracle-connector.md)* <br/> [MySQL](data-factory-onprem-mysql-connector.md)* <br/> [DB2](data-factory-onprem-db2-connector.md)* <br/> [Teradata](data-factory-onprem-teradata-connector.md)* <br/> [PostgreSQL](data-factory-onprem-postgresql-connector.md)* <br/> [Sybase](data-factory-onprem-sybase-connector.md)* <br/>[Cassandra](data-factory-onprem-cassandra-connector.md)* <br/>[MongoDB](data-factory-on-premises-mongodb-connector.md)*<br/>[Amazon Redshift](data-factory-amazon-redshift-connector.md) | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓<br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | ✓ <br/> ✓ <br/> &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;<br/> &nbsp;<br/> &nbsp;<br/> &nbsp; <br/>&nbsp;
-ファイル | [ファイル システム](data-factory-onprem-file-system-connector.md)* <br/> [HDFS](data-factory-hdfs-connector.md)* <br/> [Amazon S3](data-factory-amazon-simple-storage-service-connector.md) | ✓ <br/> ✓ <br/> ✓ | ✓ <br/> &nbsp;<br/>&nbsp;
-その他 | [Salesforce](data-factory-salesforce-connector.md)<br/> [汎用 ODBC](data-factory-odbc-connector.md)* <br/> [汎用 OData](data-factory-odata-connector.md) <br/> [Web テーブル (HTML から生成したテーブル)](data-factory-web-table-connector.md) <br/> [GE Historian](data-factory-odbc-connector.md#ge-historian-store)* | ✓ <br/> ✓ <br/> ✓ <br/> ✓ <br/> ✓ | &nbsp; <br/> &nbsp; <br/> &nbsp; <br/> &nbsp;<br/> &nbsp;<br/> &nbsp;
-
-> [AZURE.NOTE] * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
 コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合は、データのコピーと移動に独自のロジックを使用した、Data Factory の**カスタム アクティビティ**を使用します。カスタム アクティビティの作成と使用の詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
 
 ### サポートされるファイル形式
 コピー アクティビティを使用すると、Azure BLOB、ファイル システム、HDFS など、2 つのファイル ベース データ ストアの間でファイルをそのままコピーできます。これを行うには、入力と出力の両方のデータセット定義で [format セクション](data-factory-create-datasets.md)をスキップします。これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
-また、コピー アクティビティでは、テキスト、Avro、ORC、JSON など、指定した形式でファイルの読み取りと書き込みを実行します。コピー アクティビティの例をいくつか示します。
+また、コピー アクティビティでは、テキスト、Avro、ORC、Parquet、JSON など、指定した形式でファイルの読み取りと書き込みを実行します。コピー アクティビティの例をいくつか示します。
 
 -	Azure BLOB からテキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
 -	オンプレミスのファイル システムからテキスト (CSV) 形式でファイルをコピーし、Azure BLOB に Avro 形式で書き込む。
@@ -171,7 +162,7 @@ JSON 定義のサンプルを次に示します。
 
 出力データセットで定義されているスケジュールに従って、アクティビティが実行されるタイミングが決まります (たとえば、frequency を **day**、interval を **1** に設定すると、**日単位**で実行されます)。コピー アクティビティでは、入力データセット (**ソース**) から出力データセット (**シンク**) にデータがコピーされます。
 
-コピー アクティビティには複数の入力データセットを指定できます。この複数の入力データセットを使用して、アクティビティが実行される前に依存関係が検証されます。ただし、コピーされるのは、最初のデータセットのデータだけです。詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関するページをご覧ください。
+コピー アクティビティには複数の入力データセットを指定できます。この複数の入力データセットを使用して、アクティビティが実行される前に依存関係が検証されます。ただし、コピーされるのは、最初のデータセットのデータだけです。詳細については、「[スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。
 
 ## パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
@@ -185,11 +176,11 @@ Data Factory でのスケジュール設定と実行のしくみに関する詳�
 1. ネイティブの source 型から .NET 型に変換する。
 2. .NET 型からネイティブの sink 型に変換する。
 
-データ ストアに関するネイティブ型システムと .NET 型のマッピングは、それぞれのデータ ストアの記事にあります。([サポートされるデータ ストア](#supported-data-stores)の表に示されているリンクをクリックしてください)。このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
+データ ストアのネイティブ型システムから .NET 型へのマッピングは、該当するデータ ストアの記事を参照してください ([サポートされるデータ ストア](#supported-data-stores)の表に示されているリンクをクリックしてください)。このマッピングを使用して、テーブル作成時に適切な型を決定でき、コピー アクティビティによって適切な変換が実行されます。
 
 
 ## 次のステップ
 - コピー アクティビティの詳細については、「[Azure Blob Storage から Azure SQL Database にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 - オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動については、[オンプレミスのデータ ストアからクラウド データ ストアへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

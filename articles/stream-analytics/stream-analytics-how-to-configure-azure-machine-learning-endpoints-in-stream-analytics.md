@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"
 />
 
@@ -52,10 +52,13 @@ REST API を使用すると、ジョブを構成して Azure Machine Language �
 
 次に、Azure Machine Learning のエンドポイントにバインドされる *newudf* という名前のスカラー UDF を作成するサンプル コードの例に示します。*エンドポイント* (サービス URI) は、選択したサービスの API のヘルプ ページにあり、*apiKey* はサービスのメイン ページにあります。
 
-PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+````
+	PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
+````
 
 要求本文の例
 
+````
 	{
 		"name": "newudf",
 		"properties": {
@@ -71,15 +74,19 @@ PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/M
 			}
 		}
 	}
+````
 
 ## 既定の UDF 用の RetrieveDefaultDefinition エンドポイントの呼び出し
 
-スケルトン UDF を作成したら、UDF を完全に定義する必要があります。RetreiveDefaultDefinition エンドポイントを使用すると、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の定義を取得できます。以下のペイロードでは、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の UDF 定義を取得する必要があります。PUT 要求で既に渡されているので、実際のエンドポイントは指定されません。Stream Analytics は、要求で明示的に渡さる場合、そのエンドポイントを呼び出します。そうでない場合、最初に参照したものを使用します。ここでは UDF は単一の文字列型のパラメーター (文) を取り、その文の “sentiment” ラベルである文字列型の単一の出力を返します。
+スケルトン UDF を作成したら、UDF を完全に定義する必要があります。RetreiveDefaultDefinition エンドポイントを使用すると、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の定義を取得できます。以下のペイロードでは、Azure Machine Learning エンドポイントにバインドされているスカラー関数の既定の UDF 定義を取得する必要があります。PUT 要求で既に渡されているので、実際のエンドポイントは指定されません。Stream Analytics は、要求で明示的に渡される場合、そのエンドポイントを呼び出します。そうでない場合、最初に参照したものを使用します。ここでは UDF は単一の文字列型のパラメーター (文) を取り、その文の “sentiment” ラベルである文字列型の単一の出力を返します。
 
+````
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
+````
 
 要求本文の例
 
+````
 	{
 		"bindingType": "Microsoft.MachineLearning/WebService",
 		"bindingRetrievalProperties": {
@@ -87,10 +94,11 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 			"udfType": "Scalar"
 		}
 	}
+````
 
 このサンプル出力は、次のようになります。
 
-
+````
 	{
 		"name": "newudf",
 		"properties": {
@@ -126,19 +134,61 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 			}
 		}
 	}
+````
 
 ## 応答を使用した UDF の PATCH 
 
 ここで前の応答を使用して、以下のように UDF に対して PATH を実行します。
 
+````
 PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
+````
 
-要求本文: RetrieveDefaultDefinition からの出力
+要求本文 (RetrieveDefaultDefinition からの出力)
+
+````
+	{
+		"name": "newudf",
+		"properties": {
+			"type": "Scalar",
+			"properties": {
+				"inputs": [{
+					"dataType": "nvarchar(max)",
+					"isConfigurationParameter": null
+				}],
+				"output": {
+					"dataType": "nvarchar(max)"
+				},
+				"binding": {
+					"type": "Microsoft.MachineLearning/WebService",
+					"properties": {
+						"endpoint": "https://ussouthcentral.services.azureml.net/workspaces/f80d5d7a77ga4a4bbf2a30c63c078dca/services/b7be5e40fd194258896fb602c1858eaf/execute",
+						"apiKey": null,
+						"inputs": {
+							"name": "input1",
+							"columnNames": [{
+								"name": "tweet",
+								"dataType": "string",
+								"mapTo": 0
+							}]
+						},
+						"outputs": [{
+							"name": "Sentiment",
+							"dataType": "string"
+						}],
+						"batchSize": 10
+					}
+				}
+			}
+		}
+	}
+````
 
 ## UDF を呼び出すための Stream Analytics 変換の実装
 
 ここで各入力イベントにつき (scoreTweet という名前の) UDF に対し問い合わせを行い、そのイベントの応答を出力に書き込みます。
 
+````
 	{
 		"name": "transformation",
 		"properties": {
@@ -146,8 +196,8 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 			"query": "select *,scoreTweet(Tweet) TweetSentiment into blobOutput from blobInput"
 		}
 	}
+````
 
-詳細については、以下を参照してください。
 
 ## 問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=AzureStreamAnalytics)を参照してください。
@@ -160,4 +210,4 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

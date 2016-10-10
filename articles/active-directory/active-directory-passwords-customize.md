@@ -72,7 +72,7 @@
               </td>
               <td>
                 <p>
-                  <strong>”管理者に問い合わせてください” メール:</strong>
+                  <strong>"管理者に問い合わせてください" メール:</strong>
                 </p>
                 <ul>
                   <li class="unordered">
@@ -202,9 +202,8 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												[いいえ] を設定した場合、ディレクトリのすべてのエンド ユーザーが、<a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> でパスワード リセットの登録を実行できます。<br><br></li>
-                  <li class="unordered">
-												[はい] を設定した場合、<strong>[パスワードをリセットできるグループ]</strong> コントロールに指定されたエンドユーザーだけが <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> でパスワード リセットの登録を実行できます。<br><br></li>
+                    この設定は、パスワード リセット登録ポータルへのユーザー アクセスには影響しません。<strong>[パスワードのリセットが有効になっているユーザー]</strong> に <strong>[はい]</strong> を設定した場合、ディレクトリのすべてのエンド ユーザーが、<a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> でパスワード リセットの登録を実行できます。
+                  </li>
                 </ul>
                 <p>
                   <strong>パスワード リセット ポータル:</strong>
@@ -245,7 +244,8 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												<strong>[パスワード リセットへのアクセスの制限]</strong> が <strong>[はい]</strong> に設定されている場合、このグループのエンド ユーザーだけがパスワード リセットの登録を実行できます。<br><br></li>
+                    この設定は、パスワード リセット登録ポータルへのユーザー アクセスには影響しません。<strong>[パスワードのリセットが有効になっているユーザー]</strong> に <strong>[はい]</strong> を設定した場合、ディレクトリのすべてのエンド ユーザーが、<a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> でパスワード リセットの登録を実行できます。
+                  </li>
                 </ul>
                 <p>
                   <strong>パスワード リセット ポータル:</strong>
@@ -270,12 +270,6 @@
                 <p>(<strong>[パスワードのリセットが有効になっているユーザー]</strong> が <strong>[はい]</strong> に設定されている場合にのみ表示されます)。</p>
               </td>
               <td>
-                <p>
-
-                </p>
-                <p>
-
-                </p>
                 <p>
                   <strong>注:</strong>
                 </p>
@@ -875,4 +869,4 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

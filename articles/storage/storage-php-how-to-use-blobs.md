@@ -14,11 +14,13 @@
 	ms.devlang="PHP"
 	ms.topic="article"
     	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+	ms.author="jwillis;robmcm"/>
 
 # PHP から BLOB ストレージを使用する方法
 
-[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## Overview
 
@@ -308,4 +310,4 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

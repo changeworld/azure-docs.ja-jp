@@ -147,7 +147,7 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 
     e.Azure クラシック ポータルで **[パスワードの URL の変更]** をコピーし、**[Change Password URL (パスワードの URL の変更)]** ボックスに貼り付けます。
 
-    e.[**Save**] をクリックします。
+    f.**[保存]** をクリックします。
 
 6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
@@ -314,4 +314,4 @@ Azure AD への @Task の統合を構成するには、ギャラリーから管�
 [204]: ./media/active-directory-saas-attask-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-attask-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

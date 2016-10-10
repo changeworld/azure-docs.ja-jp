@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする" 
+	pageTitle="Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護 | Microsoft Azure" 
 	description="このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,22 +13,29 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/15/2016"
+	ms.date="09/27/2016"
 	ms.author="juliako"/>
 
-#Azure Media Services を使用して Apple FairPlay で保護された HLS コンテンツをストリーミングする 
+# Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 
 Azure Media Services では、次の形式を使用して HTTP Live Streaming (HLS) コンテンツを動的に暗号化することができます。
 
-- **AES-128 エンベロープ クリア キー** - **AES-128 CBC** モードを使用してチャンク全体を暗号化します。ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。詳細については、[こちらの記事](media-services-protect-with-aes128.md)を参照してください。
+- **AES-128 エンベロープ クリア キー**
 
-- **Apple FairPlay** - **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。**FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
+	**AES-128 CBC** モードを使用してチャンク全体を暗号化します。ストリームの復号化は iOS および OSX プレーヤーでネイティブにサポートされています。詳細については、[こちらの記事](media-services-protect-with-aes128.md)を参照してください。
 
-次のイメージは、"FairPlay 動的暗号化" ワークフローを示しています。
+- **Apple FairPlay**
+
+	**AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。**FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。
+- **Microsoft PlayReady**
+
+次の図は、**HLS + FairPlay および/または PlayReady 動的暗号化**ワークフローを示しています。
 
 ![FairPlay での保護](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
 
 このトピックでは、Azure Media Services を使用して HLS コンテンツを Apple FairPlay で動的に暗号化する方法を示します。また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
+
+>[AZURE.NOTE] HLS コンテンツを PlayReady で暗号化する必要がある場合は、共通キーを作成し、それを資産に関連付ける必要があります。また、「[Using PlayReady dynamic common encryption](media-services-protect-with-drm.md)」(PlayReady 動的な共通暗号化の使用) の説明に従って、コンテンツ キーの承認ポリシーを構成する必要もあります。
 
 	
 ## 要件と考慮事項
@@ -115,6 +122,20 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 >[AZURE.NOTE] Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。MAC OSX で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得する必要があります。
  
+##ストリーミング URL
+
+資産を複数の DRM を使用して暗号化した場合、ストリーミング URL で暗号化タグを使用する必要があります: (format='m3u8-aapl', encryption='xxx')。
+
+次の考慮事項が適用されます。
+
+- 指定できるのは、ゼロまたは 1 つの暗号化タイプのみです。
+- 1 つの暗号化のみが資産に適用された場合は、暗号化タイプを URL で指定する必要はありません。
+- 暗号化タイプでは大文字と小文字が区別されます。
+- 指定できる暗号化タイプは次のとおりです。
+	- **cenc**: 共通暗号化 (Playready または Widevine)
+	- **cbcs-aapl**: Fairplay
+	- **cbc**: AES エンベロープ暗号化
+
 
 ##.NET の例
 
@@ -550,4 +571,4 @@ Azure Media Services では、次の形式を使用して HTTP Live Streaming (H
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

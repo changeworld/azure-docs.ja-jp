@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="robinsh"/>
+	ms.date="09/16/2016"
+	ms.author="lakasa;robinsh"/>
 
 # Azure Storage Service Encryption for Data at Rest
 
@@ -23,7 +23,6 @@ Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全
 以下のセクションでは、Storage Service Encryption 機能の使用方法についての詳細なガイダンス、およびサポートされるシナリオとユーザー エクスペリエンスについて説明します。
 
 ## 概要
-
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。アプリケーションと Azure の間で送信されるデータは、[クライアント側暗号化](storage-client-side-encryption.md)、HTTPS、または SMB 3.0 使用して保護できます。Storage Service Encryption は保存時の暗号化を提供し、暗号化、復号化、キー管理を完全に透過的な方法で処理します。現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によってすべてのデータを暗号化します。
 
@@ -35,7 +34,7 @@ SSE は、Azure Storage に書き込まれるときにデータを暗号化す�
 -   Azure Resource Manager ストレージ アカウント (クラシック以外)
 -   すべてのリージョン
 
-次のスクリーンショットは、[Azure ポータル](https://azure.portal.com)での Storage Service Encryption の設定画面です。この画面では、[暗号化] をクリックして続行します。
+特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、[Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。[設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
 
 ![暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption/image1.png)
 
@@ -127,6 +126,8 @@ A: いいえ。SSE は Resource Manager ストレージ アカウントでのみ
 
 A: 新しい Resource Manager ストレージ アカウントを作成し、[AzCopy](storage-use-azcopy.md) を使用して既存のクラシック ストレージ アカウントから新しく作成した Resource Manager ストレージ アカウントにデータをコピーします。
 
+また、クラシック ストレージ アカウントを Resource Manager ストレージ アカウントに移行する方法もあります。詳しくは、「[Platform Supported Migration of IaaS Resources from Classic to Resource Manager (プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行)](https://azure.microsoft.com/blog/iaas-migration-classic-resource-manager/)」をご覧ください。
+
 **Q: 既存の Resource Manager ストレージ アカウントがあります。このアカウントで SSE を有効にできますか?**
 
 A: はい。ただし、新しく書き込まれた BLOB のみが暗号化されます。前に戻って、既に存在するデータを暗号化することはありません。
@@ -195,4 +196,4 @@ A: Storage Service Encryption に関する問題は、[ssediscussions@microsoft.
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。詳細については、[Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

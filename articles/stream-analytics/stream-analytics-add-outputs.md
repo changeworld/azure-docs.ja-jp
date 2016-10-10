@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 # Stream Analytics ジョブのデータ出力を構成する方法
@@ -29,7 +29,7 @@ Stream Analytics ジョブに出力を追加するには:
 
     ![出力の追加](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)
 
-    Azure ポータルの Stream Analytics ジョブで、**[出力]** タイルをクリックします。
+    Azure Portal の Stream Analytics ジョブで、**[出力]** タイルをクリックします。
 
     ![Azure ポータルでの出力の追加](./media/stream-analytics-add-outputs/5-stream-analytics-add-outputs.png)
 
@@ -37,7 +37,7 @@ Stream Analytics ジョブに出力を追加するには:
 
     ![データ移動の種類の選択](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)
 
-    ![Azure ポータルでのデータ移動の種類の選択](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
+    ![Azure Portal でのデータ移動の種類の選択](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
 
 3. **[出力のエイリアス]** ボックスに、この出力のわかりやすい名前を入力します。この名前は、後で出力を参照するために、ジョブのクエリの中で使用できます。
     
@@ -51,7 +51,7 @@ Stream Analytics ジョブに出力を追加するには:
 
     ![イベント ハブへのデータ出力の追加](./media/stream-analytics-add-outputs/4-stream-analytics-add-outputs.png)
 
-    ![イベント ハブへの Azure ポータルのデータ出力](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
+    ![イベント ハブへの Azure Portal のデータ出力](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
 
 > [Azure.Note] ジョブに追加される出力要素は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。ASA ジョブを開始する前に、ユーザーが作成する必要があります。
 
@@ -66,4 +66,4 @@ Stream Analytics ジョブに出力を追加するには:
 - [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

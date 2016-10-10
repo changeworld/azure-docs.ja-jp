@@ -3,7 +3,7 @@
 	description="現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する方法について説明します。" 
 	keywords="mongochef"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/25/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # MongoDB のプロトコル対応の DocumentDB アカウントで MongoChef を使用する
 
@@ -132,4 +132,4 @@ MongoChef を使用してデータベース、コレクション、ドキュメ�
 
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

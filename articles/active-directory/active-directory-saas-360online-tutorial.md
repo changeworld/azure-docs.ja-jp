@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -285,4 +285,4 @@ Azure AD への 360° Online の統合を構成するには、ギャラリーか
 [203]: ./media/active-directory-saas-360online-tutorial/tutorial_general_203.png
 [205]: ./media/active-directory-saas-360online-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

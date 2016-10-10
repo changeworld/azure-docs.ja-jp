@@ -75,9 +75,9 @@ v2.0 エンドポイントで使われている各種トークンの詳細につ
 - [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-v2-protocols-oauth-code.md)
 - [Open ID Connect で Web Apps を作成する](active-directory-v2-protocols-oidc.md)
 - [OAuth 2.0 Implicit Flow で単一ページのアプリを作成する](active-directory-v2-protocols-implicit.md)
-- OAuth 2.0 Client Credentials Flow でデーモンまたはサーバー側プロセスを作成する (近日公開予定)
+- [OAuth 2.0 Client Credentials Flow でデーモンまたはサーバー側プロセスを作成する](active-directory-v2-protocols-oauth-client-creds.md)
 - OAuth 2.0 On Behalf Of Flow を使用して Web API でトークンを取得する (近日公開予定)
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

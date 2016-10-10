@@ -3,7 +3,7 @@
    description="Azure での新しい Windows 仮想マシンの作成に関するクラシック デプロイメントの問題のトラブルシューティング"
    services="virtual-machines-windows"
    documentationCenter=""
-   authors="jiangchen79"
+   authors="JiangChen79"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
@@ -84,4 +84,4 @@ Azure ポータルで、**[参照]**、**[仮想マシン]**、*対象の Window
 ## 次のステップ
 Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、[Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

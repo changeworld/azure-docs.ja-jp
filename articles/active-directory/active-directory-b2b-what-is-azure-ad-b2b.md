@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="identity"
-   ms.date="08/11/2016"
+   ms.date="09/27/2016"
    ms.author="femila"/>
 
 # Azure AD B2B コラボレーション プレビュー: 簡単で安全なクラウド パートナー統合
@@ -42,4 +42,4 @@ Azure AD B2B コラボレーションに関する他の記事を参照してく�
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

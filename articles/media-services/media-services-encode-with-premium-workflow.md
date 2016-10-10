@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="メディア エンコーダー プレミアム ワークフローでの高度なエンコード" 
+	pageTitle=".NET を使用した Media Encoder Premium ワークフローでの高度なエンコード | Microsoft Azure" 
 	description="メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 #メディア エンコーダー プレミアム ワークフローでの高度なエンコード
@@ -22,7 +22,7 @@
 
 プレミアム エンコーダーに関する質問がある場合は、mepd@microsoft.com まで電子メールでお送りください。
 
-##概要
+##Overview
 
 Microsoft Azure Media Services には、**メディア エンコーダー プレミアム ワークフロー** メディア プロセッサが導入されています。このプロセッサでは、プレミアム オンデマンド ワークフローの高度なエンコード機能が提供されます。
 
@@ -278,4 +278,4 @@ Microsoft Azure Media Services には、**メディア エンコーダー プレ
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

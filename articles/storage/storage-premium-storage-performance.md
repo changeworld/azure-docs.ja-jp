@@ -4,7 +4,7 @@
     services="storage"
     documentationCenter="na"
     authors="aungoo-msft"
-    manager=""
+    manager="tadb"
 	editor="tysonn" />
 
 <tags
@@ -14,7 +14,7 @@
     ms.devlang="na"
     ms.topic="article"
     ms.date="09/19/2016"
-    ms.author="aungoo-msft"/>
+    ms.author="aungoo;robinsh"/>
 
 # Azure Premium Storage: 高パフォーマンスのための設計
 
@@ -542,4 +542,4 @@ SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プ
 - [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../virtual-machines/virtual-machines-windows-sql-performance.md)
 - [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](http://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

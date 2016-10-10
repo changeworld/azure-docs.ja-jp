@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="dhanyahk"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -22,7 +22,7 @@
 
 Azure Active Directory (Azure AD) レポートは、データを次に示す一定期間保存します。
 
-レポート | 説明
+レポート | Description
 ------------------------------------------------------- | -----------
 不明なソースからのサインイン | 30 日
 複数のエラー後のサインイン | 30 日
@@ -48,4 +48,4 @@ RMS の利用状況 | 30 日
 RMS デバイスの利用状況 | 30 日
 RMS 対応アプリケーションの利用状況 | 30 日
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

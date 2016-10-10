@@ -70,6 +70,42 @@ SDK のバージョン 4.0.0 以降では、XCode 8 が必須となります。
 #### アプリケーションのプッシュ機能
 XCode 8 はアプリケーションのプッシュ機能をリセットする場合があります。選択したターゲットの `capability` タブで、この機能を再確認してください。
 
+#### 新しい iOS 10 通知登録コードの追加
+アプリケーションを通知に登録するための古いコード スニペットは引き続き機能しますが、iOS 10 での実行時に非推奨 API を使用します。
+
+`User Notification` フレームワークをインポートします。
+
+		#import <UserNotifications/UserNotifications.h>
+
+アプリケーション デリゲートの `application:didFinishLaunchingWithOptions` メソッド内の
+
+		if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+			[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert) categories:nil]];
+			[application registerForRemoteNotifications];
+		}
+		else {
+
+    		[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+		}
+
+を以下で置き換えます。
+
+		if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+		{
+			if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
+			{
+				[UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+			}else
+			{
+				[application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
+			}
+			[application registerForRemoteNotifications];
+		}
+		else
+		{
+			[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+		}
+
 #### 開発者独自の UNUserNotificationCenterDelegate 実装が既にある場合
 
 SDK には UNUserNotificationCenterDelegate プロトコルの独自の実装があります。これは、iOS 10 以降で実行されているデバイスで Engagement 通知のライフ サイクルを監視するために SDK によって使用されます。UNUserNotificationCenter デリゲートはアプリケーションごとに 1 つしか使用できないため、SDK は開発者のデリゲートを検出すると、独自の実装を使用しなくなります。これは、開発者独自のデリゲートに Engagement ロジックを追加する必要があることを意味します。
@@ -131,4 +167,4 @@ SDK には UNUserNotificationCenterDelegate プロトコルの独自の実装が
 
 > [AZURE.NOTE] 通知が Engagement から送信されたものかどうかを確認するには、`userInfo` ディクショナリをエージェントの `isEngagementPushPayload:` クラス メソッドに渡します。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

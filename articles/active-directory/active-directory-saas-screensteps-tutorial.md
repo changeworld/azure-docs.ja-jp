@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と ScreenSteps の統合
@@ -70,7 +70,7 @@
 
 1.  Azure クラシック ポータルの **ScreenSteps** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778519.png "Configure single sign-on")
 
 2.  **[ユーザーの ScreenSteps へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -82,7 +82,7 @@
 
 4.  **[ScreenSteps でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778522.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778522.png "Configure single sign-on")
 
 5.  別の Web ブラウザー ウィンドウで、ScreenSteps 企業サイトに管理者としてログインします。
 
@@ -117,7 +117,7 @@
 
 11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-screensteps-tutorial/IC778542.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-screensteps-tutorial/IC778542.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが **ScreenSteps** にログインできるようにするには、ユーザーを **ScreenSteps** にプロビジョニングする必要があります。**ScreenSteps** の場合、プロビジョニングは手動で行います。
@@ -132,7 +132,7 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
 
 3.  **[ユーザー]** をクリックします。
 
-    ![ユーザー](./media/active-directory-saas-screensteps-tutorial/IC778544.png "Users")
+    ![Users](./media/active-directory-saas-screensteps-tutorial/IC778544.png "Users")
 
 4.  **[Create a user]** をクリックします。
 
@@ -168,4 +168,4 @@ Azure AD ユーザーが **ScreenSteps** にログインできるようにする
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

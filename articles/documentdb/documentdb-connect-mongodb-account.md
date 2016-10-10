@@ -3,7 +3,7 @@
 	description="現在プレビューとして提供されている MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法について説明します。接続には、既存の MongoDB 接続文字列を使用します。" 
 	keywords="mongodb 接続文字列"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # MongoDB のプロトコル対応の DocumentDB アカウントに接続する方法
 
@@ -84,4 +84,4 @@ DocumentDB は、MongoDB の標準的な接続文字列の URI 形式をサポ�
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

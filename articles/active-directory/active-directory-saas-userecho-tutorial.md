@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeevansd"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -219,7 +219,7 @@ UserEcho で Azure AD のシングル サインオンを構成してテストす
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_07.png)
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-userecho-tutorial/create_aaduser_08.png)
   
@@ -325,4 +325,4 @@ Britta に招待状が送信され、UserEcho の使用を開始できるよう�
 [204]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-userecho-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

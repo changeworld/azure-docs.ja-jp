@@ -5,7 +5,7 @@
 	documentationCenter=""
 	services="active-directory"
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -63,4 +63,4 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 ## 関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

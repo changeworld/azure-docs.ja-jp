@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="data-services"
-	ms.date="07/27/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"/>
 
 #  Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
@@ -240,4 +240,4 @@ Power BI で認証が更新されたら、承認の領域に緑色のアラー�
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

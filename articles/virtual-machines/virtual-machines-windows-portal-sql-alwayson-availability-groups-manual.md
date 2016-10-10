@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure VM での AlwaysOn 可用性グループの手動構成 - Resource Manager"
+	pageTitle="Azure VM での AlwaysOn 可用性グループの手動構成 - Microsoft Azure"
 	description="Azure Virtual Machines で AlwaysOn 可用性グループを作成します。このチュートリアルでは、スクリプトではなく、主にユーザー インターフェイスとツールを使用します。"
 	services="virtual-machines"
 	documentationCenter="na"
@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/15/2016"
+	ms.date="09/22/2016"
 	ms.author="MikeRayMSFT" />
 
 # Azure VM での AlwaysOn 可用性グループの手動構成 - Resource Manager
 
 > [AZURE.SELECTOR]
-- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 - [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 - [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
@@ -28,7 +28,7 @@
 
 この詳細なチュートリアルでは、Azure Resource Manager の仮想マシンに SQL Server の可用性グループを実装する方法について説明します。
 
-チュートリアルの最後には、次の要素で構成されたソリューションが Azure で完成します。
+このチュートリアルでは、次の要素を作成します。
 
 - 2 つのサブネットから成る仮想ネットワーク (フロントエンドのサブネットとバックエンドのサブネットを含む)
 
@@ -44,11 +44,11 @@
 
 このソリューションをグラフィカルに表すと、次の図のようになります。
 
-![Architecture for AG in ARM](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/00-EndstateSampleNoELB.png)
+![Azure Resource Manager での可用性グループのアーキテクチャ](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/00-EndstateSampleNoELB.png)
 
-これは、考えられる 1 つの構成であることに注意してください。たとえば、Azure でのコンピューティング時間を節約するために、ドメイン コントローラーを 2 つのノードの WSFC クラスターでクォーラム ファイル共有監視として使用することで、2 つのレプリカを持つ可用性グループ用の VM 数を最小限に抑えることができます。この方法では、上記の構成よりも VM 数が 1 つ減少します。
+これは、考えられる 1 つの構成です。要件に合わせてこれを変更することができます。たとえば、ドメイン コント ローラーをクォーラム ファイル共有監視として使用することにより、仮想マシンの数を減らすことができます。これにより、2 つのレプリカを持つ可用性グループ用の VM の数が減少します。この方法では、解答よりも VM 数が 1 つ減少します。
 
->[AZURE.NOTE] このチュートリアルは、完了までにかなりの時間を要します。このソリューション全体を自動的に構築することもできます。Azure ポータルのギャラリーから、AlwaysOn 可用性グループ (リスナーを含む) をセットアップできるようになっています。これを使用すると、可用性グループに必要なものすべてが自動的に構成されます。詳細については、[ポータル - Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) に関するページをご覧ください。
+このチュートリアルは、複数の Azure 仮想マシンを構築して構成する必要があるため、完了に数時間がかかります。このソリューション全体を自動的に構築することもできます。Azure ポータルのギャラリーから、AlwaysOn 可用性グループ (リスナーを含む) をセットアップできるようになっています。このギャラリーのセットアップでは、可用性グループに必要なものすべてが自動的に構成されます。詳細については、[ポータル - Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) に関するページをご覧ください。
 
 [AZURE.INCLUDE [可用性グループ テンプレート](../../includes/virtual-machines-windows-portal-sql-alwayson-ag-template.md)]
 
@@ -68,11 +68,11 @@
 
 1. **[+新規]** をクリックし、**Marketplace** の検索ウィンドウに「**リソース グループ**」と入力します。
 
-    ![リソース グループ](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/01-resourcegroupsymbol.png)
+  ![リソース グループ](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/01-resourcegroupsymbol.png)
 
 1. **[リソース グループ]** をクリックします。
 
-    ![New Resource Group](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/01-newresourcegroup.png)
+  ![New Resource Group](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/01-newresourcegroup.png)
 
 1. **[作成]** をクリックします。
 
@@ -80,56 +80,56 @@
 
 1. 複数の Azure サブスクリプションがある場合は、可用性グループの作成先となる Azure サブスクリプションであることを確認します。
 
-1. 場所を選択します。これは可用性グループが実行される Azure 上の場所です。このチュートリアルでは、すべてのリソースを Azure 上の特定の場所に構築します。
+1. 場所を選択します。場所とは、可用性グループを作成する Azure リージョンのことです。このチュートリアルでは、すべてのリソースを Azure 上の特定の場所に構築します。
 
 1. **[ダッシュボードにピン留めする]** がオンになっていることを確認します。これは、Azure ポータルのダッシュボードにリソース グループのショートカットを作成するためのオプションです。この設定は省略してもかまいません。
 
 1. **[作成]** をクリックしてリソース グループを作成します。
 
-新しいリソース グループが Azure に作成され、そのショートカットがポータルにピン留めされます。
+リソース グループが Azure に作成され、そのショートカットがポータルにピン留めされます。
 
 ## ネットワークとサブネットの作成
 
 次は、Azure リソース グループにネットワークとサブネットを作成します。
 
-ここでは、1 つの仮想ネットワークと 2 つのサブネットを使用します。ネットワークの基礎と Azure におけるその働きについての知識が必要となります。Azure におけるネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+ここでは、1 つの仮想ネットワークと 2 つのサブネットを使用します。Azure におけるネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 仮想ネットワークを作成するには、次の手順に従います。
 
 1. Azure ポータルで新しいリソース グループをクリックし、**[+]** をクリックしてリソース グループに新しい項目を追加します。Azure の **[すべて]** ブレードが開きます。
 
-    ![New Item](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/02-newiteminrg.png)
+  ![New Item](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/02-newiteminrg.png)
 
 1. 「**仮想ネットワーク**」を検索します。
 
-    ![Search Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/04-findvirtualnetwork.png)
+  ![Search Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/04-findvirtualnetwork.png)
 
 1. **[仮想ネットワーク]** をクリックします。
 
 1. **[仮想ネットワーク]** ブレードで **[Resource Manager]** デプロイメント モデルをクリックし、**[作成]** をクリックします。
 
-    ![Virtual Network の作成](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/05-createvirtualnetwork.png)
+  ![Virtual Network の作成](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/05-createvirtualnetwork.png)
  
 
  
 1. **[仮想ネットワークの作成]** ブレードで仮想ネットワークを構成します。
 
-    仮想ネットワークの設定を次の表に示します。
+  次の表に、仮想ネットワークの設定を示します。
 
-    | **フィールド** | 値 |
+ | **フィールド** | 値 |
 | ----- | ----- |
 | **名前** | autoHAVNET |
 | **アドレス空間** | 10\.0.0.0/16 |
 | **サブネット名** | Subnet-1 |
 | **サブネットのアドレス範囲** | 10\.0.0.0/24 |
 | **サブスクリプション** | 使用するサブスクリプションを指定します。ご利用のサブスクリプションが 1 つだけの場合、このフィールドは空になります。 |
-| **場所** | 可用性グループのデプロイ先となる Azure の場所を指定します。 |
+| **場所** | Azure の場所を指定します。 |
 
-    アドレス空間とサブネット アドレス範囲は、この表とは異なる場合があるので注意してください。サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲が Azure によって自動的に指定されます。アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。
+  アドレス空間とサブネット アドレス範囲は、この表とは異なる場合があります。サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲が Azure によって指定されます。アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。
 
 1. **[作成]** をクリックします。
 
-    ![Configure Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/06-configurevirtualnetwork.png)
+  ![Configure Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/06-configurevirtualnetwork.png)
 
 新しいネットワークが作成されると、画面がポータル ダッシュボードに切り替わって通知が表示されます。
 
@@ -139,26 +139,26 @@
 
 1. ダッシュボードで、先ほど作成したリソース グループ (**SQL-HA-RG**) をクリックします。このリソース グループ内のネットワークを **[リソース]** から探します。
 
-  **SQL-HA-RG** が表示されない場合は、**[リソース グループ]** をクリックし、先ほど作成したリソース グループ名をフィルターで検索してください。
+ **SQL-HA-RG** が表示されない場合は、**[リソース グループ]** をクリックし、リソース グループ名をフィルターで検索してください。
 
-1.  リソースのリストにある **[autoHAVNET]** をクリックして、ネットワーク構成ブレードを開きます。
+1. リソースの一覧で **[autoHAVNET]** をクリックします。ネットワークの構成ブレードが開きます。
 
-1.  **autoHAVNET** 仮想ネットワークの [すべての設定] をクリックします。
+1. **autoHAVNET** 仮想ネットワークの [すべての設定] をクリックします。
 
 1. **[設定]** ブレードで **[サブネット]** をクリックします。
 
-    既に作成してあるサブネットに注目してください。
+  既に作成してあるサブネットに注目してください。
 
-    ![Configure Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/07-addsubnet.png)
+  ![Configure Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/07-addsubnet.png)
 
 1. 2 つ目のサブネットを作成します。**[+ サブネット]** をクリックします。
 
-    **[サブネットの追加]** ブレードで、**[名前]** に「**subnet-2**」と入力してサブネットを構成します。有効な**アドレス範囲**が Azure によって自動的に指定されます。このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。運用環境では通常、さらに多くのアドレスが必要になります。
+  **[サブネットの追加]** ブレードで、**[名前]** に「**subnet-2**」と入力してサブネットを構成します。有効な**アドレス範囲**が Azure によって自動的に指定されます。このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。運用環境では通常、さらに多くのアドレスが必要になります。
 
 1. **[OK]** をクリックします。
  
 ![Configure Virtual Network](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/08-configuresubnet.png)
-   
+  
 以下の表は、仮想ネットワークと 2 つのサブネットの構成設定をまとめたものです。
 
 | **フィールド** | 値 |
@@ -177,7 +177,7 @@
 
 仮想マシンを作成する前に、可用性セットを作成する必要があります。計画済みメンテナンスや計画外メンテナンスが発生した場合のダウンタイムは、可用性セットによって短縮できます。Azure 可用性セットとは、リソースの論理的なグループです。このグループに基づいてリソースが物理的な障害ドメインと更新ドメインに自動的に配置されます。可用性セットに属している仮想マシンの電源やネットワーク リソースは、障害ドメインによって確実に分離されます。一方、可用性セットに属している複数の仮想マシンがメンテナンスによって同時に中断されることを防止する働きをするのが更新ドメインです。[仮想マシンの可用性を管理します](virtual-machines-windows-manage-availability.md)。
 
-可用性セットは 2 つ必要です。1 つはドメイン コントローラー用で、もう 1 つは SQL Server 用です。
+可用性セットは 2 つ必要です。1 つ目はドメイン コントローラー用です。2 つ目は SQL Server 用です。
 
 可用性セットを作成するには、リソース グループに移動して **[追加]** をクリックします。「**可用性セット**」と入力して結果をフィルター処理し、その中の **[可用性セット]** をクリックして、**[作成]** をクリックします。
 
@@ -185,7 +185,7 @@
 
 | **フィールド** | ドメイン コントローラーの可用性セット | SQL Server の可用性セット |
 | ----- | ----- | ----- |
-| **名前** | adAvailablitySet | sqlAvailabilitySet|
+| **名前** | adAvailabilitySet | sqlAvailabilitySet|
 | **[リソース グループ]** | SQL-HA-RG | SQL-HA-RG |
 | **障害ドメイン** | 3 | 3 |
 | **更新ドメイン** | 5 | 3 |
@@ -194,7 +194,7 @@
 
 ## ドメイン コントローラーを作成する
 
-ここまでで、ネットワーク、サブネット、可用性セット、インターネット接続ロード バランサーを作成してきました。次に行う作業は、ドメイン コントローラーに使用する仮想マシンの作成です。
+ネットワーク、サブネット、可用性セット、インターネット接続ロード バランサーを作成した後、次に行う作業は、ドメイン コントローラーに使用する仮想マシンの作成です。
 
 ### ドメイン コントローラーに使用する仮想マシンの作成
 
@@ -204,9 +204,9 @@
 
 1. 「**Windows Server 2012 R2 Datacenter**」と入力します。
 
-1. **[Windows Server 2012 R2 Datacenter]** をクリックします。**[Windows Server 2012 R2 Datacenter]** ブレードでデプロイメント モデルが **[Resource Manager]** に設定されていることを確認し、**[作成]** をクリックします。**[仮想マシンの作成]** ブレードが開きます。
+1. **[Windows Server 2012 R2 Datacenter]** をクリックします。**[Windows Server 2012 R2 Datacenter]** ブレードでデプロイ モデルが **[Resource Manager]** に設定されていることを確認し、**[作成]** をクリックします。**[仮想マシンの作成]** ブレードが開きます。
 
-この作業を 2 回行って仮想マシンを 2 つ作成することになります。2 つの仮想マシンには、次のように名前を付けます。
+上記の手順を 2 回完了し、2 つの仮想マシンを作成します。2 つの仮想マシンには、次のように名前を付けます。
 
 - ad-primary-dc
 - ad-secondary-dc
@@ -235,7 +235,7 @@
 
 >[AZURE.NOTE] VM 上の可用性セットを作成後に変更することはできません。
 
-Azure によって仮想マシンが作成されます。
+Azure で仮想マシンが作成されます。
 
 仮想マシンの作成後、ドメイン コントローラーを構成します。
 
@@ -245,7 +245,7 @@ Azure によって仮想マシンが作成されます。
 
 1. ポータルで **SQL-HA-RG** リソース グループを開き、**ad-primary-dc** マシンを選択します。**[ad-primary-dc]** ブレードで **[接続]** をクリックし、リモート デスクトップ アクセス用の RDP ファイルを開きます。
 
-	![仮想マシンに接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/20-connectrdp.png)
+	![仮想マシンへの接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/20-connectrdp.png)
 
 1. 構成した管理者アカウント (**\\DomainAdmin**) とパスワード (**Contoso!0000**) でログインします。
 
@@ -259,7 +259,7 @@ Azure によって仮想マシンが作成されます。
 
 1. **[Active Directory ドメイン サービス]** と **[DNS サーバー]** という役割を選択します。メッセージが表示されたら、これらの役割に必要なその他の機能を追加します。
 
-	>[AZURE.NOTE] 静的 IP アドレスがないことを示す検証の警告が表示されます。構成をテストしている場合は、[続行] をクリックします。運用シナリオの場合は、Azure ポータルで IP アドレスを静的アドレスに設定するか、[PowerShell を使用して、ドメイン コントローラー コンピューターの静的 IP アドレスを設定](./virtual-network/virtual-networks-reserved-private-ip.md)してください。
+	>[AZURE.NOTE] Windows から、静的 IP アドレスがないという警告が出されます。構成をテストしている場合は、[続行] をクリックします。運用シナリオの場合は、Azure ポータルで IP アドレスを静的アドレスに設定するか、[PowerShell を使用して、ドメイン コントローラー コンピューターの静的 IP アドレスを設定](./virtual-network/virtual-networks-reserved-private-ip.md)してください。
 
 	![ロールの追加の図表](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC784624.png)
 
@@ -292,7 +292,7 @@ Azure によって仮想マシンが作成されます。
 
 プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。これは高可用性を確保するための任意の手順です。この手順を行うには、ドメイン コントローラーのプライベート IP アドレスを把握しておく必要があります。Azure ポータルで確認してください。次の手順に従って 2 つ目のドメイン コントローラーを構成します。
 
-1. 再度 **ad-primary-dc** マシンにログインします。
+1. **ad-primary-dc** マシンにログインします。
 
 1. リモート デスクトップを開き、IP アドレスでセカンダリ ドメイン コントローラーに接続します。セカンダリ ドメイン コントローラーの IP アドレスがわからない場合は、Azure ポータルにアクセスして、セカンダリ ドメイン コントローラーのネットワーク インターフェイスに割り当てられているアドレスを確認してください。
 
@@ -320,7 +320,7 @@ Azure によって仮想マシンが作成されます。
 
 	![NSLOOKUP を使用して DC の IP アドレスを検索](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC664954.png)
 
-  >[AZURE.NOTE] DNS の設定後、メンバー サーバーへの RDP セッションが失われる場合があります。その場合は、Azure ポータルから VM を再起動してください。
+ >[AZURE.NOTE] DNS の設定後、メンバー サーバーへの RDP セッションが失われる場合があります。その場合は、Azure ポータルから VM を再起動してください。
 
 
 1. **[OK]**、**[閉じる]** の順にクリックして変更を適用します。これで、VM を **corp.contoso.com** に参加させることができるようになりました。
@@ -356,9 +356,9 @@ Azure によって仮想マシンが作成されます。
 |**その他のパスワード オプション**|オン|
 |**パスワードを無期限にする**|オン|
 
-1. **[OK]** をクリックして **Install** ユーザーを作成します。このアカウントは、フェールオーバー クラスターと可用性グループの構成に使用されます。
+1. **[OK]** をクリックして **Install** ユーザーを作成します。このアカウントは、フェールオーバー クラスターと可用性グループの構成に使用します。
 
-1. 同じ手順を使用して、さらに 2 つのユーザー (**CORP\\SQLSvc1** と **CORP\\SQLSvc2**) を作成します。これらのアカウントは、SQL Server インスタンスに使用されます。次に、Windows Server フェールオーバー クラスタリング (WSFC) を構成するために必要なアクセス許可を **CORP\\Install** に付与する必要があります。
+1. 同じ手順を使用して、さらに 2 つのユーザー (**CORP\\SQLSvc1** と **CORP\\SQLSvc2**) を作成します。これらのアカウントは SQL Server サービスで使用されます。次に、Windows Server フェールオーバー クラスタリング (WSFC) を構成するために必要なアクセス許可を **CORP\\Install** に付与します。
 
 1. **[Active Directory 管理センター]** で、左側のウィンドウの **[corp (ローカル)]** を選択します。その後、右側の **[タスク]** ウィンドウで、**[プロパティ]** をクリックします。
 
@@ -376,7 +376,7 @@ Azure によって仮想マシンが作成されます。
 
 1. **[OK]** をクリックし、もう一度 **[OK]** をクリックします。corp のプロパティ ウィンドウを閉じます。
 
-以上で Active Directory オブジェクトとユーザー オブジェクトの構成は完了です。次に、2 つの SQL Server VM と 1 つの監視サーバー VM を作成し、3 つの VM をすべてこのドメインに参加させます。
+これで Active Directory オブジェクトとユーザー オブジェクトの構成が終了したので、2 つの SQL Server VM と 1 つの監視サーバー VM を作成します。その後、3 つすべてをドメインに参加させます。
 
 ## SQL Server を作成する
 
@@ -387,9 +387,9 @@ Azure によって仮想マシンが作成されます。
 |ページ|VM1|VM2|VM3|
 |---|---|---|---|
 |適切なギャラリー項目の選択|**Windows Server 2012 R2 Datacenter**|**SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**|**SQL Server 2014 SP1 Enterprise on Windows Server 2012 R2**|
-| [Virtual machine configuraiton (仮想マシンの構成)] の **[基本]** | **[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 | **[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 | **[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
+| [Virtual machine configuration (仮想マシンの構成)] の **[基本]** | **[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 | **[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 | **[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**[パスワード]** = Contoso!0000<br/>**[サブスクリプション]** = 該当するサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
 |[Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |DS1 (1 コア、3.5 GB のメモリ)|**[サイズ]** = DS 2 (2 コア、7 GB のメモリ)|**[サイズ]** = DS 2 (2 コア、7 GB のメモリ)|
-|[Virtual machine configuration (仮想マシンの構成)] の **[設定]**|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[Diagnostics storage acccount (診断ストレージ アカウント)]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[Diagnostics storage acccount (診断ストレージ アカウント)]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[Diagnostics storage acccount (診断ストレージ アカウント)]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>
+|[Virtual machine configuration (仮想マシンの構成)] の **[設定]**|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>|**[ストレージ]** = Premium (SSD)<br/>**[ネットワーク サブネット]** = autoHAVNET<br/>**[ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[サブネット]** = subnet-2(10.1.1.0/24)<br/>**[パブリック IP アドレス]** = なし<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[Monitoring Diagnostics (監視診断)]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/>
 |[Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]**|適用不可|**[SQL の接続]** = プライベート (Virtual Network 内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージ構成]** = 一般<br/>**[自動修正]** = 日曜日の 2:00<br/>**[自動化されたバックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効|**[SQL の接続]** = プライベート (Virtual Network 内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージ構成]** = 一般<br/>**[自動修正]** = 日曜日の 2:00<br/>**[自動化されたバックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効|
 
 <br/>
@@ -400,7 +400,9 @@ Azure によって仮想マシンが作成されます。
 
 3 つの VM が完全にプロビジョニングされたら、その 3 つの VM を **corp.contoso.com** ドメインに参加させて、それらに対する管理者権限を CORP\\Install に付与する必要があります。
 
-Azure の各 VM の仮想 IP アドレスは、この後の手順で必要となるため、ここでメモしておいてください。各サーバーの IP アドレスを取得するには、Azure SQL-HA-RG リソース グループで **[autohaVNET]** リソースをクリックします。**[autohaVNET]** ブレードに、ネットワーク内の各マシンの IP アドレスが表示されます。以下のデバイスの IP アドレスをメモしてください。
+Azure の各 VM の仮想 IP アドレスは、この後の手順で必要となるため、ここでメモしておいてください。各サーバーの IP アドレスを取得するには、Azure SQL-HA-RG リソース グループで **[autohaVNET]** リソースをクリックします。**[autohaVNET]** ブレードに、ネットワーク内の各マシンの IP アドレスが表示されます。
+
+以下のデバイスの IP アドレスをメモしてください。
 
 | VM ロール | デバイス | IP アドレス
 | ----- | ----- | -----
@@ -410,7 +412,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 | SQL Server | sqlserver-0 | 
 | SQL Server | sqlserver-1 | 
 
-各 VM の DNS サービスは、これらのアドレスを使って構成します。この操作を行うには、3 つの VM それぞれで、次の手順を実行します。
+各 VM の DNS サービスは、これらのアドレスを使って構成します。3 つの VM それぞれで、次の手順を実行します。
 
 
 1. まず、各メンバー サーバーの優先 DNS サーバーのアドレスを変更します。
@@ -437,7 +439,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 	![NSLOOKUP を使用して DC の IP アドレスを検索](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC664954.png)
 
-  >[AZURE.NOTE] DNS の設定後、メンバー サーバーへの RDP セッションが失われる場合があります。その場合は、Azure ポータルから VM を再起動してください。
+ >[AZURE.NOTE] DNS の設定後、メンバー サーバーへの RDP セッションが失われる場合があります。その場合は、Azure ポータルから VM を再起動してください。
 
 
 1. **[OK]**、**[閉じる]** の順にクリックして変更を適用します。これで、VM を **corp.contoso.com** に参加させることができるようになりました。
@@ -502,7 +504,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 ### WSFC クラスターの作成
 
-このセクションでは、後で作成する可用性グループをホストする WSFC クラスターを作成します。ここまでに、WSFC クラスター内で使用する 3 つの VM に対して、次の操作を行いました。
+このセクションでは、可用性グループをホストする WSFC クラスターを作成します。ここまでに、WSFC クラスター内の 3 つの VM に対して、次の操作を行いました。
 
 - Azure で完全にプロビジョニングする
 
@@ -524,7 +526,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 1. その他のノード (**sqlserver-1** と **cluster-fsw**) を追加します。
 
-次の手順に従って、クラスターを完全に構成する上記のタスクを完了してください。
+次の手順に従ってクラスターを構成します。
 
 1. **sqlserver-0** の RDP ファイルを起動し、ドメイン アカウント **CORP\\Install** を使用してログインします。
 
@@ -544,7 +546,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 |クラスター管理用のアクセス ポイント|**[クラスター名]** に「**Cluster1**」と入力します。|
 |確認|記憶域スペースを使用している場合を除き、既定値を使用します。この表の次の注を参照してください。|
 
->[AZURE.NOTE] 複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[確認]** ページの **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーにも表示されなくなります。
+>[AZURE.NOTE] 複数のディスクを記憶域プールにグループ化する[記憶域スペース](https://technet.microsoft.com/library/hh831739)を使用している場合は、**[確認]** ページの **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにする必要があります。このチェック ボックスをオフにしないと、クラスタリング処理中に Windows によって仮想ディスクがデタッチされます。その結果、記憶域スペースがクラスターから削除され、PowerShell を使用して再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。
 
 以上でクラスターの作成は完了です。構成を確認して残りのノードを追加しましょう。
 
@@ -556,7 +558,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 1. **[静的 IP アドレス]** を選択し、subnet-2 から使用できるアドレスを [アドレス] ボックスで指定します。次に、**[OK]** をクリックします
 
-1. **[クラスター コア リソース]** セクションで、**[名前: Cluster1]** を右クリックして、**[オンラインにする]** をクリックします。両方のリソースがオンラインになるまで待ちます。クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使用されます。
+1. **[クラスター コア リソース]** セクションで、**[名前: Cluster1]** を右クリックして、**[オンラインにする]** をクリックします。両方のリソースがオンラインになるまで待ちます。クラスター名リソースがオンラインになると、新しい AD コンピューター アカウントで DC サーバーが更新されます。この AD アカウントは、後で可用性グループのクラスター化サービスを実行するときに使用します。
 
 1. 最後に、残りのノードをクラスターに追加します。次に示すように、ブラウザー ツリーで **[Cluster1.corp.contoso.com]** を右クリックして、**[ノードの追加]** をクリックします。
 
@@ -580,7 +582,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 - 既定の SQL Server インスタンスの sysadmin ロールとして **CORP\\Install** を追加する
 
-- SQL Server にリモートからアクセスできるよう SQL Server プロセスとプローブ ポートのファイアウォールを開放する
+- SQL Server、データベース ミラーリング エンドポイント、および Azure ロード バランサーのプローブ ポート用に、ファイアウォールを開放して SQL Server へのリモート アクセスを許可する
 
 - 可用性グループ機能を有効にする
 
@@ -619,6 +621,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 1. **[名前]** ページで、**[名前]** ボックスに規則の名前 (**SQL Server (プログラム規則)** など) を指定し、**[完了]** をクリックします。
 
 1. プローブ ポート用に、もう 1 つ入力方向のファイアウォールの規則を作成します。このチュートリアルで使用する TCP ポート 59999 に対する入力方向の規則となります。この規則に **SQL Server Listener** という名前を付けます。
+
 
 2 つの SQL Server に対してすべての手順を実行してください。
 
@@ -724,19 +727,24 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 	![新しい AG ウィザード、レプリカの指定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC665526.png)
 
+
 1. **[サーバーに接続]** ダイアログが表示されます。**[サーバー名]** に「**sqlserver-1**」と入力し、**[接続]** をクリックします。
 
 	![新しい AG ウィザード、サーバーに接続](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC665527.png)
 
-1. **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に **sqlserver-1** が表示されていることがわかります。次に示すようにレプリカを構成します。構成し終わったら、**[次へ]** をクリックします。
+1. **[レプリカの指定]** ページに戻ると、**[可用性レプリカ]** の一覧に **sqlserver-1** が表示されていることがわかります。次に示すようにレプリカを構成します。
 
 	![新しい可用性グループ ウィザード、レプリカの指定 (完了)](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC665528.png)
+
+1. **[エンドポイント]** をクリックすると、この可用性グループによって使用されるデータベース ミラーリング エンドポイントが表示されます。SQL Server の各インスタンスには、1 つのデータベース ミラーリング エンドポイントが必要です。ウィザードでこのエンドポイント用に指定される TCP ポートに注意してください。各サーバーで、この TCP ポートに関する受信ファイアウォール規則を作成します。
+	
+	構成し終わったら、**[次へ]** をクリックします。
 
 1. **[最初のデータの同期を選択]** ページで、**[結合のみ]** を選択し、**[次へ]** をクリックします。データの同期は、**sqlserver-0** で完全バックアップとトランザクション バックアップを作成し、**sqlserver-1** で復元したときに既に手動で実行しています。データベースのバックアップの作成操作と復元操作を実行しない代わりに、新しい可用性グループ ウィザードで **[完全]** を選択すると、データの同期を実行させることができます。ただし、一部の企業で使用されている大規模なデータベースではこの方法はお勧めしません。
 
 	![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC665529.png)
 
-1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。このチュートリアルでは、リスナーを後から作成します。リスナーを構成する方法の詳細については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](virtual-machines-windows-portal-sql-alwayson-int-listener.md)」を参照してください。
+1. **[検証]** ページで **[次へ]** をクリックします。このページは、次のようになっています。可用性グループ リスナーを構成していないため、リスナー構成に関する警告が表示されます。このチュートリアルではリスナーを構成しないため、この警告を無視できます。このチュートリアルでは、リスナーを後から作成します。
 
 	![新しい AG ウィザード、検証](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual/IC665530.gif)
 
@@ -762,7 +770,9 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 ## 内部 Load Balancer を構成する
 
-可用性グループに直接接続するためには、Azure に内部ロード バランサーを構成したうえで、クラスター上にリスナーを作成する必要があります。その大まかな手順をこのセクションで説明します。詳しい手順については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](virtual-machines-windows-portal-sql-alwayson-int-listener.md)」を参照してください。
+可用性グループに直接接続するには、ロード バランサーを構成する必要があります。ロード バランサーは、リスナーの IP アドレスとプローブ ポートにバインドされている VM にクライアント トラフィックをリダイレクトします。このチュートリアルでは、内部ロード バランサー (ILB) を使用します。ILB は、同じ仮想ネットワーク内からのトラフィックが SQL Server に接続することを許可します。インターネット経由で SQL Server に接続する必要があるアプリケーションには、インターネットに接続する (または外部の) ロード バランサーが必要です。詳細については、「[Azure ロード バランサーの概要](../load-balancer/load-balancer-overview.md)」を参照してください。
+
+>[AZURE.NOTE] 現在、Azure ポータルでは、特定のフロント エンド ポートをロード バランサーで 1 回だけ使用できます。すべてのリスナーに同じポートを使用するには、PowerShell を使用してリスナーの IP アドレスをロード バランサーに接続します。手順については、「[Create availability group listener and load balancer | Azure (可用性グループ リスナーとロード バランサーの作成 | Azure)](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)」を参照してください。
 
 ### Azure にロード バランサーを作成する
 
@@ -777,7 +787,7 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 | **名前** | sqlLB
 | **スキーム** | 内部
 | **Virtual Network** | autoHAVNET
-| **サブネット** | subnet-2。これは、クラスター リソース内のリスナーに対して設定する IP アドレスです。  
+| **サブネット** | subnet-2。これは、クラスター リソース内のリスナーに対して設定する IP アドレスです。 
 | **IP アドレスの割り当て** | 静的
 | **IP アドレス** | subnet-2 の範囲内のアドレスを使用します。
 | **サブスクリプション** | この例で使用されている他のリソースと同じサブスクリプションを使用します。
@@ -801,21 +811,22 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 | **プローブ使用者** | SQLAlwaysOnEndPointListener
 | **負荷分散規則**の名前 | SQLAlwaysOnEndPointListener
 | **負荷分散規則のプロトコル** | TCP
-| **負荷分散規則のポート** | 1433 - これは SQL Server の既定のポートです。
-| **負荷分散規則のポート** | 1433 - これは SQL Server の既定のポートです。
+| **負荷分散規則のポート** | 1433 * 
 | **負荷分散規則のバックエンド ポート** | 1433
 | **負荷分散規則のプローブ** | SQLAlwaysOnEndPointProbe
 | **負荷分散規則のセッション永続化** | なし
 | **負荷分散規則のアイドル タイムアウト** | 4
 | **負荷分散規則のフローティング IP (Direct Server Return)** | 有効
 
+> * 1433 は既定の SQL Server ポートです。既定のインスタンスのフロント エンド ポートに使用します。複数の可用性グループを必要とする場合は、可用性グループごとに追加の IP アドレスを作成する必要があります。各可用性グループには、独自のフロント エンド ポートが必要です。「[Create availability group listener and load balancer | Azure (可用性グループ リスナーとロード バランサーの作成 | Azure)](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)」を参照してください。
+
 >[AZURE.NOTE] 負荷分散規則の Direct Server Return は、作成時点で有効にする必要があります。
 
 ロード バランサーの構成が済んだら、フェールオーバー クラスター上のリスナーに対する構成作業を行います。
 
-### フェールオーバー クラスター上のロード バランサーの構成
+## リスナーの構成
 
-次の手順は、フェールオーバー クラスターに対して AlwaysOn 可用性グループ リスナーに対する構成です。
+次の手順は、フェールオーバー クラスター上の可用性グループ リスナーの構成です。
 
 1. ad-primary-dc から RDP で sqlserver-0 の SQL Server に接続します。
 
@@ -829,25 +840,30 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 1. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。IP リソースを右クリックし、[プロパティ] をクリックします。IP アドレスの名前をメモします。この名前は、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
 
-1. **[IP アドレス]** で **[静的 IP アドレス]** をクリックし、静的 IP アドレスを設定します。Azure ポータルで **sqlLB** ロード バランサーに使用したものと同じアドレスを指定してください。この IP アドレスは、PowerShell スクリプトの `$ILBIP` 変数にも使用します。このアドレスに対して NetBIOS を有効にし、[OK] をクリックします。
+1. **[IP アドレス]** で **[静的 IP アドレス]** をクリックし、静的 IP アドレスを設定します。Azure ポータルで **sqlLB** ロード バランサーに使用したものと同じアドレスを指定してください。この同じ IP アドレスを、PowerShell スクリプトの `$ILBIP` 変数で使用します。
+
+1. このアドレスに対して NetBIOS を無効にし、**[OK]** をクリックします。
 
 1. 現在プライマリ レプリカのホストとなっているクラスター ノードから、管理者特権で PowerShell ISE を開き、新しいスクリプトに次のコマンドを貼り付けます。
 
-        $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-        $IPResourceName = "<IPResourceName>" # the IP Address resource name
-        $ILBIP = "<X.X.X.X>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+    ```
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<IPResourceName>" # the IP Address resource name
+    $ILBIP = "<X.X.X.X>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+	[int]$ProbePort = <nnnnn> # In this sample we've using 59999 for the probe port. 
 
-        Import-Module FailoverClusters
+    Import-Module FailoverClusters
 
-        Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"="59999";"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
 1. 変数を修正して PowerShell スクリプトを実行し、新しいリスナーの IP アドレスとポートを構成します。
 
 1. **フェールオーバー クラスター マネージャー**で可用性グループ リソースを右クリックし、**[プロパティ]** をクリックします。**[依存関係]** タブで、リスナーのネットワーク名を使用するようにリソース グループを設定します。
 
-1. リスナーのポート プロパティを 1433 に設定します。SQL Server Management Studio を開いて可用性グループ リスナーを右クリックし、[プロパティ] を選択して、**[ポート]** を 1433 に設定します。
+1. リスナーのポート プロパティを 1433 に設定します。これを行うには、SQL Server Management Studio を開いて可用性グループ リスナーを右クリックし、[プロパティ] を選択して、**[ポート]** を 1433 に設定します。SQL Server 用に構成したのと同じポート番号を使用する必要があります。
 
-1. この時点で、[リスナーをオンラインに切り替える](virtual-machines-windows-portal-sql-alwayson-int-listener.md#2-bring-the-listener-online)ことができます。
+1. この時点で、リスナーをオンラインに切り替えることができます。リスナー名を右クリックし、**[オンラインにする]** をクリックします。
 
 ### リスナーへの接続をテストする
 
@@ -857,7 +873,11 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 1. sqlcmd ユーティリティを使用して接続をテストします。たとえば次のスクリプトは、リスナー経由で Windows 認証を使用し、プライマリ レプリカとの sqlcmd 接続を確立しています。
 
-        sqlcmd -S "<listenerName>" -E
+    sqlcmd -S "<listenerName>" -E
+
+  リスナーが 1433 以外のポートを使用している場合は、そのポート番号をテストで指定する必要があります。たとえば、次のクエリでは、ポート 1435 を使用するリスナー名への接続をテストします。
+
+		sqlcmd -S "<listenerName>",1435 -E
 
 
 
@@ -865,4 +885,4 @@ Azure の各 VM の仮想 IP アドレスは、この後の手順で必要とな
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

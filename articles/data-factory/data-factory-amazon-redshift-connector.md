@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して Amazon Redshift からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して Amazon Redshift からデータを移動する
 
@@ -282,4 +282,4 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 次の記事を参照してください。
 - コピー アクティビティでパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

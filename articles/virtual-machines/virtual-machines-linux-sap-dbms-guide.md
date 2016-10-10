@@ -1,19 +1,19 @@
 <properties
    pageTitle="Linux 仮想マシン (VM) への SAP NetWeaver の導入 – DBMS デプロイ ガイド | Microsoft Azure"
    description="Linux 仮想マシン (VM) 上の SAP NetWeaver – DBMS デプロイ ガイド"
-   services="virtual-machines-linux,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-linux"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -1420,4 +1420,4 @@ Azure ストアの Geo レプリケーションを使用しないでください
 
 「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

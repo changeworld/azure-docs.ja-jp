@@ -32,7 +32,7 @@ Azure Active Directory のシナリオおよび機能のすべてが v2.0 エン
 
 
 ## GitHub からコードをダウンロードする
-このチュートリアルのコードは、[GitHub](git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
+このチュートリアルのコードは、[GitHub](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/Azure-Samples/active-directory-android-native-oidcandroidlib-v2/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-android-native-oidcandroidlib-v2.git
@@ -197,4 +197,4 @@ OpenID Connect のスコープとしての `openid` または `offline_access` �
 
 セキュリティの問題に関する通知を受け取ることをお勧めします。[Security TechCenter](https://technet.microsoft.com/security/dd252948) にアクセスし、セキュリティ アドバイザリ通知の受信登録を行ってください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

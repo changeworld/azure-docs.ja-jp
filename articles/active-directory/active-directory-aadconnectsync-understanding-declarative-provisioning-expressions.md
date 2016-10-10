@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -92,4 +92,4 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 
 - [Azure AD Connect Sync: 関数リファレンス](active-directory-aadconnectsync-functions-reference.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

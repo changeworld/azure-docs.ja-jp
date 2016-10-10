@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article" 
-	ms.date="09/06/2016"
+	ms.date="09/26/2016"
 	ms.author="spelluru"/>
 
 # チュートリアル: Hadoop クラスターを使用してデータを処理する最初のパイプラインを作成する 
@@ -216,4 +216,12 @@ HDInsight Hive アクティビティを含むパイプラインによってフ�
 	
 		AzCopy /Source:. /Dest:https://<storageaccountname>.blob.core.windows.net/adfgetstarted/script /DestKey:<storageaccesskey>  /Pattern:partitionweblogs.hql
 
-<!---HONumber=AcomDC_0921_2016-->
+これで前提条件を完了しました。データ ファクトリを作成するには、次のいずれかの方法を使用します。上部にあるいずれかのタブまたは次のリンクをクリックして、チュートリアルを実行します。
+
+- [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
+
+<!---HONumber=AcomDC_0928_2016-->

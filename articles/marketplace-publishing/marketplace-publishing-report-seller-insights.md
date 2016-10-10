@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="02/04/2016"
+   ms.date="02/05/2016"
    ms.author="v-jeana; hascipio"/>
 
 # Seller Insights レポートの概要
@@ -89,10 +89,13 @@
 
 https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資格情報でサインインします。 ![passwordreminder][7]
 
-**[公開元] タブを選択します。 ** ![selectpublisherstab][8]
+**[公開元] タブを選択します。**
+![selectpublisherstab][8]
 
 
-URL で公開元 ID を探します。この ID をパスワードとして使用して、Seller Insights の Excel ファイルを開きます。通知があるまで、これがパスワードとして使用されます。ブックを読むときは Windows で MS Office 2013 を使うことをお勧めします。Microsoft Office for Mac を使うと問題があることが報告されています。
+URL で公開元 ID を探します。
+- この ID をパスワードとして使用して、Seller Insights の Excel ファイルを開きます。通知があるまで、これがパスワードとして使用されます。
+- ブックを読むときは Windows で MS Office 2013 を使うことをお勧めします。Microsoft Office for Mac を使うと問題があることが報告されています。
 
 ![publisherid][9]
 
@@ -118,4 +121,4 @@ URL で公開元 ID を探します。この ID をパスワードとして使�
 [9]: ./media/marketplace-publishing-report-seller-insights/publisherid.png
 [10]: ./media/marketplace-publishing-report-seller-insights/sellerinsightsquestions.png
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0928_2016-->

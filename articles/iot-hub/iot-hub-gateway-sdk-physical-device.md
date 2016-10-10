@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="05/31/2016"
-     ms.author="cstreet"/>
+     ms.date="08/29/2016"
+     ms.author="andbuc"/>
 
 
 # IoT Gateway SDK (ベータ) - Linux を使用した実際のデバイスで D2C メッセージを送信する
@@ -41,9 +41,10 @@
 ゲートウェイには、次のモジュールが含まれています。
 
 - *BLE モジュール*: BLE デバイスと接続し、デバイスから温度データを受信してデバイスにコマンドを送信します。
-- *ロガー モジュール*: メッセージ バスの診断情報を生成します。
+- *BLE クラウド対デバイス モジュール*: クラウドから送信される JSON メッセージを *BLE モジュール*用の BLE 命令に変換します。
+- * モジュール*: すべてのゲートウェイ メッセージをログに記録します。
 - *ID マッピング モジュール*: BLE デバイスの MAC アドレスと Azure IoT Hub デバイス ID の間で変換を行います。
-- *IoT Hub HTTP モジュール*: テレメトリ データを IoT Hub にアップロードし、IoT Hub からデバイス コマンドを受信します。
+- *IoT Hub モジュール*: テレメトリ データを IoT Hub にアップロードし、IoT Hub からデバイス コマンドを受信します。
 - *BLE プリンター モジュール*: BLE デバイスからのテレメトリを解釈し、トラブルシューティングとデバッグに利用できるように、書式設定されたデータをコンソールに出力します。
 
 ### Gateway を介したデータの流れ
@@ -55,20 +56,21 @@
 BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理手順を次に示します。
 
 1. BLE デバイスが温度サンプルを生成し、Bluetooth 経由でゲートウェイの BLE モジュールに送信する。
-2. BLE モジュールがサンプルを受信し、デバイスの MAC アドレスと共にメッセージ バスに発行する。
-3. ID マッピング モジュールがこのメッセージをメッセージ バスから取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID (デバイス ID とデバイス キー) に変換する。その後、温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージをメッセージ バスに発行する。
-4. IoT Hub HTTP モジュールがこの (ID マッピング モジュールで生成された) 新しいメッセージをメッセージ バスから受信し、IoT Hub に発行する。
+2. BLE モジュールがサンプルを受信し、デバイスの MAC アドレスと共にブローカーに発行する。
+3. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID (デバイス ID とデバイス キー) に変換する。その後、温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージを発行する。
+4. IoT Hub モジュールがこの (ID マッピング モジュールで生成された) 新しいメッセージを受信し、IoT Hub に発行する。
 5. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
 
 次のブロック図には、デバイス コマンドのデータ フロー パイプラインを示します。
 
 ![](media/iot-hub-gateway-sdk-physical-device/gateway_ble_command_data_flow.png)
 
-1. IoT Hub HTTP モジュールは IoT Hub に対して定期的に新しいコマンド メッセージのポーリングを行う。
-2. 新しいコマンド メッセージを受信すると、IoT Hub HTTP モジュールはそれをメッセージ バスに発行する。
-3. ID マッピング モジュールがコマンド メッセージをメッセージ バスから取得し、内部テーブルを使用して IoT Hub デバイス ID をデバイスの MAC アドレスに変換する。その後、プロパティ マップ内にターゲット デバイスの MAC アドレスを含む新しいメッセージをメッセージ バスに発行する。
-4. BLE モジュールがこのメッセージを取得し、BLE デバイスと通信して I/O 命令を実行する。
-5. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
+1. IoT Hub モジュールは IoT Hub に対して定期的に新しいコマンド メッセージのポーリングを行う。
+2. 新しいコマンド メッセージを受信すると、IoT Hub モジュールはそれをブローカーに発行する。
+3. ID マッピング モジュールがコマンド メッセージを取得し、内部テーブルを使用して IoT Hub デバイス ID をデバイスの MAC アドレスに変換する。その後、プロパティ マップ内にターゲット デバイスの MAC アドレスを含む新しいメッセージを発行する。
+4. BLE クラウド対デバイス モジュールは、このメッセージを受け取って、BLE モジュール用の適切な BLE 命令に変換する。その後、新しいメッセージを発行する。
+5. BLE モジュールがこのメッセージを取得し、BLE デバイスと通信して I/O 命令を実行する。
+6. ロガー モジュールがメッセージ バスから受信したすべてのメッセージをディスク ファイルに記録する。
 
 ## ハードウェアの準備
 
@@ -283,17 +285,18 @@ BLE デバイスの構成サンプルでは、Texas Instruments SensorTag デバ
 }
 ```
 
-#### IoT Hub HTTP モジュール
+#### IoT Hub モジュール
 
 IoT Hub の名前を追加します。サフィックス値は通常、**azure-devices.net** です。
 
 ```json
 {
   "module name": "IoTHub",
-  "module path": "/home/root/azure-iot-gateway-sdk/build/modules/iothubhttp/libiothubhttp_hl.so",
+  "module path": "/home/root/azure-iot-gateway-sdk/build/modules/iothub/libiothub_hl.so",
   "args": {
     "IoTHubName": "<<Azure IoT Hub Name>>",
-    "IoTHubSuffix": "<<Azure IoT Hub Suffix>>"
+    "IoTHubSuffix": "<<Azure IoT Hub Suffix>>",
+    "Transport": "HTTP"
   }
 }
 ```
@@ -324,6 +327,26 @@ SensorTag デバイスの MAC アドレスと、IoT Hub に追加した **Sensor
     "module path": "/home/root/azure-iot-gateway-sdk/build/samples/ble_gateway_hl/ble_printer/libble_printer.so",
     "args": null
 }
+```
+
+#### ルーティング構成
+
+次の構成は、次のことを保証します。
+- **Logger** モジュールがすべてのメッセージを受信し、それらを記録します。
+- **SensorTag** モジュールが **mapping** モジュールと **BLE Printer** モジュールの両方にメッセージを送信します。
+- **mapping** モジュールが IoT Hub に送信されるメッセージを **IoTHub** モジュールに送信します。
+- **IoTHub** モジュールがメッセージを **mapping** モジュールに送り返します。
+- **mapping** モジュールがメッセージを **SensorTag** モジュールに送り返します。
+
+```json
+"links" : [
+    {"source" : "*", "sink" : "Logger" },
+    {"source" : "SensorTag", "sink" : "mapping" },
+    {"source" : "SensorTag", "sink" : "BLE Printer" },
+    {"source" : "mapping", "sink" : "IoTHub" },
+    {"source" : "IoTHub", "sink" : "mapping" },
+    {"source" : "mapping", "sink" : "SensorTag" }
+  ]
 ```
 
 サンプルを実行するには、JSON 構成ファイルへのパスを渡して **ble\_gateway\_hl** バイナリを実行します。**gateway\_sample.json** ファイルを使用した場合、実行するコマンドは次のようになります。
@@ -428,4 +451,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

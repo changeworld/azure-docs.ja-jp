@@ -117,10 +117,12 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 ### **nodeTypes**
 **nodeTypes** セクションでは、クラスターのノードのタイプを記述します。次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つは指定する必要があります。
 
-	"nodeTypes": [{
+    "nodeTypes": [{
         "name": "NodeType0",
         "clientConnectionEndpointPort": "19000",
         "clusterConnectionEndpoint": "19001",
+        "leaseDriverEndpointPort": "19002"
+        "serviceConnectionEndpointPort": "19003",
         "httpGatewayEndpointPort": "19080",
         "applicationPorts": {
 			"startPort": "20001",
@@ -133,7 +135,7 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
         "isPrimary": true
     }]
 
-**name** はこのノード タイプのフレンドリ名です。このノード タイプのノードを作成するには、「[クラスターのノード](#clusternodes)」で前述したように、そのノードの **nodeTypeRef** 変数にこのノード タイプのフレンドリ名を割り当てる必要があります。ノード タイプごとに、このクラスターに接続するためのさまざまなエンドポイントを定義できます。このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。複数のノード タイプが存在するクラスターでは、プライマリ ノード タイプは 1 つだけであり、**isPrimary** が *true* に設定されています。それ以外のノードは、**isPrimary** が *false* に設定されます。クラスターの容量に従った **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプの違いについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。
+**name** はこのノード タイプのフレンドリ名です。このノード タイプのノードを作成するには、「[クラスターのノード](#clusternodes)」で前述したように、そのノードの **nodeTypeRef** 変数にこのノード タイプのフレンドリ名を割り当てる必要があります。ノード タイプごとに、このクラスターに接続するためのさまざまなエンドポイントを定義できます。このクラスターの他のエンドポイントと競合しない限り、これらの接続エンドポイントの任意のポート番号を選択できます。http アプリケーション ゲートウェイ ポートを作成する場合は、上記のようにポートを指定したうえで別途、"reverseProxyEndpointPort": [Port number] を指定してください。複数のノード タイプが存在するクラスターでは、プライマリ ノード タイプは 1 つだけであり、**isPrimary** が *true* に設定されています。それ以外のノードは、**isPrimary** が *false* に設定されます。クラスターの容量に従った **nodeTypes** と **reliabilityLevel** の値の詳細、およびプライマリ ノード タイプと非プライマリ ノード タイプの違いについては、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。
 
 
 ### **fabricSettings**
@@ -156,4 +158,4 @@ ClusterConfig.JSON の **properties** セクションは、以下のようにク
 
 スタンドアロン クラスターのセットアップに従って、ClusterConfig.JSON ファイルの構成を完了したら、[オンプレミスまたはクラウドでの Azure Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページに従ってクラスターをデプロイした後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進むことができます。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -241,7 +241,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 > [AZURE.NOTE] Key Vault の操作を行ってからログ情報にアクセスできるようになるまでの時間は最大で 10 分です。ほとんどの場合は、これよりも早く確認できます。
 
-次は、[Azure Service Bus キューを作成](../service-bus/service-bus-dotnet-get-started-with-queues.md)します。ここにキー コンテナーの監査ログがプッシュされます。キューに入れられたログは、Logic App が取得して、処理を実行します。Service Bus は比較的簡単に作成できます。簡単な作成手順を次に示します。
+次は、[Azure Service Bus キューを作成](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)します。ここにキー コンテナーの監査ログがプッシュされます。キューに入れられたログは、Logic App が取得して、処理を実行します。Service Bus は比較的簡単に作成できます。簡単な作成手順を次に示します。
 
 1. Service Bus 名前空間を作成します (使用できるものが既にある場合は、手順 2 に進みます)。
 2. ポータルで Service Bus に移動して、キューを作成する名前空間を選択します。
@@ -424,4 +424,4 @@ Logic App が作成されたら、そのアプリに移動し、[編集] を選�
 
 この時点では、1 分ごとに新しい Key Vault 監査ログを確認するエンド ツー エンドのパイプラインがあります。このパイプラインは、新しいログを見つけたら Service Bus キューにプッシュします。Logic App は、新しいメッセージがキューに入るとすぐにトリガーされ、イベント内のアプリ ID が呼び出し元アプリケーションのアプリ ID と一致しない場合に、電子メールを送信します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

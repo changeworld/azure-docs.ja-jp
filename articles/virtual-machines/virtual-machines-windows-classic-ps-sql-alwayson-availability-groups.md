@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/09/2016"
+	ms.date="09/22/2016"
 	ms.author="mikeray" />
 
 # PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 
 > [AZURE.SELECTOR]
-- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 - [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 - [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
@@ -50,7 +50,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 - オンプレミス ソリューションにおける AlwaysOn 可用性グループについて十分に理解している。詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
-## Azure サブスクリプションへの接続と Virtual Network の作成
+## Azure サブスクリプションへの接続と仮想ネットワークの作成
 
 1. ローカル コンピューターの PowerShell ウィンドウで、Azure モジュールをインポートし、発行設定ファイルをコンピューターにダウンロードします。その後、ダウンロードした発行設定ファイルをインポートして、該当する Azure サブスクリプションに PowerShell セッションを接続します。
 
@@ -630,4 +630,4 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,7 +13,7 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="infrastructure-services"
- ms.date="07/18/2016"
+ ms.date="09/22/2016"
  ms.author="danlep"/>
 
 # Windows VM のコンピューティング ベンチマーク スコア
@@ -59,13 +59,24 @@ Standard\_G3、Standard\_GS3 | 8 | 1 | Intel Xeon E5-2698B v3 @ 2 GHz | 6 | 242\
 Standard\_G4、Standard\_GS4 | 16 | 1 | Intel Xeon E5-2698B v3 @ 2 GHz | 15 | 398\.9 | 6\.0
 Standard\_G5、Standard\_GS5 | 32 | 2 | Intel Xeon E5-2698B v3 @ 2 GHz | 22 | 762\.8 | 3\.7
 
+## H シリーズ
+
+サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | イテレーション数/秒 | 標準偏差
+------- | ------ | ---- | -------| ---- | ---- | -----
+Standard\_H8 | 8 | 1 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 5 | 297\.4 | 0\.9
+Standard\_H16 | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 5 | 575\.8 | 6\.8
+Standard\_H8m | 8 | 1 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 5 | 297\.0 | 1\.2
+Standard\_H16m | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 5 | 572\.2 | 3\.9
+Standard\_H16r | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 5 | 573\.2 | 2\.9
+Standard\_H16mr | 16 | 2 | Intel Xeon E5-2667 v3 @ 3.2 GHz | 7 | 569\.6 | 2\.8
+
 ## SPECint について
 
-Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) を実行して計算しました。SPECint は、コアあたり 1 つのコピーを使用し、ベース レート オプション (SPECint\_rate2006) を使用して実行しました。SPECint は 12 個の個別のテストで構成され、それぞれを 3 回実行します。各テストの中央値を採用し、重み付けして複合スコアを割り出します。これらが複数の VM にわたって実行され、ご覧の平均スコアが算出されました。
+Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) を実行して計算しました。SPECint は、コアあたり 1 つのコピーを使用し、ベース レート オプション (SPECint\_rate2006) を使用して実行しました。SPECint は 12 個の個別のテストで構成され、それぞれを 3 回実行します。各テストの中央値を採用し、重み付けして複合スコアを割り出します。これらのテストが複数の VM にわたって実行され、ご覧の平均スコアが算出されました。
 
 
 ## 次のステップ
 
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、[仮想マシンのサイズ](virtual-machines-windows-sizes.md)に関するページをご覧ください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

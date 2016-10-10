@@ -8,11 +8,11 @@
 	editor=""
 	tags="azure-classic-portal"/>
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="06/23/2016"
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/27/2016"
 
 	ms.author="femila"/>
 
-# Azure AD 参加の使用シナリオとデプロイに関する考慮事項 
+# Azure AD 参加の使用シナリオとデプロイに関する考慮事項
 
 ## Azure AD 参加の使用シナリオ
 ### シナリオ 1: 業務の多くでクラウドを利用している企業
@@ -32,7 +32,7 @@
 これまでに説明したようなメリットだけでなく、ユーザーのデバイスを Azure AD に参加させると、簡単な参加エクスペリエンス、効率的なデバイス管理、モバイル デバイス管理の自動登録、Azure AD およびオンプレミスのリソースへのシングル サインオンなどのさまざまな利点があります。
 
 
-##Azure AD 参加のデプロイに関する考慮事項
+## Azure AD 参加のデプロイに関する考慮事項
 
 ### ユーザーが会社所有のデバイスを直接 Azure AD に参加させることができるようにする
 
@@ -42,7 +42,7 @@
 ### 前提条件
 **企業レベル (管理者)**
 
-*	Azure サブスクリプションと Azure Active Directory  
+*	Azure サブスクリプションと Azure Active Directory
 
 **ユーザー レベル**
 
@@ -87,4 +87,4 @@
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

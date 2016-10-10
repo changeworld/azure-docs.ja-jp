@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="複数のストレージ アカウントでの Media Services 資産の管理" 
+	pageTitle="複数のストレージ アカウントでの Media Services 資産の管理 | Microsoft Azure" 
 	description="この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"    
+	ms.date="09/26/2016"    
 	ms.author="juliako"/>
 
 
@@ -259,4 +259,4 @@ Media Services は、ストリーミング コンテンツ (例: http://{WAMSAcc
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

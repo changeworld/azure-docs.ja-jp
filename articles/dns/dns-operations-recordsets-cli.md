@@ -3,7 +3,7 @@
    description="Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。レコード セットとレコードに対する操作のための CLI コマンドをすべて紹介します。"
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="jtuliani"
    manager="carmonm"
    editor=""/>
 
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/16/2016"
-   ms.author="cherylmc"/>
+   ms.date="09/22/2016"
+   ms.author="jtuliani"/>
 
 # CLI を使用した DNS レコードとレコード セットの管理
 
@@ -153,6 +153,11 @@ Azure ポータルで新しいレコード セットを作成する方法につ�
 
 	azure network dns record-set delete-record myresourcegroup contoso.com  "test-ns" NS -d "ns1.contoso.com"
 
+### レコード セットから PTR レコードを削除する
+ここで ' my-arpa-zone.com' は IP 範囲を表す ARPA ゾーンを表します。このゾーンの各 PTR レコード セットは、この IP の範囲内の IP アドレスに対応します。
+
+	azure network dns record-set delete-record myresourcegroup my-arpa-zone.com "10" PTR -P "myservice.contoso.com"
+
 ### レコード セットから SRV レコードを削除する
 
 	azure network dns record-set delete-record myresourcegroup contoso.com  "_sip._tls" SRV -p 0 -w 5 -o 8080 -u "sip.contoso.com"
@@ -178,4 +183,4 @@ Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)�
 
 逆引き DNS レコードを使用する場合、「[Azure CLI を使用してサービスの逆引き DNS レコードを管理する方法](dns-reverse-dns-record-operations-cli.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

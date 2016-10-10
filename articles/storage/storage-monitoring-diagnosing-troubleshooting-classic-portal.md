@@ -13,14 +13,14 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/29/2016"
-	ms.author="jahogg"/>
+	ms.date="09/22/2016"
+	ms.author="jahogg;robinsh"/>
 
 # Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 
 [AZURE.INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## 概要
+## Overview
 
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらを組み合わせたものにデプロイできます。一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
@@ -190,7 +190,7 @@ Azure クラシック ポータルでは、ストレージ アカウントの **
 
 ### <a name="performance-issues"></a>パフォーマンスの問題
 
-アプリケーションのパフォーマンスは主観的であり、特にユーザーの見方によって変わることがあります。そのため、パフォーマンスに問題がある可能性がある場所を特定できるように、メトリックの基準値を設けておくことが重要です。クライアント アプリケーションの観点から見ると、Azure Storage サービスのパフォーマンスはさまざまな要因によって影響を受ける可能性があります。このような要因には Storage サービス、クライアント、ネットワーク インフラストラクチャに関するものがあります。したがって、パフォーマンス問題の根本原因を特定するための戦略を用意しておくことが重要です。
+アプリケーションのパフォーマンスは主観的であり、特にユーザーの見方によって変わることがあります。そのため、パフォーマンスに問題がある可能性のある場所を特定できるように、メトリックの基準値を設けておくことが重要です。クライアント アプリケーションの観点から見ると、Azure Storage サービスのパフォーマンスはさまざまな要因によって影響を受ける可能性があります。このような要因には Storage サービス、クライアント、ネットワーク インフラストラクチャに関するものがあります。したがって、パフォーマンス問題の根本原因を特定するための戦略を用意しておくことが重要です。
 
 メトリックを使用してパフォーマンス問題の原因と考えられる場所を特定したら、ログ ファイルを使用して詳細な情報を見つけ、問題をさらに診断してトラブルシューティングすることができます。
 
@@ -211,7 +211,7 @@ Azure クラシック ポータルでは、ストレージ アカウントの **
 
 ### <a name="storage-emulator-issues"></a>ストレージ エミュレーターの問題
 
-Azure SDK には、開発用ワークステーションで実行できるストレージ エミュレーターが含まれています。このエミュレーターは、Azure Storage サービスのほとんどの動作をシミュレートし、Azure サブスクリプションと Azure ストレージ アカウントがなくても Azure Storage サービスを使用するアプリケーションを実行できるため、開発やテストで役に立ちます。
+Azure SDK には、開発用ワークステーションで実行できるストレージ エミュレーターが含まれています。このエミュレーターは、Azure ストレージ サービスのほとんどの動作をシミュレートし、Azure サブスクリプションと Azure ストレージ アカウントがなくても Azure ストレージ サービスを使用するアプリケーションを実行できるため、開発やテストで役に立ちます。
 
 このガイドの「[トラブルシューティング ガイダンス]」セクションでは、ストレージ エミュレーターの使用時に発生する一般的な問題について説明します。
 
@@ -473,7 +473,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 
 クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの Shared Access Signature (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
 
-ソース|詳細度|詳細度|クライアント要求 ID|操作テキスト
+から|詳細度|詳細度|クライアント要求 ID|操作テキスト
 ---|---|---|---|---
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|場所 Primary、場所モード PrimaryOnly で操作を開始しています。
 Microsoft.WindowsAzure.Storage|情報|3|85d077ab -…|https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14 への同期要求を開始しています。
@@ -493,7 +493,7 @@ Microsoft.WindowsAzure.Storage|エラー|1|85d077ab -…|再試行ポリシー�
 - 
 - ストレージ アクセス キーを再生成すると (Azure クラシック ポータルのストレージ アカウントの任意のページで **[アクセス キーの管理]** をクリックします)、既存の SAS トークンが無効になる可能性があります。この状況は、SAS トークンを生成する際にクライアント アプリケーションがキャッシュする有効期限を長く設定していると問題となることがあります。
 
-SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名を使用したアクセスの委任</a>」を注意深くお読みください。
+SAS トークンを生成するためのストレージ クライアント ライブラリを使用すると、有効なトークンの作成が容易です。ただし、Storage REST API を使用し、手動で SAS トークンを構成している場合、MSDN の「<a href="http://msdn.microsoft.com/library/azure/ee395415.aspx" target="_blank">共有アクセス署名によるアクセスの委任</a>」を注意深くお読みください。
 
 ### <a name="the-client-is-receiving-404-messages"></a>クライアントが HTTP 404 (見つからない) のメッセージを受け取る
 クライアント アプリケーションが HTTP 404 (未検出) メッセージをサーバーから受け取った場合は、クライアントが使用しようとしていたオブジェクト (エンティティ、テーブル、BLOB、コンテナー、キューなど) が Storage サービス内に存在しないことを意味します。これには以下のようなさまざまな理由が考えられます。
@@ -656,7 +656,7 @@ JavaScript クライアントを使用していて Storage サービスから HT
 
 以下の表に、**DeleteIfExists** と、その直後の同じ BLOB コンテナー名を使用する **CreateIfNotExists** の 2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。どちらのクライアント操作も 2 つの要求をサーバーに送信することに注目してください (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-タイムスタンプ|操作|結果|コンテナー名|クライアント要求 ID
+Timestamp|操作|結果|コンテナー名|クライアント要求 ID
 ---|---|---|---|---
 05:10:13.7167225|GetContainerProperties|200|mmcont|c9f52c89-…
 05:10:13.8167325|DeleteContainer|202|mmcont|c9f52c89-…
@@ -924,4 +924,4 @@ Blob Storage からダウンロードしたストレージ ログ データを E
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

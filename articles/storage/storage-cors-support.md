@@ -3,7 +3,7 @@
 	description="Microsoft Azure ストレージ サービスでの CORS のサポートを有効にする方法について説明します。"
 	services="storage"
 	documentationCenter=".net"
-	authors="tamram"
+	authors="cbrooks"
 	manager="carmonm"
 	editor="tysonn"/>
 
@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="cbrooks;tamram"/>
 
 # Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 
@@ -195,4 +195,4 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 
 [W3C のクロス オリジン リソース共有の仕様](http://www.w3.org/TR/cors/)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

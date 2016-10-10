@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -112,7 +112,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-	![Azure AD のシングル サインオン][8]
+	![Azure AD Single Sign-On][8]
  
      a.**[サインオン URL]** ボックスに、ユーザーが PerformanceCentre サイトへのサインオンに使用する URL を入力します (例: *http://companyname.performancecentre.com/saml/SSO*)。
  
@@ -120,7 +120,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
  
 4. **[PerformanceCentre でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-	![Azure AD のシングル サインオン][9]
+	![Azure AD Single Sign-On][9]
 
     a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
@@ -130,28 +130,28 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 2. 左側にあるタブで、**[Configure]** をクリックします。
 
-	![Azure AD のシングル サインオン][10]
+	![Azure AD Single Sign-On][10]
 
 2. 左側にあるタブで、**[Miscellaneous]**、**[Single Sign On]** の順にクリックします。
 
-	![Azure AD のシングル サインオン][11]
+	![Azure AD Single Sign-On][11]
 
 2. **[Protocol]** で **[SAML]** を選択します。
 
-	![Azure AD のシングル サインオン][12]
+	![Azure AD Single Sign-On][12]
 
 2. ダウンロードしたメタデータ ファイルをメモ帳で開き、ファイルの内容をコピーし、**[Identity Provider Metadata]** ボックスに貼り付け、**[Save]** をクリックします。
 
-	![Azure AD のシングル サインオン][13]
+	![Azure AD Single Sign-On][13]
 
 2. **[Entity Base URL]** と **[Entity ID URL]** の値が正しいことを確認します。
 
-	![Azure AD のシングル サインオン][14]
+	![Azure AD Single Sign-On][14]
 
 
 6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
-	![Azure AD のシングル サインオン][15]
+	![Azure AD Single Sign-On][15]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
@@ -181,7 +181,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_05.png)
 
@@ -191,7 +191,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_06.png)
  
@@ -207,7 +207,7 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_07.png)
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-performancecentre-tutorial/create_aaduser_08.png)
   
@@ -227,11 +227,11 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 
 2. 左側のメニューで、**[Interrelate]**、**[Create Participant]** の順にクリックします。
 
-	![Create User][400]
+	![ユーザーの作成][400]
 
 4. **[Interrelate - Create Participant]** ダイアログ ボックスで、次の手順を実行します。
 
-	![Create User][401]
+	![ユーザーの作成][401]
 
     a.関連するテキスト ボックスに Britta Simon の必要な属性を入力します。
     
@@ -319,4 +319,4 @@ PerformanceCentre で Azure AD のシングル サインオンを構成し、テ
 [401]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_12.png
 [402]: ./media/active-directory-saas-performancecentre-tutorial/tutorial_performancecentre_402.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

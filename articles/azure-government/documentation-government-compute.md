@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="azure-government"
-	ms.date="08/25/2016"
+	ms.date="09/14/2016"
 	ms.author="ryansoc"/>
 
 
@@ -22,6 +22,7 @@
 
 ##  Virtual Machines
 
+###  データに関する考慮事項
 
 以下の情報は、Azure Virtual Machines に関する Azure Government の機能領域について記述したものです。
 
@@ -33,4 +34,4 @@
 
 補足情報と最新情報については、<a href="https://blogs.msdn.microsoft.com/azuregov/">Microsoft Azure Government ブログ</a>を随時ご覧ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

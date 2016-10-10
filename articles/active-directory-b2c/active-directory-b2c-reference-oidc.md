@@ -75,7 +75,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | ----------------------- |
 | client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)によってアプリに割り当てられたアプリケーション ID。 |
 | response\_type | 必須 | 応答の種類。OpenID Connect の `id_token` を含む必要があります。Web アプリで Web API を呼び出すためのトークンも必要になる場合、ここで行ったように、`code+id_token` を利用できます。 |
@@ -100,7 +100,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | id\_token | アプリが要求した id\_token。この id\_token を使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。id\_token とその内容の詳細については、「[Azure AD B2C: トークン リファレンス](active-directory-b2c-reference-tokens.md)」を参照してください。 |
 | code | `response_type=code+id_token` を使用した場合、アプリが要求した authorization\_code。アプリは承認コードを使用して、対象リソースの access\_token を要求します。authorization\_code は非常に短命です。通常、約 10 分で期限が切れます。 |
@@ -115,7 +115,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -162,15 +162,21 @@ Web アプリに必要なことがポリシーの実行だけであれば、以�
 `POST` 要求を `/token` エンドポイントに送信することで、(`response_type=code+id_token` を利用し) トークンに取得した authorization\_code を任意のリソースに適用できます。現在、トークンを要求できる唯一のリソースはアプリの独自のバックエンド Web API です。自身のトークンを要求するには、アプリのクライアント ID をスコープとして使用します。
 
 ```
-POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
+POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
-
+{
+	"grant_type": "authorization_code",
+	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
+	"scope": "openid offline_access",
+	"code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
+	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+	"client_secret": "<your-application-secret>"
+}
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | --------------------- |
 | p | 必須 | 認証コードの取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。このパラメーターは、POST 本文ではなく、"**クエリ文字列**" に追加することに注意してください。 |
 | client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)によってアプリに割り当てられたアプリケーション ID。 |
@@ -192,7 +198,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 	"refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | not\_before | トークンが有効と見なされる時間 (エポック時間)。 |
 | token\_type | トークン タイプ値。Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -210,7 +216,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -228,14 +234,21 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 id\_token は短命です。リソースに引き続きアクセスできるようにするには、有効期限が切れた後で更新する必要があります。トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
 
 ```
-POST fabrikamb2c.onmicrosoft.com/v2.0/oauth2/token?p=b2c_1_sign_in HTTP/1.1
+POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
 Host: https://login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
+{
+	"grant_type": "refresh_token",
+	"client_id": "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6",
+	"scope": "openid offline_access",
+	"refresh_token": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
+	"redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+	"client_secret": "<your-application-secret>"	
+}
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | -------- |
 | p | 必須 | 元の refresh\_token の取得に使用されたポリシー。この要求に別のポリシーを使用することはできません。このパラメーターは、POST 本文ではなく、"**クエリ文字列**" に追加することに注意してください。 |
 | client\_id | 必須 | [Azure ポータル](https://portal.azure.com/)によってアプリに割り当てられたアプリケーション ID。 |
@@ -257,7 +270,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 	"refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | not\_before | トークンが有効と見なされる時間 (エポック時間)。 |
 | token\_type | トークン タイプ値。Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -275,7 +288,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 | ----------------------- | ------------------------------- |
 | error | 発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error\_description | 認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -293,13 +306,12 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | 必須 | 説明 |
+| パラメーター | 必須 | Description |
 | ----------------------- | ------------------------------- | ------------ |
 | p | 必須 | ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
 | post\_logout\_redirect\_uri | 推奨 | サインアウトの正常終了後にユーザーをリダイレクトする URL。指定しない場合、Azure AD B2C はユーザーに汎用メッセージを表示します。 |
 
-> [AZURE.NOTE]
-	ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD B2C のユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。ユーザーが B2C アプリケーションからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
+> [AZURE.NOTE] ユーザーを `end_session_endpoint` にリダイレクトすると、Azure AD B2C のユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。ユーザーが B2C アプリケーションからサインアウトするとき、Facebook アカウントからの完全なサインアウトを望んでいるとは限りません。ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。
 
 ## 独自の B2C テナントを使用する
 
@@ -309,4 +321,4 @@ p=b2c_1_sign_in
 - [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と redirect\_uri を取得します。アプリに **web app/web api** を追加し、必要に応じて、**アプリケーション シークレット**を作成します。
 - [ポリシーを作成し](active-directory-b2c-reference-policies.md)、ポリシー名を取得します。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Video Thumbnails を使用してビデオ要約を作成する"
+	pageTitle="Azure Media Video Thumbnails を使用してビデオ要約を作成する | Microsoft Azure"
 	description="ビデオ要約では、ソース ビデオから興味深いスニペットが自動的に選択されるので、長いビデオの要約を簡単に作成することができます。これは、長いビデオにおいて予定されている内容の概要をすばやく提供する場合に便利です。"
 	services="media-services"
 	documentationCenter=""
@@ -13,17 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/26/2016"   
 	ms.author="milanga;juliako;"/>
 
 #Azure Media Video Thumbnails を使用してビデオ要約を作成する
-##概要
+##Overview
 
 **Azure Media Video Thumbnails** メディア プロセッサ (MP) では、長いビデオの要約をプレビューするだけのお客様に役に立つビデオの要約を作成することができます。たとえば、サムネイルにマウス ポインターを合わせたときに、お客者は短い "要約ビデオ" を参照できます。構成プリセットを通じて **Azure Media Video Thumbnails** のパラメーターを調整することにより、MP の強力なショット検出と連結テクノロジを使用して、わかりやすいサブクリップをアルゴリズムに生成できます。
 
 **Azure Media Video Thumbnail** MP は現在プレビュー段階です。
 
-ここでは、**Azure Media Video Thumbnail** の詳細を説明し、Media Services SDK for .NET でのその使用方法を示します。
+このトピックでは、**Azure Media Video Thumbnail** の詳細と、Media Services SDK for .NET での使用方法について説明します。
 
 ##ビデオ要約の例 
 
@@ -45,7 +45,7 @@
 
 現在、次のパラメーターを変更できます。
 
-Param|説明
+Param|Description
 ---|---
 outputAudio|結果ビデオにオーディオが含まれているかどうかを指定します。<br/>使用可能な値: True または False。既定値は True です。
 fadeInFadeOut|フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。<br/>使用可能な値: True または False。既定値は True です。
@@ -273,4 +273,4 @@ maxMotionThumbnailDurationInSecs|結果ビデオ全体の長さを指定する�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

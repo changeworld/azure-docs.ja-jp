@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/03/2016"
+   ms.date="09/22/2016"
    ms.author="mfussell"/>
 
 # Service Fabric の概要
@@ -41,7 +41,7 @@ Service Fabric は、これらのマイクロサービスで構成されたア�
 ## Service Fabric クラスターの任意の場所への作成
 Azure、オンプレミス、Windows Server、Linux を含むさまざまな環境で Service Fabric クラスターを作成できます。さらに、SDK の開発環境は、エミュレーターが含まれない運用環境と同一です。つまり、ローカルの開発クラスターで実行した場合、他の環境内の同じクラスターにデプロイされます。
 
-オンプレミスでのクラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure ポータルを使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
+オンプレミスでのクラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
 
 ![Service Fabric platform][Image1]
 
@@ -110,4 +110,4 @@ Service Fabric を使用すると、次の操作を実行できます。
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

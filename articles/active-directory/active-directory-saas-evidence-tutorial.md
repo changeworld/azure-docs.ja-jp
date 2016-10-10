@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -107,4 +107,4 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
  
 4.	ページ フッターにある **[割り当て]** をクリックします。
 
-<!---HONumber=AcomDC_0224_2016-->
+<!---HONumber=AcomDC_0928_2016-->

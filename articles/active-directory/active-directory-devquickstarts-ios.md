@@ -35,6 +35,8 @@ Azure AD には、保護されたリソースにアクセスする必要があ�
 
 最初に、[アプリのスケルトンをダウンロードするか](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip)、または[完全なサンプルをダウンロードします](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。また、ユーザーを作成し、アプリケーションを登録することを可能にするための Azure AD テナントも必要です。テナントを所有していない場合は、「[How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
 
+> [AZURE.TIP] Azure Active Directory をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/iOS)のプレビュー版をお試しください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスを説明してあります。完了すると、テナント内のユーザーを認証できる単純なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
+
 ## *1.iOS 用のリダイレクト URI を決定する*
 
 特定の SSO シナリオでアプリケーションを安全に起動するには、**リダイレクト URI** を特定の形式で作成する必要があります。リダイレクト URI は、トークンがそのトークンを要求した適切なアプリケーションに返されるようにするために使用します。
@@ -230,4 +232,4 @@ ADAL を使用することにより、これらの共通 ID 機能のすべて�
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

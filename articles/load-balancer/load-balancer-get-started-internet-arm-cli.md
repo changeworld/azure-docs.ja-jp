@@ -17,7 +17,7 @@
    ms.date="08/31/2016"
    ms.author="sewhee" />
 
-# Azure CLI を使用した内部ロード バランサーの作成の概要
+# Azure CLI を使用した内部ロード バランサーの作成
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -306,4 +306,4 @@ NIC を作成し (あるいは、既存の NIC を変更し)、それを NAT 規
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!----HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
 	ms.workload="data-services" 
-	ms.date="07/27/2016" 
+	ms.date="09/26/2016" 
 	ms.author="jeffstok"/>
 
 #Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
@@ -35,7 +35,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 その他の入力/出力の場合は、パート2 へ進んでください。
 
 ###BLOB ストレージとテーブル ストレージ
-1.  Azure の管理ポータルで [ストレージ] 拡張に移動します。![図 1][graphic1]
+1.  Azure 管理ポータルで [ストレージ] 拡張に移動します。![図 1][graphic1]
 2.  ジョブで使用されているストレージを見つけ、そこに移動します。![図 2][graphic2]
 3.  [アクセス キーの管理] コマンドをクリックします。![図 3][graphic3]
 4.  [プライマリ アクセス キー] と [セカンダリ アクセス キー] の間で、**ジョブで使用されていないキーを選択**します。
@@ -43,9 +43,8 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 6.  新しく生成されたキーをコピーします。![図 5][graphic5]
 7.  パート 2 に進みます。
 
-###Event Hubs  
-
-1.  Azure の管理ポータルで [Service Bus] 拡張に移動します。![図 6][graphic6]
+###Event Hubs
+1.  Azure 管理ポータルで [Service Bus] 拡張に移動します。![図 6][graphic6]
 2.  ジョブで使用されている Service Bus 名前空間を見つけ、そこに移動します。![図 7][graphic7]
 3.  ジョブが Service Bus 名前空間で共有アクセス ポリシーを使用している場合は、手順 6. に進みます。
 4.  [イベント ハブ] タブに移動します。![図 8][graphic8]
@@ -59,9 +58,9 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 
 ###SQL Database
 
->[AZURE.NOTE] 注: SQL Databse サービスに接続する必要があります。Azure の管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
+>[AZURE.NOTE] 注: SQL Databse サービスに接続する必要があります。Azure 管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
 
-1.  Azure の管理ポータルで [SQL データベース] 拡張に移動します。![図 14][graphic14]
+1.  Azure 管理ポータルで [SQL データベース] 拡張に移動します。![図 14][graphic14]
 2.  ジョブで使用されている SQL Database を見つけ、同じ行にある**サーバーのリンクをクリック**します。![図 15][graphic15]
 3.  [管理] コマンドをクリックします。![図 16][graphic16]
 4.  [データベース] に「Master」と入力します。![図 17][graphic17]
@@ -79,7 +78,7 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 16. パート 2 に進みます。
 
 ##パート 2: Stream Analytics ジョブの停止
-1.  Azure の管理ポータルで [Stream Analytics] 拡張に移動します。![図 26][graphic26]
+1.  Azure 管理ポータルで [Stream Analytics] 拡張に移動します。![図 26][graphic26]
 2.  ジョブを見つけ、それに移動します。![図 27][graphic27]
 3.  入力時と出力時のどちらで資格情報を交換するかに基づいて、[入力] タブまたは [出力] タブに移動します。![図 28][graphic28]
 4.  [停止] コマンドをクリックし、ジョブが停止されたことを確認します。![図 29][graphic29] ジョブが停止するまで待機します。
@@ -199,4 +198,4 @@ Azure Stream Analytics では、最後の出力からのジョブの再開がサ
 [graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

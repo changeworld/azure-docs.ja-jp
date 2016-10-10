@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
-   manager="StevenPo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -42,4 +42,4 @@
 
 「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

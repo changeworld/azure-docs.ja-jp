@@ -13,16 +13,16 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="05/15/2016"
+	ms.date="09/25/2016"
 	ms.author="glenga"/>
 
 # Windows アプリにプッシュ通知を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-##概要
+##Overview
 
-このトピックでは、Azure App Service の Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法を説明します。このシナリオでは、新しい項目が追加されると、Mobile App バックエンドによって、Windows Notification Service (WNS) に登録されているすべての Windows アプリにプッシュ通知が送信されます。
+このトピックでは、Azure App Service の Mobile Apps と Azure Notification Hubs を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法を説明します。このシナリオでは、新しい項目が追加されると、Mobile App バックエンドによって、Windows Notification Service (WNS) に登録されているすべての Windows アプリにプッシュ通知が送信されます。
 
 このチュートリアルは、Mobile Apps のクイック スタートに基づいています。このチュートリアルを開始する前に、クイック スタート チュートリアル「[Windows アプリを作成する](app-service-mobile-windows-store-dotnet-get-started.md)」を完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
@@ -208,7 +208,7 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 * [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) タグを利用して、プッシュ通知の対象となる顧客を絞ることができます。この記事では、タグをデバイス インストールに追加する方法について確認します。
 
-* [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
+* [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。このトピックでは、プッシュ通知のエラーの根本原因を分析し、解明する方法について説明しています。
 
 次のチュートリアルのいずれかに進むことを検討してください。
 
@@ -223,4 +223,4 @@ Azure から Windows アプリにプッシュ通知を送信するには、Windo
 
 <!-- Images. -->
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

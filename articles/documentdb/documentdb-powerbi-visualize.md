@@ -14,10 +14,11 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/31/2016"
+	ms.date="09/22/2016"
 	ms.author="hawong"/>
 
 # DocumentDB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
+
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。最新バージョンの Power BI Desktop では、Power BI 用 DocumentDB コネクタ経由で DocumentDB アカウントに接続できるようになりました。
 
 この Power BI チュートリアルでは、Power BI Desktop で DocumentDB アカウントに接続し、ナビゲーターを使用してデータを抽出するコレクションに移動して、Power BI Desktop クエリ エディターで JSON データを表形式に変換し、レポートを作成して PowerBI.com に発行する手順について説明します。
@@ -86,25 +87,24 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 	![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/documentdb-powerbi-visualize/power_bi_connector_pbigetdata.png)
 
-6. 次のように、データを取得する DocumentDB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。URL は、Azure ポータルの **[キー]** ブレードで URI ボックスから取得するか、上記で指定されたデモ アカウント情報を使用することができます。詳細については、[キー](documentdb-manage-account.md#keys)に関するページを参照してください。
+6. 次のように、データを取得する DocumentDB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。URL は、Azure ポータルの **[[キー]](documentdb-manage-account.md#keys)** ブレードで [URI] ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `https://analytics.documents.azure.com` になります)。
 
-
-	*注: このチュートリアルでは、オプションのフィールドであるデータベース名、コレクション名、および SQL ステートメントは指定しません。代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。*
+	データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
 
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 
-7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。アカウント キーを入力し、**[接続]** をクリックします。
+7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。キーは、Azure ポータルの **[[読み取り専用キー]](documentdb-manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `RcEBrRI2xVnlWheejXncHId6QRcKdCGQSW6uSUEgroYBWVnujW3YWvgiG2ePZ0P0TppsrMgscoxsO7cf6mOpcA==` になります)。アカウント キーを入力し、**[接続]** をクリックします。
 
-	*注: レポートを作成する際は読み取り専用キーを使用することをお勧めします。これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。読み取り専用キーは、Azure ポータルの [読み取り専用キー] ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。*
+	レポートを作成する際は読み取り専用キーを使用することをお勧めします。これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。読み取り専用キーは、Azure ポータルの [[キー]](documentdb-manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
 
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - アカウント キー](./media/documentdb-powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
 
 8. アカウントが正常に接続されると、**ナビゲーター**が表示されます。**ナビゲーター**には、アカウントで利用できるデータベースの一覧が表示されます。
-9. レポートのデータを取得するデータベースをクリックして展開します。データベースの下にコレクションの一覧が表示されます。  
+9. レポート用のデータを取得するデータベースをクリックして展開します。デモ アカウントを使用する場合は、**[volcanodb]** を選択します。
 
-10. これで、データを取得するコレクション (volcano1 など) を選択できます。
+10. 次に、データを取得するコレクションを選択します。デモ アカウントを使用する場合は、**[volcano1]** を選択します。
 
-	*注: プレビュー ウィンドウに、**Record** アイテムの一覧が表示されます。Power BI では、ドキュメントは **Record** タイプとして表されます。同様に、ドキュメント内の入れ子になった JSON ブロックも、**Record** として表されます。*
+	プレビュー ウィンドウに、**Record** アイテムの一覧が表示されます。Power BI では、ドキュメントは **Record** タイプとして表されます。同様に、ドキュメント内の入れ子になった JSON ブロックも、**Record** として表されます。
 
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - ナビゲーター ウィンドウ](./media/documentdb-powerbi-visualize/power_bi_connector_pbinavigator.png)
 
@@ -128,15 +128,15 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 6. 中央のウィンドウに、**List** タイプの [coordinates] 列が表示されます。このチュートリアルの冒頭に示されているように、ここで使用する GeoJSON データは、Latitude 値と Longitude 値が coordinates 配列に記録された Point タイプです。
 
-	*注: coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。* ![DocumentDB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
+	coordinates[0] 要素は経度を表し、coordinates[1] は緯度を表します。![DocumentDB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/documentdb-powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 
 7. coordinates 配列をフラット化するために、LatLong という **カスタム列**を作成します。**[列の追加]** リボンを選択し、**[カスタム列の追加]** をクリックします。**[カスタム列の追加]** ウィンドウが表示されます。
 
 8. "LatLong" など、新しい列の名前を入力します。
 
-9. 次に、新しい列のカスタム式を指定します。たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: Text.From([coordinates]{1})&","&Text.From([coordinates]{0})。**[OK]** をクリックします。
+9. 次に、新しい列のカスタム式を指定します。たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([Document.Location.coordinates]{1})&","&Text.From([Document.Location.coordinates]{0})`。**[OK]** をクリックします。
 
-    *注: DAX 関数など Data Analysis Expressions(DAX) の詳細については、[Power BI Desktop における DAX の基本](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)に関するページを参照してください。*
+    DAX 関数など Data Analysis Expressions(DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://support.powerbi.com/knowledgebase/articles/554619-dax-basics-in-power-bi-desktop)」を参照してください。
 
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - カスタム列の追加](./media/documentdb-powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
@@ -144,7 +144,13 @@ DocumentDB アカウントから火山データを取得し、次のような対
 
 	![DocumentDB Power BI コネクタの Power BI チュートリアル - カスタム LatLong 列](./media/documentdb-powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
 
-11. このように、データをフラット化して表形式に変換することができました。クエリ エディターのすべての機能を活用して、DocumentDB のデータを整形および変換することができます。たとえば、Elevation のデータ型を**10 進数**に変更するには、**[ホーム]** リボンで **[データ型]** を変更します。
+    新しい列でエラーが発生する場合は、クエリ設定で適用された手順が次の図と一致することを確認してください。
+
+    ![適用された手順は、Source、Navigation、Expanded Document、Expanded Document.Location、Added Custom である必要がある](./media/documentdb-powerbi-visualize/azure-documentdb-power-bi-applied-steps.png)
+
+    手順が異なる場合は、余分な手順を削除し、カスタム列をもう一度追加してみてください。
+
+11. このように、データをフラット化して表形式に変換することができました。クエリ エディターのすべての機能を活用して、DocumentDB のデータを整形および変換することができます。サンプルを使用する場合は、**[ホーム]** リボンの **[データ型]** を変更することで、Elevation のデータ型を **[整数]** に変更します。
 
     ![DocumentDB Power BI コネクタの Power BI チュートリアル - 列の型の変更](./media/documentdb-powerbi-visualize/power_bi_connector_pbichangetype.png)
 
@@ -169,29 +175,71 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 
 単純な対話型マップ ビュー レポートを作成する基本的な手順を次に示します。
 
-1. 例として、個々の火山の場所を示すマップ ビューを作成します。**[視覚エフェクト]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されている "マップ" をクリックします。**[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。**[視覚化エフェクト]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
+1. 例として、個々の火山の場所を示すマップ ビューを作成します。**[視覚エフェクト]** ウィンドウで、ビジュアルの種類として、上記のスクリーンショットで強調表示されているマップをクリックします。**[レポート]** キャンバスに、ビジュアルの種類のマップが描かれます。**[視覚化エフェクト]** ウィンドウには、ビジュアルの種類のマップに関連するプロパティのセットも表示されます。
 
 2. ここで、**[フィールド]** ウィンドウの LatLong フィールドを **[視覚エフェクト]** ウィンドウの **Location** プロパティにドラッグ アンド ドロップします。
-3. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。  
+3. 次に、Volcano Name フィールドを **Legend** プロパティにドラッグ アンド ドロップします。
 
-4. さらに、Elevation フィールドを **Values** プロパティにドラッグ アンド ドロップします。
+4. さらに、Elevation フィールドを **Size** プロパティにドラッグ アンド ドロップします。
 
 5. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
 
 6. これで、基本的なレポートを作成できました。別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。
 
-    ![DocumentDB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーン ショット](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
+    ![DocumentDB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーンショット](./media/documentdb-powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
 ## レポートを発行して共有する
 レポートを共有するには、PowerBI.com のアカウントが必要です。
 
 1. Power BI Desktop で、**[ホーム]** リボンをクリックします。
 2. **[発行]** をクリックします。PowerBI.com アカウントのユーザー名とパスワードの入力が求められます。
-3. 資格情報が認証されると、PowerBI.com アカウントにレポートが発行されます。
-4. これにより、PowerBI.com でレポートを共有できます。
+3. 資格情報が認証されると、選択済みの宛先にレポートが発行されます。
+4. レポートを PowerBI.com に表示して共有するには、**['PowerBITutorial.pbix' を Power BI で開く]** をクリックします。
+
+    ![Power BI への発行が成功しました! Power BI でチュートリアルを開く](./media/documentdb-powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+
+## PowerBI.com でのダッシュボードの作成
+
+レポートが用意できたので、PowerBI.com で共有しましょう。
+
+レポートを Power BI Desktop から PowerBI.com に発行すると、PowerBI.com テナントに **[レポート]** と **[データセット]** が生成されます。たとえば、**PowerBITutorial** という名前のレポートを PowerBI.com に発行すると、PowerBI.com の **[レポート]** セクションと **[データセット]** セクションの両方に PowerBITutorial が表示されます。
+
+   ![PowerBI.com の新しいレポートとデータセットのスクリーンショット](./media/documentdb-powerbi-visualize/documentdb-powerbi-reports-datasets.png)
+
+共有可能なダッシュ ボードを作成するには、PowerBI.com レポートで **[ライブ ページをピン留めする]** ボタンをクリックします。
+
+   ![PowerBI.com の新しいレポートとデータセットのスクリーンショット](./media/documentdb-powerbi-visualize/azure-documentdb-power-bi-pin-live-tile.png)
+
+その後、「[レポートからタイルをピン留め](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)」の指示に従って、新しいダッシュボードを作成します。
+
+ダッシュボードを作成する前に、レポートをその場で変更することもできます。ただし、変更は Power BI Desktop で実行し、変更後のレポートを PowerBI.com にもう一度発行することをお勧めします。
+
+## PowerBI.com でのデータの更新
+
+データの更新方法には、アドホック更新とスケジュールされている更新の 2 つの方法があります。
+
+アドホック更新を実行するには、**[データセット]** (PowerBITutorial など) の近くの省略記号 (...) をクリックします。**[Refresh Now (今すぐ更新)]** を含む操作の一覧が表示されます。データを更新するには、**[Refresh Now (今すぐ更新)]** をクリックします。
+
+![PowerBI.com の [Refresh Now (今すぐ更新)] のスクリーンショット](./media/documentdb-powerbi-visualize/azure-documentdb-power-bi-refresh-now.png)
+
+スケジュールされた更新を実行するには、次の操作を行います。
+
+1. 操作一覧の **[更新のスケジュール設定]** をクリックします。![PowerBI.com の [更新のスケジュール設定] のスクリーンショット](./media/documentdb-powerbi-visualize/azure-documentdb-power-bi-schedule-refresh.png)
+
+2. **[設定]** ページで、**[データ ソースの資格情報]** を展開します。
+
+3. **[資格情報の編集]** をクリックします。
+
+    [構成] ポップアップが表示されます。
+
+4. データセットの DocumentDB アカウントに接続するためのキーを入力し、**[サインイン]** をクリックします。
+
+5. **[更新のスケジュール設定]** を展開し、データセットを更新するためのスケジュールを設定します。
+  
+6. **[適用]** をクリックします。これで、スケジュールされた更新が設定されます。
 
 ## 次のステップ
-- Power BI の詳細については、[ここ](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)をクリックしてください。
-- DocumentDB の詳細については、[ここ](https://azure.microsoft.com/documentation/services/documentdb/)をクリックしてください。
+- Power BI の詳細については、「[Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
+- DocumentDB の詳細については、「[DocumentDB のドキュメント](https://azure.microsoft.com/documentation/services/documentdb/)」ランディング ページを参照してください。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,19 +1,19 @@
 <properties
    pageTitle="Windows 仮想マシン (VM) 上の SAP NetWeaver – デプロイメント ガイド | Microsoft Azure"
    description="Windows 仮想マシン (VM) 上の SAP NetWeaver – デプロイメント ガイド"
-   services="virtual-machines-windows,virtual-network,storage"
-   documentationCenter="saponazure"
+   services="virtual-machines-windows"
+   documentationCenter=""
    authors="MSSedusch"
-   manager="juergent"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-windows"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-windows"
-   ms.workload="na"
+   ms.workload="infrastructure-services"
    ms.date="08/18/2016"
    ms.author="sedusch"/>
 
@@ -984,4 +984,4 @@ Azure のパフォーマンス メトリックの収集は、複数のソース�
 
 SAP ノート [1999351] を使用したトラブルシューティングで問題が解決しない場合、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章の説明に従って、構成スクリプト Set-AzureRmVMAEMExtension を再実行してください。ストレージ分析または診断カウンターは、有効になった直後には作成されない場合があるため、1 時間待機しなくてはならない場合があります。問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

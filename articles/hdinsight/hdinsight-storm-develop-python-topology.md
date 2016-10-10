@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="07/11/2016"
+   ms.date="09/27/2016"
    ms.author="larryfr"/>
 
 #HDInsight での Python を使用した Apache Storm トポロジの開発
@@ -174,4 +174,4 @@ __uberjar をビルドして、HDInsight にデプロイするには__、次の�
 * [HDInsight 用 Python ストリーミング プログラムの開発](hdinsight-hadoop-streaming-python.md)
 * [HDInsight における Python と Hive および Pig の使用](hdinsight-python.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

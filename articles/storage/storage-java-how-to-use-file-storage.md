@@ -5,7 +5,7 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="" />
+	editor="tysonn" />
 
 <tags
 	ms.service="storage"
@@ -14,7 +14,7 @@
 	ms.devlang="Java"
 	ms.topic="article"
 	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+	ms.author="minet;robmcm"/>
 
 # Java からファイル ストレージを使用する方法
 
@@ -218,4 +218,4 @@ CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出
 - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 - [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-<!---HONumber=AcomDC_0817_2016--->
+<!---HONumber=AcomDC_0928_2016-->

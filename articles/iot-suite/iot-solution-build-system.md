@@ -79,7 +79,7 @@ Xamarin、Git、エミュレーターおよびその他の役立つコンポー�
 
 -   [Azure Service Fabric SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric)。[マイクロ サービス](../service-fabric/service-fabric-get-started.md)の拡張機能のビルドに必要です。
 
-また、正しい Visual Studio の拡張機能があることを確認します。**[ツール]** の下に、**[Android]、[iOS]、[Xamarin] **などがあることを確認します。表示されない場合は、[コントロール パネル]、**[プログラムと機能]**、**[Microsoft** **Visual Studio 2015]**、**[変更]** の順に開きます。**[クロスプラットフォーム開発]** で、**[C#/.Net (Xamarin)]** を選択します。そこで、**GitHub** がインストールされていることを確認します。
+また、正しい Visual Studio の拡張機能があることを確認します。**[ツール]** の下に、**[Android]、[iOS]、[Xamarin] **などがあることを確認します。表示されない場合は、[コントロール パネル]、**[プログラムと機能]**、**[Microsoft** **Visual Studio 2015]**、**[変更]** の順に開きます。**[クロスプラットフォーム開発]** で、**[C#/.Net (Xamarin)]** を選択します。そこで、**Git for Windows** がインストールされていることを確認します。
 
 ### Mac の開発用コンピューター
 
@@ -285,7 +285,7 @@ scenario\_complete.json での操作:
 
 ### テンプレートの実行
 
-テンプレートの実行方法の詳細は、**scripts/README.md ** に記載されています。
+テンプレートの実行方法の詳細は、**scripts/README.md** に記載されています。
 
 このスクリプトを使用して自分の Azure アカウントのすべてのサービスをプロビジョニングするには、次のいずれかの操作を行います。
 
@@ -462,4 +462,4 @@ MyDriving は、独自の IoT システムの開発を支援するために作�
 
 システムとそのコンポーネントの設計の包括的な説明である「[MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)」をお勧めします。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

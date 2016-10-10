@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](site-recovery-hyper-v-site-to-azure.md)
-- [PowerShell - ARM](site-recovery-deploy-with-powershell-resource-manager.md)
+- [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
 - [クラシック ポータル](site-recovery-hyper-v-site-to-azure-classic.md)
 
 この記事では、Hyper-V ホストが System Center Virtual Machine Manager (VMM) クラウドで管理されていないときに、Site Recovery をデプロイし、Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。
@@ -300,4 +300,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

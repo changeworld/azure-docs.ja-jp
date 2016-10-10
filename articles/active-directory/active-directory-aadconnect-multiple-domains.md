@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -153,4 +153,4 @@ PowerShell コマンド `Get-MsolDomainFederationSettings - DomainName <your dom
 ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 5.	[OK] をクリックします。[適用] をクリックします。[OK] をクリックします。AD FS 管理を閉じます。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

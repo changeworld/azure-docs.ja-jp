@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Media Encoder Standard を使用した高度なエンコード" 
-	description="このトピックでは、Media Encoder Standard タスク プリセットをカスタマイズし、高度なエンコードを実行する方法を紹介します。このトピックでは、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法を説明します。エンコード ジョブにカスタム プリセットを与える方法も紹介します。" 
+	pageTitle="Media Encoder Standard を使用した高度なエンコード | Microsoft Azure" 
+	description="このトピックでは、Media Encoder Standard のタスク プリセットをカスタマイズして、高度なエンコードを実行する方法を紹介します。また、Media Services .NET SDK を使用してエンコード タスクとジョブを作成する方法も紹介します。エンコード ジョブにカスタム プリセットを与える方法も紹介します。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -13,15 +13,15 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"    
+	ms.date="09/26/2016"    
 	ms.author="juliako"/>
 
 
 #Media Encoder Standard を使用した高度なエンコード
 
-##概要
+##Overview
 
-このトピックでは、Media Encoder Standard を使用して高度なエンコード タスクを実行する方法を紹介します。このトピックでは、[.NET を利用し、エンコード タスクとそのタスクを実行するジョブを作成する方法](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)を紹介します。エンコード タスクにカスタム プリセットを与える方法も紹介します。プリセットで使用される要素の説明については、[この文書](https://msdn.microsoft.com/library/mt269962.aspx)を参照してください。
+このトピックでは、Media Encoder Standard を使用して高度なエンコード タスクを実行する方法を紹介します。また、[.NET を使用して、エンコード タスクとそのタスクを実行するジョブを作成する方法](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)も紹介します。エンコード タスクにカスタム プリセットを与える方法も紹介します。プリセットで使用される要素の説明については、[この文書](https://msdn.microsoft.com/library/mt269962.aspx)を参照してください。
 
 次のエンコード タスクを実行するカスタム プリセットを実演します。
 
@@ -237,12 +237,12 @@
 
 ##<a id="thumbnails"></a>サムネイルを生成する
 
-このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、サムネイルを生成するコードを追加できます。
+このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを使用し、サムネイルを生成するコードを追加できます。
 
 >[AZURE.NOTE]単一ビットレートのビデオにエンコードする場合、次のプリセットの **SceneChangeDetection** 設定は true にのみ設定できます。マルチビットレートのビデオにエンコードする場合、**SceneChangeDetection** を true に設定すると、エンコーダーはエラーを返します。
 
 
-スキーマの詳細については、[この](https://msdn.microsoft.com/library/mt269962.aspx)トピックを参照してください。
+スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)のトピックをご覧ください。
 
 必ず「[考慮事項](media-services-custom-mes-presets-with-dotnet.md#considerations)」セクションを確認してください。
 
@@ -569,7 +569,7 @@
 
 ###XML プリセット
 	
-動画をトリミングするには、[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、**Sources** 要素を変更します (下記を参照)。
+ビデオをトリミングするには、[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを使用し、**Sources** 要素を変更します (下記を参照)。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -690,7 +690,7 @@
 
 Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。現在サポートされている形式は png、jpg、gif、bmp です。下に定義されているプリセットはビデオ オーバーレイの基本例です。
 
-プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。動画ファイルは**プライマリ** ファイルである必要があります。
+プリセット ファイルの定義に加え、資産内のどのファイルがオーバーレイ画像であるか、また画像を重ね合わせるソース動画であるかを Media Services に認識させる必要もあります。ビデオ ファイルは**プライマリ** ファイルである必要があります。
 
 上記の .NET の例では、**UploadMediaFilesFromFolder** と **EncodeWithOverlay** の 2 つの関数を定義しています。UploadMediaFilesFromFolder 関数は、フォルダーからファイルをアップロードし (BigBuckBunny.mp4、Image001.png など)、mp4 ファイルを資産内のプライマリ ファイルとして設定します。**EncodeWithOverlay** 関数は、渡されたカスタム プリセット ファイル (下記のプリセットなど) を使用して、エンコード タスクを作成します。
 
@@ -846,7 +846,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。
 
-[ここ](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを利用し、次のように変更します。
+[こちら](https://msdn.microsoft.com/library/mt269960.aspx)に記載されている MES プリセットを使用し、次のように変更します。
 
 ###JSON プリセット
 
@@ -959,4 +959,4 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
 
 [Media Services Encoding の概要](media-services-encode-asset.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

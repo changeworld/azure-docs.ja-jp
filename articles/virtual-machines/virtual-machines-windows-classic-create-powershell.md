@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/05/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # PowerShell とクラシック デプロイメント モデルを使用した Windows 仮想マシンの作成 
@@ -29,7 +29,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-machines-windows-ps-create.md)方法について説明します。
 
 
-以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
+以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。このプロセスを使用すると、新しい Windows ベースの仮想マシンのコマンド セットを迅速に作成して既存のデプロイメントを拡張することや、複数のコマンド セットを作成してカスタムの開発とテスト環境または IT プロの環境をすばやく構築することもできます。
 
 これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
 
@@ -108,7 +108,7 @@ D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳
 	$cred=Get-Credential -Message "Type the name and password of the local administrator account."
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.Username -Password $cred.GetNetworkCredential().Password
 
- 強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
+強力なパスワードを選択してください。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
 
 また、必要に応じて Windows コンピューターを既存の Active Directory ドメインに追加するには、ローカル管理者のアカウントとパスワード、ドメイン名、ドメイン アカウントの名前とパスワードを指定します。
 
@@ -262,4 +262,4 @@ Active Directory ドメイン コントローラーでは、$hcaching を "None"
 
 127 GB より大きい OS ディスクが必要な場合は、 [OS ドライブを展開](virtual-machines-windows-expand-os-disk.md)することができます。
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

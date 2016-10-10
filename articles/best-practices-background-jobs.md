@@ -302,7 +302,7 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [自動スケール ガイダンス](http://msdn.microsoft.com/library/dn589774.aspx)
 - [Compensating Transaction パターン](http://msdn.microsoft.com/library/dn589804.aspx)
 - [Competing Consumers パターン](http://msdn.microsoft.com/library/dn568101.aspx)
-- [コンピューティング分割ガイダンス](http://msdn.microsoft.com/library/dn589773.aspx)
+- [計算分割ガイダンス](http://msdn.microsoft.com/library/dn589773.aspx)
 - [Compute Resource Consolidation パターン](http://msdn.microsoft.com/library/dn589778.aspx)
 - [Gatekeeper パターン](http://msdn.microsoft.com/library/dn589793.aspx)
 - [Leader Election パターン](http://msdn.microsoft.com/library/dn568104.aspx)
@@ -318,7 +318,7 @@ Web ロールと worker ロールが開始、実行、停止される過程に�
 - [Azure ロールのスタートアップ ライフサイクル](http://blog.syntaxc4.net/post/2011/04/13/windows-azure-role-startup-life-cycle.aspx) (ブログ記事)
 - [Azure Cloud Services ロールのライフサイクル](http://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Windows-Azure-Cloud-Services-Role-Lifecycle) (ビデオ)
 - [Azure Web ジョブ SDK の使用](./app-service-web/websites-dotnet-webjobs-sdk-get-started.md)
-- [Azure キューと Service Bus キューの比較](./service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- [Azure キューと Service Bus キューの比較](./service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - [クラウド サービスの診断を有効にする方法](./cloud-services/cloud-services-dotnet-diagnostics.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="MPI アプリケーションを実行するための Linux RDMA クラスター |Microsoft Azure"
- description="RDMA を使用して MPI アプリケーションを実行する、サイズ A8 または A9 の VM の Linux クラスターを作成します"
+ description="H16r、H16mr、A8、または A9 サイズの VM の Linux クラスターを作成し、Azure RDMA ネットワークを使用して MPI アプリを実行します。"
  services="virtual-machines-linux"
  documentationCenter=""
  authors="dlepow"
@@ -13,35 +13,33 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="infrastructure-services"
- ms.date="08/17/2016"
+ ms.date="09/21/2016"
  ms.author="danlep"/>
 
 # MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 
+
+Azure で [H シリーズまたはコンピューティング集中型 A シリーズの VM](virtual-machines-linux-a8-a9-a10-a11-specs.md) を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。その後、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
+
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
-
-
-Azure でサイズ A8 および A9 の仮想マシンを使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。Azure A8 および A9 の VM でサポートされる Linux HPC ディストリビューションとサポートされる MPI 実装を実行すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信します。
-
->[AZURE.NOTE] 現在、Azure Linux RDMA のサポートには、Azure Marketplace の SUSE Linux Enterprise Server 12 HPC イメージまたは CentOS-based 6.5 or 7.1 HPC イメージから作成された VM 上の Intel MPI Library バージョン 5 が必要です。詳細および考慮事項については、「[A8、A9、A10、A11 インスタンスについて](virtual-machines-linux-a8-a9-a10-a11-specs.md)」を参照してください。
-
-
 
 ## クラスターのデプロイ オプション
 
 ジョブ スケジューラを使用する場合、または使用しない場合に、Linux の RDMA クラスターの作成に使用できる方法を次に示します。
 
-* **HPC Pack** - Azure で Microsoft HPC Pack クラスターを作成して、サポートされる Linux ディストリビューションを実行するサイズ A8 または A9 コンピューティング ノードを追加して、RDMA ネットワークにアクセスします。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
 
-* **Azure CLI スクリプト** - 後で示すように、サイズ A8 または A9 の Linux VM のクラスターのデプロイをスクリプトにするには、[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用します。クラシック デプロイメント モデルのサービス管理モードの CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードのデプロイには数分かかる場合があります。クラシック デプロイメント モデルでは、RDMA ネットワークを通して接続するには、A8 または A9 の複数の VM を同じクラウド サービスにデプロイする必要があります。
+* **Azure CLI スクリプト** - 後で示すように、RDMA 対応の VM のクラスターをデプロイするスクリプトを作成するには、[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (CLI) を使用します。クラシック デプロイメント モデルのサービス管理モードの CLI では、クラスター ノードを順番に作成します。そのため、多くのコンピューティング ノードのデプロイには数分かかる場合があります。クラシック デプロイメント モデルの使用時に RDMA ネットワーク接続を有効にするには、同じクラウド サービス内に VM をデプロイしてください。
 
-* **Azure Resource Manager テンプレート** - RDMA ネットワークに接続して MPI ワークロードを実行する A8 および A9 VM のクラスターをデプロイするには、Resource Manager デプロイメント モデルを使用します。[独自のテンプレートを作成する](../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。Resource Manager デプロイメント モデルでは、RDMA ネットワークを通して接続するには、A8 または A9 の複数の VM を同じ可用性セットにデプロイする必要があります。
+* **Azure Resource Manager テンプレート** - RDMA ネットワークに接続する RDMA 対応の VM のクラスターをデプロイするには、Resource Manager デプロイメント モデルを使用することもできます。[独自のテンプレートを作成する](../resource-group-authoring-templates.md)か、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で Microsoft またはコミュニティから提供されたテンプレートを確認して、目的のソリューションをデプロイすることができます。リソース マネージャー テンプレートは、Linux クラスターをデプロイするための高速で信頼性の高い方法を提供します。Resource Manager デプロイメント モデルの使用時に RDMA ネットワーク接続を有効にするには、同じ可用性セット内に VM をデプロイしてください。
 
-## クラシック モデルでのサンプル デプロイ
+* **HPC Pack** - Azure で Microsoft HPC Pack クラスターを作成し、サポートされる Linux ディストリビューションを実行する RDMA 対応の計算ノードを追加して RDMA ネットワークにアクセスします。「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
 
-次の手順では、Azure CLI を使用して、Azure Marketplace から SUSE Linux Enterprise Server (SLES) 12 HPC VM をデプロイし、Intel MPI Library をインストールして、カスタム VM イメージを作成する方法を説明します。次に、そのイメージを使用して、A8 または A9 VM のクラスターをデプロイするスクリプトを作成します。
+## クラシック モデルでのサンプル デプロイの手順
 
->[AZURE.TIP]  Azure Marketplace の CentOS ベースの 6.5 または 7.1 HPC イメージに基づいて、A8 または A9 VM のクラスターをデプロイする場合と同様の手順を実行します。違いについては、手順の中で説明します。たとえば、CentOS ベースの HPC イメージには Intel MPI に含まれているため、そのイメージから作成された VM に別に Intel MPI をインストールする必要はありません。
+次の手順では、Azure CLI を使用して、Azure Marketplace から SUSE Linux Enterprise Server (SLES) 12 SP1 HPC VM をデプロイし、それをカスタマイズして、カスタム VM イメージを作成する方法を説明します。次に、そのイメージを使用して、RDMA 対応の VM のクラスターをデプロイするスクリプトを作成します。
+
+>[AZURE.TIP]Azure Marketplace のサポートされているその他の HPC イメージに基づいて、RDMA 対応の VM のクラスターをデプロイする場合は、同様の手順を実行します。説明したとおり、一部の手順は若干異なる場合があります。たとえば、Intel MPI が含まれ、構成されているのは、これらのイメージの一部のみです。また、SLES 12 SP1 HPC VM ではなく SLES 12 HPC VM をデプロイする場合は、RDMA ドライバーを更新する必要があります。詳細については、[A8、A9、A10、A11 コンピューティング集中型インスタンスの概要](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12)に関するページを参照してください。
+
 
 ### 前提条件
 
@@ -49,15 +47,14 @@ Azure でサイズ A8 および A9 の仮想マシンを使用して Linux RDMA 
 
 *   **Azure サブスクリプション** - サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成することができます。大規模なクラスターでは、従量課金のサブスクリプションまたはその他の購入オプションを検討してください。
 
-*   **コア クォータ** - A8 または A9 VM のクラスターをデプロイするために、コア クォータを増やすことが必要な場合があります。たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+*   **VM サイズの可用性** - 現在、RDMA に対応しているインスタンス サイズは H16r、H16mr、A8、A9 です。各 Azure リージョンで利用できるかどうかについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
+
+*   **コア クォータ** - コンピューティング集中型の VM のクラスターをデプロイするには、コア クォータを増やすことが必要な場合があります。たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。サブスクリプションによっては、H シリーズを含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
 
 *   **Azure CLI** - Azure CLI を[インストール](../xplat-cli-install.md)し、クライアント コンピューターから [Azure サブスクリプションに接続します](../xplat-cli-connect.md)。
 
-*   **Intel MPI** - クラスター用の SLES 12 HPC VM イメージをカスタマイズするには、最新の Intel MPI Library 5 ランタイムを [Intel.com のサイト](https://software.intel.com/ja-JP/intel-mpi-library/)からダウンロードし、インストールする必要があります。詳細については後で説明します。インストールを準備するには、Intel に登録した後、適切なバージョンの Intel MPI の .tgz ファイルのダウンロード リンクをコピーします。この記事は、Intel MPI バージョン 5.0.3.048 に基づきます。
 
-    >[AZURE.NOTE] Azure Marketplace の CentOS 6.5 または CentOS 7.1 HPC イメージを使用してクラスター ノードを作成すると、Intel MPI バージョン 5.1.3.181 がプレインストールされています。
-
-### SLES 12 VM のプロビジョニング
+### 手順 1.SLES 12 SP1 HPC VM のプロビジョニング
 
 Azure CLI で Azure にログインした後に、`azure config list` を実行して出力にサービス管理モードが表示されることを確認します。asm モードでない場合は、次のコマンドを実行して asm モードに設定します。
 
@@ -74,28 +71,26 @@ Azure CLI で Azure にログインした後に、`azure config list` を実行�
 
     azure account set <subscription-Id>
 
-Azure でパブリックに利用可能な SLES 12 HPC イメージを表示するには、次のようなコマンドを実行します (シェル環境で **grep** がサポートされていると仮定)。
+Azure で一般公開された SLES 12 SP1 HPC イメージを表示するには、次のようなコマンドを実行します (シェル環境で **grep** がサポートされていると仮定)。
 
 
     azure vm image list | grep "suse.*hpc"
 
-次のようなコマンドを実行して、SLES 12 HPC イメージを使用し、サイズ A9 VM をプロビジョニングします。
+次のようなコマンドを実行して、SLES 12 SP1 HPC イメージで RDMA 対応の VM をプロビジョニングします。
 
-    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708
+    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824
 
 各値の説明:
 
-* サイズには A8 または A9 (この例では A9) を指定できます。
+* サイズ (この例では A9) は、RDMA 対応の VM サイズの 1 つです。
 
 * 外部 SSH ポート番号 (この例では、SSH の規定である 22) は任意の有効なポート番号です。内部 SSH ポート番号は 22 に設定されます。
 
-* 新しいクラウド サービスが、場所によって指定される Azure リージョンに作成されます。A8 および A9 インスタンスを使用できる場所を指定します。
+* 新しいクラウド サービスが、場所によって指定される Azure リージョンに作成されます。選択した VM サイズが利用可能な場所を指定します。
 
-* SLES 12 イメージ名は、現在、`b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708` または `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-priority-v20150708` SUSE 優先サポート (追加料金がかかります) です。
+* SLES 12 SP1 イメージ名は、現在、`b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-v20160824` または `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-sp1-hpc-priority-v20160824` (SUSE 優先サポート。追加料金がかかります) です。
 
-    >[AZURE.NOTE]CentOS ベースの HPC イメージを使用している場合、現在のイメージ名は `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-65-HPC-20160408` と `5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-71-HPC-20160408`です。
-
-### VM のカスタマイズ
+### 手順 2.VM のカスタマイズ
 
 VM のプロビジョニングの完了後、VM の外部 IP アドレス (または DNS 名) と構成済みポート番号を使用して VM に SSH 接続し、カスタマイズします。接続の詳細については、「[Linux を実行する仮想マシンにログオンする方法](virtual-machines-linux-mac-create-ssh-keys.md)」を参照してください。手順の完了にルート アクセスが必要でない限り、VM で構成したユーザーとしてコマンドを実行します。
 
@@ -103,33 +98,23 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
 * **更新プログラム** - **zypper** を使用して更新プログラムをインストールします。NFS ユーティリティをインストールすることもできます。
 
-    >[AZURE.IMPORTANT]SLES 12 HPC VM をデプロイした場合、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
-    >
-    >Marketplace から CentOS ベースの HPC イメージでは、**yum** 構成ファイルでのカーネルの更新は無効にされています。Linux RDMA ドライバーは RPM パッケージとして配布されているため、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があります。
+    >[AZURE.IMPORTANT]SLES 12 SP1 HPC VM では、カーネルの更新プログラムを適用しないことをお勧めします。適用した場合、Linux RDMA ドライバーに関連する問題が発生する可能性があります。
 
-* **Linux RDMA ドライバーの更新プログラム** - SLES 12 HPC VM をデプロイした場合、RDMA ドライバーを更新する必要があります。詳細については、「[About the A8, A9, A10, and A11 compute-intensive instances (A8、A9、A10、A11 コンピューティング集中型インスタンスの概要)](virtual-machines-linux-a8-a9-a10-a11-specs.md#rdma-driver-updates-for-sles-12)」を参照してください。
+* **Intel MPI** - 次のコマンドを実行して、SLES 12 SP1 HPC VM への Intel MPI のインストールを完了します。
 
-* **Intel MPI** - SLES 12 HPC VM をデプロイした場合、次のようなコマンドを実行して、Intel MPI Library 5 ランタイムを Intel.com のサイトからダウンロードしてインストールします。CentOS ベースの 6.5 または 7.1 HPC VM をデプロイした場合、この手順は不要です。
+        sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
 
-        sudo wget <download link for your registration>
+* **メモリのロック** - MPI コードによって、RDMA で使用可能なメモリをロックするには、/etc/security/limits.conf ファイルで、次の設定を追加または変更します (このファイルを編集するにはルート アクセスが必要です)。
 
-        sudo tar xvzf <tar-file>
+    ```
+    <User or group name> hard    memlock <memory required for your application in KB>
 
-        cd <mpi-directory>
+    <User or group name> soft    memlock <memory required for your application in KB>
+    ```
 
-        sudo ./install.sh
+    >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。(例: `<User or group name>    hard    memlock unlimited`)。詳細については、「[Best Known Methods for Setting Locked Memory Size (ロックされたメモリ サイズを設定するためのよく知られた方法)](https://software.intel.com/ja-JP/blogs/2014/12/16/best-known-methods-for-setting-locked-memory-size)」を参照してください。
 
-    既定の設定をそのまま使用して、Intel MPI を VM にインストールします。
-
-* **メモリのロック** - MPI コードによって、RDMA で使用可能なメモリをロックするには、/etc/security/limits.conf ファイルで、次の設定を追加または変更する必要があります(このファイルを編集するにはルート アクセスが必要です)。 CentOS ベースの 6.5 または 7.1 HPC VM をデプロイした場合、設定はこのファイルに既に追加されています。
-
-        <User or group name> hard    memlock <memory required for your application in KB>
-
-        <User or group name> soft    memlock <memory required for your application in KB>
-
-    >[AZURE.NOTE]テスト目的で、memlock を無制限に設定することもできます。たとえば、「<ユーザーまたはグループ名> hard memlock unlimited」とします。
-
-* **SLES 12 VM 用 SSH キー** - MPI ジョブの実行時に SLES 12 HPC クラスター内のコンピューティング ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します (CentOS ベースの HPC VM をデプロイした場合、この手順は実行しないでください。この記事で後述する、イメージをキャプチャし、クラスターをデプロイした後に、クラスター ノード内にパスワードなしの SSH 信頼関係をセットアップする手順を参照してください)。
+* **SLES VM 用 SSH キー** - MPI ジョブの実行時に SLES クラスター内の計算ノード間でユーザー アカウントの信頼を確立するために、SSH キーを生成します (CentOS ベースの HPC VM をデプロイした場合、この手順は実行しないでください。この記事で後述する、イメージをキャプチャし、クラスターをデプロイした後に、クラスター ノード内にパスワードなしの SSH 信頼関係をセットアップする手順を参照してください)。
 
     次のコマンドを実行して、SSH キーを作成します。入力を求められたら、パスフレーズを設定せずに、単に Enter を押して既定の場所でキーを生成します。
 
@@ -159,7 +144,7 @@ VM のプロビジョニングの完了後、VM の外部 IP アドレス (ま�
 
 * **アプリケーション** - イメージをキャプチャする前に、必要なアプリケーションをこの VM にインストールしたり、その他のカスタマイズを実行したりします。
 
-### イメージのキャプチャ
+### 手順 3.イメージのキャプチャ
 
 イメージをキャプチャするには、最初に、Linux VM で次のコマンドを実行します。このコマンドにより、VM がプロビジョニング解除されますが、設定したユーザー アカウントと SSH キーは維持されます。
 
@@ -178,7 +163,7 @@ azure vm capture -t <vm-name> <image-name>
 
 これらのコマンドを実行した後、使用する VM イメージがキャプチャされ、VM が削除されます。カスタム イメージをクラスターにデプロイする準備ができました。
 
-### イメージを使用したクラスターのデプロイ
+### 手順 4.イメージを使用したクラスターのデプロイ
 
 次の Bash スクリプトの該当部分を環境に合った適切な値に変更し、クライアント コンピューターで実行します。クラシック デプロイメント モデルの Azure では VM を順番にデプロイするため、このスクリプトで示されている 8 個の A9 VM をデプロイするまでに数分かかります。
 
@@ -188,12 +173,12 @@ azure vm capture -t <vm-name> <image-name>
 # Create a custom private network in Azure
 # Replace 10.32.0.0 with your virtual network address space
 # Replace <network-name> with your network identifier
-# Select a region where A8 and A9 VMs are available, such as West US
-# See Azure Pricing pages for prices and availability of A8 and A9 VMs
+# Replace "West US" with an Azure region where the VM size is available
+# See Azure Pricing pages for prices and availability of compute-intensive VMs
 
 azure network vnet create -l "West US" -e 10.32.0.0 -i 16 <network-name>
 
-# Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
+# Create a cloud service. All the compute-intensive instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
 # Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
 
 azure service create <cloud-service-name> --location "West US" –s <subscription-ID>
@@ -215,9 +200,19 @@ done
 # Save this script with a name like makecluster.sh and run it in your shell environment to provision your cluster
 ```
 
-## CentOS クラスター上のパスワードなしの SSH 信頼関係
+## CentOS HPC クラスターに関する考慮事項
 
-CentOS ベースの HPC イメージを使用してクラスターをデプロイした場合、コンピューティング ノード間に信頼関係を構築するには、ホストベースの認証とユーザーベースの認証という 2 つの方法があります。ホストベースの認証については、この記事で扱っていませんが、一般的に、デプロイ時の拡張スクリプトで実行されます。ユーザーベースの認証は、デプロイ後に信頼関係を構築する場合に便利です。また、SSH キーを生成し、クラスター内のコンピューティング ノード間で共有する場合に必要です。この方法は、一般的にパスワードなしの SSH ログインと呼ばれ、MPI ジョブを実行するときに必要です。
+SLES 12 for HPC ではなく、Azure Marketplace にある CentOS ベースの HPC イメージのいずれかに基づいてクラスターを設定する場合は、前のセクションの一般的な手順に従います。VM をプロビジョニングおよび構成する際は、次の違いに注意してください。
+
+1. Intel MPI は、CentOS ベースの HPC イメージからプロビジョニングされた VM に既にインストールされています。
+
+2. メモリのロックの設定は、VM の /etc/security/limits.conf ファイルに既に追加されています。
+
+2. キャプチャ用にプロビジョニングする VM には SSH キーを生成しないでください。代わりに、クラスターのデプロイ後にユーザーベースの認証を設定することをお勧めします。次のセクションを参照してください。
+
+### クラスター上でパスワードなしの SSH 信頼関係を設定する
+
+CentOS ベースの HPC クラスターで、計算ノード間に信頼関係を構築するには、ホストベースの認証とユーザーベースの認証という 2 つの方法があります。ホストベースの認証については、この記事で扱っていませんが、一般的に、デプロイ時の拡張スクリプトで実行されます。ユーザーベースの認証は、デプロイ後に信頼関係を構築する場合に便利です。また、SSH キーを生成し、クラスター内のコンピューティング ノード間で共有する場合に必要です。この方法は、一般的にパスワードなしの SSH ログインと呼ばれ、MPI ジョブを実行するときに必要です。
 
 コミュニティから提供されたサンプル スクリプトについては、[GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) を参照してください。CentOS ベースの HPC クラスターで簡単なユーザー認証を有効にすることができます。次の手順で、このスクリプトをダウンロードして使用します。このスクリプトを変更するか、他の方法を使用して、クラスター コンピューティング ノード間にパスワードなしの SSH 認証を確立することもできます。
 
@@ -242,21 +237,20 @@ CentOS ベースの HPC イメージを使用してクラスターをデプロ�
 >[AZURE.WARNING]このスクリプトを実行すると、セキュリティ上のリスクが生じる可能性があります。~/.ssh のパブリック キー情報を配布しないようにしてください。
 
 
-## Intel MPI の構成と実行
+## Intel MPI の構成
 
-Azure Linux RDMA で MPI アプリケーションを実行するには、Intel MPI に固有な特定の環境変数を構成する必要があります。次に、変数を構成してアプリケーションを実行するサンプル Bash スクリプトを示します。Intel MPI のインストールに必要な場合、mpivars.sh のパスを変更します。
+Azure Linux RDMA で MPI アプリケーションを実行するには、Intel MPI に固有な特定の環境変数を構成する必要があります。次に、アプリケーションの実行に必要な変数を構成するサンプル Bash スクリプトを示します。Intel MPI のインストールに必要な場合、mpivars.sh のパスを変更します。
 
 ```
 #!/bin/bash -x
 
-# For a SLES 12 HPC cluster
+# For a SLES 12 SP1 HPC cluster
 
-source /opt/intel/impi_latest/bin64/mpivars.sh
+source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 
 # For a CentOS-based HPC cluster 
 
 # source /opt/intel/impi/5.1.3.181/bin64/mpivars.sh
-
 
 export I_MPI_FABRICS=shm:dapl
 
@@ -286,14 +280,14 @@ mpirun -n <number-of-cores> -ppn <core-per-node> -hostfile <hostfilename>  /path
 10.32.0.2:16
 ```
 
-## Intel MPI をインストールした後に、基本的な 2 ノード クラスターを確認します。
+## 基本的な 2 ノード クラスターでの MPI の実行
 
 この操作をまだ行っていない場合は、まず Intel MPI の環境を設定します。
 
 ```
-# For a SLES 12 HPC cluster
+# For a SLES 12 SP1 HPC cluster
 
-source /opt/intel/impi_latest/bin64/mpivars.sh
+source /opt/intel/impi/5.0.3.048/bin64/mpivars.sh
 
 # For a CentOS-based HPC cluster 
 
@@ -316,13 +310,13 @@ cluster12
 
 ### MPI ベンチマークの実行
 
-次の Intel MPI コマンドでは、pingpong ベンチマークを使用して、クラスターの構成および RDMA ネットワークへの接続を確認します。
+次の Intel MPI コマンドでは、pingpong ベンチマークを実行して、クラスターの構成および RDMA ネットワークへの接続を確認します。
 
 ```
 mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
 ```
 
-2 つのノードで動作中のクラスターに、次のような出力が表示されます。Azure RDMA ネットワークでは、最大 512 バイトのメッセージ サイズに対して、3 マイクロ秒以下の待機時間が必要です。
+2 つのノードを持つ動作中のクラスターでは、次のような出力が表示されます。Azure RDMA ネットワークでは、最大 512 バイトのメッセージ サイズに対して、3 マイクロ秒以下の待機時間が予想されます。
 
 ```
 #------------------------------------------------------------
@@ -396,6 +390,6 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/ja-JP/articles/intel-mpi-library-documentation/)を参照してください。
 
-* [クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)を実行し、CentOS ベースの HPC イメージを使用して Intel Lustre クラスターを作成してみてください。詳細については、[このブログ](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)をご覧ください。
+* [クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)を実行し、CentOS ベースの HPC イメージを使用して Intel Lustre クラスターを作成してみてください。詳細については、[こちらのブログ](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)を参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="asmalser-msft"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -84,7 +84,7 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 
 	![Select Azure AD Single Sign-On][7]
 
-	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis.md/#how-does-single-sign-on-with-azure-active-directory-work)してください。
+	> [AZURE.NOTE] さまざまなシングル サインオンのオプションの詳細については、[ここをクリック](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)してください。
 
 4. **[アプリケーション設定の構成]** ページで **[サインオン URL]** に入力します。その場合、次の形式を使用して Salesforce ドメインの URL を入力します。
  - エンタープライズ アカウント: `https://<domain>.my.salesforce.com`
@@ -256,4 +256,4 @@ Salesforce Sandbox 環境を使用している場合は、[Salesforce Sandbox �
 [28]: ./media/active-directory-saas-salesforce-tutorial/assign-confirm.png
 [29]: ./media/active-directory-saas-salesforce-tutorial/assign-sf-profile.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

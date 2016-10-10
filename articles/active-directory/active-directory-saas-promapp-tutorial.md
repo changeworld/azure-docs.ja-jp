@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -111,7 +111,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-	![Azure AD のシングル サインオン][8]
+	![Azure AD Single Sign-On][8]
  
      a.**[サインオン URL]** ボックスに、ユーザーが Promapp サイトへのサインオンに使用する URL を入力します (例: *https://companyname.promapp.com/instancename*)。
 
@@ -120,7 +120,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
  
 4. **[Promapp でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-	![Azure AD のシングル サインオン][9]
+	![Azure AD Single Sign-On][9]
 
     a.[証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
 
@@ -131,17 +131,17 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 6. 上部のメニューで **[管理者]** をクリックします。
 
-	![Azure AD のシングル サインオン][12]
+	![Azure AD Single Sign-On][12]
 
 6. **[構成]** をクリックします。
 
-	![Azure AD のシングル サインオン][13]
+	![Azure AD Single Sign-On][13]
 
 
 
 4. **[Security]** ダイアログで、次の手順を実行します。
 
-	![Azure AD のシングル サインオン][14]
+	![Azure AD Single Sign-On][14]
 
     a.Azure クラシック ポータルの **[Promapp でのシングル サインオンの構成]** ダイアログで、**[リモート ログイン URL]** の値をコピーして、**[SSO-Login URL]** ボックスに貼り付け、**[Save]** をクリックします。
 
@@ -154,7 +154,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
-	![Azure AD のシングル サインオン][10]
+	![Azure AD Single Sign-On][10]
 
 7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
@@ -184,7 +184,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_05.png)
 
@@ -210,7 +210,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_07.png)
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-promapp-tutorial/create_aaduser_08.png)
   
@@ -298,4 +298,4 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 [401]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_401.png
 [402]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_402.png
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

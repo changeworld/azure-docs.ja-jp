@@ -13,23 +13,16 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="08/29/2016" 
+   ms.date="09/24/2016" 
    ms.author="rortloff;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse での監査
 
 > [AZURE.SELECTOR]
-- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [監査](sql-data-warehouse-auditing-overview.md)
 - [脅威の検出](sql-data-warehouse-security-threat-detection.md)
-- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
-- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-- [監査の概要](sql-data-warehouse-auditing-overview.md)
-- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
 
-
-Azure SQL Data Warehouse 監査は、データベース イベントを追跡し、監査したイベントを Azure Storage アカウントの監査ログに書き込みます
-
-監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
+SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。
 
 監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。標準準拠をサポートする Azure プログラムの詳細については、「<a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Microsoft Azure のトラスト センター</a>」を参照してください。
 
@@ -151,4 +144,4 @@ Azure リソース マネージャー モードを実行中に、`Get-Command *A
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

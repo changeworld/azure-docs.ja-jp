@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/13/2016"
+	ms.date="09/27/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache を管理する方法
@@ -94,10 +94,13 @@ PowerShell での手順については、「[To reboot a Redis cache (Redis Cach
 
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、**[OK]** をクリックします。メンテナンス時間の時刻は UTC 時間で指定します。
 
+>[AZURE.NOTE] 更新の既定のメンテナンス時間は 5 時間です。この値は、Azure ポータルからは構成できませんが、PowerShell で [New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx) コマンドレットの `MaintenanceWindow` パラメーターを使用して構成できます。詳細については、「[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)」を参照してください。
+
 ## 更新のスケジュールに関する FAQ
 
 -	[更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
 -	[スケジュールされたメンテナンス時間に行われるのは、どのような更新ですか。](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
+-	[PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
 -	[どの価格レベルで更新スケジュール機能を使用できますか。](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
 
 ### 更新スケジュール機能を使用しない場合、更新はどのタイミングで実行されますか。
@@ -108,12 +111,21 @@ PowerShell での手順については、「[To reboot a Redis cache (Redis Cach
 
 スケジュールされたメンテナンス時間に行われるのは、Redis サーバーの更新だけです。メンテナンス時間は、Azure の更新や、VM のオペレーティング システムへの更新には適用されません。
 
+### PowerShell、CLI、またはその他の管理ツールを使用して、スケジュールされている更新を管理できますか。
+
+はい、次の PowerShell コマンドレットを使用して、スケジュールされている更新を管理できます。
+
+-	[Get-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763835.aspx)
+-	[New-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763834.aspx)
+-	[New-AzureRmRedisCacheScheduleEntry](https://msdn.microsoft.com/library/azure/mt763833.aspx)
+-	[Remove-AzureRmRedisCachePatchSchedule](https://msdn.microsoft.com/library/azure/mt763837.aspx)
+
 ### どの価格レベルで更新スケジュール機能を使用できますか。
 
 更新のスケジュールは Premium 価格レベルでのみ使用できます。
 
 ## 次のステップ
 
--	[Azure Redis Cache Premium](cache-premium-tier-intro.md) の機能について詳しく調べます。
+-	[Azure Redis Cache Premium レベル](cache-premium-tier-intro.md)の機能を確認します。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

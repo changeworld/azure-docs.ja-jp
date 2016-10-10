@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と SAP HANA Cloud Platform の統合
@@ -30,7 +30,7 @@
 1.  SAP HANA Cloud Platform でアプリケーション統合を有効にする
 2.  シングル サインオンの構成
 3.  ユーザーにロールを割り当てる
-4.  ユーザーを割り当てる
+4.  ユーザーの割り当て
 
 ![シナリオ](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790795.png "シナリオ")
 ##SAP HANA Cloud Platform でアプリケーション統合を有効にする
@@ -72,7 +72,7 @@
 
 1.  Azure クラシック ポータルの **SAP HANA Cloud Platform** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Configure single sign-on")
 
 2.  **[ユーザーの SAP HANA Cloud Platform へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
@@ -116,7 +116,7 @@
     4.  **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
     5.  **[Principal Propagation (プリンシパル伝達)]** に **[無効]** を選択します。
     6.  **[Force Authentication (強制認証)]** に **[無効]** を選択します。
-    7.  **[保存]** をクリックします。
+    7.  [**Save**] をクリックします。
 
 9.  **[信頼できる ID プロバイダー]** タブをクリックし、**[Add Trusted Identity Provider (信頼できる ID プロバイダーの追加)]** をクリックします。
 
@@ -128,7 +128,7 @@
 
     ![信頼管理](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793932.png "信頼管理")
 
-    >[AZURE.NOTE] メタデータ ファイルをアップロードすると、**[シングル サインオン URL]**、**[Single Logout URL (シングル ログアウト URL)]**、**[署名証明書]** の値が自動的に設定されます。
+    >[AZURE.NOTE]メタデータ ファイルをアップロードすると、**[シングル サインオン URL]**、**[Single Logout URL (シングル ログアウト URL)]**、**[署名証明書]** の値が自動的に設定されます。
 
 11. **[属性]** タブをクリックします。
 
@@ -141,8 +141,8 @@
         |アサーション属性| プリンシパル属性|
 		|-------------------|--------------------|
         |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname| firstname|--------------------|--------------------|
-	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| lastname|-----------|
-	|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
+        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname| lastname|-----------|
+        |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|email|
 
     >[AZURE.NOTE]属性の構成は、HCP 上のアプリケーションがどのように作成されているかに依存します。つまり、SAML 応答で必要になる属性の種類や、コード内でこの属性にアクセスする際に使用される名前 (プリンシパル属性) によって異なります。
     >  
@@ -178,7 +178,7 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
     4.  **[Assign]** をクリックしてユーザーをロールに割り当てます。
     5.  **[保存]** をクリックします。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -196,4 +196,4 @@ Azure AD ユーザーが SAP HANA Cloud Platform にログインできるよう�
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

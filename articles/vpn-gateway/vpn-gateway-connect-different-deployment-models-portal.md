@@ -41,15 +41,15 @@ Azure には現在、クラシックと Resource Manager (RM) の 2 つの管理
 
 ### <a name="values"></a>設定例
 
-次の手順で PowerShell コマンドレットを使用する場合は、この設定例を参考にすることができます。
+次の手順で PowerShell コマンドレットを使用する場合は、この設定例を参考にできます。
 
 **クラシック VNet の設定**
 
-VNet Name = ClassicVNet <br> Location = West US <br> Virtual Network Address Spaces = 10.0.0.0/8 <br> Subnet-1 = 10.0.0.0/11 <br> GatewaySubnet = 10.32.0.0/29 <br> Local Network Name = RMVNetLocal <br>
+VNet Name = ClassicVNet <br> Location = West US <br> Virtual Network Address Spaces = 10.0.0.0/24 <br> Subnet-1 = 10.0.0.0/27 <br> GatewaySubnet = 10.0.0.32/29 <br> Local Network Name = RMVNetLocal <br>
 
 **Resource Manager の VNet の設定**
 
-VNet Name = RMVNet <br> Resource Group = RG1 <br> Virtual Network IP Address Spaces = 192.168.1.0/16 <br> Subnet-1 = 192.168.1.0/24 <br> GatewaySubnet = 192.168.0.0/26 <br> Location = East US <br> Virtual network gateway name = RMGateway <br> Gateway public IP name = gwpip <br> Gateway type = VPN <br> VPN type = Route-based <br> Local network gateway = ClassicVNetLocal <br>
+VNet Name = RMVNet <br> Resource Group = RG1 <br> Virtual Network IP Address Spaces = 192.168.0.0/16 <br> Subnet-1 = 192.168.1.0/24 <br> GatewaySubnet = 192.168.0.0/26 <br> Location = East US <br> Virtual network gateway name = RMGateway <br> Gateway public IP name = gwpip <br> Gateway type = VPN <br> VPN type = Route-based <br> Local network gateway = ClassicVNetLocal <br>
 
 ## <a name="createsmgw"></a>セクション 1: クラシック VNet の設定を構成する
 
@@ -182,4 +182,4 @@ VNet 間接続に関するその他の情報についてよく寄せられる質
 
 [AZURE.INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

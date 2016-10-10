@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="andkjell"
-   manager="stevenpo"
+   manager="femila"
    editor="curtand"/>
 
 <tags
@@ -197,4 +197,4 @@ AD FS または Web アプリケーション サーバーを実行するコン�
 ## 次のステップ
 「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->
