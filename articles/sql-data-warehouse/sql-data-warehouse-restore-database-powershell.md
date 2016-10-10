@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="07/18/2016"
+   ms.date="09/21/2016"
    ms.author="lakshmir;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse の復元 (PowerShell)
@@ -78,7 +78,7 @@ $RestoredDatabase.status
 
 ```
 
->[AZURE.NOTE] 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了したら、「[復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
 
 
 ## 削除されたデータベースの復元
@@ -113,7 +113,7 @@ $RestoredDatabase = Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –D
 $RestoredDatabase.status
 ```
 
->[AZURE.NOTE] 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了したら、「[復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
 
 
 ## Azure 地理的リージョンからの復元
@@ -142,7 +142,7 @@ $GeoRestoredDatabase = Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGrou
 $GeoRestoredDatabase.status
 ```
 
->[AZURE.NOTE] 復元が完了したら、[復旧されたデータベースの最終処理][]に関するガイドに従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了した後にデータベースを構成する方法については、「[復旧後のデータベースの構成][]」を参照してください。
 
 
 ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
@@ -156,13 +156,13 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 <!--Article references-->
 [Azure SQL Database のビジネス継続性の概要]: sql-database-business-continuity.md
 [DTU クォータの変更の要求]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
-[Finalize a recovered database]: sql-database-recovered-finalize.md
+[Configure your database after recovery]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
 [Azure PowerShell のインストールおよび構成方法]: powershell-install-configure.md
 [概要]: ./sql-data-warehouse-restore-database-overview.md
 [ポータル]: ./sql-data-warehouse-restore-database-portal.md
 [PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
 [REST ()]: ./sql-data-warehouse-restore-database-rest-api.md
-[復旧されたデータベースの最終処理]: ./sql-database-recovered-finalize.md
+[復旧後のデータベースの構成]: ./sql-database-disaster-recovery.md#configure-your-database-after-recovery
 
 <!--MSDN references-->
 [Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
@@ -171,4 +171,4 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 [Azure Portal]: https://portal.azure.com/
 [Microsoft Web プラットフォーム インストーラー]: https://aka.ms/webpi-azps
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="オンプレミスとクラウドの間でデータを移動するためのデータ ゲートウェイを設定します。Azure Data Factory で Data Management Gateway を使用してデータを移動します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,14 +14,14 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/30/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Data Management Gateway
 Data Management Gateway は、クラウドと、オンプレミスのデータ ストアとの間でデータをコピーするために、オンプレミスの環境にインストールする必要があるクライアント エージェントです。Data Factory でサポートされているオンプレミスのデータ ストアは、[サポートされるデータ ソース](data-factory-data-movement-activities.md##supported-data-stores)に関するセクションに示されています。
 
 この記事は、[オンプレミスとクラウドのデータ ストアの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)ためのチュートリアルを補完します。チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。この記事では、Data Management Gateway について詳しく取り上げます。
 
-## Overview
+## 概要
 
 ### Data Management Gateway の機能
 Data Management Gateway には次の機能があります。
@@ -142,7 +142,7 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 
 ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールがゲートウェイ コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認します。このルールを有効にすると、ゲートウェイは、ソースとシンクの両方に正常に接続されます。コピー操作に関連するデータ ストアごとにルールを有効にしてください。
 
-たとえば、**Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするには、以下の手順を実行する必要があります。
+たとえば、**Azure SQL Database シンクまたは Azure SQL Data Warehouse シンクにオンプレミスのデータ ストア**からコピーするには、以下の手順を実行します。
 
 - 送信 **TCP** 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート **1433** 上で許可します
 - ゲートウェイ コンピューターの IP アドレスが、許可された IP アドレスの一覧に追加されるように、Azure SQL サーバーのファイアウォール設定を構成します。
@@ -182,7 +182,7 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config のプロキシ設定を使用します。diahost.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。構成ファイルを更新する手順を次に示します。
 
 1.	ファイル エクスプ ローラーで、C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config の安全なコピーを作成して、元のファイルをバックアップします。
-2.	管理者として Notepad.exe を起動し、テキスト ファイル C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config を開きます。次のように、system.net の既定のタグを確認します。
+2.	管理者として Notepad.exe を起動し、テキスト ファイル C:\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config を開きます。次のコードに示されている system.net の既定のタグを確認します。
 
 			<system.net>
 				<defaultProxy useDefaultCredentials="true" />
@@ -208,7 +208,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因になっている可能性があります。構成が不適切だと、ゲートウェイが自身を認証するための Data Factory に接続できません。ファイアウォールとプロキシ サーバーが正しく構成されていることを確認するには、前のセクションをご覧ください。
 
 1.	ゲートウェイを登録しようとすると次のエラーが発生します。「ゲートウェイのキーを登録できませんでした。ゲートウェイ キーの登録を再試行する前に、Data Management Gateway が接続状態で、Data Management Gateway Host Service が起動していることを確認してください。」
-2.	構成マネージャーを開くと、ステータスとして "切断" または "接続中" と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Data Management Gateway] の順に選択して Windows イベント ログを表示すると、次のようなエラー メッセージが表示されます。`Unable to connect to the remote server` `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
+2.	構成マネージャーを開くと、ステータスとして "切断" または "接続中" と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Data Management Gateway] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。`Unable to connect to the remote server` `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### 資格情報の暗号化のためにポート 8050 を開く 
 Azure ポータルでオンプレミスのリンクされたサービスを設定するとき、**資格情報の設定**アプリケーションでは、受信ポート **8050** を使って、資格情報がゲートウェイにリレーされます。既定では、ゲートウェイのセットアップ中に、Data Management Gateway のインストールによってこのポートがゲートウェイ コンピューターで開きます。
@@ -236,7 +236,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 ![DMG 構成マネージャーの更新](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
 
-システム トレイの通知メッセージは、次のようになります。
+システム トレイの通知メッセージは、次の画像のようになります。
 
 ![システム トレイのメッセージ](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
 
@@ -285,7 +285,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 - データ ソースへの**接続をテスト**する。
 
 ### Help page
-[ヘルプ] ページには次の情報が表示されます。
+[ヘルプ] ページには、次の情報が表示されます。
 
 - ゲートウェイの簡単な説明
 - バージョン番号
@@ -315,10 +315,10 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 	![Data Management Gateway - ログの送信](media/data-factory-data-management-gateway/data-management-gateway-send-logs-dialog.png)
 3. (省略可能) **[ログの表示]** をクリックしてイベント ビューアーでログを確認します。
 4. (省略可能) **[プライバシー]** をクリックして Microsoft オンライン サービスのプライバシーに関する声明を表示します。
-3. アップロードする情報に問題がなければ、**[ログの送信]** をクリックすると、トラブルシューティングのために過去 7 日間のログが Microsoft に実際に送信されます。ログ送信操作の状態が、次の図のように表示されます。
+3. アップロードする情報に問題がなければ、**[ログの送信]** をクリックすると、トラブルシューティングのために過去 7 日間のログが Microsoft に実際に送信されます。ログ送信操作の状態が、次の画像のように表示されます。
 
 	![Data Management Gateway - ログの送信の状態](media/data-factory-data-management-gateway/data-management-gateway-send-logs-status.png)
-4. 操作が完了すると、次の図のようなダイアログ ボックスが表示されます。
+4. 操作が完了すると、次の画像のようなダイアログ ボックスが表示されます。
 	
 	![Data Management Gateway - ログの送信の状態](media/data-factory-data-management-gateway/data-management-gateway-send-logs-result.png)
 5. **レポート ID** をメモしておき、Microsoft サポートに伝えます。レポート ID は、トラブルシューティング用にアップロードしたゲートウェイ ログを特定するために使われます。レポート ID は参照用にイベント ビューアーにも保存されます。レポート ID を探すときは、イベント ID "25" を見つけて日付と時刻を確認します。
@@ -401,7 +401,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 10. ゲートウェイの登録が成功したら、Gateway Configuration Manager のホーム ページで、**[登録]** が **[登録済み]** に、**[状態]** が **[開始]** に設定されていることを確認する必要があります。
 
 ## 資格情報の暗号化 
-Data Factory エディターで資格情報を暗号化するには、次の操作を行います。
+Data Factory エディターで資格情報を暗号化するには、以下の手順を実行します。
 
 1. **ゲートウェイ コンピューター**上で Web ブラウザーを起動し、[Azure ポータル](http://portal.azure.com)に移動します。必要に応じてデータ ファクトリを検索して **[Data Factory]** ブレードで開き、**[作成およびデプロイ]** をクリックして Data Factory エディターを起動します。
 1. ツリー ビューの既存の**リンクされたサービス**をクリックしてその JSON 定義を参照するか、Data Management Gateway を必要とするリンクされたサービス (SQL Server や Oracle など) を作成します。
@@ -409,7 +409,7 @@ Data Factory エディターで資格情報を暗号化するには、次の操�
 3. **connectionString** の **[データ ソース]** プロパティにサーバー名を入力します。
 4. **connectionString** の **[初期カタログ]** プロパティにデータベース名を入力します。
 5. コマンド バーの **[暗号化]** ボタンをクリックして、ClickOnce **資格情報マネージャー** アプリケーションを起動します。**[資格情報の設定]** ダイアログ ボックスが表示されます。![[資格情報の設定] ダイアログ](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
-6. **[資格情報の設定]** ダイアログ ボックスで、次の手順を実行します。
+6. **[資格情報の設定]** ダイアログ ボックスで、以下の手順を実行します。
 	1.	Data Factory サービスがデータベースへの接続に使用する**認証**を選択します。
 	2.	**[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。
 	3.	**[パスワード]** の設定に、ユーザーのパスワードを入力します。
@@ -496,4 +496,4 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
 ## 次のステップ
 - [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページを参照してください。チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

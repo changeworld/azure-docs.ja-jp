@@ -55,7 +55,7 @@ Service Bus のサンプルでは、[Service Bus](https://azure.microsoft.com/se
 
 次のサンプルでは、基本的なメッセージングとリレー機能について説明します。
 
-|サンプル名|説明|SDK の最小バージョン|対応|
+|サンプル名|Description|SDK の最小バージョン|可用性|
 |---|---|---|---|
 |[はじめに: キューによるメッセージング](http://code.msdn.microsoft.com/Getting-Started-Brokered-aa7a0ac3)|Microsoft Azure Service Bus を使用して、キューからメッセージを送受信する方法を示します。|1\.8|Microsoft Azure Service Bus; Service Bus for Windows Server|
 |[はじめに: トピックによるメッセージング](http://code.msdn.microsoft.com/Getting-Started-Brokered-614d42e5)|Microsoft Azure Service Bus を使用して、複数のサブスクリプションを持つトピックからメッセージを送受信する方法を示します。|1\.8|Microsoft Azure Service Bus; Service Bus for Windows Server|
@@ -65,7 +65,7 @@ Service Bus のサンプルでは、[Service Bus](https://azure.microsoft.com/se
 
 次のサンプルでは、Service Bus のさまざまな機能について説明します。
 
-|サンプル名|説明|SDK の最小バージョン|対応|
+|サンプル名|Description|SDK の最小バージョン|可用性|
 |---|---|---|---|
 |[HTTP トークン プロバイダー](http://code.msdn.microsoft.com/Service-Bus-HTTP-Token-38f2cfc5)|Service Bus を使用して HTTP/REST クライアントを認証する際のさまざまな方法について説明します。|2\.1|Microsoft Azure Service Bus; Service Bus for Windows Server|
 |[Service Bus HTTP クライアント](http://code.msdn.microsoft.com/Service-Bus-HTTP-client-fe7da74a)|Service Bus から HTTP/REST 経由でメッセージを送受信する方法について説明します。|2\.3|Microsoft Azure Service Bus; Service Bus for Windows Server|
@@ -92,7 +92,7 @@ Service Bus Relay を説明するサンプルです。
 
 ### 使用の開始
 
-|サンプル名|説明|SDK の最小バージョン|対応|
+|サンプル名|Description|SDK の最小バージョン|対応|
 |---|---|---|---|
 |[リレー型メッセージング: Azure](http://code.msdn.microsoft.com/Relayed-Messaging-Windows-0d2cede3)|Azure で Service Bus のクライアントとサービスを実行する方法について説明します。このサンプルでは、プログラムによって Service Bus を構成します。構成ファイルに格納されるのは、環境情報とセキュリティ情報のみです。|1\.8|Microsoft Azure Service Bus|
 |[リレー型メッセージング認証: 共有シークレット](http://code.msdn.microsoft.com/Relayed-Messaging-92b04c02)|発行者名と発行者のシークレットを使用して、Service Bus で認証する方法について説明します。|1\.8|Microsoft Azure Service Bus|
@@ -104,7 +104,7 @@ Service Bus Relay を説明するサンプルです。
 
 Service Bus Relay のさまざまな機能を説明するサンプルです。
 
-|サンプル名|説明|SDK の最小バージョン|対応|
+|サンプル名|Description|SDK の最小バージョン|可用性|
 |---|---|---|---|
 |[リレー型メッセージング認証: 単純な WebToken](http://code.msdn.microsoft.com/Relayed-Messaging-32c74392)|単純な Web トークンの資格情報を使用して、Service Bus で認証する方法について説明します。このサンプルは Echo サンプルに似ていますが、いくつかの変更点があります。具体的には、このサンプルでは、ServiceHost (サービス) アプリケーションと ChannelFactory (クライアント) アプリケーションに動作を追加します。|1\.8|Microsoft Azure Service Bus|
 |[リレー型メッセージング: 負荷分散](http://code.msdn.microsoft.com/Relayed-Messaging-Load-bd76a9f8)|Microsoft Azure Service Bus を使用して複数の受信者にメッセージをルーティングする方法について説明します。**NetTcpRelayBinding** バインドを介してクライアントと通信する簡単なサービスの複数のインスタンスを示します。|1\.8|Microsoft Azure Service Bus|
@@ -121,7 +121,7 @@ Service Bus Relay のさまざまな機能を説明するサンプルです。
 
 次のサンプルでは、サービスのその他さまざまな機能について説明します。
 
-|サンプル名|説明|SDK の最小バージョン|対応|
+|サンプル名|Description|SDK の最小バージョン|可用性|
 |---|---|---|---|
 |[Service Bus エクスプローラー](http://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)|Service Bus エクスプローラーを使用すると、ユーザーは Service Bus サービスの名前空間に接続し、簡単にメッセージング エンティティを管理できます。このツールには、インポート/エクスポート機能、メッセージング エンティティとリレー サービスをテストする機能など、高度な機能が用意されています。|1\.8|Microsoft Azure Service Bus; Service Bus for Windows Server|
 |[承認: SBAzTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93)|このサンプルでは、Service Bus で使用するための Microsoft Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) のサービス ID を作成、管理する方法について説明します。|該当なし|Microsoft Azure Service Bus|
@@ -130,8 +130,8 @@ Service Bus Relay のさまざまな機能を説明するサンプルです。
 
 Service Bus の概念の要約については、次のトピックを参照してください。
 
-- [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
+- [Service Bus メッセージングの概要](../service-bus-messaging/service-bus-messaging-overview.md)
 - [Service Bus のアーキテクチャ](service-bus-architecture.md)
 - [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

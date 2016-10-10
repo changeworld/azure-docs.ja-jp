@@ -4,7 +4,7 @@
 	services="redis-cache"
 	documentationCenter="na"
 	authors="steved0x"
-	manager="erikre"
+	manager="douge"
 	editor="tysonn" />
 <tags
 	ms.service="cache"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="cache-redis"
 	ms.workload="tbd"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="sdanie" />
 
 # Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
@@ -63,7 +63,7 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 -	**port**: SSL の設定に応じて、非 SSL ポートまたは SSL ポートを使用します。
 -	**accessKey**: キャッシュのプライマリ キーまたはセカンダリ キーを使用します。
 -	**ssl**: キャッシュとクライアント間の通信を SSL で保護する場合は true、保護しない場合は false を指定します。必ず適切なポートを指定してください。
-	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、「[Azure Redis Cache の構成方法](cache-configure.md)」トピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
+	-	既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。SSL ポートを使用するには、この設定に true を指定します。非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 -	**databaseId**: キャッシュ出力データに使用するデータベースを指定します。指定されていない場合は、既定値の 0 が使用されます。
 -	**applicationName**: キーが <AppName>\_<SessionId>\_Data として Redis に保存されます。これによって、複数のアプリケーションで同じキーを共有できます。このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
 -	**connectionTimeoutInMilliseconds**: この設定によって、StackExchange.Redis クライアントの connectTimeout 設定を上書きすることができます。指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。詳細については、[StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
@@ -81,4 +81,4 @@ NuGet パッケージによって、必要なアセンブリ参照がダウン�
 
 「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

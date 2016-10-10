@@ -14,13 +14,13 @@
 	ms.tgt_pltfrm="vm-linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 
 # Linux を実行するカスタム仮想マシンの作成
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 新しい Azure Portal を使用した Linux 仮想マシンの作成については、「[ポータルを使用して Azure に Linux VM を作成する](virtual-machines-linux-quick-create-portal.md)」を参照してください。
 
 
 
@@ -30,8 +30,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-linuxvm](../../includes/virtual-machines-create-linuxvm.md)]
 
-## 次のステップ
-
-クラシック ポータルを使用して、[Windows を実行するカスタム仮想マシンを作成](virtual-machines-windows-classic-createportal.md)することもできます
-
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

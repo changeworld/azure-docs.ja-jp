@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
+	ms.date="09/26/2016"
 	ms.author="jeedes"/>
 
 
@@ -145,7 +145,7 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
 
 
-6. Azure クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+6. Azure クラシック ポータルで、[single sign-on configuration confirmation] (シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
 
 	![Azure AD Single Sign-On][10]
 
@@ -187,7 +187,7 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
     c.**[次へ]** をクリックします。
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_06.png)
 
@@ -205,7 +205,7 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_07.png)
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順を実行します。
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
 	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_08.png)
 
@@ -279,4 +279,4 @@ SECURE DELIVERで Azure AD のシングル サインオンを構成してテス�
 [204]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-securedeliver-tutorial/tutorial_general_205.png
 
-<!----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

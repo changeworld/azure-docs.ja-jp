@@ -13,19 +13,13 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="08/01/2016"
+   ms.date="09/24/2016"
    ms.author="sonyama;barbkess"/>
 
 
 # Azure SQL Data Warehouse のドライバー
 
-> [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-connect-overview.md)
-- [認証](sql-data-warehouse-authentication.md)
-- [ドライバー](sql-data-warehouse-connection-strings.md)
-
-
-[ADO.NET][]、[ODBC][]、[PHP][]、[JDBC][] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用してビルドすることもできます。Azure ポータルを使用して接続文字列をビルドするには、データベースのブレードに移動して、*[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
+[ADO.NET][]、[ODBC][]、[PHP][]、[JDBC][] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。各プロトコルの接続文字列の例を以下に示します。接続文字列は、Azure ポータルを使用してビルドすることもできます。Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、*[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
 
 ## ADO.NET 接続文字列の例
 
@@ -70,4 +64,4 @@ Visual Studio またはその他のアプリケーションを使用してデー
 
 <!--Other references-->
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

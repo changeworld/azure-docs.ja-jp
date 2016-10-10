@@ -14,7 +14,7 @@
 	ms.workload="search"
 	ms.topic="article" 
 	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
+	ms.date="09/22/2016"
 	ms.author="heidist"/>
 
 #Azure Search: コード サンプル、デモ、ビデオ、チュートリアル
@@ -25,18 +25,19 @@
 
 - [**デモ サイトのコード サンプル: ニューヨーク市 (NYC) ジョブ Web サイト**](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)では、ASP.NET MVC を使用して、NYC のジョブ データについてのライブ デモ Azure Search サイトのソースを提供します。
 
+- [**デモ サイトのコード サンプル: テート美術館**](https://github.com/liamca/azure-search-tate-art-gallery/)に関するページでは、Collections データ型と入れ子になったデータ構造、ファセットとフィルター、人名、およびサムネイル画像を表示する、美術館データについてのライブ デモ Azure Search サイトのソースを提供します。
+
 - [**.NET クライアント ライブラリのコード サンプル**](https://github.com/Azure-Samples/search-dotnet-getting-started)は、検索操作に .NET クライアント ライブラリを使用する ASP.NET MVC 5 アプリケーションです。
 
 - [**REST API のコード サンプル**](https://github.com/Azure-Samples/search-rest-api-getting-started)は、REST API の使用方法を説明するサンプル コードを提供します。
 
 上記のすべてのコード サンプルは、特定のシナリオで Azure Search を使用する方法を示す他のサンプルと共に、Azure サンプル Github リポジトリにあります ([**[Azure Samples] > [Azure Search]**](https://github.com/azure-samples?utf8=%E2%9C%93&query=search))。
 
-##デモ サイト
+## オンライン デモ サイト
 
 これらのサイトは、検索操作に Azure Search を使用する完全に機能する Web アプリケーションです。
 
 [**Azure Search のニューヨーク市 (NYC) ジョブ ポータルのデモ**](http://aka.ms/azjobsdemo)は、NYC Open Data 構想のデータを使用して Azure Search の機能を示すライブ ASP.NET Web サイトです。このアプリでは、[簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)を使用しています。コードを変更して、[Lucene 構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)を試すことができます。
-
 
 [**Azure Search デモ サイト**](https://searchsamples.azurewebsites.net/#/)は、Azure Search のためのデモ アプリを集めたサイトです。Azure Search を利用し、メディア検索、地理検索、製品在庫のアプリを試します。
 
@@ -90,4 +91,4 @@
 [スコアリング プロファイルのチュートリアル](search-get-started-scoring-profiles.md)|コンソール アプリケーションを使用してスコアリング プロファイルをテスト使用します。
 [Azure Search 管理 REST API チュートリアル](search-get-started-management-api.md)|管理 REST API を使用して、サービスをプロビジョニングし、管理またはクエリ API キーを管理する方法。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

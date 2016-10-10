@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用してオンプレミスのテーブルからデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/18/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/26/2016" 
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して Web テーブル ソースからデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Web ページのテーブルから他のデータ ストアにデータをコピーする方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -53,7 +53,7 @@
 	}
 
 
-**Azure Storage のリンクされたサービス**
+**Azure ストレージのリンクされたサービス**
 
 	{
 	  "name": "AzureStorageLinkedService",
@@ -65,7 +65,7 @@
 	  }
 	}
 
-**WebTable 入力データセット**: **external** を **true** に設定して **externalData** ポリシーを指定 (省略可) すると、テーブルが Data Factory に対して外部にあり、データ ファクトリのアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+**WebTable 入力データセット** **external** を **true** に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 > [AZURE.NOTE] HTML ページのテーブルのインデックスを取得する方法については、「[HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page)」を参照してください。
 
@@ -118,7 +118,7 @@
 
 上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **WebSource** に設定され、**sink** 型が **BlobSink** に設定されています。
 
-WebSource でサポートされるプロパティの一覧については、[WebSource type プロパティ](#websource-copy-activity-type-properties)に関するセクションを参照してください。
+WebSource でサポートされるプロパティの一覧については、[WebSource type プロパティに関するセクション](#websource-copy-activity-type-properties)を参照してください。
 	
 	{  
 	    "name":"SamplePipeline",
@@ -171,8 +171,8 @@ WebSource でサポートされるプロパティの一覧については、[Web
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- | 
-| type | type プロパティを **Web** に設定する必要があります。 | あり | 
-| Url | Web ソースへの URL | あり |
+| type | type プロパティを **Web** に設定する必要があります。 | はい | 
+| Url | Web ソースへの URL | はい |
 | authenticationType | Anonymous または Basic。 | はい |
 | userName | 基本認証のユーザー名。 | はい (基本認証用)
 | パスワード | 基本認証のパスワード。 | はい (基本認証用)
@@ -213,15 +213,15 @@ WebSource でサポートされるプロパティの一覧については、[Web
 
 ## WebTable データセットのプロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**WebTable** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
 プロパティ | 説明 | 必須
 :-------- | :----------- | :--------
-type | データセットの型。**WebTable** に設定する必要があります。 | あり
+type | データセットの型。**WebTable** に設定する必要があります。 | はい
 path | テーブルを含むリソースの相対 URL。 | いいえ。パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 
-Index | リソースのテーブルのインデックス。HTML ページのテーブルのインデックスを取得する方法については、「[HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page)」を参照してください。 | あり
+Index | リソースのテーブルのインデックス。HTML ページのテーブルのインデックスを取得する方法については、「[HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page)」を参照してください。 | はい
 
 
 **例:**
@@ -245,11 +245,11 @@ Index | リソースのテーブルのインデックス。HTML ページのテ�
 
 ## WebSource - コピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-ソースが **WebSource** 型のコピー アクティビティの場合、現時点では追加プロパティはサポートされていません。
+現時点では、ソースが **WebSource** 型のコピー アクティビティの場合、追加プロパティはサポートされません。
 
 ## HTML ページのテーブルのインデックスを取得する
 
@@ -285,6 +285,6 @@ Excel 2013 を使用している場合、[Microsoft Power Query for Excel](https
 [AZURE.INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## パフォーマンスとチューニング  
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

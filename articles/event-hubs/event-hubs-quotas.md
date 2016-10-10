@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="na"
-    ms.date="06/07/2016"
+    ms.date="09/27/2016"
     ms.author="sethm" />
 
 # Event Hubs のクォータ
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [service-bus-quotas-table](../../includes/event-hubs-limits.md)]
 
-<!----HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0928_2016-->

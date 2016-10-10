@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と Replicon の統合
@@ -70,7 +70,7 @@
 
 1.  Azure クラシック ポータルの **Replicon** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC777801.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC777801.png "Configure single sign-on")
 
 2.  **[ユーザーの Replicon へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選び、**[次へ]** をクリックします。
 
@@ -89,7 +89,7 @@
 
 4.  **[ Replicon でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
 
-    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC777804.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC777804.png "Configure single sign-on")
 
 5.  別の Web ブラウザー ウィンドウで、 Replicon 企業サイトに管理者としてログインします。
 
@@ -104,7 +104,7 @@
 
 7.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![シングル サインオンの構成](./media/active-directory-saas-replicon-tutorial/IC778418.png "シングル サインオンの構成")
+    ![Configure single sign-on](./media/active-directory-saas-replicon-tutorial/IC778418.png "Configure single sign-on")
 ##ユーザー プロビジョニングの構成
   
 Azure AD ユーザーが Replicon にログインできるようにするには、そのユーザーを Replicon にプロビジョニングする必要があります。Replicon の場合、プロビジョニングは手動で行います。
@@ -133,7 +133,7 @@ Azure AD ユーザーが Replicon にログインできるようにするには�
 
 >[AZURE.NOTE]Replicon から提供されている他の Replicon ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -147,8 +147,8 @@ Azure AD ユーザーが Replicon にログインできるようにするには�
 
 3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-replicon-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-replicon-tutorial/IC767830.png "Yes")
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

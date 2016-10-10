@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して Salesforce からデータを移動する方法を説明します。"
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/07/2016"
-	ms.author="spelluru"/>
+	ms.date="09/26/2016"
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して Salesforce からデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores)に関する表のシンクの欄に一覧表示されているデータ ストアにデータをコピーする方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -194,7 +194,7 @@ RelationalSource でサポートされるプロパティの一覧については
 
 ## Salesforce データセットのプロパティ
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事をご覧ください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**RelationalTable** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -209,20 +209,20 @@ RelationalSource でサポートされるプロパティの一覧については
 ## RelationalSource type プロパティ
 アクティビティの定義に使用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事をご覧ください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 コピー アクティビティで、source が **RelationalSource** 型 (Salesforce を含む) の場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | -------- | ----------- | -------------- | -------- |
-| query | カスタム クエリを使用してデータを読み取ります。 | SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL) ](https://developer.salesforce.com/docs/atlas.ja-JP.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm)クエリ。例: select * from MyTable\_\_c | いいえ (**dataset** の **tableName** が指定されている場合) |
+| query | カスタム クエリを使用してデータを読み取ります。 | SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL) ](https://developer.salesforce.com/docs/atlas.ja-JP.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm)クエリ。たとえば、「`select * from MyTable__c`」のように入力します | いいえ (**dataset** の **tableName** が指定されている場合) |
 
-> [AZURE.IMPORTANT] カスタム オブジェクトには、API 名の "\_\_c" の部分が必要となります。<br> DateTime 列に対する **where** 句を含むクエリを指定するときは、SOQL を使用してください (例: $$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts'{0:yyyy-MM-dd HH:mm:ss}'}} AND LastModifiedDate < {{ts'{1:yyyy-MM-dd HH:mm:ss}'}}', WindowStart, WindowEnd))。
+> [AZURE.IMPORTANT] カスタム オブジェクトには、API 名の "\_\_c" の部分が必要となります。<br> DateTime 列に対する **where** 句を含むクエリを指定するときは、SOQL を使用してください たとえば、「`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd), or SQL query e.g. $$Text.Format('SELECT * FROM Account  WHERE LastModifiedDate   >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate  < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`」のように入力します
 
 ![Data Factory - Salesforce の接続 - API 名](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## Salesforce レポートからのデータの取得
-{call "<レポート名>"} というクエリ (例: {call "TestReport"}) を指定することで、Salesforce レポートからデータを取得できます。
+`{call "<report name>"}` というクエリ (例: `"query": "{call "TestReport"}"`) を指定することで、Salesforce レポートからデータを取得できます。
 
 ## Salesforce の要求の制限
 Salesforce では、API 要求数の合計と、API の同時要求数に上限が設けられています。詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/ja-JP/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。
@@ -261,4 +261,4 @@ URL | String
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

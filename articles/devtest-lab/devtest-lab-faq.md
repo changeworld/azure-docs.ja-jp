@@ -110,7 +110,7 @@ Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可�
 ### 特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
 カスタム ロールを作成し、そのロールにアクセス許可を割り当てる方法についての包括的な記事がこちらにあります。ラボ内のすべての VM を開始および停止するアクセス許可を持つロール "DevTest Labs Advanced User" を作成するスクリプトの例を次に示します。
  
-	$policyRoleDef = (Get-AzureRmRoleDefinition "DevTest Labs User") 
+	$policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User" 
 	$policyRoleDef.Actions.Remove('Microsoft.DevTestLab/Environments/*') 
 	$policyRoleDef.Id = $null 
 	$policyRoleDef.Name = "DevTest Labs Advance User" 
@@ -119,7 +119,7 @@ Azure DevTest Labs のスコープ内では、ユーザーのアクセス許可�
 	$policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>") 
 	$policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action") 
 	$policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action") 
-	$policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)  
+	$policyRoleDef = New-AzureRmRoleDefinition -Role $policyRoleDef  
  
 ### Azure DevTest Labs は、CI/CD ツールチェーンと統合されますか。 
 VSTS を使用している場合は、Azure DevTest Labs でのリリース パイプラインを自動化できる、[Azure DevTest Labs タスク拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)があります。この拡張機能の使用方法には次のようなものがあります。
@@ -244,4 +244,4 @@ Microsoft アカウントは、Microsoft のデバイスおよびサービスで
 ### 既存の仮想ネットワークが正しく保存されないのはなぜですか。  
 仮想ネットワーク名にピリオドが含まれていることが原因となっている可能性があります。その場合は、ピリオドを削除するかハイフンに置き換えてから、仮想ネットワークをもう一度保存してみてください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

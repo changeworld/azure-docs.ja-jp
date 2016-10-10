@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="backup-recovery"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="bsiva"/>
 
 # PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする
@@ -25,7 +25,7 @@
 
 
 
-## 概要
+## Overview
 
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧戦略に貢献します。デプロイ シナリオのすべての一覧については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
@@ -257,4 +257,4 @@ Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Az
 
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認します](https://msdn.microsoft.com/library/azure/mt637930.aspx)。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

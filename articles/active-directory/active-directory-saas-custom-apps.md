@@ -3,7 +3,7 @@
     description="SAML およびパスワード ベースの SSO を使用して、Azure Active Directory にアプリをセルフサービス接続する方法について説明します。" 
     services="active-directory" 
     authors="asmalser-msft"  
-    documentationCenter="na" manager="stevenpo"/>
+    documentationCenter="na" manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
@@ -22,9 +22,9 @@
 [Azure Active Directory Premium](active-directory-editions.md) ライセンスを所有するお客様も、これらの追加機能を使用できます。
 
 * SAML 2.0 ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
-* [パスワードベースの SSO](active-directory-appssoaccess-whatis.md/#password-based-single-sign-on) を使用する HTML ベースのサインイン ページがある任意の Web アプリケーションのセルフサービス統合
-* ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning))
-* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md/#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
+* [パスワードベースの SSO](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) を使用する HTML ベースのサインイン ページがある任意の Web アプリケーションのセルフサービス統合
+* ユーザー プロビジョニング用の SCIM プロトコルを使用するアプリケーションのセルフサービス接続 ([ここで説明](active-directory-scim-provisioning.md))
+* [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)または [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)での任意のアプリケーションへのリンクの追加機能
 
 これには、使用するが Azure AD アプリケーション ギャラリーにはまだ追加されていない SaaS アプリケーションだけでなく、組織がクラウドまたはオンプレミスで制御対象のサーバーにデプロイしたサードパーティの Web アプリケーションも含まれる場合があります。
 
@@ -47,7 +47,7 @@
 ![][3]
 
 
-##Azure AD のシングル サインオン
+##Azure AD Single Sign-On
 
 アプリケーションの SAML ベースの認証を構成するには、このオプションを選択します。その場合、アプリケーションで SAML 2.0 がサポートされている必要があり、ユーザーは作業を続行する前に、アプリケーションの SAML 機能の使用方法に関する情報を収集する必要があります。**[次へ]** を選択すると、アプリケーションの SAML エンドポイントに対応する 3 つの異なる URL を入力するように求められます。
 
@@ -71,7 +71,7 @@
       </Conditions>
 ```
 
-* **応答 URL** - 応答 URL は、アプリケーションが SAML トークンを受け取ることになっている場所です。これは **Assertion Consumer Service (ACS) URL** とも呼ばれています。SAML トークンの応答 URL または ACS URL の詳細については、アプリケーションの SAML ドキュメントを確認してください。これらを入力したら、**[次へ]** をクリックして次の画面に進みます。この画面には、Azure AD からの SAML トークンを受け入れられるようにアプリケーション側で構成する必要がある内容についての情報が示されます。 
+* **応答 URL** - 応答 URL は、アプリケーションが SAML トークンを受け取ることになっている場所です。これは **Assertion Consumer Service (ACS) URL** とも呼ばれています。SAML トークンの応答 URL または ACS URL の詳細については、アプリケーションの SAML ドキュメントを確認してください。これらを入力したら、**[次へ]** をクリックして次の画面に進みます。この画面には、Azure AD からの SAML トークンを受け入れられるようにアプリケーション側で構成する必要がある内容についての情報が示されます。
 
 ![][5]
 
@@ -125,7 +125,7 @@ HTML サインイン ページがある Web アプリケーションの[パス�
 
 組織の Azure AD アクセス パネルまたは Office 365 ポータルにアプリケーションへのリンクを追加するには、このオプションを選択します。これを使用して、認証用に Azure AD の代わりに現在 Azure Active Directory フェデレーション サービス (または他のフェデレーション サービス) を使用しているカスタム Web アプリへのリンクを追加することができます。または、ユーザーのアクセス パネルに表示するだけの特定の SharePoint ページまたは他の Web ページにディープ リンクを追加することもできます。
 
-**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。入力したら、ユーザーとグループをアプリケーションに割り当てることができ、これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md/#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
+**[次へ]** を選択すると、リンクするアプリケーションの URL を入力するように求められます。入力したら、ユーザーとグループをアプリケーションに割り当てることができ、これにより、アプリケーションが [Office 365 アプリ ランチャー](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/)またはユーザーの [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)に表示されるようになります。
 
 注: アプリケーションの **[構成]** タブにある **[ロゴのアップロード]** ボタンを使用して、アプリケーションのタイル ロゴをアップロードできます。
 
@@ -144,4 +144,4 @@ HTML サインイン ページがある Web アプリケーションの[パス�
 [6]: ./media/active-directory-saas-custom-apps/customapp6.png
 [7]: ./media/active-directory-saas-custom-apps/customapp7.png
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

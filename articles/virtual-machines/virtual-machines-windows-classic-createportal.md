@@ -14,12 +14,12 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
-# Windows を実行するカスタム仮想マシンの作成
+# クラシック デプロイ モデルを使用して、Windows を実行するカスタム仮想マシンを作成する
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 新しい Azure ポータルを使用する場合は、「[Azure ポータルで初めての Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)」を参照してください。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-createportal](../../includes/virtual-machines-common-classic-createportal.md)]
 
@@ -28,6 +28,6 @@
 
 ## 次のステップ
 
-クラシック ポータルを使用して、[Linux を実行するカスタム仮想マシンを作成](virtual-machines-linux-classic-createportal.md)することもできます
+クラシック ポータルを使用して、[Linux を実行するカスタム仮想マシンを作成](virtual-machines-linux-classic-createportal.md)することもできます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

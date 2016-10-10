@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 # Windows を実行する仮想マシンを Azure クラシック ポータルで作成する
@@ -25,7 +25,7 @@
 
 <br>
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager デプロイメント モデルを使用してこれらの手順を実行する](virtual-machines-windows-hero-tutorial.md)方法について説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager デプロイ モデルを使用してこれらの手順を実行する](virtual-machines-windows-hero-tutorial.md)方法について説明します。新しい Azure ポータルを使用する場合は、「[Azure ポータルで初めての Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)」を参照してください。
 
 このチュートリアルでは、Windows を実行する Azure 仮想マシン (VM) を Azure クラシック ポータルで簡単に作成する方法を説明します。例として Windows Server イメージを使用しますが、Azure では他にも使用可能なイメージが多数あります。イメージの選択肢は、サブスクリプションによって異なります。たとえば、Windows デスクトップ イメージは MSDN サブスクライバーが使用できます。
 
@@ -49,6 +49,6 @@
 
 - 仮想マシンにログオンします。手順については、[Windows Server が実行されている仮想マシンへのログオン](virtual-machines-windows-classic-connect-logon.md)に関する記事をご覧ください。
 
-- データを格納するディスクを接続します。空のディスクと、データが含まれているディスクのどちらも接続できます。手順については、「[クラシック デプロイメント モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](virtual-machines-windows-classic-attach-disk.md)」をご覧ください。
+- データを格納するディスクを接続します。空のディスクと、データが含まれているディスクのどちらも接続できます。手順については、「[クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする](virtual-machines-windows-classic-attach-disk.md)」をご覧ください。
 
-<!-----HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

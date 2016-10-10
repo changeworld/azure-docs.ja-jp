@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/11/2016"
+   ms.date="09/28/2016"
    ms.author="oanapl"/>
 
 # Service Fabric の正常性レポートの確認
@@ -29,7 +29,7 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 
 - 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、API、または REST を使用)
 
-これらのオプションについて、5 つのノードがあるローカル クラスターを使用して説明しましょう。**fabric:/System** アプリケーション (最初から使用可) の横にいくつかのアプリケーションがデプロイされています。そのうちの 1 つが **fabric:/WordCount** です。このアプリケーションには、7 のレプリカで構成されたステートフル サービスが含まれています。ノードは 5 つのみであるため、システム コンポーネントからパーティションがターゲット数より少ないという警告が表示されます。
+これらのオプションについて、5 つのノードがあるローカル クラスターを使用して説明しましょう。**fabric:/System** アプリケーション (最初から使用可) の横にいくつかのアプリケーションがデプロイされています。それらのアプリケーションのうちの 1 つが **fabric:/WordCount** です。このアプリケーションには、7 のレプリカで構成されたステートフル サービスが含まれています。ノードは 5 つのみであるため、システム コンポーネントからパーティションがターゲット数より少ないという警告が表示されます。
 
 ```xml
 <Service Name="WordCountService">
@@ -44,7 +44,7 @@ Service Fabric Explorer では、クラスターを視覚的に確認できま�
 
 - プロパティ **Availability** について **MyWatchdog** からエラー イベントが報告されているため、アプリケーション **fabric:/WordCount** が赤色 (エラー) になっています。
 
-- そのサービスの 1 つである **fabric:/WordCount/WordCountService** が黄色 (警告) になっています。前述のように、サービスは 7 のレプリカで構成されていますが、すべてを配置することはできません (ノードは 5 つのみであるため)。ここでは確認できませんが、システム レポートが原因でサービス パーティションが黄色になっています。黄色のパーティションは黄色のサービスをトリガーします。
+- そのサービスの 1 つである **fabric:/WordCount/WordCountService** が黄色 (警告) になっています。サービスは 7 つのレプリカで構成されていますが、ノードは 5 つのみであるため、すべてを配置することはできません。ここでは確認できませんが、システム レポートが原因でサービス パーティションが黄色になっています。黄色のパーティションは黄色のサービスをトリガーします。
 
 - 赤色のアプリケーションが原因でクラスターが赤色になっています。
 
@@ -60,17 +60,17 @@ Service Fabric Explorer を使用したクラスターのビュー
 > [AZURE.NOTE] [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) の詳細をご覧ください。
 
 ## 正常性クエリ
-Service Fabric では、サポート対象の各[エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。API (**FabricClient.HealthManager** にあるメソッド)、PowerShell コマンドレット、および REST を使用してアクセスできます。これらのクエリは、正常性状態の集計、エンティティに報告された正常性イベント、子の正常性状態 (該当する場合)、エンティティが正常でない場合の異常性の評価、といったエンティティの正常性についての完全な情報を返します。
+Service Fabric では、サポート対象の各[エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。API (**FabricClient.HealthManager** にあるメソッド)、PowerShell コマンドレット、および REST を使用してアクセスできます。これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、エンティティが正常でない場合の異常評価、といったエンティティの正常性についての完全な情報を返します。
 
-> [AZURE.NOTE] 正常性エンティティは、正常性ストアに完全に設定されたときにユーザーに返されます。エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。階層チェーン上の親エンティティも、システム レポートを含む必要があります。これらの条件が満たされていないと、正常性クエリでは例外が返され、エンティティが返されない理由が表示されます。
+> [AZURE.NOTE] 正常性エンティティは、正常性ストアにすべてが設定されると返されます。エンティティはアクティブな (削除されていない) 状態で、システム レポートを含む必要があります。階層チェーン上の親エンティティも、システム レポートを含む必要があります。これらの条件が満たされていないと、正常性クエリでは例外が返され、エンティティが返されない理由が表示されます。
 
-正常性クエリは、エンティティの識別子を渡す必要があります。エンティティの識別子はエンティティの型によって異なります。正常性クエリには、オプションで正常性ポリシーのパラメーターを指定できます。指定しない場合は、クラスター マニフェストやアプリケーション マニフェストの[正常性ポリシー](service-fabric-health-introduction.md#health-policies)を評価に使用します。正常性クエリにはフィルターも適用できます。適用すると、指定したフィルターに該当する子やイベントのみが返されます。
+正常性クエリは、エンティティの識別子を渡す必要があります。エンティティの識別子はエンティティの型によって異なります。正常性クエリには、オプションで正常性ポリシーのパラメーターを指定できます。正常性ポリシーを指定しないと、クラスター マニフェストやアプリケーション マニフェストの[正常性ポリシー](service-fabric-health-introduction.md#health-policies)が評価に使用されます。正常性クエリにはフィルターも適用できます。適用すると、指定したフィルターに該当する子やイベントのみが返されます。
 
 > [AZURE.NOTE] 出力フィルターはサーバー側に適用されるため、応答されるメッセージのサイズが減少します。フィルターをクライアント側に適用するよりも、返されたデータの数を制限するために出力フィルターを使用することをお勧めします。
 
-エンティティの正常性には、次の情報が含まれています。
+エンティティの正常性に含まれているものは、次のとおりです。
 
-- エンティティの正常性状態の集計。これはエンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。[エンティティの正常性評価](service-fabric-health-introduction.md#entity-health-evaluation)の詳細をご覧ください。
+- エンティティの正常性状態の集計。エンティティの正常性レポート、子の正常性状態 (該当する場合)、および正常性ポリシーに基づいて、正常性ストアによって計算されます。[エンティティの正常性評価](service-fabric-health-introduction.md#entity-health-evaluation)の詳細をご覧ください。
 
 - エンティティの正常性イベント。
 
@@ -90,13 +90,13 @@ Service Fabric では、サポート対象の各[エンティティ型](service-
 ### API
 クラスターの正常性を取得するには、`FabricClient` を作成し、**HealthManager** で [GetClusterHealthAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthasync.aspx) メソッドを呼び出します。
 
-次のコードは、クラスターの正常性を取得します。
+次の呼び出しでは、クラスターの正常性を取得します。
 
 ```csharp
 ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthAsync();
 ```
 
-次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用してクラスターの正常性を取得します。すべての入力データが含まれる [ClusterHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.clusterhealthquerydescription.aspx) が作成されます。
+次のコードは、カスタム クラスターの正常性ポリシーとノードおよびアプリケーションのフィルターを使用して、クラスターの正常性を取得します。入力情報が含まれる [ClusterHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.clusterhealthquerydescription.aspx) が作成されます。
 
 ```csharp
 var policy = new ClusterHealthPolicy()
@@ -124,7 +124,7 @@ ClusterHealth clusterHealth = await fabricClient.HealthManager.GetClusterHealthA
 ### PowerShell
 クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterHealth](https://msdn.microsoft.com/library/mt125850.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。
 
-クラスターの状態 (5 つのノード、システム アプリケーション、fabric:/WordCount) は上記のように構成します。
+クラスターの状態 (5 つのノード、システム アプリケーション、fabric:/WordCount) は上記のように構成されています。
 
 次のコマンドレットは、既定の正常性ポリシーを使用してクラスターの正常性を取得します。fabric:/WordCount アプリケーションが警告になっているため、正常性状態の集計は警告になります。異常性の評価には、正常性の集計をトリガーした条件の詳細が表示されます。
 
@@ -207,6 +207,9 @@ HealthEvents            : None
 
 ```
 
+### REST ()
+クラスターの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707669.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707696.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+
 ## ノードの正常性の取得
 ノード エンティティの正常性を返し、ノードで報告された正常性のイベントが含まれます。次の内容を入力します。
 
@@ -273,6 +276,9 @@ _Node_1                     Ok
 _Node_3                     Ok
 _Node_4                     Ok
 ```
+
+### REST ()
+ノードの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707650.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707665.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## アプリケーションの正常性の取得
 アプリケーション エンティティの正常性を返します。デプロイされたアプリケーションとサービスの子の正常性状態が含まれます。次の内容を入力します。
@@ -419,6 +425,9 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
+### REST ()
+アプリケーションの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707681.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707643.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+
 ## サービスの正常性の取得
 サービス エンティティの正常性を返します。パーティションの正常性状態が含まれます。次の内容を入力します。
 
@@ -520,6 +529,9 @@ HealthEvents          :
                         IsExpired             : False
 ```
 
+### REST ()
+サービスの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707609.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707646.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+
 ## パーティションの正常性の取得
 パーティション エンティティの正常性を返します。レプリカの正常性状態が含まれます。次の内容を入力します。
 
@@ -539,7 +551,7 @@ PartitionHealth partitionHealth = await fabricClient.HealthManager.GetPartitionH
 ### PowerShell
 パーティションの正常性を取得するコマンドレットは [Get-ServiceFabricPartitionHealth](https://msdn.microsoft.com/library/mt125869.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。
 
-次のコマンドレットは、**fabric:/WordCount/WordCountService** サービスのすべてのパーティションの正常性を取得します。
+次のコマンドレットは、**fabric:/WordCount/WordCountService** サービスの全パーティションの正常性を取得します。
 
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth
@@ -579,6 +591,9 @@ HealthEvents          :
                         IsExpired             : False
                         Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
+
+### REST ()
+パーティションの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707683.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707680.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## レプリカの正常性の取得
 ステートフル サービス レプリカまたはステートレス サービス インスタンスの正常性を返します。次の内容を入力します。
@@ -621,6 +636,9 @@ HealthEvents          :
                         IsExpired             : False
                         Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
+
+### REST ()
+レプリカの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707673.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707641.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## デプロイされたアプリケーションの正常性の取得
 ノード エンティティにデプロイされたアプリケーションの正常性を返します。デプロイされたサービス パッケージの正常性状態が含まれます。次の内容を入力します。
@@ -674,6 +692,9 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
+### REST ()
+デプロイされたアプリケーションの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707644.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707688.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+
 ## デプロイされたサービス パッケージの正常性の取得
 デプロイされたサービス パッケージ エンティティの正常性を返します。次の内容を入力します。
 
@@ -694,7 +715,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### PowerShell
 デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](https://msdn.microsoft.com/library/mt163525.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。アプリケーションのデプロイ先を確認するには、[Get-ServiceFabricApplicationHealth](https://msdn.microsoft.com/library/mt125976.aspx) を実行して、デプロイされたアプリケーションを確認します。アプリケーション内のサービス パッケージを確認するには、[Get-ServiceFabricDeployedApplicationHealth](https://msdn.microsoft.com/library/mt163523.aspx) の出力で、デプロイされたサービス パッケージの子を確認します。
 
-次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。エンティティには、アクティブ化に成功したサービス パッケージとエントリ ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
+次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
 ```powershell
 PS C:\> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg
@@ -742,12 +763,15 @@ HealthEvents          :
                         Transitions           : Error->Ok = 3/22/2016 7:57:12 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
+### REST ()
+デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/dn707677.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/dn707689.aspx)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
+
 ## 正常性チャンク クエリ
 正常性チャンク クエリは、入力フィルターごとにクラスターの複数レベルの子を (再帰的に) 返すことができます。このクエリでサポートされている高度なフィルターでは、一意の識別子または他のグループ識別子や正常性状態で識別して、どの子を返すかを柔軟に記述できます。最初のレベルの子が常に含まれている正常性コマンドとは異なり、既定ではどの子も含まれていません。
 
-[正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)は、要求されたフィルターごとに、指定されたエンティティの最初のレベルの子のみを返します。子の子を取得するには、ユーザーは対象のエンティティごとに追加の正常性 API を呼び出す必要があります。同様に、特定のエンティティの正常性を取得するには、ユーザーは目的の各エンティティごとに正常性 API を呼び出す必要があります。チャンク クエリの高度なフィルターを使用することで、ユーザーは、対象とする複数の項目を 1 つのクエリで要求できます。これにより、メッセージ サイズとメッセージ数を最小限に抑えられます。
+[正常性クエリ](service-fabric-view-entities-aggregated-health.md#health-queries)は、要求されたフィルターごとに、指定されたエンティティの最初のレベルの子のみを返します。子の子を取得するには、対象のエンティティごとに追加の正常性 API を呼び出す必要があります。同様に、特定のエンティティの正常性を取得するには、目的の各エンティティごとに正常性 API を呼び出す必要があります。チャンク クエリの高度なフィルターを使用することで、対象とする複数の項目を 1 つのクエリで要求できます。これにより、メッセージ サイズとメッセージ数を最小限に抑えられます。
 
-チャンク クエリの真価は、ユーザーが一度の呼び出しでより多くのクラスター エンティティの正常性状態を取得できるところにあります (要求されたルートを起点とするすべてのクラスター エンティティの状態を取得可能です)。次のような複雑な正常性クエリを記述できます。
+チャンク クエリの真価は、一度の呼び出しでより多くのクラスター エンティティの正常性状態を取得できるところにあります (要求されたルートを起点とするすべてのクラスター エンティティの状態を取得可能です)。次のような複雑な正常性クエリを記述できます。
 
 - エラーがあるアプリケーションのみを返す。その際、これらのアプリケーションについて警告やエラーがあるすべてのサービスを含める。また、返されるサービスについて、すべてのパーティションを含める。
 
@@ -770,17 +794,17 @@ HealthEvents          :
 - 入力フィルターに該当するアプリケーションの正常性状態チャンクの一覧。アプリケーションの各正常性状態チャンクには、入力フィルターの条件に該当するすべてのサービスが列挙されたチャンクの一覧のほか、フィルターに該当するすべてのデプロイ済みアプリケーションが列挙されたチャンクの一覧が含まれています。サービスとデプロイ済みアプリケーションの子についても同様です。このように、クラスター内のすべてのエンティティは、要求に応じて階層的な方法で返すことができます。
 
 ### クラスターの正常性チャンク クエリ
-このクエリは、クラスター エンティティの正常性を返します。これには、要求された子の階層的な正常性状態チャンクが含まれます。次の内容を入力します。
+クラスター エンティティの正常性を返します。これには、要求された子の階層的な正常性状態チャンクが含まれます。次の内容を入力します。
 
 - [省略可能] ノードとクラスターのイベントを評価するために使用されるクラスターの正常性ポリシー。
 
 - [省略可能] アプリケーション マニフェストのポリシーを上書きするために使用するアプリケーションの正常性ポリシー マップと正常性ポリシー。
 
-- [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。フィルターの一覧には、一般的なフィルターを 1 つだけ含めることもできるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。また、これらのフィルターは組み合わせて使用できます。空の場合、既定では子は返されません。フィルターの詳細については、[NodeHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx) と [ApplicationHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx) に関するページを参照してください。アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
+- [省略可能] 結果で返される対象のエントリを指定するノードとアプリケーションのフィルター。フィルターは、複数のエンティティのうちの 1 つのエンティティまたはグループのみか、そのレベルのすべてのエンティティに適用されます。フィルターの一覧には、一般的なフィルターを 1 つだけ含めることができるほか、特定の識別子に対応するフィルターを含めて、クエリによって返されるエンティティを絞り込むこともできます。空の場合、既定では子は返されません。フィルターの詳細については、[NodeHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.nodehealthstatefilter.aspx) と [ApplicationHealthStateFilter](https://msdn.microsoft.com/library/azure/system.fabric.health.applicationhealthstatefilter.aspx) に関するページを参照してください。アプリケーションのフィルターでは、子に対する高度なフィルターを再帰的に指定できます。
 
 チャンクの結果には、フィルターに該当する子が含まれます。
 
-現時点では、チャンク クエリは異常性の評価またはエンティティ イベントを返しません。これらは、既存のクラスター正常性クエリを使用して取得できます。
+現時点では、チャンク クエリは異常性の評価またはエンティティ イベントを返しません。この追加情報は、既存のクラスター正常性クエリを使用して取得できます。
 
 ### API
 クラスターの正常性チャンクを取得するには、`FabricClient` を作成し、**HealthManager** で [GetClusterHealthChunkAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync.aspx) メソッドを呼び出します。[ClusterHealthQueryDescription](https://msdn.microsoft.com/library/azure/system.fabric.description.clusterhealthchunkquerydescription.aspx) を渡して、正常性ポリシーと高度なフィルターを記述できます。
@@ -831,7 +855,7 @@ var result = await fabricClient.HealthManager.GetClusterHealthChunkAsync(queryDe
 ### PowerShell
 クラスターの正常性を取得するコマンドレットは [Get-ServiceFabricClusterChunkHealth](https://msdn.microsoft.com/library/mt644772.aspx) です。まず、[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) コマンドレットを使用してクラスターに接続します。
 
-次のコマンドレットは、常に返される特定のノードを除き、状態がエラーのノードのみを取得します。
+次のコードは、常に返される特定のノードを除き、状態がエラーのノードのみを取得します。
 
 ```xml
 PS C:\> $errorFilter = [System.Fabric.Health.HealthStateFilter]::Error;
@@ -977,6 +1001,9 @@ ApplicationHealthStateChunks :
                                        HealthState           : Ok
 ```
 
+### REST ()
+クラスターの正常性チャンクを取得するには、[GET 要求](https://msdn.microsoft.com/library/azure/mt656722.aspx)または [POST 要求](https://msdn.microsoft.com/library/azure/mt656721.aspx)を使用できます。これらの要求の本文には、正常性ポリシーと高度なフィルターが記載されています。
+
 ## 一般クエリ
 一般クエリは、指定した型の Service Fabric エンティティの一覧を返します。API (**FabricClient.QueryManager** のメソッド)、PowerShell コマンドレット、REST を通じて公開されます。これらのクエリは複数のコンポーネントからのサブクエリを集計します。そのうちの 1 つが[正常性ストア](service-fabric-health-introduction.md#health-store)で、各クエリ結果の正常性状態の集計を設定します。
 
@@ -1008,7 +1035,7 @@ ApplicationHealthStateChunks :
   - API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://msdn.microsoft.com/library/azure/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync.aspx)
   - PowerShell: Get-ServiceFabricDeployedApplication
 
-> [AZURE.NOTE] 一部のクエリはページングされた結果を返します。これらのクエリの戻り値は、[PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) から取得された一覧です。結果がメッセージに適合しない場合、ページのみが返されます。また、列挙が停止した場所を追跡するように ContinuationToken が設定されます。ユーザーは、同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
+> [AZURE.NOTE] 一部のクエリはページングされた結果を返します。これらのクエリの戻り値は、[PagedList<T>](https://msdn.microsoft.com/library/azure/mt280056.aspx) から派生した一覧です。結果がメッセージに収まらない場合、1 ページのみが返されます。また、列挙が停止した場所を追跡する ContinuationToken も返されます。同じクエリの呼び出しを続け、次の結果を得るために前のクエリから継続トークンを渡す必要があります。
 
 ### 例
 
@@ -1058,7 +1085,7 @@ HealthState            : Warning
 ## クラスターとアプリケーションのアップグレード
 Service Fabric はクラスターとアプリケーションのアップグレードを監視して正常性を確認し、正常な状態の維持に努めます。構成された正常性ポリシーを使用して評価したときにエンティティに異常が見つかった場合、アップグレードではアップグレード固有のポリシーを適用して次のアクションが決定されます。ユーザーが操作 (エラー状態の修正やポリシーの変更など) できるようにアップグレードが一時停止されるか、前の正常なバージョンに自動的にロールバックされる場合があります。
 
-"*クラスター*" のアップグレード中には、クラスターのアップグレード ステータスを取得できます。これには、クラスターの異常を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が保持されます。これにより、管理者が失敗の原因を調査するのに役立つ情報が保持されます。
+"*クラスター*" のアップグレード中には、クラスターのアップグレード ステータスを取得できます。アップグレード ステータスには、クラスター内の異常個所を示す異常性の評価が含まれます。正常性の問題によりアップグレードがロールバックされると、アップグレード ステータスに最後に問題が発生した理由が記憶されます。この情報は、アップグレードがロールバックまたは停止された後で、管理者が問題点を調査する際に役立ちます。
 
 同様に、"*アプリケーション*" のアップグレード中には、アプリケーションのアップグレード ステータスに異常性の評価が記録されます。
 
@@ -1121,7 +1148,7 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 ## 正常性の評価を使用したトラブルシューティング
 クラスターやアプリケーションで問題が発生した場合は必ず、そのクラスターやアプリケーションの正常性を確認して問題を特定します。異常性の評価では、現在の異常な状態をトリガーした原因の詳細を確認できます。必要に応じて、異常が発生している子エンティティにまで掘り下げて根本原因を特定できます。
 
-> [AZURE.NOTE] 異常性の評価には、エンティティが現在の正常性状態であると評価された第一の理由が示されます。この状態をトリガーする複数のイベントが他に存在する場合がありますが、それらのイベントは評価には反映されません。正常性エンティティを詳しく調べ、クラスター内の異常性レポートをすべて確認する必要があります。
+> [AZURE.NOTE] 異常性の評価には、エンティティが現在の正常性状態であると評価された第一の理由が示されます。この状態をトリガーする複数のイベントが他に存在する場合がありますが、それらのイベントは評価には反映されません。より詳しい情報を得るには、正常性エンティティを詳しく調べ、クラスター内の異常性レポートをすべて確認します。
 
 ## 次のステップ
 [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
@@ -1134,4 +1161,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

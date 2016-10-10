@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -29,7 +29,7 @@
 
 現在、この機能は、フェデレーションまたはパスワードに基づくシングル サインオンをサポートする、[Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)内のすべての事前統合アプリおよびカスタム アプリでサポートされています。これらのアプリには、Salesforce、Dropbox、Google Apps などがあります。この記事では、次の方法について説明します。
 
-* 省略可能な承認ワークフローの構成など、エンドユーザーに対してアプリケーションのセルフ サービス アクセスを構成する 
+* 省略可能な承認ワークフローの構成など、エンドユーザーに対してアプリケーションのセルフ サービス アクセスを構成する
 * 組織内の最も適切な人物に特定のアプリケーションへのアクセス管理を委任し、これらの人物に対して、Azure AD アクセス パネルを使用してアクセス申請を承認したり、選択したユーザーにアクセスを直接割り当てたり、パスワードに基づくシングル サインオンが構成されている場合にアプリケーション アクセスの資格情報を設定する (オプション) ことを許可する
 
 
@@ -85,7 +85,7 @@
 
 **[ユーザーの追加]** タイルでは、承認者が、選択したユーザーに対してアプリケーションへのアクセス権を直接付与できます。このタイルをクリックすると、承認者に対して、ディレクトリ内のユーザーを表示および検索するためのダイアログ ボックスが表示されます。ユーザーを追加すると、これらのユーザーの Azure AD アクセス パネルまたは Office 365 にアプリケーションが表示されます。ユーザーがサインインするために、アプリで手動のユーザー プロビジョニング プロセスが要求される場合、承認者はアクセスを割り当てる前にこのプロセスを実行する必要があります。
 
-###Manage Users
+###ユーザーの管理
 
 **[ユーザーの管理]** タイルでは、承認者が、アプリケーションへのアクセス権を持つユーザーを直接更新または削除できます。
 
@@ -109,4 +109,4 @@
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
 
-<!---HONumber=AcomDC_0211_2016-->
+<!---HONumber=AcomDC_0928_2016-->

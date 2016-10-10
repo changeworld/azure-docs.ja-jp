@@ -14,7 +14,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="08/19/2016"
+   ms.date="09/21/2016"
    ms.author="vturecek"/>
 
 # Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
@@ -31,7 +31,9 @@
 
 >[AZURE.NOTE] Azure Active Directory を使用したユーザー認証、アプリケーション セキュリティ用の証明書の設定など、詳細なセキュリティ オプションについては、[Azure Resource Manager を使用したクラスターの作成に関する記事][create-cluster-arm]を参照してください。
 
-セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません** -新しいクラスターを作成する必要があります。
+セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません**。新しいクラスターを作成する必要があります。
+
+セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、「[セキュリティで保護されたクラスターを Linux 上に作成する](service-fabric-cluster-creation-via-arm.md#secure-linux-cluster)」をご覧ください。提供されるヘルパー スクリプトから得られるパラメーターは、「[Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
 
 ## Azure へのログイン
 このガイドでは [Azure PowerShell][azure-powershell] を使用します。新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
@@ -51,7 +53,7 @@ Set-AzureRmContext -SubscriptionId <guid>
 
 ## Key Vault の設定
 
-ガイドのこのセクションでは、Azure Service Fabric クラスターおよび Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。Key Vault の完全なガイドについては、「[Azure Key Vault の概要][key-vault-get-started]」を参照してください。
+ガイドのこのセクションでは、Azure Service Fabric クラスターおよび Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。Key Vault の完全なガイドについては、「[Azure Key Vault の概要][key-vault-get-started]」をご覧ください。
 
 Service Fabric では X.509 証明書を使用して、クラスターをセキュリティ保護します。Azure Key Vault を使用して、Azure で Service Fabric クラスター用の証明書を管理します。Azure にクラスターがデプロイされると、Service Fabric クラスターの作成担当 Azure リソース プロバイダーにより Key Vault から証明書が取得されてクラスター VM にインストールされます。
 
@@ -78,7 +80,7 @@ Service Fabric では X.509 証明書を使用して、クラスターをセキ�
 
 ### Key Vault の作成 
 
-Key Vault を新しいリソース グループに作成します。Key Vault を**デプロイ用に有効にして**、Service Fabric リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるようにする必要があります。
+新しいリソース グループに、Key Vault を作成します。Key Vault を**デプロイ用に有効にして**、Service Fabric リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるようにする必要があります。
 
 ```powershell
 
@@ -133,13 +135,13 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 
  - 証明書は秘密キーを含む必要があります。
  - 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
- - 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+ - 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。クラスターのカスタム ドメイン名を取得します。CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
 ### クライアント認証証明書
 
-その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。アクセス ロールについて詳しくは、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。
+その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。アクセス ロールについて詳しくは、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」をご覧ください。
 
-Service Fabric を操作するために、クライアント認証証明書を Key Vault にアップロードする必要はありません。この証明書は、クラスター管理を許可されている管理者にのみ指定する必要があります。
+Service Fabric を操作するために、クライアント認証証明書を Key Vault にアップロードする必要はありません。この証明書は、クラスター管理を許可されているユーザーにのみ指定する必要があります。
 
 >[AZURE.NOTE] クライアントのクラスター管理操作を認証するには、Azure Active Directory を使用することをお勧めします。Azure Active Directory を使用するには、[Azure Resource Manager を使用してクラスターを作成][create-cluster-arm]する必要があります。
 
@@ -161,9 +163,9 @@ Azure ポータルを使用してクラスターを作成した場合、アプ�
  1. リポジトリの内容全体をローカル ディレクトリにダウンロードします。
  2. モジュールを PowerShell ウィンドウにインポートします。
 
-  ```powershell
+```powershell
   PS C:\Users\vturecek> Import-Module "C:\users\vturecek\Documents\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-  ```
+```
      
 この PowerShell モジュールの `Invoke-AddCertToKeyVault` コマンドは、証明書の秘密キーを JSON 文字列に自動的にフォーマットし、Key Vault にアップロードします。これを使用してクラスター証明書と追加のアプリケーション証明書 (ある場合) を Key Vault に追加します。必要に応じて、クラスターにインストールする追加の証明書についてこの手順を繰り返します。
 
@@ -195,6 +197,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
    - Key Vault
      - クラスター サーバー認証証明書
 
+</a "create-cluster-portal" ></a>
 ## Azure ポータルでのクラスターの作成
 
 ### Service Fabric クラスター リソースの検索
@@ -209,7 +212,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
  4. **[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
 
- 5. **[Service Fabric クラスターの作成]** ブレードに 4 つの手順が表示されます。
+ 5. **[Service Fabric クラスターの作成]** ブレードには次の 4 つの手順があります。
 
 #### 1\.基本
 
@@ -233,23 +236,27 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 ![ノード タイプの作成][CreateNodeType]
 
-クラスター ノードを構成します。ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。"NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成する必要はありません。
+クラスター ノードを構成します。ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。"NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成しないでください。
 
    >[AZURE.NOTE] 複数のノードのタイプの一般的なシナリオは、フロントエンド サービスとバックエンド サービスを含むアプリケーションです。フロントエンド サービスを小規模の VM (D2 のような VM サイズ) に配置します。この小規模 VM では、インターネットにポートを開いています。ただし、バックエンド サービスはインターネットに接続されたポートが開いていない大規模な VM (D4、D6、D15 などの VM サイズ) に配置します。
 
  1. ノードのタイプの名前を選択します (英字と数字のみを含む 1 ～ 12 文字)。
 
- 2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性**レベルによって決まります。既定の耐久性レベルはブロンズです。耐久性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]を参照してください。
+ 2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性**レベルによって決まります。既定の耐久性レベルはブロンズです。耐久性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]をご覧ください。
 
- 3. VM サイズと価格レベルを選択します。D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。
+ 3. VM サイズと価格レベルを選択します。D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。部分的なコアを持つ VM SKU や使用可能なディスク容量が 7 GB 未満の VM SKU は使用しないでください。
 
- 4. プライマリ ノード タイプの最低 VM **数**は、選択した**信頼性**レベルによって決まります。既定の信頼性レベルは Silver です。信頼性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]を参照してください。
+ 4. プライマリ ノード タイプの最低 VM **数**は、選択した**信頼性**レベルによって決まります。既定の信頼性レベルは Silver です。信頼性について詳しくは、[Service Fabric クラスターの信頼性と耐久性の選択方法に関する記事][service-fabric-cluster-capacity]をご覧ください。
 
  5. ノードのタイプの VM 数を選択します。後でノード タイプの VM 数を増減できますが、プライマリのノード タイプの場合、選択した信頼性レベルによって最小値が決まります。他のノード タイプには、VM 数に最小値の 1 を設定できます。
 
- 6. カスタム エンドポイントを構成します。このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。エンドポイントについて詳しくは、[アプリケーションとの通信に関する記事][service-fabric-connect-and-communicate-with-services]を参照してください。
+ 6. カスタム エンドポイントを構成します。このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。エンドポイントについて詳しくは、[アプリケーションとの通信に関する記事][service-fabric-connect-and-communicate-with-services]をご覧ください。
 
  7. クラスター**診断**を構成します。既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。診断をオフにすることは**推奨されません**。
+
+ 9. クラスターを設定するファブリック アップグレード モードを選択します。使用可能な最新バージョンをシステムで自動的に選択し、クラスターをそのバージョンにアップグレード場合は、**[自動]** を選択します。サポートされるバージョンを選択する場合は、**マニュアル** モードに設定します。
+
+>[AZURE.NOTE] サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。**マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。ファブリックのアップグレード モードの詳細は、[service-fabric-cluster-upgrade ドキュメント][service-fabric-cluster-upgrade]をご覧ください。
 
 
 #### 3\.セキュリティ
@@ -258,7 +265,8 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 最後の手順では、前の手順で作成した Key Vault と証明書情報を使用してクラスターをセキュリティで保護するための証明書情報を指定します。
 
- 1. `Invoke-AddCertToKeyVault` PowerShell コマンドを使って**クラスター証明書**を Key Vault にアップロードして取得した出力をプライマリ証明書フィールドに設定します。
+ 
+- `Invoke-AddCertToKeyVault` PowerShell コマンドを使って**クラスター証明書**を Key Vault にアップロードして取得した出力をプライマリ証明書フィールドに設定します。
 
 ```powershell
 Name  : CertificateThumbprint
@@ -271,14 +279,14 @@ Name  : CertificateURL
 Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
 ```
 
- 2. **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。
+- **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。
 
 
 #### 4\.概要
 
 !["Service Fabric クラスターのデプロイ中" が表示されているスタート画面のスクリーン ショット。][Notifications]
 
-クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure Resource Manager テンプレートをダウンロードします。必須の設定を指定すると、**[OK]** ボタンが有効になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
+クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure Resource Manager テンプレートをダウンロードします。必須の設定を指定すると、**[OK]** ボタンが緑色になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
 
 通知には作成の進行状況が表示されます(画面の右上にあるステータス バーの近くの "ベル" アイコンをクリックします)。 クラスターの作成中に **[スタート画面にピン留めする]** をクリックした場合、**[Deploying Service Fabric Cluster (Service Fabric クラスターのデプロイ)]** が**スタート**画面にピン留めされます。
 
@@ -296,7 +304,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 
 クラスターのダッシュボード ブレードの **[ノード モニター]** セクションには、正常な VM 数と正常ではない VM 数が表示されます。クラスターの正常性の詳細については、[Service Fabric の正常性モデルの概要][service-fabric-health-introduction]に関するページをご覧ください。
 
->[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全バックアップ][service-fabric-reliable-services-backup-restore]を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
+>[AZURE.NOTE] Service Fabric クラスターが常に稼働状態になって可用性を維持し、その状態を保持するには、一定数のノードが常にアップしている必要があります。これは、「維持クォーラム」と呼ばれます。そのため、先に[状態の完全バックアップ][service-fabric-reliable-services-backup-restore]を実行しない限り、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
 
 ## 仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 
@@ -320,6 +328,7 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
 [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node
+[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
@@ -330,4 +339,4 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

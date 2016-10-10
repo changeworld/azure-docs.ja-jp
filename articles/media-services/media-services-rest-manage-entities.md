@@ -1,6 +1,6 @@
 
 <properties 
-	pageTitle="REST API を使用した Media Services エンティティの管理" 
+	pageTitle="REST API を使用した Media Services エンティティの管理 | Microsoft Azure" 
 	description="REST API を使用して Media Services エンティティを管理する方法について説明します。" 
 	authors="juliako" 
 	manager="dwrede" 
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 #REST API を使用した Media Services エンティティの管理
@@ -175,4 +175,4 @@ Media Services のエンティティは、DELETE HTTP 要求を使用して削�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="スムーズ ストリーミング用 Windows ストア アプリケーションのチュートリアル" 
+	pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション チュートリアル | Microsoft Azure" 
 	description="Azure Media Services を使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 
@@ -986,4 +986,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

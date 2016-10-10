@@ -13,16 +13,14 @@ ms.service="virtual-machines-linux"
  ms.topic="article"
  ms.tgt_pltfrm="vm-linux"
  ms.workload="big-compute"
- ms.date="06/17/2016"
+ ms.date="09/26/2016"
  ms.author="danlep"/>
 
-# Microsoft HPC Pack を使用して Azure でハイパフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
+# Azure で Linux ワークロード用の HPC クラスターを作成して管理するために使用する HPC Pack のオプション
 
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
 この記事では、HPC Pack を使用して Linux ワークロードを実行するオプションについて説明します。[HPC Pack を使用して Windows HPC ワークロード](virtual-machines-windows-hpcpack-cluster-options.md)を実行するオプションもあります。
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## Azure VM での HPC Pack クラスターの実行
 
@@ -52,6 +50,8 @@ ms.service="virtual-machines-linux"
 
 * [Submit jobs to an HPC Pack cluster in Azure (Azure の HPC Pack クラスターにジョブを送信する)](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 
+* [HPC Pack でのジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)
+
 
 ## MPI ワークロードのための RDMA のクラスターの作成
 
@@ -59,4 +59,4 @@ ms.service="virtual-machines-linux"
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](virtual-machines-linux-classic-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

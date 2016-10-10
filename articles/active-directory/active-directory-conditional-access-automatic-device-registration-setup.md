@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/09/2016"
+	ms.date="09/26/2016"
 	ms.author="markvi"/>
 
 
@@ -30,8 +30,6 @@ Azure AD への Windows ドメイン参加コンピューターの登録は、[A
 登録は次に示す以前のバージョンの Windows でサポートされています。
 
 - Windows 8.1
-
-- Windows 8.0
 
 - Windows 7
 
@@ -212,9 +210,6 @@ Windows 10 および Windows Server 2016 のコンピューターの場合、Azu
 
 **<RPObjectName>** は、Azure Active Directory 証明書利用者信頼オブジェクトの証明書利用者オブジェクト名です。通常、このオブジェクトは「Microsoft Office 365 ID プラットフォーム」という名前です。
 
-
-
-
  
 
 ## デプロイメントと展開 
@@ -223,11 +218,11 @@ Windows 10 および Windows Server 2016 のコンピューターの場合、Azu
 
 Windows 10 Anniversary Update および Windows Server 2016 のドメイン参加コンピューターは、次回の再起動時または Windows へのユーザーのサインイン時に Azure AD に自動的に登録されます。ドメインに参加している新しいコンピューターは、ドメイン参加操作の後の再起動で Azure AD に登録されます。
 
-> [AZURE.NOTE] Windows 10 November 2015 Update ドメイン参加コンピューターは、展開グループ ポリシー オブジェクトが設定されている場合にのみ Azure AD に自動的に登録されます。詳細については、次のセクションを参照してください。
+> [AZURE.NOTE] Windows 10 ドメイン参加コンピューターは、展開グループ ポリシー オブジェクトが設定されている場合にのみ Azure AD に自動的に登録されます。詳細については、次のセクションを参照してください。
 
 Windows 10/Windows Server 2016 のドメイン参加コンピューターの自動登録の展開を制御するには、グループ ポリシー オブジェクトを使用できます。Windows 10 以外のドメイン参加コンピューターの自動登録の展開には、選択したコンピューターに Windows インストーラー パッケージをデプロイします。
 
-> [AZURE.NOTE] また、展開を制御するグループ ポリシーは Windows 8.1 ドメイン参加コンピューターの登録もトリガーします。Windows 8.1 ドメイン参加コンピューターの登録用のポリシーを使用することも、または 7、8.0 など Windows や Windows Server のバージョンが混在している場合、Windows インストーラー パッケージを使用して Windows 10/Windows Server 2016 以外のすべてのコンピューターの登録を有効にすることもできます。
+> [AZURE.NOTE] また、展開を制御するグループ ポリシーは Windows 8.1 ドメイン参加コンピューターの登録もトリガーします。Windows 8.1 ドメイン参加コンピューターの登録用のポリシーを使用することも、7 などの Windows や Windows Server のバージョンが混在している場合に、Windows インストーラー パッケージを使用して Windows 10 と Windows Server 2016 を除く、すべてのコンピューターの登録を有効にすることもできます。
 
 ### 自動登録の展開を制御するグループ ポリシー オブジェクト 
 
@@ -257,7 +252,7 @@ Azure AD へのドメイン参加コンピューターの自動登録の展開�
 
 ## Windows 10 コンピューター以外の MSI パッケージ  
 
-Windows 7、Windows 8.0、Windows 8.1、Windows Server 2008 R2、Windows Server 2012、または Windows Server 2012 R2 を実行しているドメイン参加コンピューターを登録するために、Windows インストーラー パッケージ (.msi) をダウンロードできます。
+Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012、または Windows Server 2012 R2 を実行しているドメイン参加コンピューターを登録するために、Windows インストーラー パッケージ (.msi) をダウンロードできます。
 
 - [x64](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x64.msi)
 - [x86](http://download.microsoft.com/download/C/A/7/CA79FAE2-8C18-4A8C-A4C0-5854E449ADB8/Workplace_x86.msi)
@@ -272,4 +267,4 @@ System Center Configuration Manager などのソフトウェア配布システ�
 
 - [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

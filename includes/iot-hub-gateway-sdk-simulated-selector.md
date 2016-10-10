@@ -27,7 +27,7 @@ Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミ�
 ![][1]
 
 
-> [AZURE.NOTE] モジュールが他のモジュールに直接メッセージを渡すことはありません。下の図に示すように、モジュールが内部のメッセージ バスにメッセージを発行し、メッセージ バスが他のモジュールにメッセージを配信します。これにはサブスクリプション メカニズムが使用されます。詳細については、「[Get started with the Gateway SDK][lnk-gw-getstarted]」 (Gateway SDK の使用) を参照してください。
+> [AZURE.NOTE] モジュールが他のモジュールに直接メッセージを渡すことはありません。下の図に示すように、モジュールが内部のブローカーにメッセージを発行し、メッセージ バスが他のモジュールにメッセージを配信します。これにはサブスクリプション メカニズムが使用されます。詳細については、「[Get started with the Gateway SDK][lnk-gw-getstarted]」 (Gateway SDK の使用) を参照してください。
 
 ### プロトコル インジェスト モジュール
 
@@ -69,3 +69,4 @@ Simulated Device Cloud Upload サンプルでは、SDK を使用して、シミ�
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-gw-getstarted]: ../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md
 
+<!---HONumber=AcomDC_0928_2016-->

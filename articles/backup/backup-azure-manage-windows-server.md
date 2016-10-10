@@ -280,7 +280,7 @@ A1.Azure Backup エージェントのバックアップ ジョブの状態が Az
 
 **Q2. バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
 
-A2. アラートは、Azure のバックアップが失敗してから 5 分以内に発生します。
+A2. アラートは、Azure のバックアップが失敗してから 20 分以内に発生します。
 
 **Q3.通知が設定されているのに、電子メールが送信されないことはありますか。**
 
@@ -300,4 +300,4 @@ A3.アラートのノイズを軽減する目的で、次の場合は通知が�
 - Azure Backup の詳細については、「[Azure Backup の概要](backup-introduction-to-azure-backup.md)」を参照してください。
 - [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

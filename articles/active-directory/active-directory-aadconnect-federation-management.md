@@ -5,7 +5,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="anandyadavmsft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -211,4 +211,4 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
 
 [ユーザー サインイン オプション](active-directory-aadconnect-user-signin.md)の詳細を確認します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

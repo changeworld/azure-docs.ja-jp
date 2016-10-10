@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/25/2016"
+     ms.author="andbuc"/>
 
 
 # IoT Gateway SDK (Beta) – Windows の使用
@@ -33,7 +33,7 @@
 
 1. **build.cmd** スクリプトにより、リポジトリのローカル コピーに **ビルド** という名前のフォルダーが作成されます。このフォルダーには、このサンプルで使用する 2 つのモジュールが含まれています。
 
-    この build スクリプトにより、**liblogger\_hl.dll** が **build\\modules\\logger\\Debug** フォルダーに配置され、**libhello\_world\_hl.dll** が **build\\modules\\hello\_world\\Debug** フォルダーに配置されます。次の JSON 設定ファイルに示すように、**モジュール パス** の値にはこれらのパスを使用します。
+    この build スクリプトにより、**liblogger\_hl.dll** が **build\\modules\\logger\\Debug** フォルダーに配置され、**hello\_world\_hl.dll** が **build\\modules\\hello\_world\\Debug** フォルダーに配置されます。次の JSON 設定ファイルに示すように、**モジュール パス** の値にはこれらのパスを使用します。
 
 2. **samples/hello\_world/src** フォルダーの **hello\_world\_win.json** ファイルは、サンプルの実行に使用できる Windows の JSON 設定ファイルの例です。次に示す JSON 設定の例は、Gateway SDK リポジトリを **C:** ドライブのルートに複製していることを前提としています。別の場所にダウンロードした場合は、ダウンロード先に応じて **samples\\hello\_world\\src\\hello\_world\_win.json** ファイルの **モジュール パス** の値を調整する必要があります。
 
@@ -58,6 +58,13 @@
           "module path" : "C:\\azure-iot-gateway-sdk\\build\\\modules\\hello_world\\Debug\\hello_world_hl.dll",
           "args" : null
         }
+      ],
+      "links" :
+      [
+        {
+          "source": "hello_world",
+          "sink": "logger_hl"
+        }
       ]
     }
     ```
@@ -74,4 +81,4 @@
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 
-<!---HONumber=AcomDC_0504_2016-->
+<!---HONumber=AcomDC_0928_2016-->

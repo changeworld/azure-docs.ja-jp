@@ -62,6 +62,7 @@
 - Redis Cache
 - Scheduler
 - Search
+- Service Bus
 - Storage
 - Storage (クラシック) - 「[クラシック デプロイメントの制限事項](#classic-deployment-limitations)」を参照してください
 - SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。SQL Server を移動すると、そのデータベースもすべて移動されます。
@@ -258,4 +259,4 @@ Azure Site Recovery で障害復旧を設定するときに使用されるスト
 - サブスクリプションを管理するためのポータル機能については、[Azure Portal を使用したリソースの管理](./azure-portal/resource-group-portal.md)に関するページをご覧ください。
 - リソースを論理的に整理する方法については、「[タグを使用したリソースの整理](resource-group-using-tags.md)」を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

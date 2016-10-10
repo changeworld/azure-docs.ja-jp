@@ -13,28 +13,27 @@ ms.service="virtual-machines-windows"
  ms.topic="article"
  ms.tgt_pltfrm="vm-windows"
  ms.workload="big-compute"
- ms.date="06/17/2016"
+ ms.date="09/26/2016"
  ms.author="danlep"/>
 
-# Microsoft HPC Pack を使用して Azure で Windows ハイ パフォーマンス コンピューティング (HPC) クラスターを作成および管理するためのオプション
+# Azure で Windows HPC クラスターを作成して管理するために使用する HPC Pack のオプション
 
 [AZURE.INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
-この記事では、HPC Pack を使用して Windows ワークロードを実行するオプションについて説明します。[HPC Pack を使用して Linux HPC ワークロード](virtual-machines-linux-hpcpack-cluster-options.md)を実行するオプションもあります。
+この記事では、Windows ワークロードの実行に使用する HPC Pack クラスターを作成するためのオプションについて説明します。[HPC Pack によって Linux HPC ワークロード](virtual-machines-linux-hpcpack-cluster-options.md)を実行するのに使用するクラスターを作成するためのオプションもあります。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 ## Azure VM での HPC Pack クラスターの実行
 
 ### Azure テンプレート
 
-* (Marketplace) [HPC Pack cluster for Windows workloads (Windows ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
+* (Marketplace) [HPC Pack cluster for Windows workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)
 
-* (Marketplace) [HPC Pack cluster for Excel workloads (Excel ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
+* (Marketplace) [HPC Pack cluster for Excel workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterexcelcn/)
 
-* (クイックスタート) [Create an HPC cluster with custom compute node image](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)
+* (クイックスタート) [HPC クラスターを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)
 
-* (クイックスタート) [Create an HPC cluster with custom compute node image(カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-custom-image)
+* (クイックスタート) [Create an HPC cluster with custom compute node image (カスタム コンピューティング ノード イメージを使用した HPC クラスターの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-custom-image)
 
 ### Azure VM イメージ
 
@@ -64,10 +63,11 @@ ms.service="virtual-machines-windows"
 
 * [Manage compute nodes in an HPC Pack cluster in Azure (Azure の HPC Pack クラスターでコンピューティング ノードを管理する)](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md)
 
-
 * [Grow and shrink Azure compute resources in an HPC Pack cluster (HPC Pack クラスターでの Azure コンピューティング リソースの増減)](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)
 
 * [Submit jobs to an HPC Pack cluster in Azure (Azure の HPC Pack クラスターにジョブを送信する)](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
+
+* [HPC Pack でのジョブ管理](https://technet.microsoft.com/library/jj899585.aspx)
 
 
 ## HPC Pack クラスターへの worker ロールの追加
@@ -79,7 +79,6 @@ ms.service="virtual-machines-windows"
 
 * [Add Azure "burst" nodes to an HPC Pack head node in Azure (Azure の HPC Pack ヘッド ノードに Azure "バースト" ノードを追加する)](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md)
 
-* [Grow and shrink Azure compute resources in an HPC Pack cluster (HPC Pack クラスターでの Azure コンピューティング リソースの増減)](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)
 
 ## Azure Batch との統合 
 
@@ -89,4 +88,4 @@ ms.service="virtual-machines-windows"
 
 * [Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](virtual-machines-windows-classic-hpcpack-rdma-cluster.md)
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

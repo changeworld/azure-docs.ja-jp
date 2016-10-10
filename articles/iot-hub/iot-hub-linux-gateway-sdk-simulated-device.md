@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/29/2016"
+     ms.author="andbuc"/>
 
 
 # IoT ゲートウェイ SDK (ベータ) – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する
@@ -41,11 +41,12 @@
 
 テキスト エディターで、**azure-iot-gateway-sdk** リポジトリのローカル コピーにある **samples/simulated\_device\_cloud\_upload/src/simulated\_device\_cloud\_upload\_lin.json** ファイルを開きます。このファイルでは、サンプル ゲートウェイの各モジュールを構成します。
 
-- **IoTHub** モジュールは、IoT Hub に接続します。データを IoT Hub に送信するようにモジュールを構成する必要があります。具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** の値を **azure-devices.net** に設定します。
+- **IoTHub** モジュールは、IoT Hub に接続します。データを IoT Hub に送信するようにモジュールを構成する必要があります。具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。**Transport** の値を "HTTP"、"AMQP"、または "MQTT" のいずれかに設定します。現在、すべてのデバイス メッセージで 1 つの TCP 接続を共有するのは "HTTP" のみです。値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
 - **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。**deviceId** 値が IoT Hub に追加した 2 つのデバイスの ID と一致し、**deviceKey** 値に 2 つのデバイスのキーが含まれていることを確認します。
 - **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。これらのモジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
 - **Logger** モジュールは、ゲートウェイのアクティビティをファイルに記録します。
 - 次に示す **module path** の値は、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルートからサンプルを実行することを前提としています。
+- JSON ファイルの下部にある **links** 配列は、**BLE1** モジュールと **BLE2** モジュールを **mapping** モジュールに、**mapping** モジュールを **IoTHub** モジュールに接続します。また、すべてのメッセージが **Logger** モジュールによってログに記録されます。
 
 ```
 {
@@ -53,27 +54,28 @@
     [ 
         {
             "module name" : "IoTHub",
-            "module path" : "./build/modules/iothubhttp/libiothubhttp_hl.so",
+            "module path" : "./build/modules/iothub/libiothub_hl.so",
             "args" : 
             {
                 "IoTHubName" : "{Your IoT hub name}",
-                "IoTHubSuffix" : "azure-devices.net"
+                "IoTHubSuffix" : "azure-devices.net",
+                "Transport": "HTTP"
             }
         },
         {
             "module name" : "mapping",
-            "module path" : "./build/modules/identitymap/libidentitymap_hl.so",
+            "module path" : "./build/modules/identitymap/libidentity_map_hl.so",
             "args" : 
             [
                 {
                     "macAddress" : "01-01-01-01-01-01",
-                    "deviceId"   : "GW-ble1-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 1}",
+                    "deviceKey"  : "{Device key 1}"
                 },
                 {
                     "macAddress" : "02-02-02-02-02-02",
-                    "deviceId"   : "GW-ble2-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 2}",
+                    "deviceKey"  : "{Device key 2}"
                 }
             ]
         },
@@ -101,6 +103,12 @@
                 "filename":"./deviceCloudUploadGatewaylog.log"
             }
         }
+    ],
+    "links" : [
+        { "source" : "*", "sink" : "Logger" },
+        { "source" : "BLE1", "sink" : "mapping" },
+        { "source" : "BLE2", "sink" : "mapping" },
+        { "source" : "mapping", "sink" : "IoTHub" }
     ]
 }
 
@@ -151,4 +159,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-portal]: iot-hub-manage-through-portal.md
 [lnk-securing]: iot-hub-security-ground-up.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

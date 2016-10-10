@@ -13,12 +13,12 @@
    	ms.tgt_pltfrm="na"
    	ms.devlang="na"
    	ms.topic="article"
-   	ms.date="07/06/2016"
+   	ms.date="09/22/2016"
    	ms.author="v-donglo"/>
 
 # 新しい Web サービスのデプロイ
 
-Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager]( ../azure-portal/resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
+Microsoft Azure Machine Learning で、新しい課金プラン オプションが可能で Web サービスを複数のリージョンにデプロイできる [Azure Resource Manager](../resource-group-overview.md) に基づく Web サービスが提供されるようになりました。
 
 Microsoft Azure Machine Learning Web サービスを使用して Web サービスをデプロイする一般的なワークフローは次のとおりです。
 
@@ -39,7 +39,7 @@ Microsoft Azure Machine Learning Web サービスを使用して Web サービ�
 
 **注**: 従来の Web サービスとして実験を既にデプロイしている場合は、新しい Web サービスとしてデプロイすることはできません。
  
-実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** をクリックします。Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
+実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** と **[Deploy Web Service [New](Web サービスのデプロイ [新規])]** をクリックします。Machine Learning Web サービス マネージャの [デプロイ] ページが開きます。
 
 ## Machine Learning Web サービス マネージャの [Deploy Experiment (実験のデプロイ)] ページ
 [Deploy Experiment (実験のデプロイ]) ページで、Web サービスの名前を入力します。料金プランを選択します。既存の料金プランがある場合はそのプランを選択できます。ない場合は、サービス用に新しい料金プランを作成する必要があります。
@@ -87,6 +87,13 @@ Azure Machine Learning の実験は、Web サービスとしてデプロイさ�
 
 Web サービスの使用方法の詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
 
+## 次のステップ
+
+Web サービスの使用方法の詳細については、以下を参照してください。
+
+[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)
+
+[Azure Machine Learning Web サービス: デプロイと使用](machine-learning-deploy-consume-web-service-guide.md)
 
 <!--Image references-->
 [1]: ./media/machine-learning-webservice-deploy-a-web-service/armdeploymentworkflow.png
@@ -94,4 +101,4 @@ Web サービスの使用方法の詳細については、「[Machine Learning �
 
 <!--links-->
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

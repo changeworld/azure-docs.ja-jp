@@ -14,7 +14,7 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.author="dineshm;tamram"/>
 
 # Azure Storage の接続文字列を構成する
 
@@ -163,4 +163,4 @@ Azure China、Azure Governance など、別のエンドポイント サフィッ
 - [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 - [Azure ストレージ エクスプローラー](storage-explorers.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

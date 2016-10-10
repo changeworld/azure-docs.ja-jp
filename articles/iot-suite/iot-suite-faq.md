@@ -14,7 +14,7 @@
   ms.topic="article"
   ms.tgt_pltfrm="na"
   ms.workload="na"
-  ms.date="06/27/2016"
+  ms.date="09/26/2016"
   ms.author="araguila"/>
    
 # IoT スイートに関してよく寄せられる質問
@@ -40,7 +40,7 @@
 ### 静止マップを含むリモート監視ソリューションのデプロイがあります。これに対話型の Bing マップを追加するにはどうすればよいですか。 
 1. [Azure ポータル][lnk-azure-portal]から Bing Maps API for Enterprise の QueryKey を取得してください。
  1. [Azure ポータル][lnk-azure-portal]で、Bing Maps API for Enterprise が含まれるリソース グループに移動します。
- 2. [All Settings]\(すべての設定)、[Key Management]\(キーの管理) の順にクリックします。
+ 2. [All Settings] (すべての設定)、[Key Management] (キーの管理) の順にクリックします。
  3. MasterKey と QueryKey という 2 つのキーが表示されます。QueryKey の値をコピーします。
 
      > [AZURE.NOTE] Bing Maps API for Enterprise アカウントがない場合は、 [Azure ポータル][lnk-azure-portal]で [+ 新規] をクリックし、Bing Maps API for Enterprise を検索して、画面の指示に従ってアカウントを作成してください。
@@ -82,4 +82,4 @@ IoT Suite の事前構成済みのソリューションの他の機能につい�
 [lnk-30daytrial]: https://azure.microsoft.com/free/
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

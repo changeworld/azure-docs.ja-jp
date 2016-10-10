@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して OData ソースからデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/25/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/26/2016" 
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用して OData ソースからデータを移動する
 この記事では、Azure Data Factory のコピー アクティビティを使用して、OData ソースと他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
@@ -71,7 +71,7 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 
 **OData の入力データセット**
 
-“external”: ”true” を設定して externalData ポリシーを指定すると、テーブルが Data Factory に対して外部にあり、Data Factory のアクティビティでは生成されていないことが Data Factory のサービスに通知されます。
+”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 	
     {
     	"name": "ODataDataset",
@@ -162,7 +162,7 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 
 **コピー アクティビティのあるパイプライン**
 
-上記の入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティがパイプラインに含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、OData ソースの最新のデータを選択します。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。パイプライン JSON 定義で、**source** 型が **RelationalSource** に設定され、**sink** 型が **BlobSink** に設定されています。**query** プロパティに指定された SQL クエリは、OData ソースの最新のデータを選択します。
 	
 	{
 	    "name": "CopyODataToBlob",
@@ -219,7 +219,7 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 | -------- | ----------- | -------- | 
 | type | type プロパティを **OData** に設定する必要があります。 | はい |
 | url| OData サービスの URL です。 | はい |
-| authenticationType | OData ソースへの接続に使用される認証の種類です。<br/><br/> クラウド OData の場合、指定できる値は Anonymous と Basic です。オンプレミスの OData の場合、指定できる値は Anonymous、Basic、および Windows です。 | はい | 
+| authenticationType | OData ソースへの接続に使用される認証の種類です。<br/><br/>OData では、Anonymous と Basic のいずれかの値になります。オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 | はい | 
 | username | 基本認証を使用している場合は、ユーザー名を指定します。 | はい (基本認証を使用している場合のみ) | 
 | パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 | はい (基本認証を使用している場合のみ) | 
 | gatewayName | Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 | いいえ |
@@ -278,7 +278,7 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 
 ## OData データセットの type プロパティ
 
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Azure SQL、Azure BLOB、Azure テーブルなど) で同じです。
+データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。**ODataResource** 型のデータセット (OData データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
@@ -288,11 +288,11 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 
 ## OData のコピー アクティビティの type プロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。名前、説明、入力テーブル、出力テーブル、さまざまなポリシーなどのプロパティがあらゆる種類のアクティビティで利用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
-一方で、アクティビティの typeProperties セクションで利用できるプロパティはアクティビティの種類により異なり、コピー アクティビティの場合、source と sink の種類によって異なります。
+一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
-コピー アクティビティで、source の種類が **RelationalSource** (OData を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
+source の種類が **RelationalSource** (OData を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
 | プロパティ | Description | 例 | 必須 |
 | -------- | ----------- | -------------- | -------- |
@@ -302,7 +302,7 @@ OData ソースとの間でデータをコピーするパイプラインを作�
 
 ### OData の型マッピング
 
-「[データ移動アクティビティ](data-factory-data-movement-activities.md)」の記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
@@ -317,4 +317,4 @@ OData データ ストアからデータを移動するとき、OData データ�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

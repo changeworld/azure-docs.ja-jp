@@ -1,7 +1,7 @@
 <properties
    pageTitle="Windows クライアント イメージを開発/テスト シナリオに使用する |Microsoft Azure"
    description="Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7/8/10 を開発/テストのシナリオにデプロイする方法"
-   services="virtual-machines-windowse"
+   services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
    manager="timlt"
@@ -57,4 +57,4 @@
 ## 次のステップ
 これで、[PowerShell](virtual-machines-windows-ps-create.md)、[Resource Manager テンプレート](virtual-machines-windows-ps-template.md)、または [Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) を使用して VM をデプロイすることができます。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

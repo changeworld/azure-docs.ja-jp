@@ -14,37 +14,37 @@
 	ms.workload="na" 
 	ms.topic="article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="07/19/2016" 
+	ms.date="09/23/2016" 
 	ms.author="betorres"
 />
 
 
 # 検索トラフィックの分析の有効化と使用
 
-検索トラフィックの分析は、使用している検索サービスを表示し、ユーザーとその動作に関する洞察のロックを解除できる Azure Search の機能です。この機能を有効にすると、検索サービスのデータは選択しているストレージ アカウントにコピーされます。このデータには、検索サービスのログと集計された運用メトリックが含まれます。これらを処理および操作して、さらに詳しい分析を行うことができます。
+検索トラフィックの分析は、使用している検索サービスを表示し、ユーザーとその動作に関する洞察のロックを解除できる Azure Search の機能です。この機能を有効にすると、検索サービスのデータは選択しているストレージ アカウントにコピーされます。このデータには、Search サービスのログと集計された運用メトリックが含まれます。これらを処理および操作して、さらに詳しい分析を行うことができます。
 
 ## 検索トラフィックの分析を有効にする方法
 
-検索サービスと同じリージョンおよびサブスクリプション内にあるストレージ アカウントが必要になります。
+Search サービスと同じリージョンおよびサブスクリプション内にあるストレージ アカウントが必要です。
 
 > [AZURE.IMPORTANT] このストレージ アカウントには標準料金が適用されます。
 
-有効にすると、5 ～ 10 分以内にデータのストレージ アカウントへの送信が開始され、次の 2 つの BLOB コンテナーに格納されます。
+検索トラフィックの分析は、ポータルまたは PowerShell から有効にできます。有効にすると、5 ～ 10 分以内にデータのストレージ アカウントへのフローが開始され、次の 2 つの BLOB コンテナーに格納されます。
 
     insights-logs-operationlogs: search traffic logs
     insights-metrics-pt1m: aggregated metrics
 
 
-### 1\.ポータルの使用
-[Azure ポータル](http://portal.azure.com)で Azure Search サービスを開きます。[設定] には、検索トラフィックの分析オプションが表示されます。
+### A.ポータルの使用
+[Azure Portal](http://portal.azure.com) で Azure Search サービスを開きます。[設定] には、[検索トラフィックの分析] オプションが表示されます。
 
 ![][1]
 
-このオプションを選択して、新しいブレードが開きます。[状態] を **[オン]** に変更し、データがコピーされる Azure Storage アカウントを選択して、コピーするデータ (ログ、メトリック、または両方) を選択します。ログとメトリックをコピーすることをお勧めします。データのリテンション期間ポリシーを 1 日から 365 日の間で設定できるオプションがあります。リテンション期間ポリシーを適用せず、永久にデータを保持する場合は、[リテンション期間 (日数)] を 0 に設定します。
+[状態] を **[オン]** に変更し、使用する Azure Storage アカウントを選択して、コピーするデータ (ログ、メトリック、または両方) を選択します。ログとメトリックをコピーすることをお勧めします。データのリテンション期間ポリシーを 1 日から 365 日の間で設定できます。データを無期限に保持する場合は、リテンション期間 (日数) を 0 に設定します。
 
 ![][2]
 
-### 2\.PowerShell の使用
+### B.PowerShell の使用
 
 まず、最新の [Azure PowerShell コマンドレット](https://github.com/Azure/azure-powershell/releases)がインストールされていることを確認します。
 
@@ -67,9 +67,9 @@ Set-AzureRmDiagnosticSetting -ResourceId $SearchServiceResourceId StorageAccount
   
 例のパス: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
 
-### Logs (ログ)
+### ログ
 
-ログ BLOB には、検索サービスのトラフィック ログが含まれています。各 BLOB は**レコード**と呼ばれる 1 つのルート オブジェクトを持ち、このルート オブジェクトにはログ オブジェクトの配列が含まれます。ログ オブジェクトには、各 BLOB が同じ時間帯に行ったすべての操作が記録されます。
+ログ BLOB には、検索サービスのトラフィック ログが含まれています。各 BLOB には、ログ オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
 ####ログのスキーマ
 
@@ -83,13 +83,13 @@ operationVersion |string |"2015-02-28"|使用されている API バージョン
 resultType |string |"Success" |使用可能な値: Success または Failure 
 resultSignature |int |200 |HTTP の結果コード 
 durationMS |int |50 |操作時間 (ミリ秒) 
-プロパティ |オブジェクト |以下を参照 |操作固有データを含むオブジェクト
+プロパティ |オブジェクト |次の表を参照 |操作固有データを含むオブジェクト
 
 ####プロパティのスキーマ
 
 |名前 |型 |例 |メモ|
 |------|-----|----|-----|
-|説明|string |"GET /indexes('content')/docs" |操作のエンドポイント |
+|Description|string |"GET /indexes('content')/docs" |操作のエンドポイント |
 |クエリ |string |"?search=AzureSearch&$count=true&api-version=2015-02-28" |クエリ パラメーター |
 |ドキュメント |int |42 |処理されたドキュメント数|
 |IndexName |string |"testindex"|操作に関連付けられているインデックスの名前 |
@@ -120,11 +120,11 @@ durationMS |int |50 |操作時間 (ミリ秒)
 |count |int |4 |メトリックの生成に使用される生のサンプル数 |
 |timegrain |string |"PT1M" |ISO 8601 でのメトリックの時間グレイン|
 
-すべてのメトリックは、1 分間隔で報告されます。つまり、各メトリックは、1 分あたりの最小値、最大値、および平均値を公開します。
+すべてのメトリックは、1 分間隔で報告されます。各メトリックは、1 分あたりの最小値、最大値、および平均値を公開します。
 
-SearchQueriesPerSecond メトリックの場合は、最小値は該当する 1 分間に登録された秒あたりの検索クエリ数のうち最小の値になります。最大値も同様です。平均値は、1 分間にわたって集計されます。次のシナリオを考えてみましょう。1 分間の間に非常に負荷が高い 1 秒があり、この値が SearchQueriesPerSecond の最大値になり、続く 58 秒は負荷が中程度で、クエリが 1 つだけの 1 秒間が続き、この値が最小値になります。
+SearchQueriesPerSecond メトリックの場合、最小値は、該当する 1 分間に登録された秒あたりの検索クエリ数のうち最小の値になります。最大値も同様です。平均値は、1 分間にわたって集計されます。1 分間のうち、1 秒は非常に負荷が高く、続く 58 秒は平均的な負荷で、最後の 1 秒はクエリが 1 つだけというシナリオを考えてみましょう。この場合、最初の 1 秒の値が SearchQueriesPerSecond の最大値、最後の １ 秒の値が最小値となります。
 
-ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均値、および合計値はすべて同じ値になります。これは、スロットルされた検索クエリの割合であり、1 分間の検索クエリの合計数に基づく値です。
+ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均値、および合計値はすべて同じ値になります。これは、スロットルされた検索クエリの割合であり、1 分間の検索クエリの合計数に基づきます。
 
 ## データの分析
 
@@ -140,7 +140,7 @@ ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均�
 
 #### Power BI Desktop
 
-[Power BI Desktop](https://powerbi.microsoft.com/ja-JP/desktop): データを調査し、データの視覚化を作成します。以下のように、役立つ基本的なクエリが用意されています。
+[Power BI Desktop](https://powerbi.microsoft.com/ja-JP/desktop): データを調査し、データの視覚化を作成します。次のセクションで、基本的なクエリを参照してください。
 
 1. 新しい PowerBI Desktop レポートを開きます
 2. [データの取得]、[詳細] の順に選択します
@@ -153,7 +153,7 @@ ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均�
 
 4. 使用しているストレージ アカウントの名前とアカウント キーを入力します
 5. "insight-logs-operationlogs" と "insights-metrics-pt1m" を選択して、[編集] をクリックします
-6. クエリ エディターが開き、左側で "insight-logs-operationlogs" が選択されていることを確認します。ここで、[表示]、[詳細エディター] の順に選択して、詳細エディターを開きます。
+6. クエリ エディターが開いたら、左側で "insight-logs-operationlogs" が選択されていることを確認します。ここで、[表示]、[詳細エディター] の順に選択して、詳細エディターを開きます。
 
 	![][7]
 
@@ -228,4 +228,4 @@ ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均�
 [6]: ./media/search-traffic-analytics/BlobStorage.png
 [7]: ./media/search-traffic-analytics/QueryEditor.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

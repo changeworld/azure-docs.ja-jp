@@ -69,6 +69,17 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 
 ![データ ファクトリの移動](media/data-factory-faq/move-data-factory.png)
 
+### Data Factory ではどのようなコンピューティング環境がサポートされますか。
+次の表は、Data Factory でサポートされているコンピューティング環境と、その環境で実行できるアクティビティの一覧です。
+
+| コンピューティング環境 | アクティビティ |
+| ------------------- | -------- | 
+| [On-demand HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) | 
+| [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |  
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) | [Machine Learning アクティビティ: バッチ実行とリソース更新](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) | [ストアド プロシージャ](data-factory-stored-proc-activity.md)
+
 ## アクティビティ - FAQ
 ### Data Factory パイプラインで使用できるアクティビティには、どのような種類がありますか。 
 
@@ -82,8 +93,13 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ### 1 つのパイプラインに複数のアクティビティを設定する方法とアクティビティごとに別個のパイプラインを使用する方法ではどちらの方法がよいですか。 
 パイプラインでは、関連する複数のアクティビティをまとめることが想定されています。複数のアクティビティを接続するデータセットがパイプラインの外部の他のアクティビティによって使用されない場合は、1 つのパイプラインにそれらのアクティビティを保持できます。これにより、パイプラインのアクティブな期間を揃えるためにこれを連結する必要はありません。また、パイプライン内部のテーブルのデータの整合性が、パイプラインを更新するときに、よりうまく保持されるようになります。パイプラインを更新するとき、基本的にパイプライン内のすべてのアクティビティが停止、削除された後、もう一度作成されます。作成操作の観点では、パイプラインの 1 つの JSON ファイルで関連するアクティビティ内のデータのフローを簡単に見ることができるようになる可能性があります。
 
-### コピー操作はどこで実行されますか。 
+### どのようなデータ ストアがサポートされますか。
+[AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
+### どのようなファイル形式がサポートされますか。 
+[AZURE.INCLUDE [data-factory-file-format](../../includes/data-factory-file-format.md)]
+
+### コピー操作はどこで実行されますか。 
 詳細については、「[グローバルに使用できるデータの移動](data-factory-data-movement-activities.md#global)」を参照してください。簡単に言うと、オンプレミスのデータ ストアが関係する場合、コピー操作はオンプレミス環境内の Data Management Gateway で実行されます。また、2 つのクラウド ストア間でデータの移動を行う場合、コピー操作は同じ地理的場所のシンクの場所に最も近いリージョンで実行されます。
 
 
@@ -192,4 +208,4 @@ external プロパティが適切に設定されている場合は、入力デ�
 [hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

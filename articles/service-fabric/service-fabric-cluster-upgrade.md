@@ -1,6 +1,6 @@
 <properties
    pageTitle="Service Fabric クラスターのアップグレード | Microsoft Azure"
-   description="Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。アップグレードを実行しているときに、どのようなことが起きるでしょうか?"
+   description="Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。アップグレードを実行しているときに、どのようなことが起きるでしょうか?"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="09/13/2016"
+   ms.date="09/22/2016"
    ms.author="chackdan"/>
 
 
@@ -21,9 +21,100 @@
 
 Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されます。この記事では、何が自動的に管理され、何をお客様が構成できるかについて説明します。
 
-## 自動的に管理されるクラスター構成
+## クラスター上で動作するファブリック バージョンの制御
 
-Microsoft は、クラスターで実行されるファブリック コードと構成を管理します。必要に応じて、ソフトウェアに対して自動的な監視付きアップグレードを実行します。これらのアップグレードは、コード、構成、またはその両方で行うことができます。これらのアップグレードからアプリケーションが影響を受けない、またはその影響を最小限にするために、アップグレードは次の 3 つのフェーズで行われます。
+クラスターは、新しいバージョンのファブリックがマイクロソフトからリリースされたときに自動アップグレードを適用するように設定できます。また、サポートされているファブリック バージョンから、クラスターで使用するバージョンを選択するように設定することもできます。
+
+そのためには、クラスターの作成時に (または後から稼働中のクラスターに対して) Resource Manager を使用するか、またはポータルで "upgradeMode" クラスター構成を設定します。
+
+>[AZURE.NOTE] クラスターには必ず、サポートされているバージョンのファブリックを使用してください。マイクロソフトが Service Fabric の新バージョン リリースをアナウンスした日から最短で 60 日後には、以前のバージョンが有効期間の終了として指定されます。新バージョンのリリースは、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)でお知らせします。その後間もなく新しいバージョンが利用できるようになります。
+
+現在クラスターで実行されているバージョンの有効期間が終了する 14 日前に、正常性に関するイベントが生成され、クラスターの正常性が警告状態に移行します。サポートされているバージョンのファブリックにアップグレードするまで、クラスターは警告状態のままとなります。
+
+
+### ポータルでのアップグレード モードの設定 
+
+ファブリックのアップグレード モードは、クラスターの作成時に自動または手動に設定することができます。
+
+![Create\_Manualmode][Create_Manualmode]
+
+稼働中のクラスターに対しては、管理操作からファブリックのアップグレード モードを自動または手動に設定することができます。
+
+#### ポータルで手動モードに設定されたクラスターを新バージョンにアップグレードする
+ 
+新しいバージョンにアップグレードするために必要な操作は、ドロップダウンに表示されたバージョンの中からいずれかを選択し、保存するだけです。ファブリックのアップグレードが自動的に開始されます。クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されているすべてのアプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。
+
+クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。正常性ポリシーのカスタマイズ方法については、このドキュメントの後半で詳しく取り上げています。下へスクロールして該当セクションを参照してください。
+
+ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
+
+![Manage\_Automaticmode][Manage_Automaticmode]
+
+### Resource Manager テンプレートでのアップグレード モードの設定 
+
+Microsoft.ServiceFabric/クラスター リソース定義に "upgradeMode" 構成を追加し、サポートされているいずれかのファブリック バージョンを "clusterCodeVersion" に指定して (下記)、テンプレートをデプロイします。"upgradeMode" には "Manual" または "Automatic" のいずれかを値として指定できます。
+ 
+![ARMUpgradeMode][ARMUpgradeMode]
+
+#### Resource Manager テンプレートで手動モードに設定されたクラスターを新バージョンにアップグレードする
+ 
+手動モードのクラスターを新バージョンにアップグレードするには、"clusterCodeVersion" に指定されているバージョンを、サポートされているいずれかのバージョンに変更してデプロイします。テンプレートをデプロイすると、ファブリックのアップグレードが自動的に開始されます。クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されているすべてのアプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。
+
+クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。正常性ポリシーのカスタマイズ方法については、このドキュメントの後半で詳しく取り上げています。下へスクロールして該当セクションを参照してください。
+
+ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
+
+### 特定のサブスクリプションのすべての環境を対象に利用できる全バージョンの一覧を取得する
+
+以下のコマンドを実行すると、次のような結果が出力されます。
+
+特定のリリースの有効期限が近づいている (または終了している) ことは "supportExpiryUtc" で確認できます。最新リリースに有効な日付はありません。"9999-12-31T23:59:59.9999999" という値が設定されていますが、これは単に有効期限が設定されていないことを意味するものです。
+
+```REST
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/clusterVersions?api-version= 2016-09-01
+
+Output:
+{
+                  "value": [
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
+                      "name": "5.0.1427.9490",
+                      "type": "Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "5.0.1427.9490",
+                        "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
+                        "environment": "Windows"
+                      }
+                    },
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
+                      "name": "5.1.1427.9490",
+                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "5.1.1427.9490",
+                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+                        "environment": "Windows"
+                      }
+                    },
+                    {
+                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
+                      "name": "4.4.1427.9490",
+                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+                      "properties": {
+                        "codeVersion": "4.4.1427.9490",
+                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+                        "environment": "Linux"
+                      }
+                    }
+                  ]
+                }
+
+
+```
+
+## クラスターのアップグレード モードが Automatic であるときのファブリックのアップグレード動作
+
+Microsoft は、クラスターで実行されるファブリック コードと構成を管理します。必要に応じて、ソフトウェアに対して自動的な監視付きアップグレードを実行します。これらのアップグレードは、コード、構成、またはその両方で行うことができます。これらのアップグレードからアプリケーションが影響を受けない、またはその影響を最小限にするために、アップグレードは次のフェーズで行われます。
 
 ### フェーズ 1: アップグレードが、すべてのクラスター正常性ポリシーを使用して実行される
 
@@ -67,7 +158,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ## お客様が制御するクラスター構成
 
-ライブ クラスターでお客様が変更できる構成は、次のとおりです。
+ここでは、稼働中のクラスターに関して、アップグレード モードの設定以外に変更できる構成について取り上げます。
 
 ### 証明書
 
@@ -92,7 +183,7 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
     前の手順で作成したプローブを使用して、同じロード バランサーに新しい規則を追加します。
 
-    ![スクリーンショットでは、ポータルのロード バランサーに新しい規則を追加しています。][AddingLBRules]
+    ![Adding a new rule to a load balancer in the portal.][AddingLBRules]
 
 
 ### 配置プロパティ
@@ -105,6 +196,18 @@ Microsoft は、クラスターで実行されるファブリック コードと
 
 ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。負荷をレポートする容量メトリックの使用方法については、Service Fabric クラスター リソース マネージャー ドキュメントの[クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)および[メトリックと負荷](service-fabric-cluster-resource-manager-metrics.md)に関するページをご覧ください。
 
+### ファブリック アップグレード設定 - 正常性ポリシー
+
+ファブリックのアップグレードには、カスタム正常性ポリシーを指定できます。指定したポリシーは、クラスターのファブリック アップグレードが Automatic に設定されている場合、自動ファブリック アップグレードのフェーズ 1 に適用されます。クラスターのファブリック アップグレードを Manual に設定した場合は、新しいバージョンを選択するたびにこれらのポリシーが適用され、クラスターのファブリック アップグレードが開始されます。ポリシーを上書きしていない場合、既定の設定が使用されます。
+
+カスタム正常性ポリシーを指定したり、現在の設定を確認したりするには、[ファブリック アップグレード] ブレードでアップグレードの詳細設定を選択します。具体的な方法については、次の図を参照してください。
+
+![Manage custom health policies][HealthPolices]
+
+### クラスターのファブリック設定のカスタマイズ
+
+カスタマイズできる設定とその方法については、[Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)に関するページをご覧ください。
+
 ### クラスターを構成する VM の OS 修正プログラム
 
 この機能は、今後自動化される予定です。ただし、現時点では、お客様が VM に修正プログラムを適用する必要があります。同時に複数の VM を停止しないように、この操作は、VM 1 つずつで実行する必要があります。
@@ -114,13 +217,17 @@ Microsoft は、クラスターで実行されるファブリック コードと
 クラスターの仮想マシンで OS イメージをアップグレードする必要がある場合は、一度に 1 つの VM で行う必要があります。お客様がこのアップグレードを実行する必要があります。現時点では自動化はされていません。
 
 ## 次のステップ
-
-- [クラスターの拡大と縮小](service-fabric-cluster-scale-up-down.md)の方法を学習する
+- [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)をカスタマイズする方法について学習する
+- [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)の方法を学習する
 - [アプリケーションのアップグレード](service-fabric-application-upgrade.md)の方法を学習する
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
+[HealthPolices]: ./media/service-fabric-cluster-upgrade/Manage_AutomodeWadvSettings.PNG
+[ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
+[Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
+[Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

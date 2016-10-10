@@ -13,12 +13,15 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="09/21/2016"
+	ms.author="MarkVi"/>
 
 # Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成
 
 IT 管理者は、Windows 7 ドメイン参加済みデバイスを、自動的に Azure AD に登録されるように構成できます。そのためには、Windows 7 ドメイン参加済みデバイスに、System Center Configuration Manager などのソフトウェア配布を使用してデバイスの登録ソフトウェア パッケージをデプロイする必要があります。「Windows ドメイン参加デバイスの Azure Active Directory を使用した自動デバイス登録」の一覧にある前提条件が満たされていることを確認してください。
+
+>[AZURE.NOTE]
+ デバイスの自動登録をセットアップする最新手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
 
 ##Windows 7 ドメイン参加済みデバイスへのデバイスの登録ソフトウェア パッケージのインストール
 
@@ -60,4 +63,4 @@ Windows 7 コンピューターの Windows イベント ログには、社内参
 - [Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-azureadjoin-devices-group-policy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="Office 365 Azure AD テナントとそのユーザーを Azure サブスクリプションと共有する方法、またはその逆の方法について説明します。"
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="mbaldwin"
 	editor=""
 	tags="billing,top-support-issue"/>
@@ -151,4 +151,4 @@ Office 365 と Azure では、ユーザーとサブスクリプションの管�
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

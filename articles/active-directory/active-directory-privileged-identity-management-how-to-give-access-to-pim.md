@@ -13,12 +13,12 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="06/30/2016"
+   ms.date="09/22/2016"
    ms.author="kgremban"/>
 
 # Azure AD Privileged Identity Management を管理するアクセス権を付与する方法
 
-組織の Azure AD Privileged Identity Management (PIM) を有効にするグローバル管理者は、自動的にロールの割り当てを取得し、PIM にアクセスします。ただし、他のグローバル管理者も含めて、既定でアクセスできるユーザーは他にはいません。PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに**特権ロール管理者**ロールを割り当てます。この割り当ては、PIM 内から実行する必要があり、PowerShell や他のポータルを使用して変更することはできません。
+組織の Azure AD Privileged Identity Management (PIM) を有効にするグローバル管理者は、自動的にロールの割り当てを取得し、PIM にアクセスします。ただし、他のグローバル管理者も含めて、既定で書き込みアクセス権を得るユーザーは他にはいません。その他のグローバル管理者、セキュリティ管理者、およびセキュリティ リーダーは、Azure AD PIM に対する読み取り専用アクセス権を持ちます。PIM へのアクセス権を付与するには、最初のユーザーが他のユーザーに**特権ロール管理者**ロールを割り当てます。この割り当ては、PIM 内から実行する必要があり、PowerShell や他のポータルを使用して変更することはできません。
 
 > [AZURE.NOTE] Azure AD PIM を管理するには、Azure MFA が必要です。Microsoft アカウントは Azure MFA に登録できないため、Microsoft アカウントでサインインしたユーザーは Azure AD PIM にアクセスできません。
 
@@ -61,4 +61,4 @@
 [1]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_add_PRA.png
 [2]: ./media/active-directory-privileged-identity-management-how-to-give-access-to-pim/PIM_select_users.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

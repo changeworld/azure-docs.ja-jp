@@ -18,7 +18,7 @@
 
 # Azure を利用する SnelStart 社、新規の Azure SQL Database を 1 月あたり 1,000 台のペースで追加し、サービスを急速に拡大
 
-![ロゴ](./media/sql-database-case-study-snelstart/snelstartlogo.png)
+![SnelStartLogo](./media/sql-database-implementation-snelstart/snelstartlogo.png)
 
 SnelStart 社 (以下 SnelStart) は、オランダの中堅・中小規模企業 (SMB) 向けに、定評ある財務/業務管理ソフトウェアを製造しています。SnelStart では、IT スタッフ 35 人を含む 110 人の社員が 5 万 5,000 人の顧客に対応しています。デスクトップ ソフトウェアから Azure 上に構築されたサービスとしてのソフトウェア (SaaS) の提供に移行して、管理を自動化するビルトイン サービスの大半を、C# 言語のなじみのある環境を使用して作成しています。またエラスティック データベース プールを使用することで、顧客企業へのプロビジョニングの過不足なく、パフォーマンスとスケーラビリティを最適化しています。Azure の導入により、SnelStart は、顧客のオンプレミスとクラウド間の円滑な移動を実現しています。
 
@@ -54,7 +54,7 @@ SnelStart は、エラスティック データベース プールを早い時�
 
 ##Azure SQL Database、データのコンテナー格納で隔離とセキュリティを実現 
 
-Azure SQL Database により、SnelStart は、顧客のオンプレミスの業務管理データを容易に、かつ透過的に Azure に移動できます。Azure SQL Database は、隔離、認証の境界、承認、容易なバックアップおよび復元機能を提供する、利便性に優れたコンテナーで、業務管理に最適な概念モデルをもたらします。IT アーキテクトの Carlo Kuip 氏は次のように述べています。「このコンテナーの境界内のアイテムには、ビジネスに不可欠な機密データが含まれています。 このようなアイテムを隔離されたデータベースに格納することで、十分に保護されます。データベース レベルで承認を管理できるほか、データベース管理者 (DBA) を必要とせずにデータベースの管理やスケール アウトを自動化できます。」
+Azure SQL Database により、SnelStart は、顧客のオンプレミスの業務管理データを容易に、かつ透過的に Azure に移動できます。Azure SQL Database は、隔離、認証の境界、承認、容易なバックアップおよび復元機能を提供する、利便性の高いコンテナーです。データベースは、ビジネス管理用に適した概念モデルを提供します。IT アーキテクトの Carlo Kuip 氏は次のように述べています。「このコンテナーの境界内のアイテムには、ビジネスに不可欠な機密データが含まれています。 このようなアイテムを隔離されたデータベースに格納することで、十分に保護されます。データベース レベルで承認を管理できるほか、データベース管理者 (DBA) を必要とせずにデータベースの管理やスケール アウトを自動化できます。」
 
 また Azure SQL Data Warehouse も、不正侵入検出、ユーザー アクティビティのログ記録、および接続などのテレメトリ データの収集に役立ち、SnelStart のセキュリティと管理に重要な役割を果たしています。
 
@@ -80,7 +80,7 @@ Azure を導入したことで、SnelStart は、顧客やその会計士に、�
 
 さらに、SnelStart の Web サービスにより、顧客と会計士双方が Azure SQL Database のエラスティック プールに格納されたデータに容易にアクセスできます。この SaaS モデルは、データベースの弾力性および Azure Resource Manager とともに、各 Azure 環境を補完するスケーラビリティ機能を提供します。この実装は、C# 管理ライブラリの使用により、完全に自動化されています。
 
-![図 1](./media/sql-database-case-study-snelstart/figure1.png)
+![SnelStart architecture](./media/sql-database-implementation-snelstart/figure1.png)
 
 図 1.SnelStart は、2016 年 6 月の時点で、1 万 1,000 台を超えるデータベース、および 50 を超えるエラスティック データベース プールを所有しています。
  
@@ -105,4 +105,4 @@ Azure のクラウド ベースのソリューションに移行したことで�
 
 - SnelStart の詳細については、[SnelStart](http://www.snelstart.nl)をご覧ください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

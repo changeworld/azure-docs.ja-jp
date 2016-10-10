@@ -32,16 +32,16 @@ Azure Machine Learning の Recommendations API は、次の論理グループに
 
 - <ins>制限事項</ins> の Recommendations API の制限事項。
 - <ins>一般的な情報</ins> - 認証、サービス URI、およびバージョン管理に関する情報。
-- <ins>基本モデル</ins> – モデルで基本的な操作が可能な API (例: モデルの作成、更新、削除)。
-- <ins>高度なモデル</ins> – モデルの高度なデータ分析を取得できるようにする API。
-- <ins>ビジネス ルールのモデル</ins> – モデルの推奨結果に関するビジネス ルールを管理できるようにする API。
-- <ins>カタログ</ins> – モデルのカタログに関する基本操作を実行できるようにする API。カタログには、使用状況データ項目に関するメタ データ情報が含まれています。
+- <ins>基本モデル</ins> - モデルの基本的な操作を可能にする API (例: モデルの作成、更新、削除)。
+- <ins>高度なモデル</ins> - モデルの高度なデータ分析が取得できる API。
+- <ins>ビジネス ルールのモデル</ins> - モデルの推奨結果に関するビジネス ルールを管理できる API。
+- <ins>カタログ</ins> - モデルのカタログに関する基本操作を実行できる API。カタログには、使用状況データ項目に関するメタ データ情報が含まれています。
 - <ins>機能</ins> - 項目のインサイトをカタログに表示でき、この情報を使用してより良い推奨事項を構築する方法を有効にする API。
-- <ins>使用状況データ</ins> – モデルの使用状況データに関する基本操作を実行できる API。基本フォームの使用状況データは、&#60;userId&#62;,&#60;itemId&#62; のペアを含む行で構成されます。
-- <ins>ビルド</ins> – モデルのビルドを起動し、このビルドに関連する基本操作を実行できるようにする API。モデルのビルドは、有効な使用状況データが存在する場合に起動できます。
-- <ins>推奨</ins> – モデルのビルドが終了すると、推奨を使用できるようにする API。
+- <ins>使用状況データ</ins> - モデルの使用状況データに関する基本操作を実行できる API。基本フォームの使用状況データは、&#60;userId&#62;,&#60;itemId&#62; のペアを含む行で構成されます。
+- <ins>ビルド</ins> - モデルのビルドを起動し、このビルドに関連する基本操作を実行できる API。モデルのビルドは、有効な使用状況データが存在する場合に起動できます。
+- <ins>推奨</ins> - モデルのビルドの終了後に推奨を使用できる API。
 - <ins>ユーザー データ</ins> - ユーザーの使用状況データの情報が取得できる API。
-- <ins>通知</ins> – API の操作に関連する問題の通知を受信するための API。(たとえば、データ取得により使用状況データを報告していて、イベント処理のほとんどが失敗する場合、エラー通知が発生します)。
+- <ins>通知</ins> - API の操作に関連する問題の通知を受信するための API。(たとえば、データ取得により使用状況データを報告していて、イベント処理のほとんどが失敗する場合、エラー通知が発生します)。
 
 ##手順 2.制限事項
 
@@ -76,14 +76,11 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 ###4\.2.順位付けのビルド
 
-特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。
-このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。
-これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
+特徴で推奨モデルを強化できますが、そのためには意味のある特徴を使用する必要があります。この目的のため、順位付けのビルドという、新しいビルドが導入されました。このビルドは、特徴の有用性を順位付けします。意味のある特徴は、順位付けのスコアが 2 以上のものです。どの特徴が意味があるのか理解したら、意味のある特徴のリスト (またはサブリスト) を使用して推奨事項のビルドをトリガーします。これらの特徴を使用して、ウォーム項目とコールド項目の両方を強化できます。ウォーム項目のために特徴を使用するには、`UseFeatureInModel` ビルド パラメーターを設定する必要があります。コールド項目のために特徴を使用するには、`AllowColdItemPlacement` ビルド パラメーターを有効にする必要があります。注: `UseFeatureInModel` を有効にせずに `AllowColdItemPlacement` を有効にすることはできません。
 
 ###4\.3.推奨の理由
 
-推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。
-理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
+推奨の理由は、特徴の使用のもう 1 つの側面です。実際、Azure Machine Learning Recommendations エンジンは推奨事項の説明 (理由) を提供するために特徴を使用でき、これによって推奨項目は推奨事項のコンシューマーにとってより信頼できるものになります。理由を有効にするには、推奨事項のビルドを要求する前に `AllowFeatureCorrelation` パラメーターと `ReasoningFeatureList` パラメーターをセットアップする必要があります。
 
 
 ##5\.基本モデル
@@ -107,8 +104,7 @@ API のいずれかにより返される ID は大文字と小文字の区別が
 
 HTTP 状態コード: 200
 
-- `feed/entry/content/properties/id` – モデル ID が含まれます。
-**注**: モデル ID は大文字小文字を区別します。
+- `feed/entry/content/properties/id` – モデル ID が含まれます。**注**: モデル ID は大文字小文字を区別します。
 
 OData XML
 
@@ -160,16 +156,16 @@ HTTP 状態コード: 200
 
 モデルのデータは、次の要素の下で見つかります。
 
-- `feed/entry/content/properties/Id` – モデルの一意の ID。
-- `feed/entry/content/properties/Name` – モデル名。
-- `feed/entry/content/properties/Date` – モデルの作成日。
-- `feed/entry/content/properties/Status` – モデルの状態。次のいずれか:
+- `feed/entry/content/properties/Id` - モデルの一意の ID。
+- `feed/entry/content/properties/Name` - モデル名。
+- `feed/entry/content/properties/Date` - モデルの作成日。
+- `feed/entry/content/properties/Status` - モデルの状態。次のいずれか:
     - Created - モデルは作成済みですが、カタログと使用状況が含まれていません。
-	- ReadyForBuild – モデルは作成済みで、カタログと使用状況が含まれています。
-- `feed/entry/content/properties/HasActiveBuild` – モデルが正常にビルドされたかどうかを示します。
-- `feed/entry/content/properties/BuildId` – モデルのアクティブなビルド ID。
-- `feed/entry/content/properties/Mpr` – モデルの平均パーセンタイル順位付け (MPR - 詳細については、ModelInsight を参照してください)。
-- `feed/entry/content/properties/UserName` – モデル内部ユーザー名。
+	- ReadyForBuild - モデルは作成済みで、カタログと使用状況が含まれています。
+- `feed/entry/content/properties/HasActiveBuild` - モデルが正常にビルドされたかどうかを示します。
+- `feed/entry/content/properties/BuildId` - モデルのアクティブなビルド ID。
+- `feed/entry/content/properties/Mpr` - モデルの平均パーセンタイル順位付け (MPR - 詳細については、ModelInsight を参照してください)。
+- `feed/entry/content/properties/UserName` - モデルの内部ユーザー名。
 
 OData XML
 
@@ -221,20 +217,20 @@ OData XML
 
 HTTP 状態コード: 200
 
-- `feed/entry/content/properties/Id` – モデルの一意の ID。
-- `feed/entry/content/properties/Name` – モデル名。
-- `feed/entry/content/properties/Date` – モデルの作成日。
-- `feed/entry/content/properties/Status` – モデルの状態。次のいずれか:
+- `feed/entry/content/properties/Id` - モデルの一意の ID。
+- `feed/entry/content/properties/Name` - モデル名。
+- `feed/entry/content/properties/Date` - モデルの作成日。
+- `feed/entry/content/properties/Status` - モデルの状態。次のいずれか:
   - Created - モデルは作成済みですが、カタログと使用状況が含まれていません。
-  - ReadyForBuild – モデルは作成済みで、カタログと使用状況が含まれています。
-- `feed/entry/content/properties/HasActiveBuild` – モデルが正常にビルドされたかどうかを示します。
-- `feed/entry/content/properties/BuildId` – モデルのアクティブなビルド ID。
-- `feed/entry/content/properties/Mpr` – モデルの MPR (詳細については ModelInsight を参照してください)。
-- `feed/entry/content/properties/UserName` – モデル内部ユーザー名。
-- `feed/entry/content/properties/UsageFileNames` – コンマで区切られたモデルの使用状況ファイルの一覧。
-- `feed/entry/content/properties/CatalogId` – モデル カタログの ID。
-- `feed/entry/content/properties/Description` – モデルの説明。
-- `feed/entry/content/properties/CatalogFileName` – モデル カタログのファイル名。
+  - ReadyForBuild - モデルは作成済みで、カタログと使用状況が含まれています。
+- `feed/entry/content/properties/HasActiveBuild` - モデルが正常にビルドされたかどうかを示します。
+- `feed/entry/content/properties/BuildId` - モデルのアクティブなビルド ID。
+- `feed/entry/content/properties/Mpr` - モデルの MPR (詳細については ModelInsight を参照してください)。
+- `feed/entry/content/properties/UserName` - モデルの内部ユーザー名。
+- `feed/entry/content/properties/UsageFileNames` - コンマで区切られたモデルの使用状況ファイルの一覧。
+- `feed/entry/content/properties/CatalogId` - モデル カタログの ID。
+- `feed/entry/content/properties/Description` - モデルの説明。
+- `feed/entry/content/properties/CatalogFileName` - モデル カタログのファイル名。
 
 OData XML
 
@@ -272,9 +268,7 @@ OData XML
 
 ###5\.4.モデルの更新
 
-モデルの説明またはアクティブなビルド ID を更新することができます。<br>
-<ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br>
-このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
+モデルの説明またはアクティブなビルド ID を更新することができます。<br> <ins>アクティブなビルド ID</ins> - すべてのモデルのすべてのビルドには "ビルド ID" があります。アクティブな "ビルド ID" は、新しいモデルそれぞれの最初の正常なビルドです。アクティブなビルド ID があり、同じモデルに対して追加のビルドを実行する場合は、必要に応じて、既定のビルド ID として明示的に設定する必要があります。推奨を使用する際に、使用するビルド ID を指定しないと、既定の ID が自動的に使用されます。<br> このメカニズムにより、推奨モデルが運用環境にあるときに、新しいモデルを構築して、それを運用環境に移行する前にテストすることができます。
 
 
 | HTTP メソッド | URI |
@@ -582,7 +576,7 @@ OData XML
 |	パラメーター名 |	有効な値 |
 |:--------			|:--------								|
 |	modelId |	モデルの一意識別子 |
-|	buildId |	省略可能 – 成功したビルドを識別する数値。 |
+|	buildId |	省略可能 - 成功したビルドを識別する数値。 |
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | なし |
@@ -842,9 +836,9 @@ d5358189-d70f-4e35-8add-34b83b4942b3, Pigs in Heaven
 
 HTTP 状態コード: 200
 
-- `feed/entry/content/properties/Id` – このルールの一意識別子。
-- `feed/entry/content/properties/Type` – ルールの種類。
-- `feed/entry/content/properties/Parameter` – ルールのパラメーター。
+- `feed/entry/content/properties/Id` - このルールの一意識別子。
+- `feed/entry/content/properties/Type` - ルールの種類。
+- `feed/entry/content/properties/Parameter` - ルールのパラメーター。
 
 OData XML
 
@@ -895,18 +889,7 @@ OData XML
 |	apiVersion | 1\.0 |
 |||
 | 要求本文 | 
-<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br>
-<ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>FeatureBlockList ルールを追加するには:</ins><br>
-<br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>
-Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br>
-<ins>WhiteList ルールを追加するには:</ins><br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins>
-<ins>FeatureWhiteList ルールを追加するには:</ins><br>
-<br>
-`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins>
-PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
+<ins>ビジネス ルールにアイテム ID を提供するときは、そのアイテムの外部 ID が使用されていることを確認する (カタログ ファイルで使用した ID と同じ)</ins><br> <ins>BlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>BlockList</Type><Value>{"ItemsToExclude":["2406E770-769C-4189-89DE-1C9283F93A96","3906E110-769C-4189-89DE-1C9283F98888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureBlockList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureBlockList</Type><Value>{"Name":"Movie_category","Values":["Adult","Drama"]}</Value></ApiFilter>`<br><br><ins>Upsale ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>Upsale</Type><Value>{"ItemsToUpsale":["2406E770-769C-4189-89DE-1C9283F93A96"],"NumberOfItemsToUpsale":5}</Value></ApiFilter>`<br><br> <ins>WhiteList ルールを追加するには:</ins><br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>WhiteList</Type><Value>{"ItemsToInclude":["2406E770-769C-4189-89DE-1C9283F93A96","1116E770-769C-4189-89DE-1C9283F88888"]}</Value></ApiFilter>`<br><br><ins> <ins>FeatureWhiteList ルールを追加するには:</ins><br> <br> `<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>FeatureWhiteList</Type><Value>{"Name":"Movie_rating","Values":["PG13"]}</Value></ApiFilter>`<br><br><ins> PerSeedBlockList ルールを追加するには:</ins><br>`<ApiFilter xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><ModelId>24024f7e-b45c-419e-bfa2-dfd947e0d253</ModelId><Type>PerSeedBlockList</Type><Value>{"SeedItems":["9949"],"ItemsToExclude":["9862","8158","8244"]}</Value></ApiFilter>`|
 
 
 **応答**:
@@ -915,9 +898,9 @@ HTTP 状態コード: 200
 
 API は、新しく作成されたルールとその詳細を返します。ルールのプロパティは、次のパスから取得できます。
 
-- `feed/entry/content/properties/Id` – このルールの一意識別子。
-- `feed/entry/content/properties/Type` – ルールのタイプ。BlockList または Upsale。
-- `feed/entry/content/properties/Parameter` – ルールのパラメーター。
+- `feed/entry/content/properties/Id` - このルールの一意識別子。
+- `feed/entry/content/properties/Type` - ルールのタイプ。BlockList または Upsale。
+- `feed/entry/content/properties/Parameter` - ルールのパラメーター。
 
 OData XML
 
@@ -996,7 +979,7 @@ HTTP 状態コード: 200
 
 | Name | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] (アンダースコア)、[-] (ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
 | Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 | 
 | Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
 | Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
@@ -1068,12 +1051,12 @@ HTTP 状態コード: 200
 
 応答には、カタログ項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed/entry/content/properties/ExternalId` – カタログ項目の外部 ID。顧客が指定したカタログ項目。
-- `feed/entry/content/properties/InternalId` – カタログ項目の内部 ID。Azure Machine Learning Recommendations が生成したカタログ項目。
-- `feed/entry/content/properties/Name` – カタログ項目の名前。
-- `feed/entry/content/properties/Category` – カタログ項目のカテゴリ。
-- `feed/entry/content/properties/Description` – カタログ項目の説明。
-- `feed/entry/content/properties/Metadata` – カタログ項目のメタデータ。
+- `feed/entry/content/properties/ExternalId` - カタログ項目の外部 ID。顧客が指定したカタログ項目。
+- `feed/entry/content/properties/InternalId` - カタログ項目の内部 ID。Azure Machine Learning Recommendations が生成したカタログ項目。
+- `feed/entry/content/properties/Name` - カタログ項目の名前。
+- `feed/entry/content/properties/Category` - カタログ項目のカテゴリ。
+- `feed/entry/content/properties/Description` - カタログ項目の説明。
+- `feed/entry/content/properties/Metadata` - カタログ項目のメタデータ。
 
 
 OData XML
@@ -1171,12 +1154,12 @@ HTTP 状態コード: 200
 
 応答には、カタログ項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed/entry/content/properties/InternalId` – カタログ項目の内部 ID。Azure Machine Learning Recommendations が生成したカタログ項目。
-- `feed/entry/content/properties/Name` – カタログ項目の名前。
-- `feed/entry/content/properties/Rating` – (将来的に使用)
-- `feed/entry/content/properties/Reasoning` – (将来的に使用)
-- `feed/entry/content/properties/Metadata` – (将来的に使用)
-- `feed/entry/content/properties/FormattedRating` – (将来的に使用)
+- `feed/entry/content/properties/InternalId` - カタログ項目の内部 ID。Azure Machine Learning Recommendations が生成したカタログ項目。
+- `feed/entry/content/properties/Name` - カタログ項目の名前。
+- `feed/entry/content/properties/Rating` - (将来的に使用)
+- `feed/entry/content/properties/Reasoning` - (将来的に使用)
+- `feed/entry/content/properties/Metadata` - (将来的に使用)
+- `feed/entry/content/properties/FormattedRating` - (将来的に使用)
 
 OData XML
 
@@ -1368,8 +1351,7 @@ OData XML
   		</EventData>
 		</Event>
 
-**応答**:
-HTTP 状態コード: 200
+**応答**: HTTP 状態コード: 200
 
 ###9\.2.モデルの使用状況ファイルの一覧
 すべてのモデルに関する使用状況ファイルのメタデータを取得します。使用状況ファイルは、一度に 1 ページずつ取得されます。各ページに 100 個の項目が含まれます。特定のインデックスで項目を取得する場合は、$skip odata パラメーターを使用します。たとえば、位置 100 から開始する項目を取得する場合、要求にパラメーターとして $skip=100 を追加します。
@@ -1391,10 +1373,10 @@ HTTP 状態コード: 200
 
 応答には、使用状況ファイルごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed\entry\content\properties\Id` – 使用状況ファイルの ID。
-- `feed\entry\content\properties\Length` -使用状況ファイルの長さ (MB)。
-- `feed\entry\content\properties\DateModified` – 使用状況ファイルが作成された日付。
-- `feed\entry\content\properties\UseInModel` – 使用状況ファイルがモデルで使用されるかどうか。
+- `feed\entry\content\properties\Id` - 使用状況ファイルの ID。
+- `feed\entry\content\properties\Length` - 使用状況ファイルの長さ (MB)。
+- `feed\entry\content\properties\DateModified` - 使用状況ファイルが作成された日付。
+- `feed\entry\content\properties\UseInModel` - 使用状況ファイルがモデルで使用されるかどうか。
 
 OData XML
 
@@ -1458,8 +1440,8 @@ HTTP 状態コード: 200
 
 キーと値の要素のコレクション。各コレクションには、時間別にグループ化された特定のイベントの種類のイベント数の合計が含まれます。
 
-- `feed\entry[i]\content\properties\Key` – 時間 (時間別にグループ化) と、イベントの種類が含まれています。
-- `feed\entry[i]\content\properties\Value` – 合計イベント数。
+- `feed\entry[i]\content\properties\Key` - 時間 (時間別にグループ化) と、イベントの種類が含まれています。
+- `feed\entry[i]\content\properties\Value` - 合計イベント数。
 
 OData XML
 
@@ -1928,12 +1910,12 @@ HTTP 状態コード: 200
 有効なビルド状態:
 
 - Create - ビルド要求を作成します。
-- Queued – ビルド要求が送信され、キューされます。
+- Queued - ビルド要求が送信され、キューされます。
 - Building - ビルドが実行中です。
 - Success - ビルドが正常に終了しました。
-- Error – ビルドでエラーが発生して終了しました。
-- Cancelled – ビルドが取り消されました。
-- Cancelling – ビルドの取り消し要求が送信されました。
+- Error - ビルドでエラーが発生して終了しました。
+- Cancelled - ビルドが取り消されました。
+- Cancelling - ビルドの取り消し要求が送信されました。
 
 
 ビルド ID は、次のパスの下にあります：`Feed\entry\content\properties\Id`
@@ -2003,13 +1985,13 @@ HTTP 状態コード: 200
 
 有効なビルド状態:
 
-- Create – モデルが作成されました。
-- Queued – モデルのビルドがトリガーされ、キューに登録されています。
-- Building – モデルをビルドしています。
+- Create - モデルが作成されました。
+- Queued - モデルのビルドがトリガーされ、キューに登録されています。
+- Building - モデルをビルドしています。
 - Success - ビルドが正常に終了しました。
-- Error – ビルドでエラーが発生して終了しました。
-- Cancelled – ビルドが取り消されました。
-- Cancelling – ビルドが取り消されます。
+- Error - ビルドでエラーが発生して終了しました。
+- Cancelled - ビルドが取り消されました。
+- Cancelling - ビルドが取り消されます。
 
 ビルド ID は、次のパスの下にあります：`Feed\entry\content\properties\Id`
 
@@ -2076,28 +2058,28 @@ HTTP 状態コード: 200
 
 応答には、ビルドごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed/entry/content/properties/UserName` – ユーザーの名前。
-- `feed/entry/content/properties/ModelName` – モデルの名前。
-- `feed/entry/content/properties/ModelId` – モデルの一意識別子。
-- `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされている (アクティブなビルド) かどうか。
-- `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
+- `feed/entry/content/properties/UserName` - ユーザーの名前。
+- `feed/entry/content/properties/ModelName` - モデルの名前。
+- `feed/entry/content/properties/ModelId` - モデルの一意識別子。
+- `feed/entry/content/properties/IsDeployed` - ビルドがデプロイされている (アクティブなビルド) かどうか。
+- `feed/entry/content/properties/BuildId` - ビルドの一意識別子。
 - `feed/entry/content/properties/BuildType` - ビルドの種類。
-- `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success。
-- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
-- `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
-- `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
-- `feed/entry/content/properties/EndTime` – ビルドの終了時刻。
-- `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
+- `feed/entry/content/properties/Status` - ビルド状態。次のいずれか: Error、Building、Queued、Cancelling、Cancelled、Success。
+- `feed/entry/content/properties/StatusMessage` - 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
+- `feed/entry/content/properties/Progress` - ビルドの進捗状況 (%)。
+- `feed/entry/content/properties/StartTime` - ビルドの開始時刻。
+- `feed/entry/content/properties/EndTime` - ビルドの終了時刻。
+- `feed/entry/content/properties/ExecutionTime` - ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
 有効なビルド状態:
-- Created – ビルド要求エントリが作成されました。
-- Queued – ビルド要求がトリガーされ、キューされます。
+- Created - ビルド要求エントリが作成されました。
+- Queued - ビルド要求がトリガーされ、キューされます。
 - Building - ビルドが処理中です。
 - Success - ビルドが正常に終了しました。
-- Error – ビルドでエラーが発生して終了しました。
-- Cancelled – ビルドが取り消されました。
-- Cancelling – ビルドが取り消されます。
+- Error - ビルドでエラーが発生して終了しました。
+- Cancelled - ビルドが取り消されました。
+- Cancelling - ビルドが取り消されます。
 
 ビルドの種類における有効な値:
 - Rank - 順番付けのビルド。
@@ -2160,28 +2142,28 @@ HTTP 状態コード: 200
 
 応答には、ビルドごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
 
-- `feed/entry/content/properties/UserName` – ユーザーの名前。
-- `feed/entry/content/properties/ModelName` – モデルの名前。
-- `feed/entry/content/properties/ModelId` – モデルの一意識別子。
-- `feed/entry/content/properties/IsDeployed` – ビルドがデプロイされるかどうか。
-- `feed/entry/content/properties/BuildId` – ビルドの一意識別子。
+- `feed/entry/content/properties/UserName` - ユーザーの名前。
+- `feed/entry/content/properties/ModelName` - モデルの名前。
+- `feed/entry/content/properties/ModelId` - モデルの一意識別子。
+- `feed/entry/content/properties/IsDeployed` - ビルドがデプロイされるかどうか。
+- `feed/entry/content/properties/BuildId` - ビルドの一意識別子。
 - `feed/entry/content/properties/BuildType` - ビルドの種類。
-- `feed/entry/content/properties/Status` – ビルド状態。次のいずれか: Error、Building、Queued、Cancelled、Cancelling、Success。
-- `feed/entry/content/properties/StatusMessage` – 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
-- `feed/entry/content/properties/Progress` – ビルドの進捗状況 (%)。
-- `feed/entry/content/properties/StartTime` – ビルドの開始時刻。
-- `feed/entry/content/properties/EndTime` – ビルドの終了時刻。
-- `feed/entry/content/properties/ExecutionTime` – ビルドの期間。
+- `feed/entry/content/properties/Status` - ビルド状態。次のいずれか: Error、Building、Queued、Cancelled、Cancelling、Success。
+- `feed/entry/content/properties/StatusMessage` - 詳細なステータス メッセージ (特定の状態にのみ適用されます)。
+- `feed/entry/content/properties/Progress` - ビルドの進捗状況 (%)。
+- `feed/entry/content/properties/StartTime` - ビルドの開始時刻。
+- `feed/entry/content/properties/EndTime` - ビルドの終了時刻。
+- `feed/entry/content/properties/ExecutionTime` - ビルドの期間。
 - `feed/entry/content/properties/ProgressStep` - 進行中のビルドの現在のステージの詳細。
 
 有効なビルド状態:
-- Created – ビルド要求エントリが作成されました。
-- Queued – ビルド要求がトリガーされ、キューされます。
+- Created - ビルド要求エントリが作成されました。
+- Queued - ビルド要求がトリガーされ、キューされます。
 - Building - ビルドが処理中です。
 - Success - ビルドが正常に終了しました。
-- Error – ビルドでエラーが発生して終了しました。
-- Cancelled – ビルドが取り消されました。
-- Cancelling – ビルドが取り消されます。
+- Error - ビルドでエラーが発生して終了しました。
+- Cancelled - ビルドが取り消されました。
+- Cancelling - ビルドが取り消されます。
 
 
 ビルドの種類における有効な値:
@@ -2276,8 +2258,8 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 この API は、キーと値の要素のコレクションを返します。各要素は、パラメーターとその値を表します:
-- `feed/entry/content/properties/Key` – パラメーター名をビルドします。
-- `feed/entry/content/properties/Value` – パラメーターの値をビルドします。
+- `feed/entry/content/properties/Key` - パラメーター名をビルドします。
+- `feed/entry/content/properties/Value` - パラメーターの値をビルドします。
 
 次の表は、各キーを表す値を示しています。
 
@@ -2488,10 +2470,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 次の応答例には、10 個の推奨項目が含まれています。
 
@@ -2669,10 +2651,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2699,12 +2681,12 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` – 項目の名前。
-- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
-- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` - 項目の名前。
+- `Feed\entry\content\properties\Id2` - 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` - 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 次の応答例には、3 個の推奨項目セットが含まれています。
 
@@ -2791,12 +2773,12 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目セット (通常はシード/入力項目と共に購入した項目のセット) ごとに 1 つのエントリが含まれます。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id1` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name1` – 項目の名前。
-- `Feed\entry\content\properties\Id2` – 2 番目の推奨項目 ID (省略可能)。
-- `Feed\entry\content\properties\Name2` – 2 番目の項目の名前 (省略可能)。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id1` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name1` - 項目の名前。
+- `Feed\entry\content\properties\Id2` - 2 番目の推奨項目 ID (省略可能)。
+- `Feed\entry\content\properties\Name2` - 2 番目の項目の名前 (省略可能)。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.3 の応答の例を参照してください。
 
@@ -2828,10 +2810,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2865,10 +2847,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2900,10 +2882,10 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
@@ -2938,16 +2920,15 @@ HTTP 状態コード: 200
 
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 推奨項目の評価。高い数値は高い信頼度を意味します。
-- `Feed\entry\content\properties\Reasoning` – 推奨の理由 (推奨の説明など)。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 推奨項目の評価、高い数値は高い信頼度を意味します。
+- `Feed\entry\content\properties\Reasoning` - 推奨の理由 (推奨の説明など)。
 
 12\.1 の応答の例を参照してください。
 
 ##13\.ユーザーの使用状況の履歴
-推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。
-この API により、ユーザーの履歴が取得できます。
+推奨モデルが構築されたら、システムでは構築に使用したユーザーの履歴 (特定のユーザーに関連する項目) を取得できるようになります。この API により、ユーザーの履歴が取得できます。
 
 注: ユーザーの履歴は現在推奨設定のビルドに対してのみ利用できます。
 
@@ -2972,10 +2953,10 @@ HTTP 状態コード: 200
 HTTP 状態コード: 200
 
 応答には、推奨項目ごとに 1 つのエントリが含まれています。各エントリには、次のデータが含まれています。
-- `Feed\entry\content\properties\Id` – 推奨項目の ID。
-- `Feed\entry\content\properties\Name` – 項目の名前。
-- `Feed\entry\content\properties\Rating` – 該当なし。
-- `Feed\entry\content\properties\Reasoning` – 該当なし。
+- `Feed\entry\content\properties\Id` - 推奨項目の ID。
+- `Feed\entry\content\properties\Name` - 項目の名前。
+- `Feed\entry\content\properties\Rating` - 該当なし。
+- `Feed\entry\content\properties\Reasoning` - 該当なし。
 
 OData XML
 
@@ -3033,11 +3014,11 @@ HTTP 状態コード: 200
 OData XML
 
     The response includes one entry per notification. Each entry has the following data:
-		* feed\entry\content\properties\UserName – Internal user name identification.
-		* feed\entry\content\properties\ModelId – Model ID.
-		* feed\entry\content\properties\Message – Notification message.
-		* feed\entry\content\properties\DateCreated – Date that this notification was created in UTC format.
-		* feed\entry\content\properties\NotificationType – Notification types. Values are BuildFailure, RecommendationFailure, and DataAquisitionFailure.
+		* feed\entry\content\properties\UserName - Internal user name identification.
+		* feed\entry\content\properties\ModelId - Model ID.
+		* feed\entry\content\properties\Message - Notification message.
+		* feed\entry\content\properties\DateCreated - Date that this notification was created in UTC format.
+		* feed\entry\content\properties\NotificationType - Notification types. Values are BuildFailure, RecommendationFailure, and DataAquisitionFailure.
 
 	<feed xmlns:base="https://api.datamarket.azure.com/amla/recommendations/v3/GetNotifications" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
 		<title type="text" />
@@ -3107,4 +3088,4 @@ HTTP 状態コード: 200
 このドキュメントは "現状のまま" 提供されます。このドキュメントに記載された情報および見解は、URL やその他のインターネット Web サイトの参照も含め、予告なく変更する可能性があります。<br><br> 使用している例は、例示のみを目的に提供された、架空のものです。実際の関連やつながりはなく、推測によるものです。<br><br> このドキュメントは、Microsoft 製品に含まれる知的財産に対するいかなる法的権利も提供するものではありません。お客様の社内での参照目的に限り、このドキュメントをコピーし使用することができます。<br><br> © 2015 Microsoft.All rights reserved.
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

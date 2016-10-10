@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="asmalser-msft"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -190,7 +190,7 @@
 
 1. Azure Active Directory の NetSuite の [クイック スタート] ページで、**[ユーザー プロビジョニングの構成]** をクリックします。
 
-	![Configure user provisioning][28]
+	![ユーザー プロビジョニングの構成][28]
 
 2. 表示されるダイアログ ボックスで、NetSuite の管理者の資格情報を入力し、**[次へ]** をクリックします。
 
@@ -259,4 +259,4 @@
 [31]: ./media/active-directory-saas-netsuite-tutorial/assign-users.png
 [32]: ./media/active-directory-saas-netsuite-tutorial/assign-confirm.png
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

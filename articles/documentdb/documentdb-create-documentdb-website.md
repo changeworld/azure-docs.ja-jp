@@ -2,7 +2,7 @@
 	pageTitle="Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ | Microsoft Azure" 
 	description="Azure リソース マネージャーのテンプレートを使用して DocumentDB アカウント、Azure App Service Web Apps、サンプルの Web アプリケーションをデプロイする方法を説明します。" 
 	services="documentdb, app-service\web" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/02/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # Azure リソース マネージャーのテンプレートを使用した DocumentDB と Azure App Service Web Apps のデプロイ
 
@@ -33,7 +33,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
 
-- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料評価版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ##<a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする ##
 このチュートリアルで使用するサンプル ファイルをダウンロードすることから始めましょう。
@@ -49,7 +49,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 > [AZURE.TIP] このテンプレートでは、ここで入力する Web アプリ名と DocumentDB アカウント名が a) 有効であること、および b) 使用可能であることについては確認されません。デプロイメントの送信前に、指定する予定の名前の可用性を確認しておくことを強くお勧めします。
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、[New] \(新規) をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
+1. [Azure ポータル](https://portal.azure.com)にログインし、[New] (新規) をクリックし、「テンプレートのデプロイ」を検索します。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment1.png)
 
 2. [テンプレートのデプロイ] を選択し、**[作成]** をクリックします。 ![テンプレートのデプロイメント UI のスクリーンショット](./media/documentdb-create-documentdb-website/TemplateDeployment2.png)
 
@@ -141,4 +141,4 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 >[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
  
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

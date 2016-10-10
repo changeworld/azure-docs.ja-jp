@@ -24,6 +24,13 @@
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Nsdname "ns1.contoso.com"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
+### 1 つのレコードを含む PTR レコード セットの作成
+ここで ' my-arpa-zone.com' は IP 範囲を表す ARPA ゾーンを表します。このゾーンの各 PTR レコード セットは、この IP の範囲内の IP アドレスに対応します。
+
+	$rs = New-AzureRmDnsRecordSet -Name "10" -RecordType PTR -Ttl 3600 -ZoneName my-arpa-zone.com -ResourceGroupName MyAzureResourceGroup
+	Add-AzureRmDnsRecordConfig -RecordSet $rs -Ptrdname "myservice.contoso.com"
+	Set-AzureRmDnsRecordSet -RecordSet $rs
+
 ### 1 つのレコードを含む SRV レコード セットの作成
 
 ゾーンのルートに SRV レコードを作成している場合、レコード名で *\_service* と *\_protocol* を指定します。レコード名に "@" を含める必要はありません。
@@ -38,4 +45,4 @@
 	Add-AzureRmDnsRecordConfig -RecordSet $rs -Value "This is a TXT record"
 	Set-AzureRmDnsRecordSet -RecordSet $rs
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

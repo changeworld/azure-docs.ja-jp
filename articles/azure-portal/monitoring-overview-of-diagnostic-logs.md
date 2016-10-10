@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="08/24/2016"
+	ms.date="09/26/2016"
 	ms.author="johnkem"/>
 
 # Azure 診断ログの概要
@@ -69,15 +69,23 @@ Azure PowerShell コマンドレットを使用して診断ログを有効にす
 
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource Id] -StorageAccountId [your storage account id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 
 ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
 
 Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource Id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
 
 Service Bus 規則 ID は、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。
+
+Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
+
+    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [log analytics workspace id] -Enabled $true
+
+Azure ポータルで、Log Analytics ワークスペース ID を取得できます。
+
+このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
 Azure CLI を使用して診断ログを有効にするには、次のコマンドを使用します。
 
@@ -93,7 +101,33 @@ Event Hubs への診断ログのストリーミングを有効にするには、
 
 Service Bus 規則 ID は、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。
 
+Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
+
+    azure insights diagnostic set --resourceId <resourceId> --workspaceId <workspaceId> --enabled true
+
+Azure ポータルで、Log Analytics ワークスペース ID を取得できます。
+
+このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
+
 Insights REST API を使用して診断設定を変更する場合は、[こちらのドキュメント](https://msdn.microsoft.com/library/azure/dn931931.aspx)をご覧ください。
+
+## ポータルでの診断設定の管理
+
+すべてのリソースを診断設定で確実かつ適切に設定されるようにするには、ポータルで **[監視]** ブレードに移動して、**[診断ログ]** ブレードを開きます。
+
+![ポータルの [診断ログ] ブレード](./media/monitoring-overview-of-diagnostic-logs/manage-portal-nav.png)
+
+[More services (その他のサービス)] をクリックして、[監視] ブレードを見つけます。
+
+このブレードでは、診断ログをサポートするすべてのリソースを表示してフィルター処理し、診断が有効になっているかどうかと、そのログが送信されるストレージ アカウント、イベント ハブ、Log Analytics ワークスペースを確認できます。
+
+![ポータルの [診断ログ] ブレードの結果](./media/monitoring-overview-of-diagnostic-logs/manage-portal-blade.png)
+
+リソースをクリックすると、ストレージ アカウントに保存されているすべてのログのほか、診断を無効にするオプションや、診断設定を変更するオプションが表示されます。ダウンロード アイコンをクリックすると、特定の期間のログをダウンロードできます。
+
+![1 つのリソースの [診断ログ] ブレード](./media/monitoring-overview-of-diagnostic-logs/manage-portal-logs.png)
+
+> [AZURE.NOTE] 診断ログは、このビューだけに表示され、診断設定がストレージ アカウントに保存されるように構成した場合にのみダウンロードできます。
 
 ## 診断ログでサポートされているサービスとスキーマ
 診断ログのスキーマは、リソースとログ カテゴリによって異なります。サポートされているサービスとそのスキーマを次に示します。
@@ -133,10 +167,13 @@ Insights REST API を使用して診断設定を変更する場合は、[こち�
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
+|Microsoft.ServerManagement/nodes|RequestLogs|要求ログ|
+|Microsoft.StreamAnalytics/streamingjobs|実行|実行|
+|Microsoft.StreamAnalytics/streamingjobs|作成|作成|
 
 ## 次のステップ
 - [診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 - [Insights REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 - [ログを OMS Log Analytics で分析する](../log-analytics/log-analytics-azure-storage-json.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

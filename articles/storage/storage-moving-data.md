@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/27/2016"
-	ms.author="micurd"/>
+	ms.date="09/21/2016"
+	ms.author="micurd;tamram"/>
 
 # Azure Storage との間でのデータの移動
 
@@ -82,4 +82,4 @@ Azure Storage にデータをバックアップするだけの場合は、Azure 
 
 詳細については、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

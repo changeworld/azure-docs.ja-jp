@@ -55,7 +55,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 マルチインスタンス タスクは、**2015 年 12 月 14 日より後に作成されたプール**のノードで "*のみ*" 実行されます。
 
-> [AZURE.TIP] Batch プールで [A8 または A9 サイズのコンピューティング ノード](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)を使用している場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。Batch プールで使用できるコンピューティング ノードのサイズの一覧については、「[Cloud Services のサイズ](./../cloud-services/cloud-services-sizes-specs.md)」をご覧ください。
+> [AZURE.TIP] Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。Batch プールで使用できるコンピューティング ノードのサイズの一覧については、「[Cloud Services のサイズ](./../cloud-services/cloud-services-sizes-specs.md)」をご覧ください。
 
 ### StartTask を使用した MPI アプリケーションのインストール
 
@@ -186,7 +186,7 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 
 マルチインスタンス タスクを削除すると、Batch サービスによってプライマリ タスクとすべてのサブタスクも削除されます。標準タスクの場合と同様に、サブタスクのすべてのディレクトリとファイルがコンピューティング ノードから削除されます。
 
-マルチインスタンス タスクの [TaskConstraints][net_taskconstraints] \([MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock]、[RetentionTime][net_taskconstraint_retention] の各プロパティなど) は、標準タスクの場合と同様に優先され、プライマリ タスクとすべてのサブタスクに適用されます。ただし、マルチインスタンス タスクをジョブに追加した後に [RetentionTime][net_taskconstraint_retention] プロパティを変更した場合、この変更はプライマリ タスクにのみ適用されます。すべてのサブタスクで引き続き元の [RetentionTime][net_taskconstraint_retention] が使用されます。
+マルチインスタンス タスクの [TaskConstraints][net_taskconstraints] ([MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock]、[RetentionTime][net_taskconstraint_retention] の各プロパティなど) は、標準タスクの場合と同様に優先され、プライマリ タスクとすべてのサブタスクに適用されます。ただし、マルチインスタンス タスクをジョブに追加した後に [RetentionTime][net_taskconstraint_retention] プロパティを変更した場合、この変更はプライマリ タスクにのみ適用されます。すべてのサブタスクで引き続き元の [RetentionTime][net_taskconstraint_retention] が使用されます。
 
 最近のタスクがマルチインスタンス タスクの一部である場合、コンピューティング ノードの最近のタスク リストにそのサブタスクの ID が示されます。
 
@@ -275,4 +275,4 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "マルチインスタンスの概要"
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

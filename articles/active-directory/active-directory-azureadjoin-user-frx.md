@@ -1,6 +1,6 @@
 <properties
 	pageTitle="セットアップ中に新しいデバイスを Azure AD に設定する | Microsoft Azure"
-	description="最初の実行エクスペリエンス中に Azure AD への参加を設定する方法について説明するトピックです。"
+	description="最初の実行エクスペリエンスで Azure AD 参加を設定する方法を説明するトピック。"
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # セットアップ中に新しいデバイスを Azure AD に設定する
@@ -52,4 +52,4 @@ Windows 10 では、ユーザーは、最初の実行エクスペリエンス (F
 * [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
 * [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

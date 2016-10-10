@@ -13,15 +13,15 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="big-compute"
-   ms.date="06/08/2016"
+   ms.date="09/22/2016"
    ms.author="danlep"/>
 
-# Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティング (HPC) に関するテクニカル リソース
-これは、Azure で大規模並列、Batch、HPC ワークロードを実行するのに役立つテクニカル リソース ガイドです。既存の Batch または HPC ワークロードを Azure クラウドに拡張するか、新しい大規模なコンピューティング ソリューションを Azure サービスを使用して Azure に構築します。
+# Azure における大規模なコンピューティング: Batch とハイパフォーマンス コンピューティング (HPC) に関するテクニカル リソース 
+この記事では、Azure で大規模並列、Batch、ハイパフォーマンス コンピューティング (HPC) の各ワークロードを実行する際に役立つテクニカル リソースを紹介します。既存の Batch または HPC ワークロードを Azure クラウドに拡張するか、さまざまな Azure サービスを使用して新しい大規模なコンピューティング ソリューションを構築します。
 
 ## ソリューションのオプション
 
-Azure の大規模なコンピューティング オプションについて説明し、ワークロードやビジネス ニーズに適切なアプローチを選択します。
+Azure の大規模な計算オプションについて説明し、ワークロードやビジネス ニーズに適切なアプローチを選択します。
 
 * [Batch と HPC ソリューション](batch-hpc-solutions.md)
 
@@ -30,7 +30,7 @@ Azure の大規模なコンピューティング オプションについて説�
 
 ## Azure Batch
 
-[Batch](https://azure.microsoft.com/services/batch/) は、Linux および Windows アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、さまざまな言語を介してクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングし、ジョブの実行パイプラインをビルドします。
+[Batch](https://azure.microsoft.com/services/batch/) は、Linux および Windows アプリケーションを簡単にクラウド対応にすることができ、クラスターやジョブ スケジューラーをセットアップして管理しなくてもジョブを実行できるプラットフォーム サービスです。SDK を使用して、各種言語でクライアント アプリケーションを Azure Batch と統合し、Azure にデータをステージングして、ジョブ実行パイプラインを作成します。
 
 * [ドキュメント](https://azure.microsoft.com/documentation/services/batch/)
 
@@ -89,7 +89,7 @@ HPC Pack は、Microsoft Azure と Windows Server テクノロジに基づいて
 
 ## コンピューティング集中型インスタンス
 
-Azure では、Linux と Windows の HPC ワークロードを実行するために[さまざまなサイズ](../virtual-machines/virtual-machines-windows-sizes.md)が用意されています。たとえば、コンピューティング集中型の [A8 や A9](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) インスタンスはバックエンド RDMA ネットワークに接続できます。
+Azure では、Linux と Windows の HPC ワークロードを実行するために、[さまざまな VM サイズ](../virtual-machines/virtual-machines-windows-sizes.md)が用意されています。たとえば、[コンピューティング集中型](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)インスタンスはバックエンド RDMA ネットワークに接続できます。
 
 
 * [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../virtual-machines/virtual-machines-linux-classic-rdma-cluster.md)
@@ -101,6 +101,8 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 ## サンプルとデモ
 
 * [Azure Batch C# および Python のコード サンプル](https://github.com/Azure/azure-batch-samples)
+
+* バッチ型の Dockerized ワークロードを簡単にデプロイするための [Batch Shipyard](https://azure.github.io/batch-shipyard/) ツールキット
 
 * [体験版 SUSE Linux Enterprise Server for HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
@@ -118,7 +120,11 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 * [Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/)
 
+* [App Service](https://azure.microsoft.com/documentation/services/app-service/)
+
 * [Media Services](https://azure.microsoft.com/documentation/services/media-services/)
+
+* [関数](https://azure.microsoft.com/documentation/services/functions/)
 
 ## アーキテクチャの設計図
 
@@ -132,7 +138,7 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 
 ## 顧客事例
 
-* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
 
 * [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
 
@@ -157,4 +163,4 @@ Azure では、Linux と Windows の HPC ワークロードを実行するため
 * 最新情報については、「[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)」と「[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)」をご覧ください。
 * また、「[Batch の新機能](https://azure.microsoft.com/updates/?service=batch)」を確認するか、[RSS フィード](https://azure.microsoft.com/updates/feed/?service=batch)にご登録ください。
 
-<!---HONumber=AcomDC_0615_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -19,7 +19,7 @@
 
 # Azure Active Directory プレビューで新しいグループを作成する
 
-この記事では、Azure Active Directory (Azure AD) プレビューで新しいグループを作成して設定する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。
+この記事では、Azure Active Directory (Azure AD) プレビューで新しいグループを作成して設定する方法について説明します。[プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md) グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。
 
 ## どのようにしてグループを作成しますか?
 
@@ -39,7 +39,7 @@
 
 5. **[グループ]** ブレードで、グループの名前と説明を追加します。
 
-6. グループに追加するメンバーを選択するには、**[メンバーシップの種類]** ボックスで **[割り当て済み]** を選択し、**[メンバー]** を選択します。グループのメンバーシップを動的に管理する方法の詳細については、[グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-users-azure-portal.md)または[グループ内のデバイスの動的ルールの管理](active-directory-groups-dynamic-devices-azure-portal.md)に関する記事をご覧ください。
+6. グループに追加するメンバーを選択するには、**[メンバーシップの種類]** ボックスで **[割り当て済み]** を選択し、**[メンバー]** を選択します。グループのメンバーシップを動的に管理する方法の詳細については、[属性を使用したグループ メンバーシップの高度なルールの作成](active-directory-groups-dynamic-membership-azure-portal.md)を参照してください。
 
   ![追加するメンバーを選択する](./media/active-directory-groups-create-azure-portal/select-members.png)
 
@@ -62,4 +62,4 @@
 * [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

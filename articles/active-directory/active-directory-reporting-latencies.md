@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -52,4 +52,4 @@ RMS 対応アプリケーションの利用状況 | 2 時間 | 4 時間 | 8 時�
 **プライベート プレビュー レポート** | | |
 すべてのユーザーのサインイン アクティビティ | 2 時間 | 4 時間 | 8 時間
 
-<!---HONumber=AcomDC_0309_2016-->
+<!---HONumber=AcomDC_0928_2016-->

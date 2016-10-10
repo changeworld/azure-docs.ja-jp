@@ -16,10 +16,10 @@
 	ms.date="08/15/2016"
 	ms.author="brandwe"/>
 
-# Azure AD を使用した Web アプリのサインインおよびサインアウト
+# Azure AD を使用した NodeJS Web アプリのサインインおよびサインアウト
 
 
-ここでは、Passport を使用して次のことを行います。
+ここでは、Passport を使用して次の操作を行います。
 
 - Azure AD を使用するアプリにユーザーをサインインします。
 - ユーザーについての情報を表示します。
@@ -414,4 +414,4 @@ Microsoft の個人または職場/学校アカウントのいずれかでサイ
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

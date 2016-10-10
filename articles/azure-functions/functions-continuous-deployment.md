@@ -1,7 +1,7 @@
 <properties
    pageTitle="Azure Functions の継続的なデプロイ | Microsoft Azure"
    description="Azure App Service の継続的なデプロイ機能を使用して、Azure Functions を発行します。"
-   services="azure-functions"
+   services="functions"
    documentationCenter="na"
    authors="ggailey777"
    manager="erikre"
@@ -15,7 +15,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="08/15/2016"
+   ms.date="09/25/2016"
    ms.author="glenga"/>
 
 # Azure Functions の継続的なデプロイ 
@@ -48,7 +48,9 @@ Azure Functions を利用すると、関数アプリの継続的なデプロイ�
 1. [Azure Functions ポータル](https://functions.azure.com/signin)の関数アプリで、**[Function App Settings (関数アプリの設定)]**、**[Configure continuous integration (継続的インテグレーションの構成)]**、**[セットアップ]** の順にクリックします。
 
 	![継続的なデプロイの設定](./media/functions-continuous-deployment/setup-deployment.png)
-
+	
+	![継続的なデプロイの設定](./media/functions-continuous-deployment/setup-deployment-1.png)
+	
 	また、**[Start from source control (ソース管理から開始)]** をクリックして Functions のクイック スタートから [デプロイ] ブレードにアクセスすることもできます。
 
 2. [デプロイ] ブレードで、**[ソースの選択]** をクリックし、選択したデプロイ ソースに情報を入力して、 **[OK]** をクリックします。
@@ -128,4 +130,4 @@ Azure Functions を利用すると、関数アプリの継続的なデプロイ�
 
 [GitHub]: https://github.com/
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

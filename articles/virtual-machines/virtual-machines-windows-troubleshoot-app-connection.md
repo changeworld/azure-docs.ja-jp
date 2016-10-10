@@ -1,5 +1,5 @@
 <properties
-	pageTitle="VM でのアプリケーション アクセスのトラブルシューティング |Microsoft Azure"
+	pageTitle="Windows VM でのアプリケーション アクセスのトラブルシューティング |Microsoft Azure"
 	description="Azure 仮想マシンで実行されているアプリケーションにアクセスできない場合は、次の手順を使用して問題の原因を特定してください。"
 	services="virtual-machines-windows"
 	documentationCenter=""
@@ -13,12 +13,12 @@
 	ms.workload="infrastructure-services"
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/11/2016"
+	ms.topic="support-article"
+	ms.date="09/27/2016"
 	ms.author="iainfou"/>
 
 # Azure 仮想マシンで実行されているアプリケーションへのアクセスに関するトラブルシューティング
 
 [AZURE.INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../includes/virtual-machines-common-troubleshoot-app-connection.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

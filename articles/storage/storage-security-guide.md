@@ -14,7 +14,7 @@
 	ms.devlang="dotnet"
 	ms.topic="article"
 	ms.date="09/08/2016"
-	ms.author="robinsh"/>
+	ms.author="cbrooks;robinsh"/>
 
 #Azure Storage セキュリティ ガイド
 
@@ -632,4 +632,4 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
 	この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

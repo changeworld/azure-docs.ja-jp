@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="tamram"/>
+	ms.date="09/21/2016"
+	ms.author="jutang;tamram"/>
 
 # Azure Storage のレプリケーション
 
@@ -37,6 +37,8 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 | 個別のノードで保持されるデータ コピーの数 | 3 | 3 | 6 | 6 |
 
 さまざまな冗長オプションの料金情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
+
+>[AZURE.NOTE] Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。Premium Storage については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」をご覧ください。
 
 ## ローカル冗長ストレージ
 
@@ -117,4 +119,4 @@ Azure でサポートされているリージョンに関する最新の情報�
 - [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

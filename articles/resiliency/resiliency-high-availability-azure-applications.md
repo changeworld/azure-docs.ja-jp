@@ -70,7 +70,7 @@ Azure アプリケーションの可用性を高めるために、疎結合の�
 
 このバリエーションとしては、故障したデータベースの呼び出しに対するフェールオーバーの場所として Azure Storage (BLOB、テーブル、キュー) または Service Bus のキューを利用する方法があります。たとえば、あるアプリケーション内で別のサービス (Azure SQL Database など) を同期的に呼び出す行為は繰り返し失敗します。場合によっては、そのデータをシリアル化し、永続的なストレージに保存できます。後に、サービスまたはデータベースがオンラインに戻ったときに、アプリケーションはストレージから要求を再送信できます。このモデルの違いは、仲介となる場所がアプリケーション ワークフローで常に同じではないということです。障害シナリオでのみ使用されます。
 
-いずれのシナリオでも、非同期通信と中間ストレージの利用により、バックエンド サービスが停止しても、アプリケーション全体が停止する事態が回避されます。キューは論理的な仲介者として機能します。正しいキュー サービスの選択方法については、「[Azure キューと Service Bus キューの比較](../service-bus/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
+いずれのシナリオでも、非同期通信と中間ストレージの利用により、バックエンド サービスが停止しても、アプリケーション全体が停止する事態が回避されます。キューは論理的な仲介者として機能します。正しいキュー サービスの選択方法については、「[Azure キューと Service Bus キューの比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)」を参照してください。
 
 ###障害検出と再試行ロジック
 
@@ -143,4 +143,4 @@ web ロールはインフラストラクチャの残りの部分から自立し�
 
 この記事は、[Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性](./resiliency-disaster-recovery-high-availability-azure-applications.md)に関する一連の記事に属しています。このシリーズの次の記事は、「[Microsoft Azure 上で構築されたアプリケーションの障害復旧](./resiliency-disaster-recovery-azure-applications.md)」です。
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/09/2016"
+	ms.date="09/22/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの構成 - クラシック
 
 > [AZURE.SELECTOR]
-- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 - [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 - [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
@@ -73,7 +73,7 @@
 
 1. **[仮想ネットワークの作成]** ダイアログ ボックスの各ページで次の設定を使用して、新しい仮想ネットワークを作成します。
 
-	|ページ|設定|
+	|ページ|Settings|
 |---|---|
 |Virtual Network の詳細|**名前 = ContosoNET**<br/>**リージョン = 米国西部**|
 |DNS サーバーと VPN 接続|なし|
@@ -85,7 +85,7 @@
 
 1. **[仮想マシンの作成]** ダイアログ ボックスの各ページで次の設定を使用して、新しい VM を構成します。
 
-	|ページ|設定|
+	|ページ|Settings|
 |---|---|
 |仮想マシンのオペレーティング システムの選択|Windows Server 2012 R2 Datacenter|
 |仮想マシンの構成|**[バージョンのリリース日]** = (最新)<br/>**[仮想マシン名]** = ContosoDC<br/>**[レベル]** = STANDARD<br/>**[サイズ]** = A2 (2 コア)<br/>**[新しいユーザー名]** = AzureAdmin<br/>**[新しいパスワード]** = Contoso!000<br/>**[確認]** = Contoso!000|
@@ -136,7 +136,7 @@
 
 1. **Active Directory ドメイン サービスの構成ウィザード**で、次の値を使用します。
 
-	|ページ|設定|
+	|ページ|Setting|
 |---|---|
 |デプロイ構成|**[Add a new forest (新しいフォレストを追加)]** = 選択<br/>**[ルート ドメイン名]** = corp.contoso.com|
 |ドメイン コントローラー オプション|**[パスワード]** = Contoso!000<br/>**[パスワードの確認]** = Contoso!000|
@@ -159,7 +159,7 @@
 
 1. 右側の **[タスク]** ウィンドウで、**[新規]** を選択し、**[ユーザー]** をクリックします。次の設定を使用します。
 
-	|設定|値|
+	|Setting|値|
 |---|---|
 |**名**|インストール|
 |**ユーザー SAM アカウント名**|インストール|
@@ -319,7 +319,7 @@
 
 1. クラスターの作成ウィザードの各ページで、次の設定を使用して、単一ノード クラスターを作成します。
 
-	|ページ|設定|
+	|ページ|Settings|
 |---|---|
 |開始する前に|既定値を使用|
 |サーバーの選択|**[サーバー名の入力]** に「**ContosoSQL1**」と入力し、**[追加]** をクリックします。|
@@ -548,4 +548,4 @@
 
 Azure での SQL Server の使用に関するその他の情報については、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

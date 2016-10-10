@@ -22,6 +22,8 @@
 
 Azure クラシック ポータルを使用すると、高度なルールを作成し、Azure Active Directory (Azure AD) グループに複雑で動的な属性ベースのメンバーシップを適用できます。
 
+ユーザーが任意の属性を変更すると、システムではディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によって、グループの追加または削除がトリガーされるかどうかを確認します。ユーザーがグループにルールを満たしている場合は、そのグループにメンバーとして追加されます。メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+
 ## 高度なルールを作成するには
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリを開きます。
@@ -201,13 +203,24 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。次のデバイス属性を使用できます。
 
 | プロパティ | 使用できる値 | 使用法 |
-|----------------------|---------------------------------|------------------------------------------------------|
+|-------------------------|---------------------------------|-------------------------------------------------------------|
 | displayName | 任意の文字列値 | (device.displayName -eq "Rob Iphone”) |
 | deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "IOS") |
 | deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1") |
 | isDirSynced | true false null | (device.isDirSynced -eq "true") |
 | isManaged | true false null | (device.isManaged -eq "false") |
 | isCompliant | true false null | (device.isCompliant -eq "true") |
+| deviceCategory | 任意の文字列値 | (device.deviceCategory -eq "") |
+| deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Microsoft") |
+| deviceModel | 任意の文字列値 | (device.deviceModel -eq "IPhone 7+") |
+| deviceOwnership | 任意の文字列値 | (device.deviceOwnership -eq "") |
+| domainName | 任意の文字列値 | (device.domainName -eq "contoso.com") |
+| enrollmentProfileName | 任意の文字列値 | (device.enrollmentProfileName -eq "") |
+| enrollmentType | 任意の文字列値 | (device.enrollmentType -eq "") |
+| isRooted | true false null | (device.deviceOSType -eq "true") |
+| managementType | 任意の文字列値 | (device.managementType -eq "") |
+| organizationalUnit | 任意の文字列値 | (device.organizationalUnit -eq "") |
+| deviceId | 有効なデバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
 
 > [AZURE.NOTE]
 Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
@@ -226,4 +239,4 @@ Azure クラシック ポータルの "単純なルール" のドロップダウ
 
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_0928_2016-->

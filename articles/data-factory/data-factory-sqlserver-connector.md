@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。"
 	services="data-factory"
 	documentationCenter=""
-	authors="spelluru"
+	authors="linda33wj"
 	manager="jhubbard"
 	editor="monicar"/>
 
@@ -14,11 +14,25 @@
 	ms.devlang="na"
 	ms.topic="article"
 	ms.date="08/31/2016"
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用してオンプレミスまたは IaaS (Azure VM) の SQL Server との間でデータを移動する
-
 この記事では、コピー アクティビティを使用して SQL Server と他のデータ ストアの間でデータを移動する方法について説明します。この記事は、データ移動の概要と、ソースおよびシンクとしてサポートされているデータ ストアについて紹介している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
+
+## サポートされているソースとシンク
+コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。サポートされる任意のソース データ ストアのデータを、SQL Database に移動したり、SQL Database のデータを、サポートされる任意のシンク データ ストアに移動したりできます。
+
+## パイプラインの作成
+さまざまなツール/API を使用して、オンプレミスの SQL Server データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
+
+- コピー ウィザード
+- Azure ポータル
+- Visual Studio
+- Azure PowerShell
+- .NET API
+- REST API
+
+さまざまな方法でコピー アクティビティによってパイプラインを作成する手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ## 接続を有効にする
 
@@ -392,6 +406,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 	}
 
 ## SQL Server のリンクされたサービスのプロパティ
+サンプルでは、**OnPremisesSqlServer** 型のリンクされたサービスを使用して、オンプレミスの SQL Server データベースをデータ ファクトリにリンクします。次の表は、オンプレミスの SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 次の表は、SQL Server のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
@@ -444,6 +459,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 SQL Server データ ソースの資格情報の設定について詳しくは、「[資格情報とセキュリティの設定](data-factory-move-data-between-onprem-and-cloud.md#set-credentials-and-security)」をご覧ください。
 
 ## SQL Server データセットの type プロパティ
+サンプルでは、**SqlServerTable** 型のデータセットを使用して、SQL データベースのテーブルを表しています。
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、すべてのデータセット型 (SQL Server 、Azure BLOB、Azure テーブルなど) で同じです。
 
@@ -454,6 +470,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | tableName | リンクされたサービスが参照する SQL Server Database インスタンスのテーブルの名前です。 | あり |
 
 ## SQL Server のコピー アクティビティの type プロパティ
+SQL Server データベースからデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource** に設定します。同様に、SQL Server データベースにデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink** に設定します。このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
@@ -488,8 +505,8 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 | -------- | ----------- | -------------- | -------- |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。 | timespan<br/><br/> 例: "00:30:00" (30 分)。 | いいえ |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 | 整数 (行数) | いいえ (既定値: 10000)
-| sqlWriterCleanupScript | 特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。詳細については、繰り返し性のセクションをご覧ください。 | クエリ ステートメント。 | いいえ |
-| sliceIdentifierColumnName | 自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。詳細については、繰り返し性のセクションをご覧ください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
+| sqlWriterCleanupScript | 特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。詳細については、[再現性に関するセクション](#repeatability-during-copy)をご覧ください。 | クエリ ステートメント。 | いいえ |
+| sliceIdentifierColumnName | 自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。詳細については、[再現性に関するセクション](#repeatability-during-copy)をご覧ください。 | バイナリ (32) のデータ型の列の列名。 | いいえ |
 | sqlWriterStoredProcedureName | 対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 | ストアド プロシージャの名前。 | いいえ |
 | storedProcedureParameters | ストアド プロシージャのパラメーター。 | 名前と値のペア。パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
 | sqlWriterTableType | ストアド プロシージャで使用するテーブル型の名前を指定します。コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 | テーブルの種類の名前。 | いいえ |
@@ -586,6 +603,8 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
 
+次に、ソース データセットの列をターゲット データセットの列にマップします。例については、「[列マッピングの例](#column-mapping-samples)」を参照してください。
+
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
 
@@ -650,4 +669,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

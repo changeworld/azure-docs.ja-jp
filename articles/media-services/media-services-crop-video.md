@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="07/11/2016"  
+	ms.date="09/26/2016"  
 	ms.author="anilmur;juliako;"/>
 
 # Media Encoder Standard を使用してビデオをトリミングする
@@ -146,4 +146,4 @@ Azure Media Services のラーニング パスをご覧ください。AMS で提
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

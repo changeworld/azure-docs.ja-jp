@@ -13,8 +13,8 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="04/20/2016"
-     ms.author="cstreet"/>
+     ms.date="08/29/2016"
+     ms.author="andbuc"/>
 
 
 # IoT Gateway SDK (ベータ) - Windows を使用してシミュレートされたデバイスでデバイスからクラウドへのメッセージを送信する
@@ -35,15 +35,16 @@
 2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
 3. **tools\\build.cmd** スクリプトを実行します。このスクリプトでは、Visual Studio ソリューション ファイルを作成し、ソリューションをビルドして、テストを実行します。Visual Studio ソリューションは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **build** フォルダーにあります。
 
-サンプルを実行するには、次の手順に従います。
+サンプルを実行するには:
 
 テキスト エディターで、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **samples\\simulated\_device\_cloud\_upload\\src\\simulated\_device\_cloud\_upload\_win.json** ファイルを開きます。このファイルでは、サンプル ゲートウェイの各モジュールを構成します。
 
-- **IoTHub** モジュールは、IoT Hub に接続します。データを IoT Hub に送信するようにモジュールを構成する必要があります。具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** の値を **azure-devices.net** に設定します。
+- **IoTHub** モジュールは、IoT Hub に接続します。データを IoT Hub に送信するようにモジュールを構成する必要があります。具体的には、**IoTHubName** の値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** の値を **azure-devices.net** に設定します。**Transport** の値を "HTTP"、"AMQP"、または "MQTT" のいずれかに設定します。現在、すべてのデバイス メッセージで 1 つの TCP 接続を共有するのは "HTTP" のみです。値を "AMQP" または "MQTT" に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
 - **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。**deviceId** 値が IoT Hub に追加した 2 つのデバイスの ID と一致し、**deviceKey** 値に 2 つのデバイスのキーが含まれていることを確認します。
 - **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。これらのモジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
 - **Logger** モジュールは、ゲートウェイのアクティビティをファイルに記録します。
 - 次に示す **module path** の値は、Gateway SDK リポジトリを **C:** ドライブのルートに複製していることを前提としています。リポジトリを別の場所にダウンロードした場合は、**module path** の値を適宜調整する必要があります。
+- JSON ファイルの下部にある **links** 配列は、**BLE1** モジュールと **BLE2** モジュールを **mapping** モジュールに、**mapping** モジュールを **IoTHub** モジュールに接続します。また、すべてのメッセージが **Logger** モジュールによってログに記録されます。
 
 ```
 {
@@ -51,33 +52,34 @@
     [ 
         {
             "module name" : "IoTHub",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\iothubhttp\\Debug\\iothubhttp_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\iothub\\Debug\\iothub_hl.dll",
             "args" : 
             {
                 "IoTHubName" : "{Your IoT hub name}",
-                "IoTHubSuffix" : "azure-devices.net"
+                "IoTHubSuffix" : "azure-devices.net",
+                "Transport": "HTTP"
             }
         },
         {
             "module name" : "mapping",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\identitymap\\Debug\\identitymap_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\identitymap\\Debug\\identity_map_hl.dll",
             "args" : 
             [
                 {
                     "macAddress" : "01-01-01-01-01-01",
-                    "deviceId"   : "GW-ble1-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 1}",
+                    "deviceKey"  : "{Device key 1}"
                 },
                 {
                     "macAddress" : "02-02-02-02-02-02",
-                    "deviceId"   : "GW-ble2-demo",
-                    "deviceKey"  : "{Device key}"
+                    "deviceId"   : "{Device ID 2}",
+                    "deviceKey"  : "{Device key 2}"
                 }
             ]
         },
         {
             "module name":"BLE1",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\ble_fake\\Debug\\ble_fake_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\simulated_device\\Debug\\simulated_device_hl.dll",
             "args":
             {
                 "macAddress" : "01-01-01-01-01-01"
@@ -85,7 +87,7 @@
         },
         {
             "module name":"BLE2",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\ble_fake\\Debug\\ble_fake_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\simulated_device\\Debug\\simulated_device_hl.dll",
             "args":
             {
                 "macAddress" : "02-02-02-02-02-02"
@@ -93,12 +95,18 @@
         },
         {
             "module name":"Logger",
-            "module path" : "C:\\azure-iot-gateway-sdk\\modules\\logger\\Debug\\logger_hl.dll",
+            "module path" : "C:\\azure-iot-gateway-sdk\\build\\modules\\logger\\Debug\\logger_hl.dll",
             "args":
             {
                 "filename":"C:\\azure-iot-gateway-sdk\\deviceCloudUploadGatewaylog.log"
             }
         }
+    ],
+    "links" : [
+        { "source" : "*", "sink" : "Logger" },
+        { "source" : "BLE1", "sink" : "mapping" },
+        { "source" : "BLE2", "sink" : "mapping" },
+        { "source" : "mapping", "sink" : "IoTHub" }
     ]
 }
 ```
@@ -147,4 +155,4 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

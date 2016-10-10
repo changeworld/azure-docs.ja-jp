@@ -160,7 +160,7 @@ Azure に構築されるアプリケーションは、ローカル障害から�
 
 ###Service Bus
 
-Azure Service Bus の一時的な機能停止状態を緩和するには、永続的なクライアント側キューの作成を検討してください。これにより、一時的に代替の、ローカル ストレージ メカニズムを使用して、Service Bus キューに追加できないメッセージを保存します。アプリケーションでは、サービスを復元した後で、一時的に保存されたメッセージの処理方法を決定することができます。詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](../service-bus/service-bus-performance-improvements.md)」と [Service Bus (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページを参照してください。
+Azure Service Bus の一時的な機能停止状態を緩和するには、永続的なクライアント側キューの作成を検討してください。これにより、一時的に代替の、ローカル ストレージ メカニズムを使用して、Service Bus キューに追加できないメッセージを保存します。アプリケーションでは、サービスを復元した後で、一時的に保存されたメッセージの処理方法を決定することができます。詳細については、「[Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](../service-bus-messaging/service-bus-performance-improvements.md)」と [Service Bus (障害復旧)](./resiliency-technical-guidance-recovery-loss-azure-region.md#other-azure-platform-services) に関するページを参照してください。
 
 ###Mobile Services
 
@@ -223,4 +223,4 @@ Azure HDInsight に関連付けられているデータは、既定では Azure 
 
 この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。このシリーズの次の記事では、[リージョン全体のサービス中断からの復旧](./resiliency-technical-guidance-recovery-loss-azure-region.md)について説明します。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

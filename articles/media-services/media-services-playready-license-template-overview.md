@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
- 	ms.date="06/22/2016"  
+ 	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 #Media Services PlayReady ライセンス テンプレートの概要
@@ -23,10 +23,10 @@ Azure Media Services では、Microsoft PlayReady ライセンスの配信サー
 Media Services では、PlayReady ライセンス設定用の API も提供されます。ライセンスには、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限や制限が含まれます。指定可能な PlayReady ライセンス制限の例の一部を以下に示します。
 
 - ライセンスが有効になる日時。
-- ラインセンスの有効期限が切れる日時の値。 
+- ラインセンスの有効期限が切れる日時の値。
 - クライアントの永続的なストレージに保存されるライセンスの場合。永続的なライセンスは、通常、コンテンツのオフライン再生を可能にするために使用します。
-- コンテンツを再生するためにプレーヤーが満たす必要のある最低限のセキュリティ レベル。 
-- 音声/ビデオ コンテンツの出力を制御する出力保護レベル。 
+- コンテンツを再生するためにプレーヤーが満たす必要のある最低限のセキュリティ レベル。
+- 音声/ビデオ コンテンツの出力を制御する出力保護レベル。
 - 詳細については、『[PlayReady Compliance Rules](https://www.microsoft.com/playready/licensing/compliance/)』(PlayReady のコンプライアンス ルール) ドキュメントの「Output Controls」(出力制御) セクション (3.5) を参照してください。
 
 >[AZURE.NOTE]現時点では、PlayReady ライセンスの PlayRight のみを設定することができます (このライセンスは必須です)。PlayRight を使用すると、クライアントはコンテンツを再生できるようになります。PlayRight により、再生に固有の制限を設定することもできます。詳細については、「[PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)」を参照してください。
@@ -311,4 +311,4 @@ Silverlight でサポートされる保護レベルの例については、「[S
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

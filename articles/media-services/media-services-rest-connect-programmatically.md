@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Media Services REST API を使用して Media Services アカウントに接続する" 
+	pageTitle="Media Services REST API を使用して Media Services アカウントに接続する | Microsoft Azure" 
 	description="このトピックでは、Media Services REST API を使用して Media Services に接続する方法について説明します。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="dotnet" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 
@@ -177,4 +177,4 @@ Media Services のルート URI は https://media.windows.net/ です。まず�
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

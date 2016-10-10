@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Analytics での顔と感情の検出"
+	pageTitle="Azure Media Analytics での顔と感情の検出 | Microsoft Azure"
 	description="このトピックでは、Azure Media Analytics で顔と感情を検出する方法を示します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"   
+	ms.date="09/26/2016"   
 	ms.author="milanga;juliako;"/>
  
 #Azure Media Analytics での顔と感情の検出
 
-##概要
+##Overview
 
 **Azure Media Face Detector** メディア プロセッサ (MP) を使用すると、対象ユーザーを数えたり、動きを追跡したり、表情によって対象ユーザーの参加や反応を測定することさえできます。このサービスには 2 つの機能があります。
 
@@ -52,7 +52,7 @@
 
 顔の検出と追跡の JSON には、次の属性が含まれます。
 
-要素|説明
+要素|Description
 ---|---
 バージョン|Video API のバージョンを示します。
 タイムスケール|ビデオの 1 秒あたりの "ティック数" です。
@@ -166,7 +166,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 ####属性の説明
 
-属性名|説明
+属性名|Description
 ---|---
 Mode|Faces: 顔検出のみ<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。
 AggregateEmotionWindowMs|AggregateEmotion モードが選択されている場合に使用します。各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。
@@ -537,4 +537,4 @@ AggregateEmotionIntervalMs|0\.5|1|0\.25
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

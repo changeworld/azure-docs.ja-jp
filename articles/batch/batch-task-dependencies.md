@@ -13,7 +13,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows"
 	ms.workload="big-compute"
-	ms.date="06/29/2016"
+	ms.date="09/28/2016"
 	ms.author="marsma" />
 
 # Azure Batch におけるタスクの依存関係
@@ -24,17 +24,17 @@ Azure Batch のタスク依存関係機能は、次の処理を行う場合に�
 - 有向非巡回グラフ (DAG) としてデータ処理タスクを表すことのできるジョブ。
 - 下流のタスクが上流タスクの出力に依存する、その他すべてのジョブ。
 
-この機能を使うと、コンピューティング ノードで他のタスクが正常に完了した後にのみ実行がスケジュールされるようなタスクを作成できます。たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。そのジョブの最終タスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後でのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
+Batch のタスク依存関係を使用すると、コンピューティング ノードで他の 1 つ以上のタスクが正常に完了した後にのみ実行するようにスケジュールされたタスクを作成できます。たとえば、並列実行される複数の独立したタスクを使って 3D ムービーの各フレームをレンダリングするジョブを作成できます。最後のタスク ("マージ タスク") では、すべてのフレームが正常にレンダリングされた後にのみ、そのレンダリング済みのフレームをマージしてムービーを完成させます。
 
 他のタスクに対して一対一または一対多の依存関係を持つタスクを作成できます。さらに、特定の範囲に依存するタスク (特定の範囲のタスク ID に該当する一連のタスクが正常に完了した場合にのみ実行されるタスク) を作成することもできます。その 3 つの基本シナリオを組み合わせれば、多対多の関係を作成することもできます。
 
 ## Batch .NET でのタスクの依存関係
 
-この記事では、[Batch .NET][net_msdn] ライブラリを使用したタスクの依存関係の構成方法について説明します。まずジョブに対して[タスクの依存関係を有効](#enable-task-dependencies)にする方法を説明した後、[依存関係を伴うタスクの構成](#create-dependent-tasks)方法を簡単に紹介します。最後に、Batch でサポートされる[依存関係のシナリオ](#dependency-scenarios)について取り上げます。
+この記事では、[Batch .NET][net_msdn] ライブラリを使用したタスクの依存関係の構成方法について説明します。まず、ジョブで[タスクの依存関係を有効](#enable-task-dependencies)にする方法を説明した後、[依存関係を伴うタスクを構成する](#create-dependent-tasks)方法を紹介します。最後に、Batch でサポートされる[依存関係のシナリオ](#dependency-scenarios)について取り上げます。
 
 ## タスクの依存関係を有効にする
 
-Batch アプリケーションでタスクの依存関係を利用するには、まず、そのジョブにタスクの依存関係が使用されていることを Batch サービスに伝える必要があります。Batch .NET では、[CloudJob][net_cloudjob] の [UsesTaskDependencies][net_usestaskdependencies] プロパティを `true` に設定することによって有効にします。
+Batch アプリケーションでタスクの依存関係を使用するには、まず、そのジョブでタスクの依存関係が使用されていることを Batch サービスに伝える必要があります。Batch .NET では、[CloudJob][net_cloudjob] の [UsesTaskDependencies][net_usestaskdependencies] プロパティを `true` に設定することによって有効にします。
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -44,7 +44,7 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-上のコード スニペットの "batchClient" は、[BatchClient][net_batchclient] クラスのインスタンスです。
+前のコード スニペットでは、"batchClient" は、[BatchClient][net_batchclient] クラスのインスタンスです。
 
 ## 依存タスクの作成
 
@@ -133,7 +133,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## サンプル コード
 
-[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。この Visual Studio 2015 ソリューションは、ジョブに対してタスクの依存関係を有効にし、他のタスクに依存するタスクを作成して、それらのタスクをコンピューティング ノードのプールで実行するものです。
+[TaskDependencies][github_taskdependencies] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。この Visual Studio 2015 ソリューションは、ジョブでタスクの依存関係を有効にし、他のタスクに依存するタスクを作成して、それらのタスクをコンピューティング ノードのプールで実行する方法を示します。
 
 ## 次のステップ
 
@@ -143,7 +143,7 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ### アプリケーションとステージング データのインストール
 
-Azure Batch フォーラムの「[Installing applications and staging data on Batch compute nodes (Batch コンピューティング ノードへのアプリケーションとステージング データのインストール)][forum_post]」という投稿に、タスクの実行に使用するノードを準備するさまざまな方法が簡単に説明されています。この投稿記事は、Azure Batch チームのメンバーによって書かれたものです。コンピューティング ノードにファイル (アプリケーションとタスクの入力データを含む) を展開する各種の方法がわかりやすく解説されています。各方法ごとの特別な考慮事項も記載されています。
+Azure Batch フォーラムの「[Installing applications and staging data on Batch compute nodes (Batch コンピューティング ノードへのアプリケーションとステージング データのインストール)][forum_post]」という投稿に、タスクの実行に使用するノードを準備するさまざまな方法が簡単に説明されています。この投稿記事は、Azure Batch チームのメンバーによって書かれたものです。コンピューティング ノードにファイル (アプリケーションとタスクの入力データを含む) を展開する各種の方法がわかりやすく解説されています。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/ja-JP/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
@@ -166,4 +166,4 @@ Azure Batch フォーラムの「[Installing applications and staging data on Ba
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: one-to-many dependency"
 [3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: task id range dependency"
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

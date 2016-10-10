@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     authors="asmalser"
-    manager="stevenpo"
+    manager="femila"
     editor=""/>
 
 <tags
@@ -18,7 +18,7 @@
 
 #プレビュー: 新しい Azure Portal でエンタープライズ アプリケーションのシングル サインオンを管理する
 
-この記事では、[Azure Portal](https://portal.azure.com) を使用して、アプリケーション (特に [Azure Active Directory (Azure AD) アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリケーション) のシングル サインオン設定を管理する方法について説明します。Azure AD のシングル サインオンの管理エクスペリエンスは現在パブリック プレビュー中です。この記事では、新機能と、プレビュー期間中のみに適用されるいくつかの一時的な制限について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。
+この記事では、[Azure Portal](https://portal.azure.com) を使用して、アプリケーション (特に [Azure Active Directory (Azure AD) アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリケーション) のシングル サインオン設定を管理する方法について説明します。Azure AD のシングル サインオンの管理エクスペリエンスは現在パブリック プレビュー中です。この記事では、新機能と、プレビュー期間中のみに適用されるいくつかの一時的な制限について説明します。[プレビューの機能については、こちらの記事をご覧ください。](active-directory-preview-explainer.md)
 
 ##新しいポータルでアプリを検索する
 
@@ -101,4 +101,4 @@
 [4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
 [5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

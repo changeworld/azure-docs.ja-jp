@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Widevine ライセンス テンプレートの概要" 
+	pageTitle="Widevine ライセンス テンプレートの概要 | Microsoft Azure" 
 	description="このトピックでは、Widevine ライセンスの構成に使用する Widevine ライセンス テンプレートの概要を示します。" 
 	authors="juliako" 
 	manager="erikre" 
@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 #Widevine ライセンス テンプレートの概要
 
-##概要
+##Overview
 
 Azure Media Services では、Widevine ライセンスを構成および要求できるようになりました。エンド ユーザーのプレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
@@ -57,12 +57,12 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 
 ##JSON メッセージ
 
-名前 | 値 | 説明
+名前 | 値 | Description
 ---|---|---
 payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 
 content\_id | Base64 でエンコードされた文字列|各 content\_key\_specs.track\_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。
 provider |string |コンテンツ キーおよびポリシーを検索するために使用されます。必須。
-policy\_name | string |以前に登録されたポリシーの名前です。省略可能。
+policy\_name | string |以前に登録されたポリシーの名前です。省略可能
 allowed\_track\_types | enum | SD\_ONLY または SD\_HD。どのコンテンツ キーをライセンスに含めるかを制御します
 content\_key\_specs | JSON 構造体の配列。次の「**コンテンツ キーの仕様**」を参照してください | どのコンテンツ キーを返すかについて、より細かく制御します。詳細については、次の「コンテンツ キーの仕様」を参照してください。allowed\_track\_types と content\_key\_specs のいずれかのみを指定できます。 
 use\_policy\_overrides\_exclusively | ブール値。true または false | policy\_overrides に指定されたポリシー属性を使用し、前に格納したポリシーをすべて除外します。
@@ -78,7 +78,7 @@ parse\_only | ブール値。true または false | ライセンス要求は解�
 オプション use\_policy\_overrides\_exclusively に関係なく、各 content\_key\_specs がすべてのトラックに対して指定されている必要があります。
 
 
-名前 | 値 | 説明
+名前 | 値 | Description
 ---|---|---
 content\_key\_specs track\_type | string | トラックの種類の名前です。ライセンス要求で content\_key\_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。指定しないと、過去 10 秒間を再生できません。 
 content\_key\_specs <br/> security\_level | uint32 | 再生に関するクライアントの堅牢性の要件を定義します。<br/> 1 - ソフトウェアベースのホワイトボックス暗号化が必須です。<br/> 2 - ソフトウェア暗号化と難読化デコーダーが必須です。<br/> 3 - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。<br/> 4 - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。<br/> 5 - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  
@@ -89,7 +89,7 @@ content\_key\_specs.key\_id| Base64 でエンコードされた文字列バイ�
 
 ##ポリシーのオーバーライド 
 
-名前 | 値 | 説明
+名前 | 値 | Description
 ---|---|---
 policy\_overrides can\_play | ブール値。true または false | コンテンツの再生が許可されていることを示します。既定値は false です。
 policy\_overrides can\_persist | ブール値。true または false |オフラインで使用するために、ライセンスを非揮発性ストレージに保持できることを示します。既定値は false です。
@@ -105,7 +105,7 @@ policy\_overrides renew\_with\_usage | ブール値 true または false |使用
 
 ##セッションの初期化
 
-名前 | 値 | 説明
+名前 | 値 | Description
 ---|---|---
 provider\_session\_token | Base64 でエンコードされた文字列 |このセッション トークンはライセンスに渡され、後続の更新に含まれます。セッション トークンは、セッションの範囲を超えて保持されません。 
 provider\_client\_token | Base64 でエンコードされた文字列 | ライセンスの応答で返信されるクライアント トークンです。ライセンス要求にクライアント トークンが含まれる場合、この値は無視されます。クライアント トークンは、ライセンス セッションの範囲を超えて保持されます。
@@ -210,4 +210,4 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 
 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -11,7 +11,7 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/07/2016" 
+    ms.date="09/26/2016" 
     ms.author="jeedes" />
 
 #チュートリアル: Azure Active Directory と RunMyProcess の統合
@@ -88,7 +88,7 @@
 
 6.  **[アカウント] > [構成]** に移動します。
 
-    ![アカウント](./media/active-directory-saas-runmyprocess-tutorial/IC789625.png "アカウント")
+    ![Account](./media/active-directory-saas-runmyprocess-tutorial/IC789625.png "Account")
 
 7.  **[認証方法]** タブをクリックします。
 
@@ -129,11 +129,11 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
     1.  関連するテキストボックスに、プロビジョニングする有効な AAD アカウントの **[名前]** と **[電子メール] **を入力します。
     2.  **[IDE 言語]**、**[言語]**、**[プロファイル]** を選択します。
     3.  **[アカウント作成の電子メールを自分に送信]** を選択します。
-    4.  **[保存]** をクリックします。
+    4.  [**Save**] をクリックします。
 
 >[AZURE.NOTE]他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
-##ユーザーを割り当てる
+##ユーザーの割り当て
   
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
@@ -151,4 +151,4 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
   
 シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # Android 用の Azure Authenticator
@@ -117,4 +117,4 @@ Samsung 製 Android デバイスでは、Azure Authenticator アプリをアン�
 
 **キーストア エラー**が表示される場合は、ロック画面の PIN が設定されていない可能性があります。この問題を回避するには、Azure Authenticator アプリをアンインストールし、ロック画面の PIN を構成してから、アプリを再インストールします。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

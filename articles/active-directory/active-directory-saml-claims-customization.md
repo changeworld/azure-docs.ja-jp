@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -40,7 +40,7 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 
 **[属性値]** メニューで、**[user.mail]** を選択し、ディレクトリで NameIdentifier 要求がユーザーの電子メール アドレスになるように設定するか、**[user.onpremisessamaccountname]** を選択し、オンプレミスの Azure AD から同期されたユーザーの SAM アカウント名に設定します。
 
-また、特殊な ExtractMailPrefix() 関数を使用して、電子メール アドレスまたはユーザー プリンシパル名のいずれかからドメイン サフィックスを削除することもできます。これにより、渡されたユーザー名の最初の部分のみになります (例: joesmith@contoso.com) の代わりに "joesmith" となります)。
+また、特殊な ExtractMailPrefix() 関数を使用して、電子メール アドレスまたはユーザー プリンシパル名のいずれかからドメイン サフィックスを削除することもできます。これにより、渡されたユーザー名の最初の部分のみになります (例: joesmith@contoso.com の代わりに "joesmith" となります)。
 
 ![][3]
 
@@ -58,7 +58,7 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 
 ## 関連記事
 
-- [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+- Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 - [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
 - [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 	
@@ -68,4 +68,4 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
 
-<!---HONumber=AcomDC_0302_2016-->
+<!---HONumber=AcomDC_0928_2016-->

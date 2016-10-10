@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -18,7 +18,7 @@
 
 #SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする
 
-##概要
+##Overview
 
 Azure Active Directory では、[SCIM 2.0 プロトコル仕様](https://tools.ietf.org/html/draft-ietf-scim-api-19)のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます。Azure Active Directory は、この Web サービスに対して、割り当てられたユーザーやグループの作成、変更、削除の要求を送信することができ、Web サービスはその要求を、対象となる ID ストアでの操作に変換することができます。
 
@@ -36,7 +36,7 @@ Azure Active Directory には、次の 2 つの SCIM のユース ケースが�
 
 Azure Active Directory は、[System for Cross-domain Identity Management 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web サービスを実装し、認証用に OAuth ベアラー トークンを受け取るアプリケーションに対し、割り当て済みのユーザーとグループを自動的にプロビジョニングするように構成できます。SCIM 2.0 仕様の中で、アプリケーションは次の要件を満たす必要があります。
 
-* SCIM プロトコルのセクション 3.3 に従って、ユーザーとグループの作成をサポートする。  
+* SCIM プロトコルのセクション 3.3 に従って、ユーザーとグループの作成をサポートする。
 
 * SCIM プロトコルのセクション 3.5.2 に従って、修正要求によるユーザーとグループの変更をサポートする。
 
@@ -67,11 +67,11 @@ Azure Active Directory は、[System for Cross-domain Identity Management 2 (SCI
 4.	表示された画面で、2 番目のボタン **[アカウント プロビジョニングの構成]** を選択します。
 5.	**[プロビジョニング エンドポイント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。
 6.	SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンを **[認証トークン (オプション)]** フィールドにコピーします。このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD 発行トークンを検証できます。
-7.	**[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。失敗した場合は、診断情報が表示されます。  
+7.	**[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。失敗した場合は、診断情報が表示されます。
 8.	アプリケーションへの接続が成功した場合は、以降の画面で **[次へ]** をクリックして進み、**[完了]** をクリックしてダイアログを閉じます。
 9.	表示された画面で、3 番目のボタン **[アカウントの割り当て]** をクリックします。表示された [ユーザーとグループ] セクションで、アプリケーションにプロビジョニングするユーザーまたはグループを割り当てます。
 10.	ユーザーとグループが割り当てられたら、画面の上部付近にある **[構成]** タブをクリックします。
-11.	**[アカウント プロビジョニング]** で、[状態] が [オン] に設定されていることを確認します。 
+11.	**[アカウント プロビジョニング]** で、[状態] が [オン] に設定されていることを確認します。
 12.	**[ツール]** で **[アカウント プロビジョニングを再開する]** をクリックし、プロビジョニング プロセスを開始します。
 
 プロビジョニング プロセスが開始されて SCIM エンドポイントに要求が送信されるまでに 5 ～ 10 分かかることがあります。アプリケーションの [ダッシュボード] タブに、接続の試行に関する概要が表示されます。また、ディレクトリの [レポート] タブから、プロビジョニング アクティビティとプロビジョニング エラーに関するレポートをダウンロードできます。
@@ -114,7 +114,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 
 5.	FileProvisioningAgent プロジェクトをビルドします。
 6.	Windows のコマンド プロンプト アプリケーションを (管理者として) 起動し、**cd** コマンドを使用してディレクトリを **\\AzureAD-BYOA-Provisioning-Samples\\ProvisioningAgent\\bin\\Debug** フォルダーに変更します。
-7.	次のコマンドを実行します。その際、<ip-address> を Windows コンピューターの IP アドレスまたはドメイン名に置き換えます。
+7.	次のコマンドを実行します。その際、<IP アドレス> を Windows コンピューターの IP アドレスまたはドメイン名に置き換えます。
 
     FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
 
@@ -131,12 +131,12 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 ![][2]
 
 4.	表示された画面で、2 番目のボタン **[アカウント プロビジョニングの構成]** を選択します。
-5.	ダイアログ ボックスで、インターネットに公開されている URL か SCIM エンドポイントのポートを入力します。入力内容は、http://testmachine.contoso.com:9000 または http://<ip-address>: 9000/ のようになります。<ip-address> は、インターネットに公開されている IP アドレスです。  
-6.	**[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。失敗した場合は、診断情報が表示されます。  
+5.	ダイアログ ボックスで、インターネットに公開されている URL か SCIM エンドポイントのポートを入力します。入力内容は、http://testmachine.contoso.com:9000 または http://<IP アドレス>: 9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。
+6.	**[次へ]**、**[テストの開始]** の順にクリックすると、Azure Active Directory が SCIM エンドポイントへの接続を試みます。失敗した場合は、診断情報が表示されます。
 7.	Web サービスへの接続が成功した場合は、以降の画面を **[次へ]** をクリックして進み、**[完了]** をクリックしてダイアログを閉じます。
 8.	表示された画面で、3 番目のボタン **[アカウントの割り当て]** をクリックします。表示された [ユーザーとグループ] セクションで、アプリケーションにプロビジョニングするユーザーまたはグループを割り当てます。
 9.	ユーザーとグループが割り当てられたら、画面の上部付近にある **[構成]** タブをクリックします。
-10.	**[アカウント プロビジョニング]** で、[状態] が [オン] に設定されていることを確認します。 
+10.	**[アカウント プロビジョニング]** で、[状態] が [オン] に設定されていることを確認します。
 11.	**[ツール]** で **[アカウント プロビジョニングを再開する]** をクリックし、プロビジョニング プロセスを開始します。
 
 プロビジョニング プロセスが開始されて SCIM エンドポイントに要求が送信されるまでに 5 ～ 10 分かかることがあります。アプリケーションの [ダッシュボード] タブに、接続の試行に関する概要が表示されます。また、ディレクトリの [レポート] タブから、プロビジョニング アクティビティとプロビジョニング エラーに関するレポートをダウンロードできます。
@@ -435,7 +435,7 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
-* correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
+* correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"]
 
 **2:** Azure Active Directory 内のユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーをサービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory はサービスに、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするよう要求します。このような要求の例を次に示します。
 
@@ -677,9 +677,9 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 
 下の図は、別の ID ストア内にあるグループのライフサイクルを管理するために Azure Active Directory から SCIM サービスに送信されるメッセージを示しています。これらのメッセージは、ユーザーの場合のメッセージと次の 3 つの点で異なっています。
 
-* グループ リソースのスキーマは、http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group として識別されます。  
-* グループを取得する要求では、要求に対する応答で提供されるリソースから members 属性を除外するよう指定されます。  
-* 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。  
+* グループ リソースのスキーマは、http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group として識別されます。
+* グループを取得する要求では、要求に対する応答で提供されるリソースから members 属性を除外するよう指定されます。
+* 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。
 
 ![][5] *図: グループのプロビジョニングとプロビジョニング解除のシーケンス*
 
@@ -702,4 +702,4 @@ externalId 属性に特定の値を持つユーザーを照会する上記のサ
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=AcomDC_0518_2016-->
+<!---HONumber=AcomDC_0928_2016-->

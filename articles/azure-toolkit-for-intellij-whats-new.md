@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="multiple"
 	ms.devlang="Java"
 	ms.topic="article"
-	ms.date="09/20/2016" 
-	ms.author="robmcm;asirveda"/>
+	ms.date="08/26/2016" 
+	ms.author="robmcm;asirveda;martinsawicki"/>
 
 # Azure Toolkit for IntelliJ の新機能
 
@@ -23,6 +23,18 @@
 この記事では、Azure Toolkit for IntelliJ の各種リリースと最新情報について記載しています。
 
 > [AZURE.NOTE] Eclipse IDE 用の Azure Toolkit もあります。詳細については、「[Azure Toolkit for Eclipse]」をご覧ください。
+
+### 2016 年 8 月 26 日
+
+Azure Toolkit for IntelliJ - August 2016 リリースでは、次の点が強化されています。
+
+* **カスタム JDK ディストリビューション**。Azure Toolkit for IntelliJ は、Azure WebApp コンテナーに対する任意の JDK バージョンの指定およびデプロイをサポートするようになりました。
+  - Azure によって提供されている JDK に加えて、Azul Systems から提供されている Azure で利用できる Zulu OpenJDK の多様なバージョンから選択できます。
+  - ZIP ファイルとしてストレージ アカウントにアップロードする場合は、独自の JDK ディストリビューションも指定できます。
+* **Azure 用エクスプローラー ビューの機能強化**:
+  - Azure の新しい Resource Manager モデルを使用した仮想マシンの管理をサポートします。IDE を離れずにリソース マネージャー ベースの仮想マシンを一覧表示、作成、削除できます。
+  - Azure Resource Manager を使用したストレージ アカウントの BLOB 管理をサポートします。これは、「クラシック」ストレージ アカウントを管理するための既存の機能を補完するものです。
+* **Microsoft JDBC Driver 6.0 for SQL Server**。この更新は、Microsoft SQL Server (v6.0) の最新の JDBC ドライバーを組み込みます。このドライバーは、Java プロジェクトに簡単に追加できるライブラリとして含まれて、以前のバージョンから置き換わるようになりました。
 
 ### 2016 年 6 月 29 日
 
@@ -73,4 +85,4 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 
 [IntelliJ 用の HDInsight Tools プラグイン]: ./hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

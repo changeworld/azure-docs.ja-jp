@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/04/2016"
+   ms.date="09/25/2016"
    ms.author="terrylan"/>
 
 # Azure Security Center での仮想マシンの保護
@@ -35,6 +35,8 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 |[VM エージェントの有効化](security-center-enable-vm-agent.md)|VM エージェントを必要とする VM を確認できます。パッチのスキャン、基準のスキャン、およびマルウェア対策プログラムをプロビジョニングするには、VM 上に VM エージェントをインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。|
 | [ディスク暗号化の適用](security-center-apply-disk-encryption.md) |Azure Disk Encryption を使用して VM ディスクを暗号化することをお勧めします (Windows VM および Linux VM)。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。|
 | [OS バージョンの更新](security-center-update-os-version.md) | クラウド サービスのオペレーティング システム (OS) のバージョンを、ご利用の OS ファミリで利用できる最新のバージョンに更新するようお勧めします。Cloud Services の詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページをご覧ください。 |
+| [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md) | VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
+| [脆弱性の修復](security-center-vulnerability-assessment-recommendations.md#review-recommendation) | VM にインストールされている脆弱性評価ソリューションによって検出された、システムとアプリケーションの脆弱性を確認できます。 |
 
 ## 関連項目
 
@@ -50,4 +52,4 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 - 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
 - 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

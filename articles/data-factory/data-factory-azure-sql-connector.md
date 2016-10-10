@@ -3,7 +3,7 @@
 	description="Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータを移動する方法を説明します。" 
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,11 +14,25 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="09/20/2016" 
-	ms.author="spelluru"/>
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用した Azure SQL Database との間でのデータの移動
-
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure SQL Database と他のデータ ストアとの間でデータを移動する方法について説明します。この記事は、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」という記事に基づき、コピー アクティビティによるデータ移動の一般概要とサポートされるデータ ストアの組み合わせについて紹介しています。
+
+## サポートされているソースとシンク
+コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。サポートされる任意のソース データ ストアのデータを、Azure SQL Database に移動したり、Azure SQL Database のデータを、サポートされる任意のシンク データ ストアに移動したりできます。
+
+## パイプラインの作成
+さまざまなツール/API を使用して、Azure SQL データベースとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
+
+- コピー ウィザード
+- Azure ポータル
+- Visual Studio
+- Azure PowerShell
+- .NET API
+- REST API
+
+さまざまな方法でコピー アクティビティによってパイプラインを作成する手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ## データのコピー ウィザード
 Azure SQL Database との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
@@ -397,17 +411,17 @@ SqlSink と BlobSource でサポートされるプロパティの一覧につい
 
 
 ## Azure SQL のリンクされたサービスのプロパティ
-
-次の表は、Azure SQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+サンプルでは、**AzureSqlDatabase** 型のリンクされたサービスを使用して、Azure SQL データベースをデータ ファクトリにリンクしています。次の表は、Azure SQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| type | type プロパティを AzureSqlDatabase に設定する必要があります。 | はい |
+| type | type プロパティを **AzureSqlDatabase** に設定する必要があります | はい |
 | connectionString | connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 | はい |
 
 > [AZURE.NOTE] [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) データベース サーバーを構成します。また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Database にデータをコピーする場合、Azure SQL Database にデータを送信するマシンに適切な IP アドレス範囲を設定します。
 
 ## Azure SQL データセットの type プロパティ
+サンプルでは、**AzureSqlTable** 型のデータセットを使用して、Azure SQL データベースのテーブルを表しています。
 
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
@@ -418,12 +432,13 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 | tableName | リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルの名前です。 | はい |
 
 ## Azure SQL のコピー アクティビティの type プロパティ
-
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 > [AZURE.NOTE] コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
-一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+
+Azure SQL データベースからデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource** に設定します。同様に、Azure SQL データベースにデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink** に設定します。このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
 
 ### SqlSource
 
@@ -527,7 +542,6 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 	{
 	    "name": "SampleSource",
 	    "properties": {
-	        "published": false,
 	        "type": " SqlServerTable",
 	        "linkedServiceName": "TestIdentitySQL",
 	        "typeProperties": {
@@ -551,7 +565,6 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 	            { "name": "name" },
 	            { "name": "age" }
 	        ],
-	        "published": false,
 	        "type": "AzureSqlTable",
 	        "linkedServiceName": "TestIdentitySQLSource",
 	        "typeProperties": {
@@ -568,6 +581,8 @@ sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Az
 
 
 ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
+
+次に、ソース データセットの列をターゲット データセットの列にマップします。例については、「[列マッピングの例](#column-mapping-samples)」を参照してください。
 
 [AZURE.INCLUDE [data-factory-type-repeatability-for-sql-sources](../../includes/data-factory-type-repeatability-for-sql-sources.md)]
 
@@ -630,4 +645,4 @@ Azure SQL、SQL Server、Sybase との間でデータを移動するとき、SQL
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

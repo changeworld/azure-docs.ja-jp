@@ -20,7 +20,7 @@ ms.service="virtual-machines-windows"
 
 
 
-この記事では、Azure の「バースト」ノード (クラウド サービスで実行されている worker ロール インスタンス) を必要に応じてコンピューティング リソースとして Azure の既存 HPC Pack ヘッド ノードに追加する方法について説明します。これにより、事前構成された一連のコンピューティング ノード VMを保持しなくても、Azure の HPC クラスターの処理能力をオンデマンドでスケールアップできます。
+この記事では、Azure の「バースト」ノード (クラウド サービスで実行されている worker ロール インスタンス) をコンピューティング リソースとして Azure の既存 HPC Pack ヘッド ノードに追加する方法について説明します。バースト ノードにより、事前構成された一連のコンピューティング ノード VMを保持しなくても、Azure の HPC クラスターの処理能力をオンデマンドでスケールアップまたはスケールダウンできます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -28,7 +28,7 @@ ms.service="virtual-machines-windows"
 
 この記事の手順を実行すれば、テストまたは概念実証のデプロイのために、クラウドベース HPC Pack ヘッド ノード VM に Azure ノードをすばやく追加できます。手順は基本的にオンプレミスの HPC Pack クラスターにクラウド コンピューティング能力を追加する「Azure へのバースト」の手順と同じです。チュートリアルが必要な場合、「[Microsoft HPC Pack を使用したハイブリッド コンピューティング クラスターのセットアップ](../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)」を参照してください。詳細なガイドと本稼働デプロイにおける考慮事項については、「[Microsoft HPC Pack を使用した Azure へのバースト](https://technet.microsoft.com/library/gg481749.aspx)」を参照してください。
 
-バースト ノードに A8 または A9 のコンピューティング集中型インスタンス サイズを使用する場合の考慮事項については、「[A8、A9、A10、A11 コンピューティング集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
+バースト ノードにコンピューティング集中型インスタンス サイズを使用する場合の考慮事項については、「[H シリーズとコンピューティング集中型 A シリーズのインスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)」をご覧ください。
 
 ## 前提条件
 
@@ -40,9 +40,9 @@ ms.service="virtual-machines-windows"
 
 * **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア サイズの Azure ノードをいくつかデプロイする場合に必要となる可能性があります。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
-## 手順 1: クラウド サービスとストレージ アカウントを作成し、Azure ノードを追加します。
+## 手順 1: Azure ノード用のクラウド サービスとストレージ アカウントを作成する
 
-Azure クラシック ポータルまたは同様のツールを利用し、次を構成します。これらは Azure ノードをデプロイするために必要です。
+Azure クラシック ポータルまたは同様のツールを利用し、Azure ノードをデプロイするために必要な次のリソースを構成します。
 
 * 新しい Azure クラウド サービス
 * 新しい Azure ストレージ アカウント
@@ -53,7 +53,7 @@ Azure クラシック ポータルまたは同様のツールを利用し、次�
 
 * 作成する予定の Azure ノード テンプレートごとに別個のクラウド サービスを構成します。ただし、複数のノード テンプレートに同じストレージ アカウントを使用できます。
 
-* 通常、デプロイのクラウド サービスとストレージ アカウントが同じ Azure リージョンにあるはずです。
+* デプロイ用のクラウド サービスとストレージ アカウントを同じ Azure リージョンに配置することをお勧めします。
 
 
 
@@ -62,7 +62,7 @@ Azure クラシック ポータルまたは同様のツールを利用し、次�
 
 Azure ノードをコンピューティング リソースとして追加するには、ヘッド ノードに管理証明書を用意し、デプロイに使用される Azure サブスクリプションに該当証明書をアップロードする必要があります。
 
-このシナリオの場合、HPC Pack によりヘッド ノードに自動的にインストールされ、構成される**既定の HPC Azure 管理証明書**を選択できます。この証明書はテスト目的と概念実証のデプロイで役立ちます。この証明書を使用するには、ヘッド ノード VM からサブスクリプションに C:\\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer ファイルをアップロードします。これは [Azure クラシック ポータル](https://manage.windowsazure.com)で実行できます。**[設定]**、**[管理証明書]** の順にクリックします。
+このシナリオの場合、HPC Pack によりヘッド ノードに自動的にインストールされ、構成される**既定の HPC Azure 管理証明書**を選択できます。この証明書はテスト目的と概念実証のデプロイで役立ちます。この証明書を使用するには、ヘッド ノード VM からサブスクリプションに C:\\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer ファイルをアップロードします。[Azure クラシック ポータル](https://manage.windowsazure.com)で証明書をアップロードするには、**[設定]** > **[Management Certificates (管理証明書)]** をクリックします。
 
 管理証明書を構成するための追加オプションについては、「[Azure バースト デプロイの Azure 管理証明書を構成するためのシナリオ](http://technet.microsoft.com/library/gg481759.aspx)」を参照してください。
 
@@ -84,9 +84,9 @@ Azure ノードのデプロイで問題が発生した場合は、「[Troublesho
 
 ## 次のステップ
 
-* クラスターのジョブやタスクの現在のワークロードに合わせて、Azure コンピューティング リソースを自動的に拡大縮小する方法については、[HPC Pack クラスターでの Azure コンピューティング リソースの自動的な拡大縮小](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)に関する記事をご覧ください。
+* クラスターのワークロードに合わせて Azure コンピューティング リソースを自動的に拡大縮小する方法については、[HPC Pack クラスターでの Azure コンピューティング リソースの自動的な拡大縮小](virtual-machines-windows-classic-hpcpack-cluster-node-autogrowshrink.md)に関する記事をご覧ください。
 
 <!--Image references-->
 [burst]: ./media/virtual-machines-windows-classic-hpcpack-cluster-node-burst/burst.png
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

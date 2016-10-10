@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SQL Server 仮想マシンに接続する (クラシック) | Microsoft Azure"
-	description="Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。このトピックでは、クラシック デプロイ モデルを使用します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
+	description="Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。このトピックでは、クラシック デプロイメント モデルを使用します。シナリオは、ネットワーク構成とクライアントの場所によって異なります。"
 	services="virtual-machines-windows"
 	documentationCenter="na"
 	authors="rothja"
@@ -12,7 +12,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/23/2016"
+	ms.date="09/22/2016"
 	ms.author="jroth" />
 
 # Azure での SQL Server 仮想マシンへの接続 (クラシック デプロイ)
@@ -21,9 +21,9 @@
 - [リソース マネージャー](virtual-machines-windows-sql-connect.md)
 - [クラシック](virtual-machines-windows-classic-sql-connect.md)
 
-## 概要
+## Overview
 
-このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスに接続する方法について説明します。ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
+このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] Resource Manager モデルを使用している場合は、[Resource Manager を使用した Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)に関する記事を参照してください。
 
@@ -103,4 +103,4 @@ Azure 仮想マシン上の SQL Server に関する[ラーニング パスをご
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

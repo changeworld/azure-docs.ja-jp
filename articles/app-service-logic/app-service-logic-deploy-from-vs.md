@@ -28,6 +28,7 @@
 
 - [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 - [最新の Azure SDK](https://azure.microsoft.com/downloads/) (2.9.1 以上)
+- [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 - Web アクセス (組み込みデザイナー使用時)
 
 ### Logic Apps 用 Visual Studio ツールのインストール
@@ -50,7 +51,7 @@
 
 1. ダイアログ ボックスで、**[クラウド]** を見つけて、**[Azure リソース グループ]** を選択します。**[名前]** に名前を入力し、**[OK]** をクリックします。![新しいプロジェクトの追加](./media/app-service-logic-deploy-from-vs/addnewproject.png)
 
-1. **[ロジック アプリ]** テンプレートを選択します。ロジック アプリのひな形となる空のデプロイ テンプレートが作成されます。 ![Azure テンプレートの選択](./media/app-service-logic-deploy-from-vs/selectazuretemplate.png)
+1. **[ロジック アプリ]** テンプレートを選択します。ロジック アプリのひな形となる空のデプロイ テンプレートが作成されます。![Azure テンプレートの選択](./media/app-service-logic-deploy-from-vs/selectazuretemplate.png)
 
 1. **テンプレート**を選択したら、**[OK]** をクリックします。
 
@@ -64,11 +65,11 @@
 
 1. `<template>.json` ファイルを右クリックし、**[Open with Logic App Designer (ロジック アプリ デザイナーで開く)]** (または `Ctrl+L`) を選択します。
 1. サブスクリプション、リソース グループ、デプロイ テンプレートの場所を選択します。
-	- ロジック アプリを設計することによって、**API 接続**リソースが作成されることに注意してください。この接続リソースは、設計時にプロパティを問い合わせる目的で使用されます。ここで選択したリソース グループが、設計時にそれらの接続を作成するためのリソース グループになります。Azure ポータルに移動して参照画面で **[API 接続]** を選択すると、任意の API 接続を表示したり変更を加えたりすることができます。 ![Subscription Picker](./media/app-service-logic-deploy-from-vs/designer_picker.png)
+	- ロジック アプリを設計することによって、**API 接続**リソースが作成されることに注意してください。この接続リソースは、設計時にプロパティを問い合わせる目的で使用されます。ここで選択したリソース グループが、設計時にそれらの接続を作成するためのリソース グループになります。Azure Portal に移動して参照画面で **[API 接続]** を選択すると、任意の API 接続を表示したり変更を加えたりすることができます。 ![Subscription Picker](./media/app-service-logic-deploy-from-vs/designer_picker.png)
 1. `<template>.json` ファイル内の定義に基づいてデザイナーが表示されます。
 1. これでロジック アプリを作成して設計できる状態になりました。変更はデプロイ テンプレートに反映されます。 ![Designer in Visual Studio](./media/app-service-logic-deploy-from-vs/designer_in_vs.png)
 
-またリソース ファイルには、そのロジック アプリが機能するために必要なすべての接続の `Microsoft.Web/connections` リソースが追加されていることがわかります。これらの接続プロパティはデプロイ時に設定できるほか、デプロイ後は、Azure ポータルの **[API 接続]** で管理することができます。
+またリソース ファイルには、そのロジック アプリが機能するために必要なすべての接続の `Microsoft.Web/connections` リソースが追加されていることがわかります。これらの接続プロパティはデプロイ時に設定できるほか、デプロイ後は、Azure Portal の **[API 接続]** で管理することができます。
 
 ### JSON コード ビューへの切り替え
 
@@ -82,7 +83,7 @@
 
 最後に、アプリを構成したら、いくつかの手順で Visual Studio から直接デプロイすることができます。
 
-1. ソリューション エクスプローラーでプロジェクトを右クリックし、**[デプロイ]**、**[新しいデプロイ]** の順に移動します。 ![新しいデプロイ](./media/app-service-logic-deploy-from-vs/newdeployment.png)
+1. ソリューション エクスプローラーでプロジェクトを右クリックし、**[デプロイ]**、**[新しいデプロイ]** の順に移動します。![新しいデプロイ](./media/app-service-logic-deploy-from-vs/newdeployment.png)
 
 2. Azure サブスクリプションへのサインインを求められます。
 
@@ -105,4 +106,4 @@
 - [Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694)
 - [Logic Apps を使用してシステムを統合する方法を説明する](http://channel9.msdn.com/Events/Build/2016/P462)
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

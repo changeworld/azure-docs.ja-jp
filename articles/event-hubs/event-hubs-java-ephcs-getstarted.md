@@ -3,7 +3,7 @@
 	description="このチュートリアルでは、Java でイベントを送信し、EventProcessorHost を使用して C# でイベントを受信するための Azure Event Hubs の使用方法について説明します。"
 	services="event-hubs"
 	documentationCenter=""
-	authors="fsautomata"
+	authors="jtaubensee"
 	manager="timlt"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="sethm"/>
+	ms.date="09/27/2016"
+	ms.author="jotaub;sethm"/>
 
 # Event Hubs の使用
 
@@ -77,4 +77,4 @@ Event Hub を作成し、データを送受信する実用的なアプリケー�
 [キューに格納されたメッセージング ソリューション]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

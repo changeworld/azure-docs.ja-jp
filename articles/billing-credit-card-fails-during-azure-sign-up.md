@@ -3,7 +3,7 @@
 	description="Azure にサインアップしようとしたときにクレジット カードまたはデビット カードが拒否された場合に、問題を解決する方法について説明します。"
 	services=""
 	documentationCenter=""
-	authors="jiangchen79"
+	authors="JiangChen79"
 	manager="felixwu"
 	editor=""
 	tags="billing,top-support-issue"
@@ -74,4 +74,4 @@ Azure サブスクリプションの支払い方法として、小切手、オ�
 
 > [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

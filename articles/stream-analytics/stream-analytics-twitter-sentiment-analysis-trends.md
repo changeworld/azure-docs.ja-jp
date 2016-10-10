@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="na"
 	ms.workload="big-data"
-	ms.date="08/11/2016"
+	ms.date="09/26/2016"
 	ms.author="jeffstok"/>
 
 
@@ -62,7 +62,16 @@ Event Hub を作成するには、次の手順に従います。
 	[OAuth アクセス トークンを生成する手順](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
 
 	トークンを生成するには、空のアプリケーションを作成する必要がある点に注意してください。
-3.	TwitterClient.exe.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。先ほどコピーした接続文字列は、イベント ハブ接続文字列と名前の両方を示しています。それぞれを適切なフィールドに入力するようにしてください。
+3.	TwitterClient.exe.config 内の EventHubConnectionString 値と EventHubName 値をイベント ハブの接続文字列と名前に置き換えます。先ほどコピーした接続文字列は、イベント ハブ接続文字列と名前の両方を示しています。それぞれを適切なフィールドに入力するようにしてください。たとえば、次のような接続文字列があるとします。
+
+    Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey;EntityPath=yourhub
+
+	TwitterClient.exe.config ファイルには、以下のような設定が含まれている必要があります。
+
+	add key="EventHubConnectionString" value="Endpoint=sb://your.servicebus.windows.net/;SharedAccessKeyName=yourpolicy;SharedAccessKey=yoursharedaccesskey" add key="EventHubName" value="yourhub"
+
+	EventHubName の値には "EntityPath=" というテキストが含まれて "いない" ことに注意してください。
+	
 4.	*省略可能:* 検索するキーワードを調整します。既定で、このアプリケーションでは "Azure、Skype、XBox、Microsoft、シアトル" が検索されます。必要な場合は、TwitterClient.exe.config の twitter\_keywords の値を調整できます。
 5.	**TwitterClient.exe** を実行し、アプリケーションを起動します。CreatedAt、Topic、SentimentScore の値が設定されたツイート イベントがイベント ハブに送信されていることがわかります。
 
@@ -236,4 +245,4 @@ BLOB ストレージ用のコンテナーがまだない場合は、次の手順
 - [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

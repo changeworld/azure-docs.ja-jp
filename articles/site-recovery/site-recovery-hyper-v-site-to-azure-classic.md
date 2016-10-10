@@ -21,7 +21,7 @@
 
 > [AZURE.SELECTOR]
 - [Azure ポータル](site-recovery-hyper-v-site-to-azure.md)
-- [PowerShell - ARM](site-recovery-deploy-with-powershell-resource-manager.md)
+- [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
 - [クラシック ポータル](site-recovery-hyper-v-site-to-azure-classic.md)
 
 この記事では、Hyper-V ホストが System Center Virtual Machine Manager (VMM) クラウドで管理されていないときに、Site Recovery をデプロイし、Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。
@@ -243,7 +243,7 @@ Hyper-V クラスターをインストールする場合は、フェールオー
 		- **サブネット**: 仮想マシン上の各ネットワーク アダプターに対して、フェールオーバー後にマシンが接続する Azure ネットワーク内のサブネットを選択します。
 		- **ターゲット IP アドレス**: 静的 IP アドレスを使用するようソース仮想マシンのネットワーク アダプターが構成されている場合、フェールオーバー後にターゲット仮想マシンの IP アドレスが同じになるよう、ターゲット仮想マシンの IP アドレスを指定できます。IP アドレスを指定しない場合、フェールオーバー時に、使用可能なアドレスが割り当てられます。使用中のアドレスを指定すると、フェールオーバーは失敗します。
 		
-        > [AZURE.NOTE] Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
+        > [AZURE.NOTE] [Migration of networks]Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間でのネットワークの移行はサポートされていません。
 
 		![仮想マシンのプロパティの構成](./media/site-recovery-hyper-v-site-to-azure-classic/multiple-nic.png)
 
@@ -300,4 +300,4 @@ Azure ネットワークを指定せずにテスト フェールオーバーを�
 
 デプロイを実行できる状態に設定した後、フェールオーバーの詳細について、[こちら](site-recovery-failover.md)を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -3,7 +3,7 @@
 	description="DocumentDB (NoSQL ドキュメント データベース) のデータのモデル化について説明します。" 
 	keywords="データのモデル化"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="mimig1" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/05/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 #DocumentDB のデータのモデル化#
 Azure DocumentDB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。
@@ -393,4 +393,4 @@ Azure DocumentDB でのインデックスのチューニングの詳細につい
 最後に、マルチテナント アプリケーションのデータのモデル化とシャーディングのガイダンスについては、[Azure DocumentDB でのマルチテナント アプリケーションの拡張](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)に関するページを参照してください。
  
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

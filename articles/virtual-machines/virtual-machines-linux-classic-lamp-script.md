@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="linux"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/23/2015"
+	ms.date="09/13/2016"
 	ms.author="guybo"/>
 
 #Linux 向けに Azure カスタム スクリプト拡張機能を使って LAMP アプリをデプロイする#
@@ -81,7 +81,7 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 次のコマンドを使用して、Azure CLI を使ってリモート VM に Linux カスタム スクリプト拡張機能をデプロイします。
 
-    azure vm extension set -c "./public_config.json" lamp-vm CustomScriptForLinux Microsoft.OSTCExtensions 1.*
+    azure vm extension set -c "./public_config.json" lamp-vm CustomScript Microsoft.Azure.Extensions 2.0
 
 前のコマンドによって、*install\_lamp.sh* スクリプトが *lamp-vm* という名前の VM にダウンロードされて実行されます。
 
@@ -93,8 +93,8 @@ Azure での Linux VM の作成については、「[Linux を実行する仮想
 
 リモート VM 上のログ ファイルを確認し、カスタム スクリプトの実行状況を確認できます。次のコマンドを使用して、*lamp-vm* に SSH で通信し、ログ ファイルの内容を確認します。
 
-    cd /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.0/
-    tail -f extension.log
+    cd /var/log/azure/customscript
+    tail -f handler.log
 
 CustomScript 拡張機能を実行すると、参照用に作成した PHP ページを参照できます。たとえば、この記事の PHP ページは *http://lamp-vm.cloudapp.net/phpinfo.php* です。
 
@@ -110,4 +110,4 @@ CustomScript 拡張機能を実行すると、参照用に作成した PHP ペ�
 
 [Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_0928_2016-->

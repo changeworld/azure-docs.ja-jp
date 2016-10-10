@@ -1,20 +1,20 @@
-<properties 
-	pageTitle="コンテナーと BLOB への匿名読み取りアクセスを管理する | Microsoft Azure" 
-	description="コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。" 
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="carmonm" 
+<properties
+	pageTitle="コンテナーと BLOB への匿名読み取りアクセスを管理する | Microsoft Azure"
+	description="コンテナーと BLOB で匿名アクセスを使用できるようにする方法、およびこれらにプログラムでアクセスする方法について説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
 	editor="tysonn"/>
 
-<tags 
-	ms.service="storage" 
-	ms.workload="storage" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/07/2016"
-	ms.author="tamram"/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/27/2016"
+	ms.author="michaelhauss;jwillis;tamram"/>
 
 # コンテナーと BLOB への匿名読み取りアクセスを管理する
 
@@ -47,11 +47,11 @@
 [Azure ポータル](https://portal.azure.com)からコンテナーのアクセス許可を設定するには、次の手順に従います。
 
 1. ストレージ アカウントのダッシュボードに移動します。
-2. 一覧からコンテナーの名前を選択します。コンテナーの名前を選択するには、[名前] 列の右側をクリックする必要があります。名前をクリックすると、コンテナーにドリル ダウンしてその BLOB が表示されます。
-3. ツール バーで、**[編集]** を選択します。
-4. 次のスクリーンショットに示すように、**[コンテナー メタデータの編集]** ダイアログ ボックスで、**[アクセス]** フィールドから目的のレベルのアクセス許可を選択します。
+2. 一覧からコンテナーの名前を選択します。名前をクリックすると、選択したコンテナー内の BLOB が公開されます。
+3. ツール バーから **[アクセス ポリシー]** を選択します。
+4. 次のスクリーンショットに示すように、**[アクセスの種類]** フィールドから目的のアクセス許可レベルを選択します。
 
-	![Edit Container Metadata dialog](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-1.png)
+	![Edit Container Metadata dialog](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 ### .NET を使用してプログラムでコンテナーのアクセス許可を設定する
 
@@ -155,4 +155,4 @@
 - [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
 - [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

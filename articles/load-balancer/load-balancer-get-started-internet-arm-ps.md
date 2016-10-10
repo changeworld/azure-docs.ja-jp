@@ -17,7 +17,7 @@
   ms.date="08/31/2016"
   ms.author="sewhee" />
 
-# <a name="get-started"></a>Resource Manager で PowerShell を使用して、インターネットに接続するロード バランサーの作成を開始する
+# <a name="get-started"></a>Resource Manager で PowerShell を使用したインターネットに接続するロード バランサーの作成
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -254,4 +254,4 @@ PowerShell 用 Azure Resource Manager (ARM) モジュールが最新の製品版
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

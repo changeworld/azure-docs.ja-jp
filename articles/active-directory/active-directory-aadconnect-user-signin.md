@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="billmath"
-	manager="stevenpo"
+	manager="femila"
 	editor="curtand"/>
 
 <tags
@@ -143,4 +143,4 @@ Azure AD の既定の .onmicrosoft.com ドメイン、または確認されて�
 
 「[Azure AD Connect: 設計概念](active-directory-aadconnect-design-concepts.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

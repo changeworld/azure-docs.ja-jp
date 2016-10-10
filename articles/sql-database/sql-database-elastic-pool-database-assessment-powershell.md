@@ -1,5 +1,5 @@
 <properties
-	pageTitle="プールに適した Single Database を特定する PowerShell スクリプト"
+	pageTitle="プールに適した 1 つのデータベースを特定する PowerShell スクリプト | Microsoft Azure"
 	description="弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。このドキュメントでは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価する PowerShell スクリプトについて説明します。"
 	services="sql-database"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="sql-database"
 	ms.devlang="NA"
-	ms.date="06/06/2016"
+	ms.date="09/22/2016"
 	ms.author="sstein"
 	ms.workload="data-management"
 	ms.topic="article"
@@ -28,7 +28,7 @@
 
 スクリプトの実行前に、次をインストールしてください。
 
-- 最新の [Powershell コマンド ライン ツール](http://go.microsoft.com/?linkid=9811175&clcid=0x409)。
+- 最新の Azure PowerShell。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
 - [SQL Server 2014 Feature Pack](https://www.microsoft.com/download/details.aspx?id=42295)。
 
 ### スクリプトの詳細
@@ -262,8 +262,8 @@
 	$sql = $sql1 + "'P%'"  + $sql2
 	$data = Invoke-Sqlcmd -ServerInstance $outputServerName -Database $outputdatabaseName -Username $outputDBUsername -Password $outputDBpassword -Query $sql -QueryTimeout 3600
 	$data | %{'{0}' -f $_[0]}
-{
+}
 
         
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

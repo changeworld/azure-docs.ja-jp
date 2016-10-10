@@ -2,7 +2,7 @@
 	pageTitle="DocumentDB の要求ユニット | Microsoft Azure" 
 	description="DocumentDB の要求ユニット要件を確認、指定、推定する方法について説明します。" 
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="mimig" 
 	documentationCenter=""/>
@@ -14,7 +14,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="06/29/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 #DocumentDB の要求ユニット
 DocumentDB の[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。詳細については、「[スループットのニーズの推定](documentdb-request-units.md#estimating-throughput-needs)」を参照してください。
@@ -220,4 +220,4 @@ DocumentDB に関するスケールとパフォーマンスのテストを始め
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=AcomDC_0803_2016-->
+<!---HONumber=AcomDC_0928_2016-->

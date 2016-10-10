@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="vm-windows"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/02/2016"
+	ms.date="09/27/2016"
 	ms.author="cynthn"/>
 
 
@@ -66,4 +66,4 @@
 
 データ ディスクを再利用する場合は、[別の VM にそのデータ ディスクをアタッチ](virtual-machines-windows-attach-disk-portal.md)します。
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -13,13 +13,13 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="06/12/2016"
+	ms.date="09/22/2016"
 	ms.author="mikeray" />
 
 # Azure VM での AlwaysOn 可用性グループの自動構成 - Resource Manager
 
 > [AZURE.SELECTOR]
-- [Resource Manager: 自動](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+- [Resource Manager: テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 - [Resource Manager: 手動](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)
 - [クラシック: UI](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 - [クラシック: PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
@@ -259,4 +259,4 @@ SQL Server の新しいインスタンスは、インターネットに接続さ
 
 これで SQL Server に RDP 接続できました。これで SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続し、可用性グループが構成済みであることを確認できます。
 
-<!---HONumber=AcomDC_0622_2016-->
+<!---HONumber=AcomDC_0928_2016-->

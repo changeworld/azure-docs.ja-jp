@@ -22,7 +22,7 @@ Azure Site Recovery サービスでサポートされている各レプリケー
 
 この記事に関するコメントや質問は、この記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
-## 概要
+## Overview
 
 組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
 
@@ -32,7 +32,7 @@ Site Recovery とは、クラウド (Azure) またはセカンダリ データ�
 
 Azure には、リソースの作成と操作に関して、Azure Resource Manager モデルと従来のサービス管理モデルの 2 種類の[デプロイメント モデル](../resource-manager-deployment-model.md)があります。また、ポータルも 2 つあります。クラシック デプロイメント モデルをサポートする [Azure クラシック ポータル](https://manage.windowsazure.com/)と、両方のデプロイメント モデルをサポートする [Azure ポータル](https://ms.portal.azure.com/)です。
 
-このクラシック ポータルと Azure ポータルの両方で Site Recovery を使用することができます。Azure クラシック ポータルでは、従来のサービス管理モデルで Site Recovery をサポートできます。Azure ポータルでは、従来のモデルまたは Resource Manager デプロイメントをサポートできます。Azure ポータルのデプロイの詳細については、[こちら](site-recovery-overview.md#site-recovery-in-the-azure-portal)をご覧ください。
+このクラシック ポータルと Azure ポータルの両方で Site Recovery を使用することができます。Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery をサポートできます。Azure ポータルでは、クラシック モデルまたは Resource Manager デプロイメントをサポートできます。Azure ポータルのデプロイの詳細については、[こちら](site-recovery-overview.md#site-recovery-in-the-azure-portal)をご覧ください。
 
 デプロイメント モデルを選択するときは、次の点に注意してください。
 
@@ -115,6 +115,7 @@ iSCSI ディスク | サポートされていません | サポートされて�
 共有 VHD | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 FC ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 ハード ディスク フォーマット| VHD <br/><br/> VHDX | VHDX は現在、Azure でサポートされていませんが、Azure にフェールオーバーするとき、Site Recovery が VHDX を VHD に自動的に変換します。オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
+BitLocker | サポートされていません | 仮想マシンを保護する前に BitLocker は無効にしてください。
 仮想マシン名| 1 ～ 63 文字で指定します。名前に使用できるのは、英文字、数字、およびハイフンのみです。名前の先頭と末尾は、英文字または数字である必要があります。 | Site Recovery で仮想マシンのプロパティの値を更新します。
 仮想マシンのタイプ | <p>第 1 世代</p> <p>第 2 世代 - Windows</p> | OS ディスク タイプがベーシック ディスクの第 2 世代仮想マシンがサポートされています。この OS ディスクは、ディスク フォーマットが VHDX で、1 つまたは 2 つのデータ ボリュームを含み、300 GB 未満であることが必要です。Linux の第 2 世代仮想マシンはサポートされていません。[詳細についてはこちら](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)
 
@@ -164,4 +165,4 @@ FC ディスク | サポートされていません | サポートされてい�
 - [Hyper-V VM をセカンダリ サイトにレプリケート (SAN を使用)](site-recovery-vmm-san.md)
 - [Hyper-V VM をレプリケート (単一の VMM サーバーを使用)](site-recovery-single-vmm.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

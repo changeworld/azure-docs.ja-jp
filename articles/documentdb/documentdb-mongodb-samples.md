@@ -3,7 +3,7 @@
 	description="DocumentDB を MongoDB のプロトコルに対応させる例を紹介します。" 
 	keywords="mongodb の例"
 	services="documentdb" 
-	authors="stephbaron" 
+	authors="mimig1" 
 	manager="jhubbard" 
 	editor="" 
 	documentationCenter=""/>
@@ -15,7 +15,7 @@
 	ms.devlang="na" 
 	ms.topic="article" 
 	ms.date="08/23/2016" 
-	ms.author="stbaro"/>
+	ms.author="mimig"/>
 
 # DocumentDB における MongoDB のプロトコル対応の例
 以降の例を使用するには、次の作業が必要となります。
@@ -175,4 +175,4 @@
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

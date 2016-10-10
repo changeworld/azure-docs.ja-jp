@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
 #ビデオ プレーヤー アプリケーションの開発
 
-##概要
+##Overview
 
 Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。このトピックでは、Azure Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる SDK とプレーヤー フレームワークへのリンクもご紹介します。
 
@@ -81,4 +81,4 @@ Azure Media Services では、Windows メディア プラットフォームの�
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

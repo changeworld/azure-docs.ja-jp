@@ -13,13 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="06/24/2016"
+   ms.date="09/28/2016"
    ms.author="toddabel"/>
 
 
 # Azure 診断でログを収集する方法
 
-Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。1 か所でログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。実際には、ログはストレージで直接的にはそれほど役立ちませんが、外部プロセスを使用してストレージからイベントを読み込み、[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や別のログ解析ソリューションに配置できます。
+> [AZURE.SELECTOR]
+- [Windows](service-fabric-diagnostics-how-to-setup-wad.md)
+- [Linux](service-fabric-diagnostics-how-to-setup-lad.md)
+
+Azure Service Fabric クラスターを実行している場合、1 か所ですべてのノードのログを収集することをお勧めします。1 か所でログを収集すると、クラスターと、そのクラスターで実行されているアプリケーションやサービスで発生する問題の分析と解決が簡単になります。ログのアップロードと収集には、ログを Azure Storage にアップロードする Azure 診断拡張機能を使用する方法があります。実際には、ログはストレージで直接的にはそれほど役立ちませんが、外部プロセスを使用してストレージからイベントを読み込み、[Log Analytics](../log-analytics/log-analytics-service-fabric.md) や [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や別のログ解析ソリューションに配置できます。
 
 ## 前提条件
 これらのツールは、このドキュメントの操作の一部を実行するために使用されます。
@@ -47,9 +51,9 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 ![ポータルでのクラスター作成のための Azure 診断設定](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-サポート要求の登録後、Azure サポート チームがそれを解決するためにサポート ログが**必要**になります。これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。診断設定により、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントは、Azure Storage に保存されるように構成されます。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスで、ストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。
+サポート ログは、サポート要求の登録後、Azure サポート チームがそれを解決するために**必要**になります。これらのログはリアルタイムで収集され、リソース グループで作成されたストレージ アカウントの 1 つに保存されます。診断設定により、[アクター](service-fabric-reliable-actors-diagnostics.md) イベントや [Reliable Service](service-fabric-reliable-services-diagnostics.md) イベントなどのアプリケーション レベル イベントと一部のシステム レベルの Service Fabric イベントは、Azure Storage に保存されるように構成されます。[Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などの製品や独自のプロセスで、ストレージ アカウントからイベントを選択できます。現在のところ、テーブルに送信されるイベントを絞り込む方法はありません。テーブルからイベントを削除するプロセスが実装されていない場合、テーブルは増加を続けます。
 
-ポータルを使用してクラスターを作成する場合、*[OK] をクリックしてクラスターを作成する前に*テンプレートをダウンロードすることを強くお勧めします。詳細については、「[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする](service-fabric-cluster-creation-via-arm.md)」を参照してください。これにより、作成するクラスターに、使用可能な ARM テンプレートが提供されます。これは、後で変更を行うために必要です。ポータルを使用してすべての変更を行うことができるとは限りません。テンプレートは次の手順を使用してポータルからエクスポートできますが、これらのテンプレートは使いづらい場合があります。値の指定が必要にな null 値が多数含まれていたり、必須情報が不足していたりする場合があるためです。
+ポータルを使用してクラスターを作成する場合、"*[OK] をクリックしてクラスターを作成する前に*" テンプレートをダウンロードすることを強くお勧めします。詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。これにより、作成するクラスターに、使用可能な ARM テンプレートが提供されます。これは、後で変更を行うために必要です。ポータルを使用してすべての変更を行うことができるとは限りません。テンプレートは次の手順を使用してポータルからエクスポートできますが、これらのテンプレートは使いづらい場合があります。値の指定が必要にな null 値が多数含まれていたり、必須情報が不足していたりする場合があるためです。
 
 1. リソース グループを開きます。
 2. [設定] を選択し、[設定] パネルを表示します。
@@ -190,8 +194,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $
 問題を解決する際に確認する必要があるイベントの詳細については、[Reliable Actors](service-fabric-reliable-actors-diagnostics.md) と [Reliable Services](service-fabric-reliable-services-diagnostics.md) で生成される診断イベントを参照してください。
 
 
-## 関連記事:
+## 関連記事
 * [診断拡張機能を使用してパフォーマンス カウンターまたはログを収集する方法についての説明](../virtual-machines/virtual-machines-windows-extensions-diagnostics-template.md)
 * [Log Analytics の Service Fabric ソリューション](../log-analytics/log-analytics-service-fabric.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -18,6 +18,12 @@
 
 
 # ローカル コンピューターの開発のセットアップでのサービスの監視と診断
+
+
+> [AZURE.SELECTOR]
+- [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+- [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
+
 監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。監視と診断は実際にデプロイされる運用環境で不可欠ですが、実際にセットアップに移るときに動作するように、サービスを開発している間に同様のモデルを採用するかどうかで、その有効性が左右されます。Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
 
 ## Windows イベント トレーシングの利点
@@ -60,4 +66,4 @@ Service Fabric の Visual Studio プロジェクト テンプレートには、�
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-wad.md)
 * [Service Fabric アプリケーション トレース ストアとして ElasticSearch を使用する](service-fabric-diagnostic-how-to-use-elasticsearch.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

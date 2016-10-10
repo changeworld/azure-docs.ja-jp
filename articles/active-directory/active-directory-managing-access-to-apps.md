@@ -4,7 +4,7 @@
   services="active-directory"
   documentationCenter=""
   authors="msStevenPo"
-  manager="stevenpo"
+  manager="femila"
   editor=""/>
 
  <tags
@@ -55,7 +55,7 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 管理者は、[Azure AD 条件付きアクセス](active-directory-conditional-access.md)を使用して、特定のロールのアクセス ポリシーを設定できます。これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
 
-## 開始するには?
+## 利用を始めるには?
 
 あなたは IT 管理者で、Azure AD をまだ使用したことがない場合:
 
@@ -75,4 +75,4 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 - [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
 - [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=AcomDC_0330_2016------>
+<!---HONumber=AcomDC_0928_2016-->

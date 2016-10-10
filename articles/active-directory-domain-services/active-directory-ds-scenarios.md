@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービスのプレビュー: デプロイ シナリオ |Microsoft Azure"
+	pageTitle="Azure Active Directory Domain Services: デプロイ シナリオ | Microsoft Azure"
 	description="Azure AD ドメイン サービスのデプロイ シナリオ"
 	services="active-directory-ds"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="09/07/2016"
+	ms.date="09/21/2016"
 	ms.author="maheshu"/>
 
 
@@ -88,6 +88,6 @@ Azure RemoteApp は、ドメイン参加コレクションを作成する Contos
 
 ![Azure RemoteApp](./media/active-directory-domain-services-scenarios/azure-remoteapp.png)
 
-このデプロイメント シナリオの詳細については、「[Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
+このデプロイ シナリオの詳細については、「[Lift-and-shift your workloads with Azure RemoteApp and Azure AD Domain Services (Azure RemoteApp と Azure AD ドメイン サービスを使用したワークロードのリフト アンド シフト)](http://blogs.msdn.com/b/rds/archive/2016/01/19/lift-and-shift-your-workloads-with-azure-remoteapp-and-azure-ad-domain-services.aspx)」というタイトルのリモート デスクトップ サービスのブログを参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

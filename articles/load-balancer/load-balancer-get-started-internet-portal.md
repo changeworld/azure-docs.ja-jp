@@ -17,7 +17,7 @@
    ms.date="09/14/2016"
    ms.author="annahar" />
 
-# Azure ポータルを使用したインターネットに接続するロード バランサーの作成の開始
+# Azure ポータルを使用したインターネットに接続するロード バランサーの作成
 
 [AZURE.INCLUDE [load-balancer-get-started-internet-arm-selectors-include.md](../../includes/load-balancer-get-started-internet-arm-selectors-include.md)]
 
@@ -115,4 +115,4 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

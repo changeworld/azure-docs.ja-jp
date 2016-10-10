@@ -1,23 +1,23 @@
 <properties
-   pageTitle="Linux 仮想マシン (VM) における SAP の使用 | Microsoft Azure"
-   description="Microsoft Azure での Linux 仮想マシン (VM) における SAP の使用について説明します"
-   services="virtual-machines-linux,virtual-network,storage"
-   documentationCenter="saponazure"
-   authors="MSSedusch"
-   manager="juergent"
+   pageTitle="SAP ソリューションの概要 | Microsoft Azure"
+   description="Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します"
+   services="virtual-machines-linux"
+   documentationCenter=""
+   authors="RicksterCDN"
+   manager="timlt"
    editor=""
    tags="azure-resource-manager"
    keywords=""/>
 <tags
    ms.service="virtual-machines-linux"
    ms.devlang="NA"
-   ms.topic="campaign-page"
+   ms.topic="article"
    ms.tgt_pltfrm="vm-linux"
-   ms.workload="na"
-   ms.date="08/18/2016"
-   ms.author="sedusch"/>
+   ms.workload="infrastructure-services"
+   ms.date="09/23/2016"
+   ms.author="rclaus"/>
 
-# Linux 仮想マシン (VM) における SAP の使用
+# Microsoft Azure 仮想マシンにおける SAP ソリューションの使用
 
 [767598]: https://service.sap.com/sap/support/notes/767598
 [773830]: https://service.sap.com/sap/support/notes/773830
@@ -295,13 +295,57 @@
 [xplat-cli]: ../xplat-cli-install.md
 [xplat-cli-azure-resource-manager]: ../xplat-cli-azure-resource-manager.md
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+Microsoft Azure を SAP 対応クラウド パートナーとして選択すると、ミッション クリティカルな SAP ワークロードを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行することができます。Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用環境をまたいで SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。SAP NetWeaver から SAP S4/HANA、Linux から Windows、そして SAP HANA から SQL まで対応しています。
 
-クラウド コンピューティングという言葉は、今や多くの人々に認知され、小規模な企業から大企業、多国籍企業にいたるまで、IT 業界における存在感を日増しに高めています。Microsoft Azure はマイクロソフトが提供する Cloud Services プラットフォームで、多方面にわたって新たな可能性を生み出しています。アプリケーションを Cloud Services として迅速にプロビジョニングしたり、プロビジョニング解除したりすることができるようになった今、技術や予算の制約に縛られることはありません。企業は、ハードウェア インフラストラクチャに貴重な時間と予算を費やすことなく、アプリケーションやビジネス プロセス、そして顧客とユーザーの利益にのみ目を向けることができます。
+Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタンスを通じて、マイクロソフトは包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。広範囲の SAP ソリューションが Azure でサポートされているため、この "入門ドキュメント" は、マイクロソフトが現在公開している一連の SAP ドキュメントの目次として機能します。より多くのタイトルがマイクロソフトのドキュメント ライブラリに追加されるとともに、ここに表示される情報も追加されます。
 
-Microsoft Azure Virtual Machines サービスを通じて、マイクロソフトは包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。SAP NetWeaver ベースのアプリケーションは、Azure Virtual Machines (IaaS) でサポートされます。以下のホワイトペーパーには、SAP NetWeaver ベースのアプリケーションに最適なプラットフォームをプランニングし、Microsoft Azure に導入する方法が説明されています。
+## Microsoft Azure における SAP HANA 認定資格
+
+
+SAP 製品 | サポート対象 OS | Azure のサービス 
+---------- | ------------ | ------------- 
+SAP HANA Developer Edition (SQLODBC、ODBO (Windows のみ)、ODBC、JDBC ドライバー、HANA Studio、HANA データベースで構成される HANA クライアント ソフトウェアを含む) | Red Hat Enterprise Linux、SUSE Linux Enterprise | A7、A8
+HANA One | Red Hat Enterprise Linux、SUSE Linux Enterprise | DS14\_v2 (一般公開時)
+SAP S/4HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | GS5、SAP HANA on Azure (L インスタンス) 用に制御された可用性
+Suite on HANA、OLTP | Red Hat Enterprise Linux、SUSE Linux Enterprise | SAP HANA on Azure (L インスタンス)
+HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス)
+SAP BW/4HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス)
+
+
+## SAP NetWeaver 認定資格
+
+以下の SAP 製品に関して Microsoft Azure は認定を受けており、マイクロソフトと SAP から完全サポートを受けることができます。
+
+SAP 製品 | ゲスト OS | RDBMS | 仮想マシンの種類 
+---------- | ------------ | ------------- | ------------- 
+SAP Business Suite ソフトウェア | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP ASE | A5 から A11、D11 から D14、DS11 から DS14、GS1 から GS5 
+SAP Business All-in-One | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP ASE | A5 から A11、D11 から D14、DS11 から DS14、GS1 から GS5 
+SAP BusinessObjects BI | Windows | 該当なし | A5 から A11、D11 から D14、DS11 から DS14、GS1 から GS5 
+SAP NetWeaver | Windows、SUSE Linux Enterprise | SQL Server、Oracle DB2、SAP ASE | A5 から A11、D11 から D14、DS11 から DS14、GS1 から GS5 
+
+
 
 [AZURE.INCLUDE [windows-warning](../../includes/virtual-machines-linux-sap-warning.md)]
+
+## SAP HANA on Azure の概要
+
+タイトル: Azure VM に SAP HANA を手動でインストールするためのクイック スタート ガイド
+
+要約: このクイック スタート ガイドは、SAP NetWeaver 7.5 と SAP HANA SP12 の手動インストールを行って、単一インスタンスの SAP HANA プロトタイプ/デモ システムを Azure VM でセットアップする際に役立ちます。このガイドは、JSON テンプレートを使用する方法を含め、Azure Portal と Powershell/CLI のいずれかを使って仮想マシンまたは仮想ネットワークをデプロイする方法など、Azure IaaS の基本について読者が熟知していることを前提としています。さらに、読者が SAP HANA、SAP NetWeaver、オンプレミスでのそのインストール方法について理解しているとも想定しています。
+
+更新日: 2016 年 9 月
+
+[ガイドはこちら](virtual-machines-linux-sap-hana-get-started.md)
+
+## Azure 上の SUSE Linux での NetWeaver のクイック スタート ガイド
+
+タイトル: Microsoft Azure SUSE Linux VM での SAP NetWeaver のテスト
+
+要約: この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。2016 年 5 月 19 日 の時点で、SAP NetWeaver は Azure 上の SUSE Linux VM で正式にサポートされています。Linux のバージョンや SAP カーネルのバージョンなど、すべての詳細については、SAP Note 1928533「SAP Applications on Azure: Supported Products and Azure VM types (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類)」を参照してください。
+
+更新日: 2016 年 9 月
+
+[ガイドはこちら](virtual-machines-linux-sap-on-suse-quickstart.md)
 
 ##  <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
 
@@ -332,4 +376,4 @@ Microsoft Azure Virtual Machines サービスを通じて、マイクロソフ�
 
 [ガイドはこちら][dbms-guide]
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

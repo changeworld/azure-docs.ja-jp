@@ -27,7 +27,7 @@
 
 C&#x23; を使用して[エラスティック データベース プール](sql-database-elastic-pool.md)を管理する方法について説明します。
 
-一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」をご覧ください。
+一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
 
 ここで示す例では [SQL Database Library for .NET](https://msdn.microsoft.com/library/azure/mt349017.aspx) を使用するので、このライブラリをまだインストールしていない場合は、作業を続行する前にインストールを行う必要があります。ライブラリをインストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
@@ -102,13 +102,13 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 
 ## プールを管理する (C&#x23; の例)
 
-この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]**) から次のコマンドを実行します
+この例を実行するには、次のライブラリが必要です。インストールするには、Visual Studio の[パッケージ マネージャー コンソール](http://docs.nuget.org/Consume/Package-Manager-Console) (**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択) で次のコマンドを実行します。
 
     PM> Install-Package Microsoft.Azure.Management.Sql –Pre
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得するには、[アプリの登録と、アプリを SQL Database に接続するために必要なクライアント値の取得](sql-database-client-id-keys.md)に関するページをご覧ください。
+コンソール アプリを作成し、Program.cs の内容を次の内容に置き換えます。必要なクライアント ID と関連する値を取得する方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../resource-group-authenticate-service-principal.md)」を参照してください。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -430,4 +430,4 @@ C&#x23; を使用して[エラスティック データベース プール](sql-
 - [エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
 - エラスティック データベース ツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

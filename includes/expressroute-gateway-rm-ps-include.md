@@ -5,7 +5,7 @@
 - Virtual Network 名 = "TestVNet"
 - Virtual Network のアドレス空間 = 192.168.0.0/16
 - リソース グループ = "TestRG"
-- Subnet1 名 = "FrontEnd" 
+- Subnet1 名 = "FrontEnd"
 - Subnet1 アドレス空間 = "192.168.0.0/16"
 - ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* という名前を付ける必要があります。
 - ゲートウェイ サブネットのアドレス空間 = "192.168.200.0/26"
@@ -19,7 +19,7 @@
 
 ## ゲートウェイを追加する
 
-1. Azure サブスクリプションに接続します。 
+1. Azure サブスクリプションに接続します。
 
 		Login-AzureRmAccount
 		Get-AzureRmSubscription 
@@ -70,7 +70,9 @@
 
 ## ゲートウェイのサイズを変更する
 
-3 つの[ゲートウェイ SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md) があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+[ゲートウェイ SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md) には複数の種類があります。次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+
+>[AZURE.IMPORTANT] このコマンドは UltraPerformance ゲートウェイでは使用できません。ゲートウェイを UltraPerformance ゲートウェイに変更するには、既存の ExpressRoute ゲートウェイを削除してから、新しい UltraPerformance ゲートウェイを作成します。ゲートウェイを UltraPerformance ゲートウェイからダウングレードするには、UltraPerformance ゲートウェイを削除してから、新しいゲートウェイを作成します。
 
 	$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
@@ -81,4 +83,4 @@
 
 	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
 
-<!---HONumber=AcomDC_0601_2016-->
+<!---HONumber=AcomDC_0928_2016-->

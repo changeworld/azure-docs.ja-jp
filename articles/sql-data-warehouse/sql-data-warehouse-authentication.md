@@ -14,15 +14,16 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
-   ms.date="09/04/2016"
+   ms.date="09/24/2016"
    ms.author="rickbyh;barbkess;sonyama"/>
 
 # Azure SQL Data Warehouse への認証
 
 > [AZURE.SELECTOR]
-- [概要](sql-data-warehouse-connect-overview.md)
+- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
 - [認証](sql-data-warehouse-authentication.md)
-- [ドライバー](sql-data-warehouse-connection-strings.md)
+- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
+- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 SQL Data Warehouse に接続するには、認証のためのセキュリティ資格情報を渡す必要があります。接続の確立時に、特定の接続の設定が、クエリ セッションの構築の一環として構成されます。
 
@@ -90,4 +91,4 @@ Visual Studio またはその他のアプリケーションを使用してデー
 [What is Azure Active Directory]: ../active-directory/active-directory-whatis.md
 [Azure AD の機能と制限事項]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

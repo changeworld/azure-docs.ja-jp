@@ -53,8 +53,12 @@
                 "CertificateIssuerThumbprint" : "[Thumbprint]",
                 "IsAdmin": true
             }]
+			"HttpApplicationGatewayCertificate":{
+                "Thumbprint": "[Thumbprint]",
+                "X509StoreName": "My"
+			}
         }
-    },
+    }
 
 このセクションでは、スタンドアロンの Windows クラスターをセキュリティで保護するために必要な証明書に関する情報が示されています。証明書ベースのセキュリティを有効にするには、**ClusterCredentialType** と **ServerCredentialType** の値を *X509* に設定します。
 
@@ -68,6 +72,7 @@
 |ServerCertificate|この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。利便性を考えて、*ClusterCertificate* と *ServerCertificate* に同じ証明書を使用することもできます。2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。プライマリ証明書の拇印は **Thumbprint** セクションで設定し、セカンダリ証明書の拇印は **ThumbprintSecondary** 変数で設定します。 |
 |ClientCertificateThumbprints|認証されたクライアントにインストールする証明書のセットです。クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。各証明書の拇印は **CertificateThumbprint** 変数で設定します。**IsAdmin** を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。**IsAdmin** が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。役割の詳細については、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md/#role-based-access-control-rbac)」をご覧ください。 |
 |ClientCertificateCommonNames|**CertificateCommonName** には、最初のクライアント証明書の共通名を設定します。**CertificateIssuerThumbprint** は、この証明書の発行者の拇印です。共通名と発行者の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。|
+|HttpApplicationGatewayCertificate|これは、HTTP アプリケーション ゲートウェイをセキュリティで保護したい場合に指定することができる、オプションの証明書です。この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。|
 
 次に、クラスター、サーバー、クライアント証明書が指定されているクラスター構成の例を示します。
 
@@ -262,4 +267,4 @@ Get-ServiceFabricNode
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json   -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

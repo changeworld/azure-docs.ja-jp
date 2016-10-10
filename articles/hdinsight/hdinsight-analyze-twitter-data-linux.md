@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="larryfr"/>
 
 # HDInsight での Hive を使用した Twitter データの分析
@@ -99,7 +99,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 		nano gettweets.py
 
-5. __gettweets.py__ ファイルの内容として、次のコードを使用します。__consumer/_secret__、__consumer/_key_\_、__access/_token__、__access/_token/_secret__ のプレースホルダー情報を、Twitter アプリケーションの情報に置き換えます。
+5. __gettweets.py__ ファイルの内容として、次のコードを使用します。__consumer\_secret__、__consumer\_key__、__access/\_token__、および __access\_token\_secret__ のプレースホルダー情報を、Twitter アプリケーションの情報に置き換えます。
 
         #!/usr/bin/python
 
@@ -290,7 +290,7 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 
 4. 次のコマンドを使用して、ファイルに含まれている HiveQL を実行します。
 
-		beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql		
+		beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i twitter.hql
 		
 	Hive シェルが読み込まれ、__twitter.hql__ ファイル内の HiveQL が実行され、最後に `jdbc:hive2//localhost:10001/>` プロンプトが返されます。
 	
@@ -319,4 +319,4 @@ WASB (HDInsight で使用される分散ファイル システム) にデータ�
 [twitter-streaming-api]: https://dev.twitter.com/docs/streaming-apis
 [twitter-statuses-filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

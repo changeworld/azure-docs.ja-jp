@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成"
+	pageTitle="Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成 | Microsoft Azure"
 	description="Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。このトピックでは、Media Indexer 2 プレビューの使用方法について説明します。"
 	services="media-services"
 	documentationCenter=""
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="adsolank;juliako;"/>
 
 
 # Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
 
-##概要
+##Overview
 
 **Azure Media Indexer 2 プレビュー** メディア プロセッサー (MP) を使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。前のバージョンの [Azure Media Indexer](media-services-index-content.md) と比較すると、**Azure Media Indexer 2 プレビュー**は、インデックス作成が高速化され、より多くの言語をサポートします。英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。
 
@@ -289,4 +289,4 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

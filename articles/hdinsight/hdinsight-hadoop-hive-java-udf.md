@@ -13,7 +13,7 @@ ms.devlang="java"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="07/07/2016"
+ms.date="09/27/2016"
 ms.author="larryfr"/>
 
 #HDInsight で Hive と Java UDF を使用する
@@ -67,7 +67,61 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
     これらのエントリは、HDInsight 3.3 および 3.4 のクラスターに含まれる Hadoop と Hive のバージョンを指定します。HDInsight に含まれる Hadoop と Hive のバージョンの情報は、[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)に関するドキュメントで確認できます。
 
-    これらの変更を行った後は、ファイルを保存します。
+    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。このセクションには、次の行が含まれる必要があります。
+
+        <build>
+            <plugins>
+                <!-- build for Java 1.7, even if you're on a later version -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+                <!-- build an uber jar -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.3</version>
+                    <configuration>
+                        <!-- Keep us from getting a can't overwrite file error -->
+                        <transformers>
+                            <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                            </transformer>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer">
+                            </transformer>
+                        </transformers>
+                        <!-- Keep us from getting a bad signature error -->
+                        <filters>
+                            <filter>
+                                <artifact>*:*</artifact>
+                                <excludes>
+                                    <exclude>META-INF/*.SF</exclude>
+                                    <exclude>META-INF/*.DSA</exclude>
+                                    <exclude>META-INF/*.RSA</exclude>
+                                </excludes>
+                            </filter>
+                        </filters>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    
+    これらのエントリは、プロジェクトのビルド方法を定義します。具体的に言うと、プロジェクトで使用する Java のバージョンと、クラスターにデプロイするための uberjar の構築方法です。
+
+    変更を加えたら、ファイルを保存します。
 
 4. __exampleudf/src/main/java/com/microsoft/examples/App.java__ を __ExampleUDF.java__ に名前を変更して、このファイルをエディターで開きます。
 
@@ -136,7 +190,7 @@ Hive は HDInsight でデータを処理する場合にきわめて有益です�
 
 2. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のように入力して、UDF を Hive に追加し、関数として公開します。
 
-        ADD JAR wasbs:///example/jar/ExampleUDF-1.0-SNAPSHOT.jar;
+        ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
         CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
@@ -166,4 +220,4 @@ Hive の他の使用方法について [HDInsight での Hive の使用](hdinsig
 
 Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)のセクションを参照します。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

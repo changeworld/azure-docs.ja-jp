@@ -1,6 +1,6 @@
 <properties
 	pageTitle="SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック) | Microsoft Azure"
-	description="このトピックでは、SQL Server Agent 拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。このトピックでは、クラシック デプロイメント モードを使用します。"
+	description="このトピックでは、SQL Server Agent 拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。このトピックでは、クラシック デプロイ モードを使用します。"
 	services="virtual-machines-windows"
 	documentationCenter=""
 	authors="rothja"
@@ -14,7 +14,7 @@
 	ms.topic="article"
 	ms.tgt_pltfrm="vm-windows-sql-server"
 	ms.workload="infrastructure-services"
-	ms.date="07/14/2016"
+	ms.date="09/26/2016"
 	ms.author="jroth"/>
 
 # SQL Server VM 用 SQL Server Agent 拡張機能 (クラシック)
@@ -25,14 +25,13 @@
 
 SQL Server IaaS Agent 拡張機能 (SQLIaaSAgent) は、管理タスクを自動化するために Azure 仮想マシン上で実行されます。このトピックでは、この拡張機能によってサポートされるサービスの概要と、インストール、状態、および削除のための手順について説明します。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] 
-この記事の Resource Manager バージョンを確認するには、「[SQL Server VM 用 SQL Server Agent 拡張機能 (Resource Manager)](virtual-machines-windows-sql-server-agent-extension.md)」を参照してください。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] この記事の Resource Manager バージョンを確認するには、「[SQL Server VM 用 SQL Server Agent 拡張機能 (Resource Manager)](virtual-machines-windows-sql-server-agent-extension.md)」を参照してください。
 
 ## サポートされているサービス
 
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。
 
-| 管理機能 | 説明 |
+| 管理機能 | Description |
 |---------------------|-------------------------------|
 | **SQL Automated Backup** | VM 内の SQL Server の既定のインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。詳細については、「[Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)](virtual-machines-windows-classic-sql-automated-backup.md)」をご覧ください。|
 | **SQL Automated Patching** | VM の更新プログラムを実行できるメンテナンス期間を構成します。これにより、ワークロードのピーク時の更新を回避できます。詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](virtual-machines-windows-classic-sql-automated-patching.md)」を参照してください。|
@@ -42,36 +41,42 @@ SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートし�
 
 VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
-**オペレーティング システム**:
+### オペレーティング システム:
 
 - Windows Server 2012
 - Windows Server 2012 R2
 
-**SQL Server のバージョン**:
+### SQL Server のバージョン:
 
 - SQL Server 2012
 - SQL Server 2014
 - SQL Server 2016
 
-**Azure PowerShell**:
+### Azure PowerShell:
 
-- [最新の Azure PowerShell コマンドをダウンロードして構成します](../powershell-install-configure.md)
+[最新の Azure PowerShell コマンドをダウンロードして構成します](../powershell-install-configure.md)。
 
-**仮想マシン ゲスト エージェント**:
+Windows PowerShell を起動し、**Add-AzureAccount** コマンドを使用して Azure サブスクリプションに接続します。
 
-- VM ゲスト エージェントが仮想マシンで実行されている必要があります。VM ゲスト エージェントは、新しい Azure VM に自動的にインストールされるため、通常は手動で行う必要はありません。
+	Add-AzureAccount
+
+複数のサブスクリプションがある場合は、**Select-AzureSubscription** を使用して、対象となるクラシック VM が含まれるサブスクリプションを選択します。
+
+	Select-AzureSubscription -SubscriptionName <subscriptionname>
+
+この時点で、**Get-AzureVM** コマンドにより、クラシック仮想マシンとそれに関連付けられているサービス名の一覧を取得できます。
+
+	Get-AzureVM
 
 ## インストール
 
-SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。
+クラシック VM の場合は、PowerShell を使用して、SQL Server IaaS Agent 拡張機能のインストールと、関連付けられているサービスの構成を行う必要があります。拡張機能をインストールするには、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用します。たとえば、次のコマンドは、Windows Server VM (クラシック) に拡張機能をインストールし、"SQLIaaSExtension" という名前を付けます。
 
-OS 専用の Windows Server 仮想マシンを作成する場合は、**Set-AzureVMSqlServerExtension** PowerShell コマンドレットを使用して、拡張機能を手動でインストールできます。たとえば、次のコマンドは、OS 専用の Windows Server VM (クラシック) に拡張機能をインストールし、"SQLIaaSExtension" という名前を付けます。
-
-	Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension --ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+	Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
 
 最新バージョンの SQL IaaS Agent 拡張機能に更新する場合は、拡張機能の更新後、仮想マシンを再起動する必要があります。
 
->[AZURE.NOTE] SQL Server IaaS Agent 拡張機能を Windows Server VM で手動でインストールする場合は、PowerShell コマンドを使用して、その機能を使用および管理する必要があります。ポータルのインターフェイスは、SQL Server のギャラリー イメージに対してのみ使用できます。
+>[AZURE.NOTE] クラシック仮想マシンの場合、ポータルを通じて SQL IaaS Agent 拡張機能のインストールや構成を行うためのオプションはありません。
 
 ## 状態
 
@@ -89,14 +94,14 @@ Azure ポータルで拡張機能をアンインストールするには、仮�
 
 ![Azure ポータルで SQL Server IaaS Agent 拡張機能をアンインストールします](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)
 
-**Remove-AzureVMSqlServerExtension** Azure Powershell コマンドレットを使用することもできます。
+**Remove-AzureVMSqlServerExtension** Powershell コマンドレットを使用することもできます。
 
 	Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
 
 ## 次のステップ
 
-拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」のセクションで参照されているトピックをご覧ください。
+拡張機能によってサポートされるいずれかのサービスの使用を開始します。詳細については、この記事の「[サポートされているサービス](#supported-services)」で参照されているトピックをご覧ください。
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

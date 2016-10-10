@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Media Services コミュニティの概要"
+	pageTitle="Azure Media Services コミュニティの概要 | Microsoft Azure"
 	description="この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われ、新しいビデオとポッドキャストを参照したり、質問を聞いてフィードバックをもらったりすることができます。"
 	services="media-services"
 	documentationCenter=""
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/22/2016"  
+	ms.date="09/26/2016"  
 	ms.author="juliako"/>
 
 # Azure Media Services コミュニティ  
@@ -63,4 +63,4 @@ Azure Media Player|ampinfo@microsoft.com
 Azure Media Explorer|amse@microsoft.com
 ワークフロー デザイナー|mepd@microsoft.com
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

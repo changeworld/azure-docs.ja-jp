@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/26/2016"
+   ms.date="09/21/2016"
    ms.author="terrylan"/>
 
 # Azure セキュリティ センターのよく寄せられる質問 (FAQ)
@@ -121,10 +121,10 @@ Azure Security Center では、ロール ベースのアクセスをサポート
 ### Azure Security Center の監視対象になる Azure リソースは何ですか。
 Azure Security Center は、次の Azure リソースを監視します。
 
-- 仮想マシン (Cloud Services を含む)
+- 仮想マシン (VM) ([Cloud Services](../cloud-services/cloud-services-choose-me.md) を含む)
 - Azure 仮想ネットワーク
 - Azure SQL サービス
-- Azure サブスクリプションに統合済みのパートナー ソリューション (Web アプリケーション ファイアウォールなど)
+- Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および [App Service](../app-service/app-service-app-service-environments-readme.md) 環境上の Web アプリケーション ファイアウォールなど)
 
 ## Virtual Machines
 
@@ -159,4 +159,4 @@ Azure Security Center でのデータ収集後、スキャン データが取り
 
 データ収集を有効にするためには、VM エージェントを VM にインストールする必要があります。既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。他の VM への VM エージェントのインストール方法については、[VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/07/2016"
+	ms.date="09/27/2016"
 	ms.author="femila"/>
 
 # グループ ポリシーと MDM の設定
@@ -24,9 +24,9 @@
 会社の管理下にない個人用デバイスのローミングを管理する必要がある場合は、グループ ポリシーや MDM ではなく Azure ポータルを使用して、ローミングを有効または無効にしてください。利用可能なポリシー設定を以下の表で説明します。
 
 ## MDM の設定
-MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。Azure AD ベースの同期用にサポートされているデバイスの詳細については、「デバイスとエンドポイント」をご覧ください。
+MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。Azure AD ベースの同期用にサポートされているデバイスの詳細については、「デバイスとエンドポイント」 のセクションをご覧ください。
 
-| 名前 | 説明 |
+| 名前 | Description |
 |------------------------------------|----------------------------------------------------------------------|
 | Microsoft アカウントの接続を許可 | デバイスの Microsoft アカウントを使った認証をユーザーに許可します。 |
 | ユーザー設定の同期を許可 | Windows の設定データとアプリ データのローミングをユーザーに許可します。このポリシーを無効にすると、モバイル デバイスでの同期とバックアップが無効になります |
@@ -34,7 +34,7 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 ## グループ ポリシーの設定
 グループ ポリシーの設定は、Active Directory ドメインに参加している Windows 10 デバイスに適用されます。以下の表には、同期設定の管理用に見えるものの、実際には Windows 10 の Enterprise State Roaming では正しく機能しない既存の設定も記載されています。こうした設定には "使用しないでください" と記されています。
 
-| 名前 | 説明 |
+| 名前 | Description |
 |-------------------------------------|-------------|
 | アカウント: Microsoft アカウントをブロックします |このコンピューターにユーザーが新しい Microsoft アカウントを追加できないようにするポリシー設定です。|
 | 同期しない |ユーザーが Windows の設定データとアプリ データをローミングできないようにします。|
@@ -55,4 +55,4 @@ MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適�
 - [設定とデータのローミングに関する FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
 - [Windows 10 ローミング設定リファレンス](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!---HONumber=AcomDC_0928_2016-->

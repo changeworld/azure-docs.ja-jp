@@ -4,7 +4,7 @@
     keywords="BLOB データ, Azure BLOB のコピー"
 	services="data-factory" 
 	documentationCenter="" 
-	authors="spelluru" 
+	authors="linda33wj" 
 	manager="jhubbard" 
 	editor="monicar"/>
 
@@ -14,16 +14,28 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="08/25/2016" 
-	ms.author="spelluru"/>
+	ms.date="09/27/2016" 
+	ms.author="jingwang"/>
 
 # Azure Data Factory を使用した Azure BLOB との間でのデータの移動
 この記事では、Azure Data Factory のコピー アクティビティを利用して、他のデータ ストアからの BLOB データを Azure BLOB との間で移動する方法について説明します。この記事は、コピー アクティビティによるデータ移動の概要とサポートされるデータ ストアの組み合わせについて説明する、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
-> [AZURE.NOTE]
-コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。
-> 
-> このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。
+## サポートされているソースとシンク
+コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)の表をご覧ください。サポートされる任意のソース データ ストアのデータを、Azure BLOB ストレージに移動したり、Azure BLOB ストレージのデータを、サポートされる任意のシンク データ ストアに移動したりできます。
+
+コピー アクティビティは、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。このアクティビティは、ブロック BLOB、追加 BLOB、ページ BLOB を読み取りますが、書き込みはブロック BLOB のみをサポートしています。
+
+## パイプラインの作成
+さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。
+
+- コピー ウィザード
+- Azure ポータル
+- Visual Studio
+- Azure PowerShell
+- .NET API
+- REST API
+
+さまざまな方法でコピー アクティビティによってパイプラインを作成する手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ## データのコピー ウィザード
 Azure Blob Storage との間でデータをコピーするパイプラインを作成する最も簡単な方法は、データのコピー ウィザードを使用することです。データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
@@ -382,11 +394,14 @@ Azure Data Factory では、**AzureStorage** と **AzureStorageSas** という 2
 	}
 
 ## リンクされたサービス
+サンプルでは、**AzureStorage** 型のリンクされたサービスを使用して、Azure Storage アカウントをデータ ファクトリにリンクしています。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
 Azure BLOB ストレージを Azure Data Factory にリンクするために使用できるリンクされたサービスは 2 種類あります。それらは、**AzureStorage** のリンクされたサービスと **AzureStorageSas** のリンクされたサービスです。Azure Storage のリンクされたサービスは、Azure Storage へのグローバル アクセスを Data Factory に提供します。一方、Azure Storage SAS (Shared Access Signature) のリンクされたサービスは、Azure Storage への制限付き/期限付きアクセスを Data Factory に提供します。これら 2 つのリンクされたサービスには、これ以外の相違点はありません。ニーズに適したリンクされたサービスを選択します。以下のセクションで、これら 2 つのリンクされたサービスについて詳しく説明します。
 
 [AZURE.INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## Azure BLOB データセットの type プロパティ
+サンプルでは、**AzureBlob** 型のデータセットを使用して、Azure BLOB ストレージの BLOB コンテナーとフォルダーを表しています。
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
@@ -397,15 +412,15 @@ Azure BLOB ストレージを Azure Data Factory にリンクするために使�
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。例: myblobcontainer\\myblobfolder\\ | はい |
 | fileName | BLOB の名前。fileName は省略可能です。この名前は大文字と小文字が区別されます。<br/><br/>fileName を指定した場合、アクティビティ (コピーを含む) は特定の BLOB で機能します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は、Data.<Guid>.txt (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) の形式になります。 | なし |
 | partitionedBy | partitionedBy は任意のプロパティです。これを使用し、時系列データに動的な folderPath と fileName を指定できます。たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。詳細と例については、「[partitionedBy プロパティの使用](#using-partitionedBy-property)」をご覧ください。 | なし
-| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat** の 4 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」をご覧ください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| なし
-| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」セクションを参照してください。 | なし |
+| BlobSink の format | **TextFormat**、**AvroFormat**、**JsonFormat**、**OrcFormat**、**ParquetFormat** の 5 種類の形式がサポートされています。形式の **type** プロパティをいずれかの値に設定します。詳細については、「[TextFormat の指定](#specifying-textformat)」、「[AvroFormat の指定](#specifying-avroformat)」、「[JsonFormat の指定](#specifying-jsonformat)」、「[OrcFormat の指定](#specifying-orcformat)」、および「[ParquetFormat の指定](#specifying-parquetformat)」を参照してください。ファイル ベースのストア間でファイルをそのままコピーする場合は (バイナリ コピー)、入力と出力の両方のデータセット定義で format セクションをスキップできます。| なし
+| compression | データの圧縮の種類とレベルを指定します。サポートされる種類は、**GZip**、**Deflate**、**BZip2** です。サポートされるレベルは、**Optimal** と **Fastest** です。現時点では、**AvroFormat** と **OrcFormat** のデータの圧縮設定はサポートされていません。詳細については、「[圧縮のサポート](#compression-support)」を参照してください。 | なし |
 
 ### partitionedBy プロパティの使用
 前のセクションで説明したように、**partitionedBy** セクション、Data Factory マクロ、特定のデータ スライスの開始時刻と終了時刻を示すシステム変数の SliceStart と SliceEnd を使用して、時系列データの動的な folderPath と fileName を指定できます。
 
 partitionedBy セクションで使用可能な Data Factory の変数と関数については、「[Data Factory のシステム変数](data-factory-scheduling-and-execution.md#data-factory-system-variables)」と「[Data Factory 関数リファレンス](data-factory-scheduling-and-execution.md#data-factory-functions-reference)」を参照してください。
 
-時系列データセット、スケジュール設定、スライスの詳細については、[データセットの作成](data-factory-create-datasets.md)に関する記事および[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
+時系列データセット、スケジュール設定、およびスライスの詳細については、[データセットの作成](data-factory-create-datasets.md)に関する記事および[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
 
 #### サンプル 1
 
@@ -439,6 +454,8 @@ partitionedBy セクションで使用可能な Data Factory の変数と関数�
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」を参照してください。プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。コピー アクティビティの場合、ソースとシンクの種類によって異なります
+
+Azure BLOB ストレージからデータを移動する場合は、コピー アクティビティのソースの種類を **BlobSource** に設定します。同様に、Azure BLOB ストレージにデータを移動する場合は、コピー アクティビティのシンクの種類を **BlobSink** に設定します。このセクションでは、BlobSource と BlobSink でサポートされるプロパティの一覧を示します。
 
 **BlobSource** の **typeProperties** セクションでは次のプロパティがサポートされます。
 
@@ -497,4 +514,4 @@ false | mergeFiles | ソース フォルダー Folder1 が次のような構造�
 ## パフォーマンスとチューニング  
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」をご覧ください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_0928_2016-->

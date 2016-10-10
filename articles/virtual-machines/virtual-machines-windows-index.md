@@ -62,7 +62,7 @@
 
 [仮想マシンのサイズ](virtual-machines-windows-sizes.md)
 
-[A8、A9、A10、A11 計算集中型インスタンスについて](virtual-machines-windows-a8-a9-a10-a11-specs.md)
+[H シリーズとコンピューティング集中型 A シリーズの VM について](virtual-machines-windows-a8-a9-a10-a11-specs.md)
 
 [Azure Virtual Machines に対する計画的なメンテナンス](virtual-machines-windows-planned-maintenance.md)
 
@@ -192,4 +192,4 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

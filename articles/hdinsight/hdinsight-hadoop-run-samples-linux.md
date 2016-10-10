@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="larryfr"/>
 
 
@@ -47,7 +47,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 - **aggregatewordcount**: 入力ファイル内の単語をカウントする集計ベースの Map / Reduce プログラム
 - **aggregatewordhist**: 入力ファイル内の単語のヒストグラムを計算する集計ベースの Map / Reduce プログラム
 - **bbp**: Bailey-Borwein-Plouffe を使用して Pi の正確な数字を計算する Map / Reduce プログラム
-- **dbcount**: データベースから、ページビューの数をカウントするサンプル ジョブ
+- **dbcount**: データベースに保存されているページビューのログの数をカウントするサンプル ジョブ
 - **distbbp**: BBP 公式を使用して Pi の正確なビットを計算する Map / Reduce プログラム
 - **grep**: 入力内の正規表現の一致項目をカウントする Map / Reduce プログラム
 - **join**: 並べ替えられ、均等に分割されたデータセット上の結合に影響を及ぼすジョブ
@@ -93,7 +93,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
         Usage: wordcount <in> [<in>...] <out>
 
-    これは、ソース ドキュメントに複数の入力パスを指定できることを示し、最後のパスは出力 (ソース ドキュメント内の単語数) が配置される場所を示しています。
+    これは、ソース ドキュメントに対して複数の入力パスを指定できることを示しています。最後のパスは、出力 (ソース ドキュメント内の単語の数) の保存場所です。
 
 4. 次のコマンドを使用して、クラスタでサンプルデータとして提供されているレオナルド·ダ·ヴィンチの手記の単語をすべてカウントします。
 
@@ -111,7 +111,7 @@ Linux ベースの HDInsight クラスターには、Hadoop MapReduce ジョブ�
 
     これにより、ジョブで生成されたすべての出力ファイルが連結して表示されます。この基本的な例では、1 つのファイルがあるだけですが、複数のファイルがある場合、このコマンドはそのすべてを反復処理します。
 
-    このコマンドから次のような出力が表示されます。
+    次のように出力されます。
 
         zum     1
         zur     1
@@ -236,4 +236,4 @@ GraySort はベンチマーク ソートで、その評価尺度は、非常に�
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

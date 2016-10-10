@@ -339,7 +339,7 @@ Azure Redis Cache は、基になる Redis サーバーに対するファサー�
 
 待機時間を最小限に抑えるために、各マスター/下位のペアは近くに配置するようにします。ただし、各ペアは、必要に応じて別のリージョンにある別の Azure データセンターで実行し、最もよく使用するアプリケーションの近くにキャッシュ データを配置することができます。Microsoft Web サイトの「[Running Redis on a CentOS Linux VM in Microsoft Azure](http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx) (Microsoft Azure の CentOS Linux VM 上での Redis の実行)」のページでは、Azure VM として実行される Redis ノードの構築および設定方法を示す例について説明しています。
 
-この方法で独自の Redis キャッシュを実装する場合、サービスを監視、管理、および保護する責任があることに注意してください。
+[AZURE.NOTE] この方法で独自の Redis キャッシュを実装する場合、サービスを監視、管理、および保護する責任があることに注意してください。
 
 ## Redis キャッシュのパーティション分割
 
@@ -935,4 +935,4 @@ ISubscriber subscriber = redisHostConnection.GetSubscriber();
 - StackExchange.Redis リポジトリの「[Transactions in Redis](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md) (Redis のトランザクション)」のページ
 - Microsoft Web サイトの「[Data Partitioning Guidance](http://msdn.microsoft.com/library/dn589795.aspx) (データのパーティション分割のガイダンス)」
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_0928_2016-->

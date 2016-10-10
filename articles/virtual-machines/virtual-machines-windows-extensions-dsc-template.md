@@ -287,7 +287,7 @@ Azure Resource Manager テンプレートでは、次のコードにより、正
 
 
 ## 次のステップ
-[DSC と VMSS の詳細を確認してください](virtual-machines-scale-sets-dsc.md)。
+DSC と仮想マシン スケール セットについて、「[仮想マシン スケール セットと Azure DSC 拡張機能の使用](../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)」を参照します。
 
 [DSC による安全な資格情報管理](virtual-machines-windows-extensions-dsc-credentials.md)の詳細を確認してください。
 
@@ -295,4 +295,4 @@ Azure DSC 拡張機能ハンドラーの詳細については、「[Azure Desire
 
 PowerShell DSC の詳細については、[PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

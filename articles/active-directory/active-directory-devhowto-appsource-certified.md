@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="07/05/2016"
+   ms.date="09/22/2016"
    ms.author="skwan;bryanla"/>
 
 #Azure Active Directory (AD) の AppSource 認定を取得する方法 
@@ -41,4 +41,4 @@ Microsoft のコンテンツ改善のため、下部の Disqus コメント セ�
 
 <!--Image references-->
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

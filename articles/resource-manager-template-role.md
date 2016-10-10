@@ -41,22 +41,23 @@
 
 次の表では、スキーマに設定する必要がある値について説明します。
 
-| 名前 | 値 |
-| ---- | ---- |
-| type | 列挙型<br />必須<br />**Microsoft.Authorization/roleAssignments**<br /><br />作成するリソースの種類。 |
-| apiVersion | 列挙型<br />必須<br />**2014-10-01-preview**<br /><br />リソースの作成に使用する API バージョン。 |  
-| name | 文字列<br />必須<br />**Globally-unique identifier**<br /><br />新しいロール割り当ての識別子。 |
-| dependsOn | 配列<br />省略可能<br />リソース名またはリソースの一意識別子のコンマ区切りリスト。<br /><br />このロール割り当てが依存するリソースのコレクション。あるリソースに範囲指定されたロールを割り当てるとき、そのリソースが同じテンプレートにデプロイされている場合は、そのリソースが最初にデプロイされるように、この要素にそのリソース名を含めます。 | 
-| properties | オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />ロール定義、プリンシパル、およびスコープを識別するオブジェクト。 |  
+| 名前 | 値 | Description |
+| ---- | ---- | ---- |
+| type | enum<br />必須<br />**Microsoft.Authorization/roleAssignments** | 作成するリソースの種類。 |
+| apiVersion | enum<br />必須<br />**2014-10-01-preview** | リソースの作成に使用する API バージョン。 |  
+| name | string<br />必須<br />**Globally-unique identifier** | 新しいロールの割り当て用の識別子。 |
+| dependsOn | array<br />省略可能<br />リソース名またはリソースの一意識別子のコンマ区切りリスト。 | このロールの割り当てが依存するリソースのコレクション。あるリソースに範囲指定されたロールを割り当てるとき、そのリソースが同じテンプレートにデプロイされている場合は、そのリソースが最初にデプロイされるように、この要素にそのリソース名を含めます。 | 
+| properties | object<br />必須<br />[プロパティ オブジェクト](#properties) | ロール定義、プリンシパルおよびスコープを識別するオブジェクト。 |  
 
 <a id="properties" />
+
 ### プロパティ オブジェクト
 
-| 名前 | 値 |
-| ------- | ---- |
-| roleDefinitionId | 文字列<br />必須<br /> **/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}**<br /><br />ロール割り当てで使用する既存のロール定義の識別子。 |
-| principalId | 文字列<br />必須<br />**Globally-unique identifier**<br /><br />既存のプリンシパルの識別子。これは、ディレクトリ内の ID にマップされ、ユーザー、サービス プリンシパルまたはセキュリティ グループを指すことができます。 |
-| scope | 文字列<br />必須<br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}** (リソース グループの場合) または <br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}** (リソースの場合)<br /><br />このロール割り当てが適用されるスコープ。 |
+| 名前 | Value1 | Description |
+| ---- | ---- | ---- |
+| roleDefinitionId | string<br />必須<br /><br /> **/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}** | ロールの割り当てで使用する既存のロール定義識別子。 |
+| principalId | string<br />必須<br /><br /> **Globally-unique identifier** | 既存のプリンシパルの識別子。これは、ディレクトリ内の ID にマップされ、ユーザー、サービス プリンシパルまたはセキュリティ グループを指すことができます。 |
+| scope | string<br />必須<br /><br /> **/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}** (リソース グループの場合)<br /> または <br />**/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}** (リソースの場合) | このロールが割り当てられるスコープ。 |
 
 
 ## ロールの割り当てリソースを使用する方法
@@ -131,6 +132,6 @@
 ## 次のステップ
 
 - テンプレートの構造の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
+- ロールベースのアクセス制御の詳細については、「[Azure Active Directory のロールベースのアクセス制御](active-directory/role-based-access-control-configure.md)」を参照してください。
 
-<!---HONumber=AcomDC_0406_2016-->
+<!---HONumber=AcomDC_0928_2016-->

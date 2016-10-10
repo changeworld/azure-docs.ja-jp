@@ -14,22 +14,22 @@
 	ms.tgt_pltfrm="vm-multiple"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/15/2016"
+	ms.date="09/22/2016"
 	ms.author="danlep"/>
 
 # Azure サービス管理 (asm) モードでの Azure CLI コマンド
 
-[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] また、Resource Manager モデルのすべてのコマンドについては、[こちら](virtual-machines/azure-cli-arm-commands.md)でご覧いただけます。
+[AZURE.INCLUDE [learn-about-deployment-models](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルのすべてのコマンドに関する記事](virtual-machines/azure-cli-arm-commands.md)を確認し、CLI を使用してクラシックから Resource Manager モデルへの[リソースの移行](virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)を行うことも出来ます。
 
 この記事では、クラシック デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure CLI コマンドの構文とオプションを説明します。これらのコマンドにアクセスするには、Azure サービス管理 (asm) モードで CLI を実行します。これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。
 
 最初に、[Azure CLI をインストール](xplat-cli-install.md)し、[Azure サブスクリプションに接続](xplat-cli-connect.md)します。
 
-ASM モードのコマンド ラインでの現在のコマンド構文とオプションについては `azure help` と入力します。特定のコマンドのヘルプを表示するには、`azure help [command]` と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
+コマンド ラインの最新のコマンド構文とオプションを確認するには「`azure help`」と入力します。特定のコマンドのヘルプを表示するには、「`azure help [command]`」と入力します。ドキュメントには、特定の Azure サービスを作成および管理するための CLI の例もあります。
 
 オプション パラメーターは、ブラケットで囲んで表記しています (例 `[parameter]`)。その他のパラメーターはすべて指定する必要があります。
 
-ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が raw json 形式で出力されます。
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションや状態コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。`-v` パラメーターでは詳細な出力を、`-vv` パラメーターではより詳細な出力を得ることができます。`--json` オプションを使用すると、結果が未整形の json 形式で出力されます。
 
 ## ASM モードの設定
 
@@ -39,8 +39,8 @@ ASM モードのコマンド ラインでの現在のコマンド構文とオプ
 
 >[AZURE.NOTE] CLI の Azure Resource Manager モードと ASM モードは互いに排他的な関係にあります。つまり、どちらか一方のモードで作成されたリソースは、他方のモードは管理できません。
 
-## アカウント情報および発行設定の管理
-CLI でアカウントに接続する方法の 1 つは、Azure サブスクリプションの情報を使用するものです(他の方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](xplat-cli-connect.md)」を参照してください)。 この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、CLI の以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
+## アカウント情報と発行設定の管理
+CLI でアカウントに接続する方法の 1 つは、Azure サブスクリプションの情報を使用するものです (他の方法については、[Azure CLI から Azure サブスクリプションへの接続](xplat-cli-connect.md)に関するページを参照してください)。 この情報は、以下に説明するとおり、Azure クラシック ポータルから発行設定ファイルとして入手できます。発行設定ファイルは、CLI の以降の操作で永続的なローカル構成設定としてインポートすることができます。インポートすると、以降の操作ではこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
 **account download [options]**
 
@@ -56,7 +56,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 **account import [options] &lt;file>**
 
 
-このコマンドは、publishsettings ファイルまたは証明書をインポートして、ツールで使用できるようにします。
+このコマンドにより、publishsettings ファイルまたは証明書がインポートされ、以降のセッションで使用できるようになります。
 
 	~$ azure account import publishsettings.publishsettings
 	info:   Importing publish settings file publishsettings.publishsettings
@@ -67,11 +67,11 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE] publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
+> [AZURE.NOTE] publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code> コマンドを実行します。
 
 **account clear [options]**
 
-このコマンドは、インポート済みの保存されている publishsettings を削除します。このマシンでのツールの使用を完了し、今後は自分のアカウントによってツールが使われないようにする場合に、このコマンドを使用します。
+このコマンドは、インポート済みの保存されている publishsettings を削除します。このマシンでのツールの使用を完了した後のセッションで自分のアカウントによってツールが使われないようにするには、次のコマンドを使用します。
 
 	~$ azure account clear
 	Clearing account info.
@@ -79,7 +79,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 
 **account list [options]**
 
-インポートされたサブスクリプションの一覧を表示します。
+インポートされたサブスクリプションを一覧表示します
 
 	~$ azure account list
 	info:    Executing command account list
@@ -93,7 +93,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 
 **account set [options] &lt;subscription&gt;**
 
-現在のサブスクリプションを設定します。
+現在のサブスクリプションを設定します
 
 ###アフィニティ グループの管理用コマンド
 
@@ -112,7 +112,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 
 **account affinity-group create [options] &lt;name&gt;**
 
-このコマンドは、新しいアフィニティ グループを作成します。
+このコマンドは、アフィニティ グループを作成します。
 
 	~$ azure account affinity-group create opentec -l "West US"
 	info:    Executing command account affinity-group create
@@ -194,7 +194,7 @@ CLI でアカウントに接続する方法の 1 つは、Azure サブスクリ�
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
-このコマンドは、新しい Azure の仮想マシンを作成します。既定では、各仮想マシン (vm) はそれぞれのクラウド サービス上に作成されます。ただし、ここで説明しているように -c オプションを使用すると、仮想マシンが既存のクラウド サービスに追加されるように指定できます。
+このコマンドは、Azure の仮想マシンを作成します。既定では、各仮想マシンは (VM) はそれぞれのクラウド サービス上に作成されます。ただし、ここで説明しているように -c オプションを使用すると、仮想マシンを既存のクラウド サービスに追加するように指定できます。
 
 vm create コマンドは、Azure クラシック ポータルと同様、特定の運用デプロイ環境上にのみ仮想マシンを作成します。クラウド サービスのステージング デプロイ環境に仮想マシンを作成するオプションはありません。サブスクリプションに既存の Azure ストレージ アカウントが含まれていない場合、このコマンドは Azure ストレージ アカウントを作成します。
 
@@ -202,13 +202,13 @@ vm create コマンドは、Azure クラシック ポータルと同様、特定
 
 パスワードは、8 文字以上 123 以下で指定し、仮想マシンで使用しているオペレーティング システムに適用されているパスワードの複雑さの要件を満たす必要があります。
 
-デプロイした Linux 仮想マシンの管理に SSH を使用する可能性がある場合 (一般的な想定です)、仮想マシンを作成するときに、-e オプションを使用して SSH を有効にします。仮想マシンを作成した後に SSH を有効にすることはできません。
+(一般的なケースのように) デプロイした Linux 仮想マシンの管理に SSH を使用するには、仮想マシンを作成するときに -e オプションを使用して SSH を有効にします。仮想マシンを作成した後に SSH を有効にすることはできません。
 
 Windows 仮想マシンでは、エンドポイントとしてポート 3389 を追加することによって、後から RDP を有効にできます。
 
 このコマンドでは、次のオプション パラメーターがサポートされています。
 
-**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションに -vmname を使用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前は &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url** 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size** 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r** Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh** Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert** SSH 証明書を指定します。<br /> **-s** サブスクリプション。<br /> **-o、--community** 指定されるイメージはコミュニティ イメージです。<br /> **-w** 仮想ネットワーク名。<br/> **-l、--location** 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group** アフィニティ グループを指定します。<br /> **-w、--virtual-network-name** 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure クラシック ポータルから設定および管理できます。<br /> **-b, --subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
+**-c, --connect** ホスティング サービスで作成済みのデプロイ内に仮想マシンを作成します。このオプションと -vmname を併用しなかった場合には、新しい仮想マシンの名前が自動的に生成されます。<br /> **-n、--vm-name**: 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しなかった場合、新しい仮想マシンの名前は "&lt;service-name>&lt;id>" になります。&lt;id> は、サービス内にある既存の仮想マシンの数に 1 を足した数です。たとえば、このコマンドで既存の仮想マシンが 1 つだけのホスティング サービス MyService に新しい仮想マシンを追加すると、MyService2 という名前になります。<br /> **-u、--blob-url**: 仮想マシン システム ディスクの作成場所となる、ターゲット BLOB ストレージの URL を指定します。<br /> **-z、--vm-size**: 仮想マシンのサイズを指定します。有効な値を次に示します。"ExtraSmall"、"Small"、"Medium"、"Large"、"ExtraLarge"、"A5"、"A6"、"A7"、"A8"、"A9"、"A10"、"A11"、"Basic\_A0"、"Basic\_A1"、"Basic\_A2"、"Basic\_A3"、"Basic\_A4"、"Standard\_D1"、"Standard\_D2"、"Standard\_D3"、"Standard\_D4"、"Standard\_D11"、"Standard\_D12"、"Standard\_D13"、"Standard\_D14"、"Standard\_DS1"、"Standard\_DS2"、"Standard\_DS3"、"Standard\_DS4"、"Standard\_DS11"、"Standard\_DS12"、"Standard\_DS13"、"Standard\_DS14"、"Standard\_G1"、"Standard\_G2"、"Standard\_G3"、"Standard\_G4"、"Standard\_G55"。既定値は "Small" です。<br /> **-r**: Windows 仮想マシンに RDP 接続を追加します。<br /> **-e、--ssh**: Windows 仮想マシンに SSH 接続を追加します。<br /> **-t、--ssh-cert**: SSH 証明書を指定します。<br /> **-s**: サブスクリプション。<br /> **-o、--community**: イメージをコミュニティ イメージとして指定します。<br /> **-w**: 仮想ネットワーク名。<br/> **-l、--location**: 場所を指定します ("North Central US" など)。<br /> **-a、--affinity-group**: アフィニティ グループを指定します。<br /> **-w、--virtual-network-name**: 新しい仮想マシンの追加先の仮想ネットワークを指定します。仮想ネットワークは、Azure クラシック ポータルから設定および管理できます。<br /> **-b, --subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
 この例では、MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-ja-JP-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
@@ -219,7 +219,7 @@ Windows 仮想マシンでは、エンドポイントとしてポート 3389 を
 
 **vm create-from &lt;dns-name> &lt;role-file>**
 
-このコマンドは、JSON ロール ファイルから新しい Azure 仮想マシンを作成します。
+このコマンドは、JSON ロール ファイルから Azure 仮想マシンを作成します。
 
 	~$ azure vm create-from my-vm example.json
 	info:   OK
@@ -333,7 +333,7 @@ info:   vm shutdown command OK
 	info:   vm export command OK
 
 ##  Azure の仮想マシン エンドポイントの管理用コマンド
-次の図は、クラシック仮想マシンのインスタンスが複数ある一般的なデプロイのアーキテクチャを示しています。この例では、ポート 3389 が各仮想マシン上で開いています (RDP アクセス用)。また、ロード バランサーがトラフィックを仮想マシンにルーティングするために使用する内部 IP アドレス (たとえば、168.55.11.1) が、仮想サーバーごとに設定されています。この内部 IP アドレスは、仮想マシン間の通信にも使用されます。
+次の図は、クラシック仮想マシンのインスタンスが複数ある一般的なデプロイのアーキテクチャを示しています。この例では、各仮想マシンのポート 3389 が RDP アクセス用に開かれています。また、ロード バランサーが仮想マシンへのトラフィックのルーティングで使用する内部 IP アドレス (たとえば、168.55.11.1) が、仮想マシンごとに設定されています。この内部 IP アドレスは、仮想マシン間の通信にも使用されます。
 
 ![Azure のネットワーク図](./media/virtual-machines-command-line-tools/networkdiagram.jpg)
 
@@ -417,7 +417,7 @@ info:   vm shutdown command OK
 
 **vm image list [options]**
 
-このコマンドは、仮想マシン イメージの一覧を表示します。イメージは 3 種類あります。Microsoft が作成したイメージ (プレフィックスは MSFT)、サード パーティが作成したイメージ (通常は、プレフィックスはベンダーの名前)、およびユーザーが作成したイメージです。イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。カスタム .vhd の詳細については、「vm image create」を参照してください。-json オプションは、結果が raw JSON 形式で返されるように指定します。
+このコマンドは、仮想マシン イメージの一覧を表示します。イメージには、Microsoft が作成したイメージ (プレフィックスは "MSFT")、サード パーティが作成したイメージ (プレフィックスはベンダーの名前)、およびユーザーが作成したイメージの 3 種類があります。イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。カスタム .vhd の詳細については、「vm image create」を参照してください。-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
@@ -466,7 +466,7 @@ info:   vm shutdown command OK
 
 このコマンドは、仮想マシン イメージを作成します。ユーザーがカスタム .vhd ファイルを BLOB ストレージにアップロードした後、そこから仮想マシン イメージが作成されます。この仮想マシン イメージを使って、仮想マシンを作成できます。Location パラメーターと OS パラメーターは必須です。
 
->[AZURE.NOTE]現在、このコマンドは、静的な .vhd ファイルのアップロードのみをサポートしています。動的な .vhd ファイルをアップロードするには、[Azure VHD utilities for Go (Go 向け Azure VHD ユーティリティ)](https://github.com/Microsoft/azure-vhd-utils-for-go) を使用します。
+>[AZURE.NOTE]現在、このコマンドは、静的な .vhd ファイルのアップロードのみをサポートしています。動的な .vhd ファイルをアップロードするには、[Go 用の Azure VHD ユーティリティ](https://github.com/Microsoft/azure-vhd-utils-for-go)を使用します。
 
 一部のシステムでは、プロセスごとにファイル記述子の制限が適用されます。制限を超えると、ファイル記述子の制限エラーが表示されます。-p &lt;number> パラメーターを使用してコマンドを再度実行し、並列アップロードの最大数を減らすことができます。並列アップロードの既定の最大数は 96 です。
 
@@ -487,7 +487,7 @@ info:   vm shutdown command OK
 
 azure vm disk detach コマンドでデータ ディスクを切断する場合、&lt;lun&gt パラメーターを使用して、切断するディスクを指定します。
 
-> [AZURE>NOTE] データ ディスクの切断は、必ず逆の順序で行ってください。つまり、割り当てられている LUN の番号が 1 番大きいものから切断していきます。Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
+> [AZURE からの注意] ディスクの切断は、必ず逆の順序で行ってください。割り当てられている LUN の番号が最も大きいものから切断していきます。Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。
 
 **vm disk show [options] &lt;name>**
 
@@ -539,7 +539,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 
 **vm disk create &lt;name> [source-path]**
 
-このコマンドは、Azure ディスクをアップロードして登録します。--blob-url、--location、または --affinity-group を指定する必要があります。[source-path] と共に使用すると、指定した .vhd ファイルがアップロードされ、新しいイメージが作成されます。その後、vm disk attach を使用して、このイメージを仮想マシンに接続できます。
+このコマンドは、Azure ディスクをアップロードして登録します。--blob-url、--location、または --affinity-group を指定する必要があります。このコマンドを [source-path] と共に使用すると、指定した .vhd ファイルがアップロードされ、イメージが作成されます。その後、vm disk attach を使用して、このイメージを仮想マシンに接続できます。
 
 一部のシステムでは、プロセスごとにファイル記述子の制限が適用されます。制限を超えると、ファイル記述子の制限エラーが表示されます。-p &lt;number> パラメーターを使用してコマンドを再度実行し、並列アップロードの最大数を減らすことができます。並列アップロードの既定の最大数は 96 です。
 
@@ -570,7 +570,7 @@ azure vm disk detach コマンドでデータ ディスクを切断する場合�
 
 **vm disk attach-new &lt;vm-name> &lt;size-in-gb> [blob-url]**
 
-このコマンドは、データ ディスクを Azure の仮想マシンに接続します。この例では、20 ギガバイドの新しいディスクを接続しています。必要に応じて、BLOB の URL を最後の引数として使用し、作成するターゲット BLOB を明示的に指定することもできます。BLOB の URL を指定しないと、BLOB オブジェクトが自動的に生成されます。
+このコマンドは、データ ディスクを Azure の仮想マシンに接続します。この例では、20 ギガバイドの新しいディスクを接続しています。必要に応じて、BLOB の URL を最後の引数として使用し、作成するターゲット BLOB を明示的に指定することもできます。BLOB の URL を指定しない場合、BLOB オブジェクトが自動的に生成されます。
 
 	~$ azure vm disk attach-new nick-test36 20 http://nghinazz.blob.core.azure-preview.com/vhds/vmdisk1.vhd
 	info:   Executing command vm disk attach-new
@@ -590,7 +590,7 @@ Azure クラウド サービスは、Web ロールや Worker ロールでホス�
 
 **service create [options] &lt;serviceName>**
 
-このコマンドは、新しいクラウド サービスを作成します。
+このコマンドは、クラウド サービスを作成します。
 
 	~$ azure service create newservicemsopentech
 	info:    Executing command service create
@@ -702,7 +702,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 
 **site set [options] [name]**
 
-このコマンドは、Web アプリの名前 [name] の構成オプションを設定します。
+このコマンドは、[name] という名前の Web アプリの構成オプションを設定します。
 
 	~$ azure site set
 	info:    Executing command site set
@@ -791,7 +791,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 
 このコマンドでは、次の追加のオプションがサポートされています。
 
-**-q または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
+**-q** または --quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 
 **site start [options] [name]**
@@ -814,7 +814,7 @@ Azure の Web アプリは、URI でアクセスできる Web 構成です。Web
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [options] [name]
+**site restart [options] [name]**
 
 このコマンドは、指定された Web アプリを停止し、その後、起動します。
 
@@ -1135,7 +1135,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 以下のオプションはほとんどの Mobile Services 用のコマンドで使用できます。
 
 + **-h** または **--help**: 出力の使用法を表示します。
-+ **-s `<id>`** または **--subscription `<id>`**: `<id>` で指定された特定のサブスクリプションを使用します。
++ **-s `<id>`** または **--subscription `<id>`**: `<id>` で指定したサブスクリプションを使用します。
 + **-v** または **--verbose**: 詳細な出力を書き込みます。
 + **--json**: JSON の出力を書き込みます。
 
@@ -1173,7 +1173,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 **mobile delete [options] [servicename]**
 
-このコマンドは、モバイル サービスを SQL Database およびサーバーと共に削除します。
+このコマンドは、モバイル サービスを SQL データベースおよびサーバーと共に削除します。
 
 	~$ azure mobile delete todolist -a -q
 	info:    Executing command mobile delete
@@ -1488,13 +1488,13 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 **mobile script upload [options] [servicename] [scriptname]**
 
-このコマンドは、`todoitem.insert.js` という新しいスクリプトを、`table` サブフォルダーからアップロードします。
+次のコマンドは、`table` サブフォルダーから `todoitem.insert.js` というスクリプトをアップロードします。
 
 	~$azure mobile script upload todolist table/todoitem.insert.js
 	info:    Executing command mobile script upload
 	info:    mobile script upload command OK
 
-ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドを実行する場所の table サブフォルダーに配置する必要があります。**-f `<file>`** または **--file `<file>`** パラメーターを使用して、別のファイル名や、登録するスクリプトが保存されているファイルへのパスを指定することもできます。
+ファイルの名前は、テーブル名と操作名で構成する必要があります。ファイルは、コマンドの実行場所にある table サブフォルダー内に配置する必要があります。**-f `<file>`** または **--file `<file>`** パラメーターを使用して、別のファイル名や、登録するスクリプトが保存されているファイルへのパスを指定することもできます。
 
 
 **mobile script delete [options] [servicename] [scriptname]**
@@ -1524,7 +1524,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 **mobile job create [options] [servicename] [jobname]**
 
-このコマンドは 1 時間ごとに実行するようにスケジュールされた `getUpdates` という名前の新しいジョブを作成します。
+次のコマンドは、1 時間ごとに実行するようにスケジュールされた `getUpdates` という名前のジョブを作成します。
 
 	~$azure mobile job create -i 1 -u hour todolist getUpdates
 	info:    Executing command mobile job create
@@ -1625,7 +1625,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 **mobile preview enable [options] [servicename] [featurename]**
 
-このコマンドは、モバイル サービスの指定されたプレビュー機能を有効にします。モバイル サービスのプレビュー機能は、一度有効にすると、無効にできないことに注意してください。
+このコマンドは、モバイル サービスの指定されたプレビュー機能を有効にします。モバイル サービスのプレビュー機能は、有効にした後で無効にすることはできません。
 
 ###モバイル サービス API の管理用コマンド
 
@@ -1723,7 +1723,7 @@ Azure Mobile Services は、アプリケーションのバックエンド機能�
 
 ## ツールのローカル設定の管理
 
-ローカル設定とは、サブスクリプション ID と既定のストレージ アカウント名です。
+ローカル設定とは、サブスクリプションの ID と既定のストレージ アカウント名のことを指します。
 
 **config list [options]**
 
@@ -1754,7 +1754,7 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 
 **sb namespace create &lt;name> &lt;location>**
 
-新しい Service Bus 名前空間を作成します。
+Service Bus 名前空間を作成します。
 
 	~$ azure sb namespace create mysbnamespacea-test "West US"
 	info:    Executing command sb namespace create
@@ -2052,7 +2052,7 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 
 **sql server create &lt;administratorLogin> &lt;administratorPassword> &lt;location>**
 
-新しいデータベース サーバーを作成します。
+データベース サーバーを作成します。
 
 	~$ azure sql server create test T3stte$t "West US"
 	info:    Executing command sql server create
@@ -2101,7 +2101,7 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 
 **sql db create [options] &lt;serverName> &lt;databaseName> &lt;administratorPassword>**
 
-新しいデータベース インスタンスを作成します。
+データベース インスタンスを作成します。
 
 	~$ azure sql db create fr8aelne00 newdb test
 	info:    Executing command sql db create
@@ -2193,7 +2193,7 @@ Service Bus 名前空間が有効で利用可能であることを確認しま�
 
 **sql firewallrule create [options] &lt;serverName> &lt;ruleName> &lt;startIPAddress> &lt;endIPAddress>**
 
-SQL Server の新しいファイアウォール ルールを作成します。
+SQL Server のファイアウォール ルールを作成します。
 
 	~$ azure sql firewallrule create fr8aelne00 allowed 131.107.0.0 131.107.255.255
 	info:    Executing command sql firewallrule create
@@ -2246,7 +2246,7 @@ SQL Server の新しいファイアウォール ルールを作成します。
 
 **network vnet create [options] &lt;location>**
 
-新しい Virtual Network を作成します。
+仮想ネットワークを作成します。
 
 	~$ azure network vnet create vnet1 --location "West US" -v
 	info:    Executing command network vnet create
@@ -2350,4 +2350,4 @@ Virtual Network の詳細を表示します。
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

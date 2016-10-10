@@ -4,7 +4,7 @@
    services="active-directory"
    documentationCenter=""
    authors="curtand"
-   manager="stevenpo"
+   manager="femila"
    editor=""/>
 
 <tags
@@ -58,4 +58,4 @@ Azure AD B2B コラボレーションに関する他の記事をご覧くださ�
 - [現在のプレビューの制限事項](active-directory-b2b-current-preview-limitations.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_0928_2016-->

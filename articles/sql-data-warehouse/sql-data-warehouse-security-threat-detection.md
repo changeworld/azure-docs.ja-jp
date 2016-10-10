@@ -13,23 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="05/31/2016"
+   ms.date="09/24/2016"
    ms.author="lodipalm;sonyama;barbkess"/>
 
 
 # 脅威の検出の概要
 
 > [AZURE.SELECTOR]
-- [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
+- [監査](sql-data-warehouse-auditing-overview.md)
 - [脅威の検出](sql-data-warehouse-security-threat-detection.md)
-- [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
-- [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-- [監査の概要](sql-data-warehouse-auditing-overview.md)
-- [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
 
-
-
-## 概要
+## Overview
 
 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。脅威の検出はプレビュー状態であり、SQL Data Warehouse でサポートされます。
 
@@ -48,7 +42,7 @@
 
 3. **[監査と脅威の検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
 
-	![ナビゲーション ウィンドウ][2]
+	![Navigation pane][2]
 
 4. 脅威の検出を **[ON]** にします。
 
@@ -56,34 +50,34 @@
 
 6. **[監査と脅威の検出]** 構成ブレードの **[保存]** をクリックして、新規または更新済みの監査と脅威の検出のポリシーを保存します。
 
-	![ナビゲーション ウィンドウ][3]
+	![Navigation pane][3]
 
 
 ## 疑わしいイベントが検出されたときの異常なデータ ウェアハウス アクティビティの調査
 
 1. 異常なデータベース アクティビティが検出されると、電子メールで通知を受け取ります。<br/> 電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。さらに、データベースへの潜在的な脅威の考えられる原因および調査や緩和のための推奨されるアクションについての情報も提供されます。<br/>
 
-	![ナビゲーション ウィンドウ][4]
+	![Navigation pane][4]
 
 2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure クラシック ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
 
-	![ナビゲーション ウィンドウ][5]
+	![Navigation pane][5]
 
 3. 監査レコードをクリックすると、SQL ステートメント、エラーの理由、クライアントの IP など、疑わしいデータベース アクティビティについての詳細が表示されます。
 
-	![ナビゲーション ウィンドウ][6]
+	![Navigation pane][6]
 
 4. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。<br/> **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です
 
-	![ナビゲーション ウィンドウ][7]
+	![Navigation pane][7]
 
 5. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。[プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。
 
-	![ナビゲーション ウィンドウ][8]
+	![Navigation pane][8]
 
 6. SQL 監査ログをロードするには、[設定] タブのパラメーターが正しく設定されていることを確認してから、データのリボンを選択し、[すべて更新] ボタンをクリックします。
 
-	![ナビゲーション ウィンドウ][9]
+	![Navigation pane][9]
 
 7. **[SQL 監査ログ]** シートに結果が表示されます。このシートでは、検出された異常なアクティビティを詳細に分析し、アプリケーションでのセキュリティ イベントの影響を軽減できます。
 
@@ -99,4 +93,4 @@
 [8]: ./media/sql-data-warehouse-security-threat-detection/8_td_excel_fast_combine.png
 [9]: ./media/sql-data-warehouse-security-threat-detection/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_0928_2016-->

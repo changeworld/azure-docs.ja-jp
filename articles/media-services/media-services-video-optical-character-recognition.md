@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="dotnet"
 	ms.topic="article"
-	ms.date="06/27/2016"   
+	ms.date="09/26/2016"   
 	ms.author="juliako"/>
  
 #Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する 
 
-##概要
+##Overview
 
 ビデオ ファイルからテキスト コンテンツを抽出し、編集かつ検索可能なデジタル テキストを生成する必要がある場合は、Azure Media Analytics OCR (光学式文字認識) を使用する必要があります。この Azure メディア プロセッサは、ビデオ ファイル内のテキスト コンテンツを検出し、テキスト ファイルを生成して使用できるようにします。OCR を使用すると、メディアのビデオ信号から有意なメタデータを自動的に抽出できます。
 
@@ -26,7 +26,7 @@
 
 **Azure Media OCR** メディア プロセッサは現在プレビュー段階です。
 
-ここでは、**Azure Media OCR** の詳細と、Media Services SDK for .NET での使用方法について説明します。追加情報と例については、[こちらのブログ](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)をご覧ください。
+このトピックでは、**Azure Media OCR** の詳細と、Media Services SDK for .NET での使用方法について説明します。追加情報と例については、[こちらのブログ](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)をご覧ください。
 
 ##OCR 入力ファイル
 
@@ -38,7 +38,7 @@
 
 ###属性の説明
 
-属性名|説明
+属性名|Description
 ---|---
 言語|(省略可能) 検索対象テキストの言語です。次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。
 TextOrientation|(省略可能) 検索対象テキストの向きです。"Left" は、すべての文字の上部が左を指していることを意味します。既定のテキスト (書籍など) は "Up"、つまり上を指しています。次のいずれかを指定します: AutoDetect (既定)、Up、Right、Down、Left。
@@ -91,7 +91,7 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 出力には、次の属性が含まれています。
 
-要素|説明
+要素|Description
 ---|---
 タイムスケール|ビデオの 1 秒あたりの "ティック数"
 Offset|タイムスタンプの時間オフセット。Video API のバージョン 1.0 では、これは常に 0 になります。
@@ -350,4 +350,4 @@ text|実際のテキスト
 
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

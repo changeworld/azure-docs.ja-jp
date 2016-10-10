@@ -13,7 +13,7 @@
      ms.topic="article"
      ms.tgt_pltfrm="na"
      ms.workload="na"
-     ms.date="07/04/2016"
+     ms.date="09/23/2016"
      ms.author="dobett"/>
 
 # チュートリアル: IoT Hub と Node.js でクラウドからデバイスへのメッセージを送信する方法
@@ -39,7 +39,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 > [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]のページを参照してください。
 
-このチュートリアルで行う作業には次のものが必要となります。
+このチュートリアルを完了するには、以下が必要です。
 
 + Node.js バージョン 0.12.x 以降。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
@@ -47,7 +47,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 ## シミュレーション済みデバイスでメッセージを受信する
 
-このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレートされたデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレーション済みデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
 
 1. テキスト エディターを使用して SimulatedDevice.js ファイルを開きます。
 
@@ -79,9 +79,9 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
 
 ## C2D メッセージを送信する
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。[IoT Hub の概要]に関するページのチュートリアルで追加したデバイスのデバイス ID と、[Azure ポータル]で確認できる IoT Hub の接続文字列が必要です。
+このセクションでは、クラウドからデバイスへのメッセージを、シミュレートされたデバイス アプリに送信する Node.js コンソール アプリを作成します。[IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。また、IoT Hub の接続文字列も必要です ([Azure Portal] で確認できます)。
 
-1. 新しい空のフォルダーを **sendcloudtodevicemessage** という名前で作成します。コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に新しい package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
+1. 空のフォルダーを **sendcloudtodevicemessage** という名前で作成します。コマンド プロンプトで次のコマンドを使用して、**sendcloudtodevicemessage** フォルダー内に package.json ファイルを作成します。次の既定値をすべてそのまま使用します。
 
     ```
     npm init
@@ -104,7 +104,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     var Message = require('azure-iot-common').Message;
     ```
 
-5. **SendCloudToDeviceMessage.js** ファイルに次のコードを追加します。接続文字列のプレースホルダーの値は、[IoT Hub の概要]に関するページのチュートリアルで作成した IoT Hub の接続文字列に置き換えてください。また、ターゲット デバイスのプレースホルダーには、[IoT Hub の概要]に関するページのチュートリアルで作成したデバイスのデバイス ID を指定します。
+5. 次のコードを **SendCloudToDeviceMessage.js** ファイルに追加します。接続文字列のプレースホルダーの値は、[IoT Hub の概要]のチュートリアルで作成した IoT Hub の接続文字列に置き換えてください。ターゲット デバイスのプレースホルダーを、次のように [IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID に置き換えます。
 
     ```
     var connectionString = '{iot hub connection string}';
@@ -198,7 +198,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure ポータル]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_0928_2016-->

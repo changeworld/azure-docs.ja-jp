@@ -22,6 +22,12 @@
 
 このガイドでは、最新の [Azure Mobile Apps 向け JavaScript SDK] を使用して一般的なシナリオを実行する方法について説明します。Azure Mobile Apps を初めて使用する場合は、まず、「[Apache Cordova アプリの作成]」を参照して、バックエンドおよびテーブルの作成を行ってください。このガイドでは、HTML/JavaScript Web アプリケーションでのモバイル バックエンドの使用に重点を置いています。
 
+## サポートされているプラットフォーム
+
+ブラウザーのサポートは、現在のバージョンおよび最新バージョンの主要ブラウザー (Google Chrome、Microsoft Edge、Microsoft Internet Explorer、Mozilla Firefox) に制限されています。この SDK は、比較的新しいブラウザーで機能すると思われます。
+
+パッケージは Universal JavaScript モジュールとして配布されるので、グローバル、AMD、CommonJS の各形式をサポートします。
+
 ##<a name="Setup"></a>セットアップと前提条件
 
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。
@@ -73,7 +79,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 4. **[移動]** をクリックして、新しいタブまたはウィンドウでモバイル アプリ バックエンドのリソース エクスプローラーを開きます。
 5. アプリの **config** ノード、**authsettings** ノードの順に展開します。
 6. **[編集]** ボタンをクリックして、リソースの編集を有効にします。
-7. **allowedExternalRedirectUrls** 要素を探します。この要素は null になっています。これを次のように変更します。
+7. **allowedExternalRedirectUrls** 要素を探します。この要素は null になっています。配列に実際の URL を追加します。
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -97,10 +103,10 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 <!-- URLs. -->
 [Apache Cordova アプリの作成]: app-service-mobile-cordova-get-started.md
 [モバイル サービスでの認証の使用]: app-service-mobile-cordova-get-started-users.md
-[アプリへの認証の追加]: app-service-mobile-cordova-get-started-users.md
+[Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Azure ポータル]: https://portal.azure.com/
 [Azure Mobile Apps 向け JavaScript SDK]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/ja-JP/library/azure/jj613353.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->

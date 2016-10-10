@@ -20,10 +20,13 @@
 
 v2.0 エンドポイントを使用すると、Microsoft の個人アカウントと職場/学校アカウントの両方に対応した Web アプリと Web API に認証をすばやく追加できます。ここでは、OpenID Connect と Microsoft の OWIN ミドルウェアを使用してユーザーのサインイン処理を行う MVC Web アプリを構築します。この Web アプリは、OAuth 2.0 によってセキュリティ保護された Web API 用の OAuth 2.0 アクセス トークンを取得し、指定したユーザーの "To-Do List" 項目の作成、読み取り、削除を可能にします。
 
-> [AZURE.NOTE]
-	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> [AZURE.WARNING]
+	このチュートリアルでは、現在、最新でない、サポートされていないクライアント ライブラリ `Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory` (試験段階の ADAL) を使用しています。現在、このチュートリアルの `Microsoft.Identity.Client` プレビュー ライブラリ (MSAL) への更新に取り組んでいます。その間は、このチュートリアルで使用されている試験段階の ADAL を MSAL に置き換えて読むことをお勧めします。クライアント ライブラリを選択する際のオプションの詳細については、[制限事項に関する記事](active-directory-v2-limitations.md)を参照してください。
 
 このチュートリアルでは主に、ADAL を使用して Web アプリでアクセス トークンを取得および使用する方法を説明します。完全な詳細については、[こちら](active-directory-v2-flows.md#web-apps)を参照してください。前提条件としてまず、[基本的なサインインを Web アプリに追加](active-directory-v2-devquickstarts-dotnet-web.md)する方法、または、[Web API を適切に保護](active-directory-v2-devquickstarts-dotnet-api.md)する方法を知っておくと便利です。
+
+> [AZURE.NOTE]
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 ## サンプル コードのダウンロード
 
@@ -201,4 +204,4 @@ catch (AdalException ee)
 
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_0928_2016-->

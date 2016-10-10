@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み" 
+	pageTitle="DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Azure" 
 	description="このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。" 
 	authors="Juliako" 
 	manager="erikre" 
@@ -13,13 +13,13 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016" 
+	ms.date="09/26/2016" 
 	ms.author="juliako"/>
 
 
 #DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
 
-##概要
+##Overview
 
 MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要があるユーザーに多くのメリットを提供するビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。MPEG DASH では、ネットワークが混雑すると自動的にビデオ ストリームが低解像度に変更されます。これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
@@ -114,4 +114,4 @@ MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオ�
 
 [GitHub dash.js リポジトリ](https://github.com/Dash-Industry-Forum/dash.js)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

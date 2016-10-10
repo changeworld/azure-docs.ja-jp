@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/12/2016"
+	ms.date="09/27/2016"
 	ms.author="bsiva"/>
 
 # PowerShell を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする - クラシック
@@ -25,7 +25,7 @@
 - [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
 
 
-## 概要
+## Overview
 
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。デプロイ シナリオのすべての一覧については、「[Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
@@ -47,7 +47,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ### Azure の前提条件
 
 - [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。[Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
+- レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。[Azure ストレージについてはこちらを参照してください。](../storage/storage-introduction.md)
 - 保護する仮想マシンが [Azure 仮想マシンの前提条件](site-recovery-best-practices.md#virtual-machines)に準拠していることを確認する必要があります。
 
 ### VMM の前提条件
@@ -73,7 +73,7 @@ Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想�
 ネットワーク マッピングをデプロイする場合は、以下のことが必要になります。
 
 - ソース VMM サーバー上の保護する仮想マシンが VM ネットワークに接続している。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
-- レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。フェールオーバー時にこのネットワークを選択します。ネットワークは Azure Site Recovery サブスクリプションと同じリージョンである必要があります。
+- レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。フェールオーバー時にこのネットワークを選択します。ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
 - ネットワーク マッピングの詳細を[参照する](site-recovery-network-mapping.md)。
 
 ###PowerShell の前提条件
@@ -449,4 +449,4 @@ marsagentinstaller.exe /q /nu
 
 Azure Site Recovery PowerShell コマンドレットの詳細を[確認します](https://msdn.microsoft.com/library/dn850420.aspx)</a>。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

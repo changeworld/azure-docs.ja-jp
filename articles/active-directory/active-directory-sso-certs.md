@@ -4,7 +4,7 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
@@ -22,7 +22,7 @@
 
 次の例に示すように、この記事では、**Azure AD のシングル サインオン**を使用するように構成されたアプリのみに関連する内容を取り上げます。
 
-![Azure AD のシングル サインオン](./media/active-directory-sso-certs/fed-sso.PNG)
+![Azure AD Single Sign-On](./media/active-directory-sso-certs/fed-sso.PNG)
 
 ##フェデレーション証明書の有効期限をカスタマイズする方法
 
@@ -36,7 +36,7 @@
 
 3. アプリケーションの **[サインオン URL]** を入力し、**[フェデレーション シングル サインオンに使用する証明書を構成します]** チェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![Azure AD のシングル サインオン](./media/active-directory-sso-certs/new-app-config-sso.PNG)
+	![Azure AD Single Sign-On](./media/active-directory-sso-certs/new-app-config-sso.PNG)
 
 4. 次のページで **[新しい証明書の生成]** を選択し、証明書の有効期限を選択します。その後、**[次へ]** をクリックします。
 
@@ -60,7 +60,7 @@
 
 3. 2 番目のページで、**[フェデレーション シングル サインオンに使用する証明書を構成します]** チェック ボックスをオンにします。その後、**[次へ]** をクリックします。
 
-	![Azure AD のシングル サインオン](./media/active-directory-sso-certs/renew-config-sso.PNG)
+	![Azure AD Single Sign-On](./media/active-directory-sso-certs/renew-config-sso.PNG)
 
 4. 次のページで **[新しい証明書の生成]** を選択し、新しい証明書の有効期限を選択します。その後、**[次へ]** をクリックします。
 
@@ -82,4 +82,4 @@
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 - [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 
-<!---HONumber=AcomDC_0427_2016-->
+<!---HONumber=AcomDC_0928_2016-->

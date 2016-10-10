@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/22/2016"
+	ms.date="09/26/2016"
 	ms.author="juliako"/>
 
 
@@ -95,7 +95,7 @@ AMS の記憶域暗号化は、ファイル全体に **AES-CTR** モードの暗
 	
 	ストレージ暗号化では、次のプロパティを要求本文に含める必要があります。
 	 
-	要求本文のプロパティ | 説明
+	要求本文のプロパティ | Description
 	---|---
 	ID | "nb:kid:UUID:<NEW GUID>" 形式を使用して生成する ContentKey ID です。
 	ContentKeyType | 整数によるこのコンテンツ キーの種類です。ストレージの暗号化には、値 1 を渡します。
@@ -375,4 +375,4 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
 	   "ContentChecksum":null
 	}
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

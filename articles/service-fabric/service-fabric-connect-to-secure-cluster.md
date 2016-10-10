@@ -16,10 +16,11 @@
    ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
-# セキュリティ保護されたクラスターに接続する
-クライアントが Service Fabric クラスター ノードに接続する際には、証明書セキュリティを使用してクライアント認証が行われ、セキュリティ保護された通信が確立します。これにより、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。証明書セキュリティは、クラスターの作成時に、クラスターであらかじめ有効にしておく必要があります。クラスターをセキュリティで保護するには、少なくとも 2 つの証明書 (クラスターおよびサーバー用の証明書と、クライアント アクセス用の証明書) を使用する必要があります。追加のセカンダリ証明書とクライアント アクセス用証明書も使用することをお勧めします。クラスターのセキュリティ シナリオの詳細については、 [クラスター セキュリティ](service-fabric-cluster-security.md)に関する記事を参照してください。
+# セキュリティで保護されたクラスターに AAD なしで接続する
+クライアントが Service Fabric クラスター ノードに接続する際には、証明書セキュリティを使用してクライアント認証が行われ、セキュリティ保護された通信が確立します。この認証により、許可されたユーザーのみが、クラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。証明書セキュリティは、クラスターの作成時に、クラスターであらかじめ有効にしておく必要があります。クラスターをセキュリティで保護するには、少なくとも 2 つの証明書 (クラスターおよびサーバー用の証明書と、クライアント アクセス用の証明書) を使用する必要があります。追加のセカンダリ証明書とクライアント アクセス用証明書も使用することをお勧めします。クラスターのセキュリティ シナリオの詳細については、 [クラスター セキュリティ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
-証明書セキュリティを使用して、クライアントとクラスター ノード間の通信をセキュリティで保護するには、クライアント証明書を取得して、ローカル コンピューターの個人用ストア、または現在のユーザーの個人用ストアにインストールします。クライアントがクラスターを認証できるように、サーバー証明書の拇印も必要になります。
+証明書セキュリティを使用して、クライアントとクラスター ノード間の通信をセキュリティで保護するには、クライアント証明書を取得してインストールします。この証明書は、現在のユーザーまたはローカル コンピューターの個人用 (マイ) ストアにインストールすることができます。クライアントがクラスターを認証できるように、サーバー証明書の拇印も必要になります。
+
 
 次の PowerShell コマンドレットを実行して、クラスターへのアクセスに使用するコンピューターでクライアント証明書を設定します。
 
@@ -36,9 +37,41 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
+<a id="connectsecureclustercli"></a>
+## セキュリティで保護されたクラスターに Azure CLI を使用して AAD なしで接続する
+
+セキュリティで保護されたクラスターに接続する方法を以下の Azure CLI コマンドで説明します。証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。
+ 
+ご使用の証明書に証明機関 (CA) が含まれている場合は、次の例のようにパラメーター `--ca-cert-path` を追加する必要があります。
+
+```
+ azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
+```
+複数の CA がある場合は、コンマで区切ります。
+
+ 
+証明書の共通名が接続エンドポイントと一致しない場合は、`--strict-ssl-false` パラメーターを指定して検証を省略することができます。
+
+```
+azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 --strict-ssl-false 
+```
+ 
+CA 検証を省略したい場合、次のコマンドのように ``--reject-unauthorized-false`` パラメーターを追加します。
+
+```
+azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
+```
+ 
+自己署名証明書で保護されたクラスターに接続する場合は、次のコマンドを実行して、CA 検証と共通名検証の両方を無効にしてください。
+
+```
+azure servicefabric cluster connect --connection-endpoint https://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false --reject-unauthorized-false
+```
+
+接続後、他の CLI コマンドを実行してクラスターの対話操作を実行することができます。
 
 <a id="connectsecurecluster"></a>
-## PowerShell を使用して、セキュリティで保護されたクラスターに接続する
+## セキュリティで保護されたクラスターに PowerShell を使用して AAD なしで接続する
 
 次の PowerShell コマンドを実行して、セキュリティで保護されたクラスターに接続します。証明書の詳細は、クラスター ノード上の証明書と一致する必要があります。
 
@@ -50,7 +83,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-たとえば、上記の PowerShell コマンドの結果は次のようになります。*ServerCertThumbprint* はクライアント ノードにインストールされているサーバー証明書の拇印であり、*FindValue* は管理用クライアント証明書の拇印です。
+*ServerCertThumbprint* はクライアント ノードにインストールされているサーバー証明書の拇印であり、*FindValue* は管理用クライアント証明書の拇印です。以下に示したのは、パラメーターを指定した状態のコマンドの例です。
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
@@ -60,8 +93,12 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
           -StoreLocation CurrentUser -StoreName My
 ```
 
+
+
+
 ## FabricClient API を使用して、セキュリティで保護されたクラスターに接続する
-次の [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) です。クラスター内のノードには、[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) で設定された [RemoteCommonNames プロパティ](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)に表示される共通名または SAN の DNS 名を持つ有効な証明書が必要です。これによって、クライアントとクラスター内のノード間の相互認証が可能になります。
+
+FabricClient API の詳細については、[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) を参照してください。クラスター内のノードには、[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) で設定された [RemoteCommonNames プロパティ](https://msdn.microsoft.com/library/azure/system.fabric.x509credentials.remotecommonnames.aspx)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。このプロセスに従うことで、クライアントとクラスター ノードの間の相互認証が可能になります。
 
 ```csharp
 string clientCertThumb = "71DE04467C9ED0544D021098BCD44C71E183414E";
@@ -115,4 +152,4 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 - [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 - [アプリケーションのセキュリティと RunAs](service-fabric-application-runas-security.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

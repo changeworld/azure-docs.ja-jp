@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="07/06/2016"
+	ms.date="09/22/2016"
 	ms.author="v-donglo"/>
 
 # 複数のリージョンに Web サービスをデプロイする方法
@@ -49,4 +49,4 @@
 10. **[Price Plan (価格プラン)]** ドロップダウンで、手順 8 で選択したリージョンのプランを選択します。
 11. **[コピー]** をクリックします。
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_0928_2016-->

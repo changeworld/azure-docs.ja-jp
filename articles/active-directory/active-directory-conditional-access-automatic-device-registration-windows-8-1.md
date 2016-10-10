@@ -13,12 +13,17 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
-	ms.author="femila"/>
+	ms.date="09/21/2016"
+	ms.author="Markvi"/>
 
 # Windows 8.1 ドメイン参加済みデバイスの自動デバイス登録の構成
 
 Active Directory グループ ポリシーを使用すると、自動的に Azure AD に登録する Windows 8.1 ドメイン参加済みデバイスを構成できます。グループ ポリシーを構成するには、グループ ポリシーの管理機能がインストールされたドメイン参加済みの Windows Server 2012 R2 または Windows 8.1 コンピューターが 1 つ以上必要です。このグループ ポリシーがドメインに対して有効になると、コンピューターにログインするすべてのドメイン ユーザーが Azure AD のデバイス オブジェクトを使用して自動的かつ暗黙的に登録されます。Azure AD には、物理デバイスの登録ユーザーごとに 1 つのデバイス オブジェクトが作成されます。「Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録」の前提条件を確認し、それらが満たされているようにしてください。
+
+>[AZURE.NOTE]
+ デバイスの自動登録をセットアップする最新手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の設定方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
+
+
 
 ## Windows 8.1 ドメイン参加済みデバイスのグループ ポリシーの構成
 
@@ -61,4 +66,4 @@ Windows 8.1 コンピューターの Windows イベント ログには、デバ�
 - [Azure Active Directory への Windows 10 ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)
 - [Windows 7 ドメイン参加済みデバイスの自動デバイス登録の構成](active-directory-conditional-access-automatic-device-registration-windows7.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

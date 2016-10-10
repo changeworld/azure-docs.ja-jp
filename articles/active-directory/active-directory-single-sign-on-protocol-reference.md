@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="06/23/2016"
+	ms.date="09/28/2016"
 	ms.author="priyamo"/>
 
 # シングル サインオンの SAML プロトコル
@@ -39,7 +39,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
 
 
-| パラメーター | | 説明 |
+| パラメーター | | Description |
 | ----------------------- | ------------------------------- | --------------- |
 | ID | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。たとえば、`id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | バージョン | 必須 | これは、**2.0** にする必要があります。|
@@ -52,7 +52,7 @@ Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerService
 
 Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
-### Issuer
+### 発行者
 
 `AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
 
@@ -98,7 +98,7 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 
 Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
-## Response
+## 応答
 
 要求されたサインオンが正常に完了すると、Azure AD はクラウド サービスに応答を送信します。成功したサインオン試行に対する応答の例を次に示します。
 
@@ -145,7 +145,7 @@ Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 </samlp:Response>
 ```
 
-### Response
+### 応答
 
 `Response` 要素には、承認要求の結果が含まれます。Azure AD は、`Response` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。また、次の属性も設定します。
 
@@ -160,22 +160,6 @@ Azure AD は、`Issuer` 要素を `https://login.microsoftonline.com/<TenantIDGU
 
 ```
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
-```
-
-### 署名
-
-サインオンが成功すると、Azure AD は `Response` 要素に署名します。`Signature` 要素にはデジタル署名が含まれ、アプリケーションはそれを使用してソースを認証し、応答の整合性を検証できます。
-
-Azure AD は、メタデータ ドキュメントの `IDPSSODescriptor` 要素で指定されている署名キーを使用します。詳細については、「[フェデレーション メタデータ ドキュメント](active-directory-federation-metadata.md)」を参照してください。
-
-Azure AD は `Assertion` 要素にも署名しますが、2 つの Signature 要素の間に関係はありません。
-
-応答での `Signature` 要素の例を次に示します。
-
-```
-<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
-    ...
-  </ds:Signature>
 ```
 
 ### 状態
@@ -255,7 +239,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 - `NotBefore` 属性の値は、`Assertion` 要素の `IssueInstant` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
 - `NotOnOrAfter` 属性の値は、`NotBefore` 属性の値より 70 分後です。
 
-#### 対象となる読者
+#### オーディエンス
 
 この要素には、対象を識別する URI が含まれます。Azure AD は、この要素の値に、サインオンを開始した `AuthnRequest` の `Issuer` 要素の値を設定します。`Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
 
@@ -301,4 +285,4 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </AuthnStatement>
 ```
 
-<!---HONumber=AcomDC_0629_2016-->
+<!---HONumber=AcomDC_0928_2016-->

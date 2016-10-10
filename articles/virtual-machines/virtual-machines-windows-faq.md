@@ -131,7 +131,6 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 
 次のパスワードを指定することはできません。
 
-次のパスワードを指定することはできません。
 <table>
 	<tr>
 		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
@@ -141,4 +140,4 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 	</tr>
 </table>
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_0928_2016-->

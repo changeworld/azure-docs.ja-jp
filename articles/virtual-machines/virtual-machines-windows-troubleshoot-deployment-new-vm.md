@@ -3,7 +3,7 @@
    description="Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング"
    services="virtual-machines-windows, azure-resource-manager"
    documentationCenter=""
-   authors="jiangchen79"
+   authors="JiangChen79"
    manager="felixwu"
    editor=""
    tags="top-support-issue, azure-resource-manager"/>
@@ -45,7 +45,7 @@
 
 **解決策**
 
-これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な[元の VHD をアップロードするために Add-AzureRMVhd](https://msdn.microsoft.com/library/mt603554.aspx) を使用します。一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
+これらのエラーを解決するには、OS と同じ設定 (一般化/特殊化) を使用して、オンプレミスで使用可能な[元の VHD をアップロードするために Add-AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) を使用します。一般化された OS としてアップロードするには、まず sysprep を必ず実行してください。
 
 **キャプチャ エラー:**
 
@@ -82,4 +82,4 @@
 ## 次のステップ
 Azure での停止していた Windows VM の再起動または既存の Windows VM のサイズ変更に問題が発生する場合は、[Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング](virtual-machines-windows-restart-resize-error-troubleshooting.md)を参照してください。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_0928_2016-->
