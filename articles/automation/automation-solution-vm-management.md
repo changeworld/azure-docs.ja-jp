@@ -89,8 +89,8 @@ O365Credential | 電子メールを送信する有効な Office 365 ユーザー
 ピーク時間外 VM 起動/停止 [プレビュー] ソリューションをご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
 
 1. Azure Portal のホーム画面から **[Marketplace]** タイルを選択します。このタイルがホーム画面にピン留めされていない場合は、左側のナビゲーション ウィンドウから **[新規]** を選択します。
-2. [Marketplace] ブレードの検索ボックスに「**Start VM**」と入力し、検索結果から **[Start/Stop VMs during off-hours [Preview] (ピーク時間外 VM 起動/停止 [プレビュー])]** を選択します。
-3. 選択したソリューションの **[Start/Stop VMs during off-hours [Preview] (ピーク時間外 VM 起動/停止 [プレビュー])]** ブレードで概要を確認し、**[作成]** をクリックします。
+2. [Marketplace] ブレードの検索ボックスに「**Start VM**」と入力し、検索結果から **[Start/Stop VMs during off-hours [Preview] \(ピーク時間外 VM 起動/停止 [プレビュー])]** を選択します。
+3. 選択したソリューションの **[Start/Stop VMs during off-hours [Preview] \(ピーク時間外 VM 起動/停止 [プレビュー])]** ブレードで概要を確認し、**[作成]** をクリックします。
 4. **[ソリューションの追加]** ブレードが表示されます。Automation サブスクリプションにインポートするソリューションの設定を事前に行うよう求められます。<br><br> ![VM Management Add Solution blade](media/automation-solution-vm-management/vm-management-solution-add-solution-blade.png)<br><br>
 5.  **[ソリューションの追加]** ブレードで **[ワークスペース]** を選択し、ここで、Automation アカウントと同じ Azure サブスクリプションに関連付けられている OMS ワークスペースを選択するか、新しい OMS ワークスペースを作成します。OMS ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択し、**[OMS Workspace (OMS ワークスペース)]** ブレードで次の手順を実行します。
    - 新しい **OMS ワークスペース**の名前を指定します。
