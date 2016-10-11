@@ -79,4 +79,4 @@ Azure Data Factory を利用できるリージョンが**米国西部**、**米�
 [2 つのクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | このチュートリアルでは、BLOB ストレージから SQL データベースに**データを移動**するパイプラインを備えたデータ ファクトリを作成します。
 [Data Management Gateway を使用してオンプレミス データ ストアとクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-move-data-between-onprem-and-cloud.md) | このチュートリアルでは、**オンプレミス**の SQL Server データベースから Azure BLOB に**データを移動**するパイプラインを備えたデータ ファクトリを構築します。チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->
