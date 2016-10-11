@@ -29,13 +29,17 @@ HDInsight で HBase クラスターを作成する方法、HBase テーブルを
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-###前提条件
+##前提条件
 
 この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- [Secure Shell (SSU)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+- [Secure Shell (SSH)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 - [curl](http://curl.haxx.se/download.html)。
+
+### アクセス制御の要件
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
 ## HBase クラスターの作成
 
@@ -325,4 +329,4 @@ SSH を使用して、Web 要求などのローカルの要求を HDInsight ク�
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

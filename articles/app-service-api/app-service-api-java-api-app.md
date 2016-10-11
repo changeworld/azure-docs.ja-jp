@@ -143,7 +143,7 @@ swagger.io オンライン エディターを使用して、API の構造を表�
 
     ![View Swagger Generated Docs][view-swagger-generated-docs]
 
-1. **[Generate Server]、\[JAX-RS]** メニュー オプションの順に選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。
+1. **[Generate Server]、[JAX-RS]** メニュー オプションの順に選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。
 
     ![Generate Code Menu Item][generate-code-menu-item]
 
@@ -338,4 +338,4 @@ Azure での Java の使用に関する詳細については、「[Java デベ�
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

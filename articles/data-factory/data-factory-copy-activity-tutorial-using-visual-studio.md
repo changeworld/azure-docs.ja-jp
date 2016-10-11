@@ -19,12 +19,13 @@
 # チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [AZURE.SELECTOR]
 - [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 - [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+
 
 このチュートリアルでは、Visual Studio を使用して Azure データ ファクトリを作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
@@ -346,4 +347,4 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

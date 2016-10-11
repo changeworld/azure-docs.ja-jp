@@ -13,12 +13,12 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/30/2016"
-	ms.author="krisragh"/>
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
 
-##概要
+##Overview
 既存の Mobile Service は安全で、引き続きサポートされます。ただし、*Azure App Service* プラットフォームでモバイル アプリ向けに提供される機能の一部は、現在の Mobile Services では利用できません。
 
 - Web クライアントとモバイル クライアントの両方を含むアプリを、よりシンプルで簡単なコスト効率の良いものに
@@ -61,4 +61,4 @@ Mobile services では、バックエンド コードのすべてのインスタ
 
 こちらの[チュートリアル](app-service-mobile-migrating-from-mobile-services.md)に従って、既存のモバイル サービスに *App Service* を活用することができます。
 
-<!---HONumber=AcomDC_0706_2016-->
+<!---HONumber=AcomDC_1005_2016-->

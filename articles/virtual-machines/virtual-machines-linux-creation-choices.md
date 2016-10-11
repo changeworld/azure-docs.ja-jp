@@ -42,7 +42,7 @@ Azure CLI はさまざまなプラットフォームで利用可能です。そ�
 		--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 	```
 
-- [Azure CLI を使用して、完全な Linux 環境を作成する](virtual-machines-linux-create-cli-complete.md)
+- [Azure CLI を使用して、完全な Linux 環境を作成します。](virtual-machines-linux-create-cli-complete.md)
 	- 可用性セット内のロード バランサーと複数の VM の作成が含まれています。
 
 - [Linux VM へのディスクの追加](virtual-machines-linux-add-disk.md)
@@ -130,4 +130,4 @@ azure vm image list --location WestUS --publisher Canonical --offer UbuntuServer
 
 - [パスワードや SSH キーをリセットしたり、ユーザーを管理したりする](virtual-machines-linux-using-vmaccess-extension.md)ための手順を参照します。
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

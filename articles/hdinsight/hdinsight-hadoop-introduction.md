@@ -253,7 +253,7 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 
 * [Power Query を使用した Excel から Hadoop への接続](hdinsight-connect-excel-power-query.md) - Microsoft Power Query for Excel を使用して、HDInsight クラスターに関連付けられたデータを格納する Azure Storage アカウントに Excel を接続する方法を説明します。Windows ワークステーションが必要です。Windows ベースまたは Linux ベースのクラスターを想定しています。
 
-* [Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-ODBC-driver.md) - Microsoft Hive ODBC ドライバーを使用して、HDInsight からデータをインポートする方法を説明します。Windows ワークステーションが必要です。Windows ベースまたは Linux ベースのクラスターを想定しています。
+* [Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-odbc-driver.md) - Microsoft Hive ODBC ドライバーを使用して、HDInsight からデータをインポートする方法を説明します。Windows ワークステーションが必要です。Windows ベースまたは Linux ベースのクラスターを想定しています。
 
 * [Microsoft Cloud プラットフォーム](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx) - Power BI for Office 365 の詳細、SQL Server 評価版のダウンロード、SharePoint Server 2013 と SQL Server BI のセットアップについて説明します。
 
@@ -268,4 +268,4 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 [component-versioning]: hdinsight-component-versioning.md
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

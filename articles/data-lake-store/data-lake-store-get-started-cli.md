@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 # Azure コマンド ラインを使用して Azure Data Lake Store の使用を開始する
@@ -37,36 +37,40 @@ Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Nod
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
 - **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照してください。CLI をインストールした後で、コンピューターを再起動してください。
+
+## 認証
+
+この記事では、Data Lake Store に対してエンド ユーザーとしてログインする比較的単純な認証方法を使用します。その後、Data Lake Store アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。ただし、Data Lake Store には他の認証方法も存在します (**エンド ユーザー認証**と**サービス間認証**)。認証方法の手順と詳しい情報については、「[Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 ##Azure サブスクリプションへのログイン
 
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
+1. 「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、`azure login` メソッドを使用してサブスクリプションに接続します。
+
+2. ご使用のアカウントに関連付けられているサブスクリプションを `azure account list` コマンドで一覧表示します。
+
+		info:    Executing command account list
+		data:    Name              Id                                    Current
+		data:    ----------------  ------------------------------------  -------
+		data:    Azure-sub-1       ####################################  true
+		data:    Azure-sub-2       ####################################  false
+
+	上の出力結果を見ると、**Azure-sub-1** が現在有効になっており、それ以外に **Azure-sub-2** というサブスクリプションが存在しています。
+
+3. 使用するサブスクリプションを選択します。Azure-sub-2 サブスクリプションを使用する場合は、`azure account set` コマンドを使用します。
+
+		azure account set Azure-sub-2
 
 
 ## Azure Data Lake Store アカウントを作成する
 
 コマンド プロンプト、シェル、またはターミナル セッションを開き、次のコマンドを実行します。
 
-1. Azure サブスクリプションにログインします。
-
-		azure login
-
-	Web ページを開いて認証コードを入力するよう求められます。ページの指示に従って、Azure サブスクリプションにログインします。
-
 2. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
 
 		azure config mode arm
 
-
-3. アカウントの Azure サブスクリプションを一覧表示します。
-
-		azure account list
-
-
-4. 複数の Azure サブスクリプションがある場合は、次のコマンドを使用して、Azure CLI コマンドが使用するサブスクリプションを設定します。
-
-		azure account set <subscriptionname>
 
 5. 新しいリソース グループを作成します。次のコマンドで、使用するパラメーター値を指定します。
 
@@ -188,4 +192,4 @@ Data Lake Store アカウントを削除するには、次のコマンドを使�
 
 [azure-command-line-tools]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

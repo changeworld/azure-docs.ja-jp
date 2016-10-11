@@ -19,12 +19,13 @@
 # チュートリアル: コピー アクティビティがあるパイプラインを Azure PowerShell で作成する
 > [AZURE.SELECTOR]
 - [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 - [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+
 
 このチュートリアルでは、Azure PowerShell コマンドレットを使用して Azure データ ファクトリを作成し、監視します。このチュートリアルで作成するデータ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure BLOB から Azure SQL データベースにデータをコピーします。
 
@@ -241,7 +242,7 @@
 	- テキスト ファイル内に 2 つのフィールド (**FirstName** と **LastName**) があり、コンマ (**columnDelimiter**) で区切られています。
 	- **availability** が **hourly** に設定されています (**frequency** は **hour**、**interval** は **1** に設定されています)。そのため、Data Factory は BLOB コンテナー (**adftutorial**) のルート フォルダーで、入力データを 1 時間ごとに検索します。
 
-	**入力** **テーブル** に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
+	**入力** **テーブル**に **fileName** を指定しない場合、入力フォルダー (**folderPath**) のすべてのファイルまたは BLOB が入力と見なされます。JSON で fileName を指定した場合は、指定されたファイル/BLOB のみが入力と見なされます。
  
 	**output table** に **fileName** を指定しない場合、**folderPath** に生成されるファイルには Data.<Guid>.txt という形式で名前が付けられます (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。
 
@@ -463,4 +464,4 @@ Data Factory コマンドレットに関する包括的なドキュメントに�
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

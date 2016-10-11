@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="06/07/2016"
+	ms.date="09/27/2016"
 	ms.author="davidmu"/>
 
 # Resource Manager と PowerShell を使用して Windows VM を作成する
@@ -25,7 +25,7 @@
 
 ## 手順 1: Azure PowerShell をインストールする
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択し、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
         
 ## 手順 2: リソース グループを作成する
 
@@ -122,7 +122,7 @@
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    パスワードは、8 ～ 123 文字で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 要件のうち、3 つを満たしている必要があります。詳しくは、[ユーザー名とパスワードの要件](virtual-machines-windows-faq.md#what-are-the-username-requirements-when-creating-a-vm)をご確認ください。
+    パスワードは、12 ～ 123 文字で指定する必要があります。また、少なくとも 1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字を含める必要があります。
         
 2. **$vmName** の値を、仮想マシンの名前に置き換えます。変数と仮想マシンの構成を作成します。
 
@@ -146,7 +146,7 @@
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. **$blobPath** の値を、仮想ハード ディスクで使用するストレージ内のパスとファイル名に置き換えます。通常、仮想ハード ディスク ファイルはコンテナーに格納されます (例: **vhds/WindowsVMosDisk.vhd**)。変数を作成します。
+6. **$blobPath** の値を、仮想ハード ディスクのストレージ内のパスとファイル名に置き換えます。通常、仮想ハード ディスク ファイルはコンテナーに格納されます (例: **vhds/WindowsVMosDisk.vhd**)。変数を作成します。
 
         $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
@@ -172,4 +172,4 @@
 - [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
 - テンプレートを使用して仮想マシンを作成する方法については、「[Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

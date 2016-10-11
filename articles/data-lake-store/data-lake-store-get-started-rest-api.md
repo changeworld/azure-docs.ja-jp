@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data" 
-   ms.date="09/13/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 # REST API で Azure Data Lake Store の使用を開始する
@@ -34,17 +34,8 @@
 ## 前提条件
 
 - **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure Active Directory アプリケーションを作成する**。Azure Active Directory を使用した認証には、**対話型**と**非対話型**の 2 とおりの方法があります。どのように認証を行うかで前提条件は異なります。
-	* **対話型の認証** (この記事で使用する認証方法) を使用する場合: Azure Active Directory で **[ネイティブ クライアント アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
-		- アプリケーションの**クライアント ID** と**リダイレクト URI** を取得します。
-		- 委任されたアクセス許可を設定する
 
-	* **非対話型の認証**を使用する場合: Azure Active Directory で **[Web アプリケーション]** を作成する必要があります。アプリケーションの作成が完了したら、アプリケーションに関連する次の値を取得します。
-		- アプリケーションの**クライアント ID**、**クライアント シークレット**、**リダイレクト URI** を取得します。
-		- 委任されたアクセス許可を設定する
-		- Azure Active Directory アプリケーションをロールに割り当てます。ロールは、Azure Active Directory アプリケーションにアクセス許可を付与するスコープのレベルにあります。たとえば、サブスクリプション レベルまたはリソース グループのレベルで、アプリケーションを割り当てることができます。手順については、「[アプリケーションをロールに割り当てる](../resource-group-create-service-principal-portal.md#assign-application-to-role)」を参照してください。
-
-	これらの値を取得したりアクセス許可を設定したりロールを割り当てたりする手順については、「[ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)」を参照してください。
+- **Azure Active Directory アプリケーションを作成する**。Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**という異なる方法があります。認証方法の手順と詳しい情報については、「[Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
 - [cURL](http://curl.haxx.se/)。この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
 
@@ -52,7 +43,7 @@
 
 Azure Active Directory を使用した認証方法には 2 つあります。
 
-### 対話型 (ユーザー認証)
+### エンド ユーザー認証 (対話型)
 
 このシナリオでは、アプリケーションはユーザーにログインを求め、すべての操作はユーザーのコンテキストで実行されます。対話型認証のためには次の手順を実行します。
 
@@ -60,9 +51,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 
 		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-
-	>[AZURE.NOTE] \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。したがって、https://localhost では `https%3A%2F%2Flocalhost` を使用します。
-
+	>[AZURE.NOTE] \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。そのため、https://localhost には `https%3A%2F%2Flocalhost` を使用してください。
 
 	このチュートリアルでは、上記 URL のプレースホルダーの値を置換し、Web ブラウザーのアドレス バーに貼り付けることができます。ユーザーは、Azure ログインを使用して認証するためにリダイレクトされます。正常にログインすると、ブラウザーのアドレス バーに応答が表示されます。応答は次の形式になります。
 		
@@ -77,9 +66,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
         -F client_id=<CLIENT-ID> \
         -F code=<AUTHORIZATION-CODE>
 
-
 	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。
-
 
 3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
 
@@ -95,7 +82,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
  
 対話型ユーザー認証の詳細については、[承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
-### 非対話型
+### サービス間認証 (非対話型)
 
 このシナリオでは、操作を実行するための独自の資格情報をアプリケーションが提供します。このアプローチの場合は、次に示すように POST 要求を発行する必要があります。
 
@@ -279,4 +266,4 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
 - [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
  
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

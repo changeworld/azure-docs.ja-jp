@@ -3,7 +3,7 @@
 	description="このチュートリアルに従って、Azure モバイル アプリ バックエンドを使用して、C#、Visual Basic、または JavaScript で Universal Windows Platform (UWP) アプリの開発を開始します。"
 	services="app-service\mobile"
 	documentationCenter="windows"
-	authors="ggailey777"
+	authors="adrianhall"
 	manager="erikre"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-windows"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/11/2016"
-	ms.author="glenga"/>
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
 #Create a Windows app (Windows アプリの作成)
 
@@ -64,7 +64,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 4. UWP アプリをスタートアップ プロジェクトにして F5 キーを押し、アプリをデプロイおよび実行します。
 
-5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Save]** をクリックします。
+5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「 *チュートリアルの完了* 」) を入力し、**[Save]** をクリックします。
 
 	![Windows quickstart complete desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
@@ -91,4 +91,4 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

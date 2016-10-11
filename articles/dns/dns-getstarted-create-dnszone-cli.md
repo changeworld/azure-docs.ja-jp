@@ -3,7 +3,7 @@
    description="DNS ドメインのホストを開始するために CLI を使用して Azure DNS の DNS ゾーンを作成する手順について説明します。"
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="cherylmc"/>
+   ms.author="sewhee"/>
 
 # CLI を使用した Azure DNS ゾーンの作成
 
@@ -42,25 +42,25 @@ Windows 用、Linux 用、MAC 用の Azure CLI をインストールできます
 
 CLI のすべてのネットワーク プロバイダー コマンドは、次のコマンドを使用して確認できます。
 
-	Azure network
+	azure network
 
 ### 2\.CLI モードの切り替え
 
 Azure DNS では、Azure リソース マネージャーを使用します。ARM コマンドを使用するように CLI モードを切り替えます。
 
-	Azure config mode arm
+	azure config mode arm
 
 ### 手順 3.Azure アカウントへのサインイン
 
 資格情報を使用して認証を行うように求めるメッセージが表示されます。使用できるのは ORGID アカウントだけであることに留意してください。
 
-    Azure login -u "username"
+    azure login -u "username"
 
 ### 4\.サブスクリプションの選択
 
 使用する Azure サブスクリプションを選択します。
 
-    Azure account set "subscription name"
+    azure account set "subscription name"
 
 ### 5\.リソース グループの作成
 
@@ -68,14 +68,14 @@ Azure リソース マネージャーでは、すべてのリソース グルー
 
 既存のリソース グループを使用する場合は、この手順をスキップしてください。
 
-    Azure group create -n myresourcegroup --location "West US"
+    azure group create -n myresourcegroup --location "West US"
 
 
 ### 6\.登録
 
 Azure DNS サービスは Microsoft.Network リソース プロバイダーによって管理されます。Azure DNS を使用するには、このリソース プロバイダーを使用するように Azure サブスクリプションを登録する必要があります。この操作は、サブスクリプションごとに 1 回だけ実行します。
 
-	Azure provider register --namespace Microsoft.Network
+	azure provider register --namespace Microsoft.Network
 
 
 ## 手順 2. DNS ゾーンの作成
@@ -91,7 +91,7 @@ Azure DNS では、ゾーン名を指定する際に末尾に '**.**' を付け�
 
 この例の値を実際の値に置き換えて、DNS ゾーンを作成できます。
 
-    Azure network dns zone create myresourcegroup contoso.com
+    azure network dns zone create myresourcegroup contoso.com
 
 ### DNS ゾーンとタグを作成するには
 
@@ -99,7 +99,7 @@ Azure DNS CLI では、オプションの *-Tag* パラメーターを使用し�
 
 次の例の値を実際の値と置き換えて、DNS ゾーンとタグを作成できます。
 
-	Azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
+	azure network dns zone create myresourcegroup contoso.com -t "project=demo";"env=test"
 
 ## レコードの表示
 
@@ -185,4 +185,4 @@ Azure DNS の新しいゾーンを使用するためのドメインの委任を�
 
 DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-cli.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

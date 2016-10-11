@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="09/26/2016"
+   ms.date="09/27/2016"
    ms.author="nitinme"/>
 
 # .NET SDK で Data Lake Store の使用を開始する
@@ -112,9 +112,9 @@
 
 ## 認証
 
-### エンドユーザー認証を使用している場合
+### エンド ユーザー認証を使用している場合 (このチュートリアルではこちらを推奨)
 
-既存の Azure AD "ネイティブ クライアント" アプリケーションと共に、次に記載されているスニペットを使用します。
+既存の Azure AD "ネイティブ クライアント" アプリケーションと共に、次に記載されているスニペットを使用します。このチュートリアルは、できるだけ短時間で終了できるよう、このアプローチの使用を推奨しています。
 
     // User login via interactive popup
     // Use the client ID of an existing AAD "Native Client" application.
@@ -124,7 +124,10 @@
     var activeDirectoryClientSettings = ActiveDirectoryClientSettings.UsePromptOnly(nativeClientApp_clientId, new Uri("urn:ietf:wg:oauth:2.0:oob"));
     var creds = UserTokenProvider.LoginWithPromptAsync(domain, activeDirectoryClientSettings).Result;
 
-上記のスニペットでは、すべての Azure サブスクリプションで既定で使用できる Azure AD ドメインとクライアント ID を使用します。独自の Azure AD ドメインとアプリケーション クライアント ID を使用したい場合は、Azure AD ネイティブ アプリケーションを作成する必要があります。手順については、「[Active Directory アプリケーションを作成する](../resource-group-create-service-principal-portal.md#create-an-active-directory-application)」を参照してください。
+このスニペットに関して、以下の 2 点に留意してください。
+
+* できるだけ短時間でチュートリアルを終了できるよう、このスニペットでは、すべての Azure サブスクリプションから既定で利用できる Azure AD ドメインとクライアント ID を使用しています。**このスニペットを実際のアプリケーションで使用するときは自己責任でご使用**ください。
+* ただし、独自の Azure AD ドメインとアプリケーション クライアント ID を使う必要がある場合は、Azure AD ネイティブ アプリケーションを作成したうえで、Azure AD ドメイン、クライアント ID、リダイレクト URI を、作成したアプリケーションに使用する必要があります。手順については、「[Active Directory アプリケーションを作成する](../resource-group-create-service-principal-portal.md#create-an-active-directory-application)」を参照してください。
 
 >[AZURE.NOTE] 上記のリンクの手順は、Azure AD Web アプリケーションのためのものです。しかし、ネイティブ クライアント アプリケーションを作成する場合でも、手順はまったく同じです。
 
@@ -273,4 +276,4 @@
 - [Data Lake Store .NET SDK リファレンス](https://msdn.microsoft.com/library/mt581387.aspx)
 - [Data Lake Store REST リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

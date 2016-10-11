@@ -116,7 +116,7 @@
 
 ## 次のステップ
 
-[Azure Marketplace にあるテンプレートから Java Web アプリを作成します](app-service-web-java-get-started.md#marketplace)。完全にカスタマイズ可能な Tomcat コンテナーを取得して、使い慣れたマネージャー UI を使用できます。
+[Azure Marketplace にあるテンプレートから Java Web アプリを作成します](web-sites-java-get-started.md#marketplace)。完全にカスタマイズ可能な Tomcat コンテナーを取得して、使い慣れたマネージャー UI を使用できます。
 
 [IntelliJ](app-service-web-debug-java-web-app-in-intellij.md) か [Eclipse](app-service-web-debug-java-web-app-in-eclipse.md) で、Azure Web アプリを直接デバッグします。
 
@@ -125,4 +125,4 @@
 - [Azure にコードをデプロイする他の方法](../app-service-web/web-sites-deploy.md)を試してみます。たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 - Azure アプリを次のレベルに進めます。ユーザーを認証します。必要に応じてスケールを変更したり、パフォーマンスのアラートを設定したりできます。いずれも、数回のクリックで実現できます。「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0920_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -72,7 +72,7 @@ Azure ポータルからの Automation アカウントの作成方法を紹介�
 
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。次の表は、実行アカウントのリソースの一覧です。<br>
 
-リソース|Description 
+リソース|説明 
 --------|-----------
 AzureAutomationTutorial Runbook|実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。
 AzureAutomationTutorialScript Runbook|実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 
@@ -81,7 +81,7 @@ AzureRunAsConnection|Automation アカウントの作成時または既存のア
 
 次の表は、クラシック実行アカウントのリソースの一覧です。<br>
 
-リソース|Description 
+リソース|説明 
 --------|-----------
 AzureClassicAutomationTutorial Runbook|クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの Runbook。
 AzureClassicAutomationTutorial Script Runbook|クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの Runbook。
@@ -138,7 +138,7 @@ AzureClassicRunAsConnection|Runbook から Azure のクラシック リソース
 
 下の PowerShell スクリプトで構成の対象となる要素は次のとおりです。
 
-- Azure AD アプリケーション。自己署名証明書で認証され、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。現在のサブスクリプションで、このアカウントの共同作成者ロールが割り当てられます (これを所有者など他の任意のロールに変更できます)。詳細については、記事「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
+- Azure AD アプリケーション。自己署名証明書で認証され、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。現在のサブスクリプションで、このアカウントの Contributor ロールが割り当てられます (これを所有者など他の任意のロールに変更できます)。詳細については、記事「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 - Automation 証明書資産。指定された Automation アカウントに **AzureRunAsCertificate** という名前で存在し、サービス プリンシパルで使用される証明書が格納されます。
 - Automation 接続資産。指定された Automation アカウントに **AzureRunAsConnection** という名前で存在し、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
@@ -384,4 +384,4 @@ Runbook での認証に使用されるコマンドレット (**Add-AzureRmAccoun
 - Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
 - 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -20,7 +20,7 @@
 # Azure Portal を使用して DocumentDB NoSQL アカウントを作成する方法
 
 > [AZURE.SELECTOR]
-- [Azure Portal](documntdb-create-account.md)
+- [Azure Portal](documentdb-create-account.md)
 - [Azure CLI と Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
 
 Microsoft Azure DocumentDB でデータベースを作成するには、次の条件を満たす必要があります。
@@ -93,4 +93,4 @@ DocumentDB の詳細については、以下のリソースを参照してくだ
 -	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
 -	[DocumentDB 階層型リソース モデルと概念](documentdb-resources.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

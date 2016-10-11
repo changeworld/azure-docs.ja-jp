@@ -19,12 +19,13 @@
 # チュートリアル: コピー アクティビティがあるパイプラインを Azure Portal で作成する
 > [AZURE.SELECTOR]
 - [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 - [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+
 
 
 このチュートリアルでは、Azure Portal を使用して Azure データ ファクトリを作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
@@ -39,8 +40,8 @@
 [パイプラインを作成する。](#create-pipeline) | この手順では、**ADFTutorialPipeline** という名前のパイプラインを ADFTutorialDataFactory に作成します。<br/><br/>Azure BLOB から Azure SQL 出力テーブルに入力データをコピーする**コピー アクティビティ**を、パイプラインに追加します。コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。 
 [パイプラインの監視](#monitor-pipeline) | この手順では、Azure ポータルを使用して、入力テーブルと出力テーブルのスライスを監視します。
 
-> [AZURE.IMPORTANT] 
-「[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」という記事を参照し、前提条件の手順を完了してから、このチュートリアルを実行してください。
+## 前提条件 
+このチュートリアルを実行する前に、[チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事に記載されている前提条件を満たしてください。
 
 ## データ ファクトリの作成
 この手順では、Azure ポータルを使用して、**ADFTutorialDataFactory** という名前の Azure データ ファクトリを作成します。
@@ -228,7 +229,7 @@ JSON プロパティの詳細については、[Azure SQL Database に対する�
 ## パイプラインの作成
 この手順では、**InputDataset** を入力、**OutputDataset** を出力として使用する**コピー アクティビティ**を持つパイプラインを作成します。
 
-1. **Data Factory エディター**のツール バーで **[新しいパイプライン]** をクリックします。ボタンが表示されない場合は、ツール バーの **[...] \(省略記号)** をクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
+1. Data Factory の**エディター**で、**[...More (...詳細)]**、**[新しいパイプライン]** の順にクリックします。または、ツリー ビューの **[パイプライン]** を右クリックして、**[新しいパイプライン]** をクリックする方法もあります。
 2. 右側のウィンドウの JSON スクリプトを、次の JSON スニペットに置き換えます。
 		
 		{
@@ -390,4 +391,4 @@ JSON プロパティの詳細については、[Azure SQL Database に対する�
 | [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

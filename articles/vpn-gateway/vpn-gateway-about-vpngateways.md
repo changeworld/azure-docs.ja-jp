@@ -34,7 +34,7 @@ Resource Manager デプロイメント モデルでは、仮想ネットワー�
 
 ## ゲートウェイの SKU
 
-[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)] ゲートウェイの SKU について詳しくは、[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) に関するページをご覧ください。
 
 次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
@@ -148,4 +148,4 @@ VPN ゲートウェイの構成を計画します。[VPN ゲートウェイの�
 
  
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

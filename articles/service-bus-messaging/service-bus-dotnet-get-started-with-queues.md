@@ -192,4 +192,4 @@ Azure Service Bus メッセージングのさらに高度な機能を紹介す�
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

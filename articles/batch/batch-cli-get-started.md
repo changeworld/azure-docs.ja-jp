@@ -13,14 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="multiple"
    ms.workload="big-compute"
-   ms.date="09/06/2016"
+   ms.date="09/30/2016"
    ms.author="marsma"/>
 
 # Azure Batch CLI の使用
 
 クロスプラットフォームの Azure コマンド ライン インターフェイス (Azure CLI) を使用すると、Linux、Mac、Windows のコマンド シェルで Batch アカウントや各種リソース (プール、ジョブ、タスクなど) を管理できます。Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI で実行したりスクリプト化したりできます。
 
-この記事は、Azure CLI バージョン 0.10.3 に基づいています。
+この記事は、Azure CLI バージョン 0.10.5 に基づいています。
 
 ## 前提条件
 
@@ -215,19 +215,39 @@ Batch CLI は、Batch サービスがサポートしている 3 つの句すべ�
 
 パッケージを**アクティブ化**する:
 
-    azure batch application package activate "resgroup002" "azbatch002" "MyTaskApplication" "1.10-beta3" zip
+    azure batch application package activate "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" zip
+
+アプリケーションの**既定のバージョン**を設定する:
+
+    azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
 ### アプリケーション パッケージをデプロイする
 
 新しいプールの作成時に、デプロイ用の 1 つ以上のアプリケーション パッケージを指定できます。プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
 
-このコマンドは、プールの作成時にパッケージを指定し、各ノードが新しいプールに参加するときにパッケージをデプロイします。
+プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`--app-package-ref` オプションを指定してプールを作成します。`--app-package-ref` オプションには、コンピューティング ノードにデプロイする一連のアプリケーションの ID をセミコロン区切りで指定できます。
 
-    azure batch pool create --id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
+    azure batch pool create --pool-id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
 
-現時点では、コマンド ライン オプションを使用してデプロイするパッケージのバージョンを指定することはできません。アプリケーションをプールに割り当てる前に、まず、Azure Portal を使用してアプリケーションの既定のバージョンを設定する必要があります。既定のバージョンの設定方法については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。ただし、プールの作成時にコマンド ライン オプションではなく [JSON ファイル](#json-files)を使用している場合は、既定のバージョンを指定することができます。
+現時点では、コマンド ライン オプションを使ってプールを作成するとき、コンピューティング ノードにデプロイするアプリケーション パッケージの*バージョン*を指定することができません ("1.10-beta3" など)。そのため先にアプリケーションの既定のバージョンを `azure batch application set [options] --default-version <version-id>` で指定してから、プールを作成するようにしてください (前出のセクションを参照)。ただし、プールの作成時にコマンド ライン オプションではなく [JSON ファイル](#json-files)を使用している場合は、プールに使用するパッケージのバージョンを指定することができます。
+
+アプリケーション パッケージについて詳しくは、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 
 >[AZURE.IMPORTANT] アプリケーション パッケージを使用するには、お使いの Batch アカウントに [Azure ストレージ アカウントをリンクする](#linked-storage-account-autostorage)必要があります。
+
+### プールに含まれるアプリケーション パッケージの更新
+
+既存のプールに割り当てられたアプリケーションを更新するには、`--app-package-ref` オプションを指定して `azure batch pool set` コマンドを実行します。
+
+    azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
+
+既存のプールに元から存在するコンピューティング ノードに対して新しいアプリケーション パッケージをデプロイするには、それらのノードを再起動するか、再イメージ化する必要があります。
+
+    azure batch node reboot --pool-id "pool001" --node-id "tvm-3105992504_1-20160930t164509z"
+
+>[AZURE.TIP] `azure batch node list` を使用すると、プール内の一連のノードとそのノード ID を取得できます。
+
+デプロイする前に、あらかじめアプリケーションの既定のバージョンを設定しておくことを忘れないでください (`azure batch application set [options] --default-version <version-id>`)。
 
 ## トラブルシューティングのヒント
 
@@ -254,4 +274,4 @@ Batch CLI は、Batch サービスがサポートしている 3 つの句すべ�
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_1005_2016-->

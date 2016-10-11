@@ -29,7 +29,7 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 1. Azure PowerShell を初めて使用する場合は、[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)を参照し、このページにある手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択します。
 
-        > [AZURE.NOTE] PowerShell cmdlet for managing VNet peering is shipped with [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0)
+> [AZURE.NOTE] VNet ピアリングを管理するための PowerShell コマンドレットは、[Azure PowerShell 1.6](http://www.powershellgallery.com/packages/Azure/1.6.0) に付属しています。
 
 2. 仮想ネットワーク オブジェクトを読み取ります。
 
@@ -47,7 +47,8 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName	: vnet101
         VirtualNetworkName	: vnet1
-        ProvisioningState		: Succeeded
+        PeeringState		: Initiated
+        ProvisioningState	: Succeeded
         RemoteVirtualNetwork	: {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
                                         }
@@ -69,7 +70,8 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName	: vnet101
         VirtualNetworkName	: vnet2
-        ProvisioningState		: Succeeded
+        PeeringState		: Connected
+        ProvisioningState	: Succeeded
         RemoteVirtualNetwork	: {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1"
                                         }
@@ -91,7 +93,8 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 		Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 		ResourceGroupName	: vnet101
 		VirtualNetworkName	: vnet1
-		ProvisioningState		: Succeeded
+		PeeringState		: Connected
+		ProvisioningState	: Succeeded
 		RemoteVirtualNetwork	: {
 		                                     "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
 		                                }
@@ -124,6 +127,7 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
         Etag			: W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
         ResourceGroupName	: vnet101
         VirtualNetworkName	: vnet1
+        PeeringState		: Connected
         ProvisioningState	: Succeeded
         RemoteVirtualNetwork	: {
                                             "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2"
@@ -234,4 +238,4 @@ PowerShell を使用して VNet ピアリングを作成するには、次の手
 
 2. VNET ピアリングのいずれかのリンクを削除すると、ピアのリンク状態が "切断" に変わります。この状態になると、ピア リンク状態が "開始済み" に変化するまではリンクを再作成できません。両方のリンクを削除してから、VNET ピアリングを作成し直すことをお勧めします。
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

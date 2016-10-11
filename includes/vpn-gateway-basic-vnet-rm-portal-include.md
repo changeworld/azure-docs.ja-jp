@@ -1,31 +1,42 @@
-Azure ポータルを使用して VNet を作成するには、次の手順に従います。スクリーン ショットは例として示されていることに注意してください。サンプルの値は必ず実際の値に変更してください。仮想ネットワークの操作の詳細については、「[仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
+Azure ポータルを使用して VNet を作成するには、次の手順に従います。スクリーンショットは例として示されています。サンプルの値は必ず実際の値に変更してください。仮想ネットワークの操作の詳細については、「[仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
 1. ブラウザーから [Azure ポータル](http://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
 
-2. **[新規]**、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。
+2. **[新規]** をクリックします。**[Marketplace を検索]** フィールドに「Virtual Network」と入力します。検索結果の一覧から **[Virtual Network]** を探してクリックし、**[Virtual Network]** ブレードを開きます。
 
-	![VNetBlade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal650.png)
+	![Locate Virtual Network resource blade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Locate virtual network resource blade")
 
 3. [仮想ネットワーク] ブレードの下の方にある **[デプロイ モデルの選択]** の一覧で、**[リソース マネージャー]** を選択し、**[作成]** をクリックします。
 
 
-	![Select Resource Manager](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png)
+	![Select Resource Manager](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "Select Resource Manager")
 
-4. **[仮想ネットワークの作成]** ブレードで、VNet の設定を構成します。このブレードでは、最初のアドレス空間と 1 つのサブネット アドレスの範囲を追加します。VNet の作成が完了したら、戻って、さらにサブネットとアドレス空間を追加できます。これは、ポータルの現在の制限です。ポータルで VNet のプロパティを編集するか PowerShell を使用することで、いつでももう一度これらの値を更新することができます。使用する値は、作成する構成によって異なります。必ず計画した構成値を参照してください。
+4. **[仮想ネットワークの作成]** ブレードで、VNet の設定を構成します。フィールドへの入力時、文字が有効であれば、赤色の感嘆符が緑色のチェック マークに変わります。
 
-	![仮想ネットワーク ブレードの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/createavnet250.png)
+	![Field validation](./media/vpn-gateway-basic-vnet-rm-portal-include/checkmark300.png "Field validation")
 
-5. **サブスクリプション**が正しいものであることを確認します。ドロップダウンを使用して、サブスクリプションを変更できます。
+5. **[仮想ネットワークの作成]** ブレードは、次のようになっています。自動的に入力される値もあります。そのような値については、実際の値に変更してください。
 
-6. **[リソース グループ]** をクリックし、既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md#resource-groups)」を参照してください。
+	![仮想ネットワーク ブレードの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "仮想ネットワーク ブレードの作成")
 
-7. 次に、VNet の **[場所]** 設定を選択します。この場所の設定によって、VNet にデプロイしたリソースがどこに配置されるかが決まることに注意してください。この設定は、リソースを再デプロイしない限り、後から変更することはできません。
+6. **[名前]**: Virtual Network の名前を入力します。
 
-8. ダッシュボードで VNet を簡単に検索できるようにするには、**[ダッシュボードにピン留めする]** を選択します。その後、**[作成]** をクリックします。
+7. **[アドレス空間]**: アドレス空間を入力します。追加するアドレス空間が複数ある場合は、1 つ目のアドレス空間を追加してください。その他のアドレス空間は後で、VNet を作成した後に追加できます。
+ 
+8. **[サブネット名]**: サブネットの名前とアドレス範囲を追加します。その他のサブネットは後で、VNet を作成した後に追加できます。
+
+10. **[サブスクリプション]**: 一覧表示されているサブスクリプションが正しいことを確認します。ドロップダウンを使用して、サブスクリプションを変更できます。
+
+11. **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md#resource-groups)」を参照してください。
+
+12. **[場所]**: VNet の場所を選択します。この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
+
+13. ダッシュボードで VNet を簡単に検索できるようにするには、**[ダッシュボードにピン留めする]** を選択します。その後、**[作成]** をクリックします。
 	
-	![Pin to dashboard](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png)
+	![ダッシュボードにピン留めする](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "pin to dashboard")
 
+14. **[作成]** をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。タイルは、VNet の作成が進むに従って変化します。
 
-9. [作成] をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。タイルは、VNet の作成が進むに従って変化します。
+	![仮想ネットワーク タイルの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "仮想ネットワーク タイルの作成")
 
-	![仮想ネットワーク タイルの作成](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
+<!---HONumber=AcomDC_1005_2016-->

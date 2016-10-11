@@ -2,7 +2,7 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-この記事では、[Azure IoT Gateway SDK][lnk-gateway-sdk] アーキテクチャの基本的なコンポーネントを表す [Hello World サンプル コード][lnk-helloworld-sample]の詳細なチュートリアルを提供します。このサンプルでは、Gateway SDK を使用して、5 秒ごとに "hello world" メッセージをファイルに記録する単純なゲートウェイを作成します。
+この記事では、[Azure IoT Gateway SDK][lnk-gateway-sdk] アーキテクチャの基本的なコンポーネントを表す [Hello World サンプル コード][lnk-helloworld-sample]の詳細なチュートリアルを提供します。このサンプルでは、IoT Hub Gateway SDK を使用して、5 秒ごとに "hello world" メッセージをファイルに記録する単純なゲートウェイを作成します。
 
 このチュートリアルでは、次の項目について説明します。
 
@@ -21,7 +21,7 @@
 
 Azure IoT Gateway SDK でゲートウェイを構築するには、*モジュール*を作成してアセンブルします。モジュールは、*メッセージ*を使用して互いにデータを交換します。モジュールがメッセージを受信すると、そのメッセージに対して何らかのアクションを実行し、必要に応じて新しいメッセージに変換したうえで、他のモジュールが処理できるように発行します。モジュールの中には、新しいメッセージを生成するだけで、受け取ったメッセージを処理しないものもあります。モジュールのチェーンによってデータ処理のパイプラインが作られ、このパイプライン上のそれぞれの時点で、各モジュールがデータの変換を行います。
 
-![][1]
+![A chain of modules in gateway built with the Azure IoT Gateway SDK][1]
  
 Gateway SDK には次のものが含まれます。
 
@@ -31,7 +31,7 @@ Gateway SDK には次のものが含まれます。
 
 Gateway SDK が提供する抽象化レイヤーによって、さまざまなオペレーティング システムとプラットフォームで実行するゲートウェイの作成が可能になります。
 
-![][2]
+![Azure IoT Hub Gateway SDK abstraction layer][2]
 
 ### メッセージ
 
@@ -39,7 +39,7 @@ Gateway SDK が提供する抽象化レイヤーによって、さまざまな�
 
 モジュールは、**Broker\_Publish** 関数を使用してブローカーにメッセージを発行します。ブローカーは、コールバック関数を呼び出すことでモジュールにメッセージを配信します。メッセージは、一連のキー/値のプロパティと、メモリのブロックとして渡されるコンテンツで構成されます。
 
-![][3]
+![The role of the Broker in the Azure IoT Gateway SDK][3]
 
 ### メッセージのルーティングとフィルター処理
 
@@ -52,7 +52,7 @@ Hello World サンプルでは、前のセクションで説明した概念を�
 -	*hello world* モジュール: 5 秒ごとにメッセージを作成し、それを logger モジュールに渡します。
 -	*logger* モジュール: 受け取ったメッセージをファイルに書き込みます。
 
-![][4]
+![Architecture of Hello World sample built with the Azure IoT Gateway SDK][4]
 
 前のセクションで説明したように、Hello World モジュールはメッセージを logger モジュールに直接渡すことはせず、5 秒ごとにブローカーに発行します。
 
@@ -60,7 +60,7 @@ logger モジュールは、ブローカーからメッセージを受信し、�
 
 logger モジュールはブローカーからメッセージを受信するだけで、ブローカーに新しいメッセージを発行することはありません。
 
-![][5]
+![How the broker routes messages between modules in the Azure IoT Gateway SDK][5]
 
 上の図は、Hello World サンプルのアーキテクチャと、サンプル内の各部分を[リポジトリ][lnk-gateway-sdk]に実装するソース ファイルへの相対パスを示しています。自分でコードを調べてみるか、以下のコード スニペットをガイドとして使用してください。
 
@@ -75,4 +75,4 @@ logger モジュールはブローカーからメッセージを受信するだ�
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

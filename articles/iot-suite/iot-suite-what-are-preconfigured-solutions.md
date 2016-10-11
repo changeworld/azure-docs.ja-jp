@@ -34,8 +34,7 @@ Azure にソリューションをデプロイして実行するだけでなく�
 
 | 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - |
-| [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - | | [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
 
 - *データの取り込み*: クラウドへの大規模なデータの取り込み。
 - *デバイス ID*: すべての接続されたデバイスの一意の ID を管理します。
@@ -125,10 +124,10 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
 [lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
 [lnk-web-job]: ../app-service-web/web-sites-create-web-jobs.md
-[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-predictive-maintenance]: iot-suite-predictive-overview.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_1005_2016-->
