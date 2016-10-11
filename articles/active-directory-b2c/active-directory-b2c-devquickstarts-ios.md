@@ -14,7 +14,7 @@
 
 # Azure AD B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す
 
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)] -->
+<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。そのため開発者は、好きなライブラリを活用して Microsoft のサービスと連携させることができます。Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
@@ -151,7 +151,7 @@ $ open SampleforB2C.xcworkspace
 
 `authURL`、`loginURL`、`bhh`、`tokenURL` については、テナント名の入力が必要であることがわかります。これは、自分に割り当てられた B2C テナントのテナント名です。たとえば、`kidventusb2c.onmicrosoft.com` のようにします。Microsoft のオープン ソースである Microsoft Azure Identity Libraries を使用する場合、このデータは、Microsoft のメタデータ エンドポイントを使用して自動的に取得されます。これらの値を自動的に抽出するためのさまざまな工夫が Microsoft によって施されています。
 
-B2C テナント名の詳細については、[こちら (active-directory-b2c-devquickstarts-tenant-name)](../../includes/active-directory-b2c-devquickstarts-tenant-name.md) を参照してください。
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 `keychain` の値は、NXOAuth2Client ライブラリがトークンの格納先となるキーチェーンを作成する際に使用するコンテナーです。多数のアプリで SSO を利用したい場合は、それぞれのアプリケーションで同じキーチェーンを指定できるほか、XCode の Entitlement からそのキーチェーンの使用を要求することができます。この点については、Apple のドキュメントを参照してください。
 
@@ -416,7 +416,7 @@ WebView から返された redirectURL を処理するコードが必要です�
 
 * 通知ファクトリをセットアップします。
 
-上の `AppDelegate` で作成したものと同じメソッドを作成しますが、今回はサービス内で何が行われているか通知するために、`NSNotification` をいくつか追加します。トークンに変更が生じたときに通知を実行するオブザーバーを設定します。トークンを取得したら、ユーザーを `masterView` に戻します。
+上の `AppDelegate` で作成したものと同じメソッドを作成しますが、今回はサービス内で何が行われているかを通知するために、`NSNotification` をいくつか追加します。トークンに変更が生じたときに通知を実行するオブザーバーを設定します。トークンを取得したら、ユーザーを `masterView` に戻します。
 
 
 
@@ -646,4 +646,4 @@ API でタスクがユーザーごとに保存されたことを確認します�
 
 [B2C アプリの UX のカスタマイズ]()
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_1005_2016-->

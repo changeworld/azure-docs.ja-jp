@@ -1,6 +1,6 @@
 <properties
 	pageTitle="IoT Hub Gateway SDK の使用 | Microsoft Azure"
-	description="Azure IoT Hub Gateway SDK を使用する場合に理解する必要のある主な概念を説明するための、Linux を使用した Azure IoT Hub Gateway SDK のチュートリアルです。"
+	description="このチュートリアルでは、Azure IoT Hub Gateway SDK を使用する場合に理解する必要のある主な概念を Linux を使用して説明します。"
 	services="iot-hub"
 	documentationCenter=""
 	authors="chipalost"
@@ -83,4 +83,4 @@
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

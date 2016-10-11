@@ -18,9 +18,7 @@
 
 # Azure IoT Hub とは
 
-Azure IoT Hub へようこそ。この記事では、Azure IoT Hub の概要と、モノのインターネット (IoT) ソリューションを実装したときに、このサービスを使用する理由について説明します。
-
-Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。Azure IoT Hub の特長は次のとおりです。
+Azure IoT Hub へようこそ。この記事では、Azure IoT Hub の概要と、モノのインターネット (IoT) ソリューションを実装したときに、このサービスを使用する理由について説明します。Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。Azure IoT Hub の特長は次のとおりです。
 
 - デバイスとクラウド間の信頼性の高い双方向メッセージングを大規模に提供します。
 - デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
@@ -106,15 +104,13 @@ Azure IoT Hub では、標準ベースの IoT デバイス管理が可能とな�
 
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
-[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-[lnk-d2c]: iot-hub-csharp-csharp-process-d2c.md
 [protocol-gateway]: https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md
 [lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "サービス支援通信に関する Clemens Vasters によるブログの投稿"
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-gateway]: iot-hub-protocol-gateway.md
-[lnk-field-gateway]: iot-hub-guidance.md#field-gateways
-[lnk-devguide-identityregistry]: iot-hub-devguide.md#identityregistry
-[lnk-devguide-security]: iot-hub-devguide.md#security
+[lnk-field-gateway]: iot-hub-devguide-endpoints.md#field-gateways
+[lnk-devguide-identityregistry]: iot-hub-devguide-identity-registry.md
+[lnk-devguide-security]: iot-hub-devguide-security.md
 [lnk-wns]: https://msdn.microsoft.com/library/windows/apps/mt187203.aspx
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
@@ -123,4 +119,4 @@ Azure IoT Hub では、標準ベースの IoT デバイス管理が可能とな�
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -19,7 +19,7 @@
 
 # SQL Database のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する
 
-[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。パフォーマンス レベルごとに提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。DTU と eDTU については、[DTU について説明したページ](sql-database-what-is-a-DTU.md)を参照してください。
+[Azure SQL Database](sql-database-technical-overview.md) は、さまざまなワークロードに対応するため、3 つのサービス レベルといくつかのパフォーマンス レベルが用意されています。パフォーマンス レベルごとに提供されるリソースのセットが増加し、スループットが段階的に高くなるように設計されています。データベースはそれぞれ、[サービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)とパフォーマンス レベルを変えて管理することができます。また、一定のリソースを共有する[エラスティック プール](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)で複数のデータベースを管理することもできます。スタンドアロン データベースで利用できるリソースは、データベース トランザクション ユニット (DTU) という用語で表現します。これに対して、エラスティック プールで利用できるリソースは、エラスティック DTU または eDTU と呼びます。DTU と eDTU については、[DTU について説明したページ](sql-database-what-is-a-dtu.md)を参照してください。
 
 どちらの場合も、サービス レベルには **Basic**、**Standard**、**Premium** があります。これらのレベルのデータベース オプションは、スタンドアロン データベースとエラスティック プールの場合に似ていますが、エラスティック プールにはさらに考慮事項があります。この記事では、スタンドアロン データベースとエラスティック プールのサービス レベルの詳細について説明します。
 
@@ -88,4 +88,4 @@ SQL Database のエディションを選んだら、データベースのパフ�
 
 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に関する記事を参照してください。
 
-<!-------HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

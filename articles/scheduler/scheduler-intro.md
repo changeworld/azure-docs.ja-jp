@@ -3,8 +3,8 @@
  description="Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。その後スケジュールを設定し、アクションを自動的に実行します。"
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,7 +13,7 @@
  ms.devlang="dotnet"
  ms.topic="hero-article"
  ms.date="08/18/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
 # Azure Scheduler とは
 
@@ -50,4 +50,4 @@ Scheduler では、ジョブおよび[ジョブ コレクション](scheduler-co
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

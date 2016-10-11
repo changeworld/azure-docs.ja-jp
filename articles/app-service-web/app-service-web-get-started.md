@@ -31,8 +31,10 @@
 
 ## 前提条件
 
+
 - [Git をインストールします](http://www.git-scm.com/downloads)。新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルから `git --version` を実行して、インストールが正常に完了したことを確認します。
 - Microsoft Azure アカウントを取得します。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+
 
 >[AZURE.NOTE] Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 
@@ -59,7 +61,7 @@
 
     ![app creation notification for your first web app in Azure](./media/app-service-web-get-started/create-web-app-started.png)
 
-4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイのブレードを開きます。
+4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイメントのブレードを開きます。
 
     ![deployment finished message for your first web app in Azure](./media/app-service-web-get-started/create-web-app-finished.png)
 
@@ -144,4 +146,4 @@ Git を使用してプロジェクト (リポジトリ) のルートからプッ
 - [Azure にコードをデプロイする他の方法](../app-service-web/web-sites-deploy.md)を試してみます。たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
 - Azure アプリを次のレベルに進めます。ユーザーを認証します。必要に応じてスケールを変更したり、パフォーマンスのアラートを設定したりできます。いずれも、数回のクリックで実現できます。「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
 
-<!-----HONumber=AcomDC_0920_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -3,7 +3,7 @@
    description="ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""/>
 
@@ -14,7 +14,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="06/30/2016"
-   ms.author="cherylmc"/>
+   ms.author="sewhee"/>
 
 
 # Azure DNS へのドメインの委任
@@ -205,4 +205,4 @@ Azure DNS ネーム サーバーの IP アドレスは後で変更される可�
 
 [DNS レコードの管理](dns-operations-recordsets.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

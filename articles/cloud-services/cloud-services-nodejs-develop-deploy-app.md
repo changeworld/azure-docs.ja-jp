@@ -169,7 +169,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 	![Remove-AzureService コマンドの状態][The status of the Remove-AzureService command]
 
-	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[How to Delete a Storage Account from an Azure Subscription (Azure サブスクリプションからストレージ アカウントを削除する方法)]」を参照してください。
+	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。他の用途に使用しているのでなければ、ストレージを削除してください。
 
 ## 次のステップ
 
@@ -183,7 +183,6 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [Azure SDK for .NET 2.7]: http://www.microsoft.com/ja-JP/download/details.aspx?id=48178
 [PowerShell を接続します]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
 [nodejs.org]: http://nodejs.org/
-[How to Delete a Storage Account from an Azure Subscription (Azure サブスクリプションからストレージ アカウントを削除する方法)]: ../storage/how-to-manage-a-storage-account.md
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
 
@@ -193,9 +192,8 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [The output of the Add-AzureNodeWebRole command]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
 [A web browser displaying the Hello World web page]: ./media/cloud-services-nodejs-develop-deploy-app/node14.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node19.png
-[The full status output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

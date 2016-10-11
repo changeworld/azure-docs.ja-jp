@@ -3,8 +3,8 @@
  description="Azure Scheduler の概念、用語、およびエンティティ階層構造 (ジョブやジョブ コレクションなど)。スケジュールされたジョブの全体をまとめた例を示します。"
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,7 +13,7 @@
  ms.devlang="dotnet"
  ms.topic="get-started-article"
  ms.date="08/18/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
 # Scheduler の概念、用語集、エンティティ階層構造
 
@@ -214,4 +214,4 @@ Scheduler ジョブが失敗した場合、再試行ポリシーを指定して�
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

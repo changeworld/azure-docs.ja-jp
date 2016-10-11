@@ -13,12 +13,12 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.workload="mobile" 
-	ms.date="07/07/2016"
+	ms.date="10/04/2016"
 	ms.author="wesmc;ricksal"/>
 
 # Azure Mobile Engagement - 概要とベスト プラクティス
 
-## 概要
+## Overview
 
 **モバイル画面のスペースを巡る競争は激しさを増しています。**2013 年に行われた調査によれば、平均的なモバイル デバイスには 27 個のアプリケーションがインストールされています。ユーザーが日頃アプリに費やす月間の利用時間は 30 時間となっています。その時間の大半約 20 時間は、ソーシャル ネットワークやゲームに費やされていました。2014 年には、Android マーケットでユーザーに提供されているアプリケーション数は約 150 万個を突破しました。Apple ストアで提供されているアプリの数も 120 万個に及びます。今もなおモバイル アプリは増え続け、この急成長する市場で開発者は競争を繰り広げています。
 
@@ -356,7 +356,7 @@ Azure Mobile Engagement を基盤とするアプリのプロジェクトは 2 �
 
 #### セットアップ
 
-Azure Mobile Engagement のセットアップはきわめて単純です。ユーザー インターフェイスに関連したドキュメントはすべて、Azure Mobile Engagement の Web サイト ([ユーザー インターフェイスを操作する方法](mobile-engagement-user-interface.md)に関するページ) でご覧いただけます。
+Azure Mobile Engagement のセットアップはきわめて単純です。ユーザー インターフェイスに関連したドキュメントはすべて、Azure Mobile Engagement の Web サイト ([ユーザー インターフェイスを操作する方法](mobile-engagement-user-interface-home.md)に関するページ) でご覧いただけます。
 
 まず、プロジェクトのユーザーに必要な適切なロールとそのメンバーシップを設定することをお勧めします。そうすることで、全ユーザーのプラットフォームへのアクセスを適切に管理することができます。次のロールがあります。
 
@@ -407,4 +407,4 @@ Azure Mobile Engagement のセットアップはきわめて単純です。ユ�
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-<!---HONumber=AcomDC_0713_2016-->
+<!---HONumber=AcomDC_1005_2016-->

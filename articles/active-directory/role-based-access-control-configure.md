@@ -13,15 +13,19 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="identity"
-	ms.date="07/21/2016"
+	ms.date="09/30/2016"
 	ms.author="kgremban"/>
 
 # Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。この記事では、Azure ポータルにおける RBAC の基本的な使い方について説明しています。RBAC を使用した高度なアクセス管理については、「[What is Role-Based Access Control (ロールベースのアクセス制御とは)](role-based-access-control-what-is.md)」を参照してください。
+> [AZURE.SELECTOR]
+- [Azure ポータル](role-based-access-control-azure-portal.md)
+- [Azure クラシック ポータル](role-based-access-control-configure.md)
+
+Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。この記事では、Azure ポータルにおける RBAC の基本的な使い方について説明しています。RBAC を使用した高度なアクセス管理については、[ロールベースのアクセス制御の説明](role-based-access-control-what-is.md)に関するページを参照してください。
 
 ## アクセス許可の表示
-[Azure ポータル](https://portal.azure.com)のメイン ブレードで、リソース、リソース グループ、またはサブスクリプションへのアクセス権が付与されているユーザーを確認できます。たとえば、リソース グループのいずれかへのアクセス権があるユーザーを確認する場合は、次の手順を実行します。
+[Azure Portal](https://portal.azure.com) のメイン ブレードで、リソース、リソース グループ、またはサブスクリプションへのアクセス権が付与されているユーザーを確認できます。たとえば、リソース グループのいずれかへのアクセス権があるユーザーを確認する場合は、次の手順を実行します。
 
 1. 左側にあるナビゲーション バーで、**[リソース グループ]** アイコンをクリックします。 ![Resource groups - icon](./media/role-based-access-control-configure/resourcegroups_icon.png)
 2. **[リソース グループ]** ブレードからリソース グループの名前を選択します。
@@ -67,7 +71,7 @@ Azure ポータル以外のツールでも Azure RBAC コマンドを使用し�
 
 ## 次のステップ
 - [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md)
-- [RBAC の組み込みロール](role-based-access-built-in-roles.md)の確認
-- 独自の [Azure RBAC カスタム ロール](role-based-access-control-custom-roles.md)の定義
+- [RBAC の組み込みロール](role-based-access-built-in-roles.md)を確認する
+- 独自の [Azure RBAC カスタム ロール](role-based-access-control-custom-roles.md)を定義する
 
-<!-----HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_1005_2016-->

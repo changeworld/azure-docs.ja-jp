@@ -40,7 +40,7 @@
 
 最後に、**主キー**の値をメモして、**[メッセージング]** をクリックします。**[メッセージング]** ブレードで、**イベント ハブ互換名**と**イベント ハブ互換エンドポイント**をメモします。これらの値は **read-d2c-messages** アプリケーションを作成するときに必要になります。
 
-![][6]
+![Azure portal IoT Hub Messaging blade][6]
 
 これで IoT ハブが作成され、このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hubs と互換性のある名前、Event Hubs と互換性のあるエンドポイントが入手できました。
 
@@ -445,7 +445,7 @@
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![][7]
+    ![Java IoT Hub service client application to monitor device-to-cloud messages][7]
 
 2. simulated-device フォルダーで、コマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリ データの送信を開始します。
 
@@ -453,11 +453,11 @@
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![][8]
+    ![Java IoT Hub device client application to send device-to-cloud messages][8]
 
 3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
 
-    ![][43]
+    ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
 ## 次のステップ
 
@@ -481,13 +481,13 @@
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
+[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-[lnk-hub-sdks]: iot-hub-sdks-summary.md
+[lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
@@ -495,4 +495,4 @@
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

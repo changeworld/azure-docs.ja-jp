@@ -100,7 +100,7 @@
 
 	![package.json タブのスクリーン ショット](./media/documentdb-nodejs-application/image17.png)
 
-       これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
+	これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
 
 ## <a name="_Toc395783180"></a>手順 4: ノード アプリケーションでの DocumentDB サービスの使用
 
@@ -568,4 +568,4 @@
 [Github]: https://github.com/Azure-Samples/documentdb-node-todo-app
  
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

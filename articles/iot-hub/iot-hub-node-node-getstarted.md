@@ -262,7 +262,7 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     node ReadDeviceToCloudMessages.js 
     ```
 
-    ![][7]
+    ![Node.js IoT Hub service client application to monitor device-to-cloud messages][7]
 
 2. コマンド プロンプトで、**simulateddevice** フォルダーに移動し、次のコマンドを実行して IoT Hub へのテレメトリ データの送信を開始します。
 
@@ -270,11 +270,11 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
     node SimulatedDevice.js
     ```
 
-    ![][8]
+    ![Node.js IoT Hub device client application to send device-to-cloud messages][8]
 
 3. [Azure ポータル][lnk-portal]の **[使用状況]** タイルには、ハブに送信されたメッセージ数が表示されます。
 
-    ![][43]
+    ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
 ## 次のステップ
 
@@ -289,7 +289,6 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
 <!-- Images. -->
-[6]: ./media/iot-hub-node-node-getstarted/create-iot-hub6.png
 [7]: ./media/iot-hub-node-node-getstarted/runapp1.png
 [8]: ./media/iot-hub-node-node-getstarted/runapp2.png
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
@@ -298,13 +297,13 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
+[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
 [lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/node-devbox-setup.md
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-[lnk-hub-sdks]: iot-hub-sdks-summary.md
+[lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
@@ -312,4 +311,4 @@ IoT Hub の作成は以上です。以降の作業に必要な IoT Hub ホスト
 [lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

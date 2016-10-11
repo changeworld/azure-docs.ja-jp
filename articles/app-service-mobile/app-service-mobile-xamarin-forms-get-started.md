@@ -3,7 +3,7 @@
 	description="次のチュートリアルに従って、Xamarin.Forms 開発用の Azure Mobile Apps を使用します"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
-	authors="wesmc7777"
+	authors="adrianhall"
 	manager="erikre"
 	editor=""/>
 
@@ -13,8 +13,8 @@
 	ms.tgt_pltfrm="mobile-xamarin"
 	ms.devlang="dotnet"
 	ms.topic="hero-article"
-	ms.date="08/11/2016"
-	ms.author="glenga"/>
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
 #Xamarin.Forms アプリの作成
 
@@ -180,4 +180,4 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0817_2016-->
+<!---HONumber=AcomDC_1005_2016-->

@@ -13,14 +13,14 @@
 	ms.topic="get-started-article"
 	ms.tgt_pltfrm="na"
 	ms.workload="storage-backup-recovery" 
-	ms.date="02/22/2016" 
+	ms.date="09/29/2016" 
 	ms.author="raynew"/>
 
 #  Site Recovery とは
 
 Azure Site Recovery へようこそ。 この記事では、まず、Site Recovery サービスの簡単な概要と、Site Recovery がビジネス継続性と障害復旧 (BCDR) 戦略にどのように貢献するのかについて説明します。
 
-## 概要
+## Overview
 
 組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
 
@@ -81,4 +81,4 @@ Site Recovery は、障害が発生した場合にワークロードとアプリ
 - 「[Azure Site Recovery のしくみ](site-recovery-components.md)」で Site Recovery のアーキテクチャの詳細をお読みください。
  
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

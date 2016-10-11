@@ -24,7 +24,7 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 > [AZURE.NOTE] この記事の手順では、Linux ベースの HDInsight クラスターを作成します。HDInsight クラスターで Windows ベースの Storm を作成する手順については、「[Apache Storm チュートリアル: Storm Starter サンプルを使用した HDInsight でのビッグ データ分析の概要](hdinsight-apache-storm-tutorial-get-started.md)」を参照してください。
 
-## 開始する前に
+## 前提条件
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -38,13 +38,17 @@ Apache Storm チュートリアルを正常に完了するには、次の条件�
 
 	- **Windows クライアント**: 「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
+### アクセス制御の要件
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+
 ## Storm クラスターを作成する
 
 このセクションでは、Azure Resource Manager テンプレートを使用して HDInsight バージョン 3.2 クラスター (Storm バージョン 0.9.3) を作成します。HDInsight バージョンとその SLA については、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」をご覧ください。その他のクラスター作成方法については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-storm-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/ja-JP/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
     テンプレートは、次のパブリック BLOB コンテナー内にあります。*https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-storm-cluster-in-hdinsight.json*
    
@@ -192,4 +196,4 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [preview-portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

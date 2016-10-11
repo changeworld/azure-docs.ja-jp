@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure Search の使用 | Microsoft Azure | Azure Search の使用 | DocumentDB | クラウド検索サービス" 
-	description="Azure Search ソリューションを初めて作成する方を対象としたチュートリアルです。DocumentDB データを使用して Azure Search インデックスを作成する方法について説明します。ここで説明している手順はポータルからデータのインポート ウィザードを使った方法であり、コーディングは不要です。" 
+	pageTitle="Azure Search の使用 | Microsoft Azure | DocumentDB | クラウド検索サービス" 
+	description="このチュートリアルの手引きと DocumentDB のサンプル データを使用して Azure Search インデックスを作成する初歩的な方法について説明します。ここで説明している手順はポータルからデータのインポート ウィザードを使った方法であり、コーディングは不要です。" 
 	services="search" 
 	documentationCenter="" 
 	authors="HeidiSteen" 
@@ -14,7 +14,7 @@
 	ms.workload="search" 
 	ms.topic="hero-article" 
 	ms.tgt_pltfrm="na" 
-	ms.date="08/29/2016" 
+	ms.date="10/03/2016" 
 	ms.author="heidist"/>
 
 # ポータルから Azure Search を使用する
@@ -23,7 +23,7 @@
 
 このチュートリアルは、[サンプルの Azure DocumentDB データベース](#apdx-sampledata)を前提に説明しています。このデータベースは、こちらで用意したデータと手順を使って簡単に作成できますが、既に DocumentDB または SQL Database 内にお持ちのデータに同じ手順を応用してもかまいません。
 
-> [AZURE.NOTE] この入門チュートリアルには [Azure サブスクリプション](../../includes/free-trial-note.md)と [Azure Search サービス](search-create-service-portal.md)が必要です。
+> [AZURE.NOTE] この入門チュートリアルには [Azure サブスクリプション](/pricing/free-trial/?WT.mc_id=A261C142F)と [Azure Search サービス](search-create-service-portal.md)が必要です。
  
 ## サービスの検索
 
@@ -43,7 +43,7 @@
 
 インデックスはいくつかの方法で作成できます。Azure SQL Database、Azure VM 上の SQL Server、DocumentDB など、Azure Search でクロールできるデータ ストアにデータがあれば、*インデクサー*を使用してごく簡単にインデックスを作成し、データを設定することができます。
 
-このタスクをすべてポータル上で実行するために、ここでは**データのインポート** ウィザードからインデクサーを使用してクロールできる、DocumentDB のデータを対象として想定します。
+このタスクをすべてポータル上で実行するために、ここでは**データのインポート** ウィザードからインデクサーを使用してクロールできる、DocumentDB のデータを使用します。
 
 先に進む前に、このチュートリアルで使用する[サンプル DocumentDB データベース](#apdx-sampledata)を作成してから、このセクションに戻って以下の手順を最後まで実行します。
 
@@ -52,13 +52,13 @@
 
 1. インデックスの作成とデータ投入はどちらもウィザードで実行できます。Azure Search サービス ダッシュボードで、コマンド バーの **[データのインポート]** をクリックしてウィザードを開始してください。
 
-  ![][7]
+    ![][7]
 
 2. ウィザードで **[データ ソース]**、**[DocumentDB]**、**[名前]** の順にクリックし、データ ソースの名前を入力します。データ ソースは、Azure Search の接続オブジェクトとして、他のインデクサーと組み合わせて使用することができます。データ ソースを作成すると、ご利用のサービスから "既存のデータ ソース" として使用できるようになります。
 
 3. 既にある DocumentDB アカウントを選択し、データベースとコレクションを選択します。このチュートリアル用にあらかじめ用意したサンプル データを使用する場合、データ ソースの定義は次のようになります。
 
-  ![][2]
+    ![][2]
 
 クエリが省略されていることに注目してください。今回はデータセットの変更追跡は実装しないので、これで問題ありません。レコードがいつ更新されたかを追跡するフィールドがデータセットに含まれている場合は、変更の追跡機能を使用してインデックスに対して選択的に更新を行うよう Azure Search インデクサーを構成することができます。
 
@@ -183,4 +183,4 @@ Azure 仮想マシン上の Azure SQL Database または SQL Server などその
 [6]: ./media/search-get-started-portal/AzureSearch-GetStart-IndexerList.png
 [7]: ./media/search-get-started-portal/search-data-import-wiz-btn.png
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

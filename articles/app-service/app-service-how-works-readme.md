@@ -26,6 +26,7 @@ Azure App Service は、今日エンジニアが直面している現実的な�
 * API Apps を使って API を実装、デプロイ、発行できる。
 * Logic Apps を使い、ワークフローにビジネス アプリケーションをひとまとめにして、データを変換できる。
 
+
 すべてのアプリがその種類に関係なく、スケーラブルでフレキシブルな Web Apps プラットフォームで動作するため、アプリの設計からメンテナンスまで、開発者は隅々まで最適化されたライフサイクルを利用することができます。ライフサイクルの機能がもたらす利点を以下に挙げます。
 
 * アプリの迅速な作成 - ゼロから作成することも、Azure Marketplace から OSS パッケージを選ぶこともできます。
@@ -39,4 +40,4 @@ Azure App Service は、今日エンジニアが直面している現実的な�
 
 [AZURE.INCLUDE [app-service-blueprint-how-app-service-works](../../includes/app-service-blueprint-how-app-service-works.md)]
 
-<!---HONumber=AcomDC_0720_2016-->
+<!---HONumber=AcomDC_1005_2016-->

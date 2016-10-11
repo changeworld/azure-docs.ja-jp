@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="09/01/2016"
+	ms.date="09/30/2016"
 	ms.author="casoper"/>
 
 # Azure Content Delivery Network (CDN) の概要
@@ -52,7 +52,7 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 
 | | Standard Akamai | Standard Verizon | Premium Verizon |
 |-------|-----------------|------------------|-----------------|
-| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-manage-origins.md#enable_cdn) などの Azure サービスと簡単に統合 | **&#x2713;** | **&#x2713;** | **&#x2713;**|
+| [Storage](cdn-create-a-storage-account-with-cdn.md)、[Cloud Services](cdn-cloud-service-with-cdn.md)、[Web Apps](../app-service-web/cdn-websites-with-cdn.md)、[Media Services](../media-services/media-services-manage-origins.md#enable-cdn) などの Azure サービスと簡単に統合 | **&#x2713;** | **&#x2713;** | **&#x2713;**|
 | [REST API](https://msdn.microsoft.com/library/mt634456.aspx)、[.NET](./cdn-app-dev-net.md)、[Node.js](./cdn-app-dev-node.md)、[PowerShell](./cdn-manage-powershell.md) を介した管理 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | HTTPS のサポート | **&#x2713;** | **&#x2713;** | **&#x2713;** |
 | 負荷分散 | **&#x2713;** | **&#x2713;** | **&#x2713;** |
@@ -87,4 +87,4 @@ CDN の概要については、「[Azure CDN の使用](./cdn-create-new-endpoin
 
 料金情報については、[CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
-<!---HONumber=AcomDC_0907_2016-->
+<!---HONumber=AcomDC_1005_2016-->

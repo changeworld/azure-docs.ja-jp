@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="mobile-chrome"
 	ms.devlang="JavaScript"
 	ms.topic="hero-article"
-	ms.date="07/22/2016"
+	ms.date="10/03/2016"
 	ms.author="wesmc"/>
 
 # Azure Notification Hubs から Chrome アプリケーションへのプッシュ通知の送信
@@ -388,7 +388,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
 1. Visual Studio で、**[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。**[Visual C#]** で、**[Windows]**、**[コンソール アプリケーション]** の順にクリックし、**[OK]** をクリックします。これで、新しいコンソール アプリケーション プロジェクトが作成されます。
 
-2. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。これで、パッケージ マネージャー コンソールが表示されます。
+2. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。これにより、パッケージ マネージャー コンソールが開きます。
 
 3. コンソール ウィンドウで、次のコマンドを実行します。
 
@@ -434,9 +434,9 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
 Notification Hubs の詳細については、「[Notification Hubs の概要]」を参照してください。
 
-特定のユーザーを対象とする方法については、「[Azure Notification Hubs と .NET バックエンドによるユーザーへの通知]」チュートリアルをご覧ください。
+特定のユーザーを対象とする方法については、[Azure Notification Hubs によるユーザーへの通知]に関するチュートリアルをご覧ください。
 
-対象グループごとにユーザーを区分する場合は、「[Azure Notification Hubs を使用したニュース速報の送信]」チュートリアルをご覧ください。
+対象グループごとにユーザーを区分する場合は、[Azure Notification Hubs を使用したニュース速報の送信]に関するチュートリアルをご覧ください。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -474,7 +474,7 @@ Notification Hubs の詳細については、「[Notification Hubs の概要]」
 [crypto-js ライブラリ]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure Notification Hubs と .NET バックエンドによるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
-[Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[Azure Notification Hubs によるユーザーへの通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Azure Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
-<!---HONumber=AcomDC_0727_2016-->
+<!---HONumber=AcomDC_1005_2016-->

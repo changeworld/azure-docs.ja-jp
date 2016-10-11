@@ -2,12 +2,14 @@
 
 2. VNet のブレードの **[設定]** セクションで **[サブネット]** をクリックして、[サブネット] ブレードを展開します。
 
-3. **[サブネット]** ブレードの上部にある **[+ゲートウェイ サブネット]** をクリックします。**[サブネットの追加]** ブレードが開きます。サブネットの **[名前]** は、"GatewaySubnet" という値が自動的に入力されます。この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。
+3. **[サブネット]** ブレードの上部にある **[+ゲートウェイ サブネット]** をクリックします。**[サブネットの追加]** ブレードが開きます。
 
-	![Add the gateway subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet250.png)
+	![Add the gateway subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/newgwsubnet450.png "Add the gateway subnet")
 
-4. 必要に応じて、アドレス範囲の CIDR ブロックを変更できます。使用する構成の具体的な要件を確認して、推奨される CIDR ブロックを確定してください。
+4. サブネットの **[名前]** は、"GatewaySubnet" という値が自動的に入力されます。この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。
 
-5. ブレード下部の **[OK]** をクリックすると、サブネットが作成されます。
+	![Adding the subnet](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet300.png "Adding the subnet")
 
-<!---------HONumber=AcomDC_0810_2016-->
+6. ブレード下部の **[OK]** をクリックすると、サブネットが作成されます。
+
+<!---HONumber=AcomDC_1005_2016-->

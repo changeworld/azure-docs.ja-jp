@@ -56,11 +56,11 @@ azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
 
 ## 詳細なチュートリアル
 
-前の `quick-create` の例では、アップロードする SSH 公開キーを識別する `-M` フラグだけを指定し、SSH パスワードを無効にしているので、以下の入力を求められます。
+前の `quick-create` の例では、アップロードする SSH 公開キーを識別する `-M` フラグだけを指定し、SSH パスワードを無効にしているので、以下の引数を入力するよう求められます。
 
 - リソース グループ名 (最初の Azure リソース グループでは、任意の文字列で通常は問題ありません)。
 - VM 名
-- 場所 (westus または westeurope が適切な既定値です)。
+- 場所 (`westus`、`westeurope` など)
 - linux (必要な OS を Azure に通知します)。
 - username
 
@@ -161,7 +161,7 @@ info:    vm quick-create command OK
 ssh -i ~/.ssh/id_rsa.pub exampleAdminUser@138.91.247.29
 ```
 
-ログイン プロセスは次のようになります。
+ログイン プロセスは次の出力ブロックのようになります。
 
 ```bash
 Warning: Permanently added '138.91.247.29' (ECDSA) to the list of known hosts.
@@ -205,4 +205,4 @@ exampleAdminUser@exampleVMName:~$
 
 [さまざまなコマンドで `docker-machine` Azure ドライバーを使用すると、Linux VM を Docker ホストとしてもすばやく作成](virtual-machines-linux-docker-machine.md)できます。
 
-<!---HONumber=AcomDC_0914_2016-->
+<!---HONumber=AcomDC_1005_2016-->

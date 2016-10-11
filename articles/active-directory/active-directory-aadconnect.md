@@ -14,15 +14,16 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="get-started-article"
-	ms.date="07/14/2016"
+	ms.date="09/30/2016"
 	ms.author="andkjell;billmath"/>
 
 # オンプレミス ID と Azure Active Directory の統合
+
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。このトピックでは、計画、デプロイ、運用の各手順を紹介しています。関連するトピックのリンク集としてご利用ください。
 
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [AZURE.IMPORTANT] [Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。 Microsoft Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日でサポートが終了するため、Azure AD Connect へアップグレードする絶好の機会です。]( https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Azure AD Connect is the best way to connect your on-premises directory with Azure AD and Office 365. This is a great time to upgrade to Azure AD Connect from Windows Azure Active Directory Sync (DirSync) or Azure AD Sync as these tools are now deprecated and will reach end of support on April 13, 2017.]active-directory-aadconnect-dirsync-deprecated.md)
 
 ![Azure AD Connect とは](./media/active-directory-aadconnect/arch.png)
 
@@ -53,9 +54,9 @@ Azure AD Connect は [Microsoft ダウンロード センター](http://go.micro
 解決策 | シナリオ
 ----- | ----- |
 開始する前に - [ハードウェアと前提条件](active-directory-aadconnect-prerequisites.md) | <li>Azure AD Connect のインストールを開始する前に実行する手順です。</li>
-[簡単設定](active-directory-aadconnect-get-started-express.md) | <li>シングル フォレストの AD が存在する場合、この方法をお勧めします。</li> <li>ユーザーは、パスワード同期により、同じパスワードを使ってサインインします。</li>
-[カスタマイズした設定](active-directory-aadconnect-get-started-custom.md) | <li>複数のフォレストがある場合に使用されます。多くのオンプレミス [トポロジ](active-directory-aadconnect-topologies.md)がサポートされます。</li> <li>フェデレーション用の ADFS などのサインイン オプションをカスタマイズするか、サード パーティの ID プロバイダーを使います。</li> <li>フィルター処理やライトバックなどの同期機能をカスタマイズします。</li>
-[DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
+[簡単設定](./aad-connect/active-directory-aadconnect-get-started-express.md) | <li>シングル フォレストの AD が存在する場合、この方法をお勧めします。</li> <li>ユーザーは、パスワード同期により、同じパスワードを使ってサインインします。</li>
+[カスタマイズした設定](./aad-connect/active-directory-aadconnect-get-started-custom.md) | <li>複数のフォレストがある場合に使用されます。多くのオンプレミス [トポロジ](active-directory-aadconnect-topologies.md)がサポートされます。</li> <li>フェデレーション用の ADFS などのサインイン オプションをカスタマイズするか、サード パーティの ID プロバイダーを使います。</li> <li>フィルター処理やライトバックなどの同期機能をカスタマイズします。</li>
+[DirSync からのアップグレード](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>既存の DirSync サーバーが既に実行されている場合に使用します。</li>
 [Azure AD Sync または Azure AD Connect からのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)| <li>複数の方法から自由に選択できます。</li>
 
 
@@ -66,9 +67,9 @@ Azure AD Connect は [Microsoft ダウンロード センター](http://go.micro
 トピック |  
 --------- | ---------
 Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
-Express 設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md)
-カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
-DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+Express 設定を使用したインストール | [Azure AD Connect の高速インストール](./aad-connect/active-directory-aadconnect-get-started-express.md)
+カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./aad-connect/active-directory-aadconnect-get-started-custom.md)
+DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)
 インストール後 | [インストールの確認とライセンスの割り当て](active-directory-aadconnect-whats-next.md)
 
 ### Azure AD Connect のインストールの詳細
@@ -79,7 +80,7 @@ DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) か
 --------- | ---------
 サポートされているトポロジ | [Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md)
 設計概念 | [Azure AD Connect の設計概念](active-directory-aadconnect-design-concepts.md)
-インストールで使用するアカウント | [Azure AD Connect の資格情報とアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
+インストールで使用するアカウント | [Azure AD Connect の資格情報とアクセス許可の詳細](./aad-connect/active-directory-aadconnect-accounts-permissions.md)
 運用計画 | [Azure AD Connect Sync: 操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md)
 ユーザーのサインイン オプション | [Azure AD Connect ユーザーのサインイン オプション](active-directory-aadconnect-user-signin.md)
 
@@ -162,4 +163,4 @@ Azure AD Connect Health を使用した監視 | [Azure AD Connect Health](active
 
 >[AZURE.VIDEO microsoft-ignite-2015-extending-on-premises-directories-to-the-cloud-made-easy-with-azure-active-directory-connect]
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

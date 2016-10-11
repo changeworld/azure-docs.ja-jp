@@ -132,7 +132,7 @@ SQL データベースは Azure SQL Database サーバーの内部で作成さ�
 ## 次のステップ
 SQL データベースを作成し、基本的なデータベース設定タスクを実行したら、次の手順を実行します。
 
-- [PowerShell を使用して SQL Database を管理する](sql-database-command-line-tools.md)
+- [PowerShell を使用して SQL Database を管理する](sql-database-manage-powershell.md)
 - [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
 
 
@@ -140,4 +140,4 @@ SQL データベースを作成し、基本的なデータベース設定タス�
 
 - [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!---HONumber=AcomDC_1005_2016-->

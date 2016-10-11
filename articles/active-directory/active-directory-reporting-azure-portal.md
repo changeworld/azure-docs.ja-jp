@@ -13,10 +13,14 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="09/25/2016"
+   ms.date="09/30/2016"
    ms.author="markvi"/>
 
 # Azure Active Directory レポート - プレビュー
+
+> [AZURE.SELECTOR]
+- [Azure ポータル](active-directory-reporting-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-reporting-guide.md)
 
 *このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
@@ -216,4 +220,4 @@ Azure Portal には、監査関連のアクティビティとして、次の 3 �
 
 「[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->

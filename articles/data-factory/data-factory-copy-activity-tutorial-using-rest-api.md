@@ -19,12 +19,13 @@
 # チュートリアル: コピー アクティビティがあるパイプラインを REST API で作成する
 > [AZURE.SELECTOR]
 - [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
 - [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
 - [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 - [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 - [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 - [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-- [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
+
 
 このチュートリアルでは、REST API を使用して Azure Data Factory を作成および監視する方法について説明しています。データ ファクトリのパイプラインは、コピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
 
@@ -491,4 +492,4 @@ Azure Active Directory (AAD) で認証するには、次のコマンドを実行
 [sql-management-studio]: ../sql-database/sql-database-manage-azure-ssms.md
  
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

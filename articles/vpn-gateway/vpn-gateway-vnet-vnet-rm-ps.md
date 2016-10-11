@@ -20,8 +20,8 @@
 # PowerShell を使用した Resource Manager の VNet 間接続の構成
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell - Resource Manager](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+- [クラシック - クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
 
 この記事では、VPN Gateway を使用して Resource Manager デプロイメント モデルで VNet 間の接続を作成する手順について説明します。仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。
 
@@ -29,19 +29,18 @@
 ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 
-### VNet 対 VNet 用のデプロイ モデルとツール
+### VNet 間接続で使用できるデプロイメント モデルとデプロイ方法
 
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。詳細については後の表を参照してください。この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
+両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。以下の表は、この構成について新しい記事、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。<br><br>
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-
 #### VNET ピアリング
 
-仮想ネットワークの構成が特定の要件を満たしていれば、接続の作成に VNET ピアリングを使用することができます。VNET ピアリングは、仮想ネットワーク ゲートウェイを使用しません。[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)は、現在、プレビュー段階です。
+[AZURE.INCLUDE [vpn-gateway-vnetpeeringlink](../../includes/vpn-gateway-vnetpeeringlink-include.md)]
 
 
 ## VNet 間接続の概要
@@ -453,7 +452,7 @@ TestVNet1 を構成したら、TestVNet4 を作成します。下の手順を実
 
 3. **[Subscription 1]** TestVNet1 から TestVNet5 への接続を作成する
 
-	この手順では、TestVNet1 から TestVNet5 への接続を作成します。ここでの違いは、サブスクリプションが異なるため、$vnet5gw を直接取得できないことです。上記の手順でサブスクリプション 1 から伝えられた値を利用して、新しい PowerShell オブジェクトを作成する必要があります。名前、ID、共有キーを実際の値に置き換えてください。両方の接続の共有キーが一致することが重要です。接続の作成完了までしばらくかかります。
+	この手順では、TestVNet1 から TestVNet5 への接続を作成します。ここでの違いは、サブスクリプションが異なるため、$vnet5gw を直接取得できないことです。上記の手順でサブスクリプション 1 から伝えられた値を利用して、新しい PowerShell オブジェクトを作成する必要があります。次の例を使用します。名前、ID、共有キーを実際の値に置き換えてください。両方の接続の共有キーが一致することが重要です。接続の作成完了までしばらくかかります。
 
 	サブスクリプション 1 に接続します。
 	
@@ -484,4 +483,4 @@ TestVNet1 を構成したら、TestVNet4 を作成します。下の手順を実
 - 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 - BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 
-<!---HONumber=AcomDC_0831_2016-->
+<!---HONumber=AcomDC_1005_2016-->

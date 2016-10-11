@@ -4,7 +4,7 @@
 	services="app-service\mobile"
 	documentationCenter=""
 	authors="adrianhall"
-	manager="dwrede"
+	manager="yochayk"
 	editor=""/>
 
 <tags
@@ -13,10 +13,10 @@
 	ms.tgt_pltfrm="mobile-multiple"
 	ms.devlang="na"
 	ms.topic="hero-article"
-	ms.date="05/03/2016"
-	ms.author="glennga"/>
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
-# <a name="getting-started"></a>Mobile Apps とは
+# <a name="getting-started"> </a>Mobile Apps とは
 
 Azure App Service は、プロの開発者のための完全に管理された[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
 
@@ -98,8 +98,8 @@ Azure Mobile Apps の詳細については、[学習マップ]を確認してく
 [デプロイ オプション]: ../app-service-web/web-sites-deploy.md
 [ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
 [仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service/app-service-app-service-environment-network-configuration-expressroute.md
+[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
-[学習マップ]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[学習マップ]: https://azure.microsoft.com/ja-JP/documentation/learning-paths/appservice-mobileapps/
 
-<!---HONumber=AcomDC_0921_2016-->
+<!---HONumber=AcomDC_1005_2016-->

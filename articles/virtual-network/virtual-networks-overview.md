@@ -17,7 +17,7 @@
 
 # Virtual Network の概要
 
-Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。サブスクリプション専用に Azure クラウドが論理的に分離されています。このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。VNet をさらにサブネットに分割し、Azure IaaS 仮想マシン (VM) や[クラウド サービス (PaaS ロール インスタンス)](../cloud-services/cloud-services-choose-me.md) を起動できます。また、Azure のいずれかの[接続オプション](../vpn-gateway/vpn-gateway-cross-premises-options.md)を使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
+Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。サブスクリプション専用に Azure クラウドが論理的に分離されています。このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。VNet をさらにサブネットに分割し、Azure IaaS 仮想マシン (VM) や[クラウド サービス (PaaS ロール インスタンス)](../cloud-services/cloud-services-choose-me.md) を起動できます。また、Azure のいずれかの[接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site)を使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
 
 VNet をより詳しく説明するために、次の図に簡略化されたオンプレミスのネットワークを示します。
 
@@ -95,4 +95,4 @@ Azure では追加のコストの必要なく Virtual Network を使用できま
 - [NSG](virtual-networks-nsg.md) について。
 - [ユーザー定義のルートと IP 転送](virtual-networks-udr-overview.md)の概要。
 
-<!-------HONumber=AcomDC_0810_2016-->
+<!---HONumber=AcomDC_1005_2016-->

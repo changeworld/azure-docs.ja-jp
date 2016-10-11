@@ -151,6 +151,8 @@ if (!namespaceManager.TopicExists("TestTopic"))
 
 トピック サブスクリプションは、[NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.servicebus.namespacemanager.aspx) クラスを使用して作成することもできます。サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定できます。
 
+> [AZURE.IMPORTANT] サブスクリプションでメッセージを受信するためには、トピックにメッセージを送信する前に、そのサブスクリプションを作成しておく必要があります。トピックに対するサブスクリプションが存在しない場合、それらのメッセージはトピックで破棄されます。
+
 ### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
 **MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。**MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。次の例では、"AllMessages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
@@ -327,4 +329,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [Service Bus ブローカー メッセージング .NET チュートリアル]: service-bus-brokered-tutorial-dotnet.md
   [Azure のサンプル]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=AcomDC_0928_2016-->
+<!---HONumber=AcomDC_1005_2016-->
