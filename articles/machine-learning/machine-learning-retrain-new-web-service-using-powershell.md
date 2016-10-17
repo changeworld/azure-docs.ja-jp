@@ -22,7 +22,7 @@
 
 ### 前提条件
 
-「プログラムによる Machine Learning のモデルの再トレーニング」に示されているようにトレーニング実験と予測実験が設定されているものとします。トレーニング実験および予測実験の作成方法については、「プログラムによる Machine Learning のモデルの再トレーニング (Retrain Machine Learning models programmatically.md)」をご覧ください。
+「プログラムによる Machine Learning のモデルの再トレーニング」に示されているようにトレーニング実験と予測実験が設定されているものとします。トレーニング実験および予測実験の作成方法については、「[プログラムによる Machine Learning のモデルの再トレーニング](Retrain Machine Learning models programmatically.md)」をご覧ください。
 
 このプロセスでは、Azure Machine Learning コマンドレットがインストールされていることが必要です。Machine Learning コマンドレットのインストール方法については、MSDN の [Azure Machine Learning コマンドレット](https://msdn.microsoft.com/library/azure/mt767952.aspx) リファレンスをご覧ください。
  

@@ -58,7 +58,7 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 
 ## 関連記事
 
-- Azure Active Directory のアプリケーション構成の管理に関する記事の索引
+- [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
 - [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
 - [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md)
 	
@@ -68,4 +68,4 @@ SAML トークンの属性テーブル内の行のいずれかにマウスを置
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->
