@@ -511,7 +511,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 	* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。形式は https://login.windows.net/contoso.onmicrosoft.com である必要があります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 	* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
 	* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-	* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
+	* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの _/.auth/login/done_ エンドポイントに置き換えます。この値は、_https://contoso.azurewebsites.net/.auth/login/done_ と同様です。
 	
 	各プラットフォームに必要なコードは次のとおりです。
 	
@@ -929,7 +929,7 @@ Xamarin アプリでは、iOS または Android プラットフォームで実�
 [Azure モバイル アプリでのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Microsoft アカウント ログインを使用するためのアプリの登録]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[How to configure App Service for Active Directory login]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Active Directory ログインを使用するように App Service を構成する方法]: app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [Azure Mobile Apps .NET クライアント リファレンス]: https://msdn.microsoft.com/ja-JP/library/azure/mt419521(v=azure.10).aspx
@@ -984,4 +984,4 @@ Xamarin アプリでは、iOS または Android プラットフォームで実�
 [AuthStore.cs]: (https://github.com/azure-appservice-samples/ContosoMoments/blob/dev/src/Mobile/ContosoMoments/Helpers/AuthStore.cs)
 [ContosoMoments 写真共有サンプル]: https://github.com/azure-appservice-samples/ContosoMoments
 
-<!---HONumber=AcomDC_0928_2016-->
+<!----HONumber=AcomDC_0928_2016-->

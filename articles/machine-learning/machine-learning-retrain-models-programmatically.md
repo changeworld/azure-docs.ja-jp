@@ -73,7 +73,7 @@ Machine Learning のトレーニング プロセスの一環として、モデ�
 
 1.	実験キャンバスの下部で、**[Set Up Web Service (Web サービスの設定)]** をクリックして **[Predictive Web Service (予測 Web サービス)]** を選択します。これによりモデルがトレーニング済みのモデルとして保存され、Web サービス入力モジュールと Web サービス出力モジュールが追加されます。
 2.	**[実行]** をクリックします。
-3.	実験の実行が終了したら **[Deploy Web Service [Classic](Web サービスのデプロイ [従来])]** または **Deploy Web Service [New](Web サービスのデプロイ [新規])** を選択します。
+3.	実験の実行が終了したら **[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **Deploy Web Service [New]\(Web サービスのデプロイ [新規])** を選択します。
 
 ## トレーニング実験をトレーニング Web サービスとしてデプロイする
 
