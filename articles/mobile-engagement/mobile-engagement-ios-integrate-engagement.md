@@ -49,7 +49,7 @@ XCode 7 に依存している場合は、[iOS Engagement SDK v3.2.4](https://aka
 	-   `CoreLocation.framework`
 	-   `libxml2.dylib`
 
-> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます <ios-sdk-engagement-idfa>。
+> [AZURE.NOTE] AdSupport フレームワークは削除してもかまいません。Engagement では、IDFA の収集のためこのフレームワークが必要です。ただし、IDFA コレクションは、この ID に関する新しい Apple ポリシーに準じて無効にできます \<ios-sdk-engagement-idfa\>。
 
 ##Engagement SDK を初期化する
 

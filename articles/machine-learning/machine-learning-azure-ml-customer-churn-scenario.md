@@ -225,7 +225,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 \[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 (http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) の「Telco churn model template (Telco の顧客離れモデルのテンプレート)」  
+\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 の「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」  
 ##付録
 
 ![][10]
