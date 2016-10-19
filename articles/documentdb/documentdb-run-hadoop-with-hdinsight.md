@@ -195,7 +195,9 @@
 
 3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
 
-	> [AZURE.NOTE] **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> '*DocumentDB.outputCollections*' = '*<DocumentDB Output Collection Name 1>*,*<DocumentDB Output Collection Name 2>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br> ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+	> [AZURE.NOTE] **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> 
+	'*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br> 
+	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
 		# Create a Hive table for the output data to DocumentDB.
 	    $queryStringPart2 = "drop table DocumentDB_analytics; " +
@@ -437,4 +439,4 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 
 [powershell-install-configure]: ../powershell-install-configure.md
 
-<!---HONumber=AcomDC_0921_2016-->
+<!----HONumber=AcomDC_0921_2016-->
