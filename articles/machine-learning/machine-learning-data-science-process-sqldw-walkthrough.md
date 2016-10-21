@@ -549,7 +549,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 ### モデルのビルド用にデータを準備する
 
-次のクエリは **nyctaxi\_trip** および **nyctaxi\_fare** テーブルを結合して、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を生成し、結合データセット全体からサンプルを抽出します。サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Database インスタンスから直接データを取り込めます。このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリは **nyctaxi\_trip** および **nyctaxi\_fare** テーブルを結合して、二項分類ラベル **tipped** と多クラス分類ラベル **tip\_class** を生成し、結合データセット全体からサンプルを抽出します。サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) [の データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Database インスタンスから直接データを取り込めます。このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
 	SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, 	f.total_amount, f.tip_amount,
 	    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
