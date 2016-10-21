@@ -308,6 +308,9 @@
 	1. **[参照]** をクリックし、**[Data Factory]** を選択します。
 		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
 	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。 
+
+		![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
+
 7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
   
 	![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)

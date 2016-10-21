@@ -198,7 +198,7 @@ SQL Server 統合サービス (SSIS) を使用して、フラット ファイル
 	
 4. 「[ファイル ソースからのデータの移動](#filesource_to_sqlonazurevm)」セクションで説明されているいずれかの方法を使用して、フラット ファイルのデータを SQL Server に移動します。
 
-### <a name="sql-migration">SQL Database 移行ウィザード</a>
+### <a name="sql-migration"></a>SQL Database 移行ウィザード
 
 [SQL Server データベース移行ウィザード](http://sqlazuremw.codeplex.com/)は、2 つの SQL server インスタンス間でデータを移動するための使いやすい方法を提供します。これにより、ユーザーはソースと移動先テーブル間でデータ スキーマをマップし、列の型と他のさまざまな機能を選択できます。これは、内部で一括コピー (BCP) を使用します。次に、SQL データベースの移行ウィザードのようこそ画面のスクリーン ショットを示します。
 
