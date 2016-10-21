@@ -1,128 +1,139 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Lucidchart の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Lucidchart を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Lucidchart | Microsoft Azure" 
+    description="Learn how to use Lucidchart with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-	manager="femila"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Lucidchart の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-lucidchart"></a>Tutorial: Azure Active Directory integration with Lucidchart
   
-このチュートリアルでは、Azure と Lucidchart の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Lucidchart.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Lucidchart でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Lucidchart single sign-on enabled subscription
   
-このチュートリアルを完了すると、Lucidchart に割り当てた Azure AD ユーザーは、Lucidchart 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Lucidchart will be able to single sign into the application at your Lucidchart company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Lucidchart のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Lucidchart
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-lucidchart-tutorial/IC791183.png "シナリオ")
-##Lucidchart のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-lucidchart-tutorial/IC791183.png "Scenario")
+##<a name="enabling-the-application-integration-for-lucidchart"></a>Enabling the application integration for Lucidchart
   
-このセクションでは、Lucidchart のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for Lucidchart.
 
-###Lucidchart のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-lucidchart,-perform-the-following-steps:"></a>To enable the application integration for Lucidchart, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-lucidchart-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-lucidchart-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-lucidchart-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-lucidchart-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-lucidchart-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-lucidchart-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-lucidchart-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Lucidchart**」と入力します。
+6.  In the **search box**, type **Lucidchart**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-lucidchart-tutorial/IC791184.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-lucidchart-tutorial/IC791184.png "Application Gallery")
 
-7.  結果ウィンドウで **[Lucidchart]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Lucidchart**, and then click **Complete** to add the application.
 
     ![Lucidchart](./media/active-directory-saas-lucidchart-tutorial/IC791185.png "Lucidchart")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Lucidchart に対する認証を行うことができるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Lucidchart with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **[Lucidchart]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Lucidchart** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791186.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Lucidchart へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Lucidchart** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791187.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページの **[Lucidchart サインオン URL]** テキストボックスに、ユーザーが Lucidchart アプリケーションにサインオンするときに使用する URL (例: "*https://chart2.office.lucidchart.com/saml/sso/azure*") を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Lucidchart Sign On URL** textbox, type the URL used by your users to sign on to your Lucidchart application (e.g.: "*https://chart2.office.lucidchart.com/saml/sso/azure*"), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-lucidchart-tutorial/IC791188.png "Configure App URL")
 
-4.  **[Lucidchart でのシングル サインオンの構成]** ページで、**[データのダウンロード]** をクリックしてメタデータをダウンロードし、データ ファイルをコンピューターのローカルに保存します。
+4.  On the **Configure single sign-on at Lucidchart** page, to download your metadata, click **Download metadata**, and then save the data file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791189.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、Lucidchart の企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Lucidchart company site as an administrator.
 
-6.  上部のメニューで **[チーム]** をクリックします。
+6.  In the menu on the top, click **Team**.
 
-    ![チーム](./media/active-directory-saas-lucidchart-tutorial/IC791190.png "チーム")
+    ![Team](./media/active-directory-saas-lucidchart-tutorial/IC791190.png "Team")
 
-7.  **[アプリケーション] > [SAML の管理]** をクリックします。
+7.  Click **Application \> Manage SAML**.
 
-    ![SAML の管理](./media/active-directory-saas-lucidchart-tutorial/IC791191.png "SAML の管理")
+    ![Manage SAML](./media/active-directory-saas-lucidchart-tutorial/IC791191.png "Manage SAML")
 
-8.  **[SAML Authentication Settings]** ダイアログ ページで、次の手順に従います。
+8.  On the **SAML Authentication Settings** dialog page, perform the following steps:
 
-    1.  **[SAML 認証を有効にする]** を選んで、**[オプション]** をクリックします。![SAML 認証の設定](./media/active-directory-saas-lucidchart-tutorial/IC791192.png "SAML 認証の設定")
-    2.  **[ドメイン]** テキストボックスで、使用するドメインを入力して、**[証明書の変更]** をクリックします。![証明書の変更](./media/active-directory-saas-lucidchart-tutorial/IC791193.png "証明書の変更")
-    3.  ダウンロードしたメタデータ ファイルを開いて内容をコピーし、**[Upload Metadata (メタデータのアップロード)]** テキストボックスに貼り付けます。![メタデータのアップロード](./media/active-directory-saas-lucidchart-tutorial/IC791194.png "メタデータのアップロード")
-    4.  **[Automatically Add new user to the team (新しいユーザーを自動的にチームに追加する)]** を選んで、**[変更を保存]** をクリックします。![変更を保存](./media/active-directory-saas-lucidchart-tutorial/IC791195.png "変更を保存")
+    1.  Select **Enable SAML Authentication**, and then click **Optional**.
+        ![SAML Authentication Settings](./media/active-directory-saas-lucidchart-tutorial/IC791192.png "SAML Authentication Settings")
+    2.  In the **Domain** textbox, type your domain, and then click **Change Certificate**.
+        ![Change Certificate](./media/active-directory-saas-lucidchart-tutorial/IC791193.png "Change Certificate")
+    3.  Open your downloaded metadata file, copy the content, and then paste it into the **Upload Metadata** textbox.
+        ![Upload Metadata](./media/active-directory-saas-lucidchart-tutorial/IC791194.png "Upload Metadata")
+    4.  Select **Automatically Add new user to the team**, and then click **Save changes**.
+        ![Save Changes](./media/active-directory-saas-lucidchart-tutorial/IC791195.png "Save Changes")
 
-9.  [シングル サインオンの構成確認] を選び、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  Select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-lucidchart-tutorial/IC791196.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Lucidchart へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当て済みユーザーがアクセス パネルを使用して Lucidchart にログインしようとすると、そのユーザーが存在するかどうかが Lucidchart によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Lucidchart により自動的に作成されます。
-##ユーザーの割り当て
+There is no action item for you to configure user provisioning to Lucidchart.  
+When an assigned user tries to log into Lucidchart using the access panel, Lucidchart checks whether the user exists.  
+If there is no user account available yet, it is automatically created by Lucidchart.
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Lucidchart に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-lucidchart,-perform-the-following-steps:"></a>To assign users to Lucidchart, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Lucidchart** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Lucidchart **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-lucidchart-tutorial/IC791197.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-lucidchart-tutorial/IC791197.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-lucidchart-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

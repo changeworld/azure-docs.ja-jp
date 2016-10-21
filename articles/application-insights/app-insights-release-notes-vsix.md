@@ -1,192 +1,200 @@
 <properties
-	pageTitle="開発者分析用 Visual Studio 拡張機能のリリース ノート"
-	description="開発者分析用 Visual Studio ツールの更新内容。"
-	services="application-insights"
+    pageTitle="Release notes for Visual Studio Extension for Developer Analytics"
+    description="The latest updates for Visual Studio tools for Developer Analytics."
+    services="application-insights"
     documentationCenter=""
-	authors="acearun"
-	manager="douge"/>
+    authors="acearun"
+    manager="douge"/>
 <tags
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/09/2016"
-	ms.author="acearun"/>
+    ms.service="application-insights"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="ibiza"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/09/2016"
+    ms.author="acearun"/>
 
-# Developer Analytics Tools のリリース ノート
-新機能: Visual Studio での Application Insights と HockeyApp の分析
-## Version 7.0
-### Visual Studio Application Insights の傾向
-Visual Studio Application Insights は、時間経過に伴うアプリの動作を分析するための Visual Studio の新しいツールです。このツールを起動するには、**[Application Insights]** ツール バー ボタンまたは Application Insights の [検索] ウィンドウから **[テレメトリの傾向を調べる]** を選択します。または、**[表示]** メニューの **[その他のウィンドウ]** をクリックし、**[Application Insights の傾向]** をクリックします。5 つの一般的なクエリから 1 つ選択して開始します。テレメトリの種類、時間範囲、およびその他のプロパティに基づき、さまざまなデータセットを分析できます。データ内の異常を見つけるには、**[ビューの種類]** ボックスの一覧からいずれかの異常オプションを選択します。ウィンドウの下部にあるフィルター オプションを使用すると、テレメトリの特定の部分に対象を絞り込みやすくなります。
+
+# <a name="release-notes-for-developer-analytics-tools"></a>Release Notes for Developer Analytics Tools
+What's new: Application Insights and HockeyApp analytics in Visual Studio.
+## <a name="version-7.0"></a>Version 7.0
+### <a name="visual-studio-application-insights-trends"></a>Visual Studio Application Insights Trends
+Visual Studio Application Insights is a new tool in Visual Studio that you can use to help you analyze how your app operates over time. To get started, on the **Application Insights** toolbar button or in the Application Insights Search window, choose **Explore Telemetry Trends**. Or, on the **View** menu, click **Other Windows**, and then click **Application Insights Trends**. Choose one of five common queries to get started. You can analyze different data sets based on telemetry types, time ranges, and other properties. To find anomalies in your data, choose one of the anomaly options in the **View Type** drop-down list. The filtering options at the bottom of the window make it easy to hone in on specific subsets of your telemetry.
 
 ![Application Insights Trends](./media/app-insights-release-notes-vsix/Trends.PNG)
 
-### CodeLens における例外
-CodeLens で例外のテレメトリを表示できるようになりました。プロジェクトが Application Insights サービスに接続されている場合、開発中の各メソッドで過去 24 時間内に発生した例外の数が表示されます。CodeLens から [検索] または [傾向] に移動すれば、さらに詳しく例外を調べることができます。
+### <a name="exceptions-in-codelens"></a>Exceptions in CodeLens
+Exception telemetry is now displayed in CodeLens. If you've connected your project to the Application Insights service, you'll see the number of exceptions that have occurred in each method in production in the past 24 hours. From CodeLens, you can jump to Search or Trends to investigate the exceptions in more detail.
 
-![CodeLens における例外](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
+![Exceptions in CodeLens](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
 
-### ASP.NET Core のサポート
-Application Insights により、Visual Studio で ASP.NET Core RC2 プロジェクトがサポートされるようになりました。以下のスクリーンショットに示したように、新しい ASP.NET Core RC2 プロジェクトに Application Insights を追加するには、**[新しいプロジェクト]** ダイアログを使用します。または、既存のプロジェクトに追加することもできます。その場合は、ソリューション エクスプローラーで既存のプロジェクトを右クリックし、**[Application Insights Telemetry の追加]** をクリックします。
+### <a name="asp.net-core-support"></a>ASP.NET Core support
+Application Insights now supports ASP.NET Core RC2 projects in Visual Studio. You can add Application Insights to new ASP.NET Core RC2 projects from the **New Project** dialog, as in the following screenshot. Or, you can add it to an existing project, right-click the project in Solution Explorer, and then click **Add Application Insights Telemetry**.
 
 ![ASP.NET Core support](./media/app-insights-release-notes-vsix/NetCoreSupport.PNG)
 
-ASP.NET 5 RC1 と ASP.NET Core RC2 プロジェクトには、診断ツール ウィンドウでの新しいサポートもあります。お使いの PC でローカルにデバッグ中に、ASP.NET アプリケーションから要求や例外などの Application Insights のイベントが表示されます。個々のイベントから **[検索]** をクリックすると、ドリルダウンして、さらに詳しい情報を得ることができます。
+ASP.NET 5 RC1 and ASP.NET Core RC2 projects also have new support in the Diagnostic Tools window. You'll see Application Insights events like requests and exceptions from your ASP.NET app while you debug locally on your PC. From each event, click **Search** to drill down for more information.
 
-![診断ツールのサポート](./media/app-insights-release-notes-vsix/DiagnosticTools.PNG)
+![Diagnostic Tools support](./media/app-insights-release-notes-vsix/DiagnosticTools.PNG)
 
-### ユニバーサル Windows アプリ用 HockeyApp
-HockeyApp には、ベータ版の配布やユーザー フィードバックに加え、ユニバーサル Windows アプリのクラッシュ レポートにシンボルを対応付ける機能があります。この HockeyApp SDK が従来よりも簡単に追加できるようになりました。対象のユニバーサル Windows プロジェクトを右クリックし、**[Hockey App - Enable Crash Analytics (HockeyApp - クラッシュ分析を有効にする)]** の順にクリックするだけです。これだけで SDK がインストールされ、クラッシュ収集がセットアップされて、HockeyApp のリソースがクラウドにプロビジョニングされます。アプリを HockeyApp サービスにアップロードする必要はありません。
+### <a name="hockeyapp-for-universal-windows-apps"></a>HockeyApp for Universal Windows apps
+In addition to beta distribution and user feedback, HockeyApp provides symbolicated crash reporting for your Universal Windows apps. We've made it even easier to add the HockeyApp SDK: right-click on your Universal Windows project, and then click **Hockey App - Enable Crash Analytics**. This installs the SDK, sets up crash collection, and provisions a HockeyApp resource in the cloud, all without uploading your app to the HockeyApp service.
 
-その他の新機能:
+Other new features:
 
-* Application Insights の検索機能が高速化され、より直感的に利用できるようになりました。時間範囲フィルターと詳細フィルターを選択すると、それらが自動的に適用されます。
-* また、要求のテレメトリから直接コードに移動するオプションが Application Insights の検索に追加されました。
-* HockeyApp サインイン エクスペリエンスが向上しました。
-* 診断ツールで、例外に関する運用テレメトリ情報が表示されます。
+* We've made the Application Insights Search experience faster and more intuitive. Now, time ranges and detail filters are automatically applied as you select them.
+* Also in Application Insights Search, now there's an option to jump to the code directly from the request telemetry.
+* We've made improvements to the HockeyApp sign-in experience.
+* In Diagnostic Tools, production telemetry information for exceptions is displayed.
 
-## バージョン 5.2
-Visual Studio に HockeyApp シナリオを導入することになりました。まず、ユニバーサル Windows アプリと Windows フォーム アプリのベータ版を Visual Studio 内から配布できるようになります。
+## <a name="version-5.2"></a>Version 5.2
+We are happy to announce the introduction of HockeyApp scenarios in Visual Studio. The first integration is in beta distribution of Universal Windows apps and Windows Forms apps from within Visual Studio.
 
-ベータ版配布を使用すると、初期バージョンのアプリを HockeyApp にアップロードし、一部の顧客やテスターに配布することができます。ベータ版配布に HockeyApp のクラッシュ コレクションとユーザー フィードバック機能を組み合わせることで、アプリに関する重要な情報を本格的なリリースの前に収集することができます。その情報を基にアプリの問題を解決しておけば、後で低い評価が下されたり否定的なフィードバックが寄せられたりするなどの問題を回避するか、最小限に抑えることができます。
+With beta distribution, you upload early versions of your apps to HockeyApp for distribution to a selected subset of customers or testers. Beta distribution, combined with HockeyApp crash collection and user feedback features, can provide you with valuable information about your app before you make a broad release. You can use this information to address issues with your app so that you can avoid or minimize future problems, such as low app ratings, negative feedback, and so on.
 
-Visual Studio からベータ版配布用にビルドをアップロードする方法は簡単です。ここではその方法について説明します。
-### ユニバーサル Windows アプリ
-ユニバーサル Windows アプリ プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが追加されました。
+Check out how simple it is to upload builds for beta distribution from within Visual Studio.
+### <a name="universal-windows-apps"></a>Universal Windows apps
+The context menu for a Universal Windows app project node now includes an option to upload your build to HockeyApp.
 
 ![Project context menu for Universal Windows apps](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
 
-項目を選択すると、HockeyApp アップロード ダイアログが表示されます。ビルドをアップロードするには、HockeyApp アカウントが必要です。まだ使ったことがない方もご安心ください。アカウントは簡単なプロセスで作成できます。
+Choose the item and the HockeyApp upload dialog box opens. You will need a HockeyApp account to upload your build. If you are a new user, don't worry. Creating an account is a simple process.
 
-接続すると、ダイアログにアップロード フォームが表示されます。
+When you are connected, you will see the upload form in the dialog.
 
 ![Upload dialog for Universal Windows apps](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-アップロードするコンテンツ (.appxbundle ファイルまたは .appx ファイル) を選択し、ウィザードでリリース オプションを選択します。必要に応じて、次のページでリリース ノートを追加できます。**[Finish (終了)]** を選択してアップロードを開始します。
+Select the content to upload (an .appxbundle or .appx file), and then choose release options in the wizard. Optionally, you can add release notes on the next page. Choose **Finish** to begin the upload.
 
-アップロードが完了すると、HockeyApp の通知画面に確認メッセージと HockeyApp ポータルのアプリへのリンクが表示されます。
+When the upload is complete, a HockeyApp notification with confirmation and a link to the app in the HockeyApp portal appears.
 
 ![Upload complete notification](./media/app-insights-release-notes-vsix/UploadComplete.png)
 
-これで終了です。 わずか数回のクリックで、ベータ版配布用ビルドをアップロードしました。
+That’s it! You've just uploaded a build for beta distribution with just a few clicks.
 
-HockeyApp ポータルから、さまざまな方法でアプリケーションを管理することができます。たとえばユーザーを招待したり、クラッシュ レポートやフィードバックを閲覧したり、詳細情報を変更したりすることもできます。
+You can manage your application in numerous ways in the HockeyApp portal. This includes inviting users, viewing crash reports and feedback, changing details, and so on.
 
-![HockeyApp ポータル](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
+![HockeyApp portal](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-アプリの管理について詳しくは、[HockeyApp のサポート技術情報](http://support.hockeyapp.net/kb/app-management-2)をご覧ください。
+See the [HockeyApp Knowledge Base](http://support.hockeyapp.net/kb/app-management-2) for more details about app management.
 
-### Windows フォーム アプリ
-Windows フォーム プロジェクト ノードのコンテキスト メニューには、ビルドを HockeyApp にアップロードするオプションが追加されました。
+### <a name="windows-forms-apps"></a>Windows Forms apps
+The context menu for a Windows Form project node now includes an option to upload your build to HockeyApp.
 
-![Windows フォーム アプリのプロジェクト コンテキスト メニュー](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
+![Project context menu for Windows Forms apps](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
 
-このオプションを選択すると、HockeyApp のアップロード ダイアログが、ユニバーサル Windows アプリの場合と同様に表示されます。
+This opens the HockeyApp upload dialog, which is similar to the one in a Universal Windows app.
 
 ![Upload dialog for Windows Forms apps](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
 
-このウィザードに、アプリのバージョンを指定するための新しいフィールドが追加されていることに注目してください。ユニバーサル Windows アプリの場合、この情報はマニフェストから取得されます。あいにく Windows フォーム アプリに関しては、これと同等の機能がありません。手動で指定する必要があります。
+Note a new field in this wizard, for specifying the version of the app. For Universal Windows apps, the information is populated from the manifest. Windows Forms apps, unfortunately, don’t have an equivalent to this feature. You will need to specify them manually.
 
-その他のフローはユニバーサル Windows アプリと同様です。ビルドを選択し、リリース オプションを選択して、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
+The rest of the flow is similar to Universal Windows apps: choose build and release options, add release notes, upload, and manage in the HockeyApp portal.
 
-このように操作は簡単です。ぜひ試してご意見をお聞かせください。
-## バージョン 4.3
-### ローカル デバッグ セッションからのテレメトリの検索
-このリリースでは、Visual Studio デバッグ セッションで生成された Application Insights Telemetry を検索できるようになりました。従来、検索を利用できるのは、Application Insights にアプリを登録した場合に限られていました。今後は、Application Insights SDK がインストールされていれば、アプリでローカルのテレメトリを検索することができます。
+It’s as simple as that. Give it a try and let us know what you think.
+## <a name="version-4.3"></a>Version 4.3
+### <a name="search-telemetry-from-local-debug-sessions"></a>Search telemetry from local debug sessions
+With this release, you can now search for Application Insights telemetry generated in the Visual Studio debug session. Before, you could use search only if you registered your app with Application Insights. Now, your app only needs to have the Application Insights SDK installed to search for local telemetry.
 
-ASP.NET アプリケーションと Application Insights SDK がある場合は、次の手順で検索機能を利用できます。
+If you have an ASP.NET application with the Application Insights SDK, do the following steps to use Search.
 
-1. アプリケーションをデバッグします。
-2. 次のいずれかの方法で [Application Insights の検索] を開きます。
-	- **[表示]** メニューの **[その他のウィンドウ]** をクリックし、**[Application Insights の検索]** をクリックします。
-	- **[Application Insights]** ツール バー ボタンをクリックします。
-	- ソリューション エクスプ ローラーで、**[ApplicationInsights.config]** を展開し、**[デバッグ セッションのテレメトリの検索]** をクリックします。
-3. Application Insights にサインアップしていない場合、[検索] ウィンドウはデバッグ セッションのテレメトリ モードで開きます。
-4. ローカルのテレメトリを表示するには、**[検索]** アイコンをクリックします。
+1. Debug your application.
+2. Open Application Insights Search in one of these ways:
+    - On the **View** menu, click **Other Windows**, and then click **Application Insights Search**.
+    - Click the **Application Insights** toolbar button.
+    - In Solution Explorer, expand **ApplicationInsights.config**, and then click **Search debug session telemetry**.
+3. If you haven't signed up with Application Insights, the Search window will open in debug session telemetry mode.
+4. Click the **Search** icon to see your local telemetry.
 
-![アップロード完了](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![Upload complete](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
-## バージョン 4.2
-このリリースでは、イベントのコンテキストでのデータ検索を容易にする機能、複数のデータ イベントからコードに移動する機能、およびログ データを Application Insights に送信するための非常に簡単なエクスペリエンスが追加されました。この拡張機能は毎月更新されます。ご意見や機能に関するご要望がありましたら、aidevtools@microsoft.com までお寄せください。
-### クリックレスのログ記録
-既に NLog、log4net、System.Diagnostics.Tracing を使用している場合、必要なトレースを自分ですべて Application Insights に移動する必要はありません。このリリースでは、標準的な構成機能に Application Insights ログ アダプターを統合しました。前述のいずれかのログ記録フレームワークが既に構成されている場合の取得方法を次のセクションで説明します。**Application Insights が既に追加されている場合: **
-1. プロジェクト ノードを右クリックし、**[Application Insights]** をクリックして、**[Application Insights の構成]** をクリックします。構成ウィンドウで、正しいアダプターを追加するオプションが設定されていることを確認します。
-2. または、ソリューションをビルドするときに、画面右上に表示されるポップアップ ウィンドウの **[構成]** をクリックします。
+## <a name="version-4.2"></a>Version 4.2
+In this release, we added features to make searching for data easier in the context of events, with the ability to jump to code from more data events, and an effortless experience to send your logging data to Application Insights. This extension is updated monthly. If you have feedback or feature requests, send it to aidevtools@microsoft.com.
+### <a name="no-click-logging-experience"></a>No-click logging experience
+If you're already using NLog, log4net, or System.Diagnostics.Tracing, you don't have to worry about moving all of your traces to Application Insights. In this release, we've integrated the Application Insights logging adapters with the normal configuration experience.
+If you already have one of these logging frameworks configured, the following section describes how to get it.
+**If you've already added Application Insights:**
+1. Right-click the project node, and then click **Application Insights**, and then click **Configure Application Insights**. Make sure that you see the option to add the correct adapter in the configuration window.
+2. Alternatively, when you build the solution, note the pop-up window that appears on the top right of your screen and click **Configure**.
 
 ![Logging notification](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
-ログ アダプターをインストールしたら、アプリケーションを実行して、[診断ツール] タブに次のようにデータが表示されることを確認します。
+When you have the Logging adapter installed, run your application and make sure you see the data in the diagnostic tools tab, like this:
 
-![トレース](./media/app-insights-release-notes-vsix/Traces.png)
+![Traces](./media/app-insights-release-notes-vsix/Traces.png)
 
-### テレメトリ イベント プロパティが生成されるコードへの移動、またはこれらのコードの検索
-新しいリリースでは、ユーザーはイベント詳細の任意の値をクリックすることで、現在開いているソリューション内で一致する文字列を検索できます。結果は、Visual Studio の [検索結果] リストに次のように表示されます。
+### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>Jump to or find the code where the telemetry event property is emitted
+With the new release user can click on any value in the event detail and this will search for a matching string in the current open solution. Results will show up in Visual Studio "Find Results" list as shown below:
 
 ![Find match](./media/app-insights-release-notes-vsix/FindMatch.png)
 
-### サインインしていないときに表示される新しい検索ウィンドウ
-Application Insights の検索ウィンドウの外観が改善され、アプリが稼働状態であるときにデータが検索しやすくなりました。
+### <a name="new-search-window-for-when-you-are-not-signed-in"></a>New Search window for when you are not signed in
+We've improved the look of the Application Insights Search window to help you search your data while your app is in production.
 
 ![Search window](./media/app-insights-release-notes-vsix/SearchWindow.png)
 
-### イベントに関連するすべてのテレメトリ イベントが表示可能に
-イベントの詳細を表示するタブの横に、新しいタブを追加しました。このタブには、ユーザーが閲覧しているテレメトリ イベントに関連するすべてのデータを問い合わせるクエリがあらかじめ定義されています。たとえば要求には、**操作 ID** というフィールドが存在します。その要求に関連付けられているすべてのイベントには、同じ**操作 ID** の値が割り当てられます。その操作によって要求が処理されている間に例外が発生した場合、その例外には要求と同じ操作 ID が割り当てられるため、容易に見つけることができます。特定の要求を表示した状態で **[この操作のすべてのテレメトリ]** をクリックすると、新しいタブが開いて新しい検索結果が表示されます。
+### <a name="see-all-telemetry-events-associated-with-the-event"></a>See all telemetry events associated with the event
+We've added a new tab, with predefined queries for all data related to the telemetry event the user is viewing, next to the tab for event details. For example, a request has a field called **Operation ID**. Every event associated to this request has the same value for **Operation ID**. If an exception occurs while the operation is processing the request, the exception is given the same operation ID as the request to make it easier to find. If you're looking at a request, click **All telemetry for this operation** to open a new tab that displays the new search results.
 
-![関連項目](./media/app-insights-release-notes-vsix/RelatedItems.png)
+![Related items](./media/app-insights-release-notes-vsix/RelatedItems.png)
 
-### 前後の検索結果の表示
-前後の検索結果を表示できるようになりました。
+### <a name="forward-and-back-history-in-search"></a>Forward and Back history in Search
+Now you can go back and forth between search results.
 
 ![Go back](./media/app-insights-release-notes-vsix/GoBAck.png)
 
-## Version 4.1
-このリリースでは、さまざまな新機能が追加され、既存の機能も多数更新されています。このリリースをインストールするには、Update 1 がインストールされている必要があります。
+## <a name="version-4.1"></a>Version 4.1
+This release comes with a number of new features and updates. You need to have Update 1 installed to install this release.
 
-### 例外からソース コード内のメソッドへのジャンプ
-運用アプリから発生した例外を [Application Insights の検索] ウィンドウで表示した場合に、その例外の発生元となったコード内のメソッドに移動できるようになりました。必要な操作は、正しいプロジェクトを読み込むだけです。後はすべて Application Insights によって自動的に行われます。 [Application Insights の検索] ウィンドウの詳細については、この後の Version 4.0 のリリース ノートを参照してください。
+### <a name="jump-from-an-exception-to-method-in-source-code"></a>Jump from an exception to method in source code
+Now, if you view exceptions from your production app in the Application Insights Search window, you can jump to the method in your code where the exception is occurring. You only need to have the correct project loaded and Application Insights takes care of the rest! (To learn more about the Application Insights Search window, see the release notes for Version 4.0 in the following sections.)
 
-それはどのように機能しますか? Application Insights の検索は、ソリューションを開いていないときでも使用できます。スタック トレース領域に情報メッセージが表示されます。ただしスタック トレースでは、項目の多くが利用できません。
+How does it work? You can use Applications Insights Search even when a solution isn't open. The stack trace area displays an information message, and many of the items in the stack trace are unavailable.
 
-ファイル情報が使用可能な場合は、いくつかの項目がリンクになりますが、ソリューション情報項目も引き続き表示されます。
+If file information is available, some items might be links, but the solution information item will still be visible.
 
-ハイパーリンクをクリックすると、コード内の選択したメソッドの場所が表示されます。バージョン番号に違いがある可能性はありますが、今後のリリースでは、正しいバージョンのコードにジャンプする機能が提供される予定です。
+If you click the hyperlink, you'll jump to the location of the selected method in your code. There might be a difference in the version number, but the feature, to jump to the correct version of the code, will come in later releases.
 
 ![Click exception details](./media/app-insights-release-notes-vsix/jumptocode.png)
 
-### ソリューション エクスプローラーの検索エクスペリエンスへの新しいエントリ ポイント
-ソリューション エクスプローラーから検索機能にアクセスできるようになりました。
+### <a name="new-entry-points-to-the-search-experience-in-solution-explorer"></a>New entry points to the Search experience in Solution Explorer
+Now you can access Search through Solution Explorer.
 
 ![Search in Solution Explorer](./media/app-insights-release-notes-vsix/searchentry.png)
 
-### 発行が完了すると通知が表示されます。
-プロジェクトがオンラインに発行されると、ポップアップ ダイアログが表示され、運用環境の Application Insights データを見ることができます。
+### <a name="displays-a-notification-when-publish-is-completed"></a>Displays a notification when publish is completed
+A pop-up dialog box appears when the project is published online, so that you can view your Application Insights data in production.
 
 ![Publish complete notification](./media/app-insights-release-notes-vsix/publishtoast.png)
 
-## Version 4.0
+## <a name="version-4.0"></a>Version 4.0
 
-### Visual Studio 内から Application Insights データを検索
-Application Insights ポータルでの検索機能と同じように、Visual Studio 内からイベントの種類やプロパティ値、テキストをフィルターで抽出して検索し、そのうえで個々のイベントを調査することができます。
+### <a name="search-application-insights-data-from-within-visual-studio"></a>Search Application Insights data from within Visual Studio
+Like the search function in the Application Insights portal, now in Visual Studio you can filter and search on event types, property values, and text, and then inspect individual events.
 
 ![Search window](./media/app-insights-release-notes-vsix/search.png)
 
-### ローカル コンピューターからのデータを診断ツールで表示
+### <a name="see-data-coming-from-your-local-computer-in-diagnostic-tools"></a>See data coming from your local computer in Diagnostic Tools
 
-Visual Studio の [診断ツール] ページで、ローカルにあるテレメトリや他のデバッグ データを表示できます。ASP.NET 4.5 のみサポートされます。
+You can view your telemetry, in addition to other debugging data, on the Visual Studio Diagnostic Tools page. Only ASP.NET 4.5 is supported.
 
 ![Diagnostic Tools page](./media/app-insights-release-notes-vsix/diagtools.png)
 
-### Azure にサインインすることなくプロジェクトに SDK を追加
+### <a name="add-the-sdk-to-your-project-without-signing-in-to-azure"></a>Add the SDK to your project without signing in to Azure
 
-**[新しいプロジェクト]** ダイアログまたはプロジェクトのコンテキスト メニューで Application Insights パッケージをプロジェクトに追加する際、Azure にサインインする必要がなくなりました。サインインした場合は、以前と同じように、SDK がインストールされ、ポータルにテレメトリを送信するように構成されます。サインインしない場合は、SDK がプロジェクトに追加され、診断ハブ用にテレメトリが生成されます。これは、後で必要に応じて構成できます。
+You no longer have to sign in to Azure to add Application Insights packages to your project, either through the **New Project** dialog or from the project context menu. If you do sign in, the SDK will be installed and configured to send telemetry to the portal as before. If you don’t sign in, the SDK will be added to your project and it will generate telemetry for the diagnostic hub. You can configure it later if you want.
 
-![[新しいプロジェクト] ダイアログ](./media/app-insights-release-notes-vsix/newproject.png)
+![New Project dialog](./media/app-insights-release-notes-vsix/newproject.png)
 
-### デバイスのサポート
+### <a name="device-support"></a>Device support
 
-*Connect();* 2015 において、Microsoft は、モバイル デバイス向けのアプリ開発を支援する機能として HockeyApp を[発表](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/)しました。HockeyApp は、テスト担当者へのベータ版ビルドの配布、アプリのすべてのクラッシュの収集と分析、およびお客様からのフィードバックの直接収集を支援します。HockeyApp は、iOS、Android、Windows や、Xamarin、Cordova、Unity のようなクロスプラットフォーム ソリューションなど、あらゆるプラットフォームのアプリに対応しています。
+At *Connect();* 2015, we [announced](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/) that our mobile developer experience for devices is HockeyApp. HockeyApp helps you distribute beta builds to your testers, collect and analyze all crashes from your app, and collect feedback directly from your customers.
+HockeyApp supports your app on whichever platform you choose to build it, whether that be iOS, Android, or Windows, or a cross-platform solution like Xamarin, Cordova, or Unity.
 
-Application Insights 拡張機能の今後のリリースでは、HockeyApp と Visual Studio の連携をさらに進化させる予定です。現時点では、NuGet 参照を追加するだけで HockeyApp を開始できます。詳細については、[ドキュメント](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone)をご覧ください。
+In future releases of the Application Insights extension, we’ll introduce a more integrated experience between HockeyApp and Visual Studio. For now, you can start with HockeyApp by simply adding the NuGet reference. See the [documentation](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) for more information.
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

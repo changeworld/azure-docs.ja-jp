@@ -1,13 +1,16 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### Windows ホストの IQN を取得するには
+#### <a name="to-get-the-iqn-of-a-windows-host"></a>To get the IQN of a Windows host
 
-1. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。**[スタート]**、**[管理ツール]**、**[iSCSI イニシエーター]** の順にクリックします。
+1. Start the Microsoft iSCSI initiator on your Windows host. Click **Start** > **Administrative Tools** > **iSCSI initiator**.
 
-2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドから文字列を選択してコピーします。
+2. In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
  
-    ![iSCSI イニシエーターのプロパティ](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
+    ![iSCSI initiator properties](./media/storsimple-get-iqn/HCS_iSCSIInitiatorPropertiesFigureIQN-include.png)
 
-3. この文字列を保存します。
+3. Save this string.
 
-<!---HONumber=AcomDC_0218_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

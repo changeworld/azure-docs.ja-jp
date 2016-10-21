@@ -1,45 +1,50 @@
 <!--author=alkohli last changed: 08/16/2016-->
 
-#### ボリュームを作成するには
+#### <a name="to-create-a-volume"></a>To create a volume
 
-1. デバイスの **[クイック スタート]** ページで **[ボリュームの追加]** をクリックし、ボリュームの追加ウィザードを開きます。
+1. On the device **Quick Start** page, click **Add a volume** to start the Add a volume wizard.
 
-2. ボリュームの追加ウィザードの **[基本設定]** で、次の手順を実行します。
+2. In the Add a volume wizard, under **Basic Settings**:
 
-	4. ボリュームの **[名前]** を入力します。
-	5. **[使用法の種類]** ボックスの一覧で、ボリュームの使用法の種類を選択します。ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、**[ローカル固定]** ボリュームを選択します。それ以外のデータの場合は、**[階層化]** を選択します。アーカイブ データにこのボリュームを使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェックボックスをオンにします。
-	
-		ローカル固定のボリュームはシック プロビジョニングされ、ボリューム上のプライマリ データがデバイスに対してローカルのままになり、クラウドへの書き込みは行われません。ローカル固定のボリュームを作成する場合、デバイスは、要求されたサイズのボリュームをプロビジョニングするために、ローカル層で使用できる領域を確認します。ローカル固定のボリュームを作成する操作によって、デバイスからクラウドに既存のデータが書き込まれる場合があるため、ボリュームの作成にかかる時間が長くなる可能性があります。合計時間は、プロビジョニングされたボリューム、利用可能なネットワーク帯域幅、およびデバイスのデータのサイズによって異なります。
+    4. Type a **Name** for your volume.
+    5. On the drop-down list, select the **Usage Type** for your volume. For workloads that require local guarantees, low latencies, and higher performance, select a **Locally pinned** volume. For all other data, select a **Tiered** volume. If you are using this volume for archival data, check **Use this volume for less frequently accessed archival data**. 
+    
+        A locally pinned volume is thickly provisioned and ensures that the primary data on the volume stays local to the device and does not spill to the cloud.  If you create a locally pinned volume, the device checks for available space on the local tiers to provision the volume of the requested size. The operation of creating a locally pinned volume may involve spilling existing data from the device to the cloud and the time taken to create the volume may be long. The total time depends on the size of the provisioned volume, available network bandwidth, and the data on your device. 
 
-		階層化されたボリュームはシン プロビジョニングされ、簡単に作成できます。アーカイブ データに対して階層化されたボリュームについて **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** を選択すると、ボリュームの重複除去のチャンク サイズが 512 KB に変更されます。このフィールドが選択されていない場合、対応する階層化されたボリュームは 64 KB のチャンク サイズを使用します。より大きな重複除去のチャンク サイズを使用すると、デバイスはより大きなアーカイブ データをクラウドに転送できるようになります。
+        A tiered volume is thinly provisioned and can be created quickly. Selecting **Use this volume for less frequently accessed archival data** for tiered volume targeted for archival data changes the deduplication chunk size for your volume to 512 KB. If this field is not checked, the corresponding tiered volume uses a chunk size of 64 KB. A larger deduplication chunk size allows the device to expedite the transfer of large archival data to the cloud.
 
-	3. ボリュームの **[プロビジョニングされた容量]** を指定します。選択したボリュームの種類に基づく使用可能な容量を確認してください。指定したボリュームのサイズが、使用可能な領域を超えてはいけません。
+    3. Specify the **Provisioned Capacity** for your volume. Make a note of the capacity that is available based on the volume type selected. The specified volume size must not exceed the available space.
 
-		ローカル固定のボリュームは 8.5 TB まで、階層化されたボリュームは 200 TB までを 8100 デバイスにプロビジョニングできます。より大きな 8600 デバイスでは、ローカル固定ボリュームを 22.5 TB まで、階層化ボリュームを 500 TB までプロビジョニングできます。階層化されたボリュームのワーキング セットをホストするには、デバイス上のローカル領域が必要なため、ローカル固定のボリュームを作成すると、階層化されたボリュームのプロビジョニングに使用できる領域が影響を受けます。したがって、ローカル固定のボリュームを作成すると、階層化されたボリュームの作成に使用可能な領域が減少します。同様に、階層化されたボリュームを作成すると、ローカル固定のボリュームの作成に使用可能な領域が減少します。
+        You can provision locally pinned volumes up to 8.5 TB or tiered volumes up to 200 TB on the 8100 device. On the larger 8600 device, you can provision locally pinned volumes up to 22.5 TB or tiered volumes up to 500 TB. As local space on the device is required to host the working set of tiered volumes, creation of locally pinned volumes impacts the space available for provisioning tiered volumes. Therefore, if you create a locally pinned volume, space available for creation of tiered volumes will be reduced. Similarly, if a tiered volume is created, the available space for creation of locally pinned volumes is reduced.
 
-		8100 デバイスに 8.5 TB (許容される最大サイズ) のローカル固定のボリュームをプロビジョニングすると、デバイスで使用可能なローカル領域がすべて使い果たされます。この時点で、階層化されたボリュームのワーキング セットをホストするためのローカル領域がデバイスになくなるため、階層化されたボリュームを以後作成できなくなります。既存の階層化されたボリュームも、使用可能な領域に影響します。たとえば、約 106 TB のボリュームが既に階層化されている 8100 デバイスがある場合、ローカル固定されたボリュームに使用できるのは 4 TB の領域のみになります。
+        If you provision a locally pinned volume of 8.5 TB (maximum allowable size) on your 8100 device, then you have exhausted all the local space available on the device. You will not be able to create any tiered volume from that point onwards as there is no local space on the device to host the working set of the tiered volume. Existing tiered volumes also affect the space available. For example, if you have an 8100 device that already has tiered volumes of roughly 106 TB, only 4 TB of space is available for locally pinned volumes.
 
-        次の図は、ローカル固定ボリュームの **[基本設定]** ダイアログ ボックスを示しています。
+        The following image shows the **Basic Settings** dialog box for a locally pinned volume.
 
-         ![ローカル ボリュームの追加](./media/storsimple-create-volume-u2/add-local-volume-include.png)
+         ![Add local volume](./media/storsimple-create-volume-u2/add-local-volume-include.png)
 
-        次の図は、階層化ボリュームの **[基本設定]** ダイアログ ボックスを示しています。
+        The following image shows the **Basic Settings** dialog box for a tiered volume.
 
-         ![ローカル ボリュームの追加](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
+         ![Add local volume](./media/storsimple-create-volume-u2/add-tiered-volume-include.png)
 
-   4. 矢印アイコン ![矢印アイコン](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
+   4. Click the arrow icon ![arrow-icon](./media/storsimple-create-volume-u2/HCS_ArrowIcon-include.png) to go to the next page.
 
 
-3. **[追加設定]** ダイアログ ボックスで、新しい Access Control レコード (ACR) を追加します。
+3. In the **Additional Settings** dialog box, add a new access control record (ACR):
 
-	1. ACR の **[名前]** を入力します。
-	2. **[ISCSI イニシエーターの名前]** に Windows ホストの iSCSI 修飾名 (IQN) を指定します。IQN がない場合は、「[Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。
-	3. **[このボリュームの既定のバックアップ方法]** で、**[有効化]** チェック ボックスをオンにします。既定のバックアップでは、毎日 22:30 (デバイスの時刻) にバックアップが実行され、このボリュームのクラウド スナップショットが作成されるというポリシーが作成されます。
-	 
-     > [AZURE.NOTE] ここでバックアップを有効にすると、元に戻すことはできません。この設定を変更するには、このボリュームを編集する必要があります。
+    1. Supply a **Name** for your ACR.
+    2. Under **iSCSI Initiator Name**, provide the iSCSI Qualified Name (IQN) of your Windows host. If you don't have the IQN, go to [Get the IQN of a Windows Server host](#get-the-iqn-of-a-windows-server-host).
+    3. Under **Default backup for this volume?**, select the **Enable** check box. The default backup creates a policy that executes at 22:30 each day (device time) and creates a cloud snapshot of this volume.
+     
+     > [AZURE.NOTE] After the backup is enabled here, it cannot be reverted. You need to edit the volume to modify this setting.
 
-     ![ボリュームの追加](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
+     ![Add volume](./media/storsimple-create-volume-u2/AddVolumeAdditionalSettings1.png)
 
-4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png) をクリックします。指定した設定でボリュームが作成されます。
+4. Click the check icon ![check icon](./media/storsimple-create-volume-u2/HCS_CheckIcon-include.png). A volume is created with the specified settings.
 
-<!-----------HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

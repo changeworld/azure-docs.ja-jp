@@ -1,6 +1,6 @@
 <properties
-pageTitle="Excel コネクタを追加する | Microsoft Azure"
-description="Excel コネクタと REST API パラメーターの概要"
+pageTitle="Add the Excel connector | Microsoft Azure"
+description="Overview of the Excel connector with REST API parameters"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,12 +17,13 @@ ms.workload="na"
 ms.date="08/23/2016"
 ms.author="deonhe"/>
 
-# Excel コネクタの使用
 
-現時点では Logic Apps に Excel コネクタはありません。
+# <a name="get-started-with-the-excel-connector"></a>Get started with the Excel connector
 
-## Excel データを使用するには
-[OneDrive](connectors-create-api-onedrive.md) などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして Excel データを格納できます。この CSV ファイルは、[フラット ファイル コネクタ](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md)で使用することもできます。
+Currently, there is no Excel connector in Logic Apps. 
+
+## <a name="to-use-excel-data"></a>To use Excel data
+You can store Excel data as a comma-separated value (CSV) file in a storage folder, such as [OneDrive](connectors-create-api-onedrive.md). You can also use this CSV file with the [flat-file connector](../app-service-logic/app-service-logic-enterprise-integration-flatfile.md).
 
 <!---
 
@@ -214,4 +215,8 @@ Applies to version: 1.0.
 
 -->
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

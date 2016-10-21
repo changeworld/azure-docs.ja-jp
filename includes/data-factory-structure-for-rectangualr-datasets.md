@@ -1,16 +1,16 @@
-## 四角形のデータセットの構造定義を指定する
-データセット JSON の structure セクションは、(行と列がある) 四角形のテーブルの**省略可能**なセクションです。テーブルの列のコレクションが含まれています。structure セクションは、型変換のために型情報を提供したり、列マッピングを実行したりするために使用されます。次のセクションでは、これらの機能の詳細について説明します。
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Specifying structure definition for rectangular datasets
+The structure section in the datasets JSON is an **optional** section for rectangular tables (with rows & columns) and contains a collection of columns for the table. You will use the structure section for either providing type information for type conversions or doing column mappings. The following sections describe these features in detail. 
 
-各列には次のプロパティが含まれます。
+Each column contains the following properties:
 
-| プロパティ | 説明 | 必須 |
+| Property | Description | Required |
 | -------- | ----------- | -------- |
-| name | 列の名前です。 | あり |
-| type | 列のデータ型です。型情報を指定する必要がある場合の詳細については、以下の型変換のセクションを参照してください。 | いいえ |
-| culture | 型を指定するときに使用される .NET ベースのカルチャ。.NET 型の Datetime または Datetimeoffset です。既定値は “ja-JP” です。 | いいえ |
-| BlobSink の format | 型を指定するときに使用される書式指定文字列。.NET 型の Datetime または Datetimeoffset です。 | いいえ |
+| name | Name of the column. | Yes |
+| type | Data type of the column. See type conversions section below for more details regarding when should you specify type information | No |
+| culture | .NET based culture to be used when type is specified and is .NET type Datetime or Datetimeoffset. Default is “en-us”.  | No |
+| format | Format string to be used when type is specified and is .NET type Datetime or Datetimeoffset. | No |
 
-次に、userid、name、および lastlogindate という 3 つの列があるテーブルの structure セクション JSON の例を示します。
+The following sample shows the structure section JSON for a table that has three columns userid, name, and lastlogindate.
 
     "structure": 
     [
@@ -19,32 +19,36 @@
         { "name": "lastlogindate"}
     ],
 
-"structure" 情報を含める場合と、**structure** セクションに含める内容については、次のガイドラインに従ってください。
+Please use the following guidelines for when to include “structure” information and what to include in the **structure** section.
 
-- データ自体と共にデータ スキーマと型情報を格納する**構造化データ ソースの場合** (SQL Server、Oracle、Azure テーブルなどのソース)、"structure" セクションを指定する必要があるのは、特定のソース列をシンク内の特定の列とマップし、それらの列名が同じではない場合のみです (詳細については、後述する列マッピングのセクションを参照してください)。
+- **For structured data sources** that store data schema and type information along with the data itself (sources like SQL Server, Oracle, Azure table etc.), you should specify the “structure” section only if you want do column mapping of specific source columns to specific columns in sink and their names are not the same (see details in column mapping section below). 
 
-	前述のように、"structure" セクションの型情報は省略可能です。構造化ソースの場合、型情報はデータ ストアのデータセット定義の一部として既に使用可能なので、"structure" セクションを含める場合に型情報を含めないでください。
-- **読み取りデータ ソースのスキーマの場合 (具体的には Azure BLOB)**、データと共にスキーマや型情報を保存せずに、データを保存することができます。このような種類のデータ ソースでは、次の 2 つの場合に "structure" を含める必要があります。
-	- 列マッピングを実行する場合。
-	- データセットがコピー アクティビティのソースの場合、"structure" で型情報を提供できます。Data Factory ではシンクのネイティブ型への変換にその型情報を使用します。詳細については、[Azure BLOB との間のデータの移動](../articles/data-factory/data-factory-azure-blob-connector.md)の記事を参照してください。
+    As mentioned above, the type information is optional in “structure” section. For structured sources, type information is already available as part of dataset definition in the data store, so you should not include type information when you do include the “structure” section.
+- **For schema on read data sources (specifically Azure blob)**  you can choose to store data without storing any schema or type information with the data. For these types of data sources you should include “structure” in the following 2 cases:
+    - You want to do column mapping.
+    - When the dataset is a source in a Copy activity, you can provide type information in “structure” and data factory will use this type information for conversion to native types for the sink. See [Move data to and from Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) article for more information.
 
-### サポートされる .NET ベースの型 
-Data Factory は、Azure BLOB などの読み取りデータ ソースでスキーマに "structure" で型情報を提供する場合、次の CLS 準拠の .NET ベースの型値をサポートしています。
+### <a name="supported-.net-based-types"></a>Supported .NET-based types 
+Data factory supports the following CLS compliant .NET based type values for providing type information in “structure” for schema on read data sources like Azure blob.
 
 - Int16
-- Int32
+- Int32 
 - Int64
 - Single
 - Double
-- 小数点
-- Byte
-- ブール値
-- String
+- Decimal
+- Byte[]
+- Bool
+- String 
 - Guid
 - Datetime
 - Datetimeoffset
-- Timespan
+- Timespan 
 
-Datetime と Datetimeoffset の場合、必要に応じて “culture” と “format” 文字列を指定して、カスタムの Datetime 文字列の解析に利用することができます。型変換については、以下のサンプルを参照してください。
+For Datetime & Datetimeoffset you can also optionally specify “culture” & “format” string to facilitate parsing of your custom Datetime string. See sample for type conversion below.
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

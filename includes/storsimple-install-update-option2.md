@@ -1,15 +1,18 @@
 <!--author=SharS last changed: 03/17/2016-->
 
-#### Azure クラシック ポータルから Update 1.2 をインストールするには
+#### <a name="to-install-update-1.2-from-the-azure-classic-portal"></a>To install Update 1.2 from the Azure classic portal
 
-1. Azure クラシック ポータルで **[デバイス]** ページに移動し、デバイスを選択します。
+1. In the Azure classic portal, go to the **Devices** page and select your device.
 
-2. **[デバイス]**、**[構成]** の順にクリックします。
+2. Navigate to **Devices** > **Configure**.
 
-3. **[ネットワーク インターフェイス]** で、iSCSI 対応のネットワーク インターフェイスが少なくとも 1 つは存在することをまず確認します。次に、ゲートウェイが割り当てられているネットワーク インターフェイスを見つけます (DATA 0 以外)。
+3. Under **Network Interfaces**, first verify that you have at least one network interface that is iSCSI-enabled. Then locate the network interface (other than DATA 0) that has a gateway assigned.
 
-4. ゲートウェイが割り当てられているネットワーク インターフェイスを無効にし、変更した構成を保存します。ネットワーク インターフェイスの設定は保持されるため、このネットワーク インターフェイスを後で再び有効にすると、ポータルは元の設定に戻ります。
+4. Disable the network interface that has an assigned gateway and save the modified configuration. Note the network interface settings are retained and so when you re-enable this network interface later, the portal will revert to the original settings.
 
-7. これで、[Azure クラシック ポータルを使用して Update 1.2 をインストールする](#install-update-12-via-the-azure-classic-portal)ことができます。この手順の手順 3. 以降の指示に従います。すべての更新プログラムをインストールした後で、無効にしたネットワーク インターフェイスを再び有効にできます。
+7. You can now [use the Azure classic portal to install Update 1.2](#install-update-12-via-the-azure-classic-portal). Follow the instructions starting from step 3 of this procedure. After you have installed all the updates, you can re-enable the network interface that you disabled.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

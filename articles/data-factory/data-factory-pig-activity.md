@@ -1,197 +1,213 @@
 <properties 
-	pageTitle="Pig アクティビティ" 
-	description="Azure データ ファクトリで Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Pig Activity" 
+    description="Learn how you can use the Pig Activity in an Azure data factory to run Pig scripts on an on-demand/your own HDInsight cluster." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/31/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/31/2016" 
+    ms.author="shlo"/>
 
-# Pig アクティビティ
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Pig アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースのHDInsight クラスターで Pig クエリを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
+# <a name="pig-activity"></a>Pig Activity
+> [AZURE.SELECTOR]
+[Hive](data-factory-hive-activity.md)  
+[Pig](data-factory-pig-activity.md)  
+[MapReduce](data-factory-map-reduce.md)  
+[Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
+[Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+[Stored Procedure](data-factory-stored-proc-activity.md)
+[Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+[.NET custom](data-factory-use-custom-activities.md)
 
-## 構文
+The HDInsight Pig activity in a Data Factory [pipeline](data-factory-create-pipelines.md) executes Pig queries on [your own](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) or [on-demand](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-based HDInsight cluster. This article builds on the [data transformation activities](data-factory-data-transformation-activities.md) article, which presents a general overview of data transformation and the supported transformation activities.
 
-	{
-		"name": "HiveActivitySamplePipeline",
-	  	"properties": {
-	    "activities": [
-	    	{
-	        	"name": "Pig Activity",
-	        	"description": "description",
-	        	"type": "HDInsightPig",
-	        	"inputs": [
-	          		{
-	            		"name": "input tables"
-	          		}
-	        	],
-	        	"outputs": [
-	          		{
-	            		"name": "output tables"
-	          		}
-        		],
-	        	"linkedServiceName": "MyHDInsightLinkedService",
-	        	"typeProperties": {
-	          		"script": "Pig script",
-	          		"scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
-	          		"defines": {
-	            		"param1": "param1Value"
-	          		}
-	        	},
-       			"scheduler": {
-          			"frequency": "Day",
-          			"interval": 1
-        		}
-	      	}
-	    ]
-	  }
-	}
+## <a name="syntax"></a>Syntax
 
-## 構文の詳細
+    {
+        "name": "HiveActivitySamplePipeline",
+        "properties": {
+        "activities": [
+            {
+                "name": "Pig Activity",
+                "description": "description",
+                "type": "HDInsightPig",
+                "inputs": [
+                    {
+                        "name": "input tables"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "output tables"
+                    }
+                ],
+                "linkedServiceName": "MyHDInsightLinkedService",
+                "typeProperties": {
+                    "script": "Pig script",
+                    "scriptPath": "<pathtothePigscriptfileinAzureblobstorage>",
+                    "defines": {
+                        "param1": "param1Value"
+                    }
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                }
+            }
+        ]
+      }
+    }
 
-プロパティ | 説明 | 必須
+## <a name="syntax-details"></a>Syntax details
+
+Property | Description | Required
 -------- | ----------- | --------
-name | アクティビティの名前 | はい
-description | アクティビティの用途を説明するテキストです。 | なし
-type | HDInsightPig | はい
-inputs | Pig のアクティビティによって使用される 1 つ以上の入力 | いいえ
-outputs | Pig のアクティビティによって生成される 1 つ以上の出力 | はい
-linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 | はい
-script (スクリプト) | Pig スクリプトをインラインに指定します | いいえ
-スクリプトのパス | Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。'script' プロパティまたは 'scriptPath' プロパティを使用します。両方を同時に使用することはできません。ファイル名は大文字と小文字が区別されます。 | いいえ
-defines | Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します | いいえ
+name | Name of the activity | Yes
+description | Text describing what the activity is used for | No
+type | HDinsightPig | Yes
+inputs | One or more inputs consumed by the Pig activity | No
+outputs | One or more outputs produced by the Pig activity | Yes
+linkedServiceName | Reference to the HDInsight cluster registered as a linked service in Data Factory | Yes
+script | Specify the Pig script inline | No
+script path | Store the Pig script in an Azure blob storage and provide the path to the file. Use 'script' or 'scriptPath' property. Both cannot be used together. The file name is case-sensitive. | No
+defines | Specify parameters as key/value pairs for referencing within the Pig script | No
 
-## 例
+## <a name="example"></a>Example
 
-ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。
+Let’s consider an example of game logs analytics where you want to identify the time spent by players playing games launched by your company.
  
-以下のサンプル ゲーム ログは、コンマ (,) 区切りのファイルです。このファイルには、ProfileID、SessionStart、Duration、SrcIPAddress、GameType の各フィールドが含まれています。
+The following sample game log is a comma (,) separated file. It contains the following fields – ProfileID, SessionStart, Duration, SrcIPAddress, and GameType.
 
-	1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
-	1703,2014-05-04 06:05:06.0090000,16,12.49.178.247,KingHill
-	1703,2014-05-04 10:21:57.3290000,10,199.118.18.179,CaptureFlag
-	1809,2014-05-04 05:24:22.2100000,23,192.84.66.141,KingHill
-	.....
+    1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
+    1703,2014-05-04 06:05:06.0090000,16,12.49.178.247,KingHill
+    1703,2014-05-04 10:21:57.3290000,10,199.118.18.179,CaptureFlag
+    1809,2014-05-04 05:24:22.2100000,23,192.84.66.141,KingHill
+    .....
 
-このデータを処理する **Pig スクリプト**:
+The **Pig script** to process this data:
 
-	PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
-	
-	GroupProfile = Group PigSampleIn all;
-	
-	PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);
-	
-	Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
+    PigSampleIn = LOAD 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/samplein/' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);
+    
+    GroupProfile = Group PigSampleIn all;
+    
+    PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);
+    
+    Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/sampleoutpig/' USING PigStorage (',');
 
-Data Factory パイプラインでこの Pig スクリプトを実行するには、以下の手順を実行します。
+To execute this Pig script in a Data Factory pipeline, do the following:
 
-1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。このリンクされたサービスを **HDInsightLinkedService** と呼ぶことにしましょう。
-2.	[リンクされたサービス](data-factory-azure-blob-connector.md)を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。このリンクされたサービスを **StorageLinkedService** と呼ぶことにしましょう。
-3.	入力と出力のデータを指定する[データセット](data-factory-create-datasets.md)を作成します。入力データセットは **PigSampleIn**、出力データセットは **PigSampleOut** と呼ぶことにしましょう。
-4.	上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。データをホストするリンクされた Azure ストレージが、クエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成します。アクティビティの構成で、このリンクされたサービスを参照します。**scriptPath** を使用して pig スクリプト ファイルへのパスと、**scriptLinkedService** を指定します。
-	
-	> [AZURE.NOTE] また、**script** プロパティを使用して、アクティビティ定義で Pig スクリプトをインライン化することもできます。ただし、スクリプトのすべての特殊文字をエスケープする必要があり、デバッグの問題を引き起こすことがあるため、この方法はお勧めできません。手順 4. の使用をお勧めします。
-5. HDInsightPig アクティビティでパイプラインを作成します。このアクティビティは、HDInsight クラスターで Pig スクリプトを実行して、入力データを処理します。
+1. Create a linked service to register [your own HDInsight compute cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) or configure [on-demand HDInsight compute cluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service). Let’s call this linked service **HDInsightLinkedService**.
+2.  Create a [linked service](data-factory-azure-blob-connector.md) to configure the connection to Azure Blob storage hosting the data. Let’s call this linked service **StorageLinkedService**.
+3.  Create [datasets](data-factory-create-datasets.md) pointing to the input and the output data. Let’s call the input dataset **PigSampleIn** and the output dataset **PigSampleOut**.
+4.  Copy the Pig query in a file the Azure Blob Storage configured in step #2. If the Azure storage that hosts the data is different from the one that hosts the query file, create a separate Azure Storage linked service. Refer to the linked service in the activity configuration. Use **scriptPath **to specify the path to pig script file and **scriptLinkedService**. 
+    
+    > [AZURE.NOTE] You can also provide the Pig script inline in the activity definition by using the **script** property. However, we do not recommend this approach as all special characters in the script needs to be escaped and may cause debugging issues. The best practice is to follow step #4.
+5. Create the pipeline with the HDInsightPig activity. This activity processes the input data by running Pig script on HDInsight cluster.
 
-		{
-		  "name": "PigActivitySamplePipeline",
-		  "properties": {
-		    "activities": [
-		      {
-		        "name": "PigActivitySample",
-		        "type": "HDInsightPig",
-		        "inputs": [
-		          {
-		            "name": "PigSampleIn"
-		          }
-		        ],
-		        "outputs": [
-		          {
-		            "name": "PigSampleOut"
-		          }
-		        ],
-		        "linkedServiceName": "HDInsightLinkedService",
-		        "typeproperties": {
-		          "scriptPath": "adfwalkthrough\\scripts\\enrichlogs.pig",
-		          "scriptLinkedService": "StorageLinkedService"
-		        },
-       			"scheduler": {
-          			"frequency": "Day",
-          			"interval": 1
-        		}
-		      }
-		    ]
-		  }
-		} 
-6. パイプラインをデプロイします。詳細については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。
-7. データ ファクトリの監視と管理のビューを使用して、パイプラインを監視します。詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-pipelines.md)に関する記事を参照してください。
+        {
+          "name": "PigActivitySamplePipeline",
+          "properties": {
+            "activities": [
+              {
+                "name": "PigActivitySample",
+                "type": "HDInsightPig",
+                "inputs": [
+                  {
+                    "name": "PigSampleIn"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "name": "PigSampleOut"
+                  }
+                ],
+                "linkedServiceName": "HDInsightLinkedService",
+                "typeproperties": {
+                  "scriptPath": "adfwalkthrough\\scripts\\enrichlogs.pig",
+                  "scriptLinkedService": "StorageLinkedService"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                }
+              }
+            ]
+          }
+        } 
+6. Deploy the pipeline. See [Creating pipelines](data-factory-create-pipelines.md) article for details. 
+7. Monitor the pipeline using the data factory monitoring and management views. See [Monitoring and manage Data Factory pipelines](data-factory-monitor-manage-pipelines.md) article for details.
 
-## Pig スクリプトのパラメーターの指定 
+## <a name="specifying-parameters-for-a-pig-script"></a>Specifying parameters for a Pig script 
 
-ゲームのログが Azure BLOB ストレージに毎日取り込まれ、日付と時刻に基づいて分割されたフォルダーに格納される例を考えてみましょう。Pig スクリプトをパラメーター化し、実行時に入力フォルダーの場所を動的に渡し、さらに、日付と時刻で分割された出力も生成する必要があるとします。
+Consider the following example: game logs are ingested daily into Azure Blob Storage and stored in a folder partitioned based on date and time. You want to parameterize the Pig script and pass the input folder location dynamically during runtime and also produce the output partitioned with date and time.
  
-パラメーター化された Pig スクリプトを使用するには、以下の手順を実行します。
+To use parameterized Pig script, do the following:
 
-- **defines** でパラメーターを定義します。
+- Define the parameters in **defines**.
 
-		{
-			"name": "PigActivitySamplePipeline",
-		  	"properties": {
-		    "activities": [
-		    	{
-		        	"name": "PigActivitySample",
-		        	"type": "HDInsightPig",
-		        	"inputs": [
-		          		{
-		            		"name": "PigSampleIn"
-		          		}
-		        	],
-		        	"outputs": [
-		          		{
-		            		"name": "PigSampleOut"
-		          		}
-		        	],
-		        	"linkedServiceName": "HDInsightLinkedService",
-		        	"typeproperties": {
-		          		"scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
-		          		"scriptLinkedService": "StorageLinkedService",
-		          		"defines": {
-		            		"Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0: %M}/dayno={0: %d}/',SliceStart)",
-				            "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)"
-		          		}
-		        	},
-       				"scheduler": {
-          				"frequency": "Day",
-	          			"interval": 1
-    	    		}
-		      	}
-		    ]
-		  }
-		}  
-	  
-- 次の例に示すように、'**$parameterName**' を使用するパラメーターを Pig スクリプトで参照します。
+        {
+            "name": "PigActivitySamplePipeline",
+            "properties": {
+            "activities": [
+                {
+                    "name": "PigActivitySample",
+                    "type": "HDInsightPig",
+                    "inputs": [
+                        {
+                            "name": "PigSampleIn"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "name": "PigSampleOut"
+                        }
+                    ],
+                    "linkedServiceName": "HDInsightLinkedService",
+                    "typeproperties": {
+                        "scriptPath": "adfwalkthrough\\scripts\\samplepig.hql",
+                        "scriptLinkedService": "StorageLinkedService",
+                        "defines": {
+                            "Input": "$$Text.Format('wasb: //adfwalkthrough@<storageaccountname>.blob.core.windows.net/samplein/yearno={0: yyyy}/monthno={0: %M}/dayno={0: %d}/',SliceStart)",
+                            "Output": "$$Text.Format('wasb://adfwalkthrough@<storageaccountname>.blob.core.windows.net/sampleout/yearno={0:yyyy}/monthno={0:%M}/dayno={0:%d}/', SliceStart)"
+                        }
+                    },
+                    "scheduler": {
+                        "frequency": "Day",
+                        "interval": 1
+                    }
+                }
+            ]
+          }
+        }  
+      
+- In the Pig Script, refer to the parameters using '**$parameterName**' as shown in the following example:
 
-		PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);	
-		GroupProfile = Group PigSampleIn all;		
-		PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);		
-		Store PigSampleOut into '$Output' USING PigStorage (','); 
+        PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);   
+        GroupProfile = Group PigSampleIn all;       
+        PigSampleOut = Foreach GroupProfile Generate PigSampleIn.ProfileID, SUM(PigSampleIn.Duration);      
+        Store PigSampleOut into '$Output' USING PigStorage (','); 
 
 
-## 関連項目
-- [Hive アクティビティ](data-factory-hive-activity.md)
-- [MapReduce アクティビティ](data-factory-map-reduce.md)
-- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
-- [Spark プログラムを呼び出す](data-factory-spark.md)
-- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+## <a name="see-also"></a>See Also
+- [Hive Activity](data-factory-hive-activity.md)
+- [MapReduce Activity](data-factory-map-reduce.md)
+- [Hadoop Streaming Activity](data-factory-hadoop-streaming-activity.md)
+- [Invoke Spark programs](data-factory-spark.md)
+- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

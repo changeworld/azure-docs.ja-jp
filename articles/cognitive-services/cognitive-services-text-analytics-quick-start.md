@@ -1,156 +1,158 @@
 <properties
-	pageTitle="クイック スタート ガイド: Machine Learning テキスト分析 API | Microsoft Azure"
-	description="Azure Machine Learning テキスト分析 - クイック スタート ガイド"
-	services="cognitive-services"
-	documentationCenter=""
-	authors="onewth"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Quick start guide: Machine Learning Text Analytics APIs | Microsoft Azure"
+    description="Azure Machine Learning Text Analytics - Quick Start Guide"
+    services="cognitive-services"
+    documentationCenter=""
+    authors="onewth"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="cognitive-services"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/05/2016"
-	ms.author="onewth"/>
+    ms.service="cognitive-services"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/04/2016"
+    ms.author="onewth"/>
 
-# テキスト分析 API を使ってセンチメント、キー フレーズ、トピック、および言語を検出してみる
+
+# <a name="getting-started-with-the-text-analytics-apis-to-detect-sentiment,-key-phrases,-topics-and-language"></a>Getting started with the Text Analytics APIs to detect sentiment, key phrases, topics and language
 
 <a name="HOLTop"></a>
 
-このドキュメントでは、[テキスト分析 API](//go.microsoft.com/fwlink/?LinkID=759711) を使うためにサービスまたはアプリケーションをオンボードする方法について説明します。この API を使用すると、テキストからセンチメント、キー フレーズ、トピック、および言語を検出することができます。[対話型のエクスペリエンス デモをご覧になる場合は、ここをクリックしてください。](//go.microsoft.com/fwlink/?LinkID=759712)
+This document describes how to onboard your service or application to use the [Text Analytics APIs](//go.microsoft.com/fwlink/?LinkID=759711).
+You can use these APIs to detect sentiment, key phrases, topics and language from your text. [Click here to see an interactive demo of the experience.](//go.microsoft.com/fwlink/?LinkID=759712)
 
-API の技術ドキュメントについては、[API 定義](//go.microsoft.com/fwlink/?LinkID=759346)を参照してください。
+Please refer to the [API definitions](//go.microsoft.com/fwlink/?LinkID=759346) for technical documentation for the APIs.
 
-このガイドはバージョン 2 の API 用です。バージョン 1 の API の詳細については、[こちらのドキュメントを参照してください](../machine-learning/machine-learning-apps-text-analytics.md)。
+This guide is for version 2 of the APIs. For details on version 1 of the APIs, [refer to this document](../machine-learning/machine-learning-apps-text-analytics.md).
 
-このチュートリアルを完了すると、以下をプログラムで検出できるようになります。
+By the end of this tutorial, you will be able to programatically detect:
 
-- **センチメント** - テキストが肯定的か否定的か。
+- **Sentiment** - Is text positive or negative?
 
-- **キー フレーズ** - 1 つの記事の話題。
+- **Key phrases** - What are people discussing in a single article?
 
-- **トピック** - 多くの記事の話題。
+- **Topics** - What are people discussing across many articles?
 
-- **言語** - テキストがどの言語で記述されているか。
+- **Languages** - What language is text written in?
 
-この API では、送信されるドキュメントあたり 1 トランザクションが請求されることに注意してください。たとえば、1 回の呼び出しで 1000 個のドキュメントのセンチメントを要求する場合、1000 のトランザクションが推論されます。
+Note that this API charges 1 transaction per document submitted. As an example, if you request sentiment for 1000 documents in a single call, 1000 transactions will be deducted.
 
 
 
 <a name="Overview"></a>
-## 概要 ##
+## <a name="general-overview"></a>General overview ##
 
-このドキュメントはステップ バイ ステップ ガイドです。モデルのトレーニングに必要な手順を説明し、運用環境でモデルを使用できるようにするためのリソースを示すことを目的としています。この演習の所要時間は約 30 分です。
+This document is a step-by-step guide. Our objective is to walk you through the steps necessary to train a model, and to point you to resources that will allow you to put it in production. This exercise will take about 30 minutes.
 
-以下のタスクでは、エディターを使用し、任意の言語で RESTful エンドポイントを呼び出す必要があります。
+For these tasks, you will need an editor and call the RESTful endpoints in your language of choice.
 
-それでは作業を始めましょう。
+Let's get started!
 
-## タスク 1 - テキスト分析 API にサインアップする ####
+## <a name="task-1---signing-up-for-the-text-analytics-apis"></a>Task 1 - Signing up for the Text Analytics APIs ####
 
-このタスクでは、テキスト分析サービスにサインアップします。
+In this task, you will sign up for the text analytics service.
 
-1. [Azure ポータル](//go.microsoft.com/fwlink/?LinkId=761108)で **Cognitive Services** に移動して、**テキスト分析**が "API の種類" として選択されていることを確認します。
+1. Navigate to **Cognitive Services** in the [Azure Portal](//go.microsoft.com/fwlink/?LinkId=761108) and ensure **Text Analytics** is selected as the 'API type'.
 
-1. プランを選択します。1 か月あたり 5,000 トランザクションの **Free レベル**を選択してもかまいません。無料プランと同様に、サービスの使用に対しては課金されません。Azure サブスクリプションにログインする必要があります。
+1. Select a plan. You may select the **free tier for 5,000 transactions/month**. As is a free plan, you will not be charged for using the service. You will need to login to your Azure subscription. 
 
-1. その他のフィールドに入力し、自分のアカウントを作成します。
+1. Complete the other fields and create your account.
 
-1. テキスト分析にサインアップしたら、**API キー**を見つけます。プライマリ キーは API サービスを使用するときに必要になるため、コピーしておいてください。
+1. After you sign up for Text Analytics, find your **API Key**. Copy the primary key, as you will need it when using the API services.
 
 
-## タスク 2 - センチメント、キー フレーズおよび言語を検出する ####
+## <a name="task-2---detect-sentiment,-key-phrases-and-languages"></a>Task 2 - Detect sentiment, key phrases and languages ####
 
-テキストのセンチメント、キー フレーズおよび言語を検出するのは簡単です。プログラムで、[デモ エクスペリエンス](//go.microsoft.com/fwlink/?LinkID=759712)で返されるものと同じ結果が得られます。
+It's easy to detect sentiment, key phrases and languages in your text. You will programatically get the same results as the [demo experience](//go.microsoft.com/fwlink/?LinkID=759712) returns.
 
->[AZURE.TIP] センチメント分析の場合は、テキストをセンチメントに分割することをお勧めします。通常は、これでセンチメントの予測精度がより高くなります。
+>[AZURE.TIP] For sentiment analysis, we recommend that you split text into sentences. This generally leads to a higher precision in sentiment predictions.
 
-サポートされている言語は次のとおりです。
+Note that the supported languages are as follows:
 
-| 機能 | サポートされている言語コード |
+| Feature | Supported language codes |
 |:-----|:----|
-| センチメント | `en` (英語)、`es` (スペイン語)、`fr` (フランス語)、`pt` (ポルトガル語) |
-| キー フレーズ | `en` (英語)、`es` (スペイン語)、`de` (ドイツ語)、`ja` (日本語) |
+| Sentiment | `en` (English), `es` (Spanish), `fr` (French), `pt` (Portuguese) |
+| Key phrases | `en` (English), `es` (Spanish), `de` (German), `ja` (Japanese) |
 
 
-1. ヘッダーを次のように設定する必要があります。現在、API で受け入れられる入力形式は JSON のみであることに注意してください。XML はサポートされていません。
+1. You will need to set the headers to the following. Note that JSON is currently the only accepted input format for the APIs. XML is not supported.
 
-		Ocp-Apim-Subscription-Key: <your API key>
-		Content-Type: application/json
-		Accept: application/json
+        Ocp-Apim-Subscription-Key: <your API key>
+        Content-Type: application/json
+        Accept: application/json
 
-1. 次に、JSON で入力行の書式を設定します。センチメント、キー フレーズおよび言語の形式は同じです。各 ID は一意である必要があり、システムによって返される ID であることに注意してください。送信可能な 1 つのドキュメントの最大サイズは 10 KB であり、送信された入力の最大サイズの合計は 1 MB です。1 回の呼び出しで 1,000 を超えるドキュメントを送信することはできません。1 分あたりの呼び出しは 100 回に制限されています。そのため、1 回の呼び出しで大量のドキュメントを送信することをお勧めします。language はオプションのパラメーターです。英語以外のテキストを分析対象とする場合は指定する必要があります。以下に、入力の例を示しました。センチメント分析またはキー フレーズ抽出のオプション パラメーター `language` を指定しています。
+1. Next, format your input rows in JSON. For sentiment, key phrases and language, the format is the same. Note that each ID should be unique and will be the ID returned by the system. The maximum size of a single document that can be submitted is 10KB, and the total maximum size of submitted input is 1MB. No more than 1,000 documents may be submitted in one call. Rate limiting exists at a rate of 100 calls per minute - we therefore recommend that you submit large quantities of documents in a single call. Language is an optional parameter that should be specified if analyzing non-English text. An example of input is shown below, where the optional parameter `language` for sentiment analysis or key phrase extraction is included:
 
-		{
-			"documents": [
-				{
-					"language": "en",
-					"id": "1",
-					"text": "First document"
-				},
+        {
+            "documents": [
+                {
+                    "language": "en",
+                    "id": "1",
+                    "text": "First document"
+                },
                 ...
                 {
-					"language": "en",
-					"id": "100",
-					"text": "Final document"
-				}
-			]
-		}
+                    "language": "en",
+                    "id": "100",
+                    "text": "Final document"
+                }
+            ]
+        }
 
-1. センチメント、キー フレーズおよび言語の入力を使用して、システムへの **POST** 呼び出しを行います。URL は次のようになります。
+1. Make a **POST** call to the system with the input for sentiment, key phrases and language. The URLs will look as follows:
 
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
 
-1. この呼び出しでは、ID と検出されたプロパティを含む JSON 形式の応答が返されます。センチメントの出力例を以下に示します (エラーの詳細を除く)。センチメントの場合、次のようにドキュメントごとに 0 ～ 1 のスコアが返されます。
+1. This call will return a JSON formatted response with the IDs and detected properties. An example of the output for sentiment is shown below (with error details excluded). In the case of sentiment, a score between 0 and 1 will be returned for each document:
 
         // Sentiment response
-		{
-		  	"documents": [
-				{
-					"id": "1",
-					"score": "0.934"
-		        },
+        {
+            "documents": [
+                {
+                    "id": "1",
+                    "score": "0.934"
+                },
                 ...
                 {
-					"id": "100",
-					"score": "0.002"
-		        },
-			]
-		}
+                    "id": "100",
+                    "score": "0.002"
+                },
+            ]
+        }
 
         // Key phrases response
         {
-		  	"documents": [
-				{
-					"id": "1",
-					"keyPhrases": ["key phrase 1", ..., "key phrase n"]
-		        },
+            "documents": [
+                {
+                    "id": "1",
+                    "keyPhrases": ["key phrase 1", ..., "key phrase n"]
+                },
                 ...
                 {
-					"id": "100",
-					"keyPhrases": ["key phrase 1", ..., "key phrase n"]
-		        },
-			]
-		}
+                    "id": "100",
+                    "keyPhrases": ["key phrase 1", ..., "key phrase n"]
+                },
+            ]
+        }
 
         // Languages response
         {
-		  	"documents": [
-				{
-					"id": "1",
-					"detectedLanguages": [
+            "documents": [
+                {
+                    "id": "1",
+                    "detectedLanguages": [
                         {
                             "name": "English",
                             "iso6391Name": "en",
                             "score": "1"
                         }
                     ]
-		        },
+                },
                 ...
                 {
                     "id": "100",
@@ -161,140 +163,144 @@ API の技術ドキュメントについては、[API 定義](//go.microsoft.com
                             "score": "0.985"
                         }
                     ]
-		        }
-			]
-		}
+                }
+            ]
+        }
 
 
-## タスク 3 - テキストのコーパスでトピックを検出する ####
+## <a name="task-3---detect-topics-in-a-corpus-of-text"></a>Task 3 - Detect topics in a corpus of text ####
 
-これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。この API は、レビューやユーザー フィードバックなど、人間が書いた短いテキストで効果的に機能するように設計されています。
+This is a newly released API which returns the top detected topics for a list of submitted text records. A topic is identified with a key phrase, which can be one or more related words. The API is designed to work well for short, human written text such as reviews and user feedback.
 
-この API を利用するには、**100 件以上のテキスト レコード**を送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。英語以外のレコードや 3 単語未満のレコードは破棄されるため、トピックには割り当てられません。トピック検出の場合、送信可能な 1 つのドキュメントの最大サイズは 30 KB であり、送信された入力の最大サイズの合計は 30 MB です。トピック検出では、送信は 5 分ごとに 5 回に制限されています。
+This API requires **a minimum of 100 text records** to be submitted, but is designed to detect topics across hundreds to thousands of records. Any non-English records or records with less than 3 words will be discarded and therefore will not be assigned to topics. For topic detection, the maximum size of a single document that can be submitted is 30KB, and the total maximum size of submitted input is 30MB. Topic detection is rate limited to 5 submissions every 5 minutes.
 
-結果の品質を向上させるのに役立つ、次のような 2 つの追加の**省略可能な**入力パラメーターがあります。
+There are two additional **optional** input parameters that can help to improve the quality of results:
 
-- **ストップ ワード**  - この単語とそれに近い形のもの (複数形など) は、トピック検出パイプライン全体から除外されます。よく使われる単語にはこれを使用します (たとえば、ソフトウェアに関する顧客からの苦情の場合、"問題"、"エラー"、"ユーザー" などを選択するのが妥当です)。各文字列は 1 つの単語にする必要があります。
-- **ストップ フレーズ** - このフレーズは、返されるトピックのリストから除外されます。結果に表示しない一般的なトピックを除外する場合は、これを使用します。たとえば、"Microsoft" や "Azure" を選択してトピックを除外するのが妥当です。文字列には複数の単語を含めることができます。
+- **Stop words.**  These words and their close forms (e.g. plurals) will be excluded from the entire topic detection pipeline. Use this for common words (for example, “issue”, “error” and “user” may be appropriate choices for customer complaints about software). Each string should be a single word.
+- **Stop phrases** - These phrases will be excluded from the list of returned topics. Use this to exclude generic topics that you don’t want to see in the results. For example, “Microsoft” and “Azure” would be appropriate choices for topics to exclude. Strings can contain multiple words.
 
-テキスト内のトピックを検出するには、以下の手順に従います。
+Follow these steps to detect topics in your text.
 
-1. JSON で入力の書式を設定します。この時点で、ストップ ワードとストップ フレーズを定義できます。
+1. Format the input in JSON. This time, you can define stop words and stop phrases.
 
-		{
-			"documents": [
-				{
-					"id": "1",
-					"text": "First document"
-				},
+        {
+            "documents": [
+                {
+                    "id": "1",
+                    "text": "First document"
+                },
                 ...
                 {
-					"id": "100",
-					"text": "Final document"
-				}
-			],
-			"stopWords": [
-				"issue", "error", "user"
-			],
-			"stopPhrases": [
-				"Microsoft", "Azure"
-			]
-		}
+                    "id": "100",
+                    "text": "Final document"
+                }
+            ],
+            "stopWords": [
+                "issue", "error", "user"
+            ],
+            "stopPhrases": [
+                "Microsoft", "Azure"
+            ]
+        }
 
-1. タスク 2 で定義したものと同じヘッダーを使用して、次のようにトピック エンドポイントへの **POST** 呼び出しを行います。
+1. Using the same headers as defined in Task 2, make a **POST** call to the topics endpoint:
 
         POST https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/topics
 
-1. これに対する応答では、次のようにヘッダーとして `operation-location` が返され、値は結果として得られるトピックをクエリする URL となります。
+1. This will return an `operation-location` as the header in the response, where the value is the URL to query for the resulting topics:
 
         'operation-location': 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>'
 
-1. 返された `operation-location` を **GET** 要求を使用して定期的にクエリします。1 分に 1 回行うことをお勧めします。
+1. Query the returned `operation-location` periodically with a **GET** request. Once per minute is recommended.
 
         GET https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>
 
-1. エンドポイントから応答が返されます。この応答には、`{"status": "notstarted"}` (処理前の場合)、`{"status": "running"}` (処理中の場合) および `{"status": "succeeded"}` (出力が完了している場合) があります。以下のような形式の出力を使用できます (この例では、エラーの形式や日付などの詳細が除外されていることに注意してください)。
+1. The endpoint will return a response including `{"status": "notstarted"}` before processing, `{"status": "running"}` while processing and `{"status": "succeeded"}` with the output once completed. You can then consume the output which will be in the following format (note details like error format and dates have been excluded from this example):
 
-		{
-			"status": "succeeded",
-			"operationProcessingResult": {
-			  	"topics": [
+        {
+            "status": "succeeded",
+            "operationProcessingResult": {
+                "topics": [
                     {
-					    "id": "8b89dd7e-de2b-4a48-94c0-8e7844265196"
-					    "score": "5"
-					    "keyPhrase": "first topic name"
+                        "id": "8b89dd7e-de2b-4a48-94c0-8e7844265196"
+                        "score": "5"
+                        "keyPhrase": "first topic name"
                     },
                     ...
                     {
-					    "id": "359ed9cb-f793-4168-9cde-cd63d24e0d6d"
-					    "score": "3"
-					    "keyPhrase": "final topic name"
+                        "id": "359ed9cb-f793-4168-9cde-cd63d24e0d6d"
+                        "score": "3"
+                        "keyPhrase": "final topic name"
                     }
                 ],
-			  	"topicAssignments": [
+                "topicAssignments": [
                     {
-					    "topicId": "8b89dd7e-de2b-4a48-94c0-8e7844265196",
-					    "documentId": "1",
-					    "distance": "0.354"
+                        "topicId": "8b89dd7e-de2b-4a48-94c0-8e7844265196",
+                        "documentId": "1",
+                        "distance": "0.354"
                     },
                     ...
                     {
-					    "topicId": "359ed9cb-f793-4168-9cde-cd63d24e0d6d",
-					    "documentId": "55",
-					    "distance": "0.758"
+                        "topicId": "359ed9cb-f793-4168-9cde-cd63d24e0d6d",
+                        "documentId": "55",
+                        "distance": "0.758"
                     },            
                 ]
-			}
-		}
+            }
+        }
 
-`operations` エンドポイントから返されるトピックの成功応答は、次のようなスキーマです。
+Note that the successful response for topics from the `operations` endpoint will have the following schema:
 
-	{
-    		"topics" : [{
-        		"id" : "string",
-        		"score" : "number",
-        		"keyPhrase" : "string"
-    		}],
-    		"topicAssignments" : [{
-        		"documentId" : "string",
-        		"topicId" : "string",
-        		"distance" : "number"
-    		}],
-    		"errors" : [{
-        		"id" : "string",
-        		"message" : "string"
-    		}]
-    	}
+    {
+            "topics" : [{
+                "id" : "string",
+                "score" : "number",
+                "keyPhrase" : "string"
+            }],
+            "topicAssignments" : [{
+                "documentId" : "string",
+                "topicId" : "string",
+                "distance" : "number"
+            }],
+            "errors" : [{
+                "id" : "string",
+                "message" : "string"
+            }]
+        }
 
-次に、この応答の各部分について説明します。
+Explanations for each part of this response are as follows:
 
 **topics**
 
-| キー | Description |
+| Key | Description |
 |:-----|:----|
-| id | 各トピックの一意の識別子。 |
-| スコア | トピックに割り当てられているドキュメントの数。 |
-| keyPhrase | トピックの要約となる単語または語句。 |
+| id | A unique identifier for each topic. |
+| score | Count of documents assigned to topic. |
+| keyPhrase | A summarizing word or phrase for the topic. |
 
 **topicAssignments**
 
-| キー | Description |
+| Key | Description |
 |:-----|:----|
-| documentId | ドキュメントの識別子。入力に含まれる ID と同じです。 |
-| topicId | ドキュメントが割り当てられているトピック ID。 |
-| distance | ドキュメントからトピックへのアフィリエーション スコア (0 ～ 1)。distance スコアが低くなるほど、トピックのアフィリエーションは強くなります。 |
+| documentId | Identifier for the document. Equates to the ID included in the input. |
+| topicId | The topic ID which the document has been assigned to. |
+| distance | Document-to-topic affiliation score between 0 and 1. The lower a distance score the stronger the topic affiliation is. |
 
 **errors**
 
-| キー | Description |
+| Key | Description |
 |:-----|:----|
-| id | エラーが参照するドキュメントの一意の識別子を入力します。 |
-| message | エラー メッセージ。 |
+| id | Input document unique identifier the error refers to. |
+| message | Error message. |
 
-## 次のステップ ##
+## <a name="next-steps"></a>Next steps ##
 
-お疲れさまでした。 これで、データでのテキスト分析の使用は完了です。次は、[Power BI](//powerbi.microsoft.com) などのツールを使用してデータを視覚化する方法だけでなく、自動的にテキスト データのリアルタイム ビューを表示して洞察を得る方法を確認することができます。
+Congratulations! You have now completed using text analytics on your data. You may now wish to look into using a tool such as [Power BI](//powerbi.microsoft.com) to visualize your data, as well as automating your insights to give you a real-time view of your text data.
 
-センチメントなどのテキスト分析機能をボットの一部として使用する方法については、Bot Framework サイトの「[Emotional Bot](http://docs.botframework.com/ja-JP/bot-intelligence/language/#example-emotional-bot)」 (感情分析ボット) の例を参照してください。
+To see how Text Analytics capabilities, such as sentiment, can be used as part of a bot, see the [Emotional Bot](http://docs.botframework.com/en-us/bot-intelligence/language/#example-emotional-bot) example on the Bot Framework site.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,79 +1,81 @@
 <!--author=alkohli last changed: 12/01/15-->
 
 
-#### デバイスを構成して登録するには
+#### <a name="to-configure-and-register-the-device"></a>To configure and register the device
 
-1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。方法については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。**必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
+1. Access the Windows PowerShell interface on your StorSimple device serial console. See [Use PuTTY to connect to the device serial console](#use-putty-to-connect-to-the-device-serial-console) for instructions. **Be sure to follow the procedure exactly or you will not be able to access the console.**
 
-2. 開いたセッションで、Enter キーを 1 回押して、コマンド プロンプトを開きます。
+2. In the session that opens up, press Enter one time to get a command prompt. 
 
-3. デバイスに設定する言語を選択するように求められます。言語を指定し、Enter キーを押します。
+3. You will be prompted to choose the language that you would like to set for your device. Specify the language, and then press Enter. 
 
-    ![StorSimple によるデバイスの構成および登録 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
+    ![StorSimple configure and register device 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
 
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。
+4. In the serial console menu that is presented, choose option 1 to log on with full access. 
 
-    ![StorSimple によるデバイスの登録 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
+    ![StorSimple register device 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
   
-     手順 5. ～ 12. に従って、デバイスで必要な最小のネットワーク設定を構成します。**これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。** シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
+     Complete steps 5-12 to configure the minimum required network settings for your device. **These configuration steps need to be performed on the active controller of the device.** The serial console menu indicates the controller state in the banner message. If you are not connected to the active controller, disconnect and then connect to the active controller.
 
-5. コマンド プロンプトにパスワードを入力します。デバイスの既定のパスワードは **Password1** です。
+5. At the command prompt, type your password. The default device password is **Password1**.
 
-6. 次のコマンドを入力します。
+6. Type the following command:
 
-     `Invoke-HcsSetupWizard`
+     `Invoke-HcsSetupWizard` 
 
-7. デバイスのネットワーク設定の構成に役立つセットアップ ウィザードが表示されます。次の情報を指定します。
-   - DATA 0 ネットワーク インターフェイスの IP アドレス
-   - サブネット マスク
-   - ゲートウェイ
-   - プライマリ DNS サーバーの IP アドレス
-   - プライマリ NTP サーバーの IP アドレス
+7. A setup wizard will appear to help you configure the network settings for the device. Supply the the following information: 
+   - IP address for the DATA 0 network interface
+   - Subnet mask
+   - Gateway
+   - IP address for Primary DNS server
+   - IP address for Primary NTP server
    
-      > [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"デバイスの準備ができていません" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
+      > [AZURE.NOTE] You may have to wait for a few minutes for the subnet mask and the DNS settings to be applied. If you get a "The device is not ready." error message, check the physical network connection on the DATA 0 network interface of your active controller.
 
-8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。この手順で問題が発生した場合、トラブルシューティング ガイダンスの「[Web プロキシ構成中のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings)」を参照してください。
+8. (Optional) configure your web proxy server. Although web proxy configuration is optional, **be aware that if you use a web proxy, you can only configure it here**. For more information, go to [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md). If you run into any issues during this step, refer to troubleshooting guidance for [Errors during web proxy configuration](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings).
  
 
-      > [AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。このコマンドを発行する前に適用されたすべての設定は保持されます。
+      > [AZURE.NOTE] You can press Ctrl + C at any time to exit the setup wizard. Any settings that you applied before you issued this command will be retained.
 
-9. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、以降のセッションでは変更する必要があります。画面の指示に従って、デバイスの管理者パスワードを入力します。デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。大文字、小文字、数字、および特殊文字を組み合わせたパスワードを使用してください。
+9. For security reasons, the device administrator password expires after the first session, and you will need to change it for subsequent sessions. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain a combination of lowercase characters, uppercase characters, numbers, and special characters.
 
-10. StorSimple Snapshot Manager のパスワードもここで設定します。StorSimple Snapshot Manager が実行されている Windows ホストに対してデバイスを認証する場合は、このパスワードを使用します。入力を求められたら、14 ～ 15 文字のパスワードを入力します。パスワードには、小文字、大文字、数字、および特殊文字のうち 3 種類の文字を組み合わせる必要があります。
+10. The StorSimple Snapshot Manager password is also set here. You use this password when you authenticate a device with your Windows host running StorSimple Snapshot Manager. When prompted, provide a 14 to 15 character password. The password must contain a combination of three of the following: lowercase, uppercase, numeric, and special characters. 
 
-    ![StorSimple によるデバイスの登録 4](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
+    ![StorSimple register device 4](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
 
-    StorSimple Snapshot Manager のパスワードは StorSimple Manager サービス インターフェイスからリセットできます。詳しい手順については、「[StorSimple Manager サービスを利用して StorSimple パスワードを変更する](../articles/storsimple/storsimple-change-passwords.md)」を参照してください。
+    You can reset the StorSimple Snapshot Manager password from the StorSimple Manager service interface. For detailed steps, go to [Change the StorSimple passwords using the StorSimple Manager serivce](../articles/storsimple/storsimple-change-passwords.md).
 
-	この手順で発生した問題を解消する場合、トラブルシューティング ガイダンスの「[パスワード関連のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords)」を参照してください。
+    To troubleshoot any issues during this step, refer to troubleshooting guidance for [Errors related to passwords](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords).
 
-11. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、手順 2. で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
+11. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in step 2. After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
 
-	デバイス登録関連のエラーを解消するには、「[デバイス登録中のエラー](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration)」を参照してください。トラブルシューティングの詳細については、「[ステップ バイ ステップ トラブルシューティング例](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example)」も参照してください。
+    To troubleshoot any possible device registration failures, refer to [Errors during device registration](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration). For detailed troubleshooting, you can also refer to [Step-by-step troubleshooting example](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example).
 
-12. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。
-	
-	> [AZURE.WARNING] このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
+12. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location.
+    
+    > [AZURE.WARNING] This key will be required with the service registration key to register additional devices with the StorSimple Manager service. Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
 
-     ![StorSimple によるデバイスの登録 6](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
+     ![StorSimple register device 6](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
 
-     シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードおよび StorSimple Snapshot Manager のパスワードは変更されず、デバイスは既定のパスワードに戻ります。
+     To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor. DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password and the StorSimple Snapshot Manager password will not be changed and the device will revert to the default passwords.
 
-13. シリアル コンソールを終了します。
+13. Exit the serial console.
 
-14. Azure クラシック ポータルに戻り、次の手順を実行します。
-  1. StorSimple Manager サービスをダブルクリックして **[クイック スタート]** ページにアクセスします。
-  2. **[接続されたデバイスの表示]** をクリックします。
-  3. **[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は **"オンライン"** と表示されます。デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
+14. Return to the Azure classic portal, and complete the following steps:
+  1. Double-click your StorSimple Manager service to access the **Quick Start** page.
+  2. Click **View connected devices**.
+  3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**. If the device status is **Offline**, wait for a couple of minutes for the device to come online.
    
-    ![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png)
+    ![StorSimple Devices page](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png) 
   
-      > [AZURE.IMPORTANT] デバイスがオンラインになったら、この手順の最初で取り外したネットワーク ケーブルを取り付けます。
+      > [AZURE.IMPORTANT] After the device is online, plug in the network cables that you had unplugged in the beginning of this step.
 
-デバイスを登録したが、オンラインにならない場合、`Test-HcsmConnection -Verbose` を実行し、ネットワーク接続の正常な状態を確認できます。このコマンドレットの詳しい利用については、「[Test-HcsmConnection のコマンドレット リファレンス](https://technet.microsoft.com/library/dn715782.aspx)」を参照してください。
+After the device is successfully registered and doesn't come online, you can run the `Test-HcsmConnection -Verbose` to ensure that the network connectivity is healthy. For the detailed usage of this cmdlet, go to [cmdlet reference for Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx).
 
-![ビデオ](./media/storsimple-configure-and-register-device/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-configure-and-register-device/Video_icon.png) **Video available**
 
-StorSimple 用 Windows PowerShell でデバイスを構成および登録する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/)を参照してください。
+To watch a video that demonstrates how to configure and register your device through Windows PowerShell for StorSimple, click [here](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
 
-<!---HONumber=AcomDC_0224_2016-->
+<!--HONumber=Oct16_HO2-->
+
+
