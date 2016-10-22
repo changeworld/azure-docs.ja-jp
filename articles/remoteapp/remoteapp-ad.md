@@ -1,9 +1,9 @@
 
 <properties 
-    pageTitle="Azure RemoteApp に関する Azure AD と Active Directory の要件 | Microsoft Azure" 
-    description="Azure RemoteApp で動作するように Active Directory をセットアップする方法について説明します。" 
+    pageTitle="Azure AD + Active Directory requirements for Azure RemoteApp | Microsoft Azure" 
+    description="Learn how to set up Active Directory to work with Azure RemoteApp." 
     services="remoteapp" 
-	documentationCenter="" 
+    documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -18,33 +18,37 @@
 
 
 
-# Azure RemoteApp に関する Azure AD と Active Directory の要件
+
+# <a name="azure-ad-+-active-directory-requirements-for-azure-remoteapp"></a>Azure AD + Active Directory requirements for Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
 
-AD Connect を使用してフェデレーションするクラウド コレクションまたは Azure RemoteApp ハイブリッド コレクションでは、次を行う必要があります。
+For your Azure RemoteApp hybrid collection or for a cloud collection that you want to federate using AD Connect, you need to do the following.
 
-### Azure AD と Active Directory を接続する
+### <a name="connect-azure-ad-and-active-directory"></a>Connect Azure AD and Active Directory
 
-Azure AD テナントとオンプレミスの Active Directory 環境を接続する場合、AD Connect を使用します。2 つのディレクトリを接続するには、[4 回クリック](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/)するのみです。
+If you want to connect your Azure AD tenant and your on-premises Active Directory environments, use AD Connect. It will take you only [4 clicks](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) to connect the two directories.
 
-注 - ハイブリッド コレクションではディレクトリの同期が必要です。
+Note - Directory synchronization is required for hybrid collections.
 
-### "@domain.com" が一致することを確認する
-作業を開始する前に、オンプレミス フォレストの UPN が、Azure AD ドメインのサフィックスと一致していることを確認してください。
+### <a name="make-sure-your-"@domain.com"-match"></a>Make sure your "@domain.com" match
+Before you get started, make sure that the UPN for your on-premises forest matches the suffix of your Azure AD domain. 
 
-Azure AD に UPN ドメインのサフィックスをセットアップしたら、Azure RemoteApp にログインするすべてのユーザーが "user@<設定したサフィックス>" としてログインするようになります。ユーザーが同じ user@suffix を使用してオンプレミス ドメインにログインできることも確認してください。場合によっては、Azure AD に 1 つのドメイン名をセットアップし、オンプレミスのユーザー用に別のドメイン サフィックスを指定することもできます。この場合、ユーザーは Azure RemoteApp を介してドメインに参加しているコンピューターまたはリソースに接続することはできません。
+After you set up the UPN domain suffix in Azure AD, all users logging into Azure RemoteApp will log in as “user@<the suffix you set up>”. Make sure that users can also log in with the same user@suffix into the on-premises domain. In certain cases you can set up one domain name in Azure AD while specifying a different domain suffix for the user on-prem. In this case, your users won't be able to connect to any domain-joined computers or resources through Azure RemoteApp.
 
-たとえば、UPN ドメイン サフィックスを AAD に contoso.com としてセットアップした場合に、オンプレミス/AD の一部のユーザーが @contoso.uk を使用してログインするように構成されている場合、そのようなユーザーは ARA コレクションに正しくログインすることはできません。ログインするには、AAD と AD のユーザー UPN が同じである必要があります。
+For example, if you set up your UPN domain suffix in AAD as contoso.com, but some users on premises/AD are configured to log in with @contoso.uk, then those users will not be able to correctly log into the ARA collection. Users UPN in AAD and AD must be the same for the login to be possible”
 
-### Azure RemoteApp のオブジェクトを作成する
-また、次のオンプレミス Active Directory オブジェクトを作成する必要もあります。
+### <a name="create-objects-for-azure-remoteapp"></a>Create objects for Azure RemoteApp
+You also need to create the following on-premises Active Directory objects:
 
-- オンプレミスのドメインに RDSH エンド ポイントを結合して、RemoteApp プログラムのドメイン リソースにアクセスするサービス アカウント。
-- RemoteApp マシン オブジェクトを含む組織単位 (OU)。RemoteApp で使用するアカウントとポリシーを特定するために OU の使用を推奨します (必須ではありません)。
+- A service account to provide access to domain resources for RemoteApp programs by joining RDSH end points to the on-premises domain.
+- An Organizational Unit (OU) to contain RemoteApp machine objects. Use of the OU is recommended (but not required) to isolate the accounts and policies you will use with RemoteApp.
 
-RemoteApp コレクションを作成するときは、これらのオブジェクトが両方とも必要であるため、これらの手順を最初に行ってください。
+You need both of these objects when you create your RemoteApp collection, so be sure to do these steps first.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

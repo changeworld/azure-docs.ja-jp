@@ -1,260 +1,266 @@
 <properties
-	pageTitle="ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理 | Microsoft Azure"
-	description="ストレージ エクスプローラー (プレビュー) を使用して Azure BLOB コンテナーと BLOB を管理します"
-	services="storage"
-	documentationCenter="na"
-	authors="TomArcher"
-	manager="douge"
-	editor="" />
+    pageTitle="Manage Azure Blob Storage resources with Storage Explorer (Preview) | Microsoft Azure"
+    description="Manage Azure Blob Containers and Blobs with Storage Explorer (Preview)"
+    services="storage"
+    documentationCenter="na"
+    authors="TomArcher"
+    manager="douge"
+    editor="" />
 
  <tags
-	ms.service="storage"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="08/17/2016"
-	ms.author="tarcher" />
+    ms.service="storage"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="08/17/2016"
+    ms.author="tarcher" />
 
-# ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理
 
-## Overview
+# <a name="manage-azure-blob-storage-resources-with-storage-explorer-(preview)"></a>Manage Azure Blob Storage resources with Storage Explorer (Preview)
 
-[Azure Blob Storage](./storage/storage-dotnet-how-to-use-blobs.md) は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。この記事では、ストレージ エクスプローラー (プレビュー) を使用して BLOB コンテナーおよび BLOB を操作する方法について説明します。
+## <a name="overview"></a>Overview
 
-## 前提条件
+[Azure Blob Storage](./storage/storage-dotnet-how-to-use-blobs.md) is a service for storing large amounts of unstructured data, such as text or binary data, that can be accessed from anywhere in the world via HTTP or HTTPS.
+You can use Blob storage to expose data publicly to the world, or to store application data privately. In this article, you'll learn how to use Storage Explorer (Preview) to work with blob containers and blobs.
 
-この記事の手順を完了するには、次のことが必要になります。
+## <a name="prerequisites"></a>Prerequisites
 
-- [ストレージ エクスプローラー (プレビュー) をダウンロードしてインストールする](http://www.storageexplorer.com)
-- [Azure ストレージ アカウントまたはサービスに接続する](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+To complete the steps in this article, you'll need the following:
 
-## BLOB コンテナーを作成する
+- [Download and install Storage Explorer (preview)](http://www.storageexplorer.com)
+- [Connect to a Azure storage account or service](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
-すべての BLOB は、BLOB コンテナー内にある必要があります。BLOB コンテナーは、BLOB の論理的なグループにすぎません。アカウントに含めることができるコンテナーの数には制限がなく、各コンテナーに格納できる BLOB の数にも制限はありません。
+## <a name="create-a-blob-container"></a>Create a blob container
 
-次の手順では、ストレージ エクスプローラー (プレビュー) 内に BLOB コンテナーを作成する方法を説明します。
+All blobs must reside in a blob container, which is simply a logical grouping of blobs. An account can contain an unlimited number of containers, and each container can store an unlimited number of blobs.
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、BLOB コンテナーを作成するストレージ アカウントを展開します。
-1.	**[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
+The following steps illustrate how to create a blob container within Storage Explorer (Preview).
 
-	![Create blob containers context menu][0]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account within which you wish to create the blob container.
+1.  Right-click **Blob Containers**, and - from the context menu - select **Create Blob Container**.
 
-1.	**[BLOB コンテナー]** フォルダーの下に、テキスト ボックスが表示されます。BLOB コンテナーの名前を入力します。BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの名前付け規則](./storage/storage-dotnet-how-to-use-blobs.md#create-a-container)に関するセクションを参照してください。
+    ![Create blob containers context menu][0]
 
-	![Create Blob Containers text box][1]
+1.  A text box will appear below the **Blob Containers** folder. Enter the name for your blob container. See the [Container naming rules](./storage/storage-dotnet-how-to-use-blobs.md#create-a-container) section for a list of rules and restrictions on naming blob containers.
 
-1.	作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
+    ![Create Blob Containers text box][1]
 
-	![Blob Container created][2]
+1.  Press **Enter** when done to create the blob container, or **Esc** to cancel. Once the blob container has been successfully created, it will be displayed under the **Blob Containers** folder for the selected storage account.
 
-## BLOB コンテナーの内容を表示する
+    ![Blob Container created][2]
 
-BLOB コンテナーには、BLOB とフォルダーが含まれます (フォルダーにも BLOB を含めることができます)。
+## <a name="view-a-blob-container's-contents"></a>View a blob container's contents
 
-次の手順では、ストレージ エクスプローラー (プレビュー) 内で BLOB コンテナーの内容を表示する方法を説明します。
+Blob containers contain blobs and folders (that can also contain blobs).
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	表示する BLOB コンテナーを右クリックし、コンテキスト メニューの **[BLOB コンテナー エディターを開く]** を選択します。表示する BLOB コンテナーをダブルクリックすることもできます。
+The following steps illustrate how to view the contents of a blob container within Storage Explorer (Preview):
 
-	![Open blob container editor context menu][19]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container you wish to view.
+1.  Expand the storage account's **Blob Containers**.
+1.  Right-click the blob container you wish to view, and - from the context menu - select **Open Blob Container Editor**.
+You can also double-click the blob container you wish to view.
 
-1.	メイン ウィンドウに、BLOB コンテナーの内容が表示されます。
+    ![Open blob container editor context menu][19]
 
-	![Blob container editor][3]
+1.  The main pane will display the blob container's contents.
 
-## BLOB コンテナーを削除する
+    ![Blob container editor][3]
 
-BLOB コンテナーは、必要に応じて、簡単に作成および削除できます (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](./#managing-blobs-in-a-blob-container)」セクションを参照してください)。
+## <a name="delete-a-blob-container"></a>Delete a blob container
 
-次の手順では、ストレージ エクスプローラー (プレビュー) 内で BLOB コンテナーを削除する方法を説明します。
+Blob containers can be easily created and deleted as needed. (To see how to delete individual blobs, refer to the section, [Managing blobs in a blob container](./#managing-blobs-in-a-blob-container).)
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、表示する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	削除する BLOB コンテナーを右クリックし、コンテキスト メニューの **[削除]** を選択します。また、**Del** キーを押して、現在選択されている BLOB コンテナーを削除することもできます。
+The following steps illustrate how to delete a blob container within Storage Explorer (Preview):
 
-	![Delete blob container context menu][4]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container you wish to view.
+1.  Expand the storage account's **Blob Containers**.
+1.  Right-click the blob container you wish to delete, and - from the context menu - select **Delete**.
+You can also press **Delete** to delete the currently selected blob container.
 
-1.	確認のダイアログで **[はい]** を選択します。
+    ![Delete blob container context menu][4]
 
-	![Delete blob Container confirmation][5]
+1.  Select **Yes** to the confirmation dialog.
 
-## BLOB コンテナーをコピーする
+    ![Delete blob Container confirmation][5]
 
-ストレージ エクスプ ローラー (プレビュー) を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](./#managing-blobs-in-a-blob-container)」セクションを参照してください)。
+## <a name="copy-a-blob-container"></a>Copy a blob container
 
-次の手順では、あるストレージ アカウントから別のストレージ アカウントに BLOB コンテナーをコピーする方法を説明します。
+Storage Explorer (Preview) enables you to copy a blob container to the clipboard, and then paste that blob container into another storage account. (To see how to copy individual blobs, refer to the section, [Managing blobs in a blob container](./#managing-blobs-in-a-blob-container).)
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、コピーする BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	コピーする BLOB コンテナーを右クリックし、コンテキスト メニューの **[Copy Blob Container (BLOB コンテナーのコピー)]** を選択します。
+The following steps illustrate how to copy a blob container from one storage account to another.
 
-	![Copy blob container context menu][6]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container you wish to copy.
+1.  Expand the storage account's **Blob Containers**.
+1.  Right-click the blob container you wish to copy, and - from the context menu - select **Copy Blob Container**.
 
-1.	BLOB コンテナーの貼り付け先の "ターゲット" ストレージ アカウントを右クリックし、コンテキスト メニューの **[Paste Blob Container (BLOB コンテナーの貼り付け)]** を選択します。
+    ![Copy blob container context menu][6]
 
-	![Paste blob container context menu][7]
+1.  Right-click the desired "target" storage account into which you want to paste the blob container, and - from the context menu - select **Paste Blob Container**.
 
-## BLOB コンテナーの SAS を取得する
+    ![Paste blob container context menu][7]
 
-[Shared Access Signature (SAS)](./storage/storage-dotnet-shared-access-signature-part-1.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。
+## <a name="get-the-sas-for-a-blob-container"></a>Get the SAS for a blob container
 
-次の手順では、BLOB コンテナーの SAS を作成する方法を説明します。
+A [shared access signature (SAS)](./storage/storage-dotnet-shared-access-signature-part-1.md) provides delegated access to resources in your storage account.
+This means that you can grant a client limited permissions to objects in your storage account for a specified period of time and with a specified set of permissions, without having to share your account access keys.
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、SAS を取得する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	目的の BLOB コンテナーを右クリックし、コンテキスト メニューの **[Get Shared Access Signature (Shared Access Signature の取得)]** を選択します。
+The following steps illustrate how to create a SAS for a blob container:
 
-	![Get SAS context menu][8]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container for which you wish to get a SAS.
+1.  Expand the storage account's **Blob Containers**.
+1.  Right-click the desired blob container, and - from the context menu - select **Get Shared Access Signature**.
 
-1.	**[Shared Access Signature]** ダイアログで、リソースのポリシー、開始日と有効期限日、タイム ゾーン、アクセス レベルを指定します。
+    ![Get SAS context menu][8]
 
-	![Get SAS options][9]
+1.  In the **Shared Access Signature** dialog, specify the policy, start and expiration dates, time zone, and access levels you want for the resource.
 
-1.	SAS オプションの指定が完了したら、**[作成]** を選択します。
+    ![Get SAS options][9]
 
-1.	2 番目の **[Shared Access Signature]** ダイアログが表示されます。このダイアログには、BLOB コンテナーと共に、ストレージ リソースへのアクセスに使用できる URL とクエリ文字列が表示されます。クリップボードにコピーする URL の横にある **[コピー]** を選択します。
+1.  When you're finished specifying the SAS options, select **Create**.
 
-	![Copy SAS URLs][10]
+1.  A second **Shared Access Signature** dialog will then display that lists the blob container along with the URL and QueryStrings you can use to access the storage resource.
+Select **Copy** next to the URL you wish to copy to the clipboard.
 
-1.	完了したら、**[閉じる]** を選択します。
+    ![Copy SAS URLs][10]
 
-## BLOB コンテナーのアクセス ポリシーを管理する
+1.  When done, select **Close**.
 
-次の手順では、BLOB コンテナーのアクセス ポリシーを管理 (追加と削除) する方法を説明します。
+## <a name="manage-access-policies-for-a-blob-container"></a>Manage Access Policies for a blob container
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Manage Access Policies (アクセス ポリシーの管理)]** を選択します。
+The following steps illustrate how to manage (add and remove) access policies for a blob container:
 
-	![Manage access policies context menu][11]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container whose access policies you wish to manage.
+1.  Expand the storage account's **Blob Containers**.
+1.  Select the desired blob container, and - from the context menu - select **Manage Access Policies**.
 
-1.	**[アクセス ポリシー]** ダイアログには、選択した BLOB コンテナー用に既に作成されているアクセス ポリシーの一覧が表示されます。
+    ![Manage access policies context menu][11]
 
-	![Access Policy options][12]
+1.  The **Access Policies** dialog will list any access policies already created for the selected blob container.
 
-1.	アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
+    ![Access Policy options][12]        
 
-	- **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。生成後、**[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
-	- **アクセス ポリシーを編集する** - 必要な編集を行い、**[保存]** を選択します。
-	- **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
+1.  Follow these steps depending on the access policy management task:
 
-## BLOB コンテナーのパブリック アクセス レベルを設定する
+    - **Add a new access policy** - Select **Add**. Once generated, the **Access Policies** dialog will display the newly added access policy (with default settings).
+    - **Edit an access policy** -  Make any desired edits, and select **Save**.
+    - **Remove an access policy** - Select **Remove** next to the access policy you wish to remove.
 
-既定では、すべての BLOB コンテナーが "パブリック アクセスなし" に設定されています。
+## <a name="set-the-public-access-level-for-a-blob-container"></a>Set the Public Access Level for a blob container
 
-次の手順は、BLOB コンテナーのパブリック アクセス レベルを指定する方法を説明します。
+By default, every blob container is set to "No public access".
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、アクセス ポリシーを管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	目的の BLOB コンテナーを選択し、コンテキスト メニューの **[Set Public Access Level (パブリック アクセス レベルの設定)]** を選択します。
+The following steps illustrate how to specify a public access level for a blob container.
 
-	![Set public access level context menu][13]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container whose access policies you wish to manage.
+1.  Expand the storage account's **Blob Containers**.
+1.  Select the desired blob container, and - from the context menu - select **Set Public Access Level**.
 
-1.	**[Set Container Public Access Level (コンテナーのパブリック アクセス レベルの設定)]** ダイアログで、目的のアクセス レベルを指定します。
+    ![Set public access level context menu][13]
 
-	![Set public access level options][14]
+1.  In the **Set Container Public Access Level** dialog, specify the desired access level.
 
-1.	**[適用]** を選択します。
+    ![Set public access level options][14]
 
-## BLOB コンテナー内の BLOB を管理する
+1.  Select **Apply**.
 
-BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB をアップロードする、ローカル コンピューターに BLOB をダウンロードする、ローカル コンピューターで BLOB を開くなどの操作が可能になります。
+## <a name="managing-blobs-in-a-blob-container"></a>Managing blobs in a blob container
 
-次の手順では、BLOB コンテナー内の BLOB (およびフォルダー) を管理する方法を説明します。
+Once you've created a blob container, you can upload a blob to that blob container, download a blob to your local computer, open a blob on your local computer, and much more.
 
-1.	ストレージ エクスプローラー (プレビュー) を起動します。
-1.	左側のウィンドウで、管理する BLOB コンテナーが含まれているストレージ アカウントを展開します。
-1.	ストレージ アカウントの **[BLOB コンテナー]** を展開します。
-1.	表示する BLOB コンテナーをダブルクリックします。
-1.	メイン ウィンドウに、BLOB コンテナーの内容が表示されます。
+The following steps illustrate how to manage the blobs (and folders) within a blob container.
 
-	![View blob container][3]
+1.  Open Storage Explorer (Preview).
+1.  In the left pane, expand the storage account containing the blob container you wish to manage.
+1.  Expand the storage account's **Blob Containers**.
+1.  Double-click the blob container you wish to view.
+1.  The main pane will display the blob container's contents.
 
-1.	メイン ウィンドウに、BLOB コンテナーの内容が表示されます。
+    ![View blob container][3]
 
-1.	実行するタスクに応じて、以下の手順に従います。
+1.  The main pane will display the blob container's contents.
 
-	- **BLOB コンテナーにファイルをアップロードする**
+1.  Follow these steps depending on the task you wish to perform:
 
-		1.	メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
+    - **Upload files to a blob container**
 
-			![Upload files menu][15]
+        1.  On the main pane's toolbar, select **Upload**, and then **Upload Files** from the drop-down menu.
 
-		1.	**[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
+            ![Upload files menu][15]
 
-			![Upload files options][16]
+        1.  In the **Upload files** dialog, select the ellipsis (**…**) button on the right side of the **Files** text box to select the file(s) you wish to upload.
 
-		1.	**[BLOB の種類]** に種類を指定します。さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](./storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+            ![Upload files options][16]
 
-		1.	必要に応じて、選択したファイルのアップロード先となるターゲット フォルダーを指定します。ターゲット フォルダーが存在しない場合は、作成されます。
+        1.  Specify the type of **Blob type**. The article [Get started with Azure Blob storage using .NET](./storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) explains the differences between the various blob types.
 
-		1.	**[アップロード]** を選択します。
+        1.  Optionally, specify a target folder into which the selected file(s) will be uploaded. If the target folder doesn’t exist, it will be created.
 
-	- **BLOB コンテナーにフォルダーをアップロードする**
+        1.  Select **Upload**.
 
-		1.	メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
+    - **Upload a folder to a blob container**
 
-			![Upload folder menu][17]
+        1.  On the main pane's toolbar, select **Upload**, and then **Upload Folder** from the drop-down menu.
 
-		1.	**[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
+            ![Upload folder menu][17]
 
-			![Upload folder options][18]
+        1.  In the **Upload folder** dialog, select the ellipsis (**…**) button on the right side of the **Folder** text box to select the folder whose contents you wish to upload.
 
-		1.	**[BLOB の種類]** に種類を指定します。さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](./storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+            ![Upload folder options][18]
 
-		1.	必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。ターゲット フォルダーが存在しない場合は、作成されます。
+        1.  Specify the type of **Blob type**. The article [Get started with Azure Blob storage using .NET](./storage/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) explains the differences between the various blob types.
 
-		1.	**[アップロード]** を選択します。
+        1.  Optionally, specify a target folder into which the selected folder's contents will be uploaded. If the target folder doesn’t exist, it will be created.
 
-	- **ローカル コンピューターに BLOB をダウンロードする**
+        1.  Select **Upload**.
 
-		1.	ダウンロードする BLOB を選択します。
+    - **Download a blob to your local computer**
 
-		1.	メイン ウィンドウのツール バーで、**[ダウンロード]** を選択します。
+        1.  Select the blob you wish to download.
 
-		1.	**[Specify where to save the downloaded blob (ダウンロードした BLOB を保存する場所の指定)]** ダイアログで、BLOB のダウンロード先の場所と、その場所に付ける名前を指定します。
+        1.  On the main pane's toolbar, select **Download**.
 
-		1.	[**保存**] を選択します。
+        1.  In the **Specify where to save the downloaded blob** dialog, specify the location where you want the blob downloaded, and the name you wish to give it.  
 
-	- **ローカル コンピューターで BLOB を開く**
+        1.  Select **Save**.
 
-		1.	開く BLOB を選択します。
+    - **Open a blob on your local computer**
 
-		1.	メイン ウィンドウのツール バーで、**[開く]** を選択します。
+        1.  Select the blob you wish to open.
 
-		1.	BLOB がダウンロードされ、BLOB の基になるファイルの種類に関連付けられているアプリケーションを使用して開かれます。
+        1.  On the main pane's toolbar, select **Open**.
 
-	- **BLOB をクリップボードにコピーする**
+        1.  The blob will be downloaded and opened using the application associated with the blob's underlying file type.
 
-		1.	コピーする BLOB を選択します。
+    - **Copy a blob to the clipboard**
 
-		1.	メイン ウィンドウのツール バーで、**[コピー]** を選択します。
+        1.  Select the blob you wish to copy.
 
-		1.	左側のウィンドウで別の BLOB コンテナーに移動し、それをダブルクリックして、メイン ウィンドウに表示します。
+        1.  On the main pane's toolbar, select **Copy**.
 
-		1.	メイン ウィンドウのツール バーで **[貼り付け]** を選択して、BLOB のコピーを作成します。
+        1.  In the left pane, navigate to another blob container, and double-click it to view it in the main pane.
 
-	- **BLOB を削除する**
+        1.  On the main pane's toolbar, select **Paste** to create a copy of the blob.
 
-		1.	削除する BLOB を選択します。
+    - **Delete a blob**
 
-		1.	メイン ウィンドウのツール バーで、**[削除]** を選択します。
+        1.  Select the blob you wish to delete.
 
-		1.	確認のダイアログで **[はい]** を選択します。
+        1.  On the main pane's toolbar, select **Delete**.
 
-## 次のステップ
+        1.  Select **Yes** to the confirmation dialog.
 
-- [最新のストレージ エクスプローラー (プレビュー) のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
-- [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。
+## <a name="next-steps"></a>Next steps
+
+- View the [latest Storage Explorer (Preview) release notes and videos](http://www.storageexplorer.com).
+- Learn how to [create applications using Azure blobs, tables, queues, and files](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png
 [1]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-create.png
@@ -277,4 +283,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
 [18]: ./media/vs-azure-tools-storage-explorer-blobs/blob-upload-folder-options.png
 [19]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-open-editor-context-menu.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

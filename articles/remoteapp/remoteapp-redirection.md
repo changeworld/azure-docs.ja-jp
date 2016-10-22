@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp でリダイレクトを使用する | Microsoft Azure"
-    description="RemoteApp でリダイレクトを構成し、使用する方法を学習します。"
+    pageTitle="Using redirection in Azure RemoteApp | Microsoft Azure"
+    description="Learn how to configure and use redirection in RemoteApp"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,96 +15,101 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-# Azure RemoteApp でリダイレクトを使用する
+
+# <a name="using-redirection-in-azure-remoteapp"></a>Using redirection in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-デバイス リダイレクトを使用すると、ユーザーはローカルのコンピューター、電話、タブレットに接続されているデバイスを利用し、リモート アプリと対話できます。たとえば、Azure RemoteApp で Skype を指定した場合、ユーザーが Skype を操作するには PC にカメラを取り付ける必要があります。これはプリンター、スピーカー、モニター、各種 USB 接続周辺機器についても当てはまります。
+Device redirection lets your users interact with remote apps using the devices attached to their local computer, phone, or tablet. For example, if you have provided Skype through Azure RemoteApp, your user needs the camera installed on their PC to work with Skype. This is also true for printers, speakers, monitors, and a range of USB-connected peripherals.
 
-RemoteApp はリモート デスクトップ プロトコル (RDP) と RemoteFX を利用してリダイレクトを提供します。
+RemoteApp leverages the Remote Desktop Protocol (RDP) and RemoteFX to provide redirection.
 
-## リダイレクトは既定で有効になっていますか。
-RemoteApp を使用するとき、次のリダイレクトが既定で有効になっています。括弧内の情報は RDP 設定を示しています。
+## <a name="what-redirection-is-enabled-by-default?"></a>What redirection is enabled by default?
+When you use RemoteApp, the following redirections are enabled by default. The information in parentheses show the RDP setting.
 
-- ローカル コンピューターで音を再生します (**このコンピューターで再生します**)。 (audiomode:i:0)
-- ローカル コンピューターから音声をキャプチャし、リモート コンピューターに送信します (**このコンピューターから記録します**)。 (audiocapturemode:i:1)
-- ローカル プリンターに出力します (Redirectprinters:i:1)。
-- COM ポート (redirectcomports:i:1)
-- スマート カード デバイス (redirectsmartcards:i:1)
-- クリップボード (コピーして貼り付ける機能) (redirectclipboard:i:1)
-- ClearType フォント スムージング (allow font smoothing:i:1)
-- サポートされているすべてのプラグ アンド プレイ デバイスをリダイレクトします。 (devicestoredirect:s:*)
+- Play sounds on the local computer (**Play on this computer**). (audiomode:i:0)
+- Capture audio from the local computer and send to the remote computer (**Record from this computer**). (audiocapturemode:i:1)
+- Print to local printers (redirectprinters:i:1)
+- COM ports (redirectcomports:i:1)
+- Smart card device (redirectsmartcards:i:1)
+- Clipboard (ability to copy and paste) (redirectclipboard:i:1)
+- Clear type font smoothing (allow font smoothing:i:1)
+- Redirect all supported Plug and Play devices. (devicestoredirect:s:*)
 
-## 他にはどのようなリダイレクトが利用できますか。
-2 つのリダイレクト オプションが既定で無効になっています。
+## <a name="what-other-redirection-is-available?"></a>What other redirection is available?
+Two redirection options are disabled by default:
 
-- ドライブ リダイレクト (ドライブ マッピング): ローカル コンピューターのドライブがリモート セッションでマッピングされたドライブになります。これにより、リモート セッションで作業中に、ローカル ドライブからファイルを開いたり、保存したりできます。
-- USB リダイレクト: リモート セッション内で、ローカル コンピューターに接続されている USB デバイスを使用できます。
+- Drive redirection (drive mapping): Your local computer's drives become mapped drives in the remote session. This lets you save or open files from your local drives while you work in the remote session.
+- USB redirection: You can use the USB devices attached to your local computer within the remote session.
 
-## RemoteApp でリダイレクトの設定を変更します。
-Microsoft Azure PowerShell と SDK を使用し、コレクションのデバイス リダイレクト設定を変更できます。新しい PowerShell と SDK をインストールした後を構成したら、最初に「[Azure PowerShell を構成する方法](../powershell-install-configure.md)」の説明に従い、サブスクリプションを管理するように設定します。
+## <a name="change-your-redirection-settings-in-remoteapp"></a>Change your redirection settings in RemoteApp
+You can change the device redirection settings for a collection by using the Microsoft Azure PowerShell with SDK. After you install the new PowerShell and SDK, first configure it to manage your subscription as described in [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
-次のようなコマンドを利用し、カスタム RDP プロパティを設定します。
+Then use a command similar to the following to set the custom RDP properties:
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
-(*`n* は個々のプロパティ間の区切り記号として使用されていることに注意してください。)
+(Note that *`n* is used as a delimiter between individual properties.)
 
-設定されているカスタム RDP プロパティの一覧を取得するには、次のコマンドレットに実行します。カスタム プロパティだけが出力の結果として表示され、既定のプロパティは表示されないことに注意してください。
+To get a list of what custom RDP properties are configured, run the following cmdlet. Note that only custom properties are shown as output results and not the default properties:  
 
     Get-AzureRemoteAppCollection -CollectionName <collection name>
 
-カスタム プロパティを設定するときは、毎回すべてのカスタム プロパティを指定する必要があります。指定しない場合、設定が無効に戻ります。
+When you set custom properties you must specify all custom properties each time; otherwise the setting reverts to disabled.   
 
-### 一般的な例
-ドライブ リダイレクトを有効にするには、次のコマンドレットを使用します。
+### <a name="common-examples"></a>Common examples
+Use the following cmdlet to enable drive redirection:  
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*”
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*”
 
-USB リダイレクトとドライブ リダイレクトの両方を有効にするには、このコマンドレットを使用します。
+Use this cmdlet to enable both USB and Drive redirection:
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
-クリップボード共有を無効にするには、このコマンドレットを使用します。
+Use this cmdlet to disable clipboard sharing:  
 
-	Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0”
+    Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0”
 
-> [AZURE.IMPORTANT] 変更をテストする前に、必ずコレクション内のすべてのユーザーを (切断するだけでなく) ログオフしてください。ユーザーが完全にログオフさせるには、Azure ポータルのコレクションの **[セッション]** タブに移動し、切断されているユーザーまたはサインインしているユーザーをログオフします。セッション内でローカル ドライブがエクスプローラーに表示されるまで数秒かかることがあります。
+> [AZURE.IMPORTANT] Be sure to completely log off all users in the collection (and not just disconnect them) before you test the change. To ensure users are completely logged off, go to the **Sessions** tab in the collection in the Azure portal and log off any users who are disconnected or signed in. Sometimes it can take several seconds for the local drives to show in Explorer within the session.
 
-## Windows クライアントで USB リダイレクトの設定を変更する
+## <a name="change-usb-redirection-settings-on-your-windows-client"></a>Change USB redirection settings on your Windows client
 
-RemoteApp に接続するコンピューターで USB リダイレクトを使用する場合、2 つの操作を行う必要があります。1 - 管理者が Azure PowerShell を使用し、コレクション レベルで USB リダイレクトを有効にする必要があります。2 - USB リダイレクトを使用する各デバイスで、それを許可するグループ ポリシーを有効にする必要があります。この手順は、USB リダイレクトを使用するユーザーごとに実行する必要があります。
+If you want to use USB redirection on a computer that connects to RemoteApp, there are 2 actions that need to happen. 1 - Your administrator needs to enable USB redirection at the collection level by using Azure PowerShell. 2 - On each device where you want to use USB redirection, you need to enable a group policy that permits it. This step will need to be done for each user that wants to use USB redirection.
 
-> [AZURE.NOTE] Azure RemoteApp による USB リダイレクトは Windows コンピューターでのみ可能です。
+> [AZURE.NOTE] USB redirection with Azure RemoteApp is only supported for Windows computers.
 
-### RemoteApp コレクションの USB リダイレクトを有効にする
-コレクション レベルで USB リダイレクトを有効にするには、次のコマンドレットを使用します。
+### <a name="enable-usb-redirection-for-the-remoteapp-collection"></a>Enable USB redirection for the RemoteApp collection
+Use the following cmdlet to enable USB redirection at the collection level:
 
     Set-AzureRemoteAppCollection -CollectionName <collection_name> -CustomRdpProperty "nusbdevicestoredirect:s:*"
 
-### クライアント コンピューターの USB リダイレクトを有効にする
+### <a name="enable-usb-redirection-for-the-client-computer"></a>Enable USB redirection for the client computer
 
-コンピューターで USB リダイレクト設定を構成するには
+To configure USB redirection settings on your computer:
 
-1. ローカル グループ ポリシー エディターを開きます (GPEDIT.MSC)。(コマンド プロンプトから gpedit.msc を実行します。)
-2. **Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Remote Desktop Services\\Remote Desktop Connection Client\\RemoteFX USB Device Redirection** を開きます。
-3. **[このコンピューターからサポートされている他の RemoteFX USB デバイスの RDP リダイレクトを許可する]** をダブルクリックします。
-4. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
-5. 管理者権限でコマンド プロンプトを開き、次のコマンドを実行します。
+1. Open the Local Group Policy Editor (GPEDIT.MSC). (Run gpedit.msc from a command prompt.)
+2. Open **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection**.
+3. Double-click **Allow RDP redirection of other supported RemoteFX USB devices from this computer**.
+4. Select **Enabled**, and then select **Administrators and Users in the RemoteFX USB Redirection Access Rights**.
+5. Open a command prompt with administrative permissions, and run the following command:
 
-		gpupdate /force
-6. コンピューターを再起動します。
+        gpupdate /force
+6. Restart the computer.
 
-グループ ポリシー管理ツールを利用し、USB リダイレクト ポリシーを作成してドメイン内のすべてのコンピューターに適用することもできます。
+You can also use the Group Policy Management tool to create and apply the USB redirection policy for all computers in your domain:
 
-1. ドメイン管理者としてドメイン コントローラーにログインします。
-2. グループ ポリシー管理コンソールを開きます。(**[開始] > [管理ツール] > [グループ ポリシー管理]** の順にクリックします。)
-3. ポリシーを作成するドメインまたは組織単位に移動します。
-4. **[既定のドメイン ポリシー]** を右クリックし、**[編集]** をクリックします。
-5. **Computer Configuration\\Policies\\Administrative Templates\\Windows Components\\Remote Desktop Services\\Remote Desktop Connection Client\\RemoteFX USB Device Redirection** を開きます。
-6. **[このコンピューターからサポートされている他の RemoteFX USB デバイスの RDP リダイレクトを許可する]** をダブルクリックします。
-7. **[有効]** を選択し、**[RemoteFX USB リダイレクト アクセス権の管理者とユーザー]** を選択します。
-8. **[OK]** をクリックします。
+1. Log into the domain controller as the domain administrator.
+2. Open the Group Policy Management Console. (Click **Start > Administrative Tools > Group Policy Management**.)
+3. Navigate to the domain or organizational unit for which you want to create the policy.
+4. Right-click **Default Domain Policy**, and then click **Edit**.
+5. Open **Computer Configuration\Policies\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Connection Client\RemoteFX USB Device Redirection**.
+6. Double-click **Allow RDP redirection of other supported RemoteFX USB devices from this computer**.
+7. Select **Enabled**, and then select **Administrators and Users in the RemoteFX USB Redirection Access Rights**.
+8. Click **OK**.  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

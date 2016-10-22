@@ -1,116 +1,117 @@
 <properties 
-	pageTitle="Azure Search でのスコアリング プロファイルの使用方法 | Microsoft Azure | ホスト型クラウド検索サービス" 
-	description="Microsoft Azure のホスト型のクラウド検索サービスである Azure Search のスコアリング プロファイルで検索ランキングを調整します。" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
-	editor=""/>
+    pageTitle="How to use scoring profiles in Azure Search | Microsoft Azure | Hosted cloud search service" 
+    description="Tune search ranking through scoring profiles in Azure Search, a hosted cloud search service on Microsoft Azure." 
+    services="search" 
+    documentationCenter="" 
+    authors="HeidiSteen" 
+    manager="mblythe" 
+    editor=""/>
 
 <tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="08/04/2016" 
-	ms.author="heidist"/>
+    ms.service="search" 
+    ms.devlang="rest-api" 
+    ms.workload="search" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.date="10/17/2016" 
+    ms.author="heidist"/>
 
-# Azure Search でのスコアリング プロファイルの使用方法
 
-スコアリング プロファイルは、検索結果一覧で項目がどう順位付けされるかに影響を及ぼす検索スコアの計算をカスタマイズする Microsoft Azure Search の機能です。スコアリング プロファイルは、定義済みの条件を満足する項目の優先順位を高めることで関連性をモデル化する方法と言えます。たとえば、オンラインのホテル予約サイト アプリケーションを考えてみます。`location` フィールドの優先順位を高めることによって、"シアトル" などの用語を含む検索では、`location` フィールドに "シアトル" を含む項目のスコアが高くなります。アプリケーションに対して複数のスコアリング プロファイルを使用することもできます。また、既定のスコアリングで十分な場合はまったく使用しないこともできます。
+# <a name="how-to-use-scoring-profiles-in-azure-search"></a>How to use scoring profiles in Azure Search
 
-スコアリング プロファイルでの実験を簡単にするために、スコアリング プロファイルを使用して検索結果の順位を変更するサンプル アプリケーションをダウンロードすることができます。このサンプルは、コンソール アプリケーションであり、おそらく実際のアプリケーション開発では非現実的なものですが、学習ツールとしては便利です。
+Scoring profiles are a feature of Microsoft Azure Search that customize the calculation of search scores, influencing how items are ranked in a search results list. You can think of scoring profiles as a way to model relevance, by boosting items that meet predefined criteria. For example, suppose your application is an online hotel reservation site. By boosting the `location` field, searches that include a term like Seattle will result in higher scores for items that have Seattle in the `location` field. Note that you can have more than one scoring profile, or none at all, if the default scoring is sufficient for your application.
 
-サンプル アプリケーションでは、`musicstoreindex` と呼ばれる、架空のデータを使用するスコア付けの動作を示します。サンプル アプリケーションは単純化されているため、スコアリング プロファイルおよびクエリの変更が容易で、プログラムを実行した際に、順位に対する影響を即座に確認できます。
+To help you experiment with scoring profiles, you can download a sample application that uses scoring profiles to change the rank order of search results. The sample is a console application – perhaps not very realistic for real-world application development – but useful nonetheless as  a learning tool. 
+
+The sample application demonstrates scoring behaviors using fictional data, called the `musicstoreindex`. The simplicity of the sample app makes it easy to modify scoring profiles and queries, and then see the immediate effects on rank order when the program is executed.
 
 <a id="sub-1"></a>
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-サンプル アプリケーションは Visual Studio 2013 を使って C# で記述されています。Visual Studio のコピーをお持ちでない場合は、無料の [Visual Studio 2013 Express Edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) をお試しください。
+The sample application is written in C# using Visual Studio 2013. Try the free [Visual Studio 2013 Express edition](http://www.visualstudio.com/products/visual-studio-express-vs.aspx) if you don't already have a copy of Visual Studio.
 
-このチュートリアルを完了するには、Azure サブスクリプションと Azure Search サービスが必要になります。サービスの設定のヘルプについては、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
+You will need an Azure subscription and an Azure Search service to complete the tutorial. See [Create a Search service in the portal](search-create-service-portal.md) for help with setting up the service.
 
-[AZURE.INCLUDE [このチュートリアルを完了するには、Azure アカウントが必要です。](../../includes/free-trial-note.md)]
+[AZURE.INCLUDE [You need an Azure account to complete this tutorial:](../../includes/free-trial-note.md)]
 
 <a id="sub-2"></a>
-## サンプル アプリケーションのダウンロード
+## <a name="download-the-sample-application"></a>Download the sample application
 
-codeplex の [Azure Search スコアリング プロファイルのデモ](https://azuresearchscoringprofiles.codeplex.com/)に移動して、このチュートリアルで説明しているサンプル アプリケーションをダウンロードします。
+Go to [Azure Search Scoring Profiles Demo](https://azuresearchscoringprofiles.codeplex.com/) on codeplex to download the sample application described in this tutorial.
 
-[Source Code] タブで **[Download]** をクリックして、ソリューションの zip ファイルを取得してください。
+On the Source Code tab, click **Download** to get a zip file of the solution. 
 
  ![][12]
 
 <a id="sub-3"></a>
-## app.config の編集
+## <a name="edit-app.config"></a>Edit app.config
 
-1. ファイルを抽出した後で、Visual Studio でソリューションを開き構成ファイルを編集します。
-1. ソリューション エクスプローラーで、**[app.config]** をダブルクリックします。このファイルは、要求を認証するためのサービス エンドポイントと `api-key` を指定します。これらの値はクラシック ポータルで取得できます。
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-1. Azure Search のサービス ダッシュボードに移動します。
-1. **[プロパティ]** タイルをクリックして、サービスの URL をコピーします。
-1. **[キー]** タイルをクリックして、`api-key` をコピーします。
+1. After you extract the files, open the solution in Visual Studio to edit the configuration file.
+1. In Solution Explorer, double-click **app.config**. This file specifies the service endpoint and an `api-key` used to authenticate the request. You can obtain these values from the Classic Portal.
+1. Sign in to the [Azure Portal](https://portal.azure.com).
+1. Go to the service dashboard for Azure Search.
+1. Click the **Properties** tile to copy the service URL
+1. Click the **Keys** tile to copy the `api-key`.
 
-app.config に URL と `api-key` を追加すると、アプリケーションの設定は次のようになります。
+When you are finished adding the URL and `api-key` to app.config, application settings should look like this:
 
    ![][11]
 
 
 <a id="sub-4"></a>
-## アプリケーションの探索
+## <a name="explore-the-application"></a>Explore the application
 
-アプリケーションの構築と実行の準備はこれでほぼ整いましたが、その前に、インデックスを作成し設定する JSON ファイルを見てみましょう。
+You're almost ready to build and run the app, but before you do, take a look at the JSON files used to create and populate the index.
 
-**Schema.json** は、このデモで重視しているスコアリング プロファイルを含む、インデックスを定義します。スキーマは、インデックスで使用するすべてのフィールドを定義します。スコアリング プロファイルで使用できる `margin` など検索できないフィールドも含まれることに注意してください。スコアリング プロファイルの構文は、[Azure Search インデックスへのスコアリング プロファイルの追加](http://msdn.microsoft.com/library/azure/dn798928.aspx)に関するページに記載されています。
+**Schema.json** defines the index, including the scoring profiles that are emphasized in this demo. Notice that the schema defines all of the fields used in the index, including non-searchable fields, such as `margin`, that you can use in a scoring profile. Scoring profile syntax is documented in [Add a scoring profile to an Azure Search index](http://msdn.microsoft.com/library/azure/dn798928.aspx).
 
-**Data1 3.json** は、データとして、いくつかのジャンルの 246 件のアルバムを提供します。このデータは、実際のアルバムとアーティストの情報を組み合わせたもので、検索操作を示すための `price` と `margin` のような架空のフィールドがあります。データ ファイルは、インデックスに準拠し、Azure Search サービスにアップロードされます。データがアップロードされ、インデックスが作成されると、そのデータに対するクエリを実行することができます。
+**Data1-3.json** provides the data, 246 albums across a handful of genres. The data is a combination of actual album and artist information, with fictional fields like `price` and `margin` used to illustrate search operations. The data files conform to the index and are uploaded to your Azure Search service. After the data is uploaded and indexed, you can issue queries against it.
 
-**Program.cs** は、次の操作を実行します。
+**Program.cs** performs the following operations:
 
-- コンソール ウィンドウを開きます。
+- Opens a console window.
 
-- サービスの URL と `api-key` を使用して Azure Search に接続します。
+- Connects to Azure Search using the service URL and `api-key`.
 
-- `musicstoreindex` が存在する場合は削除します。
+- Deletes the `musicstoreindex` if it exists.
 
-- schema.json ファイルを使用して、新しい `musicstoreindex` を作成します。
+- Creates a new `musicstoreindex` using the schema.json file.
 
-- データ ファイルを使用して、インデックスを設定します。
+- Populates the index using the data files.
 
-- 4 つのクエリを使用してインデックスを照会します。スコアリング プロファイルがクエリ パラメーターとして指定されていることに注意してください。すべてのクエリで同じ用語 'best' を検索します。最初のクエリは、既定のスコア付けを示します。残りの 3 つのクエリでは、スコアリング プロファイルを使用します。
+- Queries the index using four queries. Notice that the scoring profiles are specified as a query parameter. All of the queries search for the same term, 'best'. The first query demonstrates default scoring. The remaining three queries use a scoring profile.
 
 <a id="sub-5"></a>
-## アプリケーションの構築と実行
+## <a name="build-and-run-the-application"></a>Build and run the application
 
-接続またはアセンブリ参照の問題を除外するために、アプリケーションを構築、実行して、最初に対処する必要のある問題がないことを確認します。バックグラウンドで、コンソール アプリケーションが実行されます。4 つのクエリはすべて、一時停止することなく順番に実行されます。多くのシステムでは、プログラム全体が 15 秒以内で実行されます。コンソール アプリケーションに "完了しました。続行するには、Enter キーを押してください" というメッセージが表示されたら、プログラムが正常に完了しています。
+To rule out connectivity or assembly reference problems, build and run the application to ensure there are no issues to work out first. You should see a console application open in the background. All four queries execute in sequence without pausing. On many systems, the entire program executes in under 15 seconds. If the console application includes a message stating “Complete. Press enter to continue”, the program completed successfully. 
 
-クエリの実行を比較するには、コンソールからクエリの結果にコピーして Excel ファイルに貼り付けます。
+To compare query runs, you can mark-copy-paste the query results from the console and paste them into an Excel file. 
 
-次の図は、最初の 3 つのクエリの結果を並べて示しています。すべてのクエリで同じ検索用語 'best' が使用され、これは多数のアルバム タイトルに出現しています。
+The following illustration shows results from the first three queries side-by-side. All of the queries use the same search term, 'best', which appears in numerous album titles.
 
    ![][10]
 
-最初のクエリは、既定のスコア付けを使用しています。検索用語がアルバム タイトルにのみ表示され、その他の条件が指定されていないため、アルバム タイトルに 'best' を含む項目が検索サービスが検出した順に返されます。
+The first query uses default scoring. Since the search term appears only in album titles, and no other criteria is specified, items having 'best' in the album title are returned in the order in which the search service finds them. 
 
-2 番目のクエリは、スコアリング プロファイルを使用していますが、プロファイルが結果に影響していないことに注意してください。結果は最初のクエリと同じです。これは、スコアリング プロファイルが、クエリに関係ないフィールド ('genre') を優先しているためです。検索用語 'best' は、どのドキュメントのどの 'genre' フィールドにも存在していません。スコアリング プロファイルが影響しない場合は、結果は既定のスコア付けと同じです。
+The second query uses a scoring profile, but notice that the profile had no effect. The results are identical to those of the first query. This is because the scoring profile boosts a field ('genre') that is not germane to the query. The search term 'best' does not exist in any 'genre' field of any document. When a scoring profile has no effect, the results are the same as default scoring.  
 
-3 番目のクエリは、スコアリング プロファイルの影響を示している最初の例です。同じセットのアルバムを対象にしているため検索用語は 'best' のままですが、スコアリング プロファイルが 'rating' と 'last-updated' を優先する条件を追加しているため、一覧では一部の項目のスコアが高くなっています。
+The third query is the first evidence of scoring profile impact. The search term is still 'best' so we are working with the same set of albums, but because the scoring profile provides additional criteria that boosts 'rating' and 'last-updated', some items are propelled higher in the list.
 
-次の図は、'margin' を優先した 4 番目と最後のクエリを示しています。'margin' フィールドは検索できないフィールドで、検索結果には返されません。'margin' の値は、マージンの高い項目が検索結果一覧の上位に表示されることを示すために、手動でスプレッドシートに追加されたものです。
+The next illustration shows the fourth and final query, boosted by 'margin'. The 'margin' field is non-searchable and cannot be returned in search results. The 'margin' value was manually added to the spreadsheet to help illustrate the point that items with higher margins show up higher in the search results list. 
 
    ![][9]
 
-これでスコアリング プロファイルの実験が完了しました。さまざまなクエリ構文やスコアリング プロファイル、または大量のデータを使用するようにプログラムを変更してみてください。詳細については、次のセクションのリンクを参照してください。
+Now that you have experimented with scoring profiles, try changing the program to use different query syntax, scoring profiles, or richer data. Links in the next section provide more information.
 
 <a id="next-steps"></a>
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-スコアリング プロファイルについて詳細に学習します。詳細については、[Azure Search インデックスへのスコアリング プロファイルの追加](http://msdn.microsoft.com/library/azure/dn798928.aspx)を参照してください。
+Learn more about scoring profiles. See [Add a scoring profile to an Azure Search index](http://msdn.microsoft.com/library/azure/dn798928.aspx) for details.
 
-検索構文とクエリ パラメーターについて詳細に学習します。詳細については、「[ドキュメントの検索 (Azure Search Service REST API)](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+Learn more about search syntax and query parameters. See [Search Documents (Azure Search REST API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) for details.
 
-インデックスの作成について前に戻って詳しく学習する必要がありますか。 [このビデオ](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh)で、基本を理解してください。
+Need to step back and learn more about index creation? [Watch this video](http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh) to understand the basics.
 
 <!--Anchors-->
 [Prerequisites]: #sub-1
@@ -124,6 +125,9 @@ app.config に URL と `api-key` を追加すると、アプリケーション�
 [12]: ./media/search-get-started-scoring-profiles/AzureSearch_CodeplexDownload.PNG
 [11]: ./media/search-get-started-scoring-profiles/AzureSearch_Scoring_AppConfig.PNG
 [10]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX1.PNG
-[9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG
+[9]: ./media/search-get-started-scoring-profiles/AzureSearch_XLSX2.PNG 
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

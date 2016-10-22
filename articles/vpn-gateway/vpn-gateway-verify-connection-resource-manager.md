@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ゲートウェイ接続の確認 | Microsoft Azure"
-   description="この記事では、Resource Manager デプロイメント モデルでのゲートウェイ接続を確認する方法について説明します。"
+   pageTitle="Verify a gateway connection | Microsoft Azure"
+   description="This article shows you how to verify a gateway connection in the Resource Manager deployment model"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -17,35 +17,41 @@
    ms.date="08/03/2016"
    ms.author="cherylmc"/>
 
-# ゲートウェイ接続を確認する
 
-ゲートウェイ接続は、数種類の方法で確認できます。この記事では、Azure ポータルと PowerShell をそれぞれ使用して Resource Manager のゲートウェイ接続の状態を確認する方法を説明します。
+# <a name="verify-a-gateway-connection"></a>Verify a gateway connection
+
+You can verify your gateway connection in a few different ways. This article will show you how to verify the status of a Resource Manager gateway connection by using the Azure portal and by using PowerShell.
 
 
-## 開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
-PowerShell を使用する場合、Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。Resource Manager コマンドレットの使用方法の詳細については、[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
+If you plan to use PowerShell, you'll need to install the latest version of the Azure Resource Manager PowerShell cmdlets. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the PowerShell cmdlets. For more information about using Resource Manager cmdlets, see [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md).
 
-1. PowerShell コンソールを開き、アカウントに接続します。
+1. Open your PowerShell console and connect to your account.
 
-		Login-AzureRmAccount
+        Login-AzureRmAccount
 
-2. アカウントのサブスクリプションを確認します。
+2. Check the subscriptions for the account.
 
-		Get-AzureRmSubscription 
+        Get-AzureRmSubscription 
 
-3. 使用するサブスクリプションを指定します。
+3. Specify the subscription that you want to use.
 
-		Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+        Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
-## 接続を検証する
+## <a name="verifying-your-connection"></a>Verifying your connection
 
 
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- 仮想ネットワークに仮想マシンを追加できます。手順については、[仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
+- You can add virtual machines to your virtual networks. See [Create a Virtual Machine](../virtual-machines/virtual-machines-windows-hero-tutorial.md) for steps.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

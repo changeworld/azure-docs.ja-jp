@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Data Warehouse のベスト プラクティス | Microsoft Azure"
-   description="Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。これらは、成功に役立ちます。"
+   pageTitle="Best practices for Azure SQL Data Warehouse | Microsoft Azure"
+   description="Recommendations and best practices you should know as you develop solutions for Azure SQL Data Warehouse. These will help you be successful."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,171 +16,175 @@
    ms.date="09/04/2016"
    ms.author="sonyama;barbkess"/>
 
-# Azure SQL Data Warehouse のベスト プラクティス
 
-この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
+# <a name="best-practices-for-azure-sql-data-warehouse"></a>Best practices for Azure SQL Data Warehouse
 
-Azure SQL Data Warehouse を使ってみるだけの場合でも、この記事は手に負えないと思わないでください。一連のトピックは、だいたい重要な順に並んでいます。初めは最初のいくつかの概念に注力するだけでも、効果があります。SQL Data Warehouse に使い慣れてきたら、戻ってきて、その他の概念もいくつか確認してください。すべてを理解するまでに時間はかかりません。
+This article is a collection of many best practices that will help you to achieve optimal performance from your Azure SQL Data Warehouse.  Some of the concepts in this article are basic and easy to explain, other concepts are more advanced and we just scratch the surface in this article.  The purpose of this article is to give you some basic guidance and to raise awareness of important areas to focus as you build your data warehouse.  Each section introduces you to a concept and then point you to more detailed articles which cover the concept in more depth.
 
-## 一時停止とスケールでコストを削減する
+If you are just getting started with Azure SQL Data Warehouse, do not let this article overwhelm you.  The sequence of the topics is mostly in the order of importance.  If you start by focusing on the first few concepts, you'll be in good shape.  As you get more familiar and comfortable with using SQL Date Warehouse, come back and look at a few more concepts.  It won't take long for everything to make sense.
 
-SQL Data Warehouse の重要な機能として、使用していないときは一時停止できます。そうすると、コンピューティング リソースの課金が停止されます。もう 1 つの重要な機能として、リソースをスケールできます。一時停止とスケールは、Azure Portal または PowerShell コマンドを使用して行うことができます。これらの機能を使用すると、データ ウェアハウスを使用していないときにコストを大幅に削減できるため、これらの機能についてよく理解してください。常にデータ ウェアハウスにアクセスできることが必要な場合は、一時停止ではなく、最小サイズ (DW100) へのスケールダウンを検討することをお勧めします。
+## <a name="reduce-cost-with-pause-and-scale"></a>Reduce cost with pause and scale
 
-[コンピューティング リソースの一時停止][]、[コンピューティング リソースの再開][]、[コンピューティング リソースのスケール][]に関するセクションもご覧ください
+A key feature of SQL Data Warehouse is the ability to pause when you are not using it, which stops the billing of compute resources.  Another key feature is the ability to scale resources.  Pausing and Scaling can be done via the Azure portal or through PowerShell commands.  Become familiar with these features as they can greatly reduce the cost of your data warehouse when it is not in use.  If you always want your data warehouse accessible, you may want to consider scaling it down to the smallest size, a DW100 rather than pausing.
+
+See also [Pause compute resources][], [Resume compute resources][], [Scale compute resources][]
 
 
-## 一時停止またはスケールの前にトランザクションを排出する 
+## <a name="drain-transactions-before-pausing-or-scaling"></a>Drain transactions before pausing or scaling 
 
-SQL Data Warehouse を一時停止またはスケールすると、要求の一時停止またはスケールを開始したときに、バックグラウンドでクエリが取り消されます。単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。**トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。** トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
+When you pause or scale your SQL Data Warehouse, behind the scenes your queries are canceled when you initiate the pause or scale request.  Canceling a simple SELECT query is a quick operation and has almost no impact to the time it takes to pause or scale your instance.  However, transactional queries, which modify your data or the structure of the data, may not be able to stop quickly.  **Transactional queries, by definition, must either complete in their entirety or rollback their changes.**  Rolling back the work completed by a transactional query can take as long, or even longer, than the original change the query was applying.  For example, if you cancel a query which was deleting rows and has already been running for an hour, it could take the system an hour to insert back the rows which were deleted.  If you run pause or scaling while transactions are in flight, your pause or scaling may seem to take a long time because pausing and scaling has to wait for the rollback to complete before it can proceed.
 
-[トランザクションの概要][]と[トランザクションの最適化][]に関するページもご覧ください
+See also [Understanding transactions][], [Optimizing transactions][]
 
-## 統計を管理する
+## <a name="maintain-statistics"></a>Maintain statistics
 
-列を自動的に検出し、その列に関する統計を作成または更新する SQL Server とは異なり、SQL Data Warehouse では、統計を手動で管理する必要があります。この点は今後変更する予定ですが、現時点では、SQL Data Warehouse プランを確実に最適化するには、統計を管理する必要があります。オプティマイザーによって作成されたプランの有効性は、使用可能な統計によって決まります。**統計を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。** データに大幅な変更が発生したときに統計を更新することも同様に重要です。控えめなアプローチとしては、毎日または各読み込みの後に統計を更新することが挙げられます。パフォーマンスと統計を作成および更新するコストの間には常にトレードオフの関係が存在します。すべての統計を管理するのは時間がかかりすぎる場合は、統計を作成する列や頻繁に更新する列を限定することをお勧めします。たとえば、新しい値が毎日追加される日付列を更新します。**結合に使用されている列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。**
+Unlike SQL Server, which automatically detects and creates or updates statistics on columns, SQL Data Warehouse requires manual maintenance of statistics.  While we do plan to change this in the future, for now you will want to maintain your statistics to ensure that the SQL Data Warehouse plans are optimized.  The plans created by the optimizer are only as good as the available statistics.  **Creating sampled statistics on every column is an easy way to get started with statistics.**  It's equally important to update statistics as significant changes happen to your data.  A conservative approach may be to update your statistics daily or after each load.  There are always trade-offs between performance and the cost to create and update statistics. If you find it is taking too long to maintain all of your statistics, you may want to try to be more selective about which columns have statistics or which columns need frequent updating.  For example, you might want to update date columns, where new values may be added, daily. **You will gain the most benefit by having statistics on columns involved in joins, columns used in the WHERE clause and columns found in GROUP BY.**
 
-[テーブル統計の管理][]、[CREATE STATISTICS][]、[UPDATE STATISTICS][] に関するページもご覧ください
+See also [Manage table statistics][], [CREATE STATISTICS][], [UPDATE STATISTICS][]
 
-## INSERT ステートメントをバッチにグループ化する
+## <a name="group-insert-statements-into-batches"></a>Group INSERT statements into batches
 
-INSERT ステートメントで小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで、ニーズに十分応えることができます。ただし、1 日を通して数千や数百万行を読み込む必要がある場合、シングルトンの INSERT だけでは対応できない可能性があります。代わりに、ファイルに書き込み、定期的に別のプロセスを利用してそのファイルを読み込むプロセスを作成します。
+A one-time load to a small table with an INSERT statement or even a periodic reload of a look-up may perform just fine for your needs with a statement like `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  However, if you need to load thousands or millions of rows throughout the day, you might find that singleton INSERTS just can't keep up.  Instead, develop your processes so that they write to a file and another process periodically comes along and loads this file.
 
-[INSERT][] に関するページもご覧ください
+See also [INSERT][]
  
-## PolyBase を使用して、データの読み込みとエクスポートをすばやく実行する
+## <a name="use-polybase-to-load-and-export-data-quickly"></a>Use PolyBase to load and export data quickly
 
-SQL Data Warehouse では、Azure Data Factory、PolyBase、BCP など、さまざまなツールを使用したデータの読み込みとエクスポートをサポートしています。パフォーマンスが重要でない少量のデータについては、どのツールでもニーズに十分応えることができます。ただし、大量のデータを読み込んだり、エクスポートしたりする場合や、高速なパフォーマンスが必要な場合は、PolyBase が最適な選択肢です。PolyBase は、SQL Data Warehouse の MPP (超並列処理) アーキテクチャを活用するように設計されています。そのため、他のツールよりも速く大量のデータを読み込むことや、エクスポートすることができます。PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行できます。**CTAS を使用すると、トランザクション ログが最小限に抑えられ、データを一番速く読み込むことができます。** Azure Data Factory では、PolyBase の読み込みもサポートしています。PolyBase では、Gzip ファイルなど、さまざまなファイル形式をサポートしています。**gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化します。** 全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。
+SQL Data Warehouse supports loading and exporting data through several tools including Azure Data Factory, PolyBase, and BCP.  For small amounts of data where performance isn't critical, any tool may be sufficient for your needs.  However, when you are loading or exporting large volumes of data or fast performance is needed, PolyBase is the best choice.  PolyBase is designed to leverage the MPP (Massively Parallel Processing) architecture of SQL Data Warehouse and will therefore load and export data magnitudes faster than any other tool.  PolyBase loads can be run using CTAS or INSERT INTO.  **Using CTAS will minimize transaction logging and the fastest way to load your data.**  Azure Data Factory also supports PolyBase loads.  PolyBase supports a variety of file formats including Gzip files.  **To maximize throughput when using gzip text files, break files up into 60 or more files to maximize parallelism of your load.**  For faster total throughput, consider loading data concurrently.
 
-[データのロード][]に関するページ、[PolyBase の使用ガイド][]、「[Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)][]」、「[Azure Data Factory を使用してデータを読み込む][]」、[Azure Data Factory を使用したデータ移動][]に関するページ、「[CREATE EXTERNAL FILE FORMAT (Transact-SQL)][]」、[Create table as select (CTAS)][] に関するページもご覧ください
+See also [Load data][], [Guide for using PolyBase][], [Azure SQL Data Warehouse loading patterns and strategies][], [Load Data with Azure Data Factory][], [Move data with Azure Data Factory][], [CREATE EXTERNAL FILE FORMAT][], [Create table as select (CTAS)][]
 
-## 外部テーブルを読み込んで、クエリを実行する
+## <a name="load-then-query-external-tables"></a>Load then query external tables
 
-外部テーブルとも呼ばれる Polybase は、最も高速にデータを読み込むことができますが、クエリには適していません。SQL Data Warehouse の Polybase テーブルが現在サポートしているのは、Azure BLOB ファイルのみです。このファイルには、それをバックアップするためのコンピューティング リソースがありません。つまり、SQL Data Warehouse ではこの作業をオフロードできないため、データを読み取るには、ファイルを tempdb に読み込んで、ファイル全体を読み取る必要があります。したがって、このデータに対して複数のクエリを実行する場合は、データを一度読み込んで、クエリがローカル テーブルを使うように指定することをお勧めします。
+While Polybase, also known as external tables, can be the fastest way to load data, it is not optimal for queries. SQL Data Warehouse Polybase tables currently only support Azure blob files. These files do not have any compute resources backing them.  As a result, SQL Data Warehouse cannot offload this work and therefore must read the entire file by loading it to tempdb in order to read the data.  Therefore, if you have several queries that will be querying this data, it is better to load this data once and have queries use the local table.
 
-[PolyBase の使い方ガイド][]もご覧ください
+See also [Guide for using PolyBase][]
 
 
-## ハッシュで大規模なテーブルを分散させる
+## <a name="hash-distribute-large-tables"></a>Hash distribute large tables
 
-既定では、テーブルはラウンド ロビン分散です。そのため、ユーザーはテーブルの分散方法を決定することなくテーブルの作成を簡単に開始できます。ラウンド ロビン テーブルは一部のワークロードでは十分なパフォーマンスを示しますが、多くの場合、分散列を選択すると、パフォーマンスが大幅に向上します。列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルをはるかに上回る最も一般的な例としては、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。たとえば、orders テーブルが order\_id で分散されており、transactions テーブルも order\_id で分散されている場合に、orders テーブルを transactions テーブルに order\_id で結合すると、このクエリはパススルー クエリになり、データの移動処理が行われなくなります。手順が減るため、クエリは高速になります。また、データの移動の減少もクエリの高速化に貢献します。ここでは、大まかにしか説明しません。分散テーブルを読み込む場合は、受信データを分散キーで並べ替えないでください。読み込みが遅くなります。分散列を選択するとパフォーマンスがどのように向上するのかや、CREATE TABLES ステートメントの WITH 句で分散テーブルを定義する方法の詳細については、次のリンクを参照してください。
+By default, tables are Round Robin distributed.  This makes it easy for users to get started creating tables without having to decide how their tables should be distributed.  Round Robin tables may perform sufficiently for some workloads, but in most cases selecting a distribution column will perform much better.  The most common example of when a table distributed by a column will far outperform a Round Robin table is when two large fact tables are joined.  For example, if you have an orders table, which is distributed by order_id, and a transactions table, which is also distributed by order_id, when you join your orders table to your transactions table on order_id, this query becomes a pass-through query, which means we eliminate data movement operations.  Fewer steps mean a faster query.  Less data movement also makes for faster queries.  This explanation just scratches the surface. When loading a distributed table, be sure that your incoming data is not sorted on the distribution key as this will slow down your loads.  See the below links for much more details on how selecting a distribution column can improve performance as well as how to define a distributed table in the WITH clause of your CREATE TABLES statement.
 
-[テーブルの概要][]、[テーブル分散][]、[テーブル分散の選択][]、[CREATE TABLE][]、[CREATE TABLE AS SELECT][] に関するページもご覧ください
+See also [Table overview][], [Table distribution][], [Selecting table distribution][], [CREATE TABLE][], [CREATE TABLE AS SELECT][]
 
-## パーティション分割しすぎないようにする
+## <a name="do-not-over-partition"></a>Do not over-partition
 
-データをパーティション分割すると、パーティション切り替えを利用してデータを管理したり、パーティションを除外してスキャンを最適化したりできるため、非常に有用ですが、パーティションが多すぎると、クエリの速度が低下する場合があります。多くの場合、高い粒度でパーティション分割する戦略は、SQL Server では効果的ですが、SQL Data Warehouse では効果的ではありません。パーティションが多すぎると、各パーティションの行数が 100 万を下回る場合に、クラスター化列ストア インデックスの効果が減少する可能性もあります。SQL Data Warehouse では、バックグラウンドでデータを 60 個のデータベースにパーティション分割します。そのため、パーティションが 100 個あるテーブルを作成すると、実質的にはパーティションが 6000 個になることに留意してください。ワークロードはそれぞれに異なるため、パーティション分割を試して、自分のワークロードに最適な数を判断することをお勧めします。SQL Server の場合よりも粒度を下げることを検討してください。たとえば、日単位ではなく、週単位や月単位のパーティションを使用します。
+While partitioning data can be very effective for maintaining your data through partition switching or optimizing scans by with partition elimination, having too many partitions can slow down your queries.  Often a high granularity partitioning strategy which may work well on SQL Server may not work well on SQL Data Warehouse.  Having too many partitions can also reduce the effectiveness of clustered columnstore indexes if each partition has fewer than 1 million rows.  Keep in mind that behind the scenes, SQL Data Warehouse partitions your data for you into 60 databases, so if you create a table with 100 partitions, this actually results in 6000 partitions.  Each workload is different so the best advice is to experiment with partitioning to see what works best for your workload.  Consider lower granularity than what may have worked for you in SQL Server.  For example, consider using weekly or monthly partitions rather than daily partitions.
 
-[テーブル パーティション][]に関するページもご覧ください
+See also [Table partitioning][]
 
-## トランザクション サイズを最小限に抑える
+## <a name="minimize-transaction-sizes"></a>Minimize transaction sizes
 
-トランザクションで INSERT、UPDATE、DELETE ステートメントを実行して、失敗した場合は、ロールバックする必要があります。ロールバック時間が長くならないようにするには、できる限りトランザクション サイズを最小限に抑えます。そのためには、INSERT、UPDATE、DELETE ステートメントを複数に分割します。たとえば、INSERT に 1 時間かかると予測される場合は、可能であれば、INSERT を 4 つに分割すると、それぞれの実行時間は 15 分になります。CTAS、TRUNCATE、DROP TABLE、空のテーブルへの INSERT など、特殊な最小ログ記録のケースを活用すると、ロールバックのリスクが軽減されます。ロールバックを回避するもう 1 つの方法としては、データ管理のためのパーティション切り替えなど、メタデータのみの操作を使用します。たとえば、DELETE ステートメントを実行して、テーブル内の order\_date が 2001 年 10 月のすべての行を削除する代わりに、月単位でデータをパーティション分割し、該当するデータを含むパーティションを別のテーブルの空のパーティションに切り替えします (ALTER TABLE の例を参照してください)。パーティション分割されていないテーブルについては、DELETE を使用する代わりに、CTAS を使用して、テーブルに保持するデータを書き込むことを検討してください。CTAS にかかる時間が同じ場合でも、トランザクション ログが最小限に抑えられ、必要なときにすばやく取り消すことができるため、CTAS は非常に安全に実行できる操作です。
+INSERT, UPDATE, and DELETE statements run in a transaction and when they fail they must be rolled back.  To minimize the potential for a long rollback, minimize transaction sizes whenever possible.  This can be done by dividing INSERT, UPDATE, and DELETE statements into parts.  For example, if you have an INSERT which you expect to take 1 hour, if possible, break the INSERT up into 4 parts, which will each run in 15 minutes.  Leverage special Minimal Logging cases, like CTAS, TRUNCATE, DROP TABLE or INSERT to empty tables, to reduce rollback risk.  Another way to eliminate rollbacks is to use Metadata Only operations like partition switching for data management.  For example, rather than execute a DELETE statement to delete all rows in a table where the order_date was in October of 2001, you could partition your data monthly and then switch out the partition with data for an empty partition from another table (see ALTER TABLE examples).  For unpartitioned tables consider using a CTAS to write the data you want to keep in a table rather than using DELETE.  If a CTAS takes the same amount of time, it is a much safer operation to run as it has very minimal transaction logging and can be canceled quickly if needed.
 
-[トランザクションの概要][]、[トランザクションの最適化][]、[テーブル パーティション][]、[TRUNCATE TABLE][]、[ALTER TABLE][]、[Create table as select (CTAS)][] に関するページもご覧ください
+See also [Understanding transactions][], [Optimizing transactions][], [Table partitioning][], [TRUNCATE TABLE][], [ALTER TABLE][], [Create table as select (CTAS)][]
 
-## できる限り最小の列サイズを使用する
+## <a name="use-the-smallest-possible-column-size"></a>Use the smallest possible column size
 
-DDL を定義するときに、データをサポートする最小のデータ型を使用すると、クエリのパフォーマンスが向上します。これは、CHAR および VARCHAR 列の場合に特に重要です。列の最長の値が 25 文字の場合は、列を VARCHAR(25) として定義します。すべての文字列を既定の長さで定義しないようにします。さらに、VARCHAR で済む場合は、NVARCHAR を使用せずに、列を VARCHAR として定義します。
+When defining your DDL, using the smallest data type which will support your data will improve query performance.  This is especially important for CHAR and VARCHAR columns.  If the longest value in a column is 25 characters, then define your column as VARCHAR(25).  Avoid defining all character columns to a large default length.  In addition, define columns as VARCHAR when that is all that is needed rather than use NVARCHAR.
 
-[テーブルの概要][]、[テーブルのデータ型][]、[CREATE TABLE][] に関するページもご覧ください
+See also [Table overview][], [Table data types][], [CREATE TABLE][]
 
-## 一時的なデータには一時的なヒープ テーブルを使用する
+## <a name="use-temporary-heap-tables-for-transient-data"></a>Use temporary heap tables for transient data
 
-データを一時的に SQL Data Warehouse に読み込む際は、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。さらに、テーブルを永続記憶域に読み込むよりも、データを一時テーブルに読み込んだ方が読み込み速度が大幅に向上します。一時テーブルは、"#" で始まり、作成元のセッションからしかアクセスできないため、一部のシナリオでしか動作しません。ヒープ テーブルは、CREATE TABLE の WITH 句で定義します。一時テーブルを使用する場合は、その一時テーブルの統計も必ず作成してください。
+When you are temporarily landing data on SQL Data Warehouse, you may find that using a heap table will make the overall process faster.  If you are loading data only to stage it before running more transformations, loading the table to heap table will be much faster than loading the data to a clustered columnstore table.  In addition, loading data to a temp table will also load much faster than loading a table to permanent storage.  Temporary tables start with a "#" and are only accessible by the session which created it, so they may only work in limited scenarios.   Heap tables are defined in the WITH clause of a CREATE TABLE.  If you do use a temporary table, remember to create statistics on that temporary table too.
 
-[一時テーブル][]、[CREATE TABLE][]、[CREATE TABLE AS SELECT][] に関するページもご覧ください
+See also [Temporary tables][], [CREATE TABLE][], [CREATE TABLE AS SELECT][]
 
-## クラスター化列ストア テーブルを最適化する
+## <a name="optimize-clustered-columnstore-tables"></a>Optimize clustered columnstore tables
 
-クラスター化列ストア インデックスは、Azure SQL Data Warehouse にデータを格納する最も効率的な方法の 1 つです。既定では、SQL Data Warehouse のテーブルは、クラスター化列ストアとして作成されます。列ストア テーブルに対するクエリのパフォーマンスを最大限に引き出すには、セグメントの質が高いことが重要です。行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。セグメントの質は、圧縮後の行グループに含まれる行の数を使って判断できます。クラスター化列ストア テーブルのセグメントの質を検出して向上させる詳細な手順については、[テーブル インデックス][]に関するページの「[列ストア インデックスの品質の低さの原因][]」を参照してください。列ストア セグメントの質を高めることが非常に重要であるため、中規模または大規模リソース クラスのユーザー ID を使用して、データを読み込むことをお勧めします。使用する DWU が少なくなると、読み込みユーザーに割り当てるリソース クラスを大きくすることができます。
+Clustered columnstore indexes are one of the most efficient ways you can store your data in Azure SQL Data Warehouse.  By default, tables in SQL Data Warehouse are created as Clustered ColumnStore.  To get the best performance for queries on columnstore tables, having good segment quality is important.  When rows are written to columnstore tables under memory pressure, columnstore segment quality may suffer.  Segment quality can be measured by number of rows in a compressed Row Group.  See the [Causes of poor columnstore index quality][] in the [Table indexes][] article for step by step instructions on detecting and improving segment quality for clustered columnstore tables.  Because high quality columnstore segments is important, it's a good idea to use users ids which are in the medium or large resource class for loading data.  The fewer DWUs you use, the larger the resource class you will want to assign to your loading user. 
 
-通常、テーブルあたりの行数が 100 万を超え、各 SQL Data Warehouse テーブルが 60 個にパーティション分割されるまで、列ストア テーブルは圧縮された列ストア セグメントにデータをプッシュしません。そのため、経験上、テーブルの行数が 6,000 万を超えない限り、列ストア テーブルはクエリにとってメリットがありません。6,000 万行未満のテーブルについては、列ストア インデックスを作成してもメリットがありません。また、デメリットもありません。さらに、データをパーティション分割する場合は、クラスター化列ストア インデックスの恩恵を受けるには、各パーティションに 100 万行が必要なことを考慮に入れる必要があります。テーブルに 100 個のパーティションがある場合に、クラスター化列ストアの恩恵を受けるには、少なくとも 60 億行必要です (60 個のディストリビューション x "*100 個のパーティション*" x 100 万行)。この例でテーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。列ストア テーブルの代わりに、ヒープ テーブルとセカンダリ インデックスを使用してパフォーマンスが向上するかどうかを試してみる価値もあります。列ストア テーブルでは、セカンダリ インデックスはまだサポートされていません。
+Since columnstore tables generally won't push data into a compressed columnstore segment until there are more than 1 million rows per table and each SQL Data Warehouse table is partitioned into 60 tables, as a rule of thumb, columnstore tables won't benefit a query unless the table has more than 60 million rows.  For table with less than 60 million rows, it may not make any sense to have a columnstore index.  It also may not hurt.  Furthermore, if you partition your data, then you will want to consider that each partition will need to have 1 million rows to benefit from a clustered columnstore index.  If a table has 100 partitions, then it will need to have at least 6 billion rows to benefit from a clustered columns store (60 distributions * 100 partitions * 1 million rows).  If your table does not have 6 billion rows in this example, either reduce the number of partitions or consider using a heap table instead.  It also may be worth experimenting to see if better performance can be gained with a heap table with secondary indexes rather than a columnstore table.  Columnstore tables do not yet support secondary indexes.
 
-列ストア テーブルに対してクエリを実行する場合は、必要な列のみを選択すると、クエリの実行速度が向上します。
+When querying a columnstore table, queries will run faster if you select only the columns you need.  
 
-[テーブル インデックス][]、[列ストア インデックス][]、[列ストア インデックスの再構築][]に関するページもご覧ください
+See also [Table indexes][], [Columnstore indexes guide][], [Rebuilding columnstore indexes][]
 
-## 大きなリソース クラスを使用して、クエリのパフォーマンスを向上させる
+## <a name="use-larger-resource-class-to-improve-query-performance"></a>Use larger resource class to improve query performance
 
-SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。既定では、ディストリビューションごとに 100 MB のメモリが与えられる小規模リソース クラスにすべてのユーザーが割り当てられます。常に 60 個のディストリビューションが存在し、各ディストリビューションに最低 100 MB が割り当てられるため、システム全体のメモリの割り当ての合計は 6,000 MB (6 GB 弱) です。大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。純粋なスキャンなどのクエリでは、効果はありません。一方で、より大きなリソース クラスを利用すると、同時実行に影響します。そのため、すべてのユーザーをより大きなリソース クラスに移行する前に、その点を考慮する必要があります。
+SQL Data Warehouse uses resource groups as a way to allocate memory to queries.  Out of the box, all users are assigned to the small resource class which grants 100 MB of memory per distribution.  Since there are always 60 distributions and each distribution is given a minimum of 100 MB, system wide the total memory allocation is 6,000 MB, or just under 6 GB.  Certain queries, like large joins or loads to clustered columnstore tables, will benefit from larger memory allocations.  Some queries, like pure scans, will see no benefit.  On the flip side, utilizing larger resource classes impacts concurrency, so you will want to take this into consideration before moving all of your users to a large resource class.
  
-[同時実行とワークロード管理][]に関するページもご覧ください
+See also [Concurrency and workload management][]
 
-## 小さいリソース クラスを使用して、同時実行を増やす
+## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Use Smaller Resource Class to Increase Concurrency
 
-ユーザー クエリの遅延が長いと感じている場合は、ユーザーが大きなリソース クラスで実行しており、同時実行スロットを大量に使用していることが原因で、他のクエリがキューに配置されている可能性があります。ユーザー クエリがキューに配置されているかどうかを確認するには、`SELECT * FROM sys.dm_pdw_waits` を実行して、行が返されるかどうかを確認します。
+If you are noticing that user queries seem to have a long delay, it could be that your users are running in larger resource classes and are consuming a lot of concurrency slots causing other queries to queue up.  To see if users queries are queued, run `SELECT * FROM sys.dm_pdw_waits` to see if any rows are returned.
 
-[同時実行とワークロード管理][]と [sys.dm\_pdw\_waits][] に関するページもご覧ください
+See also [Concurrency and workload management][], [sys.dm_pdw_waits][]
 
-## DMV を使用して、クエリを監視および最適化する
+## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Use DMVs to monitor and optimize your queries
 
-SQL Data Warehouse には、クエリの実行を監視するために使用できる DMV がいくつか用意されています。以下の監視に関する記事では、実行中のクエリの詳細を確認する方法についての詳細な手順を説明しています。これらの DMV でクエリをすばやく見つけるには、クエリで LABEL オプションを使用すると便利です。
+SQL Data Warehouse has several DMVs which can be used to monitor query execution.  The monitoring article below walks through step-by-step instructions on how to look at the details of an executing query.  To quickly find queries in these DMVs, using the LABEL option with your queries can help.
 
-「[DMV を利用してワークロードを監視する][]」、[ラベル][]、[OPTION][]、[sys.dm\_exec\_sessions][]、[sys.dm\_pdw\_exec\_requests][]、[sys.dm\_pdw\_request\_steps][]、[sys.dm\_pdw\_sql\_requests][]、[sys.dm\_pdw\_dms\_workers]、[DBCC PDW\_SHOWEXECUTIONPLAN][]、[sys.dm\_pdw\_waits][] に関するページもご覧ください
+See also [Monitor your workload using DMVs][], [LABEL][], [OPTION][], [sys.dm_exec_sessions][], [sys.dm_pdw_exec_requests][], [sys.dm_pdw_request_steps][], [sys.dm_pdw_sql_requests][], [sys.dm_pdw_dms_workers], [DBCC PDW_SHOWEXECUTIONPLAN][], [sys.dm_pdw_waits][]
 
-## その他のリソース
+## <a name="other-resources"></a>Other resources
 
-一般的な問題と解決方法については、[トラブルシューティング][]に関する記事もご覧ください。
+Also see our [Troubleshooting][] article for common issues and solutions.
 
-この記事で目的のトピックが見つからない場合は、ページの左側にある [Search for docs] を使用して、すべての Azure SQL Data Warehouse ドキュメントで検索を実行してみてください。[Azure SQL Data Warehouse の MSDN フォーラム][]は、他のユーザーや SQL Data Warehouse 製品グループに質問できる場所として設けられました。Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。Stack Overflow で質問したい方のために、[Azure SQL Data Warehouse Stack Overflow フォーラム][]も用意しています。
+If you didn't find what you were looking for in this article, try using the "Search for docs" on the left side of this page to search all of the Azure SQL Data Warehouse documents.  The [Azure SQL Data Warehouse MSDN Forum][] was create as a place for you to ask questions to other users and to the SQL Data Warehouse Product Group.  We actively monitor this forum to ensure that your questions are answered either by another user or one of us.  If you prefer to ask your questions on Stack Overflow, we also have an [Azure SQL Data Warehouse Stack Overflow Forum][].
 
-最後に、[Azure SQL Data Warehouse のフィードバック][] ページを使用して、機能に関するご要望を是非お寄せください。要望の追加や他の要求への投票は、機能の優先順位を決める際に役立ちます。
+Finally, please do use the [Azure SQL Data Warehouse Feedback][] page to make feature requests.  Adding your requests or up-voting other requests really helps us prioritize features.
 
 <!--Image references-->
 
 <!--Article references-->
 [Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[同時実行とワークロード管理]: ./sql-data-warehouse-develop-concurrency.md
+[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
-[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
-[テーブルのデータ型]: ./sql-data-warehouse-tables-data-types.md
-[テーブル分散]: ./sql-data-warehouse-tables-distribute.md
-[テーブル インデックス]: ./sql-data-warehouse-tables-index.md
-[列ストア インデックスの品質の低さの原因]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
-[列ストア インデックスの再構築]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[テーブル パーティション]: ./sql-data-warehouse-tables-partition.md
-[テーブル統計の管理]: ./sql-data-warehouse-tables-statistics.md
-[一時テーブル]: ./sql-data-warehouse-tables-temporary.md
-[PolyBase の使い方ガイド]: ./sql-data-warehouse-load-polybase-guide.md
-[PolyBase の使用ガイド]: ./sql-data-warehouse-load-polybase-guide.md
-[データのロード]: ./sql-data-warehouse-overview-load.md
-[Azure Data Factory を使用したデータ移動]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
-[Azure Data Factory を使用してデータを読み込む]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
+[Table overview]: ./sql-data-warehouse-tables-overview.md
+[Table data types]: ./sql-data-warehouse-tables-data-types.md
+[Table distribution]: ./sql-data-warehouse-tables-distribute.md
+[Table indexes]: ./sql-data-warehouse-tables-index.md
+[Causes of poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
+[Rebuilding columnstore indexes]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
+[Table partitioning]: ./sql-data-warehouse-tables-partition.md
+[Manage table statistics]: ./sql-data-warehouse-tables-statistics.md
+[Temporary tables]: ./sql-data-warehouse-tables-temporary.md
+[Guide for using PolyBase]: ./sql-data-warehouse-load-polybase-guide.md
+[Load data]: ./sql-data-warehouse-overview-load.md
+[Move data with Azure Data Factory]: ../data-factory/data-factory-azure-sql-data-warehouse-connector.md
+[Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
 [Load data with PolyBase]: ./sql-data-warehouse-get-started-load-with-polybase.md
-[DMV を利用してワークロードを監視する]: ./sql-data-warehouse-manage-monitor.md
-[コンピューティング リソースの一時停止]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
-[コンピューティング リソースの再開]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[コンピューティング リソースのスケール]: ./sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
-[トランザクションの概要]: ./sql-data-warehouse-develop-transactions.md
-[トランザクションの最適化]: ./sql-data-warehouse-develop-best-practices-transactions.md
-[トラブルシューティング]: ./sql-data-warehouse-troubleshoot.md
-[ラベル]: ./sql-data-warehouse-develop-label.md
+[Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
+[Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
+[Scale compute resources]: ./sql-data-warehouse-manage-compute-overview.md#scale-performance-bk
+[Understanding transactions]: ./sql-data-warehouse-develop-transactions.md
+[Optimizing transactions]: ./sql-data-warehouse-develop-best-practices-transactions.md
+[Troubleshooting]: ./sql-data-warehouse-troubleshoot.md
+[LABEL]: ./sql-data-warehouse-develop-label.md
 
 <!--MSDN references-->
 [ALTER TABLE]: https://msdn.microsoft.com/library/ms190273.aspx
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)]: https://msdn.microsoft.com/library/dn935026.aspx
+[CREATE EXTERNAL FILE FORMAT]: https://msdn.microsoft.com/library/dn935026.aspx
 [CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [CREATE TABLE AS SELECT]: https://msdn.microsoft.com/library/mt204041.aspx
-[DBCC PDW\_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
+[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
 [INSERT]: https://msdn.microsoft.com/library/ms174335.aspx
 [OPTION]: https://msdn.microsoft.com/library/ms190322.aspx
 [TRUNCATE TABLE]: https://msdn.microsoft.com/library/ms177570.aspx
 [UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
-[sys.dm\_exec\_sessions]: https://msdn.microsoft.com/library/ms176013.aspx
-[sys.dm\_pdw\_exec\_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm\_pdw\_request\_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm\_pdw\_sql\_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[sys.dm\_pdw\_dms\_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm\_pdw\_waits]: https://msdn.microsoft.com/library/mt203893.aspx
-[列ストア インデックス]: https://msdn.microsoft.com/library/gg492088.aspx
+[sys.dm_exec_sessions]: https://msdn.microsoft.com/library/ms176013.aspx
+[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
+[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
+[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
+[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
+[sys.dm_pdw_waits]: https://msdn.microsoft.com/library/mt203893.aspx
+[Columnstore indexes guide]: https://msdn.microsoft.com/library/gg492088.aspx
 
 <!--Other Web references-->
-[テーブル分散の選択]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
-[Azure SQL Data Warehouse のフィードバック]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Azure SQL Data Warehouse の MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
-[Azure SQL Data Warehouse Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
-[Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
+[Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
+[Azure SQL Data Warehouse Feedback]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[Azure SQL Data Warehouse MSDN Forum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
+[Azure SQL Data Warehouse Stack Overflow Forum]:  http://stackoverflow.com/questions/tagged/azure-sqldw
+[Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

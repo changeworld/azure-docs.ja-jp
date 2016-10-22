@@ -1,55 +1,56 @@
 <properties
-	pageTitle="Azure AD B2C | Microsoft Azure"
-	description="Azure Active Directory B2C で構築できるアプリケーションの種類。"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="msmbaldwin"
-	editor=""/>
+    pageTitle="Azure AD B2C | Microsoft Azure"
+    description="The types of applications you can build in the Azure Active Directory B2C."
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="07/22/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="07/22/2016"
+    ms.author="dastrock"/>
 
-# Azure Active Directory B2C: アプリケーションの種類
 
-Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。また、[アプリケーションの構築を始める](active-directory-b2c-overview.md#getting-started)前にシナリオの概要を理解することもできます。
+# <a name="azure-active-directory-b2c:-types-of-applications"></a>Azure Active Directory B2C: Types of applications
 
-## 基本
-Azure AD B2C を使用するすべてのアプリは、[Azure ポータル](https://portal.azure.com/)で [B2C ディレクトリ](active-directory-b2c-get-started.md)に登録する必要があります。アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+Azure Active Directory (Azure AD) B2C supports authentication for a variety of modern app architectures. All of them are based on the industry standard protocols [OAuth 2.0](active-directory-b2c-reference-protocols.md) or [OpenID Connect](active-directory-b2c-reference-protocols.md). This document briefly describes the types of apps that you can build, independent of the language or platform you prefer. It also helps you understand the high-level scenarios before you [start building applications](active-directory-b2c-overview.md#getting-started).
 
-- アプリを一意に識別する**アプリケーション ID**。
-- 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI**。
-- その他のシナリオに応じた値。詳細については、[アプリの登録](active-directory-b2c-app-registration.md)方法を参照してください。
+## <a name="the-basics"></a>The basics
+Every app that uses Azure AD B2C must be registered in your [B2C directory](active-directory-b2c-get-started.md) via the [Azure Portal](https://portal.azure.com/). The app registration process collects and assigns a few values to your app:
 
-登録の済んだアプリは、Azure AD v2.0 エンドポイントに要求を送ることによって、Azure AD と通信します。
+- An **Application ID** that uniquely identifies your app.
+- A **Redirect URI** that can be used to direct responses back to your app.
+- Any other scenario-specific values. For more details, learn how to [register an app](active-directory-b2c-app-registration.md).
+
+After the app is registered, it communicates with Azure AD by sending requests to the Azure AD v2.0 endpoint:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-Azure AD B2C に送信される各要求は、**ポリシー**を指定します。ポリシーは、Azure AD の動作を制御します。これらのエンドポイントを使用して、高度にカスタマイズ可能なユーザー エクスペリエンスのセットを作成することもできます。一般的なポリシーとしては、サインアップ ポリシー、サインイン ポリシー、プロファイル編集ポリシーなどがあります。これらのポリシーを詳しく理解していない場合は、先に進む前に Azure AD B2C の「[拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md)」を参照する必要があります。
+Each request that is sent to Azure AD B2C specifies a **policy**. A policy controls the behavior of Azure AD. You can also use these endpoints to create a highly customizable set of user experiences. Common policies include sign-up, sign-in, and profile-edit policies. If you are not familiar with policies, you should read about the Azure AD B2C [extensible policy framework](active-directory-b2c-reference-policies.md) before you continue.
 
-すべてのアプリによる v2.0 エンドポイントとのやり取りは、次のような大まかなパターンに従って行われます。
+The interaction of every app with a v2.0 endpoint follows a similar high-level pattern:
 
-1. アプリは、[ポリシー](active-directory-b2c-reference-policies.md)を実行するためにユーザーを v2.0 エンドポイントにリダイレクトします。
-2. ユーザーがポリシーの定義に従ってポリシーを完了します。
-4. アプリは、v2.0 エンドポイントから何らかの種類のセキュリティ トークンを受け取ります。
-5. アプリは、セキュリティ トークンを使って、保護された情報またはリソースにアクセスします。
-6. リソース サーバーは、セキュリティ トークンを検証し、アクセスを許可できることを確認します。
-7. アプリは、セキュリティ トークンを定期的に更新します。
+1. The app directs the user to the v2.0 endpoint to execute a [policy](active-directory-b2c-reference-policies.md).
+2. The user completes the policy according to the policy definition.
+4. The app receives some kind of security token from the v2.0 endpoint.
+5. The app uses the security token to access protected information or a protected resource.
+6. The resource server validates the security token to verify that access can be granted.
+7. The app periodically refreshes the security token.
 
 <!-- TODO: Need a page for libraries to link to -->
-これらの手順は、構築しているアプリの種類によりわずかに異なることがあります。細部は、オープン ソース ライブラリが自動的に対応できます。
+These steps can differ slightly based on the type of app you're building. Open source libraries can address the details for you.
 
-## Web Apps
-サーバーでホストされ、ブラウザーを通じてアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node.js など) に対して、Azure AD B2C は、すべてのユーザー エクスペリエンスで [OpenID Connect](active-directory-b2c-reference-protocols.md) をサポートします。これには、サインイン、サインアップ、およびプロファイル管理が含まれます。Azure AD B2C の OpenID Connect の実装では、Web アプリは、これらのユーザーエクスペリエンスを Azure AD に認証要求を発行することで開始します。要求の結果は `id_token` です。このセキュリティ トークンは、ユーザーの ID を表します。また、要求の形式でユーザーに関する情報も提供します。
+## <a name="web-apps"></a>Web apps
+For web apps (including .NET, PHP, Java, Ruby, Python, and Node.js) that are hosted on a server and accessed through a browser, Azure AD B2C supports [OpenID Connect](active-directory-b2c-reference-protocols.md) for all user experiences. This includes sign-in, sign-up, and profile management. In the Azure AD B2C implementation of OpenID Connect, your web app initiates these user experiences by issuing authentication requests to Azure AD. The result of the request is an `id_token`. This security token represents the user's identity. It also provides information about the user in the form of claims:
 
 ```
 // Partial raw id_token
@@ -57,29 +58,29 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 // Partial content of a decoded id_token
 {
-	"name": "John Smith",
-	"email": "john.smith@gmail.com",
-	"oid": "d9674823-dffc-4e3f-a6eb-62fe4bd48a58"
-	...
+    "name": "John Smith",
+    "email": "john.smith@gmail.com",
+    "oid": "d9674823-dffc-4e3f-a6eb-62fe4bd48a58"
+    ...
 }
 ```
 
-アプリで利用できるトークンと要求の種類の詳細については、[B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)のページを参照してください。
+Learn more about the types of tokens and claims available to an app in the [B2C token reference](active-directory-b2c-reference-tokens.md).
 
-Web アプリでは、[ポリシー](active-directory-b2c-reference-policies.md)を実行するたびに、次に示す大まかな手順が実行されます。
+In a web app, each execution of a [policy](active-directory-b2c-reference-policies.md) takes these high-level steps:
 
-![Web アプリのスイムレーン イメージ](./media/active-directory-b2c-apps/webapp.png)
+![Web App Swimlanes Image](./media/active-directory-b2c-apps/webapp.png)
 
-ユーザーの ID を確認するには、Azure AD から受け取った公開署名キーを使用して `id_token` を検証するだけで十分です。これにより、以降のページ要求でユーザーを識別するために使用できるセッション Cookie も設定されます。
+Validation of the `id_token` by using a public signing key that is received from Azure AD is sufficient to verify the identity of the user. This also sets a session cookie that can be used to identify the user on subsequent page requests.
 
-このシナリオを実際に確認するには、[作業開始](active-directory-b2c-overview.md#getting-started)に関するセクションのいずれかの Web アプリ サインイン コード サンプルを試してください。
+To see this scenario in action, try one of the web app sign-in code samples in our [Getting started section](active-directory-b2c-overview.md#getting-started).
 
-Web サーバー アプリは、サインインを簡単にするだけでなく、他のバックエンド Web サービスにアクセスすることが必要な場合もあります。このような場合、Web アプリでは少し異なる [OpenID Connect フロー](active-directory-b2c-reference-oidc.md)を実行し、承認コードと更新トークンを使用してトークンを取得することができます。このシナリオについては、次の「[Web API](#web-apis)」セクションで説明します。
+In addition to facilitating simple sign-in, a web server app might also need to access a back-end web service. In this case, the web app can perform a slightly different [OpenID Connect flow](active-directory-b2c-reference-oidc.md) and acquire tokens by using authorization codes and refresh tokens. This scenario is depicted in the following [Web APIs section](#web-apis).
 
 <!--, and in our [WebApp-WebAPI Getting started topic](active-directory-b2c-devquickstarts-web-api-dotnet.md).-->
 
-## Web API
-Azure AD B2C を使用して、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。Web API では、OAuth 2.0 を使用し、トークンによって受信 HTTP 要求を認証することで、データをセキュリティで保護することができます。Web API の呼び出し元は、HTTP 要求の承認ヘッダーの中にトークンを追加します。
+## <a name="web-apis"></a>Web APIs
+You can use Azure AD B2C to secure web services such as your app's RESTful web API. Web APIs can use OAuth 2.0 to secure their data, by authenticating incoming HTTP requests using tokens. The caller of a web API appends a token in the authorization header of an HTTP request:
 
 ```
 GET /api/items HTTP/1.1
@@ -89,43 +90,47 @@ Accept: application/json
 ...
 ```
 
-Web API はトークンを使用して API の呼び出し元の ID を検証し、トークン内にエンコードされているクレームから呼び出し元に関する情報を抽出します。アプリで利用できるトークンと要求の種類の詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)のページを参照してください。
+The web API can then use the token to verify the API caller's identity and to extract information about the caller from claims that are encoded in the token. Learn more about the types of tokens and claims available to an app in the [Azure AD B2C token reference](active-directory-b2c-reference-tokens.md).
 
 > [AZURE.NOTE]
-	現在の Azure AD B2C では、Web API の既知のクライアントによってアクセスされる Web API のみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。別の iOS アプリなどのパートナー クライアントが同じ Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+    Azure AD B2C currently supports only web APIs that are accessed by their own well-known clients. For instance, your complete app may include an iOS app, an Android app, and a back-end web API. This architecture is fully supported. Allowing a partner client, such as another iOS app, to access the same web API is not currently supported. All of the components of your complete app must share a single application ID.
 
-Web API は、Web アプリ、デスクトップ アプリ、モバイル アプリ、シングル ページ アプリ、サーバー サイド デーモン、それ以外の Web API など、多くの種類のクライアントからトークンを受信できます。ここでは、Web API を呼び出す Web アプリの完全なフローの例を示します。
+A web API can receive tokens from many types of clients, including web apps, desktop and mobile apps, single page apps, server-side daemons, and other web APIs. Here's an example of the complete flow for a web app that calls a web API:
 
-![Web API のスイムレーン イメージ](./media/active-directory-b2c-apps/webapi.png)
+![Web App Web API Swimlanes Image](./media/active-directory-b2c-apps/webapi.png)
 
-承認コード、更新トークン、およびトークンの取得手順については、[OAuth 2.0 プロトコル](active-directory-b2c-reference-oauth-code.md)に関するページを参照してください。
+To learn more about authorization codes, refresh tokens, and the steps for getting tokens, read about the [OAuth 2.0 protocol](active-directory-b2c-reference-oauth-code.md).
 
-Azure AD B2C を使用して Web API をセキュリティ保護する方法の詳細については、Web API チュートリアルの「[作業開始](active-directory-b2c-overview.md#getting-started)」セクションを参照してください。
+To learn how to secure a web API by using Azure AD B2C, check out the web API tutorials in our [Getting started section](active-directory-b2c-overview.md#getting-started).
 
-## モバイル アプリとネイティブ アプリ
-モバイル アプリやデスクトップ アプリなどのデバイスにインストールされているアプリは、多くの場合、ユーザーの代わりにバックエンド サービスや Web API にアクセスする必要があります。カスタマイズされた ID 管理エクスペリエンスをネイティブ アプリに追加し、Azure AD B2C と [OAuth 2.0 の承認コード フロー](active-directory-b2c-reference-oauth-code.md)を使用して、バックエンド サービスを安全に呼び出すことができます。
+## <a name="mobile-and-native-apps"></a>Mobile and native apps
+Apps that are installed on devices, such as mobile and desktop apps, often need to access back-end services or web APIs on behalf of users. You can add customized identity management experiences to your native apps and securely call back-end services by using Azure AD B2C and the [OAuth 2.0 authorization code flow](active-directory-b2c-reference-oauth-code.md).  
 
-このフローでは、アプリが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。`authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリのアクセス許可を表します。これにより、アプリはバックグラウンドで `authorization_code` を `id_token` および `refresh_token` と交換できます。アプリは `id_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。また、古い `id_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
+In this flow, the app executes [policies](active-directory-b2c-reference-policies.md) and receives an `authorization_code` from Azure AD after the user completes the policy. The `authorization_code` represents the app's permission to call back-end services on behalf of the user who is currently signed in. The app can then exchange the `authorization_code` in the background for an `id_token` and a `refresh_token`.  The app can use the `id_token` to authenticate to a back-end web API in HTTP requests. It can also use the `refresh_token` to get a new `id_token` when an older one expires.
 
 > [AZURE.NOTE]
-	現在の Azure AD B2C では、アプリ独自のバックエンド Web サービスにアクセスするために使用されるトークンのみをサポートしています。たとえば、完成したアプリには、iOS アプリ、Android アプリ、Web API を含めることができます。このアーキテクチャは完全にサポートされます。iOS アプリが OAuth 2.0 アクセス トークンを使用してパートナー の Web API にアクセスできるようにすることは、現時点ではサポートされていません。完成したアプリのすべてのコンポーネントは、1 つのアプリケーション ID を共有する必要があります。
+    Azure AD B2C currently supports only tokens that are used to access an app's own back-end web service. For instance, your complete app may include an iOS app, an Android app, and a back-end web API. This architecture is fully supported. Allowing your iOS app to access a partner web API by using OAuth 2.0 access tokens is not currently supported. All of the components of your complete app must share a single application ID.
 
-![ネイティブ アプリのスイムレーン イメージ](./media/active-directory-b2c-apps/native.png)
+![Native App Swimlanes Image](./media/active-directory-b2c-apps/native.png)
 
-## 現時点での制限事項
-Azure AD B2C では、現時点で以下の種類のアプリはサポートしていませんが、今後サポート対象に含まれる予定です。Azure AD B2C に関するその他の制限および制約事項については、[制限事項と制約事項](active-directory-b2c-limitations.md)に関するページを参照してください。
+## <a name="current-limitations"></a>Current limitations
+Azure AD B2C does not currently support the following types of apps, but they are on the roadmapy. Additional limitations and restrictions related to Azure AD B2C are described in [Limitations and restrictions](active-directory-b2c-limitations.md).
 
-### シングル ページ アプリ (JavaScript)
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。多くの場合、AngularJS、Ember.js、Durandal などのフレームワークを使用します。一般に利用可能な Azure AD サービスは、OAuth 2.0 の暗黙的なフローを使用して、これらのアプリをサポートします。ただし、このフローは Azure AD B2C ではまだ使用できません。
+### <a name="single-page-apps-(javascript)"></a>Single page apps (JavaScript)
+Many modern apps have a single-page app front end written primarily in JavaScript. They often use a framework such as AngularJS, Ember.js, or Durandal. The generally available Azure AD service supports these apps by using the OAuth 2.0 implicit flow. However, this flow is not yet available in Azure AD B2C.
 
-### デーモン/サーバー側アプリ
-長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリは、(ユーザーの委任 ID ではなく) アプリの ID と OAuth 2.0 のクライアント資格情報フローを使用して、認証を行い、トークンを取得することができます。
+### <a name="daemons/server-side-apps"></a>Daemons/server-side apps
+Apps that contain long-running processes or that operate without the presence of a user also need a way to access secured resources such as web APIs. These apps can authenticate and get tokens by using the app's identity (rather than a user's delegated identity) and by using the OAuth 2.0 client credentials flow.
 
-このフローは現在、Azure AD B2C ではサポートされていません。これらのアプリは、対話型ユーザー フローが行われた後でのみ、トークンを取得できます。
+This flow is not currently supported by Azure AD B2C. These apps can get tokens only after an interactive user flow has occurred.
 
-### Web API チェーン (On-Behalf-Of フロー)
-多くのアーキテクチャには別のダウンストリーム Web API を呼び出す必要がある Web API が含まれ、その場合は両方とも Azure AD B2C によってセキュリティ保護されます。このシナリオは、Web API バックエンドのあるネイティブ クライアントで一般的なものです。その後は、Azure AD Graph API などの Microsoft オンライン サービスを呼び出します。
+### <a name="web-api-chains-(on-behalf-of-flow)"></a>Web API chains (on-behalf-of flow)
+Many architectures include a web API that needs to call another downstream web API, where both are secured by Azure AD B2C. This scenario is common in native clients that have a Web API back-end. This then calls a Microsoft online service such as the Azure AD Graph API.
 
-このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
+This chained web API scenario can be supported by using the OAuth 2.0 JWT bearer credential grant, also known as the on-behalf-of flow.  However, the on-behalf-of flow is not currently implemented in the Azure AD B2C.
 
-<!-----HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

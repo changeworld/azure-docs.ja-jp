@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure RemoteApp コレクションの更新 | Microsoft Azure"
-   description="Azure RemoteApp コレクションの更新方法を説明します。"
+   pageTitle="Update your Azure RemoteApp collection | Microsoft Azure"
+   description="Learn how to update your Azure RemoteApp collection"
    services="remoteapp"
    documentationCenter=""
    authors="lizap"
@@ -16,25 +16,30 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
-# Azure RemoteApp コレクションの更新
+
+# <a name="update-a-collection-in-azure-remoteapp"></a>Update a collection in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-将来、必ず Azure RemoteApp コレクション内のアプリやイメージの更新が必要になる時期が来ます。クラウド コレクションまたはハイブリッド コレクションで、Azure RemoteApp サブスクリプションに含まれるイメージの 1 つを使用している場合は、すべての更新が Azure RemoteApp 自体によって処理されるので、安心できます。
+There will come a time, inevitably, when you need to update the apps or image in your Azure RemoteApp collection. If you are using one of the images included with your Azure RemoteApp subscription, in either a cloud or hybrid collection, any and all updates are handled by Azure RemoteApp itself, so you can rest easy.
 
-ただし、カスタム イメージ (最初から構築したか、または提供されたイメージの 1 つを変更して作成したカスタム イメージ) を使用している場合は、イメージとアプリケーションの保守に責任を持つ必要があります。イメージまたはイメージ内のいずれかのアプリケーションを更新する必要がある場合は、イメージの更新されたバージョンを新たに作成し、コレクション内の既存のイメージをこの新しいバージョンに置き換える必要があります。
+However, if you are using a custom image (either that you built from scratch or that you created by modifying one of our images), you are in charge of maintaining the image and apps. If you need to update your image or any of the apps inside it, you need to create a new, updated version of the image, and then replace the existing image in your collection with this new updated image.
 
-では、どのようにして、コレクションを更新するのでしょうか。 その方法は、以下のようなわかりやすいものになっています。
+So, how do you go about updating your collection? It's fairly straightforward:
 
-1. コレクションで使用したイメージを更新します。必要となる任意のパッチまたは更新を適用し、新しい名前を付けて保存します。
-2. RemoteApp にそのイメージを[アップロード](remoteapp-uploadimage.md)または[インポート](remoteapp-image-on-azurevm.md)します。
-3. [コレクション] ページで **[更新]** をクリックします。
-4. **[テンプレート イメージ]** リストから新しいイメージを選択します。
-4. ここは、注意が必要な手順です。コレクション内のアプリを使用中のユーザーを処理する方法を決定する必要があります。選択肢には次の 2 つがあります。
-	- **更新が完了してから 60 分後にユーザーをサインアウトさせる**。更新が終了すると、すぐに Azure RemoteApp はアクティブなユーザーに対してメッセージを表示します。そのメッセージにより、作業内容を保存してからログオフし、再度ログインするよう通知します。60 分後、ログオフしていないアクティブなユーザーは、自動的にログオフされます。ユーザーはすぐに再度ログオンできます。
-	- **すぐにユーザーをサインアウトさせる**。更新が終了すると、警告することなく、すぐにすべてのユーザーを自動的にログオフします。このオプションを選択すると、ユーザーはデータを失う可能性があります。ただし、ユーザーはすぐにアプリに再接続できます。
+1. Update the image that you used in your collection. Apply any patches or updates needed, and then save it with a new name.
+2. [Upload](remoteapp-uploadimage.md) or [import](remoteapp-image-on-azurevm.md) that image to RemoteApp.
+3. Now, on the collection page, click **Update**.
+4. Choose the new image from the **Template Image** list.
+4. Here's the tricky part - you need to decide how to deal with any users that are currently using an app in the collection. You have the following choices:
+    - **Give users 60 minutes after the update**. As soon as the update is finished, Azure RemoteApp will display a message to any active users telling them to save their work and log off and log back in. After 60 minutes, any active users who have not logged off will be automatically logged off. Users can immediately log back on.
+    - **Sign users out immediately**. As soon as the update is finished, log off all users automatically without any warning. If you choose this option, users might lose data. However, they can reconnect to the app immediately.
 
-1. チェック マークをクリックして、更新を開始します。
+1. Click the check mark to start the update.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

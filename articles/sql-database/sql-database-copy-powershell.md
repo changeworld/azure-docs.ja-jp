@@ -1,74 +1,75 @@
 <properties 
-    pageTitle="PowerShell を使用した Azure SQL Database のコピー | Microsoft Azure" 
-    description="PowerShell を使用した Azure SQL Database のコピーの作成" 
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Copy an Azure SQL database using PowerShell | Microsoft Azure" 
+    description="Create copy of an Azure SQL database using PowerShell" 
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="09/08/2016"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="09/08/2016"
+    ms.author="sstein"
+    ms.workload="data-management"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# PowerShell を使用した Azure SQL Database のコピー
+
+# <a name="copy-an-azure-sql-database-using-powershell"></a>Copy an Azure SQL database using PowerShell
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-copy.md)
-- [Azure ポータル](sql-database-copy-portal.md)
+- [Overview](sql-database-copy.md)
+- [Azure portal](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-この記事では、PowerShell を使用して、SQL データベースを同じサーバーおよび別のサーバーにコピーする方法、またはデータベースを[エラスティック データベース プール](sql-database-elastic-pool.md)にコピーする方法について説明します。このデータベースのコピー操作では、[New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644.aspx) コマンドレットを使用します。
+This article shows how to copy a SQL database with PowerShell to the same server, to a different server, or copy a database into an [elastic database pool](sql-database-elastic-pool.md). The database copy operation uses the [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/mt603644.aspx) cmdlet. 
 
 
-この記事を完了するには、以下が必要です。
+To complete this article, you need the following:
 
-- Azure SQL データベース (コピーするデータベース)。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
-- Azure PowerShell の最新バージョン。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-
-SQL Database の新機能の多くは、[Azure Resource Manager デプロイメント モデル](../resource-group-overview.md)を使用している場合にのみサポートされます。したがって、例では、Resource Manager の [Azure SQL Database PowerShell コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)を使用しています。既存のクラシック デプロイ モデルの [Azure SQL Database (クラシック) コマンドレット](https://msdn.microsoft.com/library/azure/dn546723.aspx)は下位互換性を確保するためにサポートされていますが、Resource Manager のコマンドレットを使用することをお勧めします。
+- An Azure SQL database (a database to copy). If you do not have a SQL database, create one following the steps in this article: [Create your first Azure SQL Database](sql-database-get-started.md).
+- The latest version of Azure PowerShell. For detailed information, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
 
->[AZURE.NOTE] データベースのサイズに応じて、コピー操作の完了に時間がかかる場合があります。
+Many new features of SQL Database are only supported when you are using the [Azure Resource Manager deployment model](../resource-group-overview.md), so examples use the [Azure SQL Database PowerShell cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx) for Resource Manager. The existing classic deployment model [Azure SQL Database (classic) cmdlets](https://msdn.microsoft.com/library/azure/dn546723.aspx) are supported for backward compatibility, but we recommend you use the Resource Manager cmdlets.
 
 
-## SQL データベースを同じサーバーにコピーする
+>[AZURE.NOTE] Depending on the size of your database, the copy operation may take some time to complete.
 
-同じサーバーにコピーを作成するには、`-CopyServerName` パラメーターを省略します (または、そのパラメーターを同じサーバーに設定します)。
+
+## <a name="copy-a-sql-database-to-the-same-server"></a>Copy a SQL database to the same server
+
+To create the copy on the same server, omit the `-CopyServerName` parameter (or set it to the same server).
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -CopyDatabaseName "database1_copy"
 
-## 別のサーバーへの SQL データベースのコピー
+## <a name="copy-a-sql-database-to-a-different-server"></a>Copy a SQL database to a different server
 
-別のサーバーにコピーを作成するには、`-CopyServerName` パラメーターを追加して、そのパラメーターを別のサーバーに設定します。"*コピー*" サーバーは既に存在している必要があります。このサーバーが異なるリソース グループに含まれる場合は、`-CopyResourceGroupName` パラメーターを指定する必要があります。
+To create the copy on a different server, include the `-CopyServerName` parameter and set it to a different server. The *copy* server must already exist. If it is in a different resource group, then you must also include the `-CopyResourceGroupName` parameter.
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -CopyServerName "server2" -CopyDatabaseName "database1_copy"
 
 
-## エラスティック データベース プールへの SQL データベースのコピー
+## <a name="copy-a-sql-database-into-an-elastic-database-pool"></a>Copy a SQL database into an elastic database pool
 
-SQL データベースのコピーをプールに作成するには、`-ElasticPoolName` パラメーターを既存のプールに設定します。
+To create a copy of a SQL database in a pool, set the `-ElasticPoolName` parameter to an existing pool.
 
     New-AzureRmSqlDatabaseCopy -ResourceGroupName "resourcegoup1" -ServerName "server1" -DatabaseName "database1" -CopyResourceGroupName "poolResourceGroup" -CopyServerName "poolServer1" -CopyDatabaseName "database1_copy" -ElasticPoolName "poolName"
 
 
-## ログインの解決
+## <a name="resolve-logins"></a>Resolve logins
 
-コピー操作が完了した後にログインを解決するには、[ログインの解決](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)に関するページをご覧ください
+To resolve logins after the copy operation completes, see [Resolve logins](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
 
 
-## PowerShell サンプル スクリプト
+## <a name="example-powershell-script"></a>Example PowerShell script
 
-次のスクリプトでは、すべてのリソース グループ、サーバー、およびプールが既に存在するものとしています (変数の値は、既存のリソースに置き換えてください)。データベース コピーを除き、すべてが存在している必要があります。
+The following script assumes all resource groups, servers, and the pool already exist (replace the variable values with your existing resources). Everything must exist, except for the database copy.
 
     # Sign in to Azure and set the subscription to work with
     # ------------------------------------------------------
@@ -107,23 +108,27 @@ SQL データベースのコピーをプールに作成するには、`-ElasticP
 
     
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- Azure SQL Database のコピーの概要については、「[Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
-- Azure ポータルを使用してデータベースをコピーするには、「[Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy-portal.md)」を参照してください。
-- Transact-SQL を使用してデータベースをコピーするには、「[T-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md)」をご覧ください。
-- 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
+- See [Copy an Azure SQL database](sql-database-copy.md) for an overview of copying an Azure SQL Database.
+- See [Copy an Azure SQL database using the Azure portal](sql-database-copy-portal.md) to copy a database using the Azure portal.
+- See [Copy an Azure SQL database using T-SQL](sql-database-copy-transact-sql.md) to copy a database using Transact-SQL.
+- See [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md) to learn about managing users and logins when copying a database to a different logical server.
 
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/mt603644.aspx)
 - [Get-AzureRmSqlDatabaseActivity](https://msdn.microsoft.com/library/mt603687.aspx)
-- [ログインの管理](sql-database-manage-logins.md)
-- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
-- [データベースを BACPAC にエクスポートする](sql-database-export.md)
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
-- [Azure SQL Database の PowerShell コマンドレット リファレンス](https://msdn.microsoft.com/library/mt574084.aspx)
+- [Manage logins](sql-database-manage-logins.md)
+- [Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query](sql-database-connect-query-ssms.md)
+- [Export the database to a BACPAC](sql-database-export.md)
+- [Business Continuity Overview](sql-database-business-continuity.md)
+- [SQL Database documentation](https://azure.microsoft.com/documentation/services/sql-database/)
+- [Azure SQL Database PowerShell Cmdlet Reference](https://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

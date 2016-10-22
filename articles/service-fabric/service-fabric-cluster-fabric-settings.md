@@ -1,7 +1,7 @@
 
 <properties
-   pageTitle="Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ | Microsoft Azure"
-   description="この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。"
+   pageTitle="Customize Service Fabric cluster settings and Fabric Upgrade policy | Microsoft Azure"
+   description="This article describes the fabric settings and the fabric upgrade policies that you can customize."
    services="service-fabric"
    documentationCenter=".net"
    authors="chackdan"
@@ -17,59 +17,67 @@
    ms.date="09/20/2016"
    ms.author="chackdan"/>
 
-# Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 
-このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。この設定やポリシーは、ポータルまたは Resource Manager テンプレートを使用してカスタマイズできます。
+# <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Customize Service Fabric cluster settings and Fabric Upgrade policy
 
-## カスタマイズできる Fabric の設定
+This document tells you how to customize the various fabric settings and the fabric upgrade policy for your service fabric cluster. You can customize them on the portal or using a Resource Manager template.
+
+## <a name="fabric-settings-that-you-can-customize"></a>Fabric settings that you can customize
 
 
-カスタマイズできる Fabric の設定を次に示します。
+Here are the Fabric settings that you can customize:
 
-### セクション名: セキュリティ
+### <a name="section-name:-security"></a>Section Name: Security
 
-|**パラメーター**|**使用できる値**|**ガイダンスまたは簡単な説明**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|ClusterProtectionLevel|None または EncryptAndSign| セキュリティで保護されていないクラスターの場合は None (既定)、セキュリティで保護されたクラスターの場合は EncryptAndSign です。 |
+|ClusterProtectionLevel|None or EncryptAndSign| None (default) for unsecured clusters, EncryptAndSign for secure clusters. |
 
-### セクション名: Hosting
+### <a name="section-name:-hosting"></a>Section Name: Hosting
 
-|**パラメーター**|**使用できる値**|**ガイダンスまたは簡単な説明**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|ServiceTypeRegistrationTimeout|秒単位。既定値は 300| Fabric に登録する ServiceType の最大許容時間|
-|ServiceTypeDisableFailureThreshold|整数。既定値は 1| 失敗回数のしきい値。この回数を失敗した後、そのノード上のサービスの種類を無効にして、別のノードへの配置を試行するよう FailoverManager (FM) に通知されます。|
-|ActivationRetryBackoffInterval|秒単位。既定値は 5|アクティブ化失敗のバックオフ間隔。アクティブ化が連続して失敗するたびに、MaxActivationFailureCount で指定された回数までアクティブ化が再試行されます。各試行の再試行間隔は、継続的なアクティブ化失敗とアクティブ化バックオフ間隔の積になります。|
-|ActivationMaxRetryInterval|秒単位。既定値は 300| アクティブ化が連続して失敗するたびに、ActivationMaxFailureCount で指定された回数までアクティブ化が再試行されます。ActivationMaxRetryInterval は、アクティブ化が失敗してから再試行されるまでの待機時間を指定します |
-|ActivationMaxFailureCount|整数。既定値は 10| 失敗したアクティブ化の再試行が行われる回数。再試行は、この回数だけ実行されてから停止します |
+|ServiceTypeRegistrationTimeout|Time in Seconds, default is 300| Maximum time allowed for the ServiceType to be  registered with fabric|
+|ServiceTypeDisableFailureThreshold|Whole number, default is 1| This is the threshold for the failure count after which FailoverManager (FM) is notified to disable the service type on that node and try a different node for placement.|
+|ActivationRetryBackoffInterval|Time in Seconds, default is 5|Backoff interval on every activation failure; On every continuous activation failure, the system retries the activation for up to the MaxActivationFailureCount. The retry interval on every try is a product of continuous activation failure and the activation back-off interval.|
+|ActivationMaxRetryInterval|Time in seconds, default is 300| On every continuous activation failure, the system retries the activation for up to ActivationMaxFailureCount. ActivationMaxRetryInterval specifies Wait time interval before retry after every activation failure |
+|ActivationMaxFailureCount|Whole number, default is 10| Number of times system retries failed activation before giving up |
 
-### セクション名: FailoverManager
+### <a name="section-name:-failovermanager"></a>Section Name: FailoverManager
 
-|**パラメーター**|**使用できる値**|**ガイダンスまたは簡単な説明**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|PeriodicLoadPersistInterval|秒単位。既定値は 10| これにより、FM が新しい負荷レポートを確認する頻度が決まります|
+|PeriodicLoadPersistInterval|Time in seconds, default is 10| This determines how often the FM check for new load reports|
 
-### セクション名: Federation
+### <a name="section-name:-federation"></a>Section Name: Federation
 
-|**パラメーター**|**使用できる値**|**ガイダンスまたは簡単な説明**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|LeaseDuration|秒単位。既定値は 30|ノードとその近隣ノードの間のリース期間。|
-|LeaseDurationAcrossFaultDomain|秒単位。既定値は 30|障害ドメイン全体におけるノードとその近隣ノードの間のリース期間。|
+|LeaseDuration|Time in seconds, default is 30|Duration that a lease lasts between a node and its neighbors.|
+|LeaseDurationAcrossFaultDomain|Time in seconds, default is 30|Duration that a lease lasts between a node and its neighbors across fault domains.|
 
-### セクション名: ClusterManager
+### <a name="section-name:-clustermanager"></a>Section Name: ClusterManager
 
-|**パラメーター**|**使用できる値**|**ガイダンスまたは簡単な説明**|
+|**Parameter**|**Allowed Values**|**Guidance or short Description**|
 |-----------------------|--------------------------|--------------------------|
-|UpgradeStatusPollInterval|秒単位。既定値は 60|アプリケーションのアップグレード状態をポーリングする頻度。この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります|
-|UpgradeHealthCheckInterval|秒単位。既定値は 60|監視対象アプリケーションをアップグレードしているときに、正常性状態をチェックする頻度|
-|FabricUpgradeStatusPollInterval|秒単位。既定値は 60|Fabric アップグレード状態をポーリングする頻度。この値により、GetFabricUpgradeProgress 呼び出しの更新レートが決まります |
-|FabricUpgradeHealthCheckInterval|秒単位。既定値は 60|監視対象 Fabric をアップグレードしているときに、正常性状態をチェックする頻度|
+|UpgradeStatusPollInterval|Time in seconds, default is 60|The frequency of polling for application upgrade status. This value determines the rate of update for any GetApplicationUpgradeProgress call|
+|UpgradeHealthCheckInterval|Time in seconds, default is 60|The frequency of health status checks during a monitored application upgrades|
+|FabricUpgradeStatusPollInterval|Time in seconds, default is 60|The frequency of polling for Fabric upgrade status. This value determines the rate of update for any GetFabricUpgradeProgress call |
+|FabricUpgradeHealthCheckInterval|Time in seconds, default is 60|The frequency of health status check during a  monitored Fabric upgrade|
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-クラスター管理の詳細については、次の記事を参照してください。
+Read these articles for more information on cluster management:
 
-[Azure クラスターの証明書の追加、ロール オーバー、削除](service-fabric-cluster-security-update-certs-azure.md)
+[Add, Roll over, remove certificates from your Azure cluster ](service-fabric-cluster-security-update-certs-azure.md) 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

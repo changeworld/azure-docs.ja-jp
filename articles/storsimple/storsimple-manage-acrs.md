@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple でのアクセス制御レコードの管理 | Microsoft Azure"
-   description="ACR (アクセス制御レコード) を使用して、StorSimple デバイス上のボリュームに接続できるホストを判別する方法について説明します。"
+   pageTitle="Manage access control records in StorSimple | Microsoft Azure"
+   description="Describes how to use access control records (ACRs) to determine which hosts can connect to a volume on the StorSimple device."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,84 +15,89 @@
    ms.date="08/18/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用してアクセス制御レコードを管理する
 
-## Overview
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Use the StorSimple Manager service to manage access control records
 
-ACR (アクセス制御レコード) を使用すると、StorSimple デバイス上のボリュームに接続できるホストを指定できます。ACR は特定のボリュームに設定され、ホストの iSCSI 修飾名 (IQN) を含みます。ホストがボリュームに接続しようとすると、デバイスは、そのボリュームに関連付けられている ACR を確認し、該当する IQN 名を探します。一致するものがある場合は、接続が確立されます。**[構成]** ページのアクセス制御レコード セクションには、すべてのアクセス制御レコードとそれに対応するホストの IQN が表示されます。
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、次の一般的な ACR に関連するタスクについて説明します。
+Access control records (ACRs) allow you to specify which hosts can connect to a volume on the StorSimple device. ACRs are set to a specific volume and contain the iSCSI Qualified Names (IQNs) of the hosts. When a host tries to connect to a volume, the device checks the ACR associated with that volume for the IQN name and if there is a match, then the connection is established. The access control records section on the **Configure** page displays all the access control records with the corresponding IQNs of the hosts.
 
-- アクセス制御レコードの追加
-- アクセス制御レコードの編集
-- アクセス制御レコードの削除
+This tutorial explains the following common ACR-related tasks:
+
+- Add an access control record 
+- Edit an access control record 
+- Delete an access control record 
 
 > [AZURE.IMPORTANT] 
 > 
-> - ボリュームに ACR を割り当てる際は、そのボリュームが複数の非クラスター化ホストによって同時にアクセスされることのないように注意してください。ボリュームの破損を招く可能性があります。
-> - ボリュームから ACR を削除するときは、対応するホストがボリュームにアクセスしていないことを確認してください。読み取り/書き込みが、削除によって中断される可能性があります。
+> - When assigning an ACR to a volume, take care that the volume is not concurrently accessed by more than one non-clustered host because this could corrupt the volume. 
+> - When deleting an ACR from a volume, make sure that the corresponding host is not accessing the volume because the deletion could result in a read-write disruption.
 
-## アクセス制御レコードの追加
+## <a name="add-an-access-control-record"></a>Add an access control record
 
-StorSimple Manager サービスの **[構成]** ページを使用して ACR を追加します。通常は、1 つの ACR を 1 つのボリュームに関連付けます。
+You use the StorSimple Manager service **Configure** page to add ACRs. Typically, you will associate one ACR with one volume.
 
-次のステップを実行して、ACR を追加します。
+Perform the following steps to add an ACR.
 
-#### アクセス制御レコードを追加するには
+#### <a name="to-add-an-access-control-record"></a>To add an access control record
 
-1. サービスのランディング ページで、サービスを選択し、サービス名をダブルクリックしてから **[構成]** タブをクリックします。
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. **[アクセス制御レコード]** の表形式の一覧で、ACR の **[名前]** を指定します。
+2. In the tabular listing under **Access control records**, supply a **Name** for your ACR.
 
-3. **[iSCSI イニシエーターの名前]** で Windows ホストの IQN 名を指定します。Windows Server ホストの IQN を取得するには、次のようにします。
+3. Provide the IQN name of your Windows host under **iSCSI Initiator Name**. To get the IQN of your Windows Server host, do the following:
 
-   - Windows ホストで、Microsoft iSCSI イニシエーターを起動します。
-   - **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドから文字列を選択してコピーします。
-   - この文字列を、Azure クラシック ポータルの ACR テーブルにある **[iSCSI イニシエーター名]** フィールドに貼り付けます。
+   - Start the Microsoft iSCSI initiator on your Windows host.
+   - In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
+   - Paste this string in the **iSCSI Initiator Name** field on the ACRs table in the Azure classic portal.
 
-4. **[保存]** をクリックして、新しく作成された ACR を保存します。表形式の一覧が更新され、この追加が反映されます。
+4. Click **Save** to save the newly created ACR. The tabular listing will be updated to reflect this addition.
 
-## アクセス制御レコードの編集
+## <a name="edit-an-access-control-record"></a>Edit an access control record
 
-ACR を編集するには、Azure クラシック ポータルの **[構成]** ページを使用します。
+You use the **Configure** page in the Azure classic portal to edit ACRs. 
 
-> [AZURE.NOTE] 編集できるのは、現在使用されていない ACR のみです。現在使用されているボリュームに関連付けられている ACR を編集するには、まず、ボリュームをオフラインにします。
+> [AZURE.NOTE] You can modify only those ACRs that are currently not in use. To edit an ACR associated with a volume that is currently in use, you must first take the volume offline.
 
-次のステップを実行して、ACR を編集します。
+Perform the following steps to edit an ACR.
 
-#### アクセス制御レコードを編集するには
+#### <a name="to-edit-an-access-control-record"></a>To edit an access control record
 
-1. サービスのランディング ページで、サービスを選択し、サービス名をダブルクリックしてから **[構成]** タブをクリックします。
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. アクセス制御レコードの表形式の一覧で、変更する ACR にマウス ポインターを置きます。
+2. In the tabular listing of the access control records, hover over the ACR that you wish to modify.
 
-3. ACR の新しい名前や IQN を指定します。
+3. Supply a new name and/or IQN for the ACR.
 
-4. **[保存]** をクリックして、変更した ACR を保存します。表形式の一覧が更新され、この変更が反映されます。
+4. Click **Save** to save the modified ACR. The tabular listing will be updated to reflect this change.
 
-## アクセス制御レコードの削除
+## <a name="delete-an-access-control-record"></a>Delete an access control record
 
-ACR を削除するには、Azure クラシック ポータルの **[構成]** ページを使用します。
+You use the **Configure** page in the Azure classic portal to delete ACRs. 
 
-> [AZURE.NOTE] 削除できるのは、現在使用されていない ACR のみです。現在使用されているボリュームに関連付けられている ACR を削除するには、まず、ボリュームをオフラインにします。
+> [AZURE.NOTE] You can delete only those ACRs that are currently not in use. To delete an ACR associated with a volume that is currently in use, you must first take the volume offline.
 
-次のステップを実行して、アクセス制御レコードを削除します。
+Perform the following steps to delete an access control record.
 
-#### アクセス制御レコードを削除するには
+#### <a name="to-delete-an-access-control-record"></a>To delete an access control record
 
-1. サービスのランディング ページで、サービスを選択し、サービス名をダブルクリックしてから **[構成]** タブをクリックします。
+1. On the service landing page, select your service, double-click the service name, and then click the **Configure** tab.
 
-2. ACR (アクセス制御レコード) の表形式の一覧で、削除する ACR にマウス ポインターを置きます。
+2. In the tabular listing of the access control records (ACRs), hover over the ACR that you wish to delete.
 
-3. 対象の ACR の右端の列に削除アイコン (**[x]**) が表示されます。**[x]** アイコンをクリックして、ACR を削除します。
+3. A delete icon (**x**) will appear in the extreme right column for the ACR that you select. Click the **x** icon to delete the ACR.
 
-4. 確認を求めるメッセージが表示されたら、**[はい]** をクリックして削除を続行します。表形式の一覧が更新され、削除が反映されます。
+4. When prompted for confirmation, click **YES** to continue with the deletion. The tabular listing will be updated to reflect the deletion.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md)
+- Learn more about [managing StorSimple volumes](storsimple-manage-volumes.md).
 
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+- Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

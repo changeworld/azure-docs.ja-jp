@@ -1,133 +1,138 @@
 <properties
-	pageTitle="Azure SQL Database ベンチマークの概要"
-	description="このトピックでは、Azure SQL Database のパフォーマンス測定で使用される Azure SQL Database ベンチマークについて説明します。"
-	services="sql-database"
-	documentationCenter="na"
-	authors="CarlRabeler"
-	manager="jhubbard"
-	editor="monicar" />
+    pageTitle="Azure SQL Database benchmark overview"
+    description="This topic describes the Azure SQL Database Benchmark used in measuring the performance of Azure SQL Database."
+    services="sql-database"
+    documentationCenter="na"
+    authors="CarlRabeler"
+    manager="jhubbard"
+    editor="monicar" />
 
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-management"
-	ms.date="06/21/2016"
-	ms.author="carlrab" />
+    ms.service="sql-database"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="data-management"
+    ms.date="06/21/2016"
+    ms.author="carlrab" />
 
-# Azure SQL Database ベンチマークの概要
 
-## 概要
-Microsoft Azure SQL Database は、3 つの[サービス階層](sql-database-service-tiers.md)と複数のパフォーマンス レベルを提供します。パフォーマンス レベルごとに提供されるリソースのセット ("能力") が増加し、スループットが段階的に高くなるように設計されています。
+# <a name="azure-sql-database-benchmark-overview"></a>Azure SQL Database benchmark overview
 
-各パフォーマンス レベルの能力を上げたときにデータベース パフォーマンスがどのくらい向上するかを数値化できることが重要です。そのため、マイクロソフトは Azure SQL Database ベンチマーク (ASDB) を開発しました。このベンチマークでは、すべての OLTP ワークロードに見られるさまざまな基本操作を実行します。各パフォーマンス レベルで実行しているデータベースで達成されるスループットを測定します。
+## <a name="overview"></a>Overview
+Microsoft Azure SQL Database offers three [service tiers](sql-database-service-tiers.md) with multiple performance levels. Each performance level provides an increasing set of resources, or ‘power’, designed to deliver increasingly higher throughput.
 
-各サービス階層とパフォーマンス レベルのリソースと能力は、[データベース トランザクション単位 (DTU)](sql-database-technical-overview.md#understand-dtus) で表されます。DTU は、各パフォーマンス レベルが提供する CPU、メモリ、および読み書きレートを組み合わせた測定に基づいて、パフォーマンス レベルの相対能力を表す方法を提供します。データベースの DTU 評価の 2 倍は、データベース能力の 2 倍と同等です。このベンチマークを使って、データベースに提供されるリソースに比例してデータベース サイズ、ユーザー数、トランザクション レートを増やしながら、実際のデータベース操作を実行することによって、各パフォーマンス レベルで提供される上昇する能力のデータベース パフォーマンスに対する影響を評価できます。
+It is important to be able to quantify how the increasing power of each performance level translates into increased database performance. To do this Microsoft has developed the Azure SQL Database Benchmark (ASDB). The benchmark exercises a mix of basic operations found in all OLTP workloads. We measure the throughput achieved for databases running in each performance level.
 
-Basic サービス階層は 1 時間あたりのトランザクション数、Standard サービス階層は 1 分あたりのトランザクション数、Premium サービス階層は 1 秒間のトランザクション数をそれぞれ使用してスループットを表すことにより、各サービス階層の潜在的パフォーマンスをアプリケーションの要件にすばやく関連付けることが容易になります。
+The resources and power of each service tier and performance level are expressed in terms of [Database Transaction Units (DTUs)](sql-database-technical-overview.md#understand-dtus). DTUs provide a way to describe the relative capacity of a performance level based on a blended measure of CPU, memory, and read and write rates offered by each performance level. Doubling the DTU rating of a database equates to doubling the database power. The benchmark allows us to assess the impact on database performance of the increasing power offered by each performance level by exercising actual database operations, while scaling database size, number of users, and transaction rates in proportion to the resources provided to the database.
 
-## 実際のデータベース パフォーマンスへのベンチマーク結果の関連付け
-他のベンチマークと同様に、ASDB は単なる典型値であり、指標である点を理解しておくことが重要です。ベンチマーク アプリケーションで達成されるトランザクション率は、他のアプリケーションで達成されるトランザクション率と同じにはなりません。ベンチマークは、さまざまなテーブルやデータの種類を含むスキーマに対して実行されるさまざまなトランザクションの種類のコレクションで構成されます。ベンチマークはすべての OLTP ワークロードに共通する同じ基本操作を実行しますが、特定のクラスのデータベースまたはアプリケーションを表すものではありません。このベンチマークの目的は、パフォーマンス レベルをスケール アップまたはスケール ダウンしたときに予想されるデータベースの相対的なパフォーマンスの適切なガイドを提供することです。実際には、データベースのサイズと複雑さはさまざまであり、さまざまなワークロードが発生するため、対応方法も変わります。たとえば、IO の利用が多いアプリケーションでは IO しきい値に達するまでの時間が短くなったり、CPU の使用量が多いアプリケーションでは CPU の上限に達するまでの時間が短くなったりすることがあります。負荷が増えている状況で、特定のデータベースがベンチマークと同様に拡張する保証はありません。
+By expressing the throughput of the Basic service tier using transactions per-hour, the Standard service tier using transactions per-minute, and the Premium service tier using transactions per-second, it makes it easier to quickly relate the performance potential of each service tier to the requirements of an application.
 
-ベンチマークとその方法について、以下でさらに詳細に説明します。
+## <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Correlating benchmark results to real world database performance
+It is important to understand that ASDB, like all benchmarks, is representative and indicative only. The transaction rates achieved with the benchmark application will not be the same as those that might be achieved with other applications. The benchmark comprises a collection of different transaction types run against a schema containing a range of tables and data types. While the benchmark exercises the same basic operations that are common to all OLTP workloads, it does not represent any specific class of database or application. The goal of the benchmark is to provide a reasonable guide to the relative performance of a database that might be expected when scaling up or down between performance levels. In reality, databases are of different sizes and complexity, encounter different mixes of workloads, and will respond in different ways. For example, an IO-intensive application may hit IO thresholds sooner, or a CPU-intensive application may hit CPU limits sooner. There is no guarantee that any particular database will scale in the same way as the benchmark under increasing load.
 
-## ベンチマークの概要
-ASDB は、オンライン トランザクション処理 (OLTP) ワークロードで最も頻繁に発生するさまざまな基本的データベース操作のパフォーマンスを測定します。ベンチマークはクラウド コンピューティングを考慮して設計されていますが、データベース スキーマ、データの設定、およびトランザクションは、OLTP ワークロードでよく使用される基本的な要素を広く表すように設計されています。
+The benchmark and its methodology are described in more detail below.
 
-## スキーマ
-スキーマは、広範な操作をサポートするのに十分な多様さと複雑さを備えるように設計されています。ベンチマークは、6 個のテーブルで構成されるデータベースに対して実行されます。テーブルは、固定サイズ、スケーリング、拡大という 3 つのカテゴリに分類されます。2 個の固定サイズ テーブル、3 個のスケーリング テーブル、1 個の拡大テーブルがあります。固定サイズ テーブルには一定の数の行が含まれます。スケーリング テーブルにはデータベースのパフォーマンスに比例する基数がありますが、ベンチマークの途中で変化することはありません。拡大テーブルのサイズは初期状態の負荷ではスケーリング テーブルと同じように設定されますが、ベンチマークの実行中に行が挿入および削除されることによって基数が変化します。
+## <a name="benchmark-summary"></a>Benchmark summary
+ASDB measures the performance of a mix of basic database operations which occur most frequently in online transaction processing (OLTP) workloads. Although the benchmark is designed with cloud computing in mind, the database schema, data population, and transactions have been designed to be broadly representative of the basic elements most commonly used in OLTP workloads.
 
-スキーマには、整数、数値、文字、日時など、さまざまなデータ型が含まれています。スキーマにはプライマリ キーとセカンダリ キーが含まれますが、外部キーは含まれません。つまり、テーブルの間に参照整合性制約はありません。
+## <a name="schema"></a>Schema
+The schema is designed to have enough variety and complexity to support a broad range of operations. The benchmark runs against a database comprised of six tables. The tables fall into three categories: fixed-size, scaling, and growing. There are two fixed-size tables; three scaling tables; and one growing table. Fixed-size tables have a constant number of rows. Scaling tables have a cardinality that is proportional to database performance, but doesn’t change during the benchmark. The growing table is sized like a scaling table on initial load, but then the cardinality changes in the course of running the benchmark as rows are inserted and deleted.
 
-データ生成プログラムによって、初期データベースのデータが生成されます。さまざまな方法で整数データと数値データが生成されます。場合によっては、値はある範囲にランダムに分散されます。それ以外の場合は、値のセットの順序がランダムに変更されて、一定の分散が維持されます。テキスト フィールドは単語の重み付けされたリストから生成され、現実に近いデータが作成されます。
+The schema includes a mix of data types, including integer, numeric, character, and date/time. The schema includes primary and secondary keys, but not any foreign keys – that is, there are no referential integrity constraints between tables.
 
-データベースのサイズは "スケール係数" に基づいて設定されます。 スケール係数 (SF と略記) により、スケーリング テーブルと拡大テーブルの基数が決まります。「ユーザーとペーシング」で後述するように、データベース サイズ、ユーザー数、最大パフォーマンスはすべて、相互に比例して拡大します。
+A data generation program generates the data for the initial database. Integer and numeric data is generated with various strategies. In some cases, values are distributed randomly over a range. In other cases, a set of values is randomly permuted to ensure that a specific distribution is maintained. Text fields are generated from a weighted list of words to produce realistic looking data.
 
-## トランザクション
-ワークロードは、次の表で示すように、9 種類のトランザクションで構成されます。各トランザクションは、データベース エンジンおよびシステム ハードウェアの特定のシステム特性セットが強調され、他のトランザクションとの違いがはっきりわかるように設計されています。この方法では、異なるコンポーネントのパフォーマンス全体に対する影響を簡単に評価できます。たとえば、トランザクション "読み取り (高負荷)" では、ディスクからの読み取り操作が大量に生成されます。
+The database is sized based on a “scale factor.” The scale factor (abbreviated as SF) determines the cardinality of the scaling and growing tables. As described below in the section Users and Pacing, the database size, number of users, and maximum performance all scale in proportion to each other.
 
-| トランザクションの種類 | 説明 |
+## <a name="transactions"></a>Transactions
+The workload consists of nine transaction types, as shown in the table below. Each transaction is designed to highlight a particular set of system characteristics in the database engine and system hardware, with high contrast from the other transactions. This approach makes it easier to assess the impact of different components to overall performance. For example, the transaction “Read Heavy” produces a significant number of read operations from disk.
+
+| Transaction Type | Description |
 |---|---|
-| 読み取り (低負荷) | SELECT、メモリ内、読み取りのみ |
-| 読み取り (中負荷) | SELECT、ほぼメモリ内、読み取りのみ |
-| 読み取り (高負荷) | SELECT、ほぼメモリ外、読み取りのみ |
-| 更新 (低負荷) | UPDATE、メモリ内、読み書き |
-| 更新 (高負荷) | UPDATE、ほぼメモリ外、読み書き |
-| 挿入 (低負荷) | INSERT、メモリ内、読み書き |
-| 挿入 (高負荷) | INSERT、ほぼメモリ外、読み書き |
-| 削除 | DELETE、メモリ内とメモリ外の混合、読み書き |
-| CPU (高負荷) | SELECT、メモリ内、比較的大きい CPU 負荷、読み取りのみ |
+| Read Lite | SELECT; in-memory; read-only |
+| Read Medium | SELECT; mostly in-memory; read-only |
+| Read Heavy | SELECT; mostly not in-memory; read-only |
+| Update Lite | UPDATE; in-memory; read-write |
+| Update Heavy | UPDATE; mostly not in-memory; read-write |
+| Insert Lite | INSERT; in-memory; read-write |
+| Insert Heavy | INSERT; mostly not in-memory; read-write |
+| Delete | DELETE; mix of in-memory and not in-memory; read-write |
+| CPU Heavy | SELECT; in-memory; relatively heavy CPU load; read-only |
 
-## ワークロード ミックス
-トランザクションは、次の表のような全体的混合比率で重み付けされた分布からランダムに選択されます。全体として読み取り/書き込みの比率は約 2:1 になります。
+## <a name="workload-mix"></a>Workload mix
+Transactions are selected at random from a weighted distribution with the following overall mix. The overall mix has a read/write ratio of approximately 2:1.
 
-| トランザクションの種類 | 混合の割合 |
+| Transaction Type | % of Mix |
 |---|---|
-| 読み取り (低負荷) | 35 |
-| 読み取り (中負荷) | 20 |
-| 読み取り (高負荷) | 5 |
-| 更新 (低負荷) | 20 |
-| 更新 (高負荷) | 3 |
-| 挿入 (低負荷) | 3 |
-| 挿入 (高負荷) | 2 |
-| 削除 | 2 |
-| CPU (高負荷) | 10 |
+| Read Lite | 35 |
+| Read Medium | 20 |
+| Read Heavy | 5 |
+| Update Lite | 20 |
+| Update Heavy | 3 |
+| Insert Lite | 3 |
+| Insert Heavy | 2 |
+| Delete | 2 |
+| CPU Heavy | 10 |
 
-## ユーザーとペーシング
-ベンチマークのワークロードは、一連の接続に対してトランザクションを発行して一定数の同時ユーザーの動作をシミュレートするツールによってもたらされます。すべての接続とトランザクションはコンピューターによって生成されますが、わかりやすくするため、ここではこれらの接続のことを "ユーザー" と呼びます。 各ユーザーは他のすべてのユーザーとは独立して動作しますが、すべてのユーザーは以下に示すような同じ手順のサイクルを実行します。
+## <a name="users-and-pacing"></a>Users and pacing
+The benchmark workload is driven from a tool that submits transactions across a set of connections to simulate the behavior of a number of concurrent users. Although all of the connections and transactions are machine generated, for simplicity we refer to these connections as “users.” Although each user operates independently of all other users, all users perform the same cycle of steps shown below:
 
-1. データベース接続を確立します。
-2. 終了を通知されるまで繰り返します。
-	- ランダムにトランザクションを選択します (重み付けされた分布から)。
-	- 選択されたトランザクションを実行して応答時間を測定します。
-	- ペーシング遅延だけ待機します。
-3. データベース接続を閉じます。
-4. 終了します。
+1. Establish a database connection.
+2. Repeat until signaled to exit:
+    - Select a transaction at random (from a weighted distribution).
+    - Perform the selected transaction and measure the response time.
+    - Wait for a pacing delay.
+3. Close the database connection.
+4. Exit.
 
-ペーシング遅延 (手順 2c) はランダムに選択されますが、分布の平均は 1.0 秒になります。したがって、平均すると、各ユーザーが 1 秒間に生成するトランザクションは多くても 1 つです。
+The pacing delay (in step 2c) is selected at random, but with a distribution that has an average of 1.0 second. Thus each user can, on average, generate at most one transaction per second.
 
-## スケーリング ルール
-ユーザーの数は、データベースのサイズ (スケール係数単位での) によって決まります。5 スケール係数単位ごとに 1 人のユーザーがいます。ペーシング遅延のため、平均すると、1 人のユーザーが 1 秒間に生成するトランザクションは多くても 1 つです。
+## <a name="scaling-rules"></a>Scaling rules
+The number of users is determined by the database size (in scale-factor units). There is one user for every five scale-factor units. Because of the pacing delay, one user can generate at most one transaction per second, on average.
 
-たとえば、スケール係数が 500 (SF=500) のデータベースの場合、ユーザー数は 100 で、最高 100 TPS を実現できます。TPS 率を高くするには、ユーザー数を増やし、データベースを大きくする必要があります。
+For example, a scale-factor of 500 (SF=500) database will have 100 users and can achieve a maximum rate of 100 TPS. To drive a higher TPS rate requires more users and a larger database.
 
-次の表では、各サービス階層およびパフォーマンス レベルで実際に保持されるユーザーの数を示します。
+The table below shows the number of users actually sustained for each service tier and performance level.
 
-| サービス階層 (パフォーマンス レベル) | ユーザー | データベース サイズ |
+| Service Tier (Performance Level) | Users | Database Size |
 |---|---|---|
-| 基本 | 5 | 720 MB |
+| Basic | 5 | 720 MB |
 | Standard (S0) | 10 | 1 GB |
-| Standard (S1) | 20 | 2\.1 GB |
-| Standard (S2) | 50 | 7\.1 GB |
+| Standard (S1) | 20 | 2.1 GB |
+| Standard (S2) | 50 | 7.1 GB |
 | Premium (P1) | 100 | 14 GB |
 | Premium (P2) | 200 | 28 GB |
 | Premium (P6/P3) | 800 | 114 GB |
 
-## 測定期間
-有効なベンチマーク実行のためには、少なくとも 1 時間は安定状態で測定を行う必要があります。
+## <a name="measurement-duration"></a>Measurement duration
+A valid benchmark run requires a steady-state measurement duration of at least one hour.
 
-## メトリック
-ベンチマークでの重要なメトリックは、スループットと応答時間です。
+## <a name="metrics"></a>Metrics
+The key metrics in the benchmark are throughput and response time.
 
-- スループットはベンチマークにおける基本的なパフォーマンス尺度です。スループットは、単位時間あたりのすべてのトランザクション タイプのトランザクション数で表されます。
-- 応答時間は、パフォーマンスの予測可能性の尺度です。応答時間の制約はサービスのクラスによって異なり、次に示すように、サービス クラスが高いほど応答時間の要件は厳しくなります。
+- Throughput is the essential performance measure in the benchmark. Throughput is reported in transactions per unit-of-time, counting all transaction types.
+- Response time is a measure of performance predictability. The response time constraint varies with class of service, with higher classes of service having a more stringent response time requirement, as shown below.
 
-| サービスのクラス | スループットの測定 | 応答時間の要件 |
+| Class of Service  | Throughput Measure | Response Time Requirement |
 |---|---|---|
-| プレミアム | 1 秒あたりのトランザクション数 | 0\.5 秒で第 95 百分位数 |
-| 標準 | 1 分あたりのトランザクション数 | 1\.0 秒で第 90 百分位数 |
-| 基本 | 1 時間あたりのトランザクション数 | 2\.0 秒で第 80 百分位数 |
+| Premium | Transactions per second | 95th percentile at 0.5 seconds |
+| Standard | Transactions per minute | 90th percentile at 1.0 seconds |
+| Basic | Transactions per hour | 80th percentile at 2.0 seconds |
 
-## まとめ
-Azure SQL Database ベンチマークは、利用可能なサービス階層とパフォーマンス レベルの範囲で実行する Azure SQL Database の相対的なパフォーマンスを測定します。ベンチマークでは、オンライン トランザクション処理 (OLTP) のワークロードで最も頻繁に発生する基本的なデータベース操作を混合したものが実行されます。ベンチマークでの、実際のパフォーマンスを測定することによる、パフォーマンス レベルを変更したときのスループットに対する影響の評価は、各レベルによって提供される CPU 速度、メモリ サイズ、IOPS などのリソースを単に一覧表記する場合より意味のあるものです。今後も引き続き、ベンチマークの範囲を広げ、提供されるデータを拡張していく予定です。
+## <a name="conclusion"></a>Conclusion
+The Azure SQL Database Benchmark measures the relative performance of Azure SQL Database running across the range of available service tiers and performance levels. The benchmark exercises a mix of basic database operations which occur most frequently in online transaction processing (OLTP) workloads. By measuring actual performance, the benchmark provides a more meaningful assessment of the impact on throughput of changing the performance level than is possible by just listing the resources provided by each level such as CPU speed, memory size, and IOPS. In the future, we will continue to evolve the benchmark to broaden its scope and expand the data provided.
 
-## リソース
-[SQL Database の概要](sql-database-technical-overview.md)
+## <a name="resources"></a>Resources
+[Introduction to SQL Database](sql-database-technical-overview.md)
 
-[サービス プランとパフォーマンス レベル](sql-database-service-tiers.md)
+[Service tiers and performance levels](sql-database-service-tiers.md)
 
-[Azure SQL Database performance guidance for single databases (データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス)](sql-database-performance-guidance.md)
+[Performance guidance for single databases](sql-database-performance-guidance.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

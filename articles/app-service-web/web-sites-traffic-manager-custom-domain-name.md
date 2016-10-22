@@ -1,72 +1,73 @@
 <properties
-	pageTitle="負荷分散に Traffic Manager を使用する Azure App Service Web アプリのカスタム ドメイン名を構成します。"
-	description="負荷分散のための Traffic Manager を含む Azure App Service Web アプリのカスタム ドメイン名の使用"
-	services="app-service\web"
-	documentationCenter=""
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Configure a custom domain name for a web app in Azure App Service that uses Traffic Manager for load balancing."
+    description="Use a custom domain name for an a web app in Azure App Service that includes Traffic Manager for load balancing."
+    services="app-service\web"
+    documentationCenter=""
+    authors="rmcmurray"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="robmcm"/>
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/20/2016"
+    ms.author="robmcm"/>
 
-# Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
+
+# <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Configuring a custom domain name for a web app in Azure App Service using Traffic Manager
 
 [AZURE.INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [AZURE.INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-この記事では、負荷分散に Traffic Manager を利用する Azure App Service でカスタム ドメイン名を使用する一般的な手順を示します。
+This article provides generic instructions for using a custom domain name with Azure App Service that use Traffic Manager for load balancing.
 
 [AZURE.INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
 [AZURE.INCLUDE [introfooter](../../includes/custom-dns-web-site-intro-notes.md)]
 
 <a name="understanding-records"></a>
-## DNS レコードについて
+## <a name="understanding-dns-records"></a>Understanding DNS records
 
 [AZURE.INCLUDE [understandingdns](../../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 <a name="bkmk_configsharedmode"></a>
-## Web アプリの標準モード用の構成
+## <a name="configure-your-web-apps-for-standard-mode"></a>Configure your web apps for standard mode
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
-## カスタム ドメインの DNS レコードの追加
+## <a name="add-a-dns-record-for-your-custom-domain"></a>Add a DNS record for your custom domain
 
-> [AZURE.NOTE] Azure App Service Web Apps からドメインを購入した場合は、次の手順をスキップして、「[Web Apps 用のドメインの購入](custom-dns-web-site-buydomains-web-app.md)」の記事の最後の手順をご覧ください。
+> [AZURE.NOTE] If you have purchased domain through Azure App Service Web Apps then skip following steps and refer to the final step of [Buy Domain for Web Apps](custom-dns-web-site-buydomains-web-app.md) article.
 
-カスタム ドメインを Azure App Service の Web アプリに関連付けるには、ドメイン名を購入したドメイン レジストラーのツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して DNS ツールを見つけて利用します。
+To associate your custom domain with a web app in Azure App Service, you must add a new entry in the DNS table for your custom domain by using tools provided by the domain registrar that you purchased your domain name from. Use the following steps to locate and use the DNS tools.
 
-1. ドメイン レジストラーのアカウントにサインインし、DNS レコードの管理ページを探します。**[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。多く場合、このページへのリンクが見つかったら、アカウント情報を表示し、**[My domains]** などのリンクを探します。
+1. Sign in to your account at your domain registrar, and look for a page for managing DNS records. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**. Often a link to this page can be found be viewing your account information, and then looking for a link such as **My domains**.
 
-1. ドメイン名の管理ページが見つかったら、DNS レコードを編集できるリンクを探します。これは、**[Zone file]**、**[DNS Records]**、**[Advanced]** などの構成リンクとして表示されている場合があります。
+1. Once you have found the management page for your domain name, look for a link that allows you to edit the DNS records. This might be listed as a **Zone file**, **DNS Records**, or as an **Advanced** configuration link.
 
-	* このページには多くの場合、いくつかのレコードが既に作成されています。たとえば、'**@**' または '*' を "ドメイン パーキング" ページに関連付けるエントリが既にあります。**www** のような一般的なサブドメインのレコードが含まれることもあります。
-	* このページには **CNAME レコード**が表示されるか、レコード タイプを選択するためのドロップダウンが表示されます。さらに、**A レコード**や **MX レコード**などの他のレコードが表示されることもあります。場合によっては、CNAME レコードは **Alias Record** などの別の名前で呼ばれています。
-	* このページには、**ホスト名**または**ドメイン名**から別のドメイン名に**マッピング**できるフィールドも表示されます。
+    * The page will most likely have a few records already created, such as an entry associating '**@**' or '\*' with a 'domain parking' page. It may also contain records for common sub-domains such as **www**.
+    * The page will mention **CNAME records**, or provide a drop-down to select a record type. It may also mention other records such as **A records** and **MX records**. In some cases, CNAME records will be called by other names such as an **Alias Record**.
+    * The page will also have fields that allow you to **map** from a **Host name** or **Domain name** to another domain name.
 
-1. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) *から*、Azure の Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net** など) *に*マッピングします。
+1. While the specifics of each registrar vary, in general you map *from* your custom domain name (such as **contoso.com**,) *to* the Traffic Manager domain name (**contoso.trafficmanager.net**) that is used for your web app.
 
-    > [AZURE.NOTE] レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」を参照してください。
+    > [AZURE.NOTE] Alternatively, if a record is already in use and you need to preemptively bind your apps to it, you can create an additional CNAME record. For example, to preemptively bind **www.contoso.com** to your web app, create a CNAME record from **awverify.www** to **contoso.trafficmanager.net**. You can then add "www.contoso.com" to your Web App without changing the "www" CNAME record. For more information, see [Create DNS records for a web app in a custom domain][CREATEDNS].
 
-1. レジストラーで DNS レコードの追加または変更が完了したら、変更を保存します。
+1. Once you have finished adding or modifying DNS records at your registrar, save the changes.
 
 <a name="enabledomain"></a>
-## Traffic Manager を有効にする
+## <a name="enable-traffic-manager"></a>Enable Traffic Manager
 
 [AZURE.INCLUDE [modes](../../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+For more information, see the [Node.js Developer Center](/develop/nodejs/).
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -76,4 +77,8 @@
 
 [CREATEDNS]: ../dns/dns-web-sites-custom-domain.md
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

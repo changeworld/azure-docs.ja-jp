@@ -1,339 +1,351 @@
 <properties 
-	pageTitle="Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Azure | 検索ナビゲーションのカテゴリ" 
-	description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。" 
-	services="search" 
-	documentationCenter="" 
-	authors="HeidiSteen" 
-	manager="mblythe" 
-	editor=""/>
+    pageTitle="How to implement faceted navigation in Azure Search | Microsoft Azure | search navigation categories" 
+    description="Add Faceted navigation to applications that integrate with Azure Search, a cloud hosted search service on Microsoft Azure." 
+    services="search" 
+    documentationCenter="" 
+    authors="HeidiSteen" 
+    manager="mblythe" 
+    editor=""/>
 
 <tags 
-	ms.service="search" 
-	ms.devlang="rest-api" 
-	ms.workload="search" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.date="08/08/2016" 
-	ms.author="heidist"/>
+    ms.service="search" 
+    ms.devlang="rest-api" 
+    ms.workload="search" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.date="08/08/2016" 
+    ms.author="heidist"/>
 
-#Azure Search でファセット ナビゲーションを実装する方法
 
-ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。"ファセット ナビゲーション" という用語は聞き慣れないかもしれませんが、おそらくこれまでに使用したことがある機能です。次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
+#<a name="how-to-implement-faceted-navigation-in-azure-search"></a>How to implement faceted navigation in Azure Search
 
-## 外観
+Faceted navigation is a filtering mechanism that provides self-directed drilldown navigation in search applications. While the term ‘faceted navigation’ might be unfamiliar, it’s almost a given that you have used one before. As the following example shows, faceted navigation is nothing more than the categories used to filter results.
+
+## <a name="what-it-looks-like"></a>What it looks like
 
  ![][1]
   
-ファセットを使用すると探しているものを見つけることができ、結果がゼロにならないことが保証されます。開発者は、ファセットを使用することで検索コーパスのナビゲーションに最も有用な検索条件を公開できます。オンライン小売アプリケーションでは、ブランド、カテゴリ (子ども用の靴など)、サイズ、価格、人気、評価などに対してファセット ナビゲーションが作成されることがよくあります。
+Facets can help you find what you are looking for, while ensuring that you won’t get zero results. As a developer, facets let you expose the most useful search criteria for navigating your search corpus. In online retail applications, faceted navigation is often built over brands, departments (kid’s shoes), size, price, popularity, and ratings. 
 
-ファセット ナビゲーションの実装は検索テクノロジによって異なり、非常に複雑な場合があります。Azure Search のファセット ナビゲーションは、スキーマで事前に指定されている属性フィールドを使用して、クエリ時に作成されます。アプリケーションで作成するクエリでは、*ファセット クエリ パラメーター*を送信して、そのドキュメント結果セットに対して使用できるファセット フィルターの値を受け取る必要があります。ドキュメント結果セットを実際にトリミングするには、アプリケーションで `$filter` 式を適用する必要があります。
+Implementing faceted navigation differs across search technologies and can be very complex. In Azure Search, faceted navigation is built at query time, using attributed fields previously specified in your schema. In the queries that your application builds, a query must send *facet query parameters* in order to receive the available facet filter values for that document result set. To actually trim the document result set, the application must apply a `$filter` expression.
 
-アプリケーション開発の観点からは、クエリを構成するコードの記述が作業のかなりの部分を占めます。範囲の設定やファセットの結果の数の取得の組み込みサポートなど、ファセット ナビゲーションによるアプリケーション動作の多くは、サービスによって提供されます。また、サービスには、ナビゲーション構造が扱いにくくなるのを防ぐ実用的な既定値も含まれています。
+In terms of application development, writing code that constructs queries constitutes the bulk of the work. Many of the application behaviors that you would want from faceted navigation is provided by the service, including built-in support for setting up ranges and getting counts for facet results. The service also includes sensible defaults that help you avoid unwieldy navigation structures. 
 
-この記事の内容は次のとおりです。
+This article contains the following sections:
 
-- [構築方法](#howtobuildit)
-- [プレゼンテーション層の構築](#presentationlayer)
-- [インデックスの作成](#buildindex)
-- [データ品質のチェック](#checkdata)
-- [クエリの作成](#buildquery)
-- [ファセット ナビゲーションの制御方法に関するヒント](#tips)
-- [範囲の値に基づくファセット ナビゲーション](#rangefacets)
-- [GeoPoints に基づくファセット ナビゲーション](#geofacets)
-- [試してみる](#tryitout)
+- [How to build it](#howtobuildit)
+- [Build the presentation layer](#presentationlayer)
+- [Build the index](#buildindex)
+- [Check for data quality](#checkdata)
+- [Build the query](#buildquery)
+- [Tips on how to control faceted navigation](#tips)
+- [Faceted navigation based on range values](#rangefacets)
+- [Faceted navigation based on GeoPoints](#geofacets)
+- [Try it out](#tryitout)
 
-##使用する理由
-最も効果的な検索アプリケーションは、検索ボックス以外に複数の操作モデルを備えています。ファセット ナビゲーションは検索機能へのもう 1 つのエントリ ポイントであり、複雑な検索式を手入力しなくてもよい便利な機能を提供します。
+##<a name="why-use-it"></a>Why use it
+The most effective search applications have multiple interaction models besides a Search box. Faceted navigation is an alternative entry point to search, offering a convenient alternative to typing complex search expressions by hand.
 
-##基本の理解
+##<a name="know-the-fundamentals"></a>Know the fundamentals
 
-初めて検索機能を開発する場合、ファセット ナビゲーションは自律的な検索機能の可能性を示していると考えるのが最も適切です。ファセット ナビゲーションは、定義済みのフィルターに基づくドリルダウン検索エクスペリエンスの一種であり、ポイント アンド クリック操作によって検索結果をすばやく絞り込むために使用されます。
+If you are new to search development, the best way to think of faceted navigation is that it shows the possibilities for self-directed search. It’s a type of drill-down search experience, based on predefined filters, used for quickly narrowing down search results through point-and-click actions. 
 
-**操作モデル**
+**Interaction Model**
 
-ファセット ナビゲーションの検索エクスペリエンスは反復的であるため、最初はユーザーの操作に対応して展開する一連のクエリとして理解しておくとよいでしょう。
+The search experience for faceted navigation is iterative, so let’s start by understanding it as a sequence of queries that unfold in response to user actions.
 
-起点となるのはファセット ナビゲーションを提供するアプリケーション ページであり、通常はページの周囲に配置されます。ファセット ナビゲーションは、多くの場合、値ごとにチェック ボックスを備えた、またはクリック可能なテキストによる、ツリー構造をしています。
+The starting point is an application page that provides faceted navigation, typically placed on the periphery. Faceted navigation is often a tree structure, with checkboxes for each value, or clickable text. 
 
-1.	Azure Search に送信されるクエリでは、1 つまたは複数のファセット クエリ パラメーターによってファセット ナビゲーションの構造を指定します。たとえば、クエリには `facet=Rating` が含まれ、おそらくは `:values` または `:sort` オプションによってプレゼンテーションがさらに指定されています。
-2.	プレゼンテーション層は、要求で指定されているファセットを使用して、ファセット ナビゲーションを提供する検索ページを表示します。
-3.	Rating を含むファセット ナビゲーション構造の場合、ユーザーが「4」をクリックすると、評価が 4 以上の商品のみを表示することを示します。
-4.	これに対して、アプリケーションは `$filter=Rating ge 4` を含むクエリを送信します。
-5.	プレゼンテーション層はページを更新し、新しい条件を満たす項目だけを含む絞り込まれた結果セットを表示します (この場合は、評価が 4 以上の商品)。
+1.  A query sent to Azure Search specifies the faceted navigation structure via one or more facet query parameters. For instance, the query might include `facet=Rating`, perhaps with a `:values` or `:sort` option to further refine the presentation.
+2.  The presentation layer renders a search page that provides faceted navigation, using the facets specified on the request.
+3.  Given a faceted navigation structure that includes Rating, the user clicks "4" to indicate that only products with a rating of 4 or higher should be shown. 
+4.  In response, the application sends a query that includes `$filter=Rating ge 4` 
+5.  The presentation layer updates the page, showing a reduced result set, containing just those items that satisfy the new criteria (in this case, products rated 4 and up).
 
-ファセットはクエリ パラメーターですが、クエリ入力と間違えないでください。クエリでの選択条件としては使用されません。ファセット クエリ パラメーターは、応答で返されるナビゲーション構造への入力と考えてください。提供されるファセット クエリ パラメーターごとに、Azure Search は各ファセット値に対する部分的な結果に含まれるドキュメントの数を評価します。
+A facet is a query parameter, but do not confuse it with query input. It is never used as selection criteria in a query. Instead, think of facet query parameters as inputs to the navigation structure that comes back in the response. For each facet query parameter you provide, Azure Search will evaluate how many documents are in the partial results for each facet value.
 
-手順 4 の `$filter` に注意してください。これは、ファセット ナビゲーションの重要な側面です。ファセットとフィルターは API では独立していますが、意図したエクスペリエンスを提供するには両方とも必要です。
+Notice the `$filter` in step 4. This is an important aspect of faceted navigation. Although facets and filters are independent in the API, you will need both to deliver the experience you intend. 
 
-**設計パターン**
+**Design Patterns**
 
-アプリケーション コードでのパターンは、ファセット クエリ パラメーターを使用してファセット結果と共にファセット ナビゲーション構造を返し、さらに $filter 式を使用してクリック イベントを処理するというものです。`$filter` 式は、プレゼンテーション層に返される検索結果の実際のトリミングの背後にあるコードと考えることができます。色ファセットを例にすると、赤という色のクリックは、色が赤の項目のみを選択する `$filter` 式によって実装されます。
+In application code, the pattern is to use facet query parameters to return the faceted navigation structure along with facet results, plus a $filter expression that handles the click event. Think of the `$filter` expression as the code behind the actual trimming of search results returned to the presentation layer. Given a Colors facet, clicking the color Red is implemented through a `$filter` expression that selects only those items that have a color of red. 
 
-**Azure Search でのクエリの基本**
+**Query Basics in Azure Search**
 
-Azure Search では、要求は 1 つまたは複数のクエリ パラメーターによって指定されます (個々の説明については「[Search Documents (ドキュメントの検索)](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください)。どのクエリ パラメーターも必須ではありませんが、クエリが有効であるためには少なくとも 1 つのクエリ パラメーターが必要です。
+In Azure Search, a request is specified through one or more query parameters (see [Search Documents](http://msdn.microsoft.com/library/azure/dn798927.aspx) for a description of each one). None of the query parameters are required, but you must have at least one in order for a query to be valid.
 
-一般に関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
+Precision, generally understood as the ability to filter out irrelevant hits, is achieved through one or both of these expressions:
 
-- **search=**<br/> このパラメーターの値は、検索式を構成します。単一のテキスト、または複数の語句と演算子を含む複雑な検索式を指定できます。サーバーでは、検索式を使用してフルテキスト検索が実行され、インデックスの検索可能なフィールドで一致する語句がクエリされて、ランクの順序で結果が返されます。`search` を null に設定した場合は、インデックス全体に対してクエリが実行されます (つまり `search=*`)。この場合、`$filter` やスコアリング プロファイルなどのクエリの他の要素は、返されるドキュメント (`($filter`) およびその順序 (`scoringProfile` または `$orderb`y) に影響を与える基本要素になります。
+- **search=**<br/>
+The value of this parameter constitutes the search expression. It might be a single piece of text, or a complex search expression that includes multiple terms and operators. On the server, a search expression is used for full-text search, querying searchable fields in the index for matching terms, returning results in rank order. If you set `search` to null, query execution is over the entire index (that is, `search=*`). In this case, other elements of the query, such as a `$filter` or scoring profile, will be the primary factors affecting which documents are returned `($filter`) and in what order (`scoringProfile` or `$orderb`y).
 
-- **$filter =**<br/> フィルターは、特定のドキュメント属性の値に基づいて検索結果のサイズを制限するための強力なメカニズムです。`$filter` が最初に評価され、その後で使用可能な値および各値に対応する数を生成するファセット ロジックが評価されます。
+- **$filter=**<br/>
+A filter is a powerful mechanism for limiting the size of search results based on the values of specific document attributes. A `$filter` is evaluated first, followed by faceting logic that generates the available values and corresponding counts for each value
 
-複雑な検索式は、クエリのパフォーマンスを低下させます。可能な限り、正確さとクエリのパフォーマンスが向上するように、適切に構成されたフィルター式を使用してください。
+Complex search expressions will decrease the performance of the query. Where possible, utilize well-constructed filter expressions to increase precision and improve query performance.
 
-フィルターによってどのように正確さが向上するのかをよく理解するため、次のような複雑な検索式とフィルター式を含む式を比較してみてください。
+To better understand how a filter adds more precision, compare a complex search expression to one that includes a filter expression:
 
 - `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
 
 - `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
 
-どちらのクエリも有効ですが、シアトルで駐車場のあるモーテル以外を探している場合は 2 番目の方が優れています。1 番目のクエリは、Name や Description などの文字列フィールドおよび検索可能なデータを含む他のフィールドにおいて、特定の単語が言及されている、または言及されていないことに依存します。2 番目のクエリは、構造化されたデータで正確な一致を検索し、より正確であると考えられます。
+Although both queries are valid, the second is superior if you’re looking for non-motels with parking in Seattle. The first query relies on those specific words being mentioned or not mentioned in string fields like Name, Description, and any other field containing searchable data. The second query looks for precise matches on structured data and is likely to be much more accurate.
 
-ファセット ナビゲーションを含むアプリケーションでは、ファセット ナビゲーション構造に対する各ユーザー操作の結果として、フィルター式により検索結果が絞り込まれることが期待されます。
+In applications that include faceted navigation, you will want to be sure that each user action over a faceted navigation structure is accompanied by a narrowing of search results, achieved through a filter expression.
 
 <a name="howtobuildit"></a>
-##構築方法
+##<a name="how-to-build-it"></a>How to build it
 
-Azure Search でのファセット ナビゲーションは、要求を作成するアプリケーション コードで実装されますが、スキーマ内の定義済みの要素に依存します。
+Faceted navigation in Azure Search is implemented in your application code that builds the request, but relies on predefined elements in your schema.
 
-検索インデックスで定義されている `Facetable [true|false]` インデックス属性が選択されたフィールドで設定されて、ファセット ナビゲーション構造でのそのフィールドの使用を有効または無効にします。`"Facetable" = true` が指定されていないフィールドは、ファセット ナビゲーションでは使用できません。
+Predefined in your search index is the `Facetable [true|false]` index attribute, set on selected fields to enable or disable their use in a faceted navigation structure. Without `"Facetable" = true`, a field cannot be used in facet navigation.
 
-クエリ時には、アプリケーションのコードで、ファセット処理を行うフィールドを提供する要求パラメーターである `facet=[string]` を含む要求を作成します。1 つのクエリで複数のファセットを指定でき (`&facet=color&facet=category&facet=rating`)、各ファセットはアンパサンド (&) 文字で区切ります。
+At query time, your application code creates a request that includes `facet=[string]`, a request parameter that provides the field to facet by. A query can have multiple facets, such as `&facet=color&facet=category&facet=rating`, each one separated by an ampersand (&) character.
 
-アプリケーションのコードでは、`$filter` 式を作成してファセット ナビゲーションでのクリック イベントを処理する必要もあります。`$filter` は、ファセット値をフィルター条件として使用して、検索結果を減らします。
+Application code must also construct a `$filter` expression to handle the click events in faceted navigation. A `$filter` reduces the search results, using the facet value as filter criteria.
 
-Azure Search は、ユーザーが入力した語句ごとの検索結果と共に、ファセット ナビゲーション構造への更新を返します。Azure Search でのファセット ナビゲーションは、単一レベルの構造、ファセット値、そして各ファセット値に対して見つかった結果の数です。
+Azure Search returns the search results, per the term(s) entered by the user, along with updates to the faceted navigation structure. In Azure Search, faceted navigation is a single-level construction, with facet values, and counts of how many results are found for each one.
 
-コードのプレゼンテーション層は、ユーザー エクスペリエンスを提供します。プレゼンテーション層では、ラベル、値、チェック ボックス、数など、ファセット ナビゲーションを構成する各部分を表示する必要があります。Azure Search REST API はプラットフォームに依存しないので、好みの言語とプラットフォームを何でも使用できます。重要なことは、新しいファセットが選択されて UI 状態が更新されたときの増分更新をサポートする UI 要素を含めるです。
+The presentation layer in your code provides the user experience. It should list the constituent parts of the faceted navigation, such as the label, values, check boxes, and the count. The Azure Search REST API is platform agnostic, so use whatever language and platform you want. The important thing is to include UI elements that support incremental refresh, with updated UI state as each additional facet is selected. 
 
-以下のセクションでは、プレゼンテーション層から始めて、各部分の作成方法を詳しく見ていきます。
+In the following sections, we’ll take a closer look at how to build each part, starting with the presentation layer.
 
 <a name="presentationlayer"></a>
-##プレゼンテーション層の構築
+##<a name="build-the-presentation-layer"></a>Build the presentation layer
 
-プレゼンテーション層から再度作業することで、見落としているかもしれない要件を明らかにし、検索エクスペリエンスに不可欠な機能を理解するのに役立ちます。
+Working back from the presentation layer can help you uncover requirements that might be missed otherwise, and understand which capabilities are essential to the search experience.
 
-ファセット ナビゲーションでは、Web ページまたはアプリケーション ページがファセット ナビゲーション構造を表示し、ページでのユーザー入力を検出し、変更された要素を挿入します。
+In terms of faceted navigation, your web or application page displays the faceted navigation structure, detects user input on the page, and inserts the changed elements. 
 
-Web アプリケーションの場合は、増分変更を更新できるので、一般に AJAX がプレゼンテーション層に使用されます。また、ASP.NET MVC または HTTP 経由で Azure Search サービスに接続できる他の視覚化プラットフォームを使用することもできます。この記事全体で参照されているサンプル アプリケーション **AdventureWorks Catalog** は、ASP.NET MVC アプリケーションです。
+For web applications, AJAX is commonly used in the presentation layer because it allows you to refresh incremental changes. You could also use ASP.NET MVC or any other visualization platform that can connect to an Azure Search service over HTTP. The sample application referenced throughout this article -- **AdventureWorks Catalog** – happens to be an ASP.NET MVC application.
 
-サンプル アプリケーションの **index.cshtml** ファイルから抜粋した次の例では、検索結果ページにファセット ナビゲーションを表示するための動的な HTML 構造を作成しています。サンプルでは、ファセット ナビゲーションは検索結果ページに組み込まれており、ユーザーが検索語句を送信した後で表示されます。
+The following example, taken from the **index.cshtml** file of the sample application, builds a dynamic HTML structure for displaying faceted navigation in your search results page. In the sample, faceted navigation is built into the search results page, and appears after the user has submitted a search term.
 
-各ファセットには、ラベル (Colors、Categories、Prices)、ファセット フィールド (color、categoryName、listPrice) へのバインド、およびそのファセット結果に対して見つかった項目の数を返すために使用される `.count` パラメーターがあることに注意してください。
+Notice that each facet has a label (Colors, Categories, Prices), a binding to a faceted field (color, categoryName, listPrice), and a `.count` parameter, used to return the number of items found for that facet result.
 
   ![][2]
  
 
-> [AZURE.TIP] 検索結果ページを設計するときは、ファセットをクリアするためのメカニズムを追加することを忘れないでください。チェック ボックスを使用すれば、ユーザーはフィルターをクリアする方法が簡単にわかります。その他のレイアウトでは、階層リンク パターンや別の創造的な方法が必要になる場合があります。たとえば、AdventureWorks Catalog サンプル アプリケーションでは、[AdventureWorks Catalog] というタイトルをクリックして検索ページをリセットできます。
+> [AZURE.TIP] When designing the search results page, remember to add a mechanism for clearing facets. If you use check boxes, users can easily intuit how to clear the filters. For other layouts, you might need a breadcrumb pattern or another creative approach. For example, in the AdventureWorks Catalog sample application, you can click the title, AdventureWorks Catalog, to reset the search page.
 
 <a name="buildindex"></a>
-##インデックスの作成
+##<a name="build-the-index"></a>Build the index
 
-ファセット機能は、インデックス属性 `"Facetable": true` を使用してインデックスのフィールド単位で有効になります。  
-ファセット ナビゲーションで使用できる可能性のあるすべてのフィールド タイプは、既定で `Facetable` になります。このようなフィールド タイプには、`Edm.String`、`Edm.DateTimeOffset`、およびすべての数値フィールド タイプが含まれます (基本的に、ファセット ナビゲーションで使用できない `Edm.GeographyPoint` を除くすべてのフィールド タイプがファセット可能です)。
+Faceting is enabled on a field-by-field basis in the index, via this index attribute: `"Facetable": true`.  
+All field types that could possibly be used in faceted navigation are `Facetable` by default. Such field types include `Edm.String`, `Edm.DateTimeOffset`, and all the numeric field types (essentially, all field types are facetable except `Edm.GeographyPoint`, which can’t be used in faceted navigation). 
 
-インデックスを作成するときのファセット ナビゲーションに関するベスト プラクティスは、ファセットとして使用できないようにするフィールドのファセットを明示的にオフにすることです。具体的には、ID や製品名などのシングルトン値の文字列フィールドは、ファセット ナビゲーションで誤って (無駄に) 使用されないように、`"Facetable": false` に設定する必要があります。
+When building an index, a best practice for faceted navigation is to explicitly turn faceting off for fields that should never be used as a facet.  In particular, string fields for singleton values, such as an ID or product name, should be set to `"Facetable": false` to prevent their accidental (and ineffective) use in a faceted navigation.
 
-AdventureWorks Catalog サンプル アプリケーションのスキーマを次に示します (全体のサイズを小さくするため、一部の属性は除いてあります)。
+Following is the schema for the AdventureWorks Catalog sample app (trimmed of some attributes to reduce overall size):
 
  ![][3]
  
-ID や名前など、ファセットに使用されてはならない文字列フィールドの `Facetable` がオフになっていることに注意してください。必要のないフィールドのファセットをオフにすることで、インデックスのサイズが小さくなり、一般にパフォーマンスが向上します。
+Note that `Facetable` is turned off for string fields that shouldn’t be used as facets, such as an ID or name. Turning faceting off where you don’t need it helps keep the size of the index small, and generally improves performance.
 
-> [AZURE.TIP] ベスト プラクティスとしては、各フィールドのインデックス属性の完全なセットを含めます。ほとんどすべてのフィールドは `Facetable` が既定でオンになりますが、各属性を意識的に設定すると、スキーマの各決定の意味を熟慮するのに役立ちます。
+> [AZURE.TIP] As a best practice, include the full set of index attributes for each field. Although `Facetable` is on by default for almost all fields, purposely setting each attribute can help you think through the implications of each schema decision. 
 
 <a name="checkdata"></a>
-##データ品質のチェック 
+##<a name="check-for-data-quality"></a>Check for Data Quality 
 
-どのようなデータ中心アプリケーションでも、開発時には、データの準備が作業の大きな部分の 1 つになることがよくあります。検索アプリケーションも例外ではありません。データの品質は、ファセット ナビゲーションが意図したとおりに実現されるかどうか、および結果セットを削減するフィルターの作成に対するその有効性に、直接影響します。
+When developing any data-centric application, preparing the data is often one of the bigger parts of the job. Search applications are no exception. The quality of your data has a direct bearing on whether the faceted navigation structure materializes as you expect it to, as well as its effectiveness in helping you construct filters that reduce the result set.
 
-Azure Search では、検索コーパスはインデックスを生成するドキュメントから作成されます。ドキュメントは、ファセットの計算に使用される値を提供します。Brand または Price でファセットを行う場合は、各ドキュメントの *BrandName* および *ProductPrice* に、フィルター オプションとして有効で、整合性があり、意味のある値が含まれる必要があります。
+In Azure Search, the search corpus is formed from documents that populate an index. Documents provide the values that are used to compute facets. If you want to facet by Brand or Price, each document should contain values for *BrandName* and *ProductPrice* that are valid, consistent, and productive as a filter option.
 
-品質向上のためには、次のようなことに注意する必要があります。
+A few reminders of what to scrub for are listed below:
 
-- ファセットに使用する予定のすべてのフィールドについて、自律型検索のフィルターとして適切な値が含まれるかどうかを検討します。値は、短く、わかりやすく、競合するオプションから 1 つを明確に選択できる十分に特徴的なものである必要があります。
-- スペル ミスまたはよく似た値。Color をファセットとして使用し、フィールド値に Orange と Ornage (スペルミス) が含まれる場合、Color フィールドに基づくファセットでは両方が選択されます。
-- 大文字と小文字が混在するテキストによっても、ファセット ナビゲーションに大きな支障が出る可能性があります。orange と Orange は 2 つの異なる値として表示されます。
-- 同じ値の単数形と複数形は、それぞれが別のファセットになる場合があります。
+- For every field that you want to facet by, ask yourself whether it contains values that are suitable as filters in self-directed search. The values should be short, descriptive, and sufficiently distinctive to offer a clear choice between competing options.
+- Misspellings or nearly matching values. If you facet on Color, and field values include Orange and Ornage (a misspelling), a facet based on the Color field would pick up both.
+- Mixed case text can also wreak havoc in faceted navigation, with orange and Orange appearing as two different values. 
+- Single and plural versions of the same value can result in a separate facet for each.
 
-ご想像のとおり、手を抜かずにデータを準備することが、効果的なファセット ナビゲーションにとって不可欠な要素です。
+As you can imagine, diligence in preparing the data is an essential aspect of effective faceted navigation.
 
 <a name="buildquery"></a>
-##クエリの作成
+##<a name="build-the-query"></a>Build the query
 
-クエリを作成するために記述するコードでは、検索式、ファセット、フィルター、スコアリング プロファイルなど、要求の作成に使用されるすべてのものを含む有効なクエリのすべての部分を指定する必要があります。このセクションでは、クエリ内でのファセットの位置と、結果セットを削減するためのファセットでのフィルターの使用方法について説明します。
+The code that you write for building queries should specify all parts of a valid query, including search expressions, facets, filters, scoring profiles– anything used to formulate a request. In this section, we’ll explore where facets fit into a query, and how filters are used with facets to deliver a reduced result set.
 
-通常は、例から始めるのがよい方法です。**CatalogSearch.cs** ファイルから抜粋した次の例では、Color、Category、Price に基づいてファセット ナビゲーションを作成する要求を作成します。
+An example is often a good place to begin. The following example, taken from the **CatalogSearch.cs** file, builds a request that creates facet navigation based on Color, Category, and Price. 
 
-ファセットはこのサンプル アプリケーションに不可欠であることに注意してください。AdventureWorks Catalog の検索エクスペリエンスは、ファセット ナビゲーションとフィルターを中心に設計されています。これは、ファセット ナビゲーションがページ内で目立つように配置されていることからも明らかです。サンプル アプリケーションには、Search メソッド (サンプル アプリケーションで作成されています) のプロパティとしてファセット (色、カテゴリ、価格) に対する URI パラメーターが含まれます。
+Notice that facets are integral in this sample application. The search experience in AdventureWorks Catalog is designed around faceted navigation and filters. This is evident in the prominent placement of faceted navigation in the page. The sample application includes URI parameters for facets (color, category, prices) as properties on the Search method (as constructed in the sample application).
 
   ![][4]
  
-ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`intervals:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。値リストは、範囲を設定するときに数値データに対してサポートされます。使用方法の詳細については、「[Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+A facet query parameter is set to a field and depending on the data type, can be further parameterized by comma-delimited list that includes `count:<integer>`, `sort:<>`, `intervals:<integer>`, and  `values:<list>`. A values list is supported for numeric data when setting up ranges. See [Search Documents (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) for usage details.
 
-アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。自転車ストアの場合、ファセット ナビゲーションでは「どのような色、製造元、および種類の自転車が手にはいるか」のような質問への手掛かりが提供されるのに対し、フィルター処理は「赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車」のような質問に回答します。
+Along with facets, the request formulated by your application should also build filters to narrow down the set of candidate documents based on a facet value selection. For a bike store, faceted navigation provides clues to questions like "What colors, manufacturers, and types of bikes are available", while filtering answers questions like "Which exact bikes are red, mountain bikes, in this price range".
 
-ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq ‘Red’` が含まれます。
+When a user clicks "Red" to indicate that only Red products should be shown, the next query the application sends would include `$filter=Color eq ‘Red’`.
 
-## ファセット ナビゲーションのベスト プラクティス
+## <a name="best-practices-for-faceted-navigation"></a>Best practices for faceted navigation
 
-ベスト プラクティスを次にまとめます。
+The following list summarizes a few best practices.
 
-- **正確さ**<br/> フィルターを使用します。検索式にのみ依存すると、どのフィールドにも正確なファセット値が含まれないドキュメントが語幹検索で返される可能性があります。
+- **Precision**<br/>
+Use filters. If you rely on just search expressions alone, stemming could cause a document to be returned that doesn’t have the precise facet value in any of its fields. 
 
-- **ターゲット フィールド**<br/> ファセットのドリル ダウンでは、通常、すべての検索可能フィールドのどこかではなく、特定の (ファセット) フィールドにファセット値が存在するドキュメントのみが含まれるように意図します。フィルターを追加すると、ファセット フィールドでのみ一致する値を検索するようにサービスに指示されて、ターゲット フィールドがいっそう限定されます。
+- **Target fields**<br/>
+In faceted drill down, you typically want to only include documents that have the facet value in a specific (faceted) field, not anywhere across all searchable fields. Adding a filter reinforces the target field by directing the service to search only in the faceted field for a matching value.
 
-- **インデックスの有効性**<br/> アプリケーションでファセット ナビゲーションだけを使用する場合は (つまり、検索ボックスを使用しません)、フィールドを `searchable=false`、`facetable=true` と指定することによって、いっそうコンパクトなインデックスを生成できます。さらに、インデックスの作成はファセット値全体に対してのみ行われ、単語の区切りや、複数の単語からなる値のコンポーネント部分のインデックス作成は行われません。
+- **Index efficiency**<br/>
+If your application uses faceted navigation exclusively (that is, no search box), you can mark the field as `searchable=false`, `facetable=true` to produce a more compact index. In addition, indexing occurs only on whole facet values, with no word-break or indexing of the component parts of a multi-word value.
 
-- **パフォーマンス**<br/> フィルターは検索の候補ドキュメントのセットを絞り込み、それらをランキングから除外します。ドキュメント セットが大きい場合、非常に限定的なファセット ドリルダウンを使用すると、パフォーマンスが著しく向上することがよくあります。
-
-
-<a name="tips"></a>
-##ファセット ナビゲーションの制御方法に関するヒント
-
-特定の問題についてのガイダンスを含むヒントを以下に示します。
-
-**ファセット ナビゲーションの各フィールドのラベルを追加する**
-
-通常、ラベルは HTML またはフォームで定義されます (サンプル アプリケーションでは **index.cshtml**)。Azure Search には、ファセット ナビゲーションのラベル用または他の種類のメタデータ用の API はありません。
-
-**ファセットとして使用できるフィールドを定義する**
-
-インデックスのスキーマによってファセットとして使用できるフィールドが決まることを思い出してください。フィールドがファセット可能である場合、クエリではファセットに使用するフィールドを指定します。ファセットに使用しているフィールドは、ラベルの下に表示される値を提供します。
-
-各ラベルの下に表示される値は、インデックスから取得されます。たとえば、ファセット フィールドが *Color* である場合、追加のフィルター処理に使用できる値は (Red、Black など) はそのフィールドの値になります。
-
-数値および日時値についてのみ、ファセット フィールドに明示的に値を設定できます (例: `facet=Rating,values:1|2|3|4|5`)。このようなフィールドの種類に値の一覧を使用して、ファセット結果の分離を連続する範囲 (数値に基づく範囲または時間の期間) に単純化できます。
-
-**ファセットの結果をトリミングする**
-
-ファセットの結果は、ファセット語句に一致する検索結果で見つかったドキュメントです。*cloud computing* の検索結果を示す次の例では、254 個の項目は Content type も *Internal specification* で一致しています。項目は必ずしも相互に排他的ではありません。1 つの項目が両方のフィルターの条件を満たしている場合、その項目はそれぞれにカウントされます。このようなことは、ドキュメントのタグ付けを実装するために使用されることの多い `Collection(Edm.String)` フィールドのファセット処理で発生する可能性があります。
-
-		Search term: "cloud computing"
-		Content type
-		   Internal specification (254)
-		   Video (10) 
-
-一般に、ファセットの結果がなかなか小さくならない場合は、前のセクションで説明したようにフィルターを増やして、検索をさらに絞り込むためのオプションをアプリケーション ユーザーに提供することをお勧めします。
-
-**ファセット ナビゲーションの項目を制限する**
-
-ナビゲーション ツリーの各ファセット フィールドの値は、既定で 10 個に制限されています。この既定値は、値のリストが管理しやすいサイズに保たれるため、ナビゲーション構造にとって意味のあるものです。count に値を割り当てることによって、既定値をオーバーライドできます。
-
-- `&facet=city,count:5` は、上位ランクの結果で見つかった最初の 5 つの都市のみが、ファセットの結果として返されることを指定します。検索語句が “airport” で 32 個が一致したものとすると、クエリで `&facet=city,count:5` を指定した場合、検索結果に最も多くのドキュメントが含まれる最初の 5 つの一意な都市のみが、ファセットの結果に含まれます。
-
-ファセットの結果と検索結果の違いに注意してください。検索結果は、クエリに一致するすべてのドキュメントです。ファセットの結果は、各ファセットの値と一致するものです。この例では、検索結果には、ファセット分類リスト (この例では 5) に含まれていない都市名が含まれます。ファセット ナビゲーションによって除外された結果は、ユーザーがファセットをクリアするか、または都市以外の他のファセットを選択することによって、表示されるようになります。
-
-> [AZURE.NOTE] 複数の種類があるときの `count` の説明は混乱する可能性があります。Azure Search API、サンプル コード、ドキュメントで count が使用される方法についてのまとめを以下に示します。
-
-- `@colorFacet.count`<br/> プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
-
-- `&facet=City,count:12`<br/> ファセット クエリでは、count に値を設定できます。既定値は 10 ですが、これより大きい値または小さい値を設定できます。`count:12` と設定すると、ドキュメント数によるファセットの結果から上位 12 個の一致が取得されます。
-
-- "`@odata.count`"<br/> クエリの応答では、この値は検索結果において一致する項目の数を示します。検索語句とは一致しても、ファセット値とは一致しない項目が存在するため、平均すると、この値はすべてのファセット結果を組み合わせた合計より大きくなります。
+- **Performance**<br/>
+Filters narrow down the set of candidate documents for search and exclude them from ranking. If you have a large set of documents, using a very selective facet drill down will often give you significantly better performance.
 
 
-**ファセット ナビゲーションでのレベル**
+<a name="tips"></a> 
+##<a name="tips-on-how-to-control-faceted-navigation"></a>Tips on how to control faceted navigation
 
-前に説明したように、階層でのファセットの入れ子は直接サポートされません。既定では、ファセット ナビゲーションは 1 レベルのフィルターのみをサポートします。ただし、回避策は存在します。階層ごとに 1 つのエントリ ポイントを使用して、`Collection(Edm.String)` に階層的なファセット構造をエンコードできます。この回避策の実装はこの記事では取り上げませんが、コレクションについては「[OData by Example (例による OData)](http://msdn.microsoft.com/library/ff478141.aspx)」で読むことができます。
+Below is a tip sheet with guidance on specific issues.
 
-**フィールドの検証**
+**Add labels for each field in facet navigation**
 
-信頼できないユーザー入力に基づいて動的にファセットのリストを作成する場合は、ファセット フィールドの名前が有効であることを検証するか、または URL を作成するときに .NET の `Uri.EscapeDataString()` または他のプラットフォームの同等機能を使用して名前をエスケープする必要があります。
+Labels are typically defined in the HTML or form (**index.cshtml** in the sample application). There is no API in Azure Search for facet navigation labels or any other kind of metadata.
 
-**ファセットの結果での数**
+**Define which fields can be used as facet**
 
-ファセット クエリにフィルターを追加するとき、ファセット ステートメントを維持することが必要な場合があります (例: `facet=Rating&$filter=Rating ge 4`)。技術的には、facet=Rating は必要ありませんが、残しておくと、レーティング 4 以上に対するファセット値の数が返されます。たとえば、ユーザーが "4" をクリックし、クエリに "4" 以上に対するフィルターが含まれる場合、4 以上の各レーティングに対する数が返されます。
+Recall that the schema of the index determines which fields are available to use as a facet. Assuming a field is facetable, the query specifies which fields to facet by. The field by which you are faceting provides the values that appear below the label. 
 
-**ファセットの数に対するシャーディングの影響**
+The values that appear under each label are retrieved from the index. For example, if the facet field is *Color*, the values available for additional filtering will be the values for that field (Red, Black, and so forth).
 
-特定の状況では、ファセットの数が結果セットと一致しないことがあります (「[Faceted navigation in Azure Search (Azure Search でのファセット ナビゲーション)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)」 (フォーラムの投稿) を参照)。
+For Numeric and DateTime values only, you can explicitly set values on the facet field (for example, `facet=Rating,values:1|2|3|4|5`). A values list is allowed for these field types to simplify the separation of facet results into contiguous ranges (either ranges based on numeric values or time periods). 
 
-シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。すべての検索インデックスに複数のシャードがあり、それぞれがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
+**Trim facet results**
 
-この動作はいつでも変わる可能性がありますが、現在発生している場合は、count:<数字> を意図的に非常に大きい値に増やして各シャードから強制的に完全にレポートすることによって回避できます。count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。ただし、ドキュメントの数が非常に大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
+Facet results are documents found in the search results that match a facet term. In the following example, in search results for *cloud computing*, 254 items also have *internal specification* as a content type. Items are not necessarily mutually exclusive. If an item meets the criteria of both filters, it is counted in each one. This is possible when faceting on `Collection(Edm.String)` fields, which are often used to implement document tagging.
+
+        Search term: "cloud computing"
+        Content type
+           Internal specification (254)
+           Video (10) 
+
+In general, if you find that facet results are persistently too large, we recommend that you add more filters, as explained in earlier sections, to give your application users more options for narrowing the search.
+
+**Limit items in the facet navigation**
+
+For each faceted field in the navigation tree, there is a default limit of 10 values. This default makes sense for navigation structures because it keeps the values list to a manageable size. You can override the default by assigning a value to count.
+
+- `&facet=city,count:5` specifies that only the first 5 cities found in the top ranked results are returned as a facet result. Given a search term of “airport” and 32 matches, if the query specifies `&facet=city,count:5`, only the first five unique cities with the most documents in the search results are included in the facet results.
+
+Notice the distinction between facet results and search results. Search results are all the documents that match the query. Facet results are the matches for each facet value. In the example, search results will include City names that are not in the facet classification list (5 in our example). Results that are filtered out through faceted navigation become visible to the user when he or she clears facets, or chooses other facets besides City. 
+
+> [AZURE.NOTE] Discussing `count` when there is more than one type can be confusing. The following table offers a brief summary of how the term is used in Azure Search API, sample code, and documentation. 
+
+- `@colorFacet.count`<br/>
+In presentation code, you should see a count parameter on the facet, used to display the number of facet results. In facet results, count indicates the number of documents that match on the facet term or range.
+
+- `&facet=City,count:12`<br/>
+In a facet query, you can set count to a value.  The default is 10, but you can set it higher or lower. Setting `count:12` gets the top 12 matches in facet results by document count.
+
+- "`@odata.count`"<br/>
+In the query response, this value indicates the number of matching items in the search results. On average, it’s larger than the sum of all facet results combined, due to the presence of items that match the search term, but have no facet value matches.
+
+
+**Levels in faceted navigation** 
+
+As noted, there is no direct support for nesting facets in a hierarchy. Out of the box, faceted navigation only supports one level of filters. However, workarounds do exist. You can encode a hierarchical facet structure in a `Collection(Edm.String)` with one entry point per hierarchy. Implementing this workaround is beyond the scope of this article, but you can read about collections in [OData by Example](http://msdn.microsoft.com/library/ff478141.aspx). 
+
+**Validate fields**
+
+If you build the list of facets dynamically based on untrusted user input, you should either validate that the names of the faceted fields are valid, or escape the names when building URLs using either `Uri.EscapeDataString()` in .NET, or the equivalent in your platform of choice.
+
+**Counts in facet results**
+
+When adding a filter to a faceted query, you might want to retain the facet statement (for example, `facet=Rating&$filter=Rating ge 4`). Technically, facet=Rating isn’t needed, but keeping it returns the counts of facet values for ratings 4 and higher. For example, if a user clicks "4" and the query includes a filter for greater or equal to "4", counts are returned for each rating that is 4 and up.  
+
+**Sharding implications on facet counts**
+
+Under certain circumstances, you might find that facet counts do not match the result sets (see [Faceted navigation in Azure Search (forum post)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+
+Facet counts can be inaccurate due to the sharding architecture. Every search index has multiple shards, and each one reports the top N facets by document count, which is then combined into a single result. If some shards have a lot of matching values, while others have less, you may find that some facet values are missing or under-counted in the results.
+
+Although this behavior could change at any time, if you encounter this behavior today, you can work around it by artificially inflating the count:<number> to a very large number to enforce full reporting from each shard. If the value of count: is greater than or equal to the number of unique values in the field, you are guaranteed accurate results. However, when document counts are really high, there is a performance penalty, so used this option judiciously.
 
 <a name="rangefacets"></a>
-##範囲の値に基づくファセット ナビゲーション
+##<a name="facet-navigation-based-on-a-range-values"></a>Facet navigation based on a range values
 
-検索アプリケーションでは範囲に対するファセットが一般に必要になります。範囲は、数値データおよび日時値に対してサポートされています。各方法の詳細については、「[Search Documents (Azure Search API) (ドキュメントの検索 (Azure Search API))](http://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
+Faceting over ranges is a common search application requirement. Ranges are supported for numeric data and DateTime values. You can read more about each approach in [Search Documents (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
 
-Azure Search では、範囲を計算する 2 つの方法が提供されており、簡単に範囲を作成できます。どちらの方法でも、ユーザーが提供する入力に基づいて Azure Search が適切な範囲を作成します。たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0 -10、10-20、20-30 という範囲が作成されます。サンプル アプリケーションでは、空の間隔は削除されます。
+Azure Search simplifies range construction by providing two approaches for computing a range. For both approaches, Azure Search creates the appropriate ranges given the inputs you’ve provided. For instance, if you specify range values of 10|20|30, it will automatically create ranges of 0 -10, 10-20, 20-30. The sample application removes any intervals that are empty. 
 
-**方法 1: 間隔パラメーターを使用する**<br/> $10 刻みの価格ファセットを設定するには、`&facet=price,interval:10` と指定します。
+**Approach 1: Use the interval parameter**<br/>
+To set price facets in $10 increments, you would specify: `&facet=price,interval:10`
 
 
-**方法 2: 値のリストを使用する**<br/> 数値データの場合、値のリストを使用できます。次のように表示される ListPrice のファセット範囲について考えます。
+**Approach 2: Use a values list**<br/>
+For numeric data, you can use a values list.  Consider the facet range for listPrice, rendered as follows:
 
   ![][5]
 
-範囲は、値リストを使用して **CatalogSearch.cs** ファイルで指定されています。
+The range is specified in the **CatalogSearch.cs** file using a values list:
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-各範囲は始点として 0 を、終点としてリストの値を使用して作成され、前の範囲を除くことによって個別の間隔が作成されます。Azure Search は、ファセット ナビゲーションの一部としてこれを行います。各間隔を作成するためのコードを記述する必要はありません。
+Each range is built using 0 as a starting point, a value from the list as an endpoint, and then trimmed of the previous range to create discrete intervals. Azure Search will do this as part of faceted navigation. You do not have to write code for structuring each interval.
 
-### ファセット範囲のフィルターの作成 ###
+### <a name="build-a-filter-for-facet-ranges"></a>Build a filter for facet ranges ###
 
-ユーザーが選択した範囲に基づいてドキュメントをフィルター処理するには、範囲の終点を定義する 2 つの部分からなる式で `"ge"` および `"lt"` フィルター演算子を使用できます。たとえば、ユーザーが範囲 10 ～ 25 を選択した場合、フィルターは `$filter=listPrice ge 10 and listPrice lt 25` となります。
+To filter documents based on a range selected by the user, you can the `"ge"` and `"lt"` filter operators in a two-part expression that defines the endpoints of the range. For example, if the user chooses the range 10-25, the filter would be `$filter=listPrice ge 10 and listPrice lt 25`.
 
-サンプル アプリケーションでは、フィルター式は **priceFrom** および **priceTo** パラメーターを使用して終点を設定しています。**CatalogSearch.cs** の **BuildFilter** メソッドには、範囲内のドキュメントを提供するフィルター式が含まれます。
+In the sample application, the filter expression uses **priceFrom** and **priceTo** parameters to set the endpoints. The **BuildFilter** method in **CatalogSearch.cs** contains the filter expression that gives you the documents within a range.
 
   ![][6]
 
-<a name="geofacets"></a>
-##GeoPoints に基づいてフィルターされたナビゲーション
+<a name="geofacets"></a> 
+##<a name="filtered-navigation-based-on-geopoints"></a>Filtered navigation based on GeoPoints
 
-現在の位置に近い店、レストラン、目的地を選択するのにフィルターが役立つことがよくあります。この種のフィルターはファセット ナビゲーションのように見えますが、実際は単なるフィルターです。ここでは、この特定の設計上の問題に対する実装に関する助言を求めているユーザーのためにこれについて説明します。
+It’s common to see filters that help you choose a store, restaurant, or destination based on its proximity to your current location. While this type of filter might look like faceted navigation, it’s actually just a filter. We mention it here for those of you who are specifically looking for implementation advice for that particular design problem.
 
-Azure Search には、**geo.distance** および **geo.intersects** という 2 つの地理空間関数があります。
+There are two Geospatial functions in Azure Search, **geo.distance** and **geo.intersects**.
 
-- **geo.distance** 関数は、フィルターの一部として、1 つはフィールドで、もう 1 つは定数で渡される 2 つの点の間の距離を、キロメートル単位で返します。
+- The **geo.distance** function returns the distance in kilometers between two points, one being a field and one being a constant passed as part of the filter. 
 
-- **geo.intersects** 関数は、指定された点が指定された多角形の内部にある場合は true を返します。点はフィールドとして、多角形は座標の定数リストとして指定されて、フィルターの一部として渡されます。
+- The **geo.intersects** function returns true if a given point is within a given polygon, where the point is a field and the polygon is specified as a constant list of coordinates passed as part of the filter.
 
-フィルターの例については、「[Azure Search の OData 式の構文](http://msdn.microsoft.com/library/azure/dn798921.aspx)」を参照してください。
+You can find filter examples in [OData expression syntax (Azure Search)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
 
 <a name="tryitout"></a>
-##実際に使ってみる
+##<a name="try-it-out"></a>Try it out
 
-この記事で参照されている例は、Codeplex の Azure Search を使用した Adventure Works のデモに含まれます。検索結果を使用するときは、クエリ構造での変更について URL をご覧ください。このアプリケーションは、ユーザーが 1 つを選択すると URI にファセットを追加します。
+Azure Search Adventure Works Demo on Codeplex contains the examples referenced in this article. As you work with search results, watch the URL for changes in query construction. This application happens to append facets to the URI as you select each one.
 
-1.	サービスの URL と API キーを使用するためのサンプル アプリケーションを構成します。
+1.  Configure the sample application to use your service URL and api-key. 
 
-	CatalogIndexer プロジェクトの Program.cs ファイルで定義されているスキーマに注意してください。スキーマでは、color、listPrice、size、weight、categoryName、modelName がファセット可能なフィールドとして指定されています。ファセット ナビゲーションで実際に実装されているのは、一部のフィールド (color、listPrice、categoryName) だけです。
+    Notice the schema that is defined in the Program.cs file of the CatalogIndexer project. It specifies facetable fields for color, listPrice, size, weight, categoryName, and modelName.  Only a few of these (color, listPrice, categoryName) are actually implemented in faceted navigation.
 
-3.	アプリケーションを実行します。
+3.  Run the application. 
 
-	最初は、検索ボックスだけが表示されます。[Search] ボタンをクリックしてすべての結果を取得するか、または検索語句を入力できます。
+    At first, just the Search box is visible. You can click the Search button right away to get all results, or type a search term.
 
-	![][7]
+    ![][7]
  
-4.	「bike」のような検索語句を入力して、**[Search]** をクリックします。クエリがすぐに実行されます。
+4.  Enter a search term, such as bike, and click **Search**. The query executes quickly.
  
-	検索結果と共に、ファセット ナビゲーション構造も返されます。URL では、Colors、Categories、Prices のファセットは null になっています。検索結果ページでは、ファセット ナビゲーション構造には各ファセット結果の数が含まれます。
+    A faceted navigation structure is also returned with the search results.  In the URL, facets for Colors, Categories, and Prices are null. In the search result page, the faceted navigation structure includes counts for each facet result.
 
-	 ![][8]
+     ![][8]
  
-5.	色、カテゴリ、および価格の範囲をクリックします。最初の検索ではファセットは null ですが、ファセットが値を受け取ると、一致しない項目は検索結果から除外されます。URI にクエリへの変更が反映されることに注意してください。
+5.  Click a color, category, and price range. Facets are null on an initial search, but as they take on values, the search results are trimmed of items that no longer match. Notice that the URI picks up the changes to your query.
 
-	![][9]
+    ![][9]
  
-6.	ファセット クエリをクリアして別のクエリ動作を試すには、ページの先頭にある **[AdventureWorks Catalog]** をクリックします。
+6.  To clear the faceted query so that you can try different query behaviors, click **AdventureWorks Catalog** at the top of the page.
 
-	![][10]
+    ![][10]
  
 <a name="nextstep"></a>
-##次のステップ
+##<a name="next-step"></a>Next Step
 
-知識を試してみるには、*modelName* のファセット フィールドを追加してみてください。このファセットにはインデックスが既に設定されているので、インデックスを変更する必要はありません。ただし、Models に対する新しいファセットを含むように HTML を変更し、クエリのコンストラクターにファセット フィールドを追加する必要があります。
+To test your knowledge, you can add a facet field for *modelName*. The index is already set up for this facet, so no changes to the index are required. But you will need to modify the HTML to include a new facet for Models, and add the facet field to the query constructor.
 
-ファセット ナビゲーションの設計の原則の詳細については、次のリンクをお勧めします。
+For more insights on design principles for faceted navigation, we recommend the following links:
 
-- [ファセット検索のための設計に関する記事](http://www.uie.com/articles/faceted_search/)
-- [ファセット ナビゲーションの設計パターンに関する記事](http://alistapart.com/article/design-patterns-faceted-navigation)
+- [Designing for Faceted Search](http://www.uie.com/articles/faceted_search/)
+- [Design Patterns: Faceted Navigation](http://alistapart.com/article/design-patterns-faceted-navigation)
 
-また、「[Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」もご覧ください。45:25 の部分に、ファセットの実装方法のデモがあります。
+You can also watch [Azure Search Deep Dive](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). At 45:25, there is a demo on how to implement facets.
 
 <!--Anchors-->
 [How to build it]: #howtobuildit
@@ -364,10 +376,13 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/
+[http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
 [Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
 
  
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="リソース マネージャーでのテンプレートを使用した静的パブリック IP を持つ VM のデプロイ | Microsoft Azure"
-   description="リソース マネージャーでテンプレートを使用して静的パブリック IP を持つ VM をデプロイする方法について説明します"
+   pageTitle="Deploy a VM with a static public IP using a template in Resource Manager | Microsoft Azure"
+   description="Learn how to deploy VMs with a static public IP using a template in Resource Manager"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,21 +17,22 @@
    ms.date="04/27/2016"
    ms.author="jdial" />
 
-# テンプレートを使用した静的パブリック IP を持つ VM のデプロイ
+
+# <a name="deploy-a-vm-with-a-static-public-ip-using-a-template"></a>Deploy a VM with a static public IP using a template
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-arm-selectors-include.md](../../includes/virtual-network-deploy-static-pip-arm-selectors-include.md)]
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-## テンプレート ファイル内のパブリック ID リソース
+## <a name="public-ip-resources-in-a-template-file"></a>Public IP resources in a template file
 
-[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json)を表示してダウンロードすることができます。
+You can view and download the [sample template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json).
 
-以下のセクションは、上記のシナリオに基づいたパブリック IP リソースの定義を示します。
+The section below shows the definition of the public IP resource, based on the scenario above.
 
       {
         "apiVersion": "2015-06-15",
@@ -46,9 +47,9 @@
         }
       },
 
-**publicIPAllocationMethod** プロパティに注意してください。*Static* に設定されています。このプロパティには、*Dynamic* (既定値) または *Static* のいずれかを設定できます。Static に設定すると、割り当てられたパブリック IP アドレスが変更されないことが保証されます。
+Notice the **publicIPAllocationMethod** property, which is set to *Static*. This property can be either *Dynamic* (default value) or *Static*. Setting it to static guarantees that the public IP address assigned will never change.
 
-次のセクションでは、パブリック IP アドレスとネットワーク インターフェイスの関連付けを示します。
+The section below shows the association of the public IP address with a network interface.
 
       {
         "apiVersion": "2015-06-15",
@@ -81,9 +82,9 @@
         }
       },
 
-**publicIPAddress** プロパティが **variables('webVMSetting').pipName** という名前の **ID** を指していることに注意してください。これは上記のパブリック IP リソースの名前です。
+Notice the **publicIPAddress** property pointing to the **Id** of a resource named **variables('webVMSetting').pipName**. That is the name of the public IP resource shown above.
 
-最後に、作成される VM の **networkProfile** プロパティに、上記のネットワーク インターフェイスが示されます。
+Finally, the network interface above is listed in the **networkProfile** property of the VM being created.
 
       "networkProfile": {
         "networkInterfaces": [
@@ -93,95 +94,99 @@
         ]
       }
 
-## [クリックしてデプロイ] を使用してテンプレートをデプロイする
+## <a name="deploy-the-template-by-using-click-to-deploy"></a>Deploy the template by using click to deploy
 
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。[クリックしてデプロイ] を使用してこのテンプレートをデプロイするには、[VM with static PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) テンプレートの Readme.md ファイルで **[Azure へのデプロイ]** をクリックします。必要に応じて既定のパラメーター値を置き換え、空白のパラメーターの値を入力します。ポータルの指示に従って、静的パブリック IP アドレスを持つ仮想マシンを作成します。
+The sample template available in the public repository uses a parameter file containing the default values used to generate the scenario described above. To deploy this template using click to deploy, click **Deploy to Azure** in the Readme.md file for the [VM with static PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) template. Replace the default parameter values if desired and enter values for the blank parameters.  Follow the instructions in the portal to create a virtual machine with a static public IP address.
 
-## PowerShell を使用してテンプレートをデプロイする
+## <a name="deploy-the-template-by-using-powershell"></a>Deploy the template by using PowerShell
 
-PowerShell を使用してダウンロードしたテンプレートをデプロイするには、次の手順に従います。
+To deploy the template you downloaded by using PowerShell, follow the steps below.
 
-1. Azure PowerShell を初めて使用する場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照し、手順 1. ～ 3. の指示に従います。
+1. If you have never used Azure PowerShell, see [How to Install and Configure Azure PowerShell](../powershell-install-configure.md) and follow the instructions in steps 1 to 3.
 
-2. 必要に応じて、PowerShell コンソールで、**AzureRmResourceGroup** コマンドレットを実行して、新しいリソース グループを作成します。既に作成したリソース グループがある場合は、手順 3. に進みます。
+2. In a PowerShell console, run the **New-AzureRmResourceGroup** cmdlet to create a new resource group, if necessary. If you already have a resource group created, go to step 3.
 
-		New-AzureRmResourceGroup -Name PIPTEST -Location westus
+        New-AzureRmResourceGroup -Name PIPTEST -Location westus
 
-	予想される出力:
+    Expected output:
 
-		ResourceGroupName : PIPTEST
-		Location          : westus
-		ProvisioningState : Succeeded
-		Tags              :
-		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
+        ResourceGroupName : PIPTEST
+        Location          : westus
+        ProvisioningState : Succeeded
+        Tags              :
+        ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
-3. PowerShell コンソールで、**New-AzureRmResourceGroupDeployment** を実行して、テンプレートをデプロイします。
+3. In a PowerShell console, run the **New-AzureRmResourceGroupDeployment** cmdlet to deploy the template.
 
-		New-AzureRmResourceGroupDeployment -Name DeployVM -ResourceGroupName PIPTEST `
-		    -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json `
-		    -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json
+        New-AzureRmResourceGroupDeployment -Name DeployVM -ResourceGroupName PIPTEST `
+            -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json `
+            -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json
 
-	予想される出力:
+    Expected output:
 
-		DeploymentName    : DeployVM
-		ResourceGroupName : PIPTEST
-		ProvisioningState : Succeeded
-		Timestamp         : <Deployment date> <Deployment time>
-		Mode              : Incremental
-		TemplateLink      :
-		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
-		                    ter/IaaS-Story/03-Static-public-IP/azuredeploy.json
-		                    ContentVersion : 1.0.0.0
+        DeploymentName    : DeployVM
+        ResourceGroupName : PIPTEST
+        ProvisioningState : Succeeded
+        Timestamp         : <Deployment date> <Deployment time>
+        Mode              : Incremental
+        TemplateLink      :
+                            Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
+                            ter/IaaS-Story/03-Static-public-IP/azuredeploy.json
+                            ContentVersion : 1.0.0.0
 
-		Parameters        :
-		                    Name                      Type                       Value     
-		                    ========================  =========================  ==========
-		                    vnetName                  String                     WTestVNet
-		                    vnetPrefix                String                     192.168.0.0/16
-		                    frontEndSubnetName        String                     FrontEnd  
-		                    frontEndSubnetPrefix      String                     192.168.1.0/24
-		                    storageAccountNamePrefix  String                     iaasestd  
-		                    stdStorageType            String                     Standard_LRS
-		                    osType                    String                     Windows   
-		                    adminUsername             String                     adminUser
-		                    adminPassword             SecureString                         
+        Parameters        :
+                            Name                      Type                       Value     
+                            ========================  =========================  ==========
+                            vnetName                  String                     WTestVNet
+                            vnetPrefix                String                     192.168.0.0/16
+                            frontEndSubnetName        String                     FrontEnd  
+                            frontEndSubnetPrefix      String                     192.168.1.0/24
+                            storageAccountNamePrefix  String                     iaasestd  
+                            stdStorageType            String                     Standard_LRS
+                            osType                    String                     Windows   
+                            adminUsername             String                     adminUser
+                            adminPassword             SecureString                         
 
-		Outputs           :
+        Outputs           :
 
-## Azure CLI を使用してテンプレートをデプロイする
+## <a name="deploy-the-template-by-using-the-azure-cli"></a>Deploy the template by using the Azure CLI
 
-Azure CLI を使用してテンプレートをデプロイするには、次の手順に従います。
+To deploy the template by using the Azure CLI, follow the steps below.
 
-1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../xplat-cli-install.md)」の手順に従った後、「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」の「Azure ログインを使用して、Web ポータルを通じて対話型認証を行う」に記載されている、CLI をサブスクリプションに接続する手順に従います。
-2. 次に示すように、**azure config mode** コマンドを実行してリソース マネージャー モードに切り替えます。
+1. If you have never used Azure CLI, follow the steps in the [Install and Configure the Azure CLI](../xplat-cli-install.md) article and then the steps to connect the CLI to your subscription in the "Use azure login to authenticate interactively" section of the [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI)](../xplat-cli-connect.md) article.
+2. Run the **azure config mode** command to switch to Resource Manager mode, as shown below.
 
-		azure config mode arm
+        azure config mode arm
 
-	上記のコマンドで想定される出力を次に示します。
+    Here is the expected output for the command above:
 
-		info:    New mode is arm
+        info:    New mode is arm
 
-3. [パラメーター ファイル](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)を開き、内容を選択してコンピューター内のファイルに保存します。この例では、パラメーターは *parameters.json* という名前のファイルに保存されます。必要に応じて、このファイル内のパラメーター値を変更します。ただし、少なくとも、adminPassword パラメーターの値を一意の複雑なパスワードに変更することをお勧めします。
+3. Open the [parameter file](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), select its content, and save it to a file in your computer. For this example, the parameters are saved to a file named *parameters.json*. Change the parameter values within the file if desired, but at a minimum, it's recommended that you change the value for the adminPassword parameter to a unique, complex password.
 
-4. 上記でダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、**azure group deployment create** コマンドレットを実行して新しい VNet をデプロイします。次のコマンドで、<path> をファイルの保存先のパスに置き換えます。
+4. Run the **azure group deployment create** cmdlet to deploy the new VNet by using the template and parameter files you downloaded and modified above. In the command below, replace <path> with the path you saved the file to. 
 
-		azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json
+        azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json
 
-	予想される出力 (使用されているパラメーター値の表示):
+    Expected output (lists parameter values used):
 
-		info:    Executing command group create
-		+ Getting resource group PIPTEST2
-		+ Creating resource group PIPTEST2
-		info:    Created resource group PIPTEST2
-		+ Initializing template configurations and parameters
-		+ Creating a deployment
-		info:    Created template deployment "azuredeploy"
-		data:    Id:                  /subscriptions/<Subscription ID>/resourceGroups/PIPTEST2
-		data:    Name:                PIPTEST2
-		data:    Location:            westus
-		data:    Provisioning State:  Succeeded
-		data:    Tags: null
-		data:
-		info:    group create command OK
+        info:    Executing command group create
+        + Getting resource group PIPTEST2
+        + Creating resource group PIPTEST2
+        info:    Created resource group PIPTEST2
+        + Initializing template configurations and parameters
+        + Creating a deployment
+        info:    Created template deployment "azuredeploy"
+        data:    Id:                  /subscriptions/<Subscription ID>/resourceGroups/PIPTEST2
+        data:    Name:                PIPTEST2
+        data:    Location:            westus
+        data:    Provisioning State:  Succeeded
+        data:    Tags: null
+        data:
+        info:    group create command OK
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

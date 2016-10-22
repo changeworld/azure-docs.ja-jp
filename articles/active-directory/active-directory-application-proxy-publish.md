@@ -1,104 +1,109 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシを使用してアプリを発行する | Microsoft Azure"
-	description="Azure AD アプリケーション プロキシを使用してオンプレミスのアプリケーションをクラウドに発行します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Publish apps with Azure AD Application Proxy | Microsoft Azure"
+    description="Publish on-premises applications to the cloud with Azure AD Application Proxy."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/19/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="07/19/2016"
+    ms.author="kgremban"/>
 
 
-# Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
-Azure AD アプリケーション プロキシでは、オンプレミスのアプリケーションを発行してインターネット経由でアクセスできるため、リモート ワーカーのサポートに役立ちます。この記事を読んでいる時点では、既に [Azure クラシック ポータルでアプリケーション プロキシを有効にした](active-directory-application-proxy-enable.md)状態になっています。この記事では、ローカル ネットワークで実行中のアプリケーションを発行し、ネットワークの外部からのセキュリティで保護されたリモート アクセスを有効にする手順について説明します。この記事の手順を最後まで実行すると、個人用に設定した情報やセキュリティ要件でアプリケーションを構成する準備が整います。
+# <a name="publish-applications-using-azure-ad-application-proxy"></a>Publish applications using Azure AD Application Proxy
 
-> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+Azure AD Application Proxy helps you support remote workers by publishing on-premises applications to be accessed over the internet. By this point, you should already have [enabled Application Proxy in the Azure classic portal](active-directory-application-proxy-enable.md). This article walks you through the steps to publish applications that are running on your local network and provide secure remote access from outside your network. After you complete this article, you'll be ready to configure the application with personalized information or security requirements.
 
-## ウィザードを使用してアプリを発行する
+> [AZURE.NOTE] Application Proxy is a feature that is available only if you upgraded to the Premium or Basic edition of Azure Active Directory. For more information, see [Azure Active Directory editions](active-directory-editions.md).
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)に管理者としてサインインします。
-2. Active Directory に移動し、アプリケーション プロキシを有効にしたディレクトリを選択します。
+## <a name="publish-an-app-using-the-wizard"></a>Publish an app using the wizard
 
-	![Active Directory - icon](./media/active-directory-application-proxy-publish/ad_icon.png)
+1. Sign in as an administrator in the [Azure classic portal](https://manage.windowsazure.com/).
+2. Go to Active Directory and select the directory where you enabled Application Proxy.
 
-3. **[アプリケーション]** タブをクリックし、画面下部にある **[追加]** をクリックします。
+    ![Active Directory - icon](./media/active-directory-application-proxy-publish/ad_icon.png)
 
-	![アプリケーションの追加](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
+3. Click the **Applications** tab, and then click the **Add** button at the bottom of the screen
 
-4. **[ネットワーク外部からアクセスできるアプリケーションを発行します]** を選択します。
+    ![Add application](./media/active-directory-application-proxy-publish/aad_appproxy_selectdirectory.png)
 
-	![Publish an application that will be accessible from outside your network](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
+4. Select **Publish an application that will be accessible from outside your network**.
 
-5. アプリケーションについて以下の情報を入力します。
+    ![Publish an application that will be accessible from outside your network](./media/active-directory-application-proxy-publish/aad_appproxy_addapp.png)
 
-	- **名前**: アプリケーションのわかりやすい名前。ディレクトリ内で一意の名前にする必要があります。
-	- **内部 URL**: プライベート ネットワークの内部からアプリケーションにアクセスするために、アプリケーション プロキシ コネクタで使用されるアドレス。バックエンド サーバー上の特定のパスを指定して発行できます。この場合、サーバーのそれ以外のパスは発行されません。この方法では、同じサーバー上の複数のサイトを発行し、それぞれのサイトに独自の名前とアクセス規則を付与することができます。
+5. Provide the following information about your application:
 
-		> [AZURE.TIP] パスを発行する場合は、アプリケーションに必要な画像、スクリプト、スタイル シートが、すべてそのパスに含まれていることを確認してください。たとえば、アプリの場所が https://yourapp/app で、使用する画像が https://yourapp/media にある場合は、パスとして https://yourapp/ を発行する必要があります。
+    - **Name**: The user-friendly name for your application. It must be unique within your directory.
+    - **Internal URL**: The address that the Application Proxy Connector uses to access the application from inside your private network. You can provide a specific path on the backend server to publish, while the rest of the server is unpublished. In this way, you can publish different sites on the same server, and give each one its own name and access rules.
 
-	- **事前認証方法**: アプリケーション プロキシでユーザーにアプリケーションへのアクセス権を付与する前に、そのユーザーを確認する方法。ドロップダウン メニューから、いずれかのオプションを選択します。
+        > [AZURE.TIP] If you publish a path, make sure that it includes all the necessary images, scripts, and style sheets for your application. For example, if your app is at https://yourapp/app and uses images located at https://yourapp/media, then you should publish https://yourapp/ as the path.
 
-		- Azure Active Directory: アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。
-		- パススルー: ユーザーは、アプリケーションにアクセスするために認証を行う必要はありません。
+    - **Preauthentication Method**: How Application Proxy verifies users before giving them access to your application. Choose one of the options from the drop-down menu.
 
-	![Application properties](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)
+        - Azure Active Directory: Application Proxy redirects users to sign in with Azure AD, which authenticates their permissions for the directory and application.
+        - Passthrough: Users don't have to authenticate to access the application.
 
-6. ウィザードを終了するには、画面下部にあるチェック マークをクリックします。これで、アプリケーションが Azure AD で定義されました。
+    ![Application properties](./media/active-directory-application-proxy-publish/aad_appproxy_appproperties.png)  
 
-
-## アプリケーションにユーザーとグループを割り当てる
-
-発行したアプリケーションにユーザーがアクセスできるようにするには、それらのユーザーを個別またはグループで割り当てる必要があります。(自分自身へのアクセス権の割り当ても忘れずに行ってください)。 これを実行するには、各ユーザーに Azure Basic 以上のライセンスが必要です。ライセンスは個別に割り当てることも、グループに対して割り当てることもできます。詳細については、[アプリケーションへのユーザーの割り当て](active-directory-applications-guiding-developers-assigning-users.md)に関するページを参照してください。
-
-事前認証を必要とするアプリの場合は、これによって、アプリを使用するためのアクセス許可がユーザーに付与されます。事前認証を必要としないアプリの場合でも、ユーザーをアプリに割り当てることで、そのアプリが各ユーザーのアプリケーションの一覧 (MyApps など) に表示されるようになります。
-
-1. アプリの追加ウィザードを終了すると、アプリケーションの [クイック スタート] ページが表示されます。アプリにアクセスできるユーザーを管理するには、**[ユーザーとグループ]** を選択します。
-
-	![Application Proxy quick start assign users - screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
-
-2. ディレクトリ内の特定のグループを検索するか、すべてのユーザーを表示します。検索結果を表示するには、チェック マークをクリックします。
-
-  	![Search for groups or users - screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
-
-2. このアプリに割り当てる各ユーザーまたはグループを選択し、**[割り当て]** をクリックします。このアクションを確認するように求められます。
-
-> [AZURE.NOTE] 統合 Windows 認証アプリでは、オンプレミスの Active Directory から同期したユーザーとグループのみを割り当てることができます。Microsoft アカウントでサインインしているユーザーやゲストを、Azure Active Directory アプリケーション プロキシを使用して発行したアプリに割り当てることはできません。サインイン時に、発行するアプリと同じドメインの資格情報をユーザーが使用するようにしてください。
-
-## 発行したアプリケーションをテストする
-
-アプリケーションを発行した後は、発行した URL に移動することで、そのアプリケーションをテストできます。アプリケーションにアクセスできること、正しくレンダリングされること、すべてが期待どおりに動作することを確認します。問題が発生したり、エラー メッセージが表示されたりする場合は、[トラブルシューティング ガイド](active-directory-application-proxy-troubleshoot.md)を参照してください。
-
-## アプリケーションの作成
-
-[構成] ページで、発行したアプリの変更や詳細オプションの設定が可能です。このページでは、名前の変更やロゴのアップロードによってアプリをカスタマイズできます。また、事前認証方法や多要素認証のようなアクセス ルールを管理することもできます。
-
-![詳細な構成](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
+6. To finish the wizard, click the check mark at the bottom of the screen. The application is now defined in Azure AD.
 
 
-Azure Active Directory アプリケーション プロキシを使用してアプリケーションを発行すると、それらのアプリケーションが Azure AD の [アプリケーション] リストに表示され、そこで管理できるようになります。
+## <a name="assign-users-and-groups-to-the-application"></a>Assign users and groups to the application
 
-アプリケーションの発行後にアプリケーション プロキシ サービスを無効にした場合、プライベート ネットワークの外部からは、そのアプリケーションにアクセスできなくなります。これによって、アプリケーションが削除されることはありません。
+In order for your users to access your published application, you need to assign them either individually or in groups. (Remember to assign yourself access, too.) This requires that each user have a license for Azure Basic or higher. You can assign licenses individually or to groups. See [Assigning users to an application](active-directory-applications-guiding-developers-assigning-users.md) for more details. 
 
-アプリケーションを表示し、アクセス可能かどうかを確認するには、そのアプリケーションの名前をダブルクリックします。アプリケーション プロキシ サービスが無効になっていて、アプリケーションが使用できない場合は、画面上部に警告メッセージが表示されます。
+For apps that require preauthentication, this grants permissions to use the app. For apps that don't require preauthentication, users can still be assigned to the app so that it appears in their application list, such as MyApps.
 
-アプリケーションを削除するには、リスト内のアプリケーションを選択し、**[削除]** をクリックします。
+1. After finishing the Add App wizard, you see the Quick Start page for your application. To manage who has access to the app, select **Users and groups**.
 
-## 次のステップ
+    ![Application Proxy quick start assign users - screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_usersgroups.png)
 
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
-- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+2. Search for specific groups in your directory, or show all your users. To display the search results, click the check mark.
 
-最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+    ![Search for groups or users - screenshot](./media/active-directory-application-proxy-publish/aad_appproxy_search.png)
 
-<!---HONumber=AcomDC_0921_2016-->
+2. Select each user or group you want to assign to this app and click **Assign**. You are asked to confirm this action.
+
+> [AZURE.NOTE] For Integrated Windows Authentication apps, you can assign only users and groups that are synced from your on-premises Active Directory. Users who sign in with a Microsoft account and guests cannot be assigned for apps published with Azure Active Directory Application Proxy. Make sure your users sign in with credentials that are part of the same domain as the app you are publishing.
+
+## <a name="test-your-published-application"></a>Test your published application
+
+Once you have published your application, you can test it out by navigating to the URL that you published. Make sure that you can access it, that it renders correctly, and that everything works as expected. If you have trouble or get an error message, try the [troubleshooting guide](active-directory-application-proxy-troubleshoot.md).
+
+## <a name="configure-your-application"></a>Configure your application
+
+You can modify published apps or set up advanced options on the Configure page. On this page, you can customize your app by changing the name or uploading a logo. You can also manage access rules like the preauthentication method or multi-factor authentication.
+
+![Advanced configuration](./media/active-directory-application-proxy-publish/aad_appproxy_configure.png)
+
+
+After you publish applications using Azure Active Directory Application Proxy, they appear in the Applications list in Azure AD, and you can manage them there.
+
+If you disable Application Proxy services after you have published applications, they are no longer accessible from outside your private network. This does not delete the applications.
+
+To view an application and make sure that it is accessible, double-click the name of the application. If the Application Proxy service is disabled and the application is not available, a warning message appears at the top of the screen.
+
+To delete an application, select an application in the list and then click **Delete**.
+
+## <a name="next-steps"></a>Next steps
+
+- [Publish applications using your own domain name](active-directory-application-proxy-custom-domains.md)
+- [Enable single-sign on](active-directory-application-proxy-sso-using-kcd.md)
+- [Enable conditional access](active-directory-application-proxy-conditional-access.md)
+- [Working with claims aware applications](active-directory-application-proxy-claims-aware-apps.md)
+
+For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

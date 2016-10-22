@@ -1,32 +1,33 @@
 <properties 
-	pageTitle="Azure Resource Manager でのリソースのリンク | Microsoft Azure" 
-	description="Azure Resource Manager で、異なるリソース グループ内の関連リソース間のリンクを作成します。" 
-	services="azure-resource-manager" 
-	documentationCenter="" 
-	authors="tfitzmac" 
-	manager="timlt" 
-	editor="tysonn"/>
+    pageTitle="Linking resources in Azure Resource Manager | Microsoft Azure" 
+    description="Create a link between related resources in different resource groups in Azure Resource Manager." 
+    services="azure-resource-manager" 
+    documentationCenter="" 
+    authors="tfitzmac" 
+    manager="timlt" 
+    editor="tysonn"/>
 
 <tags 
-	ms.service="azure-resource-manager" 
-	ms.workload="multiple" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/01/2016" 
-	ms.author="tomfitz"/>
+    ms.service="azure-resource-manager" 
+    ms.workload="multiple" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/01/2016" 
+    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーでのリソースのリンク
 
-デプロイ中に、別のリソースに依存するものとしてリソースをマークできますが、そのライフサイクルはデプロイ中に終了します。デプロイ後、依存リソースの間に特定のリレーションシップはありません。Resource Manager では、リソース リンクという機能により、リソース間の永続的なリレーションシップを確立できます。
+# <a name="linking-resources-in-azure-resource-manager"></a>Linking resources in Azure Resource Manager
 
-リソース リンクにより、複数のリソース グループにまたがるリレーションシップが記録できます。たとえば、一般的には、独自のライフ サイクルを持つデータベースが 1 つのリソース グループに存在し、別のライフサイクルを持つアプリが別のリソース グループに存在します。そのアプリはデータベースに接続するため、アプリとデータベース間のリンクをマークすることができます。
+During deployment, you can mark a resource as dependent on another resource, but that lifecycle ends at deployment. After deployment, there is no identified relationship between dependent resources. Resource Manager provides a feature called resource linking to establish persistent relationships between resources.
 
-リンクされるリソースは、すべて同じサブスクリプションに属する必要があります。各リソースは、そのリソース以外の 50 のリソースにリンクできます。関連リソースを照会する唯一の方法は、REST API を使用することです。リンクされたリソースを削除または移動する場合、リンクの所有者は、残りのリンクをクリーンアップする必要があります。他のリソースにリンクしたリソースを削除しても、警告は表示**されません**。
+With resource linking, you can document relationships that span resource groups. For example, it is common to have a database with its own lifecycle reside in one resource group, and an app with a different lifecycle reside in a different resource group. The app connects to the database so you want to mark a link between the app and the database. 
 
-## テンプレートでのリンク
+All linked resources must belong to the same subscription. Each resource can be linked to 50 other resources. The only way to query related resources is through the REST API. If any of the linked resources are deleted or moved, the link owner must clean up the remaining link. You are **not** warned when deleting a resource that is linked to other resources.
 
-テンプレート内のリンクを定義するには、リソース プロバイダーの名前空間を結合するリソースの種類とソース リソースの種類を **/providers/links** を使用して含めます。この名前には、ソース リソースの名前が含まれている必要があります。ターゲット リソースのリソース ID を指定します。次の例では、Web サイトとストレージ アカウント間のリンクを確立しています。
+## <a name="linking-in-templates"></a>Linking in templates
+
+To define a link in a template, you include a resource type that combines the resource provider namespace and type of the source resource with **/providers/links**. The name must include the name of the source resource. You provide the resource id of the target resource. The following example establishes a link between a web site and a storage account.
 
     {
       "type": "Microsoft.Web/sites/providers/links",
@@ -40,17 +41,17 @@
     }
 
 
-テンプレートの形式の詳細については、「[リソース リンク テンプレート スキーマ](resource-manager-template-links.md)」を参照してください。
+For a full description of the template format, see [Resource links - template schema](resource-manager-template-links.md).
 
-## REST API を使用したリンク
+## <a name="linking-with-rest-api"></a>Linking with REST API
 
-デプロイ済みのリソース間のリンクを定義するには、次のように実行します。
+To define a link between deployed resources, run:
 
     PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/{provider-namespace}/{resource-type}/{resource-name}/providers/Microsoft.Resources/links/{link-name}?api-version={api-version}
 
-{subscription-id} を、サブスクリプション ID に置き換えます。{resource-group}、{provider-namespace}、{resource-type}、{resource-name} を、リンクの最初のリソースを識別する値に置き換えます。{link-name} を、作成するリンクの名前に置き換えます。api-version には 2015-01-01 を使用します。
+Replace {subscription-id} with your subscription id. Replace {resource-group}, {provider-namespace, {resource-type}, and {resource-name} with the values that identify the first resource in the link. Replace {link-name} with the name of the link to create. Use 2015-01-01 for the api-version.
 
-この要求に、リンクの 2 番目のリソースを定義するオブジェクトを含めます。
+In the request, include an object that defines the second resource in the link:
 
     {
         "name": "{new-link-name}",
@@ -60,17 +61,21 @@
         }
     }
 
-properties 要素には、2 番目のリソースの識別子を含めます。
+The properties element contains the identifier for the second resource.
 
-次を実行して、サブスクリプションのリンクを照会できます。
+You can query links in your subscription with:
 
     https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Resources/links?api-version={api-version}
 
-リンクに関する情報の取得方法など、その他の例については、[リンクされたリソース](https://msdn.microsoft.com/library/azure/mt238499.aspx)に関するページを参照してください。
+For more examples, including how to retrieve information about links, see [Linked Resources](https://msdn.microsoft.com/library/azure/mt238499.aspx).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- タグで、リソースを整理することもできます。リソースにタグを付ける方法については、「[タグを使用した Azure リソースの整理](resource-group-using-tags.md)」を参照してください。
-- テンプレートを作成してデプロイするリソースを定義する方法については、「[テンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- You can also organize your resources with tags. To learn about tagging resources, see [Using tags to organize your resources](resource-group-using-tags.md).
+- For a description of how to create templates and define the resources to be deployed, see [Authoring templates](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,9 +1,9 @@
 
 <properties
-    pageTitle="任意のデバイスからのアプリへのアクセス | Microsoft Azure"
-    description="Azure RemoteApp にサポートされているクライアントとアプリへのアクセス方法について説明します。"
+    pageTitle="Accessing your apps from any device | Microsoft Azure"
+    description="Learn what clients are supported for Azure RemoteApp and how to access your apps."
     services="remoteapp"
-	documentationCenter=""
+    documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -18,20 +18,21 @@
 
 
 
-# Azure RemoteApp でのアプリへのアクセス
+
+# <a name="accessing-your-apps-in-azure-remoteapp"></a>Accessing your apps in Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもアプリにアクセスできることです。さらに、1 つのデバイスで作業を開始し、2 つ目のデバイスにシームレスに移行し、中断した箇所から作業を再開できます。開始するには、デバイスの適切なクライアントをダウンロードして、サービスにサインインする必要があります。
+One of the beauties of Azure RemoteApp is that you can access apps from any of your devices. Even better, you can start working on one device and then seamlessly transition to a second device and pick up right where you left off. To get started you need to download the appropriate client for your device and sign in to the service.
 
-このトピックでは、現在サポートされているクライアントとダウンロードする方法を確認してから、各クライアントから RemoteApp へサインインする方法を説明します。
+In this topic, we'll review the clients currently supported and how to download them before I show you how to sign in to RemoteApp from each of the clients.
 
-## サポートされているクライアント
+## <a name="supported-clients"></a>Supported clients
 
-デバイスがこれらのいずれかのオペレーティング システムを実行している場合は、次の手順を使用して RemoteApp にアクセスできます。
+You can access RemoteApp using the steps below if your device is running one of these operating systems:
 
- - Windows 10
+ - Windows 10 
  - Windows 8.1
  - Windows 8
  - Windows 7 Service Pack 1
@@ -41,7 +42,7 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
  - Android
 
 
- シン クライアントはどうでしょうか。 次の Windows Embedded のシン クライアントはサポートされています。
+ What about thin clients? The following Windows Embedded thin clients are supported:
 
 - Windows Embedded Standard 7
 - Windows Embedded 8 Standard
@@ -49,165 +50,168 @@ Azure RemoteApp の優れた点の 1 つは、どのデバイスからでもア�
 - Windows 10 IoT Enterprise
 
 
-## クライアントのダウンロード
+## <a name="downloading-the-client"></a>Downloading the client
 
-使用しているプラットフォームに関わらず、 RemoteApp にアクセスする必要があるクライアントは、「[リモート デスクトップ クライアントのダウンロード](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx)」 ページに表示されています。
+No matter what platform you are using, the client you need to access RemoteApp can be found on the [Remote Desktop client download](https://www.remoteapp.windowsazure.com/ClientDownload/AllClients.aspx) page.
 
-別のリンクをクリックすると、クライアントのダウンロードを直接開始するか、またはプラットフォームのアプリ ストアのクライアント ダウンロード ページ移動します。画面の手順に従って、クライアントをインストールします。
+Clicking the different links will either directly start downloading the client or will send you to the client download page in the app store for that platform. Install the client by following the instructions on the screen.
 
-デバイスにクライアントをインストールし、起動したら、次の対応するセクションにジャンプし、そのクライアントから RemoteApp へサインインする方法を学習します。
+Once you have installed the client on your device and launched it, jump to the corresponding section below to learn how to sign in to RemoteApp from that client.
 
-## Android
+## <a name="android"></a>Android
 
-Google Play ストアから、Microsoft リモート デスクトップ アプリをインストールすると、**[リモート デスクトップ]** にアプリの一覧が表示されます。
+Once you have installed the Microsoft Remote Desktop app from the Google Play store, you can find it in your app list under **Remote Desktop**.
 
-1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、追加ボタン **[+]** をタップし、 **[Azure RemoteApp]** をタップします。
+1. Launching the app brings you to an empty Connection Center, unless you've already been using the app. To get started with Azure RemoteApp, tap the add button **""+""** and tap **Azure RemoteApp**. 
 
-	 ![空の接続センター](./media/remoteapp-clients/Android1.png)
+     ![Empty Connection Center](./media/remoteapp-clients/Android1.png)
 
-2. サービスにアクセスするには、メール アドレスでサインインする必要があります。**[開始]** をタップします。
+2. You need to sign in with your email address to access the service. Tap **Get started**.
 
-	![サインインのプロンプト](./media/remoteapp-clients/Android2.png)
+    ![Sign in prompt](./media/remoteapp-clients/Android2.png)
 
-3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
+3. On the next page, type in your **email address** and tap **Continue**. This begins the sign-in process using Azure Active Directory.
 
-	![Azure Active Directory の最初のページ](./media/remoteapp-clients/Android3.png)
+    ![First Azure Active Directory page](./media/remoteapp-clients/Android3.png)
 
-4. 画面の指示に従って、Microsoft アカウント (以前の "LiveID") や組織 ID でサインインします。サインインすると、受信したすべての招待を一覧表示したページが表示されます。信頼する招待を選択し、 **[完了]** をタップします。
+4. Follow the instructions on the screen to sign in with your Microsoft account (previously called "LiveID") or organization ID. Once signed in, you may be presented with a page listing all the invitations you have received. If you are, select the invitations you trust and tap **Done**. 
 
-	![招待のページ](./media/remoteapp-clients/Android4.png)
+    ![Invitations page](./media/remoteapp-clients/Android4.png)
 
-5. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。アプリの 1 つをタップし、使用を開始します。
+5. After accepting your invitations, the list of apps you have access to will be downloaded to your device and made available in the Connection Center. Tap one of the apps to start using it.
 
-	![フィードによる接続センター](./media/remoteapp-clients/Android5.png)
+    ![Connection Center with a feed](./media/remoteapp-clients/Android5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
+6. If you do not have an invitation yet, you can still try out the service. To do so, tap **Go to free trial** when prompted.
 
-	![デモ フィードのプロンプト](./media/remoteapp-clients/Android6.png)
+    ![Demo feed prompt](./media/remoteapp-clients/Android6.png)
 
-7. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
+7. This will give you access to a basic set of apps to get you started with RemoteApp.
 
-	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/Android7.png)
+    ![Demo feed for Azure RemoteApp](./media/remoteapp-clients/Android7.png)
 
-## iOS
+## <a name="ios"></a>iOS
 
-アプリ ストアから、Microsoft リモート デスクトップ アプリをインストールすると、**「RD Client」** にアプリの一覧が表示されます。
+Once you have installed the Microsoft Remote Desktop app from the App store, you can find it in your app list under **RD Client**.
 
-1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、追加ボタン **[+]** をタップし、 **[Azure RemoteApp を追加]** をタップします。
+1. Launching the app brings you to an empty Connection Center, unless you've already been using the app. To get started with Azure RemoteApp, tap the add button **""+""** and tap **Add Azure RemoteApp**.
 
-	![空の接続センター](./media/remoteapp-clients/IOS1.png)
+    ![Empty Connection Center](./media/remoteapp-clients/IOS1.png)
 
-2. サービスにアクセスし、プロセスを開始するには、メールアドレスでサインインし、**[メールアドレス]** に入力し、**[続行]** をタップします。
+2. You need to sign in with your email address to access the service, to start that process, type in your **email address** and tap **Continue**.
 
-	![サインインのプロンプト](./media/remoteapp-clients/picture1.png)
+    ![Sign in prompt](./media/remoteapp-clients/picture1.png)
 
-3. 画面の指示に従って、Microsoft アカウント (LiveID) や組織 ID でサインインします。サインインすると、受信したすべての招待を一覧表示したページが表示されます。信頼する招待を選択し、 **[完了]** をタップします。
+3. Follow the instructions on the screen to sign in with your Microsoft account (LiveID) or Organization ID. Once signed in, you may be presented with a page listing all the invitations you have received. If you are, select the invitations you trust and tap **Done**.
 
-	![招待のページ](./media/remoteapp-clients/IOS3.png)
+    ![Invitations page](./media/remoteapp-clients/IOS3.png)
 
-4. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。アプリのいずれかをタップして起動し、使用を開始します。
+4. After accepting your invitations, the list of apps you have access to will be downloaded to your device and made available in the Connection Center. Tap one of the apps to launch it and start using it.
 
-	![フィードによる接続センター](./media/remoteapp-clients/IOS4.png)
+    ![Connection Center with a feed](./media/remoteapp-clients/IOS4.png)
 
-5. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
+5. If you do not have an invitation yet, you can still try out the service. To do so, tap **Go to free trial** when prompted.
 
-	![デモ フィードのプロンプト](./media/remoteapp-clients/IOS5.png)
+    ![Demo feed prompt](./media/remoteapp-clients/IOS5.png)
 
-6. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
+6. This will give you access to a basic set of apps to get you started with RemoteApp.
 
-	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/IOS6.png)
+    ![Demo feed for Azure RemoteApp](./media/remoteapp-clients/IOS6.png)
 
-## Mac OS X
+## <a name="mac-os-x"></a>Mac OS X
 
-アプリ ストアから、Microsoft リモート デスクトップ アプリをインストールすると、**[Microsoft リモート デスクトップ]** にアプリの一覧が表示されます。
+Once you have installed the Microsoft Remote Desktop app from the App store, you can find it in your app list under **Microsoft Remote Desktop**.
 
-1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、**[Azure RemoteApp]** ボタンをクリックします。
+1. Launching the app brings you to an empty Connection Center, unless you've already been using the app. To get started with Azure RemoteApp, click the **Azure RemoteApp** button.
 
-	![空の接続センター](./media/remoteapp-clients/Mac1.png)
+    ![Empty Connection Center](./media/remoteapp-clients/Mac1.png)
 
-2. サービスにアクセスし、プロセスを開始するには、メールアドレスでサインインし、**[開始する]** をタップします。
+2. You need to sign in with your email address to access the service, to start that process, tap **Get Started**.
 
-	![サインインのプロンプト](./media/remoteapp-clients/Mac2.png)
+    ![Sign in prompt](./media/remoteapp-clients/Mac2.png)
 
-3. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
+3. On the next page, type in your **email address** and tap **Continue**. This begins the sign in process using Azure Active Directory.
 
-	![Azure Active Directory の最初のページ](./media/remoteapp-clients/picture2.png)
+    ![First Azure Active Directory page](./media/remoteapp-clients/picture2.png)
 
-4. 画面の指示に従って、Microsoft アカウント (LiveID) や組織 ID でサインインします。サインインすると、受信したすべての招待を一覧表示したページが表示されます。信頼する招待を選択し、 ダイアログを閉じます。
+4. Follow the instructions on the screen to sign in with your Microsoft account (LiveID) or Organization ID. Once signed in, you may be presented with a page listing all the invitations you have received. If you are, select the invitations you trust and close the dialog.
 
-	![招待のページ](./media/remoteapp-clients/Mac4.png)
+    ![Invitations page](./media/remoteapp-clients/Mac4.png)
 
-5. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。アプリのいずれかをダブルクリックして起動し、使用を開始します。
+5. After accepting your invitations, the list of apps you have access to will be downloaded to your device and made available in the Connection Center. Double-click one of the apps to launch it and start using it.
 
-	![フィードによる接続センター](./media/remoteapp-clients/Mac5.png)
+    ![Connection Center with a feed](./media/remoteapp-clients/Mac5.png)
 
-6. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[無料試用版を試す]** をタップします。
+6. If you do not have an invitation yet, you can still try out the service. To do so, click **Go to free trial** when prompted.
 
-	![デモ フィードのプロンプト](./media/remoteapp-clients/Mac6.png)
+    ![Demo feed prompt](./media/remoteapp-clients/Mac6.png)
 
-7. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
+7. This will give you access to a basic set of apps to get you started with RemoteApp.
 
-	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/Mac7.png)
+    ![Demo feed for Azure RemoteApp](./media/remoteapp-clients/Mac7.png)
 
-## Windows (Windows Phone 以外のサポートされているすべてのバージョン)
+## <a name="windows-(all-supported-versions-except-windows-phone)"></a>Windows (All supported versions except Windows Phone)
 
-インストールが終了すると、クライアントは自動的に起動しますが、後でもう一度アクセスする必要がある場合は、 **[Azure RemoteApp]** の名前のアプリの一覧に表示されます。
+The client launches automatically after it finishes installing, however when you need to access it again later it can be found in your app list under the name **Azure RemoteApp**.
 
-1. クライアントを起動すると、最初に、Azure RemoteApp の開始ページが表示されます。続けるには、**[開始]** をクリックします。
+1. Ater launching the client, the first page you see welcomes you to Azure RemoteApp. To proceed, click on **Get Started**.
 
-	![Azure RemoteApp のクライアントの開始ページ](./media/remoteapp-clients/Windows1.png)
+    ![Welcome page of the Azure RemoteApp client](./media/remoteapp-clients/Windows1.png)
 
-2. 次のページでは、Azure Active Directory を使用した Azure RemoteApp のサインイン プロセスが開始されます。過去に Microsoft のサービスを使用したことのあるユーザーには、このプロセスは見慣れたものです。**メール アドレス** を入力して、**[続行]** をクリックします。
+2. The next page starts the sign in process for Azure RemoteApp using Azure Active Directory. This process should look familiar if you have used Microsoft services in the past. Start by typing your **email address** and click **Continue**.
 
-	![Azure Active Directory の最初のプロンプト](./media/remoteapp-clients/Windows2.png)
+    ![First Azure Active Directory prompt](./media/remoteapp-clients/Windows2.png)
 
-3. 画面の指示に従って、Microsoft アカウント (LiveID) や組織 ID でサインインします。サインインすると、受信したすべての招待を一覧表示したページが表示されます。信頼する招待を選択し、 **[完了]** をタップします。
+3. Follow the instructions on the screen to sign in with your Microsoft account (LiveID) or Organization ID. Once signed in, you may be presented with a page listing all the invitations you have received. If you are, select the invitations you trust and click **Done**.
 
-	![Azure RemoteApp のクライアントの招待のページ](./media/remoteapp-clients/Windows3.png)
+    ![Invitations page of the Azure RemoteApp client](./media/remoteapp-clients/Windows3.png)
 
-4. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。アプリのいずれかをダブルクリックして起動し、使用を開始します。
+4. After accepting your invitations, the list of apps you have access to will be downloaded to your device and made available in the Connection Center. Double-click one of the apps to launch it and start using it.
 
-	![Azure RemoteApp のクライアントの接続センター](./media/remoteapp-clients/Windows4.png)
+    ![Connection Center of the Azure RemoteApp client](./media/remoteapp-clients/Windows4.png)
 
-5. まだ、だれも招待を送信していなくても、デモ コレクションでサービスをテストすることができます。 デモ コレクションへはアクセスできますので、サービスをテストすることができます。
+5. If no one has sent you an invitation yet, don't worry we've got you covered! You'll still have access to a demo collection so you can test out the service.
 
-	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/Windows5.png)
+    ![Demo feed for Azure RemoteApp](./media/remoteapp-clients/Windows5.png)
 
-## Windows Phone 8.1
+## <a name="windows-phone-8.1"></a>Windows Phone 8.1
 
-Windows Phone 8.1 ストアから、Microsoft リモート デスクトップ アプリをインストールすると、**[リモート デスクトップ]** にアプリの一覧が表示されます。
+Once you have installed the Microsoft Remote Desktop app from the Windows Phone 8.1 store, you can find it in your app list under **Remote Desktop**.
 
-1. アプリを起動すると、まだアプリを使用していない場合は、空の接続センターに移動します。Azure RemoteApp を開始するには、画面の下部にある追加ボタン **[+]** をタップします。
+1. Launching the app brings you directly to an empty Connection Center, unless you've already been using the app. To get started with Azure RemoteApp, tap the add button **""+""** at the bottom of the screen.
 
-	![空の接続センター](./media/remoteapp-clients/WinPhone1.png)
+    ![Empty Connection Center](./media/remoteapp-clients/WinPhone1.png)
 
-2. 次に、**[Azure RemoteApp]** をタップします。
+2. Next, tap on **Azure RemoteApp**.
 
-	![項目ページの追加](./media/remoteapp-clients/WinPhone2.png)
+    ![Add item page](./media/remoteapp-clients/WinPhone2.png)
 
-3. サービスにアクセスし、プロセスを開始するには、メールアドレスでサインインし、**[接続]** をタップします。
+3. You need to sign in with your email address to access the service, to start that process, tap **connect**.
 
-	![サインインのプロンプト](./media/remoteapp-clients/WinPhone3.png)
+    ![Sign in prompt](./media/remoteapp-clients/WinPhone3.png)
 
-4. 次のページで **メール アドレス** を入力し、**[続行]** をタップします。これで、Azure Active Directory を使用したサインイン プロセスが開始されます。
+4. On the next page, type in your **email address** and tap **Continue**. This begins the sign in process using Azure Active Directory.
 
-	![Azure Active Directory の最初のページ](./media/remoteapp-clients/WinPhone4.png)
+    ![First Azure Active Directory page](./media/remoteapp-clients/WinPhone4.png)
 
-5. 画面の指示に従って、Microsoft アカウント (LiveID) や組織 ID でサインインします。サインインすると、受信したすべての招待を一覧表示したページが表示されます。信頼する招待を選択し、 **[保存]** をタップします。
+5. Follow the instructions on the screen to sign in with your Microsoft account (LiveID) or Organization ID. Once signed in, you may be presented with a page listing all the invitations you have received. If you are, select the invitations you trust and tap **save**.
 
-	![招待のページ](./media/remoteapp-clients/WinPhone5.png)
+    ![Invitations page](./media/remoteapp-clients/WinPhone5.png)
 
-6. 招待を受け付けると、アクセスできるアプリの一覧がデバイスにダウンロードされ、接続センターで使用可能になります。アプリのいずれかをタップして起動し、使用を開始します。
+6. After accepting your invitations, the list of apps you have access to will be downloaded to your device and made available in the Connection Center. Tap one of the apps to launch it and start using it.
 
-	![フィードによる接続センター](./media/remoteapp-clients/WinPhone6.png)
+    ![Connection Center with a feed](./media/remoteapp-clients/WinPhone6.png)
 
-7. まだ招待がない場合でも、サービスを試すことができます。サービスを試すには、プロンプトが表示されたら、**[はい]** をタップします。
+7. If you do not have an invitation yet, you can still try out the service. To do so, tap **yes** when prompted.
 
-	![デモ フィードのプロンプト](./media/remoteapp-clients/WinPhone7.png)
+    ![Demo feed prompt](./media/remoteapp-clients/WinPhone7.png)
 
-8. これで基本的なアプリのセットにアクセスし、RemoteApp を開始できます。
+8. This will give you access to a basic set of apps to get you started with RemoteApp.
 
-	![Azure RemoteApp のデモ フィード](./media/remoteapp-clients/WinPhone8.png)
+    ![Demo feed for Azure RemoteApp](./media/remoteapp-clients/WinPhone8.png)
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

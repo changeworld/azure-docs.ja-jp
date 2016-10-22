@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center で Endpoint Protection をインストールする | Microsoft Azure"
-   description="このドキュメントでは、";**Endpoint Protection をインストールします**"; という Azure Security Center の推奨事項を実装する方法について説明します。"
+   pageTitle="Install Endpoint Protection in Azure Security Center | Microsoft Azure"
+   description="This document shows you how to implement the Azure Security Center recommendation **Install Endpoint Protection**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,46 +16,55 @@
    ms.date="08/16/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center で Endpoint Protection をインストールする
 
-マルウェア対策を有効にしていない場合、Azure Security Center では、マルウェア対策プログラムを Azure 仮想マシン (VM) にプロビジョニングするよう推奨されます。この推奨事項は、Windows VM にのみ適用されます。
+# <a name="install-endpoint-protection-in-azure-security-center"></a>Install Endpoint Protection in Azure Security Center
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+Azure Security Center will recommend that you provision an antimalware program to your Azure virtual machines (VMs) if antimalware is not already enabled. This recommendation applies to Windows VMs only.
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. **[推奨事項]** ブレードで、**[Endpoint Protection をインストールします]** を選択します。![Select Install Endpoint Protection][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. **[Endpoint Protection をインストールします]** ブレードが開き、マルウェア対策が有効になっていない VM の一覧が表示されます。マルウェア対策をインストールする VM を一覧から選択し、**[VM にインストール]** をクリックします。![Select VMs to install antimalware on][2]
+1. In the **Recommendations** blade, select **Install Endpoint Protection**.
+![Select Install Endpoint Protection][1]
 
-3. **[Select Endpoint Protection (Endpoint Protection の選択)]** ブレードが開き、使用するマルウェア対策ソリューションを選択できます。この例では、**[Microsoft マルウェア対策]** を選択します。![Select Endpoint Protection][3]
+2. The **Install Endpoint Protection** blade opens displaying a list of VMs without antimalware enabled. Select from the list the VMs that you want to install antimalware on and click **Install on VMs**.
+![Select VMs to install antimalware on][2]
 
-4. マルウェア対策ソリューションに関する追加情報が表示されます。**[作成]** を選択します。![マルウェア対策ソリューションの作成][4]
+3. The **Select Endpoint Protection** blade opens to allow you to select the antimalware solution you want to use. In this example, let's select **Microsoft Antimalware**.
+![Select Endpoint Protection][3]
 
-5. **[拡張機能の追加]** ブレードで必要な構成設定を入力し、**[OK]** を選択します。構成設定の詳細については、「[マルウェア対策の既定の構成とカスタム構成](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration)」を参照してください。
+4. Additional information about the antimalware solution is displayed. Select **Create**.
+![Create antimalware solution][4]
 
-これで、[Microsoft マルウェア対策](../azure-security-antimalware.md)が、選択した VM でアクティブになりました。
+5. Enter the required configuration settings on the **Add Extension** blade, and then select **OK**. To learn more about the configuration settings, see [Default and Custom Antimalware Configuration](../security/azure-security-antimalware.md#default-and-custom-antimalware-configuration).
 
-## 関連項目
+[Microsoft Antimalware](../azure-security-antimalware.md) is now active on the selected VMs.
 
-この記事では、"Endpoint Protection をインストールします" という Security Center の推奨事項を実装する方法について説明しました。 Azure でのマルウェア対策プログラムの有効化について詳しくは、以下を参照してください。
+## <a name="see-also"></a>See also
 
-- 「[Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../azure-security-antimalware.md)」-- Microsoft マルウェア対策をデプロイする方法を説明しています。
+This article showed you how to implement the Security Center recommendation "Install Endpoint Protection." To learn more about enabling an antimalware program in Azure, see the following:
 
-セキュリティ センターの詳細については、次を参照してください。
+- [Microsoft Antimalware for Cloud Services and Virtual Machines](../azure-security-antimalware.md) -- Learn how to deploy Microsoft antimalware.
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- セキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+To learn more about Security Center, see the following:
+
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
 
 <!--Image references-->
-[1]: ./media/security-center-install-endpoint-protection/select-install-endpoint-protection.png
-[2]: ./media/security-center-install-endpoint-protection/install-endpoint-protection-blade.png
-[3]: ./media/security-center-install-endpoint-protection/select-endpoint-protection.png
-[4]: ./media/security-center-install-endpoint-protection/create-antimalware-solution.png
+[1]:./media/security-center-install-endpoint-protection/select-install-endpoint-protection.png
+[2]:./media/security-center-install-endpoint-protection/install-endpoint-protection-blade.png
+[3]:./media/security-center-install-endpoint-protection/select-endpoint-protection.png
+[4]:./media/security-center-install-endpoint-protection/create-antimalware-solution.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

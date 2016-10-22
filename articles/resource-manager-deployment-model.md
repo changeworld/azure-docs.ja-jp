@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager とクラシック デプロイ | Microsoft Azure"
-   description="Resource Manager のデプロイ モデルと従来 (あるいはサービス管理) のデプロイ モデルの違いについて説明します。"
+   pageTitle="Resource Manager and classic deployment | Microsoft Azure"
+   description="Describes the differences between the Resource Manager deployment model and the classic (or Service Management) deployment model."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,48 +16,49 @@
    ms.date="07/29/2016"
    ms.author="tomfitz"/>
 
-# Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
-このトピックでは、Azure Resource Manager と従来のデプロイ モデルについて、また、リソースの状態や、各リソースのデプロイにどちらの方法を使用したかについて説明します。Resource Manager デプロイ モデルには従来のデプロイとの重要な違いがあり、2 つのモデルは互いにまったく互換性を持ちません。リソースのデプロイと管理を簡単にするために、新しいリソースには Resource Manager を利用し、可能であれば、Resource Manager で既存のリソースを再デプロイすることが推奨されています。
+# <a name="azure-resource-manager-vs.-classic-deployment:-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources
 
-これまでに Resource Manager を使用したことがない場合は、まず「[Azure Resource Manager の概要](resource-group-overview.md)」で定義されている用語をご確認ください。
+In this topic, you learn about Azure Resource Manager and classic deployment models, the state of your resources, and why your resources were deployed with one or the other. The Resource Manager deployment model contains important differences from the classic deployment model, and the two models are not completely compatible with each other. To simplify the deployment and management of resources, Microsoft recommends that you use Resource Manager for new resources, and, if possible, redeploy existing resources through Resource Manager.
 
-## デプロイメント モデルの歴史
+If you are new to Resource Manager, you may want to first review the terminology defined in the [Azure Resource Manager overview](resource-group-overview.md).
 
-Azure では当初、クラシック デプロイメント モデルのみ用意されていました。このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。ソリューションをデプロイするには、クラシック ポータル経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
+## <a name="history-of-the-deployment-models"></a>History of the deployment models
 
-2014 年、Azure に Resource Manager が導入され、リソース グループの概念が追加されました。リソース グループとは、共通のライフサイクルが共有されるリソースのコンテナーです。Resource Manager のデプロイ モデルにはいくつかの利点があります。
+Azure originally provided only the classic deployment model. In this model, each resource existed independently; there was no way to group related resources together. Instead, you had to manually track which resources made up your solution or application, and remember to manage them in a coordinated approach. To deploy a solution, you had to either create each resource individually through the classic portal or create a script that deployed all the resources in the correct order. To delete a solution, you had to delete each resource individually. You could not easily apply and update access control policies for related resources. Finally, you could not apply tags to resources to label them with terms that help you monitor your resources and manage billing.
 
-- ソリューションのサービスを個別に処理するのではなく、すべてのサービスをデプロイ、管理、監視できます。
-- ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。
-- リソース グループに属するすべてのリソースにアクセス制御を適用できます。これらのポリシーは、リソース グループに新しいリソースが追加されたときに自動的に適用されます。
-- タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
-- JavaScript Object Notation (JSON) を使用してソリューションのインフラストラクチャを定義できます。JSON ファイルは Resource Manager テンプレートと呼ばれます。
-- 正しい順序でデプロイされるようにリソース間の依存性を定義できます。
+In 2014, Azure introduced Resource Manager, which added the concept of a resource group. A resource group is a container for resources that share a common lifecycle. The Resource Manager deployment model provides several benefits:
 
-Resource Manager が追加されたとき、すべてのリソースが遡及的に既定のリソース グループに追加されました。今、従来のデプロイでリソースを作成すると、デプロイ時にリソース グループを指定していなくても、リソースはそのサービスの既定のリソース グループ内に自動的に作成されます。ただし、リソース グループ内に存在するだけでは、リソースが Resource Manager モデルに変換されたことになりません。次のセクションでは、各サービスにおける 2 つのデプロイメント モデルの扱われ方を見ていきます。
+- You can deploy, manage, and monitor all the services for your solution as a group, rather than handling these services individually.
+- You can repeatedly deploy your solution throughout its lifecycle and have confidence your resources are deployed in a consistent state.
+- You can apply access control to all resources in your resource group, and those policies are automatically applied when new resources are added to the resource group.
+- You can apply tags to resources to logically organize all the resources in your subscription.
+- You can use JavaScript Object Notation (JSON) to define the infrastructure for your solution. The JSON file is known as a Resource Manager template.
+- You can define the dependencies between resources so they are deployed in the correct order.
 
-## モデルのサポートについて 
+When Resource Manager was added, all resources were retroactively added to default resource groups. If you create a resource through classic deployment now, the resource is automatically created within a default resource group for that service, even though you did not specify that resource group at deployment. However, just existing within a resource group does not mean that the resource has been converted to the Resource Manager model. We'll look at how each service handles the two deployment models in the next section. 
 
-リソースで使用するデプロイメント モデルを決定する際には、注意が必要なシナリオが 3 つあります。
+## <a name="understanding-support-for-the-models"></a>Understanding support for the models 
 
-1. サービスが Resource Manager をサポートしており、単一の種類にのみ対応している。
-2. サービスが Resource Manager をサポートしているが、2 つの種類に対応している (一方は Resource Manager、もう一方はクラシック)。このシナリオは、仮想マシン、ストレージ アカウント、仮想ネットワークにのみ該当します。
-3. サービスが Resource Manager をサポートしていない。
+When deciding which deployment model to use for your resources, there are three scenarios to be aware of:
 
-サービスが Resource Manager をサポートしているかどうかを確認するには、[Resource Manager でサポートされるプロバイダー](resource-manager-supported-services.md)についてのページを参照してください。
+1. The service supports Resource Manager and provides only a single type.
+2. The service supports Resource Manager but provides two types - one for Resource Manager and one for classic. This scenario applies only to virtual machines, storage accounts, and virtual networks.
+3. The service does not support Resource Manager.
 
-使用したいサービスが Resource Manager をサポートしていない場合、クラシック デプロイメントの使用を継続する必要があります。
+To discover whether or not a service supports Resource Manager, see [Resource Manager supported providers](resource-manager-supported-services.md).
 
-サービスが Resource Manager をサポートしており、なおかつ仮想マシン、ストレージ アカウント、仮想ネットワークのいずれでも**ない**場合は、問題なく Resource Manager を使用できます。
+If the service you wish to use does not support Resource Manager, you must continue using classic deployment.
 
-仮想マシン、ストレージ アカウント、仮想ネットワークについては、クラシック デプロイメントでリソースが作成された場合、クラシックの操作でそのリソースを操作し続ける必要があります。仮想マシン、ストレージ アカウント、または仮想ネットワークが Resource Manager デプロイメントで作成された場合は、Resource Manager の操作を使用し続ける必要があります。このような区別があるため、Resource Manager デプロイメントで作成されたリソースとクラシック デプロイメントで作成されたリソースがサブスクリプション内に混在する場合は特に、混乱を招くおそれがあります。リソースが同じ操作に対応しないため、そのような混在が予想外の結果を生むことがあります。
+If the service supports Resource Manager and **is not** a virtual machine, storage account or virtual network, you can use Resource Manager without any complications.
 
-場合によっては、Resource Manager コマンドを使用することで、クラシック デプロイメントで作成したリソースに関する情報を取得したり、クラシック リソースを別のリソース グループに移動するなどの管理タスクを実行したりできます。しかしこれらのケースから、この種類が Resource Manager の操作に対応しているという印象を持たないようにしてください。たとえば、クラシック デプロイメントで作成された仮想マシンを含むリソース グループがあるとします。例として、次の Resource Manager PowerShell コマンドを実行したとします。
+For virtual machines, storage accounts, and virtual networks, if the resource was created through classic deployment, you must continue to operate on it through classic operations. If the virtual machine, storage account, or virtual network was created through Resource Manager deployment, you must continue using Resource Manager operations. This distinction can get confusing when your subscription contains a mix of resources created through Resource Manager and classic deployment. This combination of resources can create unexpected results because the resources do not support the same operations.
+
+In some cases, a Resource Manager command can retrieve information about a resource created through classic deployment, or can perform an administrative task such as moving a classic resource to another resource group. But, these cases should not give the impression that the type supports Resource Manager operations. For example, suppose you have a resource group that contains a virtual machine that was created with classic deployment. If you run the following Resource Manager PowerShell command:
 
     Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 
-すると、仮想マシンが返されます。
+It returns the virtual machine:
     
     Name              : ExampleClassicVM
     ResourceId        : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.ClassicCompute/virtualMachines/ExampleClassicVM
@@ -67,112 +68,116 @@ Resource Manager が追加されたとき、すべてのリソースが遡及的
     Location          : westus
     SubscriptionId    : {guid}
 
-ただし、Resource Manager コマンドレット **Get-AzureRmVM** を実行した場合は、Resource Manager でデプロイされた仮想マシンのみが返されます。次のコマンドでは、クラシック デプロイメントで作成された仮想マシンは返されません。
+However, the Resource Manager cmdlet **Get-AzureRmVM** only returns virtual machines deployed through Resource Manager. The following command does not return the virtual machine created through classic deployment.
 
     Get-AzureRmVM -ResourceGroupName ExampleGroup
 
-仮想マシンを使用するときには、その他にも重要な考慮事項がいくつかあります。
+There are some other important considerations when working with virtual machines.
 
-- 従来のデプロイ モデルで作成された仮想マシンは Resource Manager で作成された仮想ネットワークに含めることができません。
-- Resource Manager のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要があります。
-- 従来のデプロイ モデルでデプロイされた仮想マシンは仮想ネットワークに含める必要がありません。
+- Virtual machines deployed with the classic deployment model cannot be included in a virtual network deployed with Resource Manager.
+- Virtual machines deployed with the Resource Manager deployment model must be included in a virtual network.
+- Virtual machines deployed with the classic deployment model don't have to be included in a virtual network.
 
-さまざまなデプロイ モデルから仮想ネットワークを接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](./virtual-network/virtual-networks-arm-asm-s2s.md)」を参照してください。
+To learn about connecting virtual networks from different deployment models, see [Connect virtual networks from different deployment models in the portal](./vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
-Resource Manager で作成したリソースだけがタグに対応しています。従来のリソースにタグを適用することはできません。リソース マネージャーのタグの利用に関する詳細については、「[タグを利用して Azure リソースを整理する](resource-group-using-tags.md)」を参照してください。
+Only resources created through Resource Manager support tags. You cannot apply tags to classic resources. For more information about using tags in Resource Manager, see [Using tags to organize your Azure resources](resource-group-using-tags.md).
 
-## Resource Manager の特性
+## <a name="resource-manager-characteristics"></a>Resource Manager characteristics
 
-2 つのモデルをよく理解できるように、Resource Manager の種類の特性を確認してみましょう。
+To help you understand the two models, let's review the characteristics of Resource Manager types:
 
-- [Azure ポータル](https://portal.azure.com/)を使用した作成。
+- Created through the [Azure portal](https://portal.azure.com/).
 
-     ![Azure ポータル](./media/resource-manager-deployment-model/portal.png)
+     ![Azure portal](./media/resource-manager-deployment-model/portal.png)
 
-     Compute、Storage、Networking のリソースについては、Resource Manager と従来のデプロイのどちらかを使用できます。**[リソース マネージャー]** を選択します。
+     For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
-     ![Resource Manager のデプロイ](./media/resource-manager-deployment-model/select-resource-manager.png)
+     ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-- Resource Manager バージョンの Azure PowerShell コマンドレットを使用した作成。これらのコマンドは、次に示すように *Verb-AzureRmNoun* の形式となります。
+- Created with the Resource Manager version of the Azure PowerShell cmdlets. These commands have the format *Verb-AzureRmNoun*.
 
         New-AzureRmResourceGroupDeployment
 
-- REST 操作のための [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) を使用した作成。
+- Created through the [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx) for REST operations.
 
-- **arm** モードで実行される Azure CLI コマンドを使用した作成。
+- Created through Azure CLI commands run in the **arm** mode.
 
         azure config mode arm
         azure group deployment create 
 
-- リソース タイプの名前には **(classic)** は含まれません。下の画像ではタイプとして "**ストレージ アカウント**" が表示されています。
+- The resource type does not include **(classic)** in the name. The following image shows the type as **Storage account**.
 
-    ![Web アプリ](./media/resource-manager-deployment-model/resource-manager-type.png)
+    ![web app](./media/resource-manager-deployment-model/resource-manager-type.png)
 
-次の図のアプリケーションは、Resource Manager でデプロイしたリソースを 1 つのリソース グループに含める方法を示しています。
+The application shown in the following diagram shows how resources deployed through Resource Manager are contained in a single resource group.
 
   ![Resource Manager architecture](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
 
-さらに、リソース プロバイダー内にはリソース間の関係があります。
+Additionally, there are relationships between the resources within the resource providers:
 
-- 仮想マシンは BLOB ストレージにそのディスクを保存するための SRP で定義されている特定のストレージ アカウントに依存します。
-- 仮想マシンは、NRP (必須) と、CRP で定義されている可用性セット (オプション) で定義されている、特定の NIC を参照します。
-- NIC は、仮想マシンに割り当てられた IP アドレス (必須)、仮想ネットワークのサブネット(必須)、ネットワークのセキュリティ グループ (オプション) を参照します。
-- 仮想ネットワーク内のサブネットは、ネットワークセキュリティ グループ (オプション) を参照します。
-- Load Balancer のインスタンスは仮想マシンの NIC を含め(オプション)、Load Balancer パブリックまたはプライベート IP アドレス (オプション) を参照している IP アドレスのバックエンドプールを参照します。
+- A virtual machine depends on a specific storage account defined in the SRP to store its disks in blob storage (required).
+- A virtual machine references a specific NIC defined in the NRP (required) and an availability set defined in the CRP (optional).
+- A NIC references the virtual machine's assigned IP address (required), the subnet of the virtual network for the virtual machine (required), and to a Network Security Group (optional).
+- A subnet within a virtual network references a Network Security Group (optional).
+- A load balancer instance references the backend pool of IP addresses that include the NIC of a virtual machine (optional) and references a load balancer public or private IP address (optional).
 
-## 従来のデプロイの特性
+## <a name="classic-deployment-characteristics"></a>Classic deployment characteristics
 
-従来のデプロイ モデルはサービス管理モデルとしても知られています。
+You may also know the classic deployment model as the Service Management model.
 
-従来のデプロイで作成されたリソースには次の特性があります。
+Resources created in the classic deployment model share the following characteristics:
 
-- [クラシック ポータル](https://manage.windowsazure.com)を使用した作成。
+- Created through the [classic portal](https://manage.windowsazure.com)
 
-     ![クラシック ポータル](./media/resource-manager-deployment-model/classic-portal.png)
+     ![Classic portal](./media/resource-manager-deployment-model/classic-portal.png)
 
-     または、Azure ポータルを使い、**クラシック** デプロイメントを指定します (Compute、Storage、Networking の場合)。
+     Or, the Azure portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
-     ![従来のデプロイ](./media/resource-manager-deployment-model/select-classic.png)
+     ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
-- サービス管理バージョンの Azure PowerShell コマンドレットを使用した作成。これらのコマンド名は、次に示すように *Verb-AzureNoun* の形式となります。
+- Created through the Service Management version of the Azure PowerShell cmdlets. These command names have the format *Verb-AzureNoun*.
 
         New-AzureVM 
 
-- REST 操作のための[サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) を使用した作成。
-- **asm** モードで実行される Azure CLI コマンドを使用した作成。
+- Created through the [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) for REST operations.
+- Created through Azure CLI commands run in **asm** mode.
 
         azure config mode asm
         azure vm create 
 
-- リソース タイプの名前に **(classic)** が含まれます。下の画像ではタイプとして "**ストレージ アカウント (クラシック)**" が表示されています。
+- The resource type includes **(classic)** in the name. The following image shows the type as **Storage account (classic)**.
 
-    ![従来のタイプ](./media/resource-manager-deployment-model/classic-type.png)
+    ![classic type](./media/resource-manager-deployment-model/classic-type.png)
 
-Azure ポータルを利用し、従来のデプロイで作成されたリソースを引き続き管理できます。
+You can still use the Azure portal to manage resources that were created through classic deployment.
 
-Azure サービス管理では、仮想マシンをホストするためのコンピューティング、ストレージ、またはネットワークは次によって提供されています:
+In Azure Service Management, the compute, storage, or network resources for hosting virtual machines are provided by:
 
-- 仮想マシンをホストするためのコンテナーとして機能する必須のクラウド サービス (コンピューティング) 仮想マシンにはネットワーク インターフェイス カード (NIC) が自動的に提供され、IP アドレスは Azure によって割り当てられます。さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースのバーチャル マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースのバーチャル マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
-- オペレーティング システム、一時、および追加のデータ ディスク (ストレージ) を含む、仮想マシンの VHD を格納するのに必要なストレージ アカウント。
-- サブネット化された構造を作成できる、また仮想マシンが配置されているサブネットを指定することができる、追加のコンテナーとして機能する、省略可能な仮想ネットワーク (ネットワーク)。
+- A required cloud service that acts as a container for hosting virtual machines (compute). Virtual machines are automatically provided with a network interface card (NIC) and an IP address assigned by Azure. Additionally, the cloud service contains an external load balancer instance, a public IP address, and default endpoints to allow remote desktop and remote PowerShell traffic for Windows-based virtual machines and Secure Shell (SSH) traffic for Linux-based virtual machines.
+- A required storage account that stores the VHDs for a virtual machine, including the operating system, temporary, and additional data disks (storage).
+- An optional virtual network that acts as an additional container, in which you can create a subnetted structure and designate the subnet on which the virtual machine is located (network).
 
-コンポーネントと Azure サービス管理のための関係を示します。
+Here are the components and their relationships for Azure Service Management.
 
   ![classic architecture](./media/virtual-machines-azure-resource-manager-architecture/arm_arch1.png)
 
-## クラシックから Resource Manager への移行
+## <a name="migrating-from-classic-to-resource-manager"></a>Migrating from classic to Resource Manager
 
-クラシック デプロイメントから Resource Manager デプロイメントにリソースを移行する準備ができたら、次のページを参照してください。
+If you are ready to migrate your resources from classic deployment to Resource Manager deployment, see:
 
-1. [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-2. [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
-3. [Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
-4. [Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](./virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
+1. [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+2. [Platform supported migration of IaaS resources from Classic to Azure Resource Manager](./virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+3. [Migrate IaaS resources from classic to Azure Resource Manager by using Azure PowerShell](./virtual-machines/virtual-machines-windows-ps-migration-classic-resource-manager.md)
+4. [Migrate IaaS resources from classic to Azure Resource Manager by using Azure CLI](./virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
-- Resource Manager テンプレートの構造について詳しくは、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- テンプレートをデプロイするためのコマンドについては、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+- To walkthrough the creation of template that defines a virtual machine, storage account, and virtual network, see [Resource Manager template walkthrough](resource-manager-template-walkthrough.md).
+- To learn about the structure of Resource Manager templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+- To see the commands for deploying a template, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

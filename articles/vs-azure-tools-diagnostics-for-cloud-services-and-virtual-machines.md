@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure クラウド サービスおよび仮想マシン用の診断の構成 | Microsoft Azure"
-   description="Azure Cloud Services と Azure Virtual Machines (VM) を Visual Studio でデバッグするために必要な診断情報を構成する方法について説明します。"
+   pageTitle="Configuring Diagnostics for Azure Cloud Services and Virtual Machines | Microsoft Azure"
+   description="Describes how to configure diagnostics information for debugging Azure cloude services and virtual machines (VMs) in Visual Studio."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,171 +15,172 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Azure クラウド サービスおよび仮想マシン用の診断の構成
 
-Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用すると Azure 診断が構成しやすくなります。Azure 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。Azure の診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+# <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Configuring Diagnostics for Azure Cloud Services and Virtual Machines
 
-このトピックでは、Azure クラウド サービスをデプロイする前と後、さらに Azure 仮想マシンを対象に、Visual Studio で Azure 診断を有効にして構成する方法を示します。また、収集する診断情報の種類を選択する方法と、収集された情報を表示する方法についても取り上げます。
+When you need to troubleshoot an Azure cloud service or Azure virtual machine, you can configure Azure diagnostics more easily by using Visual Studio. Azure diagnostics captures system data and logging data on the virtual machines and virtual machine instances that run your cloud service and transfers that data into a storage account of your choice. See [Enable diagnostics logging for web apps in Azure App Service](./app-service-web/web-sites-enable-diagnostic-log.md) for more information about diagnostics logging in Azure.
 
-Azure 診断は、次の方法で構成できます。
+This topic shows you how to enable and configure Azure diagnostics in Visual Studio, both before and after deployment, as well as in Azure virtual machines. It also shows you how to select the types of diagnostics information to collect and how to view the information after it's collected.
 
-- 診断の構成設定は、Visual Studio の **[診断構成]** ダイアログ ボックスで変更できます。この設定は、diagnostics.wadcfgx (Azure SDK 2.4 以前の場合は diagnostics.wadcfg) というファイルに保存されます。構成ファイルを直接変更することもできます。構成ファイルを直接更新した場合、変更内容は、次回 Azure にクラウド サービスをデプロイするとき、またはエミュレーターでサービスを実行するときに有効になります。
+You can configure Azure Diagnostics in the following ways:
 
-- 実行中のクラウド サービスまたは実行中の仮想マシンの診断設定は、Visual Studio から**クラウド エクスプローラー**または**サーバー エクスプローラー**を使用して変更を加えます。
+- You can change diagnostics configuration settings through the **Diagnostics Configuration** dialog box in Visual Studio. The settings are saved in a file called diagnostics.wadcfgx (diagnostics.wadcfg in Azure SDK 2.4 or earlier). Alternatively, you can directly modify the configuration file. If you manually update the file, the configuration changes will take effect the next time you deploy the cloud service to Azure or run the service in the emulator.
 
-## Azure 2.6 の診断の変更
+- Use **Cloud Explorer** or **Server Explorer** in Visual Studio to change the diagnostics settings for a running cloud service or virtual machine.
 
-Visual Studio の Azure SDK 2.6 プロジェクトでは、次の変更が行われました。(これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります。)
+## <a name="azure-2.6-diagnostics-changes"></a>Azure 2.6 diagnostics changes
 
-- ローカル エミュレーターで診断がサポートされるようになりました。つまり Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できます。Visual Studio で Azure ストレージ エミュレーターを使ってクラウド サービス プロジェクトを実行している間に行われる診断データ収集が、接続文字列 `UseDevelopmentStorage=true` を指定すると有効になります。すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
+For Azure SDK 2.6 projects in Visual Studio, the following changes were made. (These changes also apply to later versions of Azure SDK.)
 
-- 診断ストレージ アカウントの接続文字列 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) の保存先が、再びサービス構成 (.cscfg) ファイルに戻されました。Azure SDK 2.5 では、診断ストレージ アカウントが diagnostics.wadcfgx ファイルで指定されていました。
+- The local emulator now supports diagnostics. This means you can collect diagnostics data and ensure your application is creating the right traces while you're developing and testing in Visual Studio. The connection string `UseDevelopmentStorage=true` enables diagnostics data collection while you're running your cloud service project in Visual Studio by using the Azure storage emulator. All diagnostics data is collected in the (Development Storage) storage account.
 
-Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに大きな違いがいくつかあります。
+- The diagnostics storage account connection string (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) is stored once again in the service configuration (.cscfg) file. In Azure SDK 2.5 the diagnostics storage account was specified in the diagnostics.wadcfgx file.
 
-- Azure SDK 2.4 以前では、診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的でラインタイムとして接続文字列を使用していました。
+There are some notable differences between how the connection string worked in Azure SDK 2.4 and earlier and how it works in Azure SDK 2.6 and later.
 
-- Azure SDK 2.6 以降では、Visual Studio が発行時に適切なストレージ アカウント情報を使って診断拡張機能を構成する目的で診断接続文字列を使用します。Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
+- In Azure SDK 2.4 and earlier, the connection string was used as a runtime by the diagnostics plugin to get the storage account information for transferring diagnostics logs.
 
-- PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。このパブリック構成ファイルは、PaaSDiagnostics.&lt;RoleName>.PubConfig.xml という形式の名前で Extensions フォルダーに作成されます。このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
+- In Azure SDK 2.6 and later, the diagnostics connection string is used by Visual Studio to configure the diagnostics extension with the appropriate storage account information during publishing. The connection string lets you define different storage accounts for different service configurations that Visual Studio will use when publishing. However, because the diagnostics plugin is no longer available (after Azure SDK 2.5), the .cscfg file by itself can't enable the Diagnostics Extension. You have to enable the extension separately through tools such as Visual Studio or PowerShell.
 
-- .cscfg ファイル内の接続文字列は、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で診断データにアクセスするときにも使用されるため、**[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
+- To simplify the process of configuring the diagnostics extension with PowerShell, the package output from Visual Studio also contains the public configuration XML for the diagnostics extension for each role. Visual Studio uses the diagnostics connection string to populate the storage account information present in the public configuration. The public config files are created in the Extensions folder and follow the pattern PaaSDiagnostics.&lt;RoleName>.PubConfig.xml. Any PowerShell based deployments can use this pattern to map each configuration to a Role.
 
-## Azure SDK 2.6 以降へのプロジェクトの移行
+- The connection string in the .cscfg file is also used by the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) to access the diagnostics data so it can appear in the **Monitoring** tab. The connection string is needed to configure the service to show verbose monitoring data in the portal.
 
-Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファイルで指定した診断ストレージ アカウントがある場合、そのアカウントが維持されます。さまざまなストレージ構成で異なるストレージ アカウントの使用の柔軟性を利用するには、接続文字列をプロジェクトに手動で追加する必要があります。Azure SDK 2.4 以前から Azure SDK 2.6 にプロジェクトを移行する場合は、診断接続文字列が保持されます。ただし、前のセクションでも触れたように、Azure SDK 2.6 では接続文字列の扱いが変更されているので注意してください。
+## <a name="migrating-projects-to-azure-sdk-2.6-and-later"></a>Migrating projects to Azure SDK 2.6 and later
 
-### 使用する診断ストレージ アカウントを Visual Studio がどのように決定するか
+When migrating from Azure SDK 2.5 to Azure SDK 2.6 or later, if you had a diagnostics storage account specified in the .wadcfgx file, then it will stay there. To take advantage of the flexibility of using different storage accounts for different storage configurations, you'll have to manually add the connection string to your project. If you're migrating a project from Azure SDK 2.4 or earlier to Azure SDK 2.6, then the diagnostics connection strings are preserved. However, please note the changes in how connection strings are treated in Azure SDK 2.6 as specified in the previous section.
 
-- 診断接続文字列が .cscfg ファイルに指定されている場合、Visual Studio は、発行時のほか、パッケージ化時にパブリック構成の xml ファイルを生成するときに、.cscfg ファイルに指定されている診断接続文字列を使用して診断拡張機能を構成します。
+### <a name="how-visual-studio-determines-the-diagnostics-storage-account"></a>How Visual Studio determines the diagnostics storage account
 
-- 診断接続文字列が .cscfg ファイルに指定されていない場合、Visual Studio は .wadcfgx ファイルに指定されたストレージ アカウントを使用して、発行時、およびパッケージ化におけるパブリック構成 xml ファイルの生成時に診断拡張機能を構成するようにフォールバックします。
+- If a diagnostics connection string is specified in the .cscfg file, Visual Studio uses it to configure the diagnostics extension when publishing, and when generating the public configuration xml files during packaging.
 
-- .cscfg ファイルの診断接続文字列は、.wadcfgx ファイルのストレージ アカウントよりも優先されます。診断接続文字列が .cscfg ファイルに指定されている場合、Visual Studio はそちらを使用し、.wadcfgx のストレージ アカウントは無視します。
+- If no diagnostics connection string is specified in the .cscfg file, then Visual Studio falls back to using the storage account specified in the .wadcfgx file to configure the diagnostics extension when publishing, and generating the public configuration xml files when packaging.
 
-### 「開発ストレージ接続文字列の更新」チェック ボックスの機能
+- The diagnostics connection string in the .cscfg file takes precedence over the storage account in the .wadcfgx file. If a diagnostics connection string is specified in the .cscfg file, then Visual Studio uses that and ignores the storage account in .wadcfgx.
 
-**[Microsoft Azure への公開時に診断とキャッシュのための開発ストレージの接続文字列を Microsoft Azure ストレージ アカウントの資格情報で更新する]** チェック ボックスの機能は、発行時に指定した Azure ストレージ アカウントで開発ストレージ アカウントの接続文字列を更新することです。
+### <a name="what-does-the-"update-development-storage-connection-strings…"-checkbox-do?"></a>What does the "Update development storage connection strings…" checkbox do?
 
-たとえば、このチェック ボックスをオンにして、診断接続文字列で `UseDevelopmentStorage=true` を指定するとします。この診断接続文字列は、プロジェクトを Azure に発行するとき、公開ウィザードで指定されたストレージ アカウントに自動的に更新されます。ただし、実際のストレージ アカウントが診断接続文字列として指定されている場合は、そのアカウントが代わりに使用されます。
+The checkbox for **Update development storage connection strings for Diagnostics and Caching with Microsoft Azure storage account credentials when publishing to Microsoft Azure** gives you a convenient way to update any development storage account connection strings with the Azure storage account specified during publishing.
 
-## Azure SDK 2.4 以前と Azure SDK 2.5 以降の診断機能の違い
+For example, suppose you select this checkbox and the diagnostics connection string specifies `UseDevelopmentStorage=true`. When you publish the project to Azure, Visual Studio will automatically update the diagnostics connection string with the storage account you specified in the Publish wizard. However, if a real storage account was specified as the diagnostics connection string, then that account is used instead.
 
-プロジェクトを Azure SDK 2.4 から Azure SDK 2.5 以降にアップグレードする場合、次の診断機能の違いに留意してください。
+## <a name="diagnostics-functionality-differences-between-azure-sdk-2.4-and-earlier-and-azure-sdk-2.5-and-later"></a>Diagnostics functionality differences between Azure SDK 2.4 and earlier and Azure SDK 2.5 and later
 
-- **構成 API は非推奨となりました** – Azure SDK 2.4 以前のバージョンでは、プログラムから診断機能を構成できましたが、Azure SDK 2.5 以降ではプログラムによる診断の構成が非推奨扱いとなりました。現在、診断の構成をコードで定義している場合、その診断機能を引き続き利用するためには、移行したプロジェクトでそれらの設定を最初から構成し直す必要があります。Azure SDK 2.4 の診断構成ファイルは diagnostics.wadcfg で、Azure SDK 2.5 以降では diagnostics.wadcfgx です。
+If you're upgrading your project from Azure SDK 2.4 to Azure SDK 2.5 or later, you should bear in mind the following diagnostics functionality differences.
 
-- **クラウド サービス アプリケーションの診断はロール レベルでのみ構成でき、インスタンス レベルでは構成できません。**
+- **Configuration APIs are deprecated** – Programmatic configuration of diagnostics is available in Azure SDK 2.4 or earlier versions, but is deprecated in Azure SDK 2.5 and later. If your diagnostics configuration is currently defined in code, you'll need to reconfigure those settings from scratch in the migrated project in order for diagnostics to keep working. The diagnostics configuration file for Azure SDK 2.4 is diagnostics.wadcfg, and diagnostics.wadcfgx for Azure SDK 2.5 and later.
 
-- **アプリケーションをデプロイするたびに診断の構成が更新されます** – サーバー エクスプローラーで診断の構成を変更してからアプリを再デプロイした場合、これによってパリティの問題が発生する可能性があります。
+- **Diagnostics for cloud service applications can only be configured at the role level, not at the instance level.**
 
-- **Azure SDK 2.5 以降では、クラッシュ ダンプがコードからではなく診断構成ファイルで構成されます** - クラッシュ ダンプをコードから構成していた場合は、その構成を手動でコードから構成ファイルに移す必要があります。Azure SDK 2.6 への移行の際にクラッシュ ダンプは移行されません。
+- **Every time you deploy your app, the diagnostics configuration is updated** – This can cause parity issues if you change your diagnostics configuration from Server Explorer and then redeploy your app.
 
-## デプロイ前にクラウド サービス プロジェクトで診断を有効にする
+- **In Azure SDK 2.5 and later, crash dumps are configured in the diagnostics configuration file, not in code** – If you have crash dumps configured in code, you'll have to manually transfer the configuration from code to the configuration file, because the crash dumps aren't transferred during the migration to Azure SDK 2.6.
 
-サービスをデプロイ前にエミュレーターで実行するとき、Azure で実行するロールの診断データを Visual Studio で収集できます。Visual Studio で診断設定に対して行った変更はすべて、diagnostics.wadcfgx 構成ファイルに保存されます。これらの構成設定で、クラウド サービスのデプロイ時に診断データが保存されるストレージ アカウントを指定します。
+## <a name="enable-diagnostics-in-cloud-service-projects-before-deploying-them"></a>Enable diagnostics in cloud service projects before deploying them
 
-### デプロイ前に Visual Studio で診断を有効にするには
+In Visual Studio, you can choose to collect diagnostics data for roles that run in Azure, when you run the service in the emulator before deploying it. All changes to diagnostics settings in Visual Studio are saved in the diagnostics.wadcfgx configuration file. These configuration settings specify the storage account where diagnostics data is saved when you deploy your cloud service.
 
-1. 目的のロールのショートカット メニューで **[プロパティ]** を選択し、ロールの**プロパティ** ウィンドウの **[構成]** タブを選択します。
+### <a name="to-enable-diagnostics-in-visual-studio-before-deployment"></a>To enable diagnostics in Visual Studio before deployment
 
-1. **[診断]** セクションの **[診断を有効にする]** チェック ボックスがオンになっていることを確認します。
+1. On the shortcut menu for the role that interests you, choose **Properties**, and then choose the **Configuration** tab in the role’s **Properties** window.
+
+1. In the **Diagnostics** section, make sure that the **Enable Diagnostics** check box is selected.
 
     ![Accessing the Enable Diagnostics option](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796660.png)
 
-1. 省略記号 (...) のボタンを選択し、診断データを格納するストレージ アカウントを指定します。選択したストレージ アカウントが、診断データの保存先になります。
+1. Choose the ellipsis (…) button to specify the storage account where you want the diagnostics data to be stored. The storage account you choose will be the location where diagnostics data is stored.
 
     ![Specify the storage account to use](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796661.png)
 
-1. Azure ストレージ エミュレーター、Azure サブスクリプション、手動で入力した資格情報のうち、どれを使って接続するかを **[ストレージ接続文字列の作成]** ダイアログ ボックスで指定します。
+1. In the **Create Storage Connection String** dialog box, specify whether you want to connect using the Azure Storage Emulator, an Azure subscription, or manually entered credentials.
 
     ![Storage account dialog box](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796662.png)
 
-  - [Microsoft Azure ストレージ エミュレーター] オプションを選択すると、接続文字列は UseDevelopmentStorage=true に設定されます。
+  - If you choose the Microsoft Azure Storage Emulator option, the connection string is set to UseDevelopmentStorage=true.
 
-  - [サブスクリプション] オプションを選択した場合は、使用する Azure サブスクリプションとアカウント名を選択できます。[アカウントの管理] ボタンをクリックすることで、Azure サブスクリプションを管理できます。
+  - If you choose the Your subscription option, you can choose the Azure subscription you want to use and the account name. You can choose the Manage Accounts button to manage your Azure subscriptions.
 
-  - [手動で入力された資格情報] オプションを選択すると、使用する Azure アカウントの名前とキーの入力が求められます。
+  - If you choose the Manually entered credentials option, you're prompted to enter the name and key of the Azure account you want to use.
 
-1. **[構成]** を選択して、**[診断構成]** ダイアログ ボックスを表示します。**[全般]** と **[ログ ディレクトリ]** を除く各タブは、収集できる診断データのソースを表します。既定の **[全般]** タブでは、診断データの収集オプションとして、**[エラーのみ]**、**[すべての情報]**、**[カスタム プラン]** を指定できます。既定のオプションの **[エラーのみ]** では、警告またはトレース メッセージが転送されないため、必要とするストレージ容量が最小限で済みます。[すべての情報] オプションは転送する情報量が最も多いため、ストレージ コストが最も高いオプションです。
+1. Choose the **Configure** button to view the **Diagnostics configuration** dialog box. Each tab (except for **General** and **Log Directories**) represents a diagnostic data source that you can collect. The default tab, **General**, offers you the following diagnostics data collection options: **Errors only**, **All information**, and **Custom plan**. The default option, **Errors only**, takes the least amount of storage because it doesn’t transfer warnings or tracing messages. The All information option transfers the most information and is, therefore, the most expensive option in terms of storage.
 
     ![Enable Azure diagnostics and configuration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 
-1. この例では、収集するデータをカスタマイズできるよう、**[カスタム プラン]** オプションを選択します。
+1. For this example, select the **Custom plan** option so you can customize the data collected.
 
-1. **[ディスク クォータ (MB)]** ボックスでは、ストレージ アカウントで診断データ用に割り当てる容量を指定します。既定の値は必要に応じて変更可能です。
+1. The **Disk Quota in MB** box specifies how much space you want to allocate in your storage account for diagnostics data. You can change the default value if you want.
 
-1. 収集する診断データに対応する各タブで、**[<ログの種類> の転送を有効にする]** チェック ボックスをオンにします。たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。それ以外にも、診断データの種類ごとに必要な情報があれば指定します。各タブの構成情報については、このトピックの後半にある「**診断データのソースを構成する**」セクションを参照してください。
+1. On each tab of diagnostics data you want to collect, select its **Enable Transfer of <log type>** check box. For example, if you want to collect application logs, select the **Enable transfer of Application Logs** check box on the **Application Logs** tab. Also, specify any other information required by each diagnostics data type. See the section **Configure diagnostics data sources** later in this topic for configuration information on each tab.
 
-1. 目的の診断データの収集をすべて有効にしたら、**[OK]** ボタンをクリックします。
+1. After you’ve enabled collection of all the diagnostics data you want, choose the **OK** button.
 
-1. Visual Studio で Azure クラウド サービス プロジェクトを通常どおり実行します。アプリケーションを使用すると、有効にしたログ情報が、指定した Azure ストレージ アカウントに保存されます。
+1. Run your Azure cloud service project in Visual Studio as usual. As you use your application, the log information that you enabled is saved to the Azure storage account you specified.
 
-## Azure Virtual Machines で診断を有効にする
+## <a name="enable-diagnostics-in-azure-virtual-machines"></a>Enable diagnostics in Azure virtual machines
 
-Azure Virtual Machines の診断データを Visual Studio で収集することができます。
+In Visual Studio, you can choose to collect diagnostics data for Azure virtual machines.
 
-### Azure Virtual Machines で診断を有効にするには
+### <a name="to-enable-diagnostics-in-azure-virtual-machines"></a>To enable diagnostics in Azure virtual machines
 
-1. **サーバー エクスプローラー**で [Azure] ノードを選択し、まだ接続していない場合は Azure サブスクリプションに接続します。
+1. In **Server Explorer**, choose the Azure node and then connect to your Azure subscription, if you're not already connected.
 
-1. **[Virtual Machines]** ノードを展開します。新しい仮想マシンを作成するか、既存の仮想マシンを選択してください。
+1. Expand the **Virtual Machines** node. You can create a new virtual machine, or select one that's already there.
 
-1. 目的の仮想マシンのショートカット メニューで **[構成]** を選択します。[仮想マシンの構成] ダイアログ ボックスが表示されます。
+1. On the shortcut menu for the virtual machine that interests you, choose **Configure**. This shows the virtual machine configuration dialog box.
 
     ![Configuring an Azure virtual machine](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796663.png)
 
-1. Microsoft Monitoring Agent 診断拡張機能がまだインストールされていない場合は追加します。この拡張機能で、Azure 仮想マシンに関する診断データを収集することができます。[インストールされている拡張機能] の一覧で、[使用可能な拡張機能を選択してください] ドロップダウン メニューを選択し、[Microsoft Monitoring Agent 診断] を選択します。
+1. If it's not already installed, add the Microsoft Monitoring Agent Diagnostics extension. This extension lets you gather diagnostics data for the Azure virtual machine. In the Installed Extensions list, choose the Select an available extension drop-down menu and then choose Microsoft Monitoring Agent Diagnostics.
 
     ![Installing an Azure virtual machine extension](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766024.png)
 
-    >[AZURE.NOTE] 他の診断拡張機能も仮想マシンで使用できます。詳細については、「Azure VM 拡張機能と機能」を参照してください。
+    >[AZURE.NOTE] Other diagnostics extensions are available for your virtual machines. For more information, see Azure VM Extensions and Features.
 
-1. **[追加]** ボタンをクリックし、拡張機能を追加して、その **[診断構成]** ダイアログ ボックスを表示します。
+1. Choose the **Add** button to add the extension and view its **Diagnostics configuration** dialog box.
 
-1. **[構成]** ボタンを選択してストレージ アカウントを指定し、**[OK]** ボタンをクリックします。
+1. Choose the **Configure** button to specify a storage account and then choose the **OK** button.
 
-    **[全般]** と **[ログ ディレクトリ]** を除く各タブは、収集できる診断データのソースを表します。
+    Each tab (except for **General** and **Log Directories**) represents a diagnostic data source that you can collect.
 
     ![Enable Azure diagnostics and configuration](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 
-    既定の **[全般]** タブでは、診断データの収集オプションとして、**[エラーのみ]**、**[すべての情報]**、**[カスタム プラン]** を指定できます。既定のオプションの **[エラーのみ]** では、警告またはトレース メッセージが転送されないため、必要とするストレージ容量が最小限で済みます。**[すべての情報]** オプションは転送する情報量が最も多いため、ストレージ コストが最も高いオプションです。
+    The default tab, **General**, offers you the following diagnostics data collection options: **Errors only**, **All information**, and **Custom plan**. The default option, **Errors only**, takes the least amount of storage because it doesn’t transfer warnings or tracing messages. The **All information** option transfers the most information and is, therefore, the most expensive option in terms of storage.
 
-1. この例では、収集するデータをカスタマイズできるよう、**[カスタム プラン]** オプションを選択します。
+1. For this example, select the **Custom plan** option so you can customize the data collected.
 
-1. **[ディスク クォータ (MB)]** ボックスでは、ストレージ アカウントで診断データ用に割り当てる容量を指定します。既定の値は必要に応じて変更可能です。
+1. The **Disk Quota in MB** box specifies how much space you want to allocate in your storage account for diagnostics data. You can change the default value if you want.
 
-1. 収集する診断データに対応する各タブで、**[<ログの種類> の転送を有効にする]** チェック ボックスをオンにします。
+1. On each tab of diagnostics data you want to collect, select its **Enable Transfer of <log type>** check box.
 
-    たとえば、アプリケーション ログを収集する場合は、**[アプリケーション ログ]** タブで **[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。それ以外にも、診断データの種類ごとに必要な情報があれば指定します。各タブの構成情報については、このトピックの後半にある「**診断データのソースを構成する**」セクションを参照してください。
+    For example, if you want to collect application logs, select the **Enable transfer of Application Logs** check box on the **Application Logs** tab. Also, specify any other information required by each diagnostics data type. See the section **Configure diagnostics data sources** later in this topic for configuration information on each tab.
 
-1. 目的の診断データの収集をすべて有効にしたら、**[OK]** ボタンをクリックします。
+1. After you’ve enabled collection of all the diagnostics data you want, choose the **OK** button.
 
-1. 更新したプロジェクトを保存します。
+1. Save the updated project.
 
-    仮想マシンが更新されたことを示すメッセージが **[Microsoft Azure のアクティビティ ログ]** ウィンドウに表示されます。
+    You'll see a message in the **Microsoft Azure Activity Log** window that the virtual machine has been updated.
 
-## 診断データのソースを構成する
+## <a name="configure-diagnostics-data-sources"></a>Configure diagnostics data sources
 
-診断データの収集を有効にしたら、収集対象のデータ ソースと収集する情報を厳密に選択できます。以降、**[診断構成]** ダイアログ ボックスの一連のタブと各構成オプションについて説明します。
+After you enable diagnostics data collection, you can choose exactly what data sources you want to collect and what information is collected. The following is a list of tabs in the **Diagnostics configuration** dialog box and what each configuration option means.
 
-### アプリケーション ログ
+### <a name="application-logs"></a>Application logs
 
-**アプリケーション ログ**には Web アプリケーションによって生成された診断情報が記録されます。アプリケーション ログを取り込むには、**[アプリケーション ログの転送を有効にする]** チェック ボックスをオンにします。アプリケーション ログをストレージ アカウントに転送する間隔 (分) は、**[転送期間 (分)]** の値を変更することで増減できます。また、ログに取り込む情報の量は、[ログ レベル] の値を設定することによって変更できます。たとえば、取り込む情報の量を増やすには **[詳細]** を、重要なエラーのみ取り込むには **[重大]** を選択してください。アプリケーション ログを出力する特定の診断プロバイダーがある場合は、プロバイダーの GUID を **[プロバイダー GUID]** ボックスに追加することでログを取り込むことができます。
+**Application logs** contain diagnostics information produced by a web application. If you want to capture application logs, select the **Enable transfer of Application Logs** check box. You can increase or decrease the number of minutes when the application logs are transferred to your storage account by changing the **Transfer Period (min)** value. You can also change the amount of information captured in the log by setting the Log level value. For example, you can choose **Verbose** to get more information or choose **Critical** to capture only critical errors. If you have a specific diagnostics provider that emits application logs, you can capture them by adding the provider’s GUID to the **Provider GUID** box.
 
   ![Application Logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
-  アプリケーション ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+  See [Enable diagnostics logging for web apps in Azure App Service](./app-service-web/web-sites-enable-diagnostic-log.md) for more information about application logs.
 
-### Windows イベント ログ
+### <a name="windows-event-logs"></a>Windows event logs
 
-Windows イベント ログを取り込むには、**[Windows イベント ログの転送を有効にする]** チェック ボックスをオンにします。イベント ログをストレージ アカウントに転送する間隔 (分) は、**[転送期間 (分)]** の値を変更することで増減できます。追跡するイベントの種類に該当するチェック ボックスをオンにしてください。
+If you want to capture Windows event logs, select the **Enable transfer of Windows Event Logs** check box. You can increase or decrease the number of minutes when the event logs are transferred to your storage account by changing the **Transfer Period (min)** value. Select the check boxes for the types of events that you want to track.
 
   ![Event Logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796664.png)
 
-Azure SDK 2.6 以降を使用している場合、カスタム データ ソースを指定するには、**[<データ ソース名>]** ボックスに目的のデータ ソースを入力し、その横の **[追加]** ボタンをクリックします。指定したデータ ソースが diagnostics.cfcfg ファイルに追加されます。
+If you're using Azure SDK 2.6 or later and want to specify a custom data source, enter it in the **<Data source name>** text box and then choose the **Add** button next to it. The data source is added to the diagnostics.cfcfg file.
 
-Azure SDK 2.5 を使用している場合、カスタム データ ソースを指定するには、以下の例のように、diagnostics.wadcfgx ファイルの `WindowsEventLog` セクションにそのデータ ソースを追加してください。
+If you're using Azure SDK 2.5 and want to specify a custom data source, you can add it to the `WindowsEventLog` section of the diagnostics.wadcfgx file, such as in the following example.
 
 ```
 <WindowsEventLog scheduledTransferPeriod="PT1M">
@@ -187,157 +188,157 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
    <DataSource name="CustomDataSource!*" />
 </WindowsEventLog>
 ```
-### パフォーマンス カウンター
+### <a name="performance-counters"></a>Performance counters
 
-パフォーマンス カウンターの情報は、システムのボトルネックを特定して、システムとアプリケーションのパフォーマンスを微調整するのに役立ちます。詳細については、[Azure アプリケーションでのパフォーマンス カウンターの作成と使用](https://msdn.microsoft.com/library/azure/hh411542.aspx)に関するページを参照してください。パフォーマンス カウンターを取り込むには、**[パフォーマンス カウンターの転送を有効にする]** チェック ボックスをオンにします。イベント ログをストレージ アカウントに転送する間隔 (分) は、**[転送期間 (分)]** の値を変更することで増減できます。追跡するパフォーマンス カウンターに該当するチェック ボックスをオンにしてください。
+Performance counter information can help you locate system bottlenecks and fine-tune system and application performance. See [Create and Use Performance Counters in an Azure Application](https://msdn.microsoft.com/library/azure/hh411542.aspx) for more information. If you want to capture performance counters, select the **Enable transfer of Performance Counters** check box. You can increase or decrease the number of minutes when the event logs are transferred to your storage account by changing the **Transfer Period (min)** value. Select the check boxes for the performance counters that you want to track.
 
-  ![パフォーマンス カウンター](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758147.png)
+  ![Performance Counters](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758147.png)
 
-リストにないパフォーマンス カウンターを追跡するには、構文の候補を使用してパフォーマンス カウンターを入力し、**[追加]** ボタンをクリックします。追跡できるパフォーマンス カウンターは、仮想マシンのオペレーティング システムによって決まります。構文の詳細については、[カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193.aspx)に関するページを参照してください。
+To track a performance counter that isn’t listed, enter it by using the suggested syntax and then choose the **Add** button. The operating system on the virtual machine determines which performance counters you can track. For more information about syntax, see [Specifying a Counter Path](https://msdn.microsoft.com/library/windows/desktop/aa373193.aspx).
 
-### インフラストラクチャ ログ
+### <a name="infrastructure-logs"></a>Infrastructure logs
 
-インフラストラクチャ ログには、Azure 診断インフラストラクチャや RemoteAccess モジュール、RemoteForwarder モジュールに関する情報が記録されます。インフラストラクチャ ログを取り込むには、**[診断インフラストラクチャのログの転送を有効にする]** チェック ボックスをオンにします。ログをストレージ アカウントに転送する間隔 (分) は、[転送期間 (分)] の値を変更することで増減できます。
+If you want to capture infrastructure logs, which contain information about the Azure diagnostic infrastructure, the RemoteAccess module, and the RemoteForwarder module, select the **Enable transfer of Infrastructure Logs** check box. You can increase or decrease the number of minutes when the logs are transferred to your storage account by changing the Transfer Period (min) value.
 
   ![Diagnostics Infrastructure Logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758148.png)
 
-  詳細については、「[Azure 診断を使用したログ データの収集](https://msdn.microsoft.com/library/azure/gg433048.aspx)」を参照してください。
+  See [Collect Logging Data by Using Azure Diagnostics](https://msdn.microsoft.com/library/azure/gg433048.aspx) for more information.
 
-### ログ ディレクトリ
+### <a name="log-directories"></a>Log directories
 
-ログ ディレクトリには、インターネット インフォメーション サービス (IIS) の要求から収集したデータや、失敗した要求から収集したデータ、選択したフォルダーのログ ディレクトリから収集したデータが格納されます。ログ ディレクトリを取り込むには、**[ログ ディレクトリの転送を有効にする]** チェック ボックスをオンにします。ログをストレージ アカウントに転送する間隔 (分) は、**[転送期間 (分)]** の値を変更することで増減できます。
+If you want to capture log directories, which contain data collected from log directories for Internet Information Services (IIS) requests, failed requests, or folders that you choose, select the **Enable transfer of Log Directories** check box. You can increase or decrease the number of minutes when the logs are transferred to your storage account by changing the **Transfer Period (min)** value.
 
-**[IIS ログ]** や **[失敗した要求ログ]** など、収集するログのボックスを選択できます。既定のストレージ コンテナー名が指定されていますが、必要に応じて名前を変更できます。
+You can select the boxes of the logs you want to collect, such as **IIS Logs** and **Failed Request** Logs. Default storage container names are provided, but you can change the names if you want.
 
-また、任意のフォルダーからログを取り込むことができます。**[絶対ディレクトリのログ]** セクションでパスを指定して、**[ディレクトリの追加]** ボタンを選択するだけです。ログは指定したコンテナーに取り込まれます。
+Also, you can capture logs from any folder. Just specify the path in the **Log from Absolute Directory** section and then choose the **Add Directory** button. The logs will be captured to the specified containers.
 
   ![Log Directories](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796665.png)
 
-### ETW ログ
+### <a name="etw-logs"></a>ETW logs
 
-[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803(v=vs.85).aspx) (ETW) を使用している場合、ETW ログを取り込むには、**[ETW のログの転送を有効にする]** チェック ボックスをオンにします。ログをストレージ アカウントに転送する間隔 (分) は、**[転送期間 (分)]** の値を変更することで増減できます。
+If you use [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803(v=vs.85).aspx) (ETW) and want to capture ETW logs, select the **Enable transfer of ETW Logs** check box. You can increase or decrease the number of minutes when the logs are transferred to your storage account by changing the **Transfer Period (min)** value.
 
-イベントは、指定したイベント ソースおよびイベント マニフェストから取り込まれます。イベント ソースを指定するには、**[イベント ソース]** セクションで名前を入力して、**[イベント ソースの追加]** ボタンを選択します。同様に、**[イベント マニフェスト]** セクションでイベント マニフェストを指定して、**[イベント マニフェストの追加]** ボタンを選択できます。
+The events are captured from event sources and event manifests that you specify. To specify an event source, enter a name in the **Event Sources** section and then choose the **Add Event Source** button. Similarly, you can specify an event manifest in the **Event Manifests** section and then choose the **Add Event Manifest** button.
 
   ![ETW logs](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766025.png)
 
-  ASP.NET では、[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) 名前空間のクラスによって ETW フレームワークがサポートされています。[System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) は、Microsoft.WindowsAzure.Diagnostics 名前空間を通じて、Azure 環境のログ記録フレームワークとして使用することができます。Microsoft.WindowsAzure.Diagnostics は、標準の [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) クラスを継承して拡張する名前空間です。詳細については、[Microsoft Azure でログ記録とトレースを制御する方法](https://msdn.microsoft.com/magazine/ff714589.aspx)と [Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページを参照してください。
+  The ETW framework is supported in ASP.NET through classes in the [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) namespace. The Microsoft.WindowsAzure.Diagnostics namespace, which inherits from and extends standard [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) classes, enables the use of [System.Diagnostics.aspx](https://msdn.microsoft.com/library/system.diagnostics(v=vs.110) as a logging framework in the Azure environment. For more information, see [Take Control of Logging and Tracing in Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) and [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md).
 
-### クラッシュ ダンプ
+### <a name="crash-dumps"></a>Crash dumps
 
-ロール インスタンスがクラッシュしたときの情報を取り込むには、**[クラッシュ ダンプの転送を有効にする]** チェック ボックスをオンにします(ASP.NET によってほとんどの例外が処理されるため、これは一般的に worker ロールに対してのみ機能します)。 クラッシュ ダンプに充てるストレージ容量の割合は、**[ディレクトリのクォータ (%)]** の値を変更することで増減できます。クラッシュ ダンプが保存されるストレージ コンテナーを変更できるほか、ダンプの種類として **[フル]** または **[ミニ]** を選択できます。
+If you want to capture information about when a role instance crashes, select the **Enable transfer of Crash Dumps** check box. (Because ASP.NET handles most exceptions, this is generally useful only for worker roles.) You can increase or decrease the percentage of storage space devoted to the crash dumps by changing the **Directory Quota (%)** value. You can change the storage container where the crash dumps are stored, and you can select whether you want to capture a **Full** or **Mini** dump.
 
-現在追跡されているプロセスが一覧表示されます。取り込むプロセスのチェック ボックスをオンにしてください。別のプロセスを一覧に追加するには、プロセス名を入力して、**[プロセスの追加]** ボタンを選択します。
+The processes currently being tracked are listed. Select the check boxes for the processes that you want to capture. To add another process to the list, enter the process name and then choose the **Add Process** button.
 
-  ![クラッシュ ダンプ](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766026.png)
+  ![Crash dumps](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766026.png)
 
-  詳細については、[Microsoft Azure でログ記録とトレースを制御する方法](https://msdn.microsoft.com/magazine/ff714589.aspx)と [Microsoft Azure 診断 (第 4 部: カスタム ログ コンポーネントと Azure 診断 1.3 の変更点)](http://justazure.com/microsoft-azure-diagnostics-part-4-custom-logging-components-azure-diagnostics-1-3-changes/) に関するページを参照してください。
+  See [Take Control of Logging and Tracing in Microsoft Azure](https://msdn.microsoft.com/magazine/ff714589.aspx) and [Microsoft Azure Diagnostics Part 4: Custom Logging Components and Azure Diagnostics 1.3 Changes](http://justazure.com/microsoft-azure-diagnostics-part-4-custom-logging-components-azure-diagnostics-1-3-changes/) for more information.
 
-## 診断データの表示
+## <a name="view-the-diagnostics-data"></a>View the diagnostics data
 
-クラウド サービスまたは仮想マシンの診断データを収集したら、そのデータを表示することができます。
+After you’ve collected the diagnostics data for a cloud service or a virtual machine, you can view it.
 
-### クラウド サービスの診断データを表示するには
+### <a name="to-view-cloud-service-diagnostics-data"></a>To view cloud service diagnostics data
 
-1. クラウド サービスを通常どおりにデプロイし、実行します。
+1. Deploy your cloud service as usual and then run it.
 
-1. Visual Studio が生成するレポートまたはストレージ アカウントのテーブルのどちらかに診断データが表示されます。レポートのデータを表示するには、**クラウド エクスプローラー**または**サーバー エクスプローラー**を開き、目的のロールのノードのショートカット メニューを開いて、**[診断データの表示]** を選択します。
+1. You can view the diagnostics data in either a report that Visual Studio generates or tables in your storage account. To view the data in a report, open **Cloud Explorer** or **Server Explorer**, open the shortcut menu of the node for the role that interests you, and then choose **View Diagnostic Data**.
 
     ![View Diagnostics Data](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC748912.png)
 
-    利用可能なデータを示したレポートが表示されます。
+    A report that shows the available data appears.
 
     ![Microsoft Azure Diagnostics Report in Visual Studio](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796666.png)
 
-    最新のデータが表示されない場合は、転送間隔の経過を待ちます。
+    If the most recent data doesn't appear, you might have to wait for the transfer period to elapse.
 
-    **[更新]** リンクを選択してデータをすぐに更新するか、**[自動更新]** ボックスの一覧から間隔を選択してデータが自動的に更新されるように設定します。エラー データをエクスポートするには、**[CSV にエクスポート]** ボタンをクリックして、スプレッドシートで開くことができるコンマ区切り値ファイルを作成します。
+    Choose the **Refresh** link to immediately update the data, or choose an interval in the **Auto-Refresh** dropdown list box to have the data updated automatically. To export the error data, choose the **Export to CSV** button to create a comma-separated value file you can open in a spreadsheet.
 
-    対象のデプロイに関連付けられたストレージ アカウントを**クラウド エクスプローラー**または**サーバー エクスプローラー**で開きます。
+    In **Cloud Explorer** or **Server Explorer**, open the storage account that's associated with the deployment.
 
-1. テーブル ビューアーで診断テーブルを開き、収集したデータを確認します。IIS ログおよびカスタム ログについては、BLOB コンテナーを開くことができます。テーブルを確認することで、目的のデータを含むテーブルまたは BLOB コンテナーを見つけることができます。テーブルのエントリにはログ ファイルのデータだけでなく EventTickCount、DeploymentId、Role、RoleInstance が含まれており、データを生成した仮想マシンとロール、さらに、生成された時刻を特定できます。
+1. Open the diagnostics tables in the table viewer, and then review the data that you collected. For IIS logs and custom logs, you can open a blob container. By reviewing the following table, you can find the table or blob container that contains the data that interests you. In addition to the data for that log file, the table entries contain EventTickCount, DeploymentId, Role, and RoleInstance to help you identify what virtual machine and role generated the data and when. 
 
-    |診断データ|説明|場所|
-    |---|---|---|
-    |アプリケーション ログ|System.Diagnostics.Trace クラスのメソッドを呼び出すことでコードが生成するログです。|WADLogsTable|
-    |イベント ログ|このデータは仮想マシンの Windows イベント ログから生成されます。Windows イベント ログは、Windows だけでなくアプリケーションやサービスも、エラーまたはログ情報をレポートするために使用します。|WADWindowsEventLogsTable|
-    |パフォーマンス カウンター|仮想マシンで使用できるパフォーマンス カウンターのデータを収集できます。パフォーマンス カウンターは、オペレーティング システムが備えている機能であり、メモリ使用率やプロセッサ時間など多くの統計情報を保持します。|WADPerformanceCountersTable|
-    |インフラストラクチャ ログ|診断インフラストラクチャ自体から生成されるログです。|WADDiagnosticInfrastructureLogsTable|
-    |IIS ログ|Web 要求を記録します。このログのデータは、クラウド サービスへのトラフィックがあまりに多いと膨大な量になることがあるため、必要なときにのみ収集、保存することをお勧めします。|失敗した要求のログは、デプロイ、ロール、インスタンスのパスにある wad-iis-failedreqlogs の BLOB コンテナーに格納されます。ログ全体は wad-iis-logfiles にあります。各ファイルのエントリは WADDirectories テーブルで生成されます。|
-    |クラッシュ ダンプ|この情報は、クラウド サービスのプロセス (通常は worker ロール) のバイナリ イメージとなります。|wad-crush-dumps BLOB コンテナー|
-    |カスタム ログ ファイル|ユーザー定義のログ データです。|ストレージ アカウントのカスタム ログ ファイルの場所をコードで指定できます。たとえば、カスタム BLOB コンテナーを指定できます。|
+  	|Diagnostic data|Description|Location|
+  	|---|---|---|
+  	|Application Logs|Logs that your code generates by calling methods of the System.Diagnostics.Trace class.|WADLogsTable|
+  	|Event Logs|This data is from the Windows event logs on the virtual machines. Windows stores information in these logs, but applications and services also use them to report errors or log information.|WADWindowsEventLogsTable|
+  	|Performance Counters|You can collect data on any performance counter that’s available on the virtual machine. The operating system provides performance counters, which include many statistics such as memory usage and processor time.|WADPerformanceCountersTable|
+  	|Infrastructure Logs|These logs are generated from the diagnostics infrastructure itself.|WADDiagnosticInfrastructureLogsTable|
+  	|IIS Logs|These logs record web requests. If your cloud service gets a significant amount of traffic, these logs can be quite lengthy, so you should collect and store this data only when you need it.|You can find failed-request logs in the blob container under wad-iis-failedreqlogs under a path for that deployment, role, and instance. You can find complete logs under wad-iis-logfiles. Entries for each file are made in the WADDirectories table.|
+  	|Crash dumps|This information provides binary images of your cloud service’s process (typically a worker role).|wad-crush-dumps blob container|
+  	|Custom log files|Logs of data that you predefined.|You can specify in code the location of custom log files in your storage account. For example, you can specify a custom blob container.|
 
-1. データが切り捨てられる場合は、その種類のデータのバッファーを拡張したり、仮想マシンからストレージ アカウントへのデータ転送の間隔を短くしてみてください。
+1. If data of any type is truncated, you can try increasing the buffer for that data type or shortening the interval between transfers of data from the virtual machine to your storage account.
 
-1. (省略可能) ストレージ コストを削減するために、折を見てストレージ アカウントからデータを消去してください。
+1. (optional) Purge data from the storage account occasionally to reduce overall storage costs.
 
-1. フル デプロイを行うと、Azure の diagnostics.cscfg ファイル (Azure SDK 2.5 の場合は .wadcfgx) が更新され、診断構成に対する変更があれば、クラウド サービスによってピックアップされます。一方、既存のデプロイを更新した場合は、Azure で .cscfg ファイルが更新されません。その場合でも、次のセクションの手順に従って診断の設定を変更することができます。フル デプロイの実行と既存のデプロイの更新の詳細については、[Azure アプリケーションの公開ウィザード](vs-azure-tools-publish-azure-application-wizard.md)に関するページを参照してください。
+1. When you do a full deployment, the diagnostics.cscfg file (.wadcfgx for Azure SDK 2.5) is updated in Azure, and your cloud service picks up any changes to your diagnostics configuration. If you, instead, update an existing deployment, the .cscfg file isn’t updated in Azure. You can still change diagnostics settings, though, by following the steps in the next section. For more information about performing a full deployment and updating an existing deployment, see [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md).
 
-### 仮想マシンの診断データを表示するには
+### <a name="to-view-virtual-machine-diagnostics-data"></a>To view virtual machine diagnostics data
 
-1. 仮想マシンのショートカット メニューで **[診断データの表示]** を選択します。
+1. On the shortcut menu for the virtual machine, choose **View Diagnostics Data**.
 
     ![View diagnostics data in Azure virtual machine](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC766027.png)
 
-    **[診断の概要]** ウィンドウが開きます。
+    This opens the **Diagnostics summary** window.
 
-    ![Azure virtual machine diagnostics summary](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796667.png)
+    ![Azure virtual machine diagnostics summary](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796667.png)  
 
-    最新のデータが表示されない場合は、転送間隔の経過を待ちます。
+    If the most recent data doesn't appear, you might have to wait for the transfer period to elapse.
 
-    **[更新]** リンクを選択してデータをすぐに更新するか、**[自動更新]** ボックスの一覧から間隔を選択してデータが自動的に更新されるように設定します。エラー データをエクスポートするには、**[CSV にエクスポート]** ボタンをクリックして、スプレッドシートで開くことができるコンマ区切り値ファイルを作成します。
+    Choose the **Refresh** link to immediately update the data, or choose an interval in the **Auto-Refresh** dropdown list box to have the data updated automatically. To export the error data, choose the **Export to CSV** button to create a comma-separated value file you can open in a spreadsheet.
 
-## デプロイ後にクラウド サービスの診断を構成する
+## <a name="configure-cloud-service-diagnostics-after-deployment"></a>Configure cloud service diagnostics after deployment
 
-既に実行しているクラウド サービスの問題について調べるとき、最初にロールをデプロイするときには指定しなかったデータを収集しなければならない場合があります。その場合、サーバー エクスプローラーの設定を使用してデータの収集を開始できます。診断は、ロールの単一インスタンスを対象に構成することも、すべてのインスタンスを対象に構成することもできます。そのどちらが対象となるかは、[診断構成] ダイアログ ボックスをインスタンスのショートカット メニューから開くか、ロールのショートカット メニューから開くかによって異なります。ロール ノードを構成した場合、すべてのインスタンスに変更が適用されます。インスタンス ノードを構成した場合、そのインスタンスのみに変更が適用されます。
+If you're investigating a problem with a cloud service that already running, you might want to collect data that you didn't specify before you originally deployed the role. In this case, you can start to collect that data by using the settings in Server Explorer. You can configure diagnostics for either a single instance or all the instances in a role, depending on whether you open the Diagnostics Configuration dialog box from the shortcut menu for the instance or the role. If you configure the role node, any changes apply to all instances. If you configure the instance node, any changes apply to that instance only.
 
-### 実行中のクラウド サービスの診断を構成するには
+### <a name="to-configure-diagnostics-for-a-running-cloud-service"></a>To configure diagnostics for a running cloud service
 
-1. サーバー エクスプローラーで、**[クラウド サービス]** ノードを展開し、目的のロールとインスタンスのどちらかまたは両方を探します。
+1. In Server Explorer, expand the **Cloud Services** node, and then expand nodes to locate the role or instance that you want to investigate or both.
 
     ![Configuring Diagnostics](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC748913.png)
 
-1. インスタンス ノードまたはロール ノードのショートカット メニューで **[診断の設定の更新]** をクリックし、収集する診断の設定を選択します。
+1. On the shortcut menu for an instance node or a role node, choose **Update Diagnostics Settings**, and then choose the diagnostic settings that you want to collect.
 
-    構成設定については、このトピックの「**診断データのソースを構成する**」を参照してください。診断データを表示する方法については、このトピックの「**診断データの表示**」を参照してください。
+    For information about the configuration settings, see **Configure diagnostics data sources** in this topic. For information about how to view the diagnostics data, see **View the diagnostics data** in this topic.
 
-    **サーバー エクスプローラー**でデータ収集を変更した場合、その変更は、クラウド サービスを再度フル デプロイするまで有効となります。既定の発行設定を使用する場合は、変更は上書きされません。既定の発行設定は、完全な再デプロイではなく、既存のデプロイの更新であるためです。デプロイ時に設定が消去されるようにするには、公開ウィザードの **[詳細設定]** タブに移動し、**[配置の更新]** チェック ボックスをオフにします。このチェック ボックスをオフにした状態で再デプロイすると、ロールの [プロパティ] エディターで行った .wadcfgx (または .wadcfg) ファイルの設定に戻されます。デプロイを更新した場合、Azure で古い設定が保存されます。
+    If you change data collection in **Server Explorer**, these changes remain in effect until you fully redeploy your cloud service. If you use the default publish settings, the changes are not overwritten, since the default publish setting is to update the existing deployment, rather than do a full redeployment. To make sure the settings clear at deployment time, go to the **Advanced Settings** tab in the Publish wizard and clear the **Deployment update** checkbox. When you redeploy with that checkbox cleared, the settings revert to those in the .wadcfgx (or .wadcfg) file as set through the Properties editor for the role. If you update your deployment, Azure keeps the old settings.
 
-## Azure クラウド サービスの問題のトラブルシューティング
+## <a name="troubleshoot-azure-cloud-service-issues"></a>Troubleshoot Azure cloud service issues
 
-ロールが "ビジー" 状態のままになる、リサイクルを繰り返す、内部サーバー エラーをスローするなど、クラウド サービス プロジェクトで問題が発生した場合、各種のツールと手法をその診断および修正に役立てることができます。一般的な問題とソリューションの具体例や、そのようなエラーの診断と修正に使用する概念とツールの概要については、[Azure PaaS 計算診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するページを参照してください。
+If you experience problems with your cloud service projects, such as a role that gets stuck in a "busy" status, repeatedly recycles, or throws an internal server error, there are tools and techniques you can use to diagnose and fix these problems. For specific examples of common problems and solutions, as well as an overview of the concepts and tools used to diagnose and fix such errors, see [Azure PaaS Compute Diagnostics Data](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
-## Q & A
+## <a name="q-&-a"></a>Q & A
 
-**バッファー サイズとは何ですか。その大きさはどのくらいが適切ですか。**
+**What is the buffer size, and how large should it be?**
 
-ローカル ファイル システムに保存できる診断データの量は、各仮想マシン インスタンスのクォータによって制限されています。加えてユーザーは、利用できる診断データの種類ごとにバッファー サイズを指定できます。このバッファー サイズは、その種類のデータに対する個別のクォータのような役割を果たします。ダイアログ ボックスの下部をチェックすることで、クォータ全体とメモリ残量を確認できます。バッファーのサイズを大きくしたり、データの種類を増やすには、クォータ全体を操作します。クォータ全体を変更するには、diagnostics.wadcfg/.wadcfgx 構成ファイルに変更を加えます。診断データはアプリケーションのデータと同じファイル システムに格納されます。アプリケーションでディスク領域を大量に消費する場合、診断クォータ全体を増やすことは避けてください。
+On each virtual machine instance, quotas limit how much diagnostic data can be stored on the local file system. In addition, you specify a buffer size for each type of diagnostic data that's available. This buffer size acts like an individual quota for that type of data. By checking the bottom of the dialog box, you can determine the overall quota and the amount of memory that remains. If you specify larger buffers or more types of data, you'll approach the overall quota. You can change the overall quota by modifying the diagnostics.wadcfg/.wadcfgx configuration file. The diagnostics data is stored on the same filesystem as your application’s data, so if your application uses a lot of disk space, you shouldn’t increase the overall diagnostics quota.
 
-**転送間隔とは何ですか。その長さはどのくらいが適切ですか。**
+**What is the transfer period, and how long should it be?**
 
-転送間隔は、データの取り込み間隔、つまり前回の取り込みから次の取り込みまでの経過時間です。転送間隔として指定された時間が経過するたびに、仮想マシンのローカル ファイル システムからストレージ アカウントのテーブルにデータが移動されます。収集されたデータの量が、転送間隔の終わりを待たずにクォータを超えた場合、古いデータから順に破棄されます。データがバッファー サイズまたは全体のクォータを超えるためにデータが失われる場合は、転送間隔を短くしてください。
+The transfer period is the amount of time that elapses between data captures. After each transfer period, data is moved from the local filesystem on a virtual machine to tables in your storage account. If the amount of data that's collected exceeds the quota before the end of a transfer period, older data is discarded. You might want to decrease the transfer period if you're losing data because your data exceeds the buffer size or the overall quota.
 
-**タイム スタンプには、どのタイム ゾーンが使用されますか。**
+**What time zone are the time stamps in?**
 
-タイム スタンプは、クラウド サービスをホストするデータ センターのローカル タイム ゾーンです。ログ テーブルでは次の 3 つのタイムスタンプ列が使用されます。
+The time stamps are in the local time zone of the data center that hosts your cloud service. The following three timestamp columns in the log tables are used.
 
-  - **PreciseTimeStamp** はイベントの ETW タイムスタンプです。つまり、クライアントのイベントがログに記録された時刻です。
+  - **PreciseTimeStamp** is the ETW timestamp of the event. That is, the time the event is logged from the client.
 
-  - **TIMESTAMP** はアップロード頻度境界に切り捨てられた PreciseTimeStamp です。したがって、アップロード頻度が 5 分で、イベント時刻が 00:17:12 の場合、TIMESTAMP は 00:15:00 になります。
+  - **TIMESTAMP** is PreciseTimeStamp rounded down to the upload frequency boundary. So, if your upload frequency is 5 minutes and the event time 00:17:12, TIMESTAMP will be 00:15:00.
 
-  - **Timestamp** は、エンティティが Azure テーブルに作成されたタイムスタンプです。
+  - **Timestamp** is the timestamp at which the entity was created in the Azure table.
 
-**診断情報を収集するためのコストを管理するにはどうすればよいですか。**
+**How do I manage costs when collecting diagnostic information?**
 
-既定の設定 (**[ログ レベル]** は **[エラー]**、**[転送期間]** は **1 分**) はコストが最小となるように設計されています。収集する診断データを増やしたり、転送間隔を短くしたりすると、コンピューティング コストが増大します。必要以上に多くのデータを収集しないようにし、必要がなくなったらデータ収集を無効にしてください。前のセクションで説明したとおり、実行時を含めいつでも有効に戻すことができます。
+The default settings (**Log level** set to **Error** and **Transfer period** set to **1 minute**) are designed to minimize cost. Your compute costs will increase if you collect more diagnostic data or decrease the transfer period. Don’t collect more data than you need, and don’t forget to disable data collection when you no longer need it. You can always enable it again, even at runtime, as shown in the previous section.
 
-**IIS から失敗した要求のログを収集するにはどうすればよいですか。**
+**How do I collect failed-request logs from IIS?**
 
-既定では、IIS は失敗した要求のログを収集しません。それらを収集するように IIS を構成するには、Web ロールの web.config ファイルを編集してください。
+By default, IIS doesn’t collect failed-request logs. You can configure IIS to collect them if you edit the web.config file for your web role.
 
-**OnStart など RoleEntryPoint のメソッドからトレース情報を取得できません。何か問題があるのでしょうか。**
+**I’m not getting trace information from RoleEntryPoint methods like OnStart. What’s wrong?**
 
-RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテキストで呼び出されます。そのため、通常であればトレースが有効になる web.config の構成情報が適用されません。この問題を解決するには、Web ロール プロジェクトに .config ファイルを追加し、RoleEntryPoint コードを含む出力アセンブリと同じ名前を付けます。既定の Web ロール プロジェクトでは、.config ファイルの名前は WAIISHost.exe.config です。そのうえで、このファイルに次の行を追加します。
+The methods of RoleEntryPoint are called in the context of WAIISHost.exe, not IIS. Therefore, the configuration information in web.config that normally enables tracing doesn’t apply. To resolve this issue, add a .config file to your web role project, and name the file to match the output assembly that contains the RoleEntryPoint code. In the default web role project, the name of the .config file would be WAIISHost.exe.config. Then add the following lines to this file:
 
 ```
 <system.diagnostics>
@@ -351,10 +352,14 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 </system.diagnostics>
 ```
 
-**[プロパティ]** ウィンドウで、**[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定します。
+Now, in the **Properties** window, set the **Copy to Output Directory** property to **Copy always**.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Azure の診断ログの詳細については、[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](./app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+To learn more about diagnostics logging in Azure, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md) and [Enable diagnostics logging for web apps in Azure App Service](./app-service-web/web-sites-enable-diagnostic-log.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
